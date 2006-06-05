@@ -1737,16 +1737,22 @@ INSERT INTO countries VALUES (239,'Zimbabwe','ZW','ZWE','1','1');
 INSERT INTO currencies VALUES (1,'Euro','EUR','','EUR',',','.','2','1.0000', now());
 
 
-INSERT INTO languages VALUES (1,'English','en','icon.gif','english',1,'iso-8859-15');
-INSERT INTO languages VALUES (2,'Deutsch','de','icon.gif','german',2,'iso-8859-15');
+INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'windows-1251');
+INSERT INTO languages VALUES (2,'English','en','icon.gif','english',2,'iso-8859-15');
 
 
-INSERT INTO orders_status VALUES ( '1', '1', 'Pending');
-INSERT INTO orders_status VALUES ( '1', '2', 'Offen');
-INSERT INTO orders_status VALUES ( '2', '1', 'Processing');
-INSERT INTO orders_status VALUES ( '2', '2', 'In Bearbeitung');
-INSERT INTO orders_status VALUES ( '3', '1', 'Delivered');
-INSERT INTO orders_status VALUES ( '3', '2', 'Versendet');
+INSERT INTO orders_status VALUES ( '1', '1', 'Ожидает проверки');
+INSERT INTO orders_status VALUES ( '1', '2', 'Pending');
+INSERT INTO orders_status VALUES ( '2', '1', 'Ждём оплаты');
+INSERT INTO orders_status VALUES ( '2', '2', 'Waiting approval');
+INSERT INTO orders_status VALUES ( '3', '1', 'Выполняется');
+INSERT INTO orders_status VALUES ( '3', '2', 'Processing');
+INSERT INTO orders_status VALUES ( '4', '1', 'Доставляется');
+INSERT INTO orders_status VALUES ( '4', '2', 'Delivering');
+INSERT INTO orders_status VALUES ( '5', '1', 'Доставлен');
+INSERT INTO orders_status VALUES ( '5', '2', 'Delivered');
+INSERT INTO orders_status VALUES ( '6', '1', 'Отменён');
+INSERT INTO orders_status VALUES ( '6', '2', 'Canceled');
 
 
 
