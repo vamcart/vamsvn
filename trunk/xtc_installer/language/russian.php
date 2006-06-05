@@ -16,7 +16,7 @@
 define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">XT-Commerce</a><br />Powered by xt:Commerce'); 
    
 // Box names
-define('BOX_LANGUAGE','Language');
+define('BOX_LANGUAGE','ßçûê');
 define('BOX_DB_CONNECTION','DB Connection') ;
 define('BOX_WEBSERVER_SETTINGS','Webserver Settings');
 define('BOX_DB_IMPORT','DB Import');
@@ -73,7 +73,7 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 	
 	
 // index.php
-define('TITLE_SELECT_LANGUAGE','Select your language!');
+define('TITLE_SELECT_LANGUAGE','Âûáåðèòå ÿçûê!');
 
 define('TEXT_WELCOME_INDEX','<b>Welcome to XT-Commerce</b><br /><br />XT-Commerce is an open source e-commerce solution under on going development by the XT-Commerce Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> XT-Commerce combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, XT-Commerce can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes Linux, Solaris, BSD, and Microsoft Windows environments.<br /><br /><b>Willkommen zu XT-Commerce</b><br /><br />XT-Commerce ist eine Open-Source e-commerce Lösung, die ständig vom XT-Commerce Team und einer grossen Gemeinschaft weiterentwickelt wird.<br /> Seine out-of-the-box Installation erlaubt es dem Shop-Besitzer seinen Online-Shop mit einem Minimum an Aufwand und Kosten zu installieren, zu betreiben und zu verwalten.<br /><br />XT-Commerce ist auf jedem System lauffähig, welches eine PHP Umgebung (ab PHP 4.1) und mySQL zur Verfügung stellt, wie zum Beispiel Linux, Solaris, BSD, und Microsoft Windows.');
 define('TEXT_WELCOME_STEP1','<b>Main database and webserver settings</b><br /><br />Please enter your Database and webserver settings.<br />');
