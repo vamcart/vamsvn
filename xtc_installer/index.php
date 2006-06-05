@@ -21,7 +21,7 @@
   require_once(DIR_FS_INC.'xtc_redirect.inc.php');
   require_once(DIR_FS_INC.'xtc_href_link.inc.php');
   
-  include('language/english.php');
+  include('language/russian.php');
 
   // Include Developer - standard settings for installer
   //  require('developer_settings.php');  
@@ -42,7 +42,7 @@
     $error = false;
 
 
-      if ( ($_SESSION['language'] != 'german') && ($_SESSION['language'] != 'english') ) {
+      if ( ($_SESSION['language'] != 'russian') && ($_SESSION['language'] != 'english') ) {
         $error = true;
 
         $messageStack->add('index', SELECT_LANGUAGE_ERROR);
@@ -59,8 +59,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>XT-Commerce Installer - Welcome</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Óñòàíîâêà XT-Commerce VaM Edition - Äîáðî ïîæàëîâàòü</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 <style type="text/css">
 <!--
 .messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
@@ -302,9 +302,9 @@ if ($ok_message!='') {
 
               <table width="300" border="0" cellpadding="0" cellspacing="4">
                 <tr>
-                  <td width="98"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6">German</font></td>
-                  <td width="192"><img src="images/icons/icon-deu.gif" width="30" height="16">
-                    <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'german'); ?>
+                  <td width="98"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6">Ðóññêèé</font></td>
+                  <td width="192"><img src="images/icons/icon-rus.gif" width="30" height="16">
+                    <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
                   </td>
                 </tr>
                 <tr>
@@ -329,6 +329,5 @@ if ($ok_message!='') {
 <p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_FOOTER; ?>  </font></p>
 <p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
   </font></p>
-  <center><img src="http://www.xt-commerce.com/xtc_banner1.jpg">
 </body>
 </html>
