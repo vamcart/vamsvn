@@ -1,0 +1,39 @@
+#  -----------------------------------------------------------------------------------------
+#  $Id: .htaccess,v 1.2 2004/01/02 08:57:56 fanta2k Exp $
+#
+#  XT-Commerce - community made shopping
+#  http://www.xt-commerce.com
+#
+#  Copyright (c) 2003 XT-Commerce
+#  -----------------------------------------------------------------------------------------
+#  based on: 
+#  (c) 2000-2001 The Exchange Project 
+#  (c) 2002-2003 osCommerce (.htaccess,v 1.1 2002/07/21); www.oscommerce.com
+#  (c) 2003      nextcommerce (.htaccess,v 1.1 2003/09/06); www.nextcommerce.org
+#
+#  Released under the GNU General Public License 
+#  -----------------------------------------------------------------------------------------
+# This is used with Apache WebServers
+#
+# The following makes adjustments to the SSL protocol for Internet
+# Explorer browsers
+#
+# For this to work, you must include the parameter 'Limit' to the
+# AllowOverride configuration
+#
+# Example:
+#
+#<Directory "/usr/local/apache/htdocs">
+#  AllowOverride Limit
+#</Directory>
+#
+# 'All' with also work. (This configuration is in your
+# apache/conf/httpd.conf file)www
+#php_flag register_globals off
+<IfModule mod_setenvif.c>
+  <IfDefine SSL>
+    SetEnvIf User-Agent ".*MSIE.*" \
+             nokeepalive ssl-unclean-shutdown \
+             downgrade-1.0 force-response-1.0
+  </IfDefine>
+</IfModule>

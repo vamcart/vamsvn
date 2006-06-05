@@ -1,0 +1,81 @@
+{config_load file="$language/lang_$language.conf" section="checkout_new_address"}
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td class="main"><strong>{#title_new_address#}</strong> </td>
+    <td class="inputRequirement" align="right">{#text_must#}</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  {if $gender=='1'} 
+  <tr> 
+    <td colspan="2" class="main" style="border-top: 1px solid; border-color: #cccccc;">{#text_new_address#}<br /><br /></td>
+  </tr>
+  <tr> 
+    <td class="main">{#text_gender#}</td>
+    <td class="main">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+			  	<td class="main"> {$INPUT_MALE}</td>
+			  	<td class="main"> {$INPUT_FEMALE}</td>				
+  			</tr>
+		</table>
+	</td>
+  </tr>
+  {/if} 
+  <tr> 
+    <td class="main" >{#text_firstname#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_FIRSTNAME}</td>
+  </tr>
+  <tr> 
+    <td class="main">{#text_lastname#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_LASTNAME}</td>
+  </tr>
+  {if $company=='1'} 
+  <tr> 
+    <td class="main">&nbsp;</td>
+    <td class="main" align="left"></td>
+  </tr>
+  <tr> 
+    <td class="main">{#text_company#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_COMPANY}</td>
+  </tr>
+  {/if} 
+  <tr> 
+    <td class="main">&nbsp;</td>
+    <td class="main" align="left"></td>
+  </tr>
+  <tr> 
+    <td class="main" >{#text_street#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_STREET}</td>
+  </tr>
+  {if $suburb=='1'} 
+  <tr> 
+    <td class="main">{#text_suburb#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_SUBURB}</td>
+  </tr>
+  {/if} 
+  <tr> 
+    <td class="main">{#text_code#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_CODE}</td>
+  </tr>
+  <tr> 
+    <td class="main">{#text_city#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_CITY}</td>
+  </tr>
+  {if $state=='1'} 
+  <tr> 
+    <td class="main">{#text_state#}</td>
+    <td class="inputRequirement" align="left">{$INPUT_STATE}</td>
+  </tr>
+  {/if} 
+  <tr> 
+    <td class="main">{#text_country#}</td>
+    <td class="inputRequirement" align="left">{$SELECT_COUNTRY}</td>
+  </tr>
+  {if $new=='1'} 
+  <tr> 
+    <td class="main">&nbsp;</td>
+    <td class="main" align="left">{$CHECKBOX_PRIMARY} {#text_standard#}</td>
+  </tr>
+  {/if} 
+</table>

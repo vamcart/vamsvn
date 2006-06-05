@@ -1,0 +1,28 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{$FORM_ACTION}
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="infoBoxHeading"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="infoBoxHeading">{#heading_search#} </td>
+          <td></td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="infoBox" align="left"><table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="boxText">
+            <table width="100%"  border="0" cellpadding="2" cellspacing="0">
+              <tr>
+                <td valign="middle">{$INPUT_SEARCH}</td>
+                <td valign="middle">{$BUTTON_SUBMIT}</td>
+              </tr>
+            </table>
+            <br />
+            <a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a> </td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+{$FORM_END}

@@ -1,0 +1,82 @@
+{config_load file="$language/lang_$language.conf" section="checkout_success"}
+
+{$FORM_ACTION}
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td rowspan="14"><img src="{$tpl_path}img/checkout_success.gif" alt="" /></td>
+    <td class="contentsTopics" valign="top">{#heading_success#}</td>
+  </tr>
+  <tr>
+    <td class="main" valign="top">{#text_success#}</td>
+  </tr>
+  <tr>
+    <td class="contentsTopics" valign="top">{#title_printorder#}</td>
+  </tr>
+  <tr>
+    <td class="main" valign="top">{#text_printorder#}</td>
+  </tr>
+  <tr>
+    <td class="main">{$BUTTON_PRINT}</td>
+  </tr>
+  <tr>
+    <td class="contentsTopics" valign="top">{#text_thankyou#}</td>
+  </tr>
+  <tr>
+    <td class="contentsTopics" valign="top">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{if $GV_SEND_LINK}
+			<!--GV Code Start-->
+			<tr>
+				<td class="main">{#gv_has_vouchera#} {$GV_SEND_LINK} {#gv_has_voucherb#}</td>
+			</tr>
+			<!--GV Code End-->
+			{/if}
+			<tr>
+				<td class="main" align="right">{$BUTTON_CONTINUE}</td>
+			</tr>
+		</table>	</td>
+  </tr>
+</table>
+<!-- Google Conversion-tracking start !-->
+{if $google_tracking eq 'true'}
+{$tracking_code}
+{/if}
+<!-- Google Conversion-tracking end !-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+			<tr> 
+				<td>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr> 
+							<td align="right"><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="5" alt="" /></td>
+							<td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+						</tr>
+					</table>
+				</td>
+				<td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+				<td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+				<td>
+					<table border="0" width="50%" cellspacing="0" cellpadding="0">
+						<tr> 
+							<td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+							<td class="onepxwidth"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></td>
+						</tr>
+				  </table>
+				</td>
+			</tr>
+			<tr> 
+				<td align="center" class="checkoutBarTo">{#text_shipping_info#}</td>
+				<td align="center" class="checkoutBarTo">{#text_payment_info#}</td>
+				<td align="center" class="checkoutBarTo">{#text_confirm#}</td>
+				<td align="center" class="checkoutBarCurrent">{#text_finished#}</td>
+			</tr>
+		</table>
+	</td>
+  </tr>
+</table>
+{if $downloads_content neq ''}
+  {$downloads_content}
+{/if}
+{$FORM_END}

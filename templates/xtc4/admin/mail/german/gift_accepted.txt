@@ -1,0 +1,8 @@
+
+Sehr geehrter Kunde,
+
+Sie haben k&uuml;rzlich in unserem Online-Shop einen Gutschein bestellt,
+welcher aus Sicherheitsgr&uuml;nden nicht sofort freigeschaltet wurde.
+Dieses Guthaben steht Ihnen nun zur Verf&uuml;gung.
+Sie k&ouml;nnen Ihren Gutschein verbuchen und per E-Mail versenden Der von Ihnen bestellte Gutschein hat einen Wert von {$AMMOUNT}
+
