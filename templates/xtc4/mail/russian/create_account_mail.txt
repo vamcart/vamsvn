@@ -1,0 +1,32 @@
+
+
+Dear Customer ,
+
+You successful created your Customer Account, now you got following featues in our shop.
+
+-Customer shopping cart - Every item remains registered until you go to the cash box, or the products are deleted from the shopping cart.
+-Addressbook - Now we can send the products to the postal address selected by you. The perfect way to get a birthday present.
+-Previous orders  - you can check  your previous orders at any time.
+-Opinions about products- tell zour oppinion about our products to other customers
+
+If you have questions to our customer-service, contact us directly:{$content.MAIL_REPLY_ADDRESS}
+
+Caution: This eMail-address was announced to us by a customer. If you did not announce yourself, please send an eMail to: {$content.MAIL_REPLY_ADDRESS}
+
+{if $SEND_GIFT==true}
+
+As part of our welcome to new customers, we have sent you an e-Gift Voucher worth: {$GIFT_AMMOUNT}
+
+The redeem code for the e-Gift Voucher is {$GIFT_CODE}, you can enter the redeem code when checking out while making a purchase.
+
+To use your e-Gift voucher, klick on Following link {$GIFT_LINK}. 
+{/if} 
+
+{if $SEND_COUPON==true} 
+Congratulations, to make your first visit to our online shop a more rewarding experience we are sending you an e-Discount Coupon.
+Below are details of the Discount Coupon created just for you.
+
+Description: {$COUPON_DESC}
+
+To use the coupon enter the redeem code which is {$COUPON_CODE} during checkout while making a purchase 
+{/if}
