@@ -1,0 +1,121 @@
+{config_load file="$language/lang_$language.conf" section="checkout_shipping_address"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr valign="top"> 
+		<td class="contentsTopics">{#heading_address#}</td>
+	</tr>
+</table>
+{$FORM_ACTION}
+{if $error!=''}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>{$error}</td>
+  </tr>
+</table>
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+  <tr>
+    <td><strong>{#title_current_address#}</strong></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="main">{#text_current_address#}<br /><br /></td>
+          <td>
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+              <tr> 
+                <td align="center" valign="top" class="main"><strong>{#title_current_address#}</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
+                <td class="boxTextBG" style="border-right: 1px solid; border-color: #cccccc;" align="left">{$ADDRESS_LABEL}</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+{if $BLOCK_ADDRESS}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+  <tr>
+    <td class="main"><strong>{#title_old_addresses#}</strong></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="main">{#text_old_addresses#}<br /><br />{$BLOCK_ADDRESS}<br /><br /></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+{/if}
+{if $MODULE_new_address}
+{$MODULE_new_address}
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+  <tr>
+    <td><strong>{#title_continue#}</strong></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="main">{#text_continue#}<br /><br />
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>{$BUTTON_BACK}</td>
+                  <td align="right">{$BUTTON_CONTINUE}</td>
+                </tr>
+              </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+      <tr>
+        <td>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+			 <table border="0" width="100%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="right"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></td>
+                <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+              </tr>
+            </table></td>            
+          <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+          <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+          <td>
+		    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>
+                <td><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="1" alt="" /></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>            
+          <td align="center" class="checkoutBarCurrent">{#text_shipping_info#}</td>
+          <td align="center" class="checkoutBarTo">{#text_payment_info#}</td>
+          <td align="center" class="checkoutBarTo">{#text_confirm#}</td>
+          <td align="center" class="checkoutBarTo">{#text_finished#}</td>
+          </tr>
+        </table></td>
+      </tr>
+</table>
+{$FORM_END}

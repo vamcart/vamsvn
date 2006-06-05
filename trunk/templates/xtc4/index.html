@@ -1,0 +1,59 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="{$tpl_path}img/top_logo.jpg" alt="{$store_name}" /></td>
+      </tr>
+      <tr>
+        <td style="border-top: 1px solid; border-bottom: 1px solid; border-color: #C5C5C5;"><table width="100%"  border="0" cellpadding="2" cellspacing="0">
+          <tr>
+            <td class="main">{$navtrail}</td>
+            <td align="right" class="main">{if $account}{php} if (isset($_SESSION['customer_id'])) { {/php}<a href="{$logoff}">{#link_logoff#}</a> | {php} } {/php}{/if}{if $account}<a href="{$account}">{#link_account#}</a> | {/if}<a href="{$cart}">{#link_cart#}</a> | <a href="{$checkout}">{#link_checkout#}</a></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="navLeft" valign="top"><table width="184"  border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>{$box_CATEGORIES}{$box_ADD_QUICKIE}{$box_CONTENT}{$box_INFORMATION}{$box_LAST_VIEWED}{$box_REVIEWS}{$box_SEARCH}{$box_SPECIALS}{$box_WHATSNEW}</td>
+              </tr>
+            </table>&nbsp;</td>
+            <td valign="top"><table width="100%"  border="0" cellspacing="4" cellpadding="0">
+              <tr>
+                <td><table width="98%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="main">{$main_content}</td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+            <td valign="top" class="navRight"><table width="184"  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                      <td>{$box_CART}{$box_LOGIN}{$box_ADMIN}{$box_NEWSLETTER}{$box_BESTSELLERS}{$box_INFOBOX} {$box_CURRENCIES} {$box_LANGUAGES}{$box_MANUFACTURERS_INFO}{$box_MANUFACTURERS} </td>
+              </tr>
+            </table>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" valign="top"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="border-top: 4px solid; border-top: 4px solid; border-color: #C5C5C5;">&nbsp;</td>
+        <td style="border-top: 4px solid; border-top: 4px solid; border-color: #666666;">&nbsp;</td>
+      </tr>
+    </table></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+{if $BANNER}
+<table width="100%"  border="0" cellspacing="4" cellpadding="0">
+  <tr>
+    <td align="center">{$BANNER}</td>
+  </tr>
+</table>
+{/if}
