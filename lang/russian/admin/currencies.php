@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: currencies.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: currencies.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,32 +15,32 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
    
-define('HEADING_TITLE', 'Currencies');
+define('HEADING_TITLE', 'Валюты');
 
-define('TABLE_HEADING_CURRENCY_NAME', 'Currency');
-define('TABLE_HEADING_CURRENCY_CODES', 'Code');
-define('TABLE_HEADING_CURRENCY_VALUE', 'Value');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_CURRENCY_NAME', 'Валюта');
+define('TABLE_HEADING_CURRENCY_CODES', 'Код');
+define('TABLE_HEADING_CURRENCY_VALUE', 'Величина');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_INFO_CURRENCY_TITLE', 'Title:');
-define('TEXT_INFO_CURRENCY_CODE', 'Code:');
-define('TEXT_INFO_CURRENCY_SYMBOL_LEFT', 'Symbol Left:');
-define('TEXT_INFO_CURRENCY_SYMBOL_RIGHT', 'Symbol Right:');
-define('TEXT_INFO_CURRENCY_DECIMAL_POINT', 'Decimal Point:');
-define('TEXT_INFO_CURRENCY_THOUSANDS_POINT', 'Thousands Point:');
-define('TEXT_INFO_CURRENCY_DECIMAL_PLACES', 'Decimal Places:');
-define('TEXT_INFO_CURRENCY_LAST_UPDATED', 'Last Updated:');
-define('TEXT_INFO_CURRENCY_VALUE', 'Value:');
-define('TEXT_INFO_CURRENCY_EXAMPLE', 'Example Output:');
-define('TEXT_INFO_INSERT_INTRO', 'Please enter the new currency with its related data');
-define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete this currency?');
-define('TEXT_INFO_HEADING_NEW_CURRENCY', 'New Currency');
-define('TEXT_INFO_HEADING_EDIT_CURRENCY', 'Edit Currency');
-define('TEXT_INFO_HEADING_DELETE_CURRENCY', 'Delete Currency');
-define('TEXT_INFO_SET_AS_DEFAULT', TEXT_SET_DEFAULT . ' (requires a manual update of currency values)');
-define('TEXT_INFO_CURRENCY_UPDATED', 'The exchange rate for %s (%s) was updated successfully');
+define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_INFO_CURRENCY_TITLE', 'Название:');
+define('TEXT_INFO_CURRENCY_CODE', 'Код:');
+define('TEXT_INFO_CURRENCY_SYMBOL_LEFT', 'Символ слева:');
+define('TEXT_INFO_CURRENCY_SYMBOL_RIGHT', 'Символ справа:');
+define('TEXT_INFO_CURRENCY_DECIMAL_POINT', 'Десятичный знак:');
+define('TEXT_INFO_CURRENCY_THOUSANDS_POINT', 'Разделитель тысяч:');
+define('TEXT_INFO_CURRENCY_DECIMAL_PLACES', 'Десятичные порядки:');
+define('TEXT_INFO_CURRENCY_LAST_UPDATED', 'Последний раз скорректировано:');
+define('TEXT_INFO_CURRENCY_VALUE', 'Величина:');
+define('TEXT_INFO_CURRENCY_EXAMPLE', 'Пример:');
+define('TEXT_INFO_INSERT_INTRO', 'Пожалуйста, введите данные для новой валюты');
+define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить эту валюту?');
+define('TEXT_INFO_HEADING_NEW_CURRENCY', 'Новая Валюта');
+define('TEXT_INFO_HEADING_EDIT_CURRENCY', 'Изменить Валюту');
+define('TEXT_INFO_HEADING_DELETE_CURRENCY', 'Удалить Валюту');
+define('TEXT_INFO_SET_AS_DEFAULT', TEXT_SET_DEFAULT . ' (эту валюту нужно корректировать вручную)');
+define('TEXT_INFO_CURRENCY_UPDATED', 'Обменный курс для %s (%s) успешно обновлён с помощью %s.');
 
-define('ERROR_REMOVE_DEFAULT_CURRENCY', 'Error: The default currency can not be removed. Please set another currency as default, and try again.');
-define('ERROR_CURRENCY_INVALID', 'Error: The exchange rate for %s (%s) was not updated. Is it a valid currency code?');
+define('ERROR_REMOVE_DEFAULT_CURRENCY', 'Ошибка: Валюта, установленная по умолчанию не может быть удалена. Определите другую валюту по умолчанию и попробуйте снова.');
+define('ERROR_CURRENCY_INVALID', 'Ошибка: Обменный курс для %s (%s) не был обновлён с помощью %s. Вы правильно указали код валюты? Чтобы обновить обменный курс, Вы должны быть подключены к интернету.');
 ?>

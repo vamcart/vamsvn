@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: tax_rates.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: tax_rates.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,27 +15,27 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Tax Rates');
+define('HEADING_TITLE', 'Ставки Налогов');
 
-define('TABLE_HEADING_TAX_RATE_PRIORITY', 'Priority');
-define('TABLE_HEADING_TAX_CLASS_TITLE', 'Tax Class');
-define('TABLE_HEADING_COUNTRIES_NAME', 'Country');
-define('TABLE_HEADING_ZONE', 'Zone');
-define('TABLE_HEADING_TAX_RATE', 'Tax Rate');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_TAX_RATE_PRIORITY', 'Приоритет');
+define('TABLE_HEADING_TAX_CLASS_TITLE', 'Налог');
+define('TABLE_HEADING_COUNTRIES_NAME', 'Страна');
+define('TABLE_HEADING_ZONE', 'Регион');
+define('TABLE_HEADING_TAX_RATE', 'Ставка');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_INFO_DATE_ADDED', 'Date Added:');
-define('TEXT_INFO_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_INFO_CLASS_TITLE', 'Tax Class Title:');
-define('TEXT_INFO_COUNTRY_NAME', 'Country:');
-define('TEXT_INFO_ZONE_NAME', 'Zone:');
-define('TEXT_INFO_TAX_RATE', 'Tax Rate (%):');
-define('TEXT_INFO_TAX_RATE_PRIORITY', 'Tax rates at the same priority are added, others are compounded.<br /><br />Priority:');
-define('TEXT_INFO_RATE_DESCRIPTION', 'Description:');
-define('TEXT_INFO_INSERT_INTRO', 'Please enter the new tax class with its related data');
-define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete this tax rate?');
-define('TEXT_INFO_HEADING_NEW_TAX_RATE', 'New Tax Rate');
-define('TEXT_INFO_HEADING_EDIT_TAX_RATE', 'Edit Tax Rate');
-define('TEXT_INFO_HEADING_DELETE_TAX_RATE', 'Delete Tax Rate');
+define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_INFO_DATE_ADDED', 'Дата Добавления:');
+define('TEXT_INFO_LAST_MODIFIED', 'Последнее Изменение:');
+define('TEXT_INFO_CLASS_TITLE', 'Тип налога:');
+define('TEXT_INFO_COUNTRY_NAME', 'Страна:');
+define('TEXT_INFO_ZONE_NAME', 'Налоговая зона:');
+define('TEXT_INFO_TAX_RATE', 'Процентная ставка (%):');
+define('TEXT_INFO_TAX_RATE_PRIORITY', 'Приоритет:');
+define('TEXT_INFO_RATE_DESCRIPTION', 'Описание:');
+define('TEXT_INFO_INSERT_INTRO', 'Пожалуйста, внесите требуемую информацию для новой ставки налога');
+define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить ставку налога?');
+define('TEXT_INFO_HEADING_NEW_TAX_RATE', 'Новая ставка');
+define('TEXT_INFO_HEADING_EDIT_TAX_RATE', 'Редактировать ставку');
+define('TEXT_INFO_HEADING_DELETE_TAX_RATE', 'Удалить ставку');
 ?>

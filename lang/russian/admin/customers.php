@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: customers.php 1295 2005-10-08 16:59:56Z mz $   
+   $Id: customers.php 1295 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,43 +15,42 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Customers');
-define('HEADING_TITLE_SEARCH', 'Search:');
+define('HEADING_TITLE', 'Клиенты');
+define('HEADING_TITLE_SEARCH', 'Поиск:');
 
-define('TABLE_HEADING_FIRSTNAME', 'First Name');
-define('TABLE_HEADING_LASTNAME', 'Last Name');
-define('TABLE_HEADING_ACCOUNT_CREATED', 'Account Created');
-define('TABLE_HEADING_ACTION', 'Action');
-
-define('TEXT_DATE_ACCOUNT_CREATED', 'Account Created:');
-define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_INFO_DATE_LAST_LOGON', 'Last Logon:');
-define('TEXT_INFO_NUMBER_OF_LOGONS', 'Number of Logons:');
-define('TEXT_INFO_COUNTRY', 'Country:');
-define('TEXT_INFO_NUMBER_OF_REVIEWS', 'Number of Reviews:');
-define('TEXT_DELETE_INTRO', 'Are you sure you want to delete this customer?');
-define('TEXT_DELETE_REVIEWS', 'Delete %s review(s)');
-define('TEXT_INFO_HEADING_DELETE_CUSTOMER', 'Delete Customer');
-define('TYPE_BELOW', 'Type below');
-define('PLEASE_SELECT', 'Select One');
-define('HEADING_TITLE_STATUS','Customers Group');
-define('TEXT_ALL_CUSTOMERS','All Groups');
-define('TEXT_INFO_HEADING_STATUS_CUSTOMER','Customers Group');
-define('TABLE_HEADING_NEW_VALUE','New Status');
-define('TABLE_HEADING_DATE_ADDED','Date');
-define('TEXT_NO_CUSTOMER_HISTORY','--no modification yet--');
-define('TABLE_HEADING_GROUPIMAGE','Icon');
-define('ENTRY_MEMO','Memo');
-define('TEXT_DATE','Date');
-define('TEXT_TITLE','Title');
-define('TEXT_POSTER','Poster');
-define('ENTRY_PASSWORD_CUSTOMER','Password:');
-define('TEXT_SELECT','--Select--');
-define('TABLE_HEADING_ACCOUNT_TYPE','Account');
-define('TEXT_ACCOUNT','Yes');
-define('TEXT_GUEST','No');
-define('NEW_ORDER','New order ?');
-define('ENTRY_PAYMENT_UNALLOWED','Unallowed paymentmodules:');
-define('ENTRY_SHIPPING_UNALLOWED','Unallowed shippingmodules:');
-define('ENTRY_NEW_PASSWORD','New Password:');
+define('TABLE_HEADING_FIRSTNAME', 'Имя');
+define('TABLE_HEADING_LASTNAME', 'Фамилия');
+define('TABLE_HEADING_ACCOUNT_CREATED', 'Аккаунт создан');
+define('TABLE_HEADING_ACTION', 'Действие');
+define('TEXT_DATE_ACCOUNT_CREATED', 'Аккаунт создан:');
+define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'Последние изменения:');
+define('TEXT_INFO_DATE_LAST_LOGON', 'Последний вход:');
+define('TEXT_INFO_NUMBER_OF_LOGONS', 'Ко-во входов:');
+define('TEXT_INFO_COUNTRY', 'Страна:');
+define('TEXT_INFO_NUMBER_OF_REVIEWS', 'Кол-во отзывов:');
+define('TEXT_DELETE_INTRO', 'Вы действительно желаете удалить этого клиента?');
+define('TEXT_DELETE_REVIEWS', 'Удалить %s отзыв(ы)');
+define('TEXT_INFO_HEADING_DELETE_CUSTOMER', 'Удалить клиента');
+define('TYPE_BELOW', 'Введите ниже');
+define('PLEASE_SELECT', 'Выберите');
+define('HEADING_TITLE_STATUS','Группы клиентов');
+define('TEXT_ALL_CUSTOMERS','все группы');
+define('TEXT_INFO_HEADING_STATUS_CUSTOMER','Группы клиентов');
+define('TABLE_HEADING_NEW_VALUE','Новый статус');
+define('TABLE_HEADING_DATE_ADDED','Дата');
+define('TEXT_NO_CUSTOMER_HISTORY','-пока нет изменений-');
+define('TABLE_HEADING_GROUPIMAGE','Иконка');
+define('ENTRY_MEMO','Память');
+define('TEXT_DATE','Дата');
+define('TEXT_TITLE','Заголовок');
+define('TEXT_POSTER','Объявление');
+define('ENTRY_PASSWORD_CUSTOMER','Пароль:');
+define('TEXT_SELECT','-Выберите-');
+define('TABLE_HEADING_ACCOUNT_TYPE','Аккаунт');
+define('TEXT_ACCOUNT','Да');
+define('TEXT_GUEST','Нет');
+define('NEW_ORDER','Новый заказ');
+define('ENTRY_PAYMENT_UNALLOWED','Недопустимый модуль оплаты:');
+define('ENTRY_SHIPPING_UNALLOWED','Недопустимый модуль доставки:');
+define('ENTRY_NEW_PASSWORD','Новый пароль:');
 ?>

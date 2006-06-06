@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: create_account.php 985 2005-06-17 22:35:22Z mz $   
+   $Id: create_account.php 985 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,20 +15,20 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('NAVBAR_TITLE', 'Create an Account');
+define('NAVBAR_TITLE', 'Создать аккаунт');
 
-define('HEADING_TITLE', 'Customer Account Admin');
+define('HEADING_TITLE', 'Мой кабинет');
 
-define('TEXT_ORIGIN_LOGIN', '<font color="#FF0000"><small><b>NOTE:</b></font></small> If you already have an account with us, please login at the <a href="%s"><u>login page</u></a>.');
+define('TEXT_ORIGIN_LOGIN', '<font color="#FF0000"><small><b>ЗАМЕТКА:</b></font></small> Если у Вас уже есть в нашем магазине учетная запись, пожалуйста просто войдите здесь <a href="%s"><u>ВОЙТИ</u></a>.');
 
-define('EMAIL_SUBJECT', 'Welcome to ' . STORE_NAME);
-define('EMAIL_GREET_MR', 'Dear Mr. ' . stripslashes($HTTP_POST_VARS['lastname']) . ',' . "\n\n");
-define('EMAIL_GREET_MS', 'Dear Ms. ' . stripslashes($HTTP_POST_VARS['lastname']) . ',' . "\n\n");
-define('EMAIL_GREET_NONE', 'Dear ' . stripslashes($HTTP_POST_VARS['firstname']) . ',' . "\n\n");
-define('EMAIL_WELCOME', 'We welcome you to <b>' . STORE_NAME . '</b>.' . "\n\n");
-define('EMAIL_TEXT', 'You can now take part in the <b>various services</b> we have to offer you. Some of these services include:' . "\n\n" . '<li><b>Permanent Cart</b> - Any products added to your online cart remain there until you remove them, or check them out.' . "\n" . '<li><b>Address Book</b> - We can now deliver your products to another address other than yours! This is perfect to send birthday gifts direct to the birthday persons themselves.' . "\n" . '<li><b>Order History</b> - View your history of purchases that you have made with us.' . "\n" . '<li><b>Products Reviews</b> - Share your opinions on products with our other customers.' . "\n\n");
-define('EMAIL_CONTACT', 'For help with any of our online services, please eMail the store-owner: ' . STORE_OWNER_EMAIL_ADDRESS . '.' . "\n\n");
-define('EMAIL_WARNING', '<b>Note:</b> This eMail address was given to us by one of our customers. If you did not signup to be a member, please send an eMail to ' . STORE_OWNER_EMAIL_ADDRESS . '.' . "\n");
-define('ENTRY_PAYMENT_UNALLOWED','Unallowed paymentmodules:');
-define('ENTRY_SHIPPING_UNALLOWED','Unallowed shippingmodules:');
+define('EMAIL_SUBJECT', 'Добро пожаловать в ' . STORE_NAME);
+define('EMAIL_GREET_MR', 'Уважаемый господин. ' . stripslashes($HTTP_POST_VARS['lastname']) . ',' . "\n\n");
+define('EMAIL_GREET_MS', 'Уважаемая госпожа. ' . stripslashes($HTTP_POST_VARS['lastname']) . ',' . "\n\n");
+define('EMAIL_GREET_NONE', 'Дорогой(ая) ' . stripslashes($HTTP_POST_VARS['firstname']) . ',' . "\n\n");
+define('EMAIL_WELCOME', 'Добро пожаловать в  <b>' . STORE_NAME . '</b>.' . "\n\n");
+define('EMAIL_TEXT', 'Вы можете теперь использовать <b>различные услуги </b>, которые мы предлагаем Вам. Некоторые из услуг включают:'. "\n\n". '<li><b>Временную корзину</b> - Любые товары добавленные к вашей корзине покупок остаются там пока Вы не удалите их или не закажете эти товары или услуги.'. "\n". '<li><b>Адресная книга</b> - Мы можем теперь доставить ваши заказы по любому другому адресу кроме вашего основного! Это отличное предложение, чтобы например посылать подарки ко дню рождения или к праздникам, с доставкой в указанное Вами время!'. "\n". '<li><b>История заказов</b> - Рассматривать вашу историю приобретений, которыми Вы сделали унас.'. "\n". '<li><b>Отзывы о товарах и услугах</b> - Размещать ваше  мнение и отзывы о товарах и поделиться этим мнением с нашими другими клиентами.' . "\n\n");
+define('EMAIL_CONTACT', 'Для помощи в использовании услуг, если есть проблемы или затруднения в использовании, Вы можете обратиться к владельцу магазина: ' . STORE_OWNER_EMAIL_ADDRESS . '.' . "\n\n");
+define('EMAIL_WARNING', '<b>Внимание:</b> Это e-mail адрес был дан нам одним из наших клиентов. Если Вы не подписывались и не регистрировались и не являетесь покупателем нашего магазина, пошлите пожалуйста e-mail администрации нашего магазина, чтобы Ваш адрес был удален ' . STORE_OWNER_EMAIL_ADDRESS . '.' . "\n");
+define('ENTRY_PAYMENT_UNALLOWED','Недопустимый модуль оплаты:');
+define('ENTRY_SHIPPING_UNALLOWED','Недопустимый модуль доставки:');
 ?>

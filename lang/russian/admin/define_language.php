@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: define_language.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: define_language.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,9 +15,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Define Language');
+define('HEADING_TITLE', 'языковые файлы');
 
-define('TEXT_FILE_DOES_NOT_EXIST', 'File does not exist.');
+define('TEXT_FILE_DOES_NOT_EXIST', '‘айл отсутствует.');
 
-define('ERROR_FILE_NOT_WRITEABLE', 'Error: I can not write to this file. Please set the right user permissions on: %s');
+define('ERROR_FILE_NOT_WRITEABLE', 'ќшибка: неверные права доступа к файлу, измените права доступа к %s');
 ?>

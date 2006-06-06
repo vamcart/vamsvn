@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: stats_customers.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: stats_customers.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,9 +15,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Best Customer Orders-Total');
+define('HEADING_TITLE', 'Заказы лучших клиентов');
 
-define('TABLE_HEADING_NUMBER', 'No.');
-define('TABLE_HEADING_CUSTOMERS', 'Customers');
-define('TABLE_HEADING_TOTAL_PURCHASED', 'Total Purchased');
+define('TABLE_HEADING_NUMBER', 'Номер');
+define('TABLE_HEADING_CUSTOMERS', 'Клиенты');
+define('TABLE_HEADING_TOTAL_PURCHASED', 'Всего заказано');
 ?>

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: banner_statistics.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: banner_statistics.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,25 +15,25 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Banner Statistics');
+define('HEADING_TITLE', 'Статистика Баннера');
 
-define('TABLE_HEADING_SOURCE', 'Source');
-define('TABLE_HEADING_VIEWS', 'Views');
-define('TABLE_HEADING_CLICKS', 'Clicks');
+define('TABLE_HEADING_SOURCE', 'Источник');
+define('TABLE_HEADING_VIEWS', 'Показы');
+define('TABLE_HEADING_CLICKS', 'Клики');
 
-define('TEXT_BANNERS_DATA', 'D<br />a<br />t<br />a');
-define('TEXT_BANNERS_DAILY_STATISTICS', '%s Daily Statistics For %s %s');
-define('TEXT_BANNERS_MONTHLY_STATISTICS', '%s Monthly Statistics For %s');
-define('TEXT_BANNERS_YEARLY_STATISTICS', '%s Yearly Statistics');
+define('TEXT_BANNERS_DATA', 'Д<br>а<br>т<br>а');
+define('TEXT_BANNERS_DAILY_STATISTICS', '%s Ежедневная статистика за %s %s');
+define('TEXT_BANNERS_MONTHLY_STATISTICS', '%s Ежемесячная статистика за %s');
+define('TEXT_BANNERS_YEARLY_STATISTICS', '%s Статистика за год');
 
-define('STATISTICS_TYPE_DAILY', 'Daily');
-define('STATISTICS_TYPE_MONTHLY', 'Monthly');
-define('STATISTICS_TYPE_YEARLY', 'Yearly');
+define('STATISTICS_TYPE_DAILY', 'За день');
+define('STATISTICS_TYPE_MONTHLY', 'За месяц');
+define('STATISTICS_TYPE_YEARLY', 'За год');
 
-define('TITLE_TYPE', 'Type:');
-define('TITLE_YEAR', 'Year:');
-define('TITLE_MONTH', 'Month:');
+define('TITLE_TYPE', 'Тип:');
+define('TITLE_YEAR', 'Год:');
+define('TITLE_MONTH', 'Месяц:');
 
-define('ERROR_GRAPHS_DIRECTORY_DOES_NOT_EXIST', 'Error: Graphs directory does not exist. Please create a \'graphs\' directory inside \'images\'.');
-define('ERROR_GRAPHS_DIRECTORY_NOT_WRITEABLE', 'Error: Graphs directory is not writeable.');
+define('ERROR_GRAPHS_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория для баннеров отсутствует. Создайте поддиректорию \'graphs\' в директории \'images\'.');
+define('ERROR_GRAPHS_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория имеет неверные права доступа.');
 ?>

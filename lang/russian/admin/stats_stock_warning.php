@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: stats_stock_warning.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: stats_stock_warning.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,5 +15,5 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Stock');
+define('HEADING_TITLE', 'Склад');
 ?>

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: cvs_backend.php
+   $Id: cvs_backend.php 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -11,23 +11,23 @@
    --------------------------------------------------------------*/
 
 
-   define('TITLE','CSV Backend');
+   define('TITLE','CSV');
 
-   define('IMPORT','Import');
-   define('EXPORT','Export');
-   define('UPLOAD','Upload File');
-   define('SELECT','Select Import file (/import Folder)');
-   define('SAVE','Save file in /export Folder');
-   define('LOAD','Send file to browser');
-   define('CSV_TEXTSIGN_TITLE','Textsign');
-   define('CSV_TEXTSIGN_DESC','eg. "');
-   define('CSV_SEPERATOR_TITLE','Seperator');
-   define('CSV_SEPERATOR_DESC','eg. ;');
-   define('COMPRESS_EXPORT_TITLE','Compression');
-   define('COMPRESS_EXPORT_DESC','Compress export file');
-   define('CSV_SETUP','Config');
+   define('IMPORT','Импорт');
+   define('EXPORT','Экспорт');
+   define('UPLOAD','Загрузить файл');
+   define('SELECT','Выберите файл для импорта (папка /import)');
+   define('SAVE','Сохранить файл в папку /export');
+   define('LOAD','Отправить файл в браузер');
+   define('CSV_TEXTSIGN_TITLE','Поля заключены в');
+   define('CSV_TEXTSIGN_DESC','Текстовое поле в CSV-файле. Обычно двойная (например ") или одинарная ковычка.');
+   define('CSV_SEPERATOR_TITLE','Разделитель полей');
+   define('CSV_SEPERATOR_DESC','символ используемый для определения окончания текст. поля, например ;');
+   define('COMPRESS_EXPORT_TITLE','Сжатие');
+   define('COMPRESS_EXPORT_DESC','Сжать экспортируемый файл');
+   define('CSV_SETUP','Настройка');
    define('TEXT_IMPORT','');
-   define('TEXT_PRODUCTS','Products');
-   define('TEXT_EXPORT','Create exportfile and save in /export Folder');
+   define('TEXT_PRODUCTS','Товары');
+   define('TEXT_EXPORT','Создать файл и сохранить его в папке /export');
 
 ?>

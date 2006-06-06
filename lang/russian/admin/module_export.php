@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: module_export.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: module_export.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,16 +15,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE_MODULES_EXPORt', 'XT-Modules');
+define('HEADING_TITLE_MODULES_EXPORT', 'XT-Модули');
 
 
-define('TABLE_HEADING_MODULES', 'Modules');
-define('TABLE_HEADING_SORT_ORDER', 'Sort Order');
-define('TABLE_HEADING_STATUS', 'Status');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_MODULES', 'Модули');
+define('TABLE_HEADING_SORT_ORDER', 'Порядок сортировки');
+define('TABLE_HEADING_STATUS', 'Статус');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_MODULE_DIRECTORY', 'Module Directory:');
+define('TEXT_MODULE_DIRECTORY', 'Директория модуля:');
 
-define('TABLE_HEADING_FILENAME','Modulname (for internal usage)');
-define('ERROR_EXPORT_FOLDER_NOT_WRITEABLE','export/ Folder not writeable!');
+define('TABLE_HEADING_FILENAME','Название модуля (для внутреннего пользования)');
+define('ERROR_EXPORT_FOLDER_NOT_WRITEABLE','Запись в папку export/ запрещена, исправьте!');
 ?>

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: geo_zones.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: geo_zones.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,39 +15,39 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Tax Zones');
+define('HEADING_TITLE', 'Географические зоны');
 
-define('TABLE_HEADING_COUNTRY', 'Country');
-define('TABLE_HEADING_COUNTRY_ZONE', 'Zone');
-define('TABLE_HEADING_TAX_ZONES', 'Tax Zones');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_COUNTRY', 'Страна');
+define('TABLE_HEADING_COUNTRY_ZONE', 'Зона');
+define('TABLE_HEADING_TAX_ZONES', 'Налоговая зона');
+define('TABLE_HEADING_ACTION', 'Действие'); 
 
-define('TEXT_INFO_HEADING_NEW_ZONE', 'New Zone');
-define('TEXT_INFO_NEW_ZONE_INTRO', 'Please enter the new zone information');
+define('TEXT_INFO_HEADING_NEW_ZONE', 'Новая зона');
+define('TEXT_INFO_NEW_ZONE_INTRO', 'Введите информацию о новой зоне');
 
-define('TEXT_INFO_HEADING_EDIT_ZONE', 'Edit Zone');
-define('TEXT_INFO_EDIT_ZONE_INTRO', 'Please make any necessary changes');
+define('TEXT_INFO_HEADING_EDIT_ZONE', 'Редактировать');
+define('TEXT_INFO_EDIT_ZONE_INTRO', 'Сделайте необходимые изменения');
 
-define('TEXT_INFO_HEADING_DELETE_ZONE', 'Delete Zone');
-define('TEXT_INFO_DELETE_ZONE_INTRO', 'Are you sure you want to delete this zone?');
+define('TEXT_INFO_HEADING_DELETE_ZONE', 'Удалить зону');
+define('TEXT_INFO_DELETE_ZONE_INTRO', 'Вы действительно хотите удалить эту зону?');
 
-define('TEXT_INFO_HEADING_NEW_SUB_ZONE', 'New Sub Zone');
-define('TEXT_INFO_NEW_SUB_ZONE_INTRO', 'Please enter the new sub zone information');
+define('TEXT_INFO_HEADING_NEW_SUB_ZONE', 'Новая суб зона');
+define('TEXT_INFO_NEW_SUB_ZONE_INTRO', 'Введите, пожалуйста, информацию по новой суб зоне');
 
-define('TEXT_INFO_HEADING_EDIT_SUB_ZONE', 'Edit Sub Zone');
-define('TEXT_INFO_EDIT_SUB_ZONE_INTRO', 'Please make any necessary changes');
+define('TEXT_INFO_HEADING_EDIT_SUB_ZONE', 'Редактировать суб зону');
+define('TEXT_INFO_EDIT_SUB_ZONE_INTRO', 'Сделайте необходимые изменения');
 
-define('TEXT_INFO_HEADING_DELETE_SUB_ZONE', 'Delete Sub Zone');
-define('TEXT_INFO_DELETE_SUB_ZONE_INTRO', 'Are you sure you want to delete this sub zone?');
+define('TEXT_INFO_HEADING_DELETE_SUB_ZONE', 'Удалить суб зону');
+define('TEXT_INFO_DELETE_SUB_ZONE_INTRO', 'Вы действительно хотите удалить эту суб зону?');
 
-define('TEXT_INFO_DATE_ADDED', 'Date Added:');
-define('TEXT_INFO_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_INFO_ZONE_NAME', 'Zone Name:');
-define('TEXT_INFO_NUMBER_ZONES', 'Number of Zones:');
-define('TEXT_INFO_ZONE_DESCRIPTION', 'Description:');
-define('TEXT_INFO_COUNTRY', 'Country:');
-define('TEXT_INFO_COUNTRY_ZONE', 'Zone:');
-define('TYPE_BELOW', 'All Zones');
-define('PLEASE_SELECT', 'All Zones');
-define('TEXT_ALL_COUNTRIES', 'All Countries');
+define('TEXT_INFO_DATE_ADDED', 'Дата добавления:');
+define('TEXT_INFO_LAST_MODIFIED', 'Последние изменения:'); 
+define('TEXT_INFO_ZONE_NAME', 'Название зоны:');
+define('TEXT_INFO_NUMBER_ZONES', 'Количество зон:');
+define('TEXT_INFO_ZONE_DESCRIPTION', 'Описание:');
+define('TEXT_INFO_COUNTRY', 'Страна:');
+define('TEXT_INFO_COUNTRY_ZONE', 'Регион:');
+define('TYPE_BELOW', 'Все зоны');
+define('PLEASE_SELECT', 'Все зоны');
+define('TEXT_ALL_COUNTRIES', 'Все страны');    
 ?>

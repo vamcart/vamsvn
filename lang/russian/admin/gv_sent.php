@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: gv_sent.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: gv_sent.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -25,21 +25,21 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Gift Voucher\'s Sent');
+define('HEADING_TITLE', 'Отправленные сертификаты');
 
-define('TABLE_HEADING_SENDERS_NAME', 'Senders Name');
-define('TABLE_HEADING_VOUCHER_VALUE', 'Voucher Value');
-define('TABLE_HEADING_VOUCHER_CODE', 'Voucher Code');
-define('TABLE_HEADING_DATE_SENT', 'Date Sent');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_SENDERS_NAME', 'Отправитель');
+define('TABLE_HEADING_VOUCHER_VALUE', 'Сумма сертификата');
+define('TABLE_HEADING_VOUCHER_CODE', 'Код сертификата');
+define('TABLE_HEADING_DATE_SENT', 'Дата отправки');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_SENDERS_ID', 'Senders ID:');
-define('TEXT_INFO_AMOUNT_SENT', 'Amount Sent:');
-define('TEXT_INFO_DATE_SENT', 'Date Sent:');
-define('TEXT_INFO_VOUCHER_CODE', 'Voucher Code:');
-define('TEXT_INFO_EMAIL_ADDRESS', 'eMail Address:');
-define('TEXT_INFO_DATE_REDEEMED', 'Date Redeemed:');
-define('TEXT_INFO_IP_ADDRESS', 'IP Address:');
-define('TEXT_INFO_CUSTOMERS_ID', 'Customer Id:');
-define('TEXT_INFO_NOT_REDEEMED', 'Not Redeemed');
+define('TEXT_INFO_SENDERS_ID', 'Код отправителя:');
+define('TEXT_INFO_AMOUNT_SENT', 'Сумма сертификата:');
+define('TEXT_INFO_DATE_SENT', 'Дата отправки:');
+define('TEXT_INFO_VOUCHER_CODE', 'Код сертификата:');
+define('TEXT_INFO_EMAIL_ADDRESS', 'Email адрес:');
+define('TEXT_INFO_DATE_REDEEMED', 'Дата активации:');
+define('TEXT_INFO_IP_ADDRESS', 'IP адрес:');
+define('TEXT_INFO_CUSTOMERS_ID', 'Код покупателя:');
+define('TEXT_INFO_NOT_REDEEMED', 'Неактивирован');
 ?>

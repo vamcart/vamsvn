@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: new_attributes.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: new_attributes.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -14,18 +14,18 @@
    --------------------------------------------------------------*/
 
 
-   define('SORT_ORDER','Sort order');
-   define('ATTR_MODEL','Attribute Model');
-   define('ATTR_STOCK','Stock');
-   define('ATTR_WEIGHT','Value Weight');
-   define('ATTR_PREFIXWEIGHT','Weight Prefix');
-   define('ATTR_PRICE','Value Price');
-   define('ATTR_PREFIXPRICE','Price Prefix');
-   define('DL_COUNT','Count:');
-   define('DL_EXPIRE','Expire:');
-   define('TITLE_EDIT','Edit Attributes ');
-   define('TITLE_UPDATED','Product Attributes Updated.');
-   define('SELECT_PRODUCT','Please select a product to edit:');
-   define('SELECT_COPY','Please select a product to copy attributes from:');
+   define('SORT_ORDER','Порядок сортировки');
+   define('ATTR_MODEL','Атрибут модели');
+   define('ATTR_STOCK','Склад');
+   define('ATTR_WEIGHT','Вес');
+   define('ATTR_PREFIXWEIGHT','Префикс веса');
+   define('ATTR_PRICE','Цена значение');
+   define('ATTR_PREFIXPRICE','Префикс цены');
+   define('DL_COUNT','Считать:');
+   define('DL_EXPIRE','Истекает:');
+   define('TITLE_EDIT','Редактировать атрибуты ');
+   define('TITLE_UPDATED','Атрибуты товары обновлены.');
+   define('SELECT_PRODUCT','Пожалуйста, выберите товар для редактирования:');
+   define('SELECT_COPY','Пожалуйста, выберите товар, с которого будем копировать атрибуты:');
 
 ?>

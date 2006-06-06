@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: mail.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: mail.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,16 +15,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Send eMail To Customers');
+define('HEADING_TITLE', 'Отправить Email Клиентам');
 
-define('TEXT_CUSTOMER', 'Customer:');
-define('TEXT_SUBJECT', 'Subject:');
-define('TEXT_FROM', 'From:');
-define('TEXT_MESSAGE', 'Message:');
-define('TEXT_SELECT_CUSTOMER', 'Select Customer');
-define('TEXT_ALL_CUSTOMERS', 'All Customers');
-define('TEXT_NEWSLETTER_CUSTOMERS', 'To All Newsletter Subscribers');
+define('TEXT_CUSTOMER', 'Клиент:');
+define('TEXT_SUBJECT', 'Тема:');
+define('TEXT_FROM', 'От:');
+define('TEXT_MESSAGE', 'Сообщение:');
+define('TEXT_SELECT_CUSTOMER', 'Выберите Клиента');
+define('TEXT_ALL_CUSTOMERS', 'Все Клиенты');
+define('TEXT_NEWSLETTER_CUSTOMERS', 'Для Всех Подписчиков Новостей');
 
-define('NOTICE_EMAIL_SENT_TO', 'Notice: eMail sent to: %s');
-define('ERROR_NO_CUSTOMER_SELECTED', 'Error: No customer has been selected.');
+define('NOTICE_EMAIL_SENT_TO', 'Уведомление: письмо успешно отправлено по адресу: %s');
+define('ERROR_NO_CUSTOMER_SELECTED', 'Ошибка: Вы должны выбрать клиента, которому отправляете письмо!');
 ?>

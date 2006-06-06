@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: modules.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: modules.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,16 +15,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE_MODULES_PAYMENT', 'Payment Modules');
-define('HEADING_TITLE_MODULES_SHIPPING', 'Shipping Modules');
-define('HEADING_TITLE_MODULES_ORDER_TOTAL', 'Order Total Modules');
+define('HEADING_TITLE_MODULES_PAYMENT', 'Модули оплаты');
+define('HEADING_TITLE_MODULES_SHIPPING', 'Модули доставки');
+define('HEADING_TITLE_MODULES_ORDER_TOTAL', 'Модули итого');
 
-define('TABLE_HEADING_MODULES', 'Modules');
-define('TABLE_HEADING_SORT_ORDER', 'Sort Order');
-define('TABLE_HEADING_STATUS', 'Status');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_MODULES', 'Модули');
+define('TABLE_HEADING_SORT_ORDER', 'Порядок сортировки');
+define('TABLE_HEADING_STATUS', 'Статус');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_MODULE_DIRECTORY', 'Module Directory:');
+define('TEXT_MODULE_DIRECTORY', 'Директория модулей:');
 
-define('TABLE_HEADING_FILENAME','Modulname (for internal usage)');
+define('TABLE_HEADING_FILENAME','Названия модуля (для системного использования)');
 ?>

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders_edit.php,v 1.0 
+   $Id: orders_edit.php,v 1.0 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,57 +15,57 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('TABLE_HEADING', 'Edit Order');
+define('TABLE_HEADING', 'Редактировать заказ');
 
-define('TEXT_EDIT_ADDRESS', 'Edit Addressdata');
-define('TEXT_EDIT_PRODUCTS', 'Edit Articles');
-define('TEXT_EDIT_SHIPPING', 'Edit Shippinginformations');
-define('TEXT_EDIT_GIFT', 'Insert Gift vouchers or Discount');
-define('TEXT_EDIT_ADDRESS_SUCCESS', 'Address saved.');
+define('TEXT_EDIT_ADDRESS', 'Редактировать адрес');
+define('TEXT_EDIT_PRODUCTS', 'Редактировать товары');
+define('TEXT_EDIT_ATTRIBUTES', 'Редактировать атрибуты');
+define('TEXT_EDIT_SHIPPING', 'Редактировать доставку');
+define('TEXT_EDIT_ADDRESS_SUCCESS', 'Адрес сохранен');
 
-define('TEXT_PRODUCT_ID', 'pID:');
-define('TEXT_PRODUCTS_MODEL', 'Art.Nr:');
-define('TEXT_QUANTITY', 'Qty:');
-define('TEXT_PRODUCT', 'Article:');
-define('TEXT_TAX', 'Tax:');
-define('TEXT_PRICE', 'Price:');
-define('TEXT_FINAL', 'Total:');
-define('TEXT_CUSTOMER_GROUP', 'Customer Group:');
+define('TEXT_PRODUCT_ID', 'ID код:');
+define('TEXT_PRODUCTS_MODEL', 'Код товара:');
+define('TEXT_QUANTITY', 'Количество:');
+define('TEXT_PRODUCT', 'Товар:');
+define('TEXT_TAX', 'Налог:');
+define('TEXT_PRICE', 'Цена:');
+define('TEXT_FINAL', 'Итого:');
+define('TEXT_CUSTOMER_GROUP', 'Группа покупателя:');
 
-define('TEXT_PRODUCT_SEARCH', 'Search Article:');
+define('TEXT_PRODUCT_SEARCH', 'Искать товар:');
 
-define('TEXT_PRODUCT_OPTION', 'Attributes:');
-define('TEXT_PRODUCT_OPTION_VALUE', 'Optionvalue:');
-define('TEXT_PRICE', 'Price:');
-define('TEXT_PRICE_PREFIX', 'Price Prefix:');
-define('TEXT_SAVE_ORDER', 'Finish and recalculate');
+define('TEXT_PRODUCT_OPTION', 'Аттрибуты:');
+define('TEXT_PRODUCT_OPTION_VALUE', 'Опция:');
+define('TEXT_PRICE', 'Цена:');
+define('TEXT_PRICE_PREFIX', 'Префикс цены:');
+define('TEXT_SAVE_ORDER', 'Закончить и пересчитать');
 
-define('TEXT_INVOICE_ADDRESS', 'Customersaddress');
-define('TEXT_SHIPPING_ADDRESS', 'Shippingaddress');
-define('TEXT_BILLING_ADDRESS', 'Paymentaddress');
+define('TEXT_INVOICE_ADDRESS', 'Клиент');
+define('TEXT_SHIPPING_ADDRESS', 'Адрес доставки');
+define('TEXT_BILLING_ADDRESS', 'Адрес плательщика');
 
-define('TEXT_INS', 'Add:');
-define('TEXT_SHIPPING', 'Shippingcost');
-define('TEXT_COD_COSTS', 'Cash on delivery costs');
-define('TEXT_VALUE', 'Price');
-define('TEXT_DESC', 'insert');
+define('TEXT_INS', 'Добавить:');
+define('TEXT_SHIPPING', 'Стоимость доставки');
+define('TEXT_COD_COSTS', 'Наличные в издержках доставки');
+define('TEXT_VALUE', 'Цена');
+define('TEXT_DESC', 'вставить');
 
-define('TEXT_COMPANY', 'Company:');
-define('TEXT_NAME', 'Name:');
-define('TEXT_STREET', 'Street');
-define('TEXT_ZIP', 'Postcode:');
-define('TEXT_CITY', 'City:');
-define('TEXT_COUNTRY', 'Country:');
+define('TEXT_COMPANY', 'Компания:');
+define('TEXT_NAME', 'Имя:');
+define('TEXT_STREET', 'Адрес');
+define('TEXT_ZIP', 'Почтовый индекс:');
+define('TEXT_CITY', 'Город:');
+define('TEXT_COUNTRY', 'Страна:');
 
 
-define('TEXT_PAYMENT', 'Payment:');
-define('TEXT_SHIPPING', 'Shipping:');
-define('TEXT_LANGUAGE', 'Language:');
-define('TEXT_CURRENCIES', 'Currency:');
-define('TEXT_ORDER_TOTAL', 'Total:');
-define('TEXT_SAVE', 'Save');
+define('TEXT_PAYMENT', 'Оплата:');
+define('TEXT_SHIPPING', 'Доставка:');
+define('TEXT_LANGUAGE', 'Язык:');
+define('TEXT_CURRENCIES', 'Валюта:');
+define('TEXT_ORDER_TOTAL', 'Всего:');
+define('TEXT_SAVE', 'Сохранить');
 
-define('TEXT_ACTUAL', 'actual:');
-define('TEXT_NEW', 'new:');
+define('TEXT_ACTUAL', 'фактический:');
+define('TEXT_NEW', 'новый:');
 
 ?>
