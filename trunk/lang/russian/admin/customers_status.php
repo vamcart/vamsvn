@@ -17,8 +17,8 @@
 
 define('HEADING_TITLE', 'Группы клиентов');
 
-define('ENTRY_CUSTOMERS_FSK18','Заблокировать функцию покупки для продуктов FSK18?');
-define('TEXT_INFO_CUSTOMERS_FSK18_DISPLAY_INTRO','Показывать FSK18 товары');
+define('ENTRY_CUSTOMERS_FSK18','Блокировать покупку товаров FSK18?');
+define('ENTRY_CUSTOMERS_FSK18_DISPLAY','Блокировать покупку товаров FSK18?');
 define('ENTRY_CUSTOMERS_STATUS_ADD_TAX','Показывать налог на странице подтверждения заказа');
 define('ENTRY_CUSTOMERS_STATUS_MIN_ORDER','Минимальная сумма заказа:');
 define('ENTRY_CUSTOMERS_STATUS_MAX_ORDER','Максимальная сумма заказа:');
@@ -33,6 +33,7 @@ define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE','Цена');
 define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX','Цена включая налоги');
 define('ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS','Разрешить этой группе клиентов писать отзывы?');
 define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Разрешить этой группе клиентов читать отзывы?');
+define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Разрешить этой группе клиентов читать отзывы?');
 define('ENTRY_GRADUATED_PRICES','Цены от количества');
 define('ENTRY_NO','Нет');
 define('ENTRY_OT_XMEMBER', 'Показывать скидку клиента на странице подтверждения товара ? :');
