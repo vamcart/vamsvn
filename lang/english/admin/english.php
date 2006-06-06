@@ -386,4 +386,5 @@ define('ERROR_GIF_UPLOAD','Missing GDlib Gif-Support, processing of Gif image fa
 
 define('TEXT_REFERER','Referer: ');
 
+define('IMAGE_ICON_INFO','');
 ?>
