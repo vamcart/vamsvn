@@ -29,7 +29,9 @@
       $local_install_path=str_replace('install_finished.php','',$local_install_path);
       define('DIR_FS_CATALOG', DIR_FS_DOCUMENT_ROOT . $local_install_path);
   }
-  define('DIR_FS_INC', DIR_FS_CATALOG.'inc/');
+  if (!defined('DIR_FS_INC')) {
+    define('DIR_FS_INC', DIR_FS_CATALOG.'inc/');
+  }
 
 // include
   //require('../includes/functions/validations.php');
