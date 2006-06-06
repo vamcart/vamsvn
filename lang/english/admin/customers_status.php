@@ -33,6 +33,7 @@ define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE','Price');
 define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX','Prices incl. Tax');
 define('ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS','Customer group is allowed to write reviews?');
 define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Customer group is allowed to read reviews?');
+define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Customer group is allowed to read reviews?');
 define('ENTRY_GRADUATED_PRICES','Graduated Prices');
 define('ENTRY_NO','No');
 define('ENTRY_OT_XMEMBER', 'Customer Discount on order total ? :');
