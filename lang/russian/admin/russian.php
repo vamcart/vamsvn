@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: english.php 1231 2006-04-29 02:40:57Z VaM $
+   $Id: russian.php 1231 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
