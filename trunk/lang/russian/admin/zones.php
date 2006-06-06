@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: zones.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: zones.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,20 +15,20 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Zones');
+define('HEADING_TITLE', 'Список регионов');
 
-define('TABLE_HEADING_COUNTRY_NAME', 'Country');
-define('TABLE_HEADING_ZONE_NAME', 'Zone');
-define('TABLE_HEADING_ZONE_CODE', 'Code');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_COUNTRY_NAME', 'Страна');
+define('TABLE_HEADING_ZONE_NAME', 'Регион');
+define('TABLE_HEADING_ZONE_CODE', 'Код');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_INFO_ZONES_NAME', 'Zones Name:');
-define('TEXT_INFO_ZONES_CODE', 'Zones Code:');
-define('TEXT_INFO_COUNTRY_NAME', 'Country:');
-define('TEXT_INFO_INSERT_INTRO', 'Please enter the new zone with its related data');
-define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete this zone?');
-define('TEXT_INFO_HEADING_NEW_ZONE', 'New Zone');
-define('TEXT_INFO_HEADING_EDIT_ZONE', 'Edit Zone');
-define('TEXT_INFO_HEADING_DELETE_ZONE', 'Delete Zone');
+define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_INFO_ZONES_NAME', 'Название Региона:');
+define('TEXT_INFO_ZONES_CODE', 'Код Региона:');
+define('TEXT_INFO_COUNTRY_NAME', 'Страна:');
+define('TEXT_INFO_INSERT_INTRO', 'Пожалуйста, внесите требуемую информацию для нового региона');
+define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить регион?');
+define('TEXT_INFO_HEADING_NEW_ZONE', 'Новый Регион');
+define('TEXT_INFO_HEADING_EDIT_ZONE', 'Изменить Регион');
+define('TEXT_INFO_HEADING_DELETE_ZONE', 'Удалить Регион');
 ?>

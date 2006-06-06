@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: manufacturers.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: manufacturers.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,33 +15,33 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Manufacturers');
+define('HEADING_TITLE', 'Производители');
 
-define('TABLE_HEADING_MANUFACTURERS', 'Manufacturers');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_MANUFACTURERS', 'Производители');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_HEADING_NEW_MANUFACTURER', 'New Manufacturer');
-define('TEXT_HEADING_EDIT_MANUFACTURER', 'Edit Manufacturer');
-define('TEXT_HEADING_DELETE_MANUFACTURER', 'Delete Manufacturer');
+define('TEXT_HEADING_NEW_MANUFACTURER', 'Новый Производитель');
+define('TEXT_HEADING_EDIT_MANUFACTURER', 'Изменить Производителя');
+define('TEXT_HEADING_DELETE_MANUFACTURER', 'Удалить Производителя');
 
-define('TEXT_MANUFACTURERS', 'Manufacturers:');
-define('TEXT_DATE_ADDED', 'Date Added:');
-define('TEXT_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_PRODUCTS', 'Products:');
-define('TEXT_IMAGE_NONEXISTENT', 'IMAGE DOES NOT EXIST');
+define('TEXT_MANUFACTURERS', 'Производители:');
+define('TEXT_DATE_ADDED', 'Дата Добавления:');
+define('TEXT_LAST_MODIFIED', 'Последнее Изменение:');
+define('TEXT_PRODUCTS', 'Товары:');
+define('TEXT_IMAGE_NONEXISTENT', 'КАРТИНКА ОТСУТСТВУЕТ');
 
-define('TEXT_NEW_INTRO', 'Please fill out the following information for the new manufacturer');
-define('TEXT_EDIT_INTRO', 'Please make any necessary changes');
+define('TEXT_NEW_INTRO', 'Пожалуйста, внесите требуемую информацию для нового производителя');
+define('TEXT_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
 
-define('TEXT_MANUFACTURERS_NAME', 'Manufacturers Name:');
-define('TEXT_MANUFACTURERS_IMAGE', 'Manufacturers Image:');
-define('TEXT_MANUFACTURERS_URL', 'Manufacturers URL:');
+define('TEXT_MANUFACTURERS_NAME', 'Название Производителя:');
+define('TEXT_MANUFACTURERS_IMAGE', 'Картинка Производителя:');
+define('TEXT_MANUFACTURERS_URL', 'URL Производителя (с http://):');
 
-define('TEXT_DELETE_INTRO', 'Are you sure you want to delete this manufacturer?');
-define('TEXT_DELETE_IMAGE', 'Delete manufacturers image?');
-define('TEXT_DELETE_PRODUCTS', 'Delete products from this manufacturer? (including product reviews, products on special, upcoming products)');
-define('TEXT_DELETE_WARNING_PRODUCTS', '<b>WARNING:</b> There are %s products still linked to this manufacturer!');
+define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить этого производителя?'); 
+define('TEXT_DELETE_IMAGE', 'Удалить фото производителя?');
+define('TEXT_DELETE_PRODUCTS', 'Удалить товары этого производителя? (включая отзывы, специальные предложения и предстоящие поступления)');
+define('TEXT_DELETE_WARNING_PRODUCTS', '<b>ПРЕДУПРЕЖДЕНИЕ:</b> %s наименований товара связаны с данным производителем!');  
 
-define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Error: I can not write to this directory. Please set the right user permissions on: %s');
-define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Error: Directory does not exist: %s');
+define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: В эту директорию невозможно записать. Смените права доступа для: %s');
+define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория не существует: %s');
 ?>

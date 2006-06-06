@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: server_info.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: server_info.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,16 +15,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Server Information');
+define('HEADING_TITLE', 'Информация о Сервере');
 
-define('TITLE_SERVER_HOST', 'Server Host:');
-define('TITLE_SERVER_OS', 'Server OS:');
-define('TITLE_SERVER_DATE', 'Server Date:');
-define('TITLE_SERVER_UP_TIME', 'Server Up Time:');
-define('TITLE_HTTP_SERVER', 'HTTP Server:');
-define('TITLE_PHP_VERSION', 'PHP Version:');
+define('TITLE_SERVER_HOST', 'Хост:');
+define('TITLE_SERVER_OS', 'Операционная Система:');
+define('TITLE_SERVER_DATE', 'Дата на Сервере:');
+define('TITLE_SERVER_UP_TIME', 'Время на сервере:');
+define('TITLE_HTTP_SERVER', 'HTTP Сервер:');
+define('TITLE_PHP_VERSION', 'Версия PHP:');
 define('TITLE_ZEND_VERSION', 'Zend:');
-define('TITLE_DATABASE_HOST', 'Database Host:');
-define('TITLE_DATABASE', 'Database:');
-define('TITLE_DATABASE_DATE', 'Database Date:');
+define('TITLE_DATABASE_HOST', 'Хост Базы Данных:');
+define('TITLE_DATABASE', 'БД:');
+define('TITLE_DATABASE_DATE', 'Дата БД:');
 ?>

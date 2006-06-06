@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: stats_products_viewed.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: stats_products_viewed.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,9 +15,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Best Viewed Products');
+define('HEADING_TITLE', 'Самые просматриваемые товары');
 
-define('TABLE_HEADING_NUMBER', 'No.');
-define('TABLE_HEADING_PRODUCTS', 'Products');
-define('TABLE_HEADING_VIEWED', 'Viewed');
+define('TABLE_HEADING_NUMBER', 'Номер');
+define('TABLE_HEADING_PRODUCTS', 'Товары');
+define('TABLE_HEADING_VIEWED', 'Просмотрено');
 ?>

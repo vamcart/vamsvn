@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: gv_queue.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: gv_queue.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -26,22 +26,22 @@
    ---------------------------------------------------------------------------------------*/
 
 
-define('HEADING_TITLE', 'Gift Voucher Release Queue');
+define('HEADING_TITLE', 'Активация сертификатов');
 
-define('TABLE_HEADING_CUSTOMERS', 'Customers');
-define('TABLE_HEADING_ORDERS_ID', 'Order-No.');
-define('TABLE_HEADING_VOUCHER_VALUE', 'Voucher Value');
-define('TABLE_HEADING_DATE_PURCHASED', 'Date Purchased');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_CUSTOMERS', 'Покупатель');
+define('TABLE_HEADING_ORDERS_ID', 'Номер заказа');
+define('TABLE_HEADING_VOUCHER_VALUE', 'Сумма сертификата');
+define('TABLE_HEADING_DATE_PURCHASED', 'Дата покупки');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_REDEEM_COUPON_MESSAGE_HEADER', 'You recently purchased a Gift Voucher from our online store.' . "\n"
-                                          . 'For security reasons this was not made immediately available to you.' . "\n"
-                                          . 'However this amount has now been released. You can now visit our store' . "\n"
-                                          . 'and send the value via eMail to someone else' . "\n\n");
+define('TEXT_REDEEM_COUPON_MESSAGE_HEADER', 'Вы покупали сертификат в нашем интернет-магазине.' . "\n"
+                                          . 'В целях безопасноти сертификат должен быть проверен администратором, прежде чем его можно будет использовать для совершения покупок в нашем интернет-магазине.' . "\n"
+                                          . 'Рады сообщить, что Ваш сертификат проверен администратором и активизирован. Теперь Вы можете' . "\n"
+                                          . 'с помощью своего сертификата совершать покупки в нашем интернет-магазине, либо можете подарить свой сертификат кому-либо ещё.' . "\n\n");
 
-define('TEXT_REDEEM_COUPON_MESSAGE_AMOUNT', 'The Gift Voucher(s) you purchased are worth %s' . "\n\n");
+define('TEXT_REDEEM_COUPON_MESSAGE_AMOUNT', 'Сертификат на сумму %s' . "\n\n");
 
 define('TEXT_REDEEM_COUPON_MESSAGE_BODY', '');
 define('TEXT_REDEEM_COUPON_MESSAGE_FOOTER', '');
-define('TEXT_REDEEM_COUPON_SUBJECT', 'Gift Voucher Purchase');
+define('TEXT_REDEEM_COUPON_SUBJECT', 'Ваш сертификат проверен и активизирован!');
 ?>

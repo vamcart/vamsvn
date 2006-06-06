@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: gv_mail.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: gv_mail.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -25,33 +25,33 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Send Gift Voucher To Customers');
+define('HEADING_TITLE', 'Отправить подарочный сертификат клиентам');
 
-define('TEXT_CUSTOMER', 'Customer:');
-define('TEXT_SUBJECT', 'Subject:');
-define('TEXT_FROM', 'From:');
-define('TEXT_TO', 'eMail to:');
-define('TEXT_AMOUNT', 'Amount');
-define('TEXT_MESSAGE', 'Message:');
-define('TEXT_SINGLE_EMAIL', '<span class="smallText">Use this for sending single eMails, otherwise use dropdown above</span>');
-define('TEXT_SELECT_CUSTOMER', 'Select Customer');
-define('TEXT_ALL_CUSTOMERS', 'All Customers');
-define('TEXT_NEWSLETTER_CUSTOMERS', 'To All Newsletter Subscribers');
+define('TEXT_CUSTOMER', 'Клиент:');
+define('TEXT_SUBJECT', 'Тема:');
+define('TEXT_FROM', 'От:');
+define('TEXT_TO', 'Кому:');
+define('TEXT_AMOUNT', 'Сумма сертификата');
+define('TEXT_MESSAGE', 'Сообщение:');
+define('TEXT_SINGLE_EMAIL', '<span class="smallText">Используйте данное поле, чтобы отправить сертификат и на другие email адреса, которых нет в списке выше.</span>');
+define('TEXT_SELECT_CUSTOMER', 'Выберите клиента');
+define('TEXT_ALL_CUSTOMERS', 'Все клиенты');
+define('TEXT_NEWSLETTER_CUSTOMERS', 'Всем подписчикам рассылки магазина');
 
-define('NOTICE_EMAIL_SENT_TO', 'Notice: eMail sent to: %s');
-define('ERROR_NO_CUSTOMER_SELECTED', 'Error: No customer has been selected.');
-define('ERROR_NO_AMOUNT_SELECTED', 'Error: No amount has been selected.');
+define('NOTICE_EMAIL_SENT_TO', 'Уведомление: Email отправлен: %s');
+define('ERROR_NO_CUSTOMER_SELECTED', 'Ошибка: Вы не выбрали клиента.');
+define('ERROR_NO_AMOUNT_SELECTED', 'Ошибка: Вы не указали сумму сертификата.');
 
-define('TEXT_GV_WORTH', 'The Gift Voucher is worth ');
-define('TEXT_TO_REDEEM', 'To redeem this Gift Voucher, please click on the link below. Please also write down the redemption code');
-define('TEXT_WHICH_IS', ' which is ');
-define('TEXT_IN_CASE', ' in case you have any problems.');
-define('TEXT_OR_VISIT', 'or visit ');
-define('TEXT_ENTER_CODE', ' and enter the code during the checkout process');
+define('TEXT_GV_WORTH', 'Сертификат на сумму ');
+define('TEXT_TO_REDEEM', 'Чтобы активизировать сертификат, нажмите на ссылку ниже и укажите код сертификата - ');
+define('TEXT_WHICH_IS', '');
+define('TEXT_IN_CASE', ' в случае если у Вас возникнут с этим трудности.');
+define('TEXT_OR_VISIT', 'или посетив наш интернет-магазин по адресу ');
+define('TEXT_ENTER_CODE', ' и введите код Подарочного Ваучера при оформлении заказа');
 
-define ('TEXT_REDEEM_COUPON_MESSAGE_HEADER', 'You recently purchasd a Gift Voucher from our site, for security reasons, the amount of the Gift Voucher was not immediatley credited to you. The shop owner has now released this amount.');
-define ('TEXT_REDEEM_COUPON_MESSAGE_AMOUNT', "\n\n" . 'The value of the Gift Voucher was %s');
-define ('TEXT_REDEEM_COUPON_MESSAGE_BODY', "\n\n" . 'You can now visit our site, login and send the Gift Voucher amount to anyone you want.');
+define ('TEXT_REDEEM_COUPON_MESSAGE_HEADER', 'Вы активизировали свой сертификат, но его можно будет использовать при совершении покупок только после проверки администратором магазина, это сделано исключительно в целях безопасности. Как только сертификат будет проверен администратором. Вы получите уведомление на email.');
+define ('TEXT_REDEEM_COUPON_MESSAGE_AMOUNT', "\n\n" . 'Сертификат на сумму %s');
+define ('TEXT_REDEEM_COUPON_MESSAGE_BODY', "\n\n" . 'Вы можете отправить свой сертификат или часть суммы сертификата своим знакомым и друзьям.');
 define ('TEXT_REDEEM_COUPON_MESSAGE_FOOTER', "\n\n");
 
 ?>

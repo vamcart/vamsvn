@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: cache.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: cache.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,15 +15,15 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Cache Control');
+define('HEADING_TITLE', 'Управление Кэшем');
 
-define('TABLE_HEADING_CACHE', 'Cache Blocks');
-define('TABLE_HEADING_DATE_CREATED', 'Date Created');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_CACHE', 'Блоки');
+define('TABLE_HEADING_DATE_CREATED', 'Дата создания');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_FILE_DOES_NOT_EXIST', 'File does not exist');
-define('TEXT_CACHE_DIRECTORY', 'Cache Directory:');
+define('TEXT_FILE_DOES_NOT_EXIST', 'Файл отсутствует');
+define('TEXT_CACHE_DIRECTORY', 'Кэш директория:');
 
-define('ERROR_CACHE_DIRECTORY_DOES_NOT_EXIST', 'Error: Cache directory does not exist. Please set this Configuration / Cache.');
-define('ERROR_CACHE_DIRECTORY_NOT_WRITEABLE', 'Error: Cache directory is not writeable.');
+define('ERROR_CACHE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Кэш директория отсутствует. Установите в Настройки->Кэш.');
+define('ERROR_CACHE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Кэш директория имеет неверные права доступа.');
 ?>

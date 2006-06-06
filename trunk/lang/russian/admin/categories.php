@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: categories.php 1249 2005-09-27 12:06:40Z gwinger $
+   $Id: categories.php 1249 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,176 +15,176 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
  
-define('TEXT_EDIT_STATUS', 'Status');
-define('HEADING_TITLE', 'Categories / Products');
-define('HEADING_TITLE_SEARCH', 'Search: ');
-define('HEADING_TITLE_GOTO', 'Go To:');
+define('TEXT_EDIT_STATUS', 'Статус');
+define('HEADING_TITLE', 'Категории / Товары');
+define('HEADING_TITLE_SEARCH', 'Поиск:');
+define('HEADING_TITLE_GOTO', 'Перейти в:');
 
-define('TABLE_HEADING_ID', 'ID');
-define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Categories / Products');
-define('TABLE_HEADING_ACTION', 'Action');
-define('TABLE_HEADING_STATUS', 'Status');
-define('TABLE_HEADING_STARTPAGE', 'TOP');
-define('TABLE_HEADING_STOCK','Stock Warning');
-define('TABLE_HEADING_SORT','Sort');
-define('TABLE_HEADING_EDIT','Edit');
+define('TABLE_HEADING_ID', 'ID код');
+define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Категории / Товары');
+define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_STATUS', 'Статус');
+define('TABLE_HEADING_STARTPAGE', 'Начало');
+define('TABLE_HEADING_STOCK','Количество на складе');
+define('TABLE_HEADING_SORT','Порядок');
+define('TABLE_HEADING_EDIT','Изменить');
 
-define('TEXT_ACTIVE_ELEMENT','Active Element');
-define('TEXT_INFORMATIONS','Informations');
-define('TEXT_MARKED_ELEMENTS','Marked Elements');
-define('TEXT_INSERT_ELEMENT','New Element');
+define('TEXT_ACTIVE_ELEMENT','Активный элемент');
+define('TEXT_INFORMATIONS','Информация');
+define('TEXT_MARKED_ELEMENTS','Отмеченные элементы');
+define('TEXT_INSERT_ELEMENT','Новый элемент');
 
-define('TEXT_WARN_MAIN','Main');
-define('TEXT_NEW_PRODUCT', 'New Product in &quot;%s&quot;');
-define('TEXT_CATEGORIES', 'Categories:');
-define('TEXT_PRODUCTS', 'Products:');
-define('TEXT_PRODUCTS_PRICE_INFO', 'Price:');
-define('TEXT_PRODUCTS_TAX_CLASS', 'Tax Class:');
-define('TEXT_PRODUCTS_AVERAGE_RATING', 'Average Rating:');
-define('TEXT_PRODUCTS_QUANTITY_INFO', 'Quantity:');
-define('TEXT_PRODUCTS_DISCOUNT_ALLOWED_INFO', 'Max. allowed Discount:');
-define('TEXT_DATE_ADDED', 'Date Added:');
-define('TEXT_DATE_AVAILABLE', 'Date Available:');
-define('TEXT_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_IMAGE_NONEXISTENT', 'IMAGE DOES NOT EXIST');
-define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Please insert a new category or product in <br />&nbsp;<br /><b>%s</b>');
-define('TEXT_PRODUCT_MORE_INFORMATION', 'For more information, please visit this products <a href="http://%s" target="blank"><u>webpage</u></a>.');
-define('TEXT_PRODUCT_DATE_ADDED', 'This product was added to our catalog on %s.');
-define('TEXT_PRODUCT_DATE_AVAILABLE', 'This product will be in stock on %s.');
-define('TEXT_CHOOSE_INFO_TEMPLATE', 'Product-Info Template:');
-define('TEXT_CHOOSE_OPTIONS_TEMPLATE', 'Product-Optionen Template:');
-define('TEXT_SELECT', 'Please select:');
+define('TEXT_WARN_MAIN','Главное');
+define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
+define('TEXT_CATEGORIES', 'Категории:');
+define('TEXT_PRODUCTS', 'Товары:');
+define('TEXT_PRODUCTS_PRICE_INFO', 'Цены:');
+define('TEXT_PRODUCTS_TAX_CLASS', 'Класс налогов:');
+define('TEXT_PRODUCTS_AVERAGE_RATING', 'Средний рейтинг:');
+define('TEXT_PRODUCTS_QUANTITY_INFO', 'Количество:');
+define('TEXT_PRODUCTS_DISCOUNT_ALLOWED_INFO', 'Максимальная скидка');
+define('TEXT_DATE_ADDED', 'Добавлено:');
+define('TEXT_DATE_AVAILABLE', 'Доступно:');
+define('TEXT_LAST_MODIFIED', 'Изменено:');
+define('TEXT_IMAGE_NONEXISTENT', 'Картинка отсутствует');
+define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Пожалуйста, добавьте категорию или товар в <br />&nbsp;<br /><b>%s</b>');
+define('TEXT_PRODUCT_MORE_INFORMATION', 'Для получения дополнительной информации, пожалуйста, посетите эту <a href="http://%s" target="blank"><u>страницу</u></a>.');
+define('TEXT_PRODUCT_DATE_ADDED', 'Этот товар добавлен в наш каталог %s.');
+define('TEXT_PRODUCT_DATE_AVAILABLE', 'Этот товар появится в продаже %s.');
+define('TEXT_CHOOSE_INFO_TEMPLATE', 'Шаблон страницы товара:');
+define('TEXT_CHOOSE_OPTIONS_TEMPLATE', 'Шаблон атрибутов товара:');
+define('TEXT_SELECT', 'Выберите:');
 
-define('TEXT_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_EDIT_CATEGORIES_ID', 'Category ID:');
-define('TEXT_EDIT_CATEGORIES_NAME', 'Category Name:');
-define('TEXT_EDIT_CATEGORIES_HEADING_TITLE', 'Category Heading:');
-define('TEXT_EDIT_CATEGORIES_DESCRIPTION', 'Category Description:');
-define('TEXT_EDIT_CATEGORIES_IMAGE', 'Category Image:');
+define('TEXT_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_EDIT_CATEGORIES_ID', 'ID категории:');
+define('TEXT_EDIT_CATEGORIES_NAME', 'Название категории:');
+define('TEXT_EDIT_CATEGORIES_HEADING_TITLE', 'Заголовок категории:');
+define('TEXT_EDIT_CATEGORIES_DESCRIPTION', 'Описание категории:');
+define('TEXT_EDIT_CATEGORIES_IMAGE', 'Картинка категории:');
 
-define('TEXT_EDIT_SORT_ORDER', 'Sort Order:');
+define('TEXT_EDIT_SORT_ORDER', 'Порядок сортировки:');
 
-define('TEXT_INFO_COPY_TO_INTRO', 'Please choose a new category you wish to copy this product to');
-define('TEXT_INFO_CURRENT_CATEGORIES', 'Current Categories:');
+define('TEXT_INFO_COPY_TO_INTRO', 'Пожалуйста, выберите новую категорию, в которую Вы желаете скопировать этот товар');
+define('TEXT_INFO_CURRENT_CATEGORIES', 'Текущая категория:');
 
-define('TEXT_INFO_HEADING_NEW_CATEGORY', 'New Category');
-define('TEXT_INFO_HEADING_EDIT_CATEGORY', 'Edit Category');
-define('TEXT_INFO_HEADING_DELETE_CATEGORY', 'Delete Category');
-define('TEXT_INFO_HEADING_MOVE_CATEGORY', 'Move Category');
-define('TEXT_INFO_HEADING_DELETE_PRODUCT', 'Delete Product');
-define('TEXT_INFO_HEADING_MOVE_PRODUCT', 'Move Product');
-define('TEXT_INFO_HEADING_COPY_TO', 'Copy To');
-define('TEXT_INFO_HEADING_MOVE_ELEMENTS', 'Move Elements');
-define('TEXT_INFO_HEADING_DELETE_ELEMENTS', 'Delete Elements');
+define('TEXT_INFO_HEADING_NEW_CATEGORY', 'Новая категория');
+define('TEXT_INFO_HEADING_EDIT_CATEGORY', 'Редактировать категорию');
+define('TEXT_INFO_HEADING_DELETE_CATEGORY', 'Удалить категорию');
+define('TEXT_INFO_HEADING_MOVE_CATEGORY', 'Перенести категорию');
+define('TEXT_INFO_HEADING_DELETE_PRODUCT', 'Удалить товар');
+define('TEXT_INFO_HEADING_MOVE_PRODUCT', 'Переместить товар');
+define('TEXT_INFO_HEADING_COPY_TO', 'Копировать в');
+define('TEXT_INFO_HEADING_MOVE_ELEMENTS', 'Переместить элементы');
+define('TEXT_INFO_HEADING_DELETE_ELEMENTS', 'Удалить элементы');
 
-define('TEXT_DELETE_CATEGORY_INTRO', 'Are you sure you want to delete this category?');
-define('TEXT_DELETE_PRODUCT_INTRO', 'Are you sure you want to permanently delete this product?');
+define('TEXT_DELETE_CATEGORY_INTRO', 'Вы согласны удалить эту категорию?');
+define('TEXT_DELETE_PRODUCT_INTRO', 'Отметьте Категории из которых надо удалить данный товар. Вы согласны навсегда удалить эти товары?');
 
-define('TEXT_DELETE_WARNING_CHILDS', '<b>WARNING:</b> There are %s (Child-)Categories still linked to this category!');
-define('TEXT_DELETE_WARNING_PRODUCTS', '<b>WARNING:</b> There are %s products still linked to this category!');
+define('TEXT_DELETE_WARNING_CHILDS', '<b>ВНИМАНИЕ:</b> С данной категорий связано %s подкатегорий!');
+define('TEXT_DELETE_WARNING_PRODUCTS', '<b>ВНИМАНИЕ:</b> С данной категорий связано %s товаров!');
 
-define('TEXT_MOVE_WARNING_CHILDS', '<b>Info:</b> There are %s (Child-)Categories still linked to this category!');
-define('TEXT_MOVE_WARNING_PRODUCTS', '<b>Info:</b> There are %s products still linked to this category!');
+define('TEXT_MOVE_WARNING_CHILDS', '<b>Информация:</b> С данной категорий связано %s подкатегорий!');
+define('TEXT_MOVE_WARNING_PRODUCTS', '<b>Информация:</b> С данной категорий связано %s товаров!');
 
-define('TEXT_MOVE_PRODUCTS_INTRO', 'Please select which category you wish <b>%s</b> to reside in');
-define('TEXT_MOVE_CATEGORIES_INTRO', 'Please select which category you wish <b>%s</b> to reside in');
-define('TEXT_MOVE', 'Move <b>%s</b> to:');
-define('TEXT_MOVE_ALL', 'Move all to:');
+define('TEXT_MOVE_PRODUCTS_INTRO', 'Выберите категорию, в которую Вы хотите переместить <b>%s</b>');
+define('TEXT_MOVE_CATEGORIES_INTRO', 'Выберите категорию, в которую Вы хотите переместить <b>%s</b>');
+define('TEXT_MOVE', 'Перенести <b>%s</b> в:');
+define('TEXT_MOVE_ALL', 'Переместить всё в:');
 
-define('TEXT_NEW_CATEGORY_INTRO', 'Please fill out the following information for the new category.');
-define('TEXT_CATEGORIES_NAME', 'Category Name:');
-define('TEXT_CATEGORIES_IMAGE', 'Category Image:');
+define('TEXT_NEW_CATEGORY_INTRO', 'Введите всю необходимую информацию для новой категории.');
+define('TEXT_CATEGORIES_NAME', 'Название категории:');
+define('TEXT_CATEGORIES_IMAGE', 'Картинка категории:');
 
 define('TEXT_META_TITLE', 'Meta Title:');
 define('TEXT_META_DESCRIPTION', 'Meta Description:');
 define('TEXT_META_KEYWORDS', 'Meta Keywords:');
 
-define('TEXT_SORT_ORDER', 'Sort Order:');
+define('TEXT_SORT_ORDER', 'Порядок сортировки:');
 
-define('TEXT_PRODUCTS_STATUS', 'Products Status:');
-define('TEXT_PRODUCTS_STARTPAGE', 'Show on startpage:');
-define('TEXT_PRODUCTS_STARTPAGE_YES', 'Yes');
-define('TEXT_PRODUCTS_STARTPAGE_NO', 'No');
-define('TEXT_PRODUCTS_STARTPAGE_SORT', 'Sort order (startpage):');
-define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Date Available:');
-define('TEXT_PRODUCT_AVAILABLE', 'In Stock');
-define('TEXT_PRODUCT_NOT_AVAILABLE', 'Out of Stock');
-define('TEXT_PRODUCTS_MANUFACTURER', 'Products Manufacturer:');
-define('TEXT_PRODUCTS_NAME', 'Products Name:');
-define('TEXT_PRODUCTS_DESCRIPTION', 'Products Description:');
-define('TEXT_PRODUCTS_QUANTITY', 'Products Quantity:');
-define('TEXT_PRODUCTS_MODEL', 'Products Model:');
-define('TEXT_PRODUCTS_IMAGE', 'Products Image:');
-define('TEXT_PRODUCTS_URL', 'Products URL:');
-define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '<small>(without http://)</small>');
-define('TEXT_PRODUCTS_PRICE', 'Products Price:');
-define('TEXT_PRODUCTS_WEIGHT', 'Products Weight:');
-define('TEXT_PRODUCTS_EAN','Barcode/EAN');
-define('TEXT_PRODUCT_LINKED_TO','Linked to:');
+define('TEXT_PRODUCTS_STATUS', 'Статус страницы:');
+define('TEXT_PRODUCTS_STARTPAGE', 'Показывать на главной странице:');
+define('TEXT_PRODUCTS_STARTPAGE_YES', 'Да');
+define('TEXT_PRODUCTS_STARTPAGE_NO', 'Нет');
+define('TEXT_PRODUCTS_STARTPAGE_SORT', 'Сортировка (на главной):');
+define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Дата доступности:');
+define('TEXT_PRODUCT_AVAILABLE', 'Публиковать');
+define('TEXT_PRODUCT_NOT_AVAILABLE', 'Не публиковать');
+define('TEXT_PRODUCTS_MANUFACTURER', 'Производитель:');
+define('TEXT_PRODUCTS_NAME', 'Название товара:');
+define('TEXT_PRODUCTS_DESCRIPTION', 'Описание товара:');
+define('TEXT_PRODUCTS_QUANTITY', 'Количество товара:');
+define('TEXT_PRODUCTS_MODEL', 'Код товара:');
+define('TEXT_PRODUCTS_IMAGE', 'Картинка товара:');
+define('TEXT_PRODUCTS_URL', 'URL товара:');
+define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(без http://)');
+define('TEXT_PRODUCTS_PRICE', 'Цена товара:');
+define('TEXT_PRODUCTS_WEIGHT', 'Вес товара:');
+define('TEXT_PRODUCTS_EAN','Штрих-код');
+define('TEXT_PRODUCT_LINKED_TO','Ссылкается на:');
 
-define('TEXT_DELETE', 'Delete');
+define('TEXT_DELETE', 'Удалить');
 
-define('EMPTY_CATEGORY', 'Empty Category');
+define('EMPTY_CATEGORY', 'Пустая категория');
 
-define('TEXT_HOW_TO_COPY', 'Copy Method:');
-define('TEXT_COPY_AS_LINK', 'Link product');
-define('TEXT_COPY_AS_DUPLICATE', 'Duplicate product');
+define('TEXT_HOW_TO_COPY', 'Способ копирования:');
+define('TEXT_COPY_AS_LINK', 'Ссылка на товар');
+define('TEXT_COPY_AS_DUPLICATE', 'Копия товара');
 
-define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Error: Can not link products in the same directory.');
-define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Error: Catalog images directory is not writeable: ' . DIR_FS_CATALOG_IMAGES);
-define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Error: Catalog images directory does not exist: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Ошибка: вы не можете связывать товар с той же самой категории.');
+define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория изображений закрыта на запись: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория изображений отсутствует: ' . DIR_FS_CATALOG_IMAGES);
 
-define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Discount allowed:');
-define('HEADING_PRICES_OPTIONS','<b>Price options</b>');
-define('HEADING_PRODUCT_IMAGES','<b>Products Images</b>');
-define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(kg)</small>');
-define('TEXT_PRODUCTS_SHORT_DESCRIPTION','Short description:');
-define('TEXT_PRODUCTS_KEYWORDS', 'Extra words for Search:');
-define('TXT_STK','Pcs: ');
-define('TXT_PRICE','a :');
-define('TXT_NETTO','Net price: ');
-define('TEXT_NETTO','Net: ');
-define('TXT_STAFFELPREIS','Graduated Price');
+define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Скидка:');
+define('HEADING_PRICES_OPTIONS','<b>Свойства цены</b>');
+define('HEADING_PRODUCT_IMAGES','<b>Картинки товара</b>');
+define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(кг.)</small>');
+define('TEXT_PRODUCTS_SHORT_DESCRIPTION','Краткое описание:');
+define('TEXT_PRODUCTS_KEYWORDS', 'Дополнительные слова для поиска:');
+define('TXT_STK','Количество: ');
+define('TXT_PRICE','Цена:');
+define('TXT_NETTO','Цена с налогом: ');
+define('TEXT_NETTO','Налог: ');
+define('TXT_STAFFELPREIS','Цена от количества');
 
-define('HEADING_PRODUCTS_MEDIA','<b>Products Media</b>');
-define('TABLE_HEADING_PRICE','Price');
+define('HEADING_PRODUCTS_MEDIA','<b>Картинки товара</b>');
+define('TABLE_HEADING_PRICE','Цена');
 
-define('TEXT_CHOOSE_INFO_TEMPLATE','Productdetail Template');
-define('TEXT_SELECT','--Select--');
-define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Productoptions Template');
-define('SAVE_ENTRY','Save ?');
+define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон информации о товаре');
+define('TEXT_SELECT','--Выберите--');
+define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Шаблон атрибутов товара');
+define('SAVE_ENTRY','Сохранить ?');
 
-define('TEXT_FSK18','FSK 18:');
-define('TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE','Template for Category Listing');
-define('TEXT_CHOOSE_INFO_TEMPLATE_LISTING','Template for Product Listing');
-define('TEXT_PRODUCTS_SORT','Sorting:');
-define('TEXT_EDIT_PRODUCT_SORT_ORDER','Product Sorting');
-define('TXT_PRICES','Price');
-define('TXT_NAME','Productname');
-define('TXT_ORDERED','Products ordered');
-define('TXT_SORT','Sorting');
-define('TXT_WEIGHT','Weight');
-define('TXT_QTY','On Stock');
+define('TEXT_FSK18','товар до 18 лет:');
+define('TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE','Шаблон для списка категорий');
+define('TEXT_CHOOSE_INFO_TEMPLATE_LISTING','Шаблон для списка товаров');
+define('TEXT_PRODUCTS_SORT','Порядок:');
+define('TEXT_EDIT_PRODUCT_SORT_ORDER','Сортировка товара');
+define('TXT_PRICES','Цена');
+define('TXT_NAME','Название товара');
+define('TXT_ORDERED','Заказанное количество товара');
+define('TXT_SORT','Порядок');
+define('TXT_WEIGHT','Вес');
+define('TXT_QTY','Количество на складе');
 
-define('TEXT_MULTICOPY','Multiple');
-define('TEXT_MULTICOPY_DESC','Copy elements into following categories (If one box selected, Single settings will be ignored.)');
-define('TEXT_SINGLECOPY','Single');
-define('TEXT_SINGLECOPY_DESC','Copy elements into following category');
-define('TEXT_SINGLECOPY_CATEGORY','Category:');
+define('TEXT_MULTICOPY','Массовое копирование');
+define('TEXT_MULTICOPY_DESC','Копировать элементы в следующие категории (Если выбрано, настройка Один будет игнорирована.)');
+define('TEXT_SINGLECOPY','Один');
+define('TEXT_SINGLECOPY_DESC','Копировать элементы в следующую категорию');
+define('TEXT_SINGLECOPY_CATEGORY','Категория:');
 
-define('TEXT_PRODUCTS_VPE','Unit');
-define('TEXT_PRODUCTS_VPE_VISIBLE','Show Unit Price:');
-define('TEXT_PRODUCTS_VPE_VALUE',' Value:');
+define('TEXT_PRODUCTS_VPE','Единица: ');
+define('TEXT_PRODUCTS_VPE_VISIBLE','Показ цены за единицу: ');
+define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
 
-define('CROSS_SELLING','Cross selling for article');
-define('CROSS_SELLING_SEARCH','Search product:');
-define('BUTTON_EDIT_CROSS_SELLING','Cross selling');
-define('HEADING_DEL','delete');
-define('HEADING_SORTING','sorting');
-define('HEADING_MODEL','model');
-define('HEADING_NAME','article');
-define('HEADING_CATEGORY','category');
-define('HEADING_ADD','Add?');
-define('HEADING_GROUP','Group');
+define('CROSS_SELLING','Сопутствующие товары статьи');
+define('CROSS_SELLING_SEARCH','Поиск товара:');
+define('BUTTON_EDIT_CROSS_SELLING','Сопутствующие товары');
+define('HEADING_DEL','удалить');
+define('HEADING_SORTING','сортировать');
+define('HEADING_MODEL','код');
+define('HEADING_NAME','статья');
+define('HEADING_CATEGORY','категория');
+define('HEADING_ADD','Добавить?');
+define('HEADING_GROUP','Группа');
 
 ?>

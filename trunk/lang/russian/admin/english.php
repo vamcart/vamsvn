@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: english.php 1231 2005-09-21 13:05:36Z mz $   
+   $Id: english.php 1231 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -25,11 +25,11 @@
 // on FreeBSD 4.0 I use 'en_US.ISO_8859-1'
 // this may not work under win32 environments..
 
-setlocale(LC_TIME, 'en_US@euro', 'en_US', 'en-US', 'en', 'en_US.ISO_8859-1', 'English','en_US.ISO_8859-15');
-define('DATE_FORMAT_SHORT', '%m/%d/%Y');  // this is used for strftime()
+setlocale(LC_TIME, 'ru_RU.CP1251', 'Russian');
+define('DATE_FORMAT_SHORT', '%d/%m/%Y');  // this is used for strftime()
 define('DATE_FORMAT_LONG', '%A %d %B, %Y'); // this is used for strftime()
-define('DATE_FORMAT', 'm/d/Y');  // this is used for strftime()
-define('PHP_DATE_TIME_FORMAT', 'm/d/Y H:i:s'); // this is used for date()
+define('DATE_FORMAT', 'd/m/Y'); // this is used for date()
+define('PHP_DATE_TIME_FORMAT', 'd/m/Y H:i:s'); // this is used for date()
 define('DATE_TIME_FORMAT', DATE_FORMAT_SHORT . ' %H:%M:%S');
 
 ////
@@ -40,335 +40,335 @@ function xtc_date_raw($date, $reverse = false) {
   if ($reverse) {
     return substr($date, 3, 2) . substr($date, 0, 2) . substr($date, 6, 4);
   } else {
-    return substr($date, 6, 4) . substr($date, 0, 2) . substr($date, 3, 2);
+    return substr($date, 6, 4) . substr($date, 3, 2) . substr($date, 0, 2); 
   }
 }
 
 // Global entries for the <html> tag
-define('HTML_PARAMS','dir="ltr" lang="en"');
+define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 
 // page title
-define('TITLE', 'XT-Commerce');
+define('TITLE', 'XT-Commerce VaM Edition');
 
 // header text in includes/header.php
-define('HEADER_TITLE_TOP', 'Administration');
-define('HEADER_TITLE_SUPPORT_SITE', 'Support Site');
-define('HEADER_TITLE_ONLINE_CATALOG', 'Online Catalog');
-define('HEADER_TITLE_ADMINISTRATION', 'Administration');
+define('HEADER_TITLE_TOP', 'Администрирование');
+define('HEADER_TITLE_SUPPORT_SITE', 'Сайт поддержки');
+define('HEADER_TITLE_ONLINE_CATALOG', 'Каталог');
+define('HEADER_TITLE_ADMINISTRATION', 'Администрация');
 
 // text for gender
-define('MALE', 'Male');
-define('FEMALE', 'Female');
+define('MALE', 'Мужской');
+define('FEMALE', 'Женский');
 
 // text for date of birth example
-define('DOB_FORMAT_STRING', 'mm/dd/yyyy');
+define('DOB_FORMAT_STRING', 'dd/mm/yyyy');
 
 // configuration box text in includes/boxes/configuration.php
 
-define('BOX_HEADING_CONFIGURATION','Configuration');
-define('BOX_HEADING_MODULES','Modules');
-define('BOX_HEADING_ZONE','Zone / Tax');
-define('BOX_HEADING_CUSTOMERS','Customers');
-define('BOX_HEADING_PRODUCTS','Catalog');
-define('BOX_HEADING_STATISTICS','Statistics');
-define('BOX_HEADING_TOOLS','Tools');
+define('BOX_HEADING_CONFIGURATION','Конфигурация');
+define('BOX_HEADING_MODULES','Модули');
+define('BOX_HEADING_ZONE','Зоны/Налоги');
+define('BOX_HEADING_CUSTOMERS','Покупатели');
+define('BOX_HEADING_PRODUCTS','Каталог');
+define('BOX_HEADING_STATISTICS','Статистика');
+define('BOX_HEADING_TOOLS','Инструменты');
 
-define('BOX_CONTENT','Content Manager');
-define('TEXT_ALLOWED', 'Permission');
-define('TEXT_ACCESS', 'Usable Area');
-define('BOX_CONFIGURATION', 'General Options');
-define('BOX_CONFIGURATION_1', 'My Shop');
-define('BOX_CONFIGURATION_2', 'Minimum Values');
-define('BOX_CONFIGURATION_3', 'Maximum Values');
-define('BOX_CONFIGURATION_4', 'Image Options');
-define('BOX_CONFIGURATION_5', 'Customer Details');
-define('BOX_CONFIGURATION_6', 'Module Options');
-define('BOX_CONFIGURATION_7', 'Shipping Options');
-define('BOX_CONFIGURATION_8', 'Product Listing Options');
-define('BOX_CONFIGURATION_9', 'Stock Options');
-define('BOX_CONFIGURATION_10', 'Logging Options');
-define('BOX_CONFIGURATION_11', 'Cache Options');
-define('BOX_CONFIGURATION_12', 'eMail Options');
-define('BOX_CONFIGURATION_13', 'Download Options');
-define('BOX_CONFIGURATION_14', 'Gzip Compression');
-define('BOX_CONFIGURATION_15', 'Sessions');
-define('BOX_CONFIGURATION_16', 'Meta-Tags/Searchengines');
-define('BOX_CONFIGURATION_17', 'Specialmodules');
-define('BOX_CONFIGURATION_19', 'xt:C Partner');
-define('BOX_CONFIGURATION_22', 'Search-Options');
+define('BOX_CONTENT','Контент менеджер');
+define('TEXT_ALLOWED', 'Разрешено');
+define('TEXT_ACCESS', 'Доступ');
+define('BOX_CONFIGURATION', 'Основные опции');
+define('BOX_CONFIGURATION_1', 'Мой магазин');
+define('BOX_CONFIGURATION_2', 'Минимум значения');
+define('BOX_CONFIGURATION_3', 'Максимум значения');
+define('BOX_CONFIGURATION_4', 'Картинки опции');
+define('BOX_CONFIGURATION_5', 'Инфо Клиента');
+define('BOX_CONFIGURATION_6', 'Модули');
+define('BOX_CONFIGURATION_7', 'Доставка');
+define('BOX_CONFIGURATION_8', 'Листинг товаров');
+define('BOX_CONFIGURATION_9', 'Склад');
+define('BOX_CONFIGURATION_10', 'Логи');
+define('BOX_CONFIGURATION_11', 'Кэш');
+define('BOX_CONFIGURATION_12', 'E-mail');
+define('BOX_CONFIGURATION_13', 'Загрузка');
+define('BOX_CONFIGURATION_14', 'Gzip компрессия');
+define('BOX_CONFIGURATION_15', 'Сессии');
+define('BOX_CONFIGURATION_16', 'Мета теги / Поисковики');
+define('BOX_CONFIGURATION_17', 'Спец. модули');
+define('BOX_CONFIGURATION_19', 'xt:C Партнер');
+define('BOX_CONFIGURATION_22', 'Настройки поиска');
  
-define('BOX_MODULES', 'Payment-/Shipping-/Billing-Modules');
-define('BOX_PAYMENT', 'Payment Systems');
-define('BOX_SHIPPING', 'Shipping Methods');
-define('BOX_ORDER_TOTAL', 'Order Total');
-define('BOX_CATEGORIES', 'Categories / Products');
-define('BOX_PRODUCTS_ATTRIBUTES', 'Product Options');
-define('BOX_MANUFACTURERS', 'Manufacturers');
-define('BOX_REVIEWS', 'Product Reviews');
-define('BOX_CAMPAIGNS', 'Campaigns');
-define('BOX_XSELL_PRODUCTS', 'Cross Marketing');
-define('BOX_SPECIALS', 'Special Pricing');
-define('BOX_PRODUCTS_EXPECTED', 'Expected Offers');
-define('BOX_CUSTOMERS', 'Customers');
-define('BOX_ACCOUNTING', 'Admin Permissions');
-define('BOX_CUSTOMERS_STATUS','Customer Groups');
-define('BOX_ORDERS', 'Orders');
-define('BOX_COUNTRIES', 'Countries');
-define('BOX_ZONES', 'Zones');
-define('BOX_GEO_ZONES', 'Tax Zones');
-define('BOX_TAX_CLASSES', 'Tax Classes');
-define('BOX_TAX_RATES', 'Tax Rates');
-define('BOX_HEADING_REPORTS', 'Reports');
-define('BOX_PRODUCTS_VIEWED', 'Viewed Products');
-define('BOX_STOCK_WARNING','Stock Info');
-define('BOX_PRODUCTS_PURCHASED', 'Sold Products');
-define('BOX_STATS_CUSTOMERS', 'Purchasing Statistics');
-define('BOX_BACKUP', 'Database Manager');
-define('BOX_BANNER_MANAGER', 'Banner Manager');
-define('BOX_CACHE', 'Cache Control');
-define('BOX_DEFINE_LANGUAGE', 'Language Definitions');
-define('BOX_FILE_MANAGER', 'File-Manager');
-define('BOX_MAIL', 'eMail Center');
-define('BOX_NEWSLETTERS', 'Notification Manager');
-define('BOX_SERVER_INFO', 'Server Info');
-define('BOX_WHOS_ONLINE', 'Who is Online');
-define('BOX_TPL_BOXES','Boxes Sort Order');
-define('BOX_CURRENCIES', 'Currencies');
-define('BOX_LANGUAGES', 'Languages');
-define('BOX_ORDERS_STATUS', 'Order Status');
-define('BOX_ATTRIBUTES_MANAGER','Attribute Manager');
-define('BOX_PRODUCTS_ATTRIBUTES','Option-Groups');
-define('BOX_MODULE_NEWSLETTER','Newsletter');
-define('BOX_ORDERS_STATUS','Orders Status');
-define('BOX_SHIPPING_STATUS','Shipping status');
-define('BOX_SALES_REPORT','Sales Report');
-define('BOX_MODULE_EXPORT','XT-Modules');
-define('BOX_HEADING_GV_ADMIN', 'Vouchers/Coupons');
-define('BOX_GV_ADMIN_QUEUE', 'Gift Voucher Queue');
-define('BOX_GV_ADMIN_MAIL', 'Mail Gift Voucher');
-define('BOX_GV_ADMIN_SENT', 'Gift Vouchers sent');
-define('BOX_COUPON_ADMIN','Coupon Admin');
-define('BOX_TOOLS_BLACKLIST','-CC-Blacklist');
-define('BOX_IMPORT','Import/Export'); 
-define('BOX_PRODUCTS_VPE','Packing unit');
-define('BOX_CAMPAIGNS_REPORT','Campaign report');
-define('BOX_ORDERS_XSELL_GROUP','Cross-sell groups');
+define('BOX_MODULES', 'Оплата/Доставка/Счета');
+define('BOX_PAYMENT', 'Модули оплаты');
+define('BOX_SHIPPING', 'Методы доставки');
+define('BOX_ORDER_TOTAL', 'Итог заказа');
+define('BOX_CATEGORIES', 'Категории / Товары');
+define('BOX_PRODUCTS_ATTRIBUTES', 'Опции товара');
+define('BOX_MANUFACTURERS', 'Производители');
+define('BOX_REVIEWS', 'Отзывы о товарах');
+define('BOX_CAMPAIGNS', 'Кампании');
+define('BOX_XSELL_PRODUCTS', 'Сопутствующие товары');
+define('BOX_SPECIALS', 'Скидки');
+define('BOX_PRODUCTS_EXPECTED', 'Ожидаемые товары');
+define('BOX_CUSTOMERS', 'Клиенты');
+define('BOX_ACCOUNTING', 'Доступ админа');
+define('BOX_CUSTOMERS_STATUS','Группы клиентов');
+define('BOX_ORDERS', 'Заказы');
+define('BOX_COUNTRIES', 'Страны');
+define('BOX_ZONES', 'Зоны, регионы');
+define('BOX_GEO_ZONES', 'Налоговые зоны');
+define('BOX_TAX_CLASSES', 'Виды налогов');
+define('BOX_TAX_RATES', 'Ставки налогов');
+define('BOX_HEADING_REPORTS', 'Отчёты');
+define('BOX_PRODUCTS_VIEWED', 'Что смотрят');
+define('BOX_STOCK_WARNING','Информация о складе');
+define('BOX_PRODUCTS_PURCHASED', 'Что заказывают');
+define('BOX_STATS_CUSTOMERS', 'Лучшие клиенты');
+define('BOX_BACKUP', 'Резервное копирование');
+define('BOX_BANNER_MANAGER', 'Управление баннерми');
+define('BOX_CACHE', 'Кэш');
+define('BOX_DEFINE_LANGUAGE', 'Языковые константы');
+define('BOX_FILE_MANAGER', 'Файл менеджер');
+define('BOX_MAIL', 'E-Mail центр');
+define('BOX_NEWSLETTERS', 'Почтовые Уведомления');
+define('BOX_SERVER_INFO', 'Сервер инфо');
+define('BOX_WHOS_ONLINE', 'Кто в оn-line?');
+define('BOX_TPL_BOXES','Порядок сортировки боксов');
+define('BOX_CURRENCIES', 'Валюты');
+define('BOX_LANGUAGES', 'Языки');
+define('BOX_ORDERS_STATUS', 'Статус заказа');
+define('BOX_ATTRIBUTES_MANAGER','Управление атрибутами');
+define('BOX_PRODUCTS_ATTRIBUTES','Группы-Опции');
+define('BOX_MODULE_NEWSLETTER','Письмо с новостями');
+define('BOX_ORDERS_STATUS','Статус заказа');
+define('BOX_SHIPPING_STATUS','Доставка в течение');
+define('BOX_SALES_REPORT','Статистика продаж');
+define('BOX_MODULE_EXPORT','XT-Модули');
+define('BOX_HEADING_GV_ADMIN', 'Сертификаты/Купоны');
+define('BOX_GV_ADMIN_QUEUE', 'Активация купонов');
+define('BOX_GV_ADMIN_MAIL', 'Отправить купон');
+define('BOX_GV_ADMIN_SENT', 'Отправленные купоны');
+define('BOX_COUPON_ADMIN','Управление купонами');
+define('BOX_TOOLS_BLACKLIST','Кредитные карты (CC) черный список');
+define('BOX_IMPORT','Импорт/Экспорт');
+define('BOX_PRODUCTS_VPE','Единица упаковки');
+define('BOX_CAMPAIGNS_REPORT','Отчёт о кампании');
+define('BOX_ORDERS_XSELL_GROUP','Группы сопутствующих товаров');
 
-define('TXT_GROUPS','<b>Groups</b>:');
-define('TXT_SYSTEM','System');
-define('TXT_CUSTOMERS','Customers/Orders');
-define('TXT_PRODUCTS','Products/Categories');
-define('TXT_STATISTICS','Statistics');
-define('TXT_TOOLS','Tools');
-define('TEXT_ACCOUNTING','Admin-access for:');
+define('TXT_GROUPS','<b>Группы</b>:');
+define('TXT_SYSTEM','Система');
+define('TXT_CUSTOMERS','Клиенты/Заказы');
+define('TXT_PRODUCTS','Товары/Категории');
+define('TXT_STATISTICS','Статистика');
+define('TXT_TOOLS','Инструменты');
+define('TEXT_ACCOUNTING','Доступ админа:');
 
 //Dividers text for menu
 
-define('BOX_HEADING_MODULES', 'Modules');
-define('BOX_HEADING_LOCALIZATION', 'Languages/Currencies');
-define('BOX_HEADING_TEMPLATES','Templates');
-define('BOX_HEADING_TOOLS', 'Tools');
-define('BOX_HEADING_LOCATION_AND_TAXES', 'Location / Tax');
-define('BOX_HEADING_CUSTOMERS', 'Customers');
-define('BOX_HEADING_CATALOG', 'Catalog');
-define('BOX_MODULE_NEWSLETTER','Newsletter');
+define('BOX_HEADING_MODULES', 'Модули');
+define('BOX_HEADING_LOCALIZATION', 'Языки/Валюты');
+define('BOX_HEADING_TEMPLATES','Шаблоны');
+define('BOX_HEADING_TOOLS', 'Инструменты');
+define('BOX_HEADING_LOCATION_AND_TAXES', 'Места / Налоги');
+define('BOX_HEADING_CUSTOMERS', 'Клиенты');
+define('BOX_HEADING_CATALOG', 'Каталог');
+define('BOX_MODULE_NEWSLETTER','Рассылка');
 
 // javascript messages
-define('JS_ERROR', 'Error have occured during the process of your form!\nPlease make the following corrections:\n\n');
+define('JS_ERROR', 'При заполнении формы Вы допустили ошибки!\nСделайте, пожалуйста, следующие исправления:\n\n');
 
-define('JS_OPTIONS_VALUE_PRICE', '* The new product attribute needs a price value\n');
-define('JS_OPTIONS_VALUE_PRICE_PREFIX', '* The new product attribute needs a price prefix (+/-)\n');
+define('JS_OPTIONS_VALUE_PRICE', '* Новый атрибут товара дожен иметь цену\n');
+define('JS_OPTIONS_VALUE_PRICE_PREFIX', '* Новый атрибут товара дожен иметь ценовой префикс\n');
 
-define('JS_PRODUCTS_NAME', '* The new product needs a name\n');
-define('JS_PRODUCTS_DESCRIPTION', '* The new product needs a description\n');
-define('JS_PRODUCTS_PRICE', '* The new product needs a price value\n');
-define('JS_PRODUCTS_WEIGHT', '* The new product needs a weight value\n');
-define('JS_PRODUCTS_QUANTITY', '* The new product needs a quantity value\n');
-define('JS_PRODUCTS_MODEL', '* The new product needs a model value\n');
-define('JS_PRODUCTS_IMAGE', '* The new product needs an image value\n');
+define('JS_PRODUCTS_NAME', '* Для нового товара должно быть указано наименование\n');
+define('JS_PRODUCTS_DESCRIPTION', '* Для нового товара должно быть указано описание\n');
+define('JS_PRODUCTS_PRICE', '* Для нового товара должна быть указана цена\n');
+define('JS_PRODUCTS_WEIGHT', '* Для нового товара должен быть указан вес\n');
+define('JS_PRODUCTS_QUANTITY', '* Для нового товара должно быть указано количество\n');
+define('JS_PRODUCTS_MODEL', '* Для нового товара должен быть указан код товара\n');
+define('JS_PRODUCTS_IMAGE', '* Для нового товара должна быть картинка\n');
 
-define('JS_SPECIALS_PRODUCTS_PRICE', '* A new price for this product needs to be set\n');
+define('JS_SPECIALS_PRODUCTS_PRICE', '* Для этого товара должна быть установлена новая цена\n');
 
-define('JS_GENDER', '* The \'Gender\' value must be chosen.\n');
-define('JS_FIRST_NAME', '* The \'First Name\' entry must have at least ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' characters.\n');
-define('JS_LAST_NAME', '* The \'Last Name\' entry must have at least ' . ENTRY_LAST_NAME_MIN_LENGTH . ' characters.\n');
-define('JS_DOB', '* The \'Date of Birth\' entry must be in the format: xx/xx/xxxx (month/date/year).\n');
-define('JS_EMAIL_ADDRESS', '* The \'eMail-Adress\' entry must have at least ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' characters.\n');
-define('JS_ADDRESS', '* The \'Street Adress\' entry must have at least ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' characters.\n');
-define('JS_POST_CODE', '* The \'Post Code\' entry must have at least ' . ENTRY_POSTCODE_MIN_LENGTH . ' characters.\n');
-define('JS_CITY', '* The \'City\' entry must have at least ' . ENTRY_CITY_MIN_LENGTH . ' characters.\n');
-define('JS_STATE', '* The \'State\' entry must be selected.\n');
-define('JS_STATE_SELECT', '-- Select above --');
-define('JS_ZONE', '* The \'State\' entry must be selected from the list for this country.');
-define('JS_COUNTRY', '* The \'Country\' value must be chosen.\n');
-define('JS_TELEPHONE', '* The \'Telephone Number\' entry must have at least ' . ENTRY_TELEPHONE_MIN_LENGTH . ' characters.\n');
-define('JS_PASSWORD', '* The \'Password\' and \'Confirmation\' entries must match and have at least ' . ENTRY_PASSWORD_MIN_LENGTH . ' characters.\n');
+define('JS_GENDER', '* Поле \'Пол\' должно быть выбрано.\n');
+define('JS_FIRST_NAME', '* Поле \'Имя\' должно содержать не менее ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символов.\n');
+define('JS_LAST_NAME', '* Поле \'Фамилия\' должно содержать не менее ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символов.\n');
+define('JS_DOB', '* Поле \'День рождения\' должно иметь формат: xx/xx/xxxx (день/месяц/год).\n');
+define('JS_EMAIL_ADDRESS', '* Поле \'E-Mail адрес\' должно содержать не менее ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' символов.\n');
+define('JS_ADDRESS', '* Поле \'Адрес\' должно содержать не менее ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов.\n');
+define('JS_POST_CODE', '* Поле \'Индекс\' должно содержать не менее ' . ENTRY_POSTCODE_MIN_LENGTH . ' символов.\n');
+define('JS_CITY', '* Поле \'Город\' должно содержать не менее ' . ENTRY_CITY_MIN_LENGTH . ' символов.\n');
+define('JS_STATE', '* Поле \'Регион\' должно быть выбрано.\n');
+define('JS_STATE_SELECT', '-- Выберите выше --');
+define('JS_ZONE', '* Поле \'Регион\' должно соответствовать выбраной стране.');
+define('JS_COUNTRY', '* Поле \'Страна\' дожно быть заполнено.\n');
+define('JS_TELEPHONE', '* Поле \'Телефон\' должно содержать не менее ' . ENTRY_TELEPHONE_MIN_LENGTH . ' символов.\n');
+define('JS_PASSWORD', '* Поля \'Пароль\' и \'Подтверждение\' должны совпадать и содержать не менее ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.\n');
 
-define('JS_ORDER_DOES_NOT_EXIST', 'Order Number %s does not exist!');
+define('JS_ORDER_DOES_NOT_EXIST', 'Заказ номер %s не найден!');
 
-define('CATEGORY_PERSONAL', 'Personal');
-define('CATEGORY_ADDRESS', 'Adress');
-define('CATEGORY_CONTACT', 'Contact');
-define('CATEGORY_COMPANY', 'Company');
-define('CATEGORY_OPTIONS', 'More Options');
+define('CATEGORY_PERSONAL', 'Персональный');
+define('CATEGORY_ADDRESS', 'Адрес');
+define('CATEGORY_CONTACT', 'Для контакта');
+define('CATEGORY_COMPANY', 'Компания');
+define('CATEGORY_OPTIONS', 'Рассылка');
 
-define('ENTRY_GENDER', 'Gender:');
-define('ENTRY_GENDER_ERROR', '&nbsp;<span class="errorText">required</span>');
-define('ENTRY_FIRST_NAME', 'First Name:');
-define('ENTRY_FIRST_NAME_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' chars</span>');
-define('ENTRY_LAST_NAME', 'Last Name:');
-define('ENTRY_LAST_NAME_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_LAST_NAME_MIN_LENGTH . ' chars</span>');
-define('ENTRY_DATE_OF_BIRTH', 'Date of Birth:');
-define('ENTRY_DATE_OF_BIRTH_ERROR', '&nbsp;<span class="errorText">(e.g. 05/21/1970)</span>');
-define('ENTRY_EMAIL_ADDRESS', 'eMail Adress:');
-define('ENTRY_EMAIL_ADDRESS_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' chars</span>');
-define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', '&nbsp;<span class="errorText">Invalid eMail-Adress!</span>');
-define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', '&nbsp;<span class="errorText">This eMail-Adress already exists!</span>');
-define('ENTRY_COMPANY', 'Company name:');
-define('ENTRY_STREET_ADDRESS', 'Street Adress:');
-define('ENTRY_STREET_ADDRESS_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' Chars</span>');
-define('ENTRY_SUBURB', 'Suburb:');
-define('ENTRY_POST_CODE', 'Post Code:');
-define('ENTRY_POST_CODE_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_POSTCODE_MIN_LENGTH . ' chars</span>');
-define('ENTRY_CITY', 'City:');
-define('ENTRY_CITY_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_CITY_MIN_LENGTH . ' chars</span>');
-define('ENTRY_STATE', 'State:');
-define('ENTRY_STATE_ERROR', '&nbsp;<span class="errorText">required</font></small>');
-define('ENTRY_COUNTRY', 'County:');
-define('ENTRY_TELEPHONE_NUMBER', 'Telephone Number:');
-define('ENTRY_TELEPHONE_NUMBER_ERROR', '&nbsp;<span class="errorText">min. ' . ENTRY_TELEPHONE_MIN_LENGTH . ' chars</span>');
-define('ENTRY_FAX_NUMBER', 'Fax Number:');
-define('ENTRY_NEWSLETTER', 'Newsletter:');
-define('ENTRY_CUSTOMERS_STATUS', 'Customers status:');
-define('ENTRY_NEWSLETTER_YES', 'Subscribed');
-define('ENTRY_NEWSLETTER_NO', 'Unsubscribed');
-define('ENTRY_MAIL_ERROR','&nbsp;<span class="errorText">Please choose an option</span>');
-define('ENTRY_PASSWORD','Password (generated)');
-define('ENTRY_PASSWORD_ERROR','&nbsp;<span class="errorText">min. ' . ENTRY_PASSWORD_MIN_LENGTH . ' chars</span>');
-define('ENTRY_MAIL_COMMENTS','additional eMailtext:');
+define('ENTRY_GENDER', 'Пол:');
+define('ENTRY_GENDER_ERROR', '&nbsp;<span class="errorText">обязательно</span>');
+define('ENTRY_FIRST_NAME', 'Имя:');
+define('ENTRY_FIRST_NAME_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символов</span>');
+define('ENTRY_LAST_NAME', 'Фамилия:');
+define('ENTRY_LAST_NAME_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символов</span>');
+define('ENTRY_DATE_OF_BIRTH', 'Дата рождения:');
+define('ENTRY_DATE_OF_BIRTH_ERROR', '&nbsp;<span class="errorText">(пример 21/05/1970)</span>');
+define('ENTRY_EMAIL_ADDRESS', 'E-Mail Адрес:');
+define('ENTRY_EMAIL_ADDRESS_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' символов</span>');
+define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', '&nbsp;<span class="errorText">Вы ввели неверный email адрес!</span>');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', '&nbsp;<span class="errorText">Данный email адрес уже зарегистрирован!</span>');
+define('ENTRY_COMPANY', 'Компания:');
+define('ENTRY_STREET_ADDRESS', 'Адрес:');
+define('ENTRY_STREET_ADDRESS_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов</span>');
+define('ENTRY_SUBURB', 'Район:');
+define('ENTRY_POST_CODE', 'Индекс:');
+define('ENTRY_POST_CODE_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_POSTCODE_MIN_LENGTH . ' символов</span>');
+define('ENTRY_CITY', 'Город:');
+define('ENTRY_CITY_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_CITY_MIN_LENGTH . ' символов</span>');
+define('ENTRY_STATE', 'Регион:');
+define('ENTRY_STATE_ERROR', '&nbsp;<span class="errorText">обязательно</span>');
+define('ENTRY_COUNTRY', 'Страна:');
+define('ENTRY_TELEPHONE_NUMBER', 'Телефон:');
+define('ENTRY_TELEPHONE_NUMBER_ERROR', '&nbsp;<span class="errorText">минимум ' . ENTRY_TELEPHONE_MIN_LENGTH . ' символов</span>');
+define('ENTRY_FAX_NUMBER', 'Факс:');
+define('ENTRY_NEWSLETTER', 'Рассылка:');
+define('ENTRY_CUSTOMERS_STATUS', 'Статус клиента:');
+define('ENTRY_NEWSLETTER_YES', 'Подписан');
+define('ENTRY_NEWSLETTER_NO', 'Не подписан');
+define('ENTRY_MAIL_ERROR','&nbsp;<span class="errorText">Выберите опцию</span>');
+define('ENTRY_PASSWORD','Пароль (сгенерирован)');
+define('ENTRY_PASSWORD_ERROR','&nbsp;<span class="errorText">минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов</span>');
+define('ENTRY_MAIL_COMMENTS','Дополнительный текст в Email:');
 
-define('ENTRY_MAIL','Send eMail with password to customer?');
-define('YES','yes');
-define('NO','no');
-define('SAVE_ENTRY','Save changes?');
-define('TEXT_CHOOSE_INFO_TEMPLATE','Template for product details');
-define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Template for product options');
-define('TEXT_SELECT','-- Please Select --');
+define('ENTRY_MAIL','Послать письмо с паролем клиенту?');
+define('YES','да');
+define('NO','нет');
+define('SAVE_ENTRY','Сохранить изменения?');
+define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон для описания товара');
+define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Шаблон для атрибутов товара');
+define('TEXT_SELECT','-- Выберите --');
 
 // Icons
-define('ICON_CROSS', 'False');
-define('ICON_CURRENT_FOLDER', 'Current Folder');
-define('ICON_DELETE', 'Delete');
-define('ICON_ERROR', 'Error');
-define('ICON_FILE', 'File');
-define('ICON_FILE_DOWNLOAD', 'Download');
-define('ICON_FOLDER', 'Folder');
-define('ICON_LOCKED', 'Locked');
-define('ICON_PREVIOUS_LEVEL', 'Previous Level');
-define('ICON_PREVIEW', 'Preview');
-define('ICON_STATISTICS', 'Statistics');
-define('ICON_SUCCESS', 'Success');
-define('ICON_TICK', 'True');
-define('ICON_UNLOCKED', 'Unlocked');
-define('ICON_WARNING', 'Warning');
+define('ICON_CROSS', 'Недействительно');
+define('ICON_CURRENT_FOLDER', 'Текущая директория');
+define('ICON_DELETE', 'Удалить');
+define('ICON_ERROR', 'Ошибка:');
+define('ICON_FILE', 'Файл');
+define('ICON_FILE_DOWNLOAD', 'Загрузка');
+define('ICON_FOLDER', 'Папка');
+define('ICON_LOCKED', 'Заблокировать');
+define('ICON_PREVIOUS_LEVEL', 'Предыдущий уровень');
+define('ICON_PREVIEW', 'Редактировать');
+define('ICON_STATISTICS', 'Статистика');
+define('ICON_SUCCESS', 'Выполнено');
+define('ICON_TICK', 'Истина');
+define('ICON_UNLOCKED', 'Разблокировать');
+define('ICON_WARNING', 'ВНИМАНИЕ');
 
 // constants for use in tep_prev_next_display function
-define('TEXT_RESULT_PAGE', 'Page %s of %d');
-define('TEXT_DISPLAY_NUMBER_OF_BANNERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Banners)');
-define('TEXT_DISPLAY_NUMBER_OF_COUNTRIES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Countries)');
-define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Customers)');
-define('TEXT_DISPLAY_NUMBER_OF_CURRENCIES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Currencies)');
-define('TEXT_DISPLAY_NUMBER_OF_LANGUAGES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Languages)');
-define('TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Manufacturers)');
-define('TEXT_DISPLAY_NUMBER_OF_NEWSLETTERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Newsletters)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Orders)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS_STATUS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Orders Status)');
-define('TEXT_DISPLAY_NUMBER_OF_XSELL_GROUP', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Cross-sell groups)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_VPE', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Packing Units)');
-define('TEXT_DISPLAY_NUMBER_OF_SHIPPING_STATUS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Shippingstatus)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Products)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_EXPECTED', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> products expected)');
-define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Reviews)');
-define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> products on special)');
-define('TEXT_DISPLAY_NUMBER_OF_TAX_CLASSES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Tax Classes)');
-define('TEXT_DISPLAY_NUMBER_OF_TAX_ZONES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Tax Zones)');
-define('TEXT_DISPLAY_NUMBER_OF_TAX_RATES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> Tax Rates)');
-define('TEXT_DISPLAY_NUMBER_OF_ZONES', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> zones)');
+define('TEXT_RESULT_PAGE', 'Страница %s из %d');
+define('TEXT_DISPLAY_NUMBER_OF_BANNERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> баннеров)');
+define('TEXT_DISPLAY_NUMBER_OF_COUNTRIES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> стран)');
+define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> клиентов)');
+define('TEXT_DISPLAY_NUMBER_OF_CURRENCIES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> валют)');
+define('TEXT_DISPLAY_NUMBER_OF_LANGUAGES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> языков)');
+define('TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> производителей)');
+define('TEXT_DISPLAY_NUMBER_OF_NEWSLETTERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> писем)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> заказов)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS_STATUS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> статусов заказов)');
+define('TEXT_DISPLAY_NUMBER_OF_XSELL_GROUP', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> групп сопутствующих товаров)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_VPE', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> упаковочных единиц)');
+define('TEXT_DISPLAY_NUMBER_OF_SHIPPING_STATUS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> статусов доставок)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> товаров)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_EXPECTED', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> ожидаемых товаров)');
+define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> отзывов)');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> скидок)');
+define('TEXT_DISPLAY_NUMBER_OF_TAX_CLASSES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> налоговых классов)');
+define('TEXT_DISPLAY_NUMBER_OF_TAX_ZONES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> налоговых зон)');
+define('TEXT_DISPLAY_NUMBER_OF_TAX_RATES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> налоговых ставок)');
+define('TEXT_DISPLAY_NUMBER_OF_ZONES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> зон)');
 
-define('PREVNEXT_BUTTON_PREV', '&lt;&lt;');
-define('PREVNEXT_BUTTON_NEXT', '&gt;&gt;');
+define('PREVNEXT_BUTTON_PREV', 'Предыдущая');
+define('PREVNEXT_BUTTON_NEXT', 'Следующая');
 
-define('TEXT_DEFAULT', 'Default');
-define('TEXT_SET_DEFAULT', 'Set as default');
-define('TEXT_FIELD_REQUIRED', '&nbsp;<span class="fieldRequired">* Required</span>');
+define('TEXT_DEFAULT', 'по умолчанию');
+define('TEXT_SET_DEFAULT', 'Установить по умолчанию');
+define('TEXT_FIELD_REQUIRED', '&nbsp;<span class="fieldRequired">* Обязательно</span>');
 
-define('ERROR_NO_DEFAULT_CURRENCY_DEFINED', 'Error: There is currently no default currency set. Please set one at: Administration Tool -> Localization -> Currencies');
+define('ERROR_NO_DEFAULT_CURRENCY_DEFINED', 'Ошибка: К настоящему времени ни одна валюта не была установлена по умолчанию. Пожалуйста, установите одну из них в: Локализация -> Валюта');
 
-define('TEXT_CACHE_CATEGORIES', 'Categories Box');
-define('TEXT_CACHE_MANUFACTURERS', 'Manufacturers Box');
-define('TEXT_CACHE_ALSO_PURCHASED', 'Also Purchased Module');
+define('TEXT_CACHE_CATEGORIES', 'Бокс Категорий');
+define('TEXT_CACHE_MANUFACTURERS', 'Бокс Производителей');
+define('TEXT_CACHE_ALSO_PURCHASED', 'Также Модули Покупок'); 
 
-define('TEXT_NONE', '--none--');
-define('TEXT_TOP', 'Top');
+define('TEXT_NONE', '--нет--');
+define('TEXT_TOP', 'Начало');
 
-define('ERROR_DESTINATION_DOES_NOT_EXIST', 'Error: Destination does not exist.');
-define('ERROR_DESTINATION_NOT_WRITEABLE', 'Error: Destination is not writeable.');
-define('ERROR_FILE_NOT_SAVED', 'Error: File upload not saved.');
-define('ERROR_FILETYPE_NOT_ALLOWED', 'Error: File upload type not allowed.');
-define('SUCCESS_FILE_SAVED_SUCCESSFULLY', 'Success: File upload saved successfully.');
-define('WARNING_NO_FILE_UPLOADED', 'Warnung: No file uploaded.');
+define('ERROR_DESTINATION_DOES_NOT_EXIST', 'Ошибка: Каталог не существует.');
+define('ERROR_DESTINATION_NOT_WRITEABLE', 'Ошибка: Каталог защищён от записи, установите необходимые права доступа.');
+define('ERROR_FILE_NOT_SAVED', 'Ошибка: Файл не был загружен.');
+define('ERROR_FILETYPE_NOT_ALLOWED', 'Ошибка: Нельзя закачивать файлы данного типа.');
+define('SUCCESS_FILE_SAVED_SUCCESSFULLY', 'Выполнено: Файл успешно загружен.');
+define('WARNING_NO_FILE_UPLOADED', 'Предупреждение: Ни одного файла не загружено.');
 
-define('DELETE_ENTRY','Delete entry?');
-define('TEXT_PAYMENT_ERROR','<b>WARNING:</b><br />Please activate a Payment Module!');
-define('TEXT_SHIPPING_ERROR','<b>WARNING:</b><br />Please activate a Shipping Module!');
+define('DELETE_ENTRY','Удалить запись?');
+define('TEXT_PAYMENT_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модуль оплаты!');
+define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модуль доставки!');
 
-define('TEXT_NETTO','no tax: ');
+define('TEXT_NETTO','без налогов.');
 
-define('ENTRY_CID','Customers ID:');
-define('IP','Order IP:');
+define('ENTRY_CID','ID клиентов:');
+define('IP','IP заказа:');
 define('CUSTOMERS_MEMO','Memos:');
-define('DISPLAY_MEMOS','Show/Write');
-define('TITLE_MEMO','Customers MEMO');
-define('ENTRY_LANGUAGE','Language:');
-define('CATEGORIE_NOT_FOUND','Categorie not found!');
+define('DISPLAY_MEMOS','Показать/написать');
+define('TITLE_MEMO','MEMO клиента');
+define('ENTRY_LANGUAGE','Язык:');
+define('CATEGORIE_NOT_FOUND','Категория не найдена!');
 
-define('IMAGE_RELEASE', 'Redeem Gift Voucher');
+define('IMAGE_RELEASE', 'Использовать Подарочный Ваучер');
 
-define('_JANUARY', 'January');
-define('_FEBRUARY', 'February');
-define('_MARCH', 'March');
-define('_APRIL', 'April');
-define('_MAY', 'May');
-define('_JUNE', 'June');
-define('_JULY', 'July');
-define('_AUGUST', 'August');
-define('_SEPTEMBER', 'September');
-define('_OCTOBER', 'October');
-define('_NOVEMBER', 'November');
-define('_DECEMBER', 'December');
+define('_JANUARY', 'Январь');
+define('_FEBRUARY', 'Февраль');
+define('_MARCH', 'Март');
+define('_APRIL', 'Апрель');
+define('_MAY', 'Май');
+define('_JUNE', 'Июнь');
+define('_JULY', 'Июль');
+define('_AUGUST', 'Август');
+define('_SEPTEMBER', 'Сентябрь');
+define('_OCTOBER', 'Октябрь');
+define('_NOVEMBER', 'Ноябрь');
+define('_DECEMBER', 'Декабрь');
 
-define('TEXT_DISPLAY_NUMBER_OF_GIFT_VOUCHERS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> gift vouchers)');
-define('TEXT_DISPLAY_NUMBER_OF_COUPONS', 'Displaying <b>%d</b> to <b>%d</b> (of <b>%d</b> coupons)');
+define('TEXT_DISPLAY_NUMBER_OF_GIFT_VOUCHERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> подарочных сертификатов)');
+define('TEXT_DISPLAY_NUMBER_OF_COUPONS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> купонов)');
 
-define('TEXT_VALID_PRODUCTS_LIST', 'Products List');
-define('TEXT_VALID_PRODUCTS_ID', 'Products ID');
-define('TEXT_VALID_PRODUCTS_NAME', 'Products Name');
-define('TEXT_VALID_PRODUCTS_MODEL', 'Products Model');
+define('TEXT_VALID_PRODUCTS_LIST', 'Список товаров');
+define('TEXT_VALID_PRODUCTS_ID', 'ID товара');
+define('TEXT_VALID_PRODUCTS_NAME', 'Название  товара');
+define('TEXT_VALID_PRODUCTS_MODEL', 'Модель товара');
 
-define('TEXT_VALID_CATEGORIES_LIST', 'Categories List');
-define('TEXT_VALID_CATEGORIES_ID', 'Category ID');
-define('TEXT_VALID_CATEGORIES_NAME', 'Category Name');
+define('TEXT_VALID_CATEGORIES_LIST', 'Список категорий');
+define('TEXT_VALID_CATEGORIES_ID', 'ID категории');
+define('TEXT_VALID_CATEGORIES_NAME', 'Название категории');
 
-define('SECURITY_CODE_LENGTH_TITLE', 'Length of Gift Voucher Code');
-define('SECURITY_CODE_LENGTH_DESC', 'Enter here the length of the Gift Voucher Code (max. 16 characters)');
+define('SECURITY_CODE_LENGTH_TITLE', 'Длина кода подарочного сертификата');
+define('SECURITY_CODE_LENGTH_DESC', 'Введите длину кода подарочного купона');
 
-define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_TITLE', 'Welcome Gift Voucher Amount');
-define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_DESC', 'Welcome Gift Voucher Amount: If you do not wish to send a Gift Voucher in your create account eMail, put 0 for no amount, else place the amount here, i.e. 10.00 or 50.00, no currency signs');
-define('NEW_SIGNUP_DISCOUNT_COUPON_TITLE', 'Welcome Discount Coupon Code');
-define('NEW_SIGNUP_DISCOUNT_COUPON_DESC', 'Welcome Discount Coupon Code: if you do not want to send a Discount Coupon in your create account eMail ,leave this field blank, else place the coupon code here you wish to use');
+define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_TITLE', 'Подарочный Ваучер');
+define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_DESC', 'Внимание: Если Вы не собираетесь отправлять Подарочный Ваучер через свой e-mail, впишите 0 для никакого значения, либо впишите 10.00 или 50.00 не обозначая валюты');
+define('NEW_SIGNUP_DISCOUNT_COUPON_TITLE', 'Код на Скидку');
+define('NEW_SIGNUP_DISCOUNT_COUPON_DESC', 'Код на Скидку: Если Вы не собираетесь отправлять Купон на Скидку через свой e-mail оставьте пустым поле для ввода кода');
 
-define('TXT_ALL','All');
+define('TXT_ALL','Все');
 
 // UST ID
 define('BOX_CONFIGURATION_18', 'Vat ID');
@@ -377,13 +377,13 @@ define('HEADING_TITLE_VAT','Vat-ID');
 define('ENTRY_VAT_ID','Vat-ID');
 define('TEXT_VAT_FALSE','<font color="FF0000">Checked/False!</font>');
 define('TEXT_VAT_TRUE','<font color="FF0000">Checked/True!</font>');
-define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="FF0000">Not Checked/Unknown Country!</font>');
-define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="FF0000">Not Checked/No Check available!</font>');
-define('ENTRY_VAT_ID_ERROR', '<font color="FF0000">* Your Vat ID is False!</font>');
+define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="FF0000">Не проверенно/Неизвестная страна!</font>');
+define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="FF0000">Не проверенно/No Check available!</font>');
+define('ENTRY_VAT_ID_ERROR', '<font color="FF0000">* Ваш Vat ID ложный!</font>');
 
-define('ERROR_GIF_MERGE','Missing GDlib Gif-Support, merge failed');
-define('ERROR_GIF_UPLOAD','Missing GDlib Gif-Support, processing of Gif image failed');
+define('ERROR_GIF_MERGE','Отсутствует GDlib GIF-поддержка, соеденить картинки неудалось');
+define('ERROR_GIF_UPLOAD','Отсутствует GDlib Gif-поддержка, обработка картинки GIF неудалась');
 
-define('TEXT_REFERER','Referer: ');
+define('TEXT_REFERER','Реферер: ');
 
 ?>

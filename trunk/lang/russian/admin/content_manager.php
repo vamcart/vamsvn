@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: content_manager.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: content_manager.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -13,67 +13,67 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
    
- define('HEADING_TITLE','Content Manager');
- define('HEADING_CONTENT','Site content');
- define('HEADING_PRODUCTS_CONTENT','Products content');
- define('TABLE_HEADING_CONTENT_ID','LinkI D');
- define('TABLE_HEADING_CONTENT_TITLE','Title');
- define('TABLE_HEADING_CONTENT_FILE','File');
- define('TABLE_HEADING_CONTENT_STATUS','Visible in box');
- define('TABLE_HEADING_CONTENT_BOX','Box');
+ define('HEADING_TITLE','Содержание сайта');
+ define('HEADING_CONTENT','Содержание сайта');
+ define('HEADING_PRODUCTS_CONTENT','Информация к товару');
+ define('TABLE_HEADING_CONTENT_ID','Link ID');
+ define('TABLE_HEADING_CONTENT_TITLE','Заголовок');
+ define('TABLE_HEADING_CONTENT_FILE','Файл');
+ define('TABLE_HEADING_CONTENT_STATUS','Видим в боксе');
+ define('TABLE_HEADING_CONTENT_BOX','Бокс');
  define('TABLE_HEADING_PRODUCTS_ID','ID');
- define('TABLE_HEADING_PRODUCTS','Product');
+ define('TABLE_HEADING_PRODUCTS','Товар');
  define('TABLE_HEADING_PRODUCTS_CONTENT_ID','ID');
- define('TABLE_HEADING_LANGUAGE','Language');
- define('TABLE_HEADING_CONTENT_NAME','Name/Filename');
- define('TABLE_HEADING_CONTENT_LINK','Link');
- define('TABLE_HEADING_CONTENT_HITS','Viewed');
- define('TABLE_HEADING_CONTENT_GROUP','Group');
- define('TABLE_HEADING_CONTENT_SORT','Sort Order');
- define('TEXT_YES','Yes');
- define('TEXT_NO','No');
- define('TABLE_HEADING_CONTENT_ACTION','Action');
- define('TEXT_DELETE','Delete');
- define('TEXT_EDIT','Edit');
- define('TEXT_PREVIEW','Preview');
- define('CONFIRM_DELETE','Delete Content ?');
- define('CONTENT_NOTE','Content marked with <font color="ff0000">*</font> is a part of the system and cannot be deleted!');
+ define('TABLE_HEADING_LANGUAGE','Язык');
+ define('TABLE_HEADING_CONTENT_NAME','Название/Название файла');
+ define('TABLE_HEADING_CONTENT_LINK','Ссылка');
+ define('TABLE_HEADING_CONTENT_HITS','Просмотрен');
+ define('TABLE_HEADING_CONTENT_GROUP','Группа');
+ define('TABLE_HEADING_CONTENT_SORT','Порядок сорт.');
+ define('TEXT_YES','Да');
+ define('TEXT_NO','нет');
+ define('TABLE_HEADING_CONTENT_ACTION','Действие');
+ define('TEXT_DELETE','Удалить');
+ define('TEXT_EDIT','Изменить');
+ define('TEXT_PREVIEW','Просмотр');
+ define('CONFIRM_DELETE','Удалить содержание ?');
+ define('CONTENT_NOTE','Маркированное значком <span class="red">*</span> &#8212; часть системы и не может быть удалено!');
 
 
  // edit
- define('TEXT_LANGUAGE','Language:');
- define('TEXT_STATUS','Visible:');
- define('TEXT_STATUS_DESCRIPTION','If checked, a link will be displayed in the information box');
- define('TEXT_TITLE','Title:');
- define('TEXT_TITLE_FILE','Title/Filename:');
- define('TEXT_SELECT','-Select-');
- define('TEXT_HEADING','Heading:');
- define('TEXT_CONTENT','Text:');
- define('TEXT_UPLOAD_FILE','Upload File:');
- define('TEXT_UPLOAD_FILE_LOCAL','(from local system)');
- define('TEXT_CHOOSE_FILE','Choose File:');
- define('TEXT_CHOOSE_FILE_DESC','You also can choose an existing file from the list.');
- define('TEXT_NO_FILE','Delete Selection');
- define('TEXT_CHOOSE_FILE_SERVER','(If you uploaded your files already via FTP to <i>(media/content)</i>, you can select the file here.');
- define('TEXT_CURRENT_FILE','Current File:');
- define('TEXT_FILE_DESCRIPTION','<b>Info:</b><br />You also got the opportunity to upload a <b>.html</b> or <b>.htm</b> file and display it as shop content.<br /> If you select or upload a file, the text in the box will be ignored.<br /><br />');
- define('ERROR_FILE','Wrong file format (only .html or .htm)');
- define('ERROR_TITLE','Please enter a title');
- define('ERROR_COMMENT','Please enter a file description!');
- define('TEXT_FILE_FLAG','Box:');
- define('TEXT_PARENT','Main Document:');
- define('TEXT_PARENT_DESCRIPTION','Assign to this document');
- define('TEXT_PRODUCT','Product:');
- define('TEXT_LINK','Link:');
- define('TEXT_SORT_ORDER','Sort:'); 
- define('TEXT_GROUP','Language Group:');
- define('TEXT_GROUP_DESC','With this ID you link togehther similar subjects from different languages.');
+ define('TEXT_LANGUAGE','Язык:');
+ define('TEXT_STATUS','Показывать:');
+ define('TEXT_STATUS_DESCRIPTION','Если отмечено, то ссылка на данный контент отображается в информационном боксе');
+ define('TEXT_TITLE','Название (ссылка):');
+ define('TEXT_TITLE_FILE','Название/Имя файла:');
+ define('TEXT_SELECT','-Выберите-');
+ define('TEXT_HEADING','Заголовок (документ):');
+ define('TEXT_CONTENT','Текст:');
+ define('TEXT_UPLOAD_FILE','Загрузить файл:');
+ define('TEXT_UPLOAD_FILE_LOCAL','(с локальной системы)');
+ define('TEXT_CHOOSE_FILE','Выберите файл:');
+ define('TEXT_CHOOSE_FILE_DESC','Вы так-же можете выбрать из списка уже существующий файл.');
+ define('TEXT_NO_FILE','Удалить отмеченное');
+ define('TEXT_CHOOSE_FILE_SERVER','Если вы загрузили свои файлы через FTP в <i>(media/content)</i>, вы должны выбрать здесь файл.');
+ define('TEXT_CURRENT_FILE','Текущий файл:');
+ define('TEXT_FILE_DESCRIPTION','<b>Информация:</b><br />Вы также можете загружать <b>.html</b> или <b>.htm</b> файл и он будет отображаться в содержании, как есть.<br /> Если вы выбрали какой-то файл или загружаете его, то текст в боксе будет проигнорирован.<br />');
+ define('ERROR_FILE','Неверный формат файла (только .html или .htm)');
+ define('ERROR_TITLE','Пожалуйста, введите название');
+ define('ERROR_COMMENT','Пожалуйста, введите описание файла!');
+ define('TEXT_FILE_FLAG','Бокс:');
+ define('TEXT_PARENT','Основной документ:');
+ define('TEXT_PARENT_DESCRIPTION','Назначить к этому документу');
+ define('TEXT_PRODUCT','Товар:');
+ define('TEXT_LINK','Ссылка:');
+ define('TEXT_SORT_ORDER','Сортировка:');
+ define('TEXT_GROUP','Языковая группа:');
+ define('TEXT_GROUP_DESC','С этим ID вы можете связать одинаковые темы в разных языках.');
 
- define('TEXT_CONTENT_DESCRIPTION','With this Content Manager you can add any filetype to a product, like technical sheets, productdetails, videos. These elements will be displayed on the products detailpage.<br /><br />');
- define('TEXT_FILENAME','Used File:');
- define('TEXT_FILE_DESC','Description:');
- define('USED_SPACE','Used Space:');
- define('TABLE_HEADING_CONTENT_FILESIZE','Filesize');
+ define('TEXT_CONTENT_DESCRIPTION','Здесь Вы можете добавить к Вашему товару файл любого типа, например &#8212; технические характеристики, описание товара, видео, фотографии товара. Всё это будет выведено на странице описания товара.<br /><br />');
+ define('TEXT_FILENAME','Использованный файл:');
+ define('TEXT_FILE_DESC','Описание:');
+ define('USED_SPACE','Использованное место:');
+ define('TABLE_HEADING_CONTENT_FILESIZE','Размер файла');
 
 
  ?>

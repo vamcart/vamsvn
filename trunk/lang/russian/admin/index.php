@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: index.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: index.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,54 +15,54 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Choose an action...');
+define('HEADING_TITLE', 'Выберите нужное действие..');
 
-define('BOX_TITLE_ORDERS', 'Orders');
-define('BOX_TITLE_STATISTICS', 'Statistics');
+define('BOX_TITLE_ORDERS', 'Заказы');
+define('BOX_TITLE_STATISTICS', 'Статистика');
 
-define('BOX_ENTRY_SUPPORT_SITE', 'Support Site');
-define('BOX_ENTRY_SUPPORT_FORUMS', 'Support Forums');
-define('BOX_ENTRY_MAILING_LISTS', 'Mailing Lists');
-define('BOX_ENTRY_BUG_REPORTS', 'Bug Reports');
-define('BOX_ENTRY_FAQ', 'FAQ');
-define('BOX_ENTRY_LIVE_DISCUSSIONS', 'Live Discussions');
-define('BOX_ENTRY_CVS_REPOSITORY', 'CVS Repository');
-define('BOX_ENTRY_INFORMATION_PORTAL', 'Information Portal');
+define('BOX_ENTRY_SUPPORT_SITE', 'Сайт поддержки');
+define('BOX_ENTRY_SUPPORT_FORUMS', 'Форумы поддержки');
+define('BOX_ENTRY_MAILING_LISTS', 'Лист рассылки');
+define('BOX_ENTRY_BUG_REPORTS', 'Сообщения об ошибках');
+define('BOX_ENTRY_FAQ', 'ЧаВО');
+define('BOX_ENTRY_LIVE_DISCUSSIONS', 'Обсуждение проекта');
+define('BOX_ENTRY_CVS_REPOSITORY', 'CVS Сервер');
+define('BOX_ENTRY_INFORMATION_PORTAL', 'Информационный портал');
 
-define('BOX_ENTRY_CUSTOMERS', 'Customers:');
-define('BOX_ENTRY_PRODUCTS', 'Products:');
-define('BOX_ENTRY_REVIEWS', 'Reviews:');
+define('BOX_ENTRY_CUSTOMERS', 'Клиенты:');
+define('BOX_ENTRY_PRODUCTS', 'Товары:');
+define('BOX_ENTRY_REVIEWS', 'Отзывы:');
 
-define('BOX_CONNECTION_PROTECTED', 'You are protected by a %s secure SSL Connection.');
-define('BOX_CONNECTION_UNPROTECTED', 'You are <font color="#ff0000">not</font> protected by a secure SSL connection.');
-define('BOX_CONNECTION_UNKNOWN', 'unknown');
+define('BOX_CONNECTION_PROTECTED', 'Вы защищены %s безопасным SSL соединением.');
+define('BOX_CONNECTION_UNPROTECTED', 'Вы <font color="#ff0000">не</font> защищены безопасным SSL соединением.');
+define('BOX_CONNECTION_UNKNOWN', 'неизвестно'); 
 
-define('BOX_HEADING_CONFIGURATION', 'Configuration');
-define('BOX_CONFIGURATION_MYSTORE', 'My Shop');
-define('BOX_CONFIGURATION_LOGGING', 'Logging Informations');
-define('BOX_CONFIGURATION_CACHE', 'Cache Options');
+define('BOX_HEADING_CONFIGURATION', 'Конфигурация');
+define('BOX_CONFIGURATION_MYSTORE', 'Мой магазин');
+define('BOX_CONFIGURATION_LOGGING', 'Логин информация');
+define('BOX_CONFIGURATION_CACHE', 'Кеш опции');
 
-define('BOX_MODULES_PAYMENT', 'Payment Method');
-define('BOX_MODULES_SHIPPING', 'Shipping Method');
+define('BOX_MODULES_PAYMENT', 'Оплата');
+define('BOX_MODULES_SHIPPING', 'Доставка');
 
-define('BOX_CATALOG_MANUFACTURERS', 'Manufacturers');
+define('BOX_CATALOG_MANUFACTURERS', 'Производители');
 
-define('BOX_CUSTOMERS_CUSTOMERS', 'Customers');
-define('BOX_CUSTOMERS_ORDERS', 'Orders');
-define('BOX_CUSTOMERS_ACCOUNTING', 'Accounting');
+define('BOX_CUSTOMERS_CUSTOMERS', 'Покупатели');
+define('BOX_CUSTOMERS_ORDERS', 'Заказы');
+define('BOX_CUSTOMERS_ACCOUNTING', 'Бухгалтерия');
 
-define('BOX_TAXES_COUNTRIES', 'Countries');
-define('BOX_TAXES_GEO_ZONES', 'Zones');
+define('BOX_TAXES_COUNTRIES', 'Страны');
+define('BOX_TAXES_GEO_ZONES', 'Зоны');
 
-define('BOX_LOCALIZATION_CURRENCIES', 'Currencies');
-define('BOX_LOCALIZATION_LANGUAGES', 'Languages');
+define('BOX_LOCALIZATION_CURRENCIES', 'Валюта');
+define('BOX_LOCALIZATION_LANGUAGES', 'Язык');
 
-define('CATALOG_CONTENTS', 'Content');
+define('CATALOG_CONTENTS', 'Содержание');
 
-define('REPORTS_PRODUCTS', 'Products');
-define('REPORTS_ORDERS', 'Orders');
+define('REPORTS_PRODUCTS', 'Товары');
+define('REPORTS_ORDERS', 'Заказы');
 
-define('TOOLS_BACKUP', 'Backup');
-define('TOOLS_BANNERS', 'Banners');
-define('TOOLS_FILES', 'Files');
+define('TOOLS_BACKUP', 'Резервное Копирование');
+define('TOOLS_BANNERS', 'Баннеры');
+define('TOOLS_FILES', 'Файловый Менеджер');
 ?>

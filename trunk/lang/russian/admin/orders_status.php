@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders_status.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: orders_status.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,20 +15,20 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Orders Status');
+define('HEADING_TITLE', 'Статус Заказов');
 
-define('TABLE_HEADING_ORDERS_STATUS', 'Orders Status');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_ORDERS_STATUS', 'Статус заказов');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_INFO_ORDERS_STATUS_NAME', 'Orders Status:');
-define('TEXT_INFO_INSERT_INTRO', 'Please enter the new orders status with its related data');
-define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete this order status?');
-define('TEXT_INFO_HEADING_NEW_ORDERS_STATUS', 'New Orders Status');
-define('TEXT_INFO_HEADING_EDIT_ORDERS_STATUS', 'Edit Orders Status');
-define('TEXT_INFO_HEADING_DELETE_ORDERS_STATUS', 'Delete Orders Status');
+define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_INFO_ORDERS_STATUS_NAME', 'Статус заказов:');
+define('TEXT_INFO_INSERT_INTRO', 'Введите, пожалуйста, новый статус заказа, на основе исходных данных');
+define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить статус этого заказа?');
+define('TEXT_INFO_HEADING_NEW_ORDERS_STATUS', 'Новый статус заказа');
+define('TEXT_INFO_HEADING_EDIT_ORDERS_STATUS', 'Редактировать статус заказа');
+define('TEXT_INFO_HEADING_DELETE_ORDERS_STATUS', 'Удалить статус заказа');
 
-define('ERROR_REMOVE_DEFAULT_ORDER_STATUS', 'Error: The default order status can not be removed. Please set another order status as default, and try again.');
-define('ERROR_STATUS_USED_IN_ORDERS', 'Error: This order status is currently used in orders.');
-define('ERROR_STATUS_USED_IN_HISTORY', 'Error: This order status is currently used in the order status history.');
+define('ERROR_REMOVE_DEFAULT_ORDER_STATUS', 'Ошибка: Статус заказа по умолчанию не может быть удален, измените статус и попробуйте снова.');
+define('ERROR_STATUS_USED_IN_ORDERS', 'Ошибка: Этот статус используется в настоящее время.');
+define('ERROR_STATUS_USED_IN_HISTORY', 'Ошибка: Этот статус используется сейчас в истории заказов.');
 ?>

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: products_vpe.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: products_vpe.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,17 +15,17 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Packing unit');
+define('HEADING_TITLE', 'Упаковачная единица');
 
-define('TABLE_HEADING_PRODUCTS_VPE', 'Packing unit');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_PRODUCTS_VPE', 'Упаковачная единица');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_EDIT_INTRO', 'Please make any necessary changes');
-define('TEXT_INFO_PRODUCTS_VPE_NAME', 'Orders Status:');
-define('TEXT_INFO_INSERT_INTRO', 'Please enter the new packing unit with its related data');
-define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete this packing unit?');
-define('TEXT_INFO_HEADING_NEW_PRODUCTS_VPE', 'New packing unit');
-define('TEXT_INFO_HEADING_EDIT_PRODUCTS_VPE', 'Edit packing unit');
-define('TEXT_INFO_HEADING_DELETE_PRODUCTS_VPE', 'Delete packing unit');
-define('ERROR_REMOVE_DEFAULT_PRODUCTS_VPE', 'Error: The default packing unit can not be removed. Please set another packing unit as default, and try again.');
+define('TEXT_INFO_EDIT_INTRO', 'Сделайте необходиме изменения');
+define('TEXT_INFO_PRODUCTS_VPE_NAME', 'Статус заказа:');
+define('TEXT_INFO_INSERT_INTRO', 'Введите новый упаковочный </span title="единица измерения короткомерного баланса, равная 5,66 складочных кубических метра">юнит</span>');
+define('TEXT_INFO_DELETE_INTRO', 'Вы уверены, что хотите удалить этот юнит?');
+define('TEXT_INFO_HEADING_NEW_PRODUCTS_VPE', 'Новый упак. единица');
+define('TEXT_INFO_HEADING_EDIT_PRODUCTS_VPE', 'Редактировать упак. единицу');
+define('TEXT_INFO_HEADING_DELETE_PRODUCTS_VPE', 'Удалить упак. единицу');
+define('ERROR_REMOVE_DEFAULT_PRODUCTS_VPE', 'Ошибка: юнит по умолчанию не может быть удален. Пожалуйста, установите другой юнит по умолчанию и попробуйте еще раз.');
 ?>

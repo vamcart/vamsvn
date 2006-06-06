@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: start.php 890 2005-04-27 11:34:12Z gwinger $   
+   $Id: start.php 890 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -13,12 +13,12 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
  
-  define('HEADING_TITLE','Welcome');
-  define('ATTENTION_TITLE','! ATTENTION !');
+  define('HEADING_TITLE','Добро пожаловать');
+  define('ATTENTION_TITLE','! ВНИМАНИЕ !');
 
   // text for Warnings:
-  define('TEXT_FILE_WARNING','<b>WARNING:</b><br />Following files are writeable. Please change the permissions of this files due to security reasons. <b>(444)</b> in unix, <b>(read-only)</b> in Win32.');
-  define('TEXT_FOLDER_WARNING','<b>WARNING:</b><br />Following folders must be writeable. Please change the permissions of these folders. <b>(777)</b> in unix, <b>(read-write)</b> in Win32.');
+  define('TEXT_FILE_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие файлы не закрыты от записи. Немедленно смените права на файлы,если не хотите проблем. Установите <b>444</b> для юникса, или <b>read-only</b> для Windows.');
+  define('TEXT_FOLDER_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие папки закрыты от записи. Измените права на эти папки. <b>(777)</b> для юникса, или <b>(read-write)</b> для Windows.');
   define('REPORT_GENERATED_FOR','Report For:');
   define('REPORT_GENERATED_ON','Generated On:');
   define('FIRST_VISIT_ON','First Visit:');

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: whos_online.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: whos_online.php 899 2006-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,17 +15,17 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Who\'s Online');
+define('HEADING_TITLE', 'Кто сейчас в магазине');
 
-define('TABLE_HEADING_ONLINE', 'Online');
+define('TABLE_HEADING_ONLINE', 'Онлайн');
 define('TABLE_HEADING_CUSTOMER_ID', 'ID');
-define('TABLE_HEADING_FULL_NAME', 'Full Name');
-define('TABLE_HEADING_IP_ADDRESS', 'IP Adress');
-define('TABLE_HEADING_ENTRY_TIME', 'Entry Time');
-define('TABLE_HEADING_LAST_CLICK', 'Last Click');
-define('TABLE_HEADING_LAST_PAGE_URL', 'Last URL');
-define('TABLE_HEADING_ACTION', 'Action');
-define('TABLE_HEADING_SHOPPING_CART', 'Users Shopping Cart');
-define('TEXT_SHOPPING_CART_SUBTOTAL', 'Subtotal');
-define('TEXT_NUMBER_OF_CUSTOMERS', 'Currently there are %s customers online');
+define('TABLE_HEADING_FULL_NAME', 'Имя');
+define('TABLE_HEADING_IP_ADDRESS', 'IP Адрес');
+define('TABLE_HEADING_ENTRY_TIME', 'Время Входа');
+define('TABLE_HEADING_LAST_CLICK', 'Последний Клик');
+define('TABLE_HEADING_LAST_PAGE_URL', 'Последний URL');
+define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_SHOPPING_CART', 'Корзина пользователя');
+define('TEXT_SHOPPING_CART_SUBTOTAL', 'Стоимость товара');
+define('TEXT_NUMBER_OF_CUSTOMERS', 'На данный момент в магазине клиентов: %s');
 ?>
