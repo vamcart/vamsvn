@@ -386,4 +386,5 @@ define('ERROR_GIF_UPLOAD','Отсутствует GDlib Gif-поддержка, обработка картинки G
 
 define('TEXT_REFERER','Реферер: ');
 
+define('IMAGE_ICON_INFO','');
 ?>
