@@ -22,12 +22,12 @@
  */
 
 define('TITLE', STORE_NAME);
-define('HEADER_TITLE_TOP', 'Main page');     
-define('HEADER_TITLE_CATALOG', 'Catalogue');
+define('HEADER_TITLE_TOP', 'Начало');     
+define('HEADER_TITLE_CATALOG', 'Каталог');
 
-define('HTML_PARAMS','dir="ltr" lang="en"');
+define('HTML_PARAMS','dir="ltr" lang="ru"');
 
-@setlocale(LC_TIME, 'en_EN@euro', 'en_US', 'en-US', 'en', 'en_US.ISO_8859-1', 'English','en_US.ISO_8859-15');
+@setlocale(LC_TIME, 'ru_RU.CP1251', 'Russian');
 
 define('DATE_FORMAT_SHORT', '%d.%m.%Y');  // this is used for strftime()
 define('DATE_FORMAT_LONG', '%A, %d. %B %Y'); // this is used for strftime()
@@ -46,8 +46,8 @@ function xtc_date_raw($date, $reverse = false) {
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
 define('LANGUAGE_CURRENCY', 'USD');
 
-define('MALE', 'Mr.');
-define('FEMALE', 'Miss/Ms./Mrs.');
+define('MALE', 'Мужской');
+define('FEMALE', 'Женский');
 
 /*
  *
@@ -56,40 +56,40 @@ define('FEMALE', 'Miss/Ms./Mrs.');
  */
 
 // text for gift voucher redeeming
-define('IMAGE_REDEEM_GIFT','Redeem Gift Voucher!');
+define('IMAGE_REDEEM_GIFT','Активировать подарочный сертификат!');
 
-define('BOX_TITLE_STATISTICS','Statistics:');
-define('BOX_ENTRY_CUSTOMERS','Customers');
-define('BOX_ENTRY_PRODUCTS','Products');
-define('BOX_ENTRY_REVIEWS','Reviews');
-define('TEXT_VALIDATING','Not validated');
+define('BOX_TITLE_STATISTICS','Статистика:');
+define('BOX_ENTRY_CUSTOMERS','Клиенты');
+define('BOX_ENTRY_PRODUCTS','Товары');
+define('BOX_ENTRY_REVIEWS','Отзывы');
+define('TEXT_VALIDATING','Не проверено');
 
 // manufacturer box text
-define('BOX_MANUFACTURER_INFO_HOMEPAGE', '%s Homepage');
-define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'More Products');
+define('BOX_MANUFACTURER_INFO_HOMEPAGE', 'Официальный сайт %s');
+define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары данного производителя');
 
-define('BOX_HEADING_ADD_PRODUCT_ID','Add To Cart');
+define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
   
-define('BOX_LOGINBOX_STATUS','Customer group:');     
-define('BOX_LOGINBOX_DISCOUNT','Product discount');
-define('BOX_LOGINBOX_DISCOUNT_TEXT','Discount');
+define('BOX_LOGINBOX_STATUS','Группа:');     
+define('BOX_LOGINBOX_DISCOUNT','Скидка');
+define('BOX_LOGINBOX_DISCOUNT_TEXT','Скидка');
 define('BOX_LOGINBOX_DISCOUNT_OT','');
 
 // reviews box text in includes/boxes/reviews.php
-define('BOX_REVIEWS_WRITE_REVIEW', 'Review this product!');
-define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s of 5 stars!');
+define('BOX_REVIEWS_WRITE_REVIEW', 'Оставить отзыв!');
+define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s из 5 звёзд!');
 
 // pull down default text
-define('PULL_DOWN_DEFAULT', 'Please choose');
+define('PULL_DOWN_DEFAULT', 'Выберите');
 
 // javascript messages
-define('JS_ERROR', 'Missing necessary information!\nPlease fill in correctly.\n\n');
+define('JS_ERROR', 'Не указана необходимая информация!\nПожалуйста, исправьте допущенные ошибки.\n\n');
 
-define('JS_REVIEW_TEXT', '* The text must consist at least of ' . REVIEW_TEXT_MIN_LENGTH . ' alphabetic characters..\n');
-define('JS_REVIEW_RATING', '* Enter your review.\n');
-define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Please choose a method of payment for your order.\n');
-define('JS_ERROR_SUBMITTED', 'This page has already been confirmed. Please click okay and wait until the process has finished.');
-define('ERROR_NO_PAYMENT_MODULE_SELECTED', 'Please choose a method of payment for your order.');
+define('JS_REVIEW_TEXT', '* Поле Текст отзыва должно содержать не менее ' . REVIEW_TEXT_MIN_LENGTH . ' символов.\n');
+define('JS_REVIEW_RATING', '* Вы не указали рейтинг.\n');
+define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
+define('JS_ERROR_SUBMITTED', 'Эта форма уже заполнена. Нажимайте Ok.');
+define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
 
 /*
  *
@@ -156,8 +156,8 @@ define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <b>%d</b> - <b>%d</b> (всего
  *
  */
 
-define('PREVNEXT_TITLE_PREVIOUS_PAGE', 'previous page');
-define('PREVNEXT_TITLE_NEXT_PAGE', 'next page');
+define('PREVNEXT_TITLE_PREVIOUS_PAGE', 'Предыдущая страница');
+define('PREVNEXT_TITLE_NEXT_PAGE', 'Следующая страница');
 define('PREVNEXT_TITLE_PAGE_NO', 'Страница %d');
 define('PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE', 'Предыдущие %d страниц');
 define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Следующие %d страниц');
@@ -168,8 +168,8 @@ define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Следующие %d страниц');
  *
  */
 
-define('PREVNEXT_BUTTON_PREV', '[&lt;&lt;&nbsp;previous]');
-define('PREVNEXT_BUTTON_NEXT', '[next&nbsp;&gt;&gt;]');
+define('PREVNEXT_BUTTON_PREV', 'Предыдущая');
+define('PREVNEXT_BUTTON_NEXT', 'Следующая');
 
 /*
  *
@@ -411,10 +411,10 @@ define('ERROR_INVALID_USES_COUPON','Customers can redeem this coupon only ');
 define('TIMES',' times.');
 define('ERROR_INVALID_STARTDATE_COUPON','Your coupon is not aviable yet.');
 define('ERROR_INVALID_FINISDATE_COUPON','Your coupon is out of date.');
-define('PERSONAL_MESSAGE', '%s says:');
+define('PERSONAL_MESSAGE', '%s пишет:');
 
 //Popup Window
-define('TEXT_CLOSE_WINDOW', 'Close Window.');
+define('TEXT_CLOSE_WINDOW', 'Закрыть окно.');
 
 /*
  *
@@ -422,7 +422,7 @@ define('TEXT_CLOSE_WINDOW', 'Close Window.');
  *
  */
 
-define('TEXT_CLOSE_WINDOW', 'Close Window [x]');
+define('TEXT_CLOSE_WINDOW', 'Закрыть окно [x]');
 define('TEXT_COUPON_HELP_HEADER', 'Congratulations, you have redeemed a Discount Coupon.');
 define('TEXT_COUPON_HELP_NAME', '<br /><br />Coupon Name : %s');
 define('TEXT_COUPON_HELP_FIXED', '<br /><br />The coupon is worth %s discount against your order');
@@ -449,4 +449,9 @@ define('TAX_INFO_EXCL','excl. %s Tax');
 define('TAX_INFO_ADD','plus. %s Tax');
 define('SHIPPING_EXCL','excl.');
 define('SHIPPING_COSTS','Shipping costs');
+
+// Добавления для VaM сборки
+
+define('BOX_HEADING_SEARCH', 'Поиск');
+
 ?>

@@ -449,4 +449,9 @@ define('TAX_INFO_EXCL','excl. %s Tax');
 define('TAX_INFO_ADD','plus. %s Tax');
 define('SHIPPING_EXCL','excl.');
 define('SHIPPING_COSTS','Shipping costs');
+
+// Добавления для VaM сборки
+
+define('BOX_HEADING_SEARCH', 'Go');
+
 ?>
