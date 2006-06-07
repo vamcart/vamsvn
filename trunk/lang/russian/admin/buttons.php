@@ -16,7 +16,7 @@
    --------------------------------------------------------------*/
 
 // buttons
-define('BUTTON_REVERSE_SELECTION', 'Реверсировать выбор');
+define('BUTTON_REVERSE_SELECTION', 'Отметить всё/Снять отметку');
 define('BUTTON_SWITCH_PRODUCTS', 'Только товары');
 define('BUTTON_SWITCH_CATEGORIES', 'Только категории');
 define('BUTTON_NEW_CATEGORIES', 'Новая категория');
