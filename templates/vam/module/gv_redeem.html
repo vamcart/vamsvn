@@ -1,0 +1,24 @@
+{config_load file="$language/lang_$language.conf" section="gv_redeem"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr valign="top"> 
+		<td class="contentsTopics">{#heading_gvredeem#}</td>
+	</tr>
+</table>
+<table>
+  <tr>
+    <td class="main">{#text_information#}</td>
+  </tr>
+  {if $error eq 'true'}
+  <tr>
+    <td class="main">{#text_invalid_gv#}</td>
+  </tr>
+  {else}
+  <tr>
+	<td class="main">{#text_valid_gva#} {$coupon_amount} {#text_valid_gvb#}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td align="right"><br />
+    {$LINK_DEFAULT}</td>
+  </tr>
+</table>

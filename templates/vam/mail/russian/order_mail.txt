@@ -1,0 +1,42 @@
+
+{$address_label_customer}
+
+{if $PAYMENT_METHOD}Paymentmethod: {$PAYMENT_METHOD}{/if}
+Order Nr.: {$oID}
+Date: {$DATE}
+{if $csID}Customer ID :{$csID}{/if}
+----------------------------------------------------------------------
+
+
+Dear {$NAME},
+
+This is just a standard text
+
+{$PAYMENT_INFO_TXT}
+
+{if $COMMENTS}
+Your Comments:
+{$COMMENTS}
+{/if}
+
+Your ordered following products
+----------------------------------------------------------------------
+{foreach name=aussen item=order_values from=$order_data} 
+{$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
+
+{/foreach}
+
+{foreach name=aussen item=order_total_values from=$order_total}
+{$order_total_values.TITLE}{$order_total_values.TEXT}
+{/foreach}
+
+
+{if $address_label_payment}
+Paymentaddress
+----------------------------------------------------------------------
+{$address_label_payment}
+{/if}
+Shippingaddress 
+----------------------------------------------------------------------
+{$address_label_shipping}

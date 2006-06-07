@@ -1,0 +1,11 @@
+{config_load file="$language/lang_$language.conf" section="product_navigator"}
+<table  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{if $FIRST!=''}<a href="{$FIRST}">{#first#}</a>{/if}</font></td>
+    <td width="1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{if $PREVIOUS!=''}<a href="{$PREVIOUS}">{#back#}</a>{/if}</font></td>
+    <td width="1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{if $NEXT!=''}<a href="{$NEXT}">{#next#}</a>{/if}</font></td>
+    <td width="1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{if $LAST!=''}<a href="{$LAST}">{#last#}</a>{/if}</font></td>
+    <td width="200"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{$PRODUCTS_COUNT}</strong>&nbsp;{#total#}</font></td>
+  </tr>
+</table>
+ 

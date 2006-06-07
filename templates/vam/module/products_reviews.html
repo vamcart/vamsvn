@@ -1,0 +1,23 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}<br />
+<font color="#666666" size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#heading_reviews#} 
+</strong></font><br />
+<br />
+{foreach name=aussen item=module_data from=$module_content} 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        
+    <td class="main"><b>{#text_author#}</b>{$module_data.AUTHOR} {$module_data.DATE}<br />
+      <strong>{#text_rating#}</strong>{$module_data.RATING} </td>
+      </tr>
+      <tr> 
+        <td style="border-bottom: 1px solid; border-color: #cccccc;" class="main" ><br />
+      {$module_data.TEXT}</td>
+      </tr>
+</table><br />
+{/foreach}<br />
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">{$BUTTON_WRITE}</div></td>
+  </tr>
+</table>
