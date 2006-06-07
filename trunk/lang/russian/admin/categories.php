@@ -101,14 +101,14 @@ define('TEXT_META_KEYWORDS', 'Meta Keywords:');
 
 define('TEXT_SORT_ORDER', 'Порядок сортировки:');
 
-define('TEXT_PRODUCTS_STATUS', 'Статус страницы:');
-define('TEXT_PRODUCTS_STARTPAGE', 'Показывать на главной странице:');
+define('TEXT_PRODUCTS_STATUS', 'Статус:');
+define('TEXT_PRODUCTS_STARTPAGE', 'На главной странице:');
 define('TEXT_PRODUCTS_STARTPAGE_YES', 'Да');
 define('TEXT_PRODUCTS_STARTPAGE_NO', 'Нет');
 define('TEXT_PRODUCTS_STARTPAGE_SORT', 'Сортировка (на главной):');
 define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Дата доступности:');
-define('TEXT_PRODUCT_AVAILABLE', 'Публиковать');
-define('TEXT_PRODUCT_NOT_AVAILABLE', 'Не публиковать');
+define('TEXT_PRODUCT_AVAILABLE', 'Активен');
+define('TEXT_PRODUCT_NOT_AVAILABLE', 'Неактивен');
 define('TEXT_PRODUCTS_MANUFACTURER', 'Производитель:');
 define('TEXT_PRODUCTS_NAME', 'Название товара:');
 define('TEXT_PRODUCTS_DESCRIPTION', 'Описание товара:');
@@ -135,7 +135,7 @@ define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория изобра
 define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория изображений отсутствует: ' . DIR_FS_CATALOG_IMAGES);
 
 define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Скидка:');
-define('HEADING_PRICES_OPTIONS','<b>Свойства цены</b>');
+define('HEADING_PRICES_OPTIONS','<b>Цены</b>');
 define('HEADING_PRODUCT_IMAGES','<b>Картинки товара</b>');
 define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(кг.)</small>');
 define('TEXT_PRODUCTS_SHORT_DESCRIPTION','Краткое описание:');
@@ -173,7 +173,7 @@ define('TEXT_SINGLECOPY_DESC','Копировать элементы в следующую категорию');
 define('TEXT_SINGLECOPY_CATEGORY','Категория:');
 
 define('TEXT_PRODUCTS_VPE','Единица: ');
-define('TEXT_PRODUCTS_VPE_VISIBLE','Показ цены за единицу: ');
+define('TEXT_PRODUCTS_VPE_VISIBLE','Цена за единицу: ');
 define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
 
 define('CROSS_SELLING','Сопутствующие товары статьи');
