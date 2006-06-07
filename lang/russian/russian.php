@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: english.php 1260 2005-09-29 17:48:04Z gwinger $
+   $Id: russian.php 1260 2005-09-29 17:48:04Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -56,7 +56,7 @@ define('FEMALE', 'Женский');
  */
 
 // text for gift voucher redeeming
-define('IMAGE_REDEEM_GIFT','Активировать подарочный сертификат!');
+define('IMAGE_REDEEM_GIFT','Использовать сертификат!');
 
 define('BOX_TITLE_STATISTICS','Статистика:');
 define('BOX_ENTRY_CUSTOMERS','Клиенты');
@@ -99,43 +99,43 @@ define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Ваше
 
 define('ENTRY_COMPANY_ERROR', '');
 define('ENTRY_COMPANY_TEXT', '');
-define('ENTRY_GENDER_ERROR', 'Please select your gender.');
+define('ENTRY_GENDER_ERROR', 'Вы должны указать свой пол.');
 define('ENTRY_GENDER_TEXT', '*');
-define('ENTRY_FIRST_NAME_ERROR', 'Your firstname must consist of at least  ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' characters.');
+define('ENTRY_FIRST_NAME_ERROR', 'Поле Имя должно содержать как минимум ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символа.');
 define('ENTRY_FIRST_NAME_TEXT', '*');
-define('ENTRY_LAST_NAME_ERROR', 'Your e-mail address must consist of at least ' . ENTRY_LAST_NAME_MIN_LENGTH . ' characters.');
+define('ENTRY_LAST_NAME_ERROR', 'Поле Фамилия должно содержать как минимум ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символа.');
 define('ENTRY_LAST_NAME_TEXT', '*');
-define('ENTRY_DATE_OF_BIRTH_ERROR', 'Your date of birth has to be entered in the following form DD.MM.YYYY (e.g. 21.05.1970) ');
-define('ENTRY_DATE_OF_BIRTH_TEXT', '* (e.g. 21.05.1970)');
-define('ENTRY_EMAIL_ADDRESS_ERROR', 'Your e-mail address must consist of at least  ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' characters.');
-define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'The e-mail address your entered is incorrect - please check it');
-define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'The e-mail address your entered already exists in our database - please check it');
+define('ENTRY_DATE_OF_BIRTH_ERROR', 'Дату рождения необходимо вводить в следующем формате: DD/MM/YYYY (пример 21/05/1970)');
+define('ENTRY_DATE_OF_BIRTH_TEXT', '* (пример 21/05/1970)');
+define('ENTRY_EMAIL_ADDRESS_ERROR', 'Поле E-Mail должно содержать как минимум ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' символов.');
+define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Ваш E-Mail адрес указан неправильно, попробуйте ещё раз.');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Введённый Вами E-Mail уже зарегистрирован в нашем магазине, попробуйте указать другой E-Mail адрес.');
 define('ENTRY_EMAIL_ADDRESS_TEXT', '*');
-define('ENTRY_STREET_ADDRESS_ERROR', 'Street/Nr must consist of at least ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' characters.');
-define('ENTRY_STREET_ADDRESS_TEXT', '*');
+define('ENTRY_STREET_ADDRESS_ERROR', 'Поле Улица и номер дома должно содержать как минимум ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов.');
+define('ENTRY_STREET_ADDRESS_TEXT', '* Пример: ул. Мира 346, кв. 78');
 define('ENTRY_SUBURB_TEXT', '');
-define('ENTRY_POST_CODE_ERROR', 'Your zip code must consist of at least ' . ENTRY_POSTCODE_MIN_LENGTH . ' characters.');
+define('ENTRY_POST_CODE_ERROR', 'Поле Почтовый индекс должно содержать как минимум ' . ENTRY_POSTCODE_MIN_LENGTH . ' символа.');
 define('ENTRY_POST_CODE_TEXT', '*');
-define('ENTRY_CITY_ERROR', 'City must consist of at least ' . ENTRY_CITY_MIN_LENGTH . ' characters.');
+define('ENTRY_CITY_ERROR', 'Поле Город должно содержать как минимум ' . ENTRY_CITY_MIN_LENGTH . ' символа.');
 define('ENTRY_CITY_TEXT', '*');
-define('ENTRY_STATE_ERROR', 'Your state must consist of at least ' . ENTRY_STATE_MIN_LENGTH . ' characters.');
-define('ENTRY_STATE_ERROR_SELECT', 'Please choose your state out of the list..');
+define('ENTRY_STATE_ERROR', 'Поле Область должно содержать как минимум ' . ENTRY_STATE_MIN_LENGTH . ' символа.');
+define('ENTRY_STATE_ERROR_SELECT', 'Выберите регион.');
 define('ENTRY_STATE_TEXT', '*');
-define('ENTRY_COUNTRY_ERROR', 'Please choose your country.');
+define('ENTRY_COUNTRY_ERROR', 'Выберите страну.');
 define('ENTRY_COUNTRY_TEXT', '*');
-define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Your phone number must consist of at least ' . ENTRY_TELEPHONE_MIN_LENGTH . ' characters.');
+define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Поле Телефон должно содержать как минимум ' . ENTRY_TELEPHONE_MIN_LENGTH . ' символа.');
 define('ENTRY_TELEPHONE_NUMBER_TEXT', '*');
 define('ENTRY_FAX_NUMBER_TEXT', '');
 define('ENTRY_NEWSLETTER_TEXT', '');
-define('ENTRY_PASSWORD_ERROR', 'Your password must consist of at least ' . ENTRY_PASSWORD_MIN_LENGTH . ' characters.');
-define('ENTRY_PASSWORD_ERROR_NOT_MATCHING', 'Your passwords do not match.');
+define('ENTRY_PASSWORD_ERROR', 'Ваш пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_ERROR_NOT_MATCHING', 'Поле Подтвердите пароль должно совпадать с полем Пароль.');
 define('ENTRY_PASSWORD_TEXT', '*');
 define('ENTRY_PASSWORD_CONFIRMATION_TEXT', '*');
 define('ENTRY_PASSWORD_CURRENT_TEXT', '*');
-define('ENTRY_PASSWORD_CURRENT_ERROR','Your password must consist of at least ' . ENTRY_PASSWORD_MIN_LENGTH . ' characters.');
+define('ENTRY_PASSWORD_CURRENT_ERROR', 'Поле Пароль должно содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
 define('ENTRY_PASSWORD_NEW_TEXT', '*');
-define('ENTRY_PASSWORD_NEW_ERROR', 'Your new password must consist of at least ' . ENTRY_PASSWORD_MIN_LENGTH . ' characters.');
-define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Your passwords do not match.');
+define('ENTRY_PASSWORD_NEW_ERROR', 'Ваш Новый пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Поля Подтвердите пароль и Новый пароль должны совпадать.');
 
 /*
  *
@@ -177,22 +177,22 @@ define('PREVNEXT_BUTTON_NEXT', 'Следующая');
  *
  */
 
-define('IMAGE_BUTTON_ADD_ADDRESS', 'New address');
-define('IMAGE_BUTTON_BACK', 'Back');
-define('IMAGE_BUTTON_CHANGE_ADDRESS', 'Change address');
-define('IMAGE_BUTTON_CHECKOUT', 'Checkout');
-define('IMAGE_BUTTON_CONFIRM_ORDER', 'Confirm order');
-define('IMAGE_BUTTON_CONTINUE', 'Next');
-define('IMAGE_BUTTON_DELETE', 'Delete');
-define('IMAGE_BUTTON_LOGIN', 'Login');
-define('IMAGE_BUTTON_IN_CART', 'Into the cart');
-define('IMAGE_BUTTON_SEARCH', 'Search');
-define('IMAGE_BUTTON_UPDATE', 'Update');
-define('IMAGE_BUTTON_UPDATE_CART', 'Update shopping cart');
-define('IMAGE_BUTTON_WRITE_REVIEW', 'Write Evaluation');
-define('IMAGE_BUTTON_ADMIN', 'Admin');
-define('IMAGE_BUTTON_PRODUCT_EDIT', 'Edit product');
-define('IMAGE_BUTTON_LOGIN', 'Login');
+define('IMAGE_BUTTON_ADD_ADDRESS', 'Добавить адрес');
+define('IMAGE_BUTTON_BACK', 'Назад');
+define('IMAGE_BUTTON_CHANGE_ADDRESS', 'Изменить адрес');
+define('IMAGE_BUTTON_CHECKOUT', 'Оформить заказ');
+define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить Заказ');
+define('IMAGE_BUTTON_CONTINUE', 'Продолжить');
+define('IMAGE_BUTTON_DELETE', 'Удалить');
+define('IMAGE_BUTTON_LOGIN', 'Войти');
+define('IMAGE_BUTTON_IN_CART', 'Добавить в корзину');
+define('IMAGE_BUTTON_SEARCH', 'Искать');
+define('IMAGE_BUTTON_UPDATE', 'Обновить');
+define('IMAGE_BUTTON_UPDATE_CART', 'Пересчитать');
+define('IMAGE_BUTTON_WRITE_REVIEW', 'Написать отзыв');
+define('IMAGE_BUTTON_ADMIN', 'Админка');
+define('IMAGE_BUTTON_PRODUCT_EDIT', 'Редактировать товар');
+define('IMAGE_BUTTON_LOGIN', 'Войти');
 
 define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
 define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
@@ -209,22 +209,22 @@ define('ICON_WARNING', 'Внимание');
  *
  */
 
-define('TEXT_GREETING_PERSONAL', 'Nice to see you again <span class="greetUser">%s!</span> Would you like to view our <a style="text-decoration:underline;" href="%s">new products</a> ?');
-define('TEXT_GREETING_PERSONAL_RELOGON', '<small>If you are not %s , please  <a style="text-decoration:underline;" href="%s">login</a>  with your account.</small>');
-define('TEXT_GREETING_GUEST', 'Welcome  <span class="greetUser">visitor!</span> Would you like to <a style="text-decoration:underline;" href="%s">login</a>? Or would you like to create a new <a style="text-decoration:underline;" href="%s">account</a> ?');
+define('TEXT_GREETING_PERSONAL', 'Добро пожаловать, <span class="greetUser">%s!</span> Вы хотите посмотреть какие <a style="text-decoration:underline;" href="%s">новые товары</a> поступили в наш магазин?');
+define('TEXT_GREETING_PERSONAL_RELOGON', '<small>Если Вы не %s, пожалуйста, <a style="text-decoration:underline;" href="%s">введите</a> свои данные для входа.</small>');
+define('TEXT_GREETING_GUEST', 'Добро пожаловать, <span class="greetUser">УВАЖАЕМЫЙ ГОСТЬ!</span><br /> Если Вы наш постоянный клиент, <a style="text-decoration:underline;" href="%s">введите Ваши персональные данные</a> для входа. Если Вы у нас впервые и хотите сделать покупки, Вам необходимо <a style="text-decoration:underline;" href="%s">зарегистрироваться</a>.');
 
-define('TEXT_SORT_PRODUCTS', 'Sorting of the items is ');
-define('TEXT_DESCENDINGLY', 'descending');
-define('TEXT_ASCENDINGLY', 'ascending');
-define('TEXT_BY', ' after ');
+define('TEXT_SORT_PRODUCTS', 'Сортировать товар по ');
+define('TEXT_DESCENDINGLY', 'убыванию');
+define('TEXT_ASCENDINGLY', 'возрастанию');
+define('TEXT_BY', ' по ');
 
-define('TEXT_REVIEW_BY', 'from %s');
-define('TEXT_REVIEW_WORD_COUNT', '%s words');
-define('TEXT_REVIEW_RATING', 'Review: %s [%s]');
-define('TEXT_REVIEW_DATE_ADDED', 'Date added: %s');
-define('TEXT_NO_REVIEWS', 'There are no reviews yet.');
-define('TEXT_NO_NEW_PRODUCTS', 'There are no new products at the moment.');
-define('TEXT_UNKNOWN_TAX_RATE', 'Unknown tax rate');
+define('TEXT_REVIEW_BY', '- %s');
+define('TEXT_REVIEW_WORD_COUNT', '%s слов');
+define('TEXT_REVIEW_RATING', 'Рейтинг: %s [%s]');
+define('TEXT_REVIEW_DATE_ADDED', 'Отзыв добавлен: %s');
+define('TEXT_NO_REVIEWS', 'К настоящему времени нет отзывов.');
+define('TEXT_NO_NEW_PRODUCTS', 'На данный момент нет новых товаров.');
+define('TEXT_UNKNOWN_TAX_RATE', 'Неизвестная налоговая ставка');
 
 /*
  *
@@ -232,41 +232,41 @@ define('TEXT_UNKNOWN_TAX_RATE', 'Unknown tax rate');
  *
  */
 
-define('WARNING_INSTALL_DIRECTORY_EXISTS', 'Warning: The installation directory is still available on: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/xtc_installer. Please delete this directory for security reasons!');
-define('WARNING_CONFIG_FILE_WRITEABLE', 'Warning: XT-Commerce is able to write to the configuration directory: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/includes/configure.php. That represents a possible safety hazard - please correct the user access rights for this directory!');
-define('WARNING_SESSION_DIRECTORY_NON_EXISTENT', 'Warning: Directory for sesssions doesn&acute;t exist: ' . xtc_session_save_path() . '. Sessions will not work until this directory has been created!');
-define('WARNING_SESSION_DIRECTORY_NOT_WRITEABLE', 'Warning: XT-Commerce is not able to write into the session directory: ' . xtc_session_save_path() . '. Sessions will not work until the user access rights for this directory have been changed!');
-define('WARNING_SESSION_AUTO_START', 'Warning: session.auto_start is activated (enabled) - Please deactivate (disable) this PHP feature in php.ini and restart your web server!');
-define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'Warning: Directory for article download does not exist: ' . DIR_FS_DOWNLOAD . '. This feature will not work until this directory has been created!');
+define('WARNING_INSTALL_DIRECTORY_EXISTS', 'Предупреждение: Не удалена директория установки магазина: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/xtc_installer. Пожалуйста, удалите эту директорию в целях безопасности.');
+define('WARNING_CONFIG_FILE_WRITEABLE', 'Предупреждение: Файл конфигурации доступен для записи: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/includes/configure.php. Это - потенциальный риск безопасности - пожалуйста, установите необходимые права доступа к этому файлу.');
+define('WARNING_SESSION_DIRECTORY_NON_EXISTENT', 'Предупреждение: директория сессий не существует: ' . xtc_session_save_path() . '. Сессии не будут работать пока эта директория не будет создана.');
+define('WARNING_SESSION_DIRECTORY_NOT_WRITEABLE', 'Предупреждение: Нет доступа к директории сессий: ' . xtc_session_save_path() . '. Сессии не будут работать пока не установлены необходимые права доступа.');
+define('WARNING_SESSION_AUTO_START', 'Предупреждение: опция session.auto_start включена - пожалуйста, выключите данную опцию в файле php.ini и перезапустите веб-сервер.');
+define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'Предупреждение: Директория отсутствует: ' . DIR_FS_DOWNLOAD . '. Создайте директорию.');
 
-define('SUCCESS_ACCOUNT_UPDATED', 'Your account has been updated successfully.');
-define('SUCCESS_PASSWORD_UPDATED', 'Your password has been changed successfully!');
-define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'The entered password does not match with the stored password. Please try again.');
-define('TEXT_MAXIMUM_ENTRIES', '<font color="#ff0000"><b>Reference:</b></font> You are able to choose out of %s entries in you address book!');
-define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'The selected entry has been deleted successfully.');
-define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Your address book has been updated sucessfully!');
-define('WARNING_PRIMARY_ADDRESS_DELETION', 'The standard postal address can not be deleted. Please create another address and define it as standard postal address first. Than this entry can be deleted.');
-define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'This address book entry is not available.');
-define('ERROR_ADDRESS_BOOK_FULL', 'Your adressbook is full and you have to delete one adress first, before you can save another.');
+define('SUCCESS_ACCOUNT_UPDATED', 'Ваши данные обновлены!');
+define('SUCCESS_PASSWORD_UPDATED', 'Ваш пароль изменён!');
+define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'Указанный пароль не совпадает с текущим паролем. Попробуйте ещё раз.');
+define('TEXT_MAXIMUM_ENTRIES', '<font color="#ff0000"><b>ЗАМЕЧАНИЕ:</b></font> Максимальный объем адресной книги - <b>%s</b> записей');
+define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Выбранный адрес удалён из адресной книги.');
+define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Ваша адресная книга обновлена.');
+define('WARNING_PRIMARY_ADDRESS_DELETION', 'Адрес, установленный по умолчанию, не может быть удалён. Установите статус по умолчанию на другой адрес и попробуйте ещё раз.');
+define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'Адресная книга не найдена.');
+define('ERROR_ADDRESS_BOOK_FULL', 'Ваша адресная книга полностью заполнена. Удалите ненужный Вам адрес и только после этого Вы сможете добавить новый адрес.');
 
 //  conditions check
 
-define('ERROR_CONDITIONS_NOT_ACCEPTED', 'If you do not accept our General Business Conditions, we are not able to accept your order!');
+define('ERROR_CONDITIONS_NOT_ACCEPTED', 'Мы сможем принять Ваш заказ пока Вы не согласитесь с условиями!');
 
-define('SUB_TITLE_OT_DISCOUNT','Discount:');
+define('SUB_TITLE_OT_DISCOUNT','Скидка:');
 
-define('TAX_ADD_TAX','incl. ');
-define('TAX_NO_TAX','plus ');
+define('TAX_ADD_TAX','включая ');
+define('TAX_NO_TAX','плюс ');
 
-define('NOT_ALLOWED_TO_SEE_PRICES','You do not have the permission to see the prices ');
-define('NOT_ALLOWED_TO_SEE_PRICES_TEXT','You do not have the permission to see the prices, please create an account.');
+define('NOT_ALLOWED_TO_SEE_PRICES','У Вас нет доступа для просмотра цен ');
+define('NOT_ALLOWED_TO_SEE_PRICES_TEXT','У Вас нет доступа для просмотра цен, пожалуйста, зарегистрируйтесь.');
 
-define('TEXT_DOWNLOAD','Download');
-define('TEXT_VIEW','View');
+define('TEXT_DOWNLOAD','Загрузки');
+define('TEXT_VIEW','Смотреть');
 
-define('TEXT_BUY', '1 x \'');
-define('TEXT_NOW', '\' order');
-define('TEXT_GUEST','Visitor');
+define('TEXT_BUY', 'Купить \'');
+define('TEXT_NOW', '\'');
+define('TEXT_GUEST','Посетитель');
 
 /*
  *
@@ -274,35 +274,36 @@ define('TEXT_GUEST','Visitor');
  *
  */
 
-define('TEXT_ALL_CATEGORIES', 'All categories');
-define('TEXT_ALL_MANUFACTURERS', 'All manufacturers');
-define('JS_AT_LEAST_ONE_INPUT', '* One of the following fields must be filled:\n    Keywords\n    Date added from\n    Date added to\n    Price over\n    Price up to\n');
-define('AT_LEAST_ONE_INPUT', 'One of the following fields must be filled:<br />keywords consisting at least 3 characters<br />Price over<br />Price up to<br />');
-define('JS_INVALID_FROM_DATE', '* Invalid from date\n');
-define('JS_INVALID_TO_DATE', '* Invalid up to Date\n');
-define('JS_TO_DATE_LESS_THAN_FROM_DATE', '* The from date must be larger or same size as up to now\n');
-define('JS_PRICE_FROM_MUST_BE_NUM', '* Price over, must be a number\n');
-define('JS_PRICE_TO_MUST_BE_NUM', '* Price up to, must be a number\n');
-define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Price up to must be larger or same size as Price over.\n');
-define('JS_INVALID_KEYWORDS', '* Invalid search key\n');
-define('TEXT_LOGIN_ERROR', '<font color="#ff0000"><b>ERROR:</b></font> The entered \'eMail-address\' and/or the \'password\' do not match.');
-define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<font color="#ff0000"><b>WARNING:</b></font> The entered e-mail address is not registered. Please try again.');
-define('TEXT_PASSWORD_SENT', 'A new password was sent by e-mail.');
-define('TEXT_PRODUCT_NOT_FOUND', 'Product not found!');
-define('TEXT_MORE_INFORMATION', 'For further information, please visit the <a style="text-decoration:underline;" href="%s" onclick="window.open(this.href); return false;">homepage</a> of this product.');
-define('TEXT_DATE_ADDED', 'This Product was added to our catalogue on %s.');
-define('TEXT_DATE_AVAILABLE', '<font color="#ff0000">This Product is expected to be on stock again on %s </font>');
-define('SUB_TITLE_SUB_TOTAL', 'Sub-total:');
+define('TEXT_ALL_CATEGORIES', 'Все категории');
+define('TEXT_ALL_MANUFACTURERS', 'Все производители');
+define('JS_AT_LEAST_ONE_INPUT', '* Одно из полей должно быть заполнено:\n    Ключевые слова\n    Дата добавления от:\n    Дата добавления до:\n    Цена от \n    Цена до\n');
+define('AT_LEAST_ONE_INPUT', 'Одно из полей должно быть заполнено:<br />Ключевые слова как минимум 3 символа<br />Цена от<br />Цена до<br />');
+define('JS_INVALID_FROM_DATE', '* Дата указана в неверном формате\n');
+define('JS_INVALID_TO_DATE', '* Неправильная дата добавления до\n');
+define('JS_TO_DATE_LESS_THAN_FROM_DATE', '* Дата до должна быть больше даты от\n');
+define('JS_PRICE_FROM_MUST_BE_NUM', '* Цена от должна быть номером\n');
+define('JS_PRICE_TO_MUST_BE_NUM', '* Цена до должна быть номером\n');
+define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Цена до должна быть больше цены от.\n');
+define('JS_INVALID_KEYWORDS', '* Неверные ключевые слова\n');
+define('TEXT_LOGIN_ERROR', '<font color="#ff0000"><b>ОШИБКА:</b></font> Указанный \'Email\' и/или \'пароль\' неверный.');
+define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<font color="#ff0000"><b>ПРЕДУПРЕЖДЕНИЕ:</b></font> Указанный Email не найден. Попробуйте ещё раз.');
+define('TEXT_PASSWORD_SENT', 'Новый паоль был отправлен на Email.');
+define('TEXT_PRODUCT_NOT_FOUND', 'Товар не найден!');
+define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a style="text-decoration:underline;" href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
 
-define('OUT_OF_STOCK_CANT_CHECKOUT', 'The products marked with ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' , are not on stock in the quantity you requested.<br />Please reduce your purchase order quantity for the marked products. Thank you');
-define('OUT_OF_STOCK_CAN_CHECKOUT', 'The products marked with ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' , are not on stock in the quantity you requested.<br />The entered quantity will be supplied in a short period of time by us. On request, we can do part delivery.');
+define('TEXT_DATE_ADDED', 'Товар был добавлен в наш каталог %s');
+define('TEXT_DATE_AVAILABLE', '<font color="#ff0000">Товар будет в наличии %s</font>');
+define('SUB_TITLE_SUB_TOTAL', 'Стоимость товара:');
 
-define('MINIMUM_ORDER_VALUE_NOT_REACHED_1', 'You need to reach the minimum order value of: ');
-define('MINIMUM_ORDER_VALUE_NOT_REACHED_2', ' <br />Please increase your order for more: ');
-define('MAXIMUM_ORDER_VALUE_REACHED_1', 'You ordered more than the allowed amount of: ');
-define('MAXIMUM_ORDER_VALUE_REACHED_2', '<br /> Please decrease your order for less than: ');
+define('OUT_OF_STOCK_CANT_CHECKOUT', 'Товары, выделенные ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' имеются на нашем складе в недостаточном для Вашего заказа количестве.<br />Пожалуйста, измените количество продуктов выделенных (' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '), благодарим Вас.');
+define('OUT_OF_STOCK_CAN_CHECKOUT', 'Товары, выделенные ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' имеются на нашем складе в недостаточном для Вашего заказа количестве.<br />Тем не менее, Вы можете оформить заказ для поэтапной доставки заказанного товара.');
 
-define('ERROR_INVALID_PRODUCT', 'The product chosen was not found!');
+define('MINIMUM_ORDER_VALUE_NOT_REACHED_1', 'Минимальная сумма заказа должна быть: ');
+define('MINIMUM_ORDER_VALUE_NOT_REACHED_2', ' <br />Увеличьте Ваш заказ как минимум на: ');
+define('MAXIMUM_ORDER_VALUE_REACHED_1', 'Вы превысили максимально разрешённую сумму заказа, установленную в: ');
+define('MAXIMUM_ORDER_VALUE_REACHED_2', '<br /> Уменьшите Ваш заказ как минимум на: ');
+
+define('ERROR_INVALID_PRODUCT', 'Товар не найден!');
 
 /*
  *
@@ -310,58 +311,58 @@ define('ERROR_INVALID_PRODUCT', 'The product chosen was not found!');
  *
  */
 
-define('NAVBAR_TITLE_ACCOUNT', 'Your account');
-define('NAVBAR_TITLE_1_ACCOUNT_EDIT', 'Your account');
-define('NAVBAR_TITLE_2_ACCOUNT_EDIT', 'Changing your personal data');
-define('NAVBAR_TITLE_1_ACCOUNT_HISTORY', 'Your account');
-define('NAVBAR_TITLE_2_ACCOUNT_HISTORY', 'Your completed orders');
-define('NAVBAR_TITLE_1_ACCOUNT_HISTORY_INFO', 'Your account');
-define('NAVBAR_TITLE_2_ACCOUNT_HISTORY_INFO', 'Completed orders');
-define('NAVBAR_TITLE_3_ACCOUNT_HISTORY_INFO', 'Order number %s');
-define('NAVBAR_TITLE_1_ACCOUNT_PASSWORD', 'Your account');
-define('NAVBAR_TITLE_2_ACCOUNT_PASSWORD', 'Change password');
-define('NAVBAR_TITLE_1_ADDRESS_BOOK', 'Your account');
-define('NAVBAR_TITLE_2_ADDRESS_BOOK', 'Address book');
-define('NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS', 'Your account');
-define('NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS', 'Address book');
-define('NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS', 'New entry');
-define('NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS', 'Change entry');
-define('NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS', 'Delete Entry');
-define('NAVBAR_TITLE_ADVANCED_SEARCH', 'Advanced Search');
-define('NAVBAR_TITLE1_ADVANCED_SEARCH', 'Advanced Search');
-define('NAVBAR_TITLE2_ADVANCED_SEARCH', 'Search results');
-define('NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION', 'Checkout');
-define('NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION', 'Confirmation');
-define('NAVBAR_TITLE_1_CHECKOUT_PAYMENT', 'Checkout');
-define('NAVBAR_TITLE_2_CHECKOUT_PAYMENT', 'Method of payment');
-define('NAVBAR_TITLE_1_PAYMENT_ADDRESS', 'Checkout');
-define('NAVBAR_TITLE_2_PAYMENT_ADDRESS', 'Change billing address');
-define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING', 'Checkout');
-define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING', 'Shipping information');
-define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING_ADDRESS', 'Checkout');
-define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS', 'Change shipping address');
-define('NAVBAR_TITLE_1_CHECKOUT_SUCCESS', 'Checkout');
-define('NAVBAR_TITLE_2_CHECKOUT_SUCCESS', 'Success');
-define('NAVBAR_TITLE_CREATE_ACCOUNT', 'Create account');
+define('NAVBAR_TITLE_ACCOUNT', 'Ваши данные');
+define('NAVBAR_TITLE_1_ACCOUNT_EDIT', 'Ваши данные');
+define('NAVBAR_TITLE_2_ACCOUNT_EDIT', 'Редактирование данных');
+define('NAVBAR_TITLE_1_ACCOUNT_HISTORY', 'Ваши данные');
+define('NAVBAR_TITLE_2_ACCOUNT_HISTORY', 'Ваши заказы');
+define('NAVBAR_TITLE_1_ACCOUNT_HISTORY_INFO', 'Ваши данные');
+define('NAVBAR_TITLE_2_ACCOUNT_HISTORY_INFO', 'Оформленные заказы');
+define('NAVBAR_TITLE_3_ACCOUNT_HISTORY_INFO', 'Заказ номер %s');
+define('NAVBAR_TITLE_1_ACCOUNT_PASSWORD', 'Ваши данные');
+define('NAVBAR_TITLE_2_ACCOUNT_PASSWORD', 'Изменить пароль');
+define('NAVBAR_TITLE_1_ADDRESS_BOOK', 'Ваши данные');
+define('NAVBAR_TITLE_2_ADDRESS_BOOK', 'Адресная книга');
+define('NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS', 'Ваши данные');
+define('NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS', 'Адресная книга');
+define('NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS', 'Добавить запись');
+define('NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS', 'Изменить запись');
+define('NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS', 'Удалить запись');
+define('NAVBAR_TITLE_ADVANCED_SEARCH', 'Расширенный поиск');
+define('NAVBAR_TITLE1_ADVANCED_SEARCH', 'Расширенный поиск');
+define('NAVBAR_TITLE2_ADVANCED_SEARCH', 'Результаты поиска');
+define('NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION', 'Оформление заказа');
+define('NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION', 'Подтверждение');
+define('NAVBAR_TITLE_1_CHECKOUT_PAYMENT', 'Оформление заказа');
+define('NAVBAR_TITLE_2_CHECKOUT_PAYMENT', 'Способ оплаты');
+define('NAVBAR_TITLE_1_PAYMENT_ADDRESS', 'Оформление заказа');
+define('NAVBAR_TITLE_2_PAYMENT_ADDRESS', 'Изменить адрес покупателя');
+define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING', 'Оформление заказа');
+define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING', 'Способ доставки');
+define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING_ADDRESS', 'Оформление заказа');
+define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS', 'Изменить адрес доставки');
+define('NAVBAR_TITLE_1_CHECKOUT_SUCCESS', 'Оформление заказа');
+define('NAVBAR_TITLE_2_CHECKOUT_SUCCESS', 'Заказ успешно оформлен');
+define('NAVBAR_TITLE_CREATE_ACCOUNT', 'Регистрация');
 if ($navigation->snapshot['page'] == FILENAME_CHECKOUT_SHIPPING) {
-  define('NAVBAR_TITLE_LOGIN', 'Order');
+  define('NAVBAR_TITLE_LOGIN', 'Заказ');
 } else {
-  define('NAVBAR_TITLE_LOGIN', 'Login');
+  define('NAVBAR_TITLE_LOGIN', 'Вход');
 }
-define('NAVBAR_TITLE_LOGOFF','Good bye');
-define('NAVBAR_TITLE_PRODUCTS_NEW', 'New products');
-define('NAVBAR_TITLE_SHOPPING_CART', 'Shopping cart');
-define('NAVBAR_TITLE_SPECIALS', 'Special offers');
-define('NAVBAR_TITLE_COOKIE_USAGE', 'Cookie Usage');
-define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Reviews');
-define('NAVBAR_TITLE_REVIEWS_WRITE', 'Opinions');
-define('NAVBAR_TITLE_REVIEWS','Reviews');
-define('NAVBAR_TITLE_SSL_CHECK', 'Note on safety');
-define('NAVBAR_TITLE_CREATE_GUEST_ACCOUNT','Create account');
-define('NAVBAR_TITLE_PASSWORD_DOUBLE_OPT','Password forgotten?');
-define('NAVBAR_TITLE_NEWSLETTER','Newsletter');
-define('NAVBAR_GV_REDEEM', 'Redeem Voucher');
-define('NAVBAR_GV_SEND', 'Send Voucher');
+define('NAVBAR_TITLE_LOGOFF','Выход');
+define('NAVBAR_TITLE_PRODUCTS_NEW', 'Новые товары');
+define('NAVBAR_TITLE_SHOPPING_CART', 'Корзина');
+define('NAVBAR_TITLE_SPECIALS', 'Скидки');
+define('NAVBAR_TITLE_COOKIE_USAGE', 'Ошибка cookies');
+define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Отзывы');
+define('NAVBAR_TITLE_REVIEWS_WRITE', 'Написать отзыв');
+define('NAVBAR_TITLE_REVIEWS','Отщывы');
+define('NAVBAR_TITLE_SSL_CHECK', 'Безопасный режим');
+define('NAVBAR_TITLE_CREATE_GUEST_ACCOUNT','Регистрация');
+define('NAVBAR_TITLE_PASSWORD_DOUBLE_OPT','Забыли пароль?');
+define('NAVBAR_TITLE_NEWSLETTER','Рассылка');
+define('NAVBAR_GV_REDEEM', 'Использовать сертификат');
+define('NAVBAR_GV_SEND', 'Отправить сертификат');
 
 /*
  *
@@ -369,48 +370,50 @@ define('NAVBAR_GV_SEND', 'Send Voucher');
  *
  */
 
-define('TEXT_NEWSLETTER','You want to stay up to date?<br />No problem, receiveour Newsletter and we can inform you always up to date.');
-define('TEXT_EMAIL_INPUT','Your e-Mail adress has been registered by our system.<br />Therefore you will receive an E-Mail with your personally confirmation-code-link.  Please click after the receipt of the Mail on the Hyperlink inside. Otherwise no Newsletter will be send to you!');
+define('TEXT_NEWSLETTER','Хотите узнавать о новинках первым?<br />Подпишитесь на наши новости и Вы первым узнаете обо всех изменениях и новинках.');
+define('TEXT_EMAIL_INPUT','Ваш E-Mail адрес был успешно зарегистрирован в нашей системе.<br />Вам было отправлено письмо с персональной ссылкой на подтверждение. Пожалуйста, перейдите по ссылке, указаной в письме. В противном случае Вы не будете получать почтовую рассылку!');
 
-define('TEXT_WRONG_CODE','<font color="FF0000">Please fill out the e-Mail field and the Security-Code again. <br />Be aware of Typos!</font>');
-define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','<font color="FF0000">This e-Mail address is registered but not yet activated!</font>');
-define('TEXT_EMAIL_EXIST_NEWSLETTER','<font color="FF0000">This e-Mail address is registered is also activated for the newsletter!</font>');
-define('TEXT_EMAIL_NOT_EXIST','<font color="FF0000">This e-Mail address is not registered for Newsletters!</font>');
-define('TEXT_EMAIL_DEL','Your e-Mail adress was deleted successfully in our newsletter-database.');
-define('TEXT_EMAIL_DEL_ERROR','<font color="FF0000">An Error occured, your e-Mailaddress has not been deletet!</font>');
-define('TEXT_EMAIL_ACTIVE','<font color="FF0000">Your e-Mail address was successfully integrated in our Newsletter Service!</font>');
-define('TEXT_EMAIL_ACTIVE_ERROR','<font color="FF0000">An error occured, your e-Mail address has not been activated for Newsletter!</font>');
-define('TEXT_EMAIL_SUBJECT','Your Newsletter Account');
+define('TEXT_WRONG_CODE','<font color="FF0000">Заполните поля E-mail и Секретный код.<br />Пожалуйста, будьте внимательны!');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','<font color="FF0000">Указанный Email адрес зарегистрирован, но не активирован!</font>');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','<font color="FF0000">Указанный Email адрес зарегистрирован и активирован!</font>');
+define('TEXT_EMAIL_NOT_EXIST','<font color="FF0000">Указанный Email адрес не зарегистрирован!</font>');
+define('TEXT_EMAIL_DEL','Указанный Email адрес был успешно удалён.');
+define('TEXT_EMAIL_DEL_ERROR','<font color="FF0000">Произошла ошибка, Email адрес не был удалён!</font>');
+define('TEXT_EMAIL_ACTIVE','<font color="FF0000">Ваш Email адрес был добавлен к списку рассылки!</font>');
+define('TEXT_EMAIL_ACTIVE_ERROR','<font color="FF0000">Произошла ошибка, Email адрес не был активирован!</font>');
+define('TEXT_EMAIL_SUBJECT','Почтовая рассылка');
 
-define('TEXT_CUSTOMER_GUEST','Guest');
+define('TEXT_CUSTOMER_GUEST','Гость');
 
-define('TEXT_LINK_MAIL_SENDED','Your inquiry for a new password must be confirmed by you peronally.<br />Therefore you will receive an E-Mail with your personally confirmation-code-link.  Please click after the receipt of the Mail on the Hyperlink inside. A further Mail with your new Login password will receive you afterwards.  Otherwise no new password will be set or sended to you!');
-define('TEXT_PASSWORD_MAIL_SENDED','You will receive an e-Mail with your new password in between minutes.<br />Please change your password after your first login like you want.');
-define('TEXT_CODE_ERROR','Please fill out the e-Mail field and the Security-Code again. <br />Be aware of Typos!');
-define('TEXT_EMAIL_ERROR','Please fill out the e-Mail field and the Security-Code again. <br />Be aware of Typos!');
-define('TEXT_NO_ACCOUNT','Unfortunately we must communicate to you that your inquiry for a new Login password was either invalid or run out off time.<br />Please try it again.');
-define('HEADING_PASSWORD_FORGOTTEN','Password renewal?');
-define('TEXT_PASSWORD_FORGOTTEN','Change your password in three easy steps.');
-define('TEXT_EMAIL_PASSWORD_FORGOTTEN','Confirmation Mail for password renewal');
-define('TEXT_EMAIL_PASSWORD_NEW_PASSWORD','Your new password');
-define('ERROR_MAIL','Please check the data entered in the form');
+define('TEXT_LINK_MAIL_SENDED','Вам отправлено письмо с персональной ссылкой на подтверждение о восстановлении пароля. <br />Вам необходимо перейти по ссылке, указанной в письме. После подтверждения запроса на восстановление пароля мы отправим Вам новый пароль для входа в магазин. Если Вы не перейдёте по указанной ссылке, новый пароль не будет отправлен!');
+define('TEXT_PASSWORD_MAIL_SENDED','Вам отправлено письмо с новым паролем к Вашей персональной информации.<br />Пожалуйста, не забудьте изменить Ваш новый пароль после первого входа в магазин.');
+define('TEXT_CODE_ERROR','Заполните поле EMail и Секретный код ещё раз. <br />Пожалуйста, будьте внимательны!');
+define('TEXT_EMAIL_ERROR','Заполните поле E-Mail и Секретный код ещё раз. <br />Пожалуйста, будьте внимательны!');
+define('TEXT_NO_ACCOUNT','К сожалению, запрос-подтверждение на новый пароль неверный либо устарел. Возможно, Вы активируете старую ссылку, в то время как была отправлена более новая. Пожалуйста, попробуйте ещё раз.');
 
-define('CATEGORIE_NOT_FOUND','Category was not found');
+define('HEADING_PASSWORD_FORGOTTEN','Забыли пароль?');
+define('TEXT_PASSWORD_FORGOTTEN','Измените пароль в три шага.');
+define('TEXT_EMAIL_PASSWORD_FORGOTTEN','Подтверждение email для отправки нового пароля');
+define('TEXT_EMAIL_PASSWORD_NEW_PASSWORD','Ваш новый пароль');
+define('ERROR_MAIL','Пожалуйста, проверьте указанные в форме данные');
 
-define('GV_FAQ', 'Gift Voucher FAQ');
-define('ERROR_NO_REDEEM_CODE', 'You did not enter a redeem code.');
-define('ERROR_NO_INVALID_REDEEM_GV', 'Invalid Gift Voucher Code');
-define('TABLE_HEADING_CREDIT', 'Credits Available');
-define('EMAIL_GV_TEXT_SUBJECT', 'A gift from %s');
-define('MAIN_MESSAGE', 'You have decided to send a gift voucher worth %s to %s who\'s eMail address is %s<br /><br />The text accompanying the eMail will read<br /><br />Dear %s<br /><br />You have been sent a Gift Voucher worth %s by %s');
-define('REDEEMED_AMOUNT','Your gift voucher was successfully added to your account. Gift voucher ammount:');
-define('REDEEMED_COUPON','Your coupon was successfully booked and will be redeemed automatically with your next order.');
+define('CATEGORIE_NOT_FOUND','Категория не найдена');
 
-define('ERROR_INVALID_USES_USER_COUPON','Customers can redeem this coupon only ');
-define('ERROR_INVALID_USES_COUPON','Customers can redeem this coupon only ');
-define('TIMES',' times.');
-define('ERROR_INVALID_STARTDATE_COUPON','Your coupon is not aviable yet.');
-define('ERROR_INVALID_FINISDATE_COUPON','Your coupon is out of date.');
+define('GV_FAQ', 'Вопросы и ответы по сертификатам');
+define('ERROR_NO_REDEEM_CODE', 'Вы не указали код сертификата ');  
+define('ERROR_NO_INVALID_REDEEM_GV', 'Неверный код сертификата '); 
+define('TABLE_HEADING_CREDIT', 'Здесь Вы можете указать номер сертификата/купона, если он у Вас есть:<br />(Если у Вас нет сертификата/купона, просто продолжайте оформлять заказ, нажав внизу страницы кнопку "Продолжить")');
+define('EMAIL_GV_TEXT_SUBJECT', 'Подарок от %s');
+define('MAIN_MESSAGE', 'Вы решили отправить сертификат на сумму %s своему знакомому %s, его Email адрес: %s<br /><br />Получатель сертификата получит следующее сообщение:<br /><br />Уважаемый %s<br /><br />
+                        Вам отправлен сертификат на сумму %s, отправитель: %s');
+define('ERROR_REDEEMED_AMOUNT', 'Ваш сертификат использован ');
+define('REDEEMED_COUPON','Ваш купон записан и будет использован при оформлении следующего заказа.');
+
+define('ERROR_INVALID_USES_USER_COUPON','Клиент может использовать только данный купон ');
+define('ERROR_INVALID_USES_COUPON','Покупатели могут использовать данный купон ');
+define('TIMES',' раз.');
+define('ERROR_INVALID_STARTDATE_COUPON','Ваш купон ещё недоступен.');
+define('ERROR_INVALID_FINISDATE_COUPON','Ваш купон устарел.');
 define('PERSONAL_MESSAGE', '%s пишет:');
 
 //Popup Window
@@ -423,32 +426,32 @@ define('TEXT_CLOSE_WINDOW', 'Закрыть окно.');
  */
 
 define('TEXT_CLOSE_WINDOW', 'Закрыть окно [x]');
-define('TEXT_COUPON_HELP_HEADER', 'Congratulations, you have redeemed a Discount Coupon.');
-define('TEXT_COUPON_HELP_NAME', '<br /><br />Coupon Name : %s');
-define('TEXT_COUPON_HELP_FIXED', '<br /><br />The coupon is worth %s discount against your order');
-define('TEXT_COUPON_HELP_MINORDER', '<br /><br />You need to spend %s to use this coupon');
-define('TEXT_COUPON_HELP_FREESHIP', '<br /><br />This coupon gives you free shipping on your order');
-define('TEXT_COUPON_HELP_DESC', '<br /><br />Coupon Description : %s');
-define('TEXT_COUPON_HELP_DATE', '<br /><br />The coupon is valid between %s and %s');
-define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />Product / Category Restrictions');
-define('TEXT_COUPON_HELP_CATEGORIES', 'Category');
-define('TEXT_COUPON_HELP_PRODUCTS', 'Product');
+define('TEXT_COUPON_HELP_HEADER', 'Поздравляем, Вы использовали купон.');
+define('TEXT_COUPON_HELP_NAME', '<br /><br />Название купона: %s');
+define('TEXT_COUPON_HELP_FIXED', '<br /><br />Купон предоставляет скидку в размере %s');
+define('TEXT_COUPON_HELP_MINORDER', '<br /><br />Заказ должен быть минимум на сумму %s чтобы у Вас появилась возможность использовать купон');
+define('TEXT_COUPON_HELP_FREESHIP', '<br /><br />Данный купон предоставляет возможность бесплатной доставки Вашего заказа');
+define('TEXT_COUPON_HELP_DESC', '<br /><br />Описание купона: %s');
+define('TEXT_COUPON_HELP_DATE', '<br /><br />Данный купон действителен с %s до %s');
+define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />Ограничения Товары / Категории');
+define('TEXT_COUPON_HELP_CATEGORIES', 'Категория');
+define('TEXT_COUPON_HELP_PRODUCTS', 'Товар');
 
 // VAT ID
-define('ENTRY_VAT_TEXT','* for Germany and EU-Countries only');
-define('ENTRY_VAT_ERROR', 'The chosen VatID is not valid or not proofable at this moment! Please fill in a valid ID or leave the field empty.');
+define('ENTRY_VAT_TEXT','* только для Германии и стран Евросоюза');
+define('ENTRY_VAT_ERROR', 'Выбранный VatID неверный! Укажите правильно ID или оставьте данное поле пустым.');
 define('MSRP','MSRP');
-define('YOUR_PRICE','your price ');
-define('ONLY',' only ');
-define('FROM','from ');
-define('YOU_SAVE','you save ');
-define('INSTEAD','instead ');
-define('TXT_PER',' per ');
-define('TAX_INFO_INCL','incl. %s Tax');
-define('TAX_INFO_EXCL','excl. %s Tax');
-define('TAX_INFO_ADD','plus. %s Tax');
-define('SHIPPING_EXCL','excl.');
-define('SHIPPING_COSTS','Shipping costs');
+define('YOUR_PRICE','Ваша цена ');
+define('ONLY',' только ');
+define('FROM','от ');
+define('YOU_SAVE','Вы экономите ');
+define('INSTEAD','вместо ');
+define('TXT_PER',' за ');
+define('TAX_INFO_INCL','включая %s налог');
+define('TAX_INFO_EXCL','исключая %s налог');
+define('TAX_INFO_ADD','плюс %s налог');
+define('SHIPPING_EXCL','исключая');
+define('SHIPPING_COSTS','Стоимость доставки');
 
 // Добавления для VaM сборки
 
