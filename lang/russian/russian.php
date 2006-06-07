@@ -450,8 +450,8 @@ define('TXT_PER',' за ');
 define('TAX_INFO_INCL','включая %s налог');
 define('TAX_INFO_EXCL','исключая %s налог');
 define('TAX_INFO_ADD','плюс %s налог');
-define('SHIPPING_EXCL','исключая');
-define('SHIPPING_COSTS','Стоимость доставки');
+define('SHIPPING_EXCL','+');
+define('SHIPPING_COSTS','доставка');
 
 // Добавления для VaM сборки
 

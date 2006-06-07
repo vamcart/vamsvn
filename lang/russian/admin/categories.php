@@ -130,7 +130,7 @@ define('TEXT_HOW_TO_COPY', 'Способ копирования:');
 define('TEXT_COPY_AS_LINK', 'Ссылка на товар');
 define('TEXT_COPY_AS_DUPLICATE', 'Копия товара');
 
-define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Ошибка: вы не можете связывать товар с той же самой категории.');
+define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Ошибка: Вы не можете связывать товар с той же самой категории.');
 define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория изображений закрыта на запись: ' . DIR_FS_CATALOG_IMAGES);
 define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория изображений отсутствует: ' . DIR_FS_CATALOG_IMAGES);
 
