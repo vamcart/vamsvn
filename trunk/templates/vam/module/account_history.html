@@ -1,0 +1,33 @@
+{config_load file="$language/lang_$language.conf" section="account_history"} <font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#heading_history#} 
+<br />
+<br />
+</strong></font> {foreach name=aussen item=order_data from=$order_content} <strong>{#text_oid#}{$order_data.ORDER_ID}</strong><br />
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+         
+        <tr> 
+
+          
+    <td style="border-top: 1px solid; border-color: #cccccc;" class="main"><strong> 
+      </strong> <font size="2"><strong>{#text_date#}</strong>{$order_data.ORDER_DATE}</font><br />
+      <strong>{#text_articles#}</strong>{$order_data.ORDER_PRODUCTS} <br />
+      <strong>{#text_total#}</strong>{$order_data.ORDER_TOTAL}&nbsp;&nbsp;<strong>{#text_status#}</strong>{$order_data.ORDER_STATUS} 
+      <br />
+      {$order_data.ORDER_BUTTON}<br />
+    </td>
+        </tr>
+</table><br />
+
+		 {/foreach}
+		 
+<div align="right"><br />
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td>{$SPLIT_BAR}</td>
+    </tr>
+    <tr>
+      <td><div align="right"><br />
+          {$BUTTON_BACK}</div></td>
+    </tr>
+  </table>
+  <br />
+</div>

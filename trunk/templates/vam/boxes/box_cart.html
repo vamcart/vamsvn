@@ -1,0 +1,100 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{if $deny_cart neq 'true'}
+{if $empty=='false'}
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="infoBoxHeading_right">
+	<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="infoBoxHeading_right">{#heading_cart#}</td>
+          <td align="right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/icon_more_light.gif" alt="" /></a></td>
+        </tr>
+    </table> 
+	</td>
+  </tr>
+  <tr>
+    <td class="infoBox_right" align="left">
+	<table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="boxText">
+		  <table border="0" width="100%" cellspacing="0" cellpadding="3" class="infoBoxContents">
+            <tr>
+              <td style="border-bottom: 1px solid; border-color: #cccccc;" align="left" class="boxText">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				{foreach name=aussen item=products_data from=$products}
+				  <tr>
+					<td class="main">{$products_data.QTY}&nbsp;x&nbsp;</td>
+					<td class="main"><a href="{$products_data.LINK}">{$products_data.NAME|truncate:15:"...":true}</a></td>
+				  </tr>
+				{/foreach}
+				</table>
+			  </td>
+            </tr>
+            {if $DISCOUNT}
+			<tr>
+              <td align="right" class="productDiscountPrice">{#text_discount#}&nbsp;{$DISCOUNT}</td>
+            </tr>{/if}
+            <tr>
+              <td align="right">{$UST}<strong>{#text_total#}</strong>{$TOTAL}{if $SHIPPING_INFO}<br />{$SHIPPING_INFO}{/if}</td>
+            </tr>
+          </table>
+		 </td>
+        </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+{else} <!-- cart has no content --> 
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="infoBoxHeading_right">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="infoBoxHeading_right">{#heading_cart#}</td>
+          <td align="right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/icon_more_light.gif" alt="" /></a></td>
+        </tr>
+    </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="infoBox_right" align="left">
+	<table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="boxText">{#text_empty_cart#}</td>
+        </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+{/if}
+
+{if $ACTIVATE_GIFT=='true'}
+
+{if $GV_AMOUNT neq ''}
+<table class="infoBoxContents" width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="infoBox_right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/img_gift.gif" alt="" /></a></td>
+    <td valign="middle" class="infoBox_right">
+	<table width="95%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
+      </tr>
+      <tr>
+        <td align="center" class="smalltext">{#voucher_balance#}</td>
+      </tr>
+      <tr>
+        <td align="center" class="gvBox" valign="bottom">{$GV_AMOUNT}</td>
+      </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+
+<table cellpadding="0" width="100%" cellspacing="0" border="0">
+  <tr>
+    <td class="infoBox_right"><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
+  </tr>
+</table>
+{/if}
+{/if}
+{/if}
