@@ -187,4 +187,11 @@ define('HEADING_CATEGORY','category');
 define('HEADING_ADD','Add?');
 define('HEADING_GROUP','Group');
 
+// Добавлено VaM сборка
+
+define('IMAGE_ICON_STATUS_GREEN', 'Active');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Set Active');
+define('IMAGE_ICON_STATUS_RED', 'Inactive');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Set Inactive');
+
 ?>
