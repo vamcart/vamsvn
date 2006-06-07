@@ -37,14 +37,14 @@ define('DOB_FORMAT_STRING', 'dd.mm.jjjj');
 
 function xtc_date_raw($date, $reverse = false) {
   if ($reverse) {
-    return substr($date, 0, 2) . substr($date, 3, 2) . substr($date, 6, 4);
+    return substr($date, 3, 2) . substr($date, 0, 2) . substr($date, 6, 4);
   } else {
-    return substr($date, 6, 4) . substr($date, 3, 2) . substr($date, 0, 2);
+    return substr($date, 6, 4) . substr($date, 3, 2) . substr($date, 0, 2); 
   }
 }
 
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
-define('LANGUAGE_CURRENCY', 'EUR');
+define('LANGUAGE_CURRENCY', 'USD');
 
 define('MALE', 'Mr.');
 define('FEMALE', 'Miss/Ms./Mrs.');
@@ -143,12 +143,12 @@ define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Your passwords do not match.');
  *
  */
 
-define('TEXT_RESULT_PAGE', 'Sites:');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> products)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> orders)');
-define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> reviews)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> new products)');
-define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> special offers)');
+define('TEXT_RESULT_PAGE', 'Страницы:');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> позиций)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> заказов)');
+define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> отзывов)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новинок)');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> специальных предложений)');
 
 /*
  *
@@ -158,9 +158,9 @@ define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Show <b>%d</b> to <b>%d</b> (of in to
 
 define('PREVNEXT_TITLE_PREVIOUS_PAGE', 'previous page');
 define('PREVNEXT_TITLE_NEXT_PAGE', 'next page');
-define('PREVNEXT_TITLE_PAGE_NO', 'page %d');
-define('PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE', 'Previous %d pages');
-define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Next %d pages');
+define('PREVNEXT_TITLE_PAGE_NO', 'Страница %d');
+define('PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE', 'Предыдущие %d страниц');
+define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Следующие %d страниц');
 
 /*
  *
@@ -194,14 +194,14 @@ define('IMAGE_BUTTON_ADMIN', 'Admin');
 define('IMAGE_BUTTON_PRODUCT_EDIT', 'Edit product');
 define('IMAGE_BUTTON_LOGIN', 'Login');
 
-define('SMALL_IMAGE_BUTTON_DELETE', 'Delete');
-define('SMALL_IMAGE_BUTTON_EDIT', 'Edit');
-define('SMALL_IMAGE_BUTTON_VIEW', 'View');
+define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
+define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
+define('SMALL_IMAGE_BUTTON_VIEW', 'Смотреть');
 
-define('ICON_ARROW_RIGHT', 'Show more');
-define('ICON_CART', 'Into the cart');
-define('ICON_SUCCESS', 'Success');
-define('ICON_WARNING', 'Warning');
+define('ICON_ARROW_RIGHT', 'Перейти');
+define('ICON_CART', 'В корзину');
+define('ICON_SUCCESS', 'Выполнено');
+define('ICON_WARNING', 'Внимание');
 
 /*
  *

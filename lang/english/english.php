@@ -44,7 +44,7 @@ function xtc_date_raw($date, $reverse = false) {
 }
 
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
-define('LANGUAGE_CURRENCY', 'EUR');
+define('LANGUAGE_CURRENCY', 'USD');
 
 define('MALE', 'Mr.');
 define('FEMALE', 'Miss/Ms./Mrs.');
