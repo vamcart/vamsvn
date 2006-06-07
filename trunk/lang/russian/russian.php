@@ -251,7 +251,7 @@ define('ERROR_ADDRESS_BOOK_FULL', 'Ваша адресная книга полностью заполнена. Удал
 
 //  conditions check
 
-define('ERROR_CONDITIONS_NOT_ACCEPTED', 'Мы сможем принять Ваш заказ пока Вы не согласитесь с условиями!');
+define('ERROR_CONDITIONS_NOT_ACCEPTED', 'Мы не сможем принять Ваш заказ пока Вы не согласитесь с условиями!');
 
 define('SUB_TITLE_OT_DISCOUNT','Скидка:');
 
