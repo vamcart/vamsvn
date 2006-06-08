@@ -94,4 +94,8 @@ define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'New Customer Group');
 define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Basis Kundengruppe für Artikelpreise</b>');
 define('ENTRY_CUSTOMERS_STATUS_BASE', 'wird als Grundlage für die Preise der neuen Kundengruppe gewählt. Wenn Auswahl = Admin werden keine Preise für die neue Kundengruppe angelegt.');
 
+// Ñáîðêà VaM
+
+define('TEXT_PUBLIC',', public');
+
 ?>
