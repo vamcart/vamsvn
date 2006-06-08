@@ -92,7 +92,7 @@ define('TEXT_INFO_HEADING_EDIT_CUSTOMERS_STATUS','Редактирование группы');
 define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'Новая группа');
 
 define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цена для группы</b>');
-define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной группе (Гость, Новый покупатель или Клиент). Если выбран Админ, то цены не показываются.');
+define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной группе (Посетитель, Покупатель или Оптовый покупатель). Если выбран Админ, то цены не показываются.');
 
 // Сборка VaM
 
