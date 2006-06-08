@@ -866,6 +866,7 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
                     *<font color="#000000"> </font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_EMAIL_FROM_LONG; ?></strong></font></font></font></td>
                 </tr>
               </table>
+<!--              
 			  <p>&nbsp;</p>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr> 
@@ -875,7 +876,6 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
                 </tr>
               </table>
-<!--              
               <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TITLE_ZONE_CONFIG_NOTE; ?></font><br />
               <table width="100%" border="0">
                 <tr> 
