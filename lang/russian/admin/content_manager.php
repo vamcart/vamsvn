@@ -13,13 +13,13 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
    
- define('HEADING_TITLE','Содержание сайта');
- define('HEADING_CONTENT','Содержание сайта');
+ define('HEADING_TITLE','Информационные страницы');
+ define('HEADING_CONTENT','Информационные страницы');
  define('HEADING_PRODUCTS_CONTENT','Информация к товару');
- define('TABLE_HEADING_CONTENT_ID','Link ID');
+ define('TABLE_HEADING_CONTENT_ID','ID код');
  define('TABLE_HEADING_CONTENT_TITLE','Заголовок');
  define('TABLE_HEADING_CONTENT_FILE','Файл');
- define('TABLE_HEADING_CONTENT_STATUS','Видим в боксе');
+ define('TABLE_HEADING_CONTENT_STATUS','Активна');
  define('TABLE_HEADING_CONTENT_BOX','Бокс');
  define('TABLE_HEADING_PRODUCTS_ID','ID');
  define('TABLE_HEADING_PRODUCTS','Товар');
@@ -29,21 +29,21 @@
  define('TABLE_HEADING_CONTENT_LINK','Ссылка');
  define('TABLE_HEADING_CONTENT_HITS','Просмотрен');
  define('TABLE_HEADING_CONTENT_GROUP','Группа');
- define('TABLE_HEADING_CONTENT_SORT','Порядок сорт.');
+ define('TABLE_HEADING_CONTENT_SORT','Порядок сортировки');
  define('TEXT_YES','Да');
- define('TEXT_NO','нет');
+ define('TEXT_NO','Нет');
  define('TABLE_HEADING_CONTENT_ACTION','Действие');
  define('TEXT_DELETE','Удалить');
  define('TEXT_EDIT','Изменить');
  define('TEXT_PREVIEW','Просмотр');
- define('CONFIRM_DELETE','Удалить содержание ?');
- define('CONTENT_NOTE','Маркированное значком <span class="red">*</span> &#8212; часть системы и не может быть удалено!');
+ define('CONFIRM_DELETE','Удалить содержание?');
+ define('CONTENT_NOTE','Страницы, отмеченные <span class="red">*</span>, являются системными и не могут быть удалены!');
 
 
  // edit
  define('TEXT_LANGUAGE','Язык:');
  define('TEXT_STATUS','Показывать:');
- define('TEXT_STATUS_DESCRIPTION','Если отмечено, то ссылка на данный контент отображается в информационном боксе');
+ define('TEXT_STATUS_DESCRIPTION','Если отмечено, то ссылка на данную страницу отображается в информационном боксе');
  define('TEXT_TITLE','Название (ссылка):');
  define('TEXT_TITLE_FILE','Название/Имя файла:');
  define('TEXT_SELECT','-Выберите-');
@@ -67,9 +67,9 @@
  define('TEXT_LINK','Ссылка:');
  define('TEXT_SORT_ORDER','Сортировка:');
  define('TEXT_GROUP','Языковая группа:');
- define('TEXT_GROUP_DESC','С этим ID вы можете связать одинаковые темы в разных языках.');
+ define('TEXT_GROUP_DESC','С этим ID Вы можете связать одинаковые темы в разных языках.');
 
- define('TEXT_CONTENT_DESCRIPTION','Здесь Вы можете добавить к Вашему товару файл любого типа, например &#8212; технические характеристики, описание товара, видео, фотографии товара. Всё это будет выведено на странице описания товара.<br /><br />');
+ define('TEXT_CONTENT_DESCRIPTION','Здесь Вы можете добавить к Вашему товару файл любого типа, например технические характеристики, описание товара, видео, фотографии товара. Всё это будет выведено на странице описания товара.<br /><br />');
  define('TEXT_FILENAME','Использованный файл:');
  define('TEXT_FILE_DESC','Описание:');
  define('USED_SPACE','Использованное место:');
