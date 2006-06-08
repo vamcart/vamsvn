@@ -186,7 +186,7 @@
                 <?php echo xtc_draw_input_field_installer('HTTPS_SERVER', 'https://' . getenv('HTTP_HOST')); ?><br />
                 <?php echo TEXT_HTTPS_LONG; ?></font></p>
               <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_checkbox_field_installer('ENABLE_SSL', 'true'); ?> 
-                <b><?php echo TEXT_SSL; ?>s</b><br />
+                <b><?php echo TEXT_SSL; ?></b><br />
                <?php echo TEXT_SSL_LONG; ?></font></p>
               <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_WS_ROOT; ?></b><br />
                 <?php echo xtc_draw_input_field_installer('DIR_FS_DOCUMENT_ROOT'); ?><br />
