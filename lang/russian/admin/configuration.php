@@ -504,8 +504,8 @@ define('SHOW_IP_LOG_DESC','Показать текст &quot;Ваш IP-адрес записан&quot;, при 
 define('ACTIVATE_GIFT_SYSTEM_TITLE','Активировать систему подарочных сертификатов / купонов');
 define('ACTIVATE_GIFT_SYSTEM_DESC','Разрешить покупать, использовать при оформлении заказов подарочные сертификаты и купоны');
 
-define('ACTIVATE_SHIPPING_STATUS_TITLE','Срок доставки');
-define('ACTIVATE_SHIPPING_STATUS_DESC','Показывать статус доставки? После активации на странице товара появится пункт <b>Срок доставки</b>');
+define('ACTIVATE_SHIPPING_STATUS_TITLE','Время доставки');
+define('ACTIVATE_SHIPPING_STATUS_DESC','Показывать статус доставки? После активации на странице товара появится пункт <b>Время доставки</b>');
 
 define('SECURITY_CODE_LENGTH_TITLE','Длина секретного кода');
 define('SECURITY_CODE_LENGTH_DESC','Длина секретного кода (в подарочном сертификате)');
