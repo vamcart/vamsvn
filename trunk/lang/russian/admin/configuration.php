@@ -199,7 +199,7 @@ define('SUBCATEGORY_IMAGE_HEIGHT_TITLE' , 'Высота картинки подкатегории');
 define('SUBCATEGORY_IMAGE_HEIGHT_DESC' , 'Высота картинки подкатегории (в пикселах)');
 
 define('CONFIG_CALCULATE_IMAGE_SIZE_TITLE' , 'Вычислять размер картинки');
-define('CONFIG_CALCULATE_IMAGE_SIZE_DESC' , 'Вычислять размер картинки?');
+define('CONFIG_CALCULATE_IMAGE_SIZE_DESC' , 'Вычислять размер картинки');
 
 define('IMAGE_REQUIRED_TITLE' , 'Показывать картинку в любом случае');
 define('IMAGE_REQUIRED_DESC' , 'Необходимо для поиска ошибок, в случае, если картинка не выводится.');
@@ -286,15 +286,15 @@ define('DEFAULT_ORDERS_STATUS_ID_TITLE' , 'Статус заказа по умолчанию');
 define('DEFAULT_ORDERS_STATUS_ID_DESC' , 'Статус, который присвается заказу сразу после оформления');
 
 define('SHIPPING_ORIGIN_COUNTRY_TITLE' , 'Страна магазина');
-define('SHIPPING_ORIGIN_COUNTRY_DESC' , 'Выберите страну где находится магазин. Используется при доставке.');
+define('SHIPPING_ORIGIN_COUNTRY_DESC', 'Страна, где находится магазин. Необходимо для некоторых модулей доставки.');
 define('SHIPPING_ORIGIN_ZIP_TITLE' , 'Почтовый индекс магазина');
-define('SHIPPING_ORIGIN_ZIP_DESC' , 'Введите почтовый индекс магазина. Используется при доставке.');
+define('SHIPPING_ORIGIN_ZIP_DESC', 'Укажите почтовый индекс магазина. Необходимо для некоторых модулей доставки.');
 define('SHIPPING_MAX_WEIGHT_TITLE' , 'Максимальный вес доставки');
-define('SHIPPING_MAX_WEIGHT_DESC' , 'Почтовые службы имеют ограничение на вес для одиночной посылки. Этот параметр будет общим на все товары. (см. <a href="http://www.russianpost.ru/resp_engine.asp?Path=RU/Home/Tariffs/localmes" target="_blank" title="в новом окне www.russianpost.ru...">Почта России. Внутренние почтовые отправления</a>)');
+define('SHIPPING_MAX_WEIGHT_DESC', 'Вы можете указать максимальный вес доставки, свыше которого заказы не доставляются. Необходимо для некоторых модулей доставки.');
 define('SHIPPING_BOX_WEIGHT_TITLE' , 'Минимальный вес упаковки');
-define('SHIPPING_BOX_WEIGHT_DESC' , 'Обычный вес от маленькой до средней упаковки?');
+define('SHIPPING_BOX_WEIGHT_DESC', 'Вы можете указать вес упаковки.');
 define('SHIPPING_BOX_PADDING_TITLE' , 'Вес упаковки в процентах'); 
-define('SHIPPING_BOX_PADDING_DESC' , 'Процентное увеличение груза. Для 10% запишите 10');
+define('SHIPPING_BOX_PADDING_DESC', 'Доставка заказов, вес которых больше указанного в переменной Максимальный вес доставки, увеличивается на указанный процент. Если Вы хотите увелить стоимость на 10%, пишите - 10');
 define('SHOW_SHIPPING_DESC' , 'Показывать ссылку стоимость доставки на странице товара');
 define('SHOW_SHIPPING_TITLE' , 'Стоимость доставки на странице товара');
 define('SHIPPING_INFOS_DESC' , 'ID код группы стоимости доставки.');
@@ -528,7 +528,7 @@ define('QUICKLINK_ACTIVATED_DESC','Функция множественного копирования в админе.'
 define('DOWNLOAD_UNALLOWED_PAYMENT_TITLE', 'Запрещённые модули оплаты для виртуальных товаров');
 define('DOWNLOAD_UNALLOWED_PAYMENT_DESC', 'Запрещённые модули оплаты для виртуальных товаров (т.е. для товаров, которые имеют файлы для загрузки). Список разделённый запятыми, например: {banktransfer,cod,invoice,moneyorder}');
 define('DOWNLOAD_MIN_ORDERS_STATUS_TITLE', 'Минимальный cтатус заказа');
-define('DOWNLOAD_MIN_ORDERS_STATUS_DESC', 'Скачивание разрешается только заказам, имеющим указанный статус и выше. Это нужно для того что б загрузка товаров была доступа только оплаченным заказам.');
+define('DOWNLOAD_MIN_ORDERS_STATUS_DESC', 'Скачивание разрешается только заказам, имеющим указанный статус и выше. Это нужно для того что б загрузка товаров была доступна только оплаченным заказам.');
 
 // Vat Check
 define('STORE_OWNER_VAT_ID_TITLE' , 'VAT ID of Shop Owner');
