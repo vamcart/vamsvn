@@ -652,8 +652,8 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>XT-Commerce Installer - STEP 6 / Create Superuser</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><?php echo TITLE_STEP6; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <?php require('includes/form_check.js.php'); ?>
 <style type="text/css">
 <!--
@@ -681,7 +681,7 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr> 
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999">Install</font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr> 
           <td bgcolor="F3F3F3" ><br /> 
@@ -888,7 +888,7 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
               <p><br />
               </p>
               <center>
-                <input name="image" type="image" src="images/button_continue.gif" alt="Continue" align="middle" border="0">
+                <input name="image" type="image" src="images/button_continue.gif" alt="<?php echo IMAGE_CONTINUE; ?>" align="middle" border="0">
                 <br />
               </center>
             </form></td>

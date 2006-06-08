@@ -220,5 +220,47 @@ define('TITLE_CHMOD','Setting rights on files');
 
 define('TEXT_SHOP_CONFIG_SUCCESS','<strong>XT-Commerce</strong> Shop configuration was successful.');
 define('TEXT_TEAM','The XT-Commerce dev Team.<br /><a href="http://www.xt-commerce.com">XT-Commerce support site</a>');
-   
- ?>
+
+// —борка VaM
+
+// install_step1
+
+define('IMAGE_CONTINUE','Continue');
+define('IMAGE_CANCEL','Cancel');
+define('IMAGE_BACK','Back');
+define('IMAGE_RETRY','Retry');
+define('TEXT_RUSSIAN','Russian');
+define('TEXT_ENGLISH','English');
+define('TEXT_CHECKING','Checking:');
+define('TEXT_ATTENTION','Attention:');
+define('TITLE_INDEX','XT-Commerce VaM Edition Installer - Welcome');
+define('TITLE_STEP1','XT-Commerce VaM Edition Installer - STEP 1 / Settings');
+define('TITLE_STEP2','XT-Commerce VaM Edition Installer - STEP 2 / DB Connection');
+define('TITLE_STEP3','XT-Commerce VaM Edition Installer - STEP 3 / DB Import');
+define('TITLE_STEP4','XT-Commerce VaM Edition Installer - STEP 4 / Webserver Configuration');
+define('TITLE_STEP5','XT-Commerce VaM Edition Installer - STEP 5 / Write Config Files');
+define('TITLE_STEP6','XT-Commerce VaM Edition Installer - STEP 6 / Create Superuser');
+define('TITLE_STEP7','XT-Commerce VaM Edition Installer - STEP 7 / Define Pricesystem');
+define('TITLE_FINISHED','XT-Commerce VaM Edition Installer - Finished');
+define('CHARSET','iso-8859-1');
+define('TEXT_INSTALL','Install');
+define('ERROR_PERMISSION','WRONG PERMISSION on ');
+define('TEXT_ERROR','ERROR');
+define('TEXT_FILE_PERMISSIONS','FILE Permissions .............................. ');
+define('TEXT_FOLDER_PERMISSIONS','FOLDER Permissions .............................. ');
+define('PHP_VERSION_ERROR','<b>ATTENTION!, your PHP Version is to old, XT-Commerce requires atleast PHP 4.1.3.</b><br /><br />
+                 Your php Version: <b><?php echo phpversion(); ?></b><br /><br />
+                 XT-Commerce wont work on this server, update PHP or change Server.');
+define('TEXT_PHP_VERSION','PHP VERSION .............................. ');
+define('TEXT_GD_LIB_NOT_FOUND','ERROR NO GDLIB FOUND!');
+define('TEXT_GD_LIB_VERSION','if GDlib Version < 2+ , klick here for further instructions');
+define('TEXT_GD_LIB_VERSION1','GDlib VERSION .............................. ');
+define('TEXT_GD_LIB_GIF_SUPPORT','GDlib GIF-Support .............................. ');
+define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in XT-Commerce!');
+define('TEXT_OK','OK');
+
+//install_finished
+
+define('TEXT_CATALOG','Catalog');
+
+?>
