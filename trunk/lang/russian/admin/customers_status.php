@@ -91,7 +91,7 @@ define('TEXT_INFO_HEADING_DELETE_CUSTOMERS_STATUS', 'Удаление группы');
 define('TEXT_INFO_HEADING_EDIT_CUSTOMERS_STATUS','Редактирование группы');
 define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'Новая группа');
 
-define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цены для группы</b>');
-define('ENTRY_CUSTOMERS_STATUS_BASE', 'Цена для группы (есть три типа цен: Гость, Новый покупатель, Клиент). Если выбран Админ, то цены не показываются.');
+define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цена для группы</b>');
+define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной группе (Гость, Новый покупатель или Клиент). Если выбран Админ, то цены не показываются.');
 
 ?>
