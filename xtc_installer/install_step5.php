@@ -402,7 +402,7 @@
             <?php echo TEXT_WS_CONFIGURATION_SUCCESS; ?></font> </center>
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr> 
-                <td align="center"><a href="install_step6.php"><img src="images/button_continue.gif" width="77" height="23" border="0"></a></td>
+                <td align="center"><a href="install_step6.php"><img src="images/button_continue.gif" border="0"></a></td>
               </tr>
             </table>
 </form>
