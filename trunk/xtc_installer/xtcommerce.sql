@@ -38,14 +38,14 @@ CREATE TABLE address_book (
   address_book_id int NOT NULL auto_increment,
   customers_id int NOT NULL,
   entry_gender char(1) NOT NULL,
-  entry_company varchar(32),
-  entry_firstname varchar(32) NOT NULL,
-  entry_lastname varchar(32) NOT NULL,
-  entry_street_address varchar(64) NOT NULL,
-  entry_suburb varchar(32),
+  entry_company varchar(255),
+  entry_firstname varchar(255) NOT NULL,
+  entry_lastname varchar(255) NOT NULL,
+  entry_street_address varchar(255) NOT NULL,
+  entry_suburb varchar(255),
   entry_postcode varchar(10) NOT NULL,
-  entry_city varchar(32) NOT NULL,
-  entry_state varchar(32),
+  entry_city varchar(255) NOT NULL,
+  entry_state varchar(255),
   entry_country_id int DEFAULT '0' NOT NULL,
   entry_zone_id int DEFAULT '0' NOT NULL,
   address_date_added datetime DEFAULT '0000-00-00 00:00:00',
@@ -86,8 +86,8 @@ CREATE TABLE products_xsell_grp_name (
 DROP TABLE IF EXISTS campaigns;
 CREATE TABLE campaigns (
   campaigns_id int(11) NOT NULL auto_increment,
-  campaigns_name varchar(32) NOT NULL default '',
-  campaigns_refID varchar(64) default NULL,
+  campaigns_name varchar(255) NOT NULL default '',
+  campaigns_refID varchar(255) default NULL,
   campaigns_leads int(11) NOT NULL default '0',
   date_added datetime default NULL,
   last_modified datetime default NULL,
@@ -105,20 +105,20 @@ CREATE TABLE  campaigns_ip (
 DROP TABLE IF EXISTS address_format;
 CREATE TABLE address_format (
   address_format_id int NOT NULL auto_increment,
-  address_format varchar(128) NOT NULL,
-  address_summary varchar(48) NOT NULL,
+  address_format varchar(255) NOT NULL,
+  address_summary varchar(255) NOT NULL,
   PRIMARY KEY (address_format_id)
 );
 
 
 DROP TABLE IF EXISTS database_version;
 CREATE TABLE database_version (
-  version varchar(32) NOT NULL
+  version varchar(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS admin_access;
 CREATE TABLE admin_access (
-  customers_id varchar(32) NOT NULL default '0',
+  customers_id varchar(255) NOT NULL default '0',
 
   configuration int(1) NOT NULL default '0',
   modules int(1) NOT NULL default '0',
@@ -196,7 +196,7 @@ CREATE TABLE admin_access (
 DROP TABLE IF EXISTS banktransfer;
 CREATE TABLE banktransfer (
   orders_id int(11) NOT NULL default '0',
-  banktransfer_owner varchar(64) default NULL,
+  banktransfer_owner varchar(255) default NULL,
   banktransfer_number varchar(24) default NULL,
   banktransfer_bankname varchar(255) default NULL,
   banktransfer_blz varchar(8) default NULL,
@@ -210,9 +210,9 @@ CREATE TABLE banktransfer (
 DROP TABLE IF EXISTS banners;
 CREATE TABLE banners (
   banners_id int NOT NULL auto_increment,
-  banners_title varchar(64) NOT NULL,
+  banners_title varchar(255) NOT NULL,
   banners_url varchar(255) NOT NULL,
-  banners_image varchar(64) NOT NULL,
+  banners_image varchar(255) NOT NULL,
   banners_group varchar(10) NOT NULL,
   banners_html_text text,
   expires_impressions int(7) DEFAULT '0',
@@ -237,18 +237,18 @@ CREATE TABLE banners_history (
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
   categories_id int NOT NULL auto_increment,
-  categories_image varchar(64),
+  categories_image varchar(255),
   parent_id int DEFAULT '0' NOT NULL,
   categories_status TINYint (1)  UNSIGNED DEFAULT "1" NOT NULL,
-  categories_template varchar(64),
+  categories_template varchar(255),
   group_permission_0 tinyint(1) NOT NULL,
   group_permission_1 tinyint(1) NOT NULL,
   group_permission_2 tinyint(1) NOT NULL,
   group_permission_3 tinyint(1) NOT NULL,
-  listing_template varchar(64),
+  listing_template varchar(255),
   sort_order int(3) DEFAULT "0" NOT NULL,
-  products_sorting varchar(32),
-  products_sorting2 varchar(32),
+  products_sorting varchar(255),
+  products_sorting2 varchar(255),
   date_added datetime,
   last_modified datetime,
   PRIMARY KEY (categories_id),
@@ -259,10 +259,10 @@ DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
   categories_id int DEFAULT '0' NOT NULL,
   language_id int DEFAULT '1' NOT NULL,
-  categories_name varchar(32) NOT NULL,
+  categories_name varchar(255) NOT NULL,
   categories_heading_title varchar(255) NOT NULL,
   categories_description text NOT NULL,
-  categories_meta_title varchar(100) NOT NULL,
+  categories_meta_title varchar(255) NOT NULL,
   categories_meta_description varchar(255) NOT NULL,
   categories_meta_keywords varchar(255) NOT NULL,
   PRIMARY KEY (categories_id, language_id),
@@ -272,7 +272,7 @@ CREATE TABLE categories_description (
 DROP TABLE IF EXISTS configuration;
 CREATE TABLE configuration (
   configuration_id int NOT NULL auto_increment,
-  configuration_key varchar(64) NOT NULL,
+  configuration_key varchar(255) NOT NULL,
   configuration_value varchar(255) NOT NULL,
   configuration_group_id int NOT NULL,
   sort_order int(5) NULL,
@@ -287,7 +287,7 @@ CREATE TABLE configuration (
 DROP TABLE IF EXISTS configuration_group;
 CREATE TABLE configuration_group (
   configuration_group_id int NOT NULL auto_increment,
-  configuration_group_title varchar(64) NOT NULL,
+  configuration_group_title varchar(255) NOT NULL,
   configuration_group_description varchar(255) NOT NULL,
   sort_order int(5) NULL,
   visible int(1) DEFAULT '1' NULL,
@@ -309,7 +309,7 @@ CREATE TABLE counter_history (
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (
   countries_id int NOT NULL auto_increment,
-  countries_name varchar(64) NOT NULL,
+  countries_name varchar(255) NOT NULL,
   countries_iso_code_2 char(2) NOT NULL,
   countries_iso_code_3 char(3) NOT NULL,
   address_format_id int NOT NULL,
@@ -321,7 +321,7 @@ CREATE TABLE countries (
 DROP TABLE IF EXISTS currencies;
 CREATE TABLE currencies (
   currencies_id int NOT NULL auto_increment,
-  title varchar(32) NOT NULL,
+  title varchar(255) NOT NULL,
   code char(3) NOT NULL,
   symbol_left varchar(12),
   symbol_right varchar(12),
@@ -336,26 +336,26 @@ CREATE TABLE currencies (
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
   customers_id int NOT NULL auto_increment,
-  customers_cid varchar(32),
+  customers_cid varchar(255),
   customers_vat_id varchar (20),
   customers_vat_id_status int(2) DEFAULT '0' NOT NULL,
-  customers_warning varchar(32),
+  customers_warning varchar(255),
   customers_status int(5) DEFAULT '1' NOT NULL,
   customers_gender char(1) NOT NULL,
-  customers_firstname varchar(32) NOT NULL,
-  customers_lastname varchar(32) NOT NULL,
+  customers_firstname varchar(255) NOT NULL,
+  customers_lastname varchar(255) NOT NULL,
   customers_dob datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   customers_email_address varchar(96) NOT NULL,
   customers_default_address_id int NOT NULL,
-  customers_telephone varchar(32) NOT NULL,
-  customers_fax varchar(32),
+  customers_telephone varchar(255) NOT NULL,
+  customers_fax varchar(255),
   customers_password varchar(40) NOT NULL,
   customers_newsletter char(1),
   customers_newsletter_mode char( 1 ) DEFAULT '0' NOT NULL,
   member_flag char(1) DEFAULT '0' NOT NULL,
   delete_user char(1) DEFAULT '1' NOT NULL,
   account_type int(1) NOT NULL default '0',
-  password_request_key varchar(32) NOT NULL,
+  password_request_key varchar(255) NOT NULL,
   payment_unallowed varchar(255) NOT NULL,
   shipping_unallowed varchar(255) NOT NULL,
   refferers_id int(5) DEFAULT '0' NOT NULL,
@@ -413,11 +413,11 @@ DROP TABLE IF EXISTS customers_status;
 CREATE TABLE customers_status (
   customers_status_id int(11) NOT NULL default '0',
   language_id int(11) NOT NULL DEFAULT '1',
-  customers_status_name VARCHAR(32) NOT NULL DEFAULT '',
+  customers_status_name varchar(255) NOT NULL DEFAULT '',
   customers_status_public int(1) NOT NULL DEFAULT '1',
   customers_status_min_order int(7) DEFAULT NULL,
   customers_status_max_order int(7) DEFAULT NULL,
-  customers_status_image varchar(64) DEFAULT NULL,
+  customers_status_image varchar(255) DEFAULT NULL,
   customers_status_discount decimal(4,2) DEFAULT '0',
   customers_status_ot_discount_flag char(1) NOT NULL DEFAULT '0',
   customers_status_ot_discount decimal(4,2) DEFAULT '0',
@@ -450,10 +450,10 @@ CREATE TABLE customers_status_history (
 DROP TABLE IF EXISTS languages;
 CREATE TABLE languages (
   languages_id int NOT NULL auto_increment,
-  name varchar(32)  NOT NULL,
+  name varchar(255)  NOT NULL,
   code char(2) NOT NULL,
-  image varchar(64),
-  directory varchar(32),
+  image varchar(255),
+  directory varchar(255),
   sort_order int(3),
   language_charset text NOT NULL,
   PRIMARY KEY (languages_id),
@@ -464,8 +464,8 @@ CREATE TABLE languages (
 DROP TABLE IF EXISTS manufacturers;
 CREATE TABLE manufacturers (
   manufacturers_id int NOT NULL auto_increment,
-  manufacturers_name varchar(32) NOT NULL,
-  manufacturers_image varchar(64),
+  manufacturers_name varchar(255) NOT NULL,
+  manufacturers_image varchar(255),
   date_added datetime NULL,
   last_modified datetime NULL,
   PRIMARY KEY (manufacturers_id),
@@ -476,7 +476,7 @@ DROP TABLE IF EXISTS manufacturers_info;
 CREATE TABLE manufacturers_info (
   manufacturers_id int NOT NULL,
   languages_id int NOT NULL,
-  manufacturers_meta_title varchar(100) NOT NULL,
+  manufacturers_meta_title varchar(255) NOT NULL,
   manufacturers_meta_description varchar(255) NOT NULL,
   manufacturers_meta_keywords varchar(255) NOT NULL,
   manufacturers_url varchar(255) NOT NULL,
@@ -504,10 +504,10 @@ CREATE TABLE newsletter_recipients (
   customers_email_address varchar(96) NOT NULL default '',
   customers_id int(11) NOT NULL default '0',
   customers_status int(5) NOT NULL default '0',
-  customers_firstname varchar(32) NOT NULL default '',
-  customers_lastname varchar(32) NOT NULL default '',
+  customers_firstname varchar(255) NOT NULL default '',
+  customers_lastname varchar(255) NOT NULL default '',
   mail_status int(1) NOT NULL default '0',
-  mail_key varchar(32) NOT NULL default '',
+  mail_key varchar(255) NOT NULL default '',
   date_added datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (mail_id)
 );
@@ -524,53 +524,53 @@ DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   orders_id int NOT NULL auto_increment,
   customers_id int NOT NULL,
-  customers_cid varchar(32),
+  customers_cid varchar(255),
   customers_vat_id varchar (20),
   customers_status int(11),
-  customers_status_name varchar(32) NOT NULL,
+  customers_status_name varchar(255) NOT NULL,
   customers_status_image varchar (64),
   customers_status_discount decimal (4,2),
-  customers_name varchar(64) NOT NULL,
-  customers_firstname varchar(64) NOT NULL,
-  customers_lastname varchar(64) NOT NULL,
-  customers_company varchar(32),
-  customers_street_address varchar(64) NOT NULL,
-  customers_suburb varchar(32),
-  customers_city varchar(32) NOT NULL,
+  customers_name varchar(255) NOT NULL,
+  customers_firstname varchar(255) NOT NULL,
+  customers_lastname varchar(255) NOT NULL,
+  customers_company varchar(255),
+  customers_street_address varchar(255) NOT NULL,
+  customers_suburb varchar(255),
+  customers_city varchar(255) NOT NULL,
   customers_postcode varchar(10) NOT NULL,
-  customers_state varchar(32),
-  customers_country varchar(32) NOT NULL,
-  customers_telephone varchar(32) NOT NULL,
+  customers_state varchar(255),
+  customers_country varchar(255) NOT NULL,
+  customers_telephone varchar(255) NOT NULL,
   customers_email_address varchar(96) NOT NULL,
   customers_address_format_id int(5) NOT NULL,
-  delivery_name varchar(64) NOT NULL,
-  delivery_firstname varchar(64) NOT NULL,
-  delivery_lastname varchar(64) NOT NULL,
-  delivery_company varchar(32),
-  delivery_street_address varchar(64) NOT NULL,
-  delivery_suburb varchar(32),
-  delivery_city varchar(32) NOT NULL,
+  delivery_name varchar(255) NOT NULL,
+  delivery_firstname varchar(255) NOT NULL,
+  delivery_lastname varchar(255) NOT NULL,
+  delivery_company varchar(255),
+  delivery_street_address varchar(255) NOT NULL,
+  delivery_suburb varchar(255),
+  delivery_city varchar(255) NOT NULL,
   delivery_postcode varchar(10) NOT NULL,
-  delivery_state varchar(32),
-  delivery_country varchar(32) NOT NULL,
+  delivery_state varchar(255),
+  delivery_country varchar(255) NOT NULL,
   delivery_country_iso_code_2 char(2) NOT NULL,
   delivery_address_format_id int(5) NOT NULL,
-  billing_name varchar(64) NOT NULL,
-  billing_firstname varchar(64) NOT NULL,
-  billing_lastname varchar(64) NOT NULL,
-  billing_company varchar(32),
-  billing_street_address varchar(64) NOT NULL,
-  billing_suburb varchar(32),
-  billing_city varchar(32) NOT NULL,
+  billing_name varchar(255) NOT NULL,
+  billing_firstname varchar(255) NOT NULL,
+  billing_lastname varchar(255) NOT NULL,
+  billing_company varchar(255),
+  billing_street_address varchar(255) NOT NULL,
+  billing_suburb varchar(255),
+  billing_city varchar(255) NOT NULL,
   billing_postcode varchar(10) NOT NULL,
-  billing_state varchar(32),
-  billing_country varchar(32) NOT NULL,
+  billing_state varchar(255),
+  billing_country varchar(255) NOT NULL,
   billing_country_iso_code_2 char(2) NOT NULL,
   billing_address_format_id int(5) NOT NULL,
-  payment_method varchar(32) NOT NULL,
+  payment_method varchar(255) NOT NULL,
   cc_type varchar(20),
-  cc_owner varchar(64),
-  cc_number varchar(64),
+  cc_owner varchar(255),
+  cc_number varchar(255),
   cc_expires varchar(4),
   cc_start varchar(4) default NULL,
   cc_issue varchar(3) default NULL,
@@ -583,16 +583,16 @@ CREATE TABLE orders (
   currency char(3),
   currency_value decimal(14,6),
   account_type int(1) DEFAULT '0' NOT NULL,
-  payment_class VARCHAR(32) NOT NULL,
-  shipping_method VARCHAR(32) NOT NULL,
-  shipping_class VARCHAR(32) NOT NULL,
-  customers_ip VARCHAR(32) NOT NULL,
-  language VARCHAR(32) NOT NULL,
+  payment_class varchar(255) NOT NULL,
+  shipping_method varchar(255) NOT NULL,
+  shipping_class varchar(255) NOT NULL,
+  customers_ip varchar(255) NOT NULL,
+  language varchar(255) NOT NULL,
   afterbuy_success INT(1) DEFAULT'0' NOT NULL,
   afterbuy_id INT(32) DEFAULT '0' NOT NULL,
-  refferers_id VARCHAR(32) NOT NULL,
+  refferers_id varchar(255) NOT NULL,
   conversion_type INT(1) DEFAULT '0' NOT NULL,
-  orders_ident_key varchar(128),
+  orders_ident_key varchar(255),
   PRIMARY KEY (orders_id)
 );
 
@@ -610,8 +610,8 @@ CREATE TABLE orders_products (
   orders_products_id int NOT NULL auto_increment,
   orders_id int NOT NULL,
   products_id int NOT NULL,
-  products_model varchar(64),
-  products_name varchar(64) NOT NULL,
+  products_model varchar(255),
+  products_name varchar(255) NOT NULL,
   products_price decimal(15,4) NOT NULL,
   products_discount_made decimal(4,2) DEFAULT NULL,
   final_price decimal(15,4) NOT NULL,
@@ -625,7 +625,7 @@ DROP TABLE IF EXISTS orders_status;
 CREATE TABLE orders_status (
   orders_status_id int DEFAULT '0' NOT NULL,
   language_id int DEFAULT '1' NOT NULL,
-  orders_status_name varchar(32) NOT NULL,
+  orders_status_name varchar(255) NOT NULL,
   PRIMARY KEY (orders_status_id, language_id),
   KEY idx_orders_status_name (orders_status_name)
 );
@@ -634,8 +634,8 @@ DROP TABLE IF EXISTS shipping_status;
 CREATE TABLE shipping_status (
   shipping_status_id int DEFAULT '0' NOT NULL,
   language_id int DEFAULT '1' NOT NULL,
-  shipping_status_name varchar(32) NOT NULL,
-  shipping_status_image varchar(32) NOT NULL,
+  shipping_status_name varchar(255) NOT NULL,
+  shipping_status_image varchar(255) NOT NULL,
   PRIMARY KEY (shipping_status_id, language_id),
   KEY idx_shipping_status_name (shipping_status_name)
 );
@@ -656,8 +656,8 @@ CREATE TABLE orders_products_attributes (
   orders_products_attributes_id int NOT NULL auto_increment,
   orders_id int NOT NULL,
   orders_products_id int NOT NULL,
-  products_options varchar(32) NOT NULL,
-  products_options_values varchar(64) NOT NULL,
+  products_options varchar(255) NOT NULL,
+  products_options_values varchar(255) NOT NULL,
   options_values_price decimal(15,4) NOT NULL,
   price_prefix char(1) NOT NULL,
   PRIMARY KEY (orders_products_attributes_id)
@@ -681,7 +681,7 @@ CREATE TABLE orders_total (
   title varchar(255) NOT NULL,
   text varchar(255) NOT NULL,
   value decimal(15,4) NOT NULL,
-  class varchar(32) NOT NULL,
+  class varchar(255) NOT NULL,
   sort_order int NOT NULL,
   PRIMARY KEY (orders_total_id),
   KEY idx_orders_total_orders_id (orders_id)
@@ -695,23 +695,23 @@ CREATE TABLE orders_recalculate (
   b_price decimal(15,4) NOT NULL default '0.0000',
   tax decimal(15,4) NOT NULL default '0.0000',
   tax_rate decimal(7,4) NOT NULL default '0.0000',
-  class varchar(32) NOT NULL default '',
+  class varchar(255) NOT NULL default '',
   PRIMARY KEY  (orders_recalculate_id)
 );
 
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
   products_id int NOT NULL auto_increment,
-  products_ean varchar(128),
+  products_ean varchar(255),
   products_quantity int(4) NOT NULL,
   products_shippingtime int(4) NOT NULL,
-  products_model varchar(64),
+  products_model varchar(255),
   group_permission_0 tinyint(1) NOT NULL,
   group_permission_1 tinyint(1) NOT NULL,
   group_permission_2 tinyint(1) NOT NULL,
   group_permission_3 tinyint(1) NOT NULL,
   products_sort int(4) NOT NULL DEFAULT '0',
-  products_image varchar(64),
+  products_image varchar(255),
   products_price decimal(15,4) NOT NULL,
   products_discount_allowed decimal(3,2) DEFAULT '0' NOT NULL,
   products_date_added datetime NOT NULL,
@@ -744,7 +744,7 @@ CREATE TABLE products_attributes (
   options_values_id int NOT NULL,
   options_values_price decimal(15,4) NOT NULL,
   price_prefix char(1) NOT NULL,
-  attributes_model varchar(64) NULL,
+  attributes_model varchar(255) NULL,
   attributes_stock int(4) NULL,
   options_values_weight decimal(15,4) NOT NULL,
   weight_prefix char(1) NOT NULL,
@@ -765,7 +765,7 @@ DROP TABLE IF EXISTS products_description;
 CREATE TABLE products_description (
   products_id int NOT NULL auto_increment,
   language_id int NOT NULL default '1',
-  products_name varchar(64) NOT NULL default '',
+  products_name varchar(255) NOT NULL default '',
   products_description text,
   products_short_description text,
   products_keywords VARCHAR(255) DEFAULT NULL,
@@ -799,7 +799,7 @@ DROP TABLE IF EXISTS products_options;
 CREATE TABLE products_options (
   products_options_id int NOT NULL default '0',
   language_id int NOT NULL default '1',
-  products_options_name varchar(32) NOT NULL default '',
+  products_options_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (products_options_id,language_id)
 );
 
@@ -807,7 +807,7 @@ DROP TABLE IF EXISTS products_options_values;
 CREATE TABLE products_options_values (
   products_options_values_id int NOT NULL default '0',
   language_id int NOT NULL default '1',
-  products_options_values_name varchar(64) NOT NULL default '',
+  products_options_values_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (products_options_values_id,language_id)
 );
 
@@ -838,7 +838,7 @@ DROP TABLE IF EXISTS products_vpe;
 CREATE TABLE products_vpe (
   products_vpe_id int(11) NOT NULL default '0',
   language_id int(11) NOT NULL default '0',
-  products_vpe_name varchar(32) NOT NULL default ''
+  products_vpe_name varchar(255) NOT NULL default ''
 );
 
 DROP TABLE IF EXISTS reviews;
@@ -846,7 +846,7 @@ CREATE TABLE reviews (
   reviews_id int NOT NULL auto_increment,
   products_id int NOT NULL,
   customers_id int,
-  customers_name varchar(64) NOT NULL,
+  customers_name varchar(255) NOT NULL,
   reviews_rating int(1),
   date_added datetime,
   last_modified datetime,
@@ -864,7 +864,7 @@ CREATE TABLE reviews_description (
 
 DROP TABLE IF EXISTS sessions;
 CREATE TABLE sessions (
-  sesskey varchar(32) NOT NULL,
+  sesskey varchar(255) NOT NULL,
   expiry int(11) unsigned NOT NULL,
   value text NOT NULL,
   PRIMARY KEY (sesskey)
@@ -887,7 +887,7 @@ CREATE TABLE specials (
 DROP TABLE IF EXISTS tax_class;
 CREATE TABLE tax_class (
   tax_class_id int NOT NULL auto_increment,
-  tax_class_title varchar(32) NOT NULL,
+  tax_class_title varchar(255) NOT NULL,
   tax_class_description varchar(255) NOT NULL,
   last_modified datetime NULL,
   date_added datetime NOT NULL,
@@ -910,7 +910,7 @@ CREATE TABLE tax_rates (
 DROP TABLE IF EXISTS geo_zones;
 CREATE TABLE geo_zones (
   geo_zone_id int NOT NULL auto_increment,
-  geo_zone_name varchar(32) NOT NULL,
+  geo_zone_name varchar(255) NOT NULL,
   geo_zone_description varchar(255) NOT NULL,
   last_modified datetime NULL,
   date_added datetime NOT NULL,
@@ -920,8 +920,8 @@ CREATE TABLE geo_zones (
 DROP TABLE IF EXISTS whos_online;
 CREATE TABLE whos_online (
   customer_id int,
-  full_name varchar(64) NOT NULL,
-  session_id varchar(128) NOT NULL,
+  full_name varchar(255) NOT NULL,
+  session_id varchar(255) NOT NULL,
   ip_address varchar(15) NOT NULL,
   time_entry varchar(14) NOT NULL,
   time_last_click varchar(14) NOT NULL,
@@ -932,8 +932,8 @@ DROP TABLE IF EXISTS zones;
 CREATE TABLE zones (
   zone_id int NOT NULL auto_increment,
   zone_country_id int NOT NULL,
-  zone_code varchar(32) NOT NULL,
-  zone_name varchar(32) NOT NULL,
+  zone_code varchar(255) NOT NULL,
+  zone_name varchar(255) NOT NULL,
   PRIMARY KEY (zone_id)
 );
 
@@ -961,7 +961,7 @@ CREATE TABLE content_manager (
   content_text text NOT NULL,
   sort_order int(4) NOT NULL default '0',
   file_flag int(1) NOT NULL default '0',
-  content_file varchar(64) NOT NULL default '',
+  content_file varchar(255) NOT NULL default '',
   content_status int(1) NOT NULL default '0',
   content_group int(11) NOT NULL,
   content_delete int(1) NOT NULL default '1',
@@ -982,8 +982,8 @@ CREATE TABLE products_content (
   content_id int(11) NOT NULL auto_increment,
   products_id int(11) NOT NULL default '0',
   group_ids TEXT,
-  content_name varchar(32) NOT NULL default '',
-  content_file varchar(64) NOT NULL,
+  content_name varchar(255) NOT NULL default '',
+  content_file varchar(255) NOT NULL,
   content_link text NOT NULL,
   languages_id int(11) NOT NULL default '0',
   content_read int(11) NOT NULL default '0',
@@ -1006,7 +1006,7 @@ CREATE TABLE module_newsletter (
 DROP TABLE if exists cm_file_flags;
 CREATE TABLE cm_file_flags (
   file_flag int(11) NOT NULL,
-  file_flag_name varchar(32) NOT NULL,
+  file_flag_name varchar(255) NOT NULL,
   PRIMARY KEY (file_flag)
 );
 
@@ -1045,9 +1045,9 @@ CREATE TABLE coupon_email_track (
   unique_id int(11) NOT NULL auto_increment,
   coupon_id int(11) NOT NULL default '0',
   customer_id_sent int(11) NOT NULL default '0',
-  sent_firstname varchar(32) default NULL,
-  sent_lastname varchar(32) default NULL,
-  emailed_to varchar(32) default NULL,
+  sent_firstname varchar(255) default NULL,
+  sent_lastname varchar(255) default NULL,
+  emailed_to varchar(255) default NULL,
   date_sent datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (unique_id)
 );
@@ -1067,7 +1067,7 @@ CREATE TABLE coupon_gv_queue (
   order_id int(5) NOT NULL default '0',
   amount decimal(8,4) NOT NULL default '0.0000',
   date_created datetime NOT NULL default '0000-00-00 00:00:00',
-  ipaddr varchar(32) NOT NULL default '',
+  ipaddr varchar(255) NOT NULL default '',
   release_flag char(1) NOT NULL default 'N',
   PRIMARY KEY  (unique_id),
   KEY uid (unique_id,customer_id,order_id)
@@ -1079,7 +1079,7 @@ CREATE TABLE coupon_redeem_track (
   coupon_id int(11) NOT NULL default '0',
   customer_id int(11) NOT NULL default '0',
   redeem_date datetime NOT NULL default '0000-00-00 00:00:00',
-  redeem_ip varchar(32) NOT NULL default '',
+  redeem_ip varchar(255) NOT NULL default '',
   order_id int(11) NOT NULL default '0',
   PRIMARY KEY  (unique_id)
 );
@@ -1088,7 +1088,7 @@ DROP TABLE if EXISTS coupons;
 CREATE TABLE coupons (
   coupon_id int(11) NOT NULL auto_increment,
   coupon_type char(1) NOT NULL default 'F',
-  coupon_code varchar(32) NOT NULL default '',
+  coupon_code varchar(255) NOT NULL default '',
   coupon_amount decimal(8,4) NOT NULL default '0.0000',
   coupon_minimum_order decimal(8,4) NOT NULL default '0.0000',
   coupon_start_date datetime NOT NULL default '0000-00-00 00:00:00',
@@ -1108,7 +1108,7 @@ DROP TABLE if EXISTS coupons_description;
 CREATE TABLE coupons_description (
   coupon_id int(11) NOT NULL default '0',
   language_id int(11) NOT NULL default '0',
-  coupon_name varchar(32) NOT NULL default '',
+  coupon_name varchar(255) NOT NULL default '',
   coupon_description text,
   KEY coupon_id (coupon_id)
 );
@@ -1136,30 +1136,30 @@ INSERT INTO database_version(version) VALUES ('3.0.4.0');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
 
-INSERT INTO shipping_status VALUES (1, 1, '3-4 Days', '');
-INSERT INTO shipping_status VALUES (1, 2, '3-4 Tage', '');
-INSERT INTO shipping_status VALUES (2, 1, '1 Week', '');
-INSERT INTO shipping_status VALUES (2, 2, '1 Woche', '');
-INSERT INTO shipping_status VALUES (3, 1, '2 Weeks', '');
-INSERT INTO shipping_status VALUES (3, 2, '2 Wochen', '');
+INSERT INTO shipping_status VALUES (1, 1, '3-4 дня', '');
+INSERT INTO shipping_status VALUES (1, 2, '3-4 Days', '');
+INSERT INTO shipping_status VALUES (2, 1, '1 неделя', '');
+INSERT INTO shipping_status VALUES (2, 2, '1 Week', '');
+INSERT INTO shipping_status VALUES (3, 1, '2 недели', '');
+INSERT INTO shipping_status VALUES (3, 2, '2 Weeks', '');
 
 # data
 
-INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Shipping & Returns', 'Shipping & Returns', 'Put here your Shipping & Returns information.', 0, 1, '', 1, 1, 0);
-INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Privacy Notice', 'Privacy Notice', 'Put here your Privacy Notice information.', 0, 1, '', 1, 2, 0);
-INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Conditions of Use', 'Conditions of Use', 'Conditions of Use<br />Put here your Conditions of Use information. <br />1. Validity<br />2. Offers<br />3. Price<br />4. Dispatch and passage of the risk<br />5. Delivery<br />6. Terms of payment<br />7. Retention of title<br />8. Notices of defect, guarantee and compensation<br />9. Fair trading cancelling / non-acceptance<br />10. Place of delivery and area of jurisdiction<br />11. Final clauses', 0, 1, '', 1, 3, 0);
-INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Impressum', 'Impressum', 'Put here your Company information.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Index', 'Welcome', '{$greeting}<br /><br /> Dies ist die Standardinstallation des osCommerce Forking Projektes - xt:Commerce. Alle dargestellten Produkte dienen zur Demonstration der Funktionsweise. Wenn Sie Produkte bestellen, so werden diese weder ausgeliefert, noch in Rechnung gestellt. Alle Informationen zu den verschiedenen Produkten sind erfunden und daher kann kein Anspruch daraus abgeleitet werden.<br /><br />Sollten Sie daran interessiert sein das Programm, welches die Grundlage fьr diesen Shop bildet, einzusetzen, so besuchen Sie bitte die Supportseite von xt:Commerce. Dieser Shop basiert auf der xt:Commerce Version v3.0.4<br /><br />Der hier dargestellte Text kann im AdminInterface unter dem Punkt <b>Content Manager</b> - Eintrag Index bearbeitet werden.', 0, 1, '', 0, 5, 0);
-INSERT INTO `content_manager` VALUES (6, 0, 0, '', 2, 'Liefer- und Versandkosten', 'Liefer- und Versandkosten', 'F&uuml;gen Sie hier Ihre Informationen &uuml;ber Liefer- und Versandkosten ein.', 0, 1, '', 1, 1, 0);
-INSERT INTO `content_manager` VALUES (7, 0, 0, '', 2, 'Privatsphдre und Datenschutz', 'Privatsphдre und Datenschutz', 'F&uuml;gen Sie hier Ihre Informationen &uuml;ber Privatsph&auml;re und Datenschutz ein.', 0, 1, '', 1, 2, 0);
-INSERT INTO `content_manager` VALUES (8, 0, 0, '', 2, 'Unsere AGB\'s', 'Allgemeine Geschдftsbedingungen', '<strong>Allgemeine Gesch&auml;ftsbedingungen<br /></strong><br />F&uuml;gen Sie hier Ihre allgemeinen Gesch&auml;ftsbedingungen ein.<br />1. Geltung<br />2. Angebote<br />3. Preis<br />4. Versand und Gefahr&uuml;bergang<br />5. Lieferung<br />6. Zahlungsbedingungen<br />7. Eigentumsvorbehalt <br />8. M&auml;ngelr&uuml;gen, Gew&auml;hrleistung und Schadenersatz<br />9. Kulanzr&uuml;cknahme / Annahmeverweigerung<br />10. Erf&uuml;llungsort und Gerichtsstand<br />11. Schlussbestimmungen', 0, 1, '', 1, 3, 0);
-INSERT INTO `content_manager` VALUES (9, 0, 0, '', 2, 'Impressum', 'Impressum', 'Fьgen Sie hier Ihr Impressum ein.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (10, 0, 0, '', 2, 'Index', 'Willkommen', '<p>{$greeting}<br /><br />Dies ist die Standardinstallation des osCommerce Forking Projektes - xt:Commerce. Alle dargestellten Produkte dienen zur Demonstration der Funktionsweise. Wenn Sie Produkte bestellen, so werden diese weder ausgeliefert, noch in Rechnung gestellt. Alle Informationen zu den verschiedenen Produkten sind erfunden und daher kann kein Anspruch daraus abgeleitet werden.<br /><br />Sollten Sie daran interessiert sein das Programm, welches die Grundlage fьr diesen Shop bildet, einzusetzen, so besuchen Sie bitte die Supportseite von xt:Commerce. Dieser Shop basiert auf der xt:Commerce Version v3.0.4<br /><br />Der hier dargestellte Text kann im AdminInterface unter dem Punkt <b>Content Manager</b> - Eintrag Index bearbeitet werden.</p>', 0, 1, '', 0, 5, 0);
-INSERT INTO `content_manager` VALUES (11, 0, 0, '', 2, 'Gutscheine', 'Gutscheine - Fragen und Antworte', '<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Gutscheine kaufen </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Gutscheine kцnnen, falls sie im Shop angeboten werden, wie normale Artikel gekauft werden. Sobald Sie einen Gutschein gekauft haben und dieser nach erfolgreicher Zahlung freigeschaltet wurde, erscheint der Betrag unter Ihrem Warenkorb. Nun kцnnen Sie ьber den Link " Gutschein versenden " den gewьnschten Betrag per E-Mail versenden. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Wie man Gutscheine versendet </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Um einen Gutschein zu versenden, klicken Sie bitte auf den Link "Gutschein versenden" in Ihrem Einkaufskorb. Um einen Gutschein zu versenden, benцtigen wir folgende Angaben von Ihnen: Vor- und Nachname des Empfдngers. Eine gьltige E-Mail Adresse des Empfдngers. Den gewьnschten Betrag (Sie kцnnen auch Teilbetrдge Ihres Guthabens versenden). Eine kurze Nachricht an den Empfдnger. Bitte ьberprьfen Sie Ihre Angaben noch einmal vor dem Versenden. Sie haben vor dem Versenden jederzeit die Mцglichkeit Ihre Angaben zu korrigieren. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Mit Gutscheinen Einkaufen. </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Sobald Sie ьber ein Guthaben verfьgen, kцnnen Sie dieses zum Bezahlen Ihrer Bestellung verwenden. Wдhrend des Bestellvorganges haben Sie die Mцglichkeit Ihr Guthaben einzulцsen. Falls das Guthaben unter dem Warenwert liegt mьssen Sie Ihre bevorzugte Zahlungsweise fьr den Differenzbetrag wдhlen. Ьbersteigt Ihr Guthaben den Warenwert, steht Ihnen das Restguthaben selbstverstдndlich fьr Ihre nдchste Bestellung zur Verfьgung. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Gutscheine verbuchen. </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Wenn Sie einen Gutschein per E-Mail erhalten haben, kцnnen Sie den Betrag wie folgt verbuchen:. <br />1. Klicken Sie auf den in der E-Mail angegebenen Link. Falls Sie noch nicht ьber ein persцnliches Kundenkonto verfьgen, haben Sie die Mцglichkeit ein Konto zu erцffnen. <br />2. Nachdem Sie ein Produkt in den Warenkorb gelegt haben, kцnnen Sie dort Ihren Gutscheincode eingeben.</td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Falls es zu Problemen kommen sollte: </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Falls es wider Erwarten zu Problemen mit einem Gutschein kommen sollte, kontaktieren Sie uns bitte per E-Mail : you@yourdomain.com. Bitte beschreiben Sie mцglichst genau das Problem, wichtige Angaben sind unter anderem: Ihre Kundennummer, der Gutscheincode, Fehlermeldungen des Systems sowie der von Ihnen benutzte Browser. </td></tr></tbody></table>', 0, 1, '', 0, 6, 1);
-INSERT INTO `content_manager` VALUES (12, 0, 0, '', 1, 'Gutscheine', 'Gutscheine - Fragen und Antworte', '<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Gutscheine kaufen </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Gutscheine kцnnen, falls sie im Shop angeboten werden, wie normale Artikel gekauft werden. Sobald Sie einen Gutschein gekauft haben und dieser nach erfolgreicher Zahlung freigeschaltet wurde, erscheint der Betrag unter Ihrem Warenkorb. Nun kцnnen Sie ьber den Link " Gutschein versenden " den gewьnschten Betrag per E-Mail versenden. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Wie man Gutscheine versendet </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Um einen Gutschein zu versenden, klicken Sie bitte auf den Link "Gutschein versenden" in Ihrem Einkaufskorb. Um einen Gutschein zu versenden, benцtigen wir folgende Angaben von Ihnen: Vor- und Nachname des Empfдngers. Eine gьltige E-Mail Adresse des Empfдngers. Den gewьnschten Betrag (Sie kцnnen auch Teilbetrдge Ihres Guthabens versenden). Eine kurze Nachricht an den Empfдnger. Bitte ьberprьfen Sie Ihre Angaben noch einmal vor dem Versenden. Sie haben vor dem Versenden jederzeit die Mцglichkeit Ihre Angaben zu korrigieren. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Mit Gutscheinen Einkaufen. </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Sobald Sie ьber ein Guthaben verfьgen, kцnnen Sie dieses zum Bezahlen Ihrer Bestellung verwenden. Wдhrend des Bestellvorganges haben Sie die Mцglichkeit Ihr Guthaben einzulцsen. Falls das Guthaben unter dem Warenwert liegt mьssen Sie Ihre bevorzugte Zahlungsweise fьr den Differenzbetrag wдhlen. Ьbersteigt Ihr Guthaben den Warenwert, steht Ihnen das Restguthaben selbstverstдndlich fьr Ihre nдchste Bestellung zur Verfьgung. </td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Gutscheine verbuchen. </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Wenn Sie einen Gutschein per E-Mail erhalten haben, kцnnen Sie den Betrag wie folgt verbuchen:. <br />1. Klicken Sie auf den in der E-Mail angegebenen Link. Falls Sie noch nicht ьber ein persцnliches Kundenkonto verfьgen, haben Sie die Mцglichkeit ein Konto zu erцffnen. <br />2. Nachdem Sie ein Produkt in den Warenkorb gelegt haben, kцnnen Sie dort Ihren Gutscheincode eingeben.</td></tr></tbody></table>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tbody>\r\n<tr>\r\n<td class=main><STRONG>Falls es zu Problemen kommen sollte: </STRONG></td></tr>\r\n<tr>\r\n<td class=main>Falls es wider Erwarten zu Problemen mit einem Gutschein kommen sollte, kontaktieren Sie uns bitte per E-Mail : you@yourdomain.com. Bitte beschreiben Sie mцglichst genau das Problem, wichtige Angaben sind unter anderem: Ihre Kundennummer, der Gutscheincode, Fehlermeldungen des Systems sowie der von Ihnen benutzte Browser. </td></tr></tbody></table>', 0, 1, '', 0, 6, 1);
-INSERT INTO `content_manager` VALUES (13, 0, 0, '', 2, 'Kontakt', 'Kontakt', '<p>Ihre Kontaktinformationen</p>', 0, 1, '', 1, 7, 0);
-INSERT INTO `content_manager` VALUES (14, 0, 0, '', 1, 'Contact', 'Contact', 'Please enter your contact informations.', 0, 1, '', 1, 7, 0);
-INSERT INTO `content_manager` VALUES (15, 0, 0, '', 1, 'Sitemap', '', '', 0, 0, 'sitemap.php', 1, 8, 0);
+INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'Условия доставки.', 0, 1, '', 1, 1, 0);
+INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', 0, 1, '', 1, 2, 0);
+INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', 0, 1, '', 1, 3, 0);
+INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', 0, 1, '', 1, 4, 0);
+INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', '{$greeting}<br /><br />Вы установили интернет-магазин XT-Commerce VaM Edition<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы', 0, 1, '', 0, 5, 0);
+INSERT INTO `content_manager` VALUES (6, 0, 0, '', 2, 'Shipping & Returns', 'Shipping & Returns', 'Put here your Shipping & Returns information.', 0, 1, '', 1, 1, 0);
+INSERT INTO `content_manager` VALUES (7, 0, 0, '', 2, 'Privacy Notice', 'Privacy Notice', 'Put here your Privacy Notice information.', 0, 1, '', 1, 2, 0);
+INSERT INTO `content_manager` VALUES (8, 0, 0, '', 2, 'Conditions of Use', 'Conditions of Use', 'Conditions of Use<br />Put here your Conditions of Use information. <br />1. Validity<br />2. Offers<br />3. Price<br />4. Dispatch and passage of the risk<br />5. Delivery<br />6. Terms of payment<br />7. Retention of title<br />8. Notices of defect, guarantee and compensation<br />9. Fair trading cancelling / non-acceptance<br />10. Place of delivery and area of jurisdiction<br />11. Final clauses', 0, 1, '', 1, 3, 0);
+INSERT INTO `content_manager` VALUES (9, 0, 0, '', 2, 'Impressum', 'Impressum', 'Put here your Company information.', 0, 1, '', 1, 4, 0);
+INSERT INTO `content_manager` VALUES (10, 0, 0, '', 2, 'Main page', 'Welcome', '<p>{$greeting}<br /><br />Sample text.<br /><br /> You can change it in Admin - Tools - Content manager', 0, 1, '', 0, 5, 0);
+INSERT INTO `content_manager` VALUES (11, 0, 0, '', 2, 'Sample page', 'Sample page', 'Sample text', 0, 1, '', 0, 6, 1);
+INSERT INTO `content_manager` VALUES (12, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', 0, 1, '', 0, 6, 1);
+INSERT INTO `content_manager` VALUES (13, 0, 0, '', 2, 'Contact us', 'Contact us', 'Contact us page', 0, 1, '', 1, 7, 0);
+INSERT INTO `content_manager` VALUES (14, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', 0, 1, '', 1, 7, 0);
+INSERT INTO `content_manager` VALUES (15, 0, 0, '', 1, 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0);
 INSERT INTO `content_manager` VALUES (16, 0, 0, '', 2, 'Sitemap', '', '', 0, 0, 'sitemap.php', 1, 8, 0);
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
@@ -1486,7 +1486,7 @@ INSERT INTO configuration_group VALUES ('22', 'Search Options', 'Additional Opti
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (
   countries_id int NOT NULL auto_increment,
-  countries_name varchar(64) NOT NULL,
+  countries_name varchar(255) NOT NULL,
   countries_iso_code_2 char(2) NOT NULL,
   countries_iso_code_3 char(3) NOT NULL,
   address_format_id int NOT NULL,
@@ -1494,245 +1494,245 @@ CREATE TABLE countries (
   PRIMARY KEY (countries_id),
   KEY IDX_COUNTRIES_NAME (countries_name)
 );
-INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','1');
-INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','1');
-INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','1');
-INSERT INTO countries VALUES (4,'American Samoa','AS','ASM','1','1');
-INSERT INTO countries VALUES (5,'Andorra','AD','AND','1','1');
-INSERT INTO countries VALUES (6,'Angola','AO','AGO','1','1');
-INSERT INTO countries VALUES (7,'Anguilla','AI','AIA','1','1');
-INSERT INTO countries VALUES (8,'Antarctica','AQ','ATA','1','1');
-INSERT INTO countries VALUES (9,'Antigua and Barbuda','AG','ATG','1','1');
-INSERT INTO countries VALUES (10,'Argentina','AR','ARG','1','1');
-INSERT INTO countries VALUES (11,'Armenia','AM','ARM','1','1');
-INSERT INTO countries VALUES (12,'Aruba','AW','ABW','1','1');
-INSERT INTO countries VALUES (13,'Australia','AU','AUS','1','1');
-INSERT INTO countries VALUES (14,'Austria','AT','AUT','5','1');
-INSERT INTO countries VALUES (15,'Azerbaijan','AZ','AZE','1','1');
-INSERT INTO countries VALUES (16,'Bahamas','BS','BHS','1','1');
-INSERT INTO countries VALUES (17,'Bahrain','BH','BHR','1','1');
-INSERT INTO countries VALUES (18,'Bangladesh','BD','BGD','1','1');
-INSERT INTO countries VALUES (19,'Barbados','BB','BRB','1','1');
-INSERT INTO countries VALUES (20,'Belarus','BY','BLR','1','1');
-INSERT INTO countries VALUES (21,'Belgium','BE','BEL','1','1');
-INSERT INTO countries VALUES (22,'Belize','BZ','BLZ','1','1');
-INSERT INTO countries VALUES (23,'Benin','BJ','BEN','1','1');
-INSERT INTO countries VALUES (24,'Bermuda','BM','BMU','1','1');
-INSERT INTO countries VALUES (25,'Bhutan','BT','BTN','1','1');
-INSERT INTO countries VALUES (26,'Bolivia','BO','BOL','1','1');
-INSERT INTO countries VALUES (27,'Bosnia and Herzegowina','BA','BIH','1','1');
-INSERT INTO countries VALUES (28,'Botswana','BW','BWA','1','1');
-INSERT INTO countries VALUES (29,'Bouvet Island','BV','BVT','1','1');
-INSERT INTO countries VALUES (30,'Brazil','BR','BRA','1','1');
-INSERT INTO countries VALUES (31,'British Indian Ocean Territory','IO','IOT','1','1');
-INSERT INTO countries VALUES (32,'Brunei Darussalam','BN','BRN','1','1');
-INSERT INTO countries VALUES (33,'Bulgaria','BG','BGR','1','1');
-INSERT INTO countries VALUES (34,'Burkina Faso','BF','BFA','1','1');
-INSERT INTO countries VALUES (35,'Burundi','BI','BDI','1','1');
-INSERT INTO countries VALUES (36,'Cambodia','KH','KHM','1','1');
-INSERT INTO countries VALUES (37,'Cameroon','CM','CMR','1','1');
-INSERT INTO countries VALUES (38,'Canada','CA','CAN','1','1');
-INSERT INTO countries VALUES (39,'Cape Verde','CV','CPV','1','1');
-INSERT INTO countries VALUES (40,'Cayman Islands','KY','CYM','1','1');
-INSERT INTO countries VALUES (41,'Central African Republic','CF','CAF','1','1');
-INSERT INTO countries VALUES (42,'Chad','TD','TCD','1','1');
-INSERT INTO countries VALUES (43,'Chile','CL','CHL','1','1');
-INSERT INTO countries VALUES (44,'China','CN','CHN','1','1');
-INSERT INTO countries VALUES (45,'Christmas Island','CX','CXR','1','1');
-INSERT INTO countries VALUES (46,'Cocos (Keeling) Islands','CC','CCK','1','1');
-INSERT INTO countries VALUES (47,'Colombia','CO','COL','1','1');
-INSERT INTO countries VALUES (48,'Comoros','KM','COM','1','1');
-INSERT INTO countries VALUES (49,'Congo','CG','COG','1','1');
-INSERT INTO countries VALUES (50,'Cook Islands','CK','COK','1','1');
-INSERT INTO countries VALUES (51,'Costa Rica','CR','CRI','1','1');
-INSERT INTO countries VALUES (52,'Cote D\'Ivoire','CI','CIV','1','1');
-INSERT INTO countries VALUES (53,'Croatia','HR','HRV','1','1');
-INSERT INTO countries VALUES (54,'Cuba','CU','CUB','1','1');
-INSERT INTO countries VALUES (55,'Cyprus','CY','CYP','1','1');
-INSERT INTO countries VALUES (56,'Czech Republic','CZ','CZE','1','1');
-INSERT INTO countries VALUES (57,'Denmark','DK','DNK','1','1');
-INSERT INTO countries VALUES (58,'Djibouti','DJ','DJI','1','1');
-INSERT INTO countries VALUES (59,'Dominica','DM','DMA','1','1');
-INSERT INTO countries VALUES (60,'Dominican Republic','DO','DOM','1','1');
-INSERT INTO countries VALUES (61,'East Timor','TP','TMP','1','1');
-INSERT INTO countries VALUES (62,'Ecuador','EC','ECU','1','1');
-INSERT INTO countries VALUES (63,'Egypt','EG','EGY','1','1');
-INSERT INTO countries VALUES (64,'El Salvador','SV','SLV','1','1');
-INSERT INTO countries VALUES (65,'Equatorial Guinea','GQ','GNQ','1','1');
-INSERT INTO countries VALUES (66,'Eritrea','ER','ERI','1','1');
-INSERT INTO countries VALUES (67,'Estonia','EE','EST','1','1');
-INSERT INTO countries VALUES (68,'Ethiopia','ET','ETH','1','1');
-INSERT INTO countries VALUES (69,'Falkland Islands (Malvinas)','FK','FLK','1','1');
-INSERT INTO countries VALUES (70,'Faroe Islands','FO','FRO','1','1');
-INSERT INTO countries VALUES (71,'Fiji','FJ','FJI','1','1');
-INSERT INTO countries VALUES (72,'Finland','FI','FIN','1','1');
-INSERT INTO countries VALUES (73,'France','FR','FRA','1','1');
-INSERT INTO countries VALUES (74,'France, Metropolitan','FX','FXX','1','1');
-INSERT INTO countries VALUES (75,'French Guiana','GF','GUF','1','1');
-INSERT INTO countries VALUES (76,'French Polynesia','PF','PYF','1','1');
-INSERT INTO countries VALUES (77,'French Southern Territories','TF','ATF','1','1');
-INSERT INTO countries VALUES (78,'Gabon','GA','GAB','1','1');
-INSERT INTO countries VALUES (79,'Gambia','GM','GMB','1','1');
-INSERT INTO countries VALUES (80,'Georgia','GE','GEO','1','1');
-INSERT INTO countries VALUES (81,'Germany','DE','DEU','5','1');
-INSERT INTO countries VALUES (82,'Ghana','GH','GHA','1','1');
-INSERT INTO countries VALUES (83,'Gibraltar','GI','GIB','1','1');
-INSERT INTO countries VALUES (84,'Greece','GR','GRC','1','1');
-INSERT INTO countries VALUES (85,'Greenland','GL','GRL','1','1');
-INSERT INTO countries VALUES (86,'Grenada','GD','GRD','1','1');
-INSERT INTO countries VALUES (87,'Guadeloupe','GP','GLP','1','1');
-INSERT INTO countries VALUES (88,'Guam','GU','GUM','1','1');
-INSERT INTO countries VALUES (89,'Guatemala','GT','GTM','1','1');
-INSERT INTO countries VALUES (90,'Guinea','GN','GIN','1','1');
-INSERT INTO countries VALUES (91,'Guinea-bissau','GW','GNB','1','1');
-INSERT INTO countries VALUES (92,'Guyana','GY','GUY','1','1');
-INSERT INTO countries VALUES (93,'Haiti','HT','HTI','1','1');
-INSERT INTO countries VALUES (94,'Heard and Mc Donald Islands','HM','HMD','1','1');
-INSERT INTO countries VALUES (95,'Honduras','HN','HND','1','1');
-INSERT INTO countries VALUES (96,'Hong Kong','HK','HKG','1','1');
-INSERT INTO countries VALUES (97,'Hungary','HU','HUN','1','1');
-INSERT INTO countries VALUES (98,'Iceland','IS','ISL','1','1');
-INSERT INTO countries VALUES (99,'India','IN','IND','1','1');
-INSERT INTO countries VALUES (100,'Indonesia','ID','IDN','1','1');
-INSERT INTO countries VALUES (101,'Iran (Islamic Republic of)','IR','IRN','1','1');
-INSERT INTO countries VALUES (102,'Iraq','IQ','IRQ','1','1');
-INSERT INTO countries VALUES (103,'Ireland','IE','IRL','1','1');
-INSERT INTO countries VALUES (104,'Israel','IL','ISR','1','1');
-INSERT INTO countries VALUES (105,'Italy','IT','ITA','1','1');
-INSERT INTO countries VALUES (106,'Jamaica','JM','JAM','1','1');
-INSERT INTO countries VALUES (107,'Japan','JP','JPN','1','1');
-INSERT INTO countries VALUES (108,'Jordan','JO','JOR','1','1');
-INSERT INTO countries VALUES (109,'Kazakhstan','KZ','KAZ','1','1');
-INSERT INTO countries VALUES (110,'Kenya','KE','KEN','1','1');
-INSERT INTO countries VALUES (111,'Kiribati','KI','KIR','1','1');
-INSERT INTO countries VALUES (112,'Korea, Democratic People\'s Republic of','KP','PRK','1','1');
-INSERT INTO countries VALUES (113,'Korea, Republic of','KR','KOR','1','1');
-INSERT INTO countries VALUES (114,'Kuwait','KW','KWT','1','1');
-INSERT INTO countries VALUES (115,'Kyrgyzstan','KG','KGZ','1','1');
-INSERT INTO countries VALUES (116,'Lao People\'s Democratic Republic','LA','LAO','1','1');
-INSERT INTO countries VALUES (117,'Latvia','LV','LVA','1','1');
-INSERT INTO countries VALUES (118,'Lebanon','LB','LBN','1','1');
-INSERT INTO countries VALUES (119,'Lesotho','LS','LSO','1','1');
-INSERT INTO countries VALUES (120,'Liberia','LR','LBR','1','1');
-INSERT INTO countries VALUES (121,'Libyan Arab Jamahiriya','LY','LBY','1','1');
-INSERT INTO countries VALUES (122,'Liechtenstein','LI','LIE','1','1');
-INSERT INTO countries VALUES (123,'Lithuania','LT','LTU','1','1');
-INSERT INTO countries VALUES (124,'Luxembourg','LU','LUX','1','1');
-INSERT INTO countries VALUES (125,'Macau','MO','MAC','1','1');
-INSERT INTO countries VALUES (126,'Macedonia, The Former Yugoslav Republic of','MK','MKD','1','1');
-INSERT INTO countries VALUES (127,'Madagascar','MG','MDG','1','1');
-INSERT INTO countries VALUES (128,'Malawi','MW','MWI','1','1');
-INSERT INTO countries VALUES (129,'Malaysia','MY','MYS','1','1');
-INSERT INTO countries VALUES (130,'Maldives','MV','MDV','1','1');
-INSERT INTO countries VALUES (131,'Mali','ML','MLI','1','1');
-INSERT INTO countries VALUES (132,'Malta','MT','MLT','1','1');
-INSERT INTO countries VALUES (133,'Marshall Islands','MH','MHL','1','1');
-INSERT INTO countries VALUES (134,'Martinique','MQ','MTQ','1','1');
-INSERT INTO countries VALUES (135,'Mauritania','MR','MRT','1','1');
-INSERT INTO countries VALUES (136,'Mauritius','MU','MUS','1','1');
-INSERT INTO countries VALUES (137,'Mayotte','YT','MYT','1','1');
-INSERT INTO countries VALUES (138,'Mexico','MX','MEX','1','1');
-INSERT INTO countries VALUES (139,'Micronesia, Federated States of','FM','FSM','1','1');
-INSERT INTO countries VALUES (140,'Moldova, Republic of','MD','MDA','1','1');
-INSERT INTO countries VALUES (141,'Monaco','MC','MCO','1','1');
-INSERT INTO countries VALUES (142,'Mongolia','MN','MNG','1','1');
-INSERT INTO countries VALUES (143,'Montserrat','MS','MSR','1','1');
-INSERT INTO countries VALUES (144,'Morocco','MA','MAR','1','1');
-INSERT INTO countries VALUES (145,'Mozambique','MZ','MOZ','1','1');
-INSERT INTO countries VALUES (146,'Myanmar','MM','MMR','1','1');
-INSERT INTO countries VALUES (147,'Namibia','NA','NAM','1','1');
-INSERT INTO countries VALUES (148,'Nauru','NR','NRU','1','1');
-INSERT INTO countries VALUES (149,'Nepal','NP','NPL','1','1');
-INSERT INTO countries VALUES (150,'Netherlands','NL','NLD','1','1');
-INSERT INTO countries VALUES (151,'Netherlands Antilles','AN','ANT','1','1');
-INSERT INTO countries VALUES (152,'New Caledonia','NC','NCL','1','1');
-INSERT INTO countries VALUES (153,'New Zealand','NZ','NZL','1','1');
-INSERT INTO countries VALUES (154,'Nicaragua','NI','NIC','1','1');
-INSERT INTO countries VALUES (155,'Niger','NE','NER','1','1');
-INSERT INTO countries VALUES (156,'Nigeria','NG','NGA','1','1');
-INSERT INTO countries VALUES (157,'Niue','NU','NIU','1','1');
-INSERT INTO countries VALUES (158,'Norfolk Island','NF','NFK','1','1');
-INSERT INTO countries VALUES (159,'Northern Mariana Islands','MP','MNP','1','1');
-INSERT INTO countries VALUES (160,'Norway','NO','NOR','1','1');
-INSERT INTO countries VALUES (161,'Oman','OM','OMN','1','1');
-INSERT INTO countries VALUES (162,'Pakistan','PK','PAK','1','1');
-INSERT INTO countries VALUES (163,'Palau','PW','PLW','1','1');
-INSERT INTO countries VALUES (164,'Panama','PA','PAN','1','1');
-INSERT INTO countries VALUES (165,'Papua New Guinea','PG','PNG','1','1');
-INSERT INTO countries VALUES (166,'Paraguay','PY','PRY','1','1');
-INSERT INTO countries VALUES (167,'Peru','PE','PER','1','1');
-INSERT INTO countries VALUES (168,'Philippines','PH','PHL','1','1');
-INSERT INTO countries VALUES (169,'Pitcairn','PN','PCN','1','1');
-INSERT INTO countries VALUES (170,'Poland','PL','POL','1','1');
-INSERT INTO countries VALUES (171,'Portugal','PT','PRT','1','1');
-INSERT INTO countries VALUES (172,'Puerto Rico','PR','PRI','1','1');
-INSERT INTO countries VALUES (173,'Qatar','QA','QAT','1','1');
-INSERT INTO countries VALUES (174,'Reunion','RE','REU','1','1');
-INSERT INTO countries VALUES (175,'Romania','RO','ROM','1','1');
-INSERT INTO countries VALUES (176,'Russian Federation','RU','RUS','1','1');
-INSERT INTO countries VALUES (177,'Rwanda','RW','RWA','1','1');
-INSERT INTO countries VALUES (178,'Saint Kitts and Nevis','KN','KNA','1','1');
-INSERT INTO countries VALUES (179,'Saint Lucia','LC','LCA','1','1');
-INSERT INTO countries VALUES (180,'Saint Vincent and the Grenadines','VC','VCT','1','1');
-INSERT INTO countries VALUES (181,'Samoa','WS','WSM','1','1');
-INSERT INTO countries VALUES (182,'San Marino','SM','SMR','1','1');
-INSERT INTO countries VALUES (183,'Sao Tome and Principe','ST','STP','1','1');
-INSERT INTO countries VALUES (184,'Saudi Arabia','SA','SAU','1','1');
-INSERT INTO countries VALUES (185,'Senegal','SN','SEN','1','1');
-INSERT INTO countries VALUES (186,'Seychelles','SC','SYC','1','1');
-INSERT INTO countries VALUES (187,'Sierra Leone','SL','SLE','1','1');
-INSERT INTO countries VALUES (188,'Singapore','SG','SGP', '4','1');
-INSERT INTO countries VALUES (189,'Slovakia (Slovak Republic)','SK','SVK','1','1');
-INSERT INTO countries VALUES (190,'Slovenia','SI','SVN','1','1');
-INSERT INTO countries VALUES (191,'Solomon Islands','SB','SLB','1','1');
-INSERT INTO countries VALUES (192,'Somalia','SO','SOM','1','1');
-INSERT INTO countries VALUES (193,'South Africa','ZA','ZAF','1','1');
-INSERT INTO countries VALUES (194,'South Georgia and the South Sandwich Islands','GS','SGS','1','1');
-INSERT INTO countries VALUES (195,'Spain','ES','ESP','3','1');
-INSERT INTO countries VALUES (196,'Sri Lanka','LK','LKA','1','1');
-INSERT INTO countries VALUES (197,'St. Helena','SH','SHN','1','1');
-INSERT INTO countries VALUES (198,'St. Pierre and Miquelon','PM','SPM','1','1');
-INSERT INTO countries VALUES (199,'Sudan','SD','SDN','1','1');
-INSERT INTO countries VALUES (200,'Suriname','SR','SUR','1','1');
-INSERT INTO countries VALUES (201,'Svalbard and Jan Mayen Islands','SJ','SJM','1','1');
-INSERT INTO countries VALUES (202,'Swaziland','SZ','SWZ','1','1');
-INSERT INTO countries VALUES (203,'Sweden','SE','SWE','1','1');
-INSERT INTO countries VALUES (204,'Switzerland','CH','CHE','1','1');
-INSERT INTO countries VALUES (205,'Syrian Arab Republic','SY','SYR','1','1');
-INSERT INTO countries VALUES (206,'Taiwan','TW','TWN','1','1');
-INSERT INTO countries VALUES (207,'Tajikistan','TJ','TJK','1','1');
-INSERT INTO countries VALUES (208,'Tanzania, United Republic of','TZ','TZA','1','1');
-INSERT INTO countries VALUES (209,'Thailand','TH','THA','1','1');
-INSERT INTO countries VALUES (210,'Togo','TG','TGO','1','1');
-INSERT INTO countries VALUES (211,'Tokelau','TK','TKL','1','1');
-INSERT INTO countries VALUES (212,'Tonga','TO','TON','1','1');
-INSERT INTO countries VALUES (213,'Trinidad and Tobago','TT','TTO','1','1');
-INSERT INTO countries VALUES (214,'Tunisia','TN','TUN','1','1');
-INSERT INTO countries VALUES (215,'Turkey','TR','TUR','1','1');
-INSERT INTO countries VALUES (216,'Turkmenistan','TM','TKM','1','1');
-INSERT INTO countries VALUES (217,'Turks and Caicos Islands','TC','TCA','1','1');
-INSERT INTO countries VALUES (218,'Tuvalu','TV','TUV','1','1');
-INSERT INTO countries VALUES (219,'Uganda','UG','UGA','1','1');
-INSERT INTO countries VALUES (220,'Ukraine','UA','UKR','1','1');
-INSERT INTO countries VALUES (221,'United Arab Emirates','AE','ARE','1','1');
-INSERT INTO countries VALUES (222,'United Kingdom','GB','GBR','1','1');
-INSERT INTO countries VALUES (223,'United States','US','USA', '2','1');
-INSERT INTO countries VALUES (224,'United States Minor Outlying Islands','UM','UMI','1','1');
-INSERT INTO countries VALUES (225,'Uruguay','UY','URY','1','1');
-INSERT INTO countries VALUES (226,'Uzbekistan','UZ','UZB','1','1');
-INSERT INTO countries VALUES (227,'Vanuatu','VU','VUT','1','1');
-INSERT INTO countries VALUES (228,'Vatican City State (Holy See)','VA','VAT','1','1');
-INSERT INTO countries VALUES (229,'Venezuela','VE','VEN','1','1');
-INSERT INTO countries VALUES (230,'Viet Nam','VN','VNM','1','1');
-INSERT INTO countries VALUES (231,'Virgin Islands (British)','VG','VGB','1','1');
-INSERT INTO countries VALUES (232,'Virgin Islands (U.S.)','VI','VIR','1','1');
-INSERT INTO countries VALUES (233,'Wallis and Futuna Islands','WF','WLF','1','1');
-INSERT INTO countries VALUES (234,'Western Sahara','EH','ESH','1','1');
-INSERT INTO countries VALUES (235,'Yemen','YE','YEM','1','1');
-INSERT INTO countries VALUES (236,'Yugoslavia','YU','YUG','1','1');
-INSERT INTO countries VALUES (237,'Zaire','ZR','ZAR','1','1');
-INSERT INTO countries VALUES (238,'Zambia','ZM','ZMB','1','1');
-INSERT INTO countries VALUES (239,'Zimbabwe','ZW','ZWE','1','1');
+INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
+INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
+INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','0');
+INSERT INTO countries VALUES (4,'American Samoa','AS','ASM','1','0');
+INSERT INTO countries VALUES (5,'Andorra','AD','AND','1','0');
+INSERT INTO countries VALUES (6,'Angola','AO','AGO','1','0');
+INSERT INTO countries VALUES (7,'Anguilla','AI','AIA','1','0');
+INSERT INTO countries VALUES (8,'Antarctica','AQ','ATA','1','0');
+INSERT INTO countries VALUES (9,'Antigua and Barbuda','AG','ATG','1','0');
+INSERT INTO countries VALUES (10,'Argentina','AR','ARG','1','0');
+INSERT INTO countries VALUES ('11', 'Армения', 'AM', 'ARM', '1','1');
+INSERT INTO countries VALUES (12,'Aruba','AW','ABW','1','0');
+INSERT INTO countries VALUES (13,'Australia','AU','AUS','1','0');
+INSERT INTO countries VALUES (14,'Austria','AT','AUT','5','0');
+INSERT INTO countries VALUES ('15', 'Азербайджан', 'AZ', 'AZE', '1','1');
+INSERT INTO countries VALUES (16,'Bahamas','BS','BHS','1','0');
+INSERT INTO countries VALUES (17,'Bahrain','BH','BHR','1','0');
+INSERT INTO countries VALUES (18,'Bangladesh','BD','BGD','1','0');
+INSERT INTO countries VALUES (19,'Barbados','BB','BRB','1','0');
+INSERT INTO countries VALUES ('20', 'Белоруссия', 'BY', 'BLR', '1','1');
+INSERT INTO countries VALUES (21,'Belgium','BE','BEL','1','0');
+INSERT INTO countries VALUES (22,'Belize','BZ','BLZ','1','0');
+INSERT INTO countries VALUES (23,'Benin','BJ','BEN','1','0');
+INSERT INTO countries VALUES (24,'Bermuda','BM','BMU','1','0');
+INSERT INTO countries VALUES (25,'Bhutan','BT','BTN','1','0');
+INSERT INTO countries VALUES (26,'Bolivia','BO','BOL','1','0');
+INSERT INTO countries VALUES (27,'Bosnia and Herzegowina','BA','BIH','1','0');
+INSERT INTO countries VALUES (28,'Botswana','BW','BWA','1','0');
+INSERT INTO countries VALUES (29,'Bouvet Island','BV','BVT','1','0');
+INSERT INTO countries VALUES (30,'Brazil','BR','BRA','1','0');
+INSERT INTO countries VALUES (31,'British Indian Ocean Territory','IO','IOT','1','0');
+INSERT INTO countries VALUES (32,'Brunei Darussalam','BN','BRN','1','0');
+INSERT INTO countries VALUES (33,'Bulgaria','BG','BGR','1','0');
+INSERT INTO countries VALUES (34,'Burkina Faso','BF','BFA','1','0');
+INSERT INTO countries VALUES (35,'Burundi','BI','BDI','1','0');
+INSERT INTO countries VALUES (36,'Cambodia','KH','KHM','1','0');
+INSERT INTO countries VALUES (37,'Cameroon','CM','CMR','1','0');
+INSERT INTO countries VALUES (38,'Canada','CA','CAN','1','0');
+INSERT INTO countries VALUES (39,'Cape Verde','CV','CPV','1','0');
+INSERT INTO countries VALUES (40,'Cayman Islands','KY','CYM','1','0');
+INSERT INTO countries VALUES (41,'Central African Republic','CF','CAF','1','0');
+INSERT INTO countries VALUES (42,'Chad','TD','TCD','1','0');
+INSERT INTO countries VALUES (43,'Chile','CL','CHL','1','0');
+INSERT INTO countries VALUES (44,'China','CN','CHN','1','0');
+INSERT INTO countries VALUES (45,'Christmas Island','CX','CXR','1','0');
+INSERT INTO countries VALUES (46,'Cocos (Keeling) Islands','CC','CCK','1','0');
+INSERT INTO countries VALUES (47,'Colombia','CO','COL','1','0');
+INSERT INTO countries VALUES (48,'Comoros','KM','COM','1','0');
+INSERT INTO countries VALUES (49,'Congo','CG','COG','1','0');
+INSERT INTO countries VALUES (50,'Cook Islands','CK','COK','1','0');
+INSERT INTO countries VALUES (51,'Costa Rica','CR','CRI','1','0');
+INSERT INTO countries VALUES (52,'Cote D\'Ivoire','CI','CIV','1','0');
+INSERT INTO countries VALUES (53,'Croatia','HR','HRV','1','0');
+INSERT INTO countries VALUES (54,'Cuba','CU','CUB','1','0');
+INSERT INTO countries VALUES (55,'Cyprus','CY','CYP','1','0');
+INSERT INTO countries VALUES (56,'Czech Republic','CZ','CZE','1','0');
+INSERT INTO countries VALUES (57,'Denmark','DK','DNK','1','0');
+INSERT INTO countries VALUES (58,'Djibouti','DJ','DJI','1','0');
+INSERT INTO countries VALUES (59,'Dominica','DM','DMA','1','0');
+INSERT INTO countries VALUES (60,'Dominican Republic','DO','DOM','1','0');
+INSERT INTO countries VALUES (61,'East Timor','TP','TMP','1','0');
+INSERT INTO countries VALUES (62,'Ecuador','EC','ECU','1','0');
+INSERT INTO countries VALUES (63,'Egypt','EG','EGY','1','0');
+INSERT INTO countries VALUES (64,'El Salvador','SV','SLV','1','0');
+INSERT INTO countries VALUES (65,'Equatorial Guinea','GQ','GNQ','1','0');
+INSERT INTO countries VALUES (66,'Eritrea','ER','ERI','1','0');
+INSERT INTO countries VALUES ('67', 'Эстония', 'EE', 'EST', '1','1');
+INSERT INTO countries VALUES (68,'Ethiopia','ET','ETH','1','0');
+INSERT INTO countries VALUES (69,'Falkland Islands (Malvinas)','FK','FLK','1','0');
+INSERT INTO countries VALUES (70,'Faroe Islands','FO','FRO','1','0');
+INSERT INTO countries VALUES (71,'Fiji','FJ','FJI','1','0');
+INSERT INTO countries VALUES (72,'Finland','FI','FIN','1','0');
+INSERT INTO countries VALUES (73,'France','FR','FRA','1','0');
+INSERT INTO countries VALUES (74,'France, Metropolitan','FX','FXX','1','0');
+INSERT INTO countries VALUES (75,'French Guiana','GF','GUF','1','0');
+INSERT INTO countries VALUES (76,'French Polynesia','PF','PYF','1','0');
+INSERT INTO countries VALUES (77,'French Southern Territories','TF','ATF','1','0');
+INSERT INTO countries VALUES (78,'Gabon','GA','GAB','1','0');
+INSERT INTO countries VALUES (79,'Gambia','GM','GMB','1','0');
+INSERT INTO countries VALUES ('80', 'Грузия', 'GE', 'GEO', '1','1');
+INSERT INTO countries VALUES (81,'Germany','DE','DEU','5','0');
+INSERT INTO countries VALUES (82,'Ghana','GH','GHA','1','0');
+INSERT INTO countries VALUES (83,'Gibraltar','GI','GIB','1','0');
+INSERT INTO countries VALUES (84,'Greece','GR','GRC','1','0');
+INSERT INTO countries VALUES (85,'Greenland','GL','GRL','1','0');
+INSERT INTO countries VALUES (86,'Grenada','GD','GRD','1','0');
+INSERT INTO countries VALUES (87,'Guadeloupe','GP','GLP','1','0');
+INSERT INTO countries VALUES (88,'Guam','GU','GUM','1','0');
+INSERT INTO countries VALUES (89,'Guatemala','GT','GTM','1','0');
+INSERT INTO countries VALUES (90,'Guinea','GN','GIN','1','0');
+INSERT INTO countries VALUES (91,'Guinea-bissau','GW','GNB','1','0');
+INSERT INTO countries VALUES (92,'Guyana','GY','GUY','1','0');
+INSERT INTO countries VALUES (93,'Haiti','HT','HTI','1','0');
+INSERT INTO countries VALUES (94,'Heard and Mc Donald Islands','HM','HMD','1','0');
+INSERT INTO countries VALUES (95,'Honduras','HN','HND','1','0');
+INSERT INTO countries VALUES (96,'Hong Kong','HK','HKG','1','0');
+INSERT INTO countries VALUES (97,'Hungary','HU','HUN','1','0');
+INSERT INTO countries VALUES (98,'Iceland','IS','ISL','1','0');
+INSERT INTO countries VALUES (99,'India','IN','IND','1','0');
+INSERT INTO countries VALUES (100,'Indonesia','ID','IDN','1','0');
+INSERT INTO countries VALUES (101,'Iran (Islamic Republic of)','IR','IRN','1','0');
+INSERT INTO countries VALUES (102,'Iraq','IQ','IRQ','1','0');
+INSERT INTO countries VALUES (103,'Ireland','IE','IRL','1','0');
+INSERT INTO countries VALUES (104,'Israel','IL','ISR','1','0');
+INSERT INTO countries VALUES (105,'Italy','IT','ITA','1','0');
+INSERT INTO countries VALUES (106,'Jamaica','JM','JAM','1','0');
+INSERT INTO countries VALUES (107,'Japan','JP','JPN','1','0');
+INSERT INTO countries VALUES (108,'Jordan','JO','JOR','1','0');
+INSERT INTO countries VALUES ('109', 'Казахстан', 'KZ', 'KAZ', '1','1');
+INSERT INTO countries VALUES (110,'Kenya','KE','KEN','1','0');
+INSERT INTO countries VALUES (111,'Kiribati','KI','KIR','1','0');
+INSERT INTO countries VALUES (112,'Korea, Democratic People\'s Republic of','KP','PRK','1','0');
+INSERT INTO countries VALUES (113,'Korea, Republic of','KR','KOR','1','0');
+INSERT INTO countries VALUES (114,'Kuwait','KW','KWT','1','0');
+INSERT INTO countries VALUES ('115', 'Кыргызстан', 'KG', 'KGZ', '1','1');
+INSERT INTO countries VALUES (116,'Lao People\'s Democratic Republic','LA','LAO','1','0');
+INSERT INTO countries VALUES ('117', 'Латвия', 'LV', 'LVA', '1','1');
+INSERT INTO countries VALUES (118,'Lebanon','LB','LBN','1','0');
+INSERT INTO countries VALUES (119,'Lesotho','LS','LSO','1','0');
+INSERT INTO countries VALUES (120,'Liberia','LR','LBR','1','0');
+INSERT INTO countries VALUES (121,'Libyan Arab Jamahiriya','LY','LBY','1','0');
+INSERT INTO countries VALUES (122,'Liechtenstein','LI','LIE','1','0');
+INSERT INTO countries VALUES ('123', 'Литва', 'LT', 'LTU', '1','1');
+INSERT INTO countries VALUES (124,'Luxembourg','LU','LUX','1','0');
+INSERT INTO countries VALUES (125,'Macau','MO','MAC','1','0');
+INSERT INTO countries VALUES (126,'Macedonia, The Former Yugoslav Republic of','MK','MKD','1','0');
+INSERT INTO countries VALUES (127,'Madagascar','MG','MDG','1','0');
+INSERT INTO countries VALUES (128,'Malawi','MW','MWI','1','0');
+INSERT INTO countries VALUES (129,'Malaysia','MY','MYS','1','0');
+INSERT INTO countries VALUES (130,'Maldives','MV','MDV','1','0');
+INSERT INTO countries VALUES (131,'Mali','ML','MLI','1','0');
+INSERT INTO countries VALUES (132,'Malta','MT','MLT','1','0');
+INSERT INTO countries VALUES (133,'Marshall Islands','MH','MHL','1','0');
+INSERT INTO countries VALUES (134,'Martinique','MQ','MTQ','1','0');
+INSERT INTO countries VALUES (135,'Mauritania','MR','MRT','1','0');
+INSERT INTO countries VALUES (136,'Mauritius','MU','MUS','1','0');
+INSERT INTO countries VALUES (137,'Mayotte','YT','MYT','1','0');
+INSERT INTO countries VALUES (138,'Mexico','MX','MEX','1','0');
+INSERT INTO countries VALUES (139,'Micronesia, Federated States of','FM','FSM','1','0');
+INSERT INTO countries VALUES ('140', 'Молдавия', 'MD', 'MDA', '1','1');
+INSERT INTO countries VALUES (141,'Monaco','MC','MCO','1','0');
+INSERT INTO countries VALUES (142,'Mongolia','MN','MNG','1','0');
+INSERT INTO countries VALUES (143,'Montserrat','MS','MSR','1','0');
+INSERT INTO countries VALUES (144,'Morocco','MA','MAR','1','0');
+INSERT INTO countries VALUES (145,'Mozambique','MZ','MOZ','1','0');
+INSERT INTO countries VALUES (146,'Myanmar','MM','MMR','1','0');
+INSERT INTO countries VALUES (147,'Namibia','NA','NAM','1','0');
+INSERT INTO countries VALUES (148,'Nauru','NR','NRU','1','0');
+INSERT INTO countries VALUES (149,'Nepal','NP','NPL','1','0');
+INSERT INTO countries VALUES (150,'Netherlands','NL','NLD','1','0');
+INSERT INTO countries VALUES (151,'Netherlands Antilles','AN','ANT','1','0');
+INSERT INTO countries VALUES (152,'New Caledonia','NC','NCL','1','0');
+INSERT INTO countries VALUES (153,'New Zealand','NZ','NZL','1','0');
+INSERT INTO countries VALUES (154,'Nicaragua','NI','NIC','1','0');
+INSERT INTO countries VALUES (155,'Niger','NE','NER','1','0');
+INSERT INTO countries VALUES (156,'Nigeria','NG','NGA','1','0');
+INSERT INTO countries VALUES (157,'Niue','NU','NIU','1','0');
+INSERT INTO countries VALUES (158,'Norfolk Island','NF','NFK','1','0');
+INSERT INTO countries VALUES (159,'Northern Mariana Islands','MP','MNP','1','0');
+INSERT INTO countries VALUES (160,'Norway','NO','NOR','1','0');
+INSERT INTO countries VALUES (161,'Oman','OM','OMN','1','0');
+INSERT INTO countries VALUES (162,'Pakistan','PK','PAK','1','0');
+INSERT INTO countries VALUES (163,'Palau','PW','PLW','1','0');
+INSERT INTO countries VALUES (164,'Panama','PA','PAN','1','0');
+INSERT INTO countries VALUES (165,'Papua New Guinea','PG','PNG','1','0');
+INSERT INTO countries VALUES (166,'Paraguay','PY','PRY','1','0');
+INSERT INTO countries VALUES (167,'Peru','PE','PER','1','0');
+INSERT INTO countries VALUES (168,'Philippines','PH','PHL','1','0');
+INSERT INTO countries VALUES (169,'Pitcairn','PN','PCN','1','0');
+INSERT INTO countries VALUES (170,'Poland','PL','POL','1','0');
+INSERT INTO countries VALUES (171,'Portugal','PT','PRT','1','0');
+INSERT INTO countries VALUES (172,'Puerto Rico','PR','PRI','1','0');
+INSERT INTO countries VALUES (173,'Qatar','QA','QAT','1','0');
+INSERT INTO countries VALUES (174,'Reunion','RE','REU','1','0');
+INSERT INTO countries VALUES (175,'Romania','RO','ROM','1','0');
+INSERT INTO countries VALUES ('176', 'Российская Федерация', 'RU', 'RUS', '1','1');
+INSERT INTO countries VALUES (177,'Rwanda','RW','RWA','1','0');
+INSERT INTO countries VALUES (178,'Saint Kitts and Nevis','KN','KNA','1','0');
+INSERT INTO countries VALUES (179,'Saint Lucia','LC','LCA','1','0');
+INSERT INTO countries VALUES (180,'Saint Vincent and the Grenadines','VC','VCT','1','0');
+INSERT INTO countries VALUES (181,'Samoa','WS','WSM','1','0');
+INSERT INTO countries VALUES (182,'San Marino','SM','SMR','1','0');
+INSERT INTO countries VALUES (183,'Sao Tome and Principe','ST','STP','1','0');
+INSERT INTO countries VALUES (184,'Saudi Arabia','SA','SAU','1','0');
+INSERT INTO countries VALUES (185,'Senegal','SN','SEN','1','0');
+INSERT INTO countries VALUES (186,'Seychelles','SC','SYC','1','0');
+INSERT INTO countries VALUES (187,'Sierra Leone','SL','SLE','1','0');
+INSERT INTO countries VALUES (188,'Singapore','SG','SGP', '4','0');
+INSERT INTO countries VALUES (189,'Slovakia (Slovak Republic)','SK','SVK','1','0');
+INSERT INTO countries VALUES (190,'Slovenia','SI','SVN','1','0');
+INSERT INTO countries VALUES (191,'Solomon Islands','SB','SLB','1','0');
+INSERT INTO countries VALUES (192,'Somalia','SO','SOM','1','0');
+INSERT INTO countries VALUES (193,'South Africa','ZA','ZAF','1','0');
+INSERT INTO countries VALUES (194,'South Georgia and the South Sandwich Islands','GS','SGS','1','0');
+INSERT INTO countries VALUES (195,'Spain','ES','ESP','3','0');
+INSERT INTO countries VALUES (196,'Sri Lanka','LK','LKA','1','0');
+INSERT INTO countries VALUES (197,'St. Helena','SH','SHN','1','0');
+INSERT INTO countries VALUES (198,'St. Pierre and Miquelon','PM','SPM','1','0');
+INSERT INTO countries VALUES (199,'Sudan','SD','SDN','1','0');
+INSERT INTO countries VALUES (200,'Suriname','SR','SUR','1','0');
+INSERT INTO countries VALUES (201,'Svalbard and Jan Mayen Islands','SJ','SJM','1','0');
+INSERT INTO countries VALUES (202,'Swaziland','SZ','SWZ','1','0');
+INSERT INTO countries VALUES (203,'Sweden','SE','SWE','1','0');
+INSERT INTO countries VALUES (204,'Switzerland','CH','CHE','1','0');
+INSERT INTO countries VALUES (205,'Syrian Arab Republic','SY','SYR','1','0');
+INSERT INTO countries VALUES (206,'Taiwan','TW','TWN','1','0');
+INSERT INTO countries VALUES ('207', 'Таджикистан', 'TJ', 'TJK', '1','1');
+INSERT INTO countries VALUES (208,'Tanzania, United Republic of','TZ','TZA','1','0');
+INSERT INTO countries VALUES (209,'Thailand','TH','THA','1','0');
+INSERT INTO countries VALUES (210,'Togo','TG','TGO','1','0');
+INSERT INTO countries VALUES (211,'Tokelau','TK','TKL','1','0');
+INSERT INTO countries VALUES (212,'Tonga','TO','TON','1','0');
+INSERT INTO countries VALUES (213,'Trinidad and Tobago','TT','TTO','1','0');
+INSERT INTO countries VALUES (214,'Tunisia','TN','TUN','1','0');
+INSERT INTO countries VALUES (215,'Turkey','TR','TUR','1','0');
+INSERT INTO countries VALUES ('216', 'Туркменистан', 'TM', 'TKM', '1','1');
+INSERT INTO countries VALUES (217,'Turks and Caicos Islands','TC','TCA','1','0');
+INSERT INTO countries VALUES (218,'Tuvalu','TV','TUV','1','0');
+INSERT INTO countries VALUES (219,'Uganda','UG','UGA','1','0');
+INSERT INTO countries VALUES ('220', 'Украина', 'UA', 'UKR', '1','1');
+INSERT INTO countries VALUES (221,'United Arab Emirates','AE','ARE','1','0');
+INSERT INTO countries VALUES (222,'United Kingdom','GB','GBR','1','0');
+INSERT INTO countries VALUES (223,'United States','US','USA', '2','0');
+INSERT INTO countries VALUES (224,'United States Minor Outlying Islands','UM','UMI','1','0');
+INSERT INTO countries VALUES (225,'Uruguay','UY','URY','1','0');
+INSERT INTO countries VALUES ('226', 'Узбекистан', 'UZ', 'UZB', '1','1');
+INSERT INTO countries VALUES (227,'Vanuatu','VU','VUT','1','0');
+INSERT INTO countries VALUES (228,'Vatican City State (Holy See)','VA','VAT','1','0');
+INSERT INTO countries VALUES (229,'Venezuela','VE','VEN','1','0');
+INSERT INTO countries VALUES (230,'Viet Nam','VN','VNM','1','0');
+INSERT INTO countries VALUES (231,'Virgin Islands (British)','VG','VGB','1','0');
+INSERT INTO countries VALUES (232,'Virgin Islands (U.S.)','VI','VIR','1','0');
+INSERT INTO countries VALUES (233,'Wallis and Futuna Islands','WF','WLF','1','0');
+INSERT INTO countries VALUES (234,'Western Sahara','EH','ESH','1','0');
+INSERT INTO countries VALUES (235,'Yemen','YE','YEM','1','0');
+INSERT INTO countries VALUES (236,'Yugoslavia','YU','YUG','1','0');
+INSERT INTO countries VALUES (237,'Zaire','ZR','ZAR','1','0');
+INSERT INTO countries VALUES (238,'Zambia','ZM','ZMB','1','0');
+INSERT INTO countries VALUES (239,'Zimbabwe','ZW','ZWE','1','0');
 
 INSERT INTO currencies VALUES (1,'Доллар США','USD','$','',',','.','2','1.0000', now());
 
@@ -1756,901 +1756,326 @@ INSERT INTO orders_status VALUES ( '6', '2', 'Canceled');
 
 
 
-# USA
-INSERT INTO zones VALUES (1,223,'AL','Alabama');
-INSERT INTO zones VALUES (2,223,'AK','Alaska');
-INSERT INTO zones VALUES (3,223,'AS','American Samoa');
-INSERT INTO zones VALUES (4,223,'AZ','Arizona');
-INSERT INTO zones VALUES (5,223,'AR','Arkansas');
-INSERT INTO zones VALUES (6,223,'AF','Armed Forces Africa');
-INSERT INTO zones VALUES (7,223,'AA','Armed Forces Americas');
-INSERT INTO zones VALUES (8,223,'AC','Armed Forces Canada');
-INSERT INTO zones VALUES (9,223,'AE','Armed Forces Europe');
-INSERT INTO zones VALUES (10,223,'AM','Armed Forces Middle East');
-INSERT INTO zones VALUES (11,223,'AP','Armed Forces Pacific');
-INSERT INTO zones VALUES (12,223,'CA','California');
-INSERT INTO zones VALUES (13,223,'CO','Colorado');
-INSERT INTO zones VALUES (14,223,'CT','Connecticut');
-INSERT INTO zones VALUES (15,223,'DE','Delaware');
-INSERT INTO zones VALUES (16,223,'DC','District of Columbia');
-INSERT INTO zones VALUES (17,223,'FM','Federated States Of Micronesia');
-INSERT INTO zones VALUES (18,223,'FL','Florida');
-INSERT INTO zones VALUES (19,223,'GA','Georgia');
-INSERT INTO zones VALUES (20,223,'GU','Guam');
-INSERT INTO zones VALUES (21,223,'HI','Hawaii');
-INSERT INTO zones VALUES (22,223,'ID','Idaho');
-INSERT INTO zones VALUES (23,223,'IL','Illinois');
-INSERT INTO zones VALUES (24,223,'IN','Indiana');
-INSERT INTO zones VALUES (25,223,'IA','Iowa');
-INSERT INTO zones VALUES (26,223,'KS','Kansas');
-INSERT INTO zones VALUES (27,223,'KY','Kentucky');
-INSERT INTO zones VALUES (28,223,'LA','Louisiana');
-INSERT INTO zones VALUES (29,223,'ME','Maine');
-INSERT INTO zones VALUES (30,223,'MH','Marshall Islands');
-INSERT INTO zones VALUES (31,223,'MD','Maryland');
-INSERT INTO zones VALUES (32,223,'MA','Massachusetts');
-INSERT INTO zones VALUES (33,223,'MI','Michigan');
-INSERT INTO zones VALUES (34,223,'MN','Minnesota');
-INSERT INTO zones VALUES (35,223,'MS','Mississippi');
-INSERT INTO zones VALUES (36,223,'MO','Missouri');
-INSERT INTO zones VALUES (37,223,'MT','Montana');
-INSERT INTO zones VALUES (38,223,'NE','Nebraska');
-INSERT INTO zones VALUES (39,223,'NV','Nevada');
-INSERT INTO zones VALUES (40,223,'NH','New Hampshire');
-INSERT INTO zones VALUES (41,223,'NJ','New Jersey');
-INSERT INTO zones VALUES (42,223,'NM','New Mexico');
-INSERT INTO zones VALUES (43,223,'NY','New York');
-INSERT INTO zones VALUES (44,223,'NC','North Carolina');
-INSERT INTO zones VALUES (45,223,'ND','North Dakota');
-INSERT INTO zones VALUES (46,223,'MP','Northern Mariana Islands');
-INSERT INTO zones VALUES (47,223,'OH','Ohio');
-INSERT INTO zones VALUES (48,223,'OK','Oklahoma');
-INSERT INTO zones VALUES (49,223,'OR','Oregon');
-INSERT INTO zones VALUES (50,223,'PW','Palau');
-INSERT INTO zones VALUES (51,223,'PA','Pennsylvania');
-INSERT INTO zones VALUES (52,223,'PR','Puerto Rico');
-INSERT INTO zones VALUES (53,223,'RI','Rhode Island');
-INSERT INTO zones VALUES (54,223,'SC','South Carolina');
-INSERT INTO zones VALUES (55,223,'SD','South Dakota');
-INSERT INTO zones VALUES (56,223,'TN','Tennessee');
-INSERT INTO zones VALUES (57,223,'TX','Texas');
-INSERT INTO zones VALUES (58,223,'UT','Utah');
-INSERT INTO zones VALUES (59,223,'VT','Vermont');
-INSERT INTO zones VALUES (60,223,'VI','Virgin Islands');
-INSERT INTO zones VALUES (61,223,'VA','Virginia');
-INSERT INTO zones VALUES (62,223,'WA','Washington');
-INSERT INTO zones VALUES (63,223,'WV','West Virginia');
-INSERT INTO zones VALUES (64,223,'WI','Wisconsin');
-INSERT INTO zones VALUES (65,223,'WY','Wyoming');
-
-# Canada
-INSERT INTO zones VALUES (66,38,'AB','Alberta');
-INSERT INTO zones VALUES (67,38,'BC','British Columbia');
-INSERT INTO zones VALUES (68,38,'MB','Manitoba');
-INSERT INTO zones VALUES (69,38,'NF','Newfoundland');
-INSERT INTO zones VALUES (70,38,'NB','New Brunswick');
-INSERT INTO zones VALUES (71,38,'NS','Nova Scotia');
-INSERT INTO zones VALUES (72,38,'NT','Northwest Territories');
-INSERT INTO zones VALUES (73,38,'NU','Nunavut');
-INSERT INTO zones VALUES (74,38,'ON','Ontario');
-INSERT INTO zones VALUES (75,38,'PE','Prince Edward Island');
-INSERT INTO zones VALUES (76,38,'QC','Quebec');
-INSERT INTO zones VALUES (77,38,'SK','Saskatchewan');
-INSERT INTO zones VALUES (78,38,'YT','Yukon Territory');
-
-# Germany
-INSERT INTO zones VALUES (79,81,'NDS','Niedersachsen');
-INSERT INTO zones VALUES (80,81,'BAW','Baden-Wьrttemberg');
-INSERT INTO zones VALUES (81,81,'BAY','Bayern');
-INSERT INTO zones VALUES (82,81,'BER','Berlin');
-INSERT INTO zones VALUES (83,81,'BRG','Brandenburg');
-INSERT INTO zones VALUES (84,81,'BRE','Bremen');
-INSERT INTO zones VALUES (85,81,'HAM','Hamburg');
-INSERT INTO zones VALUES (86,81,'HES','Hessen');
-INSERT INTO zones VALUES (87,81,'MEC','Mecklenburg-Vorpommern');
-INSERT INTO zones VALUES (88,81,'NRW','Nordrhein-Westfalen');
-INSERT INTO zones VALUES (89,81,'RHE','Rheinland-Pfalz');
-INSERT INTO zones VALUES (90,81,'SAR','Saarland');
-INSERT INTO zones VALUES (91,81,'SAS','Sachsen');
-INSERT INTO zones VALUES (92,81,'SAC','Sachsen-Anhalt');
-INSERT INTO zones VALUES (93,81,'SCN','Schleswig-Holstein');
-INSERT INTO zones VALUES (94,81,'THE','Thьringen');
-
-# Austria
-INSERT INTO zones VALUES (95,14,'WI','Wien');
-INSERT INTO zones VALUES (96,14,'NO','Niederцsterreich');
-INSERT INTO zones VALUES (97,14,'OO','Oberцsterreich');
-INSERT INTO zones VALUES (98,14,'SB','Salzburg');
-INSERT INTO zones VALUES (99,14,'KN','Kдrnten');
-INSERT INTO zones VALUES (100,14,'ST','Steiermark');
-INSERT INTO zones VALUES (101,14,'TI','Tirol');
-INSERT INTO zones VALUES (102,14,'BL','Burgenland');
-INSERT INTO zones VALUES (103,14,'VB','Voralberg');
-
-# Swizterland
-INSERT INTO zones VALUES (104,204,'AG','Aargau');
-INSERT INTO zones VALUES (105,204,'AI','Appenzell Innerrhoden');
-INSERT INTO zones VALUES (106,204,'AR','Appenzell Ausserrhoden');
-INSERT INTO zones VALUES (107,204,'BE','Bern');
-INSERT INTO zones VALUES (108,204,'BL','Basel-Landschaft');
-INSERT INTO zones VALUES (109,204,'BS','Basel-Stadt');
-INSERT INTO zones VALUES (110,204,'FR','Freiburg');
-INSERT INTO zones VALUES (111,204,'GE','Genf');
-INSERT INTO zones VALUES (112,204,'GL','Glarus');
-INSERT INTO zones VALUES (113,204,'JU','Graubьnden');
-INSERT INTO zones VALUES (114,204,'JU','Jura');
-INSERT INTO zones VALUES (115,204,'LU','Luzern');
-INSERT INTO zones VALUES (116,204,'NE','Neuenburg');
-INSERT INTO zones VALUES (117,204,'NW','Nidwalden');
-INSERT INTO zones VALUES (118,204,'OW','Obwalden');
-INSERT INTO zones VALUES (119,204,'SG','St. Gallen');
-INSERT INTO zones VALUES (120,204,'SH','Schaffhausen');
-INSERT INTO zones VALUES (121,204,'SO','Solothurn');
-INSERT INTO zones VALUES (122,204,'SZ','Schwyz');
-INSERT INTO zones VALUES (123,204,'TG','Thurgau');
-INSERT INTO zones VALUES (124,204,'TI','Tessin');
-INSERT INTO zones VALUES (125,204,'UR','Uri');
-INSERT INTO zones VALUES (126,204,'VD','Waadt');
-INSERT INTO zones VALUES (127,204,'VS','Wallis');
-INSERT INTO zones VALUES (128,204,'ZG','Zug');
-INSERT INTO zones VALUES (129,204,'ZH','Zьrich');
-
-# Spain
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'A Coruсa','A Coruсa');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Alava','Alava');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Albacete','Albacete');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Alicante','Alicante');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Almeria','Almeria');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Asturias','Asturias');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Avila','Avila');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Badajoz','Badajoz');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Baleares','Baleares');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Barcelona','Barcelona');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Burgos','Burgos');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Caceres','Caceres');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Cadiz','Cadiz');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Cantabria','Cantabria');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Castellon','Castellon');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Ceuta','Ceuta');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Ciudad Real','Ciudad Real');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Cordoba','Cordoba');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Cuenca','Cuenca');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Girona','Girona');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Granada','Granada');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Guadalajara','Guadalajara');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Guipuzcoa','Guipuzcoa');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Huelva','Huelva');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Huesca','Huesca');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Jaen','Jaen');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'La Rioja','La Rioja');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Las Palmas','Las Palmas');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Leon','Leon');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Lleida','Lleida');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Lugo','Lugo');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Madrid','Madrid');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Malaga','Malaga');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Melilla','Melilla');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Murcia','Murcia');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Navarra','Navarra');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Ourense','Ourense');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Palencia','Palencia');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Pontevedra','Pontevedra');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Salamanca','Salamanca');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Santa Cruz de Tenerife','Santa Cruz de Tenerife');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Segovia','Segovia');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Sevilla','Sevilla');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Soria','Soria');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Tarragona','Tarragona');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Teruel','Teruel');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Toledo','Toledo');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Valencia','Valencia');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Valladolid','Valladolid');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Vizcaya','Vizcaya');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Zamora','Zamora');
-INSERT INTO zones (zone_country_id, zone_code, zone_name) VALUES (195,'Zaragoza','Zaragoza');
-
-#Australia
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'NSW','New South Wales');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'VIC','Victoria');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'QLD','Queensland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'NT','Northern Territory');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'WA','Western Australia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'SA','South Australia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'TAS','Tasmania');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',13,'ACT','Australian Capital Territory');
-
-#New Zealand
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Northland','Northland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Auckland','Auckland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Waikato','Waikato');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Bay of Plenty','Bay of Plenty');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Gisborne','Gisborne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Hawkes Bay','Hawkes Bay');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Taranaki','Taranaki');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Manawatu-Wanganui','Manawatu-Wanganui');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Wellington','Wellington');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'West Coast','West Coast');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Canterbury','Canterbury');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Otago','Otago');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Southland','Southland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Tasman','Tasman');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Nelson','Nelson');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',153,'Marlborough','Marlborough');
-
-#Brazil
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'SP', 'Sгo Paulo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'RJ', 'Rio de Janeiro');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'PE', 'Pernanbuco');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'BA', 'Bahia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'AM', 'Amazonas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'MG', 'Minas Gerais');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'ES', 'Espirito Santo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'RS', 'Rio Grande do Sul');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'PR', 'Paranб');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'SC', 'Santa Catarina');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'RG', 'Rio Grande do Norte');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'MS', 'Mato Grosso do Sul');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'MT', 'Mato Grosso');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'GO', 'Goias');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'TO', 'Tocantins');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'DF', 'Distrito Federal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'RO', 'Rondonia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'AC', 'Acre');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'AP', 'Amapa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'RO', 'Roraima');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'AL', 'Alagoas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'CE', 'Cearб');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'MA', 'Maranhгo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'PA', 'Parб');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'PB', 'Paraнba');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'PI', 'Piauн');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '30', 'SE', 'Sergipe');
-
-#Chile
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'I', 'I Regiуn de Tarapacб');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'II', 'II Regiуn de Antofagasta');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'III', 'III Regiуn de Atacama');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'IV', 'IV Regiуn de Coquimbo');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'V', 'V Regiуn de Valaparaнso');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'RM', 'Regiуn Metropolitana');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'VI', 'VI Regiуn de L. B. Oґhiggins');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'VII', 'VII Regiуn del Maule');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'VIII', 'VIII Regiуn del Bнo Bнo');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'IX', 'IX Regiуn de la Araucanнa');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'X', 'X Regiуn de los Lagos');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'XI', 'XI Regiуn de Aysйn');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '43', 'XII', 'XII Regiуn de Magallanes');
-
-#Columbia
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'AMA','Amazonas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'ANT','Antioquia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'ARA','Arauca');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'ATL','Atlantico');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'BOL','Bolivar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'BOY','Boyaca');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CAL','Caldas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CAQ','Caqueta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CAS','Casanare');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CAU','Cauca');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CES','Cesar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CHO','Choco');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'COR','Cordoba');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'CUN','Cundinamarca');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'HUI','Huila');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'GUA','Guainia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'GUA','Guajira');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'GUV','Guaviare');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'MAG','Magdalena');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'MET','Meta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'NAR','Narino');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'NDS','Norte de Santander');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'PUT','Putumayo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'QUI','Quindio');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'RIS','Risaralda');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'SAI','San Andres Islas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'SAN','Santander');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'SUC','Sucre');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'TOL','Tolima');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'VAL','Valle');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'VAU','Vaupes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',47,'VIC','Vichada');
-
-#France
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'Et','Etranger');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'01','Ain');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'02','Aisne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'03','Allier');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'04','Alpes de Haute Provence');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'05','Hautes-Alpes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'06','Alpes Maritimes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'07','Ard?che');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'08','Ardennes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'09','Ari?ge');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'10','Aube');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'11','Aude');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'12','Aveyron');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'13','Bouches du RhГґne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'14','Calvados');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'15','Cantal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'16','Charente');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'17','Charente Maritime');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'18','Cher');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'19','Corr?ze');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'2A','Corse du Sud');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'2B','Haute Corse');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'21','C™te d\'or');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'22','C™tes d\'Armor');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'23','Creuse');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'24','Dordogne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'25','Doubs');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'26','Dr™me');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'27','Eure');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'28','Eure et Loir');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'29','Finist?re');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'30','Gard');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'31','Haute Garonne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'32','Gers');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'33','Gironde');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'34','HЋrault');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'35','Ille et Vilaine');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'36','Indre');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'37','Indre et Loire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'38','Is?re');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'39','Jura');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'40','Landes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'41','Loir et Cher');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'42','Loire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'43','Haute Loire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'44','Loire Atlantique');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'45','Loiret');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'46','Lot');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'47','Lot et Garonne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'48','Loz?re');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'49','Maine et Loire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'50','Manche');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'51','Marne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'52','Haute Marne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'53','Mayenne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'54','Meurthe et Moselle');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'55','Meuse');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'56','Morbihan');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'57','Moselle');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'58','Ni?vre');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'59','Nord');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'60','Oise');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'61','Orne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'62','Pas de Calais');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'63','Puy de D™me');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'64','PyrЋnЋes Atlantiques');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'65','Hautes PyrЋnЋes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'66','PyrЋnЋes Orientales');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'67','Bas Rhin');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'68','Haut Rhin');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'69','Rh™ne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'70','Haute Sa™ne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'71','Sa™ne et Loire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'72','Sarthe');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'73','Savoie');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'74','Haute Savoie');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'75','Paris');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'76','Seine Maritime');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'77','Seine et Marne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'78','Yvelines');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'79','Deux S?vres');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'80','Somme');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'81','Tarn');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'82','Tarn et Garonne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'83','Var');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'84','Vaucluse');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'85','VendЋe');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'86','Vienne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'87','Haute Vienne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'88','Vosges');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'89','Yonne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'90','Territoire de Belfort');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'91','Essonne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'92','Hauts de Seine');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'93','Seine St-Denis');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'94','Val de Marne');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'95','Val d\'Oise');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'971 (DOM)','Guadeloupe');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'972 (DOM)','Martinique');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'973 (DOM)','Guyane');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'974 (DOM)','Saint Denis');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'975 (DOM)','St-Pierre de Miquelon');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'976 (TOM)','Mayotte');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'984 (TOM)','Terres australes et Antartiques fran?aises');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'985 (TOM)','Nouvelle CalЋdonie');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'986 (TOM)','Wallis et Futuna');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',73,'987 (TOM)','PolynЋsie fran?aise');
-
-#India
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'DL', 'Delhi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'MH', 'Maharashtra');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'TN', 'Tamil Nadu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'KL', 'Kerala');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'AP', 'Andhra Pradesh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'KA', 'Karnataka');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'GA', 'Goa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'MP', 'Madhya Pradesh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'PY', 'Pondicherry');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'GJ', 'Gujarat');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'OR', 'Orrisa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'CA', 'Chhatisgarh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'JH', 'Jharkhand');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'BR', 'Bihar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'WB', 'West Bengal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'UP', 'Uttar Pradesh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'RJ', 'Rajasthan');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'PB', 'Punjab');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'HR', 'Haryana');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'CH', 'Chandigarh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'JK', 'Jammu & Kashmir');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'HP', 'Himachal Pradesh');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'UA', 'Uttaranchal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'LK', 'Lakshadweep');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'AN', 'Andaman & Nicobar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'MG', 'Meghalaya');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'AS', 'Assam');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'DR', 'Dadra & Nagar Haveli');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'DN', 'Daman & Diu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'SK', 'Sikkim');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'TR', 'Tripura');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'MZ', 'Mizoram');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'MN', 'Manipur');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'NL', 'Nagaland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'AR', 'Arunachal Pradesh');
-
-#Italy
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AG','Agrigento');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AL','Alessandria');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AN','Ancona');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AO','Aosta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AR','Arezzo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AP','Ascoli Piceno');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AT','Asti');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AV','Avellino');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BA','Bari');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BL','Belluno');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BN','Benevento');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BG','Bergamo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BI','Biella');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BO','Bologna');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BZ','Bolzano');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BS','Brescia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'BR','Brindisi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CA','Cagliari');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CL','Caltanissetta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CB','Campobasso');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CE','Caserta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CT','Catania');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CZ','Catanzaro');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CH','Chieti');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CO','Como');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CS','Cosenza');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CR','Cremona');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'KR','Crotone');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'CN','Cuneo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'EN','Enna');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'FE','Ferrara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'FI','Firenze');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'FG','Foggia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'FO','Forlм');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'FR','Frosinone');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'GE','Genova');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'GO','Gorizia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'GR','Grosseto');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'IM','Imperia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'IS','Isernia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'AQ','Aquila');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SP','La Spezia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LT','Latina');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LE','Lecce');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LC','Lecco');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LI','Livorno');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LO','Lodi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'LU','Lucca');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MC','Macerata');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MN','Mantova');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MS','Massa-Carrara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MT','Matera');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'ME','Messina');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MI','Milano');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'MO','Modena');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'NA','Napoli');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'NO','Novara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'NU','Nuoro');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'OR','Oristano');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PD','Padova');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PA','Palermo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PR','Parma');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PG','Perugia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PV','Pavia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PS','Pesaro e Urbino');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PE','Pescara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PC','Piacenza');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PI','Pisa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PT','Pistoia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PN','Pordenone');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PZ','Potenza');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'PO','Prato');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RG','Ragusa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RA','Ravenna');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RC','Reggio di Calabria');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RE','Reggio Emilia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RI','Rieti');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RN','Rimini');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RM','Roma');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'RO','Rovigo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SA','Salerno');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SS','Sassari');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SV','Savona');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SI','Siena');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SR','Siracusa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'SO','Sondrio');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TA','Taranto');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TE','Teramo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TR','Terni');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TO','Torino');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TP','Trapani');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TN','Trento');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TV','Treviso');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'TS','Trieste');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'UD','Udine');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VA','Varese');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VE','Venezia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VB','Verbania');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VC','Vercelli');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VR','Verona');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VV','Vibo Valentia');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VI','Vicenza');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',105,'VT','Viterbo');
-
-#Japan
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Niigata', 'Niigata');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Toyama', 'Toyama');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Ishikawa', 'Ishikawa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Fukui', 'Fukui');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Yamanashi', 'Yamanashi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Nagano', 'Nagano');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Gifu', 'Gifu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Shizuoka', 'Shizuoka');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Aichi', 'Aichi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Mie', 'Mie');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Shiga', 'Shiga');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Kyoto', 'Kyoto');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Osaka', 'Osaka');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Hyogo', 'Hyogo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Nara', 'Nara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Wakayama', 'Wakayama');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Tottori', 'Tottori');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Shimane', 'Shimane');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Okayama', 'Okayama');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Hiroshima', 'Hiroshima');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Yamaguchi', 'Yamaguchi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Tokushima', 'Tokushima');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Kagawa', 'Kagawa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Ehime', 'Ehime');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Kochi', 'Kochi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Fukuoka', 'Fukuoka');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Saga', 'Saga');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Nagasaki', 'Nagasaki');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Kumamoto', 'Kumamoto');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Oita', 'Oita');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Miyazaki', 'Miyazaki');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '107', 'Kagoshima', 'Kagoshima');
-
-#Malaysia
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'JOH','Johor');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'KDH','Kedah');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'KEL','Kelantan');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'KL','Kuala Lumpur');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'MEL','Melaka');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'NS','Negeri Sembilan');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'PAH','Pahang');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'PRK','Perak');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'PER','Perlis');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'PP','Pulau Pinang');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'SAB','Sabah');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'SWK','Sarawak');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'SEL','Selangor');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'TER','Terengganu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',129,'LAB','W.P.Labuan');
-
-#Mexico
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'AGS', 'Aguascalientes');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'BC', 'Baja California');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'BCS', 'Baja California Sur');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'CAM', 'Campeche');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'COA', 'Coahuila');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'COL', 'Colima');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'CHI', 'Chiapas');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'CHIH', 'Chihuahua');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'DF', 'Distrito Federal');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'DGO', 'Durango');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'MEX', 'Estado de Mexico');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'GTO', 'Guanajuato');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'GRO', 'Guerrero');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'HGO', 'Hidalgo');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'JAL', 'Jalisco');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'MCH', 'Michoacan');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'MOR', 'Morelos');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'NAY', 'Nayarit');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'NL', 'Nuevo Leon');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'OAX', 'Oaxaca');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'PUE', 'Puebla');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'QRO', 'Queretaro');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'QR', 'Quintana Roo');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'SLP', 'San Luis Potosi');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'SIN', 'Sinaloa');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'SON', 'Sonora');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'TAB', 'Tabasco');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'TMPS', 'Tamaulipas');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'TLAX', 'Tlaxcala');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'VER', 'Veracruz');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'YUC', 'Yucatan');
-insert into zones (zone_id, zone_country_id, zone_code, zone_name) values ('', '138', 'ZAC', 'Zacatecas');
-
-#Norway
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'OSL','Oslo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'AKE','Akershus');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'AUA','Aust-Agder');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'BUS','Buskerud');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'FIN','Finnmark');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'HED','Hedmark');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'HOR','Hordaland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'MOR','Mшre og Romsdal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'NOR','Nordland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'NTR','Nord-Trшndelag');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'OPP','Oppland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'ROG','Rogaland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'SOF','Sogn og Fjordane');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'STR','Sшr-Trшndelag');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'TEL','Telemark');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'TRO','Troms');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'VEA','Vest-Agder');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'OST','Шstfold');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('',160,'SVA','Svalbard');
-
-#Pakistan
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'KHI', 'Karachi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'LH', 'Lahore');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'ISB', 'Islamabad');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'QUE', 'Quetta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'PSH', 'Peshawar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'GUJ', 'Gujrat');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'SAH', 'Sahiwal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'FSB', 'Faisalabad');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 99, 'RIP', 'Rawal Pindi');
-
-#Romania
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'AB','Alba');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'AR','Arad');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'AG','Arges');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BC','Bacau');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BH','Bihor');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BN','Bistrita-Nasaud');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BT','Botosani');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BV','Brasov');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BR','Braila');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'B','Bucuresti');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'BZ','Buzau');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'CS','Caras-Severin');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'CL','Calarasi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'CJ','Cluj');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'CT','Constanta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'CV','Covasna');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'DB','Dimbovita');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'DJ','Dolj');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'GL','Galati');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'GR','Giurgiu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'GJ','Gorj');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'HR','Harghita');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'HD','Hunedoara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'IL','Ialomita');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'IS','Iasi');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'IF','Ilfov');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'MM','Maramures');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'MH','Mehedint');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'MS','Mures');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'NT','Neamt');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'OT','Olt');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'PH','Prahova');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'SM','Satu-Mare');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'SJ','Salaj');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'SB','Sibiu');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'SV','Suceava');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'TR','Teleorman');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'TM','Timis');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'TL','Tulcea');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'VS','Vaslui');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'VL','Valcea');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 175,'VN','Vrancea');
-
-#South Africa
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'WP', 'Western Cape');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'GP', 'Gauteng');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'KZN', 'Kwazulu-Natal');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'NC', 'Northern-Cape');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'EC', 'Eastern-Cape');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'MP', 'Mpumalanga');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'NW', 'North-West');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'FS', 'Free State');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '193', 'NP', 'Northern Province');
-
-#Turkey
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ADANA','ADANA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ADIYAMAN','ADIYAMAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'AFYON','AFYON');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'AGRI','AGRI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'AMASYA','AMASYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ANKARA','ANKARA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ANTALYA','ANTALYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ARTVIN','ARTVIN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'AYDIN','AYDIN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BALIKESIR','BALIKESIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BILECIK','BILECIK');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BINGЦL','BINGЦL');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BITLIS','BITLIS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BOLU','BOLU');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BURDUR','BURDUR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BURSA','BURSA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ЗANAKKALE','ЗANAKKALE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ЗANKIRI','ЗANKIRI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ЗORUM','ЗORUM');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'DENIZLI','DENIZLI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'DIYARBAKIR','DIYARBAKIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'EDIRNE','EDIRNE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ELAZIG','ELAZIG');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ERZINCAN','ERZINCAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ERZURUM','ERZURUM');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ESKISEHIR','ESKISEHIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'GAZIANTEP','GAZIANTEP');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'GIRESUN','GIRESUN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'GЬMЬSHANE','GЬMЬSHANE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'HAKKARI','HAKKARI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'HATAY','HATAY');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ISPARTA','ISPARTA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'IЗEL','IЗEL');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ISTANBUL','ISTANBUL');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'IZMIR','IZMIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KARS','KARS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KASTAMONU','KASTAMONU');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KAYSERI','KAYSERI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KIRKLARELI','KIRKLARELI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KIRSEHIR','KIRSEHIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KOCAELI','KOCAELI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KONYA','KONYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KЬTAHYA','KЬTAHYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'MALATYA','MALATYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'MANISA','MANISA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KAHRAMANMARAS','KAHRAMANMARAS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'MARDIN','MARDIN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'MUGLA','MUGLA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'MUS','MUS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'NEVSEHIR','NEVSEHIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'NIGDE','NIGDE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ORDU','ORDU');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'RIZE','RIZE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SAKARYA','SAKARYA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SAMSUN','SAMSUN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SIIRT','SIIRT');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SINOP','SINOP');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SIVAS','SIVAS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'TEKIRDAG','TEKIRDAG');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'TOKAT','TOKAT');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'TRABZON','TRABZON');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'TUNCELI','TUNCELI');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SANLIURFA','SANLIURFA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'USAK','USAK');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'VAN','VAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'YOZGAT','YOZGAT');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ZONGULDAK','ZONGULDAK');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'AKSARAY','AKSARAY');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BAYBURT','BAYBURT');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KARAMAN','KARAMAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KIRIKKALE','KIRIKKALE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BATMAN','BATMAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'SIRNAK','SIRNAK');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'BARTIN','BARTIN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'ARDAHAN','ARDAHAN');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'IGDIR','IGDIR');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'YALOVA','YALOVA');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KARABЬK','KARABЬK');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'KILIS','KILIS');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'OSMANIYE','OSMANIYE');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', 215, 'DЬZCE','DЬZCE');
-
-#Venezuela
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'AM', 'Amazonas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'AN', 'Anzoбtegui');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'AR', 'Aragua');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'AP', 'Apure');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'BA', 'Barinas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'BO', 'Bolнvar');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'CA', 'Carabobo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'CO', 'Cojedes');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'DA', 'Delta Amacuro');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'DC', 'Distrito Capital');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'FA', 'Falcуn');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'GA', 'Guбrico');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'GU', 'Guayana');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'LA', 'Lara');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'ME', 'Mйrida');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'MI', 'Miranda');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'MO', 'Monagas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'NE', 'Nueva Esparta');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'PO', 'Portuguesa');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'SU', 'Sucre');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'TA', 'Tбchira');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'TU', 'Trujillo');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'VA', 'Vargas');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'YA', 'Yaracuy');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '229', 'ZU', 'Zulia');
-
-#UK
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','AVON','Avon');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','BEDS','Bedfordshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','BERK','Berkshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','BIRM','Birmingham');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','BORD','Borders');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','BUCK','Buckinghamshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CAMB','Cambridgeshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CENT','Central');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CHES','Cheshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CLEV','Cleveland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CLWY','Clwyd');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CORN','Cornwall');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','CUMB','Cumbria');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DERB','Derbyshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DEVO','Devon');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DORS','Dorset');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DUMF','Dumfries & Galloway');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DURH','Durham');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','DYFE','Dyfed');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','ESUS','East Sussex');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','ESSE','Essex');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','FIFE','Fife');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','GLAM','Glamorgan');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','GLOU','Gloucestershire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','GRAM','Grampian');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','GWEN','Gwent');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','GWYN','Gwynedd');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','HAMP','Hampshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','HERE','Hereford & Worcester');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','HERT','Hertfordshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','HUMB','Humberside');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','KENT','Kent');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','LANC','Lancashire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','LEIC','Leicestershire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','LINC','Lincolnshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','LOND','London');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','LOTH','Lothian');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','MANC','Manchester');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','MERS','Merseyside');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NORF','Norfolk');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NYOR','North Yorkshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NWHI','North west Highlands');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NHAM','Northamptonshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NUMB','Northumberland');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','NOTT','Nottinghamshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','OXFO','Oxfordshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','POWY','Powys');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','SHRO','Shropshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','SOME','Somerset');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','SYOR','South Yorkshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','STAF','Staffordshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','STRA','Strathclyde');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','SUFF','Suffolk');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','SURR','Surrey');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','WSUS','West Sussex');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','TAYS','Tayside');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','TYWE','Tyne & Wear');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','WARW','Warwickshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','WISL','West Isles');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','WYOR','West Yorkshire');
-INSERT INTO zones (zone_id, zone_country_id, zone_code, zone_name) VALUES ('', '222','WILT','Wiltshire');
-
+INSERT INTO zones VALUES ('', '109', 'Акмолинская область', 'Акмолинская область');
+INSERT INTO zones VALUES ('', '109', 'Актюбинская область', 'Актюбинская область');
+INSERT INTO zones VALUES ('', '109', 'Алматинская область', 'Алматинская область');
+INSERT INTO zones VALUES ('', '109', 'Атырауская область', 'Атырауская область');
+INSERT INTO zones VALUES ('', '109', 'Восточно-Казахстанская область', 'Восточно-Казахстанская область');
+INSERT INTO zones VALUES ('', '109', 'Жамбылская область', 'Жамбылская область');
+INSERT INTO zones VALUES ('', '109', 'Западно-Казахстанская область', 'Западно-Казахстанская область');
+INSERT INTO zones VALUES ('', '109', 'Карагандинская область', 'Карагандинская область');
+INSERT INTO zones VALUES ('', '109', 'Кзылординская область', 'Кзылординская область');
+INSERT INTO zones VALUES ('', '109', 'Костанайская область', 'Костанайская область');
+INSERT INTO zones VALUES ('', '109', 'Мангистауская область', 'Мангистауская область');
+INSERT INTO zones VALUES ('', '109', 'Павлодарская область', 'Павлодарская область');
+INSERT INTO zones VALUES ('', '109', 'Северо-Казахстанская область', 'Северо-Казахстанская область');
+INSERT INTO zones VALUES ('', '109', 'Южно-Казахстанская область', 'Южно-Казахстанская область');
+INSERT INTO zones VALUES ('', '115', 'Баткенская область', 'Баткенская область');
+INSERT INTO zones VALUES ('', '115', 'Джалал-Абадская область', 'Джалал-Абадская область');
+INSERT INTO zones VALUES ('', '115', 'Иссык-Кульская область', 'Иссык-Кульская область');
+INSERT INTO zones VALUES ('', '115', 'Таласская область', 'Таласская область');
+INSERT INTO zones VALUES ('', '115', 'Нарынская область', 'Нарынская область');
+INSERT INTO zones VALUES ('', '115', 'Ошская область', 'Ошская область');
+INSERT INTO zones VALUES ('', '115', 'Чуйская область', 'Чуйская область');
+INSERT INTO zones VALUES ('', '176', 'Адыгея', 'Адыгея');
+INSERT INTO zones VALUES ('', '176', 'Башкирия', 'Башкирия');
+INSERT INTO zones VALUES ('', '176', 'Бурятия', 'Бурятия');
+INSERT INTO zones VALUES ('', '176', 'Горный Алтай', 'Горный Алтай');
+INSERT INTO zones VALUES ('', '176', 'Дагестан', 'Дагестан');
+INSERT INTO zones VALUES ('', '176', 'Ингушетия', 'Ингушетия');
+INSERT INTO zones VALUES ('', '176', 'Кабардино-Балкария', 'Кабардино-Балкария');
+INSERT INTO zones VALUES ('', '176', 'Калмыкия', 'Калмыкия');
+INSERT INTO zones VALUES ('', '176', 'Карачаево-Черкесия', 'Карачаево-Черкесия');
+INSERT INTO zones VALUES ('', '176', 'Карелия', 'Карелия');
+INSERT INTO zones VALUES ('', '176', 'Коми', 'Коми');
+INSERT INTO zones VALUES ('', '176', 'Марийская Республика', 'Марийская Республика');
+INSERT INTO zones VALUES ('', '176', 'Мордовская Республика', 'Мордовская Республика');
+INSERT INTO zones VALUES ('', '176', 'Якутия', 'Якутия');
+INSERT INTO zones VALUES ('', '176', 'Северная Осетия', 'Северная Осетия');
+INSERT INTO zones VALUES ('', '176', 'Татарстан', 'Татарстан');
+INSERT INTO zones VALUES ('', '176', 'Тува', 'Тува');
+INSERT INTO zones VALUES ('', '176', 'Удмуртия', 'Удмуртия');
+INSERT INTO zones VALUES ('', '176', 'Хакасия', 'Хакасия');
+INSERT INTO zones VALUES ('', '176', 'Чечня', 'Чечня');
+INSERT INTO zones VALUES ('', '176', 'Чувашия', 'Чувашия');
+INSERT INTO zones VALUES ('', '176', 'Алтайский край', 'Алтайский край');
+INSERT INTO zones VALUES ('', '176', 'Краснодарский край', 'Краснодарский край');
+INSERT INTO zones VALUES ('', '176', 'Красноярский край', 'Красноярский край');
+INSERT INTO zones VALUES ('', '176', 'Приморский край', 'Приморский край');
+INSERT INTO zones VALUES ('', '176', 'Ставропольский край', 'Ставропольский край');
+INSERT INTO zones VALUES ('', '176', 'Хабаровский край', 'Хабаровский край');
+INSERT INTO zones VALUES ('', '176', 'Амурская область', 'Амурская область');
+INSERT INTO zones VALUES ('', '176', 'Архангельская область', 'Архангельская область');
+INSERT INTO zones VALUES ('', '176', 'Астраханская область', 'Астраханская область');
+INSERT INTO zones VALUES ('', '176', 'Белгородская область', 'Белгородская область');
+INSERT INTO zones VALUES ('', '176', 'Брянская область', 'Брянская область');
+INSERT INTO zones VALUES ('', '176', 'Владимирская область', 'Владимирская область');
+INSERT INTO zones VALUES ('', '176', 'Волгоградская область', 'Волгоградская область');
+INSERT INTO zones VALUES ('', '176', 'Вологодская область', 'Вологодская область');
+INSERT INTO zones VALUES ('', '176', 'Воронежская область', 'Воронежская область');
+INSERT INTO zones VALUES ('', '176', 'Ивановская область', 'Ивановская область');
+INSERT INTO zones VALUES ('', '176', 'Иркутская область', 'Иркутская область');
+INSERT INTO zones VALUES ('', '176', 'Калининградская область', 'Калининградская область');
+INSERT INTO zones VALUES ('', '176', 'Калужская область', 'Калужская область');
+INSERT INTO zones VALUES ('', '176', 'Камчатская область', 'Камчатская область');
+INSERT INTO zones VALUES ('', '176', 'Кемеровская область', 'Кемеровская область');
+INSERT INTO zones VALUES ('', '176', 'Кировская область', 'Кировская область');
+INSERT INTO zones VALUES ('', '176', 'Костромская область', 'Костромская область');
+INSERT INTO zones VALUES ('', '176', 'Курганская область', 'Курганская область');
+INSERT INTO zones VALUES ('', '176', 'Курская область', 'Курская область');
+INSERT INTO zones VALUES ('', '176', 'Ленинградская область', 'Ленинградская область');
+INSERT INTO zones VALUES ('', '176', 'Липецкая область', 'Липецкая область');
+INSERT INTO zones VALUES ('', '176', 'Магаданская область', 'Магаданская область');
+INSERT INTO zones VALUES ('', '176', 'Московская область', 'Московская область');
+INSERT INTO zones VALUES ('', '176', 'Мурманская область', 'Мурманская область');
+INSERT INTO zones VALUES ('', '176', 'Нижегородская область', 'Нижегородская область');
+INSERT INTO zones VALUES ('', '176', 'Новгородская область', 'Новгородская область');
+INSERT INTO zones VALUES ('', '176', 'Новосибирская область', 'Новосибирская область');
+INSERT INTO zones VALUES ('', '176', 'Омская область', 'Омская область');
+INSERT INTO zones VALUES ('', '176', 'Оренбургская область', 'Оренбургская область');
+INSERT INTO zones VALUES ('', '176', 'Орловская область', 'Орловская область');
+INSERT INTO zones VALUES ('', '176', 'Пензенская область', 'Пензенская область');
+INSERT INTO zones VALUES ('', '176', 'Пермская область', 'Пермская область');
+INSERT INTO zones VALUES ('', '176', 'Псковская область', 'Псковская область');
+INSERT INTO zones VALUES ('', '176', 'Ростовская область', 'Ростовская область');
+INSERT INTO zones VALUES ('', '176', 'Рязанская область', 'Рязанская область');
+INSERT INTO zones VALUES ('', '176', 'Самарская область', 'Самарская область');
+INSERT INTO zones VALUES ('', '176', 'Саратовская область', 'Саратовская область');
+INSERT INTO zones VALUES ('', '176', 'Сахалинская область', 'Сахалинская область');
+INSERT INTO zones VALUES ('', '176', 'Свердловская область', 'Свердловская область');
+INSERT INTO zones VALUES ('', '176', 'Смоленская область', 'Смоленская область');
+INSERT INTO zones VALUES ('', '176', 'Тамбовская область', 'Тамбовская область');
+INSERT INTO zones VALUES ('', '176', 'Тверская область', 'Тверская область');
+INSERT INTO zones VALUES ('', '176', 'Томская область', 'Томская область');
+INSERT INTO zones VALUES ('', '176', 'Тульская область', 'Тульская область');
+INSERT INTO zones VALUES ('', '176', 'Тюменская область', 'Тюменская область');
+INSERT INTO zones VALUES ('', '176', 'Ульяновская область', 'Ульяновская область');
+INSERT INTO zones VALUES ('', '176', 'Челябинская область', 'Челябинская область');
+INSERT INTO zones VALUES ('', '176', 'Читинская область', 'Читинская область');
+INSERT INTO zones VALUES ('', '176', 'Ярославская область', 'Ярославская область');
+INSERT INTO zones VALUES ('', '176', 'Москва', 'Москва');
+INSERT INTO zones VALUES ('', '176', 'Санкт-Петербург', 'Санкт-Петербург');
+INSERT INTO zones VALUES ('', '176', 'Еврейская автономная область', 'Еврейская автономная область');
+INSERT INTO zones VALUES ('', '176', 'Агинский Бурятский АО', 'Агинский Бурятский АО');
+INSERT INTO zones VALUES ('', '176', 'Коми-Пермяцкий АО', 'Коми-Пермяцкий АО');
+INSERT INTO zones VALUES ('', '176', 'Корякский АО', 'Корякский АО');
+INSERT INTO zones VALUES ('', '176', 'Ненецкий АО', 'Ненецкий АО');
+INSERT INTO zones VALUES ('', '176', 'Таймырский АО', 'Таймырский АО');
+INSERT INTO zones VALUES ('', '176', 'Усть-Ордынский Бурятский АО', 'Усть-Ордынский Бурятский АО');
+INSERT INTO zones VALUES ('', '176', 'Ханты-Мансийский АО', 'Ханты-Мансийский АО');
+INSERT INTO zones VALUES ('', '176', 'Чукотский АО', 'Чукотский АО');
+INSERT INTO zones VALUES ('', '176', 'Эвенкийский АО', 'Эвенкийский АО');
+INSERT INTO zones VALUES ('', '176', 'Ямало-Ненецкий АО', 'Ямало-Ненецкий АО');
+INSERT INTO zones VALUES ('', '207', 'Мухтори-Кухистони-Бадахшони', 'Мухтори-Кухистони-Бадахшони');
+INSERT INTO zones VALUES ('', '207', 'Хатлонская область', 'Хатлонская область');
+INSERT INTO zones VALUES ('', '207', 'Ленинабадская область', 'Ленинабадская область');
+INSERT INTO zones VALUES ('', '216', 'Ахал', 'Ахал');
+INSERT INTO zones VALUES ('', '216', 'Балкан', 'Балкан');
+INSERT INTO zones VALUES ('', '216', 'Дашховуз', 'Дашховуз');
+INSERT INTO zones VALUES ('', '216', 'Лебап', 'Лебап');
+INSERT INTO zones VALUES ('', '216', 'Мары', 'Мары');
+INSERT INTO zones VALUES ('', '220', 'Республика Крым', 'Республика Крым');
+INSERT INTO zones VALUES ('', '220', 'Винницкая область', 'Винницкая область');
+INSERT INTO zones VALUES ('', '220', 'Волынская область', 'Волынская область');
+INSERT INTO zones VALUES ('', '220', 'Днепропетровская область', 'Днепропетровская область');
+INSERT INTO zones VALUES ('', '220', 'Донецкая область', 'Донецкая область');
+INSERT INTO zones VALUES ('', '220', 'Житомирская область', 'Житомирская область');
+INSERT INTO zones VALUES ('', '220', 'Закарпатская область', 'Закарпатская область');
+INSERT INTO zones VALUES ('', '220', 'Запорожская область', 'Запорожская область');
+INSERT INTO zones VALUES ('', '220', 'Ивано-Франковская область', 'Ивано-Франковская область');
+INSERT INTO zones VALUES ('', '220', 'Киевская область', 'Киевская область');
+INSERT INTO zones VALUES ('', '220', 'Кировоградская область', 'Кировоградская область');
+INSERT INTO zones VALUES ('', '220', 'Луганская область', 'Луганская область');
+INSERT INTO zones VALUES ('', '220', 'Львовская область', 'Львовская область');
+INSERT INTO zones VALUES ('', '220', 'Николаевская область', 'Николаевская область');
+INSERT INTO zones VALUES ('', '220', 'Одесская область', 'Одесская область');
+INSERT INTO zones VALUES ('', '220', 'Полтавская область', 'Полтавская область');
+INSERT INTO zones VALUES ('', '220', 'Ровенская область', 'Ровенская область');
+INSERT INTO zones VALUES ('', '220', 'Сумская область', 'Сумская область');
+INSERT INTO zones VALUES ('', '220', 'Тернопольская область', 'Тернопольская область');
+INSERT INTO zones VALUES ('', '220', 'Харьковская область', 'Харьковская область');
+INSERT INTO zones VALUES ('', '220', 'Херсонская область', 'Херсонская область');
+INSERT INTO zones VALUES ('', '220', 'Хмельницкая область', 'Хмельницкая область');
+INSERT INTO zones VALUES ('', '220', 'Черкасская область', 'Черкасская область');
+INSERT INTO zones VALUES ('', '220', 'Черниговская область', 'Черниговская область');
+INSERT INTO zones VALUES ('', '220', 'Черновицкая область', 'Черновицкая область');
+INSERT INTO zones VALUES ('', '226', 'Андижанский', 'Андижанский');
+INSERT INTO zones VALUES ('', '226', 'Бухарский', 'Бухарский');
+INSERT INTO zones VALUES ('', '226', 'Джизакский', 'Джизакский');
+INSERT INTO zones VALUES ('', '226', 'Каракалпакия', 'Каракалпакия');
+INSERT INTO zones VALUES ('', '226', 'Кашкадарьинский', 'Кашкадарьинский');
+INSERT INTO zones VALUES ('', '226', 'Навоийский', 'Навоийский');
+INSERT INTO zones VALUES ('', '226', 'Наманганский', 'Наманганский');
+INSERT INTO zones VALUES ('', '226', 'Самаркандский', 'Самаркандский');
+INSERT INTO zones VALUES ('', '226', 'Сурхандарьинский', 'Сурхандарьинский');
+INSERT INTO zones VALUES ('', '226', 'Сырдарьинский', 'Сырдарьинский');
+INSERT INTO zones VALUES ('', '226', 'Ташкентский', 'Ташкентский');
+INSERT INTO zones VALUES ('', '226', 'Ферганский', 'Ферганский');
+INSERT INTO zones VALUES ('', '226', 'Хорезмский', 'Хорезмский');
+INSERT INTO zones VALUES ('', '15', 'Апшеронский район', 'Апшеронский район');
+INSERT INTO zones VALUES ('', '15', 'Агдамский район', 'Агдамский район');
+INSERT INTO zones VALUES ('', '15', 'Агдашский район', 'Агдашский район');
+INSERT INTO zones VALUES ('', '15', 'Агджабединский район', 'Агджабединский район');
+INSERT INTO zones VALUES ('', '15', 'Акстафинский район', 'Акстафинский район');
+INSERT INTO zones VALUES ('', '15', 'Агсуинский район', 'Агсуинский район');
+INSERT INTO zones VALUES ('', '15', 'Астаринский район', 'Астаринский район');
+INSERT INTO zones VALUES ('', '15', 'Балакенский район', 'Балакенский район');
+INSERT INTO zones VALUES ('', '15', 'Бейлаганский район', 'Бейлаганский район');
+INSERT INTO zones VALUES ('', '15', 'Бардинский район', 'Бардинский район');
+INSERT INTO zones VALUES ('', '15', 'Билясуварский район', 'Билясуварский район');
+INSERT INTO zones VALUES ('', '15', 'Джебраильский район', 'Джебраильский район');
+INSERT INTO zones VALUES ('', '15', 'Джалилабадский район', 'Джалилабадский район');
+INSERT INTO zones VALUES ('', '15', 'Дашкесанский район', 'Дашкесанский район');
+INSERT INTO zones VALUES ('', '15', 'Дивичинский район', 'Дивичинский район');
+INSERT INTO zones VALUES ('', '15', 'Физулинский район', 'Физулинский район');
+INSERT INTO zones VALUES ('', '15', 'Кедабекский район', 'Кедабекский район');
+INSERT INTO zones VALUES ('', '15', 'Геранбойский район', 'Геранбойский район');
+INSERT INTO zones VALUES ('', '15', 'Геокчайский район', 'Геокчайский район');
+INSERT INTO zones VALUES ('', '15', 'Гаджигабульский район', 'Гаджигабульский район');
+INSERT INTO zones VALUES ('', '15', 'Хачмазский район', 'Хачмазский район');
+INSERT INTO zones VALUES ('', '15', 'Ханларский район', 'Ханларский район');
+INSERT INTO zones VALUES ('', '15', 'Хызынский район', 'Хызынский район');
+INSERT INTO zones VALUES ('', '15', 'Ходжавендский район', 'Ходжавендский район');
+INSERT INTO zones VALUES ('', '15', 'Ходжалинский район', 'Ходжалинский район');
+INSERT INTO zones VALUES ('', '15', 'Имишлинский район', 'Имишлинский район');
+INSERT INTO zones VALUES ('', '15', 'Исмаиллинский район', 'Исмаиллинский район');
+INSERT INTO zones VALUES ('', '15', 'Кельбаджарский район', 'Кельбаджарский район');
+INSERT INTO zones VALUES ('', '15', 'Кюрдамирский район', 'Кюрдамирский район');
+INSERT INTO zones VALUES ('', '15', 'Гахский район', 'Гахский район');
+INSERT INTO zones VALUES ('', '15', 'Газахский район', 'Газахский район');
+INSERT INTO zones VALUES ('', '15', 'Габалинский район', 'Габалинский район');
+INSERT INTO zones VALUES ('', '15', 'Гобустанский район', 'Гобустанский район');
+INSERT INTO zones VALUES ('', '15', 'Губинский район', 'Губинский район');
+INSERT INTO zones VALUES ('', '15', 'Губадлинский район', 'Губадлинский район');
+INSERT INTO zones VALUES ('', '15', 'Гусарский район', 'Гусарский район');
+INSERT INTO zones VALUES ('', '15', 'Лачинский район', 'Лачинский район');
+INSERT INTO zones VALUES ('', '15', 'Ленкоранский район', 'Ленкоранский район');
+INSERT INTO zones VALUES ('', '15', 'Лерикский район', 'Лерикский район');
+INSERT INTO zones VALUES ('', '15', 'Масаллинский район', 'Масаллинский район');
+INSERT INTO zones VALUES ('', '15', 'Нефтчалинский район', 'Нефтчалинский район');
+INSERT INTO zones VALUES ('', '15', 'Огузский район', 'Огузский район');
+INSERT INTO zones VALUES ('', '15', 'Саатлинский район', 'Саатлинский район');
+INSERT INTO zones VALUES ('', '15', 'Сабирабадский район', 'Сабирабадский район');
+INSERT INTO zones VALUES ('', '15', 'Сальянский район', 'Сальянский район');
+INSERT INTO zones VALUES ('', '15', 'Самухский район', 'Самухский район');
+INSERT INTO zones VALUES ('', '15', 'Сиязаньский район', 'Сиязаньский район');
+INSERT INTO zones VALUES ('', '15', 'Шемахинский район', 'Шемахинский район');
+INSERT INTO zones VALUES ('', '15', 'Шемкирский район', 'Шемкирский район');
+INSERT INTO zones VALUES ('', '15', 'Шекинский район', 'Шекинский район');
+INSERT INTO zones VALUES ('', '15', 'Шушинский район', 'Шушинский район');
+INSERT INTO zones VALUES ('', '15', 'Тертерский район', 'Тертерский район');
+INSERT INTO zones VALUES ('', '15', 'Товузский район', 'Товузский район');
+INSERT INTO zones VALUES ('', '15', 'Уджарский район', 'Уджарский район');
+INSERT INTO zones VALUES ('', '15', 'Ярдымлинский район', 'Ярдымлинский район');
+INSERT INTO zones VALUES ('', '15', 'Евлахский район', 'Евлахский район');
+INSERT INTO zones VALUES ('', '15', 'Закатальский район', 'Закатальский район');
+INSERT INTO zones VALUES ('', '15', 'Зангеланский район', 'Зангеланский район');
+INSERT INTO zones VALUES ('', '15', 'Зардабский район', 'Зардабский район');
+INSERT INTO zones VALUES ('', '15', 'Нахичеванская Автономная Республика', 'Нахичеванская Автономная Республика');
+INSERT INTO zones VALUES ('', '15', 'Бабекский район', 'Бабекский район');
+INSERT INTO zones VALUES ('', '15', 'Джульфинский район', 'Джульфинский район');
+INSERT INTO zones VALUES ('', '15', 'Ордубадский район', 'Ордубадский район');
+INSERT INTO zones VALUES ('', '15', 'Садаракский район', 'Садаракский район');
+INSERT INTO zones VALUES ('', '15', 'Шахбузский район', 'Шахбузский район');
+INSERT INTO zones VALUES ('', '15', 'Шарурский район', 'Шарурский район');
+INSERT INTO zones VALUES ('', '67', 'Харьюский уезд', 'Харьюский уезд');
+INSERT INTO zones VALUES ('', '67', 'Хийумааский уезд', 'Хийумааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Ида-Вирумааский уезд', 'Ида-Вирумааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Ярвамаамааский уезд', 'Ярвамаамааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Йыгевамааский уезд', 'Йыгевамааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Ляэнемааский уезд', 'Ляэнемааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Ляэне-Вирумааский уезд', 'Ляэне-Вирумааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Пылвамааский уезд', 'Пылвамааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Пярнумааский уезд', 'Пярнумааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Рапламааский уезд', 'Рапламааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Сааремааский уезд', 'Сааремааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Тартумааский уезд', 'Тартумааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Валгамааский уезд', 'Валгамааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Вильяндимааский уезд', 'Вильяндимааский уезд');
+INSERT INTO zones VALUES ('', '67', 'Вырумааский уезд', 'Вырумааский уезд');
+INSERT INTO zones VALUES ('', '20', 'Витебская область', 'Витебская область');
+INSERT INTO zones VALUES ('', '20', 'Могилевская область', 'Могилевская область');
+INSERT INTO zones VALUES ('', '20', 'Минская область', 'Минская область');
+INSERT INTO zones VALUES ('', '20', 'Гродненская область', 'Гродненская область');
+INSERT INTO zones VALUES ('', '20', 'Гомельская область', 'Гомельская область');
+INSERT INTO zones VALUES ('', '20', 'Брестская область', 'Брестская область');
+INSERT INTO zones VALUES ('', '11', 'Область Арагацотн', 'Область Арагацотн');
+INSERT INTO zones VALUES ('', '11', 'Араратская область', 'Араратская область');
+INSERT INTO zones VALUES ('', '11', 'Армавирская область', 'Армавирская область');
+INSERT INTO zones VALUES ('', '11', 'Гегаркуникская область', 'Гегаркуникская область');
+INSERT INTO zones VALUES ('', '11', 'Ереван', 'Ереван');
+INSERT INTO zones VALUES ('', '11', 'Лорийская область', 'Лорийская область');
+INSERT INTO zones VALUES ('', '11', 'Котайкская область', 'Котайкская область');
+INSERT INTO zones VALUES ('', '11', 'Ширакская область', 'Ширакская область');
+INSERT INTO zones VALUES ('', '11', 'Сюникская область', 'Сюникская область');
+INSERT INTO zones VALUES ('', '11', 'Область Вайоц Дзор', 'Область Вайоц Дзор');
+INSERT INTO zones VALUES ('', '11', 'Тавушская область', 'Тавушская область');
+INSERT INTO zones VALUES ('', '80', 'Гурия', 'Гурия');
+INSERT INTO zones VALUES ('', '80', 'Имерети', 'Имерети');
+INSERT INTO zones VALUES ('', '80', 'Кахети', 'Кахети');
+INSERT INTO zones VALUES ('', '80', 'Квемо-Картли', 'Квемо-Картли');
+INSERT INTO zones VALUES ('', '80', 'Мцхета-Тианети', 'Мцхета-Тианети');
+INSERT INTO zones VALUES ('', '80', 'Рача-Лечхуми - Квемо Сванети', 'Рача-Лечхуми - Квемо Сванети');
+INSERT INTO zones VALUES ('', '80', 'Самегрело - Земо-Сванети', 'Самегрело - Земо-Сванети');
+INSERT INTO zones VALUES ('', '80', 'Самцхе-Джавахети', 'Самцхе-Джавахети');
+INSERT INTO zones VALUES ('', '80', 'Тбилиси', 'Тбилиси');
+INSERT INTO zones VALUES ('', '80', 'Шида - Картли', 'Шида - Картли');
+INSERT INTO zones VALUES ('', '80', 'Аджарская автономная республика', 'Аджарская автономная республика');
+INSERT INTO zones VALUES ('', '80', 'Абхазская автономная республика', 'Абхазская автономная республика');
+INSERT INTO zones VALUES ('', '80', 'Республика Южная Осетия', 'Республика Южная Осетия');
+INSERT INTO zones VALUES ('', '140', 'Балти', 'Балти');
+INSERT INTO zones VALUES ('', '140', 'Единет', 'Единет');
+INSERT INTO zones VALUES ('', '140', 'Кагул', 'Кагул');
+INSERT INTO zones VALUES ('', '140', 'Кишенёв', 'Кишенёв');
+INSERT INTO zones VALUES ('', '140', 'Лапушна', 'Лапушна');
+INSERT INTO zones VALUES ('', '140', 'Оргей', 'Оргей');
+INSERT INTO zones VALUES ('', '140', 'Сорока', 'Сорока');
+INSERT INTO zones VALUES ('', '140', 'Тараклия', 'Тараклия');
+INSERT INTO zones VALUES ('', '140', 'Тигина', 'Тигина');
+INSERT INTO zones VALUES ('', '140', 'Унгены', 'Унгены');
+INSERT INTO zones VALUES ('', '123', 'Алитусский уезд', 'Алитусский уезд');
+INSERT INTO zones VALUES ('', '123', 'Каунасский уезд', 'Каунасский уезд');
+INSERT INTO zones VALUES ('', '123', 'Kлайпедский уезд', 'Kлайпедский уезд');
+INSERT INTO zones VALUES ('', '123', 'Maриямпольский уезд', 'Maриямпольский уезд');
+INSERT INTO zones VALUES ('', '123', 'Панявежский уезд', 'Панявежский уезд');
+INSERT INTO zones VALUES ('', '123', 'Шяуляйский уезд', 'Шяуляйский уезд');
+INSERT INTO zones VALUES ('', '123', 'Таурагский уезд', 'Таурагский уезд');
+INSERT INTO zones VALUES ('', '123', 'Tяльшяйский уезд', 'Tяльшяйский уезд');
+INSERT INTO zones VALUES ('', '123', 'Утянский уезд', 'Утянский уезд');
+INSERT INTO zones VALUES ('', '123', 'Вильнюсский уезд', 'Вильнюсский уезд');
+INSERT INTO zones VALUES ('', '117', 'Айзкраульский', 'Айзкраульский');
+INSERT INTO zones VALUES ('', '117', 'Алуксненский', 'Алуксненский');
+INSERT INTO zones VALUES ('', '117', 'Балвский', 'Балвский');
+INSERT INTO zones VALUES ('', '117', 'Баускский', 'Баускский');
+INSERT INTO zones VALUES ('', '117', 'Валкаский', 'Валкаский');
+INSERT INTO zones VALUES ('', '117', 'Валмиерский', 'Валмиерский');
+INSERT INTO zones VALUES ('', '117', 'Вентспилсский', 'Вентспилсский');
+INSERT INTO zones VALUES ('', '117', 'Гулбенеский', 'Гулбенеский');
+INSERT INTO zones VALUES ('', '117', 'Даугавпилсский', 'Даугавпилсский');
+INSERT INTO zones VALUES ('', '117', 'Добелеский', 'Добелеский');
+INSERT INTO zones VALUES ('', '117', 'Екабпилсский', 'Екабпилсский');
+INSERT INTO zones VALUES ('', '117', 'Елгавский', 'Елгавский');
+INSERT INTO zones VALUES ('', '117', 'Краславский', 'Краславский');
+INSERT INTO zones VALUES ('', '117', 'Кулдигский', 'Кулдигский');
+INSERT INTO zones VALUES ('', '117', 'Лиепайский', 'Лиепайский');
+INSERT INTO zones VALUES ('', '117', 'Лимбажский', 'Лимбажский');
+INSERT INTO zones VALUES ('', '117', 'Лудзский', 'Лудзский');
+INSERT INTO zones VALUES ('', '117', 'Мадонский', 'Мадонский');
+INSERT INTO zones VALUES ('', '117', 'Огреский', 'Огреский');
+INSERT INTO zones VALUES ('', '117', 'Прейльский', 'Прейльский');
+INSERT INTO zones VALUES ('', '117', 'Резекнеский', 'Резекнеский');
+INSERT INTO zones VALUES ('', '117', 'Рижский', 'Рижский');
+INSERT INTO zones VALUES ('', '117', 'Салдусский', 'Салдусский');
+INSERT INTO zones VALUES ('', '117', 'Талсинский', 'Талсинский');
+INSERT INTO zones VALUES ('', '117', 'Тукумсский', 'Тукумсский');
+INSERT INTO zones VALUES ('', '117', 'Цесиский', 'Цесиский');
+INSERT INTO zones VALUES ('', '117', 'Вентспилс', 'Вентспилс');
+INSERT INTO zones VALUES ('', '117', 'Даугавпилс', 'Даугавпилс');
+INSERT INTO zones VALUES ('', '117', 'Елгава', 'Елгава');
+INSERT INTO zones VALUES ('', '117', 'Лиепая', 'Лиепая');
+INSERT INTO zones VALUES ('', '117', 'Резекне', 'Резекне');
+INSERT INTO zones VALUES ('', '117', 'Рига', 'Рига');
+INSERT INTO zones VALUES ('', '117', 'Юрмала', 'Юрмала');
 
 #
 # Dumping data for table `payment_moneybookers_countries`
