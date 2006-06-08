@@ -13,7 +13,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 // Global
-define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">XT-Commerce</a><br />Powered by xt:Commerce'); 
+define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">XT-Commerce VaM Edition</a><br />Powered by xt:Commerce'); 
    
 // Box names
 define('BOX_LANGUAGE','Язык');
@@ -75,7 +75,9 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 // index.php
 define('TITLE_SELECT_LANGUAGE','Выберите язык!');
 
-define('TEXT_WELCOME_INDEX','<b>Welcome to XT-Commerce</b><br /><br />XT-Commerce is an open source e-commerce solution under on going development by the XT-Commerce Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> XT-Commerce combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, XT-Commerce can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes Linux, Solaris, BSD, and Microsoft Windows environments.<br /><br /><b>Willkommen zu XT-Commerce</b><br /><br />XT-Commerce ist eine Open-Source e-commerce Lцsung, die stдndig vom XT-Commerce Team und einer grossen Gemeinschaft weiterentwickelt wird.<br /> Seine out-of-the-box Installation erlaubt es dem Shop-Besitzer seinen Online-Shop mit einem Minimum an Aufwand und Kosten zu installieren, zu betreiben und zu verwalten.<br /><br />XT-Commerce ist auf jedem System lauffдhig, welches eine PHP Umgebung (ab PHP 4.1) und mySQL zur Verfьgung stellt, wie zum Beispiel Linux, Solaris, BSD, und Microsoft Windows.');
+define('TEXT_WELCOME_INDEX','XT-Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Распространяется бесплатно и разрабатывается по модели открытых исходных кодов, установив osCommerce, Вы получаете готовый к работе интернет-магазин .<br /><br />
+      osCommerce является бесплатной и открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
+      osCommerce может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
 define('TEXT_WELCOME_STEP1','<b>Main database and webserver settings</b><br /><br />Please enter your Database and webserver settings.<br />');
 define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The XT-Commerce installer will automatically install the XT-Commerce database.');
 define('TEXT_WELCOME_STEP3','<b>Database import.</b><br /><br />');
@@ -97,7 +99,7 @@ user group 2 -> 10% discount on product Y<br />
 user group 3 -> a special group price on product Y<br />
 user group 4 -> netto price on product Y<br />
 ');
-define('TEXT_WELCOME_FINISHED','<b>XT-Commerce installation successful!</b>');
+define('TEXT_WELCOME_FINISHED','<b>Установка XT-Commerce VaM Edition успешно завершена!</b>');
 // install_step1.php
 
 define('TITLE_CUSTOM_SETTINGS','Custom Settings');
@@ -220,5 +222,47 @@ define('TITLE_CHMOD','Setting rights on files');
 
 define('TEXT_SHOP_CONFIG_SUCCESS','<strong>XT-Commerce</strong> Shop configuration was successful.');
 define('TEXT_TEAM','The XT-Commerce dev Team.<br /><a href="http://www.xt-commerce.com">XT-Commerce support site</a>');
-   
- ?>
+
+// Сборка VaM
+
+// install_step1
+
+define('IMAGE_CONTINUE','Продолжить');
+define('IMAGE_CANCEL','Отменить');
+define('IMAGE_BACK','Вернуться');
+define('IMAGE_RETRY','Повторить');
+define('TEXT_RUSSIAN','Русский');
+define('TEXT_ENGLISH','Английский');
+define('TEXT_CHECKING','Проверка:');
+define('TEXT_ATTENTION','Внимание:');
+define('TITLE_INDEX','Установка XT-Commerce VaM Edition - Добро пожаловать');
+define('TITLE_STEP1','Установка XT-Commerce VaM Edition - ШАГ 1 / Настройки');
+define('TITLE_STEP2','Установка XT-Commerce VaM Edition - ШАГ 2 / Подключение к базе данных');
+define('TITLE_STEP3','Установка XT-Commerce VaM Edition - ШАГ 3 / Импорт базы данных');
+define('TITLE_STEP4','Установка XT-Commerce VaM Edition - ШАГ 4 / Настройка веб сервера');
+define('TITLE_STEP5','Установка XT-Commerce VaM Edition - ШАГ 5 / Запись конфигурационных файлов');
+define('TITLE_STEP6','Установка XT-Commerce VaM Edition - ШАГ 6 / Создание админа');
+define('TITLE_STEP7','Установка XT-Commerce VaM Edition - ШАГ 7 / Настройка цен');
+define('TITLE_FINISHED','Установка XT-Commerce VaM Edition - Установка завершена');
+define('CHARSET','windows-1251');
+define('TEXT_INSTALL','Установка');
+define('ERROR_PERMISSION','Неверные права доступа ');
+define('TEXT_ERROR','ОШИБКА');
+define('TEXT_FILE_PERMISSIONS','Права доступа файлов .............................. ');
+define('TEXT_FOLDER_PERMISSIONS','Права доступа директорий .............................. ');
+define('PHP_VERSION_ERROR','<b>Внимание!, Версия PHP слишком старая, для корректной работы XT-Commerce VaM Edition необходим PHP 4.1.3 и выше.</b><br /><br />
+                 Ваша версия PHP: <b><?php echo phpversion(); ?></b><br /><br />
+                 XT-Commerce VaM Edition не будет корректно работать на данном сервере, обновите PHP, либо смените сервер.');
+define('TEXT_PHP_VERSION','Версия PHP .............................. ');
+define('TEXT_GD_LIB_NOT_FOUND','ОШИБКА! БИБЛИОТЕКА GD НЕ НАЙДЕНА!');
+define('TEXT_GD_LIB_VERSION','Если версия GDlib < 2+ , нажмите для получения дополнительных инструкций');
+define('TEXT_GD_LIB_VERSION1','Версия GDlib .............................. ');
+define('TEXT_GD_LIB_GIF_SUPPORT','Поддержка GIF в GDlib .............................. ');
+define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ОШИБКА</font></b><br />Установленная библиотека GDlib не поддерживает картинки в формате GIF, Вы не сможете использовать картинки GIF в магазине XT-Commerce VaM Edition!');
+define('TEXT_OK','Готово');
+
+//install_finished
+
+define('TEXT_CATALOG','Каталог');
+
+?>

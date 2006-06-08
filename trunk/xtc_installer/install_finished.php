@@ -21,8 +21,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>XT-Commerce Installer - Finished</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><?php echo TITLE_FINISHED; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <style type="text/css">
 <!--
 .messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
@@ -45,7 +45,7 @@
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr> 
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999">Install</font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr> 
           <td bgcolor="F3F3F3" ><br /> 
@@ -121,7 +121,7 @@
               </font></p>
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr> 
-                <td align="center"><a href="<?php echo HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'index.php'; ?>" target="_blank"><img src="images/button_catalog.gif" border="0" alt="Catalog"></a></td>
+                <td align="center"><a href="<?php echo HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'index.php'; ?>" target="_blank"><img src="images/button_catalog.gif" border="0" alt="<?php echo TEXT_CATALOG; ?>"></a></td>
                 
               </tr>
             </table>

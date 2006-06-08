@@ -21,8 +21,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>XT-Commerce Installer - STEP 3 / DB Import</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><?php echo TITLE_STEP3; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <style type="text/css">
 <!--
 .messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
@@ -45,7 +45,7 @@
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr> 
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999">Install</font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr> 
           <td bgcolor="F3F3F3" ><br /> 
@@ -144,8 +144,8 @@
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center"><a href="index.php"><img src="images/button_cancel.gif" border="0" alt="Cancel"></a></td>
-    <td align="center"><input type="image" src="images/button_retry.gif" border="0" alt="Retry"></td>
+    <td align="center"><a href="index.php"><img src="images/button_cancel.gif" border="0" alt="<?php echo IMAGE_CANCEL; ?>"></a></td>
+    <td align="center"><input type="image" src="images/button_retry.gif" border="0" alt="<?php echo IMAGE_RETRY; ?>"></td>
   </tr>
 </table>
 
@@ -183,11 +183,11 @@
 <?php
       if (xtc_in_array('configure', $_POST['install'])) {
 ?>
-    <td align="center"><input type="image" src="images/button_continue.gif" border="0" alt="Continue"></td>
+    <td align="center"><input type="image" src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"></td>
 <?php
       } else {
 ?>
-    <td align="center"><a href="index.php"><img src="images/button_continue.gif" border="0" alt="Continue"></a></td>
+    <td align="center"><a href="index.php"><img src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"></a></td>
 <?php
       }
 ?>

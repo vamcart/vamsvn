@@ -59,8 +59,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Установка XT-Commerce VaM Edition - Добро пожаловать</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title><?php echo TITLE_INDEX; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <style type="text/css">
 <!--
 .messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
@@ -85,7 +85,7 @@
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999">Install</font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr>
           <td bgcolor="F3F3F3" ><br />
@@ -103,21 +103,6 @@
       <br />
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td><img src="images/title_index.gif" width="586" height="100" border="0"><br />
-            <table width="100%"  border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td><br />                  <table width="100%"  border="0" cellpadding="2" cellspacing="2" style="border: 1px solid; border-color: #4CC534;" bgcolor="#C2FFB6">
-                  <tr>
-                    <td width="1"><img src="images/install.gif" border="0"></td>
-                    <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.xt-commerce.com/modules/wfsection/article.php?articleid=54" target="new">Installationsanleitung auf www.xt-commerce.com</a></font></td>
-                  </tr>
-                </table></td>
-              </tr>
-            </table>
-            <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><br /><br /><?php echo TEXT_WELCOME_INDEX; ?></font><br />
-            <br /></td>
-        </tr>
-        <tr>
 <?php
   // permission check to prevent DAU faults.
  $error_flag=false;
@@ -127,100 +112,100 @@
  // config files
  if (!is_writeable(DIR_FS_CATALOG . 'includes/configure.php')) {
     $error_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'includes/configure.php<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.php<br />';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'includes/configure.org.php')) {
     $error_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'includes/configure.org.php<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.org.php<br />';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'admin/includes/configure.php')) {
     $error_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/includes/configure.php<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.php<br />';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'admin/includes/configure.org.php')) {
     $error_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/includes/configure.org.php<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.org.php<br />';
  }
  $status='OK';
- if ($error_flag==true) $status='<b><font color="ff0000">ERROR</font></b>';
- $ok_message.='FILE Permissions .............................. '.$status.'<br /><hr noshade>';
+ if ($error_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
+ $ok_message.=TEXT_FILE_PERMISSIONS . '' . $status.'<br /><hr noshade>';
 
  // smarty folders
  $folder_flag==false;
    if (!is_writeable(DIR_FS_CATALOG . 'templates_c/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'templates_c/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'templates_c/<br />';
  }
     if (!is_writeable(DIR_FS_CATALOG . 'cache/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'cache/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'cache/<br />';
  }
 
      if (!is_writeable(DIR_FS_CATALOG . 'admin/rss/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/rss/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/rss/<br />';
  }
 
       if (!is_writeable(DIR_FS_CATALOG . 'admin/images/graphs')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/images/graphs<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/images/graphs<br />';
  }
 
     if (!is_writeable(DIR_FS_CATALOG . 'admin/backups/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/backups/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/backups/<br />';
  }
 
  // image folders
       if (!is_writeable(DIR_FS_CATALOG . 'images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/<br />';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/categories/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/categories/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/categories/<br />';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/banner/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/banner/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/banner/<br />';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/info_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/product_images/info_images/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/info_images/<br />';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/original_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/product_images/original_images/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/original_images/<br />';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/popup_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/product_images/popup_images/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/popup_images/<br />';
  }
       if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/thumbnail_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'images/product_images/thumbnail_images/<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/thumbnail_images/<br />';
  }
  
    if (!is_writeable(DIR_FS_CATALOG . 'admin/rss/xt-news.cache')) {
     $error_flag=true;
-    $message .= 'WRONG PERMISSION on '.DIR_FS_CATALOG . 'admin/rss/xt-news.cache<br />';
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/rss/xt-news.cache<br />';
  }
 
  $status='OK';
- if ($folder_flag==true) $status='<b><font color="ff0000">ERROR</font></b>';
- $ok_message.='FOLDER Permissions .............................. '.$status.'<br /><hr noshade>';
+ if ($folder_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
+ $ok_message.=TEXT_FOLDER_PERMISSIONS . '' . $status.'<br /><hr noshade>';
 
  // check PHP-Version
 
@@ -228,36 +213,34 @@
  if (xtc_check_version()!=1) {
      $error_flag=true;
      $php_flag=true;
-    $message .='<b>ATTENTION!, your PHP Version is to old, XT-Commerce requires atleast PHP 4.1.3.</b><br /><br />
-                 Your php Version: <b><?php echo phpversion(); ?></b><br /><br />
-                 XT-Commerce wont work on this server, update PHP or change Server.';
+    $message .= PHP_VERSION_ERROR;
  }
 
  $status='OK';
- if ($php_flag==true) $status='<b><font color="ff0000">ERROR</font></b>';
- $ok_message.='PHP VERSION .............................. '.$status.'<br /><hr noshade>';
+ if ($php_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
+ $ok_message.= TEXT_PHP_VERSION . '' . $status.'<br /><hr noshade>';
 
 
  $gd=gd_info();
 
- if ($gd['GD Version']=='') $gd['GD Version']='<b><font color="ff0000">ERROR NO GDLIB FOUND!</font></b>';
+ if ($gd['GD Version']=='') $gd['GD Version']='<b><font color="ff0000">' . TEXT_GD_LIB_NOT_FOUND . '</font></b>';
 
- $status=$gd['GD Version'].' <br />  if GDlib Version < 2+ , klick here for further instructions';
+ $status=$gd['GD Version'].' <br />' . TEXT_GD_LIB_VERSION;
 
  // display GDlibversion
- $ok_message.='GDlib VERSION .............................. '.$status.'<br /><hr noshade>';
+ $ok_message.= TEXT_GD_LIB_VERSION1 . '' . $status.'<br /><hr noshade>';
 
  if ($gd['GIF Read Support']==1 or $gd['GIF Support']==1) {
- $status='OK';
+ $status= TEXT_OK;
  } else {
- $status='<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in XT-Commerce!';
+ $status = TEXT_GD_LIB_GIF_SUPPORT_ERROR;
  }
- $ok_message.='GDlib GIF-Support .............................. '.$status.'<br /><hr noshade>';
+ $ok_message.= TEXT_GD_LIB_GIF_SUPPORT . '' . $status.'<br /><hr noshade>';
 
 if ($error_flag==true) {
 ?>
         <td style="border: 1px solid; border-color: #ff0000;" bgcolor="#FFCCCC">
-<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b>Attention:<br /></b>
+<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_ATTENTION; ?><br /></b>
 <?php echo $message; ?>
 </font>
 </td>
@@ -269,7 +252,7 @@ if ($ok_message!='') {
 ?>
 <td height="20"></td></tr><tr>
 <td style="border: 1px solid; border-color: #4CC534;" bgcolor="#C2FFB6">
-<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b>Checking:<br /></b>
+<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_CHECKING; ?><br /></b>
 <?php echo $ok_message; ?>
 </font>
 </td>
@@ -302,20 +285,20 @@ if ($ok_message!='') {
 
               <table width="300" border="0" cellpadding="0" cellspacing="4">
                 <tr>
-                  <td width="98"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6">Русский</font></td>
+                  <td width="98"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo TEXT_RUSSIAN; ?></font></td>
                   <td width="192"><img src="images/icons/icon-rus.gif" width="30" height="16">
                     <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
                   </td>
                 </tr>
                 <tr>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6">English</font></td>
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo TEXT_ENGLISH; ?></font></td>
                   <td><img src="images/icons/icon-eng.gif" width="30" height="16">
                     <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'english'); ?> </td>
                 </tr>
               </table>
 
               <input type="hidden" name="action" value="process">
-              <p> <?php if ($error_flag==false) { ?><input type="image" src="images/button_continue.gif" border="0" alt="Continue"> <?php } ?><br />
+              <p> <?php if ($error_flag==false) { ?><input type="image" src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"> <?php } ?><br />
                 <br />
               </p>
             </form>
