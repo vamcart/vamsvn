@@ -75,9 +75,9 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 // index.php
 define('TITLE_SELECT_LANGUAGE','Выберите язык!');
 
-define('TEXT_WELCOME_INDEX','XT-Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Распространяется бесплатно и разрабатывается по модели открытых исходных кодов, установив osCommerce, Вы получаете готовый к работе интернет-магазин .<br /><br />
-      osCommerce является бесплатной и открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
-      osCommerce может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
+define('TEXT_WELCOME_INDEX','XT-Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Разрабатывается по модели открытых исходных кодов, установив XT-Commerce VaM Edition, Вы получаете готовый к работе интернет-магазин .<br /><br />
+      XT-Commerce VaM Edition является открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
+      XT-Commerce VaM Edition может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
 define('TEXT_WELCOME_STEP1','<b>Main database and webserver settings</b><br /><br />Please enter your Database and webserver settings.<br />');
 define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The XT-Commerce installer will automatically install the XT-Commerce database.');
 define('TEXT_WELCOME_STEP3','<b>Database import.</b><br /><br />');
