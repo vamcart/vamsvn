@@ -198,8 +198,8 @@
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
-                <td class="dataTableHeadingContent" align="left" width=""><?php echo 'icon'; ?></td>
-                <td class="dataTableHeadingContent" align="left" width=""><?php echo 'user'; ?></td>
+                <td class="dataTableHeadingContent" align="left" width=""><?php echo TABLE_HEADING_ICON; ?></td>
+                <td class="dataTableHeadingContent" align="left" width=""><?php echo TABLE_HEADING_USERS; ?></td>
                 <td class="dataTableHeadingContent" align="left" width=""><?php echo TABLE_HEADING_CUSTOMERS_STATUS; ?></td>
                 <td class="dataTableHeadingContent" align="center" width=""><?php echo TABLE_HEADING_TAX_PRICE; ?></td>
                 <td class="dataTableHeadingContent" align="center" colspan="2"><?php echo TABLE_HEADING_DISCOUNT; ?></td>

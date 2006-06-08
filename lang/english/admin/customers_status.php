@@ -97,5 +97,7 @@ define('ENTRY_CUSTOMERS_STATUS_BASE', 'wird als Grundlage für die Preise der neu
 // Ñáîðêà VaM
 
 define('TEXT_PUBLIC',', public');
+define('TABLE_HEADING_ICON','Icon');
+define('TABLE_HEADING_USERS','Users');
 
 ?>

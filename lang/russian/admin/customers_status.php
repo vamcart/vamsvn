@@ -97,5 +97,7 @@ define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной груп
 // Сборка VaM
 
 define('TEXT_PUBLIC',', открытая');
+define('TABLE_HEADING_ICON','Картинка');
+define('TABLE_HEADING_USERS','Клиентов');
 
 ?>
