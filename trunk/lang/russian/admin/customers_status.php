@@ -27,7 +27,7 @@ define('ENTRY_CUSTOMERS_STATUS_CC_PERMISSION','Оплата кредиткой');
 define('ENTRY_CUSTOMERS_STATUS_COD_PERMISSION','Оплата наличными');
 define('ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES','Скидка');
 define('ENTRY_CUSTOMERS_STATUS_PAYMENT_UNALLOWED','Укажите неразрешенные методы оплаты');
-define('ENTRY_CUSTOMERS_STATUS_PUBLIC','Показывать в магазине бокс инфо (группа станет public)<br />');
+define('ENTRY_CUSTOMERS_STATUS_PUBLIC','Показывать в магазине бокс инфо (группа станет открытая)<br />');
 define('ENTRY_CUSTOMERS_STATUS_SHIPPING_UNALLOWED','Укажите неразрешенные методы доставки');
 define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE','Цена');
 define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX','Цена включая налоги');
@@ -93,5 +93,9 @@ define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'Новая группа');
 
 define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цена для группы</b>');
 define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной группе (Гость, Новый покупатель или Клиент). Если выбран Админ, то цены не показываются.');
+
+// Сборка VaM
+
+define('TEXT_PUBLIC',', открытая');
 
 ?>

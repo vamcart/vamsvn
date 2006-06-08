@@ -253,7 +253,7 @@
       echo '<td class="dataTableContent" align="left">' . $customers_status['customers_status_name'];
     }
     if ($customers_status['customers_status_public'] == '1') {
-      echo ' ,public ';
+      echo TEXT_PUBLIC;
     }
     echo '</b></td>';
 
