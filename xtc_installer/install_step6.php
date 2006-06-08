@@ -883,7 +883,7 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
                   <td width="74%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TEXT_ZONE_YES; ?> 
                     </font><?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'yes'); ?>
                     <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TEXT_ZONE_NO; ?></font> 
-                    <?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'no',''true); ?></td>
+                    <?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'no','true'); ?></td>
                 </tr>
               </table>
 -->
