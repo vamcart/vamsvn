@@ -189,7 +189,7 @@
     <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XT Customers</td>
+    <td class="main" valign="top">HEADING_TITLE</td>
   </tr>
 </table></td>
       </tr>
