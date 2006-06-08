@@ -875,16 +875,18 @@ xtc_db_query("INSERT INTO zones_to_geo_zones (association_id, zone_country_id, z
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
                 </tr>
               </table>
+<!--              
               <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TITLE_ZONE_CONFIG_NOTE; ?></font><br />
               <table width="100%" border="0">
                 <tr> 
                   <td width="26%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_ZONE; ?></strong></font></td>
                   <td width="74%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TEXT_ZONE_YES; ?> 
-                    </font><?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'yes', 'true'); ?>
+                    </font><?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'yes'); ?>
                     <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TEXT_ZONE_NO; ?></font> 
-                    <?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'no'); ?></td>
+                    <?php echo xtc_draw_radio_field_installer('ZONE_SETUP', 'no',''true); ?></td>
                 </tr>
               </table>
+-->
               <p><br />
               </p>
               <center>
