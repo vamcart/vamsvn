@@ -411,7 +411,7 @@ define('EMAIL_BILLING_REPLY_ADDRESS_NAME_DESC' , 'Введите имя для дополнительног
 define('EMAIL_BILLING_SUBJECT_TITLE' , 'Служба обработки счетов - Тема письма');
 define('EMAIL_BILLING_SUBJECT_DESC' , 'Введите Тему для письма в <b>Службу обработки счетов</b>');
 define('EMAIL_BILLING_SUBJECT_ORDER_TITLE','Служба обработки счетов - тема в заголовке заказа');
-define('EMAIL_BILLING_SUBJECT_ORDER_DESC','Введите тему в заголовке для письма в <b>Службу обработки счетов</b>, генерируемое из магазина. (например <b>Наш заказ {$nr}, {$date}</b>) Примечание: Вы можете использовать, {$nr},{$date},{$firstname},{$lastname}');
+define('EMAIL_BILLING_SUBJECT_ORDER_DESC','Введите тему в заголовке для письма в <b>Службу обработки счетов</b>, генерируемое из магазина. (например <b>Ваш заказ {$nr}, {$date}</b>) Примечание: Вы можете использовать, {$nr},{$date},{$firstname},{$lastname}');
 
 
 define('DOWNLOAD_ENABLED_TITLE' , 'Разрешить функцию скачивания товаров');
