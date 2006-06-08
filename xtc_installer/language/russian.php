@@ -259,7 +259,7 @@ define('TEXT_GD_LIB_VERSION','Если версия GDlib < 2+ , нажмите для получения доп
 define('TEXT_GD_LIB_VERSION1','Версия GDlib .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT','Поддержка GIF в GDlib .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ОШИБКА</font></b><br />Установленная библиотека GDlib не поддерживает картинки в формате GIF, Вы не сможете использовать картинки GIF в магазине XT-Commerce VaM Edition!');
-define('TEXT_OK','Готово');
+define('TEXT_OK','Всё нормально');
 
 //install_finished
 
