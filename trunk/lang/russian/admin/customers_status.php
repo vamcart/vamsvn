@@ -50,8 +50,8 @@ define('NO','нет');
 define('TABLE_HEADING_ACTION','Действие');
 define('TABLE_HEADING_CUSTOMERS_GRADUATED','Цена от количества');
 define('TABLE_HEADING_CUSTOMERS_STATUS','Группа');
-define('TABLE_HEADING_CUSTOMERS_UNALLOW','Неразрешенные методы оплаты');
-define('TABLE_HEADING_CUSTOMERS_UNALLOW_SHIPPING','Неразрешенные методы доставки');
+define('TABLE_HEADING_CUSTOMERS_UNALLOW','Запрещённые модули оплаты');
+define('TABLE_HEADING_CUSTOMERS_UNALLOW_SHIPPING','Запрещённые модули доставки');
 define('TABLE_HEADING_DISCOUNT','Скидка');
 define('TABLE_HEADING_TAX_PRICE','Показывать цены / включая налог');
 
