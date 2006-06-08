@@ -53,10 +53,10 @@ define('TABLE_HEADING_CUSTOMERS_STATUS','Группа');
 define('TABLE_HEADING_CUSTOMERS_UNALLOW','Неразрешенные методы оплаты');
 define('TABLE_HEADING_CUSTOMERS_UNALLOW_SHIPPING','Неразрешенные методы доставки');
 define('TABLE_HEADING_DISCOUNT','Скидка');
-define('TABLE_HEADING_TAX_PRICE','Цена / Налог');
+define('TABLE_HEADING_TAX_PRICE','Показывать цены / включая налог');
 
-define('TAX_NO','исключён');
-define('TAX_YES','включён');
+define('TAX_NO','нет');
+define('TAX_YES','да');
 
 define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS_STATUS', 'Существующие группы клиентов:');
 
@@ -91,7 +91,7 @@ define('TEXT_INFO_HEADING_DELETE_CUSTOMERS_STATUS', 'Удаление группы');
 define('TEXT_INFO_HEADING_EDIT_CUSTOMERS_STATUS','Редактирование группы');
 define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'Новая группа');
 
-define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Группа по умолчанию</b>');
-define('ENTRY_CUSTOMERS_STATUS_BASE', 'Выбор группы по умолчанию. Если выбрана группа Admin, то цены не будут видны.');
+define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цены для группы</b>');
+define('ENTRY_CUSTOMERS_STATUS_BASE', 'Цена для группы (есть три типа цен: Гость, Новый покупатель, Клиент). Если выбран Админ, то цены не показываются.');
 
 ?>

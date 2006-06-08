@@ -258,7 +258,7 @@
     echo '</b></td>';
 
     if ($customers_status['customers_status_show_price'] == '1') {
-      echo '<td nowrap class="dataTableContent" align="center">� ';
+      echo '<td nowrap class="dataTableContent" align="center">' . YES . ' / ';
       if ($customers_status['customers_status_show_price_tax'] == '1') {
         echo TAX_YES;
       } else {
