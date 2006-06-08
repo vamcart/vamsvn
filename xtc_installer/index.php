@@ -104,7 +104,9 @@
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
           <td>
+            <img src="images/title_index.gif" width="586" height="100" border="0"><br />
             <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><br /><br /><?php echo TEXT_WELCOME_INDEX; ?></font><br />
+            <br /><br />
           </td>
         </tr>  
         <tr>
