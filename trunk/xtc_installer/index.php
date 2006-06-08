@@ -103,6 +103,11 @@
       <br />
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
+          <td>
+            <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><br /><br /><?php echo TEXT_WELCOME_INDEX; ?></font><br />
+          </td>
+        </tr>  
+        <tr>
 <?php
   // permission check to prevent DAU faults.
  $error_flag=false;
@@ -126,7 +131,7 @@
     $error_flag=true;
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.org.php<br />';
  }
- $status='OK';
+ $status = TEXT_OK;
  if ($error_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
  $ok_message.=TEXT_FILE_PERMISSIONS . '' . $status.'<br /><hr noshade>';
 
@@ -203,7 +208,7 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/rss/xt-news.cache<br />';
  }
 
- $status='OK';
+ $status = TEXT_OK;
  if ($folder_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
  $ok_message.=TEXT_FOLDER_PERMISSIONS . '' . $status.'<br /><hr noshade>';
 
@@ -216,7 +221,7 @@
     $message .= PHP_VERSION_ERROR;
  }
 
- $status='OK';
+ $status = TEXT_OK;
  if ($php_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
  $ok_message.= TEXT_PHP_VERSION . '' . $status.'<br /><hr noshade>';
 
@@ -231,7 +236,7 @@
  $ok_message.= TEXT_GD_LIB_VERSION1 . '' . $status.'<br /><hr noshade>';
 
  if ($gd['GIF Read Support']==1 or $gd['GIF Support']==1) {
- $status= TEXT_OK;
+ $status = TEXT_OK;
  } else {
  $status = TEXT_GD_LIB_GIF_SUPPORT_ERROR;
  }
