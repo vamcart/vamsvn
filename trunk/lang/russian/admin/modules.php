@@ -26,5 +26,5 @@ define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_MODULE_DIRECTORY', 'Директория модулей:');
 
-define('TABLE_HEADING_FILENAME','Названия модуля (для системного использования)');
+define('TABLE_HEADING_FILENAME','Названия модулей (для системного использования)');
 ?>
