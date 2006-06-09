@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_loworderfee.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: ot_loworderfee.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,27 +15,27 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TITLE', 'Low Order Fee');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESCRIPTION', 'Low Order Fee');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TITLE', 'Низкая стоимость заказа');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESCRIPTION', 'Низкая стоимость заказа');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_TITLE','Display Low Order Fee');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_DESC','Do you want to display the low order fee?');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_TITLE','Показывать низкую стоимость заказа');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_DESC','Вы хотите показывать низкую стоимость заказа?');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_TITLE','Sort Order');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_DESC','Sort order of display.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_DESC','Порядок сортировки модуля.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_TITLE','Allow Low Order Fee');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_DESC','Do you want to allow low order fees?');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_TITLE','Разрешить низкую стоимость заказа');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_DESC','Вы хотите разрешить модуль низкой стоимость заказа?');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_TITLE','Order Fee For Orders Under');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_DESC','Add the low order fee to orders under this amount.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_TITLE','Низкая стоимость для заказов до');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_DESC','Низкая стоимость заказов для заказов до указанной величины.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_TITLE','Order Fee');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_DESC','Low order fee.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_TITLE','Плата');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_DESC','Плата.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_TITLE','Attach Low Order Fee On Orders Made');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_DESC','Attach low order fee for orders to be sent to the set destination.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_TITLE','Прибавлять плату к заказу');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_DESC','Прибавлять плату к следующим заказам.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_TITLE','Tax Class');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_DESC','Use the following tax class on the low order fee.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_TITLE','Налог');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_DESC','Использовать налог.');
 ?>
