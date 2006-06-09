@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_discount.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: ot_discount.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,12 +15,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_TITLE', 'Discount');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_DESCRIPTION', 'Discount on order');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_TITLE', 'Скидка');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_DESCRIPTION', 'Скидка от стоимости заказа');
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_TITLE', 'Display total-discount');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_DESC', 'Do you want to display the order total discount ?');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_TITLE', 'Показывать скидку');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_DESC', 'Вы хотите показывать скидку в зависимости от общей суммы заказа?');
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_TITLE', 'Sort order');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_DESC','Sort order of display.');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_TITLE', 'Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_DESC','Порядок сортировки модуля.');
 ?>

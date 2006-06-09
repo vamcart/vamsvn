@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_total.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: ot_total.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,14 +15,14 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE', '<b>Total</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX', '<b>Total, no tax</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX_BRUTTO','<b>Total, incl. Tax</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION', 'Order Total');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE', '<b>Всего</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX', '<b>Всего, без налога</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX_BRUTTO','<b>Всего, с налогом</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION', 'Всего');
 
-  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_TITLE','Display Total');
-  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_DESC','Do you want to display the total order value?');
+  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_TITLE','Показывать всего');
+  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_DESC','Вы хотите показывать общую стоимость заказа?');
 
-  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_TITLE','Sort Order');
-  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_DESC','Sort order of display.');
+  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_DESC','Порядок сортировки модуля.');
 ?>

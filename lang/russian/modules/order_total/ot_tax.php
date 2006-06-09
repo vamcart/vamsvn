@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_tax.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: ot_tax.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -16,12 +16,12 @@
    ---------------------------------------------------------------------------------------*/
 
 
-  define('MODULE_ORDER_TOTAL_TAX_TITLE', 'Tax');
-  define('MODULE_ORDER_TOTAL_TAX_DESCRIPTION', 'Order Tax');
+  define('MODULE_ORDER_TOTAL_TAX_TITLE', 'Налог');
+  define('MODULE_ORDER_TOTAL_TAX_DESCRIPTION', 'Налог');
 
-  define('MODULE_ORDER_TOTAL_TAX_STATUS_TITLE','Display Tax');
-  define('MODULE_ORDER_TOTAL_TAX_STATUS_DESC','Do you want to display the order tax value?');
+  define('MODULE_ORDER_TOTAL_TAX_STATUS_TITLE','Показывать налог');
+  define('MODULE_ORDER_TOTAL_TAX_STATUS_DESC','Вы хотите показывать налог?');
 
-  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_TITLE','Sort Order');
-  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_DESC','Sort order of display.');
+  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_DESC','Порядок сортировки модуля.');
 ?>

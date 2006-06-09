@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_subtotal.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: ot_subtotal.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -15,13 +15,13 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_TITLE', 'Sub-Total');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_TITLE_NO_TAX', 'Sub-Total, no-tax');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_DESCRIPTION', 'Order Sub-Total');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_TITLE', 'Стоимость товара');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_TITLE_NO_TAX', 'Стоимость товара, без налога');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_DESCRIPTION', 'Стоимость товара');
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_STATUS_TITLE','Display Sub-Total');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_STATUS_DESC','Do you want to display the order sub-total cost?');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_STATUS_TITLE','Показывать стоимость товара');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_STATUS_DESC','Вы хотите показывать стоимость товара?');
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_SORT_ORDER_TITLE','Sort Order');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_SORT_ORDER_DESC','Sort order of display.');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_SORT_ORDER_DESC','Порядок сортировки модуля.');
 ?>

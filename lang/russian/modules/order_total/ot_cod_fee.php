@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ot_cod_fee.php 914 2005-04-30 02:54:02Z matthias $
+   $Id: ot_cod_fee.php 914 2005-04-30 02:54:02Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -16,92 +16,67 @@
    ---------------------------------------------------------------------------------------*/
 
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_TITLE', 'COD charge');
-  define('MODULE_ORDER_TOTAL_COD_FEE_DESCRIPTION', 'Calculation of the COD charge');
+  define('MODULE_ORDER_TOTAL_COD_FEE_TITLE', 'Стоимость доставки');
+  define('MODULE_ORDER_TOTAL_COD_FEE_DESCRIPTION', 'Вычисление стоимости доставки');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_STATUS_TITLE','COD charge');
-  define('MODULE_ORDER_TOTAL_COD_FEE_STATUS_DESC','Calculation of the COD charge');
+  define('MODULE_ORDER_TOTAL_COD_FEE_STATUS_TITLE','Стоимость доставки');
+  define('MODULE_ORDER_TOTAL_COD_FEE_STATUS_DESC','Вычисление стоимости доставки');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_SORT_ORDER_TITLE','Sort Order');
-  define('MODULE_ORDER_TOTAL_COD_FEE_SORT_ORDER_DESC','Sort order of display');
+  define('MODULE_ORDER_TOTAL_COD_FEE_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_ORDER_TOTAL_COD_FEE_SORT_ORDER_DESC','Порядок сортировки модуля');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_FLAT_TITLE','Flat Shippingcosts');
-  define('MODULE_ORDER_TOTAL_COD_FEE_FLAT_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_FLAT_TITLE','Плоские тарифы');
+  define('MODULE_ORDER_TOTAL_COD_FEE_FLAT_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_ITEM_TITLE','Shippingcosts each');
-  define('MODULE_ORDER_TOTAL_COD_FEE_ITEM_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_ITEM_TITLE','Тарифы на единицу');
+  define('MODULE_ORDER_TOTAL_COD_FEE_ITEM_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_TABLE_TITLE','Tabular Shippingcosts');
-  define('MODULE_ORDER_TOTAL_COD_FEE_TABLE_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_TABLE_TITLE','Табличные тарифы');
+  define('MODULE_ORDER_TOTAL_COD_FEE_TABLE_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_ZONES_TITLE','Shippingcosts for zones');
-  define('MODULE_ORDER_TOTAL_COD_FEE_ZONES_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_ZONES_TITLE','Тарифы для зон');
+  define('MODULE_ORDER_TOTAL_COD_FEE_ZONES_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_AP_TITLE','Austrian Post AG');
-  define('MODULE_ORDER_TOTAL_COD_FEE_AP_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_AP_TITLE','Австрийская почта');
+  define('MODULE_ORDER_TOTAL_COD_FEE_AP_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_CHP_TITLE','The Swiss Post');
-  define('MODULE_ORDER_TOTAL_COD_FEE_CHP_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_CHP_TITLE','Швейцарская почта');
+  define('MODULE_ORDER_TOTAL_COD_FEE_CHP_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_CHRONOPOST_TITLE','Chronopost');
-  define('MODULE_ORDER_TOTAL_COD_FEE_CHRONOPOST_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_CHRONOPOST_TITLE','Хронопост');
+  define('MODULE_ORDER_TOTAL_COD_FEE_CHRONOPOST_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_DHL_TITLE','DHL Austria');
-  define('MODULE_ORDER_TOTAL_COD_FEE_DHL_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_DHL_TITLE','DHL Австрия');
+  define('MODULE_ORDER_TOTAL_COD_FEE_DHL_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_DP_TITLE','German Post AG');
-  define('MODULE_ORDER_TOTAL_COD_FEE_DP_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_DP_TITLE','Немецкая почта');
+  define('MODULE_ORDER_TOTAL_COD_FEE_DP_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_FREE_TITLE','Free Shipping (Order Total Modul Shipping)');
-  define('MODULE_ORDER_TOTAL_COD_FEE_FREE_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');
+  define('MODULE_ORDER_TOTAL_COD_FEE_UPS_TITLE','UPS');
+  define('MODULE_ORDER_TOTAL_COD_FEE_UPS_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
   
-  define('MODULE_ORDER_TOTAL_FREEAMOUNT_FREE_TITLE','Free Shipping (Module Free Shipping)');
-  define('MODULE_ORDER_TOTAL_FREEAMOUNT_FREE_DESC','&lt;ISO2-Code&gt;:&lt;Price&gt;, ....<br />
-  00 as ISO2-Code allows the COD shipping in all countries. If
-  00 is used you have to enter it as last argument. If
-  no 00:9.99 is entered the COD shipping into foreign countries will not be calculated
-  (not possible).');  
+  define('MODULE_ORDER_TOTAL_COD_FEE_UPSE_TITLE','UPS Экспресс');
+  define('MODULE_ORDER_TOTAL_COD_FEE_UPSE_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
 
-  define('MODULE_ORDER_TOTAL_COD_FEE_TAX_CLASS_TITLE','Taxclass');
-  define('MODULE_ORDER_TOTAL_COD_FEE_TAX_CLASS_DESC','Choose a taxclass.');
+  define('MODULE_ORDER_TOTAL_COD_FEE_FREE_TITLE','Бесплатная доставка (Модуль итого Бесплатная доставка)');
+  define('MODULE_ORDER_TOTAL_COD_FEE_FREE_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');
+  
+  define('MODULE_ORDER_TOTAL_FREEAMOUNT_FREE_TITLE','Бесплатная доставка (Модуль доставки Бесплатная доставка)');
+  define('MODULE_ORDER_TOTAL_FREEAMOUNT_FREE_DESC','&lt;Код страны ISO2&gt;:&lt;Стоимость&gt;, ....<br />
+  Если указать 00, то доставка разрешена во все страны. 00 нужно указывать в качестве последнего аргумента. Если не указано 00:9.99, доставка в зарубежные страны считаться не будет (невозможно).');  
+
+  define('MODULE_ORDER_TOTAL_COD_FEE_TAX_CLASS_TITLE','Налог');
+  define('MODULE_ORDER_TOTAL_COD_FEE_TAX_CLASS_DESC','Выберите налог.');
 ?>
