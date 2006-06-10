@@ -25,7 +25,7 @@ define('TABLE_HEADING_ACTION', 'Действие');
 define('TEXT_DATE_ACCOUNT_CREATED', 'Аккаунт создан:');
 define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'Последние изменения:');
 define('TEXT_INFO_DATE_LAST_LOGON', 'Последний вход:');
-define('TEXT_INFO_NUMBER_OF_LOGONS', 'Ко-во входов:');
+define('TEXT_INFO_NUMBER_OF_LOGONS', 'Количество входов:');
 define('TEXT_INFO_COUNTRY', 'Страна:');
 define('TEXT_INFO_NUMBER_OF_REVIEWS', 'Кол-во отзывов:');
 define('TEXT_DELETE_INTRO', 'Вы действительно желаете удалить этого клиента?');
