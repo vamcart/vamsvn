@@ -40,7 +40,7 @@ define('TABLE_HEADING_NEW_VALUE','Новый статус');
 define('TABLE_HEADING_DATE_ADDED','Дата');
 define('TEXT_NO_CUSTOMER_HISTORY','-пока нет изменений-');
 define('TABLE_HEADING_GROUPIMAGE','Иконка');
-define('ENTRY_MEMO','Память');
+define('ENTRY_MEMO','Заметки:');
 define('TEXT_DATE','Дата');
 define('TEXT_TITLE','Заголовок');
 define('TEXT_POSTER','Объявление');
