@@ -43,7 +43,7 @@ define('TABLE_HEADING_GROUPIMAGE','Иконка');
 define('ENTRY_MEMO','Заметки:');
 define('TEXT_DATE','Дата');
 define('TEXT_TITLE','Заголовок');
-define('TEXT_POSTER','Объявление');
+define('TEXT_POSTER','Заметка');
 define('ENTRY_PASSWORD_CUSTOMER','Пароль:');
 define('TEXT_SELECT','-Выберите-');
 define('TABLE_HEADING_ACCOUNT_TYPE','Аккаунт');
