@@ -327,9 +327,9 @@ define('TEXT_NETTO','без налогов.');
 
 define('ENTRY_CID','ID клиентов:');
 define('IP','IP заказа:');
-define('CUSTOMERS_MEMO','Memos:');
+define('CUSTOMERS_MEMO','Заметки заказа:');
 define('DISPLAY_MEMOS','Показать/написать');
-define('TITLE_MEMO','MEMO клиента');
+define('TITLE_MEMO','Заметки');
 define('ENTRY_LANGUAGE','Язык:');
 define('CATEGORIE_NOT_FOUND','Категория не найдена!');
 
