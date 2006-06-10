@@ -442,7 +442,7 @@ define('ENTRY_VAT_TEXT','* только для Германии и стран Евросоюза');
 define('ENTRY_VAT_ERROR', 'Выбранный VatID неверный! Укажите правильно ID или оставьте данное поле пустым.');
 define('MSRP','MSRP');
 define('YOUR_PRICE','Ваша цена ');
-define('ONLY',' только ');
+define('ONLY',' всего ');
 define('FROM','от ');
 define('YOU_SAVE','Вы экономите ');
 define('INSTEAD','вместо ');
