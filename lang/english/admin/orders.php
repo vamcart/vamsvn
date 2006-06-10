@@ -120,5 +120,6 @@ define('TEXT_VALIDATING','Not validated');
 
 define('TEXT_NUMBER',' Nr.: ');
 define('TABLE_HEADING_NUMBER','Nr');
+define('TEXT_PRODUCTS',' Products ');
 
 ?>
