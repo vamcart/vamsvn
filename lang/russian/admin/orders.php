@@ -38,7 +38,7 @@ define('HEADING_TITLE_STATUS', 'Состояние:');
 
 define('TABLE_HEADING_COMMENTS', 'Комментарий');
 define('TABLE_HEADING_CUSTOMERS', 'Клиенты');
-define('TABLE_HEADING_ORDER_TOTAL', 'Заказ итого');
+define('TABLE_HEADING_ORDER_TOTAL', 'Сумма заказа');
 define('TABLE_HEADING_DATE_PURCHASED', 'Дата покупки');
 define('TABLE_HEADING_STATUS', 'Состояние');
 define('TABLE_HEADING_ACTION', 'Действие');
@@ -115,4 +115,10 @@ define('TABLE_HEADING_DISCOUNT','Скидка');
 define('ENTRY_CUSTOMERS_GROUP','Группа клиентов:');
 define('ENTRY_CUSTOMERS_VAT_ID','VAT-ID:');
 define('TEXT_VALIDATING','Не проверен');
+
+// VaM сборка
+
+define('TEXT_NUMBER',', заказ номер ');
+define('TABLE_HEADING_NUMBER','Номер');
+
 ?>
