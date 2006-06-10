@@ -115,4 +115,10 @@ define('TABLE_HEADING_DISCOUNT','Discount');
 define('ENTRY_CUSTOMERS_GROUP','Customers Group:');
 define('ENTRY_CUSTOMERS_VAT_ID','VAT-ID:');
 define('TEXT_VALIDATING','Not validated');
+
+// VaM сборка
+
+define('TEXT_NUMBER',' Nr.: ');
+define('TABLE_HEADING_NUMBER','Nr');
+
 ?>

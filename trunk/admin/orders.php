@@ -196,7 +196,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr> 
     <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_customers.gif'); ?></td>
-    <td class="pageHeading"><?php echo HEADING_TITLE . ' Nr : ' . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
+    <td class="pageHeading"><?php echo HEADING_TITLE . TEXT_NUMBER . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
   </tr>
   <tr> 
     <td class="main" valign="top">XT Customers</td>
@@ -630,7 +630,7 @@ elseif ($_GET['action'] == 'custom_action') {
             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_CUSTOMERS; ?></td>
-                <td class="dataTableHeadingContent" align="right"><?php echo 'Nr'; ?></td>
+                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_NUMBER; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ORDER_TOTAL; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_DATE_PURCHASED; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_STATUS; ?></td>

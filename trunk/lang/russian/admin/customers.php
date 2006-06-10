@@ -20,9 +20,9 @@ define('HEADING_TITLE_SEARCH', 'Поиск:');
 
 define('TABLE_HEADING_FIRSTNAME', 'Имя');
 define('TABLE_HEADING_LASTNAME', 'Фамилия');
-define('TABLE_HEADING_ACCOUNT_CREATED', 'Аккаунт создан');
+define('TABLE_HEADING_ACCOUNT_CREATED', 'Дата регистрации');
 define('TABLE_HEADING_ACTION', 'Действие');
-define('TEXT_DATE_ACCOUNT_CREATED', 'Аккаунт создан:');
+define('TEXT_DATE_ACCOUNT_CREATED', 'Дата регистрации:');
 define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'Последние изменения:');
 define('TEXT_INFO_DATE_LAST_LOGON', 'Последний вход:');
 define('TEXT_INFO_NUMBER_OF_LOGONS', 'Количество входов:');
@@ -46,11 +46,11 @@ define('TEXT_TITLE','Заголовок');
 define('TEXT_POSTER','Автор');
 define('ENTRY_PASSWORD_CUSTOMER','Пароль:');
 define('TEXT_SELECT','-Выберите-');
-define('TABLE_HEADING_ACCOUNT_TYPE','Аккаунт');
+define('TABLE_HEADING_ACCOUNT_TYPE','Зарегистрирован');
 define('TEXT_ACCOUNT','Да');
 define('TEXT_GUEST','Нет');
 define('NEW_ORDER','Новый заказ');
-define('ENTRY_PAYMENT_UNALLOWED','Недопустимый модуль оплаты:');
-define('ENTRY_SHIPPING_UNALLOWED','Недопустимый модуль доставки:');
+define('ENTRY_PAYMENT_UNALLOWED','Запрещённые модули оплаты:');
+define('ENTRY_SHIPPING_UNALLOWED','Запрещённые модули доставки:');
 define('ENTRY_NEW_PASSWORD','Новый пароль:');
 ?>
