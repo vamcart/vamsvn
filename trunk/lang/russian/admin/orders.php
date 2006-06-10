@@ -33,8 +33,8 @@ define('TEXT_BANK_ERROR_9', 'No account number given!');
 define('TEXT_BANK_ERRORCODE', 'Код ошибки:');
 
 define('HEADING_TITLE', 'Список заказов');
-define('HEADING_TITLE_SEARCH', 'Поиск по ID заказа');
-define('HEADING_TITLE_STATUS', 'Состояние:');
+define('HEADING_TITLE_SEARCH', 'Поиск по номеру заказа');
+define('HEADING_TITLE_STATUS', 'Статус:');
 
 define('TABLE_HEADING_COMMENTS', 'Комментарий');
 define('TABLE_HEADING_CUSTOMERS', 'Клиенты');
