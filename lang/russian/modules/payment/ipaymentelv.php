@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ipaymentelv.php 998 2005-07-07 14:18:20Z mz $
+   $Id: ipaymentelv.php 998 2005-07-07 14:18:20Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -57,14 +57,14 @@ define('MODULE_PAYMENT_IPAYMENTELV_URL_NOTE_TITLE' , 'Fax-URL');
 define('MODULE_PAYMENT_IPAYMENTELV_URL_NOTE_DESC' , 'Die Fax-Best&auml;tigungsdatei. Diese muss im Catalog-Verzeichnis liegen');
 define('MODULE_PAYMENT_IPAYMENTELV_FAX_CONFIRMATION_TITLE' , 'Fax Best&auml;tigung erlauben');
 define('MODULE_PAYMENT_IPAYMENTELV_FAX_CONFIRMATION_DESC' , 'M&ouml;chten Sie die Fax Best&auml;tigung erlauben?');
-define('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER_TITLE' , 'Anzeigereihenfolge');
-define('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER_DESC' , 'Reihenfolge der Anzeige. Kleinste Ziffer wird zuerst angezeigt.');
-define('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID_TITLE' , 'Bestellstatus festlegen');
-define('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID_DESC' , 'Bestellungen, welche mit diesem Modul gemacht werden, auf diesen Status setzen');
-define('MODULE_PAYMENT_IPAYMENTELV_ZONE_TITLE' , 'Zahlungszone');
-define('MODULE_PAYMENT_IPAYMENTELV_ZONE_DESC' , 'Wenn eine Zone ausgew&auml;hlt ist, gilt die Zahlungsmethode nur f&uuml;r diese Zone.');
-define('MODULE_PAYMENT_IPAYMENTELV_ALLOWED_TITLE' , 'Erlaubte Zonen');
-define('MODULE_PAYMENT_IPAYMENTELV_ALLOWED_DESC' , 'Geben Sie <b>einzeln</b> die Zonen an, welche f&uuml;r dieses Modul erlaubt sein sollen. (z.B. AT,DE (wenn leer, werden alle Zonen erlaubt))');
+define('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER_TITLE' , 'ѕор€док сортировки');
+define('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER_DESC' , 'ѕор€док сортировки модул€.');
+define('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID_TITLE' , '—татус заказа');
+define('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID_DESC' , '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
+define('MODULE_PAYMENT_IPAYMENTELV_ZONE_TITLE' , '«она');
+define('MODULE_PAYMENT_IPAYMENTELV_ZONE_DESC' , '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
+define('MODULE_PAYMENT_IPAYMENTELV_ALLOWED_TITLE' , '–азрешЄнные страны');
+define('MODULE_PAYMENT_IPAYMENTELV_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 define('MODULE_PAYMENT_IPAYMENTELV_ID_TITLE' , 'Kundennummer');
 define('MODULE_PAYMENT_IPAYMENTELV_ID_DESC' , 'Kundennummer, welche f&uuml;r iPayment verwendet wird');
 define('MODULE_PAYMENT_IPAYMENTELV_STATUS_TITLE' , 'iPayment Modul aktivieren');

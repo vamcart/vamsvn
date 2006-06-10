@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: qenta.php
+   $Id: qenta.php 998 2005-07-07 14:18:20Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -34,14 +34,14 @@ define('MODULE_PAYMENT_QENTA_TEXT_INFO','');
   define('MODULE_PAYMENT_QENTA_IMAGEURL_DESC','Enter the image URL of your logo you want to add to your qenta-pamentsite. Mak shure your image exists');
   define('MODULE_PAYMENT_QENTA_SECRET_TITLE','Secret');
   define('MODULE_PAYMENT_QENTA_SECRET_DESC','Enter the secret string you confirmed with qenta for the fingerprint-hash.');
-  define('MODULE_PAYMENT_QENTA_SORT_ORDER_TITLE','Sort order of display.');
-  define('MODULE_PAYMENT_QENTA_SORT_ORDER_DESC','Sort order of display. Lowest is displayed first.');
+  define('MODULE_PAYMENT_QENTA_SORT_ORDER_TITLE','Порядок сортировки');
+  define('MODULE_PAYMENT_QENTA_SORT_ORDER_DESC','Порядок сортировки модуля.');
   define('MODULE_PAYMENT_QENTA_CURRENCY_TITLE','Transaction Currency');
   define('MODULE_PAYMENT_QENTA_CURRENCY_DESC','Select the default currency for the payment transactions. If the user selected currency is not available at moneybookers.com, this currency will be the payment currency.');
   define('MODULE_PAYMENT_QENTA_LANGUAGE_TITLE','Transaction Language');
   define('MODULE_PAYMENT_QENTA_LANGUAGE_DESC','Select the default language for the payment transactions. If the user selected language is not available at moneybookers.com, this currency will be the payment language.');
-  define('MODULE_PAYMENT_QENTA_ZONE_TITLE','Payment Zone');
-  define('MODULE_PAYMENT_QENTA_ZONE_DESC','If a zone is selected, only enable this payment method for that zone.');
-  define('MODULE_PAYMENT_QENTA_ORDER_STATUS_ID_TITLE','Set Order Status');
-  define('MODULE_PAYMENT_QENTA_ORDER_STATUS_ID_DESC','Set the status of orders made with this payment module to this value');
+  define('MODULE_PAYMENT_QENTA_ZONE_TITLE','Зона');
+  define('MODULE_PAYMENT_QENTA_ZONE_DESC','Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
+  define('MODULE_PAYMENT_QENTA_ORDER_STATUS_ID_TITLE','Статус заказа');
+  define('MODULE_PAYMENT_QENTA_ORDER_STATUS_ID_DESC','Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
   ?>

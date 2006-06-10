@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: worldpay.php,v 1.0
+   $Id: worldpay.php,v 1.0 998 2005-07-07 14:18:20Z VaM $
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
 
@@ -50,22 +50,22 @@ define('MODULE_PAYMENT_WORLDPAY_TEXT_INFO','');
   define('MODULE_PAYMENT_WORLDPAY_MD5KEY_TITLE', 'Use MD5');
   define('MODULE_PAYMENT_WORLDPAY_MD5KEY_DESC', 'Use MD5 encyption for transactions? (1 = Yes, 0 = No)');
 
-  define('MODULE_PAYMENT_WORLDPAY_SORT_ORDER_TITLE', 'Sort order of display.');
-  define('MODULE_PAYMENT_WORLDPAY_SORT_ORDER_DESC', 'Sort order of display. Lowest is displayed first.');
+  define('MODULE_PAYMENT_WORLDPAY_SORT_ORDER_TITLE', 'ѕор€док сортировки');
+  define('MODULE_PAYMENT_WORLDPAY_SORT_ORDER_DESC', 'ѕор€док сортировки модул€.');
 
   define('MODULE_PAYMENT_WORLDPAY_USEPREAUTH_TITLE', 'Use Pre-Authorisation?');
   define('MODULE_PAYMENT_WORLDPAY_USEPREAUTH_DESC', 'Do you want to pre-authorise payments? Default=False. You need to request this from WorldPay before using it.');
 
-  define('MODULE_PAYMENT_WORLDPAY_ORDER_STATUS_ID_TITLE', 'Set Order Status');
-  define('MODULE_PAYMENT_WORLDPAY_ORDER_STATUS_ID_DESC', 'Set the status of orders made with this payment module to this value');
+  define('MODULE_PAYMENT_WORLDPAY_ORDER_STATUS_ID_TITLE', '—татус заказа');
+  define('MODULE_PAYMENT_WORLDPAY_ORDER_STATUS_ID_DESC', '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
 
   define('MODULE_PAYMENT_WORLDPAY_PREAUTH_TITLE', 'Pre-Auth');
   define('MODULE_PAYMENT_WORLDPAY_PREAUTH_DESC', 'The mode you are working in (A = Pay Now, E = Pre Auth). Ignored if Use PreAuth is False.');
 
-  define('MODULE_PAYMENT_WORLDPAY_ZONE_TITLE', 'Payment Zone');
-  define('MODULE_PAYMENT_WORLDPAY_ZONE_DESC', 'If a zone is selected, only enable this payment method for that zone.');
+  define('MODULE_PAYMENT_WORLDPAY_ZONE_TITLE', '«она');
+  define('MODULE_PAYMENT_WORLDPAY_ZONE_DESC', '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
 
-define('MODULE_PAYMENT_WORLDPAY_ALLOWED_TITLE' , 'Erlaubte Zonen');
-define('MODULE_PAYMENT_WORLDPAY_ALLOWED_DESC' , 'Geben Sie <b>einzeln</b> die Zonen an, welche f&uuml;r dieses Modul erlaubt sein sollen. (z.B. AT,DE (wenn leer, werden alle Zonen erlaubt))');
+define('MODULE_PAYMENT_WORLDPAY_ALLOWED_TITLE' , '–азрешЄнные страны');
+define('MODULE_PAYMENT_WORLDPAY_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 
 ?>

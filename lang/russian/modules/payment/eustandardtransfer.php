@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: eustandardtransfer.php 998 2005-07-07 14:18:20Z mz $
+   $Id: eustandardtransfer.php 998 2005-07-07 14:18:20Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -48,11 +48,11 @@ define('MODULE_PAYMENT_EUTRANSFER_TEXT_INFO','');
   define('MODULE_PAYMENT_EUTRANSFER_BANKBIC_TITLE','Bank Bic');
   define('MODULE_PAYMENT_EUTRANSFER_BANKBIC_DESC','International bank id.<br />(ask your bank if you don\'t know it)');
 
-  define('MODULE_PAYMENT_EUTRANSFER_SORT_ORDER_TITLE','Module Sort order of display.');
-  define('MODULE_PAYMENT_EUTRANSFER_SORT_ORDER_DESC','Sort order of display. Lowest is displayed first.');
+  define('MODULE_PAYMENT_EUTRANSFER_SORT_ORDER_TITLE','ѕор€док сортировки');
+  define('MODULE_PAYMENT_EUTRANSFER_SORT_ORDER_DESC','ѕор€док сортировки модул€.');
 
-  define('MODULE_PAYMENT_EUSTANDARDTRANSFER_ALLOWED_TITLE' , 'Erlaubte Zonen');
- define('MODULE_PAYMENT_EUSTANDARDTRANSFER_ALLOWED_DESC' , 'Geben Sie <b>einzeln</b> die Zonen an, welche f&uuml;r dieses Modul erlaubt sein sollen. (z.B. AT,DE (wenn leer, werden alle Zonen erlaubt))');
+  define('MODULE_PAYMENT_EUSTANDARDTRANSFER_ALLOWED_TITLE' , '–азрешЄнные страны');
+ define('MODULE_PAYMENT_EUSTANDARDTRANSFER_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 
 
 ?>

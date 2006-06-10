@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ipayment.php 998 2005-07-07 14:18:20Z mz $   
+   $Id: ipayment.php 998 2005-07-07 14:18:20Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -28,8 +28,8 @@ define('MODULE_PAYMENT_IPAYMENT_TEXT_INFO','');
   define('MODULE_PAYMENT_IPAYMENT_TEXT_JS_CC_OWNER', '* The owner\'s name of the credit card must be at least ' . CC_OWNER_MIN_LENGTH . ' characters.\n');
   define('MODULE_PAYMENT_IPAYMENT_TEXT_JS_CC_NUMBER', '* The credit card number must be at least ' . CC_NUMBER_MIN_LENGTH . ' characters.\n');
 
-  define('MODULE_PAYMENT_IPAYMENT_ALLOWED_TITLE' , 'Allowed Zones');
-define('MODULE_PAYMENT_IPAYMENT_ALLOWED_DESC' , 'Please enter the zones <b>separately</b> which should be allowed to use this modul (e. g. AT,DE (leave empty if you want to allow all zones))');
+  define('MODULE_PAYMENT_IPAYMENT_ALLOWED_TITLE' , '–азрешЄнные страны');
+define('MODULE_PAYMENT_IPAYMENT_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 define('MODULE_PAYMENT_IPAYMENT_ID_TITLE' , 'Account Number');
 define('MODULE_PAYMENT_IPAYMENT_ID_DESC' , 'The account number used for the iPayment service');
 define('MODULE_PAYMENT_IPAYMENT_STATUS_TITLE' , 'Enable iPayment Module');
@@ -40,10 +40,10 @@ define('MODULE_PAYMENT_IPAYMENT_USER_ID_TITLE' , 'User ID');
 define('MODULE_PAYMENT_IPAYMENT_USER_ID_DESC' , 'The user ID for the iPayment service');
 define('MODULE_PAYMENT_IPAYMENT_CURRENCY_TITLE' , 'Transaction Currency');
 define('MODULE_PAYMENT_IPAYMENT_CURRENCY_DESC' , 'The currency to use for credit card transactions');
-define('MODULE_PAYMENT_IPAYMENT_SORT_ORDER_TITLE' , 'Sort order of display');
-define('MODULE_PAYMENT_IPAYMENT_SORT_ORDER_DESC' , 'Sort order of display. Lowest is displayed first.');
-define('MODULE_PAYMENT_IPAYMENT_ZONE_TITLE' , 'Payment Zone');
-define('MODULE_PAYMENT_IPAYMENT_ZONE_DESC' , 'If a zone is selected, only enable this payment method for that zone.');
-define('MODULE_PAYMENT_IPAYMENT_ORDER_STATUS_ID_TITLE' , 'Set Order Status');
-define('MODULE_PAYMENT_IPAYMENT_ORDER_STATUS_ID_DESC' , 'Set the status of orders made with this payment module to this value');
+define('MODULE_PAYMENT_IPAYMENT_SORT_ORDER_TITLE' , 'ѕор€док сортировки');
+define('MODULE_PAYMENT_IPAYMENT_SORT_ORDER_DESC' , 'ѕор€док сортировки модул€.');
+define('MODULE_PAYMENT_IPAYMENT_ZONE_TITLE' , '«она');
+define('MODULE_PAYMENT_IPAYMENT_ZONE_DESC' , '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
+define('MODULE_PAYMENT_IPAYMENT_ORDER_STATUS_ID_TITLE' , '—татус заказа');
+define('MODULE_PAYMENT_IPAYMENT_ORDER_STATUS_ID_DESC' , '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
 ?>

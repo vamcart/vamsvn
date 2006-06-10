@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: iclear.php 998 2005-07-07 14:18:20Z mz $   
+   $Id: iclear.php 998 2005-07-07 14:18:20Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -54,12 +54,12 @@ define('MODULE_PAYMENT_ICLEAR_ALLOWED_DESC' , 'Geben Sie <b>einzeln</b> die Zone
       define('MODULE_PAYMENT_ICLEAR_ID_TITLE', 'Merchant ID');
       define('MODULE_PAYMENT_ICLEAR_ID_DESC', 'Your merchant ID at EuroCoin iclear.');
 
-      define('MODULE_PAYMENT_ICLEAR_SORT_ORDER_TITLE', 'Reihenfolge der Anzeige.');
-      define('MODULE_PAYMENT_ICLEAR_SORT_ORDER_DESC', 'Niedrigste wird zuerst angezeigt.');
+      define('MODULE_PAYMENT_ICLEAR_SORT_ORDER_TITLE', 'Порядок сортировки');
+      define('MODULE_PAYMENT_ICLEAR_SORT_ORDER_DESC', 'Порядок сортировки модуля.');
 
-      define('MODULE_PAYMENT_ICLEAR_ZONE_TITLE', 'Zone fьr diese Zahlungsweise');
-      define('MODULE_PAYMENT_ICLEAR_ZONE_DESC', 'Wenn Sie eine Zone auswдhlen, wird diese Zahlungsweise nur in dieser Zone angeboten.');
+      define('MODULE_PAYMENT_ICLEAR_ZONE_TITLE', 'Зона');
+      define('MODULE_PAYMENT_ICLEAR_ZONE_DESC', 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
 
-      define('MODULE_PAYMENT_ICLEAR_ORDER_STATUS_ID_TITLE', 'Order Status');
-      define('MODULE_PAYMENT_ICLEAR_ORDER_STATUS_ID_DESC', 'Festlegung des Status fьr Bestellungen, welche mit dieser Zahlungsweise durchgefьhrt werden.');
+      define('MODULE_PAYMENT_ICLEAR_ORDER_STATUS_ID_TITLE', 'Статус заказа');
+      define('MODULE_PAYMENT_ICLEAR_ORDER_STATUS_ID_DESC', 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
 ?>

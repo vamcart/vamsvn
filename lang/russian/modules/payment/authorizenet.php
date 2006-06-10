@@ -1,7 +1,7 @@
 <?php
 
 /* -----------------------------------------------------------------------------------------
-   $Id: authorizenet.php 1003 2005-07-10 18:58:52Z mz $   
+   $Id: authorizenet.php 1003 2005-07-10 18:58:52Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -16,16 +16,16 @@
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------*/
 define('MODULE_PAYMENT_TYPE_PERMISSION', 'cod');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_TITLE', 'Authorize.net');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_DESCRIPTION', 'Credit Card Test Info:<br /><br />CC#: 4111111111111111<br />Expiry: Any');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_TYPE', 'Type:');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_OWNER', 'Credit Card Owner:');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_NUMBER', 'Credit Card Number:');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_EXPIRES', 'Credit Card Expiry Date:');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_JS_CC_OWNER', '* The owner\'s name of the credit card must be at least  '.CC_OWNER_MIN_LENGTH.' characters.\n');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_JS_CC_NUMBER', '* The credit card number must be at least '.CC_NUMBER_MIN_LENGTH.' characters.\n');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_ERROR_MESSAGE', 'There has been an error processing your credit card. Please try again.');
-define('MODULE_PAYMENT_AUTHORIZENET_TEXT_DECLINED_MESSAGE', 'Your credit card was declined. Please try another card or contact your bank for more info.');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_TITLE', 'Authorize.net');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_DESCRIPTION', 'Информация о кредитной карточке для теста:<br><br>Номер карточки: 4111111111111111<br>Действительна до: Любая дата');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_TYPE', 'Тип:');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_OWNER', 'Владелец кредитной карточки:');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_NUMBER', 'Номер кредитной карточки:');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_EXPIRES', 'Действительна до:');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_JS_CC_OWNER', '* Имя владельца кредитной карточки должно содержать по крайней мере ' . CC_OWNER_MIN_LENGTH . ' символов.\n');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_JS_CC_NUMBER', '* Номер кредитной карточки должен быть по крайней мере ' . CC_NUMBER_MIN_LENGTH . ' символов.\n');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_ERROR_MESSAGE', 'Ошибка при обработке Вашей кредитной карточки, пожалуйста, попытайтесь снова.');
+  define('MODULE_PAYMENT_AUTHORIZENET_TEXT_DECLINED_MESSAGE', 'Ваша кредитная карточка недействительна. Попробуйте воспользоваться другой кредитной карточкой.');
 define('MODULE_PAYMENT_AUTHORIZENET_TEXT_ERROR', 'Credit Card Error!');
 define('MODULE_PAYMENT_AUTHORIZENET_TEXT_INFO', '');
 define('TEXT_CCVAL_ERROR_INVALID_DATE', 'The "valid to" date ist invalid.<br />Please correct your information.');
@@ -44,13 +44,13 @@ define('MODULE_PAYMENT_AUTHORIZENET_STATUS_TITLE', 'Enable Authorize.net Module'
 define('MODULE_PAYMENT_AUTHORIZENET_STATUS_DESC', 'Do you want to accept Authorize.net payments?');
 define('MODULE_PAYMENT_AUTHORIZENET_LOGIN_TITLE', 'Login Username');
 define('MODULE_PAYMENT_AUTHORIZENET_LOGIN_DESC', 'The login username used for the Authorize.net service');
-define('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID_TITLE', 'Set Order Status');
-define('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID_DESC', 'Set the status of orders made with this payment module to this value');
-define('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER_TITLE', 'Sort order of display.');
-define('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER_DESC', 'Sort order of display. Lowest is displayed first.');
-define('MODULE_PAYMENT_AUTHORIZENET_ZONE_TITLE', 'Payment Zone');
-define('MODULE_PAYMENT_AUTHORIZENET_ZONE_DESC', 'If a zone is selected, only enable this payment method for that zone.');
-define('MODULE_PAYMENT_AUTHORIZENET_ALLOWED_TITLE', 'Allowed zones');
-define('MODULE_PAYMENT_AUTHORIZENET_ALLOWED_DESC', 'Please enter the zones <b>separately</b> which should be allowed to use this module (e. g. AT,DE (leave empty if you want to allow all zones))');
+define('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID_TITLE', 'Статус заказа');
+define('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID_DESC', 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
+define('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER_TITLE', 'Порядок сортировки');
+define('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER_DESC', 'Порядок сортировки модуля.');
+define('MODULE_PAYMENT_AUTHORIZENET_ZONE_TITLE', 'Зона');
+define('MODULE_PAYMENT_AUTHORIZENET_ZONE_DESC', 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
+define('MODULE_PAYMENT_AUTHORIZENET_ALLOWED_TITLE', 'Разрешённые страны');
+define('MODULE_PAYMENT_AUTHORIZENET_ALLOWED_DESC', 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 ?>
 
