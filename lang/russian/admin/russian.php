@@ -327,7 +327,7 @@ define('TEXT_NETTO','без налогов.');
 
 define('ENTRY_CID','ID клиентов:');
 define('IP','IP заказа:');
-define('CUSTOMERS_MEMO','Заметки заказа:');
+define('CUSTOMERS_MEMO','Заметки:');
 define('DISPLAY_MEMOS','Показать/написать');
 define('TITLE_MEMO','Заметки');
 define('ENTRY_LANGUAGE','Язык:');
