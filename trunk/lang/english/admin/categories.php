@@ -190,6 +190,7 @@ define('HEADING_GROUP','Group');
 // Добавлено VaM сборка
 
 define('IMAGE_ICON_STATUS_GREEN', 'Active');
+define('IMAGE_ICON_STATUS_GREEN_STOCK', 'in stock');
 define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Set Active');
 define('IMAGE_ICON_STATUS_RED', 'Inactive');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Set Inactive');

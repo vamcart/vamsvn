@@ -34,7 +34,7 @@ define('TEXT_INFORMATIONS','Информация');
 define('TEXT_MARKED_ELEMENTS','Отмеченные элементы');
 define('TEXT_INSERT_ELEMENT','Новый элемент');
 
-define('TEXT_WARN_MAIN','Главное');
+define('TEXT_WARN_MAIN','Основной');
 define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
 define('TEXT_CATEGORIES', 'Категории:');
 define('TEXT_PRODUCTS', 'Товары:');
@@ -190,6 +190,7 @@ define('HEADING_GROUP','Группа');
 // Добавлено VaM сборка
 
 define('IMAGE_ICON_STATUS_GREEN', 'Активна');
+define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
 define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
 define('IMAGE_ICON_STATUS_RED', 'Неактивна');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
