@@ -1,11 +1,11 @@
 
-Thank you for your subscription
+Спасибо!
 
-You receive this Mail because you want to receive our newsletter. 
-Please you click on the activation link to activate this service. If you should 
-not have registered yourselves in newsletter and/or the receipt of the Newsletters 
-is not wanted, we wish you to do nothing. Your address is then deleted automatically 
-with the next actualization of the data base.
+Вы подписались на почтовую рассылку. 
+Пожалуйста, перейдите по ссылке активации и активируйте Вашу подписку. Если Вы не 
+подписывались на получение нашей почтовой рассылки, либо Вы не хотите 
+её получать, просто не открывайте ссылку активации. Ваш адрес будет автоматически 
+удалён из списка подписчиков.
       
-Your activation-link:
+Ссылка активации рассылки:
 {$LINK}

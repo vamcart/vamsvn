@@ -1,25 +1,25 @@
 
 {$address_label_customer}
 
-{if $PAYMENT_METHOD}Paymentmethod: {$PAYMENT_METHOD}{/if}
-Order Nr.: {$oID}
-Date: {$DATE}
-{if $csID}Customer ID :{$csID}{/if}
+{if $PAYMENT_METHOD}Способ оплаты: {$PAYMENT_METHOD}{/if}
+Номер заказа: {$oID}
+Дата: {$DATE}
+{if $csID}Код покупателя:{$csID}{/if}
 ----------------------------------------------------------------------
 
 
-Dear {$NAME},
+Уважаемый {$NAME}!
 
-This is just a standard text
+Вы оформили заказ в нашем интернет-магазине.
 
 {$PAYMENT_INFO_TXT}
 
 {if $COMMENTS}
-Your Comments:
+Ваши комментарии:
 {$COMMENTS}
 {/if}
 
-Your ordered following products
+Вы заказали следующие товары
 ----------------------------------------------------------------------
 {foreach name=aussen item=order_values from=$order_data} 
 {$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
@@ -33,10 +33,10 @@ Your ordered following products
 
 
 {if $address_label_payment}
-Paymentaddress
+Адрес покупателя
 ----------------------------------------------------------------------
 {$address_label_payment}
 {/if}
-Shippingaddress 
+Адрес доставки
 ----------------------------------------------------------------------
 {$address_label_shipping}
