@@ -727,9 +727,9 @@ elseif ($_GET['action'] == 'custom_action') {
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$oInfo->payment_method);
 				// elari added to display product list for selected order
 				$order = new order($oInfo->orders_id);
-				$contents[] = array ('text' => '<br /><br />'.sizeof($order->products).' Products ');
+				$contents[] = array ('text' => '<br /><br />'.sizeof($order->products).TEXT_PRODUCTS);
 				for ($i = 0; $i < sizeof($order->products); $i ++) {
-					$contents[] = array ('text' => $order->products[$i]['qty'].'&nbsp;x'.$order->products[$i]['name']);
+					$contents[] = array ('text' => $order->products[$i]['qty'].'&nbsp;x&nbsp;'.$order->products[$i]['name']);
 
 					if (sizeof($order->products[$i]['attributes']) > 0) {
 						for ($j = 0; $j < sizeof($order->products[$i]['attributes']); $j ++) {

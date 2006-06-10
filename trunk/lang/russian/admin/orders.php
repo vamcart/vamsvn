@@ -120,5 +120,6 @@ define('TEXT_VALIDATING','Не проверен');
 
 define('TEXT_NUMBER',', заказ номер ');
 define('TABLE_HEADING_NUMBER','Номер');
+define('TEXT_PRODUCTS',' товар (ов) ');
 
 ?>
