@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: banktransfer.php 998 2005-07-07 14:18:20Z mz $   
+   $Id: banktransfer.php 998 2005-07-07 14:18:20Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -57,14 +57,14 @@ define('MODULE_PAYMENT_BANKTRANSFER_URL_NOTE_TITLE' , 'Fax-URL');
 define('MODULE_PAYMENT_BANKTRANSFER_URL_NOTE_DESC' , 'The fax-confirmation file. It must located in catalog-dir');
 define('MODULE_PAYMENT_BANKTRANSFER_FAX_CONFIRMATION_TITLE' , 'Allow Fax Confirmation');
 define('MODULE_PAYMENT_BANKTRANSFER_FAX_CONFIRMATION_DESC' , 'Do you want to allow fax confirmation?');
-define('MODULE_PAYMENT_BANKTRANSFER_SORT_ORDER_TITLE' , 'Sort order of display');
-define('MODULE_PAYMENT_BANKTRANSFER_SORT_ORDER_DESC' , 'Sort order of display. Lowest is displayed first.');
-define('MODULE_PAYMENT_BANKTRANSFER_ORDER_STATUS_ID_TITLE' , 'Set Order Status');
-define('MODULE_PAYMENT_BANKTRANSFER_ORDER_STATUS_ID_DESC' , 'Set the status of orders made with this payment module to this value');
-define('MODULE_PAYMENT_BANKTRANSFER_ZONE_TITLE' , 'Payment Zone');
-define('MODULE_PAYMENT_BANKTRANSFER_ZONE_DESC' , 'If a zone is selected, only enable this payment method for that zone.');
-define('MODULE_PAYMENT_BANKTRANSFER_ALLOWED_TITLE' , 'Allowed Zones');
-define('MODULE_PAYMENT_BANKTRANSFER_ALLOWED_DESC' , 'Please enter the zones <b>separately</b> which should be allowed to use this modul (e. g. AT,DE (leave empty if you want to allow all zones))');
+define('MODULE_PAYMENT_BANKTRANSFER_SORT_ORDER_TITLE' , 'ѕор€док сортировки');
+define('MODULE_PAYMENT_BANKTRANSFER_SORT_ORDER_DESC' , 'ѕор€док сортировки модул€.');
+define('MODULE_PAYMENT_BANKTRANSFER_ORDER_STATUS_ID_TITLE' , '—татус заказа');
+define('MODULE_PAYMENT_BANKTRANSFER_ORDER_STATUS_ID_DESC' , '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
+define('MODULE_PAYMENT_BANKTRANSFER_ZONE_TITLE' , '«она');
+define('MODULE_PAYMENT_BANKTRANSFER_ZONE_DESC' , '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
+define('MODULE_PAYMENT_BANKTRANSFER_ALLOWED_TITLE' , '–азрешЄнные страны');
+define('MODULE_PAYMENT_BANKTRANSFER_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 define('MODULE_PAYMENT_BANKTRANSFER_STATUS_TITLE' , 'Allow Banktransfer Payments');
 define('MODULE_PAYMENT_BANKTRANSFER_STATUS_DESC' , 'Do you want to accept banktransfer payments?');
 define('MODULE_PAYMENT_BANKTRANSFER_MIN_ORDER_TITLE' , 'Minimum Orders');

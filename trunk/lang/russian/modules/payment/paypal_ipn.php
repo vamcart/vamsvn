@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: paypal_ipn.php v1.0 998 2005-08-16 14:18:20Z HHGAG $   
+   $Id: paypal_ipn.php v1.0 998 2005-08-16 14:18:20Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -25,14 +25,14 @@ define('MODULE_PAYMENT_PAYPAL_IPN_ID_TITLE', 'EMail-Adresse');
 define('MODULE_PAYMENT_PAYPAL_IPN_ID_DESC', 'Die EMail-Adresse, die f&uuml;r PayPal-IPN-Dienste verwendet wird.');
 define('MODULE_PAYMENT_PAYPAL_IPN_CURRENCY_TITLE', 'Transaktionsw&auml;hrung');
 define('MODULE_PAYMENT_PAYPAL_IPN_CURRENCY_DESC', 'Die W&auml;hrung, die f&uuml;r die Transaktionen verwendet wird.');
-define('MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER_TITLE', 'Anzeigereihenfolge');
-define('MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER_DESC', 'Reihenfolge der Anzeige, niedrige Zahlen werden zuerst angezeigt.');
-define('MODULE_PAYMENT_PAYPAL_IPN_ZONE_TITLE', 'Zahlungszone');
-define('MODULE_PAYMENT_PAYPAL_IPN_ZONE_DESC', 'Wenn eine Zone ausgew&auml;hlt wird, wird diese Zahlungsmethode nur f&uuml;r diese Zone aktiviert.');
+define('MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER_TITLE', 'ѕор€док сортировки');
+define('MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER_DESC', 'ѕор€док сортировки модул€.');
+define('MODULE_PAYMENT_PAYPAL_IPN_ZONE_TITLE', '«она');
+define('MODULE_PAYMENT_PAYPAL_IPN_ZONE_DESC', '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
 define('MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID_TITLE', 'Vorbereitender / Offener PayPal-Bestellstatus');
 define('MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID_DESC', 'Setzt den Bestellstatus von vorbereiteten oder offenen IPN Bestellungen, die mit diesem Zahlungsmodul gemacht wurden, auf diesen Wert.');
-define('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID_TITLE', 'abgeschlossener PayPal-Bestellstatus');
-define('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID_DESC', 'Setzt den Bestellstatus von abgeschlossenen IPN Bestellungen, die mit diesem Zahlungsmodul gemacht wurden, auf diesen Wert.');
+define('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID_TITLE', '—татус заказа');
+define('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID_DESC', '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
 define('MODULE_PAYMENT_PAYPAL_IPN_DENIED_ORDER_STATUS_ID_TITLE', 'Verweigerter / R&uuml;ckgebuchter Bestellstatus');
 define('MODULE_PAYMENT_PAYPAL_IPN_DENIED_ORDER_STATUS_ID_DESC', 'Setzt den Bestellstatus von verweigerten, fehlgeschlagenen, zur&uuml;ckgebuchten oder abgebrochenen IPN Bestellungen, die mit diesem Zahlungsmodul gemacht wurden, auf diesen Wert.');
 define('MODULE_PAYMENT_PAYPAL_IPN_GATEWAY_SERVER_TITLE', 'Gateway-Server');
@@ -55,7 +55,7 @@ define('MODULE_PAYMENT_PAYPAL_IPN_EWP_WORKING_DIRECTORY_TITLE', 'Arbeitsverzeich
 define('MODULE_PAYMENT_PAYPAL_IPN_EWP_WORKING_DIRECTORY_DESC', 'Das Arbeitsverzeichnis f&uuml;r tempor&auml;re Dateien. (angeh&auml;ngter Slash n&ouml;tig)');
 define('MODULE_PAYMENT_PAYPAL_IPN_EWP_OPENSSL_TITLE', 'Ort von OpenSSL');
 define('MODULE_PAYMENT_PAYPAL_IPN_EWP_OPENSSL_DESC', 'Der Ort, wo das OpenSSL-Binary liegt.');
-define('MODULE_PAYMENT_PAYPAL_IPN_ALLOWED_TITLE' , 'Erlaubte Zonen');
-define('MODULE_PAYMENT_PAYPAL_IPN_ALLOWED_DESC' , 'Geben Sie <b>einzeln</b> die Zonen an, welche f&uuml;r dieses Modul erlaubt sein sollen. (z.B. AT,DE (wenn leer, werden alle Zonen erlaubt))');
+define('MODULE_PAYMENT_PAYPAL_IPN_ALLOWED_TITLE' , '–азрешЄнные страны');
+define('MODULE_PAYMENT_PAYPAL_IPN_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 
 ?>
