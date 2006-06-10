@@ -1,6 +1,6 @@
 <?PHP
 /* -----------------------------------------------------------------------------------------
-   $Id: selfpickup.php 899 2005-04-29 02:40:57Z hhgag $
+   $Id: selfpickup.php 899 2005-04-29 02:40:57Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -20,16 +20,16 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Self Pickup');
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_DESCRIPTION', 'Pickup By The Customer');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER', 'Sort Order');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Самовывоз');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_DESCRIPTION', 'Покупатель сам забирает свой заказ');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER', 'Порядок сортировки');
 
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Self Pickup.');
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_WAY', 'Self Pickup at our Company.');
-define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_TITLE' , 'Allowed Zones');
-define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_DESC' , 'Please enter the zones <b>separately</b> which should be allowed to use this modul (e. g. AT,DE (leave empty if you want to allow all zones))');
-define('MODULE_SHIPPING_SELFPICKUP_STATUS_TITLE', 'Enable Self Pickup');
-define('MODULE_SHIPPING_SELFPICKUP_STATUS_DESC', 'Do you want to offer pickup by the customer?');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_TITLE', 'Sort Order');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_DESC', 'Sort order of display.');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Самовывоз');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_WAY', 'Покупатель сам забирает свой заказ');
+define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_TITLE' , 'Разрешённые страны');
+define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+define('MODULE_SHIPPING_SELFPICKUP_STATUS_TITLE', 'Разрешить модуль самовывоз');
+define('MODULE_SHIPPING_SELFPICKUP_STATUS_DESC', 'Вы хотите разрешить модуль самовывоз?');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_TITLE', 'Порядок сортировки');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_DESC', 'Порядок сортировки модуля.');
 ?>

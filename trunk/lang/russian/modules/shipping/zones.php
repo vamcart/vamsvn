@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: zones.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: zones.php 899 2005-04-29 02:40:57Z VaM $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -18,28 +18,28 @@
    // CUSTOMIZE THIS SETTING
 define('NUMBER_OF_ZONES',10);
 
-define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'Zone Rates');
-define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'Zone Based Rates');
-define('MODULE_SHIPPING_ZONES_TEXT_WAY', 'Shipping to:');
-define('MODULE_SHIPPING_ZONES_TEXT_UNITS', 'lb(s)');
-define('MODULE_SHIPPING_ZONES_INVALID_ZONE', 'No shipping available to the selected country!');
-define('MODULE_SHIPPING_ZONES_UNDEFINED_RATE', 'The shipping rate cannot be determined at this time.');
+define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'Тарифы для зоны');
+define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'зональный базовый тариф');
+define('MODULE_SHIPPING_ZONES_TEXT_WAY', 'Доставка до');
+define('MODULE_SHIPPING_ZONES_TEXT_UNITS', 'Кг.');
+define('MODULE_SHIPPING_ZONES_INVALID_ZONE', 'Для выбранной страны нет возможности доставки ');
+define('MODULE_SHIPPING_ZONES_UNDEFINED_RATE', 'Стоимость пересылки сейчас не может быть определена ');
 
-define('MODULE_SHIPPING_ZONES_STATUS_TITLE' , 'Enable Zones Method');
-define('MODULE_SHIPPING_ZONES_STATUS_DESC' , 'Do you want to offer zone rate shipping?');
-define('MODULE_SHIPPING_ZONES_ALLOWED_TITLE' , 'Allowed Zones');
-define('MODULE_SHIPPING_ZONES_ALLOWED_DESC' , 'Please enter the zones <b>separately</b> which should be allowed to use this modul (e. g. AT,DE (leave empty if you want to allow all zones))');
-define('MODULE_SHIPPING_ZONES_TAX_CLASS_TITLE' , 'Tax Class');
-define('MODULE_SHIPPING_ZONES_TAX_CLASS_DESC' , 'Use the following tax class on the shipping fee.');
-define('MODULE_SHIPPING_ZONES_SORT_ORDER_TITLE' , 'Sort Order');
-define('MODULE_SHIPPING_ZONES_SORT_ORDER_DESC' , 'Sort order of display.');
+define('MODULE_SHIPPING_ZONES_STATUS_TITLE' , 'Разрешить модуль тарифы для зоны');
+define('MODULE_SHIPPING_ZONES_STATUS_DESC' , 'Вы хотите разрешить модуль тарифы для зоны?');
+define('MODULE_SHIPPING_ZONES_ALLOWED_TITLE' , 'Разрешённые страны');
+define('MODULE_SHIPPING_ZONES_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+define('MODULE_SHIPPING_ZONES_TAX_CLASS_TITLE' , 'Налог');
+define('MODULE_SHIPPING_ZONES_TAX_CLASS_DESC' , 'Использовать налог.');
+define('MODULE_SHIPPING_ZONES_SORT_ORDER_TITLE' , 'Порядок сортировки');
+define('MODULE_SHIPPING_ZONES_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 
 for ($ii=0;$ii<NUMBER_OF_ZONES;$ii++) {
-define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_TITLE' , 'Zone '.$ii.' Countries');
-define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_DESC' , 'Comma separated list of two character ISO country codes that are part of Zone '.$ii.'.');
-define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_TITLE' , 'Zone '.$ii.' Shipping Table');
-define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'Shipping rates to Zone '.$ii.' destinations based on a group of maximum order weights. Example: 3:8.50,7:10.50,... Weights less than or equal to 3 would cost 8.50 for Zone '.$ii.' destinations.');
-define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_TITLE' , 'Zone '.$ii.' Handling Fee');
-define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_DESC' , 'Handling Fee for this shipping zone');
+define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_TITLE' , 'Страны зоны '.$ii.'');
+define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_DESC' , 'Список стран через запятую для зоны '.$ii.'.');
+define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_TITLE' , 'Стоимость доставки для '.$ii.' зоны');
+define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'Стоимость доставки для зоны '.$ii.' на базе максимальной стоимость заказа. Например: 3:8.50,7:10.50,... Это значит, что стоимость доставки для заказов, весом до 3 кг. будет стоить 8.50 для покупателей из стран '.$ii.' зоны.');
+define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_TITLE' , 'Стоимость использования модуля для '.$ii.' зоны');
+define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_DESC' , 'Стоимость использования данного способа доставки.');
 }
 ?>
