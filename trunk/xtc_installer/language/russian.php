@@ -269,7 +269,8 @@ define('PHP_VERSION_ERROR','<b>Внимание!, Версия PHP слишком старая, для коррект
                  XT-Commerce VaM Edition не будет корректно работать на данном сервере, обновите PHP, либо смените сервер.');
 define('TEXT_PHP_VERSION','Версия PHP .............................. ');
 define('TEXT_GD_LIB_NOT_FOUND','ОШИБКА! БИБЛИОТЕКА GD НЕ НАЙДЕНА!');
-define('TEXT_GD_LIB_VERSION','Если версия GDlib < 2+ , нажмите для получения дополнительных инструкций');
+//define('TEXT_GD_LIB_VERSION','Если версия GDlib < 2+ , нажмите для получения дополнительных инструкций');
+define('TEXT_GD_LIB_VERSION','');
 define('TEXT_GD_LIB_VERSION1','Версия GDlib .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT','Поддержка GIF в GDlib .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ОШИБКА</font></b><br />Установленная библиотека GDlib не поддерживает картинки в формате GIF, Вы не сможете использовать картинки GIF в магазине XT-Commerce VaM Edition!');
