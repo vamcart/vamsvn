@@ -20,6 +20,7 @@ define('HEADING_TITLE', 'Страны');
 define('TABLE_HEADING_COUNTRY_NAME', 'Страна');
 define('TABLE_HEADING_COUNTRY_CODES', 'Код');
 define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_STATUS', 'Статус');
 
 define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
 define('TEXT_INFO_COUNTRY_NAME', 'Название:');
