@@ -12,6 +12,7 @@
 
 
    define('TITLE','CSV');
+   define('HEADING_TITLE','CSV экспорт/импорт');
 
    define('IMPORT','Импорт');
    define('EXPORT','Экспорт');
