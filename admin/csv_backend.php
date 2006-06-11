@@ -84,10 +84,10 @@
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_news.gif'); ?></td>
-    <td class="pageHeading"><?php echo TITLE; ?></td>
+    <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
   </tr>
   <tr>
-    <td class="main" valign="top"><?php echo TITLE; ?></td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
   </tr>
 </table></td>
       </tr>

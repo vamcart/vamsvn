@@ -12,6 +12,7 @@
 
 
    define('TITLE','CSV Backend');
+   define('HEADING_TITLE','CSV Backend');
 
    define('IMPORT','Import');
    define('EXPORT','Export');
