@@ -232,7 +232,7 @@
 
  if ($gd['GD Version']=='') $gd['GD Version']='<b><font color="ff0000">' . TEXT_GD_LIB_NOT_FOUND . '</font></b>';
 
- $status=$gd['GD Version'].' <br />' . TEXT_GD_LIB_VERSION;
+// $status=$gd['GD Version'].' <br />' . TEXT_GD_LIB_VERSION;
 
  // display GDlibversion
  $ok_message.= TEXT_GD_LIB_VERSION1 . '' . $status.'<br /><hr noshade>';
