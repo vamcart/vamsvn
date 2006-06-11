@@ -187,7 +187,7 @@ define('HEADING_CATEGORY','категория');
 define('HEADING_ADD','Добавить?');
 define('HEADING_GROUP','Группа');
 
-// Добавлено VaM сборка
+// Сборка VaM
 
 define('IMAGE_ICON_STATUS_GREEN', 'Активна');
 define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
