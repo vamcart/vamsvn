@@ -38,7 +38,7 @@ define('TEXT_PRODUCT_OPTION', 'Аттрибуты:');
 define('TEXT_PRODUCT_OPTION_VALUE', 'Опция:');
 define('TEXT_PRICE', 'Цена:');
 define('TEXT_PRICE_PREFIX', 'Префикс цены:');
-define('TEXT_SAVE_ORDER', 'Закончить и пересчитать');
+define('TEXT_SAVE_ORDER', 'Нажмите кнопку Сохранить для сохранения внесённых в заказ изменений: ');
 
 define('TEXT_INVOICE_ADDRESS', 'Клиент');
 define('TEXT_SHIPPING_ADDRESS', 'Адрес доставки');
@@ -58,14 +58,23 @@ define('TEXT_CITY', 'Город:');
 define('TEXT_COUNTRY', 'Страна:');
 
 
-define('TEXT_PAYMENT', 'Оплата:');
+define('TEXT_PAYMENT', 'Способ оплаты:');
 define('TEXT_SHIPPING', 'Доставка:');
 define('TEXT_LANGUAGE', 'Язык:');
 define('TEXT_CURRENCIES', 'Валюта:');
 define('TEXT_ORDER_TOTAL', 'Всего:');
 define('TEXT_SAVE', 'Сохранить');
 
-define('TEXT_ACTUAL', 'фактический:');
-define('TEXT_NEW', 'новый:');
+define('TEXT_ACTUAL', 'Текущий: ');
+define('TEXT_NEW', 'Новый: ');
+
+// Сборка VaM
+
+define('TABLE_HEADING_ORDER', 'Редактировать заказ номер ');
+define('TEXT_EDIT_OTHER', 'Редактировать другие данные заказа');
+define('TEXT_CUSTOMER_EMAIL', 'Email:');
+define('TEXT_CUSTOMER_TELEPHONE', 'Телефон:');
+define('TEXT_CUSTOMER_UST', 'Vat ID:');
+define('TEXT_SMALL_NETTO', ' (Нетто)');
 
 ?>

@@ -40,4 +40,12 @@ define('TEXT_INFO_HEADING_DELETE_SPECIALS', 'Delete Special');
 define('TEXT_INFO_DELETE_INTRO', 'Are you sure you want to delete the special products price?');
 
 define('TEXT_IMAGE_NONEXISTENT','No image aviable!'); 
+
+// Добавлено VaM сборка
+
+define('IMAGE_ICON_STATUS_GREEN', 'Active');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Set active');
+define('IMAGE_ICON_STATUS_RED', 'Inactive');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Set inactive');
+
 ?>
