@@ -65,7 +65,7 @@
     <td class="pageHeading"><?php echo $cfg_group['configuration_group_title']; ?></td>
   </tr>
   <tr>
-    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
+    <td class="main" valign="top"><?php echo $cfg_group['configuration_group_title']; ?></td>
   </tr>
 </table> </td>
       </tr>
