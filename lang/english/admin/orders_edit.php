@@ -19,7 +19,7 @@ define('TABLE_HEADING', 'Edit Order');
 
 define('TEXT_EDIT_ADDRESS', 'Edit Addressdata');
 define('TEXT_EDIT_PRODUCTS', 'Edit Articles');
-define('TEXT_EDIT_SHIPPING', 'Edit Shippinginformations');
+define('TEXT_EDIT_SHIPPING', 'Edit Shipping informations');
 define('TEXT_EDIT_GIFT', 'Insert Gift vouchers or Discount');
 define('TEXT_EDIT_ADDRESS_SUCCESS', 'Address saved.');
 
@@ -67,5 +67,14 @@ define('TEXT_SAVE', 'Save');
 
 define('TEXT_ACTUAL', 'actual:');
 define('TEXT_NEW', 'new:');
+
+// —борка VaM
+
+define('TABLE_HEADING_ORDER', 'Edit order ');
+define('TEXT_EDIT_OTHER', 'Edit other order information');
+define('TEXT_CUSTOMER_EMAIL', 'Email:');
+define('TEXT_CUSTOMER_TELEPHONE', 'Telephone:');
+define('TEXT_CUSTOMER_UST', 'Vat ID:');
+define('TEXT_SMALL_NETTO', ' (Netto)');
 
 ?>

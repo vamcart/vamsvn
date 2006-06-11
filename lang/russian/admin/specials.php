@@ -30,14 +30,22 @@ define('TEXT_SPECIALS_PRICE_TIP', '<b>Примечание:</b><ul><li>Вы можете ввести пр
 
 define('TEXT_INFO_DATE_ADDED', 'Дата добавления:');
 define('TEXT_INFO_LAST_MODIFIED', 'Последнее изменение:');
-define('TEXT_INFO_NEW_PRICE', 'Новая Цена:');
-define('TEXT_INFO_ORIGINAL_PRICE', 'Исходная Цена:');
+define('TEXT_INFO_NEW_PRICE', 'Новая цена:');
+define('TEXT_INFO_ORIGINAL_PRICE', 'Исходная цена:');
 define('TEXT_INFO_PERCENTAGE', 'Процент:');
 define('TEXT_INFO_EXPIRES_DATE', 'Действует до:');
 define('TEXT_INFO_STATUS_CHANGE', 'Изменить статус:');
 
-define('TEXT_INFO_HEADING_DELETE_SPECIALS', 'Удалить Скидку');
+define('TEXT_INFO_HEADING_DELETE_SPECIALS', 'Удалить скидку');
 define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить специальнцю цену для товара?');
 
 define('TEXT_IMAGE_NONEXISTENT','Нет картинки!');
+
+// Добавлено VaM сборка
+
+define('IMAGE_ICON_STATUS_GREEN', 'Активна');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
+define('IMAGE_ICON_STATUS_RED', 'Неактивна');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+
 ?>
