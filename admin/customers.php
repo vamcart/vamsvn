@@ -499,7 +499,7 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
     <td class="pageHeading"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XT Customers</td>
+    <td class="main" valign="top"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
   </tr>
 </table>
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -924,7 +924,7 @@ if ($error == true) {
     <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XT Customers</td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
   </tr>
 </table>
         

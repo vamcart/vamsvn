@@ -48,7 +48,7 @@
     <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
   </tr>
   <tr>
-    <td class="main" valign="top">XT Statistics</td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
   </tr>
 </table></td>
       </tr>
