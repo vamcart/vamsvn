@@ -28,7 +28,7 @@
     	$time_start = explode(' ', PAGE_PARSE_START_TIME);
     $time_end = explode(' ', microtime());
     $parse_time = number_format(($time_end[1] + $time_end[0] - ($time_start[1] + $time_start[0])), 3);
-      echo '<span class="smallText">Parse Time: ' . $parse_time . 's</span>';
+      echo '<span class="smallText">Время исполнения: ' . $parse_time . ', запросов: ' . $query_counts . '</span>';
     }
 
   if ( (GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1) ) {
