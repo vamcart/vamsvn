@@ -184,7 +184,7 @@ define('IMAGE_BUTTON_CHECKOUT', 'Оформить заказ');
 define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить Заказ');
 define('IMAGE_BUTTON_CONTINUE', 'Продолжить');
 define('IMAGE_BUTTON_DELETE', 'Удалить');
-define('IMAGE_BUTTON_LOGIN', 'Войти');
+define('IMAGE_BUTTON_LOGIN', 'Продолжить');
 define('IMAGE_BUTTON_IN_CART', 'Добавить в корзину');
 define('IMAGE_BUTTON_SEARCH', 'Искать');
 define('IMAGE_BUTTON_UPDATE', 'Обновить');
@@ -192,7 +192,6 @@ define('IMAGE_BUTTON_UPDATE_CART', 'Пересчитать');
 define('IMAGE_BUTTON_WRITE_REVIEW', 'Написать отзыв');
 define('IMAGE_BUTTON_ADMIN', 'Админка');
 define('IMAGE_BUTTON_PRODUCT_EDIT', 'Редактировать товар');
-define('IMAGE_BUTTON_LOGIN', 'Войти');
 
 define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
 define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
