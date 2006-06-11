@@ -20,6 +20,8 @@
   
   function xtc_db_query($query, $link = 'db_link') {
     global $$link;
+    global $query_counts;
+    $query_counts++; 
 
     //echo $query.'<br>';
 
