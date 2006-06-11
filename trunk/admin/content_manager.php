@@ -278,7 +278,7 @@ if ($select_file=='default') {
     <td class="pageHeading"><?php echo HEADING_TITLE;?></td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XTC Tools</td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
   </tr>
 </table>
 </td>

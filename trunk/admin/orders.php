@@ -199,7 +199,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
     <td class="pageHeading"><?php echo HEADING_TITLE . TEXT_NUMBER . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XT Customers</td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE . TEXT_NUMBER . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
   </tr>
 </table>
  <?php echo '<a class="button" href="' . xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?>
@@ -612,7 +612,7 @@ elseif ($_GET['action'] == 'custom_action') {
 </td>
   </tr>
   <tr> 
-    <td class="main" valign="top">XT Customers</td>
+    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
     <td class="main" valign="top" align="right"><?php echo xtc_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_STATUS . ' ' . xtc_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
               </form></td>
