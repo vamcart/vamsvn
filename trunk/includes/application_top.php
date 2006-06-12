@@ -338,14 +338,8 @@ if (!isset ($_SESSION['language']) || isset ($_GET['language'])) {
 	include (DIR_WS_CLASSES.'language.php');
 	$lng = new language(xtc_input_validation($_GET['language'], 'char', ''));
 
-//	if (!isset ($_GET['language']))
-//		$lng->get_browser_language();
-
-    if (isset($_GET['language']) && tep_not_null($_GET['language'])) {
-      $lng->set_language($_GET['language']);
-    } else {
-      $lng->get_browser_language();
-    }
+	if (!isset ($_GET['language']))
+		$lng->get_browser_language();
 
 	$_SESSION['language'] = $lng->language['directory'];
 	$_SESSION['languages_id'] = $lng->language['id'];
