@@ -14,7 +14,7 @@
    --------------------------------------------------------------*/
 // Global
 
-define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">XT-Commerce VaM Edition</a><br />Powered by xt:Commerce'); 
+define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">xt:Commerce VaM Edition</a><br />Powered by xt:Commerce'); 
    
 // Box names
 define('BOX_LANGUAGE','Язык');
@@ -85,16 +85,16 @@ define('PULL_DOWN_DEFAULT','Выберите страну!');
 
 define('TITLE_SELECT_LANGUAGE','Выберите язык!');
 
-define('TEXT_WELCOME_INDEX','XT-Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Разрабатывается по модели открытых исходных кодов, установив XT-Commerce VaM Edition, Вы получаете готовый к работе интернет-магазин.<br /><br />
-      XT-Commerce VaM Edition является открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
-      XT-Commerce VaM Edition может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
+define('TEXT_WELCOME_INDEX','xt:Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Разрабатывается по модели открытых исходных кодов, установив xt:Commerce VaM Edition, Вы получаете готовый к работе интернет-магазин.<br /><br />
+      xt:Commerce VaM Edition является открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
+      xt:Commerce VaM Edition может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
 define('TEXT_WELCOME_STEP1','<b>Основные настройки доступа к базе данных и настройки веб сервера</b><br /><br />Укажите доступ к базе данных и настройки веб сервера.<br />');
-define('TEXT_WELCOME_STEP2','<b>Установка базы данных</b><br /><br />XT-Commerce автоматически установит базу данных магазина.');
+define('TEXT_WELCOME_STEP2','<b>Установка базы данных</b><br /><br />xt:Commerce автоматически установит базу данных магазина.');
 define('TEXT_WELCOME_STEP3','<b>Импорт базы данных.</b><br /><br />');
-define('TEXT_WELCOME_STEP4','<b>Настройка конфигурационных файлов XT-Commerce</b><br /><br /><b>Если есть старые конфигурационные файлы от предыдущих установок, XT-Commerce удалит их автоматически.</b><br /><br />Инсталлятор сконфигурирует основные параметры БД и структуру файлов.');
+define('TEXT_WELCOME_STEP4','<b>Настройка конфигурационных файлов xt:Commerce</b><br /><br /><b>Если есть старые конфигурационные файлы от предыдущих установок, xt:Commerce удалит их автоматически.</b><br /><br />Инсталлятор сконфигурирует основные параметры БД и структуру файлов.');
 define('TEXT_WELCOME_STEP5','<b>Настройка веб сервера</b><br /><br />');
 define('TEXT_WELCOME_STEP6','<b>Основные настройки магазина</b><br /><br />Инсталлятор создаст учётную запись администратора и выполнит обновление базы данных.<br />Информация о <b>Стране</b> и <b>Почтовом индексе</b> может использоваться при подсчете стоимости доставки и налогов.');
-define('TEXT_WELCOME_STEP7','<b>Настройка групп покупателей</b><br /><br />XT-Commerce предоставляет широкие возможности управления ценами и скидками.<br /><br />
+define('TEXT_WELCOME_STEP7','<b>Настройка групп покупателей</b><br /><br />xt:Commerce предоставляет широкие возможности управления ценами и скидками.<br /><br />
 <b>Скидка на товар</b><br />
 Скидка может быть установлена как на каждый товар в отдельности, так и сразу на все товары путём установки скидки для группы покупателей.<br />
 Если скидка на товар = 10.00% и скидка для группы = 5%, тогда будет использоваться скидка для группы, т.е. товар будет со скидкой 5%<br />
@@ -109,13 +109,13 @@ define('TEXT_WELCOME_STEP7','<b>Настройка групп покупателей</b><br /><br />XT-Co
 Группа покупателей 3 -> Специальная цена для данной группы покупателей на товар Y<br />
 Группа покупателей 4 -> Стандартная цена на товар Y<br />
 ');
-define('TEXT_WELCOME_FINISHED','<b>Установка XT-Commerce VaM Edition успешно завершена!</b>');
+define('TEXT_WELCOME_FINISHED','<b>Установка xt:Commerce VaM Edition успешно завершена!</b>');
 
 // install_step1.php
 
 define('TITLE_CUSTOM_SETTINGS','Настройки');
 define('TEXT_IMPORT_DB','Импорт базы данных');
-define('TEXT_IMPORT_DB_LONG','Импорт структуры базы данных XT-Commerce.');
+define('TEXT_IMPORT_DB_LONG','Импорт структуры базы данных xt:Commerce.');
 define('TEXT_AUTOMATIC','Автоматическая настройка');
 define('TEXT_AUTOMATIC_LONG','Данные, которые Вы укажите, сохранятся в конфигурационных файлах каталога и администраторской часть магазина.');
 define('TITLE_DATABASE_SETTINGS','Настройка базы данных');
@@ -175,7 +175,7 @@ define('TEXT_SESS_LONG','Выберите, где хранить сессии: в файлах или в базе данны
 
 // install_step5.php
 
-define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>XT-Commerce VaM Edition</strong> - Настройка конфигурационных файлов успешно завершена!');
+define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>xt:Commerce VaM Edition</strong> - Настройка конфигурационных файлов успешно завершена!');
 
 // install_step6.php
 
@@ -201,7 +201,7 @@ define('TEXT_EMAIL_FROM','Email от');
 define('TEXT_EMAIL_FROM_LONG','(Email адрес, от которого будут отправлять все письма из магазина)');
 define('TITLE_ZONE_CONFIG','Зоны');
 define('TEXT_ZONE','Установить зоны Евросоюза?');
-define('TITLE_ZONE_CONFIG_NOTE','* Замечание: XT-Commerce может автоматически загрузить зоны Евросоюза в магазин.');
+define('TITLE_ZONE_CONFIG_NOTE','* Замечание: xt:Commerce может автоматически загрузить зоны Евросоюза в магазин.');
 define('TITLE_SHOP_CONFIG_NOTE','* Замечание: Основные настройки магазина');
 define('TITLE_ADMIN_CONFIG_NOTE','* Замечание: Настройки админа');
 define('TEXT_ZONE_NO','Нет');
@@ -234,8 +234,8 @@ define('TITLE_CHMOD','Установка прав доступа на файлы');
 
 // install_fnished.php
 
-define('TEXT_SHOP_CONFIG_SUCCESS','Настройка магазина <strong>XT-Commerce VaM Edition</strong> успешно завершена.');
-define('TEXT_TEAM','The XT-Commerce dev Team.<br /><a href="http://www.xt-commerce.com">XT-Commerce support site</a><br /><a href="http://forum.oscommerce.ru">Русская поддержка XT-Commerce VaM Edition</a>');
+define('TEXT_SHOP_CONFIG_SUCCESS','Настройка магазина <strong>xt:Commerce VaM Edition</strong> успешно завершена.');
+define('TEXT_TEAM','The xt:Commerce dev Team.<br /><a href="http://www.xt-commerce.com">xt:Commerce support site</a><br /><a href="http://forum.oscommerce.ru">Русская поддержка xt:Commerce VaM Edition</a>');
 
 // Сборка VaM
 
@@ -249,31 +249,31 @@ define('TEXT_RUSSIAN','Русский');
 define('TEXT_ENGLISH','Английский');
 define('TEXT_CHECKING','Проверка:');
 define('TEXT_ATTENTION','Внимание:');
-define('TITLE_INDEX','Установка XT-Commerce VaM Edition - Добро пожаловать');
-define('TITLE_STEP1','Установка XT-Commerce VaM Edition - ШАГ 1 / Настройки');
-define('TITLE_STEP2','Установка XT-Commerce VaM Edition - ШАГ 2 / Подключение к базе данных');
-define('TITLE_STEP3','Установка XT-Commerce VaM Edition - ШАГ 3 / Импорт базы данных');
-define('TITLE_STEP4','Установка XT-Commerce VaM Edition - ШАГ 4 / Настройка веб сервера');
-define('TITLE_STEP5','Установка XT-Commerce VaM Edition - ШАГ 5 / Запись конфигурационных файлов');
-define('TITLE_STEP6','Установка XT-Commerce VaM Edition - ШАГ 6 / Создание админа');
-define('TITLE_STEP7','Установка XT-Commerce VaM Edition - ШАГ 7 / Настройка цен');
-define('TITLE_FINISHED','Установка XT-Commerce VaM Edition - Установка завершена');
+define('TITLE_INDEX','Установка xt:Commerce VaM Edition - Добро пожаловать');
+define('TITLE_STEP1','Установка xt:Commerce VaM Edition - ШАГ 1 / Настройки');
+define('TITLE_STEP2','Установка xt:Commerce VaM Edition - ШАГ 2 / Подключение к базе данных');
+define('TITLE_STEP3','Установка xt:Commerce VaM Edition - ШАГ 3 / Импорт базы данных');
+define('TITLE_STEP4','Установка xt:Commerce VaM Edition - ШАГ 4 / Настройка веб сервера');
+define('TITLE_STEP5','Установка xt:Commerce VaM Edition - ШАГ 5 / Запись конфигурационных файлов');
+define('TITLE_STEP6','Установка xt:Commerce VaM Edition - ШАГ 6 / Создание админа');
+define('TITLE_STEP7','Установка xt:Commerce VaM Edition - ШАГ 7 / Настройка цен');
+define('TITLE_FINISHED','Установка xt:Commerce VaM Edition - Установка завершена');
 define('CHARSET','windows-1251');
 define('TEXT_INSTALL','Установка');
 define('ERROR_PERMISSION','Неверные права доступа ');
 define('TEXT_ERROR','ОШИБКА');
 define('TEXT_FILE_PERMISSIONS','Права доступа файлов .............................. ');
 define('TEXT_FOLDER_PERMISSIONS','Права доступа директорий .............................. ');
-define('PHP_VERSION_ERROR','<b>Внимание!, Версия PHP слишком старая, для корректной работы XT-Commerce VaM Edition необходим PHP 4.1.3 и выше.</b><br /><br />
+define('PHP_VERSION_ERROR','<b>Внимание!, Версия PHP слишком старая, для корректной работы xt:Commerce VaM Edition необходим PHP 4.1.3 и выше.</b><br /><br />
                  Ваша версия PHP: <b><?php echo phpversion(); ?></b><br /><br />
-                 XT-Commerce VaM Edition не будет корректно работать на данном сервере, обновите PHP, либо смените сервер.');
+                 xt:Commerce VaM Edition не будет корректно работать на данном сервере, обновите PHP, либо смените сервер.');
 define('TEXT_PHP_VERSION','Версия PHP .............................. ');
 define('TEXT_GD_LIB_NOT_FOUND','ОШИБКА! БИБЛИОТЕКА GD НЕ НАЙДЕНА!');
 //define('TEXT_GD_LIB_VERSION','Если версия GDlib < 2+ , нажмите для получения дополнительных инструкций');
 define('TEXT_GD_LIB_VERSION','');
 define('TEXT_GD_LIB_VERSION1','Версия GDlib .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT','Поддержка GIF в GDlib .............................. ');
-define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ОШИБКА</font></b><br />Установленная библиотека GDlib не поддерживает картинки в формате GIF, Вы не сможете использовать картинки GIF в магазине XT-Commerce VaM Edition!');
+define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ОШИБКА</font></b><br />Установленная библиотека GDlib не поддерживает картинки в формате GIF, Вы не сможете использовать картинки GIF в магазине xt:Commerce VaM Edition!');
 define('TEXT_OK','Всё нормально');
 
 //install_finished

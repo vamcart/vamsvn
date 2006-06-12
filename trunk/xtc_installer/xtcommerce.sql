@@ -1,10 +1,10 @@
 # -----------------------------------------------------------------------------------------
 #  $Id: xtcommerce.sql,v 1.62 2004/06/06 18:21:16 novalis Exp $
 #
-#  XT-Commerce - community made shopping
+#  xt:Commerce Vam Edition - community made shopping
 #  http://www.xt-commerce.com 
 #
-#  Copyright (c) 2003 XT-Commerce
+#  Copyright (c) 2003 xt:Commerce
 #  -----------------------------------------------------------------------------------------
 #  Third Party Contributions:
 #  Customers status v3.x (c) 2002-2003 Elari elari@free.fr
@@ -1121,7 +1121,7 @@ INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'У
 INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', 0, 1, '', 1, 2, 0);
 INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', 0, 1, '', 1, 3, 0);
 INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', '{$greeting}<br /><br />Вы установили интернет-магазин XT-Commerce VaM Edition<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы', 0, 1, '', 0, 5, 0);
+INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', '{$greeting}<br /><br />Вы установили интернет-магазин xt:Commerce VaM Edition<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы', 0, 1, '', 0, 5, 0);
 INSERT INTO `content_manager` VALUES (6, 0, 0, '', 2, 'Shipping & Returns', 'Shipping & Returns', 'Put here your Shipping & Returns information.', 0, 1, '', 1, 1, 0);
 INSERT INTO `content_manager` VALUES (7, 0, 0, '', 2, 'Privacy Notice', 'Privacy Notice', 'Put here your Privacy Notice information.', 0, 1, '', 1, 2, 0);
 INSERT INTO `content_manager` VALUES (8, 0, 0, '', 2, 'Conditions of Use', 'Conditions of Use', 'Conditions of Use<br />Put here your Conditions of Use information. <br />1. Validity<br />2. Offers<br />3. Price<br />4. Dispatch and passage of the risk<br />5. Delivery<br />6. Terms of payment<br />7. Retention of title<br />8. Notices of defect, guarantee and compensation<br />9. Fair trading cancelling / non-acceptance<br />10. Place of delivery and area of jurisdiction<br />11. Final clauses', 0, 1, '', 1, 3, 0);

@@ -49,7 +49,7 @@ define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 
 // page title
-define('TITLE', 'XT-Commerce VaM Edition');
+define('TITLE', 'xt:Commerce VaM Edition');
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Администрирование');

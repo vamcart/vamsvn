@@ -439,7 +439,7 @@ define('TEXT_COUPON_HELP_PRODUCTS', 'Товар');
 // VAT ID
 define('ENTRY_VAT_TEXT','* только для Германии и стран Евросоюза');
 define('ENTRY_VAT_ERROR', 'Выбранный VatID неверный! Укажите правильно ID или оставьте данное поле пустым.');
-define('MSRP','Рекомендованная');
+define('MSRP','Розничная цена ');
 define('YOUR_PRICE','Ваша цена ');
 define('ONLY',' всего ');
 define('FROM','от ');
