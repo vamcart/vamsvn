@@ -159,7 +159,7 @@
                 <?php echo TABLE_HEADING_PRICE.xtc_sorting(FILENAME_CATEGORIES,'price'); ?>
              </td>
              <td class="dataTableHeadingContent" align="center" width="10%">
-                <?php echo '% max' . xtc_sorting(FILENAME_CATEGORIES,'discount'); ?>
+                <?php echo TABLE_HEADING_MAX_DISCOUNT . xtc_sorting(FILENAME_CATEGORIES,'discount'); ?>
              </td>
              <td class="dataTableHeadingContent" width="10%" align="center">
                 <?php echo TABLE_HEADING_ACTION; ?>
