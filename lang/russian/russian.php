@@ -456,14 +456,4 @@ define('SHIPPING_COSTS','доставка');
 
 define('BOX_HEADING_SEARCH', 'Поиск');
 
-// Обработка MySQL ошибок
-
-define('MYSQL QUERY ERROR_TEXT', 'Проблемы с MySQL');
-define('MYSQL QUERY ERROR_SUBJECT', 'Проблемы с MySQL сервером!');
-define('MYSQL QUERY ERROR_SERVER_NAME', 'Сервер: ');
-define('MYSQL QUERY ERROR_REMOTE_ADDR', 'Адрес: ');
-define('MYSQL QUERY ERROR_REFERER', 'Реферер: ');
-define('MYSQL QUERY ERROR_REQUESTED', 'Запрос: ');
-define('MYSQL QUERY ERROR_FROM', 'От: db_error@');
-
 ?>
