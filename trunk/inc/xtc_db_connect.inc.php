@@ -27,6 +27,12 @@ $$link = mysql_connect($server, $username, $password);
 
     if ($$link) mysql_select_db($database);
 
+//Start VaM db-error processing
+    if (!$$link) {
+      xtc_db_error("connect", mysql_errno(), mysql_error());
+    }
+//End VaM db-error processing
+
     return $$link;
   }
  ?>
