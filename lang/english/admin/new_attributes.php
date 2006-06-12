@@ -21,8 +21,9 @@
    define('ATTR_PREFIXWEIGHT','Weight Prefix');
    define('ATTR_PRICE','Value Price');
    define('ATTR_PREFIXPRICE','Price Prefix');
-   define('DL_COUNT','Count:');
-   define('DL_EXPIRE','Expire:');
+   define('DL_FILE','File: ');
+   define('DL_COUNT','Count: ');
+   define('DL_EXPIRE','Expire: ');
    define('TITLE_EDIT','Edit Attributes ');
    define('TITLE_UPDATED','Product Attributes Updated.');
    define('SELECT_PRODUCT','Please select a product to edit:');
