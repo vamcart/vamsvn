@@ -15,11 +15,11 @@
 
 
    define('SORT_ORDER','Порядок сортировки');
-   define('ATTR_MODEL','Атрибут модели');
+   define('ATTR_MODEL','Код атрибута');
    define('ATTR_STOCK','Склад');
    define('ATTR_WEIGHT','Вес');
    define('ATTR_PREFIXWEIGHT','Префикс веса');
-   define('ATTR_PRICE','Цена значение');
+   define('ATTR_PRICE','Цена');
    define('ATTR_PREFIXPRICE','Префикс цены');
    define('DL_COUNT','Считать:');
    define('DL_EXPIRE','Истекает:');
