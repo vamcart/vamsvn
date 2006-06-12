@@ -940,7 +940,7 @@ if ($error == true) {
 	$select_data = array ();
 	$select_data = array (array ('id' => '99', 'text' => TEXT_SELECT), array ('id' => '100', 'text' => TEXT_ALL_CUSTOMERS));
 ?>          
-            <td class="smallText" align="right"><?php echo HEADING_TITLE_STATUS . ' ' . xtc_draw_pull_down_menu('status',xtc_array_merge($select_data, $customers_statuses_array), '99', 'onChange="this.form.submit();"').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?></td>
+            <td class="smallText" align="right" colspan="3"><?php echo HEADING_TITLE_STATUS . ' ' . xtc_draw_pull_down_menu('status',xtc_array_merge($select_data, $customers_statuses_array), '99', 'onChange="this.form.submit();"').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?></td>
 
 
 
