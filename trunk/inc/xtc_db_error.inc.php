@@ -17,7 +17,7 @@
    
 //  function xtc_db_error($query, $errno, $error) { 
 //    die('<font color="#000000"><b>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[XT SQL Error]</font></small><br /><br /></b></font>');
-  }
+//  }
   
 function xtc_db_error($query, $errno, $error) {
 //Start VaM db-error processing
