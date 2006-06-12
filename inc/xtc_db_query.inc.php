@@ -40,6 +40,12 @@
        error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 
+//Start VaM db-error processing
+    if (!$result) {
+      xtc_db_error($query, mysql_errno(), mysql_error());
+    }
+//End VaM db-error processing
+
     return $result;
   }
  ?>
