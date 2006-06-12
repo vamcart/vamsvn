@@ -115,7 +115,7 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
 
             echo "</TR>";
             // Download function start
-            if(strtoupper($current_product_option_name) == 'DOWNLOADS') {
+            if(DOWNLOAD_ENABLED == 'true') {
                 echo "<tr>";
 
                // echo "<td colspan=\"2\">File: <input type=\"file\" name=\"" . $current_value_id . "_download_file\"></td>";
