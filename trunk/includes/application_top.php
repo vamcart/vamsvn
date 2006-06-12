@@ -45,7 +45,7 @@ if (file_exists('includes/local/configure.php')) {
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'xt:Commerce v3.0.4 SP1');
+define('PROJECT_VERSION', 'xt:Commerce v3.0.4 SP1 VaM Edition');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -246,7 +246,7 @@ require (DIR_WS_FUNCTIONS.'compatibility.php');
 require (DIR_WS_FUNCTIONS.'sessions.php');
 
 // set the session name and save path
-session_name('XTCsid');
+session_name('xtc-vam-sid');
 session_save_path(SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters
