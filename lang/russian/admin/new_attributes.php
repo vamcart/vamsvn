@@ -21,8 +21,8 @@
    define('ATTR_PREFIXWEIGHT','Префикс веса');
    define('ATTR_PRICE','Цена');
    define('ATTR_PREFIXPRICE','Префикс цены');
-   define('DL_COUNT','Считать:');
-   define('DL_EXPIRE','Истекает:');
+   define('DL_COUNT','Максимально возможное количество загрузок:');
+   define('DL_EXPIRE','Время жизни ссылки на скачивание (дней):');
    define('TITLE_EDIT','Редактировать атрибуты ');
    define('TITLE_UPDATED','Атрибуты товары обновлены.');
    define('SELECT_PRODUCT','Пожалуйста, выберите товар для редактирования:');
