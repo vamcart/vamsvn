@@ -31,14 +31,14 @@
   Copyright announcement changed due to the permissions
   from LG Hamburg from 28th February 2003 / AZ 308 O 70/03
 */
-?>E-Commerce Engine Copyright &copy; 2003 <a href="http://www.xt-commerce.com" target="_blank">XT-Commerce</a><br>
+?>E-Commerce Engine Copyright &copy; 2006 <a href="http://www.xt-commerce.com" target="_blank">xt:Commerce</a><br>
 XT-Commerce provides no warranty and is redistributable under the <a href="http://www.fsf.org/licenses/gpl.txt" target="_blank">GNU General Public License</a></td>
   </tr>
   <tr>
     <td><?php echo xtc_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '5'); ?></td>
   </tr>
   <tr>
-    <td align="center" class="smallText">Powered by <a href="http://www.xt-commerce.com" target="_blank">XT-Commerce</a></td>
+    <td align="center" class="smallText">Powered by <a href="http://www.xt-commerce.com" target="_blank">xt:Commerce</a> <a href="http://oscommerce.su" target="_blank">VaM Edition</a></td>
   </tr>
 </table>
 <?php
