@@ -246,7 +246,7 @@ require (DIR_WS_FUNCTIONS.'compatibility.php');
 require (DIR_WS_FUNCTIONS.'sessions.php');
 
 // set the session name and save path
-session_name('xtc-vam-sid');
+session_name('XTCsid');
 session_save_path(SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters
