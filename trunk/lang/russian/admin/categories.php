@@ -134,7 +134,7 @@ define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Ошибка: Вы не можете связывать тов
 define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория изображений закрыта на запись: ' . DIR_FS_CATALOG_IMAGES);
 define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория изображений отсутствует: ' . DIR_FS_CATALOG_IMAGES);
 
-define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Скидка:');
+define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Максимально возможная скидка:');
 define('HEADING_PRICES_OPTIONS','<b>Цены</b>');
 define('HEADING_PRODUCT_IMAGES','<b>Картинки товара</b>');
 define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(кг.)</small>');
@@ -194,5 +194,6 @@ define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
 define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
 define('IMAGE_ICON_STATUS_RED', 'Неактивна');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+define('TABLE_HEADING_MAX_DISCOUNT', 'Максимально возможная скидка');
 
 ?>
