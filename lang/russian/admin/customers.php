@@ -33,7 +33,7 @@ define('TEXT_DELETE_REVIEWS', 'Удалить %s отзыв(ы)');
 define('TEXT_INFO_HEADING_DELETE_CUSTOMER', 'Удалить клиента');
 define('TYPE_BELOW', 'Введите ниже');
 define('PLEASE_SELECT', 'Выберите');
-define('HEADING_TITLE_STATUS','Группы клиентов');
+define('HEADING_TITLE_STATUS','Группы клиентов:');
 define('TEXT_ALL_CUSTOMERS','все группы');
 define('TEXT_INFO_HEADING_STATUS_CUSTOMER','Группы клиентов');
 define('TABLE_HEADING_NEW_VALUE','Новый статус');
