@@ -62,10 +62,10 @@
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_configuration.gif'); ?></td>
-    <td class="pageHeading"><?php echo $cfg_group['configuration_group_title']; ?></td>
+    <td class="pageHeading"><?php echo BOX_CONFIGURATION; ?></td>
   </tr>
   <tr>
-    <td class="main" valign="top"><?php echo $cfg_group['configuration_group_title']; ?></td>
+    <td class="main" valign="top"><?php echo BOX_CONFIGURATION; ?></td>
   </tr>
 </table> </td>
       </tr>
