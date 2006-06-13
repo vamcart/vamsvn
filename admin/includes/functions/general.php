@@ -781,7 +781,7 @@ function xtc_get_countries($default = '') {
 	if ($default) {
 		$countries_array[] = array ('id' => STORE_COUNTRY, 'text' => $default);
 	}
-	$countries_query = xtc_db_query("select countries_id, countries_name from ".TABLE_COUNTRIES." order by countries_name");
+	$countries_query = xtc_db_query("select countries_id, countries_name from ".TABLE_COUNTRIES." where status='1' order by countries_name");
 	while ($countries = xtc_db_fetch_array($countries_query)) {
 		$countries_array[] = array ('id' => $countries['countries_id'], 'text' => $countries['countries_name']);
 	}
