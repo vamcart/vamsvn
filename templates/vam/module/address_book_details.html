@@ -40,6 +40,7 @@
     <td class="inputRequirement">{$INPUT_COMPANY}</td>
   </tr>
   {/if} 
+  {if $street_address=='1'} 
   <tr> 
     <td class="main">&nbsp;</td>
     <td class="main" >&nbsp;</td>
@@ -48,30 +49,37 @@
     <td class="main">{#text_street#}</td>
     <td class="inputRequirement" >{$INPUT_STREET}</td>
   </tr>
+  {/if} 
   {if $suburb=='1'} 
   <tr> 
     <td class="main">{#text_suburb#}</td>
     <td class="inputRequirement">{$INPUT_SUBURB}</td>
   </tr>
   {/if} 
+  {if $postcode=='1'} 
   <tr> 
     <td class="main">{#text_code#}</td>
     <td class="inputRequirement">{$INPUT_CODE}</td>
   </tr>
+  {/if} 
+  {if $city=='1'} 
   <tr> 
     <td class="main">{#text_city#}</td>
     <td class="inputRequirement">{$INPUT_CITY}</td>
   </tr>
+  {/if} 
   {if $state=='1'} 
   <tr> 
     <td class="main">{#text_state#}</td>
     <td class="inputRequirement">{$INPUT_STATE}</td>
   </tr>
   {/if} 
+  {if $country=='1'} 
   <tr> 
     <td class="main">{#text_country#}</td>
     <td class="inputRequirement">{$SELECT_COUNTRY}</td>
   </tr>
+  {/if} 
   {if $new=='1'}
   <tr>
     <td class="main">&nbsp;</td>

@@ -48,16 +48,27 @@
   }
 
 
-$module_smarty->assign('INPUT_STREET',xtc_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (xtc_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address']));
+  if (ACCOUNT_STREET_ADDRESS == 'true') {
+  $module_smarty->assign('street_address','1');
+  $module_smarty->assign('INPUT_STREET',xtc_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (xtc_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address']));
+  }
 
   if (ACCOUNT_SUBURB == 'true') {
   $module_smarty->assign('suburb','1');
   $module_smarty->assign('INPUT_SUBURB',xtc_draw_input_fieldNote(array('name'=>'suburb','text'=>'&nbsp;' . (xtc_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': '')), $entry['entry_suburb']));
 
   }
-  $module_smarty->assign('INPUT_CODE',xtc_draw_input_fieldNote(array('name'=>'postcode','text'=>'&nbsp;' . (xtc_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': '')), $entry['entry_postcode']));
-  $module_smarty->assign('INPUT_CITY',xtc_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (xtc_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city']));
 
+  if (ACCOUNT_POSTCODE == 'true') {
+  $module_smarty->assign('postcode','1');
+  $module_smarty->assign('INPUT_CODE',xtc_draw_input_fieldNote(array('name'=>'postcode','text'=>'&nbsp;' . (xtc_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': '')), $entry['entry_postcode']));
+  }
+
+  if (ACCOUNT_CITY == 'true') {
+  $module_smarty->assign('city','1');
+  $module_smarty->assign('INPUT_CITY',xtc_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (xtc_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city']));
+  }
+  
   if (ACCOUNT_STATE == 'true') {
   $module_smarty->assign('state','1');
 
@@ -79,7 +90,10 @@ $module_smarty->assign('INPUT_STREET',xtc_draw_input_fieldNote(array('name'=>'st
 
 
 
+  if (ACCOUNT_STATE == 'true') {
+  $module_smarty->assign('state','1');
   $module_smarty->assign('INPUT_STATE',$state_input);
+  }
   }
 
   if ($_POST['country']){
@@ -88,7 +102,10 @@ $module_smarty->assign('INPUT_STREET',xtc_draw_input_fieldNote(array('name'=>'st
   $selected = $entry['entry_country_id'];
   }
 
+  if (ACCOUNT_COUNTRY == 'true') {
+  $module_smarty->assign('country','1');
   $module_smarty->assign('SELECT_COUNTRY',xtc_get_country_list(array('name'=>'country','text'=>'&nbsp;' . (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': '')), $selected));
+  }
 
   if ((isset($_GET['edit']) && ($_SESSION['customer_default_address_id'] != $_GET['edit'])) || (isset($_GET['edit']) == false) ) {
   $module_smarty->assign('new','1');

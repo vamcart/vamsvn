@@ -239,6 +239,7 @@ echo '<td><span class="main">'.xtc_draw_pull_down_menu('options_template', $file
         <STRONG><?php echo TEXT_PRODUCTS_SHORT_DESCRIPTION; ?></STRONG><br />
         <?php echo xtc_draw_textarea_field('products_short_description_' . $languages[$i]['id'], 'soft', '103', '15', (($products_short_description[$languages[$i]['id']]) ? stripslashes($products_short_description[$languages[$i]['id']]) : xtc_get_products_short_description($pInfo->products_id, $languages[$i]['id']))); ?>
         <?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?>
+        <br />
         <?php echo TEXT_PRODUCTS_KEYWORDS; ?><br />
         <?php echo xtc_draw_input_field('products_keywords[' . $languages[$i]['id'] . ']',(($products_keywords[$languages[$i]['id']]) ? stripslashes($products_keywords[$languages[$i]['id']]) : xtc_get_products_keywords($pInfo->products_id, $languages[$i]['id'])), 'size=80 maxlenght=255'); ?><br />     
         <?php echo TEXT_META_TITLE; ?><br />
