@@ -55,7 +55,7 @@ if ($_GET['action']) {
 			$customers_query = xtc_db_query("select * from ".TABLE_ADDRESS_BOOK." where customers_id = '".$_GET['cID']."'");
 			$customers = xtc_db_fetch_array($customers_query);
 
-			$country_query = xtc_db_query("select countries_name from ".TABLE_COUNTRIES." where countries_id = '".$customers['entry_country_id']."'");
+			$country_query = xtc_db_query("select countries_name from ".TABLE_COUNTRIES." where status='1' and countries_id = '".$customers['entry_country_id']."'");
 			$country = xtc_db_fetch_array($country_query);
 
 			$stat_query = xtc_db_query("select * from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$customers1[customers_status]."' ");
