@@ -59,14 +59,18 @@
     <td class="main">{#text_email#}</td>
     <td class="inputRequirement">{$INPUT_EMAIL}</td>
   </tr>
+  {if $telephone=='1'} 
   <tr> 
     <td class="main">{#text_tel#}</td>
     <td class="inputRequirement">{$INPUT_TEL}</td>
   </tr>
+  {/if} 
+  {if $fax=='1'} 
   <tr>
     <td class="main">{#text_fax#}</td>
     <td class="inputRequirement">{$INPUT_FAX}</td>
   </tr>
+  {/if} 
   {if $vat=='1'}
   <tr>
     <td class="main">{#text_ustid#}</td>
