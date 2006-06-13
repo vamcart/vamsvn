@@ -20,10 +20,12 @@
   <tr>
     <td class="main">&nbsp;</td>
   </tr>
+{if $SHIPPING_ADDRESS=='true'} 
   <tr> 
     <td valign="top" class="main" style="border-top: 1px solid; border-color: #cccccc;"><strong>{#text_shipping_address#}</strong><em><a href="{$SHIPPING_ADDRESS_EDIT}"><font color="#009933">{#text_edit#}</font></a></em><br />{$DELIVERY_LABEL}</td>
     <td valign="top" class="main" style="border-top: 1px solid; border-color: #cccccc;">{if $BILLING_LABEL}<strong>{#text_payment_address#}</strong><em><a href="{$BILLING_ADDRESS_EDIT}"><font color="#009933">{#text_edit#}</font></a></em><br />{$BILLING_LABEL}{/if}</td>
   </tr>
+{/if}
   <tr>
     <td class="main">&nbsp;</td>
   </tr>

@@ -9,11 +9,14 @@
         <tr>
           <td class="main">&nbsp;</td>
         </tr>
+{if $SHIPPING_ADDRESS=='true'} 
   <tr>
     <td><strong>{#title_address#}</strong></td>
   </tr>
+{/if}
 </table>
 {$FORM_ACTION}
+{if $SHIPPING_ADDRESS=='true'} 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td style="border-top: 1px solid; border-color: #cccccc;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -31,7 +34,10 @@
         </tr>
       </table></td>
   </tr>
-</table><table width="100%" border="0" cellspacing="0" cellpadding="0">
+</table>
+{/if}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td class="main">&nbsp;</td>
         </tr>

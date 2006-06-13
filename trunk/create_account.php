@@ -62,17 +62,26 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$company = xtc_db_prepare_input($_POST['company']);
 	if (ACCOUNT_COMPANY_VAT_CHECK == 'true')
 		$vat = xtc_db_prepare_input($_POST['vat']);
-	$street_address = xtc_db_prepare_input($_POST['street_address']);
+   if (ACCOUNT_STREET_ADDRESS == 'true')
+	   $street_address = xtc_db_prepare_input($_POST['street_address']);
 	if (ACCOUNT_SUBURB == 'true')
 		$suburb = xtc_db_prepare_input($_POST['suburb']);
-	$postcode = xtc_db_prepare_input($_POST['postcode']);
-	$city = xtc_db_prepare_input($_POST['city']);
+   if (ACCOUNT_POSTCODE == 'true')
+	   $postcode = xtc_db_prepare_input($_POST['postcode']);
+	if (ACCOUNT_CITY == 'true')
+	   $city = xtc_db_prepare_input($_POST['city']);
 	$zone_id = xtc_db_prepare_input($_POST['zone_id']);
 	if (ACCOUNT_STATE == 'true')
 		$state = xtc_db_prepare_input($_POST['state']);
-	$country = xtc_db_prepare_input($_POST['country']);
-	$telephone = xtc_db_prepare_input($_POST['telephone']);
-	$fax = xtc_db_prepare_input($_POST['fax']);
+   if (ACCOUNT_COUNTRY == 'true') {
+	   $country = xtc_db_prepare_input($_POST['country']);
+	} else {
+      $country = STORE_COUNTRY;
+	}
+   if (ACCOUNT_TELE == 'true')
+	   $telephone = xtc_db_prepare_input($_POST['telephone']);
+   if (ACCOUNT_FAX == 'true')
+	   $fax = xtc_db_prepare_input($_POST['fax']);
 	$newsletter = '0';
 	$password = xtc_db_prepare_input($_POST['password']);
 	$confirmation = xtc_db_prepare_input($_POST['confirmation']);
@@ -142,29 +151,37 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		}
 	}
 
+   if (ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_STREET_ADDRESS_ERROR);
 	}
-
+  }
+  
+   if (ACCOUNT_POSTCODE == 'true') {
 	if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_POST_CODE_ERROR);
 	}
+  }
 
+   if (ACCOUNT_CITY == 'true') {
 	if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_CITY_ERROR);
 	}
+  }
 
+   if (ACCOUNT_COUNTRY == 'true') {
 	if (is_numeric($country) == false) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_COUNTRY_ERROR);
 	}
+  }
 
 	if (ACCOUNT_STATE == 'true') {
 		$zone_id = 0;
@@ -193,11 +210,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		}
 	}
 
+   if (ACCOUNT_TELE == 'true') {
 	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_TELEPHONE_NUMBER_ERROR);
 	}
+  }
 
 	if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
 		$error = true;
@@ -399,7 +418,12 @@ if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 	$smarty->assign('vat', '0');
 }
 
-$smarty->assign('INPUT_STREET', xtc_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : ''))));
+if (ACCOUNT_STREET_ADDRESS == 'true') {
+   $smarty->assign('street_address', '1');
+   $smarty->assign('INPUT_STREET', xtc_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : ''))));
+} else {
+	$smarty->assign('street_address', '0');
+}
 
 if (ACCOUNT_SUBURB == 'true') {
 	$smarty->assign('suburb', '1');
@@ -409,8 +433,19 @@ if (ACCOUNT_SUBURB == 'true') {
 	$smarty->assign('suburb', '0');
 }
 
-$smarty->assign('INPUT_CODE', xtc_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">'.ENTRY_POST_CODE_TEXT.'</span>' : ''))));
-$smarty->assign('INPUT_CITY', xtc_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">'.ENTRY_CITY_TEXT.'</span>' : ''))));
+if (ACCOUNT_POSTCODE == 'true') {
+	$smarty->assign('postcode', '1');
+   $smarty->assign('INPUT_CODE', xtc_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">'.ENTRY_POST_CODE_TEXT.'</span>' : ''))));
+} else {
+	$smarty->assign('postcode', '0');
+}
+
+if (ACCOUNT_CITY == 'true') {
+	$smarty->assign('city', '1');
+   $smarty->assign('INPUT_CITY', xtc_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">'.ENTRY_CITY_TEXT.'</span>' : ''))));
+} else {
+	$smarty->assign('city', '0');
+}
 
 if (ACCOUNT_STATE == 'true') {
 	$smarty->assign('state', '1');
@@ -441,9 +476,27 @@ if ($_POST['country']) {
 	$selected = STORE_COUNTRY;
 }
 
-$smarty->assign('SELECT_COUNTRY', xtc_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
-$smarty->assign('INPUT_TEL', xtc_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : ''))));
-$smarty->assign('INPUT_FAX', xtc_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : ''))));
+if (ACCOUNT_COUNTRY == 'true') {
+	$smarty->assign('country', '1');
+   $smarty->assign('SELECT_COUNTRY', xtc_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
+} else {
+	$smarty->assign('country', '0');
+}
+
+if (ACCOUNT_TELE == 'true') {
+	$smarty->assign('telephone', '1');
+   $smarty->assign('INPUT_TEL', xtc_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : ''))));
+} else {
+	$smarty->assign('telephone', '0');
+}
+
+if (ACCOUNT_FAX == 'true') {
+	$smarty->assign('fax', '1');
+   $smarty->assign('INPUT_FAX', xtc_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : ''))));
+} else {
+	$smarty->assign('fax', '0');
+}
+
 $smarty->assign('INPUT_PASSWORD', xtc_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">'.ENTRY_PASSWORD_TEXT.'</span>' : ''))));
 $smarty->assign('INPUT_CONFIRMATION', xtc_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : ''))));
 $smarty->assign('FORM_END', '</form>');

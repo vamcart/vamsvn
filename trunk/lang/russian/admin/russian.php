@@ -325,7 +325,7 @@ define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модуль дос
 
 define('TEXT_NETTO','без налогов.');
 
-define('ENTRY_CID','ID клиентов:');
+define('ENTRY_CID','ID клиента:');
 define('IP','IP заказа:');
 define('CUSTOMERS_MEMO','Заметки:');
 define('DISPLAY_MEMOS','Показать/написать');
@@ -333,7 +333,7 @@ define('TITLE_MEMO','Заметки');
 define('ENTRY_LANGUAGE','Язык:');
 define('CATEGORIE_NOT_FOUND','Категория не найдена!');
 
-define('IMAGE_RELEASE', 'Использовать Подарочный Ваучер');
+define('IMAGE_RELEASE', 'Активировать сертификат');
 
 define('_JANUARY', 'Январь');
 define('_FEBRUARY', 'Февраль');

@@ -119,15 +119,18 @@ function check_form(form_name) {
 <?php if (ACCOUNT_DOB == 'true') echo '  check_input("dob", ' . ENTRY_DOB_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_DATE_OF_BIRTH_ERROR) . '");' . "\n"; ?>
 
   check_input("email_address", <?php echo ENTRY_EMAIL_ADDRESS_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_EMAIL_ADDRESS_ERROR); ?>");
-  check_input("street_address", <?php echo ENTRY_STREET_ADDRESS_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_STREET_ADDRESS_ERROR); ?>");
-  check_input("postcode", <?php echo ENTRY_POSTCODE_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_POST_CODE_ERROR); ?>");
-  check_input("city", <?php echo ENTRY_CITY_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_CITY_ERROR); ?>");
+
+<?php if (ACCOUNT_STREET_ADDRESS == 'true') echo '  check_input("street_address", ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY__STREET_ADDRESS_ERROR) . '");' . "\n"; ?>
+
+<?php if (ACCOUNT_POSTCODE == 'true') echo '  check_input("postcode", ' . ENTRY_POSTCODE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_POST_CODE_ERROR) . '");' . "\n"; ?>
+
+<?php if (ACCOUNT_CITY == 'true') echo '  check_input("city", ' . ENTRY_CITY_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_CITY_ERROR) . '");' . "\n"; ?>
 
 <?php if (ACCOUNT_STATE == 'true') echo '  check_input("state", ' . ENTRY_STATE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_STATE_ERROR) . '");' . "\n"; ?>
 
-  check_select("country", "", "<?php echo xtc_js_lang(ENTRY_COUNTRY_ERROR); ?>");
+<?php if (ACCOUNT_COUNTRY == 'true') echo ' check_select("country", "", "' . xtc_js_lang(ENTRY_COUNTRY_ERROR) . '");' . "\n"; ?>
 
-  check_input("telephone", <?php echo ENTRY_TELEPHONE_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR); ?>");
+<?php if (ACCOUNT_TELE == 'true') echo '  check_input("telephone", ' . ENTRY_TELEPHONE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR); ?>");
 
   check_password("password", "confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR_NOT_MATCHING); ?>");
   check_password_new("password_current", "password_new", "password_confirmation", <?php echo xtc_js_lang(ENTRY_PASSWORD_MIN_LENGTH); ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING); ?>");
