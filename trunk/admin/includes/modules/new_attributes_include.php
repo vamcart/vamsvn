@@ -119,9 +119,9 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
                 echo "<tr>";
 
                // echo "<td colspan=\"2\">File: <input type=\"file\" name=\"" . $current_value_id . "_download_file\"></td>";
-                echo "<td colspan=\"2\">&nbsp;" . DL_FILE . xtc_draw_pull_down_menu($current_value_id . '_download_file', xtc_getDownloads(), $attribute_value_download_filename, '')."</td>";
-                echo "<td class=\"main\">&nbsp;". DL_COUNT . "<input type=\"text\" name=\"" . $current_value_id . "_download_count\" value=\"" . $attribute_value_download_count . "\"></td>";
-                echo "<td class=\"main\">&nbsp;". DL_EXPIRE . "<input type=\"text\" name=\"" . $current_value_id . "_download_expire\" value=\"" . $attribute_value_download_expire . "\"></td>";
+                echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . xtc_draw_pull_down_menu($current_value_id . '_download_file', xtc_getDownloads(), $attribute_value_download_filename, '')."</td>";
+                echo "<td class=\"main\">&nbsp;". DL_COUNT . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_count\" value=\"" . $attribute_value_download_count . "\"></td>";
+                echo "<td class=\"main\">&nbsp;". DL_EXPIRE . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_expire\" value=\"" . $attribute_value_download_expire . "\"></td>";
                 echo "</tr>";
             }
             // Download function end
