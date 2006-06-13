@@ -49,12 +49,19 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$company = xtc_db_prepare_input($_POST['company']);
 	$firstname = xtc_db_prepare_input($_POST['firstname']);
 	$lastname = xtc_db_prepare_input($_POST['lastname']);
-	$street_address = xtc_db_prepare_input($_POST['street_address']);
+   if (ACCOUNT_STREET_ADDRESS == 'true')
+	   $street_address = xtc_db_prepare_input($_POST['street_address']);
 	if (ACCOUNT_SUBURB == 'true')
 		$suburb = xtc_db_prepare_input($_POST['suburb']);
-	$postcode = xtc_db_prepare_input($_POST['postcode']);
-	$city = xtc_db_prepare_input($_POST['city']);
-	$country = xtc_db_prepare_input($_POST['country']);
+   if (ACCOUNT_POSTCODE == 'true')
+	   $postcode = xtc_db_prepare_input($_POST['postcode']);
+	if (ACCOUNT_CITY == 'true')
+	   $city = xtc_db_prepare_input($_POST['city']);
+   if (ACCOUNT_COUNTRY == 'true') {
+	   $country = xtc_db_prepare_input($_POST['country']);
+	} else {
+      $country = STORE_COUNTRY;
+	}
 	if (ACCOUNT_STATE == 'true') {
 		$zone_id = xtc_db_prepare_input($_POST['zone_id']);
 		$state = xtc_db_prepare_input($_POST['state']);
@@ -80,29 +87,37 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$messageStack->add('addressbook', ENTRY_LAST_NAME_ERROR);
 	}
 
+   if (ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('addressbook', ENTRY_STREET_ADDRESS_ERROR);
 	}
+  }
 
+   if (ACCOUNT_POSTCODE == 'true') {
 	if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('addressbook', ENTRY_POST_CODE_ERROR);
 	}
+  }
 
+   if (ACCOUNT_CITY == 'true') {
 	if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('addressbook', ENTRY_CITY_ERROR);
 	}
+  }
 
+   if (ACCOUNT_COUNTRY == 'true') {
 	if (is_numeric($country) == false) {
 		$error = true;
 
 		$messageStack->add('addressbook', ENTRY_COUNTRY_ERROR);
 	}
+  }
 
 	if (ACCOUNT_STATE == 'true') {
 		$zone_id = 0;

@@ -453,5 +453,6 @@ define('SHIPPING_COSTS','Shipping costs');
 // —борка VaM
 
 define('BOX_HEADING_SEARCH', 'Go');
+define('ICON_ERROR', 'Error');
 
 ?>

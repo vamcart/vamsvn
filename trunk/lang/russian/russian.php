@@ -455,5 +455,6 @@ define('SHIPPING_COSTS','доставка');
 // Сборка VaM
 
 define('BOX_HEADING_SEARCH', 'Поиск');
+define('ICON_ERROR', 'Ошибка');
 
 ?>
