@@ -1,12 +1,12 @@
 
-Dear Customer ,
+Уважаемый покупатель!
 
-The status of your order changed.
+Статус Вашего заказа изменён.
 
-{if $NOTIFY_COMMENTS}Comments:{$NOTIFY_COMMENTS}{/if}
+{if $NOTIFY_COMMENTS}Комментарии:{$NOTIFY_COMMENTS}{/if}
 
 
 
-New status: {$ORDER_STATUS}
+Новый статус: {$ORDER_STATUS}
 
-For questions, feel free to anwser to this mail.
+Если у Вас есть вопросы, задайте их в ответном письме.
