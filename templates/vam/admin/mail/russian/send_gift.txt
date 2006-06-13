@@ -1,12 +1,12 @@
 
 {$MESSAGE}
   
-Gutscheinwert {$AMMOUNT}
+Номинал сертификата: {$AMMOUNT}
     
-Um Ihren Gutschein zu verbuchen, klicken Sie auf den unten stehenden Link.
-Bitte notieren Sie sich zur Sicherheit Ihren persцnlichen Gutschein-Code.Ihr Gutscheincode lautet: {$GIFT_ID} 
+Чтобы активировать Ваш подарочный сертификат, перейдите по ссылке, указанной ниже.
+Запомните код Вашего сертификата!
+Код подарочного сертификата: {$GIFT_ID} 
 
 {$GIFT_LINK}
 
-Falls es wider Erwarten zu Problemen beim verbuchen kommen sollte.        
-Besuchen Sie unsere Webseite {$WEBSITE} und geben den Gutschein-Code bitte manuell ein>
+Если у Вас возникли какие-либо проблемы, заходите в наш интернет-магазин {$WEBSITE}, мы поможем Вам решить все возникшие проблемы.

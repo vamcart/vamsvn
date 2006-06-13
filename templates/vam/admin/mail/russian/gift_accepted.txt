@@ -1,5 +1,5 @@
 
-Sehr geehrter Kunde,
+Уважаемый покупатель!
 
-Sie haben k&uuml;rzlich in unserem Online-Shop einen Gutschein bestellt, welcher aus Sicherheitsgr&uuml;nden nicht sofort freigeschaltet wurde. Dieses Guthaben steht Ihnen nun zur Verf&uuml;gung. Sie k&ouml;nnen Ihren Gutschein verbuchen und per E-Mail versenden Der von Ihnen bestellte Gutschein hat einen Wert von {$AMMOUNT}
+Вы оформили подарочный сертификат. Вы можете использовать свой сертификат при оформлении заказов в нашем интернет-магазине, либо Вы можете подарить часть суммы или всю сумму сертификата своим друзьям и близким. Номинал Вашего подарочного сертификата: {$AMMOUNT}
 
