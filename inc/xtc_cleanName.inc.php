@@ -12,7 +12,8 @@
 
 
  function xtc_cleanName($name) {
-     $replace_param='/[^a-zA-Z0-9]/';
+//     $replace_param='/[^a-zA-Z0-9]/';
+     $replace_param='/[^a-zA-Zà-ÿÀ-ß0-9]/';
      $name=preg_replace($replace_param,'-',$name);    
      return $name;
  }
