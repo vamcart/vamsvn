@@ -57,7 +57,7 @@
     //  }
     //}
 
-    $categories_string .= '<br>';
+    $categories_string .= '<br />';
 
     if ($foo[$counter]['next_id']) {
       xtc_show_category_content($foo[$counter]['next_id']);
