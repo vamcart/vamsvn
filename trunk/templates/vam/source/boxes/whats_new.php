@@ -58,7 +58,7 @@ $random_product['products_name'] = xtc_get_products_name($random_product['produc
 
 if ($random_product['products_name'] != '') {
 
-	$box_content = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO,  xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.xtc_image(DIR_WS_THUMBNAIL_IMAGES.$random_product['products_image'], $random_product['products_name'], PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT).'</a><br><a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.$random_product['products_name'].'</a><br>'.$whats_new_price;
+	$box_content = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO,  xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.xtc_image(DIR_WS_THUMBNAIL_IMAGES.$random_product['products_image'], $random_product['products_name'], PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT).'</a><br /><a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.$random_product['products_name'].'</a><br />'.$whats_new_price;
 
 	$image = '';
 	if ($random_product['products_image'] != '') {
