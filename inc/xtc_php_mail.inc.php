@@ -29,8 +29,8 @@ function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		$lang_data = xtc_db_fetch_array($lang_query);
 		$mail->CharSet = $lang_data['language_charset'];
 	}
-	if ($_SESSION['language'] == 'german') {
-		$mail->SetLanguage("de", DIR_WS_CLASSES);
+	if ($_SESSION['language'] == 'russian') {
+		$mail->SetLanguage("ru", DIR_WS_CLASSES);
 	} else {
 		$mail->SetLanguage("en", DIR_WS_CLASSES);
 	}
