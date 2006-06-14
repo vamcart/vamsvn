@@ -95,7 +95,7 @@ if ($mo_images != false) {
 ?>
 <iframe src="<?php echo 'show_product_thumbs.php?pID='.(int)$_GET['pID'].'&imgID='.(int)$_GET['imgID']; ?>" width="<?php echo $size[0]+40; ?>" height="<?php echo $bheight+5; ?>" border="0" frameborder="0">
     <a href="<?php echo 'show_product_thumbs.php?pID='.(int)$_GET['pID'].'&imgID='.(int)$_GET['imgID']; ?>">More Images</a>
-</iframe><br>
+</iframe><br />
 <?php
 
 }
