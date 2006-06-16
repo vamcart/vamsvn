@@ -56,6 +56,7 @@ if ($products_attributes['total'] > 0) {
 
 // assign language to template for caching
 $smarty->assign('language', $_SESSION['language']);
+$smarty->assign('charset', $_SESSION['language_charset']);
 
 $image = '';
 if ($product_info['products_image'] != '') {
