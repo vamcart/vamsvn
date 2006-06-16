@@ -30,7 +30,6 @@ Disallow: product_reviews.php
 Disallow: product_reviews_info.php 
 Disallow: reviews.php 
 Disallow: shipping.php 
-Disallow: admin/
 Disallow: export/
 Disallow: download/ 
 Disallow: includes/ 
