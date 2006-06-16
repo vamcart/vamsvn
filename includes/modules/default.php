@@ -196,7 +196,7 @@ if (xtc_check_categories_status($current_category_id) >= 1) {
 				                               p.products_vpe_value,
 				                               p.products_discount_allowed,
 				                               p.products_tax_class_id
-				                               from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
+                                           from ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
 				                               where p.products_status = '1'
 				                               and p.manufacturers_id = m.manufacturers_id
 				                               and m.manufacturers_id = '".(int) $_GET['manufacturers_id']."'
@@ -230,7 +230,7 @@ if (xtc_check_categories_status($current_category_id) >= 1) {
 				                        p.products_vpe_value,       
 				                        p.products_discount_allowed,
 				                        p.products_tax_class_id
-				                        from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
+                                    from ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS." p left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
 				                        where p.products_status = '1'
 				                        and pd.products_id = p.products_id
 				                        ".$group_check."
@@ -274,7 +274,7 @@ if (xtc_check_categories_status($current_category_id) >= 1) {
 				                               p.products_vpe_value,                            
 				                               p.products_discount_allowed,
 				                               p.products_tax_class_id
-				                               from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
+                                           from  ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
 				                               where p.products_status = '1'
 				                               and p.manufacturers_id = m.manufacturers_id
 				                               and m.manufacturers_id = '".(int) $_GET['filter_id']."'
@@ -317,7 +317,7 @@ if (xtc_check_categories_status($current_category_id) >= 1) {
 				                               p.products_vpe_value,                              
 				                               p.products_discount_allowed,
 				                               p.products_tax_class_id
-				                               from ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS." p left join ".TABLE_MANUFACTURERS." m on p.manufacturers_id = m.manufacturers_id, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                                           from  ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_MANUFACTURERS." m on p.manufacturers_id = m.manufacturers_id
 				                               left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
 				                               where p.products_status = '1'
 				                               and p.products_id = p2c.products_id
