@@ -58,15 +58,15 @@ $products_new_query_raw = "select distinct
                                     p.products_tax_class_id,
                                     p.products_date_added,
                                     m.manufacturers_name
-                                    from ".TABLE_PRODUCTS." p,
-                                    ".TABLE_CATEGORIES." c,
-                                    ".TABLE_PRODUCTS_TO_CATEGORIES." p2c
+                                    from ".TABLE_PRODUCTS." p
                                     left join ".TABLE_MANUFACTURERS." m
                                     on p.manufacturers_id = m.manufacturers_id
                                     left join ".TABLE_PRODUCTS_DESCRIPTION." pd
-                                    on p.products_id = pd.products_id 
-                                    and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                    where c.categories_status=1
+                                    on p.products_id = pd.products_id,
+                                    ".TABLE_CATEGORIES." c,
+                                    ".TABLE_PRODUCTS_TO_CATEGORIES." p2c 
+                                    WHERE pd.language_id = '".(int) $_SESSION['languages_id']."'
+                                    and c.categories_status=1
                                     and p.products_id = p2c.products_id
                                     and c.categories_id = p2c.categories_id
                                     and products_status = '1'

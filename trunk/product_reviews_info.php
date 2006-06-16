@@ -30,7 +30,7 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
 $get_params = xtc_get_all_get_params(array ('reviews_id'));
 $get_params = substr($get_params, 0, -1); //remove trailing &
 
-$reviews_query = xtc_db_query("select rd.reviews_text, r.reviews_rating, r.reviews_id, r.products_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.products_id, pd.products_name, p.products_image from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."') where r.reviews_id = '".(int) $_GET['reviews_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'");
+$reviews_query = xtc_db_query("select rd.reviews_text, r.reviews_rating, r.reviews_id, r.products_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.products_id, pd.products_name, p.products_image from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'");
 if (!xtc_db_num_rows($reviews_query))
 	xtc_redirect(xtc_href_link(FILENAME_REVIEWS));
 $reviews = xtc_db_fetch_array($reviews_query);
