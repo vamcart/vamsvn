@@ -94,7 +94,8 @@
       }
 
       // assign language to template for caching
-      $smarty->assign('language', $_SESSION['language']);
+    $smarty->assign('language', $_SESSION['language']);
+	 $smarty->assign('charset', $_SESSION['language_charset']);
     $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
     $smarty->assign('oID',$_GET['oID']);
     if ($order->info['payment_method']!='' && $order->info['payment_method']!='no_payment') {
