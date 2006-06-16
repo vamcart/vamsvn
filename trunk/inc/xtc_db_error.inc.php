@@ -29,6 +29,12 @@ function xtc_db_error($query, $errno, $error) {
    $msg .= 'Remote Address: ' . $_SERVER['REMOTE_ADDR'] . "\n";
    $msg .= 'Referer: ' . $_SERVER["HTTP_REFERER"] . "\n";
    $msg .= 'Requested: ' . $_SERVER["REQUEST_URI"] . "\n";
+
+// a_berezin log errors
+   $log = date("d/m/Y H:m:s",time()) . ' | ' . $errno . ' - ' . $error . ' | ' . $query . ' | ' . $_SERVER["REQUEST_URI"] . "\n";
+     error_log($log, 3, 'mysql_db_error.log');
+// /a_berezin log errors
+
    mail(DB_ERR_MAIL, 'Проблемы с MySQL сервером!', $msg,
         'From: db_error@'.$_SERVER["SERVER_NAME"]);
    die(DB_ERR_MSG);
