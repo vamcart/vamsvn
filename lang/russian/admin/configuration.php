@@ -168,16 +168,22 @@ define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_TITLE' , 'Максимальное количество дней для
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_DESC' , 'Сколько дней товар будет считаться новым и будет отображаться в новых товарах');
 
 
-define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Ширина превьюшки на странице товара');
-define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Ширина превьюшки на странице товара в пикселах');
-define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'Высота превьюшки на странице товара');
-define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Высота превьюшки на странице товара в пикселах');
+define('PRODUCT_IMAGE_THUMBNAIL_ACTIVE_TITLE' , 'Нарезка картинки на странице списка товаров в категории');
+define('PRODUCT_IMAGE_THUMBNAIL_ACTIVE_DESC' , 'Разрешить использование библиотеки GD для картинки на странице списка товаров в категории. Если установлено false, то не забудьте вручную загрузить картинки через ftp.');
+define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Ширина превьюшки на странице списка товаров в категории');
+define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Ширина превьюшки на странице списка товаров в категории в пикселах');
+define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'Высота превьюшки на странице списка товаров в категории');
+define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Высота превьюшки на странице списка товаров в категории в пикселах');
 
-define('PRODUCT_IMAGE_INFO_WIDTH_TITLE' , 'Ширина картинки на странице товара');
-define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Ширина картинки на странице товара в пикселах');
-define('PRODUCT_IMAGE_INFO_HEIGHT_TITLE' , 'Высота картинки на странице товара');
-define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Высота картинки на странице товара в пикселах');
+define('PRODUCT_IMAGE_INFO_ACTIVE_TITLE' , 'Нарезка картинки на странице карточки товара');
+define('PRODUCT_IMAGE_INFO_ACTIVE_DESC' , 'Разрешить использование библиотеки GD для картинки на странице карточки товара. Если установлено false, то не забудьте вручную загрузить картинки через ftp.');
+define('PRODUCT_IMAGE_INFO_WIDTH_TITLE' , 'Ширина картинки на странице карточки товара');
+define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Ширина картинки на странице карточки товара в пикселах');
+define('PRODUCT_IMAGE_INFO_HEIGHT_TITLE' , 'Высота картинки на странице карточки товара');
+define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Высота картинки на странице карточки товара в пикселах');
 
+define('PRODUCT_IMAGE_POPUP_ACTIVE_TITLE' , 'Нарезка картинки в pop-up окне');
+define('PRODUCT_IMAGE_POPUP_ACTIVE_DESC' , 'Разрешить использование библиотеки GD для картинки в pop-up окне. Если установлено false, то не забудьте вручную загрузить картинки через ftp.');
 define('PRODUCT_IMAGE_POPUP_WIDTH_TITLE' , 'Ширина картинки в pop-up окне');
 define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Ширина картинки в pop-up окне в пикселах (например 300). Если значение оставить пустым, то картинка не будет создана совсем!');
 define('PRODUCT_IMAGE_POPUP_HEIGHT_TITLE' , 'Высота картинки в pop-up окне');

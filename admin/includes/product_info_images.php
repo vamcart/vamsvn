@@ -11,7 +11,28 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name,PRODUCT_IMAGE_INFO_WIDTH,PRODUCT_IMAGE_INFO_HEIGHT,DIR_FS_CATALOG_INFO_IMAGES . $products_image_name,IMAGE_QUALITY,'');
+if(PRODUCT_IMAGE_INFO_ACTIVE == 'true') {
+
+  $width = PRODUCT_IMAGE_THUMBNAIL_WIDTH;
+  $height = PRODUCT_IMAGE_THUMBNAIL_HEIGHT;
+
+  if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true') && (empty($width) || empty($height)) ) {
+    if ($image_size = @getimagesize($src)) {
+      if (empty($width) && xtc_not_null($height)) {
+        $ratio = $height / $image_size[1];
+        $width = $image_size[0] * $ratio;
+      } elseif (xtc_not_null($width) && empty($height)) {
+        $ratio = $width / $image_size[0];
+        $height = $image_size[1] * $ratio;
+      } elseif (empty($width) && empty($height)) {
+        $width = $image_size[0];
+        $height = $image_size[1];
+      }
+    }
+  }
+
+//$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name,PRODUCT_IMAGE_INFO_WIDTH,PRODUCT_IMAGE_INFO_HEIGHT,DIR_FS_CATALOG_INFO_IMAGES . $products_image_name,IMAGE_QUALITY,'');
+	$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $width, $height, DIR_FS_CATALOG_INFO_IMAGES . $products_image_name, IMAGE_QUALITY, '');
 $array=clear_string(PRODUCT_IMAGE_INFO_BEVEL);
 if (PRODUCT_IMAGE_INFO_BEVEL != ''){
 $a->bevel($array[0],$array[1],$array[2]);}
@@ -48,4 +69,5 @@ $array=clear_string(PRODUCT_IMAGE_INFO_MOTION_BLUR);
 if (PRODUCT_IMAGE_INFO_MOTION_BLUR != ''){
 $a->motion_blur($array[0],$array[1]);}
 	  $a->create();
+}
 ?>
