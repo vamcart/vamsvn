@@ -515,7 +515,7 @@ define('PRICE_IS_BRUTTO_DESC','Использовать цены с налогом в админке.');
 define('PRICE_PRECISION_TITLE','Точность цен');
 define('PRICE_PRECISION_DESC','Точность цен до X знаков после разделителя.');
 define('CHECK_CLIENT_AGENT_TITLE','Не показывать сессию в адресе паукам поисковых машин');
-define('CHECK_CLIENT_AGENT_DESC','Не показывать сессии известным поисковым паукам. Список пауков в /inc/xtc_check_agent.inc.php и в /includes/spiders.txt');
+define('CHECK_CLIENT_AGENT_DESC','Не показывать сессии известным поисковым паукам. Список пауков в /inc/xtc_check_agent.inc.php');
 define('SHOW_IP_LOG_TITLE','Показывать IP адрес покупателя при оформлении заказа');
 define('SHOW_IP_LOG_DESC','Показать текст &quot;Ваш IP адрес:&quot;, при оформлении заказа');
 
