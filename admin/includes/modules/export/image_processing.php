@@ -49,7 +49,10 @@ include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
         // action
         // get images in original_images folder
         $files=array();
-
+// BOF Subdirectory support
+			$files = $this->get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES);
+//echo '<pre>';var_dump($files);echo '</pre>';
+/*
         if ($dir= opendir(DIR_FS_CATALOG_ORIGINAL_IMAGES)){
             while  ($file = readdir($dir)) {
                      if (is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$file) and ($file !="index.html") and (strtolower($file) != "thumbs.db")){
@@ -60,6 +63,8 @@ include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
              }
         closedir($dir);
         }
+*/
+// EOF Subdirectory support
         for ($i=0;$n=sizeof($files),$i<$n;$i++) {
 
           $products_image_name = $files[$i]['text'];
@@ -72,15 +77,36 @@ include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
 
     }
 
-    function display() {
+// BOF Subdirectory support
+		function get_files_in_dir($startdir, $subdir = '') {
+//			echo 'Directory: ' . $startdir . 'Subirectory: ' . $subdir . '<br />';
+			$dirname = $startdir . $subdir;
+			if ($dir= opendir($dirname)){
+				while ($file = readdir($dir)) {
+					if(substr($file, 0, 1) != '.') {
+//						var_dump($file);echo '<br />';
+						if (is_file($dirname.$file) and ($file !="index.html") and (strtolower($file) != "thumbs.db")){
+//							echo '&nbsp;&nbsp;File: ' . $subdir.$file . '<br />';
+							$files[]=array('id' => $subdir.$file,
+														 'text' =>$subdir.$file);
+						} elseif (is_dir($dirname.$file)) {
+//							echo '&nbsp;&nbsp;Directory: ' . $file . '<br />';
+							$files = array_merge($files, $this->get_files_in_dir($startdir, $subdir.$file.'/'));
+						}
+					}
+				}
+				closedir($dir);
+			}
+			return($files);
+		}
+// EOF Subdirectory support
 
-
-    return array('text' =>
-                            IMAGE_EXPORT_TYPE.'<br>'.
-                            IMAGE_EXPORT.'<br>'.
-                            '<br>' . xtc_button(BUTTON_REVIEW_APPROVE) . '&nbsp;' .
-                            xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MODULE_EXPORT, 'set=' . $_GET['set'] . '&module=image_processing')));
-
+		function display() {
+			return array('text' =>
+														IMAGE_EXPORT_TYPE.'<br>'.
+														IMAGE_EXPORT.'<br>'.
+														'<br>' . xtc_button(BUTTON_REVIEW_APPROVE) . '&nbsp;' .
+														xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MODULE_EXPORT, 'set=' . $_GET['set'] . '&module=image_processing')));
 
     }
 

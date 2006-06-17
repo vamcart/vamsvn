@@ -387,4 +387,6 @@ define('ERROR_GIF_UPLOAD','Отсутствует GDlib Gif-поддержка, обработка картинки G
 define('TEXT_REFERER','Реферер: ');
 
 define('IMAGE_ICON_INFO','');
+define('ERROR_IMAGE_DIRECTORY_CREATE', 'Ошибка: Ошибка при создании директории ');
+define('TEXT_IMAGE_DIRECTORY_CREATE', 'Информация: Создана директория ');
 ?>
