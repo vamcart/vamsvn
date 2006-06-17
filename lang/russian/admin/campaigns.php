@@ -15,27 +15,27 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Campaign Tracking');
+define('HEADING_TITLE', 'Кампании');
 
-define('TABLE_HEADING_CAMPAIGNS', 'Campaigns');
-define('TABLE_HEADING_ACTION', 'Aktion');
+define('TABLE_HEADING_CAMPAIGNS', 'Кампании');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_HEADING_NEW_CAMPAIGN', 'New campaign');
-define('TEXT_HEADING_EDIT_CAMPAIGN', 'Edit campaign');
-define('TEXT_HEADING_DELETE_CAMPAIGN', 'delete campaign');
+define('TEXT_HEADING_NEW_CAMPAIGN', 'Новая кампания');
+define('TEXT_HEADING_EDIT_CAMPAIGN', 'Изменить кампанию');
+define('TEXT_HEADING_DELETE_CAMPAIGN', 'Удалить кампанию');
 
-define('TEXT_CAMPAIGNS', 'Campaigns:');
-define('TEXT_DATE_ADDED', 'Date added:');
-define('TEXT_LAST_MODIFIED', 'Last changes:');
-define('TEXT_LEADS', 'Leads:');
-define('TEXT_SALES', 'Sales:');
-define('TEXT_LATE_CONVERSIONS', 'Late Conversions:');
-define('TEXT_NEW_INTRO', 'Please setup a new campaign.');
-define('TEXT_EDIT_INTRO', 'Please make all neccessary changes.');
+define('TEXT_CAMPAIGNS', 'Кампании:');
+define('TEXT_DATE_ADDED', 'Дата создания:');
+define('TEXT_LAST_MODIFIED', 'Последние изменения:');
+define('TEXT_LEADS', 'Переходов:');
+define('TEXT_SALES', 'Продаж:');
+define('TEXT_LATE_CONVERSIONS', 'Конверсия:');
+define('TEXT_NEW_INTRO', 'Создание новой кампании.');
+define('TEXT_EDIT_INTRO', 'Внесите необходимые изменения.');
 
-define('TEXT_CAMPAIGNS_NAME', 'Campaignname:');
-define('TEXT_CAMPAIGNS_REFID', 'Campaigns refID:');
-define('TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS', 'Tracked campaigns:');
+define('TEXT_CAMPAIGNS_NAME', 'Название:');
+define('TEXT_CAMPAIGNS_REFID', 'Код refID:');
+define('TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS', 'Отслеживаемые кампании:');
 
-define('TEXT_DELETE_INTRO', 'Are you sure you want to delete the campaign?');
+define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить кампанию?');
 ?>

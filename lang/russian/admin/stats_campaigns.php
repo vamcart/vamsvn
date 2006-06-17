@@ -15,24 +15,24 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Отчет по кампаниям');
+define('HEADING_TITLE', 'Отчёт по кампаниям');
 
-define('REPORT_TYPE_YEARLY', 'По годам');
-define('REPORT_TYPE_MONTHLY', 'По месячно');
-define('REPORT_TYPE_WEEKLY', 'По недельно');
-define('REPORT_TYPE_DAILY', 'По дням');
-define('REPORT_START_DATE', 'От даты');
-define('REPORT_END_DATE', 'по дату (включительно)');
+define('REPORT_TYPE_YEARLY', 'Годовая');
+define('REPORT_TYPE_MONTHLY', 'Месячная');
+define('REPORT_TYPE_WEEKLY', 'Недельная');
+define('REPORT_TYPE_DAILY', 'Дневная');
+define('REPORT_START_DATE', 'Даты от');
+define('REPORT_END_DATE', 'до (включительно)');
 
 define('REPORT_ALL', 'Все');
-define('REPORT_STATUS_FILTER', 'Статус:');
+define('REPORT_STATUS_FILTER', 'Статусы заказов:');
 define('REPORT_CAMPAIGN_FILTER', 'Кампания');
 
 define('HEADING_TOTAL', 'Итого:');
-define('HEADING_LEADS', 'Лидиры');
+define('HEADING_LEADS', 'Переходов');
 define('HEADING_SELLS', 'Продажи');
-define('HEADING_HITS','Всплеск');
-define('HEADING_LATESELLS', 'Late Sells');
+define('HEADING_HITS','Кликов');
+define('HEADING_LATESELLS', 'Повторные продажи');
 define('HEADING_SUM', 'Сумма');
 define('TEXT_REFERER', 'Реферер:');
 ?>

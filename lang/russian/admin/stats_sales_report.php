@@ -21,31 +21,31 @@ define('REPORT_DATE_FORMAT', 'Д. М. Г');
 
 define('HEADING_TITLE', 'Статистика продаж');
 
-define('REPORT_TYPE_YEARLY', 'По годам');
-define('REPORT_TYPE_MONTHLY', 'По месячно');
-define('REPORT_TYPE_WEEKLY', 'По недельно');
-define('REPORT_TYPE_DAILY', 'По дням');
-define('REPORT_START_DATE', 'От даты');
-define('REPORT_END_DATE', 'по дату (включительно)');
-define('REPORT_DETAIL', 'детали');
-define('REPORT_MAX', 'показать лучшие');
-define('REPORT_ALL', 'все');
-define('REPORT_SORT', 'сортировка по');
-define('REPORT_EXP', 'експорт');
-define('REPORT_SEND', 'выполнить');
-define('EXP_NORMAL', 'стандартно');
-define('EXP_HTML', 'HTML только');
+define('REPORT_TYPE_YEARLY', 'Годовая');
+define('REPORT_TYPE_MONTHLY', 'Месячная');
+define('REPORT_TYPE_WEEKLY', 'Недельная');
+define('REPORT_TYPE_DAILY', 'Дневная');
+define('REPORT_START_DATE', 'Дата от');
+define('REPORT_END_DATE', 'до (включительно)');
+define('REPORT_DETAIL', 'Подробнее');
+define('REPORT_MAX', 'Показать лучшие');
+define('REPORT_ALL', 'Все');
+define('REPORT_SORT', 'Сортировка по');
+define('REPORT_EXP', 'Экспорт');
+define('REPORT_SEND', 'Выполнить');
+define('EXP_NORMAL', 'Стандартно');
+define('EXP_HTML', 'Только HTML');
 define('EXP_CSV', 'CSV');
 
 define('TABLE_HEADING_DATE', 'Дата');
-define('TABLE_HEADING_ORDERS', 'заказов');
-define('TABLE_HEADING_ITEMS', 'товаров');
-define('TABLE_HEADING_REVENUE', 'Прибыль');
+define('TABLE_HEADING_ORDERS', 'Заказов');
+define('TABLE_HEADING_ITEMS', 'Товаров');
+define('TABLE_HEADING_REVENUE', 'Сумма');
 define('TABLE_HEADING_SHIPPING', 'Доставка');
 
-define('DET_HEAD_ONLY', 'нет деталей');
-define('DET_DETAIL', 'показать детали');
-define('DET_DETAIL_ONLY', 'детали с суммой');
+define('DET_HEAD_ONLY', 'Нет подробностей');
+define('DET_DETAIL', 'Показать подробности');
+define('DET_DETAIL_ONLY', 'Подробности с суммой');
 
 define('SORT_VAL0', 'стандартно');
 define('SORT_VAL1', 'описание');
@@ -55,8 +55,8 @@ define('SORT_VAL4', '№ товаров по убыванию');
 define('SORT_VAL5', 'Цена');
 define('SORT_VAL6', 'Цена по убыванию');
 
-define('REPORT_STATUS_FILTER', 'Статус');
-define('REPORT_PAYMENT_FILTER','Тип оплаты');
+define('REPORT_STATUS_FILTER', 'Статусы заказов');
+define('REPORT_PAYMENT_FILTER','Способ оплаты');
 
 define('SR_SEPARATOR1', ';');
 define('SR_SEPARATOR2', ';');
