@@ -168,16 +168,22 @@ define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_TITLE' , 'Maximum days for new products');
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_DESC' , 'Maximum quantity of days new products to display');
 
 
+define('PRODUCT_IMAGE_THUMBNAIL_ACTIVE_TITLE' , 'Allow to use GD library for Product-Thumbnails');
+define('PRODUCT_IMAGE_THUMBNAIL_ACTIVE_DESC' , 'Allow to use GD library for Product-Thumbnails. If false, upload product images into images directory manually by ftp.');
 define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Width of Product-Thumbnails');
 define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Maximal Width of Product-Thumbnails in Pixel');
 define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'Height of Product-Thumbnails');
 define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Maximal Height of Product-Thumbnails in Pixel');
 
+define('PRODUCT_IMAGE_INFO_ACTIVE_TITLE' , 'Allow to use GD library for Product-Info Images');
+define('PRODUCT_IMAGE_INFO_ACTIVE_DESC' , 'Allow to use GD library for Product-Info Images. If false, upload product images into images directory manually by ftp.');
 define('PRODUCT_IMAGE_INFO_WIDTH_TITLE' , 'Width of Product-Info Images');
 define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Maximal Width of Product-Info Images in Pixel');
 define('PRODUCT_IMAGE_INFO_HEIGHT_TITLE' , 'Height of Product-Info Images');
 define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Maximal Height of Product-Info Images in Pixel');
 
+define('PRODUCT_IMAGE_POPUP_ACTIVE_TITLE' , 'Allow to use GD library for Popup Images');
+define('PRODUCT_IMAGE_POPUP_ACTIVE_DESC' , 'Allow to use GD library for Popup Images. If false, upload product images into images directory manually by ftp.');
 define('PRODUCT_IMAGE_POPUP_WIDTH_TITLE' , 'Width of Popup Images');
 define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Maximal Width of Popup Images in Pixel');
 define('PRODUCT_IMAGE_POPUP_HEIGHT_TITLE' , 'Height of Popup Images');
