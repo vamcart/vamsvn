@@ -387,4 +387,6 @@ define('ERROR_GIF_UPLOAD','Missing GDlib Gif-Support, processing of Gif image fa
 define('TEXT_REFERER','Referer: ');
 
 define('IMAGE_ICON_INFO','');
+define('ERROR_IMAGE_DIRECTORY_CREATE', 'Error: Directory creation error ');
+define('TEXT_IMAGE_DIRECTORY_CREATE', 'Success: Directory created ');
 ?>
