@@ -196,4 +196,6 @@ define('IMAGE_ICON_STATUS_RED', 'Inactive');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Set Inactive');
 define('TABLE_HEADING_MAX_DISCOUNT', 'Max. discount');
 
+define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Upload directory:');
+define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Use uploaded picture:');
 ?>

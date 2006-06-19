@@ -593,4 +593,6 @@ define('SEARCH_IN_DESC_DESC','Activate to enable search in Products Descriptions
 define('SEARCH_IN_ATTR_TITLE','Search in Products Attributes');
 define('SEARCH_IN_ATTR_DESC','Activate to enable search in Products Attributes');
 
+define('SEARCH_ENGINE_FRIENDLY_URLSX_TITLE' , 'Allow to use URL SEFLT');
+define('SEARCH_ENGINE_FRIENDLY_URLSX_DESC' , 'Allow to use URL SEFLT');
 ?>

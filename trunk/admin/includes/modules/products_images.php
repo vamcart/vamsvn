@@ -15,17 +15,27 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
 //include needed functions
 require_once (DIR_FS_INC.'xtc_get_products_mo_images.inc.php');
+// BOF Add existing image
+require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
+// EOF Add existing image
 
 // show images
 if ($_GET['action'] == 'new_product') {
+// BOF Add existing image
+$dir_list = array_merge(array('id' => '', 'text' => ''), xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES, '', true));
+$file_list = array_merge(array('id' => '', 'text' => ''), xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
+// EOF Add existing image
 
 	// display images fields:
 	echo '<tr><td colspan="4">'.xtc_draw_separator('pixel_trans.gif', '1', '10').'</td></tr>';
 	if ($pInfo->products_image) {
 		echo '<tr><td colspan="4"><table><tr><td align="center" class="main" width="'. (PRODUCT_IMAGE_THUMBNAIL_WIDTH + 15).'">'.xtc_image(DIR_WS_CATALOG_THUMBNAIL_IMAGES.$pInfo->products_image, 'Standard Image').'</td>';
 	}
-	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br>'.xtc_draw_file_field('products_image').'<br>'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.xtc_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
-
+	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.xtc_draw_file_field('products_image').'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.xtc_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
+// BOF Add existing image
+	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('upload_dir_image_0',$dir_list);
+	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('get_file_image_0',$file_list);
+// EOF Add existing image
 	if ($pInfo->products_image != '') {
 		echo '</tr><tr><td align="center" class="main" valign="middle">'.xtc_draw_selection_field('del_pic', 'checkbox', $pInfo->products_image).' '.TEXT_DELETE.'</td></tr></table>';
 	} else {
@@ -43,7 +53,11 @@ if ($_GET['action'] == 'new_product') {
 			} else {
 				echo '<tr>';
 			}
-			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br>'.xtc_draw_file_field('mo_pics_'.$i).'<br>'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].xtc_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
+			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br />'.xtc_draw_file_field('mo_pics_'.$i).'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].xtc_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
+// BOF Add existing image
+	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list);
+	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list);
+// EOF Add existing image
 			if (isset ($mo_images[$i]["image_name"])) {
 				echo '</tr><tr><td align="center" class="main" valign="middle">'.xtc_draw_selection_field('del_mo_pic[]', 'checkbox', $mo_images[$i]["image_name"]).' '.TEXT_DELETE.'</td></tr></table>';
 			} else {

@@ -51,4 +51,31 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 		}
 		return(array((int)$width, (int)$height));
 	}
+
+	function xtc_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif'), $dir_only=false, $subdir = '') {
+//		echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
+		if(!is_array($ext)) $ext=array();
+		$dirname = $startdir . $subdir;
+		if ($dir= opendir($dirname)){
+			while ($file = readdir($dir)) {
+				if(substr($file, 0, 1) != '.') {
+					if (is_file($dirname.$file) && !$dir_only) {
+						if (in_array(substr($file, strrpos($file, '.')), $ext)) {
+//							echo '&nbsp;&nbsp;File: ' . $subdir.$file . '<br />';
+							$files[]=array('id' => $subdir.$file,
+														 'text' => $subdir.$file);
+						}
+					} elseif (is_dir($dirname.$file)) {
+						if($dir_only) {
+							$files[]=array('id' => $subdir.$file.'/',
+														 'text' => $subdir.$file.'/');
+						}
+						$files = array_merge($files, xtc_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/'));
+					}
+				}
+			}
+			closedir($dir);
+		}
+		return($files);
+	}
 ?>
