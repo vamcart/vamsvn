@@ -198,4 +198,5 @@ define('TABLE_HEADING_MAX_DISCOUNT', 'Максимально возможная скидка');
 
 define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Директория загрузки:');
 define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Использовать загруженный файл:');
+define('TEXT_STANDART_IMAGE', 'Картинка');
 ?>
