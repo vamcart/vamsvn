@@ -50,56 +50,33 @@ include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
         // get images in original_images folder
         $files=array();
 // BOF Subdirectory support
-			$files = $this->get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES);
-//echo '<pre>';var_dump($files);echo '</pre>';
+			require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
+			$files = xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES);
+//			echo '<pre>';var_dump($files);echo '</pre>';
 /*
-        if ($dir= opendir(DIR_FS_CATALOG_ORIGINAL_IMAGES)){
-            while  ($file = readdir($dir)) {
-                     if (is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$file) and ($file !="index.html") and (strtolower($file) != "thumbs.db")){
-                         $files[]=array(
-                                        'id' => $file,
-                                        'text' =>$file);
-                     }
-             }
-        closedir($dir);
-        }
-*/
-// EOF Subdirectory support
-        for ($i=0;$n=sizeof($files),$i<$n;$i++) {
-
-          $products_image_name = $files[$i]['text'];
-           if ($files[$i]['text'] != 'Thumbs.db' &&  $files[$i]['text'] != 'Index.html') {
-   		   require(DIR_WS_INCLUDES . 'product_thumbnail_images.php');
-           require(DIR_WS_INCLUDES . 'product_info_images.php');
-           require(DIR_WS_INCLUDES . 'product_popup_images.php');
-           }
-         }
-
-    }
-
-// BOF Subdirectory support
-		function get_files_in_dir($startdir, $subdir = '') {
-//			echo 'Directory: ' . $startdir . 'Subirectory: ' . $subdir . '<br />';
-			$dirname = $startdir . $subdir;
-			if ($dir= opendir($dirname)){
-				while ($file = readdir($dir)) {
-					if(substr($file, 0, 1) != '.') {
-//						var_dump($file);echo '<br />';
-						if (is_file($dirname.$file) and ($file !="index.html") and (strtolower($file) != "thumbs.db")){
-//							echo '&nbsp;&nbsp;File: ' . $subdir.$file . '<br />';
-							$files[]=array('id' => $subdir.$file,
-														 'text' =>$subdir.$file);
-						} elseif (is_dir($dirname.$file)) {
-//							echo '&nbsp;&nbsp;Directory: ' . $file . '<br />';
-							$files = array_merge($files, $this->get_files_in_dir($startdir, $subdir.$file.'/'));
-						}
+			if ($dir= opendir(DIR_FS_CATALOG_ORIGINAL_IMAGES)){
+				while  ($file = readdir($dir)) {
+					if (is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$file) and ($file !="index.html") and (strtolower($file) != "thumbs.db")){
+						$files[]=array(
+													 'id' => $file,
+													 'text' =>$file);
 					}
 				}
 				closedir($dir);
 			}
-			return($files);
-		}
+*/
 // EOF Subdirectory support
+			for ($i=0;$n=sizeof($files),$i<$n;$i++) {
+
+				$products_image_name = $files[$i]['text'];
+				if ($files[$i]['text'] != 'Thumbs.db' &&  $files[$i]['text'] != 'Index.html') {
+					require(DIR_WS_INCLUDES . 'product_thumbnail_images.php');
+					require(DIR_WS_INCLUDES . 'product_info_images.php');
+					require(DIR_WS_INCLUDES . 'product_popup_images.php');
+				}
+			}
+
+		}
 
 		function display() {
 			return array('text' =>

@@ -509,10 +509,17 @@ class categories {
 		}
 
 		//prepare products_image filename
-		if ($products_image = xtc_try_upload('products_image', DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
+// BOF Image subdirectories
+//		if ($products_image = xtc_try_upload('products_image', DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
+		if ($products_image = xtc_try_upload('products_image', DIR_FS_CATALOG_ORIGINAL_IMAGES . $_POST['upload_dir_image_0'], '777', '')) {
+			$products_image->filename = $_POST['upload_dir_image_0'].$products_image->filename;
+// EOF Image subdirectories
 			$pname_arr = explode('.', $products_image->filename);
 			$nsuffix = array_pop($pname_arr);
 			$products_image_name = $products_id.'_0.'.$nsuffix;
+// BOF Image subdirectories
+			$products_image_name = $_POST['upload_dir_image_0'].$products_image_name;
+// EOF Image subdirectories
 			$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
 								                                FROM ".TABLE_PRODUCTS."
 								                               WHERE products_image = '".$products_data['products_previous_image_0']."'");
@@ -537,6 +544,16 @@ class categories {
 			require (DIR_WS_INCLUDES.'product_popup_images.php');
 
 		} else {
+// BOF Add existing image
+			if (isset($_POST['get_file_image_0']) && $_POST['get_file_image_0'] != "" && is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$_POST['get_file_image_0'])) {
+				$products_image_name = $products_data['get_file_image_0'];
+				$sql_data_array['products_image'] = xtc_db_prepare_input($products_image_name);
+
+				require (DIR_WS_INCLUDES.'product_thumbnail_images.php');
+				require (DIR_WS_INCLUDES.'product_info_images.php');
+				require (DIR_WS_INCLUDES.'product_popup_images.php');
+			} else
+// EOF Add existing image
 			$products_image_name = $products_data['products_previous_image_0'];
 		}
 
@@ -569,10 +586,17 @@ class categories {
 
 		//MO_PICS
 		for ($img = 0; $img < MO_PICS; $img ++) {
-			if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
+// BOF Image subdirectories
+//		if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
+			if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES . $_POST['mo_pics_upload_dir_image_'].$img, '777', '')) {
+				$pIMG->filename = $_POST['mo_pics_upload_dir_image_'].$img.$pIMG->filename;
+// EOF Image subdirectories
 				$pname_arr = explode('.', $pIMG->filename);
 				$nsuffix = array_pop($pname_arr);
 				$products_image_name = $products_id.'_'. ($img +1).'.'.$nsuffix;
+// BOF Image subdirectories
+				$products_image_name = $_POST['mo_pics_upload_dir_image_'].$img.$products_image_name;
+// EOF Image subdirectories
 				$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
 											                                FROM ".TABLE_PRODUCTS_IMAGES."
 											                               WHERE image_name = '".$products_data['products_previous_image_'. ($img +1)]."'");

@@ -196,4 +196,6 @@ define('IMAGE_ICON_STATUS_RED', 'Неактивна');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 define('TABLE_HEADING_MAX_DISCOUNT', 'Максимально возможная скидка');
 
+define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Директория загрузки:');
+define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Использовать загруженный файл:');
 ?>
