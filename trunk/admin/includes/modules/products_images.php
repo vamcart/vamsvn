@@ -29,7 +29,7 @@ $file_list = array_merge(array('id' => '', 'text' => ''), xtc_get_files_in_dir(D
 	// display images fields:
 	echo '<tr><td colspan="4">'.xtc_draw_separator('pixel_trans.gif', '1', '10').'</td></tr>';
 	if ($pInfo->products_image) {
-		echo '<tr><td colspan="4"><table><tr><td align="center" class="main" width="'. (PRODUCT_IMAGE_THUMBNAIL_WIDTH + 15).'">'.xtc_image(DIR_WS_CATALOG_THUMBNAIL_IMAGES.$pInfo->products_image, 'Standard Image').'</td>';
+		echo '<tr><td colspan="4"><table><tr><td align="center" class="main" width="'. (PRODUCT_IMAGE_THUMBNAIL_WIDTH + 15).'">'.xtc_image(DIR_WS_CATALOG_THUMBNAIL_IMAGES.$pInfo->products_image, TEXT_STANDART_IMAGE).'</td>';
 	}
 	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.xtc_draw_file_field('products_image').'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.xtc_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
 // BOF Add existing image
@@ -49,7 +49,7 @@ $file_list = array_merge(array('id' => '', 'text' => ''), xtc_get_files_in_dir(D
 			echo '<tr><td colspan="4">'.xtc_draw_separator('pixel_black.gif', '100%', '1').'</td></tr>';
 			echo '<tr><td colspan="4">'.xtc_draw_separator('pixel_trans.gif', '1', '10').'</td></tr>';
 			if ($mo_images[$i]["image_name"]) {
-				echo '<tr><td colspan="4"><table><tr><td align="center" class="main" width="'. (PRODUCT_IMAGE_THUMBNAIL_WIDTH + 15).'">'.xtc_image(DIR_WS_CATALOG_THUMBNAIL_IMAGES.$mo_images[$i]["image_name"], 'Image '. ($i +1)).'</td>';
+				echo '<tr><td colspan="4"><table><tr><td align="center" class="main" width="'. (PRODUCT_IMAGE_THUMBNAIL_WIDTH + 15).'">'.xtc_image(DIR_WS_CATALOG_THUMBNAIL_IMAGES.$mo_images[$i]["image_name"], TEXT_STANDART_IMAGE . ' '. ($i +1)).'</td>';
 			} else {
 				echo '<tr>';
 			}
