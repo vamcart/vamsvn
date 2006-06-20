@@ -207,11 +207,11 @@ define('JS_PASSWORD', '* Поля \'Пароль\' и \'Подтверждение\' должны совпадать и 
 
 define('JS_ORDER_DOES_NOT_EXIST', 'Заказ номер %s не найден!');
 
-define('CATEGORY_PERSONAL', 'Персональный');
+define('CATEGORY_PERSONAL', 'Персональные данные');
 define('CATEGORY_ADDRESS', 'Адрес');
 define('CATEGORY_CONTACT', 'Для контакта');
 define('CATEGORY_COMPANY', 'Компания');
-define('CATEGORY_OPTIONS', 'Рассылка');
+define('CATEGORY_OPTIONS', 'Настройки');
 
 define('ENTRY_GENDER', 'Пол:');
 define('ENTRY_GENDER_ERROR', '&nbsp;<span class="errorText">обязательно</span>');
@@ -248,7 +248,7 @@ define('ENTRY_PASSWORD','Пароль (сгенерирован)');
 define('ENTRY_PASSWORD_ERROR','&nbsp;<span class="errorText">минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов</span>');
 define('ENTRY_MAIL_COMMENTS','Дополнительный текст в Email:');
 
-define('ENTRY_MAIL','Послать письмо с паролем клиенту?');
+define('ENTRY_MAIL','Отправить письмо с паролем клиенту?');
 define('YES','да');
 define('NO','нет');
 define('SAVE_ENTRY','Сохранить изменения?');
