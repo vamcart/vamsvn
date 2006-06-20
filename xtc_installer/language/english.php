@@ -13,7 +13,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 // Global
-define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">XT-Commerce</a><br />Powered by xt:Commerce'); 
+define('TEXT_FOOTER','Copyright  &copy; 2002 - 2006 <a href="http://www.xt-commerce.com">xt:Commerce</a><br />Powered by xt:Commerce VaM Edition'); 
    
 // Box names
 define('BOX_LANGUAGE','Language');
@@ -75,14 +75,14 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 // index.php
 define('TITLE_SELECT_LANGUAGE','Select your language!');
 
-define('TEXT_WELCOME_INDEX','<b>Welcome to XT-Commerce</b><br /><br />XT-Commerce is an open source e-commerce solution under on going development by the XT-Commerce Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> XT-Commerce combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, XT-Commerce can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes Linux, Solaris, BSD, and Microsoft Windows environments.<br /><br /><b>Willkommen zu XT-Commerce</b><br /><br />XT-Commerce ist eine Open-Source e-commerce Lösung, die ständig vom XT-Commerce Team und einer grossen Gemeinschaft weiterentwickelt wird.<br /> Seine out-of-the-box Installation erlaubt es dem Shop-Besitzer seinen Online-Shop mit einem Minimum an Aufwand und Kosten zu installieren, zu betreiben und zu verwalten.<br /><br />XT-Commerce ist auf jedem System lauffähig, welches eine PHP Umgebung (ab PHP 4.1) und mySQL zur Verfügung stellt, wie zum Beispiel Linux, Solaris, BSD, und Microsoft Windows.');
+define('TEXT_WELCOME_INDEX','<b>Welcome to xt:Commerce VaM Edition</b><br /><br />xt:Commerce VaM Edition is an open source e-commerce solution under on going development by the xt:Commerce Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> xt:Commerce VaM Edition combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, xt:Commerce VaM Edition can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes GNU/Linux, Solaris, BSD, and Microsoft Windows environments.');
 define('TEXT_WELCOME_STEP1','<b>Main database and webserver settings</b><br /><br />Please enter your Database and webserver settings.<br />');
-define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The XT-Commerce installer will automatically install the XT-Commerce database.');
+define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The xt:Commerce VaM Edition installer will automatically install the xt:Commerce VaM Edition database.');
 define('TEXT_WELCOME_STEP3','<b>Database import.</b><br /><br />');
-define('TEXT_WELCOME_STEP4','<b>Configure XT-Commerce main files</b><br /><br /><b>If there are old configure files from a further installation, XT-Commerce wiill delete them</b><br /><br />The installer will set up the configuration files with the main parameters for database and file structur.<br /><br />You can choose between different session handling systems.');
+define('TEXT_WELCOME_STEP4','<b>Configure xt:Commerce VaM Edition main files</b><br /><br /><b>If there are old configure files from a further installation, xt:Commerce VaM Edition wiill delete them</b><br /><br />The installer will set up the configuration files with the main parameters for database and file structur.<br /><br />You can choose between different session handling systems.');
 define('TEXT_WELCOME_STEP5','<b>Webserver Configuration</b><br /><br />');
 define('TEXT_WELCOME_STEP6','<b>Basic shop configuration</b><br /><br />The installer will create the admin account and will perform some db actions.<br /> The given informations for <b>Country</b> and <b>Post Code</b> are used for shipping and tax callculations.<br /><br />If you wish, xtcommerce can automatically setup the zones,tax-rates and tax-classes for delivering/selling within the European Union.<br />Just set <b>setup zones for EU</b> to <b>YES</b>.');
-define('TEXT_WELCOME_STEP7','<b>Guest and default customers setup</b><br /><br />The XT-Commerce group- and pricesystem got nearly infinite possibilities of different prices.<br /><br />
+define('TEXT_WELCOME_STEP7','<b>Guest and default customers setup</b><br /><br />The xt:Commerce VaM Edition group- and pricesystem got nearly infinite possibilities of different prices.<br /><br />
 <b>% discount on single product</b><br />
 %max can be set for every single product, and single customers group<br />
 if %max at product = 10.00% and %max for group = 5% -> 5% discount on product<br />
@@ -97,14 +97,14 @@ user group 2 -> 10% discount on product Y<br />
 user group 3 -> a special group price on product Y<br />
 user group 4 -> netto price on product Y<br />
 ');
-define('TEXT_WELCOME_FINISHED','<b>XT-Commerce installation successful!</b>');
+define('TEXT_WELCOME_FINISHED','<b>xt:Commerce VaM Edition installation successful!</b>');
 // install_step1.php
 
 define('TITLE_CUSTOM_SETTINGS','Custom Settings');
-define('TEXT_IMPORT_DB','Import XT-Commerce Database');
-define('TEXT_IMPORT_DB_LONG','Import the XT-Commerce database structure which includes tables and sample data.');
+define('TEXT_IMPORT_DB','Import xt:Commerce VaM Edition Database');
+define('TEXT_IMPORT_DB_LONG','Import the xt:Commerce VaM Edition database structure which includes tables and sample data.');
 define('TEXT_AUTOMATIC','Automatic Configuration');
-define('TEXT_AUTOMATIC_LONG','The information you submit regarding the web server and database server will be automatically saved into both XT-Commerce Shop and Administration Tool configuration files.');
+define('TEXT_AUTOMATIC_LONG','The information you submit regarding the web server and database server will be automatically saved into both xt:Commerce VaM Edition Shop and Administration Tool configuration files.');
 define('TITLE_DATABASE_SETTINGS','Database Settings');
 define('TEXT_DATABASE_SERVER','Database Server');
 define('TEXT_DATABASE_SERVER_LONG','The database server can be in the form of a hostname, such as <i>db1.myserver.com</i>, or as an IP address, such as <i>192.168.0.1</i>.');
@@ -113,18 +113,18 @@ define('TEXT_USERNAME_LONG','The username is used to connect to the database ser
 define('TEXT_PASSWORD','Password');
 define('TEXT_PASSWORD_LONG','The password is used together with the username, which forms the database user account.');
 define('TEXT_DATABASE','Database');
-define('TEXT_DATABASE_LONG','The database used to hold the catalog data. An example database name is <i>xtcommerce</i>.<br /><b>ATTENTION:</b> XT-Commerce need an empty Database to perform Installation.');
+define('TEXT_DATABASE_LONG','The database used to hold the catalog data. An example database name is <i>xtcommerce</i>.<br /><b>ATTENTION:</b> xt:Commerce VaM Edition need an empty Database to perform Installation.');
 define('TITLE_WEBSERVER_SETTINGS','Webserver Settings');
 define('TEXT_WS_ROOT','Webserver Root Directory');
 define('TEXT_WS_ROOT_LONG','The directory where your web pages are being served from, usually <i>/home/myname/public_html</i>.');
-define('TEXT_WS_XTC','Webserver "XT-Commerce" Directory');
+define('TEXT_WS_XTC','Webserver "xt:Commerce VaM Edition" Directory');
 define('TEXT_WS_XTC_LONG','The directory where your catalog pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/xtcommerce/</b></i>.');
 define('TEXT_WS_ADMIN','Webserver Administration Tool Directory');
 define('TEXT_WS_ADMIN_LONG','The directory where your administration tool pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/xtcommerce/admin/</b></i>.');
 define('TEXT_WS_CATALOG','WWW Catalog Directory');
-define('TEXT_WS_CATALOG_LONG','The virtual directory where the XT-Commerce Catalog module resides, usually <i>/xtcommerce/</i>.');
+define('TEXT_WS_CATALOG_LONG','The virtual directory where the xt:Commerce VaM Edition Catalog module resides, usually <i>/xtcommerce/</i>.');
 define('TEXT_WS_ADMINTOOL','WWW Administration Tool Directory');
-define('TEXT_WS_ADMINTOOL_LONG','The virtual directory where the XT-Commerce Administration Tool resides, usually <i>/xtcommerce/admin/</i>');
+define('TEXT_WS_ADMINTOOL_LONG','The virtual directory where the xt:Commerce VaM Edition Administration Tool resides, usually <i>/xtcommerce/admin/</i>');
 
 // install_step2.php
 
@@ -161,7 +161,7 @@ define('TEXT_SESS_LONG','The location to store PHPs sessions files.');
 
 // install_step5.php
 
-define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>XT-Commerce</strong> Webserver configuration was successful');
+define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>xt:Commerce VaM Edition</strong> Webserver configuration was successful');
 
 // install_step6.php
 
@@ -218,8 +218,8 @@ define('TEXT_STATUS_SHOW_TAX_LONG','Display prices with tax included (Yes) or wi
 define('TITLE_CHMOD','Setting rights on files');
 // install_fnished.php
 
-define('TEXT_SHOP_CONFIG_SUCCESS','<strong>XT-Commerce</strong> Shop configuration was successful.');
-define('TEXT_TEAM','The XT-Commerce dev Team.<br /><a href="http://www.xt-commerce.com">XT-Commerce support site</a>');
+define('TEXT_SHOP_CONFIG_SUCCESS','<strong>xt:Commerce VaM Edition</strong> Shop configuration was successful.');
+define('TEXT_TEAM','The xt:Commerce dev Team.<br /><a href="http://www.xt-commerce.com">xt:Commerce support site</a><br /><a href="http://forum.oscommerce.ru">xt:Commerce VaM Edition russian support site</a>');
 
 // Ñáîðêà VaM
 
@@ -233,30 +233,30 @@ define('TEXT_RUSSIAN','Russian');
 define('TEXT_ENGLISH','English');
 define('TEXT_CHECKING','Checking:');
 define('TEXT_ATTENTION','Attention:');
-define('TITLE_INDEX','XT-Commerce VaM Edition Installer - Welcome');
-define('TITLE_STEP1','XT-Commerce VaM Edition Installer - STEP 1 / Settings');
-define('TITLE_STEP2','XT-Commerce VaM Edition Installer - STEP 2 / DB Connection');
-define('TITLE_STEP3','XT-Commerce VaM Edition Installer - STEP 3 / DB Import');
-define('TITLE_STEP4','XT-Commerce VaM Edition Installer - STEP 4 / Webserver Configuration');
-define('TITLE_STEP5','XT-Commerce VaM Edition Installer - STEP 5 / Write Config Files');
-define('TITLE_STEP6','XT-Commerce VaM Edition Installer - STEP 6 / Create Superuser');
-define('TITLE_STEP7','XT-Commerce VaM Edition Installer - STEP 7 / Define Pricesystem');
-define('TITLE_FINISHED','XT-Commerce VaM Edition Installer - Finished');
+define('TITLE_INDEX','xt:Commerce VaM Edition Installer - Welcome');
+define('TITLE_STEP1','xt:Commerce VaM Edition Installer - STEP 1 / Settings');
+define('TITLE_STEP2','xt:Commerce VaM Edition Installer - STEP 2 / DB Connection');
+define('TITLE_STEP3','xt:Commerce VaM Edition Installer - STEP 3 / DB Import');
+define('TITLE_STEP4','xt:Commerce VaM Edition Installer - STEP 4 / Webserver Configuration');
+define('TITLE_STEP5','xt:Commerce VaM Edition Installer - STEP 5 / Write Config Files');
+define('TITLE_STEP6','xt:Commerce VaM Edition Installer - STEP 6 / Create Superuser');
+define('TITLE_STEP7','xt:Commerce VaM Edition Installer - STEP 7 / Define Pricesystem');
+define('TITLE_FINISHED','xt:Commerce VaM Edition Installer - Finished');
 define('CHARSET','iso-8859-1');
 define('TEXT_INSTALL','Install');
 define('ERROR_PERMISSION','WRONG PERMISSION on ');
 define('TEXT_ERROR','ERROR');
 define('TEXT_FILE_PERMISSIONS','FILE Permissions .............................. ');
 define('TEXT_FOLDER_PERMISSIONS','FOLDER Permissions .............................. ');
-define('PHP_VERSION_ERROR','<b>ATTENTION!, your PHP Version is to old, XT-Commerce requires atleast PHP 4.1.3.</b><br /><br />
+define('PHP_VERSION_ERROR','<b>ATTENTION!, your PHP Version is to old, xt:Commerce VaM Edition requires atleast PHP 4.1.3.</b><br /><br />
                  Your php Version: <b><?php echo phpversion(); ?></b><br /><br />
-                 XT-Commerce wont work on this server, update PHP or change Server.');
+                 xt:Commerce VaM Edition wont work on this server, update PHP or change Server.');
 define('TEXT_PHP_VERSION','PHP VERSION .............................. ');
 define('TEXT_GD_LIB_NOT_FOUND','ERROR NO GDLIB FOUND!');
 define('TEXT_GD_LIB_VERSION','if GDlib Version < 2+ , klick here for further instructions');
 define('TEXT_GD_LIB_VERSION1','GDlib VERSION .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT','GDlib GIF-Support .............................. ');
-define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in XT-Commerce!');
+define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in xt:Commerce VaM Edition!');
 define('TEXT_OK','OK');
 
 //install_finished

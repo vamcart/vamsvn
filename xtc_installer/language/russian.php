@@ -14,7 +14,7 @@
    --------------------------------------------------------------*/
 // Global
 
-define('TEXT_FOOTER','Copyright  &copy; 2002 - 2005 <a href="http://www.xt-commerce.com">xt:Commerce VaM Edition</a><br />Powered by xt:Commerce'); 
+define('TEXT_FOOTER','Copyright  &copy; 2002 - 2006 <a href="http://www.xt-commerce.com">xt:Commerce</a><br />Powered by xt:Commerce VaM Edition'); 
    
 // Box names
 define('BOX_LANGUAGE','Язык');
@@ -87,7 +87,7 @@ define('TITLE_SELECT_LANGUAGE','Выберите язык!');
 
 define('TEXT_WELCOME_INDEX','xt:Commerce VaM Edition - это интернет-магазин с открытым исходным кодом, разрабатываемый международным сообществом. Разрабатывается по модели открытых исходных кодов, установив xt:Commerce VaM Edition, Вы получаете готовый к работе интернет-магазин.<br /><br />
       xt:Commerce VaM Edition является открытой системой, работающей под управлением веб сервера Apache, в качестве базы данных используется MySQL, в качестве языка программирования используется PHP.<br /><br />
-      xt:Commerce VaM Edition может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться Linux, Solaris, BSD, либо Microsoft Windows.');
+      xt:Commerce VaM Edition может быть установлен на любой сервер, поддерживающий PHP и MySQL, в качестве операционной системы могут использоваться GNU/Linux, Solaris, BSD, либо Microsoft Windows.');
 define('TEXT_WELCOME_STEP1','<b>Основные настройки доступа к базе данных и настройки веб сервера</b><br /><br />Укажите доступ к базе данных и настройки веб сервера.<br />');
 define('TEXT_WELCOME_STEP2','<b>Установка базы данных</b><br /><br />xt:Commerce автоматически установит базу данных магазина.');
 define('TEXT_WELCOME_STEP3','<b>Импорт базы данных.</b><br /><br />');
