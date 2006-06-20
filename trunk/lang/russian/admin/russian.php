@@ -68,7 +68,7 @@ define('DOB_FORMAT_STRING', 'dd/mm/yyyy');
 
 define('BOX_HEADING_CONFIGURATION','Конфигурация');
 define('BOX_HEADING_MODULES','Модули');
-define('BOX_HEADING_ZONE','Зоны/Налоги');
+define('BOX_HEADING_ZONE','Регионы/Налоги');
 define('BOX_HEADING_CUSTOMERS','Покупатели');
 define('BOX_HEADING_PRODUCTS','Каталог');
 define('BOX_HEADING_STATISTICS','Статистика');
@@ -115,7 +115,7 @@ define('BOX_ACCOUNTING', 'Доступ админа');
 define('BOX_CUSTOMERS_STATUS','Группы клиентов');
 define('BOX_ORDERS', 'Заказы');
 define('BOX_COUNTRIES', 'Страны');
-define('BOX_ZONES', 'Зоны, регионы');
+define('BOX_ZONES', 'Регионы');
 define('BOX_GEO_ZONES', 'Налоговые зоны');
 define('BOX_TAX_CLASSES', 'Виды налогов');
 define('BOX_TAX_RATES', 'Ставки налогов');
