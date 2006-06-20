@@ -199,4 +199,6 @@ define('TABLE_HEADING_MAX_DISCOUNT', 'Max. discount');
 define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Upload directory:');
 define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Use uploaded picture:');
 define('TEXT_STANDART_IMAGE', 'Product image');
+define('TEXT_SELECT_DIRECTORY', '-- Select upload directory --');
+define('TEXT_SELECT_IMAGE', '-- Select image --');
 ?>
