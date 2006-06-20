@@ -27,7 +27,7 @@ define('TABLE_HEADING_STATUS', 'Статус');
 define('TABLE_HEADING_STARTPAGE', 'Начало');
 define('TABLE_HEADING_STOCK','Количество на складе');
 define('TABLE_HEADING_SORT','Порядок');
-define('TABLE_HEADING_EDIT','Изменить');
+define('TABLE_HEADING_EDIT','Отметить');
 
 define('TEXT_ACTIVE_ELEMENT','Активный элемент');
 define('TEXT_INFORMATIONS','Информация');
