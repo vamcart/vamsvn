@@ -34,7 +34,7 @@ $file_list = array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IM
 	}
 	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.xtc_draw_file_field('products_image').'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.xtc_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
 // BOF Add existing image
-	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('upload_dir_image_0',$dir_list);
+	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('upload_dir_image_0',$dir_list, dirname($pInfo->products_image).'/');
 	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('get_file_image_0',$file_list);
 // EOF Add existing image
 	if ($pInfo->products_image != '') {
