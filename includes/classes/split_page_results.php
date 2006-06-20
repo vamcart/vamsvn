@@ -58,7 +58,8 @@
 
       $offset = ($this->number_of_rows_per_page * ($this->current_page_number - 1));
 
-      $this->sql_query .= " LIMIT " . $offset . ", " . $this->number_of_rows_per_page;
+      $this->sql_query .= " LIMIT " . max($offset, 0) . ", " . $this->number_of_rows_per_page;
+
     }
 
     // class functions
