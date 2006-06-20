@@ -305,9 +305,9 @@ define('TEXT_FIELD_REQUIRED', '&nbsp;<span class="fieldRequired">* Обязательно</
 
 define('ERROR_NO_DEFAULT_CURRENCY_DEFINED', 'Ошибка: К настоящему времени ни одна валюта не была установлена по умолчанию. Пожалуйста, установите одну из них в: Локализация -> Валюта');
 
-define('TEXT_CACHE_CATEGORIES', 'Бокс Категорий');
-define('TEXT_CACHE_MANUFACTURERS', 'Бокс Производителей');
-define('TEXT_CACHE_ALSO_PURCHASED', 'Также Модули Покупок'); 
+define('TEXT_CACHE_CATEGORIES', 'Бокс категорий');
+define('TEXT_CACHE_MANUFACTURERS', 'Бокс кроизводителей');
+define('TEXT_CACHE_ALSO_PURCHASED', 'Бокс также заказывают'); 
 
 define('TEXT_NONE', '--нет--');
 define('TEXT_TOP', 'Начало');
@@ -371,15 +371,15 @@ define('NEW_SIGNUP_DISCOUNT_COUPON_DESC', 'Если Вы не хотите отправлять посетите
 define('TXT_ALL','Все');
 
 // UST ID
-define('BOX_CONFIGURATION_18', 'Vat ID');
-define('HEADING_TITLE_VAT','Vat-ID');
-define('HEADING_TITLE_VAT','Vat-ID');
-define('ENTRY_VAT_ID','Vat-ID');
-define('TEXT_VAT_FALSE','<font color="FF0000">Checked/False!</font>');
-define('TEXT_VAT_TRUE','<font color="FF0000">Checked/True!</font>');
-define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="FF0000">Не проверенно/Неизвестная страна!</font>');
-define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="FF0000">Не проверенно/No Check available!</font>');
-define('ENTRY_VAT_ID_ERROR', '<font color="FF0000">* Ваш Vat ID ложный!</font>');
+define('BOX_CONFIGURATION_18', 'Vat код');
+define('HEADING_TITLE_VAT','Vat код');
+define('HEADING_TITLE_VAT','Vat код');
+define('ENTRY_VAT_ID','Vat код');
+define('TEXT_VAT_FALSE','<font color="FF0000">Проверен/Ошибка!</font>');
+define('TEXT_VAT_TRUE','<font color="FF0000">Проверен/Всё правильно!</font>');
+define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="FF0000">Не проверен/Неизвестная страна!</font>');
+define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="FF0000">Не проверен/Проверка недоступна!</font>');
+define('ENTRY_VAT_ID_ERROR', '<font color="FF0000">* Ваш Vat код неправильный!</font>');
 
 define('ERROR_GIF_MERGE','Отсутствует GDlib GIF-поддержка, соеденить картинки неудалось');
 define('ERROR_GIF_UPLOAD','Отсутствует GDlib Gif-поддержка, обработка картинки GIF неудалась');

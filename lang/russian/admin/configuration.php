@@ -549,20 +549,20 @@ define('DOWNLOAD_MIN_ORDERS_STATUS_TITLE', 'Минимальный cтатус заказа');
 define('DOWNLOAD_MIN_ORDERS_STATUS_DESC', 'Скачивание разрешается только заказам, имеющим указанный статус и выше. Это нужно для того что б загрузка товаров была доступна только оплаченным заказам.');
 
 // Vat Check
-define('STORE_OWNER_VAT_ID_TITLE' , 'VAT ID of Shop Owner');
-define('STORE_OWNER_VAT_ID_DESC' , 'The VAT ID of the Shop Owner');
-define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_TITLE' , 'Customer-group - correct VAT ID (Foreign country)');
-define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_DESC' , 'Customers-group for customers with correct VAT ID, Shop country != customers country');
-define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Validate VAT ID');
-define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Validate VAT ID (check correct syntax)');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Validate VAT ID Live');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Validate VAT ID live (if no syntax check available for country), live check will use validation gateway of germans "Bundesamt fпїЅr Finanzen"');
-define('ACCOUNT_COMPANY_VAT_GROUP_TITLE' , 'automatic pruning ?');
-define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Set to true, the customer-group will be changed automatically if a correct VAT ID is used.');
-define('ACCOUNT_VAT_BLOCK_ERROR_TITLE' , 'Allow wrong UST ID?');
-define('ACCOUNT_VAT_BLOCK_ERROR_DESC' , 'Set to true, only validated VAT IDs are acceptet.');
-define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_TITLE','Customer-group - correct VAT ID (Shop country)');
-define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_DESC','Customers-group for customers with correct VAT ID, Shop country = customers country');
+define('STORE_OWNER_VAT_ID_TITLE' , 'VAT код владельца магазина');
+define('STORE_OWNER_VAT_ID_DESC' , 'VAT код владельца магазина');
+define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_TITLE' , 'Группа покупателей - правильный VAT код (Страна, отличная от страны магазина)');
+define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_DESC' , 'Группа для покупателей с правильно указанным VAT кодом, страна магазина != стране покупателя');
+define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Проверять VAT код');
+define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Проверять правильно ли указан VAT код (проверка синтаксиса)');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Проверять VAT код через внешний сервер');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Проверять VAT код через внешний сервер"');
+define('ACCOUNT_COMPANY_VAT_GROUP_TITLE' , 'Автоматическая смена группы');
+define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Установите в true, если Вы хотите, что б группа покупателя изменялась автоматически при правильно указанном VAT коде.');
+define('ACCOUNT_VAT_BLOCK_ERROR_TITLE' , 'Разрешить неправильные UST коды');
+define('ACCOUNT_VAT_BLOCK_ERROR_DESC' , 'Установите в true, на данный момент проверяются только VAT коды.');
+define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_TITLE','Группа покупателей - правильный VAT код (Страна, аналогичная стране магазина)');
+define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_DESC','Группа для покупателей с правильно указанным VAT кодом, страна магазина = стране покупателя');
 // Google Conversion
 define('GOOGLE_CONVERSION_TITLE','Google конверсионная трассировка');
 define('GOOGLE_CONVERSION_DESC','Отслеживать конверсионные ключевые слова в заказах');
@@ -572,17 +572,17 @@ define('GOOGLE_LANG_TITLE','Google язык');
 define('GOOGLE_LANG_DESC','ISO код используемоего языка (ru, en, fr, de...)');
 
 // Afterbuy
-define('AFTERBUY_ACTIVATED_TITLE','Activ');
-define('AFTERBUY_ACTIVATED_DESC','Activate afterbuy module');
-define('AFTERBUY_PARTNERID_TITLE','Partner ID');
-define('AFTERBUY_PARTNERID_DESC','Your Afterbuy Partner ID');
-define('AFTERBUY_PARTNERPASS_TITLE','Partner Password');
-define('AFTERBUY_PARTNERPASS_DESC','Your Partner Password for Afterbuy XML Module');
-define('AFTERBUY_USERID_TITLE','User ID');
-define('AFTERBUY_USERID_DESC','Your Afterbuy User ID');
-define('AFTERBUY_ORDERSTATUS_TITLE','Orderstatus');
-define('AFTERBUY_ORDERSTATUS_DESC','Orderstatus for exported orders');
-define('AFTERBUY_URL','You will find a detailed Afterbuy info here: <a href="http://www.xt-commerce.com/modules/wfsection/dossier-65.html" target="new">http://www.xt-commerce.com/modules/wfsection/dossier-65.html</a>');
+define('AFTERBUY_ACTIVATED_TITLE','Активировать');
+define('AFTERBUY_ACTIVATED_DESC','Активировать модуль afterbuy');
+define('AFTERBUY_PARTNERID_TITLE','ID код партнёра');
+define('AFTERBUY_PARTNERID_DESC','Ваш партнёрский afterbuy id код');
+define('AFTERBUY_PARTNERPASS_TITLE','Пароль партнёра');
+define('AFTERBUY_PARTNERPASS_DESC','Ваш пароль для модуля Afterbuy XML');
+define('AFTERBUY_USERID_TITLE','ID код пользователя');
+define('AFTERBUY_USERID_DESC','Ваш ID код пользователя');
+define('AFTERBUY_ORDERSTATUS_TITLE','Статус заказа');
+define('AFTERBUY_ORDERSTATUS_DESC','Статус заказа, устанавливаемый для экспортируемых заказов');
+define('AFTERBUY_URL','Подробная информация о модуле Afterbuy доступна по адресу: <a href="http://www.xt-commerce.com/modules/wfsection/dossier-65.html" target="new">http://www.xt-commerce.com/modules/wfsection/dossier-65.html</a>');
 
 // Search-Options
 define('SEARCH_IN_DESC_TITLE','Поиск в описании товаров');
