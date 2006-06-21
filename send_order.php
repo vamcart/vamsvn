@@ -106,6 +106,18 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 		$smarty->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_MONEYORDER_TEXT_DESCRIPTION));
 	}
 
+	// WebMoney
+	if ($order->info['payment_method'] == 'webmoney') {
+		$smarty->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION);
+		$smarty->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION));
+	}
+
+	// Yandex
+	if ($order->info['payment_method'] == 'yandex') {
+		$smarty->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION);
+		$smarty->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION));
+	}
+
 	// dont allow cache
 	$smarty->caching = false;
 
