@@ -15,7 +15,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
   define('MODULE_PAYMENT_WEBMONEY_TEXT_TITLE', 'WebMoney');
-  define('MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION', 'Информация для оплаты:<br /><br />Наш WM идентификатор: ' . MODULE_PAYMENT_WEBMONEY_WMID . '<br />Кошелёк WMZ: ' . MODULE_PAYMENT_WEBMONEY_WMZ . '<br />Кошелёк WMR: ' . MODULE_PAYMENT_WEBMONEY_WMR . '<br /><br />' . 'Ваш заказ будет выполнен только после получения оплаты!');
+  define('MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION', 'Информация для оплаты:<br /><br />WM идентификатор: ' . MODULE_PAYMENT_WEBMONEY_WMID . '<br />Кошелёк WMZ: ' . MODULE_PAYMENT_WEBMONEY_WMZ . '<br />Кошелёк WMR: ' . MODULE_PAYMENT_WEBMONEY_WMR . '<br /><br />' . 'Ваш заказ будет выполнен только после получения оплаты!');
   define('MODULE_PAYMENT_WEBMONEY_TEXT_EMAIL_FOOTER', "Информация для оплаты:\n\nНаш WM идентификатор: ". MODULE_PAYMENT_WEBMONEY_WMID . "\n\nКошелёк WMZ: ". MODULE_PAYMENT_WEBMONEY_WMZ . "\n\nКошелёк WMR: ". MODULE_PAYMENT_WEBMONEY_WMR . "\n\n" . 'Ваш заказ будет выполнен только после получения оплаты!');
 define('MODULE_PAYMENT_WEBMONEY_TEXT_INFO','');
   define('MODULE_PAYMENT_WEBMONEY_STATUS_TITLE' , 'Разрешить модуль WebMoney');
