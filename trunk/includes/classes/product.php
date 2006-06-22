@@ -185,9 +185,9 @@ class product {
 				$buy_now = '';
 				if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 					if ($orders['products_fsk18'] == '0')
-						$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&amp;BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
+						$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
 				} else {
-					$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&amp;BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
+					$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
 				}
 
 				$module_content[] = array ('PRODUCTS_NAME' => $orders['products_name'], 'PRODUCTS_DESCRIPTION' => $orders['products_short_description'], 'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($orders['products_id'], $format = true, 1, $orders['products_tax_class_id'], $orders['products_price']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($orders['products_id'], $orders['products_name'])), 'PRODUCTS_IMAGE' => $image, 'BUTTON_BUY_NOW' => $buy_now);
