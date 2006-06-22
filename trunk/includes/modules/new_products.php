@@ -77,9 +77,9 @@ while ($new_products = xtc_db_fetch_array($new_products_query, true)) {
 		$buy_now = '';
 		if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 			if ($new_products['products_fsk18'] == '0')
-				$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
+				$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&amp;BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
 		} else {
-			$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
+			$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&amp;BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
 		}
 		
 		$tax_rate = $xtPrice->TAX[$new_products['products_tax_class_id']];
