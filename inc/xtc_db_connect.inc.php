@@ -21,11 +21,11 @@
     if (USE_PCONNECT == 'true') {
      $$link = mysql_pconnect($server, $username, $password);
     } else {
-$$link = mysql_connect($server, $username, $password);
+$$link = @mysql_connect($server, $username, $password);
     
    }
 
-    if ($$link) mysql_select_db($database);
+    if ($$link) @mysql_select_db($database);
 
 //Start VaM db-error processing
     if (!$$link) {
