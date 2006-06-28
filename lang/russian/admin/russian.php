@@ -73,6 +73,8 @@ define('BOX_HEADING_CUSTOMERS','Покупатели');
 define('BOX_HEADING_PRODUCTS','Каталог');
 define('BOX_HEADING_STATISTICS','Статистика');
 define('BOX_HEADING_TOOLS','Инструменты');
+define('BOX_HEADING_LOGOFF','Выход');
+define('BOX_HEADING_HELP','Помощь');
 
 define('BOX_CONTENT','Информационные страницы');
 define('TEXT_ALLOWED', 'Разрешено');
@@ -154,6 +156,7 @@ define('BOX_IMPORT','Импорт/Экспорт');
 define('BOX_PRODUCTS_VPE','Единица упаковки');
 define('BOX_CAMPAIGNS_REPORT','Отчёт по кампаниям');
 define('BOX_ORDERS_XSELL_GROUP','Группы сопутствующих товаров');
+define('BOX_SUPPORT_SITE','Сайт поддержки');
 
 define('TXT_GROUPS','<b>Группы</b>:');
 define('TXT_SYSTEM','Система');
