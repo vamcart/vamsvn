@@ -73,6 +73,8 @@ define('BOX_HEADING_CUSTOMERS','Customers');
 define('BOX_HEADING_PRODUCTS','Catalog');
 define('BOX_HEADING_STATISTICS','Statistics');
 define('BOX_HEADING_TOOLS','Tools');
+define('BOX_HEADING_LOGOFF','Logoff');
+define('BOX_HEADING_HELP','Help');
 
 define('BOX_CONTENT','Content Manager');
 define('TEXT_ALLOWED', 'Permission');
@@ -154,6 +156,7 @@ define('BOX_IMPORT','Import/Export');
 define('BOX_PRODUCTS_VPE','Packing unit');
 define('BOX_CAMPAIGNS_REPORT','Campaign report');
 define('BOX_ORDERS_XSELL_GROUP','Cross-sell groups');
+define('BOX_SUPPORT_SITE','Support site');
 
 define('TXT_GROUPS','<b>Groups</b>:');
 define('TXT_SYSTEM','System');
