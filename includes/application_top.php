@@ -248,7 +248,7 @@ require (DIR_WS_FUNCTIONS.'sessions.php');
 
 // set the session name and save path
 session_name('XTCsid');
-session_save_path(SESSION_WRITE_DIRECTORY);
+session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters
 if (function_exists('session_set_cookie_params')) {
