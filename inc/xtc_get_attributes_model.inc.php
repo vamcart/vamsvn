@@ -13,23 +13,24 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
    
-function xtc_get_attributes_model($product_id, $attribute_name)
+function xtc_get_attributes_model($product_id, $attribute_name,$options_name,$language='')
     {
-
+    	if ($language=='') $language=$_SESSION['languages_id'];
     $options_value_id_query=xtc_db_query("SELECT
-                products_options_values_id
-                FROM ".TABLE_PRODUCTS_OPTIONS_VALUES."
-                WHERE products_options_values_name='".$attribute_name."'");
+pa.attributes_model
+FROM
+".TABLE_PRODUCTS_ATTRIBUTES." pa
+Inner Join ".TABLE_PRODUCTS_OPTIONS." po ON po.products_options_id = pa.options_id
+Inner Join ".TABLE_PRODUCTS_OPTIONS_VALUES." pov ON pa.options_values_id = pov.products_options_values_id
+WHERE
+po.language_id = '".$language."' AND
+po.products_options_name = '".$options_name."' AND
+pov.language_id = '".$language."' AND
+pov.products_options_values_name = '".$attribute_name."'");
 
-    while ($options_value_id_data=xtc_db_fetch_array($options_value_id_query)) {
-    $options_attr_query=xtc_db_query("SELECT
-                attributes_model
-                FROM ".TABLE_PRODUCTS_ATTRIBUTES."
-                WHERE options_values_id='".$options_value_id_data['products_options_values_id']."' AND products_id =" . $product_id);
-    $options_attr_data=xtc_db_fetch_array($options_attr_query);
-    if ($options_attr_data['attributes_model']!='') {
-    return $options_attr_data['attributes_model'];
-    }
-    }
+
+    $options_attr_data = xtc_db_fetch_array($options_value_id_query);
+    return $options_attr_data['attributes_model'];	
+    	
     }
 ?>

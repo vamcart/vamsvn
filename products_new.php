@@ -77,6 +77,7 @@ $products_new_query_raw = "select distinct
                                     by
                                     p.products_date_added DESC ";
 
+
 $products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
 
 if (($products_new_split->number_of_rows > 0)) {

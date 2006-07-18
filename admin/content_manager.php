@@ -250,6 +250,7 @@ if ($select_file=='default') {
  $data=xtc_db_fetch_array($query);
  if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo xtc_wysiwyg('content_manager',$data['code']);
  if ($_GET['action']=='new_products_content') echo xtc_wysiwyg('products_content',$data['code']);
+ if ($_GET['action']=='edit_products_content') echo xtc_wysiwyg('products_content',$data['code']);
  } ?>
 
 </head>

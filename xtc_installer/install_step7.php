@@ -28,7 +28,6 @@
   require_once(DIR_FS_INC . 'xtc_db_num_rows.inc.php');
   require_once(DIR_FS_INC . 'xtc_redirect.inc.php');
   require_once(DIR_FS_INC . 'xtc_href_link.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_countries.inc.php');
   require_once(DIR_FS_INC . 'xtc_draw_pull_down_menu.inc.php');
   require_once(DIR_FS_INC . 'xtc_draw_input_field.inc.php');
   require_once(DIR_FS_INC . 'xtc_get_country_list.inc.php');

@@ -41,7 +41,6 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
 require_once (DIR_FS_INC.'xtc_get_country_list.inc.php');
-require_once (DIR_FS_INC.'xtc_get_countries.inc.php');
 require_once (DIR_FS_INC.'xtc_validate_email.inc.php');
 require_once (DIR_FS_INC.'xtc_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'xtc_get_geo_zone_code.inc.php');
@@ -142,7 +141,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 		$messageStack->add('create_account', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
 	} else {
-		$check_email_query = xtc_db_query("select count(*) as total from ".TABLE_CUSTOMERS." where customers_email_address = '".xtc_db_input($email_address)."'");
+		$check_email_query = xtc_db_query("select count(*) as total from ".TABLE_CUSTOMERS." where customers_email_address = '".xtc_db_input($email_address)."' and account_type = '0'");
 		$check_email = xtc_db_fetch_array($check_email_query);
 		if ($check_email['total'] > 0) {
 			$error = true;

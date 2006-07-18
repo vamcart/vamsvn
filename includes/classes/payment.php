@@ -233,6 +233,14 @@
         }
       }
     }
+    
+    function payment_action() {
+      if (is_array($this->modules)) {
+        if (is_object($GLOBALS[$this->selected_module]) && ($GLOBALS[$this->selected_module]->enabled) ) {
+          return $GLOBALS[$this->selected_module]->payment_action();
+        }
+      }
+    }
 
     function after_process() {
       if (is_array($this->modules)) {

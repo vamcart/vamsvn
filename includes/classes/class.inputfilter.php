@@ -268,7 +268,9 @@ class InputFilter {
 	function decode($source = '') {
 		if ($source!='') {
 		// url decode
+		if (function_exists(html_entity_decode)) {
 		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
+		}
 		// convert decimal
 		$source = preg_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
 		// convert hex

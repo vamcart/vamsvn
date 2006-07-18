@@ -61,7 +61,7 @@ if ($_GET['action'] == "address_edit") {
 // Artikel bearbeiten Anfang:
 if ($_GET['action'] == "product_edit") {
 	$status_query = xtc_db_query("select customers_status_show_price_tax from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$order->info['status']."'");
-	$status = xtc_db_fetch_array($status_query);	
+	$status = xtc_db_fetch_array($status_query);
 
 	$final_price = $_POST['products_price'] * $_POST['products_quantity'];
 
@@ -163,6 +163,36 @@ if ($_GET['action'] == "product_option_ins") {
 		$options_values_price += $products_a['price_prefix'].$products_a['options_values_price'];
 	};
 
+	if (DOWNLOAD_ENABLED == 'true') {
+		$attributes_query = "select popt.products_options_name,
+										                               poval.products_options_values_name,
+										                               pa.options_values_price,
+										                               pa.price_prefix,
+										                               pad.products_attributes_maxdays,
+										                               pad.products_attributes_maxcount,
+										                               pad.products_attributes_filename
+										                               from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
+										                               left join ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." pad
+										                                on pa.products_attributes_id=pad.products_attributes_id
+										                               where pa.products_id = '".$products['products_id']."'
+										                                and pa.options_id = '".$products_attributes['options_id']."'
+										                                and pa.options_id = popt.products_options_id
+										                                and pa.options_values_id = '".$products_attributes['options_values_id']."'
+										                                and pa.options_values_id = poval.products_options_values_id
+										                                and popt.language_id = '".$_SESSION['languages_id']."'
+										                                and poval.language_id = '".$_SESSION['languages_id']."'";
+		$attributes = xtc_db_query($attributes_query);
+
+		$attributes_values = xtc_db_fetch_array($attributes);
+
+		if (isset ($attributes_values['products_attributes_filename']) && xtc_not_null($attributes_values['products_attributes_filename'])) {
+			$sql_data_array = array ('orders_id' => xtc_db_prepare_input($_POST['oID']), 'orders_products_id' => xtc_db_prepare_input($_POST['opID']), 'orders_products_filename' => $attributes_values['products_attributes_filename'], 'download_maxdays' => $attributes_values['products_attributes_maxdays'], 'download_count' => $attributes_values['products_attributes_maxcount']);
+
+			xtc_db_perform(TABLE_ORDERS_PRODUCTS_DOWNLOAD, $sql_data_array);
+		}
+
+	}
+
 	$products_old_price = $xtPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
 
 	$products_price = ($products_old_price + $options_values_price);
@@ -202,15 +232,15 @@ if ($_GET['action'] == "shipping_edit") {
 	$shipping_class = $_POST['shipping'].'_'.$_POST['shipping'];
 
 	$text = $xtPrice->xtcFormat($_POST['value'], true);
-	
-	$sql_data_array = array ('orders_id' => xtc_db_prepare_input($_POST['oID']),'title' => xtc_db_prepare_input($shipping_text),'text' => xtc_db_prepare_input($text),'value' => xtc_db_prepare_input($_POST['value']),'class' => 'ot_shipping');
+
+	$sql_data_array = array ('orders_id' => xtc_db_prepare_input($_POST['oID']), 'title' => xtc_db_prepare_input($shipping_text), 'text' => xtc_db_prepare_input($text), 'value' => xtc_db_prepare_input($_POST['value']), 'class' => 'ot_shipping');
 
 	$check_shipping_query = xtc_db_query("select class from ".TABLE_ORDERS_TOTAL." where orders_id = '".$_POST['oID']."' and class = 'ot_shipping'");
 	if (xtc_db_num_rows($check_shipping_query)) {
-	xtc_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_id = \''.xtc_db_input($_POST['oID']).'\' and class="ot_shipping"');
-  }else{
-	xtc_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
-  }
+		xtc_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_id = \''.xtc_db_input($_POST['oID']).'\' and class="ot_shipping"');
+	} else {
+		xtc_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
+	}
 
 	$sql_data_array = array ('shipping_method' => xtc_db_prepare_input($shipping_text), 'shipping_class' => xtc_db_prepare_input($shipping_class),);
 	xtc_db_perform(TABLE_ORDERS, $sql_data_array, 'update', 'orders_id = \''.xtc_db_input($_POST['oID']).'\'');
@@ -497,11 +527,11 @@ if ($_GET['action'] == "save_order") {
 			} else {
 				$module_tmp_name = split('_', $order->info['shipping_class']);
 				$module_tmp_name = $module_tmp_name[0];
-				if($module_tmp_name[0]!= 'selfpickup'){
-				$module_tax_class = constant(MODULE_SHIPPING_.strtoupper($module_tmp_name)._TAX_CLASS);
-				}else{
-        $module_tax_class = '';
-        }
+				if ($module_tmp_name[0] != 'selfpickup') {
+					$module_tax_class = constant(MODULE_SHIPPING_.strtoupper($module_tmp_name)._TAX_CLASS);
+				} else {
+					$module_tax_class = '';
+				}
 			}
 		} else {
 			$module_tax_class = '0';
@@ -609,6 +639,7 @@ if ($_GET['action'] == "save_order") {
 <b>
 <?php
 
+
 if ($_GET['text'] == 'address') {
 	echo TEXT_EDIT_ADDRESS_SUCCESS;
 }
@@ -620,6 +651,7 @@ if ($_GET['text'] == 'address') {
 
 <!-- Meldungen Ende //-->
 <?php
+
 
 if ($_GET['edit_action'] == 'address') {
 	include ('orders_edit_address.php');
@@ -647,7 +679,7 @@ echo xtc_draw_form('save_order', FILENAME_ORDERS_EDIT, 'action=save_order', 'pos
 echo xtc_draw_hidden_field('customers_status_id', $address[customers_status]);
 echo xtc_draw_hidden_field('oID', $_GET['oID']);
 echo xtc_draw_hidden_field('cID', $_GET[cID]);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<input type="submit" class="button" onClick="this.blur();" value="'.BUTTON_SAVE.'"/>';
 ?>
 </form>
 </td>
@@ -662,6 +694,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 </td>
 <?php
 
+
 $heading = array ();
 $contents = array ();
 switch ($_GET['action']) {
@@ -670,9 +703,9 @@ switch ($_GET['action']) {
 		if (is_object($order)) {
 			$heading[] = array ('text' => '<b>'.TABLE_HEADING_ORDER.$_GET['oID'].'</b>');
 
-			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_ADDRESS.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=address&oID='.$_GET['oID']).'">'. BUTTON_EDIT .'</a><br /><br />');
-			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_PRODUCTS.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_GET['oID']).'">'. BUTTON_EDIT .'</a><br /><br />');
-			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_OTHER.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=other&oID='.$_GET['oID']).'">'. BUTTON_EDIT .'</a><br /><br />');
+			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_ADDRESS.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=address&oID='.$_GET['oID']).'">'.BUTTON_EDIT.'</a><br /><br />');
+			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_PRODUCTS.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_GET['oID']).'">'.BUTTON_EDIT.'</a><br /><br />');
+			$contents[] = array ('align' => 'center', 'text' => '<br />'.TEXT_EDIT_OTHER.'<br /><a class="button" onClick="this.blur();" href="'.xtc_href_link(FILENAME_ORDERS_EDIT, 'edit_action=other&oID='.$_GET['oID']).'">'.BUTTON_EDIT.'</a><br /><br />');
 
 		}
 		break;
@@ -704,3 +737,4 @@ if ((xtc_not_null($heading)) && (xtc_not_null($contents))) {
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+

@@ -39,7 +39,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 require_once (DIR_FS_INC.'xtc_address_label.inc.php');
 require_once (DIR_FS_INC.'xtc_get_address_format_id.inc.php');
 require_once (DIR_FS_INC.'xtc_check_stock.inc.php');
-
+unset ($_SESSION['tmp_oID']);
 // if the customer is not logged on, redirect them to the login page
 if (!isset ($_SESSION['customer_id'])) {
 	if (ACCOUNT_OPTIONS == 'guest') {
@@ -118,10 +118,6 @@ $order_total_modules->process();
 
 $breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_PAYMENT, xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_PAYMENT, xtc_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
-
-if (ACCOUNT_STREET_ADDRESS == 'true') {
-	$smarty->assign('BILLING_ADDRESS', 'true');
-}
 
 $smarty->assign('FORM_ACTION', xtc_draw_form('checkout_payment', xtc_href_link(FILENAME_CHECKOUT_CONFIRMATION, '', 'SSL'), 'post', 'onSubmit="return check_form();"'));
 $smarty->assign('ADDRESS_LABEL', xtc_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'));

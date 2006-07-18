@@ -771,7 +771,7 @@ class categories {
 						'products_sort'=>$product['products_sort'],
 						'products_price'=>$product['products_price'],
 						'products_discount_allowed'=>$product['products_discount_allowed'],
-						'products_date_added'=>'NOW()',
+						'products_date_added'=>'now()',
 						'products_date_available'=>$product['products_date_available'],
 						'products_weight'=>$product['products_weight'],
 						'products_status'=>$products_status,

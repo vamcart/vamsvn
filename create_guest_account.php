@@ -34,7 +34,6 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
 require_once (DIR_FS_INC.'xtc_draw_radio_field.inc.php');
 require_once (DIR_FS_INC.'xtc_get_country_list.inc.php');
-require_once (DIR_FS_INC.'xtc_get_countries.inc.php');
 require_once (DIR_FS_INC.'xtc_draw_checkbox_field.inc.php');
 require_once (DIR_FS_INC.'xtc_draw_password_field.inc.php');
 require_once (DIR_FS_INC.'xtc_validate_email.inc.php');

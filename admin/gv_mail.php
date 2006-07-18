@@ -161,7 +161,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<?php if (USE_WYSIWYG=='true') {
+<?php if (USE_WYSIWYG=='true' && $_GET['action'] != 'preview') {
  $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=xtc_db_fetch_array($query);
  echo xtc_wysiwyg('gv_mail',$data['code']);

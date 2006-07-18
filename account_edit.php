@@ -83,7 +83,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$error = $vatID->vat_info['error'];
 
 	if($error==1){
-	$messageStack->add('create_account', ENTRY_VAT_ERROR);
+	$messageStack->add('account_edit', ENTRY_VAT_ERROR);
 	$error = true;
   }
 
@@ -107,11 +107,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
   }
 
-	if ($customers_status == 0 || !$customers_status)
-		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID;
 
 	if ($error == false) {
-		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_status' => $customers_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $gender;

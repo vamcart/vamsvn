@@ -34,7 +34,6 @@
   require_once(DIR_FS_INC . 'xtc_date_long.inc.php');
   require_once(DIR_FS_INC . 'xtc_address_format.inc.php');
   require_once(DIR_FS_INC . 'xtc_get_country_name.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_countries.inc.php');
   require_once(DIR_FS_INC . 'xtc_get_zone_code.inc.php');
   require_once(DIR_FS_INC . 'xtc_get_tax_description.inc.php');
 
