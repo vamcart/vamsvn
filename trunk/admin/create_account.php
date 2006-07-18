@@ -33,8 +33,10 @@ require_once (DIR_FS_INC.'xtc_get_geo_zone_code.inc.php');
 $smarty = new Smarty;
 
 $customers_statuses_array = xtc_get_customers_statuses();
-if ($customers_password == '')
-	$customers_password = xtc_create_password(8);
+if ($customers_password == '') {
+	$customers_password_encrypted =  xtc_RandomString(8);
+	$customers_password = xtc_encrypt_password($customers_password_encrypted);
+}
 if ($_GET['action'] == 'edit') {
 	$customers_firstname = xtc_db_prepare_input($_POST['customers_firstname']);
 	$customers_cid = xtc_db_prepare_input($_POST['csID']);
@@ -61,15 +63,18 @@ if ($_GET['action'] == 'edit') {
 	$entry_zone_id = xtc_db_prepare_input($_POST['entry_zone_id']);
 
 	$customers_send_mail = xtc_db_prepare_input($_POST['customers_mail']);
-	$customers_password = xtc_db_prepare_input($_POST['entry_password']);
-
+	$customers_password_encrypted = xtc_db_prepare_input($_POST['entry_password']);
+	$customers_password = xtc_encrypt_password($customers_password_encrypted);
+	
 	$customers_mail_comments = xtc_db_prepare_input($_POST['mail_comments']);
 
 	$payment_unallowed = xtc_db_prepare_input($_POST['payment_unallowed']);
 	$shipping_unallowed = xtc_db_prepare_input($_POST['shipping_unallowed']);
 
-	if ($customers_password == '')
-		$customers_password = xtc_create_password(8);
+	if ($customers_password == '') {
+		$customers_password_encrypted =  xtc_RandomString(8);
+		$customers_password = xtc_encrypt_password($customers_password_encrypted);
+	}
 	$error = false; // reset error flag
 
 	if (ACCOUNT_GENDER == 'true') {
@@ -268,7 +273,7 @@ if ($_GET['action'] == 'edit') {
 	}
 
 	if ($error == false) {
-		$sql_data_array = array ('customers_status' => $customers_status_c, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $customers_firstname, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_password' => xtc_encrypt_password($customers_password),'customers_date_added' => 'now()','customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_status' => $customers_status_c, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $customers_firstname, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_password' => $customers_password,'customers_date_added' => 'now()','customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $customers_gender;
@@ -327,7 +332,7 @@ if ($_GET['action'] == 'edit') {
 			$smarty->assign('NAME', $customers_lastname.' '.$customers_firstname);
 			$smarty->assign('EMAIL', $customers_email_address);
 			$smarty->assign('COMMENTS', $customers_mail_comments);
-			$smarty->assign('PASSWORD', $customers_password);
+			$smarty->assign('PASSWORD', $customers_password_encrypted);
 
 			$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.html');
 			$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.txt');
@@ -739,12 +744,12 @@ if ($error == true) {
 
 if ($error == true) {
 	if ($entry_password_error == true) {
-		echo xtc_draw_password_field('entry_password', $customers_password).'&nbsp;'.ENTRY_PASSWORD_ERROR;
+		echo xtc_draw_password_field('entry_password', $customers_password_encrypted).'&nbsp;'.ENTRY_PASSWORD_ERROR;
 	} else {
-		echo xtc_draw_password_field('entry_password', $customers_password);
+		echo xtc_draw_password_field('entry_password', $customers_password_encrypted);
 	}
 } else {
-	echo xtc_draw_password_field('entry_password', $customers_password);
+	echo xtc_draw_password_field('entry_password', $customers_password_encrypted);
 }
 ?></td>
           </tr>

@@ -20,7 +20,7 @@
   $module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   include_once('inc/xtc_get_zone_name.inc.php');
   include_once('inc/xtc_get_country_list.inc.php');
-  include_once('inc/xtc_get_countries.inc.php');
+
  
   if (!isset($process)) $process = false;
 

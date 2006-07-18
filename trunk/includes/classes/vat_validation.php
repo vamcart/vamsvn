@@ -13,9 +13,11 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-
+// include needed functions
+require_once (DIR_FS_INC.'xtc_get_countries.inc.php');
 class vat_validation {
 	var $vat_info;
+	var $vat_mod;
 
 	function vat_validation($vat_id = '', $customers_id = '', $customers_status = '', $country_id = '', $guest = false) {
 		$this->vat_info = array ();
@@ -36,7 +38,7 @@ class vat_validation {
 
 		if (!$guest) {
 			if ($vat_id) {
-				$validate_vatid = $this->validate_vatid($vat_id);
+				$validate_vatid = $this->validate_vatid($vat_id, $country_id);
 
 				switch ($validate_vatid) {
 
@@ -99,7 +101,7 @@ class vat_validation {
 
 		} else {
 			if ($vat_id) {
-				$validate_vatid = $this->validate_vatid($vat_id);
+				$validate_vatid = $this->validate_vatid($vat_id, $country_id);
 
 				switch ($validate_vatid) {
 
@@ -177,7 +179,7 @@ class vat_validation {
 
 	}
 
-	function validate_vatid($vat_id) {
+	function validate_vatid($vat_id, $country_id) {
 		$remove = array (' ', '-', '/', '\\', '.', ':', ',');
 		$results = array (0 => '0', 1 => '1', 8 => '8', 9 => '9'); //$results = array(0 => 'false', 1 => 'true', 8 => 'unknown country', 9 => 'unknown algorithm');
 		$vat_id = trim(chop($vat_id));
@@ -188,7 +190,19 @@ class vat_validation {
 		} // end for($i = 0; $i < count($remove)); $i++)
 
 		// land bestimmen
+				// RWS starts
+		// Get country ISO code after $country_id
+		$country_array = array ();
+		$country_array = xtc_get_countriesList($country_id, true);
+		$vat_id_country = strtolower($country_array['countries_iso_code_2']);
+		// Check if $vat_id contains country code already. If not, add it to $vat_id
 		$country = strtolower(substr($vat_id, 0, 2));
+		if ($vat_id_country != $country) {
+			$country = $vat_id_country;
+			$vat_id = $country.$vat_id;
+		}
+
+		// RWS ends
 
 		// je nach land anders behandeln
 		switch ($country) {
@@ -525,15 +539,13 @@ class vat_validation {
 		if (strlen($vat_id) != 13)
 			return 0;
 
-		$checksum = (int) substr($vat_id, -1);
-		$checkval = 0;
-		for ($i = 0; $i <= 9; $i ++)
-			//echo $vat_id[11-$i];
-			$checkval += (int) $vat_id[11 - $i] * ($this->is_even($i) ? 2 : 1);
-		if ($checksum != $this->modulo($checkval, 10))
-			return 0;
+		if ($this->live_check = true) {
 
-		return 1;
+			return $this->live($vat_id);
+
+		} else {
+			return 9; // es gibt keinen algorithmus
+		}
 	} // end italien
 
 	// lettland
@@ -739,28 +751,64 @@ class vat_validation {
 
 	// spanien
 	function checkVatID_es($vat_id) {
-		if (strlen($vat_id) != 11)
+		// Trim country info
+		$vat_id = substr($vat_id, 2);
+
+		// Is it a naturalized foreigner?
+		if (strtoupper($vat_id[0]) == 'X')
+			$vat_id = substr($vat_id, 1); // Truncated $vat_id is validated as a regular one
+
+		// Length check 
+		if (strlen($vat_id) > 9) // $vat_id at this point should be 9 chars at most
+
+
+
 			return 0;
 
-		$allowed = array ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'Q');
-		$checkval = false;
+		// Is it a company?
+		if (!is_numeric($vat_id[0])) {
+			$allowed = array ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
+			$checkval = false;
 
-		for ($i = 0; $i < count($allowed); $i ++) {
-			if (strtoupper($vat_id[2]) == $allowed[$i])
-				$checkval = true;
-		} // end for($i=0; $i<count($allowed); $i++)
-		if (!$checkval)
-			return 0;
+			for ($i = 0; $i < count($allowed); $i ++) {
+				if (strtoupper($vat_id[0]) == $allowed[$i])
+					$checkval = true;
+			} // end for($i=0; $i<count($allowed); $i++)
+			if (!$checkval)
+				return 9; // Few more letters are allowed, but not likely to happen
 
-		$checksum = (int) $vat_id[10];
-		$checkval = 0;
+			$vat_len1 = strlen($vat_id) - 1;
 
-		for ($i = 2; $i <= 8; $i ++)
-			$checkval += $this->cross_summa((int) $vat_id[11 - $i] * ($this->is_even($i) ? 2 : 1));
-		if ($checksum != 10 - $this->modulo($checkval, 10))
-			return 0;
+			$checksum = (int) $vat_id[$vat_len1];
+			$checkval = 0;
 
-		return 1;
+			for ($i = 1; $i < $vat_len1; $i ++)
+				$checkval += $this->cross_summa((int) $vat_id[$i] * ($this->is_even($i) ? 1 : 2));
+
+			if ($checksum != 10 - $this->modulo($checkval, 10))
+				return 0;
+
+			return 1;
+		} // end Is it a company?
+
+		// Is it an Individual? (or naturalized foreigner)
+		if (!is_numeric($vat_id[strlen($vat_id) - 1])) {
+			$allowed1 = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+			$vat_len1 = strlen($vat_id) - 1;
+
+			$checksum = strtoupper($vat_id[$vat_len1]);
+			$checkval = $this->modulo((int) substr($vat_id, 0, $vat_len1), 23);
+
+			if ($checksum != $allowed1[$checkval])
+				return 0;
+
+			$this->vat_mod = array ('status' => $allowed1[$checkval]);
+
+			return 1;
+		} // end Is it an Individual?
+
+		return 0; // No match found
 	} // end spanien
 
 	// tschechien

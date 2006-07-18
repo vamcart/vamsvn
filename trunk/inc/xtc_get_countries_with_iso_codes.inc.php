@@ -16,6 +16,6 @@
    ---------------------------------------------------------------------------------------*/
    
   function xtc_get_countries_with_iso_codes($countries_id) {
-    return xtc_get_countries($countries_id, true);
+    return xtc_get_countriesList($countries_id, true);
   }
  ?>

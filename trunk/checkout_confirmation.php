@@ -128,11 +128,6 @@ $breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION, xtc_href_link(FILENAME_CH
 $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION);
 
 require (DIR_WS_INCLUDES.'header.php');
-
-if (ACCOUNT_STREET_ADDRESS == 'true') {
-	$smarty->assign('SHIPPING_ADDRESS', 'true');
-}
-
 if (SHOW_IP_LOG == 'true') {
 	$smarty->assign('IP_LOG', 'true');
 	if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
@@ -234,8 +229,10 @@ if (xtc_not_null($order->info['comments'])) {
 
 }
 
-if (isset ($$_SESSION['payment']->form_action_url)) {
-	$form_action_url = $$_SESSION['payment']->form_action_url;
+if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tmpOrders) {
+
+		$form_action_url = $$_SESSION['payment']->form_action_url;	
+	
 } else {
 	$form_action_url = xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 }

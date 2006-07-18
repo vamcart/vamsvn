@@ -52,7 +52,7 @@
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
   // Define the project version
-  define('PROJECT_VERSION', 'xt:Commerce v3.0.4 SP1 VaM Edition');
+  define('PROJECT_VERSION', 'xt:Commerce v3.0.4 SP2 VaM Edition');
 
   // Set the length of the redeem code, the longer the more secure
   define('SECURITY_CODE_LENGTH', '6');
@@ -300,7 +300,7 @@
 
   // set the session name and save path
   session_name('XTCsid');
-  session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
+	if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
   // set the session cookie parameters
   if (function_exists('session_set_cookie_params')) {

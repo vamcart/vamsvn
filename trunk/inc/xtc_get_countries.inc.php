@@ -15,7 +15,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-  function xtc_get_countries($countries_id = '', $with_iso_codes = false) {
+  function xtc_get_countriesList($countries_id = '', $with_iso_codes = false) {
     $countries_array = array();
     if (xtc_not_null($countries_id)) {
       if ($with_iso_codes == true) {
