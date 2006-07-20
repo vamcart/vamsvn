@@ -168,6 +168,12 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/backups/<br />';
  }
 
+    if (!is_writeable(DIR_FS_CATALOG . 'tmp/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'tmp/<br />';
+ }
+
  // image folders
       if (!is_writeable(DIR_FS_CATALOG . 'images/')) {
     $error_flag=true;
