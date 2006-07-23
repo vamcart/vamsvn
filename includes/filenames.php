@@ -96,4 +96,9 @@ define('FILENAME_PRINT_ORDER', 'print_order.php');
 define('FILENAME_ERROR_HANDLER', 'error_handler.php');
 define('FILENAME_CONTENT', 'shop_content.php');
 define('FILENAME_BANNER', 'banners.php');
+
+// —борка VaM
+
+define('FILENAME_RSS2', 'rss2.php');
+
 ?>
