@@ -14,7 +14,7 @@ function CheckMultiForm ()
           }
       }
     }
-    alert('Bitte markieren Sie mindestens ein Element!\nPlease check at least one element!');
+    alert('Выделите хотя бы один элемент!\nPlease check at least one element!');
     return false;
   }
 
