@@ -17,8 +17,8 @@
   define('ATTENTION_TITLE','! ВНИМАНИЕ !');
 
   // text for Warnings:
-  define('TEXT_FILE_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие файлы не закрыты от записи. Немедленно смените права на файлы,если не хотите проблем. Установите <b>444</b> для юникса, или <b>read-only</b> для Windows.');
-  define('TEXT_FOLDER_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие папки закрыты от записи. Измените права на эти папки. <b>(777)</b> для юникса, или <b>(read-write)</b> для Windows.');
+  define('TEXT_FILE_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие файлы не закрыты от записи. Установите права доступа <b>444</b> для юникса, или <b>read-only</b> для Windows.');
+  define('TEXT_FOLDER_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие папки закрыты от записи. Измените права доступа на эти папки. Например установите <b>777</b> для юникса, или <b>(read-write)</b> для Windows.');
   define('REPORT_GENERATED_FOR','Report For:');
   define('REPORT_GENERATED_ON','Generated On:');
   define('FIRST_VISIT_ON','First Visit:');
