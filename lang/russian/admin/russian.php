@@ -323,8 +323,8 @@ define('SUCCESS_FILE_SAVED_SUCCESSFULLY', 'Выполнено: Файл успешно загружен.');
 define('WARNING_NO_FILE_UPLOADED', 'Предупреждение: Ни одного файла не загружено.');
 
 define('DELETE_ENTRY','Удалить запись?');
-define('TEXT_PAYMENT_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модуль оплаты!');
-define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модуль доставки!');
+define('TEXT_PAYMENT_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модули оплаты!');
+define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модули доставки!');
 
 define('TEXT_NETTO','без налогов.');
 
