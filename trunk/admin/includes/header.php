@@ -110,6 +110,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/products.png', '', '16', '16') . '\', \'' . addslashes(BOX_ATTRIBUTES_MANAGER) . '\', \'' . xtc_href_link(FILENAME_NEW_ATTRIBUTES, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/attributes.png', '', '16', '16') . '\', \'' . addslashes(BOX_PRODUCTS_ATTRIBUTES) . '\', \'' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '', 'NONSSL') . '\', \'\', null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/run.png', '', '16', '16') . '\', \'' . addslashes(BOX_MANUFACTURERS) . '\', \'' . xtc_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '\', null, null],' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/file.png', '', '16', '16') . '\', \'' . addslashes(BOX_EASY_POPULATE) . '\', \'' . xtc_href_link(FILENAME_EASYPOPULATE, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/write.png', '', '16', '16') . '\', \'' . addslashes(BOX_REVIEWS) . '\', \'' . xtc_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/specials.png', '', '16', '16') . '\', \'' . addslashes(BOX_SPECIALS) . '\', \'' . xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '    ],' . "\n" .

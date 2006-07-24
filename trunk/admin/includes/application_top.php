@@ -137,6 +137,7 @@
   define('FILENAME_CAMPAIGNS_REPORT','stats_campaigns.php');
   define('FILENAME_XSELL_GROUPS','cross_sell_groups.php');
   define('FILENAME_CSV_BACKEND','csv_backend.php');
+  define('FILENAME_EASYPOPULATE', 'easypopulate.php');
 
   // define the database table names used in the project
   define('TABLE_ADDRESS_BOOK', 'address_book');
