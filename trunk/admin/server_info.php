@@ -89,23 +89,33 @@
         <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td>
+        <td align="center">
 <?php
   if (function_exists('ob_start')) {
+?>
+<style type="text/css">
+body, td, th {font-family: sans-serif; font-size: 10px;}
+.p {text-align: left;}
+.e {background-color: #ccccff; font-weight: bold;}
+.h {background-color: #9999cc; font-weight: bold;}
+.v {background-color: #cccccc;}
+i {color: #666666;}
+hr {display: none;}
+</style>
+<?php
     ob_start();
     phpinfo();
     $phpinfo = ob_get_contents();
     ob_end_clean();
 
     $phpinfo = str_replace('border: 1px', '', $phpinfo);
-    ereg("(<style type=\"text/css\">{1})(.*)(</style>{1})", $phpinfo, $regs);
-    echo '<style type="text/css">' . $regs[2] . '</style>';
-    ereg("(<body>{1})(.*)(</body>{1})", $phpinfo, $regs);
-    echo $regs[2];
+    ereg('<body>(.*)</body>', $phpinfo, $regs);
+    echo $regs[1];
   } else {
     phpinfo();
   }
 ?>
+
         </td>
       </tr>
     </table></td>
