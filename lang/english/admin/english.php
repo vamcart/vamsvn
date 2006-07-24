@@ -392,4 +392,9 @@ define('TEXT_REFERER','Referer: ');
 define('IMAGE_ICON_INFO','');
 define('ERROR_IMAGE_DIRECTORY_CREATE', 'Error: Directory creation error ');
 define('TEXT_IMAGE_DIRECTORY_CREATE', 'Success: Directory created ');
+
+//—борка VaM
+
+define('BOX_EASY_POPULATE','Easypopulate');
+
 ?>
