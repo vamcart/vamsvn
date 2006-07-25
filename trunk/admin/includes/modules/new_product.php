@@ -316,13 +316,21 @@ if (GROUP_CHECK == 'true') {
 
     <tr>
      <td class="main" align="right">
+<table border="0" align="right">
+        <tr>
+          <td align="right">     
       	<?php
 
 echo xtc_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
 echo xtc_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
       	<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')">
-      	&nbsp;&nbsp;
+          </td>
+          <td align="right">     
       	<?php echo '<a class="button" href="' . xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+</td>
+</tr>
+</table>
+
   	 </td>
     </tr></form>
