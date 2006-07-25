@@ -201,4 +201,10 @@ define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Use uploaded picture:');
 define('TEXT_STANDART_IMAGE', 'Product image');
 define('TEXT_SELECT_DIRECTORY', '-- Select upload directory --');
 define('TEXT_SELECT_IMAGE', '-- Select image --');
+
+define('TABLE_HEADING_XML', 'XML');
+define('TEXT_PRODUCTS_TO_XML', 'Yandex-Market XML:');
+define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Enable');
+define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Disable');
+
 ?>

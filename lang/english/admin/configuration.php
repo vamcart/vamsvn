@@ -595,4 +595,29 @@ define('SEARCH_IN_ATTR_DESC','Activate to enable search in Products Attributes')
 
 define('SEARCH_ENGINE_FRIENDLY_URLSX_TITLE' , 'Allow to use URL SEFLT');
 define('SEARCH_ENGINE_FRIENDLY_URLSX_DESC' , 'Allow to use URL SEFLT');
+
+// —борка VaM
+
+// яндекс маркет
+
+define('YML_NAME_TITLE' , 'Store name');
+define('YML_COMPANY_TITLE' , 'Store owner');
+define('YML_DELIVERYINCLUDED_TITLE' , 'Delivery included');
+define('YML_AVAILABLE_TITLE' , 'Product availability');
+define('YML_AUTH_USER_TITLE' , 'Login');
+define('YML_AUTH_PW_TITLE' , 'Password');
+define('YML_REFERER_TITLE' , 'Referer');
+define('YML_STRIP_TAGS_TITLE' , 'Strip tags');
+define('YML_UTF8_TITLE' , 'Encode to UTF-8');
+
+define('YML_NAME_DESC' , 'Store name for Yandex-Market. STORE_NAME used if this field empty.');
+define('YML_COMPANY_DESC' , 'Store owner for Yandex-Market. STORE_OWNER used if this field empty.');
+define('YML_DELIVERYINCLUDED_DESC' , 'Delivery included?');
+define('YML_AVAILABLE_DESC' , 'Product availability?');
+define('YML_AUTH_USER_DESC' , 'Login for YML');
+define('YML_AUTH_PW_DESC' , 'Password for YML');
+define('YML_REFERER_DESC' , 'Add referer to product link (ip or user agent)?');
+define('YML_STRIP_TAGS_DESC' , 'Strip html tags?');
+define('YML_UTF8_DESC' , 'Encode to UTF-8?');
+
 ?>

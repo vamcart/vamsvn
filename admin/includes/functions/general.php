@@ -1674,7 +1674,16 @@ function xtc_button_link($value, $href='javascript:void(null)', $parameter='') {
    return '<a href="'.$href.'" class="button" onClick="this.blur()" '.$parameter.' >'.$value.'</a>';
 }
 
-
+////// Sets the status of a product to XML
+  function xtc_set_product_xml($products_id, $status) {
+    if ($status == '1') {
+      return xtc_db_query("update " . TABLE_PRODUCTS . " set products_to_xml = '1', products_last_modified = now() where products_id = '" . (int)$products_id . "'");
+    } elseif ($status == '0') {
+      return xtc_db_query("update " . TABLE_PRODUCTS . " set products_to_xml = '0', products_last_modified = now() where products_id = '" . (int)$products_id . "'");
+    } else {
+      return -1;
+    }
+  }
 
 //--------------------------------------------------------------------------------------Ende 
 ?>

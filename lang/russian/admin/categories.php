@@ -201,4 +201,10 @@ define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Использовать загруженный файл:');
 define('TEXT_STANDART_IMAGE', 'Картинка');
 define('TEXT_SELECT_DIRECTORY', '-- Выберите поддиректорию --');
 define('TEXT_SELECT_IMAGE', '-- Выберите файл --');
+
+define('TABLE_HEADING_XML', 'XML');
+define('TEXT_PRODUCTS_TO_XML', 'Яндекс-маркет:');
+define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Включить');
+define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Не включать');
+
 ?>
