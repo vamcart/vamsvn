@@ -94,6 +94,8 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
 
       echo '        [\'' . xtc_image('images/icons/16x16/configure.png', '', '16', '16') . '\', \'' . addslashes(BOX_CONFIGURATION_22) . '\', \'' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '\', null, null],' . "\n";
 
+      echo '        [\'' . xtc_image('images/icons/16x16/configure.png', '', '16', '16') . '\', \'' . addslashes(BOX_CONFIGURATION_23) . '\', \'' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=23', 'NONSSL') . '\', null, null],' . "\n";
+
       echo '        [\'' . xtc_image('images/icons/16x16/status.png', '', '16', '16') . '\', \'' . addslashes(BOX_ORDERS_STATUS) . '\', \'' . xtc_href_link(FILENAME_ORDERS_STATUS, '', 'NONSSL') . '\', null, null],' . "\n";
 
       echo '        [\'' . xtc_image('images/icons/16x16/file_manager.png', '', '16', '16') . '\', \'' . addslashes(BOX_SHIPPING_STATUS) . '\', \'' . xtc_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL') . '\', null, null],' . "\n";

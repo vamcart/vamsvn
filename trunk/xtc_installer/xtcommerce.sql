@@ -731,6 +731,7 @@ CREATE TABLE products (
   products_vpe_value decimal(15,4) NOT NULL,
   products_startpage int(1) NOT NULL DEFAULT '0',
   products_startpage_sort int(4) NOT NULL DEFAULT '0',
+  products_to_xml tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (products_id),
   KEY idx_products_date_added (products_date_added)
 );
@@ -1443,6 +1444,17 @@ INSERT INTO configuration (configuration_id,  configuration_key, configuration_v
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SEARCH_IN_DESC', 'true', '22', '2', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SEARCH_IN_ATTR', 'true', '22', '3', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 
+#configuration_group_id 23, Яндекс-маркет
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'YML_NAME', '', '23', '1', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'YML_COMPANY', '', '23', '2', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_DELIVERYINCLUDED', 'true', '23', '3', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_AVAILABLE', 'stock', '23', '4', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\', \'stock\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'YML_AUTH_USER', '', '23', '5', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'YML_AUTH_PW', '', '23', '6', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_REFERER', 'false', '23', '7', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'false\', \'ip\', \'agent\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_STRIP_TAGS', 'true', '23', '8', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_UTF8', 'false', '23', '9', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+
 INSERT INTO configuration_group VALUES ('1', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
 INSERT INTO configuration_group VALUES ('3', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
@@ -1464,6 +1476,7 @@ INSERT INTO configuration_group VALUES ('19', 'Google Conversion', 'Google Conve
 INSERT INTO configuration_group VALUES ('20', 'Import/Export', 'Import/Export', '20', '1');
 INSERT INTO configuration_group VALUES ('21', 'Afterbuy', 'Afterbuy.de', '21', '1');
 INSERT INTO configuration_group VALUES ('22', 'Search Options', 'Additional Options for search function', '22', '1');
+INSERT INTO configuration_group VALUES ('23', 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '23', '1');
 
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (

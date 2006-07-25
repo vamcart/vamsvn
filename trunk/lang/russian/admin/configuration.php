@@ -592,4 +592,29 @@ define('SEARCH_IN_ATTR_DESC','Разрешить поиск в атрибутах товаров');
 
 define('SEARCH_ENGINE_FRIENDLY_URLSX_TITLE' , 'Использовать короткие URL SEFLT?');
 define('SEARCH_ENGINE_FRIENDLY_URLSX_DESC' , 'Использовать короткие URL SEFLT');
+
+// Сборка VaM
+
+// Яндекс маркет
+
+define('YML_NAME_TITLE' , 'Название магазина');
+define('YML_COMPANY_TITLE' , 'Название компании');
+define('YML_DELIVERYINCLUDED_TITLE' , 'Доставка включена');
+define('YML_AVAILABLE_TITLE' , 'Товар в наличии');
+define('YML_AUTH_USER_TITLE' , 'Логин');
+define('YML_AUTH_PW_TITLE' , 'Пароль');
+define('YML_REFERER_TITLE' , 'Ссылка');
+define('YML_STRIP_TAGS_TITLE' , 'Теги');
+define('YML_UTF8_TITLE' , 'Перекодировка в UTF-8');
+
+define('YML_NAME_DESC' , 'Название магазина для Яндекс-Маркет. Если поле пустое, то используется STORE_NAME.');
+define('YML_COMPANY_DESC' , 'Название компании для Яндекс-Маркет. Если поле пустое, то используется STORE_OWNER.');
+define('YML_DELIVERYINCLUDED_DESC' , 'Доставка включена в стоимость товара?');
+define('YML_AVAILABLE_DESC' , 'Товар в наличии или под заказ?');
+define('YML_AUTH_USER_DESC' , 'Логин для доступа к YML');
+define('YML_AUTH_PW_DESC' , 'Пароль для доступа к YML');
+define('YML_REFERER_DESC' , 'Добавить в адрес товара параметр с ссылкой на User agent или ip?');
+define('YML_STRIP_TAGS_DESC' , 'Убирать html-теги в строках?');
+define('YML_UTF8_DESC' , 'Перекодировать в UTF-8?');
+
 ?>

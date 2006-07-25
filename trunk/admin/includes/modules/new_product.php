@@ -83,6 +83,18 @@ switch ($pInfo->products_status) {
 		$out_status = false;
 }
 
+switch ($pInfo->products_to_xml) {
+	case '0' :
+		$in_xml = false;
+		$out_xml = true;
+		break;
+	case '1' :
+	default :
+		$in_xml = true;
+		$out_xml = false;
+}
+
+
 if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $startpage_checked = false; }
 
 ?>
@@ -99,7 +111,8 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 <span class="pageHeading"><?php echo sprintf(TEXT_NEW_PRODUCT, xtc_output_generated_category_path($current_category_id)); ?></span><br />
 <table width="100%"  border="0">
   <tr>
-    <td><span class="main"><?php echo TEXT_PRODUCTS_STATUS; ?> <?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_radio_field('products_status', '1', $status) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE . '&nbsp;' . xtc_draw_radio_field('products_status', '0', $out_status) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE; ?><br />
+    <td>
+    <span class="main"><?php echo TEXT_PRODUCTS_STATUS; ?> <?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_radio_field('products_status', '1', $status) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE . '&nbsp;' . xtc_draw_radio_field('products_status', '0', $out_status) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE; ?><br />
     </span>
       <table width="100%" border="0">
         <tr>
@@ -131,6 +144,10 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
       <tr>
         <td><span class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></span></td>
         <td><span class="main"><?php echo xtc_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?></span></td>
+      </tr>
+      <tr>
+        <td><span class="main"><?php echo TEXT_PRODUCTS_TO_XML; ?></span></td>
+        <td><span class="main"><?php echo xtc_draw_radio_field('products_to_xml', '1', $in_xml) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE_TO_XML . '&nbsp;' . xtc_draw_radio_field('products_to_xml', '0', $out_xml) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE_TO_XML; ?></span></td>
       </tr>
       <tr>
         <td><span class="main"><?php echo TEXT_PRODUCTS_VPE_VISIBLE.xtc_draw_selection_field('products_vpe_status', 'checkbox', '1',$pInfo->products_vpe_status==1 ? true : false); ?>

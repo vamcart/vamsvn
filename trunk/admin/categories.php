@@ -109,6 +109,17 @@ if ($_GET['action']) {
 			}
 			break;
 			//EOB setpflag
+
+      case 'setxml' :
+        if (($_GET['flagxml'] == '0') || ($_GET['flagxml'] == '1')) {
+          if ($_GET['pID']) {
+            xtc_set_product_xml($_GET['pID'], $_GET['flagxml']);
+          }
+         }
+         
+        xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID']));
+        break;
+
 			
 		case 'setsflag' :
 			if (($_GET['flag'] == '0') || ($_GET['flag'] == '1')) {
