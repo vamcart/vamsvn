@@ -153,7 +153,7 @@ for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <
 			}
 
 //			if ($products_price = xtc_get_products_special_price($prev_prod['products_id'])) {
-			if ($products_price = $xtPrice->xtcGetPrice($random_product['products_id'], $format = true, 1, $random_product['products_tax_class_id'], $random_product['products_price'])) {
+			if ($products_price = $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
 			} else {
 				$products_price = $prev_prod['products_price'];
 			}
