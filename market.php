@@ -202,7 +202,7 @@ echo "</offers>\n" .
 			$str = strip_tags($str);
 		}
 		if (YML_UTF8 == 'true')
-			$str = iconv(CHARSET, "UTF-8", $str);
+			$str = iconv($_SESSION['language_charset'], "UTF-8", $str);
 		return htmlspecialchars($str, ENT_QUOTES);
 	}
 ?>
