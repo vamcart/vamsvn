@@ -179,8 +179,8 @@ for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <
 				}
 //				echo "  <vendor>" . _clear_string($manufacturers_array[$prev_prod['manufacturers_id']]) . "</vendor>\n";
 			} 
-			if (isset($prev_prod['products_info']) && xtc_not_null($prev_prod['products_info'])) {
-				echo "  <description>" . _clear_string($prev_prod['products_info']) . "</description>\n";
+			if (isset($prev_prod['products_short_description']) && xtc_not_null($prev_prod['products_short_description'])) {
+				echo "  <description>" . _clear_string($prev_prod['products_short_description']) . "</description>\n";
 			} elseif (xtc_not_null($prev_prod['products_description'])) {
 				echo "  <description>" . _clear_string($prev_prod['products_description']) . "</description>\n";
 			}
