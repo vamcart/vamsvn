@@ -34,7 +34,7 @@
   reset($lng->catalog_languages);
   while (list($key, $value) = each($lng->catalog_languages)) {
   $count_lng++;
-    $languages_string .= ' <a href="' . xtc_href_link(FILENAME_DEFAULT, 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a> ';
+    $languages_string .= ' <a href="' . xtc_href_link(basename($_SERVER["SCRIPT_NAME"]), 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a> ';
   }
 # /Выбор языка в админке, автор незнама  
 ?>
