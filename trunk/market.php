@@ -96,7 +96,7 @@ $categories_query = xtc_db_query("select c.categories_id, cd.categories_name, c.
 														from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
 														where c.categories_status = '1'
 															and c.categories_id = cd.categories_id
-															and cd.language_id='" . (int)$languages_id ."'
+															and cd.language_id='" . $_SESSION['languages_id'] ."'
 														order by c.parent_id, c.sort_order, cd.categories_name"
 													);
 $categories_disable = array();
@@ -122,7 +122,7 @@ $products_sql = "select p.products_id, p.products_model, p.products_quantity, p.
 									 and p.products_status = 1" .
 									 ((xtc_db_num_rows($products_to_xml_query) > 0) ? " and p.products_to_xml = 1" : "") .
 								 " and p.products_id = p2c.products_id
-									 and pd.language_id = " . (int)$languages_id . "
+									 and pd.language_id = " . $_SESSION['languages_id'] . "
 									 and p.products_price > 0
 									 and l.languages_id=pd.language_id
 								 order by pd.products_name";
