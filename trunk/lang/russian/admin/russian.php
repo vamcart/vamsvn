@@ -119,7 +119,7 @@ define('BOX_CUSTOMERS_STATUS','Группы клиентов');
 define('BOX_ORDERS', 'Заказы');
 define('BOX_COUNTRIES', 'Страны');
 define('BOX_ZONES', 'Регионы');
-define('BOX_GEO_ZONES', 'Налоговые зоны');
+define('BOX_GEO_ZONES', 'Географические зоны');
 define('BOX_TAX_CLASSES', 'Виды налогов');
 define('BOX_TAX_RATES', 'Ставки налогов');
 define('BOX_HEADING_REPORTS', 'Отчёты');

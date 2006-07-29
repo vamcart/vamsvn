@@ -19,7 +19,7 @@ define('HEADING_TITLE', 'Географические зоны');
 
 define('TABLE_HEADING_COUNTRY', 'Страна');
 define('TABLE_HEADING_COUNTRY_ZONE', 'Зона');
-define('TABLE_HEADING_TAX_ZONES', 'Налоговая зона');
+define('TABLE_HEADING_TAX_ZONES', 'Географическая зона');
 define('TABLE_HEADING_ACTION', 'Действие'); 
 
 define('TEXT_INFO_HEADING_NEW_ZONE', 'Новая зона');

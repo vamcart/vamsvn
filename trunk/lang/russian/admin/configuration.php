@@ -556,7 +556,7 @@ define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_DESC' , 'Группа для покупателей с правил
 define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Проверять VAT код');
 define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Проверять правильно ли указан VAT код (проверка синтаксиса)');
 define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Проверять VAT код через внешний сервер');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Проверять VAT код через внешний сервер"');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Проверять VAT код через внешний сервер');
 define('ACCOUNT_COMPANY_VAT_GROUP_TITLE' , 'Автоматическая смена группы');
 define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Установите в true, если Вы хотите, что б группа покупателя изменялась автоматически при правильно указанном VAT коде.');
 define('ACCOUNT_VAT_BLOCK_ERROR_TITLE' , 'Разрешить неправильные UST коды');
