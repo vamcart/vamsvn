@@ -47,7 +47,7 @@ define('TEXT_INFO_NUMBER_ZONES', 'Количество зон:');
 define('TEXT_INFO_ZONE_DESCRIPTION', 'Описание:');
 define('TEXT_INFO_COUNTRY', 'Страна:');
 define('TEXT_INFO_COUNTRY_ZONE', 'Регион:');
-define('TYPE_BELOW', 'Все зоны');
-define('PLEASE_SELECT', 'Все зоны');
+define('TYPE_BELOW', 'Все регионы');
+define('PLEASE_SELECT', 'Все регионы');
 define('TEXT_ALL_COUNTRIES', 'Все страны');    
 ?>
