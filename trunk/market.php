@@ -162,7 +162,7 @@ for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <
 					 "  <url>" . xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $prev_prod['products_id'] . '&amp;language=' . $prev_prod['language'] . $yml_referer, 'NONSSL', false) . "</url>\n" .
 //					 "  <price>" . number_format(xtc_round(xtc_add_tax($products_price, xtc_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
 					 "  <price>" . $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
-					 "  <currencyId>" . $currency . "</currencyId>\n";
+					 "  <currencyId>" . $code . "</currencyId>\n";
 			for ($ic=0,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
 				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
 			}
