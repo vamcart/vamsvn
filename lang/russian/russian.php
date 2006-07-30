@@ -118,7 +118,7 @@ define('ENTRY_POST_CODE_ERROR', 'Поле Почтовый индекс должно содержать как миним
 define('ENTRY_POST_CODE_TEXT', '*');
 define('ENTRY_CITY_ERROR', 'Поле Город должно содержать как минимум ' . ENTRY_CITY_MIN_LENGTH . ' символа.');
 define('ENTRY_CITY_TEXT', '*');
-define('ENTRY_STATE_ERROR', 'Поле Область должно содержать как минимум ' . ENTRY_STATE_MIN_LENGTH . ' символа.');
+define('ENTRY_STATE_ERROR', 'Поле Регион должно содержать как минимум ' . ENTRY_STATE_MIN_LENGTH . ' символа.');
 define('ENTRY_STATE_ERROR_SELECT', 'Выберите регион.');
 define('ENTRY_STATE_TEXT', '*');
 define('ENTRY_COUNTRY_ERROR', 'Выберите страну.');
