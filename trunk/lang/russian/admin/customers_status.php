@@ -36,7 +36,7 @@ define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Разрешить этой группе клиентов чит
 define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Разрешить этой группе клиентов читать отзывы?');
 define('ENTRY_GRADUATED_PRICES','Цены от количества');
 define('ENTRY_NO','Нет');
-define('ENTRY_OT_XMEMBER', 'Показывать скидку клиента в корзине?');
+define('ENTRY_OT_XMEMBER', 'Скидка от общей стоимости заказа?');
 define('ENTRY_YES','Да');
 
 define('ERROR_REMOVE_DEFAULT_CUSTOMER_STATUS', 'Ошибка: Группа по умолчанию не может быть удалена. Установите другую группу по умолчанию и попробуйте снова.');
@@ -69,7 +69,7 @@ define('TEXT_INFO_CUSTOMERS_STATUS_BT_PERMISSION_INTRO', '<b>Разрешить покупател
 define('TEXT_INFO_CUSTOMERS_STATUS_CC_PERMISSION_INTRO', '<b>Разрешить покупателям этой группы оплату кредитными картами?</b>');
 define('TEXT_INFO_CUSTOMERS_STATUS_COD_PERMISSION_INTRO', '<b>Разрешить покупателям этой группы оплату наличными?</b>');
 define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO','<b>Скидка для атрибутов товара</b><br />(Макс. % скидки на единицу товара)');
-define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO','<b>Показывать скидку на странице подтверждения заказа</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO','<b>Скидка от общей стоимости заказа</b>');
 define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE', 'Скидка (от 0 до 100%):');
 define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE_INTRO', 'Укажите скидку от 0 до 100%, которая будет применена к каждому товару.');
 define('TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO','<b>Цены от количества</b>');
