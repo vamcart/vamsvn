@@ -36,7 +36,7 @@ define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Разрешить этой группе клиентов чит
 define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Разрешить этой группе клиентов читать отзывы?');
 define('ENTRY_GRADUATED_PRICES','Цены от количества');
 define('ENTRY_NO','Нет');
-define('ENTRY_OT_XMEMBER', 'Показывать скидку клиента на странице подтверждения товара ? :');
+define('ENTRY_OT_XMEMBER', 'Показывать скидку клиента в корзине?');
 define('ENTRY_YES','Да');
 
 define('ERROR_REMOVE_DEFAULT_CUSTOMER_STATUS', 'Ошибка: Группа по умолчанию не может быть удалена. Установите другую группу по умолчанию и попробуйте снова.');
