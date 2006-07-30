@@ -120,7 +120,7 @@ function check_form(form_name) {
 
   check_input("email_address", <?php echo ENTRY_EMAIL_ADDRESS_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_EMAIL_ADDRESS_ERROR); ?>");
 
-<?php if (ACCOUNT_STREET_ADDRESS == 'true') echo '  check_input("street_address", ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY__STREET_ADDRESS_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_STREET_ADDRESS == 'true') echo '  check_input("street_address", ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_STREET_ADDRESS_ERROR) . '");' . "\n"; ?>
 
 <?php if (ACCOUNT_POSTCODE == 'true') echo '  check_input("postcode", ' . ENTRY_POSTCODE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_POST_CODE_ERROR) . '");' . "\n"; ?>
 
