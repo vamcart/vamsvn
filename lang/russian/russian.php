@@ -477,5 +477,8 @@ define('TEXT_RSS2_INFO', '
 Обратите внимание на параметр limit.<br />
 Можно выводить, к примеру, не все новинки (rss2.php?feed=new_products), а только 10, просто добавляете параметр limit (rss2.php?feed=new_products&amp;limit=10)<br />');
 
+define('ENTRY_STATE_RELOAD', 'Нажмите на кнопку <b>"Обновить"</b> чтобы заполнить поле Регион');
+define('ENTRY_NOSTATE_AVAILIABLE', 'У выбранной страны нет регионов');
+define('ENTRY_STATEXML_LOADING', 'Загрузка регионов ...');
 
 ?>

@@ -473,4 +473,8 @@ define('TEXT_RSS2_INFO', '
 <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random</a> - Upcoming random.<br />
 <br />');
 
+define('ENTRY_STATE_RELOAD', 'Click <b>"Update"</b> button to fill State field');
+define('ENTRY_NOSTATE_AVAILIABLE', 'States not available for selecter country');
+define('ENTRY_STATEXML_LOADING', 'Loading states ...');
+
 ?>
