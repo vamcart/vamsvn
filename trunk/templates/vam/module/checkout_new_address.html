@@ -68,19 +68,7 @@
     <td class="inputRequirement" align="left">{$INPUT_CITY}</td>
   </tr>
   {/if} 
-  {if $state=='1'} 
-  <tr> 
-    <td class="main">{#text_state#}</td>
-    <td class="inputRequirement" align="left">{$INPUT_STATE}</td>
-  </tr>
-  {/if} 
-  {if $country=='1'} 
-  <tr> 
-    <td class="main">{#text_country#}</td>
-    <td class="inputRequirement" align="left">{$SELECT_COUNTRY}</td>
-  </tr>
-  {/if} 
-  {if $new=='1'} 
+  {if $state=='1'}  <tr>     <td class="main">{#text_state#}</td>    <td class="inputRequirement"><span id="stateXML">{$INPUT_STATE}</span></td>  </tr>  {/if}  {if $country=='1'}  <tr>    <td class="main">{#text_country#}</td>    <td class="inputRequirement">{$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</td>  </tr>  {/if}  {if $new=='1'} 
   <tr> 
     <td class="main">&nbsp;</td>
     <td class="main" align="left">{$CHECKBOX_PRIMARY} {#text_standard#}</td>
