@@ -69,29 +69,8 @@
   $module_smarty->assign('INPUT_CITY',xtc_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (xtc_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city']));
   }
   
-  if (ACCOUNT_STATE == 'true') {
-  $module_smarty->assign('state','1');
-
-
-    if ($process == true) {
-      if ($entry_state_has_zones == true) {
-        $zones_array = array();
-        $zones_query = xtc_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . xtc_db_input($country) . "' order by zone_name");
-        while ($zones_values = xtc_db_fetch_array($zones_query)) {
-          $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-        }
-        $state_input= xtc_draw_pull_down_menuNote(array('name'=>'state','text'=>'&nbsp;' .(xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>': '')), $zones_array);
-      } else {
-        $state_input= xtc_draw_input_fieldNote(array('name'=>'state','text'=>'&nbsp;' .(xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>': '')));
-      }
-    } else {
-      $state_input= xtc_draw_input_fieldNote(array('name'=>'state','text'=>'&nbsp;' .(xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>': '')), xtc_get_zone_name($entry['entry_country_id'], $entry['entry_zone_id'], $entry['entry_state']));
-    }
-
-
-
 if (ACCOUNT_STATE == 'true') {
-	$smarty->assign('state', '1');
+	$module_smarty->assign('state', '1');
 
     if ($process != true) {
 
@@ -136,7 +115,6 @@ if (ACCOUNT_STATE == 'true') {
 	$module_smarty->assign('INPUT_STATE', $state_input);
 } else {
 	$module_smarty->assign('state', '0');
-}
 }
 
   if ($_POST['country']){
