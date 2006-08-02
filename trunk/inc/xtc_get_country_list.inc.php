@@ -20,7 +20,7 @@
   include_once(DIR_FS_INC . 'xtc_get_countries.inc.php');
   
   function xtc_get_country_list($name, $selected = '', $parameters = '') {
-//    $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
+   $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
 //    Probleme mit register_globals=off -> erstmal nur auskommentiert. Kann u.U. gelöscht werden.
     $countries = xtc_get_countriesList();
 
