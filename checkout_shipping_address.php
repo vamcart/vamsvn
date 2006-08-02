@@ -62,12 +62,19 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 			$company = xtc_db_prepare_input($_POST['company']);
 		$firstname = xtc_db_prepare_input($_POST['firstname']);
 		$lastname = xtc_db_prepare_input($_POST['lastname']);
+   if (ACCOUNT_STREET_ADDRESS == 'true')
 		$street_address = xtc_db_prepare_input($_POST['street_address']);
 		if (ACCOUNT_SUBURB == 'true')
 			$suburb = xtc_db_prepare_input($_POST['suburb']);
+   if (ACCOUNT_POSTCODE == 'true')
 		$postcode = xtc_db_prepare_input($_POST['postcode']);
+	if (ACCOUNT_CITY == 'true')
 		$city = xtc_db_prepare_input($_POST['city']);
-		$country = xtc_db_prepare_input($_POST['country']);
+   if (ACCOUNT_COUNTRY == 'true') {
+	   $country = xtc_db_prepare_input($_POST['country']);
+	} else {
+      $country = STORE_COUNTRY;
+	}
 		if (ACCOUNT_STATE == 'true') {
 			$zone_id = xtc_db_prepare_input($_POST['zone_id']);
 			$state = xtc_db_prepare_input($_POST['state']);
@@ -93,50 +100,56 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 			$messageStack->add('checkout_address', ENTRY_LAST_NAME_ERROR);
 		}
 
+   if (ACCOUNT_STREET_ADDRESS == 'true') {
 		if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 			$error = true;
 
 			$messageStack->add('checkout_address', ENTRY_STREET_ADDRESS_ERROR);
 		}
+    }
 
+   if (ACCOUNT_POSTCODE == 'true') {
 		if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 			$error = true;
 
 			$messageStack->add('checkout_address', ENTRY_POST_CODE_ERROR);
 		}
+    }
 
+   if (ACCOUNT_CITY == 'true') {
 		if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 			$error = true;
 
 			$messageStack->add('checkout_address', ENTRY_CITY_ERROR);
 		}
+     }
 
-		if (ACCOUNT_STATE == 'true') {
-			$zone_id = 0;
-			$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
-			$check = xtc_db_fetch_array($check_query);
-			$entry_state_has_zones = ($check['total'] > 0);
-			if ($entry_state_has_zones == true) {
-				$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
-				if (xtc_db_num_rows($zone_query) > 1) {
-					$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".xtc_db_input($state)."'");
-				}
-				if (xtc_db_num_rows($zone_query) >= 1) {
-					$zone = xtc_db_fetch_array($zone_query);
-					$zone_id = $zone['zone_id'];
-				} else {
-					$error = true;
-
-					$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
-				}
-			} else {
-				if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
-					$error = true;
-
-					$messageStack->add('checkout_address', ENTRY_STATE_ERROR);
-				}
-			}
-		}
+//		if (ACCOUNT_STATE == 'true') {
+//			$zone_id = 0;
+//			$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+//			$check = xtc_db_fetch_array($check_query);
+//			$entry_state_has_zones = ($check['total'] > 0);
+//			if ($entry_state_has_zones == true) {
+//				$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
+//				if (xtc_db_num_rows($zone_query) > 1) {
+//					$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".xtc_db_input($state)."'");
+//				}
+//				if (xtc_db_num_rows($zone_query) >= 1) {
+//					$zone = xtc_db_fetch_array($zone_query);
+//					$zone_id = $zone['zone_id'];
+//				} else {
+//					$error = true;
+//
+//					$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
+//				}
+//			} else {
+//				if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
+//					$error = true;
+//
+//					$messageStack->add('checkout_address', ENTRY_STATE_ERROR);
+//				}
+//			}
+//		}
 
 		if ((is_numeric($country) == false) || ($country < 1)) {
 			$error = true;
