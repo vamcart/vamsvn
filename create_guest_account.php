@@ -162,32 +162,32 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
   }
 
-	if (ACCOUNT_STATE == 'true') {
-		$zone_id = 0;
-		$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
-		$check = xtc_db_fetch_array($check_query);
-		$entry_state_has_zones = ($check['total'] > 0);
-		if ($entry_state_has_zones == true) {
-			$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
-			if (xtc_db_num_rows($zone_query) > 1) {
-				$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".xtc_db_input($state)."'");
-			}
-			if (xtc_db_num_rows($zone_query) >= 1) {
-				$zone = xtc_db_fetch_array($zone_query);
-				$zone_id = $zone['zone_id'];
-			} else {
-				$error = true;
-
-				$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
-			}
-		} else {
-			if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
-				$error = true;
-
-				$messageStack->add('create_account', ENTRY_STATE_ERROR);
-			}
-		}
-	}
+//	if (ACCOUNT_STATE == 'true') {
+//		$zone_id = 0;
+//		$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+//		$check = xtc_db_fetch_array($check_query);
+//		$entry_state_has_zones = ($check['total'] > 0);
+//		if ($entry_state_has_zones == true) {
+//			$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
+//			if (xtc_db_num_rows($zone_query) > 1) {
+//				$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".xtc_db_input($state)."'");
+//			}
+//			if (xtc_db_num_rows($zone_query) >= 1) {
+//				$zone = xtc_db_fetch_array($zone_query);
+//				$zone_id = $zone['zone_id'];
+//			} else {
+//				$error = true;
+//
+//				$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
+//			}
+//		} else {
+//			if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
+//				$error = true;
+//
+//				$messageStack->add('create_account', ENTRY_STATE_ERROR);
+//			}
+//		}
+//	}
 
    if (ACCOUNT_TELE == 'true') {
 	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
@@ -362,20 +362,55 @@ $smarty->assign('INPUT_CITY', xtc_draw_input_fieldNote(array ('name' => 'city', 
 if (ACCOUNT_STATE == 'true') {
 	$smarty->assign('state', '1');
 
-	if ($process == true) {
-		if ($entry_state_has_zones == true) {
+//	if ($process == true) {
+
+    if ($process != true) {
+	    $country = (isset($_POST['country']) ? xtc_db_prepare_input($_POST['country']) : STORE_COUNTRY);
+	    $zone_id = 0;
+		 $check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+		 $check = xtc_db_fetch_array($check_query);
+		 $entry_state_has_zones = ($check['total'] > 0);
+		 if ($entry_state_has_zones == true) {
 			$zones_array = array ();
 			$zones_query = xtc_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' order by zone_name");
 			while ($zones_values = xtc_db_fetch_array($zones_query)) {
 				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 			}
-			$state_input = xtc_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array);
-		} else {
-			$state_input = xtc_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')));
+			
+			$zone = xtc_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_code = '".xtc_db_input($state)."'");
+
+	      if (xtc_db_num_rows($zone) > 0) {
+	        $zone_id = $zone['zone_id'];
+	        $zone_name = $zone['zone_name'];
+
+	      } else {
+
+		   $zone = xtc_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
+
+	      if (xtc_db_num_rows($zone) > 0) {
+	          $zone_id = $zone['zone_id'];
+	          $zone_name = $zone['zone_name'];
+	        }
+	      }
 		}
-	} else {
-		$state_input = xtc_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')));
 	}
+
+      if ($entry_state_has_zones == true) {
+        $state_input = xtc_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, $zone_name, ' id="state"');
+//        $state_input = xtc_draw_pull_down_menu('state', $zones_array, $zone_name . ' id="state"');
+      } else {
+		$state_input = xtc_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), ' id="state"');
+//        $state_input = xtc_draw_input_field('state', '', ' id="state"');
+      }
+		
+			
+//			$state_input = xtc_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array);
+//		} else {
+//			$state_input = xtc_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')));
+//		}
+//	} else {
+//		$state_input = xtc_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')));
+//	}
 
 	$smarty->assign('INPUT_STATE', $state_input);
 } else {
@@ -389,8 +424,13 @@ if ($_POST['country']) {
 }
 
 if (ACCOUNT_COUNTRY == 'true') {
-   $smarty->assign('country', '1');
-   $smarty->assign('SELECT_COUNTRY', xtc_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
+	$smarty->assign('country', '1');
+//   $smarty->assign('SELECT_COUNTRY', xtc_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
+
+   $smarty->assign('SELECT_COUNTRY', xtc_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected, 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"'));
+   
+   $smarty->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . xtc_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
+
 } else {
 	$smarty->assign('country', '0');
 }
