@@ -36,7 +36,6 @@ $country = $_REQUEST['country_id'];
 				$_RESULT = array("stateXML" => xtc_draw_input_field('state', $zones_values['zone_name']));
 			}
 		} else {
-//			$_RESULT = array("stateXML" => zen_draw_hidden_field('state','') . ENTRY_NOSTATE_AVAILIABLE);
 			$_RESULT = array("stateXML" => xtc_draw_input_field('state', ''));
 		}
 	} else {
