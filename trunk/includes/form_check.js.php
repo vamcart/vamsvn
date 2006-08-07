@@ -145,4 +145,150 @@ function check_form(form_name) {
     return true;
   }
 }
+
+		function checkformnew(of)
+		{
+		// Test if DOM is available and there is an element called required
+			if(!document.getElementById || !document.createTextNode){return;}
+			if(!document.getElementById('required')){return;}
+
+		// Define error messages and split the required fields
+			var errorID='errormsg';
+			var errorClass='error'
+/* changes for linked list */
+			var errorMsg='<?php echo JS_ERROR; ?>';
+/* end changes for linked list */
+			var errorImg='images/icons/warning.gif';
+			var errorAlt='<?php echo ICON_ERROR; ?>';
+			var errorTitle='<?php echo ICON_ERROR; ?>';
+			var reqfields=document.getElementById('required').value.split(',');
+
+		// Cleanup old mess
+			// if there is an old errormessage field, delete it
+			if(document.getElementById(errorID))
+			{
+				var em=document.getElementById(errorID);
+				em.parentNode.removeChild(em);
+			}
+			// remove old images and classes from the required fields
+			for(var i=0;i<reqfields.length;i++)
+			{
+				var f=document.getElementById(reqfields[i]);
+				if(!f){continue;}
+				if(f.previousSibling && /img/i.test(f.previousSibling.nodeName))
+				{
+					f.parentNode.removeChild(f.previousSibling);
+				}
+				f.className='';
+			}
+		// loop over required fields
+			for(var i=0;i<reqfields.length;i++)
+			{
+		// check if required field is there
+				var f=document.getElementById(reqfields[i]);
+				if(!f){continue;}
+		// test if the required field has an error, 
+		// according to its type
+				switch(f.type.toLowerCase())
+				{
+					case 'text':
+						if(f.name=='firstname' && f.value.length<<?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='lastname' && f.value.length<<?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='dob' && f.value=='' && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='street_address' && f.value.length<<?php echo ENTRY_STREET_ADDRESS_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='postcode' && f.value.length<<?php echo ENTRY_POSTCODE_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='city' && f.value.length<<?php echo ENTRY_CITY_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='telephone' && f.value.length<<?php echo ENTRY_TELEPHONE_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='state' && f.value.length<<?php echo ENTRY_STATE_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+		// email is a special field and needs checking
+						if(f.id=='email' && !cf_isEmailAddr(f.value)){cf_adderr(f)}							
+					break;
+					case 'password':
+						if(f.name=='password' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='confirmation' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+					break;
+					case 'textarea':
+						if(f.value==''){cf_adderr(f)}							
+					break;
+					case 'checkbox':
+						if(!f.checked){cf_adderr(f)}							
+					break;
+					case 'radio':
+						if(!f.checked){cf_adderr(f)}							
+					break;
+					case 'select-one':
+						if(!f.selectedIndex && f.selectedIndex==0){cf_adderr(f)}							
+					break;
+				}
+			}
+			return !document.getElementById(errorID);
+
+			/* Tool methods */
+			function cf_adderr(o)
+			{
+				// create image, add to and colourise the error fields
+				var errorIndicator=document.createElement('img');
+				errorIndicator.alt=errorAlt;
+				errorIndicator.src=errorImg;
+				errorIndicator.title=errorTitle;
+				o.className=errorClass;
+				o.parentNode.insertBefore(errorIndicator,o);
+
+			// Check if there is no error message
+				if(!document.getElementById(errorID))
+				{
+				// create errormessage and insert before submit button
+					var em=document.createElement('div');
+					em.id=errorID;
+					var newp=document.createElement('p');
+					newp.appendChild(document.createTextNode(errorMsg))
+					em.appendChild(newp);
+/* added for linked list */
+					var newul=document.createElement('ul');		
+					em.appendChild(newul);
+/* end added for linked list */
+					// find the submit button 
+					for(var i=0;i<of.getElementsByTagName('input').length;i++)
+					{
+						if(/image/i.test(of.getElementsByTagName('input')[i].type))
+						{
+							var sb=of.getElementsByTagName('input')[i];
+							break;
+						}
+					}
+					if(sb)
+					{
+						sb.parentNode.insertBefore(em,sb);
+					}	
+				} 
+/* added for linked list */
+				var em=document.getElementById(errorID).getElementsByTagName('ul')[0];
+				var newli=document.createElement('li');
+				var newa=document.createElement('a');
+				for(var i=0;i<of.getElementsByTagName('label').length;i++)
+				{
+					if(of.getElementsByTagName('label')[i].htmlFor==o.id)
+					{
+						var txt=of.getElementsByTagName('label')[i].firstChild.nodeValue + ' ' + of.getElementsByTagName('label')[i].id;
+						break;
+					}
+				}
+	
+				newa.appendChild(document.createTextNode(txt));
+				newa.href='#'+f.id;
+				newa.onclick=function()
+				{
+					var loc=this.href.match(/#(\w.+)/)[1];
+					document.getElementById(loc).focus();
+					return false;
+				}
+				newli.appendChild(newa);
+				em.appendChild(newli);
+/* end added for linked list */
+			}
+			function cf_isEmailAddr(str) 
+			{
+			    return str.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/);
+			}
+		}
 //--></script>
