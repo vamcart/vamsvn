@@ -263,7 +263,7 @@ elseif (isset ($_GET['delete']) && is_numeric($_GET['delete'])) {
 
 require (DIR_WS_INCLUDES.'header.php');
 if (isset ($_GET['delete']) == false)
-	$action = xtc_draw_form('addressbook', xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, (isset ($_GET['edit']) ? 'edit='.$_GET['edit'] : ''), 'SSL'), 'post', 'onsubmit="return check_form(addressbook);"');
+	$action = xtc_draw_form('addressbook', xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, (isset ($_GET['edit']) ? 'edit='.$_GET['edit'] : ''), 'SSL'), 'post', 'onsubmit="return checkform(this);"') . xtc_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"');
 
 $smarty->assign('FORM_ACTION', $action);
 if ($messageStack->size('addressbook') > 0) {

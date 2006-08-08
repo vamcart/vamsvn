@@ -11,7 +11,7 @@
     <td colspan="2" class="main" style="border-top: 1px solid; border-color: #cccccc;">{#text_new_address#}<br /><br /></td>
   </tr>
   <tr> 
-    <td class="main">{#text_gender#}</td>
+    <td class="main"><label for="gender" id="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label></td>
     <td class="main">
 		<table cellspacing="0" cellpadding="0">
 			<tr>
@@ -23,11 +23,11 @@
   </tr>
   {/if} 
   <tr> 
-    <td class="main" >{#text_firstname#}</td>
+    <td class="main" ><label for="firstname" id="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_FIRSTNAME}</td>
   </tr>
   <tr> 
-    <td class="main">{#text_lastname#}</td>
+    <td class="main"><label for="lastname" id="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_LASTNAME}</td>
   </tr>
   {if $company=='1'} 
@@ -46,7 +46,7 @@
     <td class="main" align="left"></td>
   </tr>
   <tr> 
-    <td class="main" >{#text_street#}</td>
+    <td class="main" ><label for="address" id="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_STREET}</td>
   </tr>
   {/if} 
@@ -58,17 +58,17 @@
   {/if} 
   {if $postcode=='1'} 
   <tr> 
-    <td class="main">{#text_code#}</td>
+    <td class="main"><label for="postcode" id="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_CODE}</td>
   </tr>
   {/if} 
   {if $city=='1'} 
   <tr> 
-    <td class="main">{#text_city#}</td>
+    <td class="main"><label for="city" id="{$ENTRY_CITY_ERROR}">{#text_city#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_CITY}</td>
   </tr>
   {/if} 
-  {if $state=='1'}  <tr>     <td class="main">{#text_state#}</td>    <td class="inputRequirement"><span id="stateXML">{$INPUT_STATE}</span></td>  </tr>  {/if}  {if $country=='1'}  <tr>    <td class="main">{#text_country#}</td>    <td class="inputRequirement">{$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</td>  </tr>  {/if}  {if $new=='1'} 
+  {if $state=='1'}  <tr>     <td class="main"><label for="state" id="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label></td>    <td class="inputRequirement"><span id="stateXML">{$INPUT_STATE}</span></td>  </tr>  {/if}  {if $country=='1'}  <tr>    <td class="main"><label for="country" id="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label></td>    <td class="inputRequirement">{$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</td>  </tr>  {/if}  {if $new=='1'} 
   <tr> 
     <td class="main">&nbsp;</td>
     <td class="main" align="left">{$CHECKBOX_PRIMARY} {#text_standard#}</td>
