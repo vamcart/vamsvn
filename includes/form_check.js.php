@@ -132,7 +132,7 @@ function check_form(form_name) {
 
 <?php if (ACCOUNT_COUNTRY == 'true') echo ' check_select("country", "", "' . xtc_js_lang(ENTRY_COUNTRY_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_TELE == 'true') echo '  check_input("telephone", ' . ENTRY_TELEPHONE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR); ?>");
+<?php if (ACCOUNT_TELE == 'true') echo '  check_input("telephone", ' . ENTRY_TELEPHONE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR) . '");' . "\n"; ?>
 
   check_password("password", "confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR_NOT_MATCHING); ?>");
   check_password_new("password_current", "password_new", "password_confirmation", <?php echo xtc_js_lang(ENTRY_PASSWORD_MIN_LENGTH); ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING); ?>");
