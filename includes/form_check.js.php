@@ -206,6 +206,9 @@ function check_form(form_name) {
 					case 'password':
 						if(f.name=='password' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
 						if(f.name=='confirmation' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='password_current' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='password_new' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
+						if(f.name=='password_confirmation' && f.value.length<<?php echo ENTRY_PASSWORD_MIN_LENGTH; ?> && f.id!='email'){cf_adderr(f)}				
 					break;
 					case 'textarea':
 						if(f.value==''){cf_adderr(f)}							
