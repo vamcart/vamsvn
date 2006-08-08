@@ -146,7 +146,7 @@ function check_form(form_name) {
   }
 }
 
-		function checkformnew(of)
+		function checkform(of)
 		{
 		// Test if DOM is available and there is an element called required
 			if(!document.getElementById || !document.createTextNode){return;}

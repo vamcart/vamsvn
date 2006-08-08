@@ -352,7 +352,7 @@ if ($messageStack->size('create_account') > 0) {
 	$smarty->assign('error', $messageStack->output('create_account'));
 
 }
-$smarty->assign('FORM_ACTION', xtc_draw_form('create_account', xtc_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return checkformnew(this);"').xtc_draw_hidden_field('action', 'process') . xtc_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,password,confirmation', 'id="required"'));
+$smarty->assign('FORM_ACTION', xtc_draw_form('create_account', xtc_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').xtc_draw_hidden_field('action', 'process') . xtc_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,password,confirmation', 'id="required"'));
 
 if (ACCOUNT_GENDER == 'true') {
 	$smarty->assign('gender', '1');
