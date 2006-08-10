@@ -617,4 +617,40 @@ define('YML_REFERER_DESC' , 'Добавить в адрес товара параметр с ссылкой на User 
 define('YML_STRIP_TAGS_DESC' , 'Убирать html-теги в строках?');
 define('YML_UTF8_DESC' , 'Перекодировать в UTF-8?');
 
+// Изменение цен
+
+define('DISPLAY_MODEL_TITLE' , 'Показывать код товара');
+define('MODIFY_MODEL_TITLE' , 'Показывать код товара');
+define('MODIFY_NAME_TITLE' , 'Показывать название товара');
+define('DISPLAY_STATUT_TITLE' , 'Показывать статус товара');
+define('DISPLAY_WEIGHT_TITLE' , 'Показывать вес товара');
+define('DISPLAY_QUANTITY_TITLE' , 'Показывать количество товара');
+define('DISPLAY_IMAGE_TITLE' , 'Показывать картинку товара');
+define('DISPLAY_MANUFACTURER_TITLE' , 'Показывать производителя');
+define('MODIFY_MANUFACTURER_TITLE' , 'Изменение производителя товара');
+define('DISPLAY_TAX_TITLE' , 'Показывать налог');
+define('MODIFY_TAX_TITLE' , 'Показывать налог');
+define('DISPLAY_TVA_OVER_TITLE' , 'Показывать цены с налогами');
+define('DISPLAY_TVA_UP_TITLE' , 'Показывать цены с налогами при изменении цены');
+define('DISPLAY_PREVIEW_TITLE' , 'Показывать ссылку на описание товара');
+define('DISPLAY_EDIT_TITLE' , 'Показывать ссылку на редактирование товара');
+define('ACTIVATE_COMMERCIAL_MARGIN_TITLE' , 'Показывать возможность массового изменения цен');
+
+define('DISPLAY_MODEL_DESC', 'Показывать/Не показывать код товара');
+define('MODIFY_MODEL_DESC', 'Показывать/Не показывать код товара');
+define('MODIFY_NAME_DESC', 'Показывать/Не показывать название товара');
+define('DISPLAY_STATUT_DESC', 'Показывать/Не показывать статус товара');
+define('DISPLAY_WEIGHT_DESC', 'Показывать/Не показывать вес товара');
+define('DISPLAY_QUANTITY_DESC', 'Показывать/Не показывать количество товара');
+define('DISPLAY_IMAGE_DESC', 'Показывать/Не показывать картинку товара');
+define('MODIFY_MANUFACTURER_DESC', 'Показывать/Не показывать изменение производителя товара');
+define('MODIFY_TAX_DESC', 'Показывать/Не показывать налог');
+define('DISPLAY_TVA_OVER_DESC', 'Показывать/Не показывать цены с налогами');
+define('DISPLAY_TVA_UP_DESC', 'Показывать/Не показывать цены с налогами при изменении цены');
+define('DISPLAY_PREVIEW_DESC', 'Показывать/Не показывать ссылку на описание товара');
+define('DISPLAY_EDIT_DESC', 'Показывать/Не показывать ссылку на редактирование товара');
+define('DISPLAY_MANUFACTURER_DESC', 'Показывать/Не показывать производителя');
+define('DISPLAY_TAX_DESC', 'Показывать/Не показывать налог');
+define('ACTIVATE_COMMERCIAL_MARGIN_DESC', 'Показывать/Не показывать возможность массового  изменения цен');
+
 ?>

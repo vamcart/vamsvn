@@ -620,4 +620,40 @@ define('YML_REFERER_DESC' , 'Add referer to product link (ip or user agent)?');
 define('YML_STRIP_TAGS_DESC' , 'Strip html tags?');
 define('YML_UTF8_DESC' , 'Encode to UTF-8?');
 
+// Изменение цен
+
+define('DISPLAY_MODEL_TITLE' , 'Display the model');
+define('MODIFY_MODEL_TITLE' , 'Modify the model');
+define('MODIFY_NAME_TITLE' , 'Modify the name of the products');
+define('DISPLAY_STATUT_TITLE' , 'Modify the statut of the products');
+define('DISPLAY_WEIGHT_TITLE' , 'Modify the weight of the products');
+define('DISPLAY_QUANTITY_TITLE' , 'Modify the quantity of the products');
+define('DISPLAY_IMAGE_TITLE' , 'Modify the image of the products');
+define('DISPLAY_MANUFACTURER_TITLE' , 'Display the manufacturer');
+define('MODIFY_MANUFACTURER_TITLE' , 'Modify the manufacturer of the products');
+define('DISPLAY_TAX_TITLE' , 'Display the tax');
+define('MODIFY_TAX_TITLE' , 'Modify the class of tax of the products');
+define('DISPLAY_TVA_OVER_TITLE' , 'Display price with all included of tax');
+define('DISPLAY_TVA_UP_TITLE' , 'Display price with all included of tax');
+define('DISPLAY_PREVIEW_TITLE' , 'Display the link towards the products information page');
+define('DISPLAY_EDIT_TITLE' , 'Display the link towards the page where you will be able to edit the product');
+define('ACTIVATE_COMMERCIAL_MARGIN_TITLE' , 'Activate or desactivate the commercial margin');
+
+define('DISPLAY_MODEL_DESC', 'Enable/Disable the model displaying');
+define('MODIFY_MODEL_DESC', 'Allow/Disallow the model modification');
+define('MODIFY_NAME_DESC', 'Allow/Disallow the name modification?');
+define('DISPLAY_STATUT_DESC', 'Allow/Disallow the Statut displaying and modification');
+define('DISPLAY_WEIGHT_DESC', 'Allow/Disallow the Weight displaying and modification?');
+define('DISPLAY_QUANTITY_DESC', 'Allow/Disallow the Quantity displaying and modification?');
+define('DISPLAY_IMAGE_DESC', 'Allow/Disallow the Image displaying and modification?');
+define('MODIFY_MANUFACTURER_DESC', 'Allow/Disallow the Manufacturer displaying and modification');
+define('MODIFY_TAX_DESC', 'Allow/Disallow the Class of tax displaying and modification');
+define('DISPLAY_TVA_OVER_DESC', 'Enable/Disable the displaying of the Price with all tax included when your mouse is over a product');
+define('DISPLAY_TVA_UP_DESC', 'Enable/Disable the displaying of the Price with all tax included when you are typing the price?');
+define('DISPLAY_PREVIEW_DESC', 'Enable/Disable the display of the link towards the products information page');
+define('DISPLAY_EDIT_DESC', 'Enable/Disable the display of the link towards the page where you will be able to edit the product');
+define('DISPLAY_MANUFACTURER_DESC', 'Do you want just display the manufacturer ?');
+define('DISPLAY_TAX_DESC', 'Do you want just display the tax ?');
+define('ACTIVATE_COMMERCIAL_MARGIN_DESC', 'Do you want taht the commercial margin be activate or not ?');
+
 ?>

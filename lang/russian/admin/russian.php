@@ -100,6 +100,7 @@ define('BOX_CONFIGURATION_17', 'Настройки других модулей');
 define('BOX_CONFIGURATION_19', 'xt:C Партнер');
 define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
+define('BOX_CONFIGURATION_24', 'Обновление цен');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
 define('BOX_PAYMENT', 'Модули оплаты');
@@ -397,4 +398,6 @@ define('TEXT_IMAGE_DIRECTORY_CREATE', 'Информация: Создана директория ');
 //Сборка VaM
 
 define('BOX_EASY_POPULATE','Excel импорт/экспорт');
+define('BOX_CATALOG_QUICK_UPDATES', 'Изменение цен');
+
 ?>
