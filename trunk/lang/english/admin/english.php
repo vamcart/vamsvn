@@ -397,5 +397,6 @@ define('TEXT_IMAGE_DIRECTORY_CREATE', 'Success: Directory created ');
 //—борка VaM
 
 define('BOX_EASY_POPULATE','Easypopulate');
+define('BOX_CATALOG_QUICK_UPDATES', 'Quick price updates');
 
 ?>

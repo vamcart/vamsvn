@@ -132,6 +132,7 @@
   define('FILENAME_SALES_REPORT','stats_sales_report.php');
   define('FILENAME_MODULE_EXPORT','module_export.php');
   define('FILENAME_EASY_POPULATE','easypopulate.php');
+  define('FILENAME_QUICK_UPDATES', 'quick_updates.php');
   define('FILENAME_BLACKLIST', 'blacklist.php');
   define('FILENAME_PRODUCTS_VPE','products_vpe.php');
   define('FILENAME_CAMPAIGNS_REPORT','stats_campaigns.php');

@@ -96,6 +96,8 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
 
       echo '        [\'' . xtc_image('images/icons/16x16/configure.png', '', '16', '16') . '\', \'' . addslashes(BOX_CONFIGURATION_23) . '\', \'' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=23', 'NONSSL') . '\', null, null],' . "\n";
 
+      echo '        [\'' . xtc_image('images/icons/16x16/configure.png', '', '16', '16') . '\', \'' . addslashes(BOX_CONFIGURATION_24) . '\', \'' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '\', null, null],' . "\n";
+
       echo '        [\'' . xtc_image('images/icons/16x16/status.png', '', '16', '16') . '\', \'' . addslashes(BOX_ORDERS_STATUS) . '\', \'' . xtc_href_link(FILENAME_ORDERS_STATUS, '', 'NONSSL') . '\', null, null],' . "\n";
 
       echo '        [\'' . xtc_image('images/icons/16x16/file_manager.png', '', '16', '16') . '\', \'' . addslashes(BOX_SHIPPING_STATUS) . '\', \'' . xtc_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL') . '\', null, null],' . "\n";
@@ -113,6 +115,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/attributes.png', '', '16', '16') . '\', \'' . addslashes(BOX_PRODUCTS_ATTRIBUTES) . '\', \'' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '', 'NONSSL') . '\', \'\', null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/run.png', '', '16', '16') . '\', \'' . addslashes(BOX_MANUFACTURERS) . '\', \'' . xtc_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/file.png', '', '16', '16') . '\', \'' . addslashes(BOX_EASY_POPULATE) . '\', \'' . xtc_href_link(FILENAME_EASYPOPULATE, '', 'NONSSL') . '\', null, null],' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/calculator.png', '', '16', '16') . '\', \'' . addslashes(BOX_CATALOG_QUICK_UPDATES) . '\', \'' . xtc_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/write.png', '', '16', '16') . '\', \'' . addslashes(BOX_REVIEWS) . '\', \'' . xtc_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/specials.png', '', '16', '16') . '\', \'' . addslashes(BOX_SPECIALS) . '\', \'' . xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '    ],' . "\n" .
