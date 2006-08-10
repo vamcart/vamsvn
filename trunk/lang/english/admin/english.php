@@ -100,6 +100,7 @@ define('BOX_CONFIGURATION_17', 'Specialmodules');
 define('BOX_CONFIGURATION_19', 'xt:C Partner');
 define('BOX_CONFIGURATION_22', 'Search-Options');
 define('BOX_CONFIGURATION_23', 'Yandex-Market');
+define('BOX_CONFIGURATION_24', 'Quick Price Updates');
  
 define('BOX_MODULES', 'Payment-/Shipping-/Billing-Modules');
 define('BOX_PAYMENT', 'Payment Systems');
@@ -397,6 +398,6 @@ define('TEXT_IMAGE_DIRECTORY_CREATE', 'Success: Directory created ');
 //—борка VaM
 
 define('BOX_EASY_POPULATE','Easypopulate');
-define('BOX_CATALOG_QUICK_UPDATES', 'Quick price updates');
+define('BOX_CATALOG_QUICK_UPDATES', 'Quick Price Updates');
 
 ?>

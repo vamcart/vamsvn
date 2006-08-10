@@ -100,7 +100,7 @@ define('BOX_CONFIGURATION_17', 'Настройки других модулей');
 define('BOX_CONFIGURATION_19', 'xt:C Партнер');
 define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
-define('BOX_CONFIGURATION_24', 'Обновление цен');
+define('BOX_CONFIGURATION_24', 'Изменение цен');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
 define('BOX_PAYMENT', 'Модули оплаты');
