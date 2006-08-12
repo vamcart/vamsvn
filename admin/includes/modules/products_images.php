@@ -56,7 +56,7 @@ $file_list = array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IM
 			}
 			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br />'.xtc_draw_file_field('mo_pics_'.$i).'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].xtc_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
 // BOF Add existing image
-	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list);
+	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list, dirname($mo_images[$i]["image_name"]).'/');
 	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list);
 // EOF Add existing image
 			if (isset ($mo_images[$i]["image_name"])) {
