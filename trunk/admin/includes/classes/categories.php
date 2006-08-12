@@ -588,14 +588,14 @@ class categories {
 		for ($img = 0; $img < MO_PICS; $img ++) {
 // BOF Image subdirectories
 //		if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
-			if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES . $_POST['mo_pics_upload_dir_image_'].$img, '777', '')) {
-				$pIMG->filename = $_POST['mo_pics_upload_dir_image_'].$img.$pIMG->filename;
+			if ($pIMG = & xtc_try_upload('mo_pics_'.$img, DIR_FS_CATALOG_ORIGINAL_IMAGES . $_POST['mo_pics_upload_dir_image_'.$img], '777', '')) {
+				$pIMG->filename = $_POST['mo_pics_upload_dir_image_'.$img].$pIMG->filename;
 // EOF Image subdirectories
 				$pname_arr = explode('.', $pIMG->filename);
 				$nsuffix = array_pop($pname_arr);
 				$products_image_name = $products_id.'_'. ($img +1).'.'.$nsuffix;
 // BOF Image subdirectories
-				$products_image_name = $_POST['mo_pics_upload_dir_image_'].$img.$products_image_name;
+				$products_image_name = $_POST['mo_pics_upload_dir_image_'.$img].$products_image_name;
 // EOF Image subdirectories
 				$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
 											                                FROM ".TABLE_PRODUCTS_IMAGES."
