@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_get_top_level_domain.inc.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: xtc_get_top_level_domain.inc.php 1528 2006-08-06 11:50:57Z mz $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -24,14 +24,19 @@ function xtc_get_top_level_domain($url) {
     $domain_array = explode('.', $url);
     $domain_size = sizeof($domain_array);
 
-    if ($domain_size > 1) {
-      if (is_numeric($domain_array[$domain_size-2]) && is_numeric($domain_array[$domain_size-1])) {
-        return false;
-      } else {
-        return $domain_array[$domain_size-2] . '.' . $domain_array[$domain_size-1];
-      }
-    } else {
-      return false;
-    }
+   if ($domain_size > 1) { 
+     $domain = ''; 
+     for ($i = 1; $i <= $domain_size; $i++) { 
+       $domain .= '.' . $domain_array[$i]; 
+     } 
+
+     if (is_numeric($domain)) { 
+       return false; 
+     } else { 
+       return $domain; 
+     } 
+   } else { 
+     return false; 
+   } 
   }
  ?>

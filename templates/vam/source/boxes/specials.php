@@ -36,6 +36,9 @@ if ($random_product = xtc_random_select("select
                                            p.products_tax_class_id,
                                            p.products_image,
                                            s.expires_date,
+                                           p.products_vpe,
+				                           p.products_vpe_status,
+				                           p.products_vpe_value,
                                            s.specials_new_products_price
                                            from ".TABLE_PRODUCTS." p,
                                            ".TABLE_PRODUCTS_DESCRIPTION." pd,
@@ -50,15 +53,7 @@ if ($random_product = xtc_random_select("select
                                            desc limit ".MAX_RANDOM_SELECT_SPECIALS)) {
 
 
-$image = '';
-if ($random_product['products_image'] != '')
-	$image = DIR_WS_THUMBNAIL_IMAGES.$random_product['products_image'];
-
-$box_smarty->assign('LINK', xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'], $random_product['products_name'])));
-$box_smarty->assign('IMAGE', $image);
-$box_smarty->assign('NAME', $random_product['products_name']);
-$box_smarty->assign('PRICE', $xtPrice->xtcGetPrice($random_product['products_id'], $format = true, 1, $random_product['products_tax_class_id'], $random_product['products_price']));
-$box_smarty->assign('EXPIRES', $random_product['expires_date']);
+$box_smarty->assign('box_content',$product->buildDataArray($random_product));
 $box_smarty->assign('SPECIALS_LINK', xtc_href_link(FILENAME_SPECIALS));
 
 $box_smarty->assign('language', $_SESSION['language']);

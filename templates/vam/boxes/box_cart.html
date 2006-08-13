@@ -35,7 +35,7 @@
               <td align="right" class="productDiscountPrice">{#text_discount#}&nbsp;{$DISCOUNT}</td>
             </tr>{/if}
             <tr>
-              <td align="right">{$UST}<strong>{#text_total#}</strong> {$TOTAL}{if $SHIPPING_INFO}<br />{$SHIPPING_INFO}{/if}</td>
+              <td align="right">{$UST}<strong>{#text_total#}</strong>{$TOTAL}{if $SHIPPING_INFO}<br />{$SHIPPING_INFO}{/if}</td>
             </tr>
           </table>
 		 </td>
@@ -68,22 +68,20 @@
 </table>
 {/if}
 
-{if $ACTIVATE_GIFT=='true'}
-
-{if $GV_AMOUNT neq ''}
+{if $coupon_valid == 'true'}
 <table class="infoBoxContents" width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="infoBox_right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/img_gift.gif" alt="" /></a></td>
+    <td class="infoBox_right"><img src="{$tpl_path}img/img_gift.gif" alt="" /></td>
     <td valign="middle" class="infoBox_right">
 	<table width="95%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
       </tr>
       <tr>
-        <td align="center" class="smalltext">{#voucher_balance#}</td>
+        <td align="center" class="smalltext">{#cart_coupon#}</td>
       </tr>
       <tr>
-        <td align="center" class="gvBox" valign="bottom">{$GV_AMOUNT}</td>
+        <td align="center" class="gvBox" valign="bottom">{$coupon_amount}</td>
       </tr>
     </table>
 	</td>
@@ -95,6 +93,5 @@
     <td class="infoBox_right"><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
   </tr>
 </table>
-{/if}
 {/if}
 {/if}

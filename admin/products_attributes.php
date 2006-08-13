@@ -198,13 +198,42 @@ function go_option() {
 ?>
               <tr>
                 <td colspan="2" class="pageHeading">&nbsp;<?php echo HEADING_TITLE_OPT; ?>&nbsp;</td>
-                <td align="right"><br /><form name="option_order_by" action="<?php echo FILENAME_PRODUCTS_ATTRIBUTES; ?>"><select name="selected" onChange="go_option()"><option value="products_options_id"<?php if ($option_order_by == 'products_options_id') { echo ' SELECTED'; } ?>><?php echo TEXT_OPTION_ID; ?></option><option value="products_options_name"<?php if ($option_order_by == 'products_options_name') { echo ' SELECTED'; } ?>><?php echo TEXT_OPTION_NAME; ?></option></select></form></td>
-              </tr>
+                <td align="right"><br />
+					<table border="0">
+						<tr>
+							<td class="main">
+							<form name="search" action="<?php echo FILENAME_PRODUCTS_ATTRIBUTES; ?>" method="GET">
+							<?php echo TEXT_SEARCH; ?><input type="text" name="searchoption" size="20" value="<?php echo $_GET['searchoption']; ?>">
+							</form>
+							</td>
+							<td class="main">
+							<form name="option_order_by" action="<?php echo FILENAME_PRODUCTS_ATTRIBUTES; ?>">
+							<select name="selected" onChange="go_option()">
+							<option value="products_options_id"<?php if ($option_order_by == 'products_options_id') { echo ' SELECTED'; } ?>>
+							<?php echo TEXT_OPTION_ID; ?></option>
+							<option value="products_options_name"<?php if ($option_order_by == 'products_options_name') { echo ' SELECTED'; } ?>>
+							<?php echo TEXT_OPTION_NAME; ?></option>
+							</select>
+							</form>		
+							</td>
+						</tr>
+					</table>																
+				</td>  
               <tr>
                 <td colspan="3" class="smallText">
 <?php
+	$option_page = (int)$_GET['option_page'];
     $per_page = MAX_ROW_LISTS_OPTIONS;
-    $options = "select * from " . TABLE_PRODUCTS_OPTIONS . " where language_id = '" . $_SESSION['languages_id'] . "' order by " . $option_order_by;
+    	if (isset ($_GET['searchoption'])) {
+		$options = "select * from ".TABLE_PRODUCTS_OPTIONS." 
+					where language_id = '".$_SESSION['languages_id']."' 
+					and products_options_name LIKE '%".$_GET['searchoption']."%'
+					order by ".$option_order_by;
+	} else {
+		$options = "select * from ".TABLE_PRODUCTS_OPTIONS." 
+					where language_id = '".$_SESSION['languages_id']."' 
+					order by ".$option_order_by;
+	}
     if (!$option_page) {
       $option_page = 1;
     }
@@ -229,12 +258,12 @@ function go_option() {
 
     // Previous
     if ($prev_option_page)  {
-      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $prev_option_page) . '"> &lt;&lt; </a> | ';
+      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $prev_option_page.'&searchoption='.$_GET['searchoption']) . '"> &lt;&lt; </a> | ';
     }
 
     for ($i = 1; $i <= $num_pages; $i++) {
       if ($i != $option_page) {
-        echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $i) . '">' . $i . '</a> | ';
+        echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $i.'&searchoption='.$_GET['searchoption']) . '">' . $i . '</a> | ';
       } else {
         echo '<b><font color=red>' . $i . '</font></b> | ';
       }
@@ -242,7 +271,7 @@ function go_option() {
 
     // Next
     if ($option_page != $num_pages) {
-      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $next_option_page) . '"> &gt;&gt; </a>';
+      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_page=' . $next_option_page.'&searchoption='.$_GET['searchoption']) . '"> &gt;&gt; </a>';
     }
 ?>
                 </td>
@@ -267,7 +296,7 @@ function go_option() {
               <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
       if (($_GET['action'] == 'update_option') && ($_GET['option_id'] == $options_values['products_options_id'])) {
-        echo '<form name="option" action="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_name', 'NONSSL') . '" method="post">';
+        echo '<form name="option" action="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_name&option_page='.$_GET['option_page'], 'NONSSL') . '" method="post">';
         $inputs = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
           $option_name = xtc_db_query("select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . $options_values['products_options_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
@@ -394,14 +423,46 @@ function go_option() {
 ?>
               <tr>
                 <td colspan="3" class="pageHeading">&nbsp;<?php echo HEADING_TITLE_VAL; ?>&nbsp;</td>
-                <td>&nbsp;<?php echo xtc_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '53'); ?>&nbsp;</td>
-              </tr>
+                             <td colspan="2" align="right"><br>
+<table border="0">
+	<tr>
+	<td class="main">
+<form name="search" action="<?php echo FILENAME_PRODUCTS_ATTRIBUTES; ?>" method="GET">
+<?php echo TEXT_SEARCH; ?><input type="text" name="search_optionsname" size="20" value="<?php echo $_GET['search_optionsname'];?>">
+</form>
+		</td>
+	</tr>
+</table>
+								</td</tr>
               <tr>
                 <td colspan="4" class="smallText">
 <?php
     $per_page = MAX_ROW_LISTS_OPTIONS;
-    $values = "select pov.products_options_values_id, pov.products_options_values_name, pov2po.products_options_id from " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov left join " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " pov2po on pov.products_options_values_id = pov2po.products_options_values_id where pov.language_id = '" . $_SESSION['languages_id'] . "' order by pov.products_options_values_id";
-    if (!$_GET['value_page']) {
+    	if (isset ($_GET['search_optionsname'])) {
+		$values = "select distinct 
+						pov.products_options_values_id, 
+						pov.products_options_values_name, 
+						pov2po.products_options_id 
+					from ".TABLE_PRODUCTS_OPTIONS." po,
+						".TABLE_PRODUCTS_OPTIONS_VALUES." pov 
+						left join ".TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS." pov2po 
+						on pov.products_options_values_id = pov2po.products_options_values_id 
+					where pov.language_id = '".$_SESSION['languages_id']."' 
+					and pov2po.products_options_id = po.products_options_id
+					and (po.products_options_name LIKE '%".$_GET['search_optionsname']."%' or pov.products_options_values_name LIKE '%".$_GET['search_optionsname']."%')
+					order by pov.products_options_values_id";
+	} else {
+		$values = "select 
+						pov.products_options_values_id, 
+						pov.products_options_values_name, 
+						pov2po.products_options_id 
+					from ".TABLE_PRODUCTS_OPTIONS_VALUES." pov 
+						left join ".TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS." pov2po 
+						on pov.products_options_values_id = pov2po.products_options_values_id 
+					where pov.language_id = '".$_SESSION['languages_id']."' 
+					order by pov.products_options_values_id";
+	}
+	if (!$_GET['value_page']) {
       $_GET['value_page'] = 1;
     }
     $prev_value_page = $_GET['value_page'] - 1;
@@ -425,12 +486,12 @@ function go_option() {
 
     // Previous
     if ($prev_value_page)  {
-      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $prev_value_page) . '"> &lt;&lt; </a> | ';
+      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $prev_value_page.'&search_optionsname='.$_GET['search_optionsname']) . '"> &lt;&lt; </a> | ';
     }
 
     for ($i = 1; $i <= $num_pages; $i++) {
       if ($i != $_GET['value_page']) {
-         echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $i) . '">' . $i . '</a> | ';
+         echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $i.'&search_optionsname='.$_GET['search_optionsname']) . '">' . $i . '</a> | ';
       } else {
          echo '<b><font color=red>' . $i . '</font></b> | ';
       }
@@ -438,7 +499,7 @@ function go_option() {
 
     // Next
     if ($_GET['value_page'] != $num_pages) {
-      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $next_value_page) . '"> &gt;&gt;</a> ';
+      echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'option_order_by=' . $option_order_by . '&value_page=' . $next_value_page.'&search_optionsname='.$_GET['search_optionsname']) . '"> &gt;&gt;</a> ';
     }
 ?>
                 </td>
@@ -466,7 +527,7 @@ function go_option() {
               <tr class="<?php echo (floor($rows/2) == ($rows/2) ? 'attributes-even' : 'attributes-odd'); ?>">
 <?php
       if (($_GET['action'] == 'update_option_value') && ($_GET['value_id'] == $values_values['products_options_values_id'])) {
-        echo '<form name="values" action="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_value', 'NONSSL') . '" method="post">';
+        echo '<form name="values" action="' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_value&value_page='.$_GET['value_page'], 'NONSSL') . '" method="post">';
         $inputs = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
           $value_name = xtc_db_query("select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $values_values['products_options_values_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
@@ -488,7 +549,7 @@ function go_option() {
 ?>
                 </select>&nbsp;</td>
                 <td class="smallText"><?php echo $inputs; ?></td>
-                <td align="center" class="smallText">&nbsp;<?php echo xtc_button(BUTTON_UPDATE); ?>&nbsp;<?php echo xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '', 'NONSSL')); ?>&nbsp;</td>
+                <td align="center" class="smallText">&nbsp;<?php echo xtc_button(BUTTON_UPDATE); ?>&nbsp;<?php echo xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'value_page='.$_GET['value_page'], 'NONSSL')); ?>&nbsp;</td>
 <?php
         echo '</form>';
       } else {

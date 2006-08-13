@@ -481,4 +481,7 @@ define('ENTRY_STATE_RELOAD', 'Нажмите на кнопку <b>"Обновить"</b> чтобы заполнит
 define('ENTRY_NOSTATE_AVAILIABLE', 'У выбранной страны нет регионов');
 define('ENTRY_STATEXML_LOADING', 'Загрузка регионов ...');
 
+define('SHIPPING_TIME','Время доставки: ');
+define('MORE_INFO','[Подробнее]');
+
 ?>

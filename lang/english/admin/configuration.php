@@ -656,4 +656,9 @@ define('DISPLAY_MANUFACTURER_DESC', 'Do you want just display the manufacturer ?
 define('DISPLAY_TAX_DESC', 'Do you want just display the tax ?');
 define('ACTIVATE_COMMERCIAL_MARGIN_DESC', 'Do you want taht the commercial margin be activate or not ?');
 
+define('REVOCATION_ID_TITLE','Revocation ID');
+define('REVOCATION_ID_DESC','Revocation content ID');
+define('DISPLAY_REVOCATION_ON_CHECKOUT_TITLE','Display revocation on checkout confirmation page?');
+define('DISPLAY_REVOCATION_ON_CHECKOUT_DESC','Display revocation on checkout confirmation page?');
+
 ?>

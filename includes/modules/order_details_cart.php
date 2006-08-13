@@ -55,9 +55,8 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 	if ($products[$i]['image'] != '') {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'];
 	}
-
-	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => xtc_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').xtc_draw_hidden_field('products_id[]', $products[$i]['id']), 'PRODUCTS_MODEL' => $products[$i]['model'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => xtc_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' => $xtPrice->xtcFormat($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => xtc_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
-
+	
+	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => xtc_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').xtc_draw_hidden_field('products_id[]', $products[$i]['id']).xtc_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => xtc_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$xtPrice->xtcFormat($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => xtc_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
 	// Product options names
 	$attributes_exist = ((isset ($products[$i]['attributes'])) ? 1 : 0);
 
@@ -72,7 +71,7 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 					$_SESSION['any_out_of_stock'] = 1;
 			}
 
-			$module_content[$i]['ATTRIBUTES'][] = array ('ID' => $products[$i][$option]['products_attributes_id'], 'MODEL' => xtc_get_attributes_model(xtc_get_prid($products[$i]['id']), $products[$i][$option]['products_options_values_name']), 'NAME' => $products[$i][$option]['products_options_name'], 'VALUE_NAME' => $products[$i][$option]['products_options_values_name'].$attribute_stock_check);
+			$module_content[$i]['ATTRIBUTES'][] = array ('ID' => $products[$i][$option]['products_attributes_id'], 'MODEL' => xtc_get_attributes_model(xtc_get_prid($products[$i]['id']), $products[$i][$option]['products_options_values_name'],$products[$i][$option]['products_options_name']), 'NAME' => $products[$i][$option]['products_options_name'], 'VALUE_NAME' => $products[$i][$option]['products_options_values_name'].$attribute_stock_check);
 
 		}
 	}

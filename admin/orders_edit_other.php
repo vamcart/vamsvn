@@ -179,6 +179,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
   $shippings = split(';', MODULE_SHIPPING_INSTALLED);
   for ($i=0; $i<count($shippings); $i++){
   
+  if (isset($shippings[$i]) && is_file(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $shippings[$i])) {
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $shippings[$i]);	
   
   $shipping = substr($shippings[$i], 0, strrpos($shippings[$i], '.'));	
@@ -187,12 +188,14 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
   $shipping_array[] = array('id' => $shipping,
                             'text' => $shipping_text);
   }
+  }
   
   $order_shipping = split('_', $order->info['shipping_class']);
   $order_shipping = $order_shipping[0];
-  
+  if (is_file(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $order_shipping .'.php')) {
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $order_shipping .'.php');	
   $order_shipping_text = constant(MODULE_SHIPPING_.strtoupper($order_shipping)._TEXT_TITLE);  
+  }
   
 echo xtc_draw_form('shipping_edit', FILENAME_ORDERS_EDIT, 'action=shipping_edit', 'post');
 ?>
@@ -286,20 +289,3 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 
 
 </table>
-
-<!-- OT Module Ende //-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

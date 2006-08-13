@@ -20,11 +20,11 @@
                         <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
                       </tr>
                       <tr>
-                        <td class="boxText" align="center">{if $IMAGE}<a href="{$LINK}"><img src="{$IMAGE}" alt="{$NAME}" /></a>{/if}
-						<br /><a href="{$LINK}">{$NAME}</a><br />                        
+                        <td class="boxText" align="center">{if $box_content.PRODUCTS_IMAGE}<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" /></a>{/if}
+						<br /><a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a><br />                        
                                 <table width="98%" border="0" cellpadding="0" cellspacing="0">
                                   <tr>
-                                    <td class="boxTextBG" align="center"><strong>{$PRICE}</strong></td>
+                                    <td class="boxTextBG" align="center"><strong>{$box_content.PRODUCTS_PRICE}</strong><br />{if $box_content.PRODUCTS_VPE}{$box_content.PRODUCTS_VPE}<br />{/if}{$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}</td>
                                   </tr>
                                 </table>
                         </td>

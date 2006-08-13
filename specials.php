@@ -37,8 +37,8 @@ if (GROUP_CHECK == 'true') {
 $specials_query_raw = "select p.products_id,
                                 pd.products_name,
                                 p.products_price,
-                                p.products_tax_class_id,
-                                p.products_image,
+                                p.products_tax_class_id,p.products_shippingtime,
+                                p.products_image,p.products_vpe_status,p.products_vpe_value,p.products_vpe,p.products_fsk18,
                                 s.specials_new_products_price from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_SPECIALS." s
                                 where p.products_status = '1'
                                 and s.products_id = p.products_id
@@ -53,33 +53,7 @@ $module_content = '';
 $row = 0;
 $specials_query = xtc_db_query($specials_split->sql_query);
 while ($specials = xtc_db_fetch_array($specials_query)) {
-	$row ++;
-	$products_price = $xtPrice->xtcGetPrice($specials['products_id'], $format = true, 1, $specials['products_tax_class_id'], $specials['products_price']);
-	$image = '';
-	if ($specials['products_image'] != '') {
-		$image = DIR_WS_THUMBNAIL_IMAGES.$specials['products_image'];
-	}
-	if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-			$tax_rate = $xtPrice->TAX[$specials['products_tax_class_id']];
-			// price incl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
-				$tax_info = sprintf(TAX_INFO_INCL, $tax_rate.' %');
-			} 
-			// excl tax + tax at checkout
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-				$tax_info = sprintf(TAX_INFO_ADD, $tax_rate.' %');
-			}
-			// excl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) {
-				$tax_info = sprintf(TAX_INFO_EXCL, $tax_rate.' %');
-			}
-		}
-		$ship_info="";
-		if (SHOW_SHIPPING=='true') {
-		$ship_info=' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>';
-		}
-	$module_content[] = array ('PRODUCTS_ID' => $specials['products_id'], 'PRODUCTS_NAME' => $specials['products_name'],'PRODUCTS_SHIPPING_LINK' => $ship_info,'PRODUCTS_TAX_INFO' => $tax_info, 'PRODUCTS_PRICE' => $products_price, 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($specials['products_id'], $specials['products_name'])), 'PRODUCTS_IMAGE' => $image, 'PRODUCTS_SHORT_DESCRIPTION' => xtc_get_short_description($specials['products_id']));
-
+	$module_content[] = $product->buildDataArray($specials);
 }
 
 if (($specials_split->number_of_rows > 0)) {

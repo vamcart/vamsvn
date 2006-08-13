@@ -51,30 +51,10 @@ if ($order->delivery != false) {
 	if ($order->info['shipping_method']) { $smarty->assign('SHIPPING_METHOD', $order->info['shipping_method']); }
 }
 
-// Products data
-$data_products = '<table style="width: 100%; border: none; padding: 0;">';
-for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
-	$data_products .= '          <tr>'."\n".'            <td style="text-align: left; vertical-align: top; white-space: nowrap;">'.$order->products[$i]['qty'].' x '.$order->products[$i]['name'].'</td>'."\n".'                
-	<td style="text-align: left; vertical-align: top;">'.xtc_format_price_order($order->products[$i]['price'], 1, $order->info['currency']).'</td></tr>'."\n";
+$order_total = $order->getTotalData((int)$_GET['order_id']); 
 
-	if ((isset ($order->products[$i]['attributes'])) && (sizeof($order->products[$i]['attributes']) > 0)) {
-		for ($j = 0, $n2 = sizeof($order->products[$i]['attributes']); $j < $n2; $j ++) {
-			$data_products .= '<tr>
-			        <td style="text-align: left; vertical-align: top; white-space: nowrap;">
-			        <small>&nbsp;<i> - '.$order->products[$i]['attributes'][$j]['option'].': '.$order->products[$i]['attributes'][$j]['value'].'</i></small></td>
-			        <td style="text-align: right; vertical-align: top; white-space: nowrap;"></td></tr>';
-		}
-	}
-
-	$data_products .= "\n";
-
-	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-		if (sizeof($order->info['tax_groups']) > 1)
-			$data_products .= '            <td style="text-align: right; vertical-align: top; white-space: nowrap;">'.xtc_display_tax_value($order->products[$i]['tax']).'%</td>'."\n";
-	}
-}
-$data_products .= '</table>';
-$smarty->assign('PRODUCTS_BLOCK', $data_products);
+$smarty->assign('order_data', $order->getOrderData((int)$_GET['order_id']));
+$smarty->assign('order_total', $order_total['data']);
 
 // Payment Method
 if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
@@ -82,13 +62,7 @@ if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'n
 	$smarty->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_TITLE));
 }
 
-// Order-Total Info
-$total_block = '<table summary="layout">';
-for ($i = 0, $n = sizeof($order->totals); $i < $n; $i ++) {
-	$total_block .= '            <tr>'."\n".'                <td style="text-align: right; width:100%;">'.$order->totals[$i]['title'].'</td>'."\n".'                <td class="main" nowrap align="right">'.$order->totals[$i]['text'].'</td>'."\n".'              </tr>'."\n";
-}
-$total_block .= '</table>';
-$smarty->assign('TOTAL_BLOCK', $total_block);
+
 
 // Order History
 $history_block = '<table summary="order history">';

@@ -254,9 +254,10 @@ function resize() {
   self.focus();
 }
 //--></script>
+<?php 
+} 
 
-
-<?php } ?>
+?>
 </head>
 <?php
 if (strstr($PHP_SELF, FILENAME_POPUP_IMAGE )) {

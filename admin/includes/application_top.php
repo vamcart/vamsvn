@@ -497,7 +497,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
 
     // Include Template Engine
-  require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.10/Smarty.class.php');
+  require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.14/Smarty.class.php');
 
   
 ?>
