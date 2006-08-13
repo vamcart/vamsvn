@@ -151,6 +151,7 @@
                                         'model' => $orders_products['products_model'],
                                         'tax' => $orders_products['products_tax'],
 					                    'price'=>$orders_products['products_price'],
+					                    'shipping_time'=>$orders_products['products_shipping_time'],
                                         'final_price' => $orders_products['final_price']);
 
         $subindex = 0;
@@ -170,6 +171,76 @@
 
         $index++;
       }
+    }
+    
+        function getOrderData($oID) {
+    	global $xtPrice;
+    	
+    	require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
+    	
+    	$order_query = "SELECT
+	        				products_id,
+	        				orders_products_id,
+	        				products_model,
+	        				products_name,
+	        				final_price,
+	        			  	products_shipping_time,
+	        				products_quantity
+	        				FROM ".TABLE_ORDERS_PRODUCTS."
+	        				WHERE orders_id='".(int) $oID."'";
+	$order_data = array ();
+	$order_query = xtc_db_query($order_query);
+	while ($order_data_values = xtc_db_fetch_array($order_query)) {
+		$attributes_query = "SELECT
+		        				products_options,
+		        				products_options_values,
+		        				price_prefix,
+		        				options_values_price
+		        				FROM ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES."
+		        				WHERE orders_products_id='".$order_data_values['orders_products_id']."'";
+		$attributes_data = '';
+		$attributes_model = '';
+		$attributes_query = xtc_db_query($attributes_query);
+		while ($attributes_data_values = xtc_db_fetch_array($attributes_query)) {
+			$attributes_data .= '<br />'.$attributes_data_values['products_options'].':'.$attributes_data_values['products_options_values'];
+			$attributes_model .= '<br />'.xtc_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
+
+		}
+		$order_data[] = array ('PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price'], true),'PRODUCTS_SINGLE_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price']/$order_data_values['products_quantity'], true), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
+
+	}
+	
+	return $order_data;
+    	
+    }
+    
+    function getTotalData($oID) {
+    	global $xtPrice,$db;
+    	
+    		// get order_total data
+	$oder_total_query = "SELECT
+	  					title,
+	  					text,
+	                    class,
+	                    value,
+	  					sort_order
+	  					FROM ".TABLE_ORDERS_TOTAL."
+	  					WHERE orders_id='".(int) $oID."'
+	  					ORDER BY sort_order ASC";
+
+	$order_total = array ();
+	$oder_total_query = xtc_db_query($oder_total_query);
+	while ($oder_total_values = xtc_db_fetch_array($oder_total_query)) {
+
+
+		$order_total[] = array ('TITLE' => $oder_total_values['title'], 'CLASS' => $oder_total_values['class'], 'VALUE' => $oder_total_values['value'], 'TEXT' => $oder_total_values['text']);
+		if ($oder_total_values['class'] = 'ot_total')
+			$total = $oder_total_values['value'];
+
+	}
+	
+	return array('data'=>$order_total,'total'=>$total);
+	
     }
 
     function cart() {
@@ -191,7 +262,7 @@
 
       $this->info = array('order_status' => DEFAULT_ORDERS_STATUS_ID,
                           'currency' => $_SESSION['currency'],
-                          'currency_value' => $currencies->currencies[$_SESSION['currency']]['value'],
+                          'currency_value' => $xtPrice->currencies[$_SESSION['currency']]['value'],
                           'payment_method' => $_SESSION['payment'],
                           'cc_type' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_type']) ? $_SESSION['ccard']['cc_type'] : ''),
                           'cc_owner'=>(isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_owner']) ? $_SESSION['ccard']['cc_owner'] : ''),
@@ -277,6 +348,7 @@
                                         'tax_description' => xtc_get_tax_description($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
                                         'price' =>  $products_price ,
                             		    'final_price' => $products_price*$products[$i]['quantity'],
+                            		    'shipping_time'=>$products[$i]['shipping_time'],
 					                    'weight' => $products[$i]['weight'],
                                         'id' => $products[$i]['id']);
 

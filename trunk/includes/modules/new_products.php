@@ -69,58 +69,7 @@ $row = 0;
 $module_content = array ();
 $new_products_query = xtDBquery($new_products_query);
 while ($new_products = xtc_db_fetch_array($new_products_query, true)) {
-	$SEF_parameter = '';
-	if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-		$SEF_parameter = '&product='.xtc_cleanName($new_products['products_name']);
-
-	if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
-		$buy_now = '';
-		if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
-			if ($new_products['products_fsk18'] == '0')
-				$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
-		} else {
-			$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$new_products['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$new_products['products_name'].TEXT_NOW).'</a>';
-		}
-		
-		$tax_rate = $xtPrice->TAX[$new_products['products_tax_class_id']];
-		if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
-		    $tax_info = sprintf(TAX_INFO_INCL, $tax_rate.' %');
-		}
-		if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0) {
-		    $tax_info = sprintf(TAX_INFO_EXCL, $tax_rate.' %');
-		}
-		
-		$image = '';
-		if ($new_products['products_image'] != '') {
-			$image = DIR_WS_THUMBNAIL_IMAGES.$new_products['products_image'];
-		}
-$ship_info="";
-		if (SHOW_SHIPPING=='true') {
-			$ship_info= ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>';
-		} 
-
-		$module_content[] = array ('PRODUCTS_NAME' => $new_products['products_name'], 
-								   'PRODUCTS_DESCRIPTION' => $new_products['products_short_description'], 
-								   'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($new_products['products_id'], $format = true, 1, $new_products['products_tax_class_id'], $new_products['products_price']), 
-								   'PRODUCTS_TAX_INFO' => $tax_info,
-								   'PRODUCTS_SHIPPING_LINK' => $ship_info,
-								   'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($new_products['products_id'],$new_products['products_name'])), 
-								   'PRODUCTS_IMAGE' => $image, 
-								   'BUTTON_BUY_NOW' => $buy_now);
-
-	} else {
-
-		$image = '';
-		if ($new_products['products_image'] != '')
-			$image = DIR_WS_THUMBNAIL_IMAGES.$new_products['products_image'];
-	
-		$module_content[] = array ('PRODUCTS_NAME' => $new_products['products_name'], 
-								   'PRODUCTS_DESCRIPTION' => $new_products['products_short_description'], 
-								   'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($new_products['products_id'], $format = true, 1, $new_products['products_tax_class_id'], $new_products['products_price']), 
-								   'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($new_products['products_id'],$new_products['products_name'])), 
-								   'PRODUCTS_IMAGE' => $image);
-	}
-	$row ++;
+	$module_content[] = $product->buildDataArray($new_products);
 
 }
 if (sizeof($module_content) >= 1) {

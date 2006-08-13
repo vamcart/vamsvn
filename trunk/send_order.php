@@ -33,47 +33,10 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 		$smarty->assign('address_label_payment', xtc_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
 	}
 	$smarty->assign('csID', $order->customer['csID']);
-	// get products data
-	$order_query = xtc_db_query("SELECT
-	        				products_id,
-	        				orders_products_id,
-	        				products_model,
-	        				products_name,
-	        				final_price,
-	        				products_quantity
-	        				FROM ".TABLE_ORDERS_PRODUCTS."
-	        				WHERE orders_id='".$insert_id."'");
-	$order_data = array ();
-	while ($order_data_values = xtc_db_fetch_array($order_query)) {
-		$attributes_query = xtc_db_query("SELECT
-		        				products_options,
-		        				products_options_values,
-		        				price_prefix,
-		        				options_values_price
-		        				FROM ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES."
-		        				WHERE orders_products_id='".$order_data_values['orders_products_id']."'");
-		$attributes_data = '';
-		$attributes_model = '';
-		while ($attributes_data_values = xtc_db_fetch_array($attributes_query)) {
-			$attributes_data .= $attributes_data_values['products_options'].':'.$attributes_data_values['products_options_values'].'<br />';
-			$attributes_model .= xtc_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']).'<br />';
-		}
-		$order_data[] = array ('PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price'], true),'PRODUCTS_SINGLE_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price']/$order_data_values['products_quantity'], true), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
-	}
-	// get order_total data
-	$oder_total_query = xtc_db_query("SELECT
-	  					title,
-	  					text,
-	  					sort_order
-	  					FROM ".TABLE_ORDERS_TOTAL."
-	  					WHERE orders_id='".$insert_id."'
-	  					ORDER BY sort_order ASC");
-
-	$order_total = array ();
-	while ($oder_total_values = xtc_db_fetch_array($oder_total_query)) {
-
-		$order_total[] = array ('TITLE' => $oder_total_values['title'], 'TEXT' => $oder_total_values['text']);
-	}
+	
+	$order_total = $order->getTotalData($insert_id); 
+		$smarty->assign('order_data', $order->getOrderData($insert_id));
+		$smarty->assign('order_total', $order_total['data']);
 
 	// assign language to template for caching
 	$smarty->assign('language', $_SESSION['language']);
@@ -86,8 +49,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	}
 	$smarty->assign('PAYMENT_METHOD', $payment_method);
 	$smarty->assign('DATE', xtc_date_long($order->info['date_purchased']));
-	$smarty->assign('order_data', $order_data);
-	$smarty->assign('order_total', $order_total);
+
 	$smarty->assign('NAME', $order->customer['name']);
 	$smarty->assign('COMMENTS', $order->info['comments']);
 	$smarty->assign('EMAIL', $order->customer['email_address']);

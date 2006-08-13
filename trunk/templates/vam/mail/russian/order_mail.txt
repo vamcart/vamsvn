@@ -24,6 +24,7 @@
 ----------------------------------------------------------------------
 {foreach name=aussen item=order_values from=$order_data} 
 {$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Shipping time: {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}
 {if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
 
 {/foreach}

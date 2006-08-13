@@ -57,6 +57,9 @@ if (isset ($current_category_id) && ($current_category_id > 0)) {
 	                                        p.products_price,
 	                                        p.products_tax_class_id,
 	                                        p.products_image,
+                                           p.products_vpe,
+				                           p.products_vpe_status,
+				                           p.products_vpe_value,
 	                                        pd.products_name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
 	                                        where p.products_status = '1'
 	                                        and c.categories_status = '1'
@@ -74,6 +77,9 @@ if (isset ($current_category_id) && ($current_category_id > 0)) {
 	                                        p.products_id,
 	                                        p.products_image,
 	                                        p.products_price,
+                                           p.products_vpe,
+				                           p.products_vpe_status,
+				                           p.products_vpe_value,
 	                                        p.products_tax_class_id,
 	                                        pd.products_name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
 	                                        where p.products_status = '1'
@@ -91,15 +97,10 @@ if (xtc_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
 	while ($best_sellers = xtc_db_fetch_array($best_sellers_query, true)) {
 		$rows ++;
 		$image = '';
-		if ($best_sellers['products_image'])
-			$image = DIR_WS_INFO_IMAGES.$best_sellers['products_image'];
-
-		$box_content[] = array ('ID' => xtc_row_number_format($rows), 
-								'NAME' => $best_sellers['products_name'], 
-								'IMAGE' => $image, 
-								'PRICE' => $xtPrice->xtcGetPrice($best_sellers['products_id'], $format = true, 1, $best_sellers['products_tax_class_id'], $best_sellers['products_price']), 
-								'LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($best_sellers['products_id'], $best_sellers['products_name'])));
-
+		
+		$best_sellers = array_merge($best_sellers, array ('ID' => xtc_row_number_format($rows)));
+		$box_content[] = $product->buildDataArray($best_sellers);
+		
 	}
 
 	$box_smarty->assign('box_content', $box_content);

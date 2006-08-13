@@ -330,7 +330,7 @@ if ($_GET['action'] == "curr_edit") {
 	$old_curr_query = xtc_db_query("select currencies_id, title, code, value from ".TABLE_CURRENCIES." where code = '".$_POST['old_currency']."' ");
 	$old_curr = xtc_db_fetch_array($old_curr_query);
 
-	$sql_data_array = array ('currency' => xtc_db_prepare_input($curr['code']));
+	$sql_data_array = array ('currency' => xtc_db_prepare_input($curr['code']),'currency_value'=>xtc_db_prepare_input($curr['value']));
 	xtc_db_perform(TABLE_ORDERS, $sql_data_array, 'update', 'orders_id  = \''.xtc_db_input($_POST['oID']).'\'');
 
 	// Produkte
@@ -527,7 +527,7 @@ if ($_GET['action'] == "save_order") {
 			} else {
 				$module_tmp_name = split('_', $order->info['shipping_class']);
 				$module_tmp_name = $module_tmp_name[0];
-				if ($module_tmp_name[0] != 'selfpickup') {
+				if ($module_tmp_name != 'selfpickup') {
 					$module_tax_class = constant(MODULE_SHIPPING_.strtoupper($module_tmp_name)._TAX_CLASS);
 				} else {
 					$module_tax_class = '';
@@ -673,6 +673,7 @@ elseif ($_GET['edit_action'] == 'options') {
 <tr class="dataTableRow">
 <td class="dataTableContent" align="right">
 <?php
+
 
 echo TEXT_SAVE_ORDER;
 echo xtc_draw_form('save_order', FILENAME_ORDERS_EDIT, 'action=save_order', 'post');

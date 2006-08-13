@@ -115,7 +115,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		if (!xtc_db_num_rows($check_mail_query)) {
 			$info_message = TEXT_EMAIL_NOT_EXIST;
 		} else {
-			$del_query = xtc_db_query("delete from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address ='".$_POST['email']."'");
+			$del_query = xtc_db_query("delete from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address ='".xtc_db_input($_POST['email'])."'");
 			$info_message = TEXT_EMAIL_DEL;
 		}
 	}
@@ -147,7 +147,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'remove')) {
 		if (!xtc_validate_password($check_mail['customers_email_address'], $_GET['key'])) {
 			$info_message = TEXT_EMAIL_DEL_ERROR;
 		} else {
-			$del_query = xtc_db_query("delete from ".TABLE_NEWSLETTER_RECIPIENTS." where  customers_email_address ='".$_GET['email']."' and mail_key = '".xtc_db_input($_GET['key'])."'");
+			$del_query = xtc_db_query("delete from ".TABLE_NEWSLETTER_RECIPIENTS." where  customers_email_address ='".xtc_db_input($_GET['email'])."' and mail_key = '".xtc_db_input($_GET['key'])."'");
 			$info_message = TEXT_EMAIL_DEL;
 		}
 	}
@@ -162,7 +162,7 @@ $smarty->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="" />');
 $smarty->assign('text_newsletter', TEXT_NEWSLETTER);
 $smarty->assign('info_message', $info_message);
 $smarty->assign('FORM_ACTION', xtc_draw_form('sign', xtc_href_link(FILENAME_NEWSLETTER, 'action=process', 'NONSSL')));
-$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', $_POST['email']));
+$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', xtc_db_input($_POST['email'])));
 $smarty->assign('INPUT_CODE', xtc_draw_input_field('vvcode', '', 'size="6" maxlength="6"', 'text', false));
 $smarty->assign('CHECK_INP', xtc_draw_radio_field('check', 'inp'));
 $smarty->assign('CHECK_DEL', xtc_draw_radio_field('check', 'del'));

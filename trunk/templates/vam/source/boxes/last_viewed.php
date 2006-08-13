@@ -42,6 +42,9 @@ $random_last_viewed = xtc_rand(0,$max);
                                            p.products_tax_class_id,
                                            p.products_image,
                                            p2c.categories_id,
+                                           p.products_vpe,
+				                           p.products_vpe_status,
+				                           p.products_vpe_value,
                                            cd.categories_name 
                                            from 
                                            " . TABLE_PRODUCTS . " p,
@@ -67,18 +70,8 @@ $random_last_viewed = xtc_rand(0,$max);
 
 if ($random_product['products_name']!='') {
 
-    $box_content='<a href="' . xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $random_product['products_id']) . '">' . xtc_image(DIR_WS_THUMBNAIL_IMAGES . $random_product['products_image'], $random_product['products_name'], PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT) . '</a><br /><a href="' . xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $random_product['products_id']) . '">' . $random_product['products_name'] . '</a><br />' . $random_products_price;
-
-	$image='';
-    if ($random_product['products_image']!='') {
-    $image=DIR_WS_THUMBNAIL_IMAGES . $random_product['products_image'];
-    }
-   
-    $box_smarty->assign('LINK',xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'],$random_product['products_name'])));
-    $box_smarty->assign('IMAGE',$image);
-    $box_smarty->assign('NAME',$random_product['products_name']);
-    $box_smarty->assign('PRICE',$random_products_price);
-    $box_smarty->assign('BOX_CONTENT', $box_content);
+    $box_smarty->assign('box_content',$product->buildDataArray($random_product));
+    
     $box_smarty->assign('MY_PAGE', 'TEXT_MY_PAGE');
     $box_smarty->assign('WATCH_CATGORY', 'TEXT_WATCH_CATEGORY');
     $box_smarty->assign('MY_PERSONAL_PAGE',xtc_href_link(FILENAME_ACCOUNT));

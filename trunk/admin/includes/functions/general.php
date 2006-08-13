@@ -789,6 +789,8 @@ function xtc_get_countries($default = '') {
 	return $countries_array;
 }
 
+
+
 ////
 // return an array with country zones
 function xtc_get_country_zones($country_id) {

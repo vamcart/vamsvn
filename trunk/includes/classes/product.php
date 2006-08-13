@@ -24,6 +24,8 @@ class product {
 	 */
 	function product($pID = 0) {
 		$this->pID = $pID;
+		$this->useStandardImage=false;
+		$this->standardImage='noimage.gif';
 		if ($pID = 0) {
 			$this->isProduct = false;
 			return;
@@ -155,46 +157,32 @@ class product {
 			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 		}
 
-		$orders_query = xtDBquery("select
-						                                  p.products_fsk18,
-						                                  p.products_id,
-						                                  p.products_price,
-						                                  p.products_tax_class_id,
-						                                  p.products_image,
-						                                  pd.products_name,
-						                                  pd.products_short_description FROM ".TABLE_ORDERS_PRODUCTS." opa, ".TABLE_ORDERS_PRODUCTS." opb, ".TABLE_ORDERS." o, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-						                                  where opa.products_id = '".$this->pID."'
-						                                  and opa.orders_id = opb.orders_id
-						                                  and opb.products_id != '".$this->pID."'
-						                                  and opb.products_id = p.products_id
-						                                  and opb.orders_id = o.orders_id ".$shop."
-						                                  and p.products_status = '1'
-						                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
-						                                  and opb.products_id = pd.products_id
-						                                  ".$group_check."
-						                                  ".$fsk_lock."
-						                                  group by p.products_id order by o.date_purchased desc limit ".MAX_DISPLAY_ALSO_PURCHASED);
-
+		$orders_query = "select
+														                                  p.products_fsk18,
+														                                  p.products_id,
+														                                  p.products_price,
+														                                  p.products_tax_class_id,
+														                                  p.products_image,
+														                                  pd.products_name,
+														                                  p.products_vpe,
+						                           										  p.products_vpe_status,
+						                           										  p.products_vpe_value,
+														                                  pd.products_short_description FROM ".TABLE_ORDERS_PRODUCTS." opa, ".TABLE_ORDERS_PRODUCTS." opb, ".TABLE_ORDERS." o, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+														                                  where opa.products_id = '".$this->pID."'
+														                                  and opa.orders_id = opb.orders_id
+														                                  and opb.products_id != '".$this->pID."'
+														                                  and opb.products_id = p.products_id
+														                                  and opb.orders_id = o.orders_id
+														                                  and p.products_status = '1'
+														                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
+														                                  and opb.products_id = pd.products_id
+														                                  ".$group_check."
+														                                  ".$fsk_lock."
+														                                  group by p.products_id order by o.date_purchased desc limit ".MAX_DISPLAY_ALSO_PURCHASED;
+		$orders_query = xtDBquery($orders_query);
 		while ($orders = xtc_db_fetch_array($orders_query, true)) {
 
-			$image = '';
-			if ($orders['products_image'] != '')
-				$image = DIR_WS_THUMBNAIL_IMAGES.$orders['products_image'];
-
-			if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
-				$buy_now = '';
-				if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
-					if ($orders['products_fsk18'] == '0')
-						$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
-				} else {
-					$buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$orders['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$orders['products_name'].TEXT_NOW).'</a>';
-				}
-
-				$module_content[] = array ('PRODUCTS_NAME' => $orders['products_name'], 'PRODUCTS_DESCRIPTION' => $orders['products_short_description'], 'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($orders['products_id'], $format = true, 1, $orders['products_tax_class_id'], $orders['products_price']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($orders['products_id'], $orders['products_name'])), 'PRODUCTS_IMAGE' => $image, 'BUTTON_BUY_NOW' => $buy_now);
-			} else {
-				$module_content[] = array ('PRODUCTS_NAME' => $orders['products_name'], 'PRODUCTS_DESCRIPTION' => $orders['products_short_description'], 'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($orders['products_id'], $format = true, 1, $orders['products_tax_class_id'], $orders['products_price']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($orders['products_id'], $orders['products_name'])), 'PRODUCTS_FSK18' => 'true', 'PRODUCTS_IMAGE' => $image);
-
-			}
+			$module_content[] = $this->buildDataArray($orders);
 
 		}
 
@@ -227,40 +215,32 @@ class product {
 				$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 			}
 
-			$cross_query = xtDBquery("select p.products_fsk18,
-														 p.products_tax_class_id,
-								                                                 p.products_id,
-								                                                 p.products_image,
-								                                                 pd.products_name,
-														 						pd.products_short_description,
-								                                                 p.products_fsk18,
-								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-								                                            where xp.products_id = '".$this->pID."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
-								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
-								                                            and pd.language_id = '".$_SESSION['languages_id']."'
-								                                            and p.products_status = '1'
-								                                            order by xp.sort_order asc");
+				$cross_query = "select p.products_fsk18,
+																														 p.products_tax_class_id,
+																								                                                 p.products_id,
+																								                                                 p.products_image,
+																								                                                 pd.products_name,
+																														 						pd.products_short_description,
+																								                                                 p.products_fsk18,p.products_price,p.products_vpe,
+						                           																									p.products_vpe_status,
+						                           																									p.products_vpe_value,
+																								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+																								                                            where xp.products_id = '".$this->pID."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
+																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
+																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
+																								                                            and p.products_status = '1'
+																								                                            order by xp.sort_order asc";
 
+			$cross_query = xtDBquery($cross_query);
 			if (xtc_db_num_rows($cross_query, true) > 0)
 				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => xtc_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
 
 			while ($xsell = xtc_db_fetch_array($cross_query, true)) {
 
-				if (($xsell['products_fsk18'] == '1') AND ($_SESSION['customers_status']['customers_fsk18'] == '1')) {
-					$xsell_buy_now = '<img src = templates/'.CURRENT_TEMPLATE.'/'.'img/fsk18.gif>';
-				} else {
-					$xsell_buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$xsell['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$xsell['products_name'].TEXT_NOW).'</a>';
-				}
-				$xsell_image = '';
-				if ($xsell['products_image'] != '') {
-					$xsell_image = DIR_WS_THUMBNAIL_IMAGES.$xsell['products_image'];
-				}
-
-				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']]['PRODUCTS'][] = array ('PRODUCTS_NAME' => $xsell['products_name'], 'PRODUCTS_IMAGE' => $xsell_image, 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($xsell['products_id'], $xsell['products_name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($xsell['products_id'], $format = true, 1, $xsell['products_tax_class_id'], $xsell['products_price']), 'BUTTON_BUY_NOW' => $xsell_buy_now, 'PRODUCTS_DESCRIPTION' => $xsell['products_short_description'], 'PRODUCTS_FSK18' => $xsell['products_fsk18']);
+				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']]['PRODUCTS'][] = $this->buildDataArray($xsell);
 			}
 
 		}
-
 		return $cross_sell_data;
 		}
 	}
@@ -286,35 +266,25 @@ class product {
 			}
 
 			$cross_query = xtDBquery("select p.products_fsk18,
-														 p.products_tax_class_id,
-								                                                 p.products_id,
-								                                                 p.products_image,
-								                                                 pd.products_name,
-														 						pd.products_short_description,
-								                                                 p.products_fsk18,
-								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-								                                            where xp.xsell_id = '".$this->pID."' and xp.products_id = p.products_id ".$fsk_lock.$group_check."
-								                                            and p.products_id = pd.products_id
-								                                            and pd.language_id = '".$_SESSION['languages_id']."'
-								                                            and p.products_status = '1'
-								                                            order by xp.sort_order asc");
+																						 p.products_tax_class_id,
+																                                                 p.products_id,
+																                                                 p.products_image,
+																                                                 pd.products_name,
+																						 						pd.products_short_description,
+																                                                 p.products_fsk18,p.products_price,p.products_vpe,
+						                           																p.products_vpe_status,
+						                           																p.products_vpe_value,  
+																                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+																                                            where xp.xsell_id = '".$this->pID."' and xp.products_id = p.products_id ".$fsk_lock.$group_check."
+																                                            and p.products_id = pd.products_id
+																                                            and pd.language_id = '".$_SESSION['languages_id']."'
+																                                            and p.products_status = '1'
+																                                            order by xp.sort_order asc");
 
-			if (xtc_db_num_rows($cross_query, true) > 0)
-				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => xtc_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
 
 			while ($xsell = xtc_db_fetch_array($cross_query, true)) {
 
-				if (($xsell['products_fsk18'] == '1') AND ($_SESSION['customers_status']['customers_fsk18'] == '1')) {
-					$xsell_buy_now = '<img src = templates/'.CURRENT_TEMPLATE.'/'.'img/fsk18.gif>';
-				} else {
-					$xsell_buy_now = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$xsell['products_id'], 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$xsell['products_name'].TEXT_NOW).'</a>';
-				}
-				$xsell_image = '';
-				if ($xsell['products_image'] != '') {
-					$xsell_image = DIR_WS_THUMBNAIL_IMAGES.$xsell['products_image'];
-				}
-
-				$cross_sell_data[] = array ('PRODUCTS_NAME' => $xsell['products_name'], 'PRODUCTS_IMAGE' => $xsell_image, 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($xsell['products_id'], $xsell['products_name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcGetPrice($xsell['products_id'], $format = true, 1, $xsell['products_tax_class_id'], $xsell['products_price']), 'BUTTON_BUY_NOW' => $xsell_buy_now, 'PRODUCTS_DESCRIPTION' => $xsell['products_short_description'], 'PRODUCTS_FSK18' => $xsell['products_fsk18']);
+				$cross_sell_data[] = $this->buildDataArray($xsell);
 			}
 
 
@@ -373,6 +343,99 @@ class product {
 	function isProduct() {
 		return $this->isProduct;
 	}
+	
+	// beta
+	function getBuyNowButton($id, $name) {
+		global $PHP_SELF;
+		return '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
 
+	}
+
+	function getVPEtext($product, $price) {
+		global $xtPrice;
+
+		require_once (DIR_FS_INC.'xtc_get_vpe_name.inc.php');
+
+		if (!is_array($product))
+			$product = $this->data;
+
+		if ($product['products_vpe_status'] == 1 && $product['products_vpe_value'] != 0.0 && $price > 0) {
+			return $xtPrice->xtcFormat($price * (1 / $product['products_vpe_value']), true).TXT_PER.xtc_get_vpe_name($product['products_vpe']);
+		}
+
+		return;
+
+	}
+	
+	function buildDataArray(&$array,$image='thumbnail') {
+		global $xtPrice,$main;
+
+			$tax_rate = $xtPrice->TAX[$array['products_tax_class_id']];
+
+			$products_price = $xtPrice->xtcGetPrice($array['products_id'], $format = true, 1, $array['products_tax_class_id'], $array['products_price'], 1);
+
+			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
+				if ($array['products_fsk18'] == '0')
+					$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
+			
+			} else {
+				$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
+			}
+			
+
+		
+			$shipping_status_name = $main->getShippingStatusName($array['products_shippingtime']);
+			$shipping_status_image = $main->getShippingStatusImage($array['products_shippingtime']);
+		
+		
+		return array ('PRODUCTS_NAME' => $array['products_name'], 
+				'COUNT'=>$array['ID'],
+				'PRODUCTS_ID'=>$array['products_id'],
+				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
+				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
+				'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($array['products_id'], $array['products_name'])), 
+				'PRODUCTS_PRICE' => $products_price['formated'], 
+				'PRODUCTS_TAX_INFO' => $main->getTaxInfo($tax_rate), 
+				'PRODUCTS_SHIPPING_LINK' => $main->getShippingLink(), 
+				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
+				'PRODUCTS_SHIPPING_NAME'=>$shipping_status_name,
+				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
+				'PRODUCTS_DESCRIPTION' => $array['products_short_description'],
+				'PRODUCTS_EXPIRES' => $array['expires_date'],
+				'PRODUCTS_CATEGORY_URL'=>$array['cat_url'],
+				'PRODUCTS_SHORT_DESCRIPTION' => $array['products_short_description'], 
+				'PRODUCTS_FSK18' => $array['products_fsk18']);		
+				
+
+	}
+	
+
+	function productImage($name, $type) {
+
+		switch ($type) {
+			case 'info' :
+				$path = DIR_WS_INFO_IMAGES;
+				break;
+			case 'thumbnail' :
+				$path = DIR_WS_THUMBNAIL_IMAGES;
+				break;
+			case 'popup' :
+				$path = DIR_WS_POPUP_IMAGES;
+				break;
+		}
+
+		if ($name == '') {
+			if ($this->useStandardImage == 'true' && $this->standardImage != '')
+				return $path.$this->standardImage;
+		} else {
+			// check if image exists
+			if (!file_exists($path.$name)) {
+				if ($this->useStandardImage == 'true' && $this->standardImage != '')
+					$name = $this->standardImage;
+			}
+			return $path.$name;
+		}
+	}
+	
 }
 ?>

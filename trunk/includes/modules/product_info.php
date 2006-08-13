@@ -76,22 +76,11 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$info_smarty->assign('PRODUCTS_ID', $product->data['products_id']);
 		$info_smarty->assign('PRODUCTS_NAME', $product->data['products_name']);
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-			$tax_rate = $xtPrice->TAX[$product->data['products_tax_class_id']];
 			// price incl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
-				$info_smarty->assign('PRODUCTS_TAX_INFO', sprintf(TAX_INFO_INCL, $tax_rate.' %'));
-			} 
-			// excl tax + tax at checkout
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-				$info_smarty->assign('PRODUCTS_TAX_INFO', sprintf(TAX_INFO_ADD, $tax_rate.' %'));
-			}
-			// excl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) {
-				$info_smarty->assign('PRODUCTS_TAX_INFO', sprintf(TAX_INFO_EXCL, $tax_rate.' %'));
-			}
-		}
-		if (SHOW_SHIPPING=='true') { 
-			$info_smarty->assign('PRODUCTS_SHIPPING_LINK',' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');	
+			$tax_rate = $xtPrice->TAX[$product->data['products_tax_class_id']];				
+			$tax_info = $main->getTaxInfo($tax_rate);
+			$info_smarty->assign('PRODUCTS_TAX_INFO', $tax_info);
+			$info_smarty->assign('PRODUCTS_SHIPPING_LINK',$main->getShippingLink());
 		}
 		$info_smarty->assign('PRODUCTS_MODEL', $product->data['products_model']);
 		$info_smarty->assign('PRODUCTS_EAN', $product->data['products_ean']);
@@ -115,16 +104,13 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		}
 		$info_smarty->assign('PRODUCTS_POPUP_LINK', 'javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_IMAGE, 'pID='.$product->data['products_id'].$connector.'imgID=0').'\')');
 		$mo_images = xtc_get_products_mo_images($product->data['products_id']);
-        if ($mo_images != false) {
-    $info_smarty->assign('PRODUCTS_MO_IMAGES', $mo_images);
-            foreach ($mo_images as $img) {
-                $mo_img[] = array(
-                'PRODUCTS_MO_IMAGE' => xtc_image(DIR_WS_INFO_IMAGES . $img['image_name'], '', '', '', 'class="mo_img"'),
-                'PRODUCTS_MO_POPUP_LINK' => xtc_href_link(FILENAME_POPUP_IMAGE, 'pID=' . $product->data['products_id'] . $connector . 'imgID='.$img['image_nr'])
-                );
-        $info_smarty->assign('mo_img', $mo_img);
-            }
-        }
+		if ($mo_images != false) {
+			foreach ($mo_images as $img) {
+				$mo_img = DIR_WS_INFO_IMAGES.$img['image_name'];
+				$info_smarty->assign('PRODUCTS_IMAGE_'.$img['image_nr'], $mo_img);
+				$info_smarty->assign('PRODUCTS_POPUP_LINK_'.$img['image_nr'], 'javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_IMAGE, 'pID='.$product->data['products_id'].$connector.'imgID='.$img['image_nr']).'\')');
+			}
+		}
 		//mo_images EOF
 		$discount = 0.00;
 		if ($_SESSION['customers_status']['customers_status_public'] == 1 && $_SESSION['customers_status']['customers_status_discount'] != '0.00') {

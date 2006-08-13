@@ -40,6 +40,9 @@ if ($random_product = xtc_random_select("select distinct
                                            p.products_id,
                                            p.products_image,
                                            p.products_tax_class_id,
+                                           p.products_vpe,
+				                           p.products_vpe_status,
+				                           p.products_vpe_value,
                                            p.products_price
                                            from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
                                            where p.products_status=1
@@ -58,19 +61,8 @@ $random_product['products_name'] = xtc_get_products_name($random_product['produc
 
 if ($random_product['products_name'] != '') {
 
-	$box_content = '<a href="'.xtc_href_link(FILENAME_PRODUCT_INFO,  xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.xtc_image(DIR_WS_THUMBNAIL_IMAGES.$random_product['products_image'], $random_product['products_name'], PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT).'</a><br /><a href="'.xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'],$random_product['products_name'])).'">'.$random_product['products_name'].'</a><br />'.$whats_new_price;
-
-	$image = '';
-	if ($random_product['products_image'] != '') {
-		$image = DIR_WS_THUMBNAIL_IMAGES.$random_product['products_image'];
-	}
-
-	$box_smarty->assign('LINK', xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($random_product['products_id'],$random_product['products_name'])));
-	$box_smarty->assign('IMAGE', $image);
-	$box_smarty->assign('NAME', $random_product['products_name']);
-	$box_smarty->assign('PRICE', $whats_new_price);
-	$box_smarty->assign('BOX_CONTENT', $box_content);
-	$box_smarty->assign('NEW_LINK', xtc_href_link(FILENAME_PRODUCTS_NEW));
+	$box_smarty->assign('box_content',$product->buildDataArray($random_product));
+	$box_smarty->assign('LINK_NEW_PRODUCTS',xtc_href_link(FILENAME_PRODUCTS_NEW));
 	$box_smarty->assign('language', $_SESSION['language']);
 	// set cache ID
 	 if (!CacheCheck()) {

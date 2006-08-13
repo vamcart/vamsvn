@@ -17,11 +17,12 @@
         <table  width="100%" border="0" cellpadding="0" cellspacing="4">
         <tr> 
           <td align="center" valign="middle" class="main">
-		  {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}<br />
+		  {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}<br>
             <strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong></td>
         </tr>
         <tr> 
-          <td align="center" valign="middle"  class="main">{$module_data.PRODUCTS_PRICE}<br /> </td>
+          <td align="center" valign="middle"  class="main">{$module_data.PRODUCTS_PRICE}<br />
+            {if $module_data.PRODUCTS_VPE}{$module_data.PRODUCTS_VPE}<br />{/if}{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}  </td>
         </tr>
       </table>
 </td>

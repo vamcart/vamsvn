@@ -52,7 +52,7 @@
         <td class="main">
 <font color="D68000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo PROJECT_VERSION; ?></b></font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong><br />
 Release
-Datum: 1 Okt 2005</strong><br />
+Datum: 17 Aug 2006</strong><br />
 Released under the GNU General Public License<br />
 <br />
  This program is distributed
@@ -112,75 +112,6 @@ Released under the GNU General Public License - die exakten Versionsnummern
 der Originaldateien entnehmen Sie den Copyright-Headern der einzelnen Dateien<br />
 <br />
 <br />
-<font color="D68000"> <b>XT-Commerce
-nutzt die folgende Software</b></font><br />
-</font>
-<hr align="center" width="100%">
-
-<font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Enable_Disable_Categories 1.3 </b> -Autor:
-Mikel Williams | mikel@ladykatcostumes.com<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>New Attribute Manager v4b</b> -Autor:
-Mike G | mp3man@internetwork.net | http://downloads.ephing.com<br />
-Released under the
-GNU General Public License <br />
-<b>Customers Status v3.x </b>-© 2002-2003 Copyright Elari elari@free.fr | www.unlockgsm.com/dload-osc/<br />
-CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/elari/?sortby=date#dirlist<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>agree_conditions_1.01</b> -Autor:
-Thomas Pl&auml;nkers (webmaster@oscommerce.at)<br />
-Released under the
-GNU General Public License<br />
-<b>Category Descriptions (Version: 1.5 MS2)</b> -Autor:
-Brian Lowe (blowe@wpcusrgrp.org) | Editor: Lord Illicious (shaolin-venoms@illicious.net)<br />
-Released under the
-GNU General Public License<br />
-<b>austrian_post_1.05</b> -Autor:
-Copyright © 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl&auml;nkers | http://www.themedia.at
-& http://www.oscommerce.at<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>swiss_post_1.02</b> -Autor:
-Copyright © 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl&auml;nkers | http://www.themedia.at
-& http://www.oscommerce.at<br />
-Released under the
-GNU General Public License <br />
-<b>chronopost-1.0.1 </b>-Autor:
-devteam@e-network.fr | www.oscommerce-fr.info</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>dhl_austria_1.02</b> -Autor:
-Copyright © 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl&auml;nkers | http://www.themedia.at
-& http://www.oscommerce.at<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>German Post (Deutsche Post WorldNet)</b> -Autor:
-Copyright © 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl&auml;nkers | http://www.themedia.at
-& http://www.oscommerce.at<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<b>fedex_europe_1.02</b> -Autor:
-Copyright © 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl&auml;nkers | http://www.themedia.at
-& http://www.oscommerce.at<br />
-Released under the
-GNU General Public License <br />
-<b>freeamountv2-p1</b> -Autor:
-dwk<br />
-Released under the
-GNU General Public License<br />
-<b>phpMailer Library for PHP4</b> -Autor: © Brent R. Matzelle bmatzelle@yahoo.com | http://phpmailer.sourceforge.net<br />
-Released under GNU
-Lesser GPL library license.<br />
-<b>CaRP v2.7.5 </b>-Autor: © 2002-3 Antone Roundy | http://www.mouken.com/rss/<br />
-Released under the
-GNU General Public License</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Smarty Templateengine</b> | version 2.6.3 | http://smarty.php.net <br />
-Released under the GNU General Public License</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
-<br />
-<b>Ps: Wir weisen darauf hin, dass wir keine Garantie auf Vollst&auml;ndigkeit dieser Liste geben.</b><br />
-  </font>
 </td>
       </tr>		
     </table></td>

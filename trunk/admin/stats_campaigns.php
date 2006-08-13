@@ -366,12 +366,8 @@ if (count($campaign->result)) {
   <?
 	}
 ?>
-  
-  
 </table>
-                
-                
- <?php } ?>               
+<?php } ?>
                 &nbsp; </td>
               </tr>
             </table>
@@ -385,8 +381,15 @@ if (count($campaign->result)) {
 <!-- body_eof //-->
 
 <!-- footer //-->
-<?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
+<?php
+
+
+	require (DIR_WS_INCLUDES.'footer.php');
+?>
 <!-- footer_eof //-->
 </body>
 </html>
-<?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+<?php
+
+	require (DIR_WS_INCLUDES.'application_bottom.php');
+?>

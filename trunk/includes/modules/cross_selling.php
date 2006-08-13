@@ -29,7 +29,6 @@ if (count($data) > 0) {
 
 	$module_smarty->caching = 0;
 	$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/cross_selling.html');
-
 	$info_smarty->assign('MODULE_cross_selling', $module);
 }
 

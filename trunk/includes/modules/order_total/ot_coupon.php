@@ -146,7 +146,7 @@ class ot_coupon {
 			}
 			if ($_POST['submit_redeem_coupon_x'] && !$_POST['gv_redeem_code'])
 				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_NO_REDEEM_CODE), 'SSL'));
-		}
+			}
 	}
 
 	function calculate_credit($amount) {
@@ -201,7 +201,7 @@ class ot_coupon {
 													$pr_c = $this->product_price(xtc_get_prid($order->products[$i]['id'])); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
 													$pod_amount = round($pr_c*10)/10*$c_deduct/100;
 													$od_amount = $od_amount + $pod_amount;
-                                                       continue 3;      // v5.13a Tanaka 2005-4-30: to prevent double counting of a product discount  
+                                                       continue 3;      // v5.13a Tanaka 2005-4-30: to prevent double counting of a product discount
 												} else {
 													$od_amount = $c_deduct;
 													continue 3;

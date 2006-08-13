@@ -170,13 +170,13 @@ class xtcImport {
 						if ($this->checkModel($line_data['p_model'])) {
 							$this->insertProduct($line_data, 'update');
 						} else {
-							$this->insertProduct($line_data);
+							$this->insertProduct($line_data,'insert');
 						}
 					} else {
 						if ($this->checkModel($line_data['p_model'])) {
-							$this->insertProduct($line_data, 'update');
+							$this->insertProduct($line_data, 'update',true);
 						} else {
-							$this->insertProduct($line_data);
+							$this->insertProduct($line_data,'insert',true);
 						}
 					}
 				} else {
@@ -253,7 +253,7 @@ class xtcImport {
 	*   @param array $dataArray Linedata
 	*   @param string $mode insert or update flag
 	*/
-	function insertProduct(& $dataArray, $mode = 'insert') {
+	function insertProduct(& $dataArray, $mode = 'insert',$touchCat = false) {
 
 		$products_array = array ('products_model' => $dataArray['p_model']);
 		if ($this->FileSheme['p_stock'] == 'Y')
@@ -344,7 +344,7 @@ class xtcImport {
 		}
 		}
 
-		$this->insertCategory($dataArray, $mode, $products_id);
+		if ($touchCat) $this->insertCategory($dataArray, $mode, $products_id);
 		for ($i_insert = 0; $i_insert < sizeof($this->languages); $i_insert ++) {
 			$prod_desc_array = array ('products_id' => $products_id, 'language_id' => $this->languages[$i_insert]['id']);
 
@@ -720,13 +720,13 @@ class xtcExport {
 				$lang_data['products_short_description'] = str_replace("\r", "", $lang_data['products_short_description']);
 				$lang_data['products_description'] = str_replace(chr(13), "", $lang_data['products_description']);
 				$lang_data['products_short_description'] = str_replace(chr(13), "", $lang_data['products_short_description']);
-				$line .= $this->TextSign.$lang_data['products_name'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_description'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_short_description'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_meta_title'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_meta_description'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_meta_keywords'].$this->TextSign.$this->seperator;
-				$line .= $this->TextSign.$lang_data['products_keywords'].$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_name']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_description']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_short_description']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_meta_title']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_meta_description']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_meta_keywords']).$this->TextSign.$this->seperator;
+				$line .= $this->TextSign.stripslashes($lang_data['products_keywords']).$this->TextSign.$this->seperator;
 				$line .= $this->TextSign.$lang_data['products_url'].$this->TextSign.$this->seperator;
 
 			}

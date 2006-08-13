@@ -348,6 +348,18 @@ if (!isset ($_SESSION['language']) || isset ($_GET['language'])) {
 	$_SESSION['language_code'] = $lng->language['code'];
 }
 
+if (isset($_SESSION['language']) && !isset($_SESSION['language_charset'])) {
+	
+	include (DIR_WS_CLASSES.'language.php');
+	$lng = new language(xtc_input_validation($_SESSION['language'], 'char', ''));
+
+
+	$_SESSION['language'] = $lng->language['directory'];
+	$_SESSION['languages_id'] = $lng->language['id'];
+	$_SESSION['language_charset'] = $lng->language['language_charset'];
+	$_SESSION['language_code'] = $lng->language['code'];
+	
+}
 // include the language translations
 require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.php');
 
@@ -481,7 +493,7 @@ if (isset ($cPath_array)) {
 		}
 	}
 }
-elseif (isset ($_GET['manufacturers_id'])) {
+elseif (xtc_not_null($_GET['manufacturers_id'])) {
 	$manufacturers_query = xtDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
 	$manufacturers = xtc_db_fetch_array($manufacturers_query, true);
 
@@ -507,7 +519,7 @@ define('WARN_SESSION_AUTO_START', 'true');
 define('WARN_DOWNLOAD_DIRECTORY_NOT_READABLE', 'true');
 
 // Include Template Engine
-require (DIR_WS_CLASSES.'Smarty_2.6.10/Smarty.class.php');
+require (DIR_WS_CLASSES.'Smarty_2.6.14/Smarty.class.php');
 
 if (isset ($_SESSION['customer_id'])) {
 	$account_type_query = xtc_db_query("SELECT

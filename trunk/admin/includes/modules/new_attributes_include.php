@@ -35,7 +35,7 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
   if ($cPath) echo '<input type="hidden" name="cPathID" value="' . $cPath . '">';
 
-  require('new_attributes_functions.php');
+  require(DIR_WS_MODULES . 'new_attributes_functions.php');
 
   // Temp id for text input contribution.. I'll put them in a seperate array.
   $tempTextID = '1999043';

@@ -28,6 +28,7 @@ $content_data = xtc_db_fetch_array($content_query, true);
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" /> 
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <title><?php echo $content_data['content_heading']; ?></title>
+<base href="<?php echo (getenv('HTTPS') == 'on' ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 </head>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -54,7 +55,14 @@ if ($content_data['content_file'] != '') {
 }
 ?>
 <br><br>
-<p class="smallText" align="right"><?php echo '<a href="javascript:window.close()">' . TEXT_CLOSE_WINDOW . '</a>'; ?></p>
+<p class="smallText" align="right">
+<script type="text/javascript">
+<!-- 
+document.write("<a href='javascript:window.close()'><?php echo TEXT_CLOSE_WINDOW; ?></a>")
+// -->
+</script>
+<noscript><?php echo TEXT_CLOSE_WINDOW_NO_JS; ?></noscript>
+</p>
 </td>
           </tr>
         </table>

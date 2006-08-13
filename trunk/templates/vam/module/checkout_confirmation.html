@@ -4,6 +4,9 @@
 	<tr valign="top"> 
 		<td class="contentsTopics">{#heading_confirmation#}</td>
 	</tr>
+	<tr valign="top">
+	  <td class="main">{#text_information#}</td>
+  </tr>
 </table>
 {if $IP_LOG=='true'} 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -98,7 +101,24 @@
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="right">{$CHECKOUT_FORM} {if $MODULE_BUTTONS!=''} {$MODULE_BUTTONS}<br />{/if} {$CHECKOUT_BUTTON}<br /><br /></td>
+    <td align="right">{$CHECKOUT_FORM} {if $MODULE_BUTTONS!=''} {$MODULE_BUTTONS}<br />{/if} {$CHECKOUT_BUTTON}<br /><br />
+	<table width="100%"  border="0" cellpadding="4">
+        <tr>
+          <td class="mainText">{if $REVOCATION}
+		  <b>{$REVOCATION_TITLE}</b><br />
+		  
+		  {$REVOCATION}<br />
+		  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+            <tr>
+              <td class="main"><img src="{$tpl_path}img/arrow_green.gif" alt="arrow" />{$REVOCATION_TITLE}&nbsp;{$REVOCATION_LINK}</td>
+            </tr>
+            <tr>
+              <td class="main"><img src="{$tpl_path}img/arrow_green.gif" alt="arrow" />{$AGB_TITLE}&nbsp;{$AGB_LINK}</td>
+            </tr>
+          </table>
+		  {/if}</td>
+        </tr>
+      </table></td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

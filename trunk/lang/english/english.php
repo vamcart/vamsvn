@@ -477,4 +477,7 @@ define('ENTRY_STATE_RELOAD', 'Click <b>"Update"</b> button to fill State field')
 define('ENTRY_NOSTATE_AVAILIABLE', 'States not available for selecter country');
 define('ENTRY_STATEXML_LOADING', 'Loading states ...');
 
+define('SHIPPING_TIME','Shipping time: ');
+define('MORE_INFO','[More]');
+
 ?>

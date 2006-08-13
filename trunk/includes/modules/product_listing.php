@@ -60,71 +60,7 @@ if ($listing_split->number_of_rows > 0) {
 	$listing_query = xtDBquery($listing_split->sql_query);
 	while ($listing = xtc_db_fetch_array($listing_query, true)) {
 		$rows ++;
-		$price = $xtPrice->xtcGetPrice($listing['products_id'], $format = true, 1, $listing['products_tax_class_id'], $listing['products_price'], 1);
-		
-		if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
-			$vpePrice = '';
-			if ($listing['products_vpe_status'] == 1 && $listing['products_vpe_value'] != 0.0 && $price['plain'] > 0)
-				$vpePrice = $xtPrice->xtcFormat($price['plain'] * (1 / $listing['products_vpe_value']), true).TXT_PER.xtc_get_vpe_name($listing['products_vpe']);
-			$buy_now = '';
-			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
-				if ($listing['products_fsk18'] == '0')
-					$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$listing['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$listing['products_name'].TEXT_NOW).'</a>';
-			} else {
-				$buy_now = '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$listing['products_id'].'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image_button('button_buy_now.gif', TEXT_BUY.$listing['products_name'].TEXT_NOW).'</a>';
-			}
-			$fsk18 = '';
-			if ($listing['products_fsk18'] == '1')
-				$fsk18 = 'true';
-
-		}
-		$image = '';
-		if ($listing['products_image'] != '')
-			$image = DIR_WS_THUMBNAIL_IMAGES.$listing['products_image'];
-
-		if (ACTIVATE_SHIPPING_STATUS == 'true') {
-			$shipping_status_name = $main->getShippingStatusName($listing['products_shippingtime']);
-			$shipping_status_image = $main->getShippingStatusImage($listing['products_shippingtime']);
-		}
-
-		
-			if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-			$tax_rate = $xtPrice->TAX[$listing['products_tax_class_id']];
-			// price incl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
-				$tax_info = sprintf(TAX_INFO_INCL, $tax_rate.' %');
-			} 
-			// excl tax + tax at checkout
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-				$tax_info = sprintf(TAX_INFO_ADD, $tax_rate.' %');
-			}
-			// excl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) {
-				$tax_info = sprintf(TAX_INFO_EXCL, $tax_rate.' %');
-			}
-		}
-		$ship_info="";
-		if (SHOW_SHIPPING=='true') {
-		$ship_info=' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>';
-		}
-		$module_content[] = array ('PRODUCTS_NAME' => $listing['products_name'], 
-								   'PRODUCTS_MODEL' => $listing['products_model'], 
- 								   'PRODUCTS_EAN' => $listing['products_ean'],
-								   'PRODUCTS_TAX_INFO' => $tax_info,
-								   'PRODUCTS_SHIPPING_LINK' => $ship_info, 
-								   'PRODUCTS_SHORT_DESCRIPTION' => $listing['products_short_description'], 
-								   'PRODUCTS_IMAGE' => $image, 
-								   'PRODUCTS_PRICE' => $price['formated'], 
-								   'PRODUCTS_VPE' => $vpePrice, 
-								   'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($listing['products_id'],$listing['products_name'])), 
-								   'BUTTON_BUY_NOW' => $buy_now, 
-								   'PRODUCTS_FSK18' => $fsk18,
-								   'SHIPPING_NAME' => $shipping_status_name, 
-								   'SHIPPING_IMAGE' => $shipping_status_image, 
-								   'PRODUCTS_ID' => $listing['products_id']);
-	
-			
-			
+		$module_content[] =  $product->buildDataArray($listing);		
 	}
 } else {
 
