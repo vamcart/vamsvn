@@ -36,7 +36,7 @@ $content_data = xtc_db_fetch_array($content_query, true);
     <td class="contentsTopics"><?php echo $content_data['content_heading']; ?></td>
   </tr>
 </table>
-<br>
+<br />
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
             <td class="main">
@@ -54,7 +54,7 @@ if ($content_data['content_file'] != '') {
 	echo $content_data['content_text'];
 }
 ?>
-<br><br>
+<br /><br />
 <p class="smallText" align="right">
 <script type="text/javascript">
 <!-- 
