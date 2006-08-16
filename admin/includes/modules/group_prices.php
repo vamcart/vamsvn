@@ -102,7 +102,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
 
 		if ($_GET['pID'] != '') {
 			echo ' '.TXT_STAFFELPREIS;
-?> <img onMouseOver="javascript:this.style.cursor='hand';" src="images/arrow_down.gif" height="12" width="12" onClick="javascript:toggleBox('staffel_<?php echo $group_data[$col]['STATUS_ID']; ?>');"><?php
+?> <img onMouseOver="javascript:this.style.cursor='hand';" alt="&darr;" src="images/arrow_down.gif" height="12" width="12" onClick="javascript:toggleBox('staffel_<?php echo $group_data[$col]['STATUS_ID']; ?>');"><?php
 
 
 		}
