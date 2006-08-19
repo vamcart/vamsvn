@@ -24,7 +24,7 @@ define('TABLE_HEADING_ID', 'ID код');
 define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Категории / Товары');
 define('TABLE_HEADING_ACTION', 'Действие');
 define('TABLE_HEADING_STATUS', 'Статус');
-define('TABLE_HEADING_STARTPAGE', 'Начало');
+define('TABLE_HEADING_STARTPAGE', 'Показывать на главной');
 define('TABLE_HEADING_STOCK','Количество на складе');
 define('TABLE_HEADING_SORT','Порядок');
 define('TABLE_HEADING_EDIT','Выделить всё');
@@ -34,7 +34,7 @@ define('TEXT_INFORMATIONS','Информация');
 define('TEXT_MARKED_ELEMENTS','Отмеченные элементы');
 define('TEXT_INSERT_ELEMENT','Новый элемент');
 
-define('TEXT_WARN_MAIN','Выводится на главной странице');
+define('TEXT_WARN_MAIN','Основной');
 define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
 define('TEXT_CATEGORIES', 'Категории:');
 define('TEXT_PRODUCTS', 'Товары:');
