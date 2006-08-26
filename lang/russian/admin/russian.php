@@ -400,4 +400,7 @@ define('TEXT_IMAGE_DIRECTORY_CREATE', 'Информация: Создана директория ');
 define('BOX_EASY_POPULATE','Excel импорт/экспорт');
 define('BOX_CATALOG_QUICK_UPDATES', 'Изменение цен');
 
+define('BOX_CATALOG_LATEST_NEWS', 'Новости');
+define('IMAGE_NEW_NEWS_ITEM', 'Добавить новость');
+
 ?>

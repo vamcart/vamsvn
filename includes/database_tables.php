@@ -83,4 +83,9 @@
   define('TABLE_COUPONS_DESCRIPTION', 'coupons_description');
   define('TABLE_BLACKLIST', 'card_blacklist');
   define('TABLE_CAMPAIGNS_IP','campaigns_ip');
+  
+// —борка VaM
+
+  define('TABLE_LATEST_NEWS', 'latest_news');
+  
 ?>

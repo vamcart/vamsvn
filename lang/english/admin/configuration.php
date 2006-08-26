@@ -661,4 +661,10 @@ define('REVOCATION_ID_DESC','Revocation content ID');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_TITLE','Display revocation on checkout confirmation page?');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_DESC','Display revocation on checkout confirmation page?');
 
+define('MAX_DISPLAY_LATEST_NEWS_TITLE' , 'News box');
+define('MAX_DISPLAY_LATEST_NEWS_DESC' , 'Maximum number of news in news box');
+define('MAX_DISPLAY_LATEST_NEWS_PAGE_TITLE' , 'News per page');
+define('MAX_DISPLAY_LATEST_NEWS_PAGE_DESC' , 'Maximum number of news per page (still in development)');
+define('MAX_DISPLAY_LATEST_NEWS_CONTENT_TITLE' , 'Short description');
+define('MAX_DISPLAY_LATEST_NEWS_CONTENT_DESC' , 'Number of symbols displayed in news preview');
 ?>

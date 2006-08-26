@@ -400,4 +400,7 @@ define('TEXT_IMAGE_DIRECTORY_CREATE', 'Success: Directory created ');
 define('BOX_EASY_POPULATE','Easypopulate');
 define('BOX_CATALOG_QUICK_UPDATES', 'Quick Price Updates');
 
+define('BOX_CATALOG_LATEST_NEWS', 'News');
+define('IMAGE_NEW_NEWS_ITEM', 'Add news');
+
 ?>

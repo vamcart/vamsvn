@@ -480,4 +480,7 @@ define('ENTRY_STATEXML_LOADING', 'Loading states ...');
 define('SHIPPING_TIME','Shipping time: ');
 define('MORE_INFO','[More]');
 
+define('TABLE_HEADING_LATEST_NEWS', 'Latest news');
+define('NAVBAR_TITLE_NEWS', 'News');
+
 ?>
