@@ -34,11 +34,30 @@ include( 'includes/application_top.php');
 						status = '1' 
 						and language = '" . (int)$_SESSION['languages_id'] . "'
 					ORDER BY date_added 
-					DESC";
+					DESC ";
 	$sub = MAX_DISPLAY_LATEST_NEWS_CONTENT;
+	
+$listing_split = new splitPageResults($listing_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
+
+if (($listing_split->number_of_rows > 0)) {
+	$smarty->assign('NAVIGATION_BAR', '
+		   <table border="0" width="100%" cellspacing="0" cellpadding="2">
+		          <tr>
+		            <td class="smallText">'.$listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
+		            <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
+		          </tr>
+		        </table>
+		
+		   ');
+
+}
+	
+	
 	}
-						
-						
+
+  if (isset ($news_id) )
+  	{
+
 	$module_content = array();
 	$listing_sql = xtDBquery($listing_sql);
 	while ($new_listing = xtc_db_fetch_array($listing_sql,true)) 
@@ -57,7 +76,35 @@ include( 'includes/application_top.php');
 									'NEWS_ID' => $new_listing['news_id'],
                        				'NEWS_DATA' => $new_listing['date_added']);
 		}
+
+
+} 
+
+else {
+
+						
+	$module_content = array();
+	$listing_new_query = xtc_db_query($listing_split->sql_query);
+	while ($new_listing = xtc_db_fetch_array($listing_new_query)) {
+
+						
+		if ($sub)
+			{
+			$content = substr($new_listing['content'], 0, $sub)."...";
+			}
+		else 
+			{
+			$content = $new_listing['content'];
+			}
+			$module_content[]=array(
+									'NEWS_HEADING' => $new_listing['headline'],
+                         		  	'NEWS_CONTENT' => $content,
+									'NEWS_ID' => $new_listing['news_id'],
+                       				'NEWS_DATA' => $new_listing['date_added']);
+		}
 	//	substr($new_listing['content'], 0, $sub); // возвращает "abcd"
+}
+
 
 	$link = xtc_href_link(FILENAME_NEWS);
 //	echo ($link."<hr>");

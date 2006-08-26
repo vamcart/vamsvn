@@ -483,4 +483,6 @@ define('MORE_INFO','[More]');
 define('TABLE_HEADING_LATEST_NEWS', 'Latest news');
 define('NAVBAR_TITLE_NEWS', 'News');
 
+define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> new products)');
+
 ?>

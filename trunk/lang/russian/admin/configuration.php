@@ -660,8 +660,8 @@ define('DISPLAY_REVOCATION_ON_CHECKOUT_DESC','Показывать текст с информацией о в
 
 define('MAX_DISPLAY_LATEST_NEWS_TITLE' , 'Бокс новостей');
 define('MAX_DISPLAY_LATEST_NEWS_DESC' , 'Количество новостей, отображаемых в боксе');
-define('MAX_DISPLAY_LATEST_NEWS_PAGE_TITLE' , 'Страница новостей');
-define('MAX_DISPLAY_LATEST_NEWS_PAGE_DESC' , 'Количество новостей, отображаемых на одной станице (пока не работает данная настройка)');
+define('MAX_DISPLAY_LATEST_NEWS_PAGE_TITLE' , 'Новостей на одной странице');
+define('MAX_DISPLAY_LATEST_NEWS_PAGE_DESC' , 'Количество новостей, отображаемых на одной станице');
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_TITLE' , 'Новости кратко');
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_DESC' , 'Количество символов, отображаемых при предварительном просмотре новости');
 
