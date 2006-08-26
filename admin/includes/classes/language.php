@@ -53,6 +53,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                                'pt-br' => array('pt[-_]br|brazilian portuguese', 'brazilian_portuguese', 'pt-BR'),
                                'pt' => array('pt([-_][[:alpha:]]{2})?|portuguese', 'portuguese', 'pt'),
                                'ro' => array('ro|romanian', 'romanian', 'ro'),
+                               'ru' => array('ru|russian', 'russian', 'ru'),
                                'ru-koi8r' => array('ru|russian', 'russian-koi8', 'ru'),
                                'ru-win1251' => array('ru|russian', 'russian-win1251', 'ru'),
                                'sk' => array('sk|slovak', 'slovak-iso', 'sk'),
