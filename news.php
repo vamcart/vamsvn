@@ -85,6 +85,7 @@ else {
 						
 	$module_content = array();
 	$listing_new_query = xtc_db_query($listing_split->sql_query);
+   if ($listing_split->number_of_rows > 0) {
 	while ($new_listing = xtc_db_fetch_array($listing_new_query)) {
 
 						
@@ -103,6 +104,13 @@ else {
                        				'NEWS_DATA' => $new_listing['date_added']);
 		}
 	//	substr($new_listing['content'], 0, $sub); // возвращает "abcd"
+
+} else {
+
+	$smarty->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
+
+}
+
 }
 
 
