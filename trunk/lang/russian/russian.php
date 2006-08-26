@@ -488,5 +488,6 @@ define('TABLE_HEADING_LATEST_NEWS', 'Последние новости');
 define('NAVBAR_TITLE_NEWS', 'Новости');
 
 define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новостей)');
+define('TEXT_NO_NEWS', 'Нет новостей.');
 
 ?>
