@@ -465,13 +465,13 @@ CREATE TABLE languages (
 
 DROP TABLE IF EXISTS latest_news;
 CREATE TABLE latest_news (
-  news_id int(11) NOT NULL auto_increment,
-  headline(255)  NOT NULL,
-  content text NOT NULL,
-  date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-  language int(11) DEFAULT '1' NOT NULL,
-  status tinyint(1) DEFAULT '0' NOT NULL,
-  PRIMARY KEY (news_id)
+   news_id int(11) NOT NULL AUTO_INCREMENT,
+   headline varchar(255) NOT NULL,
+   content text NOT NULL,
+   date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   language int(11) NOT NULL default '1',
+   status tinyint(1) DEFAULT '0' NOT NULL,
+   PRIMARY KEY (news_id)
 );
 
 DROP TABLE IF EXISTS manufacturers;
