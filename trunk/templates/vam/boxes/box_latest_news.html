@@ -1,0 +1,28 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="infoBoxHeading"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="infoBoxHeading">{#heading_news#} </td>
+        <td align="right"><a href="{$NEWS_LINK}"><img src="{$tpl_path}img/icon_more.gif" alt="" /></a></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="infoBox" align="left"><table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="boxText">
+          
+<div align="left" class="box_content_blank">
+  {foreach name=aussen item=module_data from=$module_content}[{$module_data.NEWS_DATA}]<br>&nbsp;
+		<strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong>
+		<br>&nbsp;&nbsp;{$module_data.NEWS_CONTENT}
+		<hr>
+  {/foreach}  
+</div>          
+          </td>
+        </tr>
+    </table></td>
+  </tr>
+</table>

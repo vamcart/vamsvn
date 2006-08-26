@@ -484,4 +484,7 @@ define('ENTRY_STATEXML_LOADING', 'Загрузка регионов ...');
 define('SHIPPING_TIME','Время доставки: ');
 define('MORE_INFO','[Подробнее]');
 
+define('TABLE_HEADING_LATEST_NEWS', 'Последние новости');
+define('NAVBAR_TITLE_NEWS', 'Новости');
+
 ?>

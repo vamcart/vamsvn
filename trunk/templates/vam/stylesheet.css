@@ -525,3 +525,47 @@ width:96%;
 {
 background:#fcc;
 }
+
+.content{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #477294;
+	line-height: 1.5;
+	background-color: #EBF2F7;
+	border: 1px solid #477294;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+}
+
+.content_nobord{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #477294;
+	line-height: 1.5;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+}
+
+.content_blank{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #477294;
+	line-height: 1.5;
+	background-color: #FFFFFF;
+	border: 1px solid;
+	border-color: #9DBED8;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+}

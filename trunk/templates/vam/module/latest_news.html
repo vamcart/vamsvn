@@ -1,0 +1,11 @@
+{config_load file="$language/lang_$language.conf" section="latest_news"} 
+<div class="content_blank"><h2>&nbsp;{#heading_text#}</h2></div>
+  {foreach name=aussen item=module_data from=$module_content}
+		<div align="left" class="content">[{$module_data.NEWS_DATA}]&nbsp;<strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong></div>
+		<div align="left" class="content_nobord">&nbsp;&nbsp;{$module_data.NEWS_CONTENT}</div>
+  {/foreach}  
+<br>
+<br>
+
+
+<!-- табличка новостей в головной категории -->
