@@ -10,6 +10,8 @@
   Released under the GNU General Public License
 */
 
+defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
+
 ?>
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
