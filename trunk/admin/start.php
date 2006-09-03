@@ -57,9 +57,6 @@ require_once 'includes/modules/carp/carp.php';
     <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_news.gif'); ?></td>
     <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
   </tr>
-  <tr>
-    <td class="main" valign="top">xt:Commerce News</td>
-  </tr>
 </table></td>
       </tr>
       <tr>
@@ -67,36 +64,40 @@ require_once 'includes/modules/carp/carp.php';
         <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
         </td>
         </tr>
-                  
 
-     <tr>
-      <td style="border: 0px solid; border-color: #ffffff;">
-        <table valign="top" width="100%" cellpadding="0" cellspacing="0">
-        
-<?php
+       <tr>
+      <td width="50%" valign="top">
+        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
 
-CarpConf('iorder','link,date,desc');
+<?php include(DIR_WS_MODULES . 'summary/customers.php'); ?>
 
-        CarpConf('cborder','link,desc');
-        CarpConf('caorder','image');
-        CarpConf('bcb','<div style="font-size:110%; background:#fed; border:1px solid #999; padding:5px;">');
-        CarpConf('acb','</div>');
-        CarpConf('bca','<center>');
-        CarpConf('aca','</center>');
-CarpConf('maxitems',5);
 
-        
-        // before each item
-        CarpConf('bi','<br><div style="font-size:80%; font-family: verdana; background:#fed; border:1px solid #ff0000; padding:5px;">');
-        
-        // after each item
-        CarpConf('ai','</div>');
-CarpShow('http://www.xt-commerce.com/backend_304.php');
+        </table></td>
+      <td width="50%" valign="top">
+        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
 
-?>
+<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
+
+
         </table></td>
       </tr>		 
-  
+
+       <tr>
+      <td width="50%" valign="top">
+        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
+
+<?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
+
+
+        </table></td>
+      <td width="50%" valign="top">
+        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
+
+<?php include(DIR_WS_MODULES . 'summary/news.php'); ?>
+
+
+        </table></td>
+      </tr>		 
   
     </table></td>
 <!-- body_text_eof //-->
