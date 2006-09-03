@@ -137,7 +137,7 @@ function CarpConfReset() {
 	site. If you incorporate CaRP into another product and change it, please
 	ensure that a link is shown by default somewhere. Thanks! */
 
-	'poweredby'=>'<br /><i><a href="http://www.geckotribe.com/rss/carp/" target="_blank">Newsfeed display by CaRP</a></i>'
+	'poweredby'=>''
 	);
 	
 }
@@ -198,7 +198,7 @@ function CarpOutput($t) {
 
 function CarpError($s,$c=1) {
 	global $carpconf;
-	if ($carpconf['carperrors']) CarpOutput("<br />\n[CaRP] $s<br />\n");
+	if ($carpconf['carperrors']) CarpOutput("<br />\n $s<br />\n");
 	if ($c&&$carpconf['cacheerrorwait']&&strlen($carpconf['cachefile']))
 		touch($carpconf['cachefile'],time()+60*($carpconf['cacheerrorwait']-$carpconf['cacheinterval']));
 }

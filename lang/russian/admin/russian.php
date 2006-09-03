@@ -403,4 +403,21 @@ define('BOX_CATALOG_QUICK_UPDATES', 'Изменение цен');
 define('BOX_CATALOG_LATEST_NEWS', 'Новости');
 define('IMAGE_NEW_NEWS_ITEM', 'Добавить новость');
 
+define('TABLE_HEADING_CUSTOMERS', 'Последние покупатели');
+define('TABLE_HEADING_LASTNAME', 'Фамилия');
+define('TABLE_HEADING_FIRSTNAME', 'Имя');
+define('TABLE_HEADING_DATE', 'Дата');
+
+define('TABLE_HEADING_ORDERS', 'Последние заказы');
+define('TABLE_HEADING_CUSTOMER', 'Покупатель');
+define('TABLE_HEADING_NUMBER', 'Номер заказа');
+define('TABLE_HEADING_ORDER_TOTAL', 'Сумма');
+define('TABLE_HEADING_STATUS', 'Статус');
+
+define('TABLE_HEADING_PRODUCTS', 'Последние товары');
+define('TABLE_HEADING_PRODUCT_NAME', 'Товары');
+define('TABLE_HEADING_PRODUCT_PRICE', 'Стоимость');
+
+define('TABLE_HEADING_NEWS', 'Последние новости');
+
 ?>

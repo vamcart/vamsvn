@@ -403,4 +403,21 @@ define('BOX_CATALOG_QUICK_UPDATES', 'Quick Price Updates');
 define('BOX_CATALOG_LATEST_NEWS', 'News');
 define('IMAGE_NEW_NEWS_ITEM', 'Add news');
 
+define('TABLE_HEADING_CUSTOMERS', 'Latest customers');
+define('TABLE_HEADING_LASTNAME', 'Lastname');
+define('TABLE_HEADING_FIRSTNAME', 'Firstname');
+define('TABLE_HEADING_DATE', 'Date');
+
+define('TABLE_HEADING_ORDERS', 'Latest orders');
+define('TABLE_HEADING_CUSTOMER', 'Customer');
+define('TABLE_HEADING_NUMBER', 'Order number');
+define('TABLE_HEADING_ORDER_TOTAL', 'Order total');
+define('TABLE_HEADING_STATUS', 'Status');
+
+define('TABLE_HEADING_PRODUCTS', 'Latest products');
+define('TABLE_HEADING_PRODUCT_NAME', 'Products');
+define('TABLE_HEADING_PRODUCT_PRICE', 'Price');
+
+define('TABLE_HEADING_NEWS', 'Latest news');
+
 ?>

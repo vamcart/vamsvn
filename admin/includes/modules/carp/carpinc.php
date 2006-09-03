@@ -98,8 +98,9 @@ class RSSParser {
 		global $carpconf;
 		if (strlen($description)) {
 			if (strlen($carpconf['desctags'])) {
-				$adddesc=trim(preg_replace("#<(?!".$carpconf['desctags'].")(.*?)>#is",
-					($carpconf['removebadtags']?'':"&lt;\\1\\2&gt;"),$description));
+				$adddesc='';
+//				$adddesc=trim(preg_replace("#<(?!".$carpconf['desctags'].")(.*?)>#is",
+//					($carpconf['removebadtags']?'':"&lt;\\1\\2&gt;"),$description));
 				$adddesc=preg_replace('/(<.*?)\bon[a-z]+\s*=\s*"[^"]*"(.*?>)/i',"\\1\\2",$adddesc);
 			} else $adddesc=trim(preg_replace("#<(.*?)>#s",($carpconf['removebadtags']?'':"&lt;\\1&gt;"),$description));
 			if ($maxdesc&&(strlen(preg_replace("/<.*?>/",'',$adddesc))>$maxdesc)) {
