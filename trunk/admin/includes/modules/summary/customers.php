@@ -1,0 +1,50 @@
+<?php
+/*
+  $Id: customers.php 814 2006-08-27 15:28:23Z hpdl $
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  Copyright (c) 2005 osCommerce
+
+  Released under the GNU General Public License
+*/
+
+?>
+          <tr>
+            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+				  <tr> 
+				    <td colspan="3" class="pageHeading"><?php echo TABLE_HEADING_CUSTOMERS; ?></td>
+				  </tr>
+              <tr class="dataTableHeadingRow">
+                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_LASTNAME; ?></td>
+                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIRSTNAME; ?></td>
+                <td width="30%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
+              </tr>
+
+<?php
+	$customers_query_raw = "select
+	                                c.customers_id,
+	                                c.customers_lastname,
+	                                c.customers_firstname,
+	                                c.customers_date_added
+	                                from
+	                                ".TABLE_CUSTOMERS." c order by c.customers_date_added desc limit 5";
+
+	$customers_query = xtc_db_query($customers_query_raw);
+	while ($customers = xtc_db_fetch_array($customers_query)) {
+
+
+?>
+              <tr>
+                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id']); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id']); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
+                <td class="dataTableContent"><?php echo $customers['customers_date_added']; ?></td>
+              </tr>
+<?php
+
+	}
+?>
+
+                </table></td>
+              </tr>
