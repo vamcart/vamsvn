@@ -18,7 +18,7 @@ define('EASY_UPLOAD_TEMP', 'Имя временного файла: ');
 define('EASY_UPLOAD_USER_FILE', 'Имя файла пользователя: ');
 define('EASY_SIZE', 'Размер: ');
 define('EASY_FILENAME', 'Имя файла: ');
-define('EASY_SPLIT_DOWN', 'Вы можете скачать Ваши разделённые файлы из папки temp');
+define('EASY_SPLIT_DOWN', 'Вы можете импортировать разделённые файлы из папки temp');
 define('EASY_UPLOAD_EP_FILE', 'Импортировать файл');
 define('EASY_SPLIT_EP_FILE', 'Загрузить и разделить файл на части');
 define('EASY_INSERT', 'Импортировать');
@@ -95,5 +95,7 @@ define('EASY_ERROR_5', '</b><font color=red>ОШИБКА! - You are trying to use a fi
 define('EASY_ERROR_5a', '<font color=red><b><u>  Click here to return to Easy Populate Basic </u></b></font>');
 define('EASY_ERROR_6', '</b><font color=red>ОШИБКА! - You are trying to use a file created with EP Basic, please try with Easy Populate Basic </font>');
 define('EASY_ERROR_6a', '<font color=red><b><u>  Click here to return to Easy Populate Advanced </u></b></font>');
+
+define('EASY_LABEL_FILE_COUNT_1A', 'Создаём файл EPA_Split ');
 
 ?>
