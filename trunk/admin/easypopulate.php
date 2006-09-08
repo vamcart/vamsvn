@@ -606,11 +606,11 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 	//*******************************
 //  check files name for EPA
 
-	if (strstr($_FILES['usrfl']['name'], 'EPA')){
-	}else{
-		echo EASY_ERROR_6 . '<span class=smallText><a href="' . xtc_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a></span><br>';
-	 die();
-	}
+//	if (strstr($_FILES['usrfl']['name'], 'EPA')){
+//	}else{
+//		echo EASY_ERROR_6 . '<span class=smallText><a href="' . xtc_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a></span><br>';
+//	 die();
+//	}
 
 
 	// move the file to where we can work with it
@@ -623,7 +623,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 
 	$filecount = 1;
 
-	echo '<span class=smallText>' . EASY_LABEL_FILE_COUNT_1 . $filecount . EASY_LABEL_FILE_COUNT_2 . '</span>';
+//	echo '<span class=smallText>' . EASY_LABEL_FILE_COUNT_1A . $filecount . '</span>';
 	$tmpfname = DIR_FS_DOCUMENT_ROOT . $tempdir . "EPA_Split" . $filecount . ".txt";
 	$fp = fopen( $tmpfname, "w+");
 	fwrite($fp, $toprow);
@@ -639,7 +639,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 			// we found the end of a line of data, store it
 			$linecount++; // increment our line counter
 			if ($linecount >= $maxrecs){
-				echo '<span class=smallText>' . EASY_LABEL_LINE_COUNT_1 . $linecount . EASY_LABEL_LINE_COUNT_2 . '<br></span>';
+				echo '<span class=smallText>' . EASY_LABEL_FILE_COUNT_1A . $filecount . EASY_LABEL_FILE_COUNT_2 . EASY_LABEL_LINE_COUNT_1 . $linecount . EASY_LABEL_LINE_COUNT_2 . '<br></span>';
 				$linecount = 0; // reset our line counter
 				// close the existing file and open another;
 				fclose($fp);
@@ -653,7 +653,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 		}
 		$line=fgets($infp,32768);
 	}
-	echo '<span class=smallText>' . EASY_LABEL_FILE_CLOSE_1 . $linecount . EASY_LABEL_FILE_CLOSE_2 . '<br><br></span> ';
+				echo '<span class=smallText>' . EASY_LABEL_FILE_COUNT_1A . $filecount . EASY_LABEL_FILE_COUNT_2 . EASY_LABEL_LINE_COUNT_1 . $linecount . EASY_LABEL_LINE_COUNT_2 . '<br><br></span>';
 	fclose($fp);
 	fclose($infp);
 

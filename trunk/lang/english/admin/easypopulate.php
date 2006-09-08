@@ -96,4 +96,6 @@ define('EASY_ERROR_5a', '<font color=red><b><u>  Click here to return to Easy Po
 define('EASY_ERROR_6', '</b><font color=red>ERROR - You are trying to use a file created with EP Basic, please try with Easy Populate Basic </font>');
 define('EASY_ERROR_6a', '<font color=red><b><u>  Click here to return to Easy Populate Advanced </u></b></font>');
 
+define('EASY_LABEL_FILE_COUNT_1A', 'Create EPA_Split file ');
+
 ?>
