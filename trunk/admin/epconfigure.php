@@ -16,8 +16,8 @@
 // **** Temp directory ****
 // if you changed your directory structure from stock and do not have /catalog/temp/, then you'll need to change this accordingly.
 //
-$tempdir = "tmp/";
-$tempdir2 = "/tmp/";
+$tempdir = "export/";
+$tempdir2 = "/export/";
 
 //**** File Splitting Configuration ****
 // we attempt to set the timeout limit longer for this script to avoid having to split the files
@@ -28,7 +28,7 @@ $tempdir2 = "/tmp/";
 // if you are splitting files, this will set the maximum number of records to put in each file.
 // if you set your php.ini to a long time, you can make this number bigger
 global $maxrecs;
-$maxrecs = 300; // default, seems to work for most people.  Reduce if you hit timeouts
+$maxrecs = 50; // default, seems to work for most people.  Reduce if you hit timeouts
 //$maxrecs = 4; // for testing
 
 //**** Image Defaulting ****

@@ -174,6 +174,12 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'tmp/<br />';
  }
 
+    if (!is_writeable(DIR_FS_CATALOG . 'export/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'export/<br />';
+ }
+
  // image folders
       if (!is_writeable(DIR_FS_CATALOG . 'images/')) {
     $error_flag=true;
