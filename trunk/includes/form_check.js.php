@@ -220,7 +220,7 @@ function check_form(form_name) {
 						if(!f.checked){cf_adderr(f)}							
 					break;
 					case 'select-one':
-						if(!f.selectedIndex && f.selectedIndex==0){cf_adderr(f)}							
+						if(!f.selectedIndex && f.selectedIndex==1){cf_adderr(f)}							
 					break;
 				}
 			}
