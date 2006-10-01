@@ -1,5 +1,6 @@
 <?php
   require('includes/application_top.php');
+  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php');
   require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
 
   if ($_GET['action']) {
@@ -56,9 +57,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<script language="javascript" src="includes/general.js"></script>
+<?php if (USE_WYSIWYG=='true') {
+ $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
+ $data=xtc_db_fetch_array($query);
+ if ($_GET['action']=='new_latest_news') echo xtc_wysiwyg('latest_news',$data['code']);
+ } ?>
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
@@ -89,17 +94,17 @@
         <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr><?php echo xtc_draw_form('new_latest_news', FILENAME_LATEST_NEWS, isset($_GET['latest_news_id']) ? 'latest_news_id=' . $_GET['latest_news_id'] . '&action=update_latest_news' : 'action=insert_latest_news', 'post', 'enctype="multipart/form-data"'); ?>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_HEADLINE; ?>:</td>
-            <td class="main"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_input_field('headline', $latest_news['headline'], '', true); ?></td>
+            <td class="main"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_input_field('headline', $latest_news['headline'], 'size="60"', true); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_CONTENT; ?>:</td>
-            <td class="main"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_textarea_field('content', 'soft', '70', '15', stripslashes($latest_news['content'])); ?></td>
+            <td class="main"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . xtc_draw_textarea_field('content', '', '100%', '25', stripslashes($latest_news['content'])); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
