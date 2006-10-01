@@ -38,6 +38,22 @@ $image_path = '&Type=images';
                         	   			}
                         	   	</script>';
                         break;
+                // WYSIWYG editor latest news textarea named content
+                case 'latest_news':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+                        	   <script type="text/javascript">
+                        	   		window.onload = function()
+                        	   			{
+                        	   				var oFCKeditor = new FCKeditor( \'content\', \'100%\', \'400\'  ) ;
+                        	   				oFCKeditor.BasePath = "'.$path.'" ;
+                        	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
+                        	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
+                        	   				oFCKeditor.Config["AutoDetectLanguage"] = false ;
+                        	   				oFCKeditor.Config["DefaultLanguage"] = "'.$lang.'" ;
+                        	   				oFCKeditor.ReplaceTextarea() ;
+                        	   			}
+                        	   	</script>';
+                        break;
                 // WYSIWYG editor content manager products content section textarea named file_comment
                 case 'products_content':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
