@@ -420,4 +420,6 @@ define('TABLE_HEADING_PRODUCT_PRICE', 'Price');
 
 define('TABLE_HEADING_NEWS', 'Latest news');
 
+define('BOX_TOOLS_RECOVER_CART', 'Recover Carts');
+
 ?>

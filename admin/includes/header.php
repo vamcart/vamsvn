@@ -163,7 +163,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/server_info.png', '', '16', '16') . '\', \'' . addslashes(BOX_SERVER_INFO) . '\', \'' . xtc_href_link(FILENAME_SERVER_INFO) . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/remote.png', '', '16', '16') . '\', \'' . addslashes(BOX_CATALOG_LATEST_NEWS) . '\', \'' . xtc_href_link(FILENAME_LATEST_NEWS) . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/statistics.png', '', '16', '16') . '\', \'' . addslashes(BOX_WHOS_ONLINE) . '\', \'' . xtc_href_link(FILENAME_WHOS_ONLINE) . '\', null, null],' . "\n" .
-         '        [\'' . xtc_image('images/icons/16x16/people.png', '', '16', '16') . '\', \'' . addslashes(BOX_IMPORT) . '\', \'' . xtc_href_link(FILENAME_CSV_BACKEND) . '\', null, null]' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/people.png', '', '16', '16') . '\', \'' . addslashes(BOX_TOOLS_RECOVER_CART) . '\', \'' . xtc_href_link(FILENAME_RECOVER_CART_SALES) . '\', null, null]' . "\n" .
          '    ],' . "\n" .
          '    _cmSplit,' . "\n";
   }
