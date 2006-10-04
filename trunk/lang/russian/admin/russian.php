@@ -420,4 +420,6 @@ define('TABLE_HEADING_PRODUCT_PRICE', 'Стоимость');
 
 define('TABLE_HEADING_NEWS', 'Последние новости');
 
+define('BOX_TOOLS_RECOVER_CART', 'Незавершённые заказы');
+
 ?>

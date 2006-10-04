@@ -140,6 +140,7 @@
   define('FILENAME_CSV_BACKEND','csv_backend.php');
   define('FILENAME_EASYPOPULATE', 'easypopulate.php');
   define('FILENAME_LATEST_NEWS', 'latest_news.php');
+  define('FILENAME_RECOVER_CART_SALES', 'recover_cart_sales.php');
 
   // define the database table names used in the project
   define('TABLE_ADDRESS_BOOK', 'address_book');
@@ -220,7 +221,8 @@
   define('TABLE_BLACKLIST', 'card_blacklist'); 
   define('TABLE_CAMPAIGNS_IP','campaigns_ip');
   define('TABLE_LATEST_NEWS', 'latest_news');
- 
+  define('TABLE_SCART', 'scart');
+
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
   require_once(DIR_FS_INC . 'xtc_db_close.inc.php');
