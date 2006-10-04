@@ -13,14 +13,14 @@
     <td class="infoBox" align="left"><table width="95%"  border="0" cellpadding="2" cellspacing="0">
         <tr>
           <td class="boxText">
-          
-<div align="left" class="box_content_blank">
-  {foreach name=aussen item=module_data from=$module_content}[{$module_data.NEWS_DATA}]<br>&nbsp;
-		<strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong>
-		<br>&nbsp;&nbsp;{$module_data.NEWS_CONTENT}
-		<hr>
+  {foreach name=aussen item=module_data from=$module_content}
+		[{$module_data.NEWS_DATA}]
+		<div style="padding-left:1em">
+		<strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong><br />
+		{$module_data.NEWS_CONTENT|truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}
+		</div>
+		<hr />
   {/foreach}  
-</div>          
           </td>
         </tr>
     </table></td>

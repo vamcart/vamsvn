@@ -1,11 +1,32 @@
 {config_load file="$language/lang_$language.conf" section="latest_news"} 
-<div class="content_blank"><h2>&nbsp;{#heading_text#}</h2></div>
-  {foreach name=aussen item=module_data from=$module_content}
-		<div align="left" class="content">[{$module_data.NEWS_DATA}]&nbsp;<strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong></div>
-		<div align="left" class="content_nobord">&nbsp;&nbsp;{$module_data.NEWS_CONTENT}</div>
-  {/foreach}  
-<br>
-{$NAVIGATION_BAR}
-<br>
 
-<!-- табличка новостей в головной категории -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="contentsTopics">{#heading_text#}</td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+{if $ONE eq 1}
+  {assign var="module_data" value=$module_content[0]}
+  <tr>
+    <td class="main"><dl>
+      <dt><strong>{$module_data.NEWS_HEADING}</strong> // {$module_data.NEWS_DATA}<br />
+      <dd>{$module_data.NEWS_CONTENT}
+    </dl></td>
+  </tr>
+  <tr><td class="main" align="right"><a href="{$NEWS_LINK}">Другие новости...</a></td></tr>
+{else}
+  <tr>
+    <td class="main"><dl>
+  {foreach name=aussen item=module_data from=$module_content}
+      <dt><strong><a href="news.php?news_id={$module_data.NEWS_ID}">{$module_data.NEWS_HEADING}</a></strong> // {$module_data.NEWS_DATA}<br />
+      <dd>{$module_data.NEWS_CONTENT|truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}
+  {/foreach}
+    </dl></td>
+  </tr>
+  <tr><td class="main">{$NAVIGATION_BAR}</td></tr>
+{/if}
+</table>
+<br />
