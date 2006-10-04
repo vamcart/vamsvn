@@ -1,129 +1,92 @@
 <?php
-include( 'includes/application_top.php');
-// create smarty elements
+
+  include( 'includes/application_top.php');
+
+  // create smarty elements
   $smarty = new Smarty;
-  require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php'); 
+
+  // include boxes
+  require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php');
+
   $breadcrumb->add(NAVBAR_TITLE_NEWS, xtc_href_link(FILENAME_NEWS));
+
   require(DIR_WS_INCLUDES . 'header.php');
- // $news_id = 3;
-  if (isset ($news_id) )
-  	{
-	$listing_sql = "SELECT 
-  						news_id, 
-						headline, 
-						content, 
-						date_added 
-					FROM " . TABLE_LATEST_NEWS . "
-					WHERE 
-						status = '1' 
-						and language = '" . (int)$_SESSION['languages_id'] . "'
-						and news_id = '" . $news_id . "'
-					ORDER BY date_added 
-					DESC";
-	
-	}
-  else
-  	{
-	$listing_sql = "SELECT 
-  						news_id, 
-						headline, 
-						content, 
-						date_added 
-					FROM " . TABLE_LATEST_NEWS . "
-					WHERE 
-						status = '1' 
-						and language = '" . (int)$_SESSION['languages_id'] . "'
-					ORDER BY date_added 
-					DESC ";
-	$sub = MAX_DISPLAY_LATEST_NEWS_CONTENT;
-	
-$listing_split = new splitPageResults($listing_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
 
-if (($listing_split->number_of_rows > 0)) {
-	$smarty->assign('NAVIGATION_BAR', '
-		   <table border="0" width="100%" cellspacing="0" cellpadding="2">
-		          <tr>
-		            <td class="smallText">'.$listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
-		            <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
-		          </tr>
-		        </table>
-		
-		   ');
+  $_GET['news_id'] = (int)$_GET['news_id']; if ($_GET['news_id']<1) $_GET['news_id'] = 0;
 
-}
-	
-	
-	}
+  $all_sql = "
+      SELECT
+          news_id,
+          headline,
+          content,
+          date_added
+      FROM " . TABLE_LATEST_NEWS . "
+      WHERE
+          status = '1'
+          and language = '" . (int)$_SESSION['languages_id'] . "'
+      ORDER BY date_added DESC
+      ";
+  $one_sql = "
+      SELECT
+          news_id,
+          headline,
+          content,
+          date_added
+      FROM " . TABLE_LATEST_NEWS . "
+      WHERE
+          status = '1'
+          and language = '" . (int)$_SESSION['languages_id'] . "'
+          and news_id = " . $_GET['news_id'] . "
+      ORDER BY date_added DESC
+      LIMIT 1
+      ";
 
-  if (isset ($news_id) )
-  	{
+  $module_content = array();
+  if (!empty($_GET['news_id'])) {
+      $query = xtDBquery($one_sql);
+      if (xtc_db_num_rows($query) == 0) $_GET['news_id'] = 0;
+  }
+  if (empty($_GET['news_id'])) {
+      $query = xtDBquery($all_sql);
+      $listing_split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
+      if (($listing_split->number_of_rows > 0)) {
+          $smarty->assign('NAVIGATION_BAR', '
+              <table border="0" width="100%" cellspacing="0" cellpadding="2">
+              <tr>
+              <td class="smallText">'.$listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
+              <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
+              </tr>
+              </table>
+              ');
+      }
+      $smarty->assign('ONE', false);
+  } else {
+      $smarty->assign('ONE', true);
+  }
 
-	$module_content = array();
-	$listing_sql = xtDBquery($listing_sql);
-	while ($new_listing = xtc_db_fetch_array($listing_sql,true)) 
-		{
-		if ($sub)
-			{
-			$content = substr($new_listing['content'], 0, $sub)."...";
-			}
-		else 
-			{
-			$content = $new_listing['content'];
-			}
-			$module_content[]=array(
-									'NEWS_HEADING' => $new_listing['headline'],
-                         		  	'NEWS_CONTENT' => $content,
-									'NEWS_ID' => $new_listing['news_id'],
-                       				'NEWS_DATA' => $new_listing['date_added']);
-		}
+  if (xtc_db_num_rows($query) > 0) {
+      while ($one = xtc_db_fetch_array($query,true)) {
+          $module_content[]=array(
+              'NEWS_HEADING' => $one['headline'],
+              'NEWS_CONTENT' => $one['content'],
+              'NEWS_ID'      => $one['news_id'],
+              'NEWS_DATA'    => $one['date_added'],
+              );
+      }
+  } else {
+      $smarty->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
+  }
 
-
-} 
-
-else {
-
-						
-	$module_content = array();
-	$listing_new_query = xtc_db_query($listing_split->sql_query);
-   if ($listing_split->number_of_rows > 0) {
-	while ($new_listing = xtc_db_fetch_array($listing_new_query)) {
-
-						
-		if ($sub)
-			{
-			$content = substr($new_listing['content'], 0, $sub)."...";
-			}
-		else 
-			{
-			$content = $new_listing['content'];
-			}
-			$module_content[]=array(
-									'NEWS_HEADING' => $new_listing['headline'],
-                         		  	'NEWS_CONTENT' => $content,
-									'NEWS_ID' => $new_listing['news_id'],
-                       				'NEWS_DATA' => $new_listing['date_added']);
-		}
-	//	substr($new_listing['content'], 0, $sub); // возвращает "abcd"
-
-} else {
-
-	$smarty->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
-
-}
-
-}
-
-
-	$link = xtc_href_link(FILENAME_NEWS);
-//	echo ($link."<hr>");
-	$smarty->assign('NEWS_LINK', $link);
+  $smarty->assign('NEWS_LINK', xtc_href_link(FILENAME_NEWS));
   $smarty->assign('language', $_SESSION['language']);
   $smarty->caching = 0;
   $smarty->assign('module_content',$module_content);
   $main_content=$smarty->fetch(CURRENT_TEMPLATE . '/module/latest_news.html');
+
   $smarty->assign('main_content',$main_content);
   $smarty->assign('language', $_SESSION['language']);
   $smarty->caching = 0;
-  if (!defined(RM)) $smarty->load_filter('output', 'note');
+  if (!defined(RM))
+      $smarty->load_filter('output', 'note');
   $smarty->display(CURRENT_TEMPLATE . '/index.html');
 ?>
