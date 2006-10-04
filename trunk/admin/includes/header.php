@@ -114,8 +114,6 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/products.png', '', '16', '16') . '\', \'' . addslashes(BOX_ATTRIBUTES_MANAGER) . '\', \'' . xtc_href_link(FILENAME_NEW_ATTRIBUTES, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/attributes.png', '', '16', '16') . '\', \'' . addslashes(BOX_PRODUCTS_ATTRIBUTES) . '\', \'' . xtc_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '', 'NONSSL') . '\', \'\', null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/run.png', '', '16', '16') . '\', \'' . addslashes(BOX_MANUFACTURERS) . '\', \'' . xtc_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '\', null, null],' . "\n" .
-         '        [\'' . xtc_image('images/icons/16x16/file.png', '', '16', '16') . '\', \'' . addslashes(BOX_EASY_POPULATE) . '\', \'' . xtc_href_link(FILENAME_EASYPOPULATE, '', 'NONSSL') . '\', null, null],' . "\n" .
-         '        [\'' . xtc_image('images/icons/16x16/calculator.png', '', '16', '16') . '\', \'' . addslashes(BOX_CATALOG_QUICK_UPDATES) . '\', \'' . xtc_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/write.png', '', '16', '16') . '\', \'' . addslashes(BOX_REVIEWS) . '\', \'' . xtc_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/specials.png', '', '16', '16') . '\', \'' . addslashes(BOX_SPECIALS) . '\', \'' . xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '    ],' . "\n" .
@@ -163,6 +161,8 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/server_info.png', '', '16', '16') . '\', \'' . addslashes(BOX_SERVER_INFO) . '\', \'' . xtc_href_link(FILENAME_SERVER_INFO) . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/remote.png', '', '16', '16') . '\', \'' . addslashes(BOX_CATALOG_LATEST_NEWS) . '\', \'' . xtc_href_link(FILENAME_LATEST_NEWS) . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/statistics.png', '', '16', '16') . '\', \'' . addslashes(BOX_WHOS_ONLINE) . '\', \'' . xtc_href_link(FILENAME_WHOS_ONLINE) . '\', null, null],' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/file.png', '', '16', '16') . '\', \'' . addslashes(BOX_EASY_POPULATE) . '\', \'' . xtc_href_link(FILENAME_EASYPOPULATE, '', 'NONSSL') . '\', null, null],' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/calculator.png', '', '16', '16') . '\', \'' . addslashes(BOX_CATALOG_QUICK_UPDATES) . '\', \'' . xtc_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/people.png', '', '16', '16') . '\', \'' . addslashes(BOX_TOOLS_RECOVER_CART) . '\', \'' . xtc_href_link(FILENAME_RECOVER_CART_SALES) . '\', null, null]' . "\n" .
          '    ],' . "\n" .
          '    _cmSplit,' . "\n";
