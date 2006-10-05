@@ -237,6 +237,7 @@
              <td class="categories_view_data">--</td>
              <td class="categories_view_data">--</td>
              <td class="categories_view_data">--</td>
+             <td class="categories_view_data">--</td>
              <td class="categories_view_data">
              <?php
                 //if active category, show arrow, else show symbol with link (action col)
