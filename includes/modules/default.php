@@ -121,6 +121,9 @@ if ($category_depth == 'nested') {
   $new_products_category_id = $current_category_id;
   include (DIR_WS_MODULES.FILENAME_NEW_PRODUCTS);
 
+  $featured_products_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_FEATURED);
+
   $image = '';
   if ($category['categories_image'] != '') {
   $image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];

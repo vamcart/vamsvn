@@ -132,6 +132,8 @@ define('MAX_DISPLAY_PAGE_LINKS_TITLE' , '—сылок на страницы');
 define('MAX_DISPLAY_PAGE_LINKS_DESC', ' оличество ссылок на другие страницы');
 define('MAX_DISPLAY_SPECIAL_PRODUCTS_TITLE' , '—пециальные цены');
 define('MAX_DISPLAY_SPECIAL_PRODUCTS_DESC', 'ћаксимальное количество товара, выводимого на странице —кидки');
+define('MAX_DISPLAY_FEATURED_PRODUCTS_TITLE' , '–екомендуемые товары');
+define('MAX_DISPLAY_FEATURED_PRODUCTS_DESC', 'ћаксимальное количество товара, выводимого на странице –екомендуемые');
 define('MAX_DISPLAY_NEW_PRODUCTS_TITLE' , 'Ќовинки');
 define('MAX_DISPLAY_NEW_PRODUCTS_DESC', 'ћаксимальное количество товара, выводимых в боксе Ќовинки');
 define('MAX_DISPLAY_UPCOMING_PRODUCTS_TITLE' , 'ќжидаемые товары');
@@ -150,6 +152,8 @@ define('MAX_RANDOM_SELECT_NEW_TITLE' , '¬ыбор случайного товара в боксе Ќовинки'
 define('MAX_RANDOM_SELECT_NEW_DESC', ' оличество товара, среди которого будет выбран случайный товар и выведен в бокс Ќовинок, т.е. если указано число X, то новый товар, который будет показан в боксе Ќовинок будет выбран из этих X новых товаров');
 define('MAX_RANDOM_SELECT_SPECIALS_TITLE' , '¬ыбор случайного товара в боксе —кидки');
 define('MAX_RANDOM_SELECT_SPECIALS_DESC', ' оличество товара, среди которого будет выбран случайный товар и выведен в бокс —кидки, т.е. если указано число X, то товар, который будет показан в боксе —кидки будет выбран из этих X товаров');
+define('MAX_RANDOM_SELECT_FEATURED_TITLE' , '¬ыбор случайного товара в боксе –екомендуемые');
+define('MAX_RANDOM_SELECT_FEATURED_DESC', ' оличество товара, среди которого будет выбран случайный товар и выведен в бокс –екомендуемые, т.е. если указано число X, то товар, который будет показан в боксе –екомендуемые будет выбран из этих X товаров');
 define('MAX_DISPLAY_CATEGORIES_PER_ROW_TITLE' , ' оличество категорий в строке');
 define('MAX_DISPLAY_CATEGORIES_PER_ROW_DESC', '—колько категорий выводить в одной строке');
 define('MAX_DISPLAY_PRODUCTS_NEW_TITLE' , ' оличество Ќовинок на странице');

@@ -906,6 +906,19 @@ function xtc_set_specials_status($specials_id, $status) {
 }
 
 ////
+// Sets the status of a product on special
+function xtc_set_featured_status($featured_id, $status) {
+	if ($status == '1') {
+		return xtc_db_query("update ".TABLE_FEATURED." set status = '1', expires_date = NULL, date_status_change = NULL where featured_id = '".$featured_id."'");
+	}
+	elseif ($status == '0') {
+		return xtc_db_query("update ".TABLE_FEATURED." set status = '0', date_status_change = now() where featured_id = '".$featured_id."'");
+	} else {
+		return -1;
+	}
+}
+
+////
 // Sets timeout for the current script.
 // Cant be used in safe mode.
 function xtc_set_time_limit($limit) {

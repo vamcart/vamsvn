@@ -149,6 +149,7 @@ define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <b>%d</b> - <b>%d</b> (всего <
 define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> отзывов)');
 define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новинок)');
 define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> специальных предложений)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> рекомендуемых товаров)');
 
 /*
  *
@@ -352,6 +353,7 @@ define('NAVBAR_TITLE_LOGOFF','Выход');
 define('NAVBAR_TITLE_PRODUCTS_NEW', 'Новые товары');
 define('NAVBAR_TITLE_SHOPPING_CART', 'Корзина');
 define('NAVBAR_TITLE_SPECIALS', 'Скидки');
+define('NAVBAR_TITLE_FEATURED', 'Рекомендуемые товары');
 define('NAVBAR_TITLE_COOKIE_USAGE', 'Ошибка cookies');
 define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Отзывы');
 define('NAVBAR_TITLE_REVIEWS_WRITE', 'Написать отзыв');

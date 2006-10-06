@@ -103,5 +103,6 @@ define('FILENAME_RSS2', 'rss2.php');
 
 define('FILENAME_LATEST_NEWS', 'latest_news.php');
 define('FILENAME_NEWS', 'news.php');
+define('FILENAME_FEATURED', 'featured.php');
 
 ?>
