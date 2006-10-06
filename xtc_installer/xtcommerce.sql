@@ -1159,12 +1159,12 @@ INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'У
 INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', 0, 1, '', 1, 2, 0);
 INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', 0, 1, '', 1, 3, 0);
 INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин xt:Commerce VaM Edition<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы<br />', 0, 1, '', 0, 5, 0);
+INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин xt:Commerce VaM Edition<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы<br /><br />', 0, 1, '', 0, 5, 0);
 INSERT INTO `content_manager` VALUES (6, 0, 0, '', 2, 'Shipping & Returns', 'Shipping & Returns', 'Put here your Shipping & Returns information.', 0, 1, '', 1, 1, 0);
 INSERT INTO `content_manager` VALUES (7, 0, 0, '', 2, 'Privacy Notice', 'Privacy Notice', 'Put here your Privacy Notice information.', 0, 1, '', 1, 2, 0);
 INSERT INTO `content_manager` VALUES (8, 0, 0, '', 2, 'Conditions of Use', 'Conditions of Use', 'Conditions of Use<br />Put here your Conditions of Use information. <br />1. Validity<br />2. Offers<br />3. Price<br />4. Dispatch and passage of the risk<br />5. Delivery<br />6. Terms of payment<br />7. Retention of title<br />8. Notices of defect, guarantee and compensation<br />9. Fair trading cancelling / non-acceptance<br />10. Place of delivery and area of jurisdiction<br />11. Final clauses', 0, 1, '', 1, 3, 0);
 INSERT INTO `content_manager` VALUES (9, 0, 0, '', 2, 'Impressum', 'Impressum', 'Put here your Company information.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (10, 0, 0, '', 2, 'Main page', 'Welcome', 'Sample text.<br /><br /> You can change it in Admin - Tools - Content manager<br />', 0, 1, '', 0, 5, 0);
+INSERT INTO `content_manager` VALUES (10, 0, 0, '', 2, 'Main page', 'Welcome', 'Sample text.<br /><br /> You can change it in Admin - Tools - Content manager<br /><br />', 0, 1, '', 0, 5, 0);
 INSERT INTO `content_manager` VALUES (11, 0, 0, '', 2, 'Sample page', 'Sample page', 'Sample text', 0, 1, '', 0, 6, 1);
 INSERT INTO `content_manager` VALUES (12, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', 0, 1, '', 0, 6, 1);
 INSERT INTO `content_manager` VALUES (13, 0, 0, '', 2, 'Contact us', 'Contact us', 'Contact us page', 0, 1, '', 1, 7, 0);
