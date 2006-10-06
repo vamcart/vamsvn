@@ -402,7 +402,8 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   ob_end_clean();
   }
 
-  $default_smarty->assign('text', str_replace('{$greeting}', xtc_customer_greeting(), $shop_content_data['content_text']));
+  $default_smarty->assign('greeting', xtc_customer_greeting());
+  $default_smarty->assign('text', $shop_content_data['content_text']);
   $default_smarty->assign('language', $_SESSION['language']);
 
   // set cache ID
