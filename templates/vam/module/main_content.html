@@ -1,24 +1,17 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {$MODULE_error}
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td class="pageHeading"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td>{$title}</td>
-        </tr>
-      </table></td>
+  <tr>
+    <td class="main">{$text}</td>
   </tr>
   <tr> 
-    <td class="pageHeading">&nbsp;</td>
-  </tr>
-  <tr> 
-    <td class="main">{$text}<br /></td>
-  </tr>
-  <tr> 
-    <td class="main">{$MODULE_new_products}</td>
+    <td class="main">{$MODULE_latest_news}</td>
   </tr>
   <tr> 
     <td class="main">{$MODULE_featured_products}</td>
+  </tr>
+  <tr> 
+    <td class="main">{$MODULE_new_products}</td>
   </tr>
   <tr>
     <td class="main">{$MODULE_upcoming_products}</td>
