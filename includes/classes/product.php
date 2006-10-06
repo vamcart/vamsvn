@@ -389,6 +389,7 @@ class product {
 		
 		
 		return array ('PRODUCTS_NAME' => $array['products_name'], 
+		      'PRODUCTS_MODEL'=>$array['products_model'],
 				'COUNT'=>$array['ID'],
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
