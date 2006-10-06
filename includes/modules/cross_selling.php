@@ -36,8 +36,10 @@ if (count($data) > 0) {
 if (ACTIVATE_REVERSE_CROSS_SELLING=='true') {
 $module_smarty = new Smarty;
 	
-$data = $product->getReverseCrossSells();	
-	
+$ids = array();
+foreach ($data as $v1) foreach($v1[PRODUCTS] as $val) $ids[$val[PRODUCTS_ID]] = true;
+$data = array();
+foreach ($product->getReverseCrossSells() as $val) if (!isset($ids[$val[PRODUCTS_ID]])) $data[] = $val;	
 
 if (count($data) > 0) {
 
