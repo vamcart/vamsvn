@@ -149,6 +149,7 @@ define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Show <b>%d</b> to <b>%d</b> (of in tota
 define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> reviews)');
 define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> new products)');
 define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> special offers)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> featured products)');
 
 /*
  *
@@ -352,6 +353,7 @@ define('NAVBAR_TITLE_LOGOFF','Good bye');
 define('NAVBAR_TITLE_PRODUCTS_NEW', 'New products');
 define('NAVBAR_TITLE_SHOPPING_CART', 'Shopping cart');
 define('NAVBAR_TITLE_SPECIALS', 'Special offers');
+define('NAVBAR_TITLE_FEATURED', 'Featured products');
 define('NAVBAR_TITLE_COOKIE_USAGE', 'Cookie Usage');
 define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Reviews');
 define('NAVBAR_TITLE_REVIEWS_WRITE', 'Opinions');

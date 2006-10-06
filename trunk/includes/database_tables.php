@@ -87,5 +87,6 @@
 // —борка VaM
 
   define('TABLE_LATEST_NEWS', 'latest_news');
+  define('TABLE_FEATURED', 'featured');
   
 ?>

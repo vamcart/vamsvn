@@ -116,6 +116,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
          '        [\'' . xtc_image('images/icons/16x16/run.png', '', '16', '16') . '\', \'' . addslashes(BOX_MANUFACTURERS) . '\', \'' . xtc_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/write.png', '', '16', '16') . '\', \'' . addslashes(BOX_REVIEWS) . '\', \'' . xtc_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '\', null, null],' . "\n" .
          '        [\'' . xtc_image('images/icons/16x16/specials.png', '', '16', '16') . '\', \'' . addslashes(BOX_SPECIALS) . '\', \'' . xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '\', null, null],' . "\n" .
+         '        [\'' . xtc_image('images/icons/16x16/install.png', '', '16', '16') . '\', \'' . addslashes(BOX_FEATURED) . '\', \'' . xtc_href_link(FILENAME_FEATURED, '', 'NONSSL') . '\', null, null],' . "\n" .
          '    ],' . "\n" .
          '    _cmSplit,' . "\n" .
          '    [null, \'' . addslashes(BOX_HEADING_MODULES) . '\', null, null, null,' . "\n" .

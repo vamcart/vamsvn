@@ -41,6 +41,10 @@
     include(DIR_WS_BOXES . 'specials.php');
   }
 
+  if (!$product->isProduct()) {
+    include(DIR_WS_BOXES . 'featured.php');
+  }
+
   if ($_SESSION['customers_status']['customers_status_read_reviews'] == 1) require(DIR_WS_BOXES . 'reviews.php');
 
   if (substr(basename($PHP_SELF), 0, 8) != 'checkout') {

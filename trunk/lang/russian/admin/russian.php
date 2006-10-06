@@ -300,6 +300,7 @@ define('TEXT_DISPLAY_NUMBER_OF_TAX_CLASSES', 'Показано <b>%d</b> - <b>%d</b> (вс
 define('TEXT_DISPLAY_NUMBER_OF_TAX_ZONES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> налоговых зон)');
 define('TEXT_DISPLAY_NUMBER_OF_TAX_RATES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> налоговых ставок)');
 define('TEXT_DISPLAY_NUMBER_OF_ZONES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> зон)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> рекомендуемых товаров)');
 
 define('PREVNEXT_BUTTON_PREV', 'Предыдущая');
 define('PREVNEXT_BUTTON_NEXT', 'Следующая');
@@ -421,5 +422,7 @@ define('TABLE_HEADING_PRODUCT_PRICE', 'Стоимость');
 define('TABLE_HEADING_NEWS', 'Последние новости');
 
 define('BOX_TOOLS_RECOVER_CART', 'Незавершённые заказы');
+
+define('BOX_FEATURED', 'Рекомендуемые товары');
 
 ?>
