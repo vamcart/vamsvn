@@ -452,14 +452,14 @@ SPAN.productDiscountPrice {
  font-family: Verdana, Arial, sans-serif;
  font-size: 11px;
  line-height: 1.5;
- background-color: #E6E6E6;
- border: 1px solid;
+ background-color: #ffffff;
+ border: 0px solid;
  border-color: #E6E6E6;
 
 }
 .moduleRowOver { 
 	background-color: #D7E9F7; 
-	border: 1px solid;
+	border: 0px solid;
 	border-color: #ffffff;
 	font-family: Verdana, Arial, sans-serif;
     font-size: 11px;
