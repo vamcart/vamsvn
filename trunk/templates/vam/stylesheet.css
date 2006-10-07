@@ -77,13 +77,13 @@ img{
 }
 
 A {
-  color: #000000;
-  text-decoration: none;
+  color: #67748B;
+  text-decoration: underline;
 }
 
 A:hover {
-  color: #0000ff;
-  text-decoration: underline;
+  color: #990000;
+  text-decoration: none;
 }
 
 FORM {
