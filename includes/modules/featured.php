@@ -67,6 +67,7 @@ while ($featured_products = xtc_db_fetch_array($featured_products_query, true)) 
 
 }
 if (sizeof($module_content) >= 1) {
+   $module_smarty->assign('FEATURED_LINK', xtc_href_link(FILENAME_FEATURED));
 	$module_smarty->assign('language', $_SESSION['language']);
 	$module_smarty->assign('module_content', $module_content);
 	
