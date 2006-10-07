@@ -25,8 +25,8 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				{foreach name=aussen item=products_data from=$products}
 				  <tr>
-					<td class="main">{$products_data.QTY}&nbsp;x&nbsp;</td>
-					<td class="main"><a href="{$products_data.LINK}">{$products_data.NAME|truncate:15:"...":true}</a></td>
+					<td class="main" align="left">&nbsp;{$products_data.QTY}&nbsp;x&nbsp;</td>
+					<td class="main" width="100%" align="left"><a href="{$products_data.LINK}">{$products_data.NAME|truncate:15:"...":true}</a></td>
 				  </tr>
 				{/foreach}
 				</table>
@@ -44,7 +44,7 @@
 
 {else} <!-- cart has no content --> 
     <tr>
-      <td width="100%" class="cartBoxContents" align="left">
+      <td width="100%" class="cartBoxContents" align="right">
       {#text_empty_cart#}
       </td>
       <td align="center">
