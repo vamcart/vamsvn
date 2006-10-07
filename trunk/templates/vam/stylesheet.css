@@ -19,10 +19,16 @@
 	font-size: 10px;
 }
 
+TD.boxText {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  background: #ffffff; 
+}
+
 .boxTextBG {
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 10px;
-	background-color: #f1f1f1;
+	background-color: #ffffff;
 }
 .boxTextBGII {
 	font-family: Verdana, Arial, sans-serif;
@@ -117,6 +123,14 @@ A.headerNavigation:hover {
   color: #000000;
 }
 
+A.shippingInfo { 
+  color: #ffffff; 
+}
+
+A.shippingInfo:hover {
+  color: #ffffff;
+}
+
 TD.conditions {
   background-color: #FFCCCC;
 }
@@ -182,11 +196,13 @@ TD.footer {
 }
 
 .infoBox {
+  background: #ffffff;  
 }
 
 .infoBoxContents {
   font-family: Verdana, Arial, sans-serif;
   font-size: 10px;
+  background: #ffffff;  
 }
 
 .infoBoxNotice {
@@ -200,12 +216,11 @@ TD.footer {
 }
 
 TD.infoBoxHeading {
-  font-family: Verdana, Arial, sans-serif;
-  font-size: 10px;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
   font-weight: bold;
-  background: #666666;
-  height:17px;
-  color: #ffffff;
+  background: #ffffff;
+  color: #67748B;
 }
 
 TD.infoBoxHeading_right {
@@ -220,9 +235,7 @@ TD.infoBoxHeading_right {
 TD.infoBox, SPAN.infoBox {
   font-family: Verdana, Arial, sans-serif;
   font-size: 10px;
-  border-right: 4px solid;
-  background: #E6E6E6; 
-  border-color: #C4C4C4;
+  background: #ffffff; 
 }
 
 TD.infoBox_right, SPAN.infoBox_right {
@@ -471,18 +484,11 @@ border-color: #b6b7cb;
 }
 
 .navLeft {
-	border-right: 1px solid;
-	border-color: #b6b7cb;
-	background-image: url(img/bg_left_column.jpg);
+   background-color: #ffffff;
 	width: 185px;
 }
 .navRight {
-	border-color: #666666;
-	border-top-width: 4px;
-	border-top-style: solid;
-	border-left-width: 4px;
-	border-left-style: solid;
-	background-color: #E6E6E6;
+	background-color: #ffffff;
 	width: 185px;
 }
 
@@ -604,4 +610,11 @@ TD.price, P.price {
   font-weight: bold;
   background: #990000;
   line-height: 1.5;
+}
+
+TD.contentBoxContents1, p.contentBoxContents1 {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background: #F1F1F6;
 }
