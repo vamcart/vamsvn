@@ -1,25 +1,27 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {if $deny_cart neq 'true'}
-{if $empty=='false'}
-<table width="100%" border="0" cellpadding="2" cellspacing="0">
+<!-- shopping_cart //-->
+<table border="0" width="100%" cellspacing="0" cellpadding="1" class="infoBox">
   <tr>
-    <td class="infoBoxHeading_right">
-	<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td class="infoBoxHeading_right">{#heading_cart#}</td>
-          <td align="right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/icon_more_light.gif" alt="" /></a></td>
-        </tr>
-    </table> 
-	</td>
+    <td><table border="0" width="100%" cellspacing="0" cellpadding="3" class="infoBoxContents">
+  <tr>
+
+    <td><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="100%" height="1"></td>
   </tr>
   <tr>
-    <td class="infoBox_right" align="left">
-	<table width="95%"  border="0" cellpadding="2" cellspacing="0">
+    <td class="boxText">
+    <!-- table -->
+    <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#DDDEE6">
         <tr>
-          <td class="boxText">
-		  <table border="0" width="100%" cellspacing="0" cellpadding="3" class="infoBoxContents">
-            <tr>
-              <td style="border-bottom: 1px solid; border-color: #cccccc;" align="left" class="boxText">
+          <td colspan="2" class="cartHeader">
+            <img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0">
+            <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0">&nbsp;&raquo;&nbsp;{#heading_cart#}
+          </td>
+        </tr>
+{if $empty=='false'}
+    <tr>
+      <td width="100%" class="cartBoxContents" align="left">
+<!-- содержимое корзины -->
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				{foreach name=aussen item=products_data from=$products}
 				  <tr>
@@ -28,47 +30,33 @@
 				  </tr>
 				{/foreach}
 				</table>
-			  </td>
-            </tr>
+<!-- /содержимое корзины -->
+      </td>
+      <td align="center">
+        <img src="{$tpl_path}img/cart_big_full.gif" alt="" hspace="0" vspace="3">
+      </td>
+    </tr>
+
             {if $DISCOUNT}
 			<tr>
-              <td align="right" class="productDiscountPrice">{#text_discount#}&nbsp;{$DISCOUNT}</td>
+              <td colspan="2" align="right" class="productDiscountPrice">{#text_discount#}&nbsp;{$DISCOUNT}</td>
             </tr>{/if}
-            <tr>
-              <td align="right">{$UST}<strong>{#text_total#}</strong> {$TOTAL}{if $SHIPPING_INFO}<br />{$SHIPPING_INFO}{/if}</td>
-            </tr>
-          </table>
-		 </td>
-        </tr>
-    </table>
-    </td>
-  </tr>
-</table>
+
 {else} <!-- cart has no content --> 
-<table width="100%" border="0" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="infoBoxHeading_right">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td class="infoBoxHeading_right">{#heading_cart#}</td>
-          <td align="right"><a href="{$LINK_CART}"><img src="{$tpl_path}img/icon_more_light.gif" alt="" /></a></td>
-        </tr>
-    </table>
-	</td>
-  </tr>
-  <tr>
-    <td class="infoBox_right" align="left">
-	<table width="95%"  border="0" cellpadding="2" cellspacing="0">
-        <tr>
-          <td class="boxText">{#text_empty_cart#}</td>
-        </tr>
-    </table>
-	</td>
-  </tr>
-</table>
+    <tr>
+      <td width="100%" class="cartBoxContents" align="left">
+      {#text_empty_cart#}
+      </td>
+      <td align="center">
+        <img src="{$tpl_path}img/cart_big_empty.gif" alt="" hspace="0" vspace="3">
+      </td>
+    </tr>
 {/if}
 
+
 {if $coupon_valid == 'true'}
+    <tr>
+      <td width="100%" class="cartBoxContents" align="right">
 <table class="infoBoxContents" width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="infoBox_right"><img src="{$tpl_path}img/img_gift.gif" alt="" /></td>
@@ -93,5 +81,53 @@
     <td class="infoBox_right"><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
   </tr>
 </table>
+
+</tr>
+</td>
 {/if}
+
+{if $empty=='false'}    
+    <tr>
+      <td colspan="2">
+        <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+           <tr>
+             <td width="100%" class="cartBoxContents" align="right"></td>
+             <td class="price"><nobr>&nbsp;{$UST}<strong>{#text_total#}</strong> {$TOTAL}&nbsp;</nobr></td>
+           </tr>
+           <tr>
+             <td width="100%"></td>
+             <td class="price">
+               <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0">
+               <img src="{$tpl_path}img/corners/corner_bottom_right.gif" align="right" hspace="0">
+             </td>
+           </tr>
+        </table>
+      </td>
+    </tr>
+{else} <!-- cart has no content -->     
+    <tr>
+      <td colspan="2">
+        <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0">
+        <img src="{$tpl_path}img/corners/corner_bottom_right.gif" align="right" hspace="0">
+      </td>
+    </tr>
+{/if}
+    </table>
+    <!-- /table -->
+   </td>
+  </tr>
+
+  <tr>
+    <td><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="100%" height="1"></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+<!-- shopping_cart_eof //-->
 {/if}
