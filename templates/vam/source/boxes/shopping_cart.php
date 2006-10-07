@@ -69,7 +69,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	$box_smarty->assign('UST', $_SESSION['cart']->show_tax());
 	
 	if (SHOW_SHIPPING=='true') { 
-			$box_smarty->assign('SHIPPING_INFO',' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');	
+			$box_smarty->assign('SHIPPING_INFO',' '.SHIPPING_EXCL.'<a class="shippingInfo" href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');	
 	}
 }
 if (ACTIVATE_GIFT_SYSTEM == 'true') {
