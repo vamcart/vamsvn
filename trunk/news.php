@@ -47,14 +47,14 @@
       if (xtc_db_num_rows($query) == 0) $_GET['news_id'] = 0;
   }
   if (empty($_GET['news_id'])) {
-      $query = xtDBquery($all_sql);
-      $listing_split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
-      if (($listing_split->number_of_rows > 0)) {
+      $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
+      $query = xtc_db_query($split->sql_query);
+      if (($split->number_of_rows > 0)) {
           $smarty->assign('NAVIGATION_BAR', '
               <table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr>
-              <td class="smallText">'.$listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
-              <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
+              <td class="smallText">'.$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
+              <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
               </tr>
               </table>
               ');
