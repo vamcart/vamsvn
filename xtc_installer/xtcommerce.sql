@@ -1542,7 +1542,7 @@ INSERT INTO configuration_group VALUES ('20', 'Import/Export', 'Import/Export', 
 INSERT INTO configuration_group VALUES ('21', 'Afterbuy', 'Afterbuy.de', '21', '1');
 INSERT INTO configuration_group VALUES ('22', 'Search Options', 'Additional Options for search function', '22', '1');
 INSERT INTO configuration_group VALUES ('23', 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '23', '1');
-INSERT INTO configuration_group VALUES ('23', 'Изменение цен', 'Настройки модуля изменения цен', '23', '1');
+INSERT INTO configuration_group VALUES ('24', 'Изменение цен', 'Настройки модуля изменения цен', '24', '1');
 
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (
