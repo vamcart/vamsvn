@@ -248,13 +248,12 @@ a:hover.contentBoxHeading1 {
   text-decoration: none;
 }
 
-TD.infoBoxHeading_right {
-  font-family: Verdana, Arial, sans-serif;
-  font-size: 10px;
+TD.infoBoxHeading {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
   font-weight: bold;
-  background: #C4C4C4;
-  height:17px;
-  color: #000000;
+  background: #ffffff;
+  color: #67748B;
 }
 
 TD.infoBox, SPAN.infoBox {
@@ -266,7 +265,7 @@ TD.infoBox, SPAN.infoBox {
 TD.infoBox_right, SPAN.infoBox_right {
   font-family: Verdana, Arial, sans-serif;
   font-size: 10px;
-  background: #E6E6E6; 
+  background: #ffffff; 
 
 }
 
