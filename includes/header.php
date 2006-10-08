@@ -331,6 +331,7 @@ $smarty->assign('cart',xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $smarty->assign('checkout',xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $smarty->assign('store_name',TITLE);
 $smarty->assign('login',xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+$smarty->assign('mainpage',xtc_href_link(FILENAME_DEFAULT, '', 'SSL'));
 
     
 
