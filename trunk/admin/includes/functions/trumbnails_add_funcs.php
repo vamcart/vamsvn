@@ -70,7 +70,15 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 							$files[]=array('id' => $subdir.$file.'/',
 														 'text' => $subdir.$file.'/');
 						}
-						$files = array_merge($files, xtc_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/'));
+
+                  $subDirFiles = xtc_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/');
+                    if (count($subDirFiles)>0) {
+                      if (count($files) > 0) {
+                       $files = array_merge($files, $subDirFiles);
+                      } else {
+                        $files = $subDirFiles;
+                      }
+                    }
 					}
 				}
 			}
@@ -78,4 +86,5 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 		}
 		return($files);
 	}
+	
 ?>
