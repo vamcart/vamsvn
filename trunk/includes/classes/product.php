@@ -351,6 +351,14 @@ class product {
 
 	}
 
+	// beta
+	function getBuyNowButtonNew($id, $name) {
+		global $PHP_SELF;
+		return '<a href="'.xtc_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.xtc_get_all_get_params(array ('action')), 'NONSSL').'">'.xtc_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
+
+	}
+
+
 	function getVPEtext($product, $price) {
 		global $xtPrice;
 
@@ -377,9 +385,11 @@ class product {
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($array['products_fsk18'] == '0')
 					$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
+					$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
 			
 			} else {
 				$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
+				$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
 			}
 			
 
@@ -399,6 +409,7 @@ class product {
 				'PRODUCTS_TAX_INFO' => $main->getTaxInfo($tax_rate), 
 				'PRODUCTS_SHIPPING_LINK' => $main->getShippingLink(), 
 				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
+				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,
 				'PRODUCTS_SHIPPING_NAME'=>$shipping_status_name,
 				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
 				'PRODUCTS_DESCRIPTION' => $array['products_short_description'],
