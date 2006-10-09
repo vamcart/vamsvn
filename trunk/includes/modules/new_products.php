@@ -83,7 +83,7 @@ if (sizeof($module_content) >= 1) {
 		if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) {
 			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html');
 		} else {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products.html');
+			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html');
 		}
 	} else {
 		$module_smarty->caching = 1;
@@ -93,7 +93,7 @@ if (sizeof($module_content) >= 1) {
 		if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) {
 			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html', $cache_id);
 		} else {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products.html', $cache_id);
+			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html', $cache_id);
 		}
 	}
 	$default_smarty->assign('MODULE_new_products', $module);
