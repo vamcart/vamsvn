@@ -18,11 +18,50 @@
                 <td align="left" valign="middle" class="boxText">
                     <table border="0" width="100%" cellspacing="0" cellpadding="3" class="infoBoxContents">
                       <tr>
-                        <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
+                        <td colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" align="center"><a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a></td>
                       </tr>
                       <tr>
                         <td class="boxText" align="center">{if $box_content.PRODUCTS_IMAGE}<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" /></a>{/if}
-						<br /><a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a><br />                        
+						<br />                       
+						      </td>
+                        <td class="boxText" align="center">
+
+       <table background="{$tpl_path}img/bgbox.gif" width="75%" cellpadding="0" cellspacing="0">
+         <tr>
+           <td class="price">
+             <img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0">
+             <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0">
+           </td>
+         </tr>
+
+         <tr>
+           <td class="price" nowrap>
+           {#text_buy_now#}
+           </td>
+         </tr>
+
+         <tr>
+           <td align="center">
+             {$box_content.PRODUCTS_BUTTON_BUY_NOW_NEW}
+           </td>
+         </tr>
+
+         <tr>
+           <td class="buynowFooter">
+             <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0">
+             <img src="{$tpl_path}img/corners/corner_bottom_right.gif" align="right" hspace="0">
+           </td>
+         </tr>
+       </table>
+
+                      
+						      </td>
+                      </tr>
+                      <tr>
+                        <td class="boxText" align="center" colspan="2">
                                 <table width="98%" border="0" cellpadding="0" cellspacing="0">
                                   <tr>
                                     <td class="boxTextBG" align="center"><strong>{$box_content.PRODUCTS_PRICE}</strong><br />{if $box_content.PRODUCTS_VPE}{$box_content.PRODUCTS_VPE}<br />{/if}{$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}</td>
@@ -31,7 +70,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
+                        <td colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
                       </tr>
                     </table>
                 </td>
