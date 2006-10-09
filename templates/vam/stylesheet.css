@@ -706,3 +706,155 @@ TD.line {
   background-color: #990000;
   color: #990000;
 }
+
+/* VaM Shop боксы */
+
+span.addaquickieBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #CC0000;
+}
+
+TD.adminBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #DDDEE6; 
+}
+
+TR.adminBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #DDDEE6; 
+}
+
+span.bestsellersBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+TD.cartBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #DDDEE6; 
+}
+
+TR.cartBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #DDDEE6; 
+}
+
+TD.cartBox1 {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #ffffff; 
+}
+
+TR.cartBox1 {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #ffffff; 
+}
+
+span.categoriesBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.currenciesBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.featuredBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.groupinfoBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #990000;
+}
+
+span.languagesBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #CC0000;
+}
+
+span.lastviewedBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #67748B;
+}
+
+span.lastviewedBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #67748B;
+}
+
+span.latestnewsBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.manufacturersBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.manufacturersinfoBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #FF6600;
+}
+
+span.newsletterBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #FF6600;
+}
+
+span.orderhistoryBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #67748B;
+}
+
+span.reviewsBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #CC0000;
+}
+
+span.searchBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #FF6600;
+}
+
+span.specialsBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #67748B;
+}
+
+span.whatsnewBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #990000;
+}

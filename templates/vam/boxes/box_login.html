@@ -5,17 +5,17 @@
     <td><table border="0" width="100%" cellspacing="0" cellpadding="3" class="infoBoxContents">
   <tr>
 
-    <td align="center" class="boxText"><table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#DDDEE6">
+    <td align="center" class="boxText"><table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" class="adminBox">
             <tr>
               <td class="loginBoxHeader">
                 <img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" />
                 <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" />&nbsp;&raquo;&nbsp;{#heading_login#}
               </td>
             </tr>
-            <tr>
+            <tr class="adminBox">
               <td><table border="0" width="100%" cellspacing="5" cellpadding="0" align="center">
             {$FORM_ACTION}
-              <tr>
+              <tr class="adminBox">
                 <td align="right" class="cartBoxContents">
                   <b>{#text_email#}:</b>
                 </td>
@@ -24,7 +24,7 @@
                   {$FIELD_EMAIL}
                 </td>
               </tr>
-              <tr>
+              <tr class="adminBox">
                 <td align="right" class="cartBoxContents">
                   <b>{#text_pwd#}:</b>
                 </td>
@@ -33,19 +33,19 @@
                   {$FIELD_PWD}
                 </td>
               </tr>
-              <tr>
+              <tr class="adminBox">
                 <td class="infoboxContents" align="center" colspan="2">
                   {$BUTTON}
                 </td>
               </tr>
-              <tr>
+              <tr class="adminBox">
                 <td colspan="2" class="infoboxContents" align="center">
                 <a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a> | <a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a>
                 </td>
               </tr>
             {$FORM_END}
             </table>
-            <tr>
+            <tr class="adminBox">
               <td>
                 <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0" />
                 <img src="{$tpl_path}img/corners/corner_bottom_right.gif" align="right" hspace="0" />
