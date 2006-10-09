@@ -23,7 +23,7 @@ while ($one = xtc_db_fetch_array($query,true)) {
         'NEWS_HEADING' => $one['headline'],
         'NEWS_CONTENT' => $one['content'],
         'NEWS_ID'      => $one['news_id'],
-        'NEWS_DATA'    => $one['date_added'],
+        'NEWS_DATA'    => xtc_date_short($one['date_added']),
         );
 }
 
