@@ -858,3 +858,29 @@ span.whatsnewBox {
   font-size: 12px;
   color: #990000;
 }
+
+.contents {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+}
+
+TD.featuredModule {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #DDDEE6; 
+}
+
+TR.buynowFooter {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #BDBAC6; 
+}
+
+TR.buynowFooter {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #67748B;
+  background-color: #BDBAC6; 
+}
