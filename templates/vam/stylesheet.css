@@ -701,3 +701,8 @@ TD.navigationTop {
   color: #FFFFFF;
   line-height: 1.5;
 }
+
+TD.line {
+  background-color: #990000;
+  color: #990000;
+}
