@@ -23,8 +23,8 @@ require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
 if ($_GET['action'] == 'new_product') {
 
 // BOF Add existing image
-$dir_list = array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_DIRECTORY)), xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES, '', true));
-$file_list = array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)), xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
+$dir_list = xtc_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_DIRECTORY)),xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES, '', true));
+$file_list = xtc_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)),xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
 // EOF Add existing image
 
 	// display images fields:
