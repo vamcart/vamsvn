@@ -208,5 +208,7 @@ define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Enable');
 define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Disable');
 
 define('TEXT_EDIT','[edit]');
+define('TEXT_PRODUCTS_DATA','Data');
+
 
 ?>
