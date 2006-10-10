@@ -209,6 +209,6 @@ define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Disable');
 
 define('TEXT_EDIT','[edit]');
 define('TEXT_PRODUCTS_DATA','Data');
-
+define('TEXT_TAB_CATEGORIES_IMAGE', 'Categories image');
 
 ?>
