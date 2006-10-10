@@ -207,4 +207,6 @@ define('TEXT_PRODUCTS_TO_XML', 'яндекс-маркет:');
 define('TEXT_PRODUCT_AVAILABLE_TO_XML', '¬ключить');
 define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Ќе включать');
 
+define('TEXT_EDIT','[редактировать]');
+
 ?>

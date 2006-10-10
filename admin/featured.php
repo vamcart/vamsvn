@@ -1,18 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: featured.php 1125 2005-07-28 09:59:44Z VaM $   
+   $Id: featured.php 1125 2005-07-28 09:59:44Z VaM $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
 
    Copyright (c) 2003 XT-Commerce
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(specials.php,v 1.38 2002/05/16); www.oscommerce.com 
-   (c) 2003	 nextcommerce (specials.php,v 1.9 2003/08/18); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(specials.php,v 1.38 2002/05/16); www.oscommerce.com
+   (c) 2003         nextcommerce (specials.php,v 1.9 2003/08/18); www.nextcommerce.org
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
@@ -24,14 +24,14 @@
       break;
     case 'insert':
       // insert a product on featured
-      
+
       $expires_date = '';
-      if ($_POST['day'] && $_POST['month'] && $_POST['year']) {
-        $expires_date = $_POST['year'];
-        $expires_date .= (strlen($_POST['month']) == 1) ? '0' . $_POST['month'] : $_POST['month'];
-        $expires_date .= (strlen($_POST['day']) == 1) ? '0' . $_POST['day'] : $_POST['day'];
+      if ($_POST['expires-dd'] && $_POST['expires-mm'] && $_POST['expires']) {
+        $expires_date = $_POST['expires'];
+        $expires_date .= (strlen($_POST['expires-mm']) == 1) ? '0' . $_POST['expires-mm'] : $_POST['expires-mm'];
+        $expires_date .= (strlen($_POST['expires-dd']) == 1) ? '0' . $_POST['expires-dd'] : $_POST['expires-dd'];
       }
-     
+
       xtc_db_query("insert into " . TABLE_FEATURED . " (products_id, featured_quantity, featured_date_added, expires_date, status) values ('" . $_POST['products_id'] . "', '" . $_POST['featured_quantity'] . "', now(), '" . $expires_date . "', '1')");
       xtc_redirect(xtc_href_link(FILENAME_FEATURED, 'page=' . $_GET['page']));
       break;
@@ -39,10 +39,10 @@
     case 'update':
       // update a product on featured
       $expires_date = '';
-      if ($_POST['day'] && $_POST['month'] && $_POST['year']) {
-        $expires_date = $_POST['year'];
-        $expires_date .= (strlen($_POST['month']) == 1) ? '0' . $_POST['month'] : $_POST['month'];
-        $expires_date .= (strlen($_POST['day']) == 1) ? '0' . $_POST['day'] : $_POST['day'];
+      if ($_POST['expires-dd'] && $_POST['expires-mm'] && $_POST['expires']) {
+        $expires_date = $_POST['expires'];
+        $expires_date .= (strlen($_POST['expires-mm']) == 1) ? '0' . $_POST['expires-mm'] : $_POST['expires-mm'];
+        $expires_date .= (strlen($_POST['expires-dd']) == 1) ? '0' . $_POST['expires-dd'] : $_POST['expires-dd'];
       }
 
       xtc_db_query("update " . TABLE_FEATURED . " set featured_quantity = '" . $_POST['featured_quantity'] . "', featured_last_modified = now(), expires_date = '" . $expires_date . "' where featured_id = '" . $_POST['featured_id'] . "'");
@@ -61,15 +61,15 @@
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
 <?php
   if ( ($_GET['action'] == 'new') || ($_GET['action'] == 'edit') ) {
 ?>
-<link rel="stylesheet" type="text/css" href="includes/javascript/calendar.css">
-<script type="text/javascript" src="includes/javascript/calendarcode.js"></script>
+<link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
 <?php
   }
 ?>
@@ -97,7 +97,7 @@
   if ( ($_GET['action'] == 'new') || ($_GET['action'] == 'edit') ) {
     $form_action = 'insert';
     if ( ($_GET['action'] == 'edit') && ($_GET['fID']) ) {
-	  $form_action = 'update';
+          $form_action = 'update';
 
       $product_query = xtc_db_query("select p.products_tax_class_id,
                                             p.products_id,
@@ -134,20 +134,20 @@
 ?>
       <tr><form name="new_featured" <?php echo 'action="' . xtc_href_link(FILENAME_FEATURED, xtc_get_all_get_params(array('action', 'info', 'fID')) . 'action=' . $form_action, 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo xtc_draw_hidden_field('featured_id', $_GET['fID']); ?>
         <td><br /><table border="0" cellspacing="0" cellpadding="2">
-          
+
                 <td class="main"><?php echo TEXT_FEATURED_PRODUCT; echo ($fInfo->products_name) ? "" :  ''; ?>&nbsp;</td>
-	   <?php
-		echo '<input type="hidden" name="products_up_id" value="' . $fInfo->products_id . '">';
-	   ?>      
+           <?php
+                echo '<input type="hidden" name="products_up_id" value="' . $fInfo->products_id . '">';
+           ?>
           <td class="main"><?php echo ($fInfo->products_name) ? $fInfo->products_name : xtc_draw_products_pull_down('products_id', 'style="font-size:10px"', $featured_array); ?></td>
-	  </tr>
+          </tr>
           <tr>
             <td class="main"><?php echo TEXT_FEATURED_QUANTITY; ?>&nbsp;</td>
             <td class="main"><?php echo xtc_draw_input_field('featured_quantity', $fInfo->featured_quantity);?> </td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_FEATURED_EXPIRES_DATE; ?>&nbsp;</td>
-            <td class="main"><?php echo xtc_draw_input_field('day', substr($fInfo->expires_date, 8, 2), 'size="2" maxlength="2" class="cal-TextBox"') . xtc_draw_input_field('month', substr($fInfo->expires_date, 5, 2), 'size="2" maxlength="2" class="cal-TextBox"') . xtc_draw_input_field('year', substr($fInfo->expires_date, 0, 4), 'size="4" maxlength="4" class="cal-TextBox"'); ?><a class="so-BtnLink" href="javascript:calClick();return false;" onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('new_featured','dteWhen','BTN_date');return false;"><?php echo xtc_image(DIR_WS_IMAGES . 'cal_date_up.gif', 'Calendar', '22', '17', 'align="absmiddle" name="BTN_date"'); ?></a></td>
+            <td class="main"><?php echo xtc_draw_input_field('expires-dd', substr($fInfo->expires_date, 8, 2), "size=\"2\" maxlength=\"2\" id=\"expires-dd\""); ?> / <?php echo xtc_draw_input_field('expires-mm', substr($fInfo->expires_date, 5, 2), "size=\"2\" maxlength=\"2\" id=\"expires-mm\""); ?> / <?php echo xtc_draw_input_field('expires', substr($fInfo->expires_date, 0, 4), "size=\"4\" maxlength=\"4\" id=\"expires\" class=\"format-d-m-y split-date\""); ?></td>
           </tr>
         </table></td>
       </tr>
@@ -175,7 +175,7 @@
     $featured_split = new splitPageResults($_GET['page'], '20', $featured_query_raw, $featured_query_numrows);
     $featured_query = xtc_db_query($featured_query_raw);
     while ($featured = xtc_db_fetch_array($featured_query)) {
- 
+
       if ( ((!$_GET['fID']) || ($_GET['fID'] == $featured['featured_id'])) && (!$fInfo) ) {
         $products_query = xtc_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . $featured['products_id'] . "'");
         $products = xtc_db_fetch_array($products_query);
@@ -212,7 +212,7 @@
 <?php
   if (!$_GET['action']) {
 ?>
-                  <tr> 
+                  <tr>
                     <td colspan="2" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_PRODUCTS . '</a>'; ?></td>
                   </tr>
 <?php

@@ -207,4 +207,6 @@ define('TEXT_PRODUCTS_TO_XML', 'Yandex-Market XML:');
 define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Enable');
 define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Disable');
 
+define('TEXT_EDIT','[edit]');
+
 ?>
