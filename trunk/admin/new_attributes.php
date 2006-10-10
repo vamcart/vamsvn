@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: new_attributes.php 1313 2005-10-18 15:49:15Z mz $   
+   $Id: new_attributes.php 1313 2005-10-18 15:49:15Z mz $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -10,18 +10,18 @@
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(new_attributes); www.oscommerce.com
-   (c) 2003	 nextcommerce (new_attributes.php,v 1.13 2003/08/21); www.nextcommerce.org
+   (c) 2003         nextcommerce (new_attributes.php,v 1.13 2003/08/21); www.nextcommerce.org
 
    Released under the GNU General Public License
    --------------------------------------------------------------
    Third Party contributions:
-   New Attribute Manager v4b				Autor: Mike G | mp3man@internetwork.net | http://downloads.ephing.com
+   New Attribute Manager v4b                                Autor: Mike G | mp3man@internetwork.net | http://downloads.ephing.com
    copy attributes                          Autor: Hubi | http://www.netz-designer.de
 
-   Released under the GNU General Public License 
-   --------------------------------------------------------------*/ 
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
 
-  
+
   require('includes/application_top.php');
   require(DIR_WS_MODULES.'new_attributes_config.php');
   require(DIR_FS_INC .'xtc_findTitle.inc.php');
@@ -37,7 +37,7 @@
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
@@ -55,6 +55,12 @@
 <!-- body_text //-->
     <td  class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
+
+  if (empty($_POST['action']))
+      foreach (array('action', 'current_product_id', 'cpath') as $k)
+          if (empty($_POST[$k]) && !empty($_GET[$k]))
+              $_POST[$k] = $_GET[$k];
+
   switch($_POST['action']) {
     case 'edit':
       if ($_POST['copy_product_id'] != 0) {
