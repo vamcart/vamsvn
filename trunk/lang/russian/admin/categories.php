@@ -176,7 +176,7 @@ define('TEXT_PRODUCTS_VPE','Единица: ');
 define('TEXT_PRODUCTS_VPE_VISIBLE','Цена за единицу: ');
 define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
 
-define('CROSS_SELLING','Сопутствующие товары статьи');
+define('CROSS_SELLING','Сопутствующие товары');
 define('CROSS_SELLING_SEARCH','Поиск товара:');
 define('BUTTON_EDIT_CROSS_SELLING','Сопутствующие товары');
 define('HEADING_DEL','удалить');

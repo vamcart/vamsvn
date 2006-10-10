@@ -176,7 +176,7 @@ define('TEXT_PRODUCTS_VPE','Unit');
 define('TEXT_PRODUCTS_VPE_VISIBLE','Show Unit Price:');
 define('TEXT_PRODUCTS_VPE_VALUE',' Value:');
 
-define('CROSS_SELLING','Cross selling for article');
+define('CROSS_SELLING','Cross selling for product');
 define('CROSS_SELLING_SEARCH','Search product:');
 define('BUTTON_EDIT_CROSS_SELLING','Cross selling');
 define('HEADING_DEL','delete');
