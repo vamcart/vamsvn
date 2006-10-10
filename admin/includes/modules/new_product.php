@@ -162,7 +162,7 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 <?php } ?>
 
 <!-- info -->
-        <dt>Дополнительно</dt>
+        <dt><?php echo TEXT_PRODUCTS_DATA; ?></dt>
         <dd><div class="reducer">
           <table border="0">
           <tr>

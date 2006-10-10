@@ -208,5 +208,6 @@ define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Включить');
 define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Не включать');
 
 define('TEXT_EDIT','[редактировать]');
+define('TEXT_PRODUCTS_DATA','Дополнительно');
 
 ?>
