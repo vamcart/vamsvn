@@ -328,7 +328,6 @@ if (USE_WYSIWYG == 'true') {
 </head>
 <body style="margin: 0; background-color: #FFFFFF">
 
-		<div id="spiffycalendar" class="text"></div>
 		<!-- header //-->
 		<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 		<!-- header_eof //-->
