@@ -14,8 +14,6 @@ div.tabsheets { background: #ffffff; padding: 0.5em; }
         border-left-color: #7a7a7a;
         margin: 2;
         padding: 0;
-        font-family: Verdana, Arial, sans-serif;
-        font-size: 13px;
 }
 .tabsheets dd {
         background-color: #fbfbfb;
@@ -39,8 +37,6 @@ div.tabsheets { background: #ffffff; padding: 0.5em; }
         color: ButtonText;
         margin-top: 0;
         padding-bottom: 0.5em;
-        font-family: Verdana, Arial, sans-serif;
-        font-size: 13px;
 }
 .tabsheets dd {
         position: absolute;
