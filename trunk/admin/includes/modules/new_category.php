@@ -83,36 +83,36 @@
 <!-- категории -->
         <dt><?php echo $languages[$i]['name']; ?></dt>
         <dd><div class="reducer">
-          <table border="0">
+          <table border="0" class="main">
 
           <tr>
-            <td class="top"><?php echo TEXT_EDIT_CATEGORIES_NAME; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_name($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_NAME; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_name($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
-            <td class="top"><?php echo TEXT_EDIT_CATEGORIES_HEADING_TITLE; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('categories_heading_title[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_heading_title($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_HEADING_TITLE; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_heading_title[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_heading_title($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
-            <td class="top"><?php echo TEXT_EDIT_CATEGORIES_DESCRIPTION; ?></td>
-            <td class="top"><?php echo xtc_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '70', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : xtc_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_DESCRIPTION; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '70', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : xtc_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
-            <td class="top"><?php echo TEXT_META_TITLE; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('categories_meta_title[' . $languages[$i]['id'] . ']',(($categories_meta_title[$languages[$i]['id']]) ? stripslashes($categories_meta_title[$languages[$i]['id']]) : xtc_get_categories_meta_title($cInfo->categories_id, $languages[$i]['id'])), 'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_META_TITLE; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_title[' . $languages[$i]['id'] . ']',(($categories_meta_title[$languages[$i]['id']]) ? stripslashes($categories_meta_title[$languages[$i]['id']]) : xtc_get_categories_meta_title($cInfo->categories_id, $languages[$i]['id'])), 'size=50'); ?></td>
           </tr>
 
           <tr>
-            <td class="top"><?php echo TEXT_META_DESCRIPTION; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('categories_meta_description[' . $languages[$i]['id'] . ']', (($categories_meta_description[$languages[$i]['id']]) ? stripslashes($categories_meta_description[$languages[$i]['id']]) : xtc_get_categories_meta_description($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_META_DESCRIPTION; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_description[' . $languages[$i]['id'] . ']', (($categories_meta_description[$languages[$i]['id']]) ? stripslashes($categories_meta_description[$languages[$i]['id']]) : xtc_get_categories_meta_description($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
           </tr>
 
           <tr>
-            <td class="top"><?php echo TEXT_META_KEYWORDS; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('categories_meta_keywords[' . $languages[$i]['id'] . ']',(($categories_meta_keywords[$languages[$i]['id']]) ? stripslashes($categories_meta_keywords[$languages[$i]['id']]) : xtc_get_categories_meta_keywords($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_META_KEYWORDS; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_keywords[' . $languages[$i]['id'] . ']',(($categories_meta_keywords[$languages[$i]['id']]) ? stripslashes($categories_meta_keywords[$languages[$i]['id']]) : xtc_get_categories_meta_keywords($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
           </tr>
 
           </table>
@@ -123,7 +123,7 @@
 <!-- info -->
         <dt><?php echo TEXT_PRODUCTS_DATA; ?></dt>
         <dd><div class="reducer">
-          <table border="0">
+          <table border="0" class="main">
 
 
 
@@ -151,8 +151,8 @@ $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
 $default_value=$cInfo->listing_template;
 $files=array_merge($default_array,$files);
 }
-echo '<td class="top">'.TEXT_CHOOSE_INFO_TEMPLATE_LISTING.':</td>';
-echo '<td><span class="top">'.xtc_draw_pull_down_menu('listing_template',$files,$default_value);
+echo '<td valign="top" class="main>'.TEXT_CHOOSE_INFO_TEMPLATE_LISTING.':</td>';
+echo '<td><span class="main">'.xtc_draw_pull_down_menu('listing_template',$files,$default_value);
 ?>
         </span></td>
       </tr>
@@ -180,8 +180,8 @@ $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
 $default_value=$cInfo->categories_template;
 $files=array_merge($default_array,$files);
 }
-echo '<td class="top">'.TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE.':</td>';
-echo '<td><span class="top">'.xtc_draw_pull_down_menu('categories_template',$files,$default_value);
+echo '<td valign="top" class="main">'.TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE.':</td>';
+echo '<td><span class="main">'.xtc_draw_pull_down_menu('categories_template',$files,$default_value);
 ?>
         </span></td>
       </tr>
@@ -196,8 +196,8 @@ $order_array=array(array('id' => 'p.products_price','text'=>TXT_PRICES),
                    array('id' => 'p.products_quantity','text'=>TXT_QTY));
 $default_value='pd.products_name';
 ?>
-            <td class="top"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
-            <td class="top"><?php echo xtc_draw_pull_down_menu('products_sorting',$order_array,$cInfo->products_sorting); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
+            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_sorting',$order_array,$cInfo->products_sorting); ?></td>
           </tr>
           <tr>
 <?php
@@ -205,12 +205,12 @@ $order_array='';
 $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
                    array('id' => 'DESC','text'=>'DESC (1 last)'));
 ?>
-          <td class="top"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
-            <td class="top"><?php echo xtc_draw_pull_down_menu('products_sorting2',$order_array,$cInfo->products_sorting2); ?></td>
+          <td valign="top" class="main"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
+            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_sorting2',$order_array,$cInfo->products_sorting2); ?></td>
           </tr>
           <tr>
-            <td class="top"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
-            <td class="top"><?php echo xtc_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
           </tr>
 <?php
 
@@ -220,7 +220,7 @@ $customers_statuses_array=array_merge(array(array('id'=>'all','text'=>TXT_ALL)),
 ?>
 <tr>
 <td style="border-top: 1px solid;  border-color: #ff0000;" valign="top" class="main" ><?php echo ENTRY_CUSTOMERS_STATUS; ?></td>
-<td style="border: 1px solid; border-color: #ff0000;"  bgcolor="#FFCC33" class="top">
+<td style="border: 1px solid; border-color: #ff0000;"  bgcolor="#FFCC33" class="main">
 <?php
 
 for ($i=0;$n=sizeof($customers_statuses_array),$i<$n;$i++) {

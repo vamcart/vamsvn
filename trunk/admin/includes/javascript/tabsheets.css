@@ -1,4 +1,4 @@
-div.tabsheets { background: #F0F0F0; padding: 0.5em; }
+div.tabsheets { background: #ffffff; padding: 0.5em; }
 .tabsheets dt, .tabsheets dd {
         margin: 0;
         padding: 0;
@@ -6,15 +6,19 @@ div.tabsheets { background: #F0F0F0; padding: 0.5em; }
         border: none;
 }
 .tabsheets dt, .tabsheets dd {
-        background-color: #C0C0C0;
-        border: 1px solid ThreeDFace;
-        border-top-color: ThreeDHighlight;
-        border-right-color: ThreeDShadow;
-        border-bottom-color: ThreeDShadow;
-        border-left-color: ThreeDHighlight;
+        background-color: #ffffff;
+        border: 1px solid #7a7a7a;
+        border-top-color: #7a7a7a;
+        border-right-color: #7a7a7a;
+        border-bottom-color: #7a7a7a;
+        border-left-color: #7a7a7a;
+        margin: 2;
+        padding: 0;
+        font-family: Verdana, Arial, sans-serif;
+        font-size: 13px;
 }
 .tabsheets dd {
-        background-color: #E0E0E0;
+        background-color: #fbfbfb;
 }
 .tabsheets dl {
         position: relative;
@@ -31,10 +35,12 @@ div.tabsheets { background: #F0F0F0; padding: 0.5em; }
         margin-bottom: -0.2em;
 }
 .tabsheets dt.active {
-        background-color: #E0E0E0;
+        background-color: #dddddd;
         color: ButtonText;
         margin-top: 0;
         padding-bottom: 0.5em;
+        font-family: Verdana, Arial, sans-serif;
+        font-size: 13px;
 }
 .tabsheets dd {
         position: absolute;
