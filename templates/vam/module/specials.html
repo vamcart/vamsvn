@@ -1,62 +1,94 @@
 {config_load file="$language/lang_$language.conf" section="specials"} 
 {config_load file="$language/lang_$language.conf" section="index"} 
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="{$tpl_path}img/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%">{#heading_text#}</td>
+  </tr>
   <tr>
-    <td class="infoBoxHeading">{#heading_text#} </td>
+    <td class="line" width="100%" colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>  <tr>
+    <td class="boxText" width="100%" colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="6" /></td>
   </tr>
 </table>
-<br />
-<br />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-  {foreach name=aussen item=module_data from=$module_content}
-  {php} $col++; 
-  {/php}
-    <td class="main">
-        <table  width="100%" border="0" cellpadding="0" cellspacing="4">
-          <tr> 
-            <td rowspan="2" >{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}</td>
-            <td class="main"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong></td>
-          </tr>
-          <tr> 
-            <td  class="main">{$module_data.PRODUCTS_DESCRIPTION}<br /> 
-              <strong>{$module_data.PRODUCTS_PRICE}</strong><br />
-              {if $module_data.PRODUCTS_VPE}{$module_data.PRODUCTS_VPE} <br />{/if}
-              {$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}<br />
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td align="right"><table width="200" border="0">
-                    <tr>
-                      <td align="right">{if $module_data.PRODUCTS_SHIPPING_NAME}
-                          <table width="200" border="0" cellpadding="0" cellspacing="0">
-                            <tr valign="middle">
-                              <td class="main">{#text_shippingtime#}</td>
-                              {if $module_data.PRODUCTS_SHIPPING_IMAGE}
-                              <td><img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" /></td>
-                              {/if}
-                              <td class="main">{$module_data.PRODUCTS_SHIPPING_NAME}</td>
-                            </tr>
-                          </table>
-                          {/if}
-                          {$module_data.PRODUCTS_BUTTON_BUY_NOW}</td>
-                    </tr>
-                  </table></td>
-                </tr>
-            </table>
-            </td>
-          </tr>
-        </table>
-</td>
-  {php} 
+<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>  {foreach name=aussen item=module_data from=$module_content}  {php} $col++;   {/php}    <td class="main">
+    
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr class="contentBoxContents1">
+    <td class="contentBoxContents1">
+      <img src="{$tpl_path}img/corners/corner_top_left.gif" border="0" alt="" align="left" hspace="0">
+      <img src="{$tpl_path}img/corners/corner_top_right.gif" border="0" alt="" align="right" hspace="0">
+    </td>
+  </tr>
+  <tr height="90" class="contentBoxContents1" valign="top">
+    <td height="90" class="contentBoxContents1" valign="top">
+      <table width="100%" cellpaddind="0" cellspacing="4"><tr>
+        <td class="contents" valign="top">
+        
+        {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}
+        
+        </td>
+                                                  
+     <td class="contents" width="100%" valign="top">
+     
+     <strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong>
+     
+     <br />
 
-  if ($col>=2) {
-  $col=0;
-  echo '</tr><tr>';
-  }
-  {/php}
-  {/foreach}  
+     {if $module_data.PRODUCTS_DESCRIPTION}{$module_data.PRODUCTS_DESCRIPTION}<br />     
+     <a href="{$module_data.PRODUCTS_LINK}">{#text_more#}</a><br />{/if}
+
+     <br />
+
+            <strong>{$module_data.PRODUCTS_PRICE}</strong><br /> 			{if $module_data.PRODUCTS_VPE}{$module_data.PRODUCTS_VPE}<br />{/if}			{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}<br />     
+     </td>
+
+     <td class="contents" align="right">
+       <table background="{$tpl_path}img/bgbox.gif" width="75%" cellpadding="0" cellspacing="0">
+         <tr>
+           <td class="price">
+             <img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0">
+             <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0">
+           </td>
+         </tr>
+
+         <tr>
+           <td class="price" nowrap>
+           {#text_buy_now#}
+           </td>
+         </tr>
+
+         <tr>
+           <td align="center">
+             {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
+           </td>
+         </tr>
+
+         <tr>
+           <td class="buynowFooter">
+             <img src="{$tpl_path}img/corners/corner_bottom_left.gif" align="left" hspace="0">
+             <img src="{$tpl_path}img/corners/corner_bottom_right.gif" align="right" hspace="0">
+           </td>
+         </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+   </td>
+
   </tr>
-</table>
+  
+  <tr class="contentBoxContents1">
+    <td class="contentBoxContents1">
+      <img src="{$tpl_path}img/corners/corner_bottom_left.gif" border="0" alt="" align="left" hspace="0">
+      <img src="{$tpl_path}img/corners/corner_bottom_right.gif" border="0" alt="" align="right" hspace="0">
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2" class="boxText"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="4" /></td>
+  </tr>
+</table>    
+    
+</td>  {php}   if ($col>=1) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}    </tr></table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>{$NAVBAR}</td>
