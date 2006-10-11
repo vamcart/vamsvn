@@ -2,12 +2,17 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr valign="top"> 
     <td class="main"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr valign="top"> 
-          <td class="contentsTopics">{$CATEGORIES_NAME}</td>
+  <tr>
+    <td class="contentBoxHeading1"><img src="{$tpl_path}img/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%">{$CATEGORIES_NAME}</td>
           <td align="right">{if $CATEGORIES_IMAGE}<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_IMAGE}" />{/if}</td>
-        </tr>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="3"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
         <tr valign="top"> 
           <td class="contentsTopics">{$CATEGORIES_HEADING_TITLE}</td>
+          <td align="right"></td>
           <td align="right"></td>
         </tr>	
       </table>{if $CATEGORIES_DESCRIPTION}
@@ -17,23 +22,57 @@
 	  {/if}
       {if $module_content !=''} <strong>{#heading_more_categories#}</strong> 
       <br />
-      <table style="border-top: 2px solid; border-color: #d4d4d4;" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <table style="border-top: 2px solid; border-color: #d4d4d4;" width="100%" border="0" cellspacing="0" cellpadding="5">
         <tr> {foreach name=aussen item=module_data from=$module_content} 
 		{php} 
           $col++; 
 		{/php} 
-          <td class="main"><table  width="100%" border="0" cellpadding="0" cellspacing="4">
-                <tr> 
-                  <td align="center" >{if $module_data.CATEGORIES_IMAGE}<a href="{$module_data.CATEGORIES_LINK}"><img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" /></a>{/if}</td>
-                </tr>
-                <tr>
-                  <td align="center" ><strong><a href="{$module_data.CATEGORIES_LINK}">{$module_data.CATEGORIES_NAME}</a></strong></td>
-                </tr>
-                <tr>
-                  <td align="center" >{$module_data.CATEGORIES_DESCRIPTION}</td>
-                </tr>
-              </table>
-            </td>
+    <td class="main" width="33%" valign="top">        <table  width="100%" border="0" cellpadding="0" cellspacing="0">
+
+  <tr class="boxText">
+    <td class="boxText" width="100%" colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="5" /></td>
+  </tr>
+  <tr class="contentBoxContents1">
+    <td class="contentBoxContents1">
+    <img src="{$tpl_path}img/corners/corner_top_left.gif" border="0" alt="" align="left" hspace="0">
+    <img src="{$tpl_path}img/corners/corner_top_right.gif" border="0" alt="" align="right" hspace="0">
+  </td>
+  </tr>
+  <tr height="90" class="contentBoxContents1" valign="top">
+    <td height="90" class="contentBoxContents1" valign="top">
+      <table border="0" width="100%" cellspacing="5" cellpadding="0">
+        <tr>
+                <td class="contents" align="center">
+                
+{if $module_data.CATEGORIES_IMAGE}<a href="{$module_data.CATEGORIES_LINK}"><img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" /></a>{/if}    
+
+<br />
+
+<strong><a href="{$module_data.CATEGORIES_LINK}">{$module_data.CATEGORIES_NAME}</a></strong>
+      
+<br />
+
+{$module_data.CATEGORIES_DESCRIPTION}
+            
+                </td>
+
+                <td class="contents" align="right"></td>
+                
+        </tr>
+</table>
+</td>
+  </tr>
+  <tr class="contentBoxContents1">
+
+    <td class="contentBoxContents1">
+    <img src="{$tpl_path}img/corners/corner_bottom_left.gif" border="0" alt="" align="left" hspace="0">
+    <img src="{$tpl_path}img/corners/corner_bottom_right.gif" border="0" alt="" align="right" hspace="0">
+    </td>
+
+  </tr>
+
+        </table></td>            
+            
           {php} 
 		  if ($col>=3) { 
 		  $col=0; 
