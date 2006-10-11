@@ -38,4 +38,8 @@ define('TEXT_OK_TO_DELETE', 'Эта опция не связана с товарами и не сохранится пос
 define('TEXT_OPTION_ID', 'Код атрибута');
 define('TEXT_OPTION_NAME', 'Название атрибута');
 
+// VaM
+
+define('TEXT_SEARCH','Поиск: ');
+
 ?>
