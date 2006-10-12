@@ -32,12 +32,14 @@
               <td width="89" align="center" valign="top">
               <div class="button"><a class="shippingInfo" href="{$mainpage}">{#text_mainpage#}</a></div>              
               </td>
+{if $account}{if $smarty.session.customer_id}
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" /></td>
               <td width="89" align="center" valign="top">
-              <div class="button">{if $account}<a class="shippingInfo" href="{$account}">{#link_account#}</a>{/if}</div>              
+              <div class="button"><a class="shippingInfo" href="{$account}">{#link_account#}</a></div>              
               </td>
+{/if}{/if}              
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" /></td>
