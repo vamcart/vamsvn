@@ -151,7 +151,7 @@ $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
 $default_value=$cInfo->listing_template;
 $files=array_merge($default_array,$files);
 }
-echo '<td valign="top" class="main>'.TEXT_CHOOSE_INFO_TEMPLATE_LISTING.':</td>';
+echo '<td valign="top" class="main">'.TEXT_CHOOSE_INFO_TEMPLATE_LISTING.':</td>';
 echo '<td><span class="main">'.xtc_draw_pull_down_menu('listing_template',$files,$default_value);
 ?>
         </span></td>
