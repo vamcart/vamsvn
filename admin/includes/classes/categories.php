@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 
 /* --------------------------------------------------------------
@@ -508,6 +508,11 @@ class categories {
 			$products_id = $new_pid_query_values['Auto_increment'];
 		}
 
+		if (delete_images_from_db ($products_data, $products_id) > 0){
+			$image_to_delete = xtc_array_merge(	$products_data['del_pic'], $products_data['del_mo_pic']);
+			delete_unused_image_files ($image_to_delete);
+		}
+		
 		//prepare products_image filename
 // BOF Image subdirectories
 //		if ($products_image = xtc_try_upload('products_image', DIR_FS_CATALOG_ORIGINAL_IMAGES, '777', '')) {
@@ -520,19 +525,10 @@ class categories {
 // BOF Image subdirectories
 			$products_image_name = $_POST['upload_dir_image_0'].$products_image_name;
 // EOF Image subdirectories
-			$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
-								                                FROM ".TABLE_PRODUCTS."
-								                               WHERE products_image = '".$products_data['products_previous_image_0']."'");
-			$dup_check = xtc_db_fetch_array($dup_check_query);
-			if ($dup_check['total'] < 2) {
-				@ xtc_del_image_file($products_data['products_previous_image_0']);
-			}
+			delete_unused_image_file ($products_data['products_previous_image_0']);
+
 			//workaround if there are v2 images mixed with v3
-			$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
-								                                FROM ".TABLE_PRODUCTS."
-								                               WHERE products_image = '".$products_image->filename."'");
-			$dup_check = xtc_db_fetch_array($dup_check_query);
-			if ($dup_check['total'] == 0) {
+			if (is_image_unused ($products_image->filename)) {
 				rename(DIR_FS_CATALOG_ORIGINAL_IMAGES.$products_image->filename, DIR_FS_CATALOG_ORIGINAL_IMAGES.$products_image_name);
 			} else {
 				copy(DIR_FS_CATALOG_ORIGINAL_IMAGES.$products_image->filename, DIR_FS_CATALOG_ORIGINAL_IMAGES.$products_image_name);
@@ -546,9 +542,8 @@ class categories {
 		} else {
 // BOF Add existing image
 			if (isset($_POST['get_file_image_0']) && $_POST['get_file_image_0'] != "" && is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$_POST['get_file_image_0'])) {
-				$products_image_name = $products_data['get_file_image_0'];
+				$products_image_name = $_POST['get_file_image_0'];
 				$sql_data_array['products_image'] = xtc_db_prepare_input($products_image_name);
-
 				require (DIR_WS_INCLUDES.'product_thumbnail_images.php');
 				require (DIR_WS_INCLUDES.'product_info_images.php');
 				require (DIR_WS_INCLUDES.'product_popup_images.php');
@@ -557,32 +552,6 @@ class categories {
 			$products_image_name = $products_data['products_previous_image_0'];
 		}
 
-		//are we asked to delete some pics?
-		if ($products_data['del_pic'] != '') {
-			$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
-								                                FROM ".TABLE_PRODUCTS."
-								                               WHERE products_image = '".$products_data['del_pic']."'");
-			$dup_check = xtc_db_fetch_array($dup_check_query);
-			if ($dup_check['total'] < 2)
-				@ xtc_del_image_file($products_data['del_pic']);
-			xtc_db_query("UPDATE ".TABLE_PRODUCTS."
-								                 SET products_image = ''
-								               WHERE products_id    = '".xtc_db_input($products_id)."'");
-		}
-
-		if ($products_data['del_mo_pic'] != '') {
-			foreach ($products_data['del_mo_pic'] AS $dummy => $val) {
-				$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
-											                                FROM ".TABLE_PRODUCTS_IMAGES."
-											                               WHERE image_name = '".$val."'");
-				$dup_check = xtc_db_fetch_array($dup_check_query);
-				if ($dup_check['total'] < 2)
-					@ xtc_del_image_file($val);
-				xtc_db_query("DELETE FROM ".TABLE_PRODUCTS_IMAGES."
-											               WHERE products_id = '".xtc_db_input($products_id)."'
-											                 AND image_name  = '".$val."'");
-			}
-		}
 
 		//MO_PICS
 		for ($img = 0; $img < MO_PICS; $img ++) {
@@ -597,37 +566,41 @@ class categories {
 // BOF Image subdirectories
 				$products_image_name = $_POST['mo_pics_upload_dir_image_'.$img].$products_image_name;
 // EOF Image subdirectories
-				$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
-											                                FROM ".TABLE_PRODUCTS_IMAGES."
-											                               WHERE image_name = '".$products_data['products_previous_image_'. ($img +1)]."'");
-				$dup_check = xtc_db_fetch_array($dup_check_query);
-				if ($dup_check['total'] < 2)
-					@ xtc_del_image_file($products_data['products_previous_image_'. ($img +1)]);
+				delete_unused_image_file($products_data['products_previous_image_'. ($img +1)]);
+				
 				@ xtc_del_image_file($products_image_name);
-				rename(DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$pIMG->filename, DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$products_image_name);
+				rename(DIR_FS_CATALOG_ORIGINAL_IMAGES.$pIMG->filename, DIR_FS_CATALOG_ORIGINAL_IMAGES.$products_image_name);
 				//get data & write to table
-				$mo_img = array ('products_id' => xtc_db_prepare_input($products_id), 'image_nr' => xtc_db_prepare_input($img +1), 'image_name' => xtc_db_prepare_input($products_image_name));
-				if ($action == 'insert') {
-					xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
-				}
-				elseif ($action == 'update' && $products_data['products_previous_image_'. ($img +1)]) {
-					if ($products_data['del_mo_pic']) {
+				//Andreaz: Logic moved to function
+				create_MO_PICS ($products_image_name, $img, $action, $products_id, $products_data);
+			} else {
+//MO_PICS by Andreaz
+// BOF Add existing MO image
+				$mo_field_name='mo_pics_get_file_image_'.$img;
+				
+				unset($mo_products_image_name);
+				
+				if (isset($_POST[$mo_field_name]) && $_POST[$mo_field_name] != '' && is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES.$_POST[$mo_field_name])) {
+					$mo_products_image_name = $products_data[$mo_field_name];
+				} else  {
+					$is_cur_image_deleted = false;
+					if ($products_data['del_mo_pic'] != ''){
+						$previous_image_name = $products_data['products_previous_image_'. ($img +1)];
+						// check for current image deletion
 						foreach ($products_data['del_mo_pic'] AS $dummy => $val) {
-							if ($val == $products_data['products_previous_image_'. ($img +1)])
-								xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
-							break;
+							if ($val == $previous_image_name){
+								$is_cur_image_deleted = true;
+							}
 						}
 					}
-					xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img, 'update', 'image_name = \''.xtc_db_input($products_data['products_previous_image_'. ($img +1)]).'\'');
+					if (!$is_cur_image_deleted){
+						$mo_products_image_name = $products_data['products_previous_image_'.($img+1)];
+					}
 				}
-				elseif (!$products_data['products_previous_image_'. ($img +1)]) {
-					xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+				if (isset ($mo_products_image_name) && strlen($mo_products_image_name)>0){
+					create_MO_PICS ($mo_products_image_name, $img, $action, $products_id, $products_data);
 				}
-				//image processing
-				require (DIR_WS_INCLUDES.'product_thumbnail_images.php');
-				require (DIR_WS_INCLUDES.'product_info_images.php');
-				require (DIR_WS_INCLUDES.'product_popup_images.php');
-
+// EOF Add existing MO image
 			}
 		}
 
@@ -1057,4 +1030,125 @@ class categories {
 	// ----------------------------------------------------------------------------------------------------- //  
 
 } // class categories ENDS
+
+
+//BOF Added by Andreaz. Support-Functions for images.
+function create_MO_PICS ($mo_products_image_name, $mo_image_number, $performed_action, $products_id, &$products_data){
+	$absolute_image_number = $mo_image_number+1;
+	$mo_img = array ('products_id' => xtc_db_prepare_input($products_id), 
+			'image_nr' => xtc_db_prepare_input($absolute_image_number), 
+			'image_name' => xtc_db_prepare_input($mo_products_image_name));
+	$previous_image_name = $products_data['products_previous_image_'.$absolute_image_number];
+
+	
+	if ($performed_action == 'insert') {
+		//New product add. Insert new additional image record into DB
+		xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+	} elseif ($performed_action == 'update' && $previous_image_name) {
+		//We update existing product and previous image exists.
+		if ($products_data['del_mo_pic']) {
+			foreach ($products_data['del_mo_pic'] AS $dummy => $val) {
+				//MO_PICS records were deleted - insert if necessary
+				if ($val == $previous_image_name){
+					xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+				}
+				break;
+			}
+		}
+		//Update DB with new existing image
+		xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img, 'update', 'image_name = \''.xtc_db_input($previous_image_name).'\'');
+	} elseif (!$previous_image_name){
+		//additional picture was not exists before. Insert it into DB
+		xtc_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+	}
+
+	//assign products_image_name right value to correctly create thumbnail, info and popup images
+	$products_image_name = $mo_products_image_name;
+	
+	require (DIR_WS_INCLUDES.'product_thumbnail_images.php');
+	require (DIR_WS_INCLUDES.'product_info_images.php');
+	require (DIR_WS_INCLUDES.'product_popup_images.php');
+}
+
+function delete_images_from_db (&$products_data, $product_id) {
+	//are we asked to delete some pics?
+	//Modified by Andreaz. File deletion procedure revised to check if
+	$modifications_count = 0;
+	if ($products_data['del_pic'] != '') {
+		xtc_db_query("UPDATE ".TABLE_PRODUCTS."
+							 SET products_image = ''
+						   WHERE products_id    = '".xtc_db_input($product_id)."'");
+		$modifications_count++;
+	}
+
+	if ($products_data['del_mo_pic'] != '') {
+		foreach ($products_data['del_mo_pic'] AS $dummy => $val) {
+//			echo "Removing MO_IMAGE: ".$val." product_id=".$product_id."<BR>";
+			xtc_db_query("DELETE FROM ".TABLE_PRODUCTS_IMAGES."
+							   WHERE products_id = '".xtc_db_input($product_id)."'
+								 AND image_name  = '".$val."'");
+			$modifications_count++;
+		}
+	}
+	return $modifications_count;
+}
+
+
+function delete_image_files ($image_file_names){
+	foreach ($image_file_names AS $image_name) {
+//		echo "image file ".$image_file_names." will be deleted<BR>";
+		@ xtc_del_image_file($image_name);
+	}
+}
+
+function delete_unused_image_file ($image_file_name){
+	delete_unused_image_files (array($image_file_name));
+}
+
+function delete_unused_image_files ($image_file_names){
+	$unused_images = get_unused_images($image_file_names);
+	delete_image_files ($unused_images);
+}
+
+function get_unused_images ($checked_image_file_names){
+	$checked_image_file_names = array_unique($checked_image_file_names);
+
+	$unused_images = array();
+	foreach ($checked_image_file_names AS $image_name) {
+		if ($image_name != '' && strlen(trim($image_name))>0){
+			if (is_image_unused($image_name)){
+				$unused_images[] = $image_name;
+			}
+		}
+	}
+	return $unused_images;
+}
+
+
+function is_image_unused ($image_name){
+	$image_unsed = (get_count_of_image_usage($image_name) == 0);
+	return $image_unsed;
+}
+
+function get_count_of_image_usage ($image_name) {
+
+	$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
+														FROM ".TABLE_PRODUCTS."
+													   WHERE products_image = '".$image_name."'");
+	$dup_check = xtc_db_fetch_array($dup_check_query);
+	$product_images_count = $dup_check['total'];
+
+	$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
+														FROM ".TABLE_PRODUCTS_IMAGES."
+													   WHERE image_name = '".$image_name."'");
+	$mo_dup_check = xtc_db_fetch_array($dup_check_query);
+	$mo_product_images_count = $mo_dup_check['total'];
+	
+	$total_count_of_image_usage = $product_images_count + $mo_product_images_count;
+	
+//	echo "Image usage count of ".$image_name." = ".$total_count_of_image_usage."<BR>";
+	return $total_count_of_image_usage;
+}
+
+//EOF Added by Andreaz. Support-Functions for images.
 ?>
