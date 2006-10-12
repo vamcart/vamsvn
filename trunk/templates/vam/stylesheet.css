@@ -884,3 +884,36 @@ TR.buynowFooter {
   color: #67748B;
   background-color: #BDBAC6; 
 }
+
+.cssbutton {
+ background: #006600;
+ color: #ffffff;
+ width: 110px;
+ vertical-align: top;
+ font-weight: normal;
+ font-family: Tahoma;
+ font-size: 12px;
+ cursor: pointer;
+ text-align: center;
+ border: 1px;
+ border-style: solid;
+ border-color: #000000;
+ border-spacing: 1px;
+}
+
+ 
+.cssbuttonsubmit{
+ background: #006600;
+ color : #ffffff;
+ vertical-align: top;
+ font-weight: normal;
+ font-family: Tahoma;
+ font-size: 12px;
+ cursor: pointer;
+ text-align: center;
+ border: 1px;
+ border-style: solid;
+ border-color: #000000;
+ border-spacing: 1px;
+
+}

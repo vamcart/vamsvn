@@ -18,6 +18,6 @@
 // Output a function button in the selected language
   function xtc_image_button($image, $alt = '', $parameters = '') {
 
-    return xtc_image('templates/'.CURRENT_TEMPLATE.'/buttons/' . $_SESSION['language'] . '/'. $image, $alt, '', '', $parameters);
+    return '<div class="cssbutton">&nbsp;' . $alt . '&nbsp;</div>';
   }
  ?>
