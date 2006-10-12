@@ -162,6 +162,21 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			xtc_rss_products($specials_product_query);
 			break;
 
+		case "featured_random":
+			$random = true;
+			$limit = " limit " . MAX_RANDOM_SELECT_FEATURED;
+		case "featured":
+			$featured_product_query = "select p.products_id, pd.products_name, pd.products_description, p.products_image, p.products_date_added, p.products_last_modified, p.products_price, p.products_tax_class_id
+														 from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, "
+																		. TABLE_FEATURED . " f
+														 where p.products_status = '1'
+														 and p.products_id = f.products_id
+														 and pd.products_id = f.products_id
+														 and pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
+														 and f.status = '1'" . $limit;
+			xtc_rss_products($featured_product_query);
+			break;
+
 		case "best_sellers_random":
 			$random = true;
 			$limit = " limit " . MAX_DISPLAY_BESTSELLERS;
