@@ -88,7 +88,7 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$info_smarty->assign('PRODUCTS_WEIGHT', $product->data['products_weight']);
 		$info_smarty->assign('PRODUCTS_STATUS', $product->data['products_status']);
 		$info_smarty->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
-		$info_smarty->assign('PRODUCTS_PRINT', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/print.gif"  style="cursor:hand" onclick="javascript:window.open(\''.xtc_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" alt="" />');
+		$info_smarty->assign('PRODUCTS_PRINT', '<img src="templates/'.CURRENT_TEMPLATE.'/img/printer.gif"  style="cursor:hand" onclick="javascript:window.open(\''.xtc_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" alt="" />');
 		$info_smarty->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$image = '';
 		if ($product->data['products_image'] != '')
