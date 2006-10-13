@@ -266,6 +266,10 @@ A.shippingInfo:hover {
   color: #ffffff;
 }
 
+A.shippingInfo:visited {
+  color: #ffffff;
+}
+
 TD.button1 {
   background-color: #ffffff;
   color: #ffffff;
