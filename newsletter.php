@@ -32,7 +32,7 @@ require_once (DIR_FS_INC.'xtc_validate_password.inc.php');
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$vlcode = xtc_random_charcode(32);
-	$link = xtc_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.$_POST['email'].'&key='.$vlcode, 'NONSSL');
+	$link = xtc_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.xtc_db_input($_POST['email']).'&key='.$vlcode, 'NONSSL');
 
 	// assign language to template for caching
 	$smarty->assign('language', $_SESSION['language']);
@@ -40,7 +40,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 	// assign vars
-	$smarty->assign('EMAIL', $_POST['email']);
+	$smarty->assign('EMAIL', xtc_db_input($_POST['email']));
 	$smarty->assign('LINK', $link);
 	// dont allow cache
 	$smarty->caching = false;
@@ -85,7 +85,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$info_message = TEXT_EMAIL_INPUT;
 
 			if (SEND_EMAILS == true) {
-				xtc_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $_POST['email'], '', '', EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', TEXT_EMAIL_SUBJECT, $html_mail, $txt_mail);
+				xtc_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, xtc_db_input($_POST['email']), '', '', EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', TEXT_EMAIL_SUBJECT, $html_mail, $txt_mail);
 			}
 
 		} else {
@@ -96,7 +96,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 				$info_message = TEXT_EMAIL_EXIST_NO_NEWSLETTER;
 
 				if (SEND_EMAILS == true) {
-					xtc_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $_POST['email'], '', '', EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', TEXT_EMAIL_SUBJECT, $html_mail, $txt_mail);
+					xtc_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, xtc_db_input($_POST['email']), '', '', EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', TEXT_EMAIL_SUBJECT, $html_mail, $txt_mail);
 				}
 
 			} else {
@@ -157,7 +157,7 @@ $breadcrumb->add(NAVBAR_TITLE_NEWSLETTER, xtc_href_link(FILENAME_NEWSLETTER, '',
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$smarty->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="" />');
+$smarty->assign('VVIMG', '<img src="'.xtc_href_link(FILENAME_DISPLAY_VVCODES).'" alt="Captcha" />');
 
 $smarty->assign('text_newsletter', TEXT_NEWSLETTER);
 $smarty->assign('info_message', $info_message);

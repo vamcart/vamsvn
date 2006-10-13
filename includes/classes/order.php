@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: order.php 1121 2005-07-26 09:22:46Z mz $   
+   $Id: order.php 1533 2006-08-20 19:03:11Z mz $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -106,6 +106,8 @@
 
       $this->customer = array('id' => $order['customers_id'],
                               'name' => $order['customers_name'],
+                              'firstname' => $order['customers_firstname'],
+                              'lastname' => $order['customers_lastname'],                            
                               'csID' => $order['customers_cid'],
                               'company' => $order['customers_company'],
                               'street_address' => $order['customers_street_address'],
@@ -119,6 +121,8 @@
                               'email_address' => $order['customers_email_address']);
 
       $this->delivery = array('name' => $order['delivery_name'],
+      							'firstname' => $order['delivery_firstname'],
+      							'lastname' => $order['delivery_lastname'],
                               'company' => $order['delivery_company'],
                               'street_address' => $order['delivery_street_address'],
                               'suburb' => $order['delivery_suburb'],
@@ -133,6 +137,8 @@
       }
 
       $this->billing = array('name' => $order['billing_name'],
+      							'firstname' => $order['billing_firstname'],
+      							'lastname' => $order['billing_lastname'],
                              'company' => $order['billing_company'],
                              'street_address' => $order['billing_street_address'],
                              'suburb' => $order['billing_suburb'],

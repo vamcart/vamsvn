@@ -382,6 +382,7 @@ class product {
 
 			$products_price = $xtPrice->xtcGetPrice($array['products_id'], $format = true, 1, $array['products_tax_class_id'], $array['products_price'], 1);
 
+			if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($array['products_fsk18'] == '0')
 					$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
@@ -391,7 +392,7 @@ class product {
 				$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
 				$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
 			}
-			
+   	 }
 
 		
 			$shipping_status_name = $main->getShippingStatusName($array['products_shippingtime']);
@@ -412,7 +413,7 @@ class product {
 				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,
 				'PRODUCTS_SHIPPING_NAME'=>$shipping_status_name,
 				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
-				'PRODUCTS_DESCRIPTION' => $array['products_short_description'],
+				'PRODUCTS_DESCRIPTION' => $array['products_description'],
 				'PRODUCTS_EXPIRES' => $array['expires_date'],
 				'PRODUCTS_CATEGORY_URL'=>$array['cat_url'],
 				'PRODUCTS_SHORT_DESCRIPTION' => $array['products_short_description'], 

@@ -1,7 +1,7 @@
 <?php
 
 /* -----------------------------------------------------------------------------------------
-   $Id: shopping_cart.php 1281 2005-10-03 09:30:17Z mz $
+   $Id: shopping_cart.php 1534 2006-08-20 19:39:22Z mz $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -201,8 +201,8 @@ class shoppingCart {
 	}
 
 	function remove($products_id) {
-
-		unset ($this->contents[$products_id]);
+		
+		$this->contents[$products_id]= NULL;
 		// remove from database
 		if (xtc_session_is_registered('customer_id')) {
 			xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
@@ -334,6 +334,7 @@ class shoppingCart {
 		$products_array = array ();
 		reset($this->contents);
 		while (list ($products_id,) = each($this->contents)) {
+			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){			
 			$products_query = xtc_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".xtc_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = xtc_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
@@ -341,6 +342,7 @@ class shoppingCart {
 				$products_price = $xtPrice->xtcGetPrice($products['products_id'], $format = false, $this->contents[$products_id]['qty'], $products['products_tax_class_id'], $products['products_price']);
 
 				$products_array[] = array ('id' => $products_id, 'name' => $products['products_name'], 'model' => $products['products_model'], 'image' => $products['products_image'], 'price' => $products_price + $this->attributes_price($products_id), 'quantity' => $this->contents[$products_id]['qty'], 'weight' => $products['products_weight'],'shipping_time' => $main->getShippingStatusName($products['products_shippingtime']), 'final_price' => ($products_price + $this->attributes_price($products_id)), 'tax_class_id' => $products['products_tax_class_id'], 'attributes' => $this->contents[$products_id]['attributes']);
+			}
 			}
 		}
 

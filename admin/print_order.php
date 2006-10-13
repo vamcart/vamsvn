@@ -34,6 +34,8 @@
  	
   	include(DIR_WS_CLASSES . 'order.php');
   	$order = new order($_GET['oID']);
+  	
+  	
   	$smarty->assign('address_label_customer',xtc_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
   	$smarty->assign('address_label_shipping',xtc_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
   	$smarty->assign('address_label_payment',xtc_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
