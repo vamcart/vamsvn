@@ -59,10 +59,9 @@ if (($orders_total = xtc_count_customer_orders()) > 0) {
 
 if ($orders_total > 0) {
 	$smarty->assign('SPLIT_BAR', '
-	          <tr>
-	            <td class="smallText" valign="top">'.$history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS).'</td>
-	            <td class="smallText" align="right">'.TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
-	          </tr>');
+	          <div class="smallText" style="clear:both;"><div style="float:left;">'.$history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS).'</div>
+              <div align="right">'.TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</div>
+              </div>');
 
 }
 $smarty->assign('order_content', $module_content);

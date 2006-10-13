@@ -32,6 +32,8 @@ require ('includes/application_top.php');
 if (ACTIVATE_GIFT_SYSTEM != 'true')
 	xtc_redirect(FILENAME_DEFAULT);
 
+// is customer logged on ?
+	if (!isset ($_SESSION['customer_id'])) xtc_redirect(FILENAME_SHOPPING_CART);
 
 $smarty = new Smarty;
 
@@ -42,6 +44,9 @@ require (DIR_WS_INCLUDES.'header.php');
 
 // check for a voucher number in the url
 if (isset ($_GET['gv_no'])) {
+	
+	
+	
 	$error = true;
 	$gv_query = xtc_db_query("select c.coupon_id, c.coupon_amount from ".TABLE_COUPONS." c, ".TABLE_COUPON_EMAIL_TRACK." et where coupon_code = '".xtc_db_input($_GET['gv_no'])."' and c.coupon_id = et.coupon_id");
 	if (xtc_db_num_rows($gv_query) > 0) {

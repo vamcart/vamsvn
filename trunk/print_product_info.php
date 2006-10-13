@@ -47,7 +47,7 @@ if ($products_attributes['total'] > 0) {
 					$products_options['options_values_price'] = xtc_add_tax($products_options['options_values_price'], $xtPrice->TAX[$product_info['products_tax_class_id']]);
 				}
 				if ($_SESSION['customers_status']['customers_status_show_price'] == 1) {
-					$module_content[sizeof($module_content) - 1]['NAME'] .= ' ('.$products_options['price_prefix'].$xtPrice->xtcFormat($products_options['options_values_price'], true).')';
+					$module_content[sizeof($module_content) - 1]['NAME'] .= ' ('.$products_options['price_prefix'].$xtPrice->xtcFormat($products_options['options_values_price'], true,0,true).')';
 				}
 			}
 		}

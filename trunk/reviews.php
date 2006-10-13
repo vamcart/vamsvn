@@ -35,7 +35,7 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
 $reviews_query_raw = "select r.reviews_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.products_id, pd.products_name, p.products_image, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
 $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DISPLAY_NEW_REVIEWS);
 
-if (($reviews_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3'))) {
+if ($reviews_split->number_of_rows > 0) {
 
 	$smarty->assign('NAVBAR', '
 	
@@ -53,7 +53,7 @@ $module_data = array ();
 if ($reviews_split->number_of_rows > 0) {
 	$reviews_query = xtc_db_query($reviews_split->sql_query);
 	while ($reviews = xtc_db_fetch_array($reviews_query)) {
-		$module_data[] = array ('PRODUCTS_IMAGE' => DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'], $reviews['products_name'], 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 'PRODUCTS_NAME' => $reviews['products_name'], 'AUTHOR' => $reviews['customers_name'], 'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, xtc_word_count($reviews['reviews_text'], ' ')).')<br />'.htmlspecialchars($reviews['reviews_text']).'..', 'RATING' => xtc_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
+		$module_data[] = array ('PRODUCTS_IMAGE' => DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'], $reviews['products_name'], 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 'PRODUCTS_NAME' => $reviews['products_name'], 'AUTHOR' => $reviews['customers_name'], 'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, xtc_word_count($reviews['reviews_text'], ' ')).')<br>'.htmlspecialchars($reviews['reviews_text']).'..', 'RATING' => xtc_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 
 	}
 	$smarty->assign('module_content', $module_data);
