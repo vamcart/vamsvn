@@ -5,24 +5,11 @@
 	  <tr>
 	    <td style="border-bottom: 1px solid;" colspan="4"><strong>{$options_data.NAME}:</strong></td>
   </tr>
-  {php}
-  $count=0;
-  {/php}
-	{foreach key=key_data item=item_data from=$options_data.DATA}
+	{foreach name=aussen key=key_data item=item_data from=$options_data.DATA}
     <tr class="{cycle values="tableListingI,tableListingII"}">
 	<td>
-      {php}
-	  $count++;
-	  if ($count==1) { 
-	  {/php}
-	  <input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" checked="checked" />
-	  {php}
-	  } else {
-	  {/php}
-	  <input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" />
-	  {php}
-	  }
-	  {/php}	  </td>
+	  <input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" {if $smarty.foreach.aussen.first} checked="checked"{/if} />
+      </td>
       <td>{$item_data.TEXT}<br />
       {$item_data.MODEL}</td>
       <td>&nbsp;</td>
