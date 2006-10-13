@@ -425,7 +425,7 @@ define('BOX_TOOLS_RECOVER_CART', 'Recover Carts');
 
 define('BOX_FEATURED', 'Featured Products');
 
-define('TEXT_HEADER_NEWS','News');
+define('TEXT_HEADER_DEFAULT','Main');
 define('TEXT_HEADER_SUPPORT','Support');
 define('TEXT_HEADER_SHOP','Shop');
 define('TEXT_HEADER_LOGOFF','Logout');
