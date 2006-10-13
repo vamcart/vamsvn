@@ -166,36 +166,6 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
 //-->
 </script>
 
-<?php 
-
-# Выбор языка в админке, автор незнама
-
-  if (!isset($lng) && !is_object($lng)) {
-    include(DIR_WS_CLASSES . 'language.php');
-    $lng = new language;
-  }
-
-# dir with images. I dont't use it
-# xtc_image(DIR_FS_CATALOG.'lang/' .  $value['directory'] .'/' . $value['image'], $value['name'])
-
-  $languages_string = '';
-  $count_lng='';
-  reset($lng->catalog_languages);
-  while (list($key, $value) = each($lng->catalog_languages)) {
-  $count_lng++;
-    $languages_string .= '
-              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" width="3" height="3" align="left" hspace="0" /></td>
-              <td width="85" align="center" valign="top">
-              <div class="buttonadmin"><a class="shippingInfo" href="' . xtc_href_link(basename($_SERVER["SCRIPT_NAME"]), 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a></div>              
-              </td>
- ';
-  }
-  
-# /Выбор языка в админке, автор незнама
-?>
-
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -235,6 +205,35 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
               <td width="98" align="center" valign="top">
               <div class="buttonadmin"><a class="shippingInfo" href="../index.php" target="_blank"><?php echo TEXT_HEADER_SHOP; ?></a></div>              
               </td>
+<?php 
+
+# Выбор языка в админке, автор незнама
+
+  if (!isset($lng) && !is_object($lng)) {
+    include(DIR_WS_CLASSES . 'language.php');
+    $lng = new language;
+  }
+
+# dir with images. I dont't use it
+# xtc_image(DIR_FS_CATALOG.'lang/' .  $value['directory'] .'/' . $value['image'], $value['name'])
+
+  $languages_string = '';
+  $count_lng='';
+  reset($lng->catalog_languages);
+  while (list($key, $value) = each($lng->catalog_languages)) {
+  $count_lng++;
+    $languages_string .= '
+              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
+              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" width="3" height="3" align="left" hspace="0" /></td>
+              <td width="85" align="center" valign="top">
+              <div class="buttonadmin"><a class="shippingInfo" href="' . xtc_href_link(basename($_SERVER["SCRIPT_NAME"]), 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a></div>              
+              </td>
+ ';
+  }
+  
+# /Выбор языка в админке, автор незнама
+?>
               <?php if ($count_lng > 1 ) { echo $languages_string; } ?>
               <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
             </tr>
