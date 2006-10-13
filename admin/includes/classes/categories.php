@@ -509,7 +509,7 @@ class categories {
 		}
 
 		if (delete_images_from_db ($products_data, $products_id) > 0){
-			$image_to_delete = xtc_array_merge(	$products_data['del_pic'], $products_data['del_mo_pic']);
+			$image_to_delete = xtc_array_merge( array($products_data['del_pic']), $products_data['del_mo_pic']);
 			delete_unused_image_files ($image_to_delete);
 		}
 		
@@ -1096,7 +1096,7 @@ function delete_images_from_db (&$products_data, $product_id) {
 
 function delete_image_files ($image_file_names){
 	foreach ($image_file_names AS $image_name) {
-//		echo "image file ".$image_file_names." will be deleted<BR>";
+//		echo "image file ".$image_name." will be deleted<BR>";
 		@ xtc_del_image_file($image_name);
 	}
 }
@@ -1115,10 +1115,11 @@ function get_unused_images ($checked_image_file_names){
 
 	$unused_images = array();
 	foreach ($checked_image_file_names AS $image_name) {
-		if ($image_name != '' && strlen(trim($image_name))>0){
 			if (is_image_unused($image_name)){
 				$unused_images[] = $image_name;
-			}
+//				echo "image file ".$image_name." is unused<BR>";
+		} else {
+//				echo "image file ".$image_name." is used<BR>";
 		}
 	}
 	return $unused_images;
@@ -1126,8 +1127,14 @@ function get_unused_images ($checked_image_file_names){
 
 
 function is_image_unused ($image_name){
+	if (is_scalar($image_name) && is_string($image_name)){
+		if ($image_name != '' && strlen(trim($image_name))>0){
 	$image_unsed = (get_count_of_image_usage($image_name) == 0);
 	return $image_unsed;
+}
+	}
+	return false;
+
 }
 
 function get_count_of_image_usage ($image_name) {
