@@ -425,4 +425,9 @@ define('BOX_TOOLS_RECOVER_CART', 'Незавершённые заказы');
 
 define('BOX_FEATURED', 'Рекомендуемые товары');
 
+define('TEXT_HEADER_NEWS','Новости');
+define('TEXT_HEADER_SUPPORT','Поддержка');
+define('TEXT_HEADER_SHOP','Магазин');
+define('TEXT_HEADER_LOGOFF','Выход');
+
 ?>

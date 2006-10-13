@@ -18,25 +18,7 @@
   if ($messageStack->size > 0) {
     echo $messageStack->output();
   }
-  
-# Выбор языка в админке, автор незнама
 
-  if (!isset($lng) && !is_object($lng)) {
-    include(DIR_WS_CLASSES . 'language.php');
-    $lng = new language;
-  }
-
-# dir with images. I dont't use it
-# xtc_image(DIR_FS_CATALOG.'lang/' .  $value['directory'] .'/' . $value['image'], $value['name'])
-
-  $languages_string = '';
-  $count_lng='';
-  reset($lng->catalog_languages);
-  while (list($key, $value) = each($lng->catalog_languages)) {
-  $count_lng++;
-    $languages_string .= ' <a href="' . xtc_href_link(basename($_SERVER["SCRIPT_NAME"]), 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a> ';
-  }
-# /Выбор языка в админке, автор незнама  
 ?>
 
 
@@ -184,20 +166,117 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
 //-->
 </script>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="1"><?php echo xtc_image(DIR_WS_IMAGES . 'logo.gif', 'xt:Commerce', '185', '95'); ?></td>
-    <td valign="bottom" align="right" background="images/bg_top.jpg"><?php if ($count_lng > 1 ) { echo $languages_string . '&nbsp;<br />'; } echo xtc_image(DIR_WS_IMAGES . 'img_spacer.jpg', '', '', ''); ?><?php echo '<a href="start.php"  class="headerLink">'. xtc_image(DIR_WS_IMAGES . 'top_index.gif', '', '', '').'</a>'; ?><?php echo xtc_image(DIR_WS_IMAGES . 'img_spacer.jpg', '', '', ''); ?><?php echo '<a href="http://www.xt-commerce.com/de/support.html" target="_new" class="headerLink">'. xtc_image(DIR_WS_IMAGES . 'top_support.gif', '', '', '').'</a>'; ?><?php echo xtc_image(DIR_WS_IMAGES . 'img_spacer.jpg', '', '', ''); ?><?php echo '<a href="../index.php" class="headerLink">'. xtc_image(DIR_WS_IMAGES . 'top_shop.gif', '', '', '').'</a>'; ?><?php echo xtc_image(DIR_WS_IMAGES . 'img_spacer.jpg', '', '', ''); ?><?php echo '<a href="' . xtc_href_link(FILENAME_LOGOUT, '', 'NONSSL') . '" class="headerLink">'. xtc_image(DIR_WS_IMAGES . 'top_logout.gif', '', '', '').'</a>'; ?><?php echo xtc_image(DIR_WS_IMAGES . 'img_spacer.jpg', '', '', ''); ?><?php echo '<a href="' . xtc_href_link(FILENAME_CREDITS, '', 'NONSSL') . '" class="headerLink">'. xtc_image(DIR_WS_IMAGES . 'top_credits.gif', '', '', '').'</a>'; ?><?php echo xtc_image(DIR_WS_IMAGES . 'img_line.jpg', '', '', ''); ?></td>
-</td>
-  </tr>
-</table>
+<?php 
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2" class="ThemeOfficeMainItem">
-  <tr>
-    <td id="administrationMenuID"></td>
-  </tr>
-</table>
+# Выбор языка в админке, автор незнама
 
+  if (!isset($lng) && !is_object($lng)) {
+    include(DIR_WS_CLASSES . 'language.php');
+    $lng = new language;
+  }
+
+# dir with images. I dont't use it
+# xtc_image(DIR_FS_CATALOG.'lang/' .  $value['directory'] .'/' . $value['image'], $value['name'])
+
+  $languages_string = '';
+  $count_lng='';
+  reset($lng->catalog_languages);
+  while (list($key, $value) = each($lng->catalog_languages)) {
+  $count_lng++;
+    $languages_string .= '
+              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" align="right" hspace="0" /></td>
+              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" align="left" hspace="0" /></td>
+              <td width="85" align="center" valign="top">
+              <div class="buttonadmin"><a class="shippingInfo" href="' . xtc_href_link(basename($_SERVER["SCRIPT_NAME"]), 'language=' . $key.'&'.xtc_get_all_get_params(array('language', 'currency')), 'NONSSL') . '">' . $value['name'] . '</a></div>              
+              </td>
+ ';
+  }
+  
+# /Выбор языка в админке, автор незнама
+?>
+
+<!-- шапка -->        
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="200" align="left">
+              <?php echo xtc_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop', '185', '95'); ?>
+              </td>
+              <td width="470" align="center">
+              &nbsp;
+              </td>
+              <td width="200">
+              &nbsp;
+              </td>
+            </tr>
+
+            <tr>
+              <td width="200" align="left">
+              &nbsp;
+              </td>
+              <td width="470" align="center">
+<!-- кнопки -->
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr class="buttonadmin">
+              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" align="left" hspace="0" /></td>
+              <td width="89" align="center" valign="top">
+              <div class="buttonadmin"><a class="shippingInfo" href="http://oscommerce.su" target="_blank"><?php echo TEXT_HEADER_NEWS; ?></a></div>              
+              </td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" align="right" hspace="0" /></td>
+              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" align="left" hspace="0" /></td>
+              <td width="84" align="center" valign="top">
+              <div class="buttonadmin"><a class="shippingInfo" href="http://oscommerce.su" target="_blank"><?php echo TEXT_HEADER_SUPPORT; ?></a></div>              
+              </td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" align="right" hspace="0" /></td>
+              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
+              <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" align="left" hspace="0" /></td>
+              <td width="98" align="center" valign="top">
+              <div class="buttonadmin"><a class="shippingInfo" href="../index.php" target="_blank"><?php echo TEXT_HEADER_SHOP; ?></a></div>              
+              </td>
+              <?php if ($count_lng > 1 ) { echo $languages_string; } ?>
+              <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" align="right" hspace="0" /></td>
+            </tr>
+          </table>
+<!-- /кнопки -->
+
+              </td>
+              <td width="200">
+              &nbsp;
+              </td>
+            </tr>
+<tr>
+<td colspan="3" valign="top" align="center" class="buttonadmin"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="3"></td>
+</tr>
+
+<tr>
+<td colspan="3" valign="top" align="center" class="navigationTop"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="1"></td>
+</tr>
+
+<tr>
+<td colspan="3" valign="top" align="center" class="navigation"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="4"></td>
+</tr>
+
+<tr>
+<td colspan="3" class="navigation" align="left" id="administrationMenuID">
 <script type="text/javascript"><!--
   cmDraw('administrationMenuID', administrationMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
 --></script>
+</td>
+</tr>
+
+<tr>
+<td colspan="3" valign="top" align="center" class="navigation"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="4"></td>
+</tr>
+
+<tr>
+<td colspan="3" valign="top" align="center" class="navigationTop"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="1"></td>
+</tr>
+
+<tr>
+<td colspan="3" valign="top" align="center"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="10"></td>
+</tr>
+
+          </table>
+<!-- /шапка -->
