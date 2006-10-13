@@ -42,4 +42,32 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       return false;
     }
   }
+  
+// Синхронизация курса валют с текущим курсом Центрального банка России  
+function quote_cbr_currency($code, $base = DEFAULT_CURRENCY) { 
+    global $quote_cbr_cashed; 
+    if (sizeof($quote_cbr_cash)==0){ 
+      $quote_cbr_cash = array(); 
+      $quote_cbr_cash['RUB'] = 1.00; 
+      $quote_cbr_cash['RUR'] = 1.00; 
+      $page = file('http://www.cbr.ru/scripts/XML_daily.asp'); 
+      if (!is_array($page)){ // Что-то не так у нас с ЦБР 
+        return false; 
+      } 
+      $page = implode('', $page); 
+      preg_match_all("|<CharCode>(.*?)</CharCode>|is", $page, $m); 
+      preg_match_all("|<Value>(.*?)</Value>|is", $page, $c); 
+      foreach ($m[1] as $kv => $mv){ 
+        $quote_cbr_cash[$mv]=ereg_replace(',', '.', $c[1][$kv]); 
+      } 
+    } 
+    if (isset($quote_cbr_cash[$code]) && isset($quote_cbr_cash[$base])) { 
+      $retval = round($quote_cbr_cash[$base]/$quote_cbr_cash[$code],4); 
+      settype($retval,"string"); 
+      return $retval; 
+    } else { 
+      return false; 
+    } 
+  }  
+  
 ?>

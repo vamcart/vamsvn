@@ -257,7 +257,7 @@
 
   // Define how do we update currency exchange rates
   // Possible values are 'oanda' 'xe' or ''
-  define('CURRENCY_SERVER_PRIMARY', 'oanda');
+  define('CURRENCY_SERVER_PRIMARY', 'cbr');
   define('CURRENCY_SERVER_BACKUP', 'xe');
   
   // Use the DB-Logger
