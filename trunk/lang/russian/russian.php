@@ -287,7 +287,7 @@ define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Цена до должна быть больше цены от
 define('JS_INVALID_KEYWORDS', '* Неверные ключевые слова\n');
 define('TEXT_LOGIN_ERROR', '<font color="#ff0000"><b>ОШИБКА:</b></font> Указанный \'Email\' и/или \'пароль\' неверный.');
 define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<font color="#ff0000"><b>ПРЕДУПРЕЖДЕНИЕ:</b></font> Указанный Email не найден. Попробуйте ещё раз.');
-define('TEXT_PASSWORD_SENT', 'Новый паоль был отправлен на Email.');
+define('TEXT_PASSWORD_SENT', 'Новый пароль был отправлен на Email.');
 define('TEXT_PRODUCT_NOT_FOUND', 'Товар не найден!');
 define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a style="text-decoration:underline;" href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
 
