@@ -220,7 +220,6 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
       <tr>
 <?php
 $files = array();
-$default_array = array();
 foreach (array('product_info', 'product_options') as $key) {
     if ($dir = opendir(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/'.$key.'/')) {
         while (($file = readdir($dir)) !== false) {
@@ -232,11 +231,9 @@ foreach (array('product_info', 'product_options') as $key) {
     }
     // set default value in dropdown!
     if ($content['content_file'] == '') {
-        $default_array[] = array ('id' => 'default', 'text' => TEXT_SELECT);
-        $files[$key] = array_merge($default_array, $files[$key]);
+        $files[$key] = array_merge(array(array('id' => 'default', 'text' => TEXT_SELECT)), $files[$key]);
     } else {
-        $default_array[] = array ('id' => 'default', 'text' => TEXT_NO_FILE);
-        $files[$key] = array_merge($default_array, $files[$key]);
+        $files[$key] = array_merge(array(array('id' => 'default', 'text' => TEXT_NO_FILE)), $files[$key]);
     }
 }
 ?>
