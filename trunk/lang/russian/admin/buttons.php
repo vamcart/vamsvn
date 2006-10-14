@@ -69,7 +69,7 @@ define('BUTTON_RELEASE', 'Активировать');
 define('BUTTON_NEW_LANGUAGE', 'Новый язык');
 define('BUTTON_NEW_COUNTRY', 'Новая страна');
 define('BUTTON_NEW_CURRENCY', 'Новая валюта');
-define('BUTTON_NEW_ZONE', 'Новая зона');
+define('BUTTON_NEW_ZONE', 'Новый регион');
 define('BUTTON_DETAILS', 'Настроить');
 define('BUTTON_NEW_TAX_CLASS', 'Новый налог');
 define('BUTTON_NEW_TAX_RATE', 'Новая ставка налога');
