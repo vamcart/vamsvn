@@ -178,7 +178,7 @@ define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
 
 define('CROSS_SELLING','Сопутствующие товары статьи');
 define('CROSS_SELLING_SEARCH','Поиск товара:');
-define('BUTTON_EDIT_CROSS_SELLING','Сопутствующие товары');
+define('BUTTON_EDIT_CROSS_SELLING','Сопутствующие');
 define('HEADING_DEL','удалить');
 define('HEADING_SORTING','сортировать');
 define('HEADING_MODEL','код');
