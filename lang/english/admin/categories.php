@@ -176,7 +176,7 @@ define('TEXT_PRODUCTS_VPE','Unit');
 define('TEXT_PRODUCTS_VPE_VISIBLE','Show Unit Price:');
 define('TEXT_PRODUCTS_VPE_VALUE',' Value:');
 
-define('CROSS_SELLING','Cross selling for product');
+define('CROSS_SELLING','Cross selling for article');
 define('CROSS_SELLING_SEARCH','Search product:');
 define('BUTTON_EDIT_CROSS_SELLING','Cross selling');
 define('HEADING_DEL','delete');
@@ -210,5 +210,7 @@ define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Disable');
 define('TEXT_EDIT','[edit]');
 define('TEXT_PRODUCTS_DATA','Data');
 define('TEXT_TAB_CATEGORIES_IMAGE', 'Categories image');
+
+define('ENTRY_CUSTOMERS_ACCESS','Access');
 
 ?>
