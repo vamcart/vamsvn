@@ -259,15 +259,33 @@ TR.buttonadmin {
 }
 
 A.shippingInfo { 
-  color: #ffffff; 
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #67748B;
+  color: #FFFFFF;
+  text-decoration: none;
+  line-height: 1.5;
 }
 
 A.shippingInfo:hover {
-  color: #ffffff;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #67748B;
+  color: #FFFFFF;
+  text-decoration: none;
+  line-height: 1.5;
 }
 
 A.shippingInfo:visited {
-  color: #ffffff;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #67748B;
+  color: #FFFFFF;
+  text-decoration: none;
+  line-height: 1.5;
 }
 
 TD.button1 {
