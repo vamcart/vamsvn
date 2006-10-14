@@ -284,13 +284,13 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 
 		 if ($random) {
          $products = xtc_random_select($sql_products);
-         $link = xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $products['products_id'], 'NONSSL', false);
-         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS,'products_id=' . $products['products_id'], 'NONSSL', false));
+         $link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products['products_id'], $products['products_name']), 'NONSSL', false);
+         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO,xtc_product_link($products['products_id'], $products['products_name']), 'NONSSL', false));
       } else {
          $products_query = xtc_db_query($sql_products);
          while($products = xtc_db_fetch_array($products_query)) {
-            $link = xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $products['products_id'], 'NONSSL', false);
-            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS,'products_id=' . $products['products_id'], 'NONSSL', false));
+            $link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products['products_id'], $products['products_name']), 'NONSSL', false);
+            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO,xtc_product_link($products['products_id'], $products['products_name']), 'NONSSL', false));
             if ($random)
                break;
          }
@@ -319,10 +319,7 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 	if (xtc_db_num_rows($groups_cat_query) == 0)
 		return;
 	while ($groups_cat = xtc_db_fetch_array($groups_cat_query)) {
-		$link_categories = addslashes(xtc_href_link(FILENAME_DEFAULT, 'cPath='
-											. (xtc_not_null($cPath) ?
-												$cPath . '_' . $groups_cat['categories_id'] :
-												$groups_cat['categories_id']), 'NONSSL', false));
+		$link_categories = addslashes(xtc_href_link(FILENAME_DEFAULT, xtc_category_link($groups_cat['categories_id'], $groups_cat['categories_name']), 'NONSSL', false));
 		$products_in_category = xtc_count_products_in_category($groups_cat['categories_id']);
 		if ((CATEGORIES_COUNT_ZERO == '1' && $products_in_category == 0) or $products_in_category >= 1) {
 			$rss->rss_feed_item($groups_cat['categories_name'], $link_categories, $link_categories, date('r', strtotime(max($groups_cat['date_added'],$groups_cat['last_modified']))), $groups_cat['categories_description'], $groups_cat['categories_image'], false, STORE_OWNER_EMAIL_ADDRESS . " (" . STORE_OWNER . ")");
