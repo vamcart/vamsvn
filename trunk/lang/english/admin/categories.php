@@ -211,6 +211,6 @@ define('TEXT_EDIT','[edit]');
 define('TEXT_PRODUCTS_DATA','Data');
 define('TEXT_TAB_CATEGORIES_IMAGE', 'Categories image');
 
-define('ENTRY_CUSTOMERS_ACCESS','Access');
+define('ENTRY_CUSTOMERS_ACCESS','Permissions');
 
 ?>
