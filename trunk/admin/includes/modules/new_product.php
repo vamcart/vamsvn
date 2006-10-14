@@ -98,11 +98,13 @@ switch ($pInfo->products_to_xml) {
 if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $startpage_checked = false; }
 
 ?>
-<link rel="stylesheet" type="text/css" href="includes/javascript/tabsheets.css">
 <link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
-<script type="text/javascript" src="includes/javascript/tabsheets.js"></script>
+
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 
 <tr><td>
 <?php $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product'; ?>
@@ -113,17 +115,16 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
     echo xtc_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
     echo xtc_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
-<div class="tabsheets">
     <input id="btn_save" type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">
     <a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><?php echo BUTTON_CANCEL; ?></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="button" href="<?php echo xtc_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_ATTRIBUTES; ?></a>
     <a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_CROSS_SELLING; ?></a>
 
-    <dl class="tabsheets">
+<div class="tabber">
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
-        <dt><?php echo $languages[$i]['name']; ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo $languages[$i]['name']; ?></h3>
           <table border="0">
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_NAME; ?></td>
@@ -158,12 +159,12 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
             <td valign="top" class="main"><?php echo xtc_draw_input_field('products_meta_keywords[' . $languages[$i]['id'] . ']', (($products_meta_keywords[$languages[$i]['id']]) ? stripslashes($products_meta_keywords[$languages[$i]['id']]) : xtc_get_products_meta_keywords($pInfo->products_id, $languages[$i]['id'])), 'size=80 maxlenght=50'); ?></td>
           </tr>
           </table>
-        </div></dd>
+        </div>
 <?php } ?>
 
 <!-- info -->
-        <dt><?php echo TEXT_PRODUCTS_DATA; ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo TEXT_PRODUCTS_DATA; ?></h3>
           <table border="0">
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></td>
@@ -250,19 +251,19 @@ foreach (array('product_info', 'product_options') as $key) {
             <td valign="top" class="main"><?php echo xtc_draw_radio_field('products_to_xml', '1', $in_xml) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE_TO_XML . '&nbsp;' . xtc_draw_radio_field('products_to_xml', '0', $out_xml) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE_TO_XML; ?></td>
           </tr>
           </table>
-        </div></dd>
+        </div>
 <!-- info -->
 <!-- images -->
-        <dt><?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></h3>
         <table border="0" class="main">
         <?php include (DIR_WS_MODULES.'products_images.php'); ?>
         </table>
-        </div></dd>
+        </div>
 <!-- images -->
 <!-- price -->
-        <dt><?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></h3>
         <table border="0" class="main">
           <?php include(DIR_WS_MODULES.'group_prices.php'); ?>
           <tr>
@@ -281,7 +282,7 @@ foreach (array('product_info', 'product_options') as $key) {
             <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_vpe', $vpe_array, $pInfo->products_vpe='' ?  DEFAULT_PRODUCTS_VPE_ID : $pInfo->products_vpe); ?></td>
           </tr>
         </table>
-        </div></dd>
+        </div>
 <!-- price -->
 <!-- group check-->
 <?php
@@ -289,8 +290,8 @@ foreach (array('product_info', 'product_options') as $key) {
         $customers_statuses_array = xtc_get_customers_statuses();
         $customers_statuses_array = array_merge(array (array ('id' => 'all', 'text' => TXT_ALL)), $customers_statuses_array);
 ?>
-        <dt><?php echo ENTRY_CUSTOMERS_STATUS; ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo ENTRY_CUSTOMERS_ACCESS; ?></h3>
 <?php
     for ($i = 0; $n = sizeof($customers_statuses_array), $i < $n; $i ++) {
         $code = '$id=$pInfo->group_permission_'.$customers_statuses_array[$i]['id'].';';
@@ -299,11 +300,9 @@ foreach (array('product_info', 'product_options') as $key) {
         echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
     }
 ?>
-        </div></dd>
+        </div>
 <?php } ?>
 <!-- group check-->
-    </dl>
-</div>
 
 </div>
 <!-- ++++++++++ goooooooood ++++++++++ -->

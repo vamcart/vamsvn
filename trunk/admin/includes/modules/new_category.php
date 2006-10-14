@@ -49,11 +49,13 @@
     $text_new_or_edit = ($_GET['action']=='new_category_ACD') ? TEXT_INFO_HEADING_NEW_CATEGORY : TEXT_INFO_HEADING_EDIT_CATEGORY;
 ?>
 
-<link rel="stylesheet" type="text/css" href="includes/javascript/tabsheets.css">
 <link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
-<script type="text/javascript" src="includes/javascript/tabsheets.js"></script>
+
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -73,16 +75,14 @@
           $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
     echo xtc_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
-    
-<div class="tabsheets">
-
         	<input id="btn_save" type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+    
+<div class="tabber">
 
-    <dl class="tabsheets">
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
 <!-- категории -->
-        <dt><?php echo $languages[$i]['name']; ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo $languages[$i]['name']; ?></h3>
           <table border="0" class="main">
 
           <tr>
@@ -116,13 +116,13 @@
           </tr>
 
           </table>
-        </div></dd>
+        </div>
 <?php } ?>
 <!-- /категории -->
 
 <!-- info -->
-        <dt><?php echo TEXT_PRODUCTS_DATA; ?></dt>
-        <dd><div class="reducer">
+        <div class="tabbertab">
+        <h3><?php echo TEXT_PRODUCTS_DATA; ?></h3>
           <table border="0" class="main">
 
 
@@ -212,15 +212,45 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
             <td valign="top" class="main"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
             <td valign="top" class="main"><?php echo xtc_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
           </tr>
+        </table>
+        </div>
+<!-- info -->
+
+<!-- картинка -->
+        <div class="tabbertab">
+        <h3><?php echo TEXT_TAB_CATEGORIES_IMAGE; ?></h3>
+          <table border="0">
+
+           <tr>
+            <td class="main" width="200" valign="top"><?php echo TEXT_EDIT_CATEGORIES_IMAGE; ?></td>
+            <td class="top"><?php echo xtc_draw_file_field('categories_image') . '<br />' . xtc_draw_separator('pixel_trans.gif', '24', '15') . xtc_draw_hidden_field('categories_previous_image', $cInfo->categories_image); ?>
+            <?php
+            if ($cInfo->categories_image) {
+            	?>
+            <br><img src="<?php echo DIR_WS_CATALOG.'images/categories/'.$cInfo->categories_image; ?>" width="200">
+            <br><?php echo '&nbsp;' .$cInfo->categories_image;
+            echo xtc_draw_selection_field('del_cat_pic', 'checkbox', 'yes').TEXT_DELETE;
+            
+            } ?>
+            </td>
+          </tr>
+
+          </table>
+        </div>
+<!-- images -->
+
 <?php
 
 if (GROUP_CHECK=='true') {
 $customers_statuses_array = xtc_get_customers_statuses();
 $customers_statuses_array=array_merge(array(array('id'=>'all','text'=>TXT_ALL)),$customers_statuses_array);
 ?>
-<tr>
-<td style="border-top: 1px solid;  border-color: #ff0000;" valign="top" class="main" ><?php echo ENTRY_CUSTOMERS_STATUS; ?></td>
-<td style="border: 1px solid; border-color: #ff0000;"  bgcolor="#FFCC33" class="main">
+        <div class="tabbertab">
+        <h3><?php echo ENTRY_CUSTOMERS_ACCESS; ?></h3>
+          <table border="0">
+
+           <tr>
+            <td class="main" width="200" valign="top">        
 <?php
 
 for ($i=0;$n=sizeof($customers_statuses_array),$i<$n;$i++) {
@@ -241,38 +271,11 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 ?>
 
           </table>
-        </div></dd>
-<!-- info -->
-
-<!-- картинка -->
-        <dt><?php echo TEXT_TAB_CATEGORIES_IMAGE; ?></dt>
-        <dd><div class="reducer">
-          <table border="0">
-
-           <tr>
-            <td class="main" width="200" valign="top"><?php echo TEXT_EDIT_CATEGORIES_IMAGE; ?></td>
-            <td class="top"><?php echo xtc_draw_file_field('categories_image') . '<br />' . xtc_draw_separator('pixel_trans.gif', '24', '15') . xtc_draw_hidden_field('categories_previous_image', $cInfo->categories_image); ?>
-            <?php
-            if ($cInfo->categories_image) {
-            	?>
-            <br><img src="<?php echo DIR_WS_CATALOG.'images/categories/'.$cInfo->categories_image; ?>" width="200">
-            <br><?php echo '&nbsp;' .$cInfo->categories_image;
-            echo xtc_draw_selection_field('del_cat_pic', 'checkbox', 'yes').TEXT_DELETE;
-            
-            } ?>
-            </td>
-          </tr>
-
-          </table>
-        </div></dd>
-<!-- images -->
-
-    </dl>
-</div>
+        </div>
 
 </div>
-    
-    
+
+   
 </td>
       </tr>
 
