@@ -340,3 +340,25 @@ TD.line {
   background-color: #990000;
   color: #990000;
 }
+
+TR.headerNavigation {
+  background: #F6F6F6;
+}
+
+TD.headerNavigation {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-weight : bold;
+	border-bottom: 1px solid;
+	border-color: #b6b7cb;
+	background-color: #F6F6F6;
+}
+
+A.headerNavigation { 
+  color: #ffffff; 
+}
+
+A.headerNavigation:hover {
+  color: #ffffff;
+}
