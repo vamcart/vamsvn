@@ -104,10 +104,13 @@
     </table></td>
   </tr>
 <!-- body_eof //-->
-
+  <tr>
+  <td>
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->
+</td>
+</tr>
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
