@@ -32,19 +32,24 @@
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
+  <td>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
+  <tr>
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_statistic.gif'); ?></td>
-    <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-  </tr>
-  <tr>
-    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
-  </tr>
-</table></td>
-      </tr>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>

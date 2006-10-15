@@ -502,8 +502,7 @@ function check_form() {
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-<!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+  <td>
 <?php
 
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
@@ -513,17 +512,25 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	$cInfo = new objectInfo($customers);
 	$newsletter_array = array (array ('id' => '1', 'text' => ENTRY_NEWSLETTER_YES), array ('id' => '0', 'text' => ENTRY_NEWSLETTER_NO));
 ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
+
+  <tr>
+<!-- body_text //-->
+    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td>
-        <table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_customers.gif'); ?></td>
-    <td class="pageHeading"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
-  </tr>
-  <tr> 
-    <td class="main" valign="top"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
-  </tr>
-</table>
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="middle" class="pageHeading"><?php if ($customers_statuses_array[$customers['customers_status']]['csa_image'] != '') { echo xtc_image(DIR_WS_ICONS . $customers_statuses_array[$customers['customers_status']]['csa_image'], ''); } ?></td>
@@ -1003,17 +1010,24 @@ if ($error == true) {
 
 } else {
 ?>
+  <tr>
+  <td>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
       <tr>
         <td>
-        <table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_customers.gif'); ?></td>
-    <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-  </tr>
-  <tr> 
-    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
-  </tr>
-</table>
         
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr><?php echo xtc_draw_form('search', FILENAME_CUSTOMERS, '', 'get'); ?>
