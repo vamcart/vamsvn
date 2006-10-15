@@ -227,23 +227,26 @@ function display_ttc(action, prix, taxe, up){
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
+  <td>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
+  <tr>
 <!-- body_text //-->
 
 <td width="100%" valign="top">
   <table class="boxCenter" border="0" width="100%" cellspacing="0" cellpadding="2">
-      <tr>
-        <td>
-         <table border="0" width="100%" cellspacing="0" cellpadding="0">
-            <tr>
-             <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_modules.gif'); ?></td>
-             <td class="pageHeading" colspan="3" valign="top"><?php echo HEADING_TITLE; ?></td>
-						</tr>
-						<tr>
-						 <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
-						</tr>
-		 		 </table>
-		 	  </td>
-		  </tr>
       <tr><td align="center">
 		   <table width="100%" cellspacing="0" cellpadding="0" border="1" bgcolor="#F3F9FB"<tr><td>
 				<table width="100%" cellspacing="0" cellpadding="0" border="0">

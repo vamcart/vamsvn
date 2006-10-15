@@ -179,6 +179,22 @@ require (DIR_WS_INCLUDES.'header.php');
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
+  <td>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
+  <tr>
 <!-- body_text //-->
     <td  class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
@@ -188,15 +204,6 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 ?>
       <tr>
       <td width="100%">
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_customers.gif'); ?></td>
-    <td class="pageHeading"><?php echo HEADING_TITLE . TEXT_NUMBER . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
-  </tr>
-  <tr> 
-    <td class="main" valign="top"><?php echo HEADING_TITLE . TEXT_NUMBER . $oID . ' - ' . $order->info['date_purchased'] ; ?></td>
-  </tr>
-</table>
  <?php echo '<a class="button" href="' . xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?>
  <!-- Bestellbearbeitung Anfang -->
    <a class="button" href="<?php echo xtc_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><?php echo BUTTON_EDIT ?></a>
@@ -598,9 +605,7 @@ elseif ($_GET['action'] == 'custom_action') {
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr> 
-    <td width="80" rowspan="2"><?php echo xtc_image(DIR_WS_ICONS.'heading_customers.gif'); ?></td>
-    <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-    <td class="pageHeading" align="right">
+    <td colspan="2" class="main" align="right">
               <?php echo xtc_draw_form('orders', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_SEARCH . ' ' . xtc_draw_input_field('oID', '', 'size="12"') . xtc_draw_hidden_field('action', 'edit').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
               </form>

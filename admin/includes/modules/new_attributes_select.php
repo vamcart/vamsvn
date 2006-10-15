@@ -23,9 +23,6 @@
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 $adminImages = DIR_WS_CATALOG . "lang/". $_SESSION['language'] ."/admin/images/buttons/";
 ?>
-  <tr>
-    <td class="pageHeading" colspan="3"><?php echo $pageTitle; ?></td>
-  </tr>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" name="SELECT_PRODUCT" method="post"><input type="hidden" name="action" value="edit">
 <?php
 echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());

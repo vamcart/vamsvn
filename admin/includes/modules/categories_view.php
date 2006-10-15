@@ -90,9 +90,7 @@
      <td>
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
         <tr>
-         <td class="pageHeading">
-            <?php echo HEADING_TITLE; ?>
-         </td>
+         <td class="pageHeading">&nbsp;</td>
          <td class="pageHeading" align="right">
             <?php echo xtc_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?>
          </td>

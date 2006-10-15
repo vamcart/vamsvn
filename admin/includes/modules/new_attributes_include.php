@@ -27,9 +27,6 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
    require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'xtcPrice.php');
    $xtPrice = new xtcPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
 ?>
-  <tr>
-    <td class="pageHeading" colspan="3"><?php echo $pageTitle; ?></td>
-  </tr>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="SUBMIT_ATTRIBUTES" enctype="multipart/form-data"><input type="hidden" name="current_product_id" value="<?php echo $_POST['current_product_id']; ?>"><input type="hidden" name="action" value="change">
 <?php
 echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());

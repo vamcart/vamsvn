@@ -108,6 +108,22 @@ if ($_GET['delete']) {
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
+  <td>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
+    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
+    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE_RECOVER; ?></td>
+  </tr>
+  <tr>
+    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
+  </tr>
+</table>  
+  </td>
+  </tr>
+  <tr>
 <!-- body_text //-->
     <td width="100%" valign="top">
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -119,8 +135,7 @@ if ($_GET['delete']) {
  <?php if (count($custid) > 0 ) {  ?>
          <table border="0" width="100%" cellspacing="0" cellpadding="2">
             <tr>
-              <td class="pageHeading" align="left" colspan=2 width="50%"><?php echo HEADING_TITLE_RECOVER; ?> </td>
-              <td class="pageHeading" align="left" colspan=4 width="50%"><?php echo HEADING_EMAIL_SENT; ?> </td>
+              <td class="main" align="left" colspan=8 width="100%"><?php echo HEADING_EMAIL_SENT; ?> </td>
             </tr>
             <tr class="dataTableHeadingRow">
               <td class="dataTableHeadingContent" align="left" colspan="1" width="15%" nowrap><?php echo TABLE_HEADING_CUSTOMER; ?></td>
@@ -270,8 +285,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
         <!-- REPORT TABLE BEGIN //-->
           <table border="0" width="100%" cellspacing="0" cellpadding="2">
             <tr>
-              <td class="pageHeading" align="left" width="50%" colspan="4"><?php echo HEADING_TITLE_RECOVER; ?></td>
-              <td class="pageHeading" align="right" width="50%" colspan="4">
+              <td class="pageHeading" align="left" width="100%" colspan="8">
                 <?php  $tdate = $_POST['tdate'];
                     if ($_POST['tdate'] == '') $tdate = $BASE_DAYS;?>
                 <?php echo xtc_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
