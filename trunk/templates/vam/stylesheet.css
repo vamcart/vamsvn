@@ -907,4 +907,10 @@ TR.buynowFooter {
   background-color: #BDBAC6; 
 }
 
+TD.parsetime {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  background: #f1f1f6;
+  text-align:center;
 }

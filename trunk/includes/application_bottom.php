@@ -27,7 +27,7 @@ if (STORE_PAGE_PARSE_TIME == 'true') {
     	$time_start = explode(' ', PAGE_PARSE_START_TIME);
     $time_end = explode(' ', microtime());
     $parse_time = number_format(($time_end[1] + $time_end[0] - ($time_start[1] + $time_start[0])), 3);
-      echo '<div class="parseTime">Время исполнения: ' . $parse_time . ', запросов: ' . $query_counts . '</div>';
+      echo '<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td align="center" class="parsetime">Время исполнения: ' . $parse_time . ', запросов: ' . $query_counts . '</td></tr></table>';
     }
 
 if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1)) {
