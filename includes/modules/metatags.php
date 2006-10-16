@@ -31,7 +31,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>	
 <meta name="description" content="<?php echo $product->data['products_meta_description']; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
-<title><?php echo TITLE.' - '.$product->data['products_meta_title'].' '.$product->data['products_name'].' '.$product->data['products_model']; ?></title>
+<title><?php echo $product->data['products_meta_title'].' '.$product->data['products_name'].' '.$product->data['products_model'] . ' - ' . TITLE; ?></title>
 	<?php
 
 	} else {
@@ -76,7 +76,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
 <meta name="description" content="<?php echo $categories_meta['categories_meta_description']; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords']; ?>" />
-<title><?php echo TITLE.' - '.$categories_meta['categories_meta_title']; ?></title>
+<title><?php echo $categories_meta['categories_meta_title'] . ' - ' . TITLE; ?></title>
 <?php
 
 	} else {
@@ -89,7 +89,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
-<title><?php echo TITLE.' - '.$contents_meta['content_heading']; ?></title>
+<title><?php echo $contents_meta['content_heading'] . ' - ' . TITLE; ?></title>
 <?php
 
 		} else {
