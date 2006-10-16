@@ -47,7 +47,7 @@ define('TEXT_DATE_ADDED', 'Добавлено:');
 define('TEXT_DATE_AVAILABLE', 'Доступно:');
 define('TEXT_LAST_MODIFIED', 'Изменено:');
 define('TEXT_IMAGE_NONEXISTENT', 'Картинка отсутствует');
-define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Пожалуйста, добавьте категорию или товар в <br />&nbsp;<br /><b>%s</b>');
+define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Пожалуйста, добавьте категорию или товар <br />&nbsp;<br /><b>%s</b>');
 define('TEXT_PRODUCT_MORE_INFORMATION', 'Для получения дополнительной информации, пожалуйста, посетите эту <a href="http://%s" target="blank"><u>страницу</u></a>.');
 define('TEXT_PRODUCT_DATE_ADDED', 'Этот товар добавлен в наш каталог %s.');
 define('TEXT_PRODUCT_DATE_AVAILABLE', 'Этот товар появится в продаже %s.');
