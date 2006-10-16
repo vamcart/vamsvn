@@ -17,7 +17,7 @@
 // Some FileSystem Directories
   if (!defined('DIR_FS_DOCUMENT_ROOT')) {
       define('DIR_FS_DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
-      $local_install_path=str_replace('/xtc_installer','',$_SERVER['PHP_SELF']);
+      $local_install_path=str_replace('/install','',$_SERVER['PHP_SELF']);
       $local_install_path=str_replace('index.php','',$local_install_path);
       $local_install_path=str_replace('install_step1.php','',$local_install_path);
       $local_install_path=str_replace('install_step2.php','',$local_install_path);

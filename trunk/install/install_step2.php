@@ -233,7 +233,7 @@
 </table>
 <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_1; ?></font></p>
       <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_2; ?></font></p>
-      <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_3; ?> <b><?php echo DIR_FS_CATALOG . 'xtc_installer/xtcommerce.sql'; ?></b>.</font></p>
+      <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_3; ?> <b><?php echo DIR_FS_CATALOG . 'install/vam.sql'; ?></b>.</font></p>
 
 <form name="install" action="install_step3.php" method="post">
 

@@ -102,7 +102,7 @@
     xtc_db_connect_installer($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
 
     $db_error = false;
-    $sql_file = DIR_FS_CATALOG . 'xtc_installer/vam.sql';
+    $sql_file = DIR_FS_CATALOG . 'install/vam.sql';
 //    $script_filename = (($SCRIPT_FILENAME) ? $SCRIPT_FILENAME : $HTTP_SERVER_VARS['SCRIPT_FILENAME']);
 //    $script_directory = dirname($script_filename);
 //    $sql_file = $script_directory . '/nextcommerce.sql';

@@ -257,7 +257,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
 
 
 
-	      xtc_redirect(xtc_href_link('xtc_installer/install_step7.php', '', 'NONSSL'));
+	      xtc_redirect(xtc_href_link('install/install_step7.php', '', 'NONSSL'));
 		}
 			
 	}

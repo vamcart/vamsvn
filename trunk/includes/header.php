@@ -282,7 +282,7 @@ require('includes/google_conversiontracking.js.php');
 
   // check if the 'install' directory exists, and warn of its existence
   if (WARN_INSTALL_EXISTENCE == 'true') {
-    if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/xtc_installer')) {
+    if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/install')) {
       xtc_output_warning(WARNING_INSTALL_DIRECTORY_EXISTS);
     }
   }

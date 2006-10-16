@@ -142,7 +142,7 @@ xtc_db_query("create table personal_offers_by_customers_status_1 (price_id INT N
 xtc_db_query("create table personal_offers_by_customers_status_2 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
 xtc_db_query("create table personal_offers_by_customers_status_0 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
 xtc_db_query("create table personal_offers_by_customers_status_3 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
-              xtc_redirect(xtc_href_link('xtc_installer/install_finished.php', '', 'NONSSL'));
+              xtc_redirect(xtc_href_link('install/install_finished.php', '', 'NONSSL'));
                 }                       
         }
 
