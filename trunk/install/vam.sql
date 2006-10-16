@@ -1170,8 +1170,8 @@ INSERT INTO `content_manager` VALUES (11, 0, 0, '', 2, 'Sample page', 'Sample pa
 INSERT INTO `content_manager` VALUES (12, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', 0, 1, '', 0, 6, 1);
 INSERT INTO `content_manager` VALUES (13, 0, 0, '', 2, 'Contact us', 'Contact us', 'Contact us page', 0, 1, '', 1, 7, 0);
 INSERT INTO `content_manager` VALUES (14, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', 0, 1, '', 1, 7, 0);
-INSERT INTO `content_manager` VALUES (15, 0, 0, '', 1, 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0);
-INSERT INTO `content_manager` VALUES (16, 0, 0, '', 2, 'Sitemap', '', '', 0, 0, 'sitemap.php', 1, 8, 0);
+INSERT INTO `content_manager` VALUES (15, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', 0, 0, 'sitemap.php', 1, 8, 0);
+INSERT INTO `content_manager` VALUES (16, 0, 0, '', 2, 'Sitemap', 'Sitemap', '', 0, 0, 'sitemap.php', 1, 8, 0);
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
 INSERT INTO address_format VALUES (1, '$firstname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
