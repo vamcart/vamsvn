@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_step6.php 941 2005-05-11 19:49:53Z hhgag $   
+   $Id: step6.php 941 2005-05-11 19:49:53Z hhgag $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -9,7 +9,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (install_step6.php,v 1.29 2003/08/20); www.nextcommerce.org
+   (c) 2003	 nextcommerce (step6.php,v 1.29 2003/08/20); www.nextcommerce.org
    
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -75,23 +75,23 @@
     if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_FIRST_NAME_ERROR);
+      $messageStack->add('step6', ENTRY_FIRST_NAME_ERROR);
     }
 
     if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_LAST_NAME_ERROR);
+      $messageStack->add('step6', ENTRY_LAST_NAME_ERROR);
     }
 	
     if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_EMAIL_ADDRESS_ERROR);
+      $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_ERROR);
     } elseif (xtc_validate_email($email_address) == false) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
+      $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
     } 
     
 
@@ -99,25 +99,25 @@
  if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_STREET_ADDRESS_ERROR);
+      $messageStack->add('step6', ENTRY_STREET_ADDRESS_ERROR);
     }
 
     if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_POST_CODE_ERROR);
+      $messageStack->add('step6', ENTRY_POST_CODE_ERROR);
     }
 
     if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_CITY_ERROR);
+      $messageStack->add('step6', ENTRY_CITY_ERROR);
     }
 
     if (is_numeric($country) == false) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_COUNTRY_ERROR);
+      $messageStack->add('step6', ENTRY_COUNTRY_ERROR);
     }
 
     if (ACCOUNT_STATE == 'true') {
@@ -133,13 +133,13 @@
         } else {
           $error = true;
 
-          $messageStack->add('install_step6', ENTRY_STATE_ERROR_SELECT);
+          $messageStack->add('step6', ENTRY_STATE_ERROR_SELECT);
         }
       } else {
         if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
           $error = true;
 
-          $messageStack->add('install_step6', ENTRY_STATE_ERROR);
+          $messageStack->add('step6', ENTRY_STATE_ERROR);
         }
       }
     }
@@ -147,44 +147,44 @@
     if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_TELEPHONE_NUMBER_ERROR);
+      $messageStack->add('step6', ENTRY_TELEPHONE_NUMBER_ERROR);
     }
 
 
     if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_PASSWORD_ERROR);
+      $messageStack->add('step6', ENTRY_PASSWORD_ERROR);
     } elseif ($password != $confirmation) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+      $messageStack->add('step6', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
     }
 	
 	    if (strlen($store_name) < '3') {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_STORE_NAME_ERROR);
+      $messageStack->add('step6', ENTRY_STORE_NAME_ERROR);
     }
 	if (strlen($company) < '2') {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_COMPANY_NAME_ERROR);
+      $messageStack->add('step6', ENTRY_COMPANY_NAME_ERROR);
     }
 	
     if (strlen($email_from) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_EMAIL_ADDRESS_FROM_ERROR);
+      $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_FROM_ERROR);
     } elseif (xtc_validate_email($email_from) == false) {
       $error = true;
 
-      $messageStack->add('install_step6', ENTRY_EMAIL_ADDRESS_FROM_CHECK_ERROR);
+      $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_FROM_CHECK_ERROR);
     } 
 	if ( ($zone_setup != 'yes') && ($zone_setup != 'no') ) {
         $error = true;
 
-        $messageStack->add('install_step6', SELECT_ZONE_SETUP_ERROR);
+        $messageStack->add('step6', SELECT_ZONE_SETUP_ERROR);
 	}
     
 	
@@ -257,7 +257,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
 
 
 
-	      xtc_redirect(xtc_href_link('install/install_step7.php', '', 'NONSSL'));
+	      xtc_redirect(xtc_href_link('install/step7.php', '', 'NONSSL'));
 		}
 			
 	}
@@ -332,13 +332,13 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
                 <td>&nbsp;</td>
               </tr>
 			              <?php
-  if ($messageStack->size('install_step6') > 0) {
+  if ($messageStack->size('step6') > 0) {
 ?>
 <tr><td style="border-bottom: 1px solid; border-color: #cccccc;" colspan="3">&nbsp;</td>
 <tr><td colspan="3">
              <table border="0" cellpadding="0" cellspacing="0" bgcolor="f3f3f3">
               <tr> 
-                <td><?php echo $messageStack->output('install_step6'); ?></td>
+                <td><?php echo $messageStack->output('step6'); ?></td>
               </tr>
             </table>
 </td></tr>
@@ -366,7 +366,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
           <td>
              
 
-             <form name="install" action="install_step6.php" method="post" onSubmit="return check_form(install_step6);">
+             <form name="install" action="step6.php" method="post" onSubmit="return check_form(step6);">
               <input name="action" type="hidden" value="process">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr> 

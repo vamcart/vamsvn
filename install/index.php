@@ -50,7 +50,7 @@
         
 
                     if ($error == false) {
-                        xtc_redirect(xtc_href_link('install_step1.php', '', 'NONSSL'));
+                        xtc_redirect(xtc_href_link('step1.php', '', 'NONSSL'));
                 }
         }
 

@@ -19,14 +19,14 @@
       define('DIR_FS_DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
       $local_install_path=str_replace('/install','',$_SERVER['PHP_SELF']);
       $local_install_path=str_replace('index.php','',$local_install_path);
-      $local_install_path=str_replace('install_step1.php','',$local_install_path);
-      $local_install_path=str_replace('install_step2.php','',$local_install_path);
-      $local_install_path=str_replace('install_step3.php','',$local_install_path);
-      $local_install_path=str_replace('install_step4.php','',$local_install_path);
-      $local_install_path=str_replace('install_step5.php','',$local_install_path);
-      $local_install_path=str_replace('install_step6.php','',$local_install_path);
-      $local_install_path=str_replace('install_step7.php','',$local_install_path);
-      $local_install_path=str_replace('install_finished.php','',$local_install_path);
+      $local_install_path=str_replace('step1.php','',$local_install_path);
+      $local_install_path=str_replace('step2.php','',$local_install_path);
+      $local_install_path=str_replace('step3.php','',$local_install_path);
+      $local_install_path=str_replace('step4.php','',$local_install_path);
+      $local_install_path=str_replace('step5.php','',$local_install_path);
+      $local_install_path=str_replace('step6.php','',$local_install_path);
+      $local_install_path=str_replace('step7.php','',$local_install_path);
+      $local_install_path=str_replace('finished.php','',$local_install_path);
       define('DIR_FS_CATALOG', DIR_FS_DOCUMENT_ROOT . $local_install_path);
   }
   if (!defined('DIR_FS_INC')) {

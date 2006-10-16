@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_step2.php 1119 2005-07-25 22:19:50Z novalis $   
+   $Id: step2.php 1119 2005-07-25 22:19:50Z novalis $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -9,8 +9,8 @@
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(install_2.php,v 1.4 2002/08/12); www.oscommerce.com 
-   (c) 2003	 nextcommerce (install_step2.php,v 1.16 2003/08/1); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(step2.php,v 1.4 2002/08/12); www.oscommerce.com 
+   (c) 2003	 nextcommerce (step2.php,v 1.16 2003/08/1); www.nextcommerce.org
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -54,7 +54,7 @@
   if (xtc_in_array('database', $_POST['install'])) {
    // do nothin  
   } else {
-   xtc_redirect('install_step4.php');
+   xtc_redirect('step4.php');
   }
   
 ?>
@@ -196,7 +196,7 @@
           <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_DB_ERROR_1; ?></font></p>
           <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_DB_ERROR_2; ?></font></p>
 
-<form name="install" action="install_step1.php" method="post">
+<form name="install" action="step1.php" method="post">
 
 <?php
       reset($_POST);
@@ -235,7 +235,7 @@
       <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_2; ?></font></p>
       <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PROCESS_3; ?> <b><?php echo DIR_FS_CATALOG . 'install/vam.sql'; ?></b>.</font></p>
 
-<form name="install" action="install_step3.php" method="post">
+<form name="install" action="step3.php" method="post">
 
 <?php
       reset($_POST);
@@ -254,7 +254,7 @@
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center"><a href="install_step1.php"><img src="images/button_cancel.gif" border="0" alt="<?php echo IMAGE_CANCEL; ?>"></a></td>
+    <td align="center"><a href="step1.php"><img src="images/button_cancel.gif" border="0" alt="<?php echo IMAGE_CANCEL; ?>"></a></td>
     <td align="center"><input type="image" src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"></td>
   </tr>
 </table>
