@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_step4.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: step4.php 899 2005-04-29 02:40:57Z hhgag $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -9,8 +9,8 @@
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(install_4.php,v 1.9 2002/08/19); www.oscommerce.com
-   (c) 2003	 nextcommerce (install_step4.php,v 1.14 2003/08/17); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(step4.php,v 1.9 2002/08/19); www.oscommerce.com
+   (c) 2003	 nextcommerce (step4.php,v 1.14 2003/08/17); www.nextcommerce.org
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -133,7 +133,7 @@
 <p class="noteBox"><font face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_STEP4_ERROR_1; ?></font></p>
             <p class="noteBox"><font face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_STEP4_ERROR_2; ?></font></p>
             </font>
-            <form name="install" action="install_step4.php" method="post">
+            <form name="install" action="step4.php" method="post">
               <font size="1" face="Verdana, Arial, Helvetica, sans-serif">
               <?php
     reset($_POST);
@@ -164,7 +164,7 @@
   } else {
 ?>
             </font>
-            <form name="install" action="install_step5.php" method="post">
+            <form name="install" action="step5.php" method="post">
               <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_VALUES; ?><br />
                 <br />
                 includes/configure.php<br />

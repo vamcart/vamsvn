@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_finished.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: finished.php 899 2005-04-29 02:40:57Z hhgag $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -8,7 +8,7 @@
    Copyright (c) 2003 XT-Commerce
    --------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (install_finished.php,v 1.5 2003/08/17); www.nextcommerce.org
+   (c) 2003	 nextcommerce (finished.php,v 1.5 2003/08/17); www.nextcommerce.org
    
    Released under the GNU General Public License 
    --------------------------------------------------------------*/

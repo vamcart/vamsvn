@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_step7.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: step7.php 899 2005-04-29 02:40:57Z hhgag $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -9,7 +9,7 @@
    Released under the GNU General Public License
    --------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (install_step7.php,v 1.26 2003/08/17); www.nextcommerce.org
+   (c) 2003	 nextcommerce (step7.php,v 1.26 2003/08/17); www.nextcommerce.org
    
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -68,54 +68,54 @@
         // default guests    
      if (strlen($status_discount) < '3') {
         $error = true;
-        $messageStack->add('install_step7', ENTRY_DISCOUNT_ERROR);
+        $messageStack->add('step7', ENTRY_DISCOUNT_ERROR);
         }
      if (strlen($status_ot_discount) < '3') {
         $error = true;
-        $messageStack->add('install_step7', ENTRY_OT_DISCOUNT_ERROR);
+        $messageStack->add('step7', ENTRY_OT_DISCOUNT_ERROR);
         }
      if ( ($status_ot_discount_flag != '1') && ($status_ot_discount_flag != '0') ) {
         $error = true;
 
-        $messageStack->add('install_step7', SELECT_OT_DISCOUNT_ERROR);
+        $messageStack->add('step7', SELECT_OT_DISCOUNT_ERROR);
         }
      if ( ($graduated_price != '1') && ($graduated_price != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_GRADUATED_ERROR);
+        $messageStack->add('step7', SELECT_GRADUATED_ERROR);
         }
      if ( ($show_price != '1') && ($show_price != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_PRICE_ERROR);
+        $messageStack->add('step7', SELECT_PRICE_ERROR);
         }
      if ( ($show_tax != '1') && ($show_tax != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_TAX_ERROR);
+        $messageStack->add('step7', SELECT_TAX_ERROR);
         }
         
         // default customers
      if (strlen($status_discount2) < '3') {
         $error = true;
-      $messageStack->add('install_step7', ENTRY_DISCOUNT_ERROR2);
+      $messageStack->add('step7', ENTRY_DISCOUNT_ERROR2);
         }        
      if (strlen($status_ot_discount2) < '3') {
           $error = true;
-          $messageStack->add('install_step7', ENTRY_OT_DISCOUNT_ERROR2);
+          $messageStack->add('step7', ENTRY_OT_DISCOUNT_ERROR2);
         }
      if ( ($status_ot_discount_flag2 != '1') && ($status_ot_discount_flag2 != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_OT_DISCOUNT_ERROR2);
+        $messageStack->add('step7', SELECT_OT_DISCOUNT_ERROR2);
         }
      if ( ($graduated_price2 != '1') && ($graduated_price2 != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_GRADUATED_ERROR2);
+        $messageStack->add('step7', SELECT_GRADUATED_ERROR2);
         }
      if ( ($show_price2 != '1') && ($show_price2 != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_PRICE_ERROR2);
+        $messageStack->add('step7', SELECT_PRICE_ERROR2);
         }
      if ( ($show_tax2 != '1') && ($show_tax2 != '0') ) {
         $error = true;
-        $messageStack->add('install_step7', SELECT_TAX_ERROR2);
+        $messageStack->add('step7', SELECT_TAX_ERROR2);
         }
         
 if ($error == false) {
@@ -142,7 +142,7 @@ xtc_db_query("create table personal_offers_by_customers_status_1 (price_id INT N
 xtc_db_query("create table personal_offers_by_customers_status_2 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
 xtc_db_query("create table personal_offers_by_customers_status_0 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
 xtc_db_query("create table personal_offers_by_customers_status_3 (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,products_id int NOT NULL,quantity int, personal_offer decimal(15,4)) ");
-              xtc_redirect(xtc_href_link('install/install_finished.php', '', 'NONSSL'));
+              xtc_redirect(xtc_href_link('install/finished.php', '', 'NONSSL'));
                 }                       
         }
 
@@ -221,13 +221,13 @@ xtc_db_query("create table personal_offers_by_customers_status_3 (price_id INT N
                 <td>&nbsp;</td>
               </tr>
                                       <?php
-  if ($messageStack->size('install_step7') > 0) {
+  if ($messageStack->size('step7') > 0) {
 ?>
 <tr><td style="border-bottom: 1px solid; border-color: #cccccc;" colspan="3">&nbsp;</td>
 <tr><td colspan="3">
              <table border="0" cellpadding="0" cellspacing="0" bgcolor="f3f3f3">
               <tr> 
-                <td><?php echo $messageStack->output('install_step7'); ?></td>
+                <td><?php echo $messageStack->output('step7'); ?></td>
               </tr>
             </table>
 </td></tr>
@@ -255,7 +255,7 @@ xtc_db_query("create table personal_offers_by_customers_status_3 (price_id INT N
           <td>
              
 
-             <form name="install" action="install_step7.php" method="post" onSubmit="return check_form(install_step6);">
+             <form name="install" action="step7.php" method="post" onSubmit="return check_form(step6);">
               <input name="action" type="hidden" value="process">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr> 

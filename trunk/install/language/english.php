@@ -13,7 +13,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 // Global
-define('TEXT_FOOTER','Copyright  &copy; 2002 - 2006 <a href="http://www.xt-commerce.com">xt:Commerce</a><br />Powered by xt:Commerce VaM Edition'); 
+define('TEXT_FOOTER','Powered by <a href="http://oscommerce.su">VaM Shop</a>'); 
    
 // Box names
 define('BOX_LANGUAGE','Language');
@@ -30,13 +30,13 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 // Error messages
  	// index.php
 	define('SELECT_LANGUAGE_ERROR','Please select a language!');
-	// install_step2,5.php
+	// step2,5.php
 	define('TEXT_CONNECTION_ERROR','A test connection made to the database was NOT successful.');
 	define('TEXT_CONNECTION_SUCCESS','A test connection made to the database was successful.');
 	define('TEXT_DB_ERROR','The error message returned is:');
 	define('TEXT_DB_ERROR_1','Please click on the <i>Back</i> graphic to review your database server settings.');
 	define('TEXT_DB_ERROR_2','If you require help with your database server settings, please consult your hosting company.');
-	// install_step6.php
+	// step6.php
 	define('ENTRY_FIRST_NAME_ERROR','Firstname to short');
 	define('ENTRY_LAST_NAME_ERROR','Lastname to short');
 	define('ENTRY_EMAIL_ADDRESS_ERROR','Email to short');
@@ -53,7 +53,7 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 	define('ENTRY_EMAIL_ADDRESS_FROM_ERROR','Email-From to short');
 	define('ENTRY_EMAIL_ADDRESS_FROM_CHECK_ERROR','Check Email-From Format');
 	define('SELECT_ZONE_SETUP_ERROR','Select Zone setup');
-	// install_step7.php
+	// step7.php
 	define('ENTRY_DISCOUNT_ERROR','Product discount -Guest');
 	define('ENTRY_OT_DISCOUNT_ERROR','Discount on ot -Guest');
 	define('SELECT_OT_DISCOUNT_ERROR','Discount on ot -Guest');
@@ -75,14 +75,14 @@ define('PULL_DOWN_DEFAULT','Please select a Country!');
 // index.php
 define('TITLE_SELECT_LANGUAGE','Select your language!');
 
-define('TEXT_WELCOME_INDEX','<b>Welcome to xt:Commerce VaM Edition</b><br /><br />xt:Commerce VaM Edition is an open source e-commerce solution under on going development by the xt:Commerce Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> xt:Commerce VaM Edition combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, xt:Commerce VaM Edition can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes GNU/Linux, Solaris, BSD, and Microsoft Windows environments.');
+define('TEXT_WELCOME_INDEX','<b>Welcome to VaM Shop</b><br /><br />VaM Shop is an open source e-commerce solution under on going development by the VaM Shop Team and its community.<br /> Its feature packed out-of-the-box installation allows store owners to setup, run, and maintain their online stores with minimum effort and with no costs involved.<br /> VaM Shop combines open source solutions to provide a free and open development platform, which includes the powerful PHP web scripting language, the stable Apache web server, and the fast MySQL database server.<br /><br />With no restrictions or special requirements, VaM Shop can be installed on any PHP4 enabled web server, on any environment that PHP and MySQL supports, which includes GNU/Linux, Solaris, BSD, and Microsoft Windows environments.');
 define('TEXT_WELCOME_STEP1','<b>Main database and webserver settings</b><br /><br />Please enter your Database and webserver settings.<br />');
-define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The xt:Commerce VaM Edition installer will automatically install the xt:Commerce VaM Edition database.');
+define('TEXT_WELCOME_STEP2','<b>Install database</b><br /><br />The VaM Shop installer will automatically install the VaM Shop database.');
 define('TEXT_WELCOME_STEP3','<b>Database import.</b><br /><br />');
-define('TEXT_WELCOME_STEP4','<b>Configure xt:Commerce VaM Edition main files</b><br /><br /><b>If there are old configure files from a further installation, xt:Commerce VaM Edition wiill delete them</b><br /><br />The installer will set up the configuration files with the main parameters for database and file structur.<br /><br />You can choose between different session handling systems.');
+define('TEXT_WELCOME_STEP4','<b>Configure VaM Shop main files</b><br /><br /><b>If there are old configure files from a further installation, VaM Shop wiill delete them</b><br /><br />The installer will set up the configuration files with the main parameters for database and file structur.<br /><br />You can choose between different session handling systems.');
 define('TEXT_WELCOME_STEP5','<b>Webserver Configuration</b><br /><br />');
-define('TEXT_WELCOME_STEP6','<b>Basic shop configuration</b><br /><br />The installer will create the admin account and will perform some db actions.<br /> The given informations for <b>Country</b> and <b>Post Code</b> are used for shipping and tax callculations.<br /><br />If you wish, xtcommerce can automatically setup the zones,tax-rates and tax-classes for delivering/selling within the European Union.<br />Just set <b>setup zones for EU</b> to <b>YES</b>.');
-define('TEXT_WELCOME_STEP7','<b>Guest and default customers setup</b><br /><br />The xt:Commerce VaM Edition group- and pricesystem got nearly infinite possibilities of different prices.<br /><br />
+define('TEXT_WELCOME_STEP6','<b>Basic shop configuration</b><br /><br />The installer will create the admin account and will perform some db actions.<br /> The given informations for <b>Country</b> and <b>Post Code</b> are used for shipping and tax callculations.<br /><br />If you wish, VaM Shop can automatically setup the zones,tax-rates and tax-classes for delivering/selling within the European Union.<br />Just set <b>setup zones for EU</b> to <b>YES</b>.');
+define('TEXT_WELCOME_STEP7','<b>Guest and default customers setup</b><br /><br />The VaM Shop group- and pricesystem got nearly infinite possibilities of different prices.<br /><br />
 <b>% discount on single product</b><br />
 %max can be set for every single product, and single customers group<br />
 if %max at product = 10.00% and %max for group = 5% -> 5% discount on product<br />
@@ -97,48 +97,48 @@ user group 2 -> 10% discount on product Y<br />
 user group 3 -> a special group price on product Y<br />
 user group 4 -> netto price on product Y<br />
 ');
-define('TEXT_WELCOME_FINISHED','<b>xt:Commerce VaM Edition installation successful!</b>');
-// install_step1.php
+define('TEXT_WELCOME_FINISHED','<b>VaM Shop installation successful!</b>');
+// step1.php
 
 define('TITLE_CUSTOM_SETTINGS','Custom Settings');
-define('TEXT_IMPORT_DB','Import xt:Commerce VaM Edition Database');
-define('TEXT_IMPORT_DB_LONG','Import the xt:Commerce VaM Edition database structure which includes tables and sample data.');
+define('TEXT_IMPORT_DB','Import VaM Shop Database');
+define('TEXT_IMPORT_DB_LONG','Import the VaM Shop database structure which includes tables and sample data.');
 define('TEXT_AUTOMATIC','Automatic Configuration');
-define('TEXT_AUTOMATIC_LONG','The information you submit regarding the web server and database server will be automatically saved into both xt:Commerce VaM Edition Shop and Administration Tool configuration files.');
+define('TEXT_AUTOMATIC_LONG','The information you submit regarding the web server and database server will be automatically saved into both VaM Shop Shop and Administration Tool configuration files.');
 define('TITLE_DATABASE_SETTINGS','Database Settings');
 define('TEXT_DATABASE_SERVER','Database Server');
 define('TEXT_DATABASE_SERVER_LONG','The database server can be in the form of a hostname, such as <i>db1.myserver.com</i>, or as an IP address, such as <i>192.168.0.1</i>.');
 define('TEXT_USERNAME','Username');
-define('TEXT_USERNAME_LONG','The username is used to connect to the database server. An example username is <i>mysql_10</i>.<br /><br />Note: If the xtcommerce Database is to be imported (selected above), the account used to connect to the database server needs to have Create and Drop permissions.');
+define('TEXT_USERNAME_LONG','The username is used to connect to the database server. An example username is <i>mysql_10</i>.<br /><br />Note: If the VaM Shop Database is to be imported (selected above), the account used to connect to the database server needs to have Create and Drop permissions.');
 define('TEXT_PASSWORD','Password');
 define('TEXT_PASSWORD_LONG','The password is used together with the username, which forms the database user account.');
 define('TEXT_DATABASE','Database');
-define('TEXT_DATABASE_LONG','The database used to hold the catalog data. An example database name is <i>xtcommerce</i>.<br /><b>ATTENTION:</b> xt:Commerce VaM Edition need an empty Database to perform Installation.');
+define('TEXT_DATABASE_LONG','The database used to hold the catalog data. An example database name is <i>vamshop</i>.<br /><b>ATTENTION:</b> VaM Shop need an empty Database to perform Installation.');
 define('TITLE_WEBSERVER_SETTINGS','Webserver Settings');
 define('TEXT_WS_ROOT','Webserver Root Directory');
 define('TEXT_WS_ROOT_LONG','The directory where your web pages are being served from, usually <i>/home/myname/public_html</i>.');
-define('TEXT_WS_XTC','Webserver "xt:Commerce VaM Edition" Directory');
-define('TEXT_WS_XTC_LONG','The directory where your catalog pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/xtcommerce/</b></i>.');
+define('TEXT_WS_XTC','Webserver "VaM Shop" Directory');
+define('TEXT_WS_XTC_LONG','The directory where your catalog pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/vamshop/</b></i>.');
 define('TEXT_WS_ADMIN','Webserver Administration Tool Directory');
-define('TEXT_WS_ADMIN_LONG','The directory where your administration tool pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/xtcommerce/admin/</b></i>.');
+define('TEXT_WS_ADMIN_LONG','The directory where your administration tool pages are being served from (from the webserver root directory), usually <i>/home/myname/public_html<b>/vamshop/admin/</b></i>.');
 define('TEXT_WS_CATALOG','WWW Catalog Directory');
-define('TEXT_WS_CATALOG_LONG','The virtual directory where the xt:Commerce VaM Edition Catalog module resides, usually <i>/xtcommerce/</i>.');
+define('TEXT_WS_CATALOG_LONG','The virtual directory where the VaM Shop Catalog module resides, usually <i>/vamshop/</i>.');
 define('TEXT_WS_ADMINTOOL','WWW Administration Tool Directory');
-define('TEXT_WS_ADMINTOOL_LONG','The virtual directory where the xt:Commerce VaM Edition Administration Tool resides, usually <i>/xtcommerce/admin/</i>');
+define('TEXT_WS_ADMINTOOL_LONG','The virtual directory where the VaM Shop Administration Tool resides, usually <i>/vamshop/admin/</i>');
 
-// install_step2.php
+// step2.php
 
 define('TEXT_PROCESS_1','Please continue the installation process to execute the database import procedure.');
 define('TEXT_PROCESS_2','It is important this procedure is not interrupted, otherwise the database may end up corrupt.');
 define('TEXT_PROCESS_3','The file to import must be located and named at: ');
 
 
-// install_step3.php
+// step3.php
 
 define('TEXT_TITLE_ERROR','The following error has occurred:');
 define('TEXT_TITLE_SUCCESS','The database import was successful!');
 
-// install_step4.php
+// step4.php
 define('TITLE_WEBSERVER_CONFIGURATION','Webserver Configuration:');
 define('TITLE_STEP4_ERROR','The following error has occurred:');
 define('TEXT_STEP4_ERROR','<b>The configuration files do not exist, or permission levels are not set.</b><br /><br />Please perform the following actions: ');
@@ -159,11 +159,11 @@ define('TEXT_SESS_FILE','Store Sessions as Files');
 define('TEXT_SESS_DB','Store Sessions in the Database');
 define('TEXT_SESS_LONG','The location to store PHPs sessions files.');
 
-// install_step5.php
+// step5.php
 
-define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>xt:Commerce VaM Edition</strong> Webserver configuration was successful');
+define('TEXT_WS_CONFIGURATION_SUCCESS','<strong>VaM Shop</strong> Webserver configuration was successful');
 
-// install_step6.php
+// step6.php
 
 define('TITLE_ADMIN_CONFIG','Administrator configuration');
 define('TEXT_REQU_INFORMATION','* required information');
@@ -187,7 +187,7 @@ define('TEXT_EMAIL_FROM','E-Mail From');
 define('TEXT_EMAIL_FROM_LONG','(The e-mail adress used in (sent) e-mails)');
 define('TITLE_ZONE_CONFIG','Zone configuration');
 define('TEXT_ZONE','Set up zones for EU?');
-define('TITLE_ZONE_CONFIG_NOTE','*Note; xtcommerce can automatically setup the right Zone-Setup if your store is located within the EU.');
+define('TITLE_ZONE_CONFIG_NOTE','*Note; VaM Shop can automatically setup the right Zone-Setup if your store is located within the EU.');
 define('TITLE_SHOP_CONFIG_NOTE','*Note; Information for basic Shop configuration');
 define('TITLE_ADMIN_CONFIG_NOTE','*Note; Information for Admin/Superuser');
 define('TEXT_ZONE_NO','No');
@@ -196,7 +196,7 @@ define('TEXT_COMPANY','Company name');
 
 
 
-// install_step7
+// step7
 define('TITLE_GUEST_CONFIG','Guest configuration');
 define('TITLE_GUEST_CONFIG_NOTE','*Note; Settings for standard user (non-regristrated customer)');
 define('TITLE_CUSTOMERS_CONFIG','Default customers configuration');
@@ -216,14 +216,14 @@ define('TEXT_STATUS_SHOW_TAX_LONG','Display prices with tax included (Yes) or wi
 
 
 define('TITLE_CHMOD','Setting rights on files');
-// install_fnished.php
+// fnished.php
 
-define('TEXT_SHOP_CONFIG_SUCCESS','<strong>xt:Commerce VaM Edition</strong> Shop configuration was successful.');
-define('TEXT_TEAM','The xt:Commerce dev Team.<br /><a href="http://www.xt-commerce.com">xt:Commerce support site</a><br /><a href="http://forum.oscommerce.ru">xt:Commerce VaM Edition russian support site</a>');
+define('TEXT_SHOP_CONFIG_SUCCESS','<strong>VaM Shop</strong> Shop configuration was successful.');
+define('TEXT_TEAM','<a href="http://oscommerce.su">VaM Shop russian support site</a>');
 
 // —борка VaM
 
-// install_step1
+// step1
 
 define('IMAGE_CONTINUE','Continue');
 define('IMAGE_CANCEL','Cancel');
@@ -233,33 +233,33 @@ define('TEXT_RUSSIAN','Russian');
 define('TEXT_ENGLISH','English');
 define('TEXT_CHECKING','Checking:');
 define('TEXT_ATTENTION','Attention:');
-define('TITLE_INDEX','xt:Commerce VaM Edition Installer - Welcome');
-define('TITLE_STEP1','xt:Commerce VaM Edition Installer - STEP 1 / Settings');
-define('TITLE_STEP2','xt:Commerce VaM Edition Installer - STEP 2 / DB Connection');
-define('TITLE_STEP3','xt:Commerce VaM Edition Installer - STEP 3 / DB Import');
-define('TITLE_STEP4','xt:Commerce VaM Edition Installer - STEP 4 / Webserver Configuration');
-define('TITLE_STEP5','xt:Commerce VaM Edition Installer - STEP 5 / Write Config Files');
-define('TITLE_STEP6','xt:Commerce VaM Edition Installer - STEP 6 / Create Superuser');
-define('TITLE_STEP7','xt:Commerce VaM Edition Installer - STEP 7 / Define Pricesystem');
-define('TITLE_FINISHED','xt:Commerce VaM Edition Installer - Finished');
+define('TITLE_INDEX','VaM Shop Installer - Welcome');
+define('TITLE_STEP1','VaM Shop Installer - STEP 1 / Settings');
+define('TITLE_STEP2','VaM Shop Installer - STEP 2 / DB Connection');
+define('TITLE_STEP3','VaM Shop Installer - STEP 3 / DB Import');
+define('TITLE_STEP4','VaM Shop Installer - STEP 4 / Webserver Configuration');
+define('TITLE_STEP5','VaM Shop Installer - STEP 5 / Write Config Files');
+define('TITLE_STEP6','VaM Shop Installer - STEP 6 / Create Superuser');
+define('TITLE_STEP7','VaM Shop Installer - STEP 7 / Define Pricesystem');
+define('TITLE_FINISHED','VaM Shop Installer - Finished');
 define('CHARSET','iso-8859-1');
 define('TEXT_INSTALL','Install');
 define('ERROR_PERMISSION','WRONG PERMISSION on ');
 define('TEXT_ERROR','ERROR');
 define('TEXT_FILE_PERMISSIONS','FILE Permissions .............................. ');
 define('TEXT_FOLDER_PERMISSIONS','FOLDER Permissions .............................. ');
-define('PHP_VERSION_ERROR','<b>ATTENTION!, your PHP Version is to old, xt:Commerce VaM Edition requires atleast PHP 4.1.3.</b><br /><br />
+define('PHP_VERSION_ERROR','<b>ATTENTION!, your PHP Version is to old, VaM Shop requires atleast PHP 4.1.3.</b><br /><br />
                  Your php Version: <b><?php echo phpversion(); ?></b><br /><br />
-                 xt:Commerce VaM Edition wont work on this server, update PHP or change Server.');
+                 VaM Shop wont work on this server, update PHP or change Server.');
 define('TEXT_PHP_VERSION','PHP VERSION .............................. ');
 define('TEXT_GD_LIB_NOT_FOUND','ERROR NO GDLIB FOUND!');
 define('TEXT_GD_LIB_VERSION','if GDlib Version < 2+ , klick here for further instructions');
 define('TEXT_GD_LIB_VERSION1','GDlib VERSION .............................. ');
 define('TEXT_GD_LIB_GIF_SUPPORT','GDlib GIF-Support .............................. ');
-define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in xt:Commerce VaM Edition!');
+define('TEXT_GD_LIB_GIF_SUPPORT_ERROR','<b><font color="ff0000">ERROR</font></b><br />You don\'t have GIF support within your GDlib, you won\'t be able to use GIF images, and GIF overlayfunctions in VaM Shop!');
 define('TEXT_OK','OK');
 
-//install_finished
+//finished
 
 define('TEXT_CATALOG','Catalog');
 

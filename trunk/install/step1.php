@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: install_step1.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: step1.php 899 2005-04-29 02:40:57Z hhgag $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -10,7 +10,7 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(install.php,v 1.7 2002/08/14); www.oscommerce.com 
-   (c) 2003	 nextcommerce (install_step1.php,v 1.10 2003/08/17); www.nextcommerce.org
+   (c) 2003	 nextcommerce (step1.php,v 1.10 2003/08/17); www.nextcommerce.org
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -112,7 +112,7 @@
 
       <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/break-el.gif" width="100%" height="1"></font></p>
 
-      <form name="install" method="post" action="install_step2.php">
+      <form name="install" method="post" action="step2.php">
             <table width="98%" border="0" cellpadding="0" cellspacing="0">
           <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="0">

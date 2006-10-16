@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: install_step5.php 1252 2005-09-27 22:20:09Z matthias $   
+   $Id: step5.php 1252 2005-09-27 22:20:09Z matthias $   
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
@@ -8,7 +8,7 @@
    Copyright (c) 2003 XT-Commerce
    --------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (install_step5.php,v 1.25 2003/08/24); www.nextcommerce.org
+   (c) 2003	 nextcommerce (step5.php,v 1.25 2003/08/24); www.nextcommerce.org
    
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -130,7 +130,7 @@
 </table></font>
 <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_DB_ERROR_1; ?></font></p>
 <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_DB_ERROR_2; ?></font></p>
-<form name="install" action="install_step4.php" method="post">
+<form name="install" action="step4.php" method="post">
 <?php
     reset($_POST);
     while (list($key, $value) = each($_POST)) {
@@ -402,7 +402,7 @@
             <?php echo TEXT_WS_CONFIGURATION_SUCCESS; ?></font> </center>
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr> 
-                <td align="center"><a href="install_step6.php"><img src="images/button_continue.gif" border="0"></a></td>
+                <td align="center"><a href="step6.php"><img src="images/button_continue.gif" border="0"></a></td>
               </tr>
             </table>
 </form>
