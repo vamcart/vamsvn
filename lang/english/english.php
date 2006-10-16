@@ -520,4 +520,6 @@ define('TEXT_NO_NEWS', 'No news.');
 
 define('TEXT_INFO_SHOW_PRICE_NO','You do not have the permission to see the prices ');
 
+define('TEXT_OF_5_STARS', '%s of 5 stars!');
+
 ?>
