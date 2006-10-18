@@ -204,8 +204,8 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
             <td valign="top" class="main"><?php echo  xtc_draw_input_field('products_ean', $pInfo->products_ean); ?></td>
           </tr>
           <tr>
-            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?> <a href="<?php echo FILENAME_MANUFACTURERS; ?>"><?php echo TEXT_EDIT; ?></a></td>
-            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?></td>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?>&nbsp;<a href="<?php echo xtc_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_FSK18; ?></td>
@@ -214,8 +214,8 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
           <tr>
           <?php if (ACTIVATE_SHIPPING_STATUS=='true') { ?>
           <tr>
-            <td valign="top" class="main"><?php echo BOX_SHIPPING_STATUS.':'; ?> <a href="<?php echo FILENAME_SHIPPING_STATUS; ?>"><?php echo TEXT_EDIT; ?></a></td>
-            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('shipping_status', $shipping_statuses, $pInfo->products_shippingtime); ?></td>
+            <td valign="top" class="main"><?php echo BOX_SHIPPING_STATUS.':'; ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('shipping_status', $shipping_statuses, $pInfo->products_shippingtime); ?>&nbsp;<a href="<?php echo xtc_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
           </tr>
           <?php } ?>
       <tr>
@@ -279,7 +279,7 @@ foreach (array('product_info', 'product_options') as $key) {
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_VPE; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_vpe', $vpe_array, $pInfo->products_vpe='' ?  DEFAULT_PRODUCTS_VPE_ID : $pInfo->products_vpe); ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_vpe', $vpe_array, $pInfo->products_vpe='' ?  DEFAULT_PRODUCTS_VPE_ID : $pInfo->products_vpe); ?>&nbsp;<a href="<?php echo xtc_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
           </tr>
         </table>
         </div>
