@@ -16,7 +16,7 @@ $smarty->assign('RSS2_INFO', TEXT_RSS2_INFO);
 
 $smarty->assign('language', $_SESSION['language']);
 $smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/xtc_rss2_info.html');
+$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/vam_rss2_info.html');
 $smarty->assign('main_content', $main_content);
 if (!defined(RM))
 	$smarty->load_filter('output', 'note');
