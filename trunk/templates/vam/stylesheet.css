@@ -914,3 +914,19 @@ TD.parsetime {
   background: #f1f1f6;
   text-align:center;
 }
+
+h1.contentBoxHeading {
+  display: block;
+  width: 97%;
+  font: 16px Tahoma, Verdana, Arial, sans-serif;
+  font-weight: bold;
+  color: #990000;
+  border-bottom: 2px #990000 solid;
+  background: url(img/heading1.gif) no-repeat left center;
+  padding: 0 0 0 20px; 
+  margin: 0.2em 0 0.2em 0; 
+}
+h1.contentBoxHeading a {
+  color: #990000;
+  text-decoration: none;
+}
