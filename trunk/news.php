@@ -70,7 +70,8 @@
               'NEWS_HEADING' => $one['headline'],
               'NEWS_CONTENT' => $one['content'],
               'NEWS_ID'      => $one['news_id'],
-        'NEWS_DATA'    => xtc_date_short($one['date_added']),
+              'NEWS_DATA'    => xtc_date_short($one['date_added']),
+              'NEWS_LINK_MORE'    => xtc_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'], 'NONSSL'),
               );
       }
   } else {
