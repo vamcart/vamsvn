@@ -502,7 +502,7 @@ function check_form() {
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-  <td>
+        <td width="100%">
 <?php
 
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
@@ -512,17 +512,8 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	$cInfo = new objectInfo($customers);
 	$newsletter_array = array (array ('id' => '1', 'text' => ENTRY_NEWSLETTER_YES), array ('id' => '0', 'text' => ENTRY_NEWSLETTER_NO));
 ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
-    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
-    <td height="14" class="contentBoxHeading1" width="100%"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></td>
-  </tr>
-  <tr>
-    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
-  </tr>
-  <tr>
-    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
-  </tr>
-</table>  
+    <h1 class="contentBoxHeading"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname; ?></h1>
+  
   </td>
   </tr>
 
@@ -1011,19 +1002,10 @@ if ($error == true) {
 } else {
 ?>
   <tr>
-  <td>
+        <td width="100%">
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0">  <tr>
-    <td class="contentBoxHeading1"><img src="images/heading1.gif" border="0" alt="" /></td>
-    <td height="14" class="contentBoxHeading1" width="100%"><?php echo HEADING_TITLE; ?></td>
-  </tr>
-  <tr>
-    <td class="line" width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="2" /></td>
-  </tr>
-  <tr>
-    <td width="100%" colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1" /></td>
-  </tr>
-</table>  
+    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+  
   </td>
   </tr>
       <tr>
