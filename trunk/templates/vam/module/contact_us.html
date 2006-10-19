@@ -1,60 +1,45 @@
 {config_load file="$language/lang_$language.conf" section="contact_us"}
 <h1 class="contentBoxHeading">{$CONTACT_HEADING}</h1>
-<br />
 {if $error_message!=''}
-<br />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="main" style="border: 1px solid; border-color: #ff0000;" bgcolor="#FFCCCC" align="center">{$error_message}</td>
-  </tr>
-</table>
-<br />
+<div class="contacterror">{$error_message}</div>
 {/if}
-
 {if $success!='1'}
 {$FORM_ACTION}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td class="main">{$CONTACT_CONTENT}</td>
-  </tr>
-  <tr> 
-    <td align="right"><br /></td>
-  </tr>
-  <tr> 
-    <td><table width="100%" border="0" cellspacing="2" cellpadding="0">
-        <tr> 
-          <td class="main">{#text_name#}</td>
-          <td>{$INPUT_NAME}</td>
-        </tr>
-        <tr> 
-          <td class="main">{#text_email#}</td>
-          <td>{$INPUT_EMAIL}</td>
-        </tr>
-        <tr>
-          <td class="main" valign="top">{#text_message#}</td>
-          <td>{$INPUT_TEXT}</td>
-        </tr>
-      </table></td>
-  </tr>
-  <tr> 
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="right">{$BUTTON_SUBMIT}</td>
-  </tr>
-</table>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{$CONTACT_CONTENT}
+<br />
+<br />
+{#text_name#}
+<br />
+{$INPUT_NAME}
+<br />
+<br />
+{#text_email#}
+<br />
+{$INPUT_EMAIL}
+<br />
+<br />
+{#text_message#}
+<br />
+{$INPUT_TEXT}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+</div>
 {$FORM_END}
 {else}
-<table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr> 
-    <td><img src="{$tpl_path}img/checkout_success.gif" alt="" /></td>
-    <td class="main"valign="top"><br />
-      {#text_success#}<br /> <br />
-      <br /> <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td align="right"><br />{$BUTTON_CONTINUE}</td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{#text_success#}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>
 {/if}

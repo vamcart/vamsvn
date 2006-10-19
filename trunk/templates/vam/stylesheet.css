@@ -930,3 +930,35 @@ h1.contentBoxHeading a {
   color: #990000;
   text-decoration: none;
 }
+
+/* Скругленные углы */
+
+.page {background: transparent; width:100%;}
+.page h1, .page p {margin:0 10px;}
+.page h1 {font-size:2em; color:#fff;}
+.page p {padding-bottom:0.5em;}
+
+.page .b1, .page .b2, .page .b3, .page .b4, .page .b1b, .page .b2b, .page .b3b, .page .b4b {display:block; overflow:hidden; font-size:1px;}
+.page .b1, .page .b2, .page .b3, .page .b1b, .page .b2b, .page .b3b {height:1px;}
+.page .b2 {background:#f1f1f6; border-left:1px solid #fff; border-right:1px solid #eee;}
+.page .b3 {background:#f1f1f6; border-left:1px solid #fff; border-right:1px solid #ddd;}
+.page .b4 {background:#f1f1f6; border-left:1px solid #fff; border-right:1px solid #aaa;}
+.page .b4b {background:#f1f1f6; border-left:1px solid #eee; border-right:1px solid #999;}
+.page .b3b {background:#f1f1f6; border-left:1px solid #ddd; border-right:1px solid #999;}
+.page .b2b {background:#f1f1f6; border-left:1px solid #aaa; border-right:1px solid #999;}
+
+.page .b1 {margin:0 5px; background:#fff;}
+.page .b2, .page .b2b {margin:0 3px; border-width:0 2px;}
+.page .b3, .page .b3b {margin:0 2px;}
+.page .b4, .page .b4b {height:2px; margin:0 1px;}
+.page .b1b {margin:0 5px; background:#999;}
+.page .pagecontent {display:block; padding-left:0.5em; padding-right:0.5em; background:#f1f1f6; border-left:1px solid #fff; border-right:1px solid #999;}
+.page .pagecontentfooter {display:block; text-align: right; background:#ffffff;}
+
+/* /Скругленные углы */
+
+/* Ошибка на странице свяжитесь с нами */
+
+div.contacterror {border:1px solid; border-color:#ff0000; background-color:#FFCCCC; text-align:center; margin-bottom:0.5em; margin-top:0.5em;}
+
+/* /Ошибка на странице свяжитесь с нами */
