@@ -1,18 +1,15 @@
 <h1 class="contentBoxHeading">{$CONTENT_HEADING}</h1>
-<br />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="main">
-	{if $file}
-	 {$file}
-	{else}
-	{$CONTENT_BODY}
-	{/if}
-	</td>
-  </tr>
-  <tr>
-    <td align="right"><br />
-        {$BUTTON_CONTINUE}</td>
-  </tr>
-</table>
-
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{if $file}
+  {$file}
+{else}
+  {$CONTENT_BODY}
+{/if}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>
