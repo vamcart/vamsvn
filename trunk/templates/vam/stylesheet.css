@@ -115,14 +115,6 @@ TD.headerNavigation {
 	background-color: #F6F6F6;
 }
 
-A.headerNavigation { 
-  color: #ffffff; 
-}
-
-A.headerNavigation:hover {
-  color: #ffffff;
-}
-
 A.shippingInfo { 
   font-family: Tahoma, Verdana, Arial, sans-serif;
   font-size: 11px;
@@ -713,6 +705,27 @@ TD.navigation {
   background-color: #990000;
   color: #FFFFFF;
   line-height: 1.5;
+}
+
+TD.navigation a {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+}
+
+TD.navigation a:hover {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+}
+
+TD.navigation a:visited {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
 }
 
 TD.navigationTop {
