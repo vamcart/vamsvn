@@ -20,28 +20,28 @@
 
 
     // image for first level
-    $img_1='<img src="templates/'.CURRENT_TEMPLATE.'/img/icon_arrow.jpg" alt="" />&nbsp;';
+    $img_1='';
 
     for ($a=0; $a<$foo[$counter]['level']; $a++) {
 
       if ($foo[$counter]['level']=='1') {
-      $categories_string .= "&nbsp;-&nbsp;";
+      $categories_string .= "";
       }
 
-      $categories_string .= "&nbsp;&nbsp;";
+      $categories_string .= "";
 
     }
     if ($foo[$counter]['level']=='') {
     if (strlen($categories_string)=='0') {
-    $categories_string .='<table width="100%"><tr><td class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)">';
+    $categories_string .='';
     } else {
-    $categories_string .='</td></tr></table><table width="100%"><tr><td class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)">';
+    $categories_string .='';
     }
 
     $categories_string .= $img_1;
-    $categories_string .= '<b><a href="';
+    $categories_string .= '<div class="boxMenuCategory"><a href="';
     } else {
-    $categories_string .= '<a href="';
+    $categories_string .= '<div class="boxMenuSubCategory"><a href="';
     }
 
 	$cPath_new=xtc_category_link($counter,$foo[$counter]['name']);
@@ -50,20 +50,22 @@
     $categories_string .= '">';
 
     if ( ($id) && (in_array($counter, $id)) ) {
-      $categories_string .= '<b>';
+// Выделенная категория
+      $categories_string .= '<span>';
     }
 
     // display category name
     $categories_string .= $foo[$counter]['name'];
 
     if ( ($id) && (in_array($counter, $id)) ) {
-      $categories_string .= '</b>';
+// /Выделенная категория
+      $categories_string .= '</span>';
     }
 
     if ($foo[$counter]['level']=='') {
-    $categories_string .= '</a></b>';
+    $categories_string .= '</a></div>';
     } else {
-    $categories_string .= '</a>';
+    $categories_string .= '</a></div>';
     }
 
     if (SHOW_COUNTS == 'true') {
@@ -73,12 +75,13 @@
       }
     }
 
-    $categories_string .= '<br />';
+// Окончание строки каждой категории
+    $categories_string .= "\n";
 
     if ($foo[$counter]['next_id']) {
         xtc_show_category($foo[$counter]['next_id']);
     } else {
-        $categories_string .= '</td></tr></table>';
+        $categories_string .= '';
     }
   }
 

@@ -421,6 +421,9 @@ div#menu
      margin-top: 0.5em;
      margin-left: 0.5em; /* отступ от левого кра€ браузера */
      padding-bottom: 0.3em; /* отступ от кра€ бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
    }
 
 /*- «аголовок бокса разделы */
@@ -435,34 +438,63 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
-
-#boxCategories ul
-   {
-     margin: 0 0 0.5em 0;
-     padding: 0 0 0 .8em;
-     display: block;
-     font-size: 1em; 
-     list-style-type: none;
-     padding-bottom: 0.3em; /* отступ от кра€ бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
-   }  
-  
 /*- /«аголовок бокса разделы */
 
-#cat div 
+/*- —писок разделов */
+#categoriesBoxMenu 
    {
-     text-align: left;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 0 0;
-     padding: 0 0 0 16px;
+     padding-left: 0.4em; /* отступ разделов от левого кра€ бокса */
+     margin: 0 auto;
    }
 
-#subcat div 
+#categoriesBoxMenu a, #categoriesBoxMenu a:visited 
    {
-     text-align: left;
+     display: block; 
+     padding: 0.1em 0;
+     color: #000;
+     text-indent: 0.4em;
+     background-color: #fff; 
+     text-decoration: none;
+     margin: 0.4em 0; 
+     border-left: 0.4em solid #67748B; 
+     border-top:1px solid #fff; 
+     border-bottom:1px solid #fff; 
+     border-right:1px solid #fff; 
    }
+
+#categoriesBoxMenu a:hover 
+   {
+     color: #f00; 
+     border-left: 0.4em solid #3169C6; 
+     background-color: #c6d3ef;
+     border-top:1px solid #3169C6; 
+     border-bottom:1px solid #3169C6; 
+     border-right:1px solid #3169C6; 
+   }
+
+#categoriesBoxMenu .boxMenuCategory 
+   {
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuCategory span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory 
+   {
+     position: relative;
+     padding-left: 1em;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+/*- /—писок разделов */
 
 /*- /Ѕокс разделы */
 
