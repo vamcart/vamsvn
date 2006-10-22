@@ -28,6 +28,18 @@ body
      font: 76% arial,sans-serif;
    }
 
+/* ÷вет обычных ссылок в магазине */
+A {
+  color: #67748B;
+  text-decoration: underline;
+}
+
+A:hover {
+  color: #990000;
+  text-decoration: none;
+}
+/* /÷вет обычных ссылок в магазине */
+
 /* ÷ентр */
 div#wrapper
    {
