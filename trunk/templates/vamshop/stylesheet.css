@@ -119,6 +119,31 @@ div#navigation
      background: url(img/navigation.gif) no-repeat left center;
      padding: 0 0 0 20px; 
    }
+   
+#navigation a
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+
+#navigation a:hover
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+
+#navigation a:visited
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+   
 /* /Навигация */
    
 /* Заголовок страницы */
