@@ -421,9 +421,6 @@ div#menu
      margin-top: 0.5em;
      margin-left: 0.5em; /* отступ от левого кра€ браузера */
      padding-bottom: 0.3em; /* отступ от кра€ бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
    }
 
 /*- «аголовок бокса разделы */
@@ -436,9 +433,37 @@ div#menu
      border-bottom: 2px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px
+     padding: .1em 0 0 16px;
   }
+
+#boxCategories ul
+   {
+     margin: 0 0 0.5em 0;
+     padding: 0 0 0 .8em;
+     display: block;
+     font-size: 1em; 
+     list-style-type: none;
+     padding-bottom: 0.3em; /* отступ от кра€ бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }  
+  
 /*- /«аголовок бокса разделы */
+
+#cat div 
+   {
+     text-align: left;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 0 0;
+     padding: 0 0 0 16px;
+   }
+
+#subcat div 
+   {
+     text-align: left;
+   }
+
 /*- /Ѕокс разделы */
 
 /*- Ѕокс информаци€ */
