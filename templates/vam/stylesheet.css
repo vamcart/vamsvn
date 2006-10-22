@@ -961,3 +961,29 @@ h1.contentBoxHeading a {
 /* Ошибка на странице свяжитесь с нами */
 div.contacterror {border:1px solid; border-color:#ff0000; background-color:#FFCCCC; text-align:center; margin-bottom:0.5em; margin-top:0.5em;}
 /* /Ошибка на странице свяжитесь с нами */
+
+/*- /Время парсинга */
+div#parseTime
+   {
+     clear: left;
+     background: #f1f1f6;
+     width: 100%;
+     text-align: center;
+     color: #000;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Время парсинга */
+
+/*- /Информация о магазине */
+div#copyright
+   {
+     clear: left;
+     background: #f1f1f6;
+     width: 100%;
+     text-align: center;
+     color: #000;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Информация о магазине */

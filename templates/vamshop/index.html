@@ -1,160 +1,101 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 
-<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>
-<!-- шапка -->        
-          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="200" align="left">
-              <img src="{$tpl_path}img/top_logo.jpg" alt="{$store_name}" />
-              </td>
-              <td width="470" align="center">
-              {if $BANNER}{$BANNER}{/if}
-              </td>
-              <td width="200">
-              &nbsp;
-              </td>
-            </tr>
+<!-- Контейнер -->
+<div id="container">
 
-            <tr>
-              <td width="200" align="left">
-              &nbsp;
-              </td>
-              <td width="470" align="center">
-<!-- кнопки -->
-          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-            <tr class="button">
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="89" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$mainpage}">{#text_mainpage#}</a></div>              
-              </td>
+<!-- Шапка -->
+<div id="header">
+<h1>Шапка</h1>
+</div>
+<!-- /Шапка -->
+
+<div id="menu">
+<ul class="menu centered">
+<li><a href="{$mainpage}"><span>{#text_mainpage#}</span></a></li>
 {if $account}{if $smarty.session.customer_id}
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="89" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$account}">{#link_account#}</a></div>              
-              </td>
+<li><a href="{$account}"><span>{#link_account#}</span></a></li>
 {/if}{/if}              
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="84" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$cart}">{#link_cart#}</a></div>              
-              </td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="98" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$checkout}">{#link_checkout#}</a></div>              
-              </td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
+<li><a href="{$cart}"><span>{#link_cart#}</span></a></li>
+<li><a href="{$checkout}"><span>{#link_checkout#}</span></a></li>
 {if $account}{if $smarty.session.customer_id}
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="85" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$logoff}">{#link_logoff#}</a></div>              
-              </td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
+<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
 {else}
-              <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
-              <td width="85" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$login}">{#link_login#}</a></div>              
-              </td>
-              <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
+<li><a href="{$login}"><span>{#link_login#}</span></a></li>
 {/if}
-{/if}              
-            </tr>
-          </table>
-<!-- /кнопки -->
+{/if}    
+</ul>
+</div>
 
-              </td>
-              <td width="200">
-              &nbsp;
-              </td>
-            </tr>
-<tr>
-<td colspan="3" valign="top" align="center" class="button"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="3" /></td>
-</tr>
+<!-- Навигация -->
+<div id="navigation">
+<span>{$navtrail}</span>
+</div>
+<!-- /Навигация -->
 
-<tr>
-<td colspan="3" valign="top" align="center" class="navigationTop"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="1" /></td>
-</tr>
+<!-- Центр -->
+<div id="wrapper">
+<div id="content">
+<!-- Заголовок страницы -->
+<h1><a href="">Заголовок страницы</a></h1>
+<!-- /Заголовок страницы -->
 
-<tr>
-<td colspan="3" valign="top" align="center" class="navigation"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="4" /></td>
-</tr>
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+Центр
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+<input type="image" src="img/button_continue.gif" alt="Продолжить" title=" Продолжить " />
+</div>
+</div>
+<!-- /Скругленные углы -->
 
-<tr>
-<td colspan="3" class="navigation" align="left">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{$tpl_path}img/navigation.gif" align="absmiddle" alt="" />&nbsp;&nbsp;{$navtrail}
-</td>
-</tr>
+</div>
+</div>
+<!-- /Центр -->
 
-<tr>
-<td colspan="3" valign="top" align="center" class="navigation"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="4" /></td>
-</tr>
+<!-- Левая колонка -->
+<div id="left">
 
-<tr>
-<td colspan="3" valign="top" align="center" class="navigationTop"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="1" /></td>
-</tr>
+<!-- Бокс разделы -->
+<div id="boxCategories">
+<h5>Разделы</h5>
 
-<tr>
-<td colspan="3" valign="top" align="center"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="0" height="10" /></td>
-</tr>
+<a href="#nogo"><span>Главная</span></a><br />
+<a href="#nogo"><span>Главная</span></a><br />
+<a href="#nogo"><span>Главная</span></a><br />
+<a href="#nogo"><span>Главная</span></a><br />
 
-          </table>
-<!-- /шапка -->        
-        </td>
-      </tr>
-      <tr>
-        <td><table width="100%"  border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td class="navLeft" valign="top"><table width="184"  border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td>{$box_CATEGORIES}{$box_CONTENT}{$box_INFORMATION}{$box_ADD_QUICKIE}{$box_LAST_VIEWED}{$box_REVIEWS}{$box_SEARCH}{$box_SPECIALS}{$box_FEATURED}{$box_WHATSNEW}{$box_LATESTNEWS}</td>
-              </tr>
-            </table>&nbsp;</td>
-            <td valign="top"><table width="100%"  border="0" cellspacing="4" cellpadding="0">
-              <tr>
-                <td><table width="98%" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="main">{$main_content}</td>
-                  </tr>
-                </table></td>
-              </tr>
-            </table></td>
-            <td valign="top" class="navRight"><table width="184"  border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                      <td>{$box_CART}{$box_LOGIN}{$box_ADMIN}{$box_NEWSLETTER}{$box_BESTSELLERS}{$box_INFOBOX} {$box_CURRENCIES} {$box_LANGUAGES}{$box_MANUFACTURERS_INFO}{$box_MANUFACTURERS} </td>
-              </tr>
-            </table>&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="3" valign="top"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td colspan="2" class="loginBoxHeader"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="4" /></td>
-      </tr>
-    </table></td>
-            </tr>
-        </table></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td align="center" class="copyright"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="20" /></td>
-      </tr>
-  <tr>
-    <td align="center" class="copyright"><a href="vam_rss2_info.php"><img src="images/rss.png" width="36" height="14" alt="RSS" border="0" /></a><br /></td>
-  </tr>
-      <tr>
-        <td align="center" class="copyright"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="20" /></td>
-      </tr>
-</table>
+</div>
+<!-- /Бокс разделы -->
+
+</div>
+<!-- /Левая колонка -->
+
+<!-- Правая колонка -->
+<div id="right">
+
+<!-- Бокс информация -->
+<div id="boxInformation">
+<h5>Информация</h5>
+лялялялял ляляляляля
+</div>
+<!-- /Бокс информация -->
+
+</div>
+<!-- /Правая колонка -->
+
+<!-- Низ -->
+<div id="footer">
+<p>
+Низ
+</p>
+</div>
+<!-- /Низ -->
+
+</div>
+<!-- /Контейнер -->
