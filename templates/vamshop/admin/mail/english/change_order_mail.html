@@ -1,0 +1,20 @@
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr> 
+    <td style="border-bottom: 1px solid; border-color: #cccccc;"><div align="right"><img src="{$logo_path}logo.gif"></div></td>
+  </tr>
+  <tr> 
+    <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Dear Customer , </strong><br>
+      <br>
+      The status of your order changed.<br> 
+      {if $NOTIFY_COMMENTS}<br>
+Comments: 
+{$NOTIFY_COMMENTS}
+<br>
+{/if}
+<br>
+New status: 
+<b>{$ORDER_STATUS}</b>
+<br>
+For questions, feel free to anwser to this mail. </font></td>
+  </tr>
+</table>

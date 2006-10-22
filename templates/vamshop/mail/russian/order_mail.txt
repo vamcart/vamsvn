@@ -1,0 +1,45 @@
+
+{$address_label_customer}
+
+{if $PAYMENT_METHOD}Способ оплаты: {$PAYMENT_METHOD}{/if}
+
+Номер заказа: {$oID}
+Дата: {$DATE}
+{if $csID}Код покупателя:{$csID}{/if}
+----------------------------------------------------------------------
+
+
+Уважаемый {$NAME}!
+
+Вы оформили заказ в нашем интернет-магазине.
+
+{$PAYMENT_INFO_TXT}
+
+{if $COMMENTS}
+Ваши комментарии:
+{$COMMENTS}
+{/if}
+
+Вы заказали следующие товары
+----------------------------------------------------------------------
+{foreach name=aussen item=order_values from=$order_data} 
+{$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Время доставки: {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}
+{if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
+
+{/foreach}
+
+{foreach name=aussen item=order_total_values from=$order_total}
+{$order_total_values.TITLE}{$order_total_values.TEXT}
+{/foreach}
+
+
+{if $address_label_payment}
+Адрес покупателя
+----------------------------------------------------------------------
+{$address_label_payment}
+{/if}
+
+Адрес доставки
+----------------------------------------------------------------------
+{$address_label_shipping}
