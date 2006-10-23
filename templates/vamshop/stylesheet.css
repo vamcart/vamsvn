@@ -419,7 +419,6 @@ div#menu
      text-align: left;
      margin-bottom: 0.5em;
      margin-top: 0.5em;
-     margin-left: 0.5em; /* отступ от левого края браузера */
      padding-bottom: 0.3em; /* отступ от края бокса, т.е. от пунктирной линии */
   	  border-bottom-width: 1px;
 	  border-bottom-style: dashed;
@@ -443,7 +442,7 @@ div#menu
 /*- Список разделов */
 #categoriesBoxMenu 
    {
-     padding-left: 0.4em; /* отступ разделов от левого края бокса */
+     padding-left: 1em; /* отступ разделов от левого края бокса */
      margin: 0 auto;
    }
 
@@ -498,34 +497,6 @@ div#menu
 
 /*- /Бокс разделы */
 
-/*- Бокс информация */
-#boxInformation
-   {
-     text-align: left;
-     margin-bottom: 0.5em;
-     margin-top: 0.5em;
-     margin-right: 0.5em; /* отступ от правого края браузера */
-     padding-bottom: 0.3em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
-   }
-
-/*- Заголовок бокса информация */
-#boxInformation h5 
-   {
-     display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #990000;
-     border-bottom: 2px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     padding: 0 0 0 16px; 
-     margin: 0.2em 0 0.2em 0; 
-   }
-/*- /Заголовок бокса информация */
-/*- /Бокс информация */
-
 /*- Бокс контент */
 #boxContent
    {
@@ -555,6 +526,37 @@ div#menu
 }
 
 /*- /Бокс контент */
+
+/*- Бокс информация */
+#boxInformation
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+#boxInformation ul
+   {
+     list-style-type: none;
+     text-align: left;
+     padding-left: 1em;
+     margin: 0 0 0 0;
+   }
+
+#boxInformation li {
+	display: block;
+   font: 11px Tahoma, Verdana, Arial, sans-serif;
+   background: url(img/icon_arrow2.jpg) no-repeat left center;
+   padding: 0 0 0 12px; 
+}
+
+/*- /Бокс информация */
 
 /*- /Боксы */
 
