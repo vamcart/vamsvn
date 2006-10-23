@@ -23,7 +23,7 @@ require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
 require_once (DIR_FS_INC.'xtc_hide_session_id.inc.php');
 
 $box_smarty->assign('FORM_ACTION', xtc_draw_form('quick_find', xtc_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get').xtc_hide_session_id());
-$box_smarty->assign('INPUT_SEARCH', xtc_draw_input_field('keywords', '', 'size="15" maxlength="30"'));
+$box_smarty->assign('INPUT_SEARCH', xtc_draw_input_field('keywords', '', ''));
 $box_smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_quick_find.gif', IMAGE_BUTTON_SEARCH));
 $box_smarty->assign('FORM_END', '</form>');
 $box_smarty->assign('LINK_ADVANCED', xtc_href_link(FILENAME_ADVANCED_SEARCH));
