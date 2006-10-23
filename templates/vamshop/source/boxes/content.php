@@ -56,7 +56,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_i
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&content='.xtc_cleanName($content_data['content_title']);
 
-		$content_string .= '<img src="templates/'.CURRENT_TEMPLATE.'/img/icon_arrow1.jpg" alt="" /> <a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">'.$content_data['content_title'].'</a><br />';
+		$content_string .= '<li><a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">'.$content_data['content_title'].'</a></li>' . "\n";
 	}
 	if ($content_string != '')
 		$box_smarty->assign('BOX_CONTENT', $content_string);
