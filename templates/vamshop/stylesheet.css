@@ -573,7 +573,7 @@ div#parseTime
    }
 /*- /Время парсинга */
 
-/*- /Информация о магазине */
+/*- Информация о магазине */
 div#copyright
    {
      clear: left;
@@ -585,5 +585,36 @@ div#copyright
      padding-bottom: 0.5em;
    }
 /*- /Информация о магазине */
+
+/*- Формы */
+
+form {
+	width: 100%;
+	margin: 0;
+}
+
+.form input, textarea {
+	width: 98%;
+	font-size: 1em;
+	border: 1px solid;
+	border-color: #666 #ccc #ccc #666;
+	padding: 2px;
+}
+
+.form input {
+	width: 12em;
+}
+
+.form label {
+	float: left;
+	width: 8em;
+}
+
+.form textarea:focus, input:focus, .sffocus, .sffocus {
+	background-color: #ffc;
+}
+
+
+/*- /Формы */
 
 /*]]>*/
