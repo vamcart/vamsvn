@@ -1,11 +1,10 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс информация -->
+<div id="boxInformation">
 
-<table width="100%" border="0" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="infoBox" align="left"><table width="95%"  border="0" cellpadding="2" cellspacing="0">
-        <tr>
-          <td class="blockTitle">{$BOX_CONTENT}</td>
-        </tr>
-    </table></td>
-  </tr>
-</table>
+<ul>
+{$BOX_CONTENT}
+</ul>
+
+</div>
+<!-- /Бокс информация -->
