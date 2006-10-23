@@ -526,6 +526,36 @@ div#menu
 /*- /Заголовок бокса информация */
 /*- /Бокс информация */
 
+/*- Бокс контент */
+#boxContent
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+#boxContent ul
+   {
+     list-style-type: none;
+     text-align: left;
+     padding-left: 1em;
+     margin: 0 0 0 0;
+   }
+
+#boxContent li {
+	display: block;
+   font: 11px Tahoma, Verdana, Arial, sans-serif;
+   background: url(img/icon_arrow1.jpg) no-repeat left center;
+   padding: 0 0 0 12px; 
+}
+
+/*- /Бокс контент */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
