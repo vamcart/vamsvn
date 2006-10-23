@@ -730,6 +730,12 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
+
+#boxSearch h5 a
+   {
+     color: #FF6600;
+     text-decoration: none;
+   }
 /*- /Заголовок бокса поиск */
 
 /*- Содержимое бокса поиск */
@@ -790,6 +796,12 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
+
+#boxSpecials h5 a
+   {
+     color: #67748B;
+     text-decoration: none;
+   }
 /*- /Заголовок бокса скидки */
 
 /*- Содержимое бокса скидки */
@@ -835,6 +847,12 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
+  
+#boxFeatured h5 a
+   {
+     color: #006600;
+     text-decoration: none;
+   }
 /*- /Заголовок бокса рекомендуемые */
 
 /*- Содержимое бокса рекомендуемые */
@@ -880,6 +898,12 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
+
+#boxWhatsNew h5 a
+   {
+     color: #990000;
+     text-decoration: none;
+   }
 /*- /Заголовок бокса новинки */
 
 /*- Содержимое бокса новинки */
@@ -925,6 +949,12 @@ div#menu
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
   }
+
+#boxNews h5 a
+   {
+     color: #006600;
+     text-decoration: none;
+   }
 /*- /Заголовок бокса новости */
 
 /*- Содержимое бокса новости */
