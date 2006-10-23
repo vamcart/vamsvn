@@ -704,6 +704,66 @@ div#menu
 
 /*- /Бокс отзывы */
 
+/*- Бокс поиск */
+#boxSearch
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- Заголовок бокса поиск */
+#boxSearch h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #FF6600;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса поиск */
+
+/*- Содержимое бокса поиск */
+#boxSearchContent 
+   {
+     padding-left: 1em;
+  }
+
+#boxSearchContent p 
+   {
+     margin: 0 0 0 0;
+     text-align: left;
+  }
+
+/*- /Содержимое бокса поиск */
+
+/*- Форма бокса поиск */
+.searchboxform input {
+	width: 80%;
+	font-size: 1em;
+	border: 1px solid;
+	border-color: #666 #ccc #ccc #666;
+	padding: 2px;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+}
+
+.searchboxform input:focus, .sffocus, .sffocus {
+	background-color: #ffc;
+}
+/*- /Форма бокса поиск */
+
+/*- /Бокс поиск */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
