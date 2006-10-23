@@ -48,7 +48,7 @@
  	}
  	
  		function getShippingLink() {
-		return ' '.SHIPPING_EXCL.'<script type="text/javascript" language="javascript">document.write(\'<a href="javascript:newWin=void(window.open(\\\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\\\', \\\'popup\\\', \\\'toolbar=0, scrollbars=yes, resizable=yes, height=400, width=400\\\'))">'.SHIPPING_COSTS.'</a>\');</script><noscript><a href="'.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'"target=_blank">'.SHIPPING_COSTS.'</a></noscript>';
+		return ' '.SHIPPING_EXCL.'<script type="text/javascript" language="javascript">document.write(\'<a href="javascript:newWin=void(window.open(\\\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\\\', \\\'popup\\\', \\\'toolbar=0, scrollbars=yes, resizable=yes, height=400, width=400\\\'))">'.SHIPPING_COSTS.'</a>\');</script><noscript><a href="'.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'" target="_blank">'.SHIPPING_COSTS.'</a></noscript>';
 	}
 
 	function getTaxNotice() {
@@ -97,7 +97,7 @@
 	}
 	
 	function getContentLink($coID,$text) {
-		return '<script type="text/javascript" language="javascript">document.write(\'<a href="javascript:newWin=void(window.open(\\\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID).'\\\', \\\'popup\\\', \\\'toolbar=0, scrollbars=yes, resizable=yes, height=400, width=400\\\'))"><font color="#ff0000">'.$text.'</font></a>\');</script><noscript><a href="'.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID).'"target=_blank"><font color="#ff0000">'.$text.'</font></a></noscript>';
+		return '<script type="text/javascript" language="javascript">document.write(\'<a href="javascript:newWin=void(window.open(\\\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID).'\\\', \\\'popup\\\', \\\'toolbar=0, scrollbars=yes, resizable=yes, height=400, width=400\\\'))"><font color="#ff0000">'.$text.'</font></a>\');</script><noscript><a href="'.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID).'" target="_blank"><font color="#ff0000">'.$text.'</font></a></noscript>';
 	}
  	
  }
