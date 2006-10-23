@@ -764,6 +764,51 @@ div#menu
 
 /*- /Бокс поиск */
 
+/*- Бокс скидки */
+#boxSpecials
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- Заголовок бокса скидки */
+#boxSpecials h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #67748B;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса скидки */
+
+/*- Содержимое бокса скидки */
+#boxSpecialsContent 
+   {
+     padding-left: 0;
+     text-align: center;
+  }
+
+#boxSpecials p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
+/*- /Содержимое бокса скидки */
+
+/*- /Бокс скидки */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
@@ -822,5 +867,30 @@ form {
 
 
 /*- /Формы */
+
+/*- Цены */
+
+SPAN.markProductOutOfStock {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #c76170;
+  font-weight: bold;
+}
+
+SPAN.productSpecialPrice {
+  font-family: Verdana, Arial, sans-serif;
+  color: #ff0000;
+}
+SPAN.productOldPrice {
+	font-family: Verdana, Arial, sans-serif;
+	color: #ff0000;
+	text-decoration: line-through;
+}
+SPAN.errorText {
+  font-family: Verdana, Arial, sans-serif;
+  color: #ff0000;
+}
+
+/*- /Цены */
 
 /*]]>*/
