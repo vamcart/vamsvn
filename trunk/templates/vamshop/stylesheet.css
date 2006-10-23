@@ -574,7 +574,7 @@ div#menu
      display: block;
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
-     color: #67748B;
+     color: #006600;
      border-bottom: 2px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
@@ -612,8 +612,52 @@ div#menu
 }
 /*- /‘орма быстрый заказ */
 
-
 /*- /Ѕокс быстрый заказ */
+
+/*- Ѕокс просмотренные товары */
+#boxLastViewed
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого кра€ браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от кра€ бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- «аголовок бокса просмотренные товары */
+#boxLastViewed h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #67748B;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /«аголовок бокса просмотренные товары */
+
+/*- —одержимое бокса просмотренные товары */
+#boxLastViewedContent 
+   {
+     padding-left: 0;
+     text-align: center;
+  }
+
+#boxLastViewedContent p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
+/*- /—одержимое бокса просмотренные товары */
+
+/*- /Ѕокс просмотренные товары */
 
 /*- /Ѕоксы */
 
