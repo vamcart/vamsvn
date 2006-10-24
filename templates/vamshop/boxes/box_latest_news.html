@@ -3,13 +3,13 @@
 <div id="boxNews">
 <h5><a href="{$NEWS_LINK}">{#heading_news#}</a></h5>
 
-  {foreach name=aussen item=module_data from=$module_content}
-		<div class="boxNewsContent">
-		{$module_data.NEWS_DATA}
-		<p><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></p>
-		<p>{$module_data.NEWS_CONTENT|truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</p>
-		</div>
-  {/foreach}  
+{foreach name=aussen item=module_data from=$module_content}
+<div class="boxNewsContent">
+{$module_data.NEWS_DATA}
+<p><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></p>
+<p>{$module_data.NEWS_CONTENT|truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</p>
+</div>
+ {/foreach}  
 
 </div>
 <!-- /Бокс новости -->
