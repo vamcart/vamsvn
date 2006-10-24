@@ -28,6 +28,11 @@ body
      font: 76% arial,sans-serif;
    }
 
+img
+   {
+	  border: 0;
+   }
+
 /* ÷вет обычных ссылок в магазине */
 A {
   color: #67748B;
