@@ -1,16 +1,17 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: header.php 1140 2005-08-10 10:16:00Z mz $   
+   $Id: header.php 1140 2005-10-24 10:16:00Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
 
-   Copyright (c) 2003 XT-Commerce 
+   Copyright (c) 2006 VaM Shop 
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(header.php,v 1.40 2003/03/14); www.oscommerce.com 
    (c) 2003	 nextcommerce (header.php,v 1.13 2003/08/17); www.nextcommerce.org 
+   (c) 2005	 xt:Commerce (header.php,v 1.13 2005/08/10); www.xt-commerce.com 
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
@@ -34,26 +35,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" /> 
 <meta http-equiv="Content-Style-Type" content="text/css" />
-
-<?php
-/*
-  The following copyright announcement is in compliance
-  to section 2c of the GNU General Public License, and
-  thus can not be removed, or can only be modified
-  appropriately.
-
-  Please leave this comment intact together with the
-  following copyright announcement.
-
-*/
-?>
-<!--
-	This OnlineStore is brought to you by XT-Commerce, Community made shopping
-	XTC is a free open source e-Commerce System
-	created by Mario Zanier & Guido Winger and licensed under GNU/GPL.
-	Information and contribution at http://www.xt-commerce.com
--->
-<meta name="generator" content="(c) by <?php echo PROJECT_VERSION; ?> , http://www.xt-commerce.com" />
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
