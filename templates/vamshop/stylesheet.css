@@ -1013,7 +1013,7 @@ div#menu
      display: block; 
      overflow: hidden; 
      height: 1px; 
-     background: #DDDEE6; 
+     background: #f1f1f6; 
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
    }
@@ -1059,7 +1059,7 @@ div#menu
 #boxCart .boxcontent 
    {
      display: block; 
-     background: #DDDEE6; 
+     background: #f1f1f6; 
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
    }
