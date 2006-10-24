@@ -44,9 +44,9 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $products = xtc_db_fetch_array($products_query);
   $reviews_query = xtc_db_query("select count(*) as count from " . TABLE_REVIEWS);
   $reviews = xtc_db_fetch_array($reviews_query);
-  $admin_image = '<a href="' . xtc_href_link_admin(FILENAME_START,'', 'SSL').'">'.xtc_image_button('button_admin.gif', IMAGE_BUTTON_ADMIN).'</a>';
+  $admin_image = '<p class="LoginContentLeft"><a href="' . xtc_href_link_admin(FILENAME_START,'', 'SSL').'">'.xtc_image_button('button_admin.gif', IMAGE_BUTTON_ADMIN).'</a></p>';
    if ($product->isProduct()) {
-    $admin_link='<a href="' . xtc_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id']) . '&amp;action=new_product' . '" onclick="window.open(this.href); return false;">' . xtc_image_button('edit_product.gif', IMAGE_BUTTON_PRODUCT_EDIT) . '</a>';
+    $admin_link='<p class="LoginContentLeft"><a href="' . xtc_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id']) . '&amp;action=new_product' . '" onclick="window.open(this.href); return false;">' . xtc_image_button('edit_product.gif', IMAGE_BUTTON_PRODUCT_EDIT) . '</a></p>';
   }
 
   $box_content= '<b>' . BOX_TITLE_STATISTICS . '</b><br />' . $orders_contents . '<br />' .
