@@ -1376,6 +1376,51 @@ p.LoginContentLeft
    
 /*- /Бокс лучшие товары */
 
+/*- Бокс информация о группе */
+#boxGroupInfo
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- Заголовок бокса информация о группе */
+#boxGroupInfo h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #CC0000;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса информация о группе */
+
+/*- Содержимое бокса информация о группе */
+#boxGroupInfoContent 
+   {
+     padding-left: 0;
+     text-align: center;
+  }
+
+#boxGroupInfoContent p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
+/*- /Содержимое бокса информация о группе */
+
+/*- /Бокс информация о группе */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
