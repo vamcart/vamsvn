@@ -975,6 +975,145 @@ div#menu
 
 /*- /Бокс новости */
 
+/*- Бокс корзина */
+
+/* Оформление */
+#boxCart 
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.4em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+   }
+
+#boxCart .top, #boxCart .bottom 
+   {
+     display: block; 
+     background: transparent; 
+     font-size: 1px;
+   }
+
+/* Шапка с углами */
+#boxCart .b1, #boxCart .b2, #boxCart .b3, #boxCart .b4, #boxCart .b5 
+   {
+     display: block; 
+     overflow: hidden; 
+     height: 1px; 
+     background: #006600; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+/* /Шапка с углами */
+
+/* Низ с углами */
+#boxCart .b1b, #boxCart .b2b, #boxCart .b3b, #boxCart .b4b, #boxCart .b5b 
+   {
+     display: block; 
+     overflow: hidden; 
+     height: 1px; 
+     background: #DDDEE6; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+/* /Низ с углами */
+
+#boxCart .b1, #boxCart .b1b
+   {
+     margin: 0 5px; 
+     background: #000;
+   }
+
+#boxCart .b2, #boxCart .b2b
+   {
+     margin: 0 4px;
+   }
+
+#boxCart .b3, #boxCart .b3b 
+   {
+     margin: 0 3px;
+   }
+
+#boxCart .b4, #boxCart .b4b 
+   {
+     margin: 0 2px;
+   }
+
+#boxCart .b5, #boxCart .b5b 
+   {
+     margin: 0 1px;
+   }
+
+#boxCart .boxheader 
+   {
+     display: block; 
+     background: #006600; 
+     color: #fff;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+
+#boxCart .boxcontent 
+   {
+     display: block; 
+     background: #DDDEE6; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+
+#boxCart .boxcontent  span 
+   {
+     font-weight: bold;
+   }
+
+#boxCart .boxheader p 
+   {
+     padding-top: 0;
+     padding-bottom: 0.4em;
+     padding-left: 0.5em;
+     margin-top: 0;
+     margin-bottom: 0;
+     margin-left: 0;
+     margin-right: 0;
+   }
+
+#boxCart .boxcontent p 
+   {
+     padding-top: 0.1em;
+     padding-bottom: 0.1em;
+     padding-left: 0.5em;
+     margin-top: 0;
+     margin-bottom: 0;
+     margin-left: 0;
+     margin-right: 0;
+   }
+/* /Оформление */
+
+/* Ссылки в заголовке бокса */
+#boxCart .boxheader a 
+   {
+     color: #fff;
+     text-decoration: none;
+   }
+
+#boxCart .boxheader a:hover 
+   {
+     color: #fff;
+     text-decoration: none;
+   }
+/* /Ссылки в заголовке бокса */
+
+p.CartContentRight
+   {
+     text-align: right;
+     padding-right: 0.2em;
+   }
+
+/*- /Бокс корзина */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
