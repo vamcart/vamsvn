@@ -96,7 +96,7 @@ if ($_GET['coID'] == 7) {
 		$smarty->assign('FORM_ACTION', xtc_draw_form('contact_us', xtc_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
 		$smarty->assign('INPUT_NAME', xtc_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
 		$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
-		$smarty->assign('INPUT_TEXT', xtc_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],'style="width:90%"'));
+		$smarty->assign('INPUT_TEXT', xtc_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
 		$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 		$smarty->assign('FORM_END', '</form>');
 	}

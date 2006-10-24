@@ -195,6 +195,7 @@ div#navigation
 .page p 
    {
      padding-bottom: 0.5em;
+     padding-top: 0.5em;
    }
 
 .page .b1, .page .b2, .page .b3, .page .b4, .page .b1b, .page .b2b, .page .b3b, .page .b4b 
@@ -280,7 +281,7 @@ div#navigation
      background: #999;
    }
 
-.page .pagecontent 
+.pagecontent 
    {
      display: block;
      padding-left: 0.5em;
@@ -290,7 +291,7 @@ div#navigation
      border-right: 1px solid #999;
    }
 
-.page .pagecontentfooter 
+.pagecontentfooter 
    {
      display: block;
      text-align: right;
@@ -1713,5 +1714,19 @@ SPAN.errorText {
 }
 
 /*- /Цены */
+
+/* Ошибка на странице свяжитесь с нами */
+
+div.contacterror 
+   {
+     border: 1px solid; 
+     border-color: #ff0000; 
+     background-color: #FFCCCC; 
+     text-align: center; 
+     margin-bottom: 0.5em; 
+     margin-top: 0.5em;
+   }
+
+/* /Ошибка на странице свяжитесь с нами */
 
 /*]]>*/
