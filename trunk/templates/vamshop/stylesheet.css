@@ -1114,6 +1114,152 @@ p.CartContentRight
 
 /*- /Бокс корзина */
 
+/*- Бокс вход/админ */
+
+/* Оформление */
+#boxLogin 
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.4em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+   }
+
+#boxLogin .top, #boxLogin .bottom 
+   {
+     display: block; 
+     background: transparent; 
+     font-size: 1px;
+   }
+
+/* Шапка с углами */
+#boxLogin .b1, #boxLogin .b2, #boxLogin .b3, #boxLogin .b4, #boxLogin .b5 
+   {
+     display: block; 
+     overflow: hidden; 
+     height: 1px; 
+     background: #67748B; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+/* /Шапка с углами */
+
+/* Низ с углами */
+#boxLogin .b1b, #boxLogin .b2b, #boxLogin .b3b, #boxLogin .b4b, #boxLogin .b5b 
+   {
+     display: block; 
+     overflow: hidden; 
+     height: 1px; 
+     background: #f1f1f6; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+/* /Низ с углами */
+
+#boxLogin .b1, #boxLogin .b1b
+   {
+     margin: 0 5px; 
+     background: #000;
+   }
+
+#boxLogin .b2, #boxLogin .b2b
+   {
+     margin: 0 4px;
+   }
+
+#boxLogin .b3, #boxLogin .b3b 
+   {
+     margin: 0 3px;
+   }
+
+#boxLogin .b4, #boxLogin .b4b 
+   {
+     margin: 0 2px;
+   }
+
+#boxLogin .b5, #boxLogin .b5b 
+   {
+     margin: 0 1px;
+   }
+
+#boxLogin .boxheader 
+   {
+     display: block; 
+     background: #67748B; 
+     color: #fff;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+
+#boxLogin .boxcontent 
+   {
+     display: block;
+     padding-left: 0.5em; 
+     background: #f1f1f6; 
+     border-left: 1px solid #000; 
+     border-right: 1px solid #000;
+   }
+
+#boxLogin .boxcontent  span 
+   {
+     font-weight: bold;
+   }
+
+#boxLogin .boxheader p 
+   {
+     padding-top: 0;
+     padding-bottom: 0.4em;
+     padding-left: 0.5em;
+     margin-top: 0;
+     margin-bottom: 0;
+     margin-left: 0;
+     margin-right: 0;
+   }
+
+#boxLogin .boxcontent p 
+   {
+     padding-top: 0.1em;
+     padding-bottom: 0.1em;
+     padding-left: 0.2em;
+     margin-top: 0;
+     margin-bottom: 0;
+     margin-left: 0;
+     margin-right: 0;
+   }
+/* /Оформление */
+
+/*- Форма входа */
+.loginform input {
+	width: 70%;
+	font-size: 1em;
+	border: 1px solid;
+	border-color: #666 #ccc #ccc #666;
+	padding: 2px;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+}
+
+.loginform input:focus, .sffocus, .sffocus {
+	background-color: #ffc;
+}
+/*- /Форма входа */
+
+p.LoginContentCenter
+   {
+     text-align: center;
+   }
+
+p.LoginContentLeft
+   {
+     text-align: left;
+   }
+
+/*- /Бокс вход/админ */
+
 /*- /Боксы */
 
 /*- /Время парсинга */
