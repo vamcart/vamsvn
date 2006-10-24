@@ -982,7 +982,7 @@ div#menu
    {
      text-align: left;
      margin-bottom: 0.2em;
-     margin-top: 0.2em;
+     margin-top: 0.5em;
      margin-right: 0.4em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
