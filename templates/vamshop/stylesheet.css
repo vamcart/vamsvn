@@ -49,7 +49,7 @@ div#wrapper
 
 div#content
    {
-     margin: 0 16%; /* отступ центра от боковых колонок */
+     margin: 0 19%; /* отступ центра от боковых колонок */
    }
 
 /* /Центр */
@@ -58,7 +58,7 @@ div#content
 div#left
    {
      float: left;
-     width: 15%; /* Ширина левой колонки */
+     width: 18%; /* Ширина левой колонки */
      margin-left: -100%;
      background: #fff;
    }
@@ -68,8 +68,8 @@ div#left
 div#right
    {
      float: left;
-     width: 15%; /* Ширина правой колонки */
-     margin-left: -15%;
+     width: 18%; /* Ширина правой колонки */
+     margin-left: -18%;
      background: #fff;
    }
 /* /Правая колонка */
