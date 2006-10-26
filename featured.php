@@ -56,15 +56,8 @@ while ($featured = xtc_db_fetch_array($featured_query)) {
 }
 
 if (($featured_split->number_of_rows > 0)) {
-	$smarty->assign('NAVBAR', '
-	<table border="0" width="100%" cellspacing="0" cellpadding="2">
-	          <tr>
-	            <td class="smallText">'.$featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED).'</td>
-	            <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
-	          </tr>
-	        </table>
-	
-	');
+	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED));
+
 }
 
 $smarty->assign('language', $_SESSION['language']);
