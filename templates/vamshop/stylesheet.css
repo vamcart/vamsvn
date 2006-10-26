@@ -1743,7 +1743,7 @@ dl.item
      height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0.5em 0.5em 0 0;
      padding: 0 0 0 0;
-     border: 1px #e5e5e5 solid;
+     border-bottom: 1px #e5e5e5 solid;
    }
 
 dt.itemImage 
@@ -1751,8 +1751,8 @@ dt.itemImage
      float: left;
      width: 120px;
      height: 120px;
-     background-color: #f1f1f6;
-     border-right: 1px #f1f1f6 solid;
+     background-color: #fff;
+     border-right: 0px #f1f1f6 solid;
      margin-right: 4px;
      padding: 5px 5px 0 5px;
      text-align: center;
