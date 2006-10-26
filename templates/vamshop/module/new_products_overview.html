@@ -8,47 +8,48 @@
 {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}
 </dt>
 <dd class="itemDescription">
-
-<p>
 <a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
-</p>
+</dd>
 
-<p>
-{$module_data.PRODUCTS_DESCRIPTION}
-</p>
+<dd class="itemDescription">
+{$module_data.PRODUCTS_DESCRIPTION|truncate:256:"...":true}
+</dd>
 
-<p>
+<dd class="itemDescriptionPrice">
 {$module_data.PRODUCTS_PRICE}
-</p>
+</dd>
 
 {if $module_data.PRODUCTS_VPE}
-<p>
+<dd class="itemDescription">
 {$module_data.PRODUCTS_VPE}
-</p>
+</dd>
 {/if}
 
-<p>
+<dd class="itemDescription">
 {$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
-</p>
+</dd>
 
 {if $module_data.PRODUCTS_SHIPPING_NAME}
-<p>
+<dd class="itemDescription">
 {#text_shippingtime#}&nbsp;
 {if $module_data.PRODUCTS_SHIPPING_IMAGE}
 <img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
 {/if}
 {$module_data.PRODUCTS_SHIPPING_NAME}
-</p>
+</dd>
 {/if}
 
-<p>
+<dd class="itemDescription">
 {$module_data.PRODUCTS_BUTTON_BUY_NOW}
-</p>
 </dd>
+
 </dl>
           {/foreach} 
 
 </div>
+
+<div class="clear"></div>
 <div class="navigation">
 {$NAVIGATION_BAR}
 </div>
+<div class="clear"></div>
