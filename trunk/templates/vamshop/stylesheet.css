@@ -184,6 +184,7 @@ div#navigation
    {
      background: transparent;
      width: 100%;
+     margin-top: 0.5em;
    }
 
 .page h1, .page p 
@@ -301,6 +302,7 @@ div#navigation
      display: block;
      text-align: right;
      background:#ffffff;
+     margin-top: 0.5em;
    }
 /* /Скругленные углы */
 
@@ -520,12 +522,13 @@ div#menu
      margin: 0 0 0 0;
    }
 
-#boxContent li {
-	display: block;
-   font: 11px Tahoma, Verdana, Arial, sans-serif;
-   background: url(img/icon_arrow1.jpg) no-repeat left center;
-   padding: 0 0 0 12px; 
-}
+#boxContent li 
+   {
+	  display: block;
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     background: url(img/icon_arrow1.jpg) no-repeat left center;
+     padding: 0 0 0 12px; 
+   }
 
 /*- /Бокс контент */
 
@@ -1772,6 +1775,29 @@ dl.itemSpecials
    }
 /* /Количества колонок с товаром на странице скидки */
 
+/* Количества колонок с товаром на странице мои данные */
+dl.itemLastViewed 
+   {
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0.5em 0.5em 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+dl.itemAccountOrders 
+   {
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0.5em 0.5em 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+/* /Количества колонок с товаром на странице мои данные */
+
 dt.itemImage 
    {
      float: left;
@@ -1816,5 +1842,25 @@ span.right
    }
 
 /* /Вывод товаров */
+
+/* Ссылки на странице мои данные */
+
+ul.accountLinks 
+   {
+     list-style-type: none;
+     text-align: left;
+     padding-left: 1em;
+     margin: 0 0 0 0;
+   }
+
+li.accountLinks 
+   {
+	  display: block;
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     background: url(img/icon_arrow1.jpg) no-repeat left center;
+     padding: 0 0 0 14px; 
+   }
+
+/* /Ссылки на странице мои данные */
 
 /*]]>*/
