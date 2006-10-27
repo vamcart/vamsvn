@@ -84,10 +84,25 @@ echo "<?xml version=\"1.0\" encoding=\"" . $charset ."\"?><!DOCTYPE yml_catalog 
 		 "<company>" . _clear_string((YML_COMPANY == "" ? STORE_OWNER : YML_COMPANY)) . "</company>\n" .
 		 "<url>" . HTTP_SERVER . "/</url>\n\n";
 
+//echo "  <currencies>\n";
+//foreach($xtPrice->currencies as $code => $v){
+//	echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
+//}
+//echo "  </currencies>\n\n";
+
 echo "  <currencies>\n";
-foreach($xtPrice->currencies as $code => $v){
-	echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
-}
+if ($_GET['currency'] == "") {
+    foreach($xtPrice->currencies as $code => $v){
+        echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
+    }
+}  else {
+    $varcurrency = $xtPrice->currencies[$_GET['currency']];
+        foreach($xtPrice->currencies as $code => $v){
+        echo "    <currency id=\"" . $code . "\" rate=\"" . number_format($varcurrency['value']/$v['value'],4) . "\"/>\n";
+    }
+    }
+
+
 echo "  </currencies>\n\n";
 
 echo "  <categories>\n";
