@@ -1711,26 +1711,32 @@ span.Requirement
 
 /*- Цены */
 
-SPAN.markProductOutOfStock {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
-  font-size: 12px;
-  color: #c76170;
-  font-weight: bold;
-}
+SPAN.markProductOutOfStock 
+   {
+     font-family: Tahoma, Verdana, Arial, sans-serif;
+     font-size: 12px;
+     color: #c76170;
+     font-weight: bold;
+   }
 
-SPAN.productSpecialPrice {
-  font-family: Verdana, Arial, sans-serif;
-  color: #ff0000;
-}
-SPAN.productOldPrice {
-	font-family: Verdana, Arial, sans-serif;
-	color: #ff0000;
-	text-decoration: line-through;
-}
-SPAN.errorText {
-  font-family: Verdana, Arial, sans-serif;
-  color: #ff0000;
-}
+SPAN.productSpecialPrice 
+   {
+     font-family: Verdana, Arial, sans-serif;
+     color: #ff0000;
+   }
+
+SPAN.productOldPrice 
+   {
+	  font-family: Verdana, Arial, sans-serif;
+	  color: #ff0000;
+	  text-decoration: line-through;
+   }
+
+SPAN.errorText 
+   {
+     font-family: Verdana, Arial, sans-serif;
+     color: #ff0000;
+   }
 
 /*- /Цены */
 
