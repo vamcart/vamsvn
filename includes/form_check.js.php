@@ -272,7 +272,7 @@ function check_form(form_name) {
 				{
 					if(of.getElementsByTagName('label')[i].htmlFor==o.id)
 					{
-						var txt=of.getElementsByTagName('label')[i].firstChild.nodeValue + ' ' + of.getElementsByTagName('label')[i].id;
+						var txt=of.getElementsByTagName('label')[i].firstChild.nodeValue + ' ' + of.getElementsByTagName('label')[i].title;
 						break;
 					}
 				}
