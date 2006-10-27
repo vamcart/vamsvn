@@ -26,7 +26,7 @@
   {/if}
   {if $gender=='1'} 
   <tr> 
-    <td class="main"><label for="gender" id="{$ENTRY_GENDER_ERROR}">{#text_gender#}</td>
+    <td class="main"><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</td>
     <td class="main"><table cellspacing="0" cellpadding="0">
       <tr>
         <td class="main">
@@ -38,26 +38,26 @@
   </tr>
   {/if} 
   <tr> 
-    <td class="main" ><label for="firstname" id="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label></td>
+    <td class="main" ><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label></td>
     <td class="inputRequirement" >{$INPUT_FIRSTNAME}</td>
   </tr>
   <tr> 
-    <td class="main"><label for="lastname" id="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label></td>
+    <td class="main"><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label></td>
     <td class="inputRequirement">{$INPUT_LASTNAME}</td>
   </tr>
   {if $birthdate=='1'} 
   <tr> 
-    <td class="main"><label for="dob" id="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label></td>
+    <td class="main"><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label></td>
     <td class="inputRequirement">{$INPUT_DOB}</td>
   </tr>
   {/if} 
   <tr> 
-    <td class="main"><label for="email" id="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label></td>
+    <td class="main"><label for="email" title="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label></td>
     <td class="inputRequirement">{$INPUT_EMAIL}</td>
   </tr>
   {if $telephone=='1'} 
   <tr> 
-    <td class="main"><label for="telephone" id="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label></td>
+    <td class="main"><label for="telephone" title="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label></td>
     <td class="inputRequirement">{$INPUT_TEL}</td>
   </tr>
   {/if} 
