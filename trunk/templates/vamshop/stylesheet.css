@@ -1669,32 +1669,43 @@ div#copyright
 
 /*- Формы */
 
-form {
-	width: 100%;
-	margin: 0;
-}
+form 
+   {
+	  width: 100%;
+	  margin: 0;
+   }
 
-.form input, textarea {
-	width: 98%;
-	font-size: 1em;
-	border: 1px solid;
-	border-color: #666 #ccc #ccc #666;
-	padding: 2px;
-}
+.form input, textarea 
+   {
+	  font-size: 1em;
+	  border: 1px solid;
+	  border-color: #666 #ccc #ccc #666;
+	  padding: 2px;
+   }
 
-.form input {
-	width: 12em;
-}
+/*- Подсветка ошибок формы */
+#errormsg
+   {
+     border: 2px solid #c00;
+     padding: 5px;
+     width: 96%;
+   }    
 
-.form label {
-	float: left;
-	width: 8em;
-}
+.error
+   {
+	  background: #fcc;
+   }
+/*- /Подсветка ошибок формы */
+   
+.form textarea:focus, input:focus, .sffocus, .sffocus 
+   {
+	  background-color: #ffc;
+   }
 
-.form textarea:focus, input:focus, .sffocus, .sffocus {
-	background-color: #ffc;
-}
-
+span.Requirement 
+   {
+     color: red;
+   }
 
 /*- /Формы */
 
