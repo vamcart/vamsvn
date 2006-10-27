@@ -1711,7 +1711,7 @@ span.Requirement
 
 /*- Цены */
 
-SPAN.markProductOutOfStock 
+span.markProductOutOfStock 
    {
      font-family: Tahoma, Verdana, Arial, sans-serif;
      font-size: 12px;
@@ -1719,20 +1719,20 @@ SPAN.markProductOutOfStock
      font-weight: bold;
    }
 
-SPAN.productSpecialPrice 
+span.productSpecialPrice 
    {
      font-family: Verdana, Arial, sans-serif;
      color: #ff0000;
    }
 
-SPAN.productOldPrice 
+span.productOldPrice 
    {
 	  font-family: Verdana, Arial, sans-serif;
 	  color: #ff0000;
 	  text-decoration: line-through;
    }
 
-SPAN.errorText 
+span.errorText 
    {
      font-family: Verdana, Arial, sans-serif;
      color: #ff0000;
