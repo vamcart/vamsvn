@@ -1,17 +1,9 @@
 /* -----------------------------------------------------------------------------------------
-   $Id: stylesheet.css 1262 2005-10-22 10:00:32Z VaM $   
-
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
 
    Copyright (c) 2006 VaM Shop 
    -----------------------------------------------------------------------------------------
-   based on: 
-   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(stylesheet.css,v 1.54 2003/05/27); www.oscommerce.com 
-   (c) 2003	 nextcommerce (stylesheet.css,v 1.7 2003/08/13); www.nextcommerce.org
-   (c) 2005	 xt:Commerce (stylesheet.css,v 1.7 2005-09-30); www.xt-commerce.com
-
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
@@ -187,6 +179,12 @@ div#navigation
      margin-top: 0.5em;
    }
 
+.pageItem 
+   {
+     background: #f1f1f6;
+     width: 100%;
+   }
+
 .page h1, .page p 
    {
      margin: 0 10px;
@@ -220,42 +218,42 @@ div#navigation
    {
      background: #f1f1f6;
      border-left: 1px solid #fff;
-     border-right: 1px solid #eee;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b3 
    {
      background: #f1f1f6;
      border-left: 1px solid #fff;
-     border-right: 1px solid #ddd;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b4 
    {
      background: #f1f1f6;
      border-left: 1px solid #fff;
-     border-right: 1px solid #aaa;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b4b 
    {
      background: #f1f1f6;
-     border-left: 1px solid #eee;
-     border-right: 1px solid #999;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b3b 
    {
      background: #f1f1f6;
-     border-left: 1px solid #ddd;
-     border-right: 1px solid #999;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b2b 
    {
      background: #f1f1f6;
-     border-left: 1px solid #aaa;
-     border-right: 1px solid #999;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
    }
 
 .page .b1 
@@ -284,7 +282,7 @@ div#navigation
 .page .b1b 
    {
      margin: 0 5px;
-     background: #999;
+     background: #f1f1f6;
    }
 
 .pagecontent 
@@ -293,8 +291,6 @@ div#navigation
      padding-left: 0.5em;
      padding-right: 0.5em;
      background: #f1f1f6;
-     border-left: 1px solid #fff;
-     border-right: 1px solid #999;
    }
 
 .pagecontentfooter 
@@ -1759,12 +1755,12 @@ div.contacterror
 /* Количества колонок с товаром на странице новинки */
 dl.itemNewProducts 
    {
-     width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     width: 50%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
-     margin: 0.5em 0.5em 0 0;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
-     border-bottom: 1px #e5e5e5 solid;
+     background: transparent;
    }
 /* /Количества колонок с товаром на странице новинки */
 
@@ -1774,7 +1770,7 @@ dl.itemFeaturedProducts
      width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
-     margin: 0.5em 0.5em 0 0;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
    }
@@ -1786,7 +1782,7 @@ dl.itemSpecials
      width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
-     margin: 0.5em 0.5em 0 0;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
    }
@@ -1798,7 +1794,7 @@ dl.itemLastViewed
      width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
-     margin: 0.5em 0.5em 0 0;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
    }
@@ -1810,9 +1806,9 @@ dt.itemImage
      float: left;
      width: 120px;
      height: 120px;
-     background-color: #fff;
+     background: transparent;
      border-right: 0px #f1f1f6 solid;
-     margin-right: 4px;
+     margin: 0 0 0 0;
      padding: 5px 5px 0 5px;
      text-align: center;
    }
@@ -1822,6 +1818,7 @@ dd.itemDescription
      margin: 0 1em 0 120px;
      padding: 0 0;
      line-height: normal;
+     background: transparent;
    }
 
 dd.itemDescriptionPrice
@@ -1829,6 +1826,7 @@ dd.itemDescriptionPrice
      margin: 1em 1em 0 120px;
      padding: 0 0;
      line-height: normal;
+     background: transparent;
    }
 
 div.clear

@@ -1,8 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="new_products"} 
 {config_load file="$language/lang_$language.conf" section="index"} 
 <h1 class="contentBoxHeading">{#heading_text#}</h1>
-<div class="page">
           {foreach name=aussen item=module_data from=$module_content} 
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
 <dl class="itemNewProducts">
 <dt class="itemImage">
 {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}
@@ -44,9 +47,13 @@
 </dd>
 
 </dl>
-          {/foreach} 
 
+<div class="clear"></div>
 </div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+          {/foreach} 
 
 <div class="clear"></div>
 <div class="navigation">
