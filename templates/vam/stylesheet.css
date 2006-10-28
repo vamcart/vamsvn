@@ -718,7 +718,7 @@ TD.navigation a:hover {
      font: 11px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #ffffff;
-     text-decoration: none;
+     text-decoration: underline;
 }
 
 TD.navigation a:visited {
@@ -1000,3 +1000,20 @@ div#copyright
      padding-bottom: 0.5em;
    }
 /*- /Информация о магазине */
+
+div.clear
+   {
+     clear: both;
+   }
+
+div.navigation
+   {
+     display: block;
+     width: 100%;
+     padding-top: 1em;
+   }
+
+span.right
+   {
+     float: right;
+   }
