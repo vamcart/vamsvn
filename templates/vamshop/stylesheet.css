@@ -1776,6 +1776,28 @@ dl.itemFeaturedProducts
    }
 /* /Количества колонок с товаром на странице рекомендуемые товары */
 
+/* Количества колонок с товаром в блоке новинки на главной странице */
+dl.itemNewProductsDefault 
+   {
+     width: 50%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: 125px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+/* /Количества колонок с товаром в блоке новинки на главной странице */
+
+/* Количества колонок с новостями на главной странице */
+dl.itemLatestNewsDefault 
+   {
+     width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+/* /Количества колонок с новостями на главной странице */
+
 /* Количества колонок с товаром на странице скидки */
 dl.itemSpecials 
    {
@@ -1813,6 +1835,17 @@ dt.itemImage
      text-align: center;
    }
 
+dt.itemNews 
+   {
+     display: none;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: left;
+   }
+
 dd.itemDescription
    {
      margin: 0 1em 0 120px;
@@ -1824,6 +1857,14 @@ dd.itemDescription
 dd.itemDescriptionPrice
    {
      margin: 1em 1em 0 120px;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dd.itemNews
+   {
+     margin-left: 1em;
      padding: 0 0;
      line-height: normal;
      background: transparent;
