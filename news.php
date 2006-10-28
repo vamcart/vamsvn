@@ -50,14 +50,7 @@
       $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
       $query = xtc_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
-          $smarty->assign('NAVIGATION_BAR', '
-              <table border="0" width="100%" cellspacing="0" cellpadding="2">
-              <tr>
-              <td class="smallText">'.$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS).'</td>
-              <td align="right" class="smallText">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
-              </tr>
-              </table>
-              ');
+          $smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
       }
       $smarty->assign('ONE', false);
   } else {
