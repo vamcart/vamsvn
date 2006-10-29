@@ -1859,6 +1859,63 @@ dd.ordersAddress
 
 /* /Информация о заказе, адрес клиента и адрес доставки */
 
+/* Адресная книга */
+dl.AddressBook 
+   {
+     width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+
+dt.AddressBook 
+   {
+     float: left;
+     width: 90px;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBook
+   {
+     margin: 0 0 0 90px;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dl.AddressBookList 
+   {
+     width: 50%;
+     float: left;
+     height: 100px;
+     margin: 0 0 0 0;
+     padding: 0 0 1em 0;
+   }
+
+dt.AddressBookList 
+   {
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBookList
+   {
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Адресная книга */
+
 dt.itemImage 
    {
      float: left;
