@@ -25,13 +25,19 @@ img
 	  border: 0;
    }
 
+h2
+   {
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+   
 /* ÷вет обычных ссылок в магазине */
-A {
+a {
   color: #67748B;
   text-decoration: underline;
 }
 
-A:hover {
+a:hover {
   color: #990000;
   text-decoration: none;
 }
