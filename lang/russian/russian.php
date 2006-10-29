@@ -525,4 +525,6 @@ define('TEXT_INFO_SHOW_PRICE_NO','У Вас нет доступа для просмотра цен');
 
 define('TEXT_OF_5_STARS', '%s из 5 звёзд!');
 
+define('IMAGE_BUTTON_PRINT', 'Распечатать');
+
 ?>
