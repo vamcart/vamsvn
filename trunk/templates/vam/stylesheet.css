@@ -1017,3 +1017,8 @@ span.right
    {
      float: right;
    }
+
+span.Requirement 
+   {
+     color: red;
+   }
