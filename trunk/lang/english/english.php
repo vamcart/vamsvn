@@ -522,4 +522,6 @@ define('TEXT_INFO_SHOW_PRICE_NO','You do not have the permission to see the pric
 
 define('TEXT_OF_5_STARS', '%s of 5 stars!');
 
+define('IMAGE_BUTTON_PRINT', 'Print');
+
 ?>
