@@ -374,14 +374,14 @@ define('NAVBAR_GV_SEND', 'Отправить сертификат');
 define('TEXT_NEWSLETTER','Хотите узнавать о новинках первым?<br />Подпишитесь на наши новости и Вы первым узнаете обо всех изменениях и новинках.');
 define('TEXT_EMAIL_INPUT','Ваш E-Mail адрес был успешно зарегистрирован в нашей системе.<br />Вам было отправлено письмо с персональной ссылкой на подтверждение. Пожалуйста, перейдите по ссылке, указаной в письме. В противном случае Вы не будете получать почтовую рассылку!');
 
-define('TEXT_WRONG_CODE','<font color="FF0000">Заполните поля E-mail и Секретный код.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
-define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','<font color="FF0000">Указанный Email адрес зарегистрирован, но не активирован!</font>');
-define('TEXT_EMAIL_EXIST_NEWSLETTER','<font color="FF0000">Указанный Email адрес зарегистрирован и активирован!</font>');
-define('TEXT_EMAIL_NOT_EXIST','<font color="FF0000">Указанный Email адрес не зарегистрирован!</font>');
+define('TEXT_WRONG_CODE','Заполните поля E-mail и Секретный код.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','Указанный Email адрес зарегистрирован, но не активирован!');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','Указанный Email адрес зарегистрирован и активирован!');
+define('TEXT_EMAIL_NOT_EXIST','Указанный Email адрес не зарегистрирован!');
 define('TEXT_EMAIL_DEL','Указанный Email адрес был успешно удалён.');
-define('TEXT_EMAIL_DEL_ERROR','<font color="FF0000">Произошла ошибка, Email адрес не был удалён!</font>');
-define('TEXT_EMAIL_ACTIVE','<font color="FF0000">Ваш Email адрес был добавлен к списку рассылки!</font>');
-define('TEXT_EMAIL_ACTIVE_ERROR','<font color="FF0000">Произошла ошибка, Email адрес не был активирован!</font>');
+define('TEXT_EMAIL_DEL_ERROR','Произошла ошибка, Email адрес не был удалён!');
+define('TEXT_EMAIL_ACTIVE','Ваш Email адрес был добавлен к списку рассылки!');
+define('TEXT_EMAIL_ACTIVE_ERROR','Произошла ошибка, Email адрес не был активирован!');
 define('TEXT_EMAIL_SUBJECT','Почтовая рассылка');
 
 define('TEXT_CUSTOMER_GUEST','Гость');
