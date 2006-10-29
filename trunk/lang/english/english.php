@@ -374,14 +374,14 @@ define('NAVBAR_GV_SEND', 'Send Voucher');
 define('TEXT_NEWSLETTER','You want to stay up to date?<br />No problem, receiveour Newsletter and we can inform you always up to date.');
 define('TEXT_EMAIL_INPUT','Your e-Mail adress has been registered by our system.<br />Therefore you will receive an E-Mail with your personally confirmation-code-link.  Please click after the receipt of the Mail on the Hyperlink inside. Otherwise no Newsletter will be send to you!');
 
-define('TEXT_WRONG_CODE','<font color="FF0000">Please fill out the e-Mail field and the Security-Code again. <br />Be aware of Typos!</font>');
-define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','<font color="FF0000">This e-Mail address is registered but not yet activated!</font>');
-define('TEXT_EMAIL_EXIST_NEWSLETTER','<font color="FF0000">This e-Mail address is registered is also activated for the newsletter!</font>');
-define('TEXT_EMAIL_NOT_EXIST','<font color="FF0000">This e-Mail address is not registered for Newsletters!</font>');
+define('TEXT_WRONG_CODE','Please fill out the e-Mail field and the Security-Code again. <br />Be aware of Typos!');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','This e-Mail address is registered but not yet activated!');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','This e-Mail address is registered is also activated for the newsletter!');
+define('TEXT_EMAIL_NOT_EXIST','This e-Mail address is not registered for Newsletters!');
 define('TEXT_EMAIL_DEL','Your e-Mail adress was deleted successfully in our newsletter-database.');
-define('TEXT_EMAIL_DEL_ERROR','<font color="FF0000">An Error occured, your e-Mailaddress has not been deletet!</font>');
-define('TEXT_EMAIL_ACTIVE','<font color="FF0000">Your e-Mail address was successfully integrated in our Newsletter Service!</font>');
-define('TEXT_EMAIL_ACTIVE_ERROR','<font color="FF0000">An error occured, your e-Mail address has not been activated for Newsletter!</font>');
+define('TEXT_EMAIL_DEL_ERROR','An Error occured, your e-Mailaddress has not been deletet!');
+define('TEXT_EMAIL_ACTIVE','Your e-Mail address was successfully integrated in our Newsletter Service!');
+define('TEXT_EMAIL_ACTIVE_ERROR','An error occured, your e-Mail address has not been activated for Newsletter!');
 define('TEXT_EMAIL_SUBJECT','Your Newsletter Account');
 
 define('TEXT_CUSTOMER_GUEST','Guest');
