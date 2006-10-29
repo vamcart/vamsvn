@@ -1,2 +1,26 @@
 {config_load file="$language/lang_$language.conf" section="newsletter"}<h1 class="contentBoxHeading">{#heading_title#}</h1>
-{if $info_message!=''} <table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>     <td class="main" style="border: 1px solid; border-color: #ff0000;" bgcolor="#FFCCCC"><div align="center">{$info_message}</div></td>  </tr></table>{/if} {$FORM_ACTION} <table class="formArea" width="100%" border="0" cellspacing="3" cellpadding="0">  <tr>     <td width="18%">&nbsp;</td>    <td width="82%">&nbsp;</td>  </tr>  <tr>     <td><strong>{#text_sec_code#}</strong></td>    <td><strong>{$VVIMG}</strong></td>  </tr>  <tr>     <td>&nbsp;</td>    <td>&nbsp;</td>  </tr>  <tr>     <td><strong>{#text_sec_code#}</strong></td>    <td>{$INPUT_CODE}</td>  </tr>  <tr>     <td><strong>{#text_email#}</strong></td>    <td>{$INPUT_EMAIL}</td>  </tr>  <tr>     <td>&nbsp;</td>    <td>&nbsp;</td>  </tr>  <tr>     <td>&nbsp;</td>    <td><table cellspacing="0" cellpadding="0">        <tr>           <td class="main">{$CHECK_INP}</td>          <td class="main">{#text_in#}</td>        </tr>        <tr>           <td class="main">{$CHECK_DEL}</td>          <td class="main">{#text_out#}</td>        </tr>      </table></td>  </tr>  <tr>     <td>&nbsp;</td>    <td><span class="small">{$BUTTON_SEND}</span><span class="small"><strong></strong></span></td>  </tr></table>{$FORM_END}<br />
+
+{if $info_message!=''} <div class="contacterror">{$info_message}</div>{/if}
+
+{$FORM_ACTION} 
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<fieldset class="form">
+<legend>{#heading_title#}</legend>
+<p><span class="bold">{#text_sec_code#}</span> {$VVIMG}</p>
+<p><span class="bold">{#text_sec_code#}</span> {$INPUT_CODE}</p>
+<p><span class="bold">{#text_email#}</span> {$INPUT_EMAIL}</p>
+<p><span class="bold">{$CHECK_INP}</span> {#text_in#}</p>
+<p><span class="bold">{$CHECK_DEL}</span> {#text_out#}</p>
+</fieldset>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SEND}
+</div>
+{$FORM_END}
