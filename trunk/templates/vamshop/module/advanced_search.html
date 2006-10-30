@@ -1,54 +1,32 @@
 {config_load file="$language/lang_$language.conf" section="advanced_search"}
-<h1 class="contentBoxHeading">{#heading_search#}</h1>
-{$FORM_ACTION}
+<h1>{#heading_search#}</h1>
 {if $error!=''}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>{$error}</td>
-  </tr>
-</table>
+{$error}
 {/if}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td class="main" align="right"><a href="{$HELP_LINK}">{#text_help#}</a></td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-</table>
-<table width="100%" border="0" class="formArea">
-  <tr> 
-    <td width="250"><strong>{#title_keywords#}</strong></td>
-    <td>{$INPUT_KEYWORDS}</td>
-  </tr>
-  <tr> 
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr> 
-    <td valign="top"><strong>{#text_categories#}</strong></td>
-    <td>{$SELECT_CATEGORIES}<br />
-      {$ENTRY_SUBCAT}{#text_subkategories#}</td>
-  </tr>
-  <tr> 
-    <td valign="top"><strong>{#text_manufacturer#}</strong></td>
-    <td>{$SELECT_MANUFACTURERS}</td>
-  </tr>
-  <tr> 
-    <td valign="top"><strong>{#text_min#}</strong></td>
-    <td>{$SELECT_PFROM}</td>
-  </tr>
-  <tr>
-    <td valign="top"><strong>{#text_max#}</strong></td>
-    <td>{$SELECT_PTO}</td>
-  </tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td align="right"><br />{$BUTTON_SUBMIT}</td>
-  </tr>
-</table>
+{$FORM_ACTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+<a href="{$HELP_LINK}">{#text_help#}</a>
+</p>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#heading_search#}</legend>
+<p>{#title_keywords#} {$INPUT_KEYWORDS}</p>
+<p>{#text_categories#} {$SELECT_CATEGORIES}</p>
+<p>{$ENTRY_SUBCAT} {#text_subkategories#}</p>
+<p>{#text_manufacturer#} {$SELECT_MANUFACTURERS}</p>
+<p>{#text_min#} {$SELECT_PFROM}</p>
+<p>{#text_max#} {$SELECT_PTO}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+
 {$FORM_END}
