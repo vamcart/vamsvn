@@ -1,6 +1,92 @@
-{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1 class="contentBoxHeading">{#heading_payment#}</h1>
-{$FORM_ACTION}{if $error!=''}<table border="0" width="100%" cellspacing="1" cellpadding="2" class="infoBoxNotice">		          <tr class="infoBoxNoticeContents">		            <td><table border="0" width="100%" cellspacing="0" cellpadding="2">		              <tr>		                <td>&nbsp;</td>		                <td class="main" width="100%" valign="top">{$error}</td>		                <td>&nbsp;</td>		              </tr>		            </table></td>		          </tr>		        </table>{/if}<table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>{if $BILLING_ADDRESS=='true'} 
-  <tr>    <td><strong>{#title_address#}</strong></td>  </tr>{/if}
-</table> {if $BILLING_ADDRESS=='true'} 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td style="border-top: 1px solid; border-color: #cccccc;">	  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">{#text_address#}<br /><br />{$BUTTON_ADDRESS}</td>          <td>		    <table width="100%" border="0" cellspacing="0" cellpadding="4">              <tr>                 <td align="center" valign="top" class="main"><strong>{#title_address#}</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>                <td class="boxTextBG" style="border-right: 1px solid; border-color: #cccccc;" align="left">{$ADDRESS_LABEL}</td>              </tr>            </table></td>        </tr>      </table></td>  </tr></table>{/if}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>    <td><strong>{#title_payment#}</strong></td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>     <td style="border-top: 1px solid; border-color: #cccccc;">	  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>           <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_payment#}<br /><br />		    <table width="100%" border="0" cellspacing="0" cellpadding="0">              <tr>                 <td class="main">{if $GV_COVER!='true'}{$PAYMENT_BLOCK}{$module_gift}{else}                   <table width="100%"  border="0">                    <tr>                      <td class="headerMessage" align="center">{#text_gccover#}</td>                    </tr>                  </table>                {/if}</td>              </tr>            </table></td>        </tr>      </table></td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>    <td><strong>{#title_comments#}</strong></td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>     <td style="border-top: 1px solid; border-color: #cccccc;">	  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>           <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />		    <table width="100%" border="0" cellspacing="0" cellpadding="0">              <tr>                 <td>{$COMMENTS}</td>              </tr>            </table></td>        </tr>      </table></td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>    <td><strong>{#title_agb#}</strong>&nbsp;{$AGB_LINK}</td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>     <td style="border-top: 1px solid; border-color: #cccccc;">	  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>           <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />            <table width="100%" border="0" cellspacing="0" cellpadding="0">              <tr>                 <td class="main">{$AGB}</td>              </tr>              <tr>                <td style="border: 1px solid; border-color: #ff0000;" class="conditions">{$AGB_checkbox} <strong>{#text_accept_agb#}</strong></td>              </tr>            </table></td>        </tr>      </table></td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>     <td style="border-top: 1px solid; border-color: #cccccc;">	  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>           <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><strong>{#title_continue#}</strong><br />{#text_continue#}<br /><br />		    <table width="100%" border="0" cellspacing="0" cellpadding="0">              <tr>                 <td align="right">{$BUTTON_CONTINUE}</td>              </tr>            </table></td>        </tr>      </table></td>  </tr></table>{$FORM_END}<table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>     <td>	  <table border="0" width="100%" cellspacing="0" cellpadding="0">        <tr>           <td>		    <table border="0" width="100%" cellspacing="0" cellpadding="0">              <tr>                 <td align="right"><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="5" alt="" /></td>                <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>              </tr>            </table></td>          <td>            <table width="100%" border="0" cellspacing="0" cellpadding="0">              <tr>                <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>                <td class="onepxwidth"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></td>                <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>              </tr>            </table></td>          <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>          <td><table border="0" width="100%" cellspacing="0" cellpadding="0">              <tr>                 <td><img src="{$tpl_path}img/pixel_silver.gif" width="100%" height="1" alt="" /></td>                <td><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="5" alt="" /></td>              </tr>            </table></td>        </tr>        <tr>           <td align="center" class="checkoutBarTo">{#text_shipping_info#}</td>          <td align="center" class="checkoutBarCurrent">{#text_payment_info#}</td>          <td align="center" class="checkoutBarTo">{#text_confirm#}</td>          <td align="center" class="checkoutBarTo">{#text_finished#}</td>        </tr>      </table></td>  </tr></table>
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
+{$FORM_ACTION}{if $error!=''}
+{$error}
+{/if}<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+{if $BILLING_ADDRESS=='true'} 
+<p>
+<span class="bold">{#title_address#}</span>
+</p>
+{/if}
+
+{if $BILLING_ADDRESS=='true'} 
+<!-- Адрес -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+</dt>
+
+<dd class="AddressBook">
+{#text_address#}
+</dd>
+
+<dd class="AddressBook">
+{$BUTTON_ADDRESS}
+</dd>
+
+</dl>
+<!-- /Адрес -->
+
+<!-- Адрес по умолчанию -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+<span class="bold">{#title_address#}</span>
+<br />
+<img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
+</dt>
+
+<dd class="AddressBook">
+{$ADDRESS_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес по умолчанию -->
+<div class="clear"></div>
+{/if}
+
+<p>
+<span class="bold">{#title_payment#}</span>
+</p>
+
+{if $GV_COVER!='true'}
+<fieldset class="form">
+<legend>{#text_payment#}</legend>
+{$PAYMENT_BLOCK}
+</fieldset>
+{$module_gift}
+{else}
+{#text_gccover#}
+{/if}
+
+<fieldset class="form">
+<legend>{#title_comments#}</legend>
+<p>
+{$COMMENTS}
+</p>
+</fieldset>
+
+<fieldset class="form">
+<legend>{#title_agb#}&nbsp;{$AGB_LINK}</legend>
+<p>
+{$AGB}
+</p><p>
+{$AGB_checkbox} <span class="bold">{#text_accept_agb#}</span>
+</p>
+</fieldset>
+
+<p>
+<span class="bold">{#title_continue#}</span>
+</p>
+
+<p>
+{#text_continue#}
+</p>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+{$FORM_END}
