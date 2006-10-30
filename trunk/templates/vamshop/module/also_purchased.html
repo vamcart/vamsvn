@@ -1,23 +1,51 @@
 {config_load file="$language/lang_$language.conf" section="also_purchased"}
-<h1 class="contentBoxHeading">{#heading_text#}</h1>
-<br />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td> <div align="center"> 
-        <table width="100%" border="0">
-          {foreach name=aussen item=module_data from=$module_content} 
-          <tr> 
-            <td width="1" rowspan="2" style="border-bottom: 1px solid; border-color: #cccccc;">{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" border="0" alt="{$module_data.PRODUCTS_NAME}" /></a>{/if}</td>
-            <td class="main"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong></td>
-          </tr>
-          <tr> 
-            <td style="border-bottom: 1px solid; border-color: #cccccc;" class="main">{$module_data.PRODUCTS_DESCRIPTION}<br /> 
-              <strong>{$module_data.PRODUCTS_PRICE}</strong><br />
-              <span class="smallText">{if $module_data.PRODUCTS_VPE}{$module_data.PRODUCTS_VPE}<br />{/if}{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</span><br />
-              </strong></td>
-          </tr>
+<h1>{#heading_text#}</h1>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+{foreach name=aussen item=module_data from=$module_content} 
+<dl class="itemNewProductsDefault">
+<dt class="itemImage">
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" border="0" alt="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_DESCRIPTION|truncate:256:"...":true}
+</dd>
+
+<dd class="itemDescriptionPrice">
+{$module_data.PRODUCTS_PRICE}
+</dd>
+
+{if $module_data.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+{if $module_data.PRODUCTS_SHIPPING_NAME}
+<dd class="itemDescription">
+{#text_shippingtime#}&nbsp;
+{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+{/if}
+{$module_data.PRODUCTS_SHIPPING_NAME}
+</dd>
+{/if}
+
+</dl>
           {/foreach} 
-        </table>
-      </div></td>
-  </tr>
-</table>
+
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
