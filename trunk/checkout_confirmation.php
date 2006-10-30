@@ -175,8 +175,8 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 
 		$data_products .= '<tr>
 							<td class="main" align="left" valign="top">
-							<nobr><small>' . SHIPPING_TIME . $order->products[$i]['shipping_time'] . '
-							</small><nobr></td>
+							<small>' . SHIPPING_TIME . $order->products[$i]['shipping_time'] . '
+							</small></td>
 							<td class="main" align="right" valign="top">&nbsp;</td></tr>';
 
 	}
@@ -184,8 +184,8 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 		for ($j = 0, $n2 = sizeof($order->products[$i]['attributes']); $j < $n2; $j++) {
 			$data_products .= '<tr>
 								<td class="main" align="left" valign="top">
-								<nobr><small>&nbsp;<i> - ' . $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'] . '
-								</i></small><nobr></td>
+								<small>&nbsp;<i> - ' . $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'] . '
+								</i></small></td>
 								<td class="main" align="right" valign="top">&nbsp;</td></tr>';
 		}
 	}
