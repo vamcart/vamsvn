@@ -225,45 +225,24 @@ if ($process == false) {
 
 	if ($addresses_count > 1) {
 
-		$address_content = '<table border="0" width="100%" cellspacing="0" cellpadding="0">';
+		$address_content = '';
 		$radio_buttons = 0;
 
 		$addresses_query = xtc_db_query("select address_book_id, entry_firstname as firstname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".$_SESSION['customer_id']."'");
 		while ($addresses = xtc_db_fetch_array($addresses_query)) {
 			$format_id = xtc_get_address_format_id($address['country_id']);
-			$address_content .= ' <tr>
-			                <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                <td colspan="2"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-			                ';
+			$address_content .= '';
 			if ($addresses['address_book_id'] == $_SESSION['billto']) {
-				$address_content .= '                  <tr id="defaultSelected" class="moduleRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, '.$radio_buttons.')">'."\n";
+				$address_content .= ''."\n";
 			} else {
-				$address_content .= '                  <tr class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, '.$radio_buttons.')">'."\n";
+				$address_content .= ''."\n";
 			}
-			$address_content .= '
-			                    <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                    <td class="main" colspan="2"><strong>'.$addresses['firstname'].' '.$addresses['lastname'].'</strong></td>
-			                    <td class="main" align="right">'.xtc_draw_radio_field('address', $addresses['address_book_id'], ($addresses['address_book_id'] == $_SESSION['billto'])).'</td>
-			                    <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                  </tr>
-			                  <tr>
-			                    <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                    <td colspan="3"><table border="0" cellspacing="0" cellpadding="2">
-			                      <tr>
-			                        <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                        <td class="main">'.xtc_address_format($format_id, $addresses, true, ' ', ', ').'</td>
-			                        <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                      </tr>
-			                    </table></td>
-			                    <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			                  </tr>
-			                </table></td>
-			                <td>'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>
-			              </tr>';
+			$address_content .= '<p><span class="bold">'.$addresses['firstname'].' '.$addresses['lastname'].'</span>&nbsp;'.xtc_draw_radio_field('address', $addresses['address_book_id'], ($addresses['address_book_id'] == $_SESSION['billto'])).'</p>
+			                        <p>'.xtc_address_format($format_id, $addresses, true, ' ', ', ').'</p>';
 
 			$radio_buttons ++;
 		}
-		$address_content .= '</table>';
+		$address_content .= '';
 		$smarty->assign('BLOCK_ADDRESS', $address_content);
 
 	}
