@@ -32,7 +32,7 @@ require (DIR_WS_INCLUDES.'header.php');
 
 $smarty->assign('FORM_ACTION', xtc_draw_form('advanced_search', xtc_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'onsubmit="return check_form(this);"').xtc_hide_session_id());
 
-$smarty->assign('INPUT_KEYWORDS', xtc_draw_input_field('keywords', '', 'style="width: 95%"'));
+$smarty->assign('INPUT_KEYWORDS', xtc_draw_input_field('keywords', '', ''));
 $smarty->assign('HELP_LINK', 'javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
 $smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
 
