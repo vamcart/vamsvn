@@ -109,14 +109,17 @@ if ($product_info['products_vpe_status'] == 1 && $product_info['products_vpe_val
 	$smarty->assign('PRODUCTS_VPE', $xtPrice->xtcFormat($products_price['plain'] * (1 / $product_info['products_vpe_value']), true).TXT_PER.xtc_get_vpe_name($product_info['products_vpe']));
 $smarty->assign('module_content', $module_content);
 
-//more images - by Novalis
-$mo_images = xtc_get_products_mo_images($product_info['products_id']);
-if (is_array($mo_images)) {
-	foreach ($mo_images as $img) {
-		$mo_img = DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$img['image_name'];
-		$smarty->assign('PRODUCTS_IMAGE_'.$img['image_nr'], $mo_img);
-	}
-}
+		$mo_images = xtc_get_products_mo_images($product_info['products_id']);
+        if ($mo_images != false) {
+    $smarty->assign('PRODUCTS_MO_IMAGES', $mo_images);
+            foreach ($mo_images as $img) {
+                $mo_img[] = array(
+                'PRODUCTS_MO_IMAGE' => DIR_WS_CATALOG.DIR_WS_INFO_IMAGES . $img['image_name']
+                );
+        $smarty->assign('mo_img', $mo_img);
+            }
+        }
+		//mo_images EOF
 
 // set cache ID
  if (!CacheCheck()) {

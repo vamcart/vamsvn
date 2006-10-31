@@ -30,30 +30,19 @@
   		{if $PRODUCTS_IMAGE!=''}<img src="{$PRODUCTS_IMAGE}" alt="{$module_data.NAME}" border="0" />{/if}
   </td>
  </tr>
-  <!-- more images -->
-  {if $PRODUCTS_IMAGE_1 != ''}
-    <tr>
-      <td style="border-right: 1px solid; border-color: #cccccc;">                          
-      <img src="{$PRODUCTS_IMAGE_1}" alt="{$module_data.NAME}" border="0" />                          
-      </td>
-    </tr>     
-  {/if}
-  {if $PRODUCTS_IMAGE_2 != ''}
-    <tr>
-      <td style="border-right: 1px solid; border-color: #cccccc;">                          
-      <img src="{$PRODUCTS_IMAGE_2}" alt="{$module_data.NAME}" border="0" />                          
-      </td>
-    </tr>  
-  {/if}
-  {if $PRODUCTS_IMAGE_3 != ''}
-    <tr>
-      <td style="border-right: 1px solid; border-color: #cccccc;">                          
-      <img src="{$PRODUCTS_IMAGE_3}" alt="{$module_data.NAME}" border="0" />                          
-      </td>
-    </tr>  
-  {/if}
-  <!-- more images eof -->
 </table></td>
+<!-- more images -->
+{if $PRODUCTS_MO_IMAGES}
+<table width="100%" border="0">
+{foreach name=mo_pic item=img_values from=$mo_img}
+ <tr>
+  <td style="border-right: 1px solid; border-color: #cccccc" width="1" align="left" valign="top"><img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{$img_values.PRODUCTS_MO_IMAGE}" border="0" /></td>
+  </tr>
+{/foreach}
+</table>
+<br />
+{/if}
+<!-- more images eof -->
 <!-- pics eof -->
 
 <!-- desc -->
