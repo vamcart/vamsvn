@@ -1022,3 +1022,8 @@ span.Requirement
    {
      color: red;
    }
+
+span.bold 
+   {
+     font-weight: bold;
+   }
