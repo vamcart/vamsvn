@@ -1,27 +1,39 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
-<h1 class="contentBoxHeading">{#heading_reviews_write#}</h1>
+<h1>{#heading_reviews_write#}</h1>
 {if $error}
-{$error}
+<div class="contacterror">{$error}</div>
 {else}
 {$FORM_ACTION}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="main"><p><strong>{#text_product#}</strong> {$PRODUCTS_NAME}<br />
-        <strong>{#text_author#}</strong> {$AUTHOR}</p>
-      <p><strong>{#text_input#}</strong><br />
-        {$INPUT_TEXT}<br />
-        <font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_note#}</font><br />
-        <br />
-        <strong>{#text_rating#}&nbsp;<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_bad#}</font></strong>{$INPUT_RATING}<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#text_good#}</strong></font></p></td>
-  </tr>
-</table>
-<br />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>{$BUTTON_BACK}</td>
-    <td><div align="right">{$BUTTON_SUBMIT}</div></td>
-  </tr>
-</table>
-{$FORM_END}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
 
+<p>
+<span class="bold">{#text_product#}</span> {$PRODUCTS_NAME}
+</p>
+
+<p>
+<span class="bold">{#text_author#}</span> {$AUTHOR}
+</p>
+
+<!-- форма -->
+<fieldset class="form">
+<legend>{#text_input#}</legend>
+	<p>{#text_input#} {$INPUT_TEXT}</p>
+	<p>{#text_note#}</p>
+	<p>{#text_rating#} <span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></p>
+</fieldset>
+<!-- /форма -->
+
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_SUBMIT}</span>
+{$BUTTON_BACK}
+</div>
+<div class="clear"></div>
+{$FORM_END}
 {/if}

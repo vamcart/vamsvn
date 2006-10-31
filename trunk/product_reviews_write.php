@@ -69,7 +69,7 @@ if (!$product->isProduct()) {
 	$smarty->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
 	$smarty->assign('INPUT_TEXT', xtc_draw_textarea_field('review', 'soft', 60, 15, '', '', false));
 	$smarty->assign('INPUT_RATING', xtc_draw_radio_field('rating', '1').' '.xtc_draw_radio_field('rating', '2').' '.xtc_draw_radio_field('rating', '3').' '.xtc_draw_radio_field('rating', '4').' '.xtc_draw_radio_field('rating', '5'));
-	$smarty->assign('FORM_ACTION', xtc_draw_form('product_reviews_write', xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.xtc_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onSubmit="return checkForm();"'));
+	$smarty->assign('FORM_ACTION', xtc_draw_form('product_reviews_write', xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.xtc_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
 	$smarty->assign('BUTTON_BACK', '<a href="javascript:history.back(1)">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 	$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE).xtc_draw_hidden_field('get_params', $get_params));
 	$smarty->assign('FORM_END', '</form>');
