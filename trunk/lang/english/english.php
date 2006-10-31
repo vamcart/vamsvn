@@ -144,12 +144,12 @@ define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Your passwords do not match.');
  */
 
 define('TEXT_RESULT_PAGE', 'Sites:');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> products)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> orders)');
-define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> reviews)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> new products)');
-define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> special offers)');
-define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> featured products)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> products)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> orders)');
+define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> reviews)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> new products)');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> special offers)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> featured products)');
 
 /*
  *
@@ -210,9 +210,9 @@ define('ICON_WARNING', 'Warning');
  *
  */
 
-define('TEXT_GREETING_PERSONAL', 'Nice to see you again <span class="greetUser">%s!</span> Would you like to view our <a style="text-decoration:underline;" href="%s">new products</a> ?');
-define('TEXT_GREETING_PERSONAL_RELOGON', '<small>If you are not %s , please  <a style="text-decoration:underline;" href="%s">login</a>  with your account.</small>');
-define('TEXT_GREETING_GUEST', 'Welcome  <span class="greetUser">visitor!</span> Would you like to <a style="text-decoration:underline;" href="%s">login</a>? Or would you like to create a new <a style="text-decoration:underline;" href="%s">account</a> ?');
+define('TEXT_GREETING_PERSONAL', 'Nice to see you again <span class="greetUser">%s!</span> Would you like to view our <a href="%s">new products</a> ?');
+define('TEXT_GREETING_PERSONAL_RELOGON', '<small>If you are not %s , please  <a href="%s">login</a>  with your account.</small>');
+define('TEXT_GREETING_GUEST', 'Welcome  <span class="greetUser">visitor!</span> Would you like to <a href="%s">login</a>? Or would you like to create a new <a href="%s">account</a> ?');
 
 define('TEXT_SORT_PRODUCTS', 'Sorting of the items is ');
 define('TEXT_DESCENDINGLY', 'descending');
@@ -243,7 +243,7 @@ define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'Warning: Directory for articl
 define('SUCCESS_ACCOUNT_UPDATED', 'Your account has been updated successfully.');
 define('SUCCESS_PASSWORD_UPDATED', 'Your password has been changed successfully!');
 define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'The entered password does not match with the stored password. Please try again.');
-define('TEXT_MAXIMUM_ENTRIES', '<font color="#ff0000"><b>Reference:</b></font> You are able to choose out of %s entries in you address book!');
+define('TEXT_MAXIMUM_ENTRIES', '<span class="bold">Reference:</span> You are able to choose out of %s entries in you address book!');
 define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'The selected entry has been deleted successfully.');
 define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Your address book has been updated sucessfully!');
 define('WARNING_PRIMARY_ADDRESS_DELETION', 'The standard postal address can not be deleted. Please create another address and define it as standard postal address first. Than this entry can be deleted.');
@@ -286,13 +286,13 @@ define('JS_PRICE_FROM_MUST_BE_NUM', '* Price over, must be a number\n');
 define('JS_PRICE_TO_MUST_BE_NUM', '* Price up to, must be a number\n');
 define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Price up to must be larger or same size as Price over.\n');
 define('JS_INVALID_KEYWORDS', '* Invalid search key\n');
-define('TEXT_LOGIN_ERROR', '<font color="#ff0000"><b>ERROR:</b></font> The entered \'eMail-address\' and/or the \'password\' do not match.');
-define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<font color="#ff0000"><b>WARNING:</b></font> The entered e-mail address is not registered. Please try again.');
+define('TEXT_LOGIN_ERROR', '<span class="bold">ERROR:</span> The entered \'eMail-address\' and/or the \'password\' do not match.');
+define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">WARNING:</span> The entered e-mail address is not registered. Please try again.');
 define('TEXT_PASSWORD_SENT', 'A new password was sent by e-mail.');
 define('TEXT_PRODUCT_NOT_FOUND', 'Product not found!');
-define('TEXT_MORE_INFORMATION', 'For further information, please visit the <a style="text-decoration:underline;" href="%s" onclick="window.open(this.href); return false;">homepage</a> of this product.');
+define('TEXT_MORE_INFORMATION', 'For further information, please visit the <a href="%s" onclick="window.open(this.href); return false;">homepage</a> of this product.');
 define('TEXT_DATE_ADDED', 'This Product was added to our catalogue on %s.');
-define('TEXT_DATE_AVAILABLE', '<font color="#ff0000">This Product is expected to be on stock again on %s </font>');
+define('TEXT_DATE_AVAILABLE', 'This Product is expected to be on stock again on %s');
 define('SUB_TITLE_SUB_TOTAL', 'Sub-total:');
 
 define('OUT_OF_STOCK_CANT_CHECKOUT', 'The products marked with ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' , are not on stock in the quantity you requested.<br />Please reduce your purchase order quantity for the marked products. Thank you');
@@ -485,7 +485,7 @@ Random upcoming - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?f
 For example, you can display only 10 items from new products rss2.php?feed=new_products&amp;limit=10</p>
 ');
 
-define('ENTRY_STATE_RELOAD', 'Click <b>"Update"</b> button to fill State field');
+define('ENTRY_STATE_RELOAD', 'Click <span class="bold">"Update"</span> button to fill State field');
 define('ENTRY_NOSTATE_AVAILIABLE', 'States not available for selecter country');
 define('ENTRY_STATEXML_LOADING', 'Loading states ...');
 
@@ -495,7 +495,7 @@ define('MORE_INFO','[More]');
 define('TABLE_HEADING_LATEST_NEWS', 'Latest news');
 define('NAVBAR_TITLE_NEWS', 'News');
 
-define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Show <b>%d</b> to <b>%d</b> (of in total <b>%d</b> new products)');
+define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Show <span class="bold">%d</span> to <span class="bold">%d</span> (of in total <span class="bold">%d</span> new products)');
 define('TEXT_NO_NEWS', 'No news.');
 
 define('TEXT_INFO_SHOW_PRICE_NO','You do not have the permission to see the prices ');
