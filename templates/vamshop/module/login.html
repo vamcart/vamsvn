@@ -1,2 +1,76 @@
-{config_load file="$language/lang_$language.conf" section="login"}<h1 class="contentBoxHeading">{#heading_login#}</h1>
-{if $info_message!=''}<table width="100%"  border="0" cellspacing="0" cellpadding="0">  <tr class="headerMessage">    <td align="center">{$info_message}</td>  </tr></table><br />{/if}{if $account_option=='account' or $account_option=='both'} <table width="100%" border="0" cellspacing="0" cellpadding="5">  <tr>    <td width="50%" valign="top">       <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>           <td style="border-bottom: 1px solid; border-color: #cccccc;" class="main"><strong>{#title_new#}</strong></td>        </tr>        <tr>           <td style="border-right: 1px solid; border-color: #cccccc;" class="main">{#text_new#}<br />            <br />            {$BUTTON_NEW_ACCOUNT} </td>        </tr>      </table>    </td>    <td width="50%" valign="top"> {$FORM_ACTION}       <table width="100%" border="0" cellspacing="0" cellpadding="0">          <tr>            <td style="border-bottom: 1px solid; border-color: #cccccc;"  class="main"><strong>{#title_returning#}</strong></td>          </tr>          <tr>            <td class="main"><p>{#text_returning#}<br /></p>              <table width="100" border="0" cellspacing="2" cellpadding="0">                <tr>                  <td class="main"><strong>{#text_email#}</strong> </td>                  <td>{$INPUT_MAIL}</td>                </tr>                <tr>                  <td class="main"><strong>{#text_password#}</strong></td>                  <td>{$INPUT_PASSWORD}</td>                </tr>              </table>              <p><br /><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></p>              <p>{$BUTTON_LOGIN}</p></td>          </tr>        </table>      {$FORM_END}		</td>  </tr></table>{/if}<br />{if $account_option=='both' or $account_option=='guest'}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td align="center"><table width="50%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td style="border-bottom: 1px solid; border-color: #cccccc;" class="main"><strong>{#title_guest#}</strong></td>        </tr>        <tr>          <td style="border-right: 1px solid; border-color: #cccccc;" class="main">{#text_guest#}<br />            <br />            {$BUTTON_GUEST}</td>        </tr>      </table>    </td>  </tr></table>{/if}
+{config_load file="$language/lang_$language.conf" section="login"}<h1>{#heading_login#}</h1>
+{$FORM_ACTION}
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
+{/if}<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{if $account_option=='account' or $account_option=='both'} <dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd class="Login">
+<span class="bold">{#title_new#}</span>
+</dd>
+
+<dd>
+{#text_new#}
+</dd>
+
+<dd>
+{$BUTTON_NEW_ACCOUNT}
+</dd>
+
+</dl>
+<dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd>
+{#text_returning#}
+</dd>
+
+<dd>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_returning#}</legend>
+<p>{#text_email#} {$INPUT_MAIL}</p>
+<p>{#text_password#} {$INPUT_PASSWORD}</p>
+</fieldset>
+<!-- /форма -->
+
+<p>
+<a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a>
+</p>
+<p>
+{$BUTTON_LOGIN}
+</p>
+
+</dd>
+
+</dl>
+<div class="clear"></div>
+{/if}
+{if $account_option=='both' or $account_option=='guest'}<br /><dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd class="Login">
+<span class="bold">{#title_guest#}</span>
+</dd>
+
+<dd>
+{#text_guest#}
+</dd>
+
+<dd>
+{$BUTTON_GUEST}
+</dd>
+
+</dl>
+
+<div class="clear"></div>
+{/if}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{$FORM_END}
