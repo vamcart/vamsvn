@@ -1,56 +1,62 @@
 {config_load file="$language/lang_$language.conf" section="gv_send"}
-<h1 class="contentBoxHeading">{#heading_gvsend#}</h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<h1>{#heading_gvsend#}</h1>
 {if $action eq 'process'}
-  <tr>
-    <td align="right"><br />{$LINK_DEFAULT}</td>
-  </tr>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{$LINK_DEFAULT}
+</p>
 {elseif $action eq 'send'}
-  <tr>
-    <td>{$FORM_ACTION}<table border="0" width="100%" cellspacing="0" cellpadding="2">
-       <tr>
-         <td class="main">{$MAIN_MESSAGE}</td>
-       </tr>
-       {if $POST_MESSAGE neq ''}
-       <tr>
-         <td class="main">{$PERSONAL_MESSAGE}</td>
-       </tr>
-       <tr>
-         <td class="main">{$POST_MESSAGE}</td>
-       </tr>
-       {/if}
-	   {$HIDDEN_FIELDS}
-	   <tr>
-	     <td class="main">{$LINK_BACK}</td>
-	     <td align="right"><br />{$LINK_SUBMIT}</td>
-       </tr>
-     </table>{$FORM_END}</td>
-  </tr>
-{elseif $action eq ''}
-   <tr>
-     <td class="main">{#heading_text#}</td>
-   </tr>
-   <tr>
-     <td>{$FORM_ACTION}<table border="0" width="100%" cellspacing="0" cellpadding="2">
-       <tr>
-         <td class="main">{#entry_name#}<br />{$INPUT_TO_NAME}</td>
-       </tr>
-       <tr>
-         <td class="main">{#entry_email#}<br />{$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</td>
-       </tr>
-       <tr>
-         <td class="main">{#entry_amount#}<br />{$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</td>
-       </tr>
-       <tr>
-         <td class="main">{#entry_message#}<br />{$TEXTAREA_MESSAGE}</td>
-       </tr>
-     </table>
-     <table border="0" width="100%" cellspacing="0" cellpadding="2">
-       <tr>
-		 <td></td>
-         <td class="main" align="right">{$LINK_SUBMIT}</td>
-       </tr>
-     </table>{$FORM_END}</td>
-   </tr>
+{$FORM_ACTION}
+<p>
+{$MAIN_MESSAGE}
+</p>
+{if $POST_MESSAGE neq ''}
+<p>
+{$PERSONAL_MESSAGE}
+</p>
+<p>
+{$POST_MESSAGE}
+</p>
 {/if}
-</table>
+{$HIDDEN_FIELDS}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$LINK_SUBMIT}</span>
+{$LINK_BACK}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+{elseif $action eq ''}
+{$FORM_ACTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<p>
+{#heading_text#}
+</p>
+
+<!-- форма -->
+<fieldset class="form">
+<legend>{#heading_gvsend#}</legend>
+<p>{#entry_name#} {$INPUT_TO_NAME}</p>
+<p>{#entry_email#} {$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</p>
+<p>{#entry_amount#} {$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</p>
+<p>{#entry_message#} {$TEXTAREA_MESSAGE}</p>
+</fieldset>
+<!-- /форма -->
+
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$LINK_SUBMIT}
+</div>
+{$FORM_END}
+{/if}
