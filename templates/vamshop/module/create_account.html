@@ -1,2 +1,71 @@
-{config_load file="$language/lang_$language.conf" section="create_account"}<h1 class="contentBoxHeading">{#heading_create_account#}</h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td>{$FORM_ACTION}{if $error!=''}<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td>{$error}</td>  </tr></table>{/if}<table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>  <tr>    <td><strong>{#title_personal#}</strong></td>    <td align="right" class="inputRequirement">{#text_must#}</td>  </tr></table><table width="100%"  class="formArea" cellspacing="2" cellpadding="0">{if $gender=='1'}  <tr>           <td width="200" class="main"><label for="gender" id="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label></td>    <td class="main">		<table cellspacing="0" cellpadding="0">			<tr>			  	<td class="main"> {$INPUT_MALE}</td>			  	<td class="main"> {$INPUT_FEMALE}</td>				  			</tr>		</table>	</td>  </tr>  {/if}  <tr>     <td class="main"><label for="firstname" id="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label></td>    <td class="inputRequirement" >{$INPUT_FIRSTNAME}</td>  </tr>  <tr>     <td class="main"><label for="lastname" id="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label></td>    <td class="inputRequirement">{$INPUT_LASTNAME}</td>  </tr>  {if $birthdate=='1'}  <tr>     <td class="main"><label for="dob" id="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label></td>    <td class="inputRequirement">{$INPUT_DOB}</td>  </tr>  {/if}  <tr>    <td class="main"><label for="email" id="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label></td>    <td class="inputRequirement">{$INPUT_EMAIL}</td>  </tr></table>{if $company=='1'}      <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>        <tr>          <td class="main"><strong>{#title_company#}</strong></td>        </tr>      </table>       <table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">  <tr>           <td width="200" class="main">{#text_company#}</label></td>    <td class="inputRequirement">{$INPUT_COMPANY}</td>  </tr>  {if $vat=='1'}  <tr>     <td class="main">{#text_ustid#}</td>     <td class="inputRequirement">{$INPUT_VAT}</td>  </tr>  {/if}</table>{/if}  {if $street_address=='1'}      <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>        <tr>          <td class="main"><strong>{#title_address#}</strong></td>        </tr>      </table>   {/if}      <table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">  {if $street_address=='1'}  <tr>           <td width="200" class="main"><label for="address" id="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label></td>    <td class="inputRequirement">{$INPUT_STREET}</td>  </tr>  {/if}  {if $suburb=='1'}  <tr>     <td class="main">{#text_suburb#}</td>    <td class="inputRequirement">{$INPUT_SUBURB}</td>  </tr>  {/if}  {if $postcode=='1'}  <tr>     <td class="main"><label for="postcode" id="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label></td>    <td class="inputRequirement">{$INPUT_CODE}</td>  </tr>  {/if}  {if $city=='1'}  <tr>     <td class="main"><label for="city" id="{$ENTRY_CITY_ERROR}">{#text_city#}</label></td>    <td class="inputRequirement">{$INPUT_CITY}</td>  </tr>  {/if}  {if $state=='1'}  <tr>     <td class="main"><label for="state" id="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label></td>    <td class="inputRequirement"><span id="stateXML">{$INPUT_STATE}</span></td>  </tr>  {/if}  {if $country=='1'}  <tr>    <td class="main"><label for="country" id="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label></td>    <td class="inputRequirement">{$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</td>  </tr>  {/if}</table>  {if $telephone=='1'}      <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>        <tr>          <td class="main"><strong>{#title_contact#}</strong></td>        </tr>      </table>   {/if}      <table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">  {if $telephone=='1'}  <tr>           <td width="200" class="main"><label for="telephone" id="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label></td>    <td class="inputRequirement">{$INPUT_TEL}</td>  </tr>  {/if}  {if $fax=='1'}  <tr>    <td class="main">{#text_fax#}</td>    <td class="inputRequirement">{$INPUT_FAX}</td>  </tr>  {/if}</table>  <table width="100%" border="0" cellspacing="0" cellpadding="0">        <tr>          <td class="main">&nbsp;</td>        </tr>		<tr>          <td class="main"><strong>{#title_password#}</strong></td>        </tr>      </table>       <table class="formArea" width="100%" border="0" cellspacing="2" cellpadding="0">  <tr>           <td width="200" class="main"><label for="password" id="{$ENTRY_PASSWORD_ERROR}">{#text_password#}</label></td>    <td class="inputRequirement">{$INPUT_PASSWORD}</td>  </tr>  <tr>     <td class="main"><label for="confirmation" id="{$ENTRY_PASSWORD_ERROR_NOT_MATCHING}">{#text_confirmation#}</label></td>    <td class="inputRequirement">{$INPUT_CONFIRMATION}</td>  </tr></table><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td align="right"><p>{$BUTTON_SUBMIT}</p></td>  </tr></table>{$FORM_END}</td>  </tr></table>
+{config_load file="$language/lang_$language.conf" section="create_account"}<h1>{#heading_create_account#}</h1>
+{$FORM_ACTION}{if $error!=''}
+{$error}
+{/if}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+<span class="Requirement">{#text_must#}</span>
+</p>
+
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_personal#}</legend>
+{if $gender=='1'} 
+<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+{/if}
+<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $birthdate=='1'} 
+<p><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+{/if}
+<p><label for="email" title="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label> {$INPUT_EMAIL}</p>
+</fieldset>
+{if $company=='1'}<fieldset class="form">
+<legend>{#title_company#}</legend>
+<p>{#text_company#} {$INPUT_COMPANY}</p>
+{if $vat=='1'}<p>{#text_ustid#} {$INPUT_VAT}</p>
+{/if}
+</fieldset>
+{/if}<fieldset class="form">
+{if $street_address=='1'}<legend>{#title_address#}</legend>
+{/if}
+{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label> {$INPUT_STREET}</p>
+{/if}
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
+{/if}
+{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label> {$INPUT_CODE}</p>
+{/if}
+{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">{#text_city#}</label> {$INPUT_CITY}</p>
+{/if}
+{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+{/if}
+{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label> {$SELECT_COUNTRY}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+{if $telephone=='1'}<legend>{#title_contact#}</legend>
+{/if}
+{if $telephone=='1'}<p><label for="telephone" title="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+<legend>{#title_password#}</legend>
+<p><label for="password" title="{$ENTRY_PASSWORD_ERROR}">{#text_password#}</label> {$INPUT_PASSWORD}</p>
+<p><label for="confirmation" title="{$ENTRY_PASSWORD_ERROR_NOT_MATCHING}">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+
+{$FORM_END}
