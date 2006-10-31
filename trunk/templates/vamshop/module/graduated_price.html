@@ -4,9 +4,6 @@
 </p>
 {foreach name=aussen item=module_data from=$module_content} 
 <p>
-{$module_data.QUANTITY} {#unit#}
-</p>
-<p>
-{#pieces#} {$module_data.PRICE}{if $module_data.VPE}<br />{$module_data.VPE}{/if}
+{$module_data.QUANTITY} {#unit#} {#pieces#} {$module_data.PRICE}{if $module_data.VPE}<br />{$module_data.VPE}{/if}
 </p>
 {/foreach}
