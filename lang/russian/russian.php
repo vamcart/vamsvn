@@ -144,12 +144,12 @@ define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Поля Подтвердите пароль и Новый
  */
 
 define('TEXT_RESULT_PAGE', 'Страницы:');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> позиций)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> заказов)');
-define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> отзывов)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новинок)');
-define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> специальных предложений)');
-define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> рекомендуемых товаров)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> позиций)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> заказов)');
+define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> отзывов)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> новинок)');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> специальных предложений)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> рекомендуемых товаров)');
 
 /*
  *
@@ -209,9 +209,9 @@ define('ICON_WARNING', 'Внимание');
  *
  */
 
-define('TEXT_GREETING_PERSONAL', 'Добро пожаловать, <span class="greetUser">%s!</span> Вы хотите посмотреть какие <a style="text-decoration:underline;" href="%s">новые товары</a> поступили в наш магазин?');
-define('TEXT_GREETING_PERSONAL_RELOGON', '<small>Если Вы не %s, пожалуйста, <a style="text-decoration:underline;" href="%s">введите</a> свои данные для входа.</small>');
-define('TEXT_GREETING_GUEST', 'Добро пожаловать, <span class="greetUser">УВАЖАЕМЫЙ ГОСТЬ!</span><br /> Если Вы наш постоянный клиент, <a style="text-decoration:underline;" href="%s">введите Ваши персональные данные</a> для входа. Если Вы у нас впервые и хотите сделать покупки, Вам необходимо <a style="text-decoration:underline;" href="%s">зарегистрироваться</a>.');
+define('TEXT_GREETING_PERSONAL', 'Добро пожаловать, <span class="greetUser">%s!</span> Вы хотите посмотреть какие <a href="%s">новые товары</a> поступили в наш магазин?');
+define('TEXT_GREETING_PERSONAL_RELOGON', '<small>Если Вы не %s, пожалуйста, <a href="%s">введите</a> свои данные для входа.</small>');
+define('TEXT_GREETING_GUEST', 'Добро пожаловать, <span class="greetUser">УВАЖАЕМЫЙ ГОСТЬ!</span><br /> Если Вы наш постоянный клиент, <a href="%s">введите Ваши персональные данные</a> для входа. Если Вы у нас впервые и хотите сделать покупки, Вам необходимо <a href="%s">зарегистрироваться</a>.');
 
 define('TEXT_SORT_PRODUCTS', 'Сортировать товар по ');
 define('TEXT_DESCENDINGLY', 'убыванию');
@@ -242,7 +242,7 @@ define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'Предупреждение: Директория от
 define('SUCCESS_ACCOUNT_UPDATED', 'Ваши данные обновлены!');
 define('SUCCESS_PASSWORD_UPDATED', 'Ваш пароль изменён!');
 define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'Указанный пароль не совпадает с текущим паролем. Попробуйте ещё раз.');
-define('TEXT_MAXIMUM_ENTRIES', '<font color="#ff0000"><b>ЗАМЕЧАНИЕ:</b></font> Максимальный объем адресной книги - <b>%s</b> записей');
+define('TEXT_MAXIMUM_ENTRIES', '<span class="bold">ЗАМЕЧАНИЕ:</span> Максимальный объем адресной книги - <span class="bold">%s</span> записей');
 define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Выбранный адрес удалён из адресной книги.');
 define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Ваша адресная книга обновлена.');
 define('WARNING_PRIMARY_ADDRESS_DELETION', 'Адрес, установленный по умолчанию, не может быть удалён. Установите статус по умолчанию на другой адрес и попробуйте ещё раз.');
@@ -285,14 +285,14 @@ define('JS_PRICE_FROM_MUST_BE_NUM', '* Цена от должна быть номером\n');
 define('JS_PRICE_TO_MUST_BE_NUM', '* Цена до должна быть номером\n');
 define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Цена до должна быть больше цены от.\n');
 define('JS_INVALID_KEYWORDS', '* Неверные ключевые слова\n');
-define('TEXT_LOGIN_ERROR', '<font color="#ff0000"><b>ОШИБКА:</b></font> Указанный \'Email\' и/или \'пароль\' неверный.');
-define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<font color="#ff0000"><b>ПРЕДУПРЕЖДЕНИЕ:</b></font> Указанный Email не найден. Попробуйте ещё раз.');
+define('TEXT_LOGIN_ERROR', '<span class="bold">ОШИБКА:</span> Указанный \'Email\' и/или \'пароль\' неверный.');
+define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">ПРЕДУПРЕЖДЕНИЕ:</span> Указанный Email не найден. Попробуйте ещё раз.');
 define('TEXT_PASSWORD_SENT', 'Новый пароль был отправлен на Email.');
 define('TEXT_PRODUCT_NOT_FOUND', 'Товар не найден!');
-define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a style="text-decoration:underline;" href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
+define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
 
 define('TEXT_DATE_ADDED', 'Товар был добавлен в наш каталог %s');
-define('TEXT_DATE_AVAILABLE', '<font color="#ff0000">Товар будет в наличии %s</font>');
+define('TEXT_DATE_AVAILABLE', 'Товар будет в наличии %s');
 define('SUB_TITLE_SUB_TOTAL', 'Стоимость товара:');
 
 define('OUT_OF_STOCK_CANT_CHECKOUT', 'Товары, выделенные ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' имеются на нашем складе в недостаточном для Вашего заказа количестве.<br />Пожалуйста, измените количество продуктов выделенных (' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '), благодарим Вас.');
@@ -488,7 +488,7 @@ define('TEXT_RSS2_INFO', '
 Можно выводить, к примеру, не все новинки (rss2.php?feed=new_products), а только 10, просто добавляете параметр limit (rss2.php?feed=new_products&amp;limit=10)</p>
 ');
 
-define('ENTRY_STATE_RELOAD', 'Нажмите на кнопку <b>"Обновить"</b> чтобы заполнить поле Регион');
+define('ENTRY_STATE_RELOAD', 'Нажмите на кнопку <span class="bold">"Обновить"</span> чтобы заполнить поле Регион');
 define('ENTRY_NOSTATE_AVAILIABLE', 'У выбранной страны нет регионов');
 define('ENTRY_STATEXML_LOADING', 'Загрузка регионов ...');
 
@@ -498,7 +498,7 @@ define('MORE_INFO','[Подробнее]');
 define('TABLE_HEADING_LATEST_NEWS', 'Последние новости');
 define('NAVBAR_TITLE_NEWS', 'Новости');
 
-define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новостей)');
+define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> новостей)');
 define('TEXT_NO_NEWS', 'Нет новостей.');
 
 define('TEXT_INFO_SHOW_PRICE_NO','У Вас нет доступа для просмотра цен');
