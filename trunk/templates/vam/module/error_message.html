@@ -1,23 +1,1 @@
-{config_load file="$language/lang_$language.conf" section="error_handler"}<h1>{$ERROR}</h1>
-{$FORM_ACTION}<div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
-<div class="pagecontent">
-<p>
-{#text_search_again#}
-</p>
-<!-- форма -->
-<fieldset class="form">
-<legend>{#text_search#}</legend>
-<p>{$INPUT_SEARCH}</p>
-<p>{$BUTTON_SUBMIT}</p>
-</fieldset>
-<!-- /форма -->
-</div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
-</div>
-
-<div class="pagecontentfooter">
-{$BUTTON}
-</div>
-
-{$FORM_END}
+{config_load file="$language/lang_$language.conf" section="error_handler"}<table width="100%"  border="0" cellpadding="0" cellspacing="0">	<tr>    	<td class="main" align="center" style="border: 1px solid; border-color: #ff0000; background-color:#FFCCCC;"><strong>{$ERROR}</strong></td>	</tr></table><br />{#text_search_again#}<br />{$FORM_ACTION}<table style="border:1px solid; border-color: #666666; background-color: #E6E6E6;" width="100%"  border="0" cellpadding="5" cellspacing="0">	<tr>		    <td width="70%" align="right" class="main"><strong>{#text_search#}</strong>       {$INPUT_SEARCH}</td>		<td>{$BUTTON_SUBMIT}</td>	</tr></table>{$FORM_END}<table width="100%" border="0">	<tr>		<td align="right">{$BUTTON}</td>	</tr></table> 
