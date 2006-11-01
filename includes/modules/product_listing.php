@@ -25,13 +25,7 @@ $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], MAX_DISP
 $module_content = array ();
 if ($listing_split->number_of_rows > 0) {
 
-	$navigation = '
-		<table border="0" width="100%" cellspacing="0" cellpadding="2">
-		  <tr>
-		    <td class="smallText">'.$listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS).'</td>
-		    <td class="smallText" align="right">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))).'</td>
-		  </tr>
-		</table>';
+	$navigation = '<span class="right">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 	}
