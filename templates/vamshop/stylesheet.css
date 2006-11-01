@@ -2044,6 +2044,28 @@ dd.itemCategoriesListing
 
 /* /Вывод категорий */
 
+/* Страница карточки товара */
+
+p.center
+   {
+     text-align: center;
+   }
+
+div.ProductInfoLeft
+   {
+     float: left;
+     margin-right: 1em;
+   }
+
+div.ProductInfRight
+   {
+     float: left;
+     margin-left: 1em;
+     text-align: right;
+   }
+
+/* /Страница карточки товара */
+
 /* Ссылки на странице мои данные */
 
 ul.accountLinks 
