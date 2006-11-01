@@ -1,61 +1,47 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
-<h1 class="contentBoxHeading">{#heading_cart#}</h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr valign="top"> 
-    	<td align="center">{$MODULE_gift_cart}</td>
-	</tr>
-</table>
-{if $info_message!=''}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-  <tr>
-    <td class="errorBox" align="center">{$info_message}</td>
-  </tr>
-</table>
+<h1>{#heading_cart#}</h1>
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}
+{$MODULE_gift_cart}
 {if $cart_empty==true}
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-  <tr> 
-    <td class="main" align="center">{#text_empty#}</td>
-  </tr>
-  <tr>
-    <td class="main" align="right">{$BUTTON_CONTINUE}</td>
-  </tr>
-</table>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<p>
+{#text_empty#}
+</p>
+
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>
 {else}
 {$FORM_ACTION}
 {$HIDDEN_OPTIONS}
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-    <tr> 
-      <td>{$MODULE_order_details}</td>
-    </tr>
-    <tr>
-      <td class="main"></td>
-    </tr>
-  </table>
-  {if $info_message_1!=''}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="errorBox" align="center">{$info_message_1}{$min_order}{$info_message_2}{$order_amount}</td>
-  </tr>
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-</table>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+{$MODULE_order_details}
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+{if $info_message_1!=''}
+<div class="contacterror">
+{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
+</div>
 {/if}
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    <td align="left">{$BUTTON_RELOAD}</td>
-	<td align="right">{$BUTTON_CHECKOUT}</td>
-  </tr>
-</table>
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_CHECKOUT}</span>{$BUTTON_RELOAD}
+</div>
+<div class="clear"></div>
 {$FORM_END}
 {/if}
