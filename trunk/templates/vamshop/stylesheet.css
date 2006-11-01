@@ -2010,6 +2010,40 @@ span.right
 
 /* /Вывод товаров */
 
+/* Вывод категорий */
+
+dl.itemCategoriesListing 
+   {
+     width: 30%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: 100px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+
+dt.itemCategoriesListing 
+   {
+     float: left;
+     height: 100px;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: center;
+   }
+
+dd.itemCategoriesListing 
+   {
+     margin: 0 1em 0 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+     text-align: center;
+   }
+
+/* /Вывод категорий */
+
 /* Ссылки на странице мои данные */
 
 ul.accountLinks 
