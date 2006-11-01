@@ -1,9 +1,8 @@
 {if $options!=''}
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
   {foreach name=outer item=options_data from=$options}
-  <tr>
-    <td class="main" align="right" width="1" nowrap><b>{$options_data.NAME}:</b>&nbsp;</td>
-    <td class="main" align="left">
+<p>
+<span class="bold">{$options_data.NAME}:</span>&nbsp;
+</p>
 {if count($options_data.DATA) eq 1}
         {assign var="item_data" value=$options_data.DATA[0]}
         <input type="hidden" name="id[{$options_data.ID}]" value="{$item_data.ID}">
@@ -15,8 +14,5 @@
         {/foreach}
         </select>
 {/if}
-    </td>
-  </tr>
   {/foreach}
-</table>
 {/if}
