@@ -5,9 +5,6 @@
 {/if}
 {if $success!='1'}
 {$FORM_ACTION}
-<div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
-<div class="pagecontent">
 {$CONTACT_CONTENT}
 <br />
 <br />
@@ -24,22 +21,11 @@
 {#text_message#}
 <br />
 {$INPUT_TEXT}
-</div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
-<div class="pagecontentfooter">
+<br />
 {$BUTTON_SUBMIT}
-</div>
-</div>
 {$FORM_END}
 {else}
-<div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
-<div class="pagecontent">
 {#text_success#}
-</div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
-<div class="pagecontentfooter">
+<br />
 {$BUTTON_CONTINUE}
-</div>
-</div>
 {/if}
