@@ -10,8 +10,8 @@
 <!-- /иряър -->
 
 <div id="menu">
-<ul class="menu centered">
-<li><a href="{$mainpage}"><span>{#text_mainpage#}</span></a></li>
+<ul>
+<li class="current"><a href="{$mainpage}"><span>{#text_mainpage#}</span></a></li>
 {if $account}{if $smarty.session.customer_id}
 <li><a href="{$account}"><span>{#link_account#}</span></a></li>
 {/if}{/if}
