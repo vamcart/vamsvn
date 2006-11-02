@@ -114,7 +114,6 @@ div#navigation
      padding-top: 0.5em;
      padding-bottom: 0.5em;
      padding-left: 10px;
-     border-top: 1px solid #000;
      border-bottom: 1px solid #000;
      background: #990000;
      color: #ffffff;
@@ -310,110 +309,98 @@ div#navigation
 
 /*- Меню-закладки сверху */
 
-div#menu
+#menu 
    {
-     border-bottom: 4px solid #67748B; /* полоска под меню */
-     background: #ffffff;
-     color: #000000;
+	  background: #fff;
+	  border-bottom: 1px solid #000;
+	  border-width: 1px;
+	  margin-top: 1em;
+	  padding-top: .6em;
    }
 
-.menu ul 
+#menu ul, #navigation ul li 
    {
-	  margin: 0;
-	  padding: 10px 10px 0 50px;
 	  list-style: none;
-	}
-
-.menu 
-   {
-     display: table;           /* ignored by IE */
-     padding: 0; 
-     list-style-type: none;
-     background-color: #67748B;
-     white-space: nowrap;      /* keep text on one line */
-     border: 0px solid #06a;   /* add a border to show size of menu */
-  }
-  
-* html .menu 
-   {
-     display: inline-block;    /* for IE only */
-     width: 1px;               /* IE will expand 1px width to fit menu width */
-     padding: 0 2px;           /* fix bug in IE to get border spacing correct */
-  }  
-
-.menu li 
-   {
-     display: table-cell;      /* ignored by IE */
+	  margin: 0;
+	  padding: 0;
    }
 
-* html .menu li 
+#menu ul 
    {
-     display: inline;          /* for IE only */
+	  padding: 5px 0 4px;
+	  text-align: center;
    }
 
-.menu a 
+#menu ul li 
    {
-     display: block;           /* for all browsers except IE */
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+	  display: inline;
+	  margin:0 .375em;
+   }
+
+#menu ul li.last 
+   {
+	  margin-right: 0;
+   }
+
+#menu ul li a 
+   {
+	  background: url("img/tab-right.gif") no-repeat 100% 0;
+	  color: #fff;
+	  padding: 5px 0;
      font-weight: bold;
-     text-decoration: none;
-     border-left: 4px solid #fff;   /* add a 1px white border around each list item */ 
-     background: url("img/tableft.gif") no-repeat left top;
-     margin: 0;
-     padding: 0 0 0 5px;
-  }
-
-* html .menu a 
-   {
-     display: inline-block;    /* for IE only */ 
-     margin: 0 -2px;           /* to correct an IE bug that doubles the border width */  
-   }
-  
-.menu a span 
-   {
-     float: left;
-     display: block;
-     background: url("img/tabright.gif") no-repeat right top;
-     padding: 5px 15px 4px 6px;
-     color: #FFF;
+	  text-decoration: none;
    }
 
-    /* Commented Backslash Hack hides rule from IE5-Mac \*/
-.menu a span 
+#menu ul li.current a 
    {
-     float: none;
-   }
-    /* End IE5-Mac hack */
-
-.menu a:hover span 
-   {
-     color: #FFF;
-   }  
-  
-.menu a:hover 
-   {
-     background-position: 0% -42px;
+	  background: url("img/tab-right-active.gif") no-repeat 100% 0;
+	  color: #fff;
+     font-weight: bold;
+	  text-decoration: none;
    }
 
-.menu a:hover span 
+#menu ul li a span 
    {
-     background-position: 100% -42px;
+	  background: url("img/tab-left.gif") no-repeat;
+	  padding: 5px 1em 4px 1em;
+     border-bottom:1px solid #000;
    }
 
-.lefted 
+#menu ul li.current a span 
    {
-     margin: 0 auto 0 0;
+	  background: url("img/tab-left-active.gif") no-repeat;
+	  padding: 5px 1em;
+     border-bottom:0;
    }
 
-.centered 
+#menu ul li a:hover span 
    {
-     margin: 0 auto;
+	  color: #fff;
+     font-weight: bold;
+	  text-decoration: underline;
    }
 
-.righted 
+/*\*//*/
+#menu ul li a 
    {
-     margin: 0 0 0 auto;
+	  display: inline-block;
+	  white-space: nowrap;
+	  width: 1px;
    }
+
+#menu ul 
+   {
+	  padding-bottom: 0;
+	  margin-bottom: -1px;
+   }
+/**/
+
+/*\*/
+* html #menu ul li a 
+   {
+	  padding: 0;
+   }
+/**/
 
 /*- /Меню-закладки сверху */
 
