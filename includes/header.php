@@ -338,5 +338,33 @@ $smarty->assign('error','
 
   }
 
+// Метки для закладок
+
+if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
+$smarty->assign('1',' class="current"');
+}
+
+if (strstr($PHP_SELF, FILENAME_ACCOUNT)) {
+$smarty->assign('2',' class="current"');
+}
+
+if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
+$smarty->assign('3',' class="current"');
+}
+
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING)) {
+$smarty->assign('4',' class="current"');
+}
+
+if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
+$smarty->assign('5',' class="current"');
+}
+
+if (strstr($PHP_SELF, FILENAME_LOGIN)) {
+$smarty->assign('6',' class="current"');
+}
+
+// /Метки для закладок
+
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
 ?>
