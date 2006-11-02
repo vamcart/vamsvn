@@ -344,7 +344,7 @@ if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
 $smarty->assign('1',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_ACCOUNT)) {
+if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
 $smarty->assign('2',' class="current"');
 }
 
@@ -352,7 +352,7 @@ if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
 $smarty->assign('3',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING)) {
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
 $smarty->assign('4',' class="current"');
 }
 
