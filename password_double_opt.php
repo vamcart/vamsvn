@@ -140,6 +140,7 @@ switch ($case) {
 		$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', xtc_db_input($_POST['email'])));
 		$smarty->assign('INPUT_CODE', xtc_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 		$smarty->assign('BUTTON_SEND', xtc_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$smarty->assign('FORM_END', '</form>');
 		$smarty->assign('language', $_SESSION['language']);
 		$smarty->caching = 0;
 		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
@@ -147,7 +148,7 @@ switch ($case) {
 		break;
 	case wrong_mail :
 
-		$smarty->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="captcha" />');
+		$smarty->assign('VVIMG', '<img src="'.xtc_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
 		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		$smarty->assign('info_message', $info_message);
 		$smarty->assign('message', TEXT_PASSWORD_FORGOTTEN);
@@ -156,6 +157,7 @@ switch ($case) {
 		$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', xtc_db_input($_POST['email'])));
 		$smarty->assign('INPUT_CODE', xtc_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 		$smarty->assign('BUTTON_SEND', xtc_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$smarty->assign('FORM_END', '</form>');
 		$smarty->assign('language', $_SESSION['language']);
 		$smarty->caching = 0;
 		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
@@ -171,7 +173,7 @@ switch ($case) {
 		break;
 	case double_opt :
 
-		$smarty->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="captcha" />');
+		$smarty->assign('VVIMG', '<img src="'.xtc_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
 		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		//    $smarty->assign('info_message', $info_message);
 		$smarty->assign('message', TEXT_PASSWORD_FORGOTTEN);
