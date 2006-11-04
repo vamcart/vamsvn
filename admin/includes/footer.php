@@ -38,7 +38,7 @@ XT-Commerce provides no warranty and is redistributable under the <a href="http:
     <td><?php echo xtc_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '5'); ?></td>
   </tr>
   <tr>
-    <td align="center" class="smallText">Powered by <a href="http://www.xt-commerce.com" target="_blank">xt:Commerce</a> <a href="http://oscommerce.su" target="_blank">VaM Edition</a><br><a href="http://www.geckotribe.com/rss/carp/" target="_blank">Newsfeed display by CaRP</a></td>
+    <td align="center" class="smallText">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a><br><a href="http://www.geckotribe.com/rss/carp/" target="_blank">Newsfeed display by CaRP</a></td>
   </tr>
 </table>
 <?php

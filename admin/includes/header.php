@@ -152,7 +152,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
   }
 
   echo '    [null, \'' . addslashes(BOX_HEADING_HELP) . '\', null, null, null,' . "\n" .
-       '        [\'' . xtc_image('images/icons/16x16/home.png', '', '16', '16') . '\', \'' . addslashes(BOX_SUPPORT_SITE) . '\', \'http://oscommerce.su\', \'_blank\', null],' . "\n" .
+       '        [\'' . xtc_image('images/icons/16x16/home.png', '', '16', '16') . '\', \'' . addslashes(BOX_SUPPORT_SITE) . '\', \'http://vamshop.ru\', \'_blank\', null],' . "\n" .
        '    ]' . "\n";
 
 if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_status'] == '1')) {
@@ -197,7 +197,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" width="3" height="3" align="left" hspace="0" /></td>
               <td width="84" align="center" valign="top">
-              <div class="buttonadmin"><a class="shippingInfo" href="http://oscommerce.su" target="_blank"><?php echo TEXT_HEADER_SUPPORT; ?></a></div>              
+              <div class="buttonadmin"><a class="shippingInfo" href="http://vamshop.ru" target="_blank"><?php echo TEXT_HEADER_SUPPORT; ?></a></div>              
               </td>
               <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
