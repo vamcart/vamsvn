@@ -23,23 +23,23 @@ $content_query = xtDBquery("SELECT
 $content_data = xtc_db_fetch_array($content_query, true);
 ?>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" /> 
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <title><?php echo $content_data['content_heading']; ?></title>
-<base href="<?php echo (getenv('HTTPS') == 'on' ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
+<base href="<?php echo (getenv('HTTPS') == 'on' ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 </head>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="contentsTopics"><?php echo $content_data['content_heading']; ?></td>
-  </tr>
-</table>
-<br />
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main">
+<body>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+<span class="bold"><?php echo $content_data['content_heading']; ?></span>
+</p>
+<p>
  <?php
 
 if ($content_data['content_file'] != '') {
@@ -54,17 +54,12 @@ if ($content_data['content_file'] != '') {
 	echo $content_data['content_text'];
 }
 ?>
-<br /><br />
-<p class="smallText" align="right">
-<script type="text/javascript">
-<!-- 
-document.write("<a href='javascript:window.close()'><?php echo TEXT_CLOSE_WINDOW; ?></a>")
-// -->
-</script>
-<noscript><?php echo TEXT_CLOSE_WINDOW_NO_JS; ?></noscript>
 </p>
-</td>
-          </tr>
-        </table>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+<a href="javascript:window.close()"><?php echo TEXT_CLOSE_WINDOW; ?></a>
+</div>
+</div>
 </body>
 </html>
