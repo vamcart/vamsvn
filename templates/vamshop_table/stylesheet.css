@@ -1027,3 +1027,7 @@ span.bold
    {
      font-weight: bold;
    }
+p.center
+   {
+     text-align: center;
+   }   
