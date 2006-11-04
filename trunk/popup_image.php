@@ -59,8 +59,8 @@ if ($mo_images != false) {
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" /> 
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <title><?php echo $products_values['products_name']; ?></title>
-<base href="<?php echo (getenv('HTTPS') == 'on' ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>">
+<base href="<?php echo (getenv('HTTPS') == 'on' ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 <script type="text/javascript"><!--
 var i=0;
 function resize() {
@@ -75,22 +75,18 @@ function resize() {
 <!-- xtc_image($src, $alt = '', $width = '', $height = '', $params = '') /-->
     
 <!-- big image -->
-<table style="width:100%; text-align: center; border: none;" cellspacing="0" cellpadding="0">
-  <tr>
-    <td style="background-color:#283758;"><div align="center"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo $products_values['products_name']; ?></strong></font></div></td>
-  </tr>
-  <tr>
-    <td>
-    <table style="width:100%; text-align: center; border: none;" cellpadding="5" cellspacing="0">
-      <tr>
-        <td style="text-align: center;"><div><?php echo xtc_image(DIR_WS_POPUP_IMAGES . $products_values['products_image'], $products_values['products_name'], $size[0], $size[1]); ?></div></td>
-      </tr>
-    </td>
-    </table>
-</table>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p class="center">
+<span class="bold"><?php echo $products_values['products_name']; ?></span>
+</p>
+<p class="center">
+<?php echo xtc_image(DIR_WS_POPUP_IMAGES . $products_values['products_image'], $products_values['products_name'], $size[0], $size[1]); ?>
+</p>
 
 <!-- thumbs -->
-<center>
+<p class="center">
 <?php
 
 if ($mo_images != false) {
@@ -102,7 +98,13 @@ if ($mo_images != false) {
 
 }
 ?>
-<a href="#" onClick='window.close();'><?php echo TEXT_CLOSE_WINDOW ?></a>
-</center>
+</p>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+<a href="javascript:window.close()"><?php echo TEXT_CLOSE_WINDOW; ?></a>
+</div>
+</div>
+
 </body>
 </html>
