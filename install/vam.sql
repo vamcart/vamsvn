@@ -2,7 +2,7 @@
 #  $Id: vamshop.sql,v 1.62 2006/10/08 20:24:16 VaM Exp $
 #
 #  VaM Shop - open source ecommerce solution
-#  http://oscommerce.su 
+#  http://vamshop.ru 
 #
 #  Copyright (c) 2006 VaM Shop
 #  -----------------------------------------------------------------------------------------
