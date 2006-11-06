@@ -170,7 +170,7 @@ if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_acc
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="200" align="left">
-              <?php echo xtc_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop', '185', '95'); ?>
+              <?php echo xtc_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop', '160', '60'); ?>
               </td>
               <td width="470" align="center">
               &nbsp;
