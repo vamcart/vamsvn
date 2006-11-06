@@ -317,8 +317,8 @@ define('SHIPPING_BOX_WEIGHT_TITLE' , 'Минимальный вес упаковки');
 define('SHIPPING_BOX_WEIGHT_DESC', 'Вы можете указать вес упаковки.');
 define('SHIPPING_BOX_PADDING_TITLE' , 'Вес упаковки в процентах'); 
 define('SHIPPING_BOX_PADDING_DESC', 'Доставка заказов, вес которых больше указанного в переменной Максимальный вес доставки, увеличивается на указанный процент. Если Вы хотите увелить стоимость на 10%, пишите - 10');
-define('SHOW_SHIPPING_DESC' , 'Показывать ссылку стоимость доставки на странице товара');
-define('SHOW_SHIPPING_TITLE' , 'Стоимость доставки на странице товара');
+define('SHOW_SHIPPING_DESC' , 'Показывать ссылку +доставка возле цены');
+define('SHOW_SHIPPING_TITLE' , 'Показывать условия доставки');
 define('SHIPPING_INFOS_DESC' , 'ID код группы стоимости доставки.');
 define('SHIPPING_INFOS_TITLE' , 'ID код группы');
 
@@ -527,7 +527,7 @@ define('ACTIVATE_GIFT_SYSTEM_TITLE','Активировать систему подарочных сертификато
 define('ACTIVATE_GIFT_SYSTEM_DESC','Разрешить покупать, использовать при оформлении заказов подарочные сертификаты и купоны');
 
 define('ACTIVATE_SHIPPING_STATUS_TITLE','Время доставки');
-define('ACTIVATE_SHIPPING_STATUS_DESC','Показывать статус доставки? После активации на странице товара появится пункт <b>Время доставки</b>');
+define('ACTIVATE_SHIPPING_STATUS_DESC','Показывать время доставки на странице карточки товара, после активации появится значение: <b>Время доставки</b> на странице карточки товара.');
 
 define('SECURITY_CODE_LENGTH_TITLE','Длина секретного кода');
 define('SECURITY_CODE_LENGTH_DESC','Длина секретного кода (в подарочном сертификате)');
