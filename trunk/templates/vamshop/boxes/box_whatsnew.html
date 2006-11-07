@@ -4,10 +4,11 @@
 <h5><a href="{$LINK_NEW_PRODUCTS}">{#heading_whatsnew#}</a></h5>
 
 <div id="boxWhatsNewContent">
+{if $box_content.PRODUCTS_IMAGE}
 <p>
-{if $box_content.PRODUCTS_IMAGE}<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" /></a>
-{/if}
+<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" /></a>
 </p>
+{/if}
 
 <p>
 <a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a>
@@ -19,9 +20,11 @@
 
 {if $box_content.PRODUCTS_VPE}<p>{$box_content.PRODUCTS_VPE}</p>{/if}
 
+{if $box_content.PRODUCTS_SHIPPING_LINK}
 <p>
 {$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}
 </p>
+{/if}
 
 </div>
 </div>
