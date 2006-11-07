@@ -36,21 +36,25 @@
          
  	}
  	
- 	function getShippingStatusName($id) {
- 		return $this->SHIPPING[$id]['name'];
- 	}
- 	function getShippingStatusImage($id) {
- 		if ($this->SHIPPING[$id]['image']) {
- 		return 'admin/images/icons/'.$this->SHIPPING[$id]['image'];
- 		} else {
- 			return;
- 		}
- 	}
+    function getShippingStatusName($id) {
+           if (SHOW_SHIPPING == 'true') {
+        return $this->SHIPPING[$id]['name'];
+    }
+         return;
+     }
+    function getShippingStatusImage($id) {
+           if (SHOW_SHIPPING == 'true') {
+        if ($this->SHIPPING[$id]['image'])
+        return 'admin/images/icons/'.$this->SHIPPING[$id]['image'];
+        }
+        return;
+    }
  	
  		function getShippingLink() {
         if (SHOW_SHIPPING == 'true') {
 		return ' '.SHIPPING_EXCL.'<a href="'. xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) .'" target="_blank" onclick="window.open(\'' . xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;">'.SHIPPING_COSTS.'</a>';
 	}
+        return;
         }
    
 	function getTaxNotice() {
