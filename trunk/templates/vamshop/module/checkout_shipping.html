@@ -5,9 +5,7 @@
 <div class="pagecontent">
 
 {if $SHIPPING_ADDRESS=='true'} 
-<p>
 <span class="bold">{#title_address#}</span>
-</p>
 {/if}
 
 {if $SHIPPING_ADDRESS=='true'} 
@@ -44,10 +42,9 @@
 <div class="clear"></div>
 {/if}
 
-<p>
 <span class="bold">{#title_shipping#}</span>
-</p>
-
+<br />
+<br />
 <fieldset class="form">
 <legend>{#text_shipping#}</legend>
 {$SHIPPING_BLOCK}
