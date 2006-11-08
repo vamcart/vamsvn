@@ -3,31 +3,26 @@
 {if $ACTIVATE_GIFT=='true'}
 {$FORM_ACTION}
 {if $GV_AMOUNT neq ''}
-<p>
 {#text_info#}
-</p>
-<p>
+<br />
 {#voucher_balance#} <span class="bold">{$GV_AMOUNT}</span>
-</p>
-<p>
+<br />
 {#text_send_to_friend#} <a href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#}</a>
-</p>
+<br />
 {/if}
 {if $COUPON_AMOUNT2 neq ''}
-<p>
 {#voucher_redeemed#}
-</p>
-<p>
+<br />
 {$COUPON_AMOUNT2}
-</p>
+<br />
 {/if}
 {if $COUPON_HELP_LINK neq ''}
-<p>
 {#cart_coupon#} {$COUPON_HELP_LINK} {#cart_coupon_info#}</a>
-</p>
+<br />
 {/if}
 {if $C_FLAG == 'true'}
 <!-- форма -->
+<br />
 <fieldset class="form">
 <legend>{#text_gift#}</legend>
 <p>{#text_code#} {$INPUT_CODE}</p>

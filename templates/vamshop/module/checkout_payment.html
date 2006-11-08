@@ -6,9 +6,7 @@
 <div class="pagecontent">
 
 {if $BILLING_ADDRESS=='true'} 
-<p>
 <span class="bold">{#title_address#}</span>
-</p>
 {/if}
 
 {if $BILLING_ADDRESS=='true'} 
@@ -45,10 +43,9 @@
 <div class="clear"></div>
 {/if}
 
-<p>
 <span class="bold">{#title_payment#}</span>
-</p>
-
+<br />
+<br />
 {if $GV_COVER!='true'}
 <fieldset class="form">
 <legend>{#text_payment#}</legend>
