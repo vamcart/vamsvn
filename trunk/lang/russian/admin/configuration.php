@@ -28,8 +28,8 @@ define('STORE_NAME_TITLE' , 'Название магазина');
 define('STORE_NAME_DESC' , 'Название Вашего магазина');
 define('STORE_OWNER_TITLE' , 'Владелец');
 define('STORE_OWNER_DESC' , 'Владелец интернет-магазина');
-define('STORE_OWNER_EMAIL_ADDRESS_TITLE' , 'Email адрес');
-define('STORE_OWNER_EMAIL_ADDRESS_DESC' , 'Email адрес владельца магазина');
+define('STORE_OWNER_EMAIL_ADDRESS_TITLE' , 'E-Mail адрес');
+define('STORE_OWNER_EMAIL_ADDRESS_DESC' , 'E-Mail адрес владельца магазина');
 
 define('EMAIL_FROM_TITLE' , 'E-Mail от');
 define('EMAIL_FROM_DESC' , 'E-mail в отправляемых из магазина письмах.');
@@ -392,8 +392,8 @@ define('SMTP_PORT_TITLE' , 'Порт smtp сервера');
 define('SMTP_PORT_DESC' , 'Укажите порт smtp сервера (по умолчанию 25)');
 
 //Constants for contact_us
-define('CONTACT_US_EMAIL_ADDRESS_TITLE' , 'Свяжитесь с нами - Email адрес');
-define('CONTACT_US_EMAIL_ADDRESS_DESC' , 'Пожалуйста, введите Email адрес, на который будут отправляться письма из магазина, со страницы Свяжитесь с нами.<br />Это поле необходимо заполнить!');
+define('CONTACT_US_EMAIL_ADDRESS_TITLE' , 'Свяжитесь с нами - E-Mail адрес');
+define('CONTACT_US_EMAIL_ADDRESS_DESC' , 'Пожалуйста, введите E-Mail адрес, на который будут отправляться письма из магазина, со страницы Свяжитесь с нами.<br />Это поле необходимо заполнить!');
 define('CONTACT_US_NAME_TITLE' , 'Свяжитесь с нами - Имя получателя');
 define('CONTACT_US_NAME_DESC' , 'Пожалуйста, введите Имя (поле: Кому), на которое будут отправляться письма из магазина, со страницы Свяжитесь с нами.<br />Можно написать название магазина или, например, контактное лицо (ФИО). В почтовой программе поле Кому будет выглядеть так: <b>Название магазина (email@адрес)</b><br />Это поле можно оставить пустым.');
 define('CONTACT_US_FORWARDING_STRING_TITLE' , 'Свяжитесь с нами - адреса переадресации (через запятую)');
@@ -407,7 +407,7 @@ define('CONTACT_US_EMAIL_SUBJECT_DESC' , 'Введите тему, которая будет в письмах 
 
 //Constants for support system
 define('EMAIL_SUPPORT_ADDRESS_TITLE' , 'Служба поддержки - E-Mail адрес');
-define('EMAIL_SUPPORT_ADDRESS_DESC' , 'Введите email адрес для писем в <b>Службу поддержки</b> (проблемы при оформлении заказа, потеря пароля).');
+define('EMAIL_SUPPORT_ADDRESS_DESC' , 'Введите E-Mail адрес для писем в <b>Службу поддержки</b> (проблемы при оформлении заказа, потеря пароля).');
 define('EMAIL_SUPPORT_NAME_TITLE' , 'Служба поддержки - Имя получателя');
 define('EMAIL_SUPPORT_NAME_DESC' , 'Введите название  <b>Службы поддержки</b> (роблемы при оформлении заказа, потеря пароля).');
 define('EMAIL_SUPPORT_FORWARDING_STRING_TITLE' , 'Служба поддержки - адреса переадресации (через запятую)');
@@ -421,13 +421,13 @@ define('EMAIL_SUPPORT_SUBJECT_DESC' , 'Введите тему для писем в <b>Службу поддер
 
 //Constants for Billing system
 define('EMAIL_BILLING_ADDRESS_TITLE' , 'Служба обработки счетов - E-Mail адрес');
-define('EMAIL_BILLING_ADDRESS_DESC' , 'Введите email адрес для <b>Службы обработки счетов</b> (подтвержение заказа, изменение статуса...).');
+define('EMAIL_BILLING_ADDRESS_DESC' , 'Введите E-Mail адрес для <b>Службы обработки счетов</b> (подтвержение заказа, изменение статуса...).');
 define('EMAIL_BILLING_NAME_TITLE' , 'Служба обработки счетов - Имя получателя');
 define('EMAIL_BILLING_NAME_DESC' , 'Введите название  <b>Службы обработки счетов</b> (подтверждение заказа, изменение статуса...).');
 define('EMAIL_BILLING_FORWARDING_STRING_TITLE' , 'Служба обработки счетов - адрес на который отправится копия письма с заказом');
-define('EMAIL_BILLING_FORWARDING_STRING_DESC' , 'Введите дополнительные адреса для <b>Службы обработки счетов</b> (подтвержение заказа, изменение статуса..) через запятую<br /> Укажите Email Вашего мазина.');
+define('EMAIL_BILLING_FORWARDING_STRING_DESC' , 'Введите дополнительные адреса для <b>Службы обработки счетов</b> (подтвержение заказа, изменение статуса..) через запятую<br /> Укажите E-Mail Вашего мазина.');
 define('EMAIL_BILLING_REPLY_ADDRESS_TITLE' , 'Служба обработки счетов - ответ по дополнительному адресу');
-define('EMAIL_BILLING_REPLY_ADDRESS_DESC' , 'Введите дополнительный  email адрес получающий ответы для клиентов');
+define('EMAIL_BILLING_REPLY_ADDRESS_DESC' , 'Введите дополнительный  E-Mail адрес получающий ответы для клиентов');
 define('EMAIL_BILLING_REPLY_ADDRESS_NAME_TITLE' , 'Служба обработки счетов - ответы по дополнительным адресам, имя');
 define('EMAIL_BILLING_REPLY_ADDRESS_NAME_DESC' , 'Введите имя для дополнительного адреса, получающего ответы для клиентов.');
 define('EMAIL_BILLING_SUBJECT_TITLE' , 'Служба обработки счетов - Тема письма');
