@@ -285,9 +285,9 @@ define('JS_PRICE_FROM_MUST_BE_NUM', '* Цена от должна быть номером\n');
 define('JS_PRICE_TO_MUST_BE_NUM', '* Цена до должна быть номером\n');
 define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Цена до должна быть больше цены от.\n');
 define('JS_INVALID_KEYWORDS', '* Неверные ключевые слова\n');
-define('TEXT_LOGIN_ERROR', '<span class="bold">ОШИБКА:</span> Указанный \'Email\' и/или \'пароль\' неверный.');
-define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">ПРЕДУПРЕЖДЕНИЕ:</span> Указанный Email не найден. Попробуйте ещё раз.');
-define('TEXT_PASSWORD_SENT', 'Новый пароль был отправлен на Email.');
+define('TEXT_LOGIN_ERROR', '<span class="bold">ОШИБКА:</span> Указанный \'E-Mail\' и/или \'пароль\' неверный.');
+define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">ПРЕДУПРЕЖДЕНИЕ:</span> Указанный E-Mail не найден. Попробуйте ещё раз.');
+define('TEXT_PASSWORD_SENT', 'Новый пароль был отправлен на E-Mail.');
 define('TEXT_PRODUCT_NOT_FOUND', 'Товар не найден!');
 define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
 
@@ -357,7 +357,7 @@ define('NAVBAR_TITLE_FEATURED', 'Рекомендуемые товары');
 define('NAVBAR_TITLE_COOKIE_USAGE', 'Ошибка cookies');
 define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Отзывы');
 define('NAVBAR_TITLE_REVIEWS_WRITE', 'Написать отзыв');
-define('NAVBAR_TITLE_REVIEWS','Отщывы');
+define('NAVBAR_TITLE_REVIEWS','Отзывы');
 define('NAVBAR_TITLE_SSL_CHECK', 'Безопасный режим');
 define('NAVBAR_TITLE_CREATE_GUEST_ACCOUNT','Регистрация');
 define('NAVBAR_TITLE_PASSWORD_DOUBLE_OPT','Забыли пароль?');
@@ -375,26 +375,26 @@ define('TEXT_NEWSLETTER','Хотите узнавать о новинках первым?<br />Подпишитесь на
 define('TEXT_EMAIL_INPUT','Ваш E-Mail адрес был успешно зарегистрирован в нашей системе.<br />Вам было отправлено письмо с персональной ссылкой на подтверждение. Пожалуйста, перейдите по ссылке, указаной в письме. В противном случае Вы не будете получать почтовую рассылку!');
 
 define('TEXT_WRONG_CODE','Заполните поля E-mail и Секретный код.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
-define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','Указанный Email адрес зарегистрирован, но не активирован!');
-define('TEXT_EMAIL_EXIST_NEWSLETTER','Указанный Email адрес зарегистрирован и активирован!');
-define('TEXT_EMAIL_NOT_EXIST','Указанный Email адрес не зарегистрирован!');
-define('TEXT_EMAIL_DEL','Указанный Email адрес был успешно удалён.');
-define('TEXT_EMAIL_DEL_ERROR','Произошла ошибка, Email адрес не был удалён!');
-define('TEXT_EMAIL_ACTIVE','Ваш Email адрес был добавлен к списку рассылки!');
-define('TEXT_EMAIL_ACTIVE_ERROR','Произошла ошибка, Email адрес не был активирован!');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','Указанный E-Mail адрес зарегистрирован, но не активирован!');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','Указанный E-Mail адрес зарегистрирован и активирован!');
+define('TEXT_EMAIL_NOT_EXIST','Указанный E-Mail адрес не зарегистрирован!');
+define('TEXT_EMAIL_DEL','Указанный E-Mail адрес был успешно удалён.');
+define('TEXT_EMAIL_DEL_ERROR','Произошла ошибка, E-Mail адрес не был удалён!');
+define('TEXT_EMAIL_ACTIVE','Ваш E-Mail адрес был добавлен к списку рассылки!');
+define('TEXT_EMAIL_ACTIVE_ERROR','Произошла ошибка, E-Mail адрес не был активирован!');
 define('TEXT_EMAIL_SUBJECT','Почтовая рассылка');
 
 define('TEXT_CUSTOMER_GUEST','Гость');
 
 define('TEXT_LINK_MAIL_SENDED','Вам отправлено письмо с персональной ссылкой на подтверждение о восстановлении пароля. <br />Вам необходимо перейти по ссылке, указанной в письме. После подтверждения запроса на восстановление пароля мы отправим Вам новый пароль для входа в магазин. Если Вы не перейдёте по указанной ссылке, новый пароль не будет отправлен!');
 define('TEXT_PASSWORD_MAIL_SENDED','Вам отправлено письмо с новым паролем к Вашей персональной информации.<br />Пожалуйста, не забудьте изменить Ваш новый пароль после первого входа в магазин.');
-define('TEXT_CODE_ERROR','Заполните поле EMail и Секретный код ещё раз. <br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
+define('TEXT_CODE_ERROR','Заполните поле E-Mail и Секретный код ещё раз. <br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
 define('TEXT_EMAIL_ERROR','Заполните поле E-Mail и Секретный код ещё раз. <br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
 define('TEXT_NO_ACCOUNT','К сожалению, запрос-подтверждение на новый пароль неверный либо устарел. Возможно, Вы активируете старую ссылку, в то время как была отправлена более новая. Пожалуйста, попробуйте ещё раз.');
 
 define('HEADING_PASSWORD_FORGOTTEN','Забыли пароль?');
 define('TEXT_PASSWORD_FORGOTTEN','Измените пароль в три шага.');
-define('TEXT_EMAIL_PASSWORD_FORGOTTEN','Подтверждение email для отправки нового пароля');
+define('TEXT_EMAIL_PASSWORD_FORGOTTEN','Подтверждение E-Mail для отправки нового пароля');
 define('TEXT_EMAIL_PASSWORD_NEW_PASSWORD','Ваш новый пароль');
 define('ERROR_MAIL','Пожалуйста, проверьте указанные в форме данные');
 
@@ -405,7 +405,7 @@ define('ERROR_NO_REDEEM_CODE', 'Вы не указали код сертификата ');
 define('ERROR_NO_INVALID_REDEEM_GV', 'Неверный код сертификата '); 
 define('TABLE_HEADING_CREDIT', 'Здесь Вы можете указать номер сертификата/купона, если он у Вас есть:<br />(Если у Вас нет сертификата/купона, просто продолжайте оформлять заказ, нажав внизу страницы кнопку "Продолжить")');
 define('EMAIL_GV_TEXT_SUBJECT', 'Подарок от %s');
-define('MAIN_MESSAGE', 'Вы решили отправить сертификат на сумму %s своему знакомому %s, его Email адрес: %s<br /><br />Получатель сертификата получит следующее сообщение:<br /><br />Уважаемый %s<br /><br />
+define('MAIN_MESSAGE', 'Вы решили отправить сертификат на сумму %s своему знакомому %s, его E-Mail адрес: %s<br /><br />Получатель сертификата получит следующее сообщение:<br /><br />Уважаемый %s<br /><br />
                         Вам отправлен сертификат на сумму %s, отправитель: %s');
 define('ERROR_REDEEMED_AMOUNT', 'Ваш сертификат использован ');
 define('REDEEMED_COUPON','Ваш купон записан и будет использован при оформлении следующего заказа.');
