@@ -37,8 +37,7 @@
   <tr> 
     <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="1"><img src="images/logo.gif"></td>
-          <td background="images/bg_top.jpg">&nbsp;</td>
+          <td width="1" colspan="2"><img src="images/logo.gif"></td>
         </tr>
       </table>
   </tr>
