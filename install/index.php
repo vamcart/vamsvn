@@ -73,8 +73,7 @@
   <tr>
     <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="1"><img src="images/logo.gif"></td>
-          <td background="images/bg_top.jpg">&nbsp;</td>
+          <td width="1" colspan="2"><img src="images/logo.gif"></td>
         </tr>
       </table>
 
@@ -85,7 +84,7 @@
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr>
           <td bgcolor="F3F3F3" ><br />
@@ -104,8 +103,7 @@
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <img src="images/title_index.gif" width="586" height="100" border="0"><br />
-            <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><br /><br /><?php echo TEXT_WELCOME_INDEX; ?></font><br />
+            <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_WELCOME_INDEX; ?></font><br />
             <br /><br />
           </td>
         </tr>  
