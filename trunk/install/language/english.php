@@ -13,7 +13,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 // Global
-define('TEXT_FOOTER','Powered by <a href="http://oscommerce.su">VaM Shop</a>'); 
+define('TEXT_FOOTER','Powered by <a href="http://vamshop.ru">VaM Shop</a>'); 
    
 // Box names
 define('BOX_LANGUAGE','Language');

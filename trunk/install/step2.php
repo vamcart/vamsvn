@@ -85,7 +85,7 @@
       <table width="180" border="0" cellspacing="0" cellpadding="0">
         <tr> 
           <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="FFAF00">xtc:</font><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
+<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
         <tr> 
           <td bgcolor="F3F3F3" ><br /> 
@@ -146,9 +146,7 @@
       <br />
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> <img src="images/title_index.gif" width="586" height="100" border="0"><br />
-            <br />
-            <br />
+          <td>
             <?php echo TEXT_WELCOME_STEP2; ?></font></td>
         </tr>
       </table>
