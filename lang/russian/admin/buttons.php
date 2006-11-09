@@ -35,7 +35,7 @@ define('BUTTON_INSERT', 'Добавить');
 define('BUTTON_UPDATE', 'Обновить');
 define('BUTTON_EXPORT', 'Экспорт');
 define('BUTTON_REVIEW_APPROVE', 'Одобрить');
-define('BUTTON_SEND_EMAIL', 'Отправить Email');
+define('BUTTON_SEND_EMAIL', 'Отправить E-Mail');
 define('BUTTON_SEND_COUPON', 'Отправить купон');
 define('BUTTON_INVOICE', 'Счёт');
 define('BUTTON_PACKINGSLIP', 'Накладная');
