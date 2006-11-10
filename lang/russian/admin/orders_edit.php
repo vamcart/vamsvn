@@ -72,7 +72,7 @@ define('TEXT_NEW', 'Новый: ');
 
 define('TABLE_HEADING_ORDER', 'Редактировать заказ номер ');
 define('TEXT_EDIT_OTHER', 'Редактировать другие данные заказа');
-define('TEXT_CUSTOMER_EMAIL', 'Email:');
+define('TEXT_CUSTOMER_EMAIL', 'E-Mail:');
 define('TEXT_CUSTOMER_TELEPHONE', 'Телефон:');
 define('TEXT_CUSTOMER_UST', 'Vat ID:');
 define('TEXT_SMALL_NETTO', ' (Нетто)');

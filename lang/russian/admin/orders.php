@@ -67,7 +67,7 @@ define('ENTRY_POST_CODE', 'Почтовый индекс:');
 define('ENTRY_STATE', 'Регион:');
 define('ENTRY_COUNTRY', 'Страна:');
 define('ENTRY_TELEPHONE', 'Телефон:');
-define('ENTRY_EMAIL_ADDRESS', 'Email:');
+define('ENTRY_EMAIL_ADDRESS', 'E-Mail:');
 define('ENTRY_DELIVERY_TO', 'Адрес:');
 define('ENTRY_SHIP_TO', 'АДРЕС ДОСТАВКИ:');
 define('ENTRY_SHIPPING_ADDRESS', 'Адрес доставки:');
