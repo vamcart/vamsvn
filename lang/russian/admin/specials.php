@@ -37,7 +37,7 @@ define('TEXT_INFO_EXPIRES_DATE', 'Действует до:');
 define('TEXT_INFO_STATUS_CHANGE', 'Изменить статус:');
 
 define('TEXT_INFO_HEADING_DELETE_SPECIALS', 'Удалить скидку');
-define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить специальнцю цену для товара?');
+define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить специальную цену для товара?');
 
 define('TEXT_IMAGE_NONEXISTENT','Нет картинки!');
 
