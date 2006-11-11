@@ -77,4 +77,6 @@ define('TEXT_CUSTOMER_TELEPHONE', 'Telephone:');
 define('TEXT_CUSTOMER_UST', 'Vat ID:');
 define('TEXT_SMALL_NETTO', ' (Netto)');
 
+define('HEADING_TITLE','Редактирование заказа');
+
 ?>
