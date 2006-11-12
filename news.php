@@ -58,7 +58,7 @@
   }
 
   if (xtc_db_num_rows($query) > 0) {
-      while ($one = xtc_db_fetch_array($query,true)) {
+      while ($one = xtc_db_fetch_array($query)) {
           $module_content[]=array(
               'NEWS_HEADING' => $one['headline'],
               'NEWS_CONTENT' => $one['content'],
