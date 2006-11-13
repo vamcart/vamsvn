@@ -640,7 +640,7 @@ if ($content['content_file']=='') {
     }
     else
     {
-    $files=array_merge($default_array,$files);
+    $files=xtc_array_merge($default_array,$files);
     }
 } else {
 $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
@@ -751,11 +751,11 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
  $content_files=array();
 
  while ($content_files_data=xtc_db_fetch_array($content_files_query)) {
- 
- $content_files[]=array(
-                        'id' => $content_files_data['content_file'],  
-                        'text' => $content_files_data['content_name']);
-}
+
+     $content_files[]=array(
+     'id' => $content_files_data['content_file'],
+     'text' => $content_files_data['content_name']);
+ }
 
  // add default value to array
  $default_array[]=array('id' => 'default','text' => TEXT_SELECT);
@@ -834,37 +834,22 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
     $files = xtc_get_filelist(DIR_FS_CATALOG.'media/products/','', array('index.html'));
     //subfolders in media added  (Modified by Andreaz)
 
- // set default value in dropdown!
-if ($content['content_file']=='') {
-    $default_array[]=array('id' => 'default','text' => TEXT_SELECT);
-    $default_value='default';
-    if (count($files) == 0)
-    {
-    $files = $default_array;
+    // set default value in dropdown!
+    unset ($default_array);
+    if ($content['content_file']=='') {
+         $default_array[]=array('id' => 'default','text' => TEXT_SELECT);
+         $default_value='default';
+    } else {
+         $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
+         $default_value=$content['content_file'];
     }
-    else
-    {
-    $files=array_merge($default_array,$files);
+    $files=xtc_array_merge($default_array, $files);
+ 
+    echo '<br />'.TEXT_CHOOSE_FILE_SERVER_PRODUCTS.'</br>';
+    echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
+    if ($content['content_file']!='') {
+       echo TEXT_CURRENT_FILE.' <b>'.$content['content_file'].'</b><br />';
     }
-} else {
-$default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
-$default_value=$content['content_file'];
-    if (count($files) == 0)
-    {
-    $files = $default_array;
-    }
-    else
-    {
-    $files=array_merge($default_array,$files);
-    }
-}
-echo '<br />'.TEXT_CHOOSE_FILE_SERVER.'</br>';
-echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
-      if ($content['content_file']!='') {
-        echo TEXT_CURRENT_FILE.' <b>'.$content['content_file'].'</b><br />';
-        }
-
-
 
 ?>
       </td>

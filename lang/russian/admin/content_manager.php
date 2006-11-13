@@ -54,7 +54,8 @@
  define('TEXT_CHOOSE_FILE','Выберите файл:');
  define('TEXT_CHOOSE_FILE_DESC','Вы так-же можете выбрать из списка уже существующий файл.');
  define('TEXT_NO_FILE','Удалить отмеченное');
- define('TEXT_CHOOSE_FILE_SERVER','Если Вы загрузили свои файлы через FTP в папку <i>media/content</i>, Вы должны выбрать здесь файл.');
+ define('TEXT_CHOOSE_FILE_SERVER','Если Вы загрузили свои файлы через FTP в папку <i>media/content</i>, Вы можете выбрать здесь файл.');
+ define('TEXT_CHOOSE_FILE_SERVER_PRODUCTS','Если Вы загрузили свои файлы через FTP в папку <i>media/products</i>, Вы можете выбрать здесь файл.');
  define('TEXT_CURRENT_FILE','Текущий файл:');
  define('TEXT_FILE_DESCRIPTION','<b>Информация:</b><br />Вы также можете загружать <b>.html</b> или <b>.htm</b> файлы и они будут отображаться при просмотре страницы.<br /> Если Вы выбрали какой-то файл или загружаете его, то текст в боксе будет проигнорирован.<br />');
  define('ERROR_FILE','Неверный формат файла (только .html или .htm)');
