@@ -341,27 +341,27 @@ $smarty->assign('error','
 // Метки для закладок
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
-$smarty->assign('1',' class="current"');
+$smarty->assign('1',' id="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
-$smarty->assign('2',' class="current"');
+$smarty->assign('2',' id="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
-$smarty->assign('3',' class="current"');
+$smarty->assign('3',' id="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
-$smarty->assign('4',' class="current"');
+$smarty->assign('4',' id="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
-$smarty->assign('5',' class="current"');
+$smarty->assign('5',' id="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGIN)) {
-$smarty->assign('6',' class="current"');
+$smarty->assign('6',' id="current"');
 }
 
 // /Метки для закладок
