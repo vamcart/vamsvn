@@ -625,16 +625,11 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
       <td width="10%" valign="top"><?php echo TEXT_CHOOSE_FILE; ?></td>
       <td width="90%">
 <?php
- if ($dir= opendir(DIR_FS_CATALOG.'media/content/')){
- while  (($file = readdir($dir)) !==false) {
-        if (is_file( DIR_FS_CATALOG.'media/content/'.$file) and ($file !="index.html")){
-        $files[]=array(
-                        'id' => $file,
-                        'text' => $file);
-        }//if
-        } // while
-        closedir($dir);
- }
+    //subfolders in media added  (Modified by Andreaz)
+    require_once(DIR_WS_FUNCTIONS.'file_system.php');
+    $files = xtc_get_filelist(DIR_FS_CATALOG.'media/content/','', array('index.html'));
+    //subfolders in media added  (Modified by Andreaz)
+
  // set default value in dropdown!
 if ($content['content_file']=='') {
     $default_array[]=array('id' => 'default','text' => TEXT_SELECT);
@@ -830,10 +825,51 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
           echo xtc_draw_textarea_field('file_comment','','100','30',$content['file_comment']);
         ?></td>
    </tr>
-      <tr>
-      <td width="10%"><?php echo TEXT_CHOOSE_FILE; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('select_file',$content_files,$default_value); ?><?php echo ' '.TEXT_CHOOSE_FILE_DESC; ?></td>
-   </tr>
+         <tr> 
+      <td width="10%" valign="top"><?php echo TEXT_CHOOSE_FILE; ?></td>
+      <td width="90%">
+<?php
+    //subfolders in media added  (Modified by Andreaz)
+    require_once(DIR_WS_FUNCTIONS.'file_system.php');
+    $files = xtc_get_filelist(DIR_FS_CATALOG.'media/products/','', array('index.html'));
+    //subfolders in media added  (Modified by Andreaz)
+
+ // set default value in dropdown!
+if ($content['content_file']=='') {
+    $default_array[]=array('id' => 'default','text' => TEXT_SELECT);
+    $default_value='default';
+    if (count($files) == 0)
+    {
+    $files = $default_array;
+    }
+    else
+    {
+    $files=array_merge($default_array,$files);
+    }
+} else {
+$default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
+$default_value=$content['content_file'];
+    if (count($files) == 0)
+    {
+    $files = $default_array;
+    }
+    else
+    {
+    $files=array_merge($default_array,$files);
+    }
+}
+echo '<br />'.TEXT_CHOOSE_FILE_SERVER.'</br>';
+echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
+      if ($content['content_file']!='') {
+        echo TEXT_CURRENT_FILE.' <b>'.$content['content_file'].'</b><br />';
+        }
+
+
+
+?>
+      </td>
+      </td>
+   </tr> 
       <tr> 
       <td width="10%" valign="top"><?php echo TEXT_UPLOAD_FILE; ?></td>
       <td width="90%"><?php echo xtc_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>

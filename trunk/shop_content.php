@@ -81,11 +81,13 @@ if ($_GET['coID'] == 7) {
 	} else {
 		if ($shop_content_data['content_file'] != '') {
 			ob_start();
-			if (strpos($shop_content_data['content_file'], '.txt'))
-				echo '<pre>';
+			$file_name = basename ($shop_content_data['content_file']);
+    		$isTextFile = strpos($file_name, '.txt');
+			if ($isTextFile)
+				echo '';
 			include (DIR_FS_CATALOG.'media/content/'.$shop_content_data['content_file']);
-			if (strpos($shop_content_data['content_file'], '.txt'))
-				echo '</pre>';
+			if ($isTextFile)
+				echo '';
 		$contact_content = ob_get_contents();
 		ob_end_clean();
 		} else {
@@ -112,11 +114,13 @@ if ($_GET['coID'] == 7) {
 
 		ob_start();
 
-		if (strpos($shop_content_data['content_file'], '.txt'))
-			echo '<pre>';
+		$file_name = basename ($shop_content_data['content_file']);
+		$isTextFile = strpos($file_name, '.txt');
+		if ($isTextFile)
+			echo '';
 		include (DIR_FS_CATALOG.'media/content/'.$shop_content_data['content_file']);
-		if (strpos($shop_content_data['content_file'], '.txt'))
-			echo '</pre>';
+		if ($isTextFile)
+			echo '';
 		$smarty->assign('file', ob_get_contents());
 		ob_end_clean();
 
