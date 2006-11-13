@@ -219,7 +219,7 @@ define('TITLE_CHMOD','Setting rights on files');
 // fnished.php
 
 define('TEXT_SHOP_CONFIG_SUCCESS','<strong>VaM Shop</strong> Shop configuration was successful.');
-define('TEXT_TEAM','<a href="http://oscommerce.su">VaM Shop russian support site</a>');
+define('TEXT_TEAM','<a href="http://vamshop.ru" target="_blank">VaM Shop russian support site</a>');
 
 // —борка VaM
 
