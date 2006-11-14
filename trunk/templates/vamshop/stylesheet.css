@@ -312,7 +312,7 @@ div#navigation
 #menu 
    {
 	  background: #fff;
-	  border-bottom: 1px solid #000;
+	  border-bottom: 1px solid #990000;
 	  margin: 1em 0 0;
 	  padding: 0.6em 0 0;
 	  font-weight: bold;
@@ -366,13 +366,11 @@ div#navigation
 #menu #current a 
    {
 	  background-position: 0 -150px;
-	  padding-bottom: 7px;
    }
 
 #menu #current a span 
    {
 	  background-position: 100% -150px;
-	  padding-bottom: 7px;
    }
 
 /*\*//*/
