@@ -24,8 +24,8 @@ class product {
 	 */
 	function product($pID = 0) {
 		$this->pID = $pID;
-		$this->useStandardImage=false;
-		$this->standardImage='noimage.gif';
+		$this->useStandardImage=true;
+		$this->standardImage='../noimage.gif';
 		if ($pID = 0) {
 			$this->isProduct = false;
 			return;

@@ -93,6 +93,8 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$image = '';
 		if ($product->data['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$product->data['products_image'];
+	   
+	   if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.gif';
 
 		$info_smarty->assign('PRODUCTS_IMAGE', $image);
 
