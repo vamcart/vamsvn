@@ -9,7 +9,11 @@
 <div class="pagecontent">
 
 <div class="ProductInfoLeft">
-{if $PRODUCTS_IMAGE!=''}<a href="{$PRODUCTS_POPUP_LINK}"><img src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" /></a>{/if}
+{if $PRODUCTS_IMAGE!=''}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_LINK}">{/if}
+<img src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />
+{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
+{/if}
 
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
 
