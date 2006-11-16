@@ -24,7 +24,7 @@
       <table width="100%" cellpaddind="0" cellspacing="5"><tr>
         <td class="contents" valign="top">
 {if $PRODUCTS_IMAGE!=''}
-{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_LINK}">{/if}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_LINK}" onclick="window.open('{$PRODUCTS_POPUP_LINK}', 'popUp', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320'); return false;" target="_blank">{/if}
 <img src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />
 {if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
 {/if}
