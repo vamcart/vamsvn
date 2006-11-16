@@ -73,7 +73,7 @@ if (xtc_in_array($product->data['products_id'], $check_data)) {
 		if ($content_data['content_link'] == '') {
 			if (eregi('.html', $content_data['content_file']) or eregi('.htm', $content_data['content_file']) or eregi('.txt', $content_data['content_file']) or eregi('.bmp', $content_data['content_file']) or eregi('.jpg', $content_data['content_file']) or eregi('.gif', $content_data['content_file']) or eregi('.png', $content_data['content_file']) or eregi('.tif', $content_data['content_file'])) {
 
-				$button = '<a style="cursor:hand" onClick="javascript:window.open(\''.xtc_href_link(FILENAME_MEDIA_CONTENT, 'coID='.$content_data['content_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')">'.xtc_image_button('button_view.gif', TEXT_VIEW).'</a>';
+				$button = '<a style="cursor:hand" onclick="javascript:window.open(\''.xtc_href_link(FILENAME_MEDIA_CONTENT, 'coID='.$content_data['content_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')">'.xtc_image_button('button_view.gif', TEXT_VIEW).'</a>';
 
 			} else {
 
