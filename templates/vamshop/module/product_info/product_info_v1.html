@@ -104,9 +104,7 @@
 <!-- more images -->
 {if $PRODUCTS_MO_IMAGES}
 {foreach name=mo_pic item=img_values from=$mo_img}
-{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}
-<a href="javascript:popupWindow('{$img_values.PRODUCTS_MO_POPUP_LINK}')">
-{/if}
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_LINK}" onclick="window.open('{$img_values.PRODUCTS_MO_POPUP_LINK}', 'popUp', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320'); return false;" target="_blank">{/if}
 {$img_values.PRODUCTS_MO_IMAGE}
 {if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}  
 &nbsp;&nbsp;
