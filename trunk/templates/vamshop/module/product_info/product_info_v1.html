@@ -104,7 +104,12 @@
 <!-- more images -->
 {if $PRODUCTS_MO_IMAGES}
 {foreach name=mo_pic item=img_values from=$mo_img}
-<a href="javascript:popupWindow('{$img_values.PRODUCTS_MO_POPUP_LINK}')">{$img_values.PRODUCTS_MO_IMAGE}</a>&nbsp;&nbsp;
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}
+<a href="javascript:popupWindow('{$img_values.PRODUCTS_MO_POPUP_LINK}')">
+{/if}
+{$img_values.PRODUCTS_MO_IMAGE}
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}  
+&nbsp;&nbsp;
 {/foreach}
 {/if}
 <!-- more images eof -->
