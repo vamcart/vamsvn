@@ -150,7 +150,11 @@
 <table width="100%" border="0">
 {foreach name=mo_pic item=img_values from=$mo_img}
   <tr>
-    <td style="border-top: 1px solid; border-color: #cccccc;"><a href="javascript:popupWindow('{$img_values.PRODUCTS_MO_POPUP_LINK}')">{$img_values.PRODUCTS_MO_IMAGE}</a></td>
+    <td style="border-top: 1px solid; border-color: #cccccc;">{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}
+<a href="javascript:popupWindow('{$img_values.PRODUCTS_MO_POPUP_LINK}')">
+{/if}
+{$img_values.PRODUCTS_MO_IMAGE}
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}  </td>
   </tr>
 {/foreach}
 </table>

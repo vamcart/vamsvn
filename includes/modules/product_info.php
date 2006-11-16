@@ -112,10 +112,11 @@ $info_smarty->assign('PRODUCTS_POPUP_LINK', $products_popup_link);
         if ($mo_images != false) {
     $info_smarty->assign('PRODUCTS_MO_IMAGES', $mo_images);
             foreach ($mo_images as $img) {
+                $products_mo_popup_link = xtc_href_link(FILENAME_POPUP_IMAGE, 'pID=' . $product->data['products_id'] . $connector . 'imgID='.$img['image_nr']);
+if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_link = '';
                 $mo_img[] = array(
                 'PRODUCTS_MO_IMAGE' => xtc_image(DIR_WS_INFO_IMAGES . $img['image_name'], '', '', '', 'class="mo_img"'),
-                'PRODUCTS_MO_POPUP_LINK' => xtc_href_link(FILENAME_POPUP_IMAGE, 'pID=' . $product->data['products_id'] . $connector . 'imgID='.$img['image_nr'])
-                );
+                'PRODUCTS_MO_POPUP_LINK' => $products_mo_popup_link);
         $info_smarty->assign('mo_img', $mo_img);
             }
         }
