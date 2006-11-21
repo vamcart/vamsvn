@@ -148,7 +148,7 @@ define('BOX_ORDERS_STATUS','Статус заказа');
 define('BOX_SHIPPING_STATUS','Время доставки');
 define('BOX_SALES_REPORT','Статистика продаж');
 define('BOX_MODULE_EXPORT','XT-Модули');
-define('BOX_HEADING_GV_ADMIN', 'Сертификаты/Купоны');
+define('BOX_HEADING_GV_ADMIN', 'Купоны');
 define('BOX_GV_ADMIN_QUEUE', 'Активация сертификатов');
 define('BOX_GV_ADMIN_MAIL', 'Отправить сертификат');
 define('BOX_GV_ADMIN_SENT', 'Отправленные сертификаты');
