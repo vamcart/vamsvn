@@ -70,7 +70,7 @@ if(RSS_STRIP_TAGS == 'false') {
 	define('CDATA_CLOSE', "");
 }
 
-define('RSS_GENERATOR', 'xt:Commerce VaM Edition RSS 2.0 Feed');
+define('RSS_GENERATOR', 'VaM Shop RSS 2.0 Feed');
 define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OWNER);
 
 /*--------- END OF CONFIGURATION ------------------*/
