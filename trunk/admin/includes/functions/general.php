@@ -892,7 +892,8 @@ function xtc_set_banner_status($banners_id, $status) {
 	}
 }
 
-////// Sets the status of a product  function xtc_set_product_status($products_id, $status) {
+////// Sets the status of a product
+  function xtc_set_product_status($products_id, $status) {
     if ($status == '1') {
       return xtc_db_query("update " . TABLE_PRODUCTS . " set products_status = '1', products_last_modified = now() where products_id = '" . (int)$products_id . "'");
     } elseif ($status == '0') {
