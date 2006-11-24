@@ -430,4 +430,6 @@ define('TEXT_HEADER_SUPPORT','Support');
 define('TEXT_HEADER_SHOP','Shop');
 define('TEXT_HEADER_LOGOFF','Logout');
 
+define('BOX_CACHE_FILES', 'Cache control');
+
 ?>

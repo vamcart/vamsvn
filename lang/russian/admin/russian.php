@@ -430,4 +430,6 @@ define('TEXT_HEADER_SUPPORT','Поддержка');
 define('TEXT_HEADER_SHOP','Магазин');
 define('TEXT_HEADER_LOGOFF','Выход');
 
+define('BOX_CACHE_FILES', 'Контроль кэша');
+
 ?>
