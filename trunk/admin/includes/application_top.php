@@ -141,6 +141,7 @@
   define('FILENAME_LATEST_NEWS', 'latest_news.php');
   define('FILENAME_RECOVER_CART_SALES', 'recover_cart_sales.php');
   define('FILENAME_FEATURED', 'featured.php');
+  define('FILENAME_CACHE', 'cache.php');
 
   // define the database table names used in the project
   define('TABLE_ADDRESS_BOOK', 'address_book');
