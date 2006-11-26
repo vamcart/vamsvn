@@ -309,15 +309,17 @@
   session_name('XTCsid');
 	if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
+  require_once (DIR_FS_INC.'xtc_get_cookie_info.inc.php');  // get the session cookie parameters
+  $cookie_info = xtc_get_cookie_info();
   // set the session cookie parameters
   if (function_exists('session_set_cookie_params')) {
-    session_set_cookie_params(0, '/', (xtc_not_null($current_domain) ? '.' . $current_domain : ''));
-  } elseif (function_exists('ini_set')) {
-    ini_set('session.cookie_lifetime', '0');
-    ini_set('session.cookie_path', '/');
-    ini_set('session.cookie_domain', (xtc_not_null($current_domain) ? '.' . $current_domain : ''));
+   	session_set_cookie_params(0, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
   }
-
+  elseif (function_exists('ini_set')) {
+   	ini_set('session.cookie_lifetime', '0');
+   	ini_set('session.cookie_path', $cookie_info['cookie_path']);
+   	ini_set('session.cookie_domain', $cookie_info['cookie_domain']);
+  }
   // set the session ID if it exists
   if (isset($_POST[session_name()])) {
     session_id($_POST[session_name()]);
@@ -328,7 +330,8 @@
   // start the session
   $session_started = false;
   if (SESSION_FORCE_COOKIE_USE == 'True') {
-    xtc_setcookie('cookie_test', 'please_accept_for_session', time()+60*60*24*30, '/', $current_domain);
+	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, 
+	           $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 
     if (isset($HTTP_COOKIE_VARS['cookie_test'])) {
       session_start();

@@ -103,6 +103,7 @@ require_once (DIR_FS_INC.'xtc_db_output.inc.php');
 require_once (DIR_FS_INC.'xtc_db_input.inc.php');
 require_once (DIR_FS_INC.'xtc_db_prepare_input.inc.php');
 require_once (DIR_FS_INC.'xtc_get_top_level_domain.inc.php');
+require_once (DIR_FS_INC.'xtc_get_cookie_info.inc.php');
 
 // html basics
 require_once (DIR_FS_INC.'xtc_href_link.inc.php');
@@ -234,7 +235,7 @@ $_POST = $InputFilter->process($_POST);
 // set the top level domains
 $http_domain = xtc_get_top_level_domain(HTTP_SERVER);
 $https_domain = xtc_get_top_level_domain(HTTPS_SERVER);
-$current_domain = (($request_type == 'NONSSL') ? $http_domain : $https_domain);
+$cookie_info = xtc_get_cookie_info();
 
 // include shopping cart class
 require (DIR_WS_CLASSES.'shopping_cart.php');
@@ -254,12 +255,12 @@ if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WR
 
 // set the session cookie parameters
 if (function_exists('session_set_cookie_params')) {
-	session_set_cookie_params(0, '/', (xtc_not_null($current_domain) ? '.'.$current_domain : ''));
+	session_set_cookie_params(0, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 }
 elseif (function_exists('ini_set')) {
 	ini_set('session.cookie_lifetime', '0');
-	ini_set('session.cookie_path', '/');
-	ini_set('session.cookie_domain', (xtc_not_null($current_domain) ? '.'.$current_domain : ''));
+	ini_set('session.cookie_path', $cookie_info['cookie_path']);
+	ini_set('session.cookie_domain', $cookie_info['cookie_domain']);
 }
 
 // set the session ID if it exists
@@ -273,7 +274,7 @@ elseif (($request_type == 'SSL') && isset ($_GET[session_name()])) {
 // start the session
 $session_started = false;
 if (SESSION_FORCE_COOKIE_USE == 'True') {
-	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, '/', $current_domain);
+	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 
 	if (isset ($_COOKIE['cookie_test'])) {
 		session_start();

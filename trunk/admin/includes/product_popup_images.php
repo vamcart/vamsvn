@@ -20,7 +20,21 @@ if(PRODUCT_IMAGE_POPUP_ACTIVE == 'true') {
 	list($width, $height) = xtc_get_image_size(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, PRODUCT_IMAGE_POPUP_WIDTH, PRODUCT_IMAGE_POPUP_HEIGHT);
 
 //$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name,PRODUCT_IMAGE_POPUP_WIDTH,PRODUCT_IMAGE_POPUP_HEIGHT,DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name,IMAGE_QUALITY,'');
-	$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $width, $height, DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name, IMAGE_QUALITY, '');
+//	$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $width, $height, DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name, IMAGE_QUALITY, '');
+
+########## start Andreaz
+# если оригинал картинки меньше поп-апа, то размер поп-апа равен оригиналу
+
+$size = getimagesize(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name);
+    if ($size['0'] >= PRODUCT_IMAGE_POPUP_WIDTH || $size['1'] >= PRODUCT_IMAGE_POPUP_HEIGHT) {
+        $a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, PRODUCT_IMAGE_POPUP_WIDTH, PRODUCT_IMAGE_POPUP_HEIGHT, DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name, IMAGE_QUALITY,'');
+    }
+    else {
+        $a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $size['0'], $size['1'],DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name, IMAGE_QUALITY,'');
+    }
+########## end Andreaz
+
+
 $array=clear_string(PRODUCT_IMAGE_POPUP_BEVEL);
 if (PRODUCT_IMAGE_POPUP_BEVEL != ''){
 $a->bevel($array[0],$array[1],$array[2]);}
