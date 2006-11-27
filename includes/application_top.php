@@ -551,4 +551,16 @@ if (isset ($_SESSION['customer_id'])) {
 // modification for nre graduated system
 unset ($_SESSION['actual_content']);
 xtc_count_cart();
+
+
+  // get referrer from _SERVER array  ************
+//  Referer ***********
+    if (!xtc_session_is_registered('referer')) {
+        $ref = $_SERVER["HTTP_REFERER"];
+         xtc_session_register('referer');
+         $referer =$ref;
+         }
+           $html_referer = $referer ;
+//***********************
+
 ?>

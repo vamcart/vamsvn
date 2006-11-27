@@ -122,4 +122,7 @@ define('TEXT_NUMBER',' Nr.: ');
 define('TABLE_HEADING_NUMBER','Nr');
 define('TEXT_PRODUCTS',' Products ');
 
+define('ENTRY_ORIGINAL_REFERER', 'Original Reference:');
+define('ENTRY_LOGIN_REFERER', 'New Reference:');
+
 ?>

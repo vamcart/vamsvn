@@ -1,17 +1,18 @@
 <?php
 
 /* -----------------------------------------------------------------------------------------
-   $Id: create_guest_account.php 1311 2005-10-18 12:30:40Z mz $
+   $Id: create_guest_account.php 1311 2005-10-18 12:30:40Z VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
-
-   Copyright (c) 2003 XT-Commerce
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   
+   Copyright (c) 2006 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(create_account.php,v 1.63 2003/05/28); www.oscommerce.com
-   (c) 2003  nextcommerce (create_account.php,v 1.27 2003/08/24); www.nextcommerce.org
+   (c) 2003  nextcommerce (create_account.php,v 1.27 2003/08/24); www.nextcommerce.org 
+   (c) 2005  xt:Commerce (create_account.php,v 1.27 2003/08/24); xt-commerce.com 
 
    Released under the GNU General Public License 
    
@@ -204,7 +205,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	if (!$newsletter)
 		$newsletter = 0;
 	if ($error == false) {
-		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_status' => $customers_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax, 'customers_newsletter' => $newsletter, 'account_type' => '1', 'customers_password' => xtc_encrypt_password($password));
+		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_status' => $customers_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax, 'orig_reference' => $html_referer, 'customers_newsletter' => $newsletter, 'account_type' => '1', 'customers_password' => xtc_encrypt_password($password));
 
 		$_SESSION['account_type'] = '1';
 
@@ -243,6 +244,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 		xtc_db_query("insert into ".TABLE_CUSTOMERS_INFO." (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('".(int) $_SESSION['customer_id']."', '0', now())");
 
+        $sql_data_array = array('login_reference' => $html_referer);
+        xtc_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '" . (int) $_SESSION['customer_id'] . "'");
+        
 		if (SESSION_RECREATE == 'True') {
 			xtc_session_recreate();
 		}

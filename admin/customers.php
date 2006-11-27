@@ -1127,8 +1127,11 @@ if ($error == true) {
 			$reviews_query = xtc_db_query("select count(*) as number_of_reviews from ".TABLE_REVIEWS." where customers_id = '".$customers['customers_id']."'");
 			$reviews = xtc_db_fetch_array($reviews_query);
 
-			$customer_info = xtc_array_merge($country, $info, $reviews);
-
+        $reference_query = xtc_db_query("select orig_reference, login_reference from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customers['customers_id'] . "'");
+        $reference = xtc_db_fetch_array($reference_query);
+        
+        $customer_info = array_merge($country, $info, $reviews, $reference);
+        
 			$cInfo_array = xtc_array_merge($customers, $customer_info);
 			$cInfo = new objectInfo($cInfo_array);
 		}
@@ -1270,6 +1273,8 @@ if ($error == true) {
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_NUMBER_OF_LOGONS.' '.$cInfo->number_of_logons);
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_COUNTRY.' '.$cInfo->countries_name);
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_NUMBER_OF_REVIEWS.' '.$cInfo->number_of_reviews);
+            $contents[] = array('text' => '<br>' . TEXT_INFO_ORIGINAL_REFERER . ' ' . $cInfo->orig_reference);
+            $contents[] = array('text' => '<br>' . TEXT_INFO_LOGIN_REFERER . ' ' . $cInfo->login_reference);
 			}
 
 			if ($_GET['action'] == 'iplog') {
