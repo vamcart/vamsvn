@@ -88,6 +88,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                                    date_purchased,
                                    orders_status,
                                    last_modified,
+                                   orig_reference, 
+                                   login_reference,
                                    customers_status,
                                    customers_status_name,
                                    customers_status_image,
@@ -140,7 +142,9 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                               'country' => $order['customers_country'],
                               'format_id' => $order['customers_address_format_id'],
                               'telephone' => $order['customers_telephone'],
-                              'email_address' => $order['customers_email_address']);
+                              'email_address' => $order['customers_email_address'],
+                              'orig_reference' => $order['orig_reference'],
+                              'login_reference' => $order['login_reference']);
 
       $this->delivery = array('name' => $order['delivery_name'],
                               'company' => $order['delivery_company'],

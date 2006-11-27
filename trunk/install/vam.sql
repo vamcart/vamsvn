@@ -368,6 +368,8 @@ CREATE TABLE customers (
   refferers_id int(5) DEFAULT '0' NOT NULL,
   customers_date_added datetime DEFAULT '0000-00-00 00:00:00',
   customers_last_modified datetime DEFAULT '0000-00-00 00:00:00',
+  orig_reference text,
+  login_reference text,
   PRIMARY KEY (customers_id)
 );
 
@@ -610,6 +612,8 @@ CREATE TABLE orders (
   refferers_id varchar(255) NOT NULL,
   conversion_type INT(1) DEFAULT '0' NOT NULL,
   orders_ident_key varchar(255),
+  orig_reference text,
+  login_reference text,
   PRIMARY KEY (orders_id)
 );
 
