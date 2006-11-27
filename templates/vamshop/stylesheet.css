@@ -96,18 +96,6 @@ div#footer p
    
 /* /Низ */
 
-/* Шапка */
-div#header h1
-   {
-     height: 80px;
-     line-height: 80px;
-     margin: 0;
-     padding-left: 10px;
-     background: #fff;
-     color: #79B30B;
-   }
-/* /Шапка */
-
 /* Навигация */
 div#navigation 
    {
