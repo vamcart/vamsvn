@@ -333,6 +333,7 @@ div#navigation
 #menu ul li a 
    {
 	  background: url("img/tab-right.gif") no-repeat 100% 0;
+	  background-color: #67748b;
 	  color: #fff;
 	  padding: 0px 0 0px;
      font-weight: bold;
@@ -342,6 +343,7 @@ div#navigation
 #menu ul li.current a 
    {
 	  background: url("img/tab-right-active.gif") no-repeat 100% 0;
+	  background-color: #990000;
 	  color: #fff;
 	  padding: 0px 0 1px;
      font-weight: bold;
