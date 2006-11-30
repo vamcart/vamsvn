@@ -138,6 +138,34 @@ function xtc_redirect($url) {
 	exit;
 }
 
+////
+// Parse the data used in the html tags to ensure the tags will not break
+  function xtc_parse_input_field_data($data, $parse) {
+    return strtr(trim($data), $parse);
+  }
+
+  function xtc_output_string($string, $translate = false, $protected = false) {
+    if ($protected == true) {
+      return htmlspecialchars($string);
+    } else {
+      if ($translate == false) {
+        return xtc_parse_input_field_data($string, array('"' => '&quot;'));
+      } else {
+        return xtc_parse_input_field_data($string, $translate);
+      }
+    }
+  }
+
+  function xtc_output_string_protected($string) {
+    return xtc_output_string($string, false, true);
+  }
+
+  function xtc_sanitize_string($string) {
+    $string = ereg_replace(' +', ' ', $string);
+
+    return preg_replace("/[<>]/", '_', $string);
+  }
+
 function xtc_customers_name($customers_id) {
 	$customers = xtc_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".$customers_id."'");
 	$customers_values = xtc_db_fetch_array($customers);
