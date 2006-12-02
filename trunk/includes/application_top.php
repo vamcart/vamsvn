@@ -191,7 +191,7 @@ function xtDBquery($query) {
 
 function CacheCheck() {
 	if (USE_CACHE == 'false') return false;
-	if (!isset($_COOKIE['XTCsid'])) return false;
+	if (!isset($_COOKIE['sid'])) return false;
 	return true;
 }
 
@@ -250,7 +250,7 @@ require (DIR_WS_FUNCTIONS.'compatibility.php');
 require (DIR_WS_FUNCTIONS.'sessions.php');
 
 // set the session name and save path
-session_name('XTCsid');
+session_name('sid');
 if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters

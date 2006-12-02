@@ -306,7 +306,7 @@
   require(DIR_WS_FUNCTIONS . 'html_output.php');
 
   // set the session name and save path
-  session_name('XTCsid');
+  session_name('sid');
 	if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
   require_once (DIR_FS_INC.'xtc_get_cookie_info.inc.php');  // get the session cookie parameters
