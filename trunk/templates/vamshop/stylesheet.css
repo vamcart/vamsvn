@@ -32,15 +32,17 @@ h2, h3
    }
    
 /* ÷вет обычных ссылок в магазине */
-a {
-  color: #67748B;
-  text-decoration: underline;
-}
+a 
+   {
+     color: #67748B;
+     text-decoration: underline;
+   }
 
-a:hover {
-  color: #990000;
-  text-decoration: none;
-}
+a:hover 
+   {
+     color: #990000;
+     text-decoration: none;
+   }
 /* /÷вет обычных ссылок в магазине */
 
 /* ÷ентр */
