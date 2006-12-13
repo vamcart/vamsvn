@@ -1055,6 +1055,34 @@ CREATE TABLE cm_file_flags (
 
 
 
+DROP TABLE if EXISTS payment_moneybookers_currencies;
+CREATE TABLE payment_moneybookers_currencies (
+  mb_currID char(3) NOT NULL default '',
+  mb_currName varchar(255) NOT NULL default '',
+  PRIMARY KEY  (mb_currID)
+);
+
+
+DROP TABLE if EXISTS payment_moneybookers;
+CREATE TABLE payment_moneybookers (
+  mb_TRID varchar(255) NOT NULL default '',
+  mb_ERRNO smallint(3) unsigned NOT NULL default '0',
+  mb_ERRTXT varchar(255) NOT NULL default '',
+  mb_DATE datetime NOT NULL default '0000-00-00 00:00:00',
+  mb_MBTID bigint(18) unsigned NOT NULL default '0',
+  mb_STATUS tinyint(1) NOT NULL default '0',
+  mb_ORDERID int(11) unsigned NOT NULL default '0',
+  PRIMARY KEY  (mb_TRID)
+);
+
+
+DROP TABLE if EXISTS payment_moneybookers_countries;
+CREATE TABLE payment_moneybookers_countries (
+  osc_cID int(11) NOT NULL default '0',
+  mb_cID char(3) NOT NULL default '',
+  PRIMARY KEY  (osc_cID)
+);
+
 DROP TABLE if EXISTS coupon_email_track;
 CREATE TABLE coupon_email_track (
   unique_id int(11) NOT NULL auto_increment,
@@ -2142,4 +2170,305 @@ INSERT INTO zones VALUES ('317', '117', 'Лиепая', 'Лиепая');
 INSERT INTO zones VALUES ('318', '117', 'Резекне', 'Резекне');
 INSERT INTO zones VALUES ('319', '117', 'Рига', 'Рига');
 INSERT INTO zones VALUES ('320', '117', 'Юрмала', 'Юрмала');
+
+# USA
+INSERT INTO zones VALUES ('321','223','AL','Alabama');
+INSERT INTO zones VALUES ('322','223','AK','Alaska');
+INSERT INTO zones VALUES ('323','223','AS','American Samoa');
+INSERT INTO zones VALUES ('324','223','AZ','Arizona');
+INSERT INTO zones VALUES ('325','223','AR','Arkansas');
+INSERT INTO zones VALUES ('326','223','AF','Armed Forces Africa');
+INSERT INTO zones VALUES ('327','223','AA','Armed Forces Americas');
+INSERT INTO zones VALUES ('328','223','AC','Armed Forces Canada');
+INSERT INTO zones VALUES ('329','223','AE','Armed Forces Europe');
+INSERT INTO zones VALUES ('330','223','AM','Armed Forces Middle East');
+INSERT INTO zones VALUES ('331','223','AP','Armed Forces Pacific');
+INSERT INTO zones VALUES ('332','223','CA','California');
+INSERT INTO zones VALUES ('333','223','CO','Colorado');
+INSERT INTO zones VALUES ('334','223','CT','Connecticut');
+INSERT INTO zones VALUES ('335','223','DE','Delaware');
+INSERT INTO zones VALUES ('336','223','DC','District of Columbia');
+INSERT INTO zones VALUES ('337','223','FM','Federated States Of Micronesia');
+INSERT INTO zones VALUES ('338','223','FL','Florida');
+INSERT INTO zones VALUES ('339','223','GA','Georgia');
+INSERT INTO zones VALUES ('340','223','GU','Guam');
+INSERT INTO zones VALUES ('341','223','HI','Hawaii');
+INSERT INTO zones VALUES ('342','223','ID','Idaho');
+INSERT INTO zones VALUES ('343','223','IL','Illinois');
+INSERT INTO zones VALUES ('344','223','IN','Indiana');
+INSERT INTO zones VALUES ('345','223','IA','Iowa');
+INSERT INTO zones VALUES ('346','223','KS','Kansas');
+INSERT INTO zones VALUES ('347','223','KY','Kentucky');
+INSERT INTO zones VALUES ('348','223','LA','Louisiana');
+INSERT INTO zones VALUES ('349','223','ME','Maine');
+INSERT INTO zones VALUES ('350','223','MH','Marshall Islands');
+INSERT INTO zones VALUES ('351','223','MD','Maryland');
+INSERT INTO zones VALUES ('352','223','MA','Massachusetts');
+INSERT INTO zones VALUES ('353','223','MI','Michigan');
+INSERT INTO zones VALUES ('354','223','MN','Minnesota');
+INSERT INTO zones VALUES ('355','223','MS','Mississippi');
+INSERT INTO zones VALUES ('356','223','MO','Missouri');
+INSERT INTO zones VALUES ('357','223','MT','Montana');
+INSERT INTO zones VALUES ('358','223','NE','Nebraska');
+INSERT INTO zones VALUES ('359','223','NV','Nevada');
+INSERT INTO zones VALUES ('360','223','NH','New Hampshire');
+INSERT INTO zones VALUES ('361','223','NJ','New Jersey');
+INSERT INTO zones VALUES ('362','223,'NM','New Mexico');
+INSERT INTO zones VALUES ('363','223','NY','New York');
+INSERT INTO zones VALUES ('364','223','NC','North Carolina');
+INSERT INTO zones VALUES ('365','223','ND','North Dakota');
+INSERT INTO zones VALUES ('366','223','MP','Northern Mariana Islands');
+INSERT INTO zones VALUES ('367','223','OH','Ohio');
+INSERT INTO zones VALUES ('368','223','OK','Oklahoma');
+INSERT INTO zones VALUES ('369','223','OR','Oregon');
+INSERT INTO zones VALUES ('370','223','PW','Palau');
+INSERT INTO zones VALUES ('371','223','PA','Pennsylvania');
+INSERT INTO zones VALUES ('372','223','PR','Puerto Rico');
+INSERT INTO zones VALUES ('373','223','RI','Rhode Island');
+INSERT INTO zones VALUES ('374','223','SC','South Carolina');
+INSERT INTO zones VALUES ('375','223','SD','South Dakota');
+INSERT INTO zones VALUES ('376','223','TN','Tennessee');
+INSERT INTO zones VALUES ('377','223','TX','Texas');
+INSERT INTO zones VALUES ('378','223','UT','Utah');
+INSERT INTO zones VALUES ('379','223','VT','Vermont');
+INSERT INTO zones VALUES ('380','223','VI','Virgin Islands');
+INSERT INTO zones VALUES ('381','223','VA','Virginia');
+INSERT INTO zones VALUES ('382','223','WA','Washington');
+INSERT INTO zones VALUES ('383','223','WV','West Virginia');
+INSERT INTO zones VALUES ('384','223','WI','Wisconsin');
+INSERT INTO zones VALUES ('385','223','WY','Wyoming');
+
+#
+# Dumping data for table `payment_moneybookers_countries`
+#
+
+INSERT INTO payment_moneybookers_countries VALUES (2, 'ALB');
+INSERT INTO payment_moneybookers_countries VALUES (3, 'ALG');
+INSERT INTO payment_moneybookers_countries VALUES (4, 'AME');
+INSERT INTO payment_moneybookers_countries VALUES (5, 'AND');
+INSERT INTO payment_moneybookers_countries VALUES (6, 'AGL');
+INSERT INTO payment_moneybookers_countries VALUES (7, 'ANG');
+INSERT INTO payment_moneybookers_countries VALUES (9, 'ANT');
+INSERT INTO payment_moneybookers_countries VALUES (10, 'ARG');
+INSERT INTO payment_moneybookers_countries VALUES (11, 'ARM');
+INSERT INTO payment_moneybookers_countries VALUES (12, 'ARU');
+INSERT INTO payment_moneybookers_countries VALUES (13, 'AUS');
+INSERT INTO payment_moneybookers_countries VALUES (14, 'AUT');
+INSERT INTO payment_moneybookers_countries VALUES (15, 'AZE');
+INSERT INTO payment_moneybookers_countries VALUES (16, 'BMS');
+INSERT INTO payment_moneybookers_countries VALUES (17, 'BAH');
+INSERT INTO payment_moneybookers_countries VALUES (18, 'BAN');
+INSERT INTO payment_moneybookers_countries VALUES (19, 'BAR');
+INSERT INTO payment_moneybookers_countries VALUES (20, 'BLR');
+INSERT INTO payment_moneybookers_countries VALUES (21, 'BGM');
+INSERT INTO payment_moneybookers_countries VALUES (22, 'BEL');
+INSERT INTO payment_moneybookers_countries VALUES (23, 'BEN');
+INSERT INTO payment_moneybookers_countries VALUES (24, 'BER');
+INSERT INTO payment_moneybookers_countries VALUES (26, 'BOL');
+INSERT INTO payment_moneybookers_countries VALUES (27, 'BOS');
+INSERT INTO payment_moneybookers_countries VALUES (28, 'BOT');
+INSERT INTO payment_moneybookers_countries VALUES (30, 'BRA');
+INSERT INTO payment_moneybookers_countries VALUES (32, 'BRU');
+INSERT INTO payment_moneybookers_countries VALUES (33, 'BUL');
+INSERT INTO payment_moneybookers_countries VALUES (34, 'BKF');
+INSERT INTO payment_moneybookers_countries VALUES (35, 'BUR');
+INSERT INTO payment_moneybookers_countries VALUES (36, 'CAM');
+INSERT INTO payment_moneybookers_countries VALUES (37, 'CMR');
+INSERT INTO payment_moneybookers_countries VALUES (38, 'CAN');
+INSERT INTO payment_moneybookers_countries VALUES (39, 'CAP');
+INSERT INTO payment_moneybookers_countries VALUES (40, 'CAY');
+INSERT INTO payment_moneybookers_countries VALUES (41, 'CEN');
+INSERT INTO payment_moneybookers_countries VALUES (42, 'CHA');
+INSERT INTO payment_moneybookers_countries VALUES (43, 'CHL');
+INSERT INTO payment_moneybookers_countries VALUES (44, 'CHN');
+INSERT INTO payment_moneybookers_countries VALUES (47, 'COL');
+INSERT INTO payment_moneybookers_countries VALUES (49, 'CON');
+INSERT INTO payment_moneybookers_countries VALUES (51, 'COS');
+INSERT INTO payment_moneybookers_countries VALUES (52, 'COT');
+INSERT INTO payment_moneybookers_countries VALUES (53, 'CRO');
+INSERT INTO payment_moneybookers_countries VALUES (54, 'CUB');
+INSERT INTO payment_moneybookers_countries VALUES (55, 'CYP');
+INSERT INTO payment_moneybookers_countries VALUES (56, 'CZE');
+INSERT INTO payment_moneybookers_countries VALUES (57, 'DEN');
+INSERT INTO payment_moneybookers_countries VALUES (58, 'DJI');
+INSERT INTO payment_moneybookers_countries VALUES (59, 'DOM');
+INSERT INTO payment_moneybookers_countries VALUES (60, 'DRP');
+INSERT INTO payment_moneybookers_countries VALUES (62, 'ECU');
+INSERT INTO payment_moneybookers_countries VALUES (64, 'EL_');
+INSERT INTO payment_moneybookers_countries VALUES (65, 'EQU');
+INSERT INTO payment_moneybookers_countries VALUES (66, 'ERI');
+INSERT INTO payment_moneybookers_countries VALUES (67, 'EST');
+INSERT INTO payment_moneybookers_countries VALUES (68, 'ETH');
+INSERT INTO payment_moneybookers_countries VALUES (70, 'FAR');
+INSERT INTO payment_moneybookers_countries VALUES (71, 'FIJ');
+INSERT INTO payment_moneybookers_countries VALUES (72, 'FIN');
+INSERT INTO payment_moneybookers_countries VALUES (73, 'FRA');
+INSERT INTO payment_moneybookers_countries VALUES (75, 'FRE');
+INSERT INTO payment_moneybookers_countries VALUES (78, 'GAB');
+INSERT INTO payment_moneybookers_countries VALUES (79, 'GAM');
+INSERT INTO payment_moneybookers_countries VALUES (80, 'GEO');
+INSERT INTO payment_moneybookers_countries VALUES (81, 'GER');
+INSERT INTO payment_moneybookers_countries VALUES (82, 'GHA');
+INSERT INTO payment_moneybookers_countries VALUES (83, 'GIB');
+INSERT INTO payment_moneybookers_countries VALUES (84, 'GRC');
+INSERT INTO payment_moneybookers_countries VALUES (85, 'GRL');
+INSERT INTO payment_moneybookers_countries VALUES (87, 'GDL');
+INSERT INTO payment_moneybookers_countries VALUES (88, 'GUM');
+INSERT INTO payment_moneybookers_countries VALUES (89, 'GUA');
+INSERT INTO payment_moneybookers_countries VALUES (90, 'GUI');
+INSERT INTO payment_moneybookers_countries VALUES (91, 'GBS');
+INSERT INTO payment_moneybookers_countries VALUES (92, 'GUY');
+INSERT INTO payment_moneybookers_countries VALUES (93, 'HAI');
+INSERT INTO payment_moneybookers_countries VALUES (95, 'HON');
+INSERT INTO payment_moneybookers_countries VALUES (96, 'HKG');
+INSERT INTO payment_moneybookers_countries VALUES (97, 'HUN');
+INSERT INTO payment_moneybookers_countries VALUES (98, 'ICE');
+INSERT INTO payment_moneybookers_countries VALUES (99, 'IND');
+INSERT INTO payment_moneybookers_countries VALUES (101, 'IRN');
+INSERT INTO payment_moneybookers_countries VALUES (102, 'IRA');
+INSERT INTO payment_moneybookers_countries VALUES (103, 'IRE');
+INSERT INTO payment_moneybookers_countries VALUES (104, 'ISR');
+INSERT INTO payment_moneybookers_countries VALUES (105, 'ITA');
+INSERT INTO payment_moneybookers_countries VALUES (106, 'JAM');
+INSERT INTO payment_moneybookers_countries VALUES (107, 'JAP');
+INSERT INTO payment_moneybookers_countries VALUES (108, 'JOR');
+INSERT INTO payment_moneybookers_countries VALUES (109, 'KAZ');
+INSERT INTO payment_moneybookers_countries VALUES (110, 'KEN');
+INSERT INTO payment_moneybookers_countries VALUES (112, 'SKO');
+INSERT INTO payment_moneybookers_countries VALUES (113, 'KOR');
+INSERT INTO payment_moneybookers_countries VALUES (114, 'KUW');
+INSERT INTO payment_moneybookers_countries VALUES (115, 'KYR');
+INSERT INTO payment_moneybookers_countries VALUES (116, 'LAO');
+INSERT INTO payment_moneybookers_countries VALUES (117, 'LAT');
+INSERT INTO payment_moneybookers_countries VALUES (141, 'MCO');
+INSERT INTO payment_moneybookers_countries VALUES (119, 'LES');
+INSERT INTO payment_moneybookers_countries VALUES (120, 'LIB');
+INSERT INTO payment_moneybookers_countries VALUES (121, 'LBY');
+INSERT INTO payment_moneybookers_countries VALUES (122, 'LIE');
+INSERT INTO payment_moneybookers_countries VALUES (123, 'LIT');
+INSERT INTO payment_moneybookers_countries VALUES (124, 'LUX');
+INSERT INTO payment_moneybookers_countries VALUES (125, 'MAC');
+INSERT INTO payment_moneybookers_countries VALUES (126, 'F.Y');
+INSERT INTO payment_moneybookers_countries VALUES (127, 'MAD');
+INSERT INTO payment_moneybookers_countries VALUES (128, 'MLW');
+INSERT INTO payment_moneybookers_countries VALUES (129, 'MLS');
+INSERT INTO payment_moneybookers_countries VALUES (130, 'MAL');
+INSERT INTO payment_moneybookers_countries VALUES (131, 'MLI');
+INSERT INTO payment_moneybookers_countries VALUES (132, 'MLT');
+INSERT INTO payment_moneybookers_countries VALUES (134, 'MAR');
+INSERT INTO payment_moneybookers_countries VALUES (135, 'MRT');
+INSERT INTO payment_moneybookers_countries VALUES (136, 'MAU');
+INSERT INTO payment_moneybookers_countries VALUES (138, 'MEX');
+INSERT INTO payment_moneybookers_countries VALUES (140, 'MOL');
+INSERT INTO payment_moneybookers_countries VALUES (142, 'MON');
+INSERT INTO payment_moneybookers_countries VALUES (143, 'MTT');
+INSERT INTO payment_moneybookers_countries VALUES (144, 'MOR');
+INSERT INTO payment_moneybookers_countries VALUES (145, 'MOZ');
+INSERT INTO payment_moneybookers_countries VALUES (76, 'PYF');
+INSERT INTO payment_moneybookers_countries VALUES (147, 'NAM');
+INSERT INTO payment_moneybookers_countries VALUES (149, 'NEP');
+INSERT INTO payment_moneybookers_countries VALUES (150, 'NED');
+INSERT INTO payment_moneybookers_countries VALUES (151, 'NET');
+INSERT INTO payment_moneybookers_countries VALUES (152, 'CDN');
+INSERT INTO payment_moneybookers_countries VALUES (153, 'NEW');
+INSERT INTO payment_moneybookers_countries VALUES (154, 'NIC');
+INSERT INTO payment_moneybookers_countries VALUES (155, 'NIG');
+INSERT INTO payment_moneybookers_countries VALUES (69, 'FLK');
+INSERT INTO payment_moneybookers_countries VALUES (160, 'NWY');
+INSERT INTO payment_moneybookers_countries VALUES (161, 'OMA');
+INSERT INTO payment_moneybookers_countries VALUES (162, 'PAK');
+INSERT INTO payment_moneybookers_countries VALUES (164, 'PAN');
+INSERT INTO payment_moneybookers_countries VALUES (165, 'PAP');
+INSERT INTO payment_moneybookers_countries VALUES (166, 'PAR');
+INSERT INTO payment_moneybookers_countries VALUES (167, 'PER');
+INSERT INTO payment_moneybookers_countries VALUES (168, 'PHI');
+INSERT INTO payment_moneybookers_countries VALUES (170, 'POL');
+INSERT INTO payment_moneybookers_countries VALUES (171, 'POR');
+INSERT INTO payment_moneybookers_countries VALUES (172, 'PUE');
+INSERT INTO payment_moneybookers_countries VALUES (173, 'QAT');
+INSERT INTO payment_moneybookers_countries VALUES (175, 'ROM');
+INSERT INTO payment_moneybookers_countries VALUES (176, 'RUS');
+INSERT INTO payment_moneybookers_countries VALUES (177, 'RWA');
+INSERT INTO payment_moneybookers_countries VALUES (178, 'SKN');
+INSERT INTO payment_moneybookers_countries VALUES (179, 'SLU');
+INSERT INTO payment_moneybookers_countries VALUES (180, 'ST.');
+INSERT INTO payment_moneybookers_countries VALUES (181, 'WES');
+INSERT INTO payment_moneybookers_countries VALUES (182, 'SAN');
+INSERT INTO payment_moneybookers_countries VALUES (183, 'SAO');
+INSERT INTO payment_moneybookers_countries VALUES (184, 'SAU');
+INSERT INTO payment_moneybookers_countries VALUES (185, 'SEN');
+INSERT INTO payment_moneybookers_countries VALUES (186, 'SEY');
+INSERT INTO payment_moneybookers_countries VALUES (187, 'SIE');
+INSERT INTO payment_moneybookers_countries VALUES (188, 'SIN');
+INSERT INTO payment_moneybookers_countries VALUES (189, 'SLO');
+INSERT INTO payment_moneybookers_countries VALUES (190, 'SLV');
+INSERT INTO payment_moneybookers_countries VALUES (191, 'SOL');
+INSERT INTO payment_moneybookers_countries VALUES (192, 'SOM');
+INSERT INTO payment_moneybookers_countries VALUES (193, 'SOU');
+INSERT INTO payment_moneybookers_countries VALUES (195, 'SPA');
+INSERT INTO payment_moneybookers_countries VALUES (196, 'SRI');
+INSERT INTO payment_moneybookers_countries VALUES (199, 'SUD');
+INSERT INTO payment_moneybookers_countries VALUES (200, 'SUR');
+INSERT INTO payment_moneybookers_countries VALUES (202, 'SWA');
+INSERT INTO payment_moneybookers_countries VALUES (203, 'SWE');
+INSERT INTO payment_moneybookers_countries VALUES (204, 'SWI');
+INSERT INTO payment_moneybookers_countries VALUES (205, 'SYR');
+INSERT INTO payment_moneybookers_countries VALUES (206, 'TWN');
+INSERT INTO payment_moneybookers_countries VALUES (207, 'TAJ');
+INSERT INTO payment_moneybookers_countries VALUES (208, 'TAN');
+INSERT INTO payment_moneybookers_countries VALUES (209, 'THA');
+INSERT INTO payment_moneybookers_countries VALUES (210, 'TOG');
+INSERT INTO payment_moneybookers_countries VALUES (212, 'TON');
+INSERT INTO payment_moneybookers_countries VALUES (213, 'TRI');
+INSERT INTO payment_moneybookers_countries VALUES (214, 'TUN');
+INSERT INTO payment_moneybookers_countries VALUES (215, 'TUR');
+INSERT INTO payment_moneybookers_countries VALUES (216, 'TKM');
+INSERT INTO payment_moneybookers_countries VALUES (217, 'TCI');
+INSERT INTO payment_moneybookers_countries VALUES (219, 'UGA');
+INSERT INTO payment_moneybookers_countries VALUES (231, 'BRI');
+INSERT INTO payment_moneybookers_countries VALUES (221, 'UAE');
+INSERT INTO payment_moneybookers_countries VALUES (222, 'GBR');
+INSERT INTO payment_moneybookers_countries VALUES (223, 'UNI');
+INSERT INTO payment_moneybookers_countries VALUES (225, 'URU');
+INSERT INTO payment_moneybookers_countries VALUES (226, 'UZB');
+INSERT INTO payment_moneybookers_countries VALUES (227, 'VAN');
+INSERT INTO payment_moneybookers_countries VALUES (229, 'VEN');
+INSERT INTO payment_moneybookers_countries VALUES (230, 'VIE');
+INSERT INTO payment_moneybookers_countries VALUES (232, 'US_');
+INSERT INTO payment_moneybookers_countries VALUES (235, 'YEM');
+INSERT INTO payment_moneybookers_countries VALUES (236, 'YUG');
+INSERT INTO payment_moneybookers_countries VALUES (238, 'ZAM');
+INSERT INTO payment_moneybookers_countries VALUES (239, 'ZIM');
+
+#
+# Dumping data for table `payment_moneybookers_currencies`
+#
+
+INSERT INTO payment_moneybookers_currencies VALUES ('AUD', 'Australian Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('BGN', 'Bulgarian Lev');
+INSERT INTO payment_moneybookers_currencies VALUES ('CAD', 'Canadian Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('CHF', 'Swiss Franc');
+INSERT INTO payment_moneybookers_currencies VALUES ('CZK', 'Czech Koruna');
+INSERT INTO payment_moneybookers_currencies VALUES ('DKK', 'Danish Krone');
+INSERT INTO payment_moneybookers_currencies VALUES ('EEK', 'Estonian Koruna');
+INSERT INTO payment_moneybookers_currencies VALUES ('EUR', 'Euro');
+INSERT INTO payment_moneybookers_currencies VALUES ('GBP', 'Pound Sterling');
+INSERT INTO payment_moneybookers_currencies VALUES ('HKD', 'Hong Kong Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('HUF', 'Forint');
+INSERT INTO payment_moneybookers_currencies VALUES ('ILS', 'Shekel');
+INSERT INTO payment_moneybookers_currencies VALUES ('ISK', 'Iceland Krona');
+INSERT INTO payment_moneybookers_currencies VALUES ('JPY', 'Yen');
+INSERT INTO payment_moneybookers_currencies VALUES ('KRW', 'South-Korean Won');
+INSERT INTO payment_moneybookers_currencies VALUES ('LVL', 'Latvian Lat');
+INSERT INTO payment_moneybookers_currencies VALUES ('MYR', 'Malaysian Ringgit');
+INSERT INTO payment_moneybookers_currencies VALUES ('NOK', 'Norwegian Krone');
+INSERT INTO payment_moneybookers_currencies VALUES ('NZD', 'New Zealand Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('PLN', 'Zloty');
+INSERT INTO payment_moneybookers_currencies VALUES ('SEK', 'Swedish Krona');
+INSERT INTO payment_moneybookers_currencies VALUES ('SGD', 'Singapore Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('SKK', 'Slovak Koruna');
+INSERT INTO payment_moneybookers_currencies VALUES ('THB', 'Baht');
+INSERT INTO payment_moneybookers_currencies VALUES ('TWD', 'New Taiwan Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('USD', 'US Dollar');
+INSERT INTO payment_moneybookers_currencies VALUES ('ZAR', 'South-African Rand');
 
