@@ -2213,7 +2213,7 @@ INSERT INTO zones VALUES ('358','223','NE','Nebraska');
 INSERT INTO zones VALUES ('359','223','NV','Nevada');
 INSERT INTO zones VALUES ('360','223','NH','New Hampshire');
 INSERT INTO zones VALUES ('361','223','NJ','New Jersey');
-INSERT INTO zones VALUES ('362','223,'NM','New Mexico');
+INSERT INTO zones VALUES ('362','223','NM','New Mexico');
 INSERT INTO zones VALUES ('363','223','NY','New York');
 INSERT INTO zones VALUES ('364','223','NC','North Carolina');
 INSERT INTO zones VALUES ('365','223','ND','North Dakota');

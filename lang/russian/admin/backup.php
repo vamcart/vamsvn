@@ -39,7 +39,7 @@ define('TEXT_INFO_DOWNLOAD_ONLY', 'Только загрузка (Не загружайте на удаленный с
 define('TEXT_INFO_BEST_THROUGH_HTTPS', 'Наилучший вариант - связь через HTTPS');
 define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить эту копию?');
 define('TEXT_NO_EXTENSION', 'Нет');
-define('TEXT_BACKUP_DIRECTORY', 'Резервная Директория:');
+define('TEXT_BACKUP_DIRECTORY', 'Директория:');
 define('TEXT_LAST_RESTORATION', 'Последнее Восстановление:');
 define('TEXT_FORGET', '(<u>забыть</u>)');
 
