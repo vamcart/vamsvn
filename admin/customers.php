@@ -968,7 +968,7 @@ if ($error == true) {
 } else {
 	echo xtc_draw_input_field('entry_password');
 }
-?></td>      
+?>&nbsp;<?php echo ENTRY_NEW_PASSWORD_HELP; ?></td>      
         
           <tr>
             <td class="main"><?php echo ENTRY_NEWSLETTER; ?></td>
