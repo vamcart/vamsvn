@@ -49,4 +49,6 @@
   define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_DESC', 'Использовать налог.');
   define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_TITLE', 'Налог сертификата');
   define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_DESC', 'Добавлять налог к купленным подарочным сертификатам.');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_TITLE', 'Статус заказа');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_DESC', 'Заказы, оформленные с использованием подарочного сертификата, покрывающего полную стоимость заказа, будут иметь указанный статус.');
 ?>

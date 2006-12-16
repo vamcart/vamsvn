@@ -49,4 +49,6 @@
   define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_DESC', 'Use the following tax class when treating Gift Voucher as Credit Note.');
   define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_TITLE', 'Credit including Tax');
   define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_DESC', 'Add tax to purchased Gift Voucher when crediting to Account');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_TITLE', 'Order status');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_DESC', 'Set this status to orders that fully redeemed by gift voucher.');
 ?>
