@@ -73,6 +73,9 @@ class ot_gv {
 			if ($od_amount > 0) {
 				$this->output[] = array ('title' => $this->title.':', 'text' => '<b><font color="ff0000">-'.$xtPrice->xtcFormat($od_amount, true).'</font></b>', 'value' => $xtPrice->xtcFormat($od_amount, false));
 			}
+
+//				if ($od_amount >= $order->info['total'] && MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID != 0) $order->info['order_status'] = MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID;
+			
 		}
 	}
 
@@ -179,7 +182,7 @@ class ot_gv {
 	}
 
 	function apply_credit() {
-		global $order, $coupon_no,$xtPrice;
+		global $order, $coupon_no,$xtPrice, $insert_id;
 		if (isset ($_SESSION['cot_gv']) && $_SESSION['cot_gv'] == true) {
 			$gv_query = xtc_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 			$gv_result = xtc_db_fetch_array($gv_query);
@@ -188,6 +191,11 @@ class ot_gv {
 			//prepare for DB insert
 			$gv_amount = str_replace(",", ".", $gv_amount);
 			$gv_update = xtc_db_query("update ".TABLE_COUPON_GV_CUSTOMER." set amount = '".$gv_amount."' where customer_id = '".$_SESSION['customer_id']."'");
+			
+				if ($gv_amount >= $order->info['total'] && MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID != 0) {
+					xtc_db_query("update " . TABLE_ORDERS  . " set orders_status = " . MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID . " where orders_id = '" . $insert_id . "'");
+				}			
+			
 		}
 		return $gv_payment_amount;
 	}
@@ -322,7 +330,7 @@ class ot_gv {
 	}
 
 	function keys() {
-		return array ('MODULE_ORDER_TOTAL_GV_STATUS', 'MODULE_ORDER_TOTAL_GV_SORT_ORDER', 'MODULE_ORDER_TOTAL_GV_QUEUE', 'MODULE_ORDER_TOTAL_GV_INC_SHIPPING', 'MODULE_ORDER_TOTAL_GV_INC_TAX', 'MODULE_ORDER_TOTAL_GV_CALC_TAX', 'MODULE_ORDER_TOTAL_GV_TAX_CLASS', 'MODULE_ORDER_TOTAL_GV_CREDIT_TAX');
+		return array ('MODULE_ORDER_TOTAL_GV_STATUS', 'MODULE_ORDER_TOTAL_GV_SORT_ORDER', 'MODULE_ORDER_TOTAL_GV_QUEUE', 'MODULE_ORDER_TOTAL_GV_INC_SHIPPING', 'MODULE_ORDER_TOTAL_GV_INC_TAX', 'MODULE_ORDER_TOTAL_GV_CALC_TAX', 'MODULE_ORDER_TOTAL_GV_TAX_CLASS', 'MODULE_ORDER_TOTAL_GV_CREDIT_TAX', 'MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID');
 	}
 
 	function install() {
@@ -334,6 +342,7 @@ class ot_gv {
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_GV_CALC_TAX', 'None', '6', '7','xtc_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'), ', now())");
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('', 'MODULE_ORDER_TOTAL_GV_TAX_CLASS', '0', '6', '0', 'xtc_get_tax_class_title', 'xtc_cfg_pull_down_tax_classes(', now())");
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_GV_CREDIT_TAX', 'false', '6', '8','xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+   	xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('', 'MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID', '0', '9', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
 	}
 
 	function remove() {
