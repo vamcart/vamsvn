@@ -571,9 +571,9 @@ class rss_feed {
 				echo '      <author>' . $this->item['author'][$i] . '</author>' . "\n";
 			if ($this->item['category'][$i])
 				echo '      <category>' . CDATA_OPEN . $this->item['category'][$i] . CDATA_CLOSE . '</category>' . "\n";
-			if($this->item['enclosure'][$i] != 'NULL' && $this->item['enclosure'][$i] != '' && is_file(DIR_FS_CATALOG . DIR_WS_IMAGES . $this->item['enclosure'][$i])) {
-				$imageinfo = getimagesize(DIR_FS_CATALOG . DIR_WS_IMAGES . $this->item['enclosure'][$i]);
-				echo '      <enclosure url="' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . $this->item['enclosure'][$i] . '" length="' . filesize(DIR_FS_CATALOG . DIR_WS_IMAGES . $this->item['enclosure'][$i]) . '" type="' . $imageinfo['mime'] . '" />' . "\n";
+			if($this->item['enclosure'][$i] != 'NULL' && $this->item['enclosure'][$i] != '' && is_file(DIR_FS_CATALOG . DIR_WS_INFO_IMAGES . $this->item['enclosure'][$i])) {
+				$imageinfo = getimagesize(DIR_FS_CATALOG . DIR_WS_INFO_IMAGES . $this->item['enclosure'][$i]);
+				echo '      <enclosure url="' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $this->item['enclosure'][$i] . '" length="' . filesize(DIR_FS_CATALOG . DIR_WS_INFO_IMAGES . $this->item['enclosure'][$i]) . '" type="' . $imageinfo['mime'] . '" />' . "\n";
 			}
 			if ($this->item['guid'][$i])
 				echo '      <guid>' . $this->item['guid'][$i] . '</guid>' . "\n";
