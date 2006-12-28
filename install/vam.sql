@@ -911,7 +911,8 @@ CREATE TABLE specials (
   expires_date datetime,
   date_status_change datetime,
   status int(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (specials_id)
+  PRIMARY KEY (specials_id),
+  KEY idx_products_id (products_id)
 );
 
 DROP TABLE IF EXISTS featured;
