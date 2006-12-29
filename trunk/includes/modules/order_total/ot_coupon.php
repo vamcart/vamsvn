@@ -63,7 +63,7 @@ class ot_coupon {
 		if ($od_amount > 0) {
 			$order->info['total'] = $order->info['total'] - $od_amount;
 			$order->info['deduction'] = $od_amount;
-			$this->output[] = array ('title' => $this->title.':'.$this->coupon_code.':', 'text' => '<b><font color="ff0000">-'.$xtPrice->xtcFormat($od_amount, true).'</font></b>', 'value' => $od_amount); //Fred added hyphen
+			$this->output[] = array ('title' => $this->title.': '.$this->coupon_code.':', 'text' => '<b><font color="ff0000">-'.$xtPrice->xtcFormat($od_amount, true).'</font></b>', 'value' => $od_amount); //Fred added hyphen
 		}
 	}
 
