@@ -64,7 +64,7 @@ define('BUTTON_UPLOAD', 'Загрузить');
 define('BUTTON_IMPORT', 'Импорт');
 define('BUTTON_EXPORT', 'Экспорт');
 define('BUTTON_CONFIRM', 'Подтвердить');
-define('BUTTON_REPORT', 'Сообщить');
+define('BUTTON_REPORT', 'Отчёт');
 define('BUTTON_RELEASE', 'Активировать');
 define('BUTTON_NEW_LANGUAGE', 'Новый язык');
 define('BUTTON_NEW_COUNTRY', 'Новая страна');
