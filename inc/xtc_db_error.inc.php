@@ -22,7 +22,7 @@
 function xtc_db_error($query, $errno, $error) {
 // BOF db-error processing
    include(DIR_WS_LANGUAGES . 'russian/russian_db_error.php');
-   $msg = "\n" . 'MYSQL QUERY ERROR REPORT' . "\n" . " - " . date("d/m/Y H:m:s",time()) . "\n" . '---------------------------------------' . "\n";
+   $msg = "\n" . 'MYSQL ERROR REPORT' . "\n" . " - " . date("d/m/Y H:m:s",time()) . "\n" . '---------------------------------------' . "\n";
    $msg .= $errno . ' - ' . $error . "\n\n" . $query . "\n";
    $msg .= '---------------------------------------' . "\n";
    $msg .= 'Server Name   : ' . $_SERVER['SERVER_NAME'] . "\n";
