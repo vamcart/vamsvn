@@ -42,7 +42,7 @@
     $error = false;
 
 
-      if ( ($_SESSION['language'] != 'russian') && ($_SESSION['language'] != 'english') ) {
+      if ( ($_SESSION['language'] != 'russian') ) {
         $error = true;
 
         $messageStack->add('index', SELECT_LANGUAGE_ERROR);
@@ -306,11 +306,6 @@ if ($ok_message!='') {
                   <td width="192"><img src="images/icons/icon-rus.gif" width="30" height="16">
                     <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
                   </td>
-                </tr>
-                <tr>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo TEXT_ENGLISH; ?></font></td>
-                  <td><img src="images/icons/icon-eng.gif" width="30" height="16">
-                    <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'english'); ?> </td>
                 </tr>
               </table>
 
