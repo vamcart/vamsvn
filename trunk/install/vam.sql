@@ -1175,17 +1175,14 @@ DROP TABLE if EXISTS personal_offers_by_customers_status_3;
 
 
 #database Version
-INSERT INTO database_version(version) VALUES ('3.0.4.0');
+INSERT INTO database_version(version) VALUES ('1.0');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
 
 INSERT INTO shipping_status VALUES (1, 1, '3-4 дня', '');
-INSERT INTO shipping_status VALUES (1, 2, '3-4 Days', '');
 INSERT INTO shipping_status VALUES (2, 1, '1 неделя', '');
-INSERT INTO shipping_status VALUES (2, 2, '1 Week', '');
 INSERT INTO shipping_status VALUES (3, 1, '2 недели', '');
-INSERT INTO shipping_status VALUES (3, 2, '2 Weeks', '');
 
 # data
 
@@ -1194,17 +1191,9 @@ INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', '
 INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', 0, 1, '', 1, 3, 0);
 INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', 0, 1, '', 1, 4, 0);
 INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин VaM Shop<br /><br />Данный текст можно изменить в Админке - Инструменты - Информационные страницы<br /><br />', 0, 1, '', 0, 5, 0);
-INSERT INTO `content_manager` VALUES (6, 0, 0, '', 2, 'Shipping & Returns', 'Shipping & Returns', 'Put here your Shipping & Returns information.', 0, 1, '', 1, 1, 0);
-INSERT INTO `content_manager` VALUES (7, 0, 0, '', 2, 'Privacy Notice', 'Privacy Notice', 'Put here your Privacy Notice information.', 0, 1, '', 1, 2, 0);
-INSERT INTO `content_manager` VALUES (8, 0, 0, '', 2, 'Conditions of Use', 'Conditions of Use', 'Conditions of Use<br />Put here your Conditions of Use information. <br />1. Validity<br />2. Offers<br />3. Price<br />4. Dispatch and passage of the risk<br />5. Delivery<br />6. Terms of payment<br />7. Retention of title<br />8. Notices of defect, guarantee and compensation<br />9. Fair trading cancelling / non-acceptance<br />10. Place of delivery and area of jurisdiction<br />11. Final clauses', 0, 1, '', 1, 3, 0);
-INSERT INTO `content_manager` VALUES (9, 0, 0, '', 2, 'Impressum', 'Impressum', 'Put here your Company information.', 0, 1, '', 1, 4, 0);
-INSERT INTO `content_manager` VALUES (10, 0, 0, '', 2, 'Main page', 'Welcome', 'Sample text.<br /><br /> You can change it in Admin - Tools - Content manager<br /><br />', 0, 1, '', 0, 5, 0);
-INSERT INTO `content_manager` VALUES (11, 0, 0, '', 2, 'Sample page', 'Sample page', 'Sample text', 0, 1, '', 0, 6, 1);
-INSERT INTO `content_manager` VALUES (12, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', 0, 1, '', 0, 6, 1);
-INSERT INTO `content_manager` VALUES (13, 0, 0, '', 2, 'Contact us', 'Contact us', 'Contact us page', 0, 1, '', 1, 7, 0);
-INSERT INTO `content_manager` VALUES (14, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', 0, 1, '', 1, 7, 0);
-INSERT INTO `content_manager` VALUES (15, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', 0, 0, 'sitemap.php', 1, 8, 0);
-INSERT INTO `content_manager` VALUES (16, 0, 0, '', 2, 'Sitemap', 'Sitemap', '', 0, 0, 'sitemap.php', 1, 8, 0);
+INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', 0, 1, '', 0, 6, 1);
+INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', 0, 1, '', 1, 7, 0);
+INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', 0, 0, 'sitemap.php', 1, 8, 0);
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
 INSERT INTO address_format VALUES (1, '$firstname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
@@ -1833,21 +1822,14 @@ INSERT INTO currencies VALUES (1,'Доллар США','USD','$','',',','.','2','1.0000',
 
 
 INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'windows-1251');
-INSERT INTO languages VALUES (2,'English','en','icon.gif','english',2,'iso-8859-15');
 
 
 INSERT INTO orders_status VALUES ( '1', '1', 'Ожидает проверки');
-INSERT INTO orders_status VALUES ( '1', '2', 'Pending');
 INSERT INTO orders_status VALUES ( '2', '1', 'Ждём оплаты');
-INSERT INTO orders_status VALUES ( '2', '2', 'Waiting approval');
 INSERT INTO orders_status VALUES ( '3', '1', 'Выполняется');
-INSERT INTO orders_status VALUES ( '3', '2', 'Processing');
 INSERT INTO orders_status VALUES ( '4', '1', 'Доставляется');
-INSERT INTO orders_status VALUES ( '4', '2', 'Delivering');
 INSERT INTO orders_status VALUES ( '5', '1', 'Доставлен');
-INSERT INTO orders_status VALUES ( '5', '2', 'Delivered');
 INSERT INTO orders_status VALUES ( '6', '1', 'Отменён');
-INSERT INTO orders_status VALUES ( '6', '2', 'Canceled');
 
 
 
