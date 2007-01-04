@@ -8,7 +8,18 @@
   define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (WebMoney, Яндекс.Деньги, E-gold, MoneyMail, RuPay, INOCard)');
   
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Разрешить модуль roboxchange');
-  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Разрешить использование модуля roboxchange.<br><br><a href=../robox.txt target=_blank><font color=red>Как настраивать модуль</font></a>');
+  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Установка<br />
+1) Зарегистрируйтесь на сайте http://roboxchange.net как продавец, указав валюту, которая эквивалентна валюте по умолючанию Вашего магазина, затем отправьте заявку администрации на активацию Вашего логина, только после активации Вы можете пользоваться сервисом roboXchange.net.<br />
+2) На сайте http://roboxchange.net в разделе "Администрирование" укажите:<br />
+"пароль #1" любой<br />
+"пароль #2" любой<br />
+"Result URL" http://ваш-сайт/robox.php<br />
+"метод отсылки в Result URL" POST<br />
+"Success URL" http://ваш-сайт/checkout_success.php<br />
+"метод отсылки в Success URL" POST<br />
+"Fail URL" http://ваш-сайт/checkout_payment.php<br />
+"метод отсылки в Fail URL" POST<br />
+3) Укажите в Админке - Модули - Оплата, в настройках модуля: логин для входа в http://roboxchange.net и пароли 1 и 2.<br /><br />Разрешить использование модуля roboxchange.');
   define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_TITLE' , 'Разрешённые страны');
   define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
   define('MODULE_PAYMENT_ROBOXCHANGE_LOGIN_TITLE','Ваш логин');
