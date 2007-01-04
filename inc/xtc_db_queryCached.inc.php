@@ -64,12 +64,6 @@
 
    }
 
-//Start VaM db-error processing
-    if (!$result) {
-      xtc_db_error($query, mysql_errno(), mysql_error());
-    }
-//End VaM db-error processing
-
     return $result;
   }
 ?>
