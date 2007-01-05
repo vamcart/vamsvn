@@ -131,15 +131,15 @@
           $zone = xtc_db_fetch_array($zone_query);
           $zone_id = $zone['zone_id'];
         } else {
-          $error = true;
+          $error = false;
 
-          $messageStack->add('step6', ENTRY_STATE_ERROR_SELECT);
+//          $messageStack->add('step6', ENTRY_STATE_ERROR_SELECT);
         }
       } else {
         if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
-          $error = true;
+          $error = false;
 
-          $messageStack->add('step6', ENTRY_STATE_ERROR);
+//          $messageStack->add('step6', ENTRY_STATE_ERROR);
         }
       }
     }
