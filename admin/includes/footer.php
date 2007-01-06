@@ -25,30 +25,18 @@
   thus can not be removed, or can only be modified
   appropriately.
 
+  For more information please read the osCommerce
+  Copyright Policy at:
+
+  http://www.oscommerce.com/about/copyright
+
   Please leave this comment intact together with the
   following copyright announcement.
-  
-  Copyright announcement changed due to the permissions
-  from LG Hamburg from 28th February 2003 / AZ 308 O 70/03
-*/
-?>E-Commerce Engine Copyright &copy; 2006 <a href="http://vamshop.ru" target="_blank">VaM Shop</a><br>
-VaM Shop provides no warranty and is redistributable under the <a href="http://www.fsf.org/licenses/gpl.txt" target="_blank">GNU General Public License</a></td>
-  </tr>
-  <tr>
-    <td><?php echo xtc_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '5'); ?></td>
-  </tr>
-  <tr>
-    <td align="center" class="smallText">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a><br><a href="http://www.geckotribe.com/rss/carp/" target="_blank">Newsfeed display by CaRP</a></td>
-  </tr>
-</table>
-<?php
-/*
-  echo ('<font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Session Debug:</b><br>');
-  echo "<pre>";
-  print_r($_SESSION);
-  echo "</pre>";
-  echo '</font>';
-  echo xtc_session_id();
-
 */
 ?>
+E-Commerce Engine Copyright &copy; 2003 <a href="http://www.oscommerce.com" target="_blank">osCommerce</a> Portions Copyright &copy; 2003 - 2005 <a href="http://xt-commerce.com" target="_blank">xt:Commerce</a>, &copy; 2006-2007 <a href="http://vamshop.ru" target="_blank">VaM Shop</a><br />
+osCommerce provides no warranty and is redistributable under the <a href="http://www.fsf.org/licenses/gpl.txt" target="_blank">GNU General Public License</a><br>
+<a href="http://vamshop.ru" target="_blank">VaM Shop</a> provides no warranty except as to associated support contracts<br />which are limited by and to the Service Level Agreement.<br />
+  </td>
+  </tr>
+</table>
