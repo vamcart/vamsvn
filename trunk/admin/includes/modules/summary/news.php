@@ -50,6 +50,7 @@ CarpShow('http://vamshop.ru/support/modules/news/backendt.php?topicid=1');
 ?>
                 
                 
+<br /><a href="http://www.geckotribe.com/rss/carp/" target="_blank">Newsfeed display by CaRP</a>                
                 
                 </td>
               </tr>
