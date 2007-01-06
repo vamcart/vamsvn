@@ -68,9 +68,9 @@ font-color: #000000;
  }
 
  .boxCenter {
- border: 1px solid;
+ border: 0px solid;
  border-color: #cccccc;
- background: #F7F7F7;
+ background: #ffffff;
  }
 
 .pageHeading { font-family: Verdana, Arial, sans-serif; font-size: 18px; color: #000000; font-weight: bold; }
