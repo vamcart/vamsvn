@@ -669,4 +669,39 @@ define('MAX_DISPLAY_LATEST_NEWS_PAGE_DESC' , 'Количество новостей, отображаемых 
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_TITLE' , 'Новости кратко');
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_DESC' , 'Количество символов, отображаемых при предварительном просмотре новости');
 
+// Установка модулей
+
+define('DIR_FS_CIP_TITLE' , 'Contribution Directory');
+define('DIR_FS_CIP_DESC' , 'Location of contribution files');
+define('ALLOW_SQL_BACKUP_TITLE' , 'Backup Database Before Install Each CIP');
+define('ALLOW_SQL_BACKUP_DESC' , 'Choose TRUE and database will be backuped before each CIP install.<br />Do backup if database isn\'t huge or for debugging.');
+define('ALLOW_SQL_RESTORE_TITLE' , 'Restore Database When Remove Each CIP');
+define('ALLOW_SQL_RESTORE_DESC' , 'Choose TRUE and files will be restored from backup.<br />Backup doesn\'t contain changes made after CIP installation.<br />Use restoring only when build a new store or debug.');
+define('ALLOW_FILES_BACKUP_TITLE' , 'Backup Files Before Install Each CIP');
+define('ALLOW_FILES_BACKUP_DESC' , 'Choose TRUE and files will be backuped.<br>Backup contain only files which CIP will modify.<br />We recommend to do a files backup.');
+define('ALLOW_FILES_RESTORE_TITLE' , 'Restore Files When Remove Each CIP');
+define('ALLOW_FILES_RESTORE_DESC' , 'Choose TRUE and files will be restored from backup.<br />Backup doesn\'t contain changes made after CIP installation.<br />Use restoring only when build a new store or debug.');
+define('ALLOW_OVERWRITE_MODIFIED_TITLE' , 'Allow Overwrite Existing Modified Files');
+define('ALLOW_OVERWRITE_MODIFIED_DESC' , 'Choose TRUE and ADDFILE will overwrite even files with changes.<br />All changes will be lost. Use only for testing and debugging.');
+define('TEXT_LINK_FORUM_TITLE' , 'Forum Link');
+define('TEXT_LINK_FORUM_DESC' , 'URL for support forum at osCommerce.org');
+define('TEXT_LINK_CONTR_TITLE' , 'URL to the Contribution\'s page');
+define('TEXT_LINK_CONTR_DESC' , 'URL for contrib\'s page at osCommerce.org');
+define('ALWAYS_DISPLAY_REMOVE_BUTTON_TITLE' , 'Always Display Remove-Button');
+define('ALWAYS_DISPLAY_REMOVE_BUTTON_DESC' , 'Choose TRUE and REMOVE button will be displayed for both installed and NOT installed CIPs.');
+define('ALWAYS_DISPLAY_INSTALL_BUTTON_TITLE' , 'Always Display Install-Button');
+define('ALWAYS_DISPLAY_INSTALL_BUTTON_DESC' , 'Choose TRUE and INSTALL button will be displayed for both installed and NOT installed CIPs.');
+define('SHOW_PERMISSIONS_COLUMN_TITLE' , 'Show Permissions Column');
+define('SHOW_PERMISSIONS_COLUMN_DESC' , 'Choose TRUE and permissions column will be shown.');
+define('SHOW_USER_GROUP_COLUMN_TITLE' , 'Show User/Group Column');
+define('SHOW_USER_GROUP_COLUMN_DESC' , 'Choose TRUE and User/Group column will be shown.');
+define('SHOW_UPLOADER_COLUMN_TITLE' , 'Show Uploader Column');
+define('SHOW_UPLOADER_COLUMN_DESC' , 'Choose TRUE and Uploader column will be shown.');
+define('SHOW_UPLOADED_COLUMN_TITLE' , 'Show Date Uploaded Column');
+define('SHOW_UPLOADED_COLUMN_DESC' , 'Choose TRUE and Date Uploaded column will be shown.');
+define('SHOW_SIZE_COLUMN_TITLE' , 'Show Size Column');
+define('SHOW_SIZE_COLUMN_DESC' , 'Choose TRUE and Size column will be shown.');
+define('USE_LOG_SYSTEM_TITLE' , 'Use Log System');
+define('USE_LOG_SYSTEM_DESC' , 'Choose TRUE and all actions will be logged into file in backups folder.');
+
 ?>

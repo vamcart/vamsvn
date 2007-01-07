@@ -101,6 +101,7 @@ define('BOX_CONFIGURATION_19', 'xt:C Партнер');
 define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
 define('BOX_CONFIGURATION_24', 'Изменение цен');
+define('BOX_CONFIGURATION_25', 'Установка модулей');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
 define('BOX_PAYMENT', 'Модули оплаты');
@@ -159,6 +160,7 @@ define('BOX_PRODUCTS_VPE','Единица упаковки');
 define('BOX_CAMPAIGNS_REPORT','Отчёт по кампаниям');
 define('BOX_ORDERS_XSELL_GROUP','Группы сопутствующих товаров');
 define('BOX_SUPPORT_SITE','Сайт поддержки');
+define('BOX_CONTRIBUTION_INSTALLER','Установка модулей');
 
 define('TXT_GROUPS','<b>Группы</b>:');
 define('TXT_SYSTEM','Система');
