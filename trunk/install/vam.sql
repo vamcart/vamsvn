@@ -194,6 +194,7 @@ CREATE TABLE admin_access (
   latest_news int(1) NOT NULL default '0',
   recover_cart_sales int(1) NOT NULL default '0',
   featured int(1) NOT NULL default '0',
+  cip_manager int(1) NOT NULL default '0',
   
   PRIMARY KEY  (customers_id)
 );
@@ -293,6 +294,7 @@ CREATE TABLE configuration (
 DROP TABLE IF EXISTS configuration_group;
 CREATE TABLE configuration_group (
   configuration_group_id int NOT NULL auto_increment,
+  configuration_group_key varchar(255) NOT NULL,
   configuration_group_title varchar(255) NOT NULL,
   configuration_group_description varchar(255) NOT NULL,
   sort_order int(5) NULL,
@@ -1173,6 +1175,27 @@ DROP TABLE if EXISTS personal_offers_by_customers_status_1;
 DROP TABLE if EXISTS personal_offers_by_customers_status_2;
 DROP TABLE if EXISTS personal_offers_by_customers_status_3;
 
+#Contribution Installer Tables
+
+drop table if exists cip;
+create table cip (
+  cip_id int(11) not null auto_increment,
+  cip_folder_name varchar(255) not null ,
+  cip_downloads int(11) default '0' not null ,
+  cip_uploader_id int(11) default '0' not null ,
+  cip_installed int(1) default '0' not null ,
+  cip_ident varchar(255) not null ,
+  cip_version varchar(255) not null ,
+  PRIMARY KEY (cip_id)
+);
+
+drop table if exists cip_depend;
+create table cip_depend (
+  cip_ident varchar(255) not null ,
+  cip_ident_req varchar(255) not null ,
+  cip_req_type int(2) default '0' not null ,
+  PRIMARY KEY (cip_ident, cip_ident_req, cip_req_type)
+);
 
 #database Version
 INSERT INTO database_version(version) VALUES ('1.0');
@@ -1202,8 +1225,8 @@ INSERT INTO address_format VALUES (3, '$firstname $lastname$cr$streets$cr$city$c
 INSERT INTO address_format VALUES (4, '$firstname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
 INSERT INTO address_format VALUES (5, '$firstname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
 
-INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 # configuration_group_id 1
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'STORE_NAME', 'VaM Shop',  1, 1, NULL, '', NULL, NULL);
@@ -1543,29 +1566,48 @@ INSERT INTO configuration (configuration_id,  configuration_key, configuration_v
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_TAX', 'true', '24', '15', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ACTIVATE_COMMERCIAL_MARGIN', 'true', '24', '16', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 
-INSERT INTO configuration_group VALUES ('1', 'My Store', 'General information about my store', '1', '1');
-INSERT INTO configuration_group VALUES ('2', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
-INSERT INTO configuration_group VALUES ('3', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
-INSERT INTO configuration_group VALUES ('4', 'Images', 'Image parameters', '4', '1');
-INSERT INTO configuration_group VALUES ('5', 'Customer Details', 'Customer account configuration', '5', '1');
-INSERT INTO configuration_group VALUES ('6', 'Module Options', 'Hidden from configuration', '6', '0');
-INSERT INTO configuration_group VALUES ('7', 'Shipping/Packaging', 'Shipping options available at my store', '7', '1');
-INSERT INTO configuration_group VALUES ('8', 'Product Listing', 'Product Listing    configuration options', '8', '1');
-INSERT INTO configuration_group VALUES ('9', 'Stock', 'Stock configuration options', '9', '1');
-INSERT INTO configuration_group VALUES ('10', 'Logging', 'Logging configuration options', '10', '1');
-INSERT INTO configuration_group VALUES ('11', 'Cache', 'Caching configuration options', '11', '1');
-INSERT INTO configuration_group VALUES ('12', 'E-Mail Options', 'General setting for E-Mail transport and HTML E-Mails', '12', '1');
-INSERT INTO configuration_group VALUES ('13', 'Download', 'Downloadable products options', '13', '1');
-INSERT INTO configuration_group VALUES ('14', 'GZip Compression', 'GZip compression options', '14', '1');
-INSERT INTO configuration_group VALUES ('15', 'Sessions', 'Session options', '15', '1');
-INSERT INTO configuration_group VALUES ('16', 'Meta-Tags/Search engines', 'Meta-tags/Search engines', '16', '1');
-INSERT INTO configuration_group VALUES ('18', 'Vat ID', 'Vat ID', '18', '1');
-INSERT INTO configuration_group VALUES ('19', 'Google Conversion', 'Google Conversion-Tracking', '19', '1');
-INSERT INTO configuration_group VALUES ('20', 'Import/Export', 'Import/Export', '20', '1');
-INSERT INTO configuration_group VALUES ('21', 'Afterbuy', 'Afterbuy.de', '21', '1');
-INSERT INTO configuration_group VALUES ('22', 'Search Options', 'Additional Options for search function', '22', '1');
-INSERT INTO configuration_group VALUES ('23', 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '23', '1');
-INSERT INTO configuration_group VALUES ('24', 'Изменение цен', 'Настройки модуля изменения цен', '24', '1');
+#configuration_group_id 25, Установка модулей
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DIR_FS_CIP', '/home/localhost/www/ms2/admin/contributions', '25', '1', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALLOW_SQL_BACKUP', 'true', '25', '2', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALLOW_SQL_RESTORE', 'false', '25', '3', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALLOW_FILES_BACKUP', 'true', '25', '4', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALLOW_FILES_RESTORE', 'false', '25', '5', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALLOW_OVERWRITE_MODIFIED', 'false', '25', '6', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'TEXT_LINK_FORUM', 'http://forums.oscommerce.com/index.php?showtopic=', '25', '7', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'TEXT_LINK_CONTR', 'http://www.oscommerce.com/community', '25', '8', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALWAYS_DISPLAY_REMOVE_BUTTON', 'false', '25', '9', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ALWAYS_DISPLAY_INSTALL_BUTTON', 'false', '25', '10', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_PERMISSIONS_COLUMN', 'false', '25', '11', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_USER_GROUP_COLUMN', 'false', '25', '12', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_UPLOADER_COLUMN', 'false', '25', '13', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_UPLOADED_COLUMN', 'false', '25', '14', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_SIZE_COLUMN', 'false', '25', '15', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'USE_LOG_SYSTEM', 'false', '25', '16', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
+
+INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
+INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
+INSERT INTO configuration_group VALUES ('3', 'CG_MAXIMAL_VALUES', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
+INSERT INTO configuration_group VALUES ('4', 'CG_PICTURES_PARAMETERS', 'Images', 'Image parameters', '4', '1');
+INSERT INTO configuration_group VALUES ('5', 'CG_CUSTOMERS', 'Customer Details', 'Customer account configuration', '5', '1');
+INSERT INTO configuration_group VALUES ('6', 'CG_MODULES', 'Module Options', 'Hidden from configuration', '6', '0');
+INSERT INTO configuration_group VALUES ('7', 'CG_SHIPPING', 'Shipping/Packaging', 'Shipping options available at my store', '7', '1');
+INSERT INTO configuration_group VALUES ('8', 'CG_PRODUCTS', 'Product Listing', 'Product Listing    configuration options', '8', '1');
+INSERT INTO configuration_group VALUES ('9', 'CG_WAREHOUSE', 'Stock', 'Stock configuration options', '9', '1');
+INSERT INTO configuration_group VALUES ('10', 'CG_LOGGING', 'Logging', 'Logging configuration options', '10', '1');
+INSERT INTO configuration_group VALUES ('11', 'CG_CACHE', 'Cache', 'Caching configuration options', '11', '1');
+INSERT INTO configuration_group VALUES ('12', 'CG_EMAIL', 'E-Mail Options', 'General setting for E-Mail transport and HTML E-Mails', '12', '1');
+INSERT INTO configuration_group VALUES ('13', 'CG_DOWNLOAD', 'Download', 'Downloadable products options', '13', '1');
+INSERT INTO configuration_group VALUES ('14', 'CG_MY_GZIP', 'GZip Compression', 'GZip compression options', '14', '1');
+INSERT INTO configuration_group VALUES ('15', 'CG_MY_SESSIONS', 'Sessions', 'Session options', '15', '1');
+INSERT INTO configuration_group VALUES ('16', 'CG_META_TAGS', 'Meta-Tags/Search engines', 'Meta-tags/Search engines', '16', '1');
+INSERT INTO configuration_group VALUES ('18', 'CG_VAT_ID', 'Vat ID', 'Vat ID', '18', '1');
+INSERT INTO configuration_group VALUES ('19', 'CG_GOOGLE', 'Google Conversion', 'Google Conversion-Tracking', '19', '1');
+INSERT INTO configuration_group VALUES ('20', 'CG_IMPORT_EXPORT', 'Import/Export', 'Import/Export', '20', '1');
+INSERT INTO configuration_group VALUES ('21', 'CG_AFTER_BUY', 'Afterbuy', 'Afterbuy.de', '21', '1');
+INSERT INTO configuration_group VALUES ('22', 'CG_SEARCH', 'Search Options', 'Additional Options for search function', '22', '1');
+INSERT INTO configuration_group VALUES ('23', 'CG_YANDEX_MARKET', 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '23', '1');
+INSERT INTO configuration_group VALUES ('24', 'CG_QUICK_PRICE_UPDATES', 'Изменение цен', 'Настройки модуля изменения цен', '24', '1');
+INSERT INTO configuration_group VALUES ('25', 'CG_CIP_MANAGER', 'Установка модулей', 'Настройки модуля', '25', '1');
 
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (

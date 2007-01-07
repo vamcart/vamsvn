@@ -142,6 +142,8 @@
   define('FILENAME_RECOVER_CART_SALES', 'recover_cart_sales.php');
   define('FILENAME_FEATURED', 'featured.php');
   define('FILENAME_CACHE', 'cache.php');
+  define('CONTENT_CIP_MANAGER','cip_manager');
+  define('FILENAME_CIP_MANAGER',CONTENT_CIP_MANAGER.'.php');
 
   // define the database table names used in the project
   define('TABLE_ADDRESS_BOOK', 'address_book');
@@ -224,6 +226,7 @@
   define('TABLE_LATEST_NEWS', 'latest_news');
   define('TABLE_SCART', 'scart');
   define('TABLE_FEATURED', 'featured');
+  define('TABLE_CIP_DEPEND', 'cip_depend');
 
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');

@@ -255,6 +255,8 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
 xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'CONTACT_US_EMAIL_ADDRESS'");
 xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_SUPPORT_ADDRESS'");
 
+xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_FS_CATALOG ."admin/contributions' WHERE configuration_key = 'DIR_FS_CIP'");
+
 
 
 	      xtc_redirect(xtc_href_link('install/step7.php', '', 'NONSSL'));
