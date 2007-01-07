@@ -6,6 +6,8 @@ Made by Imrich Schindler <ischindl at progis.sk>
 Released under GPL
 **/
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_requirements extends ContribInstallerBaseTag {
     var $tag_name='requirements';
 	var $req = array();

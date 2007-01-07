@@ -45,6 +45,8 @@ also you could use another syntaxs. This code should work faster but I do not te
 
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_sql extends ContribInstallerBaseTag {
     var $tag_name='sql';
 

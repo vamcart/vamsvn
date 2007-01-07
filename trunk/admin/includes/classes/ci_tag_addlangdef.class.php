@@ -5,6 +5,8 @@ Made by Imrich Scindler
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_addlangdef extends ContribInstallerBaseTag {
     var $tag_name='addlangdef';
     var $encod; //Array with lang encodings.

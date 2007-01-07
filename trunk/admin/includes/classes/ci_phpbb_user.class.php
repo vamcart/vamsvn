@@ -12,6 +12,9 @@ $phpbb_user->get_session_logged_in();
 $phpbb_user->get_session_user_id();
 $phpbb_user->get_user_rank()==1 means "Site Admin"
 */
+
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class phpbb_user {
     var $path_to_phpbb;
     var $session_id;

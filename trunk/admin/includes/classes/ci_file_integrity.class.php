@@ -8,6 +8,7 @@ Support:
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 
     function save_md5_for_all_files() {
         //This code run once on self install. Keeps more time to run (about 2000 files prosessed)

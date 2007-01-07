@@ -10,6 +10,8 @@ Support:
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class ContribInstallerBaseTag {
     var $contrib; //contrib name
     var $tag_name; //name of the tag used in xml-file

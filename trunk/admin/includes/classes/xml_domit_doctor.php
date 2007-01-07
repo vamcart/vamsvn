@@ -9,6 +9,8 @@
 * DOMIT! is Free Software
 **/
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 /**
 * A (static) class containing utilities for repairing malformed XML
 *

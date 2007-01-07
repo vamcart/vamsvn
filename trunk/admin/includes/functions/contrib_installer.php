@@ -1,5 +1,7 @@
 <?php
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
     // SQL begin ===========================================================
     function cip_db_query($query, $report='no', $link = 'db_link') {
         //     $report manage a way of error reporting and can be:

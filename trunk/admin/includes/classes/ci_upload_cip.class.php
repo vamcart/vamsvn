@@ -9,6 +9,8 @@
   Released under the GNU General Public License
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class upload_cip {
     var $file, $filename, $destination, $permissions, $extensions, $tmp_filename;
 
