@@ -8,6 +8,8 @@ Support:
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_description extends ContribInstallerBaseTag {
     function Tc_description($contrib='', $id='', $xml_data='', $dep='') {
     	$this->tag_name='description';

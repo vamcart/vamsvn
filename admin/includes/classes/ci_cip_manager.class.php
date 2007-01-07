@@ -7,6 +7,8 @@
   Released under the GNU General Public License
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class cip_manager {
     var $file_writeable;
     var $current_path;

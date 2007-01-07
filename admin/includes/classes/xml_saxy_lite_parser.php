@@ -11,6 +11,8 @@
 * SAXY is Free Software
 **/
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 if (!defined('SAXY_INCLUDE_PATH')) {
 	define('SAXY_INCLUDE_PATH', (dirname(__FILE__) . "/"));
 }

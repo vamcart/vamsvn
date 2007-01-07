@@ -25,6 +25,8 @@
 // $Id: pclzip.lib.php,v 1.1.1.1 2006/08/22 06:27:21 cip_net_ua Exp $
 // --------------------------------------------------------------------------------
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
   // ----- Constants
   define( 'PCLZIP_READ_BLOCK_SIZE', 2048 );
   

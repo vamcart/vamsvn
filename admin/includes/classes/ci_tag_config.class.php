@@ -8,6 +8,8 @@ Support:
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_config extends ContribInstallerBaseTag {
 	var $tag_name = 'config';
 	// Class Constructor

@@ -6,6 +6,8 @@ Made by Imrich Schindler
 Released under GPL
 */
 
+defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+
 class Tc_addadminmenu extends ContribInstallerBaseTag {
 	var $tag_name = 'addadminmenu';
 //	var $data;
