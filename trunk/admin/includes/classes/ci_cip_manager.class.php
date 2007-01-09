@@ -745,7 +745,11 @@ class cip_manager {
                                     'http://forums.oscommerce.com/index.php?showtopic=').$value. '">' . CIP_MANAGER_SUPPORT_FORUM . '</a></b>');
                 }
                 $contents[] = array('text' => '<hr><h3>' . CIP_MANAGER_INFO . '</h3>');
-            } else $contents[]=array('text'=>'<b>'.$key.'</b>: '.nl2br($value));
+            } else 
+            
+            		if (function_exists('iconv') && 'UTF-8' != strtoupper($charset)) $value = iconv("UTF-8", 'cp1251', $value);
+            
+            $contents[]=array('text'=>'<b>'.$key.'</b>: '.nl2br($value));
         }
         return $contents;
     }
