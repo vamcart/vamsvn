@@ -44,6 +44,9 @@ if (file_exists('includes/local/configure.php')) {
 	include ('includes/configure.php');
 }
 
+// Redirect to install if configure.php is empty
+if (defined('DIR_WS_INCLUDES') === false) header('Location: /install');
+
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
