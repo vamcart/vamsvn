@@ -186,8 +186,8 @@ class cip_manager {
                     xtc_href_link($this->script_name(), $onclick_link).'\'"><a
                     href="'.$link.'">'.$icon.'&nbsp;</a>';
             if (is_object($cip)) {
-                if ($cip->is_installed())     $output.='<abbr title="CIP have been INSTALLED"><b>'.$contents[$i]['name'].'</b></abbr>';
-                else    $output.='<abbr title="CIP have NOT been installed">'.$contents[$i]['name'].'</abbr>';
+                if ($cip->is_installed())     $output.='<abbr title="' . CIP_MANAGER_INSTALLED . '"><b>'.$contents[$i]['name'].'</b></abbr>';
+                else    $output.='<abbr title="' . CIP_MANAGER_NOT_INSTALLED .'">'.$contents[$i]['name'].'</abbr>';
             } else    $output.=$contents[$i]['name'];
             $output.='</td>'."\n";
             //=====================================================
@@ -355,8 +355,7 @@ class cip_manager {
 
                 $contents = array('form' => xtc_draw_form('file', $this->script_name(), 'action=processuploads', 'post', 'enctype="multipart/form-data"'));
                 $contents[] = array('text' => TEXT_UPLOAD_INTRO);
-                $contents[]=array('text'=>'Remember that you could upload <b>only ZIPs</b>,
-                                    <br><b>no more than 500Kb</b><br>and <b>only Contrib Installer Packages! :-)</b>.');
+                $contents[]=array('text'=> CIP_MANAGER_UPLOAD_NOTE);
 
                 $file_upload = '';
                 for ($i=1; $i<11; $i++) $file_upload .= $i. (($i>9) ? '&nbsp;' :  '&nbsp;&nbsp;&nbsp;').xtc_draw_file_field('file_' . $i) . '<br>';
@@ -395,7 +394,7 @@ class cip_manager {
                         }
                         $array=$this->cip_description($description->data, ($phpbb_user->forum_exists() ? $cip->get_uploader_id() : ''), $topic_id);
                         foreach ($array as $value)     $contents[]=$value;
-                    } else $contents[]=array('text'=>'<font style="color:red;">'.CONFIG_FILENAME.' does not exists!!!</font>');
+                    } else $contents[]=array('text'=>'<font style="color:red;">'.CONFIG_FILENAME. '' .CIP_MANAGER_XML_NOT_FOUND . '</font>');
                 }
 
 
@@ -403,7 +402,7 @@ class cip_manager {
                 //General Info
                 //=============
 
-                $contents[] = array('text' =>(count($contents)>0 ? '<hr>': '').'<h3>General Info: </h3>');
+                $contents[] = array('text' =>(count($contents)>0 ? '<hr>': '').'<h3>' . CIP_MANAGER_GENERAL_INFO . '</h3>');
                 $contents[] = array('text' =>'<b>'.TEXT_FILE_NAME.'</b> '.$fInfo->name);
                 if (!$fInfo->is_dir)    $contents[] = array('text' =>'<b>'.TEXT_FILE_SIZE.' </b>'.number_format($fInfo->size).' bytes');
                 $contents[] = array('text' =>'<b>'.TEXT_LAST_MODIFIED.'</b> '.
@@ -420,9 +419,9 @@ class cip_manager {
                 //PrintArray($fInfo);
                 if($fInfo->ext=='gif' || $fInfo->ext=='jpg' || $fInfo->ext=='png') {
                     $img_path=HTTP_SERVER.DIR_WS_ADMIN. str_replace(DIR_FS_ADMIN, '',  $this->current_path).'/'.$fInfo->name;
-                    $contents[] = array('text' => '<hr><h3>Image Preview: </h3><center>
-                                                                        <a href="'.$img_path.'" title="Click to enlarge" target="_blank">'.
-                                                                        xtc_image($img_path, 'Click to enlarge', 250, 250).'</a></center><br>');
+                    $contents[] = array('text' => '<hr><h3>' . CIP_MANAGER_IMAGE_PREVIEW . '</h3><center>
+                                                                        <a href="'.$img_path.'" title="' . CIP_MANAGER_ENLARGE . '" target="_blank">'.
+                                                                        xtc_image($img_path, CIP_MANAGER_ENLARGE, 250, 250).'</a></center><br>');
                 }//end of Image
                 //==================================================
             }
@@ -537,7 +536,7 @@ class cip_manager {
         $cip= new CIP($this->cip);
         $cip->install();
         if ($cip->get_error())    return;
-        $message->add("CIP was <b>installed!</b>", 'installed');
+        $message->add(CIP_MANAGER_INSTALLED, 'installed');
 		    $cips = $this->getDependedCips($cip);
         if (is_array($cips) and count($cips)>0 ){
           foreach($cips as $cp){
@@ -559,7 +558,7 @@ class cip_manager {
         $cip= new CIP($this->cip);
         $cip->remove();
         if ($cip->get_error())    return;
-        $message->add("CIP was <b>removed.</b>", 'removed');
+        $message->add(CIP_MANAGER_REMOVED, 'removed');
         $cips = $this->getDependedCips($cip);
         if (is_array($cips) and count($cips)>0 ){
           foreach($cips as $cp){
@@ -721,14 +720,14 @@ class cip_manager {
 
 
     function cip_description($data='', $uploader_id='', $topic_id='') {
-        $contents[] = array('text' =>'<h3>Support: </h3>');
+        $contents[] = array('text' =>'<h3>' . CIP_MANAGER_SUPPORT . '</h3>');
         if ($uploader_id) {
-            $contents[] = array('text' =>'<b>&#8226;&nbsp;</b>Uploader: <b><a href="'.HTTP_SERVER.
+            $contents[] = array('text' =>'<b>&#8226;&nbsp;</b>' . CIP_MANAGER_UPLOADER . '<b><a href="'.HTTP_SERVER.
                 '/forum/profile.php?mode=viewprofile&u='.$uploader_id.
-                '" title="View Uploader\'s Profile">'.$this->get_username($uploader_id).'</a></b>');
+                '">'.$this->get_username($uploader_id).'</a></b>');
         }
         if ($topic_id) {
-            $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'.HTTP_SERVER. '/forum/viewtopic.php?t='.$topic_id.'" title="Link to forum where you can get a support">Support Forum for CIP on CIP.NET.UA</a></b><br>');
+            $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'.HTTP_SERVER. '/forum/viewtopic.php?t='.$topic_id.'">' . CIP_MANAGER_SUPPORT_FORUM_DEVELOPER . '</a></b><br>');
         }
 
         if (!$data)    return $contents;
@@ -738,14 +737,14 @@ class cip_manager {
             if ($key=='contrib_ref') {
                 if ($value) {
                 $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (defined(TEXT_LINK_CONTR) ? TEXT_LINK_CONTR :
-                                        'http://www.oscommerce.com/community/contributions,'). $value.'" title="Contributions official page on osCommerce site">Contrib\'s Page on osCommerce.org</a></b>');
+                                        'http://www.oscommerce.com/community/contributions,'). $value.'" >' . CIP_MANAGER_CONTRIBUTION_PAGE . '</a></b>');
                 }
             } elseif ($key=='forum_ref') {
                 if ($value) {
                 $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (defined(TEXT_LINK_FORUM) ? TEXT_LINK_FORUM :
-                                    'http://forums.oscommerce.com/index.php?showtopic=').$value. '" title="Link to forum where you can get a support">Support Forum for contrib on osCommerce.org</a></b>');
+                                    'http://forums.oscommerce.com/index.php?showtopic=').$value. '">' . CIP_MANAGER_SUPPORT_FORUM . '</a></b>');
                 }
-                $contents[] = array('text' => '<hr><h3>Contrib Info: </h3>');
+                $contents[] = array('text' => '<hr><h3>' . CIP_MANAGER_INFO . '</h3>');
             } else $contents[]=array('text'=>'<b>'.$key.'</b>: '.nl2br($value));
         }
         return $contents;
