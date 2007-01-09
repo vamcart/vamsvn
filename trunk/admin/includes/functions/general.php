@@ -1708,6 +1708,33 @@ function xtc_getDownloads() {
 	return $files;
 }
 
+	function xtc_getFiles($startdir, $ext=array('.zip', '.rar', '.png', '.gif', '.mp3', '.jpg', '.exe', '.pdf', '.tar.gz', '.tar.bz2', '.7z', '.uha'), $dir_only=false, $subdir = '') {
+//		echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
+		if(!is_array($ext)) $ext=array();
+		$dirname = $startdir . $subdir;
+		if ($dir= opendir($dirname)){
+			while ($file = readdir($dir)) {
+				if(substr($file, 0, 1) != '.') {
+					if (is_file($dirname.$file) && !$dir_only) {
+						if (in_array(substr($file, strrpos($file, '.')), $ext)) {
+//							echo '&nbsp;&nbsp;File: ' . $subdir.$file . '<br />';
+							$files[]=array('id' => $subdir.$file,
+														 'text' => $subdir.$file);
+						}
+					} elseif (is_dir($dirname.$file)) {
+						if($dir_only) {
+							$files[]=array('id' => $subdir.$file.'/',
+														 'text' => $subdir.$file.'/');
+						}
+						$files = xtc_array_merge($files, xtc_getFiles($startdir, $ext, $dir_only, $subdir.$file.'/'));
+					}
+				}
+			}
+			closedir($dir);
+		}
+		return($files);
+	}
+	
 function xtc_try_upload($file = '', $destination = '', $permissions = '777', $extensions = '') {
 	$file_object = new upload($file, $destination, $permissions, $extensions);
 	if ($file_object->filename != '')
