@@ -43,5 +43,20 @@ define('ICON_INSTALLED_CURRENT_FOLDER', 'Текущая папка была установлена');
 //Uploader:
 define('ERROR_FILE_ALREADY_EXISTS','Файл %s  <b>уже существует</b>.');
 
+define('CIP_MANAGER_SUPPORT','Поддержка: ');
+define('CIP_MANAGER_UPLOADER','Модуль добавил: ');
+define('CIP_MANAGER_SUPPORT_FORUM','Форум поддержки данного модуля на официальном сайте VaM Shop');
+define('CIP_MANAGER_CONTRIBUTION_PAGE','Официальная страница модуля');
+define('CIP_MANAGER_SUPPORT_FORUM_DEVELOPER','Форум поддержки данного модуля на сайте разработчика');
+define('CIP_MANAGER_INFO','Информация: ');
+define('CIP_MANAGER_INSTALLED','Модуль установлен');
+define('CIP_MANAGER_NOT_INSTALLED','Модуль не был установлен');
+define('CIP_MANAGER_UPLOAD_NOTE','Вы можете загружать <b>только ZIP архивы</b>, <br><b>не более 500Kb</b><br>и <b>только архивы с модулями для VaM Shop</b>.');
+define('CIP_MANAGER_XML_NOT_FOUND',' не найден!');
+define('CIP_MANAGER_GENERAL_INFO','Основная информация: ');
+define('CIP_MANAGER_IMAGE_PREVIEW','Картинка: ');
+define('CIP_MANAGER_ENLARGE','Увеличить');
+define('CIP_MANAGER_INSTALLED','Модуль <b>установлен!</b>');
+define('CIP_MANAGER_REMOVED','Модуль <b>удалён!</b>');
 
 ?>
