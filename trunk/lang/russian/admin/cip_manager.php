@@ -7,45 +7,41 @@
   Released under the GNU General Public License
 */
 
-define('HEADING_TITLE', 'CIP Manager');
+define('HEADING_TITLE', 'Установка модулей');
 
-define('TABLE_HEADING_FILENAME', 'Name');
-define('TABLE_HEADING_SIZE', 'Size');
-define('TABLE_HEADING_PERMISSIONS', 'Permissions');
-define('TABLE_HEADING_USER', 'User');
-define('TABLE_HEADING_GROUP', 'Group');
-define('TABLE_HEADING_UPLOADED', 'Uploaded');
-define('TABLE_HEADING_ACTION', 'Action');
+define('TABLE_HEADING_FILENAME', 'Название');
+define('TABLE_HEADING_SIZE', 'Размер');
+define('TABLE_HEADING_PERMISSIONS', 'Права доступа');
+define('TABLE_HEADING_USER', 'Пользователь');
+define('TABLE_HEADING_GROUP', 'Группа');
+define('TABLE_HEADING_UPLOADED', 'Загружен');
+define('TABLE_HEADING_ACTION', 'Действие');
 
-define('TEXT_INFO_HEADING_UPLOAD', 'Upload');
-define('TEXT_FILE_NAME', 'Filename:');
-define('TEXT_FILE_SIZE', 'Size:');
-define('TEXT_FILE_CONTENTS', 'Contents:');
-define('TEXT_LAST_MODIFIED', 'Last Modified:');
-define('TEXT_NEW_FOLDER', 'New Folder');
-define('TEXT_NEW_FOLDER_INTRO', 'Enter the name for the new folder:');
-define('TEXT_DELETE_INTRO', 'Are you sure you want to delete this file?');
-define('TEXT_UPLOAD_INTRO', 'Please select the files to upload.');
+define('TEXT_INFO_HEADING_UPLOAD', 'Загрузить');
+define('TEXT_FILE_NAME', 'Имя файла:');
+define('TEXT_FILE_SIZE', 'Размер:');
+define('TEXT_FILE_CONTENTS', 'Содержимое:');
+define('TEXT_LAST_MODIFIED', 'Последние изменения:');
 
-define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Error: I can not write to this directory. Please set the right user permissions on: %s');
-define('ERROR_FILE_NOT_WRITEABLE', 'Error: I can not write to this file. Please set the right user permissions on: %s');
-define('ERROR_DIRECTORY_NOT_REMOVEABLE', 'Error: I can not remove this directory. Please set the right user permissions on: %s');
-define('ERROR_FILE_NOT_REMOVEABLE', 'Error: I can not remove this file. Please set the right user permissions on: %s');
-define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Error: Directory does not exist: %s');
+define('TEXT_DELETE_INTRO', 'Вы действительно хоите удалить данный файл?');
+define('TEXT_UPLOAD_INTRO', 'Выберите файл для загрузки.');
+
+define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данную директорию. Установите правильные права доступа на: %s');
+define('ERROR_FILE_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данный файл. Установите правильные права доступа на: %s');
 //======================
-define('ICON_UNZIP', 'Unpack');
-define('ICON_ZIP', 'Pack');
-define('ICON_EDIT', 'Edit');
-define('ICON_INSTALL', 'Install');
-define('ICON_REMOVE', 'Remove');
-define('ICON_WITHOUT_DATA_REMOVING', 'without data removing');
+define('ICON_UNZIP', 'Рахархивировать');
+define('ICON_ZIP', 'Архивировать');
+define('ICON_EDIT', 'Редактировать');
+define('ICON_INSTALL', 'Установить');
+define('ICON_REMOVE', 'Удалить модуль');
+define('ICON_DELETE_MODULE', 'Удалить архив с модулем из магазина');
+define('ICON_WITHOUT_DATA_REMOVING', 'сохранив изменения, произведённые модулем');
 define('ICON_EMPTY', '');
 
-define('ICON_INSTALLED_CURRENT_FOLDER', 'Current folder of CIP that has been installed');
-define('ICON_INSTALLED_CURRENT_FOLDER', 'folder of CIP that has been installed');
+define('ICON_INSTALLED_CURRENT_FOLDER', 'Текущая папка была установлена');
 
 //Uploader:
-define('ERROR_FILE_ALREADY_EXISTS','File %s  <b>already exists</b>.');
+define('ERROR_FILE_ALREADY_EXISTS','Файл %s  <b>уже существует</b>.');
 
 
 ?>

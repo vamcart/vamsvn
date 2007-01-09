@@ -207,9 +207,9 @@ class cip_manager {
             $cip_buttons=array();
             if (!$contents[$i]['is_dir']) {
 //DOWNLOAD Button
-                $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS.'download.gif', ICON_FILE_DOWNLOAD)]=
-                    xtc_href_link($this->script_name(), 'action=download&filename='.
-                    urlencode($contents[$i]['name']));
+//                $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS.'download.gif', ICON_FILE_DOWNLOAD)]=
+//                    xtc_href_link($this->script_name(), 'action=download&filename='.
+//                    urlencode($contents[$i]['name']));
 //EDIT Button
                 if (!$this->cip_net_ua() || $this->is_admin()) {
                     if($contents[$i]['ext']!='zip') {
@@ -232,8 +232,8 @@ class cip_manager {
                                 xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1');
                             }
 //UNPACK Button
-                        $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS.'unpack.gif', ICON_UNZIP)]=
-                            xtc_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']) . '&action=unpack');
+//                        $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS.'unpack.gif', ICON_UNZIP)]=
+//                            xtc_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']) . '&action=unpack');
                         }
                     }
                 }
@@ -253,8 +253,8 @@ class cip_manager {
                             xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1');
                     }
 //Pack Button
-                    $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'pack.gif', ICON_ZIP)]=
-                        xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=pack');
+//                    $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'pack.gif', ICON_ZIP)]=
+//                        xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=pack');
                 }
             }
 //Delete Button
@@ -262,7 +262,7 @@ class cip_manager {
                 if ($contents[$i]['name']!= '..' and $this->current_path==DIR_FS_CIP
                     or ($this->current_path !=DIR_FS_CIP and !$contents[$i]['is_dir']))
                 {
-                    $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE)]=
+                    $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE_MODULE)]=
                         xtc_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']).'&action=delete');
                 }
             }
