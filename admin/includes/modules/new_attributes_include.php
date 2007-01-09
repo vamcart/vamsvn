@@ -114,7 +114,7 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
             // Download function start
             if(DOWNLOAD_ENABLED == 'true') {
 
-                $file_list = xtc_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)),xtc_getFiles(DIR_FS_CATALOG.'download/'));
+                $file_list = xtc_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),xtc_getFiles(DIR_FS_CATALOG.'download/'));
 
                 echo "<tr>";
 
