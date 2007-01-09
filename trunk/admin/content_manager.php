@@ -281,7 +281,6 @@ if ($select_file=='default') {
 <?php
 if (!$_GET['action']) {
 ?>
-<div class="pageHeading"><br /><?php echo HEADING_CONTENT; ?><br /></div>
 <div class="main"><?php echo CONTENT_NOTE; ?></div>
  <?php
  xtc_spaceUsed(DIR_FS_CATALOG.'media/content/');
