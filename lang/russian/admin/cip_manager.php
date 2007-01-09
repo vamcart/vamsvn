@@ -23,7 +23,7 @@ define('TEXT_FILE_SIZE', 'Размер:');
 define('TEXT_FILE_CONTENTS', 'Содержимое:');
 define('TEXT_LAST_MODIFIED', 'Последние изменения:');
 
-define('TEXT_DELETE_INTRO', 'Вы действительно хоите удалить данный файл?');
+define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данный файл?');
 define('TEXT_UPLOAD_INTRO', 'Выберите файл для загрузки.');
 
 define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данную директорию. Установите правильные права доступа на: %s');
