@@ -53,7 +53,7 @@ define('CIP_MANAGER_INSTALLED','Модуль установлен');
 define('CIP_MANAGER_NOT_INSTALLED','Модуль не был установлен');
 define('CIP_MANAGER_UPLOAD_NOTE','Вы можете загружать <b>только ZIP архивы</b>, <br><b>не более 500Kb</b><br>и <b>только архивы с модулями для VaM Shop</b>.');
 define('CIP_MANAGER_XML_NOT_FOUND',' не найден!');
-define('CIP_MANAGER_GENERAL_INFO','Информация: ');
+define('CIP_MANAGER_GENERAL_INFO','Информация о файле: ');
 define('CIP_MANAGER_IMAGE_PREVIEW','Картинка: ');
 define('CIP_MANAGER_ENLARGE','Увеличить');
 define('CIP_MANAGER_INSTALLED','Модуль <b>установлен!</b>');
