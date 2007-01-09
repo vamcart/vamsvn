@@ -35,7 +35,7 @@ $file_list = xtc_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELEC
 	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.xtc_draw_file_field('products_image').'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.xtc_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('upload_dir_image_0',$dir_list, dirname($pInfo->products_image).'/');
-	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('get_file_image_0',$file_list);
+	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('get_file_image_0',$file_list,$pInfo->products_image);
 // EOF Add existing image
 	if ($pInfo->products_image != '') {
 		echo '</tr><tr><td align="center" class="main" valign="middle">'.xtc_draw_selection_field('del_pic', 'checkbox', $pInfo->products_image).' '.TEXT_DELETE.'</td></tr></table>';
@@ -57,7 +57,7 @@ $file_list = xtc_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELEC
 			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br />'.xtc_draw_file_field('mo_pics_'.$i).'<br />'.xtc_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].xtc_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . xtc_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list, dirname($mo_images[$i]["image_name"]).'/');
-	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list);
+	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . xtc_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list,$mo_images[$i]["image_name"]);
 // EOF Add existing image
 			if (isset ($mo_images[$i]["image_name"])) {
 				echo '</tr><tr><td align="center" class="main" valign="middle">'.xtc_draw_selection_field('del_mo_pic[]', 'checkbox', $mo_images[$i]["image_name"]).' '.TEXT_DELETE.'</td></tr></table>';
