@@ -127,10 +127,8 @@ $info=$cip_manager->draw_info();
   <tr>
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-          <tr>
-            <td width="100%" class="pageHeading"><span class="smallText"><?php
-                echo $cip_manager->draw_chain();?></span></td>
-      </tr><?php
+
+<?php
 if ($cip_manager->action()=='edit') {
         ?>
        <tr><td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10');?></td></tr>
