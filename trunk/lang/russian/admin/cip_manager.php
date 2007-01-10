@@ -33,7 +33,7 @@ define('ERROR_DIRECTORY_NOT_REMOVEABLE', 'Ошибка: Не могу удалить данную директо
 define('ERROR_FILE_NOT_REMOVEABLE', 'Ошибка: Не могу удалить данный файл. Установите правильные права доступа на: %s');
 define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория не найдена: %s');
 //======================
-define('ICON_UNZIP', 'Рахархивировать');
+define('ICON_UNZIP', 'Разархивировать');
 define('ICON_ZIP', 'Архивировать');
 define('ICON_EDIT', 'Редактировать');
 define('ICON_INSTALL', 'Установить');
