@@ -120,7 +120,7 @@ define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(без http://)');
 define('TEXT_PRODUCTS_PRICE', 'Цена товара:');
 define('TEXT_PRODUCTS_WEIGHT', 'Вес товара:');
 define('TEXT_PRODUCTS_EAN','Штрих-код:');
-define('TEXT_PRODUCT_LINKED_TO','Ссылкается на:');
+define('TEXT_PRODUCT_LINKED_TO','Ссылается на:');
 
 define('TEXT_DELETE', 'Удалить');
 
