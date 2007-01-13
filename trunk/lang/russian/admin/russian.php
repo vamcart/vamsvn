@@ -155,7 +155,7 @@ define('BOX_GV_ADMIN_MAIL', 'ќтправить сертификат');
 define('BOX_GV_ADMIN_SENT', 'ќтправленные сертификаты');
 define('BOX_COUPON_ADMIN','”правление купонами');
 define('BOX_TOOLS_BLACKLIST',' редитные карты (CC) черный список');
-define('BOX_IMPORT','»мпорт/Ёкспорт');
+define('BOX_IMPORT','CSV импорт/Ёкспорт');
 define('BOX_PRODUCTS_VPE','≈диница упаковки');
 define('BOX_CAMPAIGNS_REPORT','ќтчЄт по кампани€м');
 define('BOX_ORDERS_XSELL_GROUP','√руппы сопутствующих товаров');

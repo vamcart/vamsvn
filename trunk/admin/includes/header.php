@@ -348,6 +348,8 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['easypopulate'] == '1')) echo '<li><span><img src="images/icons/16x16/file.png" border="0" alt=""></span><a href="' . xtc_href_link(FILENAME_EASYPOPULATE, '', 'NONSSL') . '">' . BOX_EASY_POPULATE . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['csv_backend'] == '1')) echo '<li><span><img src="images/icons/16x16/file.png" border="0" alt=""></span><a href="' . xtc_href_link(FILENAME_CSV_BACKEND, '', 'NONSSL') . '">' . BOX_IMPORT . '</a></li>' . "\n";
+
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['quick_updates'] == '1')) echo '<li><span><img src="images/icons/16x16/calculator.png" border="0" alt=""></span><a href="' . xtc_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '">' . BOX_CATALOG_QUICK_UPDATES . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<li><span><img src="images/icons/16x16/people.png" border="0" alt=""></span><a href="' . xtc_href_link(FILENAME_RECOVER_CART_SALES) . '">' . BOX_TOOLS_RECOVER_CART . '</a></li>' . "\n";
