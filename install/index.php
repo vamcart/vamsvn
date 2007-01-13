@@ -166,6 +166,12 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/backups/<br />';
  }
 
+    if (!is_writeable(DIR_FS_CATALOG . 'admin/contributions/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/contributions/<br />';
+ }
+
     if (!is_writeable(DIR_FS_CATALOG . 'tmp/')) {
     $error_flag=true;
     $folder_flag=true;
