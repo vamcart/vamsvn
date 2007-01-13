@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-define('HEADING_TITLE', 'Настройка модуля Excel импорт/экспорт');
+define('HEADING_TITLE', 'Excel импорт/экспорт');
 define('EASY_VERSION_A', 'Excel импорт/экспорт ');
 define('EASY_DEFAULT_LANGUAGE', '  -  Язык по умолчанию - ');
 define('EASY_UPLOAD_FILE', 'Файл загружен. ');
