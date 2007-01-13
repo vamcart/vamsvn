@@ -18,8 +18,6 @@
   require(DIR_WS_CLASSES . 'import.php');
   require_once(DIR_FS_INC . 'xtc_format_filesize.inc.php');
 
-  define('FILENAME_CSV_BACKEND','csv_backend.php');
-
   switch ($_GET['action']) {
 
       case 'upload':
@@ -229,7 +227,7 @@
 ?>
 <table width="100%"  border="0" cellspacing="5" cellpadding="0">
   <tr>
-    <td class="pageHeading">IMPORT</td>
+    <td class="pageHeading"><?php echo IMPORT; ?></td>
   </tr>
   <tr>
     <td class="dataTableHeadingContent"><?php echo TEXT_IMPORT; ?>
@@ -284,7 +282,7 @@ echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' .
 
 <table width="100%"  border="0" cellspacing="5" cellpadding="0">
   <tr>
-    <td class="pageHeading">Export</td>
+    <td class="pageHeading"><?php echo EXPORT; ?></td>
   </tr>
   <tr>
     <td class="infoBoxHeading"><?php echo TEXT_EXPORT; ?>
