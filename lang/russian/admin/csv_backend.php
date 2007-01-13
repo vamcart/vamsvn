@@ -12,7 +12,7 @@
 
 
    define('TITLE','CSV');
-   define('HEADING_TITLE','CSV экспорт/импорт');
+   define('HEADING_TITLE','CSV импорт/экспорт');
 
    define('IMPORT','Импорт');
    define('EXPORT','Экспорт');
@@ -21,9 +21,9 @@
    define('SAVE','Сохранить файл в папку /export');
    define('LOAD','Отправить файл в браузер');
    define('CSV_TEXTSIGN_TITLE','Поля заключены в');
-   define('CSV_TEXTSIGN_DESC','Текстовое поле в CSV-файле. Обычно двойная (например ") или одинарная ковычка.');
+   define('CSV_TEXTSIGN_DESC','Текстовое поле в CSV-файле. Обычно двойная (например ") или одинарная кавычка.');
    define('CSV_SEPERATOR_TITLE','Разделитель полей');
-   define('CSV_SEPERATOR_DESC','символ используемый для определения окончания текст. поля, например ;');
+   define('CSV_SEPERATOR_DESC','Символ, используемый для определения окончания поля, например ;');
    define('COMPRESS_EXPORT_TITLE','Сжатие');
    define('COMPRESS_EXPORT_DESC','Сжать экспортируемый файл');
    define('CSV_SETUP','Настройка');
