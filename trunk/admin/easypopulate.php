@@ -27,6 +27,20 @@ $curver = ' 2.75';
 
 require('epconfigure.php');
 
+// fix by jb 20040815 set the strings to http post/request, since they don't seem to work on the new server, with register globals=off...
+
+$dltype=$_REQUEST['dltype'];
+$download=$_REQUEST['download'];
+
+global $HTTP_POST_FILES;
+
+foreach( $HTTP_POST_FILES as $varname => $fileinfo ){
+$GLOBALS[$varname] = $fileinfo["tmp_name"];
+$GLOBALS[$varname.'_name'] = $fileinfo["name"];
+}
+
+// end fix jb
+
 //*******************************
 //*******************************
 // S T A R T
