@@ -22,10 +22,6 @@ if(!defined('TABLE_CIP')) {
 
 
 
-if (!defined(BOX_CONTRIB_INSTALLER)) {
-    define('BOX_CONTRIB_INSTALLER', 'Contrib Installer');
-}
-include_once(DIR_FS_LANGUAGES.$_SESSION['language'].'/admin/contrib_installer.php');
 require_once(DIR_FS_ADMIN_CLASSES.'ci_cip.class.php');
 require_once(DIR_FS_ADMIN_CLASSES.'ci_upload_cip.class.php');
 require_once(DIR_FS_ADMIN_CLASSES.'ci_file_integrity.class.php');
