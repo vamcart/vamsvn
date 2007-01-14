@@ -17,8 +17,6 @@
 
 
 ?>
-<script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
-<script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <script type="text/javascript"><!--
 var form = "";
 var submitted = false;

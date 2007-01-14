@@ -38,6 +38,8 @@
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
+<script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
+<script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <script type="text/javascript"><!--
 var selected;
 var submitter = null;
