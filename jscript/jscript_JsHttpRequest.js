@@ -49,7 +49,7 @@ function Subsys_JsHttpRequest_Js() { this._construct() }
         statusText:         "OK",
 
         // Additional properties.
-        session_name:       "XTCsid",  // set to SID cookie or GET parameter name
+        session_name:       "sid",  // set to SID cookie or GET parameter name
         responseJS:         null,         // JavaScript response array/hash
         caching:            false,        // need to use caching?
 
