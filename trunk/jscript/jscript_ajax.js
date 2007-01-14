@@ -18,8 +18,8 @@
 // +----------------------------------------------------------------------+
 // $Id: jscript_ajax.js,v 1.0.0 17.03.2006 11:43 Andrew Berezin $
 //
-function loadXMLDoc(module, put_vars, caching) {
-  var url="./index_ajax.php?module=" + module;
+function loadXMLDoc(ajax_page, put_vars, caching) {
+  var url="./index_ajax.php?ajax_page=" + ajax_page;
   var req = new Subsys_JsHttpRequest_Js();
   req.onreadystatechange = function() {
     if (req.readyState == 4) {
