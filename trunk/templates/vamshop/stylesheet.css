@@ -2079,5 +2079,28 @@ span.bold
    {
      font-weight: bold;
    }
+
+/* Ajax quick find */
+
+div.ajaxQuickFind 
+   {
+     text-align: left;
+     background: #E9E9E9;
+   }
+
+ul.ajaxQuickFind 
+   {
+     list-style-type: none;
+     list-style-image: none;
+     padding-left: 0px;
+   }
+
+li.ajaxQuickFind 
+   {
+     font-size: 80%;
+     padding-left: 0px;
+   } 
+
+/* /Ajax quick find */
    
 /*]]>*/
