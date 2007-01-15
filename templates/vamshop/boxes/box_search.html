@@ -6,8 +6,24 @@
 <div id="boxSearchContent">
 {$FORM_ACTION}
 <p class="searchboxform">{$INPUT_SEARCH}</p>
+<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
 {$BUTTON_SUBMIT}
 {$FORM_END}
+{literal}
+<script language="javascript" type="text/javascript">
+	function ajaxQuickFind(elt) {
+//		if(ajaxQuickFindUpForm.keyword.value.length > 2)
+			loadXMLDoc('ajaxQuickFind', hashFormFields(ajaxQuickFindUpForm), true);
+	}
+	var timeout = null;
+	var ajaxQuickFindUpForm = null;
+	function ajaxQuickFindUp(elt) {
+		ajaxQuickFindUpForm = elt.form;
+	  if (timeout) clearTimeout(timeout);
+	  timeout = setTimeout('ajaxQuickFind()', 500);
+	}
+</script>
+{/literal}
 <p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
 </div>
 </div>

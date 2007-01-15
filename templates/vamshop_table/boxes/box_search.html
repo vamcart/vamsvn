@@ -19,6 +19,10 @@
                 <td valign="middle">{$INPUT_SEARCH}</td>
                 <td valign="middle" width="100%">{$BUTTON_SUBMIT}</td>
               </tr>
+              <tr>
+                <td caolspan="2"><div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
+</td>
+              </tr>
             </table>
             <br />
             <a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a> </td>
@@ -27,3 +31,18 @@
   </tr>
 </table>
 {$FORM_END}
+{literal}
+<script language="javascript" type="text/javascript">
+	function ajaxQuickFind(elt) {
+//		if(ajaxQuickFindUpForm.keyword.value.length > 2)
+			loadXMLDoc('ajaxQuickFind', hashFormFields(ajaxQuickFindUpForm), true);
+	}
+	var timeout = null;
+	var ajaxQuickFindUpForm = null;
+	function ajaxQuickFindUp(elt) {
+		ajaxQuickFindUpForm = elt.form;
+	  if (timeout) clearTimeout(timeout);
+	  timeout = setTimeout('ajaxQuickFind()', 500);
+	}
+</script>
+{/literal}
