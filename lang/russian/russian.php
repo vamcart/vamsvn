@@ -509,5 +509,6 @@ define('TEXT_OF_5_STARS', '%s из 5 звёзд!');
 define('IMAGE_BUTTON_PRINT', 'Распечатать');
 
 define('TEXT_AJAX_QUICKSEARCH_TOP', 'Первые %s позиций...');
+define('TEXT_AJAX_ADDQUICKIE_SEARCH_TOP', 'Первые %s товаров...');
 
 ?>
