@@ -25,7 +25,7 @@ $box_content='';
 $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 $box_smarty->assign('FORM_ACTION','<form id="quick_add" method="post" action="' . xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('action')) . 'action=add_a_quickie', 'NONSSL') . '">');
-$box_smarty->assign('INPUT_FIELD',xtc_draw_input_field('quickie','','size="15"'));
+$box_smarty->assign('INPUT_FIELD',xtc_draw_input_field('quickie','','size="15" onkeyup="ajaxAddQuickieUp(this);" id="quick_add_quickie"'));
 $box_smarty->assign('SUBMIT_BUTTON',xtc_image_submit('button_add_quick.gif', BOX_HEADING_ADD_PRODUCT_ID));
 $box_smarty->assign('FORM_END','</form>');
 

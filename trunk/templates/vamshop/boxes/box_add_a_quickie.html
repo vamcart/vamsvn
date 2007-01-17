@@ -7,8 +7,24 @@
 {#text_quickie#}
 {$FORM_ACTION}
 <p class="addquickieform">{$INPUT_FIELD}</p>
+<div class="ajaxAddQuickie" id="ajaxAddQuickie" style="text-align: left;"></div>
 {$SUBMIT_BUTTON}
 {$FORM_END}
+{literal}
+<script language="javascript" type="text/javascript">
+	function ajaxAddQuickie(elt) {
+//		if(ajaxAddQuickieUpForm.quickie.value.length > 2)
+			loadXMLDoc('ajaxAddQuickie', hashFormFields(ajaxAddQuickieUpForm), true);
+	}
+	var timeout = null;
+	var ajaxAddQuickieUpForm = null;
+	function ajaxAddQuickieUp(elt) {
+		ajaxAddQuickieUpForm = elt.form;
+	  if (timeout) clearTimeout(timeout);
+	  timeout = setTimeout('ajaxAddQuickie()', 500);
+	}
+</script>
+{/literal}
 </div>
 </div>
 <!-- /Бокс быстрый заказ -->
