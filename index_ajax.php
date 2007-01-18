@@ -31,10 +31,10 @@
 
 	$JsHttpRequest->setEncoding($_SESSION['language_charset']);
 
-	if (!isset($_GET['ajax_page']) || !xtc_not_null($_GET['ajax_page']) || !is_file(DIR_WS_MODULES . $_GET['ajax_page'] . '.php')) die('***ERROR*** Ajax page "' . $_GET['ajax_page'] . '" not define or not exist!!!');
+	if (!isset($_GET['ajax_page']) || !xtc_not_null($_GET['ajax_page']) || !is_file(DIR_WS_MODULES . 'ajax/' . $_GET['ajax_page'] . '.php')) die('***ERROR*** Ajax page "' . $_GET['ajax_page'] . '" not define or not exist!!!');
 	if(is_file(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . $_GET['ajax_page'] . '.php'))
 		require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . $_GET['ajax_page'] . '.php');
-	require(DIR_WS_MODULES . $_GET['ajax_page'] . '.php');
+	require(DIR_WS_MODULES . 'ajax/' . $_GET['ajax_page'] . '.php');
 
 	exit;
 ?>
