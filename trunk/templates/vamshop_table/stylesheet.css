@@ -1037,7 +1037,6 @@ p.center
 div.ajaxQuickFind 
    {
      text-align: left;
-     background: #E9E9E9;
    }
 
 ul.ajaxQuickFind 
@@ -1060,9 +1059,16 @@ li.ajaxQuickFind
 div.ajaxAddQuickie 
    {
      text-align: left;
-     background: #E9E9E9;
    }
 
+div.addQuick 
+   {
+     text-align: left;
+     color: #67748B;
+     text-decoration: underline;
+     cursor: pointer;
+   }
+   
 ul.ajaxAddQuickie 
    {
      list-style-type: none;
