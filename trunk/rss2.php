@@ -54,7 +54,7 @@ $cdata_close = "";
 
 
 // 0 - no description in feed; 1 - give it in...
-define('RSS_FEED_DESCRIPTION', 'true');
+define('RSS_FEED_DESCRIPTION', 'false');
 // how many characters in description (0 for no limit)
 define('RSS_FEED_DESCRIPTION_CHARACTERS', '0');
 define('RSS_TTL', '1440'); // time to live - time after reader should refresh the info in minutes
@@ -82,14 +82,14 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 //	$rss->rss_feed_xmlns('xmlns:admin="http://webns.net/mvcb/"');
 //	$rss->rss_feed_xmlns(array('xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"', 'xmlns:content="http://purl.org/rss/1.0/modules/content/"'));
 
-	$rss->rss_feed_style('rss.css', 'text/css');
-//	$rss->rss_feed_style('rss.xsl', 'text/xsl');
+//	$rss->rss_feed_style('rss.css', 'text/css');
+	$rss->rss_feed_style('rss.xsl', 'text/xsl');
 	$rss->rss_feed_description_set(RSS_FEED_DESCRIPTION, RSS_FEED_DESCRIPTION_CHARACTERS);
 	$rss->rss_feed_set('encoding', $_SESSION['language_charset']);
 	$rss->rss_feed_set('content_type', 'text/xml');
 	$rss->rss_feed_set('title', STORE_NAME);
 	$rss->rss_feed_set('link', HTTP_SERVER . DIR_WS_CATALOG);
-	$rss->rss_feed_set('description', STORE_NAME);
+	$rss->rss_feed_set('description', STORE_NAME_ADDRESS);
 	$rss->rss_feed_set('lastBuildDate', date('r'));
 	$rss->rss_feed_set('generator', RSS_GENERATOR);
 	$rss->rss_feed_set('copyright', RSS_CONTENT_COPYRIGHT);
