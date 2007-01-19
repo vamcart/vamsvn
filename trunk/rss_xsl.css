@@ -16,7 +16,7 @@ h1.channel {
    font-weight: bold; 
    background: #f1f1f1; 
    border: 1px solid #CCCCCC; 
-   padding:4px;
+   padding: 4px;
 }
 
 .channel_description {
@@ -30,7 +30,7 @@ h1.channel {
 }
 
 .item {
-font-size: 10px; 
+font-size: 12px; 
 font-family: verdana; 
 border-bottom: 1px dashed #cccccc; 
 padding: 5px;
