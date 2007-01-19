@@ -361,6 +361,9 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
 		}
 
+		if(isset($_GET['limit']) && !$random)
+			$sql_products .= ' limit ' . $_GET['limit'];
+
          $products_query = xtc_db_query($sql_products);
          while($products = xtc_db_fetch_array($products_query)) {
             $link = xtc_href_link(FILENAME_NEWS, 'news_id='.$products['news_id'], 'NONSSL', false);
