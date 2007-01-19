@@ -25,7 +25,7 @@
 			$dropdown = array();
 			$out .= '<ul class="ajaxAddQuickie">';
 			while($model = xtc_db_fetch_array($model_query)) {
-				$out .= "<li class=\"ajaxAddQuickie\"><a href=\"\" onclick=\"javascript:document.getElementById('quick_add_quickie').value='". $model['products_model'] . "';return false;\">" . $model['products_model'] . "</a></li>" . "\n";
+				$out .= "<li class=\"ajaxAddQuickie\"><div class=\"addQuick\" onclick=\"javascript:document.getElementById('quick_add_quickie').value='". $model['products_model'] . "';return false;\">" . $model['products_model'] . "</div></li>" . "\n";
 				$dropdown[] = array('id' => $model['products_id'],
 														'text' => $model['products_name']);
 			}
