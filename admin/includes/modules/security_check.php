@@ -33,10 +33,6 @@ if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.org.php')), '444')
 	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.org.php';
 }
 
-if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'rss/')), '777') and !strpos(decoct(fileperms(DIR_FS_CATALOG.'admin/rss/')), '755')) {
-	$folder_warning .= '<br>'.DIR_FS_ADMIN.'rss/';
-}
-
 if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'templates_c/')), '777') and !strpos(decoct(fileperms(DIR_FS_CATALOG.'templates_c/')), '755')) {
 	$folder_warning .= '<br>'.DIR_FS_CATALOG.'templates_c/';
 }
