@@ -148,12 +148,6 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'cache/<br />';
  }
 
-     if (!is_writeable(DIR_FS_CATALOG . 'admin/rss/')) {
-    $error_flag=true;
-    $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/rss/<br />';
- }
-
       if (!is_writeable(DIR_FS_CATALOG . 'admin/images/graphs')) {
     $error_flag=true;
     $folder_flag=true;
@@ -221,11 +215,6 @@
     $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/thumbnail_images/<br />';
  }
  
-   if (!is_writeable(DIR_FS_CATALOG . 'admin/rss/xt-news.cache')) {
-    $error_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/rss/xt-news.cache<br />';
- }
-
  $status = TEXT_OK;
  if ($folder_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
  $ok_message.=TEXT_FOLDER_PERMISSIONS . '' . $status.'<br /><hr noshade>';
