@@ -17,7 +17,6 @@
    --------------------------------------------------------------*/
 
 require ('includes/application_top.php');
-require_once 'includes/modules/carp/carp.php';
 
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
