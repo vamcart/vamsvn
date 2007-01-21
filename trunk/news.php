@@ -43,7 +43,7 @@
 
   $module_content = array();
   if (!empty($_GET['news_id'])) {
-      $query = xtDBquery($one_sql);
+      $query = xtc_db_query($one_sql);
       if (xtc_db_num_rows($query) == 0) $_GET['news_id'] = 0;
   }
   if (empty($_GET['news_id'])) {
