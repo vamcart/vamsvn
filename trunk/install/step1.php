@@ -1,24 +1,26 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: step1.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: step1.php 899 2005-04-29 02:40:57Z hhgag $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
 
    Copyright (c) 2003 XT-Commerce
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(install.php,v 1.7 2002/08/14); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(install.php,v 1.7 2002/08/14); www.oscommerce.com
    (c) 2003	 nextcommerce (step1.php,v 1.10 2003/08/17); www.nextcommerce.org
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------*/
-  
+
   require('includes/application.php');
+# fix IE bugi
+if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
 
   include('language/'.$_SESSION['language'].'.php');
-  
+
   if (!$script_filename = str_replace('\\', '/', getenv('PATH_TRANSLATED'))) {
     $script_filename = getenv('SCRIPT_FILENAME');
   }
@@ -45,7 +47,7 @@
     $dir_ws_www_root[] = $dir_ws_www_root_array[$i];
   }
   $dir_ws_www_root = implode('/', $dir_ws_www_root);
-  
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -61,34 +63,34 @@
 
 <body>
 <table width="800" height="80%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
+  <tr>
     <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td width="1" colspan="2"><img src="images/logo.gif"></td>
         </tr>
       </table>
   </tr>
-  <tr> 
-    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
+  <tr>
+    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
       <table width="180" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
+        <tr>
           <td height="17" background="images/bg_left_blocktitle.gif">
 <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
-        <tr> 
-          <td bgcolor="F3F3F3" ><br /> 
+        <tr>
+          <td bgcolor="F3F3F3" ><br />
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr> 
+              <tr>
                 <td width="10">&nbsp;</td>
                 <td width="135"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_LANGUAGE; ?></font></td>
                 <td width="35"><img src="images/icons/ok.gif"></td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
                 <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_DB_CONNECTION; ?></font></td>
                 <td>&nbsp;</td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
                 <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_WEBSERVER_SETTINGS; ?></font></td>
                 <td>&nbsp;</td>
@@ -98,7 +100,7 @@
         </tr>
       </table>
     </td>
-    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
+    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
       <br />
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
@@ -113,8 +115,8 @@
             <table width="98%" border="0" cellpadding="0" cellspacing="0">
           <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr> 
-                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
+                <tr>
+                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16">
                     </b></font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TITLE_CUSTOM_SETTINGS; ?></b></font></td>
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
                 </tr>
@@ -122,7 +124,7 @@
               <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_checkbox_field_installer('install[]', 'database', true); ?>
                 <b><?php echo TEXT_IMPORT_DB; ?></b><br />
                 <?php echo TEXT_IMPORT_DB_LONG; ?></font></p>
-              <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_checkbox_field_installer('install[]', 'configure', true); ?> 
+              <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_checkbox_field_installer('install[]', 'configure', true); ?>
                 <b><?php echo TEXT_AUTOMATIC; ?></b><br />
                 <?php echo TEXT_AUTOMATIC_LONG; ?></font></p>
 
@@ -133,16 +135,16 @@
         <img src="images/break-el.gif" width="100%" height="1">
                 <br />
         <table width="98%" border="0" cellpadding="0" cellspacing="0">
-          <tr> 
+          <tr>
             <td>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
+                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16">
                     </b></font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TITLE_DATABASE_SETTINGS; ?></b></font></td>
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
                 </tr>
               </table>
-              <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b> 
+              <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>
                 </b></font></p>
               <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_DATABASE_SERVER; ?></b><br />
                 <?php echo xtc_draw_input_field_installer('DB_SERVER'); ?><br />
@@ -162,10 +164,10 @@
                 <img src="images/break-el.gif" width="100%" height="1">
                 <br />
                 <table width="98%" border="0" cellpadding="0" cellspacing="0">
-          <tr> 
+          <tr>
             <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr> 
-                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
+                <tr>
+                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16">
                     <?php echo TITLE_WEBSERVER_SETTINGS; ?> </b></font></td>
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
                 </tr>
@@ -209,7 +211,7 @@
 
 <p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_FOOTER; ?>
   </font></p>
-<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
   </font></p>
 </body>
 </html>
