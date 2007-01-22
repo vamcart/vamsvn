@@ -1,17 +1,17 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: header.php 1140 2005-10-24 10:16:00Z VaM $   
+   $Id: header.php 1140 2005-10-24 10:16:00Z VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
 
-   Copyright (c) 2006 VaM Shop 
+   Copyright (c) 2006 VaM Shop
    -----------------------------------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(header.php,v 1.40 2003/03/14); www.oscommerce.com 
-   (c) 2003	 nextcommerce (header.php,v 1.13 2003/08/17); www.nextcommerce.org 
-   (c) 2005	 xt:Commerce (header.php,v 1.13 2005/08/10); www.xt-commerce.com 
+   (c) 2002-2003 osCommerce(header.php,v 1.40 2003/03/14); www.oscommerce.com
+   (c) 2003	 nextcommerce (header.php,v 1.13 2003/08/17); www.nextcommerce.org
+   (c) 2005	 xt:Commerce (header.php,v 1.13 2005/08/10); www.xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
@@ -49,7 +49,7 @@ function submitFunction() {
 }
 function popupWindow(url) {
   window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
-}  
+}
 
 function selectRowEffect(object, buttonSelect) {
   if (!selected) {
@@ -237,8 +237,8 @@ function resize() {
   self.focus();
 }
 //--></script>
-<?php 
-} 
+<?php
+}
 
 ?>
 </head>
@@ -273,6 +273,11 @@ require('includes/google_conversiontracking.js.php');
   // check if the configure.php file is writeable
   if (WARN_CONFIG_WRITEABLE == 'true') {
     if ( (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) && (is_writeable(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) ) {
+
+  # try to set permissions
+  if (function_exists('chmod')) {
+    chmod(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php', 0444);
+  }
       xtc_output_warning(WARNING_CONFIG_FILE_WRITEABLE);
     }
   }
@@ -316,7 +321,7 @@ $smarty->assign('store_name',TITLE);
 $smarty->assign('login',xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
 $smarty->assign('mainpage',xtc_href_link(FILENAME_DEFAULT, '', 'SSL'));
 
-    
+
 
   if (isset($_GET['error_message']) && xtc_not_null($_GET['error_message'])) {
 
