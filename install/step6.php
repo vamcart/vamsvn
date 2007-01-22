@@ -1,27 +1,28 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: step6.php 941 2005-05-11 19:49:53Z hhgag $   
+   $Id: step6.php 941 2005-05-11 19:49:53Z hhgag $
 
    XT-Commerce - community made shopping
    http://www.xt-commerce.com
 
    Copyright (c) 2003 XT-Commerce
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (step6.php,v 1.29 2003/08/20); www.nextcommerce.org
-   
-   Released under the GNU General Public License 
+
+   Released under the GNU General Public License
    --------------------------------------------------------------*/
 
   require('../includes/configure.php');
-  
+
   require('includes/application.php');
-  
+
   require_once(DIR_FS_INC . 'xtc_rand.inc.php');
   require_once(DIR_FS_INC . 'xtc_encrypt_password.inc.php');
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
   require_once(DIR_FS_INC . 'xtc_db_query.inc.php');
+  require_once(DIR_FS_INC . 'xtc_db_perform.inc.php');
   require_once(DIR_FS_INC . 'xtc_db_fetch_array.inc.php');
   require_once(DIR_FS_INC .'xtc_validate_email.inc.php');
   require_once(DIR_FS_INC .'xtc_db_input.inc.php');
@@ -33,12 +34,12 @@
   require_once(DIR_FS_INC . 'xtc_get_country_list.inc.php');
 
     include('language/'.$_SESSION['language'].'.php');
-  
-  // connect do database
-  xtc_db_connect() or die('Unable to connect to database server!'); 
-    
 
-  
+  // connect do database
+  xtc_db_connect() or die('Unable to connect to database server!');
+
+
+
   // get configuration data
   $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
   while ($configuration = xtc_db_fetch_array($configuration_query)) {
@@ -46,7 +47,7 @@
   }
 
    $messageStack = new messageStack();
-  
+
     $process = false;
   if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
     $process = true;
@@ -68,7 +69,7 @@
 	$email_from = xtc_db_prepare_input($_POST['EMAIL_ADRESS_FROM']);
 	$zone_setup = xtc_db_prepare_input($_POST['ZONE_SETUP']);
 	$company = xtc_db_prepare_input($_POST['COMPANY']);
-		
+
     $error = false;
 
 
@@ -83,7 +84,7 @@
 
       $messageStack->add('step6', ENTRY_LAST_NAME_ERROR);
     }
-	
+
     if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
 
@@ -92,8 +93,8 @@
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
-    } 
-    
+    }
+
 
 
  if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
@@ -160,7 +161,7 @@
 
       $messageStack->add('step6', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
     }
-	
+
 	    if (strlen($store_name) < '3') {
       $error = true;
 
@@ -171,7 +172,7 @@
 
       $messageStack->add('step6', ENTRY_COMPANY_NAME_ERROR);
     }
-	
+
     if (strlen($email_from) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
 
@@ -180,69 +181,64 @@
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_FROM_CHECK_ERROR);
-    } 
+    }
 	if ( ($zone_setup != 'yes') && ($zone_setup != 'no') ) {
         $error = true;
 
         $messageStack->add('step6', SELECT_ZONE_SETUP_ERROR);
 	}
-    
-	
-	    if ($error == false) {
-		
-xtc_db_query("insert into " . TABLE_CUSTOMERS . " (
-										customers_id,
-										customers_status,
-										customers_firstname,
-										customers_lastname,
-										customers_email_address,
-										customers_default_address_id,
-										customers_telephone,
-										customers_password,
-										delete_user) VALUES
-										('1',
-										'0',
-										'".$firstname."',
-										'".$lastname."',
-										'".$email_address."',
-										'1',
-										'".$telephone."',
-										'".xtc_encrypt_password($password)."',
-										'0')");
 
-xtc_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (
-										customers_info_id,
-										customers_info_date_of_last_logon, 
-										customers_info_number_of_logons, 
-										customers_info_date_account_created,
-										customers_info_date_account_last_modified,
-										global_product_notifications) VALUES
-										('1','','','','','')");
-xtc_db_query("insert into " .TABLE_ADDRESS_BOOK . " (
-										customers_id,
-										entry_company,
-   										entry_firstname,
-   										entry_lastname,
-   										entry_street_address,
-   										entry_postcode,
-   										entry_city,
-   										entry_state,
-   										entry_country_id,
-   										entry_zone_id) VALUES
-										('1',
-										'".($company)."',
-										'".($firstname)."',
-										'".($lastname)."',
-										'".($street_address)."',
-										'".($postcode)."',
-										'".($city)."',
-										'".($state)."',
-										'".($country)."',
-										'".($zone_id)."'
-										)");
-										
-										 
- 
+
+	    if ($error == false) {
+$customer_query = xtc_db_query("select c.customers_id, ci.customers_info_id, ab.customers_id from " . TABLE_CUSTOMERS . " c, " . TABLE_CUSTOMERS_INFO . " ci, " . TABLE_ADDRESS_BOOK . " ab ");
+if (xtc_db_num_rows($customer_query) >= 1) {
+  $db_action = "update";
+} else {
+    $db_action = "insert";
+  }
+
+xtc_db_perform(TABLE_CUSTOMERS, array(
+              'customers_id' => '1',
+              'customers_status' => '0',
+              'customers_firstname' => $firstname,
+              'customers_lastname' => $lastname,
+              'customers_email_address' => $email_address,
+              'customers_default_address_id' => '1',
+              'customers_telephone' => $telephone,
+              'customers_password' => xtc_encrypt_password($password),
+              'delete_user' => '0',
+              'customers_date_added' => 'now()',
+              'customers_last_modified' => 'now()',),
+              $db_action, 'customers_id = 1'
+              );
+
+xtc_db_perform(TABLE_CUSTOMERS_INFO, array(
+              'customers_info_id' => '1',
+              'customers_info_date_of_last_logon' => '',
+              'customers_info_number_of_logons' => '',
+              'customers_info_date_account_created' => 'now()',
+              'customers_info_date_account_last_modified' => 'now()',
+              'global_product_notifications' => ''),
+              $db_action, 'customers_info_id = 1'
+              );
+
+xtc_db_perform(TABLE_ADDRESS_BOOK, array(
+              'customers_id' => '1',
+              'entry_company' => ($company),
+              'entry_firstname' => ($firstname),
+              'entry_lastname' => ($lastname),
+              'entry_street_address' => ($street_address),
+              'entry_postcode' => ($postcode),
+              'entry_city' => ($city),
+              'entry_state' => ($state),
+              'entry_country_id' => ($country),
+              'entry_zone_id' => ($zone_id),
+              'address_date_added' => 'now()',
+              'address_last_modified' => 'now()'),
+              $db_action, 'customers_id = 1'
+              );
+
+
 
 xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_address). "' WHERE configuration_key = 'STORE_OWNER_EMAIL_ADDRESS'");
 xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($store_name). "' WHERE configuration_key = 'STORE_NAME'");
@@ -261,7 +257,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
 
 	      xtc_redirect(xtc_href_link('install/step7.php', '', 'NONSSL'));
 		}
-			
+
 	}
 
 ?>
@@ -284,45 +280,45 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
 
 <body>
 <table width="800" height="80%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
+  <tr>
     <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td width="1" colspan="2"><img src="images/logo.gif"></td>
         </tr>
       </table>
   </tr>
-  <tr> 
-    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
+  <tr>
+    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
       <table width="180" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
+        <tr>
           <td height="17" background="images/bg_left_blocktitle.gif">
 <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
         </tr>
-        <tr> 
-          <td bgcolor="F3F3F3" ><br /> 
+        <tr>
+          <td bgcolor="F3F3F3" ><br />
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr> 
+              <tr>
                 <td width="10">&nbsp;</td>
                 <td width="135"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_LANGUAGE; ?></font></td>
                 <td width="35"><img src="images/icons/ok.gif"></td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
                 <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_DB_CONNECTION; ?></font></td>
                 <td><img src="images/icons/ok.gif"></td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
-                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
                   &nbsp;&nbsp;&nbsp;<img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_DB_CONNECTION; ?></font></td>
                 <td><img src="images/icons/ok.gif"></td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
                 <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_WEBSERVER_SETTINGS; ?></font></td>
                 <td><img src="images/icons/ok.gif"></td>
               </tr>
-              <tr> 
+              <tr>
                 <td>&nbsp;</td>
                 <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp;<img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_WRITE_CONFIG; ?></font></td>
                 <td><img src="images/icons/ok.gif"></td>
@@ -338,7 +334,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
 <tr><td style="border-bottom: 1px solid; border-color: #cccccc;" colspan="3">&nbsp;</td>
 <tr><td colspan="3">
              <table border="0" cellpadding="0" cellspacing="0" bgcolor="f3f3f3">
-              <tr> 
+              <tr>
                 <td><?php echo $messageStack->output('step6'); ?></td>
               </tr>
             </table>
@@ -351,25 +347,25 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
         </tr>
       </table>
     </td>
-    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
+    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
       <br />
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr> 
+        <tr>
           <td>
             <?php echo TEXT_WELCOME_STEP6; ?></font></td>
         </tr>
-      </table> 
+      </table>
       <br />
       <table width="98%" border="0" cellpadding="0" cellspacing="0">
-        <tr> 
+        <tr>
           <td>
-             
+
 
              <form name="install" action="step6.php" method="post" onSubmit="return check_form(step6);">
               <input name="action" type="hidden" value="process">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr> 
-                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
+                <tr>
+                  <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16">
                     <?php echo TITLE_ADMIN_CONFIG; ?> </b></font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                     <b><?php echo TEXT_REQU_INFORMATION; ?></b></font></td>
                   <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
@@ -377,53 +373,53 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
               </table>
 			  <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo   TITLE_ADMIN_CONFIG_NOTE; ?></font>
               <table width="100%" border="0">
-                <tr> 
+                <tr>
                   <td width="26%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo TEXT_FIRSTNAME; ?></strong></font></td>
-                  <td width="74%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('FIRST_NAME'); ?> 
+                  <td width="74%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('FIRST_NAME'); ?>
                     <font color="#FF0000">*</font> </font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_LASTNAME; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('LAST_NAME'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('LAST_NAME'); ?>
                     <font color="#FF0000">*</font> </font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_EMAIL; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('EMAIL_ADRESS'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('EMAIL_ADRESS'); ?>
                     <font color="#FF0000">*<font color="#000000"> </font><strong><?php echo TEXT_EMAIL_LONG; ?></strong></font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_STREET; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('STREET_ADRESS'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('STREET_ADRESS'); ?>
                     <font color="#FF0000">*</font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_POSTCODE; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('POST_CODE'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('POST_CODE'); ?>
                     <font color="#FF0000">*</font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_CITY; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('CITY'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('CITY'); ?>
                     <font color="#FF0000">*</font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_COUNTRY; ?></font></strong></td>
-                  <td><?php echo xtc_get_country_list('COUNTRY'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">&nbsp; 
-                    </font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">*<strong> 
+                  <td><?php echo xtc_get_country_list('COUNTRY'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;
+                    </font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">*<strong>
                     <?php echo TEXT_COUNTRY_LONG; ?></strong></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_TEL; ?></font></strong></td>
-                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('TELEPHONE'); ?> 
+                  <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_input_field_installer('TELEPHONE'); ?>
                     <font color="#FF0000">*</font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PASSWORD; ?></font></strong></td>
                   <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_password_field_installer('PASSWORD'); ?>
                     <font color="#FF0000">*</font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_PASSWORD_CONF; ?></font></strong></td>
                   <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo xtc_draw_password_field_installer('PASSWORD_CONFIRMATION'); ?>
                     <font color="#FF0000">*</font></font></td>
@@ -431,8 +427,8 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
               </table>
               <p>&nbsp;</p>
 			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr> 
-                <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
+              <tr>
+                <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16">
                   <?php echo TITLE_SHOP_CONFIG; ?> </b></font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                   <b><?php echo TEXT_REQU_INFORMATION; ?></b></font></td>
                 <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
@@ -440,19 +436,19 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
             </table>
               <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo  TITLE_SHOP_CONFIG_NOTE; ?></font><br />
               <table width="100%" border="0">
-                <tr> 
+                <tr>
                   <td width="26%"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_STORE; ?></strong></font></td>
-                  <td width="74%"><?php echo xtc_draw_input_field_installer('STORE_NAME'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                  <td width="74%"><?php echo xtc_draw_input_field_installer('STORE_NAME'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                     *<font color="#000000"> </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_STORE_LONG; ?></strong></font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_COMPANY; ?></strong></font></td>
-                  <td><?php echo xtc_draw_input_field_installer('COMPANY'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                  <td><?php echo xtc_draw_input_field_installer('COMPANY'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                     *<font color="#000000"> </font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></font></td>
                 </tr>
-                <tr> 
+                <tr>
                   <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_EMAIL_FROM; ?></strong></font></td>
-                  <td><?php echo xtc_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                  <td><?php echo xtc_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">
                     *<font color="#000000"> </font><font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><?php echo  TEXT_EMAIL_FROM_LONG; ?></strong></font></font></font></td>
                 </tr>
               </table>
@@ -465,7 +461,7 @@ xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". DIR_
               </center>
             </form></td>
         </tr>
-      </table> 
+      </table>
       <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/break-el.gif" width="100%" height="1"></font></p>
 
       <p>&nbsp;</p>
