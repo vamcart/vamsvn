@@ -17,8 +17,8 @@
   require('../includes/configure.php');
 
   require('includes/application.php');
-# fix IE bugi
-if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
+
+  if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
 
   require_once(DIR_FS_INC . 'xtc_rand.inc.php');
   require_once(DIR_FS_INC . 'xtc_encrypt_password.inc.php');
