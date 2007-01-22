@@ -15,13 +15,14 @@
 
   require('includes/application.php');
   require('../admin/includes/configure.php');
-# fix IE bugi
-if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
+
+  if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
 
   include('language/'.$_SESSION['language'].'.php');
 
-# try to rename catalog 'install'
-rename(DIR_FS_CATALOG.'install/', DIR_FS_CATALOG.'install_BAK/');
+  // try to rename catalog 'install'
+  rename(DIR_FS_CATALOG.'install/', DIR_FS_CATALOG.'install_BAK/');
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

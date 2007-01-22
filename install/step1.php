@@ -16,8 +16,8 @@
    --------------------------------------------------------------*/
 
   require('includes/application.php');
-# fix IE bugi
-if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
+
+  if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
 
   include('language/'.$_SESSION['language'].'.php');
 
