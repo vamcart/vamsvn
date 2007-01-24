@@ -86,13 +86,13 @@ class Tc_addfile extends ContribInstallerBaseTag {
         if (ALLOW_OVERWRITE_MODIFIED=='false') {
             if (!is_file($cip_file)) {
                 $this->error("Backup file ".$backup_file." is not exists. This file needed to check if file". $current_file. " was modified since Contrib Installer have been installed.
-                <br><b>CIP.NET.UA Advise</b>:<br>
+                <br><b>Advise</b>:<br>
                 Set \"Allow Overwrite Existing Modified Files\" to TRUE and all modified files will be overwritten.
                 All changes will be lost!<br>
                 <i>or</i><br>
                 Copy clean osCommerce files to     ".DIR_FS_CIP."/".CONTRIB_INSTALLER_NAME."_".CONTRIB_INSTALLER_VERSION. "/catalog/ and try again.");
 	            } elseif (file_exists($current_file) && file_exists($backup_file)&& !$this->equal_files($current_file, $backup_file)) {
-                $this->error("File ".$current_file." exists and was modified since Contrib Installer have been installed. Overwriting is not allowed.<br><b>CIP.NET.UA Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.");
+                $this->error("File ".$current_file." exists and was modified since Contrib Installer have been installed. Overwriting is not allowed.<br><b>Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.");
 	                return $this->error;
 	            }
             }
@@ -126,11 +126,11 @@ class Tc_addfile extends ContribInstallerBaseTag {
 		if (ALLOW_OVERWRITE_MODIFIED=='false') {
 			if (is_file($cip_file)) {
 				if (!$this->equal_files($current_file, $cip_file)) {
-					$this->error("File ".$current_file." exists and was modified since CIP have been installed. Overwriting is not allowed.<br><b>CIP.NET.UA Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.".$cip_file);
+					$this->error("File ".$current_file." exists and was modified since CIP have been installed. Overwriting is not allowed.<br><b>Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.".$cip_file);
 				}
 			} else {
 				$this->error("File ".$cip_file." needed to check if file". $current_file. " was modified since CIP have been installed.
-				<br><b>CIP.NET.UA Advise</b>:<br>
+				<br><b>Advise</b>:<br>
 				Restore CIP files in Contributions folder and try again.<br>
 				<i>or</i><br>
 				Set \"Allow Overwrite Existing Modified Files\" to TRUE and all modified files will be overwritten.

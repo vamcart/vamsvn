@@ -569,9 +569,9 @@ class CIP {
         $fp=fopen($backup_file, 'w');
         $schema=
                   '# Contrib Installer.'."\n" .
-                  '# Makes customizing osCommerce "simple".' . "\n" .
+                  '# Makes customizing VaM Shop "simple".' . "\n" .
                   '# Copyright (c) '.date('Y').' Vlad Savitsky'."\n" .
-                  '# http://www.cip.net.ua' . "\n" .
+                  '# http://vamshop.ru' . "\n" .
                   '#' . "\n" .
                   '# Database Backup For ' . STORE_NAME . "\n" .
                   '#' . "\n" .
