@@ -50,6 +50,50 @@ class Tc_addlangdef extends ContribInstallerBaseTag {
     }
     //===============================================================
 
+    function permissions_check_for_remove() {
+    	return $this->permissions_check_for_install();
+    }
+
+    function permissions_check_for_install() {
+    	$oldlng= '';
+		$oldlnga= '';
+    	for($i=0; $i < count($this->data['lng']);$i++){
+       	    $lng = $this->data['lng'][$i] . ".php";
+       	    $lang = $this->data['lng'][$i];
+			if (strlen($lng) == 4) {
+				$lng = "english.php";
+			}
+			if ($this->data['dir'][$i] == 'admin') {
+				if($oldlnga != $lng){
+					$odllnga = $lng;
+					$fname = $this->get_fs_filename("lang/" . $lang . '/admin/' . $lng);
+			    	if (!file_exists($fname)){
+			    		$this->error(CANT_READ_FILE.$fname);
+			    		break;
+			    	}
+			    	elseif(!is_writable($fname)){
+			    		$this->error(WRITE_PERMISSINS_NEEDED_TEXT.$fname);
+			    		break;
+			    	}
+				}
+			}else{
+				if($oldlng != $lng){
+					$odllng = $lng;
+					$fname = $this->get_fs_filename("lang/" . $lang . '/admin/' . $lng);
+			    	if (!file_exists($fname)){
+			    		$this->error(CANT_READ_FILE.$fname);
+			    		break;
+			    	}
+			    	elseif(!is_writable($fname)){
+			    		$this->error(WRITE_PERMISSINS_NEEDED_TEXT.$fname);
+			    		break;
+			    	}
+				}
+			}
+    	}
+        return $this->error;
+    }
+
     function lang_define($name, $value, $encod) {return "  define('".strtoupper($name)."','".unicode2win($value, $encod)."');\n";}
     function add_def($tblrowsa=array(), $dir='catalog', $action='remove') {
         if (count($tblrowsa)>0) {
