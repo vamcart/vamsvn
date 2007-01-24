@@ -67,13 +67,13 @@ class Tc_del_file extends ContribInstallerBaseTag {
         if (ALLOW_OVERWRITE_MODIFIED==false) {
             if (!file_exists($backup_file)) {
                 $this->error("Backup file ".$backup_file." is not exists. This file needed to check if file". $current_file. " was modified since Contrib Installer have been installed.
-                <br><b>CIP.NET.UA Advise</b>:<br>
+                <br><b>Advise</b>:<br>
                 Set \"Allow Overwrite Existing Modified Files\" to TRUE and all modified files will be overwritten.
                 All changes will be lost!<br>
                 <i>or</i><br>
                 Copy clean osCommerce files to     ".DIR_FS_CIP."/".CONTRIB_INSTALLER_NAME."_".CONTRIB_INSTALLER_VERSION. "/catalog/ and try again.");
             } elseif (md5_file($current_file) != md5_file($backup_file)) {
-                $this->error("File ".$current_file." exists and was modified since Contrib Installer have been installed. Overwriting is not allowed.<br><b>CIP.NET.UA Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.");
+                $this->error("File ".$current_file." exists and was modified since Contrib Installer have been installed. Overwriting is not allowed.<br><b>Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or change install.xml.");
             }
         }
         return $this->error;
@@ -83,7 +83,7 @@ class Tc_del_file extends ContribInstallerBaseTag {
         $current_file=$this->fs_filename();
         if (!file_exists($current_file))    return;
         if (ALLOW_OVERWRITE_MODIFIED==false) {
-            $this->error("File ".$current_file." exists and was modified since CIP have been installed. Overwriting is not allowed.<br><b>CIP.NET.UA Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or check what CIP added this file.");
+            $this->error("File ".$current_file." exists and was modified since CIP have been installed. Overwriting is not allowed.<br><b>Advise</b>:<br>Set \"Allow Overwrite Existing Modified Files\" to TRUE or check what CIP added this file.");
         }
         return $this->error;
     }
