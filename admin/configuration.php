@@ -162,14 +162,14 @@
 
    echo '
   <tr>
-    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b></td>
+    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b> <a class="info" href="#">? <span class="help">'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'<!--[if lte IE 6.5]><iframe frameborder="0"></iframe><![endif]--></span></a></td>
     <td valign="top" class="dataTableContent">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>
-        <td style="background-color:#FCF2CF ; border: 1px solid; border-color: #CCCCCC;" class="dataTableContent">'.$value_field.'</td>
+        <td class="main">'.$value_field.'</td>
       </tr>
     </table>
-    <br />'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'</td>
+</td>
   </tr>
   ';
 

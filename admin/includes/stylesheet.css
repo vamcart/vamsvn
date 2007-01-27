@@ -377,3 +377,56 @@ h1.contentBoxHeading a {
   color: #990000;
   text-decoration: none;
 }
+
+/* Подсказки */
+
+.help
+   {
+	  position: absolute;
+	  z-index: 10;
+	  overflow: hidden;
+	  width: 18em;
+   }
+   
+.help iframe
+   {
+	  display: none;
+	  display/**/: block;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	  filter: mask();
+	  width: 3000px;
+	  height: 3000px;
+   }
+
+a.info span
+   {
+     display: none;
+   }
+
+a.info
+   {
+     position: relative;
+   }
+   
+a.info:hover 
+   {
+     background-color: #fff; 
+     text-decoration: none
+   }
+
+a.info:hover span 
+   {
+     display: block; 
+     background: white; 
+     border: #000 1px solid; 
+     color: black;
+     position: absolute;
+     width: 200px;
+     padding: 3px;
+     font-size: 11px;
+   }
+
+/* /Подсказки */
