@@ -409,12 +409,14 @@ a.info span
 a.info
    {
      position: relative;
+     z-index: 24;
    }
    
 a.info:hover 
    {
      background-color: #fff; 
-     text-decoration: none
+     text-decoration: none;
+     z-index: 25;
    }
 
 a.info:hover span 
