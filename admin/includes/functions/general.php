@@ -967,7 +967,7 @@ function xtc_set_time_limit($limit) {
 function xtc_cfg_select_option($select_array, $key_value, $key = '') {
 	for ($i = 0, $n = sizeof($select_array); $i < $n; $i ++) {
 		$name = (($key) ? 'configuration['.$key.']' : 'configuration_value');
-		$string .= '<br><input type="radio" name="'.$name.'" value="'.$select_array[$i].'"';
+		$string .= '<input type="radio" name="'.$name.'" value="'.$select_array[$i].'"';
 		if ($key_value == $select_array[$i])
 			$string .= ' CHECKED';
 		$string .= '> '.$select_array[$i];
