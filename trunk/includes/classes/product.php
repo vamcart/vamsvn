@@ -139,6 +139,18 @@ class product {
 
 	/**
 	 * 
+	 * return name
+	 * 
+	 */
+
+	function getBreadcrumbName() {
+
+		return $this->data['products_name'];
+
+	}
+
+	/**
+	 * 
 	 * get also purchased products related to current
 	 * 
 	 */
