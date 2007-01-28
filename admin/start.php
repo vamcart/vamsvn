@@ -51,7 +51,7 @@ require ('includes/application_top.php');
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
-        <td>
+        <td colspan="2">
         <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
         </td>
         </tr>
