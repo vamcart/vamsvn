@@ -331,7 +331,7 @@ define('DELETE_ENTRY','Удалить запись?');
 define('TEXT_PAYMENT_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модули оплаты!');
 define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модули доставки!');
 
-define('TEXT_NETTO','без налогов: ');
+define('TEXT_NETTO',' без налогов: ');
 
 define('ENTRY_CID','ID клиента:');
 define('IP','IP заказа:');
