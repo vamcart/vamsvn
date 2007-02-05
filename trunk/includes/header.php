@@ -274,10 +274,6 @@ require('includes/google_conversiontracking.js.php');
   if (WARN_CONFIG_WRITEABLE == 'true') {
     if ( (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) && (is_writeable(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) ) {
 
-  // try to set permissions
-  if (function_exists('chmod')) {
-    chmod(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php', 0444);
-  }
       xtc_output_warning(WARNING_CONFIG_FILE_WRITEABLE);
     }
   }
