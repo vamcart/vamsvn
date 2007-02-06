@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: database_tables.php 1316 2005-10-21 15:30:58Z mz $   
+   $Id: database_tables.php 1316 2007-02-06 20:14:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(database_tables.php,v 1.1 2003/03/14); www.oscommerce.com 
    (c) 2003  nextcommerce (database_tables.php,v 1.8 2003/08/24); www.nextcommerce.org 
+   (c) 2004  xt:Commerce (database_tables.php,v 1.8 2003/08/24); xt-commerce.com 
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

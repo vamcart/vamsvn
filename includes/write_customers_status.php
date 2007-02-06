@@ -1,14 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: write_customers_status.php 1117 2005-07-25 21:02:11Z mz $
+   $Id: write_customers_status.php 1117 2007-02-06 20:14:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (write_customers_status.php,v 1.8 2003/08/1); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (write_customers_status.php,v 1.8 2003/08/1); xt-commerce.com
    
    Released under the GNU General Public License
    --------------------------------------------------------------------------------------- 
