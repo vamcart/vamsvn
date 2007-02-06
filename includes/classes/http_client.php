@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: http_client.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: http_client.php 899 2007-02-06 20:23:03 VaM $ 
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(http_client.php,v 1.1 2002/11/01); www.oscommerce.com 
    (c) 2003	 nextcommerce (http_client.php,v 1.5 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (http_client.php,v 1.5 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License
    Copyright 2001 Leo West <west_leo@yahoo-REMOVE-.com> Net_HTTP_Client v0.6

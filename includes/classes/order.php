@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: order.php 1533 2006-08-20 19:03:11Z mz $   
+   $Id: order.php 1533 2007-02-06 20:23:03 VaM $ 
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(order.php,v 1.32 2003/02/26); www.oscommerce.com 
    (c) 2003	 nextcommerce (order.php,v 1.28 2003/08/18); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (order.php,v 1.28 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
