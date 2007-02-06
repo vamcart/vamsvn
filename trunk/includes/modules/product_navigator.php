@@ -1,12 +1,15 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: product_navigator.php 1292 2005-10-07 16:10:55Z mz $
+   $Id: product_navigator.php 1292 2007-02-06 20:41:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on:
+   (c) 2004	 xt:Commerce (product_navigator.php,v 1.19 2003/08/1); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/

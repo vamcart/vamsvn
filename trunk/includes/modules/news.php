@@ -1,18 +1,18 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: news.php 1292 2006-10-06 22:06:55 VaM $
+   $Id: news.php 1292 2007-02-06 20:41:56 VaM $   
 
    VaM Shop - open source ecommerce solution
-   http://oscommerce.su
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2006 VaM Shop
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(new_products.php,v 1.33 2003/02/12); www.oscommerce.com
    (c) 2003	 nextcommerce (new_products.php,v 1.9 2003/08/17); www.nextcommerce.org
-   (c) 2005	 xt:Commerce (new_products.php,v 1.9 2003/08/17); www.xt-commerce.com
+   (c) 2004	 xt:Commerce (new_products.php,v 1.9 2003/08/17); www.xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

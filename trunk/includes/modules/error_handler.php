@@ -1,11 +1,15 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: error_handler.php 949 2005-05-14 16:44:33Z hhgag $
+   $Id: error_handler.php 949 2007-02-06 20:41:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2004	 xt:Commerce (error_handler.php,v 1.6 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/

@@ -1,28 +1,29 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: metatags.php 1140 2005-08-10 10:16:00Z mz $
+   $Id: metatags.php 1140 2007-02-06 20:41:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2003	 nextcommerce (metatags.php,v 1.7 2003/08/14); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (metatags.php,v 1.7 2003/08/14); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 ?>
 <meta name="robots" content="<?php echo META_ROBOTS; ?>" />
-<meta name="language" content="<?php echo $_SESSION['language_code']; ?>" />
+<meta name="company" content="<?php echo META_COMPANY; ?>" />
 <meta name="author" content="<?php echo META_AUTHOR; ?>" />
 <meta name="publisher" content="<?php echo META_PUBLISHER; ?>" />
-<meta name="company" content="<?php echo META_COMPANY; ?>" />
-<meta name="page-topic" content="<?php echo META_TOPIC; ?>" />
-<meta name="reply-to" content="<?php echo META_REPLY_TO; ?>" />
 <meta name="distribution" content="global" />
+<meta name="reply-to" content="<?php echo META_REPLY_TO; ?>" />
 <meta name="revisit-after" content="<?php echo META_REVISIT_AFTER; ?>" />
+<meta name="page-topic" content="<?php echo META_TOPIC; ?>" />
+<meta name="language" content="<?php echo $_SESSION['language_code']; ?>" />
 <?php
 
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
