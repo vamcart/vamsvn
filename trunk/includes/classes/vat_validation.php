@@ -1,12 +1,12 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: vat_validation.php 1283 2005-10-05 15:42:48Z mz $
+   $Id: vat_validation.php 1283 2007-02-06 20:23:03 VaM $ 
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2005 xtc_validate_vatid_status.inc.php 899 2005-04-29

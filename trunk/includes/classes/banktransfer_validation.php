@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: banktransfer_validation.php 899 2006-04-29 02:40:57Z mz $   
+   $Id: banktransfer_validation.php 899 2007-02-06 20:23:03 VaM $ 
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2006 xt:Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(banktransfer_validation.php,v 1.17 2003/02/18 18:33:15); www.oscommerce.com
    (c) 2003	 nextcommerce (banktransfer_validation.php,v 1.4 2003/08/1); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (banktransfer_validation.php,v 1.4 2003/08/1); xt-commerce.com
    (c) 2004 - 2006 fmce.de
    (c) 2004 - 2006 discus24.de
    (c) 2004 - 2006 Frank Maroke 
