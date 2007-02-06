@@ -1,15 +1,16 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: print_order.php 1185 2005-08-26 15:16:31Z mz $   
+   $Id: print_order.php 1185 2007-02-06 19:20:03 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (print_order.php,v 1.5 2003/08/24); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (print_order.php,v 1.5 2003/08/24); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

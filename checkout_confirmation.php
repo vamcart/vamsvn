@@ -1,17 +1,18 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: checkout_confirmation.php 1277 2005-10-01 17:02:59Z mz $   
+   $Id: checkout_confirmation.php 1277 2007-02-06 19:20:03 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(checkout_confirmation.php,v 1.137 2003/05/07); www.oscommerce.com 
    (c) 2003	 nextcommerce (checkout_confirmation.php,v 1.21 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (checkout_confirmation.php,v 1.21 2003/08/17); xt-commerce.com
 
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------

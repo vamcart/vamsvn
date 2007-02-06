@@ -1,24 +1,20 @@
 <?php
-//
-// +----------------------------------------------------------------------+
-// |zen-cart Open Source E-commerce                                       |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 2004 The zen-cart developers                           |
-// |                                                                      |
-// | http://www.zen-cart.com/index.php                                    |
-// |                                                                      |
-// | Portions Copyright (c) 2003 osCommerce                               |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 2.0 of the GPL license,       |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available through the world-wide-web at the following url:           |
-// | http://www.zen-cart.com/license/2_0.txt.                             |
-// | If you did not receive a copy of the zen-cart license and are unable |
-// | to obtain it through the world-wide-web, please send a note to       |
-// | license@zen-cart.com so we can mail you a copy immediately.          |
-// +----------------------------------------------------------------------+
-// $Id: index_ajax.php 1.0.1 14.03.2006 6:08 Andrew Berezin $
-//
+/* -----------------------------------------------------------------------------------------
+   $Id: index_ajax.php 1321 2007-02-06 19:20:03 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on:
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(index.php,v 1.84 2003/05/07); www.oscommerce.com
+   (c) 2005	 Andrew Berezin (index.php,v 1.13 2003/08/17); zen-cart.com
+
+   Released under the GNU General Public License
+   ---------------------------------------------------------------------------------------*/
 
 	define('AJAX_APPLICATION_RUNNING', true);
 //	if(defined('AJAX_APPLICATION_RUNNING')) {

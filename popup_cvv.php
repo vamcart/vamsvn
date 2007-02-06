@@ -1,15 +1,20 @@
 <?php
-
 /*------------------------------------------------------------------------------
-  $Id: popup_cvv.php 1310 2005-10-17 10:06:32Z mz $
+  $Id: popup_cvv.php 1310 2007-02-06 19:20:03 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+  -----------------------------------------------------------------------------
+   based on:
+   (c) 2004 xt:Commerce (popup_cvv.php,v 1.1.2.5 2003/05/02); xt-commerce.com
 
   XTC-CC - Contribution for XT-Commerce http://www.xt-commerce.com
   modified by http://www.netz-designer.de
 
   Copyright (c) 2003 netz-designer
-  -----------------------------------------------------------------------------
-  based on:
-  $Id: popup_cvv.php 1310 2005-10-17 10:06:32Z mz $
 
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com

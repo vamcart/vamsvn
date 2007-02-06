@@ -1,18 +1,18 @@
 <?php
-
-
 /* -----------------------------------------------------------------------------------------
-   $Id: checkout_shipping.php 1037 2005-07-17 15:25:32Z gwinger $   
+   $Id: checkout_shipping.php 1037 2007-02-06 19:20:03 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (cxtc_format_price) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(checkout_shipping.php,v 1.15 2003/04/08); www.oscommerce.com 
    (c) 2003	 nextcommerce (checkout_shipping.php,v 1.20 2003/08/20); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (checkout_shipping.php,v 1.20 2003/08/20); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------

@@ -1,4 +1,18 @@
 <?php
+/*------------------------------------------------------------------------------
+  $Id: robox.php 1310 2007-02-06 19:20:03 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+  -----------------------------------------------------------------------------
+   based on:
+   (c) 2005 Vetal (robox.php,v 1.48 2003/05/27); metashop.ru
+
+  Released under the GNU General Public License
+------------------------------------------------------------------------------*/
 
 function get_var($name, $default = 'none') {
   return (isset($_GET[$name])) ? $_GET[$name] : ((isset($_POST[$name])) ? $_POST[$name] : $default);

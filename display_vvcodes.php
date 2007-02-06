@@ -1,12 +1,17 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-  $Id: display_vvcodes.php 831 2005-03-13 10:16:09Z mz $   
+  $Id: display_vvcodes.php 831 2007-02-06 19:20:03 VaM $
 
-   Copyright (c) 2004 XT-Commerce
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
-  
-   Released under the GNU General Public License  
+   based on: 
+   (c) 2004  xt:Commerce (display_vvcodes.php,v 1.27 2003/08/24); xt-commerce.com 
+
+   Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
 require ('includes/application_top.php');

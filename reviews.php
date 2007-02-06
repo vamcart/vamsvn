@@ -1,17 +1,18 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: reviews.php 1238 2005-09-24 10:51:19Z mz $
+   $Id: reviews.php 1238 2007-02-06 19:20:03 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(reviews.php,v 1.48 2003/05/27); www.oscommerce.com
    (c) 2003	 nextcommerce (reviews.php,v 1.12 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (reviews.php,v 1.12 2003/08/17); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
