@@ -1,17 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: header.php 1140 2005-10-24 10:16:00Z VaM $
+   $Id: header.php 1140 2007-02-06 20:14:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2006 VaM Shop
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(header.php,v 1.40 2003/03/14); www.oscommerce.com
    (c) 2003	 nextcommerce (header.php,v 1.13 2003/08/17); www.nextcommerce.org
-   (c) 2005	 xt:Commerce (header.php,v 1.13 2005/08/10); www.xt-commerce.com
+   (c) 20054 xt:Commerce (header.php,v 1.13 2005/08/10); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------

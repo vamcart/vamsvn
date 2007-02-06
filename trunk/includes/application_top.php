@@ -1,18 +1,18 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: application_top.php 1323 2006-11-11 17:58:08Z mz $
+   $Id: application_top.php 1323 2007-02-06 20:14:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2006 VaM Shop
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(application_top.php,v 1.273 2003/05/19); www.oscommerce.com
    (c) 2003	 nextcommerce (application_top.php,v 1.54 2003/08/25); www.nextcommerce.org
-   (c) 2005	 xt:Commerce (application_top.php,v 1.54 2005-10-27); www.xt-commerce.com
+   (c) 2004	 xt:Commerce (application_top.php,v 1.54 2005-10-27); www.xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------

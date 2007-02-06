@@ -1,13 +1,15 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: tracking.php 1151 2005-08-12 09:19:33Z gwinger $   
+   $Id: tracking.php 1151 2007-02-06 20:14:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2004	 xt:Commerce (tracking.php,v 1.3 2003/08/13); xt-commerce.com 
 
    Third Party contribution:
    Some ideas and code from TrackPro v1.0 Web Traffic Analyzer 
