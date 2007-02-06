@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: authorizenet.php 998 2005-07-07 14:18:20Z mz $   
+   $Id: authorizenet.php 998 2007-02-06 21:07:20 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(authorizenet.php,v 1.48 2003/04/10); www.oscommerce.com 
    (c) 2003	 nextcommerce (authorizenet.php,v 1.9 2003/08/23); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (authorizenet.php,v 1.9 2003/08/23); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

@@ -1,18 +1,17 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: worldpay.php,v 1.0 
+   $Id: worldpay.php,v 1.0 2007-02-06 21:07:20 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   modified for XT-Commerce by XTC-Webservice.de http://www.xtc-webservice.de
-
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(world.php,v Version 1.6); www.oscommerce.com
+   (c) 2004	 xt:Commerce (world.php,v 1.6 2003/08/23); xt-commerce.com
 
    Released under the GNU General Public License
 

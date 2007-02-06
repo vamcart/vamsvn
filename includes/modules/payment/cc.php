@@ -1,15 +1,15 @@
 <?php
-
 /*------------------------------------------------------------------------------
-  $Id: cc.php 1160 2005-08-16 22:25:01Z hhgag $
+  $Id: cc.php 1160 2007-02-06 21:07:20 VaM $   
 
-  XTC-CC - Contribution for XT-Commerce http://www.xt-commerce.com
-  modified by http://www.netz-designer.de
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 netz-designer
+   Copyright (c) 2007 VaM Shop
   -----------------------------------------------------------------------------
   based on:
-  $Id: cc.php 1160 2005-08-16 22:25:01Z hhgag $
+   (c) 2004	 xt:Commerce (cc.php,v 1.7 2003/08/23); xt-commerce.com
 
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
