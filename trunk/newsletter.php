@@ -1,14 +1,18 @@
 <?php
-
 /*------------------------------------------------------------------------------
-   $Id: newsletter.php,v 1.0 
+   $Id: newsletter.php,v 1.0 2007-02-06 19:20:03 VaM $
 
-   Copyright (c) 2003 XT-Commerce
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce www.oscommerce.com 
    (c) 2003	 nextcommerce www.nextcommerce.org
+   (c) 2004	 xt:Commerce xt-commerce.com
    
    XTC-NEWSLETTER_RECIPIENTS RC1 - Contribution for XT-Commerce http://www.xt-commerce.com
    by Matthias Hinsche http://www.gamesempire.de

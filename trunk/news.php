@@ -1,4 +1,18 @@
 <?php
+/* -----------------------------------------------------------------------------------------
+   $Id: news.php 831 2007-02-06 19:20:03 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on:
+   (c) 2003	 osCommerce (privacy.php,v 1.2 2003/08/25); oscommerce.com
+   
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
   include( 'includes/application_top.php');
 

@@ -1,15 +1,16 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: send_order.php 1029 2005-07-14 19:08:49Z mz $   
+   $Id: send_order.php 1029 2007-02-06 19:20:03 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (send_order.php,v 1.1 2003/08/24); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (send_order.php,v 1.1 2003/08/24); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
