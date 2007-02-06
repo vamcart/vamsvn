@@ -1,8 +1,18 @@
 <?php
-/*
-  http://metashop.ru
-  metashop@metashop.ru
-*/
+/* -----------------------------------------------------------------------------------------
+   $Id: secpay.php 998 2007-02-06 21:07:20 VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2005 Vetal http://metashop.ru
+
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
   class roboxchange {
     var $code, $title, $description, $enabled;
