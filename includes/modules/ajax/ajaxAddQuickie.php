@@ -1,4 +1,18 @@
 <?php
+/* -----------------------------------------------------------------------------------------
+   $Id: ajaxAddQuickie.php 1243 2007-02-06 20:41:56 VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2006	 Andrew Berezin (ajaxAddQuickie.php,v 1.9 2003/08/17); zen-cart.com
+
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
 //var_dump($_POST);echo '<br>';
 	define("AJAX_ADDQUICK_RESULT", 'text'); // dropdown or text

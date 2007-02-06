@@ -1,24 +1,18 @@
 <?php
-//
-// +----------------------------------------------------------------------+
-// |zen-cart Open Source E-commerce                                       |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 2003 The zen-cart developers                           |
-// |                                                                      |
-// | http://www.zen-cart.com/index.php                                    |
-// |                                                                      |
-// | Portions Copyright (c) 2003 osCommerce                               |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 2.0 of the GPL license,       |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available through the world-wide-web at the following url:           |
-// | http://www.zen-cart.com/license/2_0.txt.                             |
-// | If you did not receive a copy of the zen-cart license and are unable |
-// | to obtain it through the world-wide-web, please send a note to       |
-// | license@zen-cart.com so we can mail you a copy immediately.          |
-// +----------------------------------------------------------------------+
-// $Id: loadStateXML.php,v 1.0.0 08.03.2006 12:29 Andrew Berezin $
-//
+/* -----------------------------------------------------------------------------------------
+   $Id: loadStateXML.php 1243 2007-02-06 20:41:56 VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2006	 Andrew Berezin (loadStateXML.php,v 1.9 2003/08/17); zen-cart.com
+
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
 $country = $_REQUEST['country_id'];
 
