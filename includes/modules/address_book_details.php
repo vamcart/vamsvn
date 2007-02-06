@@ -15,7 +15,7 @@
    (c) 2004	 xt:Commerce (address_book_details.php,v 1.9 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
-   ---------------------------------------------------------------------------------/-----*/
+   ---------------------------------------------------------------------------------------*/
 
   // include needed functions
   $module_smarty=new Smarty;
