@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: dp.php,v 1.1 2003/09/06 22:13:54 fanta2k Exp $   
+   $Id: dp.php,v 1.1 2007-02-06 21:19:57 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(dp.php,v 1.36 2003/03/09 02:14:35); www.oscommerce.com 
    (c) 2003	 nextcommerce (dp.php,v 1.12 2003/08/24); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (upse.php,v 1.12 2003/08/24); xt-commerce.com
 
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------
