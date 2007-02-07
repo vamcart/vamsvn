@@ -1,12 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: general.js.php 1262 2005-09-30 10:00:32Z mz $
+   $Id: general.js 899 2007-02-06 20:14:56 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2004 xt:Commerce (general.js,v 1.1 2004/03/17); xt-commerce.com 
+
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
