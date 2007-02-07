@@ -1,8 +1,18 @@
 <?php
-/*
-  http://metashop.ru
-  metashop@metashop.ru
-*/
+/* -----------------------------------------------------------------------------------------
+   $Id: roboxchange.php 998 2007/02/07 13:24:46 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2005	 Vetal metashop.ru
+
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
   define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'ќплата "электронными деньгами" (WebMoney, яндекс.ƒеньги, E-gold, MoneyMail, RuPay, INOCard)');
   define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (WebMoney, яндекс.ƒеньги, E-gold, MoneyMail, RuPay, INOCard)');
