@@ -1,15 +1,18 @@
 <?php
-/*
-  $Id$
-  Recover Cart Sales v 1.4 ENGLISH Language File
+/* --------------------------------------------------------------
+   $Id: recover_cart_sales.php 899 2007-02-07 17:36:57 VaM $
 
-  Recover Cart Sales contrib: JM Ivler (c)
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Released under the GNU General Public License
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2003	 JM Ivler (recover_cart_sales.php,v 1.4 2003/08/14); oscommerce.com
 
-*/
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 define('MESSAGE_STACK_CUSTOMER_ID', 'Незавершённый заказ покупателя (id код ');
 define('MESSAGE_STACK_DELETE_SUCCESS', ') успешно удалён.');

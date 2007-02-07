@@ -1,15 +1,17 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: coupon_admin.php 899 2006-04-29 02:40:57Z VaM $
+   $Id: coupon_admin.php 899 2007-02-07 17:36:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(coupon_admin.php,v 1.1.2.5 2003/05/13); www.oscommerce.com
+   (c) 2004	 xt:Commerce (coupon_admin.php,v 1.1.2.5 2003/05/13); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------

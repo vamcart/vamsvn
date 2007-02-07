@@ -1,14 +1,18 @@
 <?php
-/*
-  $Id: quick_updates.php v 2.4 $
+/* --------------------------------------------------------------
+   $Id: quick_updates.php 899 2007-02-07 17:36:57 VaM $
 
-  The Exchange Project - Community Made Shopping!
-  http://www.theexchangeproject.org
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 The Exchange Project
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2003	 osCommerce (quick_updates.php,v 1.4 2003/08/14); oscommerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 define('WARNING_MESSAGE','После внесения необходимых изменений нажмите кнопку Обновить для сохранения внесённых изменений.');
 define('TOP_BAR_TITLE', 'Изменение цен');
