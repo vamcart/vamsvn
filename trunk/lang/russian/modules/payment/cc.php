@@ -1,19 +1,18 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: cc.php 1003 2005-07-10 18:58:52Z VaM $
+  $Id: cc.php 1003 2007/02/07 13:24:46 VaM $
 
-  XTC-CC - Contribution for XT-Commerce http://www.xt-commerce.com
-  modified by http://www.netz-designer.de
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 netz-designer
+   Copyright (c) 2007 VaM Shop
   -----------------------------------------------------------------------------
   based on:
-  $Id: cc.php 1003 2005-07-10 18:58:52Z mz $
-
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-
-  Copyright (c) 2002 osCommerce
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(cc.php,v 1.28 2003/02/14); www.oscommerce.com
+   (c) 2003	 nextcommerce (cc.php,v 1.4 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (cc.php,v 1.4 2003/08/13); xt-commerce.com
 
   Released under the GNU General Public License
 ------------------------------------------------------------------------------*/

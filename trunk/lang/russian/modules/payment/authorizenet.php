@@ -1,20 +1,22 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: authorizenet.php 1003 2005-07-10 18:58:52Z mz $   
+   $Id: authorizenet.php 1003 2007/02/07 13:24:46 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(authorizenet.php,v 1.15 2003/02/16); www.oscommerce.com 
    (c) 2003	 nextcommerce (authorizenet.php,v 1.4 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (authorizenet.php,v 1.4 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------*/
+   
 define('MODULE_PAYMENT_TYPE_PERMISSION', 'cod');
 define('MODULE_PAYMENT_AUTHORIZENET_TEXT_TITLE', 'Authorize.net');
 define('MODULE_PAYMENT_AUTHORIZENET_TEXT_DESCRIPTION', 'Credit Card Test Info:<br /><br />CC#: 4111111111111111<br />Expiry: Any');

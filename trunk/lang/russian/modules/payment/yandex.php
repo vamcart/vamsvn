@@ -1,19 +1,22 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: yandex.php 998 2005-07-07 14:18:20Z VaM $   
+   $Id: yandex.php 998 2007/02/07 13:24:46 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(moneyorder.php,v 1.8 2003/02/16); www.oscommerce.com 
    (c) 2003	 nextcommerce (moneyorder.php,v 1.4 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (yandex.php,v 1.4 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
+
   define('MODULE_PAYMENT_YANDEX_TEXT_TITLE', 'Яндекс-Деньги');
   define('MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION', 'Информация для оплаты:<br /><br />Номер Яндекс-кошелька: ' . MODULE_PAYMENT_YANDEX_ID . '<br /><br />' . 'Ваш заказ будет выполнен только после получения оплаты!');
   define('MODULE_PAYMENT_YANDEX_TEXT_EMAIL_FOOTER', "Информация для оплаты:\n\nНомер нашего Яндекс-кошелька: ". MODULE_PAYMENT_YANDEX_ID . "\n\n" . 'Ваш заказ будет выполнен только после получения оплаты!');

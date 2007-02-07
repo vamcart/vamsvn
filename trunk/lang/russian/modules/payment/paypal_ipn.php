@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: paypal_ipn.php v1.0 998 2005-08-16 14:18:20Z HHGAG $   
+   $Id: paypal_ipn.php v1.0 998 2007/02/07 13:24:46 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2005 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(paypal.php,v 1.39 2003/01/29); www.oscommerce.com 
    (c) 2003	 nextcommerce (paypal.php,v 1.8 2003/08/24); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (paypal_ipn.php,v 1.4 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

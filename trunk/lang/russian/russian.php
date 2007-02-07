@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian.php 1260 2005-09-29 17:48:04Z VaM $
+   $Id: russian.php 1260 2007/02/07 13:24:46 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(german.php,v 1.119 2003/05/19); www.oscommerce.com
    (c) 2003  nextcommerce (german.php,v 1.25 2003/08/25); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (russian.php,v 1.25 2003/08/25); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
