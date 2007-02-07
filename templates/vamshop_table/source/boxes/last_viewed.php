@@ -1,12 +1,15 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: last_viewed.php 1292 2005-10-07 16:10:55Z mz $   
+   $Id: last_viewed.php 1292 2007-02-07 12:30:44 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2004 xt:Commerce (last_viewed.php,v 1.8 2003/08/17); xt-commerce.com 
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
