@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_error.inc.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: xtc_db_error.inc.php 899 2007-02-07 10:51:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(database.php,v 1.19 2003/03/22); www.oscommerce.com 
    (c) 2003	 nextcommerce (xtc_db_error.inc.php,v 1.4 2003/08/19); www.nextcommerce.org 
+   (c) 2004 xt:Commerce (xtc_db_error.inc.php,v 1.4 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -36,7 +38,7 @@ function xtc_db_error($query, $errno, $error) {
 	 }
    $log = date("d/m/Y H:m:s",time()) . ' | ' . $errno . ' - ' . $error . ' | ' . $query . ' | ' . $_SERVER["REQUEST_URI"] . "\n";
 	 error_log($log, 3, 'mysql_db_error.log');
-   mail(DB_ERR_MAIL, 'Проблемы с MySQL сервером!', $msg,
+   mail(DB_ERR_MAIL, 'MySQL DB Error!', $msg,
         'From: db_error@'.$_SERVER["SERVER_NAME"]);
 if (!headers_sent() && file_exists('db_error.html') ) {
      header('Location: db_error.html');

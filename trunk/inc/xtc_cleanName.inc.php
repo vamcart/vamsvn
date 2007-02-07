@@ -1,11 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_cleanName.inc.php 1319 2005-10-23 10:35:15Z mz $
+   $Id: xtc_cleanName.inc.php 1319 2007-02-07 10:51:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2003	 nextcommerce (xtc_cleanName.inc.php); www.nextcommerce.org 
+   (c) 2004 xt:Commerce (xtc_cleanName.inc.php 2003/08/25); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/

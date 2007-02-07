@@ -1,11 +1,12 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: base64todec.inc.php 899 2005-04-29 02:40:57Z hhgag $
+  $Id: base64todec.inc.php 899 2007-02-07 10:51:57 VaM $
 
-  XTC-CC - Contribution for XT-Commerce http://www.xt-commerce.com
-  modified by http://www.netz-designer.de
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 netz-designer
+   Copyright (c) 2007 VaM Shop
   -----------------------------------------------------------------------------
   based on:
   credit card encryption functions for the catalog module

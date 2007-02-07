@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-$Id: xtc_get_cookies_info.inc.php 1535 2006-11-26 21:38:20Z mz $
+$Id: xtc_get_cookies_info.inc.php 1535 2007-02-07 10:51:57 VaM $
 
 @author Andrey Chorniy
 Released under the GNU General Public License
