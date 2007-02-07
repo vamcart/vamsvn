@@ -1,14 +1,18 @@
 <?php
-/*
-  $Id: easypopulate.php,v 1.4 2004/09/21  zip1 Exp $
+/* --------------------------------------------------------------
+   $Id: easypopulate.php 899 2007-02-07 17:36:57 VaM $
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 20042 osCommerce
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2003	 osCommerce (easypopulate.php,v 1.4 2003/08/14); oscommerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 define('HEADING_TITLE', 'Excel импорт/экспорт');
 define('EASY_VERSION_A', 'Excel импорт/экспорт ');

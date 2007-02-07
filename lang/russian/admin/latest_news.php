@@ -1,12 +1,18 @@
 <?php
-/*
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+/* --------------------------------------------------------------
+   $Id: latest_news.php 899 2007-02-07 17:36:57 VaM $
 
-  Copyright (c) 2002 osCommerce
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Released under the GNU General Public License
-*/
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2003	 osCommerce (latest_news.php,v 1.4 2003/08/14); oscommerce.com
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 define('HEADING_TITLE', 'Новости');
 

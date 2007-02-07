@@ -1,18 +1,19 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: new_attributes.php 899 2006-04-29 02:40:57Z VaM $
+   $Id: new_attributes.php 899 2007-02-07 17:36:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2002-2003 osCommerce coding standards www.oscommerce.com
+   (c) 2004	 xt:Commerce (new_attributes.php,v 1.5 2003/08/14); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
-
 
    define('SORT_ORDER','Порядок сортировки');
    define('ATTR_MODEL','Код атрибута');

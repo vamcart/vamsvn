@@ -1,11 +1,12 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: blacklist.php 899 2006-04-29 02:40:57Z VaM $
+  $Id: blacklist.php 899 2007-02-07 17:36:57 VaM $
 
-  XTC-CC - Contribution for XT-Commerce http://www.xt-commerce.com
-  modified by http://www.netz-designer.de
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 netz-designer
+   Copyright (c) 2007 VaM Shop
   -----------------------------------------------------------------------------
   based on:
   $Id: blacklist.php.php,v 1.00

@@ -1,15 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: cvs_backend.php 2006-04-29 02:40:57Z VaM $
+   $Id: cvs_backend.php 2007-02-07 17:36:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2004	 xt:Commerce (csv_backend.php,v 1.4 2003/08/14); xt-commerce.com
 
-   Released under the GNU General Public License
+   Released under the GNU General Public License 
    --------------------------------------------------------------*/
-
 
    define('TITLE','CSV');
    define('HEADING_TITLE','CSV импорт/экспорт');
