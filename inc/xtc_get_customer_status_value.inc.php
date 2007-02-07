@@ -1,11 +1,12 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_get_customer_status_value.inc.php 1031 2005-07-15 10:30:28Z gwinger $   
+   $Id: xtc_get_customer_status_value.inc.php 1031 2007-02-07 10:51:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on Third Party contribution:
    Customers Status v3.x  (c) 2002-2003 Copyright Elari elari@free.fr | www.unlockgsm.com/dload-osc/ | CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/elari/?sortby=date#dirlist
@@ -16,6 +17,7 @@
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(general.php,v 1.225 2003/05/29); www.oscommerce.com 
    (c) 2003	 nextcommerce (xtc_get_customer_status_value.inc.php,v 1.4 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (xtc_get_customer_status_value.inc.php,v 1.4 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

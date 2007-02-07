@@ -1,15 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_queryCached.inc.php 782 2005-02-19 19:26:00Z khan_thep $
+   $Id: xtc_db_queryCached.inc.php 782 2007-02-07 10:51:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2002-2003 osCommerce(database.php,v 1.19 2003/03/22); www.oscommerce.com
-
+   (c) 2004 xt:Commerce (database.php,v 1.19 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
