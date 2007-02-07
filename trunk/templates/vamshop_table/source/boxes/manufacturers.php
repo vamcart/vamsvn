@@ -1,17 +1,18 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: manufacturers.php 1262 2005-09-30 10:00:32Z mz $
+   $Id: manufacturers.php 1262 2007-02-07 12:30:44 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(manufacturers.php,v 1.18 2003/02/10); www.oscommerce.com
    (c) 2003	 nextcommerce (manufacturers.php,v 1.9 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (manufacturers.php,v 1.9 2003/08/17); xt-commerce.com 
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
