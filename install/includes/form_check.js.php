@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: form_check.js.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: form_check.js.php 899 2007-02-07 13:12:57 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(form_check.js.php,v 1.9 2003/05/19); www.oscommerce.com
    (c) 2003	 nextcommerce (account.php,v 1.12 2003/08/17); www.nextcommerce.org 
+   (c) 2004	 xt:Commerce (application.php,v 1.16 2003/08/13); xt-commerce.com 
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/

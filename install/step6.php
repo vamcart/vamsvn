@@ -1,15 +1,16 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: step6.php 941 2005-05-11 19:49:53Z hhgag $
+   $Id: step6.php 941 2007-02-07 13:12:57 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
-   Released under the GNU General Public License
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (step6.php,v 1.29 2003/08/20); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (step6.php,v 1.29 2003/08/20); xt-commerce.com 
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
