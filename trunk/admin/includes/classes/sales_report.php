@@ -1,15 +1,17 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: sales_report.php 1311 2005-10-18 12:30:40Z mz $
+   $Id: sales_report.php 1311 2007-02-08 12:17:21Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce coding standards; www.oscommerce.com
+   (c) 2004	 xt:Commerce (sales_report.php,v 1.4 2003/08/14); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------
