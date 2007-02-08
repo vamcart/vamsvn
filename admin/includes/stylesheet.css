@@ -434,3 +434,97 @@ a.info:hover span
    }
 
 /* /Подсказки */
+
+/* Навигационное меню */
+
+#nav, #nav ul 
+   {
+	  padding: 0;
+	  background: transparent;
+	  margin: 0;
+	  list-style: none;
+	  line-height: 1;
+   }
+
+#nav a 
+   {
+     color: white;
+     text-decoration: none;
+	  display: block;
+	  width: 13em;
+   }
+
+#nav ul li a 
+   {
+     color: black;
+     text-decoration: none;
+	  display: block;
+	  width: 13em;
+	  padding: 0.1em 0em 0.1em 0em;
+   }
+
+#nav ul li a:hover 
+   {
+     text-decoration: none;
+	  background-color: #c6d3ef;
+   }
+
+#nav li 
+   {
+	  float: left;
+	  padding: 0.1em 0.1em 0.1em 0.1em;
+     width: 13em;
+   }
+
+#nav li.firstlevel 
+   {
+	  padding-left: 1em;
+   }
+   
+#nav li ul 
+   {
+	  position: absolute;
+	  background-color:	#FFFBEE;
+	  border: 1px solid #8C867B;
+	  border-style: inset;
+	  width: 14em;
+	  padding: 0.5em 0.5em 0.5em 0.5em;
+	  left: -999em;
+   }
+
+#nav li ul ul 
+   {
+	  margin: -1em 0 0 14em;
+   }
+
+#nav li:hover ul ul, #nav li.sfhover ul ul 
+   {
+	  left: -999em;
+   }
+
+#nav li:hover ul, #nav li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul 
+   {
+	  left: auto;
+   }
+
+ul.nav iframe 
+   {
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  z-index: -1;
+	  filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0);
+   }
+
+* html ul.nav li 
+   { 
+     z-index: 201; 
+   }
+
+/* this is for IE 5.0
+select.hide 
+   { 
+     visibility: hidden; 
+   }
+
+/* /Навигационное меню */
