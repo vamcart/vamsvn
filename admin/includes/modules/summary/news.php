@@ -1,14 +1,18 @@
 <?php
-/*
-  $Id: customers.php 814 2006-08-27 15:28:23Z hpdl $
+/* -----------------------------------------------------------------------------------------
+   $Id: news.php 950 2007-02-08 12:51:57 VaM $   
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2005 osCommerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2006	 osCommerce (news.php,v 1.25 2003/08/19); oscommerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
