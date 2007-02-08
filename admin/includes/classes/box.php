@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: box.php 950 2005-05-14 16:45:21Z mz $   
+   $Id: box.php 950 2007-02-08 12:17:21Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(box.php,v 1.5 2002/03/16); www.oscommerce.com 
    (c) 2003	 nextcommerce (box.php,v 1.5 2003/08/18); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (box.php,v 1.5 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License 
     
