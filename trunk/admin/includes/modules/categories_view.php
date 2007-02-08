@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: categories_view.php 901 2005-04-29 10:32:14Z novalis $
+   $Id: categories_view.php 901 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
    (c) 2003  nextcommerce (categories.php,v 1.37 2003/08/18); www.nextcommerce.org
+   (c) 2004 xt:Commerce (categories.php,v 1.37 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------

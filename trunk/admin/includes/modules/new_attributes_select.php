@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: new_attributes_select.php 901 2005-04-29 10:32:14Z novalis $
+   $Id: new_attributes_select.php 901 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(new_attributes_select.php); www.oscommerce.com 
    (c) 2003	 nextcommerce (new_attributes_select.php,v 1.9 2003/08/21); www.nextcommerce.org
+   (c) 2004 xt:Commerce (new_attributes_select.php,v 1.9 2003/08/21); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------

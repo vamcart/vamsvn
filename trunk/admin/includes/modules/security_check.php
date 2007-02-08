@@ -1,15 +1,16 @@
 <?php
-
 /* --------------------------------------------------------------
-   $Id: security_check.php 1221 2005-09-20 16:44:09Z mz $
+   $Id: security_check.php 1221 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (security_check.php,v 1.2 2003/08/23); www.nextcommerce.org
+   (c) 2004 xt:Commerce (security_check.php,v 1.2 2003/08/23); xt-commerce.com
    
    Released under the GNU General Public License
    --------------------------------------------------------------*/
