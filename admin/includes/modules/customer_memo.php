@@ -1,18 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: customer_memo.php 955 2005-05-19 09:58:02Z novalis $
+   $Id: customer_memo.php 955 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
-
-
-   Released under the GNU General Public License 
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (customer_memo.php,v 1.6 2003/08/18); www.nextcommerce.org
-   
+   (c) 2004 xt:Commerce (customer_memo.php,v 1.6 2003/08/18); xt-commerce.com
+
+   Released under the GNU General Public License 
    --------------------------------------------------------------*/
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 

@@ -1,13 +1,15 @@
 <?php
-
 /* --------------------------------------------------------------
-   $Id: cross_selling.php 799 2005-02-23 18:08:06Z novalis $
+   $Id: cross_selling.php 799 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2005 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
+   based on:
+   (c) 2004 xt:Commerce (cross_selling.php,v 1.37 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/

@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: group_prices.php 1307 2005-10-14 10:36:37Z mz $
+   $Id: group_prices.php 1307 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(based on original files from OSCommerce CVS 2.2 2002/08/28 02:14:35); www.oscommerce.com
    (c) 2003         nextcommerce (group_prices.php,v 1.16 2003/08/21); www.nextcommerce.org
+   (c) 2004 xt:Commerce (group_prices.php,v 1.16 2003/08/21); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------

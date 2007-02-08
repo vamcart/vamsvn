@@ -1,13 +1,15 @@
 <?php
-
 /* --------------------------------------------------------------
-   $Id: products_images.php 1166 2005-08-21 00:52:02Z mz $
+   $Id: products_images.php 1166 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
-
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on:
+   (c) 2004	 xt:Commerce (products_images.php,v 1.2 2003/08/23); www.nextcommerce.org
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/

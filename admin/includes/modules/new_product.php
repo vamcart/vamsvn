@@ -1,17 +1,18 @@
 <?php
-
 /* --------------------------------------------------------------
-   $Id: new_product.php 897 2005-04-28 21:36:55Z mz $
+   $Id: new_product.php 897 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
    (c) 2003  nextcommerce (categories.php,v 1.37 2003/08/18); www.nextcommerce.org
+   (c) 2004 xt:Commerce (new_product.php,v 1.9 2003/08/21); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------
