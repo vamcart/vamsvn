@@ -1,11 +1,12 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: export_functions.php 950 2005-05-14 16:45:21Z mz $
+   $Id: export_functions.php 950 2007-02-08 12:28:21 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
@@ -13,7 +14,7 @@
    (c) 2003     nextcommerce (xtc_format_price.inc.php,v 1.7 2003/08/19); www.nextcommerce.org
    (c) 2003     nextcommerce (xtc_get_products_price.inc.php,v 1.13 2003/08/20); www.nextcommerce.org
    (c) 2003     nextcommerce (xtc_format_special_price.inc.php,v 1.6 2003/08/20); www.nextcommerce.org
-
+   (c) 2004 xt:Commerce (export_functions.php,v 1.6 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/

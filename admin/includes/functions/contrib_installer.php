@@ -1,4 +1,18 @@
 <?php
+/* --------------------------------------------------------------
+   $Id: contrib_installer.php 950 2007-02-08 12:28:21 VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2004 osCommerce (contrib_installer.php,v 1.6 2003/08/18); oscommerce.com
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 
