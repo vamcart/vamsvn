@@ -1,15 +1,17 @@
 <?php
    /* -----------------------------------------------------------------------------------------
-   $Id: listproducts.php 1312 2005-10-18 14:18:20Z mz $
+   $Id: listproducts.php 1312 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce (validproducts.php,v 0.01 2002/08/17); www.oscommerce.com
+   (c) 2002-2003 osCommerce (listprodcuts.php,v 0.01 2002/08/17); www.oscommerce.com
+   (c) 2004	 xt:Commerce (listproducts.php,v 0.01 2002/08/17); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------

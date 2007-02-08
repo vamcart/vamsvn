@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: mail.php 955 2005-05-19 09:58:02Z novalis $   
+   $Id: mail.php 955 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(mail.php,v 1.30 2002/03/16 01:07:28); www.oscommerce.com 
    (c) 2003	 nextcommerce (mail.php,v 1.11 2003/08/18); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (mail.php,v 1.11 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------

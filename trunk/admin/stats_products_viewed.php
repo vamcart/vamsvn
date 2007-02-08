@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: stats_products_viewed.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: stats_products_viewed.php 899 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(stats_products_viewed.php,v 1.27 2003/01/29); www.oscommerce.com 
    (c) 2003	 nextcommerce (stats_products_viewed.php,v 1.9 2003/08/18); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (stats_products_viewed.php,v 1.9 2003/08/18); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/

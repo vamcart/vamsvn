@@ -1,17 +1,18 @@
 <?php
-
 /* --------------------------------------------------------------
-   $Id: create_account.php 1296 2005-10-08 17:52:26Z mz $   
+   $Id: create_account.php 1296 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(customers.php,v 1.76 2003/05/04); www.oscommerce.com 
    (c) 2003	 nextcommerce (create_account.php,v 1.17 2003/08/24); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (create_account.php,v 1.17 2003/08/24); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------

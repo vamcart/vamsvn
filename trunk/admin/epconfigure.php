@@ -1,9 +1,20 @@
 <?php
+/* --------------------------------------------------------------
+   $Id: epconfigure.php 1064 2007-02-08 11:13:01Z VaM $   
 
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-/*
-  $Id: epconfigure.php,v 1.0 2004/09/23 teo $
-*/
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on:
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce( based on original files from OSCommerce CVS 2.2 2002/08/28 02:14:35); www.oscommerce.com
+   (c) 2004	 osCommerce (epconfigure.php,v 1.28 2003/08/18); oscommerce.com
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 //
 //*******************************

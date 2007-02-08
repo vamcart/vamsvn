@@ -1,14 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: print_packingslip.php 899 2005-04-29 02:40:57Z hhgag $   
+   $Id: print_packingslip.php 899 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (print_order.php,v 1.1 2003/08/19); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (print_packingslip.php,v 1.1 2003/08/19); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
