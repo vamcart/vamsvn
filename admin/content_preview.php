@@ -1,14 +1,16 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: content_preview.php 1304 2005-10-12 18:04:43Z mz $   
+   $Id: content_preview.php 1304 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2003	 nextcommerce (content_preview.php,v 1.2 2003/08/25); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (content_preview.php,v 1.2 2003/08/25); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

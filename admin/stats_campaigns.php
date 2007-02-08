@@ -1,15 +1,17 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: stats_campaigns.php 1179 2005-08-25 12:37:13Z mz $
+   $Id: stats_campaigns.php 1179 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2005 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce coding standards; www.oscommerce.com
+   (c) 2004	 xt:Commerce (stats_campaigns.php,1.5 2004/03/17); xt-commerce.com
 
    Released under the GNU General Public License
    --------------------------------------------------------------

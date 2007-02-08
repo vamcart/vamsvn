@@ -1,11 +1,19 @@
 <?php
-/*
-  cip_manager.php
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-  Copyright (c) 2003 osCommerce
-  Released under the GNU General Public License
-*/
+/* --------------------------------------------------------------
+   $Id: cip_manager.php 1117 2007-02-08 11:13:01Z VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on:
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce coding standards; www.oscommerce.com
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
 if(defined('ESCOM_VERSION')){
 	require(DIR_FS_ADMIN_INCLUDES.'application_top.php');

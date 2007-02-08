@@ -1,4 +1,20 @@
 <?php
+/* --------------------------------------------------------------
+   $Id: languages.php 1180 2007-02-08 11:13:01Z VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(latest_news.php,v 1.33 2003/05/07); www.oscommerce.com 
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
+
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php');
   require_once (DIR_FS_INC.'xtc_image_submit.inc.php');

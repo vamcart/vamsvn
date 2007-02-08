@@ -1,21 +1,19 @@
 <?php
-/*
-  $Id: quick_updates.php,v 2.4 2003/06/04 11:44:34 HRB Exp $
+/* --------------------------------------------------------------
+   $Id: quick_updates.php 1125 2007-02-08 11:13:01Z VaM $   
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Based on the original script contributed by Burt (burt@xwww.co.uk)
-        and by Henri Bredehoeft (hrb@nermica.net)
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(quick_updates.php,v 1.19 2003/02/06); www.oscommerce.com 
 
-  This version was contributed by Mathieu (contact@mathieueylert.com)
-
-  (http://www.oscommerce-fr.info/forums)
-
-  Copyright (c) 2002 osCommerce
-
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
   require('includes/application_top.php');
   require_once (DIR_FS_INC.'xtc_image_submit.inc.php');

@@ -1,16 +1,19 @@
 <?php
-/*
- $Id$
- Recover Cart Sales Tool v1.4
+/* --------------------------------------------------------------
+   $Id: recover_cart_sales.php 1125 2007-02-08 11:13:01Z VaM $   
 
- osCommerce, Open Source E-Commerce Solutions
- http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
- Copyright (c) 2003 JM Ivler / OSCommerce
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(recover_cart_sales.php,v 1.19 2003/02/06); www.oscommerce.com 
 
- Released under the GNU General Public License
-
-*/
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
 
  require('includes/application_top.php');
  require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');

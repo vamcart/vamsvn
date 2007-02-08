@@ -1,11 +1,12 @@
 <?php
    /* -----------------------------------------------------------------------------------------
-   $Id: validcategories.php 1316 2005-10-21 15:30:58Z mz $
+   $Id: validcategories.php 1316 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project (earlier name of osCommerce)
@@ -25,7 +26,6 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-
 
 require('includes/application_top.php');
 

@@ -1,15 +1,17 @@
 <?php
    /* -----------------------------------------------------------------------------------------
-   $Id: gv_queue.php 1030 2005-07-14 20:22:32Z novalis $
+   $Id: gv_queue.php 1030 2007-02-08 11:13:01Z VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project (earlier name of osCommerce)
    (c) 2002-2003 osCommerce (gv_queue.php,v 1.2.2.5 2003/05/05); www.oscommerce.com
+   (c) 2004	 xt:Commerce (gv_queue.php,v 1.2.2.5 2003/05/05); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
