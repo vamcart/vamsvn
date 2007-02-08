@@ -156,14 +156,16 @@
     $file_contents = '<?php' . "\n" .
                      '/* --------------------------------------------------------------' . "\n" .
                      '' . "\n" .
-                     '  XT-Commerce - community made shopping' . "\n" .
-                     '  http://www.xt-commerce.com' . "\n" .
+                     '  VaM Shop - open source ecommerce solution' . "\n" .
+                     '  http://vamshop.ru' . "\n" .
+                     '  http://vamshop.com' . "\n" .
                      '' . "\n" .
-                     '   Copyright (c) 2003 XT-Commerce' . "\n" .
+                     '   Copyright (c) 2007 VaM Shop' . "\n" .
                      '  --------------------------------------------------------------' . "\n" .
                      '  based on:' . "\n" . 
                      '  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)' . "\n" . 
                      '  (c) 2002-2003 osCommerce (configure.php,v 1.13 2003/02/10); www.oscommerce.com' . "\n" . 
+                     '  (c) 2004 xt:Commerce (configure.php,v 1.13 2003/02/10); xt-commerce.com' . "\n" . 
                      '' . "\n" .
                      '  Released under the GNU General Public License' . "\n" . 
                      '  --------------------------------------------------------------*/' . "\n" .
@@ -209,14 +211,16 @@
                      '/* --------------------------------------------------------------' . "\n" .
                      '  ### Be careful, this is the backup of your original configuration data ###' . "\n" .
                      '' . "\n" .
-                     '  XT-Commerce - community made shopping' . "\n" .
-                     '  http://www.xt-commerce.com' . "\n" .
+                     '  VaM Shop - open source ecommerce solution' . "\n" .
+                     '  http://vamshop.ru' . "\n" .
+                     '  http://vamshop.com' . "\n" .
                      '' . "\n" .
-                     '   Copyright (c) 2003 XT-Commerce' . "\n" .
+                     '   Copyright (c) 2007 VaM Shop' . "\n" .
                      '  --------------------------------------------------------------' . "\n" .
                      '  based on:' . "\n" .
                      '  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)' . "\n" .
                      '  (c) 2002-2003 osCommerce (configure.php,v 1.13 2003/02/10); www.oscommerce.com' . "\n" .
+                     '  (c) 2004 xt:Commerce (configure.php,v 1.13 2003/02/10); xt-commerce.com' . "\n" . 
                      '' . "\n" .
                      '  Released under the GNU General Public License' . "\n" .
                      '  --------------------------------------------------------------*/' . "\n" .
@@ -262,10 +266,11 @@
     $file_contents = '<?php' . "\n" .
                      '/* --------------------------------------------------------------' . "\n" .
                      '' . "\n" .
-                     '  XT-Commerce - community made shopping' . "\n" .
-                     '  http://www.xt-commerce.com' . "\n" .
+                     '  VaM Shop - open source ecommerce solution' . "\n" .
+                     '  http://vamshop.ru' . "\n" .
+                     '  http://vamshop.com' . "\n" .
                      '' . "\n" .
-                     '   Copyright (c) 2003 XT-Commerce' . "\n" .
+                     '   Copyright (c) 2007 VaM Shop' . "\n" .
                      '  --------------------------------------------------------------' . "\n" .
                      '  based on:' . "\n" . 
                      '  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
@@ -273,6 +278,7 @@
   
 ' . "\n" . 
                      '  (c) 2002-2003 osCommerce (configure.php,v 1.14 2003/02/21); www.oscommerce.com' . "\n" . 
+                     '  (c) 2004 xt:Commerce (configure.php,v 1.13 2003/02/10); xt-commerce.com' . "\n" . 
                      '' . "\n" .
                      '  Released under the GNU General Public License' . "\n" . 
                      '  --------------------------------------------------------------*/' . "\n" .
@@ -332,14 +338,16 @@
                      '/* --------------------------------------------------------------' . "\n" .
                      '  ### Be careful, this is the backup of your original configuration data ###' . "\n" .
                      '' . "\n" .
-                     '  XT-Commerce - community made shopping' . "\n" .
-                     '  http://www.xt-commerce.com' . "\n" .
+                     '  VaM Shop - open source ecommerce solution' . "\n" .
+                     '  http://vamshop.ru' . "\n" .
+                     '  http://vamshop.com' . "\n" .
                      '' . "\n" .
-                     '   Copyright (c) 2003 XT-Commerce' . "\n" .
+                     '   Copyright (c) 2007 VaM Shop' . "\n" .
                      '  --------------------------------------------------------------' . "\n" .
                      '  based on:' . "\n" . 
                      '  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)' . "\n" . 
                      '  (c) 2002-2003 osCommerce (configure.php,v 1.14 2003/02/21); www.oscommerce.com' . "\n" . 
+                     '  (c) 2004 xt:Commerce (configure.php,v 1.13 2003/02/10); xt-commerce.com' . "\n" . 
                      '' . "\n" .
                      '  Released under the GNU General Public License' . "\n" .
                      '  --------------------------------------------------------------*/' . "\n" .
