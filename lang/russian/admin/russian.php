@@ -73,6 +73,7 @@ define('BOX_HEADING_MODULES','Модули');
 define('BOX_HEADING_ZONE','Регионы/Налоги');
 define('BOX_HEADING_CUSTOMERS','Покупатели');
 define('BOX_HEADING_PRODUCTS','Каталог');
+define('BOX_HEADING_OTHER','Разное');
 define('BOX_HEADING_STATISTICS','Статистика');
 define('BOX_HEADING_TOOLS','Инструменты');
 define('BOX_HEADING_LOGOFF','Выход');
