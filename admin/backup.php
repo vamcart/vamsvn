@@ -28,8 +28,9 @@
         break;
       case 'backupnow':
         @xtc_set_time_limit(0);
-        $schema = '# XT-Commerce' . "\n" .
-                  '# http://www.xt-commerce.com' . "\n" .
+        $schema = '# VaM Shop' . "\n" .
+                  '# http://vamshop.ru' . "\n" .
+                  '# http://vamshop.com' . "\n" .
                   '#' . "\n" .
                   '# Database Backup For ' . STORE_NAME . "\n" . 
                   '# Copyright (c) ' . date('Y') . ' ' . STORE_OWNER . "\n" .
