@@ -1,9 +1,15 @@
 <?php
 /* --------------------------------------------------------------
- $Id: file_system.php 2006-11-13
+ $Id: file_system.php 950 2007-02-08 12:28:21 VaM $   
 
- XT-Commerce - community made shopping
- http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on:
+   (c) 2004 xt:Commerce (file_system.php,v 1.6 2003/08/20); xt-commerce.com
 
  Released under the GNU General Public License
  --------------------------------------------------------------*/
