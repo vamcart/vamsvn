@@ -1,4 +1,19 @@
 <?php
+/* --------------------------------------------------------------
+   $Id: column_left.php 1231 2007-02-08 12:90:57 VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   based on: 
+   (c) 2004	 osCommerce (configure_ci.php,v 1.25 2003/08/19); xt-commerce.com
+
+   Released under the GNU General Public License 
+   --------------------------------------------------------------*/
+
 if(!defined('DIR_WS_ADMIN')){
 	//oscommerce v3
 	define('DIR_WS_ADMIN', DIR_WS_HTTP_CATALOG . 'admin/');

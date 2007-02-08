@@ -1,16 +1,18 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: column_left.php 1231 2005-09-21 13:05:36Z mz $
+   $Id: column_left.php 1231 2007-02-08 12:90:57 VaM $   
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(column_left.php,v 1.15 2002/01/11); www.oscommerce.com 
    (c) 2003	 nextcommerce (column_left.php,v 1.25 2003/08/19); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (column_left.php,v 1.25 2003/08/19); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
