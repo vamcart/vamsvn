@@ -458,9 +458,15 @@ a.info:hover span
 #nav ul li a 
    {
      color: black;
+	  background:	#fffaeb;
      text-decoration: none;
 	  display: block;
 	  width: 12.9em;
+   }
+
+#nav ul li a.sub 
+   {
+     background: #ffe8a1; 
    }
 
 #nav ul li a:hover 
@@ -483,7 +489,7 @@ a.info:hover span
 #nav li ul 
    {
 	  position: absolute;
-	  background-color:	#FFFBEE;
+	  background:	#fffaeb;
 	  border: 1px solid #8C867B;
 	  border-style: inset;
 	  width: 14.3em;
