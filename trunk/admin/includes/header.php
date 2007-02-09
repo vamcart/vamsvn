@@ -131,7 +131,7 @@
 
 	<li class="firstlevel"><a href="#"><?php echo BOX_HEADING_CONFIGURATION; ?></a>
 		<ul>
-			<li><?php echo '<a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_HEADING_CONFIGURATION . '</a>' . "\n"; ?>
+			<li><?php echo '<a class="sub" href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_HEADING_CONFIGURATION . '</a>' . "\n"; ?>
 				<ul>
 
 <?php
@@ -247,7 +247,7 @@
 
 	<li><a href="#"><?php echo BOX_HEADING_OTHER; ?></a>
 		<ul>
-			<li><a href="#"><?php echo BOX_HEADING_LOCATION_AND_TAXES; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_LOCATION_AND_TAXES; ?></a>
 				<ul>
 
 <?php
@@ -266,7 +266,7 @@
 
 				</ul>
 			</li>
-			<li><a href="#"><?php echo BOX_HEADING_LOCALIZATION; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_LOCALIZATION; ?></a>
 				<ul>
 
 <?php
@@ -280,7 +280,7 @@
 				</ul>
 			</li>
 
-			<li><a href="#"><?php echo BOX_HEADING_GV_ADMIN; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_GV_ADMIN; ?></a>
 				<ul>
 
 <?php
@@ -298,7 +298,7 @@
 				</ul>
 			</li>
 
-			<li><a href="#"><?php echo BOX_HEADING_STATISTICS; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_STATISTICS; ?></a>
 				<ul>
 
 <?php
@@ -318,7 +318,7 @@
 				</ul>
 			</li>
 
-			<li><a href="#"><?php echo BOX_HEADING_TOOLS; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_TOOLS; ?></a>
 				<ul>
 
 <?php
@@ -352,7 +352,7 @@
 				</ul>
 			</li>
 
-			<li><a href="#"><?php echo BOX_HEADING_HELP; ?></a>
+			<li><a class="sub" href="#"><?php echo BOX_HEADING_HELP; ?></a>
 				<ul>
 
 <?php
