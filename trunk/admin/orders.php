@@ -254,10 +254,6 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	            <td class="main"><b><?php echo ENTRY_ORIGINAL_REFERER; ?></b></td>
 	            <td class="main"><?php echo $order->customer['orig_reference']; ?></td>
 	          </tr>
-	          <tr>
-	            <td class="main"><b><?php echo ENTRY_LOGIN_REFERER; ?></b></td>
-	            <td class="main"><?php echo $order->customer['login_reference']; ?></td>
-	          </tr>            
             </table></td>
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
               <tr>
