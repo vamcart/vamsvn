@@ -494,6 +494,7 @@ a.info:hover span
 	  border-style: inset;
 	  width: 14.3em;
 	  left: -999em;
+	  z-index: 26;
    }
 
 #nav li ul ul 
