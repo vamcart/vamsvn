@@ -17,9 +17,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Упаковачная единица');
+define('HEADING_TITLE', 'Упаковочная единица');
 
-define('TABLE_HEADING_PRODUCTS_VPE', 'Упаковачная единица');
+define('TABLE_HEADING_PRODUCTS_VPE', 'Упаковочная единица');
 define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_INFO_EDIT_INTRO', 'Сделайте необходиме изменения');
