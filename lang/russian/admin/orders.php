@@ -125,7 +125,6 @@ define('TEXT_NUMBER',', заказ номер ');
 define('TABLE_HEADING_NUMBER','Номер');
 define('TEXT_PRODUCTS',' товар (ов) ');
 
-define('ENTRY_ORIGINAL_REFERER', 'Начальный реферер:');
-define('ENTRY_LOGIN_REFERER', 'Новый реферер:');
+define('ENTRY_ORIGINAL_REFERER', 'Реферер:');
 
 ?>
