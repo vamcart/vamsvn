@@ -569,7 +569,7 @@ for ($i=0,$n=sizeof($customers_status);$i<$n; $i++) {
 
      $bc_array = explode(',', $newsletters_data['bc']);
 
-echo xtc_draw_checkbox_field('status['.$i.']','yes', in_array($customers_status[$i]['id'], $bc_array)).' '.$customers_status[$i]['text'].'  <i>(<b>'.$group_data['count'].'</b>'.TEXT_USERS.$group_data_all['count'].TEXT_CUSTOMERS.'<br />';
+echo xtc_draw_checkbox_field('status['.$i.']','yes', in_array($customers_status[$i]['id'], $bc_array)).' '.$customers_status[$i]['text'].'  <i>(<b>'.$group_data['count'].'</b> '.TEXT_USERS.$group_data_all['count'].TEXT_CUSTOMERS.'<br />';
 
 }
 echo xtc_draw_checkbox_field('status_all', 'yes',in_array('all', $bc_array)).' <b>'.TEXT_NEWSLETTER_ONLY.'</b>';

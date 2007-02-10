@@ -29,8 +29,8 @@
   define('CONFIRM_DELETE','Вы уверены?');
   define('TITLE_SEND','Отправлено');
   define('TEXT_NEWSLETTER_ONLY','Пользователи группы, но не подписанные на рассылку');
-  define('TEXT_USERS','Подписчики ');
-  define('TEXT_CUSTOMERS',' Покупатели )</i>');
+  define('TEXT_USERS','подписчиков, из них ');
+  define('TEXT_CUSTOMERS',' покупателей)</i>');
   define('TITLE_DATE','Дата');
   define('TEXT_SEND_TO','Получатель:');
   define('TEXT_PREVIEW','<b>Предварительные просмотр:</b>');
