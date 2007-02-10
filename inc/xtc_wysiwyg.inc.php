@@ -30,7 +30,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'cont\', \'100%\', \'400\'  ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'cont\', \'750\', \'400\'  ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -46,7 +46,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'content\', \'100%\', \'400\'  ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'content\', \'750\', \'400\'  ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -62,7 +62,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'file_comment\', \'100%\', \'400\'  ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'file_comment\', \'750\', \'400\'  ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -74,7 +74,7 @@ $image_path = '&Type=images';
                         break;
                 // WYSIWYG editor categories_description textarea named categories_description[langID]
                 case 'categories_description':
-                        $val ='var oFCKeditor = new FCKeditor( \'categories_description['.$langID.']\', \'550\', \'300\' ) ;
+                        $val ='var oFCKeditor = new FCKeditor( \'categories_description['.$langID.']\', \'750\', \'300\' ) ;
                         	   oFCKeditor.BasePath = "'.$path.'" ;
                         	   oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -85,7 +85,7 @@ $image_path = '&Type=images';
                         break;
                 // WYSIWYG editor products_description textarea named products_description_langID
                 case 'products_description':
-                        $val ='var oFCKeditor = new FCKeditor( \'products_description_'.$langID.'\', \'100%\', \'400\'  ) ;
+                        $val ='var oFCKeditor = new FCKeditor( \'products_description_'.$langID.'\', \'750\', \'400\'  ) ;
                         	   oFCKeditor.BasePath = "'.$path.'" ;
                         	   oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -96,7 +96,7 @@ $image_path = '&Type=images';
                         break;
                 // WYSIWYG editor products short description textarea named products_short_description_langID
                 case 'products_short_description':
-                        $val ='var oFCKeditor = new FCKeditor( \'products_short_description_'.$langID.'\', \'550\', \'300\'  ) ;
+                        $val ='var oFCKeditor = new FCKeditor( \'products_short_description_'.$langID.'\', \'750\', \'300\'  ) ;
                         	   oFCKeditor.BasePath = "'.$path.'" ;
                         	   oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -111,7 +111,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'newsletter_body\', \'100%\', \'400\'  ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'newsletter_body\', \'750\', \'400\'  ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -127,7 +127,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'message\', \'700\', \'400\' ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'message\', \'750\', \'400\' ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
@@ -143,7 +143,7 @@ $image_path = '&Type=images';
                         	   <script type="text/javascript">
                         	   		window.onload = function()
                         	   			{
-                        	   				var oFCKeditor = new FCKeditor( \'message\', \'700\', \'400\' ) ;
+                        	   				var oFCKeditor = new FCKeditor( \'message\', \'750\', \'400\' ) ;
                         	   				oFCKeditor.BasePath = "'.$path.'" ;
                         	   				oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
                         	   				oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
