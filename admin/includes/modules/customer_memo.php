@@ -32,7 +32,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     $poster_values = xtc_db_fetch_array($poster_query);
 ?><table width="100%">
       <tr>
-        <td class="main"><b><?php echo TEXT_DATE; ?></b>:<i><?php echo $memo_values['memo_date']; ?></i><b><?php echo TEXT_TITLE; ?></b>:<?php echo $memo_values['memo_title']; ?><b>  <?php echo TEXT_POSTER; ?></b>:<?php echo $poster_values['customers_lastname']; ?> <?php echo $poster_values['customers_firstname']; ?></td>
+        <td class="main"><b><?php echo TEXT_DATE; ?></b>: <i><?php echo $memo_values['memo_date']; ?></i> <b><?php echo TEXT_TITLE; ?></b>: <?php echo $memo_values['memo_title']; ?><b>  <?php echo TEXT_POSTER; ?></b>: <?php echo $poster_values['customers_lastname']; ?> <?php echo $poster_values['customers_firstname']; ?></td>
       </tr>
       <tr>
         <td width="142" class="main" style="border: 1px solid; border-color: #cccccc;"><?php echo $memo_values['memo_text']; ?></td>
@@ -46,6 +46,6 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 ?>
     <table width="100%">
       <tr>
-        <td class="main" style="border-top: 1px solid; border-color: #cccccc;"><b><?php echo TEXT_TITLE ?></b>:<?php echo xtc_draw_input_field('memo_title'); ?><br><?php echo xtc_draw_textarea_field('memo_text', 'soft', '80', '5'); ?><br><input type="submit" class="button" value="<?php echo BUTTON_INSERT; ?>"></td>
+        <td class="main" style="border-top: 1px solid; border-color: #cccccc;"><b><?php echo TEXT_TITLE ?></b>: <?php echo xtc_draw_input_field('memo_title'); ?><br><?php echo xtc_draw_textarea_field('memo_text', 'soft', '80', '5'); ?><br><input type="submit" class="button" value="<?php echo BUTTON_INSERT; ?>"></td>
       </tr>
     </table></td>
