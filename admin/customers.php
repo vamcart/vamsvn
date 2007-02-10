@@ -1275,7 +1275,7 @@ if ($error == true) {
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_COUNTRY.' '.$cInfo->countries_name);
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_NUMBER_OF_REVIEWS.' '.$cInfo->number_of_reviews);
             $contents[] = array('text' => '<br>' . TEXT_INFO_ORIGINAL_REFERER . ' ' . $cInfo->orig_reference);
-            $contents[] = array('text' => '<br>' . TEXT_INFO_LOGIN_REFERER . ' ' . $cInfo->login_reference);
+//            $contents[] = array('text' => '<br>' . TEXT_INFO_LOGIN_REFERER . ' ' . $cInfo->login_reference);
 			}
 
 			if ($_GET['action'] == 'iplog') {
