@@ -64,17 +64,17 @@
       $categories_string .= '</span>';
     }
 
-    if ($foo[$counter]['level']=='') {
-    $categories_string .= '</a></div>';
-    } else {
-    $categories_string .= '</a></div>';
-    }
-
     if (SHOW_COUNTS == 'true') {
       $products_in_category = xtc_count_products_in_category($counter);
       if ($products_in_category > 0) {
         $categories_string .= '&nbsp;(' . $products_in_category . ')';
       }
+    }
+
+    if ($foo[$counter]['level']=='') {
+    $categories_string .= '</a></div>';
+    } else {
+    $categories_string .= '</a></div>';
     }
 
 // Окончание строки каждой категории
