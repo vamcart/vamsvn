@@ -19,6 +19,12 @@
   require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
   require_once (DIR_FS_INC.'xtc_parse_input_field_data.inc.php');
 
+  $row_by_page = $_REQUEST['row_by_page'];
+  $sort_by = $_REQUEST['sort_by'];
+  $page = $_REQUEST['page'];
+  $manufacturer = $_REQUEST['manufacturer'];
+  $spec_price = $_REQUEST['spec_price'];
+  
  ($row_by_page) ? define('MAX_DISPLAY_ROW_BY_PAGE' , $row_by_page ) : $row_by_page = MAX_DISPLAY_SEARCH_RESULTS; define('MAX_DISPLAY_ROW_BY_PAGE' , MAX_DISPLAY_SEARCH_RESULTS );
 
 //// Tax Row
