@@ -1623,7 +1623,7 @@ p.LoginContentLeft
 
 /*- /Боксы */
 
-/*- /Время парсинга */
+/*- Время парсинга */
 div#parseTime
    {
      clear: left;
@@ -1905,7 +1905,7 @@ dd.AddressBookList
 
 /* /Адресная книга */
 
-/* Адресная книга */
+/* Вход */
 dl.Login 
    {
      width: 50%;
