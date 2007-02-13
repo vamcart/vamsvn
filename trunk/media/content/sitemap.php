@@ -1,16 +1,18 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: sitemap.php 1278 2005-10-02 07:40:25Z mz $
+   $Id: sitemap.php 782 2007-02-13 10:23:57 VaM $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-   Copyright (c) 2004 XT-Commerce
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce; www.oscommerce.com
    (c) 2003	 nextcommerce; www.nextcommerce.org
+   (c) 2004 xt:Commerce (sitemap.php,v 1.19 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/

@@ -975,7 +975,7 @@ h1.contentBoxHeading a {
 div.contacterror {border:1px solid; border-color:#ff0000; background-color:#FFCCCC; text-align:center; margin-bottom:0.5em; margin-top:0.5em;}
 /* /Ошибка на странице свяжитесь с нами */
 
-/*- /Время парсинга */
+/*- Время парсинга */
 div#parseTime
    {
      clear: left;
