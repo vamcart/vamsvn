@@ -119,11 +119,20 @@ function manufacturers_list(){
 		   }
 		}
 		if($_POST['product_new_sort']){
-		   foreach($_POST['product_new_sort'] as $id => $new_to_xml) {
+		   foreach($_POST['product_new_sort'] as $id => $new_sort) {
 			 if ($_POST['product_new_sort'][$id] != $_POST['product_old_sort'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
 			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_sort=$new_sort WHERE products_id=$id");
+			 }
+		   }
+		}
+	  	if($_POST['product_new_image']){
+		   foreach($_POST['product_new_image'] as $id => $new_image) {
+			 if (trim($_POST['product_new_image'][$id]) != trim($_POST['product_old_image'][$id])) {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_image='" . $new_image . "' WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -133,15 +142,6 @@ function manufacturers_list(){
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
 			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET manufacturers_id=$new_manufacturer WHERE products_id=$id");
-			 }
-		   }
-		}
-		if($_POST['product_new_image']){
-		   foreach($_POST['product_new_image'] as $id => $new_image) {
-			 if (trim($_POST['product_new_image'][$id]) != trim($_POST['product_old_image'][$id])) {
-			   $count_update++;
-			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_image='" . $new_image . "' WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -453,6 +453,7 @@ function display_ttc(action, prix, taxe, up){
         if(DISPLAY_QUANTITY == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"3\" name=\"product_new_quantity[".$products['products_id']."]\" value=\"".$products['products_quantity']."\"></td>\n";else echo "<td>&nbsp;</td>";
 		if(DISPLAY_XML == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_to_xml[".$products['products_id']."]\" value=\"".$products['products_to_xml']."\"></td>\n";else echo "<td>&nbsp;</td>";
 		if(DISPLAY_SORT == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_sort[".$products['products_id']."]\" value=\"".$products['products_sort']."\"></td>\n";else echo "<td>&nbsp;</td>";
+		if(DISPLAY_IMAGE == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_image[".$products['products_id']."]\" value=\"".$products['products_image']."\"></td>\n";else echo "<td>&nbsp;</td>";
 		if(DISPLAY_MANUFACTURER == 'true'){if(MODIFY_MANUFACTURER == 'true')echo "<td align=\"center\">".xtc_draw_pull_down_menu("product_new_manufacturer[".$products['products_id']."]\"", $manufacturers_array, $products['manufacturers_id'])."</td>\n";else echo "<td align=\"center\">" . $manufacturer['manufacturers_name'] . "</td>";}else{ echo "<td>&nbsp;</td>";}
 //// check specials
         if ( in_array($products['products_id'],$specials_array)) {
@@ -472,9 +473,9 @@ function display_ttc(action, prix, taxe, up){
         if(MODIFY_MODEL == 'true') echo xtc_draw_hidden_field('product_old_model['.$products['products_id'].'] ',$products['products_model']);
 		echo xtc_draw_hidden_field('product_old_status['.$products['products_id'].']',$products['products_status']);
         echo xtc_draw_hidden_field('product_old_quantity['.$products['products_id'].']',$products['products_quantity']);
-		echo xtc_draw_hidden_field('product_old_image['.$products['products_id'].']',$products['products_image']);
 		echo xtc_draw_hidden_field('product_old_to_xml['.$products['products_id'].']',$products['products_to_xml']);
 		echo xtc_draw_hidden_field('product_old_sort['.$products['products_id'].']',$products['products_sort']);
+		echo xtc_draw_hidden_field('product_old_image['.$products['products_id'].']',$products['products_image']);
         if(MODIFY_MANUFACTURER == 'true')echo xtc_draw_hidden_field('product_old_manufacturer['.$products['products_id'].']',$products['manufacturers_id']);
 		echo xtc_draw_hidden_field('product_old_weight['.$products['products_id'].']',$products['products_weight']);
         echo xtc_draw_hidden_field('product_old_price['.$products['products_id'].']',$products['products_price']);
@@ -486,7 +487,7 @@ function display_ttc(action, prix, taxe, up){
      }
 ?>
 <tr>
-<td colspan="10">
+<td colspan="12">
 <?php
 		 //// display bottom page buttons
     echo '<a class="button" href="' . xtc_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties">' . BUTTON_CANCEL . '</a> ';
