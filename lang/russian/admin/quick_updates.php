@@ -40,6 +40,8 @@ define('TABLE_HEADING_QUANTITY', 'Количество');
 define('TABLE_HEADING_STATUS', 'Статус');
 define('TABLE_HEADING_MANUFACTURERS', 'Производитель');
 define('TABLE_HEADING_IMAGE', 'Изображение');
+define('TABLE_HEADING_XML', 'XML');
+define('TABLE_HEADING_SORT', 'Сортировка');
 define('DISPLAY_CATEGORIES', 'Выберите категорию:');
 define('DISPLAY_MANUFACTURERS', 'Выберите производителя:');
 define('PRINT_TEXT', 'Распечатать эту страницу');

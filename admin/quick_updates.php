@@ -109,6 +109,24 @@ function manufacturers_list(){
 			 }
 		   }
 		}
+		if($_POST['product_new_to_xml']){
+		   foreach($_POST['product_new_to_xml'] as $id => $new_to_xml) {
+			 if ($_POST['product_new_to_xml'][$id] != $_POST['product_old_to_xml'][$id]) {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_to_xml=$new_to_xml WHERE products_id=$id");
+			 }
+		   }
+		}
+		if($_POST['product_new_sort']){
+		   foreach($_POST['product_new_sort'] as $id => $new_to_xml) {
+			 if ($_POST['product_new_sort'][$id] != $_POST['product_old_sort'][$id]) {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_sort=$new_sort WHERE products_id=$id");
+			 }
+		   }
+		}
 		if($_POST['product_new_manufacturer']){
 		   foreach($_POST['product_new_manufacturer'] as $id => $new_manufacturer) {
 			 if ($_POST['product_new_manufacturer'][$id] != $_POST['product_old_manufacturer'][$id]) {
@@ -329,6 +347,14 @@ function display_ttc(action, prix, taxe, up){
                      TABLE_HEADING_QUANTITY . "<a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_quantity ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Asc\">&uarr;</a>" ; else echo "&nbsp;";?>
                 </td>
                 <td class="dataTableHeadingContent">
+                  <?php if(DISPLAY_XML == 'true')echo " <a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_to_xml DESC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Desc\">&darr;</a>" .
+                     TABLE_HEADING_XML . "<a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_to_xml ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Asc\">&uarr;</a>" ; else echo "&nbsp;";?>
+                </td>
+                <td class="dataTableHeadingContent">
+                  <?php if(DISPLAY_SORT == 'true')echo " <a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_sort DESC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Desc\">&darr;</a>" .
+                     TABLE_HEADING_SORT . "<a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_sort ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Asc\">&uarr;</a>" ; else echo "&nbsp;";?>
+                </td>
+                <td class="dataTableHeadingContent">
                   <?php if(DISPLAY_IMAGE == 'true')echo " <a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_image DESC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Desc\">&darr;</a>" .
                      TABLE_HEADING_IMAGE . "<a href=\"" . xtc_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_image ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Asc\">&uarr;</a>" ; else echo "&nbsp;";?>
                 </td>
@@ -367,15 +393,15 @@ function display_ttc(action, prix, taxe, up){
 ////  select categories
   if ($current_category_id == 0){
   	if($manufacturer){
-    	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
+    	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
   	}else{
-		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' $sort_by ";
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' $sort_by ";
 	}
   } else {
  	if($manufacturer){
-	 	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " pc where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = pc.products_id and pc.categories_id = '" . $current_category_id . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
+	 	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " pc where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = pc.products_id and pc.categories_id = '" . $current_category_id . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
   	}else{
-		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " pc where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = pc.products_id and pc.categories_id = '" . $current_category_id . "' $sort_by ";
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " pc where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = pc.products_id and pc.categories_id = '" . $current_category_id . "' $sort_by ";
 	}
   }
 
@@ -425,7 +451,8 @@ function display_ttc(action, prix, taxe, up){
 		}
         if(DISPLAY_WEIGHT == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"5\" name=\"product_new_weight[".$products['products_id']."]\" value=\"".$products['products_weight']."\"></td>\n";else echo "<td>&nbsp;</td>";
         if(DISPLAY_QUANTITY == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"3\" name=\"product_new_quantity[".$products['products_id']."]\" value=\"".$products['products_quantity']."\"></td>\n";else echo "<td>&nbsp;</td>";
-		if(DISPLAY_IMAGE == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_image[".$products['products_id']."]\" value=\"".$products['products_image']."\"></td>\n";else echo "<td>&nbsp;</td>";
+		if(DISPLAY_XML == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_to_xml[".$products['products_id']."]\" value=\"".$products['products_to_xml']."\"></td>\n";else echo "<td>&nbsp;</td>";
+		if(DISPLAY_SORT == 'true')echo "<td align=\"center\"><input type=\"text\" size=\"8\" name=\"product_new_sort[".$products['products_id']."]\" value=\"".$products['products_sort']."\"></td>\n";else echo "<td>&nbsp;</td>";
 		if(DISPLAY_MANUFACTURER == 'true'){if(MODIFY_MANUFACTURER == 'true')echo "<td align=\"center\">".xtc_draw_pull_down_menu("product_new_manufacturer[".$products['products_id']."]\"", $manufacturers_array, $products['manufacturers_id'])."</td>\n";else echo "<td align=\"center\">" . $manufacturer['manufacturers_name'] . "</td>";}else{ echo "<td>&nbsp;</td>";}
 //// check specials
         if ( in_array($products['products_id'],$specials_array)) {
@@ -446,6 +473,8 @@ function display_ttc(action, prix, taxe, up){
 		echo xtc_draw_hidden_field('product_old_status['.$products['products_id'].']',$products['products_status']);
         echo xtc_draw_hidden_field('product_old_quantity['.$products['products_id'].']',$products['products_quantity']);
 		echo xtc_draw_hidden_field('product_old_image['.$products['products_id'].']',$products['products_image']);
+		echo xtc_draw_hidden_field('product_old_to_xml['.$products['products_id'].']',$products['products_to_xml']);
+		echo xtc_draw_hidden_field('product_old_sort['.$products['products_id'].']',$products['products_sort']);
         if(MODIFY_MANUFACTURER == 'true')echo xtc_draw_hidden_field('product_old_manufacturer['.$products['products_id'].']',$products['manufacturers_id']);
 		echo xtc_draw_hidden_field('product_old_weight['.$products['products_id'].']',$products['products_weight']);
         echo xtc_draw_hidden_field('product_old_price['.$products['products_id'].']',$products['products_price']);
@@ -457,7 +486,7 @@ function display_ttc(action, prix, taxe, up){
      }
 ?>
 <tr>
-<td colspan="8">
+<td colspan="10">
 <?php
 		 //// display bottom page buttons
     echo '<a class="button" href="' . xtc_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties">' . BUTTON_CANCEL . '</a> ';
