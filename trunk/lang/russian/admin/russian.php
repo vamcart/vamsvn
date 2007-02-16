@@ -262,7 +262,7 @@ define('ENTRY_MAIL','Отправить письмо с паролем клиенту?');
 define('YES','да');
 define('NO','нет');
 define('SAVE_ENTRY','Сохранить изменения?');
-define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон для описания товара');
+define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон для описания товара:');
 define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Шаблон для атрибутов товара');
 define('TEXT_SELECT','-- Выберите --');
 
