@@ -29,8 +29,8 @@
     $minute = (int)substr($raw_date, 14, 2);
     $second = (int)substr($raw_date, 17, 2);
 
-   if (function_exists('tep_date_long_translate'))
-    return tep_date_long_translate(strftime(DATE_FORMAT_LONG, mktime($hour,$minute,$second,$month,$day,$year)));
+   if (function_exists('vam_date_long_translate'))
+    return vam_date_long_translate(strftime(DATE_FORMAT_LONG, mktime($hour,$minute,$second,$month,$day,$year)));
 
     return strftime(DATE_FORMAT_LONG, mktime($hour,$minute,$second,$month,$day,$year));
   }

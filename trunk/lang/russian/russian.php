@@ -31,7 +31,7 @@ define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 @setlocale(LC_TIME, 'en_US');
 
-function tep_date_long_translate($date_string) {
+function vam_date_long_translate($date_string) {
 $eng = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 $loc = array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря");
 
