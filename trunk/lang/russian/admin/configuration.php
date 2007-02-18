@@ -411,7 +411,7 @@ define('CONTACT_US_EMAIL_SUBJECT_DESC' , 'Введите тему, которая будет в письмах 
 define('EMAIL_SUPPORT_ADDRESS_TITLE' , 'Служба поддержки - E-Mail адрес');
 define('EMAIL_SUPPORT_ADDRESS_DESC' , 'Введите E-Mail адрес для писем в <b>Службу поддержки</b> (проблемы при оформлении заказа, потеря пароля).');
 define('EMAIL_SUPPORT_NAME_TITLE' , 'Служба поддержки - Имя получателя');
-define('EMAIL_SUPPORT_NAME_DESC' , 'Введите название  <b>Службы поддержки</b> (роблемы при оформлении заказа, потеря пароля).');
+define('EMAIL_SUPPORT_NAME_DESC' , 'Введите название  <b>Службы поддержки</b> (Проблемы при оформлении заказа, потеря пароля).');
 define('EMAIL_SUPPORT_FORWARDING_STRING_TITLE' , 'Служба поддержки - адреса переадресации (через запятую)');
 define('EMAIL_SUPPORT_FORWARDING_STRING_DESC' , 'Введите E-Mail адреса (поле: Скрытая копия) разделенные запятой на которые также будут отправляться письма в <b>Службу поддержки</b>.');
 define('EMAIL_SUPPORT_REPLY_ADDRESS_TITLE' , 'Служба поддержки - Адрес для ответов');
