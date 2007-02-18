@@ -466,13 +466,11 @@ a.info:hover span
 
 #nav ul li a.sub 
    {
-     background: #ffe8a1; 
    }
 
 #nav ul li a:hover 
    {
      text-decoration: underline;
-	  background-color: #c6d3ef;
    }
 
 #nav li 
