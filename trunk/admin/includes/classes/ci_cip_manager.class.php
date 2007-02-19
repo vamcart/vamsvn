@@ -227,7 +227,7 @@ class cip_manager {
 //Remove Buttons for ZIP
                             if ($cip->is_installed() or ALWAYS_DISPLAY_REMOVE_BUTTON=='true') {
                                 //Remove without data removing
-                                $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' '.ICON_WITHOUT_DATA_REMOVING)]= xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove');
+//                                $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' '.ICON_WITHOUT_DATA_REMOVING)]= xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove');
                                 $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'install.gif', ICON_REMOVE)]=
                                 xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1');
                             }
@@ -248,7 +248,7 @@ class cip_manager {
 //Remove Buttons for Folders
                     if ($cip->is_installed() or ALWAYS_DISPLAY_REMOVE_BUTTON=='true') {
                         //Remove without data removing
-                        $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' without data removing')]= xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove');
+//                        $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' without data removing')]= xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove');
                         $cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS . 'install.gif', ICON_REMOVE)]=
                             xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1');
                     }
