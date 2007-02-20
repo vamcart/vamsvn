@@ -47,8 +47,8 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id']); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id']); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
                 <td class="dataTableContent"><?php echo $customers['customers_date_added']; ?></td>
               </tr>
 <?php
