@@ -77,7 +77,7 @@
           $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
     echo xtc_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
-        	<input id="btn_save" type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+        	<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
     
 <div class="tabber">
 
