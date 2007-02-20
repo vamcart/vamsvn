@@ -116,7 +116,7 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
     echo xtc_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
     echo xtc_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
-    <input id="btn_save" type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">
+    <input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">
     <a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><?php echo BUTTON_CANCEL; ?></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="button" href="<?php echo xtc_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_ATTRIBUTES; ?></a>
