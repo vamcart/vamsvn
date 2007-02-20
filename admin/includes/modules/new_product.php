@@ -137,11 +137,11 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('products_description_' . $languages[$i]['id'], 'soft', '103', '15', (($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : xtc_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('products_description_' . $languages[$i]['id'], 'soft', '103', '25', (($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : xtc_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_SHORT_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('products_short_description_' . $languages[$i]['id'], 'soft', '103', '15', (($products_short_description[$languages[$i]['id']]) ? stripslashes($products_short_description[$languages[$i]['id']]) : xtc_get_products_short_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('products_short_description_' . $languages[$i]['id'], 'soft', '103', '25', (($products_short_description[$languages[$i]['id']]) ? stripslashes($products_short_description[$languages[$i]['id']]) : xtc_get_products_short_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_KEYWORDS; ?></td>
