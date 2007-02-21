@@ -46,4 +46,8 @@ define('DISPLAY_CATEGORIES', 'Выберите категорию:');
 define('DISPLAY_MANUFACTURERS', 'Выберите производителя:');
 define('PRINT_TEXT', 'Распечатать эту страницу');
 define('TOTAL_COST', 'Цена');
+
+define('HEADING_TITLE_SEARCH', 'Поиск:');
+define('HEADING_TITLE_SEARCH_MODEL', 'Поиск по коду товара:');
+
 ?>

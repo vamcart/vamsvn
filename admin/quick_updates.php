@@ -256,6 +256,22 @@ function display_ttc(action, prix, taxe, up){
   </td>
   </tr>
   <tr>
+        <td width="100%" align="right">
+
+				<?php
+					echo xtc_draw_form('search', FILENAME_QUICK_UPDATES, '', 'get');
+					echo HEADING_TITLE_SEARCH . ' ' . xtc_draw_input_field('search') . xtc_draw_hidden_field('search_model_key','no');
+					echo '</form><br>';
+
+					echo xtc_draw_form('search', FILENAME_QUICK_UPDATES, '', 'get');
+					echo HEADING_TITLE_SEARCH_MODEL . ' ' . xtc_draw_input_field('search') . xtc_draw_hidden_field('search_model_key','yes');
+					echo '</form>';
+				?>
+  
+  </td>
+  </tr>
+
+  <tr>
 <!-- body_text //-->
 
 <td width="100%" valign="top">
@@ -302,7 +318,7 @@ function display_ttc(action, prix, taxe, up){
 				</table>
 			</td></tr></table>
 			<br />
-		<form name="update" method="POST" action="<?php echo "$PHP_SELF?action=update&page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer"; ?>">
+		<form name="update" method="POST" action="<?php echo "$PHP_SELF?action=update&page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer&search=$search&search_model_key=$search_model_key"; ?>">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0">
 					<tr align="center">
 						<td>&nbsp;<?php echo WARNING_MESSAGE; ?> </td>
@@ -391,6 +407,17 @@ function display_ttc(action, prix, taxe, up){
 
 
 ////  select categories
+
+//
+    if (isset($HTTP_GET_VARS['search'])){
+     if ($search_model_key == 'no'){
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and pd.products_name like '%" . $search . "%' $sort_by ";
+		}else{
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_model like '%" . $search . "%' $sort_by ";
+		}
+    }else{
+
+////
   if ($current_category_id == 0){
   	if($manufacturer){
     	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
@@ -404,7 +431,7 @@ function display_ttc(action, prix, taxe, up){
 		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " pc where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = pc.products_id and pc.categories_id = '" . $current_category_id . "' $sort_by ";
 	}
   }
-
+}
 //// page splitter and display each products info
   $products_split = new splitPageResults($split_page, MAX_DISPLAY_ROW_BY_PAGE, $products_query_raw, $products_query_numrows);
   $products_query = xtc_db_query($products_query_raw);
@@ -505,7 +532,7 @@ function display_ttc(action, prix, taxe, up){
             <td>
 				<table border="0" width="100%" cellspacing="0" cellpadding="2">
                 	<td><?php echo $products_split->display_count($products_query_numrows, MAX_DISPLAY_ROW_BY_PAGE, $split_page, TEXT_DISPLAY_NUMBER_OF_PRODUCTS);  ?></td>
-                	<td align="right"><?php echo $products_split->display_links($products_query_numrows, MAX_DISPLAY_ROW_BY_PAGE, MAX_DISPLAY_PAGE_LINKS, $split_page, '&cPath='. $current_category_id . '&manufacturer='. $manufacturer .'&sort_by='.$sort_by . '&row_by_page=' . $row_by_page); ?></td>
+                	<td align="right"><?php echo $products_split->display_links($products_query_numrows, MAX_DISPLAY_ROW_BY_PAGE, MAX_DISPLAY_PAGE_LINKS, $split_page, '&cPath='. $current_category_id . '&manufacturer='. $manufacturer .'&sort_by='.$sort_by . '&row_by_page=' . $row_by_page . '&search=' . $search . '&search_model_key=' . $search_model_key); ?></td>
             	</table>
 			</td>
           </tr>
