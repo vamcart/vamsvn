@@ -24,6 +24,8 @@
   $page = $_REQUEST['page'];
   $manufacturer = $_REQUEST['manufacturer'];
   $spec_price = $_REQUEST['spec_price'];
+  $search = $_GET['search'];
+  $search_model_key = $_GET['search_model_key'];
   
  ($row_by_page) ? define('MAX_DISPLAY_ROW_BY_PAGE' , $row_by_page ) : $row_by_page = MAX_DISPLAY_SEARCH_RESULTS; define('MAX_DISPLAY_ROW_BY_PAGE' , MAX_DISPLAY_SEARCH_RESULTS );
 
@@ -409,11 +411,11 @@ function display_ttc(action, prix, taxe, up){
 ////  select categories
 
 //
-    if (isset($HTTP_GET_VARS['search'])){
-     if ($search_model_key == 'no'){
-		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and pd.products_name like '%" . $search . "%' $sort_by ";
+    if (isset($_GET['search'])){
+     if ($_GET['search_model_key'] == 'no'){
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and pd.products_name like '%" . $_GET['search'] . "%' $sort_by ";
 		}else{
-		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_model like '%" . $search . "%' $sort_by ";
+		$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_model like '%" . $_GET['search'] . "%' $sort_by ";
 		}
     }else{
 
