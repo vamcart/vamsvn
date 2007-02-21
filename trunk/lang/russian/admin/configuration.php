@@ -218,60 +218,60 @@ define('IMAGE_REQUIRED_DESC' , 'Необходимо для поиска ошибок, в случае, если кар
 
 //This is for the Images showing your products for preview. All the small stuff.
 
-define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_TITLE' , 'Маленькая картинка товара:Bevel<br /><img src="images/config_bevel.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_DESC' , 'Маленькая картинка товара:Bevel<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />затененные скошенные края<br />Используется:<br />(край ширина,hex свелый цвет,hex темный цвет)');
-define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_TITLE' , 'Маленькая картинка товара:Greyscale<br /><img src="images/config_greyscale.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_DESC' , 'Маленькая картинка товара:Greyscale<br /><br />По умолчанию: (32,22,22)<br /><br />basic black n white<br />Используется:<br />(int red,int green,int blue)');
-define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_TITLE' , 'Маленькая картинка товара:Ellipse<br /><img src="images/config_eclipse.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_DESC' , 'Маленькая картинка товара:Ellipse<br /><br />По умолчанию: (FFFFFF)<br /><br />ellipse on bg colour<br />Используется:<br />(hex background colour)');
-define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_TITLE' , 'Маленькая картинка товара:Round-edges<br /><img src="images/config_edge.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_DESC' , 'Маленькая картинка товара:Round-edges<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />corner trimming<br />Используется:<br />(edge_radius,background colour,anti-alias width)');
-define('PRODUCT_IMAGE_THUMBNAIL_MERGE_TITLE' , 'Маленькая картинка товара:Merge<br /><img src="images/config_merge.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_MERGE_DESC' , 'Маленькая картинка товара:Merge<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />overlay merge image<br />Используется:<br />(merge image,x start [neg = from right],y start [neg = from base],opacity, transparent colour on merge image)');
-define('PRODUCT_IMAGE_THUMBNAIL_FRAME_TITLE' , 'Маленькая картинка товара:Frame<br /><img src="images/config_frame.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_FRAME_DESC' , 'Маленькая картинка товара:Frame<br /><br />По умолчанию: <br /><br />plain raised border<br />Используется:<br />(hex light colour,hex dark colour,int width of mid bit,hex frame colour [optional - defaults to half way between light and dark edges])');
-define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_TITLE' , 'Маленькая картинка товара:Drop-Shadow<br /><img src="images/config_shadow.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_DESC' , 'Маленькая картинка товара:Drop-Shadow<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />more like a dodgy motion blur [semi buggy]<br />Используется:<br />(shadow width,hex shadow colour,hex background colour)');
-define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_TITLE' , 'Маленькая картинка товара:Motion-Blur<br /><img src="images/config_motion.gif" />');
-define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_DESC' , 'Маленькая картинка товара:Motion-Blur<br /><br />По умолчанию: (4,FFFFFF)<br /><br />fading parallel lines<br />Используется:<br />(int number of lines,hex background colour)');
+define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_TITLE' , 'Маленькая картинка товара: Обрамление<br /><img src="images/config_bevel.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_DESC' , 'Маленькая картинка товара: Обрамление<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />Затененные скошенные края.<br /><br />Используется:<br />(ширина края,светлый цвет,темный цвет)');
+define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_TITLE' , 'Маленькая картинка товара: Чёрно-белый<br /><img src="images/config_greyscale.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_DESC' , 'Маленькая картинка товара: Чёрно-белый<br /><br />По умолчанию: (32,22,22)<br /><br />Чёрно-белая картика.<br /><br />Используется:<br />(R (код красного оттенка),G (код зелёного оттенка),B (код синего оттенка))');
+define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_TITLE' , 'Маленькая картинка товара: Эллипс<br /><img src="images/config_eclipse.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_DESC' , 'Маленькая картинка товара: Эллипс<br /><br />По умолчанию: (FFFFFF)<br /><br />Картинка будет вырезана в виде эллипса.<br /><br />Используется:<br />(цвет фона)');
+define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_TITLE' , 'Маленькая картинка товара: Скругленные углы<br /><img src="images/config_edge.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_DESC' , 'Маленькая картинка товара: Скругленные углы<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />Округление углов картинки.<br /><br />Используется:<br />(радиус,фон,ширина сглаживания)');
+define('PRODUCT_IMAGE_THUMBNAIL_MERGE_TITLE' , 'Маленькая картинка товара: Водяной знак<br /><img src="images/config_merge.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_MERGE_DESC' , 'Маленькая картинка товара: Водяной знак<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />Водяной знак, накладываемый на картинку.<br /><br />Используется:<br />(файл картинки,отступ слева по x [отрицательное значение = отступ справа],отступ по y [отрицательное значение = нет отступа],прозрачность, цвет прозрачности)');
+define('PRODUCT_IMAGE_THUMBNAIL_FRAME_TITLE' , 'Маленькая картинка товара: Рамка<br /><img src="images/config_frame.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_FRAME_DESC' , 'Маленькая картинка товара: Рамка<br /><br />По умолчанию: <br /><br />Рамка картинки.<br /><br />Используется:<br />(светлый цвет,тёмный цвет,ширина рамки,цвет рамки [на выбор - обычно цвет в гамме между установленными светлым и тёмным цветами])');
+define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_TITLE' , 'Маленькая картинка товара: Тень<br /><img src="images/config_shadow.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_DESC' , 'Маленькая картинка товара: Тень<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />Отбрасываемая картинкой тень.<br /><br />Используется:<br />(ширина тени,цвет тени,цвет фона)');
+define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_TITLE' , 'Маленькая картинка товара: Размытие<br /><img src="images/config_motion.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_DESC' , 'Маленькая картинка товара: Размытие<br /><br />По умолчанию: (4,FFFFFF)<br /><br />Затухающие параллельные линии.<br /><br />Используется:<br />(количество линий,цвет фона)');
 
 //And this is for the Images showing your products in single-view
 
-define('PRODUCT_IMAGE_INFO_BEVEL_TITLE' , 'Картинка на странице товара:Bevel');
-define('PRODUCT_IMAGE_INFO_BEVEL_DESC' , 'Картинка на странице товара:Bevel<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />shaded bevelled edges<br />Используется:<br />(edge width, hex light colour, hex dark colour)');
-define('PRODUCT_IMAGE_INFO_GREYSCALE_TITLE' , 'Картинка на странице товара:Greyscale');
-define('PRODUCT_IMAGE_INFO_GREYSCALE_DESC' , 'Картинка на странице товара:Greyscale<br /><br />По умолчанию: (32,22,22)<br /><br />basic black n white<br />Используется:<br />(int red, int green, int blue)');
-define('PRODUCT_IMAGE_INFO_ELLIPSE_TITLE' , 'Картинка на странице товара:Ellipse');
-define('PRODUCT_IMAGE_INFO_ELLIPSE_DESC' , 'Картинка на странице товара:Ellipse<br /><br />По умолчанию: (FFFFFF)<br /><br />ellipse on bg colour<br />Используется:<br />(hex background colour)');
-define('PRODUCT_IMAGE_INFO_ROUND_EDGES_TITLE' , 'Картинка на странице товара:Round-edges');
-define('PRODUCT_IMAGE_INFO_ROUND_EDGES_DESC' , 'Картинка на странице товара:Round-edges<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />corner trimming<br />Используется:<br />( edge_radius, background colour, anti-alias width)');
-define('PRODUCT_IMAGE_INFO_MERGE_TITLE' , 'Картинка на странице товара:Merge');
-define('PRODUCT_IMAGE_INFO_MERGE_DESC' , 'Картинка на странице товара:Merge<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />overlay merge image<br />Используется:<br />(merge image,x start [neg = from right],y start [neg = from base],opacity,transparent colour on merge image)');
-define('PRODUCT_IMAGE_INFO_FRAME_TITLE' , 'Картинка на странице товара:Frame');
-define('PRODUCT_IMAGE_INFO_FRAME_DESC' , 'Картинка на странице товара:Frame<br /><br />По умолчанию: (FFFFFF,000000,3,EEEEEE)<br /><br />plain raised border<br />Используется:<br />(hex light colour,hex dark colour,int width of mid bit,hex frame colour [optional - defaults to half way between light and dark edges])');
-define('PRODUCT_IMAGE_INFO_DROP_SHADDOW_TITLE' , 'Картинка на странице товара:Drop-Shadow');
-define('PRODUCT_IMAGE_INFO_DROP_SHADDOW_DESC' , 'Картинка на странице товара:Drop-Shadow<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />more like a dodgy motion blur [semi buggy]<br />Используется:<br />(shadow width,hex shadow colour,hex background colour)');
-define('PRODUCT_IMAGE_INFO_MOTION_BLUR_TITLE' , 'Картинка на странице товара:Motion-Blur');
-define('PRODUCT_IMAGE_INFO_MOTION_BLUR_DESC' , 'Картинка на странице товара:Motion-Blur<br /><br />По умолчанию: (4,FFFFFF)<br /><br />fading parallel lines<br />Используется:<br />(int number of lines,hex background colour)');
+define('PRODUCT_IMAGE_INFO_BEVEL_TITLE' , 'Картинка на странице товара: Обрамление');
+define('PRODUCT_IMAGE_INFO_BEVEL_DESC' , 'Картинка на странице товара: Обрамление<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />Затененные скошенные края.<br /><br />Используется:<br />(ширина края,светлый цвет,темный цвет)');
+define('PRODUCT_IMAGE_INFO_GREYSCALE_TITLE' , 'Картинка на странице товара: Чёрно-белый');
+define('PRODUCT_IMAGE_INFO_GREYSCALE_DESC' , 'Картинка на странице товара: Чёрно-белый<br /><br />По умолчанию: (32,22,22)<br /><br />Чёрно-белая картика.<br /><br />Используется:<br />(R (код красного оттенка),G (код зелёного оттенка),B (код синего оттенка))');
+define('PRODUCT_IMAGE_INFO_ELLIPSE_TITLE' , 'Картинка на странице товара: Эллипс');
+define('PRODUCT_IMAGE_INFO_ELLIPSE_DESC' , 'Картинка на странице товара: Эллипс<br /><br />По умолчанию: (FFFFFF)<br /><br />Картинка будет вырезана в виде эллипса.<br /><br />Используется:<br />(цвет фона)');
+define('PRODUCT_IMAGE_INFO_ROUND_EDGES_TITLE' , 'Картинка на странице товара: Скругленные углы');
+define('PRODUCT_IMAGE_INFO_ROUND_EDGES_DESC' , 'Картинка на странице товара: Скругленные углы<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />Округление углов картинки.<br /><br />Используется:<br />(радиус,фон,ширина сглаживания)');
+define('PRODUCT_IMAGE_INFO_MERGE_TITLE' , 'Картинка на странице товара: Merge');
+define('PRODUCT_IMAGE_INFO_MERGE_DESC' , 'Картинка на странице товара: Водяной знак<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />Водяной знак, накладываемый на картинку.<br /><br />Используется:<br />(файл картинки,отступ слева по x [отрицательное значение = отступ справа],отступ по y [отрицательное значение = нет отступа],прозрачность, цвет прозрачности)');
+define('PRODUCT_IMAGE_INFO_FRAME_TITLE' , 'Картинка на странице товара: Рамка');
+define('PRODUCT_IMAGE_INFO_FRAME_DESC' , 'Маленькая картинка товара: Рамка<br /><br />По умолчанию: (FFFFFF,000000,3,EEEEEE)<br /><br />Рамка картинки.<br /><br />Используется:<br />(светлый цвет,тёмный цвет,ширина рамки,цвет рамки [на выбор - обычно цвет в гамме между установленными светлым и тёмным цветами])');
+define('PRODUCT_IMAGE_INFO_DROP_SHADDOW_TITLE' , 'Картинка на странице товара: Тень');
+define('PRODUCT_IMAGE_INFO_DROP_SHADDOW_DESC' , 'Картинка на странице товара: Тень<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />Отбрасываемая картинкой тень.<br /><br />Используется:<br />(ширина тени,цвет тени,цвет фона)');
+define('PRODUCT_IMAGE_INFO_MOTION_BLUR_TITLE' , 'Картинка на странице товара: Размытие');
+define('PRODUCT_IMAGE_INFO_MOTION_BLUR_DESC' , 'Картинка на странице товара: Размытие<br /><br />По умолчанию: (4,FFFFFF)<br /><br />Затухающие параллельные линии.<br /><br />Используется:<br />(количество линий,цвет фона)');
 
 //so this image is the biggest in the shop this
 
-define('PRODUCT_IMAGE_POPUP_BEVEL_TITLE' , 'Картинка в pop-up окне:Bevel');
-define('PRODUCT_IMAGE_POPUP_BEVEL_DESC' , 'Картинка в pop-up окне:Bevel<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />shaded bevelled edges<br />Используется:<br />(edge width,hex light colour,hex dark colour)');
-define('PRODUCT_IMAGE_POPUP_GREYSCALE_TITLE' , 'Картинка в pop-up окне:Greyscale');
-define('PRODUCT_IMAGE_POPUP_GREYSCALE_DESC' , 'Картинка в pop-up окне:Greyscale<br /><br />По умолчанию: (32,22,22)<br /><br />basic black n white<br />Используется:<br />(int red,int green,int blue)');
-define('PRODUCT_IMAGE_POPUP_ELLIPSE_TITLE' , 'Картинка в pop-up окне:Ellipse');
-define('PRODUCT_IMAGE_POPUP_ELLIPSE_DESC' , 'Картинка в pop-up окне:Ellipse<br /><br />По умолчанию: (FFFFFF)<br /><br />ellipse on bg colour<br />Используется:<br />(hex background colour)');
-define('PRODUCT_IMAGE_POPUP_ROUND_EDGES_TITLE' , 'Картинка в pop-up окне:Round-edges');
-define('PRODUCT_IMAGE_POPUP_ROUND_EDGES_DESC' , 'Картинка в pop-up окне:Round-edges<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />corner trimming<br />Используется:<br />(edge_radius,background colour,anti-alias width)');
-define('PRODUCT_IMAGE_POPUP_MERGE_TITLE' , 'Картинка в pop-up окне:Merge');
-define('PRODUCT_IMAGE_POPUP_MERGE_DESC' , 'Картинка в pop-up окне:Merge<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />overlay merge image<br />Используется:<br />(merge image,x start [neg = from right],y start [neg = from base],opacity,transparent colour on merge image)');
-define('PRODUCT_IMAGE_POPUP_FRAME_TITLE' , 'Картинка в pop-up окне:Frame');
-define('PRODUCT_IMAGE_POPUP_FRAME_DESC' , 'Картинка в pop-up окне:Frame<br /><br />По умолчанию: <br /><br />plain raised border<br />Используется:<br />(hex light colour,hex dark colour,int width of mid bit,hex frame colour [optional - defaults to half way between light and dark edges])');
-define('PRODUCT_IMAGE_POPUP_DROP_SHADDOW_TITLE' , 'Картинка в pop-up окне:Drop-Shadow');
-define('PRODUCT_IMAGE_POPUP_DROP_SHADDOW_DESC' , 'Картинка в pop-up окне:Drop-Shadow<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />more like a dodgy motion blur [semi buggy]<br />Usage:<br />(shadow width,hex shadow colour,hex background colour)');
-define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_TITLE' , 'Картинка в pop-up окне:Motion-Blur');
-define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_DESC' , 'Картинка в pop-up окне:Motion-Blur<br /><br />По умолчанию: (4,FFFFFF)<br /><br />fading parallel lines<br />Используется:<br />(int number of lines,hex background colour)');
+define('PRODUCT_IMAGE_POPUP_BEVEL_TITLE' , 'Картинка в pop-up окне: Обрамление');
+define('PRODUCT_IMAGE_POPUP_BEVEL_DESC' , 'Картинка в pop-up окне: Обрамление<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />Затененные скошенные края.<br /><br />Используется:<br />(ширина края,светлый цвет,темный цвет)');
+define('PRODUCT_IMAGE_POPUP_GREYSCALE_TITLE' , 'Картинка в pop-up окне: Чёрно-белый');
+define('PRODUCT_IMAGE_POPUP_GREYSCALE_DESC' , 'Картинка в pop-up окне: Чёрно-белый<br /><br />По умолчанию: (32,22,22)<br /><br />Чёрно-белая картика.<br /><br />Используется:<br />(R (код красного оттенка),G (код зелёного оттенка),B (код синего оттенка))');
+define('PRODUCT_IMAGE_POPUP_ELLIPSE_TITLE' , 'Картинка в pop-up окне: Эллипс');
+define('PRODUCT_IMAGE_POPUP_ELLIPSE_DESC' , 'Картинка в pop-up окне: Эллипс<br /><br />По умолчанию: (FFFFFF)<br /><br />Картинка будет вырезана в виде эллипса.<br /><br />Используется:<br />(цвет фона)');
+define('PRODUCT_IMAGE_POPUP_ROUND_EDGES_TITLE' , 'Картинка в pop-up окне: Скругленные углы');
+define('PRODUCT_IMAGE_POPUP_ROUND_EDGES_DESC' , 'Картинка в pop-up окне: Скругленные углы<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />Округление углов картинки.<br /><br />Используется:<br />(радиус,фон,ширина сглаживания)');
+define('PRODUCT_IMAGE_POPUP_MERGE_TITLE' , 'Картинка в pop-up окне: Водяной знак');
+define('PRODUCT_IMAGE_POPUP_MERGE_DESC' , 'Картинка в pop-up окне: Водяной знак<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />Водяной знак, накладываемый на картинку.<br /><br />Используется:<br />(файл картинки,отступ слева по x [отрицательное значение = отступ справа],отступ по y [отрицательное значение = нет отступа],прозрачность, цвет прозрачности)');
+define('PRODUCT_IMAGE_POPUP_FRAME_TITLE' , 'Картинка в pop-up окне: Рамка');
+define('PRODUCT_IMAGE_POPUP_FRAME_DESC' , 'Картинка в pop-up окне: Рамка<br /><br />По умолчанию: <br /><br />Рамка картинки.<br /><br />Используется:<br />(светлый цвет,тёмный цвет,ширина рамки,цвет рамки [на выбор - обычно цвет в гамме между установленными светлым и тёмным цветами])');
+define('PRODUCT_IMAGE_POPUP_DROP_SHADDOW_TITLE' , 'Картинка в pop-up окне: Тень');
+define('PRODUCT_IMAGE_POPUP_DROP_SHADDOW_DESC' , 'Картинка в pop-up окне: Тень<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />Отбрасываемая картинкой тень.<br /><br />Используется:<br />(ширина тени,цвет тени,цвет фона)');
+define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_TITLE' , 'Картинка в pop-up окне: Размытие');
+define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_DESC' , 'Картинка в pop-up окне: Размытие<br /><br />По умолчанию: (4,FFFFFF)<br /><br />Затухающие параллельные линии.<br /><br />Используется:<br />(количество линий,цвет фона)');
 
 define('MO_PICS_TITLE','Количество дополнительных картинок товара');
 define('MO_PICS_DESC','Количество дополнительных картинок товара, не считая стандартную картинку.');
