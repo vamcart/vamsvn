@@ -218,21 +218,21 @@ define('IMAGE_REQUIRED_DESC' , 'Необходимо для поиска ошибок, в случае, если кар
 
 //This is for the Images showing your products for preview. All the small stuff.
 
-define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_TITLE' , 'Маленькая картинка товара: Обрамление<br /><img src="images/config_bevel.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_TITLE' , 'Маленькая картинка товара: Обрамление<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_BEVEL_DESC' , 'Маленькая картинка товара: Обрамление<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />Затененные скошенные края.<br /><br />Используется:<br />(ширина края,светлый цвет,темный цвет)');
-define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_TITLE' , 'Маленькая картинка товара: Чёрно-белый<br /><img src="images/config_greyscale.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_TITLE' , 'Маленькая картинка товара: Чёрно-белый<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_GREYSCALE_DESC' , 'Маленькая картинка товара: Чёрно-белый<br /><br />По умолчанию: (32,22,22)<br /><br />Чёрно-белая картика.<br /><br />Используется:<br />(R (код красного оттенка),G (код зелёного оттенка),B (код синего оттенка))');
-define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_TITLE' , 'Маленькая картинка товара: Эллипс<br /><img src="images/config_eclipse.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_TITLE' , 'Маленькая картинка товара: Эллипс<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_ELLIPSE_DESC' , 'Маленькая картинка товара: Эллипс<br /><br />По умолчанию: (FFFFFF)<br /><br />Картинка будет вырезана в виде эллипса.<br /><br />Используется:<br />(цвет фона)');
-define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_TITLE' , 'Маленькая картинка товара: Скругленные углы<br /><img src="images/config_edge.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_TITLE' , 'Маленькая картинка товара: Скругленные углы<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES_DESC' , 'Маленькая картинка товара: Скругленные углы<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />Округление углов картинки.<br /><br />Используется:<br />(радиус,фон,ширина сглаживания)');
-define('PRODUCT_IMAGE_THUMBNAIL_MERGE_TITLE' , 'Маленькая картинка товара: Водяной знак<br /><img src="images/config_merge.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_MERGE_TITLE' , 'Маленькая картинка товара: Водяной знак<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_MERGE_DESC' , 'Маленькая картинка товара: Водяной знак<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />Водяной знак, накладываемый на картинку.<br /><br />Используется:<br />(файл картинки,отступ слева по x [отрицательное значение = отступ справа],отступ по y [отрицательное значение = нет отступа],прозрачность, цвет прозрачности)');
-define('PRODUCT_IMAGE_THUMBNAIL_FRAME_TITLE' , 'Маленькая картинка товара: Рамка<br /><img src="images/config_frame.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_FRAME_TITLE' , 'Маленькая картинка товара: Рамка<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_FRAME_DESC' , 'Маленькая картинка товара: Рамка<br /><br />По умолчанию: <br /><br />Рамка картинки.<br /><br />Используется:<br />(светлый цвет,тёмный цвет,ширина рамки,цвет рамки [на выбор - обычно цвет в гамме между установленными светлым и тёмным цветами])');
-define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_TITLE' , 'Маленькая картинка товара: Тень<br /><img src="images/config_shadow.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_TITLE' , 'Маленькая картинка товара: Тень<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_DROP_SHADDOW_DESC' , 'Маленькая картинка товара: Тень<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />Отбрасываемая картинкой тень.<br /><br />Используется:<br />(ширина тени,цвет тени,цвет фона)');
-define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_TITLE' , 'Маленькая картинка товара: Размытие<br /><img src="images/config_motion.gif" />');
+define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_TITLE' , 'Маленькая картинка товара: Размытие<br />');
 define('PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR_DESC' , 'Маленькая картинка товара: Размытие<br /><br />По умолчанию: (4,FFFFFF)<br /><br />Затухающие параллельные линии.<br /><br />Используется:<br />(количество линий,цвет фона)');
 
 //And this is for the Images showing your products in single-view
