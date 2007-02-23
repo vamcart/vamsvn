@@ -85,7 +85,7 @@
       $out_summ=$order->info['total_value'];
       $crc = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$out_summ.':'.$inv_id.':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
 
-      $cart->reset(true);
+      $_SESSION['cart']->reset(true);
       xtc_session_unregister('sendto');
       xtc_session_unregister('billto');
       xtc_session_unregister('shipping');
