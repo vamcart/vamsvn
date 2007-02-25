@@ -251,6 +251,10 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
                 <td class="main" bgcolor="#FFCC33"><b><?php echo $order->customer['cIP']; ?></b></td>
               </tr>
 	          <tr>
+	            <td class="main"><b><?php echo ENTRY_ORDER_NUMBER; ?></b></td>
+	            <td class="main"><?php echo $oID; ?></td>
+	          </tr>
+	          <tr>
 	            <td class="main"><b><?php echo ENTRY_ORIGINAL_REFERER; ?></b></td>
 	            <td class="main"><?php echo $order->customer['orig_reference']; ?></td>
 	          </tr>
