@@ -60,6 +60,9 @@
   require_once(DIR_FS_INC.'xtc_in_array.inc.php');
   
   // Include Database functions for installer
+//Vlad
+  require_once(DIR_FS_INC.'xtc_db_query.inc.php');
+//Vlad
   require_once(DIR_FS_INC.'xtc_db_prepare_input.inc.php');
   require_once(DIR_FS_INC.'xtc_db_connect_installer.inc.php');
   require_once(DIR_FS_INC.'xtc_db_select_db.inc.php');

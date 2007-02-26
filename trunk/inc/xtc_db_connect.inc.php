@@ -29,6 +29,8 @@ $$link = @mysql_connect($server, $username, $password);
 
     if ($$link) @mysql_select_db($database);
 
+xtc_db_query("SET NAMES CP1251");
+
 //Start VaM db-error processing
     if (!$$link) {
       xtc_db_error("connect", mysql_errno(), mysql_error());
