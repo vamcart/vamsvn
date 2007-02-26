@@ -262,7 +262,7 @@ define('TITLE_STEP7','Установка VaM Shop - ШАГ 7 / Настройка цен');
 define('TITLE_FINISHED','Установка VaM Shop - Установка завершена');
 define('CHARSET','windows-1251');
 define('TEXT_INSTALL','Установка');
-define('ERROR_PERMISSION','Неверные права доступа ');
+define('ERROR_PERMISSION','Установите права доступа 777 на ');
 define('TEXT_ERROR','ОШИБКА');
 define('TEXT_FILE_PERMISSIONS','Права доступа файлов .............................. ');
 define('TEXT_FOLDER_PERMISSIONS','Права доступа директорий .............................. ');
