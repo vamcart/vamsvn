@@ -1706,7 +1706,8 @@ function walk( $item1 ) {
 	if (trim($v_products_image)==''){
 		$v_products_image = $default_image_product;
 	} else {
-		prepare_image($v_products_image);
+		$v_products_image;
+//		prepare_image($v_products_image);
 	}
 
 	if (strlen($v_products_model) > $modelsize ){
@@ -2293,7 +2294,8 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 			if(isset($filelayout['v_mo_image_'.($i+1)])) {
 //				echo '<pre>';var_dump($items[$filelayout['v_mo_image_'.($i+1)]]);echo '</pre>';
 				if($items[$filelayout['v_mo_image_'.($i+1)]] != "") {
-					prepare_image($items[$filelayout['v_mo_image_'.($i+1)]]);
+					$items[$filelayout['v_mo_image_'.($i+1)]];
+//					prepare_image($items[$filelayout['v_mo_image_'.($i+1)]]);
 				}
 				$check_query = xtc_db_query("select image_id, image_name from " . TABLE_PRODUCTS_IMAGES . " where products_id='" . (int)$v_products_id . "' and image_nr='" . ($i+1) . "'");
 				if (xtc_db_num_rows($check_query) <= 0) {
