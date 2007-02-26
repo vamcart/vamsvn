@@ -2131,5 +2131,20 @@ li.ajaxAddQuickie
    } 
 
 /* /Ajax add quickie suggest */
+
+.errorBox 
+   {
+	  background-color: #ffb3b5;
+   }
+
+.messageStackError, .messageStackWarning 
+   { 
+     background-color: #ffb3b5; 
+   }
+
+.messageStackSuccess 
+   { 
+     background-color: #99ff00; 
+   }
    
 /*]]>*/
