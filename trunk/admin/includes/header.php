@@ -57,13 +57,13 @@
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" width="3" height="3" align="left" hspace="0" /></td>
               <td width="84" align="center" valign="top">
-              <div class="buttonadmin"><a class="shippingInfo" href="http://vamshop.ru" target="_blank"><?php echo TEXT_HEADER_SUPPORT; ?></a></div>              
+              <div class="buttonadmin"><a class="shippingInfo" href="../index.php" target="_blank"><?php echo TEXT_HEADER_SHOP; ?></a></div>              
               </td>
               <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="images/corners/corner_top_left.gif" width="3" height="3" align="left" hspace="0" /></td>
               <td width="98" align="center" valign="top">
-              <div class="buttonadmin"><a class="shippingInfo" href="../index.php" target="_blank"><?php echo TEXT_HEADER_SHOP; ?></a></div>              
+              <div class="buttonadmin"><a class="shippingInfo" href="../logoff.php"><?php echo BOX_HEADING_LOGOFF; ?></a></div>              
               </td>
 <?php 
 
