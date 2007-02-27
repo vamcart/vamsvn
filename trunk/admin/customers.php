@@ -278,12 +278,12 @@ if ($_GET['action']) {
 			}
         }
 
-			if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
-				$error = true;
-				$entry_password_error = true;
-			} else {
-				$entry_password_error = false;
-			}
+//			if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
+//				$error = true;
+//				$entry_password_error = true;
+//			} else {
+//				$entry_password_error = false;
+//			}
 
 			$check_email = xtc_db_query("select customers_email_address from ".TABLE_CUSTOMERS." where customers_email_address = '".xtc_db_input($customers_email_address)."' and customers_id <> '".xtc_db_input($customers_id)."'");
 			if (xtc_db_num_rows($check_email)) {
@@ -969,7 +969,7 @@ if ($error == true) {
 } else {
 	echo xtc_draw_input_field('entry_password');
 }
-?>&nbsp;<?php echo ENTRY_NEW_PASSWORD_HELP; ?></td>      
+?></td>      
         
           <tr>
             <td class="main"><?php echo ENTRY_NEWSLETTER; ?></td>
