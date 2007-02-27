@@ -336,7 +336,7 @@ define('TEXT_SHIPPING_ERROR','<b>ПРЕДУПРЕЖДЕНИЕ:</b><br />Активируйте модули дос
 
 define('TEXT_NETTO',' без налогов: ');
 
-define('ENTRY_CID','ID клиента:');
+define('ENTRY_CID','Номер клиента:');
 define('IP','IP заказа:');
 define('CUSTOMERS_MEMO','Заметки:');
 define('DISPLAY_MEMOS','Показать/написать');

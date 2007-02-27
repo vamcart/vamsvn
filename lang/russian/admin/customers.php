@@ -55,7 +55,6 @@ define('NEW_ORDER','Новый заказ');
 define('ENTRY_PAYMENT_UNALLOWED','Запрещённые модули оплаты:');
 define('ENTRY_SHIPPING_UNALLOWED','Запрещённые модули доставки:');
 define('ENTRY_NEW_PASSWORD','Новый пароль:');
-define('ENTRY_NEW_PASSWORD_HELP','Если Вы изменяете данные клиента, не забудьте ввести пароль, иначе внесённые изменения не сохранятся.');
 
 define('TEXT_INFO_ORIGINAL_REFERER', 'Реферер:');
 
