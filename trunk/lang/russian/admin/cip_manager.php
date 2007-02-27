@@ -48,7 +48,7 @@ define('ICON_INSTALLED_CURRENT_FOLDER', 'Текущая папка была установлена');
 
 define('CIP_MANAGER_SUPPORT','Поддержка: ');
 define('CIP_MANAGER_UPLOADER','Модуль добавил: ');
-define('CIP_MANAGER_SUPPORT_FORUM','Форум поддержки данного модуля на официальном сайте магазина');
+define('CIP_MANAGER_SUPPORT_FORUM','Форум поддержки для данного модуля на официальном сайте магазина');
 define('CIP_MANAGER_CONTRIBUTION_PAGE','Официальная страница модуля');
 define('CIP_MANAGER_SUPPORT_FORUM_DEVELOPER','Форум поддержки данного модуля на сайте разработчика');
 define('CIP_MANAGER_INFO','Информация о модуле: ');
