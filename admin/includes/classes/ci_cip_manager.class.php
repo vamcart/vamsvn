@@ -736,13 +736,13 @@ class cip_manager {
             $value=htmlspecialchars($value);//convert to entries...
             if ($key=='contrib_ref') {
                 if ($value) {
-                $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (defined(TEXT_LINK_CONTR) ? TEXT_LINK_CONTR :
-                                        'http://www.oscommerce.com/community/contributions,'). $value.'" >' . CIP_MANAGER_CONTRIBUTION_PAGE . '</a></b>');
+                $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (!defined(TEXT_LINK_CONTR) ? TEXT_LINK_CONTR :
+                                        'http://vamshop.ru/?,'). $value.'" >' . CIP_MANAGER_CONTRIBUTION_PAGE . '</a></b>');
                 }
             } elseif ($key=='forum_ref') {
                 if ($value) {
-                $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (defined(TEXT_LINK_FORUM) ? TEXT_LINK_FORUM :
-                                    'http://forums.oscommerce.com/index.php?showtopic=').$value. '">' . CIP_MANAGER_SUPPORT_FORUM . '</a></b>');
+                $contents[]=array('text'=>'<b>&#8226;&nbsp;<a href="'. (!defined(TEXT_LINK_FORUM) ? TEXT_LINK_FORUM :
+                                    'http://vamshop.ru/?').$value. '">' . CIP_MANAGER_SUPPORT_FORUM . '</a></b>');
                 }
                 $contents[] = array('text' => '<hr><h3>' . CIP_MANAGER_INFO . '</h3>');
             } else 
