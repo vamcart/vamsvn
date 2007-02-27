@@ -256,12 +256,6 @@
     } // WHILE loop to display categories ENDS    
 // ----------------------------------------------------------------------------------------------------- //     
 
-// VaM Shop admin paging start
-
-//echo 'page = ' . $page;
-//echo 'max_count = ' . $max_count;
-
-// VaM Shop admin paging end   
     //get products data 
     $products_count = 0;
     if ($_GET['search']) {
@@ -317,9 +311,6 @@ if (!isset($_GET['page'])){$page=0;} else { $page = $_GET['page']; };
 
 $max_count = MAX_DISPLAY_ADMIN_PAGE;
 
-// $page = $_GET['page'];
-// echo 'page1 = ' . $page;
-       
 //opredeliaem stranicu tecuschego producta
 
 	if ( (isset($product_id)) and ($numr>0) ){
@@ -327,7 +318,6 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
 
 	while ($row=xtc_db_fetch_array($products_query)){
 		if ($row["products_id"]==$product_id){
-//								echo $pID." ".$numr." ";
 								$pnum=($pnum/$max_count);
 									if (strpos($pnum,".")>0){
 									$pnum=substr($pnum,0,strpos($pnum,"."));
@@ -337,7 +327,6 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
 												}
 									}
 									$page = $pnum*$max_count;
-//									echo $page;
 								break;
 								}
 	$pnum++;
@@ -345,10 +334,7 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
 	}
 //--------------------------------
 			//formiruem stroku kol-va
-//echo $numr;
-//echo $max_count;
-//echo "page - " . $page;
-//$numr=500;
+
     if ($_GET['search']) {
         $products_query = xtc_db_query("
         SELECT
