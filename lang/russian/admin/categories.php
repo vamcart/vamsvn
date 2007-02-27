@@ -39,7 +39,7 @@ define('TEXT_INSERT_ELEMENT','Новый элемент');
 define('TEXT_WARN_MAIN','Основной');
 define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
 define('TEXT_CATEGORIES', 'Категории:');
-define('TEXT_PRODUCTS', 'Товары:');
+define('TEXT_PRODUCTS', 'Товаров на странице:');
 define('TEXT_PRODUCTS_PRICE_INFO', 'Цены:');
 define('TEXT_PRODUCTS_TAX_CLASS', 'Класс налогов:');
 define('TEXT_PRODUCTS_AVERAGE_RATING', 'Средний рейтинг:');
@@ -214,5 +214,8 @@ define('TEXT_PRODUCTS_DATA','Дополнительно');
 define('TEXT_TAB_CATEGORIES_IMAGE', 'Картинка категории');
 
 define('ENTRY_CUSTOMERS_ACCESS','Доступ');
+
+define('TEXT_PAGES', 'Страницы: ');
+define('TEXT_TOTAL_PRODUCTS', 'Всего товаров: ');
 
 ?>

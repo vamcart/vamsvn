@@ -255,7 +255,13 @@
 // ----------------------------------------------------------------------------------------------------- //    
     } // WHILE loop to display categories ENDS    
 // ----------------------------------------------------------------------------------------------------- //     
-   
+
+// VaM Shop admin paging start
+
+//echo 'page = ' . $page;
+//echo 'max_count = ' . $max_count;
+
+// VaM Shop admin paging end   
     //get products data 
     $products_count = 0;
     if ($_GET['search']) {
@@ -301,6 +307,114 @@
         WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' AND 
         p.products_id = p2c.products_id AND p2c.categories_id = '" . $current_category_id . "' ORDER BY " . $prodsort);
     }
+
+// VaM Shop admin paging start
+
+$numr = xtc_db_num_rows($products_query);
+$products_count = 0;
+
+if (!isset($_GET['page'])){$page=0;} else { $page = $_GET['page']; };
+
+$max_count = MAX_DISPLAY_ADMIN_PAGE;
+
+// $page = $_GET['page'];
+// echo 'page1 = ' . $page;
+       
+//opredeliaem stranicu tecuschego producta
+
+	if ( (isset($product_id)) and ($numr>0) ){
+	$pnum=1;
+
+	while ($row=xtc_db_fetch_array($products_query)){
+		if ($row["products_id"]==$product_id){
+//								echo $pID." ".$numr." ";
+								$pnum=($pnum/$max_count);
+									if (strpos($pnum,".")>0){
+									$pnum=substr($pnum,0,strpos($pnum,"."));
+									} else{
+									if ($pnum<>0){
+											$pnum=$pnum-1;
+												}
+									}
+									$page = $pnum*$max_count;
+//									echo $page;
+								break;
+								}
+	$pnum++;
+								}
+	}
+//--------------------------------
+			//formiruem stroku kol-va
+//echo $numr;
+//echo $max_count;
+//echo "page - " . $page;
+//$numr=500;
+    if ($_GET['search']) {
+        $products_query = xtc_db_query("
+        SELECT
+        p.products_tax_class_id,
+        p.products_id,
+        pd.products_name,
+        p.products_sort,
+        p.products_quantity,
+        p.products_to_xml,
+        p.products_image,
+        p.products_price,
+        p.products_discount_allowed,
+        p.products_date_added,
+        p.products_last_modified,
+        p.products_date_available,
+        p.products_status,
+        p.products_startpage,
+        p.products_startpage_sort,
+        p2c.categories_id FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
+        WHERE p.products_id = pd.products_id AND pd.language_id = '" . $_SESSION['languages_id'] . "' AND
+        p.products_id = p2c.products_id AND (pd.products_name like '%" . $_GET['search'] . "%' OR
+        p.products_model = '" . $_GET['search'] . "') ORDER BY " . $prodsort . " limit ".$page.",".$max_count);
+    } else {
+        $products_query = xtc_db_query("
+        SELECT 
+        p.products_tax_class_id,
+        p.products_sort, 
+        p.products_id, 
+        pd.products_name, 
+        p.products_quantity, 
+        p.products_to_xml,
+        p.products_image, 
+        p.products_price, 
+        p.products_discount_allowed, 
+        p.products_date_added, 
+        p.products_last_modified, 
+        p.products_date_available, 
+        p.products_status,
+        p.products_startpage,
+        p.products_startpage_sort FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
+        WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' AND 
+        p.products_id = p2c.products_id AND p2c.categories_id = '" . $current_category_id . "' ORDER BY " . $prodsort . " limit ".$page.",".$max_count);
+
+    }
+
+
+if ($numr>$max_count){
+			$kn=0;
+			$stp= TEXT_PAGES;
+
+			$im=1;$nk=0;
+			while ($kn<$numr){
+			if ($kn<>$page){
+			$stp.='<a href=categories.php?cPath='.$cPath.'&page='.$kn.'&search='.$_GET['search'].'>'.$im.'</a>&nbsp';
+			}else{
+			$stp.='<font color="#CC0000">['.$im.']</font>&nbsp';
+			}
+			$kn=$kn+$max_count;
+			$nk=$nk+$max_count;
+			if ($nk>=$max_count*30){$stp.='<br />';$nk=0;}
+			$im++;
+			}
+}
+			//-----------------------
+// VaM Shop admin paging end
+
 
 // ----------------------------------------------------------------------------------------------------- //    
 // WHILE loop to display products STARTS
@@ -434,6 +548,8 @@
         <tr>
          <td class="smallText">
             <?php echo TEXT_CATEGORIES . '&nbsp;' . $categories_count . '<br />' . TEXT_PRODUCTS . '&nbsp;' . $products_count; ?>
+            <br />
+            <?php echo TEXT_TOTAL_PRODUCTS . $numr; ?>
          </td>
          <td align="right" class="smallText">
          <?php
@@ -444,7 +560,12 @@
          ?>
          </td>
         </tr>
-        </table>                
+<!-- // VaM Shop admin paging start -->        <tr>
+         <td colspan="2" class="smallText">
+           <?php echo $stp; ?>
+         </td>
+        </tr>
+<!-- // VaM Shop admin paging end -->        </table>                
         
      </td>
      <!-- categories & products column ENDS -->

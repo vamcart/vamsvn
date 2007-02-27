@@ -130,6 +130,8 @@ define('MAX_ADDRESS_BOOK_ENTRIES_TITLE' , '«аписи в адресной книге');
 define('MAX_ADDRESS_BOOK_ENTRIES_DESC', 'ћаксимальное количество записей, которые может сделать покупатель в своей адресной книге');
 define('MAX_DISPLAY_SEARCH_RESULTS_TITLE' , '“оваров на одной странице в каталоге');
 define('MAX_DISPLAY_SEARCH_RESULTS_DESC', ' оличество товара, выводимого на одной странице');
+define('MAX_DISPLAY_ADMIN_PAGE_TITLE' , '“оваров на одной странице в админке');
+define('MAX_DISPLAY_ADMIN_PAGE_DESC', ' оличество товара, выводимого на одной странице в админке, при просмотре списка товаров');
 define('MAX_DISPLAY_PAGE_LINKS_TITLE' , '—сылок на страницы');
 define('MAX_DISPLAY_PAGE_LINKS_DESC', ' оличество ссылок на другие страницы');
 define('MAX_DISPLAY_SPECIAL_PRODUCTS_TITLE' , '—пециальные цены');
