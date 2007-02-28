@@ -120,17 +120,15 @@ class cip_manager {
             else     $goto_link=$this->current_path.'/'.$contents[$i]['name'];
 
             //<TR>
-            $output.='<tr';
             if (isset($fInfo) && is_object($fInfo) && ($contents[$i]['name'] == $fInfo->name)) {
-                $output.=' id="defaultSelected" class="dataTableRowSelected"';
+                $output.='<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">';
                 $onclick_link = (($fInfo->is_dir) ?
                         'goto='.$goto_link : 'cip='.urlencode($fInfo->name) /*.'&action=edit'*/);
             } else {
-                $output.=' class="dataTableRow"';
+                $output.='<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">'; 
                 $onclick_link = 'cip='.urlencode($contents[$i]['name']);
                 //$contents[$i]['name'] ==$fInfo->name...
             }
-            $output.=' onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)">'."\n";
 
 
             //===============================================
