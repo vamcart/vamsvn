@@ -77,7 +77,7 @@ class Tc_changelangdef extends ContribInstallerBaseTag {
 			}else{
 				if($oldlng != $lng){
 					$odllng = $lng;
-					$fname = $this->get_fs_filename("lang/" . $lang . '/admin/' . $lng);
+					$fname = $this->get_fs_filename("lang/" . $lang . '/' . $lng);
 			    	if (!file_exists($fname)){
 			    		$this->error(CANT_READ_FILE.$fname);
 			    		break;
