@@ -745,7 +745,7 @@ class cip_manager {
                 $contents[] = array('text' => '<hr><h3>' . CIP_MANAGER_INFO . '</h3>');
             } else 
             
-            		if (function_exists('iconv') && 'UTF-8' != strtoupper($charset)) $value = iconv("UTF-8", 'cp1251', $value);
+//            		if (function_exists('iconv') && 'UTF-8' != strtoupper($charset)) $value = iconv("UTF-8", 'cp1251', $value);
             
             $contents[]=array('text'=>'<b>'.$key.'</b>: '.nl2br($value));
         }

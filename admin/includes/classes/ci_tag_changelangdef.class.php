@@ -215,14 +215,16 @@ class Tc_changelangdef extends ContribInstallerBaseTag {
 				if($this->data['newname'][$i] != ''){
 					if($this->data['changevalue'][$i] != ''){
 						// change value and name
-						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".unicode2win($this->data['value'][$i])."');";
+						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".$this->data['value'][$i]."');";
+//						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".unicode2win($this->data['value'][$i])."');";
 					}else{
 						// change only name
 						$newline = str_replace($this->data['name'][$i],$this->data['newname'][$i],$line);
 					}
 				}else if($this->data['changevalue'][$i] != ''){
 					// change only value - for example better translation
-					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".unicode2win($this->data['value'][$i])."');";
+					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".$this->data['value'][$i]."');";
+//					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".unicode2win($this->data['value'][$i])."');";
 				}
 				if ($newline != '') {
 					$old_filea = str_replace($line,$this->linebreak_fixing("\n" . $this->comment_string($newline)),$old_filea);
@@ -241,14 +243,16 @@ class Tc_changelangdef extends ContribInstallerBaseTag {
 				if($this->data['newname'][$i] != ''){
 					if($this->data['changevalue'][$i] != ''){
 						// change value and name
-						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".unicode2win($this->data['value'][$i])."');";
+						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".$this->data['value'][$i]."');";
+//						$newline = "/*".$line."*/\ndefine('".$this->data['newname'][$i]."','".unicode2win($this->data['value'][$i])."');";
 					}else{
 						// change only name
 						$newline = str_replace($this->data['name'][$i],$this->data['newname'][$i],$line);
 					}
 				}else if($this->data['changevalue'][$i] != ''){
 					// change only value - for example better translation
-					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".unicode2win($this->data['value'][$i])."');";
+					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".$this->data['value'][$i]."');";
+//					$newline = "/*".$line."*/\ndefine('".$this->data['name'][$i]."','".unicode2win($this->data['value'][$i])."');";
 				}
 				if ($newline != '' && $line != '') {
 					$old_file = str_replace($line,$this->linebreak_fixing("\n" . $this->comment_string($newline)),$old_file);
