@@ -94,7 +94,8 @@ class Tc_addlangdef extends ContribInstallerBaseTag {
         return $this->error;
     }
 
-    function lang_define($name, $value, $encod) {return "  define('".strtoupper($name)."','".unicode2win($value, $encod)."');\n";}
+    function lang_define($name, $value, $encod) {return "  define('".strtoupper($name)."','".$value."');\n";}
+//    function lang_define($name, $value, $encod) {return "  define('".strtoupper($name)."','".unicode2win($value, $encod)."');\n";}
     function add_def($tblrowsa=array(), $dir='catalog', $action='remove') {
         if (count($tblrowsa)>0) {
             foreach ($tblrowsa as $lang=>$text) {
