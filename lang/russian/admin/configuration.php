@@ -712,4 +712,7 @@ define('SHOW_SIZE_COLUMN_DESC' , 'Выберите true и в списке модулей будет отображ
 define('USE_LOG_SYSTEM_TITLE' , 'Вести лог');
 define('USE_LOG_SYSTEM_DESC' , 'Если true, то всё действия установщика модулей будут записываться в папку backups.');
 
+define('USE_EP_IMAGE_MANIPULATOR_TITLE','Разрешить обработку картинок в excel импорт/экспорт');
+define('USE_EP_IMAGE_MANIPULATOR_DESC','Обрабатывать или нет картинки при загрузке товаров через модуль Excel импорт/экспорт');
+
 ?>
