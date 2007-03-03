@@ -23,7 +23,7 @@ define('TABLE_HEADING_PRODUCTS_VPE', 'Упаковочная единица');
 define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_INFO_EDIT_INTRO', 'Сделайте необходиме изменения');
-define('TEXT_INFO_PRODUCTS_VPE_NAME', 'Статус заказа:');
+define('TEXT_INFO_PRODUCTS_VPE_NAME', 'Название:');
 define('TEXT_INFO_INSERT_INTRO', 'Введите новую упаковочную </span title="единица измерения короткомерного баланса, равная 5,66 складочных кубических метра">единицу</span>');
 define('TEXT_INFO_DELETE_INTRO', 'Вы уверены, что хотите удалить эту единицу?');
 define('TEXT_INFO_HEADING_NEW_PRODUCTS_VPE', 'Новая упаковочная единица');
