@@ -175,7 +175,7 @@ define('TEXT_SINGLECOPY_DESC','Копировать элементы в следующую категорию');
 define('TEXT_SINGLECOPY_CATEGORY','Категория:');
 
 define('TEXT_PRODUCTS_VPE','Единица: ');
-define('TEXT_PRODUCTS_VPE_VISIBLE','Цена за единицу: ');
+define('TEXT_PRODUCTS_VPE_VISIBLE','Показывать единицу упаковки: ');
 define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
 
 define('CROSS_SELLING','Сопутствующие товары');
