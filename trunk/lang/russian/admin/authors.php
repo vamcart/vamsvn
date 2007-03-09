@@ -37,7 +37,7 @@ define('TEXT_EDIT_INTRO', 'Внесите необходимые изменения.');
 
 define('TEXT_AUTHORS_NAME', 'Имя автора:');
 define('TEXT_AUTHORS_DESCRIPTION', 'Описание:');
-define('TEXT_AUTHORS_URL', 'URL ссылка:');
+define('TEXT_AUTHORS_URL', 'URL ссылка (без http://):');
 
 define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данного автора?');
 define('TEXT_DELETE_ARTICLES', 'Удалить статьи данной автора? (включая отзывы к статьям и неопубликованные статьи)');
