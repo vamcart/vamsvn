@@ -1,40 +1,44 @@
 <?php
-/*
-  $Id: information.php,v 1.1.1.1 2003/09/18 19:05:51 wilt Exp $
+/* -----------------------------------------------------------------------------------------
+   $Id: admin.php 1262 2007-02-07 12:30:44 VaM $   
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2001 osCommerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommercebased on original files from OSCommerce CVS 2.2 2002/08/28 02:14:35 www.oscommerce.com 
+   (c) 2003	 nextcommerce (admin.php,v 1.12 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (admin.php,v 1.12 2003/08/13); xt-commerce.com 
 
-  Released under the GNU General Public License
-*/
-  $authors_query = tep_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
-  if ($number_of_author_rows = tep_db_num_rows($authors_query)) {
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
+
+$box_smarty = new smarty;
+$box_content='';
+$flag='';
+$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+
+  $authors_query = xtc_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
+  if ($number_of_author_rows = xtc_db_num_rows($authors_query)) {
 ?>
 <!-- authors //-->
-          <tr>
-            <td>
 <?php
-
-
-  $info_box_contents = array();
-  $info_box_contents[] = array('text' => BOX_HEADING_AUTHORS);
-  new infoBoxHeading($info_box_contents, false, false);
-
     if ($number_of_author_rows <= MAX_DISPLAY_AUTHORS_IN_A_LIST) {
 // Display a list
       $authors_list = '';
-      while ($authors = tep_db_fetch_array($authors_query)) {
+      while ($authors = xtc_db_fetch_array($authors_query)) {
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($HTTP_GET_VARS['authors_id']) && ($HTTP_GET_VARS['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
-        $authors_list .= '<a href="' . tep_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id']) . '">' . $authors_name . '</a><br>';
+        $authors_list .= '<a href="' . xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id']) . '">' . $authors_name . '</a><br>';
       }
 
       $authors_list = substr($authors_list, 0, -4);
 
-      $info_box_contents = array();
-      $info_box_contents[] = array('text' => $authors_list);
+      $content_string .= $authors_list;
     } else {
 // Display a drop-down
       $authors_array = array();
@@ -42,24 +46,25 @@
         $authors_array[] = array('id' => '', 'text' => PULL_DOWN_DEFAULT);
       }
 
-      while ($authors = tep_db_fetch_array($authors_query)) {
+      while ($authors = xtc_db_fetch_array($authors_query)) {
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         $authors_array[] = array('id' => $authors['authors_id'],
                                        'text' => $authors_name);
       }
 
-      $info_box_contents = array();
-      $info_box_contents[] = array('form' => tep_draw_form('authors', tep_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get'),
-                                   'text' => tep_draw_pull_down_menu('authors_id', $authors_array, (isset($HTTP_GET_VARS['authors_id']) ? $HTTP_GET_VARS['authors_id'] : ''), 'onChange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . tep_hide_session_id());
+      $content_string .= xtc_draw_form('authors', xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . xtc_draw_pull_down_menu('authors_id', $authors_array, (isset($HTTP_GET_VARS['authors_id']) ? $HTTP_GET_VARS['authors_id'] : ''), 'onChange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . xtc_hide_session_id();
 }
 
-new infoBox($info_box_contents);
-
 ?>
-            </td>
-          </tr>
-<!-- information_eof //-->
+<!-- authors_eof //-->
 <?php
   }
-?>
+  
+    $box_smarty->assign('BOX_CONTENT', $content_string);
 
+    $box_smarty->caching = 0;
+    $box_smarty->assign('language', $_SESSION['language']);
+    $box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
+    $smarty->assign('box_authors',$box_authors);
+  
+?>
