@@ -63,22 +63,15 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
       }
     }
 
-    $topics_string .= '<br>';
+    $topics_string .= '<br />' . "\n";
 
     if ($tree[$counter]['next_id'] != false) {
       xtc_show_topic($tree[$counter]['next_id']);
     }
   }
 ?>
-<!-- topics //-->
-          <tr>
-            <td>
 <?php
 
-
-  $info_box_contents = array();
-  $info_box_contents[] = array('text' => BOX_HEADING_ARTICLES);
-  new infoBoxHeading($info_box_contents, false, false);
 
   $topics_string = '';
   $tree = array();
@@ -141,7 +134,6 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   }
   xtc_show_topic($first_topic_element);
 
-  $info_box_contents = array();
   $new_articles_string = '';
   $all_articles_string = '';
 
@@ -163,7 +155,7 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
       $new_articles_string .= '</b>';
     }
 
-    $new_articles_string .= $articles_new_count . '<br>';
+    $new_articles_string .= $articles_new_count . '<br />' . "\n";
 
   }
 
@@ -185,22 +177,18 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
       $all_articles_string .= '</b>';
     }
 
-    $all_articles_string .= $articles_all_count . '<br>';
+    $all_articles_string .= $articles_all_count . '<br />' . "\n";
 
   }
 
 
-  $info_box_contents = array();
-  $info_box_contents[] = array('text' => $new_articles_string . $all_articles_string . $topics_string);
-
-new infoBox($info_box_contents);
+  $box_content = $new_articles_string . $all_articles_string . $topics_string;
 
     $box_smarty->assign('BOX_CONTENT', $box_content);
 
     $box_smarty->caching = 0;
     $box_smarty->assign('language', $_SESSION['language']);
     $box_articles = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html');
-    $smarty->assign('box_artices',$box_articles);
+    $smarty->assign('box_ARTICLES',$box_articles);
 
 ?>
-<!-- topic_eof //-->

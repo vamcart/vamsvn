@@ -17,6 +17,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
+  require_once (DIR_FS_INC.'xtc_hide_session_id.inc.php');
+
 $box_smarty = new smarty;
 $box_content='';
 $flag='';
@@ -25,7 +27,6 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $authors_query = xtc_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
   if ($number_of_author_rows = xtc_db_num_rows($authors_query)) {
 ?>
-<!-- authors //-->
 <?php
     if ($number_of_author_rows <= MAX_DISPLAY_AUTHORS_IN_A_LIST) {
 // Display a list
@@ -56,15 +57,18 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 }
 
 ?>
-<!-- authors_eof //-->
 <?php
-  }
+}
+
+if (xtc_db_num_rows($authors_query) > 0) {
   
     $box_smarty->assign('BOX_CONTENT', $content_string);
 
     $box_smarty->caching = 0;
     $box_smarty->assign('language', $_SESSION['language']);
     $box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
-    $smarty->assign('box_authors',$box_authors);
+    $smarty->assign('box_AUTHORS',$box_authors);
+
+}
   
 ?>
