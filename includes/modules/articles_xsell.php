@@ -1,19 +1,21 @@
-
 <?php
-/* 
-  $Id: articles_xsell.php, v1.0 2003/12/04 12:00:00 ra Exp $
+/* --------------------------------------------------------------
+   $Id: articles_xsell.php 1249 2007-03-09 11:13:01Z VaM $   
 
-osCommerce, Open Source E-Commerce Solutions 
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-Copyright (c) 2003 osCommerce 
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
 
-Released under the GNU General Public License 
-*/ 
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
 
-if ($HTTP_GET_VARS['articles_id']) {
-$xsell_query = tep_db_query("select distinct a.products_id, a.products_image, ad.products_name from " . TABLE_ARTICLES_XSELL . " ax, " . TABLE_PRODUCTS . " a, " . TABLE_PRODUCTS_DESCRIPTION . " ad where ax.articles_id = '" . $HTTP_GET_VARS['articles_id'] . "' and ax.xsell_id = a.products_id and a.products_id = ad.products_id and ad.language_id = '" . $languages_id . "' and a.products_status = '1' order by ax.sort_order asc limit " . MAX_DISPLAY_ARTICLES_XSELL);
-$num_products_xsell = tep_db_num_rows($xsell_query); 
+if ($_GET['articles_id']) {
+$xsell_query = xtc_db_query("select distinct a.products_id, a.products_image, ad.products_name from " . TABLE_ARTICLES_XSELL . " ax, " . TABLE_PRODUCTS . " a, " . TABLE_PRODUCTS_DESCRIPTION . " ad where ax.articles_id = '" . $_GET['articles_id'] . "' and ax.xsell_id = a.products_id and a.products_id = ad.products_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.products_status = '1' order by ax.sort_order asc limit " . MAX_DISPLAY_ARTICLES_XSELL);
+$num_products_xsell = xtc_db_num_rows($xsell_query); 
 if ($num_products_xsell >= MIN_DISPLAY_ARTICLES_XSELL) {
 ?> 
 <!-- xsell_articles //-->
@@ -25,11 +27,11 @@ if ($num_products_xsell >= MIN_DISPLAY_ARTICLES_XSELL) {
       $row = 0;
       $col = 0;
       $info_box_contents = array();
-      while ($xsell = tep_db_fetch_array($xsell_query)) {
-        $xsell['products_name'] = tep_get_products_name($xsell['products_id']);
+      while ($xsell = xtc_db_fetch_array($xsell_query)) {
+        $xsell['products_name'] = xtc_get_products_name($xsell['products_id']);
         $info_box_contents[$row][$col] = array('align' => 'center',
                                                'params' => 'class="smallText" width="33%" valign="top"',
-                                               'text' => '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $xsell['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $xsell['products_image'], $xsell['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a><br><a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $xsell['products_id']) . '">' . $xsell['products_name'] . '</a>');
+                                               'text' => '<a href="' . xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $xsell['products_id']) . '">' . xtc_image(DIR_WS_IMAGES . $xsell['products_image'], $xsell['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a><br><a href="' . xtc_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $xsell['products_id']) . '">' . $xsell['products_name'] . '</a>');
         $col ++;
         if ($col > 2) {
           $col = 0;
@@ -39,7 +41,7 @@ if ($num_products_xsell >= MIN_DISPLAY_ARTICLES_XSELL) {
       new contentBox($info_box_contents);
       $info_box_contents = array();
   $info_box_contents[] = array('align' => 'left',
-                                'text'  => tep_draw_separator('pixel_trans.gif', '100%', '1')
+                                'text'  => xtc_draw_separator('pixel_trans.gif', '100%', '1')
                               );
   new infoboxFooter($info_box_contents, true, true);
 
