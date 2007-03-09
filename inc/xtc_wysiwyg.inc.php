@@ -56,6 +56,28 @@ $image_path = '&Type=images';
                         	   			}
                         	   	</script>';
                         break;
+                // WYSIWYG editor article textarea named content
+                case 'articles_description':
+                        $val ='var oFCKeditor = new FCKeditor( \'articles_description['.$langID.']\', \'750\', \'400\'  ) ;
+                        	   oFCKeditor.BasePath = "'.$path.'" ;
+                        	   oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
+                        	   oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
+                        	   oFCKeditor.Config["AutoDetectLanguage"] = false ;
+                        	   oFCKeditor.Config["DefaultLanguage"] = "'.$lang.'" ;
+                        	   oFCKeditor.ReplaceTextarea() ;
+                        	   ';
+                        break;
+                // WYSIWYG editor article categories textarea named content
+                case 'topics_description':
+                        $val ='var oFCKeditor = new FCKeditor( \'topics_description['.$langID.']\', \'750\', \'400\'  ) ;
+                        	   oFCKeditor.BasePath = "'.$path.'" ;
+                        	   oFCKeditor.Config["LinkBrowserURL"] = "'.$filemanager.$file_path.'" ;
+                        	   oFCKeditor.Config["ImageBrowserURL"] = "'.$filemanager.$image_path.'" ;
+                        	   oFCKeditor.Config["AutoDetectLanguage"] = false ;
+                        	   oFCKeditor.Config["DefaultLanguage"] = "'.$lang.'" ;
+                        	   oFCKeditor.ReplaceTextarea() ;
+                        	   ';
+                        break;
                 // WYSIWYG editor content manager products content section textarea named file_comment
                 case 'products_content':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>

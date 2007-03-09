@@ -330,13 +330,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<?php if (USE_WYSIWYG=='true') {
- $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
- $data=xtc_db_fetch_array($query);
- if ($_GET['action']=='new_latest_news') echo xtc_wysiwyg('latest_news',$data['code']);
- } ?>
+<?php
+
+// Include WYSIWYG if is activated
+if (USE_WYSIWYG == 'true') {
+	$query = xtc_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
+	$data = xtc_db_fetch_array($query);
+	// generate editor for categories EDIT
+	$languages = xtc_get_languages();
+?>
+<script type="text/javascript" src="includes/modules/fckeditor/fckeditor.js"></script>
+<script type="text/javascript">
+	window.onload = function()
+		{<?php
+
+	// generate editor for categories
+	if ($_GET['action'] == 'new_topic' || $_GET['action'] == 'edit_topic') {
+		for ($i = 0; $i < sizeof($languages); $i ++) {
+			echo xtc_wysiwyg('topics_description', $data['code'], $languages[$i]['id']);
+		}
+	}
+
+	// generate editor for products
+	if ($_GET['action'] == 'new_article') {
+		for ($i = 0; $i < sizeof($languages); $i ++) {
+			echo xtc_wysiwyg('articles_description', $data['code'], $languages[$i]['id']);
+		}
+	}
+?>}
+</script><?php
+}
+?>
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<body style="margin: 0; background-color: #FFFFFF">
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
