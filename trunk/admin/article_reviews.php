@@ -56,19 +56,8 @@
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<?php
-// BOF: WebMakers.com Changed: Header Tag Controller v1.0
-// Replaced by header_tags.php
-if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
-  require(DIR_WS_INCLUDES . 'header_tags.php');
-} else {
-?> 
-  <title><?php echo TITLE ?></title>
-<?php
-}
-// EOF: WebMakers.com Changed: Header Tag Controller v1.0
-?>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
+<title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
