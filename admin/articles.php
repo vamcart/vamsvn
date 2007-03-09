@@ -377,8 +377,7 @@ if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo sprintf($text_new_or_edit, xtc_output_generated_topic_path($current_topic_id)); ?></td>
-            <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo sprintf($text_new_or_edit, xtc_output_generated_topic_path($current_topic_id)); ?></h1></td>
           </tr>
         </table></td>
       </tr>
@@ -609,8 +608,7 @@ if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo sprintf(TEXT_NEW_ARTICLE, xtc_output_generated_topic_path($current_topic_id)); ?></td>
-            <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo sprintf(TEXT_NEW_ARTICLE, xtc_output_generated_topic_path($current_topic_id)); ?></h1></td>
           </tr>
         </table></td>
       </tr>
@@ -904,7 +902,9 @@ if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1></td>
+          </tr>
+          <tr>
             <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
