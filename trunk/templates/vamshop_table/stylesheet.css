@@ -806,6 +806,18 @@ span.categoriesBox {
   color: #006600;
 }
 
+span.authorsBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
+span.articlesBox {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #006600;
+}
+
 span.currenciesBox {
   font-family: Tahoma, Verdana, Arial, sans-serif;
   font-size: 12px;
