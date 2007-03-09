@@ -566,4 +566,59 @@ xtc_count_cart();
            $html_referer = $referer ;
 //***********************
 
+// include the articles functions
+  require(DIR_WS_FUNCTIONS . 'articles.php');
+  require(DIR_WS_FUNCTIONS . 'article_header_tags.php'); 
+
+// calculate topic path
+  if (isset($_GET['tPath'])) {
+    $tPath = $_GET['tPath'];
+  } elseif (isset($_GET['articles_id']) && !isset($_GET['authors_id'])) {
+    $tPath = tep_get_article_path($_GET['articles_id']);
+  } else {
+    $tPath = '';
+  }
+
+  if (tep_not_null($tPath)) {
+    $tPath_array = tep_parse_topic_path($tPath);
+    $tPath = implode('_', $tPath_array);
+    $current_topic_id = $tPath_array[(sizeof($tPath_array)-1)];
+  } else {
+    $current_topic_id = 0;
+  }
+
+// add topic names or the author name to the breadcrumb trail
+  if (isset($tPath_array)) {
+    for ($i=0, $n=sizeof($tPath_array); $i<$n; $i++) {
+      $topics_query = tep_db_query("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
+      if (tep_db_num_rows($topics_query) > 0) {
+        $topics = tep_db_fetch_array($topics_query);
+        $breadcrumb->add($topics['topics_name'], tep_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1)))));
+      } else {
+        break;
+      }
+    }
+  } elseif (isset($_GET['authors_id'])) {
+    $authors_query = tep_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
+    if (tep_db_num_rows($authors_query)) {
+      $authors = tep_db_fetch_array($authors_query);
+      $breadcrumb->add('Articles by ' . $authors['authors_name'], tep_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
+    }
+  }
+
+// add the articles name to the breadcrumb trail
+  if (isset($_GET['articles_id'])) {
+    $article_query = tep_db_query("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
+    if (tep_db_num_rows($article_query)) {
+      $article = tep_db_fetch_array($article_query);
+      if (isset($_GET['authors_id'])) {
+        $breadcrumb->add($article['articles_name'], tep_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id']));
+      } else {
+        $breadcrumb->add($article['articles_name'], tep_href_link(FILENAME_ARTICLE_INFO, 'tPath=' . $tPath . '&articles_id=' . $_GET['articles_id']));
+      }
+    }
+  }
+
+  require(DIR_WS_FUNCTIONS . 'clean_html_comments.php');
+
 ?>

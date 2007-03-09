@@ -106,4 +106,15 @@ define('FILENAME_LATEST_NEWS', 'latest_news.php');
 define('FILENAME_NEWS', 'news.php');
 define('FILENAME_FEATURED', 'featured.php');
 
+define('FILENAME_ARTICLE_INFO', 'article_info.php');
+define('FILENAME_ARTICLE_LISTING', 'article_listing.php');
+define('FILENAME_ARTICLE_REVIEWS', 'article_reviews.php');
+define('FILENAME_ARTICLE_REVIEWS_INFO', 'article_reviews_info.php');
+define('FILENAME_ARTICLE_REVIEWS_WRITE', 'article_reviews_write.php');
+define('FILENAME_ARTICLES', 'articles.php');
+define('FILENAME_ARTICLES_NEW', 'articles_new.php');
+define('FILENAME_ARTICLES_UPCOMING', 'articles_upcoming.php'); 
+define('FILENAME_ARTICLES_XSELL', 'articles_xsell.php');
+define('FILENAME_NEW_ARTICLES', 'new_articles.php');
+
 ?>
