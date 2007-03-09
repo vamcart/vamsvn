@@ -437,6 +437,14 @@ define('TEXT_HEADER_LOGOFF','Выход');
 
 define('BOX_CACHE_FILES', 'Контроль кэша');
 
-
+define('BOX_HEADING_ARTICLES', 'Статьи');
+define('BOX_TOPICS_ARTICLES', 'Статьи/Разделы');
+define('BOX_ARTICLES_CONFIG', 'Настройка');
+define('BOX_ARTICLES_AUTHORS', 'Авторы');
+define('BOX_ARTICLES_REVIEWS', 'Отзывы'); 
+define('BOX_ARTICLES_XSELL', 'Товары-Статьи');
+define('IMAGE_NEW_TOPIC', 'Новый раздел');
+define('IMAGE_NEW_ARTICLE', 'Новая статья');
+define('TEXT_DISPLAY_NUMBER_OF_AUTHORS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> авторов)'); 
 
 ?>
