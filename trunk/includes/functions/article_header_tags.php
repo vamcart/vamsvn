@@ -1,14 +1,17 @@
 <?php
-/*
-  $Id: article_header_tags.php, v1.0 2003/12/04 12:00:00 ra Exp $
+/* --------------------------------------------------------------
+   $Id: article_header_tags.php 1249 2007-03-09 11:13:01Z VaM $   
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 osCommerce
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
 
 // Modification of Header Tags Contribution
 // WebMakers.com Added: Header Tags Generator v2.0 
@@ -16,11 +19,11 @@
 ////
 // Get articles_head_title_tag
 // TABLES: articles_description
-function tep_get_header_tag_articles_title($article_id) {
-  global $languages_id, $HTTP_GET_VARS; 
+function xtc_get_header_tag_articles_title($article_id) {
+  global $languages_id, $_GET; 
 
-  $article_header_tags = tep_db_query("select articles_head_title_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$languages_id . "' and articles_id = '" . (int)$HTTP_GET_VARS['articles_id'] . "'");
-  $article_header_tags_values = tep_db_fetch_array($article_header_tags);
+  $article_header_tags = xtc_db_query("select articles_head_title_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$_SESSION['languages_id'] . "' and articles_id = '" . (int)$_GET['articles_id'] . "'");
+  $article_header_tags_values = xtc_db_fetch_array($article_header_tags);
 
   return clean_html_comments($article_header_tags_values['articles_head_title_tag']);
   }
@@ -29,11 +32,11 @@ function tep_get_header_tag_articles_title($article_id) {
 ////
 // Get articles_head_keywords_tag
 // TABLES: articles_description
-function tep_get_header_tag_articles_keywords($article_id) {
-  global $languages_id, $HTTP_GET_VARS; 
+function xtc_get_header_tag_articles_keywords($article_id) {
+  global $languages_id, $_GET; 
 
-  $article_header_tags = tep_db_query("select articles_head_keywords_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$languages_id . "' and articles_id = '" . (int)$HTTP_GET_VARS['articles_id'] . "'");
-  $article_header_tags_values = tep_db_fetch_array($article_header_tags);
+  $article_header_tags = xtc_db_query("select articles_head_keywords_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$_SESSION['languages_id'] . "' and articles_id = '" . (int)$_GET['articles_id'] . "'");
+  $article_header_tags_values = xtc_db_fetch_array($article_header_tags);
 
   return $article_header_tags_values['articles_head_keywords_tag'];
   }
@@ -42,11 +45,11 @@ function tep_get_header_tag_articles_keywords($article_id) {
 ////
 // Get articles_head_desc_tag
 // TABLES: articles_description
-function tep_get_header_tag_articles_desc($article_id) {
-  global $languages_id, $HTTP_GET_VARS; 
+function xtc_get_header_tag_articles_desc($article_id) {
+  global $languages_id, $_GET; 
 
-  $article_header_tags = tep_db_query("select articles_head_desc_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$languages_id . "' and articles_id = '" . (int)$HTTP_GET_VARS['articles_id'] . "'");
-  $article_header_tags_values = tep_db_fetch_array($article_header_tags);
+  $article_header_tags = xtc_db_query("select articles_head_desc_tag from " . TABLE_ARTICLES_DESCRIPTION . " where language_id = '" . (int)$_SESSION['languages_id'] . "' and articles_id = '" . (int)$_GET['articles_id'] . "'");
+  $article_header_tags_values = xtc_db_fetch_array($article_header_tags);
 
   return $article_header_tags_values['articles_head_desc_tag'];
   }

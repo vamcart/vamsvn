@@ -1,5 +1,18 @@
 <?php
-// /catalog/includes/functions/clean_html_comments.php
+/* --------------------------------------------------------------
+   $Id: clean_html_comments.php 1249 2007-03-09 11:13:01Z VaM $   
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
+
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
+
 // WebMakers.com Added: Header Tags Generator v2.0
 // WebMakers.com Added: FREE-CALL FOR PRICE-COMING SOON ETC. v3.0
 //

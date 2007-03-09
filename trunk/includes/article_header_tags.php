@@ -1,14 +1,17 @@
 <?php
-/*
-  $Id: article_header_tags.php, v1.0 2003/12/04 12:00:00 ra Exp $
+/* --------------------------------------------------------------
+   $Id: article_header_tags.php 1249 2007-03-09 11:13:01Z VaM $   
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2003 osCommerce
+   Copyright (c) 2007 VaM Shop
+   --------------------------------------------------------------
+   (c) 2002-2003 osCommerce(categories.php,v 1.140 2003/03/24); www.oscommerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
 
 // Modification of Header Tags Contribution
 // WebMakers.com Added: Header Tags Generator v2.0 
@@ -26,11 +29,11 @@ switch (true) {
 
 // ARTICLES.PHP
     case ((strstr($_SERVER['PHP_SELF'],'articles.php') or strstr($PHP_SELF,'articles.php')) &! strstr($PHP_SELF,'new_articles.php')):
-    $the_topic_query = tep_db_query("select td.topics_name from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'");
-    $the_topic = tep_db_fetch_array($the_topic_query);
+    $the_topic_query = xtc_db_query("select td.topics_name from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+    $the_topic = xtc_db_fetch_array($the_topic_query);
 
-    $the_authors_query= tep_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$HTTP_GET_VARS['authors_id'] . "'");
-    $the_authors = tep_db_fetch_array($the_authors_query);
+    $the_authors_query= xtc_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
+    $the_authors = xtc_db_fetch_array($the_authors_query);
 
     if (HTDA_ARTICLES_ON=='1') {
       $the_desc= HEAD_DESC_TAG_ARTICLES . '. ' . HEAD_DESC_TAG_ALL;
@@ -40,10 +43,10 @@ switch (true) {
 
     if (HTKA_ARTICLES_ON=='1') {
 
-      if (tep_not_null($the_topic['topics_name'])) {
+      if (xtc_not_null($the_topic['topics_name'])) {
         $the_key_words .= $the_topic['topics_name'];
       } else {
-        if (tep_not_null($the_authors['authors_name'])) {
+        if (xtc_not_null($the_authors['authors_name'])) {
           $the_key_words .= $the_authors['authors_name'];
         }
       }
@@ -57,10 +60,10 @@ switch (true) {
     if (HTTA_ARTICLES_ON=='1') {
       $the_title= HEAD_TITLE_TAG_ALL . ' - ' . HEAD_TITLE_TAG_ARTICLES;
 
-      if (tep_not_null($the_topic['topics_name'])) {
+      if (xtc_not_null($the_topic['topics_name'])) {
         $the_title .= ' - ' . $the_topic['topics_name'];
       } else {
-        if (tep_not_null($the_authors['authors_name'])) {
+        if (xtc_not_null($the_authors['authors_name'])) {
           $the_title .= TEXT_BY . $the_authors['authors_name'];
         }
       }
@@ -73,9 +76,9 @@ switch (true) {
 
 // ARTICLE_INFO.PHP
   case ( strstr($_SERVER['PHP_SELF'],'article_info.php') or strstr($PHP_SELF,'article_info.php') ):
-    $the_article_info_query = tep_db_query("select a.articles_id, ad.articles_name, ad.articles_description, ad.articles_head_title_tag, ad.articles_head_keywords_tag, ad.articles_head_desc_tag, ad.articles_url, a.articles_date_added, a.articles_date_available, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . $HTTP_GET_VARS['articles_id'] . "' and ad.articles_id = '" . $HTTP_GET_VARS['articles_id'] . "'");
-    $the_article_info_query = tep_db_query("select ad.language_id, a.articles_id, ad.articles_name, ad.articles_description, ad.articles_head_title_tag, ad.articles_head_keywords_tag, ad.articles_head_desc_tag, ad.articles_url, a.articles_date_added, a.articles_date_available, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . (int)$HTTP_GET_VARS['articles_id'] . "' and ad.articles_id = '" . (int)$HTTP_GET_VARS['articles_id'] . "'" . " and ad.language_id ='" .  (int)$languages_id . "'");
-    $the_article_info = tep_db_fetch_array($the_article_info_query);
+    $the_article_info_query = xtc_db_query("select a.articles_id, ad.articles_name, ad.articles_description, ad.articles_head_title_tag, ad.articles_head_keywords_tag, ad.articles_head_desc_tag, ad.articles_url, a.articles_date_added, a.articles_date_available, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . $_GET['articles_id'] . "' and ad.articles_id = '" . $_GET['articles_id'] . "'");
+    $the_article_info_query = xtc_db_query("select ad.language_id, a.articles_id, ad.articles_name, ad.articles_description, ad.articles_head_title_tag, ad.articles_head_keywords_tag, ad.articles_head_desc_tag, ad.articles_url, a.articles_date_added, a.articles_date_available, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = '" . (int)$_GET['articles_id'] . "'" . " and ad.language_id ='" .  (int)$_SESSION['languages_id'] . "'");
+    $the_article_info = xtc_db_fetch_array($the_article_info_query);
 
     if (empty($the_article_info['articles_head_desc_tag'])) {
       $the_desc= NAVBAR_TITLE . '. ' . HEAD_DESC_TAG_ALL;
@@ -124,13 +127,13 @@ switch (true) {
     if ( HEAD_KEY_TAG_ARTICLES_NEW=='' ) {
       // Build a list of ALL new article names to put in keywords
       $articles_new_array = array();
-      $articles_new_query_raw = "select ad.articles_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on (a.authors_id = au.authors_id), " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$languages_id . "' order by a.articles_date_added DESC, ad.articles_name";
+      $articles_new_query_raw = "select ad.articles_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on (a.authors_id = au.authors_id), " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' order by a.articles_date_added DESC, ad.articles_name";
       $articles_new_split = new splitPageResults($articles_new_query_raw, MAX_NEW_ARTICLES_PER_PAGE);
-      $articles_new_query = tep_db_query($articles_new_split->sql_query);
+      $articles_new_query = xtc_db_query($articles_new_split->sql_query);
 
       $row = 0;
       $the_new_articles='';
-      while ($articles_new = tep_db_fetch_array($articles_new_query)) {
+      while ($articles_new = xtc_db_fetch_array($articles_new_query)) {
         $the_new_articles .= clean_html_comments($articles_new['articles_name']) . ', ';
       }
       if ( HTKA_ARTICLES_NEW_ON=='1' ) {
@@ -158,9 +161,9 @@ switch (true) {
   case ( strstr($_SERVER['PHP_SELF'],'article_reviews_info.php') or strstr($_SERVER['PHP_SELF'],'article_reviews.php') or strstr($PHP_SELF,'article_reviews_info.php') or strstr($PHP_SELF,'article_reviews.php') ):
     if ( HEAD_DESC_TAG_ARTICLE_REVIEWS_INFO=='' ) {
       if ( HTDA_ARTICLE_REVIEWS_INFO_ON=='1' ) {
-        $the_desc= NAVBAR_TITLE . '. ' . tep_get_header_tag_articles_desc(isset($HTTP_GET_VARS['reviews_id'])) . ' ' . HEAD_DESC_TAG_ALL;
+        $the_desc= NAVBAR_TITLE . '. ' . xtc_get_header_tag_articles_desc(isset($_GET['reviews_id'])) . ' ' . HEAD_DESC_TAG_ALL;
       } else {
-        $the_desc= NAVBAR_TITLE . '. ' . tep_get_header_tag_articles_desc(isset($HTTP_GET_VARS['reviews_id']));
+        $the_desc= NAVBAR_TITLE . '. ' . xtc_get_header_tag_articles_desc(isset($_GET['reviews_id']));
       }
     } else {
       $the_desc= HEAD_DESC_TAG_ARTICLE_REVIEWS_INFO;
@@ -168,9 +171,9 @@ switch (true) {
 
     if ( HEAD_KEY_TAG_ARTICLE_REVIEWS_INFO=='' ) {
       if ( HTKA_ARTICLE_REVIEWS_INFO_ON=='1' ) {
-        $the_key_words= NAVBAR_TITLE . ', ' . tep_get_header_tag_articles_keywords(isset($HTTP_GET_VARS['reviews_id'])) . ', ' . HEAD_KEY_TAG_ALL;
+        $the_key_words= NAVBAR_TITLE . ', ' . xtc_get_header_tag_articles_keywords(isset($_GET['reviews_id'])) . ', ' . HEAD_KEY_TAG_ALL;
       } else {
-        $the_key_words= NAVBAR_TITLE . ', ' . tep_get_header_tag_articles_keywords(isset($HTTP_GET_VARS['reviews_id']));
+        $the_key_words= NAVBAR_TITLE . ', ' . xtc_get_header_tag_articles_keywords(isset($_GET['reviews_id']));
       }
     } else {
       $the_key_words= HEAD_KEY_TAG_ARTICLE_REVIEWS_INFO;
@@ -178,9 +181,9 @@ switch (true) {
 
     if ( HEAD_TITLE_TAG_ARTICLE_REVIEWS_INFO=='' ) {
       if ( HTTA_ARTICLE_REVIEWS_INFO_ON=='1' ) {
-        $the_title= HEAD_TITLE_TAG_ALL . ' - ' . HEADING_TITLE . tep_get_header_tag_articles_title(isset($HTTP_GET_VARS['reviews_id']));
+        $the_title= HEAD_TITLE_TAG_ALL . ' - ' . HEADING_TITLE . xtc_get_header_tag_articles_title(isset($_GET['reviews_id']));
       } else {
-        $the_title= tep_get_header_tag_articles_title(isset($HTTP_GET_VARS['reviews_id']));
+        $the_title= xtc_get_header_tag_articles_title(isset($_GET['reviews_id']));
       }
     } else {
       $the_title= HEAD_TITLE_TAG_ARTICLE_REVIEWS_INFO;
