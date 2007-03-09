@@ -520,4 +520,13 @@ define('IMAGE_BUTTON_PRINT', 'Распечатать');
 define('TEXT_AJAX_QUICKSEARCH_TOP', 'Первые %s позиций...');
 define('TEXT_AJAX_ADDQUICKIE_SEARCH_TOP', 'Первые %s товаров...');
 
+define('BOX_ALL_ARTICLES', 'Все статьи');
+define('BOX_NEW_ARTICLES', 'Новые статьи');
+define('TEXT_DISPLAY_NUMBER_OF_ARTICLES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> статей)');
+define('TEXT_DISPLAY_NUMBER_OF_ARTICLES_NEW', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новых статей)');
+define('TABLE_HEADING_AUTHOR', 'Автор');
+define('TABLE_HEADING_ABSTRACT', 'Резюме');
+define('BOX_HEADING_AUTHORS', 'Авторы статей');
+define('NAVBAR_TITLE_DEFAULT', 'Статьи');
+
 ?>
