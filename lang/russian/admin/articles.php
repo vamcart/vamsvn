@@ -100,4 +100,10 @@ define('BUTTON_NEW_TOPIC','Добавить категорию');
 define('BUTTON_NEW_ARTICLE','Добавить статью');
 define('BUTTON_COPY_TO', 'Копировать в');
 
+define('IMAGE_ICON_STATUS_GREEN', 'Активна');
+define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
+define('IMAGE_ICON_STATUS_RED', 'Неактивна');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+
 ?>
