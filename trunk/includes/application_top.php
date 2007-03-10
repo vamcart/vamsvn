@@ -568,7 +568,6 @@ xtc_count_cart();
 
 // include the articles functions
   require(DIR_WS_FUNCTIONS . 'articles.php');
-  require(DIR_WS_FUNCTIONS . 'article_header_tags.php'); 
 
 // calculate topic path
   if (isset($_GET['tPath'])) {
@@ -618,7 +617,5 @@ xtc_count_cart();
       }
     }
   }
-
-  require(DIR_WS_FUNCTIONS . 'clean_html_comments.php');
 
 ?>
