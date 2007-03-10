@@ -28,7 +28,12 @@
 {#text_date#} {$ARTICLE_DATE}
 </p>
 {/if}
-    
+
+{if $ARTICLE_URL}
+<p>
+{#text_url#} <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
+</p>
+{/if}
     
     </td>
   </tr>

@@ -45,7 +45,7 @@ if ($article_check['total'] > 0) {
 	$smarty->assign('ARTICLE_NAME', $article_info['articles_name']);
 	$smarty->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
 	$smarty->assign('ARTICLE_DATE', xtc_date_long($article_info['articles_date_added']));
-	$smarty->assign('ARTICLE_URL', xtc_href_link(FILENAME_REDIRECT, 'action=url&goto='.$article_info['articles_url'], 'NONSSL', true, false));
+	$smarty->assign('ARTICLE_URL', $article_info['articles_url']);
 	$smarty->assign('AUTHOR_NAME', $article_info['authors_name']);
 	$smarty->assign('AUTHOR_LINK' , xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id']));
 
