@@ -30,7 +30,7 @@ if (!CacheCheck()) {
 	$box_smarty->caching = 1;
 	$box_smarty->cache_lifetime = CACHE_LIFETIME;
 	$box_smarty->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
+	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$tPath;
 }
 
 if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !$cache) {
@@ -180,7 +180,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
   if (DISPLAY_ALL_ARTICLES=='true') {
     if (SHOW_ARTICLE_COUNTS == 'true') {
       $articles_all_query = "select a.articles_id from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t left join " . TABLE_TOPICS_DESCRIPTION . " td on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and td.language_id = '" . (int)$_SESSION['languages_id'] . "'";
-      $articles_all_query = xtDBquery($articles_all_query);
+     $articles_all_query = xtDBquery($articles_all_query);
       $articles_all_count = ' (' . xtc_db_num_rows($articles_all_query) . ')';
     } else {
       $articles_all_count = '';
