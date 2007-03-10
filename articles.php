@@ -109,7 +109,7 @@ if ($articles_split->number_of_rows > 0) {
 		
 		'ARTICLE_NAME' => $articles['articles_name'],
 		'ARTICLE_SHORT_DESCRIPTION' => $articles['articles_head_desc_tag'], 
-		'ARTICLE_DATE' => $articles['articles_date_added'], 
+		'ARTICLE_DATE' => xtc_date_long($articles['articles_date_added']), 
 		'ARTICLE_LINK' => xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles['articles_id']), 
 		'AUTHOR_NAME' => $articles['authors_name'], 
 		'AUTHOR_LINK' =>  xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles['authors_id']), 
