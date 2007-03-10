@@ -34,12 +34,14 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
   $topic_depth = 'top';
 
   if (isset($tPath) && xtc_not_null($tPath)) {
-    $topics_articles_query = xtc_db_query("select count(*) as total from " . TABLE_ARTICLES_TO_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'");
+    $topics_articles_query = "select count(*) as total from " . TABLE_ARTICLES_TO_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'";
+    $topics_articles_query = xtDBquery($topics_articles_query);
     $topics_articles = xtc_db_fetch_array($topics_articles_query);
     if ($topics_articles['total'] > 0) {
       $topic_depth = 'articles'; // display articles
     } else {
-      $topic_parent_query = xtc_db_query("select count(*) as total from " . TABLE_TOPICS . " where parent_id = '" . (int)$current_topic_id . "'");
+      $topic_parent_query = "select count(*) as total from " . TABLE_TOPICS . " where parent_id = '" . (int)$current_topic_id . "'";
+      $topic_parent_query = xtDBquery($topic_parent_query);
       $topic_parent = xtc_db_fetch_array($topic_parent_query);
       if ($topic_parent['total'] > 0) {
         $topic_depth = 'nested'; // navigate through the topics
@@ -53,7 +55,8 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
     $breadcrumb->add(NAVBAR_TITLE_DEFAULT, xtc_href_link(FILENAME_ARTICLES));
   }
 
-    $topic_query = xtc_db_query("select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'");
+    $topic_query = "select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'";
+    $topic_query = xtDBquery($topic_query);
     $topic = xtc_db_fetch_array($topic_query);
 
     if (xtc_not_null($topic['topics_name'])) {
