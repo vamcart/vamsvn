@@ -512,18 +512,13 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     // Include Template Engine
   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.14/Smarty.class.php');
 
-  define('FILENAME_ARTICLE_REVIEWS', 'article_reviews.php');
   define('FILENAME_ARTICLES', 'articles.php');
   define('FILENAME_ARTICLES_CONFIG', 'articles_config.php');
-  define('FILENAME_ARTICLES_XSELL', 'articles_xsell.php');
   define('FILENAME_AUTHORS', 'authors.php');
 
-  define('TABLE_ARTICLE_REVIEWS', 'article_reviews');
-  define('TABLE_ARTICLE_REVIEWS_DESCRIPTION', 'article_reviews_description');
   define('TABLE_ARTICLES', 'articles');
   define('TABLE_ARTICLES_DESCRIPTION', 'articles_description');
   define('TABLE_ARTICLES_TO_TOPICS', 'articles_to_topics');
-  define('TABLE_ARTICLES_XSELL', 'articles_xsell');
   define('TABLE_AUTHORS', 'authors');
   define('TABLE_AUTHORS_INFO', 'authors_info');
   define('TABLE_TOPICS', 'topics');
