@@ -602,7 +602,7 @@ xtc_count_cart();
     $authors_query = xtc_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
     if (xtc_db_num_rows($authors_query)) {
       $authors = xtc_db_fetch_array($authors_query);
-      $breadcrumb->add('Articles by ' . $authors['authors_name'], xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
+      $breadcrumb->add(ARTICLES_BY . $authors['authors_name'], xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
     }
   }
 

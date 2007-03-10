@@ -528,5 +528,6 @@ define('TABLE_HEADING_AUTHOR', 'Автор');
 define('TABLE_HEADING_ABSTRACT', 'Резюме');
 define('BOX_HEADING_AUTHORS', 'Авторы статей');
 define('NAVBAR_TITLE_DEFAULT', 'Статьи');
+define('ARTICLES_BY','Статьи автора ');
 
 ?>
