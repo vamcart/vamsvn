@@ -91,12 +91,9 @@
   define('TABLE_LATEST_NEWS', 'latest_news');
   define('TABLE_FEATURED', 'featured');
 
-  define('TABLE_ARTICLE_REVIEWS', 'article_reviews');
-  define('TABLE_ARTICLE_REVIEWS_DESCRIPTION', 'article_reviews_description');
   define('TABLE_ARTICLES', 'articles');
   define('TABLE_ARTICLES_DESCRIPTION', 'articles_description');
   define('TABLE_ARTICLES_TO_TOPICS', 'articles_to_topics');
-  define('TABLE_ARTICLES_XSELL', 'articles_xsell');
   define('TABLE_AUTHORS', 'authors');
   define('TABLE_AUTHORS_INFO', 'authors_info');
   define('TABLE_TOPICS', 'topics');
