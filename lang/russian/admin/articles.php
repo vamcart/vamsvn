@@ -32,7 +32,7 @@ define('TEXT_SUBTOPICS', 'Подразделы:');
 define('TEXT_ARTICLES', 'Статьи:');
 define('TEXT_ARTICLES_AVERAGE_RATING', 'Средний рейтинг:');
 define('TEXT_ARTICLES_HEAD_TITLE_TAG', 'Meta Title:');
-define('TEXT_ARTICLES_HEAD_DESC_TAG', 'Meta Description:<br><small>(не больше %s символов)</small>');
+define('TEXT_ARTICLES_HEAD_DESC_TAG', 'Meta Description:');
 define('TEXT_ARTICLES_HEAD_KEYWORDS_TAG', 'Meta Keywords:');
 define('TEXT_DATE_ADDED', 'Дата добавления:');
 define('TEXT_DATE_AVAILABLE', 'Доступна с:');
