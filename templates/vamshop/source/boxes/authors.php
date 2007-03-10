@@ -22,7 +22,23 @@
 $box_smarty = new smarty;
 $box_content='';
 $flag='';
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+
+$box_smarty->assign('language', $_SESSION['language']);
+// set cache ID
+if (!CacheCheck()) {
+	$cache=false;
+	$box_smarty->caching = 0;
+} else {
+	$cache=true;
+	$box_smarty->caching = 1;
+	$box_smarty->cache_lifetime = CACHE_LIFETIME;
+	$box_smarty->cache_modified_check = CACHE_CHECK;
+	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
+}
+
+if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$cache) {
+
+	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
   $authors_query = xtc_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
   if ($number_of_author_rows = xtc_db_num_rows($authors_query)) {
@@ -60,15 +76,17 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 <?php
 }
 
-if (xtc_db_num_rows($authors_query) > 0) {
   
     $box_smarty->assign('BOX_CONTENT', $content_string);
 
-    $box_smarty->caching = 0;
-    $box_smarty->assign('language', $_SESSION['language']);
-    $box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
-    $smarty->assign('box_AUTHORS',$box_authors);
-
 }
-  
+
+if (!$cache) {
+	$box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
+} else {
+	$box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id);
+}
+
+   $smarty->assign('box_AUTHORS',$box_authors);
+
 ?>
