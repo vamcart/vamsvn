@@ -55,8 +55,7 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
     $breadcrumb->add(NAVBAR_TITLE_DEFAULT, xtc_href_link(FILENAME_ARTICLES));
   }
 
-    $topic_query = "select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'";
-    $topic_query = xtDBquery($topic_query);
+    $topic_query = xtc_db_query("select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'");
     $topic = xtc_db_fetch_array($topic_query);
 
     if (xtc_not_null($topic['topics_name'])) {
