@@ -1010,10 +1010,7 @@ if (USE_WYSIWYG == 'true') {
       if (isset($_GET['search'])) $tPath = $articles['topics_id'];
 
       if ( (!isset($_GET['aID']) && !isset($_GET['tID']) || (isset($_GET['aID']) && ($_GET['aID'] == $articles['articles_id']))) && !isset($aInfo) && !isset($tInfo) && (substr($action, 0, 3) != 'new')) {
-// find out the rating average from customer reviews
-        $reviews_query = xtc_db_query("select (avg(reviews_rating) / 5 * 100) as average_rating from " . TABLE_ARTICLE_REVIEWS . " where articles_id = '" . (int)$articles['articles_id'] . "'");
-        $reviews = xtc_db_fetch_array($reviews_query);
-        $aInfo_array = array_merge($articles, $reviews);
+        $aInfo_array = array_merge($articles);
         $aInfo = new objectInfo($aInfo_array);
       }
 
