@@ -689,7 +689,7 @@ if (USE_WYSIWYG == 'true') {
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr bgcolor="#ffffcc">
-            <td class="main" valign="top"><?php if ($i == 0) echo sprintf(TEXT_ARTICLES_HEAD_DESC_TAG, MAX_ARTICLE_ABSTRACT_LENGTH); ?></td>
+            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_ARTICLES_HEAD_DESC_TAG; ?></td>
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="main" valign="top"><?php echo xtc_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
