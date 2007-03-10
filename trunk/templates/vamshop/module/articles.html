@@ -24,39 +24,33 @@
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">
 
-<dl class="itemNewProducts">
-
-<dd class="itemDescription">
-<a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a
-</dd>
+<p>
+<a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a>
+</p>
 
 {if $module_data.AUTHOR_NAME}
-<dd class="itemDescription">
+<p>
 {#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
-</dd>
+</p>
 {/if}
  
 {if $module_data.ARTICLE_CATEGORY_NAME}
-<dd class="itemDescription">
+<p>
 {#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
-</dd>
+</p>
 {/if}
 
 {if $module_data.ARTICLE_SHORT_DESCRIPTION}
-<dd class="itemDescription">
 <p>
 {$module_data.ARTICLE_SHORT_DESCRIPTION}
 </p>
-</dd>
 {/if}
 
 {if $module_data.ARTICLE_DATE}
-<dd class="itemDescription">
+<p>
 {#text_date#} {$module_data.ARTICLE_DATE}
-</dd>
+</p>
 {/if}
-
-</dl>
 
 <div class="clear"></div>
 </div>
