@@ -144,6 +144,7 @@ function popupImageWindow(url) {
           <tr>
             <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
+<!--
 <?php
   $languages = xtc_get_languages();
   for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
@@ -172,6 +173,7 @@ function popupImageWindow(url) {
 <?php
   }
 ?>
+-->
       <tr>
         <td class="main">&nbsp;</td>
         <td class="main" align="left"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>' . ' <a class="button" href="' . xtc_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $_GET['auID']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
@@ -211,6 +213,7 @@ function popupImageWindow(url) {
           <tr>
             <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
+<!--          
 <?php
   $languages = xtc_get_languages();
   for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
@@ -239,6 +242,7 @@ function popupImageWindow(url) {
 <?php
   }
 ?>
+-->
       <tr>
         <td class="main">&nbsp;</td>
         <td class="main" align="left"><?php echo xtc_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>' . ' <a class="button" href="' . xtc_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $authors['authors_id']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
