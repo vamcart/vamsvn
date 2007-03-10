@@ -40,7 +40,8 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
 
 	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
-  $authors_query = xtc_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
+  $authors_query = "select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name";
+  $authors_query = xtDBquery($authors_query);
   if ($number_of_author_rows = xtc_db_num_rows($authors_query)) {
 ?>
 <?php
