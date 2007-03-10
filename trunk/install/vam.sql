@@ -134,38 +134,6 @@ CREATE TABLE authors_info (
   PRIMARY KEY  (authors_id,languages_id)
 );
 
-DROP TABLE IF EXISTS article_reviews;
-CREATE TABLE article_reviews (
-  reviews_id int(11) NOT NULL auto_increment,
-  articles_id int(11) NOT NULL default '0',
-  customers_id int(11) default NULL,
-  customers_name varchar(64) NOT NULL default '',
-  reviews_rating int(1) default NULL,
-  date_added datetime default NULL,
-  last_modified datetime default NULL,
-  reviews_read int(5) NOT NULL default '0',
-  approved tinyint(3) unsigned default '0',
-  PRIMARY KEY  (reviews_id)
-);
-
-DROP TABLE IF EXISTS article_reviews_description;
-CREATE TABLE article_reviews_description (
-  reviews_id int(11) NOT NULL default '0',
-  languages_id int(11) NOT NULL default '0',
-  reviews_text text NOT NULL,
-  PRIMARY KEY  (reviews_id,languages_id)
-);
-
-
-DROP TABLE IF EXISTS articles_xsell;
-CREATE TABLE articles_xsell (
-  ID int(10) NOT NULL auto_increment,
-  articles_id int(10) unsigned NOT NULL default '1',
-  xsell_id int(10) unsigned NOT NULL default '1',
-  sort_order int(10) unsigned NOT NULL default '1',
-  PRIMARY KEY  (ID)
-);
-
 DROP TABLE IF EXISTS customers_memo;
 CREATE TABLE customers_memo (
   memo_id int(11) NOT NULL auto_increment,
@@ -1702,29 +1670,17 @@ INSERT INTO configuration (configuration_id,  configuration_key, configuration_v
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_SIZE_COLUMN', 'false', '25', '15', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'USE_LOG_SYSTEM', 'false', '25', '16', NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 
-#configuration_group_id 26, Установка модулей
+#configuration_group_id 26
 
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_NEW_ARTICLES', 'true', '26', '1', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'NEW_ARTICLES_DAYS_DISPLAY', '30', 26, '2', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_NEW_ARTICLES_PER_PAGE', '10', '26', '3', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_ALL_ARTICLES', 'true', '26', '4', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_ARTICLES_PER_PAGE', '10', '26', '5', now(), now(), NULL, NULL);
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_DISPLAY_UPCOMING_ARTICLES', '5', '26', '6', now(), now(), NULL, NULL);
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ENABLE_ARTICLE_REVIEWS', 'true', '26', '7', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ENABLE_TELL_A_FRIEND_ARTICLE', 'true', '26', '8', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MIN_DISPLAY_ARTICLES_XSELL', '1', '26', '9', now(), now(), NULL, NULL);
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_DISPLAY_ARTICLES_XSELL', '6', '26', '10', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'SHOW_ARTICLE_COUNTS', 'true', '26', '11', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_DISPLAY_AUTHOR_NAME_LEN', '20', '26', '12', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_DISPLAY_AUTHORS_IN_A_LIST', '1', '26', '13', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_AUTHORS_LIST', '1', '26', '14', now(), now(), NULL, NULL);
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_AUTHOR_ARTICLE_LISTING', 'true', '26', '15', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_TOPIC_ARTICLE_LISTING', 'true', '26', '16', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_ABSTRACT_ARTICLE_LISTING', 'true', '26', '17', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_DATE_ADDED_ARTICLE_LISTING', 'true', '26', '18', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'MAX_ARTICLE_ABSTRACT_LENGTH', '300', '26', '19', now(), now(), NULL, NULL);
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ARTICLE_LIST_FILTER', 'true', '26', '20', now(), now(), NULL, 'xtc_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'ARTICLE_PREV_NEXT_BAR_LOCATION', 'both', '26', '21', now(), now(), NULL, 'xtc_cfg_select_option(array(\'top\', \'bottom\', \'both\'),');
 
 INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
