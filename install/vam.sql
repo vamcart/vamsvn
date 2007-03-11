@@ -2,6 +2,7 @@
 #  $Id: vamshop.sql,v 1.62 2006/10/08 20:24:16 VaM Exp $
 #
 #  VaM Shop - open source ecommerce solution
+#  http://vamshop.com 
 #  http://vamshop.ru 
 #
 #  Copyright (c) 2006 VaM Shop
@@ -1445,7 +1446,7 @@ INSERT INTO configuration (configuration_id,  configuration_key, configuration_v
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'MODULE_PAYMENT_INSTALLED', '', 6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'MODULE_ORDER_TOTAL_INSTALLED', 'ot_subtotal.php;ot_shipping.php;ot_tax.php;ot_total.php', 6, 0, '2003-07-18 03:31:55', '', NULL, NULL);
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'MODULE_SHIPPING_INSTALLED', '',  6, 0, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DEFAULT_CURRENCY', 'USD',  6, 0, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DEFAULT_CURRENCY', 'RUR',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DEFAULT_LANGUAGE', 'ru',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DEFAULT_ORDERS_STATUS_ID', '1',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'DEFAULT_PRODUCTS_VPE_ID', '',  6, 0, NULL, '', NULL, NULL);
@@ -1958,7 +1959,7 @@ INSERT INTO countries VALUES (237,'Zaire','ZR','ZAR','1','0');
 INSERT INTO countries VALUES (238,'Zambia','ZM','ZMB','1','0');
 INSERT INTO countries VALUES (239,'Zimbabwe','ZW','ZWE','1','0');
 
-INSERT INTO currencies VALUES (1,'Доллар США','USD','$','',',','.','2','1.0000', now());
+INSERT INTO currencies VALUES (1,'Рубль','RUR','','руб.',',','.','2','1.0000', now());
 
 
 INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'windows-1251');
