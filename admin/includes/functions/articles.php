@@ -314,12 +314,6 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     xtc_db_query("delete from " . TABLE_ARTICLES_TO_TOPICS . " where articles_id = '" . (int)$article_id . "'");
     xtc_db_query("delete from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$article_id . "'");
 
-    $article_reviews_query = xtc_db_query("select reviews_id from " . TABLE_ARTICLE_REVIEWS . " where articles_id = '" . (int)$article_id . "'");
-    while ($article_reviews = xtc_db_fetch_array($article_reviews_query)) {
-      xtc_db_query("delete from " . TABLE_ARTICLE_REVIEWS_DESCRIPTION . " where reviews_id = '" . (int)$article_reviews['reviews_id'] . "'");
-    }
-    xtc_db_query("delete from " . TABLE_ARTICLE_REVIEWS . " where articles_id = '" . (int)$article_id . "'");
-
     if (USE_CACHE == 'true') {
       xtc_reset_cache_block('topics');
       xtc_reset_cache_block('also_purchased');
