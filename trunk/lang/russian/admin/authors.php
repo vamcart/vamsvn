@@ -40,7 +40,7 @@ define('TEXT_AUTHORS_DESCRIPTION', 'Описание:');
 define('TEXT_AUTHORS_URL', 'URL ссылка (без http://):');
 
 define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данного автора?');
-define('TEXT_DELETE_ARTICLES', 'Удалить статьи данной автора? (включая отзывы к статьям и неопубликованные статьи)');
+define('TEXT_DELETE_ARTICLES', 'Удалить статьи данного автора?');
 define('TEXT_DELETE_WARNING_ARTICLES', '<b>Внимание:</b> Имеется %s статей данного автора!');
 
 define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Каталог защищён от записи, установите необходимые права доступа: %s');
