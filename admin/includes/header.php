@@ -131,7 +131,7 @@
 
 	<li class="firstlevel"><a href="#"><?php echo BOX_HEADING_CONFIGURATION; ?></a>
 		<ul>
-			<li><?php echo '<a class="sub" href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_HEADING_CONFIGURATION . '</a>' . "\n"; ?>
+			<li><?php echo '<a class="sub" href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_HEADING_CONFIGURATION_MAIN . '</a>' . "\n"; ?>
 				<ul>
 
 <?php
