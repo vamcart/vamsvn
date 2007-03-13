@@ -179,8 +179,12 @@ $payment_block = $module_smarty->fetch(CURRENT_TEMPLATE . '/module/checkout_paym
 
 $smarty->assign('COMMENTS', xtc_draw_textarea_field('comments', 'soft', '60', '5', $_SESSION['comments']) . xtc_draw_hidden_field('comments_added', 'YES'));
 
+$smarty->assign('conditions', 'false');
+
 //check if display conditions on checkout page is true
 if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
+
+$smarty->assign('conditions', 'true');
 
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and group_ids LIKE '%c_" . $_SESSION['customers_status']['customers_status_id'] . "_group%'";
