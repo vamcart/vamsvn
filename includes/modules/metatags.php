@@ -179,6 +179,20 @@ switch (true) {
 
     break;
 
+  case ($_GET['authors_id']):
+
+			$authors_meta_query = xtDBquery("SELECT authors_name
+			                                            FROM " . TABLE_AUTHORS . "
+			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
+			$authors_meta = xtc_db_fetch_array($authors_meta_query, true);
+?>
+<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo $authors_meta['authors_name'] . ' - ' . TITLE; ?></title>
+<?php
+
+    break;
+
 default:
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
