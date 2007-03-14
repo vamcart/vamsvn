@@ -106,13 +106,75 @@ switch (true) {
 
 			$news_meta_query = xtDBquery("SELECT headline
 			                                            FROM " . TABLE_LATEST_NEWS . "
-			                                            WHERE news_id='" . $_GET['news_id'] . "' and
-			                                            language='" . $_SESSION['languages_id'] . "'");
+			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
+			                                            language='" . (int)$_SESSION['languages_id'] . "'");
 			$news_meta = xtc_db_fetch_array($news_meta_query, true);
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <title><?php echo $news_meta['headline'] . ' - ' . TITLE; ?></title>
+<?php
+
+    break;
+
+  case ($_GET['tPath']):
+
+			$articles_cat_meta_query = xtDBquery("SELECT topics_name, topics_heading_title, topics_description
+			                                            FROM " . TABLE_TOPICS_DESCRIPTION . "
+			                                            WHERE topics_id='" . (int)$current_topic_id . "' and
+			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
+			$articles_cat_meta = xtc_db_fetch_array($articles_cat_meta_query, true);
+
+		if ($articles_cat_meta['topics_heading_title'] == '') {
+			$articles_cat_title = $articles_cat_meta['topics_name'];
+		} else {
+			$articles_cat_title = $articles_cat_meta['topics_heading_title'];
+		}
+
+		if ($articles_cat_meta['topics_description'] == '') {
+			$articles_cat_desc = META_DESCRIPTION;
+		} else {
+			$articles_cat_desc = $articles_cat_meta['topics_description'];
+		}
+
+?>
+<meta name="description" content="<?php echo $articles_cat_desc; ?>" />
+<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo $articles_cat_title . ' - ' . TITLE; ?></title>
+<?php
+
+    break;
+
+  case ($_GET['articles_id']):
+
+			$articles_meta_query = xtDBquery("SELECT articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
+			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
+			                                            WHERE articles_id='" . (int)$_GET['articles_id'] . "' and
+			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
+			$articles_meta = xtc_db_fetch_array($articles_meta_query, true);
+
+		if ($articles_meta['articles_head_title_tag'] == '') {
+			$articles_title = $articles_meta['articles_name'];
+		} else {
+			$articles_title = $articles_meta['articles_head_title_tag'];
+		}
+
+		if ($articles_meta['articles_head_desc_tag'] == '') {
+			$articles_desc = META_DESCRIPTION;
+		} else {
+			$articles_desc = $articles_meta['articles_head_desc_tag'];
+		}
+
+		if ($articles_meta['articles_head_keywords_tag'] == '') {
+			$articles_key = META_KEYWORDS;
+		} else {
+			$articles_key = $articles_meta['articles_head_keywords_tag'];
+		}
+
+?>
+<meta name="description" content="<?php echo $articles_desc; ?>" />
+<meta name="keywords" content="<?php echo $articles_key; ?>" />
+<title><?php echo $articles_title . ' - ' . TITLE; ?></title>
 <?php
 
     break;
