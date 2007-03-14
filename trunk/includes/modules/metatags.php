@@ -85,7 +85,10 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 <?php
 
 	} else {
-		if ($_GET['coID']) {
+
+switch (true) {
+  case ($_GET['coID']):
+
 			$contents_meta_query = xtDBquery("SELECT content_heading
 			                                            FROM " . TABLE_CONTENT_MANAGER . "
 			                                            WHERE content_group='" . $_GET['coID'] . "' and
@@ -97,14 +100,30 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 <title><?php echo $contents_meta['content_heading'] . ' - ' . TITLE; ?></title>
 <?php
 
-		} else {
+    break;
+
+  case ($_GET['news_id']):
+
+			$news_meta_query = xtDBquery("SELECT headline
+			                                            FROM " . TABLE_LATEST_NEWS . "
+			                                            WHERE news_id='" . $_GET['news_id'] . "' and
+			                                            language='" . $_SESSION['languages_id'] . "'");
+			$news_meta = xtc_db_fetch_array($news_meta_query, true);
+?>
+<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo $news_meta['headline'] . ' - ' . TITLE; ?></title>
+<?php
+
+    break;
+
+default:
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <title><?php echo TITLE; ?></title>
 <?php
-
-		}
+     }
 	}
 }
 ?>
