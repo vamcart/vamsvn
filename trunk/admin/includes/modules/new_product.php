@@ -112,7 +112,7 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 <?php $fsk18_array=array(array('id'=>0,'text'=>NO),array('id'=>1,'text'=>YES)); ?>
 <span class="pageHeading"><?php echo sprintf(TEXT_NEW_PRODUCT, xtc_output_generated_category_path($current_category_id)); ?></span><br />
 <?php
-    echo xtc_draw_form('new_product', FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"');
+    echo xtc_draw_form('new_product', FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID'] . '&page=' . $_GET['page'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"');
     echo xtc_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
     echo xtc_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
