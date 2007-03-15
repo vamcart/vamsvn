@@ -159,6 +159,14 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			xtc_rss_news($news_query);
 			break;
 
+		case "articles":
+			$articles_query = "SELECT articles_id, articles_name, articles_description 
+			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
+			                                            WHERE language_id='" . (int)$_SESSION['languages_id'] . "'";
+			                                            
+			xtc_rss_articles($articles_query);
+			break;
+
 		case "specials_random":
 			$random = true;
 			$limit = " limit " . MAX_RANDOM_SELECT_SPECIALS;
@@ -369,6 +377,28 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 		$rss->rss_feed_out();
 	}
 
+	function xtc_rss_articles($sql_products){
+		global $db, $rss, $random;
+
+		$sql_maxdate = "select max(articles_date_added) as max_date_added, max(articles_last_modified) as max_date_modified
+										from " . TABLE_ARTICLES . "
+										where articles_status = 1";
+		$maxdate = xtc_db_query($sql_maxdate);
+		if(!$maxdate) {
+			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
+		}
+
+		if(isset($_GET['limit']) && !$random)
+			$sql_products .= ' limit ' . $_GET['limit'];
+
+         $products_query = xtc_db_query($sql_products);
+         while($products = xtc_db_fetch_array($products_query)) {
+            $link = xtc_href_link(FILENAME_ARTICLES, 'articles_id='.$products['articles_id'], 'NONSSL', false);
+            $rss->rss_feed_item($products['articles_name'], $link, $link, date('r', strtotime(max($products['articles_date_added'], $products['articles_last_modified']))), $products['articles_description'], '', '');
+         }
+	
+		$rss->rss_feed_out();
+	}
 
 
 
