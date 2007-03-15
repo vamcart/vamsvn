@@ -42,13 +42,14 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
 
   $authors_query = "select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name";
   $authors_query = xtDBquery($authors_query);
-  if ($number_of_author_rows = xtc_db_num_rows($authors_query)) {
+  $number_of_author_rows = xtc_db_num_rows($authors_query,true);
+  if (xtc_db_num_rows($authors_query,true) > 0) {
 ?>
 <?php
     if ($number_of_author_rows <= MAX_DISPLAY_AUTHORS_IN_A_LIST) {
 // Display a list
       $authors_list = '';
-      while ($authors = xtc_db_fetch_array($authors_query)) {
+      while ($authors = xtc_db_fetch_array($authors_query,true)) {
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($HTTP_GET_VARS['authors_id']) && ($HTTP_GET_VARS['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
         $authors_list .= '<a href="' . xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id']) . '">' . $authors_name . '</a><br>';
@@ -64,7 +65,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
         $authors_array[] = array('id' => '', 'text' => PULL_DOWN_DEFAULT);
       }
 
-      while ($authors = xtc_db_fetch_array($authors_query)) {
+      while ($authors = xtc_db_fetch_array($authors_query,true)) {
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         $authors_array[] = array('id' => $authors['authors_id'],
                                        'text' => $authors_name);
