@@ -51,7 +51,7 @@ define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 
 // page title
-define('TITLE', 'VaM Shop');
+define('TITLE', PROJECT_VERSION);
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Администрирование');
