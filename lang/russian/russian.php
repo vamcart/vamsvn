@@ -264,8 +264,8 @@ define('ERROR_CONDITIONS_NOT_ACCEPTED', 'Мы не сможем принять Ваш заказ пока Вы 
 
 define('SUB_TITLE_OT_DISCOUNT','Скидка:');
 
-define('TAX_ADD_TAX','включая ');
-define('TAX_NO_TAX','плюс ');
+define('TAX_ADD_TAX','Включая ');
+define('TAX_NO_TAX','Плюс ');
 
 define('NOT_ALLOWED_TO_SEE_PRICES','У Вас нет доступа для просмотра цен ');
 define('NOT_ALLOWED_TO_SEE_PRICES_TEXT','У Вас нет доступа для просмотра цен, пожалуйста, зарегистрируйтесь.');
