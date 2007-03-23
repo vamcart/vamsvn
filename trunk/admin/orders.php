@@ -54,6 +54,12 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($_G
 require (DIR_WS_CLASSES.'order.php');
 if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($order_exists)) {
 	$order = new order($oID);
+
+  $order_payment = $order->info['payment_class'];
+  
+  require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $order_payment .'.php');	
+  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);  
+
 }
 
   $lang_query = xtc_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $order->info['language'] . "'");
@@ -285,7 +291,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
           </tr>
           <tr>
             <td class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></td>
-            <td class="main"><?php echo $order->info['payment_method']; ?></td>
+            <td class="main"><?php echo $order_payment_text; ?></td>
           </tr>
 <?php
 
