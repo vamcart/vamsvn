@@ -1967,10 +1967,10 @@ INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'windows-1
 
 INSERT INTO orders_status VALUES ( '1', '1', 'Ожидает проверки');
 INSERT INTO orders_status VALUES ( '2', '1', 'Ждём оплаты');
-INSERT INTO orders_status VALUES ( '3', '1', 'Отменён');
-INSERT INTO orders_status VALUES ( '4', '1', 'Выполняется');
-INSERT INTO orders_status VALUES ( '5', '1', 'Доставляется');
-INSERT INTO orders_status VALUES ( '6', '1', 'Доставлен');
+INSERT INTO orders_status VALUES ( '3', '1', 'Выполняется');
+INSERT INTO orders_status VALUES ( '4', '1', 'Доставляется');
+INSERT INTO orders_status VALUES ( '5', '1', 'Доставлен');
+INSERT INTO orders_status VALUES ( '6', '1', 'Отменён');
 
 
 
