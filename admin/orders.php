@@ -727,10 +727,16 @@ elseif ($_GET['action'] == 'custom_action') {
 				}
 				//$contents[] = array('align' => 'center', 'text' => '');
 
+  $order_payment = $oInfo->payment_method;
+  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');	
+  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);  
+
+
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ORDER_CREATED.' '.xtc_date_short($oInfo->date_purchased));
 				if (xtc_not_null($oInfo->last_modified))
 					$contents[] = array ('text' => TEXT_DATE_ORDER_LAST_MODIFIED.' '.xtc_date_short($oInfo->last_modified));
-				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$oInfo->payment_method);
+				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$order_payment_text);
 				// elari added to display product list for selected order
 				$order = new order($oInfo->orders_id);
 				$contents[] = array ('text' => '<br /><br />'.sizeof($order->products).TEXT_PRODUCTS);
