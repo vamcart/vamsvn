@@ -76,7 +76,7 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
              
 require (DIR_WS_INCLUDES.'header.php');
 
-  if ($topic_depth == 'articles' || isset($HTTP_GET_VARS['authors_id'])) {
+  if ($topic_depth == 'articles' || isset($_GET['authors_id'])) {
 
 // show the articles of a specified author
     if (isset($_GET['authors_id'])) {
