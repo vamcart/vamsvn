@@ -52,16 +52,28 @@ if ($articles_new_split->number_of_rows > 0) {
 	$articles_new_query = xtc_db_query($articles_new_split->sql_query);
 	while ($articles_new = xtc_db_fetch_array($articles_new_query)) {
 
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&article='.xtc_cleanName($articles_new['articles_name']);
+
+		$SEF_parameter_author = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter_author = '&author='.xtc_cleanName($articles_new['authors_name']);
+
+		$SEF_parameter_category = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter_category = '&category='.xtc_cleanName($articles_new['topics_name']);
+
 		$module_content[] = array (
 		
 		'ARTICLE_NAME' => $articles_new['articles_name'],
 		'ARTICLE_SHORT_DESCRIPTION' => $articles_new['articles_head_desc_tag'], 
 		'ARTICLE_DATE' => xtc_date_long($articles_new['articles_date_added']), 
-		'ARTICLE_LINK' => xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles_new['articles_id']), 
+		'ARTICLE_LINK' => xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles_new['articles_id'] . $SEF_parameter), 
 		'AUTHOR_NAME' => $articles_new['authors_name'], 
-		'AUTHOR_LINK' =>  xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles_new['authors_id']), 
+		'AUTHOR_LINK' =>  xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles_new['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles_new['topics_name'],
-		'ARTICLE_CATEGORY_LINK' => xtc_href_link(FILENAME_ARTICLES, 'tPath=' . $articles_new['topics_id'])
+		'ARTICLE_CATEGORY_LINK' => xtc_href_link(FILENAME_ARTICLES, 'tPath=' . $articles_new['topics_id'] . $SEF_parameter_category)
 		
 		);
 
