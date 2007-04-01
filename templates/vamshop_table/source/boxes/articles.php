@@ -52,7 +52,11 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       $tPath_new = 'tPath=' . $tree[$counter]['path'];
     }
 
-    $topics_string .= xtc_href_link(FILENAME_ARTICLES, $tPath_new) . '">';
+		$SEF_parameter_cat = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter_cat = '&category='.xtc_cleanName($tree[$counter]['name']);
+
+    $topics_string .= xtc_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
 
     if (isset($tPath_array) && in_array($counter, $tPath_array)) {
       $topics_string .= '<b>';

@@ -44,12 +44,16 @@ if ($article_check['total'] > 0) {
 
 	$smarty->assign('no_article', 'false');
 
+		$SEF_parameter_author = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter_author = '&author='.xtc_cleanName($article_info['authors_name']);
+
 	$smarty->assign('ARTICLE_NAME', $article_info['articles_name']);
 	$smarty->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
 	$smarty->assign('ARTICLE_DATE', xtc_date_long($article_info['articles_date_added']));
 	$smarty->assign('ARTICLE_URL', $article_info['articles_url']);
 	$smarty->assign('AUTHOR_NAME', $article_info['authors_name']);
-	$smarty->assign('AUTHOR_LINK' , xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id']));
+	$smarty->assign('AUTHOR_LINK' , xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
 
 
 } else {
