@@ -73,12 +73,17 @@
 
   if (xtc_db_num_rows($query) > 0) {
       while ($one = xtc_db_fetch_array($query)) {
+
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&headline='.xtc_cleanName($one['headline']);
+
           $module_content[]=array(
               'NEWS_HEADING' => $one['headline'],
               'NEWS_CONTENT' => $one['content'],
               'NEWS_ID'      => $one['news_id'],
               'NEWS_DATA'    => xtc_date_short($one['date_added']),
-              'NEWS_LINK_MORE'    => xtc_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'], 'NONSSL'),
+              'NEWS_LINK_MORE'    => xtc_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
               );
       }
   } else {
