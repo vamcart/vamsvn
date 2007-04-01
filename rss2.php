@@ -398,7 +398,12 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 
          $products_query = xtc_db_query($sql_products);
          while($products = xtc_db_fetch_array($products_query)) {
-            $link = xtc_href_link(FILENAME_ARTICLES, 'articles_id='.$products['articles_id'], 'NONSSL', false);
+         
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&article='.xtc_cleanName($products['articles_name']);
+         
+            $link = xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$products['articles_id'] . $SEF_parameter, 'NONSSL', false);
             $rss->rss_feed_item($products['articles_name'], $link, $link, date('r', strtotime(max($products['articles_date_added'], $products['articles_last_modified']))), $products['articles_description'], '', '');
          }
 	
