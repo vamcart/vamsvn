@@ -56,7 +56,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
 			$SEF_parameter_author = '&author='.xtc_cleanName($authors['authors_name']);
 
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
-        if (isset($HTTP_GET_VARS['authors_id']) && ($HTTP_GET_VARS['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
+        if (isset($_GET['authors_id']) && ($_GET['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
         $authors_list .= '<a href="' . xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
       }
 
