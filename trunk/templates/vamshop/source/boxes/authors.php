@@ -76,7 +76,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
                                        'text' => $authors_name);
       }
 
-      $content_string .= xtc_draw_form('authors', xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . xtc_draw_pull_down_menu('authors_id', $authors_array, (isset($HTTP_GET_VARS['authors_id']) ? $HTTP_GET_VARS['authors_id'] : ''), 'onChange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . xtc_hide_session_id();
+      $content_string .= xtc_draw_form('authors', xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . xtc_draw_pull_down_menu('authors_id', $authors_array, (isset($_GET['authors_id']) ? $_GET['authors_id'] : ''), 'onchange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . xtc_hide_session_id().'</form>';
 }
 
 ?>
