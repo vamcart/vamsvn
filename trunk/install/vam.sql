@@ -1277,7 +1277,7 @@ create table cip_depend (
   cip_ident varchar(255) not null ,
   cip_ident_req varchar(255) not null ,
   cip_req_type int(2) default '0' not null ,
-  PRIMARY KEY (cip_ident, cip_ident_req, cip_req_type)
+  PRIMARY KEY (cip_ident)
 );
 
 #database Version
