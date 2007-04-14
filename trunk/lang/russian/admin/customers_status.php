@@ -102,4 +102,10 @@ define('TEXT_PUBLIC',', открытая');
 define('TABLE_HEADING_ICON','Картинка');
 define('TABLE_HEADING_USERS','Клиентов');
 
+define('TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO', '<b>Накопительный предел</b>');
+define('ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY','Общая сумма заказов, достигнув которую, покупатель попадает в данную группу');
+
+define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO', '<b>Накопительные статусы:</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY', 'Какие именно заказы будут учитываться при подсчёте общей суммы покупок покупателя');
+
 ?>

@@ -49,6 +49,7 @@
         $customers_fsk18_display = $_POST['customers_fsk18_display'];
         $customers_status_write_reviews = $_POST['customers_status_write_reviews'];
         $customers_status_read_reviews = $_POST['customers_status_read_reviews'];
+        $customers_status_accumulated_limit = $_POST['customers_status_accumulated_limit'];
         $customers_base_status = $_POST['customers_base_status'];        
 
         $language_id = $languages[$i]['id'];
@@ -71,8 +72,10 @@
           'customers_fsk18_display' => xtc_db_prepare_input($customers_fsk18_display),
           'customers_status_write_reviews' => xtc_db_prepare_input($customers_status_write_reviews),
           'customers_status_read_reviews' => xtc_db_prepare_input($customers_status_read_reviews),
+          'customers_status_accumulated_limit' => xtc_db_prepare_input($customers_status_accumulated_limit),
           'customers_status_discount_attributes' => xtc_db_prepare_input($customers_status_discount_attributes)
         );
+        
         if ($_GET['action'] == 'insert') {
           if (!xtc_not_null($customers_status_id)) {
             $next_id_query = xtc_db_query("select max(customers_status_id) as customers_status_id from " . TABLE_CUSTOMERS_STATUS . "");
@@ -82,7 +85,7 @@
             xtc_db_query("create table personal_offers_by_customers_status_" . $customers_status_id . " (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, products_id int NOT NULL, quantity int, personal_offer decimal(15,4))");
 		   xtc_db_query("ALTER TABLE  `products` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
 		   xtc_db_query("ALTER TABLE  `categories` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
-		   
+
         $products_query = xtc_db_query("select price_id, products_id, quantity, personal_offer from personal_offers_by_customers_status_" . $customers_base_status ."");
         while($products = xtc_db_fetch_array($products_query)){  
         $product_data_array = array(
@@ -113,6 +116,14 @@
         xtc_db_query("update " . TABLE_CONFIGURATION . " set configuration_value = '" . xtc_db_input($customers_status_id) . "' where configuration_key = 'DEFAULT_CUSTOMERS_STATUS_ID'");
       }
 
+        xtc_db_query("delete from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " .  xtc_db_input($customers_status_id));
+        $orders_status_query = xtc_db_query("select orders_status_id from " . TABLE_ORDERS_STATUS . " where language_id = " . $_SESSION['languages_id'] . " order by orders_status_id");
+        while ($orders_status = xtc_db_fetch_array($orders_status_query)) {
+           if ($_POST['orders_status_' . $orders_status['orders_status_id']]) {
+              xtc_db_query("insert into " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " values (" .  xtc_db_input($customers_status_id) . ", " . $orders_status['orders_status_id'] . ")");
+           }
+        }
+
       xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page'] . '&cID=' . $customers_status_id));
       break;
 
@@ -126,6 +137,8 @@
       }
 
       xtc_db_query("delete from " . TABLE_CUSTOMERS_STATUS . " where customers_status_id = '" . xtc_db_input($cID) . "'");
+
+      xtc_db_query("delete from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " .  xtc_db_input($cID));
 
       // We want to drop the existing corresponding personal_offers table
       xtc_db_query("drop table IF EXISTS personal_offers_by_customers_status_" . xtc_db_input($cID) . "");
@@ -338,6 +351,16 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_FSK18_DISPLAY_INTRO . '<br />' . ENTRY_CUSTOMERS_FSK18_DISPLAY . ' ' . xtc_draw_pull_down_menu('customers_fsk18_display', $customers_fsk18_display_array, $cInfo->customers_fsk18_display));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_WRITE_REVIEWS_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS . ' ' . xtc_draw_pull_down_menu('customers_status_write_reviews', $customers_status_write_reviews_array, $cInfo->customers_status_write_reviews));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_READ_REVIEWS_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY . ' ' . xtc_draw_pull_down_menu('customers_status_read_reviews', $customers_status_read_reviews_array, $cInfo->customers_status_read_reviews));
+      $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY . ' ' . xtc_draw_input_field('customers_status_accumulated_limit', $cInfo->customers_status_accumulated_limit));
+      $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO . '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY);
+
+  $orders_status_query = xtc_db_query("select * from " . TABLE_ORDERS_STATUS . " where language_id = " . $_SESSION['languages_id'] . " order by orders_status_id");
+  while ($orders_status = xtc_db_fetch_array($orders_status_query)) {
+
+      $contents[] = array('text' => '<input type="checkbox" name="orders_status_' . $orders_status['orders_status_id'] . '" value="1">' . $orders_status['orders_status_name'] . '<br />');
+
+}
+   
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_BASE . '<br />' . ENTRY_CUSTOMERS_STATUS_BASE . '<br />' . xtc_draw_pull_down_menu('customers_base_status', xtc_get_customers_statuses()));
       $contents[] = array('text' => '<br />' . xtc_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/> <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page']) . '">' . BUTTON_CANCEL . '</a>');
@@ -372,6 +395,22 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_FSK18_DISPLAY_INTRO . '<br />' . ENTRY_CUSTOMERS_FSK18_DISPLAY . ' ' . xtc_draw_pull_down_menu('customers_fsk18_display', $customers_fsk18_display_array, $cInfo->customers_fsk18_display));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_WRITE_REVIEWS_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS . ' ' . xtc_draw_pull_down_menu('customers_status_write_reviews', $customers_status_write_reviews_array, $cInfo->customers_status_write_reviews));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_READ_REVIEWS_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_READ_REVIEWS . ' ' . xtc_draw_pull_down_menu('customers_status_read_reviews', $customers_status_read_reviews_array, $cInfo->customers_status_read_reviews));
+      $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY . ' ' . xtc_draw_input_field('customers_status_accumulated_limit', $cInfo->customers_status_accumulated_limit));
+
+      $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO . '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY);
+
+  $orders_status_query = xtc_db_query("select * from " . TABLE_ORDERS_STATUS . " where language_id = " . $_SESSION['languages_id'] . " order by orders_status_id");
+  while ($orders_status = xtc_db_fetch_array($orders_status_query)) {
+    $check_status_query = xtc_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $cInfo->customers_status_id . " and orders_status_id = " . $orders_status['orders_status_id']);
+    if (xtc_db_num_rows($check_status_query)) {
+      $selected = 'checked';
+    } else {
+      $selected = '';
+    }
+
+      $contents[] = array('text' => '<input type="checkbox" name="orders_status_' . $orders_status['orders_status_id'] . '" value="1" ' . $selected . '>' . $orders_status['orders_status_name'] . '<br />');
+
+}
 
       if (DEFAULT_CUSTOMERS_STATUS_ID != $cInfo->customers_status_id) $contents[] = array('text' => '<br />' . xtc_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"> <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page'] . '&cID=' . $cInfo->customers_status_id) . '">' . BUTTON_CANCEL . '</a>');
@@ -404,6 +443,7 @@
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES . ' ' . $customers_status_discount_attributes_array[$cInfo->customers_status_discount_attributes]['text'] . ' (' . $cInfo->customers_status_discount_attributes . ')' );
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_PAYMENT_UNALLOWED_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_PAYMENT_UNALLOWED . ':<b> ' . $cInfo->customers_status_payment_unallowed.'</b>');
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_SHIPPING_UNALLOWED_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_SHIPPING_UNALLOWED . ':<b> ' . $cInfo->customers_status_shipping_unallowed.'</b>');
+        $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY . ':<b> ' . $cInfo->customers_status_accumulated_limit.'</b>');
       }
       break;
   }
