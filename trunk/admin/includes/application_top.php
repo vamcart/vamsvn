@@ -229,6 +229,7 @@
   define('TABLE_SCART', 'scart');
   define('TABLE_FEATURED', 'featured');
   define('TABLE_CIP_DEPEND', 'cip_depend');
+  define('TABLE_CIP', 'cip');
 
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
