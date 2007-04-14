@@ -230,6 +230,7 @@
   define('TABLE_FEATURED', 'featured');
   define('TABLE_CIP_DEPEND', 'cip_depend');
   define('TABLE_CIP', 'cip');
+  define('TABLE_CUSTOMERS_STATUS_ORDERS_STATUS', 'customers_status_orders_status');
 
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
