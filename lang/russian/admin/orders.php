@@ -128,4 +128,6 @@ define('TEXT_PRODUCTS',' товар (ов) ');
 define('ENTRY_ORIGINAL_REFERER', 'Реферер:');
 define('ENTRY_ORDER_NUMBER', 'Номер заказа:');
 
+define('EMAIL_ACC_SUBJECT', 'Накопительная скидка');
+
 ?>
