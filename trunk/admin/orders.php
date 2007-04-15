@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders.php 1189 2007-02-08 11:13:01Z VaM $   
+   $Id: orders.php 1189 2007-02-08 11:13:01Z VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -8,13 +8,13 @@
 
    Copyright (c) 2007 VaM Shop
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(orders.php,v 1.109 2003/05/28); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(orders.php,v 1.109 2003/05/28); www.oscommerce.com
    (c) 2003	 nextcommerce (orders.php,v 1.19 2003/08/24); www.nextcommerce.org
    (c) 2004	 xt:Commerce (orders.php,v 1.19 2003/08/24); xt-commerce.com
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------
    Third Party contribution:
    OSC German Banktransfer v0.85a       	Autor:	Dominik Guder <osc@guder.org>
@@ -57,13 +57,13 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($or
 
   $order_payment = $order->info['payment_class'];
   
-  require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $order_payment .'.php');	
-  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);  
+  require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $order_payment .'.php');
+  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
 
 }
 
   $lang_query = xtc_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $order->info['language'] . "'");
-  $lang = xtc_db_fetch_array($lang_query);  
+  $lang = xtc_db_fetch_array($lang_query);
   $lang=$lang['languages_id'];
 
 if (!isset($lang)) $lang=$_SESSION['languages_id'];
@@ -133,6 +133,100 @@ switch ($_GET['action']) {
 			$messageStack->add_session(WARNING_ORDER_NOT_UPDATED, 'warning');
 		}
 
+        // denuz added accumulated discount
+
+        $changed = false;
+        
+        $check_group_query = xtc_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . $status);
+        if (xtc_db_num_rows($check_group_query)) {
+           while ($groups = xtc_db_fetch_array($check_group_query)) {
+              // calculating total customers purchase
+              // building query
+              $customer_query = xtc_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
+              $customer = xtc_db_fetch_array($customer_query);
+              $customer_id = $customer['customers_id'];
+              $statuses_groups_query = xtc_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
+              $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
+              $statuses = xtc_db_fetch_array($statuses_groups_query);
+              $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
+              while ($statuses = xtc_db_fetch_array($statuses_groups_query)) {
+                  $purchase_query .= " or o.orders_status = " . $statuses['orders_status_id'];
+              }
+              $purchase_query .=");";
+                   
+              $total_purchase_query = xtc_db_query($purchase_query);
+              $total_purchase = xtc_db_fetch_array($total_purchase_query);
+              $customers_total = $total_purchase['total'];
+
+              // looking for current accumulated limit & discount
+              $acc_query = xtc_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id);
+              $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
+              $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
+              $current_group = @mysql_result($acc_query, "customers_status_name");
+                                                                                                                                                                                                 
+              // ok, looking for available group
+              $groups_query = xtc_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount < " . $current_discount . " and customers_status_accumulated_limit > " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+
+              if (xtc_db_num_rows($groups_query)) {
+                 // new group found
+                 $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
+                 $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
+                 $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
+                 $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+    
+                 // updating customers group
+                 xtc_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
+                 $changed = true;
+             }
+           }
+           $groups_query = xtc_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
+           $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
+           $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
+           $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
+           $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+           if ($changed) {
+
+             // send emails
+
+				// assign language to template for caching
+
+				$smarty->assign('language', $_SESSION['language']);
+				$smarty->caching = false;
+
+				// set dirs manual
+
+				$smarty->template_dir = DIR_FS_CATALOG.'templates';
+				$smarty->compile_dir = DIR_FS_CATALOG.'templates_c';
+				$smarty->config_dir = DIR_FS_CATALOG.'lang';
+
+				$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+				$smarty->assign('CUSTOMERNAME', $check_status['customers_name']);
+				$smarty->assign('EMAIL', $check_status['customers_email_address']);
+				$smarty->assign('GROUPNAME', $customers_groups_name);
+				$smarty->assign('GROUPDISCOUNT', $current_discount);
+				$smarty->assign('ACCUMULATED_LIMIT', $currencies->display_price($limit, 0));
+				
+
+            //email to admin            
+            
+				$html_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
+				$txt_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
+
+				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
+
+            //email to customer            
+
+				$html_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
+				$txt_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
+
+				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
+
+           }
+        }
+        
+        // eof denuz added accumulated discount
 		xtc_redirect(xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('action')).'action=edit'));
 		break;
 	case 'deleteconfirm' :
@@ -171,7 +265,7 @@ switch ($_GET['action']) {
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 </head>
@@ -438,7 +532,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <?php
 
 	if ($order->products[0]['allow_tax'] == 1) {
-?>  
+?>
             <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_TAX; ?></td>
             <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_PRICE_INCLUDING_TAX; ?></td>
 <?php
@@ -610,20 +704,20 @@ elseif ($_GET['action'] == 'custom_action') {
         
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr> 
+  <tr>
     <td colspan="2" class="main" align="right">
               <?php echo xtc_draw_form('orders', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_SEARCH . ' ' . xtc_draw_input_field('oID', '', 'size="12"') . xtc_draw_hidden_field('action', 'edit').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
               </form>
 </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
     <td class="main" valign="top" align="right"><?php echo xtc_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_STATUS . ' ' . xtc_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
               </form></td>
   </tr>
-</table> 
+</table>
         
 
         
@@ -729,8 +823,8 @@ elseif ($_GET['action'] == 'custom_action') {
 
   $order_payment = $oInfo->payment_method;
   
-  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');	
-  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');
+  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
 
 
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ORDER_CREATED.' '.xtc_date_short($oInfo->date_purchased));
