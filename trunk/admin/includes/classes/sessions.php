@@ -341,7 +341,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
   }
 
   function session_start() {
-    global $session, $SID, $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS;
+    global $session, $SID, $_COOKIE, $_GET, $_POST;
 
     // Define the global variable $SID?
     $define_sid = true;
@@ -350,7 +350,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     $send_cookie = true;
 
     // Is track_vars enabled?
-    $track_vars = ( (isset($HTTP_COOKIE_VARS)) || (isset($HTTP_GET_VARS)) || (isset($HTTP_POST_VARS)) ) ? true : false;
+    $track_vars = ( (isset($_COOKIE)) || (isset($_GET)) || (isset($_POST)) ) ? true : false;
 
     // Check if session_start() has been called once already
     if ($session->nr_open_sessions != 0) {
@@ -369,18 +369,18 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     // Now check the track_vars. Cookies are preferred, because initially
     // cookie and get variables will be available. 
     if ( (empty($session->id)) && ($track_vars) ) {
-      if (isset($HTTP_COOKIE_VARS[$session->name])) {
-        $session->id = $HTTP_COOKIE_VARS[$session->name];
+      if (isset($_COOKIE[$session->name])) {
+        $session->id = $_COOKIE[$session->name];
         $define_sid = false;
         $send_cookie = false;
       }
 
-      if (isset($HTTP_GET_VARS[$session->name])) {
-        $session->id = $HTTP_GET_VARS[$session->name];
+      if (isset($_GET[$session->name])) {
+        $session->id = $_GET[$session->name];
       }
 
-      if (isset($HTTP_POST_VARS[$session->name])) {
-        $session->id = $HTTP_POST_VARS[$session->name];
+      if (isset($_POST[$session->name])) {
+        $session->id = $_POST[$session->name];
       }
     }
 

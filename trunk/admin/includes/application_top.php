@@ -340,7 +340,7 @@
 	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, 
 	           $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 
-    if (isset($HTTP_COOKIE_VARS['cookie_test'])) {
+    if (isset($_COOKIE['cookie_test'])) {
       session_start();
       $session_started = true;
     }
