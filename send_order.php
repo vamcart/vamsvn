@@ -12,7 +12,7 @@
    (c) 2003	 nextcommerce (send_order.php,v 1.1 2003/08/24); www.nextcommerce.org
    (c) 2004	 xt:Commerce (send_order.php,v 1.1 2003/08/24); xt-commerce.com
    
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
 require_once (DIR_FS_INC.'xtc_get_order_data.inc.php');
@@ -38,7 +38,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	}
 	$smarty->assign('csID', $order->customer['csID']);
 	
-	$order_total = $order->getTotalData($insert_id); 
+	$order_total = $order->getTotalData($insert_id);
 		$smarty->assign('order_data', $order->getOrderData($insert_id));
 		$smarty->assign('order_total', $order_total['data']);
 
@@ -92,7 +92,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
 	// create subject
 	$order_subject = str_replace('{$nr}', $insert_id, EMAIL_BILLING_SUBJECT_ORDER);
-	$order_subject = str_replace('{$date}', strftime(DATE_FORMAT_LONG), $order_subject);
+	$order_subject = str_replace('{$date}', vam_date_long_translate(strftime(DATE_FORMAT_LONG)), $order_subject);
 	$order_subject = str_replace('{$lastname}', $order->customer['lastname'], $order_subject);
 	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
 
