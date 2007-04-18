@@ -49,9 +49,9 @@ require('epconfigure.php');
 $dltype=$_REQUEST['dltype'];
 $download=$_REQUEST['download'];
 
-global $HTTP_POST_FILES;
+global $_FILES;
 
-foreach( $HTTP_POST_FILES as $varname => $fileinfo ){
+foreach( $_FILES as $varname => $fileinfo ){
 $GLOBALS[$varname] = $fileinfo["tmp_name"];
 $GLOBALS[$varname.'_name'] = $fileinfo["name"];
 }
