@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-   require_once(DIR_FS_INC . 'xtc_get_zone_code.inc.php');
+   require_once(DIR_FS_INC . 'xtc_get_zone_name.inc.php');
    require_once(DIR_FS_INC . 'xtc_get_country_name.inc.php');
    
 function xtc_address_format($address_format_id, $address, $html, $boln, $eoln) {
@@ -36,7 +36,7 @@ function xtc_address_format($address_format_id, $address, $html, $boln, $eoln) {
     $postcode = addslashes($address['postcode']);
     $zip = $postcode;
     $country = xtc_get_country_name($country_id);
-    $state = xtc_get_zone_code($country_id, $zone_id, $state);
+    $state = xtc_get_zone_name($country_id, $zone_id, $state);
 
     if ($html) {
 // HTML Mode
