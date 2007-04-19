@@ -430,7 +430,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	}
 
 	// begin modification for banktransfer
-	$banktransfer_query = xtc_db_query("select banktransfer_prz, banktransfer_status, banktransfer_owner, banktransfer_number, banktransfer_bankname, banktransfer_blz, banktransfer_fax from banktransfer where orders_id = '".xtc_db_input($_GET['oID'])."'");
+	$banktransfer_query = xtc_db_query("select banktransfer_prz, banktransfer_status, banktransfer_owner, banktransfer_number, banktransfer_bankname, banktransfer_blz, banktransfer_fax from " . TABLE_BANKTRANSFER . " where orders_id = '".xtc_db_input($_GET['oID'])."'");
 	$banktransfer = xtc_db_fetch_array($banktransfer_query);
 	if (($banktransfer['banktransfer_bankname']) || ($banktransfer['banktransfer_blz']) || ($banktransfer['banktransfer_number'])) {
 ?>

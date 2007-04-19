@@ -55,8 +55,8 @@
    if ($id!='') {
    xtc_db_perform(TABLE_MODULE_NEWSLETTER, $sql_data_array, 'update', "newsletter_id = '" . $id . "'");
    // create temp table
-   xtc_db_query("DROP TABLE IF EXISTS module_newsletter_temp_".$id);
-   xtc_db_query("CREATE TABLE module_newsletter_temp_".$id."
+   xtc_db_query("DROP TABLE IF EXISTS ".TABLE_NEWSLETTER_TEMP.$id);
+   xtc_db_query("CREATE TABLE ".TABLE_NEWSLETTER_TEMP.$id."
                   (
                      id int(11) NOT NULL auto_increment,
                     customers_id int(11) NOT NULL default '0',
@@ -73,8 +73,8 @@
    xtc_db_perform(TABLE_MODULE_NEWSLETTER, $sql_data_array);
    // create temp table
    $id=xtc_db_insert_id();
-   xtc_db_query("DROP TABLE IF EXISTS module_newsletter_temp_".$id);
-   xtc_db_query("CREATE TABLE module_newsletter_temp_".$id."
+   xtc_db_query("DROP TABLE IF EXISTS ".TABLE_NEWSLETTER_TEMP.$id);
+   xtc_db_query("CREATE TABLE ".TABLE_NEWSLETTER_TEMP.$id."
                   (
                      id int(11) NOT NULL auto_increment,
                     customers_id int(11) NOT NULL default '0',
@@ -130,7 +130,7 @@
                                'mail_key'=>$customers_data['mail_key'],
                                'date'=>'now()');
 
-   xtc_db_perform('module_newsletter_temp_'.$id, $sql_data_array);
+   xtc_db_perform(TABLE_NEWSLETTER_TEMP.$id, $sql_data_array);
    }
 
 
@@ -165,7 +165,7 @@ $limit_up = $limits['1'];
 
 
      $limit_query=xtc_db_query("SELECT count(*) as count
-                                FROM module_newsletter_temp_".(int)$_GET['ID']."
+                                FROM ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']."
                                 ");
      $limit_data=xtc_db_fetch_array($limit_query);
 
@@ -179,7 +179,7 @@ $limit_up = $limits['1'];
                                customers_email_address,
                                mail_key ,
                                id
-                               FROM  module_newsletter_temp_".(int)$_GET['ID']."
+                               FROM  ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']."
                                LIMIT ".$limit_low.",".$limit_up);
 
      $email_data=array();
@@ -245,14 +245,14 @@ $limit_up = $limits['1'];
                 $newsletters_data['body'].$link2,
                 $newsletters_data['body'].$link1);
 
-  xtc_db_query("UPDATE module_newsletter_temp_".(int)$_GET['ID']." SET comment='send' WHERE id='".$email_data[$i-1]['id']."'");
+  xtc_db_query("UPDATE ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']." SET comment='send' WHERE id='".$email_data[$i-1]['id']."'");
 
  }
  if ($break=='1') {
      // finished
 
           $limit1_query=xtc_db_query("SELECT count(*) as count
-                                FROM module_newsletter_temp_".(int)$_GET['ID']."
+                                FROM ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']."
                                 WHERE comment='send'");
      $limit1_data=xtc_db_fetch_array($limit1_query);
 
@@ -426,7 +426,7 @@ if ($_GET['ID']!='' && $_GET['ID']==$news_data[$i]['id']) {
 
 $total_query=xtc_db_query("SELECT
                            count(*) as count
-                           FROM module_newsletter_temp_".(int)$_GET['ID']."");
+                           FROM ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']."");
 $total_data=xtc_db_fetch_array($total_query);
 ?>
 <tr>

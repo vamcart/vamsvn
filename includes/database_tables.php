@@ -98,5 +98,12 @@
   define('TABLE_AUTHORS_INFO', 'authors_info');
   define('TABLE_TOPICS', 'topics');
   define('TABLE_TOPICS_DESCRIPTION', 'topics_description');
+
+  define('TABLE_MONEYBOOKERS','payment_moneybookers');
+  define('TABLE_MONEYBOOKERS_COUNTRIES','payment_moneybookers_countries');
+  define('TABLE_MONEYBOOKERS_CURRENCIES','payment_moneybookers_currencies');
+  define('TABLE_BANKTRANSFER','banktransfer');
+  define('TABLE_NEWSLETTER_TEMP','module_newsletter_temp_');
+  define('TABLE_PERSONAL_OFFERS','personal_offers_by_customers_status_');
   
 ?>

@@ -35,7 +35,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
     //Returns true if file was changes since Contrib Installer have been installed.
     function file_was_changed($file_path) {
-        $result=xtc_db_query("SELECT content_md5 FROM contrib_installer_files_integrity
+        $result=xtc_db_query("SELECT content_md5 FROM " . TABLE_CIP_FILE_INTEGRITY . "
                         WHERE path_md5='".(md5($file_path))."' AND contrib='original' ");
         $file_changer=xtc_db_fetch_array($result);
         return ( $file_changer['content_md5']==md5_file($file_path)) ? false : true;
@@ -44,7 +44,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     function file_changers($file_path) {
         $result=xtc_db_query("
             SELECT content_md5, modification_date, contrib
-            FROM contrib_installer_files_integrity
+            FROM " . TABLE_CIP_FILE_INTEGRITY . "
             WHERE path_md5='".md5($file_path)."'
             ORDER BY modification_date");
         while ($file_changer=xtc_db_fetch_array($result)) {

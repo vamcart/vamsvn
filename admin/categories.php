@@ -40,7 +40,7 @@ $catfunc = new categories();
 if ($_GET['function']) {
 	switch ($_GET['function']) {
 		case 'delete' :
-			xtc_db_query("DELETE FROM personal_offers_by_customers_status_".(int) $_GET['statusID']."
+			xtc_db_query("DELETE FROM ".TABLE_PERSONAL_OFFERS.(int) $_GET['statusID']."
 						                     WHERE products_id = '".(int) $_GET['pID']."'
 						                     AND quantity    = '".(int) $_GET['quantity']."'");
 			break;

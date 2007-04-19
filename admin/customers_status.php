@@ -82,11 +82,11 @@
             $next_id = xtc_db_fetch_array($next_id_query);
             $customers_status_id = $next_id['customers_status_id'] + 1;
             // We want to create a personal offer table corresponding to each customers_status
-            xtc_db_query("create table personal_offers_by_customers_status_" . $customers_status_id . " (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, products_id int NOT NULL, quantity int, personal_offer decimal(15,4))");
+            xtc_db_query("create table ".TABLE_PERSONAL_OFFERS.$customers_status_id . " (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, products_id int NOT NULL, quantity int, personal_offer decimal(15,4))");
 		   xtc_db_query("ALTER TABLE  `products` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
 		   xtc_db_query("ALTER TABLE  `categories` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
 
-        $products_query = xtc_db_query("select price_id, products_id, quantity, personal_offer from personal_offers_by_customers_status_" . $customers_base_status ."");
+        $products_query = xtc_db_query("select price_id, products_id, quantity, personal_offer from ".TABLE_PERSONAL_OFFERS.$customers_base_status ."");
         while($products = xtc_db_fetch_array($products_query)){  
         $product_data_array = array(
           'price_id' => xtc_db_prepare_input($products['price_id']),
@@ -94,7 +94,7 @@
           'quantity' => xtc_db_prepare_input($products['quantity']),
           'personal_offer' => xtc_db_prepare_input($products['personal_offer'])
          );          
-         xtc_db_perform('personal_offers_by_customers_status_' . $customers_status_id, $product_data_array);
+         xtc_db_perform(TABLE_PERSONAL_OFFERS.$customers_status_id, $product_data_array);
          } 
 
           }
@@ -141,7 +141,7 @@
       xtc_db_query("delete from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " .  xtc_db_input($cID));
 
       // We want to drop the existing corresponding personal_offers table
-      xtc_db_query("drop table IF EXISTS personal_offers_by_customers_status_" . xtc_db_input($cID) . "");
+      xtc_db_query("drop table IF EXISTS ".TABLE_PERSONAL_OFFERS.xtc_db_input($cID) . "");
       xtc_db_query("ALTER TABLE `products` DROP `group_permission_" . xtc_db_input($cID) . "`");
       xtc_db_query("ALTER TABLE `categories` DROP `group_permission_" . xtc_db_input($cID) . "`");
       xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page']));
