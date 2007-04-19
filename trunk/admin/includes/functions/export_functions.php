@@ -82,7 +82,7 @@ function xtc_get_products_price_export($products_id,$price_special,$quantity,$gr
             // if ($special_price=xtc_get_products_special_price($products_id))
             // Check if there is another price for customers_group (if not, take norm price and calculte discounts (NOTE: no discount on group PRICES(only OT DISCOUNT!)!
             $group_price_query=xtc_db_query("SELECT personal_offer
-                                             FROM personal_offers_by_customers_status_".$group_id."
+                                             FROM ".TABLE_PERSONAL_OFFERS.$group_id."
                                              WHERE products_id='".$products_id."'");
             $group_price_data=xtc_db_fetch_array($group_price_query);
             // if we found a price, everything is ok if not, we will use normal price
@@ -103,13 +103,13 @@ function xtc_get_products_price_export($products_id,$price_special,$quantity,$gr
 
 
                      $graduated_price_query=xtc_db_query("SELECT max(quantity)
-                                                          FROM personal_offers_by_customers_status_".$group_id."
+                                                          FROM ".TABLE_PERSONAL_OFFERS.$group_id."
                                                           WHERE products_id='".$products_id."'
                                                           AND quantity<='".$qty."'");
                      $graduated_price_data=xtc_db_fetch_array($graduated_price_query);
                      // get singleprice
                      $graduated_price_query=xtc_db_query("SELECT personal_offer
-                                                          FROM personal_offers_by_customers_status_".$group_id."
+                                                          FROM ".TABLE_PERSONAL_OFFERS.$group_id."
                                                           WHERE products_id='".$products_id."'
                                                             AND quantity='".$graduated_price_data['max(quantity)']."'");
                      $graduated_price_data=xtc_db_fetch_array($graduated_price_query);

@@ -41,12 +41,12 @@ class moneybookers {
 
 		$this->mbLanguages = array ("EN", "DE", "ES", "FR");
 
-		$result = xtc_db_query("SELECT mb_currID FROM payment_moneybookers_currencies");
+		$result = xtc_db_query("SELECT mb_currID FROM " . TABLE_MONEYBOOKERS_CURRENCIES . "");
 		while (list ($currID) = mysql_fetch_row($result)) {
 			$this->mbCurrencies[] = $currID;
 		}
 
-		$result = xtc_db_query("SELECT code FROM currencies");
+		$result = xtc_db_query("SELECT code FROM " . TABLE_CURRENCIES . "");
 		while (list ($currID) = mysql_fetch_row($result)) {
 			$this->aCurrencies[] = $currID;
 		}
@@ -116,7 +116,7 @@ class moneybookers {
 	function process_button() {
 		global $order, $order_total_modules, $currency, $languages_id, $xtPrice;
 
-		$result = xtc_db_query("SELECT code FROM languages WHERE languages_id = '".$_SESSION['languages_id']."'");
+		$result = xtc_db_query("SELECT code FROM " . TABLE_LANGUAGES . " WHERE languages_id = '".$_SESSION['languages_id']."'");
 		list ($lang_code) = mysql_fetch_row($result);
 		$mbLanguage = strtoupper($lang_code);
 		if ($mbLanguage == "US") {
@@ -131,11 +131,11 @@ class moneybookers {
 			$mbCurrency = MODULE_PAYMENT_MONEYBOOKERS_CURRENCY;
 		}
 
-		$result = xtc_db_query("SELECT mb_cID FROM payment_moneybookers_countries, countries WHERE (osc_cID = countries_id) AND (countries_id = '{$order->billing['country']['id']}')");
+		$result = xtc_db_query("SELECT mb_cID FROM " . TABLE_MONEYBOOKERS_COUNTRIES . ", " . TABLE_COUNTRIES . " WHERE (osc_cID = countries_id) AND (countries_id = '{$order->billing['country']['id']}')");
 		list ($mbCountry) = mysql_fetch_row($result);
 
 		$this->transaction_id = $this->generate_trid();
-		$result = xtc_db_query("INSERT INTO payment_moneybookers (mb_TRID, mb_DATE) VALUES ('{$this->transaction_id}', NOW())");
+		$result = xtc_db_query("INSERT INTO " . TABLE_MONEYBOOKERS . " (mb_TRID, mb_DATE) VALUES ('{$this->transaction_id}', NOW())");
 		if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 			$total = $order->info['total'] + $order->info['tax'];
 		} else {
@@ -206,12 +206,12 @@ class moneybookers {
 				}
 
 				if ($aFinal["status"] == -2) {
-					$result = xtc_db_query("UPDATE payment_moneybookers SET mb_ERRNO = '999', mb_ERRTXT = 'Transaction failed.', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
+					$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '999', mb_ERRTXT = 'Transaction failed.', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
 					$payment_error_return = "payment_error={$this->code}&error=-2: ".MODULE_PAYMENT_MONEYBOOKERS_TRANSACTION_FAILED_TEXT;
 					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 					return false;
 				} else {
-					$result = xtc_db_query("UPDATE payment_moneybookers SET mb_ERRNO = '200', mb_ERRTXT = 'OK', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
+					$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '200', mb_ERRTXT = 'OK', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
 					$moneybookers_payment_comment = MODULE_PAYMENT_MONEYBOOKERS_ORDER_COMMENT1.$aFinal["mb_transaction_id"]." (".MODULE_PAYMENT_MONEYBOOKERS_ORDER_COMMENT2.") ";
 					$order->info['comments'] = $moneybookers_payment_comment.$order->info['comments'];
 				}
@@ -226,7 +226,7 @@ class moneybookers {
 			case "404" :
 			case "405" :
 				preg_match("/[^\d\t]+.*/i", $result, $return_array);
-				$result = xtc_db_query("UPDATE payment_moneybookers SET mb_ERRNO = '{$return_code[0]}', mb_ERRTXT = '{$return_array[0]}' WHERE mb_TRID = '{$this->transaction_id}'");
+				$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '{$return_code[0]}', mb_ERRTXT = '{$return_array[0]}' WHERE mb_TRID = '{$this->transaction_id}'");
 				$payment_error_return = "payment_error={$this->code}&error={$return_code[0]}: {$return_array[0]}";
 				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 				break;
@@ -243,7 +243,7 @@ class moneybookers {
 
 	function after_process() {
 		global $insert_id;
-		$result = xtc_db_query("UPDATE payment_moneybookers SET mb_ORDERID = $insert_id WHERE mb_TRID = '{$this->transaction_id}'");
+		$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ORDERID = $insert_id WHERE mb_TRID = '{$this->transaction_id}'");
 
 		if ($this->order_status)
 			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
@@ -321,7 +321,7 @@ class moneybookers {
 
 		do {
 			$trid = xtc_create_random_value(16, "mixed");
-			$result = xtc_db_query("SELECT mb_TRID FROM payment_moneybookers WHERE mb_TRID = '$trid'");
+			$result = xtc_db_query("SELECT mb_TRID FROM " . TABLE_MONEYBOOKERS . " WHERE mb_TRID = '$trid'");
 		} while (mysql_num_rows($result));
 
 		return $trid;

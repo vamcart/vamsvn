@@ -392,7 +392,7 @@ class categories {
 		$customers_status_array = xtc_get_customers_statuses();
 		for ($i = 0, $n = sizeof($customers_status_array); $i < $n; $i ++) {
 			if (isset($customers_statuses_array[$i]['id']))
-				xtc_db_query("delete from personal_offers_by_customers_status_".$customers_statuses_array[$i]['id']." where products_id = '".xtc_db_input($product_id)."'");
+				xtc_db_query("delete from ".TABLE_PERSONAL_OFFERS.$customers_statuses_array[$i]['id']." where products_id = '".xtc_db_input($product_id)."'");
 		}
 
 		$product_reviews_query = xtc_db_query("select reviews_id from ".TABLE_REVIEWS." where products_id = '".xtc_db_input($product_id)."'");
@@ -650,16 +650,16 @@ class categories {
 
 				if ($action == 'insert') {
 
-					xtc_db_query("DELETE FROM personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']." WHERE products_id = '".$products_id."'
+					xtc_db_query("DELETE FROM ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']." WHERE products_id = '".$products_id."'
 												                 AND quantity    = '1'");
 
 					$insert_array = array ();
 					$insert_array = array ('personal_offer' => $personal_price, 'quantity' => '1', 'products_id' => $products_id);
-					xtc_db_perform("personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID'], $insert_array);
+					xtc_db_perform(TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID'], $insert_array);
 
 				} else {
 
-					xtc_db_query("UPDATE personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']."
+					xtc_db_query("UPDATE ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']."
 												                 SET personal_offer = '".$personal_price."'
 												               WHERE products_id = '".$products_id."'
 												                 AND quantity    = '1'");
@@ -693,12 +693,12 @@ class categories {
 					if ($quantity <= 1)
 						$quantity = 2;
 					$check_query = xtc_db_query("SELECT quantity
-														                               FROM personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']."
+														                               FROM ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']."
 														                              WHERE products_id = '".$products_id."'
 														                                AND quantity    = '".$quantity."'");
 					// dont insert if same qty!
 					if (xtc_db_num_rows($check_query) < 1) {
-						xtc_db_query("INSERT INTO personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']."
+						xtc_db_query("INSERT INTO ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']."
 																	                 SET price_id       = '',
 																	                     products_id    = '".$products_id."',
 																	                     quantity       = '".$quantity."',
@@ -856,11 +856,11 @@ class categories {
 
 				$copy_query = xtc_db_query("SELECT quantity,
 								    			                                   personal_offer
-								    			                              FROM personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']."
+								    			                              FROM ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']."
 								    			                             WHERE products_id = '".$old_products_id."'");
 
 				while ($copy_data = xtc_db_fetch_array($copy_query)) {
-					xtc_db_query("INSERT INTO personal_offers_by_customers_status_".$group_data[$col]['STATUS_ID']."
+					xtc_db_query("INSERT INTO ".TABLE_PERSONAL_OFFERS.$group_data[$col]['STATUS_ID']."
 										    				                 SET price_id       = '',
 										    				                     products_id    = '".$products_id."',
 										    				                     quantity       = '".$copy_data['quantity']."',

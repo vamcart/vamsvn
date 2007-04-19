@@ -433,7 +433,7 @@ $order->info['tax'] -= $tod_amount;
 					if (is_array($this->contents)) {
 						reset($this->contents);
 						while (list ($products_id,) = each($this->contents)) {
-							$cat_query = xtc_db_query("select products_id from products_to_categories where products_id = '".$products_id."' and categories_id = '".$cat_ids[$i]."'");
+							$cat_query = xtc_db_query("select products_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '".$products_id."' and categories_id = '".$cat_ids[$i]."'");
 							if (xtc_db_num_rows($cat_query) != 0) {
 								$in_cat = true;
 								$total_price += $this->get_product_price($products_id);

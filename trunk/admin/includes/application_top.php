@@ -231,6 +231,13 @@
   define('TABLE_CIP_DEPEND', 'cip_depend');
   define('TABLE_CIP', 'cip');
   define('TABLE_CUSTOMERS_STATUS_ORDERS_STATUS', 'customers_status_orders_status');
+  define('TABLE_MONEYBOOKERS','payment_moneybookers');
+  define('TABLE_MONEYBOOKERS_COUNTRIES','payment_moneybookers_countries');
+  define('TABLE_MONEYBOOKERS_CURRENCIES','payment_moneybookers_currencies');
+  define('TABLE_BANKTRANSFER','banktransfer');
+  define('TABLE_NEWSLETTER_TEMP','module_newsletter_temp_');
+  define('TABLE_PERSONAL_OFFERS','personal_offers_by_customers_status_');
+  define('TABLE_CIP_FILE_INTEGRITY','contrib_installer_files_integrity');
 
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');

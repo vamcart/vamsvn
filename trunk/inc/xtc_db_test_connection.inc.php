@@ -26,7 +26,7 @@ function xtc_db_test_connection($database) {
       if (!@xtc_db_select_db($database)) {
         $db_error = mysql_error();
       } else {
-        if (!@xtc_db_query_installer('select count(*) from configuration')) {
+        if (!@xtc_db_query_installer("select count(*) from " . TABLE_CONFIGURATION . "")) {
           $db_error = mysql_error();
         }
       }
