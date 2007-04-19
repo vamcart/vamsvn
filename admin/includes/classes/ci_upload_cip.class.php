@@ -14,7 +14,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 class upload_cip {
     var $file, $filename, $destination, $permissions, $extensions, $tmp_filename;
 
-    function upload_cip($file = '', $destination = '', $permissions = '777', $extensions = '', $maxsize='524288') {
+    function upload_cip($file = '', $destination = '', $permissions = '777', $extensions = '', $maxsize=MAX_UPLOADED_FILESIZE) {
         $this->file=$file;
         $this->destination=$destination;
         $this->maxsize=$maxsize;

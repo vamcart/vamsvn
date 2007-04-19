@@ -8,7 +8,7 @@ Released under GPL
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 
 class Tc_modifytable extends ContribInstallerBaseTag {
-    var $tag_name='createtable';
+    var $tag_name='modifytable';
     // Class Constructor
     function Tc_modifytable($contrib='', $id='', $xml_data='', $dep='') {
         $this->params=array(
@@ -24,6 +24,10 @@ class Tc_modifytable extends ContribInstallerBaseTag {
                                 'sql_type'=>"ENUM ('addcol')",
                                 'xml_error'=>"no action definition; "
                                 ),
+            'after'=>array(
+                                'sql_type'=>'varchar (255)',
+                                ),
+            
         );
         $this->ContribInstallerBaseTag($contrib, $id, $xml_data, $dep);
     }
@@ -33,6 +37,7 @@ class Tc_modifytable extends ContribInstallerBaseTag {
         $this->data['colname']    =$this->getTagAttr($xml_data,'column',0,'name');
         $this->data['action']    =$this->getTagAttr($xml_data,'column',0,'action');
         $this->data['data']      =$this->getTagText($xml_data,'column',0);
+        $this->data['after']     =$this->getTagAttr($xml_data,'column',0,'after');
     }
     //===============================================================
     function do_install() {
@@ -50,7 +55,7 @@ class Tc_modifytable extends ContribInstallerBaseTag {
     			if($iscol){
 	   				$sqlq = "alter table `" . DB_PREFIX . $this->data['tablename'] . "` change `".$this->data['colname']."` `".$this->data['colname']."` ".$this->data['data'];
     			}else{
-    				$sqlq = "alter table `" . DB_PREFIX . $this->data['tablename'] . "` add `".$this->data['colname']."` ".$this->data['data'];
+    				$sqlq = "alter table `" . DB_PREFIX . $this->data['tablename'] . "` add `".$this->data['colname']."` ".$this->data['data'].($this->data['after']!=""?" AFTER ".$this->data['after']:"");
     			}
     			if(cip_db_query($sqlq)=== false){
 					$this->error('SQL error :<b>'.mysql_errno().' - '.mysql_error().'<br>'.$this->data['tablename']);

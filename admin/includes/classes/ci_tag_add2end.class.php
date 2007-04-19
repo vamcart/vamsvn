@@ -67,15 +67,6 @@ class Tc_add2end extends ContribInstallerBaseTag {
         //We can also check a database records for conflicts.
         if ($count==0) {
             $this->error(COULDNT_FIND_TEXT.": ".nl2br(htmlspecialchars($find)). "<br>". IN_THE_FILE_TEXT. $this->fs_filename());
-        } elseif ($count>1) {
-            if (!$this->multi_search()) {
-                $file2array=explode("\r\n", $new_file);
-                for ($i=($this->data['start']-1); $i<=($this->data['end']-1); $i++)     $piece.=$file2array[$i];
-                $count=substr_count($piece, $find);
-                if ($count==0) {
-                    $this->error(COULDNT_FIND_TEXT.": ".nl2br(htmlspecialchars($find))."<br> ".IN_THE_FILE_TEXT. $this->fs_filename());
-                } elseif ($count>1)     $this->error(TEXT_NOT_ORIGINAL_TEXT.TEXT_HAVE_BEEN_FOUND.$count.TEXT_TIMES);
-            }
         }
         return $this->error;
     }
@@ -83,16 +74,12 @@ class Tc_add2end extends ContribInstallerBaseTag {
 
     //===============================================================
     function do_install() {
-        $find=$this->linebreak_fixing(trim($this->data['find']));
-        $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $this->add_file_end($this->data['filename'],$this->add_str());
         return $this->error;
     }
 
     function do_remove() {
-        $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
-        $new_file=str_replace($this->add_str(), "\n", $old_file);
-        $this->write_to_file($this->fs_filename(), $new_file);
+        $this->remove_file_part($this->data['filename'],$this->add_str());
         return $this->error;
     }
 }

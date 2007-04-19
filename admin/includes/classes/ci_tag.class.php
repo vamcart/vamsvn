@@ -73,7 +73,7 @@ class ContribInstallerBaseTag {
     function get_add() {return $this->data['add'];}
     function get_add_type() {return $this->data['add_type'];}
     function get_type() {
-    	if(!isset($this->data['type'])) return 'php';
+    	if(!isset($this->data['type']) || $this->data['type']=='') return 'php';
     	return $this->data['type'];
     }
     function get_start() {return $this->data['start'];}
@@ -109,7 +109,7 @@ class ContribInstallerBaseTag {
     }
 
     function get_fs_filename($fname) {
-        if($this->isEscom()){
+        if($this->isJoscom()){
     		$fname = str_replace(DIR_WS_CATALOG,"",$fname);
     		$fname = str_replace(DIR_WS_ADMIN,"admin/",$fname);
 
@@ -124,7 +124,7 @@ class ContribInstallerBaseTag {
     		if ($fname)    return DIR_FS_CATALOG.$fname;
     	}
     }
-    function isEscom(){return ((defined("ESCOM_VERSION")) ? true : false);}
+    function isJoscom(){return ((defined("JOSCOM_VERSION")) ? true : false);}
 
     function add_str() {
         if ($this->data['add'])
@@ -305,24 +305,20 @@ class ContribInstallerBaseTag {
     function restore_file($filename=''){
         $filename=(($filename) ? $filename : (($this->data['filename']) ? $this->data['filename'] : ''));
         if (!$filename) return;
-        if(is_array($filename)){
-        	$filenames= $filename;
-        }else{
-        	 $filenames[0] = $filename;
-        }
+        if(is_array($filename))   $filenames= $filename;
+        else   $filenames[0] = $filename;
+
         foreach($filenames as $filename){
 		    $backup_file=DIR_FS_ADMIN_BACKUP.$this->contrib.'/'.$filename;
 	        $current_file=$this->get_fs_filename($filename);
 	        if(is_link($current_file))    return;
 	//Remove current_file
-	        if(!@unlink($current_file))     $this->error(COULDNT_REMOVE_FILE_TEXT.$current_file);
+            ci_remove($current_file);
 	        if (!is_file($backup_file))    return;
 	//Restore
 	        if (!@ copy($backup_file, $current_file)) {
 	                $this->error("Couldn't restore file ". $filename. " from ".$backup_file);
-	        } elseif(!@ unlink($backup_file)) {
-	            $this->error(COULDNT_REMOVE_FILE_TEXT.$backup_file);
-	        }
+	        } else   ci_remove($backup_file);
         }
     }
     //=======================================================================
@@ -381,16 +377,19 @@ class ContribInstallerBaseTag {
 
 	function add_file_end($fname, $fpart) {
 		global $message;
+		$enter = false;
 		$fs_fname = $this->get_fs_filename($fname);
 		if (is_file($fs_fname)) {
 			$old_file = file_get_contents($fs_fname);
 			$position = strpos($old_file, $fpart);
 			if ($position === false) {
 				if($this->get_type() == 'php'){
-					$pos = strpos(strrev(trim($old_file)), ">?");
-					if ($pos == 0 && $pos !== false) { // if file ends with \?\>
-						$new_file = substr(rtrim($old_file), 0, -2). $fpart . "\n?>";
-					} else     $new_file = rtrim($old_file). "\n<?php\n" . $fpart . "\n?>";
+					$count = preg_match_all("(\?>\s*$\s*)",$old_file,$matches,PREG_OFFSET_CAPTURE);
+					if ($count == 0) { // if file no ends with \?\>
+						$new_file = rtrim($old_file). "\n<?php " . $fpart . " ?>";
+					}else{
+						$new_file = substr_replace($old_file, $fpart, $matches[0][0][1], 0); //inserts string into another string
+					}
 				} else    $new_file = $old_file.$fpart;
 				$this->write_to_file($fs_fname, $new_file);
 			}
@@ -402,11 +401,11 @@ class ContribInstallerBaseTag {
 		$fs_fname = $this->get_fs_filename($fname);
 		if (is_file($fs_fname)) {
 			$old_file = file_get_contents($fs_fname);
-			$position = strpos($old_file, "<?php\n" . $fpart . "\n?>");
+			$position = strpos($old_file, "<?php " . $fpart . " ?>");
 			if ($position === false) {
 				$position = strpos($old_file, $fpart);
 			}else{
-				$fpart = "<?php\n" . $fpart . "\n?>";
+				$fpart = "<?php " . $fpart . " ?>";
 			}
 			if ($position === false) {
 				$output .= "<p class=\"error\">" . COULDNT_FIND_TEXT . ": " . nl2br(htmlentities($fpart)) .
@@ -459,15 +458,15 @@ class ContribInstallerBaseTag {
     }
 
 
-	function getITagAttr($tag, $tagpos,$attrname){
+	function getITagAttr($tag, $tagpos,$attrname, $defval=NULL){
 		if(is_object($tag->item($tagpos))){
 			$rrer=$tag->item($tagpos);
 			 return $rrer->getAttribute($attrname);
 		}
-    	return NULL;
+    	return $defval;
 	}
 
-    function getTagAttr($xml_data,$tagname, $tagpos,$attrname){
+    function getTagAttr($xml_data,$tagname, $tagpos,$attrname,$defval=NULL){
     	if(is_object($xml_data)){
     		$obj = $xml_data->getElementsByTagName($tagname);
     		if(is_object($obj))
@@ -476,18 +475,18 @@ class ContribInstallerBaseTag {
     				return $rret->getAttribute($attrname);
     			}
     	}
-    	return NULL;
+    	return $defval;
     }
 
-	function getITagText($tag, $tagpos){
+	function getITagText($tag, $tagpos, $defval=NULL){
 		if(is_object($tag->item($tagpos))){
 			$rret = $tag->item($tagpos);
 			return $rret->getText();
 		}
-    	return NULL;
+    	return $defval;
 	}
 
-    function getTagText($xml_data,$tagname, $tagpos){
+    function getTagText($xml_data,$tagname, $tagpos, $defval=NULL){
     	if(is_object($xml_data)){
     		$obj = $xml_data->getElementsByTagName($tagname);
     		if(is_object($obj))
@@ -496,7 +495,7 @@ class ContribInstallerBaseTag {
     				return $rret->getText();
     			}
     	}
-    	return NULL;
+    	return $defval;
     }
 
     function isTagName($name){
@@ -508,6 +507,7 @@ class ContribInstallerBaseTag {
     function add_log(){
       global $message;
       if(USE_LOG_SYSTEM!='true') return;
+      if($this->data==null) return;
       foreach($this->data as $key=>$value) {
         if(is_array($value)) {
             $tag_data.="\r\n".$key." (Array):";
@@ -522,6 +522,30 @@ class ContribInstallerBaseTag {
     }
 
 
+	function cnv_to_regex($text){
+		$lines = explode("\n",$text);
+		$tt = "((?m)";
+		$i=0;
+		foreach ($lines as $line){
+			$line = trim($line);
+			if($i==0){
+				$pos = strpos($line,'/* Begin');
+				if($pos !== false)
+			    	$tt .= '\/\* Begin [^-]* - installed by Contrib_Installer[^\*]* \*\/[\s]*';
+			    else
+			    	$tt .= preg_quote($line).'[\s]*';
+			}else{
+				$tt .= preg_quote($line).'[\s]*';
+			}
+			if(strlen($line)>0)$i++;
+		}
+		$tt = substr($tt,0,-5).")";
+		return $tt;
+	}
+
+	function get_num_lines($text){
+		return preg_match_all('((?m)(^.*$))',$text,$m);
+	}
 
 }
 ?>

@@ -48,6 +48,9 @@ class Tc_description extends ContribInstallerBaseTag {
             'version'=>array(
                                 'sql_type'=>'varchar(20)',
                                 ),
+            'post_install_notes'=>array(
+                                'sql_type'=>'text',
+                                ),
 
         );
         $this->ContribInstallerBaseTag($contrib, $id, $xml_data, $dep='');
@@ -66,7 +69,7 @@ class Tc_description extends ContribInstallerBaseTag {
         $this->data['version']        =$this->getTagText($xml_data,'version',0);
         if($this->data['ident']==NULL)$this->data['ident'] = $this->contrib;
         if($this->data['version']==NULL)$this->data['version'] = '1.0';
-
+        $this->data['post_install_notes']        =$this->getTagText($xml_data,'post_install_notes',0);
     }
 
 
@@ -79,6 +82,7 @@ class Tc_description extends ContribInstallerBaseTag {
             <credits><![CDATA['.$this->data['credits'].']]></credits>
         	<ident>'.$this->data['ident'].'</ident>
         	<version>'.$this->data['version'].'</version>
+            <post_install_notes>'.$this->data['post_install'].'</post_install_notes>
         </'.$this->tag_name.'>';
     }
 
@@ -107,6 +111,7 @@ class Tc_description extends ContribInstallerBaseTag {
 	<credits><![CDATA[ ... ]]></credits>
 	<ident>ADMIN_BOXES</ident> - identifier of CIP for require and depend tags
 	<version>1.0</version> - identifier of CIP version for require and depend tags
+    <post_install_notes>God bless you!</post_install_notes> - message that will be shown after install
 </description>
 ====================================================================
 */

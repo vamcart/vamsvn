@@ -46,7 +46,6 @@ class CIP {
 
     // Class Constructor
     function CIP($cip_name='') {
-        global $phpbb_user;
         if (!$cip_name or $cip_name=="." or $cip_name=="..")    $this->error(NO_CONTRIBUTION_NAME_TEXT);
         if ($this->error)    return;
         $this->include_tag_classes();
@@ -71,7 +70,7 @@ class CIP {
         $this->cip_installed=$installed['cip_installed'];
         if (!$this->cip_id) {
             //Register CIP in database:
-                $this->register(is_object($phpbb_user) ? $phpbb_user->get_session_user_id() : '0');
+                $this->register();
                 $this->cip_id=mysql_insert_id();
                 $this->cip_installed=0;
         }
@@ -99,14 +98,9 @@ class CIP {
     function get_description_id()     {return $this->description_id;}
     function get_data($id)     {return $this->contrib_data[$id];}
 
-    function get_uploader_id() {
-        $result=cip_db_query("select cip_uploader_id from ".TABLE_CIP." where             cip_folder_name='".$this->cip_name."'");
-        if ($result===false)     return;
-        $installed=xtc_db_fetch_array($result);
-        return $installed['cip_uploader_id'];
-    }
     function is_ci() {return $this->is_ci;}
-
+    //Post install notes:
+    function post_install_notes() {return $this->contrib_data[$this->description_id]->data['post_install_notes'];}
     //=================================================
     // Stat
     //=================================================
@@ -225,9 +219,9 @@ class CIP {
     //==================================================================
 
     function is_registered() {return (($this->cip_id) ? true : false);}
-    function register($user_id) {
-        //if ($this->is_registered())    return;
-        cip_db_query("replace into ".TABLE_CIP." (cip_id, cip_folder_name, cip_installed, cip_uploader_id, cip_ident, cip_version) values ('', '".$this->cip_name."', '0', '".$user_id."','".$this->getIdent()."','".$this->getVersion()."')");
+
+    function register() {
+        cip_db_query("replace into ".TABLE_CIP." (cip_id, cip_folder_name, cip_installed, cip_ident, cip_version) values ('', '".$this->cip_name."', '0', '".$this->getIdent()."','".$this->getVersion()."')");
     }
     function unregister() {
         if (!$this->is_ci())     cip_db_query("DELETE FROM ".TABLE_CIP." WHERE cip_folder_name='".$this->cip_name."' ");
@@ -246,19 +240,7 @@ class CIP {
     }
     function unset_installed() {$this->set_installed('0');}
     function set_installed($status='1') {
-    //echo "UPDATE ".TABLE_CIP." SET cip_installed='".$status."' WHERE cip_folder_name=".$this->cip_name;
         cip_db_query("UPDATE ".TABLE_CIP." SET cip_installed='".$status."', cip_ident='".$this->getIdent()."', cip_version='".$this->getVersion()."' WHERE cip_folder_name='".$this->cip_name."'");
-    }
-    //==================================================================
-    //Downloads
-    //==================================================================
-    function set_downloads_counter() {
-        xtc_db_query("UPDATE ".TABLE_CIP." SET cip_downloads=cip_downloads+1 WHERE cip_folder_name='".$this->cip_name."';");
-    }
-    function get_downloads_counter() {
-        $result=cip_db_query("select cip_downloads from ".TABLE_CIP." where cip_folder_name='".$this->cip_name."';");
-        $ins=xtc_db_fetch_array($result);
-        return $ins['cip_downloads'];
     }
 
 
@@ -329,8 +311,8 @@ class CIP {
 	            }else{
 	            	$tagcnt[$tag_data->nodeName] = 0;
 	            }
-				if (strtolower($tag_data->nodeName)=='php')     $this->count_php_tags++;
-				$clsname='Tc_'.strtolower($tag_data->nodeName);
+                if (strtolower($tag_data->nodeName)=='php')     $this->count_php_tags++;
+                $clsname='Tc_'.strtolower($tag_data->nodeName);
                 if (class_exists($clsname))    $this->contrib_data[]=new $clsname($this, $tagcnt[$tag_data->nodeName], $tag_data);
                 else {
                     $this->error('Tag'.$tag_data->nodeName.' is not supported. Class '.$clsname.' does NOT exist.');
@@ -357,9 +339,6 @@ class CIP {
     //Action
     //==================================================================
     function install() {
-        global $phpbb_user;
-
-
         $this->was_unpacked=$this->read_xml($delete_unpacked=false);
         if (!$this->is_all_right())     return;
 
@@ -391,7 +370,7 @@ class CIP {
 
             //Because if we not do it here CI will not be registered.
               if ($this->is_ci()) {
-                  $this->register(is_object($phpbb_user) ? $phpbb_user->get_session_user_id() : '0');
+                  $this->register();
               }
             $this->set_installed();
         }
@@ -422,8 +401,6 @@ class CIP {
     }
 
 	function compute_dependencies(){
-		global $phpbb_user;
-
 
         $this->was_unpacked=$this->read_xml($delete_unpacked=false);
         if (!$this->is_all_right())     return;

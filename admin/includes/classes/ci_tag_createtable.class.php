@@ -42,7 +42,7 @@ class Tc_createtable extends ContribInstallerBaseTag {
 		        (defined('DB_PREFIX') ? DB_PREFIX : '').'" . strtolower($this->data['tablename']) . "');\n";
 		$add_str = $this->linebreak_fixing("\n" . $this->comment_string($tblrows));
 		$output .= $this->add_file_end("includes/database_tables.php", $add_str);
-		if (!$this->isEscom()) {
+		if (!$this->isJoscom()) {
 			$output .= $this->add_file_end("admin/includes/database_tables.php", $add_str);
 		}
 		return $this->error;
@@ -61,7 +61,7 @@ class Tc_createtable extends ContribInstallerBaseTag {
 
 		$add_str = $this->linebreak_fixing("\n" . $this->comment_string($tblrows));
 		$output .= $this->remove_file_part("includes/database_tables.php", $add_str);
-		if (!$this->isEscom()) {
+		if (!$this->isJoscom()) {
 			$output .= $this->remove_file_part("admin/includes/database_tables.php", $add_str);
 		}
 		return $this->error;

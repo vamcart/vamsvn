@@ -711,6 +711,8 @@ define('SHOW_SIZE_COLUMN_TITLE' , 'Показывать колонку размер');
 define('SHOW_SIZE_COLUMN_DESC' , 'Выберите true и в списке модулей будет отображаться колонка размер.');
 define('USE_LOG_SYSTEM_TITLE' , 'Вести лог');
 define('USE_LOG_SYSTEM_DESC' , 'Если true, то всё действия установщика модулей будут записываться в папку backups.');
+define('MAX_UPLOADED_FILESIZE_TITLE' , 'Максимальный размер загружаемых CIP модулей');
+define('MAX_UPLOADED_FILESIZE_DESC' , 'Установите максимальный размер архивов, которые Вы можете загружать через браузер в установщике модулей.');
 
 define('USE_EP_IMAGE_MANIPULATOR_TITLE','Разрешить обработку картинок в excel импорт/экспорт');
 define('USE_EP_IMAGE_MANIPULATOR_DESC','Обрабатывать или нет картинки при загрузке товаров через модуль Excel импорт/экспорт');

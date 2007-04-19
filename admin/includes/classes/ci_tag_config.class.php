@@ -52,6 +52,11 @@ class Tc_config extends ContribInstallerBaseTag {
 
 
 			),
+			'lang' => array (
+				'sql_type' => 'varchar(64)',
+
+
+			),
 		);
 		$this->ContribInstallerBaseTag($contrib, $id, $xml_data, $dep);
 	}
@@ -73,6 +78,11 @@ class Tc_config extends ContribInstallerBaseTag {
 		$this->data['sort_order'] = $this->getTagText($xml_data, 'sort_order', 0);
 		$this->data['use_function'] = $this->getTagText($xml_data, 'use_function', 0);
 		$this->data['set_function'] = $this->getTagText($xml_data, 'set_function', 0);
+		$this->data['lang'] = $this->getTagText($xml_data, 'lang', 0);
+		if ($this->data['lang'] == NULL)
+			$this->data['lang'] = 'english';
+		$this->data['add'] = "define('TEXT_CONF_".$this->data['key']."','".$this->data['title']."');\ndefine('TEXT_CONF_DESC_".$this->data['key']."','".$this->data['descr']."');";
+		$this->data['filename'] = 'lang/'.$this->data['lang'].'/admin/configuration.php';
 	}
 
 	function write_to_xml() {
@@ -90,6 +100,7 @@ class Tc_config extends ContribInstallerBaseTag {
 			$tag .= ' <use_function>' . $this->data['use_function'] . '</use_function>' . "\n";
 		if ($this->data['set_function'] != NULL)
 			$tag .= ' <set_function>' . $this->data['set_function'] . '</set_function>' . "\n";
+		$tag .= ' <lang>' . $this->data['lang'] . '</lang>' . "\n";
 		$tag .= '</' . $this->tag_name . '>';
 		return $tag;
 	}
@@ -109,16 +120,17 @@ class Tc_config extends ContribInstallerBaseTag {
 			" values ('','" . $this->data['title'] . "','" . $this->data['key'] . "','" . $this->data['value'] . "','" . $this->data['descr'] . "'," . $this->data['gid'] . "," . ($this->data['sort_order'] == NULL ? "NULL" : $this->data['sort_order']) . ",now(),now()," . ($this->data['use_function'] == NULL ? "NULL" : "'".$this->data['use_function']."'") . "," . ($this->data['set_function'] == NULL ? "NULL" : "'".$this->data['set_function']."'") . ")";
 			xtc_db_query($query);
 		}
+		if(file_exists($this->fs_filename()))  $this->add_file_end($this->data['filename'],$this->add_str());
 	}
 
 
 	function do_remove() {
-		if ($_REQUEST['remove_data'] == '1') {
+		if ($_REQUEST['remove_data'] == '1' && $this->data['lang'] == 'russian') {
 			if($this->cip->is_ci())return $this->error;
-			xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
+			tep_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
 		}
+		if(file_exists($this->fs_filename())) $this->remove_file_part($this->data['filename'],$this->add_str());
 	}
-
 }
 
 /*
@@ -132,6 +144,7 @@ class Tc_config extends ContribInstallerBaseTag {
  [<sort_order></sort_order>]
  [<use_function></use_function>]
  [<set_function></set_function>]
+ [<lang></lang>]
 </config>
 ====================================================================
 */
