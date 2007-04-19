@@ -32,8 +32,8 @@ class Tc_depend extends ContribInstallerBaseTag {
         $this->data['cip_version'] =$this->getTagAttr($xml_data,'cip',0,'version');
 
         $active = false;
-        if($this->data['cip_ident'] == 'es_commerce'){
-			if($this->isEscom()) $active = true;
+        if($this->data['cip_ident'] == 'jos_commerce'){
+			if($this->isJoscom()) $active = true;
         }else{
 	        $query = 'select * from '.TABLE_CIP. ' where cip_ident="'.$this->data['cip_ident'].'"'.($this->data['cip_version']==NULL?'':' and cip_version="'.$this->data['cip_version'].'"').' and cip_installed=1';
     	    $result = cip_db_query($query,'return');

@@ -111,7 +111,7 @@ class Tc_addfile extends ContribInstallerBaseTag {
         //if (!file_exists($backup_file))    $this->error(FILE_NOT_EXISTS_TEXT.' '. $backup_file);
         /*
         Если проверять бэкап-файл на наличие, то нужно проверить был ли он.
-        Если бы и не стало, то это ошибка.
+        Если был и не стало, то это ошибка.
         Можно проверить по СИ бэкапу, но с тех пор другой пакет мог удалить файл, а я выдам ошибку.
         Это может быть конфликт между пакетами.
         */
@@ -144,38 +144,37 @@ class Tc_addfile extends ContribInstallerBaseTag {
 
 
     function do_install() {
-        if ($this->error)    return;
-        for($i = 0; $i < count($this->data['filename']);$i++){
-	        $cip_file=DIR_FS_CIP.'/'.$this->contrib.'/'.$this->data['srcdir'][$i].'/'.$this->data['filename'][$i];
-	        if (is_file($this->fs_filename($i))) {
-	        	//if file is copied
-	        	if($this->equal_files($cip_file,$this->fs_filename($i))) continue;
-            //If file exists we should backup them. Later we could restore him.
-            //If we couldn't backup we should print an error and stop.
-            //If Total_Backup havn't been done we should do it.
-	            if (ALLOW_FILES_BACKUP=='false')     $this->backup_file($this->data['filename'][$i]);
-	            if (@!unlink($this->fs_filename($i)))    $this->error(COULDNT_REMOVE_FILE_TEXT.$this->fs_filename($i));
+      if ($this->error)    return;
+      for($i = 0; $i < count($this->data['filename']);$i++){
+        $cip_file=DIR_FS_CIP.'/'.$this->contrib.'/'.$this->data['srcdir'][$i].'/'.$this->data['filename'][$i];
+        if (is_file($this->fs_filename($i))) {
+          //if file is copied
+          if($this->equal_files($cip_file,$this->fs_filename($i))) continue;
+          //If file exists we should backup them. Later we could restore him.
+          //If we couldn't backup we should print an error and stop.
+          //If Total_Backup havn't been done we should do it.
+          if (ALLOW_FILES_BACKUP=='false')     $this->backup_file($this->data['filename'][$i]);
+          ci_remove($this->fs_filename($i));
         }
         //We copy file to right location:
-        //echo $cip_file."=>".file_exists($cip_file); exit;
-	        if(@ !copy($cip_file, $this->fs_filename($i))) {
-	            $this->error("Run time error: ".COULDNT_COPY_TO_TEXT.$this->fs_filename($i));
-	            return $this->error;
-	        } elseif (file_exists($this->fs_filename($i)))    chmod($this->fs_filename($i), 0777);
-        }
-        return $this->error;
+        if(@ !copy($cip_file, $this->fs_filename($i))) {
+          $this->error("Run time error: ".COULDNT_COPY_TO_TEXT.$this->fs_filename($i));
+          return $this->error;
+        } elseif (file_exists($this->fs_filename($i)))    chmod($this->fs_filename($i), 0777);
+      }
+      return $this->error;
     }
 
 
 
 
     function do_remove() {
-        if ($this->error)    return;
-        for($i = 0; $i < count($this->data['filename']);$i++){
-	        $backup_file=DIR_FS_ADMIN_BACKUP.$this->contrib.'/'.$this->data['filename'][$i];
-	        if (ALLOW_FILES_RESTORE=='false' && file_exists($backup_file))     $this->restore_file($this->data['filename'][$i]);
-        }
-        return $this->error;
+      if ($this->error)    return;
+      for($i = 0; $i < count($this->data['filename']);$i++){
+        $backup_file=DIR_FS_ADMIN_BACKUP.$this->contrib.'/'.$this->data['filename'][$i];
+        if (ALLOW_FILES_RESTORE=='false' && file_exists($backup_file))     $this->restore_file($this->data['filename'][$i]);
+      }
+      return $this->error;
     }
 
 

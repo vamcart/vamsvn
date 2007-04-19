@@ -418,7 +418,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 					for ($i = 0; $i < $total; $i++) {
 						$currentChar = $tagText{$i};
 						
-						if (($currentChar == ']') && ($tagText{($i + 1)} == ']')) {
+						if (($currentChar == ']') && ($tagText{($i + 1)} == ']')&& (($i + 2)== $total)) {
 							break;
 						}
 						else if ($openBraceCount > 1) {

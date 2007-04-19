@@ -49,7 +49,7 @@ class Tc_addmodbox extends ContribInstallerBaseTag {
 
     //===============================================================
     function permissions_check_for_install($name='') {
-    	if(!$this->isEscom()) return;
+    	if(!$this->isJoscom()) return;
         if (!$name)  $name=$this->fs_filename();
         if (!file_exists($name))     $this->error(CANT_READ_FILE.$name);
         elseif(!is_writable($name))    $this->error(WRITE_PERMISSINS_NEEDED_TEXT.$name);
@@ -61,7 +61,7 @@ class Tc_addmodbox extends ContribInstallerBaseTag {
 
     //===============================================================
     function do_install() {
-    	if(!$this->isEscom()) return;
+    	if(!$this->isJoscom()) return;
         $find=$this->linebreak_fixing(trim('<param name="esc_module" type="list" default="categories" label="ESC Module" description="Select which module to load.">'));
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $position=strpos($old_file, $find) + strlen($find); //pos from begining of file
@@ -72,7 +72,7 @@ class Tc_addmodbox extends ContribInstallerBaseTag {
     }
 
     function do_remove() {
-    	if(!$this->isEscom()) return;
+    	if(!$this->isJoscom()) return;
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $new_file=str_replace($this->add_str(), '', $old_file);
         $this->write_to_file($this->fs_filename(), $new_file);

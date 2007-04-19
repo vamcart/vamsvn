@@ -40,7 +40,8 @@ class Tc_del_file extends ContribInstallerBaseTag {
         if (is_file($this->fs_filename())) {
             if (ALLOW_FILES_BACKUP=='false')     $this->backup_file();
             //save_md5 ($this->fs_filename(), $this->contrib);
-            if(!(@unlink($this->fs_filename())))     $this->error(COULDNT_REMOVE_FILE_TEXT.$this->fs_filename());
+            ci_remove($this->fs_filename());
+
         }
         return $this->error;
     }

@@ -22,12 +22,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                             if (file_was_changed(DIR_FS_CATALOG . $t_array[$loop_index]['FILE'][0]['@']['NAME'])) {
                                 return LINK_EXISTS_TEXT."<br>".FILE_EXISTS_AND_WAS_CHANGED_TEXT." (addfile): ".
                                             DIR_FS_CATALOG.$t_array[$loop_index]['FILE'][0]['@']['NAME']."<br>";
-                            } else {
-                                if(!(@ unlink(DIR_FS_CATALOG.$t_array[$loop_index]['FILE'][0]['@']['NAME']))) {
-                                    error(COULDNT_REMOVE_FILE_TEXT.DIR_FS_CATALOG.$t_array[$loop_index]['FILE'][0]['@']['NAME']."<br>");
-                                }
-                            }
-                            Выдать список всех изменятелей этого файла.
+                            } else  ci_remove(DIR_FS_CATALOG.$t_array[$loop_index]['FILE'][0]['@']['NAME']);
+                            Return all modifiers of that file.
 */
 
 

@@ -39,15 +39,15 @@ class Tc_requirements extends ContribInstallerBaseTag {
     //===============================================================
     function permissions_check_for_install() {
 		foreach ($this->req as $id => $require) {
-			if (strtolower($require) == 'es_commerce') {
-				if(!$this->isEscom()){
-					$this->error('This CIP is only for ES-Commerce environment!');
+			if (strtolower($require) == 'jos_commerce') {
+				if(!$this->isJoscom()){
+					$this->error('This CIP is only for Jos-Commerce environment!');
 	       			return $this->error;
 				}
 				continue;
 			}
 			if (strtolower($require) == 'os_commerce') {
-				if($this->isEscom()){
+				if($this->isJoscom()){
 					$this->error('This CIP is only for OSCommerce environment!');
 	       			return $this->error;
 				}
@@ -94,7 +94,11 @@ class Tc_requirements extends ContribInstallerBaseTag {
 	<reguire [version="1.2"]>ADMIN_BOXES</require>
 	.
 	.
+<<<<<<< ci_tag_requirements.class.php
 	<reguire>es_commerce</require>
+=======
+	<require>jos_commerce</require>
+>>>>>>> 1.5
 </requirements>
 ====================================================================
 */
