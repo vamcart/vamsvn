@@ -28,7 +28,7 @@ function xtc_address_summary($customers_id, $address_id) {
     $suburb = $address['entry_suburb'];
     $postcode = $address['entry_postcode'];
     $city = $address['entry_city'];
-    $state = xtc_get_zone_code($address['entry_country_id'], $address['entry_zone_id'], $address['entry_state']);
+    $state = xtc_get_zone_name($address['entry_country_id'], $address['entry_zone_id'], $address['entry_state']);
     $country = $address['countries_name'];
 
     $address_format_query = xtc_db_query("select address_summary from " . TABLE_ADDRESS_FORMAT . " where address_format_id = '" . $address['address_format_id'] . "'");
