@@ -127,7 +127,7 @@ class Tc_config extends ContribInstallerBaseTag {
 	function do_remove() {
 		if ($_REQUEST['remove_data'] == '1' && $this->data['lang'] == 'russian') {
 			if($this->cip->is_ci())return $this->error;
-			tep_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
+			xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
 		}
 		if(file_exists($this->fs_filename())) $this->remove_file_part($this->data['filename'],$this->add_str());
 	}

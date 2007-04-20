@@ -211,7 +211,7 @@ class Tc_findreplace extends ContribInstallerBaseTag {
                                     [0] => Array
                                         (
                                             [@] =>
-                                            [#] => 'link'  => tep_href_link(FILENAME_BACKUP, 'selected_box=tools'));
+                                            [#] => 'link'  => xtc_href_link(FILENAME_BACKUP, 'selected_box=tools'));
 
                                         )
 
@@ -227,7 +227,7 @@ class Tc_findreplace extends ContribInstallerBaseTag {
                                                 )
 
                                             [#] =>
-'link'  => tep_href_link(FILENAME_CONTRIB_INSTALLER, 'selected_box=tools'));
+'link'  => xtc_href_link(FILENAME_CONTRIB_INSTALLER, 'selected_box=tools'));
 
                                         )
 
