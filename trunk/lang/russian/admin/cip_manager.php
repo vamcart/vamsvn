@@ -96,4 +96,24 @@ define('NO_CONTRIB_TYPE_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра contrib_t
 define('NO_STATUS_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра status в тэге details');
 define('NO_LAST_UPDATE_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра last_update в тэге details');
 
+define('TEXT_INFO_SUPPORT', 'Поддержка');
+define('TEXT_INFO_CONTRIB', 'Информация о модуле');
+define('CONTRIBS_PAGE_ALT','Официальная страница модуля');
+define('CONTRIBS_PAGE','Официальная страница модуля');
+
+define('CONTRIBS_FORUM_ALT','Форум поддержки данного модуля на официальном сайте магазина');
+define('CONTRIBS_FORUM','Форум поддержки данного модуля на официальном сайте магазина');
+
+define('CIP_STATUS_REMOVED_ALT', 'Модуль не был установлен');
+define('CIP_STATUS_INSTALLED_ALT', 'Модуль установлен');
+
+define('CIP_USES', 'CIP использует');
+define('TEXT_DOESNT_EXISTS', ' не существует');
+
+define('MSG_WAS_INSTALLED','Модуль установлен!');
+define('MSG_WAS_APPLIED',' был также установлен!');
+define('MSG_WAS_REMOVED','Модуль удалён!');
+
+define('TEXT_POST_INSTALL_NOTES','POST INSTALL NOTES');
+
 ?>
