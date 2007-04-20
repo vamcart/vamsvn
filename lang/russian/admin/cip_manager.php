@@ -31,6 +31,7 @@ define('TEXT_FILE_CONTENTS', 'Содержимое:');
 define('TEXT_LAST_MODIFIED', 'Последние изменения:');
 define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данный файл?');
 define('TEXT_UPLOAD_INTRO', 'Выберите файл для загрузки.');
+define('TEXT_UPLOAD_LIMITS','Вы можете загружать только <b>ZIP архивы</b>, не более <b>'.round(MAX_UPLOADED_FILESIZE/1024).'Kb</b> и только <b>архивы с модулями</b>!');
 
 define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данную директорию. Установите правильные права доступа на: %s');
 define('ERROR_FILE_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данный файл. Установите правильные права доступа на: %s');
