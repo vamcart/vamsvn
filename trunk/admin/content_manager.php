@@ -60,6 +60,7 @@
         
         $content_title=xtc_db_prepare_input($_POST['cont_title']);
         $content_header=xtc_db_prepare_input($_POST['cont_heading']);
+        $content_url=xtc_db_prepare_input($_POST['cont_url']);
         $content_text=xtc_db_prepare_input($_POST['cont']);
         $coID=xtc_db_prepare_input($_POST['coID']);
         $upload_file=xtc_db_prepare_input($_POST['file_upload']);
@@ -112,6 +113,7 @@
                                 'languages_id' => $content_language,
                                 'content_title' => $content_title,
                                 'content_heading' => $content_header,
+                                'content_url' => $content_url,
                                 'content_text' => $content_text,
                                 'content_file' => $content_file_name,
                                 'content_status' => $content_status,
@@ -302,6 +304,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                                         languages_id,
                                         content_title,
                                         content_heading,
+                                        content_url,
                                         content_text,
                                         sort_order,
                                         file_flag,
@@ -323,6 +326,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                         'LANGUAGES_ID' => $content_data['languages_id'],
                         'CONTENT_TITLE' => $content_data['content_title'],
                         'CONTENT_HEADING' => $content_data['content_heading'],
+                        'CONTENT_URL' => $content_data['content_url'],
                         'CONTENT_TEXT' => $content_data['content_text'],
                         'SORT_ORDER' => $content_data['sort_order'],
                         'FILE_FLAG' => $content_data['file_flag'],
@@ -394,6 +398,7 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
                                         languages_id,
                                         content_title,
                                         content_heading,
+                                        content_url,
                                         content_text,
                                         file_flag,
                                         content_file,
@@ -413,6 +418,7 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
                         'LANGUAGES_ID' => $content_1_data['languages_id'],
                         'CONTENT_TITLE' => $content_1_data['content_title'],
                         'CONTENT_HEADING' => $content_1_data['content_heading'],
+                        'CONTENT_URL' => $content_1_data['content_url'],
                         'CONTENT_TEXT' => $content_1_data['content_text'],
                         'SORT_ORDER' => $content_1_data['sort_order'],
                         'FILE_FLAG' => $content_1_data['file_flag'],
@@ -477,6 +483,7 @@ switch ($_GET['action']) {
                                         languages_id,
                                         content_title,
                                         content_heading,
+                                        content_url,
                                         content_text,
                                         sort_order,
                                         file_flag,
@@ -681,7 +688,10 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
       </td>
    </tr>
   
- 
+     <tr> 
+      <td width="10%"><?php echo TEXT_URL; ?></td>
+      <td width="90%"><?php echo xtc_draw_input_field('cont_url',$content['content_url'],'size="60"'); ?></td>
+   </tr>
  
     <tr>
         <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>

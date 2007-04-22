@@ -45,6 +45,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_i
 	 					categories_id,
 	 					parent_id,
 	 					content_title,
+	 					content_url,
 	 					content_group
 	 					FROM ".TABLE_CONTENT_MANAGER."
 	 					WHERE languages_id='".(int) $_SESSION['languages_id']."'
@@ -57,7 +58,13 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_i
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&content='.xtc_cleanName($content_data['content_title']);
 
-		$content_string .= '<li><a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">'.$content_data['content_title'].'</a></li>' . "\n";
+if ($content_data['content_url'] != '') {
+	$link = '<li><a href="'.$content_data['content_url'].'" target="_blank">';
+} else {
+	$link = '<li><a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+}
+
+		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";
 	}
 	if ($content_string != '')
 		$box_smarty->assign('BOX_CONTENT', $content_string);

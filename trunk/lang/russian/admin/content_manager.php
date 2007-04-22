@@ -46,10 +46,11 @@
  define('TEXT_LANGUAGE','Язык:');
  define('TEXT_STATUS','Показывать:');
  define('TEXT_STATUS_DESCRIPTION','Если отмечено, то ссылка на данную страницу отображается в информационном боксе');
- define('TEXT_TITLE','Название (ссылка):');
+ define('TEXT_TITLE','Название:');
  define('TEXT_TITLE_FILE','Название/Имя файла:');
  define('TEXT_SELECT','-Выберите-');
- define('TEXT_HEADING','Заголовок (документ):');
+ define('TEXT_HEADING','Заголовок:');
+ define('TEXT_URL','URL ссылка (начиная с http://):');
  define('TEXT_CONTENT','Текст:');
  define('TEXT_UPLOAD_FILE','Загрузить файл:');
  define('TEXT_UPLOAD_FILE_LOCAL','(с локальной системы)');
