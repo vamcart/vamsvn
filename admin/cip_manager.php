@@ -23,6 +23,7 @@ if(defined('JOSCOM_VERSION')){
     require('includes/configure_ci.php');
 }
 
+$current_path=DIR_FS_CIP;
 
 if(!defined('TABLE_CIP')) {
     define('TABLE_CIP', (defined('DB_PREFIX') ? DB_PREFIX : '').'cip');
