@@ -1096,6 +1096,7 @@ CREATE TABLE content_manager (
   content_title text NOT NULL,
   content_heading text NOT NULL,
   content_text text NOT NULL,
+  content_url text NOT NULL,
   sort_order int(4) NOT NULL default '0',
   file_flag int(1) NOT NULL default '0',
   content_file varchar(255) NOT NULL default '',
