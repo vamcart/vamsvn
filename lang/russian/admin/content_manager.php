@@ -30,7 +30,7 @@
  define('TABLE_HEADING_CONTENT_NAME','Название/Название файла');
  define('TABLE_HEADING_CONTENT_LINK','Ссылка');
  define('TABLE_HEADING_CONTENT_HITS','Просмотрен');
- define('TABLE_HEADING_CONTENT_GROUP','Группа');
+ define('TABLE_HEADING_CONTENT_GROUP','Код');
  define('TABLE_HEADING_CONTENT_SORT','Порядок сортировки');
  define('TEXT_YES','Да');
  define('TEXT_NO','Нет');
