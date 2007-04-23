@@ -76,6 +76,11 @@ $smarty->assign('HISTORY_BLOCK', $history_block);
 if (DOWNLOAD_ENABLED == 'true') include (DIR_WS_MODULES.'downloads.php');
 
 // Stuff
+
+if ($order->info['payment_method'] == 'schet') {
+$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.(int) $_GET['order_id']).'\', \'popup\', \'toolbar=0, width=800, height=650\')" />');
+}
+
 $smarty->assign('ORDER_NUMBER', (int)$_GET['order_id']);
 $smarty->assign('ORDER_DATE', xtc_date_long($order->info['date_purchased']));
 $smarty->assign('ORDER_STATUS', $order->info['orders_status']);
