@@ -111,5 +111,6 @@ define('FILENAME_ARTICLES', 'articles.php');
 define('FILENAME_ARTICLES_NEW', 'articles_new.php');
 
 define('FILENAME_PRINT_SCHET', 'schet.php');
+define('FILENAME_PRINT_KVITANCIA', 'kvitancia.php');
 
 ?>
