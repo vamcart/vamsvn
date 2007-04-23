@@ -534,4 +534,6 @@ define('BOX_HEADING_AUTHORS', 'Авторы статей');
 define('NAVBAR_TITLE_DEFAULT', 'Статьи');
 define('ARTICLES_BY','Статьи автора ');
 
+define('MODULE_PAYMENT_SCHET_PRINT','Распечатать счёт для оплаты');
+
 ?>

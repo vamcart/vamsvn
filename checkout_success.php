@@ -70,6 +70,14 @@ if ($gv_result = xtc_db_fetch_array($gv_query)) {
 	}
 }
 // GV Code End
+
+	include (DIR_WS_CLASSES.'order.php');
+	$order = new order($orders['orders_id']);
+
+if ($order->info['payment_method'] == 'schet') {
+$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, width=800, height=650\')" />');
+}
+
 // Google Conversion tracking
 if (GOOGLE_CONVERSION == 'true') {
 
