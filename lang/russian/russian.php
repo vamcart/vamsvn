@@ -535,5 +535,6 @@ define('NAVBAR_TITLE_DEFAULT', 'Статьи');
 define('ARTICLES_BY','Статьи автора ');
 
 define('MODULE_PAYMENT_SCHET_PRINT','Распечатать счёт для оплаты');
+define('MODULE_PAYMENT_KVITANCIA_PRINT','Распечатать квитанцию для оплаты');
 
 ?>
