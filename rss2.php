@@ -101,7 +101,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 //      $lang_code = DEFAULT_LANGUAGE;
 
 //   $rss->rss_feed_set('language', $lang_code);
-   $rss->rss_feed_set('language', DEFAULT_LANGUAGE);
+   $rss->rss_feed_set('language', $_SESSION['language_code']);
 
 	$random = false;
 	$limit = "";
