@@ -107,7 +107,7 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 			$connector = '&';
 		}
 		$products_popup_link = xtc_href_link(FILENAME_POPUP_IMAGE, 'pID='.$product->data['products_id'].$connector.'imgID=0');
-if (!file_exists(DIR_WS_POPUP_IMAGES.$product->data['products_image'])) $products_popup_link = '';
+if (!is_file(DIR_WS_POPUP_IMAGES.$product->data['products_image'])) $products_popup_link = '';
 $info_smarty->assign('PRODUCTS_POPUP_LINK', $products_popup_link);
 
 		$mo_images = xtc_get_products_mo_images($product->data['products_id']);
