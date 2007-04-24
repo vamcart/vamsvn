@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: cash.php 1102 2007/02/07 13:24:46 VaM $
+   $Id: cash.php 1102 2007/04/24 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,11 +17,11 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_PAYMENT_CASH_TEXT_DESCRIPTION', 'Оплата наличными');
-define('MODULE_PAYMENT_CASH_TEXT_TITLE', 'Оплата наличными');
+define('MODULE_PAYMENT_CASH_TEXT_DESCRIPTION', 'Оплата наличными (самовывоз)');
+define('MODULE_PAYMENT_CASH_TEXT_TITLE', 'Оплата наличными (самовывоз)');
 define('MODULE_PAYMENT_CASH_TEXT_INFO', '');
 define('MODULE_PAYMENT_CASH_STATUS_TITLE', 'Разрешить модуль Оплата наличными');
-define('MODULE_PAYMENT_CASH_STATUS_DESC', 'Вы хотите разрешить использование модуля при оформлении заказов?');
+define('MODULE_PAYMENT_CASH_STATUS_DESC', 'Вы хотите разрешить использование модуля при оформлении заказов?<br />Модуль будет доступен при оформлении заказа только если на странице выбора доставки был выбран модуль доставки самовывоз.');
 define('MODULE_PAYMENT_CASH_ORDER_STATUS_ID_TITLE', 'Статус заказа');
 define('MODULE_PAYMENT_CASH_ORDER_STATUS_ID_DESC', 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
 define('MODULE_PAYMENT_CASH_SORT_ORDER_TITLE', 'Порядок сортировки');
