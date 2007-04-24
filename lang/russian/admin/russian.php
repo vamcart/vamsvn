@@ -27,7 +27,14 @@
 // on FreeBSD 4.0 I use 'en_US.ISO_8859-1'
 // this may not work under win32 environments..
 
-setlocale(LC_TIME, 'ru_RU.CP1251', 'Russian');
+function vam_date_long_translate($date_string) {
+$eng = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+$loc = array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря");
+
+return str_replace($eng, $loc, $date_string);
+}
+
+@setlocale(LC_TIME, 'en_US');
 define('DATE_FORMAT_SHORT', '%d/%m/%Y');  // this is used for strftime()
 define('DATE_FORMAT_LONG', '%A %d %B, %Y'); // this is used for strftime()
 define('DATE_FORMAT', 'd/m/Y'); // this is used for date()
