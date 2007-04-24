@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: cod.php 998 2007/02/07 13:24:46 VaM $
+   $Id: cod.php 998 2007/04/24 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -18,8 +18,8 @@
    ---------------------------------------------------------------------------------------*/
 
 define('MODULE_PAYMENT_TYPE_PERMISSION', 'cod');
-define('MODULE_PAYMENT_COD_TEXT_TITLE', 'Оплата наличными при получении ');
-define('MODULE_PAYMENT_COD_TEXT_DESCRIPTION', 'Оплата наличными при получении ');
+define('MODULE_PAYMENT_COD_TEXT_TITLE', 'Оплата курьеру при получении ');
+define('MODULE_PAYMENT_COD_TEXT_DESCRIPTION', 'Оплата курьеру при получении ');
 define('MODULE_PAYMENT_COD_TEXT_INFO','');
 define('MODULE_PAYMENT_COD_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_COD_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
