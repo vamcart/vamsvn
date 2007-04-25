@@ -56,9 +56,9 @@ $smarty->assign('BUTTON_BACK', '<a href="'.xtc_href_link(FILENAME_PRODUCT_REVIEW
 $smarty->assign('BUTTON_BUY_NOW', '<a href="'.xtc_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.xtc_image_button('button_in_cart.gif', IMAGE_BUTTON_IN_CART) . '</a>');
 
 $products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
-if (!file_exists($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
+if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 $image = xtc_image($products_image, $reviews['products_name'], '', '', 'hspace="5" vspace="5"');
-if (file_exists(DIR_WS_POPUP_IMAGES.$reviews['products_image'])) {
+if (is_file(DIR_WS_POPUP_IMAGES.$reviews['products_image'])) {
     $image = '<a href="'.xtc_href_link(FILENAME_POPUP_IMAGE, 'pID='.$reviews['products_id']).'" onclick="window.open(\'' . xtc_href_link(FILENAME_POPUP_IMAGE, 'pID='.$reviews['products_id']) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;" target="_blank">'.$image.'</a>';
 }
 $smarty->assign('IMAGE', $image);
