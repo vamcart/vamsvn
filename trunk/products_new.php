@@ -110,7 +110,7 @@ if ($products_new_split->number_of_rows > 0) {
 		} else {
 			$products_image = '';
 		}
-		if (!file_exists($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
+		if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 			$tax_rate = $xtPrice->TAX[$products_new['products_tax_class_id']];
 			// price incl tax
