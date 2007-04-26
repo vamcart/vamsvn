@@ -125,7 +125,7 @@ define('TEXT_DATABASE_SERVER','Сервер базы данных');
 define('TEXT_DATABASE_SERVER_LONG','Адрес либо IP-адрес сервера базы данных. Обычно сервер базы данных находится по адресу localhost, если Вы не знаете адрес сервера базы данных, свяжитесь со своим хостинг-провайдером.');
 define('TEXT_USERNAME','Имя пользователя');
 define('TEXT_USERNAME_LONG','Имя пользователя, используемое для подключения к базе данных.<br />Если Вы не знаете имя пользователя для доступа к базе данных, свяжитесь со своим хостинг-провайдером.');
-define('TEXT_PASSWORD','Пароль');
+define('TEXT_PASSWORD','Пароль:');
 define('TEXT_PASSWORD_LONG','Пароль, используемый для подключения к базе данных. <br />Если Вы не знаете пароль для доступа к базе данных, свяжитесь со своим хостинг-провайдером.');
 define('TEXT_DATABASE','База данных');
 define('TEXT_DATABASE_LONG','Название базы данных, которая будет использоваться для установки интернет-магазина.<br />Если Вы не знаете название базы данных, свяжитесь со своим хостинг-провайдером.');
@@ -159,7 +159,7 @@ define('TEXT_TITLE_SUCCESS','База данных успешно импортирована!');
 
 define('TITLE_WEBSERVER_CONFIGURATION','Настройка конфигурационных файлов:');
 define('TITLE_STEP4_ERROR','Произошла следующая ошибка:');
-define('TEXT_STEP4_ERROR','<b>Файлы настроек либо отсутствуют, либо установлены неверные права доступа.</b><br /><br />Установите права доступа 706 на следующий файл: ');
+define('TEXT_STEP4_ERROR','<b>Файлы настроек либо отсутствуют, либо установлены неверные права доступа.</b><br /><br />Установите права доступа 777 на следующие файлы:<b><br /><br />/includes/configure.php<br />/includes/configure.org.php<br />/admin/includes/configure.php<br />/admin/includes/configure.org.php<br /></b>');
 define('TEXT_STEP4_ERROR_1','Если <i>chmod 706</i> не выставляется, попробуйте <i>chmod 777</i>.');
 define('TEXT_STEP4_ERROR_2','В операционной системе Windows вы просто должны убедиться, что данные файлы не имеют атрибут Только для чтения.');
 define('TEXT_VALUES','Будут обновлены следующие конфигурационные файлы:');
@@ -201,7 +201,7 @@ define('TEXT_PASSWORD_CONF','Подтверждение пароля:');
 define('TITLE_SHOP_CONFIG','Настройки магазина');
 define('TEXT_STORE','Название магазина:');
 define('TEXT_STORE_LONG','(Название Вашего магазина)');
-define('TEXT_EMAIL_FROM','Email от');
+define('TEXT_EMAIL_FROM','Email от:');
 define('TEXT_EMAIL_FROM_LONG','(Email адрес, от которого будут отправлять все письма из магазина)');
 define('TITLE_ZONE_CONFIG','Зоны');
 define('TEXT_ZONE','Установить зоны Евросоюза?');
@@ -210,7 +210,7 @@ define('TITLE_SHOP_CONFIG_NOTE','* Замечание: Основные настройки магазина');
 define('TITLE_ADMIN_CONFIG_NOTE','* Замечание: Настройки админа');
 define('TEXT_ZONE_NO','Нет');
 define('TEXT_ZONE_YES','Да');
-define('TEXT_COMPANY','Название компании');
+define('TEXT_COMPANY','Название компании:');
 
 
 
@@ -283,5 +283,14 @@ define('TEXT_OK','Всё нормально');
 //install_finished
 
 define('TEXT_CATALOG','Каталог');
+
+define('START','Установка');
+define('STEP1','Шаг 1');
+define('STEP2','Шаг 2');
+define('STEP3','Шаг 3');
+define('STEP4','Шаг 4');
+define('STEP5','Шаг 5');
+define('STEP6','Шаг 6');
+define('END','Установлен');
 
 ?>

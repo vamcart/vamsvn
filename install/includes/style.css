@@ -1,0 +1,565 @@
+/* -----------------------------------------------------------------------------------------
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+
+   Copyright (c) 2006 VaM Shop 
+   -----------------------------------------------------------------------------------------
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
+
+/*<![CDATA[*/
+
+html,body
+   {
+     margin: 0;
+     padding: 0;
+   }
+
+body
+   {
+     font: 76% arial,sans-serif;
+   }
+
+img
+   {
+	  border: 0;
+   }
+
+h2, h3
+   {
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+   
+/* Цвет обычных ссылок в магазине */
+a 
+   {
+     color: #67748B;
+     text-decoration: underline;
+   }
+
+a:hover 
+   {
+     color: #990000;
+     text-decoration: none;
+   }
+/* /Цвет обычных ссылок в магазине */
+
+/* Центр */
+div#wrapper
+   {
+     float: left;
+     width: 100%;
+   }
+
+div#content
+   {
+     margin: 0 19%; /* отступ центра от боковых колонок */
+   }
+
+/* /Центр */
+
+/* Левая колонка */
+div#left
+   {
+     float: left;
+     width: 18%; /* Ширина левой колонки */
+     margin-left: -100%;
+     background: #fff;
+   }
+/* /Левая колонка */
+
+/* Правая колонка */
+div#right
+   {
+     float: left;
+     width: 18%; /* Ширина правой колонки */
+     margin-left: -18%;
+     background: #fff;
+   }
+/* /Правая колонка */
+
+/* Низ */
+div#footer
+   {
+     clear: left;
+     width: 100%;
+     background: #f1f1f6;
+     border-top: 3px solid #67748B;
+     text-align: center;
+     color: #000;
+   }
+   
+div#footer p
+   {
+     margin: 0;
+     padding: 5px 10px;
+   }
+   
+/* /Низ */
+
+/* Навигация */
+div#navigation 
+   {
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+     padding-left: 10px;
+     border-bottom: 1px solid #000;
+     background: #990000;
+     color: #ffffff;
+   }
+
+#navigation span 
+   {
+     display: block;
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     border-bottom: 2px #990000 solid;
+     background: url(../images/navigation.gif) no-repeat left center;
+     padding: 0 0 0 20px; 
+   }
+   
+#navigation a
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+
+#navigation a:hover
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+
+#navigation a:visited
+   {
+     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #ffffff;
+     text-decoration: none;
+   }
+   
+/* /Навигация */
+   
+/* Заголовок страницы */
+#content h1 
+   {
+     display: block;
+     font: 16px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #990000;
+     border-bottom: 2px #990000 solid;
+     background: url(../images/heading.gif) no-repeat left center;
+     padding: 0 0 0 20px; 
+     margin: 0.2em 0 0.2em 0; 
+   }
+
+#content h1 a 
+   {
+     color: #990000;
+     text-decoration: none;
+   }
+/* /Заголовок страницы */
+
+/* Скругленные углы */
+.page 
+   {
+     background: transparent;
+     width: 100%;
+     margin-top: 0.5em;
+   }
+
+.pageItem 
+   {
+     background: #f1f1f6;
+     width: 100%;
+   }
+
+.page h1, .page p 
+   {
+     margin: 0 10px;
+   }
+
+.page h1 
+   {
+     font-size: 2em;
+     color: #fff;
+   }
+
+.page p 
+   {
+     padding-bottom: 0.5em;
+     padding-top: 0.5em;
+   }
+
+.page .b1, .page .b2, .page .b3, .page .b4, .page .b1b, .page .b2b, .page .b3b, .page .b4b 
+   {
+     display: block;
+     overflow: hidden;
+     font-size: 1px;
+   }
+
+.page .b1, .page .b2, .page .b3, .page .b1b, .page .b2b, .page .b3b 
+   {
+     height: 1px;
+   }
+
+.page .b2 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #fff;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b3 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #fff;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b4 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #fff;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b4b 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b3b 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b2b 
+   {
+     background: #f1f1f6;
+     border-left: 1px solid #f1f1f6;
+     border-right: 1px solid #f1f1f6;
+   }
+
+.page .b1 
+   {
+     margin: 0 5px;
+     background: #fff;
+   }
+
+.page .b2, .page .b2b 
+   {
+     margin: 0 3px;
+     border-width: 0 2px;
+   }
+
+.page .b3, .page .b3b 
+   {
+     margin: 0 2px;
+   }
+
+.page .b4, .page .b4b 
+   {
+     height: 2px;
+     margin: 0 1px;
+   }
+
+.page .b1b 
+   {
+     margin: 0 5px;
+     background: #f1f1f6;
+   }
+
+.pagecontent 
+   {
+     display: block;
+     padding-left: 0.5em;
+     padding-right: 0.5em;
+     background: #f1f1f6;
+   }
+
+.pagecontentfooter 
+   {
+     display: block;
+     text-align: right;
+     background:#ffffff;
+     margin-top: 0.5em;
+   }
+/* /Скругленные углы */
+
+/*- Меню-закладки сверху */
+
+#menu 
+   {
+	  background: #fff;
+	  border-bottom: 1px solid #000;
+	  border-width: 1px;
+	  margin-top: 1em;
+	  padding-top: .6em;
+   }
+
+#menu ul, #navigation ul li 
+   {
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+   }
+
+#menu ul 
+   {
+	  padding: 5px 0 0px;
+	  text-align: center;
+   }
+
+#menu ul li 
+   {
+	  display: inline;
+	  margin:0 .375em;
+   }
+
+#menu ul li.last 
+   {
+	  margin-right: 0;
+   }
+
+#menu ul li a 
+   {
+	  background: url("../images/tabs/tab-right.gif") no-repeat 100% 0;
+	  background-color: #67748b;
+	  color: #fff;
+	  padding: 0px 0 0px;
+     font-weight: bold;
+	  text-decoration: none;
+   }
+
+#menu ul li.current a 
+   {
+	  background: url("../images/tabs/tab-right-active.gif") no-repeat 100% 0;
+	  background-color: #990000;
+	  color: #fff;
+	  padding: 0px 0 1px;
+     font-weight: bold;
+	  text-decoration: none;
+   }
+
+#menu ul li a span 
+   {
+	  background: url("../images/tabs/tab-left.gif") no-repeat;
+	  padding: 0px 1em;
+     border-bottom:1px solid #000;
+   }
+
+#menu ul li.current a span 
+   {
+	  background: url("../images/tabs/tab-left-active.gif") no-repeat;
+	  padding: 0px 1em 1px;
+     border-bottom:0;
+   }
+
+#menu ul li a:hover span 
+   {
+	  color: #fff;
+     font-weight: bold;
+	  text-decoration: none;
+   }
+
+/*\*//*/
+#menu ul li a 
+   {
+	  display: inline-block;
+	  white-space: nowrap;
+	  width: 1px;
+   }
+
+#menu ul 
+   {
+	  padding-bottom: 0;
+	  margin-bottom: -1px;
+   }
+/**/
+
+/*\*/
+* html #menu ul li a 
+   {
+	  padding: 0;
+   }
+/**/
+
+/*- /Меню-закладки сверху */
+
+/*- Время парсинга */
+div#parseTime
+   {
+     clear: left;
+     background: #f1f1f6;
+     width: 100%;
+     text-align: center;
+     color: #000;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Время парсинга */
+
+/*- Информация о магазине */
+div#copyright
+   {
+     clear: left;
+     background: #f1f1f6;
+     width: 100%;
+     text-align: center;
+     color: #000;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Информация о магазине */
+
+/*- Формы */
+
+form 
+   {
+	  width: 100%;
+	  margin: 0;
+   }
+
+.form input, textarea 
+   {
+	  font-size: 1em;
+	  border: 1px solid;
+	  border-color: #666 #ccc #ccc #666;
+	  padding: 2px;
+   }
+
+/*- Подсветка ошибок формы */
+#errormsg
+   {
+     border: 2px solid #c00;
+     padding: 5px;
+     width: 96%;
+   }    
+
+.error
+   {
+	  background: #fcc;
+   }
+/*- /Подсветка ошибок формы */
+   
+.form textarea:focus, input:focus, .sffocus, .sffocus 
+   {
+	  background-color: #ffc;
+   }
+
+span.Requirement 
+   {
+     color: red;
+   }
+
+/*- /Формы */
+
+/* Ошибка на странице свяжитесь с нами */
+
+div.contacterror 
+   {
+     border: 1px solid; 
+     border-color: #ff0000; 
+     background-color: #FFCCCC; 
+     text-align: center; 
+     margin-bottom: 0.5em; 
+     margin-top: 0.5em;
+   }
+
+/* /Ошибка на странице свяжитесь с нами */
+
+.errorBox 
+   {
+	  background-color: #ffb3b5;
+   }
+
+.messageStackError, .messageStackWarning 
+   { 
+     background-color: #ffb3b5; 
+   }
+
+.messageStackSuccess 
+   { 
+     background-color: #99ff00; 
+   }
+   
+/*  
+ *  Buttons 
+ */
+
+.button {
+	width: auto;
+   border: 1px solid Black; 
+   background-color: #F1F1F1; 
+   padding: 1px 0 2px 0;
+   text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	line-height: 24px;
+}
+
+/* IE Fix */
+* html .button { padding: 1px 0 1px 0; line-height: 14px; }
+* html button.button { padding: 1px 0 0 0; margin: -2px 1px; line-height: 14px; }
+
+a.button:link     { border: 1px solid Black; line-height: 24px; margin: 7px; padding: 3px 4px 3px 4px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
+a.button:visited  { border: 1px solid Black; line-height: 24px; margin: 7px; padding: 3px 4px 3px 4px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
+a.button:active   { border: 1px solid Black; line-height: 24px; margin: 7px; padding: 3px 4px 3px 4px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
+a.button:hover    { border: 1px solid Black; line-height: 24px; margin: 7px; padding: 3px 4px 3px 4px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
+
+span.button { border: 1px solid Black; line-height: 18px; padding: 3px 5px 3px 5px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
+
+/* Buttons EOF */
+
+span.errorText 
+   {
+     font-family: Verdana, Arial, sans-serif;
+     color: #000000;
+     font-weight: bold;
+   }
+
+div.error 
+   {
+     border: 1px solid; 
+     border-color: #ff0000; 
+     background-color: #FFCCCC; 
+     text-align: left; 
+     margin-bottom: 0.5em; 
+     margin-top: 0.5em;
+     padding-left: 1em;
+   }
+
+div.ok 
+   {
+     border: 1px solid; 
+     border-color: green; 
+     background-color: #99ff00; 
+     text-align: left; 
+     margin-bottom: 0.5em; 
+     margin-top: 0.5em;
+     padding-left: 1em;
+   }
+
+div.formerror 
+   {
+     border: 1px solid; 
+     border-color: #ff0000; 
+     background-color: #FFCCCC; 
+     text-align: left; 
+     margin-bottom: 0.5em; 
+     margin-top: 0.5em;
+   }
+
+   
+/*]]>*/

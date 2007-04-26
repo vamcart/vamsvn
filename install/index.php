@@ -25,9 +25,7 @@
   
   include('language/russian.php');
 
-  // Include Developer - standard settings for installer
-  //  require('developer_settings.php');  
-  
+
  define('HTTP_SERVER','');
  define('HTTPS_SERVER','');
  define('DIR_WS_CATALOG','');
@@ -58,60 +56,63 @@
 
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>" />
 <title><?php echo TITLE_INDEX; ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<style type="text/css">
-<!--
-.messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
--->
-</style>
+<link rel="stylesheet" type="text/css" href="includes/style.css" />
 </head>
-
 <body>
-<table width="800" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="1" colspan="2"><img src="images/logo.gif"></td>
-        </tr>
-      </table>
 
-    </td>
-  </tr>
-  <tr>
-    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
-      <table width="180" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
-        </tr>
-        <tr>
-          <td bgcolor="F3F3F3" ><br />
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="10">&nbsp;</td>
-                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_LANGUAGE; ?></font></td>
-              </tr>
-            </table>
-            <br /></td>
-        </tr>
-      </table>
-    </td>
-    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;">
-      <br />
-      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-          <td>
-            <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_WELCOME_INDEX; ?></font><br />
-            <br /><br />
-          </td>
-        </tr>  
-        <tr>
+
+<!-- Контейнер -->
+<div id="container">
+
+<!-- Шапка -->
+<div id="header">
+<img src="images/logo.gif" alt="VaM Shop" />
+</div>
+<!-- /Шапка -->
+
+<div id="menu">
+<ul>
+<li class="current"><a href="index.php"><span><?php echo START; ?></span></a></li>
+<li><a href=""><span><?php echo STEP1; ?></span></a></li>
+<li><a href=""><span><?php echo STEP2; ?></span></a></li>
+<li><a href=""><span><?php echo STEP3; ?></span></a></li>
+<li><a href=""><span><?php echo STEP4; ?></span></a></li>
+<li><a href=""><span><?php echo STEP5; ?></span></a></li>
+<li><a href=""><span><?php echo STEP6; ?></span></a></li>
+<li><a href=""><span><?php echo END; ?></span></a></li>
+</ul>
+</div>
+
+<!-- Навигация -->
+<div id="navigation">
+<span><?php echo TEXT_INSTALL; ?></span>
+</div>
+<!-- /Навигация -->
+
+<!-- Центр -->
+<div id="wrapper">
+<div id="content">
+
+<!-- Заголовок страницы -->
+<h1><?php echo TITLE_INDEX; ?></h1>
+<!-- /Заголовок страницы -->
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+
+<p>
+<?php echo TEXT_WELCOME_INDEX; ?>
+</p>
+
 <?php
-  // permission check to prevent DAU faults.
+
  $error_flag=false;
  $message='';
  $ok_message='';
@@ -119,107 +120,109 @@
  // config files
  if (!is_writeable(DIR_FS_CATALOG . 'includes/configure.php')) {
     $error_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.php<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.php</div>';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'includes/configure.org.php')) {
     $error_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.org.php<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.org.php</div>';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'admin/includes/configure.php')) {
     $error_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.php<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.php</div>';
  }
   if (!is_writeable(DIR_FS_CATALOG . 'admin/includes/configure.org.php')) {
     $error_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.org.php<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/configure.org.php</div>';
  }
  $status = TEXT_OK;
- if ($error_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
- $ok_message.=TEXT_FILE_PERMISSIONS . '' . $status.'<br /><hr noshade>';
+ if ($error_flag==true) { $class='error'; } else { $class = 'ok'; }
+ if ($error_flag==true) $status='<span class="errorText">' . TEXT_ERROR . '</span>';
+ $ok_message.= '<div class="' . $class . '">' . TEXT_FILE_PERMISSIONS . '' . $status.'</div>';
 
  // smarty folders
  $folder_flag==false;
    if (!is_writeable(DIR_FS_CATALOG . 'templates_c/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'templates_c/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'templates_c/</div>';
  }
     if (!is_writeable(DIR_FS_CATALOG . 'cache/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'cache/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'cache/</div>';
  }
 
       if (!is_writeable(DIR_FS_CATALOG . 'admin/images/graphs')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/images/graphs<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/images/graphs</div>';
  }
 
     if (!is_writeable(DIR_FS_CATALOG . 'admin/backups/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/backups/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/backups/</div>';
  }
 
     if (!is_writeable(DIR_FS_CATALOG . 'admin/contributions/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/contributions/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/contributions/</div>';
  }
 
     if (!is_writeable(DIR_FS_CATALOG . 'tmp/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'tmp/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'tmp/</div>';
  }
 
     if (!is_writeable(DIR_FS_CATALOG . 'export/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'export/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'export/</div>';
  }
 
  // image folders
       if (!is_writeable(DIR_FS_CATALOG . 'images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/</div>';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/categories/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/categories/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/categories/</div>';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/banner/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/banner/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/banner/</div>';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/info_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/info_images/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/info_images/</div>';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/original_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/original_images/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/original_images/</div>';
  }
      if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/popup_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/popup_images/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/popup_images/</div>';
  }
       if (!is_writeable(DIR_FS_CATALOG . 'images/product_images/thumbnail_images/')) {
     $error_flag=true;
     $folder_flag=true;
-    $message .= ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/thumbnail_images/<br />';
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/product_images/thumbnail_images/</div>';
  }
  
  $status = TEXT_OK;
- if ($folder_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
- $ok_message.=TEXT_FOLDER_PERMISSIONS . '' . $status.'<br /><hr noshade>';
+ if ($folder_flag==true) { $class='error'; } else { $class = 'ok'; }
+ if ($error_flag==true & $folder_flag==true) $status='<span class="errorText">' . TEXT_ERROR . '</span>';
+ $ok_message.= '<div class="' . $class . '">' . TEXT_FOLDER_PERMISSIONS . '' . $status.'</div>';
 
  // check PHP-Version
 
@@ -231,95 +234,105 @@
  }
 
  $status = TEXT_OK;
- if ($php_flag==true) $status='<b><font color="ff0000">' . TEXT_ERROR . '</font></b>';
- $ok_message.= TEXT_PHP_VERSION . '' . $status.'<br /><hr noshade>';
+ if ($php_flag==true) { $class='error'; } else { $class = 'ok'; }
+ if ($php_flag==true) $status='<span class="errorText">' . TEXT_ERROR . '</span>';
+ $ok_message.= '<div class="' . $class . '">' . TEXT_PHP_VERSION . '' . $status.'</div>';
 
 
  $gd=gd_info();
 
- if ($gd['GD Version']=='') $gd['GD Version']='<b><font color="ff0000">' . TEXT_GD_LIB_NOT_FOUND . '</font></b>';
+ if ($gd['GD Version']=='') $gd['GD Version']='<span class="errorText">' . TEXT_GD_LIB_NOT_FOUND . '</span>';
 
 // $status=$gd['GD Version'].' <br />' . TEXT_GD_LIB_VERSION;
 
  // display GDlibversion
- $ok_message.= TEXT_GD_LIB_VERSION1 . '' . $status.'<br /><hr noshade>';
+ $ok_message.= '<div class="ok">' . TEXT_GD_LIB_VERSION1 . '' . $status.'</div>';
 
  if ($gd['GIF Read Support']==1 or $gd['GIF Support']==1) {
  $status = TEXT_OK;
+ $class='ok';
  } else {
  $status = TEXT_GD_LIB_GIF_SUPPORT_ERROR;
+ $class='error';
  }
- $ok_message.= TEXT_GD_LIB_GIF_SUPPORT . '' . $status.'<br /><hr noshade>';
+ $ok_message.= '<div class="' . $class . '">' . TEXT_GD_LIB_GIF_SUPPORT . '' . $status.'</div>';
 
 if ($error_flag==true) {
 ?>
-        <td style="border: 1px solid; border-color: #ff0000;" bgcolor="#FFCCCC">
-<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_ATTENTION; ?><br /></b>
+<span class="errorText"><?php echo TEXT_ATTENTION; ?></span><br />
 <?php echo $message; ?>
-</font>
-</td>
 <?php } ?>
-</tr>
-<tr>
 <?php
 if ($ok_message!='') {
 ?>
-<td height="20"></td></tr><tr>
-<td style="border: 1px solid; border-color: #4CC534;" bgcolor="#C2FFB6">
-<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo TEXT_CHECKING; ?><br /></b>
+<span class="errorText"><?php echo TEXT_CHECKING; ?></span><br />
 <?php echo $ok_message; ?>
-</font>
-</td>
 <?php } ?>
-</tr>
 
-      </table>
-      <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/break-el.gif" width="100%" height="1"></font></p>
-
-
-      <table width="98%" border="0" align="right" cellpadding="0" cellspacing="0">
-        <tr>
-          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="2"><img src="images/icons/arrow-setup.jpg" width="16" height="16">
-            <?php echo TITLE_SELECT_LANGUAGE; ?></font></strong><br />
-            <img src="images/break-el.gif" width="100%" height="1"><br />
-                                                        <?php
+<p>
+<span class="errorText">
+<?php echo TITLE_SELECT_LANGUAGE; ?>
+</span>
+<br />
+<?php
   if ($messageStack->size('index') > 0) {
 ?><br />
-<table border="0" cellpadding="0" cellspacing="0" bgcolor="f3f3f3">
-            <tr>
-              <td><?php echo $messageStack->output('index'); ?></td>
-  </tr>
-</table>
-
+<?php echo $messageStack->output('index'); ?></td>
 
 <?php
   }
 ?>
-            </font> <form name="language" method="post" action="index.php">
+</p>
 
-              <table width="300" border="0" cellpadding="0" cellspacing="4">
-                <tr>
-                  <td width="98"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo TEXT_RUSSIAN; ?></font></td>
-                  <td width="192"><img src="images/icons/icon-rus.gif" width="30" height="16">
-                    <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
-                  </td>
-                </tr>
-              </table>
+<form name="language" method="post" action="index.php">
+<p>
+<?php echo TEXT_RUSSIAN; ?>  <img src="images/icons/icon-rus.gif" width="30" height="16" alt="" /> <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
+</p>
 
-              <input type="hidden" name="action" value="process">
-              <p> <?php if ($error_flag==false) { ?><input type="image" src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"> <?php } ?><br />
-                <br />
-              </p>
-            </form>
+<input type="hidden" name="action" value="process" />
+<p>
+<?php if ($error_flag==false) { ?>
+<input type="image" src="images/button_continue.gif" alt="<?php echo IMAGE_CONTINUE; ?>" />
+<?php } ?>
+<br />
+<br />
+</p>
+</form>
 
-          </td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
 
-<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_FOOTER; ?>  </font></p>
-<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-  </font></p>
+</div>
+<p></p>
+
+</div>
+</div>
+<!-- /Центр -->
+
+<!-- Левая колонка -->
+<div id="left">
+&nbsp;
+</div>
+<!-- /Левая колонка -->
+
+<!-- Правая колонка -->
+<div id="right">
+&nbsp;
+</div>
+<!-- /Правая колонка -->
+
+<!-- Низ -->
+<div id="footer">
+&nbsp;
+</div>
+<!-- /Низ -->
+
+</div>
+<!-- /Контейнер -->
+
+<div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a></div>
+
 </body>
 </html>
