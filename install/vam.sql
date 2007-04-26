@@ -533,7 +533,7 @@ CREATE TABLE customers_status (
 DROP TABLE IF EXISTS customers_status_orders_status;
 CREATE TABLE customers_status_orders_status (
   customers_status_id int(11) default '0' not null ,
-  orders_status_id int(11) default '0' not null 
+  orders_status_id int(11) default '0' not null ,
   PRIMARY KEY  (customers_status_id)
 );
 
@@ -2606,3 +2606,10 @@ INSERT INTO payment_moneybookers_currencies VALUES ('TWD', 'New Taiwan Dollar');
 INSERT INTO payment_moneybookers_currencies VALUES ('USD', 'US Dollar');
 INSERT INTO payment_moneybookers_currencies VALUES ('ZAR', 'South-African Rand');
 
+INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (0, 1, 'Админ', 1, NULL, NULL, 'admin_status.gif', 0.00, '1', 0.00, '1', 1, 1, 0, '', '', 0, 1, 1, 1, 1, 0.00);
+
+INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (1, 1, 'Посетитель', 1, NULL, NULL, 'guest_status.gif', 0.00, '0', 0.00, '0', 1, 1, 0, '', '', 0, 1, 1, 1, 1, 0.00);
+
+INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (2, 1, 'Покупатель', 1, NULL, NULL, 'customer_status.gif', 0.00, '0', 0.00, '1', 1, 1, 0, '', '', 0, 1, 1, 1, 1, 0.00);
+
+INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (3, 1, 'Оптовый покупатель', 1, NULL, NULL, 'merchant_status.gif', 0.00, '0', 0.00, '1', 1, 0, 0, '', '', 0, 1, 1, 1, 1, 0.00);
