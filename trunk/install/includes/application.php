@@ -17,23 +17,25 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 // Some FileSystem Directories
-  if (!defined('DIR_FS_DOCUMENT_ROOT')) {
-      define('DIR_FS_DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
-      $local_install_path=str_replace('/install','',$_SERVER['PHP_SELF']);
-      $local_install_path=str_replace('index.php','',$local_install_path);
-      $local_install_path=str_replace('step1.php','',$local_install_path);
-      $local_install_path=str_replace('step2.php','',$local_install_path);
-      $local_install_path=str_replace('step3.php','',$local_install_path);
-      $local_install_path=str_replace('step4.php','',$local_install_path);
-      $local_install_path=str_replace('step5.php','',$local_install_path);
-      $local_install_path=str_replace('step6.php','',$local_install_path);
-      $local_install_path=str_replace('step7.php','',$local_install_path);
-      $local_install_path=str_replace('finished.php','',$local_install_path);
-      define('DIR_FS_CATALOG', DIR_FS_DOCUMENT_ROOT . $local_install_path);
+
+  $_www_location = 'http://' . $_SERVER['HTTP_HOST'];
+
+  if (isset($_SERVER['REQUEST_URI']) && (empty($_SERVER['REQUEST_URI']) === false)) {
+    $_www_location .= $_SERVER['REQUEST_URI'];
+  } else {
+    $_www_location .= $_SERVER['SCRIPT_FILENAME'];
   }
-  if (!defined('DIR_FS_INC')) {
-    define('DIR_FS_INC', DIR_FS_CATALOG.'inc/');
-  }
+
+  $_www_location = substr($_www_location, 0, strpos($_www_location, 'install'));
+
+  $dir = dirname(__FILE__) . '/../../';
+  $_dir_fs_www_root = str_replace('\\', '/', realpath($dir)).'/';
+
+  if (!defined('DIR_FS_CATALOG')) define('DIR_FS_CATALOG',$_dir_fs_www_root);
+  if (!defined('DIR_FS_INC')) define('DIR_FS_INC', $_dir_fs_www_root.'inc/');
+  
+
+
 
 // include
   //require('../includes/functions/validations.php');
@@ -87,7 +89,7 @@
   // iinclude check functions
   require_once(DIR_FS_INC .'xtc_gdlib_check.inc.php');
   
-  define('DIR_WS_ICONS','images/');
+   if (!defined('DIR_WS_ICONS')) define('DIR_WS_ICONS','images/');
 
   function xtc_check_version($mini='4.1.2')
 {

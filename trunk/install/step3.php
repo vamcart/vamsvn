@@ -17,79 +17,64 @@
    --------------------------------------------------------------*/
 
    require('includes/application.php');
+   require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
 
    include('language/'.$_SESSION['language'].'.php'); 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>" />
 <title><?php echo TITLE_STEP3; ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<style type="text/css">
-<!--
-.messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-weight: bold; font-size: 10px; background-color: #; }
--->
-</style>
+<link rel="stylesheet" type="text/css" href="includes/style.css" />
 </head>
-
 <body>
-<table width="800" height="80%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td height="95" colspan="2" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="1" colspan="2"><img src="images/logo.gif"></td>
-        </tr>
-      </table>
-  </tr>
-  <tr> 
-    <td width="180" valign="top" bgcolor="F3F3F3" style="border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
-      <table width="180" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td height="17" background="images/bg_left_blocktitle.gif">
-<div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#999999"><?php echo TEXT_INSTALL; ?></font></b></font></div></td>
-        </tr>
-        <tr> 
-          <td bgcolor="F3F3F3" ><br /> 
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr> 
-                <td width="10">&nbsp;</td>
-                <td width="135"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_LANGUAGE; ?></font></td>
-                <td width="35"><img src="images/icons/ok.gif"></td>
-              </tr>
-              <tr> 
-                <td>&nbsp;</td>
-                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_DB_CONNECTION; ?></font></td>
-                <td><img src="images/icons/ok.gif"></td>
-              </tr>
-              <tr> 
-                <td>&nbsp;</td>
-                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
-                  &nbsp;&nbsp;&nbsp;<img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_DB_IMPORT; ?></font></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr> 
-                <td>&nbsp;</td>
-                <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/icons/arrow02.gif" width="13" height="6"><?php echo BOX_WEBSERVER_SETTINGS; ?></font></td>
-                <td>&nbsp;</td>
-              </tr>
-            </table>
-            <br /></td>
-        </tr>
-      </table>
-    </td>
-    <td align="right" valign="top" style="border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; border-color: #6D6D6D;"> 
-      <br />
-      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-          <td>
-            <?php echo TEXT_WELCOME_STEP3; ?></font></td>
-        </tr>
-      </table>
 
-      <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/break-el.gif" width="100%" height="1"></font></p>
-      <table width="98%" border="0">
-        <tr>
-          <td> 
+
+<!-- Контейнер -->
+<div id="container">
+
+<!-- Шапка -->
+<div id="header">
+<img src="images/logo.gif" alt="VaM Shop" />
+</div>
+<!-- /Шапка -->
+
+<div id="menu">
+<ul>
+<li><a href="index.php"><span><?php echo START; ?></span></a></li>
+<li><a href="step1.php"><span><?php echo STEP1; ?></span></a></li>
+<li><a href="step2.php"><span><?php echo STEP2; ?></span></a></li>
+<li class="current"><a href="step3.php"><span><?php echo STEP3; ?></span></a></li>
+<li><a href=""><span><?php echo STEP4; ?></span></a></li>
+<li><a href=""><span><?php echo STEP5; ?></span></a></li>
+<li><a href=""><span><?php echo STEP6; ?></span></a></li>
+<li><a href=""><span><?php echo END; ?></span></a></li>
+</ul>
+</div>
+
+<!-- Навигация -->
+<div id="navigation">
+<span><?php echo TEXT_INSTALL; ?></span>
+</div>
+<!-- /Навигация -->
+
+<!-- Центр -->
+<div id="wrapper">
+<div id="content">
+
+<!-- Заголовок страницы -->
+<h1><?php echo TITLE_STEP3; ?></h1>
+<!-- /Заголовок страницы -->
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+
+<p><?php echo TEXT_WELCOME_STEP3; ?></p>
+
             <?php
   if (xtc_in_array('database', $_POST['install'])) {
     $db = array();
@@ -102,27 +87,19 @@
 
     $db_error = false;
     $sql_file = DIR_FS_CATALOG . 'install/vam.sql';
-//    $script_filename = (($SCRIPT_FILENAME) ? $SCRIPT_FILENAME : $HTTP_SERVER_VARS['SCRIPT_FILENAME']);
-//    $script_directory = dirname($script_filename);
-//    $sql_file = $script_directory . '/nextcommerce.sql';
-
-//    @xtc_set_time_limit(0);
+    
     xtc_db_install($db['DB_DATABASE'], $sql_file);
 
     if ($db_error) {
 ?>
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr> 
-                <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b> 
-                  <img src="images/icons/error.gif" width="16" height="16"><?php echo TEXT_TITLE_ERROR; ?></b></font></td>
-                <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
-              </tr>
-            </table>
-            <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><table border="0" cellpadding="0" cellspacing="0" bgcolor="f3f3f3">
-            <tr>
-              <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo $db_error; ?></b></font></td>
-  </tr>
-</table></font>
+
+<p>
+<?php echo TEXT_TITLE_ERROR; ?>
+</p>
+
+<div class="contacterror">
+<b><?php echo $db_error; ?></b>
+</div>
 
 <form name="install" action="step3.php" method="post">
 
@@ -141,25 +118,19 @@
       }
 ?>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td align="center"><a href="index.php"><img src="images/button_cancel.gif" border="0" alt="<?php echo IMAGE_CANCEL; ?>"></a></td>
-    <td align="center"><input type="image" src="images/button_retry.gif" border="0" alt="<?php echo IMAGE_RETRY; ?>"></td>
-  </tr>
-</table>
+<a href="index.php"><img src="images/button_cancel.gif" border="0" alt="<?php echo IMAGE_CANCEL; ?>" /></a>&nbsp;
+<input type="image" src="images/button_retry.gif" alt="<?php echo IMAGE_RETRY; ?>" />
 
 </form>
 
-            <?php
+<?php
     } else {
 ?>
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr> 
-                <td style="border-bottom: 1px solid; border-color: #CFCFCF"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><img src="images/icons/arrow-setup.jpg" width="16" height="16"> 
-                  <?php echo TEXT_TITLE_SUCCESS; ?></b></font></td>
-                <td style="border-bottom: 1px solid; border-color: #CFCFCF">&nbsp;</td>
-              </tr>
-            </table>
+
+<p>
+<?php echo TEXT_TITLE_SUCCESS; ?>
+</p>
+
             <form name="install" action="step4.php" method="post">
 
 <?php
@@ -177,21 +148,19 @@
       }
 ?>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
+<p>
 <?php
       if (xtc_in_array('configure', $_POST['install'])) {
 ?>
-    <td align="center"><input type="image" src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"></td>
+<input type="image" src="images/button_continue.gif" alt="<?php echo IMAGE_CONTINUE; ?>" />
 <?php
       } else {
 ?>
-    <td align="center"><a href="index.php"><img src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>"></a></td>
+<img src="images/button_continue.gif" border="0" alt="<?php echo IMAGE_CONTINUE; ?>" /></a>
 <?php
       }
 ?>
-  </tr>
-</table>
+</p>
 
 </form>
 
@@ -199,23 +168,41 @@
     }
   }
 ?>
-                  
-                  </td>
-        </tr>
-      </table>
-      <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></p>
-      </td>
-  </tr>
-</table>
 
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
 
+</div>
+<p></p>
 
-<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><?php echo TEXT_FOOTER; ?><br />
-  </font></p>
-<p align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
-  </font></p>
-</body>
-</html>
+</div>
+</div>
+<!-- /Центр -->
+
+<!-- Левая колонка -->
+<div id="left">
+&nbsp;
+</div>
+<!-- /Левая колонка -->
+
+<!-- Правая колонка -->
+<div id="right">
+&nbsp;
+</div>
+<!-- /Правая колонка -->
+
+<!-- Низ -->
+<div id="footer">
+&nbsp;
+</div>
+<!-- /Низ -->
+
+</div>
+<!-- /Контейнер -->
+
+<div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a></div>
 
 </body>
 </html>
