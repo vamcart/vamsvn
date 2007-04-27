@@ -1267,6 +1267,39 @@ DROP TABLE if EXISTS personal_offers_by_customers_status_1;
 DROP TABLE if EXISTS personal_offers_by_customers_status_2;
 DROP TABLE if EXISTS personal_offers_by_customers_status_3;
 
+CREATE TABLE personal_offers_by_customers_status_0 (
+  price_id int(11) NOT NULL auto_increment,
+  products_id int(11) NOT NULL,
+  quantity int(11) default NULL,
+  personal_offer decimal(15,4) default NULL,
+  PRIMARY KEY  (price_id)
+);
+
+CREATE TABLE personal_offers_by_customers_status_1 (
+  price_id int(11) NOT NULL auto_increment,
+  products_id int(11) NOT NULL,
+  quantity int(11) default NULL,
+  personal_offer decimal(15,4) default NULL,
+  PRIMARY KEY  (price_id)
+);
+
+
+CREATE TABLE personal_offers_by_customers_status_2 (
+  price_id int(11) NOT NULL auto_increment,
+  products_id int(11) NOT NULL,
+  quantity int(11) default NULL,
+  personal_offer decimal(15,4) default NULL,
+  PRIMARY KEY  (price_id)
+);
+
+CREATE TABLE personal_offers_by_customers_status_3 (
+  price_id int(11) NOT NULL auto_increment,
+  products_id int(11) NOT NULL,
+  quantity int(11) default NULL,
+  personal_offer decimal(15,4) default NULL,
+  PRIMARY KEY  (price_id)
+);
+
 #Contribution Installer Tables
 
 drop table if exists cip;
