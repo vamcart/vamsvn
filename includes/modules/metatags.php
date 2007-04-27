@@ -33,10 +33,15 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
         if (strlen($description) == 0){
             $description = $product->data['products_name'];
         }
+
+        $title = $product->data['products_meta_title'];
+        if (strlen($title) == 0){
+            $title = $product->data['products_name'];
+        }
 ?>	
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
-<title><?php echo $product->data['products_meta_title'].' '.$product->data['products_name'].' '.$product->data['products_model'] . ' - ' . TITLE; ?></title>
+<title><?php echo $title.' '.$product->data['products_model'] . ' - ' . TITLE; ?></title>
 	<?php
 
 	} else {
