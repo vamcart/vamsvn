@@ -60,7 +60,7 @@ $order_status = $orders['orders_status'];
 
 $smarty->assign('FORM_ACTION', xtc_draw_form('order', xtc_href_link(FILENAME_CHECKOUT_SUCCESS, 'action=update', 'SSL')));
 $smarty->assign('BUTTON_CONTINUE', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-$smarty->assign('BUTTON_PRINT', '<img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" />');
+$smarty->assign('BUTTON_PRINT', '<img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 $smarty->assign('FORM_END', '</form>');
 // GV Code Start
 $gv_query = xtc_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id='".$_SESSION['customer_id']."'");
@@ -75,11 +75,11 @@ if ($gv_result = xtc_db_fetch_array($gv_query)) {
 	$order = new order($orders['orders_id']);
 
 if ($order->info['payment_method'] == 'schet') {
-$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, width=800, height=650\')" />');
+$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" />');
+$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 }
 
 // Google Conversion tracking

@@ -78,11 +78,11 @@ if (DOWNLOAD_ENABLED == 'true') include (DIR_WS_MODULES.'downloads.php');
 // Stuff
 
 if ($order->info['payment_method'] == 'schet') {
-$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, width=800, height=650\')" />');
+$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" />');
+$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.xtc_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 }
 
 $smarty->assign('ORDER_NUMBER', (int)$_GET['order_id']);
@@ -92,7 +92,7 @@ $smarty->assign('BILLING_LABEL', xtc_address_format($order->billing['format_id']
 $smarty->assign('PRODUCTS_EDIT', xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $smarty->assign('SHIPPING_ADDRESS_EDIT', xtc_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
 $smarty->assign('BILLING_ADDRESS_EDIT', xtc_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
-$smarty->assign('BUTTON_PRINT', '<a style="cursor:pointer" onclick="javascript:window.open(\''.xtc_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')"><img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" alt="' . IMAGE_BUTTON_PRINT . '" /></a>');
+$smarty->assign('BUTTON_PRINT', '<a style="cursor:pointer" onclick="javascript:window.open(\''.xtc_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')"><img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" alt="' . IMAGE_BUTTON_PRINT . '" /></a>');
 $from_history = eregi("page=", xtc_get_all_get_params()); // referer from account_history yes/no
 $back_to = $from_history ? FILENAME_ACCOUNT_HISTORY : FILENAME_ACCOUNT; // if from account_history => return to account_history
 $smarty->assign('BUTTON_BACK','<a href="' . xtc_href_link($back_to,xtc_get_all_get_params(array ('order_id')), 'SSL') . '">' . xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '</a>');
