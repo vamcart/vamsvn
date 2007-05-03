@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1213 2007-02-07 13:12:57 VaM $  
+   $Id: russian.php 1213 2007-05-03 13:12:57 VaM $  
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -119,7 +119,7 @@ define('TITLE_CUSTOM_SETTINGS','Настройки');
 define('TEXT_IMPORT_DB','Импорт базы данных');
 define('TEXT_IMPORT_DB_LONG','Импорт структуры базы данных VaM Shop.');
 define('TEXT_AUTOMATIC','Автоматическая настройка');
-define('TEXT_AUTOMATIC_LONG','Данные, которые Вы укажите, сохранятся в конфигурационных файлах каталога и администраторской часть магазина.');
+define('TEXT_AUTOMATIC_LONG','Данные, которые Вы укажите, сохранятся в конфигурационных файлах каталога и администраторской части магазина.');
 define('TITLE_DATABASE_SETTINGS','Настройка базы данных');
 define('TEXT_DATABASE_SERVER','Сервер базы данных');
 define('TEXT_DATABASE_SERVER_LONG','Адрес либо IP-адрес сервера базы данных. Обычно сервер базы данных находится по адресу localhost, если Вы не знаете адрес сервера базы данных, свяжитесь со своим хостинг-провайдером.');
