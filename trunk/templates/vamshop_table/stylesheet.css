@@ -1014,10 +1014,9 @@ div#copyright
      padding-bottom: 0.5em;
    }
 
-.copyright
+div.copyright
    {
      clear: left;
-     align: center;
      background: #f1f1f6;
      width: 100%;
      text-align: center;
