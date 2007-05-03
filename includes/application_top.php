@@ -618,4 +618,6 @@ xtc_count_cart();
     }
   }
 
+    require('includes/local_modules.php');
+
 ?>
