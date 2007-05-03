@@ -332,6 +332,7 @@ if ($ok_message!='') {
 </div>
 <!-- /Контейнер -->
 
+<div class="copyright">eCommerce Engine ©2007 <a href="http://xt-commerce.com" target="_blank">xt:Commerce</a></div>
 <div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a></div>
 
 </body>
