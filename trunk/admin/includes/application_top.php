@@ -550,5 +550,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   } else {
     $current_topic_id = 0;
   }
+
+    require('includes/local_modules.php');
   
 ?>
