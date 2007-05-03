@@ -1017,6 +1017,7 @@ div#copyright
 .copyright
    {
      clear: left;
+     align: center;
      background: #f1f1f6;
      width: 100%;
      text-align: center;
