@@ -25,8 +25,8 @@ E-mail: {$EMAIL}
 Вы заказали следующие товары
 ----------------------------------------------------------------------
 {foreach name=aussen item=order_values from=$order_data} 
-{$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
-{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Время доставки: {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}
+{$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME}{if $order_values.PRODUCTS_MODEL neq ''} ({$order_values.PRODUCTS_MODEL}) {/if} {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Время доставки: {$order_values.PRODUCTS_SHIPPING_TIME}{/if}
 {if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
 
 {/foreach}
