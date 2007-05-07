@@ -43,7 +43,8 @@
 	created by Mario Zanier & Guido Winger and licensed under GNU/GPL.
 	Information and contribution at http://www.xt-commerce.com
 -->
-<meta name="generator" content="(c) by xt:Commerce vx.x.x , http://www.xt-commerce.com" /><meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="(c) by xt:Commerce vx.x.x , http://www.xt-commerce.com" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 <script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
