@@ -63,4 +63,10 @@
   define('MODULE_PAYMENT_KVITANCIA_ALLOWED_TITLE' , '–азрешЄнные страны');
   define('MODULE_PAYMENT_KVITANCIA_ALLOWED_DESC' , '”кажите коды стран, дл€ которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупател€м из любых стран))');
 
+  define('MODULE_PAYMENT_KVITANCIA_ZONE_TITLE' , '«она');
+  define('MODULE_PAYMENT_KVITANCIA_ZONE_DESC' , '≈сли выбрана зона, то данный модуль оплаты будет виден только покупател€м из выбранной зоны.');
+
+  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_TITLE' , '—татус заказа');
+  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_DESC' , '«аказы, оформленные с использованием данного модул€ оплаты будут принимать указанный статус.');
+
 ?>
