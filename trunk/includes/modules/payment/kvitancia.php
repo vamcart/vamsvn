@@ -27,7 +27,36 @@ class kvitancia {
 		$this->sort_order = MODULE_PAYMENT_KVITANCIA_SORT_ORDER;
 		$this->info = MODULE_PAYMENT_KVITANCIA_TEXT_INFO;
 		$this->enabled = ((MODULE_PAYMENT_KVITANCIA_STATUS == 'True') ? true : false);
+
+		if ((int) MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID > 0) {
+			$this->order_status = MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID;
+		}
+
 	}
+	
+	function update_status() {
+		global $order;
+
+		if (($this->enabled == true) && ((int) MODULE_PAYMENT_KVITANCIA_ZONE > 0)) {
+			$check_flag = false;
+			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_KVITANCIA_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = xtc_db_fetch_array($check_query)) {
+				if ($check['zone_id'] < 1) {
+					$check_flag = true;
+					break;
+				}
+				elseif ($check['zone_id'] == $order->billing['zone_id']) {
+					$check_flag = true;
+					break;
+				}
+			}
+
+			if ($check_flag == false) {
+				$this->enabled = false;
+			}
+		}
+	}
+	
 	// class methods
 	function javascript_validation() {
 		return false;
@@ -93,6 +122,8 @@ class kvitancia {
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_KVITANCIA_7', '---',  '6', '1', now());");
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_KVITANCIA_8', 'Заказ номер',  '6', '1', now());");
 		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_KVITANCIA_SORT_ORDER', '0',  '6', '0', now())");
+		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_KVITANCIA_ZONE', '0',  '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
+		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
 
 	}
 
@@ -101,7 +132,7 @@ class kvitancia {
 	}
 
 	function keys() {
-		$keys = array ('MODULE_PAYMENT_KVITANCIA_STATUS', 'MODULE_PAYMENT_KVITANCIA_ALLOWED', 'MODULE_PAYMENT_KVITANCIA_1', 'MODULE_PAYMENT_KVITANCIA_2', 'MODULE_PAYMENT_KVITANCIA_3', 'MODULE_PAYMENT_KVITANCIA_4', 'MODULE_PAYMENT_KVITANCIA_5', 'MODULE_PAYMENT_KVITANCIA_6', 'MODULE_PAYMENT_KVITANCIA_7', 'MODULE_PAYMENT_KVITANCIA_8', 'MODULE_PAYMENT_KVITANCIA_SORT_ORDER');
+		$keys = array ('MODULE_PAYMENT_KVITANCIA_STATUS', 'MODULE_PAYMENT_KVITANCIA_ALLOWED', 'MODULE_PAYMENT_KVITANCIA_1', 'MODULE_PAYMENT_KVITANCIA_2', 'MODULE_PAYMENT_KVITANCIA_3', 'MODULE_PAYMENT_KVITANCIA_4', 'MODULE_PAYMENT_KVITANCIA_5', 'MODULE_PAYMENT_KVITANCIA_6', 'MODULE_PAYMENT_KVITANCIA_7', 'MODULE_PAYMENT_KVITANCIA_8', 'MODULE_PAYMENT_KVITANCIA_SORT_ORDER', 'MODULE_PAYMENT_KVITANCIA_ZONE', 'MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID');
 
 		return $keys;
 	}
