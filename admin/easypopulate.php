@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: easypopulate.php 1064 2007-02-08 11:13:01Z VaM $   
+   $Id: easypopulate.php 1064 2007-05-12 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
