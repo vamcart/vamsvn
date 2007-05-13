@@ -552,5 +552,6 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   }
 
     require('includes/local_modules.php');
+    define('DIR_FS_CIP', DIR_FS_ADMIN . 'contributions');
   
 ?>
