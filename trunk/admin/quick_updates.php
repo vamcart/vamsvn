@@ -80,7 +80,7 @@ function manufacturers_list(){
 			 if (trim($_POST['product_new_name'][$id]) != trim($_POST['product_old_name'][$id])) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_name='" . $new_name . "' WHERE products_id=$id and language_id='" . $_SESSION['languages_id']);
+			   mysql_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_name='" . $new_name . "' WHERE products_id=$id and language_id=" . $_SESSION['languages_id']);
 			 }
 		   }
 		}
@@ -153,6 +153,7 @@ function manufacturers_list(){
 			   	$count_update++;
 			   	$item_updated[$id] = 'updated';
 			   	xtc_set_product_status($id, $new_status);
+
 			 	}
 		   	}
 		}
@@ -419,7 +420,7 @@ function display_ttc(action, prix, taxe, up){
 		}
     }else{
 
-////
+////
   if ($current_category_id == 0){
   	if($manufacturer){
     	$products_query_raw = "select p.products_id, p.products_image, p.products_model, pd.products_name, p.products_status, p.products_sort, p.products_to_xml, p.products_weight, p.products_quantity, p.manufacturers_id, p.products_price, p.products_tax_class_id from  " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION .  " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.manufacturers_id = " . $manufacturer . " $sort_by ";
@@ -444,7 +445,10 @@ function display_ttc(action, prix, taxe, up){
     }
 //// check for global add value or rates, calcul and round values rates
     if ($_POST['spec_price']){
+    // dopisac aby dzialalo
+      $spec_price = $_POST['spec_price'];
       $flag_spec = 'true' ;
+
       if (substr($_POST['spec_price'],-1) == '%') {
 	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
 			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
