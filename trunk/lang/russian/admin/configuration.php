@@ -90,6 +90,9 @@ define('CURRENT_TEMPLATE_DESC' , 'Выберите шаблон по умолчанию. Шаблоны находятс
 define('CC_KEYCHAIN_TITLE','Шифрование номера кредитной карты');
 define('CC_KEYCHAIN_DESC','Строка для шифрования номера кредитной карты (пожалуйста, измените!)');
 
+define('ADMIN_DROP_DOWN_NAVIGATION_TITLE','Стиль навигации в админке');
+define('ADMIN_DROP_DOWN_NAVIGATION_DESC','Drop-down меню сверху (true) или обычное меню слева (false).');
+
 define('ENTRY_FIRST_NAME_MIN_LENGTH_TITLE' , 'Имя');
 define('ENTRY_FIRST_NAME_MIN_LENGTH_DESC', 'Минимальное количество символов поля Имя');
 define('ENTRY_LAST_NAME_MIN_LENGTH_TITLE' , 'Фамилия');
