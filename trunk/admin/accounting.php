@@ -80,17 +80,21 @@
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-        <td width="100%">
-
-    <h1 class="contentBoxHeading"><?php echo TEXT_ACCOUNTING.' '.$allow_edit['customers_lastname'].' '.$allow_edit['customers_firstname']; ?></h1>
-
-  </td>
-  </tr>
-  <tr>
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
+<!-- left_navigation //-->
+<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
+<!-- left_navigation_eof //-->
+    </table></td>
+<?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
-      <td colspan="2" class="main"> <br /><?php echo TXT_GROUPS; ?><br />
+        <td class="main">
+        
+    <h1 class="contentBoxHeading"><?php echo TEXT_ACCOUNTING.' '.$allow_edit['customers_lastname'].' '.$allow_edit['customers_firstname']; ?></h1>
+    
+     <br /><?php echo TXT_GROUPS; ?><br />
 
       <table width="100%" cellpadding="0" cellspacing="2">
       <tr>
