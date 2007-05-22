@@ -53,7 +53,7 @@
   echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_ARTICLES.'</b></div>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles'] == '1')) echo '<a href="' . xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOPICS_ARTICLES . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_config'] == '1')) echo '<a href="' . xtc_href_link(FILENAME_ARTICLES_CONFIG, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_CONFIG . '</a><br>';
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['aithors'] == '1')) echo '<a href="' . xtc_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_AUTHORS . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['authors'] == '1')) echo '<a href="' . xtc_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_AUTHORS . '</a><br>';
   
   echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_TOOLS.'</b></div>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<a href="' . xtc_href_link(FILENAME_MODULE_NEWSLETTER) . '" class="menuBoxContentLink"> -' . BOX_MODULE_NEWSLETTER . '</a><br>';

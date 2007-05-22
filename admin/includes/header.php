@@ -109,7 +109,7 @@
 <td colspan="3" valign="top" align="center" class="buttonadmin"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="3"></td>
 </tr>
 
-<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
 <tr>
 <td colspan="3" valign="top" align="center" class="navigationTop"><img src="images/pixel_trans.gif" border="0" alt="" width="0" height="1"></td>
 </tr>

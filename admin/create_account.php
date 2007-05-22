@@ -359,15 +359,19 @@ if ($_GET['action'] == 'edit') {
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-        <td width="100%">
-
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
-  
-  </td>
-  </tr>
-  <tr>
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
+<!-- left_navigation //-->
+<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
+<!-- left_navigation_eof //-->
+    </table></td>
+<?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td class="boxCenter" width="100%" valign="top">
+    
+    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+    
+    <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr><?php echo xtc_draw_form('customers', FILENAME_CREATE_ACCOUNT, xtc_get_all_get_params(array('action')) . 'action=edit', 'post', 'onSubmit="return check_form();"') . xtc_draw_hidden_field('default_address_id', $customers_default_address_id); ?>
         <td class="formAreaTitle"><?php echo CATEGORY_PERSONAL; ?></td>
       </tr>
