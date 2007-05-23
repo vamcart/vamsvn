@@ -1,5 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 <h1 class="contentBoxHeading">{#heading_reviews_write#}</h1>
+{if $captcha_error}
+<div class="contacterror">{$captcha_error}</div>
+{/if}
 {if $error}
 {$error}
 {else}
@@ -12,7 +15,10 @@
         {$INPUT_TEXT}<br />
         <font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_note#}</font><br />
         <br />
-        <strong>{#text_rating#}&nbsp;<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_bad#}</font></strong>{$INPUT_RATING}<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#text_good#}</strong></font></p></td>
+        <strong>{#text_rating#}&nbsp;<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_bad#}</font></strong>{$INPUT_RATING}<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#text_good#}</strong></font></p>
+		  <p>{#text_sec_code#} {$VVIMG}</p>
+		  <p>{#text_sec_code_text#} {$INPUT_CODE}</p>
+        </td>
   </tr>
 </table>
 <br />
