@@ -26,8 +26,11 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 if ($_SESSION['customers_status']['customers_status_write_reviews'] == 0) {
              xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
 }
+if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] != $_SESSION['vvcode']) {
+	$smarty->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+}
 
-if (isset ($_GET['action']) && $_GET['action'] == 'process') {
+if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] == $_SESSION['vvcode']) {
 	if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
 		$customer = xtc_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
@@ -73,6 +76,8 @@ if (!$product->isProduct()) {
 	$smarty->assign('FORM_ACTION', xtc_draw_form('product_reviews_write', xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.xtc_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
 	$smarty->assign('BUTTON_BACK', '<a href="javascript:history.back(1)">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 	$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE).xtc_draw_hidden_field('get_params', $get_params));
+	$smarty->assign('VVIMG', '<img src="'.xtc_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+	$smarty->assign('INPUT_CODE', xtc_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 	$smarty->assign('FORM_END', '</form>');
 }
 $smarty->assign('language', $_SESSION['language']);
