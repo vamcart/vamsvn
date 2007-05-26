@@ -25,7 +25,7 @@
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'xtc_format_filesize.inc.php');
   require_once(DIR_FS_INC . 'xtc_filesize.inc.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php');
+  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php');
   
   
   $languages = xtc_get_languages();
@@ -252,9 +252,9 @@ if ($select_file=='default') {
 <?php if (USE_WYSIWYG=='true') {
  $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=xtc_db_fetch_array($query);
- if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo xtc_wysiwyg('content_manager',$data['code']);
- if ($_GET['action']=='new_products_content') echo xtc_wysiwyg('products_content',$data['code']);
- if ($_GET['action']=='edit_products_content') echo xtc_wysiwyg('products_content',$data['code']);
+ if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo xtc_wysiwyg_tiny('content_manager',$data['code']);
+ if ($_GET['action']=='new_products_content') echo xtc_wysiwyg_tiny('products_content',$data['code']);
+ if ($_GET['action']=='edit_products_content') echo xtc_wysiwyg_tiny('products_content',$data['code']);
  } ?>
 
 </head>

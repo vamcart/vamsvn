@@ -21,7 +21,7 @@
 
   require_once(DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
   require_once(DIR_FS_INC . 'xtc_php_mail.inc.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php'); 
+  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php'); 
 
   switch ($_GET['action']) {  // actions for datahandling
 
@@ -286,7 +286,7 @@ $limit_up = $limits['1'];
 <?php if (USE_WYSIWYG=='true') {
  $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=xtc_db_fetch_array($query);
- if ($_GET['action']!='') echo xtc_wysiwyg('newsletter',$data['code']);
+ if ($_GET['action']!='') echo xtc_wysiwyg_tiny('newsletter',$data['code']);
  } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">

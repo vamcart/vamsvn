@@ -518,7 +518,7 @@ define('DELETE_GUEST_ACCOUNT_TITLE','Удалять гостевые записи');
 define('DELETE_GUEST_ACCOUNT_DESC','Удалять запись гостя после заказа (дата заказа будет сохранена).');
 
 define('USE_WYSIWYG_TITLE','HTML-редактор');
-define('USE_WYSIWYG_DESC','Включить HTML-редактор FCKEditor для информационных страниц, категорий, товаров.');
+define('USE_WYSIWYG_DESC','Включить HTML-редактор для информационных страниц, категорий, товаров т .д.');
 
 define('PRICE_IS_BRUTTO_TITLE','Брутто цены в админке');
 define('PRICE_IS_BRUTTO_DESC','Использовать цены с налогом в админке.');

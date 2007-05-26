@@ -26,7 +26,7 @@
 
   require_once(DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
   require_once(DIR_FS_INC . 'xtc_php_mail.inc.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php'); 
+  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php'); 
 
   if ( ($_GET['action'] == 'send_email_to_user') && ($_POST['customers_email_address']) && (!$_POST['back_x']) ) {
     switch ($_POST['customers_email_address']) {
@@ -94,7 +94,7 @@
 if (!isset($_GET['action'])) {
 $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
 $data=xtc_db_fetch_array($query);
-echo xtc_wysiwyg('mail',$data['code']);
+echo xtc_wysiwyg_tiny('mail',$data['code']);
 }
 } ?>
 <head>
