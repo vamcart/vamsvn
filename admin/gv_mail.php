@@ -30,7 +30,7 @@
 
 
   require('includes/application_top.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php'); 
+  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php'); 
 
   require(DIR_WS_CLASSES . 'currencies.php');
   $currencies = new currencies();
@@ -166,7 +166,7 @@
 <?php if (USE_WYSIWYG=='true' && $_GET['action'] != 'preview') {
  $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=xtc_db_fetch_array($query);
- echo xtc_wysiwyg('gv_mail',$data['code']);
+ echo xtc_wysiwyg_tiny('gv_mail',$data['code']);
  } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">

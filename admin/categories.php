@@ -31,7 +31,7 @@ require_once ('includes/classes/categories.php');
 require_once (DIR_FS_INC.'xtc_get_tax_rate.inc.php');
 require_once (DIR_FS_INC.'xtc_get_products_mo_images.inc.php');
 require_once (DIR_WS_CLASSES.'currencies.php');
-require_once (DIR_FS_INC.'xtc_wysiwyg.inc.php');
+require_once (DIR_FS_INC.'xtc_wysiwyg_tiny.inc.php');
 
 $currencies = new currencies();
 $catfunc = new categories();
@@ -291,43 +291,30 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 		<script type="text/javascript" src="includes/general.js"></script>
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
-<?php
-
-
-// Include WYSIWYG if is activated
-
-if (USE_WYSIWYG == 'true') {
+<?php if (USE_WYSIWYG=='true') {
 	$query = xtc_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
 	$data = xtc_db_fetch_array($query);
 	// generate editor for categories EDIT
 	$languages = xtc_get_languages();
-?>
-<script type="text/javascript" src="includes/modules/fckeditor/fckeditor.js"></script>
-<script type="text/javascript">
-	window.onload = function()
-		{<?php
 
 	// generate editor for categories
 	if ($_GET['action'] == 'new_category' || $_GET['action'] == 'edit_category') {
 		for ($i = 0; $i < sizeof($languages); $i ++) {
-			echo xtc_wysiwyg('categories_description', $data['code'], $languages[$i]['id']);
+			echo xtc_wysiwyg_tiny('categories_description', $data['code'], $languages[$i]['id']);
 		}
 	}
 
 	// generate editor for products
 	if ($_GET['action'] == 'new_product') {
 		for ($i = 0; $i < sizeof($languages); $i ++) {
-			echo xtc_wysiwyg('products_description', $data['code'], $languages[$i]['id']);
-			echo xtc_wysiwyg('products_short_description', $data['code'], $languages[$i]['id']);
+			echo xtc_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
+			echo xtc_wysiwyg_tiny('products_short_description', $data['code'], $languages[$i]['id']);
 		}
 	}
-?>}
-</script><?php
-
 }
 ?>
 </head>
-<body style="margin: 0; background-color: #FFFFFF">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 
 		<!-- header //-->
 		<?php require(DIR_WS_INCLUDES . 'header.php'); ?>

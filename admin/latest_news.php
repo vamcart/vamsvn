@@ -16,7 +16,7 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg.inc.php');
+  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php');
   require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
 
   if ($_GET['action']) {
@@ -76,7 +76,7 @@
 <?php if (USE_WYSIWYG=='true') {
  $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=xtc_db_fetch_array($query);
- if ($_GET['action']=='new_latest_news') echo xtc_wysiwyg('latest_news',$data['code']);
+ if ($_GET['action']=='new_latest_news') echo xtc_wysiwyg_tiny('latest_news',$data['code']);
  } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
