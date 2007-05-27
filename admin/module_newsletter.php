@@ -591,7 +591,7 @@ echo xtc_draw_checkbox_field('status_all', 'yes',in_array('all', $bc_array)).' <
       <td width="10%" valign="top"><?php echo TEXT_BODY; ?></td>
       <td width="90%"><?php
 
-echo xtc_draw_textarea_field('newsletter_body', 'soft', '150', '45', stripslashes($newsletters_data['body']));
+echo xtc_draw_textarea_field('newsletter_body', 'soft', '103', '25', stripslashes($newsletters_data['body']));
 
         ?></td>
    </tr>

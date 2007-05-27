@@ -75,6 +75,7 @@ $js_src = DIR_WS_MODULES .'tiny_mce/tiny_mce.js';
                         	   <script type="text/javascript">
 	tinyMCE.init({
 		mode : "textareas",
+      editor_deselector : "notinymce",
 		theme : "advanced",
 		language : "'.$lang.'",
 		plugins : "table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,caption,paste,preview,zoom,flash,searchreplace,print,contextmenu",

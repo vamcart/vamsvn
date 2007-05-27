@@ -337,8 +337,8 @@
 	$languages = xtc_get_languages();
 
 	// generate editor for categories
-	if ($_GET['action'] == 'new_topic' || $_GET['action'] == 'edit_topic') {
-		for ($i = 0; $i < sizeof($languages); $i ++) {
+  if ($_GET['action'] == 'new_topic_ACD' || $_GET['action'] == 'edit_topic_ACD') {
+    for ($i=0; $i<sizeof($languages); $i++) {
 			echo xtc_wysiwyg_tiny('topics_description', $data['code'], $languages[$i]['id']);
 		}
 	}
@@ -441,7 +441,7 @@
 <td class="main">
 
 <?php
-          echo xtc_draw_textarea_field('topics_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', (($topics_description[$languages[$i]['id']]) ? stripslashes($topics_description[$languages[$i]['id']]) : xtc_get_topic_description($tInfo->topics_id, $languages[$i]['id']))); 
+          echo xtc_draw_textarea_field('topics_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($topics_description[$languages[$i]['id']]) ? stripslashes($topics_description[$languages[$i]['id']]) : xtc_get_topic_description($tInfo->topics_id, $languages[$i]['id']))); 
 ?>
 
 </td>
@@ -690,7 +690,7 @@
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="main" valign="top"><?php echo xtc_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main"><?php echo xtc_draw_textarea_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_desc_tag[$languages[$i]['id']]) ? $articles_head_desc_tag[$languages[$i]['id']] : xtc_get_articles_head_desc_tag($aInfo->articles_id, $languages[$i]['id']))); ?></td>
+                <td class="main"><?php echo xtc_draw_textarea_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_desc_tag[$languages[$i]['id']]) ? $articles_head_desc_tag[$languages[$i]['id']] : xtc_get_articles_head_desc_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
               </tr>
             </table></td>
           </tr>
@@ -708,7 +708,7 @@
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="main" valign="top"><?php echo xtc_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main"><?php echo xtc_draw_textarea_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_keywords_tag[$languages[$i]['id']]) ? $articles_head_keywords_tag[$languages[$i]['id']] : xtc_get_articles_head_keywords_tag($aInfo->articles_id, $languages[$i]['id']))); ?></td>
+                <td class="main"><?php echo xtc_draw_textarea_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_keywords_tag[$languages[$i]['id']]) ? $articles_head_keywords_tag[$languages[$i]['id']] : xtc_get_articles_head_keywords_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
               </tr>
             </table></td>
           </tr>
@@ -731,7 +731,7 @@
 <td class="main">
 
 <?php
-          echo xtc_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : xtc_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
+          echo xtc_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : xtc_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
 ?>
 
 </td>
