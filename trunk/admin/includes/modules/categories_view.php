@@ -388,7 +388,7 @@ if ($numr>$max_count){
 			$im=1;$nk=0;
 			while ($kn<$numr){
 			if ($kn<>$page){
-			$stp.='<a href=categories.php?cPath='.$cPath.'&page='.$kn.'&search='.$_GET['search'].'>'.$im.'</a>&nbsp';
+			$stp.='<a href=categories.php?cPath='.$cPath.'&page='.$kn.(isset($_GET['search']) ? '&search='.$_GET['search'] : null).'>'.$im.'</a>&nbsp';
 			}else{
 			$stp.='<font color="#CC0000">['.$im.']</font>&nbsp';
 			}
