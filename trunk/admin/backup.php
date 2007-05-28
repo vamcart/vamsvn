@@ -1,4 +1,26 @@
 <?php
+/***************************************************************************\
+| Sypex Dumper Lite          version 1.0.8b                                 |
+| (c)2003-2006 zapimir       zapimir@zapimir.net       http://sypex.net/    |
+| (c)2005-2006 BINOVATOR     info@sypex.net                                 |
+|---------------------------------------------------------------------------|
+|     created: 2003.09.02 19:07              modified: 2006.10.27 03:30     |
+|---------------------------------------------------------------------------|
+| This program is free software; you can redistribute it and/or             |
+| modify it under the terms of the GNU General Public License               |
+| as published by the Free Software Foundation; either version 2            |
+| of the License, or (at your option) any later version.                    |
+|                                                                           |
+| This program is distributed in the hope that it will be useful,           |
+| but WITHOUT ANY WARRANTY; without even the implied warranty of            |
+| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             |
+| GNU General Public License for more details.                              |
+|                                                                           |
+| You should have received a copy of the GNU General Public License         |
+| along with this program; if not, write to the Free Software               |
+| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,USA. |
+\***************************************************************************/
+
 /* --------------------------------------------------------------
    $Id: backup.php 1023 2007-02-08 11:13:01Z VaM $   
 
@@ -19,288 +41,6 @@
 
   require('includes/application_top.php');
 
-  if ($_GET['action']) {
-    switch ($_GET['action']) {
-      case 'forget':
-        xtc_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key = 'DB_LAST_RESTORE'");
-        $messageStack->add_session(SUCCESS_LAST_RESTORE_CLEARED, 'success');
-        xtc_redirect(xtc_href_link(FILENAME_BACKUP));
-        break;
-      case 'backupnow':
-        @xtc_set_time_limit(0);
-        $schema = '# VaM Shop' . "\n" .
-                  '# http://vamshop.ru' . "\n" .
-                  '# http://vamshop.com' . "\n" .
-                  '#' . "\n" .
-                  '# Database Backup For ' . STORE_NAME . "\n" . 
-                  '# Copyright (c) ' . date('Y') . ' ' . STORE_OWNER . "\n" .
-                  '#' . "\n" .
-                  '# Database: ' . DB_DATABASE . "\n" .
-                  '# Database Server: ' . DB_SERVER . "\n" . 
-                  '#' . "\n" .
-                  '# Backup Date: ' . date(PHP_DATE_TIME_FORMAT) . "\n\n";
-        $tables_query = xtc_db_query('show tables');
-        while ($tables = xtc_db_fetch_array($tables_query)) {
-          list(,$table) = each($tables);
-          $schema .= 'drop table if exists ' . $table . ';' . "\n" .
-                     'create table ' . $table . ' (' . "\n";
-          $table_list = array();
-          $fields_query = xtc_db_query("show fields from " . $table);
-          while ($fields = xtc_db_fetch_array($fields_query)) {
-            $table_list[] = $fields['Field'];
-            $schema .= '  ' . $fields['Field'] . ' ' . $fields['Type'];
-            if (strlen($fields['Default']) > 0) $schema .= ' default \'' . $fields['Default'] . '\'';
-            if ($fields['Null'] != 'YES') $schema .= ' not null';
-            if (isset($fields['Extra'])) $schema .= ' ' . $fields['Extra'];
-            $schema .= ',' . "\n";
-          }
-          $schema = ereg_replace(",\n$", '', $schema);
-
-          // Add the keys
-          $index = array();
-          $keys_query = xtc_db_query("show keys from " . $table);
-          while ($keys = xtc_db_fetch_array($keys_query)) {
-            $kname = $keys['Key_name'];
-            if (!isset($index[$kname])) {
-              $index[$kname] = array('unique' => !$keys['Non_unique'],
-                                     'columns' => array());
-            }
-            $index[$kname]['columns'][] = $keys['Column_name'];
-          }
-          while (list($kname, $info) = each($index)) {
-            $schema .= ',' . "\n";
-            $columns = implode($info['columns'], ', ');
-            if ($kname == 'PRIMARY') {
-              $schema .= '  PRIMARY KEY (' . $columns . ')';
-            } elseif ($info['unique']) {
-              $schema .= '  UNIQUE ' . $kname . ' (' . $columns . ')';
-            } else {
-              $schema .= '  KEY ' . $kname . ' (' . $columns . ')';
-            }
-          }
-          $schema .= "\n" . ');' . "\n\n";
-
-          // Dump the data
-          $rows_query = xtc_db_query("select " . implode(',', $table_list) . " from " . $table);
-          while ($rows = xtc_db_fetch_array($rows_query)) {
-            $schema_insert = 'insert into ' . $table . ' (' . implode(', ', $table_list) . ') values (';
-            reset($table_list);
-            while (list(,$i) = each($table_list)) {
-              if (!isset($rows[$i])) {
-                $schema_insert .= 'NULL, ';
-              } elseif ($rows[$i] != '') {
-                $row = addslashes($rows[$i]);
-                $row = ereg_replace("\n#", "\n".'\#', $row);
-                $schema_insert .= '\'' . $row . '\', ';
-              } else {
-                $schema_insert .= '\'\', ';
-              }
-            }
-            $schema_insert = ereg_replace(', $', '', $schema_insert) . ');' . "\n";
-            $schema .= $schema_insert;
-          }
-          $schema .= "\n";
-        }
-
-        if ($_POST['download'] == 'yes') {
-          $backup_file = 'db_' . DB_DATABASE . '-' . date('YmdHis') . '.sql';
-          switch ($_POST['compress']) {
-            case 'no':
-              header('Content-type: application/x-octet-stream');
-              header('Content-disposition: attachment; filename=' . $backup_file);
-              echo $schema;
-              exit;
-              break;
-            case 'gzip':
-              if ($fp = fopen(DIR_FS_BACKUP . $backup_file, 'w')) {
-                fputs($fp, $schema);
-                fclose($fp);
-                exec(LOCAL_EXE_GZIP . ' ' . DIR_FS_BACKUP . $backup_file);
-                $backup_file .= '.gz';
-              }
-              if ($fp = fopen(DIR_FS_BACKUP . $backup_file, 'rb')) {
-                $buffer = fread($fp, filesize(DIR_FS_BACKUP . $backup_file));
-                fclose($fp);
-                unlink(DIR_FS_BACKUP . $backup_file);
-                header('Content-type: application/x-octet-stream');
-                header('Content-disposition: attachment; filename=' . $backup_file);
-                echo $buffer;
-                exit;
-              }
-              break;
-            case 'zip':
-              if ($fp = fopen(DIR_FS_BACKUP . $backup_file, 'w')) {
-                fputs($fp, $schema);
-                fclose($fp);
-                exec(LOCAL_EXE_ZIP . ' -j ' . DIR_FS_BACKUP . $backup_file . '.zip ' . DIR_FS_BACKUP . $backup_file);
-                unlink(DIR_FS_BACKUP . $backup_file);
-                $backup_file .= '.zip';
-              }
-              if ($fp = fopen(DIR_FS_BACKUP . $backup_file, 'rb')) {
-                $buffer = fread($fp, filesize(DIR_FS_BACKUP . $backup_file));
-                fclose($fp);
-                unlink(DIR_FS_BACKUP . $backup_file);
-                header('Content-type: application/x-octet-stream');
-                header('Content-disposition: attachment; filename=' . $backup_file);
-                echo $buffer;
-                exit;
-              }
-          }
-        } else {
-          $backup_file = DIR_FS_BACKUP . 'db_' . DB_DATABASE . '-' . date('YmdHis') . '.sql';
-          if ($fp = fopen($backup_file, 'w')) {
-            fputs($fp, $schema);
-            fclose($fp);
-            switch ($_POST['compress']) {
-              case 'gzip':
-                exec(LOCAL_EXE_GZIP . ' ' . $backup_file);
-                break;
-              case 'zip':
-                exec(LOCAL_EXE_ZIP . ' -j ' . $backup_file . '.zip ' . $backup_file);
-                unlink($backup_file);
-            }
-          }
-          $messageStack->add_session(SUCCESS_DATABASE_SAVED, 'success');
-        }
-        xtc_redirect(xtc_href_link(FILENAME_BACKUP));
-        break;
-      case 'restorenow':
-      case 'restorelocalnow':
-        @xtc_set_time_limit(0);
-
-        if ($_GET['action'] == 'restorenow') {
-          $read_from = $_GET['file'];
-          if (file_exists(DIR_FS_BACKUP . $_GET['file'])) {
-            $restore_file = DIR_FS_BACKUP . $_GET['file'];
-            $extension = substr($_GET['file'], -3);
-            if ( ($extension == 'sql') || ($extension == '.gz') || ($extension == 'zip') ) {
-              switch ($extension) {
-                case 'sql':
-                  $restore_from = $restore_file;
-                  $remove_raw = false;
-                  break;
-                case '.gz':
-                  $restore_from = substr($restore_file, 0, -3);
-                  exec(LOCAL_EXE_GUNZIP . ' ' . $restore_file . ' -c > ' . $restore_from);
-                  $remove_raw = true;
-                  break;
-                case 'zip':
-                  $restore_from = substr($restore_file, 0, -4);
-                  exec(LOCAL_EXE_UNZIP . ' ' . $restore_file . ' -d ' . DIR_FS_BACKUP);
-                  $remove_raw = true;
-              }
-
-              if ( ($restore_from) && (file_exists($restore_from)) && (filesize($restore_from) > 15000) ) {
-                $fd = fopen($restore_from, 'rb');
-                $restore_query = fread($fd, filesize($restore_from));
-                fclose($fd);
-              }
-            }
-          }
-        } elseif ($_GET['action'] == 'restorelocalnow') {
-          $sql_file = new upload('sql_file');
-
-          if ($sql_file->parse() == true) {
-            $restore_query = fread(fopen($sql_file->tmp_filename, 'r'), filesize($sql_file->tmp_filename));
-            $read_from = $sql_file->filename;
-          }
-        }
-
-        if ($restore_query) {
-          $sql_array = array();
-          $sql_length = strlen($restore_query);
-          $pos = strpos($restore_query, ';');
-          for ($i=$pos; $i<$sql_length; $i++) {
-            if ($restore_query[0] == '#') {
-              $restore_query = ltrim(substr($restore_query, strpos($restore_query, "\n")));
-              $sql_length = strlen($restore_query);
-              $i = strpos($restore_query, ';')-1;
-              continue;
-            }
-            if ($restore_query[($i+1)] == "\n") {
-              for ($j=($i+2); $j<$sql_length; $j++) {
-                if (trim($restore_query[$j]) != '') {
-                  $next = substr($restore_query, $j, 6);
-                  if ($next[0] == '#') {
-// find out where the break position is so we can remove this line (#comment line)
-                    for ($k=$j; $k<$sql_length; $k++) {
-                      if ($restore_query[$k] == "\n") break;
-                    }
-                    $query = substr($restore_query, 0, $i+1);
-                    $restore_query = substr($restore_query, $k);
-// join the query before the comment appeared, with the rest of the dump
-                    $restore_query = $query . $restore_query;
-                    $sql_length = strlen($restore_query);
-                    $i = strpos($restore_query, ';')-1;
-                    continue 2;
-                  }
-                  break;
-                }
-              }
-              if ($next == '') { // get the last insert query
-                $next = 'insert';
-              }
-              if ( (eregi('create', $next)) || (eregi('insert', $next)) || (eregi('drop t', $next)) ) {
-                $next = '';
-                $sql_array[] = substr($restore_query, 0, $i);
-                $restore_query = ltrim(substr($restore_query, $i+1));
-                $sql_length = strlen($restore_query);
-                $i = strpos($restore_query, ';')-1;
-              }
-            }
-          }
-
-          xtc_db_query("drop table if exists address_book, admin_access,banktransfer,content_manager,address_format, banners, banners_history, categories, categories_description, configuration, configuration_group, counter, counter_history, countries, currencies, customers, customers_basket, customers_basket_attributes, customers_info, languages, manufacturers, manufacturers_info, orders, orders_products, orders_status, orders_status_history, orders_products_attributes, orders_products_download, products, products_attributes, products_attributes_download, prodcts_description, products_options, products_options_values, products_options_values_to_products_options, products_to_categories, reviews, reviews_description, sessions, specials, tax_class, tax_rates, geo_zones, whos_online, zones, zones_to_geo_zones");
-          for ($i = 0, $n = sizeof($sql_array); $i < $n; $i++) {
-            xtc_db_query($sql_array[$i]);
-          }
-
-          xtc_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key = 'DB_LAST_RESTORE'");
-	  xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key,configuration_value,configuration_group_id) values ('DB_LAST_RESTORE', '" . $read_from . "','6')");
-
-          if ($remove_raw) {
-            unlink($restore_from);
-          }
-        }
-
-        $messageStack->add_session(SUCCESS_DATABASE_RESTORED, 'success');
-        xtc_redirect(xtc_href_link(FILENAME_BACKUP));
-        break;
-      case 'download':
-        $extension = substr($_GET['file'], -3);
-        if ( ($extension == 'zip') || ($extension == '.gz') || ($extension == 'sql') ) {
-          if ($fp = fopen(DIR_FS_BACKUP . $_GET['file'], 'rb')) {
-            $buffer = fread($fp, filesize(DIR_FS_BACKUP . $_GET['file']));
-            fclose($fp);
-            header('Content-type: application/x-octet-stream');
-            header('Content-disposition: attachment; filename=' . $_GET['file']);
-            echo $buffer;
-            exit;
-          }
-        } else {
-          $messageStack->add(ERROR_DOWNLOAD_LINK_NOT_ACCEPTABLE, 'error');
-        }
-        break;
-      case 'deleteconfirm':
-        if (strstr($_GET['file'], '..')) xtc_redirect(xtc_href_link(FILENAME_BACKUP));
-
-        xtc_remove(DIR_FS_BACKUP . '/' . $_GET['file']);
-        if (!$xtc_remove_error) {
-          $messageStack->add_session(SUCCESS_BACKUP_DELETED, 'success');
-          xtc_redirect(xtc_href_link(FILENAME_BACKUP));
-        }
-        break;
-    }
-  }
-
-// check if the backup directory exists
-  $dir_ok = false;
-  if (is_dir(DIR_FS_BACKUP)) {
-    $dir_ok = true;
-    if (!is_writeable(DIR_FS_BACKUP)) $messageStack->add(ERROR_BACKUP_DIRECTORY_NOT_WRITEABLE, 'error');
-  } else {
-    $messageStack->add(ERROR_BACKUP_DIRECTORY_DOES_NOT_EXIST, 'error');
-  }
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -308,6 +48,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<style type="text/css">
+<!--
+body{
+	overflow: auto;
+}
+td {
+	font: 11px tahoma, verdana, arial;
+	cursor: default;
+}
+input, select, div {
+	font: 11px tahoma, verdana, arial;
+}
+input.text, select {
+	width: 100%;
+}
+fieldset {
+	margin-bottom: 10px;
+}
+-->
+</style>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -325,168 +85,1002 @@
     </table></td>
 <?php } ?>
 <!-- body_text //-->
-
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
-        <td>
-
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
-       
-        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-              <tr class="dataTableHeadingRow">
-                <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_TITLE; ?></td>
-                <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_FILE_DATE; ?></td>
-                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_FILE_SIZE; ?></td>
-                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
-              </tr>
+
+<td>
+
+
 <?php
-  if ($dir_ok) {
-    $dir = dir(DIR_FS_BACKUP);
-    $contents = array();
-	 $exts = array("sql","sql.zip","sql.gz");
-    while ($file = $dir->read()) {
-      if (!is_dir(DIR_FS_BACKUP . $file)) {
-	  foreach ($exts as $value) {
-	  if (xtc_CheckExt($file, $value)) {
-	  
-        $contents[] = $file;
+
+// ["action"]=>  string(6) "backup"// ["db_backup"]=>  string(4) "oscd"// ["tables"]=>  string(0) ""// ["comp_method"]=>  string(1) "2"// ["comp_level"]=>  string(1) "9"// ["db_restore"]=>  string(4) "oscd"// ["file"]=>  string(1) "0"// ["add_prefix"]// ["update_time"]=>
+// Путь и URL к файлам бекапаdefine('PATH', 'backups/');
+define('URL',  'backups/');
+// Максимальное время выполнения скрипта в секундах
+// 0 - без ограничений
+define('TIME_LIMIT', 600);
+// Ограничение размера данных доставаемых за одно обращения к БД (в мегабайтах)
+// Нужно для ограничения количества памяти пожираемой сервером при дампе очень объемных таблиц
+define('LIMIT', 1);
+// mysql сервер
+define('DBHOST', DB_SERVER);
+//define('DBHOST', 'localhost:3306');
+// Базы данных, если сервер не разрешает просматривать список баз данных,
+// и ничего не показывается после авторизации. Перечислите названия через запятую
+define('DBNAMES', DB_DATABASE);
+// Кодировка соединения с MySQL
+// auto - автоматический выбор (устанавливается кодировка таблицы), cp1251 - windows-1251, и т.п.
+define('CHARSET', 'auto');
+// Кодировка соединения с MySQL при восстановлении
+// На случай переноса со старых версий MySQL (до 4.1), у которых не указана кодировка таблиц в дампе
+// При добавлении 'forced->', к примеру 'forced->cp1251', кодировка таблиц при восстановлении будет принудительно заменена на cp1251
+// Можно также указывать сравнение нужное к примеру 'cp1251_ukrainian_ci' или 'forced->cp1251_ukrainian_ci'
+define('RESTORE_CHARSET', 'cp1251');
+// Включить сохранение настроек и последних действий
+// Для отключения установить значение 0
+define('SC', 0);
+// Типы таблиц у которых сохраняется только структура, разделенные запятой
+define('ONLY_CREATE', 'MRG_MyISAM,MERGE,HEAP,MEMORY');
+// Глобальная статистика
+// Для отключения установить значение 0
+define('GS', 0);
+
+
+// Дальше ничего редактировать не нужно
+
+$is_safe_mode = ini_get('safe_mode') == '1' ? 1 : 0;
+if (!$is_safe_mode && function_exists('set_time_limit')) set_time_limit(TIME_LIMIT);
+
+//header("Expires: Tue, 1 Jul 2003 05:00:00 GMT");
+//header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+//header("Cache-Control: no-store, no-cache, must-revalidate");
+//header("Pragma: no-cache");
+
+$timer = array_sum(explode(' ', microtime()));
+ob_implicit_flush();
+error_reporting(E_ALL);
+
+$auth = 0;
+$error = '';
+/*
+if (!empty($_REQUEST['login']) && isset($_REQUEST['pass'])) {
+	if (@mysql_connect(DBHOST, $_REQUEST['login'], $_REQUEST['pass'])){
+		setcookie("sxd", base64_encode("SKD101:{$_REQUEST['login']}:{$_REQUEST['pass']}"));
+		header("Location: dumper1.php");
+		mysql_close();
+		exit;
+	}
+	else{
+		$error = '#' . mysql_errno() . ': ' . mysql_error();
+	}
+}
+elseif (!empty($_COOKIE['sxd'])) {
+    $user = explode(":", base64_decode($_COOKIE['sxd']));
+	if (@mysql_connect(DBHOST, $user[1], $user[2])){
+		$auth = 1;
+	}
+	else{
+		$error = '#' . mysql_errno() . ': ' . mysql_error();
+	}
+}
+*/	
+if (@mysql_connect(DBHOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD)){
+	$auth = 1;
+}
+else{
+	$error = '#' . mysql_errno() . ': ' . mysql_error();
+}
+
+if (!$auth || (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] == 'reload')) {
+	setcookie("sxd");
+	echo tpl_page(tpl_auth($error ? tpl_error($error) : ''), "<SCRIPT>if (jsEnabled) {document.write('<INPUT TYPE=submit VALUE=Применить>');}</SCRIPT>");
+	echo "<SCRIPT>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . " сек.'</SCRIPT>";
+	exit;
+}
+if (!file_exists(PATH) && !$is_safe_mode) {
+    mkdir(PATH, 0777) || trigger_error("Не удалось создать каталог для бекапа", E_USER_ERROR);
+}
+
+$SK = new dumper();
+define('C_DEFAULT', 1);
+define('C_RESULT', 2);
+define('C_ERROR', 3);
+define('C_WARNING', 4);
+
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+switch($action){
+	case 'backup':
+		$SK->backup();
+		break;
+	case 'restore':
+		$SK->restore();
+		break;
+	default:
+		$SK->main();
+}
+
+mysql_close();
+
+echo "<SCRIPT>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . " сек.'</SCRIPT>";
+
+class dumper {
+	function dumper() {
+		if (file_exists(PATH . "dumper.cfg.php")) {
+		    include(PATH . "dumper.cfg.php");
 		}
+		else{
+			$this->SET['last_action'] = 0;
+			$this->SET['last_db_backup'] = '';
+			$this->SET['tables'] = '';
+			$this->SET['comp_method'] = 2;
+			$this->SET['comp_level']  = 7;
+			$this->SET['last_db_restore'] = '';
 		}
-      }
-    }
-    sort($contents);
+		$this->tabs = 0;
+		$this->records = 0;
+		$this->size = 0;
+		$this->comp = 0;
 
-    for ($files = 0, $count = sizeof($contents); $files < $count; $files++) {
-      $entry = $contents[$files];
+		// Версия MySQL вида 40101
+		preg_match("/^(\d+)\.(\d+)\.(\d+)/", mysql_get_server_info(), $m);
+		$this->mysql_version = sprintf("%d%02d%02d", $m[1], $m[2], $m[3]);
 
-      $check = 0;
+		$this->only_create = explode(',', ONLY_CREATE);
+		$this->forced_charset  = false;
+		$this->restore_charset = $this->restore_collate = '';
+		if (preg_match("/^(forced->)?(([a-z0-9]+)(\_\w+)?)$/", RESTORE_CHARSET, $matches)) {
+			$this->forced_charset  = $matches[1] == 'forced->';
+			$this->restore_charset = $matches[3];
+			$this->restore_collate = !empty($matches[4]) ? ' COLLATE ' . $matches[2] : '';
+		}
+	}
 
-      if (((!$_GET['file']) || ($_GET['file'] == $entry)) && (!$buInfo) && ($_GET['action'] != 'backup') && ($_GET['action'] != 'restorelocal')) {
-        $file_array['file'] = $entry;
-        $file_array['date'] = date(PHP_DATE_TIME_FORMAT, filemtime(DIR_FS_BACKUP . $entry));
-        $file_array['size'] = number_format(filesize(DIR_FS_BACKUP . $entry)) . ' bytes';
-        switch (substr($entry, -3)) {
-          case 'zip': $file_array['compression'] = 'ZIP'; break;
-          case '.gz': $file_array['compression'] = 'GZIP'; break;
-          default: $file_array['compression'] = TEXT_NO_EXTENSION; break;
+	function backup() {
+		if (!isset($_REQUEST)) {$this->main();}
+		set_error_handler("SXD_errorHandler");
+		$buttons = "<A ID=save HREF='' STYLE='display: none;'>Скачать файл</A> &nbsp; <INPUT ID=back TYPE=button VALUE='Вернуться' DISABLED onClick=\"history.back();\">";
+		echo tpl_page(tpl_process("Создается резервная копия БД"), $buttons);
+
+		$this->SET['last_action']     = 0;
+		$this->SET['last_db_backup']  = isset($_REQUEST['db_backup']) ? $_REQUEST['db_backup'] : '';
+		$this->SET['tables_exclude']  = !empty($_REQUEST['tables']) && $_REQUEST['tables']{0} == '^' ? 1 : 0;
+		$this->SET['tables']          = isset($_REQUEST['tables']) ? $_REQUEST['tables'] : '';
+		$this->SET['comp_method']     = isset($_REQUEST['comp_method']) ? intval($_REQUEST['comp_method']) : 0;
+		$this->SET['comp_level']      = isset($_REQUEST['comp_level']) ? intval($_REQUEST['comp_level']) : 0;
+		$this->fn_save();
+
+		$this->SET['tables']          = explode(",", $this->SET['tables']);
+		if (!empty($_REQUEST['tables'])) {
+		    foreach($this->SET['tables'] AS $table){
+    			$table = preg_replace("/[^\w*?^]/", "", $table);
+				$pattern = array( "/\?/", "/\*/");
+				$replace = array( ".", ".*?");
+				$tbls[] = preg_replace($pattern, $replace, $table);
+    		}
+		}
+		else{
+			$this->SET['tables_exclude'] = 1;
+		}
+
+		if ($this->SET['comp_level'] == 0) {
+		    $this->SET['comp_method'] = 0;
+		}
+		$db = $this->SET['last_db_backup'];
+
+		if (!$db) {
+			echo tpl_l("ОШИБКА! Не указана база данных!", C_ERROR);
+			echo tpl_enableBack();
+		    exit;
+		}
+		echo tpl_l("Подключение к БД `{$db}`.");
+		mysql_select_db($db) or trigger_error ("Не удается выбрать базу данных.<BR>" . mysql_error(), E_USER_ERROR);
+		$tables = array();
+        $result = mysql_query("SHOW TABLES");
+		$all = 0;
+        while($row = mysql_fetch_array($result)) {
+			$status = 0;
+			if (!empty($tbls)) {
+			    foreach($tbls AS $table){
+    				$exclude = preg_match("/^\^/", $table) ? true : false;
+    				if (!$exclude) {
+    					if (preg_match("/^{$table}$/i", $row[0])) {
+    					    $status = 1;
+    					}
+    					$all = 1;
+    				}
+    				if ($exclude && preg_match("/{$table}$/i", $row[0])) {
+    				    $status = -1;
+    				}
+    			}
+			}
+			else {
+				$status = 1;
+			}
+			if ($status >= $all) {
+    			$tables[] = $row[0];
+    		}
         }
 
-        $buInfo = new objectInfo($file_array);
-      }
+		$tabs = count($tables);
+		// Определение размеров таблиц
+		$result = mysql_query("SHOW TABLE STATUS");
+		$tabinfo = array();
+		$tab_charset = array();
+		$tab_type = array();
+		$tabinfo[0] = 0;
+		$info = '';
+		while($item = mysql_fetch_assoc($result)){
+			//print_r($item);
+			if(in_array($item['Name'], $tables)) {
+				$item['Rows'] = empty($item['Rows']) ? 0 : $item['Rows'];
+				$tabinfo[0] += $item['Rows'];
+				$tabinfo[$item['Name']] = $item['Rows'];
+				$this->size += $item['Data_length'];
+				$tabsize[$item['Name']] = 1 + round(LIMIT * 1048576 / ($item['Avg_row_length'] + 1));
+				if($item['Rows']) $info .= "|" . $item['Rows'];
+				if (!empty($item['Collation']) && preg_match("/^([a-z0-9]+)_/i", $item['Collation'], $m)) {
+					$tab_charset[$item['Name']] = $m[1];
+				}
+				$tab_type[$item['Name']] = isset($item['Engine']) ? $item['Engine'] : $item['Type'];
+			}
+		}
+		$show = 10 + $tabinfo[0] / 50;
+		$info = $tabinfo[0] . $info;
+		$name = $db . '_' . date("Y-m-d_H-i");
+        $fp = $this->fn_open($name, "w");
+		echo tpl_l("Создание файла с резервной копией БД:<BR>\\n  -  {$this->filename}");
+		$this->fn_write($fp, "#SKD101|{$db}|{$tabs}|" . date("Y.m.d H:i:s") ."|{$info}\n\n");
+		$t=0;
+		echo tpl_l(str_repeat("-", 60));
+		$result = mysql_query("SET SQL_QUOTE_SHOW_CREATE = 1");
+		// Кодировка соединения по умолчанию
+		if ($this->mysql_version > 40101 && CHARSET != 'auto') {
+			mysql_query("SET NAMES '" . CHARSET . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>" . mysql_error(), E_USER_ERROR);
+			$last_charset = CHARSET;
+		}
+		else{
+			$last_charset = '';
+		}
+        foreach ($tables AS $table){
+			// Выставляем кодировку соединения соответствующую кодировке таблицы
+			if ($this->mysql_version > 40101 && $tab_charset[$table] != $last_charset) {
+				if (CHARSET == 'auto') {
+					mysql_query("SET NAMES '" . $tab_charset[$table] . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>" . mysql_error(), E_USER_ERROR);
+					echo tpl_l("Установлена кодировка соединения `" . $tab_charset[$table] . "`.", C_WARNING);
+					$last_charset = $tab_charset[$table];
+				}
+				else{
+					echo tpl_l('Кодировка соединения и таблицы не совпадает:', C_ERROR);
+					echo tpl_l('Таблица `'. $table .'` -> ' . $tab_charset[$table] . ' (соединение '  . CHARSET . ')', C_ERROR);
+				}
+			}
+			echo tpl_l("Обработка таблицы `{$table}` [" . fn_int($tabinfo[$table]) . "].");
+        	// Создание таблицы
+			$result = mysql_query("SHOW CREATE TABLE `{$table}`");
+        	$tab = mysql_fetch_array($result);
+			$tab = preg_replace('/(default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP|DEFAULT CHARSET=\w+|COLLATE=\w+|character set \w+|collate \w+)/i', '/*!40101 \\1 */', $tab);
+        	$this->fn_write($fp, "DROP TABLE IF EXISTS `{$table}`;\n{$tab[1]};\n\n");
+        	// Проверяем нужно ли дампить данные
+        	if (in_array($tab_type[$table], $this->only_create)) {
+				continue;
+			}
+        	// Опредеделяем типы столбцов
+            $NumericColumn = array();
+            $result = mysql_query("SHOW COLUMNS FROM `{$table}`");
+            $field = 0;
+            while($col = mysql_fetch_row($result)) {
+            	$NumericColumn[$field++] = preg_match("/^(\w*int|year)/", $col[1]) ? 1 : 0;
+            }
+			$fields = $field;
+            $from = 0;
+			$limit = $tabsize[$table];
+			$limit2 = round($limit / 3);
+			if ($tabinfo[$table] > 0) {
+			if ($tabinfo[$table] > $limit2) {
+			    echo tpl_s(0, $t / $tabinfo[0]);
+			}
+			$i = 0;
+			$this->fn_write($fp, "INSERT INTO `{$table}` VALUES");
+            while(($result = mysql_query("SELECT * FROM `{$table}` LIMIT {$from}, {$limit}")) && ($total = mysql_num_rows($result))){
+            		while($row = mysql_fetch_row($result)) {
+                    	$i++;
+    					$t++;
 
-      if (is_object($buInfo) && ($entry == $buInfo->file)) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">' . "\n";
-        $onclick_link = 'file=' . $buInfo->file . '&action=restore';
-      } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
-        $onclick_link = 'file=' . $entry;
-      }
+						for($k = 0; $k < $fields; $k++){
+                    		if ($NumericColumn[$k])
+                    		    $row[$k] = isset($row[$k]) ? $row[$k] : "NULL";
+                    		else
+                    			$row[$k] = isset($row[$k]) ? "'" . mysql_escape_string($row[$k]) . "'" : "NULL";
+                    	}
+
+    					$this->fn_write($fp, ($i == 1 ? "" : ",") . "\n(" . implode(", ", $row) . ")");
+    					if ($i % $limit2 == 0)
+    						echo tpl_s($i / $tabinfo[$table], $t / $tabinfo[0]);
+               		}
+					mysql_free_result($result);
+					if ($total < $limit) {
+					    break;
+					}
+    				$from += $limit;
+            }
+
+			$this->fn_write($fp, ";\n\n");
+    		echo tpl_s(1, $t / $tabinfo[0]);}
+		}
+		$this->tabs = $tabs;
+		$this->records = $tabinfo[0];
+		$this->comp = $this->SET['comp_method'] * 10 + $this->SET['comp_level'];
+        echo tpl_s(1, 1);
+        echo tpl_l(str_repeat("-", 60));
+        $this->fn_close($fp);
+		echo tpl_l("Резервная копия БД `{$db}` создана.", C_RESULT);
+		echo tpl_l("Размер БД:       " . round($this->size / 1048576, 2) . " МБ", C_RESULT);
+		$filesize = round(filesize(PATH . $this->filename) / 1048576, 2) . " МБ";
+		echo tpl_l("Размер файла: {$filesize}", C_RESULT);
+		echo tpl_l("Таблиц обработано: {$tabs}", C_RESULT);
+		echo tpl_l("Строк обработано:   " . fn_int($tabinfo[0]), C_RESULT);
+		echo "<SCRIPT>with (document.getElementById('save')) {style.display = ''; innerHTML = 'Скачать файл ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</SCRIPT>";
+		// Передача данных для глобальной статистики
+		if (GS) echo "<SCRIPT>document.getElementById('GS').src = 'http://sypex.net/gs.php?b={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</SCRIPT>";
+
+	}
+
+	function restore(){
+		if (!isset($_REQUEST)) {$this->main();}
+		set_error_handler("SXD_errorHandler");
+		$buttons = "<INPUT ID=back TYPE=button VALUE='Вернуться' DISABLED onClick=\"history.back();\">";
+		echo tpl_page(tpl_process("Восстановление БД из резервной копии"), $buttons);
+
+		$this->SET['last_action']     = 1;
+		$this->SET['last_db_restore'] = isset($_REQUEST['db_restore']) ? $_REQUEST['db_restore'] : '';
+		$file						  = isset($_POST['file']) ? $_POST['file'] : '';
+		$this->fn_save();
+		$db = $this->SET['last_db_restore'];
+
+		if (!$db) {
+			echo tpl_l("ОШИБКА! Не указана база данных!", C_ERROR);
+			echo tpl_enableBack();
+		    exit;
+		}
+		echo tpl_l("Подключение к БД `{$db}`.");
+		mysql_select_db($db) or trigger_error ("Не удается выбрать базу данных.<BR>" . mysql_error(), E_USER_ERROR);
+
+		// Определение формата файла
+		if(preg_match("/^(.+?)\.sql(\.(bz2|gz))?$/", $file, $matches)) {
+			if (isset($matches[3]) && $matches[3] == 'bz2') {
+			    $this->SET['comp_method'] = 2;
+			}
+			elseif (isset($matches[2]) &&$matches[3] == 'gz'){
+				$this->SET['comp_method'] = 1;
+			}
+			else{
+				$this->SET['comp_method'] = 0;
+			}
+			$this->SET['comp_level'] = '';
+			if (!file_exists(PATH . "/{$file}")) {
+    		    echo tpl_l("ОШИБКА! Файл не найден!", C_ERROR);
+				echo tpl_enableBack();
+    		    exit;
+    		}
+			echo tpl_l("Чтение файла `{$file}`.");
+			$file = $matches[1];
+		}
+		else{
+			echo tpl_l("ОШИБКА! Не выбран файл!", C_ERROR);
+			echo tpl_enableBack();
+		    exit;
+		}
+		echo tpl_l(str_repeat("-", 60));
+		$fp = $this->fn_open($file, "r");
+		$this->file_cache = $sql = $table = $insert = '';
+        $is_skd = $query_len = $execute = $q =$t = $i = $aff_rows = 0;
+		$limit = 300;
+        $index = 4;
+		$tabs = 0;
+		$cache = '';
+		$info = array();
+
+		// Установка кодировки соединения
+		if ($this->mysql_version > 40101 && (CHARSET != 'auto' || $this->forced_charset)) { // Кодировка по умолчанию, если в дампе не указана кодировка
+			mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>" . mysql_error(), E_USER_ERROR);
+			echo tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+			$last_charset = $this->restore_charset;
+		}
+		else {
+			$last_charset = '';
+		}
+		$last_showed = '';
+		while(($str = $this->fn_read_str($fp)) !== false){
+			if (empty($str) || preg_match("/^(#|--)/", $str)) {
+				if (!$is_skd && preg_match("/^#SKD101\|/", $str)) {
+				    $info = explode("|", $str);
+					echo tpl_s(0, $t / $info[4]);
+					$is_skd = 1;
+				}
+        	    continue;
+        	}
+			$query_len += strlen($str);
+
+			if (!$insert && preg_match("/^(INSERT INTO `?([^` ]+)`? .*?VALUES)(.*)$/i", $str, $m)) {
+				if ($table != $m[2]) {
+				    $table = $m[2];
+					$tabs++;
+					$cache .= tpl_l("Таблица `{$table}`.");
+					$last_showed = $table;
+					$i = 0;
+					if ($is_skd)
+					    echo tpl_s(100 , $t / $info[4]);
+				}
+        	    $insert = $m[1] . ' ';
+				$sql .= $m[3];
+				$index++;
+				$info[$index] = isset($info[$index]) ? $info[$index] : 0;
+				$limit = round($info[$index] / 20);
+				$limit = $limit < 300 ? 300 : $limit;
+				if ($info[$index] > $limit){
+					echo $cache;
+					$cache = '';
+					echo tpl_s(0 / $info[$index], $t / $info[4]);
+				}
+        	}
+			else{
+        		$sql .= $str;
+				if ($insert) {
+				    $i++;
+    				$t++;
+    				if ($is_skd && $info[$index] > $limit && $t % $limit == 0){
+    					echo tpl_s($i / $info[$index], $t / $info[4]);
+    				}
+				}
+        	}
+
+			if (!$insert && preg_match("/^CREATE TABLE (IF NOT EXISTS )?`?([^` ]+)`?/i", $str, $m) && $table != $m[2]){
+				$table = $m[2];
+				$insert = '';
+				$tabs++;
+				$is_create = true;
+				$i = 0;
+			}
+			if ($sql) {
+			    if (preg_match("/;$/", $str)) {
+            		$sql = rtrim($insert . $sql, ";");
+					if (empty($insert)) {
+						if ($this->mysql_version < 40101) {
+				    		$sql = preg_replace("/ENGINE\s?=/", "TYPE=", $sql);
+						}
+						elseif (preg_match("/CREATE TABLE/i", $sql)){
+							// Выставляем кодировку соединения
+							if (preg_match("/(CHARACTER SET|CHARSET)[=\s]+(\w+)/i", $sql, $charset)) {
+								if (!$this->forced_charset && $charset[2] != $last_charset) {
+									if (CHARSET == 'auto') {
+										mysql_query("SET NAMES '" . $charset[2] . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>{$sql}<BR>" . mysql_error(), E_USER_ERROR);
+										$cache .= tpl_l("Установлена кодировка соединения `" . $charset[2] . "`.", C_WARNING);
+										$last_charset = $charset[2];
+									}
+									else{
+										$cache .= tpl_l('Кодировка соединения и таблицы не совпадает:', C_ERROR);
+										$cache .= tpl_l('Таблица `'. $table .'` -> ' . $charset[2] . ' (соединение '  . $this->restore_charset . ')', C_ERROR);
+									}
+								}
+								// Меняем кодировку если указано форсировать кодировку
+								if ($this->forced_charset) {
+									$sql = preg_replace("/(\/\*!\d+\s)?((COLLATE)[=\s]+)\w+(\s+\*\/)?/i", '', $sql);
+									$sql = preg_replace("/((CHARACTER SET|CHARSET)[=\s]+)\w+/i", "\\1" . $this->restore_charset . $this->restore_collate, $sql);
+								}
+							}
+							elseif(CHARSET == 'auto'){ // Вставляем кодировку для таблиц, если она не указана и установлена auto кодировка
+								$sql .= ' DEFAULT CHARSET=' . $this->restore_charset . $this->restore_collate;
+								if ($this->restore_charset != $last_charset) {
+									mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>{$sql}<BR>" . mysql_error(), E_USER_ERROR);
+									$cache .= tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+									$last_charset = $this->restore_charset;
+								}
+							}
+						}
+						if ($last_showed != $table) {$cache .= tpl_l("Таблица `{$table}`."); $last_showed = $table;}
+					}
+					elseif($this->mysql_version > 40101 && empty($last_charset)) { // Устанавливаем кодировку на случай если отсутствует CREATE TABLE
+						mysql_query("SET $this->restore_charset '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<BR>{$sql}<BR>" . mysql_error(), E_USER_ERROR);
+						echo tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+						$last_charset = $this->restore_charset;
+					}
+            		$insert = '';
+            	    $execute = 1;
+            	}
+            	if ($query_len >= 65536 && preg_match("/,$/", $str)) {
+            		$sql = rtrim($insert . $sql, ",");
+            	    $execute = 1;
+            	}
+    			if ($execute) {
+            		$q++;
+            		mysql_query($sql) or trigger_error ("Неправильный запрос.<BR>" . mysql_error(), E_USER_ERROR);
+					if (preg_match("/^insert/i", $sql)) {
+            		    $aff_rows += mysql_affected_rows();
+            		}
+            		$sql = '';
+            		$query_len = 0;
+            		$execute = 0;
+            	}
+			}
+		}
+		echo $cache;
+		echo tpl_s(1 , 1);
+		echo tpl_l(str_repeat("-", 60));
+		echo tpl_l("БД восстановлена из резервной копии.", C_RESULT);
+		if (isset($info[3])) echo tpl_l("Дата создания копии: {$info[3]}", C_RESULT);
+		echo tpl_l("Запросов к БД: {$q}", C_RESULT);
+		echo tpl_l("Таблиц создано: {$tabs}", C_RESULT);
+		echo tpl_l("Строк добавлено: {$aff_rows}", C_RESULT);
+
+		$this->tabs = $tabs;
+		$this->records = $aff_rows;
+		$this->size = filesize(PATH . $this->filename);
+		$this->comp = $this->SET['comp_method'] * 10 + $this->SET['comp_level'];
+		echo "<SCRIPT>document.getElementById('back').disabled = 0;</SCRIPT>";
+		// Передача данных для глобальной статистики
+		if (GS) echo "<SCRIPT>document.getElementById('GS').src = 'http://sypex.net/gs.php?r={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</SCRIPT>";
+
+		$this->fn_close($fp);
+	}
+
+	function main(){
+		$this->comp_levels = array('9' => '9 (максимальная)', '8' => '8', '7' => '7', '6' => '6', '5' => '5 (средняя)', '4' => '4', '3' => '3', '2' => '2', '1' => '1 (минимальная)','0' => 'Без сжатия');
+
+		if (function_exists("bzopen")) {
+		    $this->comp_methods[2] = 'BZip2';
+		}
+		if (function_exists("gzopen")) {
+		    $this->comp_methods[1] = 'GZip';
+		}
+		$this->comp_methods[0] = 'Без сжатия';
+		if (count($this->comp_methods) == 1) {
+		    $this->comp_levels = array('0' =>'Без сжатия');
+		}
+
+		$dbs = $this->db_select();
+		$this->vars['db_backup']    = $this->fn_select($dbs, $this->SET['last_db_backup']);
+		$this->vars['db_restore']   = $this->fn_select($dbs, $this->SET['last_db_restore']);
+		$this->vars['comp_levels']  = $this->fn_select($this->comp_levels, $this->SET['comp_level']);
+		$this->vars['comp_methods'] = $this->fn_select($this->comp_methods, $this->SET['comp_method']);
+		$this->vars['tables']       = $this->SET['tables'];
+		$this->vars['files']        = $this->fn_select($this->file_select(), '');
+		$buttons = "<INPUT TYPE=submit VALUE=Применить>";
+		echo tpl_page(tpl_main(), $buttons);
+	}
+
+	function db_select(){
+		if (DBNAMES != '') {
+			$items = explode(',', trim(DBNAMES));
+			foreach($items AS $item){
+    			if (mysql_select_db($item)) {
+    				$tables = mysql_query("SHOW TABLES");
+    				if ($tables) {
+    	  			    $tabs = mysql_num_rows($tables);
+    	  				$dbs[$item] = "{$item} ({$tabs})";
+    	  			}
+    			}
+			}
+		}
+		else {
+    		$result = mysql_query("SHOW DATABASES");
+    		$dbs = array();
+    		while($item = mysql_fetch_array($result)){
+    			if (mysql_select_db($item[0])) {
+    				$tables = mysql_query("SHOW TABLES");
+    				if ($tables) {
+    	  			    $tabs = mysql_num_rows($tables);
+    	  				$dbs[$item[0]] = "{$item[0]} ({$tabs})";
+    	  			}
+    			}
+    		}
+		}
+	    return $dbs;
+	}
+
+	function file_select(){
+		$files = array('' => ' ');
+		if (is_dir(PATH) && $handle = opendir(PATH)) {
+            while (false !== ($file = readdir($handle))) {
+                if (preg_match("/^.+?\.sql(\.(gz|bz2))?$/", $file)) {
+                    $files[$file] = $file;
+                }
+            }
+            closedir($handle);
+        }
+        ksort($files);
+		return $files;
+	}
+
+	function fn_open($name, $mode){
+		if ($this->SET['comp_method'] == 2) {
+			$this->filename = "{$name}.sql.bz2";
+		    return bzopen(PATH . $this->filename, "{$mode}b{$this->SET['comp_level']}");
+		}
+		elseif ($this->SET['comp_method'] == 1) {
+			$this->filename = "{$name}.sql.gz";
+		    return gzopen(PATH . $this->filename, "{$mode}b{$this->SET['comp_level']}");
+		}
+		else{
+			$this->filename = "{$name}.sql";
+			return fopen(PATH . $this->filename, "{$mode}b");
+		}
+	}
+
+	function fn_write($fp, $str){
+		if ($this->SET['comp_method'] == 2) {
+		    bzwrite($fp, $str);
+		}
+		elseif ($this->SET['comp_method'] == 1) {
+		    gzwrite($fp, $str);
+		}
+		else{
+			fwrite($fp, $str);
+		}
+	}
+
+	function fn_read($fp){
+		if ($this->SET['comp_method'] == 2) {
+		    return bzread($fp, 4096);
+		}
+		elseif ($this->SET['comp_method'] == 1) {
+		    return gzread($fp, 4096);
+		}
+		else{
+			return fread($fp, 4096);
+		}
+	}
+
+	function fn_read_str($fp){
+		$string = '';
+		$this->file_cache = ltrim($this->file_cache);
+		$pos = strpos($this->file_cache, "\n", 0);
+		if ($pos < 1) {
+			while (!$string && ($str = $this->fn_read($fp))){
+    			$pos = strpos($str, "\n", 0);
+    			if ($pos === false) {
+    			    $this->file_cache .= $str;
+    			}
+    			else{
+    				$string = $this->file_cache . substr($str, 0, $pos);
+    				$this->file_cache = substr($str, $pos + 1);
+    			}
+    		}
+			if (!$str) {
+			    if ($this->file_cache) {
+					$string = $this->file_cache;
+					$this->file_cache = '';
+				    return trim($string);
+				}
+			    return false;
+			}
+		}
+		else {
+  			$string = substr($this->file_cache, 0, $pos);
+  			$this->file_cache = substr($this->file_cache, $pos + 1);
+		}
+		return trim($string);
+	}
+
+	function fn_close($fp){
+		if ($this->SET['comp_method'] == 2) {
+		    bzclose($fp);
+		}
+		elseif ($this->SET['comp_method'] == 1) {
+		    gzclose($fp);
+		}
+		else{
+			fclose($fp);
+		}
+		@chmod(PATH . $this->filename, 0666);
+		$this->fn_index();
+	}
+
+	function fn_select($items, $selected){
+		$select = '';
+		foreach($items AS $key => $value){
+			$select .= $key == $selected ? "<OPTION VALUE='{$key}' SELECTED>{$value}" : "<OPTION VALUE='{$key}'>{$value}";
+		}
+		return $select;
+	}
+
+	function fn_save(){
+		if (SC) {
+			$ne = !file_exists(PATH . "dumper.cfg.php");
+		    $fp = fopen(PATH . "dumper.cfg.php", "wb");
+        	fwrite($fp, "<?php\n\$this->SET = " . fn_arr2str($this->SET) . "\n?>");
+        	fclose($fp);
+			if ($ne) @chmod(PATH . "dumper.cfg.php", 0666);
+			$this->fn_index();
+		}
+	}
+
+	function fn_index(){
+		if (!file_exists(PATH . 'index.html')) {
+		    $fh = fopen(PATH . 'index.html', 'wb');
+			fwrite($fh, tpl_backup_index());
+			fclose($fh);
+			@chmod(PATH . 'index.html', 0666);
+		}
+	}
+}
+
+function fn_int($num){
+	return number_format($num, 0, ',', ' ');
+}
+
+function fn_arr2str($array) {
+	$str = "array(\n";
+	foreach ($array as $key => $value) {
+		if (is_array($value)) {
+			$str .= "'$key' => " . fn_arr2str($value) . ",\n\n";
+		}
+		else {
+			$str .= "'$key' => '" . str_replace("'", "\'", $value) . "',\n";
+		}
+	}
+	return $str . ")";
+}
+
+// Шаблоны
+
+function tpl_page($content = '', $buttons = ''){
+return <<<HTML
+<TABLE WIDTH=100% HEIGHT=100% BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>
+<TR>
+<TD HEIGHT=60% ALIGN=LEFT VALIGN=MIDDLE>
+<TABLE WIDTH=360 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD VALIGN=TOP STYLE="border: 1px solid #919B9C;">
+<TABLE WIDTH=100% HEIGHT=100% BORDER=0 CELLSPACING=1 CELLPADDING=0>
+<TR>
+<FORM NAME=skb METHOD=POST ACTION=backup.php>
+<TD VALIGN=TOP BGCOLOR=#F4F3EE STYLE="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#FCFBFE,endColorStr=#F4F3EE); padding: 8px 8px;">
+{$content}
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD STYLE='color: #CECECE' ID=timer></TD>
+<TD ALIGN=RIGHT>{$buttons}</TD>
+</TR>
+</TABLE></TD>
+</FORM>
+</TR>
+</TABLE></TD>
+</TR>
+</TABLE></TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+HTML;
+}
+
+function tpl_main(){
+global $SK;
+return <<<HTML
+<FIELDSET onClick="document.skb.action[0].checked = 1;">
+<LEGEND>
+<INPUT TYPE=radio NAME=action VALUE=backup>
+Backup / Создание резервной копии БД&nbsp;</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD WIDTH=35%>БД:</TD>
+<TD WIDTH=65%><SELECT NAME=db_backup>
+{$SK->vars['db_backup']}
+</SELECT></TD>
+</TR>
+<TR>
+<TD>Фильтр таблиц:</TD>
+<TD><INPUT NAME=tables TYPE=text CLASS=text VALUE='{$SK->vars['tables']}'></TD>
+</TR>
+<TR>
+<TD>Метод сжатия:</TD>
+<TD><SELECT NAME=comp_method>
+{$SK->vars['comp_methods']}
+</SELECT></TD>
+</TR>
+<TR>
+<TD>Степень сжатия:</TD>
+<TD><SELECT NAME=comp_level>
+{$SK->vars['comp_levels']}
+</SELECT></TD>
+</TR>
+</TABLE>
+</FIELDSET>
+<FIELDSET onClick="document.skb.action[1].checked = 1;">
+<LEGEND>
+<INPUT TYPE=radio NAME=action VALUE=restore>
+Restore / Восстановление БД из резервной копии&nbsp;</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD>БД:</TD>
+<TD><SELECT NAME=db_restore>
+{$SK->vars['db_restore']}
+</SELECT></TD>
+</TR>
+<TR>
+<TD WIDTH=35%>Файл:</TD>
+<TD WIDTH=65%><SELECT NAME=file>
+{$SK->vars['files']}
+</SELECT></TD>
+</TR>
+</TABLE>
+</FIELDSET>
+</SPAN>
+<SCRIPT>
+document.skb.action[{$SK->SET['last_action']}].checked = 1;
+</SCRIPT>
+
+HTML;
+}
+
+function tpl_process($title){
+return <<<HTML
+<FIELDSET>
+<LEGEND>{$title}&nbsp;</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR><TD COLSPAN=2><DIV ID=logarea STYLE="width: 100%; height: 140px; border: 1px solid #7F9DB9; padding: 3px; overflow: auto;"></DIV></TD></TR>
+<TR><TD WIDTH=31%>Статус таблицы:</TD><TD WIDTH=69%><TABLE WIDTH=100% BORDER=1 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR=#FFFFFF><TABLE WIDTH=1 BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR=#5555CC ID=st_tab
+STYLE="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#CCCCFF,endColorStr=#5555CC);
+border-right: 1px solid #AAAAAA"><TR><TD HEIGHT=12></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+<TR><TD>Общий статус:</TD><TD><TABLE WIDTH=100% BORDER=1 CELLSPACING=0 CELLPADDING=0>
+<TR><TD BGCOLOR=#FFFFFF><TABLE WIDTH=1 BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR=#00AA00 ID=so_tab
+STYLE="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#CCFFCC,endColorStr=#00AA00);
+border-right: 1px solid #AAAAAA"><TR><TD HEIGHT=12></TD></TR></TABLE></TD>
+</TR></TABLE></TD></TR></TABLE>
+</FIELDSET>
+<SCRIPT>
+var WidthLocked = false;
+function s(st, so){
+	document.getElementById('st_tab').width = st ? st + '%' : '1';
+	document.getElementById('so_tab').width = so ? so + '%' : '1';
+}
+function l(str, color){
+	switch(color){
+		case 2: color = 'navy'; break;
+		case 3: color = 'red'; break;
+		case 4: color = 'maroon'; break;
+		default: color = 'black';
+	}
+	with(document.getElementById('logarea')){
+		if (!WidthLocked){
+			style.width = clientWidth;
+			WidthLocked = true;
+		}
+		str = '<FONT COLOR=' + color + '>' + str + '</FONT>';
+		innerHTML += innerHTML ? "<BR>\\n" + str : str;
+		scrollTop += 14;
+	}
+}
+</SCRIPT>
+HTML;
+}
+
+function tpl_auth($error){
+return <<<HTML
+<SPAN ID=error>
+<FIELDSET>
+<LEGEND>Ошибка</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD>Для работы Sypex Dumper Lite требуется:<BR> - Internet Explorer 5.5+, Mozilla либо Opera 8+ (<SPAN ID=sie>-</SPAN>)<BR> - включено выполнение JavaScript скриптов (<SPAN ID=sjs>-</SPAN>)</TD>
+</TR>
+</TABLE>
+</FIELDSET>
+</SPAN>
+<SPAN ID=body STYLE="display: none;">
+{$error}
+<FIELDSET>
+<LEGEND>Введите логин и пароль</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD WIDTH=41%>Логин:</TD>
+<TD WIDTH=59%><INPUT NAME=login TYPE=text CLASS=text></TD>
+</TR>
+<TR>
+<TD>Пароль:</TD>
+<TD><INPUT NAME=pass TYPE=password CLASS=text></TD>
+</TR>
+</TABLE>
+</FIELDSET>
+</SPAN>
+<SCRIPT>
+document.getElementById('sjs').innerHTML = '+';
+document.getElementById('body').style.display = '';
+document.getElementById('error').style.display = 'none';
+var jsEnabled = true;
+</SCRIPT>
+HTML;
+}
+
+function tpl_l($str, $color = C_DEFAULT){
+$str = preg_replace("/\s{2}/", " &nbsp;", $str);
+return <<<HTML
+<SCRIPT>l('{$str}', $color);</SCRIPT>
+
+HTML;
+}
+
+function tpl_enableBack(){
+return <<<HTML
+<SCRIPT>document.getElementById('back').disabled = 0;</SCRIPT>
+
+HTML;
+}
+
+function tpl_s($st, $so){
+$st = round($st * 100);
+$st = $st > 100 ? 100 : $st;
+$so = round($so * 100);
+$so = $so > 100 ? 100 : $so;
+return <<<HTML
+<SCRIPT>s({$st},{$so});</SCRIPT>
+
+HTML;
+}
+
+function tpl_backup_index(){
+return <<<HTML
+<CENTER>
+<H1>У вас нет прав для просмотра этого каталога</H1>
+</CENTER>
+
+HTML;
+}
+
+function tpl_error($error){
+return <<<HTML
+<FIELDSET>
+<LEGEND>Ошибка при подключении к БД</LEGEND>
+<TABLE WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=2>
+<TR>
+<TD ALIGN=center>{$error}</TD>
+</TR>
+</TABLE>
+</FIELDSET>
+
+HTML;
+}
+
+function SXD_errorHandler($errno, $errmsg, $filename, $linenum, $vars) {
+	if ($errno == 2048) return true;
+	if (preg_match("/chmod\(\).*?: Operation not permitted/", $errmsg)) return true;
+    $dt = date("Y.m.d H:i:s");
+    $errmsg = addslashes($errmsg);
+
+	echo tpl_l("{$dt}<BR><B>Возникла ошибка!</B>", C_ERROR);
+	echo tpl_l("{$errmsg} ({$errno})", C_ERROR);
+	echo tpl_enableBack();
+	die();
+}
 ?>
-                <td class="dataTableContent" onclick="document.location.href='<?php echo xtc_href_link(FILENAME_BACKUP, $onclick_link); ?>'"><?php echo '<a href="' . xtc_href_link(FILENAME_BACKUP, 'action=download&file=' . $entry) . '">' . xtc_image(DIR_WS_ICONS . 'file_download.gif', ICON_FILE_DOWNLOAD) . '</a>&nbsp;' . $entry; ?></td>
-                <td class="dataTableContent" align="center" onclick="document.location.href='<?php echo xtc_href_link(FILENAME_BACKUP, $onclick_link); ?>'"><?php echo date(PHP_DATE_TIME_FORMAT, filemtime(DIR_FS_BACKUP . $entry)); ?></td>
-                <td class="dataTableContent" align="right" onclick="document.location.href='<?php echo xtc_href_link(FILENAME_BACKUP, $onclick_link); ?>'"><?php echo number_format(filesize(DIR_FS_BACKUP . $entry)); ?> bytes</td>
-                <td class="dataTableContent" align="right"><?php if ( (is_object($buInfo)) && ($entry == $buInfo->file) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $entry) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
-              </tr>
-<?php
-    }
-    $dir->close();
-  }
-?>
-              <tr>
-                <td class="smallText" colspan="2"><?php echo TEXT_BACKUP_DIRECTORY . ' ' . DIR_FS_BACKUP; ?></td>
-                <td align="right" class="smallText" colspan="2"><?php if ( ($_GET['action'] != 'backup') && ($dir) ) echo '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'action=backup') . '">' . BUTTON_BACKUP . '</a>'; if ( ($_GET['action'] != 'restorelocal') && ($dir) ) echo '&nbsp;&nbsp;<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'action=restorelocal') . '">' . BUTTON_RESTORE . '</a>'; ?></td>
-              </tr>
-<?php
-  if (defined('DB_LAST_RESTORE')) {
-?>
-              <tr>
-                <td class="smallText" colspan="4"><?php echo TEXT_LAST_RESTORATION . ' ' . DB_LAST_RESTORE . ' <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'action=forget') . '">' . TEXT_FORGET . '</a>'; ?></td>
-              </tr>
-<?php
-  }
-?>
-            </table></td>
-<?php
-  $heading = array();
-  $contents = array();
-  switch ($_GET['action']) {
-    case 'backup':
-      $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_NEW_BACKUP . '</b>');
 
-      $contents = array('form' => xtc_draw_form('backup', FILENAME_BACKUP, 'action=backupnow'));
-      $contents[] = array('text' => TEXT_INFO_NEW_BACKUP);
+</td>
 
-      if ($messageStack->size > 0) {
-        $contents[] = array('text' => '<br />' . xtc_draw_radio_field('compress', 'no', true) . ' ' . TEXT_INFO_USE_NO_COMPRESSION);
-        $contents[] = array('text' => '<br />' . xtc_draw_radio_field('download', 'yes', true) . ' ' . TEXT_INFO_DOWNLOAD_ONLY . '*<br /><br />*' . TEXT_INFO_BEST_THROUGH_HTTPS);
-      } else {
-        $contents[] = array('text' => '<br />' . xtc_draw_radio_field('compress', 'gzip', true) . ' ' . TEXT_INFO_USE_GZIP);
-        $contents[] = array('text' => xtc_draw_radio_field('compress', 'zip') . ' ' . TEXT_INFO_USE_ZIP);
-        $contents[] = array('text' => xtc_draw_radio_field('compress', 'no') . ' ' . TEXT_INFO_USE_NO_COMPRESSION);
-        $contents[] = array('text' => '<br />' . xtc_draw_checkbox_field('download', 'yes') . ' ' . TEXT_INFO_DOWNLOAD_ONLY . '*<br /><br />*' . TEXT_INFO_BEST_THROUGH_HTTPS);
-      }
-
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_BACKUP . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP) . '">' . BUTTON_CANCEL . '</a>');
-      break;
-    case 'restore':
-      $heading[] = array('text' => '<b>' . $buInfo->date . '</b>');
-
-      $contents[] = array('text' => xtc_break_string(sprintf(TEXT_INFO_RESTORE, DIR_FS_BACKUP . (($buInfo->compression != TEXT_NO_EXTENSION) ? substr($buInfo->file, 0, strrpos($buInfo->file, '.')) : $buInfo->file), ($buInfo->compression != TEXT_NO_EXTENSION) ? TEXT_INFO_UNPACK : ''), 35, ' '));
-      $contents[] = array('align' => 'center', 'text' => '<br /><a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $buInfo->file . '&action=restorenow') . '">' . BUTTON_RESTORE . '</a>&nbsp;<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $buInfo->file) . '">' . BUTTON_CANCEL . '</a>');
-      break;
-    case 'restorelocal':
-      $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_RESTORE_LOCAL . '</b>');
-
-      $contents = array('form' => xtc_draw_form('restore', FILENAME_BACKUP, 'action=restorelocalnow', 'post', 'enctype="multipart/form-data"'));
-      $contents[] = array('text' => TEXT_INFO_RESTORE_LOCAL . '<br /><br />' . TEXT_INFO_BEST_THROUGH_HTTPS);
-      $contents[] = array('text' => '<br />' . xtc_draw_file_field('sql_file'));
-      $contents[] = array('text' => TEXT_INFO_RESTORE_LOCAL_RAW_FILE);
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_RESTORE . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP) . '">' . BUTTON_CANCEL . '</a>');
-      break;
-    case 'delete':
-      $heading[] = array('text' => '<b>' . $buInfo->date . '</b>');
-
-      $contents = array('form' => xtc_draw_form('delete', FILENAME_BACKUP, 'file=' . $buInfo->file . '&action=deleteconfirm'));
-      $contents[] = array('text' => TEXT_DELETE_INTRO);
-      $contents[] = array('text' => '<br /><b>' . $buInfo->file . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/> <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $buInfo->file) . '">' . BUTTON_CANCEL . '</a>');
-      break;
-    default:
-      if (is_object($buInfo)) {
-        $heading[] = array('text' => '<b>' . $buInfo->date . '</b>');
-
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $buInfo->file . '&action=restore') . '">' . BUTTON_RESTORE . '</a> <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BACKUP, 'file=' . $buInfo->file . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
-        $contents[] = array('text' => '<br />' . TEXT_INFO_DATE . ' ' . $buInfo->date);
-        $contents[] = array('text' => TEXT_INFO_SIZE . ' ' . $buInfo->size);
-        $contents[] = array('text' => '<br />' . TEXT_INFO_COMPRESSION . ' ' . $buInfo->compression);
-      }
-      break;
-  }
-
-  if ( (xtc_not_null($heading)) && (xtc_not_null($contents)) ) {
-    echo '            <td width="25%" valign="top">' . "\n";
-
-    $box = new box;
-    echo $box->infoBox($heading, $contents);
-
-    echo '            </td>' . "\n";
-  }
-?>
           </tr>
         </table></td>
       </tr>
+
+<tr>
+<td align="center">
+Powered by <a href=http://sypex.net/products/dumper/>Sypex Dumper Lite</a>
+</td>
+</tr>
+     
     </table></td>
 <!-- body_text_eof //-->
   </tr>
+      
 </table>
 <!-- body_eof //-->
 
 <!-- footer //-->
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 <!-- footer_eof //-->
-<br />
+<br>
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
