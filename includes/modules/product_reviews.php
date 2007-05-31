@@ -38,5 +38,15 @@ if ($product->getReviewsCount() > 0) {
 
 	$info_smarty->assign('MODULE_products_reviews', $module);
 
+} else {
+	$module_smarty->assign('BUTTON_WRITE', '<a href="'.xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, xtc_product_link($product->data['products_id'],$product->data['products_name'])).'">'.xtc_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$module_smarty->assign('TEXT_FIRST_REVIEW', TEXT_FIRST_REVIEW);
+
+	$module_smarty->assign('language', $_SESSION['language']);
+	$module_smarty->assign('module_content', $product->getReviews());
+	$module_smarty->caching = 0;
+	$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/products_reviews.html');
+
+	$info_smarty->assign('MODULE_products_reviews', $module);
 }
 ?>
