@@ -46,4 +46,7 @@ define('TEXT_OF_5_STARS', '%s из 5 Звёзд!');
 define('TEXT_GOOD', '<small><font color="#ff0000"><b>ХОРОШО</b></font></small>');
 define('TEXT_BAD', '<small><font color="#ff0000"><b>ПЛОХО</b></font></small>');
 define('TEXT_INFO_HEADING_DELETE_REVIEW', 'Удалить отзыв');
+
+define('TEXT_IMAGE_NONEXISTENT','Картинка отсутствует');
+
 ?>
