@@ -36,7 +36,7 @@ define('TEXT_INFORMATIONS','Информация');
 define('TEXT_MARKED_ELEMENTS','Отмеченные элементы');
 define('TEXT_INSERT_ELEMENT','Новый элемент');
 
-define('TEXT_WARN_MAIN','Основной');
+define('TEXT_WARN_MAIN','0');
 define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
 define('TEXT_CATEGORIES', 'Категории:');
 define('TEXT_PRODUCTS', 'Товаров на странице:');
