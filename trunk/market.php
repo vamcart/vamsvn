@@ -196,7 +196,7 @@ for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <
 			for ($ic=0,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
 				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
 			}
-			echo (xtc_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
+			echo (xtc_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
 					 (YML_DELIVERYINCLUDED == "true" ? "  <deliveryIncluded/>\n" : "") .
 					 "  <name>" . _clear_string($prev_prod['products_name']) . "</name>\n";
 			if ($prev_prod['manufacturers_id'] != 0) {
