@@ -34,6 +34,7 @@
   define('TITLE_DATE','Дата');
   define('TEXT_SEND_TO','Получатель:');
   define('TEXT_PREVIEW','<b>Предварительные просмотр:</b>');
-  define('TEXT_REMOVE_LINK', 'Отказаться от подписки');
+  define('TEXT_REMOVE_LINK', 'Отказаться от рассылки');
+  define('TEXT_NEWSLETTER_REMOVE', 'Отказаться от рассылки: ');
 
 ?>
