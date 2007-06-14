@@ -33,6 +33,21 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] 
 if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] == $_SESSION['vvcode']) {
 	if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
+    $rating = xtc_db_prepare_input($_POST['rating']);
+    $review = xtc_db_prepare_input($_POST['review']);
+
+    $error = false;
+    if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
+      $error = true;
+   	$smarty->assign('error', ERROR_INVALID_PRODUCT);
+    }
+
+    if (($rating < 1) || ($rating > 5)) {
+      $error = true;
+   	$smarty->assign('error', ERROR_INVALID_PRODUCT);
+    }
+
+    if ($error == false) {
 		$customer = xtc_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
 		$customer_values = xtc_db_fetch_array($customer);
 		$date_now = date('Ymd');
@@ -41,9 +56,11 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] 
 		xtc_db_query("insert into ".TABLE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('".$product->data['products_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname']).' '.addslashes($customer_values['customers_lastname'])."', '".addslashes($_POST['rating'])."', now())");
 		$insert_id = xtc_db_insert_id();
 		xtc_db_query("insert into ".TABLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
-	}
+
 
 	xtc_redirect(xtc_href_link(FILENAME_PRODUCT_REVIEWS, $_POST['get_params']));
+	}
+ }
 }
 
 // lets retrieve all $HTTP_GET_VARS keys and values..
