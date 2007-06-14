@@ -26,17 +26,20 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 if ($_SESSION['customers_status']['customers_status_write_reviews'] == 0) {
              xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
 }
-if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] != $_SESSION['vvcode']) {
-	$smarty->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
-}
 
-if (isset ($_GET['action']) && $_GET['action'] == 'process' && $_POST['vvcode'] == $_SESSION['vvcode']) {
+if (isset ($_GET['action']) && $_GET['action'] == 'process') {
 	if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
     $rating = xtc_db_prepare_input($_POST['rating']);
     $review = xtc_db_prepare_input($_POST['review']);
 
     $error = false;
+    
+    if ($_POST['vvcode'] != $_SESSION['vvcode']) {
+      $error = true;
+	   $smarty->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+    }
+
     if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
       $error = true;
    	$smarty->assign('error', ERROR_INVALID_PRODUCT);
