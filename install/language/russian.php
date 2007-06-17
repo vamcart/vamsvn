@@ -211,8 +211,7 @@ define('TITLE_ADMIN_CONFIG_NOTE','* Замечание: Настройки админа');
 define('TEXT_ZONE_NO','Нет');
 define('TEXT_ZONE_YES','Да');
 define('TEXT_COMPANY','Название компании:');
-
-
+define('ENTRY_STATE_ERROR_SELECT','Укажите регион');
 
 // step7
 
