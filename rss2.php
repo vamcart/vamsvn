@@ -244,19 +244,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			$random = true;
 			$limit = " limit " . MAX_RANDOM_SELECT_NEW;
 		case "new_products":
-			switch (true) {
-				case (SHOW_NEW_PRODUCTS_LIMIT == '0'):
-					break;
-				case (SHOW_NEW_PRODUCTS_LIMIT == '1'):
-					$days_limit = " and date_format(p.products_date_added, '%Y%m') >= date_format(now(), '%Y%m')";
-					break;
-				case (SHOW_NEW_PRODUCTS_LIMIT == '30'):
-				case (SHOW_NEW_PRODUCTS_LIMIT == '60'):
-				case (SHOW_NEW_PRODUCTS_LIMIT == '90'):
-				case (SHOW_NEW_PRODUCTS_LIMIT == '120'):
-					$days_limit = ' and TO_DAYS(NOW()) - TO_DAYS(p.products_date_added) <= ' . SHOW_NEW_PRODUCTS_LIMIT;
-					break;
-			}
+					$days_limit = ' and p.products_startpage = 1';
 
 		case "products":
 		default:
