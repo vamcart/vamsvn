@@ -55,11 +55,11 @@
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
 <?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
+    <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
 <!-- left_navigation //-->
 <?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 <!-- left_navigation_eof //-->
-    </table></td>
+    </td>
 <?php } ?>
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
