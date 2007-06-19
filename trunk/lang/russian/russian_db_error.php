@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian_db_eeror.php 1260 2007/02/07 13:24:46 VaM $
+   $Id: russian_db_error.php 1260 2007/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
