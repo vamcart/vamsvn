@@ -129,6 +129,8 @@ else  return false ;
     
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
     
+    <?php echo $message->output(); ?>    
+    
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
 <?php
