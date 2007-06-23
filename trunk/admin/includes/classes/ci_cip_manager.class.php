@@ -205,7 +205,7 @@ class cip_manager {
             }
         }
         //Prints an error message at the right column
-        if ($message->size>0)    array_unshift($contents, array('text' => $message->output()."<br>"));
+//        if ($message->size>0)    array_unshift($contents, array('text' => $message->output()."<br>"));
 
         //Prints an error message at the right column
         //if (!$heading)    $heading[]=array('text' => '<b>Error</b>');
