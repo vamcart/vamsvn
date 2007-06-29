@@ -17,40 +17,65 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Резервное копирование');
+define('TEXT_DUMPER_SUBMIT', 'Применить');
+define('TEXT_DUMPER_SEC', ' сек.');
+define('TEXT_DUMPER_DIR_ERROR', 'Не удалось создать каталог для бекапа');
+define('TEXT_DUMPER_DOWNLOAD', 'Скачать файл');
+define('TEXT_DUMPER_BACK', 'Вернуться');
+define('TEXT_DUMPER_CREATE', 'Создается резервная копия БД');
+define('TEXT_DUMPER_NAME_ERROR', 'ОШИБКА! Не указана база данных!');
+define('TEXT_DUMPER_CONNECT', 'Подключение к БД ');
+define('TEXT_DUMPER_CONNECT_ERROR', 'Не удается выбрать базу данных.');
+define('TEXT_DUMPER_CREATE_FILE', 'Создание файла с резервной копией БД:');
+define('TEXT_DUMPER_CHARSET_ERROR', 'Не удается изменить кодировку соединения.');
+define('TEXT_DUMPER_CHARSET', 'Установлена кодировка соединения ');
+define('TEXT_DUMPER_CHARSET_COLLATION', 'Кодировка соединения и таблицы не совпадает:');
+define('TEXT_DUMPER_TABLE', 'Таблица ');
+define('TEXT_DUMPER_CONNECT1', 'соединение ');
+define('TEXT_DUMPER_PROCESS', 'Обработка таблицы ');
+define('TEXT_DUMPER_MAKE', 'Резервная копия БД ');
+define('TEXT_DUMPER_MAKE1', ' создана.');
+define('TEXT_DUMPER_SIZE', 'Размер БД:       ');
+define('TEXT_DUMPER_MB', ' МБ');
+define('TEXT_DUMPER_FILE_SIZE', 'Размер файла: ');
+define('TEXT_DUMPER_TABLES_COUNT', 'Таблиц обработано: ');
+define('TEXT_DUMPER_STRING_COUNT', 'Строк обработано:   ');
+define('TEXT_DUMPER_RESTORE', 'Восстановление БД из резервной копии');
+define('TEXT_DUMPER_FILE_ERROR', 'ОШИБКА! Файл не найден!');
+define('TEXT_DUMPER_FILE_READ', 'Чтение файла ');
+define('TEXT_DUMPER_FILE_ERROR1', 'ОШИБКА! Не выбран файл!');
+define('TEXT_DUMPER_QUERY_ERROR', 'Неправильный запрос.');
+define('TEXT_DUMPER_RESTORED', 'БД восстановлена из резервной копии.');
+define('TEXT_DUMPER_DATE', 'Дата создания копии: ');
+define('TEXT_DUMPER_QUERY_COUNT', 'Запросов к БД: ');
+define('TEXT_DUMPER_TABLES_CREATED', 'Таблиц создано: ');
+define('TEXT_DUMPER_STRINGS_CREATED', 'Строк добавлено: ');
+define('TEXT_DUMPER_MAX', '9 (максимальная)');
+define('TEXT_DUMPER_MED', '5 (средняя)');
+define('TEXT_DUMPER_MIN', '1 (минимальная)');
+define('TEXT_DUMPER_NO', 'Без сжатия');
 
-define('TABLE_HEADING_TITLE', 'Имя');
-define('TABLE_HEADING_FILE_DATE', 'Дата');
-define('TABLE_HEADING_FILE_SIZE', 'Размер');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TEXT_DUMPER_BACKUP', 'Создание резервной копии БД&nbsp;');
+define('TEXT_DUMPER_DB', 'БД:');
+define('TEXT_DUMPER_FILTER', 'Фильтр таблиц:');
+define('TEXT_DUMPER_COMPRESS', 'Метод сжатия:');
+define('TEXT_DUMPER_COMPRESS_LEVEL', 'Степень сжатия:');
 
-define('TEXT_INFO_HEADING_NEW_BACKUP', 'Сохранить заново');
-define('TEXT_INFO_HEADING_RESTORE_LOCAL', 'Восстановить локально');
-define('TEXT_INFO_NEW_BACKUP', 'Не прерывайте процесс, который может занять пару минут.');
-define('TEXT_INFO_UNPACK', '<br><br>(после распаковки файла из архива)');
-define('TEXT_INFO_RESTORE', 'Не прерывайте процесс восстановления.<br><br>Большая база данных, более долгий процесс!<br><br>Если возможно, используйте shell команды.<br><br>Например:<br><br><b>mysql -h' . DB_SERVER . ' -u' . DB_SERVER_USERNAME . ' -p ' . DB_DATABASE . ' < %s </b> %s');
-define('TEXT_INFO_RESTORE_LOCAL', 'Не прерывайте процесс восстановления.<br><br>Большая база данных, более долгий процесс!');
-define('TEXT_INFO_RESTORE_LOCAL_RAW_FILE', 'Загруженный файл должен быть текстовым файлом sql.');
-define('TEXT_INFO_DATE', 'Дата:');
-define('TEXT_INFO_SIZE', 'Размер:');
-define('TEXT_INFO_COMPRESSION', 'Сжатие:');
-define('TEXT_INFO_USE_GZIP', 'Использовать GZIP');
-define('TEXT_INFO_USE_ZIP', 'Использовать ZIP');
-define('TEXT_INFO_USE_NO_COMPRESSION', 'Без сжатия (Просто SQL)');
-define('TEXT_INFO_DOWNLOAD_ONLY', 'Только загрузка (Не загружайте на удаленный сервер)');
-define('TEXT_INFO_BEST_THROUGH_HTTPS', 'Наилучший вариант - связь через HTTPS');
-define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить эту копию?');
-define('TEXT_NO_EXTENSION', 'Нет');
-define('TEXT_BACKUP_DIRECTORY', 'Директория:');
-define('TEXT_LAST_RESTORATION', 'Последнее Восстановление:');
-define('TEXT_FORGET', '(<u>забыть</u>)');
+define('TEXT_DUMPER_RESTORE_DB', 'Восстановление БД из резервной копии&nbsp;');
+define('TEXT_DUMPER_FILE', 'Файл:');
 
-define('ERROR_BACKUP_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория для резервного копирования не существует.');
-define('ERROR_BACKUP_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория для резервного копирования защищена от записи, установите верные права доступа.');  
-define('ERROR_DOWNLOAD_LINK_NOT_ACCEPTABLE', 'Ошибка: Ссылка для загрузки не приемлема.');
+define('TEXT_DUMPER_TABLE_STATUS', 'Статус таблицы:');
+define('TEXT_DUMPER_TOTAL_STATUS', 'Общий статус:');
 
-define('SUCCESS_LAST_RESTORE_CLEARED', 'Выполнено: Последняя дата восстановления очищена.');
-define('SUCCESS_DATABASE_SAVED', 'Выполнено: База данных сохранена.');
-define('SUCCESS_DATABASE_RESTORED', 'Выполнено: База данных восстановлена.');
-define('SUCCESS_BACKUP_DELETED', 'Выполнено: Копия удалена.');
+define('TEXT_DUMPER_ERROR', 'Ошибка');
+define('TEXT_DUMPER_BROWSER_ERROR', 'Для работы Sypex Dumper Lite требуется:<br /> - Internet Explorer 5.5+, Mozilla либо Opera 8+ (<span id=sie>-</span>)<br /> - включено выполнение JavaScript скриптов (<span id=sjs>-</span>)');
+
+define('TEXT_DUMPER_LOGIN_HEADER', 'Введите логин и пароль');
+define('TEXT_DUMPER_LOGIN', 'Логин:');
+define('TEXT_DUMPER_PASSWORD', 'Пароль:');
+
+define('TEXT_DUMPER_FORBIDDEN', 'У вас нет прав для просмотра этого каталога');
+define('TEXT_DUMPER_DB_CONNECT', 'Ошибка при подключении к БД');
+define('TEXT_DUMPER_DB_ERROR', 'Возникла ошибка!');
+
 ?>
