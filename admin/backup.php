@@ -95,6 +95,68 @@ fieldset {
 
 <?php
 
+$TEXT_DUMPER_SUBMIT = TEXT_DUMPER_SUBMIT;
+$TEXT_DUMPER_SEC = TEXT_DUMPER_SEC;
+$TEXT_DUMPER_DIR_ERROR = TEXT_DUMPER_DIR_ERROR;
+$TEXT_DUMPER_DOWNLOAD = TEXT_DUMPER_DOWNLOAD;
+$TEXT_DUMPER_BACK = TEXT_DUMPER_BACK;
+$TEXT_DUMPER_CREATE = TEXT_DUMPER_CREATE;
+$TEXT_DUMPER_NAME_ERROR = TEXT_DUMPER_NAME_ERROR;
+$TEXT_DUMPER_CONNECT = TEXT_DUMPER_CONNECT;
+$TEXT_DUMPER_CONNECT_ERROR = TEXT_DUMPER_CONNECT_ERROR;
+$TEXT_DUMPER_CREATE_FILE = TEXT_DUMPER_CREATE_FILE;
+$TEXT_DUMPER_CHARSET_ERROR = TEXT_DUMPER_CHARSET_ERROR;
+$TEXT_DUMPER_CHARSET = TEXT_DUMPER_CHARSET;
+$TEXT_DUMPER_CHARSET_COLLATION = TEXT_DUMPER_CHARSET_COLLATION;
+$TEXT_DUMPER_TABLE = TEXT_DUMPER_TABLE;
+$TEXT_DUMPER_CONNECT1 = TEXT_DUMPER_CONNECT1;
+$TEXT_DUMPER_PROCESS = TEXT_DUMPER_PROCESS;
+$TEXT_DUMPER_MAKE = TEXT_DUMPER_MAKE;
+$TEXT_DUMPER_MAKE1 = TEXT_DUMPER_MAKE1;
+$TEXT_DUMPER_SIZE  = TEXT_DUMPER_SIZE;
+$TEXT_DUMPER_MB  = TEXT_DUMPER_MB;
+$TEXT_DUMPER_FILE_SIZE = TEXT_DUMPER_FILE_SIZE;
+$TEXT_DUMPER_TABLES_COUNT = TEXT_DUMPER_TABLES_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_RESTORE = TEXT_DUMPER_RESTORE;
+$TEXT_DUMPER_FILE_ERROR = TEXT_DUMPER_FILE_ERROR;
+$TEXT_DUMPER_FILE_READ = TEXT_DUMPER_FILE_READ;
+$TEXT_DUMPER_FILE_ERROR1 = TEXT_DUMPER_FILE_ERROR1;
+$TEXT_DUMPER_QUERY_ERROR = TEXT_DUMPER_QUERY_ERROR;
+$TEXT_DUMPER_RESTORED = TEXT_DUMPER_RESTORED;
+$TEXT_DUMPER_DATE = TEXT_DUMPER_DATE;
+$TEXT_DUMPER_QUERY_COUNT = TEXT_DUMPER_QUERY_COUNT;
+$TEXT_DUMPER_TABLES_CREATED = TEXT_DUMPER_TABLES_CREATED;
+$TEXT_DUMPER_STRINGS_CREATED = TEXT_DUMPER_STRINGS_CREATED;
+$TEXT_DUMPER_MAX = TEXT_DUMPER_MAX;
+$TEXT_DUMPER_MED = TEXT_DUMPER_MED;
+$TEXT_DUMPER_MIN = TEXT_DUMPER_MIN;
+$TEXT_DUMPER_NO = TEXT_DUMPER_NO;
+
+$TEXT_DUMPER_BACKUP = TEXT_DUMPER_BACKUP;
+$TEXT_DUMPER_DB = TEXT_DUMPER_DB;
+$TEXT_DUMPER_FILTER = TEXT_DUMPER_FILTER;
+$TEXT_DUMPER_COMPRESS = TEXT_DUMPER_COMPRESS;
+$TEXT_DUMPER_COMPRESS_LEVEL = TEXT_DUMPER_COMPRESS_LEVEL;
+
+$TEXT_DUMPER_RESTORE_DB = TEXT_DUMPER_RESTORE_DB;
+$TEXT_DUMPER_FILE = TEXT_DUMPER_FILE;
+
+$TEXT_DUMPER_TABLE_STATUS = TEXT_DUMPER_TABLE_STATUS;
+$TEXT_DUMPER_TOTAL_STATUS = TEXT_DUMPER_TOTAL_STATUS;
+
+$TEXT_DUMPER_ERROR = TEXT_DUMPER_ERROR;
+$TEXT_DUMPER_BROWSER_ERROR = TEXT_DUMPER_BROWSER_ERROR;
+
+$TEXT_DUMPER_LOGIN_HEADER = TEXT_DUMPER_LOGIN_HEADER;
+$TEXT_DUMPER_LOGIN = TEXT_DUMPER_LOGIN;
+$TEXT_DUMPER_PASSWORD = TEXT_DUMPER_PASSWORD;
+
+$TEXT_DUMPER_FORBIDDEN = TEXT_DUMPER_FORBIDDEN;
+$TEXT_DUMPER_DB_CONNECT = TEXT_DUMPER_DB_CONNECT;
+$TEXT_DUMPER_DB_ERROR = TEXT_DUMPER_DB_ERROR;
+
 // ["action"]=>  string(6) "backup"// ["db_backup"]=>  string(4) "oscd"// ["tables"]=>  string(0) ""// ["comp_method"]=>  string(1) "2"// ["comp_level"]=>  string(1) "9"// ["db_restore"]=>  string(4) "oscd"// ["file"]=>  string(1) "0"// ["add_prefix"]// ["update_time"]=>
 // Путь и URL к файлам бекапа
 
@@ -194,12 +256,12 @@ else{
 
 if (!$auth || (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] == 'reload')) {
 	setcookie("sxd");
-	echo tpl_page(tpl_auth($error ? tpl_error($error) : ''), "<script>if (jsEnabled) {document.write('<input type=submit class=button value=Применить>');}</script>");
-	echo "<script>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . " сек.'</script>";
+	echo tpl_page(tpl_auth($error ? tpl_error($error) : ''), "<script>if (jsEnabled) {document.write('<input type=submit class=button value=" . TEXT_DUMPER_SUBMIT . ">');}</script>");
+	echo "<script>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . TEXT_DUMPER_SEC . "'</script>";
 	exit;
 }
 if (!file_exists(PATH) && !$is_safe_mode) {
-    mkdir(PATH, 0777) || trigger_error("Не удалось создать каталог для бекапа", E_USER_ERROR);
+    mkdir(PATH, 0777) || trigger_error($TEXT_DUMPER_DIR_ERROR, E_USER_ERROR);
 }
 
 $SK = new dumper();
@@ -222,7 +284,7 @@ switch($action){
 
 mysql_close();
 
-echo "<script>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . " сек.'</script>";
+echo "<script>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . TEXT_DUMPER_SEC . "'</script>";
 
 class dumper {
 	function dumper() {
@@ -257,10 +319,37 @@ class dumper {
 	}
 
 	function backup() {
+	
+$TEXT_DUMPER_SUBMIT = TEXT_DUMPER_SUBMIT;
+$TEXT_DUMPER_SEC = TEXT_DUMPER_SEC;
+$TEXT_DUMPER_DIR_ERROR = TEXT_DUMPER_DIR_ERROR;
+$TEXT_DUMPER_DOWNLOAD = TEXT_DUMPER_DOWNLOAD;
+$TEXT_DUMPER_BACK = TEXT_DUMPER_BACK;
+$TEXT_DUMPER_CREATE = TEXT_DUMPER_CREATE;
+$TEXT_DUMPER_NAME_ERROR = TEXT_DUMPER_NAME_ERROR;
+$TEXT_DUMPER_CONNECT = TEXT_DUMPER_CONNECT;
+$TEXT_DUMPER_CONNECT_ERROR = TEXT_DUMPER_CONNECT_ERROR;
+$TEXT_DUMPER_CREATE_FILE = TEXT_DUMPER_CREATE_FILE;
+$TEXT_DUMPER_CHARSET_ERROR = TEXT_DUMPER_CHARSET_ERROR;
+$TEXT_DUMPER_CHARSET = TEXT_DUMPER_CHARSET;
+$TEXT_DUMPER_CHARSET_COLLATION = TEXT_DUMPER_CHARSET_COLLATION;
+$TEXT_DUMPER_TABLE = TEXT_DUMPER_TABLE;
+$TEXT_DUMPER_CONNECT1 = TEXT_DUMPER_CONNECT1;
+$TEXT_DUMPER_PROCESS = TEXT_DUMPER_PROCESS;
+$TEXT_DUMPER_TABLES_COUNT = TEXT_DUMPER_TABLES_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_MAKE = TEXT_DUMPER_MAKE;
+$TEXT_DUMPER_MAKE1 = TEXT_DUMPER_MAKE1;
+$TEXT_DUMPER_SIZE  = TEXT_DUMPER_SIZE;
+$TEXT_DUMPER_MB  = TEXT_DUMPER_MB;
+$TEXT_DUMPER_FILE_SIZE = TEXT_DUMPER_FILE_SIZE;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+	
 		if (!isset($_REQUEST)) {$this->main();}
 		set_error_handler("SXD_errorHandler");
-		$buttons = "<a id=save href='' style='display: none;'>Скачать файл</a> &nbsp; <input id=back type=button class=button value='Вернуться' disabled onclick=\"history.back();\">";
-		echo tpl_page(tpl_process("Создается резервная копия БД"), $buttons);
+		$buttons = "<a id=save href='' style='display: none;'>" . TEXT_DUMPER_DOWNLOAD . "</a> &nbsp; <input id=back type=button class=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\">";
+		echo tpl_page(tpl_process($TEXT_DUMPER_CREATE), $buttons);
 
 		$this->SET['last_action']     = 0;
 		$this->SET['last_db_backup']  = isset($_REQUEST['db_backup']) ? $_REQUEST['db_backup'] : '';
@@ -289,12 +378,12 @@ class dumper {
 		$db = $this->SET['last_db_backup'];
 
 		if (!$db) {
-			echo tpl_l("ОШИБКА! Не указана база данных!", C_ERROR);
+			echo tpl_l($TEXT_DUMPER_NAME_ERROR, C_ERROR);
 			echo tpl_enableBack();
 		    exit;
 		}
-		echo tpl_l("Подключение к БД `{$db}`.");
-		mysql_select_db($db) or trigger_error ("Не удается выбрать базу данных.<br />" . mysql_error(), E_USER_ERROR);
+		echo tpl_l($TEXT_DUMPER_CONNECT . "`{$db}`.");
+		mysql_select_db($db) or trigger_error ($TEXT_DUMPER_CONNECT_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 		$tables = array();
         $result = mysql_query("SHOW tableS");
 		$all = 0;
@@ -349,14 +438,14 @@ class dumper {
 		$info = $tabinfo[0] . $info;
 		$name = $db . '_' . date("Y-m-d_H-i");
         $fp = $this->fn_open($name, "w");
-		echo tpl_l("Создание файла с резервной копией БД:<br />\\n  -  {$this->filename}");
+		echo tpl_l($TEXT_DUMPER_CREATE_FILE . "<br />\\n  -  {$this->filename}");
 		$this->fn_write($fp, "#SKD101|{$db}|{$tabs}|" . date("Y.m.d H:i:s") ."|{$info}\n\n");
 		$t=0;
 		echo tpl_l(str_repeat("-", 60));
 		$result = mysql_query("SET SQL_QUOTE_SHOW_CREATE = 1");
 		// Кодировка соединения по умолчанию
 		if ($this->mysql_version > 40101 && CHARSET != 'auto') {
-			mysql_query("SET NAMES '" . CHARSET . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />" . mysql_error(), E_USER_ERROR);
+			mysql_query("SET NAMES '" . CHARSET . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 			$last_charset = CHARSET;
 		}
 		else{
@@ -366,16 +455,16 @@ class dumper {
 			// Выставляем кодировку соединения соответствующую кодировке таблицы
 			if ($this->mysql_version > 40101 && $tab_charset[$table] != $last_charset) {
 				if (CHARSET == 'auto') {
-					mysql_query("SET NAMES '" . $tab_charset[$table] . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />" . mysql_error(), E_USER_ERROR);
-					echo tpl_l("Установлена кодировка соединения `" . $tab_charset[$table] . "`.", C_WARNING);
+					mysql_query("SET NAMES '" . $tab_charset[$table] . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
+					echo tpl_l($TEXT_DUMPER_CHARSET . "`" . $tab_charset[$table] . "`.", C_WARNING);
 					$last_charset = $tab_charset[$table];
 				}
 				else{
-					echo tpl_l('Кодировка соединения и таблицы не совпадает:', C_ERROR);
-					echo tpl_l('Таблица `'. $table .'` -> ' . $tab_charset[$table] . ' (соединение '  . CHARSET . ')', C_ERROR);
+					echo tpl_l($TEXT_DUMPER_CHARSET_COLLATION, C_ERROR);
+					echo tpl_l($TEXT_DUMPER_TABLE . '`'. $table .'` -> ' . $tab_charset[$table] . ' (' . $TEXT_DUMPER_CONNECT . ''  . CHARSET . ')', C_ERROR);
 				}
 			}
-			echo tpl_l("Обработка таблицы `{$table}` [" . fn_int($tabinfo[$table]) . "].");
+			echo tpl_l($TEXT_DUMPER_PROCESS . "`{$table}` [" . fn_int($tabinfo[$table]) . "].");
         	// Создание таблицы
 			$result = mysql_query("SHOW CREATE table `{$table}`");
         	$tab = mysql_fetch_array($result);
@@ -434,23 +523,52 @@ class dumper {
         echo tpl_s(1, 1);
         echo tpl_l(str_repeat("-", 60));
         $this->fn_close($fp);
-		echo tpl_l("Резервная копия БД `{$db}` создана.", C_RESULT);
-		echo tpl_l("Размер БД:       " . round($this->size / 1048576, 2) . " МБ", C_RESULT);
-		$filesize = round(filesize(PATH . $this->filename) / 1048576, 2) . " МБ";
-		echo tpl_l("Размер файла: {$filesize}", C_RESULT);
-		echo tpl_l("Таблиц обработано: {$tabs}", C_RESULT);
-		echo tpl_l("Строк обработано:   " . fn_int($tabinfo[0]), C_RESULT);
-		echo "<script>with (document.getElementById('save')) {style.display = ''; innerHTML = 'Скачать файл ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</script>";
+		echo tpl_l($TEXT_DUMPER_MAKE . "`{$db}`" . $TEXT_DUMPER_MAKE1, C_RESULT);
+		echo tpl_l($TEXT_DUMPER_SIZE . round($this->size / 1048576, 2) . $TEXT_DUMPER_MB, C_RESULT);
+		$filesize = round(filesize(PATH . $this->filename) / 1048576, 2) . $TEXT_DUMPER_MB;
+		echo tpl_l($TEXT_DUMPER_FILE_SIZE . "{$filesize}", C_RESULT);
+		echo tpl_l($TEXT_DUMPER_TABLES_COUNT . "{$tabs}", C_RESULT);
+		echo tpl_l($TEXT_DUMPER_STRING_COUNT . fn_int($tabinfo[0]), C_RESULT);
+		echo "<script>with (document.getElementById('save')) {style.display = ''; innerHTML = '" . TEXT_DUMPER_DOWNLOAD . " ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</script>";
 		// Передача данных для глобальной статистики
 		if (GS) echo "<script>document.getElementById('GS').src = 'http://sypex.net/gs.php?b={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</script>";
 
 	}
 
 	function restore(){
+	
+$TEXT_DUMPER_BACK = TEXT_DUMPER_BACK;
+$TEXT_DUMPER_NAME_ERROR = TEXT_DUMPER_NAME_ERROR;
+$TEXT_DUMPER_CONNECT = TEXT_DUMPER_CONNECT;
+$TEXT_DUMPER_CONNECT_ERROR = TEXT_DUMPER_CONNECT_ERROR;
+$TEXT_DUMPER_CREATE_FILE = TEXT_DUMPER_CREATE_FILE;
+$TEXT_DUMPER_CHARSET_ERROR = TEXT_DUMPER_CHARSET_ERROR;
+$TEXT_DUMPER_CHARSET = TEXT_DUMPER_CHARSET;
+$TEXT_DUMPER_CHARSET_COLLATION = TEXT_DUMPER_CHARSET_COLLATION;
+$TEXT_DUMPER_TABLE = TEXT_DUMPER_TABLE;
+$TEXT_DUMPER_CONNECT1 = TEXT_DUMPER_CONNECT1;
+$TEXT_DUMPER_PROCESS = TEXT_DUMPER_PROCESS;
+$TEXT_DUMPER_TABLES_COUNT = TEXT_DUMPER_TABLES_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_RESTORE = TEXT_DUMPER_RESTORE;
+$TEXT_DUMPER_FILE_ERROR = TEXT_DUMPER_FILE_ERROR;
+$TEXT_DUMPER_FILE_READ = TEXT_DUMPER_FILE_READ;
+$TEXT_DUMPER_FILE_ERROR1 = TEXT_DUMPER_FILE_ERROR1;
+$TEXT_DUMPER_QUERY_ERROR = TEXT_DUMPER_QUERY_ERROR;
+$TEXT_DUMPER_RESTORED = TEXT_DUMPER_RESTORED;
+$TEXT_DUMPER_DATE = TEXT_DUMPER_DATE;
+$TEXT_DUMPER_QUERY_COUNT = TEXT_DUMPER_QUERY_COUNT;
+$TEXT_DUMPER_TABLES_CREATED = TEXT_DUMPER_TABLES_CREATED;
+$TEXT_DUMPER_STRINGS_CREATED = TEXT_DUMPER_STRINGS_CREATED;
+$TEXT_DUMPER_MAX = TEXT_DUMPER_MAX;
+$TEXT_DUMPER_MED = TEXT_DUMPER_MED;
+$TEXT_DUMPER_MIN = TEXT_DUMPER_MIN;
+$TEXT_DUMPER_NO = TEXT_DUMPER_NO;
+
 		if (!isset($_REQUEST)) {$this->main();}
 		set_error_handler("SXD_errorHandler");
-		$buttons = "<input id=back type=button class=button value='Вернуться' disabled onclick=\"history.back();\">";
-		echo tpl_page(tpl_process("Восстановление БД из резервной копии"), $buttons);
+		$buttons = "<input id=back type=button class=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\">";
+		echo tpl_page(tpl_process($TEXT_DUMPER_RESTORE), $buttons);
 
 		$this->SET['last_action']     = 1;
 		$this->SET['last_db_restore'] = isset($_REQUEST['db_restore']) ? $_REQUEST['db_restore'] : '';
@@ -459,12 +577,12 @@ class dumper {
 		$db = $this->SET['last_db_restore'];
 
 		if (!$db) {
-			echo tpl_l("ОШИБКА! Не указана база данных!", C_ERROR);
+			echo tpl_l($TEXT_DUMPER_NAME_ERROR, C_ERROR);
 			echo tpl_enableBack();
 		    exit;
 		}
-		echo tpl_l("Подключение к БД `{$db}`.");
-		mysql_select_db($db) or trigger_error ("Не удается выбрать базу данных.<br />" . mysql_error(), E_USER_ERROR);
+		echo tpl_l($TEXT_DUMPER_CONNECT . "`{$db}`.");
+		mysql_select_db($db) or trigger_error ($TEXT_DUMPER_CONNECT_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 
 		// Определение формата файла
 		if(preg_match("/^(.+?)\.sql(\.(bz2|gz))?$/", $file, $matches)) {
@@ -479,15 +597,15 @@ class dumper {
 			}
 			$this->SET['comp_level'] = '';
 			if (!file_exists(PATH . "/{$file}")) {
-    		    echo tpl_l("ОШИБКА! Файл не найден!", C_ERROR);
+    		    echo tpl_l($TEXT_DUMPER_FILE_ERROR, C_ERROR);
 				echo tpl_enableBack();
     		    exit;
     		}
-			echo tpl_l("Чтение файла `{$file}`.");
+			echo tpl_l($TEXT_DUMPER_FILE_READ . "`{$file}`.");
 			$file = $matches[1];
 		}
 		else{
-			echo tpl_l("ОШИБКА! Не выбран файл!", C_ERROR);
+			echo tpl_l($TEXT_DUMPER_FILE_ERROR1, C_ERROR);
 			echo tpl_enableBack();
 		    exit;
 		}
@@ -503,8 +621,8 @@ class dumper {
 
 		// Установка кодировки соединения
 		if ($this->mysql_version > 40101 && (CHARSET != 'auto' || $this->forced_charset)) { // Кодировка по умолчанию, если в дампе не указана кодировка
-			mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />" . mysql_error(), E_USER_ERROR);
-			echo tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+			mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
+			echo tpl_l($TEXT_DUMPER_CHARSET . "`" . $this->restore_charset . "`.", C_WARNING);
 			$last_charset = $this->restore_charset;
 		}
 		else {
@@ -574,13 +692,13 @@ class dumper {
 							if (preg_match("/(CHARACTER SET|CHARSET)[=\s]+(\w+)/i", $sql, $charset)) {
 								if (!$this->forced_charset && $charset[2] != $last_charset) {
 									if (CHARSET == 'auto') {
-										mysql_query("SET NAMES '" . $charset[2] . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
-										$cache .= tpl_l("Установлена кодировка соединения `" . $charset[2] . "`.", C_WARNING);
+										mysql_query("SET NAMES '" . $charset[2] . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
+										$cache .= tpl_l($TEXT_DUMPER_CHARSET . "`" . $charset[2] . "`.", C_WARNING);
 										$last_charset = $charset[2];
 									}
 									else{
-										$cache .= tpl_l('Кодировка соединения и таблицы не совпадает:', C_ERROR);
-										$cache .= tpl_l('Таблица `'. $table .'` -> ' . $charset[2] . ' (соединение '  . $this->restore_charset . ')', C_ERROR);
+										$cache .= tpl_l($TEXT_DUMPER_CHARSET_COLLATION, C_ERROR);
+										$cache .= tpl_l($TEXT_DUMPER_TABLE . '`'. $table .'` -> ' . $charset[2] . ' (' . $TEXT_DUMPER_CONNECT1 . $this->restore_charset . ')', C_ERROR);
 									}
 								}
 								// Меняем кодировку если указано форсировать кодировку
@@ -592,17 +710,17 @@ class dumper {
 							elseif(CHARSET == 'auto'){ // Вставляем кодировку для таблиц, если она не указана и установлена auto кодировка
 								$sql .= ' DEFAULT CHARSET=' . $this->restore_charset . $this->restore_collate;
 								if ($this->restore_charset != $last_charset) {
-									mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
-									$cache .= tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+									mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
+									$cache .= tpl_l($TEXT_DUMPER_CHARSET . "`" . $this->restore_charset . "`.", C_WARNING);
 									$last_charset = $this->restore_charset;
 								}
 							}
 						}
-						if ($last_showed != $table) {$cache .= tpl_l("Таблица `{$table}`."); $last_showed = $table;}
+						if ($last_showed != $table) {$cache .= tpl_l($TEXT_DUMPER_TABLE . "`{$table}`."); $last_showed = $table;}
 					}
 					elseif($this->mysql_version > 40101 && empty($last_charset)) { // Устанавливаем кодировку на случай если отсутствует CREATE table
-						mysql_query("SET $this->restore_charset '" . $this->restore_charset . "'") or trigger_error ("Неудается изменить кодировку соединения.<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
-						echo tpl_l("Установлена кодировка соединения `" . $this->restore_charset . "`.", C_WARNING);
+						mysql_query("SET $this->restore_charset '" . $this->restore_charset . "'") or trigger_error (TEXT_DUMPER_CHARSET_ERROR . "<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
+						echo tpl_l($TEXT_DUMPER_CHARSET . "`" . $this->restore_charset . "`.", C_WARNING);
 						$last_charset = $this->restore_charset;
 					}
             		$insert = '';
@@ -614,7 +732,7 @@ class dumper {
             	}
     			if ($execute) {
             		$q++;
-            		mysql_query($sql) or trigger_error ("Неправильный запрос.<br />" . mysql_error(), E_USER_ERROR);
+            		mysql_query($sql) or trigger_error (TEXT_DUMPER_QUERY_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 					if (preg_match("/^insert/i", $sql)) {
             		    $aff_rows += mysql_affected_rows();
             		}
@@ -627,11 +745,11 @@ class dumper {
 		echo $cache;
 		echo tpl_s(1 , 1);
 		echo tpl_l(str_repeat("-", 60));
-		echo tpl_l("БД восстановлена из резервной копии.", C_RESULT);
-		if (isset($info[3])) echo tpl_l("Дата создания копии: {$info[3]}", C_RESULT);
-		echo tpl_l("Запросов к БД: {$q}", C_RESULT);
-		echo tpl_l("Таблиц создано: {$tabs}", C_RESULT);
-		echo tpl_l("Строк добавлено: {$aff_rows}", C_RESULT);
+		echo tpl_l($TEXT_DUMPER_RESTORED, C_RESULT);
+		if (isset($info[3])) echo tpl_l($TEXT_DUMPER_DATE . "{$info[3]}", C_RESULT);
+		echo tpl_l($TEXT_DUMPER_QUERY_COUNT . "{$q}", C_RESULT);
+		echo tpl_l($TEXT_DUMPER_TABLES_CREATED . "{$tabs}", C_RESULT);
+		echo tpl_l(TEXT_DUMPER_STRINGS_CREATED . "{$aff_rows}", C_RESULT);
 
 		$this->tabs = $tabs;
 		$this->records = $aff_rows;
@@ -645,7 +763,7 @@ class dumper {
 	}
 
 	function main(){
-		$this->comp_levels = array('9' => '9 (максимальная)', '8' => '8', '7' => '7', '6' => '6', '5' => '5 (средняя)', '4' => '4', '3' => '3', '2' => '2', '1' => '1 (минимальная)','0' => 'Без сжатия');
+		$this->comp_levels = array('9' => TEXT_DUMPER_MAX, '8' => '8', '7' => '7', '6' => '6', '5' => TEXT_DUMPER_MED, '4' => '4', '3' => '3', '2' => '2', '1' => TEXT_DUMPER_MIN,'0' => TEXT_DUMPER_NO);
 
 		if (function_exists("bzopen")) {
 		    $this->comp_methods[2] = 'BZip2';
@@ -653,9 +771,9 @@ class dumper {
 		if (function_exists("gzopen")) {
 		    $this->comp_methods[1] = 'GZip';
 		}
-		$this->comp_methods[0] = 'Без сжатия';
+		$this->comp_methods[0] = TEXT_DUMPER_NO;
 		if (count($this->comp_methods) == 1) {
-		    $this->comp_levels = array('0' =>'Без сжатия');
+		    $this->comp_levels = array('0' =>TEXT_DUMPER_NO);
 		}
 
 		$dbs = $this->db_select();
@@ -665,7 +783,7 @@ class dumper {
 		$this->vars['comp_methods'] = $this->fn_select($this->comp_methods, $this->SET['comp_method']);
 		$this->vars['tables']       = $this->SET['tables'];
 		$this->vars['files']        = $this->fn_select($this->file_select(), '');
-		$buttons = "<input type=submit value=Применить>";
+		$buttons = "<input type=submit value=" . TEXT_DUMPER_SUBMIT . ">";
 		echo tpl_page(tpl_main(), $buttons);
 	}
 
@@ -845,6 +963,7 @@ function fn_arr2str($array) {
 // Шаблоны
 
 function tpl_page($content = '', $buttons = ''){
+
 return <<<HTML
 <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 <tr>
@@ -877,31 +996,41 @@ HTML;
 }
 
 function tpl_main(){
+
+$TEXT_DUMPER_BACKUP = TEXT_DUMPER_BACKUP;
+$TEXT_DUMPER_DB = TEXT_DUMPER_DB;
+$TEXT_DUMPER_FILTER = TEXT_DUMPER_FILTER;
+$TEXT_DUMPER_COMPRESS = TEXT_DUMPER_COMPRESS;
+$TEXT_DUMPER_COMPRESS_LEVEL = TEXT_DUMPER_COMPRESS_LEVEL;
+
+$TEXT_DUMPER_RESTORE_DB = TEXT_DUMPER_RESTORE_DB;
+$TEXT_DUMPER_FILE = TEXT_DUMPER_FILE;
+
 global $SK;
 return <<<HTML
 <fieldset onclick="document.skb.action[0].checked = 1;">
 <legend>
 <input type="radio" name="action" value="backup">
-Backup / Создание резервной копии БД&nbsp;</legend>
+$TEXT_DUMPER_BACKUP</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr>
-<td width="35%">БД:</td>
+<td width="35%">$TEXT_DUMPER_DB</td>
 <td width="65%"><select name="db_backup">
 {$SK->vars['db_backup']}
 </select></td>
 </tr>
 <tr>
-<td>Фильтр таблиц:</td>
+<td>$TEXT_DUMPER_FILTER</td>
 <td><input name="tables" type="text" class="text" value="{$SK->vars['tables']}"></td>
 </tr>
 <tr>
-<td>Метод сжатия:</td>
+<td>$TEXT_DUMPER_COMPRESS</td>
 <td><select name="comp_method">
 {$SK->vars['comp_methods']}
 </select></td>
 </tr>
 <tr>
-<td>Степень сжатия:</td>
+<td>$TEXT_DUMPER_COMPRESS_LEVEL</td>
 <td><select name="comp_level">
 {$SK->vars['comp_levels']}
 </select></td>
@@ -911,16 +1040,16 @@ Backup / Создание резервной копии БД&nbsp;</legend>
 <fieldset onclick="document.skb.action[1].checked = 1;">
 <legend>
 <input type="radio" name="action" value="restore">
-Restore / Восстановление БД из резервной копии&nbsp;</legend>
+$TEXT_DUMPER_RESTORE_DB</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr>
-<td>БД:</td>
+<td>$TEXT_DUMPER_DB</td>
 <td><select name="db_restore">
 {$SK->vars['db_restore']}
 </select></td>
 </tr>
 <tr>
-<td width="35%">Файл:</td>
+<td width="35%">$TEXT_DUMPER_FILE</td>
 <td width="65%"><select name="file">
 {$SK->vars['files']}
 </select></td>
@@ -936,16 +1065,20 @@ HTML;
 }
 
 function tpl_process($title){
+
+$TEXT_DUMPER_TABLE_STATUS = TEXT_DUMPER_TABLE_STATUS;
+$TEXT_DUMPER_TOTAL_STATUS = TEXT_DUMPER_TOTAL_STATUS;
+
 return <<<HTML
 <fieldset>
 <legend>{$title}&nbsp;</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr><td colspan="2"><div id="logarea" style="width: 100%; height: 140px; border: 1px solid #7F9DB9; padding: 3px; overflow: auto;"></div></td></tr>
-<tr><td width="31%">Статус таблицы:</td><td width="69%"><table width="100%" border="1" cellpadding="0" cellspacing="0">
+<tr><td width="31%">$TEXT_DUMPER_TABLE_STATUS</td><td width="69%"><table width="100%" border="1" cellpadding="0" cellspacing="0">
 <tr><td bgcolor="#FFFFFF"><table width="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#5555CC" id="st_tab"
 style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#CCCCFF,endColorStr=#5555CC);
 border-right: 1px solid #AAAAAA"><tr><td height="12"></td></tr></table></td></tr></table></td></tr>
-<tr><td>Общий статус:</td><td><table width="100%" border="1" cellspacing="0" cellpadding="0">
+<tr><td>$TEXT_DUMPER_TOTAL_STATUS</td><td><table width="100%" border="1" cellspacing="0" cellpadding="0">
 <tr><td bgcolor="#FFFFFF"><table width="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#00AA00" id="so_tab"
 style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#CCFFCC,endColorStr=#00AA00);
 border-right: 1px solid #AAAAAA"><tr><td height="12"></td></tr></table></td>
@@ -979,13 +1112,25 @@ HTML;
 }
 
 function tpl_auth($error){
+
+$TEXT_DUMPER_ERROR = TEXT_DUMPER_ERROR;
+$TEXT_DUMPER_BROWSER_ERROR = TEXT_DUMPER_BROWSER_ERROR;
+
+$TEXT_DUMPER_LOGIN_HEADER = TEXT_DUMPER_LOGIN_HEADER;
+$TEXT_DUMPER_LOGIN = TEXT_DUMPER_LOGIN;
+$TEXT_DUMPER_PASSWORD = TEXT_DUMPER_PASSWORD;
+
+$TEXT_DUMPER_FORBIDDEN = TEXT_DUMPER_FORBIDDEN;
+$TEXT_DUMPER_DB_CONNECT = TEXT_DUMPER_DB_CONNECT;
+$TEXT_DUMPER_DB_ERROR = TEXT_DUMPER_DB_ERROR;
+
 return <<<HTML
 <span id="error">
 <fieldset>
-<legend>Ошибка</legend>
+<legend>$TEXT_DUMPER_ERROR</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr>
-<td>Для работы Sypex Dumper Lite требуется:<br /> - Internet Explorer 5.5+, Mozilla либо Opera 8+ (<span id="sie">-</span>)<br /> - включено выполнение JavaScript скриптов (<span id="sjs">-</span>)</td>
+<td>$TEXT_DUMPER_BROWSER_ERROR</td>
 </tr>
 </table>
 </fieldset>
@@ -993,14 +1138,14 @@ return <<<HTML
 <span id="body" style="display: none;">
 {$error}
 <fieldset>
-<legend>Введите логин и пароль</legend>
+<legend>$TEXT_DUMPER_LOGIN_HEADER</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr>
-<td width="41%">Логин:</td>
+<td width="41%">$TEXT_DUMPER_LOGIN</td>
 <td width="59%"><input name="login" type="text" class="text"></td>
 </tr>
 <tr>
-<td>Пароль:</td>
+<td>$TEXT_DUMPER_PASSWORD</td>
 <td><input name="pass" type="password" class="text"></td>
 </tr>
 </table>
@@ -1016,6 +1161,70 @@ HTML;
 }
 
 function tpl_l($str, $color = C_DEFAULT){
+
+$TEXT_DUMPER_SUBMIT = TEXT_DUMPER_SUBMIT;
+$TEXT_DUMPER_SEC = TEXT_DUMPER_SEC;
+$TEXT_DUMPER_DIR_ERROR = TEXT_DUMPER_DIR_ERROR;
+$TEXT_DUMPER_DOWNLOAD = TEXT_DUMPER_DOWNLOAD;
+$TEXT_DUMPER_BACK = TEXT_DUMPER_BACK;
+$TEXT_DUMPER_CREATE = TEXT_DUMPER_CREATE;
+$TEXT_DUMPER_NAME_ERROR = TEXT_DUMPER_NAME_ERROR;
+$TEXT_DUMPER_CONNECT = TEXT_DUMPER_CONNECT;
+$TEXT_DUMPER_CONNECT_ERROR = TEXT_DUMPER_CONNECT_ERROR;
+$TEXT_DUMPER_CREATE_FILE = TEXT_DUMPER_CREATE_FILE;
+$TEXT_DUMPER_CHARSET_ERROR = TEXT_DUMPER_CHARSET_ERROR;
+$TEXT_DUMPER_CHARSET = TEXT_DUMPER_CHARSET;
+$TEXT_DUMPER_CHARSET_COLLATION = TEXT_DUMPER_CHARSET_COLLATION;
+$TEXT_DUMPER_TABLE = TEXT_DUMPER_TABLE;
+$TEXT_DUMPER_CONNECT1 = TEXT_DUMPER_CONNECT1;
+$TEXT_DUMPER_PROCESS = TEXT_DUMPER_PROCESS;
+$TEXT_DUMPER_MAKE = TEXT_DUMPER_MAKE;
+$TEXT_DUMPER_MAKE1 = TEXT_DUMPER_MAKE1;
+$TEXT_DUMPER_SIZE  = TEXT_DUMPER_SIZE;
+$TEXT_DUMPER_MB  = TEXT_DUMPER_MB;
+$TEXT_DUMPER_FILE_SIZE = TEXT_DUMPER_FILE_SIZE;
+$TEXT_DUMPER_TABLES_COUNT = TEXT_DUMPER_TABLES_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
+$TEXT_DUMPER_RESTORE = TEXT_DUMPER_RESTORE;
+$TEXT_DUMPER_FILE_ERROR = TEXT_DUMPER_FILE_ERROR;
+$TEXT_DUMPER_FILE_READ = TEXT_DUMPER_FILE_READ;
+$TEXT_DUMPER_FILE_ERROR1 = TEXT_DUMPER_FILE_ERROR1;
+$TEXT_DUMPER_QUERY_ERROR = TEXT_DUMPER_QUERY_ERROR;
+$TEXT_DUMPER_RESTORED = TEXT_DUMPER_RESTORED;
+$TEXT_DUMPER_DATE = TEXT_DUMPER_DATE;
+$TEXT_DUMPER_QUERY_COUNT = TEXT_DUMPER_QUERY_COUNT;
+$TEXT_DUMPER_TABLES_CREATED = TEXT_DUMPER_TABLES_CREATED;
+$TEXT_DUMPER_STRINGS_CREATED = TEXT_DUMPER_STRINGS_CREATED;
+$TEXT_DUMPER_MAX = TEXT_DUMPER_MAX;
+$TEXT_DUMPER_MED = TEXT_DUMPER_MED;
+$TEXT_DUMPER_MIN = TEXT_DUMPER_MIN;
+$TEXT_DUMPER_NO = TEXT_DUMPER_NO;
+
+$TEXT_DUMPER_BACKUP = TEXT_DUMPER_BACKUP;
+$TEXT_DUMPER_DB = TEXT_DUMPER_DB;
+$TEXT_DUMPER_FILTER = TEXT_DUMPER_FILTER;
+$TEXT_DUMPER_COMPRESS = TEXT_DUMPER_COMPRESS;
+$TEXT_DUMPER_COMPRESS_LEVEL = TEXT_DUMPER_COMPRESS_LEVEL;
+
+$TEXT_DUMPER_RESTORE_DB = TEXT_DUMPER_RESTORE_DB;
+$TEXT_DUMPER_FILE = TEXT_DUMPER_FILE;
+
+$TEXT_DUMPER_TABLE_STATUS = TEXT_DUMPER_TABLE_STATUS;
+$TEXT_DUMPER_TOTAL_STATUS = TEXT_DUMPER_TOTAL_STATUS;
+
+$TEXT_DUMPER_ERROR = TEXT_DUMPER_ERROR;
+$TEXT_DUMPER_BROWSER_ERROR = TEXT_DUMPER_BROWSER_ERROR;
+
+$TEXT_DUMPER_LOGIN_HEADER = TEXT_DUMPER_LOGIN_HEADER;
+$TEXT_DUMPER_LOGIN = TEXT_DUMPER_LOGIN;
+$TEXT_DUMPER_PASSWORD = TEXT_DUMPER_PASSWORD;
+
+$TEXT_DUMPER_FORBIDDEN = TEXT_DUMPER_FORBIDDEN;
+$TEXT_DUMPER_DB_CONNECT = TEXT_DUMPER_DB_CONNECT;
+$TEXT_DUMPER_DB_ERROR = TEXT_DUMPER_DB_ERROR;
+
+
 $str = preg_replace("/\s{2}/", " &nbsp;", $str);
 return <<<HTML
 <script>l('{$str}', $color);</script>
@@ -1042,18 +1251,24 @@ HTML;
 }
 
 function tpl_backup_index(){
+
+$TEXT_DUMPER_FORBIDDEN = TEXT_DUMPER_FORBIDDEN;
+
 return <<<HTML
 <center>
-<h1>У вас нет прав для просмотра этого каталога</h1>
+<h1>$TEXT_DUMPER_FORBIDDEN</h1>
 </center>
 
 HTML;
 }
 
 function tpl_error($error){
+
+$TEXT_DUMPER_DB_CONNECT = TEXT_DUMPER_DB_CONNECT;
+
 return <<<HTML
 <fieldset>
-<legend>Ошибка при подключении к БД</legend>
+<legend>$TEXT_DUMPER_DB_CONNECT</legend>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr>
 <td align="center">{$error}</td>
@@ -1065,12 +1280,15 @@ HTML;
 }
 
 function SXD_errorHandler($errno, $errmsg, $filename, $linenum, $vars) {
+
+$TEXT_DUMPER_DB_ERROR = TEXT_DUMPER_DB_ERROR;
+
 	if ($errno == 2048) return true;
 	if (preg_match("/chmod\(\).*?: Operation not permitted/", $errmsg)) return true;
     $dt = date("Y.m.d H:i:s");
     $errmsg = addslashes($errmsg);
 
-	echo tpl_l("{$dt}<br /><b>Возникла ошибка!</b>", C_ERROR);
+	echo tpl_l("{$dt}<br /><b>" . $TEXT_DUMPER_DB_ERROR . "</b>", C_ERROR);
 	echo tpl_l("{$errmsg} ({$errno})", C_ERROR);
 	echo tpl_enableBack();
 	die();
