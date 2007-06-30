@@ -22,6 +22,22 @@
   require_once(DIR_FS_INC . 'xtc_exit.inc.php');
   
   function xtc_redirect($url) {
+
+if (AJAX_CART == 'true') {
+  global $_GET, $PHP_SELF, $_RESULT;
+    if ( strpos( basename($PHP_SELF), 'ajax_shopping_cart.php')!==FALSE ) {
+      if ( $url == xtc_href_link(FILENAME_SSL_CHECK) ||
+           $url == xtc_href_link(FILENAME_LOGIN) ||
+           $url == xtc_href_link(FILENAME_COOKIE_USAGE) ||
+           ( $_GET['action'] === 'buy_now' && xtc_has_product_attributes($_GET['BUYproducts_id']) )
+         ) {
+        $_RESULT['ajax_redirect'] = $url;
+        xtc_exit();
+      }
+      return;
+    }
+}
+
     if ( (ENABLE_SSL == true) && (getenv('HTTPS') == 'on' || getenv('HTTPS') == '1') ) { // We are loading an SSL page
 	if (substr($url, 0, strlen(HTTP_SERVER)) == HTTP_SERVER) { // NONSSL url
 	    $url = HTTPS_SERVER . substr($url, strlen(HTTP_SERVER)); // Change it to SSL
