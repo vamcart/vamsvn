@@ -23,6 +23,12 @@
 
     if (xtc_not_null($parameters)) $form .= ' ' . $parameters;
 
+if (AJAX_CART == 'true') {
+    if( preg_match("/add_product/i", $action) ){
+      $form .= ' onsubmit="doAddProduct(this); return false;"';
+    }
+}
+
     $form .= '>';
 
     return $form;

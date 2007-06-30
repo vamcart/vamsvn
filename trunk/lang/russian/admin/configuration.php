@@ -89,9 +89,10 @@ define('CURRENT_TEMPLATE_DESC' , 'Выберите шаблон по умолчанию. Шаблоны находятс
 
 define('CC_KEYCHAIN_TITLE','Шифрование номера кредитной карты');
 define('CC_KEYCHAIN_DESC','Строка для шифрования номера кредитной карты (пожалуйста, измените!)');
-
 define('ADMIN_DROP_DOWN_NAVIGATION_TITLE','Всплывающее меню навигации в админке');
 define('ADMIN_DROP_DOWN_NAVIGATION_DESC','Drop-down меню сверху (true) или обычное меню слева (false).');
+define('AJAX_CART_TITLE','Ajax корзина');
+define('AJAX_CART_DESC','Использовать ajax корзину, т.е. добавление товара без перезагрузки страницы (true) или использовать обычную корзину (false).');
 
 define('ENTRY_FIRST_NAME_MIN_LENGTH_TITLE' , 'Имя');
 define('ENTRY_FIRST_NAME_MIN_LENGTH_DESC', 'Минимальное количество символов поля Имя');

@@ -74,7 +74,15 @@
       $separator = '?';
     }
 
-    return $link;
+    $link_ajax = '';
+
+if (AJAX_CART == 'true') {
+    if( xtc_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
+      $link_ajax = '" onclick="doBuyNowGet(\'' . xtc_href_link( 'ajax_shopping_cart.php', $parameters, $connection, $add_session_id, $search_engine_safe) . '\'); return false;';
+    }
+}
+
+    return $link . $link_ajax;
   }
 
     function xtc_href_link_admin($page = '', $parameters = '', $connection = 'NONSSL', $add_session_id = true, $search_engine_safe = true) {
