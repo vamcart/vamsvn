@@ -15,7 +15,7 @@
 
 function loadXMLDoc(ajax_page, put_vars, caching) {
   var url="./index_ajax.php?ajax_page=" + ajax_page;
-  var req = new Subsys_JsHttpRequest_Js();
+  var req = new JsHttpRequest();
   req.onreadystatechange = function() {
     if (req.readyState == 4) {
       if (req.responseJS) {

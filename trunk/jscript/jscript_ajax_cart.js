@@ -102,7 +102,7 @@ function hideLoading() {
 
 function doBuyNowGet( link ) {
   showLoading();
-  var reqAddCart = new Subsys_JsHttpRequest_Js();
+  var reqAddCart = new JsHttpRequest();
   reqAddCart.onreadystatechange = function() {
     if (reqAddCart.readyState == 4) {
       if (reqAddCart.responseJS) {
@@ -126,7 +126,7 @@ function doBuyNowGet( link ) {
 
 function doAddProduct(form) {
   showLoading();
-  var reqAddCart = new Subsys_JsHttpRequest_Js();
+  var reqAddCart = new JsHttpRequest();
   reqAddCart.onreadystatechange = function() {
     if (reqAddCart.readyState == 4) {
       if (reqAddCart.responseJS) {
