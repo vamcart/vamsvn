@@ -21,7 +21,7 @@
 //	}
 
 	require('includes/classes/JsHttpRequest.php');
-	$JsHttpRequest =& new Subsys_JsHttpRequest_Php('');
+	$JsHttpRequest =& new JsHttpRequest('');
 
 	require('includes/application_top.php');
 

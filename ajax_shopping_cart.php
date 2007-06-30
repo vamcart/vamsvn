@@ -23,7 +23,7 @@
 // Создаем главный объект библиотеки.
 // Указываем кодировку страницы (обязательно!).
 
-	$JsHttpRequest =& new Subsys_JsHttpRequest_Php('');
+	$JsHttpRequest =& new JsHttpRequest('');
 
    foreach( $_REQUEST as $key => $value) $_POST[$key]=$value;
 
