@@ -27,7 +27,7 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
    require_once(DIR_FS_INC .'vam_get_tax_rate.inc.php');
    require_once(DIR_FS_INC .'vam_get_tax_class_id.inc.php');
    require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vamPrice.php');
-   $xtPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
+   $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="SUBMIT_ATTRIBUTES" enctype="multipart/form-data"><input type="hidden" name="current_product_id" value="<?php echo $_POST['current_product_id']; ?>"><input type="hidden" name="action" value="change">
 <?php
@@ -96,14 +96,14 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
             // brutto Admin
             if (PRICE_IS_BRUTTO=='true'){
-            $attribute_value_price_calculate = $xtPrice->xtcFormat(vam_round($attribute_value_price*((100+(vam_get_tax_rate(vam_get_tax_class_id($_POST['current_product_id']))))/100),PRICE_PRECISION),false);
+            $attribute_value_price_calculate = $vamPrice->xtcFormat(vam_round($attribute_value_price*((100+(vam_get_tax_rate(vam_get_tax_class_id($_POST['current_product_id']))))/100),PRICE_PRECISION),false);
             } else {
             $attribute_value_price_calculate = vam_round($attribute_value_price,PRICE_PRECISION);
             }
             echo "<TD class=\"main\" align=\"left\"><input type=\"text\" name=\"" . $current_value_id . "_price\" value=\"" . $attribute_value_price_calculate . "\" size=\"10\">";
             // brutto Admin
             if (PRICE_IS_BRUTTO=='true'){
-             echo TEXT_NETTO .'<b>'.$xtPrice->xtcFormat(vam_round($attribute_value_price,PRICE_PRECISION),true).'</b>  ';
+             echo TEXT_NETTO .'<b>'.$vamPrice->xtcFormat(vam_round($attribute_value_price,PRICE_PRECISION),true).'</b>  ';
             }
 
             echo "</TD>";
