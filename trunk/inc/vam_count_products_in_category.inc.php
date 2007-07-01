@@ -25,14 +25,14 @@
       $products_query = "select count(*) as total from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c where p.products_id = p2c.products_id and p.products_status = '1' and p2c.categories_id = '" . $category_id . "'";
     }
 
-    $products_query = xtDBquery($products_query);
+    $products_query = vamDBquery($products_query);
 
     $products = vam_db_fetch_array($products_query,true);
     $products_count += $products['total'];
 
     $child_categories_query = "select categories_id from " . TABLE_CATEGORIES . " where parent_id = '" . $category_id . "'";
 
-    $child_categories_query = xtDBquery($child_categories_query);
+    $child_categories_query = vamDBquery($child_categories_query);
     if (vam_db_num_rows($child_categories_query,true)) {
       while ($child_categories = vam_db_fetch_array($child_categories_query,true)) {
         $products_count += vam_count_products_in_category($child_categories['categories_id'], $include_inactive);

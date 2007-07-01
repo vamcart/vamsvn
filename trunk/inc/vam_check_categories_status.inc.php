@@ -27,7 +27,7 @@ function vam_check_categories_status($categories_id) {
 	                                   WHERE
 	                                   categories_id = '".(int) $categories_id."'";
 
-	$categorie_query = xtDBquery($categorie_query);
+	$categorie_query = vamDBquery($categorie_query);
 
 	$categorie_data = vam_db_fetch_array($categorie_query, true);
 	if ($categorie_data['categories_status'] == 0) {
@@ -49,7 +49,7 @@ function vam_get_categoriesstatus_for_product($product_id) {
 	                                   FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 	                                   WHERE products_id='".$product_id."'";
 
-	$categorie_query = xtDBquery($categorie_query);
+	$categorie_query = vamDBquery($categorie_query);
 
 	while ($categorie_data = vam_db_fetch_array($categorie_query, true)) {
 		if (vam_check_categories_status($categorie_data['categories_id']) >= 1) {

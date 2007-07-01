@@ -19,7 +19,7 @@
    
   function vam_get_subcategories(&$subcategories_array, $parent_id = 0) {
     $subcategories_query = "select categories_id from " . TABLE_CATEGORIES . " where parent_id = '" . $parent_id . "'";
-    $subcategories_query  = xtDBquery($subcategories_query);
+    $subcategories_query  = vamDBquery($subcategories_query);
     while ($subcategories = vam_db_fetch_array($subcategories_query,true)) {
       $subcategories_array[sizeof($subcategories_array)] = $subcategories['categories_id'];
       if ($subcategories['categories_id'] != $parent_id) {

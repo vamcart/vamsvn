@@ -21,7 +21,7 @@
 // TABLES: categories
   function vam_get_parent_categories(&$categories, $categories_id) {
     $parent_categories_query = "select parent_id from " . TABLE_CATEGORIES . " where categories_id = '" . $categories_id . "'";
-    $parent_categories_query  = xtDBquery($parent_categories_query);
+    $parent_categories_query  = vamDBquery($parent_categories_query);
     while ($parent_categories = vam_db_fetch_array($parent_categories_query,true)) {
       if ($parent_categories['parent_id'] == 0) return true;
       $categories[sizeof($categories)] = $parent_categories['parent_id'];

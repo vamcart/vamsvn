@@ -19,7 +19,7 @@
    
   function vam_get_products_stock($products_id) {
     $products_id = vam_get_prid($products_id);
-    $stock_query = xtDBquery("select products_quantity from " . TABLE_PRODUCTS . " where products_id = '" . $products_id . "'");
+    $stock_query = vamDBquery("select products_quantity from " . TABLE_PRODUCTS . " where products_id = '" . $products_id . "'");
     $stock_values = vam_db_fetch_array($stock_query,true);
 
     return $stock_values['products_quantity'];
