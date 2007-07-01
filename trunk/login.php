@@ -24,7 +24,7 @@
 include ('includes/application_top.php');
 
 if (isset ($_SESSION['customer_id'])) {
-	xtc_redirect(xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 }
 // create smarty elements
 $smarty = new Smarty;
@@ -32,36 +32,36 @@ $smarty = new Smarty;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_validate_password.inc.php');
-require_once (DIR_FS_INC.'xtc_array_to_string.inc.php');
-require_once (DIR_FS_INC.'xtc_write_user_info.inc.php');
+require_once (DIR_FS_INC.'vam_validate_password.inc.php');
+require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
+require_once (DIR_FS_INC.'vam_write_user_info.inc.php');
 // redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
 if ($session_started == false) {
-	xtc_redirect(xtc_href_link(FILENAME_COOKIE_USAGE));
+	vam_redirect(vam_href_link(FILENAME_COOKIE_USAGE));
 }
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
-	$email_address = xtc_db_prepare_input($_POST['email_address']);
-	$password = xtc_db_prepare_input($_POST['password']);
+	$email_address = vam_db_prepare_input($_POST['email_address']);
+	$password = vam_db_prepare_input($_POST['password']);
 
 	// Check if email exists
-	$check_customer_query = xtc_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, customers_default_address_id from ".TABLE_CUSTOMERS." where customers_email_address = '".xtc_db_input($email_address)."' and account_type = '0'");
-	if (!xtc_db_num_rows($check_customer_query)) {
+	$check_customer_query = vam_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, customers_default_address_id from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0'");
+	if (!vam_db_num_rows($check_customer_query)) {
 		$_GET['login'] = 'fail';
 		$info_message = TEXT_NO_EMAIL_ADDRESS_FOUND;
 	} else {
-		$check_customer = xtc_db_fetch_array($check_customer_query);
+		$check_customer = vam_db_fetch_array($check_customer_query);
 		// Check that password is good
-		if (!xtc_validate_password($password, $check_customer['customers_password'])) {
+		if (!vam_validate_password($password, $check_customer['customers_password'])) {
 			$_GET['login'] = 'fail';
 			$info_message = TEXT_LOGIN_ERROR;
 		} else {
 			if (SESSION_RECREATE == 'True') {
-				xtc_session_recreate();
+				vam_session_recreate();
 			}
 
-			$check_country_query = xtc_db_query("select entry_country_id, entry_zone_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $check_customer['customers_id']."' and address_book_id = '".$check_customer['customers_default_address_id']."'");
-			$check_country = xtc_db_fetch_array($check_country_query);
+			$check_country_query = vam_db_query("select entry_country_id, entry_zone_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $check_customer['customers_id']."' and address_book_id = '".$check_customer['customers_default_address_id']."'");
+			$check_country = vam_db_fetch_array($check_country_query);
 
 			$_SESSION['customer_gender'] = $check_customer['customers_gender'];
 			$_SESSION['customer_first_name'] = $check_customer['customers_firstname'];
@@ -74,34 +74,34 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 
 			$date_now = date('Ymd');
 
-			xtc_db_query("update ".TABLE_CUSTOMERS_INFO." SET customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
-			xtc_write_user_info((int) $_SESSION['customer_id']);
+			vam_db_query("update ".TABLE_CUSTOMERS_INFO." SET customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
+			vam_write_user_info((int) $_SESSION['customer_id']);
 			// restore cart contents
 			$_SESSION['cart']->restore_contents();
 
 			if ($_SESSION['cart']->count_contents() > 0) {
-				xtc_redirect(xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 			} else {
-				xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+				vam_redirect(vam_href_link(FILENAME_DEFAULT));
 			}
 
 		}
 	}
 }
 
-$breadcrumb->add(NAVBAR_TITLE_LOGIN, xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_LOGIN, vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 require (DIR_WS_INCLUDES.'header.php');
 
 //if ($_GET['info_message']) $info_message = $_GET['info_message'];
 $smarty->assign('info_message', $info_message);
 $smarty->assign('account_option', ACCOUNT_OPTIONS);
-$smarty->assign('BUTTON_NEW_ACCOUNT', '<a href="'.xtc_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'">'.xtc_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
-$smarty->assign('BUTTON_LOGIN', xtc_image_submit('button_login.gif', IMAGE_BUTTON_LOGIN));
-$smarty->assign('BUTTON_GUEST', '<a href="'.xtc_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL').'">'.xtc_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
-$smarty->assign('FORM_ACTION', xtc_draw_form('login', xtc_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
-$smarty->assign('INPUT_MAIL', xtc_draw_input_field('email_address'));
-$smarty->assign('INPUT_PASSWORD', xtc_draw_password_field('password'));
-$smarty->assign('LINK_LOST_PASSWORD', xtc_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
+$smarty->assign('BUTTON_NEW_ACCOUNT', '<a href="'.vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$smarty->assign('BUTTON_LOGIN', vam_image_submit('button_login.gif', IMAGE_BUTTON_LOGIN));
+$smarty->assign('BUTTON_GUEST', '<a href="'.vam_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$smarty->assign('FORM_ACTION', vam_draw_form('login', vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
+$smarty->assign('INPUT_MAIL', vam_draw_input_field('email_address'));
+$smarty->assign('INPUT_PASSWORD', vam_draw_password_field('password'));
+$smarty->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
 $smarty->assign('FORM_END', '</form>');
 
 $smarty->assign('language', $_SESSION['language']);

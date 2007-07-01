@@ -22,14 +22,14 @@
    ---------------------------------------------------------------------------------------*/
 
 require ('includes/application_top.php');
-require_once (DIR_FS_INC.'xtc_get_products_mo_images.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 
 if ((int) $_GET['imgID'] == 0) {
-	$products_query = xtc_db_query("select pd.products_name, p.products_image from ".TABLE_PRODUCTS." p left join ".TABLE_PRODUCTS_DESCRIPTION." pd on p.products_id = pd.products_id where p.products_status = '1' and p.products_id = '".(int) $_GET['pID']."' and pd.language_id = '".(int) $_SESSION['languages_id']."'");
-	$products_values = xtc_db_fetch_array($products_query);
+	$products_query = vam_db_query("select pd.products_name, p.products_image from ".TABLE_PRODUCTS." p left join ".TABLE_PRODUCTS_DESCRIPTION." pd on p.products_id = pd.products_id where p.products_status = '1' and p.products_id = '".(int) $_GET['pID']."' and pd.language_id = '".(int) $_SESSION['languages_id']."'");
+	$products_values = vam_db_fetch_array($products_query);
 } else {
-	$products_query = xtc_db_query("select pd.products_name, p.products_image, pi.image_name from ".TABLE_PRODUCTS_IMAGES." pi, ".TABLE_PRODUCTS." p left join ".TABLE_PRODUCTS_DESCRIPTION." pd on p.products_id = pd.products_id where p.products_status = '1' and p.products_id = '".(int) $_GET['pID']."' and pi.products_id = '".(int) $_GET['pID']."' and pi.image_nr = '".(int) $_GET['imgID']."' and pd.language_id = '".(int) $_SESSION['languages_id']."'");
-	$products_values = xtc_db_fetch_array($products_query);
+	$products_query = vam_db_query("select pd.products_name, p.products_image, pi.image_name from ".TABLE_PRODUCTS_IMAGES." pi, ".TABLE_PRODUCTS." p left join ".TABLE_PRODUCTS_DESCRIPTION." pd on p.products_id = pd.products_id where p.products_status = '1' and p.products_id = '".(int) $_GET['pID']."' and pi.products_id = '".(int) $_GET['pID']."' and pi.image_nr = '".(int) $_GET['imgID']."' and pd.language_id = '".(int) $_SESSION['languages_id']."'");
+	$products_values = vam_db_fetch_array($products_query);
 	$products_values['products_image'] = $products_values['image_name'];
 }
 
@@ -38,7 +38,7 @@ $img = DIR_WS_POPUP_IMAGES.$products_values['products_image'];
 $size = GetImageSize("$img");
 
 //get data for mo_images
-$mo_images = xtc_get_products_mo_images((int) $_GET['pID']);
+$mo_images = vam_get_products_mo_images((int) $_GET['pID']);
 $img = DIR_WS_THUMBNAIL_IMAGES.$products_values['products_image'];
 $osize = GetImageSize("$img");
 if ($mo_images != false) {
@@ -73,7 +73,7 @@ function resize() {
 </head>
 <body onload="resize();">
 
-<!-- xtc_image($src, $alt = '', $width = '', $height = '', $params = '') /-->
+<!-- vam_image($src, $alt = '', $width = '', $height = '', $params = '') /-->
     
 <!-- big image -->
 <div class="page">
@@ -83,7 +83,7 @@ function resize() {
 <span class="bold"><?php echo $products_values['products_name']; ?></span>
 </p>
 <p class="center">
-<?php echo xtc_image(DIR_WS_POPUP_IMAGES . $products_values['products_image'], $products_values['products_name'], $size[0], $size[1]); ?>
+<?php echo vam_image(DIR_WS_POPUP_IMAGES . $products_values['products_image'], $products_values['products_name'], $size[0], $size[1]); ?>
 </p>
 
 <!-- thumbs -->

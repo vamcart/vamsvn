@@ -9,12 +9,12 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
-   (c) 2005 xtc_validate_vatid_status.inc.php 899 2005-04-29
+   (c) 2005 vam_validate_vatid_status.inc.php 899 2005-04-29
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 // include needed functions
-require_once (DIR_FS_INC.'xtc_get_countries.inc.php');
+require_once (DIR_FS_INC.'vam_get_countries.inc.php');
 class vat_validation {
 	var $vat_info;
 	var $vat_mod;
@@ -22,7 +22,7 @@ class vat_validation {
 	function vat_validation($vat_id = '', $customers_id = '', $customers_status = '', $country_id = '', $guest = false) {
 		$this->vat_info = array ();
 		$this->live_check = ACCOUNT_COMPANY_VAT_LIVE_CHECK;
-		if (xtc_not_null($vat_id)) {
+		if (vam_not_null($vat_id)) {
 			$this->getInfo($vat_id, $customers_id, $customers_status, $country_id, $guest);
 		} else {
 			if ($guest) {
@@ -165,8 +165,8 @@ class vat_validation {
 		}
 
 		if ($customers_id) {
-			$customers_status_query = xtc_db_query("SELECT customers_status FROM ".TABLE_CUSTOMERS." WHERE customers_id = '".$customers_id."'");
-			$customers_status_value = xtc_db_fetch_array($customers_status_query);
+			$customers_status_query = vam_db_query("SELECT customers_status FROM ".TABLE_CUSTOMERS." WHERE customers_id = '".$customers_id."'");
+			$customers_status_value = vam_db_fetch_array($customers_status_query);
 
 			if ($customers_status_value['customers_status'] != 0) {
 				$status = $status;
@@ -193,7 +193,7 @@ class vat_validation {
 				// RWS starts
 		// Get country ISO code after $country_id
 		$country_array = array ();
-		$country_array = xtc_get_countriesList($country_id, true);
+		$country_array = vam_get_countriesList($country_id, true);
 		$vat_id_country = strtolower($country_array['countries_iso_code_2']);
 		// Check if $vat_id contains country code already. If not, add it to $vat_id
 		$country = strtolower(substr($vat_id, 0, 2));

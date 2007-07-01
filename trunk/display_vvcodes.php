@@ -15,10 +15,10 @@
    ---------------------------------------------------------------------------------------*/
 
 require ('includes/application_top.php');
-require_once (DIR_FS_INC.'xtc_render_vvcode.inc.php');
-require_once (DIR_FS_INC.'xtc_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 
-$visual_verify_code = xtc_random_charcode(6);
+$visual_verify_code = vam_random_charcode(6);
 $_SESSION['vvcode'] = $visual_verify_code;
 $vvimg = vvcode_render_code($visual_verify_code);
 ?>

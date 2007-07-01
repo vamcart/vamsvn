@@ -21,7 +21,7 @@ $content_query = xtDBquery("SELECT
  					*
  					FROM ".TABLE_CONTENT_MANAGER."
  					WHERE content_group='".(int) $_GET['coID']."' and languages_id = '".$_SESSION['languages_id']."'");
-$content_data = xtc_db_fetch_array($content_query, true);
+$content_data = vam_db_fetch_array($content_query, true);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -33,7 +33,7 @@ if ($product->getAttributesCount() > 0) {
 	$row = 0;
 	$col = 0;
 	$products_options_data = array ();
-	while ($products_options_name = xtc_db_fetch_array($products_options_name_query,true)) {
+	while ($products_options_name = vam_db_fetch_array($products_options_name_query,true)) {
 		$selected = 0;
 		$products_options_array = array ();
 
@@ -53,7 +53,7 @@ if ($product->getAttributesCount() > 0) {
 		                                                 and pov.language_id = '".(int) $_SESSION['languages_id']."'
 		                                                 order by pa.sortorder");
 		$col = 0;
-		while ($products_options = xtc_db_fetch_array($products_options_query,true)) {
+		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
 			$price = '';
 			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
 				$products_options_data[$row]['DATA'][$col] = array ('ID' => $products_options['products_options_values_id'], 'TEXT' => $products_options['products_options_values_name'], 'MODEL' => $products_options['attributes_model'], 'PRICE' => '', 'FULL_PRICE' => '', 'PREFIX' => $products_options['price_prefix']);

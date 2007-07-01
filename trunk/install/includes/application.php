@@ -43,7 +43,7 @@
   require(DIR_FS_CATALOG.'includes/classes/message_stack.php');
   require(DIR_FS_CATALOG.'includes/filenames.php');
   require(DIR_FS_CATALOG.'includes/database_tables.php');
-  require_once(DIR_FS_CATALOG.'inc/xtc_image.inc.php');
+  require_once(DIR_FS_CATALOG.'inc/vam_image.inc.php');
   
 // Start the Install_Session
   session_start();
@@ -57,41 +57,41 @@
   define('BOX_SHADOW', '#b6b7cb');
 
   // include General functions
-  require_once(DIR_FS_INC.'xtc_set_time_limit.inc.php');
-  require_once(DIR_FS_INC.'xtc_check_agent.inc.php');
-  require_once(DIR_FS_INC.'xtc_in_array.inc.php');
+  require_once(DIR_FS_INC.'vam_set_time_limit.inc.php');
+  require_once(DIR_FS_INC.'vam_check_agent.inc.php');
+  require_once(DIR_FS_INC.'vam_in_array.inc.php');
   
   // Include Database functions for installer
-  require_once(DIR_FS_INC.'xtc_db_prepare_input.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_connect_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_select_db.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_close.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_query_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_fetch_array.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_num_rows.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_data_seek.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_insert_id.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_free_result.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_test_create_db_permission.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_test_connection.inc.php');
-  require_once(DIR_FS_INC.'xtc_db_install.inc.php');
+  require_once(DIR_FS_INC.'vam_db_prepare_input.inc.php');
+  require_once(DIR_FS_INC.'vam_db_connect_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_db_select_db.inc.php');
+  require_once(DIR_FS_INC.'vam_db_close.inc.php');
+  require_once(DIR_FS_INC.'vam_db_query_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_db_fetch_array.inc.php');
+  require_once(DIR_FS_INC.'vam_db_num_rows.inc.php');
+  require_once(DIR_FS_INC.'vam_db_data_seek.inc.php');
+  require_once(DIR_FS_INC.'vam_db_insert_id.inc.php');
+  require_once(DIR_FS_INC.'vam_db_free_result.inc.php');
+  require_once(DIR_FS_INC.'vam_db_test_create_db_permission.inc.php');
+  require_once(DIR_FS_INC.'vam_db_test_connection.inc.php');
+  require_once(DIR_FS_INC.'vam_db_install.inc.php');
 
   // include Html output functions
-  require_once(DIR_FS_INC.'xtc_draw_input_field_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_password_field_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_hidden_field_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_checkbox_field_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_radio_field_installer.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_box_heading.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_box_contents.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_box_content_bullet.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_input_field_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_password_field_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_hidden_field_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_checkbox_field_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_radio_field_installer.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_box_heading.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_box_contents.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_box_content_bullet.inc.php');
 
   // iinclude check functions
-  require_once(DIR_FS_INC .'xtc_gdlib_check.inc.php');
+  require_once(DIR_FS_INC .'vam_gdlib_check.inc.php');
   
    if (!defined('DIR_WS_ICONS')) define('DIR_WS_ICONS','images/');
 
-  function xtc_check_version($mini='4.1.2')
+  function vam_check_version($mini='4.1.2')
 {
    $dummy=phpversion();
   sscanf($dummy,"%d.%d.%d%s",$v1,$v2,$v3,$v4);

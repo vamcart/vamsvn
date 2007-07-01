@@ -103,7 +103,7 @@ function check_password_new(field_name_1, field_name_2, field_name_3, field_size
 
 function check_form(form_name) {
   if (submitted == true) {
-    alert(unescape("<?php echo xtc_js_lang(JS_ERROR_SUBMITTED); ?>"));
+    alert(unescape("<?php echo vam_js_lang(JS_ERROR_SUBMITTED); ?>"));
     return false;
   }
   
@@ -111,31 +111,31 @@ function check_form(form_name) {
 
   error = false;
   form = form_name;
-  error_message = unescape("<?php echo xtc_js_lang(JS_ERROR); ?>");
+  error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");
 
 <?php if (ACCOUNT_GENDER == 'true') echo '  check_radio("gender", "' . ENTRY_GENDER_ERROR . '");' . "\n"; ?>
 
-  check_input("firstname", <?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_FIRST_NAME_ERROR); ?>");
-  check_input("lastname", <?php echo ENTRY_LAST_NAME_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_LAST_NAME_ERROR); ?>");
+  check_input("firstname", <?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?>, "<?php echo vam_js_lang(ENTRY_FIRST_NAME_ERROR); ?>");
+  check_input("lastname", <?php echo ENTRY_LAST_NAME_MIN_LENGTH; ?>, "<?php echo vam_js_lang(ENTRY_LAST_NAME_ERROR); ?>");
 
-<?php if (ACCOUNT_DOB == 'true') echo '  check_input("dob", ' . ENTRY_DOB_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_DATE_OF_BIRTH_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_DOB == 'true') echo '  check_input("dob", ' . ENTRY_DOB_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_DATE_OF_BIRTH_ERROR) . '");' . "\n"; ?>
 
-  check_input("email_address", <?php echo ENTRY_EMAIL_ADDRESS_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_EMAIL_ADDRESS_ERROR); ?>");
+  check_input("email_address", <?php echo ENTRY_EMAIL_ADDRESS_MIN_LENGTH; ?>, "<?php echo vam_js_lang(ENTRY_EMAIL_ADDRESS_ERROR); ?>");
 
-<?php if (ACCOUNT_STREET_ADDRESS == 'true') echo '  check_input("street_address", ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_STREET_ADDRESS_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_STREET_ADDRESS == 'true') echo '  check_input("street_address", ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_STREET_ADDRESS_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_POSTCODE == 'true') echo '  check_input("postcode", ' . ENTRY_POSTCODE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_POST_CODE_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_POSTCODE == 'true') echo '  check_input("postcode", ' . ENTRY_POSTCODE_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_POST_CODE_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_CITY == 'true') echo '  check_input("city", ' . ENTRY_CITY_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_CITY_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_CITY == 'true') echo '  check_input("city", ' . ENTRY_CITY_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_CITY_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_STATE == 'true') echo '  check_input("state", ' . ENTRY_STATE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_STATE_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_STATE == 'true') echo '  check_input("state", ' . ENTRY_STATE_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_STATE_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_COUNTRY == 'true') echo ' check_select("country", "", "' . xtc_js_lang(ENTRY_COUNTRY_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_COUNTRY == 'true') echo ' check_select("country", "", "' . vam_js_lang(ENTRY_COUNTRY_ERROR) . '");' . "\n"; ?>
 
-<?php if (ACCOUNT_TELE == 'true') echo '  check_input("telephone", ' . ENTRY_TELEPHONE_MIN_LENGTH . ', "' . xtc_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR) . '");' . "\n"; ?>
+<?php if (ACCOUNT_TELE == 'true') echo '  check_input("telephone", ' . ENTRY_TELEPHONE_MIN_LENGTH . ', "' . vam_js_lang(ENTRY_TELEPHONE_NUMBER_ERROR) . '");' . "\n"; ?>
 
-  check_password("password", "confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR_NOT_MATCHING); ?>");
-  check_password_new("password_current", "password_new", "password_confirmation", <?php echo xtc_js_lang(ENTRY_PASSWORD_MIN_LENGTH); ?>, "<?php echo xtc_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR); ?>", "<?php echo xtc_js_lang(ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING); ?>");
+  check_password("password", "confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo vam_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo vam_js_lang(ENTRY_PASSWORD_ERROR_NOT_MATCHING); ?>");
+  check_password_new("password_current", "password_new", "password_confirmation", <?php echo vam_js_lang(ENTRY_PASSWORD_MIN_LENGTH); ?>, "<?php echo vam_js_lang(ENTRY_PASSWORD_ERROR); ?>", "<?php echo vam_js_lang(ENTRY_PASSWORD_NEW_ERROR); ?>", "<?php echo vam_js_lang(ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING); ?>");
 
   if (error == true) {
     alert(unescape(error_message));

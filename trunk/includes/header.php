@@ -102,7 +102,7 @@ if (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH )) {
 <script type="text/javascript" src="includes/general.js"></script>
 <script type="text/javascript"><!--
 function check_form() {
-  var error_message = unescape("<?php echo xtc_js_lang(JS_ERROR); ?>");
+  var error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");
   var error_found = false;
   var error_field;
   var keywords = document.getElementById("advanced_search").keywords.value;
@@ -112,7 +112,7 @@ function check_form() {
   var pto_float;
 
   if ( (keywords == '' || keywords.length < 1) && (pfrom == '' || pfrom.length < 1) && (pto == '' || pto.length < 1) ) {
-    error_message = error_message + unescape("<?php echo xtc_js_lang(JS_AT_LEAST_ONE_INPUT); ?>");
+    error_message = error_message + unescape("<?php echo vam_js_lang(JS_AT_LEAST_ONE_INPUT); ?>");
     error_field = document.getElementById("advanced_search").keywords;
     error_found = true;
   }
@@ -120,7 +120,7 @@ function check_form() {
   if (pfrom.length > 0) {
     pfrom_float = parseFloat(pfrom);
     if (isNaN(pfrom_float)) {
-      error_message = error_message + unescape("<?php echo xtc_js_lang(JS_PRICE_FROM_MUST_BE_NUM); ?>");
+      error_message = error_message + unescape("<?php echo vam_js_lang(JS_PRICE_FROM_MUST_BE_NUM); ?>");
       error_field = document.getElementById("advanced_search").pfrom;
       error_found = true;
     }
@@ -131,7 +131,7 @@ function check_form() {
   if (pto.length > 0) {
     pto_float = parseFloat(pto);
     if (isNaN(pto_float)) {
-      error_message = error_message + unescape("<?php echo xtc_js_lang(JS_PRICE_TO_MUST_BE_NUM); ?>");
+      error_message = error_message + unescape("<?php echo vam_js_lang(JS_PRICE_TO_MUST_BE_NUM); ?>");
       error_field = document.getElementById("advanced_search").pto;
       error_found = true;
     }
@@ -141,7 +141,7 @@ function check_form() {
 
   if ( (pfrom.length > 0) && (pto.length > 0) ) {
     if ( (!isNaN(pfrom_float)) && (!isNaN(pto_float)) && (pto_float < pfrom_float) ) {
-      error_message = error_message + unescape("<?php echo xtc_js_lang(JS_PRICE_TO_LESS_THAN_PRICE_FROM); ?>");
+      error_message = error_message + unescape("<?php echo vam_js_lang(JS_PRICE_TO_LESS_THAN_PRICE_FROM); ?>");
       error_field = document.getElementById("advanced_search").pto;
       error_found = true;
     }
@@ -167,17 +167,17 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
 <script type="text/javascript"><!--
 function checkForm() {
   var error = 0;
-  var error_message = unescape("<?php echo xtc_js_lang(JS_ERROR); ?>");
+  var error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");
 
   var review = document.getElementById("product_reviews_write").review.value;
 
   if (review.length < <?php echo REVIEW_TEXT_MIN_LENGTH; ?>) {
-    error_message = error_message + unescape("<?php echo xtc_js_lang(JS_REVIEW_TEXT); ?>");
+    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_TEXT); ?>");
     error = 1;
   }
 
   if (!((document.getElementById("product_reviews_write").rating[0].checked) || (document.getElementById("product_reviews_write").rating[1].checked) || (document.getElementById("product_reviews_write").rating[2].checked) || (document.getElementById("product_reviews_write").rating[3].checked) || (document.getElementById("product_reviews_write").rating[4].checked))) {
-    error_message = error_message + unescape("<?php echo xtc_js_lang(JS_REVIEW_RATING); ?>");
+    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_RATING); ?>");
     error = 1;
   }
 
@@ -220,18 +220,18 @@ require('includes/google_conversiontracking.js.php');
 
 
   // include needed functions
-  require_once('inc/xtc_output_warning.inc.php');
-  require_once('inc/xtc_image.inc.php');
-  require_once('inc/xtc_parse_input_field_data.inc.php');
-  require_once('inc/xtc_draw_separator.inc.php');
+  require_once('inc/vam_output_warning.inc.php');
+  require_once('inc/vam_image.inc.php');
+  require_once('inc/vam_parse_input_field_data.inc.php');
+  require_once('inc/vam_draw_separator.inc.php');
 
-//  require_once('inc/xtc_draw_form.inc.php');
-//  require_once('inc/xtc_draw_pull_down_menu.inc.php');
+//  require_once('inc/vam_draw_form.inc.php');
+//  require_once('inc/vam_draw_pull_down_menu.inc.php');
 
   // check if the 'install' directory exists, and warn of its existence
   if (WARN_INSTALL_EXISTENCE == 'true') {
     if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/install')) {
-      xtc_output_warning(WARNING_INSTALL_DIRECTORY_EXISTS);
+      vam_output_warning(WARNING_INSTALL_DIRECTORY_EXISTS);
     }
   }
 
@@ -239,17 +239,17 @@ require('includes/google_conversiontracking.js.php');
   if (WARN_CONFIG_WRITEABLE == 'true') {
     if ( (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) && (is_writeable(dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php')) ) {
 
-      xtc_output_warning(WARNING_CONFIG_FILE_WRITEABLE);
+      vam_output_warning(WARNING_CONFIG_FILE_WRITEABLE);
     }
   }
 
   // check if the session folder is writeable
   if (WARN_SESSION_DIRECTORY_NOT_WRITEABLE == 'true') {
     if (STORE_SESSIONS == '') {
-      if (!is_dir(xtc_session_save_path())) {
-        xtc_output_warning(WARNING_SESSION_DIRECTORY_NON_EXISTENT);
-      } elseif (!is_writeable(xtc_session_save_path())) {
-        xtc_output_warning(WARNING_SESSION_DIRECTORY_NOT_WRITEABLE);
+      if (!is_dir(vam_session_save_path())) {
+        vam_output_warning(WARNING_SESSION_DIRECTORY_NON_EXISTENT);
+      } elseif (!is_writeable(vam_session_save_path())) {
+        vam_output_warning(WARNING_SESSION_DIRECTORY_NOT_WRITEABLE);
       }
     }
   }
@@ -257,13 +257,13 @@ require('includes/google_conversiontracking.js.php');
   // check session.auto_start is disabled
   if ( (function_exists('ini_get')) && (WARN_SESSION_AUTO_START == 'true') ) {
     if (ini_get('session.auto_start') == '1') {
-      xtc_output_warning(WARNING_SESSION_AUTO_START);
+      vam_output_warning(WARNING_SESSION_AUTO_START);
     }
   }
 
   if ( (WARN_DOWNLOAD_DIRECTORY_NOT_READABLE == 'true') && (DOWNLOAD_ENABLED == 'true') ) {
     if (!is_dir(DIR_FS_DOWNLOAD)) {
-      xtc_output_warning(WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT);
+      vam_output_warning(WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT);
     }
   }
 
@@ -271,20 +271,20 @@ require('includes/google_conversiontracking.js.php');
 $smarty->assign('navtrail',$breadcrumb->trail(' &raquo; '));
 if (isset($_SESSION['customer_id'])) {
 
-$smarty->assign('logoff',xtc_href_link(FILENAME_LOGOFF, '', 'SSL'));
+$smarty->assign('logoff',vam_href_link(FILENAME_LOGOFF, '', 'SSL'));
 }
 if ( $_SESSION['account_type']=='0') {
-$smarty->assign('account',xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$smarty->assign('account',vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 }
-$smarty->assign('cart',xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
-$smarty->assign('checkout',xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+$smarty->assign('cart',vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$smarty->assign('checkout',vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $smarty->assign('store_name',TITLE);
-$smarty->assign('login',xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
-$smarty->assign('mainpage',xtc_href_link(FILENAME_DEFAULT, '', 'SSL'));
+$smarty->assign('login',vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+$smarty->assign('mainpage',vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
 
 
 
-  if (isset($_GET['error_message']) && xtc_not_null($_GET['error_message'])) {
+  if (isset($_GET['error_message']) && vam_not_null($_GET['error_message'])) {
 
 $smarty->assign('error','
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -295,7 +295,7 @@ $smarty->assign('error','
 
   }
 
-  if (isset($_GET['info_message']) && xtc_not_null($_GET['info_message'])) {
+  if (isset($_GET['info_message']) && vam_not_null($_GET['info_message'])) {
 
 $smarty->assign('error','
     <table border="0" width="100%" cellspacing="0" cellpadding="2">

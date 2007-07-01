@@ -65,9 +65,9 @@ var $PRZ; //Enthält die Prüfziffer
 ////
 // Diese function gibt die Bankinformationen aus der Datenbank zurück*/
   function db_query($blz) {
-    $blz_query = xtc_db_query("SELECT * from " . TABLE_BANKTRANSFER . " WHERE blz = '" . $blz . "'");
-    if (xtc_db_num_rows($blz_query)){
-      $data = xtc_db_fetch_array ($blz_query);
+    $blz_query = vam_db_query("SELECT * from " . TABLE_BANKTRANSFER . " WHERE blz = '" . $blz . "'");
+    if (vam_db_num_rows($blz_query)){
+      $data = vam_db_fetch_array ($blz_query);
     }else
       $data = -1;
     return $data;

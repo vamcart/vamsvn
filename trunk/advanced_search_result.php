@@ -23,9 +23,9 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_parse_search_string.inc.php');
-require_once (DIR_FS_INC.'xtc_get_subcategories.inc.php');
-require_once (DIR_FS_INC.'xtc_get_currencies_values.inc.php');
+require_once (DIR_FS_INC.'vam_parse_search_string.inc.php');
+require_once (DIR_FS_INC.'vam_get_subcategories.inc.php');
+require_once (DIR_FS_INC.'vam_get_currencies_values.inc.php');
 
 /*
  * check search entry
@@ -55,7 +55,7 @@ if (strlen($_GET['keywords']) < 3 && strlen($_GET['keywords']) > 0 && $error == 
 }
 
 if (strlen($_GET['pfrom']) > 0) {
-	$pfrom_to_check = xtc_db_input($_GET['pfrom']);
+	$pfrom_to_check = vam_db_input($_GET['pfrom']);
 	if (!settype($pfrom_to_check, "double")) {
 		$errorno += 10000;
 		$error = 1;
@@ -78,7 +78,7 @@ if (strlen($_GET['pfrom']) > 0 && !(($errorno & 10000) == 10000) && strlen($_GET
 }
 
 if (strlen($_GET['keywords']) > 0) {
-	if (!xtc_parse_search_string(stripslashes($_GET['keywords']), $search_keywords)) {
+	if (!vam_parse_search_string(stripslashes($_GET['keywords']), $search_keywords)) {
 		$errorno += 10000000;
 		$error = 1;
 		$keyerror = 1;
@@ -87,7 +87,7 @@ if (strlen($_GET['keywords']) > 0) {
 
 if ($error == 1 && $keyerror != 1) {
 
-	xtc_redirect(xtc_href_link(FILENAME_ADVANCED_SEARCH, 'errorno='.$errorno.'&'.xtc_get_all_get_params(array ('x', 'y'))));
+	vam_redirect(vam_href_link(FILENAME_ADVANCED_SEARCH, 'errorno='.$errorno.'&'.vam_get_all_get_params(array ('x', 'y'))));
 
 } else {
 
@@ -95,8 +95,8 @@ if ($error == 1 && $keyerror != 1) {
 	 *    search process starts here
 	 */
 
-	$breadcrumb->add(NAVBAR_TITLE1_ADVANCED_SEARCH, xtc_href_link(FILENAME_ADVANCED_SEARCH));
-	$breadcrumb->add(NAVBAR_TITLE2_ADVANCED_SEARCH, xtc_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.xtc_db_input($_GET['keywords']).'&search_in_description='.xtc_db_input($_GET['search_in_description']).'&categories_id='.(int)$_GET['categories_id'].'&inc_subcat='.xtc_db_input($_GET['inc_subcat']).'&manufacturers_id='.(int)$_GET['manufacturers_id'].'&pfrom='.xtc_db_input($_GET['pfrom']).'&pto='.xtc_db_input($_GET['pto']).'&dfrom='.xtc_db_input($_GET['dfrom']).'&dto='.xtc_db_input($_GET['dto'])));
+	$breadcrumb->add(NAVBAR_TITLE1_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH));
+	$breadcrumb->add(NAVBAR_TITLE2_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.vam_db_input($_GET['keywords']).'&search_in_description='.vam_db_input($_GET['search_in_description']).'&categories_id='.(int)$_GET['categories_id'].'&inc_subcat='.vam_db_input($_GET['inc_subcat']).'&manufacturers_id='.(int)$_GET['manufacturers_id'].'&pfrom='.vam_db_input($_GET['pfrom']).'&pto='.vam_db_input($_GET['pto']).'&dfrom='.vam_db_input($_GET['dfrom']).'&dto='.vam_db_input($_GET['dto'])));
 
 	require (DIR_WS_INCLUDES.'header.php');
 
@@ -117,15 +117,15 @@ if ($error == 1 && $keyerror != 1) {
 	}
 
 	//manufacturers if set
-	if (isset ($_GET['manufacturers_id']) && xtc_not_null($_GET['manufacturers_id'])) {
+	if (isset ($_GET['manufacturers_id']) && vam_not_null($_GET['manufacturers_id'])) {
 		$manu_check = " AND p.manufacturers_id = '".(int)$_GET['manufacturers_id']."' ";
 	}
 
 	//include subcategories if needed
-	if (isset ($_GET['categories_id']) && xtc_not_null($_GET['categories_id'])) {
+	if (isset ($_GET['categories_id']) && vam_not_null($_GET['categories_id'])) {
 		if ($_GET['inc_subcat'] == '1') {
 			$subcategories_array = array ();
-			xtc_get_subcategories($subcategories_array, (int)$_GET['categories_id']);
+			vam_get_subcategories($subcategories_array, (int)$_GET['categories_id']);
 			$subcat_join = " LEFT OUTER JOIN ".TABLE_PRODUCTS_TO_CATEGORIES." AS p2c ON (p.products_id = p2c.products_id) ";
 			$subcat_where = " AND p2c.categories_id IN ('".(int) $_GET['categories_id']."' ";
 			foreach ($subcategories_array AS $scat) {
@@ -139,7 +139,7 @@ if ($error == 1 && $keyerror != 1) {
 	}
 
 	if ($_GET['pfrom'] || $_GET['pto']) {
-		$rate = xtc_get_currencies_values($_SESSION['currency']);
+		$rate = vam_get_currencies_values($_SESSION['currency']);
 		$rate = $rate['value'];
 		if ($rate && $_GET['pfrom'] != '') {
 			$pfrom = $_GET['pfrom'] / $rate;
@@ -182,7 +182,7 @@ if ($error == 1 && $keyerror != 1) {
 	if (SEARCH_IN_ATTR == 'true') { $from_str .= " LEFT OUTER JOIN ".TABLE_PRODUCTS_ATTRIBUTES." AS pa ON (p.products_id = pa.products_id) LEFT OUTER JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." AS pov ON (pa.options_values_id = pov.products_options_values_id) "; }
 	$from_str .= "LEFT OUTER JOIN ".TABLE_SPECIALS." AS s ON (p.products_id = s.products_id) AND s.status = '1'";
 
-	if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset ($_GET['pfrom']) && xtc_not_null($_GET['pfrom'])) || (isset ($_GET['pto']) && xtc_not_null($_GET['pto'])))) {
+	if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset ($_GET['pfrom']) && vam_not_null($_GET['pfrom'])) || (isset ($_GET['pto']) && vam_not_null($_GET['pto'])))) {
 		if (!isset ($_SESSION['customer_country_id'])) {
 			$_SESSION['customer_country_id'] = STORE_COUNTRY;
 			$_SESSION['customer_zone_id'] = STORE_ZONE;
@@ -197,8 +197,8 @@ if ($error == 1 && $keyerror != 1) {
 	$where_str = " WHERE p.products_status = '1' "." AND pd.language_id = '".(int) $_SESSION['languages_id']."'".$subcat_where.$fsk_lock.$manu_check.$group_check.$tax_where.$pfrom_check.$pto_check;
 
 	//go for keywords... this is the main search process
-	if (isset ($_GET['keywords']) && xtc_not_null($_GET['keywords'])) {
-		if (xtc_parse_search_string(stripslashes($_GET['keywords']), $search_keywords)) {
+	if (isset ($_GET['keywords']) && vam_not_null($_GET['keywords'])) {
+		if (vam_parse_search_string(stripslashes($_GET['keywords']), $search_keywords)) {
 			$where_str .= " AND ( ";
 			for ($i = 0, $n = sizeof($search_keywords); $i < $n; $i ++) {
 				switch ($search_keywords[$i]) {

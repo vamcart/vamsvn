@@ -24,13 +24,13 @@ $smarty = new Smarty;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_validate_email.inc.php');
+require_once (DIR_FS_INC.'vam_validate_email.inc.php');
 
 if (GROUP_CHECK == 'true') {
 	$group_check = "and group_ids LIKE '%c_".$_SESSION['customers_status']['customers_status_id']."_group%'";
 }
 
-$shop_content_query = xtc_db_query("SELECT
+$shop_content_query = vam_db_query("SELECT
                      content_id,
                      content_title,
                      content_heading,
@@ -39,9 +39,9 @@ $shop_content_query = xtc_db_query("SELECT
                      FROM ".TABLE_CONTENT_MANAGER."
                      WHERE content_group='".(int) $_GET['coID']."' ".$group_check."
                      AND languages_id='".(int) $_SESSION['languages_id']."'");
-$shop_content_data = xtc_db_fetch_array($shop_content_query);
+$shop_content_data = vam_db_fetch_array($shop_content_query);
 
-$breadcrumb->add($shop_content_data['content_title'], xtc_href_link(FILENAME_CONTENT.'?coID='.(int) $_GET['coID']));
+$breadcrumb->add($shop_content_data['content_title'], vam_href_link(FILENAME_CONTENT.'?coID='.(int) $_GET['coID']));
 
 if ($_GET['coID'] != 7) {
 	require (DIR_WS_INCLUDES.'header.php');
@@ -56,12 +56,12 @@ if ($_GET['coID'] == 7) {
 
 	$error = false;
 	if (isset ($_GET['action']) && ($_GET['action'] == 'send')) {
-		if (xtc_validate_email(trim($_POST['email']))) {
+		if (vam_validate_email(trim($_POST['email']))) {
 
-			xtc_php_mail($_POST['email'], $_POST['name'], CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
+			vam_php_mail($_POST['email'], $_POST['name'], CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
 
 			if (!isset ($mail_error)) {
-				xtc_redirect(xtc_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
+				vam_redirect(vam_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
 			} else {
 				$smarty->assign('error_message', $mail_error);
 
@@ -77,7 +77,7 @@ if ($_GET['coID'] == 7) {
 	$smarty->assign('CONTACT_HEADING', $shop_content_data['content_title']);
 	if (isset ($_GET['action']) && ($_GET['action'] == 'success')) {
 		$smarty->assign('success', '1');
-		$smarty->assign('BUTTON_CONTINUE', '<a href="'.xtc_href_link(FILENAME_DEFAULT).'">'.xtc_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+		$smarty->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
 
 	} else {
 		if ($shop_content_data['content_file'] != '') {
@@ -96,11 +96,11 @@ if ($_GET['coID'] == 7) {
 		}
 		require (DIR_WS_INCLUDES.'header.php');
 		$smarty->assign('CONTACT_CONTENT', $contact_content);
-		$smarty->assign('FORM_ACTION', xtc_draw_form('contact_us', xtc_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
-		$smarty->assign('INPUT_NAME', xtc_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
-		$smarty->assign('INPUT_EMAIL', xtc_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
-		$smarty->assign('INPUT_TEXT', xtc_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
-		$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+		$smarty->assign('FORM_ACTION', vam_draw_form('contact_us', vam_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
+		$smarty->assign('INPUT_NAME', vam_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
+		$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
+		$smarty->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
+		$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 		$smarty->assign('FORM_END', '</form>');
 	}
 
@@ -130,7 +130,7 @@ if ($_GET['coID'] == 7) {
 	}
 	$smarty->assign('CONTENT_BODY', $content_body);
 
-	$smarty->assign('BUTTON_CONTINUE', '<a href="javascript:history.back(1)">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$smarty->assign('BUTTON_CONTINUE', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 	$smarty->assign('language', $_SESSION['language']);
 
 	// set cache ID

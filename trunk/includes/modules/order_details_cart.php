@@ -33,12 +33,12 @@
 $module_smarty = new Smarty;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_check_stock.inc.php');
-require_once (DIR_FS_INC.'xtc_get_products_stock.inc.php');
-require_once (DIR_FS_INC.'xtc_remove_non_numeric.inc.php');
-require_once (DIR_FS_INC.'xtc_get_short_description.inc.php');
-require_once (DIR_FS_INC.'xtc_format_price.inc.php');
-require_once (DIR_FS_INC.'xtc_get_attributes_model.inc.php');
+require_once (DIR_FS_INC.'vam_check_stock.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_stock.inc.php');
+require_once (DIR_FS_INC.'vam_remove_non_numeric.inc.php');
+require_once (DIR_FS_INC.'vam_get_short_description.inc.php');
+require_once (DIR_FS_INC.'vam_format_price.inc.php');
+require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 $module_content = array ();
 $any_out_of_stock = '';
@@ -47,7 +47,7 @@ $mark_stock = '';
 for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 
 	if (STOCK_CHECK == 'true') {
-		$mark_stock = xtc_check_stock($products[$i]['id'], $products[$i]['quantity']);
+		$mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
 		if ($mark_stock)
 			$_SESSION['any_out_of_stock'] = 1;
 	}
@@ -57,7 +57,7 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'];
 	}
 	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => xtc_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').xtc_draw_hidden_field('products_id[]', $products[$i]['id']).xtc_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => xtc_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$xtPrice->xtcFormat($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => xtc_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
+	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$xtPrice->xtcFormat($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
 	// Product options names
 	$attributes_exist = ((isset ($products[$i]['attributes'])) ? 1 : 0);
 
@@ -67,12 +67,12 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		while (list ($option, $value) = each($products[$i]['attributes'])) {
 
 			if (ATTRIBUTE_STOCK_CHECK == 'true' && STOCK_CHECK == 'true') {
-				$attribute_stock_check = xtc_check_stock_attributes($products[$i][$option]['products_attributes_id'], $products[$i]['quantity']);
+				$attribute_stock_check = vam_check_stock_attributes($products[$i][$option]['products_attributes_id'], $products[$i]['quantity']);
 				if ($attribute_stock_check)
 					$_SESSION['any_out_of_stock'] = 1;
 			}
 
-			$module_content[$i]['ATTRIBUTES'][] = array ('ID' => $products[$i][$option]['products_attributes_id'], 'MODEL' => xtc_get_attributes_model(xtc_get_prid($products[$i]['id']), $products[$i][$option]['products_options_values_name'],$products[$i][$option]['products_options_name']), 'NAME' => $products[$i][$option]['products_options_name'], 'VALUE_NAME' => $products[$i][$option]['products_options_values_name'].$attribute_stock_check);
+			$module_content[$i]['ATTRIBUTES'][] = array ('ID' => $products[$i][$option]['products_attributes_id'], 'MODEL' => vam_get_attributes_model(vam_get_prid($products[$i]['id']), $products[$i][$option]['products_options_values_name'],$products[$i][$option]['products_options_name']), 'NAME' => $products[$i][$option]['products_options_name'], 'VALUE_NAME' => $products[$i][$option]['products_options_values_name'].$attribute_stock_check);
 
 		}
 	}
@@ -88,7 +88,7 @@ if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' &&
 		$price = $total;
 	}
 	$discount = $xtPrice->xtcGetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
-	$total_content = $_SESSION['customers_status']['customers_status_ot_discount'].' % '.SUB_TITLE_OT_DISCOUNT.' -'.xtc_format_price($discount, $price_special = 1, $calculate_currencies = false).'<br />';
+	$total_content = $_SESSION['customers_status']['customers_status_ot_discount'].' % '.SUB_TITLE_OT_DISCOUNT.' -'.vam_format_price($discount, $price_special = 1, $calculate_currencies = false).'<br />';
 }
 
 if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
@@ -104,7 +104,7 @@ if ($customer_status_value['customers_status_ot_discount'] != 0) {
 	$total_content .= TEXT_CART_OT_DISCOUNT.$customer_status_value['customers_status_ot_discount'].'%';
 }
 if (SHOW_SHIPPING == 'true') {
-	$module_smarty->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
+	$module_smarty->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
 }
 
 $module_smarty->assign('UST_CONTENT', $_SESSION['cart']->show_tax());

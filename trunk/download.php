@@ -20,8 +20,8 @@
 include ('includes/application_top.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_random_name.inc.php');
-require_once (DIR_FS_INC.'xtc_unlink_temp_dir.inc.php');
+require_once (DIR_FS_INC.'vam_random_name.inc.php');
+require_once (DIR_FS_INC.'vam_unlink_temp_dir.inc.php');
 
 if (!isset ($_SESSION['customer_id']))
 	die;
@@ -32,10 +32,10 @@ if ((isset ($_GET['order']) && !is_numeric($_GET['order'])) || (isset ($_GET['id
 }
 
 // Check that order_id, customer_id and filename match
-$downloads_query = xtc_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, opd.download_count, opd.download_maxdays, opd.orders_products_filename from ".TABLE_ORDERS." o, ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." opd where o.customers_id = '".$_SESSION['customer_id']."' and o.orders_id = '".(int) $_GET['order']."' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_download_id = '".(int) $_GET['id']."' and opd.orders_products_filename != ''");
-if (!xtc_db_num_rows($downloads_query))
+$downloads_query = vam_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, opd.download_count, opd.download_maxdays, opd.orders_products_filename from ".TABLE_ORDERS." o, ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." opd where o.customers_id = '".$_SESSION['customer_id']."' and o.orders_id = '".(int) $_GET['order']."' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_download_id = '".(int) $_GET['id']."' and opd.orders_products_filename != ''");
+if (!vam_db_num_rows($downloads_query))
 	die;
-$downloads = xtc_db_fetch_array($downloads_query);
+$downloads = vam_db_fetch_array($downloads_query);
 // MySQL 3.22 does not have INTERVAL
 list ($dt_year, $dt_month, $dt_day) = explode('-', $downloads['date_purchased_day']);
 $download_timestamp = mktime(23, 59, 59, $dt_month, $dt_day + $downloads['download_maxdays'], $dt_year);
@@ -51,7 +51,7 @@ if (!file_exists(DIR_FS_DOWNLOAD.$downloads['orders_products_filename']))
 	die;
 
 // Now decrement counter
-xtc_db_query("update ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." set download_count = download_count-1 where orders_products_download_id = '".(int) $_GET['id']."'");
+vam_db_query("update ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." set download_count = download_count-1 where orders_products_download_id = '".(int) $_GET['id']."'");
 
 // Now send the file with header() magic
 header("Expires: Mon, 26 Nov 1962 00:00:00 GMT");
@@ -64,12 +64,12 @@ header("Content-disposition: attachment; filename=\"".$downloads['orders_product
 
 if (DOWNLOAD_BY_REDIRECT == 'true') {
 	// This will work only on Unix/Linux hosts
-	xtc_unlink_temp_dir(DIR_FS_DOWNLOAD_PUBLIC);
-	$tempdir = xtc_random_name();
+	vam_unlink_temp_dir(DIR_FS_DOWNLOAD_PUBLIC);
+	$tempdir = vam_random_name();
 	umask(0000);
 	mkdir(DIR_FS_DOWNLOAD_PUBLIC.$tempdir, 0777);
 	symlink(DIR_FS_DOWNLOAD.$downloads['orders_products_filename'], DIR_FS_DOWNLOAD_PUBLIC.$tempdir.'/'.$downloads['orders_products_filename']);
-	xtc_redirect(DIR_WS_DOWNLOAD_PUBLIC.$tempdir.'/'.$downloads['orders_products_filename']);
+	vam_redirect(DIR_WS_DOWNLOAD_PUBLIC.$tempdir.'/'.$downloads['orders_products_filename']);
 } else {
 	// This will work on all systems, but will need considerable resources
 	// We could also loop with fread($fp, 4096) to save memory

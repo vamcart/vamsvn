@@ -16,7 +16,7 @@
    --------------------------------------------------------------*/
 
    require('includes/application.php');
-   require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+   require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
 
    include('language/'.$_SESSION['language'].'.php');
 
@@ -87,10 +87,10 @@
       if ($key != 'x' && $key != 'y') {
         if (is_array($value)) {
           for ($i=0; $i<sizeof($value); $i++) {
-            echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+            echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
           }
         } else {
-          echo xtc_draw_hidden_field_installer($key, $value);
+          echo vam_draw_hidden_field_installer($key, $value);
         }
       }
     }

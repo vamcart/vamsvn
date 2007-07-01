@@ -23,17 +23,17 @@
 
   // write customers status in session
   if (isset($_SESSION['customer_id'])) {
-    $customers_status_query_1 = xtc_db_query("SELECT customers_status FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $_SESSION['customer_id'] . "'");
-    $customers_status_value_1 = xtc_db_fetch_array($customers_status_query_1);
+    $customers_status_query_1 = vam_db_query("SELECT customers_status FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $_SESSION['customer_id'] . "'");
+    $customers_status_value_1 = vam_db_fetch_array($customers_status_query_1);
 
-    $customers_status_query = xtc_db_query("SELECT
+    $customers_status_query = vam_db_query("SELECT
                                                 *
                                             FROM
                                                 " . TABLE_CUSTOMERS_STATUS . "
                                             WHERE
                                                 customers_status_id = '" . $customers_status_value_1['customers_status'] . "' AND language_id = '" . $_SESSION['languages_id'] . "'");
 
-    $customers_status_value = xtc_db_fetch_array($customers_status_query);
+    $customers_status_value = vam_db_fetch_array($customers_status_query);
 
     $_SESSION['customers_status'] = array();
     $_SESSION['customers_status']= array(
@@ -59,13 +59,13 @@
       'customers_status_read_reviews' => $customers_status_value['customers_status_read_reviews']
     );
   } else {
-    $customers_status_query = xtc_db_query("SELECT
+    $customers_status_query = vam_db_query("SELECT
                                                 *
                                             FROM
                                                 " . TABLE_CUSTOMERS_STATUS . "
                                             WHERE
                                                 customers_status_id = '" . DEFAULT_CUSTOMERS_STATUS_ID_GUEST . "' AND language_id = '" . $_SESSION['languages_id'] . "'");
-    $customers_status_value = xtc_db_fetch_array($customers_status_query);
+    $customers_status_value = vam_db_fetch_array($customers_status_query);
 
     $_SESSION['customers_status'] = array();
     $_SESSION['customers_status']= array(

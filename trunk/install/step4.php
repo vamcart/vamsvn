@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
    require('includes/application.php');
-   require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+   require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
 
    include('language/'.$_SESSION['language'].'.php');
   
@@ -120,10 +120,10 @@
       if ($key != 'x' && $key != 'y') {
         if (is_array($value)) {
           for ($i=0; $i<sizeof($value); $i++) {
-            echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+            echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
           }
         } else {
-          echo xtc_draw_hidden_field_installer($key, $value);
+          echo vam_draw_hidden_field_installer($key, $value);
         }
       }
     }
@@ -154,10 +154,10 @@ admin/includes/configure.org.php<br />
       if ($key != 'x' && $key != 'y') {
         if (is_array($value)) {
           for ($i=0; $i<sizeof($value); $i++) {
-            echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+            echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
           }
         } else {
-          echo xtc_draw_hidden_field_installer($key, $value);
+          echo vam_draw_hidden_field_installer($key, $value);
         }
       }
     }
@@ -165,8 +165,8 @@ admin/includes/configure.org.php<br />
 
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
-<p><?php echo xtc_draw_checkbox_field_installer('USE_PCONNECT', 'true'); ?><b><?php echo TEXT_PERSIST; ?></b><br /><?php echo TEXT_PERSIST_LONG; ?></p>
-<p><?php echo xtc_draw_radio_field_installer('STORE_SESSIONS', 'files', false); ?><b><?php echo TEXT_SESS_FILE; ?></b><br /><?php echo xtc_draw_radio_field_installer('STORE_SESSIONS', 'mysql',true); ?><b><?php echo TEXT_SESS_DB; ?></b><br /><?php echo TEXT_SESS_LONG; ?></p>
+<p><?php echo vam_draw_checkbox_field_installer('USE_PCONNECT', 'true'); ?><b><?php echo TEXT_PERSIST; ?></b><br /><?php echo TEXT_PERSIST_LONG; ?></p>
+<p><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'files', false); ?><b><?php echo TEXT_SESS_FILE; ?></b><br /><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'mysql',true); ?><b><?php echo TEXT_SESS_DB; ?></b><br /><?php echo TEXT_SESS_LONG; ?></p>
 </fieldset>
 
 <p>

@@ -90,103 +90,103 @@ define('GRADUATED_ASSIGN', 'true');
 // include used functions
 
 // Database
-require_once (DIR_FS_INC.'xtc_db_connect.inc.php');
-require_once (DIR_FS_INC.'xtc_db_close.inc.php');
-require_once (DIR_FS_INC.'xtc_db_error.inc.php');
-require_once (DIR_FS_INC.'xtc_db_perform.inc.php');
-require_once (DIR_FS_INC.'xtc_db_query.inc.php');
-require_once (DIR_FS_INC.'xtc_db_queryCached.inc.php');
-require_once (DIR_FS_INC.'xtc_db_fetch_array.inc.php');
-require_once (DIR_FS_INC.'xtc_db_num_rows.inc.php');
-require_once (DIR_FS_INC.'xtc_db_data_seek.inc.php');
-require_once (DIR_FS_INC.'xtc_db_insert_id.inc.php');
-require_once (DIR_FS_INC.'xtc_db_free_result.inc.php');
-require_once (DIR_FS_INC.'xtc_db_fetch_fields.inc.php');
-require_once (DIR_FS_INC.'xtc_db_output.inc.php');
-require_once (DIR_FS_INC.'xtc_db_input.inc.php');
-require_once (DIR_FS_INC.'xtc_db_prepare_input.inc.php');
-require_once (DIR_FS_INC.'xtc_get_top_level_domain.inc.php');
-require_once (DIR_FS_INC.'xtc_get_cookie_info.inc.php');
+require_once (DIR_FS_INC.'vam_db_connect.inc.php');
+require_once (DIR_FS_INC.'vam_db_close.inc.php');
+require_once (DIR_FS_INC.'vam_db_error.inc.php');
+require_once (DIR_FS_INC.'vam_db_perform.inc.php');
+require_once (DIR_FS_INC.'vam_db_query.inc.php');
+require_once (DIR_FS_INC.'vam_db_queryCached.inc.php');
+require_once (DIR_FS_INC.'vam_db_fetch_array.inc.php');
+require_once (DIR_FS_INC.'vam_db_num_rows.inc.php');
+require_once (DIR_FS_INC.'vam_db_data_seek.inc.php');
+require_once (DIR_FS_INC.'vam_db_insert_id.inc.php');
+require_once (DIR_FS_INC.'vam_db_free_result.inc.php');
+require_once (DIR_FS_INC.'vam_db_fetch_fields.inc.php');
+require_once (DIR_FS_INC.'vam_db_output.inc.php');
+require_once (DIR_FS_INC.'vam_db_input.inc.php');
+require_once (DIR_FS_INC.'vam_db_prepare_input.inc.php');
+require_once (DIR_FS_INC.'vam_get_top_level_domain.inc.php');
+require_once (DIR_FS_INC.'vam_get_cookie_info.inc.php');
 
 // html basics
-require_once (DIR_FS_INC.'xtc_href_link.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_separator.inc.php');
-require_once (DIR_FS_INC.'xtc_php_mail.inc.php');
+require_once (DIR_FS_INC.'vam_href_link.inc.php');
+require_once (DIR_FS_INC.'vam_draw_separator.inc.php');
+require_once (DIR_FS_INC.'vam_php_mail.inc.php');
 
-require_once (DIR_FS_INC.'xtc_product_link.inc.php');
-require_once (DIR_FS_INC.'xtc_category_link.inc.php');
-require_once (DIR_FS_INC.'xtc_manufacturer_link.inc.php');
+require_once (DIR_FS_INC.'vam_product_link.inc.php');
+require_once (DIR_FS_INC.'vam_category_link.inc.php');
+require_once (DIR_FS_INC.'vam_manufacturer_link.inc.php');
 
 // html functions
-require_once (DIR_FS_INC.'xtc_draw_checkbox_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_form.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_hidden_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_input_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_password_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_pull_down_menu.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_radio_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_selection_field.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_separator.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_textarea_field.inc.php');
-require_once (DIR_FS_INC.'xtc_image_button.inc.php');
+require_once (DIR_FS_INC.'vam_draw_checkbox_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_form.inc.php');
+require_once (DIR_FS_INC.'vam_draw_hidden_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_input_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_password_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
+require_once (DIR_FS_INC.'vam_draw_radio_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_selection_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_separator.inc.php');
+require_once (DIR_FS_INC.'vam_draw_textarea_field.inc.php');
+require_once (DIR_FS_INC.'vam_image_button.inc.php');
 
-require_once (DIR_FS_INC.'xtc_not_null.inc.php');
-require_once (DIR_FS_INC.'xtc_update_whos_online.inc.php');
-require_once (DIR_FS_INC.'xtc_activate_banners.inc.php');
-require_once (DIR_FS_INC.'xtc_expire_banners.inc.php');
-require_once (DIR_FS_INC.'xtc_expire_specials.inc.php');
-require_once (DIR_FS_INC.'xtc_parse_category_path.inc.php');
-require_once (DIR_FS_INC.'xtc_get_product_path.inc.php');
+require_once (DIR_FS_INC.'vam_not_null.inc.php');
+require_once (DIR_FS_INC.'vam_update_whos_online.inc.php');
+require_once (DIR_FS_INC.'vam_activate_banners.inc.php');
+require_once (DIR_FS_INC.'vam_expire_banners.inc.php');
+require_once (DIR_FS_INC.'vam_expire_specials.inc.php');
+require_once (DIR_FS_INC.'vam_parse_category_path.inc.php');
+require_once (DIR_FS_INC.'vam_get_product_path.inc.php');
 
-require_once (DIR_FS_INC.'xtc_get_category_path.inc.php');
+require_once (DIR_FS_INC.'vam_get_category_path.inc.php');
 
-require_once (DIR_FS_INC.'xtc_get_parent_categories.inc.php');
-require_once (DIR_FS_INC.'xtc_redirect.inc.php');
-require_once (DIR_FS_INC.'xtc_get_uprid.inc.php');
-require_once (DIR_FS_INC.'xtc_get_all_get_params.inc.php');
-require_once (DIR_FS_INC.'xtc_has_product_attributes.inc.php');
-require_once (DIR_FS_INC.'xtc_image.inc.php');
-require_once (DIR_FS_INC.'xtc_check_stock_attributes.inc.php');
-require_once (DIR_FS_INC.'xtc_currency_exists.inc.php');
-require_once (DIR_FS_INC.'xtc_remove_non_numeric.inc.php');
-require_once (DIR_FS_INC.'xtc_get_ip_address.inc.php');
-require_once (DIR_FS_INC.'xtc_setcookie.inc.php');
-require_once (DIR_FS_INC.'xtc_check_agent.inc.php');
-require_once (DIR_FS_INC.'xtc_count_cart.inc.php');
-require_once (DIR_FS_INC.'xtc_get_qty.inc.php');
+require_once (DIR_FS_INC.'vam_get_parent_categories.inc.php');
+require_once (DIR_FS_INC.'vam_redirect.inc.php');
+require_once (DIR_FS_INC.'vam_get_uprid.inc.php');
+require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
+require_once (DIR_FS_INC.'vam_has_product_attributes.inc.php');
+require_once (DIR_FS_INC.'vam_image.inc.php');
+require_once (DIR_FS_INC.'vam_check_stock_attributes.inc.php');
+require_once (DIR_FS_INC.'vam_currency_exists.inc.php');
+require_once (DIR_FS_INC.'vam_remove_non_numeric.inc.php');
+require_once (DIR_FS_INC.'vam_get_ip_address.inc.php');
+require_once (DIR_FS_INC.'vam_setcookie.inc.php');
+require_once (DIR_FS_INC.'vam_check_agent.inc.php');
+require_once (DIR_FS_INC.'vam_count_cart.inc.php');
+require_once (DIR_FS_INC.'vam_get_qty.inc.php');
 require_once (DIR_FS_INC.'create_coupon_code.inc.php');
-require_once (DIR_FS_INC.'xtc_gv_account_update.inc.php');
-require_once (DIR_FS_INC.'xtc_get_tax_rate_from_desc.inc.php');
-require_once (DIR_FS_INC.'xtc_get_tax_rate.inc.php');
-require_once (DIR_FS_INC.'xtc_add_tax.inc.php');
-require_once (DIR_FS_INC.'xtc_cleanName.inc.php');
-require_once (DIR_FS_INC.'xtc_calculate_tax.inc.php');
-require_once (DIR_FS_INC.'xtc_input_validation.inc.php');
-require_once (DIR_FS_INC.'xtc_js_lang.php');
-require_once (DIR_FS_INC.'xtc_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_gv_account_update.inc.php');
+require_once (DIR_FS_INC.'vam_get_tax_rate_from_desc.inc.php');
+require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
+require_once (DIR_FS_INC.'vam_add_tax.inc.php');
+require_once (DIR_FS_INC.'vam_cleanName.inc.php');
+require_once (DIR_FS_INC.'vam_calculate_tax.inc.php');
+require_once (DIR_FS_INC.'vam_input_validation.inc.php');
+require_once (DIR_FS_INC.'vam_js_lang.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
 // make a connection to the database... now
-xtc_db_connect() or die('Unable to connect to database server!');
+vam_db_connect() or die('Unable to connect to database server!');
 
-$configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from '.TABLE_CONFIGURATION);
-while ($configuration = xtc_db_fetch_array($configuration_query)) {
+$configuration_query = vam_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from '.TABLE_CONFIGURATION);
+while ($configuration = vam_db_fetch_array($configuration_query)) {
 	define($configuration['cfgKey'], $configuration['cfgValue']);
 }
 
 require_once (DIR_WS_CLASSES.'class.phpmailer.php');
 if (EMAIL_TRANSPORT == 'smtp')
 	require_once (DIR_WS_CLASSES.'class.smtp.php');
-require_once (DIR_FS_INC.'xtc_Security.inc.php');
+require_once (DIR_FS_INC.'vam_Security.inc.php');
 
 // set the application parameters
 
 function xtDBquery($query) {
 	if (DB_CACHE == 'true') {
 //			echo  'cached query: '.$query.'<br>';
-		$result = xtc_db_queryCached($query);
+		$result = vam_db_queryCached($query);
 	} else {
 //				echo '::'.$query .'<br>';
-		$result = xtc_db_query($query);
+		$result = vam_db_query($query);
 
 	}
 	return $result;
@@ -236,9 +236,9 @@ $_GET = $InputFilter->process($_GET);
 $_POST = $InputFilter->process($_POST);
 
 // set the top level domains
-$http_domain = xtc_get_top_level_domain(HTTP_SERVER);
-$https_domain = xtc_get_top_level_domain(HTTPS_SERVER);
-$cookie_info = xtc_get_cookie_info();
+$http_domain = vam_get_top_level_domain(HTTP_SERVER);
+$https_domain = vam_get_top_level_domain(HTTPS_SERVER);
+$cookie_info = vam_get_cookie_info();
 
 // include shopping cart class
 require (DIR_WS_CLASSES.'shopping_cart.php');
@@ -277,7 +277,7 @@ elseif (($request_type == 'SSL') && isset ($_GET[session_name()])) {
 // start the session
 $session_started = false;
 if (SESSION_FORCE_COOKIE_USE == 'True') {
-	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
+	vam_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 
 	if (isset ($_COOKIE['cookie_test'])) {
 		session_start();
@@ -293,7 +293,7 @@ if (SESSION_FORCE_COOKIE_USE == 'True') {
 // check the Agent
 $truncate_session_id = false;
 if (CHECK_CLIENT_AGENT) {
-	if (xtc_check_agent() == 1) {
+	if (vam_check_agent() == 1) {
 		$truncate_session_id = true;
 	}
 }
@@ -307,7 +307,7 @@ if (($request_type == 'SSL') && (SESSION_CHECK_SSL_SESSION_ID == 'True') && (ENA
 
 	if ($_SESSION['SESSION_SSL_ID'] != $ssl_session_id) {
 		session_destroy();
-		xtc_redirect(xtc_href_link(FILENAME_SSL_CHECK));
+		vam_redirect(vam_href_link(FILENAME_SSL_CHECK));
 	}
 }
 
@@ -322,20 +322,20 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
 	if ($_SESSION['SESSION_USER_AGENT'] != $http_user_agent) {
 		session_destroy();
-		xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+		vam_redirect(vam_href_link(FILENAME_LOGIN));
 	}
 }
 
 // verify the IP address if the feature is enabled
 if (SESSION_CHECK_IP_ADDRESS == 'True') {
-	$ip_address = xtc_get_ip_address();
+	$ip_address = vam_get_ip_address();
 	if (!isset ($_SESSION['SESSION_IP_ADDRESS'])) {
 		$_SESSION['SESSION_IP_ADDRESS'] = $ip_address;
 	}
 
 	if ($_SESSION['SESSION_IP_ADDRESS'] != $ip_address) {
 		session_destroy();
-		xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+		vam_redirect(vam_href_link(FILENAME_LOGIN));
 	}
 }
 
@@ -343,7 +343,7 @@ if (SESSION_CHECK_IP_ADDRESS == 'True') {
 if (!isset ($_SESSION['language']) || isset ($_GET['language'])) {
 
 	include (DIR_WS_CLASSES.'language.php');
-	$lng = new language(xtc_input_validation($_GET['language'], 'char', ''));
+	$lng = new language(vam_input_validation($_GET['language'], 'char', ''));
 
 	if (!isset ($_GET['language']))
 		$lng->get_browser_language();
@@ -357,7 +357,7 @@ if (!isset ($_SESSION['language']) || isset ($_GET['language'])) {
 if (isset($_SESSION['language']) && !isset($_SESSION['language_charset'])) {
 	
 	include (DIR_WS_CLASSES.'language.php');
-	$lng = new language(xtc_input_validation($_SESSION['language'], 'char', ''));
+	$lng = new language(vam_input_validation($_SESSION['language'], 'char', ''));
 
 
 	$_SESSION['language'] = $lng->language['directory'];
@@ -373,7 +373,7 @@ require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.php'
 if (!isset ($_SESSION['currency']) || isset ($_GET['currency']) || ((USE_DEFAULT_LANGUAGE_CURRENCY == 'true') && (LANGUAGE_CURRENCY != $_SESSION['currency']))) {
 
 	if (isset ($_GET['currency'])) {
-		if (!$_SESSION['currency'] = xtc_currency_exists($_GET['currency']))
+		if (!$_SESSION['currency'] = vam_currency_exists($_GET['currency']))
 			$_SESSION['currency'] = (USE_DEFAULT_LANGUAGE_CURRENCY == 'true') ? LANGUAGE_CURRENCY : DEFAULT_CURRENCY;
 	} else {
 		$_SESSION['currency'] = (USE_DEFAULT_LANGUAGE_CURRENCY == 'true') ? LANGUAGE_CURRENCY : DEFAULT_CURRENCY;
@@ -401,7 +401,7 @@ if (!is_object($_SESSION['cart'])) {
 }
 
 // include the who's online functions
-xtc_update_whos_online();
+vam_update_whos_online();
 
 // split-page-results
 require (DIR_WS_CLASSES.'split_page_results.php');
@@ -410,11 +410,11 @@ require (DIR_WS_CLASSES.'split_page_results.php');
 require (DIR_WS_CLASSES.'boxes.php');
 
 // auto activate and expire banners
-xtc_activate_banners();
-xtc_expire_banners();
+vam_activate_banners();
+vam_expire_banners();
 
 // auto expire special products
-xtc_expire_specials();
+vam_expire_specials();
 require (DIR_WS_CLASSES.'product.php');
 // new p URLS
 if (isset ($_GET['info'])) {
@@ -437,7 +437,7 @@ if (isset ($_GET['cat'])) {
 	$site = explode('_', $_GET['cat']);
 	$cID = $site[0];
 	$cID = str_replace('c', '', $cID);
-	$_GET['cPath'] = xtc_get_category_path($cID);
+	$_GET['cPath'] = vam_get_category_path($cID);
 }
 // new m URLS
 if (isset ($_GET['manu'])) {
@@ -449,11 +449,11 @@ if (isset ($_GET['manu'])) {
 
 // calculate category path
 if (isset ($_GET['cPath'])) {
-	$cPath = xtc_input_validation($_GET['cPath'], 'cPath', '');
+	$cPath = vam_input_validation($_GET['cPath'], 'cPath', '');
 }
 elseif (is_object($product) && !isset ($_GET['manufacturers_id'])) {
 	if ($product->isProduct()) {
-		$cPath = xtc_get_product_path($actual_products_id);
+		$cPath = vam_get_product_path($actual_products_id);
 	} else {
 		$cPath = '';
 	}
@@ -461,8 +461,8 @@ elseif (is_object($product) && !isset ($_GET['manufacturers_id'])) {
 	$cPath = '';
 }
 
-if (xtc_not_null($cPath)) {
-	$cPath_array = xtc_parse_category_path($cPath);
+if (vam_not_null($cPath)) {
+	$cPath_array = vam_parse_category_path($cPath);
 	$cPath = implode('_', $cPath_array);
 	$current_category_id = $cPath_array[(sizeof($cPath_array) - 1)];
 } else {
@@ -474,7 +474,7 @@ require (DIR_WS_CLASSES.'breadcrumb.php');
 $breadcrumb = new breadcrumb;
 
 //$breadcrumb->add(HEADER_TITLE_TOP, HTTP_SERVER);
-$breadcrumb->add(HEADER_TITLE_CATALOG, xtc_href_link(FILENAME_DEFAULT));
+$breadcrumb->add(HEADER_TITLE_CATALOG, vam_href_link(FILENAME_DEFAULT));
 
 // add category names or the manufacturer name to the breadcrumb trail
 if (isset ($cPath_array)) {
@@ -490,26 +490,26 @@ if (isset ($cPath_array)) {
 				                                        and c.categories_id=cd.categories_id
 				                                        ".$group_check."
 				                                        and cd.language_id='".(int) $_SESSION['languages_id']."'");
-		if (xtc_db_num_rows($categories_query,true) > 0) {
-			$categories = xtc_db_fetch_array($categories_query,true);
+		if (vam_db_num_rows($categories_query,true) > 0) {
+			$categories = vam_db_fetch_array($categories_query,true);
 
-			$breadcrumb->add($categories['categories_name'], xtc_href_link(FILENAME_DEFAULT, xtc_category_link($cPath_array[$i], $categories['categories_name'])));
+			$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));
 		} else {
 			break;
 		}
 	}
 }
-elseif (xtc_not_null($_GET['manufacturers_id'])) {
+elseif (vam_not_null($_GET['manufacturers_id'])) {
 	$manufacturers_query = xtDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
-	$manufacturers = xtc_db_fetch_array($manufacturers_query, true);
+	$manufacturers = vam_db_fetch_array($manufacturers_query, true);
 
-	$breadcrumb->add($manufacturers['manufacturers_name'], xtc_href_link(FILENAME_DEFAULT, xtc_manufacturer_link((int) $_GET['manufacturers_id'], $manufacturers['manufacturers_name'])));
+	$breadcrumb->add($manufacturers['manufacturers_name'], vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link((int) $_GET['manufacturers_id'], $manufacturers['manufacturers_name'])));
 
 }
 
 // add the products model/name to the breadcrumb trail
 if ($product->isProduct()) {
-		$breadcrumb->add($product->getBreadcrumbName(), xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($product->data['products_id'], $product->data['products_name'])));
+		$breadcrumb->add($product->getBreadcrumbName(), vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
 }
 
 
@@ -528,22 +528,22 @@ define('WARN_DOWNLOAD_DIRECTORY_NOT_READABLE', 'true');
 require (DIR_WS_CLASSES.'Smarty_2.6.14/Smarty.class.php');
 
 if (isset ($_SESSION['customer_id'])) {
-	$account_type_query = xtc_db_query("SELECT
+	$account_type_query = vam_db_query("SELECT
 		                                    account_type,
 		                                    customers_default_address_id
 		                                    FROM
 		                                    ".TABLE_CUSTOMERS."
 		                                    WHERE customers_id = '".(int) $_SESSION['customer_id']."'");
-	$account_type = xtc_db_fetch_array($account_type_query);
+	$account_type = vam_db_fetch_array($account_type_query);
 
 	// check if zone id is unset bug #0000169
 	if (!isset ($_SESSION['customer_country_id'])) {
-		$zone_query = xtc_db_query("SELECT  entry_country_id
+		$zone_query = vam_db_query("SELECT  entry_country_id
 				                                     FROM ".TABLE_ADDRESS_BOOK."
 				                                     WHERE customers_id='".(int) $_SESSION['customer_id']."'
 				                                     and address_book_id='".$account_type['customers_default_address_id']."'");
 
-		$zone = xtc_db_fetch_array($zone_query);
+		$zone = vam_db_fetch_array($zone_query);
 		$_SESSION['customer_country_id'] = $zone['entry_country_id'];
 	}
 	$_SESSION['account_type'] = $account_type['account_type'];
@@ -553,14 +553,14 @@ if (isset ($_SESSION['customer_id'])) {
 
 // modification for nre graduated system
 unset ($_SESSION['actual_content']);
-xtc_count_cart();
+vam_count_cart();
 
 
   // get referrer from _SERVER array  ************
 //  Referer ***********
-    if (!xtc_session_is_registered('referer')) {
+    if (!vam_session_is_registered('referer')) {
         $ref = $_SERVER["HTTP_REFERER"];
-         xtc_session_register('referer');
+         vam_session_register('referer');
          $referer =$ref;
          }
            $html_referer = $referer ;
@@ -573,13 +573,13 @@ xtc_count_cart();
   if (isset($_GET['tPath'])) {
     $tPath = $_GET['tPath'];
   } elseif (isset($_GET['articles_id']) && !isset($_GET['authors_id'])) {
-    $tPath = xtc_get_article_path($_GET['articles_id']);
+    $tPath = vam_get_article_path($_GET['articles_id']);
   } else {
     $tPath = '';
   }
 
-  if (xtc_not_null($tPath)) {
-    $tPath_array = xtc_parse_topic_path($tPath);
+  if (vam_not_null($tPath)) {
+    $tPath_array = vam_parse_topic_path($tPath);
     $tPath = implode('_', $tPath_array);
     $current_topic_id = $tPath_array[(sizeof($tPath_array)-1)];
   } else {
@@ -589,31 +589,31 @@ xtc_count_cart();
 // add topic names or the author name to the breadcrumb trail
   if (isset($tPath_array)) {
     for ($i=0, $n=sizeof($tPath_array); $i<$n; $i++) {
-      $topics_query = xtc_db_query("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
-      if (xtc_db_num_rows($topics_query) > 0) {
-        $topics = xtc_db_fetch_array($topics_query);
-        $breadcrumb->add($topics['topics_name'], xtc_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1)))));
+      $topics_query = vam_db_query("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
+      if (vam_db_num_rows($topics_query) > 0) {
+        $topics = vam_db_fetch_array($topics_query);
+        $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1)))));
       } else {
         break;
       }
     }
   } elseif (isset($_GET['authors_id'])) {
-    $authors_query = xtc_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
-    if (xtc_db_num_rows($authors_query)) {
-      $authors = xtc_db_fetch_array($authors_query);
-      $breadcrumb->add(ARTICLES_BY . $authors['authors_name'], xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
+    $authors_query = vam_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
+    if (vam_db_num_rows($authors_query)) {
+      $authors = vam_db_fetch_array($authors_query);
+      $breadcrumb->add(ARTICLES_BY . $authors['authors_name'], vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
     }
   }
 
 // add the articles name to the breadcrumb trail
   if (isset($_GET['articles_id'])) {
-    $article_query = xtc_db_query("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
-    if (xtc_db_num_rows($article_query)) {
-      $article = xtc_db_fetch_array($article_query);
+    $article_query = vam_db_query("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
+    if (vam_db_num_rows($article_query)) {
+      $article = vam_db_fetch_array($article_query);
       if (isset($_GET['authors_id'])) {
-        $breadcrumb->add($article['articles_name'], xtc_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id']));
+        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id']));
       } else {
-        $breadcrumb->add($article['articles_name'], xtc_href_link(FILENAME_ARTICLE_INFO, 'tPath=' . $tPath . '&articles_id=' . $_GET['articles_id']));
+        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'tPath=' . $tPath . '&articles_id=' . $_GET['articles_id']));
       }
     }
   }

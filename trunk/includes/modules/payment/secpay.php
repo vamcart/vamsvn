@@ -44,8 +44,8 @@ class secpay {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_SECPAY_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_SECPAY_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_SECPAY_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -108,7 +108,7 @@ class secpay {
 		} else {
 			$total = $order->info['total'];
 		}
-		$process_button_string = xtc_draw_hidden_field('merchant', MODULE_PAYMENT_SECPAY_MERCHANT_ID).xtc_draw_hidden_field('trans_id', STORE_NAME.date('Ymdhis')).xtc_draw_hidden_field('amount', round($xtPrice->xtcCalculateCurrEx($total, $sec_currency), $xtPrice->get_decimal_places($sec_currency))).xtc_draw_hidden_field('bill_name', $order->billing['firstname'].' '.$order->billing['lastname']).xtc_draw_hidden_field('bill_addr_1', $order->billing['street_address']).xtc_draw_hidden_field('bill_addr_2', $order->billing['suburb']).xtc_draw_hidden_field('bill_city', $order->billing['city']).xtc_draw_hidden_field('bill_state', $order->billing['state']).xtc_draw_hidden_field('bill_post_code', $order->billing['postcode']).xtc_draw_hidden_field('bill_country', $order->billing['country']['title']).xtc_draw_hidden_field('bill_tel', $order->customer['telephone']).xtc_draw_hidden_field('bill_email', $order->customer['email_address']).xtc_draw_hidden_field('ship_name', $order->delivery['firstname'].' '.$order->delivery['lastname']).xtc_draw_hidden_field('ship_addr_1', $order->delivery['street_address']).xtc_draw_hidden_field('ship_addr_2', $order->delivery['suburb']).xtc_draw_hidden_field('ship_city', $order->delivery['city']).xtc_draw_hidden_field('ship_state', $order->delivery['state']).xtc_draw_hidden_field('ship_post_code', $order->delivery['postcode']).xtc_draw_hidden_field('ship_country', $order->delivery['country']['title']).xtc_draw_hidden_field('currency', $sec_currency).xtc_draw_hidden_field('callback', xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', false).';'.xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code, 'SSL', false)).xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()).xtc_draw_hidden_field('options', 'test_status='.$test_status.',dups=false,cb_post=true,cb_flds='.xtc_session_name());
+		$process_button_string = vam_draw_hidden_field('merchant', MODULE_PAYMENT_SECPAY_MERCHANT_ID).vam_draw_hidden_field('trans_id', STORE_NAME.date('Ymdhis')).vam_draw_hidden_field('amount', round($xtPrice->xtcCalculateCurrEx($total, $sec_currency), $xtPrice->get_decimal_places($sec_currency))).vam_draw_hidden_field('bill_name', $order->billing['firstname'].' '.$order->billing['lastname']).vam_draw_hidden_field('bill_addr_1', $order->billing['street_address']).vam_draw_hidden_field('bill_addr_2', $order->billing['suburb']).vam_draw_hidden_field('bill_city', $order->billing['city']).vam_draw_hidden_field('bill_state', $order->billing['state']).vam_draw_hidden_field('bill_post_code', $order->billing['postcode']).vam_draw_hidden_field('bill_country', $order->billing['country']['title']).vam_draw_hidden_field('bill_tel', $order->customer['telephone']).vam_draw_hidden_field('bill_email', $order->customer['email_address']).vam_draw_hidden_field('ship_name', $order->delivery['firstname'].' '.$order->delivery['lastname']).vam_draw_hidden_field('ship_addr_1', $order->delivery['street_address']).vam_draw_hidden_field('ship_addr_2', $order->delivery['suburb']).vam_draw_hidden_field('ship_city', $order->delivery['city']).vam_draw_hidden_field('ship_state', $order->delivery['state']).vam_draw_hidden_field('ship_post_code', $order->delivery['postcode']).vam_draw_hidden_field('ship_country', $order->delivery['country']['title']).vam_draw_hidden_field('currency', $sec_currency).vam_draw_hidden_field('callback', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', false).';'.vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code, 'SSL', false)).vam_draw_hidden_field(vam_session_name(), vam_session_id()).vam_draw_hidden_field('options', 'test_status='.$test_status.',dups=false,cb_post=true,cb_flds='.vam_session_name());
 
 		return $process_button_string;
 	}
@@ -121,10 +121,10 @@ class secpay {
 					$remote_host = gethostbyaddr($remote_host);
 				}
 				if ($remote_host != 'secpay.com') {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, xtc_session_name().'='.$_POST[xtc_session_name()].'&payment_error='.$this->code, 'SSL', false, false));
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, vam_session_name().'='.$_POST[vam_session_name()].'&payment_error='.$this->code, 'SSL', false, false));
 				}
 			} else {
-				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, xtc_session_name().'='.$_POST[xtc_session_name()].'&payment_error='.$this->code, 'SSL', false, false));
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, vam_session_name().'='.$_POST[vam_session_name()].'&payment_error='.$this->code, 'SSL', false, false));
 			}
 		}
 	}
@@ -132,7 +132,7 @@ class secpay {
 	function after_process() {
 		global $insert_id;
 		if ($this->order_status)
-			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
 	}
 
@@ -149,25 +149,25 @@ class secpay {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_SECPAY_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_SECPAY_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 
 	function install() {
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_STATUS', 'True', '6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_ALLOWED', '', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_MERCHANT_ID', 'secpay',  '6', '2', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_CURRENCY', 'Any Currency',  '6', '3', 'xtc_cfg_select_option(array(\'Any Currency\', \'Default Currency\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_TEST_STATUS', 'Always Successful','6', '4', 'xtc_cfg_select_option(array(\'Always Successful\', \'Always Fail\', \'Production\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_SORT_ORDER', '0',  '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_ZONE', '0',  '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_SECPAY_ORDER_STATUS_ID', '0',  '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_ALLOWED', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_MERCHANT_ID', 'secpay',  '6', '2', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_CURRENCY', 'Any Currency',  '6', '3', 'vam_cfg_select_option(array(\'Any Currency\', \'Default Currency\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_TEST_STATUS', 'Always Successful','6', '4', 'vam_cfg_select_option(array(\'Always Successful\', \'Always Fail\', \'Production\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SECPAY_SORT_ORDER', '0',  '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_SECPAY_ZONE', '0',  '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_SECPAY_ORDER_STATUS_ID', '0',  '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {

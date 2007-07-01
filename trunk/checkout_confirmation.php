@@ -37,36 +37,36 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC . 'xtc_calculate_tax.inc.php');
-require_once (DIR_FS_INC . 'xtc_check_stock.inc.php');
-require_once (DIR_FS_INC . 'xtc_display_tax_value.inc.php');
+require_once (DIR_FS_INC . 'vam_calculate_tax.inc.php');
+require_once (DIR_FS_INC . 'vam_check_stock.inc.php');
+require_once (DIR_FS_INC . 'vam_display_tax_value.inc.php');
 
 // if the customer is not logged on, redirect them to the login page
 
 if (!isset ($_SESSION['customer_id']))
-	xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 
 // if there is nothing in the customers cart, redirect them to the shopping cart page
 if ($_SESSION['cart']->count_contents() < 1)
-	xtc_redirect(xtc_href_link(FILENAME_SHOPPING_CART));
+	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 
 // avoid hack attempts during the checkout procedure by checking the internal cartID
 if (isset ($_SESSION['cart']->cartID) && isset ($_SESSION['cartID'])) {
 	if ($_SESSION['cart']->cartID != $_SESSION['cartID'])
-		xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 }
 
 // if no shipping method has been selected, redirect the customer to the shipping method selection page
 if (!isset ($_SESSION['shipping']))
-	xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
 //check if display conditions on checkout page is true
 
 if (isset ($_POST['payment']))
-	$_SESSION['payment'] = xtc_db_prepare_input($_POST['payment']);
+	$_SESSION['payment'] = vam_db_prepare_input($_POST['payment']);
 
 if ($_POST['comments_added'] != '')
-	$_SESSION['comments'] = xtc_db_prepare_input($_POST['comments']);
+	$_SESSION['comments'] = vam_db_prepare_input($_POST['comments']);
 
 //-- TheMedia Begin check if display conditions on checkout page is true
 if (isset ($_POST['cot_gv']))
@@ -76,7 +76,7 @@ if (isset ($_POST['cot_gv']))
 if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
 	if ($_POST['conditions'] == false) {
 		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
-		xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
+		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
 	}
 }
 
@@ -101,7 +101,7 @@ $order_total_modules->pre_confirmation_check();
 
 // GV Code line changed
 if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
-	xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
 }
 
 if (is_array($payment_modules->modules))
@@ -115,15 +115,15 @@ $shipping_modules = new shipping($_SESSION['shipping']);
 $any_out_of_stock = false;
 if (STOCK_CHECK == 'true') {
 	for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
-		if (xtc_check_stock($order->products[$i]['id'], $order->products[$i]['qty']))
+		if (vam_check_stock($order->products[$i]['id'], $order->products[$i]['qty']))
 			$any_out_of_stock = true;
 	}
 	// Out of Stock
 	if ((STOCK_ALLOW_CHECKOUT != 'true') && ($any_out_of_stock == true))
-		xtc_redirect(xtc_href_link(FILENAME_SHOPPING_CART));
+		vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 }
 
-$breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION, xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION, vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION);
 
 require (DIR_WS_INCLUDES . 'header.php');
@@ -141,19 +141,19 @@ if (SHOW_IP_LOG == 'true') {
 	}
 	$smarty->assign('CUSTOMERS_IP', $customers_ip);
 }
-$smarty->assign('DELIVERY_LABEL', xtc_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
+$smarty->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
 if ($_SESSION['credit_covers'] != '1') {
-	$smarty->assign('BILLING_LABEL', xtc_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
+	$smarty->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
 }
-$smarty->assign('PRODUCTS_EDIT', xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
-$smarty->assign('SHIPPING_ADDRESS_EDIT', xtc_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
-$smarty->assign('BILLING_ADDRESS_EDIT', xtc_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
+$smarty->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$smarty->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
+$smarty->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
 
 if ($_SESSION['sendto'] != false) {
 
 	if ($order->info['shipping_method']) {
 		$smarty->assign('SHIPPING_METHOD', $order->info['shipping_method']);
-		$smarty->assign('SHIPPING_EDIT', xtc_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		$smarty->assign('SHIPPING_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
 	}
 
@@ -195,7 +195,7 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 		if (sizeof($order->info['tax_groups']) > 1)
-			$data_products .= '            <td class="main" valign="top" align="right">' . xtc_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
+			$data_products .= '            <td class="main" valign="top" align="right">' . vam_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
 	}
 	$data_products .= '</tr>' . "\n";
 }
@@ -206,7 +206,7 @@ if ($order->info['payment_method'] != 'no_payment' && $order->info['payment_meth
 	include (DIR_WS_LANGUAGES . '/' . $_SESSION['language'] . '/modules/payment/' . $order->info['payment_method'] . '.php');
 	$smarty->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_ . strtoupper($order->info['payment_method']) . _TEXT_TITLE));
 }
-$smarty->assign('PAYMENT_EDIT', xtc_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+$smarty->assign('PAYMENT_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 
 $total_block = '<table>';
 if (MODULE_ORDER_TOTAL_INSTALLED) {
@@ -224,9 +224,9 @@ if (is_array($payment_modules->modules)) {
 
 			$payment_info .= '<table>
 								<tr>
-						                <td>' . xtc_draw_separator('pixel_trans.gif', '10', '1') . '</td>
+						                <td>' . vam_draw_separator('pixel_trans.gif', '10', '1') . '</td>
 						                <td class="main">' . $confirmation['fields'][$i]['title'] . '</td>
-						                <td>' . xtc_draw_separator('pixel_trans.gif', '10', '1') . '</td>
+						                <td>' . vam_draw_separator('pixel_trans.gif', '10', '1') . '</td>
 						                <td class="main">' . stripslashes($confirmation['fields'][$i]['field']) . '</td>
 						              </tr></table>';
 
@@ -236,8 +236,8 @@ if (is_array($payment_modules->modules)) {
 	}
 }
 
-if (xtc_not_null($order->info['comments'])) {
-	$smarty->assign('ORDER_COMMENTS', nl2br(htmlspecialchars($order->info['comments'])) . xtc_draw_hidden_field('comments', $order->info['comments']));
+if (vam_not_null($order->info['comments'])) {
+	$smarty->assign('ORDER_COMMENTS', nl2br(htmlspecialchars($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']));
 
 }
 
@@ -246,15 +246,15 @@ if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tm
 	$form_action_url = $$_SESSION['payment']->form_action_url;
 
 } else {
-	$form_action_url = xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+	$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 }
-$smarty->assign('CHECKOUT_FORM', xtc_draw_form('checkout_confirmation', $form_action_url, 'post'));
+$smarty->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post'));
 $payment_button = '';
 if (is_array($payment_modules->modules)) {
 	$payment_button .= $payment_modules->process_button();
 }
 $smarty->assign('MODULE_BUTTONS', $payment_button);
-$smarty->assign('CHECKOUT_BUTTON', xtc_image_submit('button_confirm_order.gif', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
+$smarty->assign('CHECKOUT_BUTTON', vam_image_submit('button_confirm_order.gif', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
 
 //check if display conditions on checkout page is true
 if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
@@ -272,8 +272,8 @@ if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
 		                                                WHERE content_group='" . REVOCATION_ID . "' " . $group_check . "
 		                                                AND languages_id='" . $_SESSION['languages_id'] . "'";
 
-	$shop_content_query = xtc_db_query($shop_content_query);
-	$shop_content_data = xtc_db_fetch_array($shop_content_query);
+	$shop_content_query = vam_db_query($shop_content_query);
+	$shop_content_data = vam_db_fetch_array($shop_content_query);
 
 	if ($shop_content_data['content_file'] != '') {
 		ob_start();
@@ -301,8 +301,8 @@ if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
 		                                                WHERE content_group='3' " . $group_check . "
 		                                                AND languages_id='" . $_SESSION['languages_id'] . "'";
 
-	$shop_content_query = xtc_db_query($shop_content_query);
-	$shop_content_data = xtc_db_fetch_array($shop_content_query);
+	$shop_content_query = vam_db_query($shop_content_query);
+	$shop_content_data = vam_db_fetch_array($shop_content_query);
 	
 	$smarty->assign('AGB_TITLE', $shop_content_data['content_heading']);
 	$smarty->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));

@@ -18,34 +18,34 @@
   require('../includes/configure.php');
   
   require('includes/application.php');
-  require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
   
-  require_once(DIR_FS_INC . 'xtc_rand.inc.php');
-  require_once(DIR_FS_INC . 'xtc_encrypt_password.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_query.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_fetch_array.inc.php');
-  require_once(DIR_FS_INC .'xtc_validate_email.inc.php');
-  require_once(DIR_FS_INC .'xtc_db_input.inc.php');
-  require_once(DIR_FS_INC .'xtc_db_perform.inc.php');
-  require_once(DIR_FS_INC .'xtc_db_num_rows.inc.php');
-  require_once(DIR_FS_INC .'xtc_redirect.inc.php');
-  require_once(DIR_FS_INC .'xtc_href_link.inc.php');
-  require_once(DIR_FS_INC . 'xtc_draw_pull_down_menu.inc.php');
-  require_once(DIR_FS_INC . 'xtc_draw_input_field.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_country_list.inc.php');
+  require_once(DIR_FS_INC . 'vam_rand.inc.php');
+  require_once(DIR_FS_INC . 'vam_encrypt_password.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_connect.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_query.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_fetch_array.inc.php');
+  require_once(DIR_FS_INC .'vam_validate_email.inc.php');
+  require_once(DIR_FS_INC .'vam_db_input.inc.php');
+  require_once(DIR_FS_INC .'vam_db_perform.inc.php');
+  require_once(DIR_FS_INC .'vam_db_num_rows.inc.php');
+  require_once(DIR_FS_INC .'vam_redirect.inc.php');
+  require_once(DIR_FS_INC .'vam_href_link.inc.php');
+  require_once(DIR_FS_INC . 'vam_draw_pull_down_menu.inc.php');
+  require_once(DIR_FS_INC . 'vam_draw_input_field.inc.php');
+  require_once(DIR_FS_INC . 'vam_get_country_list.inc.php');
 
 
     include('language/'.$_SESSION['language'].'.php');
   
   // connect do database
-  xtc_db_connect() or die('Unable to connect to database server!'); 
+  vam_db_connect() or die('Unable to connect to database server!'); 
     
 
   
   // get configuration data
-  $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+  $configuration_query = vam_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
+  while ($configuration = vam_db_fetch_array($configuration_query)) {
     define($configuration['cfgKey'], $configuration['cfgValue']);
   }
 
@@ -56,21 +56,21 @@
     $process = true;
 
 
-    $firstname = xtc_db_prepare_input($_POST['FIRST_NAME']);
-    $lastname = xtc_db_prepare_input($_POST['LAST_NAME']);
-	$email_address = xtc_db_prepare_input($_POST['EMAIL_ADRESS']);
-	$street_address = xtc_db_prepare_input($_POST['STREET_ADRESS']);
-	$postcode = xtc_db_prepare_input($_POST['POST_CODE']);
-    $city = xtc_db_prepare_input($_POST['CITY']);
-    $zone_id = xtc_db_prepare_input($_POST['zone_id']);
-    $state = xtc_db_prepare_input($_POST['STATE']);
-	$country = xtc_db_prepare_input($_POST['COUNTRY']);
-    $telephone = xtc_db_prepare_input($_POST['TELEPHONE']);
-    $password = xtc_db_prepare_input($_POST['PASSWORD']);
-    $confirmation = xtc_db_prepare_input($_POST['PASSWORD_CONFIRMATION']);
-    $store_name = xtc_db_prepare_input($_POST['STORE_NAME']);
-	$email_from = xtc_db_prepare_input($_POST['EMAIL_ADRESS_FROM']);
-	$company = xtc_db_prepare_input($_POST['COMPANY']);
+    $firstname = vam_db_prepare_input($_POST['FIRST_NAME']);
+    $lastname = vam_db_prepare_input($_POST['LAST_NAME']);
+	$email_address = vam_db_prepare_input($_POST['EMAIL_ADRESS']);
+	$street_address = vam_db_prepare_input($_POST['STREET_ADRESS']);
+	$postcode = vam_db_prepare_input($_POST['POST_CODE']);
+    $city = vam_db_prepare_input($_POST['CITY']);
+    $zone_id = vam_db_prepare_input($_POST['zone_id']);
+    $state = vam_db_prepare_input($_POST['STATE']);
+	$country = vam_db_prepare_input($_POST['COUNTRY']);
+    $telephone = vam_db_prepare_input($_POST['TELEPHONE']);
+    $password = vam_db_prepare_input($_POST['PASSWORD']);
+    $confirmation = vam_db_prepare_input($_POST['PASSWORD_CONFIRMATION']);
+    $store_name = vam_db_prepare_input($_POST['STORE_NAME']);
+	$email_from = vam_db_prepare_input($_POST['EMAIL_ADRESS_FROM']);
+	$company = vam_db_prepare_input($_POST['COMPANY']);
 		
     $error = false;
 
@@ -91,7 +91,7 @@
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_ERROR);
-    } elseif (xtc_validate_email($email_address) == false) {
+    } elseif (vam_validate_email($email_address) == false) {
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
@@ -125,13 +125,13 @@
 
     if (ACCOUNT_STATE == 'true') {
       $zone_id = 0;
-      $check_query = xtc_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-      $check = xtc_db_fetch_array($check_query);
+      $check_query = vam_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
+      $check = vam_db_fetch_array($check_query);
       $entry_state_has_zones = ($check['total'] > 0);
       if ($entry_state_has_zones == true) {
-        $zone_query = xtc_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name like '" . xtc_db_input($state) . "%' or zone_code like '%" . xtc_db_input($state) . "%')");
-        if (xtc_db_num_rows($zone_query) > 0) {
-          $zone = xtc_db_fetch_array($zone_query);
+        $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name like '" . vam_db_input($state) . "%' or zone_code like '%" . vam_db_input($state) . "%')");
+        if (vam_db_num_rows($zone_query) > 0) {
+          $zone = vam_db_fetch_array($zone_query);
           $zone_id = $zone['zone_id'];
         } else {
           $error = true;
@@ -179,21 +179,21 @@
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_FROM_ERROR);
-    } elseif (xtc_validate_email($email_from) == false) {
+    } elseif (vam_validate_email($email_from) == false) {
       $error = true;
 
       $messageStack->add('step6', ENTRY_EMAIL_ADDRESS_FROM_CHECK_ERROR);
     } 
 
 	    if ($error == false) {
-$customer_query = xtc_db_query("select c.customers_id, ci.customers_info_id, ab.customers_id from " . TABLE_CUSTOMERS . " c, " . TABLE_CUSTOMERS_INFO . " ci, " . TABLE_ADDRESS_BOOK . " ab ");
-if (xtc_db_num_rows($customer_query) >= 1) {
+$customer_query = vam_db_query("select c.customers_id, ci.customers_info_id, ab.customers_id from " . TABLE_CUSTOMERS . " c, " . TABLE_CUSTOMERS_INFO . " ci, " . TABLE_ADDRESS_BOOK . " ab ");
+if (vam_db_num_rows($customer_query) >= 1) {
   $db_action = "update";
 } else {
     $db_action = "insert";
   }
 
-xtc_db_perform(TABLE_CUSTOMERS, array(
+vam_db_perform(TABLE_CUSTOMERS, array(
               'customers_id' => '1',
               'customers_status' => '0',
               'customers_firstname' => $firstname,
@@ -201,14 +201,14 @@ xtc_db_perform(TABLE_CUSTOMERS, array(
               'customers_email_address' => $email_address,
               'customers_default_address_id' => '1',
               'customers_telephone' => $telephone,
-              'customers_password' => xtc_encrypt_password($password),
+              'customers_password' => vam_encrypt_password($password),
               'delete_user' => '0',
               'customers_date_added' => 'now()',
               'customers_last_modified' => 'now()',),
               $db_action, 'customers_id = 1'
               );
 
-xtc_db_perform(TABLE_CUSTOMERS_INFO, array(
+vam_db_perform(TABLE_CUSTOMERS_INFO, array(
               'customers_info_id' => '1',
               'customers_info_date_of_last_logon' => '',
               'customers_info_number_of_logons' => '',
@@ -218,7 +218,7 @@ xtc_db_perform(TABLE_CUSTOMERS_INFO, array(
               $db_action, 'customers_info_id = 1'
               );
 
-xtc_db_perform(TABLE_ADDRESS_BOOK, array(
+vam_db_perform(TABLE_ADDRESS_BOOK, array(
               'customers_id' => '1',
               'entry_company' => ($company),
               'entry_firstname' => ($firstname),
@@ -236,18 +236,18 @@ xtc_db_perform(TABLE_ADDRESS_BOOK, array(
 
 
 
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_address). "' WHERE configuration_key = 'STORE_OWNER_EMAIL_ADDRESS'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($store_name). "' WHERE configuration_key = 'STORE_NAME'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_FROM'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($country). "' WHERE configuration_key = 'SHIPPING_ORIGIN_COUNTRY'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($postcode). "' WHERE configuration_key = 'SHIPPING_ORIGIN_ZIP'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($company). "' WHERE configuration_key = 'STORE_OWNER'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_BILLING_FORWARDING_STRING'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_BILLING_ADDRESS'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'CONTACT_US_EMAIL_ADDRESS'");
-xtc_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_SUPPORT_ADDRESS'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_address). "' WHERE configuration_key = 'STORE_OWNER_EMAIL_ADDRESS'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($store_name). "' WHERE configuration_key = 'STORE_NAME'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_FROM'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($country). "' WHERE configuration_key = 'SHIPPING_ORIGIN_COUNTRY'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($postcode). "' WHERE configuration_key = 'SHIPPING_ORIGIN_ZIP'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($company). "' WHERE configuration_key = 'STORE_OWNER'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_BILLING_FORWARDING_STRING'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_BILLING_ADDRESS'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'CONTACT_US_EMAIL_ADDRESS'");
+vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($email_from). "' WHERE configuration_key = 'EMAIL_SUPPORT_ADDRESS'");
 
-	      xtc_redirect(xtc_href_link('install/finished.php', '', 'NONSSL'));
+	      vam_redirect(vam_href_link('install/finished.php', '', 'NONSSL'));
 		}
 
 	}
@@ -322,41 +322,41 @@ if ($messageStack->size('step6') > 0) {
 
 <fieldset class="form">
 <legend><?php echo TITLE_ADMIN_CONFIG; ?></legend>
-<p><strong><?php echo TEXT_FIRSTNAME; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('FIRST_NAME'); ?></p>
-<p><strong><?php echo TEXT_LASTNAME; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('LAST_NAME'); ?></p>
-<p><strong><?php echo TEXT_EMAIL; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('EMAIL_ADRESS'); ?></p>
-<p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('STREET_ADRESS'); ?></p>
-<p><strong><?php echo TEXT_POSTCODE; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('POST_CODE'); ?></p>
-<p><strong><?php echo TEXT_CITY; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('CITY'); ?></p>
-<p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php $selected = $_POST['COUNTRY']; echo xtc_get_country_list('COUNTRY',$selected); ?></p>
+<p><strong><?php echo TEXT_FIRSTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('FIRST_NAME'); ?></p>
+<p><strong><?php echo TEXT_LASTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('LAST_NAME'); ?></p>
+<p><strong><?php echo TEXT_EMAIL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS'); ?></p>
+<p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?></p>
+<p><strong><?php echo TEXT_POSTCODE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('POST_CODE'); ?></p>
+<p><strong><?php echo TEXT_CITY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('CITY'); ?></p>
+<p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php $selected = $_POST['COUNTRY']; echo vam_get_country_list('COUNTRY',$selected); ?></p>
 <p><strong><?php echo TEXT_STATE; ?></strong>&nbsp;
 <?php
     if ($process == true) {
       if ($entry_state_has_zones == true) {
         $zones_array = array();
-        $zones_query = xtc_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = xtc_db_fetch_array($zones_query)) {
+        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
+        while ($zones_values = vam_db_fetch_array($zones_query)) {
           $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
         }
-        echo xtc_draw_pull_down_menu('STATE', $zones_array);
+        echo vam_draw_pull_down_menu('STATE', $zones_array);
       } else {
-        echo xtc_draw_input_field('STATE');
+        echo vam_draw_input_field('STATE');
       }
     } else {
-      echo xtc_draw_input_field('STATE');
+      echo vam_draw_input_field('STATE');
     }
 ?>
 </p>
-<p><strong><?php echo TEXT_TEL; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('TELEPHONE'); ?></p>
-<p><strong><?php echo TEXT_PASSWORD; ?></strong>&nbsp;<?php echo xtc_draw_password_field_installer('PASSWORD'); ?></p>
-<p><strong><?php echo TEXT_PASSWORD_CONF; ?></strong>&nbsp;<?php echo xtc_draw_password_field_installer('PASSWORD_CONFIRMATION'); ?></p>
+<p><strong><?php echo TEXT_TEL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('TELEPHONE'); ?></p>
+<p><strong><?php echo TEXT_PASSWORD; ?></strong>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD'); ?></p>
+<p><strong><?php echo TEXT_PASSWORD_CONF; ?></strong>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD_CONFIRMATION'); ?></p>
 </fieldset>
 
 <fieldset class="form">
 <legend><?php echo TITLE_SHOP_CONFIG; ?></legend>
-<p><strong><?php echo TEXT_STORE; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('STORE_NAME'); ?></p>
-<p><strong><?php echo TEXT_COMPANY; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('COMPANY'); ?></p>
-<p><strong><?php echo TEXT_EMAIL_FROM; ?></strong>&nbsp;<?php echo xtc_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?></p>
+<p><strong><?php echo TEXT_STORE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STORE_NAME'); ?></p>
+<p><strong><?php echo TEXT_COMPANY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('COMPANY'); ?></p>
+<p><strong><?php echo TEXT_EMAIL_FROM; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?></p>
 </fieldset>
 
 <p>

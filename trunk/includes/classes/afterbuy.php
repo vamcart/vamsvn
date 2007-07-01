@@ -16,11 +16,11 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-class xtc_afterbuy_functions {
+class vam_afterbuy_functions {
 	var $order_id;
 
 	// constructor
-	function xtc_afterbuy_functions($order_id) {
+	function vam_afterbuy_functions($order_id) {
 		$this->order_id = $order_id;
 	}
 
@@ -61,8 +61,8 @@ class xtc_afterbuy_functions {
 		curl_setopt($ch, CURLOPT_POST, 1);
 
 		// get order data
-		$o_query = xtc_db_query("SELECT * FROM ".TABLE_ORDERS." WHERE orders_id='".$oID."'");
-		$oData = xtc_db_fetch_array($o_query);
+		$o_query = vam_db_query("SELECT * FROM ".TABLE_ORDERS." WHERE orders_id='".$oID."'");
+		$oData = vam_db_fetch_array($o_query);
 
 		// customers Address
 		$customer['id'] = $oData['customers_id'];
@@ -78,8 +78,8 @@ class xtc_afterbuy_functions {
 		$customer['land'] = $oData['billing_country_iso_code_2'];
 
 		// get gender
-		$c_query = xtc_db_query("SELECT customers_gender FROM ".TABLE_CUSTOMERS." WHERE customers_id='".$customer['id']."'");
-		$c_data = xtc_db_fetch_array($c_query);
+		$c_query = vam_db_query("SELECT customers_gender FROM ".TABLE_CUSTOMERS." WHERE customers_id='".$customer['id']."'");
+		$c_data = vam_db_fetch_array($c_query);
 		switch ($c_data['customers_gender']) {
 			case 'm' :
 				$customer['gender'] = 'Herr';
@@ -99,9 +99,9 @@ class xtc_afterbuy_functions {
 		$customer['d_land'] = $oData['delivery_country_iso_code_2'];
 
 		// get products related to order
-		$p_query = xtc_db_query("SELECT * FROM ".TABLE_ORDERS_PRODUCTS." WHERE orders_id='".$oID."'");
+		$p_query = vam_db_query("SELECT * FROM ".TABLE_ORDERS_PRODUCTS." WHERE orders_id='".$oID."'");
 
-		$p_count = xtc_db_num_rows($p_query);
+		$p_count = vam_db_num_rows($p_query);
 		// init GET string
 		$DATAstring = "Action=new&";
 		$DATAstring .= "PartnerID=".$PartnerID."&";
@@ -133,7 +133,7 @@ class xtc_afterbuy_functions {
 		// products_data
 		$nr = 0;
 		$anzahl = 0;
-		while ($pDATA = xtc_db_fetch_array($p_query)) {
+		while ($pDATA = vam_db_fetch_array($p_query)) {
 			$nr ++;
 			$artnr = $pDATA['products_model'];
 			if ($artnr == '')
@@ -152,9 +152,9 @@ class xtc_afterbuy_functions {
 			$url = HTTP_SERVER.DIR_WS_CATALOG.'product_info.php?products_id='.$pDATA['products_id'];
 			$DATAstring .= "ArtikelLink_".$nr."=".$url."&";
 
-			$a_query = xtc_db_query("SELECT * FROM ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." WHERE orders_id='".$oID."' AND orders_products_id='".$pDATA['orders_products_id']."'");
+			$a_query = vam_db_query("SELECT * FROM ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." WHERE orders_id='".$oID."' AND orders_products_id='".$pDATA['orders_products_id']."'");
 			$options = '';
-			while ($aDATA = xtc_db_fetch_array($a_query)) {
+			while ($aDATA = vam_db_fetch_array($a_query)) {
 				if ($options == '') {
 					$options = $aDATA['products_options'].":".$aDATA['products_options_values'];
 				} else {
@@ -167,7 +167,7 @@ class xtc_afterbuy_functions {
 			$anzahl += $pDATA['products_quantity'];
 		}
 
-		$order_total_query = xtc_db_query("SELECT
+		$order_total_query = vam_db_query("SELECT
 						                      class,
 						                      value,
 						                      sort_order
@@ -183,7 +183,7 @@ class xtc_afterbuy_functions {
 		$gv_flag = false;
 		$coupon_flag = false;
 		$gv = '';
-		while ($order_total_values = xtc_db_fetch_array($order_total_query)) {
+		while ($order_total_values = vam_db_fetch_array($order_total_query)) {
 
 			$order_total[] = array ('CLASS' => $order_total_values['class'], 'VALUE' => $order_total_values['value']);
 
@@ -277,10 +277,10 @@ class xtc_afterbuy_functions {
 
 		//banktransfer data
 		if ($oData['payment_method']=='banktransfer') {
-		$b_query = xtc_db_query("SELECT * FROM ".TABLE_BANKTRANSFER." WHERE orders_id='".$oID."'");
+		$b_query = vam_db_query("SELECT * FROM ".TABLE_BANKTRANSFER." WHERE orders_id='".$oID."'");
 
-		if (xtc_db_numrows($b_query)) {
-			$b_data = xtc_db_fetch_array($b_query);
+		if (vam_db_numrows($b_query)) {
+			$b_data = vam_db_fetch_array($b_query);
 			$DATAstring .= "Bankname=".$b_data['banktransfer_bankname']."&";
 			$DATAstring .= "BLZ=".$b_data['banktransfer_blz']."&";
 			$DATAstring .= "Kontonummer=".$b_data['banktransfer_number']."&";
@@ -302,11 +302,11 @@ class xtc_afterbuy_functions {
 			$cdr = explode('<KundenNr>', $result);
 			$cdr = explode('</KundenNr>', $cdr[1]);
 			$cdr = $cdr[0];
-			xtc_db_query("update ".TABLE_ORDERS." set afterbuy_success='1',afterbuy_id='".$cdr."' where orders_id='".$oID."'");
+			vam_db_query("update ".TABLE_ORDERS." set afterbuy_success='1',afterbuy_id='".$cdr."' where orders_id='".$oID."'");
 
 			//set new order status
 			if ($order_status != '') {
-				xtc_db_query("update ".TABLE_ORDERS." set orders_status='".$order_status."' where orders_id='".$oID."'");
+				vam_db_query("update ".TABLE_ORDERS." set orders_status='".$order_status."' where orders_id='".$oID."'");
 			}
 		} else {
 
@@ -323,8 +323,8 @@ class xtc_afterbuy_functions {
 	// Funktion zum ueberpruefen ob Bestellung bereits an Afterbuy gesendet.
 	function order_send() {
 
-		$check_query = xtc_db_query("SELECT afterbuy_success FROM ".TABLE_ORDERS." WHERE orders_id='".$this->order_id."'");
-		$data = xtc_db_fetch_array($check_query);
+		$check_query = vam_db_query("SELECT afterbuy_success FROM ".TABLE_ORDERS." WHERE orders_id='".$this->order_id."'");
+		$data = vam_db_fetch_array($check_query);
 
 		if ($data['afterbuy_success'] == 1)
 			return false;

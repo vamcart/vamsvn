@@ -44,8 +44,8 @@ class psigate {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_PSIGATE_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_PSIGATE_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_PSIGATE_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -85,7 +85,7 @@ class psigate {
 				$expires_year[] = array ('id' => strftime('%y', mktime(0, 0, 0, 1, 1, $i)), 'text' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)));
 			}
 
-			$selection = array ('id' => $this->code, 'module' => $this->title, 'fields' => array (array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_OWNER, 'field' => $order->billing['firstname'].' '.$order->billing['lastname']), array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_NUMBER, 'field' => xtc_draw_input_field('psigate_cc_number')), array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_EXPIRES, 'field' => xtc_draw_pull_down_menu('psigate_cc_expires_month', $expires_month).'&nbsp;'.xtc_draw_pull_down_menu('psigate_cc_expires_year', $expires_year))));
+			$selection = array ('id' => $this->code, 'module' => $this->title, 'fields' => array (array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_OWNER, 'field' => $order->billing['firstname'].' '.$order->billing['lastname']), array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_NUMBER, 'field' => vam_draw_input_field('psigate_cc_number')), array ('title' => MODULE_PAYMENT_PSIGATE_TEXT_CREDIT_CARD_EXPIRES, 'field' => vam_draw_pull_down_menu('psigate_cc_expires_month', $expires_month).'&nbsp;'.vam_draw_pull_down_menu('psigate_cc_expires_year', $expires_year))));
 		} else {
 			$selection = array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
 		}
@@ -119,7 +119,7 @@ class psigate {
 			if (($result == false) || ($result < 1)) {
 				$payment_error_return = 'payment_error='.$this->code.'&error='.urlencode($error).'&psigate_cc_owner='.urlencode($_POST['psigate_cc_owner']).'&psigate_cc_expires_month='.$_POST['psigate_cc_expires_month'].'&psigate_cc_expires_year='.$_POST['psigate_cc_expires_year'];
 
-				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 			}
 
 			$this->cc_card_type = $cc_validation->cc_type;
@@ -179,10 +179,10 @@ class psigate {
 		} else {
 			$total = $order->info['total'];
 		}
-		$process_button_string = xtc_draw_hidden_field('MerchantID', MODULE_PAYMENT_PSIGATE_MERCHANT_ID).xtc_draw_hidden_field('FullTotal', round($xtPrice->xtcCalculateCurrEx($total, MODULE_PAYMENT_PSIGATE_CURRENCY), $xtPrice->get_decimal_places(MODULE_PAYMENT_PSIGATE_CURRENCY))).xtc_draw_hidden_field('ThanksURL', xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).xtc_draw_hidden_field('NoThanksURL', xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code, 'NONSSL', true)).xtc_draw_hidden_field('Bname', $order->billing['firstname'].' '.$order->billing['lastname']).xtc_draw_hidden_field('Baddr1', $order->billing['street_address']).xtc_draw_hidden_field('Bcity', $order->billing['city']).xtc_draw_hidden_field('Bstate', $order->billing['state']).xtc_draw_hidden_field('Bzip', $order->billing['postcode']).xtc_draw_hidden_field('Bcountry', $order->billing['country']['iso_code_2']).xtc_draw_hidden_field('Phone', $order->customer['telephone']).xtc_draw_hidden_field('Email', $order->customer['email_address']).xtc_draw_hidden_field('Sname', $order->delivery['firstname'].' '.$order->delivery['lastname']).xtc_draw_hidden_field('Saddr1', $order->delivery['street_address']).xtc_draw_hidden_field('Scity', $order->delivery['city']).xtc_draw_hidden_field('Sstate', $order->delivery['state']).xtc_draw_hidden_field('Szip', $order->delivery['postcode']).xtc_draw_hidden_field('Scountry', $order->delivery['country']['iso_code_2']).xtc_draw_hidden_field('ChargeType', $transaction_type).xtc_draw_hidden_field('Result', $transaction_mode).xtc_draw_hidden_field('IP', $_SERVER['REMOTE_ADDR']);
+		$process_button_string = vam_draw_hidden_field('MerchantID', MODULE_PAYMENT_PSIGATE_MERCHANT_ID).vam_draw_hidden_field('FullTotal', round($xtPrice->xtcCalculateCurrEx($total, MODULE_PAYMENT_PSIGATE_CURRENCY), $xtPrice->get_decimal_places(MODULE_PAYMENT_PSIGATE_CURRENCY))).vam_draw_hidden_field('ThanksURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).vam_draw_hidden_field('NoThanksURL', vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code, 'NONSSL', true)).vam_draw_hidden_field('Bname', $order->billing['firstname'].' '.$order->billing['lastname']).vam_draw_hidden_field('Baddr1', $order->billing['street_address']).vam_draw_hidden_field('Bcity', $order->billing['city']).vam_draw_hidden_field('Bstate', $order->billing['state']).vam_draw_hidden_field('Bzip', $order->billing['postcode']).vam_draw_hidden_field('Bcountry', $order->billing['country']['iso_code_2']).vam_draw_hidden_field('Phone', $order->customer['telephone']).vam_draw_hidden_field('Email', $order->customer['email_address']).vam_draw_hidden_field('Sname', $order->delivery['firstname'].' '.$order->delivery['lastname']).vam_draw_hidden_field('Saddr1', $order->delivery['street_address']).vam_draw_hidden_field('Scity', $order->delivery['city']).vam_draw_hidden_field('Sstate', $order->delivery['state']).vam_draw_hidden_field('Szip', $order->delivery['postcode']).vam_draw_hidden_field('Scountry', $order->delivery['country']['iso_code_2']).vam_draw_hidden_field('ChargeType', $transaction_type).vam_draw_hidden_field('Result', $transaction_mode).vam_draw_hidden_field('IP', $_SERVER['REMOTE_ADDR']);
 
 		if (MODULE_PAYMENT_PSIGATE_INPUT_MODE == 'Local') {
-			$process_button_string .= xtc_draw_hidden_field('CardNumber', $this->cc_card_number).xtc_draw_hidden_field('ExpMonth', $this->cc_expiry_month).xtc_draw_hidden_field('ExpYear', substr($this->cc_expiry_year, -2));
+			$process_button_string .= vam_draw_hidden_field('CardNumber', $this->cc_card_number).vam_draw_hidden_field('ExpMonth', $this->cc_expiry_month).vam_draw_hidden_field('ExpYear', substr($this->cc_expiry_year, -2));
 		}
 
 		return $process_button_string;
@@ -195,7 +195,7 @@ class psigate {
 	function after_process() {
 		global $insert_id;
 		if ($this->order_status)
-			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
 	}
 
@@ -215,27 +215,27 @@ class psigate {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_PSIGATE_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_PSIGATE_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 
 	function install() {
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_STATUS', 'True','6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_ALLOWED', '', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_MERCHANT_ID', 'teststorewithcard', '6', '2', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_TRANSACTION_MODE', 'Always Good',  '6', '3', 'xtc_cfg_select_option(array(\'Production\', \'Always Good\', \'Always Duplicate\', \'Always Decline\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_TRANSACTION_TYPE', 'PreAuth',  '6', '4', 'xtc_cfg_select_option(array(\'Sale\', \'PreAuth\', \'PostAuth\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_INPUT_MODE', 'Local', '6', '5', 'xtc_cfg_select_option(array(\'Local\', \'Remote\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_CURRENCY', 'USD', '6', '6', 'xtc_cfg_select_option(array(\'CAD\', \'USD\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_SORT_ORDER', '0', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_ZONE', '0', '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PSIGATE_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_STATUS', 'True','6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_ALLOWED', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_MERCHANT_ID', 'teststorewithcard', '6', '2', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_TRANSACTION_MODE', 'Always Good',  '6', '3', 'vam_cfg_select_option(array(\'Production\', \'Always Good\', \'Always Duplicate\', \'Always Decline\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_TRANSACTION_TYPE', 'PreAuth',  '6', '4', 'vam_cfg_select_option(array(\'Sale\', \'PreAuth\', \'PostAuth\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_INPUT_MODE', 'Local', '6', '5', 'vam_cfg_select_option(array(\'Local\', \'Remote\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_CURRENCY', 'USD', '6', '6', 'vam_cfg_select_option(array(\'CAD\', \'USD\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PSIGATE_SORT_ORDER', '0', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PSIGATE_ZONE', '0', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PSIGATE_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {

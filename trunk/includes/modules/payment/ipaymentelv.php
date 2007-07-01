@@ -44,8 +44,8 @@ class ipaymentelv {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_IPAYMENTELV_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_IPAYMENTELV_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_IPAYMENTELV_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -80,7 +80,7 @@ class ipaymentelv {
 			$expires_year[] = array ('id' => strftime('%y', mktime(0, 0, 0, 1, 1, $i)), 'text' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)));
 		}
 
-		$selection = array ('id' => $this->code, 'module' => $this->title, 'fields' => array (array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_OWNER, 'field' => xtc_draw_input_field('ipayment_owner', $order->billing['firstname'].' '.$order->billing['lastname'])), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_NAME, 'field' => xtc_draw_input_field('ipayment_bank_name')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_BLZ, 'field' => xtc_draw_input_field('ipayment_bank_code')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_NUMBER, 'field' => xtc_draw_input_field('ipayment_bank_account')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_IBAN, 'field' => xtc_draw_input_field('ipayment_bank_iban')), array ('field' => '&nbsp;<small>'.MODULE_PAYMENT_IPAYMENTELV_TEXT_IBAN.'</small>')), 'description' => $this->info);
+		$selection = array ('id' => $this->code, 'module' => $this->title, 'fields' => array (array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_OWNER, 'field' => vam_draw_input_field('ipayment_owner', $order->billing['firstname'].' '.$order->billing['lastname'])), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_NAME, 'field' => vam_draw_input_field('ipayment_bank_name')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_BLZ, 'field' => vam_draw_input_field('ipayment_bank_code')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_NUMBER, 'field' => vam_draw_input_field('ipayment_bank_account')), array ('title' => MODULE_PAYMENT_IPAYMENTELV_TEXT_BANK_IBAN, 'field' => vam_draw_input_field('ipayment_bank_iban')), array ('field' => '&nbsp;<small>'.MODULE_PAYMENT_IPAYMENTELV_TEXT_IBAN.'</small>')), 'description' => $this->info);
 
 		return $selection;
 	}
@@ -133,7 +133,7 @@ class ipaymentelv {
 			$amount = $xtPrice->xtcCalculateCurrEx($total, $trx_currency);
 		}
 
-		$process_button_string = xtc_draw_hidden_field('silent', '1').xtc_draw_hidden_field('trx_paymenttyp', 'elv').xtc_draw_hidden_field('trxuser_id', MODULE_PAYMENT_IPAYMENTELV_USER_ID).xtc_draw_hidden_field('trxpassword', MODULE_PAYMENT_IPAYMENTELV_PASSWORD).xtc_draw_hidden_field('item_name', STORE_NAME).xtc_draw_hidden_field('trx_currency', $trx_currency).xtc_draw_hidden_field('trx_amount', round($amount * 100, 0)).xtc_draw_hidden_field('bank_name', $_POST['ipayment_bank_name']).xtc_draw_hidden_field('bank_code', $_POST['ipayment_bank_code']).xtc_draw_hidden_field('bank_accountnumber', $_POST['ipayment_bank_account']).xtc_draw_hidden_field('bank_iban', $_POST['ipayment_bank_iban']).xtc_draw_hidden_field('addr_name', $_POST['ipayment_owner']).xtc_draw_hidden_field('addr_street', $order->customer['street_address']).xtc_draw_hidden_field('addr_street2', '').xtc_draw_hidden_field('addr_zip', $order->customer['postcode']).xtc_draw_hidden_field('addr_city', $order->customer['city']).xtc_draw_hidden_field('addr_country', $order->customer['country']['iso_code_2']).xtc_draw_hidden_field('addr_email', $order->customer['email_address']).xtc_draw_hidden_field('addr_telefon', $order->customer['telephone']).xtc_draw_hidden_field('addr_telefax', '').xtc_draw_hidden_field('addr_state', $order->customer['state']).xtc_draw_hidden_field('redirect_url', xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).xtc_draw_hidden_field('silent_error_url', xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&ipayment_owner='.urlencode($_POST['ipayment_owner']), 'SSL', true));
+		$process_button_string = vam_draw_hidden_field('silent', '1').vam_draw_hidden_field('trx_paymenttyp', 'elv').vam_draw_hidden_field('trxuser_id', MODULE_PAYMENT_IPAYMENTELV_USER_ID).vam_draw_hidden_field('trxpassword', MODULE_PAYMENT_IPAYMENTELV_PASSWORD).vam_draw_hidden_field('item_name', STORE_NAME).vam_draw_hidden_field('trx_currency', $trx_currency).vam_draw_hidden_field('trx_amount', round($amount * 100, 0)).vam_draw_hidden_field('bank_name', $_POST['ipayment_bank_name']).vam_draw_hidden_field('bank_code', $_POST['ipayment_bank_code']).vam_draw_hidden_field('bank_accountnumber', $_POST['ipayment_bank_account']).vam_draw_hidden_field('bank_iban', $_POST['ipayment_bank_iban']).vam_draw_hidden_field('addr_name', $_POST['ipayment_owner']).vam_draw_hidden_field('addr_street', $order->customer['street_address']).vam_draw_hidden_field('addr_street2', '').vam_draw_hidden_field('addr_zip', $order->customer['postcode']).vam_draw_hidden_field('addr_city', $order->customer['city']).vam_draw_hidden_field('addr_country', $order->customer['country']['iso_code_2']).vam_draw_hidden_field('addr_email', $order->customer['email_address']).vam_draw_hidden_field('addr_telefon', $order->customer['telephone']).vam_draw_hidden_field('addr_telefax', '').vam_draw_hidden_field('addr_state', $order->customer['state']).vam_draw_hidden_field('redirect_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).vam_draw_hidden_field('silent_error_url', vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&ipayment_owner='.urlencode($_POST['ipayment_owner']), 'SSL', true));
 
 		return $process_button_string;
 	}
@@ -155,26 +155,26 @@ class ipaymentelv {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_IPAYMENTELV_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_IPAYMENTELV_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 
 	function install() {
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_STATUS', 'True', '6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ALLOWED', '', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ID', '99999', '6', '2', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_USER_ID', '99999', '6', '3', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_PASSWORD', '0', '6', '4', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_CURRENCY', 'Either EUR or USD, else EUR','6', '5', 'xtc_cfg_select_option(array(\'Always EUR\', \'Always USD\', \'Either EUR or USD, else EUR\', \'Either EUR or USD, else USD\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER', '0', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ZONE', '0', '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID', '0','6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ALLOWED', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ID', '99999', '6', '2', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_USER_ID', '99999', '6', '3', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_PASSWORD', '0', '6', '4', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_CURRENCY', 'Either EUR or USD, else EUR','6', '5', 'vam_cfg_select_option(array(\'Always EUR\', \'Always USD\', \'Either EUR or USD, else EUR\', \'Either EUR or USD, else USD\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_SORT_ORDER', '0', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ZONE', '0', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_IPAYMENTELV_ORDER_STATUS_ID', '0','6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {

@@ -164,7 +164,7 @@
 
   if (!function_exists('checkdnsrr')) {
     function checkdnsrr($host, $type) {
-      if(xtc_not_null($host) && xtc_not_null($type)) {
+      if(vam_not_null($host) && vam_not_null($type)) {
         @exec("nslookup -type=$type $host", $output);
         while(list($k, $line) = each($output)) {
           if(eregi("^$host", $line)) {

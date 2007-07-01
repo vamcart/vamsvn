@@ -22,7 +22,7 @@
   // include boxes
   require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php');
 
-  $breadcrumb->add(NAVBAR_TITLE_NEWS, xtc_href_link(FILENAME_NEWS));
+  $breadcrumb->add(NAVBAR_TITLE_NEWS, vam_href_link(FILENAME_NEWS));
 
   require(DIR_WS_INCLUDES . 'header.php');
 
@@ -57,40 +57,40 @@
 
   $module_content = array();
   if (!empty($_GET['news_id'])) {
-      $query = xtc_db_query($one_sql);
-      if (xtc_db_num_rows($query) == 0) $_GET['news_id'] = 0;
+      $query = vam_db_query($one_sql);
+      if (vam_db_num_rows($query) == 0) $_GET['news_id'] = 0;
   }
   if (empty($_GET['news_id'])) {
       $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
-      $query = xtc_db_query($split->sql_query);
+      $query = vam_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
-          $smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
+          $smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
       }
       $smarty->assign('ONE', false);
   } else {
       $smarty->assign('ONE', true);
   }
 
-  if (xtc_db_num_rows($query) > 0) {
-      while ($one = xtc_db_fetch_array($query)) {
+  if (vam_db_num_rows($query) > 0) {
+      while ($one = vam_db_fetch_array($query)) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&headline='.xtc_cleanName($one['headline']);
+			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
 
           $module_content[]=array(
               'NEWS_HEADING' => $one['headline'],
               'NEWS_CONTENT' => $one['content'],
               'NEWS_ID'      => $one['news_id'],
-              'NEWS_DATA'    => xtc_date_short($one['date_added']),
-              'NEWS_LINK_MORE'    => xtc_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
+              'NEWS_DATA'    => vam_date_short($one['date_added']),
+              'NEWS_LINK_MORE'    => vam_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
               );
       }
   } else {
       $smarty->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
   }
 
-  $smarty->assign('NEWS_LINK', xtc_href_link(FILENAME_NEWS));
+  $smarty->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
   $smarty->assign('language', $_SESSION['language']);
   $smarty->caching = 0;
   $smarty->assign('module_content',$module_content);

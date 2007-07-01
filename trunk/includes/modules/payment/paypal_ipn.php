@@ -52,9 +52,9 @@ class paypal_ipn {
     	
     	if (($this->enabled == true) && ((int)MODULE_PAYMENT_PAYPAL_IPN_ZONE > 0)) {
     		$check_flag = false;
-    		$check_query = xtc_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_PAYPAL_IPN_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+    		$check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_PAYPAL_IPN_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
     		
-    		while ($check = xtc_db_fetch_array($check_query)) {
+    		while ($check = vam_db_fetch_array($check_query)) {
     			if ($check['zone_id'] < 1) {
     				$check_flag = true;
     				break;
@@ -91,9 +91,9 @@ class paypal_ipn {
     function confirmation() {
     	global $cartID;
     	
-    	if (xtc_session_is_registered('cartID')) {
-				xtc_session_register('order_ident_key');
-				$_SESSION['order_ident_key'] = xtc_input_validation(md5($_SESSION['cartID'] . '-' . $_SESSION['customer_id']),int,'');
+    	if (vam_session_is_registered('cartID')) {
+				vam_session_register('order_ident_key');
+				$_SESSION['order_ident_key'] = vam_input_validation(md5($_SESSION['cartID'] . '-' . $_SESSION['customer_id']),int,'');
 		}
 						
 		return array('title' => MODULE_PAYMENT_PAYPAL_IPN_TEXT_DESCRIPTION );
@@ -137,9 +137,9 @@ class paypal_ipn {
 		$parameters['custom'] = $_SESSION['customer_id'];
 		$parameters['no_shipping'] = '1';
 		$parameters['no_note'] = '1';
-		$parameters['notify_url'] = xtc_href_link('ipn.php', '', 'SSL', false, false);
-		$parameters['return'] = xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
-		$parameters['cancel_return'] = xtc_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL');
+		$parameters['notify_url'] = vam_href_link('ipn.php', '', 'SSL', false, false);
+		$parameters['return'] = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+		$parameters['cancel_return'] = vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL');
 		
 		//  Add missing variables to prepopulate PayPal form. -- hostmistress 20050210
 		$parameters['first_name'] = $order->billing['firstname'];
@@ -151,7 +151,7 @@ class paypal_ipn {
 		$parameters['city'] = $order->billing['city'];
 		
 		if ($order->billing['country']['iso_code_2']=='US') {
-			$order->billing['state'] = xtc_get_zone_code($order->billing['country_id'], $order->billing['zone_id'], $order->billing['state']);
+			$order->billing['state'] = vam_get_zone_code($order->billing['country_id'], $order->billing['zone_id'], $order->billing['state']);
         }
         
         $parameters['state'] = $order->billing['state'];
@@ -161,7 +161,7 @@ class paypal_ipn {
        
         $parameters['bn'] = $this->identifier;
         
-        if(xtc_not_null(MODULE_PAYMENT_PAYPAL_IPN_PAGE_STYLE)) {
+        if(vam_not_null(MODULE_PAYMENT_PAYPAL_IPN_PAGE_STYLE)) {
         	$parameters['page_style'] = MODULE_PAYMENT_PAYPAL_IPN_PAGE_STYLE;
         }
         
@@ -220,12 +220,12 @@ class paypal_ipn {
 				unlink(MODULE_PAYMENT_PAYPAL_IPN_EWP_WORKING_DIRECTORY . '/' . $random_string . 'encrypted.txt');
 			}
 			
-			$process_button_string = xtc_draw_hidden_field('cmd', '_s-xclick') . xtc_draw_hidden_field('encrypted', $data);
+			$process_button_string = vam_draw_hidden_field('cmd', '_s-xclick') . vam_draw_hidden_field('encrypted', $data);
 			
 			unset($data);
 		}else{
 			while (list($key, $value) = each($parameters)) {
-				$process_button_string.=xtc_draw_hidden_field($key, $value);
+				$process_button_string.=vam_draw_hidden_field($key, $value);
 			}
 		}
 		
@@ -241,8 +241,8 @@ class paypal_ipn {
 	function after_process() {
 		global $insert_id;
   	         if ($this->order_status)
-  	         	xtc_db_query("UPDATE ". TABLE_ORDERS ." SET orders_status='0' WHERE orders_id='".$insert_id."'");
-  	         	xtc_db_query("UPDATE ". TABLE_ORDERS_STATUS_HISTORY ." SET orders_status='0' WHERE orders_id='".$insert_id."'");
+  	         	vam_db_query("UPDATE ". TABLE_ORDERS ." SET orders_status='0' WHERE orders_id='".$insert_id."'");
+  	         	vam_db_query("UPDATE ". TABLE_ORDERS_STATUS_HISTORY ." SET orders_status='0' WHERE orders_id='".$insert_id."'");
 	}
 	
 	
@@ -253,61 +253,61 @@ class paypal_ipn {
 	
 	function check() {
 		if(!isset($this->_check)) {
-			$check_query = xtc_db_query("SELECT configuration_value
+			$check_query = vam_db_query("SELECT configuration_value
 										 FROM " . TABLE_CONFIGURATION . " 
 										 WHERE configuration_key = 'MODULE_PAYMENT_PAYPAL_IPN_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 	
 	
 	function install() {
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_STATUS', 'False', '6', '3', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
- 		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_STATUS', 'False', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+ 		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " ( configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
 					  VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ID', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
-					  VALUES ('MODULE_PAYMENT_PAYPAL_IPN_CURRENCY', 'Only EUR', '6', '6', 'xtc_cfg_select_option(array(\'Selected Currency\',\'Only AUD\',\'Only USD\',\'Only CAD\',\'Only EUR\',\'Only GBP\',\'Only JPY\'), ', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+					  VALUES ('MODULE_PAYMENT_PAYPAL_IPN_CURRENCY', 'Only EUR', '6', '6', 'vam_cfg_select_option(array(\'Selected Currency\',\'Only AUD\',\'Only USD\',\'Only CAD\',\'Only EUR\',\'Only GBP\',\'Only JPY\'), ', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
 					  VALUES ('MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER', '0', '6', '0', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ALLOWED', '', '6', '0', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) 
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ZONE', '0', '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added)
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added)
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id,sort_order, set_function, use_function, date_added)
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_DENIED_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) 
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_GATEWAY_SERVER', 'Testing', '6', '6', 'xtc_cfg_select_option(array(\'Testing\',\'Live\'), ', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) 
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ZONE', '0', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added)
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added)
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id,sort_order, set_function, use_function, date_added)
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_DENIED_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) 
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_GATEWAY_SERVER', 'Testing', '6', '6', 'vam_cfg_select_option(array(\'Testing\',\'Live\'), ', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_PAGE_STYLE', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_DEBUG_EMAIL', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) 
-                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_STATUS', 'False', '6', '3', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) 
+                      VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_STATUS', 'False', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_PRIVATE_KEY', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_PUBLIC_KEY', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_PAYPAL_KEY', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_CERT_ID', '', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added)
                       VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_WORKING_DIRECTORY', '/tmp', '6', '4', now())");
-		xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
+		vam_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) 
 					  VALUES ('MODULE_PAYMENT_PAYPAL_IPN_EWP_OPENSSL', '/usr/bin/openssl', '6', '4', now())");
-		xtc_db_query("ALTER TABLE " . TABLE_ORDERS . " ADD paypal_ipn_success INT( 1 ) DEFAULT '0' NOT NULL");
+		vam_db_query("ALTER TABLE " . TABLE_ORDERS . " ADD paypal_ipn_success INT( 1 ) DEFAULT '0' NOT NULL");
 	}
 
 
 	function remove() {
-		xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key in ('" . implode("', '", $this->keys()) . "')");
-		xtc_db_query("ALTER TABLE " . TABLE_ORDERS . " DROP paypal_ipn_success");
+		vam_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key in ('" . implode("', '", $this->keys()) . "')");
+		vam_db_query("ALTER TABLE " . TABLE_ORDERS . " DROP paypal_ipn_success");
 	}
 
 

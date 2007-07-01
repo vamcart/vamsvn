@@ -34,16 +34,16 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // the following cPath references come from application_top.php
 $category_depth = 'top';
-if (isset ($cPath) && xtc_not_null($cPath)) {
+if (isset ($cPath) && vam_not_null($cPath)) {
 	$categories_products_query = "select count(*) as total from ".TABLE_PRODUCTS_TO_CATEGORIES." where categories_id = '".$current_category_id."'";
 	$categories_products_query = xtDBquery($categories_products_query);
-	$cateqories_products = xtc_db_fetch_array($categories_products_query, true);
+	$cateqories_products = vam_db_fetch_array($categories_products_query, true);
 	if ($cateqories_products['total'] > 0) {
 		$category_depth = 'products'; // display products
 	} else {
 		$category_parent_query = "select count(*) as total from ".TABLE_CATEGORIES." where parent_id = '".$current_category_id."'";
 		$category_parent_query = xtDBquery($category_parent_query);
-		$category_parent = xtc_db_fetch_array($category_parent_query, true);
+		$category_parent = vam_db_fetch_array($category_parent_query, true);
 		if ($category_parent['total'] > 0) {
 			$category_depth = 'nested'; // navigate through the categories
 		} else {

@@ -20,7 +20,7 @@
 $module_smarty = new Smarty;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
 $module_content = array ();
 
 //fsk18 lock
@@ -41,12 +41,12 @@ $expected_query = xtDBquery("select p.products_id,
                                   and pd.language_id = '".(int) $_SESSION['languages_id']."'
                                   order by ".EXPECTED_PRODUCTS_FIELD." ".EXPECTED_PRODUCTS_SORT."
                                   limit ".MAX_DISPLAY_UPCOMING_PRODUCTS);
-if (xtc_db_num_rows($expected_query,true) > 0) {
+if (vam_db_num_rows($expected_query,true) > 0) {
 
 	$row = 0;
-	while ($expected = xtc_db_fetch_array($expected_query,true)) {
+	while ($expected = vam_db_fetch_array($expected_query,true)) {
 		$row ++;
-		$module_content[] = array ('PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($expected['products_id'], $expected['products_name'])), 'PRODUCTS_NAME' => $expected['products_name'], 'PRODUCTS_DATE' => xtc_date_short($expected['date_expected']));
+		$module_content[] = array ('PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($expected['products_id'], $expected['products_name'])), 'PRODUCTS_NAME' => $expected['products_name'], 'PRODUCTS_DATE' => vam_date_short($expected['date_expected']));
 
 	}
 

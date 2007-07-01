@@ -18,10 +18,10 @@
   require('includes/application.php');
 
   // include needed functions
-  require_once(DIR_FS_INC.'xtc_image.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
-  require_once(DIR_FS_INC.'xtc_redirect.inc.php');
-  require_once(DIR_FS_INC.'xtc_href_link.inc.php');
+  require_once(DIR_FS_INC.'vam_image.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_redirect.inc.php');
+  require_once(DIR_FS_INC.'vam_href_link.inc.php');
   
   include('language/russian.php');
 
@@ -37,7 +37,7 @@
     $process = true;
 
         
-        $_SESSION['language'] = xtc_db_prepare_input($_POST['LANGUAGE']);
+        $_SESSION['language'] = vam_db_prepare_input($_POST['LANGUAGE']);
 
     $error = false;
 
@@ -50,7 +50,7 @@
         
 
                     if ($error == false) {
-                        xtc_redirect(xtc_href_link('step1.php', '', 'NONSSL'));
+                        vam_redirect(vam_href_link('step1.php', '', 'NONSSL'));
                 }
         }
 

@@ -24,14 +24,14 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_count_customer_orders.inc.php');
-require_once (DIR_FS_INC.'xtc_date_short.inc.php');
-require_once (DIR_FS_INC.'xtc_get_path.inc.php');
-require_once (DIR_FS_INC.'xtc_get_product_path.inc.php');
-require_once (DIR_FS_INC.'xtc_get_products_name.inc.php');
-require_once (DIR_FS_INC.'xtc_get_products_image.inc.php');
+require_once (DIR_FS_INC.'vam_count_customer_orders.inc.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_get_path.inc.php');
+require_once (DIR_FS_INC.'vam_get_product_path.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_name.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_image.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_ACCOUNT, xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_ACCOUNT, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 
 require (DIR_WS_INCLUDES.'header.php');
 
@@ -45,20 +45,20 @@ while ($i < $max) {
 
 	
 	$product_history_query = xtDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
-	$history_product = xtc_db_fetch_array($product_history_query, true);
-$cpath = xtc_get_product_path($_SESSION['tracking']['products_history'][$i]);
+	$history_product = vam_db_fetch_array($product_history_query, true);
+$cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
 	if ($history_product['products_status'] != 0) {
 
-		$history_product = array_merge($history_product,array('cat_url' => xtc_href_link(FILENAME_DEFAULT, 'cPath='.$cpath)));
+		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cPath='.$cpath)));
 		$products_history[] = $product->buildDataArray($history_product);
 	}
 	$i ++;
 }
 
 $order_content = '';
-if (xtc_count_customer_orders() > 0) {
+if (vam_count_customer_orders() > 0) {
 
-	$orders_query = xtc_db_query("select
+	$orders_query = vam_db_query("select
 	                                  o.orders_id,
 	                                  o.date_purchased,
 	                                  o.delivery_name,
@@ -76,26 +76,26 @@ if (xtc_count_customer_orders() > 0) {
 	                                  and s.language_id = '".(int) $_SESSION['languages_id']."'
 	                                  order by orders_id desc limit 3");
 
-	while ($orders = xtc_db_fetch_array($orders_query)) {
-		if (xtc_not_null($orders['delivery_name'])) {
+	while ($orders = vam_db_fetch_array($orders_query)) {
+		if (vam_not_null($orders['delivery_name'])) {
 			$order_name = $orders['delivery_name'];
 			$order_country = $orders['delivery_country'];
 		} else {
 			$order_name = $orders['billing_name'];
 			$order_country = $orders['billing_country'];
 		}
-		$order_content[] = array ('ORDER_ID' => $orders['orders_id'], 'ORDER_DATE' => xtc_date_short($orders['date_purchased']), 'ORDER_STATUS' => $orders['orders_status_name'], 'ORDER_TOTAL' => $orders['order_total'], 'ORDER_LINK' => xtc_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL'), 'ORDER_BUTTON' => '<a href="'.xtc_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL').'">'.xtc_image_button('small_view.gif', SMALL_IMAGE_BUTTON_VIEW).'</a>');
+		$order_content[] = array ('ORDER_ID' => $orders['orders_id'], 'ORDER_DATE' => vam_date_short($orders['date_purchased']), 'ORDER_STATUS' => $orders['orders_status_name'], 'ORDER_TOTAL' => $orders['order_total'], 'ORDER_LINK' => vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL'), 'ORDER_BUTTON' => '<a href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL').'">'.vam_image_button('small_view.gif', SMALL_IMAGE_BUTTON_VIEW).'</a>');
 	}
 
 }
-$smarty->assign('LINK_EDIT', xtc_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
-$smarty->assign('LINK_ADDRESS', xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
-$smarty->assign('LINK_PASSWORD', xtc_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'));
+$smarty->assign('LINK_EDIT', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
+$smarty->assign('LINK_ADDRESS', vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+$smarty->assign('LINK_PASSWORD', vam_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'));
 if (!isset ($_SESSION['customer_id']))
-	$smarty->assign('LINK_LOGIN', xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
-$smarty->assign('LINK_ORDERS', xtc_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
-$smarty->assign('LINK_NEWSLETTER', xtc_href_link(FILENAME_NEWSLETTER, '', 'SSL'));
-$smarty->assign('LINK_ALL', xtc_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
+	$smarty->assign('LINK_LOGIN', vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+$smarty->assign('LINK_ORDERS', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
+$smarty->assign('LINK_NEWSLETTER', vam_href_link(FILENAME_NEWSLETTER, '', 'SSL'));
+$smarty->assign('LINK_ALL', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
 $smarty->assign('order_content', $order_content);
 $smarty->assign('products_history', $products_history);
 $smarty->assign('also_purchased_history', $also_purchased_history);

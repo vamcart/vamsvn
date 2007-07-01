@@ -36,9 +36,9 @@ Ver 1.5.3:
 */
 
 require('includes/application_top.php');
-require('inc/xtc_count_products_in_category.inc.php');
-require('inc/xtc_has_category_subcategories.inc.php');
-require('inc/xtc_random_select.inc.php');
+require('inc/vam_count_products_in_category.inc.php');
+require('inc/vam_has_category_subcategories.inc.php');
+require('inc/vam_random_select.inc.php');
 
 // some settings first
 $cdata_open = "<![CDATA[";
@@ -94,8 +94,8 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 	$rss->rss_feed_image(RSS_IMAGE_NAME, HTTP_SERVER . DIR_WS_CATALOG, HTTP_SERVER . DIR_WS_CATALOG . RSS_IMAGE);
 
 // get the language code...
-//$lang_code_query = xtc_db_query("select code from " . TABLE_LANGUAGES . " where languages_id = " . $languages_id);
-//   if($lang_code = xtc_db_fetch_array($lang_code_query))
+//$lang_code_query = vam_db_query("select code from " . TABLE_LANGUAGES . " where languages_id = " . $languages_id);
+//   if($lang_code = vam_db_fetch_array($lang_code_query))
 //      $lang_code = $lang_code['code'];
 //   else
 //      $lang_code = DEFAULT_LANGUAGE;
@@ -136,9 +136,9 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 
 		case "categories":
 			// don't build a tree when no categories
-			$check_categories_query = xtc_db_query("select categories_id from " . TABLE_CATEGORIES . " where categories_status=1 limit 1");
-			if (xtc_db_num_rows($check_categories_query) > 0) {
-				xtc_rss_category_tree(0, '', isset($_GET['limit']) ? $_GET['limit'] : null);
+			$check_categories_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where categories_status=1 limit 1");
+			if (vam_db_num_rows($check_categories_query) > 0) {
+				vam_rss_category_tree(0, '', isset($_GET['limit']) ? $_GET['limit'] : null);
 				$rss->rss_feed_out();
 			}
 			break;
@@ -156,7 +156,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
           and language = '" . (int)$_SESSION['languages_id'] . "'
       ORDER BY date_added DESC
       ";
-			xtc_rss_news($news_query);
+			vam_rss_news($news_query);
 			break;
 
 		case "articles":
@@ -164,7 +164,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
 			                                            WHERE language_id='" . (int)$_SESSION['languages_id'] . "'";
 			                                            
-			xtc_rss_articles($articles_query);
+			vam_rss_articles($articles_query);
 			break;
 
 		case "specials_random":
@@ -179,7 +179,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 														 and pd.products_id = s.products_id
 														 and pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
 														 and s.status = '1'" . $limit;
-			xtc_rss_products($specials_product_query);
+			vam_rss_products($specials_product_query);
 			break;
 
 		case "featured_random":
@@ -194,7 +194,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 														 and pd.products_id = f.products_id
 														 and pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
 														 and f.status = '1'" . $limit;
-			xtc_rss_products($featured_product_query);
+			vam_rss_products($featured_product_query);
 			break;
 
 		case "best_sellers_random":
@@ -215,7 +215,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 														 and p.products_id = pd.products_id
 														 and pd.language_id = '" . (int) $_SESSION['languages_id'] . "'" . $cat_where ."
 														 order by p.products_ordered desc, pd.products_name" . $limit;
-			xtc_rss_products($best_sellers_query);
+			vam_rss_products($best_sellers_query);
 			break;
 
 		case "upcoming_random":
@@ -237,7 +237,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 												 and pd.language_id = '" . (int) $_SESSION['languages_id'] .
 												$cat_where . "'
 												 order by " . EXPECTED_PRODUCTS_FIELD . " " . EXPECTED_PRODUCTS_SORT . $limit;
-			xtc_rss_products($expected_query);
+			vam_rss_products($expected_query);
 			break;
 
 		case "new_products_random":
@@ -266,17 +266,17 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 												and p.products_status = '1'" . $days_limit . "
 												order by p.products_last_modified desc" . $limit;
 
-			xtc_rss_products($sql_products);
+			vam_rss_products($sql_products);
 			break;
 	}
 
-	function xtc_rss_products($sql_products){
+	function vam_rss_products($sql_products){
 		global $db, $rss, $random;
 
 		$sql_maxdate = "select max(products_date_added) as max_date_added, max(products_last_modified) as max_date_modified
 										from " . TABLE_PRODUCTS . "
 										where products_status = 1";
-		$maxdate = xtc_db_query($sql_maxdate);
+		$maxdate = vam_db_query($sql_maxdate);
 		if(!$maxdate) {
 			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
 		}
@@ -285,20 +285,20 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			$sql_products .= ' limit ' . $_GET['limit'];
 
 		if ($random)
-			$products = xtc_random_select($sql_products);
+			$products = vam_random_select($sql_products);
 		else
-		$products_query = xtc_db_query($sql_products);
+		$products_query = vam_db_query($sql_products);
 
 
 		 if ($random) {
-         $products = xtc_random_select($sql_products);
-         $link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
-         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO,xtc_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
+         $products = vam_random_select($sql_products);
+         $link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
+         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO,vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
       } else {
-         $products_query = xtc_db_query($sql_products);
-         while($products = xtc_db_fetch_array($products_query)) {
-            $link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
-            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO,xtc_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
+         $products_query = vam_db_query($sql_products);
+         while($products = vam_db_fetch_array($products_query)) {
+            $link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
+            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO,vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
             if ($random)
                break;
          }
@@ -312,29 +312,29 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 /////////////////////////////////////////////////////////////////////////////
 // рекурсивная функция, получает категории каталога в иерархии по порядку
 // get all groups
-function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
+function vam_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 	global $db, $rss;
 	if($limit != null && $limit < 0)
 		return;
 	if($limit != null) $limit--;
-	$groups_cat_query = xtc_db_query("select c.categories_id, c.parent_id, c.date_added, c.last_modified, c.categories_image, cd.categories_name, cd.categories_description
+	$groups_cat_query = vam_db_query("select c.categories_id, c.parent_id, c.date_added, c.last_modified, c.categories_image, cd.categories_name, cd.categories_description
 											 from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
 											 where c.parent_id = '" . (int)$id_parent . "'
 											 and c.categories_id = cd.categories_id
 											 and cd.language_id='" . (int) $_SESSION['languages_id'] . "'
 											 and c.categories_status= '1'
 											 order by c.sort_order, cd.categories_name");
-	if (xtc_db_num_rows($groups_cat_query) == 0)
+	if (vam_db_num_rows($groups_cat_query) == 0)
 		return;
-	while ($groups_cat = xtc_db_fetch_array($groups_cat_query)) {
-		$link_categories = addslashes(xtc_href_link(FILENAME_DEFAULT, xtc_category_link($groups_cat['categories_id'], $groups_cat['categories_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
-		$products_in_category = xtc_count_products_in_category($groups_cat['categories_id']);
+	while ($groups_cat = vam_db_fetch_array($groups_cat_query)) {
+		$link_categories = addslashes(vam_href_link(FILENAME_DEFAULT, vam_category_link($groups_cat['categories_id'], $groups_cat['categories_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
+		$products_in_category = vam_count_products_in_category($groups_cat['categories_id']);
 		if ((CATEGORIES_COUNT_ZERO == '1' && $products_in_category == 0) or $products_in_category >= 1) {
 			$rss->rss_feed_item($groups_cat['categories_name'], $link_categories, $link_categories, date('r', strtotime(max($groups_cat['date_added'],$groups_cat['last_modified']))), $groups_cat['categories_description'], $groups_cat['categories_image'], false, STORE_OWNER_EMAIL_ADDRESS . " (" . STORE_OWNER . ")");
 		}
-		if (xtc_has_category_subcategories($groups_cat['categories_id'])) {
-			xtc_rss_category_tree($groups_cat['categories_id'],
-									(xtc_not_null($cPath) ?
+		if (vam_has_category_subcategories($groups_cat['categories_id'])) {
+			vam_rss_category_tree($groups_cat['categories_id'],
+									(vam_not_null($cPath) ?
 										$cPath . '_' . $groups_cat['categories_id'] :
 										$groups_cat['categories_id']), $limit); // следующая группа
 		}
@@ -342,13 +342,13 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 	}
 }
 
-	function xtc_rss_news($sql_products){
+	function vam_rss_news($sql_products){
 		global $db, $rss, $random;
 
 		$sql_maxdate = "select max(date_added) as max_date_added, max(date_added) as max_date_modified
 										from " . TABLE_LATEST_NEWS . "
 										where status = 1";
-		$maxdate = xtc_db_query($sql_maxdate);
+		$maxdate = vam_db_query($sql_maxdate);
 		if(!$maxdate) {
 			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
 		}
@@ -356,27 +356,27 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 		if(isset($_GET['limit']) && !$random)
 			$sql_products .= ' limit ' . $_GET['limit'];
 
-         $products_query = xtc_db_query($sql_products);
-         while($products = xtc_db_fetch_array($products_query)) {
+         $products_query = vam_db_query($sql_products);
+         while($products = vam_db_fetch_array($products_query)) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&headline='.xtc_cleanName($products['headline']);
+			$SEF_parameter = '&headline='.vam_cleanName($products['headline']);
 
-            $link = xtc_href_link(FILENAME_NEWS, 'news_id='.$products['news_id'] . $SEF_parameter . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
+            $link = vam_href_link(FILENAME_NEWS, 'news_id='.$products['news_id'] . $SEF_parameter . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
             $rss->rss_feed_item($products['headline'], $link, $link, date('r', strtotime(max($products['date_added'], $products['date_added']))), $products['content'], '', '');
          }
 	
 		$rss->rss_feed_out();
 	}
 
-	function xtc_rss_articles($sql_products){
+	function vam_rss_articles($sql_products){
 		global $db, $rss, $random;
 
 		$sql_maxdate = "select max(articles_date_added) as max_date_added, max(articles_last_modified) as max_date_modified
 										from " . TABLE_ARTICLES . "
 										where articles_status = 1";
-		$maxdate = xtc_db_query($sql_maxdate);
+		$maxdate = vam_db_query($sql_maxdate);
 		if(!$maxdate) {
 			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
 		}
@@ -384,14 +384,14 @@ function xtc_rss_category_tree($id_parent=0, $cPath='', $limit = null){
 		if(isset($_GET['limit']) && !$random)
 			$sql_products .= ' limit ' . $_GET['limit'];
 
-         $products_query = xtc_db_query($sql_products);
-         while($products = xtc_db_fetch_array($products_query)) {
+         $products_query = vam_db_query($sql_products);
+         while($products = vam_db_fetch_array($products_query)) {
          
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&article='.xtc_cleanName($products['articles_name']);
+			$SEF_parameter = '&article='.vam_cleanName($products['articles_name']);
          
-            $link = xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$products['articles_id'] . $SEF_parameter . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
+            $link = vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$products['articles_id'] . $SEF_parameter . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
             $rss->rss_feed_item($products['articles_name'], $link, $link, date('r', strtotime(max($products['articles_date_added'], $products['articles_last_modified']))), $products['articles_description'], '', '');
          }
 	

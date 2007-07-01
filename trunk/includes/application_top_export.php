@@ -58,31 +58,31 @@
   define('STORE_DB_TRANSACTIONS', 'false');
 
   // include used functions
-  require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_close.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_error.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_perform.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_query.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_fetch_array.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_num_rows.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_data_seek.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_insert_id.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_free_result.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_fetch_fields.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_output.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_input.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_prepare_input.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_connect.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_close.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_error.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_perform.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_query.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_fetch_array.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_num_rows.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_data_seek.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_insert_id.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_free_result.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_fetch_fields.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_output.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_input.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_prepare_input.inc.php');
 
 
   // modification for new graduated system
 
 
   // make a connection to the database... now
-  xtc_db_connect() or die('Unable to connect to database server!');
+  vam_db_connect() or die('Unable to connect to database server!');
 
   // set the application parameters
-  $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+  $configuration_query = vam_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
+  while ($configuration = vam_db_fetch_array($configuration_query)) {
     define($configuration['cfgKey'], $configuration['cfgValue']);
   }
 

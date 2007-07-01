@@ -17,7 +17,7 @@
    --------------------------------------------------------------*/
 
    require('includes/application.php');
-   require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+   require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
 
    include('language/'.$_SESSION['language'].'.php'); 
 ?>
@@ -76,19 +76,19 @@
 <p><?php echo TEXT_WELCOME_STEP3; ?></p>
 
             <?php
-  if (xtc_in_array('database', $_POST['install'])) {
+  if (vam_in_array('database', $_POST['install'])) {
     $db = array();
     $db['DB_SERVER'] = trim(stripslashes($_POST['DB_SERVER']));
     $db['DB_SERVER_USERNAME'] = trim(stripslashes($_POST['DB_SERVER_USERNAME']));
     $db['DB_SERVER_PASSWORD'] = trim(stripslashes($_POST['DB_SERVER_PASSWORD']));
     $db['DB_DATABASE'] = trim(stripslashes($_POST['DB_DATABASE']));
 
-    xtc_db_connect_installer($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
+    vam_db_connect_installer($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
 
     $db_error = false;
     $sql_file = DIR_FS_CATALOG . 'install/vam.sql';
     
-    xtc_db_install($db['DB_DATABASE'], $sql_file);
+    vam_db_install($db['DB_DATABASE'], $sql_file);
 
     if ($db_error) {
 ?>
@@ -109,10 +109,10 @@
         if ($key != 'x' && $key != 'y') {
           if (is_array($value)) {
             for ($i=0; $i<sizeof($value); $i++) {
-              echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+              echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
             }
           } else {
-            echo xtc_draw_hidden_field_installer($key, $value);
+            echo vam_draw_hidden_field_installer($key, $value);
           }
         }
       }
@@ -139,10 +139,10 @@
         if ($key != 'x' && $key != 'y') {
           if (is_array($value)) {
             for ($i=0; $i<sizeof($value); $i++) {
-              echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+              echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
             }
           } else {
-            echo xtc_draw_hidden_field_installer($key, $value);
+            echo vam_draw_hidden_field_installer($key, $value);
           }
         }
       }
@@ -150,7 +150,7 @@
 
 <p>
 <?php
-      if (xtc_in_array('configure', $_POST['install'])) {
+      if (vam_in_array('configure', $_POST['install'])) {
 ?>
 <input type="image" src="images/button_continue.gif" alt="<?php echo IMAGE_CONTINUE; ?>" />
 <?php

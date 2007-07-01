@@ -451,7 +451,7 @@
     // Check if we should clean up (call the garbage collection routines)
     if ($session->gc_probability > 0) {
       $randmax = getrandmax();
-      $nrand = (int)(100 * xtc_rand() / $randmax);
+      $nrand = (int)(100 * vam_rand() / $randmax);
       if ($nrand < $session->gc_probability) {
         $mod->gc($session->gc_maxlifetime);
       }

@@ -23,19 +23,19 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_count_customer_address_book_entries.inc.php');
-require_once (DIR_FS_INC.'xtc_address_label.inc.php');
-require_once (DIR_FS_INC.'xtc_get_country_name.inc.php');
+require_once (DIR_FS_INC.'vam_count_customer_address_book_entries.inc.php');
+require_once (DIR_FS_INC.'vam_address_label.inc.php');
+require_once (DIR_FS_INC.'vam_get_country_name.inc.php');
 
 if (!isset ($_SESSION['customer_id']))
-	xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'deleteconfirm') && isset ($_GET['delete']) && is_numeric($_GET['delete'])) {
-	xtc_db_query("delete from ".TABLE_ADDRESS_BOOK." where address_book_id = '".(int) $_GET['delete']."' and customers_id = '".(int) $_SESSION['customer_id']."'");
+	vam_db_query("delete from ".TABLE_ADDRESS_BOOK." where address_book_id = '".(int) $_GET['delete']."' and customers_id = '".(int) $_SESSION['customer_id']."'");
 
 	$messageStack->add_session('addressbook', SUCCESS_ADDRESS_BOOK_ENTRY_DELETED, 'success');
 
-	xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 }
 
 // error checking when updating or adding an entry
@@ -45,27 +45,27 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	$error = false;
 
 	if (ACCOUNT_GENDER == 'true')
-		$gender = xtc_db_prepare_input($_POST['gender']);
+		$gender = vam_db_prepare_input($_POST['gender']);
 	if (ACCOUNT_COMPANY == 'true')
-		$company = xtc_db_prepare_input($_POST['company']);
-	$firstname = xtc_db_prepare_input($_POST['firstname']);
-	$lastname = xtc_db_prepare_input($_POST['lastname']);
+		$company = vam_db_prepare_input($_POST['company']);
+	$firstname = vam_db_prepare_input($_POST['firstname']);
+	$lastname = vam_db_prepare_input($_POST['lastname']);
    if (ACCOUNT_STREET_ADDRESS == 'true')
-	   $street_address = xtc_db_prepare_input($_POST['street_address']);
+	   $street_address = vam_db_prepare_input($_POST['street_address']);
 	if (ACCOUNT_SUBURB == 'true')
-		$suburb = xtc_db_prepare_input($_POST['suburb']);
+		$suburb = vam_db_prepare_input($_POST['suburb']);
    if (ACCOUNT_POSTCODE == 'true')
-	   $postcode = xtc_db_prepare_input($_POST['postcode']);
+	   $postcode = vam_db_prepare_input($_POST['postcode']);
 	if (ACCOUNT_CITY == 'true')
-	   $city = xtc_db_prepare_input($_POST['city']);
+	   $city = vam_db_prepare_input($_POST['city']);
    if (ACCOUNT_COUNTRY == 'true') {
-	   $country = xtc_db_prepare_input($_POST['country']);
+	   $country = vam_db_prepare_input($_POST['country']);
 	} else {
       $country = STORE_COUNTRY;
 	}
 	if (ACCOUNT_STATE == 'true') {
-		$zone_id = xtc_db_prepare_input($_POST['zone_id']);
-		$state = xtc_db_prepare_input($_POST['state']);
+		$zone_id = vam_db_prepare_input($_POST['zone_id']);
+		$state = vam_db_prepare_input($_POST['state']);
 	}
 
 	if (ACCOUNT_GENDER == 'true') {
@@ -122,13 +122,13 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 
 	if (ACCOUNT_STATE == 'true') {
 		$zone_id = 0;
-		$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
-		$check = xtc_db_fetch_array($check_query);
+		$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+		$check = vam_db_fetch_array($check_query);
 		$entry_state_has_zones = ($check['total'] > 0);
 		if ($entry_state_has_zones == true) {
-			$zone_query = xtc_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".xtc_db_input($state)."%' or zone_code like '%".xtc_db_input($state)."%')");
-			if (xtc_db_num_rows($zone_query) == 1) {
-				$zone = xtc_db_fetch_array($zone_query);
+			$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".vam_db_input($state)."%' or zone_code like '%".vam_db_input($state)."%')");
+			if (vam_db_num_rows($zone_query) == 1) {
+				$zone = vam_db_fetch_array($zone_query);
 				$zone_id = $zone['zone_id'];
 			} else {
 				$error = true;
@@ -164,7 +164,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		}
 
 		if ($_POST['action'] == 'update') {
-			xtc_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array, 'update', "address_book_id = '".(int) $_GET['edit']."' and customers_id ='".(int) $_SESSION['customer_id']."'");
+			vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array, 'update', "address_book_id = '".(int) $_GET['edit']."' and customers_id ='".(int) $_SESSION['customer_id']."'");
 
 			// reregister session variables
 			if ((isset ($_POST['primary']) && ($_POST['primary'] == 'on')) || ($_GET['edit'] == $_SESSION['customer_default_address_id'])) {
@@ -178,14 +178,14 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 				if (ACCOUNT_GENDER == 'true')
 					$sql_data_array['customers_gender'] = $gender;
 
-				xtc_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
+				vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
 			}
 		} else {
 			$sql_data_array['customers_id'] = (int) $_SESSION['customer_id'];
 			$sql_data_array['address_date_added'] = 'now()';
-			xtc_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+			vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-			$new_address_book_id = xtc_db_insert_id();
+			$new_address_book_id = vam_db_insert_id();
 
 			// reregister session variables
 			if (isset ($_POST['primary']) && ($_POST['primary'] == 'on')) {
@@ -202,40 +202,40 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 				if (isset ($_POST['primary']) && ($_POST['primary'] == 'on'))
 					$sql_data_array['customers_default_address_id'] = $new_address_book_id;
 
-				xtc_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
+				vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
 			}
 		}
 
 		$messageStack->add_session('addressbook', SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED, 'success');
 
-		xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 	}
 }
 
 if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-	$entry_query = xtc_db_query("select entry_gender, entry_company, entry_firstname, entry_lastname, entry_street_address, entry_suburb, entry_postcode, entry_city, entry_state, entry_zone_id, entry_country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $_SESSION['customer_id']."' and address_book_id = '".(int) $_GET['edit']."'");
+	$entry_query = vam_db_query("select entry_gender, entry_company, entry_firstname, entry_lastname, entry_street_address, entry_suburb, entry_postcode, entry_city, entry_state, entry_zone_id, entry_country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $_SESSION['customer_id']."' and address_book_id = '".(int) $_GET['edit']."'");
 
-	if (xtc_db_num_rows($entry_query) == false) {
+	if (vam_db_num_rows($entry_query) == false) {
 		$messageStack->add_session('addressbook', ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY);
 
-		xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 	}
 
-	$entry = xtc_db_fetch_array($entry_query);
+	$entry = vam_db_fetch_array($entry_query);
 }
 elseif (isset ($_GET['delete']) && is_numeric($_GET['delete'])) {
 	if ($_GET['delete'] == $_SESSION['customer_default_address_id']) {
 		$messageStack->add_session('addressbook', WARNING_PRIMARY_ADDRESS_DELETION, 'warning');
 
-		xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 	} else {
-		$check_query = xtc_db_query("select count(*) as total from ".TABLE_ADDRESS_BOOK." where address_book_id = '".(int) $_GET['delete']."' and customers_id = '".(int) $_SESSION['customer_id']."'");
-		$check = xtc_db_fetch_array($check_query);
+		$check_query = vam_db_query("select count(*) as total from ".TABLE_ADDRESS_BOOK." where address_book_id = '".(int) $_GET['delete']."' and customers_id = '".(int) $_SESSION['customer_id']."'");
+		$check = vam_db_fetch_array($check_query);
 
 		if ($check['total'] < 1) {
 			$messageStack->add_session('addressbook', ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY);
 
-			xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+			vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 		}
 	}
 } else {
@@ -243,28 +243,28 @@ elseif (isset ($_GET['delete']) && is_numeric($_GET['delete'])) {
 }
 
 if (!isset ($_GET['delete']) && !isset ($_GET['edit'])) {
-	if (xtc_count_customer_address_book_entries() >= MAX_ADDRESS_BOOK_ENTRIES) {
+	if (vam_count_customer_address_book_entries() >= MAX_ADDRESS_BOOK_ENTRIES) {
 		$messageStack->add_session('addressbook', ERROR_ADDRESS_BOOK_FULL);
 
-		xtc_redirect(xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 	}
 }
 
-$breadcrumb->add(NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS, xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
-$breadcrumb->add(NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS, xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS, vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
 
 if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-	$breadcrumb->add(NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS, xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit='.$_GET['edit'], 'SSL'));
+	$breadcrumb->add(NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS, vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit='.$_GET['edit'], 'SSL'));
 }
 elseif (isset ($_GET['delete']) && is_numeric($_GET['delete'])) {
-	$breadcrumb->add(NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS, xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'], 'SSL'));
+	$breadcrumb->add(NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS, vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'], 'SSL'));
 } else {
-	$breadcrumb->add(NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS, xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL'));
+	$breadcrumb->add(NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS, vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL'));
 }
 
 require (DIR_WS_INCLUDES.'header.php');
 if (isset ($_GET['delete']) == false)
-	$action = xtc_draw_form('addressbook', xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, (isset ($_GET['edit']) ? 'edit='.$_GET['edit'] : ''), 'SSL'), 'post', 'onsubmit="return checkform(this);"') . xtc_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"');
+	$action = vam_draw_form('addressbook', vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, (isset ($_GET['edit']) ? 'edit='.$_GET['edit'] : ''), 'SSL'), 'post', 'onsubmit="return checkform(this);"') . vam_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"');
 
 $smarty->assign('FORM_ACTION', $action);
 if ($messageStack->size('addressbook') > 0) {
@@ -274,26 +274,26 @@ if ($messageStack->size('addressbook') > 0) {
 
 if (isset ($_GET['delete'])) {
 	$smarty->assign('delete', '1');
-	$smarty->assign('ADDRESS', xtc_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'));
+	$smarty->assign('ADDRESS', vam_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'));
 
-	$smarty->assign('BUTTON_BACK', '<a href="'.xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-	$smarty->assign('BUTTON_DELETE', '<a href="'.xtc_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.xtc_image_button('button_delete.gif', IMAGE_BUTTON_DELETE).'</a>');
+	$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$smarty->assign('BUTTON_DELETE', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.vam_image_button('button_delete.gif', IMAGE_BUTTON_DELETE).'</a>');
 } else {
 
 	include (DIR_WS_MODULES.'address_book_details.php');
 
 	if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-		$smarty->assign('BUTTON_BACK', '<a href="'.xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-		$smarty->assign('BUTTON_UPDATE', xtc_draw_hidden_field('action', 'update').xtc_draw_hidden_field('edit', $_GET['edit']).xtc_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
+		$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$smarty->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
 
 	} else {
 		if (sizeof($_SESSION['navigation']->snapshot) > 0) {
-			$back_link = xtc_href_link($_SESSION['navigation']->snapshot['page'], xtc_array_to_string($_SESSION['navigation']->snapshot['get'], array (xtc_session_name())), $_SESSION['navigation']->snapshot['mode']);
+			$back_link = vam_href_link($_SESSION['navigation']->snapshot['page'], vam_array_to_string($_SESSION['navigation']->snapshot['get'], array (vam_session_name())), $_SESSION['navigation']->snapshot['mode']);
 		} else {
-			$back_link = xtc_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL');
+			$back_link = vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL');
 		}
-		$smarty->assign('BUTTON_BACK', '<a href="'.$back_link.'">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-		$smarty->assign('BUTTON_UPDATE', xtc_draw_hidden_field('action', 'process').xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+		$smarty->assign('BUTTON_BACK', '<a href="'.$back_link.'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$smarty->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 
 	}
 	$smarty->assign('FORM_END', '</form>');

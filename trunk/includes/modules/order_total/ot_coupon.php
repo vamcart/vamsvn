@@ -85,11 +85,11 @@ class ot_coupon {
 		/*
 			$selection_string = '';
 			$selection_string .= '<tr>' . "\n";
-			$selection_string .= ' <td  width="10">' . xtc_draw_separator('pixel_trans.gif', '10', '1') .'</td>';
+			$selection_string .= ' <td  width="10">' . vam_draw_separator('pixel_trans.gif', '10', '1') .'</td>';
 			$selection_string .= ' <td  nowrap class="main">' . "\n";
 			$selection_string .=  TEXT_ENTER_COUPON_CODE . '</td>';
-			$selection_string .= ' <td  align="right">'. xtc_draw_input_field('gv_redeem_code').'</td>';
-			$selection_string .= ' <td  width="10">' . xtc_draw_separator('pixel_trans.gif', '10', '1') . '</td>';
+			$selection_string .= ' <td  align="right">'. vam_draw_input_field('gv_redeem_code').'</td>';
+			$selection_string .= ' <td  width="10">' . vam_draw_separator('pixel_trans.gif', '10', '1') . '</td>';
 			$selection_string .= '</tr>' . "\n";
 		    */
 		return false;
@@ -100,37 +100,37 @@ class ot_coupon {
 		if ($_POST['gv_redeem_code']) {
 
 			// get some info from the coupon table
-			$coupon_query = xtc_db_query("select coupon_id, coupon_amount, coupon_type, coupon_minimum_order,uses_per_coupon, uses_per_user, restrict_to_products,restrict_to_categories from ".TABLE_COUPONS." where coupon_code='".$_POST['gv_redeem_code']."' and coupon_active='Y'");
-			$coupon_result = xtc_db_fetch_array($coupon_query);
+			$coupon_query = vam_db_query("select coupon_id, coupon_amount, coupon_type, coupon_minimum_order,uses_per_coupon, uses_per_user, restrict_to_products,restrict_to_categories from ".TABLE_COUPONS." where coupon_code='".$_POST['gv_redeem_code']."' and coupon_active='Y'");
+			$coupon_result = vam_db_fetch_array($coupon_query);
 
 			// SS ?
 			if ($coupon_result['coupon_type'] != 'G') {
 
-				if (xtc_db_num_rows($coupon_query) == 0) {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_NO_INVALID_REDEEM_COUPON), 'SSL'));
+				if (vam_db_num_rows($coupon_query) == 0) {
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_NO_INVALID_REDEEM_COUPON), 'SSL'));
 				}
 
-				$date_query = xtc_db_query("select coupon_start_date from ".TABLE_COUPONS." where coupon_start_date <= now() and coupon_code='".$_POST['gv_redeem_code']."'");
+				$date_query = vam_db_query("select coupon_start_date from ".TABLE_COUPONS." where coupon_start_date <= now() and coupon_code='".$_POST['gv_redeem_code']."'");
 
-				if (xtc_db_num_rows($date_query) == 0) {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_STARTDATE_COUPON), 'SSL'));
+				if (vam_db_num_rows($date_query) == 0) {
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_STARTDATE_COUPON), 'SSL'));
 				}
 
-				$date_query = xtc_db_query("select coupon_expire_date from ".TABLE_COUPONS." where coupon_expire_date >= now() and coupon_code='".$_POST['gv_redeem_code']."'");
+				$date_query = vam_db_query("select coupon_expire_date from ".TABLE_COUPONS." where coupon_expire_date >= now() and coupon_code='".$_POST['gv_redeem_code']."'");
 
-				if (xtc_db_num_rows($date_query) == 0) {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_FINISDATE_COUPON), 'SSL'));
+				if (vam_db_num_rows($date_query) == 0) {
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_FINISDATE_COUPON), 'SSL'));
 				}
 
-				$coupon_count = xtc_db_query("select coupon_id from ".TABLE_COUPON_REDEEM_TRACK." where coupon_id = '".$coupon_result['coupon_id']."'");
-				$coupon_count_customer = xtc_db_query("select coupon_id from ".TABLE_COUPON_REDEEM_TRACK." where coupon_id = '".$coupon_result['coupon_id']."' and customer_id = '".$_SESSION['customer_id']."'");
+				$coupon_count = vam_db_query("select coupon_id from ".TABLE_COUPON_REDEEM_TRACK." where coupon_id = '".$coupon_result['coupon_id']."'");
+				$coupon_count_customer = vam_db_query("select coupon_id from ".TABLE_COUPON_REDEEM_TRACK." where coupon_id = '".$coupon_result['coupon_id']."' and customer_id = '".$_SESSION['customer_id']."'");
 
-				if (xtc_db_num_rows($coupon_count) >= $coupon_result['uses_per_coupon'] && $coupon_result['uses_per_coupon'] > 0) {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_USES_COUPON.$coupon_result['uses_per_coupon'].TIMES), 'SSL'));
+				if (vam_db_num_rows($coupon_count) >= $coupon_result['uses_per_coupon'] && $coupon_result['uses_per_coupon'] > 0) {
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_USES_COUPON.$coupon_result['uses_per_coupon'].TIMES), 'SSL'));
 				}
 
-				if (xtc_db_num_rows($coupon_count_customer) >= $coupon_result['uses_per_user'] && $coupon_result['uses_per_user'] > 0) {
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_USES_USER_COUPON.$coupon_result['uses_per_user'].TIMES), 'SSL'));
+				if (vam_db_num_rows($coupon_count_customer) >= $coupon_result['uses_per_user'] && $coupon_result['uses_per_user'] > 0) {
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_INVALID_USES_USER_COUPON.$coupon_result['uses_per_user'].TIMES), 'SSL'));
 				}
 				if ($coupon_result['coupon_type'] == 'S') {
 					$coupon_amount = $order->info['shipping_cost'];
@@ -146,7 +146,7 @@ class ot_coupon {
 
 			}
 			if ($_POST['submit_redeem_coupon_x'] && !$_POST['gv_redeem_code'])
-				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_NO_REDEEM_CODE), 'SSL'));
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(ERROR_NO_REDEEM_CODE), 'SSL'));
 			}
 	}
 
@@ -155,12 +155,12 @@ class ot_coupon {
 
 		$od_amount = 0;
 		if (isset ($_SESSION['cc_id'])) {
-			$coupon_query = xtc_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['cc_id']."'");
-			if (xtc_db_num_rows($coupon_query) != 0) {
-				$coupon_result = xtc_db_fetch_array($coupon_query);
+			$coupon_query = vam_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['cc_id']."'");
+			if (vam_db_num_rows($coupon_query) != 0) {
+				$coupon_result = vam_db_fetch_array($coupon_query);
 				$this->coupon_code = $coupon_result['coupon_code'];
-				$coupon_get = xtc_db_query("select coupon_amount, coupon_minimum_order, restrict_to_products, restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code = '".$coupon_result['coupon_code']."'");
-				$get_result = xtc_db_fetch_array($coupon_get);
+				$coupon_get = vam_db_query("select coupon_amount, coupon_minimum_order, restrict_to_products, restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code = '".$coupon_result['coupon_code']."'");
+				$get_result = vam_db_fetch_array($coupon_get);
 				$c_deduct = $get_result['coupon_amount'];
 				
 				
@@ -177,7 +177,7 @@ class ot_coupon {
 							if ($get_result['restrict_to_products']) {
 								$pr_ids = split("[,]", $get_result['restrict_to_products']);
 								for ($ii = 0; $p < count($pr_ids); $ii ++) {
-									if ($pr_ids[$ii] == xtc_get_prid($order->products[$i]['id'])) {
+									if ($pr_ids[$ii] == vam_get_prid($order->products[$i]['id'])) {
 										if ($get_result['coupon_type'] == 'P') {
 											
 											$od_amount = $amount * $get_result['coupon_amount'] / 100;
@@ -193,13 +193,13 @@ class ot_coupon {
 							} else {
 								$cat_ids = split("[,]", $get_result['restrict_to_categories']);
 								for ($i = 0; $i < sizeof($order->products); $i ++) {
-									$my_path = xtc_get_product_path(xtc_get_prid($order->products[$i]['id']));
+									$my_path = vam_get_product_path(vam_get_prid($order->products[$i]['id']));
 									$sub_cat_ids = split("[_]", $my_path);
 									for ($iii = 0; $iii < count($sub_cat_ids); $iii ++) {
 										for ($ii = 0; $ii < count($cat_ids); $ii ++) {
 											if ($sub_cat_ids[$iii] == $cat_ids[$ii]) {
 												if ($get_result['coupon_type'] == 'P') {
-													$pr_c = $this->product_price(xtc_get_prid($order->products[$i]['id'])); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
+													$pr_c = $this->product_price(vam_get_prid($order->products[$i]['id'])); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
 													$pod_amount = round($pr_c*10)/10*$c_deduct/100;
 													$od_amount = $od_amount + $pod_amount;
                                                        continue 3;      // v5.13a Tanaka 2005-4-30: to prevent double counting of a product discount
@@ -231,11 +231,11 @@ class ot_coupon {
 	function calculate_tax_deduction($amount, $od_amount, $method) {
 		global $order;
 
-		$coupon_query = xtc_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['cc_id']."'");
-		if (xtc_db_num_rows($coupon_query) != 0) {
-			$coupon_result = xtc_db_fetch_array($coupon_query);
-			$coupon_get = xtc_db_query("select coupon_amount, coupon_minimum_order, restrict_to_products, restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code = '".$coupon_result['coupon_code']."'");
-			$get_result = xtc_db_fetch_array($coupon_get);
+		$coupon_query = vam_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['cc_id']."'");
+		if (vam_db_num_rows($coupon_query) != 0) {
+			$coupon_result = vam_db_fetch_array($coupon_query);
+			$coupon_get = vam_db_query("select coupon_amount, coupon_minimum_order, restrict_to_products, restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code = '".$coupon_result['coupon_code']."'");
+			$get_result = vam_db_fetch_array($coupon_get);
 
 			if ($get_result['coupon_type'] != 'S') {
 
@@ -257,9 +257,9 @@ class ot_coupon {
 					for ($i = 0; $i < sizeof($products); $i ++) {
 						$valid_product = false;
 					
-						$t_prid = xtc_get_prid($products[$i]['id']);
-						$cc_query = xtc_db_query("select products_tax_class_id from ".TABLE_PRODUCTS." where products_id = '".$t_prid."'");
-						$cc_result = xtc_db_fetch_array($cc_query);
+						$t_prid = vam_get_prid($products[$i]['id']);
+						$cc_query = vam_db_query("select products_tax_class_id from ".TABLE_PRODUCTS." where products_id = '".$t_prid."'");
+						$cc_result = vam_db_fetch_array($cc_query);
 						
 						
 						if ($get_result['restrict_to_products']) {
@@ -273,7 +273,7 @@ class ot_coupon {
 						if ($get_result['restrict_to_categories']) {
                         // v5.13a Tanaka 2005-4-30:  New code, this correctly identifies valid products in subcategories
                         $cat_ids = split("[,]", $get_result['restrict_to_categories']);
-                        $my_path = xtc_get_product_path($t_prid);
+                        $my_path = vam_get_product_path($t_prid);
                         $sub_cat_ids = split("[_]", $my_path);
                         for ($iii = 0; $iii < count($sub_cat_ids); $iii++) {
                             for ($ii = 0; $ii < count($cat_ids); $ii++) {
@@ -302,8 +302,8 @@ class ot_coupon {
 						if ($get_result['coupon_type'] == 'S')
 							$ratio = 1;
 						if ($method == 'Credit Note') {
-							$tax_rate = xtc_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
-							$tax_desc = xtc_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
+							$tax_rate = vam_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
+							$tax_desc = vam_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
 
 							if ($get_result['coupon_type'] == 'P') {
 								$tod_amount = $od_amount / (100 + $tax_rate) * $tax_rate;
@@ -315,8 +315,8 @@ class ot_coupon {
 							$order->info['tax'] -= $tod_amount;
 						} else {
 							for ($p = 0; $p < sizeof($valid_array); $p ++) {
-								$tax_rate = xtc_get_tax_rate($valid_array[$p]['products_tax_class'], $order->delivery['country']['id'], $order->delivery['zone_id']);
-								$tax_desc = xtc_get_tax_description($valid_array[$p]['products_tax_class'], $order->delivery['country']['id'], $order->delivery['zone_id']);
+								$tax_rate = vam_get_tax_rate($valid_array[$p]['products_tax_class'], $order->delivery['country']['id'], $order->delivery['zone_id']);
+								$tax_desc = vam_get_tax_description($valid_array[$p]['products_tax_class'], $order->delivery['country']['id'], $order->delivery['zone_id']);
 								if ($tax_rate > 0) {
 									$tod_amount = ($valid_array[$p]['products_price'] * $tax_rate) / 100 * $ratio;
 									$order->info['tax_groups'][$tax_desc] -= ($valid_array[$p]['products_price'] * $tax_rate) / 100 * $ratio;
@@ -331,15 +331,15 @@ class ot_coupon {
 					if ($get_result['coupon_type'] == 'F') {
 						$tod_amount = 0;
 						if ($method == 'Credit Note') {
-							$tax_rate = xtc_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
-							$tax_desc = xtc_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
+							$tax_rate = vam_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
+							$tax_desc = vam_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
 							$tod_amount = $od_amount / (100 + $tax_rate) * $tax_rate;
 							$order->info['tax_groups'][TAX_ADD_TAX.$tax_desc] -= $tod_amount;
 						} else {
 							reset($order->info['tax_groups']);
 							while (list ($key, $value) = each($order->info['tax_groups'])) {
 								$ratio1 = $od_amount / ($amount - $order->info['tax_groups'][$key]); 
-								$tax_rate = xtc_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
+								$tax_rate = vam_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
 								$net = $tax_rate * $order->info['tax_groups'][$key];
 								if ($net > 0) {
 									$god_amount = $od_amount * $tax_rate / (100 + $tax_rate);
@@ -355,14 +355,14 @@ $order->info['tax'] -= $tod_amount;
 					if ($get_result['coupon_type'] == 'P') {
 						$tod_amount = 0;
 						if ($method == 'Credit Note') {
-							$tax_desc = xtc_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
+							$tax_desc = vam_get_tax_description($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
 							$tod_amount = $order->info['tax_groups'][$tax_desc] * $od_amount / 100;
 							$order->info['tax_groups'][TAX_ADD_TAX.$tax_desc] -= $tod_amount;
 						} else {
 							reset($order->info['tax_groups']);
 							while (list ($key, $value) = each($order->info['tax_groups'])) {
 								$god_amout = 0;
-								$tax_rate = xtc_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
+								$tax_rate = vam_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
 								$net = $tax_rate * $order->info['tax_groups'][$key];
 								if ($net > 0) {
 									$god_amount = $order->info['tax_groups'][$key] * $get_result['coupon_amount'] / 100;
@@ -387,7 +387,7 @@ $order->info['tax'] -= $tod_amount;
 		global $insert_id, $REMOTE_ADDR;
 
 		if ($this->deduction != 0) {
-			xtc_db_query("insert into ".TABLE_COUPON_REDEEM_TRACK." (coupon_id, redeem_date, redeem_ip, customer_id, order_id) values ('".$_SESSION['cc_id']."', now(), '".$REMOTE_ADDR."', '".$_SESSION['customer_id']."', '".$insert_id."')");
+			vam_db_query("insert into ".TABLE_COUPON_REDEEM_TRACK." (coupon_id, redeem_date, redeem_ip, customer_id, order_id) values ('".$_SESSION['cc_id']."', now(), '".$REMOTE_ADDR."', '".$_SESSION['customer_id']."', '".$insert_id."')");
 		}
 		unset ($_SESSION['cc_id']);
 	}
@@ -399,9 +399,9 @@ $order->info['tax'] -= $tod_amount;
 		// Check if gift voucher is in cart and adjust total
 		$products = $_SESSION['cart']->get_products();
 		for ($i = 0; $i < sizeof($products); $i ++) {
-			$t_prid = xtc_get_prid($products[$i]['id']);
-			$gv_query = xtc_db_query("select products_price, products_tax_class_id, products_model from ".TABLE_PRODUCTS." where products_id = '".$t_prid."'");
-			$gv_result = xtc_db_fetch_array($gv_query);
+			$t_prid = vam_get_prid($products[$i]['id']);
+			$gv_query = vam_db_query("select products_price, products_tax_class_id, products_model from ".TABLE_PRODUCTS." where products_id = '".$t_prid."'");
+			$gv_result = vam_db_fetch_array($gv_query);
 			if (ereg('^GIFT', addslashes($gv_result['products_model']))) {
 				$qty = $_SESSION['cart']->get_quantity($t_prid);
 				$products_tax = $xtPrice->TAX[$gv_result['products_tax_class_id']];
@@ -420,11 +420,11 @@ $order->info['tax'] -= $tod_amount;
 		// OK thats fine for global coupons but what about restricted coupons
 		// where you can only redeem against certain products/categories.
 		// and I though this was going to be easy !!!
-		$coupon_query = xtc_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id='".$_SESSION['cc_id']."'");
-		if (xtc_db_num_rows($coupon_query) != 0) {
-			$coupon_result = xtc_db_fetch_array($coupon_query);
-			$coupon_get = xtc_db_query("select coupon_amount, coupon_minimum_order,restrict_to_products,restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code='".$coupon_result['coupon_code']."'");
-			$get_result = xtc_db_fetch_array($coupon_get);
+		$coupon_query = vam_db_query("select coupon_code from ".TABLE_COUPONS." where coupon_id='".$_SESSION['cc_id']."'");
+		if (vam_db_num_rows($coupon_query) != 0) {
+			$coupon_result = vam_db_fetch_array($coupon_query);
+			$coupon_get = vam_db_query("select coupon_amount, coupon_minimum_order,restrict_to_products,restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code='".$coupon_result['coupon_code']."'");
+			$get_result = vam_db_fetch_array($coupon_get);
 			$in_cat = true;
 			if ($get_result['restrict_to_categories']) {
 				$cat_ids = split("[,]", $get_result['restrict_to_categories']);
@@ -433,8 +433,8 @@ $order->info['tax'] -= $tod_amount;
 					if (is_array($this->contents)) {
 						reset($this->contents);
 						while (list ($products_id,) = each($this->contents)) {
-							$cat_query = xtc_db_query("select products_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '".$products_id."' and categories_id = '".$cat_ids[$i]."'");
-							if (xtc_db_num_rows($cat_query) != 0) {
+							$cat_query = vam_db_query("select products_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '".$products_id."' and categories_id = '".$cat_ids[$i]."'");
+							if (vam_db_num_rows($cat_query) != 0) {
 								$in_cat = true;
 								$total_price += $this->get_product_price($products_id);
 							}
@@ -452,7 +452,7 @@ $order->info['tax'] -= $tod_amount;
 
 				for ($i = 0; $i < sizeof($pr_ids); $i ++) {
 					for ($ii = 1; $ii <= sizeof($products_array); $ii ++) {
-						if (xtc_get_prid($products_array[$ii -1]['id']) == $pr_ids[$i]) {
+						if (vam_get_prid($products_array[$ii -1]['id']) == $pr_ids[$i]) {
 							$in_cart = true;
 							$total_price += $this->get_product_price($products_array[$ii -1]['id']);
 						}
@@ -466,11 +466,11 @@ $order->info['tax'] -= $tod_amount;
 
 	function get_product_price($product_id) {
 		global $order,$xtPrice;
-		$products_id = xtc_get_prid($product_id);
+		$products_id = vam_get_prid($product_id);
 		// products price
 		$qty = $_SESSION['cart']->contents[$products_id]['qty'];
-		$product_query = xtc_db_query("select products_id, products_price, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".$product_id."'");
-		if ($product = xtc_db_fetch_array($product_query)) {
+		$product_query = vam_db_query("select products_id, products_price, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".$product_id."'");
+		if ($product = vam_db_fetch_array($product_query)) {
 			$prid = $product['products_id'];
 
 
@@ -485,17 +485,17 @@ $total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = 
 			if (isset ($_SESSION['cart']->contents[$product_id]['attributes'])) {
 				reset($_SESSION['cart']->contents[$product_id]['attributes']);
 				while (list ($option, $value) = each($_SESSION['cart']->contents[$product_id]['attributes'])) {
-					$attribute_price_query = xtc_db_query("select options_values_price, price_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." where products_id = '".$prid."' and options_id = '".$option."' and options_values_id = '".$value."'");
-					$attribute_price = xtc_db_fetch_array($attribute_price_query);
+					$attribute_price_query = vam_db_query("select options_values_price, price_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." where products_id = '".$prid."' and options_id = '".$option."' and options_values_id = '".$value."'");
+					$attribute_price = vam_db_fetch_array($attribute_price_query);
 					if ($attribute_price['price_prefix'] == '+') {
 						if ($this->include_tax == 'true') {
-							$total_price += $qty * ($attribute_price['options_values_price'] + xtc_calculate_tax($attribute_price['options_values_price'], $products_tax));
+							$total_price += $qty * ($attribute_price['options_values_price'] + vam_calculate_tax($attribute_price['options_values_price'], $products_tax));
 						} else {
 							$total_price += $qty * ($attribute_price['options_values_price']);
 						}
 					} else {
 						if ($this->include_tax == 'true') {
-							$total_price -= $qty * ($attribute_price['options_values_price'] + xtc_calculate_tax($attribute_price['options_values_price'], $products_tax));
+							$total_price -= $qty * ($attribute_price['options_values_price'] + vam_calculate_tax($attribute_price['options_values_price'], $products_tax));
 						} else {
 							$total_price -= $qty * ($attribute_price['options_values_price']);
 						}
@@ -519,8 +519,8 @@ $total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = 
 
 	function check() {
 		if (!isset ($this->check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_ORDER_TOTAL_COUPON_STATUS'");
-			$this->check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_ORDER_TOTAL_COUPON_STATUS'");
+			$this->check = vam_db_num_rows($check_query);
 		}
 
 		return $this->check;
@@ -531,12 +531,12 @@ $total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = 
 	}
 
 	function install() {
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_STATUS', 'true', '6', '1','xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_SORT_ORDER', '70', '6', '2', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING', 'true', '6', '5', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_INC_TAX', 'true', '6', '6','xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_CALC_TAX', 'None', '6', '7','xtc_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_TAX_CLASS', '0', '6', '0', 'xtc_get_tax_class_title', 'xtc_cfg_pull_down_tax_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_STATUS', 'true', '6', '1','vam_cfg_select_option(array(\'true\', \'false\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_SORT_ORDER', '70', '6', '2', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING', 'true', '6', '5', 'vam_cfg_select_option(array(\'true\', \'false\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_INC_TAX', 'true', '6', '6','vam_cfg_select_option(array(\'true\', \'false\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function ,date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_CALC_TAX', 'None', '6', '7','vam_cfg_select_option(array(\'None\', \'Standard\', \'Credit Note\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('', 'MODULE_ORDER_TOTAL_COUPON_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
 	}
 
 	function remove() {
@@ -547,7 +547,7 @@ $total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = 
 		}
 		$keys = substr($keys, 0, -1);
 
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in (".$keys.")");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in (".$keys.")");
 	}
 }
 ?>
