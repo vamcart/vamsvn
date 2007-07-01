@@ -31,7 +31,7 @@ if ($listing_split->number_of_rows > 0) {
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 	}
-	$category_query = xtDBquery("select
+	$category_query = vamDBquery("select
 		                                    cd.categories_description,
 		                                    cd.categories_name,
 						    cd.categories_heading_title,
@@ -53,7 +53,7 @@ if ($listing_split->number_of_rows > 0) {
 	$module_smarty->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
 	$rows = 0;
-	$listing_query = xtDBquery($listing_split->sql_query);
+	$listing_query = vamDBquery($listing_split->sql_query);
 	while ($listing = vam_db_fetch_array($listing_query, true)) {
 		$rows ++;
 		$module_content[] =  $product->buildDataArray($listing);		

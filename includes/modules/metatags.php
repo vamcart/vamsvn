@@ -66,7 +66,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 				$_cPath = str_replace('c', '', $cID);
 			}
 		}
-		$categories_meta_query = xtDBquery("SELECT categories_meta_keywords,
+		$categories_meta_query = vamDBquery("SELECT categories_meta_keywords,
 		                                            categories_meta_description,
 		                                            categories_meta_title,
 		                                            categories_name
@@ -94,7 +94,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 switch (true) {
   case ($_GET['coID']):
 
-			$contents_meta_query = xtDBquery("SELECT content_heading
+			$contents_meta_query = vamDBquery("SELECT content_heading
 			                                            FROM " . TABLE_CONTENT_MANAGER . "
 			                                            WHERE content_group='" . $_GET['coID'] . "' and
 			                                            languages_id='" . $_SESSION['languages_id'] . "'");
@@ -109,7 +109,7 @@ switch (true) {
 
   case ($_GET['news_id']):
 
-			$news_meta_query = xtDBquery("SELECT headline
+			$news_meta_query = vamDBquery("SELECT headline
 			                                            FROM " . TABLE_LATEST_NEWS . "
 			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
@@ -124,7 +124,7 @@ switch (true) {
 
   case ($_GET['tPath']):
 
-			$articles_cat_meta_query = xtDBquery("SELECT topics_name, topics_heading_title, topics_description
+			$articles_cat_meta_query = vamDBquery("SELECT topics_name, topics_heading_title, topics_description
 			                                            FROM " . TABLE_TOPICS_DESCRIPTION . "
 			                                            WHERE topics_id='" . (int)$current_topic_id . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
@@ -152,7 +152,7 @@ switch (true) {
 
   case ($_GET['articles_id']):
 
-			$articles_meta_query = xtDBquery("SELECT articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
+			$articles_meta_query = vamDBquery("SELECT articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
 			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
 			                                            WHERE articles_id='" . (int)$_GET['articles_id'] . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
@@ -186,7 +186,7 @@ switch (true) {
 
   case ($_GET['authors_id']):
 
-			$authors_meta_query = xtDBquery("SELECT authors_name
+			$authors_meta_query = vamDBquery("SELECT authors_name
 			                                            FROM " . TABLE_AUTHORS . "
 			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
 			$authors_meta = vam_db_fetch_array($authors_meta_query, true);

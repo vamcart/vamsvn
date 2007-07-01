@@ -35,13 +35,13 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
   if (isset($tPath) && vam_not_null($tPath)) {
     $topics_articles_query = "select count(*) as total from " . TABLE_ARTICLES_TO_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'";
-    $topics_articles_query = xtDBquery($topics_articles_query);
+    $topics_articles_query = vamDBquery($topics_articles_query);
     $topics_articles = vam_db_fetch_array($topics_articles_query);
     if ($topics_articles['total'] > 0) {
       $topic_depth = 'articles'; // display articles
     } else {
       $topic_parent_query = "select count(*) as total from " . TABLE_TOPICS . " where parent_id = '" . (int)$current_topic_id . "'";
-      $topic_parent_query = xtDBquery($topic_parent_query);
+      $topic_parent_query = vamDBquery($topic_parent_query);
       $topic_parent = vam_db_fetch_array($topic_parent_query);
       if ($topic_parent['total'] > 0) {
         $topic_depth = 'nested'; // navigate through the topics

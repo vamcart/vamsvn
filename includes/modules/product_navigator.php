@@ -27,7 +27,7 @@ $group_check = "";
 if (GROUP_CHECK == 'true') {
 	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 }
-$products_query = xtDBquery("SELECT
+$products_query = vamDBquery("SELECT
                                  pc.products_id,
                                  pd.products_name
                                  FROM ".TABLE_PRODUCTS_TO_CATEGORIES." pc,

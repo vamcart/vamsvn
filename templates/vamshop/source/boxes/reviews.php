@@ -39,7 +39,7 @@ $box_content='';
   if ($random_product) {
     // display random review box
     $review_query = "select substring(reviews_text, 1, 60) as reviews_text from " . TABLE_REVIEWS_DESCRIPTION . " where reviews_id = '" . $random_product['reviews_id'] . "' and languages_id = '" . $_SESSION['languages_id'] . "'";
-    $review_query = xtDBquery($review_query);
+    $review_query = vamDBquery($review_query);
     $review = vam_db_fetch_array($review_query,true);
 
     $review = htmlspecialchars($review['reviews_text']);

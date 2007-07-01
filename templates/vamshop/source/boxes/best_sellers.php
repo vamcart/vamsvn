@@ -90,7 +90,7 @@ if (isset ($current_category_id) && ($current_category_id > 0)) {
 	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                        order by p.products_ordered desc limit ".MAX_DISPLAY_BESTSELLERS;
 }
-$best_sellers_query = xtDBquery($best_sellers_query);
+$best_sellers_query = vamDBquery($best_sellers_query);
 if (vam_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
 
 	$rows = 0;

@@ -50,7 +50,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_information.html', $cac
 	 					WHERE languages_id='".(int) $_SESSION['languages_id']."'
 	 					and file_flag=0 ".$group_check." and content_status=1 order by sort_order";
 
-	$content_query = xtDBquery($content_query);
+	$content_query = vamDBquery($content_query);
 
 	while ($content_data = vam_db_fetch_array($content_query, true)) {
 		$SEF_parameter = '';

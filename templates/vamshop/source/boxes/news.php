@@ -29,7 +29,7 @@ $sql = "
     ";
 
 $module_content = array();
-$query = xtDBquery($sql);
+$query = vamDBquery($sql);
 while ($one = vam_db_fetch_array($query,true)) {
 
 		$SEF_parameter = '';

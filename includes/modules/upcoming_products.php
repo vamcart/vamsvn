@@ -31,7 +31,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 if (GROUP_CHECK == 'true')
 	$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-$expected_query = xtDBquery("select p.products_id,
+$expected_query = vamDBquery("select p.products_id,
                                   pd.products_name,
                                   products_date_available as date_expected from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
                                   where to_days(products_date_available) >= to_days(now())

@@ -62,7 +62,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 }
 $row = 0;
 $module_content = array ();
-$featured_products_query = xtDBquery($featured_products_query);
+$featured_products_query = vamDBquery($featured_products_query);
 while ($featured_products = vam_db_fetch_array($featured_products_query, true)) {
 	$module_content[] = $product->buildDataArray($featured_products);
 
