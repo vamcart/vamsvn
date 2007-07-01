@@ -28,10 +28,10 @@
 </tr>
 
 <?php
-  echo xtc_draw_form('lang_edit', FILENAME_ORDERS_EDIT, 'action=lang_edit', 'post'); 
+  echo vam_draw_form('lang_edit', FILENAME_ORDERS_EDIT, 'action=lang_edit', 'post'); 
   
- $lang_query = xtc_db_query("select languages_id, name, directory from " . TABLE_LANGUAGES . " ");
-  while($lang = xtc_db_fetch_array($lang_query)){
+ $lang_query = vam_db_query("select languages_id, name, directory from " . TABLE_LANGUAGES . " ");
+  while($lang = vam_db_fetch_array($lang_query)){
 
 ?>
 <tr class="dataTableRow">
@@ -39,9 +39,9 @@
 <td class="dataTableContent" align="left" width="30%">
 <?php
 if ($lang['directory']==$order->info['language']){
- echo xtc_draw_radio_field('lang', $lang['languages_id'], 'checked');
+ echo vam_draw_radio_field('lang', $lang['languages_id'], 'checked');
 }else{
- echo xtc_draw_radio_field('lang', $lang['languages_id']);	
+ echo vam_draw_radio_field('lang', $lang['languages_id']);	
 }	
 ?>
 </td>
@@ -52,7 +52,7 @@ if ($lang['directory']==$order->info['language']){
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" colspan="3">
 <?php
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?></td>
 </tr>
@@ -74,10 +74,10 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 </tr>
 
 <?php
-  echo xtc_draw_form('curr_edit', FILENAME_ORDERS_EDIT, 'action=curr_edit', 'post'); 
+  echo vam_draw_form('curr_edit', FILENAME_ORDERS_EDIT, 'action=curr_edit', 'post'); 
   
- $curr_query = xtc_db_query("select currencies_id, title, code, value from " . TABLE_CURRENCIES . " ");
-  while($curr = xtc_db_fetch_array($curr_query)){
+ $curr_query = vam_db_query("select currencies_id, title, code, value from " . TABLE_CURRENCIES . " ");
+  while($curr = vam_db_fetch_array($curr_query)){
 
 ?>
 <tr class="dataTableRow">
@@ -85,9 +85,9 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 <td class="dataTableContent" align="left" width="30%">
 <?php
 if ($curr['code']==$order->info['currency']){
- echo xtc_draw_radio_field('currencies_id', $curr['currencies_id'], 'checked');
+ echo vam_draw_radio_field('currencies_id', $curr['currencies_id'], 'checked');
 }else{
- echo xtc_draw_radio_field('currencies_id', $curr['currencies_id']);	
+ echo vam_draw_radio_field('currencies_id', $curr['currencies_id']);	
 }	
 ?>
 </td>
@@ -98,8 +98,8 @@ if ($curr['code']==$order->info['currency']){
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" colspan="3">
 <?php
-echo xtc_draw_hidden_field('old_currency', $order->info['currency']);
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('old_currency', $order->info['currency']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?></td>
 </tr>
@@ -138,7 +138,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $order_payment .'.php');	
   $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);  
   
-echo xtc_draw_form('payment_edit', FILENAME_ORDERS_EDIT, 'action=payment_edit', 'post');
+echo vam_draw_form('payment_edit', FILENAME_ORDERS_EDIT, 'action=payment_edit', 'post');
 ?>
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" width="30%">
@@ -147,11 +147,11 @@ echo TEXT_ACTUAL . $order_payment_text;
 ?></td>
 <td class="dataTableContent" align="left" width="30%">
 <?php
-echo TEXT_NEW . xtc_draw_pull_down_menu('payment', $payment_array);
+echo TEXT_NEW . vam_draw_pull_down_menu('payment', $payment_array);
 ?></td>
 <td class="dataTableContent" align="left">
 <?php
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?></td>
 </tr>
@@ -195,7 +195,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
   $order_shipping_text = constant(MODULE_SHIPPING_.strtoupper($order_shipping)._TEXT_TITLE);  
   }
   
-echo xtc_draw_form('shipping_edit', FILENAME_ORDERS_EDIT, 'action=shipping_edit', 'post');
+echo vam_draw_form('shipping_edit', FILENAME_ORDERS_EDIT, 'action=shipping_edit', 'post');
 ?>
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" width="30%">
@@ -204,18 +204,18 @@ echo TEXT_ACTUAL . $order_shipping_text;
 ?></td>
 <td class="dataTableContent" align="left" width="30%">
 <?php
-echo TEXT_NEW . xtc_draw_pull_down_menu('shipping', $shipping_array);
+echo TEXT_NEW . vam_draw_pull_down_menu('shipping', $shipping_array);
 ?></td>
 <td class="dataTableContent" align="left">
 <?php
-$order_total_query = xtc_db_query("select value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $_GET['oID'] . "' and class = 'ot_shipping' ");
-$order_total = xtc_db_fetch_array($order_total_query);
-echo TEXT_PRICE . xtc_draw_input_field('value', $order_total['value']);
+$order_total_query = vam_db_query("select value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $_GET['oID'] . "' and class = 'ot_shipping' ");
+$order_total = vam_db_fetch_array($order_total_query);
+echo TEXT_PRICE . vam_draw_input_field('value', $order_total['value']);
 ?>
 </td>
 <td class="dataTableContent" align="left">
 <?php
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?></td>
 </tr>
@@ -248,32 +248,32 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
   $total_name = str_replace('ot_','',$total);  
   $total_text = constant(MODULE_ORDER_TOTAL_.strtoupper($total_name)._TITLE);
   
-   $ototal_query = xtc_db_query("select orders_total_id, title, value, class from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $_GET['oID'] . "' and class = '" . $total . "' ");
-   $ototal = xtc_db_fetch_array($ototal_query);  
+   $ototal_query = vam_db_query("select orders_total_id, title, value, class from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $_GET['oID'] . "' and class = '" . $total . "' ");
+   $ototal = vam_db_fetch_array($ototal_query);  
 
 //if (($total != 'ot_subtotal')&&($total != 'ot_subtotal_no_tax')&&($total != 'ot_total')&&($total != 'ot_tax')){  
 //if ($total != 'ot_shipping'){  
 
-  echo xtc_draw_form('ot_edit', FILENAME_ORDERS_EDIT, 'action=ot_edit', 'post');   
+  echo vam_draw_form('ot_edit', FILENAME_ORDERS_EDIT, 'action=ot_edit', 'post');   
 ?>
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" width="20%"><?php echo $total_text; ?></td>
-<td class="dataTableContent" align="left" width="40%"><?php echo xtc_draw_input_field('title', $ototal['title'], 'size=40'); ?></td>
-<td class="dataTableContent" align="left" width="20%"><?php echo xtc_draw_input_field('value', $ototal['value']); ?></td>
+<td class="dataTableContent" align="left" width="40%"><?php echo vam_draw_input_field('title', $ototal['title'], 'size=40'); ?></td>
+<td class="dataTableContent" align="left" width="20%"><?php echo vam_draw_input_field('value', $ototal['value']); ?></td>
 <td class="dataTableContent" align="left" width="20%">
 <?php
-echo xtc_draw_hidden_field('class', $total);
-echo xtc_draw_hidden_field('sort_order', constant(MODULE_ORDER_TOTAL_.strtoupper($total_name)._SORT_ORDER));
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('class', $total);
+echo vam_draw_hidden_field('sort_order', constant(MODULE_ORDER_TOTAL_.strtoupper($total_name)._SORT_ORDER));
+echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?>
 </form>
 </td>
 <td>
 <?php
-echo xtc_draw_form('ot_delete', FILENAME_ORDERS_EDIT, 'action=ot_delete', 'post');
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('otID', $ototal['orders_total_id']);
+echo vam_draw_form('ot_delete', FILENAME_ORDERS_EDIT, 'action=ot_delete', 'post');
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('otID', $ototal['orders_total_id']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>';
 ?>
 </form>

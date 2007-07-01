@@ -30,13 +30,13 @@
 
 
   require('includes/application_top.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php'); 
+  require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php'); 
 
   require(DIR_WS_CLASSES . 'currencies.php');
   $currencies = new currencies();
   
   require_once(DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
-  require_once(DIR_FS_INC . 'xtc_php_mail.inc.php');
+  require_once(DIR_FS_INC . 'vam_php_mail.inc.php');
 
   // initiate template engine for mail
   $smarty = new Smarty;
@@ -44,17 +44,17 @@
   if ( ($_GET['action'] == 'send_email_to_user') && ($_POST['customers_email_address'] || $_POST['email_to']) && (!$_POST['back_x']) ) {
     switch ($_POST['customers_email_address']) {
       case '***':
-        $mail_query = xtc_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS);
+        $mail_query = vam_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS);
         $mail_sent_to = TEXT_ALL_CUSTOMERS;
         break;
       case '**D':
-        $mail_query = xtc_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS . " where customers_newsletter = '1'");
+        $mail_query = vam_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS . " where customers_newsletter = '1'");
         $mail_sent_to = TEXT_NEWSLETTER_CUSTOMERS;
         break;
       default:
-        $customers_email_address = xtc_db_prepare_input($_POST['customers_email_address']);
+        $customers_email_address = vam_db_prepare_input($_POST['customers_email_address']);
 
-        $mail_query = xtc_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS . " where customers_email_address = '" . xtc_db_input($customers_email_address) . "'");
+        $mail_query = vam_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($customers_email_address) . "'");
         $mail_sent_to = $_POST['customers_email_address'];
         if ($_POST['email_to']) {
           $mail_sent_to = $_POST['email_to'];
@@ -62,9 +62,9 @@
         break;
     }
 
-    $from = xtc_db_prepare_input($_POST['from']);
-    $subject = xtc_db_prepare_input($_POST['subject']);
-    while ($mail = xtc_db_fetch_array($mail_query)) {
+    $from = vam_db_prepare_input($_POST['from']);
+    $subject = vam_db_prepare_input($_POST['subject']);
+    while ($mail = vam_db_fetch_array($mail_query)) {
       $id1 = create_coupon_code($mail['customers_email_address']);
 
       // assign language to template for caching
@@ -94,13 +94,13 @@
       $txt_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
 
       if ($subject=='') $subject=EMAIL_BILLING_SUBJECT;
-      xtc_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $mail['customers_email_address'] , $mail['customers_firstname'] . ' ' . $mail['customers_lastname'] , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $subject, $html_mail , $txt_mail);
+      vam_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $mail['customers_email_address'] , $mail['customers_firstname'] . ' ' . $mail['customers_lastname'] , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $subject, $html_mail , $txt_mail);
 
 
 	  // Now create the coupon main and email entry
-      $insert_query = xtc_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
-      $insert_id = xtc_db_insert_id($insert_query);
-      $insert_query = xtc_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $mail['customers_email_address'] . "', now() )");
+      $insert_query = vam_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
+      $insert_id = vam_db_insert_id($insert_query);
+      $insert_query = vam_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $mail['customers_email_address'] . "', now() )");
     }
     if ($_POST['email_to']) {
       $id1 = create_coupon_code($_POST['email_to']);
@@ -134,15 +134,15 @@
       $txt_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
 
 
-      xtc_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $_POST['email_to'] , '' , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail , $txt_mail);
+      vam_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $_POST['email_to'] , '' , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail , $txt_mail);
 
 
       // Now create the coupon email entry
-      $insert_query = xtc_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
-      $insert_id = xtc_db_insert_id($insert_query);
-      $insert_query = xtc_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $_POST['email_to'] . "', now() )");
+      $insert_query = vam_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
+      $insert_id = vam_db_insert_id($insert_query);
+      $insert_query = vam_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $_POST['email_to'] . "', now() )");
     }
-    xtc_redirect(xtc_href_link(FILENAME_GV_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to)));
+    vam_redirect(vam_href_link(FILENAME_GV_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to)));
   }
 
   if ( ($_GET['action'] == 'preview') && (!$_POST['customers_email_address']) && (!$_POST['email_to']) ) {
@@ -164,9 +164,9 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <?php if (USE_WYSIWYG=='true' && $_GET['action'] != 'preview') {
- $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
- $data=xtc_db_fetch_array($query);
- echo xtc_wysiwyg_tiny('gv_mail',$data['code']);
+ $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
+ $data=vam_db_fetch_array($query);
+ echo vam_wysiwyg_tiny('gv_mail',$data['code']);
  } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -209,40 +209,40 @@
         break;
     }
 ?>
-          <tr><?php echo xtc_draw_form('mail', FILENAME_GV_MAIL, 'action=send_email_to_user'); ?>
+          <tr><?php echo vam_draw_form('mail', FILENAME_GV_MAIL, 'action=send_email_to_user'); ?>
             <td><table border="0" width="100%" cellpadding="0" cellspacing="2">
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TEXT_CUSTOMER; ?></b><br /><?php echo $mail_sent_to; ?></td>
               </tr>
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TEXT_FROM; ?></b><br /><?php echo htmlspecialchars(stripslashes($_POST['from'])); ?></td>
               </tr>
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TEXT_SUBJECT; ?></b><br /><?php echo htmlspecialchars(stripslashes($_POST['subject'])); ?></td>
               </tr>
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TEXT_AMOUNT; ?></b><br /><?php echo nl2br(htmlspecialchars(stripslashes($_POST['amount']))); ?></td>
               </tr>
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TEXT_MESSAGE; ?></b><br /><?php echo $_POST['message']; ?></td>
               </tr>
               <tr>
-                <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td>
@@ -251,14 +251,14 @@
     reset($_POST);
     while (list($key, $value) = each($_POST)) {
       if (!is_array($_POST[$key])) {
-        echo xtc_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
+        echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
       }
     }
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><?php echo '<input type="submit" class="button" name="back" onClick="this.blur();" value="' . BUTTON_BACK . '"/>'; ?></td>
-                    <td align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_GV_MAIL) . '">' . BUTTON_CANCEL . '</a> <input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEND_EMAIL . '"/>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GV_MAIL) . '">' . BUTTON_CANCEL . '</a> <input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEND_EMAIL . '"/>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -267,10 +267,10 @@
 <?php
   } else {
 ?>
-          <tr><?php echo xtc_draw_form('mail', FILENAME_GV_MAIL, 'action=preview'); ?>
+          <tr><?php echo vam_draw_form('mail', FILENAME_GV_MAIL, 'action=preview'); ?>
             <td><table border="0" cellpadding="0" cellspacing="2">
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
 <?php
     if ($_GET['cID']) {
@@ -281,53 +281,53 @@
     $customers[] = array('id' => '***', 'text' => TEXT_ALL_CUSTOMERS);
     $customers[] = array('id' => '**D', 'text' => TEXT_NEWSLETTER_CUSTOMERS);
     }
-    $mail_query = xtc_db_query("select customers_id, customers_email_address, customers_firstname, customers_lastname from " . TABLE_CUSTOMERS . " ".$select." order by customers_lastname");
-    while($customers_values = xtc_db_fetch_array($mail_query)) {
+    $mail_query = vam_db_query("select customers_id, customers_email_address, customers_firstname, customers_lastname from " . TABLE_CUSTOMERS . " ".$select." order by customers_lastname");
+    while($customers_values = vam_db_fetch_array($mail_query)) {
       $customers[] = array('id' => $customers_values['customers_email_address'],
                            'text' => $customers_values['customers_lastname'] . ', ' . $customers_values['customers_firstname'] . ' (' . $customers_values['customers_email_address'] . ')');
     }
 ?>
               <tr>
                 <td class="main"><?php echo TEXT_CUSTOMER; ?></td>
-                <td><?php echo xtc_draw_pull_down_menu('customers_email_address', $customers, $_GET['customer']);?></td>
+                <td><?php echo vam_draw_pull_down_menu('customers_email_address', $customers, $_GET['customer']);?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
                <tr>
                 <td class="main"><?php echo TEXT_TO; ?></td>
-                <td><?php echo xtc_draw_input_field('email_to'); ?><?php echo '&nbsp;&nbsp;' . TEXT_SINGLE_EMAIL; ?></td>
+                <td><?php echo vam_draw_input_field('email_to'); ?><?php echo '&nbsp;&nbsp;' . TEXT_SINGLE_EMAIL; ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
              <tr>
                 <td class="main"><?php echo TEXT_FROM; ?></td>
-                <td><?php echo xtc_draw_input_field('from', EMAIL_FROM); ?></td>
+                <td><?php echo vam_draw_input_field('from', EMAIL_FROM); ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td class="main"><?php echo TEXT_SUBJECT; ?></td>
-                <td><?php echo xtc_draw_input_field('subject'); ?></td>
+                <td><?php echo vam_draw_input_field('subject'); ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td valign="top" class="main"><?php echo TEXT_AMOUNT; ?></td>
-                <td><?php echo xtc_draw_input_field('amount'); ?></td>
+                <td><?php echo vam_draw_input_field('amount'); ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td valign="top" class="main"><?php echo TEXT_MESSAGE; ?></td>
-                <td><?php echo xtc_draw_textarea_field('message', 'soft', '100%', '55'); ?></td>
+                <td><?php echo vam_draw_textarea_field('message', 'soft', '100%', '55'); ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td colspan="2" align="right"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEND_EMAIL . '"/>'; ?></td>

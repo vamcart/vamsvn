@@ -45,14 +45,14 @@ require('includes/application_top.php');
 </tr>
 <?
     echo "<tr><th class=\"dataTableHeadingContent\">" . TEXT_VALID_CATEGORIES_ID . "</th><th class=\"dataTableHeadingContent\">" . TEXT_VALID_CATEGORIES_NAME . "</th></tr><tr>";
-    $result = xtc_db_query("SELECT * FROM ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd WHERE c.categories_id = cd.categories_id and cd.language_id = '" . $_SESSION['languages_id'] . "' ORDER BY c.categories_id");
-    if ($row = xtc_db_fetch_array($result)) {
+    $result = vam_db_query("SELECT * FROM ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd WHERE c.categories_id = cd.categories_id and cd.language_id = '" . $_SESSION['languages_id'] . "' ORDER BY c.categories_id");
+    if ($row = vam_db_fetch_array($result)) {
         do {
             echo "<td class=\"dataTableHeadingContent\">".$row["categories_id"]."</td>\n";
             echo "<td class=\"dataTableHeadingContent\">".$row["categories_name"]."</td>\n";
             echo "</tr>\n";
         }
-        while($row = xtc_db_fetch_array($result));
+        while($row = vam_db_fetch_array($result));
     }
     echo "</table>\n";
 ?>

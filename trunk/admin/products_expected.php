@@ -19,7 +19,7 @@
 
   require('includes/application_top.php');
 
-  xtc_db_query("update " . TABLE_PRODUCTS . " set products_date_available = '' where to_days(now()) > to_days(products_date_available)");
+  vam_db_query("update " . TABLE_PRODUCTS . " set products_date_available = '' where to_days(now()) > to_days(products_date_available)");
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -62,21 +62,21 @@
 <?php
   $products_query_raw = "select pd.products_id, pd.products_name, p.products_date_available from " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS . " p where p.products_id = pd.products_id and p.products_date_available != '' and pd.language_id = '" . $_SESSION['languages_id'] . "' order by p.products_date_available DESC";
   $products_split = new splitPageResults($_GET['page'], '20', $products_query_raw, $products_query_numrows);
-  $products_query = xtc_db_query($products_query_raw);
-  while ($products = xtc_db_fetch_array($products_query)) {
+  $products_query = vam_db_query($products_query_raw);
+  while ($products = vam_db_fetch_array($products_query)) {
     if (((!$_GET['pID']) || ($_GET['pID'] == $products['products_id'])) && (!$pInfo) ) {
       $pInfo = new objectInfo($products);
     }
 
     if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) {
-      echo '                  <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . xtc_href_link(FILENAME_CATEGORIES, 'pID=' . $products['products_id'] . '&action=new_product') . '\'">' . "\n";
+      echo '                  <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_CATEGORIES, 'pID=' . $products['products_id'] . '&action=new_product') . '\'">' . "\n";
     } else {
-      echo '                  <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . xtc_href_link(FILENAME_PRODUCTS_EXPECTED, 'page=' . $_GET['page'] . '&pID=' . $products['products_id']) . '\'">' . "\n";
+      echo '                  <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_PRODUCTS_EXPECTED, 'page=' . $_GET['page'] . '&pID=' . $products['products_id']) . '\'">' . "\n";
     }
 ?>
                 <td class="dataTableContent"><?php echo $products['products_name']; ?></td>
-                <td class="dataTableContent" align="center"><?php echo xtc_date_short($products['products_date_available']); ?></td>
-                <td class="dataTableContent" align="right"><?php if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . xtc_href_link(FILENAME_PRODUCTS_EXPECTED, 'page=' . $_GET['page'] . '&pID=' . $products['products_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+                <td class="dataTableContent" align="center"><?php echo vam_date_short($products['products_date_available']); ?></td>
+                <td class="dataTableContent" align="right"><?php if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . vam_href_link(FILENAME_PRODUCTS_EXPECTED, 'page=' . $_GET['page'] . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
   }
@@ -96,11 +96,11 @@
   if (is_object($pInfo)) {
     $heading[] = array('text' => '<b>' . $pInfo->products_name . '</b>');
 
-    $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_CATEGORIES, 'pID=' . $pInfo->products_id . '&action=new_product') . '">' . BUTTON_EDIT . '</a>');
-    $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_EXPECTED . ' ' . xtc_date_short($pInfo->products_date_available));
+    $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_CATEGORIES, 'pID=' . $pInfo->products_id . '&action=new_product') . '">' . BUTTON_EDIT . '</a>');
+    $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_EXPECTED . ' ' . vam_date_short($pInfo->products_date_available));
   }
 
-  if ( (xtc_not_null($heading)) && (xtc_not_null($contents)) ) {
+  if ( (vam_not_null($heading)) && (vam_not_null($contents)) ) {
     echo '            <td width="25%" valign="top">' . "\n";
 
     $box = new box;

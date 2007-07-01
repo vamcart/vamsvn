@@ -53,14 +53,14 @@ td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: xx-small}
 </td>
 </tr>
 <?
-   $coupon_get=xtc_db_query("select restrict_to_products,restrict_to_categories from " . TABLE_COUPONS . "  where coupon_id='".$_GET['cid']."'");
-   $get_result=xtc_db_fetch_array($coupon_get);
+   $coupon_get=vam_db_query("select restrict_to_products,restrict_to_categories from " . TABLE_COUPONS . "  where coupon_id='".$_GET['cid']."'");
+   $get_result=vam_db_fetch_array($coupon_get);
 
     echo "<tr><th>Product ID</th><th>Product Name</th><th>Product Size</th></tr><tr>";
     $pr_ids = split("[,]", $get_result['restrict_to_products']);
     for ($i = 0; $i < count($pr_ids); $i++) {
-      $result = xtc_db_query("SELECT * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'and p.products_id = '" . $pr_ids[$i] . "'");
-      if ($row = xtc_db_fetch_array($result)) {
+      $result = vam_db_query("SELECT * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'and p.products_id = '" . $pr_ids[$i] . "'");
+      if ($row = vam_db_fetch_array($result)) {
             echo "<td>".$row["products_id"]."</td>\n";
             echo "<td>".$row["products_name"]."</td>\n";
             echo "<td>".$row["products_model"]."</td>\n";

@@ -20,10 +20,10 @@
   $xx_mins_ago = (time() - 900);
 
   require('includes/application_top.php');
-  require(DIR_FS_INC. 'xtc_get_products.inc.php');
+  require(DIR_FS_INC. 'vam_get_products.inc.php');
 
   // remove entries that have expired
-  xtc_db_query("delete from " . TABLE_WHOS_ONLINE . " where time_last_click < '" . $xx_mins_ago . "'");
+  vam_db_query("delete from " . TABLE_WHOS_ONLINE . " where time_last_click < '" . $xx_mins_ago . "'");
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -67,8 +67,8 @@
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_LAST_PAGE_URL; ?>&nbsp;</td>
               </tr>
 <?php
-  $whos_online_query = xtc_db_query("select customer_id, full_name, ip_address, time_entry, time_last_click, last_page_url, session_id from " . TABLE_WHOS_ONLINE ." order by time_last_click desc");
-  while ($whos_online = xtc_db_fetch_array($whos_online_query)) {
+  $whos_online_query = vam_db_query("select customer_id, full_name, ip_address, time_entry, time_last_click, last_page_url, session_id from " . TABLE_WHOS_ONLINE ." order by time_last_click desc");
+  while ($whos_online = vam_db_fetch_array($whos_online_query)) {
     $time_online = (time() - $whos_online['time_entry']);
     if ( ((!$_GET['info']) || (@$_GET['info'] == $whos_online['session_id'])) && (!$info) ) {
       $info = $whos_online['session_id'];
@@ -76,7 +76,7 @@
     if ($whos_online['session_id'] == $info) {
       echo '              <tr class="dataTableRowSelected">' . "\n";
     } else {
-      echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . xtc_href_link(FILENAME_WHOS_ONLINE, xtc_get_all_get_params(array('info', 'action')) . 'info=' . $whos_online['session_id'], 'NONSSL') . '\'">' . "\n";
+      echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_WHOS_ONLINE, vam_get_all_get_params(array('info', 'action')) . 'info=' . $whos_online['session_id'], 'NONSSL') . '\'">' . "\n";
     }
 ?>
                 <td class="dataTableContent"><?php echo gmdate('H:i:s', $time_online); ?></td>
@@ -85,13 +85,13 @@
                 <td class="dataTableContent" align="center"><?php echo $whos_online['ip_address']; ?></td>
                 <td class="dataTableContent"><?php echo date('H:i:s', $whos_online['time_entry']); ?></td>
                 <td class="dataTableContent" align="center"><?php echo date('H:i:s', $whos_online['time_last_click']); ?></td>
-                <td class="dataTableContent"><?php if (eregi('^(.*)' . xtc_session_name() . '=[a-f,0-9]+[&]*(.*)', $whos_online['last_page_url'], $array)) { echo $array[1] . $array[2]; } else { echo $whos_online['last_page_url']; } ?>&nbsp;</td>
+                <td class="dataTableContent"><?php if (eregi('^(.*)' . vam_session_name() . '=[a-f,0-9]+[&]*(.*)', $whos_online['last_page_url'], $array)) { echo $array[1] . $array[2]; } else { echo $whos_online['last_page_url']; } ?>&nbsp;</td>
               </tr>
 <?php
   }
 ?>
               <tr>
-                <td class="smallText" colspan="7"><?php echo sprintf(TEXT_NUMBER_OF_CUSTOMERS, xtc_db_num_rows($whos_online_query)); ?></td>
+                <td class="smallText" colspan="7"><?php echo sprintf(TEXT_NUMBER_OF_CUSTOMERS, vam_db_num_rows($whos_online_query)); ?></td>
               </tr>
             </table></td>
 <?php
@@ -102,12 +102,12 @@
     $heading[] = array('text' => '<b>' . TABLE_HEADING_SHOPPING_CART . '</b>');
 
     if (STORE_SESSIONS == 'mysql') {
-      $session_data = xtc_db_query("select value from " . TABLE_SESSIONS . " WHERE sesskey = '" . $info . "'");
-      $session_data = xtc_db_fetch_array($session_data);
+      $session_data = vam_db_query("select value from " . TABLE_SESSIONS . " WHERE sesskey = '" . $info . "'");
+      $session_data = vam_db_fetch_array($session_data);
       $session_data = trim($session_data['value']);
     } else {
-      if ( (file_exists(xtc_session_save_path() . '/sess_' . $info)) && (filesize(xtc_session_save_path() . '/sess_' . $info) > 0) ) {
-        $session_data = file(xtc_session_save_path() . '/sess_' . $info);
+      if ( (file_exists(vam_session_save_path() . '/sess_' . $info)) && (filesize(vam_session_save_path() . '/sess_' . $info) > 0) ) {
+        $session_data = file(vam_session_save_path() . '/sess_' . $info);
         $session_data = trim(implode('', $session_data));
       }
     }
@@ -115,13 +115,13 @@
       $user_session = unserialize_session_data($session_data);
 		
       if ($user_session) {
-        $products = xtc_get_products($user_session);
+        $products = vam_get_products($user_session);
         for ($i = 0, $n = sizeof($products); $i < $n; $i++) {
           $contents[] = array('text' => $products[$i]['quantity'] . ' x ' . $products[$i]['name']);
         }
 
         if (sizeof($products) > 0) {
-          $contents[] = array('text' => xtc_draw_separator('pixel_black.gif', '100%', '1'));
+          $contents[] = array('text' => vam_draw_separator('pixel_black.gif', '100%', '1'));
           $contents[] = array('align' => 'right', 'text'  => TEXT_SHOPPING_CART_SUBTOTAL . ' ' . $user_session['cart']->total . ' ' . $user_session['currency']);
         } else {
           $contents[] = array('text' => '&nbsp;');
@@ -129,7 +129,7 @@
       }
     }
 
-  if ( (xtc_not_null($heading)) && (xtc_not_null($contents)) ) {
+  if ( (vam_not_null($heading)) && (vam_not_null($contents)) ) {
     echo '            <td width="25%" valign="top">' . "\n";
 
     $box = new box;

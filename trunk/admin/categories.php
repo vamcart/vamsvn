@@ -28,10 +28,10 @@
 require_once ('includes/application_top.php');
 require_once ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
 require_once ('includes/classes/categories.php');
-require_once (DIR_FS_INC.'xtc_get_tax_rate.inc.php');
-require_once (DIR_FS_INC.'xtc_get_products_mo_images.inc.php');
+require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_WS_CLASSES.'currencies.php');
-require_once (DIR_FS_INC.'xtc_wysiwyg_tiny.inc.php');
+require_once (DIR_FS_INC.'vam_wysiwyg_tiny.inc.php');
 
 $currencies = new currencies();
 $catfunc = new categories();
@@ -40,12 +40,12 @@ $catfunc = new categories();
 if ($_GET['function']) {
 	switch ($_GET['function']) {
 		case 'delete' :
-			xtc_db_query("DELETE FROM ".TABLE_PERSONAL_OFFERS.(int) $_GET['statusID']."
+			vam_db_query("DELETE FROM ".TABLE_PERSONAL_OFFERS.(int) $_GET['statusID']."
 						                     WHERE products_id = '".(int) $_GET['pID']."'
 						                     AND quantity    = '".(int) $_GET['quantity']."'");
 			break;
 	}
-	xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&action=new_product&pID='.(int) $_GET['pID']));
+	vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&action=new_product&pID='.(int) $_GET['pID']));
 }
 
 // Multi-Status Change, separated from $_GET['action']
@@ -63,7 +63,7 @@ if (isset ($_POST['multi_status_on'])) {
 			$catfunc->set_product_status($product_id, '1');
 		}
 	}
-	xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.xtc_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
+	vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.vam_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
 }
 
 if (isset ($_POST['multi_status_off'])) {
@@ -79,7 +79,7 @@ if (isset ($_POST['multi_status_off'])) {
 			$catfunc->set_product_status($product_id, "0");
 		}
 	}
-	xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.xtc_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
+	vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.vam_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
 }
 // --- MULTI STATUS ENDS ---
 
@@ -93,7 +93,7 @@ if ($_GET['action']) {
 					$catfunc->set_category_recursive($_GET['cID'], $_GET['flag']);
 				}
 			}
-			xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+			vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
 			break;
 			//EOB setcflag
 
@@ -104,9 +104,9 @@ if ($_GET['action']) {
 				}
 			}
 			if ($_GET['pID']) {
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
 			} else {
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
 			}
 			break;
 			//EOB setpflag
@@ -114,11 +114,11 @@ if ($_GET['action']) {
       case 'setxml' :
         if (($_GET['flagxml'] == '0') || ($_GET['flagxml'] == '1')) {
           if ($_GET['pID']) {
-            xtc_set_product_xml($_GET['pID'], $_GET['flagxml']);
+            vam_set_product_xml($_GET['pID'], $_GET['flagxml']);
           }
          }
          
-        xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID']));
+        vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID']));
         break;
 
 			
@@ -130,9 +130,9 @@ if ($_GET['action']) {
 				}
 			}
 			if ($_GET['pID']) {
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
 			} else {
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
 			}
 			break;
 			//EOB setsflag
@@ -179,31 +179,31 @@ if ($_GET['action']) {
 			// --- MULTI MOVE ---
 			if (isset ($_POST['multi_move_confirm'])) {
 				//move multi_categories
-				if (is_array($_POST['multi_categories']) && xtc_not_null($_POST['move_to_category_id'])) {
+				if (is_array($_POST['multi_categories']) && vam_not_null($_POST['move_to_category_id'])) {
 					foreach ($_POST['multi_categories'] AS $category_id) {
-						$dest_category_id = xtc_db_prepare_input($_POST['move_to_category_id']);
+						$dest_category_id = vam_db_prepare_input($_POST['move_to_category_id']);
 						if ($category_id != $dest_category_id) {
 							$catfunc->move_category($category_id, $dest_category_id);
 						}
 					}
 				}
 				//move multi_products
-				if (is_array($_POST['multi_products']) && xtc_not_null($_POST['move_to_category_id']) && xtc_not_null($_POST['src_category_id'])) {
+				if (is_array($_POST['multi_products']) && vam_not_null($_POST['move_to_category_id']) && vam_not_null($_POST['src_category_id'])) {
 					foreach ($_POST['multi_products'] AS $product_id) {
-						$product_id = xtc_db_prepare_input($product_id);
-						$src_category_id = xtc_db_prepare_input($_POST['src_category_id']);
-						$dest_category_id = xtc_db_prepare_input($_POST['move_to_category_id']);
+						$product_id = vam_db_prepare_input($product_id);
+						$src_category_id = vam_db_prepare_input($_POST['src_category_id']);
+						$dest_category_id = vam_db_prepare_input($_POST['move_to_category_id']);
 						$catfunc->move_product($product_id, $src_category_id, $dest_category_id);
 					}
 				}
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$dest_category_id.'&'.xtc_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$dest_category_id.'&'.vam_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
 			}
 			// --- MULTI MOVE ENDS ---	
 
 			// --- MULTI COPY ---
 			if (isset ($_POST['multi_copy_confirm'])) {
 				//copy multi_categories
-				if (is_array($_POST['multi_categories']) && (is_array($_POST['dest_cat_ids']) || xtc_not_null($_POST['dest_category_id']))) {
+				if (is_array($_POST['multi_categories']) && (is_array($_POST['dest_cat_ids']) || vam_not_null($_POST['dest_category_id']))) {
 					$_SESSION['copied'] = array ();
 					foreach ($_POST['multi_categories'] AS $category_id) {
 						if (is_array($_POST['dest_cat_ids'])) {
@@ -218,7 +218,7 @@ if ($_GET['action']) {
 								}
 							}
 						}
-						elseif (xtc_not_null($_POST['dest_category_id'])) {
+						elseif (vam_not_null($_POST['dest_category_id'])) {
 							if ($_POST['copy_as'] == 'link') {
 								$catfunc->copy_category($category_id, $dest_category_id, 'link');
 							}
@@ -232,12 +232,12 @@ if ($_GET['action']) {
 					unset ($_SESSION['copied']);
 				}
 				//copy multi_products
-				if (is_array($_POST['multi_products']) && (is_array($_POST['dest_cat_ids']) || xtc_not_null($_POST['dest_category_id']))) {
+				if (is_array($_POST['multi_products']) && (is_array($_POST['dest_cat_ids']) || vam_not_null($_POST['dest_category_id']))) {
 					foreach ($_POST['multi_products'] AS $product_id) {
-						$product_id = xtc_db_prepare_input($product_id);
+						$product_id = vam_db_prepare_input($product_id);
 						if (is_array($_POST['dest_cat_ids'])) {
 							foreach ($_POST['dest_cat_ids'] AS $dest_category_id) {
-								$dest_category_id = xtc_db_prepare_input($dest_category_id);
+								$dest_category_id = vam_db_prepare_input($dest_category_id);
 								if ($_POST['copy_as'] == 'link') {
 									$catfunc->link_product($product_id, $dest_category_id);
 								}
@@ -248,8 +248,8 @@ if ($_GET['action']) {
 								}
 							}
 						}
-						elseif (xtc_not_null($_POST['dest_category_id'])) {
-							$dest_category_id = xtc_db_prepare_input($_POST['dest_category_id']);
+						elseif (vam_not_null($_POST['dest_category_id'])) {
+							$dest_category_id = vam_db_prepare_input($_POST['dest_category_id']);
 							if ($_POST['copy_as'] == 'link') {
 								$catfunc->link_product($product_id, $dest_category_id);
 							}
@@ -261,11 +261,11 @@ if ($_GET['action']) {
 						}
 					}
 				}
-				xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$dest_category_id.'&'.xtc_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$dest_category_id.'&'.vam_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
 			}
 			// --- MULTI COPY ENDS ---					
 
-			xtc_redirect(xtc_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.xtc_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
+			vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&'.vam_get_all_get_params(array ('cPath', 'action', 'pID', 'cID'))));
 			break;
 			#EOB multi_action_confirm			
 
@@ -292,23 +292,23 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<script type="text/javascript" src="includes/general.js"></script>
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (USE_WYSIWYG=='true') {
-	$query = xtc_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
-	$data = xtc_db_fetch_array($query);
+	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
+	$data = vam_db_fetch_array($query);
 	// generate editor for categories EDIT
-	$languages = xtc_get_languages();
+	$languages = vam_get_languages();
 
 	// generate editor for categories
 	if ($_GET['action'] == 'new_category' || $_GET['action'] == 'edit_category') {
 		for ($i = 0; $i < sizeof($languages); $i ++) {
-			echo xtc_wysiwyg_tiny('categories_description', $data['code'], $languages[$i]['id']);
+			echo vam_wysiwyg_tiny('categories_description', $data['code'], $languages[$i]['id']);
 		}
 	}
 
 	// generate editor for products
 	if ($_GET['action'] == 'new_product') {
 		for ($i = 0; $i < sizeof($languages); $i ++) {
-			echo xtc_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
-			echo xtc_wysiwyg_tiny('products_short_description', $data['code'], $languages[$i]['id']);
+			echo vam_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
+			echo vam_wysiwyg_tiny('products_short_description', $data['code'], $languages[$i]['id']);
 		}
 	}
 }

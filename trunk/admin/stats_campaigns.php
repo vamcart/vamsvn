@@ -32,21 +32,21 @@ $campaign = new campaigns($_GET);
 
 $orders_statuses = array ();
 $orders_status_array = array ();
-$orders_status_query = xtc_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".$_SESSION['languages_id']."'");
-while ($orders_status = xtc_db_fetch_array($orders_status_query)) {
+$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".$_SESSION['languages_id']."'");
+while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
 	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
 }
 
 $campaigns = array ();
 $campaign_query = "SELECT * FROM ".TABLE_CAMPAIGNS;
-$campaign_query = xtc_db_query($campaign_query);
-while ($campaign_data = xtc_db_fetch_array($campaign_query)) {
+$campaign_query = vam_db_query($campaign_query);
+while ($campaign_data = vam_db_fetch_array($campaign_query)) {
 	$campaigns[] = array ('id' => $campaign_data['campaigns_refID'], 'text' => $campaign_data['campaigns_name']);
 }
 
 // report views (1: yearly 2: monthly 3: weekly 4: daily)
-if (($_GET['report']) && (xtc_not_null($_GET['report']))) {
+if (($_GET['report']) && (vam_not_null($_GET['report']))) {
 	$srView = $_GET['report'];
 }
 if ($srView < 1 || $srView > 4) {
@@ -56,19 +56,19 @@ if ($srView < 1 || $srView > 4) {
 // check start and end Date
 $startDate = "";
 $startDateG = 0;
-if (($_GET['startD']) && (xtc_not_null($_GET['startD']))) {
+if (($_GET['startD']) && (vam_not_null($_GET['startD']))) {
 	$sDay = $_GET['startD'];
 	$startDateG = 1;
 } else {
 	$sDay = 1;
 }
-if (($_GET['startM']) && (xtc_not_null($_GET['startM']))) {
+if (($_GET['startM']) && (vam_not_null($_GET['startM']))) {
 	$sMon = $_GET['startM'];
 	$startDateG = 1;
 } else {
 	$sMon = 1;
 }
-if (($_GET['startY']) && (xtc_not_null($_GET['startY']))) {
+if (($_GET['startY']) && (vam_not_null($_GET['startY']))) {
 	$sYear = $_GET['startY'];
 	$startDateG = 1;
 } else {
@@ -82,19 +82,19 @@ if ($startDateG) {
 
 $endDate = "";
 $endDateG = 0;
-if (($_GET['endD']) && (xtc_not_null($_GET['endD']))) {
+if (($_GET['endD']) && (vam_not_null($_GET['endD']))) {
 	$eDay = $_GET['endD'];
 	$endDateG = 1;
 } else {
 	$eDay = 1;
 }
-if (($_GET['endM']) && (xtc_not_null($_GET['endM']))) {
+if (($_GET['endM']) && (vam_not_null($_GET['endM']))) {
 	$eMon = $_GET['endM'];
 	$endDateG = 1;
 } else {
 	$eMon = 1;
 }
-if (($_GET['endY']) && (xtc_not_null($_GET['endY']))) {
+if (($_GET['endY']) && (vam_not_null($_GET['endY']))) {
 	$eYear = $_GET['endY'];
 	$endDateG = 1;
 } else {
@@ -204,10 +204,10 @@ if ($srExp < 1) {
                     </select>
                   </td>
                   <td rowspan="2" align="left" class="menuBoxHeading"> <?php echo REPORT_STATUS_FILTER; ?><br /> 
-                    <?php echo xtc_draw_pull_down_menu('status', array_merge(array(array('id' => '0', 'text' => REPORT_ALL)), $orders_statuses), $_GET['status']); ?> 
+                    <?php echo vam_draw_pull_down_menu('status', array_merge(array(array('id' => '0', 'text' => REPORT_ALL)), $orders_statuses), $_GET['status']); ?> 
                     
                     <br><?php echo REPORT_CAMPAIGN_FILTER; ?><br /> 
-<?php echo xtc_draw_pull_down_menu('campaign', array_merge(array(array('id' => '0', 'text' => REPORT_ALL)), $campaigns), $_GET['campaign']); ?> 
+<?php echo vam_draw_pull_down_menu('campaign', array_merge(array(array('id' => '0', 'text' => REPORT_ALL)), $campaigns), $_GET['campaign']); ?> 
                     
                     </td>
                   <td rowspan="2" align="left" class="menuBoxHeading"><br />

@@ -28,11 +28,11 @@
 
 require ('includes/application_top.php');
 require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
-require_once (DIR_FS_INC.'xtc_php_mail.inc.php');
-require_once (DIR_FS_INC.'xtc_add_tax.inc.php');
+require_once (DIR_FS_INC.'vam_php_mail.inc.php');
+require_once (DIR_FS_INC.'vam_add_tax.inc.php');
 require_once (DIR_FS_INC.'changedataout.inc.php');
-require_once (DIR_FS_INC.'xtc_validate_vatid_status.inc.php');
-require_once (DIR_FS_INC.'xtc_get_attributes_model.inc.php');
+require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
+require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 // initiate template engine for mail
 $smarty = new Smarty;
@@ -41,11 +41,11 @@ $currencies = new currencies();
 
 
 if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($_GET['oID'])) {
-	$oID = xtc_db_prepare_input($_GET['oID']);
+	$oID = vam_db_prepare_input($_GET['oID']);
 
-	$orders_query = xtc_db_query("select orders_id from ".TABLE_ORDERS." where orders_id = '".xtc_db_input($oID)."'");
+	$orders_query = vam_db_query("select orders_id from ".TABLE_ORDERS." where orders_id = '".vam_db_input($oID)."'");
 	$order_exists = true;
-	if (!xtc_db_num_rows($orders_query)) {
+	if (!vam_db_num_rows($orders_query)) {
 		$order_exists = false;
 		$messageStack->add(sprintf(ERROR_ORDER_DOES_NOT_EXIST, $oID), 'error');
 	}
@@ -62,29 +62,29 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($or
 
 }
 
-  $lang_query = xtc_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $order->info['language'] . "'");
-  $lang = xtc_db_fetch_array($lang_query);
+  $lang_query = vam_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $order->info['language'] . "'");
+  $lang = vam_db_fetch_array($lang_query);
   $lang=$lang['languages_id'];
 
 if (!isset($lang)) $lang=$_SESSION['languages_id'];
 $orders_statuses = array ();
 $orders_status_array = array ();
-$orders_status_query = xtc_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".$lang."'");
-while ($orders_status = xtc_db_fetch_array($orders_status_query)) {
+$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".$lang."'");
+while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
 	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
 }
 switch ($_GET['action']) {
 	case 'update_order' :
-		$oID = xtc_db_prepare_input($_GET['oID']);
-		$status = xtc_db_prepare_input($_POST['status']);
-		$comments = xtc_db_prepare_input($_POST['comments']);
+		$oID = vam_db_prepare_input($_GET['oID']);
+		$status = vam_db_prepare_input($_POST['status']);
+		$comments = vam_db_prepare_input($_POST['comments']);
 	//	$order = new order($oID);
 		$order_updated = false;
-		$check_status_query = xtc_db_query("select customers_name, customers_email_address, orders_status, date_purchased from ".TABLE_ORDERS." where orders_id = '".xtc_db_input($oID)."'");
-		$check_status = xtc_db_fetch_array($check_status_query);
+		$check_status_query = vam_db_query("select customers_name, customers_email_address, orders_status, date_purchased from ".TABLE_ORDERS." where orders_id = '".vam_db_input($oID)."'");
+		$check_status = vam_db_fetch_array($check_status_query);
 		if ($check_status['orders_status'] != $status || $comments != '') {
-			xtc_db_query("update ".TABLE_ORDERS." set orders_status = '".xtc_db_input($status)."', last_modified = now() where orders_id = '".xtc_db_input($oID)."'");
+			vam_db_query("update ".TABLE_ORDERS." set orders_status = '".vam_db_input($status)."', last_modified = now() where orders_id = '".vam_db_input($oID)."'");
 
 			$customer_notified = '0';
 			if ($_POST['notify'] == 'on') {
@@ -110,19 +110,19 @@ switch ($_GET['action']) {
 
 				$smarty->assign('NAME', $check_status['customers_name']);
 				$smarty->assign('ORDER_NR', $oID);
-				$smarty->assign('ORDER_LINK', xtc_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
-				$smarty->assign('ORDER_DATE', xtc_date_long($check_status['date_purchased']));
+				$smarty->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
+				$smarty->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
 				$smarty->assign('NOTIFY_COMMENTS', $notify_comments);
 				$smarty->assign('ORDER_STATUS', $orders_status_array[$status]);
 
 				$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.html');
 				$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.txt');
 
-				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail, $txt_mail);
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail, $txt_mail);
 				$customer_notified = '1';
 			}
 
-			xtc_db_query("insert into ".TABLE_ORDERS_STATUS_HISTORY." (orders_id, orders_status_id, date_added, customer_notified, comments) values ('".xtc_db_input($oID)."', '".xtc_db_input($status)."', now(), '".$customer_notified."', '".xtc_db_input($comments)."')");
+			vam_db_query("insert into ".TABLE_ORDERS_STATUS_HISTORY." (orders_id, orders_status_id, date_added, customer_notified, comments) values ('".vam_db_input($oID)."', '".vam_db_input($status)."', now(), '".$customer_notified."', '".vam_db_input($comments)."')");
 
 			$order_updated = true;
 		}
@@ -137,37 +137,37 @@ switch ($_GET['action']) {
 
         $changed = false;
         
-        $check_group_query = xtc_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . $status);
-        if (xtc_db_num_rows($check_group_query)) {
-           while ($groups = xtc_db_fetch_array($check_group_query)) {
+        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . $status);
+        if (vam_db_num_rows($check_group_query)) {
+           while ($groups = vam_db_fetch_array($check_group_query)) {
               // calculating total customers purchase
               // building query
-              $customer_query = xtc_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
-              $customer = xtc_db_fetch_array($customer_query);
+              $customer_query = vam_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
+              $customer = vam_db_fetch_array($customer_query);
               $customer_id = $customer['customers_id'];
-              $statuses_groups_query = xtc_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
+              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
-              $statuses = xtc_db_fetch_array($statuses_groups_query);
+              $statuses = vam_db_fetch_array($statuses_groups_query);
               $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
-              while ($statuses = xtc_db_fetch_array($statuses_groups_query)) {
+              while ($statuses = vam_db_fetch_array($statuses_groups_query)) {
                   $purchase_query .= " or o.orders_status = " . $statuses['orders_status_id'];
               }
               $purchase_query .=");";
                    
-              $total_purchase_query = xtc_db_query($purchase_query);
-              $total_purchase = xtc_db_fetch_array($total_purchase_query);
+              $total_purchase_query = vam_db_query($purchase_query);
+              $total_purchase = vam_db_fetch_array($total_purchase_query);
               $customers_total = $total_purchase['total'];
 
               // looking for current accumulated limit & discount
-              $acc_query = xtc_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id);
+              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id);
               $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, "customers_status_name");
                                                                                                                                                                                                  
               // ok, looking for available group
-              $groups_query = xtc_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount < " . $current_discount . " and customers_status_accumulated_limit > " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount < " . $current_discount . " and customers_status_accumulated_limit > " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
 
-              if (xtc_db_num_rows($groups_query)) {
+              if (vam_db_num_rows($groups_query)) {
                  // new group found
                  $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
                  $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
@@ -175,11 +175,11 @@ switch ($_GET['action']) {
                  $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
     
                  // updating customers group
-                 xtc_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
+                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
                  $changed = true;
              }
            }
-           $groups_query = xtc_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
+           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
            $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
@@ -214,46 +214,46 @@ switch ($_GET['action']) {
 				$html_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
 				$txt_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
 
-				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
 
             //email to customer            
 
 				$html_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
 				$txt_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
 
-				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
 
            }
         }
         
         // eof denuz added accumulated discount
-		xtc_redirect(xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('action')).'action=edit'));
+		vam_redirect(vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('action')).'action=edit'));
 		break;
 	case 'deleteconfirm' :
-		$oID = xtc_db_prepare_input($_GET['oID']);
+		$oID = vam_db_prepare_input($_GET['oID']);
 
-		xtc_remove_order($oID, $_POST['restock']);
+		vam_remove_order($oID, $_POST['restock']);
 
-		xtc_redirect(xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action'))));
+		vam_redirect(vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action'))));
 		break;
 		// BMC Delete CC info Start
 		// Remove CVV Number
 	case 'deleteccinfo' :
-		$oID = xtc_db_prepare_input($_GET['oID']);
+		$oID = vam_db_prepare_input($_GET['oID']);
 
-		xtc_db_query("update ".TABLE_ORDERS." set cc_cvv = null where orders_id = '".xtc_db_input($oID)."'");
-		xtc_db_query("update ".TABLE_ORDERS." set cc_number = '0000000000000000' where orders_id = '".xtc_db_input($oID)."'");
-		xtc_db_query("update ".TABLE_ORDERS." set cc_expires = null where orders_id = '".xtc_db_input($oID)."'");
-		xtc_db_query("update ".TABLE_ORDERS." set cc_start = null where orders_id = '".xtc_db_input($oID)."'");
-		xtc_db_query("update ".TABLE_ORDERS." set cc_issue = null where orders_id = '".xtc_db_input($oID)."'");
+		vam_db_query("update ".TABLE_ORDERS." set cc_cvv = null where orders_id = '".vam_db_input($oID)."'");
+		vam_db_query("update ".TABLE_ORDERS." set cc_number = '0000000000000000' where orders_id = '".vam_db_input($oID)."'");
+		vam_db_query("update ".TABLE_ORDERS." set cc_expires = null where orders_id = '".vam_db_input($oID)."'");
+		vam_db_query("update ".TABLE_ORDERS." set cc_start = null where orders_id = '".vam_db_input($oID)."'");
+		vam_db_query("update ".TABLE_ORDERS." set cc_issue = null where orders_id = '".vam_db_input($oID)."'");
 
-		xtc_redirect(xtc_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=edit'));
+		vam_redirect(vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=edit'));
 		break;
 
 	case 'afterbuy_send' :
-		$oID = xtc_db_prepare_input($_GET['oID']);
+		$oID = vam_db_prepare_input($_GET['oID']);
 		require_once (DIR_FS_CATALOG.'includes/classes/afterbuy.php');
-		$aBUY = new xtc_afterbuy_functions($oID);
+		$aBUY = new vam_afterbuy_functions($oID);
 		if ($aBUY->order_send())
 			$aBUY->process_order();
 
@@ -300,9 +300,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 ?>
       <tr>
       <td width="100%">
- <?php echo '<a class="button" href="' . xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?>
+ <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?>
  <!-- Bestellbearbeitung Anfang -->
-   <a class="button" href="<?php echo xtc_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><?php echo BUTTON_EDIT ?></a>
+   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><?php echo BUTTON_EDIT ?></a>
 <!-- Bestellbearbeitung Ende -->
  </td>
 
@@ -310,7 +310,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       <tr>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
           <tr>
-            <td colspan="3"><?php echo xtc_draw_separator(); ?></td>
+            <td colspan="3"><?php echo vam_draw_separator(); ?></td>
           </tr>
           <tr>
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
@@ -322,10 +322,10 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
             <?php } ?>
               <tr>
                 <td class="main" valign="top"><b><?php echo ENTRY_CUSTOMER; ?></b></td>
-                <td class="main"><?php echo xtc_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
+                <td class="main"><?php echo vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
               </tr>
               <tr>
-                <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
               </tr>
 
               <tr>
@@ -333,10 +333,10 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <?php
 
 	// memoquery
-	$memo_query = xtc_db_query("SELECT count(*) as count FROM ".TABLE_CUSTOMERS_MEMO." where customers_id='".$order->customer['ID']."'");
-	$memo_count = xtc_db_fetch_array($memo_query);
+	$memo_query = vam_db_query("SELECT count(*) as count FROM ".TABLE_CUSTOMERS_MEMO." where customers_id='".$order->customer['ID']."'");
+	$memo_count = vam_db_fetch_array($memo_query);
 ?>
-                <td class="main"><b><?php echo $memo_count['count'].'</b>'; ?>  <a style="cursor:hand" onClick="javascript:window.open('<?php echo xtc_href_link(FILENAME_POPUP_MEMO,'ID='.$order->customer['ID']); ?>', 'popup', 'scrollbars=yes, width=500, height=500')">(<?php echo DISPLAY_MEMOS; ?>)</a></td>
+                <td class="main"><b><?php echo $memo_count['count'].'</b>'; ?>  <a style="cursor:hand" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_POPUP_MEMO,'ID='.$order->customer['ID']); ?>', 'popup', 'scrollbars=yes, width=500, height=500')">(<?php echo DISPLAY_MEMOS; ?>)</a></td>
               </tr>
               <tr>
                 <td class="main"><b><?php echo ENTRY_TELEPHONE; ?></b></td>
@@ -366,20 +366,20 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
               <tr>
                 <td class="main" valign="top"><b><?php echo ENTRY_SHIPPING_ADDRESS; ?></b></td>
-                <td class="main"><?php echo xtc_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
+                <td class="main"><?php echo vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
               </tr>
             </table></td>
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
               <tr>
                 <td class="main" valign="top"><b><?php echo ENTRY_BILLING_ADDRESS; ?></b></td>
-                <td class="main"><?php echo xtc_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
+                <td class="main"><?php echo vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
               </tr>
             </table></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="2">
@@ -396,7 +396,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	if ((($order->info['cc_type']) || ($order->info['cc_owner']) || ($order->info['cc_number']))) {
 ?>
           <tr>
-            <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo ENTRY_CREDIT_CARD_TYPE; ?></td>
@@ -434,12 +434,12 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	}
 
 	// begin modification for banktransfer
-	$banktransfer_query = xtc_db_query("select banktransfer_prz, banktransfer_status, banktransfer_owner, banktransfer_number, banktransfer_bankname, banktransfer_blz, banktransfer_fax from " . TABLE_BANKTRANSFER . " where orders_id = '".xtc_db_input($_GET['oID'])."'");
-	$banktransfer = xtc_db_fetch_array($banktransfer_query);
+	$banktransfer_query = vam_db_query("select banktransfer_prz, banktransfer_status, banktransfer_owner, banktransfer_number, banktransfer_bankname, banktransfer_blz, banktransfer_fax from " . TABLE_BANKTRANSFER . " where orders_id = '".vam_db_input($_GET['oID'])."'");
+	$banktransfer = vam_db_fetch_array($banktransfer_query);
 	if (($banktransfer['banktransfer_bankname']) || ($banktransfer['banktransfer_blz']) || ($banktransfer['banktransfer_number'])) {
 ?>
           <tr>
-            <td colspan="2"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_BANK_NAME; ?></td>
@@ -525,7 +525,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -579,7 +579,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 		if (sizeof($order->products[$i]['attributes']) > 0) {
 			for ($j = 0, $k = sizeof($order->products[$i]['attributes']); $j < $k; $j ++) {
 
-				$model = xtc_get_attributes_model($order->products[$i]['id'], $order->products[$i]['attributes'][$j]['value'],$order->products[$i]['attributes'][$j]['option']);
+				$model = vam_get_attributes_model($order->products[$i]['id'], $order->products[$i]['attributes'][$j]['value'],$order->products[$i]['attributes'][$j]['option']);
 				if ($model != '') {
 					echo $model.'<br />';
 				} else {
@@ -592,7 +592,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
 		if ($order->products[$i]['allow_tax'] == 1) {
 			echo '<td class="dataTableContent" align="right" valign="top">';
-			echo xtc_display_tax_value($order->products[$i]['tax']).'%';
+			echo vam_display_tax_value($order->products[$i]['tax']).'%';
 			echo '</td>'."\n";
 			echo '<td class="dataTableContent" align="right" valign="top"><b>';
 
@@ -617,7 +617,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="main"><table border="1" cellspacing="0" cellpadding="5">
@@ -629,14 +629,14 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
           </tr>
 <?php
 
-	$orders_history_query = xtc_db_query("select orders_status_id, date_added, customer_notified, comments from ".TABLE_ORDERS_STATUS_HISTORY." where orders_id = '".xtc_db_input($oID)."' order by date_added");
-	if (xtc_db_num_rows($orders_history_query)) {
-		while ($orders_history = xtc_db_fetch_array($orders_history_query)) {
-			echo '          <tr>'."\n".'            <td class="smallText" align="center">'.xtc_datetime_short($orders_history['date_added']).'</td>'."\n".'            <td class="smallText" align="center">';
+	$orders_history_query = vam_db_query("select orders_status_id, date_added, customer_notified, comments from ".TABLE_ORDERS_STATUS_HISTORY." where orders_id = '".vam_db_input($oID)."' order by date_added");
+	if (vam_db_num_rows($orders_history_query)) {
+		while ($orders_history = vam_db_fetch_array($orders_history_query)) {
+			echo '          <tr>'."\n".'            <td class="smallText" align="center">'.vam_datetime_short($orders_history['date_added']).'</td>'."\n".'            <td class="smallText" align="center">';
 			if ($orders_history['customer_notified'] == '1') {
-				echo xtc_image(DIR_WS_ICONS.'tick.gif', ICON_TICK)."</td>\n";
+				echo vam_image(DIR_WS_ICONS.'tick.gif', ICON_TICK)."</td>\n";
 			} else {
-				echo xtc_image(DIR_WS_ICONS.'cross.gif', ICON_CROSS)."</td>\n";
+				echo vam_image(DIR_WS_ICONS.'cross.gif', ICON_CROSS)."</td>\n";
 			}
 			echo '            <td class="smallText">';
 			if($orders_history['orders_status_id']!='0') {
@@ -644,7 +644,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 			}else{
 				echo '<font color="#FF0000">'.TEXT_VALIDATING.'</font>';
 			}
-			echo '</td>'."\n".'            <td class="smallText">'.nl2br(xtc_db_output($orders_history['comments'])).'&nbsp;</td>'."\n".'          </tr>'."\n";
+			echo '</td>'."\n".'            <td class="smallText">'.nl2br(vam_db_output($orders_history['comments'])).'&nbsp;</td>'."\n".'          </tr>'."\n";
 		}
 	} else {
 		echo '          <tr>'."\n".'            <td class="smallText" colspan="5">'.TEXT_NO_ORDER_HISTORY.'</td>'."\n".'          </tr>'."\n";
@@ -656,24 +656,24 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         <td class="main"><br /><b><?php echo TABLE_HEADING_COMMENTS; ?></b></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
       </tr>
-      <tr><?php echo xtc_draw_form('status', FILENAME_ORDERS, xtc_get_all_get_params(array('action')) . 'action=update_order'); ?>
-        <td class="main"><?php echo xtc_draw_textarea_field('comments', 'soft', '60', '5', $order->info['comments']); ?></td>
+      <tr><?php echo vam_draw_form('status', FILENAME_ORDERS, vam_get_all_get_params(array('action')) . 'action=update_order'); ?>
+        <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '60', '5', $order->info['comments']); ?></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="2">
           <tr>
             <td><table border="0" cellspacing="0" cellpadding="2">
               <tr>
-                <td class="main"><b><?php echo ENTRY_STATUS; ?></b> <?php echo xtc_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
+                <td class="main"><b><?php echo ENTRY_STATUS; ?></b> <?php echo vam_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status']); ?></td>
               </tr>
               <tr>
-                <td class="main"><b><?php echo ENTRY_NOTIFY_CUSTOMER; ?></b> <?php echo xtc_draw_checkbox_field('notify', '', true); ?></td>
-                <td class="main"><b><?php echo ENTRY_NOTIFY_COMMENTS; ?></b> <?php echo xtc_draw_checkbox_field('notify_comments', '', true); ?></td>
+                <td class="main"><b><?php echo ENTRY_NOTIFY_CUSTOMER; ?></b> <?php echo vam_draw_checkbox_field('notify', '', true); ?></td>
+                <td class="main"><b><?php echo ENTRY_NOTIFY_COMMENTS; ?></b> <?php echo vam_draw_checkbox_field('notify_comments', '', true); ?></td>
               </tr>
             </table></td>
             <td valign="top"><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>"></td>
@@ -684,14 +684,14 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         <td colspan="2" align="right">
 <?php
 	if (ACTIVATE_GIFT_SYSTEM == 'true') {
-		echo '<a class="button" href="'.xtc_href_link(FILENAME_GV_MAIL, xtc_get_all_get_params(array ('cID', 'action')).'cID='.$order->customer['ID']).'">'.BUTTON_SEND_COUPON.'</a>';
+		echo '<a class="button" href="'.vam_href_link(FILENAME_GV_MAIL, vam_get_all_get_params(array ('cID', 'action')).'cID='.$order->customer['ID']).'">'.BUTTON_SEND_COUPON.'</a>';
 	}
 ?>
-   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo xtc_href_link(FILENAME_PRINT_ORDER,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_INVOICE; ?></a>
-   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo xtc_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_PACKINGSLIP; ?></a>
+   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_ORDER,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_INVOICE; ?></a>
+   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_PACKINGSLIP; ?></a>
 	<!-- BMC Delete CC Info -->
-	<a class="button" href="<?php echo xtc_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=deleteccinfo').'">'.BUTTON_REMOVE_CC_INFO;?></a>&nbsp;
-   <a class="button" href="<?php echo xtc_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'">'.BUTTON_BACK;?></a>
+	<a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=deleteccinfo').'">'.BUTTON_REMOVE_CC_INFO;?></a>&nbsp;
+   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'">'.BUTTON_BACK;?></a>
        </td>
       </tr>
 <?php
@@ -710,15 +710,15 @@ elseif ($_GET['action'] == 'custom_action') {
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td colspan="2" class="main" align="right">
-              <?php echo xtc_draw_form('orders', FILENAME_ORDERS, '', 'get'); ?>
-                <?php echo HEADING_TITLE_SEARCH . ' ' . xtc_draw_input_field('oID', '', 'size="12"') . xtc_draw_hidden_field('action', 'edit').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
+              <?php echo vam_draw_form('orders', FILENAME_ORDERS, '', 'get'); ?>
+                <?php echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('oID', '', 'size="12"') . vam_draw_hidden_field('action', 'edit').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form>
 </td>
   </tr>
   <tr>
     <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
-    <td class="main" valign="top" align="right"><?php echo xtc_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
-                <?php echo HEADING_TITLE_STATUS . ' ' . xtc_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').xtc_draw_hidden_field(xtc_session_name(), xtc_session_id()); ?>
+    <td class="main" valign="top" align="right"><?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
+                <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form></td>
   </tr>
 </table>
@@ -746,35 +746,35 @@ elseif ($_GET['action'] == 'custom_action') {
 <?php
 
 	if ($_GET['cID']) {
-		$cID = xtc_db_prepare_input($_GET['cID']);
-		$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".xtc_db_input($cID)."' and (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by orders_id DESC";
+		$cID = vam_db_prepare_input($_GET['cID']);
+		$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".vam_db_input($cID)."' and (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by orders_id DESC";
 	}
 	elseif ($_GET['status']=='0') {
 			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id) where o.orders_status = '0' and ot.class = 'ot_total' order by o.orders_id DESC";
 	}
 	elseif ($_GET['status']) {
-			$status = xtc_db_prepare_input($_GET['status']);
-			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and s.orders_status_id = '".xtc_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
+			$status = vam_db_prepare_input($_GET['status']);
+			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and s.orders_status_id = '".vam_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
 	} else {
 		$orders_query_raw = "select o.orders_id, o.orders_status, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by o.orders_id DESC";
 	}
 	$orders_split = new splitPageResults($_GET['page'], '20', $orders_query_raw, $orders_query_numrows);
-	$orders_query = xtc_db_query($orders_query_raw);
-	while ($orders = xtc_db_fetch_array($orders_query)) {
+	$orders_query = vam_db_query($orders_query_raw);
+	while ($orders = vam_db_fetch_array($orders_query)) {
 		if (((!$_GET['oID']) || ($_GET['oID'] == $orders['orders_id'])) && (!$oInfo)) {
 			$oInfo = new objectInfo($orders);
 		}
 
 		if ((is_object($oInfo)) && ($orders['orders_id'] == $oInfo->orders_id)) {
-			echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\''.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'\'">'."\n";
+			echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\''.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'\'">'."\n";
 		} else {
-			echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\''.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID')).'oID='.$orders['orders_id']).'\'">'."\n";
+			echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\''.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID')).'oID='.$orders['orders_id']).'\'">'."\n";
 		}
 ?>
-                <td class="dataTableContent"><?php echo '<a href="' . xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit') . '">' . xtc_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;' . $orders['customers_name']; ?></td>
+                <td class="dataTableContent"><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit') . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;' . $orders['customers_name']; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $orders['orders_id']; ?></td>
                 <td class="dataTableContent" align="right"><?php echo strip_tags($orders['order_total']); ?></td>
-                <td class="dataTableContent" align="center"><?php echo xtc_datetime_short($orders['date_purchased']); ?></td>
+                <td class="dataTableContent" align="center"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
                 <td class="dataTableContent" align="right"><?php if($orders['orders_status']!='0') { echo $orders['orders_status_name']; }else{ echo '<font color="#FF0000">'.TEXT_VALIDATING.'</font>';}?></td>
                 <?php if (AFTERBUY_ACTIVATED=='true') { ?>
                 <td class="dataTableContent" align="right"><?php
@@ -786,7 +786,7 @@ elseif ($_GET['action'] == 'custom_action') {
 		}
 ?></td>
                 <?php } ?>
-                <td class="dataTableContent" align="right"><?php if ( (is_object($oInfo)) && ($orders['orders_id'] == $oInfo->orders_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('oID')) . 'oID=' . $orders['orders_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+                <td class="dataTableContent" align="right"><?php if ( (is_object($oInfo)) && ($orders['orders_id'] == $oInfo->orders_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID')) . 'oID=' . $orders['orders_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
 
@@ -796,7 +796,7 @@ elseif ($_GET['action'] == 'custom_action') {
                 <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $orders_split->display_count($orders_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_ORDERS); ?></td>
-                    <td class="smallText" align="right"><?php echo $orders_split->display_links($orders_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page'], xtc_get_all_get_params(array('page', 'oID', 'action'))); ?></td>
+                    <td class="smallText" align="right"><?php echo $orders_split->display_links($orders_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'oID', 'action'))); ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -809,18 +809,18 @@ elseif ($_GET['action'] == 'custom_action') {
 		case 'delete' :
 			$heading[] = array ('text' => '<b>'.TEXT_INFO_HEADING_DELETE_ORDER.'</b>');
 
-			$contents = array ('form' => xtc_draw_form('orders', FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=deleteconfirm'));
+			$contents = array ('form' => vam_draw_form('orders', FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=deleteconfirm'));
 			$contents[] = array ('text' => TEXT_INFO_DELETE_INTRO.'<br /><br /><b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
-			$contents[] = array ('text' => '<br />'.xtc_draw_checkbox_field('restock').' '.TEXT_INFO_RESTOCK_PRODUCT_QUANTITY);
-			$contents[] = array ('align' => 'center', 'text' => '<br /><input type="submit" class="button" value="'. BUTTON_DELETE .'"><a class="button" href="'.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'">' . BUTTON_CANCEL . '</a>');
+			$contents[] = array ('text' => '<br />'.vam_draw_checkbox_field('restock').' '.TEXT_INFO_RESTOCK_PRODUCT_QUANTITY);
+			$contents[] = array ('align' => 'center', 'text' => '<br /><input type="submit" class="button" value="'. BUTTON_DELETE .'"><a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'">' . BUTTON_CANCEL . '</a>');
 			break;
 		default :
 			if (is_object($oInfo)) {
-				$heading[] = array ('text' => '<b>['.$oInfo->orders_id.']&nbsp;&nbsp;'.xtc_datetime_short($oInfo->date_purchased).'</b>');
+				$heading[] = array ('text' => '<b>['.$oInfo->orders_id.']&nbsp;&nbsp;'.vam_datetime_short($oInfo->date_purchased).'</b>');
 
-				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'">'.BUTTON_EDIT.'</a> <a class="button" href="'.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'">'.BUTTON_DELETE.'</a>');
+				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'">'.BUTTON_EDIT.'</a> <a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'">'.BUTTON_DELETE.'</a>');
 				if (AFTERBUY_ACTIVATED == 'true') {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'">'.BUTTON_AFTERBUY_SEND.'</a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'">'.BUTTON_AFTERBUY_SEND.'</a>');
 
 				}
 				//$contents[] = array('align' => 'center', 'text' => '');
@@ -831,9 +831,9 @@ elseif ($_GET['action'] == 'custom_action') {
   $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
 
 
-				$contents[] = array ('text' => '<br />'.TEXT_DATE_ORDER_CREATED.' '.xtc_date_short($oInfo->date_purchased));
-				if (xtc_not_null($oInfo->last_modified))
-					$contents[] = array ('text' => TEXT_DATE_ORDER_LAST_MODIFIED.' '.xtc_date_short($oInfo->last_modified));
+				$contents[] = array ('text' => '<br />'.TEXT_DATE_ORDER_CREATED.' '.vam_date_short($oInfo->date_purchased));
+				if (vam_not_null($oInfo->last_modified))
+					$contents[] = array ('text' => TEXT_DATE_ORDER_LAST_MODIFIED.' '.vam_date_short($oInfo->last_modified));
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$order_payment_text);
 				// elari added to display product list for selected order
 				$order = new order($oInfo->orders_id);
@@ -852,7 +852,7 @@ elseif ($_GET['action'] == 'custom_action') {
 			break;
 	}
 
-	if ((xtc_not_null($heading)) && (xtc_not_null($contents))) {
+	if ((vam_not_null($heading)) && (vam_not_null($contents))) {
 		echo '            <td width="25%" valign="top">'."\n";
 
 		$box = new box;

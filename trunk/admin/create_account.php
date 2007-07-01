@@ -23,58 +23,58 @@
    --------------------------------------------------------------*/
 
 require ('includes/application_top.php');
-require_once (DIR_FS_INC.'xtc_encrypt_password.inc.php');
+require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
-require_once (DIR_FS_INC.'xtc_php_mail.inc.php');
-require_once (DIR_FS_INC.'xtc_create_password.inc.php');
-require_once (DIR_FS_INC.'xtc_get_geo_zone_code.inc.php');
+require_once (DIR_FS_INC.'vam_php_mail.inc.php');
+require_once (DIR_FS_INC.'vam_create_password.inc.php');
+require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
 
 
 // initiate template engine for mail
 $smarty = new Smarty;
 
-$customers_statuses_array = xtc_get_customers_statuses();
+$customers_statuses_array = vam_get_customers_statuses();
 if ($customers_password == '') {
-	$customers_password_encrypted =  xtc_RandomString(8);
-	$customers_password = xtc_encrypt_password($customers_password_encrypted);
+	$customers_password_encrypted =  vam_RandomString(8);
+	$customers_password = vam_encrypt_password($customers_password_encrypted);
 }
 if ($_GET['action'] == 'edit') {
-	$customers_firstname = xtc_db_prepare_input($_POST['customers_firstname']);
-	$customers_cid = xtc_db_prepare_input($_POST['csID']);
-	$customers_vat_id = xtc_db_prepare_input($_POST['customers_vat_id']);
-	$customers_vat_id_status = xtc_db_prepare_input($_POST['customers_vat_id_status']);
-	$customers_lastname = xtc_db_prepare_input($_POST['customers_lastname']);
-	$customers_email_address = xtc_db_prepare_input($_POST['customers_email_address']);
-	$customers_telephone = xtc_db_prepare_input($_POST['customers_telephone']);
-	$customers_fax = xtc_db_prepare_input($_POST['customers_fax']);
-	$customers_status_c = xtc_db_prepare_input($_POST['status']);
+	$customers_firstname = vam_db_prepare_input($_POST['customers_firstname']);
+	$customers_cid = vam_db_prepare_input($_POST['csID']);
+	$customers_vat_id = vam_db_prepare_input($_POST['customers_vat_id']);
+	$customers_vat_id_status = vam_db_prepare_input($_POST['customers_vat_id_status']);
+	$customers_lastname = vam_db_prepare_input($_POST['customers_lastname']);
+	$customers_email_address = vam_db_prepare_input($_POST['customers_email_address']);
+	$customers_telephone = vam_db_prepare_input($_POST['customers_telephone']);
+	$customers_fax = vam_db_prepare_input($_POST['customers_fax']);
+	$customers_status_c = vam_db_prepare_input($_POST['status']);
 
-	$customers_gender = xtc_db_prepare_input($_POST['customers_gender']);
-	$customers_dob = xtc_db_prepare_input($_POST['customers_dob']);
+	$customers_gender = vam_db_prepare_input($_POST['customers_gender']);
+	$customers_dob = vam_db_prepare_input($_POST['customers_dob']);
 
-	$default_address_id = xtc_db_prepare_input($_POST['default_address_id']);
-	$entry_street_address = xtc_db_prepare_input($_POST['entry_street_address']);
-	$entry_suburb = xtc_db_prepare_input($_POST['entry_suburb']);
-	$entry_postcode = xtc_db_prepare_input($_POST['entry_postcode']);
-	$entry_city = xtc_db_prepare_input($_POST['entry_city']);
-	$entry_country_id = xtc_db_prepare_input($_POST['entry_country_id']);
+	$default_address_id = vam_db_prepare_input($_POST['default_address_id']);
+	$entry_street_address = vam_db_prepare_input($_POST['entry_street_address']);
+	$entry_suburb = vam_db_prepare_input($_POST['entry_suburb']);
+	$entry_postcode = vam_db_prepare_input($_POST['entry_postcode']);
+	$entry_city = vam_db_prepare_input($_POST['entry_city']);
+	$entry_country_id = vam_db_prepare_input($_POST['entry_country_id']);
 
-	$entry_company = xtc_db_prepare_input($_POST['entry_company']);
-	$entry_state = xtc_db_prepare_input($_POST['entry_state']);
-	$entry_zone_id = xtc_db_prepare_input($_POST['entry_zone_id']);
+	$entry_company = vam_db_prepare_input($_POST['entry_company']);
+	$entry_state = vam_db_prepare_input($_POST['entry_state']);
+	$entry_zone_id = vam_db_prepare_input($_POST['entry_zone_id']);
 
-	$customers_send_mail = xtc_db_prepare_input($_POST['customers_mail']);
-	$customers_password_encrypted = xtc_db_prepare_input($_POST['entry_password']);
-	$customers_password = xtc_encrypt_password($customers_password_encrypted);
+	$customers_send_mail = vam_db_prepare_input($_POST['customers_mail']);
+	$customers_password_encrypted = vam_db_prepare_input($_POST['entry_password']);
+	$customers_password = vam_encrypt_password($customers_password_encrypted);
 	
-	$customers_mail_comments = xtc_db_prepare_input($_POST['mail_comments']);
+	$customers_mail_comments = vam_db_prepare_input($_POST['mail_comments']);
 
-	$payment_unallowed = xtc_db_prepare_input($_POST['payment_unallowed']);
-	$shipping_unallowed = xtc_db_prepare_input($_POST['shipping_unallowed']);
+	$payment_unallowed = vam_db_prepare_input($_POST['payment_unallowed']);
+	$shipping_unallowed = vam_db_prepare_input($_POST['shipping_unallowed']);
 
 	if ($customers_password == '') {
-		$customers_password_encrypted =  xtc_RandomString(8);
-		$customers_password = xtc_encrypt_password($customers_password_encrypted);
+		$customers_password_encrypted =  vam_RandomString(8);
+		$customers_password = vam_encrypt_password($customers_password_encrypted);
 	}
 	$error = false; // reset error flag
 
@@ -116,7 +116,7 @@ if ($_GET['action'] == 'edit') {
 	}
 
 	if (ACCOUNT_DOB == 'true') {
-		if (checkdate(substr(xtc_date_raw($customers_dob), 4, 2), substr(xtc_date_raw($customers_dob), 6, 2), substr(xtc_date_raw($customers_dob), 0, 4))) {
+		if (checkdate(substr(vam_date_raw($customers_dob), 4, 2), substr(vam_date_raw($customers_dob), 6, 2), substr(vam_date_raw($customers_dob), 0, 4))) {
 			$entry_date_of_birth_error = false;
 		} else {
 			$error = true;
@@ -125,7 +125,7 @@ if ($_GET['action'] == 'edit') {
 	}
 
 	// Vat Check
-	if (xtc_get_geo_zone_code($entry_country_id) != '6') {
+	if (vam_get_geo_zone_code($entry_country_id) != '6') {
 
 		if ($customers_vat_id != '') {
 
@@ -168,7 +168,7 @@ if ($_GET['action'] == 'edit') {
 	// Vat Check
 
 // New VAT Check
-	if (xtc_get_geo_zone_code($entry_country_id) != '6') {
+	if (vam_get_geo_zone_code($entry_country_id) != '6') {
 	require_once(DIR_FS_CATALOG.DIR_WS_CLASSES.'vat_validation.php');
 	$vatID = new vat_validation($customers_vat_id, '', '', $entry_country_id);
 
@@ -190,7 +190,7 @@ if ($_GET['action'] == 'edit') {
 		$entry_email_address_error = false;
 	}
 
-	if (!xtc_validate_email($customers_email_address)) {
+	if (!vam_validate_email($customers_email_address)) {
 		$error = true;
 		$entry_email_address_check_error = true;
 	} else {
@@ -231,18 +231,18 @@ if ($_GET['action'] == 'edit') {
 		} else {
 			$zone_id = 0;
 			$entry_state_error = false;
-			$check_query = xtc_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".xtc_db_input($entry_country_id)."'");
-			$check_value = xtc_db_fetch_array($check_query);
+			$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."'");
+			$check_value = vam_db_fetch_array($check_query);
 			$entry_state_has_zones = ($check_value['total'] > 0);
 			if ($entry_state_has_zones == true) {
-				$zone_query = xtc_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".xtc_db_input($entry_country_id)."' and zone_name = '".xtc_db_input($entry_state)."'");
-				if (xtc_db_num_rows($zone_query) == 1) {
-					$zone_values = xtc_db_fetch_array($zone_query);
+				$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."' and zone_name = '".vam_db_input($entry_state)."'");
+				if (vam_db_num_rows($zone_query) == 1) {
+					$zone_values = vam_db_fetch_array($zone_query);
 					$entry_zone_id = $zone_values['zone_id'];
 				} else {
-					$zone_query = xtc_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".xtc_db_input($entry_country)."' and zone_code = '".xtc_db_input($entry_state)."'");
-					if (xtc_db_num_rows($zone_query) >= 1) {
-						$zone_values = xtc_db_fetch_array($zone_query);
+					$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country)."' and zone_code = '".vam_db_input($entry_state)."'");
+					if (vam_db_num_rows($zone_query) >= 1) {
+						$zone_values = vam_db_fetch_array($zone_query);
 						$zone_id = $zone_values['zone_id'];
 					} else {
 						$error = true;
@@ -265,8 +265,8 @@ if ($_GET['action'] == 'edit') {
 		$entry_telephone_error = false;
 	}
 
-	$check_email = xtc_db_query("select customers_email_address from ".TABLE_CUSTOMERS." where customers_email_address = '".xtc_db_input($customers_email_address)."' and customers_id <> '".xtc_db_input($customers_id)."'");
-	if (xtc_db_num_rows($check_email)) {
+	$check_email = vam_db_query("select customers_email_address from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($customers_email_address)."' and customers_id <> '".vam_db_input($customers_id)."'");
+	if (vam_db_num_rows($check_email)) {
 		$error = true;
 		$entry_email_address_exists = true;
 	} else {
@@ -279,11 +279,11 @@ if ($_GET['action'] == 'edit') {
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $customers_gender;
 		if (ACCOUNT_DOB == 'true')
-			$sql_data_array['customers_dob'] = xtc_date_raw($customers_dob);
+			$sql_data_array['customers_dob'] = vam_date_raw($customers_dob);
 
-		xtc_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+		vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
-		$cc_id = xtc_db_insert_id();
+		$cc_id = vam_db_insert_id();
 
 		$sql_data_array = array ('customers_id' => $cc_id, 'entry_firstname' => $customers_firstname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => $entry_country_id,'address_date_added' => 'now()','address_last_modified' => 'now()');
 
@@ -303,16 +303,16 @@ if ($_GET['action'] == 'edit') {
 			}
 		}
 
-		xtc_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+		vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-		$address_id = xtc_db_insert_id();
+		$address_id = vam_db_insert_id();
 
-		xtc_db_query("update ".TABLE_CUSTOMERS." set customers_default_address_id = '".$address_id."' where customers_id = '".$cc_id."'");
+		vam_db_query("update ".TABLE_CUSTOMERS." set customers_default_address_id = '".$address_id."' where customers_id = '".$cc_id."'");
 
-		xtc_db_query("insert into ".TABLE_CUSTOMERS_INFO." (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('".$cc_id."', '0', now())");
+		vam_db_query("insert into ".TABLE_CUSTOMERS_INFO." (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('".$cc_id."', '0', now())");
 		// Create insert into admin access table if admin is created.
 		if ($customers_status_c == '0') {
-			xtc_db_query("INSERT into ".TABLE_ADMIN_ACCESS." (customers_id,start) VALUES ('".$cc_id."','1')");
+			vam_db_query("INSERT into ".TABLE_ADMIN_ACCESS." (customers_id,start) VALUES ('".$cc_id."','1')");
 		}
 
 		// Create eMail
@@ -338,9 +338,9 @@ if ($_GET['action'] == 'edit') {
 			$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.html');
 			$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.txt');
 
-			xtc_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $customers_email_address, $customers_lastname.' '.$customers_firstname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+			vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $customers_email_address, $customers_lastname.' '.$customers_firstname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
 		}
-		xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS, 'cID='.$cc_id, 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID='.$cc_id, 'SSL'));
 	}
 }
 ?>
@@ -372,7 +372,7 @@ if ($_GET['action'] == 'edit') {
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
-      <tr><?php echo xtc_draw_form('customers', FILENAME_CREATE_ACCOUNT, xtc_get_all_get_params(array('action')) . 'action=edit', 'post', 'onSubmit="return check_form();"') . xtc_draw_hidden_field('default_address_id', $customers_default_address_id); ?>
+      <tr><?php echo vam_draw_form('customers', FILENAME_CREATE_ACCOUNT, vam_get_all_get_params(array('action')) . 'action=edit', 'post', 'onSubmit="return check_form();"') . vam_draw_hidden_field('default_address_id', $customers_default_address_id); ?>
         <td class="formAreaTitle"><?php echo CATEGORY_PERSONAL; ?></td>
       </tr>
       <tr>
@@ -387,13 +387,13 @@ if (ACCOUNT_GENDER == 'true') {
 
 	if ($error == true) {
 		if ($entry_gender_error == true) {
-			echo xtc_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE.'&nbsp;'.ENTRY_GENDER_ERROR;
+			echo vam_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE.'&nbsp;'.ENTRY_GENDER_ERROR;
 		} else {
 			echo ($customers_gender == 'm') ? MALE : FEMALE;
-			echo xtc_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE;
+			echo vam_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE;
 		}
 	} else {
-		echo xtc_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE;
+		echo vam_draw_radio_field('customers_gender', 'm', false, $customers_gender).'&nbsp;&nbsp;'.MALE.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_gender', 'f', false, $customers_gender).'&nbsp;&nbsp;'.FEMALE;
 	}
 ?></td>
           </tr>
@@ -406,7 +406,7 @@ if (ACCOUNT_GENDER == 'true') {
             <td class="main"><?php
 
 
-echo xtc_draw_input_field('csID', $customers_cid, 'maxlength="32"');
+echo vam_draw_input_field('csID', $customers_cid, 'maxlength="32"');
 ?></td>
           </tr>
           <tr>
@@ -415,12 +415,12 @@ echo xtc_draw_input_field('csID', $customers_cid, 'maxlength="32"');
 
 if ($error == true) {
 	if ($entry_firstname_error == true) {
-		echo xtc_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"').'&nbsp;'.ENTRY_FIRST_NAME_ERROR;
+		echo vam_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"').'&nbsp;'.ENTRY_FIRST_NAME_ERROR;
 	} else {
-		echo xtc_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"');
+		echo vam_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"');
 	}
 } else {
-	echo xtc_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"');
+	echo vam_draw_input_field('customers_firstname', $customers_firstname, 'maxlength="32"');
 }
 ?></td>
           </tr>
@@ -430,12 +430,12 @@ if ($error == true) {
 
 if ($error == true) {
 	if ($entry_lastname_error == true) {
-		echo xtc_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"').'&nbsp;'.ENTRY_LAST_NAME_ERROR;
+		echo vam_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"').'&nbsp;'.ENTRY_LAST_NAME_ERROR;
 	} else {
-		echo xtc_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"');
+		echo vam_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"');
 	}
 } else {
-	echo xtc_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"');
+	echo vam_draw_input_field('customers_lastname', $customers_lastname, 'maxlength="32"');
 }
 ?></td>
           </tr>
@@ -449,12 +449,12 @@ if (ACCOUNT_DOB == 'true') {
 
 	if ($error == true) {
 		if ($entry_date_of_birth_error == true) {
-			echo xtc_draw_input_field('customers_dob', xtc_date_short($customers_dob), 'maxlength="10"').'&nbsp;'.ENTRY_DATE_OF_BIRTH_ERROR;
+			echo vam_draw_input_field('customers_dob', vam_date_short($customers_dob), 'maxlength="10"').'&nbsp;'.ENTRY_DATE_OF_BIRTH_ERROR;
 		} else {
-			echo xtc_draw_input_field('customers_dob', xtc_date_short($customers_dob), 'maxlength="10"');
+			echo vam_draw_input_field('customers_dob', vam_date_short($customers_dob), 'maxlength="10"');
 		}
 	} else {
-		echo xtc_draw_input_field('customers_dob', xtc_date_short($customers_dob), 'maxlength="10"');
+		echo vam_draw_input_field('customers_dob', vam_date_short($customers_dob), 'maxlength="10"');
 	}
 ?></td>
           </tr>
@@ -468,18 +468,18 @@ if (ACCOUNT_DOB == 'true') {
 
 if ($error == true) {
 	if ($entry_email_address_error == true) {
-		echo xtc_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_ERROR;
+		echo vam_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_ERROR;
 	}
 	elseif ($entry_email_address_check_error == true) {
-		echo xtc_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_CHECK_ERROR;
+		echo vam_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_CHECK_ERROR;
 	}
 	elseif ($entry_email_address_exists == true) {
-		echo xtc_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_ERROR_EXISTS;
+		echo vam_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"').'&nbsp;'.ENTRY_EMAIL_ADDRESS_ERROR_EXISTS;
 	} else {
-		echo xtc_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"');
+		echo vam_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"');
 	}
 } else {
-	echo xtc_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"');
+	echo vam_draw_input_field('customers_email_address', $customers_email_address, 'maxlength="96"');
 }
 ?></td>
           </tr>
@@ -490,7 +490,7 @@ if ($error == true) {
 if (ACCOUNT_COMPANY == 'true') {
 ?>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_COMPANY; ?></td>
@@ -503,12 +503,12 @@ if (ACCOUNT_COMPANY == 'true') {
 
 	if ($error == true) {
 		if ($entry_company_error == true) {
-			echo xtc_draw_input_field('entry_company', $entry_company, 'maxlength="32"').'&nbsp;'.ENTRY_COMPANY_ERROR;
+			echo vam_draw_input_field('entry_company', $entry_company, 'maxlength="32"').'&nbsp;'.ENTRY_COMPANY_ERROR;
 		} else {
-			echo xtc_draw_input_field('entry_company', $entry_company, 'maxlength="32"');
+			echo vam_draw_input_field('entry_company', $entry_company, 'maxlength="32"');
 		}
 	} else {
-		echo xtc_draw_input_field('entry_company', $entry_company, 'maxlength="32"');
+		echo vam_draw_input_field('entry_company', $entry_company, 'maxlength="32"');
 	}
 ?></td>
           </tr>
@@ -522,12 +522,12 @@ if (ACCOUNT_COMPANY == 'true') {
 
 		if ($error == true) {
 			if ($entry_vat_error == true) {
-				echo xtc_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"').'&nbsp;'.ENTRY_VAT_ERROR;
+				echo vam_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"').'&nbsp;'.ENTRY_VAT_ERROR;
 			} else {
-				echo xtc_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"');
+				echo vam_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"');
 			}
 		} else {
-			echo xtc_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"');
+			echo vam_draw_input_field('customers_vat_id', $customers_vat_id, 'maxlength="32"');
 		}
 ?></td>
           </tr>
@@ -543,7 +543,7 @@ if (ACCOUNT_COMPANY == 'true') {
 }
 ?>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_ADDRESS; ?></td>
@@ -556,12 +556,12 @@ if (ACCOUNT_COMPANY == 'true') {
 
 if ($error == true) {
 	if ($entry_street_address_error == true) {
-		echo xtc_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"').'&nbsp;'.ENTRY_STREET_ADDRESS_ERROR;
+		echo vam_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"').'&nbsp;'.ENTRY_STREET_ADDRESS_ERROR;
 	} else {
-		echo xtc_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"');
+		echo vam_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"');
 	}
 } else {
-	echo xtc_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"');
+	echo vam_draw_input_field('entry_street_address', $entry_street_address, 'maxlength="64"');
 }
 ?></td>
           </tr>
@@ -575,12 +575,12 @@ if (ACCOUNT_SUBURB == 'true') {
 
 	if ($error == true) {
 		if ($entry_suburb_error == true) {
-			echo xtc_draw_input_field('suburb', $entry_suburb, 'maxlength="32"').'&nbsp;'.ENTRY_SUBURB_ERROR;
+			echo vam_draw_input_field('suburb', $entry_suburb, 'maxlength="32"').'&nbsp;'.ENTRY_SUBURB_ERROR;
 		} else {
-			echo xtc_draw_input_field('entry_suburb', $entry_suburb, 'maxlength="32"');
+			echo vam_draw_input_field('entry_suburb', $entry_suburb, 'maxlength="32"');
 		}
 	} else {
-		echo xtc_draw_input_field('entry_suburb', $entry_suburb, 'maxlength="32"');
+		echo vam_draw_input_field('entry_suburb', $entry_suburb, 'maxlength="32"');
 	}
 ?></td>
           </tr>
@@ -594,12 +594,12 @@ if (ACCOUNT_SUBURB == 'true') {
 
 if ($error == true) {
 	if ($entry_post_code_error == true) {
-		echo xtc_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"').'&nbsp;'.ENTRY_POST_CODE_ERROR;
+		echo vam_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"').'&nbsp;'.ENTRY_POST_CODE_ERROR;
 	} else {
-		echo xtc_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"');
+		echo vam_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"');
 	}
 } else {
-	echo xtc_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"');
+	echo vam_draw_input_field('entry_postcode', $entry_postcode, 'maxlength="8"');
 }
 ?></td>
           </tr>
@@ -609,12 +609,12 @@ if ($error == true) {
 
 if ($error == true) {
 	if ($entry_city_error == true) {
-		echo xtc_draw_input_field('entry_city', $entry_city, 'maxlength="32"').'&nbsp;'.ENTRY_CITY_ERROR;
+		echo vam_draw_input_field('entry_city', $entry_city, 'maxlength="32"').'&nbsp;'.ENTRY_CITY_ERROR;
 	} else {
-		echo xtc_draw_input_field('entry_city', $entry_city, 'maxlength="32"');
+		echo vam_draw_input_field('entry_city', $entry_city, 'maxlength="32"');
 	}
 } else {
-	echo xtc_draw_input_field('entry_city', $entry_city, 'maxlength="32"');
+	echo vam_draw_input_field('entry_city', $entry_city, 'maxlength="32"');
 }
 ?></td>
           </tr>
@@ -626,24 +626,24 @@ if (ACCOUNT_STATE == 'true') {
             <td class="main"><?php echo ENTRY_STATE; ?></td>
             <td class="main"><?php
 
-	$entry_state = xtc_get_zone_name($entry_country_id, $entry_zone_id, $entry_state);
+	$entry_state = vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state);
 	if ($error == true) {
 		if ($entry_state_error == true) {
 			if ($entry_state_has_zones == true) {
 				$zones_array = array ();
-				$zones_query = xtc_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".xtc_db_input($entry_country_id)."' order by zone_name");
-				while ($zones_values = xtc_db_fetch_array($zones_query)) {
+				$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."' order by zone_name");
+				while ($zones_values = vam_db_fetch_array($zones_query)) {
 					$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 				}
-				echo xtc_draw_pull_down_menu('entry_state', $zones_array).'&nbsp;'.ENTRY_STATE_ERROR;
+				echo vam_draw_pull_down_menu('entry_state', $zones_array).'&nbsp;'.ENTRY_STATE_ERROR;
 			} else {
-				echo xtc_draw_input_field('entry_state', xtc_get_zone_name($entry_country_id, $entry_zone_id, $entry_state)).'&nbsp;'.ENTRY_STATE_ERROR;
+				echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state)).'&nbsp;'.ENTRY_STATE_ERROR;
 			}
 		} else {
-			echo xtc_draw_input_field('entry_state', xtc_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
+			echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
 		}
 	} else {
-		echo xtc_draw_input_field('entry_state', xtc_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
+		echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
 	}
 ?></td>
          </tr>
@@ -657,19 +657,19 @@ if (ACCOUNT_STATE == 'true') {
 
 if ($error == true) {
 	if ($entry_country_error == true) {
-		echo xtc_draw_pull_down_menu('entry_country_id', xtc_get_countries(xtc_get_country_name(STORE_COUNTRY)), $entry_country_id).'&nbsp;'.ENTRY_COUNTRY_ERROR;
+		echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id).'&nbsp;'.ENTRY_COUNTRY_ERROR;
 	} else {
-		echo xtc_draw_pull_down_menu('entry_country_id', xtc_get_countries(xtc_get_country_name(STORE_COUNTRY)), $entry_country_id);
+		echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id);
 	}
 } else {
-	echo xtc_draw_pull_down_menu('entry_country_id', xtc_get_countries(xtc_get_country_name(STORE_COUNTRY)), $entry_country_id);
+	echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id);
 }
 ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_CONTACT; ?></td>
@@ -682,23 +682,23 @@ if ($error == true) {
 
 if ($error == true) {
 	if ($entry_telephone_error == true) {
-		echo xtc_draw_input_field('customers_telephone', $customers_telephone).'&nbsp;'.ENTRY_TELEPHONE_NUMBER_ERROR;
+		echo vam_draw_input_field('customers_telephone', $customers_telephone).'&nbsp;'.ENTRY_TELEPHONE_NUMBER_ERROR;
 	} else {
-		echo xtc_draw_input_field('customers_telephone', $customers_telephone);
+		echo vam_draw_input_field('customers_telephone', $customers_telephone);
 	}
 } else {
-	echo xtc_draw_input_field('customers_telephone', $customers_telephone);
+	echo vam_draw_input_field('customers_telephone', $customers_telephone);
 }
 ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo ENTRY_FAX_NUMBER; ?></td>
-            <td class="main"><?php echo xtc_draw_input_field('customers_fax'); ?></td>
+            <td class="main"><?php echo vam_draw_input_field('customers_fax'); ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_OPTIONS; ?></td>
@@ -710,9 +710,9 @@ if ($error == true) {
             <td class="main"><?php
 
 if ($processed == true) {
-	echo xtc_draw_hidden_field('status');
+	echo vam_draw_hidden_field('status');
 } else {
-	echo xtc_draw_pull_down_menu('status', $customers_statuses_array);
+	echo vam_draw_pull_down_menu('status', $customers_statuses_array);
 }
 ?></td>
           </tr>
@@ -723,48 +723,48 @@ if ($processed == true) {
 
 if ($error == true) {
 	if ($entry_mail_error == true) {
-		echo xtc_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO.'&nbsp;'.ENTRY_MAIL_ERROR;
+		echo vam_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO.'&nbsp;'.ENTRY_MAIL_ERROR;
 	} else {
 		echo ($customers_gender == 'm') ? YES : NO;
-		echo xtc_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO;
+		echo vam_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO;
 	}
 } else {
-	echo xtc_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.xtc_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO;
+	echo vam_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO;
 }
 ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo ENTRY_PAYMENT_UNALLOWED; ?></td>
-            <td class="main"><?php echo xtc_draw_input_field('payment_unallowed'); ?></td>
+            <td class="main"><?php echo vam_draw_input_field('payment_unallowed'); ?></td>
           </tr>
            <tr>
             <td class="main"><?php echo ENTRY_SHIPPING_UNALLOWED; ?></td>
-            <td class="main"><?php echo xtc_draw_input_field('shipping_unallowed'); ?></td>
+            <td class="main"><?php echo vam_draw_input_field('shipping_unallowed'); ?></td>
           </tr>
             <td class="main" bgcolor="#FFCC33"><?php echo ENTRY_PASSWORD; ?></td>
             <td class="main" bgcolor="#FFCC33"><?php
 
 if ($error == true) {
 	if ($entry_password_error == true) {
-		echo xtc_draw_password_field('entry_password', $customers_password_encrypted).'&nbsp;'.ENTRY_PASSWORD_ERROR;
+		echo vam_draw_password_field('entry_password', $customers_password_encrypted).'&nbsp;'.ENTRY_PASSWORD_ERROR;
 	} else {
-		echo xtc_draw_password_field('entry_password', $customers_password_encrypted);
+		echo vam_draw_password_field('entry_password', $customers_password_encrypted);
 	}
 } else {
-	echo xtc_draw_password_field('entry_password', $customers_password_encrypted);
+	echo vam_draw_password_field('entry_password', $customers_password_encrypted);
 }
 ?></td>
           </tr>
             <td class="main" valign="top"><?php echo ENTRY_MAIL_COMMENTS; ?></td>
-            <td class="main"><?php echo xtc_draw_textarea_field('mail_comments', 'soft', '60', '5', $mail_comments); ?></td>
+            <td class="main"><?php echo vam_draw_textarea_field('mail_comments', 'soft', '60', '5', $mail_comments); ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"> <a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array('action'))) .'">' . BUTTON_CANCEL . '</a>'; ?></td>
+        <td align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'">' . BUTTON_CANCEL . '</a>'; ?></td>
       </tr></form>
       </table></td>
       </tr>

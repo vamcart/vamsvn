@@ -17,7 +17,7 @@
 
  require('includes/application_top.php');
  require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'class.phpmailer.php');
- require_once (DIR_FS_INC.'xtc_php_mail.inc.php');
+ require_once (DIR_FS_INC.'vam_php_mail.inc.php');
 
 // initiate template engine for mail
 $smarty = new Smarty;
@@ -27,10 +27,10 @@ $currencies = new currencies();
 // Delete Entry Begin
 if ($_GET['action']=='delete') { 
    $reset_query_raw = "delete from " . TABLE_CUSTOMERS_BASKET . " where customers_id=$_GET[customer_id]"; 
-   xtc_db_query($reset_query_raw); 
+   vam_db_query($reset_query_raw); 
    $reset_query_raw2 = "delete from " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " where customers_id=$_GET[customer_id]"; 
-   xtc_db_query($reset_query_raw2); 
-   xtc_redirect(xtc_href_link(FILENAME_RECOVER_CART_SALES, 'delete=1&customer_id='. $_GET['customer_id'] . '&tdate=' . $_GET['tdate'])); 
+   vam_db_query($reset_query_raw2); 
+   vam_redirect(vam_href_link(FILENAME_RECOVER_CART_SALES, 'delete=1&customer_id='. $_GET['customer_id'] . '&tdate=' . $_GET['tdate'])); 
 } 
 if ($_GET['delete']) { 
    $messageStack->add(MESSAGE_STACK_CUSTOMER_ID . $_GET['customer_id'] . MESSAGE_STACK_DELETE_SUCCESS, 'success'); 
@@ -153,7 +153,7 @@ if ($_GET['delete']) {
 <?php
     if (count($custid) > 0 ) {
       foreach ($custid as $cid) {
-  $query1 = xtc_db_query("select    cb.products_id pid,
+  $query1 = vam_db_query("select    cb.products_id pid,
                                     cb.customers_basket_quantity qty,
                                     cb.customers_basket_date_added bdate,
                                     cus.customers_firstname fname,
@@ -169,7 +169,7 @@ if ($_GET['delete']) {
 
   $knt = mysql_num_rows($query1);
   for ($i = 0; $i < $knt; $i++) {
-    $inrec = xtc_db_fetch_array($query1);
+    $inrec = vam_db_fetch_array($query1);
 
 // set new cline and curcus
     if ($lastcid != $cid) {
@@ -181,16 +181,16 @@ if ($_GET['delete']) {
         </tr>
         <tr>
         <!-- Delete Button //-->
-          <td colspan='6' align='right'><a class=button href=" . xtc_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
+          <td colspan='6' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
         </tr>\n";
        echo $cline;
       }
-    $cline = "<tr> <td class='dataTableContent' align='left' colspan='6' nowrap><a href='" . xtc_href_link(FILENAME_CUSTOMERS, 'search=' . $inrec['lname'], 'NONSSL') . "'>" . $inrec['fname'] . " " . $inrec['lname'] . "</a>".$customer."</td></tr>";
+    $cline = "<tr> <td class='dataTableContent' align='left' colspan='6' nowrap><a href='" . vam_href_link(FILENAME_CUSTOMERS, 'search=' . $inrec['lname'], 'NONSSL') . "'>" . $inrec['fname'] . " " . $inrec['lname'] . "</a>".$customer."</td></tr>";
      $tprice = 0;
      }
      $lastcid = $cid;
 // get the shopping cart
-    $query2 = xtc_db_query("select  p.products_price price,
+    $query2 = vam_db_query("select  p.products_price price,
                                     p.products_model model,
                                     pd.products_name name
                             from    " . TABLE_PRODUCTS . " p,
@@ -200,7 +200,7 @@ if ($_GET['delete']) {
                                     pd.products_id = p.products_id and
                                     pd.language_id = '" .  $_SESSION['languages_id'] . "' ");
 
-    $inrec2 = xtc_db_fetch_array($query2);
+    $inrec2 = vam_db_fetch_array($query2);
 
     $tprice = $tprice + ($inrec['qty'] * $inrec2['price']);
 
@@ -208,7 +208,7 @@ if ($_GET['delete']) {
       $tpprice_formated = $currencies->format(($inrec['qty'] * $inrec2['price']));
       $cline .= "<tr class='dataTableRow'>
                     <td class='dataTableContent' align='left'   width='15%' nowrap>" . $inrec2['model'] . "</td>
-                    <td class='dataTableContent' align='left'  colspan='2' width='55%'><a href='" . xtc_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'>" . $inrec2['name'] . "</a></td>
+                    <td class='dataTableContent' align='left'  colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'>" . $inrec2['name'] . "</a></td>
                     <td class='dataTableContent' align='center' width='10%' nowrap>" . $inrec['qty'] . "</td>
                     <td class='dataTableContent' align='right'  width='10%' nowrap>" . $pprice_formated . "</td>
                     <td class='dataTableContent' align='right'  width='10%' nowrap>" . $tpprice_formated . "</td>
@@ -222,12 +222,12 @@ if ($_GET['delete']) {
 // E-mail Processing - Requires EMAIL_* defines in the
 // includes/languages/english/recover_cart_sales.php file
 
-//  $cquery = xtc_db_query("select * from orders where customers_id = '".$cid."'" );
+//  $cquery = vam_db_query("select * from orders where customers_id = '".$cid."'" );
 
 //  if ($IS_FRIENDLY_EMAIL_HEADER){
 //    $email = EMAIL_TEXT_SALUTATION . $inrec['fname'] . ",";
 //  } else {
-//    $email = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" . xtc_catalog_href_link(FILENAME_CATALOG_LOGIN, '', 'SSL') . "\n";
+//    $email = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" . vam_catalog_href_link(FILENAME_CATALOG_LOGIN, '', 'SSL') . "\n";
 //  }
 
 //  if (mysql_num_rows($cquery) < 1) {
@@ -260,20 +260,20 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 				$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/recover_cart_mail.html');
 				$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/recover_cart_mail.txt');
 
-				xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $inrec['email'], $custname, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_TEXT_SUBJECT, $html_mail, $txt_mail);
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $inrec['email'], $custname, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_TEXT_SUBJECT, $html_mail, $txt_mail);
 
 
-// xtc_php_mail($custname, $inrec['email'], EMAIL_TEXT_SUBJECT, $email, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+// vam_php_mail($custname, $inrec['email'], EMAIL_TEXT_SUBJECT, $email, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 //   $mline = "";
 
- xtc_db_query("insert into " . TABLE_SCART . " (customers_id, dateadded ) values ('" . $cid . "', '" . seadate('0') . "')");
+ vam_db_query("insert into " . TABLE_SCART . " (customers_id, dateadded ) values ('" . $cid . "', '" . seadate('0') . "')");
    echo $cline;
    $cline = "";
 }
 }
       $tcart_formated = $currencies->format($tprice);
       echo  "<tr> <td class='dataTableContent' align='right' colspan='8'><b>" . TABLE_CART_TOTAL . "</b>" . $tcart_formated . "</td> </tr>";
-  echo "<tr><td colspan=6 align=center><a class=button href=" . xtc_href_link(FILENAME_RECOVER_CART_SALES) . ">" . TEXT_RETURN . "</a></td></tr>";
+  echo "<tr><td colspan=6 align=center><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES) . ">" . TEXT_RETURN . "</a></td></tr>";
 } else {
 //
 
@@ -285,7 +285,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
               <td class="pageHeading" align="left" width="100%" colspan="8">
                 <?php  $tdate = $_POST['tdate'];
                     if ($_POST['tdate'] == '') $tdate = $BASE_DAYS;?>
-                <?php echo xtc_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
+                <?php echo vam_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
                   <table align="right" width="100%" border="0">
                     <tr class="dataTableContent" align="right">
                       <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><input type="submit" class="button" value="<?php echo DAYS_FIELD_BUTTON; ?>"></td>
@@ -294,7 +294,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                 </form>
               </td>
             </tr>
-<?php echo xtc_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
+<?php echo vam_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
             <tr class="dataTableHeadingRow">
               <td class="dataTableHeadingContent" align="left" colspan="2" width="10%" nowrap><?php echo TABLE_HEADING_CONTACT; ?></td>
               <td class="dataTableHeadingContent" align="left" colspan="1" width="15%" nowrap><?php echo TABLE_HEADING_DATE; ?></td>
@@ -315,7 +315,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
  $tdate = $_POST['tdate'];
  if ($_POST['tdate'] == '') $tdate = $BASE_DAYS;
  $ndate = seadate($tdate);
- $query1 = xtc_db_query("select cb.customers_id cid,
+ $query1 = vam_db_query("select cb.customers_id cid,
                                 cb.products_id pid,
                                 cb.customers_basket_quantity qty,
                                 cb.customers_basket_date_added bdate,
@@ -337,7 +337,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 
  for ($i = 0; $i <= $knt; $i++)
  {
-  $inrec = xtc_db_fetch_array($query1);
+  $inrec = vam_db_fetch_array($query1);
 
     if ($curcus != $inrec['cid'])
     {
@@ -350,10 +350,10 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                         </tr>
                         <tr>
                         <!-- Delete Button //-->
-                          <td colspan='8' align='right'><a class=button href=" . xtc_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
+                          <td colspan='8' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
                         </tr>
                         <tr align='left'> 
-                        <td colspan='8'><?php echo xtc_draw_separator('pixel_trans.gif', '1', '40'); ?></td>
+                        <td colspan='8'><?php echo vam_draw_separator('pixel_trans.gif', '1', '40'); ?></td>
                         </tr>\n";
 
       if ($curcus != "")
@@ -371,16 +371,16 @@ $custname = $inrec['fname']." ".$inrec['lname'];
   $sentdate = "";
   $customer = "";
   $donequery =
-      xtc_db_query("select * from ". TABLE_SCART ." where customers_id = '".$curcus."'");
+      vam_db_query("select * from ". TABLE_SCART ." where customers_id = '".$curcus."'");
   $emailttl = seadate($EMAIL_TTL);
   if (mysql_num_rows($donequery) > 0) {
-    $ttl = xtc_db_fetch_array($donequery);
+    $ttl = vam_db_fetch_array($donequery);
     if ($emailttl <= $ttl['dateadded']) {
       $sentdate = $ttl['dateadded'];
       $fcolor = $CONTACTED_COLOR;
     }
   }
-  $ccquery = xtc_db_query("select * from " . TABLE_ORDERS . " where customers_id = '".$curcus."'" );
+  $ccquery = vam_db_query("select * from " . TABLE_ORDERS . " where customers_id = '".$curcus."'" );
   if (mysql_num_rows($ccquery) > 0) $customer = '&nbsp;[<font color="' . $CURCUST_COLOR . '">' . TEXT_CURRENT_CUSTOMER . '</font>]';
 
     $sentInfo = TEXT_NOT_CONTACTED;
@@ -391,18 +391,18 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 
       $cline = "
         <tr bgcolor=" . $fcolor . ">
-          <td class='dataTableContent' align='center' width='1%'>" . xtc_draw_checkbox_field('custid[]', $curcus) . "</td>
+          <td class='dataTableContent' align='center' width='1%'>" . vam_draw_checkbox_field('custid[]', $curcus) . "</td>
           <td class='dataTableContent' align='left' width='9%' nowrap><b>" . $sentInfo . "</b></td>
           <td class='dataTableContent' align='left' width='15%' nowrap> " . cart_date_short($inrec['bdate']) . "</td>
-          <td class='dataTableContent' align='left' width='30%' nowrap><a href='" . xtc_href_link(FILENAME_CUSTOMERS, 'search=' . $inrec['lname'], 'NONSSL') . "'>" . $inrec['fname'] . " " . $inrec['lname'] . "</a>".$customer."</td>
-          <td class='dataTableContent' align='left' colspan='2' width='30%' nowrap><a href='" . xtc_href_link('mail.php', 'selected_box=tools&customer=' . $inrec['email']) . "'>" . $inrec['email'] . "</a></td>
+          <td class='dataTableContent' align='left' width='30%' nowrap><a href='" . vam_href_link(FILENAME_CUSTOMERS, 'search=' . $inrec['lname'], 'NONSSL') . "'>" . $inrec['fname'] . " " . $inrec['lname'] . "</a>".$customer."</td>
+          <td class='dataTableContent' align='left' colspan='2' width='30%' nowrap><a href='" . vam_href_link('mail.php', 'selected_box=tools&customer=' . $inrec['email']) . "'>" . $inrec['email'] . "</a></td>
           <td class='dataTableContent' align='left' colspan='2' width='15%' nowrap>" . $inrec['phone'] . "</td>
         </tr>";
       }
     }
 
     // empty the shopping cart
-    $query2 = xtc_db_query("select  p.products_price price,
+    $query2 = vam_db_query("select  p.products_price price,
                                     p.products_model model,
                                     pd.products_name name
                             from    " . TABLE_PRODUCTS . " p,
@@ -412,13 +412,13 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                                     pd.products_id = p.products_id and
                                     pd.language_id = '" . $_SESSION['languages_id'] . "' ");
 
-    $inrec2 = xtc_db_fetch_array($query2);
+    $inrec2 = vam_db_fetch_array($query2);
 
     // BEGIN OF ATTRIBUTE DB CODE
     $prodAttribs = ''; // DO NOT DELETE
 
     if ($SHOW_ATTRIBUTES) {
-      $attribquery = xtc_db_query("select  cba.products_id pid,
+      $attribquery = vam_db_query("select  cba.products_id pid,
                                            po.products_options_name poname,
                                            pov.products_options_values_name povname
                                    from    " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " cba,
@@ -433,11 +433,11 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                                 ");
       $hasAttributes = false;
 
-      if (xtc_db_num_rows($attribquery)){
+      if (vam_db_num_rows($attribquery)){
         $hasAttributes = true;
         $prodAttribs = '<br>';
 
-        while ($attribrecs = xtc_db_fetch_array($attribquery)){
+        while ($attribrecs = vam_db_fetch_array($attribquery)){
           $prodAttribs .= '<small><i> - ' . $attribrecs['poname'] . ' ' . $attribrecs['povname'] . '</i></small><br>';
         }
       }
@@ -454,7 +454,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
       $cline .= "<tr class='dataTableRow'>
                     <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='12%' nowrap> &nbsp;</td>
                     <td class='dataTableContent' align='left' vAlign='top' width='13%' nowrap>" . $inrec2['model'] . "</td>
-                    <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='55%'><a href='" . xtc_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'><b>" . $inrec2['name'] . "</b></a>
+                    <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'><b>" . $inrec2['name'] . "</b></a>
                     " . $prodAttribs . "
                     </td>
                     <td class='dataTableContent' align='center' vAlign='top' width='5%' nowrap>" . $inrec['qty'] . "</td>
@@ -468,7 +468,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
               </tr>";
 
   echo $cline;
- echo "<tr><td colspan=8><b>". PSMSG ."</b><br>". xtc_draw_textarea_field('message', 'soft', '80', '5') ."<br>" . xtc_draw_selection_field('submit_button', 'submit', TEXT_SEND_EMAIL) . "</td></tr>";
+ echo "<tr><td colspan=8><b>". PSMSG ."</b><br>". vam_draw_textarea_field('message', 'soft', '80', '5') ."<br>" . vam_draw_selection_field('submit_button', 'submit', TEXT_SEND_EMAIL) . "</td></tr>";
 ?>
  </form>
 <?php }

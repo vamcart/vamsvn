@@ -18,14 +18,14 @@
 
 	require('includes/application_top.php');
 
-	require_once (DIR_FS_INC.'xtc_get_products_mo_images.inc.php');
+	require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 
 //var_dump($_GET);echo '<br />';
 //var_dump($_POST);echo '<br />';
 //var_dump($_FILES);echo '<br />';
 
 function prepare_image($image) {
-	$products_image_name = xtc_db_prepare_input($image);
+	$products_image_name = vam_db_prepare_input($image);
 	if(!is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name))
 		return false;
 	require_once(DIR_WS_CLASSES . FILENAME_IMAGEMANIPULATOR);
@@ -73,15 +73,15 @@ if ($products_with_attributes == true) {
 	if (is_array($attribute_options_select) && (count($attribute_options_select) > 0)) {
 		foreach ($attribute_options_select as $value) {
 			$attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " where products_options_name = '" . $value . "'";
-			$attribute_options_values = xtc_db_query($attribute_options_query);
-			if ($attribute_options = xtc_db_fetch_array($attribute_options_values)){
+			$attribute_options_values = vam_db_query($attribute_options_query);
+			if ($attribute_options = vam_db_fetch_array($attribute_options_values)){
 				$attribute_options_array[] = array('products_options_id' => $attribute_options['products_options_id']);
 			}
 		}
 	} else {
 		$attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " order by products_options_id";
-		$attribute_options_values = xtc_db_query($attribute_options_query);
-		while ($attribute_options = xtc_db_fetch_array($attribute_options_values)){
+		$attribute_options_values = vam_db_query($attribute_options_query);
+		while ($attribute_options = vam_db_fetch_array($attribute_options_values)){
 			$attribute_options_array[] = array('products_options_id' => $attribute_options['products_options_id']);
 		}
 	}
@@ -109,9 +109,9 @@ $default_these = array(
 	);
 
 //elari check default language_id from configuration table DEFAULT_LANGUAGE
-$epdlanguage_query = xtc_db_query("select languages_id, name, code from " . TABLE_LANGUAGES . " where code = '" . DEFAULT_LANGUAGE . "'");
-if (xtc_db_num_rows($epdlanguage_query)) {
-	$epdlanguage = xtc_db_fetch_array($epdlanguage_query);
+$epdlanguage_query = vam_db_query("select languages_id, name, code from " . TABLE_LANGUAGES . " where code = '" . DEFAULT_LANGUAGE . "'");
+if (vam_db_num_rows($epdlanguage_query)) {
+	$epdlanguage = vam_db_fetch_array($epdlanguage_query);
 	$epdlanguage_id   = $epdlanguage['languages_id'];
 	$epdlanguage_name = $epdlanguage['name'];
 	$epdlanguage_code = $epdlanguage['code'];
@@ -144,8 +144,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 	$filestring = ""; // this holds the csv file we want to download
 
 
-	$result = xtc_db_query($filelayout_sql);
-	$row =  xtc_db_fetch_array($result);
+	$result = vam_db_query($filelayout_sql);
+	$row =  vam_db_fetch_array($result);
 
 	// Here we need to allow for the mapping of internal field names to external field names
 	// default to all headers named like the internal ones
@@ -207,8 +207,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 					language_id = '" . $lid . "'
 
 				 ";
-			$result2 = xtc_db_query($sql2);
-			$row2 =  xtc_db_fetch_array($result2);
+			$result2 = vam_db_query($sql2);
+			$row2 =  vam_db_fetch_array($result2);
 
 //added cpath
 			// for the categories, we need to keep looping until we find the root category
@@ -225,8 +225,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 					$sq23 = "SELECT parent_id
 						FROM ".TABLE_CATEGORIES."
 						WHERE categories_id = " . $thecategory_id1;
-					$result23 = xtc_db_query($sq23);
-					$row23 =  xtc_db_fetch_array($result23);
+					$result23 = vam_db_query($sq23);
+					$row23 =  vam_db_fetch_array($result23);
 					$theparent_id1 = $row23['parent_id'];
 				}
 				$cPath = $theparent_id1 .  '_'  . $row['v_categories_id'];
@@ -285,8 +285,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 						categories_id = " . $thecategory_id . " AND
 						language_id = " . $epdlanguage_id ;
 
-				$result2 = xtc_db_query($sql2);
-				$row2 =  xtc_db_fetch_array($result2);
+				$result2 = vam_db_query($sql2);
+				$row2 =  vam_db_fetch_array($result2);
 				// only set it if we found something
 				$temprow['v_categories_name_' . $categorylevel] = $row2['categories_name'];
 				// now get the parent ID if there was one
@@ -294,8 +294,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 					FROM ".TABLE_CATEGORIES."
 					WHERE
 						categories_id = " . $thecategory_id;
-				$result3 = xtc_db_query($sql3);
-				$row3 =  xtc_db_fetch_array($result3);
+				$result3 = vam_db_query($sql3);
+				$row3 =  vam_db_fetch_array($result3);
 				$theparent_id = $row3['parent_id'];
 				if ($theparent_id != ''){
 					// there was a parent ID, lets set thecategoryid to get the next level
@@ -329,8 +329,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 					WHERE
 					manufacturers_id = " . $row['v_manufacturers_id']
 					;
-				$result2 = xtc_db_query($sql2);
-				$row2 =  xtc_db_fetch_array($result2);
+				$result2 = vam_db_query($sql2);
+				$row2 =  vam_db_fetch_array($result2);
 				$row['v_manufacturers_name'] = $row2['manufacturers_name'];
 			}
 		}
@@ -340,7 +340,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 
 		// VJ product attribs begin
 		if (isset($filelayout['v_attribute_options_id_1'])){
-			$languages = xtc_get_languages();
+			$languages = vam_get_languages();
 
 			$attribute_options_count = 1;
 			foreach ($attribute_options_array as $attribute_options) {
@@ -351,26 +351,26 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 
 					$attribute_options_languages_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options['products_options_id'] . "' and language_id = '" . (int)$lid . "'";
 
-					$attribute_options_languages_values = xtc_db_query($attribute_options_languages_query);
+					$attribute_options_languages_values = vam_db_query($attribute_options_languages_query);
 
-					$attribute_options_languages = xtc_db_fetch_array($attribute_options_languages_values);
+					$attribute_options_languages = vam_db_fetch_array($attribute_options_languages_values);
 
 					$row['v_attribute_options_name_' . $attribute_options_count . '_' . $lid] = $attribute_options_languages['products_options_name'];
 				}
 
 				$attribute_values_query = "select products_options_values_id from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options['products_options_id'] . "' order by products_options_values_id";
 
-				$attribute_values_values = xtc_db_query($attribute_values_query);
+				$attribute_values_values = vam_db_query($attribute_values_query);
 
 				$attribute_values_count = 1;
-				while ($attribute_values = xtc_db_fetch_array($attribute_values_values)) {
+				while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
 					$row['v_attribute_values_id_' . $attribute_options_count . '_' . $attribute_values_count]   = $attribute_values['products_options_values_id'];
 
 					$attribute_values_price_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "' and options_id = '" . (int)$attribute_options['products_options_id'] . "' and options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "'";
 
-					$attribute_values_price_values = xtc_db_query($attribute_values_price_query);
+					$attribute_values_price_values = vam_db_query($attribute_values_price_query);
 
-					$attribute_values_price = xtc_db_fetch_array($attribute_values_price_values);
+					$attribute_values_price = vam_db_fetch_array($attribute_values_price_values);
 
 					$row['v_attribute_values_price_' . $attribute_options_count . '_' . $attribute_values_count]  = $attribute_values_price['price_prefix'] . $attribute_values_price['options_values_price'];
 
@@ -379,9 +379,9 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 
 						$attribute_values_languages_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "' and language_id = '" . (int)$lid . "'";
 
-						$attribute_values_languages_values = xtc_db_query($attribute_values_languages_query);
+						$attribute_values_languages_values = vam_db_query($attribute_values_languages_query);
 
-						$attribute_values_languages = xtc_db_fetch_array($attribute_values_languages_values);
+						$attribute_values_languages = vam_db_fetch_array($attribute_values_languages_values);
 
 						$row['v_attribute_values_name_' . $attribute_options_count . '_' . $attribute_values_count . '_' . $lid] = $attribute_values_languages['products_options_values_name'];
 					}
@@ -406,13 +406,13 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 				ORDER BY
 				customers_group_id"
 				;
-			$result2 = xtc_db_query($sql2);
+			$result2 = vam_db_query($sql2);
 			$ll = 1;
-			$row2 =  xtc_db_fetch_array($result2);
+			$row2 =  vam_db_fetch_array($result2);
 			while( $row2 ){
 				$row['v_customer_group_id_' . $ll]  = $row2['customers_group_id'];
 				$row['v_customer_price_' . $ll]   = $row2['customers_group_price'];
-				$row2 = xtc_db_fetch_array($result2);
+				$row2 = vam_db_fetch_array($result2);
 				$ll++;
 			}
 		}
@@ -431,9 +431,9 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 				ORDER BY
 					specials_id DESC"
 				;
-			$result2 = xtc_db_query($sql2);
+			$result2 = vam_db_query($sql2);
 			$ll = 1;
-			$row2 =  xtc_db_fetch_array($result2);
+			$row2 =  vam_db_fetch_array($result2);
 			if( $row2 ){
 				// reset the products price to our special price if there is one for this product
 				$row['v_products_price']  = $row2['specials_new_products_price'];
@@ -443,8 +443,8 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 		//elari -
 		//We check the value of tax class and title instead of the id
 		//Then we add the tax to price if $price_with_tax is set to 1
-		$row_tax_multiplier     = xtc_get_tax_class_rate($row['v_tax_class_id']);
-		$row['v_tax_class_title']   = xtc_get_tax_class_title($row['v_tax_class_id']);
+		$row_tax_multiplier     = vam_get_tax_class_rate($row['v_tax_class_id']);
+		$row['v_tax_class_title']   = vam_get_tax_class_title($row['v_tax_class_id']);
 		$row['v_products_price']  = $row['v_products_price'] +
 							($price_with_tax * round($row['v_products_price'] * $row_tax_multiplier / 100,2));
 
@@ -460,7 +460,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 		for ($i = 0; $i < MO_PICS; $i ++) {
 			$row['v_mo_image_'.($i+1)] = "";
 		}
-		if($mo_image = xtc_get_products_mo_images($row['v_products_id'])) {
+		if($mo_image = vam_get_products_mo_images($row['v_products_id'])) {
 //			echo '<pre>';var_dump($mo_image);echo '</pre>';
 			for($i=0, $n=sizeof($mo_image); $i<$n; $i++) {
 				$row['v_mo_image_'.$mo_image[$i]["image_nr"]] = $mo_image[$i]["image_name"];
@@ -487,7 +487,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 
 		$filestring .= $therow;
 		// grab the next row from the db
-		$row =  xtc_db_fetch_array($result);
+		$row =  vam_db_fetch_array($result);
 	}
 
 	#$EXPORT_TIME=time();
@@ -520,7 +520,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 		fwrite($fp, $filestring);
 		fclose($fp);
 		$messageStack->add_session(EASY_FILE_LOCATE . $tempdir .  $EXPORT_TIME . ".txt" , 'success');
-		xtc_redirect(xtc_href_link(FILENAME_EASY_POPULATE));
+		vam_redirect(vam_href_link(FILENAME_EASY_POPULATE));
 		exit;
 	}
 }   // *** END *** download section
@@ -566,12 +566,12 @@ if ($_POST['localfile'] or (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_
 //  check files name for EPA
 //    if ( (strstr($_POST['localfile'], 'EPA')) or ( (strstr($_FILES['usrfl']['name'], 'EPA')) && $_GET['split']==0) )  {
 //     }else{
-//          echo EASY_ERROR_6 .  '<a href="' . xtc_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a><br>';
+//          echo EASY_ERROR_6 .  '<a href="' . vam_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a><br>';
 //   die();
 //      }
 
 
-	if ($csv_upload = &xtc_try_upload('usrfl', DIR_FS_DOCUMENT_ROOT . $tempdir)) {
+	if ($csv_upload = &vam_try_upload('usrfl', DIR_FS_DOCUMENT_ROOT . $tempdir)) {
 		// move the file to where we can work with it
 
 		echo '<p class=smallText>';
@@ -586,9 +586,9 @@ if ($_POST['localfile'] or (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_
 	if ($_POST['localfile']){
 
 		$attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " order by products_options_id";
-		$attribute_options_values = xtc_db_query($attribute_options_query);
+		$attribute_options_values = vam_db_query($attribute_options_query);
 		$attribute_options_count = 1;
-		//while ($attribute_options = xtc_db_fetch_array($attribute_options_values)){
+		//while ($attribute_options = vam_db_fetch_array($attribute_options_values)){
 
 		echo "<p class=smallText>";
 		echo  EASY_FILENAME . $_POST['localfile'] . '<br></p>';
@@ -639,13 +639,13 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 
 //	if (strstr($_FILES['usrfl']['name'], 'EPA')){
 //	}else{
-//		echo EASY_ERROR_6 . '<span class=smallText><a href="' . xtc_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a></span><br>';
+//		echo EASY_ERROR_6 . '<span class=smallText><a href="' . vam_href_link(FILENAME_EASYPOPULATE) . '">' . EASY_ERROR_6a . '</a></span><br>';
 //	 die();
 //	}
 
 
 	// move the file to where we can work with it
-	$csv_upload = &xtc_try_upload('usrfl', DIR_FS_DOCUMENT_ROOT . $tempdir);
+	$csv_upload = &vam_try_upload('usrfl', DIR_FS_DOCUMENT_ROOT . $tempdir);
 
 	$infp = fopen(DIR_FS_DOCUMENT_ROOT . $tempdir . $_FILES['usrfl']['name'], "r");
 
@@ -740,7 +740,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 					 <FORM ENCTYPE="multipart/form-data" ACTION="easypopulate.php" METHOD=POST>
 							<p>
 								<div align = "left">
-				<?php echo xtc_draw_form('localfile_insert', 'easypopulate.php', '', 'post', 'ENCTYPE="multipart/form-data"'); ?>
+				<?php echo vam_draw_form('localfile_insert', 'easypopulate.php', '', 'post', 'ENCTYPE="multipart/form-data"'); ?>
 									<p>
 										<div align = "left">
 <span class="smallText">
@@ -755,7 +755,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 						$contents[] = array('id' => $file, 'text' => $file);
 					}
 				}
-				echo xtc_draw_pull_down_menu('localfile', $contents, $_POST['localfile']);
+				echo vam_draw_pull_down_menu('localfile', $contents, $_POST['localfile']);
 		?>
 </span>
 												<input type="submit" name="buttoninsert" value="<?php echo TEXT_INSERT_INTO_DB ; ?>"><br>
@@ -807,9 +807,9 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 <b><?php echo EASY_LABEL_LIMIT_CAT;?></b>
 </span>
 					 <?php
-								$categories_query = xtc_db_query("select c.categories_id, cd.categories_name, c.parent_id, c.sort_order from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.parent_id = '0' and c.categories_id = cd.categories_id and cd.language_id = '" . $languages_id . "' order by c.sort_order, cd.categories_name");
-								$category = xtc_db_fetch_array($categories_query);
-					echo  xtc_draw_pull_down_menu('limit_cat', xtc_get_category_tree(), 0);
+								$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id, c.sort_order from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.parent_id = '0' and c.categories_id = cd.categories_id and cd.language_id = '" . $languages_id . "' order by c.sort_order, cd.categories_name");
+								$category = vam_db_fetch_array($categories_query);
+					echo  vam_draw_pull_down_menu('limit_cat', vam_get_category_tree(), 0);
 
 		?><br>
 <span class="smallText">
@@ -819,13 +819,13 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 					$manufacturers_array = array();
 					$manufacturers_array[] = array('id' => '0', 'text' => PULL_DOWN_MANUFACTURES);
 
-					$manufacturers_query = xtc_db_query("select manufacturers_id, manufacturers_name from " . TABLE_MANUFACTURERS . " order by manufacturers_name");
-				while ($manufacturers = xtc_db_fetch_array($manufacturers_query)) {
+					$manufacturers_query = vam_db_query("select manufacturers_id, manufacturers_name from " . TABLE_MANUFACTURERS . " order by manufacturers_name");
+				while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
 				$manufacturers_array[] = array('id' => $manufacturers['manufacturers_id'],
 																		 'text' => $manufacturers['manufacturers_name']);
 							}
 
-				 echo xtc_draw_pull_down_menu('limit_man', $manufacturers_array, $_POST['limit_man']);
+				 echo vam_draw_pull_down_menu('limit_man', $manufacturers_array, $_POST['limit_man']);
 
 
 		?><br>
@@ -840,18 +840,18 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 </span>
 			 <br>
 				<?php // below are the queries to do the counts
-									 $totalrows = xtc_db_query("SELECT COUNT(*) FROM " . TABLE_PRODUCTS . "");
-									 $first_query = xtc_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . "  ORDER BY products_id ASC LIMIT 1");
-										 while ($firstid = xtc_db_fetch_array($first_query)){
+									 $totalrows = vam_db_query("SELECT COUNT(*) FROM " . TABLE_PRODUCTS . "");
+									 $first_query = vam_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . "  ORDER BY products_id ASC LIMIT 1");
+										 while ($firstid = vam_db_fetch_array($first_query)){
 										 $firstid1 =  $firstid['products_id'];
 										 }
-										$first_query2 = xtc_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . "  ORDER BY products_id DESC LIMIT 1");
-										 while ($firstid2 = xtc_db_fetch_array($first_query2)){
+										$first_query2 = vam_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . "  ORDER BY products_id DESC LIMIT 1");
+										 while ($firstid2 = vam_db_fetch_array($first_query2)){
 										 $firstid2a =  $firstid2['products_id'];
 										 }
 
-										 $first_query3 = xtc_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . " ");
-										 while ($firstid3 = xtc_db_fetch_array($first_query3)){
+										 $first_query3 = vam_db_query("SELECT products_id FROM " . TABLE_PRODUCTS . " ");
+										 while ($firstid3 = vam_db_fetch_array($first_query3)){
 										 $total3 = $total3 + 1 ;
 										 }
 						 ?>
@@ -877,32 +877,32 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 </html>
 
 <?php
-function xtc_get_category_treea($parent_id , $spacing = '', $exclude = '', $category_id_array = '', $include_itself = true) {
+function vam_get_category_treea($parent_id , $spacing = '', $exclude = '', $category_id_array = '', $include_itself = true) {
 		global $languages_id;
 
 		if (!is_array($category_id_array)) $category_tree_array = array();
 		if ( (sizeof($category_id_array) < 1) && ($exclude != '0') ) $category_id_array[] = array('id' => '0', 'text' => TEXT_TOP);
 
 		if ($include_itself) {
-			$category_query = xtc_db_query("select cd.categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " cd where cd.language_id = '" . (int)$languages_id . "' and cd.categories_id = '" . (int)$parent_id . "'");
-			$category = xtc_db_fetch_array($category_query);
+			$category_query = vam_db_query("select cd.categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " cd where cd.language_id = '" . (int)$languages_id . "' and cd.categories_id = '" . (int)$parent_id . "'");
+			$category = vam_db_fetch_array($category_query);
 			$category_tree_arraya[] = array('id' => $parent_id, 'text' => $category['categories_name']);
 		}
 
-		$categories_query = xtc_db_query("select c.categories_id, cd.categories_name, c.parent_id from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' and c.parent_id = '" . (int)$parent_id . "' order by c.sort_order, cd.categories_name");
-		while ($categories = xtc_db_fetch_array($categories_query)) {
+		$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' and c.parent_id = '" . (int)$parent_id . "' order by c.sort_order, cd.categories_name");
+		while ($categories = vam_db_fetch_array($categories_query)) {
 			if ($exclude != $categories['categories_id']) $category_id_array[] = array('id' => $categories['categories_id']);
-			$category_tree_array = xtc_get_category_treea($categories['categories_id'],  $exclude, $category_id_array);
+			$category_tree_array = vam_get_category_treea($categories['categories_id'],  $exclude, $category_id_array);
 		}
 
 		return $category_id_array;
 	}
 
 function ep_get_languages() {
-	$languages_query = xtc_db_query("select languages_id, code from " . TABLE_LANGUAGES . " order by sort_order");
+	$languages_query = vam_db_query("select languages_id, code from " . TABLE_LANGUAGES . " order by sort_order");
 	// start array at one, the rest of the code expects it that way
 	$ll =1;
-	while ($ep_languages = xtc_db_fetch_array($languages_query)) {
+	while ($ep_languages = vam_db_fetch_array($languages_query)) {
 		//will be used to return language_id en language code to report in product_name_code instead of product_name_id
 		$ep_languages_array[$ll++] = array(
 					'id' => $ep_languages['languages_id'],
@@ -912,20 +912,20 @@ function ep_get_languages() {
 	return $ep_languages_array;
 };
 
-function xtc_get_tax_class_rate($tax_class_id) {
+function vam_get_tax_class_rate($tax_class_id) {
 	$tax_multiplier = 0;
-	$tax_query = xtc_db_query("select SUM(tax_rate) as tax_rate from " . TABLE_TAX_RATES . " WHERE  tax_class_id = '" . $tax_class_id . "' GROUP BY tax_priority");
-	if (xtc_db_num_rows($tax_query)) {
-		while ($tax = xtc_db_fetch_array($tax_query)) {
+	$tax_query = vam_db_query("select SUM(tax_rate) as tax_rate from " . TABLE_TAX_RATES . " WHERE  tax_class_id = '" . $tax_class_id . "' GROUP BY tax_priority");
+	if (vam_db_num_rows($tax_query)) {
+		while ($tax = vam_db_fetch_array($tax_query)) {
 			$tax_multiplier += $tax['tax_rate'];
 		}
 	}
 	return $tax_multiplier;
 };
 
-function xtc_get_tax_title_class_id($tax_class_title) {
-	$classes_query = xtc_db_query("select tax_class_id from " . TABLE_TAX_CLASS . " WHERE tax_class_title = '" . $tax_class_title . "'" );
-	$tax_class_array = xtc_db_fetch_array($classes_query);
+function vam_get_tax_title_class_id($tax_class_title) {
+	$classes_query = vam_db_query("select tax_class_id from " . TABLE_TAX_CLASS . " WHERE tax_class_title = '" . $tax_class_title . "'" );
+	$tax_class_array = vam_db_fetch_array($classes_query);
 	$tax_class_id = $tax_class_array['tax_class_id'];
 	return $tax_class_id ;
 }
@@ -956,10 +956,10 @@ switch( $dltype ){
 			$categories_range .= 'ptoc.categories_id =  \'' . $_POST['limit_cat']. '\' and ';
 
 // for two levels down
-//  $catfeild=xtc_get_category_treea($_POST['limit_cat']);
+//  $catfeild=vam_get_category_treea($_POST['limit_cat']);
 //          $categories_range .= "( ";
 //for ($i=0, $n=sizeof($catfeild); $i<$n; $i++) {
-//  $categories_range .= 'ptoc.categories_id = ' . "'"  . xtc_output_string($catfeild[$i]['id'] . "' ");
+//  $categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfeild[$i]['id'] . "' ");
 //if ($i<$n){
 // $categories_range .= ' or ';
 //         }
@@ -973,10 +973,10 @@ switch( $dltype ){
 
 		if ($_POST['limit_cat'] == '0'){
 		}else{
-		$catfeild=xtc_get_category_treea($_POST['limit_cat']);
+		$catfeild=vam_get_category_treea($_POST['limit_cat']);
 						$categories_range .= "( ";
 	for ($i=0, $n=sizeof($catfeild); $i<$n; $i++) {
-		$categories_range .= 'ptoc.categories_id = ' . "'"  . xtc_output_string($catfeild[$i]['id'] . "' ");
+		$categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfeild[$i]['id'] . "' ");
 	if ($i<$n){
 	 $categories_range .= ' or ';
 					 }
@@ -987,10 +987,10 @@ switch( $dltype ){
 	case 'priceqty':
 		if ($_POST['limit_cat'] == '0'){
 		}else{
-		$catfeild=xtc_get_category_treea($_POST['limit_cat']);
+		$catfeild=vam_get_category_treea($_POST['limit_cat']);
 						$categories_range .= "( ";
 	for ($i=0, $n=sizeof($catfeild); $i<$n; $i++) {
-		$categories_range .= 'ptoc.categories_id = ' . "'"  . xtc_output_string($catfeild[$i]['id'] . "' ");
+		$categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfeild[$i]['id'] . "' ");
 	if ($i<$n){
 	 $categories_range .= ' or ';
 					 }
@@ -1124,7 +1124,7 @@ break;
 			'v_products_sort'   => $iii++,
 			);
 
-			$languages = xtc_get_languages();
+			$languages = vam_get_languages();
 
 			global $attribute_options_array;
 
@@ -1356,7 +1356,7 @@ break;
 
 		$header_array = array();
 
-		$languages = xtc_get_languages();
+		$languages = vam_get_languages();
 
 		global $attribute_options_array;
 
@@ -1374,10 +1374,10 @@ break;
 
 			$attribute_values_query = "select products_options_values_id  from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options_values['products_options_id'] . "' order by products_options_values_id";
 
-			$attribute_values_values = xtc_db_query($attribute_values_query);
+			$attribute_values_values = vam_db_query($attribute_values_query);
 
 			$attribute_values_count = 1;
-			while ($attribute_values = xtc_db_fetch_array($attribute_values_values)) {
+			while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
 				$key3 = 'v_attribute_values_id_' . $attribute_options_count . '_' . $attribute_values_count;
 				$header_array[$key3] = $iii++;
 
@@ -1503,8 +1503,8 @@ function walk( $item1 ) {
 		ptoc.categories_id = subc.categories_id
 		";
 
-	$result = xtc_db_query($sql);
-	$row =  xtc_db_fetch_array($result);
+	$result = vam_db_query($sql);
+	$row =  vam_db_fetch_array($result);
 
 
 	while ($row){
@@ -1521,8 +1521,8 @@ function walk( $item1 ) {
 					products_id = " . $row['v_products_id'] . " AND
 					language_id = '" . $lang['id'] . "'
 				";
-			$result2 = xtc_db_query($sql2);
-			$row2 =  xtc_db_fetch_array($result2);
+			$result2 = vam_db_query($sql2);
+			$row2 =  vam_db_fetch_array($result2);
 			// Need to report from ......_name_1 not ..._name_0
 			$row['v_products_name_' . $lang['id']]    = $row2['products_name'];
 			$row['v_products_description_' . $lang['id']]   = $row2['products_description'];
@@ -1553,8 +1553,8 @@ function walk( $item1 ) {
 						categories_id = " . $thecategory_id . " AND
 						language_id = " . $epdlanguage_id ;
 
-				$result2 = xtc_db_query($sql2);
-				$row2 =  xtc_db_fetch_array($result2);
+				$result2 = vam_db_query($sql2);
+				$row2 =  vam_db_fetch_array($result2);
 				// only set it if we found something
 				$temprow['v_categories_name_' . $categorylevel] = $row2['categories_name'];
 				// now get the parent ID if there was one
@@ -1562,8 +1562,8 @@ function walk( $item1 ) {
 					FROM ".TABLE_CATEGORIES."
 					WHERE
 						categories_id = " . $thecategory_id;
-				$result3 = xtc_db_query($sql3);
-				$row3 =  xtc_db_fetch_array($result3);
+				$result3 = vam_db_query($sql3);
+				$row3 =  vam_db_fetch_array($result3);
 				$theparent_id = $row3['parent_id'];
 				if ($theparent_id != ''){
 					// there was a parent ID, lets set thecategoryid to get the next level
@@ -1591,16 +1591,16 @@ function walk( $item1 ) {
 				WHERE
 				manufacturers_id = " . $row['v_manufacturers_id']
 				;
-			$result2 = xtc_db_query($sql2);
-			$row2 =  xtc_db_fetch_array($result2);
+			$result2 = vam_db_query($sql2);
+			$row2 =  vam_db_fetch_array($result2);
 			$row['v_manufacturers_name'] = $row2['manufacturers_name'];
 		}
 
 		//elari -
 		//We check the value of tax class and title instead of the id
 		//Then we add the tax to price if $price_with_tax is set to true
-		$row_tax_multiplier = xtc_get_tax_class_rate($row['v_tax_class_id']);
-		$row['v_tax_class_title'] = xtc_get_tax_class_title($row['v_tax_class_id']);
+		$row_tax_multiplier = vam_get_tax_class_rate($row['v_tax_class_id']);
+		$row['v_tax_class_title'] = vam_get_tax_class_title($row['v_tax_class_id']);
 		if ($price_with_tax){
 			$row['v_products_price'] = $row['v_products_price'] + round($row['v_products_price']* $row_tax_multiplier / 100,2);
 		}
@@ -1611,7 +1611,7 @@ function walk( $item1 ) {
 			$$thisvar = $row[$thisvar];
 		}
 
-		$row =  xtc_db_fetch_array($result);
+		$row =  vam_db_fetch_array($result);
 	}
 
 	// this is an important loop.  What it does is go thru all the fields in the incoming file and set the internal vars.
@@ -1646,10 +1646,10 @@ function walk( $item1 ) {
 	//elari... we get the tax_clas_id from the tax_title
 	//on screen will still be displayed the tax_class_title instead of the id....
 	if ( isset( $v_tax_class_title) ){
-		$v_tax_class_id          = xtc_get_tax_title_class_id($v_tax_class_title);
+		$v_tax_class_id          = vam_get_tax_title_class_id($v_tax_class_title);
 	}
 	//we check the tax rate of this tax_class_id
-	$row_tax_multiplier = xtc_get_tax_class_rate($v_tax_class_id);
+	$row_tax_multiplier = vam_get_tax_class_rate($v_tax_class_id);
 
 	//And we recalculate price without the included tax...
 	//Since it seems display is made before, the displayed price will still include tax
@@ -1724,8 +1724,8 @@ function walk( $item1 ) {
 			FROM ".TABLE_MANUFACTURERS." as man
 			WHERE
 				man.manufacturers_name = '" . $v_manufacturers_name . "'";
-		$result = xtc_db_query($sql);
-		$row =  xtc_db_fetch_array($result);
+		$result = vam_db_query($sql);
+		$row =  vam_db_fetch_array($result);
 		if ( $row != '' ){
 			foreach( $row as $item ){
 				$v_manufacturer_id = $item;
@@ -1733,8 +1733,8 @@ function walk( $item1 ) {
 		} else {
 			// to add, we need to put stuff in categories and categories_description
 			$sql = "SELECT MAX( manufacturers_id) max FROM ".TABLE_MANUFACTURERS;
-			$result = xtc_db_query($sql);
-			$row =  xtc_db_fetch_array($result);
+			$result = vam_db_query($sql);
+			$row =  vam_db_fetch_array($result);
 			$max_mfg_id = $row['max']+1;
 			// default the id if there are no manufacturers yet
 			if (!is_numeric($max_mfg_id) ){
@@ -1754,7 +1754,7 @@ function walk( $item1 ) {
 				CURRENT_TIMESTAMP,
 				CURRENT_TIMESTAMP
 				)";
-			$result = xtc_db_query($sql);
+			$result = vam_db_query($sql);
 			$v_manufacturer_id = $max_mfg_id;
 		}
 	}
@@ -1777,8 +1777,8 @@ function walk( $item1 ) {
 						des.language_id = $epdlanguage_id AND
 						cat.parent_id = " . $theparent_id . " AND
 						des.categories_name = '" . $thiscategoryname . "'";
-				$result = xtc_db_query($sql);
-				$row =  xtc_db_fetch_array($result);
+				$result = vam_db_query($sql);
+				$row =  vam_db_fetch_array($result);
 				if ( $row != '' ){
 					foreach( $row as $item ){
 						$thiscategoryid = $item;
@@ -1786,8 +1786,8 @@ function walk( $item1 ) {
 				} else {
 					// to add, we need to put stuff in categories and categories_description
 					$sql = "SELECT MAX( categories_id) max FROM ".TABLE_CATEGORIES;
-					$result = xtc_db_query($sql);
-					$row =  xtc_db_fetch_array($result);
+					$result = vam_db_query($sql);
+					$row =  vam_db_fetch_array($result);
 									var_dump($sql);echo '<br />';
 					$max_category_id = $row['max']+1;
 					if (!is_numeric($max_category_id) ){
@@ -1808,7 +1808,7 @@ function walk( $item1 ) {
 						CURRENT_TIMESTAMP,
 						CURRENT_TIMESTAMP
 						)";
-					$result = xtc_db_query($sql);
+					$result = vam_db_query($sql);
 					$sql = "INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION."(
 							categories_id,
 							language_id,
@@ -1818,7 +1818,7 @@ function walk( $item1 ) {
 							'$epdlanguage_id',
 							'$thiscategoryname'
 						)";
-					$result = xtc_db_query($sql);
+					$result = vam_db_query($sql);
 					$thiscategoryid = $max_category_id;
 				}
 				// the current catid is the next level's parent
@@ -1838,16 +1838,16 @@ function walk( $item1 ) {
 				$delete_id = $v_products_id;
  // get category ID
 		// kill in the products_to_categories
-xtc_db_query("delete from " . TABLE_PRODUCTS . " where products_id ='" .  $delete_id . "'");
-xtc_db_query("delete from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id ='" .  $delete_id . "'");
-xtc_db_query("delete from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id ='" .  $delete_id . "' and categories_id = '" . $v_categories_id . "' ");
+vam_db_query("delete from " . TABLE_PRODUCTS . " where products_id ='" .  $delete_id . "'");
+vam_db_query("delete from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id ='" .  $delete_id . "'");
+vam_db_query("delete from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id ='" .  $delete_id . "' and categories_id = '" . $v_categories_id . "' ");
 
-	$prod_attrib_query = xtc_db_query("select products_attributes_id from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='" .  $delete_id . "'");
- while ($prod_attrib1 = xtc_db_fetch_array($prod_attrib_query)) {
-xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " where products_attributes_id  ='" .  $prod_attrib1[products_attributes_id]  . "'");
+	$prod_attrib_query = vam_db_query("select products_attributes_id from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='" .  $delete_id . "'");
+ while ($prod_attrib1 = vam_db_fetch_array($prod_attrib_query)) {
+vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " where products_attributes_id  ='" .  $prod_attrib1[products_attributes_id]  . "'");
 }
 
-xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='" .  $delete_id . "'");
+vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='" .  $delete_id . "'");
 
 		// Kill in the products table
 
@@ -1860,14 +1860,14 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 
 		// First we check to see if this is a product in the current db.
 
-	$result = xtc_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE (products_id = '". $v_products_id . "')");
+	$result = vam_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE (products_id = '". $v_products_id . "')");
 
-		if (xtc_db_num_rows($result) == 0)  {
+		if (vam_db_num_rows($result) == 0)  {
 			//   insert into products
 
 			$sql = "SHOW TABLE STATUS LIKE '".TABLE_PRODUCTS."'";
-			$result = xtc_db_query($sql);
-			$row =  xtc_db_fetch_array($result);
+			$result = vam_db_query($sql);
+			$row =  vam_db_fetch_array($result);
 			$max_product_id = $row['Auto_increment'];
 
 
@@ -1916,14 +1916,14 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 								'$v_products_sort',
 								'$v_manufacturer_id')
 							";
-				$result = xtc_db_query($query);
+				$result = vam_db_query($query);
 		} else {
 			// existing product, get the id from the query
 			// and update the product data
-			$row =  xtc_db_fetch_array($result);
+			$row =  vam_db_fetch_array($result);
 			$v_products_id = $row['products_id'];
 			echo EASY_LABEL_UPDATED;
-			$row =  xtc_db_fetch_array($result);
+			$row =  vam_db_fetch_array($result);
 			$query = 'UPDATE '.TABLE_PRODUCTS.'
 					SET
 					products_price="'.$v_products_price.'" ,
@@ -1943,7 +1943,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					WHERE
 						(products_id = "'. $v_products_id . '")';
 
-			$result = xtc_db_query($query);
+			$result = vam_db_query($query);
 		}
 
 		// the following is common in both the updating an existing product and creating a new product
@@ -1953,10 +1953,10 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					$sql = "SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE
 							products_id = $v_products_id AND
 							language_id = " . $key;
-					$result = xtc_db_query($sql);
-					if (xtc_db_num_rows($result) == 0) {
+					$result = vam_db_query($sql);
+					if (vam_db_num_rows($result) == 0) {
 						// nope, this is a new product description
-						$result = xtc_db_query($sql);
+						$result = vam_db_query($sql);
 						$sql =
 							"INSERT INTO ".TABLE_PRODUCTS_DESCRIPTION."
 								(products_id,
@@ -2003,7 +2003,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 										'". $v_products_meta_keywords[$key] . "')";
 						}
 						// end support for Linda's Header Controller 2.0
-						$result = xtc_db_query($sql);
+						$result = vam_db_query($sql);
 					} else {
 						// already in the description, let's just update it
 						$sql =
@@ -2034,7 +2034,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 									language_id = '$key'";
 						}
 						// end support for Linda's Header Controller 2.0
-						$result = xtc_db_query($sql);
+						$result = vam_db_query($sql);
 					}
 				}
 			}
@@ -2047,7 +2047,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 										}
 
 			//find out if this product is listed in the category given
-			$result_incategory = xtc_db_query('SELECT
+			$result_incategory = vam_db_query('SELECT
 						'.TABLE_PRODUCTS_TO_CATEGORIES.'.products_id,
 						'.TABLE_PRODUCTS_TO_CATEGORIES.'.categories_id
 						FROM
@@ -2056,9 +2056,9 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 						'.TABLE_PRODUCTS_TO_CATEGORIES.'.products_id='.$v_products_id.' AND
 						'.TABLE_PRODUCTS_TO_CATEGORIES.'.categories_id='.$v_categories_id);
 
-			if (xtc_db_num_rows($result_incategory) == 0) {
+			if (vam_db_num_rows($result_incategory) == 0) {
 				// nope, this is a new category for this product
-				$res1 = xtc_db_query('INSERT INTO '.TABLE_PRODUCTS_TO_CATEGORIES.' (products_id, categories_id)
+				$res1 = vam_db_query('INSERT INTO '.TABLE_PRODUCTS_TO_CATEGORIES.' (products_id, categories_id)
 							VALUES ("' . $v_products_id . '", "' . $v_categories_id . '")');
 			} else {
 				// already in this category, nothing to do!
@@ -2074,7 +2074,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 				die();
 			}
 			// they spec'd some prices, so clear all existing entries
-			$result = xtc_db_query('
+			$result = vam_db_query('
 						DELETE
 						FROM
 							'.TABLE_PRODUCTS_GROUPS.'
@@ -2083,7 +2083,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 						);
 			// and insert the new record
 			if ($v_customer_price_1 != ''){
-				$result = xtc_db_query('
+				$result = vam_db_query('
 							INSERT INTO
 								'.TABLE_PRODUCTS_GROUPS.'
 							VALUES
@@ -2096,7 +2096,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							);
 			}
 			if ($v_customer_price_2 != ''){
-				$result = xtc_db_query('
+				$result = vam_db_query('
 							INSERT INTO
 								'.TABLE_PRODUCTS_GROUPS.'
 							VALUES
@@ -2109,7 +2109,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							);
 			}
 			if ($v_customer_price_3 != ''){
-				$result = xtc_db_query('
+				$result = vam_db_query('
 							INSERT INTO
 								'.TABLE_PRODUCTS_GROUPS.'
 							VALUES
@@ -2122,7 +2122,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							);
 			}
 			if ($v_customer_price_4 != ''){
-				$result = xtc_db_query('
+				$result = vam_db_query('
 							INSERT INTO
 								'.TABLE_PRODUCTS_GROUPS.'
 							VALUES
@@ -2141,7 +2141,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 		if (isset($v_attribute_options_id_1)){
 			$attribute_rows = 1; // master row count
 
-			$languages = xtc_get_languages();
+			$languages = vam_get_languages();
 
 			// product options count
 			$attribute_options_count = 1;
@@ -2152,16 +2152,16 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 				// this is useful for removing attributes linked to a product
 				$attributes_clean_query = "delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "'";
 
-				xtc_db_query($attributes_clean_query);
+				vam_db_query($attributes_clean_query);
 
 				$attribute_options_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$$v_attribute_options_id_var . "'";
 
-				$attribute_options_values = xtc_db_query($attribute_options_query);
+				$attribute_options_values = vam_db_query($attribute_options_query);
 
 				// option table update begin
 				if ($attribute_rows == 1) {
 					// insert into options table if no option exists
-					if (xtc_db_num_rows($attribute_options_values) <= 0) {
+					if (vam_db_num_rows($attribute_options_values) <= 0) {
 						for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 							$lid = $languages[$i]['id'];
 
@@ -2170,7 +2170,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							if (isset($$v_attribute_options_name_var)) {
 								$attribute_options_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id, language_id, products_options_name) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_options_name_var . "')";
 
-								$attribute_options_insert = xtc_db_query($attribute_options_insert_query);
+								$attribute_options_insert = vam_db_query($attribute_options_insert_query);
 							}
 						}
 					} else { // update options table, if options already exists
@@ -2182,17 +2182,17 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							if (isset($$v_attribute_options_name_var)) {
 								$attribute_options_update_lang_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$$v_attribute_options_id_var . "' and language_id ='" . (int)$lid . "'";
 
-								$attribute_options_update_lang_values = xtc_db_query($attribute_options_update_lang_query);
+								$attribute_options_update_lang_values = vam_db_query($attribute_options_update_lang_query);
 
 								// if option name doesn't exist for particular language, insert value
-								if (xtc_db_num_rows($attribute_options_update_lang_values) <= 0) {
+								if (vam_db_num_rows($attribute_options_update_lang_values) <= 0) {
 									$attribute_options_lang_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id, language_id, products_options_name) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_options_name_var . "')";
 
-									$attribute_options_lang_insert = xtc_db_query($attribute_options_lang_insert_query);
+									$attribute_options_lang_insert = vam_db_query($attribute_options_lang_insert_query);
 								} else { // if option name exists for particular language, update table
 									$attribute_options_update_query = "update " . TABLE_PRODUCTS_OPTIONS . " set products_options_name = '" . $$v_attribute_options_name_var . "' where products_options_id ='" . (int)$$v_attribute_options_id_var . "' and language_id = '" . (int)$lid . "'";
 
-									$attribute_options_update = xtc_db_query($attribute_options_update_query);
+									$attribute_options_update = vam_db_query($attribute_options_update_query);
 								}
 							}
 						}
@@ -2207,12 +2207,12 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 				while (isset($$v_attribute_values_id_var) && !empty($$v_attribute_values_id_var)) {
 					$attribute_values_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
 
-					$attribute_values_values = xtc_db_query($attribute_values_query);
+					$attribute_values_values = vam_db_query($attribute_values_query);
 
 					// options_values table update begin
 					if ($attribute_rows == 1) {
 						// insert into options_values table if no option exists
-						if (xtc_db_num_rows($attribute_values_values) <= 0) {
+						if (vam_db_num_rows($attribute_values_values) <= 0) {
 							for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 								$lid = $languages[$i]['id'];
 
@@ -2221,7 +2221,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 								if (isset($$v_attribute_values_name_var)) {
 									$attribute_values_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_values_name_var . "')";
 
-									$attribute_values_insert = xtc_db_query($attribute_values_insert_query);
+									$attribute_values_insert = vam_db_query($attribute_values_insert_query);
 								}
 							}
 
@@ -2229,7 +2229,7 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							// insert values to pov2po table
 							$attribute_values_pov2po_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " (products_options_id, products_options_values_id) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "')";
 
-							$attribute_values_pov2po = xtc_db_query($attribute_values_pov2po_query);
+							$attribute_values_pov2po = vam_db_query($attribute_values_pov2po_query);
 						} else { // update options table, if options already exists
 							for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 								$lid = $languages[$i]['id'];
@@ -2239,17 +2239,17 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 								if (isset($$v_attribute_values_name_var)) {
 									$attribute_values_update_lang_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$$v_attribute_values_id_var . "' and language_id ='" . (int)$lid . "'";
 
-									$attribute_values_update_lang_values = xtc_db_query($attribute_values_update_lang_query);
+									$attribute_values_update_lang_values = vam_db_query($attribute_values_update_lang_query);
 
 									// if options_values name doesn't exist for particular language, insert value
-									if (xtc_db_num_rows($attribute_values_update_lang_values) <= 0) {
+									if (vam_db_num_rows($attribute_values_update_lang_values) <= 0) {
 										$attribute_values_lang_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_values_name_var . "')";
 
-										$attribute_values_lang_insert = xtc_db_query($attribute_values_lang_insert_query);
+										$attribute_values_lang_insert = vam_db_query($attribute_values_lang_insert_query);
 									} else { // if options_values name exists for particular language, update table
 										$attribute_values_update_query = "update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . $$v_attribute_values_name_var . "' where products_options_values_id ='" . (int)$$v_attribute_values_id_var . "' and language_id = '" . (int)$lid . "'";
 
-										$attribute_values_update = xtc_db_query($attribute_values_update_query);
+										$attribute_values_update = vam_db_query($attribute_values_update_query);
 									}
 								}
 							}
@@ -2263,20 +2263,20 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					if (isset($$v_attribute_values_price_var) && ($$v_attribute_values_price_var != '')) {
 						$attribute_prices_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id ='" . (int)$$v_attribute_options_id_var . "' and options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
 
-						$attribute_prices_values = xtc_db_query($attribute_prices_query);
+						$attribute_prices_values = vam_db_query($attribute_prices_query);
 
 						$attribute_values_price_prefix = ($$v_attribute_values_price_var < 0) ? '-' : '+';
 
 						// options_values_prices table update begin
 						// insert into options_values_prices table if no price exists
-						if (xtc_db_num_rows($attribute_prices_values) <= 0) {
+						if (vam_db_num_rows($attribute_prices_values) <= 0) {
 							$attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . (int)$$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "')";
 
-							$attribute_prices_insert = xtc_db_query($attribute_prices_insert_query);
+							$attribute_prices_insert = vam_db_query($attribute_prices_insert_query);
 						} else { // update options table, if options already exists
 							$attribute_prices_update_query = "update " . TABLE_PRODUCTS_ATTRIBUTES . " set options_values_price = '" . $$v_attribute_values_price_var . "', price_prefix = '" . $attribute_values_price_prefix . "' where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "' and options_values_id ='" . (int)$$v_attribute_values_id_var . "'";
 
-							$attribute_prices_update = xtc_db_query($attribute_prices_update_query);
+							$attribute_prices_update = vam_db_query($attribute_prices_update_query);
 						}
 					}
 					// options_values price update end
@@ -2300,17 +2300,17 @@ xtc_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					$items[$filelayout['v_mo_image_'.($i+1)]];
       		if (USE_EP_IMAGE_MANIPULATOR == 'true') { prepare_image($items[$filelayout['v_mo_image_'.($i+1)]]); } else { $items[$filelayout['v_mo_image_'.($i+1)]]; }
 				}
-				$check_query = xtc_db_query("select image_id, image_name from " . TABLE_PRODUCTS_IMAGES . " where products_id='" . (int)$v_products_id . "' and image_nr='" . ($i+1) . "'");
-				if (xtc_db_num_rows($check_query) <= 0) {
+				$check_query = vam_db_query("select image_id, image_name from " . TABLE_PRODUCTS_IMAGES . " where products_id='" . (int)$v_products_id . "' and image_nr='" . ($i+1) . "'");
+				if (vam_db_num_rows($check_query) <= 0) {
 					if($items[$filelayout['v_mo_image_'.($i+1)]] != "") {
-						xtc_db_query("insert into " . TABLE_PRODUCTS_IMAGES . " (products_id, image_nr, image_name) values ('" . (int)$v_products_id . "', '" . ($i+1) . "', '" . $items[$filelayout['v_mo_image_'.($i+1)]] . "')");
+						vam_db_query("insert into " . TABLE_PRODUCTS_IMAGES . " (products_id, image_nr, image_name) values ('" . (int)$v_products_id . "', '" . ($i+1) . "', '" . $items[$filelayout['v_mo_image_'.($i+1)]] . "')");
 					}
 				} else {
-					$check = xtc_db_fetch_array($check_query);
+					$check = vam_db_fetch_array($check_query);
 					if($items[$filelayout['v_mo_image_'.($i+1)]] == "") {
-						xtc_db_query("delete from " . TABLE_PRODUCTS_IMAGES . " where image_id='" . $check['image_id'] . "'");
+						vam_db_query("delete from " . TABLE_PRODUCTS_IMAGES . " where image_id='" . $check['image_id'] . "'");
 					} elseif ($items[$filelayout['v_mo_image_'.($i+1)]] != $check['image_name']) {
-						xtc_db_query("update " . TABLE_PRODUCTS_IMAGES . " set image_name='" . $items[$filelayout['v_mo_image_'.($i+1)]] . "' where image_id='" . $check['image_id'] . "'");
+						vam_db_query("update " . TABLE_PRODUCTS_IMAGES . " set image_name='" . $items[$filelayout['v_mo_image_'.($i+1)]] . "' where image_id='" . $check['image_id'] . "'");
 					}
 				}
 			}

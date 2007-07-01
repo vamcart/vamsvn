@@ -23,19 +23,19 @@ $gID = 26;
     switch ($_GET['action']) {
       case 'save':
 
-          $configuration_query = xtc_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '" . (int)$gID . "' order by sort_order");
+          $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '" . (int)$gID . "' order by sort_order");
 
-          while ($configuration = xtc_db_fetch_array($configuration_query))
-              xtc_db_query("UPDATE ".TABLE_CONFIGURATION." SET configuration_value='".$_POST[$configuration['configuration_key']]."' where configuration_key='".$configuration['configuration_key']."'");
+          while ($configuration = vam_db_fetch_array($configuration_query))
+              vam_db_query("UPDATE ".TABLE_CONFIGURATION." SET configuration_value='".$_POST[$configuration['configuration_key']]."' where configuration_key='".$configuration['configuration_key']."'");
 
-               xtc_redirect(FILENAME_ARTICLES_CONFIG. '?gID=' . (int)$gID);
+               vam_redirect(FILENAME_ARTICLES_CONFIG. '?gID=' . (int)$gID);
         break;
 
     }
   }
 
-  $cfg_group_query = xtc_db_query("select configuration_group_title from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '" . (int)$gID . "'");
-  $cfg_group = xtc_db_fetch_array($cfg_group_query);
+  $cfg_group_query = vam_db_query("select configuration_group_title from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '" . (int)$gID . "'");
+  $cfg_group = vam_db_fetch_array($cfg_group_query);
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -66,12 +66,12 @@ $gID = 26;
         
     <h1 class="contentBoxHeading"><?php echo BOX_CONFIGURATION; ?></h1>
             
-<?php echo xtc_draw_form('configuration', FILENAME_ARTICLES_CONFIG, 'gID=' . (int)$gID . '&action=save'); ?>
+<?php echo vam_draw_form('configuration', FILENAME_ARTICLES_CONFIG, 'gID=' . (int)$gID . '&action=save'); ?>
             <table width="100%"  border="0" cellspacing="0" cellpadding="4">
 <?php
-  $configuration_query = xtc_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '" . (int)$gID . "' order by sort_order");
+  $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '" . (int)$gID . "' order by sort_order");
 
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+  while ($configuration = vam_db_fetch_array($configuration_query)) {
     if ($gID == 6) {
       switch ($configuration['configuration_key']) {
         case 'MODULE_PAYMENT_INSTALLED':
@@ -102,7 +102,7 @@ $gID = 26;
           break;
       }
     }
-    if (xtc_not_null($configuration['use_function'])) {
+    if (vam_not_null($configuration['use_function'])) {
       $use_function = $configuration['use_function'];
       if (ereg('->', $use_function)) {
         $class_method = explode('->', $use_function);
@@ -110,25 +110,25 @@ $gID = 26;
           include(DIR_WS_CLASSES . $class_method[0] . '.php');
           ${$class_method[0]} = new $class_method[0]();
         }
-        $cfgValue = xtc_call_function($class_method[1], $configuration['configuration_value'], ${$class_method[0]});
+        $cfgValue = vam_call_function($class_method[1], $configuration['configuration_value'], ${$class_method[0]});
       } else {
-        $cfgValue = xtc_call_function($use_function, $configuration['configuration_value']);
+        $cfgValue = vam_call_function($use_function, $configuration['configuration_value']);
       }
     } else {
       $cfgValue = $configuration['configuration_value'];
     }
 
     if (((!$_GET['cID']) || (@$_GET['cID'] == $configuration['configuration_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
-      $cfg_extra_query = xtc_db_query("select configuration_key,configuration_value, date_added, last_modified, use_function, set_function from " . TABLE_CONFIGURATION . " where configuration_id = '" . $configuration['configuration_id'] . "'");
-      $cfg_extra = xtc_db_fetch_array($cfg_extra_query);
+      $cfg_extra_query = vam_db_query("select configuration_key,configuration_value, date_added, last_modified, use_function, set_function from " . TABLE_CONFIGURATION . " where configuration_id = '" . $configuration['configuration_id'] . "'");
+      $cfg_extra = vam_db_fetch_array($cfg_extra_query);
 
-      $cInfo_array = xtc_array_merge($configuration, $cfg_extra);
+      $cInfo_array = vam_array_merge($configuration, $cfg_extra);
       $cInfo = new objectInfo($cInfo_array);
     }
     if ($configuration['set_function']) {
         eval('$value_field = ' . $configuration['set_function'] . '"' . htmlspecialchars($configuration['configuration_value']) . '");');
       } else {
-        $value_field = xtc_draw_input_field($configuration['configuration_key'], $configuration['configuration_value'],'size=40');
+        $value_field = vam_draw_input_field($configuration['configuration_key'], $configuration['configuration_value'],'size=40');
       }
    // add
 

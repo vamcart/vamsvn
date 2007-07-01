@@ -25,8 +25,8 @@
 
 
       // reset values before writing
-       $admin_access_query = xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
-       $admin_access = xtc_db_fetch_array($admin_access_query);
+       $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
+       $admin_access = vam_db_fetch_array($admin_access_query);
 
        $fields = mysql_list_fields(DB_DATABASE, TABLE_ADMIN_ACCESS);
        $columns = mysql_num_fields($fields);
@@ -35,7 +35,7 @@
              $field=mysql_field_name($fields, $i);
                     if ($field!='customers_id') {
 
-                    xtc_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET
+                    vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET
                                   ".$field."=0 where customers_id='".(int)$_GET['cID']."'");
     		}
         }
@@ -45,22 +45,22 @@
       $access_ids='';
         if(isset($_POST['access'])) foreach($_POST['access'] as $key){
 
-        xtc_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET ".$key."=1 where customers_id='".(int)$_GET['cID']."'");
+        vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET ".$key."=1 where customers_id='".(int)$_GET['cID']."'");
 
         }
 
-        xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
+        vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
         break;
       }
     }
     if ($_GET['cID'] != '') {
       if ($_GET['cID'] == 1) {
-        xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
+        vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
       } else {
-        $allow_edit_query = xtc_db_query("select customers_status, customers_firstname, customers_lastname from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$_GET['cID'] . "'");
-        $allow_edit = xtc_db_fetch_array($allow_edit_query);
+        $allow_edit_query = vam_db_query("select customers_status, customers_firstname, customers_lastname from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$_GET['cID'] . "'");
+        $allow_edit = vam_db_fetch_array($allow_edit_query);
         if ($allow_edit['customers_status'] != 0 || $allow_edit == '') {
-          xtc_redirect(xtc_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
+          vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$_GET['cID'], 'NONSSL'));
         }
       }
     }
@@ -98,23 +98,23 @@
 
       <table width="100%" cellpadding="0" cellspacing="2">
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FF6969" ><?php echo xtc_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FF6969" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_SYSTEM; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="69CDFF" ><?php echo xtc_draw_separator('pixel_trans.gif',10, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="69CDFF" ><?php echo vam_draw_separator('pixel_trans.gif',10, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_CUSTOMERS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="6BFF7F" ><?php echo xtc_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="6BFF7F" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_PRODUCTS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="BFA8FF" ><?php echo xtc_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="BFA8FF" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_STATISTICS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FFE6A8" ><?php echo xtc_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FFE6A8" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_TOOLS; ?></td>
       </tr>
       </table>
@@ -131,21 +131,21 @@
       </tr>
       <tr><table border="0" cellpadding="0" cellspacing="2">
 <?php
- echo xtc_draw_form('accounting', FILENAME_ACCOUNTING, 'cID=' . $_GET['cID']  . '&action=save', 'post', 'enctype="multipart/form-data"');
+ echo vam_draw_form('accounting', FILENAME_ACCOUNTING, 'cID=' . $_GET['cID']  . '&action=save', 'post', 'enctype="multipart/form-data"');
 
    $admin_access='';
-    $customers_id = xtc_db_prepare_input($_GET['cID']);
-    $admin_access_query = xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
-    $admin_access = xtc_db_fetch_array($admin_access_query);
+    $customers_id = vam_db_prepare_input($_GET['cID']);
+    $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
+    $admin_access = vam_db_fetch_array($admin_access_query);
 
-    $group_query=xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = 'groups'");
-    $group_access = xtc_db_fetch_array($group_query);
+    $group_query=vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = 'groups'");
+    $group_access = vam_db_fetch_array($group_query);
     if ($admin_access == '') {
-      xtc_db_query("INSERT INTO " . TABLE_ADMIN_ACCESS . " (customers_id) VALUES ('" . (int)$_GET['cID'] . "')");
-      $admin_access_query = xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
-      $group_query=xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = 'groups'");
-      $group_access = xtc_db_fetch_array($admin_access_query);
-      $admin_access = xtc_db_fetch_array($admin_access_query);
+      vam_db_query("INSERT INTO " . TABLE_ADMIN_ACCESS . " (customers_id) VALUES ('" . (int)$_GET['cID'] . "')");
+      $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
+      $group_query=vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = 'groups'");
+      $group_access = vam_db_fetch_array($admin_access_query);
+      $admin_access = vam_db_fetch_array($admin_access_query);
     }
 
 $fields = mysql_list_fields(DB_DATABASE, TABLE_ADMIN_ACCESS);
@@ -176,7 +176,7 @@ for ($i = 0; $i < $columns; $i++) {
 
     }
     echo '<tr class="dataTable">
-    <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="'.$color.'" >'.xtc_draw_separator('pixel_trans.gif',15, 15).'</td>
+    <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="'.$color.'" >'.vam_draw_separator('pixel_trans.gif',15, 15).'</td>
         <td width="100%" class="dataTableContentRow">
         <input type="checkbox" name="access[]" value="'.$field.'"'.$checked.'>
         '.$field.'</td>
