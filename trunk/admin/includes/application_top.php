@@ -290,7 +290,7 @@
   }
 
   define('FILENAME_IMAGEMANIPULATOR',IMAGE_MANIPULATOR);
-    function xtDBquery($query) {
+    function vamDBquery($query) {
        if (DB_CACHE=='true') {
              $result=vam_db_queryCached($query);
              //echo 'cached query: '.$query.'<br>';

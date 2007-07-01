@@ -27,8 +27,8 @@ if (!$_GET['oID'])
 	$_GET['oID'] = $_POST['oID'];
 $order = new order($_GET['oID']);
 
-require (DIR_FS_CATALOG.DIR_WS_CLASSES.'xtcPrice.php');
-$xtPrice = new xtcPrice($order->info['currency'], $order->info['status']);
+require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vamPrice.php');
+$xtPrice = new vamPrice($order->info['currency'], $order->info['status']);
 
 require_once (DIR_FS_INC.'vam_get_tax_class_id.inc.php');
 require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
@@ -340,20 +340,20 @@ if ($_GET['action'] == "curr_edit") {
 
 		if ($old_curr['code'] == DEFAULT_CURRENCY) {
 
-			$xtPrice = new xtcPrice($curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($curr['code'], $order->info['status']);
 
 			$products_price = $xtPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $order_products['products_price'], '', $order->customer['ID']);
 
 			$final_price = $xtPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $order_products['final_price'], '', $order->customer['ID']);
 		} else {
 
-			$xtPrice = new xtcPrice($old_curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($old_curr['code'], $order->info['status']);
 
 			$p_price = $xtPrice->xtcRemoveCurr($order_products['products_price']);
 
 			$f_price = $xtPrice->xtcRemoveCurr($order_products['final_price']);
 
-			$xtPrice = new xtcPrice($curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($curr['code'], $order->info['status']);
 
 			$products_price = $xtPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $p_price, '', $order->customer['ID']);
 
@@ -371,17 +371,17 @@ if ($_GET['action'] == "curr_edit") {
 
 		if ($old_curr['code'] == DEFAULT_CURRENCY) {
 
-			$xtPrice = new xtcPrice($curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($curr['code'], $order->info['status']);
 
 			$value = $xtPrice->xtcGetPrice('', $format = false, '', '', $order_total['value'], '', $order->customer['ID']);
 
 		} else {
 
-			$xtPrice = new xtcPrice($old_curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($old_curr['code'], $order->info['status']);
 
 			$nvalue = $xtPrice->xtcRemoveCurr($order_total['value']);
 
-			$xtPrice = new xtcPrice($curr['code'], $order->info['status']);
+			$xtPrice = new vamPrice($curr['code'], $order->info['status']);
 
 			$value = $xtPrice->xtcGetPrice('', $format = false, '', '', $nvalue, '', $order->customer['ID']);
 		}

@@ -26,8 +26,8 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
    require_once(DIR_FS_INC .'vam_get_tax_rate.inc.php');
    require_once(DIR_FS_INC .'vam_get_tax_class_id.inc.php');
-   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'xtcPrice.php');
-   $xtPrice = new xtcPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
+   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vamPrice.php');
+   $xtPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="SUBMIT_ATTRIBUTES" enctype="multipart/form-data"><input type="hidden" name="current_product_id" value="<?php echo $_POST['current_product_id']; ?>"><input type="hidden" name="action" value="change">
 <?php

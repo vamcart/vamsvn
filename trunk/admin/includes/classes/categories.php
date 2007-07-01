@@ -261,11 +261,11 @@ class categories {
 			$dest_category_id = vam_db_prepare_input($dest_category_id);
 
 			//get data
-			$ccopy_query = xtDBquery("SELECT * FROM ".TABLE_CATEGORIES." WHERE categories_id = '".$src_category_id."'");
+			$ccopy_query = vamDBquery("SELECT * FROM ".TABLE_CATEGORIES." WHERE categories_id = '".$src_category_id."'");
 			$ccopy_values = vam_db_fetch_array($ccopy_query);
 
 			//get descriptions
-			$cdcopy_query = xtDBquery("SELECT * FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id = '".$src_category_id."'");
+			$cdcopy_query = vamDBquery("SELECT * FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id = '".$src_category_id."'");
 
 			//copy data
 			
@@ -296,7 +296,7 @@ class categories {
 			$_SESSION['copied'][] = $new_cat_id;
 
 			//copy / link products
-			$get_prod_query = xtDBquery("SELECT products_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE categories_id = '".$src_category_id."'");
+			$get_prod_query = vamDBquery("SELECT products_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE categories_id = '".$src_category_id."'");
 			while ($product = vam_db_fetch_array($get_prod_query)) {
 				if ($ctype == 'link') {
 					$this->link_product($product['products_id'], $new_cat_id);
@@ -315,16 +315,16 @@ class categories {
 				$suffix = array_pop($get_suffix);
 				$dest_pic = $new_cat_id.'.'.$suffix;
 				@ copy($src_pic, DIR_FS_CATALOG_IMAGES.'categories/'.$dest_pic);
-				xtDBquery("UPDATE categories SET categories_image = '".$dest_pic."' WHERE categories_id = '".$new_cat_id."'");
+				vamDBquery("UPDATE categories SET categories_image = '".$dest_pic."' WHERE categories_id = '".$new_cat_id."'");
 			}
 
 			//copy descriptions
 			while ($cdcopy_values = vam_db_fetch_array($cdcopy_query)) {
-				xtDBquery("INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION." (categories_id, language_id, categories_name, categories_heading_title, categories_description, categories_meta_title, categories_meta_description, categories_meta_keywords) VALUES ('".$new_cat_id."' , '".$cdcopy_values['language_id']."' , '".addslashes($cdcopy_values['categories_name'])."' , '".addslashes($cdcopy_values['categories_heading_title'])."' , '".addslashes($cdcopy_values['categories_description'])."' , '".addslashes($cdcopy_values['categories_meta_title'])."' , '".addslashes($cdcopy_values['categories_meta_description'])."' , '".addslashes($cdcopy_values['categories_meta_keywords'])."')");
+				vamDBquery("INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION." (categories_id, language_id, categories_name, categories_heading_title, categories_description, categories_meta_title, categories_meta_description, categories_meta_keywords) VALUES ('".$new_cat_id."' , '".$cdcopy_values['language_id']."' , '".addslashes($cdcopy_values['categories_name'])."' , '".addslashes($cdcopy_values['categories_heading_title'])."' , '".addslashes($cdcopy_values['categories_description'])."' , '".addslashes($cdcopy_values['categories_meta_title'])."' , '".addslashes($cdcopy_values['categories_meta_description'])."' , '".addslashes($cdcopy_values['categories_meta_keywords'])."')");
 			}
 
 			//get child categories of current category
-			$crcopy_query = xtDBquery("SELECT categories_id FROM ".TABLE_CATEGORIES." WHERE parent_id = '".$src_category_id."'");
+			$crcopy_query = vamDBquery("SELECT categories_id FROM ".TABLE_CATEGORIES." WHERE parent_id = '".$src_category_id."'");
 
 			//and go recursive
 			while ($crcopy_values = vam_db_fetch_array($crcopy_query)) {
@@ -728,7 +728,7 @@ class categories {
 
 	function duplicate_product($src_products_id, $dest_categories_id) {
 
-		$product_query = xtDBquery("SELECT *
+		$product_query = vamDBquery("SELECT *
 				    	                                 FROM ".TABLE_PRODUCTS."
 				    	                                WHERE products_id = '".vam_db_input($src_products_id)."'");
 
@@ -778,7 +778,7 @@ class categories {
 			$dup_products_image_name = $dup_products_id.'_0'.'.'.$nsuffix;
 
 			//write to DB
-			xtDBquery("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."' WHERE products_id = '".$dup_products_id."'");
+			vamDBquery("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."' WHERE products_id = '".$dup_products_id."'");
 
 			@ copy(DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$dup_products_image_name);
 			@ copy(DIR_FS_CATALOG_INFO_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_INFO_IMAGES.'/'.$dup_products_image_name);
@@ -1139,13 +1139,13 @@ function is_image_unused ($image_name){
 
 function get_count_of_image_usage ($image_name) {
 
-	$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
+	$dup_check_query = vamDBquery("SELECT COUNT(*) AS total
 														FROM ".TABLE_PRODUCTS."
 													   WHERE products_image = '".$image_name."'");
 	$dup_check = vam_db_fetch_array($dup_check_query);
 	$product_images_count = $dup_check['total'];
 
-	$dup_check_query = xtDBquery("SELECT COUNT(*) AS total
+	$dup_check_query = vamDBquery("SELECT COUNT(*) AS total
 														FROM ".TABLE_PRODUCTS_IMAGES."
 													   WHERE image_name = '".$image_name."'");
 	$mo_dup_check = vam_db_fetch_array($dup_check_query);
