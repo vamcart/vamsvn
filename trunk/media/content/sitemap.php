@@ -30,13 +30,13 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
 
    if ($include_itself) {
      $category_query = "select cd.categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " cd where cd.language_id = '" . $_SESSION['languages_id'] . "' and c.categories_status = '1' and cd.categories_id = '" . $parent_id . "'";
-     $category_query = xtDBquery($category_query);
+     $category_query = vamDBquery($category_query);
      $category = vam_db_fetch_array($category_query,true);
      $category_tree_array[] = array('id' => $parent_id, 'text' => $category['categories_name']);
    }
 
    $categories_query = "select c.categories_id, cd.categories_name, c.parent_id from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . $_SESSION['languages_id'] . "' and c.parent_id = '" . $parent_id . "' and c.categories_status = '1' order by c.sort_order, cd.categories_name";
-   $categories_query = xtDBquery($categories_query);
+   $categories_query = vamDBquery($categories_query);
    while ($categories = vam_db_fetch_array($categories_query,true)) {
    
      $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
@@ -64,7 +64,7 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
       ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC";
 
  // db Cache
- $categories_query = xtDBquery($categories_query);
+ $categories_query = vamDBquery($categories_query);
  $module_content = array();
  while ($categories = vam_db_fetch_array($categories_query,true)) {
    
