@@ -20,8 +20,8 @@
 ------------------------------------------------------------------------------*/
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_php_mail.inc.php');
-require_once (DIR_FS_INC.'xtc_validate_email.inc.php');
+require_once (DIR_FS_INC.'vam_php_mail.inc.php');
+require_once (DIR_FS_INC.'vam_validate_email.inc.php');
 
 class cc {
 	var $code, $title, $description, $enabled;
@@ -53,8 +53,8 @@ class cc {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_CC_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_CC_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_CC_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -73,11 +73,11 @@ class cc {
 
 	function javascript_validation() {
 		if (strtolower(USE_CC_CVV) == 'true') {
-			$js = '  if (payment_value == "'.$this->code.'") {'."\n".'    var cc_owner = document.getElementById("checkout_payment").cc_owner.value;'."\n".'    var cc_number = document.getElementById("checkout_payment").cc_number.value;'."\n".'	 var cc_cvv = document.getElementById("checkout_payment").cc_cvv.value;'."\n".'    if (cc_owner == "" || cc_owner.length < '.CC_OWNER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.xtc_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_OWNER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'    if (cc_number == "" || cc_number.length < '.CC_NUMBER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.xtc_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_NUMBER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'	 if (cc_cvv == "" || cc_cvv.length <= 2) {'."\n".'	   error_message = error_message + unescape("'.xtc_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_CVV).'");'."\n".'	   error = 1;'."\n".'	 }'."\n".'  }'."\n";
+			$js = '  if (payment_value == "'.$this->code.'") {'."\n".'    var cc_owner = document.getElementById("checkout_payment").cc_owner.value;'."\n".'    var cc_number = document.getElementById("checkout_payment").cc_number.value;'."\n".'	 var cc_cvv = document.getElementById("checkout_payment").cc_cvv.value;'."\n".'    if (cc_owner == "" || cc_owner.length < '.CC_OWNER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.vam_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_OWNER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'    if (cc_number == "" || cc_number.length < '.CC_NUMBER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.vam_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_NUMBER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'	 if (cc_cvv == "" || cc_cvv.length <= 2) {'."\n".'	   error_message = error_message + unescape("'.vam_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_CVV).'");'."\n".'	   error = 1;'."\n".'	 }'."\n".'  }'."\n";
 
 			return $js;
 		} else {
-			$js = '  if (payment_value == "'.$this->code.'") {'."\n".'    var cc_owner = document.getElementById("checkout_payment").cc_owner.value;'."\n".'    var cc_number = document.getElementById("checkout_payment").cc_number.value;'."\n".'    if (cc_owner == "" || cc_owner.length < '.CC_OWNER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.xtc_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_OWNER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'    if (cc_number == "" || cc_number.length < '.CC_NUMBER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.xtc_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_NUMBER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'  }'."\n";
+			$js = '  if (payment_value == "'.$this->code.'") {'."\n".'    var cc_owner = document.getElementById("checkout_payment").cc_owner.value;'."\n".'    var cc_number = document.getElementById("checkout_payment").cc_number.value;'."\n".'    if (cc_owner == "" || cc_owner.length < '.CC_OWNER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.vam_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_OWNER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'    if (cc_number == "" || cc_number.length < '.CC_NUMBER_MIN_LENGTH.') {'."\n".'      error_message = error_message + unescape("'.vam_js_lang(MODULE_PAYMENT_CC_TEXT_JS_CC_NUMBER).'");'."\n".'      error = 1;'."\n".'    }'."\n".'  }'."\n";
 
 			return $js;
 		}
@@ -105,40 +105,40 @@ class cc {
 		$form_array = array ();
 
 		// Owner
-		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_OWNER, 'field' => xtc_draw_input_field('cc_owner', $order->billing['firstname'].' '.$order->billing['lastname']))));
+		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_OWNER, 'field' => vam_draw_input_field('cc_owner', $order->billing['firstname'].' '.$order->billing['lastname']))));
 		// CC Number
-		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_NUMBER, 'field' => xtc_draw_input_field('cc_number'))));
+		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_NUMBER, 'field' => vam_draw_input_field('cc_number'))));
 
 		// Startdate
 		if (strtolower(USE_CC_START) == 'true') {
-			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_START, 'field' => xtc_draw_pull_down_menu('cc_start_month', $start_month).'&nbsp;'.xtc_draw_pull_down_menu('cc_start_year', $start_year))));
+			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_START, 'field' => vam_draw_pull_down_menu('cc_start_month', $start_month).'&nbsp;'.vam_draw_pull_down_menu('cc_start_year', $start_year))));
 		}
 		// expire date
-		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_EXPIRES, 'field' => xtc_draw_pull_down_menu('cc_expires_month', $expires_month).'&nbsp;'.xtc_draw_pull_down_menu('cc_expires_year', $expires_year))));
+		$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_EXPIRES, 'field' => vam_draw_pull_down_menu('cc_expires_month', $expires_month).'&nbsp;'.vam_draw_pull_down_menu('cc_expires_year', $expires_year))));
 
 		// CVV
 		if (strtolower(USE_CC_CVV) == 'true') {
-			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_CVV.' '.'<a href="javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_CVV, '', 'SSL').'\')">'.MODULE_PAYMENT_CC_TEXT_CVV_LINK.'</a>', 'field' => xtc_draw_input_field('cc_cvv', '', 'size=4 maxlength=4'))));
+			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_CVV.' '.'<a href="javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_CVV, '', 'SSL').'\')">'.MODULE_PAYMENT_CC_TEXT_CVV_LINK.'</a>', 'field' => vam_draw_input_field('cc_cvv', '', 'size=4 maxlength=4'))));
 		}
 
 		if (strtolower(USE_CC_ISS) == 'true') {
-			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_ISSUE, 'field' => xtc_draw_input_field('cc_issue', '', 'size=2 maxlength=2'))));
+			$form_array = array_merge($form_array, array (array ('title' => MODULE_PAYMENT_CC_TEXT_CREDIT_CARD_ISSUE, 'field' => vam_draw_input_field('cc_issue', '', 'size=2 maxlength=2'))));
 		}
 
 
 		// cards
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_VISA) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_visa.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_visa.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_MASTERCARD) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_mastercard.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_mastercard.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_AMERICANEXPRESS) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_amex.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_amex.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_DINERSCLUB) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_diners.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_diners.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_DISCOVERNOVUS) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_discover.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_discover.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_JCB) == 'true')
-					$this->accepted .= xtc_image(DIR_WS_ICONS.'cc_jcb.jpg');
+					$this->accepted .= vam_image(DIR_WS_ICONS.'cc_jcb.jpg');
 				if (strtolower(MODULE_PAYMENT_CC_ACCEPT_OZBANKCARD) == 'true')
 					$this->accepted .='';
 					
@@ -201,7 +201,7 @@ class cc {
 		if (($result == false) || ($result < 1)) {
 			$payment_error_return = 'payment_error='.$this->code.'&error='.urlencode($error).'&cc_owner='.urlencode($_POST['cc_owner']).'&cc_expires_month='.$_POST['cc_expires_month'].'&cc_expires_year='.$_POST['cc_expires_year'];
 
-			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+			vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 		}
 		if (strtolower(USE_CC_CVV) != 'true') {
 			$this->cc_cvv = '000';
@@ -248,7 +248,7 @@ class cc {
 
 	function process_button() {
 
-		$process_button_string = xtc_draw_hidden_field('cc_owner', $_POST['cc_owner']).xtc_draw_hidden_field('cc_expires', $_POST['cc_expires_month'].$_POST['cc_expires_year']).xtc_draw_hidden_field('cc_start', $_POST['cc_start_month'].$_POST['cc_start_year']).xtc_draw_hidden_field('cc_cvv', $_POST['cc_cvv']).xtc_draw_hidden_field('cc_issue', $_POST['cc_issue']).xtc_draw_hidden_field('cc_type', $this->cc_card_type).xtc_draw_hidden_field('cc_number', $this->cc_card_number);
+		$process_button_string = vam_draw_hidden_field('cc_owner', $_POST['cc_owner']).vam_draw_hidden_field('cc_expires', $_POST['cc_expires_month'].$_POST['cc_expires_year']).vam_draw_hidden_field('cc_start', $_POST['cc_start_month'].$_POST['cc_start_year']).vam_draw_hidden_field('cc_cvv', $_POST['cc_cvv']).vam_draw_hidden_field('cc_issue', $_POST['cc_issue']).vam_draw_hidden_field('cc_type', $this->cc_card_type).vam_draw_hidden_field('cc_number', $this->cc_card_number);
 
 		return $process_button_string;
 	}
@@ -256,7 +256,7 @@ class cc {
 	function before_process() {
 		global $order;
 
-		if ((defined('MODULE_PAYMENT_CC_EMAIL')) && (xtc_validate_email(MODULE_PAYMENT_CC_EMAIL))) {
+		if ((defined('MODULE_PAYMENT_CC_EMAIL')) && (vam_validate_email(MODULE_PAYMENT_CC_EMAIL))) {
 			$len = strlen($_POST['cc_number']);
 
 			$this->cc_middle = substr($_POST['cc_number'], 4, ($len -8));
@@ -270,13 +270,13 @@ class cc {
 	function after_process() {
 		global $insert_id;
 
-		if ((defined('MODULE_PAYMENT_CC_EMAIL')) && (xtc_validate_email(MODULE_PAYMENT_CC_EMAIL))) {
+		if ((defined('MODULE_PAYMENT_CC_EMAIL')) && (vam_validate_email(MODULE_PAYMENT_CC_EMAIL))) {
 			$message = 'Order #'.$insert_id."\n\n".'Middle: '.$this->cc_middle."\n\n".'CVV:'.$this->cc_cvv."\n\n".'Start:'.$this->cc_start."\n\n".'ISSUE:'.$this->cc_issue."\n\n";
 
-			xtc_php_mail(STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, MODULE_PAYMENT_CC_EMAIL, '', '', STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', '', 'Extra Order Info: #'.$insert_id, nl2br($message), $message);
+			vam_php_mail(STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, MODULE_PAYMENT_CC_EMAIL, '', '', STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', '', 'Extra Order Info: #'.$insert_id, nl2br($message), $message);
 		}
 		if ($this->order_status)
-			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
 	}
 
@@ -289,46 +289,46 @@ class cc {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_CC_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_CC_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 
 	function install() {
 		// BMC Changes Start
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_STATUS', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_ALLOWED', '', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_VAL', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_BLACK', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_ENC', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_SORT_ORDER', '0', '6', '0' , now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ZONE', '0', '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('', 'MODULE_PAYMENT_CC_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_CVV', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_ISS', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_START', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'CC_CVV_MIN_LENGTH', '3', '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_EMAIL', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_ALLOWED', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_VAL', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_BLACK', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'CC_ENC', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_SORT_ORDER', '0', '6', '0' , now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ZONE', '0', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('', 'MODULE_PAYMENT_CC_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_CVV', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_ISS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'USE_CC_START', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'CC_CVV_MIN_LENGTH', '3', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('', 'MODULE_PAYMENT_CC_EMAIL', '', '6', '0', now())");
 		// added new configuration keys
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DINERSCLUB','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_AMERICANEXPRESS','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_CARTEBLANCHE','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_OZBANKCARD','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DISCOVERNOVUS','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DELTA','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_ELECTRON','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_MASTERCARD','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_SWITCH','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_SOLO','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_JCB','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_MAESTRO','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_VISA','False', 6, 0, 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DINERSCLUB','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_AMERICANEXPRESS','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_CARTEBLANCHE','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_OZBANKCARD','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DISCOVERNOVUS','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_DELTA','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_ELECTRON','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_MASTERCARD','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_SWITCH','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_SOLO','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_JCB','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_MAESTRO','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_id, configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('', 'MODULE_PAYMENT_CC_ACCEPT_VISA','False', 6, 0, 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
 		// BMC Changes End
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {

@@ -30,8 +30,8 @@
    ---------------------------------------------------------------------------------------*/
 
   // include needed functions
-  require_once(DIR_FS_INC . 'xtc_count_payment_modules.inc.php');
-  require_once(DIR_FS_INC . 'xtc_in_array.inc.php');
+  require_once(DIR_FS_INC . 'vam_count_payment_modules.inc.php');
+  require_once(DIR_FS_INC . 'vam_in_array.inc.php');
 
   class payment {
     var $modules, $selected_module;
@@ -40,12 +40,12 @@
     function payment($module = '') {
       global $PHP_SELF,$order;
 
-      if (defined('MODULE_PAYMENT_INSTALLED') && xtc_not_null(MODULE_PAYMENT_INSTALLED)) {
+      if (defined('MODULE_PAYMENT_INSTALLED') && vam_not_null(MODULE_PAYMENT_INSTALLED)) {
         $this->modules = explode(';', MODULE_PAYMENT_INSTALLED);
 
         $include_modules = array();
 
-        if ( (xtc_not_null($module)) && (in_array($module . '.' . substr($PHP_SELF, (strrpos($PHP_SELF, '.')+1)), $this->modules)) ) {
+        if ( (vam_not_null($module)) && (in_array($module . '.' . substr($PHP_SELF, (strrpos($PHP_SELF, '.')+1)), $this->modules)) ) {
           $this->selected_module = $module;
 
           $include_modules[] = array('class' => $module, 'file' => $module . '.php');
@@ -86,11 +86,11 @@
         // if there is only one payment method, select it as default because in
         // checkout_confirmation.php the $payment variable is being assigned the
         // $HTTP_POST_VARS['payment'] value which will be empty (no radio button selection possible)
-        if ( (xtc_count_payment_modules() == 1) && (!is_object($_SESSION['payment'])) ) {
+        if ( (vam_count_payment_modules() == 1) && (!is_object($_SESSION['payment'])) ) {
           $_SESSION['payment'] = $include_modules[0]['class'];
         }
 
-        if ( (xtc_not_null($module)) && (in_array($module, $this->modules)) && (isset($GLOBALS[$module]->form_action_url)) ) {
+        if ( (vam_not_null($module)) && (in_array($module, $this->modules)) && (isset($GLOBALS[$module]->form_action_url)) ) {
           $this->form_action_url = $GLOBALS[$module]->form_action_url;
         }
       }
@@ -125,7 +125,7 @@
         $js = '<script type="text/javascript"><!-- ' . "\n" .
               'function check_form() {' . "\n" .
               '  var error = 0;' . "\n" .
-              '  var error_message = unescape("' . xtc_js_lang(JS_ERROR) . '");' . "\n" .
+              '  var error_message = unescape("' . vam_js_lang(JS_ERROR) . '");' . "\n" .
               '  var payment_value = null;' . "\n" .
               '  if (document.getElementById("checkout_payment").payment.length) {' . "\n" .
               '    for (var i=0; i<document.getElementById("checkout_payment").payment.length; i++) {' . "\n" .
@@ -148,12 +148,12 @@
         }
         if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
         $js .= "\n" . '  if (!document.getElementById("checkout_payment").conditions.checked) {' . "\n" .
-               '    error_message = error_message + unescape("' . xtc_js_lang(ERROR_CONDITIONS_NOT_ACCEPTED) . '");' . "\n" .
+               '    error_message = error_message + unescape("' . vam_js_lang(ERROR_CONDITIONS_NOT_ACCEPTED) . '");' . "\n" .
                '    error = 1;' . "\n" .
                '  }' . "\n\n";
         }
         $js .= "\n" . '  if (payment_value == null) {' . "\n" .
-               '    error_message = error_message + unescape("' . xtc_js_lang(JS_ERROR_NO_PAYMENT_MODULE_SELECTED) . '");' . "\n" .
+               '    error_message = error_message + unescape("' . vam_js_lang(JS_ERROR_NO_PAYMENT_MODULE_SELECTED) . '");' . "\n" .
                '    error = 1;' . "\n" .
                '  }' . "\n\n" .
                '  if (error == 1 && submitter != 1) {' . "\n" . // GV Code Start/End

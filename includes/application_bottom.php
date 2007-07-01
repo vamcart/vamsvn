@@ -34,7 +34,7 @@ if (STORE_PAGE_PARSE_TIME == 'true') {
 
 if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1)) {
 	if ((PHP_VERSION < '4.0.4') && (PHP_VERSION >= '4')) {
-		xtc_gzip_output(GZIP_LEVEL);
+		vam_gzip_output(GZIP_LEVEL);
 	}
 }
 ?>

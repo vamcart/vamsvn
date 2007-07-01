@@ -21,14 +21,14 @@
 
   $module_smarty->assign('language', $_SESSION['language']);
   $module_smarty->assign('ERROR',$error);
-  $module_smarty->assign('BUTTON','<a href="javascript:history.back(1)">'. xtc_image_button('button_back.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+  $module_smarty->assign('BUTTON','<a href="javascript:history.back(1)">'. vam_image_button('button_back.gif', IMAGE_BUTTON_CONTINUE).'</a>');
   $module_smarty->assign('language', $_SESSION['language']);
 
   // search field
-  $module_smarty->assign('FORM_ACTION',xtc_draw_form('new_find', xtc_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get').xtc_hide_session_id());
-  $module_smarty->assign('INPUT_SEARCH',xtc_draw_input_field('keywords', '', 'size="30" maxlength="30"'));
-  $module_smarty->assign('BUTTON_SUBMIT',xtc_image_submit('button_quick_find.gif', BOX_HEADING_SEARCH));
-  $module_smarty->assign('LINK_ADVANCED',xtc_href_link(FILENAME_ADVANCED_SEARCH));
+  $module_smarty->assign('FORM_ACTION',vam_draw_form('new_find', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get').vam_hide_session_id());
+  $module_smarty->assign('INPUT_SEARCH',vam_draw_input_field('keywords', '', 'size="30" maxlength="30"'));
+  $module_smarty->assign('BUTTON_SUBMIT',vam_image_submit('button_quick_find.gif', BOX_HEADING_SEARCH));
+  $module_smarty->assign('LINK_ADVANCED',vam_href_link(FILENAME_ADVANCED_SEARCH));
   $module_smarty->assign('FORM_END', '</form>');
 
 

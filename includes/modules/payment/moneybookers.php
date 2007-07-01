@@ -41,20 +41,20 @@ class moneybookers {
 
 		$this->mbLanguages = array ("EN", "DE", "ES", "FR");
 
-		$result = xtc_db_query("SELECT mb_currID FROM " . TABLE_MONEYBOOKERS_CURRENCIES . "");
+		$result = vam_db_query("SELECT mb_currID FROM " . TABLE_MONEYBOOKERS_CURRENCIES . "");
 		while (list ($currID) = mysql_fetch_row($result)) {
 			$this->mbCurrencies[] = $currID;
 		}
 
-		$result = xtc_db_query("SELECT code FROM " . TABLE_CURRENCIES . "");
+		$result = vam_db_query("SELECT code FROM " . TABLE_CURRENCIES . "");
 		while (list ($currID) = mysql_fetch_row($result)) {
 			$this->aCurrencies[] = $currID;
 		}
 
-		$result = xtc_db_query("SELECT configuration_value FROM ".TABLE_CONFIGURATION." WHERE configuration_key = 'DEFAULT_CURRENCY'");
+		$result = vam_db_query("SELECT configuration_value FROM ".TABLE_CONFIGURATION." WHERE configuration_key = 'DEFAULT_CURRENCY'");
 		list ($this->defCurr) = mysql_fetch_row($result);
 
-		$result = xtc_db_query("SELECT configuration_value FROM ".TABLE_CONFIGURATION." WHERE configuration_key = 'DEFAULT_LANGUAGE'");
+		$result = vam_db_query("SELECT configuration_value FROM ".TABLE_CONFIGURATION." WHERE configuration_key = 'DEFAULT_LANGUAGE'");
 		list ($this->defLang) = mysql_fetch_row($result);
 		$this->defLang = strtoupper($this->defLang);
 		if (!in_array($this->defLang, $this->mbLanguages)) {
@@ -78,8 +78,8 @@ class moneybookers {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_MONEYBOOKERS_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_IEB_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_IEB_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -116,7 +116,7 @@ class moneybookers {
 	function process_button() {
 		global $order, $order_total_modules, $currency, $languages_id, $xtPrice;
 
-		$result = xtc_db_query("SELECT code FROM " . TABLE_LANGUAGES . " WHERE languages_id = '".$_SESSION['languages_id']."'");
+		$result = vam_db_query("SELECT code FROM " . TABLE_LANGUAGES . " WHERE languages_id = '".$_SESSION['languages_id']."'");
 		list ($lang_code) = mysql_fetch_row($result);
 		$mbLanguage = strtoupper($lang_code);
 		if ($mbLanguage == "US") {
@@ -131,11 +131,11 @@ class moneybookers {
 			$mbCurrency = MODULE_PAYMENT_MONEYBOOKERS_CURRENCY;
 		}
 
-		$result = xtc_db_query("SELECT mb_cID FROM " . TABLE_MONEYBOOKERS_COUNTRIES . ", " . TABLE_COUNTRIES . " WHERE (osc_cID = countries_id) AND (countries_id = '{$order->billing['country']['id']}')");
+		$result = vam_db_query("SELECT mb_cID FROM " . TABLE_MONEYBOOKERS_COUNTRIES . ", " . TABLE_COUNTRIES . " WHERE (osc_cID = countries_id) AND (countries_id = '{$order->billing['country']['id']}')");
 		list ($mbCountry) = mysql_fetch_row($result);
 
 		$this->transaction_id = $this->generate_trid();
-		$result = xtc_db_query("INSERT INTO " . TABLE_MONEYBOOKERS . " (mb_TRID, mb_DATE) VALUES ('{$this->transaction_id}', NOW())");
+		$result = vam_db_query("INSERT INTO " . TABLE_MONEYBOOKERS . " (mb_TRID, mb_DATE) VALUES ('{$this->transaction_id}', NOW())");
 		if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 			$total = $order->info['total'] + $order->info['tax'];
 		} else {
@@ -147,10 +147,10 @@ class moneybookers {
 			$amount = round($xtPrice->xtcCalculateCurrEx($total, $mbCurrency), $xtPrice->get_decimal_places($mbCurrency));
 		}
 
-		$process_button_string = xtc_draw_hidden_field('pay_to_email', MODULE_PAYMENT_MONEYBOOKERS_EMAILID).xtc_draw_hidden_field('transaction_id', $this->transaction_id).xtc_draw_hidden_field('return_url', xtc_href_link(FILENAME_CHECKOUT_PROCESS, 'trid='.$this->transaction_id, 'NONSSL', false)).xtc_draw_hidden_field('cancel_url', xtc_href_link(FILENAME_CHECKOUT_PAYMENT, MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT1.$this->code.MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT2, 'SSL', true, false)).xtc_draw_hidden_field('status_url', 'mailto:'.MODULE_PAYMENT_MONEYBOOKERS_EMAILID).xtc_draw_hidden_field('language', $mbLanguage).xtc_draw_hidden_field('pay_from_email', $order->customer['email_address']).xtc_draw_hidden_field('amount', $amount).xtc_draw_hidden_field('currency', $mbCurrency).xtc_draw_hidden_field('detail1_description', STORE_NAME).xtc_draw_hidden_field('detail1_text', MODULE_PAYMENT_MONEYBOOKERS_ORDER_TEXT.strftime(DATE_FORMAT_LONG)).xtc_draw_hidden_field('firstname', $order->billing['firstname']).xtc_draw_hidden_field('lastname', $order->billing['lastname']).xtc_draw_hidden_field('address', $order->billing['street_address']).xtc_draw_hidden_field('postal_code', $order->billing['postcode']).xtc_draw_hidden_field('city', $order->billing['city']).xtc_draw_hidden_field('state', $order->billing['state']).xtc_draw_hidden_field('country', $mbCountry).xtc_draw_hidden_field('confirmation_note', MODULE_PAYMENT_MONEYBOOKERS_CONFIRMATION_TEXT);
+		$process_button_string = vam_draw_hidden_field('pay_to_email', MODULE_PAYMENT_MONEYBOOKERS_EMAILID).vam_draw_hidden_field('transaction_id', $this->transaction_id).vam_draw_hidden_field('return_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, 'trid='.$this->transaction_id, 'NONSSL', false)).vam_draw_hidden_field('cancel_url', vam_href_link(FILENAME_CHECKOUT_PAYMENT, MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT1.$this->code.MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT2, 'SSL', true, false)).vam_draw_hidden_field('status_url', 'mailto:'.MODULE_PAYMENT_MONEYBOOKERS_EMAILID).vam_draw_hidden_field('language', $mbLanguage).vam_draw_hidden_field('pay_from_email', $order->customer['email_address']).vam_draw_hidden_field('amount', $amount).vam_draw_hidden_field('currency', $mbCurrency).vam_draw_hidden_field('detail1_description', STORE_NAME).vam_draw_hidden_field('detail1_text', MODULE_PAYMENT_MONEYBOOKERS_ORDER_TEXT.strftime(DATE_FORMAT_LONG)).vam_draw_hidden_field('firstname', $order->billing['firstname']).vam_draw_hidden_field('lastname', $order->billing['lastname']).vam_draw_hidden_field('address', $order->billing['street_address']).vam_draw_hidden_field('postal_code', $order->billing['postcode']).vam_draw_hidden_field('city', $order->billing['city']).vam_draw_hidden_field('state', $order->billing['state']).vam_draw_hidden_field('country', $mbCountry).vam_draw_hidden_field('confirmation_note', MODULE_PAYMENT_MONEYBOOKERS_CONFIRMATION_TEXT);
 
 		if (ereg("[0-9]{6}", MODULE_PAYMENT_MONEYBOOKERS_REFID)) {
-			$process_button_string .= xtc_draw_hidden_field('rid', MODULE_PAYMENT_MONEYBOOKERS_REFID);
+			$process_button_string .= vam_draw_hidden_field('rid', MODULE_PAYMENT_MONEYBOOKERS_REFID);
 		}
 
 		// moneyboocers.com payment gateway does not accept accented characters!
@@ -206,12 +206,12 @@ class moneybookers {
 				}
 
 				if ($aFinal["status"] == -2) {
-					$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '999', mb_ERRTXT = 'Transaction failed.', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
+					$result = vam_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '999', mb_ERRTXT = 'Transaction failed.', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
 					$payment_error_return = "payment_error={$this->code}&error=-2: ".MODULE_PAYMENT_MONEYBOOKERS_TRANSACTION_FAILED_TEXT;
-					xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+					vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 					return false;
 				} else {
-					$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '200', mb_ERRTXT = 'OK', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
+					$result = vam_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '200', mb_ERRTXT = 'OK', mb_MBTID = {$aFinal['mb_transaction_id']}, mb_STATUS = {$aFinal['status']} WHERE mb_TRID = '{$this->transaction_id}'");
 					$moneybookers_payment_comment = MODULE_PAYMENT_MONEYBOOKERS_ORDER_COMMENT1.$aFinal["mb_transaction_id"]." (".MODULE_PAYMENT_MONEYBOOKERS_ORDER_COMMENT2.") ";
 					$order->info['comments'] = $moneybookers_payment_comment.$order->info['comments'];
 				}
@@ -226,15 +226,15 @@ class moneybookers {
 			case "404" :
 			case "405" :
 				preg_match("/[^\d\t]+.*/i", $result, $return_array);
-				$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '{$return_code[0]}', mb_ERRTXT = '{$return_array[0]}' WHERE mb_TRID = '{$this->transaction_id}'");
+				$result = vam_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ERRNO = '{$return_code[0]}', mb_ERRTXT = '{$return_array[0]}' WHERE mb_TRID = '{$this->transaction_id}'");
 				$payment_error_return = "payment_error={$this->code}&error={$return_code[0]}: {$return_array[0]}";
-				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 				break;
 
 				// unknown error
 			default :
 				$payment_error_return = "payment_error={$this->code}&error=000: Unknown error!";
-				xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 				break;
 
 		}
@@ -243,10 +243,10 @@ class moneybookers {
 
 	function after_process() {
 		global $insert_id;
-		$result = xtc_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ORDERID = $insert_id WHERE mb_TRID = '{$this->transaction_id}'");
+		$result = vam_db_query("UPDATE " . TABLE_MONEYBOOKERS . " SET mb_ORDERID = $insert_id WHERE mb_TRID = '{$this->transaction_id}'");
 
 		if ($this->order_status)
-			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
 	}
 
@@ -260,8 +260,8 @@ class moneybookers {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_MONEYBOOKERS_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_MONEYBOOKERS_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
@@ -271,23 +271,23 @@ class moneybookers {
 		if (!$this->check_currency($this->aCurrencies)) {
 			$this->enabled = false;
 			$install_error_return = 'set=payment&module=moneybookers&error='.MODULE_PAYMENT_MONEYBOOKERS_NOCURRENCY_ERROR;
-			xtc_redirect(xtc_href_link(FILENAME_MODULES, $install_error_return, 'SSL', true, false));
+			vam_redirect(vam_href_link(FILENAME_MODULES, $install_error_return, 'SSL', true, false));
 			return false;
 		}
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_STATUS', 'True',  '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_EMAILID', '', '6', '1', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_PWD', '',  '6', '2', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_REFID', '', '6', '3', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_SORT_ORDER', '0',  '6', '4', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_CURRENCY', '".$this->defCurr."', '6', '5', 'xtc_cfg_select_option(".$this->show_array($this->aCurrencies)."), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_LANGUAGE', '".$this->defLang."', '6', '6', 'xtc_cfg_select_option(".$this->show_array($this->mbLanguages)."), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ZONE', '0',  '6', '7', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ORDER_STATUS_ID', '0',  '6', '8', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ALLOWED', '', '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_STATUS', 'True',  '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_EMAILID', '', '6', '1', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_PWD', '',  '6', '2', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_REFID', '', '6', '3', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_SORT_ORDER', '0',  '6', '4', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_CURRENCY', '".$this->defCurr."', '6', '5', 'vam_cfg_select_option(".$this->show_array($this->aCurrencies)."), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_LANGUAGE', '".$this->defLang."', '6', '6', 'vam_cfg_select_option(".$this->show_array($this->mbLanguages)."), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ZONE', '0',  '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ORDER_STATUS_ID', '0',  '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYBOOKERS_ALLOWED', '', '6', '0', now())");
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {
@@ -320,8 +320,8 @@ class moneybookers {
 	function generate_trid() {
 
 		do {
-			$trid = xtc_create_random_value(16, "mixed");
-			$result = xtc_db_query("SELECT mb_TRID FROM " . TABLE_MONEYBOOKERS . " WHERE mb_TRID = '$trid'");
+			$trid = vam_create_random_value(16, "mixed");
+			$result = vam_db_query("SELECT mb_TRID FROM " . TABLE_MONEYBOOKERS . " WHERE mb_TRID = '$trid'");
 		} while (mysql_num_rows($result));
 
 		return $trid;

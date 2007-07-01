@@ -21,8 +21,8 @@
 
   if (!isset($_SESSION['language']) ) $_SESSION['language'] = 'russian';
   include('language/'.$_SESSION['language'].'.php');
-  require_once(DIR_FS_INC.'xtc_image.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_image.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
   
 ?>
 
@@ -83,22 +83,22 @@
 
 <fieldset class="form">
 <legend><?php echo TITLE_CUSTOM_SETTINGS; ?></legend>
-<p><?php echo xtc_draw_checkbox_field_installer('install[]', 'database', true); ?><b><?php echo TEXT_IMPORT_DB; ?></b><br /><?php echo TEXT_IMPORT_DB_LONG; ?></p>
-<p><?php echo xtc_draw_checkbox_field_installer('install[]', 'configure', true); ?><b><?php echo TEXT_AUTOMATIC; ?></b><br /><?php echo TEXT_AUTOMATIC_LONG; ?></p>
+<p><?php echo vam_draw_checkbox_field_installer('install[]', 'database', true); ?><b><?php echo TEXT_IMPORT_DB; ?></b><br /><?php echo TEXT_IMPORT_DB_LONG; ?></p>
+<p><?php echo vam_draw_checkbox_field_installer('install[]', 'configure', true); ?><b><?php echo TEXT_AUTOMATIC; ?></b><br /><?php echo TEXT_AUTOMATIC_LONG; ?></p>
 </fieldset>
 
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo xtc_draw_input_field_installer('DB_SERVER', '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
-<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo xtc_draw_input_field_installer('DB_SERVER_USERNAME', '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
-<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo xtc_draw_input_field_installer('DB_SERVER_PASSWORD', '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
-<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo xtc_draw_input_field_installer('DB_DATABASE', '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
+<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
+<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_PASSWORD', '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
 </fieldset>
 
 <fieldset class="form">
 <legend><?php echo TITLE_WEBSERVER_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_WWW; ?></b><br /><?php echo xtc_draw_input_field_installer('WWW_ADDRESS', $_www_location,'text','size="60"'); ?><br /></p>
-<p><b><?php echo TEXT_WS_ROOT; ?></b><br /><?php echo xtc_draw_input_field_installer('DIR_FS_WWW_ROOT', $_dir_fs_www_root,'text','size="60"'); ?><br /><?php echo TEXT_WS_ROOT_LONG; ?></p>
+<p><b><?php echo TEXT_WWW; ?></b><br /><?php echo vam_draw_input_field_installer('WWW_ADDRESS', $_www_location,'text','size="60"'); ?><br /></p>
+<p><b><?php echo TEXT_WS_ROOT; ?></b><br /><?php echo vam_draw_input_field_installer('DIR_FS_WWW_ROOT', $_dir_fs_www_root,'text','size="60"'); ?><br /><?php echo TEXT_WS_ROOT_LONG; ?></p>
 </fieldset>
 
 <p>

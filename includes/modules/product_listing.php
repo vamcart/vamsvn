@@ -21,13 +21,13 @@ $module_smarty = new Smarty;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $result = true;
 // include needed functions
-require_once (DIR_FS_INC.'xtc_get_all_get_params.inc.php');
-require_once (DIR_FS_INC.'xtc_get_vpe_name.inc.php');
+require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
+require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, 'p.products_id');
 $module_content = array ();
 if ($listing_split->number_of_rows > 0) {
 
-	$navigation = '<span class="right">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
+	$navigation = '<span class="right">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 	}
@@ -42,7 +42,7 @@ if ($listing_split->number_of_rows > 0) {
 		                                    ".$group_check."
 		                                    and cd.language_id = '".$_SESSION['languages_id']."'");
 
-	$category = xtc_db_fetch_array($category_query,true);
+	$category = vam_db_fetch_array($category_query,true);
 	$image = '';
 	if ($category['categories_image'] != '')
 		$image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];
@@ -54,7 +54,7 @@ if ($listing_split->number_of_rows > 0) {
 
 	$rows = 0;
 	$listing_query = xtDBquery($listing_split->sql_query);
-	while ($listing = xtc_db_fetch_array($listing_query, true)) {
+	while ($listing = vam_db_fetch_array($listing_query, true)) {
 		$rows ++;
 		$module_content[] =  $product->buildDataArray($listing);		
 	}

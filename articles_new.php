@@ -28,9 +28,9 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
-require_once (DIR_FS_INC.'xtc_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
-$breadcrumb->add(BOX_NEW_ARTICLES, xtc_href_link(FILENAME_ARTICLES_NEW));
+$breadcrumb->add(BOX_NEW_ARTICLES, vam_href_link(FILENAME_ARTICLES_NEW));
 
 require (DIR_WS_INCLUDES.'header.php');
 
@@ -40,7 +40,7 @@ require (DIR_WS_INCLUDES.'header.php');
 $articles_new_split = new splitPageResults($articles_new_query_raw, $_GET['page'], MAX_NEW_ARTICLES_PER_PAGE);
 
 if (($articles_new_split->number_of_rows > 0)) {
-	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES_NEW));
+	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES_NEW));
 
 }
 
@@ -49,31 +49,31 @@ if ($articles_new_split->number_of_rows > 0) {
 
 	$smarty->assign('no_new_articles', 'false');
 
-	$articles_new_query = xtc_db_query($articles_new_split->sql_query);
-	while ($articles_new = xtc_db_fetch_array($articles_new_query)) {
+	$articles_new_query = vam_db_query($articles_new_split->sql_query);
+	while ($articles_new = vam_db_fetch_array($articles_new_query)) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&article='.xtc_cleanName($articles_new['articles_name']);
+			$SEF_parameter = '&article='.vam_cleanName($articles_new['articles_name']);
 
 		$SEF_parameter_author = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_author = '&author='.xtc_cleanName($articles_new['authors_name']);
+			$SEF_parameter_author = '&author='.vam_cleanName($articles_new['authors_name']);
 
 		$SEF_parameter_category = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_category = '&category='.xtc_cleanName($articles_new['topics_name']);
+			$SEF_parameter_category = '&category='.vam_cleanName($articles_new['topics_name']);
 
 		$module_content[] = array (
 		
 		'ARTICLE_NAME' => $articles_new['articles_name'],
 		'ARTICLE_SHORT_DESCRIPTION' => $articles_new['articles_head_desc_tag'], 
-		'ARTICLE_DATE' => xtc_date_long($articles_new['articles_date_added']), 
-		'ARTICLE_LINK' => xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles_new['articles_id'] . $SEF_parameter), 
+		'ARTICLE_DATE' => vam_date_long($articles_new['articles_date_added']), 
+		'ARTICLE_LINK' => vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles_new['articles_id'] . $SEF_parameter), 
 		'AUTHOR_NAME' => $articles_new['authors_name'], 
-		'AUTHOR_LINK' =>  xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles_new['authors_id'] . $SEF_parameter_author), 
+		'AUTHOR_LINK' =>  vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles_new['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles_new['topics_name'],
-		'ARTICLE_CATEGORY_LINK' => xtc_href_link(FILENAME_ARTICLES, 'tPath=' . $articles_new['topics_id'] . $SEF_parameter_category)
+		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $articles_new['topics_id'] . $SEF_parameter_category)
 		
 		);
 

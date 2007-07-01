@@ -22,9 +22,9 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
-require_once (DIR_FS_INC.'xtc_get_short_description.inc.php');
+require_once (DIR_FS_INC.'vam_get_short_description.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_SPECIALS, xtc_href_link(FILENAME_SPECIALS));
+$breadcrumb->add(NAVBAR_TITLE_SPECIALS, vam_href_link(FILENAME_SPECIALS));
 
 require (DIR_WS_INCLUDES.'header.php');
 
@@ -54,13 +54,13 @@ $specials_split = new splitPageResults($specials_query_raw, $_GET['page'], MAX_D
 
 $module_content = '';
 $row = 0;
-$specials_query = xtc_db_query($specials_split->sql_query);
-while ($specials = xtc_db_fetch_array($specials_query)) {
+$specials_query = vam_db_query($specials_split->sql_query);
+while ($specials = vam_db_fetch_array($specials_query)) {
 	$module_content[] = $product->buildDataArray($specials);
 }
 
 if (($specials_split->number_of_rows > 0)) {
-	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $specials_split->display_count(TEXT_DISPLAY_NUMBER_OF_SPECIALS));
+	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $specials_split->display_count(TEXT_DISPLAY_NUMBER_OF_SPECIALS));
 
 }
 

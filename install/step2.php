@@ -20,18 +20,18 @@
   require('includes/application.php');
 
   // include needed functions
-  require_once(DIR_FS_INC.'xtc_redirect.inc.php');
-  require_once(DIR_FS_INC.'xtc_href_link.inc.php');
-  require_once(DIR_FS_INC.'xtc_not_null.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_redirect.inc.php');
+  require_once(DIR_FS_INC.'vam_href_link.inc.php');
+  require_once(DIR_FS_INC.'vam_not_null.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
 
   include('language/'.$_SESSION['language'].'.php');
   
 
-  if (xtc_in_array('database', $_POST['install'])) {
+  if (vam_in_array('database', $_POST['install'])) {
    // do nothin  
   } else {
-   xtc_redirect('step4.php');
+   vam_redirect('step4.php');
   }
   
 ?>
@@ -90,7 +90,7 @@
 <p><?php echo TEXT_WELCOME_STEP2; ?></p>
 
       <?php
-  if (xtc_in_array('database', $_POST['install'])) {
+  if (vam_in_array('database', $_POST['install'])) {
     $db = array();
     $db['DB_SERVER'] = trim(stripslashes($_POST['DB_SERVER']));
     $db['DB_SERVER_USERNAME'] = trim(stripslashes($_POST['DB_SERVER_USERNAME']));
@@ -98,10 +98,10 @@
     $db['DB_DATABASE'] = trim(stripslashes($_POST['DB_DATABASE']));
 
     $db_error = false;
-    xtc_db_connect_installer($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
+    vam_db_connect_installer($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
 
     if (!$db_error) {
-      xtc_db_test_create_db_permission($db['DB_DATABASE']);
+      vam_db_test_create_db_permission($db['DB_DATABASE']);
     }
 
     if ($db_error) {
@@ -130,10 +130,10 @@
         if ($key != 'x' && $key != 'y') {
           if (is_array($value)) {
             for ($i=0; $i<sizeof($value); $i++) {
-              echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+              echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
             }
           } else {
-            echo xtc_draw_hidden_field_installer($key, $value);
+            echo vam_draw_hidden_field_installer($key, $value);
           }
         }
       }
@@ -166,10 +166,10 @@
         if ($key != 'x' && $key != 'y') {
           if (is_array($value)) {
             for ($i=0; $i<sizeof($value); $i++) {
-              echo xtc_draw_hidden_field_installer($key . '[]', $value[$i]);
+              echo vam_draw_hidden_field_installer($key . '[]', $value[$i]);
             }
           } else {
-            echo xtc_draw_hidden_field_installer($key, $value);
+            echo vam_draw_hidden_field_installer($key, $value);
           }
         }
       }

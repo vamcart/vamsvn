@@ -127,7 +127,7 @@
       if (sizeof($this->snapshot) > 0) {
         echo '<br /><br />';
 
-        echo $this->snapshot['mode'] . ' ' . $this->snapshot['page'] . '?' . xtc_array_to_string($this->snapshot['get'], array(xtc_session_name())) . '<br />';
+        echo $this->snapshot['mode'] . ' ' . $this->snapshot['page'] . '?' . vam_array_to_string($this->snapshot['get'], array(vam_session_name())) . '<br />';
       }
     }
 

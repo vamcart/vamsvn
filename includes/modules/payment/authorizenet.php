@@ -106,9 +106,9 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
   $tstamp = time ();
   $fingerprint = $this->hmac ($txnkey, $loginid . "^" . $sequence . "^" . $tstamp . "^" . $amount . "^" . $currency);
 
-  $str = xtc_draw_hidden_field('x_fp_sequence', $sequence) .
-         xtc_draw_hidden_field('x_fp_timestamp', $tstamp) .
-         xtc_draw_hidden_field('x_fp_hash', $fingerprint);
+  $str = vam_draw_hidden_field('x_fp_sequence', $sequence) .
+         vam_draw_hidden_field('x_fp_timestamp', $tstamp) .
+         vam_draw_hidden_field('x_fp_hash', $fingerprint);
 
   return $str;
 }
@@ -121,8 +121,8 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
 
       if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_AUTHORIZENET_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = xtc_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_AUTHORIZENET_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
-        while ($check = xtc_db_fetch_array($check_query)) {
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_AUTHORIZENET_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+        while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
             break;
@@ -170,11 +170,11 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
                          'module' => $this->title,
                          'description'=>$this->info,
                          'fields' => array(array('title' => MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_OWNER,
-                                                 'field' => xtc_draw_input_field('authorizenet_cc_owner', $order->billing['firstname'] . ' ' . $order->billing['lastname'])),
+                                                 'field' => vam_draw_input_field('authorizenet_cc_owner', $order->billing['firstname'] . ' ' . $order->billing['lastname'])),
                                            array('title' => MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_NUMBER,
-                                                 'field' => xtc_draw_input_field('authorizenet_cc_number')),
+                                                 'field' => vam_draw_input_field('authorizenet_cc_number')),
                                            array('title' => MODULE_PAYMENT_AUTHORIZENET_TEXT_CREDIT_CARD_EXPIRES,
-                                                 'field' => xtc_draw_pull_down_menu('authorizenet_cc_expires_month', $expires_month) . '&nbsp;' . xtc_draw_pull_down_menu('authorizenet_cc_expires_year', $expires_year))));
+                                                 'field' => vam_draw_pull_down_menu('authorizenet_cc_expires_month', $expires_month) . '&nbsp;' . vam_draw_pull_down_menu('authorizenet_cc_expires_year', $expires_year))));
 
       return $selection;
     }
@@ -203,7 +203,7 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
       if ( ($result == false) || ($result < 1) ) {
         $payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&authorizenet_cc_owner=' . urlencode($_POST['authorizenet_cc_owner']) . '&authorizenet_cc_expires_month=' . $_POST['authorizenet_cc_expires_month'] . '&authorizenet_cc_expires_year=' . $_POST['authorizenet_cc_expires_year'];
 
-        xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+        vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
       }
 
       $this->cc_card_type = $cc_validation->cc_type;
@@ -234,36 +234,36 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
       } else {
           $total=$order->info['total'];
       }
-      $process_button_string = xtc_draw_hidden_field('x_Login', MODULE_PAYMENT_AUTHORIZENET_LOGIN) .
-                               xtc_draw_hidden_field('x_Card_Num', $this->cc_card_number) .
-                               xtc_draw_hidden_field('x_Exp_Date', $this->cc_expiry_month . substr($this->cc_expiry_year, -2)) .
-                               xtc_draw_hidden_field('x_Amount', round($total, 2)) .
-                               xtc_draw_hidden_field('x_Relay_URL', xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', false)) .
-                               xtc_draw_hidden_field('x_Method', ((MODULE_PAYMENT_AUTHORIZENET_METHOD == 'Credit Card') ? 'CC' : 'ECHECK')) .
-                               xtc_draw_hidden_field('x_Version', '3.0') .
-                               xtc_draw_hidden_field('x_Cust_ID', $_SESSION['customer_id']) .
-                               xtc_draw_hidden_field('x_Email_Customer', ((MODULE_PAYMENT_AUTHORIZENET_EMAIL_CUSTOMER == 'True') ? 'TRUE': 'FALSE')) .
-                               xtc_draw_hidden_field('x_first_name', $order->billing['firstname']) .
-                               xtc_draw_hidden_field('x_last_name', $order->billing['lastname']) .
-                               xtc_draw_hidden_field('x_address', $order->billing['street_address']) .
-                               xtc_draw_hidden_field('x_city', $order->billing['city']) .
-                               xtc_draw_hidden_field('x_state', $order->billing['state']) .
-                               xtc_draw_hidden_field('x_zip', $order->billing['postcode']) .
-                               xtc_draw_hidden_field('x_country', $order->billing['country']['title']) .
-                               xtc_draw_hidden_field('x_phone', $order->customer['telephone']) .
-                               xtc_draw_hidden_field('x_email', $order->customer['email_address']) .
-                               xtc_draw_hidden_field('x_ship_to_first_name', $order->delivery['firstname']) .
-                               xtc_draw_hidden_field('x_ship_to_last_name', $order->delivery['lastname']) .
-                               xtc_draw_hidden_field('x_ship_to_address', $order->delivery['street_address']) .
-                               xtc_draw_hidden_field('x_ship_to_city', $order->delivery['city']) .
-                               xtc_draw_hidden_field('x_ship_to_state', $order->delivery['state']) .
-                               xtc_draw_hidden_field('x_ship_to_zip', $order->delivery['postcode']) .
-                               xtc_draw_hidden_field('x_ship_to_country', $order->delivery['country']['title']) .
-                               xtc_draw_hidden_field('x_Customer_IP', $_SERVER['REMOTE_ADDR']) .
+      $process_button_string = vam_draw_hidden_field('x_Login', MODULE_PAYMENT_AUTHORIZENET_LOGIN) .
+                               vam_draw_hidden_field('x_Card_Num', $this->cc_card_number) .
+                               vam_draw_hidden_field('x_Exp_Date', $this->cc_expiry_month . substr($this->cc_expiry_year, -2)) .
+                               vam_draw_hidden_field('x_Amount', round($total, 2)) .
+                               vam_draw_hidden_field('x_Relay_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', false)) .
+                               vam_draw_hidden_field('x_Method', ((MODULE_PAYMENT_AUTHORIZENET_METHOD == 'Credit Card') ? 'CC' : 'ECHECK')) .
+                               vam_draw_hidden_field('x_Version', '3.0') .
+                               vam_draw_hidden_field('x_Cust_ID', $_SESSION['customer_id']) .
+                               vam_draw_hidden_field('x_Email_Customer', ((MODULE_PAYMENT_AUTHORIZENET_EMAIL_CUSTOMER == 'True') ? 'TRUE': 'FALSE')) .
+                               vam_draw_hidden_field('x_first_name', $order->billing['firstname']) .
+                               vam_draw_hidden_field('x_last_name', $order->billing['lastname']) .
+                               vam_draw_hidden_field('x_address', $order->billing['street_address']) .
+                               vam_draw_hidden_field('x_city', $order->billing['city']) .
+                               vam_draw_hidden_field('x_state', $order->billing['state']) .
+                               vam_draw_hidden_field('x_zip', $order->billing['postcode']) .
+                               vam_draw_hidden_field('x_country', $order->billing['country']['title']) .
+                               vam_draw_hidden_field('x_phone', $order->customer['telephone']) .
+                               vam_draw_hidden_field('x_email', $order->customer['email_address']) .
+                               vam_draw_hidden_field('x_ship_to_first_name', $order->delivery['firstname']) .
+                               vam_draw_hidden_field('x_ship_to_last_name', $order->delivery['lastname']) .
+                               vam_draw_hidden_field('x_ship_to_address', $order->delivery['street_address']) .
+                               vam_draw_hidden_field('x_ship_to_city', $order->delivery['city']) .
+                               vam_draw_hidden_field('x_ship_to_state', $order->delivery['state']) .
+                               vam_draw_hidden_field('x_ship_to_zip', $order->delivery['postcode']) .
+                               vam_draw_hidden_field('x_ship_to_country', $order->delivery['country']['title']) .
+                               vam_draw_hidden_field('x_Customer_IP', $_SERVER['REMOTE_ADDR']) .
                                $this->InsertFP(MODULE_PAYMENT_AUTHORIZENET_LOGIN, MODULE_PAYMENT_AUTHORIZENET_TXNKEY, round($total, 2), $sequence);
-      if (MODULE_PAYMENT_AUTHORIZENET_TESTMODE == 'Test') $process_button_string .= xtc_draw_hidden_field('x_Test_Request', 'TRUE');
+      if (MODULE_PAYMENT_AUTHORIZENET_TESTMODE == 'Test') $process_button_string .= vam_draw_hidden_field('x_Test_Request', 'TRUE');
 
-      $process_button_string .= xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
+      $process_button_string .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
       return $process_button_string;
     }
@@ -272,15 +272,15 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
 
       if ($_POST['x_response_code'] == '1') return;
       if ($_POST['x_response_code'] == '2') {
-        xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(MODULE_PAYMENT_AUTHORIZENET_TEXT_DECLINED_MESSAGE), 'SSL', true, false));
+        vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(MODULE_PAYMENT_AUTHORIZENET_TEXT_DECLINED_MESSAGE), 'SSL', true, false));
       }
       // Code 3 is an error - but anything else is an error too (IMHO)
-      xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(MODULE_PAYMENT_AUTHORIZENET_TEXT_ERROR_MESSAGE), 'SSL', true, false));
+      vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(MODULE_PAYMENT_AUTHORIZENET_TEXT_ERROR_MESSAGE), 'SSL', true, false));
     }
 
     function after_process() {
     global $insert_id;
-        if ($this->order_status) xtc_db_query("UPDATE ". TABLE_ORDERS ." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+        if ($this->order_status) vam_db_query("UPDATE ". TABLE_ORDERS ." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
     }
 
@@ -294,27 +294,27 @@ function InsertFP ($loginid, $txnkey, $amount, $sequence, $currency = "") {
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = xtc_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_AUTHORIZENET_STATUS'");
-        $this->_check = xtc_db_num_rows($check_query);
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_AUTHORIZENET_STATUS'");
+        $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
     }
 
     function install() {
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_STATUS', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-	  xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ALLOWED', '', '6', '0', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_LOGIN', 'testing',  '6', '0', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_TXNKEY', 'Test',  '6', '0', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_TESTMODE', 'Test',  '6', '0', 'xtc_cfg_select_option(array(\'Test\', \'Production\'), ', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_METHOD', 'Credit Card',  '6', '0', 'xtc_cfg_select_option(array(\'Credit Card\', \'eCheck\'), ', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_EMAIL_CUSTOMER', 'False',  '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER', '0',  '6', '0', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ZONE', '0',  '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID', '0', '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ALLOWED', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_LOGIN', 'testing',  '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_TXNKEY', 'Test',  '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_TESTMODE', 'Test',  '6', '0', 'vam_cfg_select_option(array(\'Test\', \'Production\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_METHOD', 'Credit Card',  '6', '0', 'vam_cfg_select_option(array(\'Credit Card\', \'eCheck\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_EMAIL_CUSTOMER', 'False',  '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_SORT_ORDER', '0',  '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ZONE', '0',  '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_AUTHORIZENET_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
     function remove() {
-      xtc_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
+      vam_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
     }
 
     function keys() {

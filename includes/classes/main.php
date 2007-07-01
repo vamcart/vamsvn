@@ -31,7 +31,7 @@
                                      FROM ".TABLE_SHIPPING_STATUS."
                                      where language_id = '".(int)$_SESSION['languages_id']."'");
          
-         while ($status_data=xtc_db_fetch_array($status_query,true)) {
+         while ($status_data=vam_db_fetch_array($status_query,true)) {
          	$this->SHIPPING[$status_data['shipping_status_id']]=array('name'=>$status_data['shipping_status_name'],'image'=>$status_data['shipping_status_image']);
          }
          
@@ -54,7 +54,7 @@
  	
  		function getShippingLink() {
         if (SHOW_SHIPPING == 'true') {
-		return ' '.SHIPPING_EXCL.'<a href="'. xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) .'" target="_blank" onclick="window.open(\'' . xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;">'.SHIPPING_COSTS.'</a>';
+		return ' '.SHIPPING_EXCL.'<a href="'. vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) .'" target="_blank" onclick="window.open(\'' . vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;">'.SHIPPING_COSTS.'</a>';
 	}
         return;
         }
@@ -99,13 +99,13 @@
 	
 	function getShippingNotice() {
 		if (SHOW_SHIPPING == 'true') {
-			return ' '.SHIPPING_EXCL.'<a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.SHIPPING_INFOS).'">'.SHIPPING_COSTS.'</a>';
+			return ' '.SHIPPING_EXCL.'<a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.SHIPPING_INFOS).'">'.SHIPPING_COSTS.'</a>';
 		}
 		return;
 	}
 	
 	function getContentLink($coID,$text) {
-		return '<a href="'. xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID) .'" target="_blank" onclick="window.open(\'' . xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;">'.$text.'</a>';
+		return '<a href="'. vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID) .'" target="_blank" onclick="window.open(\'' . vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.$coID) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;">'.$text.'</a>';
 	}
  	
  }

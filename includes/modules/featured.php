@@ -63,12 +63,12 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 $row = 0;
 $module_content = array ();
 $featured_products_query = xtDBquery($featured_products_query);
-while ($featured_products = xtc_db_fetch_array($featured_products_query, true)) {
+while ($featured_products = vam_db_fetch_array($featured_products_query, true)) {
 	$module_content[] = $product->buildDataArray($featured_products);
 
 }
 if (sizeof($module_content) >= 1) {
-   $module_smarty->assign('FEATURED_LINK', xtc_href_link(FILENAME_FEATURED));
+   $module_smarty->assign('FEATURED_LINK', vam_href_link(FILENAME_FEATURED));
 	$module_smarty->assign('language', $_SESSION['language']);
 	$module_smarty->assign('module_content', $module_content);
 	

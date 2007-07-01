@@ -28,21 +28,21 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
-require_once (DIR_FS_INC.'xtc_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
 // the following tPath references come from application_top.php
   $topic_depth = 'top';
 
-  if (isset($tPath) && xtc_not_null($tPath)) {
+  if (isset($tPath) && vam_not_null($tPath)) {
     $topics_articles_query = "select count(*) as total from " . TABLE_ARTICLES_TO_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'";
     $topics_articles_query = xtDBquery($topics_articles_query);
-    $topics_articles = xtc_db_fetch_array($topics_articles_query);
+    $topics_articles = vam_db_fetch_array($topics_articles_query);
     if ($topics_articles['total'] > 0) {
       $topic_depth = 'articles'; // display articles
     } else {
       $topic_parent_query = "select count(*) as total from " . TABLE_TOPICS . " where parent_id = '" . (int)$current_topic_id . "'";
       $topic_parent_query = xtDBquery($topic_parent_query);
-      $topic_parent = xtc_db_fetch_array($topic_parent_query);
+      $topic_parent = vam_db_fetch_array($topic_parent_query);
       if ($topic_parent['total'] > 0) {
         $topic_depth = 'nested'; // navigate through the topics
       } else {
@@ -52,13 +52,13 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
   }
 
   if ($topic_depth == 'top' && !isset($_GET['authors_id'])) {
-    $breadcrumb->add(NAVBAR_TITLE_DEFAULT, xtc_href_link(FILENAME_ARTICLES));
+    $breadcrumb->add(NAVBAR_TITLE_DEFAULT, vam_href_link(FILENAME_ARTICLES));
   }
 
-    $topic_query = xtc_db_query("select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'");
-    $topic = xtc_db_fetch_array($topic_query);
+    $topic_query = vam_db_query("select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$languages_id . "'");
+    $topic = vam_db_fetch_array($topic_query);
 
-    if (xtc_not_null($topic['topics_name'])) {
+    if (vam_not_null($topic['topics_name'])) {
         $topic_name = $topic['topics_name'];
       } else {
         $topic_name = NAVBAR_TITLE_DEFAULT;
@@ -66,11 +66,11 @@ require_once (DIR_FS_INC.'xtc_date_long.inc.php');
 
 	$smarty->assign('HEADER_TEXT', $topic_name);
 
-    if (xtc_not_null($topic['topics_heading_title'])) {
+    if (vam_not_null($topic['topics_heading_title'])) {
 	$smarty->assign('TOPICS_HEADING_TITLE', $topic['topics_heading_title']);
    }    
              
-    if (xtc_not_null($topic['topics_description'])) {
+    if (vam_not_null($topic['topics_description'])) {
 	$smarty->assign('TOPICS_DESCRIPTION', $topic['topics_description']);
    }    
              
@@ -95,7 +95,7 @@ require (DIR_WS_INCLUDES.'header.php');
 $articles_split = new splitPageResults($listing_sql, $_GET['page'], MAX_ARTICLES_PER_PAGE);
 
 if (($articles_split->number_of_rows > 0)) {
-	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES));
+	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES));
 
 }
 
@@ -104,31 +104,31 @@ if ($articles_split->number_of_rows > 0) {
 
 	$smarty->assign('no_articles', 'false');
 
-	$articles_query = xtc_db_query($articles_split->sql_query);
-	while ($articles = xtc_db_fetch_array($articles_query)) {
+	$articles_query = vam_db_query($articles_split->sql_query);
+	while ($articles = vam_db_fetch_array($articles_query)) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&article='.xtc_cleanName($articles['articles_name']);
+			$SEF_parameter = '&article='.vam_cleanName($articles['articles_name']);
 
 		$SEF_parameter_author = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_author = '&author='.xtc_cleanName($articles['authors_name']);
+			$SEF_parameter_author = '&author='.vam_cleanName($articles['authors_name']);
 
 		$SEF_parameter_category = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_category = '&category='.xtc_cleanName($articles['topics_name']);
+			$SEF_parameter_category = '&category='.vam_cleanName($articles['topics_name']);
 
 		$module_content[] = array (
 		
 		'ARTICLE_NAME' => $articles['articles_name'],
 		'ARTICLE_SHORT_DESCRIPTION' => $articles['articles_head_desc_tag'], 
-		'ARTICLE_DATE' => xtc_date_long($articles['articles_date_added']), 
-		'ARTICLE_LINK' => xtc_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles['articles_id'] . $SEF_parameter), 
+		'ARTICLE_DATE' => vam_date_long($articles['articles_date_added']), 
+		'ARTICLE_LINK' => vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles['articles_id'] . $SEF_parameter), 
 		'AUTHOR_NAME' => $articles['authors_name'], 
-		'AUTHOR_LINK' =>  xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles['authors_id'] . $SEF_parameter_author), 
+		'AUTHOR_LINK' =>  vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles['topics_name'],
-		'ARTICLE_CATEGORY_LINK' => xtc_href_link(FILENAME_ARTICLES, 'tPath=' . $articles['topics_id'] . $SEF_parameter_category)
+		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $articles['topics_id'] . $SEF_parameter_category)
 		
 		);
 

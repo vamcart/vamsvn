@@ -22,14 +22,14 @@ $module_smarty = new Smarty;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include boxes
 // include needed functions
-require_once (DIR_FS_INC.'xtc_row_number_format.inc.php');
-require_once (DIR_FS_INC.'xtc_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_row_number_format.inc.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
 $info_smarty->assign('options', $products_options_data);
 if ($product->getReviewsCount() > 0) {
 
 
-	$module_smarty->assign('BUTTON_WRITE', '<a href="'.xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, xtc_product_link($product->data['products_id'],$product->data['products_name'])).'">'.xtc_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$module_smarty->assign('BUTTON_WRITE', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 	$module_smarty->assign('language', $_SESSION['language']);
 	$module_smarty->assign('module_content', $product->getReviews());
@@ -39,7 +39,7 @@ if ($product->getReviewsCount() > 0) {
 	$info_smarty->assign('MODULE_products_reviews', $module);
 
 } else {
-	$module_smarty->assign('BUTTON_WRITE', '<a href="'.xtc_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, xtc_product_link($product->data['products_id'],$product->data['products_name'])).'">'.xtc_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$module_smarty->assign('BUTTON_WRITE', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 	$module_smarty->assign('TEXT_FIRST_REVIEW', TEXT_FIRST_REVIEW);
 
 	$module_smarty->assign('language', $_SESSION['language']);

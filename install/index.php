@@ -18,10 +18,10 @@
   require('includes/application.php');
 
   // include needed functions
-  require_once(DIR_FS_INC.'xtc_image.inc.php');
-  require_once(DIR_FS_INC.'xtc_draw_separator.inc.php');
-  require_once(DIR_FS_INC.'xtc_redirect.inc.php');
-  require_once(DIR_FS_INC.'xtc_href_link.inc.php');
+  require_once(DIR_FS_INC.'vam_image.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_redirect.inc.php');
+  require_once(DIR_FS_INC.'vam_href_link.inc.php');
   
   include('language/russian.php');
 
@@ -37,7 +37,7 @@
     $process = true;
 
         
-        $_SESSION['language'] = xtc_db_prepare_input($_POST['LANGUAGE']);
+        $_SESSION['language'] = vam_db_prepare_input($_POST['LANGUAGE']);
 
     $error = false;
 
@@ -50,7 +50,7 @@
         
 
                     if ($error == false) {
-                        xtc_redirect(xtc_href_link('step1.php', '', 'NONSSL'));
+                        vam_redirect(vam_href_link('step1.php', '', 'NONSSL'));
                 }
         }
 
@@ -227,7 +227,7 @@
  // check PHP-Version
 
  $php_flag==false;
- if (xtc_check_version()!=1) {
+ if (vam_check_version()!=1) {
      $error_flag=true;
      $php_flag=true;
     $message .= PHP_VERSION_ERROR;
@@ -286,7 +286,7 @@ if ($ok_message!='') {
 
 <form name="language" method="post" action="index.php">
 <p>
-<?php echo TEXT_RUSSIAN; ?>  <img src="images/icons/icon-rus.gif" width="30" height="16" alt="" /> <?php echo xtc_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
+<?php echo TEXT_RUSSIAN; ?>  <img src="images/icons/icon-rus.gif" width="30" height="16" alt="" /> <?php echo vam_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
 </p>
 
 <input type="hidden" name="action" value="process" />

@@ -60,12 +60,12 @@ class order_total {
 			$header_string .= '<tr>'."\n";
 			$header_string .= '   <td><table border="0" width="100%" cellspacing="1" cellpadding="2" class="infoBox">'."\n";
 			$header_string .= '     <tr class="infoBoxContents"><td><table border="0" width="100%" cellspacing="0" cellpadding="2">'."\n";
-			$header_string .= '       <tr><td width="10">'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>'."\n";
+			$header_string .= '       <tr><td width="10">'.vam_draw_separator('pixel_trans.gif', '10', '1').'</td>'."\n";
 			$header_string .= '           <td colspan="2"><table border="0" width="100%" cellspacing="0" cellpadding="2">'."\n";
 			$close_string = '                           </table></td>';
-			$close_string .= '<td width="10">'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>';
+			$close_string .= '<td width="10">'.vam_draw_separator('pixel_trans.gif', '10', '1').'</td>';
 			$close_string .= '</tr></table></td></tr></table></td>';
-			$close_string .= '<tr><td width="100%">'.xtc_draw_separator('pixel_trans.gif', '100%', '10').'</td></tr>';
+			$close_string .= '<tr><td width="100%">'.vam_draw_separator('pixel_trans.gif', '100%', '10').'</td></tr>';
 			reset($this->modules);
 			$output_string = '';
 			while (list (, $value) = each($this->modules)) {
@@ -75,9 +75,9 @@ class order_total {
 					if ($selection_string == '')
 						$selection_string = $GLOBALS[$class]->credit_selection();
 					if (($use_credit_string != '') || ($selection_string != '')) {
-						$output_string .= '<tr colspan="4"><td colspan="4" width="100%">'.xtc_draw_separator('pixel_trans.gif', '100%', '10').'</td></tr>';
-						$output_string = ' <tr class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" >'."\n".'   <td s width="10">'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>'.'     <td   class="main"><b>'.$GLOBALS[$class]->header.'</b></td>'.$use_credit_string;
-						$output_string .= '<td  width="10">'.xtc_draw_separator('pixel_trans.gif', '10', '1').'</td>';
+						$output_string .= '<tr colspan="4"><td colspan="4" width="100%">'.vam_draw_separator('pixel_trans.gif', '100%', '10').'</td></tr>';
+						$output_string = ' <tr class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" >'."\n".'   <td s width="10">'.vam_draw_separator('pixel_trans.gif', '10', '1').'</td>'.'     <td   class="main"><b>'.$GLOBALS[$class]->header.'</b></td>'.$use_credit_string;
+						$output_string .= '<td  width="10">'.vam_draw_separator('pixel_trans.gif', '10', '1').'</td>';
 						$output_string .= '  </tr>'."\n";
 						$output_string .= $selection_string;
 					}
@@ -207,7 +207,7 @@ class order_total {
 
 	// class constructor
 	function order_total() {
-		if (defined('MODULE_ORDER_TOTAL_INSTALLED') && xtc_not_null(MODULE_ORDER_TOTAL_INSTALLED)) {
+		if (defined('MODULE_ORDER_TOTAL_INSTALLED') && vam_not_null(MODULE_ORDER_TOTAL_INSTALLED)) {
 			$this->modules = explode(';', MODULE_ORDER_TOTAL_INSTALLED);
 			$modules = $this->modules;
 			sort($modules); // cgoenner: we need to include the ot_coupon & ot_gv BEFORE ot_tax
@@ -233,7 +233,7 @@ class order_total {
 					$GLOBALS[$class]->process();
 
 					for ($i = 0, $n = sizeof($GLOBALS[$class]->output); $i < $n; $i ++) {
-						if (xtc_not_null($GLOBALS[$class]->output[$i]['title']) && xtc_not_null($GLOBALS[$class]->output[$i]['text'])) {
+						if (vam_not_null($GLOBALS[$class]->output[$i]['title']) && vam_not_null($GLOBALS[$class]->output[$i]['text'])) {
 							$order_total_array[] = array ('code' => $GLOBALS[$class]->code, 'title' => $GLOBALS[$class]->output[$i]['title'], 'text' => $GLOBALS[$class]->output[$i]['text'], 'value' => $GLOBALS[$class]->output[$i]['value'], 'sort_order' => $GLOBALS[$class]->sort_order);
 						}
 					}

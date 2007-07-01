@@ -15,13 +15,13 @@
    ---------------------------------------------------------------------------------------*/
 
 
-  require_once(DIR_FS_INC . 'xtc_banner_exists.inc.php');
-  require_once(DIR_FS_INC . 'xtc_display_banner.inc.php');
-  require_once(DIR_FS_INC . 'xtc_update_banner_display_count.inc.php');
+  require_once(DIR_FS_INC . 'vam_banner_exists.inc.php');
+  require_once(DIR_FS_INC . 'vam_display_banner.inc.php');
+  require_once(DIR_FS_INC . 'vam_update_banner_display_count.inc.php');
 
 
-  if ($banner = xtc_banner_exists('dynamic', 'banner')) {
-  $smarty->assign('BANNER',xtc_display_banner('static', $banner));
+  if ($banner = vam_banner_exists('dynamic', 'banner')) {
+  $smarty->assign('BANNER',vam_display_banner('static', $banner));
 
   }
 ?>

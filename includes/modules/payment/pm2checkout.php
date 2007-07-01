@@ -44,8 +44,8 @@ class pm2checkout {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_PM2CHECKOUT_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = xtc_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_PM2CHECKOUT_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
-			while ($check = xtc_db_fetch_array($check_query)) {
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_PM2CHECKOUT_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
 					break;
@@ -80,7 +80,7 @@ class pm2checkout {
 			$expires_year[] = array ('id' => strftime('%y', mktime(0, 0, 0, 1, 1, $i)), 'text' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)));
 		}
 
-		$selection = array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'fields' => array (array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_OWNER_FIRST_NAME, 'field' => xtc_draw_input_field('pm_2checkout_cc_owner_firstname', $order->billing['firstname'])), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_OWNER_LAST_NAME, 'field' => xtc_draw_input_field('pm_2checkout_cc_owner_lastname', $order->billing['lastname'])), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_NUMBER, 'field' => xtc_draw_input_field('pm_2checkout_cc_number')), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_EXPIRES, 'field' => xtc_draw_pull_down_menu('pm_2checkout_cc_expires_month', $expires_month).'&nbsp;'.xtc_draw_pull_down_menu('pm_2checkout_cc_expires_year', $expires_year)), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_CHECKNUMBER, 'field' => xtc_draw_input_field('pm_2checkout_cc_cvv', '', 'size="4" maxlength="3"').'&nbsp;<small>'.MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_CHECKNUMBER_LOCATION.'</small>')));
+		$selection = array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'fields' => array (array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_OWNER_FIRST_NAME, 'field' => vam_draw_input_field('pm_2checkout_cc_owner_firstname', $order->billing['firstname'])), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_OWNER_LAST_NAME, 'field' => vam_draw_input_field('pm_2checkout_cc_owner_lastname', $order->billing['lastname'])), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_NUMBER, 'field' => vam_draw_input_field('pm_2checkout_cc_number')), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_EXPIRES, 'field' => vam_draw_pull_down_menu('pm_2checkout_cc_expires_month', $expires_month).'&nbsp;'.vam_draw_pull_down_menu('pm_2checkout_cc_expires_year', $expires_year)), array ('title' => MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_CHECKNUMBER, 'field' => vam_draw_input_field('pm_2checkout_cc_cvv', '', 'size="4" maxlength="3"').'&nbsp;<small>'.MODULE_PAYMENT_PM2CHECKOUT_TEXT_CREDIT_CARD_CHECKNUMBER_LOCATION.'</small>')));
 
 		return $selection;
 	}
@@ -110,7 +110,7 @@ class pm2checkout {
 		if (($result == false) || ($result < 1)) {
 			$payment_error_return = 'payment_error='.$this->code.'&error='.urlencode($error).'&pm_2checkout_cc_owner_firstname='.urlencode($_POST['pm_2checkout_cc_owner_firstname']).'&pm_2checkout_cc_owner_lastname='.urlencode($_POST['pm_2checkout_cc_owner_lastname']).'&pm_2checkout_cc_expires_month='.$_POST['pm_2checkout_cc_expires_month'].'&pm_2checkout_cc_expires_year='.$_POST['pm_2checkout_cc_expires_year'];
 
-			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+			vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 		}
 
 		$this->cc_card_type = $cc_validation->cc_type;
@@ -133,7 +133,7 @@ class pm2checkout {
 		} else {
 			$total = $order->info['total'];
 		}
-		$process_button_string = xtc_draw_hidden_field('x_login', MODULE_PAYMENT_PM2CHECKOUT_LOGIN).xtc_draw_hidden_field('x_amount', round($total, 2)).xtc_draw_hidden_field('x_invoice_num', date('YmdHis')).xtc_draw_hidden_field('x_test_request', ((MODULE_PAYMENT_PM2CHECKOUT_TESTMODE == 'Test') ? 'Y' : 'N')).xtc_draw_hidden_field('x_card_num', $this->cc_card_number).xtc_draw_hidden_field('cvv', $_POST['pm_2checkout_cc_cvv']).xtc_draw_hidden_field('x_exp_date', $this->cc_expiry_month.substr($this->cc_expiry_year, -2)).xtc_draw_hidden_field('x_first_name', $_POST['pm_2checkout_cc_owner_firstname']).xtc_draw_hidden_field('x_last_name', $_POST['pm_2checkout_cc_owner_lastname']).xtc_draw_hidden_field('x_address', $order->customer['street_address']).xtc_draw_hidden_field('x_city', $order->customer['city']).xtc_draw_hidden_field('x_state', $order->customer['state']).xtc_draw_hidden_field('x_zip', $order->customer['postcode']).xtc_draw_hidden_field('x_country', $order->customer['country']['title']).xtc_draw_hidden_field('x_email', $order->customer['email_address']).xtc_draw_hidden_field('x_phone', $order->customer['telephone']).xtc_draw_hidden_field('x_ship_to_first_name', $order->delivery['firstname']).xtc_draw_hidden_field('x_ship_to_last_name', $order->delivery['lastname']).xtc_draw_hidden_field('x_ship_to_address', $order->delivery['street_address']).xtc_draw_hidden_field('x_ship_to_city', $order->delivery['city']).xtc_draw_hidden_field('x_ship_to_state', $order->delivery['state']).xtc_draw_hidden_field('x_ship_to_zip', $order->delivery['postcode']).xtc_draw_hidden_field('x_ship_to_country', $order->delivery['country']['title']).xtc_draw_hidden_field('x_receipt_link_url', xtc_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')).xtc_draw_hidden_field('x_email_merchant', ((MODULE_PAYMENT_PM2CHECKOUT_EMAIL_MERCHANT == 'True') ? 'TRUE' : 'FALSE'));
+		$process_button_string = vam_draw_hidden_field('x_login', MODULE_PAYMENT_PM2CHECKOUT_LOGIN).vam_draw_hidden_field('x_amount', round($total, 2)).vam_draw_hidden_field('x_invoice_num', date('YmdHis')).vam_draw_hidden_field('x_test_request', ((MODULE_PAYMENT_PM2CHECKOUT_TESTMODE == 'Test') ? 'Y' : 'N')).vam_draw_hidden_field('x_card_num', $this->cc_card_number).vam_draw_hidden_field('cvv', $_POST['pm_2checkout_cc_cvv']).vam_draw_hidden_field('x_exp_date', $this->cc_expiry_month.substr($this->cc_expiry_year, -2)).vam_draw_hidden_field('x_first_name', $_POST['pm_2checkout_cc_owner_firstname']).vam_draw_hidden_field('x_last_name', $_POST['pm_2checkout_cc_owner_lastname']).vam_draw_hidden_field('x_address', $order->customer['street_address']).vam_draw_hidden_field('x_city', $order->customer['city']).vam_draw_hidden_field('x_state', $order->customer['state']).vam_draw_hidden_field('x_zip', $order->customer['postcode']).vam_draw_hidden_field('x_country', $order->customer['country']['title']).vam_draw_hidden_field('x_email', $order->customer['email_address']).vam_draw_hidden_field('x_phone', $order->customer['telephone']).vam_draw_hidden_field('x_ship_to_first_name', $order->delivery['firstname']).vam_draw_hidden_field('x_ship_to_last_name', $order->delivery['lastname']).vam_draw_hidden_field('x_ship_to_address', $order->delivery['street_address']).vam_draw_hidden_field('x_ship_to_city', $order->delivery['city']).vam_draw_hidden_field('x_ship_to_state', $order->delivery['state']).vam_draw_hidden_field('x_ship_to_zip', $order->delivery['postcode']).vam_draw_hidden_field('x_ship_to_country', $order->delivery['country']['title']).vam_draw_hidden_field('x_receipt_link_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')).vam_draw_hidden_field('x_email_merchant', ((MODULE_PAYMENT_PM2CHECKOUT_EMAIL_MERCHANT == 'True') ? 'TRUE' : 'FALSE'));
 
 		return $process_button_string;
 	}
@@ -141,14 +141,14 @@ class pm2checkout {
 	function before_process() {
 
 		if ($_POST['x_response_code'] != '1') {
-			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(MODULE_PAYMENT_PM2CHECKOUT_TEXT_ERROR_MESSAGE), 'SSL', true, false));
+			vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message='.urlencode(MODULE_PAYMENT_PM2CHECKOUT_TEXT_ERROR_MESSAGE), 'SSL', true, false));
 		}
 	}
 
 	function after_process() {
 		global $insert_id;
 		if ($this->order_status)
-			xtc_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
+			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
 	}
 
@@ -161,25 +161,25 @@ class pm2checkout {
 
 	function check() {
 		if (!isset ($this->_check)) {
-			$check_query = xtc_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_PM2CHECKOUT_STATUS'");
-			$this->_check = xtc_db_num_rows($check_query);
+			$check_query = vam_db_query("select configuration_value from ".TABLE_CONFIGURATION." where configuration_key = 'MODULE_PAYMENT_PM2CHECKOUT_STATUS'");
+			$this->_check = vam_db_num_rows($check_query);
 		}
 		return $this->_check;
 	}
 
 	function install() {
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_STATUS', 'True', '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ALLOWED', '',  '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_LOGIN', '',  '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_TESTMODE', 'Test', '6', '0', 'xtc_cfg_select_option(array(\'Test\', \'Production\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_EMAIL_MERCHANT', 'True',  '6', '0', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_SORT_ORDER', '0',  '6', '0', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ZONE', '0',  '6', '2', 'xtc_get_zone_class_title', 'xtc_cfg_pull_down_zone_classes(', now())");
-		xtc_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ORDER_STATUS_ID', '0',  '6', '0', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ALLOWED', '',  '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_LOGIN', '',  '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_TESTMODE', 'Test', '6', '0', 'vam_cfg_select_option(array(\'Test\', \'Production\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_EMAIL_MERCHANT', 'True',  '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_SORT_ORDER', '0',  '6', '0', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ZONE', '0',  '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+		vam_db_query("insert into ".TABLE_CONFIGURATION." ( configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PM2CHECKOUT_ORDER_STATUS_ID', '0',  '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
 	}
 
 	function remove() {
-		xtc_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
+		vam_db_query("delete from ".TABLE_CONFIGURATION." where configuration_key in ('".implode("', '", $this->keys())."')");
 	}
 
 	function keys() {

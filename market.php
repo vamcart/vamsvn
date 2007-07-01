@@ -64,7 +64,7 @@ update configuration set configuration_group_id=last_insert_id() where configura
 */
 
  require('includes/application_top.php');
- require('inc/xtc_round.inc.php');
+ require('inc/vam_round.inc.php');
 
 if (!defined('YML_NAME')) define('YML_NAME','');
 if (!defined('YML_COMPANY')) define('YML_COMPANY','');
@@ -121,8 +121,8 @@ if ($_GET['currency'] == "") {
 echo "  </currencies>\n\n";
 
 echo "  <categories>\n";
-$categories_to_xml_query = xtc_db_query('describe ' . TABLE_CATEGORIES . ' categories_to_xml');
-$categories_query = xtc_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((xtc_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . "
+$categories_to_xml_query = vam_db_query('describe ' . TABLE_CATEGORIES . ' categories_to_xml');
+$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . "
 														from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
 														where c.categories_status = '1'
 															and c.categories_id = cd.categories_id
@@ -130,7 +130,7 @@ $categories_query = xtc_db_query("select c.categories_id, cd.categories_name, c.
 														order by c.parent_id, c.sort_order, cd.categories_name"
 													);
 $categories_disable = array();
-while ($categories = xtc_db_fetch_array($categories_query)) {
+while ($categories = vam_db_fetch_array($categories_query)) {
 	if (!isset($categories["categories_to_xml"]) || $categories["categories_to_xml"] == 1) {
 		echo "<category id=\"" . $categories["categories_id"] . "\"" .
 				 (($categories["parent_id"] == "0") ? ">" : " parentId=\"" . $categories["parent_id"] . "\">" ) .
@@ -143,25 +143,25 @@ while ($categories = xtc_db_fetch_array($categories_query)) {
 echo "  </categories>\n";
 
 echo"<offers>\n";
-$products_short_desc_query = xtc_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
-$products_to_xml_query = xtc_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
+$products_short_desc_query = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
+$products_to_xml_query = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
 $products_sql = "select p.products_id, p.products_model, p.products_quantity, p.products_image, p.products_price, products_tax_class_id, p.manufacturers_id, pd.products_name, p2c.categories_id, pd.products_description" .
-								((xtc_db_num_rows($products_short_desc_query) > 0) ? ", pd.products_short_description " : " ") . ", l.code as language " .
+								((vam_db_num_rows($products_short_desc_query) > 0) ? ", pd.products_short_description " : " ") . ", l.code as language " .
 								"from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_LANGUAGES . " l
 								 where p.products_id = pd.products_id
 									 and p.products_status = 1" .
-									 ((xtc_db_num_rows($products_to_xml_query) > 0) ? " and p.products_to_xml = 1" : "") .
+									 ((vam_db_num_rows($products_to_xml_query) > 0) ? " and p.products_to_xml = 1" : "") .
 								 " and p.products_id = p2c.products_id
 									 and pd.language_id = " . $_SESSION['languages_id'] . "
 									 and p.products_price > 0
 									 and l.languages_id=pd.language_id
 								 order by pd.products_name";
-$products_query = xtc_db_query($products_sql);
+$products_query = vam_db_query($products_sql);
 $prev_prod['products_id'] = 0;
 $cats_id = array();
 
-for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <= $nproducts; $iproducts++) {
-	$products = xtc_db_fetch_array($products_query);
+for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <= $nproducts; $iproducts++) {
+	$products = vam_db_fetch_array($products_query);
 	if ($prev_prod['products_id'] == $products['products_id']) {
 		if (!in_array($products['categories_id'], $categories_disable)) {
 			$cats_id['0'] = $products['categories_id'];
@@ -182,36 +182,36 @@ for ($iproducts = 0, $nproducts = xtc_db_num_rows($products_query); $iproducts <
 					break;
 			}
 
-//			if ($products_price = xtc_get_products_special_price($prev_prod['products_id'])) {
+//			if ($products_price = vam_get_products_special_price($prev_prod['products_id'])) {
 			if ($products_price = $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
 			} else {
 				$products_price = $prev_prod['products_price'];
 			}
 
 			echo "<offer id=\"" . $prev_prod['products_id'] . "\" available=\"" . $available . "\">\n" .
-					 "  <url>" . xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($prev_prod['products_id'], $prev_prod['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false) . "</url>\n" .
-//					 "  <price>" . number_format(xtc_round(xtc_add_tax($products_price, xtc_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
+					 "  <url>" . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($prev_prod['products_id'], $prev_prod['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false) . "</url>\n" .
+//					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
 					 "  <price>" . $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
 					 "  <currencyId>" . $code . "</currencyId>\n";
 			for ($ic=0,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
 				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
 			}
-			echo (xtc_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
+			echo (vam_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
 					 (YML_DELIVERYINCLUDED == "true" ? "  <deliveryIncluded/>\n" : "") .
 					 "  <name>" . _clear_string($prev_prod['products_name']) . "</name>\n";
 			if ($prev_prod['manufacturers_id'] != 0) {
 				if(!isset($manufacturers_array[$prev_prod['manufacturers_id']])) {
-					$manufacturer_query = xtc_db_query("select manufacturers_name
+					$manufacturer_query = vam_db_query("select manufacturers_name
 																							from " . TABLE_MANUFACTURERS . "
 																							where manufacturers_id ='" . $prev_prod['manufacturers_id'] . "'");
-					$manufacturer = xtc_db_fetch_array($manufacturer_query);
+					$manufacturer = vam_db_fetch_array($manufacturer_query);
 					$manufacturers_array[$prev_prod['manufacturers_id']] = $manufacturer['manufacturers_name'];
 				}
 //				echo "  <vendor>" . _clear_string($manufacturers_array[$prev_prod['manufacturers_id']]) . "</vendor>\n";
 			} 
-			if (isset($prev_prod['products_short_description']) && xtc_not_null($prev_prod['products_short_description'])) {
+			if (isset($prev_prod['products_short_description']) && vam_not_null($prev_prod['products_short_description'])) {
 				echo "  <description>" . _clear_string($prev_prod['products_short_description']) . "</description>\n";
-			} elseif (xtc_not_null($prev_prod['products_description'])) {
+			} elseif (vam_not_null($prev_prod['products_description'])) {
 				echo "  <description>" . _clear_string($prev_prod['products_description']) . "</description>\n";
 			}
 			echo "</offer>\n\n";

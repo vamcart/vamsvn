@@ -28,11 +28,11 @@ $default_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $default_smarty->assign('session', session_id());
 $main_content = '';
 // include needed functions
-require_once (DIR_FS_INC.'xtc_customer_greeting.inc.php');
-require_once (DIR_FS_INC.'xtc_get_path.inc.php');
-require_once (DIR_FS_INC.'xtc_check_categories_status.inc.php');
+require_once (DIR_FS_INC.'vam_customer_greeting.inc.php');
+require_once (DIR_FS_INC.'vam_get_path.inc.php');
+require_once (DIR_FS_INC.'vam_check_categories_status.inc.php');
 
-if (xtc_check_categories_status($current_category_id) >= 1) {
+if (vam_check_categories_status($current_category_id) >= 1) {
 
 $error = CATEGORIE_NOT_FOUND;
 include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
@@ -56,7 +56,7 @@ if ($category_depth == 'nested') {
 
   $category_query = xtDBquery($category_query);
 
-  $category = xtc_db_fetch_array($category_query, true);
+  $category = vam_db_fetch_array($category_query, true);
 
   if (isset ($cPath) && ereg('_', $cPath)) {
   // check to see if there are deeper categories within the current category
@@ -79,7 +79,7 @@ if ($category_depth == 'nested') {
                                               order by sort_order, cd.categories_name";
     $categories_query = xtDBquery($categories_query);
 
-    if (xtc_db_num_rows($categories_query, true) < 1) {
+    if (vam_db_num_rows($categories_query, true) < 1) {
     // do nothing, go through the loop
     } else {
     break; // we've found the deepest category the customer is in
@@ -105,10 +105,10 @@ if ($category_depth == 'nested') {
   }
 
   $rows = 0;
-  while ($categories = xtc_db_fetch_array($categories_query, true)) {
+  while ($categories = vam_db_fetch_array($categories_query, true)) {
   $rows ++;
  
-  $cPath_new = xtc_category_link($categories['categories_id'],$categories['categories_name']);
+  $cPath_new = vam_category_link($categories['categories_id'],$categories['categories_name']);
  
   $width = (int) (100 / MAX_DISPLAY_CATEGORIES_PER_ROW).'%';
   $image = '';
@@ -116,7 +116,7 @@ if ($category_depth == 'nested') {
     $image = DIR_WS_IMAGES.'categories/'.$categories['categories_image'];
   }
 
-  $categories_content[] = array ('CATEGORIES_NAME' => $categories['categories_name'], 'CATEGORIES_HEADING_TITLE' => $categories['categories_heading_title'], 'CATEGORIES_IMAGE' => $image, 'CATEGORIES_LINK' => xtc_href_link(FILENAME_DEFAULT, $cPath_new), 'CATEGORIES_DESCRIPTION' => $categories['categories_description']);
+  $categories_content[] = array ('CATEGORIES_NAME' => $categories['categories_name'], 'CATEGORIES_HEADING_TITLE' => $categories['categories_heading_title'], 'CATEGORIES_IMAGE' => $image, 'CATEGORIES_LINK' => vam_href_link(FILENAME_DEFAULT, $cPath_new), 'CATEGORIES_DESCRIPTION' => $categories['categories_description']);
 
   }
   $new_products_category_id = $current_category_id;
@@ -165,13 +165,13 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   }
   // show the products of a specified manufacturer
   if (isset ($_GET['manufacturers_id'])) {
-  if (isset ($_GET['filter_id']) && xtc_not_null($_GET['filter_id'])) {
+  if (isset ($_GET['filter_id']) && vam_not_null($_GET['filter_id'])) {
 
     // sorting query
     $sorting_query = xtDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".(int) $_GET['filter_id']."'");
-    $sorting_data = xtc_db_fetch_array($sorting_query,true);
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -245,13 +245,13 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   }
   } else {
   // show the products in a given categorie
-  if (isset ($_GET['filter_id']) && xtc_not_null($_GET['filter_id'])) {
+  if (isset ($_GET['filter_id']) && vam_not_null($_GET['filter_id'])) {
 
     // sorting query
     $sorting_query = xtDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
-    $sorting_data = xtc_db_fetch_array($sorting_query,true);
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -294,7 +294,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_query = xtDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
-    $sorting_data = xtc_db_fetch_array($sorting_query,true);
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -340,21 +340,21 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
   }
   $filterlist_query = xtDBquery($filterlist_sql);
-  if (xtc_db_num_rows($filterlist_query, true) > 1) {
-    $manufacturer_dropdown = xtc_draw_form('filter', FILENAME_DEFAULT, 'get');
+  if (vam_db_num_rows($filterlist_query, true) > 1) {
+    $manufacturer_dropdown = vam_draw_form('filter', FILENAME_DEFAULT, 'get');
     if (isset ($_GET['manufacturers_id'])) {
-    $manufacturer_dropdown .= xtc_draw_hidden_field('manufacturers_id', (int)$_GET['manufacturers_id']);
+    $manufacturer_dropdown .= vam_draw_hidden_field('manufacturers_id', (int)$_GET['manufacturers_id']);
     $options = array (array ('text' => TEXT_ALL_CATEGORIES));
     } else {
-    $manufacturer_dropdown .= xtc_draw_hidden_field('cat', $_GET['cat']);
+    $manufacturer_dropdown .= vam_draw_hidden_field('cat', $_GET['cat']);
     $options = array (array ('text' => TEXT_ALL_MANUFACTURERS));
     }
-    $manufacturer_dropdown .= xtc_draw_hidden_field('sort', $_GET['sort']);
-    $manufacturer_dropdown .= xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
-    while ($filterlist = xtc_db_fetch_array($filterlist_query, true)) {
+    $manufacturer_dropdown .= vam_draw_hidden_field('sort', $_GET['sort']);
+    $manufacturer_dropdown .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
+    while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
     $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
     }
-    $manufacturer_dropdown .= xtc_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'onchange="this.form.submit()"');
+    $manufacturer_dropdown .= vam_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'onchange="this.form.submit()"');
     $manufacturer_dropdown .= '</form>'."\n";
   }
   }
@@ -363,12 +363,12 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   $image = DIR_WS_IMAGES.'table_background_list.gif';
   if (isset ($_GET['manufacturers_id'])) {
   $image = xtDBquery("select manufacturers_image from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
-  $image = xtc_db_fetch_array($image,true);
+  $image = vam_db_fetch_array($image,true);
   $image = $image['manufacturers_image'];
   }
   elseif ($current_category_id) {
   $image = xtDBquery("select categories_image from ".TABLE_CATEGORIES." where categories_id = '".$current_category_id."'");
-  $image = xtc_db_fetch_array($image,true);
+  $image = vam_db_fetch_array($image,true);
   $image = $image['categories_image'];
   }
 
@@ -387,7 +387,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                       WHERE content_group='5'
                       ".$group_check."
                       AND languages_id='".$_SESSION['languages_id']."'");
-  $shop_content_data = xtc_db_fetch_array($shop_content_query,true);
+  $shop_content_data = vam_db_fetch_array($shop_content_query,true);
 
   $default_smarty->assign('title', $shop_content_data['content_heading']);
   include (DIR_WS_INCLUDES.FILENAME_CENTER_MODULES);
@@ -403,7 +403,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   ob_end_clean();
   }
 
-  $default_smarty->assign('greeting', xtc_customer_greeting());
+  $default_smarty->assign('greeting', vam_customer_greeting());
   $default_smarty->assign('text', $shop_content_data['content_text']);
   $default_smarty->assign('language', $_SESSION['language']);
 

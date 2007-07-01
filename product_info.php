@@ -30,29 +30,29 @@ $smarty = new Smarty;
 // include boxes
 
 if ($_GET['products_id']) {
-	$cat = xtc_db_query("SELECT categories_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id='".(int) $_GET['products_id']."'");
-	$catData = xtc_db_fetch_array($cat);
-	require_once (DIR_FS_INC.'xtc_get_path.inc.php');
+	$cat = vam_db_query("SELECT categories_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id='".(int) $_GET['products_id']."'");
+	$catData = vam_db_fetch_array($cat);
+	require_once (DIR_FS_INC.'vam_get_path.inc.php');
 	if ($catData['categories_id'])
-		$cPath = xtc_input_validation(xtc_get_path($catData['categories_id']), 'cPath', '');
+		$cPath = vam_input_validation(vam_get_path($catData['categories_id']), 'cPath', '');
 
 }
 
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_get_download.inc.php');
-require_once (DIR_FS_INC.'xtc_delete_file.inc.php');
-require_once (DIR_FS_INC.'xtc_get_all_get_params.inc.php');
-require_once (DIR_FS_INC.'xtc_date_long.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_hidden_field.inc.php');
-require_once (DIR_FS_INC.'xtc_image_button.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_form.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_input_field.inc.php');
-require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
+require_once (DIR_FS_INC.'vam_get_download.inc.php');
+require_once (DIR_FS_INC.'vam_delete_file.inc.php');
+require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_draw_hidden_field.inc.php');
+require_once (DIR_FS_INC.'vam_image_button.inc.php');
+require_once (DIR_FS_INC.'vam_draw_form.inc.php');
+require_once (DIR_FS_INC.'vam_draw_input_field.inc.php');
+require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 
 if ($_GET['action'] == 'get_download') {
-	xtc_get_download($_GET['cID']);
+	vam_get_download($_GET['cID']);
 }
 
 include (DIR_WS_MODULES.'product_info.php');

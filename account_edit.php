@@ -23,30 +23,30 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_date_short.inc.php');
-require_once (DIR_FS_INC.'xtc_image_button.inc.php');
-require_once (DIR_FS_INC.'xtc_validate_email.inc.php');
-require_once (DIR_FS_INC.'xtc_get_geo_zone_code.inc.php');
-require_once (DIR_FS_INC.'xtc_get_customers_country.inc.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_image_button.inc.php');
+require_once (DIR_FS_INC.'vam_validate_email.inc.php');
+require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
+require_once (DIR_FS_INC.'vam_get_customers_country.inc.php');
 
 if (!isset ($_SESSION['customer_id']))
-	xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 	
 if ($_SESSION['customers_status']['customers_status_id']==0)
-	xtc_redirect(xtc_href_link_admin(FILENAME_CUSTOMERS, 'cID='.$_SESSION['customer_id'].'&action=edit', 'SSL'));
+	vam_redirect(vam_href_link_admin(FILENAME_CUSTOMERS, 'cID='.$_SESSION['customer_id'].'&action=edit', 'SSL'));
 
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	if (ACCOUNT_GENDER == 'true')
-		$gender = xtc_db_prepare_input($_POST['gender']);
-	$firstname = xtc_db_prepare_input($_POST['firstname']);
-	$lastname = xtc_db_prepare_input($_POST['lastname']);
+		$gender = vam_db_prepare_input($_POST['gender']);
+	$firstname = vam_db_prepare_input($_POST['firstname']);
+	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
-		$dob = xtc_db_prepare_input($_POST['dob']);
+		$dob = vam_db_prepare_input($_POST['dob']);
 	if (ACCOUNT_COMPANY_VAT_CHECK == 'true')
-		$vat = xtc_db_prepare_input($_POST['vat']);
-	$email_address = xtc_db_prepare_input($_POST['email_address']);
-	$telephone = xtc_db_prepare_input($_POST['telephone']);
-	$fax = xtc_db_prepare_input($_POST['fax']);
+		$vat = vam_db_prepare_input($_POST['vat']);
+	$email_address = vam_db_prepare_input($_POST['email_address']);
+	$telephone = vam_db_prepare_input($_POST['telephone']);
+	$fax = vam_db_prepare_input($_POST['fax']);
 
 	$error = false;
 
@@ -68,14 +68,14 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
 
 	if (ACCOUNT_DOB == 'true') {
-		if (checkdate(substr(xtc_date_raw($dob), 4, 2), substr(xtc_date_raw($dob), 6, 2), substr(xtc_date_raw($dob), 0, 4)) == false) {
+		if (checkdate(substr(vam_date_raw($dob), 4, 2), substr(vam_date_raw($dob), 6, 2), substr(vam_date_raw($dob), 0, 4)) == false) {
 			$error = true;
 			$messageStack->add('account_edit', ENTRY_DATE_OF_BIRTH_ERROR);
 		}
 	}
 
 	// New VAT Check
-	$country = xtc_get_customers_country($_SESSION['customer_id']);
+	$country = vam_get_customers_country($_SESSION['customer_id']);
 	require_once(DIR_WS_CLASSES.'vat_validation.php');
 	$vatID = new vat_validation($vat, $_SESSION['customer_id'], '', $country);
 
@@ -96,7 +96,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_ERROR);
 	}
 
-	if (xtc_validate_email($email_address) == false) {
+	if (vam_validate_email($email_address) == false) {
 		$error = true;
 		$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
 	}
@@ -115,27 +115,27 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $gender;
 		if (ACCOUNT_DOB == 'true')
-			$sql_data_array['customers_dob'] = xtc_date_raw($dob);
+			$sql_data_array['customers_dob'] = vam_date_raw($dob);
 
-		xtc_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
+		vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
 
-		xtc_db_query("update ".TABLE_CUSTOMERS_INFO." set customers_info_date_account_last_modified = now() where customers_info_id = '".(int) $_SESSION['customer_id']."'");
+		vam_db_query("update ".TABLE_CUSTOMERS_INFO." set customers_info_date_account_last_modified = now() where customers_info_id = '".(int) $_SESSION['customer_id']."'");
 
 		// reset the session variables
 		$customer_first_name = $firstname;
 		$messageStack->add_session('account', SUCCESS_ACCOUNT_UPDATED, 'success');
-		xtc_redirect(xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 	}
 } else {
-	$account_query = xtc_db_query("select customers_gender, customers_cid, customers_vat_id, customers_vat_id_status, customers_firstname, customers_lastname, customers_dob, customers_email_address, customers_telephone, customers_fax from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
-	$account = xtc_db_fetch_array($account_query);
+	$account_query = vam_db_query("select customers_gender, customers_cid, customers_vat_id, customers_vat_id_status, customers_firstname, customers_lastname, customers_dob, customers_email_address, customers_telephone, customers_fax from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
+	$account = vam_db_fetch_array($account_query);
 }
 
-$breadcrumb->add(NAVBAR_TITLE_1_ACCOUNT_EDIT, xtc_href_link(FILENAME_ACCOUNT, '', 'SSL'));
-$breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_EDIT, xtc_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_1_ACCOUNT_EDIT, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_EDIT, vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
 
 require (DIR_WS_INCLUDES.'header.php');
-$smarty->assign('FORM_ACTION', xtc_draw_form('account_edit', xtc_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').xtc_draw_hidden_field('action', 'process') . xtc_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,telephone', 'id="required"'));
+$smarty->assign('FORM_ACTION', vam_draw_form('account_edit', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,telephone', 'id="required"'));
 
 if ($messageStack->size('account_edit') > 0)
 	$smarty->assign('error', $messageStack->output('account_edit'));
@@ -144,46 +144,46 @@ if (ACCOUNT_GENDER == 'true') {
 	$smarty->assign('gender', '1');
 	$male = ($account['customers_gender'] == 'm') ? true : false;
 	$female = !$male;
-	$smarty->assign('INPUT_MALE', xtc_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', $male, 'id="gender"'));
-	$smarty->assign('INPUT_FEMALE', xtc_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE.'&nbsp;', 'text' => (xtc_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', $female, 'id="gender"'));
+	$smarty->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', $male, 'id="gender"'));
+	$smarty->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE.'&nbsp;', 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', $female, 'id="gender"'));
 	$smarty->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 }
 
 if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 	$smarty->assign('vat', '1');
-	$smarty->assign('INPUT_VAT', xtc_draw_input_fieldNote(array ('name' => 'vat', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_VAT_TEXT) ? '<span class="Requirement">'.ENTRY_VAT_TEXT.'</span>' : '')), $account['customers_vat_id']));
+	$smarty->assign('INPUT_VAT', vam_draw_input_fieldNote(array ('name' => 'vat', 'text' => '&nbsp;'. (vam_not_null(ENTRY_VAT_TEXT) ? '<span class="Requirement">'.ENTRY_VAT_TEXT.'</span>' : '')), $account['customers_vat_id']));
 } else {
 	$smarty->assign('vat', '0');
 }
 
-$smarty->assign('INPUT_FIRSTNAME', xtc_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $account['customers_firstname'], 'id="firstname"'));
+$smarty->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $account['customers_firstname'], 'id="firstname"'));
 $smarty->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
-$smarty->assign('INPUT_LASTNAME', xtc_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
+$smarty->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
 $smarty->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 $smarty->assign('csID', $account['customers_cid']);
 
 if (ACCOUNT_DOB == 'true') {
 	$smarty->assign('birthdate', '1');
-	$smarty->assign('INPUT_DOB', xtc_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), xtc_date_short($account['customers_dob']), 'id="dob"'));
+	$smarty->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), vam_date_short($account['customers_dob']), 'id="dob"'));
    $smarty->assign('ENTRY_DATE_OF_BIRTH_ERROR', ENTRY_DATE_OF_BIRTH_ERROR);
 }
 
-$smarty->assign('INPUT_EMAIL', xtc_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $account['customers_email_address'], 'id="email"'));
+$smarty->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $account['customers_email_address'], 'id="email"'));
 $smarty->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
 
 if (ACCOUNT_TELE == 'true') {
 	$smarty->assign('telephone', '1');
-   $smarty->assign('INPUT_TEL', xtc_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $account['customers_telephone'], 'id="telephone"'));
+   $smarty->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $account['customers_telephone'], 'id="telephone"'));
    $smarty->assign('ENTRY_TELEPHONE_NUMBER_ERROR', ENTRY_TELEPHONE_NUMBER_ERROR);
 }
 
 if (ACCOUNT_FAX == 'true') {
 	$smarty->assign('fax', '1');
-   $smarty->assign('INPUT_FAX', xtc_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (xtc_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')), $account['customers_fax']));
+   $smarty->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')), $account['customers_fax']));
 }
 
-$smarty->assign('BUTTON_BACK', '<a href="'.xtc_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.xtc_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $smarty->assign('FORM_END', '</form>');
 $smarty->assign('language', $_SESSION['language']);
 

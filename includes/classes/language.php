@@ -70,8 +70,8 @@
 
 
       $this->catalog_languages = array();
-      $languages_query = xtc_db_query("select languages_id, name, code, image, directory,language_charset from " . TABLE_LANGUAGES . " order by sort_order");
-      while ($languages = xtc_db_fetch_array($languages_query)) {
+      $languages_query = vam_db_query("select languages_id, name, code, image, directory,language_charset from " . TABLE_LANGUAGES . " order by sort_order");
+      while ($languages = vam_db_fetch_array($languages_query)) {
         $this->catalog_languages[$languages['code']] = array('id' => $languages['languages_id'],
                                                              'name' => $languages['name'],
                                                              'image' => $languages['image'],

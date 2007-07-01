@@ -22,15 +22,15 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_word_count.inc.php');
-require_once (DIR_FS_INC.'xtc_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_word_count.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_REVIEWS, xtc_href_link(FILENAME_REVIEWS));
+$breadcrumb->add(NAVBAR_TITLE_REVIEWS, vam_href_link(FILENAME_REVIEWS));
 
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
-             xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
+             vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 }
 
 $reviews_query_raw = "select r.reviews_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.products_id, pd.products_name, p.products_image, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
@@ -38,17 +38,17 @@ $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DIS
 
 if ($reviews_split->number_of_rows > 0) {
 
-	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, xtc_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
+	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
 
 }
 
 $module_data = array ();
 if ($reviews_split->number_of_rows > 0) {
-	$reviews_query = xtc_db_query($reviews_split->sql_query);
-	while ($reviews = xtc_db_fetch_array($reviews_query)) {
+	$reviews_query = vam_db_query($reviews_split->sql_query);
+	while ($reviews = vam_db_fetch_array($reviews_query)) {
 	   $products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-		$module_data[] = array ('PRODUCTS_IMAGE' => $products_image, $reviews['products_name'], 'PRODUCTS_LINK' => xtc_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 'PRODUCTS_NAME' => $reviews['products_name'], 'AUTHOR' => $reviews['customers_name'], 'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, xtc_word_count($reviews['reviews_text'], ' ')).')<br />'.htmlspecialchars($reviews['reviews_text']).'..', 'RATING' => xtc_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
+		$module_data[] = array ('PRODUCTS_IMAGE' => $products_image, $reviews['products_name'], 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 'PRODUCTS_NAME' => $reviews['products_name'], 'AUTHOR' => $reviews['customers_name'], 'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.htmlspecialchars($reviews['reviews_text']).'..', 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 
 	}
 	$smarty->assign('module_content', $module_data);

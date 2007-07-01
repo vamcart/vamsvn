@@ -31,12 +31,12 @@
    ---------------------------------------------------------------------------------------*/
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_create_random_value.inc.php');
-require_once (DIR_FS_INC.'xtc_get_prid.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_form.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_input_field.inc.php');
-require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
-require_once (DIR_FS_INC.'xtc_get_tax_description.inc.php');
+require_once (DIR_FS_INC.'vam_create_random_value.inc.php');
+require_once (DIR_FS_INC.'vam_get_prid.inc.php');
+require_once (DIR_FS_INC.'vam_draw_form.inc.php');
+require_once (DIR_FS_INC.'vam_draw_input_field.inc.php');
+require_once (DIR_FS_INC.'vam_image_submit.inc.php');
+require_once (DIR_FS_INC.'vam_get_tax_description.inc.php');
 
 class shoppingCart {
 	var $contents, $total, $weight, $cartID, $content_type;
@@ -56,17 +56,17 @@ class shoppingCart {
 			reset($this->contents);
 			while (list ($products_id,) = each($this->contents)) {
 				$qty = $this->contents[$products_id]['qty'];
-				$product_query = xtc_db_query("select products_id from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
-				if (!xtc_db_num_rows($product_query)) {
-					xtc_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+				$product_query = vam_db_query("select products_id from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+				if (!vam_db_num_rows($product_query)) {
+					vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 					if (isset ($this->contents[$products_id]['attributes'])) {
 						reset($this->contents[$products_id]['attributes']);
 						while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
-							xtc_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."')");
+							vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."')");
 						}
 					}
 				} else {
-					xtc_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				}
 			}
 		}
@@ -74,12 +74,12 @@ class shoppingCart {
 		// reset per-session cart contents, but not the database contents
 		$this->reset(false);
 
-		$products_query = xtc_db_query("select products_id, customers_basket_quantity from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
-		while ($products = xtc_db_fetch_array($products_query)) {
+		$products_query = vam_db_query("select products_id, customers_basket_quantity from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
+		while ($products = vam_db_fetch_array($products_query)) {
 			$this->contents[$products['products_id']] = array ('qty' => $products['customers_basket_quantity']);
 			// attributes
-			$attributes_query = xtc_db_query("select products_options_id, products_options_value_id from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
-			while ($attributes = xtc_db_fetch_array($attributes_query)) {
+			$attributes_query = vam_db_query("select products_options_id, products_options_value_id from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
+			while ($attributes = vam_db_fetch_array($attributes_query)) {
 				$this->contents[$products['products_id']]['attributes'][$attributes['products_options_id']] = $attributes['products_options_value_id'];
 			}
 		}
@@ -95,8 +95,8 @@ class shoppingCart {
 		$this->content_type = false;
 
 		if (isset ($_SESSION['customer_id']) && ($reset_database == true)) {
-			xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
-			xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."'");
 		}
 
 		unset ($this->cartID);
@@ -107,7 +107,7 @@ class shoppingCart {
 	function add_cart($products_id, $qty = '1', $attributes = '', $notify = true) {
 		global $new_products_id_in_cart;
 
-		$products_id = xtc_get_uprid($products_id, $attributes);
+		$products_id = vam_get_uprid($products_id, $attributes);
 		if ($notify == true) {
 			$_SESSION['new_products_id_in_cart'] = $products_id;
 		}
@@ -119,7 +119,7 @@ class shoppingCart {
 			$this->contents[$products_id] = array ('qty' => $qty);
 			// insert into database
 			if (isset ($_SESSION['customer_id']))
-				xtc_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+				vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 
 			if (is_array($attributes)) {
 				reset($attributes);
@@ -127,7 +127,7 @@ class shoppingCart {
 					$this->contents[$products_id]['attributes'][$option] = $value;
 					// insert into database
 					if (isset ($_SESSION['customer_id']))
-						xtc_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."')");
+						vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."')");
 				}
 			}
 		}
@@ -145,7 +145,7 @@ class shoppingCart {
 		$this->contents[$products_id] = array ('qty' => $quantity);
 		// update database
 		if (isset ($_SESSION['customer_id']))
-			xtc_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 
 		if (is_array($attributes)) {
 			reset($attributes);
@@ -153,7 +153,7 @@ class shoppingCart {
 				$this->contents[$products_id]['attributes'][$option] = $value;
 				// update database
 				if (isset ($_SESSION['customer_id']))
-					xtc_db_query("update ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." set products_options_value_id = '".$value."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."' and products_options_id = '".$option."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." set products_options_value_id = '".$value."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."' and products_options_id = '".$option."'");
 			}
 		}
 	}
@@ -165,9 +165,9 @@ class shoppingCart {
 			if ($this->contents[$key]['qty'] < 1) {
 				unset ($this->contents[$key]);
 				// remove from database
-				if (xtc_session_is_registered('customer_id')) {
-					xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
-					xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
+				if (vam_session_is_registered('customer_id')) {
+					vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
+					vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
 				}
 			}
 		}
@@ -205,9 +205,9 @@ class shoppingCart {
 		
 		$this->contents[$products_id]= NULL;
 		// remove from database
-		if (xtc_session_is_registered('customer_id')) {
-			xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
-			xtc_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+		if (vam_session_is_registered('customer_id')) {
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 		}
 
 		// assign a temporary unique ID to the order contents to prevent hack attempts during the checkout procedure
@@ -243,8 +243,8 @@ class shoppingCart {
 			$qty = $this->contents[$products_id]['qty'];
 
 			// products price
-			$product_query = xtc_db_query("select products_id, products_price, products_discount_allowed, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".xtc_get_prid($products_id)."'");
-			if ($product = xtc_db_fetch_array($product_query)) {
+			$product_query = vam_db_query("select products_id, products_price, products_discount_allowed, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".vam_get_prid($products_id)."'");
+			if ($product = vam_db_fetch_array($product_query)) {
 
 				$products_price = $xtPrice->xtcGetPrice($product['products_id'], $format = false, $qty, $product['products_tax_class_id'], $product['products_price']);
 				$this->total += $products_price * $qty;
@@ -275,7 +275,7 @@ class shoppingCart {
 						
 						
 					$products_tax = $xtPrice->TAX[$product['products_tax_class_id']];
-					$products_tax_description = xtc_get_tax_description($product['products_tax_class_id']);
+					$products_tax_description = vam_get_tax_description($product['products_tax_class_id']);
 
 					
 					// price incl tax
@@ -336,8 +336,8 @@ class shoppingCart {
 		reset($this->contents);
 		while (list ($products_id,) = each($this->contents)) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){			
-			$products_query = xtc_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".xtc_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
-			if ($products = xtc_db_fetch_array($products_query)) {
+			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
 				$products_price = $xtPrice->xtcGetPrice($products['products_id'], $format = false, $this->contents[$products_id]['qty'], $products['products_tax_class_id'], $products['products_price']);
@@ -381,7 +381,7 @@ class shoppingCart {
 	}
 
 	function generate_cart_id($length = 5) {
-		return xtc_create_random_value($length, 'digits');
+		return vam_create_random_value($length, 'digits');
 	}
 
 	function get_content_type() {
@@ -393,8 +393,8 @@ class shoppingCart {
 				if (isset ($this->contents[$products_id]['attributes'])) {
 					reset($this->contents[$products_id]['attributes']);
 					while (list (, $value) = each($this->contents[$products_id]['attributes'])) {
-						$virtual_check_query = xtc_db_query("select count(*) as total from ".TABLE_PRODUCTS_ATTRIBUTES." pa, ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." pad where pa.products_id = '".$products_id."' and pa.options_values_id = '".$value."' and pa.products_attributes_id = pad.products_attributes_id");
-						$virtual_check = xtc_db_fetch_array($virtual_check_query);
+						$virtual_check_query = vam_db_query("select count(*) as total from ".TABLE_PRODUCTS_ATTRIBUTES." pa, ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." pad where pa.products_id = '".$products_id."' and pa.options_values_id = '".$value."' and pa.products_attributes_id = pad.products_attributes_id");
+						$virtual_check = vam_db_fetch_array($virtual_check_query);
 
 						if ($virtual_check['total'] > 0) {
 							switch ($this->content_type) {
@@ -460,14 +460,14 @@ class shoppingCart {
 			reset($this->contents);
 			while (list ($products_id,) = each($this->contents)) {
 				$no_count = false;
-				$gv_query = xtc_db_query("select products_model from ".TABLE_PRODUCTS." where products_id = '".$products_id."'");
-				$gv_result = xtc_db_fetch_array($gv_query);
+				$gv_query = vam_db_query("select products_model from ".TABLE_PRODUCTS." where products_id = '".$products_id."'");
+				$gv_result = vam_db_fetch_array($gv_query);
 				if (ereg('^GIFT', $gv_result['products_model'])) {
 					$no_count = true;
 				}
 				if (NO_COUNT_ZERO_WEIGHT == 1) {
-					$gv_query = xtc_db_query("select products_weight from ".TABLE_PRODUCTS." where products_id = '".xtc_get_prid($products_id)."'");
-					$gv_result = xtc_db_fetch_array($gv_query);
+					$gv_query = vam_db_query("select products_weight from ".TABLE_PRODUCTS." where products_id = '".vam_get_prid($products_id)."'");
+					$gv_result = vam_db_fetch_array($gv_query);
 					if ($gv_result['products_weight'] <= MINIMUM_WEIGHT) {
 						$no_count = true;
 					}

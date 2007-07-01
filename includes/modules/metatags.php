@@ -56,7 +56,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 } else {
 	if ($_GET['cPath']) {
 		if (strpos($_GET['cPath'], '_') == '1') {
-			$arr = explode('_', xtc_input_validation($_GET['cPath'], 'cPath', ''));
+			$arr = explode('_', vam_input_validation($_GET['cPath'], 'cPath', ''));
 			$_cPath = $arr[1];
 		} else {
 			//$_cPath=(int)$_GET['cPath'];
@@ -73,7 +73,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 		                                            FROM " . TABLE_CATEGORIES_DESCRIPTION . "
 		                                            WHERE categories_id='" . $_cPath . "' and
 		                                            language_id='" . $_SESSION['languages_id'] . "'");
-		$categories_meta = xtc_db_fetch_array($categories_meta_query, true);
+		$categories_meta = vam_db_fetch_array($categories_meta_query, true);
 		if ($categories_meta['categories_meta_keywords'] == '') {
 			$categories_meta['categories_meta_keywords'] = META_KEYWORDS;
 		}
@@ -98,7 +98,7 @@ switch (true) {
 			                                            FROM " . TABLE_CONTENT_MANAGER . "
 			                                            WHERE content_group='" . $_GET['coID'] . "' and
 			                                            languages_id='" . $_SESSION['languages_id'] . "'");
-			$contents_meta = xtc_db_fetch_array($contents_meta_query, true);
+			$contents_meta = vam_db_fetch_array($contents_meta_query, true);
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
@@ -113,7 +113,7 @@ switch (true) {
 			                                            FROM " . TABLE_LATEST_NEWS . "
 			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
-			$news_meta = xtc_db_fetch_array($news_meta_query, true);
+			$news_meta = vam_db_fetch_array($news_meta_query, true);
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
@@ -128,7 +128,7 @@ switch (true) {
 			                                            FROM " . TABLE_TOPICS_DESCRIPTION . "
 			                                            WHERE topics_id='" . (int)$current_topic_id . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
-			$articles_cat_meta = xtc_db_fetch_array($articles_cat_meta_query, true);
+			$articles_cat_meta = vam_db_fetch_array($articles_cat_meta_query, true);
 
 		if ($articles_cat_meta['topics_heading_title'] == '') {
 			$articles_cat_title = $articles_cat_meta['topics_name'];
@@ -156,7 +156,7 @@ switch (true) {
 			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
 			                                            WHERE articles_id='" . (int)$_GET['articles_id'] . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
-			$articles_meta = xtc_db_fetch_array($articles_meta_query, true);
+			$articles_meta = vam_db_fetch_array($articles_meta_query, true);
 
 		if ($articles_meta['articles_head_title_tag'] == '') {
 			$articles_title = $articles_meta['articles_name'];
@@ -189,7 +189,7 @@ switch (true) {
 			$authors_meta_query = xtDBquery("SELECT authors_name
 			                                            FROM " . TABLE_AUTHORS . "
 			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
-			$authors_meta = xtc_db_fetch_array($authors_meta_query, true);
+			$authors_meta = vam_db_fetch_array($authors_meta_query, true);
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />

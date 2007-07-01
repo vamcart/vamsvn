@@ -19,64 +19,64 @@
 
 include ('includes/application_top.php');
 
-require_once (DIR_FS_INC.'xtc_update_banner_click_count.inc.php');
+require_once (DIR_FS_INC.'vam_update_banner_click_count.inc.php');
 
 switch ($_GET['action']) {
 	case 'banner' :
-		$banner_query = xtc_db_query("select banners_url from ".TABLE_BANNERS." where banners_id = '".(int) $_GET['goto']."'");
-		if (xtc_db_num_rows($banner_query)) {
-			$banner = xtc_db_fetch_array($banner_query);
-			xtc_update_banner_click_count($_GET['goto']);
+		$banner_query = vam_db_query("select banners_url from ".TABLE_BANNERS." where banners_id = '".(int) $_GET['goto']."'");
+		if (vam_db_num_rows($banner_query)) {
+			$banner = vam_db_fetch_array($banner_query);
+			vam_update_banner_click_count($_GET['goto']);
 
-			xtc_redirect($banner['banners_url']);
+			vam_redirect($banner['banners_url']);
 		} else {
-			xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+			vam_redirect(vam_href_link(FILENAME_DEFAULT));
 		}
 		break;
 
 	case 'product' :
 		if (isset ($_GET['id'])) {
-			$product_query = xtc_db_query("SELECT products_url FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE products_id='".(int) $_GET['id']."' and language_id='".(int) $_SESSION['languages_id']."'");
+			$product_query = vam_db_query("SELECT products_url FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE products_id='".(int) $_GET['id']."' and language_id='".(int) $_SESSION['languages_id']."'");
 
-			if (xtc_db_num_rows($product_query)) {
-				$product = xtc_db_fetch_array($product_query);
+			if (vam_db_num_rows($product_query)) {
+				$product = vam_db_fetch_array($product_query);
 
-				xtc_redirect('http://'.$product['products_url']);
+				vam_redirect('http://'.$product['products_url']);
 			} else {
-				xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+				vam_redirect(vam_href_link(FILENAME_DEFAULT));
 			}
 		} else {
-			xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+			vam_redirect(vam_href_link(FILENAME_DEFAULT));
 		}
 		break;
 
 	case 'manufacturer' :
 		if (isset ($_GET['manufacturers_id'])) {
-			$manufacturer_query = xtc_db_query("select manufacturers_url from ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".(int) $_SESSION['languages_id']."'");
-			if (!xtc_db_num_rows($manufacturer_query)) {
+			$manufacturer_query = vam_db_query("select manufacturers_url from ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".(int) $_SESSION['languages_id']."'");
+			if (!vam_db_num_rows($manufacturer_query)) {
 				// no url exists for the selected language, lets use the default language then
-				$manufacturer_query = xtc_db_query("select mi.languages_id, mi.manufacturers_url from ".TABLE_MANUFACTURERS_INFO." mi, ".TABLE_LANGUAGES." l where mi.manufacturers_id = '".(int) $_GET['manufacturers_id']."' and mi.languages_id = l.languages_id and l.code = '".DEFAULT_LANGUAGE."'");
-				if (!xtc_db_num_rows($manufacturer_query)) {
+				$manufacturer_query = vam_db_query("select mi.languages_id, mi.manufacturers_url from ".TABLE_MANUFACTURERS_INFO." mi, ".TABLE_LANGUAGES." l where mi.manufacturers_id = '".(int) $_GET['manufacturers_id']."' and mi.languages_id = l.languages_id and l.code = '".DEFAULT_LANGUAGE."'");
+				if (!vam_db_num_rows($manufacturer_query)) {
 					// no url exists, return to the site
-					xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+					vam_redirect(vam_href_link(FILENAME_DEFAULT));
 				} else {
-					$manufacturer = xtc_db_fetch_array($manufacturer_query);
-					xtc_db_query("update ".TABLE_MANUFACTURERS_INFO." set url_clicked = url_clicked+1, date_last_click = now() where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".$manufacturer['languages_id']."'");
+					$manufacturer = vam_db_fetch_array($manufacturer_query);
+					vam_db_query("update ".TABLE_MANUFACTURERS_INFO." set url_clicked = url_clicked+1, date_last_click = now() where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".$manufacturer['languages_id']."'");
 				}
 			} else {
 				// url exists in selected language
-				$manufacturer = xtc_db_fetch_array($manufacturer_query);
-				xtc_db_query("update ".TABLE_MANUFACTURERS_INFO." set url_clicked = url_clicked+1, date_last_click = now() where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".$_SESSION['languages_id']."'");
+				$manufacturer = vam_db_fetch_array($manufacturer_query);
+				vam_db_query("update ".TABLE_MANUFACTURERS_INFO." set url_clicked = url_clicked+1, date_last_click = now() where manufacturers_id = '".(int) $_GET['manufacturers_id']."' and languages_id = '".$_SESSION['languages_id']."'");
 			}
 
-			xtc_redirect($manufacturer['manufacturers_url']);
+			vam_redirect($manufacturer['manufacturers_url']);
 		} else {
-			xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+			vam_redirect(vam_href_link(FILENAME_DEFAULT));
 		}
 		break;
 
 	default :
-		xtc_redirect(xtc_href_link(FILENAME_DEFAULT));
+		vam_redirect(vam_href_link(FILENAME_DEFAULT));
 		break;
 }
 ?>

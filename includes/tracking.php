@@ -33,18 +33,18 @@ if (!isset ($_SESSION['tracking']['refID'])) {
 	if (isset($_GET['refID'])) {
 		      $campaign_check_query_raw = "SELECT *
 			                            FROM ".TABLE_CAMPAIGNS." 
-			                            WHERE campaigns_refID = '".xtc_db_input($_GET['refID'])."'";
-			$campaign_check_query = xtc_db_query($campaign_check_query_raw);
-		if (xtc_db_num_rows($campaign_check_query) > 0) {			
-			$_SESSION['tracking']['refID'] = xtc_db_input($_GET['refID']);		
+			                            WHERE campaigns_refID = '".vam_db_input($_GET['refID'])."'";
+			$campaign_check_query = vam_db_query($campaign_check_query_raw);
+		if (vam_db_num_rows($campaign_check_query) > 0) {			
+			$_SESSION['tracking']['refID'] = vam_db_input($_GET['refID']);		
 			
 			// count hit (block IP for 1 hour)
-			$insert_sql = array('user_ip'=>$_SESSION['tracking']['ip'],'campaign'=>xtc_db_input($_GET['refID']),'time'=>'now()');
+			$insert_sql = array('user_ip'=>$_SESSION['tracking']['ip'],'campaign'=>vam_db_input($_GET['refID']),'time'=>'now()');
 			
 //			$check_date = mktime(0, date("i")-1, 0, date("m"), date("d"), date("Y"));
-//			$ip_query = xtc_db_query("SELECT * FROM ".TABLE_CAMPAIGNS_IP." WHERE campaign='".xtc_db_input($_GET['refID'])."' and user_ip='".$_SESSION['tracking']['ip']."' and time > '".$check_date."'");
-//			if (!xtc_db_num_rows($ip_query)) 
-			xtc_db_perform(TABLE_CAMPAIGNS_IP,$insert_sql);	
+//			$ip_query = vam_db_query("SELECT * FROM ".TABLE_CAMPAIGNS_IP." WHERE campaign='".vam_db_input($_GET['refID'])."' and user_ip='".$_SESSION['tracking']['ip']."' and time > '".$check_date."'");
+//			if (!vam_db_num_rows($ip_query)) 
+			vam_db_perform(TABLE_CAMPAIGNS_IP,$insert_sql);	
 			} 	
 	}
 }

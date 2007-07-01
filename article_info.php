@@ -28,17 +28,17 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
-require_once (DIR_FS_INC.'xtc_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
 require (DIR_WS_INCLUDES.'header.php');
 
   $article_check_query = "select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
   $article_check_query = xtDBquery($article_check_query);
-  $article_check = xtc_db_fetch_array($article_check_query);
+  $article_check = vam_db_fetch_array($article_check_query);
 
     $article_info_query = "select a.articles_id, a.articles_date_added, a.articles_date_available, a.authors_id, ad.articles_name, ad.articles_description, ad.articles_url, au.authors_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
     $article_info_query = xtDBquery($article_info_query);
-    $article_info = xtc_db_fetch_array($article_info_query);
+    $article_info = vam_db_fetch_array($article_info_query);
 
 if ($article_check['total'] > 0) {
 
@@ -46,14 +46,14 @@ if ($article_check['total'] > 0) {
 
 		$SEF_parameter_author = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_author = '&author='.xtc_cleanName($article_info['authors_name']);
+			$SEF_parameter_author = '&author='.vam_cleanName($article_info['authors_name']);
 
 	$smarty->assign('ARTICLE_NAME', $article_info['articles_name']);
 	$smarty->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
-	$smarty->assign('ARTICLE_DATE', xtc_date_long($article_info['articles_date_added']));
+	$smarty->assign('ARTICLE_DATE', vam_date_long($article_info['articles_date_added']));
 	$smarty->assign('ARTICLE_URL', $article_info['articles_url']);
 	$smarty->assign('AUTHOR_NAME', $article_info['authors_name']);
-	$smarty->assign('AUTHOR_LINK' , xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
+	$smarty->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
 
 
 } else {

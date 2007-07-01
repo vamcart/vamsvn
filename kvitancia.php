@@ -18,27 +18,27 @@
 include ('includes/application_top.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_get_order_data.inc.php');
-require_once (DIR_FS_INC.'xtc_get_attributes_model.inc.php');
+require_once (DIR_FS_INC.'vam_get_order_data.inc.php');
+require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 
 $smarty = new Smarty;
 
 // check if custmer is allowed to see this order!
-$order_query_check = xtc_db_query("SELECT
+$order_query_check = vam_db_query("SELECT
   					customers_id
   					FROM ".TABLE_ORDERS."
   					WHERE orders_id='".(int) $_GET['oID']."'");
 $oID = (int) $_GET['oID'];
-$order_check = xtc_db_fetch_array($order_query_check);
+$order_check = vam_db_fetch_array($order_query_check);
 if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	// get order data
 
 	include (DIR_WS_CLASSES.'order.php');
 	$order = new order($oID);
-	$smarty->assign('address_label_customer', xtc_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
-	$smarty->assign('address_label_shipping', xtc_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
-	$smarty->assign('address_label_payment', xtc_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
+	$smarty->assign('address_label_customer', vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
+	$smarty->assign('address_label_shipping', vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+	$smarty->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
 	$smarty->assign('csID', $order->customer['csID']);
 	// get products data
 	$order_total = $order->getTotalData($oID); 
@@ -64,7 +64,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	}
 	$smarty->assign('PAYMENT_METHOD', $payment_method);
 	$smarty->assign('COMMENT', $order->info['comments']);
-	$smarty->assign('DATE', xtc_date_short($order->info['date_purchased']));
+	$smarty->assign('DATE', vam_date_short($order->info['date_purchased']));
 	$path = DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/';
 	$smarty->assign('tpl_path', $path);
 

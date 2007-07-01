@@ -17,17 +17,17 @@
 
 require ('includes/application_top.php');
 
-$content_query = xtc_db_query("SELECT
+$content_query = vam_db_query("SELECT
 	 				content_name,
 	 				content_read,
  					content_file
  					FROM ".TABLE_PRODUCTS_CONTENT."
  					WHERE content_id='".(int) $_GET['coID']."'");
-$content_data = xtc_db_fetch_array($content_query);
+$content_data = vam_db_fetch_array($content_query);
 
 // update file counter
 
-xtc_db_query("UPDATE 
+vam_db_query("UPDATE 
 			".TABLE_PRODUCTS_CONTENT." 
 			SET content_read='". ($content_data['content_read'] + 1)."'
 			WHERE content_id='".(int) $_GET['coID']."'");
@@ -57,7 +57,7 @@ if ($content_data['content_file'] != '') {
 	if (eregi('.gif', $content_data['content_file']) or eregi('.jpg', $content_data['content_file']) or eregi('.png', $content_data['content_file']) or eregi('.tif', $content_data['content_file']) or eregi('.bmp', $content_data['content_file'])) {
 		echo '<table align="center" valign="middle" width="100%" height="100%" border=0><tr><td class="main" align="middle" valign="middle">';
 
-		echo xtc_image(DIR_WS_CATALOG.'media/products/'.$content_data['content_file']);
+		echo vam_image(DIR_WS_CATALOG.'media/products/'.$content_data['content_file']);
 		echo '</td></tr></table>';
 	} else {
 		echo '<table border="0" width="100%" cellspacing="0" cellpadding="2">

@@ -23,26 +23,26 @@ $smarty = new Smarty;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
-require_once (DIR_FS_INC.'xtc_get_categories.inc.php');
-require_once (DIR_FS_INC.'xtc_get_manufacturers.inc.php');
-require_once (DIR_FS_INC.'xtc_checkdate.inc.php');
+require_once (DIR_FS_INC.'vam_get_categories.inc.php');
+require_once (DIR_FS_INC.'vam_get_manufacturers.inc.php');
+require_once (DIR_FS_INC.'vam_checkdate.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_ADVANCED_SEARCH, xtc_href_link(FILENAME_ADVANCED_SEARCH));
+$breadcrumb->add(NAVBAR_TITLE_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH));
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$smarty->assign('FORM_ACTION', xtc_draw_form('advanced_search', xtc_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'onsubmit="return check_form(this);"').xtc_hide_session_id());
+$smarty->assign('FORM_ACTION', vam_draw_form('advanced_search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'onsubmit="return check_form(this);"').vam_hide_session_id());
 
-$smarty->assign('INPUT_KEYWORDS', xtc_draw_input_field('keywords', '', ''));
-$smarty->assign('HELP_LINK', 'javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
-$smarty->assign('BUTTON_SUBMIT', xtc_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
+$smarty->assign('INPUT_KEYWORDS', vam_draw_input_field('keywords', '', ''));
+$smarty->assign('HELP_LINK', 'javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
+$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
 
 
-$smarty->assign('SELECT_CATEGORIES',xtc_draw_pull_down_menu('categories_id', xtc_get_categories(array (array ('id' => '', 'text' => TEXT_ALL_CATEGORIES)))));
-$smarty->assign('ENTRY_SUBCAT',xtc_draw_checkbox_field('inc_subcat', '1', true));
-$smarty->assign('SELECT_MANUFACTURERS',xtc_draw_pull_down_menu('manufacturers_id', xtc_get_manufacturers(array (array ('id' => '', 'text' => TEXT_ALL_MANUFACTURERS)))));
-$smarty->assign('SELECT_PFROM',xtc_draw_input_field('pfrom'));
-$smarty->assign('SELECT_PTO',xtc_draw_input_field('pto'));
+$smarty->assign('SELECT_CATEGORIES',vam_draw_pull_down_menu('categories_id', vam_get_categories(array (array ('id' => '', 'text' => TEXT_ALL_CATEGORIES)))));
+$smarty->assign('ENTRY_SUBCAT',vam_draw_checkbox_field('inc_subcat', '1', true));
+$smarty->assign('SELECT_MANUFACTURERS',vam_draw_pull_down_menu('manufacturers_id', vam_get_manufacturers(array (array ('id' => '', 'text' => TEXT_ALL_MANUFACTURERS)))));
+$smarty->assign('SELECT_PFROM',vam_draw_input_field('pfrom'));
+$smarty->assign('SELECT_PTO',vam_draw_input_field('pto'));
 
 
 $error = '';

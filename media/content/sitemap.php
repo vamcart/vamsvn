@@ -20,7 +20,7 @@
 $module_smarty = new Smarty;
 $module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
-require_once(DIR_FS_INC . 'xtc_count_products_in_category.inc.php');
+require_once(DIR_FS_INC . 'vam_count_products_in_category.inc.php');
 
  //to get category trees
  function get_category_tree($parent_id = '0', $spacing = '', $exclude = '', $category_tree_array = '', $include_itself = false, $cPath = '') {
@@ -31,15 +31,15 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
    if ($include_itself) {
      $category_query = "select cd.categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " cd where cd.language_id = '" . $_SESSION['languages_id'] . "' and c.categories_status = '1' and cd.categories_id = '" . $parent_id . "'";
      $category_query = xtDBquery($category_query);
-     $category = xtc_db_fetch_array($category_query,true);
+     $category = vam_db_fetch_array($category_query,true);
      $category_tree_array[] = array('id' => $parent_id, 'text' => $category['categories_name']);
    }
 
    $categories_query = "select c.categories_id, cd.categories_name, c.parent_id from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . $_SESSION['languages_id'] . "' and c.parent_id = '" . $parent_id . "' and c.categories_status = '1' order by c.sort_order, cd.categories_name";
    $categories_query = xtDBquery($categories_query);
-   while ($categories = xtc_db_fetch_array($categories_query,true)) {
+   while ($categories = vam_db_fetch_array($categories_query,true)) {
    
-     $SEF_link = xtc_href_link(FILENAME_DEFAULT, xtc_category_link($categories['categories_id'],$categories['categories_name']));
+     $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
     
      if ($exclude != $categories['categories_id'])
       $category_tree_array[] = array('id' => $categories['categories_id'],
@@ -66,9 +66,9 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  // db Cache
  $categories_query = xtDBquery($categories_query);
  $module_content = array();
- while ($categories = xtc_db_fetch_array($categories_query,true)) {
+ while ($categories = vam_db_fetch_array($categories_query,true)) {
    
-   $SEF_link = xtc_href_link(FILENAME_DEFAULT, xtc_category_link($categories['categories_id'],$categories['categories_name']));
+   $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
  
    $module_content[]=array('ID'  => $categories['categories_id'],
                            'CAT_NAME'  => $categories['categories_name'],

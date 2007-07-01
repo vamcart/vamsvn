@@ -41,7 +41,7 @@ $products_query = xtDBquery("SELECT
                                  and p.products_status=1 
                                  ".$fsk_lock.$group_check);
 $i = 0;
-while ($products_data = xtc_db_fetch_array($products_query, true)) {
+while ($products_data = vam_db_fetch_array($products_query, true)) {
 	$p_data[$i] = array ('pID' => $products_data['products_id'], 'pName' => $products_data['products_name']);
 	if ($products_data['products_id'] == $product->data['products_id'])
 		$actual_key = $i;
@@ -54,10 +54,10 @@ if ($actual_key == 0) {
 	// aktuel key = first product
 } else {
 	$prev_id = $actual_key -1;
-	$prev_link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($p_data[$prev_id]['pID'], $p_data[$prev_id]['pName']));
+	$prev_link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($p_data[$prev_id]['pID'], $p_data[$prev_id]['pName']));
 	// check if prev id = first
 	if ($prev_id != 0)
-		$first_link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($p_data[0]['pID'], $p_data[0]['pName']));
+		$first_link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($p_data[0]['pID'], $p_data[0]['pName']));
 }
 
 // check if key = last
@@ -65,10 +65,10 @@ if ($actual_key == (sizeof($p_data) - 1)) {
 	// actual key is last
 } else {
 	$next_id = $actual_key +1;
-	$next_link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($p_data[$next_id]['pID'], $p_data[$next_id]['pName']));
+	$next_link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($p_data[$next_id]['pID'], $p_data[$next_id]['pName']));
 	// check if next id = last
 	if ($next_id != (sizeof($p_data) - 1))
-		$last_link = xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($p_data[(sizeof($p_data) - 1)]['pID'], $p_data[(sizeof($p_data) - 1)]['pName']));
+		$last_link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($p_data[(sizeof($p_data) - 1)]['pID'], $p_data[(sizeof($p_data) - 1)]['pName']));
 
 }
 $module_smarty->assign('FIRST', $first_link);

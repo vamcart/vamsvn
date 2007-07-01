@@ -57,7 +57,7 @@
  * @seeAlso connect
  **/
     function httpClient($host = '', $port = '') {
-      if (xtc_not_null($host)) {
+      if (vam_not_null($host)) {
         $this->connect($host, $port);
       }
     }
@@ -142,7 +142,7 @@
     function Connect($host, $port = '') {
       $this->url['scheme'] = 'http';
       $this->url['host'] = $host;
-      if (xtc_not_null($port)) $this->url['port'] = $port;
+      if (vam_not_null($port)) $this->url['port'] = $port;
 
       return true;
     }
@@ -331,13 +331,13 @@
           $port = $this->url['port'];
         }
 
-        if (!xtc_not_null($port)) $port = 80;
+        if (!vam_not_null($port)) $port = 80;
 
         if (!$this->socket = fsockopen($host, $port, $this->reply, $this->replyString)) {
           return false;
         }
 
-        if (xtc_not_null($this->requestBody)) {
+        if (vam_not_null($this->requestBody)) {
           $this->addHeader('Content-Length', strlen($this->requestBody));
         }
 
@@ -350,7 +350,7 @@
           }
         }
 
-        if (xtc_not_null($this->requestBody)) {
+        if (vam_not_null($this->requestBody)) {
           $cmd .= "\r\n" . $this->requestBody;
         }
 
