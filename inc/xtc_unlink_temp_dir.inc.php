@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_unlink_temp_dir.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_unlink_temp_dir.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,15 +9,15 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (xtc_unlink_temp_dir.inc.php,v 1.1 2003/08/18); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_unlink_temp_dir.inc.php,v 1.1 2003/08/13); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_unlink_temp_dir.inc.php,v 1.1 2003/08/18); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_unlink_temp_dir.inc.php,v 1.1 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
   // Unlinks all subdirectories and files in $dir
   // Works only on one subdir level, will not recurse
-  function xtc_unlink_temp_dir($dir) {
+  function vam_unlink_temp_dir($dir) {
     $h1 = opendir($dir);
     while ($subdir = readdir($h1)) {
       // Ignore non directories

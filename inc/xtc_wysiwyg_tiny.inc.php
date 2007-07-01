@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-    $Id: xtc_wysiwyg_tiny.inc.php 923 2007-02-07 10:51:57 VaM $
+    $Id: vam_wysiwyg_tiny.inc.php 923 2007-02-07 10:51:57 VaM $
    
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -10,12 +10,12 @@
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2003	 nextcommerce (fckconfig.inc.php,v 1.4 2003/08/13); www.nextcommerce.org 
-   (c) 2004 xt:Commerce (xtc_wysiwyg.inc.php,v 1.4 2003/08/13); xt-commerce.com
+   (c) 2004 xt:Commerce (vam_wysiwyg.inc.php,v 1.4 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
 ---------------------------------------------------------------------------------------*/
 
-function xtc_wysiwyg_tiny($type, $lang, $langID = '') {
+function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
 $js_src = DIR_WS_MODULES .'tiny_mce/tiny_mce.js';
 

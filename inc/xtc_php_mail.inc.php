@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_php_mail.inc.php 1129 2007-02-07 10:51:57 VaM $
+   $Id: vam_php_mail.inc.php 1129 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,13 +9,13 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
-   (c) 2003	 nextcommerce (xtc_php_mail.inc.php,v 1.17 2003/08/24); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_php_mail.inc.php,v 1.17 2003/08/13); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_php_mail.inc.php,v 1.17 2003/08/24); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_php_mail.inc.php,v 1.17 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 // include the mail classes
-function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, $to_name, $forwarding_to, $reply_address, $reply_address_name, $path_to_attachement, $path_to_more_attachements, $email_subject, $message_body_html, $message_body_plain) {
+function vam_php_mail($from_email_address, $from_email_name, $to_email_address, $to_name, $forwarding_to, $reply_address, $reply_address_name, $path_to_attachement, $path_to_more_attachements, $email_subject, $message_body_html, $message_body_plain) {
 	global $mail_error;
 
 	$mail = new PHPMailer();
@@ -25,8 +25,8 @@ function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		$mail->CharSet = $_SESSION['language_charset'];
 	} else {
 		$lang_query = "SELECT * FROM ".TABLE_LANGUAGES." WHERE code = '".DEFAULT_LANGUAGE."'";
-		$lang_query = xtc_db_query($lang_query);
-		$lang_data = xtc_db_fetch_array($lang_query);
+		$lang_query = vam_db_query($lang_query);
+		$lang_data = vam_db_fetch_array($lang_query);
 		$mail->CharSet = $lang_data['language_charset'];
 	}
 	if ($_SESSION['language'] == 'russian') {

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_install.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_db_install.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,20 +11,20 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(database.php,v 1.2 2002/03/02); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_db_install.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_db_install.inc.php,v 1.3 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_db_install.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_db_install.inc.php,v 1.3 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-function xtc_db_install($database, $sql_file) {
+function vam_db_install($database, $sql_file) {
     global $db_error;
 
     $db_error = false;
 
-    if (!@xtc_db_select_db($database)) {
-      if (@xtc_db_query_installer('create database ' . $database)) {
-        xtc_db_select_db($database);
+    if (!@vam_db_select_db($database)) {
+      if (@vam_db_query_installer('create database ' . $database)) {
+        vam_db_select_db($database);
       } else {
         $db_error = mysql_error();
       }
@@ -83,10 +83,10 @@ function xtc_db_install($database, $sql_file) {
         }
       }
 
-      xtc_db_query_installer("drop table if exists address_book, address_format, banners, banners_history, categories, categories_description, configuration, configuration_group, counter, counter_history, countries, currencies, customers, customers_basket, customers_basket_attributes, customers_info, languages, manufacturers, manufacturers_info, orders, orders_products, orders_status, orders_status_history, orders_products_attributes, orders_products_download, products, products_attributes, products_attributes_download, prodcts_description, products_options, products_options_values, products_options_values_to_products_options, products_to_categories, reviews, reviews_description, sessions, specials, tax_class, tax_rates, geo_zones, whos_online, zones, zones_to_geo_zones");
+      vam_db_query_installer("drop table if exists address_book, address_format, banners, banners_history, categories, categories_description, configuration, configuration_group, counter, counter_history, countries, currencies, customers, customers_basket, customers_basket_attributes, customers_info, languages, manufacturers, manufacturers_info, orders, orders_products, orders_status, orders_status_history, orders_products_attributes, orders_products_download, products, products_attributes, products_attributes_download, prodcts_description, products_options, products_options_values, products_options_values_to_products_options, products_to_categories, reviews, reviews_description, sessions, specials, tax_class, tax_rates, geo_zones, whos_online, zones, zones_to_geo_zones");
 
       for ($i=0; $i<sizeof($sql_array); $i++) {
-        xtc_db_query_installer($sql_array[$i]);
+        vam_db_query_installer($sql_array[$i]);
       }
     } else {
       return false;

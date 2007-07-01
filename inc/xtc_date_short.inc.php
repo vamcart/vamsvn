@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_date_short.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_date_short.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,8 +11,8 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(general.php,v 1.225 2003/05/29); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_date_short.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_date_short.inc.php,v 1.3 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_date_short.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_date_short.inc.php,v 1.3 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -20,7 +20,7 @@
 // Output a raw date string in the selected locale date format
 // $raw_date needs to be in this format: YYYY-MM-DD HH:MM:SS
 // NOTE: Includes a workaround for dates before 01/01/1970 that fail on windows servers
-  function xtc_date_short($raw_date) {
+  function vam_date_short($raw_date) {
     if ( ($raw_date == '0000-00-00 00:00:00') || empty($raw_date) ) return false;
 
     $year = substr($raw_date, 0, 4);

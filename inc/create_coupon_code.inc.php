@@ -42,8 +42,8 @@
     $good_result = 0;
     while ($good_result == 0) {
       $id1=substr($ccid, $random_start,$length);
-      $query = xtc_db_query("select coupon_code from " . TABLE_COUPONS . " where coupon_code = '" . $id1 . "'");
-      if (xtc_db_num_rows($query) == 0) $good_result = 1;
+      $query = vam_db_query("select coupon_code from " . TABLE_COUPONS . " where coupon_code = '" . $id1 . "'");
+      if (vam_db_num_rows($query) == 0) $good_result = 1;
     }
     return $id1;
   }

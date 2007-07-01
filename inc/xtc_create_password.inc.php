@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_create_password.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_create_password.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,13 +9,13 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
-   (c) 2003	 nextcommerce (xtc_create_password.inc.php,v 1.5 2003/08/13); www.nextcommerce.org  
-   (c) 2004 xt:Commerce (xtc_create_password.inc.php,v 1.5 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_create_password.inc.php,v 1.5 2003/08/13); www.nextcommerce.org  
+   (c) 2004 xt:Commerce (vam_create_password.inc.php,v 1.5 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-     function xtc_RandomString($length) {
+     function vam_RandomString($length) {
        $chars = array( 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I', 'j', 'J',  'k', 'K', 'l', 'L', 'm', 'M', 'n','N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T',  'u', 'U', 'v','V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
 
        $max_chars = count($chars) - 1;
@@ -30,9 +30,9 @@
          return $rand_str;
        }
 
-  function xtc_create_password($length) {
+  function vam_create_password($length) {
 
-  	$pass=xtc_RandomString($lenght);
+  	$pass=vam_RandomString($lenght);
     return md5($pass);
   }
   

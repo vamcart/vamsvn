@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_get_attributes_model.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_get_attributes_model.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,16 +9,16 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (xtc_get_attributes_model.inc.php,v 1.1 2003/08/19); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_get_attributes_model.inc.php,v 1.1 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_get_attributes_model.inc.php,v 1.1 2003/08/19); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_get_attributes_model.inc.php,v 1.1 2004/08/25); xt-commerce.com
    
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
    
-function xtc_get_attributes_model($product_id, $attribute_name,$options_name,$language='')
+function vam_get_attributes_model($product_id, $attribute_name,$options_name,$language='')
     {
     	if ($language=='') $language=$_SESSION['languages_id'];
-    $options_value_id_query=xtc_db_query("SELECT
+    $options_value_id_query=vam_db_query("SELECT
 pa.attributes_model
 FROM
 ".TABLE_PRODUCTS_ATTRIBUTES." pa
@@ -31,7 +31,7 @@ pov.language_id = '".$language."' AND
 pov.products_options_values_name = '".$attribute_name."'");
 
 
-    $options_attr_data = xtc_db_fetch_array($options_value_id_query);
+    $options_attr_data = vam_db_fetch_array($options_value_id_query);
     return $options_attr_data['attributes_model'];	
     	
     }

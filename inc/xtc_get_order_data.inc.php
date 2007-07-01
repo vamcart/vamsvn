@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_get_order_data.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_get_order_data.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,14 +9,14 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (xtc_get_order_data.inc.php,v 1.1 2003/08/15); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_get_order_data.inc.php,v 1.1 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_get_order_data.inc.php,v 1.1 2003/08/15); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_get_order_data.inc.php,v 1.1 2004/08/25); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-function xtc_get_order_data($order_id) {
-$order_query = xtc_db_query("SELECT
+function vam_get_order_data($order_id) {
+$order_query = vam_db_query("SELECT
   customers_name,
   customers_company,
   customers_street_address,
@@ -55,14 +55,14 @@ $order_query = xtc_db_query("SELECT
   					FROM ".TABLE_ORDERS."
   					WHERE orders_id='".$_GET['oID']."'");
   					
-  $order_data= xtc_db_fetch_array($order_query);
+  $order_data= vam_db_fetch_array($order_query);
   // get order status name	
- $order_status_query=xtc_db_query("SELECT
+ $order_status_query=vam_db_query("SELECT
  				orders_status_name
  				FROM ".TABLE_ORDERS_STATUS."
  				WHERE orders_status_id='".$order_data['orders_status']."'
  				AND language_id='".$_SESSION['languages_id']."'");
- $order_status_data=xtc_db_fetch_array($order_status_query); 			
+ $order_status_data=vam_db_fetch_array($order_status_query); 			
  $order_data['orders_status']=$order_status_data['orders_status_name'];
  // get language name for payment method
  include(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/payment/'.$order_data['payment_method'].'.php');

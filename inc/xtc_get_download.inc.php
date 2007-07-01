@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_get_download.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_get_download.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,25 +9,25 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (xtc_get_download.inc.php,v 1.4 2003/08/25); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_get_download.inc.php,v 1.4 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_get_download.inc.php,v 1.4 2003/08/25); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_get_download.inc.php,v 1.4 2004/08/25); xt-commerce.com
    
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
 // safe download function, file get renamed bevor sending to browser!!
-function xtc_get_download($content_id) {
+function vam_get_download($content_id) {
 	
-	$content_query=xtc_db_query("SELECT
+	$content_query=vam_db_query("SELECT
 					content_file,
 					content_read
 					FROM ".TABLE_PRODUCTS_CONTENT."
 					WHERE content_id='".$content_id."'");
 					
-	$content_data=xtc_db_fetch_array($content_query);
+	$content_data=vam_db_fetch_array($content_query);
 	// update file counter
 	
-	xtc_db_query("UPDATE 
+	vam_db_query("UPDATE 
 			".TABLE_PRODUCTS_CONTENT." 
 			SET content_read='".($content_data['content_read']+1)."'
 			WHERE content_id='".$content_id."'");

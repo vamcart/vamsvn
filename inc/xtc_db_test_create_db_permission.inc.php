@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_test_create_db_permission.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_db_test_create_db_permission.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,13 +11,13 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(database.php,v 1.2 2002/03/02); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_db_test_create_db_permission.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_db_test_create_db_permission.inc.php,v 1.3 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_db_test_create_db_permission.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_db_test_create_db_permission.inc.php,v 1.3 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-function xtc_db_test_create_db_permission($database) {
+function vam_db_test_create_db_permission($database) {
     global $db_error;
 
     $db_created = false;
@@ -29,20 +29,20 @@ function xtc_db_test_create_db_permission($database) {
     }
 
     if (!$db_error) {
-      if (!@xtc_db_select_db($database)) {
+      if (!@vam_db_select_db($database)) {
         $db_created = true;
-        if (!@xtc_db_query_installer_installer('create database ' . $database)) {
+        if (!@vam_db_query_installer_installer('create database ' . $database)) {
           $db_error = mysql_error();
         }
       } else {
         $db_error = mysql_error();
       }
       if (!$db_error) {
-        if (@xtc_db_select_db($database)) {
-          if (@xtc_db_query_installer('create table temp ( temp_id int(5) )')) {
-            if (@xtc_db_query_installer('drop table temp')) {
+        if (@vam_db_select_db($database)) {
+          if (@vam_db_query_installer('create table temp ( temp_id int(5) )')) {
+            if (@vam_db_query_installer('drop table temp')) {
               if ($db_created) {
-                if (@xtc_db_query_installer('drop database ' . $database)) {
+                if (@vam_db_query_installer('drop database ' . $database)) {
                 } else {
                   $db_error = mysql_error();
                 }

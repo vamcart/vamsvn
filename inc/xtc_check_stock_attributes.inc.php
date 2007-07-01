@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_check_stock_attributes.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_check_stock_attributes.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,19 +11,19 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(general.php,v 1.225 2003/05/29); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_check_stock_attributes.inc.php); www.nextcommerce.org 
-   (c) 2004 xt:Commerce (xtc_check_stock_attributes.inc.php 2003/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_check_stock_attributes.inc.php); www.nextcommerce.org 
+   (c) 2004 xt:Commerce (vam_check_stock_attributes.inc.php 2003/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-  function xtc_check_stock_attributes($attribute_id, $products_quantity) {
+  function vam_check_stock_attributes($attribute_id, $products_quantity) {
 
-       $stock_query=xtc_db_query("SELECT
+       $stock_query=vam_db_query("SELECT
                                   attributes_stock
                                   FROM ".TABLE_PRODUCTS_ATTRIBUTES."
                                   WHERE products_attributes_id='".$attribute_id."'");
-       $stock_data=xtc_db_fetch_array($stock_query);
+       $stock_data=vam_db_fetch_array($stock_query);
     $stock_left = $stock_data['attributes_stock'] - $products_quantity;
     $out_of_stock = '';
 
