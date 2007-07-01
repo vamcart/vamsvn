@@ -26,7 +26,7 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
 
 require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vamPrice.php');
-$xtPrice = new vamPrice(DEFAULT_CURRENCY, $_SESSION['customers_status']['customers_status_id']);
+$vamPrice = new vamPrice(DEFAULT_CURRENCY, $_SESSION['customers_status']['customers_status_id']);
 
 $i = 0;
 $group_query = vam_db_query("SELECT
@@ -57,7 +57,7 @@ if (PRICE_IS_BRUTTO == 'true') {
             <td><?php echo vam_draw_input_field('products_price', $products_price); ?>
 <?php
 if (PRICE_IS_BRUTTO == 'true') {
-        echo TEXT_NETTO.'<b>'.$xtPrice->xtcFormat($pInfo->products_price, false).'</b>  ';
+        echo TEXT_NETTO.'<b>'.$vamPrice->xtcFormat($pInfo->products_price, false).'</b>  ';
 }
 ?>
             </td>
@@ -78,7 +78,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
             <td><?php
                 echo vam_draw_input_field('products_price_'.$group_data[$col]['STATUS_ID'], $products_price);
                 if (PRICE_IS_BRUTTO == 'true' && get_group_price($group_data[$col]['STATUS_ID'], $pInfo->products_id) != '0') {
-                        echo TEXT_NETTO.'<b>'.$xtPrice->xtcFormat(get_group_price($group_data[$col]['STATUS_ID'], $pInfo->products_id), false).'</b>  ';
+                        echo TEXT_NETTO.'<b>'.$vamPrice->xtcFormat(get_group_price($group_data[$col]['STATUS_ID'], $pInfo->products_id), false).'</b>  ';
                 }
                 if ($_GET['pID'] != '') {
                         echo ' '.TXT_STAFFELPREIS;
@@ -117,7 +117,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
                         }
                         echo $products_price;
                         if (PRICE_IS_BRUTTO == 'true') {
-                                echo ' <br>'.TEXT_NETTO.'<b>'.$xtPrice->xtcFormat($staffel_values['personal_offer'], false).'</b>  ';
+                                echo ' <br>'.TEXT_NETTO.'<b>'.$vamPrice->xtcFormat($staffel_values['personal_offer'], false).'</b>  ';
                         }
 ?>
  </td>

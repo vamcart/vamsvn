@@ -20,7 +20,7 @@
   require('includes/application_top.php');
 
   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vamPrice.php');
-  $xtPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
+  $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
 
   require_once(DIR_FS_INC .'vam_get_tax_rate.inc.php');
 
@@ -187,7 +187,7 @@
 
                 echo '<input type="hidden" name="products_up_id" value="' . $sInfo->products_id . '">';
            ?>
-          <td class="main"><?php echo ($sInfo->products_name) ? $sInfo->products_name . ' <small>(' . $xtPrice->xtcFormat($price,true). ')</small>' : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $specials_array); echo vam_draw_hidden_field('products_price', $sInfo->products_price); ?></td>
+          <td class="main"><?php echo ($sInfo->products_name) ? $sInfo->products_name . ' <small>(' . $vamPrice->xtcFormat($price,true). ')</small>' : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $specials_array); echo vam_draw_hidden_field('products_price', $sInfo->products_price); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_SPECIALS_SPECIAL_PRICE; ?>&nbsp;</td>
@@ -264,9 +264,9 @@
 
 
 
-                 echo $xtPrice->xtcFormat($specials['products_price'],true); ?>
+                 echo $vamPrice->xtcFormat($specials['products_price'],true); ?>
                 </span> <span class="specialPrice">
-                <?php echo $xtPrice->xtcFormat($specials['specials_new_products_price'],true); ?>
+                <?php echo $vamPrice->xtcFormat($specials['specials_new_products_price'],true); ?>
                 </span></td>
                 <td  class="dataTableContent" align="right">
 <?php
@@ -319,8 +319,8 @@
         $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($sInfo->specials_date_added));
         $contents[] = array('text' => '' . TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($sInfo->specials_last_modified));
         $contents[] = array('align' => 'center', 'text' => '<br />' . vam_product_thumb_image($sInfo->products_image, $sInfo->products_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT));
-        $contents[] = array('text' => '<br />' . TEXT_INFO_ORIGINAL_PRICE . ' ' . $xtPrice->xtcFormat($sInfo->products_price,true));
-        $contents[] = array('text' => '' . TEXT_INFO_NEW_PRICE . ' ' . $xtPrice->xtcFormat($sInfo->specials_new_products_price,true));
+        $contents[] = array('text' => '<br />' . TEXT_INFO_ORIGINAL_PRICE . ' ' . $vamPrice->xtcFormat($sInfo->products_price,true));
+        $contents[] = array('text' => '' . TEXT_INFO_NEW_PRICE . ' ' . $vamPrice->xtcFormat($sInfo->specials_new_products_price,true));
         $contents[] = array('text' => '' . TEXT_INFO_PERCENTAGE . ' ' . number_format(100 - (($sInfo->specials_new_products_price / $sInfo->products_price) * 100)) . '%');
 
         $contents[] = array('text' => '<br />' . TEXT_INFO_EXPIRES_DATE . ' <b>' . vam_date_short($sInfo->expires_date) . '</b>');
