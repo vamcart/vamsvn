@@ -19,12 +19,12 @@ class upload_cip {
         $this->destination=$destination;
         $this->maxsize=$maxsize;
         $this->permissions=octdec($permissions);
-        if (xtc_not_null($extensions)) {
+        if (vam_not_null($extensions)) {
             if (is_array($extensions))     $this->extensions = $extensions;
             else     $this->extensions = array($extensions);
         } else     $this->extensions = array();
 
-        if (xtc_not_null($this->file) && xtc_not_null($this->destination)) {
+        if (vam_not_null($this->file) && vam_not_null($this->destination)) {
             if (($this->parse()==true) && ($this->check_filesize()==true) && ($this->save()==true))     return true;
             else     return false;
         }
@@ -51,7 +51,7 @@ class upload_cip {
                         'tmp_name' => (isset($GLOBALS[$this->file]) ? $GLOBALS[$this->file] : ''));
         }
 
-        if ( xtc_not_null($file['tmp_name']) && ($file['tmp_name'] != 'none') && is_uploaded_file($file['tmp_name']) ) {
+        if ( vam_not_null($file['tmp_name']) && ($file['tmp_name'] != 'none') && is_uploaded_file($file['tmp_name']) ) {
             if (sizeof($this->extensions) > 0) {
                 if (!in_array(strtolower(substr($file['name'], strrpos($file['name'], '.')+1)), $this->extensions)) {
                     $message->add('<b>'.$this->filename.'</b> '.ERROR_FILETYPE_NOT_ALLOWED, 'error');

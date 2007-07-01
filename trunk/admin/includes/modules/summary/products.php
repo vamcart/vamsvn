@@ -38,7 +38,7 @@ $currencies = new currencies();
 
 <?php
 
-        $products_query_raw = xtc_db_query("
+        $products_query_raw = vam_db_query("
         SELECT 
         p.products_tax_class_id,
         p.products_id, 
@@ -48,14 +48,14 @@ $currencies = new currencies();
         p.products_last_modified 
         FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by p.products_last_modified, pd.products_name desc limit 5");
 
-	while ($products = xtc_db_fetch_array($products_query_raw)) {
+	while ($products = vam_db_fetch_array($products_query_raw)) {
 
             $price = $products['products_price'];
-            $price = xtc_round($price,PRICE_PRECISION);
+            $price = vam_round($price,PRICE_PRECISION);
 
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CATEGORIES, xtc_get_all_get_params(array('pID', 'action')) . 'pID=' . $products['products_id'] . '&action=new_product'); ?>"><?php echo $products['products_name']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $products['products_id'] . '&action=new_product'); ?>"><?php echo $products['products_name']; ?></a></td>
                 <td class="dataTableContent"><?php echo $currencies->format($price); ?></td>
                 <td class="dataTableContent"><?php echo $products['products_date_added']; ?></td>
               </tr>

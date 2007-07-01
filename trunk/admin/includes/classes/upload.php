@@ -27,7 +27,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       $this->set_permissions($permissions);
       $this->set_extensions($extensions);
 
-      if (xtc_not_null($this->file) && xtc_not_null($this->destination)) {
+      if (vam_not_null($this->file) && vam_not_null($this->destination)) {
         if ( ($this->parse() == true) && ($this->save() == true) ) {
           return true;
         } else {
@@ -56,7 +56,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                       'tmp_name' => $GLOBALS[$this->file]);
       }
 
-      if ( xtc_not_null($file['tmp_name']) && ($file['tmp_name'] != 'none') && is_uploaded_file($file['tmp_name']) ) {
+      if ( vam_not_null($file['tmp_name']) && ($file['tmp_name'] != 'none') && is_uploaded_file($file['tmp_name']) ) {
         if (sizeof($this->extensions) > 0) {
           if (!in_array(strtolower(substr($file['name'], strrpos($file['name'], '.')+1)), $this->extensions)) {
             $messageStack->add_session(ERROR_FILETYPE_NOT_ALLOWED, 'error');
@@ -143,7 +143,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function set_extensions($extensions) {
-      if (xtc_not_null($extensions)) {
+      if (vam_not_null($extensions)) {
         if (is_array($extensions)) {
           $this->extensions = $extensions;
         } else {

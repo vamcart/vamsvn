@@ -89,9 +89,9 @@ class Tc_description extends ContribInstallerBaseTag {
     function conflicts_check_for_remove() {
     	if($this->cip->is_ci())return $this->error;
     	$query = 'select * from '.TABLE_CIP_DEPEND.' where cip_ident_req="'.$this->data['ident'].'" and cip_req_type=1';
-    	$rs = xtc_db_query($query);
+    	$rs = vam_db_query($query);
     	$cips = '';
-    	while($cp = xtc_db_fetch_array($rs)){
+    	while($cp = vam_db_fetch_array($rs)){
     		if($cips=='')$cips = $cp['cip_ident'];
     		else $cips = ','.$cp['cip_ident'];
     	}

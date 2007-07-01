@@ -19,7 +19,7 @@
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
   //
-  // Function    : xtc_validate_email
+  // Function    : vam_validate_email
   //
   // Arguments   : email   email address to be checked
   //
@@ -48,7 +48,7 @@
   //
   ////////////////////////////////////////////////////////////////////////////////////////////////
   defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
-  function xtc_validate_email($email) {
+  function vam_validate_email($email) {
     $valid_address = true;
 
     $mail_pat = '^(.+)@(.+)$';

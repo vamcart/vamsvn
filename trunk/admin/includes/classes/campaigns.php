@@ -157,8 +157,8 @@ class campaigns {
 
 		$campaign = array ();
 		$campaign_query = "SELECT * FROM ".TABLE_CAMPAIGNS;
-		$campaign_query = xtc_db_query($campaign_query);
-		while ($campaign_data = xtc_db_fetch_array($campaign_query)) {
+		$campaign_query = vam_db_query($campaign_query);
+		while ($campaign_data = vam_db_fetch_array($campaign_query)) {
 			$campaign[] = array ('id' => $campaign_data['campaigns_refID'], 'text' => $campaign_data['campaigns_name']);
 			$this->camp[$campaign_data['campaigns_refID']] = $campaign_data['campaigns_name'];
 		}
@@ -169,8 +169,8 @@ class campaigns {
 
 		$campaign = array ();
 		$campaign_query = "SELECT * FROM ".TABLE_CAMPAIGNS." WHERE campaigns_refID='".$this->campaign."'";
-		$campaign_query = xtc_db_query($campaign_query);
-		while ($campaign_data = xtc_db_fetch_array($campaign_query)) {
+		$campaign_query = vam_db_query($campaign_query);
+		while ($campaign_data = vam_db_fetch_array($campaign_query)) {
 			$campaign[] = array ('id' => $campaign_data['campaigns_refID'], 'text' => $campaign_data['campaigns_name']);
 
 		}
@@ -179,11 +179,11 @@ class campaigns {
 
 	function getTotalLeads() {
 		$end = mktime(0, 0, 0, date("m", $this->endDate), date("d", $this->endDate) + 1, date("Y", $this->endDate));
-		$selection = " and ci.customers_info_date_account_created>'".xtc_db_input(date("Y-m-d", $this->startDate))."'"." and ci.customers_info_date_account_created<'".xtc_db_input(date("Y-m-d", $end))."'";
+		$selection = " and ci.customers_info_date_account_created>'".vam_db_input(date("Y-m-d", $this->startDate))."'"." and ci.customers_info_date_account_created<'".vam_db_input(date("Y-m-d", $end))."'";
 
 		$lead_query = "SELECT count(*) as leads FROM ".TABLE_CUSTOMERS." c, ".TABLE_CUSTOMERS_INFO." ci WHERE c.customers_id=ci.customers_info_id".$selection;
-		$lead_query = xtc_db_query($lead_query);
-		$lead_data = xtc_db_fetch_array($lead_query);
+		$lead_query = vam_db_query($lead_query);
+		$lead_data = vam_db_fetch_array($lead_query);
 
 		$this->total['leads'] = $lead_data['leads'];
 
@@ -191,13 +191,13 @@ class campaigns {
 
 	function getTotalSells() {
 		$end = mktime(0, 0, 0, date("m", $this->endDate), date("d", $this->endDate) + 1, date("Y", $this->endDate));
-		$selection = " and o.date_purchased>'".xtc_db_input(date("Y-m-d", $this->startDate))."'"." and o.date_purchased<'".xtc_db_input(date("Y-m-d", $end))."'";
+		$selection = " and o.date_purchased>'".vam_db_input(date("Y-m-d", $this->startDate))."'"." and o.date_purchased<'".vam_db_input(date("Y-m-d", $end))."'";
 		$status = "";
 		if ($this->status > 0)
 			$status = " and o.orders_status='".$this->status."'";
 		$sale_query = "SELECT count(*) as sells, SUM(ot.value) as Summe FROM ".TABLE_ORDERS." o, ".TABLE_ORDERS_TOTAL." ot WHERE o.orders_id=ot.orders_id and ot.class='ot_total'".$selection.$status;
-		$sale_query = xtc_db_query($sale_query);
-		$sale_data = xtc_db_fetch_array($sale_query);
+		$sale_query = vam_db_query($sale_query);
+		$sale_data = vam_db_fetch_array($sale_query);
 
 		$this->total['sells'] = $sale_data['sells'];
 		$this->total['sum'] = $sale_data['Summe'];
@@ -211,14 +211,14 @@ class campaigns {
 			case 1 :
 			case 2 :
 			case 3 :
-				$selection = " and o.date_purchased>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and o.date_purchased<'".xtc_db_input(date("Y-m-d", $date_end))."'";
+				$selection = " and o.date_purchased>'".vam_db_input(date("Y-m-d", $date_start))."'"." and o.date_purchased<'".vam_db_input(date("Y-m-d", $date_end))."'";
 
 				break;
 
 				// daily
 			case 4 :
 				$end = mktime(0, 0, 0, date("m", $date_start), date("d", $date_start) + 1, date("Y", $date_start));
-				$selection = " and o.date_purchased>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and o.date_purchased<'".xtc_db_input(date("Y-m-d", $end))."'";
+				$selection = " and o.date_purchased>'".vam_db_input(date("Y-m-d", $date_start))."'"." and o.date_purchased<'".vam_db_input(date("Y-m-d", $end))."'";
 				break;
 
 		}
@@ -227,12 +227,12 @@ class campaigns {
 		if ($this->status > 0)
 			$status = " and o.orders_status='".$this->status."'";
 		$sell_query = "SELECT count(*) as sells, SUM(ot.value) as Summe FROM ".TABLE_ORDERS." o, ".TABLE_ORDERS_TOTAL." ot WHERE o.orders_id=ot.orders_id and ot.class='ot_total' and o.conversion_type='1' and o.refferers_id='".$this->campaign."'".$selection.$status;
-		$sell_query = xtc_db_query($sell_query);
-		$sell_data = xtc_db_fetch_array($sell_query);
+		$sell_query = vam_db_query($sell_query);
+		$sell_data = vam_db_fetch_array($sell_query);
 
 		$late_sell_query = "SELECT count(*) as sells, SUM(ot.value) as Summe FROM ".TABLE_ORDERS." o, ".TABLE_ORDERS_TOTAL." ot WHERE o.orders_id=ot.orders_id and ot.class='ot_total' and o.conversion_type='2' and o.refferers_id='".$this->campaign."'".$selection.$status;
-		$late_sell_query = xtc_db_query($late_sell_query);
-		$late_sell_data = xtc_db_fetch_array($late_sell_query);
+		$late_sell_query = vam_db_query($late_sell_query);
+		$late_sell_data = vam_db_fetch_array($late_sell_query);
 
 
 		$this->result[$this->counterCMP]['result'][$this->counter]['sells'] = $sell_data['sells'];
@@ -260,13 +260,13 @@ class campaigns {
 			case 1 :
 			case 2 :
 			case 3 :
-				$selection = " and ci.customers_info_date_account_created>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and ci.customers_info_date_account_created<'".xtc_db_input(date("Y-m-d", $date_end))."'";
+				$selection = " and ci.customers_info_date_account_created>'".vam_db_input(date("Y-m-d", $date_start))."'"." and ci.customers_info_date_account_created<'".vam_db_input(date("Y-m-d", $date_end))."'";
 
 				break;
 
 			case 4 :
 				$end = mktime(0, 0, 0, date("m", $date_start), date("d", $date_start) + 1, date("Y", $date_start));
-				$selection = " and ci.customers_info_date_account_created>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and ci.customers_info_date_account_created<'".xtc_db_input(date("Y-m-d", $end))."'";
+				$selection = " and ci.customers_info_date_account_created>'".vam_db_input(date("Y-m-d", $date_start))."'"." and ci.customers_info_date_account_created<'".vam_db_input(date("Y-m-d", $end))."'";
 
 				break;
 
@@ -274,8 +274,8 @@ class campaigns {
 
 		// select leads
 		$lead_query = "SELECT count(*) as leads FROM ".TABLE_CUSTOMERS." c, ".TABLE_CUSTOMERS_INFO." ci WHERE c.customers_id=ci.customers_info_id AND c.refferers_id='".$this->campaign."'".$selection;
-		$lead_query = xtc_db_query($lead_query);
-		$lead_data = xtc_db_fetch_array($lead_query);
+		$lead_query = vam_db_query($lead_query);
+		$lead_data = vam_db_fetch_array($lead_query);
 
 		$this->result[$this->counterCMP]['result'][$this->counter]['range'] = $this->getDateFormat($date_start, $date_end);
 		$this->result[$this->counterCMP]['result'][$this->counter]['leads'] = $lead_data['leads'];
@@ -294,13 +294,13 @@ class campaigns {
 			case 1 :
 			case 2 :
 			case 3 :
-				$selection = " and time>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and time <'".xtc_db_input(date("Y-m-d", $date_end))."'";
+				$selection = " and time>'".vam_db_input(date("Y-m-d", $date_start))."'"." and time <'".vam_db_input(date("Y-m-d", $date_end))."'";
 
 				break;
 
 			case 4 :
 				$end = mktime(0, 0, 0, date("m", $date_start), date("d", $date_start) + 1, date("Y", $date_start));
-				$selection = " and time>'".xtc_db_input(date("Y-m-d", $date_start))."'"." and time<'".xtc_db_input(date("Y-m-d", $end))."'";
+				$selection = " and time>'".vam_db_input(date("Y-m-d", $date_start))."'"." and time<'".vam_db_input(date("Y-m-d", $end))."'";
 
 				break;
 
@@ -308,8 +308,8 @@ class campaigns {
 
 		// select leads
 		$hits_query = "SELECT count(*) as hits FROM ".TABLE_CAMPAIGNS_IP."  WHERE campaign='".$this->campaign."'".$selection;
-		$hits_query = xtc_db_query($hits_query);
-		$hits_data = xtc_db_fetch_array($hits_query);
+		$hits_query = vam_db_query($hits_query);
+		$hits_data = vam_db_fetch_array($hits_query);
 
 		$this->result[$this->counterCMP]['result'][$this->counter]['hits'] = $hits_data['hits'];
 		$this->result[$this->counterCMP]['hits_s'] += $hits_data['hits'];

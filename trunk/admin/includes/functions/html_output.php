@@ -19,9 +19,9 @@
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
   ////
   // The HTML href link wrapper function
-  function xtc_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
+  function vam_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
     if ($page == '') {
-      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine the page link!<br><br>Function used:<br><br>xtc_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
+      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine the page link!<br><br>Function used:<br><br>vam_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
     }
     if ($connection == 'NONSSL') {
       $link = HTTP_SERVER . DIR_WS_ADMIN;
@@ -32,7 +32,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
         $link = HTTP_SERVER . DIR_WS_ADMIN;
       }
     } else {
-      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine connection method on a link!<br><br>Known methods: NONSSL SSL<br><br>Function used:<br><br>xtc_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
+      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine connection method on a link!<br><br>Known methods: NONSSL SSL<br><br>Function used:<br><br>vam_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
     }
     if ($parameters == '') {
       $link = $link . $page . '?' . SID;
@@ -45,7 +45,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     return $link;
   }
 
-  function xtc_catalog_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
+  function vam_catalog_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
     if ($connection == 'NONSSL') {
       $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
     } elseif ($connection == 'SSL') {
@@ -55,7 +55,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
         $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
       }
     } else {
-      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine connection method on a link!<br><br>Known methods: NONSSL SSL<br><br>Function used:<br><br>xtc_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
+      die('</td></tr></table></td></tr></table><br><br><font color="#ff0000"><b>Error!</b></font><br><br><b>Unable to determine connection method on a link!<br><br>Known methods: NONSSL SSL<br><br>Function used:<br><br>vam_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</b>');
     }
     if ($parameters == '') {
       $link .= $page;
@@ -70,7 +70,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // The HTML image wrapper function
-  function xtc_image($src, $alt = '', $width = '', $height = '', $params = '') {
+  function vam_image($src, $alt = '', $width = '', $height = '', $params = '') {
     $image = '<img src="' . $src . '" border="0" alt="' . $alt . '"';
     if ($alt) {
       $image .= ' title=" ' . $alt . ' "';
@@ -91,34 +91,34 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Draw a 1 pixel black line
-  function xtc_black_line() {
-    return xtc_image(DIR_WS_IMAGES . 'pixel_black.gif', '', '100%', '1');
+  function vam_black_line() {
+    return vam_image(DIR_WS_IMAGES . 'pixel_black.gif', '', '100%', '1');
   }
 
   ////
   // Output a separator either through whitespace, or with an image
-  function xtc_draw_separator($image = 'pixel_black.gif', $width = '100%', $height = '1') {
-    return xtc_image(DIR_WS_IMAGES . $image, '', $width, $height);
+  function vam_draw_separator($image = 'pixel_black.gif', $width = '100%', $height = '1') {
+    return vam_image(DIR_WS_IMAGES . $image, '', $width, $height);
   }
 
   ////
   // javascript to dynamically update the states/provinces list when the country is changed
   // TABLES: zones
-  function xtc_js_zone_list($country, $form, $field) {
-    $countries_query = xtc_db_query("select distinct zone_country_id from " . TABLE_ZONES . " order by zone_country_id");
+  function vam_js_zone_list($country, $form, $field) {
+    $countries_query = vam_db_query("select distinct zone_country_id from " . TABLE_ZONES . " order by zone_country_id");
     $num_country = 1;
     $output_string = '';
-    while ($countries = xtc_db_fetch_array($countries_query)) {
+    while ($countries = vam_db_fetch_array($countries_query)) {
       if ($num_country == 1) {
         $output_string .= '  if (' . $country . ' == "' . $countries['zone_country_id'] . '") {' . "\n";
       } else {
         $output_string .= '  } else if (' . $country . ' == "' . $countries['zone_country_id'] . '") {' . "\n";
       }
 
-      $states_query = xtc_db_query("select zone_name, zone_id from " . TABLE_ZONES . " where zone_country_id = '" . $countries['zone_country_id'] . "' order by zone_name");
+      $states_query = vam_db_query("select zone_name, zone_id from " . TABLE_ZONES . " where zone_country_id = '" . $countries['zone_country_id'] . "' order by zone_name");
 
       $num_state = 1;
-      while ($states = xtc_db_fetch_array($states_query)) {
+      while ($states = vam_db_fetch_array($states_query)) {
         if ($num_state == '1') $output_string .= '    ' . $form . '.' . $field . '.options[0] = new Option("' . PLEASE_SELECT . '", "");' . "\n";
         $output_string .= '    ' . $form . '.' . $field . '.options[' . $num_state . '] = new Option("' . $states['zone_name'] . '", "' . $states['zone_id'] . '");' . "\n";
         $num_state++;
@@ -134,12 +134,12 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form
-  function xtc_draw_form($name, $action, $parameters = '', $method = 'post', $params = '') {
+  function vam_draw_form($name, $action, $parameters = '', $method = 'post', $params = '') {
     $form = '<form name="' . $name . '" action="';
     if ($parameters) {
-      $form .= xtc_href_link($action, $parameters);
+      $form .= vam_href_link($action, $parameters);
     } else {
-      $form .= xtc_href_link($action);
+      $form .= vam_href_link($action);
     }
     $form .= '" method="' . $method . '"';
     if ($params) {
@@ -152,7 +152,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form input field
-  function xtc_draw_input_field($name, $value = '', $parameters = '', $required = false, $type = 'text', $reinsert_value = true) {
+  function vam_draw_input_field($name, $value = '', $parameters = '', $required = false, $type = 'text', $reinsert_value = true) {
     $field = '<input type="' . $type . '" name="' . $name . '"';
     if ( ($GLOBALS[$name]) && ($reinsert_value) ) {
       $field .= ' value="' . htmlspecialchars(trim($GLOBALS[$name])) . '"';
@@ -169,7 +169,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     return $field;
   }
   // Output a form small input field
-  function xtc_draw_small_input_field($name, $value = '', $parameters = '', $required = false, $type = 'text', $reinsert_value = true) {
+  function vam_draw_small_input_field($name, $value = '', $parameters = '', $required = false, $type = 'text', $reinsert_value = true) {
     $field = '<input type="' . $type . '" size="3" name="' . $name . '"';
     if ( ($GLOBALS[$name]) && ($reinsert_value) ) {
       $field .= ' value="' . htmlspecialchars(trim($GLOBALS[$name])) . '"';
@@ -188,23 +188,23 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form password field
-  function xtc_draw_password_field($name, $value = '', $required = false) {
-    $field = xtc_draw_input_field($name, $value, 'maxlength="40"', $required, 'password', false);
+  function vam_draw_password_field($name, $value = '', $required = false) {
+    $field = vam_draw_input_field($name, $value, 'maxlength="40"', $required, 'password', false);
 
     return $field;
   }
 
   ////
   // Output a form filefield
-  function xtc_draw_file_field($name, $required = false) {
-    $field = xtc_draw_input_field($name, '', '', $required, 'file');
+  function vam_draw_file_field($name, $required = false) {
+    $field = vam_draw_input_field($name, '', '', $required, 'file');
 
     return $field;
   }
 
   ////
-  // Output a selection field - alias function for xtc_draw_checkbox_field() and xtc_draw_radio_field()
-  function xtc_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '') {
+  // Output a selection field - alias function for vam_draw_checkbox_field() and vam_draw_radio_field()
+  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '') {
     $selection = '<input type="' . $type . '" name="' . $name . '"';
     if ($value != '') {
       $selection .= ' value="' . $value . '"';
@@ -219,19 +219,19 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form checkbox field
-  function xtc_draw_checkbox_field($name, $value = '', $checked = false, $compare = '') {
-    return xtc_draw_selection_field($name, 'checkbox', $value, $checked, $compare);
+  function vam_draw_checkbox_field($name, $value = '', $checked = false, $compare = '') {
+    return vam_draw_selection_field($name, 'checkbox', $value, $checked, $compare);
   }
 
   ////
   // Output a form radio field
-  function xtc_draw_radio_field($name, $value = '', $checked = false, $compare = '') {
-    return xtc_draw_selection_field($name, 'radio', $value, $checked, $compare);
+  function vam_draw_radio_field($name, $value = '', $checked = false, $compare = '') {
+    return vam_draw_selection_field($name, 'radio', $value, $checked, $compare);
   }
 
   ////
   // Output a form textarea field
-  function xtc_draw_textarea_field($name, $wrap, $width, $height, $text = '', $params = '', $reinsert_value = true) {
+  function vam_draw_textarea_field($name, $wrap, $width, $height, $text = '', $params = '', $reinsert_value = true) {
     $field = '<textarea id="'.$name.'" name="' . $name . '" wrap="' . $wrap . '" cols="' . $width . '" rows="' . $height . '"';
     if ($params) $field .= ' ' . $params;
     $field .= '>';
@@ -247,7 +247,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form hidden field
-  function xtc_draw_hidden_field($name, $value = '') {
+  function vam_draw_hidden_field($name, $value = '') {
     $field = '<input type="hidden" name="' . $name . '" value="';
     if ($value != '') {
       $field .= trim($value);
@@ -261,7 +261,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form pull down menu
-  function xtc_draw_pull_down_menu($name, $values, $default = '', $params = '', $required = false) {
+  function vam_draw_pull_down_menu($name, $values, $default = '', $params = '', $required = false) {
     $field = '<select name="' . $name . '"';
     if ($params) $field .= ' ' . $params;
     $field .= '>';
@@ -283,24 +283,24 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
   }
 
   // output 2 Soring arrows
-  function xtc_sorting($page,$sort) {
+  function vam_sorting($page,$sort) {
 
       switch ($page) {
           case FILENAME_CUSTOMERS:
 
-          $nav='<br><a href="'.xtc_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'&'.xtc_get_all_get_params(array('action','sorting'))).'">';
-          $nav.=xtc_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
-          $nav.='<a href="'.xtc_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'-desc&'.xtc_get_all_get_params(array('action','sorting'))).'">';
-          $nav.= xtc_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a>';
+          $nav='<br><a href="'.vam_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">';
+          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
+          $nav.='<a href="'.vam_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">';
+          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a>';
 
           break;
           
           case FILENAME_CATEGORIES:
 
-          $nav='<br><div><a href="'.xtc_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'&'.xtc_get_all_get_params(array('action','sorting'))).'">';
-          $nav.=xtc_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
-          $nav.='<a href="'.xtc_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'-desc&'.xtc_get_all_get_params(array('action','sorting'))).'">';
-          $nav.= xtc_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a></div>';
+          $nav='<br><div><a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">';
+          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
+          $nav.='<a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">';
+          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a></div>';
 
           break;          
 

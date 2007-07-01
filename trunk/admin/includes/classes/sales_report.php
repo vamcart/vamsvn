@@ -60,13 +60,13 @@
       $this->statusFilter = $statusFilter;
       $this->paymentFilter = $payment;     
       // get date of first sale
-      $firstQuery = xtc_db_query("select UNIX_TIMESTAMP(min(date_purchased)) as first FROM " . TABLE_ORDERS);
-      $first = xtc_db_fetch_array($firstQuery);
+      $firstQuery = vam_db_query("select UNIX_TIMESTAMP(min(date_purchased)) as first FROM " . TABLE_ORDERS);
+      $first = vam_db_fetch_array($firstQuery);
       $this->globalStartDate = mktime(0, 0, 0, date("m", $first['first']), date("d", $first['first']), date("Y", $first['first']));
             
-      $statusQuery = xtc_db_query("select * from ".TABLE_ORDERS_STATUS." where language_id='".$_SESSION['languages_id']."'");
+      $statusQuery = vam_db_query("select * from ".TABLE_ORDERS_STATUS." where language_id='".$_SESSION['languages_id']."'");
       $i = 0;
-      while ($outResp = xtc_db_fetch_array($statusQuery)) {
+      while ($outResp = vam_db_fetch_array($statusQuery)) {
         $status[$i] = $outResp;
         $i++;
       }
@@ -166,16 +166,16 @@
       }
       
       if (!is_numeric($this->paymentFilter)) {
-      	$filterString .= " AND o.payment_method ='" . xtc_db_prepare_input($this->paymentFilter) . "' ";
+      	$filterString .= " AND o.payment_method ='" . vam_db_prepare_input($this->paymentFilter) . "' ";
       }
       
-      $rqOrders = xtc_db_query($this->queryOrderCnt . " WHERE o.date_purchased >= '" . xtc_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . xtc_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString);
-      $order = xtc_db_fetch_array($rqOrders);
+      $rqOrders = vam_db_query($this->queryOrderCnt . " WHERE o.date_purchased >= '" . vam_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . vam_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString);
+      $order = vam_db_fetch_array($rqOrders);
 
-      $rqShipping = xtc_db_query($this->queryShipping . " AND o.date_purchased >= '" . xtc_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . xtc_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString);
-      $shipping = xtc_db_fetch_array($rqShipping);
+      $rqShipping = vam_db_query($this->queryShipping . " AND o.date_purchased >= '" . vam_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . vam_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString);
+      $shipping = vam_db_fetch_array($rqShipping);
 
-      $rqItems = xtc_db_query($this->queryItemCnt . " AND o.date_purchased >= '" . xtc_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . xtc_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString . " group by pid " . $this->sortString);
+      $rqItems = vam_db_query($this->queryItemCnt . " AND o.date_purchased >= '" . vam_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . vam_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString . " group by pid " . $this->sortString);
 
       // set the return values
       $this->actDate = $ed;
@@ -186,16 +186,16 @@
       $cnt = 0;
       $itemTot = 0;
       $sumTot = 0;
-      while ($resp[$cnt] = xtc_db_fetch_array($rqItems)) {
+      while ($resp[$cnt] = vam_db_fetch_array($rqItems)) {
         // to avoid rounding differences round for every quantum
         // multiply with the number of items afterwords.
         $price = $resp[$cnt]['psum'] / $resp[$cnt]['pquant'];
 
         // products_attributes
         // are there any attributes for this order_id ?
-        $rqAttr = xtc_db_query($this->queryAttr . " AND o.date_purchased >= '" . xtc_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . xtc_db_input(date("Y-m-d\TH:i:s", $ed)) . "' AND op.products_id = " . $resp[$cnt]['pid'] . $filterString . " group by products_options_values order by orders_products_id");
+        $rqAttr = vam_db_query($this->queryAttr . " AND o.date_purchased >= '" . vam_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . vam_db_input(date("Y-m-d\TH:i:s", $ed)) . "' AND op.products_id = " . $resp[$cnt]['pid'] . $filterString . " group by products_options_values order by orders_products_id");
         $i = 0;
-        while ($attr[$i] = xtc_db_fetch_array($rqAttr)) {
+        while ($attr[$i] = vam_db_fetch_array($rqAttr)) {
           $i++;
         }
 
@@ -225,7 +225,7 @@
               $option[$k]['options'][0] = $attr[$j]['products_options'];
               $option[$k]['options_values'][0] = $attr[$j]['products_options_values'];
               if ($price3 != 0) {
-                //$option[$k]['price'][0] = xtc_add_tax($price3, $resp[$cnt]['ptax']);
+                //$option[$k]['price'][0] = vam_add_tax($price3, $resp[$cnt]['ptax']);
                 $option[$k]['price'][0] = $price3;
               } else {
                 $option[$k]['price'][0] = 0;
@@ -236,7 +236,7 @@
               $option[$k]['options'][$l] = $attr[$j]['products_options'];
               $option[$k]['options_values'][$l] = $attr[$j]['products_options_values'];
               if ($price3 != 0) {
-                //$option[$k]['price'][$l] = xtc_add_tax($price3, $resp[$cnt]['ptax']);
+                //$option[$k]['price'][$l] = vam_add_tax($price3, $resp[$cnt]['ptax']);
                 $option[$k]['price'][$l] = $price3;
               } else {
                 $option[$k]['price'][$l] = 0;
@@ -249,8 +249,8 @@
         } else {
           $resp[$cnt]['attr'] = "";
         }
-        //$resp[$cnt]['price'] = xtc_add_tax($price, $resp[$cnt]['ptax']);
-        //$resp[$cnt]['psum'] = $resp[$cnt]['pquant'] * xtc_add_tax($price, $resp[$cnt]['ptax']);
+        //$resp[$cnt]['price'] = vam_add_tax($price, $resp[$cnt]['ptax']);
+        //$resp[$cnt]['psum'] = $resp[$cnt]['pquant'] * vam_add_tax($price, $resp[$cnt]['ptax']);
         $resp[$cnt]['price'] = $price;
         $resp[$cnt]['psum'] = $resp[$cnt]['pquant'] * $price;
         $resp[$cnt]['order'] = $order['order_cnt'];

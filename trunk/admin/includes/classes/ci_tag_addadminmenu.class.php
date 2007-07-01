@@ -58,21 +58,21 @@ class Tc_addadminmenu extends ContribInstallerBaseTag {
 		if (!defined('TABLE_ADMIN_BOXES')) return $this->error;
 		for($i = 0; $i < count($this->data['child']);$i++){
 
-			$menu_query = xtc_db_query("select abi.box_item_id , ab.box_id from " . TABLE_ADMIN_BOXES . " ab , " . TABLE_ADMIN_BOXES_ITEMS . " abi where ab.box_id = abi.box_id and ab.box_name = '" . $this->data['parent'][$i] . "' and abi.box_item_name = '" . $this->data['child'][$i] . "' order by box_id, box_item_id desc limit 1;");
-			$menu = xtc_db_fetch_array($menu_query);
+			$menu_query = vam_db_query("select abi.box_item_id , ab.box_id from " . TABLE_ADMIN_BOXES . " ab , " . TABLE_ADMIN_BOXES_ITEMS . " abi where ab.box_id = abi.box_id and ab.box_name = '" . $this->data['parent'][$i] . "' and abi.box_item_name = '" . $this->data['child'][$i] . "' order by box_id, box_item_id desc limit 1;");
+			$menu = vam_db_fetch_array($menu_query);
 			if (!$menu) {
-				$parent_query = xtc_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['parent'][$i] . "';");
-				$parent_array = xtc_db_fetch_array($parent_query);
+				$parent_query = vam_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['parent'][$i] . "';");
+				$parent_array = vam_db_fetch_array($parent_query);
 				if (!$parent_array) {
 					//if exist this box as child for another parent
 					$this->error("Box ".$this->data['parent'][$i]." does not exist!");
 					return $this->error;
 				}
 
-				$menu_query = xtc_db_query("select box_item_id from " . TABLE_ADMIN_BOXES_ITEMS . " where box_id = " . (int)$parent_array['box_id'] . " order by box_id, box_item_id desc limit 1;");
-				$menu_array = xtc_db_fetch_array($menu_query);
+				$menu_query = vam_db_query("select box_item_id from " . TABLE_ADMIN_BOXES_ITEMS . " where box_id = " . (int)$parent_array['box_id'] . " order by box_id, box_item_id desc limit 1;");
+				$menu_array = vam_db_fetch_array($menu_query);
 				$box_id = (int) $menu_array['box_item_id'] + 1;
-				xtc_db_query("insert into " . TABLE_ADMIN_BOXES_ITEMS . " (box_id,box_item_id,box_item_name, box_item_type, box_item_url, box_item_ssl) VALUES (" . $parent_array['box_id'] . "," . $box_id . ",'" . $this->data['child'][$i] . "','".$this->data['type'][$i]."','".$this->data['url'][$i]."',0);");
+				vam_db_query("insert into " . TABLE_ADMIN_BOXES_ITEMS . " (box_id,box_item_id,box_item_name, box_item_type, box_item_url, box_item_ssl) VALUES (" . $parent_array['box_id'] . "," . $box_id . ",'" . $this->data['child'][$i] . "','".$this->data['type'][$i]."','".$this->data['url'][$i]."',0);");
 			}
 		}
 		return $this->error;
@@ -82,10 +82,10 @@ class Tc_addadminmenu extends ContribInstallerBaseTag {
 		if ($this->error) return;
 		if (!defined('TABLE_ADMIN_BOXES')) return $this->error;
 		for($i = 0; $i < count($this->data['child']);$i++){
-			$menu_query = xtc_db_query("select abi.box_item_id , ab.box_id from " . TABLE_ADMIN_BOXES . " ab , " . TABLE_ADMIN_BOXES_ITEMS . " abi where ab.box_id = abi.box_id and ab.box_name = '" . $this->data['parent'][$i] . "' and abi.box_item_name = '" . $this->data['child'][$i] . "' order by box_id, box_item_id desc limit 1;");
-			$menu_array = xtc_db_fetch_array($menu_query);
+			$menu_query = vam_db_query("select abi.box_item_id , ab.box_id from " . TABLE_ADMIN_BOXES . " ab , " . TABLE_ADMIN_BOXES_ITEMS . " abi where ab.box_id = abi.box_id and ab.box_name = '" . $this->data['parent'][$i] . "' and abi.box_item_name = '" . $this->data['child'][$i] . "' order by box_id, box_item_id desc limit 1;");
+			$menu_array = vam_db_fetch_array($menu_query);
 			if ($menu_array) {
-				xtc_db_query("delete from " . TABLE_ADMIN_BOXES_ITEMS . " where box_item_id=" . $menu_array['box_item_id'] . " and box_id=" . $menu_array['box_id'] . ";");
+				vam_db_query("delete from " . TABLE_ADMIN_BOXES_ITEMS . " where box_item_id=" . $menu_array['box_item_id'] . " and box_id=" . $menu_array['box_id'] . ";");
 			}
 		}
 		return $this->error;

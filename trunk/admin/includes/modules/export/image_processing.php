@@ -45,14 +45,14 @@ define('IMAGE_EXPORT_TYPE','<hr noshade><b>Пакетная обработка:</b>');
     function process($file) {
          // include needed functions
 include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);  
-        @xtc_set_time_limit(0);
+        @vam_set_time_limit(0);
 
         // action
         // get images in original_images folder
         $files=array();
 // BOF Subdirectory support
 			require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
-			$files = xtc_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES);
+			$files = vam_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES);
 //			echo '<pre>';var_dump($files);echo '</pre>';
 /*
 			if ($dir= opendir(DIR_FS_CATALOG_ORIGINAL_IMAGES)){
@@ -83,25 +83,25 @@ include ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
 			return array('text' =>
 														IMAGE_EXPORT_TYPE.'<br>'.
 														IMAGE_EXPORT.'<br>'.
-														'<br>' . xtc_button(BUTTON_REVIEW_APPROVE) . '&nbsp;' .
-														xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MODULE_EXPORT, 'set=' . $_GET['set'] . '&module=image_processing')));
+														'<br>' . vam_button(BUTTON_REVIEW_APPROVE) . '&nbsp;' .
+														vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_MODULE_EXPORT, 'set=' . $_GET['set'] . '&module=image_processing')));
 
     }
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = xtc_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_IMAGE_PROCESS_STATUS'");
-        $this->_check = xtc_db_num_rows($check_query);
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_IMAGE_PROCESS_STATUS'");
+        $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
     }
 
     function install() {
-      xtc_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_IMAGE_PROCESS_STATUS', 'True',  '6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_IMAGE_PROCESS_STATUS', 'True',  '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
 }
 
     function remove() {
-      xtc_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
+      vam_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
     }
 
     function keys() {

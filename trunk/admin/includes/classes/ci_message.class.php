@@ -31,11 +31,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     function message() {
       global $message2Stack;
       $this->errors = array();
-      if (xtc_session_is_registered('message2Stack')) {
+      if (vam_session_is_registered('message2Stack')) {
         for ($i = 0, $n = sizeof($message2Stack); $i < $n; $i++) {
           $this->add($message2Stack[$i]['text'], $message2Stack[$i]['type']);
         }
-        xtc_session_unregister('message2Stack');
+        vam_session_unregister('message2Stack');
       }
     }
 
@@ -49,53 +49,53 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                 case 'notice':
                     $this->errors[] = array(
                         'params'=>'class="messageNotice"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;' .
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;' .
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;', '', $message),
                         'type'=>$type);
 
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'wink.gif'). '&nbsp;', '', $message));
                     break;
                 case 'removed':
                     $this->errors[] = array(
                         'params'=>'class="messageSuccess"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;' .
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;' .
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;', '', $message),
                         'type'=>$type);
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'sad.gif'). '&nbsp;', '', $message));
                     break;
                 case 'installed':
                     $this->errors[] = array(
                         'params'=>'class="messageSuccess"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS.'biggrin.gif').'&nbsp;'.
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'biggrin.gif'). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS.'biggrin.gif').'&nbsp;'.
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS.'biggrin.gif'). '&nbsp;', '', $message),
                         'type'=>$type);
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'biggrin.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'biggrin.gif'). '&nbsp;', '', $message));
                     break;
                 case 'warning':
                     $this->errors[] = array(
                         'params'=>'class="messageWarning"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS . 'tongue.gif', ICON_WARNING) . '&nbsp;' .
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'tongue.gif', ICON_WARNING). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS . 'tongue.gif', ICON_WARNING) . '&nbsp;' .
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS.'tongue.gif', ICON_WARNING). '&nbsp;', '', $message),
                         'type'=>$type);
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'tongue.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'tongue.gif'). '&nbsp;', '', $message));
                     break;
                 case 'success':
                     $this->errors[] = array(
                         'params'=>'class="messageSuccess"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS . 'smile.gif', ICON_SUCCESS).'&nbsp;'.
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS . 'smile.gif', ICON_SUCCESS). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS . 'smile.gif', ICON_SUCCESS).'&nbsp;'.
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS . 'smile.gif', ICON_SUCCESS). '&nbsp;', '', $message),
                         'type' =>$type);
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'smile.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'smile.gif'). '&nbsp;', '', $message));
                     break;
                 case 'error':
                 default:
                     $this->count_errors++;
                     $this->errors[]=array(
                         'params' => 'class="messageError"',
-                        'text' =>xtc_image(DIR_WS_ADMIN_ICONS . 'shocked.gif', ICON_ERROR) . '&nbsp;' .
-                                      str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'shocked.gif', ICON_ERROR). '&nbsp;', '', $message),
+                        'text' =>vam_image(DIR_WS_ADMIN_ICONS . 'shocked.gif', ICON_ERROR) . '&nbsp;' .
+                                      str_replace(vam_image(DIR_WS_ADMIN_ICONS.'shocked.gif', ICON_ERROR). '&nbsp;', '', $message),
                         'type' =>$type);
-                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(xtc_image(DIR_WS_ADMIN_ICONS.'shocked.gif'). '&nbsp;', '', $message));
+                    if(USE_LOG_SYSTEM=='true')   $this->add_log($type.": ".str_replace(vam_image(DIR_WS_ADMIN_ICONS.'shocked.gif'). '&nbsp;', '', $message));
                     //break;
                     return true; //We recieved an error and main script should finish your work when this func return true.
             }
@@ -105,8 +105,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
     function add_session($message, $type = 'error') {
         global $message2Stack;
-        if (!xtc_session_is_registered('message2Stack')) {
-            xtc_session_register('message2Stack');
+        if (!vam_session_is_registered('message2Stack')) {
+            vam_session_register('message2Stack');
             $message2Stack = array();
         }
         if ($message)     $message2Stack[] = array('text' => $message, 'type' => $type);

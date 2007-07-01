@@ -26,8 +26,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     // class constructor
     function currencies() {
       $this->currencies = array();
-      $currencies_query = xtc_db_query("select code, title, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value from " . TABLE_CURRENCIES);
-      while ($currencies = xtc_db_fetch_array($currencies_query)) {
+      $currencies_query = vam_db_query("select code, title, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value from " . TABLE_CURRENCIES);
+      while ($currencies = vam_db_fetch_array($currencies_query)) {
 	    $this->currencies[$currencies['code']] = array('title' => $currencies['title'],
                                                        'symbol_left' => $currencies['symbol_left'],
                                                        'symbol_right' => $currencies['symbol_right'],
@@ -60,7 +60,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function display_price($products_price, $products_tax, $quantity = 1) {
-      return $this->format(xtc_add_tax($products_price, $products_tax) * $quantity);
+      return $this->format(vam_add_tax($products_price, $products_tax) * $quantity);
     }
   }
 ?>

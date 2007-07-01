@@ -55,7 +55,7 @@ class Tc_requirements extends ContribInstallerBaseTag {
 			}
 			$query = 'select * from ' . TABLE_CIP . ' where cip_ident="' . $require . '"'.($this->ver[$id]!= NULL?' and cip_version="' . $this->ver[$id] . '"':''). ' and cip_installed=1';
     	    $result = cip_db_query($query,'return');
-        	if(xtc_db_num_rows($result)==0){
+        	if(vam_db_num_rows($result)==0){
 	       		//required CIP not installed
 	       		$this->error('CIP '.$require.' is not installed and is required !');
 	       		return $this->error;
@@ -72,7 +72,7 @@ class Tc_requirements extends ContribInstallerBaseTag {
     function do_install() {
 		foreach ($this->req as $id => $require) {
 			$query = 'replace into ' . TABLE_CIP_DEPEND . '(cip_ident, cip_ident_req, cip_req_type) values("' . $this->cip->getIdent() . '","' . $require . '",1)';
-			xtc_db_query($query);
+			vam_db_query($query);
 		}
     }
 
@@ -82,7 +82,7 @@ class Tc_requirements extends ContribInstallerBaseTag {
     function do_remove() {
 		foreach ($this->req as $id => $require) {
 			$query = 'delete from ' . TABLE_CIP_DEPEND . ' where cip_ident = "' . $this->cip->getIdent() . '" and cip_ident_req= "' . $require . '" and cip_req_type=1';
-			xtc_db_query($query);
+			vam_db_query($query);
 		}
     }
 

@@ -25,13 +25,13 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
     if ( ($_GET['cID']) && (!$_POST) ) {
-      $category_query = xtc_db_query("select * from " .
+      $category_query = vam_db_query("select * from " .
                                       TABLE_CATEGORIES . " c, " .
                                       TABLE_CATEGORIES_DESCRIPTION . " cd
                                       where c.categories_id = cd.categories_id
                                       and c.categories_id = '" . $_GET['cID'] . "'");
 
-      $category = xtc_db_fetch_array($category_query);
+      $category = vam_db_fetch_array($category_query);
 
       $cInfo = new objectInfo($category);
     } elseif ($_POST) {
@@ -46,7 +46,7 @@
       $cInfo = new objectInfo(array());
     }
 
-    $languages = xtc_get_languages();
+    $languages = vam_get_languages();
 
     $text_new_or_edit = ($_GET['action']=='new_category_ACD') ? TEXT_INFO_HEADING_NEW_CATEGORY : TEXT_INFO_HEADING_EDIT_CATEGORY;
 ?>
@@ -62,22 +62,22 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo sprintf($text_new_or_edit, xtc_output_generated_category_path($current_category_id)); ?></td>
-            <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading"><?php echo sprintf($text_new_or_edit, vam_output_generated_category_path($current_category_id)); ?></td>
+            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
 
 <tr>
 <td>
       <?php
           $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
-    echo xtc_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
+    echo vam_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
-        	<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+        	<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
     
 <div class="tabber">
 
@@ -89,32 +89,32 @@
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_NAME; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_name($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : vam_get_categories_name($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_HEADING_TITLE; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_heading_title[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : xtc_get_categories_heading_title($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('categories_heading_title[' . $languages[$i]['id'] . ']', (($categories_name[$languages[$i]['id']]) ? stripslashes($categories_name[$languages[$i]['id']]) : vam_get_categories_heading_title($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : xtc_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : vam_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_META_TITLE; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_title[' . $languages[$i]['id'] . ']',(($categories_meta_title[$languages[$i]['id']]) ? stripslashes($categories_meta_title[$languages[$i]['id']]) : xtc_get_categories_meta_title($cInfo->categories_id, $languages[$i]['id'])), 'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('categories_meta_title[' . $languages[$i]['id'] . ']',(($categories_meta_title[$languages[$i]['id']]) ? stripslashes($categories_meta_title[$languages[$i]['id']]) : vam_get_categories_meta_title($cInfo->categories_id, $languages[$i]['id'])), 'size=50'); ?></td>
           </tr>
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_META_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_description[' . $languages[$i]['id'] . ']', (($categories_meta_description[$languages[$i]['id']]) ? stripslashes($categories_meta_description[$languages[$i]['id']]) : xtc_get_categories_meta_description($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('categories_meta_description[' . $languages[$i]['id'] . ']', (($categories_meta_description[$languages[$i]['id']]) ? stripslashes($categories_meta_description[$languages[$i]['id']]) : vam_get_categories_meta_description($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
           </tr>
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_META_KEYWORDS; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('categories_meta_keywords[' . $languages[$i]['id'] . ']',(($categories_meta_keywords[$languages[$i]['id']]) ? stripslashes($categories_meta_keywords[$languages[$i]['id']]) : xtc_get_categories_meta_keywords($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('categories_meta_keywords[' . $languages[$i]['id'] . ']',(($categories_meta_keywords[$languages[$i]['id']]) ? stripslashes($categories_meta_keywords[$languages[$i]['id']]) : vam_get_categories_meta_keywords($cInfo->categories_id, $languages[$i]['id'])),'size=50'); ?></td>
           </tr>
 
           </table>
@@ -154,7 +154,7 @@ $default_value=$cInfo->listing_template;
 $files=array_merge($default_array,$files);
 }
 echo '<td valign="top" class="main">'.TEXT_CHOOSE_INFO_TEMPLATE_LISTING.':</td>';
-echo '<td><span class="main">'.xtc_draw_pull_down_menu('listing_template',$files,$default_value);
+echo '<td><span class="main">'.vam_draw_pull_down_menu('listing_template',$files,$default_value);
 ?>
         </span></td>
       </tr>
@@ -183,7 +183,7 @@ $default_value=$cInfo->categories_template;
 $files=array_merge($default_array,$files);
 }
 echo '<td valign="top" class="main">'.TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE.':</td>';
-echo '<td><span class="main">'.xtc_draw_pull_down_menu('categories_template',$files,$default_value);
+echo '<td><span class="main">'.vam_draw_pull_down_menu('categories_template',$files,$default_value);
 ?>
         </span></td>
       </tr>
@@ -199,7 +199,7 @@ $order_array=array(array('id' => 'p.products_price','text'=>TXT_PRICES),
 $default_value='pd.products_name';
 ?>
             <td valign="top" class="main"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
-            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_sorting',$order_array,$cInfo->products_sorting); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('products_sorting',$order_array,$cInfo->products_sorting); ?></td>
           </tr>
           <tr>
 <?php
@@ -208,11 +208,11 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
                    array('id' => 'DESC','text'=>'DESC (1 last)'));
 ?>
           <td valign="top" class="main"><?php echo TEXT_EDIT_PRODUCT_SORT_ORDER; ?>:</td>
-            <td valign="top" class="main"><?php echo xtc_draw_pull_down_menu('products_sorting2',$order_array,$cInfo->products_sorting2); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('products_sorting2',$order_array,$cInfo->products_sorting2); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
-            <td valign="top" class="main"><?php echo xtc_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
           </tr>
         </table>
         </div>
@@ -225,13 +225,13 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
 
            <tr>
             <td class="main" width="200" valign="top"><?php echo TEXT_EDIT_CATEGORIES_IMAGE; ?></td>
-            <td class="top"><?php echo xtc_draw_file_field('categories_image') . '<br />' . xtc_draw_separator('pixel_trans.gif', '24', '15') . xtc_draw_hidden_field('categories_previous_image', $cInfo->categories_image); ?>
+            <td class="top"><?php echo vam_draw_file_field('categories_image') . '<br />' . vam_draw_separator('pixel_trans.gif', '24', '15') . vam_draw_hidden_field('categories_previous_image', $cInfo->categories_image); ?>
             <?php
             if ($cInfo->categories_image) {
             	?>
             <br><img src="<?php echo DIR_WS_CATALOG.'images/categories/'.$cInfo->categories_image; ?>" width="200">
             <br><?php echo '&nbsp;' .$cInfo->categories_image;
-            echo xtc_draw_selection_field('del_cat_pic', 'checkbox', 'yes').TEXT_DELETE;
+            echo vam_draw_selection_field('del_cat_pic', 'checkbox', 'yes').TEXT_DELETE;
             
             } ?>
             </td>
@@ -244,7 +244,7 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
 <?php
 
 if (GROUP_CHECK=='true') {
-$customers_statuses_array = xtc_get_customers_statuses();
+$customers_statuses_array = vam_get_customers_statuses();
 $customers_statuses_array=array_merge(array(array('id'=>'all','text'=>TXT_ALL)),$customers_statuses_array);
 ?>
         <div class="tabbertab">
@@ -281,7 +281,7 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 </td>
       </tr>
 
-        	<?php echo xtc_draw_hidden_field('categories_date_added', (($cInfo->date_added) ? $cInfo->date_added : date('Y-m-d'))) . xtc_draw_hidden_field('parent_id', $cInfo->parent_id); ?> 
-        	<?php echo xtc_draw_hidden_field('categories_id', $cInfo->categories_id); ?> 
+        	<?php echo vam_draw_hidden_field('categories_date_added', (($cInfo->date_added) ? $cInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $cInfo->parent_id); ?> 
+        	<?php echo vam_draw_hidden_field('categories_id', $cInfo->categories_id); ?> 
 
 </form>

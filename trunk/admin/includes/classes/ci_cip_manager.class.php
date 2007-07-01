@@ -94,7 +94,7 @@ class cip_manager {
             //===============================================
             //Set  link
             $cip= new CIP($contents[$i]['name']);
-            $link = xtc_href_link($this->script_name(), 'action=cip&filename=' . urlencode($contents[$i]['name']));
+            $link = vam_href_link($this->script_name(), 'action=cip&filename=' . urlencode($contents[$i]['name']));
 
 //Draw line:
 
@@ -106,28 +106,28 @@ class cip_manager {
             //Install Buttons for ZIP
             if (!$cip->is_installed() or ALWAYS_DISPLAY_INSTALL_BUTTON=='true') {
                 //install
-//                $output.= xtc_image(DIR_WS_ADMIN_ICONS . 'empty.gif', ICON_EMPTY).'&nbsp;';
-                $output.= '<a href="'.xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']) . '&action=install').'">'.xtc_image(DIR_WS_ADMIN_ICONS . 'remove.gif', ICON_INSTALL).'</a>&nbsp;';
+//                $output.= vam_image(DIR_WS_ADMIN_ICONS . 'empty.gif', ICON_EMPTY).'&nbsp;';
+                $output.= '<a href="'.vam_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']) . '&action=install').'">'.vam_image(DIR_WS_ADMIN_ICONS . 'remove.gif', ICON_INSTALL).'</a>&nbsp;';
             }
             //Remove Buttons for ZIP
             if ($cip->is_installed() or ALWAYS_DISPLAY_REMOVE_BUTTON=='true') {
                 //Remove without data removing
-//                $output.= '<a href="'.xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove').'">'.xtc_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' '.ICON_WITHOUT_DATA_REMOVING).'</a>&nbsp;';
+//                $output.= '<a href="'.vam_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove').'">'.vam_image(DIR_WS_ADMIN_ICONS . 'remove_wo_data.gif', ICON_REMOVE.' '.ICON_WITHOUT_DATA_REMOVING).'</a>&nbsp;';
 
-                $output.= '<a href="'.xtc_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1').'">'.xtc_image(DIR_WS_ADMIN_ICONS . 'install.gif', ICON_REMOVE).'</a>&nbsp;';
+                $output.= '<a href="'.vam_href_link($this->script_name(), 'cip='.urlencode($contents[$i]['name']).'&action=remove&remove_data=1').'">'.vam_image(DIR_WS_ADMIN_ICONS . 'install.gif', ICON_REMOVE).'</a>&nbsp;';
             }
             //UNPACK Button
             if (SHOW_PACK_BUTTONS=='true') {
-              $output.= '<a href="'.xtc_href_link($this->script_name(), 'cip='. urlencode($contents[$i]['name']) .'&action=unpack').'">'.xtc_image(DIR_WS_ADMIN_ICONS.'unpack.gif', ICON_UNZIP).'</a>&nbsp;';
+              $output.= '<a href="'.vam_href_link($this->script_name(), 'cip='. urlencode($contents[$i]['name']) .'&action=unpack').'">'.vam_image(DIR_WS_ADMIN_ICONS.'unpack.gif', ICON_UNZIP).'</a>&nbsp;';
             }
 
-            //$cip_buttons[xtc_image(DIR_WS_ADMIN_ICONS.'cip_delete.gif', ICON_DELETE)]= xtc_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']).'&action=delete');
+            //$cip_buttons[vam_image(DIR_WS_ADMIN_ICONS.'cip_delete.gif', ICON_DELETE)]= vam_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']).'&action=delete');
 
 //Action end:
 //====================================================
 //Name:
             $output.='<td class="dataTableContentCIP" valign="bottom"
-            onclick="document.location.href=\''.xtc_href_link($this->script_name(), $onclick_link).'\'">';
+            onclick="document.location.href=\''.vam_href_link($this->script_name(), $onclick_link).'\'">';
             if (is_object($cip)) {
                 if ($cip->is_installed())     $output.='<abbr title="'.CIP_STATUS_INSTALLED_ALT.'"><b>'.$contents[$i]['name'].'</b></abbr>';
                 else    $output.='<abbr title="'.CIP_STATUS_REMOVED_ALT.'">'.$contents[$i]['name'].'</abbr>';
@@ -137,23 +137,23 @@ class cip_manager {
                 if ($this->current_path==DIR_FS_CIP && SHOW_SIZE_COLUMN=='true') {
                   //Size
                   $output.='<td class="dataTableContentCIP" align="right" onclick="document.location.href=\''.
-                        xtc_href_link($this->script_name(), $onclick_link).'\'">'.
+                        vam_href_link($this->script_name(), $onclick_link).'\'">'.
                         ($contents[$i]['is_dir'] ? '&nbsp;' :
                         (number_format($contents[$i]['size']/1024, 1, ',', ' ') )).'</td>'."\n";
                 }
 //Play and Info Buttons
             $output.='<td class="dataTableContentCIP" align="right" onclick="document.location.href=\''.
-                    xtc_href_link($this->script_name(), $onclick_link).'\'">';
+                    vam_href_link($this->script_name(), $onclick_link).'\'">';
             if (isset($fInfo) && is_object($fInfo) && ($fInfo->name == $contents[$i]['name'])
                 && $contents[$i]['name'] != '..')
             {
-                $output.=xtc_image(DIR_WS_ADMIN_ICONS.'play.gif');
+                $output.=vam_image(DIR_WS_ADMIN_ICONS.'play.gif');
             } elseif ($contents[$i]['name']!= '..') {
-                $output.='<a href="'.xtc_href_link($this->script_name(), 'cip='.
-                                urlencode($contents[$i]['name'])).'">'.xtc_image(DIR_WS_ADMIN_ICONS. 'info.gif', IMAGE_ICON_INFO).'</a>';
+                $output.='<a href="'.vam_href_link($this->script_name(), 'cip='.
+                                urlencode($contents[$i]['name'])).'">'.vam_image(DIR_WS_ADMIN_ICONS. 'info.gif', IMAGE_ICON_INFO).'</a>';
             }
             //Delete Button
-            $output.= '<a href="'.xtc_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']). '&action=deleteconfirm'). '"  onclick="return confirmSubmit()">'.xtc_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE).'</a>&nbsp;';
+            $output.= '<a href="'.vam_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']). '&action=deleteconfirm'). '"  onclick="return confirmSubmit()">'.vam_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE).'</a>&nbsp;';
             $output.='</td>'."\n";
 //Play and Info Buttons end
             $output.='</tr>';
@@ -172,16 +172,16 @@ class cip_manager {
         switch ($this->action) {
         case 'upload':
             $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_UPLOAD . '</b>');
-            $contents = array('form' => xtc_draw_form('file', $this->script_name(), 'action=processuploads', 'post', 'enctype="multipart/form-data"'));
+            $contents = array('form' => vam_draw_form('file', $this->script_name(), 'action=processuploads', 'post', 'enctype="multipart/form-data"'));
             $contents[] = array('text' => TEXT_UPLOAD_INTRO);
             $contents[]=array('text'=>TEXT_UPLOAD_LIMITS);
             $file_upload = '';
             for ($i=1; $i<11; $i++) {
-              $file_upload .= $i. (($i>9) ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'). xtc_draw_input_field('cip_'.$i, '', 'size="50"', false, 'file'). '<br>';
+              $file_upload .= $i. (($i>9) ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'). vam_draw_input_field('cip_'.$i, '', 'size="50"', false, 'file'). '<br>';
             }
             $contents[] = array('text' => '<br>' . $file_upload);
             $contents[] = array('align' =>'left',
-                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<input type="submit" class="button" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;">' : '') . '&nbsp;<a class="button" href="' . xtc_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '">' . BUTTON_CANCEL . '</a><br /><br />');
+                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<input type="submit" class="button" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;">' : '') . '&nbsp;<a class="button" href="' . vam_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '">' . BUTTON_CANCEL . '</a><br /><br />');
             break;
 
         default:
@@ -209,7 +209,7 @@ class cip_manager {
 
         //Prints an error message at the right column
         //if (!$heading)    $heading[]=array('text' => '<b>Error</b>');
-        if ( (xtc_not_null($heading)) or (xtc_not_null($contents)) ) {
+        if ( (vam_not_null($heading)) or (vam_not_null($contents)) ) {
             $box = new box;
             return '<td width="30%" valign="top">' . "\n". $box->infoBox($heading, $contents).'</td>' . "\n";
         }
@@ -357,8 +357,8 @@ class cip_manager {
     function is_ci_installed() {
         if ($this->error)     return false;
         //Check if self-install was made:
-        $query = xtc_db_query("SELECT * FROM ".TABLE_CONFIGURATION." WHERE configuration_key='DIR_FS_CIP'");
-        if (xtc_db_num_rows($query)==0
+        $query = vam_db_query("SELECT * FROM ".TABLE_CONFIGURATION." WHERE configuration_key='DIR_FS_CIP'");
+        if (vam_db_num_rows($query)==0
             or !file_exists(DIR_FS_CIP.'/'.$this->ci_cip. '/'.CONFIG_FILENAME)
             or !is_dir(DIR_FS_CIP)
             or !is_dir(DIR_FS_CIP.'/'.$this->ci_cip)
@@ -392,7 +392,7 @@ class cip_manager {
         global $message;
         $errors=$message->get_errors();
         foreach ($errors as $error)     $message->add_session($error['text'], $error['type']);
-        xtc_redirect(xtc_href_link(basename($_SERVER['PHP_SELF']),
+        vam_redirect(vam_href_link(basename($_SERVER['PHP_SELF']),
                                 '&selected_box=contrib_installer'.($param ? '&'.$param : '')));
     }
 
@@ -405,11 +405,11 @@ class cip_manager {
         if($cip->is_ci()) return null;
         $cips = array();
         $query = "select * from ".TABLE_CIP_DEPEND." where cip_ident_req='".$cip->getIdent()."' and cip_req_type=2";
-        $rq = xtc_db_query($query);
-        while($rs=xtc_db_fetch_array($rq)){
+        $rq = vam_db_query($query);
+        while($rs=vam_db_fetch_array($rq)){
           $query = "select * from ".TABLE_CIP." where cip_ident='".$rs['cip_ident']."' and cip_installed=1";
-          $rq1 = xtc_db_query($query);
-          if($rs1=xtc_db_fetch_array($rq1)){
+          $rq1 = vam_db_query($query);
+          if($rs1=vam_db_fetch_array($rq1)){
             if(file_exists(DIR_FS_CIP.'/'.$rs1['cip_folder_name'].".zip")){
                     $cips[] = new CIP($rs1['cip_folder_name'].".zip");
             }else if(is_dir(DIR_FS_CIP.'/'.$rs1['cip_folder_name'])){

@@ -45,8 +45,8 @@ class Tc_modifytable extends ContribInstallerBaseTag {
     		case 'addcol':
     			$iscol = false;
     			$query = "show fields from `". DB_PREFIX . $this->data['tablename']."`";
-    			$rs = xtc_db_query($query);
-    			while($row = xtc_db_fetch_array($rs)){
+    			$rs = vam_db_query($query);
+    			while($row = vam_db_fetch_array($rs)){
     				if($row['Field']==$this->data['colname'] ){
     					$iscol = true;
     					break;
@@ -71,8 +71,8 @@ class Tc_modifytable extends ContribInstallerBaseTag {
     		case 'addcol':
     			$iscol = false;
     			$query = "show fields from `" . DB_PREFIX . $this->data['tablename']."`";
-    			$rs = xtc_db_query($query);
-    			while($row = xtc_db_fetch_array($rs)){
+    			$rs = vam_db_query($query);
+    			while($row = vam_db_fetch_array($rs)){
     				if($row['Field']==$this->data['colname'] ){
     					$iscol = true;
     					break;

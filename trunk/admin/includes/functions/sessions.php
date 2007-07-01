@@ -31,9 +31,9 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function _sess_read($key) {
-      $qid = xtc_db_query("select value from " . TABLE_SESSIONS . " where sesskey = '" . $key . "' and expiry > '" . time() . "'");
+      $qid = vam_db_query("select value from " . TABLE_SESSIONS . " where sesskey = '" . $key . "' and expiry > '" . time() . "'");
 
-      $value = xtc_db_fetch_array($qid);
+      $value = vam_db_fetch_array($qid);
       if ($value['value']) {
         return $value['value'];
       }
@@ -47,22 +47,22 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       $expiry = time() + $SESS_LIFE;
       $value = addslashes($val);
 
-      $qid = xtc_db_query("select count(*) as total from " . TABLE_SESSIONS . " where sesskey = '" . $key . "'");
-      $total = xtc_db_fetch_array($qid);
+      $qid = vam_db_query("select count(*) as total from " . TABLE_SESSIONS . " where sesskey = '" . $key . "'");
+      $total = vam_db_fetch_array($qid);
 
       if ($total['total'] > 0) {
-        return xtc_db_query("update " . TABLE_SESSIONS . " set expiry = '" . $expiry . "', value = '" . $value . "' where sesskey = '" . $key . "'");
+        return vam_db_query("update " . TABLE_SESSIONS . " set expiry = '" . $expiry . "', value = '" . $value . "' where sesskey = '" . $key . "'");
       } else {
-        return xtc_db_query("insert into " . TABLE_SESSIONS . " values ('" . $key . "', '" . $expiry . "', '" . $value . "')");
+        return vam_db_query("insert into " . TABLE_SESSIONS . " values ('" . $key . "', '" . $expiry . "', '" . $value . "')");
       }
     }
 
     function _sess_destroy($key) {
-      return xtc_db_query("delete from " . TABLE_SESSIONS . " where sesskey = '" . $key . "'");
+      return vam_db_query("delete from " . TABLE_SESSIONS . " where sesskey = '" . $key . "'");
     }
 
     function _sess_gc($maxlifetime) {
-      xtc_db_query("delete from " . TABLE_SESSIONS . " where expiry < '" . time() . "'");
+      vam_db_query("delete from " . TABLE_SESSIONS . " where expiry < '" . time() . "'");
 
       return true;
     }
@@ -70,11 +70,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write', '_sess_destroy', '_sess_gc');
   }
 
-  function xtc_session_start() {
+  function vam_session_start() {
     return session_start();
   }
 
-  function xtc_session_register($variable) {
+  function vam_session_register($variable) {
     global $session_started;
 
     if ($session_started == true) {
@@ -82,15 +82,15 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
   }
 
-  function xtc_session_is_registered($variable) {
+  function vam_session_is_registered($variable) {
     return isset($_SESSION[$variable]);
   }
 
-  function xtc_session_unregister($variable) {
+  function vam_session_unregister($variable) {
     unset($_SESSION[$variable]);
   }
 
-  function xtc_session_id($sessid = '') {
+  function vam_session_id($sessid = '') {
     if (!empty($sessid)) {
       return session_id($sessid);
     } else {
@@ -98,7 +98,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
   }
 
-  function xtc_session_name($name = '') {
+  function vam_session_name($name = '') {
     if (!empty($name)) {
       return session_name($name);
     } else {
@@ -106,17 +106,17 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
   }
 
-  function xtc_session_close() {
+  function vam_session_close() {
     if (function_exists('session_close')) {
       return session_close();
     }
   }
 
-  function xtc_session_destroy() {
+  function vam_session_destroy() {
     return session_destroy();
   }
 
-  function xtc_session_save_path($path = '') {
+  function vam_session_save_path($path = '') {
     if (!empty($path)) {
       return session_save_path($path);
     } else {
@@ -124,19 +124,19 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
   }
 
-  function xtc_session_recreate() {
+  function vam_session_recreate() {
     if (PHP_VERSION >= 4.1) {
       $session_backup = $_SESSION;
 
-      unset($_COOKIE[xtc_session_name()]);
+      unset($_COOKIE[vam_session_name()]);
 
-      xtc_session_destroy();
+      vam_session_destroy();
 
       if (STORE_SESSIONS == 'mysql') {
         session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write', '_sess_destroy', '_sess_gc');
       }
 
-      xtc_session_start();
+      vam_session_start();
 
       $_SESSION = $session_backup;
       unset($session_backup);

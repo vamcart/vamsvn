@@ -33,8 +33,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       $pos_order_by = strpos($sql_query, ' order by', $pos_from);
       if (($pos_order_by < $pos_to) && ($pos_order_by != false)) $pos_to = $pos_order_by;
 
-      $reviews_count_query = xtc_db_query("select count(*) as total " . substr($sql_query, $pos_from, ($pos_to - $pos_from)));
-      $reviews_count = xtc_db_fetch_array($reviews_count_query);
+      $reviews_count_query = vam_db_query("select count(*) as total " . substr($sql_query, $pos_from, ($pos_to - $pos_from)));
+      $reviews_count = vam_db_fetch_array($reviews_count_query);
       $query_num_rows = $reviews_count['total'];
 
       $num_pages = ceil($query_num_rows / $max_rows_per_page);
@@ -48,7 +48,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
     function display_links($query_numrows, $max_rows_per_page, $max_page_links, $current_page_number, $parameters = '', $page_name = 'page') {
 
-      if ( xtc_not_null($parameters) && (substr($parameters, -1) != '&') ) $parameters .= '&';
+      if ( vam_not_null($parameters) && (substr($parameters, -1) != '&') ) $parameters .= '&';
 
       // calculate number of pages needing links
       $num_pages = ceil($query_numrows / $max_rows_per_page);
@@ -59,18 +59,18 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       }
 
       if ($num_pages > 1) {
-        $display_links = xtc_draw_form('pages', basename($_SERVER['PHP_SELF']), '', 'get');
+        $display_links = vam_draw_form('pages', basename($_SERVER['PHP_SELF']), '', 'get');
 
         if ($current_page_number > 1) {
-          $display_links .= '<a href="' . xtc_href_link(basename($_SERVER['PHP_SELF']), $parameters . $page_name . '=' . ($current_page_number - 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+          $display_links .= '<a href="' . vam_href_link(basename($_SERVER['PHP_SELF']), $parameters . $page_name . '=' . ($current_page_number - 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
         } else {
           $display_links .= PREVNEXT_BUTTON_PREV . '&nbsp;&nbsp;';
         }
 
-        $display_links .= sprintf(TEXT_RESULT_PAGE, xtc_draw_pull_down_menu($page_name, $pages_array, $current_page_number, 'onChange="this.form.submit();"'), $num_pages);
+        $display_links .= sprintf(TEXT_RESULT_PAGE, vam_draw_pull_down_menu($page_name, $pages_array, $current_page_number, 'onChange="this.form.submit();"'), $num_pages);
 
         if (($current_page_number < $num_pages) && ($num_pages != 1)) {
-          $display_links .= '&nbsp;&nbsp;<a href="' . xtc_href_link(basename($_SERVER['PHP_SELF']), $parameters . $page_name . '=' . ($current_page_number + 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_NEXT . '</a>';
+          $display_links .= '&nbsp;&nbsp;<a href="' . vam_href_link(basename($_SERVER['PHP_SELF']), $parameters . $page_name . '=' . ($current_page_number + 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_NEXT . '</a>';
         } else {
           $display_links .= '&nbsp;&nbsp;' . PREVNEXT_BUTTON_NEXT;
         }
@@ -80,11 +80,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
           $pairs = explode('&', $parameters);
           while (list(, $pair) = each($pairs)) {
             list($key,$value) = explode('=', $pair);
-            $display_links .= xtc_draw_hidden_field(rawurldecode($key), rawurldecode($value));
+            $display_links .= vam_draw_hidden_field(rawurldecode($key), rawurldecode($value));
           }
         }
 
-        if (SID) $display_links .= xtc_draw_hidden_field(session_name(), session_id());
+        if (SID) $display_links .= vam_draw_hidden_field(session_name(), session_id());
 
         $display_links .= '</form>';
       } else {

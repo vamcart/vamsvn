@@ -65,7 +65,7 @@ class CIP {
         $result=cip_db_query("select cip_id, cip_installed from ".TABLE_CIP.
                         " where cip_folder_name='".$this->cip_name."'; ");
         if ($result===false)     return;
-        $installed=xtc_db_fetch_array($result);
+        $installed=vam_db_fetch_array($result);
         $this->cip_id=$installed['cip_id'];
         $this->cip_installed=$installed['cip_installed'];
         if (!$this->cip_id) {
@@ -233,7 +233,7 @@ class CIP {
         if (!isset($this->cip_installed)) {
             $result=cip_db_query("select cip_installed from ".TABLE_CIP." where cip_folder_name='".$this->cip_name."'");
             if ($result===false)     return;
-            $installed=xtc_db_fetch_array($result);
+            $installed=vam_db_fetch_array($result);
             $this->cip_installed=$installed['cip_installed'];
         }
         return $this->cip_installed;
@@ -506,7 +506,7 @@ class CIP {
 
 
     function sql_restore() {
-        xtc_set_time_limit(0);
+        vam_set_time_limit(0);
         $backup_file=DIR_FS_ADMIN_BACKUP.$this->cip_name.'.sql';
         $zip_file=$backup_file.'.gz';
         $restore_query='';
@@ -540,7 +540,7 @@ class CIP {
 
 
     function sql_backup() {
-        xtc_set_time_limit(0);
+        vam_set_time_limit(0);
         $backup_file=DIR_FS_ADMIN_BACKUP.$this->cip_name.'.sql';
         // From original admin/backup.php:
         $fp=fopen($backup_file, 'w');
@@ -559,14 +559,14 @@ class CIP {
         fputs($fp, $schema);
 
         $tables_query = cip_db_query('show tables');
-        while ($tables = xtc_db_fetch_array($tables_query)) {
+        while ($tables = vam_db_fetch_array($tables_query)) {
             list(,$table) = each($tables);
 
             $schema = 'drop table if exists `' . $table . '`;' . "\n" . 'create table `' . $table . '` (' . "\n";
 
             $table_list = array();
             $fields_query = cip_db_query("show fields from `".$table."`");
-            while ($fields=xtc_db_fetch_array($fields_query)) {
+            while ($fields=vam_db_fetch_array($fields_query)) {
                 $table_list[]=$fields['Field'];
                 $schema.='  `'.$fields['Field'].'` '.$fields['Type'];
                 if (strlen($fields['Default']) > 0)    $schema.=' default \''.$fields['Default'].'\'';
@@ -578,7 +578,7 @@ class CIP {
             // add the keys
             $index = array();
             $keys_query = cip_db_query("show keys from `".$table."`");
-            while ($keys = xtc_db_fetch_array($keys_query)) {
+            while ($keys = vam_db_fetch_array($keys_query)) {
                 $kname = $keys['Key_name'];
                 if (!isset($index[$kname])) {
                     $index[$kname]=array('unique'=>!$keys['Non_unique'], 'columns'=>array());
@@ -605,12 +605,12 @@ class CIP {
             fputs($fp, $schema);
     // dump the data
             $rows_query = cip_db_query("SELECT `".implode('`, `', $table_list)."` from `".$table."`");
-            while ($rows = xtc_db_fetch_array($rows_query)) {
+            while ($rows = vam_db_fetch_array($rows_query)) {
                 $schema = 'insert into `' . $table . '` (`' . implode('`, `', $table_list) . '`) values (';
                 reset($table_list);
                 while (list(,$i) = each($table_list)) {
                     if (!isset($rows[$i]))    $schema .= 'NULL, ';
-                    elseif (xtc_not_null($rows[$i])) {
+                    elseif (vam_not_null($rows[$i])) {
                         $row=addslashes($rows[$i]);
                         $row=ereg_replace("\n#", "\n".'\#', $row);
                         $schema.='\''.$row.'\', ';

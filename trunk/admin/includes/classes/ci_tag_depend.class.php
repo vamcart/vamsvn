@@ -37,7 +37,7 @@ class Tc_depend extends ContribInstallerBaseTag {
         }else{
 	        $query = 'select * from '.TABLE_CIP. ' where cip_ident="'.$this->data['cip_ident'].'"'.($this->data['cip_version']==NULL?'':' and cip_version="'.$this->data['cip_version'].'"').' and cip_installed=1';
     	    $result = cip_db_query($query,'return');
-        	$active =(xtc_db_num_rows($result)>0);
+        	$active =(vam_db_num_rows($result)>0);
 	    }
         if($active){
         	//if cip installed
@@ -83,14 +83,14 @@ class Tc_depend extends ContribInstallerBaseTag {
     //===============================================================
     function do_install() {
     	$query = 'replace into ' . TABLE_CIP_DEPEND . '(cip_ident, cip_ident_req, cip_req_type) values("' . $this->cip->getIdent() . '","' . $this->data['cip_ident'] . '",2)';
-		xtc_db_query($query);
+		vam_db_query($query);
         foreach ($this->contrib_data as $tag)     if ($this->error=$tag->do_install())    break;
         return $this->error;
     }
 
     function do_remove() {
     	$query = 'delete from ' . TABLE_CIP_DEPEND . ' where cip_ident = "' . $this->cip->getIdent() . '" and cip_ident_req= "' . $this->data['cip_ident'] . '" and cip_req_type=2';
-		xtc_db_query($query);
+		vam_db_query($query);
         foreach ($this->contrib_data as $tag)     if ($this->error=$tag->do_remove())    break;
         return $this->error;
     }
