@@ -22,8 +22,8 @@
   // include needed functions (for modules)
 
 	//Eingef�gt um Fehler in CC Modul zu unterdr�cken. 
-   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'xtcPrice.php');
-   $xtPrice = new xtcPrice($_SESSION['currency'],''); 
+   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vamPrice.php');
+   $xtPrice = new vamPrice($_SESSION['currency'],''); 
  
   switch ($_GET['set']) {
     case 'shipping':

@@ -56,7 +56,7 @@ function check_stock($products_id) {
 		while ($attribute_stock_values = vam_db_fetch_array($attribute_stock_query)) {
 			if ($attribute_stock_values['attributes_stock'] <= '0') {
 				$stock_flag = 'true';
-				$which_attribute_query = xtDBquery("SELECT products_options_values_name FROM ".TABLE_PRODUCTS_OPTIONS_VALUES." WHERE products_options_values_id = '".$attribute_stock_values['options_values_id']."' AND language_id = '".$_SESSION['languages_id']."'");
+				$which_attribute_query = vamDBquery("SELECT products_options_values_name FROM ".TABLE_PRODUCTS_OPTIONS_VALUES." WHERE products_options_values_id = '".$attribute_stock_values['options_values_id']."' AND language_id = '".$_SESSION['languages_id']."'");
 				$which_attribute = vam_db_fetch_array($which_attribute_query);
 				$stock_warn .= ', '.$which_attribute['products_options_values_name'];
 			}

@@ -25,8 +25,8 @@
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
 
-require (DIR_FS_CATALOG.DIR_WS_CLASSES.'xtcPrice.php');
-$xtPrice = new xtcPrice(DEFAULT_CURRENCY, $_SESSION['customers_status']['customers_status_id']);
+require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vamPrice.php');
+$xtPrice = new vamPrice(DEFAULT_CURRENCY, $_SESSION['customers_status']['customers_status_id']);
 
 $i = 0;
 $group_query = vam_db_query("SELECT
