@@ -53,15 +53,15 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_i
 
 	$content_query = xtDBquery($content_query);
 
-	while ($content_data = xtc_db_fetch_array($content_query, true)) {
+	while ($content_data = vam_db_fetch_array($content_query, true)) {
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&content='.xtc_cleanName($content_data['content_title']);
+			$SEF_parameter = '&content='.vam_cleanName($content_data['content_title']);
 
 if ($content_data['content_url'] != '') {
 	$link = '<li><a href="'.$content_data['content_url'].'" target="_blank">';
 } else {
-	$link = '<li><a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+	$link = '<li><a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
 }
 
 		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";

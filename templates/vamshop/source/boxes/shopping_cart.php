@@ -21,7 +21,7 @@ $box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
 $box_price_string = '';
 // include needed files
-require_once (DIR_FS_INC.'xtc_recalculate_price.inc.php');
+require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING))
 	$box_smarty->assign('deny_cart', 'true');
@@ -33,7 +33,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 	for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		$qty += $products[$i]['quantity'];
 		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'], 
-									 'LINK' => xtc_href_link(FILENAME_PRODUCT_INFO, xtc_product_link($products[$i]['id'],$products[$i]['name'])), 
+									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
 									 'NAME' => $products[$i]['name']);
 
 	}
@@ -70,7 +70,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	$box_smarty->assign('UST', $_SESSION['cart']->show_tax());
 	
 	if (SHOW_SHIPPING=='true') { 
-			$box_smarty->assign('SHIPPING_INFO',' '.SHIPPING_EXCL.'<a class="shippingInfo" href="javascript:newWin=void(window.open(\''.xtc_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');	
+			$box_smarty->assign('SHIPPING_INFO',' '.SHIPPING_EXCL.'<a class="shippingInfo" href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');	
 	}
 }
 if (ACTIVATE_GIFT_SYSTEM == 'true') {
@@ -79,23 +79,23 @@ if (ACTIVATE_GIFT_SYSTEM == 'true') {
 
 // GV Code Start
 if (isset ($_SESSION['customer_id'])) {
-	$gv_query = xtc_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
-	$gv_result = xtc_db_fetch_array($gv_query);
+	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
+	$gv_result = vam_db_fetch_array($gv_query);
 	if ($gv_result['amount'] > 0) {
 		$box_smarty->assign('GV_AMOUNT', $xtPrice->xtcFormat($gv_result['amount'], true, 0, true));
-		$box_smarty->assign('GV_SEND_TO_FRIEND_LINK', '<a href="'.xtc_href_link(FILENAME_GV_SEND).'">');
+		$box_smarty->assign('GV_SEND_TO_FRIEND_LINK', '<a href="'.vam_href_link(FILENAME_GV_SEND).'">');
 	}
 }
 if (isset ($_SESSION['gv_id'])) {
-	$gv_query = xtc_db_query("select coupon_amount from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['gv_id']."'");
-	$coupon = xtc_db_fetch_array($gv_query);
+	$gv_query = vam_db_query("select coupon_amount from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['gv_id']."'");
+	$coupon = vam_db_fetch_array($gv_query);
 	$box_smarty->assign('COUPON_AMOUNT2', $xtPrice->xtcFormat($coupon['coupon_amount'], true, 0, true));
 }
 if (isset ($_SESSION['cc_id'])) {
-	$box_smarty->assign('COUPON_HELP_LINK', '<a href="javascript:popupWindow(\''.xtc_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\')">');
+	$box_smarty->assign('COUPON_HELP_LINK', '<a href="javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\')">');
 }
 // GV Code End
-$box_smarty->assign('LINK_CART', xtc_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$box_smarty->assign('LINK_CART', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $box_smarty->assign('products', $products_in_cart);
 
 $box_smarty->caching = 0;

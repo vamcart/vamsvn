@@ -52,15 +52,15 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_information.html', $cac
 
 	$content_query = xtDBquery($content_query);
 
-	while ($content_data = xtc_db_fetch_array($content_query, true)) {
+	while ($content_data = vam_db_fetch_array($content_query, true)) {
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&product='.xtc_cleanName($content_data['content_title']);
+			$SEF_parameter = '&product='.vam_cleanName($content_data['content_title']);
 
 if ($content_data['content_url'] != '') {
 	$link = '<img src="templates/'.CURRENT_TEMPLATE.'/img/icon_arrow2.jpg" alt="" /> <a href="'.$content_data['content_url'].'" target="_blank">';
 } else {
-	$link = '<img src="templates/'.CURRENT_TEMPLATE.'/img/icon_arrow2.jpg" alt="" /> <a href="'.xtc_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+	$link = '<img src="templates/'.CURRENT_TEMPLATE.'/img/icon_arrow2.jpg" alt="" /> <a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
 }
 
 		$content_string .= $link.$content_data['content_title'].'</a><br />' . "\n";

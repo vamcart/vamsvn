@@ -27,7 +27,7 @@ $box_content='';
 
 
   if ($_SESSION['customers_status']['customers_status_image']!='') {
-    $loginboxcontent = xtc_image('admin/images/icons/' . $_SESSION['customers_status']['customers_status_image']) . '<br />';
+    $loginboxcontent = vam_image('admin/images/icons/' . $_SESSION['customers_status']['customers_status_image']) . '<br />';
   }
   $loginboxcontent .= BOX_LOGINBOX_STATUS . '&nbsp;<b>' . $_SESSION['customers_status']['customers_status_name'] . '</b><br />';
   if ($_SESSION['customers_status']['customers_status_show_price'] == 0) {
