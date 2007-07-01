@@ -42,7 +42,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $c
 
 	$manufacturers_query = "select distinct m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." as m, ".TABLE_PRODUCTS." as p where m.manufacturers_id=p.manufacturers_id order by m.manufacturers_name";
 
-	$manufacturers_query = xtDBquery($manufacturers_query);
+	$manufacturers_query = vamDBquery($manufacturers_query);
 	if (vam_db_num_rows($manufacturers_query, true) <= MAX_DISPLAY_MANUFACTURERS_IN_A_LIST) {
 		// Display a list
 		$manufacturers_list = '';

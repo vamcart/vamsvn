@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtcPrice.php 1316 2007-02-06 20:23:03 VaM $ 
+   $Id: vamPrice.php 1316 2007-02-06 20:23:03 VaM $ 
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,11 +17,11 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-class xtcPrice {
+class vamPrice {
 	var $currencies;
 
 	// class constructor
-	function xtcPrice($currency, $cGroup) {
+	function vamPrice($currency, $cGroup) {
 
 		$this->currencies = array ();
 		$this->cStatus = array ();
@@ -36,7 +36,7 @@ class xtcPrice {
 		$currencies_query = "SELECT *
 				                                    FROM
 				                                         ".TABLE_CURRENCIES;
-		$currencies_query = xtDBquery($currencies_query);
+		$currencies_query = vamDBquery($currencies_query);
 		while ($currencies = vam_db_fetch_array($currencies_query, true)) {
 			$this->currencies[$currencies['code']] = array ('title' => $currencies['title'], 'symbol_left' => $currencies['symbol_left'], 'symbol_right' => $currencies['symbol_right'], 'decimal_point' => $currencies['decimal_point'], 'thousands_point' => $currencies['thousands_point'], 'decimal_places' => $currencies['decimal_places'], 'value' => $currencies['value']);
 		}
@@ -46,12 +46,12 @@ class xtcPrice {
 				                                             ".TABLE_CUSTOMERS_STATUS."
 				                                        WHERE
 				                                             customers_status_id = '".$this->actualGroup."' AND language_id = '".$_SESSION['languages_id']."'";
-		$customers_status_query = xtDBquery($customers_status_query);
+		$customers_status_query = vamDBquery($customers_status_query);
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
 		$this->cStatus = array ('customers_status_id' => $this->actualGroup, 'customers_status_name' => $customers_status_value['customers_status_name'], 'customers_status_image' => $customers_status_value['customers_status_image'], 'customers_status_public' => $customers_status_value['customers_status_public'], 'customers_status_discount' => $customers_status_value['customers_status_discount'], 'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 'customers_status_show_price' => $customers_status_value['customers_status_show_price'], 'customers_status_show_price_tax' => $customers_status_value['customers_status_show_price_tax'], 'customers_status_add_tax_ot' => $customers_status_value['customers_status_add_tax_ot'], 'customers_status_payment_unallowed' => $customers_status_value['customers_status_payment_unallowed'], 'customers_status_shipping_unallowed' => $customers_status_value['customers_status_shipping_unallowed'], 'customers_status_discount_attributes' => $customers_status_value['customers_status_discount_attributes'], 'customers_fsk18' => $customers_status_value['customers_fsk18'], 'customers_fsk18_display' => $customers_status_value['customers_fsk18_display']);
 
 		// prefetch tax rates for standard zone
-		$zones_query = xtDBquery("SELECT tax_class_id as class FROM ".TABLE_TAX_CLASS);
+		$zones_query = vamDBquery("SELECT tax_class_id as class FROM ".TABLE_TAX_CLASS);
 		while ($zones_data = vam_db_fetch_array($zones_query,true)) {
 			
 			// calculate tax based on shipping or deliverey country (for downloads)
@@ -115,7 +115,7 @@ class xtcPrice {
 
 	function getPprice($pID) {
 		$pQuery = "SELECT products_price FROM ".TABLE_PRODUCTS." WHERE products_id='".$pID."'";
-		$pQuery = xtDBquery($pQuery);
+		$pQuery = vamDBquery($pQuery);
 		$pData = vam_db_fetch_array($pQuery, true);
 		return $pData['products_price'];
 
@@ -134,7 +134,7 @@ class xtcPrice {
 		if ($this->cStatus['customers_status_discount'] != '0.00') {
 
 			$discount_query = "SELECT products_discount_allowed FROM ".TABLE_PRODUCTS." WHERE products_id = '".$pID."'";
-			$discount_query = xtDBquery($discount_query);
+			$discount_query = vamDBquery($discount_query);
 			$dData = vam_db_fetch_array($discount_query, true);
 
 			$discount = $dData['products_discount_allowed'];
@@ -157,14 +157,14 @@ class xtcPrice {
 				                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
 				                                WHERE products_id='".$pID."'
 				                                AND quantity<='".$qty."'";
-		$graduated_price_query = xtDBquery($graduated_price_query);
+		$graduated_price_query = vamDBquery($graduated_price_query);
 		$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 		if ($graduated_price_data['qty']) {
 			$graduated_price_query = "SELECT personal_offer
 						                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
 						                                WHERE products_id='".$pID."'
 						                                AND quantity='".$graduated_price_data['qty']."'";
-			$graduated_price_query = xtDBquery($graduated_price_query);
+			$graduated_price_query = vamDBquery($graduated_price_query);
 			$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 
 			$sPrice = $graduated_price_data['personal_offer'];
@@ -182,14 +182,14 @@ class xtcPrice {
 				                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
 				                                WHERE products_id='".$pID."'
 				                                AND quantity<='".$qty."'";
-		$graduated_price_query = xtDBquery($graduated_price_query);
+		$graduated_price_query = vamDBquery($graduated_price_query);
 		$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 		if ($graduated_price_data['qty']) {
 			$graduated_price_query = "SELECT personal_offer
 						                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
 						                                WHERE products_id='".$pID."'
 						                                AND quantity='".$graduated_price_data['qty']."'";
-			$graduated_price_query = xtDBquery($graduated_price_query);
+			$graduated_price_query = vamDBquery($graduated_price_query);
 			$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 
 			$sPrice = $graduated_price_data['personal_offer'];
@@ -203,7 +203,7 @@ class xtcPrice {
 
 	function xtcGetOptionPrice($pID, $option, $value) {
 		$attribute_price_query = "select pd.products_discount_allowed,pd.products_tax_class_id, p.options_values_price, p.price_prefix, p.options_values_weight, p.weight_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." p, ".TABLE_PRODUCTS." pd where p.products_id = '".$pID."' and p.options_id = '".$option."' and pd.products_id = p.products_id and p.options_values_id = '".$value."'";
-		$attribute_price_query = xtDBquery($attribute_price_query);
+		$attribute_price_query = vamDBquery($attribute_price_query);
 		$attribute_price_data = vam_db_fetch_array($attribute_price_query, true);
 		$dicount = 0;
 		if ($this->cStatus['customers_status_discount_attributes'] == 1 && $this->cStatus['customers_status_discount'] != 0.00) {
@@ -231,7 +231,7 @@ class xtcPrice {
 
 	function xtcCheckSpecial($pID) {
 		$product_query = "select specials_new_products_price from ".TABLE_SPECIALS." where products_id = '".$pID."' and status=1";
-		$product_query = xtDBquery($product_query);
+		$product_query = vamDBquery($product_query);
 		$product = vam_db_fetch_array($product_query, true);
 
 		return $product['specials_new_products_price'];
@@ -286,7 +286,7 @@ class xtcPrice {
 		if ($pID == 0)
 			return;
 		$products_attributes_query = "select count(*) as total from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."'";
-		$products_attributes = xtDBquery($products_attributes_query);
+		$products_attributes = vamDBquery($products_attributes_query);
 		$products_attributes = vam_db_fetch_array($products_attributes, true);
 		if ($products_attributes['total'] > 0)
 			return ' '.strtolower(FROM).' ';

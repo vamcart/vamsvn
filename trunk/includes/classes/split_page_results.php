@@ -48,7 +48,7 @@
         $count_string = vam_db_input($count_key);
       }
 
-      $count_query = xtDBquery($query);
+      $count_query = vamDBquery($query);
       $count = vam_db_num_rows($count_query,true);
 
       $this->number_of_rows = $count;

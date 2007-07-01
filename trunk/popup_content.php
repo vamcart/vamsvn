@@ -17,7 +17,7 @@
 
 require ('includes/application_top.php');
 
-$content_query = xtDBquery("SELECT
+$content_query = vamDBquery("SELECT
  					*
  					FROM ".TABLE_CONTENT_MANAGER."
  					WHERE content_group='".(int) $_GET['coID']."' and languages_id = '".$_SESSION['languages_id']."'");

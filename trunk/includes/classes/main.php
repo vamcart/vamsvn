@@ -25,7 +25,7 @@
  		
  		
  				// prefetch shipping status
-		$status_query=xtDBquery("SELECT
+		$status_query=vamDBquery("SELECT
                                      shipping_status_name,
                                      shipping_status_image,shipping_status_id
                                      FROM ".TABLE_SHIPPING_STATUS."

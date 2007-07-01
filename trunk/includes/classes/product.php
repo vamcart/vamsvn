@@ -50,7 +50,7 @@ class product {
 										                                      ".$group_check.$fsk_lock."
 										                                      and pd.language_id = '".(int) $_SESSION['languages_id']."'";
 
-		$product_query = xtDBquery($product_query);
+		$product_query = vamDBquery($product_query);
 
 		if (!vam_db_num_rows($product_query, true)) {
 			$this->isProduct = false;
@@ -69,7 +69,7 @@ class product {
 
 	function getAttributesCount() {
 
-		$products_attributes_query = xtDBquery("select count(*) as total from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$this->pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."'");
+		$products_attributes_query = vamDBquery("select count(*) as total from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$this->pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."'");
 		$products_attributes = vam_db_fetch_array($products_attributes_query, true);
 		return $products_attributes['total'];
 
@@ -82,7 +82,7 @@ class product {
 	 */
 
 	function getReviewsCount() {
-		$reviews_query = xtDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+		$reviews_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
 		$reviews = vam_db_fetch_array($reviews_query, true);
 		return $reviews['total'];
 	}
@@ -96,7 +96,7 @@ class product {
 	function getReviews() {
 
 		$data_reviews = array ();
-		$reviews_query = xtDBquery("select
+		$reviews_query = vamDBquery("select
 									                                 r.reviews_rating,
 									                                 r.reviews_id,
 									                                 r.customers_name,
@@ -192,7 +192,7 @@ class product {
 														                                  ".$group_check."
 														                                  ".$fsk_lock."
 														                                  group by p.products_id order by o.date_purchased desc limit ".MAX_DISPLAY_ALSO_PURCHASED;
-		$orders_query = xtDBquery($orders_query);
+		$orders_query = vamDBquery($orders_query);
 		while ($orders = vam_db_fetch_array($orders_query, true)) {
 
 			$module_content[] = $this->buildDataArray($orders);
@@ -214,7 +214,7 @@ class product {
 		global $xtPrice;
 
 		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".$this->pID."' GROUP BY products_xsell_grp_name_id";
-		$cs_groups = xtDBquery($cs_groups);
+		$cs_groups = vamDBquery($cs_groups);
 		$cross_sell_data = array ();
 		if (vam_db_num_rows($cs_groups, true)>0) {
 		while ($cross_sells = vam_db_fetch_array($cs_groups, true)) {
@@ -244,7 +244,7 @@ class product {
 																								                                            and p.products_status = '1'
 																								                                            order by xp.sort_order asc";
 
-			$cross_query = xtDBquery($cross_query);
+			$cross_query = vamDBquery($cross_query);
 			if (vam_db_num_rows($cross_query, true) > 0)
 				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => vam_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
 
@@ -278,7 +278,7 @@ class product {
 				$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 			}
 
-			$cross_query = xtDBquery("select p.products_fsk18,
+			$cross_query = vamDBquery("select p.products_fsk18,
 																						 p.products_tax_class_id,
 																                                                 p.products_id,
 																                                                 p.products_image,
@@ -311,7 +311,7 @@ class product {
 	function getGraduated() {
 		global $xtPrice;
 
-		$staffel_query = xtDBquery("SELECT
+		$staffel_query = vamDBquery("SELECT
 				                                     quantity,
 				                                     personal_offer
 				                                     FROM

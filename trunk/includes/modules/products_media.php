@@ -22,7 +22,7 @@ $filename = '';
 
 // check if allowed to see
 require_once (DIR_FS_INC.'vam_in_array.inc.php');
-$check_query = xtDBquery("SELECT DISTINCT
+$check_query = vamDBquery("SELECT DISTINCT
 				products_id
 				FROM ".TABLE_PRODUCTS_CONTENT."
 				WHERE languages_id='".(int) $_SESSION['languages_id']."'");
@@ -43,7 +43,7 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 		$group_check = "group_ids LIKE '%c_".$_SESSION['customers_status']['customers_status_id']."_group%' AND";
 
 	//get download
-	$content_query = xtDBquery("SELECT
+	$content_query = vamDBquery("SELECT
 					content_id,
 					content_name,
 					content_link,

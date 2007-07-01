@@ -180,7 +180,7 @@ require_once (DIR_FS_INC.'vam_Security.inc.php');
 
 // set the application parameters
 
-function xtDBquery($query) {
+function vamDBquery($query) {
 	if (DB_CACHE == 'true') {
 //			echo  'cached query: '.$query.'<br>';
 		$result = vam_db_queryCached($query);
@@ -391,8 +391,8 @@ require (DIR_WS_INCLUDES.'write_customers_status.php');
 require (DIR_WS_CLASSES.'main.php');
 $main = new main();
 
-require (DIR_WS_CLASSES.'xtcPrice.php');
-$xtPrice = new xtcPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
+require (DIR_WS_CLASSES.'vamPrice.php');
+$xtPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
 
 require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
 // create the shopping cart & fix the cart if necesary
@@ -482,7 +482,7 @@ if (isset ($cPath_array)) {
 		if (GROUP_CHECK == 'true') {
 			$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 		}
-		$categories_query = xtDBquery("select
+		$categories_query = vamDBquery("select
 				                                        cd.categories_name
 				                                        from ".TABLE_CATEGORIES_DESCRIPTION." cd,
 				                                        ".TABLE_CATEGORIES." c
@@ -500,7 +500,7 @@ if (isset ($cPath_array)) {
 	}
 }
 elseif (vam_not_null($_GET['manufacturers_id'])) {
-	$manufacturers_query = xtDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
+	$manufacturers_query = vamDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
 	$manufacturers = vam_db_fetch_array($manufacturers_query, true);
 
 	$breadcrumb->add($manufacturers['manufacturers_name'], vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link((int) $_GET['manufacturers_id'], $manufacturers['manufacturers_name'])));

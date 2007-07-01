@@ -62,7 +62,7 @@ $categories_query = "select c.categories_id,
                                            and c.categories_id = cd.categories_id
                                            and cd.language_id='".(int) $_SESSION['languages_id']."'
                                            order by sort_order, cd.categories_name";
-$categories_query = xtDBquery($categories_query);
+$categories_query = vamDBquery($categories_query);
 
 while ($categories = vam_db_fetch_array($categories_query, true)) {
 	$foo[$categories['categories_id']] = array ('name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
@@ -87,7 +87,7 @@ if ($cPath) {
 		unset ($prev_id);
 		unset ($first_id);
 		$categories_query = "select c.categories_id, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
-		$categories_query = xtDBquery($categories_query);
+		$categories_query = vamDBquery($categories_query);
 		$category_check = vam_db_num_rows($categories_query, true);
 		if ($category_check > 0) {
 			$new_path .= $value;

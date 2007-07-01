@@ -54,7 +54,7 @@ if ($category_depth == 'nested') {
                                       ".$group_check."
                                       and cd.language_id = '".(int) $_SESSION['languages_id']."'";
 
-  $category_query = xtDBquery($category_query);
+  $category_query = vamDBquery($category_query);
 
   $category = vam_db_fetch_array($category_query, true);
 
@@ -77,7 +77,7 @@ if ($category_depth == 'nested') {
                                               ".$group_check."
                                               and cd.language_id = '".(int) $_SESSION['languages_id']."'
                                               order by sort_order, cd.categories_name";
-    $categories_query = xtDBquery($categories_query);
+    $categories_query = vamDBquery($categories_query);
 
     if (vam_db_num_rows($categories_query, true) < 1) {
     // do nothing, go through the loop
@@ -101,7 +101,7 @@ if ($category_depth == 'nested') {
                                           ".$group_check."
                                           and cd.language_id = '".(int) $_SESSION['languages_id']."'
                                           order by sort_order, cd.categories_name";
-  $categories_query = xtDBquery($categories_query);
+  $categories_query = vamDBquery($categories_query);
   }
 
   $rows = 0;
@@ -168,7 +168,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   if (isset ($_GET['filter_id']) && vam_not_null($_GET['filter_id'])) {
 
     // sorting query
-    $sorting_query = xtDBquery("SELECT products_sorting,
+    $sorting_query = vamDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".(int) $_GET['filter_id']."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
@@ -248,7 +248,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   if (isset ($_GET['filter_id']) && vam_not_null($_GET['filter_id'])) {
 
     // sorting query
-    $sorting_query = xtDBquery("SELECT products_sorting,
+    $sorting_query = vamDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
@@ -291,7 +291,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   } else {
 
     // sorting query
-    $sorting_query = xtDBquery("SELECT products_sorting,
+    $sorting_query = vamDBquery("SELECT products_sorting,
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
@@ -339,7 +339,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   } else {
     $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
   }
-  $filterlist_query = xtDBquery($filterlist_sql);
+  $filterlist_query = vamDBquery($filterlist_sql);
   if (vam_db_num_rows($filterlist_query, true) > 1) {
     $manufacturer_dropdown = vam_draw_form('filter', FILENAME_DEFAULT, 'get');
     if (isset ($_GET['manufacturers_id'])) {
@@ -362,12 +362,12 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   // Get the right image for the top-right
   $image = DIR_WS_IMAGES.'table_background_list.gif';
   if (isset ($_GET['manufacturers_id'])) {
-  $image = xtDBquery("select manufacturers_image from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
+  $image = vamDBquery("select manufacturers_image from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
   $image = vam_db_fetch_array($image,true);
   $image = $image['manufacturers_image'];
   }
   elseif ($current_category_id) {
-  $image = xtDBquery("select categories_image from ".TABLE_CATEGORIES." where categories_id = '".$current_category_id."'");
+  $image = vamDBquery("select categories_image from ".TABLE_CATEGORIES." where categories_id = '".$current_category_id."'");
   $image = vam_db_fetch_array($image,true);
   $image = $image['categories_image'];
   }
@@ -378,7 +378,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   if (GROUP_CHECK == 'true') {
   $group_check = "and group_ids LIKE '%c_".$_SESSION['customers_status']['customers_status_id']."_group%'";
   }
-  $shop_content_query = xtDBquery("SELECT
+  $shop_content_query = vamDBquery("SELECT
                       content_title,
                       content_heading,
                       content_text,
