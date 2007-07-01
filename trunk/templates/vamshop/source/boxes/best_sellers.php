@@ -42,7 +42,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $ca
 	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
-require_once (DIR_FS_INC.'xtc_row_number_format.inc.php');
+require_once (DIR_FS_INC.'vam_row_number_format.inc.php');
 
 //fsk18 lock
 $fsk_lock = '';
@@ -91,15 +91,15 @@ if (isset ($current_category_id) && ($current_category_id > 0)) {
 	                                        order by p.products_ordered desc limit ".MAX_DISPLAY_BESTSELLERS;
 }
 $best_sellers_query = xtDBquery($best_sellers_query);
-if (xtc_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
+if (vam_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
 
 	$rows = 0;
 	$box_content = array ();
-	while ($best_sellers = xtc_db_fetch_array($best_sellers_query, true)) {
+	while ($best_sellers = vam_db_fetch_array($best_sellers_query, true)) {
 		$rows ++;
 		$image = '';
 		
-		$best_sellers = array_merge($best_sellers, array ('ID' => xtc_row_number_format($rows)));
+		$best_sellers = array_merge($best_sellers, array ('ID' => vam_row_number_format($rows)));
 		$box_content[] = $product->buildDataArray($best_sellers);
 		
 	}

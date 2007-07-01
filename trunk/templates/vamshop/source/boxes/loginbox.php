@@ -24,17 +24,17 @@
 $box_smarty = new smarty;
 $box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
-require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
-require_once (DIR_FS_INC.'xtc_draw_password_field.inc.php');
+require_once (DIR_FS_INC.'vam_image_submit.inc.php');
+require_once (DIR_FS_INC.'vam_draw_password_field.inc.php');
 
-if (!xtc_session_is_registered('customer_id')) {
+if (!vam_session_is_registered('customer_id')) {
 
-	$box_smarty->assign('FORM_ACTION', '<form id="loginbox" method="post" action="'.xtc_href_link(FILENAME_LOGIN, 'action=process', 'SSL').'">');
-	$box_smarty->assign('FIELD_EMAIL', xtc_draw_input_field('email_address', '', ''));
-	$box_smarty->assign('FIELD_PWD', xtc_draw_password_field('password', '', ''));
-	$box_smarty->assign('BUTTON', xtc_image_submit('button_login_small.gif', IMAGE_BUTTON_LOGIN));
-	$box_smarty->assign('LINK_LOST_PASSWORD', xtc_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
-	$box_smarty->assign('LINK_NEW_ACCOUNT', xtc_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'));
+	$box_smarty->assign('FORM_ACTION', '<form id="loginbox" method="post" action="'.vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL').'">');
+	$box_smarty->assign('FIELD_EMAIL', vam_draw_input_field('email_address', '', ''));
+	$box_smarty->assign('FIELD_PWD', vam_draw_password_field('password', '', ''));
+	$box_smarty->assign('BUTTON', vam_image_submit('button_login_small.gif', IMAGE_BUTTON_LOGIN));
+	$box_smarty->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
+	$box_smarty->assign('LINK_NEW_ACCOUNT', vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'));
 	$box_smarty->assign('FORM_END', '</form>');
 
 	$box_smarty->assign('BOX_CONTENT', $loginboxcontent);

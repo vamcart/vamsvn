@@ -37,7 +37,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
 
 	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
-  function xtc_show_topic($counter) {
+  function vam_show_topic($counter) {
     global $tree, $topics_string, $tPath_array;
 
     for ($i=0; $i<$tree[$counter]['level']; $i++) {
@@ -54,9 +54,9 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
 
 		$SEF_parameter_cat = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_cat = '&category='.xtc_cleanName($tree[$counter]['name']);
+			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
-    $topics_string .= xtc_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
 
     if (isset($tPath_array) && in_array($counter, $tPath_array)) {
       $topics_string .= '<b>';
@@ -69,14 +69,14 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       $topics_string .= '</b>';
     }
 
-    if (xtc_has_topic_subtopics($counter)) {
+    if (vam_has_topic_subtopics($counter)) {
       $topics_string .= ' -&gt;';
     }
 
     $topics_string .= '</a>';
 
     if (SHOW_ARTICLE_COUNTS == 'true') {
-      $articles_in_topic = xtc_count_articles_in_topic($counter);
+      $articles_in_topic = vam_count_articles_in_topic($counter);
       if ($articles_in_topic > 0) {
         $topics_string .= '&nbsp;(' . $articles_in_topic . ')';
       }
@@ -85,7 +85,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
     $topics_string .= '<br />' . "\n";
 
     if ($tree[$counter]['next_id'] != false) {
-      xtc_show_topic($tree[$counter]['next_id']);
+      vam_show_topic($tree[$counter]['next_id']);
     }
   }
 ?>
@@ -97,7 +97,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
 
   $topics_query = "select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name";
   $topics_query = xtDBquery($topics_query);
-  while ($topics = xtc_db_fetch_array($topics_query,true))  {
+  while ($topics = vam_db_fetch_array($topics_query,true))  {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
                                         'level' => 0,
@@ -116,7 +116,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
   }
 
   //------------------------
-  if (xtc_not_null($tPath)) {
+  if (vam_not_null($tPath)) {
     $new_path = '';
     reset($tPath_array);
     while (list($key, $value) = each($tPath_array)) {
@@ -124,9 +124,9 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       unset($first_id);
       $topics_query = "select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name";
       $topics_query = xtDBquery($topics_query);
-      if (xtc_db_num_rows($topics_query,true)) {
+      if (vam_db_num_rows($topics_query,true)) {
         $new_path .= $value;
-        while ($row = xtc_db_fetch_array($topics_query,true)) {
+        while ($row = vam_db_fetch_array($topics_query,true)) {
           $tree[$row['topics_id']] = array('name' => $row['topics_name'],
                                            'parent' => $row['parent_id'],
                                            'level' => $key+1,
@@ -153,7 +153,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       }
     }
   }
-  xtc_show_topic($first_topic_element);
+  vam_show_topic($first_topic_element);
 
   $new_articles_string = '';
   $all_articles_string = '';
@@ -162,7 +162,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
     if (SHOW_ARTICLE_COUNTS == 'true') {
       $articles_new_query = "select a.articles_id from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t left join " . TABLE_TOPICS_DESCRIPTION . " td on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and td.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.articles_date_added > SUBDATE(now( ), INTERVAL '" . NEW_ARTICLES_DAYS_DISPLAY . "' DAY)";
      $articles_new_query = xtDBquery($articles_new_query);
-      $articles_new_count = ' (' . xtc_db_num_rows($articles_new_query,true) . ')';
+      $articles_new_count = ' (' . vam_db_num_rows($articles_new_query,true) . ')';
     } else {
       $articles_new_count = '';
     }
@@ -171,7 +171,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       $new_articles_string = '<b>';
     }
 
-    $new_articles_string .= '<a href="' . xtc_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '">' . BOX_NEW_ARTICLES . '</a>';
+    $new_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '">' . BOX_NEW_ARTICLES . '</a>';
 
     if (strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
@@ -185,7 +185,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
     if (SHOW_ARTICLE_COUNTS == 'true') {
       $articles_all_query = "select a.articles_id from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t left join " . TABLE_TOPICS_DESCRIPTION . " td on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and td.language_id = '" . (int)$_SESSION['languages_id'] . "'";
      $articles_all_query = xtDBquery($articles_all_query);
-      $articles_all_count = ' (' . xtc_db_num_rows($articles_all_query,true) . ')';
+      $articles_all_count = ' (' . vam_db_num_rows($articles_all_query,true) . ')';
     } else {
       $articles_all_count = '';
     }
@@ -194,7 +194,7 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
       $all_articles_string = '<b>';
     }
 
-    $all_articles_string .= '<a href="' . xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '">' . BOX_ALL_ARTICLES . '</a>';
+    $all_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '">' . BOX_ALL_ARTICLES . '</a>';
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';

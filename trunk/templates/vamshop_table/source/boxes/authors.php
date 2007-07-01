@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  require_once (DIR_FS_INC.'xtc_hide_session_id.inc.php');
+  require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
 $box_smarty = new smarty;
 $box_content='';
@@ -42,22 +42,22 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
 
   $authors_query = "select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name";
   $authors_query = xtDBquery($authors_query);
-  $number_of_author_rows = xtc_db_num_rows($authors_query,true);
-  if (xtc_db_num_rows($authors_query,true) > 0) {
+  $number_of_author_rows = vam_db_num_rows($authors_query,true);
+  if (vam_db_num_rows($authors_query,true) > 0) {
 ?>
 <?php
     if ($number_of_author_rows <= MAX_DISPLAY_AUTHORS_IN_A_LIST) {
 // Display a list
       $authors_list = '';
-      while ($authors = xtc_db_fetch_array($authors_query,true)) {
+      while ($authors = vam_db_fetch_array($authors_query,true)) {
 
 		$SEF_parameter_author = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter_author = '&author='.xtc_cleanName($authors['authors_name']);
+			$SEF_parameter_author = '&author='.vam_cleanName($authors['authors_name']);
 
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($_GET['authors_id']) && ($_GET['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
-        $authors_list .= '<a href="' . xtc_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
+        $authors_list .= '<a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
       }
 
       $authors_list = substr($authors_list, 0, -4);
@@ -70,13 +70,13 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
         $authors_array[] = array('id' => '', 'text' => PULL_DOWN_DEFAULT);
       }
 
-      while ($authors = xtc_db_fetch_array($authors_query,true)) {
+      while ($authors = vam_db_fetch_array($authors_query,true)) {
         $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         $authors_array[] = array('id' => $authors['authors_id'],
                                        'text' => $authors_name);
       }
 
-      $content_string .= xtc_draw_form('authors', xtc_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . xtc_draw_pull_down_menu('authors_id', $authors_array, (isset($_GET['authors_id']) ? $_GET['authors_id'] : ''), 'onchange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . xtc_hide_session_id().'</form>';
+      $content_string .= vam_draw_form('authors', vam_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . vam_draw_pull_down_menu('authors_id', $authors_array, (isset($_GET['authors_id']) ? $_GET['authors_id'] : ''), 'onchange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . vam_hide_session_id().'</form>';
 }
 
 ?>

@@ -22,9 +22,9 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $box_content='';
 
 
-$box_smarty->assign('FORM_ACTION', xtc_draw_form('sign_in', xtc_href_link(FILENAME_NEWSLETTER, '', 'NONSSL')));
-$box_smarty->assign('FIELD_EMAIL',xtc_draw_input_field('email', '', ''));
-$box_smarty->assign('BUTTON',xtc_image_submit('button_login_small.gif', IMAGE_BUTTON_LOGIN));
+$box_smarty->assign('FORM_ACTION', vam_draw_form('sign_in', vam_href_link(FILENAME_NEWSLETTER, '', 'NONSSL')));
+$box_smarty->assign('FIELD_EMAIL',vam_draw_input_field('email', '', ''));
+$box_smarty->assign('BUTTON',vam_image_submit('button_login_small.gif', IMAGE_BUTTON_LOGIN));
 $box_smarty->assign('FORM_END','</form>');
 	$box_smarty->assign('language', $_SESSION['language']);
        	  // set cache ID

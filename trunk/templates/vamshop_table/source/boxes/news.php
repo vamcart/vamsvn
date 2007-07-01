@@ -30,23 +30,23 @@ $sql = "
 
 $module_content = array();
 $query = xtDBquery($sql);
-while ($one = xtc_db_fetch_array($query,true)) {
+while ($one = vam_db_fetch_array($query,true)) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&headline='.xtc_cleanName($one['headline']);
+			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
 
     $module_content[]=array(
         'NEWS_HEADING' => $one['headline'],
         'NEWS_CONTENT' => $one['content'],
         'NEWS_ID'      => $one['news_id'],
-        'NEWS_DATA'    => xtc_date_short($one['date_added']),
-        'NEWS_LINK_MORE'    => xtc_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
+        'NEWS_DATA'    => vam_date_short($one['date_added']),
+        'NEWS_LINK_MORE'    => vam_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
         );
 }
 
 if (sizeof($module_content) > 0) {
-    $box_smarty->assign('NEWS_LINK', xtc_href_link(FILENAME_NEWS));
+    $box_smarty->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
     $box_smarty->assign('language', $_SESSION['language']);
     $box_smarty->assign('module_content',$module_content);
     // set cache ID

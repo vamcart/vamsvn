@@ -44,9 +44,9 @@ if(!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache
 $box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
-require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/xtc_show_category.inc.php');
-require_once (DIR_FS_INC.'xtc_has_category_subcategories.inc.php');
-require_once (DIR_FS_INC.'xtc_count_products_in_category.inc.php');
+require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/vam_show_category.inc.php');
+require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
+require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
 
 
 $categories_string = '';
@@ -64,7 +64,7 @@ $categories_query = "select c.categories_id,
                                            order by sort_order, cd.categories_name";
 $categories_query = xtDBquery($categories_query);
 
-while ($categories = xtc_db_fetch_array($categories_query, true)) {
+while ($categories = vam_db_fetch_array($categories_query, true)) {
 	$foo[$categories['categories_id']] = array ('name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
 
 	if (isset ($prev_id)) {
@@ -88,10 +88,10 @@ if ($cPath) {
 		unset ($first_id);
 		$categories_query = "select c.categories_id, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
 		$categories_query = xtDBquery($categories_query);
-		$category_check = xtc_db_num_rows($categories_query, true);
+		$category_check = vam_db_num_rows($categories_query, true);
 		if ($category_check > 0) {
 			$new_path .= $value;
-			while ($row = xtc_db_fetch_array($categories_query, true)) {
+			while ($row = vam_db_fetch_array($categories_query, true)) {
 				$foo[$row['categories_id']] = array ('name' => $row['categories_name'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
 
 				if (isset ($prev_id)) {
@@ -115,7 +115,7 @@ if ($cPath) {
 	}
 }
 
-xtc_show_category($first_element);
+vam_show_category($first_element);
 
 $box_smarty->assign('BOX_CONTENT', $categories_string);
 

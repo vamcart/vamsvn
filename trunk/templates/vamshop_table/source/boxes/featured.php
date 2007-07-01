@@ -20,7 +20,7 @@ $box_smarty = new smarty;
 $box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
 // include needed functions
-require_once (DIR_FS_INC.'xtc_random_select.inc.php');
+require_once (DIR_FS_INC.'vam_random_select.inc.php');
 
 //fsk18 lock
 $fsk_lock = '';
@@ -30,7 +30,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
 if (GROUP_CHECK == 'true') {
 	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 }
-if ($random_product = xtc_random_select("select
+if ($random_product = vam_random_select("select
                                            p.products_id,
                                            pd.products_name,
                                            p.products_price,
@@ -54,7 +54,7 @@ if ($random_product = xtc_random_select("select
 
 
 $box_smarty->assign('box_content',$product->buildDataArray($random_product));
-$box_smarty->assign('FEATURED_LINK', xtc_href_link(FILENAME_FEATURED));
+$box_smarty->assign('FEATURED_LINK', vam_href_link(FILENAME_FEATURED));
 
 $box_smarty->assign('language', $_SESSION['language']);
 if ($random_product["products_id"] != '') {

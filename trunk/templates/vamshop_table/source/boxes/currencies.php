@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
   // include functions
-  require_once(DIR_FS_INC . 'xtc_hide_session_id.inc.php');
+  require_once(DIR_FS_INC . 'vam_hide_session_id.inc.php');
   if (isset($xtPrice) && is_object($xtPrice)) {
 
     $count_cur='';
@@ -32,8 +32,8 @@
     $hidden_get_variables = '';
     reset($_GET);
     while (list($key, $value) = each($_GET)) {
-      if ( ($key != 'currency') && ($key != xtc_session_name()) && ($key != 'x') && ($key != 'y') ) {
-        $hidden_get_variables .= xtc_draw_hidden_field($key, $value);
+      if ( ($key != 'currency') && ($key != vam_session_name()) && ($key != 'x') && ($key != 'y') ) {
+        $hidden_get_variables .= vam_draw_hidden_field($key, $value);
       }
     }
 
@@ -48,7 +48,7 @@
   $box_smarty = new smarty;
   $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $box_content='';
-  $box_content=xtc_draw_form('currencies', xtc_href_link(basename($PHP_SELF), '', $request_type, false), 'get').xtc_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onChange="this.form.submit();" style="width: 100%"') . $hidden_get_variables . xtc_hide_session_id().'</form>';
+  $box_content=vam_draw_form('currencies', vam_href_link(basename($PHP_SELF), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onChange="this.form.submit();" style="width: 100%"') . $hidden_get_variables . vam_hide_session_id().'</form>';
 
 
   $box_smarty->assign('BOX_CONTENT', $box_content);
