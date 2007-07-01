@@ -37,7 +37,7 @@ class xtcImport {
 		// precaching categories in array ?
 		$this->CatCache = true;
 		$this->FileSheme = array ();
-		$this->Groups = xtc_get_customers_statuses();
+		$this->Groups = vam_get_customers_statuses();
 
 	}
 
@@ -131,8 +131,8 @@ class xtcImport {
 	*/
 	function get_lang() {
 
-		$languages_query = xtc_db_query("select languages_id, name, code, image, directory from ".TABLE_LANGUAGES." order by sort_order");
-		while ($languages = xtc_db_fetch_array($languages_query)) {
+		$languages_query = vam_db_query("select languages_id, name, code, image, directory from ".TABLE_LANGUAGES." order by sort_order");
+		while ($languages = vam_db_fetch_array($languages_query)) {
 			$languages_array[] = array ('id' => $languages['languages_id'], 'name' => $languages['name'], 'code' => $languages['code']);
 		}
 
@@ -197,8 +197,8 @@ class xtcImport {
 	*   @return boolean
 	*/
 	function checkModel($model) {
-		$model_query = xtc_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE products_model='".addslashes($model)."'");
-		if (!xtc_db_num_rows($model_query))
+		$model_query = vam_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE products_model='".addslashes($model)."'");
+		if (!vam_db_num_rows($model_query))
 			return false;
 		return true;
 	}
@@ -209,8 +209,8 @@ class xtcImport {
 	*   @return boolean
 	*/
 	function checkImage($imgID,$pID) {
-		$img_query = xtc_db_query("SELECT image_id FROM ".TABLE_PRODUCTS_IMAGES." WHERE products_id='".$pID."' and image_nr='".$imgID."'");
-		if (!xtc_db_num_rows($img_query))
+		$img_query = vam_db_query("SELECT image_id FROM ".TABLE_PRODUCTS_IMAGES." WHERE products_id='".$pID."' and image_nr='".$imgID."'");
+		if (!vam_db_num_rows($img_query))
 			return false;
 		return true;
 	}
@@ -238,13 +238,13 @@ class xtcImport {
 			return;
 		if (isset ($this->mfn[$manufacturer]['id']))
 			return $this->mfn[$manufacturer]['id'];
-		$man_query = xtc_db_query("SELECT manufacturers_id FROM ".TABLE_MANUFACTURERS." WHERE manufacturers_name = '".$manufacturer."'");
-		if (!xtc_db_num_rows($man_query)) {
+		$man_query = vam_db_query("SELECT manufacturers_id FROM ".TABLE_MANUFACTURERS." WHERE manufacturers_name = '".$manufacturer."'");
+		if (!vam_db_num_rows($man_query)) {
 			$manufacturers_array = array ('manufacturers_name' => $manufacturer);
-			xtc_db_perform(TABLE_MANUFACTURERS, $manufacturers_array);
+			vam_db_perform(TABLE_MANUFACTURERS, $manufacturers_array);
 			$this->mfn[$manufacturer]['id'] = mysql_insert_id();
 		} else {
-			$man_data = xtc_db_fetch_array($man_query);
+			$man_data = vam_db_fetch_array($man_query);
 			$this->mfn[$manufacturer]['id'] = $man_data['manufacturers_id'];
 
 		}
@@ -295,13 +295,13 @@ class xtcImport {
 
 		if ($mode == 'insert') {
 			$this->counter['prod_new']++;
-			xtc_db_perform(TABLE_PRODUCTS, $products_array);
+			vam_db_perform(TABLE_PRODUCTS, $products_array);
 			$products_id = mysql_insert_id();
 		} else {
 			$this->counter['prod_upd']++;
-			xtc_db_perform(TABLE_PRODUCTS, $products_array, 'update', 'products_model = \''.addslashes($dataArray['p_model']).'\'');
-			$prod_query = xtc_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE products_model='".addslashes($dataArray['p_model'])."'");
-			$prod_data = xtc_db_fetch_array($prod_query);
+			vam_db_perform(TABLE_PRODUCTS, $products_array, 'update', 'products_model = \''.addslashes($dataArray['p_model']).'\'');
+			$prod_query = vam_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE products_model='".addslashes($dataArray['p_model'])."'");
+			$prod_data = vam_db_fetch_array($prod_query);
 			$products_id = $prod_data['products_id'];
 
 		}
@@ -311,14 +311,14 @@ class xtcImport {
 			// seperate string ::
 			if (isset ($dataArray['p_priceNoTax.'.$this->Groups[$i +1]['id']])) {
 				$truncate_query = "DELETE FROM ".TABLE_PERSONAL_OFFERS_BY.$this->Groups[$i +1]['id']." WHERE products_id='".$prod_data['products_id']."'";
-				xtc_db_query($truncate_query);
+				vam_db_query($truncate_query);
 				$prices = $dataArray['p_priceNoTax.'.$this->Groups[$i +1]['id']];
 				$prices = explode('::', $prices);
 				for ($ii = 0; $ii < count($prices); $ii ++) {
 					$values = explode(':', $prices[$ii]);
 					$group_array = array ('products_id' => $prod_data['products_id'], 'quantity' => $values[0], 'personal_offer' => $values[1]);
 
-					xtc_db_perform(TABLE_PERSONAL_OFFERS_BY.$this->Groups[$i +1]['id'], $group_array);
+					vam_db_perform(TABLE_PERSONAL_OFFERS_BY.$this->Groups[$i +1]['id'], $group_array);
 				}
 			}
 		}
@@ -328,7 +328,7 @@ class xtcImport {
 			// seperate string ::
 			if (isset ($dataArray['p_groupAcc.'.$this->Groups[$i +1]['id']])) {
 				$insert_array = array ('group_permission_'.$this->Groups[$i +1]['id'] => $dataArray['p_groupAcc.'.$this->Groups[$i +1]['id']]);
-				xtc_db_perform(TABLE_PRODUCTS, $insert_array, 'update', 'products_id = \''.$products_id.'\'');
+				vam_db_perform(TABLE_PRODUCTS, $insert_array, 'update', 'products_id = \''.$products_id.'\'');
 			}
 		}
 		
@@ -338,10 +338,10 @@ class xtcImport {
 			// check if entry exists
 			if ($this->checkImage($i,$products_id)) {
 				$insert_array = array ('image_name' => $dataArray['p_image.'.$i]);
-				xtc_db_perform(TABLE_PRODUCTS_IMAGES, $insert_array, 'update', 'products_id = \''.$products_id.'\' and image_nr=\''.$i.'\'');	
+				vam_db_perform(TABLE_PRODUCTS_IMAGES, $insert_array, 'update', 'products_id = \''.$products_id.'\' and image_nr=\''.$i.'\'');	
 			} else {
 				$insert_array = array ('image_name' => $dataArray['p_image.'.$i],'image_nr'=>$i,'products_id'=>$products_id);
-				xtc_db_perform(TABLE_PRODUCTS_IMAGES, $insert_array);
+				vam_db_perform(TABLE_PRODUCTS_IMAGES, $insert_array);
 			}
 		}
 		}
@@ -368,9 +368,9 @@ class xtcImport {
 				$prod_desc_array = array_merge($prod_desc_array, array ('products_url' => $dataArray['p_url.'.$this->languages[$i_insert]['code']]));
 
 			if ($mode == 'insert') {
-				xtc_db_perform(TABLE_PRODUCTS_DESCRIPTION, $prod_desc_array);
+				vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $prod_desc_array);
 			} else {
-				xtc_db_perform(TABLE_PRODUCTS_DESCRIPTION, $prod_desc_array, 'update', 'products_id = \''.$products_id.'\' and language_id=\''.$this->languages[$i_insert]['id'].'\'');
+				vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $prod_desc_array, 'update', 'products_id = \''.$products_id.'\' and language_id=\''.$this->languages[$i_insert]['id'].'\'');
 			}
 		}
 	}
@@ -419,17 +419,17 @@ class xtcImport {
 					$code = '$parent=$this->CatTree'.$parTree.'[\'ID\'];';
 					eval ($code);
 					// check if categorie exists
-					$cat_query = xtc_db_query("SELECT c.categories_id FROM ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
+					$cat_query = vam_db_query("SELECT c.categories_id FROM ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
 																									                                            WHERE
 																									                                            cd.categories_name='".addslashes($cat[$i])."'
 																									                                            and cd.language_id='".$this->languages[0]['id']."'
 																									                                            and cd.categories_id=c.categories_id
 																									                                            and parent_id='".$parent."'");
 
-					if (!xtc_db_num_rows($cat_query)) { // insert categorie
+					if (!vam_db_num_rows($cat_query)) { // insert categorie
 						$categorie_data = array ('parent_id' => $parent, 'categories_status' => 1, 'date_added' => 'now()', 'last_modified' => 'now()');
 
-						xtc_db_perform(TABLE_CATEGORIES, $categorie_data);
+						vam_db_perform(TABLE_CATEGORIES, $categorie_data);
 						$cat_id = mysql_insert_id();
 						$this->counter['cat_new']++;
 						$code = '$this->CatTree'.$parTree.'[\''.addslashes($cat[$i]).'\'][\'ID\']='.$cat_id.';';
@@ -437,12 +437,12 @@ class xtcImport {
 						$parent = $cat_id;
 						for ($i_insert = 0; $i_insert < sizeof($this->languages); $i_insert ++) {
 							$categorie_data = array ('language_id' => $this->languages[$i_insert]['id'], 'categories_id' => $cat_id, 'categories_name' => $cat[$i]);
-							xtc_db_perform(TABLE_CATEGORIES_DESCRIPTION, $categorie_data);
+							vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $categorie_data);
 
 						}
 					} else {
 						$this->counter['cat_touched']++;
-						$cData = xtc_db_fetch_array($cat_query);
+						$cData = vam_db_fetch_array($cat_query);
 						$cat_id = $cData['categories_id'];
 						$code = '$this->CatTree'.$parTree.'[\''.addslashes($cat[$i]).'\'][\'ID\']='.$cat_id.';';
 						eval ($code);
@@ -462,16 +462,16 @@ class xtcImport {
 	*   @param int $cID categories ID
 	*/
 	function insertPtoCconnection($pID, $cID) {
-		$prod2cat_query = xtc_db_query("SELECT *
+		$prod2cat_query = vam_db_query("SELECT *
 										                                    FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 										                                    WHERE
 										                                    categories_id='".$cID."'
 										                                    and products_id='".$pID."'");
 
-		if (!xtc_db_num_rows($prod2cat_query)) {
+		if (!vam_db_num_rows($prod2cat_query)) {
 			$insert_data = array ('products_id' => $pID, 'categories_id' => $cID);
 
-			xtc_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, $insert_data);
+			vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, $insert_data);
 		}
 	}
 
@@ -536,8 +536,8 @@ class xtcImport {
 	*   @return array
 	*/
 	function get_mfn() {
-		$mfn_query = xtc_db_query("select manufacturers_id, manufacturers_name from ".TABLE_MANUFACTURERS);
-		while ($mfn = xtc_db_fetch_array($mfn_query)) {
+		$mfn_query = vam_db_query("select manufacturers_id, manufacturers_name from ".TABLE_MANUFACTURERS);
+		while ($mfn = vam_db_fetch_array($mfn_query)) {
 			$mfn_array[$mfn['manufacturers_name']] = array ('id' => $mfn['manufacturers_id']);
 		}
 		return $mfn_array;
@@ -564,7 +564,7 @@ class xtcExport {
 			$this->seperator = "\t";
 		if (CSV_SEPERATOR == '\t')
 			$this->seperator = "\t";
-		$this->Groups = xtc_get_customers_statuses();
+		$this->Groups = vam_get_customers_statuses();
 	}
 
 	/**
@@ -573,8 +573,8 @@ class xtcExport {
 	*/
 	function get_lang() {
 
-		$languages_query = xtc_db_query("select languages_id, name, code, image, directory from ".TABLE_LANGUAGES);
-		while ($languages = xtc_db_fetch_array($languages_query)) {
+		$languages_query = vam_db_query("select languages_id, name, code, image, directory from ".TABLE_LANGUAGES);
+		while ($languages = vam_db_fetch_array($languages_query)) {
 			$languages_array[] = array ('id' => $languages['languages_id'], 'name' => $languages['name'], 'code' => $languages['code']);
 		}
 
@@ -640,12 +640,12 @@ class xtcExport {
 
 		fputs($fp, $heading);
 		// content
-		$export_query = xtc_db_query("SELECT
+		$export_query = vam_db_query("SELECT
 										                             *
 										                         FROM
 										                             ".TABLE_PRODUCTS);
 
-		while ($export_data = xtc_db_fetch_array($export_query)) {
+		while ($export_data = vam_db_fetch_array($export_query)) {
 
 			$this->counter['prod_exp']++;
 			$line = $this->TextSign.'XTSOL'.$this->TextSign.$this->seperator;
@@ -660,9 +660,9 @@ class xtcExport {
 			// group prices  Qantity:Price::Quantity:Price
 			for ($i = 0; $i < count($this->Groups) - 1; $i ++) {
 				$price_query = "SELECT * FROM ".TABLE_PERSONAL_OFFERS_BY.$this->Groups[$i +1]['id']." WHERE products_id = '".$export_data['products_id']."'ORDER BY quantity";
-				$price_query = xtc_db_query($price_query);
+				$price_query = vam_db_query($price_query);
 				$groupPrice = '';
-				while ($price_data = xtc_db_fetch_array($price_query)) {
+				while ($price_data = vam_db_fetch_array($price_query)) {
 					if ($price_data['personal_offer'] > 0) {
 						$groupPrice .= $price_data['quantity'].':'.$price_data['personal_offer'].'::';
 					}
@@ -694,9 +694,9 @@ class xtcExport {
 
 			if (MO_PICS > 0) {
 				$mo_query = "SELECT * FROM ".TABLE_PRODUCTS_IMAGES." WHERE products_id='".$export_data['products_id']."'";
-				$mo_query = xtc_db_query($mo_query);
+				$mo_query = vam_db_query($mo_query);
 				$img = array ();
-				while ($mo_data = xtc_db_fetch_array($mo_query)) {
+				while ($mo_data = vam_db_fetch_array($mo_query)) {
 					$img[$mo_data['image_nr']] = $mo_data['image_name'];
 				}
 
@@ -714,8 +714,8 @@ class xtcExport {
 			$line .= $this->TextSign.$export_data['products_image'].$this->TextSign.$this->seperator;
 
 			for ($i = 0; $i < sizeof($this->languages); $i ++) {
-				$lang_query = xtc_db_query("SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE language_id='".$this->languages[$i]['id']."' and products_id='".$export_data['products_id']."'");
-				$lang_data = xtc_db_fetch_array($lang_query);
+				$lang_query = vam_db_query("SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE language_id='".$this->languages[$i]['id']."' and products_id='".$export_data['products_id']."'");
+				$lang_data = vam_db_fetch_array($lang_query);
 				$lang_data['products_description'] = str_replace("\n", "", $lang_data['products_description']);
 				$lang_data['products_short_description'] = str_replace("\n", "", $lang_data['products_short_description']);
 				$lang_data['products_description'] = str_replace("\r", "", $lang_data['products_description']);
@@ -732,8 +732,8 @@ class xtcExport {
 				$line .= $this->TextSign.$lang_data['products_url'].$this->TextSign.$this->seperator;
 
 			}
-			$cat_query = xtc_db_query("SELECT categories_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id='".$export_data['products_id']."'");
-			$cat_data = xtc_db_fetch_array($cat_query);
+			$cat_query = vam_db_query("SELECT categories_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id='".$export_data['products_id']."'");
+			$cat_data = vam_db_fetch_array($cat_query);
 
 			$line .= $this->buildCAT($cat_data['categories_id']);
 			$line .= $this->TextSign;
@@ -795,8 +795,8 @@ class xtcExport {
 			$tmpID = $catID;
 
 			while ($this->getParent($catID) != 0 || $catID != 0) {
-				$cat_select = xtc_db_query("SELECT categories_name FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id='".$catID."' and language_id='".$this->languages[0]['id']."'");
-				$cat_data = xtc_db_fetch_array($cat_select);
+				$cat_select = vam_db_query("SELECT categories_name FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id='".$catID."' and language_id='".$this->languages[0]['id']."'");
+				$cat_data = vam_db_fetch_array($cat_select);
 				$catID = $this->getParent($catID);
 				$cat[] = $cat_data['categories_name'];
 
@@ -822,7 +822,7 @@ class xtcExport {
 	function getTaxRates() // must be optimazed (pre caching array)
 	{
 		$tax = array ();
-		$tax_query = xtc_db_query("Select
+		$tax_query = vam_db_query("Select
 										                                      tr.tax_class_id,
 										                                      tr.tax_rate,
 										                                      ztz.geo_zone_id
@@ -833,7 +833,7 @@ class xtcExport {
 										                                      ztz.zone_country_id='".STORE_COUNTRY."'
 										                                      and tr.tax_zone_id=ztz.geo_zone_id
 										                                      ");
-		while ($tax_data = xtc_db_fetch_array($tax_query)) {
+		while ($tax_data = vam_db_fetch_array($tax_query)) {
 
 			$tax[$tax_data['tax_class_id']] = $tax_data['tax_rate'];
 
@@ -847,11 +847,11 @@ class xtcExport {
 	*/
 	function getManufacturers() {
 		$man = array ();
-		$man_query = xtc_db_query("SELECT
+		$man_query = vam_db_query("SELECT
 										                                manufacturers_name,manufacturers_id 
 										                                FROM
 										                                ".TABLE_MANUFACTURERS);
-		while ($man_data = xtc_db_fetch_array($man_query)) {
+		while ($man_data = vam_db_fetch_array($man_query)) {
 			$man[$man_data['manufacturers_id']] = $man_data['manufacturers_name'];
 		}
 		return $man;
@@ -865,8 +865,8 @@ class xtcExport {
 		if (isset ($this->PARENT[$catID])) {
 			return $this->PARENT[$catID];
 		} else {
-			$parent_query = xtc_db_query("SELECT parent_id FROM ".TABLE_CATEGORIES." WHERE categories_id='".$catID."'");
-			$parent_data = xtc_db_fetch_array($parent_query);
+			$parent_query = vam_db_query("SELECT parent_id FROM ".TABLE_CATEGORIES." WHERE categories_id='".$catID."'");
+			$parent_data = vam_db_fetch_array($parent_query);
 			$this->PARENT[$catID] = $parent_data['parent_id'];
 			return $parent_data['parent_id'];
 		}

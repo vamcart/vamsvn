@@ -47,17 +47,17 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 	                                from
 	                                ".TABLE_CUSTOMERS." c order by c.customers_date_added desc limit 5";
 
-	$orders_query = xtc_db_query($orders_query_raw);
-	while ($orders = xtc_db_fetch_array($orders_query)) {
+	$orders_query = vam_db_query($orders_query_raw);
+	while ($orders = vam_db_fetch_array($orders_query)) {
 
 
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
                 <td class="dataTableContent"><?php echo $orders['orders_id']; ?></td>
                 <td class="dataTableContent"><?php echo strip_tags($orders['order_total']); ?></td>
                 <td class="dataTableContent"><?php echo $orders['orders_status_name']; ?></td>
-                <td class="dataTableContent"><?php echo xtc_datetime_short($orders['date_purchased']); ?></td>
+                <td class="dataTableContent"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
               </tr>
 <?php
 

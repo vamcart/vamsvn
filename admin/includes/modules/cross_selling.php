@@ -17,9 +17,9 @@
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 // select article data
 $article_query = "SELECT products_name FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE products_id='".(int) $_GET['current_product_id']."' and language_id = '".$_SESSION['languages_id']."'";
-$article_data = xtc_db_fetch_array(xtc_db_query($article_query));
+$article_data = vam_db_fetch_array(vam_db_query($article_query));
 
-$cross_sell_groups = xtc_get_cross_sell_groups();
+$cross_sell_groups = vam_get_cross_sell_groups();
 
 function buildCAT($catID) {
 
@@ -27,8 +27,8 @@ function buildCAT($catID) {
 	$tmpID = $catID;
 
 	while (getParent($catID) != 0 || $catID != 0) {
-		$cat_select = xtc_db_query("SELECT categories_name FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id='".$catID."' and language_id='".$_SESSION['languages_id']."'");
-		$cat_data = xtc_db_fetch_array($cat_select);
+		$cat_select = vam_db_query("SELECT categories_name FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id='".$catID."' and language_id='".$_SESSION['languages_id']."'");
+		$cat_data = vam_db_fetch_array($cat_select);
 		$catID = getParent($catID);
 		$cat[] = $cat_data['categories_name'];
 
@@ -42,8 +42,8 @@ function buildCAT($catID) {
 }
 
 function getParent($catID) {
-	$parent_query = xtc_db_query("SELECT parent_id FROM ".TABLE_CATEGORIES." WHERE categories_id='".$catID."'");
-	$parent_data = xtc_db_fetch_array($parent_query);
+	$parent_query = vam_db_query("SELECT parent_id FROM ".TABLE_CATEGORIES." WHERE categories_id='".$catID."'");
+	$parent_data = vam_db_fetch_array($parent_query);
 	return $parent_data['parent_id'];
 }
 ?>
@@ -51,27 +51,27 @@ function getParent($catID) {
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo CROSS_SELLING.' : '.$article_data['products_name']; ?></td>
-            <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><a class="button" href="<?php echo xtc_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><?php echo BUTTON_BACK; ?></a></td>
+            <td colspan="2"><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><?php echo BUTTON_BACK; ?></a></td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
 	  <tr>
         <td>
         
         <?php
 
-echo xtc_draw_form('cross_selling', FILENAME_CATEGORIES, '', 'GET', '');
-echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
-echo xtc_draw_hidden_field('action', 'edit_crossselling');
-echo xtc_draw_hidden_field('special', 'edit');
-echo xtc_draw_hidden_field('current_product_id', $_GET['current_product_id']);
-echo xtc_draw_hidden_field('cpath', $_GET['cpath']);
+echo vam_draw_form('cross_selling', FILENAME_CATEGORIES, '', 'GET', '');
+echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
+echo vam_draw_hidden_field('action', 'edit_crossselling');
+echo vam_draw_hidden_field('special', 'edit');
+echo vam_draw_hidden_field('current_product_id', $_GET['current_product_id']);
+echo vam_draw_hidden_field('cpath', $_GET['cpath']);
 ?>
  
  
@@ -88,8 +88,8 @@ echo xtc_draw_hidden_field('cpath', $_GET['cpath']);
 
 
 $cross_query = "SELECT cs.ID,cs.products_id,pd.products_name,cs.sort_order,p.products_model,p.products_id,cs.products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." cs, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS." p WHERE cs.products_id = '".(int) $_GET['current_product_id']."' and cs.xsell_id=p.products_id and p.products_id=pd.products_id  and pd.language_id = '".$_SESSION['languages_id']."' ORDER BY cs.sort_order";
-$cross_query = xtc_db_query($cross_query);
-if (!xtc_db_num_rows($cross_query)) {
+$cross_query = vam_db_query($cross_query);
+if (!vam_db_num_rows($cross_query)) {
 ?>
   <tr>
     <td class="categories_view_data" colspan="6">- NO ENRTY -</td>
@@ -98,19 +98,19 @@ if (!xtc_db_num_rows($cross_query)) {
 
 
 }
-while ($cross_data = xtc_db_fetch_array($cross_query)) {
-	$categorie_query = xtc_db_query("SELECT
+while ($cross_data = vam_db_fetch_array($cross_query)) {
+	$categorie_query = vam_db_query("SELECT
 		                                            categories_id
 		                                            FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 		                                            WHERE products_id='".$cross_data['products_id']."' LIMIT 0,1");
-	$categorie_data = xtc_db_fetch_array($categorie_query);
+	$categorie_data = vam_db_fetch_array($categorie_query);
 ?>
 
   <tr>
     <td class="categories_view_data"><input type="checkbox" name="ids[]" value="<?php echo $cross_data['ID']; ?>"></td>
     <td class="categories_view_data"><input name="sort[<?php echo $cross_data['ID']; ?>]" type="text" size="3" value="<?php echo $cross_data['sort_order']; ?>"></td>
     
-    <td class="categories_view_data" style="text-align: left;"><?php echo xtc_draw_pull_down_menu('group_name['.$cross_data['ID'].']',$cross_sell_groups,$cross_data['products_xsell_grp_name_id']); ?></td>
+    <td class="categories_view_data" style="text-align: left;"><?php echo vam_draw_pull_down_menu('group_name['.$cross_data['ID'].']',$cross_sell_groups,$cross_data['products_xsell_grp_name_id']); ?></td>
     
     <td class="categories_view_data" style="text-align: left;"><?php echo $cross_data['products_model']; ?></td>
     <td class="categories_view_data" style="text-align: left;"><?php echo $cross_data['products_name']; ?></td>
@@ -132,13 +132,13 @@ while ($cross_data = xtc_db_fetch_array($cross_query)) {
 <?php
 
 
-	echo xtc_draw_form('product_search', FILENAME_CATEGORIES, '', 'GET');
-	echo xtc_draw_hidden_field('action', 'edit_crossselling');
-	echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
-	echo xtc_draw_hidden_field('current_product_id', $_GET['current_product_id']);
-	echo xtc_draw_hidden_field('cpath', $_GET['cpath']);
+	echo vam_draw_form('product_search', FILENAME_CATEGORIES, '', 'GET');
+	echo vam_draw_hidden_field('action', 'edit_crossselling');
+	echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
+	echo vam_draw_hidden_field('current_product_id', $_GET['current_product_id']);
+	echo vam_draw_hidden_field('cpath', $_GET['cpath']);
 ?>
-<td class="dataTableContent" width="40"><?php echo xtc_draw_input_field('search', '', 'size="30"');?></td>
+<td class="dataTableContent" width="40"><?php echo vam_draw_input_field('search', '', 'size="30"');?></td>
 <td class="dataTableContent">
 <?php
 
@@ -160,11 +160,11 @@ while ($cross_data = xtc_db_fetch_array($cross_query)) {
 
 	// search results
 	if ($_GET['search']) {
-		echo xtc_draw_form('product_search', FILENAME_CATEGORIES, '', 'GET');
-		echo xtc_draw_hidden_field('action', 'edit_crossselling');
-		echo xtc_draw_hidden_field('special', 'add_entries');
-		echo xtc_draw_hidden_field('current_product_id', $_GET['current_product_id']);
-		echo xtc_draw_hidden_field('cpath', $_GET['cpath']);
+		echo vam_draw_form('product_search', FILENAME_CATEGORIES, '', 'GET');
+		echo vam_draw_hidden_field('action', 'edit_crossselling');
+		echo vam_draw_hidden_field('special', 'add_entries');
+		echo vam_draw_hidden_field('current_product_id', $_GET['current_product_id']);
+		echo vam_draw_hidden_field('cpath', $_GET['cpath']);
 ?>
  <table width="100%" border="0">
   <tr>
@@ -178,18 +178,18 @@ while ($cross_data = xtc_db_fetch_array($cross_query)) {
 
 
 		$search_query = "SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS." p WHERE p.products_id=pd.products_id and pd.language_id='".$_SESSION['languages_id']."' and p.products_id!='".$_GET['current_product_id']."' and (pd.products_name LIKE '%".$_GET['search']."%' or p.products_model LIKE '%".$_GET['search']."%')";
-		$search_query = xtc_db_query($search_query);
+		$search_query = vam_db_query($search_query);
 
-		while ($search_data = xtc_db_fetch_array($search_query)) {
-			$categorie_query = xtc_db_query("SELECT
+		while ($search_data = vam_db_fetch_array($search_query)) {
+			$categorie_query = vam_db_query("SELECT
 						                                            categories_id
 						                                            FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 						                                            WHERE products_id='".$search_data['products_id']."' LIMIT 0,1");
-			$categorie_data = xtc_db_fetch_array($categorie_query);
+			$categorie_data = vam_db_fetch_array($categorie_query);
 ?>
   <tr>
     <td class="categories_view_data"><input type="checkbox" name="ids[]" value="<?php echo $search_data['products_id']; ?>"></td>
-    <td class="categories_view_data" style="text-align: left;"><?php echo xtc_draw_pull_down_menu('group_name['.$search_data['products_id'].']',$cross_sell_groups); ?></td>
+    <td class="categories_view_data" style="text-align: left;"><?php echo vam_draw_pull_down_menu('group_name['.$search_data['products_id'].']',$cross_sell_groups); ?></td>
     <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['products_model']; ?></td>
     <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['products_name']; ?></td>
     <td class="categories_view_data" style="text-align: left;"><?php echo buildCAT($categorie_data['categories_id']); ?> </td>

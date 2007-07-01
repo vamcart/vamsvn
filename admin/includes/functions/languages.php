@@ -17,10 +17,10 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
-  function xtc_get_languages_directory($code) {
-    $language_query = xtc_db_query("select languages_id, directory from " . TABLE_LANGUAGES . " where code = '" . $code . "'");
-    if (xtc_db_num_rows($language_query)) {
-      $lang = xtc_db_fetch_array($language_query);
+  function vam_get_languages_directory($code) {
+    $language_query = vam_db_query("select languages_id, directory from " . TABLE_LANGUAGES . " where code = '" . $code . "'");
+    if (vam_db_num_rows($language_query)) {
+      $lang = vam_db_fetch_array($language_query);
       $_SESSION['languages_id'] = $lang['languages_id'];
       return $lang['directory'];
     } else {

@@ -62,7 +62,7 @@ class ContribInstallerBaseTag {
         $result=cip_db_query($query);
         if ($result===false)     $this->error(sql_error($query));
         else {
-            $installed=xtc_db_fetch_array($result);
+            $installed=vam_db_fetch_array($result);
             return $installed['cip_id'];
         }
     }
@@ -159,15 +159,15 @@ class ContribInstallerBaseTag {
                             `tag_id` int NOT NULL, ";
         foreach ($this->params as $columns=>$info)     $query.= '`'.$columns.'` '.$info['sql_type'].' NOT NULL, ';
         $query=substr($query, 0, -2) . ");";
-        xtc_db_query($query);
+        vam_db_query($query);
     }
 
 
     function delete_database_table() {cip_db_query("DROP TABLE IF EXISTS `".$this->table."`");}
 
     function is_database_table_exists() {
-        $check_query=xtc_db_query("SHOW TABLE STATUS");
-        while ($table=xtc_db_fetch_array($check_query))     if ($table['Name']==$this->table)    return true;
+        $check_query=vam_db_query("SHOW TABLE STATUS");
+        while ($table=vam_db_fetch_array($check_query))     if ($table['Name']==$this->table)    return true;
         return false;
     }
 
@@ -177,7 +177,7 @@ class ContribInstallerBaseTag {
         $data=$this->data;
         $data['cip_id']=$this->get_cip_id();
         $data['tag_id']=$this->get_id();
-        xtc_db_perform($this->table, $data);
+        vam_db_perform($this->table, $data);
     }
 
 
@@ -187,7 +187,7 @@ class ContribInstallerBaseTag {
         while (list($columns, ) = each($data)) {$query .= 'tag.'.$columns.', ';}
         $query = substr($query, 0, -2) . " FROM ".$this->table." tag, ".TABLE_CIP." cip
                         WHERE tag_id=".$this->id." AND cip.cip_id=tag.cip_id AND cip.cip_folder_name=".$this->contrib;
-        $data=xtc_db_output(xtc_db_fetch_array(xtc_db_query($query)));
+        $data=vam_db_output(vam_db_fetch_array(vam_db_query($query)));
 
     }
     //=======================================================================

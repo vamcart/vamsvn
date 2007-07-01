@@ -60,7 +60,7 @@ if ($file_warning != '' or $folder_warning != '') {
 <div class"main"> 
         <table width="100%" border="0">
           <tr>
-            <td width="1"><?php echo xtc_image(DIR_WS_ICONS.'big_warning.gif'); ?></td>
+            <td width="1"><?php echo vam_image(DIR_WS_ICONS.'big_warning.gif'); ?></td>
             <td class="main">
               <?php
 
@@ -78,20 +78,20 @@ if ($file_warning != '' or $folder_warning != '') {
 		echo '<b>'.$folder_warning.'</b>';
 	}
 
-	$payment_query = xtc_db_query("SELECT *
+	$payment_query = vam_db_query("SELECT *
 				FROM ".TABLE_CONFIGURATION."
 				WHERE configuration_key = 'MODULE_PAYMENT_INSTALLED'");
-	while ($payment_data = xtc_db_fetch_array($payment_query)) {
+	while ($payment_data = vam_db_fetch_array($payment_query)) {
 		$installed_payment = $payment_data['configuration_value'];
 
 	}
 	if ($installed_payment == '') {
 		echo '<br>'.TEXT_PAYMENT_ERROR;
 	}
-	$shipping_query = xtc_db_query("SELECT *
+	$shipping_query = vam_db_query("SELECT *
 				FROM ".TABLE_CONFIGURATION."
 				WHERE configuration_key = 'MODULE_SHIPPING_INSTALLED'");
-	while ($shipping_data = xtc_db_fetch_array($shipping_query)) {
+	while ($shipping_data = vam_db_fetch_array($shipping_query)) {
 		$installed_shipping = $shipping_data['configuration_value'];
 
 	}

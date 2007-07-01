@@ -27,14 +27,14 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
     global $attribute_value_price,$sortorder, $attribute_value_weight, $attribute_value_weight_prefix, $attribute_value_prefix, $attribute_value_model, $attribute_value_stock, $posCheck, $negCheck, $posCheck_weight, $negCheck_weight,$attribute_value_download_count, $attribute_value_download_expire,$attribute_value_download_filename;
 
     $query = "SELECT * FROM ".TABLE_PRODUCTS_ATTRIBUTES." where options_values_id = '" . $current_value_id . "' AND products_id = ' " . $current_pid . "' AND options_id = '" . $current_product_option_id . "'";
-    $result = xtc_db_query($query);
-    $isFound = xtc_db_num_rows($result);
+    $result = vam_db_query($query);
+    $isFound = vam_db_num_rows($result);
 
     if ($isFound) {
-      while($line = xtc_db_fetch_array($result)) {
+      while($line = vam_db_fetch_array($result)) {
           // download function start
-        $dl_sql = xtc_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysql_error());
-        $dl_res = xtc_db_fetch_array($dl_sql);
+        $dl_sql = vam_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysql_error());
+        $dl_res = vam_db_fetch_array($dl_sql);
         $attribute_value_download_filename= $dl_res['products_attributes_filename'];
         $attribute_value_download_count = $dl_res['products_attributes_maxcount'];
         $attribute_value_download_expire = $dl_res['products_attributes_maxdays'];
@@ -96,8 +96,8 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
     if ($isSelected) {
       $query = "SELECT * FROM ".TABLE_PRODUCTS_ATTRIBUTES." where options_values_id = '" . $current_value_id . "' AND products_id = '" . $current_pid . "'";
-      $result = xtc_db_query($query);
-      while ($line = xtc_db_fetch_array($result)) {
+      $result = vam_db_query($query);
+      while ($line = vam_db_fetch_array($result)) {
         $attribute_qty = $line['options_values_qty'];
         $attribute_order = $line['attribute_order'];
         $attribute_linked = $line['collegamento'];
@@ -134,8 +134,8 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
     if ($isSelected) {
       $query = "SELECT * FROM ".TABLE_PRODUCTS_ATTRIBUTES." where options_values_id = '" . $current_value_id . "' AND products_id = '" . $current_pid . "'";
-      $result = xtc_db_query($query);
-      while ($line = xtc_db_fetch_array($result)) {
+      $result = vam_db_query($query);
+      while ($line = vam_db_fetch_array($result)) {
         $attribute_sort = $line['products_options_sort_order'];
         $attribute_weight = $line['products_attributes_weight'];
         $attribute_weight_prefix = $line['products_attributes_weight_prefix'];

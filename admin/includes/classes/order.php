@@ -44,7 +44,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function query($order_id) {
-      $order_query = xtc_db_query("select customers_name,
+      $order_query = vam_db_query("select customers_name,
                                    customers_cid,
                                    customers_id,
                                    customers_vat_id,
@@ -99,12 +99,12 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                                    language,
                                    customers_status_discount
                                    from " . TABLE_ORDERS . " where
-                                   orders_id = '" . xtc_db_input($order_id) . "'");
+                                   orders_id = '" . vam_db_input($order_id) . "'");
 
-      $order = xtc_db_fetch_array($order_query);
+      $order = vam_db_fetch_array($order_query);
 
-      $totals_query = xtc_db_query("select title, text from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . xtc_db_input($order_id) . "' order by sort_order");
-      while ($totals = xtc_db_fetch_array($totals_query)) {
+      $totals_query = vam_db_query("select title, text from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($order_id) . "' order by sort_order");
+      while ($totals = vam_db_fetch_array($totals_query)) {
         $this->totals[] = array('title' => $totals['title'],
                                 'text' => $totals['text']);
       }
@@ -169,14 +169,14 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
                              'format_id' => $order['billing_address_format_id']);
 
       $index = 0;
-      $orders_products_query = xtc_db_query("select
+      $orders_products_query = vam_db_query("select
                                                  orders_products_id,products_id, products_name, products_model, products_price, products_tax, products_quantity, final_price,allow_tax, products_discount_made
                                              from
                                                  " . TABLE_ORDERS_PRODUCTS . "
                                              where
-                                                 orders_id ='" . xtc_db_input($order_id) . "'");
+                                                 orders_id ='" . vam_db_input($order_id) . "'");
 
-      while ($orders_products = xtc_db_fetch_array($orders_products_query)) {
+      while ($orders_products = vam_db_fetch_array($orders_products_query)) {
         $this->products[$index] = array('qty' => $orders_products['products_quantity'],
                                         'name' => $orders_products['products_name'],
                                         'id' => $orders_products['products_id'],
@@ -189,9 +189,9 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 					'allow_tax' => $orders_products['allow_tax']);
 
         $subindex = 0;
-        $attributes_query = xtc_db_query("select products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . xtc_db_input($order_id) . "' and orders_products_id = '" . $orders_products['orders_products_id'] . "'");
-        if (xtc_db_num_rows($attributes_query)) {
-          while ($attributes = xtc_db_fetch_array($attributes_query)) {
+        $attributes_query = vam_db_query("select products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . vam_db_input($order_id) . "' and orders_products_id = '" . $orders_products['orders_products_id'] . "'");
+        if (vam_db_num_rows($attributes_query)) {
+          while ($attributes = vam_db_fetch_array($attributes_query)) {
             $this->products[$index]['attributes'][$subindex] = array('option' => $attributes['products_options'],
                                                                      'value' => $attributes['products_options_values'],
                                                                      'prefix' => $attributes['price_prefix'],

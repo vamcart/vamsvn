@@ -41,14 +41,14 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 	                                from
 	                                ".TABLE_CUSTOMERS." c order by c.customers_date_added desc limit 5";
 
-	$customers_query = xtc_db_query($customers_query_raw);
-	while ($customers = xtc_db_fetch_array($customers_query)) {
+	$customers_query = vam_db_query($customers_query_raw);
+	while ($customers = vam_db_fetch_array($customers_query)) {
 
 
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
-                <td class="dataTableContent"><a href="<?php echo xtc_href_link(FILENAME_CUSTOMERS, xtc_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
+                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
                 <td class="dataTableContent"><?php echo $customers['customers_date_added']; ?></td>
               </tr>
 <?php

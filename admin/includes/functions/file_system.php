@@ -110,20 +110,20 @@ class FileFilter extends FileFilter_I{
 }
 
 
-function xtc_get_filelist ($startdir, $includedExt = array (), $excludedFilenames = array()){
-    return xtc_get_filelist_func ($startdir, new FileFilter($includedExt, null, $excludedFilenames));
+function vam_get_filelist ($startdir, $includedExt = array (), $excludedFilenames = array()){
+    return vam_get_filelist_func ($startdir, new FileFilter($includedExt, null, $excludedFilenames));
 }
 
 
-function xtc_get_image_files ($startdir, $includedExt = array ('.jpg','.jpeg','.png','.gif')){
-    return xtc_get_filelist_func ($startdir, new FileFilter($includedExt));
+function vam_get_image_files ($startdir, $includedExt = array ('.jpg','.jpeg','.png','.gif')){
+    return vam_get_filelist_func ($startdir, new FileFilter($includedExt));
 }
 
 
 /**
  * @return array array which contains file list starting from the $startdir
  */
-function xtc_get_filelist_func ($startdir,
+function vam_get_filelist_func ($startdir,
                            $file_filter = NULL,
                            $dir_only = false, $subdir = '') {
     //      echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
@@ -149,7 +149,7 @@ function xtc_get_filelist_func ($startdir,
                             'text' => $subdir . $file . '/'
                         );
                     }
-                    $files = xtc_array_merge($files, xtc_get_filelist_func ($startdir, $file_filter, $dir_only, $subdir . $file . '/'));
+                    $files = vam_array_merge($files, vam_get_filelist_func ($startdir, $file_filter, $dir_only, $subdir . $file . '/'));
                 }
             }
         }

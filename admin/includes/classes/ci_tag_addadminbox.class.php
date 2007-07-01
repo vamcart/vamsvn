@@ -45,10 +45,10 @@ class Tc_addadminbox extends ContribInstallerBaseTag {
 					$this->data['parent'][$i] = "";
 					$this->data['parent_id'][$i] = 0;
 				} else {
-					$menu_query = xtc_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['parent'][$i] . "' and order by box_id, box_item_id limit 1");
-					$menu = xtc_db_fetch_array($menu_query);
+					$menu_query = vam_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['parent'][$i] . "' and order by box_id, box_item_id limit 1");
+					$menu = vam_db_fetch_array($menu_query);
 					if (!$menu) {
-						$menu_array = xtc_db_fetch_array($menu_query);
+						$menu_array = vam_db_fetch_array($menu_query);
 						$this->data['parent_id'][$i] = $menu_array['box_id'];
 					}
 				}
@@ -68,8 +68,8 @@ class Tc_addadminbox extends ContribInstallerBaseTag {
 	function conflicts_check_for_install() {
 		if (!defined('TABLE_ADMIN_BOXES')) return $this->error;
 		for ($i = 0; $i < count($this->data['child']); $i++) {
-			$menu_query = xtc_db_query("select * from " . TABLE_ADMIN_BOXES . " where box_parent_id!='" . $this->data['parent_id'][$i] . "' and box_name = '" . $this->data['child'][$i] . "';");
-			$menu = xtc_db_fetch_array($menu_query);
+			$menu_query = vam_db_query("select * from " . TABLE_ADMIN_BOXES . " where box_parent_id!='" . $this->data['parent_id'][$i] . "' and box_name = '" . $this->data['child'][$i] . "';");
+			$menu = vam_db_fetch_array($menu_query);
 			if ($menu) {
 				//if exist this box as child for another parent
 				$this->error("Box " . $this->data['child'][$i] . " is duplicated!");
@@ -86,13 +86,13 @@ class Tc_addadminbox extends ContribInstallerBaseTag {
 		if (!defined('TABLE_ADMIN_BOXES')) return $this->error;
 		for ($i = 0; $i < count($this->data['child']); $i++) {
 			//insert menu
-			$menu_query = xtc_db_query("select * from " . TABLE_ADMIN_BOXES . " where box_parent_id='" . $this->data['parent_id'][$i] . "' and box_name = '" . $this->data['child'][$i] . "';");
-			$menu = xtc_db_fetch_array($menu_query);
+			$menu_query = vam_db_query("select * from " . TABLE_ADMIN_BOXES . " where box_parent_id='" . $this->data['parent_id'][$i] . "' and box_name = '" . $this->data['child'][$i] . "';");
+			$menu = vam_db_fetch_array($menu_query);
 			if (!$menu) {
-				$menu_query = xtc_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where true order by box_id desc limit 1;");
-				$menu_array = xtc_db_fetch_array($menu_query);
+				$menu_query = vam_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where true order by box_id desc limit 1;");
+				$menu_array = vam_db_fetch_array($menu_query);
 				$box_id = (int) $menu_array['box_id'] + 1;
-				xtc_db_query("insert into " . TABLE_ADMIN_BOXES . " (box_parent_id,box_id,box_name) VALUES (" . $this->data['parent_id'][$i] . "," . $box_id . ",'" . $this->data['child'][$i] . "');");
+				vam_db_query("insert into " . TABLE_ADMIN_BOXES . " (box_parent_id,box_id,box_name) VALUES (" . $this->data['parent_id'][$i] . "," . $box_id . ",'" . $this->data['child'][$i] . "');");
 			}
 		}
 		return $this->error;
@@ -103,11 +103,11 @@ class Tc_addadminbox extends ContribInstallerBaseTag {
 			return;
 		if (!defined('TABLE_ADMIN_BOXES')) return $this->error;
 		for ($i = 0; $i < count($this->data['child']); $i++) {
-			$menu_query = xtc_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['child'][$i] . "';");
-			$menu_array = xtc_db_fetch_array($menu_query);
+			$menu_query = vam_db_query("select box_id from " . TABLE_ADMIN_BOXES . " where box_name = '" . $this->data['child'][$i] . "';");
+			$menu_array = vam_db_fetch_array($menu_query);
 			if ($menu_array) {
-				xtc_db_query("delete from " . TABLE_ADMIN_BOXES_ITEMS . " where box_id=" . $menu_array['box_id'] . ";");
-				xtc_db_query("delete from " . TABLE_ADMIN_BOXES . " where box_id=" . $menu_array['box_id'] . ";");
+				vam_db_query("delete from " . TABLE_ADMIN_BOXES_ITEMS . " where box_id=" . $menu_array['box_id'] . ";");
+				vam_db_query("delete from " . TABLE_ADMIN_BOXES . " where box_id=" . $menu_array['box_id'] . ";");
 			}
 		}
 		return $this->error;

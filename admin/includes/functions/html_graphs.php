@@ -371,9 +371,9 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // draws a double vertical bar graph for the banner views vs clicks statistics
-  function xtc_banner_graph_infoBox($banner_id, $days) {
-    $banner_stats_query = xtc_db_query("select dayofmonth(banners_history_date) as name, banners_shown as value, banners_clicked as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and to_days(now()) - to_days(banners_history_date) < " . $days . " order by banners_history_date");
-    while ($banner_stats = xtc_db_fetch_array($banner_stats_query)) {
+  function vam_banner_graph_infoBox($banner_id, $days) {
+    $banner_stats_query = vam_db_query("select dayofmonth(banners_history_date) as name, banners_shown as value, banners_clicked as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and to_days(now()) - to_days(banners_history_date) < " . $days . " order by banners_history_date");
+    while ($banner_stats = vam_db_fetch_array($banner_stats_query)) {
       $names[] = $banner_stats['name'];
       $values[] = $banner_stats['value'];
       $dvalues[] = $banner_stats['dvalue'];
@@ -414,11 +414,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // draws a double vertical bar graph for the banner views vs clicks statistics
-  function xtc_banner_graph_yearly($banner_id) {
+  function vam_banner_graph_yearly($banner_id) {
     global $banner;
 
-    $banner_stats_query = xtc_db_query("select year(banners_history_date) as year, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' group by year(banners_history_date)");
-    while ($banner_stats = xtc_db_fetch_array($banner_stats_query)) {
+    $banner_stats_query = vam_db_query("select year(banners_history_date) as year, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' group by year(banners_history_date)");
+    while ($banner_stats = vam_db_fetch_array($banner_stats_query)) {
       $names[] = $banner_stats['year'];
       $values[] = (($banner_stats['value']) ? $banner_stats['value'] : '0');
       $dvalues[] = (($banner_stats['dvalue']) ? $banner_stats['dvalue'] : '0');
@@ -460,7 +460,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // draws a double vertical bar graph for the banner views vs clicks statistics
-  function xtc_banner_graph_monthly($banner_id) {
+  function vam_banner_graph_monthly($banner_id) {
     global $banner;
 
     $year = (($_GET['year']) ? $_GET['year'] : date('Y'));
@@ -471,8 +471,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       $dvalues[] = '0';
     }
 
-    $banner_stats_query = xtc_db_query("select month(banners_history_date) as banner_month, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and year(banners_history_date) = '" . $year . "' group by month(banners_history_date)");
-    while ($banner_stats = xtc_db_fetch_array($banner_stats_query)) {
+    $banner_stats_query = vam_db_query("select month(banners_history_date) as banner_month, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and year(banners_history_date) = '" . $year . "' group by month(banners_history_date)");
+    while ($banner_stats = vam_db_fetch_array($banner_stats_query)) {
       $names[($banner_stats['banner_month']-1)] = strftime('%b', mktime(0,0,0,$banner_stats['banner_month']));
       $values[($banner_stats['banner_month']-1)] = (($banner_stats['value']) ? $banner_stats['value'] : '0');
       $dvalues[($banner_stats['banner_month']-1)] = (($banner_stats['dvalue']) ? $banner_stats['dvalue'] : '0');
@@ -514,7 +514,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // draws a double vertical bar graph for the banner views vs clicks statistics
-  function xtc_banner_graph_daily($banner_id) {
+  function vam_banner_graph_daily($banner_id) {
     global $banner;
 
     $year = (($_GET['year']) ? $_GET['year'] : date('Y'));
@@ -528,8 +528,8 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       $dvalues[] = '0';
     }
 
-    $banner_stats_query = xtc_db_query("select dayofmonth(banners_history_date) as banner_day, banners_shown as value, banners_clicked as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and month(banners_history_date) = '" . $month . "' and year(banners_history_date) = '" . $year . "'");
-    while ($banner_stats = xtc_db_fetch_array($banner_stats_query)) {
+    $banner_stats_query = vam_db_query("select dayofmonth(banners_history_date) as banner_day, banners_shown as value, banners_clicked as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' and month(banners_history_date) = '" . $month . "' and year(banners_history_date) = '" . $year . "'");
+    while ($banner_stats = vam_db_fetch_array($banner_stats_query)) {
       $names[($banner_stats['banner_day']-1)] = $banner_stats['banner_day'];
       $values[($banner_stats['banner_day']-1)] = (($banner_stats['value']) ? $banner_stats['value'] : '0');
       $dvalues[($banner_stats['banner_day']-1)] = (($banner_stats['dvalue']) ? $banner_stats['dvalue'] : '0');

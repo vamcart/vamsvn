@@ -20,8 +20,8 @@
   require(DIR_WS_CLASSES . 'phplot.php');
 
   $stats = array(array('0', '0', '0'));
-  $banner_stats_query = xtc_db_query("select year(banners_history_date) as year, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' group by year");
-  while ($banner_stats = xtc_db_fetch_array($banner_stats_query)) {
+  $banner_stats_query = vam_db_query("select year(banners_history_date) as year, sum(banners_shown) as value, sum(banners_clicked) as dvalue from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $banner_id . "' group by year");
+  while ($banner_stats = vam_db_fetch_array($banner_stats_query)) {
     $stats[] = array($banner_stats['year'], (($banner_stats['value']) ? $banner_stats['value'] : '0'), (($banner_stats['dvalue']) ? $banner_stats['dvalue'] : '0'));
   }
 

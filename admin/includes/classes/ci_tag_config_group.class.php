@@ -60,15 +60,15 @@ class Tc_config_group extends ContribInstallerBaseTag {
 
 	function do_install() {
 		$query = "select configuration_group_id from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_key='" . $this->data['key'] . "'";
-		$rs = xtc_db_query($query);
-		if (!xtc_db_fetch_array($rs)) {
+		$rs = vam_db_query($query);
+		if (!vam_db_fetch_array($rs)) {
 			$query = "insert into " . TABLE_CONFIGURATION_GROUP . " (configuration_group_id, configuration_group_title, configuration_group_key, configuration_group_description, sort_order,  visible) " .
 			" values ('','" . $this->data['title'] . "','" . $this->data['key'] . "','" . $this->data['descr'] . "'," . ($this->data['sort_order'] == NULL ? "NULL" : $this->data['sort_order']) . "," . ($this->data['visible'] == NULL ? "NULL" : $this->data['visible']) . ")";
-			xtc_db_query($query);
+			vam_db_query($query);
 			if($this->data['sort_order'] == NULL){
-				$sid = xtc_db_insert_id();
+				$sid = vam_db_insert_id();
 				$query = "update " . TABLE_CONFIGURATION_GROUP . " set sort_order=".$sid." where configuration_group_id=".$sid;
-				xtc_db_query($query);
+				vam_db_query($query);
 			}
 		}
 	}
@@ -76,7 +76,7 @@ class Tc_config_group extends ContribInstallerBaseTag {
 	function do_remove() {
 		if ($_REQUEST['remove_data'] == '1') {
 			if($this->cip->is_ci())return $this->error;
-			xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION_GROUP . " WHERE configuration_group_key = '" . $this->data['key'] . "'");
+			vam_db_query("DELETE FROM " . TABLE_CONFIGURATION_GROUP . " WHERE configuration_group_key = '" . $this->data['key'] . "'");
 		}
 	}
 }

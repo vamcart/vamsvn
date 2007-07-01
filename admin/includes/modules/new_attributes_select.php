@@ -27,7 +27,7 @@ $adminImages = DIR_WS_CATALOG . "lang/". $_SESSION['language'] ."/admin/images/b
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" name="SELECT_PRODUCT" method="post"><input type="hidden" name="action" value="edit">
 <?php
-echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
+echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
   echo "<TR>";
   echo "<TD class=\"main\"><br /><B>".SELECT_PRODUCT."<br /></TD>";
   echo "</TR>";
@@ -36,12 +36,12 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
 
   $query = "SELECT * FROM  ".TABLE_PRODUCTS_DESCRIPTION."  where products_id LIKE '%' AND language_id = '" . $_SESSION['languages_id'] . "' ORDER BY products_name ASC";
 
-  $result = xtc_db_query($query);
+  $result = vam_db_query($query);
 
-  $matches = xtc_db_num_rows($result);
+  $matches = vam_db_num_rows($result);
 
   if ($matches) {
-    while ($line = xtc_db_fetch_array($result)) {
+    while ($line = vam_db_fetch_array($result)) {
       $title = $line['products_name'];
       $current_product_id = $line['products_id'];
 
@@ -56,7 +56,7 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
 
   echo "<TR>";
   echo "<TD class=\"main\">";
-  echo xtc_button(BUTTON_EDIT);
+  echo vam_button(BUTTON_EDIT);
 
   echo "</TD>";
   echo "</TR>";
@@ -70,12 +70,12 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
   echo "<TR>";
   echo "<TD class=\"main\"><SELECT NAME=\"copy_product_id\">";
 
-  $copy_query = xtc_db_query("SELECT pd.products_name, pd.products_id FROM  ".TABLE_PRODUCTS_DESCRIPTION."  pd, ".TABLE_PRODUCTS_ATTRIBUTES." pa where pa.products_id = pd.products_id AND pd.products_id LIKE '%' AND pd.language_id = '" . $_SESSION['languages_id'] . "' GROUP BY pd.products_id ORDER BY pd.products_name ASC");
-  $copy_count = xtc_db_num_rows($copy_query);
+  $copy_query = vam_db_query("SELECT pd.products_name, pd.products_id FROM  ".TABLE_PRODUCTS_DESCRIPTION."  pd, ".TABLE_PRODUCTS_ATTRIBUTES." pa where pa.products_id = pd.products_id AND pd.products_id LIKE '%' AND pd.language_id = '" . $_SESSION['languages_id'] . "' GROUP BY pd.products_id ORDER BY pd.products_name ASC");
+  $copy_count = vam_db_num_rows($copy_query);
 
   if ($copy_count) {
       echo '<option value="0">no copy</option>';
-      while ($copy_res = xtc_db_fetch_array($copy_query)) {
+      while ($copy_res = vam_db_fetch_array($copy_query)) {
           echo '<option value="' . $copy_res['products_id'] . '">' . $copy_res['products_name'] . '</option>';
       }
   }
@@ -84,7 +84,7 @@ echo xtc_draw_hidden_field(xtc_session_name(), xtc_session_id());
   }
   echo '</select></td></tr>';
   echo "<TR>";
-  echo "<TD class=\"main\">".xtc_button(BUTTON_EDIT)."</TD>";
+  echo "<TD class=\"main\">".vam_button(BUTTON_EDIT)."</TD>";
   echo "</TR>";
 
 ?>

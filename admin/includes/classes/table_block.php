@@ -33,7 +33,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
       if (isset($contents['form'])) {
         $tableBox_string .= $contents['form'] . "\n";
         $form_set = true;
-        xtc_array_shift($contents);
+        vam_array_shift($contents);
       }
 
       $tableBox_string .= '<table class="contentTable" border="' . $this->table_border . '" width="' . $this->table_width . '" cellspacing="' . $this->table_cellspacing . '" cellpadding="' . $this->table_cellpadding . '"';

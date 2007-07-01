@@ -21,7 +21,7 @@
    $heading = array();
    $heading[] = array('params' => 'class="menuBoxHeading"',
                       'text'  => BOX_HEADING_TOOLS,
-                      'link'  => xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('selected_box')) . 'selected_box=tools'));
+                      'link'  => vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array('selected_box')) . 'selected_box=tools'));
 
    $contents = array();
    $contents[] = array('text'  => SOME_TEXT);

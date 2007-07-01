@@ -31,19 +31,19 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 
     //Returns true if file was changes since Contrib Installer have been installed.
     function file_was_changed($file_path) {
-        $result=xtc_db_query("SELECT content_md5 FROM " . TABLE_CIP_FILE_INTEGRITY . "
+        $result=vam_db_query("SELECT content_md5 FROM " . TABLE_CIP_FILE_INTEGRITY . "
                         WHERE path_md5='".(md5($file_path))."' AND contrib='original' ");
-        $file_changer=xtc_db_fetch_array($result);
+        $file_changer=vam_db_fetch_array($result);
         return ( $file_changer['content_md5']==md5_file($file_path)) ? false : true;
     }
     //Returns an array which consist all info from database about file $file_path.
     function file_changers($file_path) {
-        $result=xtc_db_query("
+        $result=vam_db_query("
             SELECT content_md5, modification_date, contrib
             FROM " . TABLE_CIP_FILE_INTEGRITY . "
             WHERE path_md5='".md5($file_path)."'
             ORDER BY modification_date");
-        while ($file_changer=xtc_db_fetch_array($result)) {
+        while ($file_changer=vam_db_fetch_array($result)) {
             $array[]=array(
                 'path_md5'=>$file_changer['path_md5'],
                 'content_md5'=>$file_changer['content_md5'],
@@ -55,7 +55,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
     //Saves into database info about file after CIP made changes on them.
     function save_md5 ($file_path, $contrib=CONTRIB_INSTALLER_NAME){
-        xtc_db_perform('contrib_installer_files_integrity',
+        vam_db_perform('contrib_installer_files_integrity',
             array(
                 'path_md5'=>md5($file_path),
                 'content_md5'=>md5_file($file_path),

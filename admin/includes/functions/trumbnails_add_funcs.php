@@ -17,7 +17,7 @@
 	 Released under the GNU General Public License
 	 --------------------------------------------------------------*/
 defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
-	function xtc_mkdir_recursive($basedir, $subdir) {
+	function vam_mkdir_recursive($basedir, $subdir) {
 		global $messageStack;
 		if(!is_dir($basedir . $subdir)) {
 			$mkdir_array = explode('/', $subdir);
@@ -36,16 +36,16 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 		}
 	}
 
-	function xtc_get_image_size($src, $width, $height) {
+	function vam_get_image_size($src, $width, $height) {
 		if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true') && (empty($width) || empty($height)) ) {
 			if ($image_size = @getimagesize($src)) {
-				if (!xtc_not_null($width) && xtc_not_null($height)) {
+				if (!vam_not_null($width) && vam_not_null($height)) {
 					$ratio = $height / $image_size[1];
 					$width = $image_size[0] * $ratio;
-				} elseif (xtc_not_null($width) && !xtc_not_null($height)) {
+				} elseif (vam_not_null($width) && !vam_not_null($height)) {
 					$ratio = $width / $image_size[0];
 					$height = $image_size[1] * $ratio;
-				} elseif (!xtc_not_null($width) && !xtc_not_null($height)) {
+				} elseif (!vam_not_null($width) && !vam_not_null($height)) {
 					$width = $image_size[0];
 					$height = $image_size[1];
 				}
@@ -54,7 +54,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 		return(array((int)$width, (int)$height));
 	}
 
-	function xtc_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif'), $dir_only=false, $subdir = '') {
+	function vam_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif'), $dir_only=false, $subdir = '') {
 //		echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
 		if(!is_array($ext)) $ext=array();
 		$dirname = $startdir . $subdir;
@@ -72,7 +72,7 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 							$files[]=array('id' => $subdir.$file.'/',
 														 'text' => $subdir.$file.'/');
 						}
-						$files = xtc_array_merge($files, xtc_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/'));
+						$files = vam_array_merge($files, vam_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/'));
 					}
 				}
 			}

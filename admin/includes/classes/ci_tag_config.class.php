@@ -107,18 +107,18 @@ class Tc_config extends ContribInstallerBaseTag {
 
 	function do_install() {
 		$query = "select configuration_group_id as gid from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_key='" . $this->data['group_key'] . "'";
-		$rs = xtc_db_query($query);
-		if (!($row = xtc_db_fetch_array($rs))) {
+		$rs = vam_db_query($query);
+		if (!($row = vam_db_fetch_array($rs))) {
 			$this->error('Configuration group with key: ' . $this->data['group_key'] . ' does not exists !');
 		}else{
 			$this->data['gid'] = $row['gid'];
 		}
 		$query = "select configuration_id from " . TABLE_CONFIGURATION . " where configuration_key='" . $this->data['key'] . "'";
-		$rs = xtc_db_query($query);
-		if (!xtc_db_fetch_array($rs)) {
+		$rs = vam_db_query($query);
+		if (!vam_db_fetch_array($rs)) {
 			$query = "insert into " . TABLE_CONFIGURATION . "(configuration_id, configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) " .
 			" values ('','" . $this->data['title'] . "','" . $this->data['key'] . "','" . $this->data['value'] . "','" . $this->data['descr'] . "'," . $this->data['gid'] . "," . ($this->data['sort_order'] == NULL ? "NULL" : $this->data['sort_order']) . ",now(),now()," . ($this->data['use_function'] == NULL ? "NULL" : "'".$this->data['use_function']."'") . "," . ($this->data['set_function'] == NULL ? "NULL" : "'".$this->data['set_function']."'") . ")";
-			xtc_db_query($query);
+			vam_db_query($query);
 		}
 		if(file_exists($this->fs_filename()))  $this->add_file_end($this->data['filename'],$this->add_str());
 	}
@@ -127,7 +127,7 @@ class Tc_config extends ContribInstallerBaseTag {
 	function do_remove() {
 		if ($_REQUEST['remove_data'] == '1' && $this->data['lang'] == 'russian') {
 			if($this->cip->is_ci())return $this->error;
-			xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
+			vam_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = '" . $this->data['key'] . "'");
 		}
 		if(file_exists($this->fs_filename())) $this->remove_file_part($this->data['filename'],$this->add_str());
 	}
