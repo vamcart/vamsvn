@@ -59,7 +59,7 @@ if (strstr($current_path, '..') or !is_dir($current_path) or (defined(DIR_FS_CIP
     $current_path = DIR_FS_CIP;
 }
 
-if (!xtc_session_is_registered('current_path'))   xtc_session_register('current_path');
+if (!vam_session_is_registered('current_path'))   vam_session_register('current_path');
 $current_path=str_replace ('//', '/', $current_path);
 
 
@@ -67,11 +67,11 @@ $current_path=str_replace ('//', '/', $current_path);
 if (!defined(DIR_FS_CIP) && $_REQUEST['contrib_dir'])     define ('DIR_FS_CIP', $_REQUEST['contrib_dir']);
 
 //Check if ontrib Installer installed:
-if (DIR_FS_CIP=='DIR_FS_CIP')     xtc_redirect(xtc_href_link(INIT_CONTRIB_INSTALLER));
+if (DIR_FS_CIP=='DIR_FS_CIP')     vam_redirect(vam_href_link(INIT_CONTRIB_INSTALLER));
 
 //Check if self-install was made:
 if ($_REQUEST['cip']!=$cip_manager->ci_cip() && $_REQUEST['contrib_dir'] && !$cip_manager->is_ci_installed()) {
-  xtc_redirect(xtc_href_link(INIT_CONTRIB_INSTALLER));
+  vam_redirect(vam_href_link(INIT_CONTRIB_INSTALLER));
 }
 
 $cip_manager->check_action($_REQUEST['action']);
@@ -82,8 +82,8 @@ $cip_manager->check_action($_REQUEST['action']);
 $contents = array();
 $contents=$cip_manager->folder_contents();
 if (is_array($contents)) {
-  function xtc_cmp($a, $b) {return strcmp( ($a['is_dir'] ? 'D' : 'F') . $a['name'], ($b['is_dir'] ? 'D' : 'F') . $b['name']);}
-  usort($contents, 'xtc_cmp');
+  function vam_cmp($a, $b) {return strcmp( ($a['is_dir'] ? 'D' : 'F') . $a['name'], ($b['is_dir'] ? 'D' : 'F') . $b['name']);}
+  usort($contents, 'vam_cmp');
 }
 
   $cip_list=$cip_manager->draw_cip_list();
@@ -153,7 +153,7 @@ echo $cip_list;
             <table border="0" width="100%" cellspacing="0" cellpadding="2">
                <tr valign="top">
                  <td><?php
-                    echo '<a class="button" href="' . xtc_href_link($cip_manager->script_name(), 'action=upload').'">'.
+                    echo '<a class="button" href="' . vam_href_link($cip_manager->script_name(), 'action=upload').'">'.
                      BUTTON_UPLOAD . '</a>'; ?></td>
               </tr>
             </table>

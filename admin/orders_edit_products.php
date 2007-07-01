@@ -39,20 +39,20 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 ?>
 <tr class="dataTableRow">
 <?php
-echo xtc_draw_form('product_edit', FILENAME_ORDERS_EDIT, 'action=product_edit', 'post');
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('opID', $order->products[$i]['opid']);
+echo vam_draw_form('product_edit', FILENAME_ORDERS_EDIT, 'action=product_edit', 'post');
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
 ?>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_id', $order->products[$i]['id'], 'size="5"');?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_quantity', $order->products[$i]['qty'], 'size="2"');?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_name', $order->products[$i]['name'], 'size="20"');?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_model', $order->products[$i]['model'], 'size="10"');?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_tax', $order->products[$i]['tax'], 'size="6"');?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_price', $order->products[$i]['price'], 'size="10"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_id', $order->products[$i]['id'], 'size="5"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_quantity', $order->products[$i]['qty'], 'size="2"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_name', $order->products[$i]['name'], 'size="20"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_model', $order->products[$i]['model'], 'size="10"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_tax', $order->products[$i]['tax'], 'size="6"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_price', $order->products[$i]['price'], 'size="10"');?></td>
 <td class="dataTableContent"><?php echo $order->products[$i]['final_price'];?></td>
 <td class="dataTableContent">
 <?php
-echo xtc_draw_hidden_field('allow_tax', $order->products[$i]['allow_tax']);
+echo vam_draw_hidden_field('allow_tax', $order->products[$i]['allow_tax']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
 ?>
 </form>
@@ -60,9 +60,9 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 
 <td class="dataTableContent">
 <?php
-echo xtc_draw_form('product_delete', FILENAME_ORDERS_EDIT, 'action=product_delete', 'post');
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('opID', $order->products[$i]['opid']);
+echo vam_draw_form('product_delete', FILENAME_ORDERS_EDIT, 'action=product_delete', 'post');
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>';
 ?>
 </form>
@@ -74,11 +74,11 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 
 <td class="dataTableContent">
 <?php
-echo xtc_draw_form('select_options', FILENAME_ORDERS_EDIT, '', 'GET');
-echo xtc_draw_hidden_field('edit_action', 'options');
-echo xtc_draw_hidden_field('pID', $order->products[$i]['id']);
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('opID', $order->products[$i]['opid']);
+echo vam_draw_form('select_options', FILENAME_ORDERS_EDIT, '', 'GET');
+echo vam_draw_hidden_field('edit_action', 'options');
+echo vam_draw_hidden_field('pID', $order->products[$i]['id']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PRODUCT_OPTIONS . '"/>';
 ?>
 </form>
@@ -101,13 +101,13 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 
 <tr class="dataTableRow">
 <?php
-echo xtc_draw_form('product_search', FILENAME_ORDERS_EDIT, '', 'get');
-echo xtc_draw_hidden_field('edit_action', 'products');
-echo xtc_draw_hidden_field('action', 'product_search');
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('cID', $_POST['cID']);
+echo vam_draw_form('product_search', FILENAME_ORDERS_EDIT, '', 'get');
+echo vam_draw_hidden_field('edit_action', 'products');
+echo vam_draw_hidden_field('action', 'product_search');
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('cID', $_POST['cID']);
 ?>
-<td class="dataTableContent" width="40"><?php echo xtc_draw_input_field('search', '', 'size="30"');?></td>
+<td class="dataTableContent" width="40"><?php echo vam_draw_input_field('search', '', 'size="30"');?></td>
 <td class="dataTableContent">
 <?php
 echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEARCH . '"/>';
@@ -120,7 +120,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 <?php
 if ($_GET['action'] =='product_search') {
 
-     $products_query = xtc_db_query("select
+     $products_query = vam_db_query("select
      p.products_id,
      p.products_model,
      pd.products_name,
@@ -146,17 +146,17 @@ if ($_GET['action'] =='product_search') {
 </tr>
 
 <?php
-while($products = xtc_db_fetch_array($products_query)) {
+while($products = vam_db_fetch_array($products_query)) {
 ?>
 <tr class="dataTableRow">
 <?php
-echo xtc_draw_form('product_ins', FILENAME_ORDERS_EDIT, 'action=product_ins', 'post');
-echo xtc_draw_hidden_field('cID', $_POST['cID']);
-echo xtc_draw_hidden_field('oID', $_GET['oID']);
-echo xtc_draw_hidden_field('products_id', $products[products_id]);
+echo vam_draw_form('product_ins', FILENAME_ORDERS_EDIT, 'action=product_ins', 'post');
+echo vam_draw_hidden_field('cID', $_POST['cID']);
+echo vam_draw_hidden_field('oID', $_GET['oID']);
+echo vam_draw_hidden_field('products_id', $products[products_id]);
 ?>
 <td class="dataTableContent"><?php echo $products[products_id];?></td>
-<td class="dataTableContent"><?php echo xtc_draw_input_field('products_quantity', $products[products_quantity], 'size="2"');?></td>
+<td class="dataTableContent"><?php echo vam_draw_input_field('products_quantity', $products[products_quantity], 'size="2"');?></td>
 <td class="dataTableContent"><?php echo $products[products_name];?></td>
 <td class="dataTableContent"><?php echo $products[products_model];?></td>
 <td class="dataTableContent">

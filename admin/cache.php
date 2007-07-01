@@ -18,9 +18,9 @@
    --------------------------------------------------------------*/
 
   require_once('includes/application_top.php');
-  require_once (DIR_FS_INC.'xtc_image_submit.inc.php');
-  require_once(DIR_FS_INC . 'xtc_format_filesize.inc.php');
-  require_once(DIR_FS_INC . 'xtc_delete_file.inc.php');
+  require_once (DIR_FS_INC.'vam_image_submit.inc.php');
+  require_once(DIR_FS_INC . 'vam_format_filesize.inc.php');
+  require_once(DIR_FS_INC . 'vam_delete_file.inc.php');
 
 
 // check if the cache directory exists
@@ -38,7 +38,7 @@ if ($d = opendir($dir)) {
       if ($file != "." && $file != ".." && $file !=".htaccess") {
   $i++;
           if ($_GET['action'] == 'unlink') {
-            xtc_delete_file($dir . $file);
+            vam_delete_file($dir . $file);
           }
       }
     }
@@ -48,7 +48,7 @@ if ($d = opendir($dir)) {
 
 if (isset($_GET['action'])) {
   if ($_GET['action'] == 'unlink') {
-    xtc_redirect(xtc_href_link(FILENAME_CACHE));
+    vam_redirect(vam_href_link(FILENAME_CACHE));
   }
 }
 
@@ -89,8 +89,8 @@ if (isset($_GET['action'])) {
 <?php
 
   echo TEXT_CACHE_DIRECTORY . $dir."<br />\n";
-  echo xtc_spaceUsed($dir);
-  echo USED_SPACE . xtc_format_filesize($total)." including .htaccess<br />\n";
+  echo vam_spaceUsed($dir);
+  echo USED_SPACE . vam_format_filesize($total)." including .htaccess<br />\n";
 
 if ($i >= 1) {
   echo TEXT_TOTAL_FILES . $i."<br /><br />\n";
@@ -111,7 +111,7 @@ if ($i >= 1) {
   echo "</div><br />\n";
   }
 */
-echo xtc_draw_form('reset', FILENAME_CACHE, '', 'get'). xtc_draw_hidden_field('action', 'unlink');
+echo vam_draw_form('reset', FILENAME_CACHE, '', 'get'). vam_draw_hidden_field('action', 'unlink');
 echo '<input type="submit" class="button" name="unlink" value="' . TEXT_RESET_CACHE . '"/>'
 . '</form>';
   } else {

@@ -23,17 +23,17 @@
   while (list($key, ) = each($_GET)) {
     switch ($key) {
       case 'banner':
-        $banners_id = xtc_db_prepare_input($_GET['banner']);
+        $banners_id = vam_db_prepare_input($_GET['banner']);
 
-        $banner_query = xtc_db_query("select banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where banners_id = '" . xtc_db_input($banners_id) . "'");
-        $banner = xtc_db_fetch_array($banner_query);
+        $banner_query = vam_db_query("select banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where banners_id = '" . vam_db_input($banners_id) . "'");
+        $banner = vam_db_fetch_array($banner_query);
 
         $page_title = $banner['banners_title'];
 
         if ($banner['banners_html_text']) {
           $image_source = $banner['banners_html_text'];
         } elseif ($banner['banners_image']) {
-          $image_source = xtc_image(HTTP_CATALOG_SERVER . DIR_WS_CATALOG_IMAGES . $banner['banners_image'], $page_title);
+          $image_source = vam_image(HTTP_CATALOG_SERVER . DIR_WS_CATALOG_IMAGES . $banner['banners_image'], $page_title);
         }
         break;
     }

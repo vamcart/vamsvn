@@ -22,9 +22,9 @@
 <!-- Adressbearbeitung Anfang //-->
 <?php if ($_GET['edit_action']=='address'){
 
- echo xtc_draw_form('adress_edit', FILENAME_ORDERS_EDIT, 'action=address_edit', 'post');
- echo xtc_draw_hidden_field('oID', $_GET['oID']);
- echo xtc_draw_hidden_field('cID', $order->customer['ID']);
+ echo vam_draw_form('adress_edit', FILENAME_ORDERS_EDIT, 'action=address_edit', 'post');
+ echo vam_draw_hidden_field('oID', $_GET['oID']);
+ echo vam_draw_hidden_field('cID', $order->customer['ID']);
 ?>
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <tr class="dataTableHeadingRow">
@@ -39,13 +39,13 @@
 <?php echo TEXT_COMPANY;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_company', $order->customer['company']);?>
+<?php echo vam_draw_input_field('customers_company', $order->customer['company']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_company', $order->delivery['company']);?>
+<?php echo vam_draw_input_field('delivery_company', $order->delivery['company']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_company', $order->billing['company']);?>
+<?php echo vam_draw_input_field('billing_company', $order->billing['company']);?>
 </td>
 </tr>
 
@@ -54,13 +54,13 @@
 <?php echo TEXT_NAME;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_name', $order->customer['name']);?>
+<?php echo vam_draw_input_field('customers_name', $order->customer['name']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_name', $order->delivery['name']);?>
+<?php echo vam_draw_input_field('delivery_name', $order->delivery['name']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_name', $order->billing['name']);?>
+<?php echo vam_draw_input_field('billing_name', $order->billing['name']);?>
 </td>
 </tr>
 
@@ -69,13 +69,13 @@
 <?php echo TEXT_STREET;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_street_address', $order->customer['street_address']);?>
+<?php echo vam_draw_input_field('customers_street_address', $order->customer['street_address']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_street_address', $order->delivery['street_address']);?>
+<?php echo vam_draw_input_field('delivery_street_address', $order->delivery['street_address']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_street_address', $order->billing['street_address']);?>
+<?php echo vam_draw_input_field('billing_street_address', $order->billing['street_address']);?>
 </td>
 </tr>
 
@@ -84,13 +84,13 @@
 <?php echo TEXT_ZIP;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_postcode', $order->customer['postcode']);?>
+<?php echo vam_draw_input_field('customers_postcode', $order->customer['postcode']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_postcode', $order->delivery['postcode']);?>
+<?php echo vam_draw_input_field('delivery_postcode', $order->delivery['postcode']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_postcode', $order->billing['postcode']);?>
+<?php echo vam_draw_input_field('billing_postcode', $order->billing['postcode']);?>
 </td>
 </tr>
 
@@ -99,13 +99,13 @@
 <?php echo TEXT_CITY;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_city', $order->customer['city']);?>
+<?php echo vam_draw_input_field('customers_city', $order->customer['city']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_city', $order->delivery['city']);?>
+<?php echo vam_draw_input_field('delivery_city', $order->delivery['city']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_city', $order->billing['city']);?>
+<?php echo vam_draw_input_field('billing_city', $order->billing['city']);?>
 </td>
 </tr>
 
@@ -114,13 +114,13 @@
 <?php echo TEXT_COUNTRY;?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('customers_country', $order->customer['country']);?>
+<?php echo vam_draw_input_field('customers_country', $order->customer['country']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('delivery_country', $order->delivery['country']);?>
+<?php echo vam_draw_input_field('delivery_country', $order->delivery['country']);?>
 </td>
 <td class="dataTableContent" align="left">
-<?php echo xtc_draw_input_field('billing_country', $order->billing['country']);?>
+<?php echo vam_draw_input_field('billing_country', $order->billing['country']);?>
 </td>
 </tr>
 
@@ -135,7 +135,7 @@
 <?php echo TEXT_CUSTOMER_GROUP;?>
 </td>
 <td class="dataTableContent" align="left" colspan="3">
-<?php echo xtc_draw_pull_down_menu('customers_status', xtc_get_customers_statuses(), $order->info['status']);?>
+<?php echo vam_draw_pull_down_menu('customers_status', vam_get_customers_statuses(), $order->info['status']);?>
 </td>
 </tr>
 
@@ -144,7 +144,7 @@
 <?php echo TEXT_CUSTOMER_EMAIL;?>
 </td>
 <td class="dataTableContent" align="left" colspan="3">
-<?php echo xtc_draw_input_field('customers_email_address', $order->customer['email_address']);?>
+<?php echo vam_draw_input_field('customers_email_address', $order->customer['email_address']);?>
 </td>
 </tr>
 
@@ -153,7 +153,7 @@
 <?php echo TEXT_CUSTOMER_TELEPHONE;?>
 </td>
 <td class="dataTableContent" align="left" colspan="3">
-<?php echo xtc_draw_input_field('customers_telephone', $order->customer['telephone']);?>
+<?php echo vam_draw_input_field('customers_telephone', $order->customer['telephone']);?>
 </td>
 </tr>
 
@@ -162,7 +162,7 @@
 <?php echo TEXT_CUSTOMER_UST;?>
 </td>
 <td class="dataTableContent" align="left" colspan="3">
-<?php echo xtc_draw_input_field('customers_vat_id', $order->customer['vat_id']);?>
+<?php echo vam_draw_input_field('customers_vat_id', $order->customer['vat_id']);?>
 </td>
 </tr>
 

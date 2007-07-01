@@ -18,13 +18,13 @@
 
   require('includes/application_top.php');
   require(DIR_WS_CLASSES . 'import.php');
-  require_once(DIR_FS_INC . 'xtc_format_filesize.inc.php');
+  require_once(DIR_FS_INC . 'vam_format_filesize.inc.php');
 
   switch ($_GET['action']) {
 
       case 'upload':
-        $upload_file=xtc_db_prepare_input($_POST['file_upload']);
-        if ($upload_file = &xtc_try_upload('file_upload',DIR_FS_CATALOG.'import/')) {
+        $upload_file=vam_db_prepare_input($_POST['file_upload']);
+        if ($upload_file = &vam_try_upload('file_upload',DIR_FS_CATALOG.'import/')) {
             $$upload_file_name=$upload_file->filename;
         }
       break;
@@ -42,19 +42,19 @@
 
       case 'save':
 
-          $configuration_query = xtc_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '20' order by sort_order");
+          $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '20' order by sort_order");
 
-          while ($configuration = xtc_db_fetch_array($configuration_query))
-              xtc_db_query("UPDATE ".TABLE_CONFIGURATION." SET configuration_value='".$_POST[$configuration['configuration_key']]."' where configuration_key='".$configuration['configuration_key']."'");
+          while ($configuration = vam_db_fetch_array($configuration_query))
+              vam_db_query("UPDATE ".TABLE_CONFIGURATION." SET configuration_value='".$_POST[$configuration['configuration_key']]."' where configuration_key='".$configuration['configuration_key']."'");
 
-               xtc_redirect(FILENAME_CSV_BACKEND);
+               vam_redirect(FILENAME_CSV_BACKEND);
         break;
   }
 
 
 
-  $cfg_group_query = xtc_db_query("select configuration_group_title from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '20'");
-  $cfg_group = xtc_db_fetch_array($cfg_group_query);
+  $cfg_group_query = vam_db_query("select configuration_group_title from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '20'");
+  $cfg_group = vam_db_fetch_array($cfg_group_query);
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -100,12 +100,12 @@
             </tr>
         </table>
 <div id="config" class="longDescription">
-<?php echo xtc_draw_form('configuration', FILENAME_CSV_BACKEND, 'gID=20&action=save'); ?>
+<?php echo vam_draw_form('configuration', FILENAME_CSV_BACKEND, 'gID=20&action=save'); ?>
             <table width="100%"  border="0" cellspacing="0" cellpadding="4">
 <?php
-  $configuration_query = xtc_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '20' order by sort_order");
+  $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '20' order by sort_order");
 
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+  while ($configuration = vam_db_fetch_array($configuration_query)) {
     if ($_GET['gID'] == 6) {
       switch ($configuration['configuration_key']) {
         case 'MODULE_PAYMENT_INSTALLED':
@@ -136,7 +136,7 @@
           break;
       }
     }
-    if (xtc_not_null($configuration['use_function'])) {
+    if (vam_not_null($configuration['use_function'])) {
       $use_function = $configuration['use_function'];
       if (ereg('->', $use_function)) {
         $class_method = explode('->', $use_function);
@@ -144,25 +144,25 @@
           include(DIR_WS_CLASSES . $class_method[0] . '.php');
           ${$class_method[0]} = new $class_method[0]();
         }
-        $cfgValue = xtc_call_function($class_method[1], $configuration['configuration_value'], ${$class_method[0]});
+        $cfgValue = vam_call_function($class_method[1], $configuration['configuration_value'], ${$class_method[0]});
       } else {
-        $cfgValue = xtc_call_function($use_function, $configuration['configuration_value']);
+        $cfgValue = vam_call_function($use_function, $configuration['configuration_value']);
       }
     } else {
       $cfgValue = $configuration['configuration_value'];
     }
 
     if (((!$_GET['cID']) || (@$_GET['cID'] == $configuration['configuration_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
-      $cfg_extra_query = xtc_db_query("select configuration_key,configuration_value, date_added, last_modified, use_function, set_function from " . TABLE_CONFIGURATION . " where configuration_id = '" . $configuration['configuration_id'] . "'");
-      $cfg_extra = xtc_db_fetch_array($cfg_extra_query);
+      $cfg_extra_query = vam_db_query("select configuration_key,configuration_value, date_added, last_modified, use_function, set_function from " . TABLE_CONFIGURATION . " where configuration_id = '" . $configuration['configuration_id'] . "'");
+      $cfg_extra = vam_db_fetch_array($cfg_extra_query);
 
-      $cInfo_array = xtc_array_merge($configuration, $cfg_extra);
+      $cInfo_array = vam_array_merge($configuration, $cfg_extra);
       $cInfo = new objectInfo($cInfo_array);
     }
     if ($configuration['set_function']) {
         eval('$value_field = ' . $configuration['set_function'] . '"' . htmlspecialchars($configuration['configuration_value']) . '");');
       } else {
-        $value_field = xtc_draw_input_field($configuration['configuration_key'], $configuration['configuration_value'],'size=40');
+        $value_field = vam_draw_input_field($configuration['configuration_key'], $configuration['configuration_value'],'size=40');
       }
    // add
 
@@ -246,8 +246,8 @@
           <td>&nbsp;</td>
           <td>
 <?php
-echo xtc_draw_form('upload',FILENAME_CSV_BACKEND,'action=upload','POST','enctype="multipart/form-data"');
-echo xtc_draw_file_field('file_upload');
+echo vam_draw_form('upload',FILENAME_CSV_BACKEND,'action=upload','POST','enctype="multipart/form-data"');
+echo vam_draw_file_field('file_upload');
 echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPLOAD . '"/>';
 ?>
 </form>
@@ -262,7 +262,7 @@ echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' .
           <td>
           <?php
           $files=array();
-          echo xtc_draw_form('import',FILENAME_CSV_BACKEND,'action=import','POST','enctype="multipart/form-data"');
+          echo vam_draw_form('import',FILENAME_CSV_BACKEND,'action=import','POST','enctype="multipart/form-data"');
              if ($dir= opendir(DIR_FS_CATALOG.'import/')){
              while  (($file = readdir($dir)) !==false) {
                 if (is_file(DIR_FS_CATALOG.'import/'.$file) and ($file !=".htaccess"))
@@ -270,12 +270,12 @@ echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' .
                     $size=filesize(DIR_FS_CATALOG.'import/'.$file);
                     $files[]=array(
                         'id' => $file,
-                        'text' => $file.' | '.xtc_format_filesize($size));
+                        'text' => $file.' | '.vam_format_filesize($size));
                 }
              }
              closedir($dir);
             }
-          echo xtc_draw_pull_down_menu('select_file',$files,'');
+          echo vam_draw_pull_down_menu('select_file',$files,'');
           echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_IMPORT . '"/>';
 
           ?></form>
@@ -297,10 +297,10 @@ echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' .
           <td>&nbsp;</td>
           <td>
 <?php
-echo xtc_draw_form('export',FILENAME_CSV_BACKEND,'action=export','POST','enctype="multipart/form-data"');
+echo vam_draw_form('export',FILENAME_CSV_BACKEND,'action=export','POST','enctype="multipart/form-data"');
 $content=array();
 $content[]=array('id'=>'products','text'=>TEXT_PRODUCTS);
-echo xtc_draw_pull_down_menu('select_content',$content,'products');
+echo vam_draw_pull_down_menu('select_content',$content,'products');
 echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_EXPORT . '"/>';
 ?>
 </form>

@@ -23,24 +23,24 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
-  require_once(DIR_FS_INC . 'xtc_format_filesize.inc.php');
-  require_once(DIR_FS_INC . 'xtc_filesize.inc.php');
-  require_once(DIR_FS_INC . 'xtc_wysiwyg_tiny.inc.php');
+  require_once(DIR_FS_INC . 'vam_format_filesize.inc.php');
+  require_once(DIR_FS_INC . 'vam_filesize.inc.php');
+  require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
   
   
-  $languages = xtc_get_languages();
+  $languages = vam_get_languages();
 
  
  if ($_GET['special']=='delete') {
  
- xtc_db_query("DELETE FROM ".TABLE_CONTENT_MANAGER." where content_id='".(int)$_GET['coID']."'");
- xtc_redirect(xtc_href_link(FILENAME_CONTENT_MANAGER));
+ vam_db_query("DELETE FROM ".TABLE_CONTENT_MANAGER." where content_id='".(int)$_GET['coID']."'");
+ vam_redirect(vam_href_link(FILENAME_CONTENT_MANAGER));
 } // if get special
 
  if ($_GET['special']=='delete_product') {
  
- xtc_db_query("DELETE FROM ".TABLE_PRODUCTS_CONTENT." where content_id='".(int)$_GET['coID']."'");
- xtc_redirect(xtc_href_link(FILENAME_CONTENT_MANAGER,'pID='.(int)$_GET['pID']));
+ vam_db_query("DELETE FROM ".TABLE_PRODUCTS_CONTENT." where content_id='".(int)$_GET['coID']."'");
+ vam_redirect(vam_href_link(FILENAME_CONTENT_MANAGER,'pID='.(int)$_GET['pID']));
 } // if get special
 
  if ($_GET['id']=='update' or $_GET['id']=='insert') {
@@ -50,7 +50,7 @@
         if(isset($_POST['groups'])) foreach($_POST['groups'] as $b){
         $group_ids .= 'c_'.$b."_group ,";
         }
-        $customers_statuses_array=xtc_get_customers_statuses();
+        $customers_statuses_array=vam_get_customers_statuses();
         if (strstr($group_ids,'c_all_group')) {
         $group_ids='c_all_group,';
          for ($i=0;$n=sizeof($customers_statuses_array),$i<$n;$i++) {
@@ -58,21 +58,21 @@
          }
         }
         
-        $content_title=xtc_db_prepare_input($_POST['cont_title']);
-        $content_header=xtc_db_prepare_input($_POST['cont_heading']);
-        $content_url=xtc_db_prepare_input($_POST['cont_url']);
-        $content_text=xtc_db_prepare_input($_POST['cont']);
-        $coID=xtc_db_prepare_input($_POST['coID']);
-        $upload_file=xtc_db_prepare_input($_POST['file_upload']);
-        $content_status=xtc_db_prepare_input($_POST['status']);
-        $content_language=xtc_db_prepare_input($_POST['language']);
-        $select_file=xtc_db_prepare_input($_POST['select_file']);
-        $file_flag=xtc_db_prepare_input($_POST['file_flag']);
-        $parent_check=xtc_db_prepare_input($_POST['parent_check']);
-        $parent_id=xtc_db_prepare_input($_POST['parent']);
-        $group_id=xtc_db_prepare_input($_POST['content_group']);
+        $content_title=vam_db_prepare_input($_POST['cont_title']);
+        $content_header=vam_db_prepare_input($_POST['cont_heading']);
+        $content_url=vam_db_prepare_input($_POST['cont_url']);
+        $content_text=vam_db_prepare_input($_POST['cont']);
+        $coID=vam_db_prepare_input($_POST['coID']);
+        $upload_file=vam_db_prepare_input($_POST['file_upload']);
+        $content_status=vam_db_prepare_input($_POST['status']);
+        $content_language=vam_db_prepare_input($_POST['language']);
+        $select_file=vam_db_prepare_input($_POST['select_file']);
+        $file_flag=vam_db_prepare_input($_POST['file_flag']);
+        $parent_check=vam_db_prepare_input($_POST['parent_check']);
+        $parent_id=vam_db_prepare_input($_POST['parent']);
+        $group_id=vam_db_prepare_input($_POST['content_group']);
         $group_ids = $group_ids;
-        $sort_order=xtc_db_prepare_input($_POST['sort_order']);
+        $sort_order=vam_db_prepare_input($_POST['sort_order']);
         
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                 if ($languages[$i]['code']==$content_language) $content_language=$languages[$i]['id'];
@@ -102,7 +102,7 @@
         // file upload
       if ($select_file!='default') $content_file_name=$select_file;
       
-      if ($content_file = &xtc_try_upload('file_upload', DIR_FS_CATALOG.'media/content/')) {
+      if ($content_file = &vam_try_upload('file_upload', DIR_FS_CATALOG.'media/content/')) {
         $content_file_name=$content_file->filename;
       }  // if
      
@@ -123,11 +123,11 @@
                                 'sort_order' => $sort_order,
                                 'file_flag' => $file_flag);
          if ($_GET['id']=='update') {
-         xtc_db_perform(TABLE_CONTENT_MANAGER, $sql_data_array, 'update', "content_id = '" . $coID . "'");
+         vam_db_perform(TABLE_CONTENT_MANAGER, $sql_data_array, 'update', "content_id = '" . $coID . "'");
         } else {
-         xtc_db_perform(TABLE_CONTENT_MANAGER, $sql_data_array);
+         vam_db_perform(TABLE_CONTENT_MANAGER, $sql_data_array);
         } // if get id
-        xtc_redirect(xtc_href_link(FILENAME_CONTENT_MANAGER));
+        vam_redirect(vam_href_link(FILENAME_CONTENT_MANAGER));
         } // if error
         } // if 
  
@@ -138,7 +138,7 @@
         if(isset($_POST['groups'])) foreach($_POST['groups'] as $b){
         $group_ids .= 'c_'.$b."_group ,";
         }
-        $customers_statuses_array=xtc_get_customers_statuses();
+        $customers_statuses_array=vam_get_customers_statuses();
         if (strstr($group_ids,'c_all_group')) {
         $group_ids='c_all_group,';
          for ($i=0;$n=sizeof($customers_statuses_array),$i<$n;$i++) {
@@ -146,15 +146,15 @@
          }
         }
         
-        $content_title=xtc_db_prepare_input($_POST['cont_title']);
-        $content_link=xtc_db_prepare_input($_POST['cont_link']);
-        $content_language=xtc_db_prepare_input($_POST['language']);
-        $product=xtc_db_prepare_input($_POST['product']);
-        $upload_file=xtc_db_prepare_input($_POST['file_upload']);
-        $filename=xtc_db_prepare_input($_POST['file_name']);
-        $coID=xtc_db_prepare_input($_POST['coID']);
-        $file_comment=xtc_db_prepare_input($_POST['file_comment']);
-        $select_file=xtc_db_prepare_input($_POST['select_file']);
+        $content_title=vam_db_prepare_input($_POST['cont_title']);
+        $content_link=vam_db_prepare_input($_POST['cont_link']);
+        $content_language=vam_db_prepare_input($_POST['language']);
+        $product=vam_db_prepare_input($_POST['product']);
+        $upload_file=vam_db_prepare_input($_POST['file_upload']);
+        $filename=vam_db_prepare_input($_POST['file_name']);
+        $coID=vam_db_prepare_input($_POST['coID']);
+        $file_comment=vam_db_prepare_input($_POST['file_comment']);
+        $select_file=vam_db_prepare_input($_POST['select_file']);
         $group_ids = $group_ids;
         
         $error=false; // reset error flag
@@ -175,14 +175,14 @@
         if  (!is_dir(DIR_FS_CATALOG.'media/products/'.$product.'/')) {
         
         $old_umask = umask(0);
-	xtc_mkdirs(DIR_FS_CATALOG.'media/products/'.$product.'/',0777);
+	vam_mkdirs(DIR_FS_CATALOG.'media/products/'.$product.'/',0777);
         umask($old_umask);
 
         }
 */        
 if ($select_file=='default') {
         
-        if ($content_file = &xtc_try_upload('file_upload', DIR_FS_CATALOG.'media/products/')) {
+        if ($content_file = &vam_try_upload('file_upload', DIR_FS_CATALOG.'media/products/')) {
         $content_file_name=$content_file->filename;
         $old_filename=$content_file->filename;
         $timestamp=str_replace('.','',microtime());
@@ -205,7 +205,7 @@ if ($select_file=='default') {
         if(isset($_POST['groups'])) foreach($_POST['groups'] as $b){
         $group_ids .= 'c_'.$b."_group ,";
         }
-        $customers_statuses_array=xtc_get_customers_statuses();
+        $customers_statuses_array=vam_get_customers_statuses();
         if (strstr($group_ids,'c_all_group')) {
         $group_ids='c_all_group,';
          for ($i=0;$n=sizeof($customers_statuses_array),$i<$n;$i++) {
@@ -223,11 +223,11 @@ if ($select_file=='default') {
                                 'languages_id' => $content_language);
         
          if ($_GET['id']=='update_product') {
-         xtc_db_perform(TABLE_PRODUCTS_CONTENT, $sql_data_array, 'update', "content_id = '" . $coID . "'");
-         $content_id = xtc_db_insert_id();
+         vam_db_perform(TABLE_PRODUCTS_CONTENT, $sql_data_array, 'update', "content_id = '" . $coID . "'");
+         $content_id = vam_db_insert_id();
         } else {
-         xtc_db_perform(TABLE_PRODUCTS_CONTENT, $sql_data_array);
-         $content_id = xtc_db_insert_id();        
+         vam_db_perform(TABLE_PRODUCTS_CONTENT, $sql_data_array);
+         $content_id = vam_db_insert_id();        
         } // if get id
         
         // rename filename
@@ -235,7 +235,7 @@ if ($select_file=='default') {
         
         
         
-        xtc_redirect(xtc_href_link(FILENAME_CONTENT_MANAGER,'pID='.$product));
+        vam_redirect(vam_href_link(FILENAME_CONTENT_MANAGER,'pID='.$product));
         }// if error
 
         
@@ -250,11 +250,11 @@ if ($select_file=='default') {
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <?php if (USE_WYSIWYG=='true') {
- $query=xtc_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
- $data=xtc_db_fetch_array($query);
- if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo xtc_wysiwyg_tiny('content_manager',$data['code']);
- if ($_GET['action']=='new_products_content') echo xtc_wysiwyg_tiny('products_content',$data['code']);
- if ($_GET['action']=='edit_products_content') echo xtc_wysiwyg_tiny('products_content',$data['code']);
+ $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
+ $data=vam_db_fetch_array($query);
+ if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo vam_wysiwyg_tiny('content_manager',$data['code']);
+ if ($_GET['action']=='new_products_content') echo vam_wysiwyg_tiny('products_content',$data['code']);
+ if ($_GET['action']=='edit_products_content') echo vam_wysiwyg_tiny('products_content',$data['code']);
  } ?>
 
 </head>
@@ -290,8 +290,8 @@ if (!$_GET['action']) {
 ?>
 <div class="main"><?php echo CONTENT_NOTE; ?></div>
  <?php
- xtc_spaceUsed(DIR_FS_CATALOG.'media/content/');
-echo '<div class="main">'.USED_SPACE.xtc_format_filesize($total).'</div>';
+ vam_spaceUsed(DIR_FS_CATALOG.'media/content/');
+echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div>';
 ?>
 <?php
 // Display Content
@@ -299,7 +299,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $content=array();
 
 
-         $content_query=xtc_db_query("SELECT
+         $content_query=vam_db_query("SELECT
                                         content_id,
                                         categories_id,
                                         parent_id,
@@ -320,7 +320,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                                         AND parent_id='0'
                                         order by sort_order 
                                         ");
-        while ($content_data=xtc_db_fetch_array($content_query)) {
+        while ($content_data=vam_db_fetch_array($content_query)) {
         
          $content[]=array(
                         'CONTENT_ID' =>$content_data['content_id'] ,
@@ -343,7 +343,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         
 ?>
 <br />
-<div class="main"><?php echo xtc_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']).'&nbsp;&nbsp;'.$languages[$i]['name']; ?></div>
+<div class="main"><?php echo vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']).'&nbsp;&nbsp;'.$languages[$i]['name']; ?></div>
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent" width="10" ><?php echo TABLE_HEADING_CONTENT_ID; ?></td>
@@ -358,8 +358,8 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
               </tr>
  <?php
 for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
- $file_flag_sql = xtc_db_query("SELECT file_flag_name FROM " . TABLE_CM_FILE_FLAGS . " WHERE file_flag=" . $content[$ii]['FILE_FLAG']);
- $file_flag_result = xtc_db_fetch_array($file_flag_sql);
+ $file_flag_sql = vam_db_query("SELECT file_flag_name FROM " . TABLE_CM_FILE_FLAGS . " WHERE file_flag=" . $content[$ii]['FILE_FLAG']);
+ $file_flag_result = vam_db_fetch_array($file_flag_sql);
  echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
  if ($content[$ii]['CONTENT_FILE']=='') $content[$ii]['CONTENT_FILE']='database';
  ?>
@@ -381,19 +381,19 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
 <?php
  if ($content[$ii]['CONTENT_DELETE']=='1'){
 ?>
- <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'special=delete&coID='.$content[$ii]['CONTENT_ID']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
- <?php echo xtc_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
+ <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'special=delete&coID='.$content[$ii]['CONTENT_ID']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
+ <?php echo vam_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
 } // if content
 ?>
- <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'action=edit&coID='.$content[$ii]['CONTENT_ID']); ?>">
-<?php echo xtc_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
- <a style="cursor:pointer" onClick="javascript:window.open('<?php echo xtc_href_link(FILENAME_CONTENT_PREVIEW,'coID='.$content[$ii]['CONTENT_ID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo xtc_image(DIR_WS_ICONS.'preview.gif','','','','style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?>
+ <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=edit&coID='.$content[$ii]['CONTENT_ID']); ?>">
+<?php echo vam_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
+ <a style="cursor:pointer" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_CONTENT_PREVIEW,'coID='.$content[$ii]['CONTENT_ID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo vam_image(DIR_WS_ICONS.'preview.gif','','','','style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?>
  </td>
  </tr>
  
  <?php
  $content_1=array();
-         $content_1_query=xtc_db_query("SELECT
+         $content_1_query=vam_db_query("SELECT
                                         content_id,
                                         categories_id,
                                         parent_id,
@@ -412,7 +412,7 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
                                         AND parent_id='".$content[$ii]['CONTENT_ID']."'
                                         order by sort_order
                                          ");
-        while ($content_1_data=xtc_db_fetch_array($content_1_query)) {
+        while ($content_1_data=vam_db_fetch_array($content_1_query)) {
         
          $content_1[]=array(
                         'CONTENT_ID' =>$content_1_data['content_id'] ,
@@ -431,8 +431,8 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
  }      
 for ($a = 0, $x = sizeof($content_1); $a < $x; $a++) {
 if ($content_1[$a]!='') {
- $file_flag_sql = xtc_db_query("SELECT file_flag_name FROM " . TABLE_CM_FILE_FLAGS . " WHERE file_flag=" . $content_1[$a]['FILE_FLAG']);
- $file_flag_result = xtc_db_fetch_array($file_flag_sql);
+ $file_flag_sql = vam_db_query("SELECT file_flag_name FROM " . TABLE_CM_FILE_FLAGS . " WHERE file_flag=" . $content_1[$a]['FILE_FLAG']);
+ $file_flag_result = vam_db_fetch_array($file_flag_sql);
  echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
  
  if ($content_1[$a]['CONTENT_FILE']=='') $content_1[$a]['CONTENT_FILE']='database';
@@ -447,16 +447,16 @@ if ($content_1[$a]!='') {
 <?php
  if ($content_1[$a]['CONTENT_DELETE']=='1'){
 ?>
- <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'special=delete&coID='.$content_1[$a]['CONTENT_ID']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
- <?php echo xtc_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
+ <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'special=delete&coID='.$content_1[$a]['CONTENT_ID']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
+ <?php echo vam_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
 } // if content
 ?>
- <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'action=edit&coID='.$content_1[$a]['CONTENT_ID']); ?>">
-<?php echo xtc_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
- <a style="cursor:pointer" onClick="javascript:window.open('<?php echo xtc_href_link(FILENAME_CONTENT_PREVIEW,'coID='.$content_1[$a]['CONTENT_ID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"
+ <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=edit&coID='.$content_1[$a]['CONTENT_ID']); ?>">
+<?php echo vam_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
+ <a style="cursor:pointer" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_CONTENT_PREVIEW,'coID='.$content_1[$a]['CONTENT_ID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"
  
  
- ><?php echo xtc_image(DIR_WS_ICONS.'preview.gif','','','','style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?>
+ ><?php echo vam_image(DIR_WS_ICONS.'preview.gif','','','','style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?>
  </td>
  </tr> 
  
@@ -478,7 +478,7 @@ switch ($_GET['action']) {
  case 'new':    
  case 'edit':
  if ($_GET['action']!='new') {
-        $content_query=xtc_db_query("SELECT
+        $content_query=vam_db_query("SELECT
                                         content_id,
                                         categories_id,
                                         parent_id,
@@ -497,7 +497,7 @@ switch ($_GET['action']) {
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE content_id='".(int)$_GET['coID']."'");
 
-        $content=xtc_db_fetch_array($content_query);
+        $content=vam_db_fetch_array($content_query);
 }
         $languages_array = array();
 
@@ -514,13 +514,13 @@ switch ($_GET['action']) {
 
   } // for
   if ($languages_id!='') $query_string='languages_id='.$languages_id.' AND';
-    $categories_query=xtc_db_query("SELECT
+    $categories_query=vam_db_query("SELECT
                                         content_id,
                                         content_title
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE ".$query_string." parent_id='0'
                                         AND content_id!='".(int)$_GET['coID']."'");
-  while ($categories_data=xtc_db_fetch_array($categories_query)) {
+  while ($categories_data=vam_db_fetch_array($categories_query)) {
   
   $categories_array[]=array(
                         'id'=>$categories_data['content_id'],
@@ -530,25 +530,25 @@ switch ($_GET['action']) {
 <br /><br />
 <?php
  if ($_GET['action']!='new') {
-echo xtc_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit&id=update&coID='.$_GET['coID'],'post','enctype="multipart/form-data"').xtc_draw_hidden_field('coID',$_GET['coID']);
+echo vam_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit&id=update&coID='.$_GET['coID'],'post','enctype="multipart/form-data"').vam_draw_hidden_field('coID',$_GET['coID']);
 } else {
-echo xtc_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit&id=insert','post','enctype="multipart/form-data"').xtc_draw_hidden_field('coID',$_GET['coID']);
+echo vam_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit&id=insert','post','enctype="multipart/form-data"').vam_draw_hidden_field('coID',$_GET['coID']);
 } ?>
 <table class="main" width="100%" border="0">
    <tr> 
       <td width="10%"><?php echo TEXT_LANGUAGE; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('language',$languages_array,$languages_selected); ?></td>
+      <td width="90%"><?php echo vam_draw_pull_down_menu('language',$languages_array,$languages_selected); ?></td>
    </tr>
 <?php
 if ($content['content_delete']!=0 or $_GET['action']=='new') {
 ?>   
       <tr> 
       <td width="10%"><?php echo TEXT_GROUP; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('content_group',$content['content_group'],'size="5"'); ?><?php echo TEXT_GROUP_DESC; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('content_group',$content['content_group'],'size="5"'); ?><?php echo TEXT_GROUP_DESC; ?></td>
    </tr>
 <?php
 } else {
-echo xtc_draw_hidden_field('content_group',$content['content_group']);
+echo vam_draw_hidden_field('content_group',$content['content_group']);
 ?>
       <tr>
       <td width="10%"><?php echo TEXT_GROUP; ?></td>
@@ -556,36 +556,36 @@ echo xtc_draw_hidden_field('content_group',$content['content_group']);
    </tr>
 <?php
 }
-$file_flag_sql = xtc_db_query("SELECT file_flag as id, file_flag_name as text FROM " . TABLE_CM_FILE_FLAGS);
-while($file_flag = xtc_db_fetch_array($file_flag_sql)) {
+$file_flag_sql = vam_db_query("SELECT file_flag as id, file_flag_name as text FROM " . TABLE_CM_FILE_FLAGS);
+while($file_flag = vam_db_fetch_array($file_flag_sql)) {
 	$file_flag_array[] = array('id' => $file_flag['id'], 'text' => $file_flag['text']);
 }
 ?>	
       <tr> 
       <td width="10%"><?php echo TEXT_FILE_FLAG; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('file_flag',$file_flag_array,$content['file_flag']); ?></td>
+      <td width="90%"><?php echo vam_draw_pull_down_menu('file_flag',$file_flag_array,$content['file_flag']); ?></td>
    </tr>
 <?php
 /*  build in not completed yet
       <tr>
       <td width="10%"><?php echo TEXT_PARENT; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('parent',$categories_array,$content['parent_id']); ?><?php echo xtc_draw_checkbox_field('parent_check', 'yes',false).' '.TEXT_PARENT_DESCRIPTION; ?></td>
+      <td width="90%"><?php echo vam_draw_pull_down_menu('parent',$categories_array,$content['parent_id']); ?><?php echo vam_draw_checkbox_field('parent_check', 'yes',false).' '.TEXT_PARENT_DESCRIPTION; ?></td>
    </tr>
 */
 ?>
 
     <tr>
       <td width="10%"><?php echo TEXT_SORT_ORDER; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('sort_order',$content['sort_order'],'size="5"'); ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('sort_order',$content['sort_order'],'size="5"'); ?></td>
     </tr>
 
       <tr> 
       <td valign="top" width="10%"><?php echo TEXT_STATUS; ?></td>
       <td width="90%"><?php
       if ($content['content_status']=='1') {
-      echo xtc_draw_checkbox_field('status', 'yes',true).' '.TEXT_STATUS_DESCRIPTION;
+      echo vam_draw_checkbox_field('status', 'yes',true).' '.TEXT_STATUS_DESCRIPTION;
       } else {
-      echo xtc_draw_checkbox_field('status', 'yes',false).' '.TEXT_STATUS_DESCRIPTION;
+      echo vam_draw_checkbox_field('status', 'yes',false).' '.TEXT_STATUS_DESCRIPTION;
       }
 
       ?><br /><br /></td>
@@ -593,7 +593,7 @@ while($file_flag = xtc_db_fetch_array($file_flag_sql)) {
 
           <?php
 if (GROUP_CHECK=='true') {
-$customers_statuses_array = xtc_get_customers_statuses();
+$customers_statuses_array = vam_get_customers_statuses();
 $customers_statuses_array=array_merge(array(array('id'=>'all','text'=>TXT_ALL)),$customers_statuses_array);
 ?>
 <tr>
@@ -620,17 +620,17 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 
    <tr>
       <td width="10%"><?php echo TEXT_TITLE; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('cont_title',$content['content_title'],'size="60"'); ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_title',$content['content_title'],'size="60"'); ?></td>
    </tr>
 
 
    <tr> 
       <td width="10%"><?php echo TEXT_HEADING; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('cont_heading',$content['content_heading'],'size="60"'); ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_heading',$content['content_heading'],'size="60"'); ?></td>
    </tr>
    <tr> 
       <td width="10%" valign="top"><?php echo TEXT_UPLOAD_FILE; ?></td>
-      <td width="90%"><?php echo xtc_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>
+      <td width="90%"><?php echo vam_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>
    </tr> 
          <tr> 
       <td width="10%" valign="top"><?php echo TEXT_CHOOSE_FILE; ?></td>
@@ -638,7 +638,7 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 <?php
     //subfolders in media added  (Modified by Andreaz)
     require_once(DIR_WS_FUNCTIONS.'file_system.php');
-    $files = xtc_get_filelist(DIR_FS_CATALOG.'media/content/','', array('index.html'));
+    $files = vam_get_filelist(DIR_FS_CATALOG.'media/content/','', array('index.html'));
     //subfolders in media added  (Modified by Andreaz)
 
  // set default value in dropdown!
@@ -651,7 +651,7 @@ if ($content['content_file']=='') {
     }
     else
     {
-    $files=xtc_array_merge($default_array,$files);
+    $files=vam_array_merge($default_array,$files);
     }
 } else {
 $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
@@ -666,7 +666,7 @@ $default_value=$content['content_file'];
     }
 }
 echo '<br />'.TEXT_CHOOSE_FILE_SERVER.'</br>';
-echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
+echo vam_draw_pull_down_menu('select_file',$files,$default_value);
       if ($content['content_file']!='') {
         echo TEXT_CURRENT_FILE.' <b>'.$content['content_file'].'</b><br />';
         }
@@ -686,18 +686,18 @@ echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
       
       <td width="90%">
    <?php
-echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
+echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
 ?>
       </td>
    </tr>
   
      <tr> 
       <td width="10%"><?php echo TEXT_URL; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('cont_url',$content['content_url'],'size="60"'); ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_url',$content['content_url'],'size="60"'); ?></td>
    </tr>
  
     <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
    </tr>
 </table>
 </form>
@@ -708,7 +708,7 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
  case 'new_products_content':
  
   if ($_GET['action']=='edit_products_content') {
-        $content_query=xtc_db_query("SELECT
+        $content_query=vam_db_query("SELECT
                                         content_id,
                                         products_id,
                                         group_ids,
@@ -722,18 +722,18 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
                                         FROM ".TABLE_PRODUCTS_CONTENT."
                                         WHERE content_id='".(int)$_GET['coID']."'");
 
-        $content=xtc_db_fetch_array($content_query);
+        $content=vam_db_fetch_array($content_query);
 }
  
  // get products names.
- $products_query=xtc_db_query("SELECT
+ $products_query=vam_db_query("SELECT
                                 products_id,
                                 products_name
                                 FROM ".TABLE_PRODUCTS_DESCRIPTION."
                                 WHERE language_id='".(int)$_SESSION['languages_id']."'");
  $products_array=array();
 
- while ($products_data=xtc_db_fetch_array($products_query)) {
+ while ($products_data=vam_db_fetch_array($products_query)) {
  
  $products_array[]=array(
                         'id' => $products_data['products_id'],  
@@ -757,14 +757,14 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
   } // for
  
   // get used content files
-  $content_files_query=xtc_db_query("SELECT DISTINCT
+  $content_files_query=vam_db_query("SELECT DISTINCT
                                 content_name,
                                 content_file
                                 FROM ".TABLE_PRODUCTS_CONTENT."
                                 WHERE content_file!=''");
  $content_files=array();
 
- while ($content_files_data=xtc_db_fetch_array($content_files_query)) {
+ while ($content_files_data=vam_db_fetch_array($content_files_query)) {
 
      $content_files[]=array(
      'id' => $content_files_data['content_file'],
@@ -779,11 +779,11 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
  
  if ($_GET['action']!='new_products_content') {
  ?>     
- <?php echo xtc_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit_products_content&id=update_product&coID='.$_GET['coID'],'post','enctype="multipart/form-data"').xtc_draw_hidden_field('coID',$_GET['coID']); ?>
+ <?php echo vam_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit_products_content&id=update_product&coID='.$_GET['coID'],'post','enctype="multipart/form-data"').vam_draw_hidden_field('coID',$_GET['coID']); ?>
 <?php
 } else {
 ?>
-<?php echo xtc_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit_products_content&id=insert_product','post','enctype="multipart/form-data"');   ?>
+<?php echo vam_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit_products_content&id=insert_product','post','enctype="multipart/form-data"');   ?>
 <?php
 }
 ?>
@@ -791,16 +791,16 @@ echo xtc_draw_textarea_field('cont','','100%','35',$content['content_text']);
  <table class="main" width="100%" border="0">
    <tr>
       <td width="10%"><?php echo TEXT_PRODUCT; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('product',$products_array,$content['products_id']); ?></td>
+      <td width="90%"><?php echo vam_draw_pull_down_menu('product',$products_array,$content['products_id']); ?></td>
    </tr>
       <tr> 
       <td width="10%"><?php echo TEXT_LANGUAGE; ?></td>
-      <td width="90%"><?php echo xtc_draw_pull_down_menu('language',$languages_array,$languages_selected); ?></td>
+      <td width="90%"><?php echo vam_draw_pull_down_menu('language',$languages_array,$languages_selected); ?></td>
    </tr>
 
           <?php
 if (GROUP_CHECK=='true') {
-$customers_statuses_array = xtc_get_customers_statuses();
+$customers_statuses_array = vam_get_customers_statuses();
 $customers_statuses_array=array_merge(array(array('id'=>'all','text'=>TXT_ALL)),$customers_statuses_array);
 ?>
 <tr>
@@ -826,17 +826,17 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 
       <tr>
       <td width="10%"><?php echo TEXT_TITLE_FILE; ?></td>
-      <td width="90%"><?php echo xtc_draw_input_field('cont_title',$content['content_name'],'size="60"'); ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_title',$content['content_name'],'size="60"'); ?></td>
    </tr>
       <tr> 
       <td width="10%"><?php echo TEXT_LINK; ?></td>
-      <td width="90%"><?php  echo xtc_draw_input_field('cont_link',$content['content_link'],'size="60"'); ?></td>
+      <td width="90%"><?php  echo vam_draw_input_field('cont_link',$content['content_link'],'size="60"'); ?></td>
    </tr>
 
       <tr>
       <td width="10%" valign="top"><?php echo TEXT_FILE_DESC; ?></td>
       <td width="90%"><?php
-          echo xtc_draw_textarea_field('file_comment','','100','30',$content['file_comment']);
+          echo vam_draw_textarea_field('file_comment','','100','30',$content['file_comment']);
         ?></td>
    </tr>
          <tr> 
@@ -845,7 +845,7 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 <?php
     //subfolders in media added  (Modified by Andreaz)
     require_once(DIR_WS_FUNCTIONS.'file_system.php');
-    $files = xtc_get_filelist(DIR_FS_CATALOG.'media/products/','', array('index.html'));
+    $files = vam_get_filelist(DIR_FS_CATALOG.'media/products/','', array('index.html'));
     //subfolders in media added  (Modified by Andreaz)
 
     // set default value in dropdown!
@@ -857,10 +857,10 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
          $default_array[]=array('id' => 'default','text' => TEXT_NO_FILE);
          $default_value=$content['content_file'];
     }
-    $files=xtc_array_merge($default_array, $files);
+    $files=vam_array_merge($default_array, $files);
  
     echo '<br />'.TEXT_CHOOSE_FILE_SERVER_PRODUCTS.'</br>';
-    echo xtc_draw_pull_down_menu('select_file',$files,$default_value);
+    echo vam_draw_pull_down_menu('select_file',$files,$default_value);
     if ($content['content_file']!='') {
        echo TEXT_CURRENT_FILE.' <b>'.$content['content_file'].'</b><br />';
     }
@@ -871,20 +871,20 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
    </tr> 
       <tr> 
       <td width="10%" valign="top"><?php echo TEXT_UPLOAD_FILE; ?></td>
-      <td width="90%"><?php echo xtc_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>
+      <td width="90%"><?php echo vam_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>
    </tr> 
  <?php
  if ($content['content_file']!='') {
  ?>
     <tr> 
       <td width="10%"><?php echo TEXT_FILENAME; ?></td>
-      <td width="90%" valign="top"><?php echo xtc_draw_hidden_field('file_name',$content['content_file']).xtc_image(DIR_WS_CATALOG.'admin/images/icons/icon_'.str_replace('.','',strstr($content['content_file'],'.')).'.gif').$content['content_file']; ?></td>
+      <td width="90%" valign="top"><?php echo vam_draw_hidden_field('file_name',$content['content_file']).vam_image(DIR_WS_CATALOG.'admin/images/icons/icon_'.str_replace('.','',strstr($content['content_file'],'.')).'.gif').$content['content_file']; ?></td>
     </tr>
   <?php
 }
 ?>
        <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
    </tr>
    </form>
    </table>
@@ -900,7 +900,7 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 if (!$_GET['action']) {
 ?>
 
-<a class="button" onClick="this.blur();" href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>
+<a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>
 <?php
 }
 ?>
@@ -912,14 +912,14 @@ if (!$_GET['action']) {
  // products content
  // load products_ids into array
  
- $products_id_query=xtc_db_query("SELECT DISTINCT
+ $products_id_query=vam_db_query("SELECT DISTINCT
                                 pc.products_id,
                                 pd.products_name
                                 FROM ".TABLE_PRODUCTS_CONTENT." pc, ".TABLE_PRODUCTS_DESCRIPTION." pd
                                 WHERE pd.products_id=pc.products_id and pd.language_id='".(int)$_SESSION['languages_id']."'");
  
  $products_ids=array();
- while ($products_id_data=xtc_db_fetch_array($products_id_query)) {
+ while ($products_id_data=vam_db_fetch_array($products_id_query)) {
         
         $products_ids[]=array(
                         'id'=>$products_id_data['products_id'],
@@ -931,8 +931,8 @@ if (!$_GET['action']) {
  ?>
  <div class="pageHeading"><br /><?php echo HEADING_PRODUCTS_CONTENT; ?><br /></div>
   <?php
- xtc_spaceUsed(DIR_FS_CATALOG.'media/products/');
-echo '<div class="main">'.USED_SPACE.xtc_format_filesize($total).'</div></br>';
+ vam_spaceUsed(DIR_FS_CATALOG.'media/products/');
+echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div></br>';
 ?>      
  <table border="0" width="100%" cellspacing="0" cellpadding="2">
     <tr class="dataTableHeadingRow">
@@ -946,12 +946,12 @@ for ($i=0,$n=sizeof($products_ids); $i<$n; $i++) {
  
  ?>
  <td class="dataTableContent_products" align="left"><?php echo $products_ids[$i]['id']; ?></td>
- <td class="dataTableContent_products" align="left"><b><?php echo xtc_image(DIR_WS_CATALOG.'images/icons/arrow.gif'); ?><a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'pID='.$products_ids[$i]['id']);?>"><?php echo $products_ids[$i]['name']; ?></a></b></td>
+ <td class="dataTableContent_products" align="left"><b><?php echo vam_image(DIR_WS_CATALOG.'images/icons/arrow.gif'); ?><a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'pID='.$products_ids[$i]['id']);?>"><?php echo $products_ids[$i]['name']; ?></a></b></td>
  </tr>
 <?php
 if ($_GET['pID']) {
 // display content elements
-        $content_query=xtc_db_query("SELECT
+        $content_query=vam_db_query("SELECT
                                         content_id,
                                         content_name,
                                         content_file,
@@ -962,7 +962,7 @@ if ($_GET['pID']) {
                                         FROM ".TABLE_PRODUCTS_CONTENT."
                                         WHERE products_id='".$_GET['pID']."' order by content_name");
         $content_array='';
-        while ($content_data=xtc_db_fetch_array($content_query)) {
+        while ($content_data=vam_db_fetch_array($content_query)) {
                 
                 $content_array[]=array(
                                         'id'=> $content_data['content_id'],
@@ -1009,9 +1009,9 @@ if ($_GET['pID']==$products_ids[$i]['id']){
  
  if ($content_array[$ii]['file']!='') {
  
- echo xtc_image(DIR_WS_CATALOG.'admin/images/icons/icon_'.str_replace('.','',strstr($content_array[$ii]['file'],'.')).'.gif');
+ echo vam_image(DIR_WS_CATALOG.'admin/images/icons/icon_'.str_replace('.','',strstr($content_array[$ii]['file'],'.')).'.gif');
 } else {
-echo xtc_image(DIR_WS_CATALOG.'admin/images/icons/icon_link.gif');
+echo vam_image(DIR_WS_CATALOG.'admin/images/icons/icon_link.gif');
 }
 
 for ($xx=0,$zz=sizeof($languages); $xx<$zz;$xx++){
@@ -1023,10 +1023,10 @@ for ($xx=0,$zz=sizeof($languages); $xx<$zz;$xx++){
 
 ?>
 </td>
- <td class="dataTableContent" align="left"><?php echo xtc_image(DIR_WS_CATALOG.'lang/'.$lang_dir.'/admin/images/icon.gif'); ?></td>
+ <td class="dataTableContent" align="left"><?php echo vam_image(DIR_WS_CATALOG.'lang/'.$lang_dir.'/admin/images/icon.gif'); ?></td>
  <td class="dataTableContent" align="left"><?php echo $content_array[$ii]['name']; ?></td>
  <td class="dataTableContent" align="left"><?php echo $content_array[$ii]['file']; ?></td>
- <td class="dataTableContent" align="left"><?php echo xtc_filesize($content_array[$ii]['file']); ?></td>
+ <td class="dataTableContent" align="left"><?php echo vam_filesize($content_array[$ii]['file']); ?></td>
  <td class="dataTableContent" align="left" align="middle"><?php
  if ($content_array[$ii]['link']!='') {
  echo '<a href="'.$content_array[$ii]['link'].'" target="new">'.$content_array[$ii]['link'].'</a>';
@@ -1036,14 +1036,14 @@ for ($xx=0,$zz=sizeof($languages); $xx<$zz;$xx++){
  <td class="dataTableContent" align="left"><?php echo $content_array[$ii]['read']; ?></td>
  <td class="dataTableContent" align="left">
  
-  <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'special=delete_product&coID='.$content_array[$ii]['id']).'&pID='.$products_ids[$i]['id']; ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
+  <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'special=delete_product&coID='.$content_array[$ii]['id']).'&pID='.$products_ids[$i]['id']; ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
  <?php
  
- echo xtc_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
+ echo vam_image(DIR_WS_ICONS.'delete.gif','','','','style="cursor:pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
 
 ?>
- <a href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'action=edit_products_content&coID='.$content_array[$ii]['id']); ?>">
-<?php echo xtc_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
+ <a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=edit_products_content&coID='.$content_array[$ii]['id']); ?>">
+<?php echo vam_image(DIR_WS_ICONS.'icon_edit.gif','','','','style="cursor:pointer"').'  '.TEXT_EDIT.'</a>'; ?>
 
 <?php
 // display preview button if filetype 
@@ -1063,10 +1063,10 @@ if (	eregi('.gif',$content_array[$ii]['file'])
 	eregi('.bmp',$content_array[$ii]['file'])
 	) {
 ?>
- <a style="cursor:pointer" onClick="javascript:window.open('<?php echo xtc_href_link(FILENAME_CONTENT_PREVIEW,'pID=media&coID='.$content_array[$ii]['id']); ?>', 'popup', 'toolbar=0, width=640, height=600')"
+ <a style="cursor:pointer" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_CONTENT_PREVIEW,'pID=media&coID='.$content_array[$ii]['id']); ?>', 'popup', 'toolbar=0, width=640, height=600')"
  
  
- ><?php echo xtc_image(DIR_WS_ICONS.'preview.gif','','','',' style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?> 
+ ><?php echo vam_image(DIR_WS_ICONS.'preview.gif','','','',' style="cursor:pointer"').'&nbsp;&nbsp;'.TEXT_PREVIEW.'</a>'; ?> 
 <?php
 }
 ?> 
@@ -1087,7 +1087,7 @@ echo '</table></td></tr>';
 
        
  </table>
- <a class="button" onClick="this.blur();" href="<?php echo xtc_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>                 
+ <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>                 
  <?php
 } // if !$_GET['action']
 ?>       

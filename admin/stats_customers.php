@@ -64,20 +64,20 @@
   $customers_query_raw = "select c.customers_firstname, c.customers_lastname, sum(op.final_price) as ordersum from " . TABLE_CUSTOMERS . " c, " . TABLE_ORDERS_PRODUCTS . " op, " . TABLE_ORDERS . " o where c.customers_id = o.customers_id and o.orders_id = op.orders_id group by c.customers_firstname, c.customers_lastname order by ordersum DESC";
   $customers_split = new splitPageResults($_GET['page'], '20', $customers_query_raw, $customers_query_numrows);
   // fix counted customers
-  $customers_query_numrows = xtc_db_query("select customers_id from " . TABLE_ORDERS . " group by customers_id");
-  $customers_query_numrows = xtc_db_num_rows($customers_query_numrows);
+  $customers_query_numrows = vam_db_query("select customers_id from " . TABLE_ORDERS . " group by customers_id");
+  $customers_query_numrows = vam_db_num_rows($customers_query_numrows);
 
-  $customers_query = xtc_db_query($customers_query_raw);
-  while ($customers = xtc_db_fetch_array($customers_query)) {
+  $customers_query = vam_db_query($customers_query_raw);
+  while ($customers = vam_db_fetch_array($customers_query)) {
     $rows++;
 
     if (strlen($rows) < 2) {
       $rows = '0' . $rows;
     }
 ?>
-              <tr class="dataTableRow" onmouseover="this.className='dataTableRowOver';this.style.cursor='hand'" onmouseout="this.className='dataTableRow'" onclick="document.location.href='<?php echo xtc_href_link(FILENAME_CUSTOMERS, 'search=' . $customers['customers_lastname'], 'NONSSL'); ?>'">
+              <tr class="dataTableRow" onmouseover="this.className='dataTableRowOver';this.style.cursor='hand'" onmouseout="this.className='dataTableRow'" onclick="document.location.href='<?php echo vam_href_link(FILENAME_CUSTOMERS, 'search=' . $customers['customers_lastname'], 'NONSSL'); ?>'">
                 <td class="dataTableContent"><?php echo $rows; ?>.</td>
-                <td class="dataTableContent"><?php echo '<a href="' . xtc_href_link(FILENAME_CUSTOMERS, 'search=' . $customers['customers_lastname'], 'NONSSL') . '">' . $customers['customers_firstname'] . ' ' . $customers['customers_lastname'] . '</a>'; ?></td>
+                <td class="dataTableContent"><?php echo '<a href="' . vam_href_link(FILENAME_CUSTOMERS, 'search=' . $customers['customers_lastname'], 'NONSSL') . '">' . $customers['customers_firstname'] . ' ' . $customers['customers_lastname'] . '</a>'; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $currencies->format($customers['ordersum']); ?>&nbsp;</td>
               </tr>
 <?php

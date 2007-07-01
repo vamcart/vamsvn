@@ -17,9 +17,9 @@ if(PRODUCT_IMAGE_THUMBNAIL_ACTIVE == 'true') {
 
 	require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
 
-	xtc_mkdir_recursive(DIR_FS_CATALOG_THUMBNAIL_IMAGES, dirname($products_image_name));
+	vam_mkdir_recursive(DIR_FS_CATALOG_THUMBNAIL_IMAGES, dirname($products_image_name));
 
-	list($width, $height) = xtc_get_image_size(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT);
+	list($width, $height) = vam_get_image_size(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT);
 
 //$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT, DIR_FS_CATALOG_THUMBNAIL_IMAGES . $products_image_name, IMAGE_QUALITY, '');
   $a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $width, $height, DIR_FS_CATALOG_THUMBNAIL_IMAGES . $products_image_name, IMAGE_QUALITY, '');

@@ -54,9 +54,9 @@
           <tr>
              <td><table width="100%">
 <?php
-  $products_query = xtc_db_query("SELECT p.products_id, p.products_quantity, pd.products_name FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE pd.language_id = '" . $_SESSION['languages_id'] . "' AND pd.products_id = p.products_id ORDER BY products_quantity");
-  while ($products_values = xtc_db_fetch_array($products_query)) {
-    echo '<tr><td width="50%" class="dataTableContent"><a href="' . xtc_href_link(FILENAME_CATEGORIES, 'pID=' . $products_values['products_id'] . '&action=new_product') . '"><b>' . $products_values['products_name'] . '</b></a></td><td width="50%" class="dataTableContent">';
+  $products_query = vam_db_query("SELECT p.products_id, p.products_quantity, pd.products_name FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE pd.language_id = '" . $_SESSION['languages_id'] . "' AND pd.products_id = p.products_id ORDER BY products_quantity");
+  while ($products_values = vam_db_fetch_array($products_query)) {
+    echo '<tr><td width="50%" class="dataTableContent"><a href="' . vam_href_link(FILENAME_CATEGORIES, 'pID=' . $products_values['products_id'] . '&action=new_product') . '"><b>' . $products_values['products_name'] . '</b></a></td><td width="50%" class="dataTableContent">';
     if ($products_values['products_quantity'] <='0') {
       echo '<font color="ff0000"><b>'.$products_values['products_quantity'].'</b></font>';
     } else {
@@ -64,7 +64,7 @@
     }
     echo '</td></tr>';
 
-    $products_attributes_query = xtc_db_query("SELECT
+    $products_attributes_query = vam_db_query("SELECT
                                                    pov.products_options_values_name,
                                                    pa.attributes_stock
                                                FROM
@@ -72,7 +72,7 @@
                                                WHERE
                                                    pa.products_id = '".$products_values['products_id'] . "' AND pov.products_options_values_id = pa.options_values_id AND pov.language_id = '" . $_SESSION['languages_id'] . "' ORDER BY pa.attributes_stock");
 								
-    while ($products_attributes_values = xtc_db_fetch_array($products_attributes_query)) {
+    while ($products_attributes_values = vam_db_fetch_array($products_attributes_query)) {
       echo '<tr><td width="50%" class="dataTableContent">&nbsp;&nbsp;&nbsp;&nbsp;-' . $products_attributes_values['products_options_values_name'] . '</td><td width="50%" class="dataTableContent">';
       if ($products_attributes_values['attributes_stock'] <= '0') {
         echo '<font color="ff0000"><b>' . $products_attributes_values['attributes_stock'] . '</b></font>';

@@ -19,7 +19,7 @@
 
   require('includes/application_top.php');
 
-  $system = xtc_get_system_information();
+  $system = vam_get_system_information();
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -78,7 +78,7 @@
                 <td colspan="3" class="smallText"><?php echo $system['uptime']; ?></td>
               </tr>
               <tr>
-                <td colspan="4"><?php echo xtc_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
+                <td colspan="4"><?php echo vam_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
               </tr>
               <tr>
                 <td class="smallText"><b><?php echo TITLE_HTTP_SERVER; ?></b></td>
@@ -93,7 +93,7 @@
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td align="center">

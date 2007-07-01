@@ -19,7 +19,7 @@
 
   require('includes/application_top.php');
 
-  $banner_extension = xtc_banner_image_extension();
+  $banner_extension = vam_banner_image_extension();
 
   // check if the graphs directory exists
   $dir_ok = false;
@@ -35,12 +35,12 @@
     }
   }
 
-  $banner_query = xtc_db_query("select banners_title from " . TABLE_BANNERS . " where banners_id = '" . $_GET['bID'] . "'");
-  $banner = xtc_db_fetch_array($banner_query);
+  $banner_query = vam_db_query("select banners_title from " . TABLE_BANNERS . " where banners_id = '" . $_GET['bID'] . "'");
+  $banner = vam_db_fetch_array($banner_query);
 
   $years_array = array();
-  $years_query = xtc_db_query("select distinct year(banners_history_date) as banner_year from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $_GET['bID'] . "'");
-  while ($years = xtc_db_fetch_array($years_query)) {
+  $years_query = vam_db_query("select distinct year(banners_history_date) as banner_year from " . TABLE_BANNERS_HISTORY . " where banners_id = '" . $_GET['bID'] . "'");
+  while ($years = vam_db_fetch_array($years_query)) {
     $years_array[] = array('id' => $years['banner_year'],
                            'text' => $years['banner_year']);
   }
@@ -88,27 +88,27 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr><?php echo xtc_draw_form('year', FILENAME_BANNER_STATISTICS, '', 'get'); ?>
-            <td class="pageHeading" align="right"><?php echo xtc_draw_separator('pixel_trans.gif', '1', HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="main" align="right"><?php echo TITLE_TYPE . ' ' . xtc_draw_pull_down_menu('type', $type_array, (($_GET['type']) ? $_GET['type'] : 'daily'), 'onChange="this.form.submit();"'); ?><noscript><input type="submit" value="GO"></noscript><br />
+          <tr><?php echo vam_draw_form('year', FILENAME_BANNER_STATISTICS, '', 'get'); ?>
+            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', '1', HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="main" align="right"><?php echo TITLE_TYPE . ' ' . vam_draw_pull_down_menu('type', $type_array, (($_GET['type']) ? $_GET['type'] : 'daily'), 'onChange="this.form.submit();"'); ?><noscript><input type="submit" value="GO"></noscript><br />
 <?php
   switch ($_GET['type']) {
     case 'yearly': break;
     case 'monthly':
-      echo TITLE_YEAR . ' ' . xtc_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript>';
+      echo TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript>';
       break;
     default:
     case 'daily':
-      echo TITLE_MONTH . ' ' . xtc_draw_pull_down_menu('month', $months_array, (($_GET['month']) ? $_GET['month'] : date('n')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript><br />' . TITLE_YEAR . ' ' . xtc_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript>';
+      echo TITLE_MONTH . ' ' . vam_draw_pull_down_menu('month', $months_array, (($_GET['month']) ? $_GET['month'] : date('n')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript><br />' . TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><input type="submit" value="GO"></noscript>';
       break;
   }
 ?>
             </td>
-          <?php echo xtc_draw_hidden_field('page', $_GET['page']) . xtc_draw_hidden_field('bID', $_GET['bID']); ?></form></tr>
+          <?php echo vam_draw_hidden_field('page', $_GET['page']) . vam_draw_hidden_field('bID', $_GET['bID']); ?></form></tr>
         </table></td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td align="center">
@@ -118,16 +118,16 @@
     switch ($_GET['type']) {
       case 'yearly':
         include(DIR_WS_INCLUDES . 'graphs/banner_yearly.php');
-        echo xtc_image(DIR_WS_IMAGES . 'graphs/banner_yearly-' . $banner_id . '.' . $banner_extension);
+        echo vam_image(DIR_WS_IMAGES . 'graphs/banner_yearly-' . $banner_id . '.' . $banner_extension);
         break;
       case 'monthly':
         include(DIR_WS_INCLUDES . 'graphs/banner_monthly.php');
-        echo xtc_image(DIR_WS_IMAGES . 'graphs/banner_monthly-' . $banner_id . '.' . $banner_extension);
+        echo vam_image(DIR_WS_IMAGES . 'graphs/banner_monthly-' . $banner_id . '.' . $banner_extension);
         break;
       default:
       case 'daily':
         include(DIR_WS_INCLUDES . 'graphs/banner_daily.php');
-        echo xtc_image(DIR_WS_IMAGES . 'graphs/banner_daily-' . $banner_id . '.' . $banner_extension);
+        echo vam_image(DIR_WS_IMAGES . 'graphs/banner_daily-' . $banner_id . '.' . $banner_extension);
         break;
     }
 ?>
@@ -152,14 +152,14 @@
     include(DIR_WS_FUNCTIONS . 'html_graphs.php');
     switch ($_GET['type']) {
       case 'yearly':
-        echo xtc_banner_graph_yearly($_GET['bID']);
+        echo vam_banner_graph_yearly($_GET['bID']);
         break;
       case 'monthly':
-        echo xtc_banner_graph_monthly($_GET['bID']);
+        echo vam_banner_graph_monthly($_GET['bID']);
         break;
       default:
       case 'daily':
-        echo xtc_banner_graph_daily($_GET['bID']);
+        echo vam_banner_graph_daily($_GET['bID']);
         break;
     }
   }
@@ -167,10 +167,10 @@
         </td>
       </tr>
       <tr>
-        <td><?php echo xtc_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . xtc_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '">' . BUTTON_BACK . '</a>'; ?></td>
+        <td class="main" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '">' . BUTTON_BACK . '</a>'; ?></td>
       </tr>
     </table></td>
 <!-- body_text_eof //-->

@@ -22,80 +22,80 @@
   switch ($_GET['action']) {
     case 'insert':
     case 'save':
-      $manufacturers_id = xtc_db_prepare_input($_GET['mID']);
-      $manufacturers_name = xtc_db_prepare_input($_POST['manufacturers_name']);
+      $manufacturers_id = vam_db_prepare_input($_GET['mID']);
+      $manufacturers_name = vam_db_prepare_input($_POST['manufacturers_name']);
 
       $sql_data_array = array('manufacturers_name' => $manufacturers_name);
 
       if ($_GET['action'] == 'insert') {
         $insert_sql_data = array('date_added' => 'now()');
-        $sql_data_array = xtc_array_merge($sql_data_array, $insert_sql_data);
-        xtc_db_perform(TABLE_MANUFACTURERS, $sql_data_array);
-        $manufacturers_id = xtc_db_insert_id();
+        $sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
+        vam_db_perform(TABLE_MANUFACTURERS, $sql_data_array);
+        $manufacturers_id = vam_db_insert_id();
       } elseif ($_GET['action'] == 'save') {
         $update_sql_data = array('last_modified' => 'now()');
-        $sql_data_array = xtc_array_merge($sql_data_array, $update_sql_data);
-        xtc_db_perform(TABLE_MANUFACTURERS, $sql_data_array, 'update', "manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
+        $sql_data_array = vam_array_merge($sql_data_array, $update_sql_data);
+        vam_db_perform(TABLE_MANUFACTURERS, $sql_data_array, 'update', "manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
       }
 
 	$dir_manufacturers=DIR_FS_CATALOG_IMAGES."/manufacturers";
-    if ($manufacturers_image = &xtc_try_upload('manufacturers_image', $dir_manufacturers)) {
-        xtc_db_query("update " . TABLE_MANUFACTURERS . " set
+    if ($manufacturers_image = &vam_try_upload('manufacturers_image', $dir_manufacturers)) {
+        vam_db_query("update " . TABLE_MANUFACTURERS . " set
                                  manufacturers_image ='manufacturers/".$manufacturers_image->filename . "'
-                                 where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
+                                 where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
     }
 
-      $languages = xtc_get_languages();
+      $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $manufacturers_url_array = $_POST['manufacturers_url'];
         $language_id = $languages[$i]['id'];
 
-        $sql_data_array = array('manufacturers_url' => xtc_db_prepare_input($manufacturers_url_array[$language_id]));
+        $sql_data_array = array('manufacturers_url' => vam_db_prepare_input($manufacturers_url_array[$language_id]));
 
         if ($_GET['action'] == 'insert') {
           $insert_sql_data = array('manufacturers_id' => $manufacturers_id,
                                    'languages_id' => $language_id);
-          $sql_data_array = xtc_array_merge($sql_data_array, $insert_sql_data);
-          xtc_db_perform(TABLE_MANUFACTURERS_INFO, $sql_data_array);
+          $sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
+          vam_db_perform(TABLE_MANUFACTURERS_INFO, $sql_data_array);
         } elseif ($_GET['action'] == 'save') {
-          xtc_db_perform(TABLE_MANUFACTURERS_INFO, $sql_data_array, 'update', "manufacturers_id = '" . xtc_db_input($manufacturers_id) . "' and languages_id = '" . $language_id . "'");
+          vam_db_perform(TABLE_MANUFACTURERS_INFO, $sql_data_array, 'update', "manufacturers_id = '" . vam_db_input($manufacturers_id) . "' and languages_id = '" . $language_id . "'");
         }
       }
 
       if (USE_CACHE == 'true') {
-        xtc_reset_cache_block('manufacturers');
+        vam_reset_cache_block('manufacturers');
       }
 
-      xtc_redirect(xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers_id));
+      vam_redirect(vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers_id));
       break;
 
     case 'deleteconfirm':
-      $manufacturers_id = xtc_db_prepare_input($_GET['mID']);
+      $manufacturers_id = vam_db_prepare_input($_GET['mID']);
 
       if ($_POST['delete_image'] == 'on') {
-        $manufacturer_query = xtc_db_query("select manufacturers_image from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
-        $manufacturer = xtc_db_fetch_array($manufacturer_query);
+        $manufacturer_query = vam_db_query("select manufacturers_image from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
+        $manufacturer = vam_db_fetch_array($manufacturer_query);
         $image_location = DIR_FS_DOCUMENT_ROOT . DIR_WS_IMAGES . $manufacturer['manufacturers_image'];
         if (file_exists($image_location)) @unlink($image_location);
       }
 
-      xtc_db_query("delete from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
-      xtc_db_query("delete from " . TABLE_MANUFACTURERS_INFO . " where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
+      vam_db_query("delete from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
+      vam_db_query("delete from " . TABLE_MANUFACTURERS_INFO . " where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
 
       if ($_POST['delete_products'] == 'on') {
-        $products_query = xtc_db_query("select products_id from " . TABLE_PRODUCTS . " where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
-        while ($products = xtc_db_fetch_array($products_query)) {
-          xtc_remove_product($products['products_id']);
+        $products_query = vam_db_query("select products_id from " . TABLE_PRODUCTS . " where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
+        while ($products = vam_db_fetch_array($products_query)) {
+          vam_remove_product($products['products_id']);
         }
       } else {
-        xtc_db_query("update " . TABLE_PRODUCTS . " set manufacturers_id = '' where manufacturers_id = '" . xtc_db_input($manufacturers_id) . "'");
+        vam_db_query("update " . TABLE_PRODUCTS . " set manufacturers_id = '' where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
       }
 
       if (USE_CACHE == 'true') {
-        xtc_reset_cache_block('manufacturers');
+        vam_reset_cache_block('manufacturers');
       }
 
-      xtc_redirect(xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page']));
+      vam_redirect(vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page']));
       break;
   }
 ?>
@@ -139,24 +139,24 @@
 <?php
   $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], '20', $manufacturers_query_raw, $manufacturers_query_numrows);
-  $manufacturers_query = xtc_db_query($manufacturers_query_raw);
-  while ($manufacturers = xtc_db_fetch_array($manufacturers_query)) {
+  $manufacturers_query = vam_db_query($manufacturers_query_raw);
+  while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
     if (((!$_GET['mID']) || (@$_GET['mID'] == $manufacturers['manufacturers_id'])) && (!$mInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
-      $manufacturer_products_query = xtc_db_query("select count(*) as products_count from " . TABLE_PRODUCTS . " where manufacturers_id = '" . $manufacturers['manufacturers_id'] . "'");
-      $manufacturer_products = xtc_db_fetch_array($manufacturer_products_query);
+      $manufacturer_products_query = vam_db_query("select count(*) as products_count from " . TABLE_PRODUCTS . " where manufacturers_id = '" . $manufacturers['manufacturers_id'] . "'");
+      $manufacturer_products = vam_db_fetch_array($manufacturer_products_query);
 
-      $mInfo_array = xtc_array_merge($manufacturers, $manufacturer_products);
+      $mInfo_array = vam_array_merge($manufacturers, $manufacturer_products);
       $mInfo = new objectInfo($mInfo_array);
     }
 
     if ( (is_object($mInfo)) && ($manufacturers['manufacturers_id'] == $mInfo->manufacturers_id) ) {
-      echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id'] . '&action=edit') . '\'">' . "\n";
+      echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id'] . '&action=edit') . '\'">' . "\n";
     } else {
-      echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id']) . '\'">' . "\n";
+      echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id']) . '\'">' . "\n";
     }
 ?>
                 <td class="dataTableContent"><?php echo $manufacturers['manufacturers_name']; ?></td>
-                <td class="dataTableContent" align="right"><?php if ( (is_object($mInfo)) && ($manufacturers['manufacturers_id'] == $mInfo->manufacturers_id) ) { echo xtc_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id']) . '">' . xtc_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+                <td class="dataTableContent" align="right"><?php if ( (is_object($mInfo)) && ($manufacturers['manufacturers_id'] == $mInfo->manufacturers_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
   }
@@ -173,7 +173,7 @@
   if ($_GET['action'] != 'new') {
 ?>
               <tr>
-                <td align="right" colspan="2" class="smallText"><?php echo xtc_button_link(BUTTON_INSERT, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=new')); ?></td>
+                <td align="right" colspan="2" class="smallText"><?php echo vam_button_link(BUTTON_INSERT, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=new')); ?></td>
               </tr>
 <?php
   }
@@ -186,69 +186,69 @@
     case 'new':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_NEW_MANUFACTURER . '</b>');
 
-      $contents = array('form' => xtc_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'action=insert', 'post', 'enctype="multipart/form-data"'));
+      $contents = array('form' => vam_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'action=insert', 'post', 'enctype="multipart/form-data"'));
       $contents[] = array('text' => TEXT_NEW_INTRO);
-      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_NAME . '<br />' . xtc_draw_input_field('manufacturers_name'));
-      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . xtc_draw_file_field('manufacturers_image'));
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_NAME . '<br />' . vam_draw_input_field('manufacturers_name'));
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . vam_draw_file_field('manufacturers_image'));
 
       $manufacturer_inputs_string = '';
-      $languages = xtc_get_languages();
+      $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $manufacturer_inputs_string .= '<br />' . xtc_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . xtc_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']');
+        $manufacturer_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']');
       }
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_URL . $manufacturer_inputs_string);
-      $contents[] = array('align' => 'center', 'text' => '<br />' . xtc_button(BUTTON_SAVE) . '&nbsp;' . xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $_GET['mID'])));
+      $contents[] = array('align' => 'center', 'text' => '<br />' . vam_button(BUTTON_SAVE) . '&nbsp;' . vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $_GET['mID'])));
       break;
 
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_EDIT_MANUFACTURER . '</b>');
 
-      $contents = array('form' => xtc_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=save', 'post', 'enctype="multipart/form-data"'));
+      $contents = array('form' => vam_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=save', 'post', 'enctype="multipart/form-data"'));
       $contents[] = array('text' => TEXT_EDIT_INTRO);
-      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_NAME . '<br />' . xtc_draw_input_field('manufacturers_name', $mInfo->manufacturers_name));
-      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . xtc_draw_file_field('manufacturers_image') . '<br />' . $mInfo->manufacturers_image);
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_NAME . '<br />' . vam_draw_input_field('manufacturers_name', $mInfo->manufacturers_name));
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . vam_draw_file_field('manufacturers_image') . '<br />' . $mInfo->manufacturers_image);
 
       $manufacturer_inputs_string = '';
-      $languages = xtc_get_languages();
+      $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $manufacturer_inputs_string .= '<br />' . xtc_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . xtc_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']', xtc_get_manufacturer_url($mInfo->manufacturers_id, $languages[$i]['id']));
+        $manufacturer_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']', vam_get_manufacturer_url($mInfo->manufacturers_id, $languages[$i]['id']));
       }
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_URL . $manufacturer_inputs_string);
-      $contents[] = array('align' => 'center', 'text' => '<br />' . xtc_button(BUTTON_SAVE) . '&nbsp;' . xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id)));
+      $contents[] = array('align' => 'center', 'text' => '<br />' . vam_button(BUTTON_SAVE) . '&nbsp;' . vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id)));
       break;
 
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_DELETE_MANUFACTURER . '</b>');
 
-      $contents = array('form' => xtc_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=deleteconfirm'));
+      $contents = array('form' => vam_draw_form('manufacturers', FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO);
       $contents[] = array('text' => '<br /><b>' . $mInfo->manufacturers_name . '</b>');
-      $contents[] = array('text' => '<br />' . xtc_draw_checkbox_field('delete_image', '', true) . ' ' . TEXT_DELETE_IMAGE);
+      $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('delete_image', '', true) . ' ' . TEXT_DELETE_IMAGE);
 
       if ($mInfo->products_count > 0) {
-        $contents[] = array('text' => '<br />' . xtc_draw_checkbox_field('delete_products') . ' ' . TEXT_DELETE_PRODUCTS);
+        $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('delete_products') . ' ' . TEXT_DELETE_PRODUCTS);
         $contents[] = array('text' => '<br />' . sprintf(TEXT_DELETE_WARNING_PRODUCTS, $mInfo->products_count));
       }
 
-      $contents[] = array('align' => 'center', 'text' => '<br />' . xtc_button(BUTTON_DELETE) . '&nbsp;' . xtc_button_link(BUTTON_CANCEL, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id)));
+      $contents[] = array('align' => 'center', 'text' => '<br />' . vam_button(BUTTON_DELETE) . '&nbsp;' . vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id)));
       break;
 
     default:
       if (is_object($mInfo)) {
         $heading[] = array('text' => '<b>' . $mInfo->manufacturers_name . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => xtc_button_link(BUTTON_EDIT, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=edit')) . '&nbsp;' . xtc_button_link(BUTTON_DELETE, xtc_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=delete')));
-        $contents[] = array('text' => '<br />' . TEXT_DATE_ADDED . ' ' . xtc_date_short($mInfo->date_added));
-        if (xtc_not_null($mInfo->last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . xtc_date_short($mInfo->last_modified));
-        $contents[] = array('text' => '<br />' . xtc_info_image($mInfo->manufacturers_image, $mInfo->manufacturers_name));
+        $contents[] = array('align' => 'center', 'text' => vam_button_link(BUTTON_EDIT, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=edit')) . '&nbsp;' . vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=delete')));
+        $contents[] = array('text' => '<br />' . TEXT_DATE_ADDED . ' ' . vam_date_short($mInfo->date_added));
+        if (vam_not_null($mInfo->last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . vam_date_short($mInfo->last_modified));
+        $contents[] = array('text' => '<br />' . vam_info_image($mInfo->manufacturers_image, $mInfo->manufacturers_name));
         $contents[] = array('text' => '<br />' . TEXT_PRODUCTS . ' ' . $mInfo->products_count);
       }
       break;
   }
 
-  if ( (xtc_not_null($heading)) && (xtc_not_null($contents)) ) {
+  if ( (vam_not_null($heading)) && (vam_not_null($contents)) ) {
     echo '            <td width="25%" valign="top">' . "\n";
 
     $box = new box;

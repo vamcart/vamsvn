@@ -39,7 +39,7 @@
   // Set the level of error reporting
   error_reporting(E_ALL & ~E_NOTICE);
 
-  // Disable use_trans_sid as xtc_href_link() does this manually
+  // Disable use_trans_sid as vam_href_link() does this manually
   if (function_exists('ini_set')) {
     ini_set('session.use_trans_sid', 0);
   }
@@ -240,30 +240,30 @@
   define('TABLE_CIP_FILE_INTEGRITY','contrib_installer_files_integrity');
 
   // include needed functions
-  require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_close.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_error.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_query.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_queryCached.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_perform.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_fetch_array.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_num_rows.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_data_seek.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_insert_id.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_free_result.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_fetch_fields.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_output.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_input.inc.php');
-  require_once(DIR_FS_INC . 'xtc_db_prepare_input.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_ip_address.inc.php');
-  require_once(DIR_FS_INC . 'xtc_setcookie.inc.php');
-  require_once(DIR_FS_INC . 'xtc_validate_email.inc.php');
-  require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
-  require_once(DIR_FS_INC . 'xtc_add_tax.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_tax_rate.inc.php');
-  require_once(DIR_FS_INC . 'xtc_get_qty.inc.php');
-  require_once(DIR_FS_INC . 'xtc_product_link.inc.php');
-  require_once(DIR_FS_INC . 'xtc_cleanName.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_connect.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_close.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_error.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_query.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_queryCached.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_perform.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_fetch_array.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_num_rows.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_data_seek.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_insert_id.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_free_result.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_fetch_fields.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_output.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_input.inc.php');
+  require_once(DIR_FS_INC . 'vam_db_prepare_input.inc.php');
+  require_once(DIR_FS_INC . 'vam_get_ip_address.inc.php');
+  require_once(DIR_FS_INC . 'vam_setcookie.inc.php');
+  require_once(DIR_FS_INC . 'vam_validate_email.inc.php');
+  require_once(DIR_FS_INC . 'vam_not_null.inc.php');
+  require_once(DIR_FS_INC . 'vam_add_tax.inc.php');
+  require_once(DIR_FS_INC . 'vam_get_tax_rate.inc.php');
+  require_once(DIR_FS_INC . 'vam_get_qty.inc.php');
+  require_once(DIR_FS_INC . 'vam_product_link.inc.php');
+  require_once(DIR_FS_INC . 'vam_cleanName.inc.php');
 
 
   // customization for the design layout
@@ -281,21 +281,21 @@
 //  require(DIR_WS_FUNCTIONS . 'database.php');
 
   // make a connection to the database... now
-  xtc_db_connect() or die('Unable to connect to database server!');
+  vam_db_connect() or die('Unable to connect to database server!');
 
   // set application wide parameters
-  $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION . '');
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+  $configuration_query = vam_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION . '');
+  while ($configuration = vam_db_fetch_array($configuration_query)) {
     define($configuration['cfgKey'], $configuration['cfgValue']);
   }
 
   define('FILENAME_IMAGEMANIPULATOR',IMAGE_MANIPULATOR);
     function xtDBquery($query) {
        if (DB_CACHE=='true') {
-             $result=xtc_db_queryCached($query);
+             $result=vam_db_queryCached($query);
              //echo 'cached query: '.$query.'<br>';
           } else {
-             $result=xtc_db_query($query);
+             $result=vam_db_query($query);
     }
     return $result;
   }
@@ -323,8 +323,8 @@
   session_name('sid');
 	if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
-  require_once (DIR_FS_INC.'xtc_get_cookie_info.inc.php');  // get the session cookie parameters
-  $cookie_info = xtc_get_cookie_info();
+  require_once (DIR_FS_INC.'vam_get_cookie_info.inc.php');  // get the session cookie parameters
+  $cookie_info = vam_get_cookie_info();
   // set the session cookie parameters
   if (function_exists('session_set_cookie_params')) {
    	session_set_cookie_params(0, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
@@ -344,7 +344,7 @@
   // start the session
   $session_started = false;
   if (SESSION_FORCE_COOKIE_USE == 'True') {
-	xtc_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, 
+	vam_setcookie('cookie_test', 'please_accept_for_session', time() + 60 * 60 * 24 * 30, 
 	           $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
 
     if (isset($_COOKIE['cookie_test'])) {
@@ -373,7 +373,7 @@
 
     if ($_SESSION['SESSION_SSL_ID'] != $ssl_session_id) {
       session_destroy();
-      xtc_redirect(xtc_href_link(FILENAME_SSL_CHECK));
+      vam_redirect(vam_href_link(FILENAME_SSL_CHECK));
     }
   }
 
@@ -388,21 +388,21 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
 	if ($_SESSION['SESSION_USER_AGENT'] != $http_user_agent) {
 		session_destroy();
-		xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+		vam_redirect(vam_href_link(FILENAME_LOGIN));
 	} 
 }
 
 
   // verify the IP address if the feature is enabled
   if (SESSION_CHECK_IP_ADDRESS == 'True') {
-    $ip_address = xtc_get_ip_address();
-    if (!xtc_session_is_registered('SESSION_IP_ADDRESS')) {
+    $ip_address = vam_get_ip_address();
+    if (!vam_session_is_registered('SESSION_IP_ADDRESS')) {
       $_SESSION['SESSION_IP_ADDRESS'] = $ip_address;
     }
 
     if ($_SESSION['SESSION_IP_ADDRESS'] != $ip_address) {
       session_destroy();
-      xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+      vam_redirect(vam_href_link(FILENAME_LOGIN));
     }
   }
 
@@ -504,17 +504,17 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   }
 
   // for Customers Status
-  xtc_get_customers_statuses();
+  vam_get_customers_statuses();
 
 
 
   $pagename = strtok($current_page, '.');
   if (!isset($_SESSION['customer_id'])) {
-    xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+    vam_redirect(vam_href_link(FILENAME_LOGIN));
   }
 
-  if (xtc_check_permission($pagename) == '0') {
-    xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+  if (vam_check_permission($pagename) == '0') {
+    vam_redirect(vam_href_link(FILENAME_LOGIN));
   }
 
 
@@ -543,8 +543,8 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     $tPath = '';
   }
 
-  if (xtc_not_null($tPath)) {
-    $tPath_array = xtc_parse_topic_path($tPath);
+  if (vam_not_null($tPath)) {
+    $tPath_array = vam_parse_topic_path($tPath);
     $tPath = implode('_', $tPath_array);
     $current_topic_id = $tPath_array[(sizeof($tPath_array)-1)];
   } else {

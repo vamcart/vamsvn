@@ -63,7 +63,7 @@
   $srDefaultSort = 4;
   
   // report views (1: yearly 2: monthly 3: weekly 4: daily)
-  if ( ($_GET['report']) && (xtc_not_null($_GET['report'])) )
+  if ( ($_GET['report']) && (vam_not_null($_GET['report'])) )
 {    $srView = $_GET['report'];
   }
   if ($srView < 1 || $srView > 4) {
@@ -71,7 +71,7 @@
   }
 
   // detail
-  if ( ($_GET['detail']) && (xtc_not_null($_GET['detail'])) )
+  if ( ($_GET['detail']) && (vam_not_null($_GET['detail'])) )
 {    $srDetail = $_GET['detail'];
   }
   if ($srDetail < 0 || $srDetail > 2) {
@@ -79,7 +79,7 @@
   }
   
   // report views (1: yearly 2: monthly 3: weekly 4: daily)
-  if ( ($_GET['export']) && (xtc_not_null($_GET['export'])) )
+  if ( ($_GET['export']) && (vam_not_null($_GET['export'])) )
 {    $srExp = $_GET['export'];
   }
   if ($srExp < 0 || $srExp > 2) {
@@ -87,7 +87,7 @@
   }
   
   // item_level
-  if ( ($_GET['max']) && (xtc_not_null($_GET['max'])) ) {
+  if ( ($_GET['max']) && (vam_not_null($_GET['max'])) ) {
     $srMax = $_GET['max'];
   }
   if (!is_numeric($srMax)) {
@@ -95,7 +95,7 @@
   }
       
   // order status
-  if ( ($_GET['status']) && (xtc_not_null($_GET['status'])) )
+  if ( ($_GET['status']) && (vam_not_null($_GET['status'])) )
 {    $srStatus = $_GET['status'];
   }
   if (!is_numeric($srStatus)) {
@@ -103,14 +103,14 @@
   }
   
    // paymenttype
-  if ( ($_GET['payment']) && (xtc_not_null($_GET['payment'])) )
+  if ( ($_GET['payment']) && (vam_not_null($_GET['payment'])) )
 {    $srPayment = $_GET['payment'];
   } else {
  	$srPayment = 0;
   }
   
   // sort
-  if ( ($_GET['sort']) && (xtc_not_null($_GET['sort'])) ) {
+  if ( ($_GET['sort']) && (vam_not_null($_GET['sort'])) ) {
     $srSort = $_GET['sort'];
   }
   if ($srSort < 1 || $srSort > 6) {
@@ -120,19 +120,19 @@
   // check start and end Date
   $startDate = "";
   $startDateG = 0;
-  if ( ($_GET['startD']) && (xtc_not_null($_GET['startD'])) )
+  if ( ($_GET['startD']) && (vam_not_null($_GET['startD'])) )
 {    $sDay = $_GET['startD'];
     $startDateG = 1;
   } else {
     $sDay = 1;
   }
-  if ( ($_GET['startM']) && (xtc_not_null($_GET['startM'])) )
+  if ( ($_GET['startM']) && (vam_not_null($_GET['startM'])) )
 {    $sMon = $_GET['startM'];
     $startDateG = 1;
   } else {
     $sMon = 1;
   }
-  if ( ($_GET['startY']) && (xtc_not_null($_GET['startY'])) )
+  if ( ($_GET['startY']) && (vam_not_null($_GET['startY'])) )
 {    $sYear = $_GET['startY'];
     $startDateG = 1;
   } else {
@@ -146,19 +146,19 @@
     
   $endDate = "";
   $endDateG = 0;
-  if ( ($_GET['endD']) && (xtc_not_null($_GET['endD'])) ) {
+  if ( ($_GET['endD']) && (vam_not_null($_GET['endD'])) ) {
     $eDay = $_GET['endD'];
     $endDateG = 1;
   } else {
     $eDay = 1;
   }
-  if ( ($_GET['endM']) && (xtc_not_null($_GET['endM'])) ) {
+  if ( ($_GET['endM']) && (vam_not_null($_GET['endM'])) ) {
     $eMon = $_GET['endM'];
     $endDateG = 1;
   } else {
     $eMon = 1;
   }
-  if ( ($_GET['endY']) && (xtc_not_null($_GET['endY'])) ) {
+  if ( ($_GET['endY']) && (vam_not_null($_GET['endY'])) ) {
     $eYear = $_GET['endY'];
     $endDateG = 1;
   } else {
@@ -431,17 +431,17 @@ while ($sr->actDate < $sr->endDate) {
     switch ($srView) {
       case '3':
 ?>
-                      <td class="dataTableContent" align="right"><?php echo xtc_date_long(date("Y-m-d\ H:i:s", $sr->showDate)) . " - " . xtc_date_short(date("Y-m-d\ H:i:s", $sr->showDateEnd)); ?></td>
+                      <td class="dataTableContent" align="right"><?php echo vam_date_long(date("Y-m-d\ H:i:s", $sr->showDate)) . " - " . vam_date_short(date("Y-m-d\ H:i:s", $sr->showDateEnd)); ?></td>
 <?php
         break;
       case '4':
 ?>
-                      <td class="dataTableContent" align="right"><?php echo xtc_date_long(date("Y-m-d\ H:i:s", $sr->showDate)); ?></td>
+                      <td class="dataTableContent" align="right"><?php echo vam_date_long(date("Y-m-d\ H:i:s", $sr->showDate)); ?></td>
 <?php
         break;
       default;
 ?>
-                      <td class="dataTableContent" align="right"><?php echo xtc_date_short(date("Y-m-d\ H:i:s", $sr->showDate)) . " - " . xtc_date_short(date("Y-m-d\ H:i:s", $sr->showDateEnd)); ?></td>
+                      <td class="dataTableContent" align="right"><?php echo vam_date_short(date("Y-m-d\ H:i:s", $sr->showDate)) . " - " . vam_date_short(date("Y-m-d\ H:i:s", $sr->showDateEnd)); ?></td>
 <?php
     }
 ?>
@@ -466,7 +466,7 @@ while ($sr->actDate < $sr->endDate) {
 ?>
                     <tr class="dataTableRow" onmouseover="this.className='dataTableRowOver';this.style.cursor='hand'" onmouseout="this.className='dataTableRow'">
                     <td class="dataTableContent">&nbsp;</td>
-                    <td class="dataTableContent" align="left"><a href="<?php echo xtc_catalog_href_link("product_info.php?products_id=" . $info[$i]['pid']) ?>" target="_blank"><?php echo $info[$i]['pmodel'].' : '.$info[$i]['pname']; ?></a>
+                    <td class="dataTableContent" align="left"><a href="<?php echo vam_catalog_href_link("product_info.php?products_id=" . $info[$i]['pid']) ?>" target="_blank"><?php echo $info[$i]['pmodel'].' : '.$info[$i]['pname']; ?></a>
 <?php
   if (is_array($info[$i]['attr'])) {
     $attr_info = $info[$i]['attr'];
