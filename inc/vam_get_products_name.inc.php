@@ -22,7 +22,7 @@
     if (empty($language)) $language = $_SESSION['languages_id'];
 
     $product_query = "select products_name from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id = '" . $product_id . "' and language_id = '" . $language . "'";
-    $product_query  = xtDBquery($product_query);
+    $product_query  = vamDBquery($product_query);
     $product = vam_db_fetch_array($product_query,true);
 
     return $product['products_name'];

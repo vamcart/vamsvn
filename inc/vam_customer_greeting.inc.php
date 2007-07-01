@@ -23,7 +23,7 @@
     if (isset($_SESSION['customer_last_name']) && isset($_SESSION['customer_id'])) {
       if (!isset($_SESSION['customer_gender'])) {
       $check_customer_query = "select customers_gender FROM  " . TABLE_CUSTOMERS . " where customers_id = '" . $_SESSION['customer_id'] . "'";
-      $check_customer_query = xtDBquery($check_customer_query);
+      $check_customer_query = vamDBquery($check_customer_query);
       $check_customer_data  = vam_db_fetch_array($check_customer_query,true);
       $_SESSION['customer_gender'] = $check_customer_data['customers_gender'];
       }

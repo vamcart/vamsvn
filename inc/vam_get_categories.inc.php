@@ -34,7 +34,7 @@
                                        and cd.language_id = '" . $_SESSION['languages_id'] . "'
                                        order by sort_order, cd.categories_name";
 
-    $categories_query  = xtDBquery($categories_query);
+    $categories_query  = vamDBquery($categories_query);
 
     while ($categories = vam_db_fetch_array($categories_query,true)) {
       $categories_array[] = array('id' => $categories['categories_id'],

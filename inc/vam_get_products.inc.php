@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-require(DIR_FS_CATALOG.'includes/classes/xtcPrice.php');   
+require(DIR_FS_CATALOG.'includes/classes/vamPrice.php');   
 
 function unserialize_session_data( $session_data ) {
    $variables = array();
@@ -40,7 +40,7 @@ function vam_get_products($session) {
 
 
           // dirty workaround
-          $xtPrice = new xtcPrice($session['currency'],$session['customers_status']['customers_status_id']);
+          $xtPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id']);
           $products_price=$xtPrice->xtcGetPrice($products['products_id'],
                                         $format=false,
                                         $session['cart']->contents[$products_id]['qty'],
@@ -65,7 +65,7 @@ function vam_get_products($session) {
     }
     
 function attributes_price($products_id,$session) {
-      $xtPrice = new xtcPrice($session['currency'],$session['customers_status']['customers_status_id']);
+      $xtPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id']);
       if (isset($session['contents'][$products_id]['attributes'])) {
         reset($session['contents'][$products_id]['attributes']);
         while (list($option, $value) = each($session['contents'][$products_id]['attributes'])) {

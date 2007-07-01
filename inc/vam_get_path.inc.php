@@ -27,11 +27,11 @@
       } else {
         $cPath_new = '';
         $last_category_query = "select parent_id from " . TABLE_CATEGORIES . " where categories_id = '" . $cPath_array[($cp_size-1)] . "'";
-        $last_category_query  = xtDBquery($last_category_query);
+        $last_category_query  = vamDBquery($last_category_query);
         $last_category = vam_db_fetch_array($last_category_query,true);
 
         $current_category_query = "select parent_id from " . TABLE_CATEGORIES . " where categories_id = '" . $current_category_id . "'";
-        $current_category_query  = xtDBquery($current_category_query);
+        $current_category_query  = vamDBquery($current_category_query);
         $current_category = vam_db_fetch_array($current_category_query,true);
 
         if ($last_category['parent_id'] == $current_category['parent_id']) {

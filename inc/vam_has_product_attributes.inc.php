@@ -20,7 +20,7 @@
 // Check if product has attributes
   function vam_has_product_attributes($products_id) {
     $attributes_query = "select count(*) as count from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . $products_id . "'";
-    $attributes_query  = xtDBquery($attributes_query);
+    $attributes_query  = vamDBquery($attributes_query);
     $attributes = vam_db_fetch_array($attributes_query,true);
 
     if ($attributes['count'] > 0) {
