@@ -15,12 +15,12 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
  
- function xtc_get_cross_sell_name($cross_sell_group, $language_id = '') {
+ function vam_get_cross_sell_name($cross_sell_group, $language_id = '') {
 
 	if (!$language_id)
 		$language_id = $_SESSION['languages_id'];
-	$cross_sell_query = xtc_db_query("select groupname from ".TABLE_PRODUCTS_XSELL_GROUPS." where products_xsell_grp_name_id = '".$cross_sell_group."' and language_id = '".$language_id."'");
-	$cross_sell = xtc_db_fetch_array($cross_sell_query);
+	$cross_sell_query = vam_db_query("select groupname from ".TABLE_PRODUCTS_XSELL_GROUPS." where products_xsell_grp_name_id = '".$cross_sell_group."' and language_id = '".$language_id."'");
+	$cross_sell = vam_db_fetch_array($cross_sell_query);
 
 	return $cross_sell['groupname'];
 }

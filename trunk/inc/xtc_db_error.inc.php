@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_error.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_db_error.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,17 +11,17 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(database.php,v 1.19 2003/03/22); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_db_error.inc.php,v 1.4 2003/08/19); www.nextcommerce.org 
-   (c) 2004 xt:Commerce (xtc_db_error.inc.php,v 1.4 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_db_error.inc.php,v 1.4 2003/08/19); www.nextcommerce.org 
+   (c) 2004 xt:Commerce (vam_db_error.inc.php,v 1.4 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-//  function xtc_db_error($query, $errno, $error) { 
+//  function vam_db_error($query, $errno, $error) { 
 //    die('<font color="#000000"><b>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[XT SQL Error]</font></small><br /><br /></b></font>');
 //  }
   
-function xtc_db_error($query, $errno, $error) {
+function vam_db_error($query, $errno, $error) {
 // BOF db-error processing
    include(DIR_WS_LANGUAGES . 'russian/russian_db_error.php');
    $msg = "\n" . 'MYSQL ERROR REPORT' . "\n" . " - " . date("d/m/Y H:m:s",time()) . "\n" . '---------------------------------------' . "\n";

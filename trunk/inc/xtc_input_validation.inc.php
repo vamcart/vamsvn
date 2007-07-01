@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_input_validation.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_input_validation.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,14 +9,14 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
-   (c) 2003	 nextcommerce (xtc_input_validation.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_input_validation.inc.php,v 1.3 2003/08/13); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_input_validation.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_input_validation.inc.php,v 1.3 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
 
-   function xtc_input_validation($var,$type,$replace_char) {
+   function vam_input_validation($var,$type,$replace_char) {
 
       switch($type) {
                 case 'cPath':

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_db_queryCached.inc.php 782 2007-02-07 10:51:57 VaM $
+   $Id: vam_db_queryCached.inc.php 782 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,7 +17,7 @@
 
 
 
-  function xtc_db_queryCached($query, $link = 'db_link') {
+  function vam_db_queryCached($query, $link = 'db_link') {
     global $$link;
 
     // get HASH ID for filename
@@ -44,7 +44,7 @@
          if (file_exists($file)) @unlink($file);
 
         // get result from DB and create new file
-        $result = mysql_query($query, $$link) or xtc_db_error($query, mysql_errno(), mysql_error());
+        $result = mysql_query($query, $$link) or vam_db_error($query, mysql_errno(), mysql_error());
 
         if (STORE_DB_TRANSACTIONS == 'true') {
                 $result_error = mysql_error();
@@ -52,7 +52,7 @@
         }
 
         // fetch data into array
-        while ($record = xtc_db_fetch_array($result))
+        while ($record = vam_db_fetch_array($result))
                 $records[]=$record;
 
 

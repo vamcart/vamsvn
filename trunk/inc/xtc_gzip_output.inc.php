@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_gzip_output.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_gzip_output.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,15 +11,15 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(gzip_compression.php,v 1.3 2003/02/11); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_gzip_output.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_gzip_output.inc.php,v 1.3 2003/08/13); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_gzip_output.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_gzip_output.inc.php,v 1.3 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
 /* $level = compression level 0-9, 0=none, 9=max */
-  function xtc_gzip_output($level = 5) {
-    if ($encoding = xtc_check_gzip()) {
+  function vam_gzip_output($level = 5) {
+    if ($encoding = vam_check_gzip()) {
       $contents = ob_get_contents();
       ob_end_clean();
 

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_Security.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_Security.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -42,7 +42,7 @@
        attacks, thanks to webmedic, Timax, larsneo.
  */
 
-function xtc_Security()
+function vam_Security()
 {
     // Cross-Site Scripting attack defense - Sent by larsneo
     // some syntax checking against injected javascript
@@ -68,7 +68,7 @@ function xtc_Security()
                         (eregi("<[^>]*document.*\"?[^>]*>", $secvalue)) ||
                         (eregi("<[^>]*cookie.*\"?[^>]*>", $secvalue))) {
                         xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
-                       xtc_redirect(FILENAME_DEFAULT);
+                       vam_redirect(FILENAME_DEFAULT);
                 }
             }
         }
@@ -90,7 +90,7 @@ function xtc_Security()
                         ) {
 
                         xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
-                        xtc_redirect(FILENAME_DEFAULT);
+                        vam_redirect(FILENAME_DEFAULT);
                 }
              }
         }
@@ -116,7 +116,7 @@ function xtc_Security()
                         ) {
 
                         xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
-                        xtc_redirect(FILENAME_DEFAULT);
+                        vam_redirect(FILENAME_DEFAULT);
                 }
             }
         }
@@ -243,7 +243,7 @@ function xtcMailHackAttempt($detecting_file        =        "(no filename availa
 
 
 
-        xtc_php_mail(EMAIL_SUPPORT_ADDRESS,
+        vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                     EMAIL_SUPPORT_NAME,
                     EMAIL_SUPPORT_ADDRESS,
                     EMAIL_SUPPORT_NAME,

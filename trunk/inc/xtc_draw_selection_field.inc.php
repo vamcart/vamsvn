@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_draw_selection_field.inc.php 812 2007-02-07 10:51:57 VaM $
+   $Id: vam_draw_selection_field.inc.php 812 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,40 +11,40 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(html_output.php,v 1.52 2003/03/19); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_draw_selection_field.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_draw_selection_field.inc.php,v 1.3 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_draw_selection_field.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_draw_selection_field.inc.php,v 1.3 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
   
-// Output a selection field - alias function for xtc_draw_checkbox_field() and xtc_draw_radio_field()
+// Output a selection field - alias function for vam_draw_checkbox_field() and vam_draw_radio_field()
 
-  function xtc_draw_selection_field($name, $type, $value = '', $checked = false, $parameters = '') {
-    $selection = '<input type="' . xtc_parse_input_field_data($type, array('"' => '&quot;')) . '" name="' . xtc_parse_input_field_data($name, array('"' => '&quot;')) . '"';
+  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $parameters = '') {
+    $selection = '<input type="' . vam_parse_input_field_data($type, array('"' => '&quot;')) . '" name="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '"';
 
-    if (xtc_not_null($value)) $selection .= ' value="' . xtc_parse_input_field_data($value, array('"' => '&quot;')) . '"';
+    if (vam_not_null($value)) $selection .= ' value="' . vam_parse_input_field_data($value, array('"' => '&quot;')) . '"';
 
     if ( ($checked == true) || ($GLOBALS[$name] == 'on') || ( (isset($value)) && ($GLOBALS[$name] == $value) ) ) {
       $selection .= ' checked="checked"';
     }
 
-    if (xtc_not_null($parameters)) $selection .= ' ' . $parameters;
+    if (vam_not_null($parameters)) $selection .= ' ' . $parameters;
 
     $selection .= ' />';
 
     return $selection;
   }
   
-    function xtc_draw_selection_fieldNote($data, $type, $value = '', $checked = false, $parameters = '') {
-    $selection = $data['suffix'].'<input type="' . xtc_parse_input_field_data($type, array('"' => '&quot;')) . '" name="' . xtc_parse_input_field_data($data['name'], array('"' => '&quot;')) . '"';
+    function vam_draw_selection_fieldNote($data, $type, $value = '', $checked = false, $parameters = '') {
+    $selection = $data['suffix'].'<input type="' . vam_parse_input_field_data($type, array('"' => '&quot;')) . '" name="' . vam_parse_input_field_data($data['name'], array('"' => '&quot;')) . '"';
 
-    if (xtc_not_null($value)) $selection .= ' value="' . xtc_parse_input_field_data($value, array('"' => '&quot;')) . '"';
+    if (vam_not_null($value)) $selection .= ' value="' . vam_parse_input_field_data($value, array('"' => '&quot;')) . '"';
 
     if ( ($checked == true) || ($GLOBALS[$data['name']] == 'on') || ( (isset($value)) && ($GLOBALS[$data['name']] == $value) ) ) {
       $selection .= ' checked="checked"';
     }
 
-    if (xtc_not_null($parameters)) $selection .= ' ' . $parameters;
+    if (vam_not_null($parameters)) $selection .= ' ' . $parameters;
 
     $selection .= ' />'.$data['text'];
 

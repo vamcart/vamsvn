@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-$Id: xtc_get_cookies_info.inc.php 1535 2007-02-07 10:51:57 VaM $
+$Id: vam_get_cookies_info.inc.php 1535 2007-02-07 10:51:57 VaM $
 
 @author Andrey Chorniy
 Released under the GNU General Public License
@@ -11,7 +11,7 @@ Released under the GNU General Public License
  *
  * @return cookie info array, which
  */
-function xtc_get_cookie_info () {
+function vam_get_cookie_info () {
 
     if (defined('HTTP_COOKIE_DOMAIN')){
         $cookie_domain = HTTP_COOKIE_DOMAIN;
@@ -37,7 +37,7 @@ function xtc_get_cookie_info () {
         }
     }
     
-    if (!xtc_not_null($cookie_domain)){
+    if (!vam_not_null($cookie_domain)){
         $cookie_domain = '';
     }
 

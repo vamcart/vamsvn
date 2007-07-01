@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_gdlib_check.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_gdlib_check.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -9,8 +9,8 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on:
-   (c) 2003	 nextcommerce (xtc_format_price.inc.php,v 1.7 2003/08/19); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_gdlib_check.inc.php,v 1.7 2004/08/25); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_format_price.inc.php,v 1.7 2003/08/19); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_gdlib_check.inc.php,v 1.7 2004/08/25); xt-commerce.com
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_validate_email.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_validate_email.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,15 +11,15 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(validations.php,v 1.11 2003/02/11); www.oscommerce.com 
-   (c) 2003	 nextcommerce (xtc_validate_email.inc.php,v 1.5 2003/08/14); www.nextcommerce.org
-   (c) 2004 xt:Commerce (xtc_validate_email.inc.php,v 1.5 2003/08/13); xt-commerce.com
+   (c) 2003	 nextcommerce (vam_validate_email.inc.php,v 1.5 2003/08/14); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_validate_email.inc.php,v 1.5 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
   //
-  // Function    : xtc_validate_email
+  // Function    : vam_validate_email
   //
   // Arguments   : email   email address to be checked
   //
@@ -48,7 +48,7 @@
   //
   ////////////////////////////////////////////////////////////////////////////////////////////////
 
-  function xtc_validate_email($email) {
+  function vam_validate_email($email) {
     $valid_address = true;
 
     $mail_pat = '^(.+)@(.+)$';
