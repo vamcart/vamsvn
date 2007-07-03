@@ -1325,7 +1325,7 @@ create table cip_depend (
 );
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.21');
+INSERT INTO database_version(version) VALUES ('1.3');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
