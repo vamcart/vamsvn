@@ -30,7 +30,7 @@
 
 
     function vam_collect_posts() {
-      global $coupon_no, $REMOTE_ADDR,$xtPrice,$cc_id;
+      global $coupon_no, $REMOTE_ADDR,$vamPrice,$cc_id;
       if (!$REMOTE_ADDR) $REMOTE_ADDR=$_SERVER['REMOTE_ADDR'];
       if ($_POST['gv_redeem_code']) {
         $gv_query = vam_db_query("select coupon_id, coupon_amount, coupon_type, coupon_minimum_order,uses_per_coupon, uses_per_user, restrict_to_products,restrict_to_categories from " . TABLE_COUPONS . " where coupon_code='".$_POST['gv_redeem_code']."' and coupon_active='Y'");
@@ -74,7 +74,7 @@
             // no gv_amount so insert
             $gv_insert = vam_db_query("insert into " . TABLE_COUPON_GV_CUSTOMER . " (customer_id, amount) values ('" . $_SESSION['customer_id'] . "', '" . $total_gv_amount . "')");
           }
-          vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, 'info_message=' . urlencode(REDEEMED_AMOUNT. $xtPrice->Format($gv_amount,true,0,true)), 'SSL'));
+          vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, 'info_message=' . urlencode(REDEEMED_AMOUNT. $vamPrice->Format($gv_amount,true,0,true)), 'SSL'));
 
 
 
