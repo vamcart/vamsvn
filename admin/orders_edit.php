@@ -89,7 +89,7 @@ if ($_GET['action'] == "product_ins") {
 	$c_info = vam_oe_customer_infos($order->customer['ID']);
 	$tax_rate = vam_get_tax_rate($product['products_tax_class_id'], $c_info['country_id'], $c_info['zone_id']);
 
-	$price = $vamPrice->xtcGetPrice($_POST['products_id'], $format = false, $_POST['products_quantity'], $product['products_tax_class_id'], '', '', $order->customer['ID']);
+	$price = $vamPrice->Price($_POST['products_id'], $format = false, $_POST['products_quantity'], $product['products_tax_class_id'], '', '', $order->customer['ID']);
 
 	$final_price = $price * $_POST['products_quantity'];
 
@@ -125,7 +125,7 @@ if ($_GET['action'] == "product_option_edit") {
 	$options_values_price = ($ov_price.$_POST['prefix'].$_POST['options_values_price']);
 	$products_price = ($products_old_price + $options_values_price);
 
-	$price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
+	$price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
 
 	$final_price = $price * $products['products_quantity'];
 
@@ -194,11 +194,11 @@ if ($_GET['action'] == "product_option_ins") {
 
 	}
 
-	$products_old_price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
+	$products_old_price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
 
 	$products_price = ($products_old_price + $options_values_price);
 
-	$price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
+	$price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
 
 	$final_price = $price * $products['products_quantity'];
 
@@ -232,7 +232,7 @@ if ($_GET['action'] == "shipping_edit") {
 	$shipping_text = constant(MODULE_SHIPPING_.strtoupper($_POST['shipping'])._TEXT_TITLE);
 	$shipping_class = $_POST['shipping'].'_'.$_POST['shipping'];
 
-	$text = $vamPrice->xtcFormat($_POST['value'], true);
+	$text = $vamPrice->Format($_POST['value'], true);
 
 	$sql_data_array = array ('orders_id' => vam_db_prepare_input($_POST['oID']), 'title' => vam_db_prepare_input($shipping_text), 'text' => vam_db_prepare_input($text), 'value' => vam_db_prepare_input($_POST['value']), 'class' => 'ot_shipping');
 
@@ -258,14 +258,14 @@ if ($_GET['action'] == "ot_edit") {
 
 		$check_total = vam_db_fetch_array($check_total_query);
 
-		$text = $vamPrice->xtcFormat($_POST['value'], true);
+		$text = $vamPrice->Format($_POST['value'], true);
 
 		$sql_data_array = array ('title' => vam_db_prepare_input($_POST['title']), 'text' => vam_db_prepare_input($text), 'value' => vam_db_prepare_input($_POST['value']),);
 		vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_total_id = \''.vam_db_input($check_total['orders_total_id']).'\'');
 
 	} else {
 
-		$text = $vamPrice->xtcFormat($_POST['value'], true);
+		$text = $vamPrice->Format($_POST['value'], true);
 
 		$sql_data_array = array ('orders_id' => vam_db_prepare_input($_POST['oID']), 'title' => vam_db_prepare_input($_POST['title']), 'text' => vam_db_prepare_input($text), 'value' => vam_db_prepare_input($_POST['value']), 'class' => vam_db_prepare_input($_POST['class']), 'sort_order' => vam_db_prepare_input($_POST['sort_order']),);
 
@@ -342,22 +342,22 @@ if ($_GET['action'] == "curr_edit") {
 
 			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
 
-			$products_price = $vamPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $order_products['products_price'], '', $order->customer['ID']);
+			$products_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $order_products['products_price'], '', $order->customer['ID']);
 
-			$final_price = $vamPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $order_products['final_price'], '', $order->customer['ID']);
+			$final_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $order_products['final_price'], '', $order->customer['ID']);
 		} else {
 
 			$vamPrice = new vamPrice($old_curr['code'], $order->info['status']);
 
-			$p_price = $vamPrice->xtcRemoveCurr($order_products['products_price']);
+			$p_price = $vamPrice->RemoveCurr($order_products['products_price']);
 
-			$f_price = $vamPrice->xtcRemoveCurr($order_products['final_price']);
+			$f_price = $vamPrice->RemoveCurr($order_products['final_price']);
 
 			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
 
-			$products_price = $vamPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $p_price, '', $order->customer['ID']);
+			$products_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $p_price, '', $order->customer['ID']);
 
-			$final_price = $vamPrice->xtcGetPrice($order_products['products_id'], $format = false, '', '', $f_price, '', $order->customer['ID']);
+			$final_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $f_price, '', $order->customer['ID']);
 		}
 		$sql_data_array = array ('products_price' => vam_db_prepare_input($products_price), 'final_price' => vam_db_prepare_input($final_price));
 
@@ -373,20 +373,20 @@ if ($_GET['action'] == "curr_edit") {
 
 			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
 
-			$value = $vamPrice->xtcGetPrice('', $format = false, '', '', $order_total['value'], '', $order->customer['ID']);
+			$value = $vamPrice->GetPrice('', $format = false, '', '', $order_total['value'], '', $order->customer['ID']);
 
 		} else {
 
 			$vamPrice = new vamPrice($old_curr['code'], $order->info['status']);
 
-			$nvalue = $vamPrice->xtcRemoveCurr($order_total['value']);
+			$nvalue = $vamPrice->RemoveCurr($order_total['value']);
 
 			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
 
-			$value = $vamPrice->xtcGetPrice('', $format = false, '', '', $nvalue, '', $order->customer['ID']);
+			$value = $vamPrice->GetPrice('', $format = false, '', '', $nvalue, '', $order->customer['ID']);
 		}
 
-		$text = $text = $vamPrice->xtcFormat($value, true);
+		$text = $text = $vamPrice->Format($value, true);
 
 		$sql_data_array = array ('text' => vam_db_prepare_input($text), 'value' => vam_db_prepare_input($value));
 
@@ -424,11 +424,11 @@ if ($_GET['action'] == "product_option_delete") {
 		$options_values_price += $products_a['price_prefix'].$products_a['options_values_price'];
 	};
 
-	$products_old_price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
+	$products_old_price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
 
 	$products_price = ($products_old_price + $options_values_price);
 
-	$price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
+	$price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
 
 	$final_price = $price * $products['products_quantity'];
 
@@ -460,7 +460,7 @@ if ($_GET['action'] == "save_order") {
 	$products_query = vam_db_query("select SUM(final_price) as subtotal_final from ".TABLE_ORDERS_PRODUCTS." where orders_id = '".$_POST['oID']."' ");
 	$products = vam_db_fetch_array($products_query);
 	$subtotal_final = $products['subtotal_final'];
-	$subtotal_text = $vamPrice->xtcFormat($subtotal_final, true);
+	$subtotal_text = $vamPrice->Format($subtotal_final, true);
 
 	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_text."', value = '".$subtotal_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal' ");
 	// Errechne neue Zwischensumme für Artikel Ende
@@ -474,7 +474,7 @@ if ($_GET['action'] == "save_order") {
 		$subtotal_no_tax_value_query = vam_db_query("select SUM(value) as subtotal_no_tax_value from ".TABLE_ORDERS_TOTAL." where orders_id = '".$_POST['oID']."' and class != 'ot_tax' and class != 'ot_total' and class != 'ot_subtotal_no_tax' and class != 'ot_coupon' and class != 'ot_gv'");
 		$subtotal_no_tax_value = vam_db_fetch_array($subtotal_no_tax_value_query);
 		$subtotal_no_tax_final = $subtotal_no_tax_value['subtotal_no_tax_value'];
-		$subtotal_no_tax_text = $vamPrice->xtcFormat($subtotal_no_tax_final, true);
+		$subtotal_no_tax_text = $vamPrice->Format($subtotal_no_tax_final, true);
 		vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_no_tax_text."', value = '".$subtotal_no_tax_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal_no_tax' ");
 	}
 
@@ -485,7 +485,7 @@ if ($_GET['action'] == "save_order") {
 	$subtotal = vam_db_fetch_array($subtotal_query);
 
 	$subtotal_final = $subtotal['value'];
-	$subtotal_text = $vamPrice->xtcFormat($subtotal_final, true);
+	$subtotal_text = $vamPrice->Format($subtotal_final, true);
 	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_text."', value = '".$subtotal_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_total'");
 	// Errechne neue Zwischensumme f�r Artikel Ende
 
@@ -499,11 +499,11 @@ if ($_GET['action'] == "save_order") {
 
 		if ($products['allow_tax'] == '1') {
 			$bprice = $products['final_price'];
-			$nprice = $vamPrice->xtcRemoveTax($bprice, $tax_rate);
+			$nprice = $vamPrice->RemoveTax($bprice, $tax_rate);
 			$tax = $vamPrice->calcTax($nprice, $tax_rate);
 		} else {
 			$nprice = $products['final_price'];
-			$bprice = $vamPrice->xtcAddTax($nprice, $tax_rate);
+			$bprice = $vamPrice->AddTax($nprice, $tax_rate);
 			$tax = $vamPrice->calcTax($nprice, $tax_rate);
 		}
 
@@ -549,12 +549,12 @@ if ($_GET['action'] == "save_order") {
 			if ($module_tax == '0') {
 				$module_n_price = $module_value['value'];
 			} else {
-				$module_n_price = $vamPrice->xtcRemoveTax($module_b_price, $module_tax_rate);
+				$module_n_price = $vamPrice->RemoveTax($module_b_price, $module_tax_rate);
 			}
 			$module_tax = $vamPrice->calcTax($module_n_price, $module_tax_rate);
 		} else {
 			$module_n_price = $module_value['value'];
-			$module_b_price = $vamPrice->xtcAddTax($module_n_price, $module_tax_rate);
+			$module_b_price = $vamPrice->AddTax($module_n_price, $module_tax_rate);
 			$module_tax = $vamPrice->calcTax($module_n_price, $module_tax_rate);
 		}
 
@@ -581,7 +581,7 @@ if ($_GET['action'] == "save_order") {
 		$title = $ust_desc['tax_description'];
 
 		if ($ust['tax_value_new']) {
-			$text = $vamPrice->xtcFormat($ust['tax_value_new'], true);
+			$text = $vamPrice->Format($ust['tax_value_new'], true);
 
 			$sql_data_array = array ('orders_id' => vam_db_prepare_input($_POST['oID']), 'title' => vam_db_prepare_input($title), 'text' => vam_db_prepare_input($text), 'value' => vam_db_prepare_input($ust['tax_value_new']), 'class' => 'ot_tax');
 

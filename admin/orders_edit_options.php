@@ -141,7 +141,7 @@ $options_values_price = vam_round($products['options_values_price'], PRICE_PRECI
 <td class="dataTableContent"><?php echo vam_oe_get_options_values_name($products['options_values_id']);?></td>
 <td class="dataTableContent">
 <?php echo vam_draw_hidden_field('options_values_price', $products['options_values_price']);?>
-<?php echo $vamPrice->xtcFormat($vamPrice->xtcCalculateCurr($options_values_price),true);?>
+<?php echo $vamPrice->Format($vamPrice->CalculateCurr($options_values_price),true);?>
 </td>
 <td class="dataTableContent">
 <?php

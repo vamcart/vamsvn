@@ -15,9 +15,9 @@
    --------------------------------------------------------------
 */
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
-class xtcImport {
+class vamImport {
 
-	function xtcImport($filename) {
+	function vamImport($filename) {
 		$this->seperator = CSV_SEPERATOR;
 		$this->TextSign = CSV_TEXTSIGN;
 		if (CSV_SEPERATOR == '')
@@ -547,9 +547,9 @@ class xtcImport {
 
 // EXPORT
 
-class xtcExport {
+class vamExport {
 
-	function xtcExport($filename) {
+	function vamExport($filename) {
 		$this->catDepth = 6;
 		$this->languages = $this->get_lang();
 		$this->filename = $filename;
