@@ -57,7 +57,7 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'];
 	}
 	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$xtPrice->xtcFormat($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
+	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $vamPrice->Format($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
 	// Product options names
 	$attributes_exist = ((isset ($products[$i]['attributes'])) ? 1 : 0);
 
@@ -87,7 +87,7 @@ if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' &&
 	} else {
 		$price = $total;
 	}
-	$discount = $xtPrice->xtcGetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
+	$discount = $vamPrice->GetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
 	$total_content = $_SESSION['customers_status']['customers_status_ot_discount'].' % '.SUB_TITLE_OT_DISCOUNT.' -'.vam_format_price($discount, $price_special = 1, $calculate_currencies = false).'<br />';
 }
 
@@ -95,7 +95,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
-	$total_content .= SUB_TITLE_SUB_TOTAL.' ' .$xtPrice->xtcFormat($total, true).'<br />';
+	$total_content .= SUB_TITLE_SUB_TOTAL.' ' .$vamPrice->Format($total, true).'<br />';
 } else {
 	$total_content .= TEXT_INFO_SHOW_PRICE_NO.'<br />';
 }

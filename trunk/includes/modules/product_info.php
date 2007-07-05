@@ -47,7 +47,7 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 	vam_db_query("update ".TABLE_PRODUCTS_DESCRIPTION." set products_viewed = products_viewed+1 where products_id = '".$product->data['products_id']."' and language_id = '".$_SESSION['languages_id']."'");
 
 
-		$products_price = $xtPrice->xtcGetPrice($product->data['products_id'], $format = true, 1, $product->data['products_tax_class_id'], $product->data['products_price'], 1);
+		$products_price = $vamPrice->GetPrice($product->data['products_id'], $format = true, 1, $product->data['products_tax_class_id'], $product->data['products_price'], 1);
 
 		// check if customer is allowed to add to cart
 		if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
@@ -74,12 +74,12 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$info_smarty->assign('FORM_END', '</form>');
 		$info_smarty->assign('PRODUCTS_PRICE', $products_price['formated']);
 		if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
-			$info_smarty->assign('PRODUCTS_VPE', $xtPrice->xtcFormat($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
+			$info_smarty->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
 		$info_smarty->assign('PRODUCTS_ID', $product->data['products_id']);
 		$info_smarty->assign('PRODUCTS_NAME', $product->data['products_name']);
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 			// price incl tax
-			$tax_rate = $xtPrice->TAX[$product->data['products_tax_class_id']];				
+			$tax_rate = $vamPrice->TAX[$product->data['products_tax_class_id']];				
 			$tax_info = $main->getTaxInfo($tax_rate);
 			$info_smarty->assign('PRODUCTS_TAX_INFO', $tax_info);
 			$info_smarty->assign('PRODUCTS_SHIPPING_LINK',$main->getShippingLink());
