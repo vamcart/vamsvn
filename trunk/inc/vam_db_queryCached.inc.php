@@ -25,7 +25,7 @@
 
 
     // cache File Name
-    $file=SQL_CACHEDIR.$id.'.xtc';
+    $file=SQL_CACHEDIR.$id.'.vam';
 
     // file life time
     $expire = DB_CACHE_EXPIRE; // 24 hours

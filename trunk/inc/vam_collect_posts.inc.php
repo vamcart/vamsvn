@@ -74,7 +74,7 @@
             // no gv_amount so insert
             $gv_insert = vam_db_query("insert into " . TABLE_COUPON_GV_CUSTOMER . " (customer_id, amount) values ('" . $_SESSION['customer_id'] . "', '" . $total_gv_amount . "')");
           }
-          vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, 'info_message=' . urlencode(REDEEMED_AMOUNT. $xtPrice->xtcFormat($gv_amount,true,0,true)), 'SSL'));
+          vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, 'info_message=' . urlencode(REDEEMED_AMOUNT. $xtPrice->Format($gv_amount,true,0,true)), 'SSL'));
 
 
 
