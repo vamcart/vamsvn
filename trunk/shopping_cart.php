@@ -100,8 +100,8 @@ if ($_SESSION['cart']->show_total() > 0 ) {
  if ($_SESSION['cart']->show_total() < $_SESSION['customers_status']['customers_status_min_order'] ) {
   $_SESSION['allow_checkout'] = 'false';
   $more_to_buy = $_SESSION['customers_status']['customers_status_min_order'] - $_SESSION['cart']->show_total();
-  $order_amount=$xtPrice->xtcFormat($more_to_buy, true);
-  $min_order=$xtPrice->xtcFormat($_SESSION['customers_status']['customers_status_min_order'], true);
+  $order_amount=$vamPrice->Format($more_to_buy, true);
+  $min_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_min_order'], true);
   $smarty->assign('info_message_1', MINIMUM_ORDER_VALUE_NOT_REACHED_1);
   $smarty->assign('info_message_2', MINIMUM_ORDER_VALUE_NOT_REACHED_2);
   $smarty->assign('order_amount', $order_amount);
@@ -111,8 +111,8 @@ if ($_SESSION['cart']->show_total() > 0 ) {
   if ($_SESSION['cart']->show_total() > $_SESSION['customers_status']['customers_status_max_order'] ) {
   $_SESSION['allow_checkout'] = 'false';
   $less_to_buy = $_SESSION['cart']->show_total() - $_SESSION['customers_status']['customers_status_max_order'];
-  $max_order=$xtPrice->xtcFormat($_SESSION['customers_status']['customers_status_max_order'], true);
-  $order_amount=$xtPrice->xtcFormat($less_to_buy, true);
+  $max_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_max_order'], true);
+  $order_amount=$vamPrice->Format($less_to_buy, true);
   $smarty->assign('info_message_1', MAXIMUM_ORDER_VALUE_REACHED_1);
   $smarty->assign('info_message_2', MAXIMUM_ORDER_VALUE_REACHED_2);
   $smarty->assign('order_amount', $order_amount);

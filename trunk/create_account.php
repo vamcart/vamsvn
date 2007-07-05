@@ -311,7 +311,7 @@ if (isset ($_SESSION['tracking']['refID'])){
 				$insert_query = vam_db_query("insert into ".TABLE_COUPON_EMAIL_TRACK." (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('".$insert_id."', '0', 'Admin', '".$email_address."', now() )");
 
 				$smarty->assign('SEND_GIFT', 'true');
-				$smarty->assign('GIFT_AMMOUNT', $xtPrice->xtcFormat(NEW_SIGNUP_GIFT_VOUCHER_AMOUNT, true));
+				$smarty->assign('GIFT_AMMOUNT', $vamPrice->Format(NEW_SIGNUP_GIFT_VOUCHER_AMOUNT, true));
 				$smarty->assign('GIFT_CODE', $coupon_code);
 				$smarty->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$coupon_code, 'NONSSL', false));
 

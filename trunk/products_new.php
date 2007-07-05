@@ -91,10 +91,10 @@ $module_content = '';
 if ($products_new_split->number_of_rows > 0) {
 	$products_new_query = vam_db_query($products_new_split->sql_query);
 	while ($products_new = vam_db_fetch_array($products_new_query)) {
-		$products_price = $xtPrice->xtcGetPrice($products_new['products_id'], $format = true, 1, $products_new['products_tax_class_id'], $products_new['products_price'], 1);
+		$products_price = $vamPrice->GetPrice($products_new['products_id'], $format = true, 1, $products_new['products_tax_class_id'], $products_new['products_price'], 1);
 		$vpePrice = '';
 		if ($products_new['products_vpe_status'] == 1 && $products_new['products_vpe_value'] != 0.0)
-			$vpePrice = $xtPrice->xtcFormat($products_price['plain'] * (1 / $products_new['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($products_new['products_vpe']);
+			$vpePrice = $vamPrice->Format($products_price['plain'] * (1 / $products_new['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($products_new['products_vpe']);
 		$buy_now = '';
 		$buy_now_new = '';
 		if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
@@ -112,7 +112,7 @@ if ($products_new_split->number_of_rows > 0) {
 		}
 		if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-			$tax_rate = $xtPrice->TAX[$products_new['products_tax_class_id']];
+			$tax_rate = $vamPrice->TAX[$products_new['products_tax_class_id']];
 			// price incl tax
 			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
 				$tax_info = sprintf(TAX_INFO_INCL, $tax_rate.' %');

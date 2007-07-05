@@ -135,7 +135,7 @@ if(isset($_POST['invoice']) && is_numeric($_POST['invoice']) && ($_POST['invoice
 		
 		if($result == 'VERIFIED') {
 			//Set status for Completed
-			if(($_POST['payment_status'] == 'Completed') AND ($_POST['business'] == MODULE_PAYMENT_PAYPAL_IPN_ID) AND ($_POST['mc_gross'] == number_format($total['value'] * $order['currency_value'], $xtPrice->get_decimal_places($order['currency'])))) {
+			if(($_POST['payment_status'] == 'Completed') AND ($_POST['business'] == MODULE_PAYMENT_PAYPAL_IPN_ID) AND ($_POST['mc_gross'] == number_format($total['value'] * $order['currency_value'], $vamPrice->get_decimal_places($order['currency'])))) {
 				if (MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID > 0) {
 					$order_status_id = MODULE_PAYMENT_PAYPAL_IPN_ORDER_STATUS_ID;
 				}

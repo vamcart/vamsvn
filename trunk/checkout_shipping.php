@@ -118,7 +118,7 @@ if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_
 	}
 
 	$free_shipping = false;
-	if (($pass == true) && ($order->info['total'] - $order->info['shipping_cost'] >= $xtPrice->xtcFormat(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, false, 0, true))) {
+	if (($pass == true) && ($order->info['total'] - $order->info['shipping_cost'] >= $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, false, 0, true))) {
 		$free_shipping = true;
 
 		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_shipping.php');
@@ -200,7 +200,7 @@ if (vam_count_shipping_modules() > 0) {
 
 		$module_smarty->assign('FREE_SHIPPING_TITLE', FREE_SHIPPING_TITLE);
 
-		$module_smarty->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $xtPrice->xtcFormat(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
+		$module_smarty->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
 
 		$module_smarty->assign('FREE_SHIPPING_ICON', $quotes[$i]['icon']);
 
@@ -234,7 +234,7 @@ if (vam_count_shipping_modules() > 0) {
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
 							$quotes[$i]['tax'] = 0;
 
-						$quotes[$i]['methods'][$j]['price'] = $xtPrice->xtcFormat(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true);
+						$quotes[$i]['methods'][$j]['price'] = $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true);
 
 						$quotes[$i]['methods'][$j]['radio_field'] = vam_draw_radio_field('shipping', $quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'], $checked);
 
@@ -242,7 +242,7 @@ if (vam_count_shipping_modules() > 0) {
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
 							$quotes[$i]['tax'] = 0;
 
-						$quotes[$i]['methods'][$j]['price'] = $xtPrice->xtcFormat(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true).vam_draw_hidden_field('shipping', $quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id']);
+						$quotes[$i]['methods'][$j]['price'] = $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true).vam_draw_hidden_field('shipping', $quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id']);
 
 					}
 
