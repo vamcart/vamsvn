@@ -53,8 +53,8 @@ if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' &&
 	} else {
 		$price = $total;
 	}
-	$discount = $xtPrice->xtcGetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
-	$box_smarty->assign('DISCOUNT', $xtPrice->xtcFormat(($discount * (-1)), $price_special = 1, $calculate_currencies = false));
+	$discount = $vamPrice->GetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
+	$box_smarty->assign('DISCOUNT', $vamPrice->Format(($discount * (-1)), $price_special = 1, $calculate_currencies = false));
 	
 }
 
@@ -63,7 +63,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
-	$box_smarty->assign('TOTAL', $xtPrice->xtcFormat($total, true));
+	$box_smarty->assign('TOTAL', $vamPrice->Format($total, true));
 } 
 	
 
@@ -82,14 +82,14 @@ if (isset ($_SESSION['customer_id'])) {
 	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
 	if ($gv_result['amount'] > 0) {
-		$box_smarty->assign('GV_AMOUNT', $xtPrice->xtcFormat($gv_result['amount'], true, 0, true));
+		$box_smarty->assign('GV_AMOUNT', $vamPrice->Format($gv_result['amount'], true, 0, true));
 		$box_smarty->assign('GV_SEND_TO_FRIEND_LINK', '<a href="'.vam_href_link(FILENAME_GV_SEND).'">');
 	}
 }
 if (isset ($_SESSION['gv_id'])) {
 	$gv_query = vam_db_query("select coupon_amount from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['gv_id']."'");
 	$coupon = vam_db_fetch_array($gv_query);
-	$box_smarty->assign('COUPON_AMOUNT2', $xtPrice->xtcFormat($coupon['coupon_amount'], true, 0, true));
+	$box_smarty->assign('COUPON_AMOUNT2', $vamPrice->Format($coupon['coupon_amount'], true, 0, true));
 }
 if (isset ($_SESSION['cc_id'])) {
 	$box_smarty->assign('COUPON_HELP_LINK', '<a href="javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\')">');
