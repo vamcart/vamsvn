@@ -92,7 +92,7 @@ if ($_GET['action'] == 'process') {
 		$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 		$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 		$smarty->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$id1, 'NONSSL', false));
-		$smarty->assign('AMMOUNT', $xtPrice->xtcFormat(str_replace(",", ".", $_POST['amount']), true));
+		$smarty->assign('AMMOUNT', $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true));
 		$smarty->assign('GIFT_CODE', $id1);
 		$smarty->assign('MESSAGE', $_POST['message']);
 		$smarty->assign('NAME', $_POST['to_name']);
@@ -125,7 +125,7 @@ if ($_GET['action'] == 'send' && !$error) {
 	$gv_result = vam_db_fetch_array($gv_query);
 	$send_name = $gv_result['customers_firstname'].' '.$gv_result['customers_lastname'];
 	$smarty->assign('FORM_ACTION', '<form action="'.vam_href_link(FILENAME_GV_SEND, 'action=process', 'NONSSL').'" method="post">');
-	$smarty->assign('MAIN_MESSAGE', sprintf(MAIN_MESSAGE, $xtPrice->xtcFormat(str_replace(",", ".", $_POST['amount']), true), stripslashes($_POST['to_name']), $_POST['email'], stripslashes($_POST['to_name']), $xtPrice->xtcFormat(str_replace(",", ".", $_POST['amount']), true), $send_name));
+	$smarty->assign('MAIN_MESSAGE', sprintf(MAIN_MESSAGE, $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), stripslashes($_POST['to_name']), $_POST['email'], stripslashes($_POST['to_name']), $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), $send_name));
 	if ($_POST['message']) {
 		$smarty->assign('PERSONAL_MESSAGE', sprintf(PERSONAL_MESSAGE, $gv_result['customers_firstname']));
 		$smarty->assign('POST_MESSAGE', stripslashes($_POST['message']));

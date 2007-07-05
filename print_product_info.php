@@ -28,7 +28,7 @@ $smarty = new Smarty;
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int) $_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'");
 $product_info = vam_db_fetch_array($product_info_query);
 
-$products_price = $xtPrice->xtcGetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+$products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
 
 $products_attributes_query = vam_db_query("select count(*) as total from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".(int) $_GET['products_id']."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."'");
 $products_attributes = vam_db_fetch_array($products_attributes_query);
@@ -44,11 +44,11 @@ if ($products_attributes['total'] > 0) {
 			if ($products_options['options_values_price'] != '0') {
 
 				if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) {
-					$tax_rate = $xtPrice->TAX[$product_info['products_tax_class_id']];
-					$products_options['options_values_price'] = vam_add_tax($products_options['options_values_price'], $xtPrice->TAX[$product_info['products_tax_class_id']]);
+					$tax_rate = $vamPrice->TAX[$product_info['products_tax_class_id']];
+					$products_options['options_values_price'] = vam_add_tax($products_options['options_values_price'], $vamPrice->TAX[$product_info['products_tax_class_id']]);
 				}
 				if ($_SESSION['customers_status']['customers_status_show_price'] == 1) {
-					$module_content[sizeof($module_content) - 1]['NAME'] .= ' ('.$products_options['price_prefix'].$xtPrice->xtcFormat($products_options['options_values_price'], true,0,true).')';
+					$module_content[sizeof($module_content) - 1]['NAME'] .= ' ('.$products_options['price_prefix'].$vamPrice->Format($products_options['options_values_price'], true,0,true).')';
 				}
 			}
 		}
@@ -64,7 +64,7 @@ if ($product_info['products_image'] != '') {
 	$image = DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$product_info['products_image'];
 }
 if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-	$tax_rate = $xtPrice->TAX[$product_info['products_tax_class_id']];
+	$tax_rate = $vamPrice->TAX[$product_info['products_tax_class_id']];
 	// price incl tax
 	if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
 		$smarty->assign('PRODUCTS_TAX_INFO', sprintf(TAX_INFO_INCL, $tax_rate.' %'));
@@ -107,7 +107,7 @@ if ($_SESSION['customers_status']['customers_status_public'] == 1 && $_SESSION['
 }
 
 if ($product_info['products_vpe_status'] == 1 && $product_info['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
-	$smarty->assign('PRODUCTS_VPE', $xtPrice->xtcFormat($products_price['plain'] * (1 / $product_info['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product_info['products_vpe']));
+	$smarty->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product_info['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product_info['products_vpe']));
 $smarty->assign('module_content', $module_content);
 
 		$mo_images = vam_get_products_mo_images($product_info['products_id']);

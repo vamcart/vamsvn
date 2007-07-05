@@ -35,7 +35,7 @@ if (vam_not_null($coupon_desc['coupon_description']))
 $coupon_amount = $coupon['coupon_amount'];
 switch ($coupon['coupon_type']) {
 	case 'F' :
-		$text_coupon_help .= sprintf(TEXT_COUPON_HELP_FIXED, $xtPrice->xtcFormat($coupon['coupon_amount'], true));
+		$text_coupon_help .= sprintf(TEXT_COUPON_HELP_FIXED, $vamPrice->Format($coupon['coupon_amount'], true));
 		break;
 	case 'P' :
 		$text_coupon_help .= sprintf(TEXT_COUPON_HELP_FIXED, number_format($coupon['coupon_amount'], 2).'%');
@@ -47,7 +47,7 @@ switch ($coupon['coupon_type']) {
 		}
 
 if ($coupon['coupon_minimum_order'] > 0)
-	$text_coupon_help .= sprintf(TEXT_COUPON_HELP_MINORDER, $xtPrice->xtcFormat($coupon['coupon_minimum_order'], true));
+	$text_coupon_help .= sprintf(TEXT_COUPON_HELP_MINORDER, $vamPrice->Format($coupon['coupon_minimum_order'], true));
 $text_coupon_help .= sprintf(TEXT_COUPON_HELP_DATE, vam_date_short($coupon['coupon_start_date']), vam_date_short($coupon['coupon_expire_date']));
 $text_coupon_help .= '<b>'.TEXT_COUPON_HELP_RESTRICT.'</b>';
 $text_coupon_help .= '<br /><br />'.TEXT_COUPON_HELP_CATEGORIES;

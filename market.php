@@ -100,19 +100,19 @@ echo "<?xml version=\"1.0\" encoding=\"" . $charset ."\"?><!DOCTYPE yml_catalog 
 		 "<url>" . HTTP_SERVER . "/</url>\n\n";
 
 //echo "  <currencies>\n";
-//foreach($xtPrice->currencies as $code => $v){
+//foreach($vamPrice->currencies as $code => $v){
 //	echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
 //}
 //echo "  </currencies>\n\n";
 
 echo "  <currencies>\n";
 if ($_GET['currency'] == "") {
-    foreach($xtPrice->currencies as $code => $v){
+    foreach($vamPrice->currencies as $code => $v){
         echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
     }
 }  else {
-    $varcurrency = $xtPrice->currencies[$_GET['currency']];
-        foreach($xtPrice->currencies as $code => $v){
+    $varcurrency = $vamPrice->currencies[$_GET['currency']];
+        foreach($vamPrice->currencies as $code => $v){
         echo "    <currency id=\"" . $code . "\" rate=\"" . number_format($varcurrency['value']/$v['value'],4) . "\"/>\n";
     }
     }
@@ -183,7 +183,7 @@ for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <
 			}
 
 //			if ($products_price = vam_get_products_special_price($prev_prod['products_id'])) {
-			if ($products_price = $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
+			if ($products_price = $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
 			} else {
 				$products_price = $prev_prod['products_price'];
 			}
@@ -191,7 +191,7 @@ for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <
 			echo "<offer id=\"" . $prev_prod['products_id'] . "\" available=\"" . $available . "\">\n" .
 					 "  <url>" . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($prev_prod['products_id'], $prev_prod['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false) . "</url>\n" .
 //					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
-					 "  <price>" . $xtPrice->xtcGetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
+					 "  <price>" . $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
 					 "  <currencyId>" . $code . "</currencyId>\n";
 			for ($ic=0,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
 				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";

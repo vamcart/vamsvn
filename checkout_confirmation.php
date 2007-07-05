@@ -171,7 +171,7 @@ if (sizeof($order->info['tax_groups']) > 1) {
 $data_products = '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 
-	$data_products .= '<tr>' . "\n" . '            <td class="main" align="left" valign="top">' . $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . '</td>' . "\n" . '                <td class="main" align="right" valign="top">' . $xtPrice->xtcFormat($order->products[$i]['final_price'], true) . '</td></tr>' . "\n";
+	$data_products .= '<tr>' . "\n" . '            <td class="main" align="left" valign="top">' . $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . '</td>' . "\n" . '                <td class="main" align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], true) . '</td></tr>' . "\n";
 	if (ACTIVATE_SHIPPING_STATUS == 'true') {
 
 		$data_products .= '<tr>
