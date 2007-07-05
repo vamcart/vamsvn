@@ -31,7 +31,7 @@ class ot_gv {
 	var $title, $output;
 
 	function ot_gv() {
-		global $xtPrice;
+		global $vamPrice;
 		$this->code = 'ot_gv';
 		$this->title = MODULE_ORDER_TOTAL_GV_TITLE;
 		$this->header = MODULE_ORDER_TOTAL_GV_HEADER;
@@ -52,7 +52,7 @@ class ot_gv {
 	}
 
 	function process() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 		//      if ($_SESSION['cot_gv']) {  // old code Strider
 		if (isset ($_SESSION['cot_gv']) && $_SESSION['cot_gv'] == true) {
 			$order_total = $this->get_order_total();
@@ -72,7 +72,7 @@ class ot_gv {
 			$order->info['total'] = $order->info['total'] - $od_amount;
 
 			if ($od_amount > 0) {
-				$this->output[] = array ('title' => $this->title.':', 'text' => '<b><font color="ff0000">-'.$xtPrice->xtcFormat($od_amount, true).'</font></b>', 'value' => $xtPrice->xtcFormat($od_amount, false));
+				$this->output[] = array ('title' => $this->title.':', 'text' => '<b><font color="ff0000">-'.$vamPrice->Format($od_amount, true).'</font></b>', 'value' => $vamPrice->Format($od_amount, false));
 			}
 
 //				if ($od_amount >= $order->info['total'] && MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID != 0) $order->info['order_status'] = MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID;
@@ -183,12 +183,12 @@ class ot_gv {
 	}
 
 	function apply_credit() {
-		global $order, $coupon_no,$xtPrice, $insert_id;
+		global $order, $coupon_no,$vamPrice, $insert_id;
 		if (isset ($_SESSION['cot_gv']) && $_SESSION['cot_gv'] == true) {
 			$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 			$gv_result = vam_db_fetch_array($gv_query);
 			$gv_payment_amount = $this->deduction;
-			$gv_amount = $gv_result['amount'] - $xtPrice->xtcRemoveCurr($gv_payment_amount);
+			$gv_amount = $gv_result['amount'] - $vamPrice->RemoveCurr($gv_payment_amount);
 			//prepare for DB insert
 			$gv_amount = str_replace(",", ".", $gv_amount);
 			$gv_update = vam_db_query("update ".TABLE_COUPON_GV_CUSTOMER." set amount = '".$gv_amount."' where customer_id = '".$_SESSION['customer_id']."'");
@@ -202,7 +202,7 @@ class ot_gv {
 	}
 
 	function collect_posts() {
-		global $xtPrice, $coupon_no, $REMOTE_ADDR;
+		global $vamPrice, $coupon_no, $REMOTE_ADDR;
 		if ($_POST['gv_redeem_code']) {
 			$gv_query = vam_db_query("select coupon_id, coupon_type, coupon_amount from ".TABLE_COUPONS." where coupon_code = '".$_POST['gv_redeem_code']."'");
 			$gv_result = vam_db_fetch_array($gv_query);

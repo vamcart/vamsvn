@@ -28,7 +28,7 @@ class paypal_ipn {
 		$this->description = MODULE_PAYMENT_PAYPAL_IPN_TEXT_DESCRIPTION;
 		$this->sort_order = MODULE_PAYMENT_PAYPAL_IPN_SORT_ORDER;
 		$this->enabled = ((MODULE_PAYMENT_PAYPAL_IPN_STATUS == 'True') ? true : false);
-		$this->identifier = 'xt:Commerce PayPal IPN v1.0';
+		$this->identifier = 'VaM Shop PayPal IPN v1.0';
 		
 		if ((int)MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID > 0) {
 			$this->order_status = MODULE_PAYMENT_PAYPAL_IPN_PREPARE_ORDER_STATUS_ID;
@@ -101,7 +101,7 @@ class paypal_ipn {
 
 
 	function process_button() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 		
 		if (MODULE_PAYMENT_PAYPAL_CURRENCY == 'Selected Currency') {
 			$my_currency = $_SESSION['currency'];
@@ -124,11 +124,11 @@ class paypal_ipn {
 			$parameters['amount'] = $order->info['total'];
 		}
 		if ($_SESSION['currency'] == $my_currency) {
-			$parameters['shipping'] = round($order->info['shipping_cost'], $xtPrice->get_decimal_places($my_currency));
-			$parameters['amount'] = round($parameters['amount'], $xtPrice->get_decimal_places($my_currency)) - $parameters['shipping'];
+			$parameters['shipping'] = round($order->info['shipping_cost'], $vamPrice->get_decimal_places($my_currency));
+			$parameters['amount'] = round($parameters['amount'], $vamPrice->get_decimal_places($my_currency)) - $parameters['shipping'];
 		} else {
-			$parameters['shipping'] = round($xtPrice->xtcCalculateCurrEx($order->info['shipping_cost'], $my_currency), $xtPrice->get_decimal_places($my_currency));
-			$parameters['amount'] = round($xtPrice->xtcCalculateCurrEx($parameters['amount'], $my_currency), $xtPrice->get_decimal_places($my_currency)) - $parameters['shipping'];
+			$parameters['shipping'] = round($vamPrice->CalculateCurrEx($order->info['shipping_cost'], $my_currency), $vamPrice->get_decimal_places($my_currency));
+			$parameters['amount'] = round($vamPrice->CalculateCurrEx($parameters['amount'], $my_currency), $vamPrice->get_decimal_places($my_currency)) - $parameters['shipping'];
 		}
 	
 		$parameters['business'] = MODULE_PAYMENT_PAYPAL_IPN_ID;

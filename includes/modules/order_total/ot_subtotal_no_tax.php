@@ -23,7 +23,7 @@
     var $title, $output;
 
     function ot_subtotal_no_tax() {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->code = 'ot_subtotal_no_tax';
       $this->title = MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_TITLE;
       $this->description = MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_DESCRIPTION;
@@ -35,7 +35,7 @@
     }
 
     function process() {
-      global $order, $xtPrice;
+      global $order, $vamPrice;
 
       if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
         if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1) {
@@ -44,8 +44,8 @@
 	  $sub_total_price = $order->info['subtotal'];
 	}
         $this->output[] = array('title' => $this->title . ':',
-                                'text' => '<b>' . $xtPrice->xtcFormat($sub_total_price+($xtPrice->xtcFormat($order->info['shipping_cost'], false,0,true)), true).'</b>',
-                                'value' => $xtPrice->xtcFormat($sub_total_price+($xtPrice->xtcFormat($order->info['shipping_cost'], false,0,true)), false));
+                                'text' => '<b>' . $vamPrice->Format($sub_total_price+($vamPrice->Format($order->info['shipping_cost'], false,0,true)), true).'</b>',
+                                'value' => $vamPrice->Format($sub_total_price+($vamPrice->Format($order->info['shipping_cost'], false,0,true)), false));
       }
     }
 

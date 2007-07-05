@@ -31,7 +31,7 @@ class ot_coupon {
 	var $title, $output;
 
 	function ot_coupon() {
-		global $xtPrice;
+		global $vamPrice;
 
 		$this->code = 'ot_coupon';
 		$this->header = MODULE_ORDER_TOTAL_COUPON_HEADER;
@@ -50,7 +50,7 @@ class ot_coupon {
 	}
 
 	function process() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		$order_total = $this->get_order_total();
 		$od_amount = $this->calculate_credit($order_total);
@@ -64,7 +64,7 @@ class ot_coupon {
 		if ($od_amount > 0) {
 			$order->info['total'] = $order->info['total'] - $od_amount;
 			$order->info['deduction'] = $od_amount;
-			$this->output[] = array ('title' => $this->title.': '.$this->coupon_code.':', 'text' => '<b><font color="ff0000">-'.$xtPrice->xtcFormat($od_amount, true).'</font></b>', 'value' => $od_amount); //Fred added hyphen
+			$this->output[] = array ('title' => $this->title.': '.$this->coupon_code.':', 'text' => '<b><font color="ff0000">-'.$vamPrice->Format($od_amount, true).'</font></b>', 'value' => $od_amount); //Fred added hyphen
 		}
 	}
 
@@ -96,7 +96,7 @@ class ot_coupon {
 	}
 
 	function collect_posts() {
-		global $xtPrice;
+		global $vamPrice;
 		if ($_POST['gv_redeem_code']) {
 
 			// get some info from the coupon table
@@ -135,7 +135,7 @@ class ot_coupon {
 				if ($coupon_result['coupon_type'] == 'S') {
 					$coupon_amount = $order->info['shipping_cost'];
 				} else {
-					$coupon_amount = $xtPrice->xtcFormat($coupon_result['coupon_amount'], true).' ';
+					$coupon_amount = $vamPrice->Format($coupon_result['coupon_amount'], true).' ';
 				}
 				if ($coupon_result['coupon_type'] == 'P')
 					$coupon_amount = $coupon_result['coupon_amount'].'% ';
@@ -393,7 +393,7 @@ $order->info['tax'] -= $tod_amount;
 	}
 
 	function get_order_total() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		$order_total = $order->info['total'];
 		// Check if gift voucher is in cart and adjust total
@@ -404,11 +404,11 @@ $order->info['tax'] -= $tod_amount;
 			$gv_result = vam_db_fetch_array($gv_query);
 			if (ereg('^GIFT', addslashes($gv_result['products_model']))) {
 				$qty = $_SESSION['cart']->get_quantity($t_prid);
-				$products_tax = $xtPrice->TAX[$gv_result['products_tax_class_id']];
+				$products_tax = $vamPrice->TAX[$gv_result['products_tax_class_id']];
 				if ($this->include_tax == 'false') {
 					$gv_amount = $gv_result['products_price'] * $qty;
 				} else {
-					$gv_amount = ($gv_result['products_price'] + $xtPrice->calcTax($gv_result['products_price'], $products_tax)) * $qty;
+					$gv_amount = ($gv_result['products_price'] + $vamPrice->calcTax($gv_result['products_price'], $products_tax)) * $qty;
 				}
 				$order_total = $order_total - $gv_amount;
 			}
@@ -465,7 +465,7 @@ $order->info['tax'] -= $tod_amount;
 	}
 
 	function get_product_price($product_id) {
-		global $order,$xtPrice;
+		global $order,$vamPrice;
 		$products_id = vam_get_prid($product_id);
 		// products price
 		$qty = $_SESSION['cart']->contents[$products_id]['qty'];
@@ -475,10 +475,10 @@ $order->info['tax'] -= $tod_amount;
 
 
 			if ($this->include_tax == 'true') {
-$total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = false, 1, $product['products_tax_class_id'], $product['products_price'], 1);
+$total_price += $qty * $vamPrice->GetPrice($product['products_id'], $format = false, 1, $product['products_tax_class_id'], $product['products_price'], 1);
 $_SESSION['total_price']=$total_price;
 			} else {
-$total_price += $qty * $xtPrice->xtcGetPrice($product['products_id'], $format = false, 1, 0, $product['products_price'], 1);
+$total_price += $qty * $vamPrice->GetPrice($product['products_id'], $format = false, 1, 0, $product['products_price'], 1);
 			}
 
 			// attributes price

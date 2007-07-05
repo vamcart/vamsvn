@@ -22,7 +22,7 @@
     var $title, $output;
 
     function ot_loworderfee() {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->code = 'ot_loworderfee';
       $this->title = MODULE_ORDER_TOTAL_LOWORDERFEE_TITLE;
       $this->description = MODULE_ORDER_TOTAL_LOWORDERFEE_DESCRIPTION;
@@ -33,7 +33,7 @@
     }
 
     function process() {
-      global $order, $xtPrice;
+      global $order, $vamPrice;
       
       //include needed functions
       require_once(DIR_FS_INC . 'vam_calculate_tax.inc.php');
@@ -82,7 +82,7 @@
 
 
           $this->output[] = array('title' => $this->title . ':',
-                                  'text' => $xtPrice->xtcFormat($low_order_fee, true),
+                                  'text' => $vamPrice->Format($low_order_fee, true),
                                   'value' => $low_order_fee);
         }
       }

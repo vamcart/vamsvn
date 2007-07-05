@@ -89,7 +89,7 @@ class paypal {
 	}
 	
 	function payment_action() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		if (MODULE_PAYMENT_PAYPAL_CURRENCY == 'Selected Currency') {
 			$my_currency = $_SESSION['currency'];
@@ -106,11 +106,11 @@ class paypal {
 			$total = $order->info['total'];
 		}
 		if ($_SESSION['currency'] == $my_currency) {
-			$amount = round($total, $xtPrice->get_decimal_places($my_currency));
-			$shipping = round($order->info['shipping_cost'], $xtPrice->get_decimal_places($my_currency));
+			$amount = round($total, $vamPrice->get_decimal_places($my_currency));
+			$shipping = round($order->info['shipping_cost'], $vamPrice->get_decimal_places($my_currency));
 		} else {
-			$amount = round($xtPrice->xtcCalculateCurrEx($total, $my_currency), $xtPrice->get_decimal_places($my_currency));
-			$shipping = round($xtPrice->xtcCalculateCurrEx($order->info['shipping_cost'], $my_currency), $xtPrice->get_decimal_places($my_currency));
+			$amount = round($vamPrice->CalculateCurrEx($total, $my_currency), $vamPrice->get_decimal_places($my_currency));
+			$shipping = round($vamPrice->CalculateCurrEx($order->info['shipping_cost'], $my_currency), $vamPrice->get_decimal_places($my_currency));
 		}
 		
 		$dataString = 'cmd=_xclick&business='.MODULE_PAYMENT_PAYPAL_ID.'&item_name='.STORE_NAME.'-OID:'.$_SESSION['tmp_oID'].'&amount='. ($amount - $shipping).'&shipping='.$shipping.'&currency_code='.$my_currency.'&return='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'&cancel_return='.vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL');

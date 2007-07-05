@@ -21,7 +21,7 @@
     var $title, $output;
 
     function ot_shipping() {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->code = 'ot_shipping';
       $this->title = MODULE_ORDER_TOTAL_SHIPPING_TITLE;
       $this->description = MODULE_ORDER_TOTAL_SHIPPING_DESCRIPTION;
@@ -33,7 +33,7 @@
     }
 
     function process() {
-      global $order, $xtPrice;
+      global $order, $vamPrice;
 
       if (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true') {
         switch (MODULE_ORDER_TOTAL_SHIPPING_DESTINATION) {
@@ -47,7 +47,7 @@
             $pass = false; break;
         }
 
-        if ( ($pass == true) && ( ($order->info['total'] - $order->info['shipping_cost']) >= $xtPrice->xtcFormat(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER,false,0,true)) ) {
+        if ( ($pass == true) && ( ($order->info['total'] - $order->info['shipping_cost']) >= $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER,false,0,true)) ) {
           $order->info['shipping_method'] = $this->title;
           $order->info['total'] -= $order->info['shipping_cost'];
           $order->info['shipping_cost'] = 0;
@@ -62,8 +62,8 @@
 
           $shipping_tax = vam_get_tax_rate($GLOBALS[$module]->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
           $shipping_tax_description = vam_get_tax_description($GLOBALS[$module]->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
-          $tax = $xtPrice->xtcFormat(vam_add_tax($order->info['shipping_cost'], $shipping_tax),false,0,false)-$order->info['shipping_cost'];
-          $tax = $xtPrice->xtcFormat($tax,false,0,true);
+          $tax = $vamPrice->Format(vam_add_tax($order->info['shipping_cost'], $shipping_tax),false,0,false)-$order->info['shipping_cost'];
+          $tax = $vamPrice->Format($tax,false,0,true);
           $order->info['shipping_cost'] = vam_add_tax($order->info['shipping_cost'], $shipping_tax);
           $order->info['tax'] += $tax;
           $order->info['tax_groups'][TAX_ADD_TAX . "$shipping_tax_description"] += $tax;
@@ -75,16 +75,16 @@
 
           $shipping_tax = vam_get_tax_rate($GLOBALS[$module]->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
           $shipping_tax_description = vam_get_tax_description($GLOBALS[$module]->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
-          $tax = $xtPrice->xtcFormat(vam_add_tax($order->info['shipping_cost'], $shipping_tax),false,0,false)-$order->info['shipping_cost'];
-		 $tax = $xtPrice->xtcFormat($tax,false,0,true);
+          $tax = $vamPrice->Format(vam_add_tax($order->info['shipping_cost'], $shipping_tax),false,0,false)-$order->info['shipping_cost'];
+		 $tax = $vamPrice->Format($tax,false,0,true);
 
           $order->info['tax'] = $order->info['tax'] += $tax;
           $order->info['tax_groups'][TAX_NO_TAX . "$shipping_tax_description"] = $order->info['tax_groups'][TAX_NO_TAX . "$shipping_tax_description"] += $tax;
         }
         }
         $this->output[] = array('title' => $order->info['shipping_method'] . ':',
-                                'text' => $xtPrice->xtcFormat($order->info['shipping_cost'], true,0,true),
-                                'value' => $xtPrice->xtcFormat($order->info['shipping_cost'], false,0,true));
+                                'text' => $vamPrice->Format($order->info['shipping_cost'], true,0,true),
+                                'value' => $vamPrice->Format($order->info['shipping_cost'], false,0,true));
       }
     }
 
