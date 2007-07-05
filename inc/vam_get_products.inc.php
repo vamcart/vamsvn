@@ -41,7 +41,7 @@ function vam_get_products($session) {
 
           // dirty workaround
           $xtPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id']);
-          $products_price=$xtPrice->xtcGetPrice($products['products_id'],
+          $products_price=$xtPrice->GetPrice($products['products_id'],
                                         $format=false,
                                         $session['cart']->contents[$products_id]['qty'],
                                         $products['products_tax_class_id'],
@@ -72,9 +72,9 @@ function attributes_price($products_id,$session) {
           $attribute_price_query = vam_db_query("select pd.products_tax_class_id, p.options_values_price, p.price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " p, " . TABLE_PRODUCTS . " pd where p.products_id = '" . $products_id . "' and p.options_id = '" . $option . "' and pd.products_id = p.products_id and p.options_values_id = '" . $value . "'");
           $attribute_price = vam_db_fetch_array($attribute_price_query);
           if ($attribute_price['price_prefix'] == '+') {
-            $attributes_price += $xtPrice->xtcFormat($attribute_price['options_values_price'],false,$attribute_price['products_tax_class_id']);
+            $attributes_price += $xtPrice->Format($attribute_price['options_values_price'],false,$attribute_price['products_tax_class_id']);
           } else {
-            $attributes_price -= $xtPrice->xtcFormat($attribute_price['options_values_price'],false,$attribute_price['products_tax_class_id']);
+            $attributes_price -= $xtPrice->Format($attribute_price['options_values_price'],false,$attribute_price['products_tax_class_id']);
           }
         }
       }

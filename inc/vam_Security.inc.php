@@ -67,7 +67,7 @@ function vam_Security()
                         (eregi("<[^>]*img.*\"?[^>]*>", $secvalue)) ||
                         (eregi("<[^>]*document.*\"?[^>]*>", $secvalue)) ||
                         (eregi("<[^>]*cookie.*\"?[^>]*>", $secvalue))) {
-                        xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
+                        vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
                        vam_redirect(FILENAME_DEFAULT);
                 }
             }
@@ -89,7 +89,7 @@ function vam_Security()
                         (eregi("<[^>]*meta.*\"?[^>]*>", $secvalue))
                         ) {
 
-                        xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
+                        vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
                         vam_redirect(FILENAME_DEFAULT);
                 }
              }
@@ -115,7 +115,7 @@ function vam_Security()
                         (eregi("<[^>]*img.*\"?[^>]*>", $secvalue))
                         ) {
 
-                        xtcMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
+                        vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
                         vam_redirect(FILENAME_DEFAULT);
                 }
             }
@@ -123,7 +123,7 @@ function vam_Security()
     }
 }
 
-function xtcMailHackAttempt($detecting_file        =        "(no filename available)",
+function vamMailHackAttempt($detecting_file        =        "(no filename available)",
                             $detecting_line        =        "(no line number available)",
                             $hack_type             =        "(no type given)",
                             $message               =        "(no message given)" ) {
