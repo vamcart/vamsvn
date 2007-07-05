@@ -40,7 +40,7 @@ if (isset ($_SESSION['customer_id'])) {
 	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
 	if ($gv_result['amount'] > 0) {
-		$gift_smarty->assign('GV_AMOUNT', $xtPrice->xtcFormat($gv_result['amount'], true, 0, true));
+		$gift_smarty->assign('GV_AMOUNT', $vamPrice->Format($gv_result['amount'], true, 0, true));
 		$gift_smarty->assign('GV_SEND_TO_FRIEND_LINK', vam_href_link(FILENAME_GV_SEND));
 	} else {
 		$gift_smarty->assign('GV_AMOUNT', 0);
@@ -49,7 +49,7 @@ if (isset ($_SESSION['customer_id'])) {
 if (isset ($_SESSION['gv_id'])) {
 	$gv_query = vam_db_query("select coupon_amount from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['gv_id']."'");
 	$coupon = vam_db_fetch_array($gv_query);
-	$gift_smarty->assign('COUPON_AMOUNT2', $xtPrice->xtcFormat($coupon['coupon_amount'], true, 0, true));
+	$gift_smarty->assign('COUPON_AMOUNT2', $vamPrice->Format($coupon['coupon_amount'], true, 0, true));
 }
 if (isset ($_SESSION['cc_id'])) {
 	$gift_smarty->assign('COUPON_HELP_LINK', '<a style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
