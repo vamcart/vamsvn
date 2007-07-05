@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   ////
   // Recursively handle magic_quotes_gpc turned off.
   // This is due to the possibility of have an array in

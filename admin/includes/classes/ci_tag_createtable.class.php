@@ -1,6 +1,6 @@
 <?php
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 /*
 Class Tc_createtable operates with createtable-tag from install.xml.

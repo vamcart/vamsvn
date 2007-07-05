@@ -34,7 +34,7 @@
   define('PAGE_PARSE_START_TIME', microtime());
   
   // security
-  define('_VALID_XTC',true);
+  define('_VALID_VAM',true);
 
   // Set the level of error reporting
   error_reporting(E_ALL & ~E_NOTICE);

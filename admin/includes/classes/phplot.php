@@ -18,7 +18,7 @@
    
    PHPLOT 4.4.6 Copyright (c) 1998-2001 Afan Ottenheimer
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   class PHPlot {
 	var $is_inline = 0;			//0 = Sends headers, 1 = sends just raw image data
 	var $browser_cache = '1';	// 0 = Sends headers for browser to not cache the image, (i.e. 0 = don't let browser cache image)

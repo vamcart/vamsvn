@@ -47,7 +47,7 @@
   //
   //
   ////////////////////////////////////////////////////////////////////////////////////////////////
-  defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+  defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   function vam_validate_email($email) {
     $valid_address = true;
 

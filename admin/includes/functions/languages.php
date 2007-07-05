@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   function vam_get_languages_directory($code) {
     $language_query = vam_db_query("select languages_id, directory from " . TABLE_LANGUAGES . " where code = '" . $code . "'");
     if (vam_db_num_rows($language_query)) {

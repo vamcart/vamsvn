@@ -19,7 +19,7 @@
    Original source from Web Application Development with PHP (Tobias Ratschiller, Till Gerken)
    Copyright (c) 2000, New Riders Publishing
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   $SID = '';
 
   class php3session {

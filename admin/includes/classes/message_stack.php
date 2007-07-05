@@ -24,7 +24,7 @@
    if ($messageStack->size > 0) echo $messageStack->output();
   
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   class messageStack extends tableBlock {
     var $size = 0;
 

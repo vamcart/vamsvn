@@ -8,7 +8,7 @@
 * DOMIT! is Free Software
 **/
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 /** Extension for cache files */
 define ('DOMIT_FILE_EXTENSION_CACHE', 'dch');

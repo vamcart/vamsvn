@@ -8,7 +8,7 @@ Made by Imrich Schindler
 Released under GPL
 */
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 class Tc_addadminbox extends ContribInstallerBaseTag {
 	var $tag_name = 'addadminbox';

@@ -14,7 +14,7 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
+defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 // select article data
 $article_query = "SELECT products_name FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE products_id='".(int) $_GET['current_product_id']."' and language_id = '".$_SESSION['languages_id']."'";
 $article_data = vam_db_fetch_array(vam_db_query($article_query));
