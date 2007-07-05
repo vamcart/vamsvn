@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   class splitPageResults {
     function splitPageResults(&$current_page_number, $max_rows_per_page, &$sql_query, &$query_num_rows) {
       if (empty($current_page_number)) $current_page_number = 1;

@@ -30,7 +30,7 @@
    echo $box->infoBox($heading, $contents);   
    --------------------------------------------------------------
 */
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
   class box extends tableBlock {
     function box() {

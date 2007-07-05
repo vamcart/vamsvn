@@ -8,7 +8,7 @@ Support:
 Released under GPL
 */
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 class Tc_make_dir extends ContribInstallerBaseTag {
     var $tag_name='make_dir';

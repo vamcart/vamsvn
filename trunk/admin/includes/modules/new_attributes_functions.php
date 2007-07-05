@@ -21,7 +21,7 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/ 
-defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
+defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
   // A simple little function to determine if the current value is already selected for the current product.
   function checkAttribute($current_value_id, $current_pid, $current_product_option_id) {
     global $attribute_value_price,$sortorder, $attribute_value_weight, $attribute_value_weight_prefix, $attribute_value_prefix, $attribute_value_model, $attribute_value_stock, $posCheck, $negCheck, $posCheck_weight, $negCheck_weight,$attribute_value_download_count, $attribute_value_download_expire,$attribute_value_download_filename;

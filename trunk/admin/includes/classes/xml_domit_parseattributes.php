@@ -9,7 +9,7 @@
 * DOMIT! is Free Software
 **/
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 /** attribute parse state, just before parsing an attribute */
 define('DOMIT_ATTRIBUTEPARSER_STATE_ATTR_NONE', 0);

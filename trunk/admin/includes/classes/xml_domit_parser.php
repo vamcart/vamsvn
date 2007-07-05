@@ -11,7 +11,7 @@
 * DOMIT! is Free Software
 **/
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 if (!defined('DOMIT_INCLUDE_PATH')) {
 	define('DOMIT_INCLUDE_PATH', (dirname(__FILE__) . "/"));

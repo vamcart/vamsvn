@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 define('MODULE_IMAGE_PROCESS_TEXT_DESCRIPTION', 'Пакетная обработка изображений');
 define('MODULE_IMAGE_PROCESS_TEXT_TITLE', 'Пакетная обработка изображений');

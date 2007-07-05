@@ -14,7 +14,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
     // SQL begin ===========================================================
     function cip_db_query($query, $report='no', $link = 'db_link') {

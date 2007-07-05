@@ -14,7 +14,7 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 ?>
     <td valign="top" class="main"><?php echo ENTRY_MEMO; ?></td>

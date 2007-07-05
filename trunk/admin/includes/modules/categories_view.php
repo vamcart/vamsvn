@@ -24,7 +24,7 @@
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
- defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');  
+ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');  
     // get sorting option and switch accordingly        
     if ($_GET['sorting']) {
     switch ($_GET['sorting']){

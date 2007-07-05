@@ -22,7 +22,7 @@ All types of messages will be stored in log file.
 
 */
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
   class message extends tableBlock {
     var $size = 0;

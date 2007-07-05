@@ -10,7 +10,7 @@
 * SAXY is Free Software
 **/
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 /** the initial characters of a cdata section */
 define('SAXY_SEARCH_CDATA', '![CDATA[');

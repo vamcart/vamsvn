@@ -13,7 +13,7 @@
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
-defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
+defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 //include needed functions
 require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');

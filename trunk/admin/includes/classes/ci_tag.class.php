@@ -10,7 +10,7 @@ Support:
 Released under GPL
 */
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 class ContribInstallerBaseTag {
     var $contrib; //contrib name

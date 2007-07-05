@@ -5,7 +5,7 @@ Made by Imrich Schindler <ischindl at progis.sk>
 Released under GPL
 */
 
-defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
 class Tc_depend extends ContribInstallerBaseTag {
     var $tag_name='depend';
