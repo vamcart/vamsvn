@@ -44,7 +44,7 @@
     var $info, $totals, $products, $customer, $delivery, $content_type;
 
     function order($order_id = '') {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->info = array();
       $this->totals = array();
       $this->products = array();
@@ -183,7 +183,7 @@
     }
     
         function getOrderData($oID) {
-    	global $xtPrice;
+    	global $vamPrice;
     	
     	require_once(DIR_FS_INC . 'vam_get_attributes_model.inc.php');
     	
@@ -215,7 +215,7 @@
 			$attributes_model .= '<br />'.vam_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
 
 		}
-		$order_data[] = array ('PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price'], true),'PRODUCTS_SINGLE_PRICE' => $xtPrice->xtcFormat($order_data_values['final_price']/$order_data_values['products_quantity'], true), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
+		$order_data[] = array ('PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], true),'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price']/$order_data_values['products_quantity'], true), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
 
 	}
 	
@@ -224,7 +224,7 @@
     }
     
     function getTotalData($oID) {
-    	global $xtPrice,$db;
+    	global $vamPrice,$db;
     	
     		// get order_total data
 	$oder_total_query = "SELECT
@@ -253,7 +253,7 @@
     }
 
     function cart() {
-      global $currencies,$xtPrice;
+      global $currencies,$vamPrice;
 
       $this->content_type = $_SESSION['cart']->get_content_type();
 
@@ -271,7 +271,7 @@
 
       $this->info = array('order_status' => DEFAULT_ORDERS_STATUS_ID,
                           'currency' => $_SESSION['currency'],
-                          'currency_value' => $xtPrice->currencies[$_SESSION['currency']]['value'],
+                          'currency_value' => $vamPrice->currencies[$_SESSION['currency']]['value'],
                           'payment_method' => $_SESSION['payment'],
                           'cc_type' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_type']) ? $_SESSION['ccard']['cc_type'] : ''),
                           'cc_owner'=>(isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_owner']) ? $_SESSION['ccard']['cc_owner'] : ''),
@@ -345,11 +345,11 @@
       $products = $_SESSION['cart']->get_products();
       for ($i=0, $n=sizeof($products); $i<$n; $i++) {
 
-        $products_price=$xtPrice->xtcGetPrice($products[$i]['id'],
+        $products_price=$vamPrice->GetPrice($products[$i]['id'],
                                         $format=false,
                                         $products[$i]['quantity'],
                                         $products[$i]['tax_class_id'],
-                                        '')+$xtPrice->xtcFormat($_SESSION['cart']->attributes_price($products[$i]['id']),false);
+                                        '')+$vamPrice->Format($_SESSION['cart']->attributes_price($products[$i]['id']),false);
 
         $this->products[$index] = array('qty' => $products[$i]['quantity'],
                                         'name' => $products[$i]['name'],
@@ -411,13 +411,13 @@
 
  //$this->info['shipping_cost']=0;
       if ($_SESSION['customers_status']['customers_status_show_price_tax'] == '0') {
-        $this->info['total'] = $this->info['subtotal']  + $xtPrice->xtcFormat($this->info['shipping_cost'], false,0,true);
+        $this->info['total'] = $this->info['subtotal']  + $vamPrice->Format($this->info['shipping_cost'], false,0,true);
         if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1') {
           $this->info['total'] -= ($this->info['subtotal'] /100 * $_SESSION['customers_status']['customers_status_ot_discount']);
         }
       } else {
 		
-        $this->info['total'] = $this->info['subtotal']  + $xtPrice->xtcFormat($this->info['shipping_cost'],false,0,true);
+        $this->info['total'] = $this->info['subtotal']  + $vamPrice->Format($this->info['shipping_cost'],false,0,true);
         if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1') {
           $this->info['total'] -= ($this->info['subtotal'] /100 * $_SESSION['customers_status']['customers_status_ot_discount']);
         }

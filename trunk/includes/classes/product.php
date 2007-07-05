@@ -157,7 +157,7 @@ class product {
 	 */
 
 	function getAlsoPurchased() {
-		global $xtPrice;
+		global $vamPrice;
 
 		$module_content = array ();
 
@@ -211,7 +211,7 @@ class product {
 	 * 
 	 */
 	function getCrossSells() {
-		global $xtPrice;
+		global $vamPrice;
 
 		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".$this->pID."' GROUP BY products_xsell_grp_name_id";
 		$cs_groups = vamDBquery($cs_groups);
@@ -266,7 +266,7 @@ class product {
 	 */
 	 
 	 function getReverseCrossSells() {
-	 			global $xtPrice;
+	 			global $vamPrice;
 
 
 			$fsk_lock = '';
@@ -309,7 +309,7 @@ class product {
 	
 
 	function getGraduated() {
-		global $xtPrice;
+		global $vamPrice;
 
 		$staffel_query = vamDBquery("SELECT
 				                                     quantity,
@@ -339,9 +339,9 @@ class product {
 			if ($product_info['products_vpe_status'] == 1 && $product_info['products_vpe_value'] != 0.0 && $staffel[$i]['price'] > 0) {
 				$vpe = $staffel[$i]['price'] - $staffel[$i]['price'] / 100 * $discount;
 				$vpe = $vpe * (1 / $product_info['products_vpe_value']);
-				$vpe = $xtPrice->xtcFormat($vpe, true, $product_info['products_tax_class_id']).TXT_PER.vam_get_vpe_name($product_info['products_vpe']);
+				$vpe = $vamPrice->Format($vpe, true, $product_info['products_tax_class_id']).TXT_PER.vam_get_vpe_name($product_info['products_vpe']);
 			}
-			$staffel_data[$i] = array ('QUANTITY' => $quantity, 'VPE' => $vpe, 'PRICE' => $xtPrice->xtcFormat($staffel[$i]['price'] - $staffel[$i]['price'] / 100 * $discount, true, $this->data['products_tax_class_id']));
+			$staffel_data[$i] = array ('QUANTITY' => $quantity, 'VPE' => $vpe, 'PRICE' => $vamPrice->Format($staffel[$i]['price'] - $staffel[$i]['price'] / 100 * $discount, true, $this->data['products_tax_class_id']));
 		}
 
 		return $staffel_data;
@@ -373,7 +373,7 @@ class product {
 
 
 	function getVPEtext($product, $price) {
-		global $xtPrice;
+		global $vamPrice;
 
 		require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 
@@ -381,7 +381,7 @@ class product {
 			$product = $this->data;
 
 		if ($product['products_vpe_status'] == 1 && $product['products_vpe_value'] != 0.0 && $price > 0) {
-			return $xtPrice->xtcFormat($price * (1 / $product['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product['products_vpe']);
+			return $vamPrice->Format($price * (1 / $product['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product['products_vpe']);
 		}
 
 		return;
@@ -389,11 +389,11 @@ class product {
 	}
 	
 	function buildDataArray(&$array,$image='thumbnail') {
-		global $xtPrice,$main;
+		global $vamPrice,$main;
 
-			$tax_rate = $xtPrice->TAX[$array['products_tax_class_id']];
+			$tax_rate = $vamPrice->TAX[$array['products_tax_class_id']];
 
-			$products_price = $xtPrice->xtcGetPrice($array['products_id'], $format = true, 1, $array['products_tax_class_id'], $array['products_price'], 1);
+			$products_price = $vamPrice->GetPrice($array['products_id'], $format = true, 1, $array['products_tax_class_id'], $array['products_price'], 1);
 
 			if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {

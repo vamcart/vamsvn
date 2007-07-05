@@ -231,7 +231,7 @@ class shoppingCart {
 	}
 
 	function calculate() {
-		global $xtPrice;
+		global $vamPrice;
 		$this->total = 0;
 		$this->weight = 0;
 		$this->tax = array ();
@@ -246,7 +246,7 @@ class shoppingCart {
 			$product_query = vam_db_query("select products_id, products_price, products_discount_allowed, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".vam_get_prid($products_id)."'");
 			if ($product = vam_db_fetch_array($product_query)) {
 
-				$products_price = $xtPrice->xtcGetPrice($product['products_id'], $format = false, $qty, $product['products_tax_class_id'], $product['products_price']);
+				$products_price = $vamPrice->GetPrice($product['products_id'], $format = false, $qty, $product['products_tax_class_id'], $product['products_price']);
 				$this->total += $products_price * $qty;
 				$this->weight += ($qty * $product['products_weight']);
 				
@@ -257,7 +257,7 @@ class shoppingCart {
 				reset($this->contents[$products_id]['attributes']);
 				while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
 
-					$values = $xtPrice->xtcGetOptionPrice($product['products_id'], $option, $value);
+					$values = $vamPrice->GetOptionPrice($product['products_id'], $option, $value);
 					$this->weight += $values['weight'] * $qty;
 					$this->total += $values['price'] * $qty;
 					$attribute_price+=$values['price'];
@@ -274,7 +274,7 @@ class shoppingCart {
 					}
 						
 						
-					$products_tax = $xtPrice->TAX[$product['products_tax_class_id']];
+					$products_tax = $vamPrice->TAX[$product['products_tax_class_id']];
 					$products_tax_description = vam_get_tax_description($product['products_tax_class_id']);
 
 					
@@ -314,12 +314,12 @@ class shoppingCart {
 	}
 
 	function attributes_price($products_id) {
-		global $xtPrice;
+		global $vamPrice;
 		if (isset ($this->contents[$products_id]['attributes'])) {
 			reset($this->contents[$products_id]['attributes']);
 			while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
 
-				$values = $xtPrice->xtcGetOptionPrice($products_id, $option, $value);
+				$values = $vamPrice->GetOptionPrice($products_id, $option, $value);
 				$attributes_price += $values['price'];
 
 			}
@@ -328,7 +328,7 @@ class shoppingCart {
 	}
 
 	function get_products() {
-		global $xtPrice,$main;
+		global $vamPrice,$main;
 		if (!is_array($this->contents))
 			return false;
 
@@ -340,7 +340,7 @@ class shoppingCart {
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
-				$products_price = $xtPrice->xtcGetPrice($products['products_id'], $format = false, $this->contents[$products_id]['qty'], $products['products_tax_class_id'], $products['products_price']);
+				$products_price = $vamPrice->GetPrice($products['products_id'], $format = false, $this->contents[$products_id]['qty'], $products['products_tax_class_id'], $products['products_price']);
 
 				$products_array[] = array ('id' => $products_id, 'name' => $products['products_name'], 'model' => $products['products_model'], 'image' => $products['products_image'], 'price' => $products_price + $this->attributes_price($products_id), 'quantity' => $this->contents[$products_id]['qty'], 'weight' => $products['products_weight'],'shipping_time' => $main->getShippingStatusName($products['products_shippingtime']), 'final_price' => ($products_price + $this->attributes_price($products_id)), 'tax_class_id' => $products['products_tax_class_id'], 'attributes' => $this->contents[$products_id]['attributes']);
 			}
@@ -363,13 +363,13 @@ class shoppingCart {
 	}
 
 	function show_tax($format = true) {
-		global $xtPrice;
+		global $vamPrice;
 		$this->calculate();
 		$output = "";
 		$val=0;
 		foreach ($this->tax as $key => $value) {
 			if ($this->tax[$key]['value'] > 0 ) {
-			$output .= $this->tax[$key]['desc'].": ".$xtPrice->xtcFormat($this->tax[$key]['value'], true)."<br />";
+			$output .= $this->tax[$key]['desc'].": ".$vamPrice->Format($this->tax[$key]['value'], true)."<br />";
 			$val = $this->tax[$key]['value'];
 			}
 		}

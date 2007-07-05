@@ -69,11 +69,11 @@ class vamPrice {
 	}
 
 	// get products Price
-	function xtcGetPrice($pID, $format = true, $qty, $tax_class, $pPrice, $vpeStatus = 0, $cedit_id = 0) {
+	function GetPrice($pID, $format = true, $qty, $tax_class, $pPrice, $vpeStatus = 0, $cedit_id = 0) {
 
 			// check if group is allowed to see prices
 	if ($this->cStatus['customers_status_show_price'] == '0')
-			return $this->xtcShowNote($vpeStatus, $vpeStatus);
+			return $this->ShowNote($vpeStatus, $vpeStatus);
 
 		// get Tax rate
 		if ($cedit_id != 0) {
@@ -89,27 +89,27 @@ class vamPrice {
 		// add taxes
 		if ($pPrice == 0)
 			$pPrice = $this->getPprice($pID);
-		$pPrice = $this->xtcAddTax($pPrice, $products_tax);
+		$pPrice = $this->AddTax($pPrice, $products_tax);
 
 		// check specialprice
-		if ($sPrice = $this->xtcCheckSpecial($pID))
-			return $this->xtcFormatSpecial($pID, $this->xtcAddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus);
+		if ($sPrice = $this->CheckSpecial($pID))
+			return $this->FormatSpecial($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus);
 
 		// check graduated
 		if ($this->cStatus['customers_status_graduated_prices'] == '1') {
-			if ($sPrice = $this->xtcGetGraduatedPrice($pID, $qty))
-				return $this->xtcFormatSpecialGraduated($pID, $this->xtcAddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
+			if ($sPrice = $this->GetGraduatedPrice($pID, $qty))
+				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
 		} else {
 			// check Group Price
-			if ($sPrice = $this->xtcGetGroupPrice($pID, 1))
-				return $this->xtcFormatSpecialGraduated($pID, $this->xtcAddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
+			if ($sPrice = $this->GetGroupPrice($pID, 1))
+				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
 		}
 
 		// check Product Discount
-		if ($discount = $this->xtcCheckDiscount($pID))
-			return $this->xtcFormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus);
+		if ($discount = $this->CheckDiscount($pID))
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus);
 
-		return $this->xtcFormat($pPrice, $format, 0, false, $vpeStatus, $pID);
+		return $this->Format($pPrice, $format, 0, false, $vpeStatus, $pID);
 
 	}
 
@@ -122,13 +122,13 @@ class vamPrice {
 
 	}
 
-	function xtcAddTax($price, $tax) {
+	function AddTax($price, $tax) {
 		$price = $price + $price / 100 * $tax;
-		$price = $this->xtcCalculateCurr($price);
+		$price = $this->CalculateCurr($price);
 		return round($price, $this->currencies[$this->actualCurr]['decimal_places']);
 	}
 
-	function xtcCheckDiscount($pID) {
+	function CheckDiscount($pID) {
 
 		// check if group got discount
 		if ($this->cStatus['customers_status_discount'] != '0.00') {
@@ -148,7 +148,7 @@ class vamPrice {
 		return false;
 	}
 
-	function xtcGetGraduatedPrice($pID, $qty) {
+	function GetGraduatedPrice($pID, $qty) {
 		if (GRADUATED_ASSIGN == 'true')
 			if (vam_get_qty($pID) > $qty)
 				$qty = vam_get_qty($pID);
@@ -176,7 +176,7 @@ class vamPrice {
 
 	}
 
-	function xtcGetGroupPrice($pID, $qty) {
+	function GetGroupPrice($pID, $qty) {
 
 		$graduated_price_query = "SELECT max(quantity) as qty
 				                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
@@ -201,7 +201,7 @@ class vamPrice {
 
 	}
 
-	function xtcGetOptionPrice($pID, $option, $value) {
+	function GetOptionPrice($pID, $option, $value) {
 		$attribute_price_query = "select pd.products_discount_allowed,pd.products_tax_class_id, p.options_values_price, p.price_prefix, p.options_values_weight, p.weight_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." p, ".TABLE_PRODUCTS." pd where p.products_id = '".$pID."' and p.options_id = '".$option."' and pd.products_id = p.products_id and p.options_values_id = '".$value."'";
 		$attribute_price_query = vamDBquery($attribute_price_query);
 		$attribute_price_data = vam_db_fetch_array($attribute_price_query, true);
@@ -211,8 +211,8 @@ class vamPrice {
 			if ($attribute_price_data['products_discount_allowed'] < $this->cStatus['customers_status_discount'])
 				$discount = $attribute_price_data['products_discount_allowed'];
 		}
-//		$price = $this->xtcGetPrice($pID, $format = false, 1, $attribute_price_data['products_tax_class_id'], $attribute_price_data['options_values_price']);
-		$price = $this->xtcFormat($attribute_price_data['options_values_price'], false, $attribute_price_data['products_tax_class_id']);
+//		$price = $this->GetPrice($pID, $format = false, 1, $attribute_price_data['products_tax_class_id'], $attribute_price_data['options_values_price']);
+		$price = $this->Format($attribute_price_data['options_values_price'], false, $attribute_price_data['products_tax_class_id']);
 		if ($attribute_price_data['weight_prefix'] != '+')
 			$attribute_price_data['options_values_weight'] *= -1;
 		if ($attribute_price_data['price_prefix'] == '+') {
@@ -223,13 +223,13 @@ class vamPrice {
 		return array ('weight' => $attribute_price_data['options_values_weight'], 'price' => $price);
 	}
 
-	function xtcShowNote($vpeStatus, $vpeStatus = 0) {
+	function ShowNote($vpeStatus, $vpeStatus = 0) {
 		if ($vpeStatus == 1)
 			return array ('formated' => NOT_ALLOWED_TO_SEE_PRICES, 'plain' => 0);
 		return NOT_ALLOWED_TO_SEE_PRICES;
 	}
 
-	function xtcCheckSpecial($pID) {
+	function CheckSpecial($pID) {
 		$product_query = "select specials_new_products_price from ".TABLE_SPECIALS." where products_id = '".$pID."' and status=1";
 		$product_query = vamDBquery($product_query);
 		$product = vam_db_fetch_array($product_query, true);
@@ -238,7 +238,7 @@ class vamPrice {
 
 	}
 
-	function xtcCalculateCurr($price) {
+	function CalculateCurr($price) {
 		return $this->currencies[$this->actualCurr]['value'] * $price;
 	}
 
@@ -246,7 +246,7 @@ class vamPrice {
 		return $price * $tax / 100;
 	}
 
-	function xtcRemoveCurr($price) {
+	function RemoveCurr($price) {
 
 		// check if used Curr != DEFAULT curr
 		if (DEFAULT_CURRENCY != $this->actualCurr) {
@@ -257,24 +257,24 @@ class vamPrice {
 
 	}
 
-	function xtcRemoveTax($price, $tax) {
+	function RemoveTax($price, $tax) {
 		$price = ($price / (($tax +100) / 100));
 		return $price;
 	}
 
-	function xtcGetTax($price, $tax) {
-		$tax = $price - $this->xtcRemoveTax($price, $tax);
+	function GetTax($price, $tax) {
+		$tax = $price - $this->RemoveTax($price, $tax);
 		return $tax;
 	}
 	
-	function xtcRemoveDC($price,$dc) {
+	function RemoveDC($price,$dc) {
 	
 		$price = $price - ($price/100*$dc);
 		
 		return $price;	
 	}
 	
-	function xtcGetDC($price,$dc) {
+	function GetDC($price,$dc) {
 		
 		$dc = $price/100*$dc;
 	
@@ -292,7 +292,7 @@ class vamPrice {
 			return ' '.strtolower(FROM).' ';
 	}
 
-	function xtcCalculateCurrEx($price, $curr) {
+	function CalculateCurrEx($price, $curr) {
 		return $price * ($this->currencies[$curr]['value'] / $this->currencies[$this->actualCurr]['value']);
 	}
 
@@ -304,16 +304,16 @@ class vamPrice {
 	*
 	*/
 
-	function xtcFormat($price, $format, $tax_class = 0, $curr = false, $vpeStatus = 0, $pID = 0) {
+	function Format($price, $format, $tax_class = 0, $curr = false, $vpeStatus = 0, $pID = 0) {
 
 		if ($curr)
-			$price = $this->xtcCalculateCurr($price);
+			$price = $this->CalculateCurr($price);
 
 		if ($tax_class != 0) {
 			$products_tax = $this->TAX[$tax_class];
 			if ($this->cStatus['customers_status_show_price_tax'] == '0')
 				$products_tax = '';
-			$price = $this->xtcAddTax($price, $products_tax);
+			$price = $this->AddTax($price, $products_tax);
 		}
 
 		if ($format) {
@@ -332,10 +332,10 @@ class vamPrice {
 
 	}
 
-	function xtcFormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus = 0) {
+	function FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus = 0) {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
-			$price = '<span class="productOldPrice">'.INSTEAD.$this->xtcFormat($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->xtcFormat($sPrice, $format).'<br />'.YOU_SAVE.$discount.'%';
+			$price = '<span class="productOldPrice">'.INSTEAD.$this->Format($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.YOU_SAVE.$discount.'%';
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -346,9 +346,9 @@ class vamPrice {
 		}
 	}
 
-	function xtcFormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0) {
+	function FormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0) {
 		if ($format) {
-			$price = '<span class="productOldPrice">'.INSTEAD.$this->xtcFormat($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->xtcFormat($sPrice, $format);
+			$price = '<span class="productOldPrice">'.INSTEAD.$this->Format($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->Format($sPrice, $format);
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -359,16 +359,16 @@ class vamPrice {
 		}
 	}
 
-	function xtcFormatSpecialGraduated($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $pID) {
+	function FormatSpecialGraduated($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $pID) {
 		if ($pPrice == 0)
-			return $this->xtcFormat($sPrice, $format, 0, false, $vpeStatus);
-		if ($discount = $this->xtcCheckDiscount($pID))
+			return $this->Format($sPrice, $format, 0, false, $vpeStatus);
+		if ($discount = $this->CheckDiscount($pID))
 			$sPrice -= $sPrice / 100 * $discount;
 		if ($format) {
 			if ($sPrice != $pPrice) {
-				$price = '<span class="productOldPrice">'.MSRP.$this->xtcFormat($pPrice, $format).'</span><br />'.YOUR_PRICE.$this->checkAttributes($pID).$this->xtcFormat($sPrice, $format);
+				$price = '<span class="productOldPrice">'.MSRP.$this->Format($pPrice, $format).'</span><br />'.YOUR_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format);
 			} else {
-				$price = FROM.$this->xtcFormat($sPrice, $format);
+				$price = FROM.$this->Format($sPrice, $format);
 			}
 			if ($vpeStatus == 0) {
 				return $price;
