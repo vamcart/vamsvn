@@ -31,11 +31,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     function message() {
       global $message2Stack;
       $this->errors = array();
-      if (vam_session_is_registered('message2Stack')) {
-        for ($i = 0, $n = sizeof($message2Stack); $i < $n; $i++) {
-          $this->add($message2Stack[$i]['text'], $message2Stack[$i]['type']);
+      if (isset($_SESSION['message2Stack'])) {
+        for ($i = 0, $n = sizeof($_SESSION['message2Stack']); $i < $n; $i++) {
+          $this->add($_SESSION['message2Stack'][$i]['text'], $_SESSION['message2Stack'][$i]['type']);
         }
-        vam_session_unregister('message2Stack');
+        unset($_SESSION['message2Stack']);
       }
     }
 
@@ -104,12 +104,11 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function add_session($message, $type = 'error') {
-        global $message2Stack;
-        if (!vam_session_is_registered('message2Stack')) {
-            vam_session_register('message2Stack');
-            $message2Stack = array();
-        }
-        if ($message)     $message2Stack[] = array('text' => $message, 'type' => $type);
+      if (!isset($_SESSION['message2Stack'])) {
+        $_SESSION['message2Stack'] = array();
+      }
+
+      $_SESSION['message2Stack'][] = array('text' => $message, 'type' => $type);
     }
 
     function reset() {
