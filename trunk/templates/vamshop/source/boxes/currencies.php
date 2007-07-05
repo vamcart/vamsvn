@@ -19,12 +19,12 @@
 
   // include functions
   require_once(DIR_FS_INC . 'vam_hide_session_id.inc.php');
-  if (isset($xtPrice) && is_object($xtPrice)) {
+  if (isset($vamPrice) && is_object($vamPrice)) {
 
     $count_cur='';
-    reset($xtPrice->currencies);
+    reset($vamPrice->currencies);
     $currencies_array = array();
-    while (list($key, $value) = each($xtPrice->currencies)) {
+    while (list($key, $value) = each($vamPrice->currencies)) {
     $count_cur++;
       $currencies_array[] = array('id' => $key, 'text' => $value['title']);
     }

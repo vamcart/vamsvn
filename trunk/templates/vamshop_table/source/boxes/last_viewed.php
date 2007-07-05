@@ -67,7 +67,7 @@ $random_last_viewed = vam_rand(0,$max);
     $random_query = vamDBquery($random_query);
     $random_product = vam_db_fetch_array($random_query,true);
 
-    $random_products_price = $xtPrice->xtcGetPrice($random_product['products_id'],$format=true,1,$random_product['products_tax_class_id'],$random_product['products_price']);
+    $random_products_price = $vamPrice->GetPrice($random_product['products_id'],$format=true,1,$random_product['products_tax_class_id'],$random_product['products_price']);
 
     $category_path = vam_get_path($random_product['categories_id']);
 
