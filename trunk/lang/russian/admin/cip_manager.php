@@ -114,6 +114,6 @@ define('MSG_WAS_INSTALLED','Модуль установлен!');
 define('MSG_WAS_APPLIED',' был также установлен!');
 define('MSG_WAS_REMOVED','Модуль удалён!');
 
-define('TEXT_POST_INSTALL_NOTES','POST INSTALL NOTES');
+define('TEXT_POST_INSTALL_NOTES','Сообщение');
 
 ?>
