@@ -39,7 +39,7 @@
 
   
   // define the project version
-  define('PROJECT_VERSION', 'xt:Commerce v3.0.4 SP2 VaM Edition');
+  define('PROJECT_VERSION', 'VaM Shop');
 
   // set the type of request (secure or not)
   $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';

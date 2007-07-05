@@ -392,7 +392,7 @@ require (DIR_WS_CLASSES.'main.php');
 $main = new main();
 
 require (DIR_WS_CLASSES.'vamPrice.php');
-$xtPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
+$vamPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
 
 require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
 // create the shopping cart & fix the cart if necesary
