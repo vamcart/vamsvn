@@ -30,13 +30,13 @@
       break;
 
       case 'import':
-           $handler = new xtcImport($_POST['select_file']);
+           $handler = new vamImport($_POST['select_file']);
            $mapping=$handler->map_file($handler->generate_map());
            $import=$handler->import($mapping);
       break;
 
       case 'export':
-            $handler = new xtcExport('export.csv');
+            $handler = new vamExport('export.csv');
             $import=$handler->exportProdFile();
       break;
 
