@@ -79,13 +79,13 @@ class nochex {
 	}
 
 	function process_button() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 		if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 			$total = $order->info['total'] + $order->info['tax'];
 		} else {
 			$total = $order->info['total'];
 		}
-		$process_button_string = vam_draw_hidden_field('cmd', '_xclick').vam_draw_hidden_field('email', MODULE_PAYMENT_NOCHEX_ID).vam_draw_hidden_field('amount', round($xtPrice->xtcCalculateCurrEx($total, 'GBP'), $xtPrice->get_decimal_places('GBP'))).vam_draw_hidden_field('ordernumber', $_SESSION['customer_id'].'-'.date('Ymdhis')).vam_draw_hidden_field('returnurl', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')).vam_draw_hidden_field('cancel_return', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+		$process_button_string = vam_draw_hidden_field('cmd', '_xclick').vam_draw_hidden_field('email', MODULE_PAYMENT_NOCHEX_ID).vam_draw_hidden_field('amount', round($vamPrice->CalculateCurrEx($total, 'GBP'), $vamPrice->get_decimal_places('GBP'))).vam_draw_hidden_field('ordernumber', $_SESSION['customer_id'].'-'.date('Ymdhis')).vam_draw_hidden_field('returnurl', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')).vam_draw_hidden_field('cancel_return', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 
 		return $process_button_string;
 	}

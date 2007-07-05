@@ -28,7 +28,7 @@ class cc {
 
 	// class constructor
 	function cc() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		$this->code = 'cc';
 		$this->title = MODULE_PAYMENT_CC_TEXT_TITLE;
@@ -44,7 +44,7 @@ class cc {
 		if (is_object($order))
 			$this->update_status();
 
-		//  if ($xtPrice->xtcRemoveCurr($_SESSION['cart']->show_total())>600) $this->enabled=false;
+		//  if ($vamPrice->RemoveCurr($_SESSION['cart']->show_total())>600) $this->enabled=false;
 	}
 
 	// class methods

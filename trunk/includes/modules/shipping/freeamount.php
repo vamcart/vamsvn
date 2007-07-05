@@ -32,19 +32,19 @@
     }
 
     function quote($method = '') {
-    	global $xtPrice;
+    	global $vamPrice;
 	
-	  if (( $xtPrice->xtcRemoveCurr($_SESSION['cart']->show_total()) < MODULE_SHIPPING_FREEAMOUNT_AMOUNT ) && MODULE_SHIPPING_FREEAMOUNT_DISPLAY == 'False')
+	  if (( $vamPrice->RemoveCurr($_SESSION['cart']->show_total()) < MODULE_SHIPPING_FREEAMOUNT_AMOUNT ) && MODULE_SHIPPING_FREEAMOUNT_DISPLAY == 'False')
 	  return;
 
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_FREEAMOUNT_TEXT_TITLE);
 
-      if ( $xtPrice->xtcRemoveCurr($_SESSION['cart']->show_total()) < MODULE_SHIPPING_FREEAMOUNT_AMOUNT )
-        $this->quotes['error'] = sprintf(MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY,$xtPrice->xtcFormat(MODULE_SHIPPING_FREEAMOUNT_AMOUNT,true,0,true));
+      if ( $vamPrice->RemoveCurr($_SESSION['cart']->show_total()) < MODULE_SHIPPING_FREEAMOUNT_AMOUNT )
+        $this->quotes['error'] = sprintf(MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY,$vamPrice->Format(MODULE_SHIPPING_FREEAMOUNT_AMOUNT,true,0,true));
       else
  	$this->quotes['methods'] = array(array('id'    => $this->code,
-                                               'title' => sprintf(MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY,$xtPrice->xtcFormat(MODULE_SHIPPING_FREEAMOUNT_AMOUNT,true,0,true)),
+                                               'title' => sprintf(MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY,$vamPrice->Format(MODULE_SHIPPING_FREEAMOUNT_AMOUNT,true,0,true)),
                                                'cost'  => 0));
 
       if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);

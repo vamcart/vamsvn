@@ -22,7 +22,7 @@ class cod {
 	var $code, $title, $description, $enabled;
 
 	function cod() {
-		global $order,$xtPrice;
+		global $order,$vamPrice;
 
 		$this->code = 'cod';
 		$this->title = MODULE_PAYMENT_COD_TEXT_TITLE;
@@ -71,7 +71,7 @@ class cod {
 	}
 
 	function selection() {
-		global $xtPrice,$order;
+		global $vamPrice,$order;
 		
       if (MODULE_ORDER_TOTAL_COD_FEE_STATUS == 'true') {
 
@@ -132,16 +132,16 @@ class cod {
             $cod_tax_description = vam_get_tax_description(MODULE_ORDER_TOTAL_COD_FEE_TAX_CLASS, $order->delivery['country']['id'], $order->delivery['zone_id']);
         if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) {
             $cod_cost_value= vam_add_tax($cod_cost, $cod_tax);
-            $cod_cost= $xtPrice->xtcFormat($cod_cost_value,true);
+            $cod_cost= $vamPrice->Format($cod_cost_value,true);
         }
         if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 
             $cod_cost_value=$cod_cost;
-            $cod_cost= $xtPrice->xtcFormat($cod_cost,true);
+            $cod_cost= $vamPrice->Format($cod_cost,true);
         }
         if (!$cod_cost_value) {
            $cod_cost_value=$cod_cost;
-           $cod_cost= $xtPrice->xtcFormat($cod_cost,true);
+           $cod_cost= $vamPrice->Format($cod_cost,true);
         }
         $this->cost = '+ '.$cod_cost;
 

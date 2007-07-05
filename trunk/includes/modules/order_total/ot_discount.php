@@ -21,7 +21,7 @@
     var $title, $output;
 
     function ot_discount() {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->code = 'ot_discount';
       $this->title = MODULE_ORDER_TOTAL_DISCOUNT_TITLE;
       $this->description = MODULE_ORDER_TOTAL_DISCOUNT_DESCRIPTION;
@@ -33,13 +33,13 @@
     }
 
     function process() {
-      global $order, $xtPrice;
+      global $order, $vamPrice;
 //      echo 'xx';
       $this->title = $_SESSION['customers_status']['customers_status_ot_discount'] . ' % ' . SUB_TITLE_OT_DISCOUNT;
       if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' && $_SESSION['customers_status']['customers_status_ot_discount']!='0.00') {
-        $discount_price = $xtPrice->xtcFormat($order->info['subtotal'], false) / 100 * $_SESSION['customers_status']['customers_status_ot_discount']*-1;
+        $discount_price = $vamPrice->Format($order->info['subtotal'], false) / 100 * $_SESSION['customers_status']['customers_status_ot_discount']*-1;
         $this->output[] = array('title' => $this->title . ':',
-                                'text' => '<font color="ff0000">'.$xtPrice->xtcFormat($discount_price,true).'</font>',
+                                'text' => '<font color="ff0000">'.$vamPrice->Format($discount_price,true).'</font>',
                                 'value' => $discount_price);
       }
     }

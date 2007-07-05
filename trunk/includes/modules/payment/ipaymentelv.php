@@ -98,7 +98,7 @@ class ipaymentelv {
 	}
 
 	function process_button() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		switch (MODULE_PAYMENT_IPAYMENTELV_CURRENCY) {
 			case 'Always EUR' :
@@ -130,7 +130,7 @@ class ipaymentelv {
 		if ($_SESSION['currency'] == $trx_currency) {
 			$amount = $total;
 		} else {
-			$amount = $xtPrice->xtcCalculateCurrEx($total, $trx_currency);
+			$amount = $vamPrice->CalculateCurrEx($total, $trx_currency);
 		}
 
 		$process_button_string = vam_draw_hidden_field('silent', '1').vam_draw_hidden_field('trx_paymenttyp', 'elv').vam_draw_hidden_field('trxuser_id', MODULE_PAYMENT_IPAYMENTELV_USER_ID).vam_draw_hidden_field('trxpassword', MODULE_PAYMENT_IPAYMENTELV_PASSWORD).vam_draw_hidden_field('item_name', STORE_NAME).vam_draw_hidden_field('trx_currency', $trx_currency).vam_draw_hidden_field('trx_amount', round($amount * 100, 0)).vam_draw_hidden_field('bank_name', $_POST['ipayment_bank_name']).vam_draw_hidden_field('bank_code', $_POST['ipayment_bank_code']).vam_draw_hidden_field('bank_accountnumber', $_POST['ipayment_bank_account']).vam_draw_hidden_field('bank_iban', $_POST['ipayment_bank_iban']).vam_draw_hidden_field('addr_name', $_POST['ipayment_owner']).vam_draw_hidden_field('addr_street', $order->customer['street_address']).vam_draw_hidden_field('addr_street2', '').vam_draw_hidden_field('addr_zip', $order->customer['postcode']).vam_draw_hidden_field('addr_city', $order->customer['city']).vam_draw_hidden_field('addr_country', $order->customer['country']['iso_code_2']).vam_draw_hidden_field('addr_email', $order->customer['email_address']).vam_draw_hidden_field('addr_telefon', $order->customer['telephone']).vam_draw_hidden_field('addr_telefax', '').vam_draw_hidden_field('addr_state', $order->customer['state']).vam_draw_hidden_field('redirect_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).vam_draw_hidden_field('silent_error_url', vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&ipayment_owner='.urlencode($_POST['ipayment_owner']), 'SSL', true));

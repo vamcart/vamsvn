@@ -22,7 +22,7 @@
     var $title, $output;
 
     function ot_tax() {
-    	global $xtPrice;
+    	global $vamPrice;
       $this->code = 'ot_tax';
       $this->title = MODULE_ORDER_TOTAL_TAX_TITLE;
       $this->description = MODULE_ORDER_TOTAL_TAX_DESCRIPTION;
@@ -33,7 +33,7 @@
     }
 
     function process() {
-      global $order, $xtPrice;
+      global $order, $vamPrice;
 	//echo $order->info['total'];
       reset($order->info['tax_groups']);
       while (list($key, $value) = each($order->info['tax_groups'])) {
@@ -41,13 +41,13 @@
 
           if ($_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
             $this->output[] = array('title' => $key . ':',
-                                    'text' =>$xtPrice->xtcFormat($value,true),
-                                    'value' => $xtPrice->xtcFormat($value, false));
+                                    'text' =>$vamPrice->Format($value,true),
+                                    'value' => $vamPrice->Format($value, false));
           }
           if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
             $this->output[] = array('title' => $key .':',
-                                    'text' =>$xtPrice->xtcFormat($value,true),
-                                    'value' => $xtPrice->xtcFormat($value, false));
+                                    'text' =>$vamPrice->Format($value,true),
+                                    'value' => $vamPrice->Format($value, false));
           }
         }
       }

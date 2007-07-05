@@ -107,7 +107,7 @@ class ipayment {
 	}
 
 	function process_button() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		switch (MODULE_PAYMENT_IPAYMENT_CURRENCY) {
 			case 'Always EUR' :
@@ -137,9 +137,9 @@ class ipayment {
 			$total = $order->info['total'];
 		}
 		if ($_SESSION['currency'] == $trx_currency) {
-			$amount = round($total, $xtPrice->get_decimal_places($trx_currency));
+			$amount = round($total, $vamPrice->get_decimal_places($trx_currency));
 		} else {
-			$amount = round($xtPrice->xtcCalculateCurrEx($total, $trx_currency), $xtPrice->get_decimal_places($trx_currency));
+			$amount = round($vamPrice->CalculateCurrEx($total, $trx_currency), $vamPrice->get_decimal_places($trx_currency));
 		}
 		$process_button_string = vam_draw_hidden_field('silent', '1').vam_draw_hidden_field('trx_paymenttyp', 'cc').vam_draw_hidden_field('trxuser_id', MODULE_PAYMENT_IPAYMENT_USER_ID).vam_draw_hidden_field('trxpassword', MODULE_PAYMENT_IPAYMENT_PASSWORD).vam_draw_hidden_field('item_name', STORE_NAME).vam_draw_hidden_field('trx_currency', $trx_currency).vam_draw_hidden_field('trx_amount', round($amount * 100, 0)).vam_draw_hidden_field('cc_expdate_month', $_POST['ipayment_cc_expires_month']).vam_draw_hidden_field('cc_expdate_year', $_POST['ipayment_cc_expires_year']).vam_draw_hidden_field('cc_number', $_POST['ipayment_cc_number']).vam_draw_hidden_field('cc_checkcode', $_POST['ipayment_cc_checkcode']).vam_draw_hidden_field('addr_name', $_POST['ipayment_cc_owner']).vam_draw_hidden_field('addr_email', $order->customer['email_address']).vam_draw_hidden_field('redirect_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', true)).vam_draw_hidden_field('silent_error_url', vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&ipayment_cc_owner='.urlencode($_POST['ipayment_cc_owner']), 'SSL', true));
 

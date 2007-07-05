@@ -55,10 +55,10 @@
 
 
     function quote($method = '') {
-      global $order, $shipping_weight, $shipping_num_boxes,$xtPrice;
+      global $order, $shipping_weight, $shipping_num_boxes,$vamPrice;
 
       if (MODULE_SHIPPING_TABLE_MODE == 'price') {
-        $order_total = $xtPrice->xtcRemoveCurr($_SESSION['cart']->show_total());
+        $order_total = $vamPrice->RemoveCurr($_SESSION['cart']->show_total());
       } else {
         $order_total = $shipping_weight;
       }

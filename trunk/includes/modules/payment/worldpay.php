@@ -109,10 +109,10 @@ class worldpay {
 	}
 
 	function process_button() {
-		global $order, $xtPrice;
+		global $order, $vamPrice;
 
 		$worldpay_url = vam_session_name().'='.vam_session_id();
-		$total = number_format($xtPrice->xtcCalculateCurr($order->info['total']), $xtPrice->get_decimal_places($_SESSION['currency']), '.', '');
+		$total = number_format($vamPrice->CalculateCurr($order->info['total']), $vamPrice->get_decimal_places($_SESSION['currency']), '.', '');
 
 		$process_button_string = vam_draw_hidden_field('instId', MODULE_PAYMENT_WORLDPAY_ID).vam_draw_hidden_field('currency', $_SESSION['currency']).vam_draw_hidden_field('desc', 'Purchase from '.STORE_NAME).vam_draw_hidden_field('cartId', $worldpay_url).vam_draw_hidden_field('amount', $total);
 
@@ -130,7 +130,7 @@ class worldpay {
 		$process_button_string .= vam_draw_hidden_field('testMode', MODULE_PAYMENT_WORLDPAY_MODE).vam_draw_hidden_field('name', $order->customer['firstname'].' '.$order->customer['lastname']).vam_draw_hidden_field('address', $address).vam_draw_hidden_field('postcode', $order->customer['postcode']).vam_draw_hidden_field('country', $order->customer['country']['iso_code_2']).vam_draw_hidden_field('tel', $order->customer['telephone']).vam_draw_hidden_field('myvar', 'Y').vam_draw_hidden_field('fax', $order->customer['fax']).vam_draw_hidden_field('email', $order->customer['email_address']).
 
 		// Ian-san: Added dynamic callback and languages link here 6/4/2003:
-		vam_draw_hidden_field('lang', $language_code).vam_draw_hidden_field('MC_callback', vam_href_link(wpcallback).'.php').vam_draw_hidden_field('MC_XTCsid', $XTCsid);
+		vam_draw_hidden_field('lang', $language_code).vam_draw_hidden_field('MC_callback', vam_href_link(wpcallback).'.php').vam_draw_hidden_field('MC_sid', $sid);
 
 		// Ian-san: Added MD5 here 6/4/2003:
 		if (MODULE_PAYMENT_WORLDPAY_USEMD5 == '1') {

@@ -35,7 +35,7 @@
     var $title, $output;
 
     function ot_cod_fee() {
-    		global $xtPrice;
+    		global $vamPrice;
       $this->code = 'ot_cod_fee';
       $this->title = MODULE_ORDER_TOTAL_COD_FEE_TITLE;
       $this->description = MODULE_ORDER_TOTAL_COD_FEE_DESCRIPTION;
@@ -47,7 +47,7 @@
     }
 
     function process() {
-      global $order, $xtPrice, $cod_cost, $cod_country, $shipping;
+      global $order, $vamPrice, $cod_cost, $cod_country, $shipping;
 
       if (MODULE_ORDER_TOTAL_COD_FEE_STATUS == 'true') {
 
@@ -113,19 +113,19 @@
             $order->info['tax_groups'][TAX_ADD_TAX . "$cod_tax_description"] += vam_add_tax($cod_cost, $cod_tax)-$cod_cost;
             $order->info['total'] += $cod_cost + (vam_add_tax($cod_cost, $cod_tax)-$cod_cost);
             $cod_cost_value= vam_add_tax($cod_cost, $cod_tax);
-            $cod_cost= $xtPrice->xtcFormat($cod_cost_value,true);
+            $cod_cost= $vamPrice->Format($cod_cost_value,true);
         }
         if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
             $order->info['tax'] += vam_add_tax($cod_cost, $cod_tax)-$cod_cost;
             $order->info['tax_groups'][TAX_NO_TAX . "$cod_tax_description"] += vam_add_tax($cod_cost, $cod_tax)-$cod_cost;
             $cod_cost_value=$cod_cost;
-            $cod_cost= $xtPrice->xtcFormat($cod_cost,true);
+            $cod_cost= $vamPrice->Format($cod_cost,true);
             $order->info['subtotal'] += $cod_cost_value;
             $order->info['total'] += $cod_cost_value;
         }
         if (!$cod_cost_value) {
            $cod_cost_value=$cod_cost;
-           $cod_cost= $xtPrice->xtcFormat($cod_cost,true);
+           $cod_cost= $vamPrice->Format($cod_cost,true);
            $order->info['total'] += $cod_cost_value;
         }
             $this->output[] = array('title' => $this->title . ':',
