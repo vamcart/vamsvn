@@ -866,7 +866,8 @@ CREATE TABLE products_attributes (
   options_values_weight decimal(15,4) NOT NULL,
   weight_prefix char(1) NOT NULL,
   sortorder int(11) NULL,
-  PRIMARY KEY (products_attributes_id)
+  PRIMARY KEY  (products_attributes_id),
+  KEY PRODUCTS_ID_INDEX (products_id)
 );
 
 DROP TABLE IF EXISTS products_attributes_download;
@@ -1007,7 +1008,8 @@ CREATE TABLE specials (
   date_status_change datetime,
   status int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (specials_id),
-  KEY idx_products_id (products_id)
+  KEY idx_products_id (products_id),
+  KEY PRODUCTS_ID_INDEX (products_id)
 );
 
 DROP TABLE IF EXISTS featured;
