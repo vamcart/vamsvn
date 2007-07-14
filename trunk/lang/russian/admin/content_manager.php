@@ -79,5 +79,8 @@
  define('USED_SPACE','Использованное место: ');
  define('TABLE_HEADING_CONTENT_FILESIZE','Размер файла');
 
+define('TEXT_META_TITLE','Meta Title: ');
+define('TEXT_META_DESCRIPTION','Meta Description: ');
+define('TEXT_META_KEYWORDS','Meta Keywords: ');
 
  ?>

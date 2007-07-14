@@ -73,6 +73,9 @@
         $group_id=vam_db_prepare_input($_POST['content_group']);
         $group_ids = $group_ids;
         $sort_order=vam_db_prepare_input($_POST['sort_order']);
+        $content_meta_title = vam_db_prepare_input($_POST['cont_meta_title']);
+        $content_meta_description = vam_db_prepare_input($_POST['cont_meta_description']);
+        $content_meta_keywords = vam_db_prepare_input($_POST['cont_meta_keywords']);
         
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                 if ($languages[$i]['code']==$content_language) $content_language=$languages[$i]['id'];
@@ -121,7 +124,10 @@
                                 'group_ids' => $group_ids,
                                 'content_group' => $group_id,
                                 'sort_order' => $sort_order,
-                                'file_flag' => $file_flag);
+                                'file_flag' => $file_flag,
+         						     'content_meta_title' => $content_meta_title,
+                                'content_meta_description' => $content_meta_description,
+                                'content_meta_keywords' => $content_meta_keywords);
          if ($_GET['id']=='update') {
          vam_db_perform(TABLE_CONTENT_MANAGER, $sql_data_array, 'update', "content_id = '" . $coID . "'");
         } else {
@@ -314,7 +320,10 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                                         content_file,
                                         content_status,
                                         content_group,
-                                        content_delete
+                                        content_delete,
+             							       content_meta_title,
+                                        content_meta_description,
+                                        content_meta_keywords
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE languages_id='".$languages[$i]['id']."'
                                         AND parent_id='0'
@@ -336,7 +345,10 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                         'CONTENT_FILE' => $content_data['content_file'],
                         'CONTENT_DELETE' => $content_data['content_delete'],
                         'CONTENT_GROUP' => $content_data['content_group'],
-                        'CONTENT_STATUS' => $content_data['content_status']);
+                        'CONTENT_STATUS' => $content_data['content_status'],
+                        'CONTENT_META_TITLE' => $content_data['content_meta_title'],
+                        'CONTENT_META_DESCRIPTION' => $content_data['content_meta_description'],
+                        'CONTENT_META_KEYWORDS' => $content_data['content_meta_keywords']);
                                 
         } // while content_data
         
@@ -406,7 +418,10 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
                                         file_flag,
                                         content_file,
                                         content_status,
-                                        content_delete
+                                        content_delete,
+             							       content_meta_title,
+                                        content_meta_description,
+                                        content_meta_keywords
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE languages_id='".$i."'
                                         AND parent_id='".$content[$ii]['CONTENT_ID']."'
@@ -427,7 +442,10 @@ for ($ii = 0, $nn = sizeof($content); $ii < $nn; $ii++) {
                         'FILE_FLAG' => $content_1_data['file_flag'],
                         'CONTENT_FILE' => $content_1_data['content_file'],
                         'CONTENT_DELETE' => $content_1_data['content_delete'],
-                        'CONTENT_STATUS' => $content_1_data['content_status']);
+                        'CONTENT_STATUS' => $content_data['content_status'],
+                        'CONTENT_META_TITLE' => $content_data['content_meta_title'],
+                        'CONTENT_META_DESCRIPTION' => $content_data['content_meta_description'],
+                        'CONTENT_META_KEYWORDS' => $content_data['content_meta_keywords']);
  }      
 for ($a = 0, $x = sizeof($content_1); $a < $x; $a++) {
 if ($content_1[$a]!='') {
@@ -493,7 +511,10 @@ switch ($_GET['action']) {
                                         content_file,
                                         content_status,
                                         content_group,
-                                        content_delete
+                                        content_delete,
+             							       content_meta_title,
+                                        content_meta_description,
+                                        content_meta_keywords
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE content_id='".(int)$_GET['coID']."'");
 
@@ -628,6 +649,22 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
       <td width="10%"><?php echo TEXT_HEADING; ?></td>
       <td width="90%"><?php echo vam_draw_input_field('cont_heading',$content['content_heading'],'size="60"'); ?></td>
    </tr>
+
+   <tr>
+   	   <td width="10%"><?php echo TEXT_META_TITLE; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_meta_title',$content['content_meta_title'],'size="60"'); ?></td>
+   </tr>
+
+   <tr> 
+      <td width="10%"><?php echo TEXT_META_DESCRIPTION; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_meta_description',$content['content_meta_description'],'size="60"'); ?></td>
+   </tr>
+
+   <tr> 
+      <td width="10%"><?php echo TEXT_META_KEYWORDS; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_meta_keywords',$content['content_meta_keywords'],'size="60"'); ?></td>
+   </tr>
+
    <tr> 
       <td width="10%" valign="top"><?php echo TEXT_UPLOAD_FILE; ?></td>
       <td width="90%"><?php echo vam_draw_file_field('file_upload').' '.TEXT_UPLOAD_FILE_LOCAL; ?></td>

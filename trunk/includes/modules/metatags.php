@@ -94,15 +94,32 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 switch (true) {
   case ($_GET['coID']):
 
-			$contents_meta_query = vamDBquery("SELECT content_heading
-			                                            FROM " . TABLE_CONTENT_MANAGER . "
-			                                            WHERE content_group='" . $_GET['coID'] . "' and
-			                                            languages_id='" . $_SESSION['languages_id'] . "'");
-			$contents_meta = vam_db_fetch_array($contents_meta_query, true);
+$content_meta_query = vamDBquery("select cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '" . (int)$_GET['coID'] . "' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+$content_meta = vam_db_fetch_array($content_meta_query);
+
+		if ($content_meta['content_meta_title'] == '') {
+			$content_title = $content_meta['content_heading'];
+		} else {
+			$content_title = $content_meta['content_meta_title'];
+		}
+
+		if ($content_meta['content_meta_description'] == '') {
+			$content_desc = META_DESCRIPTION;
+		} else {
+			$content_desc = $content_meta['content_meta_description'];
+		}
+
+		if ($content_meta['content_meta_keywords'] == '') {
+			$content_key = META_KEYWORDS;
+		} else {
+			$content_key = $content_meta['content_meta_keywords'];
+		}
+
 ?>
-<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
-<title><?php echo $contents_meta['content_heading'] . ' - ' . TITLE; ?></title>
+<meta name="description" content="<?php echo $content_desc; ?>" />
+<meta name="keywords" content="<?php echo $content_key; ?>" />
+<title><?php echo $content_title . ' - ' . TITLE; ?></title>
 <?php
 
     break;
