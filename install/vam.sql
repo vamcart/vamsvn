@@ -1107,6 +1107,9 @@ CREATE TABLE content_manager (
   content_status int(1) NOT NULL default '0',
   content_group int(11) NOT NULL,
   content_delete int(1) NOT NULL default '1',
+  content_meta_title TEXT,
+  content_meta_description TEXT,
+  content_meta_keywords TEXT,
   PRIMARY KEY  (content_id)
 );
 
