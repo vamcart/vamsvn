@@ -33,6 +33,7 @@ if (GROUP_CHECK == 'true') {
 $shop_content_query = vam_db_query("SELECT
                      content_id,
                      content_title,
+                     content_group,
                      content_heading,
                      content_text,
                      content_file
@@ -40,6 +41,32 @@ $shop_content_query = vam_db_query("SELECT
                      WHERE content_group='".(int) $_GET['coID']."' ".$group_check."
                      AND languages_id='".(int) $_SESSION['languages_id']."'");
 $shop_content_data = vam_db_fetch_array($shop_content_query);
+
+$shop_content_sub_pages_query = vam_db_query("SELECT
+                     content_id,
+                     content_title,
+                     content_group,
+                     content_heading,
+                     content_text,
+                     content_file
+                     FROM ".TABLE_CONTENT_MANAGER."
+                     WHERE parent_id='" . $shop_content_data['content_id'] . "' ".$group_check."
+                     AND languages_id='".(int) $_SESSION['languages_id']."'");
+
+  $sub_pages_content = array();
+
+      while ($shop_content_sub_pages_data = vam_db_fetch_array($shop_content_sub_pages_query )) {
+
+          $sub_pages_content[]=array(
+              'PAGE_ID' => $shop_content_sub_pages_data['content_id'],
+              'PAGE_TITLE' => $shop_content_sub_pages_data['content_title'],
+              'PAGE_HEADING'      => $shop_content_sub_pages_data['content_heading'],
+              'PAGE_CONTENT'    => vam_date_short($one['content_text']),
+              'PAGE_LINK'    => vam_href_link(FILENAME_CONTENT, 'coID='.$shop_content_sub_pages_data['content_group'])
+              );
+      }
+
+  $smarty->assign('sub_pages_content',$sub_pages_content);
 
 $breadcrumb->add($shop_content_data['content_title'], vam_href_link(FILENAME_CONTENT.'?coID='.(int) $_GET['coID']));
 

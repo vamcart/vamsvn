@@ -326,7 +326,6 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
                                         content_meta_keywords
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE languages_id='".$languages[$i]['id']."'
-                                        AND parent_id='0'
                                         order by sort_order 
                                         ");
         while ($content_data=vam_db_fetch_array($content_query)) {
@@ -539,8 +538,7 @@ switch ($_GET['action']) {
                                         content_id,
                                         content_title
                                         FROM ".TABLE_CONTENT_MANAGER."
-                                        WHERE ".$query_string." parent_id='0'
-                                        AND content_id!='".(int)$_GET['coID']."'");
+                                        WHERE ".$query_string." content_id!='".(int)$_GET['coID']."'");
   while ($categories_data=vam_db_fetch_array($categories_query)) {
   
   $categories_array[]=array(
@@ -586,14 +584,11 @@ while($file_flag = vam_db_fetch_array($file_flag_sql)) {
       <td width="10%"><?php echo TEXT_FILE_FLAG; ?></td>
       <td width="90%"><?php echo vam_draw_pull_down_menu('file_flag',$file_flag_array,$content['file_flag']); ?></td>
    </tr>
-<?php
-/*  build in not completed yet
+
       <tr>
       <td width="10%"><?php echo TEXT_PARENT; ?></td>
       <td width="90%"><?php echo vam_draw_pull_down_menu('parent',$categories_array,$content['parent_id']); ?><?php echo vam_draw_checkbox_field('parent_check', 'yes',false).' '.TEXT_PARENT_DESCRIPTION; ?></td>
    </tr>
-*/
-?>
 
     <tr>
       <td width="10%"><?php echo TEXT_SORT_ORDER; ?></td>
