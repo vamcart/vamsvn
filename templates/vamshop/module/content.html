@@ -7,7 +7,8 @@
 <!-- Содержимое страницы -->
 <div class="pagecontent">
 
-{foreach name=aussen item=sub_pages from=$sub_pages_content}&nbsp;&nbsp;&nbsp;<a href="{$sub_pages.PAGE_LINK}">{$sub_pages.PAGE_TITLE}</a><br />
+{foreach name=aussen item=sub_pages from=$sub_pages_content}
+&nbsp;&nbsp;&nbsp;<a href="{$sub_pages.PAGE_LINK}">{$sub_pages.PAGE_TITLE}</a><br />
 {/foreach} 
 
 {if $file}
