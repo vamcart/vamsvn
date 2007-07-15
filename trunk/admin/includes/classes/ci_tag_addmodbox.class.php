@@ -36,7 +36,7 @@ class Tc_addmodbox extends ContribInstallerBaseTag {
     }
 
 	function fs_filename(){
-		return DIR_FS_ROOT.DIR_BASE_CATALOG.'modules/mod_esc_box.xml';
+		return DIR_FS_ROOT.DIR_BASE_CATALOG.'modules/mod_josc_box.xml';
 	}
 
     function write_to_xml() {
@@ -62,7 +62,7 @@ class Tc_addmodbox extends ContribInstallerBaseTag {
     //===============================================================
     function do_install() {
     	if(!$this->isJoscom()) return;
-        $find=$this->linebreak_fixing(trim('<param name="esc_module" type="list" default="categories" label="ESC Module" description="Select which module to load.">'));
+        $find=$this->linebreak_fixing(trim('<param name="josc_module" type="list" default="categories" label="JOSC Module" description="Select which module to load.">'));
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $position=strpos($old_file, $find) + strlen($find); //pos from begining of file
         $new_file = substr_replace($old_file, $this->add_str(), $position, 0); //inserts string into another string

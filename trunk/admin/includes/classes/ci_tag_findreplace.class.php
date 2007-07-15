@@ -37,11 +37,11 @@ class Tc_findreplace extends ContribInstallerBaseTag {
                                 ),
             'start'=>array(
                                 'sql_type'=>'SMALLINT UNSIGNED',
-                                'xml_error'=>"no linenumbers; "
+                                'xml_error'=>"no linenumbersStart; "
                                 ),
             'end'=>array(
                                 'sql_type'=>'SMALLINT UNSIGNED',
-                                'xml_error'=>"no linenumbers; "
+                                'xml_error'=>"no linenumbersEnd; "
                                 ),
         );
         $this->ContribInstallerBaseTag($contrib, $id, $xml_data, $dep);
@@ -83,8 +83,8 @@ class Tc_findreplace extends ContribInstallerBaseTag {
         $rfind = $this->cnv_to_regex($find);
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $count = preg_match_all($rfind,$old_file,$matches,PREG_OFFSET_CAPTURE);
-        if ($this->multi_search() or $count==1)     $new_file=preg_replace($rfind, $repstr, $old_file);
-        else {//if ($count>1)
+ /*       if ($this->multi_search() or $count==1) */    $new_file=preg_replace($rfind, $repstr, $old_file);
+/*        else {//if ($count>1)
             preg_match_all('((?m)(^.*$))',$old_file,$m,PREG_OFFSET_CAPTURE);
             $start = (int)$m[0][$this->get_real_start($old_file)-1][1];
             $end = (int)$m[0][$this->get_real_end($old_file)][1];
@@ -92,7 +92,7 @@ class Tc_findreplace extends ContribInstallerBaseTag {
             $piece = substr($old_file,$start,$end-$start);
             $end_piece = substr($old_file,$end);
             $new_file=$start_piece . preg_replace($rfind, $repstr, $piece) . $end_piece;
-        }
+        }*/
         $this->write_to_file($this->fs_filename(), $new_file);
         //save_md5 ($this->fs_filename(), $_GET['contrib']);
         return $this->error;
