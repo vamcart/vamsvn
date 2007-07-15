@@ -31,7 +31,7 @@ class Tc_add2end extends ContribInstallerBaseTag {
     function get_data_from_xml_parser($xml_data='') {
     	$this->data['filename'] = $this->getTagAttr($xml_data,'file',0,'name');
        	$this->data['add']      = $this->getTagText($xml_data,'add',0);
-       	$this->data['type'] = $this->getTagAttr($xml_data,'add',0,'type');
+       	$this->data['add_type'] = $this->getTagAttr($xml_data,'add',0,'type');
         if($this->data['find']==''){
 			$this->data['end'] = 1;
 			$this->data['start'] =1;
