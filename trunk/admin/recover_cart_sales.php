@@ -24,6 +24,8 @@ $smarty = new Smarty;
 require (DIR_WS_CLASSES.'currencies.php');
 $currencies = new currencies();
 
+$custid = $_POST['custid'];
+
 // Delete Entry Begin
 if ($_GET['action']=='delete') { 
    $reset_query_raw = "delete from " . TABLE_CUSTOMERS_BASKET . " where customers_id=$_GET[customer_id]"; 
