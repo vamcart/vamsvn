@@ -89,7 +89,7 @@ if ($_GET['action'] == "product_ins") {
 	$c_info = vam_oe_customer_infos($order->customer['ID']);
 	$tax_rate = vam_get_tax_rate($product['products_tax_class_id'], $c_info['country_id'], $c_info['zone_id']);
 
-	$price = $vamPrice->Price($_POST['products_id'], $format = false, $_POST['products_quantity'], $product['products_tax_class_id'], '', '', $order->customer['ID']);
+	$price = $vamPrice->getPrice($_POST['products_id'], $format = false, $_POST['products_quantity'], $product['products_tax_class_id'], '', '', $order->customer['ID']);
 
 	$final_price = $price * $_POST['products_quantity'];
 
@@ -120,7 +120,7 @@ if ($_GET['action'] == "product_option_edit") {
 		$ov_price += $products_a['price_prefix'].$products_a['options_values_price'];
 	};
 
-	$products_old_price = $vamPrice->xtcGetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
+	$products_old_price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
 
 	$options_values_price = ($ov_price.$_POST['prefix'].$_POST['options_values_price']);
 	$products_price = ($products_old_price + $options_values_price);
