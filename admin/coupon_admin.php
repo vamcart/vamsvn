@@ -181,7 +181,7 @@
           }
         } else {
           $query = vam_db_perform(TABLE_COUPONS, $sql_data_array);
-          $insert_id = vam_db_insert_id($query);
+          $insert_id = vam_db_insert_id();
 
           for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
             $language_id = $languages[$i]['id'];
