@@ -73,6 +73,7 @@ div#left
 div#right
    {
      float: left;
+     overflow: auto;
      width: 18%; /* Ширина правой колонки */
      margin-left: -18%;
      background: #fff;
