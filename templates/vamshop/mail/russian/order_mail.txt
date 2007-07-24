@@ -1,46 +1,34 @@
+Уважаемый (ая) {$NAME}!
+Сегодня ({$DATE}) Вы оформили заказ в нашем интернет-магазине!
 
-{$address_label_customer}
+Пожалуйста, проверьте правильность следующей информации:
 
-{if $PAYMENT_METHOD}Способ оплаты: {$PAYMENT_METHOD}{/if}
-
-Номер заказа: {$oID}
-Дата: {$DATE}
-{if $csID}Код покупателя:{$csID}{/if}
-Телефон: {$PHONE}
-E-mail: {$EMAIL}
-----------------------------------------------------------------------
-
-Уважаемый {$NAME}!
-
-Вы оформили заказ в нашем интернет-магазине.
-
-{$PAYMENT_INFO_TXT}
-
-{if $COMMENTS}
-Ваши комментарии:
-{$COMMENTS}
-{/if}
-
-Вы заказали следующие товары
-----------------------------------------------------------------------
+Вы заказали:
 {foreach name=aussen item=order_values from=$order_data} 
 {$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME}{if $order_values.PRODUCTS_MODEL neq ''} ({$order_values.PRODUCTS_MODEL}) {/if} {$order_values.PRODUCTS_PRICE}
 {if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Время доставки: {$order_values.PRODUCTS_SHIPPING_TIME}{/if}
 {if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
-
 {/foreach}
 
 {foreach name=aussen item=order_total_values from=$order_total}
 {$order_total_values.TITLE}{$order_total_values.TEXT}
 {/foreach}
 
+Выбранный Вами способ оплаты: 
+{if $PAYMENT_METHOD}{$PAYMENT_METHOD}{/if}
+{$PAYMENT_INFO_TXT}
 
-{if $address_label_payment}
-Адрес покупателя
-----------------------------------------------------------------------
-{$address_label_payment}
+Адрес доставки вашего заказа:
+{$address_label_shipping}
+
+{if $COMMENTS}
+Ваши комментарии к заказу:
+{$COMMENTS}
 {/if}
 
-Адрес доставки
-----------------------------------------------------------------------
-{$address_label_shipping}
+Номер заказа: {$oID}
+Ваш контантный телефон: {$PHONE}, 
+Электронный адрес: {$EMAIL}.
+
+В случае, если Вы обнаружите ошибку, сделанную при оформлении заказа -
+сообщите нам об этом как можно скорее в ответном письме.
