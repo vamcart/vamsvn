@@ -19,6 +19,7 @@
   include(DIR_WS_BOXES . 'categories.php');
   include(DIR_WS_BOXES . 'authors.php');
   include(DIR_WS_BOXES . 'articles.php');
+  include(DIR_WS_BOXES . 'articles_new.php');
   include(DIR_WS_BOXES . 'manufacturers.php');
   if ($_SESSION['customers_status']['customers_status_show_price']!='0') {
   require(DIR_WS_BOXES . 'add_a_quickie.php');
