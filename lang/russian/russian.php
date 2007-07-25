@@ -27,7 +27,7 @@ define('TITLE', STORE_NAME);
 define('HEADER_TITLE_TOP', 'Начало');     
 define('HEADER_TITLE_CATALOG', 'Каталог');
 
-define('HTML_PARAMS','dir="ltr" lang="ru"');
+define('HTML_PARAMS','xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"');
 
 @setlocale(LC_TIME, 'en_US');
 
