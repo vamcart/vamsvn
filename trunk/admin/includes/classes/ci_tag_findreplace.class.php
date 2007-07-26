@@ -37,11 +37,11 @@ class Tc_findreplace extends ContribInstallerBaseTag {
                                 ),
             'start'=>array(
                                 'sql_type'=>'SMALLINT UNSIGNED',
-                                'xml_error'=>"no linenumbersStart; "
+                                'xml_error'=>"no linenumbers; "
                                 ),
             'end'=>array(
                                 'sql_type'=>'SMALLINT UNSIGNED',
-                                'xml_error'=>"no linenumbersEnd; "
+                                'xml_error'=>"no linenumbers; "
                                 ),
         );
         $this->ContribInstallerBaseTag($contrib, $id, $xml_data, $dep);
@@ -79,20 +79,20 @@ class Tc_findreplace extends ContribInstallerBaseTag {
 
     function do_install() {
         $find=$this->linebreak_fixing(trim($this->data['find']));
-        $repstr = $this->rep_str();
-        $rfind = $this->cnv_to_regex($find);
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
-        $count = preg_match_all($rfind,$old_file,$matches,PREG_OFFSET_CAPTURE);
- /*       if ($this->multi_search() or $count==1) */    $new_file=preg_replace($rfind, $repstr, $old_file);
-/*        else {//if ($count>1)
-            preg_match_all('((?m)(^.*$))',$old_file,$m,PREG_OFFSET_CAPTURE);
-            $start = (int)$m[0][$this->get_real_start($old_file)-1][1];
-            $end = (int)$m[0][$this->get_real_end($old_file)][1];
-            $start_piece = substr($old_file,0,$start);
-            $piece = substr($old_file,$start,$end-$start);
-            $end_piece = substr($old_file,$end);
-            $new_file=$start_piece . preg_replace($rfind, $repstr, $piece) . $end_piece;
-        }*/
+        $count=substr_count($old_file, $find);
+        if ($this->multi_search() or $count==1)     $new_file=str_replace($find, $this->rep_str(), $old_file);
+        else {//if ($count>1)
+            $file2array=explode("\r\n", $old_file);
+            foreach($file2array as $id=>$string) {
+                if ($id<($this->data['start']-1))     $start_piece.=$file2array[$id]."\r\n";
+                else {
+                    if ($id<=($this->data['end']-1))     $piece.=$file2array[$id]."\r\n";
+                    else     $end_piece.=$file2array[$id]."\r\n";
+                }
+            }
+            $new_file=$start_piece . str_replace($find, $this->rep_str(), $piece) . $end_piece;
+        }
         $this->write_to_file($this->fs_filename(), $new_file);
         //save_md5 ($this->fs_filename(), $_GET['contrib']);
         return $this->error;
@@ -101,7 +101,7 @@ class Tc_findreplace extends ContribInstallerBaseTag {
     function do_remove() {
         $find=$this->linebreak_fixing(trim($this->data['find']));
         $old_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
-        $new_file=preg_replace($this->cnv_to_regex($this->rep_str($this->get_num_lines($find))), $find, $old_file);
+        $new_file=str_replace($this->rep_str(), $find, $old_file);
         $this->write_to_file($this->fs_filename(), $new_file);
         return $this->error;
     }
@@ -121,43 +121,29 @@ class Tc_findreplace extends ContribInstallerBaseTag {
 
 
     function conflicts_check_for_remove() {
-        return $this->conflicts_check_for_install(0);
+        return $this->conflicts_check_for_install($this->rep_str());
     }
 
 
-    function conflicts_check_for_install($inst=1) {
-        if (inst==1){
-        	$find=$this->linebreak_fixing(trim($this->data['find']));
-        	$repstr = $this->rep_str($this->get_num_lines($find));
-        }else{
-        	$repstr=$this->linebreak_fixing(trim($this->data['find']));
-        	$find = $this->rep_str($this->get_num_lines($repstr));
-        }
-        $rfind = $this->cnv_to_regex($find);
-        $rrepstr = $this->cnv_to_regex($repstr);
+    function conflicts_check_for_install($find='') {
+        if (!$find)     $find=$this->linebreak_fixing(trim($this->data['find']));
         $new_file=$this->linebreak_fixing(file_get_contents($this->fs_filename()));
         $this->write_to_file($this->fs_filename(), $new_file);
-        $count = preg_match_all($rfind,$new_file,$matches);
+        $count=substr_count($new_file, $find);
         //We can also check a database records for conflicts.
         if ($count==0) {
         	// check if already replaced
-        	$count=preg_match_all($rrepstr,$new_file,$matches);
-        	if($count == 0){
+        	if(substr_count($new_file, $this->rep_str())==0)
             $this->error(COULDNT_FIND_TEXT.": ".nl2br(htmlspecialchars($find))."<br> ".IN_THE_FILE_TEXT. $this->fs_filename());
-        	}
         } elseif ($count>1) {
             if (!$this->multi_search()) {
-                preg_match_all('((?m)(^.*$))',$new_file,$m,PREG_OFFSET_CAPTURE);
-            	$start = (int)$m[0][$this->get_real_start($new_file)-1][1];
-            	$end = (int)$m[0][$this->get_real_end($new_file)][1];
-            	$piece = substr($new_file,$start,$end-$start);
-                $count=preg_match_all($rfind,$piece,$matches);
+                $file2array=explode("\r\n", $new_file);
+                for ($i=($this->data['start']-1); $i<=($this->data['end']-1); $i++)     $piece.=$file2array[$i];
+                $count=substr_count($piece, $find);
                 if ($count==0) {
-                	$count=preg_match_all($rrepstr,$piece,$matches);
-                	if($count == 0){
-	                    $this->error(COULDNT_FIND_TEXT.": ".nl2br(htmlspecialchars($find))."<br> ".IN_THE_FILE_TEXT. $this->fs_filename(). " ".CIP_ON_LINES." ".CIP_ON_LINES_FROM." ".$this->data['start']." ".CIP_ON_LINES_TO." ".$this->data['end']);
-    	            }
-                } elseif ($count>1)     $this->error(TEXT_NOT_ORIGINAL_TEXT.TEXT_HAVE_BEEN_FOUND.$count.TEXT_TIMES.'<br>'. IN_THE_FILE_TEXT. $this->fs_filename(). " ".CIP_ON_LINES." ".CIP_ON_LINES_FROM." ".$this->data['start']." ".CIP_ON_LINES_TO." ".$this->data['end']);
+                	if(substr_count($piece, $this->rep_str())==0)
+                    $this->error(COULDNT_FIND_TEXT.": ".nl2br(htmlspecialchars($find))."<br> ".IN_THE_FILE_TEXT. $this->fs_filename());
+                } elseif ($count>1)     $this->error(TEXT_NOT_ORIGINAL_TEXT.TEXT_HAVE_BEEN_FOUND.$count.TEXT_TIMES);
             }
         }
         return $this->error;
