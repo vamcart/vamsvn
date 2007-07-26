@@ -214,6 +214,10 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
             <td valign="top" class="main"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_input_field('sort_order', $cInfo->sort_order, 'size="2"'); ?></td>
           </tr>
+             	  <tr>
+            <td class="main"><?php echo TEXT_EDIT_STATUS; ?>:</td>
+            <td class="main"><?php echo vam_draw_selection_field('status', 'checkbox', '1',$cInfo->categories_status==1 ? true : false); ?></td>
+          </tr>
         </table>
         </div>
 <!-- info -->
