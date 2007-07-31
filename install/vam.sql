@@ -1761,17 +1761,6 @@ INSERT INTO configuration_group VALUES ('23', 'CG_YANDEX_MARKET', 'Яндекс-Маркет
 INSERT INTO configuration_group VALUES ('24', 'CG_QUICK_PRICE_UPDATES', 'Изменение цен', 'Настройки модуля изменения цен', '24', '1');
 INSERT INTO configuration_group VALUES ('25', 'CG_CIP_MANAGER', 'Установка модулей', 'Настройки модуля', '25', '1');
 
-DROP TABLE IF EXISTS countries;
-CREATE TABLE countries (
-  countries_id int NOT NULL auto_increment,
-  countries_name varchar(255) NOT NULL,
-  countries_iso_code_2 char(2) NOT NULL,
-  countries_iso_code_3 char(3) NOT NULL,
-  address_format_id int NOT NULL,
-  status int(1) DEFAULT '1' NULL,  
-  PRIMARY KEY (countries_id),
-  KEY IDX_COUNTRIES_NAME (countries_name)
-);
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
 INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','0');
