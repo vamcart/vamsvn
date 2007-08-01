@@ -96,14 +96,14 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
             // brutto Admin
             if (PRICE_IS_BRUTTO=='true'){
-            $attribute_value_price_calculate = $vamPrice->vamFormat(vam_round($attribute_value_price*((100+(vam_get_tax_rate(vam_get_tax_class_id($_POST['current_product_id']))))/100),PRICE_PRECISION),false);
+            $attribute_value_price_calculate = $vamPrice->Format(vam_round($attribute_value_price*((100+(vam_get_tax_rate(vam_get_tax_class_id($_POST['current_product_id']))))/100),PRICE_PRECISION),false);
             } else {
             $attribute_value_price_calculate = vam_round($attribute_value_price,PRICE_PRECISION);
             }
             echo "<TD class=\"main\" align=\"left\"><input type=\"text\" name=\"" . $current_value_id . "_price\" value=\"" . $attribute_value_price_calculate . "\" size=\"10\">";
             // brutto Admin
             if (PRICE_IS_BRUTTO=='true'){
-             echo TEXT_NETTO .'<b>'.$vamPrice->vamFormat(vam_round($attribute_value_price,PRICE_PRECISION),true).'</b>  ';
+             echo TEXT_NETTO .'<b>'.$vamPrice->Format(vam_round($attribute_value_price,PRICE_PRECISION),true).'</b>  ';
             }
 
             echo "</TD>";
