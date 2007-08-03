@@ -330,6 +330,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<script type="text/javascript" src="includes/javascript/modified.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 <?php if (USE_WYSIWYG=='true') {
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
 	$data = vam_db_fetch_array($query);
@@ -398,46 +402,42 @@
           </tr>
         </table></td>
       </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
       <tr><?php echo vam_draw_form('new_topic', FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID'] . '&action=new_topic_preview', 'post', 'enctype="multipart/form-data"'); ?>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td>
+
+<div class="tabber">
+
+
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
+
+        <div class="tabbertab">
+        <h3><?php echo $languages[$i]['name']; ?></h3>
+          <table border="0">
+
           <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_EDIT_TOPICS_NAME; ?></td>
-            <td class="main"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']', (($topics_name[$languages[$i]['id']]) ? stripslashes($topics_name[$languages[$i]['id']]) : vam_get_topic_name($tInfo->topics_id, $languages[$i]['id']))); ?></td>
+            <td class="main"><?php echo TEXT_EDIT_TOPICS_NAME; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']', (($topics_name[$languages[$i]['id']]) ? stripslashes($topics_name[$languages[$i]['id']]) : vam_get_topic_name($tInfo->topics_id, $languages[$i]['id']))); ?></td>
           </tr>
-<?php
-    }
-?>
+
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-<?php
-    for ($i=0; $i<sizeof($languages); $i++) {
-?>
+
           <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_EDIT_TOPICS_HEADING_TITLE; ?></td>
-            <td class="main"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('topics_heading_title[' . $languages[$i]['id'] . ']', (($topics_name[$languages[$i]['id']]) ? stripslashes($topics_name[$languages[$i]['id']]) : vam_get_topic_heading_title($tInfo->topics_id, $languages[$i]['id']))); ?></td>
+            <td class="main"><?php echo TEXT_EDIT_TOPICS_HEADING_TITLE; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('topics_heading_title[' . $languages[$i]['id'] . ']', (($topics_name[$languages[$i]['id']]) ? stripslashes($topics_name[$languages[$i]['id']]) : vam_get_topic_heading_title($tInfo->topics_id, $languages[$i]['id']))); ?></td>
           </tr>
-<?php
-    }
-?>
+
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-<?php
-    for ($i=0; $i<sizeof($languages); $i++) {
-?>
+
           <tr>
-            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_EDIT_TOPICS_DESCRIPTION; ?></td>
+            <td class="main" valign="top"><?php echo TEXT_EDIT_TOPICS_DESCRIPTION; ?></td>
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-
 <td class="main">
 
 <?php
@@ -448,9 +448,18 @@
               </tr>
             </table></td>
           </tr>
+
+          </table>
+        </div>
+          
 <?php
     }
 ?>
+
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ARTICLE_OTHER; ?></h3>
+          <table border="0">
+
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
@@ -466,6 +475,10 @@
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+      
+          </table>
+        </div>
+</div>      
       <tr>
         <td class="main" align="right"><?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
       </form></tr>
@@ -615,11 +628,6 @@
 ?>
 <link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
-
-<script type="text/javascript" src="includes/javascript/modified.js"></script>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
     <?php echo vam_draw_form('new_article', FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '') . '&action=article_preview', 'post', 'enctype="multipart/form-data"'); ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
@@ -630,10 +638,100 @@
         </table></td>
       </tr>
       <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
-      <tr>
-        <td><table border="0" cellspacing="0" cellpadding="2">
+        <td>
+
+
+<div class="tabber">
+
+
+<?php
+    for ($i=0; $i<sizeof($languages); $i++) {
+?>
+
+        <div class="tabbertab">
+        <h3><?php echo $languages[$i]['name']; ?></h3>
+          <table border="0">
+
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLES_NAME; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('articles_name[' . $languages[$i]['id'] . ']', (isset($articles_name[$languages[$i]['id']]) ? $articles_name[$languages[$i]['id']] : vam_get_articles_name($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLES_HEAD_TITLE_TAG; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('articles_head_title_tag[' . $languages[$i]['id'] . ']', (isset($articles_head_title_tag[$languages[$i]['id']]) ? $articles_head_title_tag[$languages[$i]['id']] : vam_get_articles_head_title_tag($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main" valign="top"><?php echo TEXT_ARTICLES_HEAD_DESC_TAG; ?></td>
+            <td><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main"><?php echo vam_draw_textarea_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_desc_tag[$languages[$i]['id']]) ? $articles_head_desc_tag[$languages[$i]['id']] : vam_get_articles_head_desc_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
+              </tr>
+            </table></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main" valign="top"><?php echo TEXT_ARTICLES_HEAD_KEYWORDS_TAG; ?></td>
+            <td><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main"><?php echo vam_draw_textarea_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_keywords_tag[$languages[$i]['id']]) ? $articles_head_keywords_tag[$languages[$i]['id']] : vam_get_articles_head_keywords_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
+              </tr>
+            </table></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main" valign="top"><?php echo TEXT_ARTICLES_DESCRIPTION; ?></td>
+            <td><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+
+<td class="main">
+
+<?php
+          echo vam_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : vam_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
+?>
+
+</td>
+
+              </tr>
+            </table></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLES_URL . '<br><small>' . TEXT_ARTICLES_URL_WITHOUT_HTTP . '</small>'; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('articles_url[' . $languages[$i]['id'] . ']', (isset($articles_url[$languages[$i]['id']]) ? $articles_url[$languages[$i]['id']] : vam_get_articles_url($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
+          </tr>
+          
+          </table>
+          </div>
+<?php
+    }
+?>
+
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ARTICLE_OTHER; ?></h3>
+          <table border="0">
+
           <tr>
             <td class="main"><?php echo TEXT_ARTICLES_STATUS; ?></td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_radio_field('articles_status', '0', $out_status) . '&nbsp;' . TEXT_ARTICLE_NOT_AVAILABLE . '&nbsp;' . vam_draw_radio_field('articles_status', '1', $in_status) . '&nbsp;' . TEXT_ARTICLE_AVAILABLE; ?></td>
@@ -653,112 +751,13 @@
             <td class="main"><?php echo TEXT_ARTICLES_AUTHOR; ?></td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_pull_down_menu('authors_id', $authors_array, $aInfo->authors_id); ?></td>
           </tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_ARTICLES_NAME; ?></td>
-            <td class="main"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('articles_name[' . $languages[$i]['id'] . ']', (isset($articles_name[$languages[$i]['id']]) ? $articles_name[$languages[$i]['id']] : vam_get_articles_name($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
-          </tr>
-<?php
-    }
-?>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr bgcolor="#ffffcc">
-            <td class="main"><?php if ($i == 0) echo TEXT_ARTICLES_HEAD_TITLE_TAG; ?></td>
-            <td class="main"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('articles_head_title_tag[' . $languages[$i]['id'] . ']', (isset($articles_head_title_tag[$languages[$i]['id']]) ? $articles_head_title_tag[$languages[$i]['id']] : vam_get_articles_head_title_tag($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
-          </tr>
-<?php
-    }
-?>
-          <tr bgcolor="#ffffcc">
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr bgcolor="#ffffcc">
-            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_ARTICLES_HEAD_DESC_TAG; ?></td>
-            <td><table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main"><?php echo vam_draw_textarea_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_desc_tag[$languages[$i]['id']]) ? $articles_head_desc_tag[$languages[$i]['id']] : vam_get_articles_head_desc_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
-              </tr>
-            </table></td>
-          </tr>
-<?php
-    }
-?>
-          <tr bgcolor="#ffffcc">
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr bgcolor="#ffffcc">
-            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_ARTICLES_HEAD_KEYWORDS_TAG; ?></td>
-            <td><table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main"><?php echo vam_draw_textarea_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_keywords_tag[$languages[$i]['id']]) ? $articles_head_keywords_tag[$languages[$i]['id']] : vam_get_articles_head_keywords_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
-              </tr>
-            </table></td>
-          </tr>
-<?php
-    }
-?>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
 
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr>
-            <td class="main" valign="top"><?php if ($i == 0) echo TEXT_ARTICLES_DESCRIPTION; ?></td>
-            <td><table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
+</table>
+</div>
 
-<td class="main">
+</div>
 
-<?php
-          echo vam_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : vam_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
-?>
-
-</td>
-
-              </tr>
-            </table></td>
-          </tr>
-<?php
-    }
-?>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<?php
-    for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr>
-            <td class="main"><?php if ($i == 0) echo TEXT_ARTICLES_URL . '<br><small>' . TEXT_ARTICLES_URL_WITHOUT_HTTP . '</small>'; ?></td>
-            <td class="main"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('articles_url[' . $languages[$i]['id'] . ']', (isset($articles_url[$languages[$i]['id']]) ? $articles_url[$languages[$i]['id']] : vam_get_articles_url($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
-          </tr>
-<?php
-    }
-?>
         </table></td>
-      </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
         <td class="main" align="right"><?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
