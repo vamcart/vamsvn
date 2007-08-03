@@ -255,6 +255,9 @@ if ($select_file=='default') {
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 <?php if (USE_WYSIWYG=='true') {
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
@@ -285,12 +288,6 @@ if ($select_file=='default') {
     
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
     
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
-      <tr>
-        <td>
-        <table width="100%" border="0">
-          <tr>
-            <td>
 <?php
 if (!$_GET['action']) {
 ?>
@@ -299,6 +296,8 @@ if (!$_GET['action']) {
  vam_spaceUsed(DIR_FS_CATALOG.'media/content/');
 echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div>';
 ?>
+
+<div class="tabber">
 <?php
 // Display Content
 for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
@@ -354,8 +353,10 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         
 ?>
 <br />
-<div class="main"><?php echo vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']).'&nbsp;&nbsp;'.$languages[$i]['name']; ?></div>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <div class="tabbertab">
+        <h3><?php echo $languages[$i]['name']; ?></h3>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent" width="10" ><?php echo TABLE_HEADING_CONTENT_ID; ?></td>
                 <td class="dataTableHeadingContent" width="10" >&nbsp;</td>
@@ -484,10 +485,13 @@ if ($content_1[$a]!='') {
 } // for language
 ?>
 </table>
-
+</div>
 
 <?php
 }
+?>
+</div>
+<?php
 } else {
 
 switch ($_GET['action']) {
@@ -931,7 +935,6 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
 
 if (!$_GET['action']) {
 ?>
-
 <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>
 <?php
 }
