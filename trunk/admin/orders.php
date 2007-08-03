@@ -60,6 +60,11 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($or
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $order_payment .'.php');
   $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
 
+      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");
+      $shipping_method = vam_db_fetch_array($shipping_method_query);
+
+  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
+
 }
 
   $lang_query = vam_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $order->info['language'] . "'");
@@ -391,6 +396,12 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
             <td class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></td>
             <td class="main"><?php echo $order_payment_text; ?></td>
           </tr>
+<?php if ($order->info['shipping_class'] != '') { ?>          
+          <tr>
+            <td class="main"><b><?php echo ENTRY_SHIPPING_METHOD; ?></b></td>
+            <td class="main"><?php echo $order_shipping_text; ?></td>
+          </tr>
+<?php } ?>          
 <?php
 
 	if ((($order->info['cc_type']) || ($order->info['cc_owner']) || ($order->info['cc_number']))) {
