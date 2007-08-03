@@ -428,7 +428,7 @@ define('TABLE_HEADING_NUMBER', 'Номер заказа');
 define('TABLE_HEADING_ORDER_TOTAL', 'Сумма');
 define('TABLE_HEADING_STATUS', 'Статус');
 
-define('TABLE_HEADING_SUMMARY_PRODUCTS;', 'Последние товары');
+define('TABLE_HEADING_SUMMARY_PRODUCTS', 'Последние товары');
 define('TABLE_HEADING_PRODUCT_NAME', 'Товары');
 define('TABLE_HEADING_PRODUCT_PRICE', 'Стоимость');
 
