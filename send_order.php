@@ -52,6 +52,10 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 		$payment_method = constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
 	}
 	$smarty->assign('PAYMENT_METHOD', $payment_method);
+	if ($order->info['shipping_method'] != '') {
+		$shipping_method = $order->info['shipping_method'];
+	}
+	$smarty->assign('SHIPPING_METHOD', $shipping_method);
 	$smarty->assign('DATE', vam_date_long($order->info['date_purchased']));
 
 	$smarty->assign('NAME', $order->customer['name']);
