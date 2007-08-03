@@ -107,6 +107,16 @@
      $payment_method=constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
       $smarty->assign('PAYMENT_METHOD',$payment_method);
     }
+
+if ($order->info['shipping_class'] != '') {
+      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $_GET['oID'] . "' and class = 'ot_shipping'");
+      $shipping_method = vam_db_fetch_array($shipping_method_query);
+
+  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
+
+  	$smarty->assign('SHIPPING_METHOD',$order_shipping_text);
+}    
+
       $smarty->assign('DATE',vam_date_long($order->info['date_purchased']));
       $smarty->assign('order_data', $order_data);
       $smarty->assign('order_total', $order_total);
