@@ -273,6 +273,9 @@ switch ($_GET['action']) {
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -312,11 +315,14 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
  </td>
 
       </tr>
-      <tr>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td colspan="3"><?php echo vam_draw_separator(); ?></td>
-          </tr>
+</table>
+
+<div class="tabber">
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ORDER_SUMMARY; ?></h3>
+
+          <table border="0">
+
           <tr>
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
             <?php if ($order->customer['csID']!='') { ?>
@@ -381,11 +387,15 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
               </tr>
             </table></td>
           </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
+</table>
+
+</div>
+
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ORDER_PAYMENT; ?></h3>
+
+          <table border="0">
+
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="2">
         <tr>
@@ -538,8 +548,18 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+
+</table>
+
+</div>
+
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ORDER_PRODUCTS; ?></h3>
+
+          <table border="0" width="100%">
+
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr class="dataTableHeadingRow">
             <td class="dataTableHeadingContent" colspan="2"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
             <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></td>
@@ -630,6 +650,15 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+      
+</table>
+      
+</div>
+        <div class="tabbertab">
+        <h3><?php echo TEXT_ORDER_STATUS; ?></h3>
+      
+          <table border="0">
+
       <tr>
         <td class="main"><table border="1" cellspacing="0" cellpadding="5">
           <tr>
@@ -691,6 +720,12 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
           </tr>
         </table></td>
       </form></tr>
+      
+</table>
+      
+</div>      
+</div>
+      
       <tr>
         <td colspan="2" align="right">
 <?php

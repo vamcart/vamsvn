@@ -131,4 +131,9 @@ define('ENTRY_ORDER_NUMBER', 'Номер заказа:');
 
 define('EMAIL_ACC_SUBJECT', 'Накопительная скидка');
 
+define('TEXT_ORDER_SUMMARY','Информация');
+define('TEXT_ORDER_PAYMENT','Оплата / Доставка');
+define('TEXT_ORDER_PRODUCTS','Товары');
+define('TEXT_ORDER_STATUS','Статус');
+
 ?>
