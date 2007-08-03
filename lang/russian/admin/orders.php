@@ -76,6 +76,7 @@ define('ENTRY_SHIP_TO', 'АДРЕС ДОСТАВКИ:');
 define('ENTRY_SHIPPING_ADDRESS', 'Адрес доставки:');
 define('ENTRY_BILLING_ADDRESS', 'Адрес покупателя:');
 define('ENTRY_PAYMENT_METHOD', 'Способ оплаты:');
+define('ENTRY_SHIPPING_METHOD', 'Способ доставки:');
 define('ENTRY_CREDIT_CARD_TYPE', 'Тип кредитной карточки:');
 define('ENTRY_CREDIT_CARD_OWNER', 'Владелец кредитной карточки:');
 define('ENTRY_CREDIT_CARD_NUMBER', 'Номер кредитной карточки:');
