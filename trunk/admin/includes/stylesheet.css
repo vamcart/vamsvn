@@ -380,6 +380,10 @@ h1.contentBoxHeading a {
   text-decoration: none;
 }
 
+h3 {
+display: none;
+}
+
 /* Подсказки */
 
 .help

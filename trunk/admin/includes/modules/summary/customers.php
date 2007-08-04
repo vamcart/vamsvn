@@ -39,7 +39,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 	                                c.customers_firstname,
 	                                c.customers_date_added
 	                                from
-	                                ".TABLE_CUSTOMERS." c order by c.customers_date_added desc limit 5";
+	                                ".TABLE_CUSTOMERS." c order by c.customers_date_added desc limit 20";
 
 	$customers_query = vam_db_query($customers_query_raw);
 	while ($customers = vam_db_fetch_array($customers_query)) {

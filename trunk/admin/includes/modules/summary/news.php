@@ -31,7 +31,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
                 <td class="dataTableContentRss" valign="top">
                 
                 
-<iframe src="http://vamshop.ru/rss2.php?feed=news&limit=10" frameborder="0" width="100%"></iframe>
+<iframe src="http://vamshop.ru/rss2.php?feed=news&limit=20" frameborder="0" width="100%"></iframe>
 
                 
                 </td>
