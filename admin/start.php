@@ -25,6 +25,9 @@ require ('includes/application_top.php');
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <style type="text/css">
 .h2 {
@@ -66,44 +69,49 @@ require ('includes/application_top.php');
         <td colspan="2">
         <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
         </td>
-        </tr>
+       </tr>
 
-       <tr>
-      <td width="50%" valign="top">
-        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
+<tr>
+<td>
 
+<div class="tabber">
+
+<div class="tabbertab">
+<h3><?php echo TEXT_SUMMARY_CUSTOMERS; ?></h3>
+<table border="0" width="99%">
 <?php include(DIR_WS_MODULES . 'summary/customers.php'); ?>
+</table>
+</div>
 
-
-        </table></td>
-      <td width="50%" valign="top">
-        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
-
+<div class="tabbertab">
+<h3><?php echo TEXT_SUMMARY_ORDERS; ?></h3>
+<table border="0" width="99%">
 <?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
+</table>
+</div>
 
-
-        </table></td>
-      </tr>		 
-
-       <tr>
-      <td width="50%" valign="top">
-        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
-
+<div class="tabbertab">
+<h3><?php echo TEXT_SUMMARY_PRODUCTS; ?></h3>
+<table border="0" width="99%">
 <?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
+</table>
+</div>
 
-
-        </table></td>
-      <td width="50%" valign="top">
-        <table valign="top" width="100%" cellpadding="0" cellspacing="4">
-
+<div class="tabbertab">
+<h3><?php echo TEXT_SUMMARY_NEWS; ?></h3>
+<table border="0" width="99%">
 <?php include(DIR_WS_MODULES . 'summary/news.php'); ?>
-
-
-        </table></td>
-      </tr>		 
+</table>
+</div>
   
-    </table></td>
+</div>    
+
+</td>
+</tr>
+</table>
+  
 <!-- body_text_eof //-->
+</td>
   </tr>
 </table>
 <!-- body_eof //-->
