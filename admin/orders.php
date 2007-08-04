@@ -762,8 +762,7 @@ elseif ($_GET['action'] == 'custom_action') {
 </td>
   </tr>
   <tr>
-    <td class="main" valign="top"><?php echo HEADING_TITLE; ?></td>
-    <td class="main" valign="top" align="right"><?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
+    <td colspan="2" class="main" valign="top" align="right"><?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form></td>
   </tr>
