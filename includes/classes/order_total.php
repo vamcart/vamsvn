@@ -234,7 +234,15 @@ class order_total {
 
 					for ($i = 0, $n = sizeof($GLOBALS[$class]->output); $i < $n; $i ++) {
 						if (vam_not_null($GLOBALS[$class]->output[$i]['title']) && vam_not_null($GLOBALS[$class]->output[$i]['text'])) {
-							$order_total_array[] = array ('code' => $GLOBALS[$class]->code, 'title' => $GLOBALS[$class]->output[$i]['title'], 'text' => $GLOBALS[$class]->output[$i]['text'], 'value' => $GLOBALS[$class]->output[$i]['value'], 'sort_order' => $GLOBALS[$class]->sort_order);
+							$order_total_array[] = array (
+							
+							'code' => $GLOBALS[$class]->code, 
+							'title' => $GLOBALS[$class]->output[$i]['title'], 
+							'text' => $GLOBALS[$class]->output[$i]['text'], 
+							'value' => $GLOBALS[$class]->output[$i]['value'], 
+							'sort_order' => $GLOBALS[$class]->sort_order
+							
+							);
 						}
 					}
 				}
