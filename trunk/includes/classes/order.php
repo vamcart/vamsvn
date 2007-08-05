@@ -242,13 +242,26 @@
 	while ($oder_total_values = vam_db_fetch_array($oder_total_query)) {
 
 
-		$order_total[] = array ('TITLE' => $oder_total_values['title'], 'CLASS' => $oder_total_values['class'], 'VALUE' => $oder_total_values['value'], 'TEXT' => $oder_total_values['text']);
+		$order_total[] = array (
+		
+		'TITLE' => $oder_total_values['title'], 
+		'CLASS' => $oder_total_values['class'], 
+		'VALUE' => $oder_total_values['value'], 
+		'TEXT' => $oder_total_values['text']
+		
+		);
+
 		if ($oder_total_values['class'] = 'ot_total')
 			$total = $oder_total_values['value'];
 
 	}
 	
-	return array('data'=>$order_total,'total'=>$total);
+	return array(
+	
+	'data'=>$order_total,
+	'total'=>$total
+	
+	);
 	
     }
 

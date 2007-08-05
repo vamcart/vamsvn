@@ -38,7 +38,17 @@ class vamPrice {
 				                                         ".TABLE_CURRENCIES;
 		$currencies_query = vamDBquery($currencies_query);
 		while ($currencies = vam_db_fetch_array($currencies_query, true)) {
-			$this->currencies[$currencies['code']] = array ('title' => $currencies['title'], 'symbol_left' => $currencies['symbol_left'], 'symbol_right' => $currencies['symbol_right'], 'decimal_point' => $currencies['decimal_point'], 'thousands_point' => $currencies['thousands_point'], 'decimal_places' => $currencies['decimal_places'], 'value' => $currencies['value']);
+			$this->currencies[$currencies['code']] = array (
+			
+			'title' => $currencies['title'], 
+			'symbol_left' => $currencies['symbol_left'], 
+			'symbol_right' => $currencies['symbol_right'], 
+			'decimal_point' => $currencies['decimal_point'], 
+			'thousands_point' => $currencies['thousands_point'], 
+			'decimal_places' => $currencies['decimal_places'], 
+			'value' => $currencies['value']
+			
+			);
 		}
 		// select Customers Status data
 		$customers_status_query = "SELECT *
@@ -48,7 +58,26 @@ class vamPrice {
 				                                             customers_status_id = '".$this->actualGroup."' AND language_id = '".$_SESSION['languages_id']."'";
 		$customers_status_query = vamDBquery($customers_status_query);
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
-		$this->cStatus = array ('customers_status_id' => $this->actualGroup, 'customers_status_name' => $customers_status_value['customers_status_name'], 'customers_status_image' => $customers_status_value['customers_status_image'], 'customers_status_public' => $customers_status_value['customers_status_public'], 'customers_status_discount' => $customers_status_value['customers_status_discount'], 'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 'customers_status_show_price' => $customers_status_value['customers_status_show_price'], 'customers_status_show_price_tax' => $customers_status_value['customers_status_show_price_tax'], 'customers_status_add_tax_ot' => $customers_status_value['customers_status_add_tax_ot'], 'customers_status_payment_unallowed' => $customers_status_value['customers_status_payment_unallowed'], 'customers_status_shipping_unallowed' => $customers_status_value['customers_status_shipping_unallowed'], 'customers_status_discount_attributes' => $customers_status_value['customers_status_discount_attributes'], 'customers_fsk18' => $customers_status_value['customers_fsk18'], 'customers_fsk18_display' => $customers_status_value['customers_fsk18_display']);
+		$this->cStatus = array (
+		
+		'customers_status_id' => $this->actualGroup, 
+		'customers_status_name' => $customers_status_value['customers_status_name'], 
+		'customers_status_image' => $customers_status_value['customers_status_image'], 
+		'customers_status_public' => $customers_status_value['customers_status_public'], 
+		'customers_status_discount' => $customers_status_value['customers_status_discount'], 
+		'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 
+		'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 
+		'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 
+		'customers_status_show_price' => $customers_status_value['customers_status_show_price'], 
+		'customers_status_show_price_tax' => $customers_status_value['customers_status_show_price_tax'], 
+		'customers_status_add_tax_ot' => $customers_status_value['customers_status_add_tax_ot'], 
+		'customers_status_payment_unallowed' => $customers_status_value['customers_status_payment_unallowed'], 
+		'customers_status_shipping_unallowed' => $customers_status_value['customers_status_shipping_unallowed'], 
+		'customers_status_discount_attributes' => $customers_status_value['customers_status_discount_attributes'], 
+		'customers_fsk18' => $customers_status_value['customers_fsk18'], 
+		'customers_fsk18_display' => $customers_status_value['customers_fsk18_display']
+		
+		);
 
 		// prefetch tax rates for standard zone
 		$zones_query = vamDBquery("SELECT tax_class_id as class FROM ".TABLE_TAX_CLASS);
