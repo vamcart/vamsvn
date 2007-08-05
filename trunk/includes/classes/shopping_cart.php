@@ -342,7 +342,21 @@ class shoppingCart {
 
 				$products_price = $vamPrice->GetPrice($products['products_id'], $format = false, $this->contents[$products_id]['qty'], $products['products_tax_class_id'], $products['products_price']);
 
-				$products_array[] = array ('id' => $products_id, 'name' => $products['products_name'], 'model' => $products['products_model'], 'image' => $products['products_image'], 'price' => $products_price + $this->attributes_price($products_id), 'quantity' => $this->contents[$products_id]['qty'], 'weight' => $products['products_weight'],'shipping_time' => $main->getShippingStatusName($products['products_shippingtime']), 'final_price' => ($products_price + $this->attributes_price($products_id)), 'tax_class_id' => $products['products_tax_class_id'], 'attributes' => $this->contents[$products_id]['attributes']);
+				$products_array[] = array (
+				
+				'id' => $products_id, 
+				'name' => $products['products_name'], 
+				'model' => $products['products_model'], 
+				'image' => $products['products_image'], 
+				'price' => $products_price + $this->attributes_price($products_id), 
+				'quantity' => $this->contents[$products_id]['qty'], 
+				'weight' => $products['products_weight'],
+				'shipping_time' => $main->getShippingStatusName($products['products_shippingtime']), 
+				'final_price' => ($products_price + $this->attributes_price($products_id)), 
+				'tax_class_id' => $products['products_tax_class_id'], 
+				'attributes' => $this->contents[$products_id]['attributes']
+				
+				);
 			}
 			}
 		}
