@@ -56,7 +56,16 @@ if ($product->getAttributesCount() > 0) {
 		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
 			$price = '';
 			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
-				$products_options_data[$row]['DATA'][$col] = array ('ID' => $products_options['products_options_values_id'], 'TEXT' => $products_options['products_options_values_name'], 'MODEL' => $products_options['attributes_model'], 'PRICE' => '', 'FULL_PRICE' => '', 'PREFIX' => $products_options['price_prefix']);
+				$products_options_data[$row]['DATA'][$col] = array (
+				
+				'ID' => $products_options['products_options_values_id'], 
+				'TEXT' => $products_options['products_options_values_name'], 
+				'MODEL' => $products_options['attributes_model'], 
+				'PRICE' => '', 
+				'FULL_PRICE' => '', 
+				'PREFIX' => $products_options['price_prefix']
+				
+				);
 			} else {
 				if ($products_options['options_values_price'] != '0.00') {
 					$price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $products_options['options_values_price']);
@@ -70,7 +79,16 @@ if ($product->getAttributesCount() > 0) {
 					$attr_price=$price;
 					if ($products_options['price_prefix']=="-") $attr_price=$price*(-1);
 					$full = $products_price + $attr_price;
-				$products_options_data[$row]['DATA'][$col] = array ('ID' => $products_options['products_options_values_id'], 'TEXT' => $products_options['products_options_values_name'], 'MODEL' => $products_options['attributes_model'], 'PRICE' => $vamPrice->Format($price, true), 'FULL_PRICE' => $vamPrice->Format($full, true), 'PREFIX' => $products_options['price_prefix']);
+				$products_options_data[$row]['DATA'][$col] = array (
+				
+				'ID' => $products_options['products_options_values_id'], 
+				'TEXT' => $products_options['products_options_values_name'], 
+				'MODEL' => $products_options['attributes_model'], 
+				'PRICE' => $vamPrice->Format($price, true), 
+				'FULL_PRICE' => $vamPrice->Format($full, true), 
+				'PREFIX' => $products_options['price_prefix']
+				
+				);
 
 				//if PRICE for option is 0 we don't need to display it
 				if ($price == 0) {
