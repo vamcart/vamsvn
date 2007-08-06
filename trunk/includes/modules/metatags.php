@@ -57,7 +57,8 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 	if ($_GET['cPath']) {
 		if (strpos($_GET['cPath'], '_') == '1') {
 			$arr = explode('_', vam_input_validation($_GET['cPath'], 'cPath', ''));
-			$_cPath = $arr[1];
+			$size = count($arr);
+			$_cPath = $arr[$size-1];
 		} else {
 			//$_cPath=(int)$_GET['cPath'];
 			if (isset ($_GET['cat'])) {
