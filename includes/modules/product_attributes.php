@@ -59,8 +59,8 @@ if ($product->getAttributesCount() > 0) {
 				$products_options_data[$row]['DATA'][$col] = array ('ID' => $products_options['products_options_values_id'], 'TEXT' => $products_options['products_options_values_name'], 'MODEL' => $products_options['attributes_model'], 'PRICE' => '', 'FULL_PRICE' => '', 'PREFIX' => $products_options['price_prefix']);
 			} else {
 				if ($products_options['options_values_price'] != '0.00') {
-//					$price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $products_options['options_values_price']);
-					$price = $vamPrice->Format($products_options['options_values_price'], false, $product->data['products_tax_class_id']);
+					$price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $products_options['options_values_price']);
+//					$price = $vamPrice->Format($products_options['options_values_price'], false, $product->data['products_tax_class_id']);
 				}
 
 				$products_price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $product->data['products_price']);
