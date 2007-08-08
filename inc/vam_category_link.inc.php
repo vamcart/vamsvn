@@ -17,7 +17,8 @@
 
 function vam_category_link($cID,$cName='') {
 		$cName = vam_cleanName($cName);
-		$link = 'cat=c'.$cID.'_'.$cName.'.html';
+		$link = 'cat='.$cID;
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') $link = 'cat=c'.$cID.'_'.$cName.'.html';
 		return $link;
 }
 ?>

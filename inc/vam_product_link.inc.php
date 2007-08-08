@@ -18,7 +18,8 @@
 function vam_product_link($pID, $name='') {
 
 	$pName = vam_cleanName($name);
-	$link = 'info=p'.$pID.'_'.$pName.'.html';
+	$link = 'products_id='.$pID;
+	if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') $link = 'info=p'.$pID.'_'.$pName.'.html';
 	return $link;
 }
 ?>
