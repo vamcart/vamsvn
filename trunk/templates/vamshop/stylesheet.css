@@ -2290,5 +2290,11 @@ li.ajaxAddQuickie
    { 
      background-color: #99ff00; 
    }
+
+.headerError 
+   {
+	  background-color: #ffb3b5;
+     border: 1px solid red;
+   }
    
 /*]]>*/
