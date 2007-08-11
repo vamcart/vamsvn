@@ -405,6 +405,8 @@
       <tr><?php echo vam_draw_form('new_topic', FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID'] . '&action=new_topic_preview', 'post', 'enctype="multipart/form-data"'); ?>
         <td>
 
+<?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+
 <div class="tabber">
 
 
@@ -479,9 +481,8 @@
           </table>
         </div>
 </div>      
-      <tr>
-        <td class="main" align="right"><?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
-      </form></tr>
+
+      </form>
 <?php
   //----- new_topic_preview -----
   } elseif ($_GET['action'] == 'new_topic_preview') {
@@ -640,6 +641,7 @@
       <tr>
         <td>
 
+<?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?>
 
 <div class="tabber">
 
@@ -758,9 +760,6 @@
 </div>
 
         </table></td>
-      </tr>
-      <tr>
-        <td class="main" align="right"><?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
       </tr>
     </table></form>
 <?php
