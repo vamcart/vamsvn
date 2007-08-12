@@ -130,7 +130,20 @@ if ($products_new_split->number_of_rows > 0) {
 		if (SHOW_SHIPPING=='true') {
 		$ship_info=' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>';
 		}
-		$module_content[] = array ('PRODUCTS_NAME' => $products_new['products_name'],'PRODUCTS_SHIPPING_LINK' => $ship_info,'PRODUCTS_TAX_INFO' => $tax_info, 'PRODUCTS_DESCRIPTION' => $products_new['products_short_description'], 'PRODUCTS_PRICE' => $products_price['formated'], 'PRODUCTS_VPE' => $vpePrice, 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products_new['products_id'], $products_new['products_name'])), 'PRODUCTS_IMAGE' => $products_image, 'BUTTON_BUY_NOW' => $buy_now, 'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new);
+		$module_content[] = array (
+		
+		'PRODUCTS_NAME' => $products_new['products_name'],
+		'PRODUCTS_SHIPPING_LINK' => $ship_info,
+		'PRODUCTS_TAX_INFO' => $tax_info, 
+		'PRODUCTS_DESCRIPTION' => $products_new['products_short_description'], 
+		'PRODUCTS_PRICE' => $products_price['formated'], 
+		'PRODUCTS_VPE' => $vpePrice, 
+		'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products_new['products_id'], $products_new['products_name'])), 
+		'PRODUCTS_IMAGE' => $products_image, 
+		'BUTTON_BUY_NOW' => $buy_now, 
+		'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new
+		
+		);
 
 	}
 } else {
