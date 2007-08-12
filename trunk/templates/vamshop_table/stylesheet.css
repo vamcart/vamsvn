@@ -1107,5 +1107,11 @@ li.ajaxAddQuickie
      padding-left: 0px;
    } 
 
+.messageStack
+   {
+     background-color: #ffb3b5; 
+     padding: 0.5em 0.5em 0.5em 0.5em; 
+   }
+   
 /* /Ajax add quickie suggest */
    

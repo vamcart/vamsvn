@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
    
   function vam_output_warning($warning) {
-    new errorBox(array(array('text' => '<table style="width: 100%;"><tr><td style="vertical-align: center; padding-left: 5px;">' . vam_image(DIR_WS_ICONS . 'output_warning.gif', ICON_WARNING) . ' </td><td style="vertical-align: center; text-align: center;"> ' . $warning . '</td></tr></table>')));
+    echo '<div class="messageStack">' . $warning . '</div>' . "\n";
   }
 
  ?>
