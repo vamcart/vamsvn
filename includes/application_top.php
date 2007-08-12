@@ -406,9 +406,6 @@ vam_update_whos_online();
 // split-page-results
 require (DIR_WS_CLASSES.'split_page_results.php');
 
-// infobox
-require (DIR_WS_CLASSES.'boxes.php');
-
 // auto activate and expire banners
 vam_activate_banners();
 vam_expire_banners();
