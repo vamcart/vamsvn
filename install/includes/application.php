@@ -39,6 +39,7 @@
 
 // include
   //require('../includes/functions/validations.php');
+  require(DIR_FS_CATALOG.'includes/classes/boxes.php');
   require(DIR_FS_CATALOG.'includes/classes/message_stack.php');
   require(DIR_FS_CATALOG.'includes/filenames.php');
   require(DIR_FS_CATALOG.'includes/database_tables.php');
