@@ -22,31 +22,40 @@
    if ($messageStack->size('general') > 0) echo $messageStack->output('general');
    ---------------------------------------------------------------------------------------*/
 
-  class messageStack {
-    var $messages;
-
-// class constructor
+  class messageStack extends tableBox {
+    // class constructor
     function messageStack() {
+
       $this->messages = array();
+
+      if (isset($_SESSION['messageToStack'])) {
+        for ($i=0, $n=sizeof($_SESSION['messageToStack']); $i<$n; $i++) {
+          $this->add($_SESSION['messageToStack'][$i]['class'], $_SESSION['messageToStack'][$i]['text'], $_SESSION['messageToStack'][$i]['type']);
+        }
+        unset($_SESSION['messageToStack']);
+      }
     }
 
-// class methods
+    // class methods
     function add($class, $message, $type = 'error') {
-      $this->messages[] = array('class' => $class, 'type' => $type, 'message' => $message);
+      if ($type == 'error') {
+        $this->messages[] = array('params' => 'class="messageStackError"', 'class' => $class, 'text' => vam_image(DIR_WS_ICONS . 'error.gif', ICON_ERROR) . '&nbsp;' . $message);
+      } elseif ($type == 'warning') {
+        $this->messages[] = array('params' => 'class="messageStackWarning"', 'class' => $class, 'text' => vam_image(DIR_WS_ICONS . 'warning.gif', ICON_WARNING) . '&nbsp;' . $message);
+      } elseif ($type == 'success') {
+        $this->messages[] = array('params' => 'class="messageStackSuccess"', 'class' => $class, 'text' => vam_image(DIR_WS_ICONS . 'success.gif', ICON_SUCCESS) . '&nbsp;' . $message);
+      } else {
+        $this->messages[] = array('params' => 'class="messageStackError"', 'class' => $class, 'text' => $message);
+      }
     }
 
     function add_session($class, $message, $type = 'error') {
-      if (isset($_SESSION['messageToStack'])) {
-        $messageToStack = $_SESSION['messageToStack'];
-      } else {
-        $messageToStack = array();
+
+      if (!isset($_SESSION['messageToStack'])) {
+        $_SESSION['messageToStack'] = array();
       }
 
-      $messageToStack[] = array('class' => $class, 'text' => $message, 'type' => $type);
-
-      $_SESSION['messageToStack'] = $messageToStack;
-
-      $this->add($class, $message, $type);
+      $_SESSION['messageToStack'][] = array('class' => $class, 'text' => $message, 'type' => $type);
     }
 
     function reset() {
@@ -54,66 +63,28 @@
     }
 
     function output($class) {
-      $messages = '<ul>';
+      $this->table_data_parameters = 'class="messageBox"';
+
+      $output = array();
       for ($i=0, $n=sizeof($this->messages); $i<$n; $i++) {
         if ($this->messages[$i]['class'] == $class) {
-          switch ($this->messages[$i]['type']) {
-            case 'error':
-              $bullet_image = DIR_WS_IMAGES . 'icons/error.gif';
-              break;
-            case 'warning':
-              $bullet_image = DIR_WS_IMAGES . 'icons/warning.gif';
-              break;
-            case 'success':
-              $bullet_image = DIR_WS_IMAGES . 'icons/success.gif';
-              break;
-            default:
-              $bullet_image = DIR_WS_IMAGES . 'icons/error.gif';
-          }
-
-          $messages .= '<li style="list-style-image: url(\'' . $bullet_image . '\')">' . $this->messages[$i]['message'] . '</li>';
-        }
-      }
-      $messages .= '</ul>';
-
-      return '<div class="messageStack">' . $messages . '</div>';
-    }
-
-    function outputPlain($class) {
-      $message = false;
-
-      for ($i=0, $n=sizeof($this->messages); $i<$n; $i++) {
-        if ($this->messages[$i]['class'] == $class) {
-          $message = $this->messages[$i]['message'];
-          break;
+          $output[] = $this->messages[$i];
         }
       }
 
-      return $message;
+      return $this->tableBox($output);
     }
 
     function size($class) {
-      $class_size = 0;
+      $count = 0;
 
       for ($i=0, $n=sizeof($this->messages); $i<$n; $i++) {
         if ($this->messages[$i]['class'] == $class) {
-          $class_size++;
+          $count++;
         }
       }
 
-      return $class_size;
-    }
-
-    function loadFromSession() {
-      if (isset($_SESSION['messageToStack'])) {
-        $messageToStack = $_SESSION['messageToStack'];
-
-        for ($i=0, $n=sizeof($messageToStack); $i<$n; $i++) {
-          $this->add($messageToStack[$i]['class'], $messageToStack[$i]['text'], $messageToStack[$i]['type']);
-        }
-
-        unset($_SESSION['messageToStack']);
-      }
+      return $count;
     }
   }
 ?>
