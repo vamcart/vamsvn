@@ -453,7 +453,7 @@ define('ENTRY_VAT_ERROR', 'Выбранный VatID неверный! Укажите правильно ID или ос
 define('MSRP','Розничная цена ');
 define('YOUR_PRICE','Ваша цена ');
 define('ONLY',' всего ');
-define('FROM','от ');
+define('FROM',' ');
 define('YOU_SAVE','Вы экономите ');
 define('INSTEAD','вместо ');
 define('TXT_PER',' за ');

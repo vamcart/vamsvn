@@ -109,7 +109,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
 
 	if (ACCOUNT_DOB == 'true') {
-		if (checkdate(substr(vam_date_raw($dob), 4, 2), substr(vam_date_raw($dob), 6, 2), substr(vam_date_raw($dob), 0, 4)) == false) {
+		if (checkdate((int)substr(vam_date_raw($dob), 4, 2), substr((int)vam_date_raw($dob), 6, 2), substr((int)vam_date_raw($dob), 0, 4)) == false) { 
 			$error = true;
 
 			$messageStack->add('create_account', ENTRY_DATE_OF_BIRTH_ERROR);
