@@ -725,9 +725,12 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       
 </div>      
 </div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
       
       <tr>
-        <td colspan="2" align="right">
+        <td align="right">
+        <br />
 <?php
 	if (ACTIVATE_GIFT_SYSTEM == 'true') {
 		echo '<a class="button" href="'.vam_href_link(FILENAME_GV_MAIL, vam_get_all_get_params(array ('cID', 'action')).'cID='.$order->customer['ID']).'">'.BUTTON_SEND_COUPON.'</a>';
@@ -740,6 +743,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
    <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'">'.BUTTON_BACK;?></a>
        </td>
       </tr>
+
+</table>      
+      
 <?php
 
 }
