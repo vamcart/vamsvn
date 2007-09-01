@@ -535,8 +535,7 @@ CREATE TABLE customers_status (
 DROP TABLE IF EXISTS customers_status_orders_status;
 CREATE TABLE customers_status_orders_status (
   customers_status_id int(11) default '0' not null ,
-  orders_status_id int(11) default '0' not null ,
-  PRIMARY KEY  (customers_status_id)
+  orders_status_id int(11) default '0' not null
 );
 
 DROP TABLE IF EXISTS customers_status_history;
