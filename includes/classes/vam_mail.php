@@ -1,6 +1,6 @@
 <?php
 
-require_once (HOME_DIR . '/includes/external/phpmailer/class.phpmailer.php');
+require_once (DIR_WS_INCLUDES . 'external/phpmailer/class.phpmailer.php');
 
 // Настройки для MY site
 

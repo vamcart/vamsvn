@@ -173,9 +173,9 @@ while ($configuration = vam_db_fetch_array($configuration_query)) {
 	define($configuration['cfgKey'], $configuration['cfgValue']);
 }
 
-require_once (DIR_WS_CLASSES.'class.phpmailer.php');
+require_once (DIR_WS_INCLUDES . 'external/phpmailer/class.phpmailer.php');
 if (EMAIL_TRANSPORT == 'smtp')
-	require_once (DIR_WS_CLASSES.'class.smtp.php');
+	require_once (DIR_WS_INCLUDES . 'external/phpmailer/class.smtp.php');
 require_once (DIR_FS_INC.'vam_Security.inc.php');
 
 // set the application parameters
@@ -524,7 +524,7 @@ define('WARN_SESSION_AUTO_START', 'true');
 define('WARN_DOWNLOAD_DIRECTORY_NOT_READABLE', 'true');
 
 // Include Template Engine
-require (DIR_WS_CLASSES.'Smarty_2.6.14/Smarty.class.php');
+require (DIR_WS_INCLUDES . 'external/smarty/Smarty.class.php');
 
 if (isset ($_SESSION['customer_id'])) {
 	$account_type_query = vam_db_query("SELECT

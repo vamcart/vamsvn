@@ -1,6 +1,6 @@
 <?php
 
-require_once (HOME_DIR . '/includes/external/smarty/Smarty.class.php');
+require_once (DIR_WS_INCLUDES . 'external/smarty/Smarty.class.php');
 
 class vamTemplate extends Smarty {
 

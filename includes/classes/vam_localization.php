@@ -1,6 +1,6 @@
 <?php
 
-require_once (HOME_DIR . '/includes/external/gettext/gettext.inc');
+require_once (DIR_WS_INCLUDES . 'external/gettext/gettext.inc');
 
 define(LOCALE_DIR, HOME_DIR .'/locale');
 define(DEFAULT_LOCALE, 'ru_RU');
