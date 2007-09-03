@@ -14,8 +14,8 @@ class vamTemplate extends Smarty {
 //        $this->config_dir   = HOME_DIR . '/configs/';
 //        $this->cache_dir    = HOME_DIR . '/cache/';
         $this->plugins_dir = array(
-        HOME_DIR . '/includes/external/smarty/plugins',
-        HOME_DIR . '/includes/external/smarty/plugins_vam',
+        DIR_WS_INCLUDES . 'external/smarty/plugins',
+        DIR_WS_INCLUDES . 'external/smarty/plugins_vam',
         );
 
         $this->assign('app_name', 'vamTemplate');
