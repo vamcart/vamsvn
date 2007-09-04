@@ -19,7 +19,7 @@
 
   require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_content='';
 $flag='';
 

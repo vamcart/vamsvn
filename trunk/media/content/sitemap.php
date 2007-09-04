@@ -17,7 +17,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 $module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 require_once(DIR_FS_INC . 'vam_count_products_in_category.inc.php');
