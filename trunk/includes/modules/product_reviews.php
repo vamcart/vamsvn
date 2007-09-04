@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-// create smarty elements
+// create template elements
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include boxes
