@@ -23,9 +23,9 @@
   Released under the GNU General Public License
   ---------------------------------------------------------------------------------------*/
 
-$default_smarty = new vamTemplate;
-$default_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-$default_smarty->assign('session', session_id());
+$default = new vamTemplate;
+$default->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$default->assign('session', session_id());
 $main_content = '';
 // include needed functions
 require_once (DIR_FS_INC.'vam_customer_greeting.inc.php');
@@ -129,14 +129,14 @@ if ($category_depth == 'nested') {
   if ($category['categories_image'] != '') {
   $image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];
   }
-  $default_smarty->assign('CATEGORIES_NAME', $category['categories_name']);
-  $default_smarty->assign('CATEGORIES_HEADING_TITLE', $category['categories_heading_title']);
+  $default->assign('CATEGORIES_NAME', $category['categories_name']);
+  $default->assign('CATEGORIES_HEADING_TITLE', $category['categories_heading_title']);
 
-  $default_smarty->assign('CATEGORIES_IMAGE', $image);
-  $default_smarty->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
+  $default->assign('CATEGORIES_IMAGE', $image);
+  $default->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
-  $default_smarty->assign('language', $_SESSION['language']);
-  $default_smarty->assign('module_content', $categories_content);
+  $default->assign('language', $_SESSION['language']);
+  $default->assign('module_content', $categories_content);
 
   // get default template
   if ($category['categories_template'] == '' or $category['categories_template'] == 'default') {
@@ -152,9 +152,9 @@ if ($category_depth == 'nested') {
   $category['categories_template'] = $files[0]['id'];
   }
 
-  $default_smarty->caching = 0;
-  $main_content = $default_smarty->fetch(CURRENT_TEMPLATE.'/module/categorie_listing/'.$category['categories_template']);
-  $smarty->assign('main_content', $main_content);
+  $default->caching = 0;
+  $main_content = $default->fetch(CURRENT_TEMPLATE.'/module/categorie_listing/'.$category['categories_template']);
+  $vamTemplate->assign('main_content', $main_content);
 
 }
 elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
@@ -389,7 +389,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                       AND languages_id='".$_SESSION['languages_id']."'");
   $shop_content_data = vam_db_fetch_array($shop_content_query,true);
 
-  $default_smarty->assign('title', $shop_content_data['content_heading']);
+  $default->assign('title', $shop_content_data['content_heading']);
   include (DIR_WS_INCLUDES.FILENAME_CENTER_MODULES);
 
   if ($shop_content_data['content_file'] != '') {
@@ -403,23 +403,23 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   ob_end_clean();
   }
 
-  $default_smarty->assign('greeting', vam_customer_greeting());
-  $default_smarty->assign('text', $shop_content_data['content_text']);
-  $default_smarty->assign('language', $_SESSION['language']);
+  $default->assign('greeting', vam_customer_greeting());
+  $default->assign('text', $shop_content_data['content_text']);
+  $default->assign('language', $_SESSION['language']);
 
   // set cache ID
   if (!CacheCheck()) {
-  $default_smarty->caching = 0;
-  $main_content = $default_smarty->fetch(CURRENT_TEMPLATE.'/module/main_content.html');
+  $default->caching = 0;
+  $main_content = $default->fetch(CURRENT_TEMPLATE.'/module/main_content.html');
   } else {
-  $default_smarty->caching = 1;
-  $default_smarty->cache_lifetime = CACHE_LIFETIME;
-  $default_smarty->cache_modified_check = CACHE_CHECK;
+  $default->caching = 1;
+  $default->cache_lifetime = CACHE_LIFETIME;
+  $default->cache_modified_check = CACHE_CHECK;
   $cache_id = $_SESSION['language'].$_SESSION['currency'].$_SESSION['customer_id'];
-  $main_content = $default_smarty->fetch(CURRENT_TEMPLATE.'/module/main_content.html', $cache_id);
+  $main_content = $default->fetch(CURRENT_TEMPLATE.'/module/main_content.html', $cache_id);
   }
 
-  $smarty->assign('main_content', $main_content);
+  $vamTemplate->assign('main_content', $main_content);
 }
 }
 ?>

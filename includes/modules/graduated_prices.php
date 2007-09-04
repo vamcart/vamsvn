@@ -17,20 +17,20 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $module_content = array ();
 
 $staffel_data = $product->getGraduated();
 
 if (sizeof($staffel_data) > 1) {
-	$module_smarty->assign('language', $_SESSION['language']);
-	$module_smarty->assign('module_content', $staffel_data);
+	$module->assign('language', $_SESSION['language']);
+	$module->assign('module_content', $staffel_data);
 	// set cache ID
 
-	$module_smarty->caching = 0;
-	$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/graduated_price.html');
+	$module->caching = 0;
+	$module = $module->fetch(CURRENT_TEMPLATE.'/module/graduated_price.html');
 
-	$info_smarty->assign('MODULE_graduated_price', $module);
+	$info->assign('MODULE_graduated_price', $module);
 }
 ?>

@@ -18,8 +18,8 @@
    ---------------------------------------------------------------------------------------*/
 
   // include needed functions
-  $module_smarty=new vamTemplate;
-  $module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+  $module=new vamTemplate;
+  $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   include_once('inc/vam_get_zone_name.inc.php');
   include_once('inc/vam_get_country_list.inc.php');
 
@@ -31,54 +31,54 @@
     $male = ($entry['entry_gender'] == 'm') ? true : false;
     $female = ($entry['entry_gender'] == 'f') ? true : false;
 
-  $module_smarty->assign('gender','1');
-  $module_smarty->assign('INPUT_MALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>MALE.'&nbsp;'), 'm',$male, 'id="gender"'));
-  $module_smarty->assign('INPUT_FEMALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>FEMALE.'&nbsp;','text'=>(vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">&nbsp;' . ENTRY_GENDER_TEXT . '</span>': '')), 'f',$female, 'id="gender"'));
-  $module_smarty->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
+  $module->assign('gender','1');
+  $module->assign('INPUT_MALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>MALE.'&nbsp;'), 'm',$male, 'id="gender"'));
+  $module->assign('INPUT_FEMALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>FEMALE.'&nbsp;','text'=>(vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">&nbsp;' . ENTRY_GENDER_TEXT . '</span>': '')), 'f',$female, 'id="gender"'));
+  $module->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 
 
   }
 
-  $module_smarty->assign('INPUT_FIRSTNAME',vam_draw_input_fieldNote(array('name'=>'firstname','text'=>'&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': '')),$entry['entry_firstname'], 'id="firstname"'));
-  $module_smarty->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
-  $module_smarty->assign('INPUT_LASTNAME',vam_draw_input_fieldNote(array('name'=>'lastname','text'=>'&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_LAST_NAME_TEXT . '</span>': '')),$entry['entry_lastname'], 'id="lastname"'));
-  $module_smarty->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
+  $module->assign('INPUT_FIRSTNAME',vam_draw_input_fieldNote(array('name'=>'firstname','text'=>'&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': '')),$entry['entry_firstname'], 'id="firstname"'));
+  $module->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
+  $module->assign('INPUT_LASTNAME',vam_draw_input_fieldNote(array('name'=>'lastname','text'=>'&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_LAST_NAME_TEXT . '</span>': '')),$entry['entry_lastname'], 'id="lastname"'));
+  $module->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 
 
   if (ACCOUNT_COMPANY == 'true') {
-  $module_smarty->assign('company','1');
-  $module_smarty->assign('INPUT_COMPANY',vam_draw_input_fieldNote(array('name'=>'company','text'=>'&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">' . ENTRY_COMPANY_TEXT . '</span>': '')), $entry['entry_company']));
+  $module->assign('company','1');
+  $module->assign('INPUT_COMPANY',vam_draw_input_fieldNote(array('name'=>'company','text'=>'&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">' . ENTRY_COMPANY_TEXT . '</span>': '')), $entry['entry_company']));
 
 
   }
 
 
   if (ACCOUNT_STREET_ADDRESS == 'true') {
-  $module_smarty->assign('street_address','1');
-  $module_smarty->assign('INPUT_STREET',vam_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address'], 'id="address"'));
-  $module_smarty->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
+  $module->assign('street_address','1');
+  $module->assign('INPUT_STREET',vam_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address'], 'id="address"'));
+  $module->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
   }
 
   if (ACCOUNT_SUBURB == 'true') {
-  $module_smarty->assign('suburb','1');
-  $module_smarty->assign('INPUT_SUBURB',vam_draw_input_fieldNote(array('name'=>'suburb','text'=>'&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">' . ENTRY_SUBURB_TEXT . '</span>': '')), $entry['entry_suburb']));
+  $module->assign('suburb','1');
+  $module->assign('INPUT_SUBURB',vam_draw_input_fieldNote(array('name'=>'suburb','text'=>'&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">' . ENTRY_SUBURB_TEXT . '</span>': '')), $entry['entry_suburb']));
 
   }
 
   if (ACCOUNT_POSTCODE == 'true') {
-  $module_smarty->assign('postcode','1');
-  $module_smarty->assign('INPUT_CODE',vam_draw_input_fieldNote(array('name'=>'postcode','text'=>'&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">' . ENTRY_POST_CODE_TEXT . '</span>': '')), $entry['entry_postcode'], 'id="postcode"'));
-  $module_smarty->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
+  $module->assign('postcode','1');
+  $module->assign('INPUT_CODE',vam_draw_input_fieldNote(array('name'=>'postcode','text'=>'&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">' . ENTRY_POST_CODE_TEXT . '</span>': '')), $entry['entry_postcode'], 'id="postcode"'));
+  $module->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
   }
 
   if (ACCOUNT_CITY == 'true') {
-  $module_smarty->assign('city','1');
-  $module_smarty->assign('INPUT_CITY',vam_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city'], 'id="city"'));
-  $module_smarty->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
+  $module->assign('city','1');
+  $module->assign('INPUT_CITY',vam_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city'], 'id="city"'));
+  $module->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
   }
   
 if (ACCOUNT_STATE == 'true') {
-	$module_smarty->assign('state', '1');
+	$module->assign('state', '1');
 
     if ($process != true) {
 
@@ -120,10 +120,10 @@ if (ACCOUNT_STATE == 'true') {
 
       }
 		
-	$module_smarty->assign('INPUT_STATE', $state_input);
-   $module_smarty->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
+	$module->assign('INPUT_STATE', $state_input);
+   $module->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
 } else {
-	$module_smarty->assign('state', '0');
+	$module->assign('state', '0');
 }
 
   if ($_POST['country']){
@@ -134,29 +134,29 @@ if (ACCOUNT_STATE == 'true') {
 
 if (ACCOUNT_COUNTRY == 'true') {
 
-  $module_smarty->assign('country','1');
+  $module->assign('country','1');
   
   
   if ($process == true) $entry['entry_country_id'] = (int)$_POST['country'];
 
-   $module_smarty->assign('SELECT_COUNTRY', vam_get_country_list('country', $entry['entry_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''));
+   $module->assign('SELECT_COUNTRY', vam_get_country_list('country', $entry['entry_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''));
 
-   $module_smarty->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
+   $module->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
 
-   $module_smarty->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
+   $module->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
 
 } else {
-	$smarty->assign('country', '0');
+	$vamTemplate->assign('country', '0');
 }
 
   if ((isset($_GET['edit']) && ($_SESSION['customer_default_address_id'] != $_GET['edit'])) || (isset($_GET['edit']) == false) ) {
-  $module_smarty->assign('new','1');
-  $module_smarty->assign('CHECKBOX_PRIMARY',vam_draw_checkbox_field('primary', 'on', false, 'id="primary"'));
+  $module->assign('new','1');
+  $module->assign('CHECKBOX_PRIMARY',vam_draw_checkbox_field('primary', 'on', false, 'id="primary"'));
 
   }
 
-  $module_smarty->assign('language', $_SESSION['language']);
-  $module_smarty->caching = 0;
-  $main_content=$module_smarty->fetch(CURRENT_TEMPLATE . '/module/address_book_details.html');
-  $smarty->assign('MODULE_address_book_details',$main_content);
+  $module->assign('language', $_SESSION['language']);
+  $module->caching = 0;
+  $main_content=$module->fetch(CURRENT_TEMPLATE . '/module/address_book_details.html');
+  $vamTemplate->assign('MODULE_address_book_details',$main_content);
 ?>

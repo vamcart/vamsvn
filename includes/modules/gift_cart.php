@@ -29,42 +29,42 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$gift_smarty = new vamTemplate;
-$gift_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$gift = new vamTemplate;
+$gift->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 if (ACTIVATE_GIFT_SYSTEM == 'true') {
-	$gift_smarty->assign('ACTIVATE_GIFT', 'true');
+	$gift->assign('ACTIVATE_GIFT', 'true');
 }
 
 if (isset ($_SESSION['customer_id'])) {
 	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
 	if ($gv_result['amount'] > 0) {
-		$gift_smarty->assign('GV_AMOUNT', $vamPrice->Format($gv_result['amount'], true, 0, true));
-		$gift_smarty->assign('GV_SEND_TO_FRIEND_LINK', vam_href_link(FILENAME_GV_SEND));
+		$gift->assign('GV_AMOUNT', $vamPrice->Format($gv_result['amount'], true, 0, true));
+		$gift->assign('GV_SEND_TO_FRIEND_LINK', vam_href_link(FILENAME_GV_SEND));
 	} else {
-		$gift_smarty->assign('GV_AMOUNT', 0);
+		$gift->assign('GV_AMOUNT', 0);
 	}
 }
 if (isset ($_SESSION['gv_id'])) {
 	$gv_query = vam_db_query("select coupon_amount from ".TABLE_COUPONS." where coupon_id = '".$_SESSION['gv_id']."'");
 	$coupon = vam_db_fetch_array($gv_query);
-	$gift_smarty->assign('COUPON_AMOUNT2', $vamPrice->Format($coupon['coupon_amount'], true, 0, true));
+	$gift->assign('COUPON_AMOUNT2', $vamPrice->Format($coupon['coupon_amount'], true, 0, true));
 }
 if (isset ($_SESSION['cc_id'])) {
-	$gift_smarty->assign('COUPON_HELP_LINK', '<a style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
+	$gift->assign('COUPON_HELP_LINK', '<a style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
 
 }
 if (isset ($_SESSION['customer_id'])) {
-	$gift_smarty->assign('C_FLAG', 'true');
+	$gift->assign('C_FLAG', 'true');
 }
-$gift_smarty->assign('LINK_ACCOUNT', vam_href_link(FILENAME_CREATE_ACCOUNT));
-$gift_smarty->assign('FORM_ACTION', vam_draw_form('gift_coupon', vam_href_link(FILENAME_SHOPPING_CART, 'action=check_gift', 'NONSSL')));
-$gift_smarty->assign('INPUT_CODE', vam_draw_input_field('gv_redeem_code'));
-$gift_smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_redeem.gif', IMAGE_REDEEM_GIFT));
-$gift_smarty->assign('language', $_SESSION['language']);
-$gift_smarty->assign('FORM_END', '</form>');
-$gift_smarty->caching = 0;
+$gift->assign('LINK_ACCOUNT', vam_href_link(FILENAME_CREATE_ACCOUNT));
+$gift->assign('FORM_ACTION', vam_draw_form('gift_coupon', vam_href_link(FILENAME_SHOPPING_CART, 'action=check_gift', 'NONSSL')));
+$gift->assign('INPUT_CODE', vam_draw_input_field('gv_redeem_code'));
+$gift->assign('BUTTON_SUBMIT', vam_image_submit('button_redeem.gif', IMAGE_REDEEM_GIFT));
+$gift->assign('language', $_SESSION['language']);
+$gift->assign('FORM_END', '</form>');
+$gift->caching = 0;
 
-$smarty->assign('MODULE_gift_cart', $gift_smarty->fetch(CURRENT_TEMPLATE.'/module/gift_cart.html'));
+$vamTemplate->assign('MODULE_gift_cart', $gift->fetch(CURRENT_TEMPLATE.'/module/gift_cart.html'));
 ?>

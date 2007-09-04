@@ -268,25 +268,25 @@ require('includes/google_conversiontracking.js.php');
   }
 
 
-$smarty->assign('navtrail',$breadcrumb->trail(' &raquo; '));
+$vamTemplate->assign('navtrail',$breadcrumb->trail(' &raquo; '));
 if (isset($_SESSION['customer_id'])) {
 
-$smarty->assign('logoff',vam_href_link(FILENAME_LOGOFF, '', 'SSL'));
+$vamTemplate->assign('logoff',vam_href_link(FILENAME_LOGOFF, '', 'SSL'));
 }
 if ( $_SESSION['account_type']=='0') {
-$smarty->assign('account',vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$vamTemplate->assign('account',vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 }
-$smarty->assign('cart',vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
-$smarty->assign('checkout',vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
-$smarty->assign('store_name',TITLE);
-$smarty->assign('login',vam_href_link(FILENAME_LOGIN, '', 'SSL'));
-$smarty->assign('mainpage',vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
+$vamTemplate->assign('cart',vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$vamTemplate->assign('checkout',vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+$vamTemplate->assign('store_name',TITLE);
+$vamTemplate->assign('login',vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+$vamTemplate->assign('mainpage',vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
 
 
 
   if (isset($_GET['error_message']) && vam_not_null($_GET['error_message'])) {
 
-$smarty->assign('error','
+$vamTemplate->assign('error','
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr class="headerError">
         <td class="headerError">'. htmlspecialchars(urldecode($_GET['error_message'])).'</td>
@@ -297,7 +297,7 @@ $smarty->assign('error','
 
   if (isset($_GET['info_message']) && vam_not_null($_GET['info_message'])) {
 
-$smarty->assign('error','
+$vamTemplate->assign('error','
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr class="headerInfo">
         <td class="headerInfo">'.htmlspecialchars($_GET['info_message']).'</td>
@@ -309,27 +309,27 @@ $smarty->assign('error','
 // Метки для закладок
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
-$smarty->assign('1',' class="current"');
+$vamTemplate->assign('1',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
-$smarty->assign('2',' class="current"');
+$vamTemplate->assign('2',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
-$smarty->assign('3',' class="current"');
+$vamTemplate->assign('3',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
-$smarty->assign('4',' class="current"');
+$vamTemplate->assign('4',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
-$smarty->assign('5',' class="current"');
+$vamTemplate->assign('5',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGIN)) {
-$smarty->assign('6',' class="current"');
+$vamTemplate->assign('6',' class="current"');
 }
 
 // /Метки для закладок

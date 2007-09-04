@@ -17,8 +17,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 $sql = "
     SELECT
@@ -54,20 +54,20 @@ while ($one = vam_db_fetch_array($query,true)) {
 
 }
 if (sizeof($module_content) > 0) {
-    $module_smarty->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
-    $module_smarty->assign('language', $_SESSION['language']);
-    $module_smarty->assign('module_content',$module_content);
+    $module->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
+    $module->assign('language', $_SESSION['language']);
+    $module->assign('module_content',$module_content);
 	
 	// set cache ID
 	 if (!CacheCheck()) {
-		$module_smarty->caching = 0;
-      $module= $module_smarty->fetch(CURRENT_TEMPLATE.'/module/latest_news_default.html');
+		$module->caching = 0;
+      $module= $module->fetch(CURRENT_TEMPLATE.'/module/latest_news_default.html');
 	} else {
-        $module_smarty->caching = 1;
-        $module_smarty->cache_lifetime=CACHE_LIFETIME;
-        $module_smarty->cache_modified_check=CACHE_CHECK;
-        $module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/latest_news_default.html',$cache_id);
+        $module->caching = 1;
+        $module->cache_lifetime=CACHE_LIFETIME;
+        $module->cache_modified_check=CACHE_CHECK;
+        $module = $module->fetch(CURRENT_TEMPLATE.'/module/latest_news_default.html',$cache_id);
 	}
-	$default_smarty->assign('MODULE_latest_news', $module);
+	$default->assign('MODULE_latest_news', $module);
 }
 ?>
