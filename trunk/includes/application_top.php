@@ -523,9 +523,6 @@ define('WARN_SESSION_DIRECTORY_NOT_WRITEABLE', 'true');
 define('WARN_SESSION_AUTO_START', 'true');
 define('WARN_DOWNLOAD_DIRECTORY_NOT_READABLE', 'true');
 
-// Include Template Engine
-require (DIR_WS_INCLUDES . 'external/smarty/Smarty.class.php');
-
 if (isset ($_SESSION['customer_id'])) {
 	$account_type_query = vam_db_query("SELECT
 		                                    account_type,

@@ -95,8 +95,6 @@
     }
   }
 
-    // Include Template Engine
-  require(DIR_WS_CLASSES . 'Smarty_2.6.14/Smarty.class.php');
-
+require_once(DIR_WS_CLASSES.'vam_template.php');
 
 ?>
