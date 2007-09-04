@@ -132,7 +132,7 @@ $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', 
 $vamTemplate->assign('FORM_END', '</form>');
 
 require (DIR_WS_INCLUDES . 'header.php');
-$module_smarty = new vamTemplate;
+$module = new vamTemplate;
 if ($order->info['total'] > 0) {
 	if (isset ($_GET['payment_error']) && is_object(${ $_GET['payment_error'] }) && ($error = ${$_GET['payment_error']}->get_error())) {
 
@@ -164,7 +164,7 @@ if ($order->info['total'] > 0) {
 		}
 	}
 
-	$module_smarty->assign('module_content', $selection);
+	$module->assign('module_content', $selection);
 
 } else {
 	$vamTemplate->assign('GV_COVER', 'true');
@@ -174,8 +174,8 @@ if (ACTIVATE_GIFT_SYSTEM == 'true') {
 	$vamTemplate->assign('module_gift', $order_total_modules->credit_selection());
 }
 
-$module_smarty->caching = 0;
-$payment_block = $module_smarty->fetch(CURRENT_TEMPLATE . '/module/checkout_payment_block.html');
+$module->caching = 0;
+$payment_block = $module->fetch(CURRENT_TEMPLATE . '/module/checkout_payment_block.html');
 
 $vamTemplate->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $_SESSION['comments']) . vam_draw_hidden_field('comments_added', 'YES'));
 
