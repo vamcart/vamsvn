@@ -22,7 +22,7 @@ require_once (DIR_FS_INC.'vam_get_order_data.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 
 // check if custmer is allowed to see this order!
 $order_query_check = vam_db_query("SELECT

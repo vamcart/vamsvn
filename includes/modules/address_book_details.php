@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
   // include needed functions
-  $module_smarty=new Smarty;
+  $module_smarty=new vamTemplate;
   $module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   include_once('inc/vam_get_zone_name.inc.php');
   include_once('inc/vam_get_country_list.inc.php');

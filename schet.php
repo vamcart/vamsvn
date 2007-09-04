@@ -133,7 +133,7 @@ function get_string($summ,$nominal){
 
 } 
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 
 // check if custmer is allowed to see this order!
 $order_query_check = vam_db_query("SELECT

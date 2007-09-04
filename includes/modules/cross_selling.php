@@ -17,7 +17,7 @@
    (c) 2004 xt:Commerce (also_purchased_products.php,v 1.9 2005/10/25); xt-commerce.com 
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $data = $product->getCrossSells();
 if (count($data) > 0) {
@@ -31,7 +31,7 @@ if (count($data) > 0) {
 }
 // reverse cross selling
 if (ACTIVATE_REVERSE_CROSS_SELLING=='true') {
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 $ids = array();
 // если текущий товар перекрестно ссылается на другой
 if (count($data) > 0) {

@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 
 include ('includes/header.php');
 

@@ -22,7 +22,7 @@ if (!function_exists('vam_date_long')) {
 	require_once (DIR_FS_INC.'vam_date_long.inc.php');
 }
 
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 
 if (!strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO)) {
 	// Get last order id for checkout_success

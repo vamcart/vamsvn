@@ -29,7 +29,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$gift_smarty = new Smarty;
+$gift_smarty = new vamTemplate;
 $gift_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 if (ACTIVATE_GIFT_SYSTEM == 'true') {

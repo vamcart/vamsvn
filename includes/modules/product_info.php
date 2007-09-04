@@ -29,7 +29,7 @@ require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
-$info_smarty = new Smarty;
+$info_smarty = new vamTemplate;
 $info_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
 

@@ -23,6 +23,4 @@ class vamTemplate extends Smarty {
 
 }
 
-$vamTemplate = new vamTemplate;
-
 ?>
