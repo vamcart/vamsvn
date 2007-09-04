@@ -35,7 +35,7 @@ require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 // initiate template engine for mail
-$smarty = new Smarty;
+$vamTemplate = new vamTemplate;
 require (DIR_WS_CLASSES.'currencies.php');
 $currencies = new currencies();
 
@@ -102,26 +102,26 @@ switch ($_GET['action']) {
 				}
 
 				// assign language to template for caching
-				$smarty->assign('language', $_SESSION['language']);
-				$smarty->caching = false;
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
 
 				// set dirs manual
-				$smarty->template_dir = DIR_FS_CATALOG.'templates';
-				$smarty->compile_dir = DIR_FS_CATALOG.'templates_c';
-				$smarty->config_dir = DIR_FS_CATALOG.'lang';
+				$vamTemplate->template_dir = DIR_FS_CATALOG.'templates';
+				$vamTemplate->compile_dir = DIR_FS_CATALOG.'templates_c';
+				$vamTemplate->config_dir = DIR_FS_CATALOG.'lang';
 
-				$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-				$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-				$smarty->assign('NAME', $check_status['customers_name']);
-				$smarty->assign('ORDER_NR', $oID);
-				$smarty->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
-				$smarty->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
-				$smarty->assign('NOTIFY_COMMENTS', $notify_comments);
-				$smarty->assign('ORDER_STATUS', $orders_status_array[$status]);
+				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$vamTemplate->assign('ORDER_NR', $oID);
+				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
+				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
+				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
+				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
 
-				$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.html');
-				$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.txt');
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.html');
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail, $txt_mail);
 				$customer_notified = '1';
@@ -195,36 +195,36 @@ switch ($_GET['action']) {
 
 				// assign language to template for caching
 
-				$smarty->assign('language', $_SESSION['language']);
-				$smarty->caching = false;
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
 
 				// set dirs manual
 
-				$smarty->template_dir = DIR_FS_CATALOG.'templates';
-				$smarty->compile_dir = DIR_FS_CATALOG.'templates_c';
-				$smarty->config_dir = DIR_FS_CATALOG.'lang';
+				$vamTemplate->template_dir = DIR_FS_CATALOG.'templates';
+				$vamTemplate->compile_dir = DIR_FS_CATALOG.'templates_c';
+				$vamTemplate->config_dir = DIR_FS_CATALOG.'lang';
 
-				$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-				$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-				$smarty->assign('CUSTOMERNAME', $check_status['customers_name']);
-				$smarty->assign('EMAIL', $check_status['customers_email_address']);
-				$smarty->assign('GROUPNAME', $customers_groups_name);
-				$smarty->assign('GROUPDISCOUNT', $current_discount);
-				$smarty->assign('ACCUMULATED_LIMIT', $currencies->display_price($limit, 0));
+				$vamTemplate->assign('CUSTOMERNAME', $check_status['customers_name']);
+				$vamTemplate->assign('EMAIL', $check_status['customers_email_address']);
+				$vamTemplate->assign('GROUPNAME', $customers_groups_name);
+				$vamTemplate->assign('GROUPDISCOUNT', $current_discount);
+				$vamTemplate->assign('ACCUMULATED_LIMIT', $currencies->display_price($limit, 0));
 				
 
             //email to admin            
             
-				$html_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
-				$txt_mail_admin = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
+				$html_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
+				$txt_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
 
             //email to customer            
 
-				$html_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
-				$txt_mail_customer = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
+				$html_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
+				$txt_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
 

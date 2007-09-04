@@ -22,7 +22,7 @@
   require_once(DIR_FS_INC .'vam_not_null.inc.php');
   require_once(DIR_FS_INC .'vam_format_price_order.inc.php');
   
-  $smarty = new Smarty;
+  $vamTemplate = new vamTemplate;
 
   $order_query_check = vam_db_query("SELECT
   					customers_id
@@ -36,12 +36,12 @@
  	
   	include(DIR_WS_CLASSES . 'order.php');
   	$order = new order($_GET['oID']);
-  	$smarty->assign('address_label_customer',vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
-  	$smarty->assign('address_label_shipping',vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
-  	$smarty->assign('address_label_payment',vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
-  	$smarty->assign('phone',$order->customer['telephone']);
-  	$smarty->assign('email',$order->customer['email_address']);
-  	$smarty->assign('csID',$order->customer['csID']);
+  	$vamTemplate->assign('address_label_customer',vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
+  	$vamTemplate->assign('address_label_shipping',vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+  	$vamTemplate->assign('address_label_payment',vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
+  	$vamTemplate->assign('phone',$order->customer['telephone']);
+  	$vamTemplate->assign('email',$order->customer['email_address']);
+  	$vamTemplate->assign('csID',$order->customer['csID']);
   	// get products data
         $order_query=vam_db_query("SELECT
         				products_id,
@@ -98,14 +98,14 @@
       }
 
       // assign language to template for caching
-      $smarty->assign('language', $_SESSION['language']);
-	 $smarty->assign('charset', $_SESSION['language_charset']);
-    $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
-    $smarty->assign('oID',$_GET['oID']);
+      $vamTemplate->assign('language', $_SESSION['language']);
+	 $vamTemplate->assign('charset', $_SESSION['language_charset']);
+    $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+    $vamTemplate->assign('oID',$_GET['oID']);
     if ($order->info['payment_method']!='' && $order->info['payment_method']!='no_payment') {
     include(DIR_FS_CATALOG.'lang/'.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
      $payment_method=constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
-      $smarty->assign('PAYMENT_METHOD',$payment_method);
+      $vamTemplate->assign('PAYMENT_METHOD',$payment_method);
     }
 
 if ($order->info['shipping_class'] != '') {
@@ -114,24 +114,24 @@ if ($order->info['shipping_class'] != '') {
 
   $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
 
-  	$smarty->assign('SHIPPING_METHOD',$order_shipping_text);
+  	$vamTemplate->assign('SHIPPING_METHOD',$order_shipping_text);
 }    
 
-      $smarty->assign('DATE',vam_date_long($order->info['date_purchased']));
-      $smarty->assign('order_data', $order_data);
-      $smarty->assign('order_total', $order_total);
+      $vamTemplate->assign('DATE',vam_date_long($order->info['date_purchased']));
+      $vamTemplate->assign('order_data', $order_data);
+      $vamTemplate->assign('order_total', $order_total);
 
   	// dont allow cache
-  	$smarty->caching = false;
+  	$vamTemplate->caching = false;
   	
-	$smarty->template_dir=DIR_FS_CATALOG.'templates';
-	$smarty->compile_dir=DIR_FS_CATALOG.'templates_c';
-	$smarty->config_dir=DIR_FS_CATALOG.'lang';
+	$vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
+	$vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
+	$vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
 	
-  	$smarty->display(CURRENT_TEMPLATE . '/admin/print_packingslip.html');	
+  	$vamTemplate->display(CURRENT_TEMPLATE . '/admin/print_packingslip.html');	
 //	} else {
   	
-//  	$smarty->display(CURRENT_TEMPLATE . '/error_message.html');
+//  	$vamTemplate->display(CURRENT_TEMPLATE . '/error_message.html');
 //	}
 
 ?>
