@@ -29,7 +29,7 @@
 
 	$JsHttpRequest->setEncoding($_SESSION['language_charset']);
 
-  $smarty = new vamTemplate;
+  $vamTemplate = new vamTemplate;
 
   require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/' . 'shopping_cart.php');
 

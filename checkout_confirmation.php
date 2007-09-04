@@ -33,7 +33,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
 // include needed functions
@@ -129,31 +129,31 @@ $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION);
 require (DIR_WS_INCLUDES . 'header.php');
 
 if (ACCOUNT_STREET_ADDRESS == 'true') {
-$smarty->assign('SHIPPING_ADDRESS', 'true');
+$vamTemplate->assign('SHIPPING_ADDRESS', 'true');
 }
 
 if (SHOW_IP_LOG == 'true') {
-	$smarty->assign('IP_LOG', 'true');
+	$vamTemplate->assign('IP_LOG', 'true');
 	if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 		$customers_ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
 	} else {
 		$customers_ip = $_SERVER["REMOTE_ADDR"];
 	}
-	$smarty->assign('CUSTOMERS_IP', $customers_ip);
+	$vamTemplate->assign('CUSTOMERS_IP', $customers_ip);
 }
-$smarty->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
+$vamTemplate->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
 if ($_SESSION['credit_covers'] != '1') {
-	$smarty->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
+	$vamTemplate->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
 }
-$smarty->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
-$smarty->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
-$smarty->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
+$vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
+$vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
 
 if ($_SESSION['sendto'] != false) {
 
 	if ($order->info['shipping_method']) {
-		$smarty->assign('SHIPPING_METHOD', $order->info['shipping_method']);
-		$smarty->assign('SHIPPING_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		$vamTemplate->assign('SHIPPING_METHOD', $order->info['shipping_method']);
+		$vamTemplate->assign('SHIPPING_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
 	}
 
@@ -200,13 +200,13 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 	$data_products .= '</tr>' . "\n";
 }
 $data_products .= '</table>';
-$smarty->assign('PRODUCTS_BLOCK', $data_products);
+$vamTemplate->assign('PRODUCTS_BLOCK', $data_products);
 
 if ($order->info['payment_method'] != 'no_payment' && $order->info['payment_method'] != '') {
 	include (DIR_WS_LANGUAGES . '/' . $_SESSION['language'] . '/modules/payment/' . $order->info['payment_method'] . '.php');
-	$smarty->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_ . strtoupper($order->info['payment_method']) . _TEXT_TITLE));
+	$vamTemplate->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_ . strtoupper($order->info['payment_method']) . _TEXT_TITLE));
 }
-$smarty->assign('PAYMENT_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+$vamTemplate->assign('PAYMENT_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 
 $total_block = '<table>';
 if (MODULE_ORDER_TOTAL_INSTALLED) {
@@ -214,7 +214,7 @@ if (MODULE_ORDER_TOTAL_INSTALLED) {
 	$total_block .= $order_total_modules->output();
 }
 $total_block .= '</table>';
-$smarty->assign('TOTAL_BLOCK', $total_block);
+$vamTemplate->assign('TOTAL_BLOCK', $total_block);
 
 if (is_array($payment_modules->modules)) {
 	if ($confirmation = $payment_modules->confirmation()) {
@@ -231,13 +231,13 @@ if (is_array($payment_modules->modules)) {
 						              </tr></table>';
 
 		}
-		$smarty->assign('PAYMENT_INFORMATION', $payment_info);
+		$vamTemplate->assign('PAYMENT_INFORMATION', $payment_info);
 
 	}
 }
 
 if (vam_not_null($order->info['comments'])) {
-	$smarty->assign('ORDER_COMMENTS', nl2br(htmlspecialchars($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']));
+	$vamTemplate->assign('ORDER_COMMENTS', nl2br(htmlspecialchars($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']));
 
 }
 
@@ -248,13 +248,13 @@ if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tm
 } else {
 	$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 }
-$smarty->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post'));
+$vamTemplate->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post'));
 $payment_button = '';
 if (is_array($payment_modules->modules)) {
 	$payment_button .= $payment_modules->process_button();
 }
-$smarty->assign('MODULE_BUTTONS', $payment_button);
-$smarty->assign('CHECKOUT_BUTTON', vam_image_submit('button_confirm_order.gif', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
+$vamTemplate->assign('MODULE_BUTTONS', $payment_button);
+$vamTemplate->assign('CHECKOUT_BUTTON', vam_image_submit('button_confirm_order.gif', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
 
 //check if display conditions on checkout page is true
 if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
@@ -288,9 +288,9 @@ if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
 		$revocation = $shop_content_data['content_text'];
 	}
 
-	$smarty->assign('REVOCATION', $revocation);
-	$smarty->assign('REVOCATION_TITLE', $shop_content_data['content_heading']);
-	$smarty->assign('REVOCATION_LINK', $main->getContentLink(REVOCATION_ID, MORE_INFO));
+	$vamTemplate->assign('REVOCATION', $revocation);
+	$vamTemplate->assign('REVOCATION_TITLE', $shop_content_data['content_heading']);
+	$vamTemplate->assign('REVOCATION_LINK', $main->getContentLink(REVOCATION_ID, MORE_INFO));
 	
 	$shop_content_query = "SELECT
 		                                                content_title,
@@ -304,21 +304,21 @@ if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
 	$shop_content_query = vam_db_query($shop_content_query);
 	$shop_content_data = vam_db_fetch_array($shop_content_query);
 	
-	$smarty->assign('AGB_TITLE', $shop_content_data['content_heading']);
-	$smarty->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
+	$vamTemplate->assign('AGB_TITLE', $shop_content_data['content_heading']);
+	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('PAYMENT_BLOCK', $payment_block);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE . '/module/checkout_confirmation.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/checkout_confirmation.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

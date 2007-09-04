@@ -36,7 +36,7 @@ if (isset ($_SESSION['customer_id'])) {
 }
 
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -273,10 +273,10 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$module_content = array ('MAIL_NAME' => $name, 'MAIL_REPLY_ADDRESS' => EMAIL_SUPPORT_REPLY_ADDRESS, 'MAIL_GENDER' => $gender);
 
 		// assign data to smarty
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
-		$smarty->assign('content', $module_content);
-		$smarty->caching = false;
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		$vamTemplate->assign('content', $module_content);
+		$vamTemplate->caching = false;
 
 if (isset ($_SESSION['tracking']['refID'])){
       $campaign_check_query_raw = "SELECT *
@@ -310,10 +310,10 @@ if (isset ($_SESSION['tracking']['refID'])){
 				$insert_id = vam_db_insert_id($insert_query);
 				$insert_query = vam_db_query("insert into ".TABLE_COUPON_EMAIL_TRACK." (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('".$insert_id."', '0', 'Admin', '".$email_address."', now() )");
 
-				$smarty->assign('SEND_GIFT', 'true');
-				$smarty->assign('GIFT_AMMOUNT', $vamPrice->Format(NEW_SIGNUP_GIFT_VOUCHER_AMOUNT, true));
-				$smarty->assign('GIFT_CODE', $coupon_code);
-				$smarty->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$coupon_code, 'NONSSL', false));
+				$vamTemplate->assign('SEND_GIFT', 'true');
+				$vamTemplate->assign('GIFT_AMMOUNT', $vamPrice->Format(NEW_SIGNUP_GIFT_VOUCHER_AMOUNT, true));
+				$vamTemplate->assign('GIFT_CODE', $coupon_code);
+				$vamTemplate->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$coupon_code, 'NONSSL', false));
 
 			}
 			if (NEW_SIGNUP_DISCOUNT_COUPON != '') {
@@ -325,18 +325,18 @@ if (isset ($_SESSION['tracking']['refID'])){
 				$coupon_desc = vam_db_fetch_array($coupon_desc_query);
 				$insert_query = vam_db_query("insert into ".TABLE_COUPON_EMAIL_TRACK." (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('".$coupon_id."', '0', 'Admin', '".$email_address."', now() )");
 
-				$smarty->assign('SEND_COUPON', 'true');
-				$smarty->assign('COUPON_DESC', $coupon_desc['coupon_description']);
-				$smarty->assign('COUPON_CODE', $coupon['coupon_code']);
+				$vamTemplate->assign('SEND_COUPON', 'true');
+				$vamTemplate->assign('COUPON_DESC', $coupon_desc['coupon_description']);
+				$vamTemplate->assign('COUPON_CODE', $coupon['coupon_code']);
 
 			}
 			// ICW - CREDIT CLASS CODE BLOCK ADDED  ******************************************************* END
 			// GV Code End       // create templates
 		}
-		$smarty->caching = 0;
-		$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
-		$smarty->caching = 0;
-		$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+		$vamTemplate->caching = 0;
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+		$vamTemplate->caching = 0;
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
 
 		vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
 
@@ -353,89 +353,89 @@ $breadcrumb->add(NAVBAR_TITLE_CREATE_ACCOUNT, vam_href_link(FILENAME_CREATE_ACCO
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($messageStack->size('create_account') > 0) {
-	$smarty->assign('error', $messageStack->output('create_account'));
+	$vamTemplate->assign('error', $messageStack->output('create_account'));
 
 }
-$smarty->assign('FORM_ACTION', vam_draw_form('create_account', vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('create_account', vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
 
 if (ACCOUNT_GENDER == 'true') {
-	$smarty->assign('gender', '1');
+	$vamTemplate->assign('gender', '1');
 
-	$smarty->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender"'));
-	$smarty->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
-   $smarty->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
+	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender"'));
+	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
+   $vamTemplate->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 
 } else {
-	$smarty->assign('gender', '0');
+	$vamTemplate->assign('gender', '0');
 }
 
-$smarty->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), '', 'id="firstname"'));
-$smarty->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
-$smarty->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'id="lastname"'));
-$smarty->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
+$vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), '', 'id="firstname"'));
+$vamTemplate->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
+$vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'id="lastname"'));
+$vamTemplate->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 
 if (ACCOUNT_DOB == 'true') {
-	$smarty->assign('birthdate', '1');
+	$vamTemplate->assign('birthdate', '1');
 
-	$smarty->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), '', 'id="dob"'));
-   $smarty->assign('ENTRY_DATE_OF_BIRTH_ERROR', ENTRY_DATE_OF_BIRTH_ERROR);
+	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), '', 'id="dob"'));
+   $vamTemplate->assign('ENTRY_DATE_OF_BIRTH_ERROR', ENTRY_DATE_OF_BIRTH_ERROR);
 
 } else {
-	$smarty->assign('birthdate', '0');
+	$vamTemplate->assign('birthdate', '0');
 }
 
-$smarty->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email"'));
-$smarty->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
+$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email"'));
+$vamTemplate->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
 
 if (ACCOUNT_COMPANY == 'true') {
-	$smarty->assign('company', '1');
-	$smarty->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : ''))));
+	$vamTemplate->assign('company', '1');
+	$vamTemplate->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : ''))));
 } else {
-	$smarty->assign('company', '0');
+	$vamTemplate->assign('company', '0');
 }
 
 if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
-	$smarty->assign('vat', '1');
-	$smarty->assign('INPUT_VAT', vam_draw_input_fieldNote(array ('name' => 'vat', 'text' => '&nbsp;'. (vam_not_null(ENTRY_VAT_TEXT) ? '<span class="Requirement">'.ENTRY_VAT_TEXT.'</span>' : ''))));
+	$vamTemplate->assign('vat', '1');
+	$vamTemplate->assign('INPUT_VAT', vam_draw_input_fieldNote(array ('name' => 'vat', 'text' => '&nbsp;'. (vam_not_null(ENTRY_VAT_TEXT) ? '<span class="Requirement">'.ENTRY_VAT_TEXT.'</span>' : ''))));
 } else {
-	$smarty->assign('vat', '0');
+	$vamTemplate->assign('vat', '0');
 }
 
 if (ACCOUNT_STREET_ADDRESS == 'true') {
-   $smarty->assign('street_address', '1');
-   $smarty->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="address"'));
-   $smarty->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
+   $vamTemplate->assign('street_address', '1');
+   $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="address"'));
+   $vamTemplate->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
 } else {
-	$smarty->assign('street_address', '0');
+	$vamTemplate->assign('street_address', '0');
 }
 
 if (ACCOUNT_SUBURB == 'true') {
-	$smarty->assign('suburb', '1');
-	$smarty->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : ''))));
+	$vamTemplate->assign('suburb', '1');
+	$vamTemplate->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : ''))));
 
 } else {
-	$smarty->assign('suburb', '0');
+	$vamTemplate->assign('suburb', '0');
 }
 
 if (ACCOUNT_POSTCODE == 'true') {
-	$smarty->assign('postcode', '1');
-   $smarty->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), '', 'id="postcode"'));
-   $smarty->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
+	$vamTemplate->assign('postcode', '1');
+   $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), '', 'id="postcode"'));
+   $vamTemplate->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
 
 } else {
-	$smarty->assign('postcode', '0');
+	$vamTemplate->assign('postcode', '0');
 }
 
 if (ACCOUNT_CITY == 'true') {
-	$smarty->assign('city', '1');
-   $smarty->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), '', 'id="city"'));
-   $smarty->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
+	$vamTemplate->assign('city', '1');
+   $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), '', 'id="city"'));
+   $vamTemplate->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
 } else {
-	$smarty->assign('city', '0');
+	$vamTemplate->assign('city', '0');
 }
 
 if (ACCOUNT_STATE == 'true') {
-	$smarty->assign('state', '1');
+	$vamTemplate->assign('state', '1');
 
 //	if ($process == true) {
 
@@ -487,10 +487,10 @@ if (ACCOUNT_STATE == 'true') {
 //		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')));
 //	}
 
-	$smarty->assign('INPUT_STATE', $state_input);
-   $smarty->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
+	$vamTemplate->assign('INPUT_STATE', $state_input);
+   $vamTemplate->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
 } else {
-	$smarty->assign('state', '0');
+	$vamTemplate->assign('state', '0');
 }
 
 if ($_POST['country']) {
@@ -500,49 +500,49 @@ if ($_POST['country']) {
 }
 
 if (ACCOUNT_COUNTRY == 'true') {
-	$smarty->assign('country', '1');
-//   $smarty->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
+	$vamTemplate->assign('country', '1');
+//   $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected));
 
-   $smarty->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected, 'id="country" onchange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"'));
+   $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected, 'id="country" onchange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"'));
    
-//   $smarty->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
+//   $vamTemplate->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
 
-   $smarty->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
+   $vamTemplate->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
 
 } else {
-	$smarty->assign('country', '0');
+	$vamTemplate->assign('country', '0');
 }
 
 if (ACCOUNT_TELE == 'true') {
-	$smarty->assign('telephone', '1');
-   $smarty->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), '', 'id="telephone"'));
-   $smarty->assign('ENTRY_TELEPHONE_NUMBER_ERROR', ENTRY_TELEPHONE_NUMBER_ERROR);
+	$vamTemplate->assign('telephone', '1');
+   $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), '', 'id="telephone"'));
+   $vamTemplate->assign('ENTRY_TELEPHONE_NUMBER_ERROR', ENTRY_TELEPHONE_NUMBER_ERROR);
 } else {
-	$smarty->assign('telephone', '0');
+	$vamTemplate->assign('telephone', '0');
 }
 
 if (ACCOUNT_FAX == 'true') {
-	$smarty->assign('fax', '1');
-   $smarty->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : ''))));
+	$vamTemplate->assign('fax', '1');
+   $vamTemplate->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : ''))));
 } else {
-	$smarty->assign('fax', '0');
+	$vamTemplate->assign('fax', '0');
 }
 
-$smarty->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
-$smarty->assign('ENTRY_PASSWORD_ERROR', ENTRY_PASSWORD_ERROR);
-$smarty->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
-$smarty->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
-$smarty->assign('FORM_END', '</form>');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/create_account.html');
+$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
+$vamTemplate->assign('ENTRY_PASSWORD_ERROR', ENTRY_PASSWORD_ERROR);
+$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
+$vamTemplate->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+$vamTemplate->assign('FORM_END', '</form>');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/create_account.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

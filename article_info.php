@@ -24,7 +24,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
@@ -42,36 +42,36 @@ require (DIR_WS_INCLUDES.'header.php');
 
 if ($article_check['total'] > 0) {
 
-	$smarty->assign('no_article', 'false');
+	$vamTemplate->assign('no_article', 'false');
 
 		$SEF_parameter_author = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_author = '&author='.vam_cleanName($article_info['authors_name']);
 
-	$smarty->assign('ARTICLE_NAME', $article_info['articles_name']);
-	$smarty->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
-	$smarty->assign('ARTICLE_DATE', vam_date_long($article_info['articles_date_added']));
-	$smarty->assign('ARTICLE_URL', $article_info['articles_url']);
-	$smarty->assign('AUTHOR_NAME', $article_info['authors_name']);
-	$smarty->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
+	$vamTemplate->assign('ARTICLE_NAME', $article_info['articles_name']);
+	$vamTemplate->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
+	$vamTemplate->assign('ARTICLE_DATE', vam_date_long($article_info['articles_date_added']));
+	$vamTemplate->assign('ARTICLE_URL', $article_info['articles_url']);
+	$vamTemplate->assign('AUTHOR_NAME', $article_info['authors_name']);
+	$vamTemplate->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
 
 
 } else {
 
-	$smarty->assign('no_article', 'true');
+	$vamTemplate->assign('no_article', 'true');
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$smarty->assign('module_content', $module_content);
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/article_info.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$vamTemplate->assign('module_content', $module_content);
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/article_info.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

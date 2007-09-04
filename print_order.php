@@ -22,7 +22,7 @@ require_once (DIR_FS_INC.'vam_get_order_data.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 // check if custmer is allowed to see this order!
 $order_query_check = vam_db_query("SELECT
@@ -36,39 +36,39 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
 	include (DIR_WS_CLASSES.'order.php');
 	$order = new order($oID);
-	$smarty->assign('address_label_customer', vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
-	$smarty->assign('address_label_shipping', vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
-	$smarty->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
-	$smarty->assign('csID', $order->customer['csID']);
+	$vamTemplate->assign('address_label_customer', vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
+	$vamTemplate->assign('address_label_shipping', vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+	$vamTemplate->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
+	$vamTemplate->assign('csID', $order->customer['csID']);
 	// get products data
 	$order_total = $order->getTotalData($oID); 
-	$smarty->assign('order_data', $order->getOrderData($oID));
-	$smarty->assign('order_total', $order_total['data']);
+	$vamTemplate->assign('order_data', $order->getOrderData($oID));
+	$vamTemplate->assign('order_total', $order_total['data']);
 
 	// assign language to template for caching
-	$smarty->assign('language', $_SESSION['language']);
-	$smarty->assign('oID', (int) $_GET['oID']);
+	$vamTemplate->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('oID', (int) $_GET['oID']);
 	if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
 		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
 		$payment_method = constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
 	}
-	$smarty->assign('PAYMENT_METHOD', $payment_method);
+	$vamTemplate->assign('PAYMENT_METHOD', $payment_method);
 	if ($order->info['shipping_method'] != '') {
 		$shipping_method = $order->info['shipping_method'];
 	}
-	$smarty->assign('SHIPPING_METHOD', $shipping_method);
-	$smarty->assign('COMMENT', $order->info['comments']);
-	$smarty->assign('DATE', vam_date_long($order->info['date_purchased']));
+	$vamTemplate->assign('SHIPPING_METHOD', $shipping_method);
+	$vamTemplate->assign('COMMENT', $order->info['comments']);
+	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
 	$path = DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/';
-	$smarty->assign('tpl_path', $path);
+	$vamTemplate->assign('tpl_path', $path);
 
 	// dont allow cache
-	$smarty->caching = false;
+	$vamTemplate->caching = false;
 
-	$smarty->display(CURRENT_TEMPLATE.'/module/print_order.html');
+	$vamTemplate->display(CURRENT_TEMPLATE.'/module/print_order.html');
 } else {
 
-	$smarty->assign('ERROR', 'You are not allowed to view this order!');
-	$smarty->display(CURRENT_TEMPLATE.'/module/error_message.html');
+	$vamTemplate->assign('ERROR', 'You are not allowed to view this order!');
+	$vamTemplate->display(CURRENT_TEMPLATE.'/module/error_message.html');
 }
 ?>

@@ -23,7 +23,7 @@
 require ('includes/application_top.php');
 
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
@@ -39,19 +39,19 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.vam_db_input($_POST['email']).'&key='.$vlcode, 'NONSSL');
 
 	// assign language to template for caching
-	$smarty->assign('language', $_SESSION['language']);
-	$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-	$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+	$vamTemplate->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 	// assign vars
-	$smarty->assign('EMAIL', vam_db_input($_POST['email']));
-	$smarty->assign('LINK', $link);
+	$vamTemplate->assign('EMAIL', vam_db_input($_POST['email']));
+	$vamTemplate->assign('LINK', $link);
 	// dont allow cache
-	$smarty->caching = false;
+	$vamTemplate->caching = false;
 
 	// create mails
-	$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/newsletter_mail.html');
-	$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/newsletter_mail.txt');
+	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/newsletter_mail.html');
+	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/newsletter_mail.txt');
 
 	// Check if email exists 
 
@@ -161,27 +161,27 @@ $breadcrumb->add(NAVBAR_TITLE_NEWSLETTER, vam_href_link(FILENAME_NEWSLETTER, '',
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$smarty->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
 
-$smarty->assign('text_newsletter', TEXT_NEWSLETTER);
-$smarty->assign('info_message', $info_message);
-$smarty->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_NEWSLETTER, 'action=process', 'NONSSL')));
-$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-$smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
-$smarty->assign('CHECK_INP', vam_draw_radio_field('check', 'inp'));
-$smarty->assign('CHECK_DEL', vam_draw_radio_field('check', 'del'));
-$smarty->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('text_newsletter', TEXT_NEWSLETTER);
+$vamTemplate->assign('info_message', $info_message);
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_NEWSLETTER, 'action=process', 'NONSSL')));
+$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
+$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
+$vamTemplate->assign('CHECK_INP', vam_draw_radio_field('check', 'inp'));
+$vamTemplate->assign('CHECK_DEL', vam_draw_radio_field('check', 'del'));
+$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+$vamTemplate->assign('FORM_END', '</form>');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/newsletter.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/newsletter.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

@@ -27,7 +27,7 @@ if (isset ($_SESSION['customer_id'])) {
 	vam_redirect(vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 }
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -61,8 +61,8 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		// Action for böse ?
     require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
     $vlcode = vam_random_charcode(32);
-    $smarty->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="" />');    
-    $smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6" maxlength="6"', 'text', false));
+    $vamTemplate->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="" />');    
+    $vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6" maxlength="6"', 'text', false));
     if ($_POST['vvcode'] == $_SESSION['vvcode']){
     // code ok
 		// Check that password is good
@@ -158,26 +158,26 @@ $breadcrumb->add(NAVBAR_TITLE_LOGIN, vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 require (DIR_WS_INCLUDES.'header.php');
 
 //if ($_GET['info_message']) $info_message = $_GET['info_message'];
-$smarty->assign('info_message', $info_message);
-$smarty->assign('account_option', ACCOUNT_OPTIONS);
-$smarty->assign('BUTTON_NEW_ACCOUNT', '<a href="'.vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
-$smarty->assign('BUTTON_LOGIN', vam_image_submit('button_login.gif', IMAGE_BUTTON_LOGIN));
-$smarty->assign('BUTTON_GUEST', '<a href="'.vam_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
-$smarty->assign('FORM_ACTION', vam_draw_form('login', vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
-$smarty->assign('INPUT_MAIL', vam_draw_input_field('email_address'));
-$smarty->assign('INPUT_PASSWORD', vam_draw_password_field('password'));
-$smarty->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('info_message', $info_message);
+$vamTemplate->assign('account_option', ACCOUNT_OPTIONS);
+$vamTemplate->assign('BUTTON_NEW_ACCOUNT', '<a href="'.vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('BUTTON_LOGIN', vam_image_submit('button_login.gif', IMAGE_BUTTON_LOGIN));
+$vamTemplate->assign('BUTTON_GUEST', '<a href="'.vam_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('login', vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
+$vamTemplate->assign('INPUT_MAIL', vam_draw_input_field('email_address'));
+$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_field('password'));
+$vamTemplate->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
+$vamTemplate->assign('FORM_END', '</form>');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/login.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/login.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

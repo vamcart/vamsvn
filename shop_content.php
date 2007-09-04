@@ -19,7 +19,7 @@
 
 require ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -66,7 +66,7 @@ $shop_content_sub_pages_query = vam_db_query("SELECT
               );
       }
 
-  $smarty->assign('sub_pages_content',$sub_pages_content);
+  $vamTemplate->assign('sub_pages_content',$sub_pages_content);
 
 $breadcrumb->add($shop_content_data['content_title'], vam_href_link(FILENAME_CONTENT.'?coID='.(int) $_GET['coID']));
 
@@ -77,7 +77,7 @@ if ($_GET['coID'] == 7 && $_GET['action'] == 'success') {
 	require (DIR_WS_INCLUDES.'header.php');
 }
 
-$smarty->assign('CONTENT_HEADING', $shop_content_data['content_heading']);
+$vamTemplate->assign('CONTENT_HEADING', $shop_content_data['content_heading']);
 
 if ($_GET['coID'] == 7) {
 
@@ -90,21 +90,21 @@ if ($_GET['coID'] == 7) {
 			if (!isset ($mail_error)) {
 				vam_redirect(vam_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
 			} else {
-				$smarty->assign('error_message', $mail_error);
+				$vamTemplate->assign('error_message', $mail_error);
 
 			}
 		} else {
 			// error report hier einbauen
-			$smarty->assign('error_message', ERROR_MAIL);
+			$vamTemplate->assign('error_message', ERROR_MAIL);
 			$error = true;
 		}
 
 	}
 
-	$smarty->assign('CONTACT_HEADING', $shop_content_data['content_title']);
+	$vamTemplate->assign('CONTACT_HEADING', $shop_content_data['content_title']);
 	if (isset ($_GET['action']) && ($_GET['action'] == 'success')) {
-		$smarty->assign('success', '1');
-		$smarty->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+		$vamTemplate->assign('success', '1');
+		$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
 
 	} else {
 		if ($shop_content_data['content_file'] != '') {
@@ -122,19 +122,19 @@ if ($_GET['coID'] == 7) {
 			$contact_content = $shop_content_data['content_text'];
 		}
 		require (DIR_WS_INCLUDES.'header.php');
-		$smarty->assign('CONTACT_CONTENT', $contact_content);
-		$smarty->assign('FORM_ACTION', vam_draw_form('contact_us', vam_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
-		$smarty->assign('INPUT_NAME', vam_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
-		$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
-		$smarty->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
-		$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-		$smarty->assign('FORM_END', '</form>');
+		$vamTemplate->assign('CONTACT_CONTENT', $contact_content);
+		$vamTemplate->assign('FORM_ACTION', vam_draw_form('contact_us', vam_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
+		$vamTemplate->assign('INPUT_NAME', vam_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
+		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
+		$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
+		$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+		$vamTemplate->assign('FORM_END', '</form>');
 	}
 
-	$smarty->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('language', $_SESSION['language']);
 
-	$smarty->caching = 0;
-	$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/contact_us.html');
+	$vamTemplate->caching = 0;
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/contact_us.html');
 
 } else {
 
@@ -149,36 +149,36 @@ if ($_GET['coID'] == 7) {
 		include (DIR_FS_CATALOG.'media/content/'.$shop_content_data['content_file']);
 		if ($isTextFile)
 			echo '';
-		$smarty->assign('file', ob_get_contents());
+		$vamTemplate->assign('file', ob_get_contents());
 		ob_end_clean();
 
 	} else {
 		$content_body = $shop_content_data['content_text'];
 	}
-	$smarty->assign('CONTENT_BODY', $content_body);
+	$vamTemplate->assign('CONTENT_BODY', $content_body);
 
-	$smarty->assign('BUTTON_CONTINUE', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-	$smarty->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('language', $_SESSION['language']);
 
 	// set cache ID
 	 if (!CacheCheck()) {
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/content.html');
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/content.html');
 	} else {
-		$smarty->caching = 1;
-		$smarty->cache_lifetime = CACHE_LIFETIME;
-		$smarty->cache_modified_check = CACHE_CHECK;
+		$vamTemplate->caching = 1;
+		$vamTemplate->cache_lifetime = CACHE_LIFETIME;
+		$vamTemplate->cache_modified_check = CACHE_CHECK;
 		$cache_id = $_SESSION['language'].$shop_content_data['content_id'];
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/content.html', $cache_id);
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/content.html', $cache_id);
 	}
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

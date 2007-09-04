@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -225,15 +225,15 @@ $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS, vam_href_link(FILENAM
 $addresses_count = vam_count_customer_address_book_entries();
 
 require (DIR_WS_INCLUDES.'header.php');
-$smarty->assign('FORM_ACTION', vam_draw_form('checkout_address', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"') . vam_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_address', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"') . vam_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"'));
 
 if ($messageStack->size('checkout_address') > 0) {
-	$smarty->assign('error', $messageStack->output('checkout_address'));
+	$vamTemplate->assign('error', $messageStack->output('checkout_address'));
 
 }
 
 if ($process == false) {
-	$smarty->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'));
+	$vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'));
 
 	if ($addresses_count > 1) {
 
@@ -255,7 +255,7 @@ if ($process == false) {
 			$radio_buttons ++;
 		}
 		$address_content .= '';
-		$smarty->assign('BLOCK_ADDRESS', $address_content);
+		$vamTemplate->assign('BLOCK_ADDRESS', $address_content);
 	}
 }
 
@@ -264,23 +264,23 @@ if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
 	require (DIR_WS_MODULES.'checkout_new_address.php');
 
 }
-$smarty->assign('BUTTON_CONTINUE', vam_draw_hidden_field('action', 'submit').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_CONTINUE', vam_draw_hidden_field('action', 'submit').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 
 if ($process == true) {
-	$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 
 }
-$smarty->assign('FORM_END', '</form>');
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('FORM_END', '</form>');
+$vamTemplate->assign('language', $_SESSION['language']);
 
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_shipping_address.html');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout_shipping_address.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

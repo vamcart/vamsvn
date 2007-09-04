@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -36,9 +36,9 @@ $breadcrumb->add(NAVBAR_TITLE_2_ADDRESS_BOOK, vam_href_link(FILENAME_ADDRESS_BOO
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($messageStack->size('addressbook') > 0)
-	$smarty->assign('error', $messageStack->output('addressbook'));
+	$vamTemplate->assign('error', $messageStack->output('addressbook'));
 
-$smarty->assign('ADDRESS_DEFAULT', vam_address_label($_SESSION['customer_id'], $_SESSION['customer_default_address_id'], true, ' ', '<br />'));
+$vamTemplate->assign('ADDRESS_DEFAULT', vam_address_label($_SESSION['customer_id'], $_SESSION['customer_default_address_id'], true, ' ', '<br />'));
 
 $addresses_data = array ();
 $addresses_query = vam_db_query("select address_book_id, entry_firstname as firstname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $_SESSION['customer_id']."' order by firstname, lastname");
@@ -52,26 +52,26 @@ while ($addresses = vam_db_fetch_array($addresses_query)) {
 	$addresses_data[] = array ('NAME' => $addresses['firstname'].' '.$addresses['lastname'], 'BUTTON_EDIT' => '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('small_edit.gif', SMALL_IMAGE_BUTTON_EDIT).'</a>', 'BUTTON_DELETE' => '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('small_delete.gif', SMALL_IMAGE_BUTTON_DELETE).'</a>', 'ADDRESS' => vam_address_format($format_id, $addresses, true, ' ', '<br />'), 'PRIMARY' => $primary);
 
 }
-$smarty->assign('addresses_data', $addresses_data);
+$vamTemplate->assign('addresses_data', $addresses_data);
 
-$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 
 if (vam_count_customer_address_book_entries() < MAX_ADDRESS_BOOK_ENTRIES) {
 
-	$smarty->assign('BUTTON_NEW', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL').'">'.vam_image_button('button_add_address.gif', IMAGE_BUTTON_ADD_ADDRESS).'</a>');
+	$vamTemplate->assign('BUTTON_NEW', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL').'">'.vam_image_button('button_add_address.gif', IMAGE_BUTTON_ADD_ADDRESS).'</a>');
 }
 
-$smarty->assign('ADDRESS_COUNT', sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES));
+$vamTemplate->assign('ADDRESS_COUNT', sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES));
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/address_book.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/address_book.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

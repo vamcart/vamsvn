@@ -36,7 +36,7 @@ if (ACTIVATE_GIFT_SYSTEM != 'true')
 // is customer logged on ?
 	if (!isset ($_SESSION['customer_id'])) vam_redirect(FILENAME_SHOPPING_CART);
 
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
@@ -76,18 +76,18 @@ $breadcrumb->add(NAVBAR_GV_REDEEM);
 
 // if we get here then either the url gv_no was not set or it was invalid
 // so output a message.
-$smarty->assign('coupon_amount', $vamPrice->Format($coupon['coupon_amount'], true));
-$smarty->assign('error', $error);
-$smarty->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/gv_redeem.html');
+$vamTemplate->assign('coupon_amount', $vamPrice->Format($coupon['coupon_amount'], true));
+$vamTemplate->assign('error', $error);
+$vamTemplate->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/gv_redeem.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

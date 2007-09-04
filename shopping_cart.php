@@ -24,7 +24,7 @@
 $cart_empty = false;
 require ("includes/application_top.php");
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
 require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
@@ -38,8 +38,8 @@ include (DIR_WS_MODULES.'gift_cart.php');
 
 if ($_SESSION['cart']->count_contents() > 0) {
 
-	$smarty->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_SHOPPING_CART, 'action=update_product')));
-	$smarty->assign('FORM_END', '</form>');
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_SHOPPING_CART, 'action=update_product')));
+	$vamTemplate->assign('FORM_END', '</form>');
 	$hidden_options = '';
 	$_SESSION['any_out_of_stock'] = 0;
 
@@ -74,7 +74,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		}
 	}
 
-	$smarty->assign('HIDDEN_OPTIONS', $hidden_options);
+	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_cart.php');
 $_SESSION['allow_checkout'] = 'true';
 	if (STOCK_CHECK == 'true') {
@@ -83,11 +83,11 @@ $_SESSION['allow_checkout'] = 'true';
 				// write permission in session
 				$_SESSION['allow_checkout'] = 'true';
 
-				$smarty->assign('info_message', OUT_OF_STOCK_CAN_CHECKOUT);
+				$vamTemplate->assign('info_message', OUT_OF_STOCK_CAN_CHECKOUT);
 
 			} else {
 				$_SESSION['allow_checkout'] = 'false';
-				$smarty->assign('info_message', OUT_OF_STOCK_CANT_CHECKOUT);
+				$vamTemplate->assign('info_message', OUT_OF_STOCK_CANT_CHECKOUT);
 
 			}
 		} else {
@@ -102,10 +102,10 @@ if ($_SESSION['cart']->show_total() > 0 ) {
   $more_to_buy = $_SESSION['customers_status']['customers_status_min_order'] - $_SESSION['cart']->show_total();
   $order_amount=$vamPrice->Format($more_to_buy, true);
   $min_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_min_order'], true);
-  $smarty->assign('info_message_1', MINIMUM_ORDER_VALUE_NOT_REACHED_1);
-  $smarty->assign('info_message_2', MINIMUM_ORDER_VALUE_NOT_REACHED_2);
-  $smarty->assign('order_amount', $order_amount);
-  $smarty->assign('min_order', $min_order);
+  $vamTemplate->assign('info_message_1', MINIMUM_ORDER_VALUE_NOT_REACHED_1);
+  $vamTemplate->assign('info_message_2', MINIMUM_ORDER_VALUE_NOT_REACHED_2);
+  $vamTemplate->assign('order_amount', $order_amount);
+  $vamTemplate->assign('min_order', $min_order);
  }
  if  ($_SESSION['customers_status']['customers_status_max_order'] != 0) {
   if ($_SESSION['cart']->show_total() > $_SESSION['customers_status']['customers_status_max_order'] ) {
@@ -113,36 +113,36 @@ if ($_SESSION['cart']->show_total() > 0 ) {
   $less_to_buy = $_SESSION['cart']->show_total() - $_SESSION['customers_status']['customers_status_max_order'];
   $max_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_max_order'], true);
   $order_amount=$vamPrice->Format($less_to_buy, true);
-  $smarty->assign('info_message_1', MAXIMUM_ORDER_VALUE_REACHED_1);
-  $smarty->assign('info_message_2', MAXIMUM_ORDER_VALUE_REACHED_2);
-  $smarty->assign('order_amount', $order_amount);
-  $smarty->assign('min_order', $max_order);
+  $vamTemplate->assign('info_message_1', MAXIMUM_ORDER_VALUE_REACHED_1);
+  $vamTemplate->assign('info_message_2', MAXIMUM_ORDER_VALUE_REACHED_2);
+  $vamTemplate->assign('order_amount', $order_amount);
+  $vamTemplate->assign('min_order', $max_order);
   }
  }
 }
 	if ($_GET['info_message'])
-		$smarty->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
-	$smarty->assign('BUTTON_RELOAD', vam_image_submit('button_update_cart.gif', IMAGE_BUTTON_UPDATE_CART));
-	$smarty->assign('BUTTON_CHECKOUT', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('button_checkout.gif', IMAGE_BUTTON_CHECKOUT).'</a>');		
+		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
+	$vamTemplate->assign('BUTTON_RELOAD', vam_image_submit('button_update_cart.gif', IMAGE_BUTTON_UPDATE_CART));
+	$vamTemplate->assign('BUTTON_CHECKOUT', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('button_checkout.gif', IMAGE_BUTTON_CHECKOUT).'</a>');		
 } else {
 
 	// empty cart
 	$cart_empty = true;
 	if ($_GET['info_message'])
-		$smarty->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
-	$smarty->assign('cart_empty', $cart_empty);
-	$smarty->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
+	$vamTemplate->assign('cart_empty', $cart_empty);
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
 
 }
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/shopping_cart.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/shopping_cart.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

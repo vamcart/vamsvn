@@ -37,7 +37,7 @@ require ('includes/classes/http_client.php');
 
 require_once (DIR_FS_INC.'vam_validate_email.inc.php');
 
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -88,21 +88,21 @@ if ($_GET['action'] == 'process') {
 
 		$gv_email_subject = sprintf(EMAIL_GV_TEXT_SUBJECT, stripslashes($_POST['send_name']));
 
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-		$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
-		$smarty->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$id1, 'NONSSL', false));
-		$smarty->assign('AMMOUNT', $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true));
-		$smarty->assign('GIFT_CODE', $id1);
-		$smarty->assign('MESSAGE', $_POST['message']);
-		$smarty->assign('NAME', $_POST['to_name']);
-		$smarty->assign('FROM_NAME', $_POST['send_name']);
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		$vamTemplate->assign('GIFT_LINK', vam_href_link(FILENAME_GV_REDEEM, 'gv_no='.$id1, 'NONSSL', false));
+		$vamTemplate->assign('AMMOUNT', $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true));
+		$vamTemplate->assign('GIFT_CODE', $id1);
+		$vamTemplate->assign('MESSAGE', $_POST['message']);
+		$vamTemplate->assign('NAME', $_POST['to_name']);
+		$vamTemplate->assign('FROM_NAME', $_POST['send_name']);
 
 		// dont allow cache
-		$smarty->caching = false;
+		$vamTemplate->caching = false;
 
-		$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/send_gift_to_friend.html');
-		$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/send_gift_to_friend.txt');
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/send_gift_to_friend.html');
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/send_gift_to_friend.txt');
 
 		// send mail
 		vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $_POST['email'], $_POST['to_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $gv_email_subject, $html_mail, $txt_mail);
@@ -114,48 +114,48 @@ $breadcrumb->add(NAVBAR_GV_SEND);
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($_GET['action'] == 'process') {
-	$smarty->assign('action', 'process');
-	$smarty->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT, '', 'NONSSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+	$vamTemplate->assign('action', 'process');
+	$vamTemplate->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT, '', 'NONSSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
 }
 if ($_GET['action'] == 'send' && !$error) {
-	$smarty->assign('action', 'send');
+	$vamTemplate->assign('action', 'send');
 	// validate entries
 	$gv_amount = (double) $gv_amount;
 	$gv_query = vam_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
 	$send_name = $gv_result['customers_firstname'].' '.$gv_result['customers_lastname'];
-	$smarty->assign('FORM_ACTION', '<form action="'.vam_href_link(FILENAME_GV_SEND, 'action=process', 'NONSSL').'" method="post">');
-	$smarty->assign('MAIN_MESSAGE', sprintf(MAIN_MESSAGE, $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), stripslashes($_POST['to_name']), $_POST['email'], stripslashes($_POST['to_name']), $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), $send_name));
+	$vamTemplate->assign('FORM_ACTION', '<form action="'.vam_href_link(FILENAME_GV_SEND, 'action=process', 'NONSSL').'" method="post">');
+	$vamTemplate->assign('MAIN_MESSAGE', sprintf(MAIN_MESSAGE, $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), stripslashes($_POST['to_name']), $_POST['email'], stripslashes($_POST['to_name']), $vamPrice->Format(str_replace(",", ".", $_POST['amount']), true), $send_name));
 	if ($_POST['message']) {
-		$smarty->assign('PERSONAL_MESSAGE', sprintf(PERSONAL_MESSAGE, $gv_result['customers_firstname']));
-		$smarty->assign('POST_MESSAGE', stripslashes($_POST['message']));
+		$vamTemplate->assign('PERSONAL_MESSAGE', sprintf(PERSONAL_MESSAGE, $gv_result['customers_firstname']));
+		$vamTemplate->assign('POST_MESSAGE', stripslashes($_POST['message']));
 	}
-	$smarty->assign('HIDDEN_FIELDS', vam_draw_hidden_field('send_name', $send_name).vam_draw_hidden_field('to_name', stripslashes($_POST['to_name'])).vam_draw_hidden_field('email', $_POST['email']).vam_draw_hidden_field('amount', $gv_amount).vam_draw_hidden_field('message', stripslashes($_POST['message'])));
-	$smarty->assign('LINK_BACK', vam_image_submit('button_back.gif', IMAGE_BUTTON_BACK, 'name=back').'</a>');
-	$smarty->assign('LINK_SUBMIT', vam_image_submit('button_send.gif', IMAGE_BUTTON_CONTINUE));
+	$vamTemplate->assign('HIDDEN_FIELDS', vam_draw_hidden_field('send_name', $send_name).vam_draw_hidden_field('to_name', stripslashes($_POST['to_name'])).vam_draw_hidden_field('email', $_POST['email']).vam_draw_hidden_field('amount', $gv_amount).vam_draw_hidden_field('message', stripslashes($_POST['message'])));
+	$vamTemplate->assign('LINK_BACK', vam_image_submit('button_back.gif', IMAGE_BUTTON_BACK, 'name=back').'</a>');
+	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('button_send.gif', IMAGE_BUTTON_CONTINUE));
 }
 elseif ($_GET['action'] == '' || $error) {
-	$smarty->assign('action', '');
-	$smarty->assign('FORM_ACTION', '<form action="'.vam_href_link(FILENAME_GV_SEND, 'action=send', 'NONSSL').'" method="post">');
-	$smarty->assign('LINK_SEND', vam_href_link(FILENAME_GV_SEND, 'action=send', 'NONSSL'));
-	$smarty->assign('INPUT_TO_NAME', vam_draw_input_field('to_name', stripslashes($_POST['to_name'])));
-	$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', $_POST['email']));
-	$smarty->assign('ERROR_EMAIL', $error_email);
-	$smarty->assign('INPUT_AMOUNT', vam_draw_input_field('amount', $_POST['amount'], '', 'text', false));
-	$smarty->assign('ERROR_AMOUNT', $error_amount);
-	$smarty->assign('TEXTAREA_MESSAGE', vam_draw_textarea_field('message', 'soft', 50, 15, stripslashes($_POST['message'])));
-	$smarty->assign('LINK_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+	$vamTemplate->assign('action', '');
+	$vamTemplate->assign('FORM_ACTION', '<form action="'.vam_href_link(FILENAME_GV_SEND, 'action=send', 'NONSSL').'" method="post">');
+	$vamTemplate->assign('LINK_SEND', vam_href_link(FILENAME_GV_SEND, 'action=send', 'NONSSL'));
+	$vamTemplate->assign('INPUT_TO_NAME', vam_draw_input_field('to_name', stripslashes($_POST['to_name'])));
+	$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', $_POST['email']));
+	$vamTemplate->assign('ERROR_EMAIL', $error_email);
+	$vamTemplate->assign('INPUT_AMOUNT', vam_draw_input_field('amount', $_POST['amount'], '', 'text', false));
+	$vamTemplate->assign('ERROR_AMOUNT', $error_amount);
+	$vamTemplate->assign('TEXTAREA_MESSAGE', vam_draw_textarea_field('message', 'soft', 50, 15, stripslashes($_POST['message'])));
+	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 }
-$smarty->assign('FORM_END', '</form>');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/gv_send.html');
+$vamTemplate->assign('FORM_END', '</form>');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/gv_send.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

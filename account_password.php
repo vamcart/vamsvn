@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -79,31 +79,31 @@ $breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_PASSWORD, vam_href_link(FILENAME_ACCOUNT
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($messageStack->size('account_password') > 0)
-	$smarty->assign('error', $messageStack->output('account_password'));
+	$vamTemplate->assign('error', $messageStack->output('account_password'));
 
-$smarty->assign('FORM_ACTION', vam_draw_form('account_password', vam_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'password_current,password_new,password_confirmation', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('account_password', vam_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'password_current,password_new,password_confirmation', 'id="required"'));
 
-$smarty->assign('INPUT_ACTUAL', vam_draw_password_fieldNote(array ('name' => 'password_current', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CURRENT_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CURRENT_TEXT.'</span>' : '')), '', 'id="password_current"'));
-$smarty->assign('ENTRY_PASSWORD_CURRENT_ERROR', ENTRY_PASSWORD_CURRENT_ERROR);
-$smarty->assign('INPUT_NEW', vam_draw_password_fieldNote(array ('name' => 'password_new', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_NEW_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_NEW_TEXT.'</span>' : '')), '', 'id="password_new"'));
-$smarty->assign('ENTRY_PASSWORD_NEW_ERROR', ENTRY_PASSWORD_NEW_ERROR);
-$smarty->assign('INPUT_CONFIRM', vam_draw_password_fieldNote(array ('name' => 'password_confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="password_confirmation"'));
-$smarty->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+$vamTemplate->assign('INPUT_ACTUAL', vam_draw_password_fieldNote(array ('name' => 'password_current', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CURRENT_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CURRENT_TEXT.'</span>' : '')), '', 'id="password_current"'));
+$vamTemplate->assign('ENTRY_PASSWORD_CURRENT_ERROR', ENTRY_PASSWORD_CURRENT_ERROR);
+$vamTemplate->assign('INPUT_NEW', vam_draw_password_fieldNote(array ('name' => 'password_new', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_NEW_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_NEW_TEXT.'</span>' : '')), '', 'id="password_new"'));
+$vamTemplate->assign('ENTRY_PASSWORD_NEW_ERROR', ENTRY_PASSWORD_NEW_ERROR);
+$vamTemplate->assign('INPUT_CONFIRM', vam_draw_password_fieldNote(array ('name' => 'password_confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="password_confirmation"'));
+$vamTemplate->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
 
-$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('FORM_END', '</form>');
 
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('language', $_SESSION['language']);
 
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/account_password.html');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account_password.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>
