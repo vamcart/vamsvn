@@ -37,7 +37,7 @@ require_once (DIR_FS_INC.'vam_calculate_tax.inc.php');
 require_once (DIR_FS_INC.'vam_address_label.inc.php');
 require_once (DIR_FS_INC.'changedatain.inc.php');
 
-// initialize smarty
+// initialize templates
 $vamTemplate = new vamTemplate;
 
 // if the customer is not logged on, redirect them to the login page

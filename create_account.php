@@ -272,7 +272,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$module_content = array ();
 		$module_content = array ('MAIL_NAME' => $name, 'MAIL_REPLY_ADDRESS' => EMAIL_SUPPORT_REPLY_ADDRESS, 'MAIL_GENDER' => $gender);
 
-		// assign data to smarty
+		// assign data to template
 		$vamTemplate->assign('language', $_SESSION['language']);
 		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 		$vamTemplate->assign('content', $module_content);
