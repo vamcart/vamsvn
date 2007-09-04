@@ -16,8 +16,8 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $box_content='';
 
 
@@ -27,29 +27,29 @@ $box_content='';
 
       $image='';
       if (vam_not_null($manufacturer['manufacturers_image'])) $image=DIR_WS_IMAGES . $manufacturer['manufacturers_image'];
-      $box_smarty->assign('IMAGE',$image);
-      $box_smarty->assign('NAME',$manufacturer['manufacturers_name']);
+      $box->assign('IMAGE',$image);
+      $box->assign('NAME',$manufacturer['manufacturers_name']);
       
-        if ($manufacturer['manufacturers_url']!='')$box_smarty->assign('URL','<a href="' . vam_href_link(FILENAME_REDIRECT, 'action=manufacturer&'.vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '" onclick="window.open(this.href); return false;">' . sprintf(BOX_MANUFACTURER_INFO_HOMEPAGE, $manufacturer['manufacturers_name']) . '</a>');
-        $box_smarty->assign('LINK_MORE','<a href="' . vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '">' . BOX_MANUFACTURER_INFO_OTHER_PRODUCTS . '</a>');
+        if ($manufacturer['manufacturers_url']!='')$box->assign('URL','<a href="' . vam_href_link(FILENAME_REDIRECT, 'action=manufacturer&'.vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '" onclick="window.open(this.href); return false;">' . sprintf(BOX_MANUFACTURER_INFO_HOMEPAGE, $manufacturer['manufacturers_name']) . '</a>');
+        $box->assign('LINK_MORE','<a href="' . vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '">' . BOX_MANUFACTURER_INFO_OTHER_PRODUCTS . '</a>');
 
     }
   
 
 
 
- 	$box_smarty->assign('language', $_SESSION['language']);
+ 	$box->assign('language', $_SESSION['language']);
     	  // set cache ID
    if (!CacheCheck()) {
-  $box_smarty->caching = 0;
-  $box_manufacturers_info= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers_info.html');
+  $box->caching = 0;
+  $box_manufacturers_info= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers_info.html');
   } else {
-  $box_smarty->caching = 1;	
-  $box_smarty->cache_lifetime=CACHE_LIFETIME;
-  $box_smarty->cache_modified_check=CACHE_CHECK;
+  $box->caching = 1;	
+  $box->cache_lifetime=CACHE_LIFETIME;
+  $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$product->data['products_id'];
-  $box_manufacturers_info= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers_info.html',$cache_id);
+  $box_manufacturers_info= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers_info.html',$cache_id);
   }
-    if ($manufacturer['manufacturers_name']!='')  $smarty->assign('box_MANUFACTURERS_INFO',$box_manufacturers_info);
+    if ($manufacturer['manufacturers_name']!='')  $vamTemplate->assign('box_MANUFACTURERS_INFO',$box_manufacturers_info);
     
 ?>

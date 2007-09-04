@@ -18,10 +18,10 @@
    ---------------------------------------------------------------------------------------*/
 
 // reset var
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $box_content='';
 $flag='';
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
   // include needed functions
   require_once(DIR_FS_INC . 'vam_image_button.inc.php');
@@ -58,11 +58,11 @@ $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
                                          $admin_image . '<br />' .$admin_link;
 
     if ($flag==true) define('SEARCH_ENGINE_FRIENDLY_URLS',true);
-    $box_smarty->assign('BOX_CONTENT', $box_content);
+    $box->assign('BOX_CONTENT', $box_content);
 
-    $box_smarty->caching = 0;
-    $box_smarty->assign('language', $_SESSION['language']);
-    $box_admin= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_admin.html');
-    $smarty->assign('box_ADMIN',$box_admin);
+    $box->caching = 0;
+    $box->assign('language', $_SESSION['language']);
+    $box_admin= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_admin.html');
+    $vamTemplate->assign('box_ADMIN',$box_admin);
 
 ?>

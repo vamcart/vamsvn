@@ -45,27 +45,27 @@
   if ($count_cur > 1 ) {
 
   // reset var
-  $box_smarty = new vamTemplate;
-  $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+  $box = new vamTemplate;
+  $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $box_content='';
   $box_content=vam_draw_form('currencies', vam_href_link(basename($PHP_SELF), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onchange="this.form.submit();"') . $hidden_get_variables . vam_hide_session_id().'</form>';
 
 
-  $box_smarty->assign('BOX_CONTENT', $box_content);
-  $box_smarty->assign('language', $_SESSION['language']);
+  $box->assign('BOX_CONTENT', $box_content);
+  $box->assign('language', $_SESSION['language']);
     	  // set cache ID
    if (!CacheCheck()) {
-  $box_smarty->caching = 0;
-  $box_currencies= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html');
+  $box->caching = 0;
+  $box_currencies= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html');
   } else {
-  $box_smarty->caching = 1;	
-  $box_smarty->cache_lifetime=CACHE_LIFETIME;
-  $box_smarty->cache_modified_check=CACHE_CHECK;
+  $box->caching = 1;	
+  $box->cache_lifetime=CACHE_LIFETIME;
+  $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$_SESSION['currency'];
-  $box_currencies= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html',$cache_id);
+  $box_currencies= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_currencies.html',$cache_id);
   }
 
-  $smarty->assign('box_CURRENCIES',$box_currencies);
+  $vamTemplate->assign('box_CURRENCIES',$box_currencies);
 
   }
  ?>

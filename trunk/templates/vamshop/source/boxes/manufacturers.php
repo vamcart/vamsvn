@@ -16,24 +16,24 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $box_content = '';
 
-$box_smarty->assign('language', $_SESSION['language']);
+$box->assign('language', $_SESSION['language']);
 // set cache ID
 if (!CacheCheck()) {
 	$cache = false;
-	$box_smarty->caching = 0;
+	$box->caching = 0;
 } else {
 	$cache = true;
-	$box_smarty->caching = 1;
-	$box_smarty->cache_lifetime = CACHE_LIFETIME;
-	$box_smarty->cache_modified_check = CACHE_CHECK;
+	$box->caching = 1;
+	$box->cache_lifetime = CACHE_LIFETIME;
+	$box->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'].(int) $_GET['manufacturers_id'];
 }
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
-	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
+	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 	// include needed funtions
 	require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
@@ -70,15 +70,15 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $c
 	}
 
 	if ($box_content != '')
-		$box_smarty->assign('BOX_CONTENT', $box_content);
+		$box->assign('BOX_CONTENT', $box_content);
 
 }
 // set cache ID
 if (!$cache) {
-	$box_manufacturers = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html');
+	$box_manufacturers = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html');
 } else {
-	$box_manufacturers = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id);
+	$box_manufacturers = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id);
 }
 
-$smarty->assign('box_MANUFACTURERS', $box_manufacturers);
+$vamTemplate->assign('box_MANUFACTURERS', $box_manufacturers);
 ?>

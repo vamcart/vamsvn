@@ -16,8 +16,8 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
 $box_content='';
   // include needed functions
   require_once(DIR_FS_INC . 'vam_random_select.inc.php');
@@ -56,21 +56,21 @@ $box_content = '<div align="center"><a href="' . vam_href_link(FILENAME_PRODUCT_
    }
 
   if ($box_content!='') {
-  $box_smarty->assign('REVIEWS_LINK',vam_href_link(FILENAME_REVIEWS)); 
-  $box_smarty->assign('BOX_CONTENT', $box_content);
-  $box_smarty->assign('language', $_SESSION['language']);
+  $box->assign('REVIEWS_LINK',vam_href_link(FILENAME_REVIEWS)); 
+  $box->assign('BOX_CONTENT', $box_content);
+  $box->assign('language', $_SESSION['language']);
   // set cache ID
  if (!CacheCheck()) {
-  $box_smarty->caching = 0;
-  $box_reviews= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_reviews.html');
+  $box->caching = 0;
+  $box_reviews= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_reviews.html');
   } else {
-  $box_smarty->caching = 1;
-  $box_smarty->cache_lifetime=CACHE_LIFETIME;
-  $box_smarty->cache_modified_check=CACHE_CHECK;
+  $box->caching = 1;
+  $box->cache_lifetime=CACHE_LIFETIME;
+  $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$random_product['reviews_id'].$product->data['products_id'].$_SESSION['language'];
-  $box_reviews= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_reviews.html',$cache_id);
+  $box_reviews= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_reviews.html',$cache_id);
   }
-  $smarty->assign('box_REVIEWS',$box_reviews);
+  $vamTemplate->assign('box_REVIEWS',$box_reviews);
 
   } 
 

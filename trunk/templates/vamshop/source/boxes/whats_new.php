@@ -21,8 +21,8 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
 // include needed functions
 require_once (DIR_FS_INC.'vam_random_select.inc.php');
@@ -62,21 +62,21 @@ $random_product['products_name'] = vam_get_products_name($random_product['produc
 
 if ($random_product['products_name'] != '') {
 
-	$box_smarty->assign('box_content',$product->buildDataArray($random_product));
-	$box_smarty->assign('LINK_NEW_PRODUCTS',vam_href_link(FILENAME_PRODUCTS_NEW));
-	$box_smarty->assign('language', $_SESSION['language']);
+	$box->assign('box_content',$product->buildDataArray($random_product));
+	$box->assign('LINK_NEW_PRODUCTS',vam_href_link(FILENAME_PRODUCTS_NEW));
+	$box->assign('language', $_SESSION['language']);
 	// set cache ID
 	 if (!CacheCheck()) {
-		$box_smarty->caching = 0;
-		$box_whats_new = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_whatsnew.html');
+		$box->caching = 0;
+		$box_whats_new = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_whatsnew.html');
 	} else {
-		$box_smarty->caching = 1;
-		$box_smarty->cache_lifetime = CACHE_LIFETIME;
-		$box_smarty->cache_modified_check = CACHE_CHECK;
+		$box->caching = 1;
+		$box->cache_lifetime = CACHE_LIFETIME;
+		$box->cache_modified_check = CACHE_CHECK;
 		$cache_id = $_SESSION['language'].$random_product['products_id'].$_SESSION['customers_status']['customers_status_name'];
-		$box_whats_new = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_whatsnew.html', $cache_id);
+		$box_whats_new = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_whatsnew.html', $cache_id);
 	}
 
-	$smarty->assign('box_WHATSNEW', $box_whats_new);
+	$vamTemplate->assign('box_WHATSNEW', $box_whats_new);
 }
 ?>

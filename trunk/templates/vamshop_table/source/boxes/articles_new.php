@@ -11,8 +11,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 $sql = "select a.articles_id, ad.articles_name, ad.articles_description from " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on ad.articles_id = a.articles_id where a.articles_status = '1' ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "";
 
@@ -31,18 +31,18 @@ while ($articles = vam_db_fetch_array($articles_query,true)) {
 }
 
 if (sizeof($articles_content) > 0) {
-    $box_smarty->assign('language', $_SESSION['language']);
-    $box_smarty->assign('articles_content',$articles_content);
+    $box->assign('language', $_SESSION['language']);
+    $box->assign('articles_content',$articles_content);
     // set cache ID
     if (USE_CACHE=='false') {
-        $box_smarty->caching = 0;
-        $articiles_new= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_articles_new.html');
+        $box->caching = 0;
+        $articiles_new= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles_new.html');
     } else {
-        $box_smarty->caching = 1;
-        $box_smarty->cache_lifetime=CACHE_LIFETIME;
-        $box_smarty->cache_modified_check=CACHE_CHECK;
-        $articiles_new = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_articles_new.html',$cache_id);
+        $box->caching = 1;
+        $box->cache_lifetime=CACHE_LIFETIME;
+        $box->cache_modified_check=CACHE_CHECK;
+        $articiles_new = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles_new.html',$cache_id);
     }
-    $smarty->assign('box_ARTICLESNEW',$articiles_new);
+    $vamTemplate->assign('box_ARTICLESNEW',$articiles_new);
 }
 ?>

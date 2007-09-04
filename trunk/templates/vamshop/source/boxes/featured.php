@@ -16,8 +16,8 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
 // include needed functions
 require_once (DIR_FS_INC.'vam_random_select.inc.php');
@@ -53,23 +53,23 @@ if ($random_product = vam_random_select("select
                                            desc limit ".MAX_RANDOM_SELECT_FEATURED)) {
 
 
-$box_smarty->assign('box_content',$product->buildDataArray($random_product));
-$box_smarty->assign('FEATURED_LINK', vam_href_link(FILENAME_FEATURED));
+$box->assign('box_content',$product->buildDataArray($random_product));
+$box->assign('FEATURED_LINK', vam_href_link(FILENAME_FEATURED));
 
-$box_smarty->assign('language', $_SESSION['language']);
+$box->assign('language', $_SESSION['language']);
 if ($random_product["products_id"] != '') {
 	// set cache ID
 	 if (!CacheCheck()) {
-		$box_smarty->caching = 0;
-		$box_featured = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_featured.html');
+		$box->caching = 0;
+		$box_featured = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_featured.html');
 	} else {
-		$box_smarty->caching = 1;
-		$box_smarty->cache_lifetime = CACHE_LIFETIME;
-		$box_smarty->cache_modified_check = CACHE_CHECK;
+		$box->caching = 1;
+		$box->cache_lifetime = CACHE_LIFETIME;
+		$box->cache_modified_check = CACHE_CHECK;
 		$cache_id = $_SESSION['language'].$random_product["products_id"].$_SESSION['customers_status']['customers_status_name'];
-		$box_featured = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_featured.html', $cache_id);
+		$box_featured = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_featured.html', $cache_id);
 	}
-	$smarty->assign('box_FEATURED', $box_featured);
+	$vamTemplate->assign('box_FEATURED', $box_featured);
 }
 }
 ?>

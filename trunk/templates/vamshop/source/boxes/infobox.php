@@ -21,8 +21,8 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $box_content='';
 
 
@@ -43,20 +43,20 @@ $box_content='';
 
 
 
-    $box_smarty->assign('BOX_CONTENT', $loginboxcontent);
-	$box_smarty->assign('language', $_SESSION['language']);
+    $box->assign('BOX_CONTENT', $loginboxcontent);
+	$box->assign('language', $_SESSION['language']);
        	  // set cache ID
   if (!CacheCheck()) {
-  $box_smarty->caching = 0;
-  $box_infobox= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_infobox.html');
+  $box->caching = 0;
+  $box_infobox= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_infobox.html');
   } else {
-  $box_smarty->caching = 1;
-  $box_smarty->cache_lifetime=CACHE_LIFETIME;
-  $box_smarty->cache_modified_check=CACHE_CHECK;
+  $box->caching = 1;
+  $box->cache_lifetime=CACHE_LIFETIME;
+  $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
-  $box_infobox= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_infobox.html',$cache_id);
+  $box_infobox= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_infobox.html',$cache_id);
   }
     
-    $smarty->assign('box_INFOBOX',$box_infobox);
+    $vamTemplate->assign('box_INFOBOX',$box_infobox);
 
     ?>
