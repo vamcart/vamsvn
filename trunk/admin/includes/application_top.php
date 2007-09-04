@@ -517,10 +517,6 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     vam_redirect(vam_href_link(FILENAME_LOGIN));
   }
 
-
-    // Include Template Engine
-  require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.14/Smarty.class.php');
-
   define('FILENAME_ARTICLES', 'articles.php');
   define('FILENAME_ARTICLES_CONFIG', 'articles_config.php');
   define('FILENAME_AUTHORS', 'authors.php');
@@ -553,5 +549,11 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
     require('includes/local_modules.php');
     define('DIR_FS_CIP', DIR_FS_ADMIN . 'contributions');
+
+require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_data.php');
+require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_form.php');
+require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_localization.php');
+require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_mail.php');
+require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_template.php');
   
 ?>
