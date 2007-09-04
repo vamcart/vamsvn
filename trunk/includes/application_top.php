@@ -616,10 +616,10 @@ vam_count_cart();
 
     require('includes/local_modules.php');
 
-require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_data.php');
-require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_form.php');
-require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_localization.php');
-require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_mail.php');
-require_once(DIR_FS_CATALOG . DIR_WS_CLASSES.'vam_template.php');
+require_once(DIR_WS_CLASSES.'vam_data.php');
+require_once(DIR_WS_CLASSES.'vam_form.php');
+require_once(DIR_WS_CLASSES.'vam_localization.php');
+require_once(DIR_WS_CLASSES.'vam_mail.php');
+require_once(DIR_WS_CLASSES.'vam_template.php');
 
 ?>
