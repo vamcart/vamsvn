@@ -9,13 +9,13 @@ class vamTemplate extends Smarty {
 
         $this->Smarty();
 
-//        $this->template_dir = HOME_DIR . '/templates/test/';
-//        $this->compile_dir = HOME_DIR . '/templates_c/';
-//        $this->config_dir   = HOME_DIR . '/configs/';
-//        $this->cache_dir    = HOME_DIR . '/cache/';
+        $this->template_dir = DIR_FS_CATALOG . 'templates';
+        $this->compile_dir = DIR_FS_CATALOG . 'templates_c';
+        $this->config_dir   = DIR_FS_CATALOG . 'lang';
+        $this->cache_dir    = DIR_FS_CATALOG . 'cache';
         $this->plugins_dir = array(
-        DIR_WS_INCLUDES . 'external/smarty/plugins',
-        DIR_WS_INCLUDES . 'external/smarty/plugins_vam',
+        DIR_FS_CATALOG . 'includes/external/smarty/plugins',
+        DIR_FS_CATALOG . 'includes/external/smarty/plugins_vam',
         );
 
         $this->assign('app_name', 'vamTemplate');
