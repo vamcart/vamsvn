@@ -22,24 +22,24 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 // reset var
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $box_content = '';
 
-	$box_smarty->assign('language', $_SESSION['language']);
+	$box->assign('language', $_SESSION['language']);
 	// set cache ID
 	if (!CacheCheck()) {
 	 	$cache=false;
-		$box_smarty->caching = 0;
+		$box->caching = 0;
 	} else {
 		$cache=true;
-		$box_smarty->caching = 1;
-		$box_smarty->cache_lifetime = CACHE_LIFETIME;
-		$box_smarty->cache_modified_check = CACHE_CHECK;
+		$box->caching = 1;
+		$box->cache_lifetime = CACHE_LIFETIME;
+		$box->cache_modified_check = CACHE_CHECK;
 		$cache_id = $_SESSION['language'].$current_category_id;
 	}
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache) {
-	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache) {
+	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
 require_once (DIR_FS_INC.'vam_row_number_format.inc.php');
@@ -104,19 +104,19 @@ if (vam_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
 		
 	}
 
-	$box_smarty->assign('box_content', $box_content);
+	$box->assign('box_content', $box_content);
 }
 
 	// set cache ID
 	 if (!$cache) {
 	 	if ($box_content!='') {
-		$box_best_sellers = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html');
+		$box_best_sellers = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html');
 	 	}
 	} else {
-		$box_best_sellers = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id);
+		$box_best_sellers = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id);
 	}
 
-	$smarty->assign('box_BESTSELLERS', $box_best_sellers);
+	$vamTemplate->assign('box_BESTSELLERS', $box_best_sellers);
 
 }
 ?>

@@ -16,8 +16,8 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
 $box_content='';
   // include needed functions
   require_once(DIR_FS_INC . 'vam_get_all_get_params.inc.php');
@@ -50,11 +50,11 @@ $box_content='';
   }
 
 
-    $box_smarty->assign('BOX_CONTENT', $customer_orders_string);
+    $box->assign('BOX_CONTENT', $customer_orders_string);
 
-    $box_smarty->caching = 0;
-    $box_smarty->assign('language', $_SESSION['language']);
-    $box_order_history= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_order_history.html');
-    $smarty->assign('box_HISTORY',$box_order_history);
+    $box->caching = 0;
+    $box->assign('language', $_SESSION['language']);
+    $box_order_history= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_order_history.html');
+    $vamTemplate->assign('box_HISTORY',$box_order_history);
     
   ?>

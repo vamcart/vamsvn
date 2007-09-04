@@ -38,19 +38,19 @@
   // dont show box if there's only 1 language
   if ($count_lng > 1 ) {
 
- $box_smarty = new vamTemplate;
- $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
+ $box = new vamTemplate;
+ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
  $box_content='';
- $box_smarty->assign('BOX_CONTENT', $languages_string);
- $box_smarty->assign('language', $_SESSION['language']);
+ $box->assign('BOX_CONTENT', $languages_string);
+ $box->assign('language', $_SESSION['language']);
 
 
     	  // set cache ID
 
-  $box_smarty->caching = 0;
-  $box_languages= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_languages.html');
+  $box->caching = 0;
+  $box_languages= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_languages.html');
   	
 
-    $smarty->assign('box_LANGUAGES',$box_languages);
+    $vamTemplate->assign('box_LANGUAGES',$box_languages);
   }
    ?>

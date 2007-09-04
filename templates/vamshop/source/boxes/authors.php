@@ -19,26 +19,26 @@
 
   require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $box_content='';
 $flag='';
 
-$box_smarty->assign('language', $_SESSION['language']);
+$box->assign('language', $_SESSION['language']);
 // set cache ID
 if (!CacheCheck()) {
 	$cache=false;
-	$box_smarty->caching = 0;
+	$box->caching = 0;
 } else {
 	$cache=true;
-	$box_smarty->caching = 1;
-	$box_smarty->cache_lifetime = CACHE_LIFETIME;
-	$box_smarty->cache_modified_check = CACHE_CHECK;
+	$box->caching = 1;
+	$box->cache_lifetime = CACHE_LIFETIME;
+	$box->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
 }
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$cache) {
+if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$cache) {
 
-	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
   $authors_query = "select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name";
   $authors_query = vamDBquery($authors_query);
@@ -84,16 +84,16 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_i
 }
 
   
-    $box_smarty->assign('BOX_CONTENT', $content_string);
+    $box->assign('BOX_CONTENT', $content_string);
 
 }
 
 if (!$cache) {
-	$box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
+	$box_authors = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html');
 } else {
-	$box_authors = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id);
+	$box_authors = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id);
 }
 
-   $smarty->assign('box_AUTHORS',$box_authors);
+   $vamTemplate->assign('box_AUTHORS',$box_authors);
 
 ?>

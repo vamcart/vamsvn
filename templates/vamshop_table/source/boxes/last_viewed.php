@@ -14,8 +14,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$box_smarty = new vamTemplate;
-$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$box = new vamTemplate;
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $box_content='';
 
 if (isset ($_SESSION[tracking][products_history][0])) {
@@ -73,27 +73,27 @@ $random_last_viewed = vam_rand(0,$max);
 
 if ($random_product['products_name']!='') {
 
-    $box_smarty->assign('box_content',$product->buildDataArray($random_product));
+    $box->assign('box_content',$product->buildDataArray($random_product));
     
-    $box_smarty->assign('MY_PAGE', 'TEXT_MY_PAGE');
-    $box_smarty->assign('WATCH_CATGORY', 'TEXT_WATCH_CATEGORY');
-    $box_smarty->assign('MY_PERSONAL_PAGE',vam_href_link(FILENAME_ACCOUNT));
-	$box_smarty->assign('CATEGORY_LINK',vam_href_link(FILENAME_DEFAULT, vam_category_link($random_product['categories_id'],$random_product['categories_name'])));
-    $box_smarty->assign('CATEGORY_NAME',$random_product['categories_name']);
-    $box_smarty->assign('language', $_SESSION['language']);
+    $box->assign('MY_PAGE', 'TEXT_MY_PAGE');
+    $box->assign('WATCH_CATGORY', 'TEXT_WATCH_CATEGORY');
+    $box->assign('MY_PERSONAL_PAGE',vam_href_link(FILENAME_ACCOUNT));
+	$box->assign('CATEGORY_LINK',vam_href_link(FILENAME_DEFAULT, vam_category_link($random_product['categories_id'],$random_product['categories_name'])));
+    $box->assign('CATEGORY_NAME',$random_product['categories_name']);
+    $box->assign('language', $_SESSION['language']);
 
        	  // set cache ID
   if (!CacheCheck()) {
-  $box_smarty->caching = 0;
-  $box_last_viewed= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html');
+  $box->caching = 0;
+  $box_last_viewed= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html');
   } else {
-  $box_smarty->caching = 1;	
-  $box_smarty->cache_lifetime=CACHE_LIFETIME;
-  $box_smarty->cache_modified_check=CACHE_CHECK;
+  $box->caching = 1;	
+  $box->cache_lifetime=CACHE_LIFETIME;
+  $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$random_product['products_id'].$_SESSION['customers_status']['customers_status_name'];
-  $box_last_viewed= $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html',$cache_id);
+  $box_last_viewed= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_last_viewed.html',$cache_id);
   }
-    $smarty->assign('box_LAST_VIEWED',$box_last_viewed);
+    $vamTemplate->assign('box_LAST_VIEWED',$box_last_viewed);
  }
 }
     ?>

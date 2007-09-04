@@ -17,25 +17,25 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $content_string = '';
 
-$box_smarty->assign('language', $_SESSION['language']);
+$box->assign('language', $_SESSION['language']);
 // set cache ID
 if (!CacheCheck()) {
 	$cache=false;
-	$box_smarty->caching = 0;
+	$box->caching = 0;
 } else {
 	$cache=true;
-	$box_smarty->caching = 1;
-	$box_smarty->cache_lifetime = CACHE_LIFETIME;
-	$box_smarty->cache_modified_check = CACHE_CHECK;
+	$box->caching = 1;
+	$box->cache_lifetime = CACHE_LIFETIME;
+	$box->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$tPath;
 }
 
-if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !$cache) {
+if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !$cache) {
 
-	$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
   function vam_show_topic($counter) {
     global $tree, $topics_string, $tPath_array;
@@ -207,16 +207,16 @@ if (!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_
 
   $box_content = $new_articles_string . $all_articles_string . $topics_string;
 
-    $box_smarty->assign('BOX_CONTENT', $box_content);
+    $box->assign('BOX_CONTENT', $box_content);
 
 }
 
 if (!$cache) {
-	$box_articles = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html');
+	$box_articles = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html');
 } else {
-	$box_articles = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id);
+	$box_articles = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id);
 }
 
-    $smarty->assign('box_ARTICLES',$box_articles);
+    $vamTemplate->assign('box_ARTICLES',$box_articles);
 
 ?>

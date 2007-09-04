@@ -59,5 +59,5 @@
     include(DIR_WS_BOXES . 'currencies.php');
   }
 
-$smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 ?>

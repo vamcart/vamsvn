@@ -23,25 +23,25 @@
    ---------------------------------------------------------------------------------------*/
 // reset var
 $start = microtime();
-$box_smarty = new vamTemplate;
+$box = new vamTemplate;
 $box_content = '';
 
-$box_smarty->assign('language', $_SESSION['language']);
+$box->assign('language', $_SESSION['language']);
 // set cache ID
 if (!CacheCheck()) {
 	$cache=false;
-	$box_smarty->caching = 0;
+	$box->caching = 0;
 } else {
 	$cache=true;
-	$box_smarty->caching = 1;
-	$box_smarty->cache_lifetime = CACHE_LIFETIME;
-	$box_smarty->cache_modified_check = CACHE_CHECK;
+	$box->caching = 1;
+	$box->cache_lifetime = CACHE_LIFETIME;
+	$box->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$cPath;
 }
 
-if(!$box_smarty->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id) || !$cache){
+if(!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id) || !$cache){
 
-$box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
 require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/vam_show_category.inc.php');
@@ -117,16 +117,16 @@ if ($cPath) {
 
 vam_show_category($first_element);
 
-$box_smarty->assign('BOX_CONTENT', $categories_string);
+$box->assign('BOX_CONTENT', $categories_string);
 
 }
 
 // set cache ID
 if (!$cache) {
-	$box_categories = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html');
+	$box_categories = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html');
 } else {
-	$box_categories = $box_smarty->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id);
+	$box_categories = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id);
 }
 
-$smarty->assign('box_CATEGORIES', $box_categories);
+$vamTemplate->assign('box_CATEGORIES', $box_categories);
 ?>
