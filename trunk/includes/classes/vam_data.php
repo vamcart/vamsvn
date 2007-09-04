@@ -1,6 +1,6 @@
 <?php
 
-require_once (DIR_WS_INCLUDES . 'external/adodb/adodb.inc.php');
+require_once (DIR_FS_CATALOG.'includes/external/adodb/adodb.inc.php');
 
 //$dbdriver = 'mysql';
 //$charset = 'utf-8';

@@ -1,6 +1,6 @@
 <?php
 
-require_once (DIR_WS_INCLUDES . 'external/smarty/Smarty.class.php');
+require_once (DIR_FS_CATALOG.'includes/external/smarty/Smarty.class.php');
 
 class vamTemplate extends Smarty {
 
@@ -14,8 +14,8 @@ class vamTemplate extends Smarty {
         $this->config_dir   = DIR_FS_CATALOG . 'lang';
         $this->cache_dir    = DIR_FS_CATALOG . 'cache';
         $this->plugins_dir = array(
-        DIR_WS_INCLUDES . 'external/smarty/plugins',
-        DIR_WS_INCLUDES . 'external/smarty/plugins_vam',
+        DIR_FS_CATALOG.'includes/external/smarty/plugins',
+        DIR_FS_CATALOG.'includes/external/smarty/plugins_vam',
         );
 
         $this->assign('app_name', 'vamTemplate');

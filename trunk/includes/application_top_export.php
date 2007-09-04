@@ -95,6 +95,6 @@
     }
   }
 
-require_once(DIR_WS_CLASSES.'vam_template.php');
+require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
 
 ?>

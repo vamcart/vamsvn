@@ -1,6 +1,6 @@
 <?php
 
-require_once (DIR_WS_INCLUDES . 'external/form/class.php');
+require_once (DIR_FS_CATALOG.'includes/external/form/class.php');
 
 class vamForm extends form {
 
