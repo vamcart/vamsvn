@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -48,19 +48,19 @@ require (DIR_WS_INCLUDES.'header.php');
 
 // Delivery Info
 if ($order->delivery != false) {
-	$smarty->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
-	if ($order->info['shipping_method']) { $smarty->assign('SHIPPING_METHOD', $order->info['shipping_method']); }
+	$vamTemplate->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
+	if ($order->info['shipping_method']) { $vamTemplate->assign('SHIPPING_METHOD', $order->info['shipping_method']); }
 }
 
 $order_total = $order->getTotalData((int)$_GET['order_id']); 
 
-$smarty->assign('order_data', $order->getOrderData((int)$_GET['order_id']));
-$smarty->assign('order_total', $order_total['data']);
+$vamTemplate->assign('order_data', $order->getOrderData((int)$_GET['order_id']));
+$vamTemplate->assign('order_total', $order_total['data']);
 
 // Payment Method
 if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
 	include (DIR_WS_LANGUAGES.'/'.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
-	$smarty->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_TITLE));
+	$vamTemplate->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_TITLE));
 }
 
 
@@ -70,7 +70,7 @@ $statuses_query = vam_db_query("select os.orders_status_name, osh.date_added, os
 while ($statuses = vam_db_fetch_array($statuses_query)) {
 	$history_block .= '<p>' . vam_date_short($statuses['date_added'])."\n".$statuses['orders_status_name']."\n". (empty ($statuses['comments']) ? '&nbsp;' : nl2br(htmlspecialchars($statuses['comments'])))."\n".'</p>';
 }
-$smarty->assign('HISTORY_BLOCK', $history_block);
+$vamTemplate->assign('HISTORY_BLOCK', $history_block);
 
 // Download-Products
 if (DOWNLOAD_ENABLED == 'true') include (DIR_WS_MODULES.'downloads.php');
@@ -78,32 +78,32 @@ if (DOWNLOAD_ENABLED == 'true') include (DIR_WS_MODULES.'downloads.php');
 // Stuff
 
 if ($order->info['payment_method'] == 'schet') {
-$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 }
 
-$smarty->assign('ORDER_NUMBER', (int)$_GET['order_id']);
-$smarty->assign('ORDER_DATE', vam_date_long($order->info['date_purchased']));
-$smarty->assign('ORDER_STATUS', $order->info['orders_status']);
-$smarty->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
-$smarty->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
-$smarty->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
-$smarty->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
-$smarty->assign('BUTTON_PRINT', '<a style="cursor:pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')"><img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" alt="' . IMAGE_BUTTON_PRINT . '" /></a>');
+$vamTemplate->assign('ORDER_NUMBER', (int)$_GET['order_id']);
+$vamTemplate->assign('ORDER_DATE', vam_date_long($order->info['date_purchased']));
+$vamTemplate->assign('ORDER_STATUS', $order->info['orders_status']);
+$vamTemplate->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
+$vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
+$vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
+$vamTemplate->assign('BUTTON_PRINT', '<a style="cursor:pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')"><img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" alt="' . IMAGE_BUTTON_PRINT . '" /></a>');
 $from_history = eregi("page=", vam_get_all_get_params()); // referer from account_history yes/no
 $back_to = $from_history ? FILENAME_ACCOUNT_HISTORY : FILENAME_ACCOUNT; // if from account_history => return to account_history
-$smarty->assign('BUTTON_BACK','<a href="' . vam_href_link($back_to,vam_get_all_get_params(array ('order_id')), 'SSL') . '">' . vam_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '</a>');
+$vamTemplate->assign('BUTTON_BACK','<a href="' . vam_href_link($back_to,vam_get_all_get_params(array ('order_id')), 'SSL') . '">' . vam_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '</a>');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/account_history_info.html');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
-if (!defined(RM)) { $smarty->load_filter('output', 'note'); }
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account_history_info.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
+if (!defined(RM)) { $vamTemplate->load_filter('output', 'note'); }
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

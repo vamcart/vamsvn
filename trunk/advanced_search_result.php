@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -233,10 +233,10 @@ if ($error == 1 && $keyerror != 1) {
 	$listing_sql = $select_str.$from_str.$where_str;
 	require (DIR_WS_MODULES.FILENAME_PRODUCT_LISTING);
 }
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

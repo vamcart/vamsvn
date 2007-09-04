@@ -17,7 +17,7 @@
   include( 'includes/application_top.php');
 
   // create smarty elements
-  $smarty = new vamTemplate;
+  $vamTemplate = new vamTemplate;
 
   // include boxes
   require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php');
@@ -64,11 +64,11 @@
       $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
       $query = vam_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
-          $smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
+          $vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
       }
-      $smarty->assign('ONE', false);
+      $vamTemplate->assign('ONE', false);
   } else {
-      $smarty->assign('ONE', true);
+      $vamTemplate->assign('ONE', true);
   }
 
   if (vam_db_num_rows($query) > 0) {
@@ -87,20 +87,20 @@
               );
       }
   } else {
-      $smarty->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
+      $vamTemplate->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
   }
 
-  $smarty->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
-  $smarty->assign('language', $_SESSION['language']);
-  $smarty->caching = 0;
-  $smarty->assign('module_content',$module_content);
-  $main_content=$smarty->fetch(CURRENT_TEMPLATE . '/module/latest_news.html');
+  $vamTemplate->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
+  $vamTemplate->assign('language', $_SESSION['language']);
+  $vamTemplate->caching = 0;
+  $vamTemplate->assign('module_content',$module_content);
+  $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/latest_news.html');
 
-  $smarty->assign('main_content',$main_content);
-  $smarty->assign('language', $_SESSION['language']);
-  $smarty->caching = 0;
+  $vamTemplate->assign('main_content',$main_content);
+  $vamTemplate->assign('language', $_SESSION['language']);
+  $vamTemplate->caching = 0;
   if (!defined(RM))
-      $smarty->load_filter('output', 'note');
-  $smarty->display(CURRENT_TEMPLATE.'/index.html');
+      $vamTemplate->load_filter('output', 'note');
+  $vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
   include ('includes/application_bottom.php');
 ?>

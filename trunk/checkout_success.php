@@ -31,7 +31,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -58,15 +58,15 @@ $orders = vam_db_fetch_array($orders_query);
 $last_order = $orders['orders_id'];
 $order_status = $orders['orders_status'];
 
-$smarty->assign('FORM_ACTION', vam_draw_form('order', vam_href_link(FILENAME_CHECKOUT_SUCCESS, 'action=update', 'SSL')));
-$smarty->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-$smarty->assign('BUTTON_PRINT', '<img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('order', vam_href_link(FILENAME_CHECKOUT_SUCCESS, 'action=update', 'SSL')));
+$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_PRINT', '<img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('FORM_END', '</form>');
 // GV Code Start
 $gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id='".$_SESSION['customer_id']."'");
 if ($gv_result = vam_db_fetch_array($gv_query)) {
 	if ($gv_result['amount'] > 0) {
-		$smarty->assign('GV_SEND_LINK', vam_href_link(FILENAME_GV_SEND));
+		$vamTemplate->assign('GV_SEND_LINK', vam_href_link(FILENAME_GV_SEND));
 	}
 }
 // GV Code End
@@ -75,18 +75,18 @@ if ($gv_result = vam_db_fetch_array($gv_query)) {
 	$order = new order($orders['orders_id']);
 
 if ($order->info['payment_method'] == 'schet') {
-$smarty->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$smarty->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 }
 
 // Google Conversion tracking
 if (GOOGLE_CONVERSION == 'true') {
 
-	$smarty->assign('google_tracking', 'true');
-	$smarty->assign('tracking_code', '
+	$vamTemplate->assign('google_tracking', 'true');
+	$vamTemplate->assign('tracking_code', '
 		<noscript>
 		<a href="http://services.google.com/sitestats/'.GOOGLE_LANG.'.html" onclick="window.open(this.href); return false;">
 		<img height=27 width=135 border=0 src="http://www.googleadservices.com/pagead/conversion/'.GOOGLE_CONVERSION_ID.'/?hl='.GOOGLE_LANG.'" />
@@ -97,16 +97,16 @@ if (GOOGLE_CONVERSION == 'true') {
 }
 if (DOWNLOAD_ENABLED == 'true')
 	include (DIR_WS_MODULES.'downloads.php');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('PAYMENT_BLOCK', $payment_block);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_success.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout_success.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

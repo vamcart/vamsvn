@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -46,14 +46,14 @@ $reviews_text = vam_break_string(htmlspecialchars($reviews['reviews_text']), 60,
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$smarty->assign('PRODUCTS_NAME', $reviews['products_name']);
-$smarty->assign('AUTHOR', $reviews['customers_name']);
-$smarty->assign('DATE', vam_date_long($reviews['date_added']));
-$smarty->assign('REVIEWS_TEXT', nl2br($reviews_text));
-$smarty->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
-$smarty->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($reviews['products_id'], $reviews['products_name'])));
-$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-$smarty->assign('BUTTON_BUY_NOW', '<a href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.vam_image_button('button_in_cart.gif', IMAGE_BUTTON_IN_CART) . '</a>');
+$vamTemplate->assign('PRODUCTS_NAME', $reviews['products_name']);
+$vamTemplate->assign('AUTHOR', $reviews['customers_name']);
+$vamTemplate->assign('DATE', vam_date_long($reviews['date_added']));
+$vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews_text));
+$vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
+$vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($reviews['products_id'], $reviews['products_name'])));
+$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BUY_NOW', '<a href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.vam_image_button('button_in_cart.gif', IMAGE_BUTTON_IN_CART) . '</a>');
 
 $products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
@@ -61,27 +61,27 @@ $image = vam_image($products_image, $reviews['products_name'], '', '', 'hspace="
 if (is_file(DIR_WS_POPUP_IMAGES.$reviews['products_image'])) {
     $image = '<a href="'.vam_href_link(FILENAME_POPUP_IMAGE, 'pID='.$reviews['products_id']).'" onclick="window.open(\'' . vam_href_link(FILENAME_POPUP_IMAGE, 'pID='.$reviews['products_id']) . '\', \'popUp\', \'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=395,height=320\'); return false;" target="_blank">'.$image.'</a>';
 }
-$smarty->assign('IMAGE', $image);
+$vamTemplate->assign('IMAGE', $image);
 
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('language', $_SESSION['language']);
 
 // set cache ID
  if (!CacheCheck()) {
-	$smarty->caching = 0;
-	$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/product_reviews_info.html');
+	$vamTemplate->caching = 0;
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/product_reviews_info.html');
 } else {
-	$smarty->caching = 1;
-	$smarty->cache_lifetime = CACHE_LIFETIME;
-	$smarty->cache_modified_check = CACHE_CHECK;
+	$vamTemplate->caching = 1;
+	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
+	$vamTemplate->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'].$reviews['reviews_id'];
-	$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/product_reviews_info.html', $cache_id);
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/product_reviews_info.html', $cache_id);
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

@@ -24,7 +24,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
@@ -83,7 +83,7 @@ $products_new_query_raw = "select distinct
 $products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
 
 if (($products_new_split->number_of_rows > 0)) {
-	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
+	$vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
 
 }
 
@@ -148,20 +148,20 @@ if ($products_new_split->number_of_rows > 0) {
 	}
 } else {
 
-	$smarty->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
+	$vamTemplate->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$smarty->assign('module_content', $module_content);
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_overview.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$vamTemplate->assign('module_content', $module_content);
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/new_products_overview.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

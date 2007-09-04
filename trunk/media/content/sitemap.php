@@ -17,8 +17,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 require_once(DIR_FS_INC . 'vam_count_products_in_category.inc.php');
 
@@ -80,18 +80,18 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  // if there's sth -> assign it
  if (sizeof($module_content)>=1)
  {
- $module_smarty->assign('language', $_SESSION['language']);
- $module_smarty->assign('module_content',$module_content);
+ $module->assign('language', $_SESSION['language']);
+ $module->assign('module_content',$module_content);
  // set cache ID
  if (!CacheCheck()) {
- $module_smarty->caching = 0;
- echo $module_smarty->fetch(CURRENT_TEMPLATE.'/module/sitemap.html');
+ $module->caching = 0;
+ echo $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html');
  } else {
- $module_smarty->caching = 1;
- $module_smarty->cache_lifetime=CACHE_LIFETIME;
- $module_smarty->cache_modified_check=CACHE_CHECK;
+ $module->caching = 1;
+ $module->cache_lifetime=CACHE_LIFETIME;
+ $module->cache_modified_check=CACHE_CHECK;
  $cache_id = $GET['cPath'].$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
- echo $module_smarty->fetch(CURRENT_TEMPLATE.'/module/sitemap.html',$cache_id);
+ echo $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html',$cache_id);
  }
  }
 ?>

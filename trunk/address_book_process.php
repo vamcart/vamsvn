@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -266,25 +266,25 @@ require (DIR_WS_INCLUDES.'header.php');
 if (isset ($_GET['delete']) == false)
 	$action = vam_draw_form('addressbook', vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, (isset ($_GET['edit']) ? 'edit='.$_GET['edit'] : ''), 'SSL'), 'post', 'onsubmit="return checkform(this);"') . vam_draw_hidden_field('required', 'gender,firstname,lastname,address,postcode,city,state,country', 'id="required"');
 
-$smarty->assign('FORM_ACTION', $action);
+$vamTemplate->assign('FORM_ACTION', $action);
 if ($messageStack->size('addressbook') > 0) {
-	$smarty->assign('error', $messageStack->output('addressbook'));
+	$vamTemplate->assign('error', $messageStack->output('addressbook'));
 
 }
 
 if (isset ($_GET['delete'])) {
-	$smarty->assign('delete', '1');
-	$smarty->assign('ADDRESS', vam_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'));
+	$vamTemplate->assign('delete', '1');
+	$vamTemplate->assign('ADDRESS', vam_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'));
 
-	$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-	$smarty->assign('BUTTON_DELETE', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.vam_image_button('button_delete.gif', IMAGE_BUTTON_DELETE).'</a>');
+	$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_DELETE', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.vam_image_button('button_delete.gif', IMAGE_BUTTON_DELETE).'</a>');
 } else {
 
 	include (DIR_WS_MODULES.'address_book_details.php');
 
 	if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-		$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-		$smarty->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
+		$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
 
 	} else {
 		if (sizeof($_SESSION['navigation']->snapshot) > 0) {
@@ -292,23 +292,23 @@ if (isset ($_GET['delete'])) {
 		} else {
 			$back_link = vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL');
 		}
-		$smarty->assign('BUTTON_BACK', '<a href="'.$back_link.'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-		$smarty->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+		$vamTemplate->assign('BUTTON_BACK', '<a href="'.$back_link.'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 
 	}
-	$smarty->assign('FORM_END', '</form>');
+	$vamTemplate->assign('FORM_END', '</form>');
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/address_book_process.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/address_book_process.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

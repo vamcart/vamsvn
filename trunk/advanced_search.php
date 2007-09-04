@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -31,18 +31,18 @@ $breadcrumb->add(NAVBAR_TITLE_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_S
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$smarty->assign('FORM_ACTION', vam_draw_form('advanced_search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'onsubmit="return check_form(this);"').vam_hide_session_id());
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('advanced_search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'onsubmit="return check_form(this);"').vam_hide_session_id());
 
-$smarty->assign('INPUT_KEYWORDS', vam_draw_input_field('keywords', '', ''));
-$smarty->assign('HELP_LINK', 'javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
-$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
+$vamTemplate->assign('INPUT_KEYWORDS', vam_draw_input_field('keywords', '', ''));
+$vamTemplate->assign('HELP_LINK', 'javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
 
 
-$smarty->assign('SELECT_CATEGORIES',vam_draw_pull_down_menu('categories_id', vam_get_categories(array (array ('id' => '', 'text' => TEXT_ALL_CATEGORIES)))));
-$smarty->assign('ENTRY_SUBCAT',vam_draw_checkbox_field('inc_subcat', '1', true));
-$smarty->assign('SELECT_MANUFACTURERS',vam_draw_pull_down_menu('manufacturers_id', vam_get_manufacturers(array (array ('id' => '', 'text' => TEXT_ALL_MANUFACTURERS)))));
-$smarty->assign('SELECT_PFROM',vam_draw_input_field('pfrom'));
-$smarty->assign('SELECT_PTO',vam_draw_input_field('pto'));
+$vamTemplate->assign('SELECT_CATEGORIES',vam_draw_pull_down_menu('categories_id', vam_get_categories(array (array ('id' => '', 'text' => TEXT_ALL_CATEGORIES)))));
+$vamTemplate->assign('ENTRY_SUBCAT',vam_draw_checkbox_field('inc_subcat', '1', true));
+$vamTemplate->assign('SELECT_MANUFACTURERS',vam_draw_pull_down_menu('manufacturers_id', vam_get_manufacturers(array (array ('id' => '', 'text' => TEXT_ALL_MANUFACTURERS)))));
+$vamTemplate->assign('SELECT_PFROM',vam_draw_input_field('pfrom'));
+$vamTemplate->assign('SELECT_PTO',vam_draw_input_field('pto'));
 
 
 $error = '';
@@ -73,18 +73,18 @@ if (isset ($_GET['errorno'])) {
 	}
 }
 
-$smarty->assign('error', $error);
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('error', $error);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('FORM_END', '</form>');
 
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/advanced_search.html');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/advanced_search.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

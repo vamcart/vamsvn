@@ -25,7 +25,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 // include boxes
 
@@ -58,10 +58,10 @@ if ($_GET['action'] == 'get_download') {
 include (DIR_WS_MODULES.'product_info.php');
 
 require (DIR_WS_INCLUDES.'header.php');
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

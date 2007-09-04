@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -59,20 +59,20 @@ while ($featured = vam_db_fetch_array($featured_query)) {
 }
 
 if (($featured_split->number_of_rows > 0)) {
-	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED));
+	$vamTemplate->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED));
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('module_content', $module_content);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/featured.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('module_content', $module_content);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/featured.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

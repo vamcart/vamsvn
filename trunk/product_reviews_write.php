@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
@@ -37,17 +37,17 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process') {
     
     if ($_POST['vvcode'] != $_SESSION['vvcode']) {
       $error = true;
-	   $smarty->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+	   $vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
     }
 
     if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
       $error = true;
-   	$smarty->assign('error', ERROR_INVALID_PRODUCT);
+   	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
     }
 
     if (($rating < 1) || ($rating > 5)) {
       $error = true;
-   	$smarty->assign('error', ERROR_INVALID_PRODUCT);
+   	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
     }
 
     if ($error == false) {
@@ -84,32 +84,32 @@ $customer_info = vam_db_fetch_array($customer_info_query);
 require (DIR_WS_INCLUDES.'header.php');
 
 if (!$product->isProduct()) {
-	$smarty->assign('error', ERROR_INVALID_PRODUCT);
+	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
 } else {
 	$name = $customer_info['customers_firstname'].' '.$customer_info['customers_lastname'];
 	if ($name == ' ')
 		$customer_info['customers_lastname'] = TEXT_GUEST;
-	$smarty->assign('PRODUCTS_NAME', $product->data['products_name']);
-	$smarty->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
-	$smarty->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, '', '', false));
-	$smarty->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
-	$smarty->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
-	$smarty->assign('BUTTON_BACK', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-	$smarty->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
-	$smarty->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
-	$smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
-	$smarty->assign('FORM_END', '</form>');
+	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
+	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
+	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, '', '', false));
+	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
+	$vamTemplate->assign('BUTTON_BACK', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
+	$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+	$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
+	$vamTemplate->assign('FORM_END', '</form>');
 }
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('language', $_SESSION['language']);
 
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/product_reviews_write.html');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/product_reviews_write.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

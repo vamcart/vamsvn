@@ -19,22 +19,22 @@
 
 include ('includes/application_top.php');
 
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 include ('includes/header.php');
 
-$smarty->assign('link_close', 'javascript:window.close()');
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('link_close', 'javascript:window.close()');
+$vamTemplate->assign('language', $_SESSION['language']);
 
 // set cache ID
  if (!CacheCheck()) {
-	$smarty->caching = 0;
-	$smarty->display(CURRENT_TEMPLATE.'/module/popup_search_help.html');
+	$vamTemplate->caching = 0;
+	$vamTemplate->display(CURRENT_TEMPLATE.'/module/popup_search_help.html');
 } else {
-	$smarty->caching = 1;
-	$smarty->cache_lifetime = CACHE_LIFETIME;
-	$smarty->cache_modified_check = CACHE_CHECK;
+	$vamTemplate->caching = 1;
+	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
+	$vamTemplate->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'];
-	$smarty->display(CURRENT_TEMPLATE.'/module/popup_search_help.html', $cache_id);
+	$vamTemplate->display(CURRENT_TEMPLATE.'/module/popup_search_help.html', $cache_id);
 }
 ?>

@@ -19,7 +19,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -59,20 +59,20 @@ if (($orders_total = vam_count_customer_orders()) > 0) {
 }
 
 if ($orders_total > 0) {
-	$smarty->assign('SPLIT_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS));
+	$vamTemplate->assign('SPLIT_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS));
 
 }
-$smarty->assign('order_content', $module_content);
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/account_history.html');
+$vamTemplate->assign('order_content', $module_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account_history.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

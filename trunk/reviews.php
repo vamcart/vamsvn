@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -38,7 +38,7 @@ $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DIS
 
 if ($reviews_split->number_of_rows > 0) {
 
-	$smarty->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
+	$vamTemplate->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
 
 }
 
@@ -51,28 +51,28 @@ if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noi
 		$module_data[] = array ('PRODUCTS_IMAGE' => $products_image, $reviews['products_name'], 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 'PRODUCTS_NAME' => $reviews['products_name'], 'AUTHOR' => $reviews['customers_name'], 'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 
 	}
-	$smarty->assign('module_content', $module_data);
+	$vamTemplate->assign('module_content', $module_data);
 }
 
-$smarty->assign('language', $_SESSION['language']);
+$vamTemplate->assign('language', $_SESSION['language']);
 
 // set cache ID
  if (!CacheCheck()) {
-	$smarty->caching = 0;
-	$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/reviews.html');
+	$vamTemplate->caching = 0;
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/reviews.html');
 } else {
-	$smarty->caching = 1;
-	$smarty->cache_lifetime = CACHE_LIFETIME;
-	$smarty->cache_modified_check = CACHE_CHECK;
+	$vamTemplate->caching = 1;
+	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
+	$vamTemplate->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'];
-	$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/reviews.html', $cache_id);
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/reviews.html', $cache_id);
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

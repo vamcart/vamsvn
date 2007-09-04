@@ -23,7 +23,7 @@
 require ('includes/application_top.php');
 
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
@@ -45,19 +45,19 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'first_opt_in')) {
 	$link = vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=verified&customers_id='.$check_customer['customers_id'].'&key='.$vlcode, 'NONSSL');
 
 	// assign language to template for caching
-	$smarty->assign('language', $_SESSION['language']);
-	$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-	$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+	$vamTemplate->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 	// assign vars
-	$smarty->assign('EMAIL', $check_customer['customers_email_address']);
-	$smarty->assign('LINK', $link);
+	$vamTemplate->assign('EMAIL', $check_customer['customers_email_address']);
+	$vamTemplate->assign('LINK', $link);
 	// dont allow cache
-	$smarty->caching = false;
+	$vamTemplate->caching = false;
 
 	// create mails
-	$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.html');
-	$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.txt');
+	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.html');
+	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.txt');
 
 	if ($_POST['vvcode'] == $_SESSION['vvcode']) {
 		if (!vam_db_num_rows($check_customer_query)) {
@@ -91,18 +91,18 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'verified')) {
 		vam_db_query("update ".TABLE_CUSTOMERS." set customers_password = '".$crypted_password."' where customers_email_address = '".$check_customer['customers_email_address']."'");
 		vam_db_query("update ".TABLE_CUSTOMERS." set password_request_key = '' where customers_id = '".$check_customer['customers_id']."'");
 		// assign language to template for caching
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-		$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 		// assign vars
-		$smarty->assign('EMAIL', $check_customer['customers_email_address']);
-		$smarty->assign('NEW_PASSWORD', $newpass);
+		$vamTemplate->assign('EMAIL', $check_customer['customers_email_address']);
+		$vamTemplate->assign('NEW_PASSWORD', $newpass);
 		// dont allow cache
-		$smarty->caching = false;
+		$vamTemplate->caching = false;
 		// create mails
-		$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/new_password_mail.html');
-		$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/new_password_mail.txt');
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/new_password_mail.html');
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/new_password_mail.txt');
 
 		vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $check_customer['customers_email_address'], '', '', EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', TEXT_EMAIL_PASSWORD_NEW_PASSWORD, $html_mail, $txt_mail);
 		if (!isset ($mail_error)) {
@@ -117,88 +117,88 @@ require (DIR_WS_INCLUDES.'header.php');
 
 switch ($case) {
 	case first_opt_in :
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		$smarty->assign('info_message', $info_message);
-		$smarty->assign('info_message', TEXT_LINK_MAIL_SENDED);
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('info_message', $info_message);
+		$vamTemplate->assign('info_message', TEXT_LINK_MAIL_SENDED);
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
 
 		break;
 	case second_opt_in :
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		$smarty->assign('info_message', $info_message);
-		//    $smarty->assign('info_message', TEXT_PASSWORD_MAIL_SENDED);
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('info_message', $info_message);
+		//    $vamTemplate->assign('info_message', TEXT_PASSWORD_MAIL_SENDED);
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
 		break;
 	case code_error :
 
-		$smarty->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		$smarty->assign('info_message', $info_message);
-		$smarty->assign('message', TEXT_PASSWORD_FORGOTTEN);
-		$smarty->assign('SHOP_NAME', STORE_NAME);
-		$smarty->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
-		$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
-		$smarty->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
-		$smarty->assign('FORM_END', '</form>');
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
+		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('info_message', $info_message);
+		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
+		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
+		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
+		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('FORM_END', '</form>');
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
 
 		break;
 	case wrong_mail :
 
-		$smarty->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		$smarty->assign('info_message', $info_message);
-		$smarty->assign('message', TEXT_PASSWORD_FORGOTTEN);
-		$smarty->assign('SHOP_NAME', STORE_NAME);
-		$smarty->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
-		$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
-		$smarty->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
-		$smarty->assign('FORM_END', '</form>');
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
+		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('info_message', $info_message);
+		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
+		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
+		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
+		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('FORM_END', '</form>');
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
 
 		break;
 	case no_account :
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		$smarty->assign('info_message', $info_message);
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('info_message', $info_message);
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_messages.html');
 
 		break;
 	case double_opt :
 
-		$smarty->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
-		$smarty->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
-		//    $smarty->assign('info_message', $info_message);
-		$smarty->assign('message', TEXT_PASSWORD_FORGOTTEN);
-		$smarty->assign('SHOP_NAME', STORE_NAME);
-		$smarty->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
-		$smarty->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$smarty->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
-		$smarty->assign('BUTTON_SEND', vam_image_submit('button_continue.gif', IMAGE_BUTTON_LOGIN));
-		$smarty->assign('FORM_END', '</form>');
-		$smarty->assign('language', $_SESSION['language']);
-		$smarty->caching = 0;
-		$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
+		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
+		//    $vamTemplate->assign('info_message', $info_message);
+		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
+		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
+		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
+		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
+		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_continue.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('FORM_END', '</form>');
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->caching = 0;
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/password_double_opt_in.html');
 
 		break;
 }
 
-$smarty->assign('main_content', $main_content);
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

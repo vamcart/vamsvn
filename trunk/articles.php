@@ -24,7 +24,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
@@ -64,14 +64,14 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
         $topic_name = NAVBAR_TITLE_DEFAULT;
       }
 
-	$smarty->assign('HEADER_TEXT', $topic_name);
+	$vamTemplate->assign('HEADER_TEXT', $topic_name);
 
     if (vam_not_null($topic['topics_heading_title'])) {
-	$smarty->assign('TOPICS_HEADING_TITLE', $topic['topics_heading_title']);
+	$vamTemplate->assign('TOPICS_HEADING_TITLE', $topic['topics_heading_title']);
    }    
              
     if (vam_not_null($topic['topics_description'])) {
-	$smarty->assign('TOPICS_DESCRIPTION', $topic['topics_description']);
+	$vamTemplate->assign('TOPICS_DESCRIPTION', $topic['topics_description']);
    }    
              
 require (DIR_WS_INCLUDES.'header.php');
@@ -95,14 +95,14 @@ require (DIR_WS_INCLUDES.'header.php');
 $articles_split = new splitPageResults($listing_sql, $_GET['page'], MAX_ARTICLES_PER_PAGE);
 
 if (($articles_split->number_of_rows > 0)) {
-	$smarty->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES));
+	$vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$articles_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $articles_split->display_count(TEXT_DISPLAY_NUMBER_OF_ARTICLES));
 
 }
 
 $module_content = '';
 if ($articles_split->number_of_rows > 0) {
 
-	$smarty->assign('no_articles', 'false');
+	$vamTemplate->assign('no_articles', 'false');
 
 	$articles_query = vam_db_query($articles_split->sql_query);
 	while ($articles = vam_db_fetch_array($articles_query)) {
@@ -135,20 +135,20 @@ if ($articles_split->number_of_rows > 0) {
 	}
 } else {
 
-	$smarty->assign('no_articles', 'true');
+	$vamTemplate->assign('no_articles', 'true');
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
-$smarty->assign('module_content', $module_content);
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/articles.html');
-$smarty->assign('main_content', $main_content);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$vamTemplate->assign('module_content', $module_content);
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/articles.html');
+$vamTemplate->assign('main_content', $main_content);
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

@@ -20,7 +20,7 @@
 include ('includes/application_top.php');
 
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -36,7 +36,7 @@ $breadcrumb->add(NAVBAR_TITLE_ACCOUNT, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($messageStack->size('account') > 0)
-	$smarty->assign('error_message', $messageStack->output('account'));
+	$vamTemplate->assign('error_message', $messageStack->output('account'));
 
 $i = 0;
 $max = count($_SESSION['tracking']['products_history']);
@@ -88,27 +88,27 @@ if (vam_count_customer_orders() > 0) {
 	}
 
 }
-$smarty->assign('LINK_EDIT', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
-$smarty->assign('LINK_ADDRESS', vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
-$smarty->assign('LINK_PASSWORD', vam_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'));
+$vamTemplate->assign('LINK_EDIT', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
+$vamTemplate->assign('LINK_ADDRESS', vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL'));
+$vamTemplate->assign('LINK_PASSWORD', vam_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL'));
 if (!isset ($_SESSION['customer_id']))
-	$smarty->assign('LINK_LOGIN', vam_href_link(FILENAME_LOGIN, '', 'SSL'));
-$smarty->assign('LINK_ORDERS', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
-$smarty->assign('LINK_NEWSLETTER', vam_href_link(FILENAME_NEWSLETTER, '', 'SSL'));
-$smarty->assign('LINK_ALL', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
-$smarty->assign('order_content', $order_content);
-$smarty->assign('products_history', $products_history);
-$smarty->assign('also_purchased_history', $also_purchased_history);
-$smarty->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('LINK_LOGIN', vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+$vamTemplate->assign('LINK_ORDERS', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
+$vamTemplate->assign('LINK_NEWSLETTER', vam_href_link(FILENAME_NEWSLETTER, '', 'SSL'));
+$vamTemplate->assign('LINK_ALL', vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
+$vamTemplate->assign('order_content', $order_content);
+$vamTemplate->assign('products_history', $products_history);
+$vamTemplate->assign('also_purchased_history', $also_purchased_history);
+$vamTemplate->assign('language', $_SESSION['language']);
 
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/account.html');
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE.'/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
 include ('includes/application_bottom.php');
 ?>

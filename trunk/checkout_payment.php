@@ -33,7 +33,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new vamTemplate;
+$vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
 // include needed functions
@@ -122,21 +122,21 @@ $breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_PAYMENT, vam_href_link(FILENAME_CHECKOU
 $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_PAYMENT, vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 
 if (ACCOUNT_STREET_ADDRESS == 'true') {
-$smarty->assign('BILLING_ADDRESS', 'true');
+$vamTemplate->assign('BILLING_ADDRESS', 'true');
 }
 
-$smarty->assign('FORM_ACTION', vam_draw_form('checkout_payment', vam_href_link(FILENAME_CHECKOUT_CONFIRMATION, '', 'SSL'), 'post', 'onsubmit="return check_form();"'));
-$smarty->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'));
-$smarty->assign('BUTTON_ADDRESS', '<a href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>');
-$smarty->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
-$smarty->assign('FORM_END', '</form>');
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_payment', vam_href_link(FILENAME_CHECKOUT_CONFIRMATION, '', 'SSL'), 'post', 'onsubmit="return check_form();"'));
+$vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'));
+$vamTemplate->assign('BUTTON_ADDRESS', '<a href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>');
+$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('FORM_END', '</form>');
 
 require (DIR_WS_INCLUDES . 'header.php');
 $module_smarty = new vamTemplate;
 if ($order->info['total'] > 0) {
 	if (isset ($_GET['payment_error']) && is_object(${ $_GET['payment_error'] }) && ($error = ${$_GET['payment_error']}->get_error())) {
 
-		$smarty->assign('error', htmlspecialchars($error['error']));
+		$vamTemplate->assign('error', htmlspecialchars($error['error']));
 
 	}
 
@@ -167,24 +167,24 @@ if ($order->info['total'] > 0) {
 	$module_smarty->assign('module_content', $selection);
 
 } else {
-	$smarty->assign('GV_COVER', 'true');
+	$vamTemplate->assign('GV_COVER', 'true');
 }
 
 if (ACTIVATE_GIFT_SYSTEM == 'true') {
-	$smarty->assign('module_gift', $order_total_modules->credit_selection());
+	$vamTemplate->assign('module_gift', $order_total_modules->credit_selection());
 }
 
 $module_smarty->caching = 0;
 $payment_block = $module_smarty->fetch(CURRENT_TEMPLATE . '/module/checkout_payment_block.html');
 
-$smarty->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $_SESSION['comments']) . vam_draw_hidden_field('comments_added', 'YES'));
+$vamTemplate->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $_SESSION['comments']) . vam_draw_hidden_field('comments_added', 'YES'));
 
-$smarty->assign('conditions', 'false');
+$vamTemplate->assign('conditions', 'false');
 
 //check if display conditions on checkout page is true
 if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
 
-$smarty->assign('conditions', 'true');
+$vamTemplate->assign('conditions', 'true');
 
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and group_ids LIKE '%c_" . $_SESSION['customers_status']['customers_status_id'] . "_group%'";
@@ -209,28 +209,28 @@ $smarty->assign('conditions', 'true');
 		$conditions = '<textarea name="blabla" cols="60" rows="10" readonly="readonly">' . strip_tags(str_replace('<br />', "\n", $shop_content_data['content_text'])) . '</textarea>';
 	}
 
-	$smarty->assign('AGB', $conditions);
-	$smarty->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
+	$vamTemplate->assign('AGB', $conditions);
+	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
 	// LUUPAY ZAHLUNGSMODUL
 	if (isset ($_GET['step']) && $_GET['step'] == 'step2') {
-		$smarty->assign('AGB_checkbox', '<input type="checkbox" value="conditions" name="conditions" checked />');
+		$vamTemplate->assign('AGB_checkbox', '<input type="checkbox" value="conditions" name="conditions" checked />');
 	} else {
-		$smarty->assign('AGB_checkbox', '<input type="checkbox" value="conditions" name="conditions" />');
+		$vamTemplate->assign('AGB_checkbox', '<input type="checkbox" value="conditions" name="conditions" />');
 	}
 	// LUUPAY END
 
 }
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('PAYMENT_BLOCK', $payment_block);
-$smarty->caching = 0;
-$main_content = $smarty->fetch(CURRENT_TEMPLATE . '/module/checkout_payment.html');
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/checkout_payment.html');
 
-$smarty->assign('language', $_SESSION['language']);
-$smarty->assign('main_content', $main_content);
-$smarty->caching = 0;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
 if (!defined(RM))
-	$smarty->load_filter('output', 'note');
-$smarty->display(CURRENT_TEMPLATE . '/index.html');
+	$vamTemplate->load_filter('output', 'note');
+$vamTemplate->display(CURRENT_TEMPLATE . '/index.html');
 include ('includes/application_bottom.php');
 ?>
