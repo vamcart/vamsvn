@@ -187,22 +187,22 @@ $vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKO
 $vamTemplate->assign('BUTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('FORM_END', '</form>');
 
-$module_smarty = new vamTemplate;
+$module = new vamTemplate;
 if (vam_count_shipping_modules() > 0) {
 
 	$showtax = $_SESSION['customers_status']['customers_status_show_price_tax'];
 
-	$module_smarty->assign('FREE_SHIPPING', $free_shipping);
+	$module->assign('FREE_SHIPPING', $free_shipping);
 
 	# free shipping or not...
 
 	if ($free_shipping == true) {
 
-		$module_smarty->assign('FREE_SHIPPING_TITLE', FREE_SHIPPING_TITLE);
+		$module->assign('FREE_SHIPPING_TITLE', FREE_SHIPPING_TITLE);
 
-		$module_smarty->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
+		$module->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
 
-		$module_smarty->assign('FREE_SHIPPING_ICON', $quotes[$i]['icon']);
+		$module->assign('FREE_SHIPPING_ICON', $quotes[$i]['icon']);
 
 	} else {
 
@@ -254,11 +254,11 @@ if (vam_count_shipping_modules() > 0) {
 
 		}
 
-		$module_smarty->assign('module_content', $quotes);
+		$module->assign('module_content', $quotes);
 
 	}
-	$module_smarty->caching = 0;
-	$shipping_block = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_shipping_block.html');
+	$module->caching = 0;
+	$shipping_block = $module->fetch(CURRENT_TEMPLATE.'/module/checkout_shipping_block.html');
 
 }
 
