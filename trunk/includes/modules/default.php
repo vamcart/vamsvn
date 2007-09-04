@@ -23,7 +23,7 @@
   Released under the GNU General Public License
   ---------------------------------------------------------------------------------------*/
 
-$default_smarty = new smarty;
+$default_smarty = new vamTemplate;
 $default_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $default_smarty->assign('session', session_id());
 $main_content = '';

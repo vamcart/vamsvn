@@ -36,7 +36,7 @@ if (ACTIVATE_GIFT_SYSTEM != 'true')
 // is customer logged on ?
 	if (!isset ($_SESSION['customer_id'])) vam_redirect(FILENAME_SHOPPING_CART);
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');

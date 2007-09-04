@@ -30,7 +30,7 @@
    ---------------------------------------------------------------------------------------*/
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
@@ -187,7 +187,7 @@ $smarty->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SH
 $smarty->assign('BUTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $smarty->assign('FORM_END', '</form>');
 
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 if (vam_count_shipping_modules() > 0) {
 
 	$showtax = $_SESSION['customers_status']['customers_status_show_price_tax'];

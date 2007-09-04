@@ -30,7 +30,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 $module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
 require_once (DIR_FS_INC.'vam_check_stock.inc.php');

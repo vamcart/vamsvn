@@ -37,7 +37,7 @@ require ('includes/classes/http_client.php');
 
 require_once (DIR_FS_INC.'vam_validate_email.inc.php');
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 

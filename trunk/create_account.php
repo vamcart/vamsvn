@@ -36,7 +36,7 @@ if (isset ($_SESSION['customer_id'])) {
 }
 
 // create smarty elements
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 

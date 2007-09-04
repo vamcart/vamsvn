@@ -33,7 +33,7 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
 // include needed functions
@@ -132,7 +132,7 @@ $smarty->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE
 $smarty->assign('FORM_END', '</form>');
 
 require (DIR_WS_INCLUDES . 'header.php');
-$module_smarty = new Smarty;
+$module_smarty = new vamTemplate;
 if ($order->info['total'] > 0) {
 	if (isset ($_GET['payment_error']) && is_object(${ $_GET['payment_error'] }) && ($error = ${$_GET['payment_error']}->get_error())) {
 

@@ -19,7 +19,7 @@
 require ('includes/application_top.php');
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
-$smarty = new Smarty;
+$smarty = new vamTemplate;
 
 include ('includes/header.php');
 
