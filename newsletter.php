@@ -22,7 +22,7 @@
 
 require ('includes/application_top.php');
 
-// create smarty elements
+// create template elements
 $vamTemplate = new vamTemplate;
 
 // include boxes

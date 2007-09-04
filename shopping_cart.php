@@ -23,7 +23,7 @@
    ---------------------------------------------------------------------------------------*/
 $cart_empty = false;
 require ("includes/application_top.php");
-// create smarty elements
+// create template elements
 $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
