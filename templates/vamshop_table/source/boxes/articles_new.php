@@ -11,7 +11,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 $sql = "select a.articles_id, ad.articles_name, ad.articles_description from " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on ad.articles_id = a.articles_id where a.articles_status = '1' ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "";

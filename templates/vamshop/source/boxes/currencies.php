@@ -45,7 +45,7 @@
   if ($count_cur > 1 ) {
 
   // reset var
-  $box_smarty = new smarty;
+  $box_smarty = new vamTemplate;
   $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $box_content='';
   $box_content=vam_draw_form('currencies', vam_href_link(basename($PHP_SELF), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onchange="this.form.submit();"') . $hidden_get_variables . vam_hide_session_id().'</form>';

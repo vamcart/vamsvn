@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
 // reset var
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_content='';
 $flag='';
 $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');

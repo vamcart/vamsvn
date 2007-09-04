@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_content = '';
 
 $box_smarty->assign('language', $_SESSION['language']);

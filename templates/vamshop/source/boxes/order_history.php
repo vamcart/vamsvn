@@ -16,7 +16,7 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
 $box_content='';
   // include needed functions

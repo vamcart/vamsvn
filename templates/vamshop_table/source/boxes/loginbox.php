@@ -21,7 +21,7 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-$box_smarty = new smarty;
+$box_smarty = new vamTemplate;
 $box_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $box_content = '';
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
