@@ -31,7 +31,7 @@ require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
 
 
 // initiate template engine for mail
-$smarty = new Smarty;
+$vamTemplate = new vamTemplate;
 
 $customers_statuses_array = vam_get_customers_statuses();
 if ($customers_password == '') {
@@ -319,24 +319,24 @@ if ($_GET['action'] == 'edit') {
 		if (($customers_send_mail == 'yes')) {
 
 			// assign language to template for caching
-			$smarty->assign('language', $_SESSION['language']);
-			$smarty->caching = false;
+			$vamTemplate->assign('language', $_SESSION['language']);
+			$vamTemplate->caching = false;
 
 			// set dirs manual
-			$smarty->template_dir = DIR_FS_CATALOG.'templates';
-			$smarty->compile_dir = DIR_FS_CATALOG.'templates_c';
-			$smarty->config_dir = DIR_FS_CATALOG.'lang';
+			$vamTemplate->template_dir = DIR_FS_CATALOG.'templates';
+			$vamTemplate->compile_dir = DIR_FS_CATALOG.'templates_c';
+			$vamTemplate->config_dir = DIR_FS_CATALOG.'lang';
 
-			$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-			$smarty->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+			$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+			$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-			$smarty->assign('NAME', $customers_lastname.' '.$customers_firstname);
-			$smarty->assign('EMAIL', $customers_email_address);
-			$smarty->assign('COMMENTS', $customers_mail_comments);
-			$smarty->assign('PASSWORD', $customers_password_encrypted);
+			$vamTemplate->assign('NAME', $customers_lastname.' '.$customers_firstname);
+			$vamTemplate->assign('EMAIL', $customers_email_address);
+			$vamTemplate->assign('COMMENTS', $customers_mail_comments);
+			$vamTemplate->assign('PASSWORD', $customers_password_encrypted);
 
-			$html_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.html');
-			$txt_mail = $smarty->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+			$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.html');
+			$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/create_account_mail.txt');
 
 			vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $customers_email_address, $customers_lastname.' '.$customers_firstname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
 		}

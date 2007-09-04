@@ -39,7 +39,7 @@
   require_once(DIR_FS_INC . 'vam_php_mail.inc.php');
 
   // initiate template engine for mail
-  $smarty = new Smarty;
+  $vamTemplate = new vamTemplate;
 
   if ( ($_GET['action'] == 'send_email_to_user') && ($_POST['customers_email_address'] || $_POST['email_to']) && (!$_POST['back_x']) ) {
     switch ($_POST['customers_email_address']) {
@@ -68,30 +68,30 @@
       $id1 = create_coupon_code($mail['customers_email_address']);
 
       // assign language to template for caching
-      $smarty->assign('language', $_SESSION['language']);
-      $smarty->caching = false;
+      $vamTemplate->assign('language', $_SESSION['language']);
+      $vamTemplate->caching = false;
 
       // set dirs manual
-      $smarty->template_dir=DIR_FS_CATALOG.'templates';
-      $smarty->compile_dir=DIR_FS_CATALOG.'templates_c';
-      $smarty->config_dir=DIR_FS_CATALOG.'lang';
+      $vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
+      $vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
+      $vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
 
-      $smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-      $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+      $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+      $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-      $smarty->assign('AMMOUNT', $currencies->format($_POST['amount']));
-      $smarty->assign('MESSAGE', $_POST['message']);
-      $smarty->assign('GIFT_ID', $id1);
-      $smarty->assign('WEBSITE', HTTP_SERVER  . DIR_WS_CATALOG);
+      $vamTemplate->assign('AMMOUNT', $currencies->format($_POST['amount']));
+      $vamTemplate->assign('MESSAGE', $_POST['message']);
+      $vamTemplate->assign('GIFT_ID', $id1);
+      $vamTemplate->assign('WEBSITE', HTTP_SERVER  . DIR_WS_CATALOG);
 
 
       $link = HTTP_SERVER  . DIR_WS_CATALOG . 'gv_redeem.php' . '?gv_no='.$id1;
 
 
-      $smarty->assign('GIFT_LINK',$link);
+      $vamTemplate->assign('GIFT_LINK',$link);
 
-      $html_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.html');
-      $txt_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
+      $html_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.html');
+      $txt_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
 
       if ($subject=='') $subject=EMAIL_BILLING_SUBJECT;
       vam_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $mail['customers_email_address'] , $mail['customers_firstname'] . ' ' . $mail['customers_lastname'] , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $subject, $html_mail , $txt_mail);
@@ -106,21 +106,21 @@
       $id1 = create_coupon_code($_POST['email_to']);
 
       // assign language to template for caching
-      $smarty->assign('language', $_SESSION['language']);
-      $smarty->caching = false;
+      $vamTemplate->assign('language', $_SESSION['language']);
+      $vamTemplate->caching = false;
 
       // set dirs manual
-      $smarty->template_dir=DIR_FS_CATALOG.'templates';
-      $smarty->compile_dir=DIR_FS_CATALOG.'templates_c';
-      $smarty->config_dir=DIR_FS_CATALOG.'lang';
+      $vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
+      $vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
+      $vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
 
-      $smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-      $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+      $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+      $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-      $smarty->assign('AMMOUNT', $currencies->format($_POST['amount']));
-      $smarty->assign('MESSAGE', $_POST['message']);
-      $smarty->assign('GIFT_ID', $id1);
-      $smarty->assign('WEBSITE', HTTP_SERVER  . DIR_WS_CATALOG);
+      $vamTemplate->assign('AMMOUNT', $currencies->format($_POST['amount']));
+      $vamTemplate->assign('MESSAGE', $_POST['message']);
+      $vamTemplate->assign('GIFT_ID', $id1);
+      $vamTemplate->assign('WEBSITE', HTTP_SERVER  . DIR_WS_CATALOG);
 
       if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
         $link = HTTP_SERVER  . DIR_WS_CATALOG . 'gv_redeem.php' . '/gv_no,'.$id1;
@@ -128,10 +128,10 @@
         $link = HTTP_SERVER  . DIR_WS_CATALOG . 'gv_redeem.php' . '?gv_no='.$id1;
       }
 
-      $smarty->assign('GIFT_LINK',$link);
+      $vamTemplate->assign('GIFT_LINK',$link);
 
-      $html_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.html');
-      $txt_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
+      $html_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.html');
+      $txt_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/send_gift.txt');
 
 
       vam_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME, $_POST['email_to'] , '' , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail , $txt_mail);

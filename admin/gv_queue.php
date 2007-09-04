@@ -35,7 +35,7 @@
   require_once(DIR_FS_INC . 'vam_php_mail.inc.php');
 
     // initiate template engine for mail
-  $smarty = new Smarty;
+  $vamTemplate = new vamTemplate;
 
   require(DIR_WS_CLASSES . 'currencies.php');
   $currencies = new currencies();
@@ -53,21 +53,21 @@
 
 
       // assign language to template for caching
-      $smarty->assign('language', $_SESSION['language']);
-      $smarty->caching = false;
+      $vamTemplate->assign('language', $_SESSION['language']);
+      $vamTemplate->caching = false;
 
           // set dirs manual
-      $smarty->template_dir=DIR_FS_CATALOG.'templates';
-      $smarty->compile_dir=DIR_FS_CATALOG.'templates_c';
-      $smarty->config_dir=DIR_FS_CATALOG.'lang';
+      $vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
+      $vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
+      $vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
 
-      $smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-      $smarty->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+      $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
+      $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
-      $smarty->assign('AMMOUNT',$currencies->format($gv_amount));
+      $vamTemplate->assign('AMMOUNT',$currencies->format($gv_amount));
 
-      $html_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/gift_accepted.html');
-      $txt_mail=$smarty->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/gift_accepted.txt');
+      $html_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/gift_accepted.html');
+      $txt_mail=$vamTemplate->fetch(CURRENT_TEMPLATE . '/admin/mail/'.$_SESSION['language'].'/gift_accepted.txt');
 
 
       vam_php_mail(EMAIL_BILLING_ADDRESS,EMAIL_BILLING_NAME,$mail['customers_email_address'] , $mail['customers_firstname'] . ' ' . $mail['customers_lastname'] , '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail , $txt_mail);
