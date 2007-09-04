@@ -22,7 +22,7 @@ if (!function_exists('vam_date_long')) {
 	require_once (DIR_FS_INC.'vam_date_long.inc.php');
 }
 
-$module_smarty = new vamTemplate;
+$module = new vamTemplate;
 
 if (!strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO)) {
 	// Get last order id for checkout_success
@@ -37,7 +37,7 @@ if (!strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO)) {
 	$order_status = $orders['orders_status'];
 }
 if ($order_status < DOWNLOAD_MIN_ORDERS_STATUS) {
-	$module_smarty->assign('dl_prevented', 'true');
+	$module->assign('dl_prevented', 'true');
 }
 // Now get all downloadable products in that order
 $downloads_query = vam_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, op.products_name, opd.orders_products_download_id, opd.orders_products_filename, opd.download_count, opd.download_maxdays from ".TABLE_ORDERS." o, ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." opd where o.customers_id = '".$_SESSION['customer_id']."' and o.orders_id = '".$last_order."' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_filename != ''");
@@ -67,10 +67,10 @@ if (vam_db_num_rows($downloads_query) > 0) {
 		$jj ++;
 	}
 }
-$module_smarty->assign('dl', $dl);
-$module_smarty->assign('language', $_SESSION['language']);
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-$module_smarty->caching = 0;
-$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/downloads.html');
-$smarty->assign('downloads_content', $module);
+$module->assign('dl', $dl);
+$module->assign('language', $_SESSION['language']);
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module->caching = 0;
+$module = $module->fetch(CURRENT_TEMPLATE.'/module/downloads.html');
+$vamTemplate->assign('downloads_content', $module);
 ?>

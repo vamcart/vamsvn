@@ -29,8 +29,8 @@ require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
-$info_smarty = new vamTemplate;
-$info_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$info = new vamTemplate;
+$info->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
 
 
@@ -54,51 +54,51 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 			// fsk18
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($product->data['products_fsk18'] == '0') {
-					$info_smarty->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
-					$info_smarty->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
+					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+					$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
 				}
 			} else {
-				$info_smarty->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
-				$info_smarty->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
+				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+				$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
 			}
 		}
 
 		if ($product->data['products_fsk18'] == '1') {
-			$info_smarty->assign('PRODUCTS_FSK18', 'true');
+			$info->assign('PRODUCTS_FSK18', 'true');
 		}
 		if (ACTIVATE_SHIPPING_STATUS == 'true') {
-			$info_smarty->assign('SHIPPING_NAME', $main->getShippingStatusName($product->data['products_shippingtime']));
-			$info_smarty->assign('SHIPPING_IMAGE', $main->getShippingStatusImage($product->data['products_shippingtime']));
+			$info->assign('SHIPPING_NAME', $main->getShippingStatusName($product->data['products_shippingtime']));
+			$info->assign('SHIPPING_IMAGE', $main->getShippingStatusImage($product->data['products_shippingtime']));
 		}
-		$info_smarty->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product')));
-		$info_smarty->assign('FORM_END', '</form>');
-		$info_smarty->assign('PRODUCTS_PRICE', $products_price['formated']);
+		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product')));
+		$info->assign('FORM_END', '</form>');
+		$info->assign('PRODUCTS_PRICE', $products_price['formated']);
 		if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
-			$info_smarty->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
-		$info_smarty->assign('PRODUCTS_ID', $product->data['products_id']);
-		$info_smarty->assign('PRODUCTS_NAME', $product->data['products_name']);
+			$info->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
+		$info->assign('PRODUCTS_ID', $product->data['products_id']);
+		$info->assign('PRODUCTS_NAME', $product->data['products_name']);
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 			// price incl tax
 			$tax_rate = $vamPrice->TAX[$product->data['products_tax_class_id']];				
 			$tax_info = $main->getTaxInfo($tax_rate);
-			$info_smarty->assign('PRODUCTS_TAX_INFO', $tax_info);
-			$info_smarty->assign('PRODUCTS_SHIPPING_LINK',$main->getShippingLink());
+			$info->assign('PRODUCTS_TAX_INFO', $tax_info);
+			$info->assign('PRODUCTS_SHIPPING_LINK',$main->getShippingLink());
 		}
-		$info_smarty->assign('PRODUCTS_MODEL', $product->data['products_model']);
-		$info_smarty->assign('PRODUCTS_EAN', $product->data['products_ean']);
-		$info_smarty->assign('PRODUCTS_QUANTITY', $product->data['products_quantity']);
-		$info_smarty->assign('PRODUCTS_WEIGHT', $product->data['products_weight']);
-		$info_smarty->assign('PRODUCTS_STATUS', $product->data['products_status']);
-		$info_smarty->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
-      $info_smarty->assign('PRODUCTS_PRINT', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/print.gif"  style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" alt="" />');
-		$info_smarty->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
+		$info->assign('PRODUCTS_MODEL', $product->data['products_model']);
+		$info->assign('PRODUCTS_EAN', $product->data['products_ean']);
+		$info->assign('PRODUCTS_QUANTITY', $product->data['products_quantity']);
+		$info->assign('PRODUCTS_WEIGHT', $product->data['products_weight']);
+		$info->assign('PRODUCTS_STATUS', $product->data['products_status']);
+		$info->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
+      $info->assign('PRODUCTS_PRINT', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/print.gif"  style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" alt="" />');
+		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$image = '';
 		if ($product->data['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$product->data['products_image'];
 	   
 	   if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.gif';
 
-		$info_smarty->assign('PRODUCTS_IMAGE', $image);
+		$info->assign('PRODUCTS_IMAGE', $image);
 
 		//mo_images - by Novalis@eXanto.de
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
@@ -108,18 +108,18 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		}
 		$products_popup_link = vam_href_link(FILENAME_POPUP_IMAGE, 'pID='.$product->data['products_id'].$connector.'imgID=0');
 if (!is_file(DIR_WS_POPUP_IMAGES.$product->data['products_image'])) $products_popup_link = '';
-$info_smarty->assign('PRODUCTS_POPUP_LINK', $products_popup_link);
+$info->assign('PRODUCTS_POPUP_LINK', $products_popup_link);
 
 		$mo_images = vam_get_products_mo_images($product->data['products_id']);
         if ($mo_images != false) {
-    $info_smarty->assign('PRODUCTS_MO_IMAGES', $mo_images);
+    $info->assign('PRODUCTS_MO_IMAGES', $mo_images);
             foreach ($mo_images as $img) {
                 $products_mo_popup_link = vam_href_link(FILENAME_POPUP_IMAGE, 'pID=' . $product->data['products_id'] . $connector . 'imgID='.$img['image_nr']);
 if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_link = '';
                 $mo_img[] = array(
                 'PRODUCTS_MO_IMAGE' => vam_image(DIR_WS_INFO_IMAGES . $img['image_name'], '', '', '', 'class="mo_img"'),
                 'PRODUCTS_MO_POPUP_LINK' => $products_mo_popup_link);
-        $info_smarty->assign('mo_img', $mo_img);
+        $info->assign('mo_img', $mo_img);
             }
         }
 		//mo_images EOF
@@ -129,21 +129,21 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 			if ($product->data['products_discount_allowed'] < $_SESSION['customers_status']['customers_status_discount'])
 				$discount = $product->data['products_discount_allowed'];
 			if ($discount != '0.00')
-				$info_smarty->assign('PRODUCTS_DISCOUNT', $discount.'%');
+				$info->assign('PRODUCTS_DISCOUNT', $discount.'%');
 		}
 
 		include (DIR_WS_MODULES.'product_attributes.php');
 		include (DIR_WS_MODULES.'product_reviews.php');
 
 		if (vam_not_null($product->data['products_url']))
-			$info_smarty->assign('PRODUCTS_URL', sprintf(TEXT_MORE_INFORMATION, vam_href_link(FILENAME_REDIRECT, 'action=product&id='.$product->data['products_id'], 'NONSSL', true, false)));
+			$info->assign('PRODUCTS_URL', sprintf(TEXT_MORE_INFORMATION, vam_href_link(FILENAME_REDIRECT, 'action=product&id='.$product->data['products_id'], 'NONSSL', true, false)));
 
 		if ($product->data['products_date_available'] > date('Y-m-d H:i:s')) {
-			$info_smarty->assign('PRODUCTS_DATE_AVIABLE', sprintf(TEXT_DATE_AVAILABLE, vam_date_long($product->data['products_date_available'])));
+			$info->assign('PRODUCTS_DATE_AVIABLE', sprintf(TEXT_DATE_AVAILABLE, vam_date_long($product->data['products_date_available'])));
 
 		} else {
 			if ($product->data['products_date_added'] != '0000-00-00 00:00:00')
-				$info_smarty->assign('PRODUCTS_ADDED', sprintf(TEXT_DATE_ADDED, vam_date_long($product->data['products_date_added'])));
+				$info->assign('PRODUCTS_ADDED', sprintf(TEXT_DATE_ADDED, vam_date_long($product->data['products_date_added'])));
 
 		}
 
@@ -177,19 +177,19 @@ $i = count($_SESSION['tracking']['products_history']);
 		$_SESSION['tracking']['products_history'] = array_unique($_SESSION['tracking']['products_history']);
 	}
 	
-	$info_smarty->assign('language', $_SESSION['language']);
+	$info->assign('language', $_SESSION['language']);
 	// set cache ID
 	 if (!CacheCheck()) {
-		$info_smarty->caching = 0;
-		$product_info = $info_smarty->fetch(CURRENT_TEMPLATE.'/module/product_info/'.$product->data['product_template']);
+		$info->caching = 0;
+		$product_info = $info->fetch(CURRENT_TEMPLATE.'/module/product_info/'.$product->data['product_template']);
 	} else {
-		$info_smarty->caching = 1;
-		$info_smarty->cache_lifetime = CACHE_LIFETIME;
-		$info_smarty->cache_modified_check = CACHE_CHECK;
+		$info->caching = 1;
+		$info->cache_lifetime = CACHE_LIFETIME;
+		$info->cache_modified_check = CACHE_CHECK;
 		$cache_id = $product->data['products_id'].$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
-		$product_info = $info_smarty->fetch(CURRENT_TEMPLATE.'/module/product_info/'.$product->data['product_template'], $cache_id);
+		$product_info = $info->fetch(CURRENT_TEMPLATE.'/module/product_info/'.$product->data['product_template'], $cache_id);
 	}
 
 }
-$smarty->assign('main_content', $product_info);
+$vamTemplate->assign('main_content', $product_info);
 ?>

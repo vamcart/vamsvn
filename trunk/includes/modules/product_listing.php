@@ -17,8 +17,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $result = true;
 // include needed functions
 require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
@@ -46,11 +46,11 @@ if ($listing_split->number_of_rows > 0) {
 	$image = '';
 	if ($category['categories_image'] != '')
 		$image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];
-	$module_smarty->assign('CATEGORIES_NAME', $category['categories_name']);
-	$module_smarty->assign('CATEGORIES_HEADING_TITLE', $category['categories_heading_title']);
+	$module->assign('CATEGORIES_NAME', $category['categories_name']);
+	$module->assign('CATEGORIES_HEADING_TITLE', $category['categories_heading_title']);
 
-	$module_smarty->assign('CATEGORIES_IMAGE', $image);
-	$module_smarty->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
+	$module->assign('CATEGORIES_IMAGE', $image);
+	$module->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
 	$rows = 0;
 	$listing_query = vamDBquery($listing_split->sql_query);
@@ -80,23 +80,23 @@ if ($category['listing_template'] == '' or $category['listing_template'] == 'def
 
 if ($result != false) {
 
-	$module_smarty->assign('MANUFACTURER_DROPDOWN', $manufacturer_dropdown);
-	$module_smarty->assign('language', $_SESSION['language']);
-	$module_smarty->assign('module_content', $module_content);
+	$module->assign('MANUFACTURER_DROPDOWN', $manufacturer_dropdown);
+	$module->assign('language', $_SESSION['language']);
+	$module->assign('module_content', $module_content);
 
-	$module_smarty->assign('NAVIGATION', $navigation);
+	$module->assign('NAVIGATION', $navigation);
 	// set cache ID
 	 if (!CacheCheck()) {
-		$module_smarty->caching = 0;
-		$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template']);
+		$module->caching = 0;
+		$module = $module->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template']);
 	} else {
-		$module_smarty->caching = 1;
-		$module_smarty->cache_lifetime = CACHE_LIFETIME;
-		$module_smarty->cache_modified_check = CACHE_CHECK;
+		$module->caching = 1;
+		$module->cache_lifetime = CACHE_LIFETIME;
+		$module->cache_modified_check = CACHE_CHECK;
 		$cache_id = $current_category_id.'_'.$_SESSION['language'].'_'.$_SESSION['customers_status']['customers_status_name'].'_'.$_SESSION['currency'].'_'.$_GET['manufacturers_id'].'_'.$_GET['filter_id'].'_'.$_GET['page'].'_'.$_GET['keywords'].'_'.$_GET['categories_id'].'_'.$_GET['pfrom'].'_'.$_GET['pto'].'_'.$_GET['x'].'_'.$_GET['y'];
-		$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template'], $cache_id);
+		$module = $module->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template'], $cache_id);
 	}
-	$smarty->assign('main_content', $module);
+	$vamTemplate->assign('main_content', $module);
 } else {
 
 	$error = TEXT_PRODUCT_NOT_FOUND;

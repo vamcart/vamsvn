@@ -14,8 +14,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // select products
 //fsk18 lock
@@ -71,16 +71,16 @@ if ($actual_key == (sizeof($p_data) - 1)) {
 		$last_link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($p_data[(sizeof($p_data) - 1)]['pID'], $p_data[(sizeof($p_data) - 1)]['pName']));
 
 }
-$module_smarty->assign('FIRST', $first_link);
-$module_smarty->assign('PREVIOUS', $prev_link);
-$module_smarty->assign('NEXT', $next_link);
-$module_smarty->assign('LAST', $last_link);
+$module->assign('FIRST', $first_link);
+$module->assign('PREVIOUS', $prev_link);
+$module->assign('NEXT', $next_link);
+$module->assign('LAST', $last_link);
 
-$module_smarty->assign('PRODUCTS_COUNT', count($p_data));
-$module_smarty->assign('language', $_SESSION['language']);
+$module->assign('PRODUCTS_COUNT', count($p_data));
+$module->assign('language', $_SESSION['language']);
 
-$module_smarty->caching = 0;
-$product_navigator = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/product_navigator.html');
+$module->caching = 0;
+$product_navigator = $module->fetch(CURRENT_TEMPLATE.'/module/product_navigator.html');
 
-$info_smarty->assign('PRODUCT_NAVIGATOR', $product_navigator);
+$info->assign('PRODUCT_NAVIGATOR', $product_navigator);
 ?>

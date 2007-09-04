@@ -30,8 +30,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
 require_once (DIR_FS_INC.'vam_check_stock.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_stock.inc.php');
@@ -104,16 +104,16 @@ if ($customer_status_value['customers_status_ot_discount'] != 0) {
 	$total_content .= TEXT_CART_OT_DISCOUNT.$customer_status_value['customers_status_ot_discount'].'%';
 }
 if (SHOW_SHIPPING == 'true') {
-	$module_smarty->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
+	$module->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
 }
 
-$module_smarty->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
-$module_smarty->assign('TOTAL_CONTENT', $total_content);
-$module_smarty->assign('language', $_SESSION['language']);
-$module_smarty->assign('module_content', $module_content);
+$module->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
+$module->assign('TOTAL_CONTENT', $total_content);
+$module->assign('language', $_SESSION['language']);
+$module->assign('module_content', $module_content);
 
-$module_smarty->caching = 0;
-$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/order_details.html');
+$module->caching = 0;
+$module = $module->fetch(CURRENT_TEMPLATE.'/module/order_details.html');
 
-$smarty->assign('MODULE_order_details', $module);
+$vamTemplate->assign('MODULE_order_details', $module);
 ?>

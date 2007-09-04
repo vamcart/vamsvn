@@ -21,7 +21,7 @@
 
 
   if ($banner = vam_banner_exists('dynamic', 'banner')) {
-  $smarty->assign('BANNER',vam_display_banner('static', $banner));
+  $vamTemplate->assign('BANNER',vam_display_banner('static', $banner));
 
   }
 ?>

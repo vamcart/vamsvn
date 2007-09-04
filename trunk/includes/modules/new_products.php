@@ -22,8 +22,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 //fsk18 lock
 $fsk_lock = '';
@@ -74,29 +74,29 @@ while ($new_products = vam_db_fetch_array($new_products_query, true)) {
 
 }
 if (sizeof($module_content) >= 1) {
-   $module_smarty->assign('NEW_PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCTS_NEW));
-	$module_smarty->assign('language', $_SESSION['language']);
-	$module_smarty->assign('module_content', $module_content);
+   $module->assign('NEW_PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCTS_NEW));
+	$module->assign('language', $_SESSION['language']);
+	$module->assign('module_content', $module_content);
 	
 	// set cache ID
 	 if (!CacheCheck()) {
-		$module_smarty->caching = 0;
+		$module->caching = 0;
 		if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html');
+			$module = $module->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html');
 		} else {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html');
+			$module = $module->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html');
 		}
 	} else {
-		$module_smarty->caching = 1;
-		$module_smarty->cache_lifetime = CACHE_LIFETIME;
-		$module_smarty->cache_modified_check = CACHE_CHECK;
+		$module->caching = 1;
+		$module->cache_lifetime = CACHE_LIFETIME;
+		$module->cache_modified_check = CACHE_CHECK;
 		$cache_id = $new_products_category_id.$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
 		if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html', $cache_id);
+			$module = $module->fetch(CURRENT_TEMPLATE.'/module/new_products_default.html', $cache_id);
 		} else {
-			$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html', $cache_id);
+			$module = $module->fetch(CURRENT_TEMPLATE.'/module/new_products_category.html', $cache_id);
 		}
 	}
-	$default_smarty->assign('MODULE_new_products', $module);
+	$default->assign('MODULE_new_products', $module);
 }
 ?>

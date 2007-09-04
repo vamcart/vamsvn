@@ -17,8 +17,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
 $module_content = array ();
@@ -50,13 +50,13 @@ if (vam_db_num_rows($expected_query,true) > 0) {
 
 	}
 
-	$module_smarty->assign('language', $_SESSION['language']);
-	$module_smarty->assign('module_content', $module_content);
+	$module->assign('language', $_SESSION['language']);
+	$module->assign('module_content', $module_content);
 	// set cache ID
 
-	$module_smarty->caching = 0;
-	$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/upcoming_products.html');
+	$module->caching = 0;
+	$module = $module->fetch(CURRENT_TEMPLATE.'/module/upcoming_products.html');
 
-	$default_smarty->assign('MODULE_upcoming_products', $module);
+	$default->assign('MODULE_upcoming_products', $module);
 }
 ?>

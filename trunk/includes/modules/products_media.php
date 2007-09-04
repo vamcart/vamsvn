@@ -15,8 +15,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-$module_smarty = new vamTemplate;
-$module_smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $module_content = array ();
 $filename = '';
 
@@ -85,13 +85,13 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 		$module_content[] = array ('ICON' => $icon, 'FILENAME' => $filename, 'DESCRIPTION' => $content_data['file_comment'], 'FILESIZE' => vam_filesize($content_data['content_file']), 'BUTTON' => $button, 'HITS' => $content_data['content_read']);
 	}
 
-	$module_smarty->assign('language', $_SESSION['language']);
-	$module_smarty->assign('module_content', $module_content);
+	$module->assign('language', $_SESSION['language']);
+	$module->assign('module_content', $module_content);
 	// set cache ID
 
-		$module_smarty->caching = 0;
-		$module = $module_smarty->fetch(CURRENT_TEMPLATE.'/module/products_media.html');
+		$module->caching = 0;
+		$module = $module->fetch(CURRENT_TEMPLATE.'/module/products_media.html');
 
-	$info_smarty->assign('MODULE_products_media', $module);
+	$info->assign('MODULE_products_media', $module);
 }
 ?>
