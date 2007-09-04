@@ -29,7 +29,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 include ('includes/application_top.php');
-// create smarty elements
+// create template elements
 $vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
