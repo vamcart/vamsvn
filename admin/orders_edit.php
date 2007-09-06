@@ -27,7 +27,7 @@ if (!$_GET['oID'])
 	$_GET['oID'] = $_POST['oID'];
 $order = new order($_GET['oID']);
 
-require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vamPrice.php');
+require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 $vamPrice = new vamPrice($order->info['currency'], $order->info['status']);
 
 require_once (DIR_FS_INC.'vam_get_tax_class_id.inc.php');

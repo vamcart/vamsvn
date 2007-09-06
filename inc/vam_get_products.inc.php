@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-require(DIR_FS_CATALOG.'includes/classes/vamPrice.php');   
+require(DIR_FS_CATALOG.'includes/classes/vam_price.php');   
 
 function unserialize_session_data( $session_data ) {
    $variables = array();
