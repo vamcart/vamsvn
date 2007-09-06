@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vamPrice.php 1316 2007-02-06 20:23:03 VaM $ 
+   $Id: vam_price.php 1316 2007-02-06 20:23:03 VaM $ 
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru

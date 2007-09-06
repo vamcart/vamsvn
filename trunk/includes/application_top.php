@@ -391,7 +391,7 @@ require (DIR_WS_INCLUDES.'write_customers_status.php');
 require (DIR_WS_CLASSES.'main.php');
 $main = new main();
 
-require (DIR_WS_CLASSES.'vamPrice.php');
+require (DIR_WS_CLASSES.'vam_price.php');
 $vamPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
 
 require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
