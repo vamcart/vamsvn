@@ -103,11 +103,11 @@
       </tr>
       <tr>
        <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="69CDFF" ><?php echo vam_draw_separator('pixel_trans.gif',10, 15); ?></td>
-       <td width="100%" class="main"><?php echo TXT_CUSTOMERS; ?></td>
+       <td width="100%" class="main"><?php echo TXT_PRODUCTS; ?></td>
       </tr>
       <tr>
        <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="6BFF7F" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
-       <td width="100%" class="main"><?php echo TXT_PRODUCTS; ?></td>
+       <td width="100%" class="main"><?php echo TXT_CUSTOMERS; ?></td>
       </tr>
       <tr>
        <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="BFA8FF" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
