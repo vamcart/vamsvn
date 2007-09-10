@@ -699,7 +699,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
       </tr>
       <tr><?php echo vam_draw_form('status', FILENAME_ORDERS, vam_get_all_get_params(array('action')) . 'action=update_order'); ?>
-        <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '60', '5', $order->info['comments']); ?></td>
+        <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '60', '5'); ?></td>
       </tr>
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
