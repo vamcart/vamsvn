@@ -527,7 +527,7 @@ CREATE TABLE customers_status (
   customers_fsk18_display int(1) NOT NULL DEFAULT '1',
   customers_status_write_reviews int(1) NOT NULL DEFAULT '1',
   customers_status_read_reviews int(1) NOT NULL DEFAULT '1',
-  customers_status_accumulated_limit decimal(4,2) DEFAULT '0' ,
+  customers_status_accumulated_limit decimal(15,4) DEFAULT '0' ,
   PRIMARY KEY  (customers_status_id,language_id),
   KEY idx_orders_status_name (customers_status_name)
 );
