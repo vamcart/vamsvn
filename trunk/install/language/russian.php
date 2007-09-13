@@ -212,6 +212,7 @@ define('TEXT_ZONE_NO','Нет');
 define('TEXT_ZONE_YES','Да');
 define('TEXT_COMPANY','Название компании:');
 define('ENTRY_STATE_ERROR_SELECT','Укажите регион');
+define('ENTRY_STREET_ADDRESS_TEXT', '* Пример: ул. Мира 346, кв. 78');
 
 // step7
 
