@@ -52,8 +52,8 @@
    $messageStack = new messageStack();
   
     $process = false;
-  if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
-    $process = true;
+  if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['action'] == 'refresh'))) {
+    if ($_POST['action'] == 'process')  $process = true;
 
 
     $firstname = vam_db_prepare_input($_POST['FIRST_NAME']);
@@ -63,14 +63,16 @@
 	$postcode = vam_db_prepare_input($_POST['POST_CODE']);
     $city = vam_db_prepare_input($_POST['CITY']);
     $zone_id = vam_db_prepare_input($_POST['zone_id']);
-    $state = vam_db_prepare_input($_POST['STATE']);
-	$country = vam_db_prepare_input($_POST['COUNTRY']);
+    $state = vam_db_prepare_input($_POST['state']);
+	$country = vam_db_prepare_input($_POST['country']);
     $telephone = vam_db_prepare_input($_POST['TELEPHONE']);
     $password = vam_db_prepare_input($_POST['PASSWORD']);
     $confirmation = vam_db_prepare_input($_POST['PASSWORD_CONFIRMATION']);
     $store_name = vam_db_prepare_input($_POST['STORE_NAME']);
 	$email_from = vam_db_prepare_input($_POST['EMAIL_ADRESS_FROM']);
 	$company = vam_db_prepare_input($_POST['COMPANY']);
+
+if ($process) {
 		
     $error = false;
 
@@ -117,11 +119,13 @@
       $messageStack->add('step6', ENTRY_CITY_ERROR);
     }
 
-    if (is_numeric($country) == false) {
+    if (ACCOUNT_COUNTRY == 'true') {
+	    if (is_numeric($country) == false) {
       $error = true;
 
       $messageStack->add('step6', ENTRY_COUNTRY_ERROR);
     }
+}
 
     if (ACCOUNT_STATE == 'true') {
       $zone_id = 0;
@@ -129,8 +133,8 @@
       $check = vam_db_fetch_array($check_query);
       $entry_state_has_zones = ($check['total'] > 0);
       if ($entry_state_has_zones == true) {
-        $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name like '" . vam_db_input($state) . "%' or zone_code like '%" . vam_db_input($state) . "%')");
-        if (vam_db_num_rows($zone_query) > 0) {
+        $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and zone_name = '" . vam_db_input($state) . "'");
+        if (vam_db_num_rows($zone_query) == 1) {
           $zone = vam_db_fetch_array($zone_query);
           $zone_id = $zone['zone_id'];
         } else {
@@ -249,8 +253,12 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
 
 	      vam_redirect(vam_href_link('install/finished.php', '', 'NONSSL'));
 		}
+ }
 
-	}
+if (!isset($country)) $country = STORE_COUNTRY;
+if (!isset($state)) $state = STORE_ZONE;
+
+ }
 
 ?>
 
@@ -260,6 +268,21 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". ($em
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>" />
 <title><?php echo TITLE_STEP6; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/style.css" />
+<script language="javascript"><!--
+var form = "";
+var submitted = false;
+var error = false;
+var error_message = "";
+
+<?php // +Country-State Selector ?>
+function refresh_form(form_name) {
+   form_name.action.value = 'refresh';
+   form_name.submit();
+   return true;
+   }
+<?php // -Country-State Selector ?>
+
+//--></script>
 </head>
 <body>
 
@@ -328,24 +351,40 @@ if ($messageStack->size('step6') > 0) {
 <p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?></p>
 <p><strong><?php echo TEXT_POSTCODE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('POST_CODE'); ?></p>
 <p><strong><?php echo TEXT_CITY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('CITY'); ?></p>
-<p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php $selected = $_POST['COUNTRY']; echo vam_get_country_list('COUNTRY',$selected); ?></p>
+<p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php echo vam_get_country_list('country',STORE_COUNTRY, 'onChange="changeselect();"') . '&nbsp;'; ?></p>
 <p><strong><?php echo TEXT_STATE; ?></strong>&nbsp;
-<?php
-    if ($process == true) {
-      if ($entry_state_has_zones == true) {
-        $zones_array = array();
-        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = vam_db_fetch_array($zones_query)) {
-          $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-        }
-        echo vam_draw_pull_down_menu('STATE', $zones_array);
-      } else {
-        echo vam_draw_input_field('STATE');
+<script language="javascript">
+<!--
+function changeselect(reg) {
+//clear select
+    document.install.state.length=0;
+    var j=0;
+    for (var i=0;i<zones.length;i++) {
+      if (zones[i][0]==document.install.country.value) {
+   document.install.state.options[j]=new Option(zones[i][1],zones[i][1]);
+   j++;
+   }
       }
-    } else {
-      echo vam_draw_input_field('STATE');
-    }
-?>
+    if (j==0) {
+      document.install.state.options[0]=new Option('---','---');
+      }
+    if (reg) { document.install.state.value = reg; }
+}
+   var zones = new Array(
+   <?php
+       $zones_query = vam_db_query("select zone_country_id,zone_name from " . TABLE_ZONES . " order by zone_name asc");
+       $mas=array();
+       while ($zones_values = vam_db_fetch_array($zones_query)) {
+         $zones[] = 'new Array('.$zones_values['zone_country_id'].',"'.$zones_values['zone_name'].'")';
+       }
+       echo implode(',',$zones);
+       ?>
+       );
+document.write('<select name="state">');
+document.write('</select>');
+changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
+-->
+</script>
 </p>
 <p><strong><?php echo TEXT_TEL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('TELEPHONE'); ?></p>
 <p><strong><?php echo TEXT_PASSWORD; ?></strong>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD'); ?></p>
