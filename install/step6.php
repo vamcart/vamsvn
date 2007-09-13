@@ -348,7 +348,7 @@ if ($messageStack->size('step6') > 0) {
 <p><strong><?php echo TEXT_FIRSTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('FIRST_NAME'); ?></p>
 <p><strong><?php echo TEXT_LASTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('LAST_NAME'); ?></p>
 <p><strong><?php echo TEXT_EMAIL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS'); ?></p>
-<p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?></p>
+<p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?>&nbsp;<?php echo ENTRY_STREET_ADDRESS_TEXT; ?></p>
 <p><strong><?php echo TEXT_POSTCODE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('POST_CODE'); ?></p>
 <p><strong><?php echo TEXT_CITY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('CITY'); ?></p>
 <p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php echo vam_get_country_list('country',STORE_COUNTRY, 'onChange="changeselect();"') . '&nbsp;'; ?></p>
