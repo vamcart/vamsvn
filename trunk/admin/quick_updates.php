@@ -84,6 +84,7 @@ function manufacturers_list(){
 			 }
 		   }
 		}
+		// prices
 	  	if($_POST['product_new_price']){
 		   foreach($_POST['product_new_price'] as $id => $new_price) {
 			 if ($_POST['product_new_price'][$id] != $_POST['product_old_price'][$id] && $_POST['update_price'][$id] == 'yes') {
@@ -93,6 +94,39 @@ function manufacturers_list(){
 			 }
 		   }
 		}
+	  	
+		if($_POST['product_new_price1']){
+		   foreach($_POST['product_new_price1'] as $id => $new_price) {
+			 if ($_POST['product_new_price1'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			 }
+		   }
+		}
+	  	
+		if($_POST['product_new_price2']){
+		   foreach($_POST['product_new_price2'] as $id => $new_price) {
+			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			 }
+		   }
+		}
+		
+		if($_POST['product_new_price3']){
+		   foreach($_POST['product_new_price3'] as $id => $new_price) {
+			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price3'][$id] && $_POST['update_price'][$id] == 'yes') {
+			   $count_update++;
+			   $item_updated[$id] = 'updated';
+			   mysql_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			 }
+		   }
+		}
+		// prices
+		
+		
 		if($_POST['product_new_weight']){
 		   foreach($_POST['product_new_weight'] as $id => $new_weight) {
 			 if ($_POST['product_new_weight'][$id] != $_POST['product_old_weight'][$id]) {
@@ -392,6 +426,15 @@ function display_ttc(action, prix, taxe, up){
                   <?php echo " <a href=\"" . vam_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_price DESC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer) ."\" title=\"Desc\">&darr;</a>" . TABLE_HEADING_PRICE . "<a href=\"" . vam_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_price ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer) ."\" title=\"Asc\">&uarr;</a>"; ?>
                 </td>
                 <td class="dataTableHeadingContent">
+                  <?php echo TABLE_HEADING_PRICE . '2'; ?>
+                </td>
+                <td class="dataTableHeadingContent">
+                  <?php echo TABLE_HEADING_PRICE . '3'; ?>
+                </td>
+                <td class="dataTableHeadingContent">
+                  <?php echo TABLE_HEADING_PRICE . '4'; ?>
+                </td>
+                <td class="dataTableHeadingContent">
                   <?php if(DISPLAY_TAX == 'true')echo " <a href=\"" . vam_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_tax_class_id DESC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Desc\">&darr;</a>" .
                      TABLE_HEADING_TAX . "<a href=\"" . vam_href_link( FILENAME_QUICK_UPDATES, 'cPath='. $current_category_id .'&sort_by=p.products_tax_class_id ASC&page=' . $page.'&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer)."\" title=\"Asc\">&uarr;</a>" ; else echo "&nbsp;";?>
                 </td>
@@ -503,7 +546,54 @@ function display_ttc(action, prix, taxe, up){
                    echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price[".$products['products_id']."]\" "; if(DISPLAY_TVA_UP == 'true'){ echo "onKeyUp=\"display_ttc('keyup', this.value" . ", " . $tax_rate['tax_rate'] . ", 1);\"";} echo " value=\"".$price ."\">".vam_draw_checkbox_field('update_price['.$products['products_id'].']','yes','checked','no')."</td>\n";
             } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price[".$products['products_id']."]\" "; if(DISPLAY_TVA_UP == 'true'){ echo "onKeyUp=\"display_ttc('keyup', this.value" . ", " . $tax_rate['tax_rate'] . ", 1);\"";} echo " value=\"".$price ."\">".vam_draw_hidden_field('update_price['.$products['products_id'].']','yes'). "</td>\n";}
         }
+       
+		//
+		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_1` WHERE `products_id` = '" . $products['products_id'] . "'";
+		$xres = mysql_query($xquery);
+		$xobj = mysql_fetch_object($xres);
+		$xprice = $xobj->personal_offer;
+        if ( in_array($products['products_id'],$specials_array)) {
+            echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
+        } else {
+            if ($flag_spec == 'true') {
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+			}
+       		echo vam_draw_hidden_field('product_old_price1['.$products['products_id'].']', $xprice);
+        }
+
+		//
+		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_2` WHERE `products_id` = '" . $products['products_id'] . "'";
+		$xres = mysql_query($xquery);
+		$xobj = mysql_fetch_object($xres);
+		$xprice = $xobj->personal_offer;
+        if ( in_array($products['products_id'],$specials_array)) {
+            echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
+        } else {
+            if ($flag_spec == 'true') {
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+			}
+       		echo vam_draw_hidden_field('product_old_price2['.$products['products_id'].']', $xprice);
+        }
+
+		//
+		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_3` WHERE `products_id` = '" . $products['products_id'] . "'";
+		$xres = mysql_query($xquery);
+		$xobj = mysql_fetch_object($xres);
+		$xprice = $xobj->personal_offer;
+        if ( in_array($products['products_id'],$specials_array)) {
+            echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
+        } else {
+            if ($flag_spec == 'true') {
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+			}
+       		echo vam_draw_hidden_field('product_old_price3['.$products['products_id'].']', $xprice);
+        }
+        
         if(DISPLAY_TAX == 'true'){if(MODIFY_TAX == 'true')echo "<td align=\"center\">".vam_draw_pull_down_menu("product_new_tax[".$products['products_id']."]\"", $tax_class_array, $products['products_tax_class_id'])."</td>\n";else echo "<td align=\"center\">" . $tax_rate['tax_class_title'] . "&nbsp;</td>";}else{ echo "<td>&nbsp;</td>";}
+        
 //// links to preview or full edit
         if(DISPLAY_PREVIEW == 'true')echo "<td align=\"center\"><a href=\"".vam_href_link (FILENAME_CATEGORIES, 'pID='.$products['products_id'].'&action=new_product_preview&read=only&sort_by='.$sort_by.'&page='.$split_page.'&origin='.$origin)."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_IMAGE_PREVIEW) ."</a>&nbsp;</td>";else{ echo "<td>&nbsp;</td>";}"\n";
 		if(DISPLAY_EDIT == 'true')echo "<td align=\"center\"><a href=\"".vam_href_link (FILENAME_CATEGORIES, 'pID='.$products['products_id'].'&cPath='.$categories_products[0].'&action=new_product')."\">". vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', TEXT_IMAGE_SWITCH_EDIT) ."</a></td>";else{ echo "<td>&nbsp;</td>";}"\n";
@@ -527,7 +617,7 @@ function display_ttc(action, prix, taxe, up){
      }
 ?>
 <tr>
-<td colspan="12">
+<td colspan="15">
 <?php
 		 //// display bottom page buttons
     echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties">' . BUTTON_CANCEL . '</a> ';
