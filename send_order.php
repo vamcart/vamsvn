@@ -96,7 +96,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
 	// create subject
 	$order_subject = str_replace('{$nr}', $insert_id, EMAIL_BILLING_SUBJECT_ORDER);
-	$order_subject = str_replace('{$date}', vam_date_long_translate(strftime(DATE_FORMAT_LONG)), $order_subject);
+	$order_subject = str_replace('{$date}', strftime(DATE_FORMAT_LONG), $order_subject);
 	$order_subject = str_replace('{$lastname}', $order->customer['lastname'], $order_subject);
 	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
 
