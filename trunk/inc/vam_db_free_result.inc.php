@@ -17,7 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-  function vam_db_free_result($db_query) {
+function vam_db_free_result(&$db_query) {
+  if (is_array($db_query)) {
+    unset($db_query);
+    return true;
+  } else {
     return mysql_free_result($db_query);
   }
+}
  ?>
