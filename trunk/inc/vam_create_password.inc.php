@@ -32,7 +32,7 @@
 
   function vam_create_password($length) {
 
-  	$pass=vam_RandomString($lenght);
+  	$pass=vam_RandomString($length);
     return md5($pass);
   }
   
