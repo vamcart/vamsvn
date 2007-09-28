@@ -103,7 +103,7 @@
         $dhl_cost_sdx = @constant('MODULE_SHIPPING_DHL_COST_SDX_' . $j);
 
         $methods = array();
-        $n == 0;
+        $n = 0;
 
         if ($dhl_cost_ecx != '') {
           $dhl_table_ecx = split("[:,]" , $dhl_cost_ecx);
