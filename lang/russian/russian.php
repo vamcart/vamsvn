@@ -98,7 +98,7 @@ define('JS_REVIEW_TEXT', '* Поле Текст отзыва должно содержать не менее ' . REVI
 define('JS_REVIEW_RATING', '* Вы не указали рейтинг.\n');
 define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
 define('JS_ERROR_SUBMITTED', 'Эта форма уже заполнена. Нажимайте Ok.');
-define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
+define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
 
 /*
  *
@@ -241,8 +241,8 @@ define('TEXT_UNKNOWN_TAX_RATE', 'Неизвестная налоговая ставка');
  *
  */
 
-define('WARNING_INSTALL_DIRECTORY_EXISTS', 'Предупреждение: Не удалена директория установки магазина: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/install. Пожалуйста, удалите эту директорию в целях безопасности.');
-define('WARNING_CONFIG_FILE_WRITEABLE', 'Предупреждение: Файл конфигурации доступен для записи: ' . dirname($HTTP_SERVER_VARS['SCRIPT_FILENAME']) . '/includes/configure.php. Это - потенциальный риск безопасности - пожалуйста, установите необходимые права доступа к этому файлу.');
+define('WARNING_INSTALL_DIRECTORY_EXISTS', 'Предупреждение: Не удалена директория установки магазина: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/install. Пожалуйста, удалите эту директорию в целях безопасности.');
+define('WARNING_CONFIG_FILE_WRITEABLE', 'Предупреждение: Файл конфигурации доступен для записи: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php. Это - потенциальный риск безопасности - пожалуйста, установите необходимые права доступа к этому файлу.');
 define('WARNING_SESSION_DIRECTORY_NON_EXISTENT', 'Предупреждение: директория сессий не существует: ' . vam_session_save_path() . '. Сессии не будут работать пока эта директория не будет создана.');
 define('WARNING_SESSION_DIRECTORY_NOT_WRITEABLE', 'Предупреждение: Нет доступа к директории сессий: ' . vam_session_save_path() . '. Сессии не будут работать пока не установлены необходимые права доступа.');
 define('WARNING_SESSION_AUTO_START', 'Предупреждение: опция session.auto_start включена - пожалуйста, выключите данную опцию в файле php.ini и перезапустите веб-сервер.');
@@ -353,11 +353,7 @@ define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS', 'Изменить адрес доставки');
 define('NAVBAR_TITLE_1_CHECKOUT_SUCCESS', 'Оформление заказа');
 define('NAVBAR_TITLE_2_CHECKOUT_SUCCESS', 'Заказ успешно оформлен');
 define('NAVBAR_TITLE_CREATE_ACCOUNT', 'Регистрация');
-if ($navigation->snapshot['page'] == FILENAME_CHECKOUT_SHIPPING) {
-  define('NAVBAR_TITLE_LOGIN', 'Заказ');
-} else {
-  define('NAVBAR_TITLE_LOGIN', 'Вход');
-}
+define('NAVBAR_TITLE_LOGIN', 'Вход');
 define('NAVBAR_TITLE_LOGOFF','Выход');
 define('NAVBAR_TITLE_PRODUCTS_NEW', 'Новые товары');
 define('NAVBAR_TITLE_SHOPPING_CART', 'Корзина');
@@ -435,7 +431,6 @@ define('TEXT_CLOSE_WINDOW', 'Закрыть окно.');
  *
  */
 
-define('TEXT_CLOSE_WINDOW', 'Закрыть окно [x]');
 define('TEXT_COUPON_HELP_HEADER', 'Поздравляем, Вы использовали купон.');
 define('TEXT_COUPON_HELP_NAME', '<br /><br />Название купона: %s');
 define('TEXT_COUPON_HELP_FIXED', '<br /><br />Купон предоставляет скидку в размере %s');
