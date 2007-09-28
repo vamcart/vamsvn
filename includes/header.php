@@ -58,26 +58,26 @@ if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
 }
 
 if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
-require('includes/form_check.js.php');
+require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 
 
 if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
-require('includes/form_check.js.php');
+require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 if (strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD )) {
-require('includes/form_check.js.php');
+require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 if (strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT )) {
-require('includes/form_check.js.php');
+require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 if (strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS )) {
   if (isset($_GET['delete']) == false) {
-    include('includes/form_check.js.php');
+    include(DIR_WS_INCLUDES.'form_check.js.php');
   }
   }
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($PHP_SELF,FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
-require('includes/form_check.js.php');
+require(DIR_WS_INCLUDES.'form_check.js.php');
 ?>
 <script type="text/javascript"><!--
 function check_form_optional(form_name) {
@@ -215,15 +215,15 @@ echo '<body>';
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
-require('includes/google_conversiontracking.js.php');
+require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 
 
   // include needed functions
-  require_once('inc/vam_output_warning.inc.php');
-  require_once('inc/vam_image.inc.php');
-  require_once('inc/vam_parse_input_field_data.inc.php');
-  require_once('inc/vam_draw_separator.inc.php');
+  require_once(DIR_FS_INC.'vam_output_warning.inc.php');
+  require_once(DIR_FS_INC.'vam_image.inc.php');
+  require_once(DIR_FS_INC.'vam_parse_input_field_data.inc.php');
+  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
 
 //  require_once('inc/vam_draw_form.inc.php');
 //  require_once('inc/vam_draw_pull_down_menu.inc.php');

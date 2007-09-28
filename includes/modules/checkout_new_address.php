@@ -21,8 +21,8 @@ $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed functions
 
-  include_once('inc/vam_get_zone_name.inc.php');
-  include_once('inc/vam_get_country_list.inc.php');
+  include_once(DIR_FS_INC.'vam_get_zone_name.inc.php');
+  include_once(DIR_FS_INC.'vam_get_country_list.inc.php');
 
 if (!isset ($process))
 	$process = false;
