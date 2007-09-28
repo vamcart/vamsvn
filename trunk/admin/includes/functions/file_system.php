@@ -85,7 +85,7 @@ class FileFilter extends FileFilter_I{
     }
 
     function isExtensionSupported ($fileName){
-        $file_extension = substr($fileName, strrpos($file, '.'));
+        $file_extension = substr($fileName, strrpos($fileName, '.')); 
         $included = true;
         if ($this->included_extensions != NULL){
             $included = in_array($file_extension, $this->included_extensions);
