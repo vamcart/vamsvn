@@ -53,16 +53,17 @@ class InputFilter {
 	function process($source) {
 		// clean all elements in this array
 		if (is_array($source)) {
-			foreach ($source as $key => $value)
+			foreach ($source as $key => $value) {
 				// filter element for XSS and other 'bad' code etc.
 				$tmp_key = $key;
-			unset ($source[$key]);
-			$key = $this->remove($this->decode($key));
-			if ($key != $tmp_key) {
-				return $source;
-			} else {
-				if (is_string($value))
-					$source[$key] = $this->remove($this->decode($value));
+				unset ($source[$key]);
+				$key = $this->remove($this->decode($key));
+				if ($key != $tmp_key) {
+					return $source;
+				} else {
+					if (is_string($value))
+						$source[$key] = $this->remove($this->decode($value));
+				}
 			}
 			return $source;
 			// clean this string
