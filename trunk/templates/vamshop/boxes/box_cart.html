@@ -13,7 +13,7 @@
 {if $empty=='false'}
 {foreach name=aussen item=products_data from=$products}
 <p>
-{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}">{$products_data.NAME|truncate:15:"...":true}</a>
+{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}">{$products_data.NAME|truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>
 </p>
 {/foreach}
 {if $DISCOUNT}

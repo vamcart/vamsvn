@@ -680,6 +680,10 @@ define('MAX_DISPLAY_LATEST_NEWS_PAGE_TITLE' , 'Новостей на одной странице');
 define('MAX_DISPLAY_LATEST_NEWS_PAGE_DESC' , 'Количество новостей, отображаемых на одной станице');
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_TITLE' , 'Новости кратко');
 define('MAX_DISPLAY_LATEST_NEWS_CONTENT_DESC' , 'Количество символов, отображаемых при предварительном просмотре новости');
+define('MAX_DISPLAY_CART_TITLE' , 'Максимум символов в названии товара в корзине');
+define('MAX_DISPLAY_CART_DESC' , 'Количество символов, выводимых в названии товара в боксе корзина, что б товары с длинным названием не раятягивали корзину.');
+define('MAX_DISPLAY_SHORT_DESCRIPTION_TITLE' , 'Максимум символов в кратком описании');
+define('MAX_DISPLAY_SHORT_DESCRIPTION_DESC' , 'Количество символов, выводимых в кратком описании, что б объёмное описание на ломало дизайн.');
 
 // Установка модулей
 
