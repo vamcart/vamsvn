@@ -19,12 +19,19 @@
 
 
 function vam_currency_exists($code) {
-    $currency_code = vam_db_query("select currencies_id from " . TABLE_CURRENCIES . " where code = '" . $code . "'");
-    if (vam_db_num_rows($currency_code)) {
-      return $code;
-    } else {
-      return false;
-    }
-  }
+	$param ='/[^a-zA-Z]/';
+	$code=preg_replace($param,'',$code);
+	$currency_code = vam_db_query("SELECT code, currencies_id from " . TABLE_CURRENCIES . " WHERE code = '" . $code . "' LIMIT 1");
+	if (vam_db_num_rows($currency_code)) {
+		$curr = vam_db_fetch_array($currency_code);
+		if ($curr['code'] == $code) {
+			return $code;
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
+}
 
  ?>
