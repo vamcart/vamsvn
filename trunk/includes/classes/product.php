@@ -397,10 +397,10 @@ class product {
 
 			if ($_SESSION['customers_status']['customers_status_show_price'] != '0') {
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
-				if ($array['products_fsk18'] == '0')
+				if ($array['products_fsk18'] == '0') { 
 					$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
-					$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
-			
+					$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']); 
+			 } 
 			} else {
 				$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
 				$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
