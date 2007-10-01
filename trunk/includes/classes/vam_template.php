@@ -10,7 +10,7 @@ class vamTemplate extends Smarty {
         $this->Smarty();
 
         $this->template_dir = DIR_FS_CATALOG . 'templates';
-        $this->compile_dir = DIR_FS_CATALOG . 'templates_c';
+        $this->compile_dir = DIR_FS_CATALOG . 'cache';
         $this->config_dir   = DIR_FS_CATALOG . 'lang';
         $this->cache_dir    = DIR_FS_CATALOG . 'cache';
         $this->plugins_dir = array(

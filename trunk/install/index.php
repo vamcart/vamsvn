@@ -141,11 +141,6 @@
 
  // smarty folders
  $folder_flag==false;
-   if (!is_writeable(DIR_FS_CATALOG . 'templates_c/')) {
-    $error_flag=true;
-    $folder_flag=true;
-    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'templates_c/</div>';
- }
     if (!is_writeable(DIR_FS_CATALOG . 'cache/')) {
     $error_flag=true;
     $folder_flag=true;
