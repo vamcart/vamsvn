@@ -34,10 +34,6 @@ if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.org.php')), '444')
 	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.org.php';
 }
 
-if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'templates_c/')), '777') and !strpos(decoct(fileperms(DIR_FS_CATALOG.'templates_c/')), '755')) {
-	$folder_warning .= '<br>'.DIR_FS_CATALOG.'templates_c/';
-}
-
 if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'cache/')), '777') and !strpos(decoct(fileperms(DIR_FS_CATALOG.'cache/')), '755')) {
 	$folder_warning .= '<br>'.DIR_FS_CATALOG.'cache/';
 }
