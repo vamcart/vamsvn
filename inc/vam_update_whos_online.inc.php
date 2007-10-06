@@ -27,7 +27,7 @@
       $wo_full_name = addslashes($customer['customers_firstname'] . ' ' . $customer['customers_lastname']);
     } else {
       $wo_customer_id = '';
-      $wo_full_name = 'Guest';
+      $wo_full_name = TEXT_GUEST;
     }
 
     $wo_session_id = vam_session_id();
