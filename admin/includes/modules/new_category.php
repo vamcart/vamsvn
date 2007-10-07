@@ -55,9 +55,11 @@
 <script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
 
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
+<?php if (ENABLE_TABS == 'true') { ?>
 <script type="text/javascript" src="includes/javascript/tabber.js"></script>
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
 <link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+<?php } ?>
 
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
