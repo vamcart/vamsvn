@@ -103,9 +103,11 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 <script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
 
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
+<?php if (ENABLE_TABS == 'true') { ?>
 <script type="text/javascript" src="includes/javascript/tabber.js"></script>
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
 <link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+<?php } ?>
 
 <tr><td>
 <?php $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product'; ?>
