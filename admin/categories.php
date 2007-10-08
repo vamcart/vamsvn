@@ -126,7 +126,7 @@ if ($_GET['action']) {
 			if (($_GET['flag'] == '0') || ($_GET['flag'] == '1')) {
 				if ($_GET['pID']) {
 					$catfunc->set_product_startpage($_GET['pID'], $_GET['flag']);
-					if ($_GET['flag'] == '1') $catfunc->link_product($_GET['pID'], 0);
+//					if ($_GET['flag'] == '1') $catfunc->link_product($_GET['pID'], 0);
 				}
 			}
 			if ($_GET['pID']) {
