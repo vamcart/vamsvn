@@ -893,7 +893,7 @@ class categories {
 			$this->set_product_startpage($src_products_id, 1);
 	    							   }
 		} else {
-			$messageStack->add_session(ERROR_CANNOT_LINK_TO_SAME_CATEGORY, 'error');
+//			$messageStack->add_session(ERROR_CANNOT_LINK_TO_SAME_CATEGORY, 'error');
 		}
 	} // link_product ends
 
