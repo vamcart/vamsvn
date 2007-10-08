@@ -241,7 +241,7 @@ class vamPrice {
 				$discount = $attribute_price_data['products_discount_allowed'];
 		}
 //		$price = $this->GetPrice($pID, $format = false, 1, $attribute_price_data['products_tax_class_id'], $attribute_price_data['options_values_price']);
-		$price = $this->Format($attribute_price_data['options_values_price'], false, $attribute_price_data['products_tax_class_id']);
+		$price = $this->Format($attribute_price_data['options_values_price'], false, $attribute_price_data['products_tax_class_id'],true);
 		if ($attribute_price_data['weight_prefix'] != '+')
 			$attribute_price_data['options_values_weight'] *= -1;
 		if ($attribute_price_data['price_prefix'] == '+') {
