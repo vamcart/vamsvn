@@ -164,6 +164,7 @@ require_once (DIR_FS_INC.'vam_calculate_tax.inc.php');
 require_once (DIR_FS_INC.'vam_input_validation.inc.php');
 require_once (DIR_FS_INC.'vam_js_lang.php');
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
+require_once (DIR_FS_INC.'vam_break_string.inc.php');
 
 // make a connection to the database... now
 vam_db_connect() or die('Unable to connect to database server!');
