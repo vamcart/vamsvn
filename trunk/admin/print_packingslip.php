@@ -124,10 +124,6 @@ if ($order->info['shipping_class'] != '') {
   	// dont allow cache
   	$vamTemplate->caching = false;
   	
-	$vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
-	$vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
-	$vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
-	
   	$vamTemplate->display(CURRENT_TEMPLATE . '/admin/print_packingslip.html');	
 //	} else {
   	

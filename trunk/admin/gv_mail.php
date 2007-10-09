@@ -71,11 +71,6 @@
       $vamTemplate->assign('language', $_SESSION['language']);
       $vamTemplate->caching = false;
 
-      // set dirs manual
-      $vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
-      $vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
-      $vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
-
       $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
       $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
@@ -108,11 +103,6 @@
       // assign language to template for caching
       $vamTemplate->assign('language', $_SESSION['language']);
       $vamTemplate->caching = false;
-
-      // set dirs manual
-      $vamTemplate->template_dir=DIR_FS_CATALOG.'templates';
-      $vamTemplate->compile_dir=DIR_FS_CATALOG.'templates_c';
-      $vamTemplate->config_dir=DIR_FS_CATALOG.'lang';
 
       $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
       $vamTemplate->assign('logo_path',HTTP_SERVER  . DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
