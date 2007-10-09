@@ -120,7 +120,7 @@ if ($order->info['shipping_class'] != '') {
 }    
     
     $vamTemplate->assign('COMMENTS', $order->info['comments']);
-  	$vamTemplate->assign('DATE',vam_date_long($order->info['date_purchased']));
+  	$vamTemplate->assign('DATE',vam_date_short($order->info['date_purchased']));
   	$vamTemplate->assign('order_data', $order_data);
   	$vamTemplate->assign('order_total', $order_total);
 
