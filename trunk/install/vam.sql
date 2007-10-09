@@ -54,7 +54,7 @@ CREATE TABLE address_book (
   address_last_modified datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (address_book_id),
   KEY idx_address_book_customers_id (customers_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS topics;
 CREATE TABLE topics (
@@ -66,7 +66,7 @@ CREATE TABLE topics (
   last_modified datetime default NULL,
   PRIMARY KEY  (topics_id),
   KEY idx_topics_parent_id (parent_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS topics_description;
 CREATE TABLE topics_description (
@@ -77,7 +77,7 @@ CREATE TABLE topics_description (
   topics_description text,
   PRIMARY KEY  (topics_id,language_id),
   KEY idx_topics_name (topics_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS articles;
 CREATE TABLE articles (
@@ -89,7 +89,7 @@ CREATE TABLE articles (
   authors_id int(11) default NULL,
   PRIMARY KEY  (articles_id),
   KEY idx_articles_date_added (articles_date_added)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS articles_description;
 CREATE TABLE articles_description (
@@ -104,14 +104,14 @@ CREATE TABLE articles_description (
   articles_head_keywords_tag text,
   PRIMARY KEY  (articles_id,language_id),
   KEY articles_name (articles_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS articles_to_topics;
 CREATE TABLE articles_to_topics (
   articles_id int(11) NOT NULL default '0',
   topics_id int(11) NOT NULL default '0',
   PRIMARY KEY  (articles_id,topics_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS authors;
 CREATE TABLE authors (
@@ -122,7 +122,7 @@ CREATE TABLE authors (
   last_modified datetime default NULL,
   PRIMARY KEY  (authors_id),
   KEY IDX_AUTHORS_NAME (authors_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS authors_info;
 CREATE TABLE authors_info (
@@ -133,7 +133,7 @@ CREATE TABLE authors_info (
   url_clicked int(5) NOT NULL default '0',
   date_last_click datetime default NULL,
   PRIMARY KEY  (authors_id,languages_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_memo;
 CREATE TABLE customers_memo (
@@ -144,7 +144,7 @@ CREATE TABLE customers_memo (
   memo_text text NOT NULL,
   poster_id int(11) NOT NULL default '0',
   PRIMARY KEY  (memo_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_xsell;
 CREATE TABLE products_xsell (
@@ -154,7 +154,7 @@ CREATE TABLE products_xsell (
   xsell_id int(10) unsigned NOT NULL default '1',
   sort_order int(10) unsigned NOT NULL default '1',
   PRIMARY KEY  (ID)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_xsell_grp_name;
 CREATE TABLE products_xsell_grp_name (
@@ -162,7 +162,7 @@ CREATE TABLE products_xsell_grp_name (
   xsell_sort_order int(10) NOT NULL default '0',
   language_id smallint(6) NOT NULL default '0',
   groupname varchar(255) NOT NULL default ''
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS campaigns;
 CREATE TABLE campaigns (
@@ -174,14 +174,14 @@ CREATE TABLE campaigns (
   last_modified datetime default NULL,
   PRIMARY KEY  (campaigns_id),
   KEY IDX_CAMPAIGNS_NAME (campaigns_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS campaigns_ip;
 CREATE TABLE  campaigns_ip (
  user_ip VARCHAR( 15 ) NOT NULL ,
  time DATETIME NOT NULL ,
  campaign VARCHAR( 32 ) NOT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS address_format;
 CREATE TABLE address_format (
@@ -189,13 +189,13 @@ CREATE TABLE address_format (
   address_format varchar(255) NOT NULL,
   address_summary varchar(255) NOT NULL,
   PRIMARY KEY (address_format_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE IF EXISTS database_version;
 CREATE TABLE database_version (
   version varchar(255) NOT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS admin_access;
 CREATE TABLE admin_access (
@@ -280,7 +280,7 @@ CREATE TABLE admin_access (
   articles_config int(1) NOT NULL default '0',
   
   PRIMARY KEY  (customers_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE IF EXISTS banktransfer;
@@ -294,7 +294,7 @@ CREATE TABLE banktransfer (
   banktransfer_prz char(2) default NULL,
   banktransfer_fax char(2) default NULL,
   KEY orders_id(orders_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE IF EXISTS banners;
@@ -312,7 +312,7 @@ CREATE TABLE banners (
   date_status_change datetime DEFAULT NULL,
   status int(1) DEFAULT '1' NOT NULL,
   PRIMARY KEY  (banners_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS banners_history;
 CREATE TABLE banners_history (
@@ -322,7 +322,7 @@ CREATE TABLE banners_history (
   banners_clicked int(5) NOT NULL DEFAULT '0',
   banners_history_date datetime NOT NULL,
   PRIMARY KEY  (banners_history_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
@@ -343,7 +343,7 @@ CREATE TABLE categories (
   last_modified datetime,
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
@@ -357,7 +357,7 @@ CREATE TABLE categories_description (
   categories_meta_keywords varchar(255) NOT NULL,
   PRIMARY KEY (categories_id, language_id),
   KEY idx_categories_name (categories_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS configuration;
 CREATE TABLE configuration (
@@ -372,7 +372,7 @@ CREATE TABLE configuration (
   set_function varchar(255) NULL,
   PRIMARY KEY (configuration_id),
   KEY idx_configuration_group_id (configuration_group_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS configuration_group;
 CREATE TABLE configuration_group (
@@ -383,19 +383,19 @@ CREATE TABLE configuration_group (
   sort_order int(5) NULL,
   visible int(1) DEFAULT '1' NULL,
   PRIMARY KEY (configuration_group_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS counter;
 CREATE TABLE counter (
   startdate char(8),
   counter int(12)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS counter_history;
 CREATE TABLE counter_history (
   month char(8),
   counter int(12)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (
@@ -407,7 +407,7 @@ CREATE TABLE countries (
   status int(1) DEFAULT '1' NULL,  
   PRIMARY KEY (countries_id),
   KEY IDX_COUNTRIES_NAME (countries_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS currencies;
 CREATE TABLE currencies (
@@ -422,7 +422,7 @@ CREATE TABLE currencies (
   value float(13,8),
   last_updated datetime NULL,
   PRIMARY KEY (currencies_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
@@ -457,7 +457,7 @@ CREATE TABLE customers (
   login_tries char(2) NOT NULL default '0',
   login_time datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY (customers_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_basket;
 CREATE TABLE customers_basket (
@@ -468,7 +468,7 @@ CREATE TABLE customers_basket (
   final_price decimal(15,4) NOT NULL,
   customers_basket_date_added char(8),
   PRIMARY KEY (customers_basket_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_basket_attributes;
 CREATE TABLE customers_basket_attributes (
@@ -478,7 +478,7 @@ CREATE TABLE customers_basket_attributes (
   products_options_id int NOT NULL,
   products_options_value_id int NOT NULL,
   PRIMARY KEY (customers_basket_attributes_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_info;
 CREATE TABLE customers_info (
@@ -489,7 +489,7 @@ CREATE TABLE customers_info (
   customers_info_date_account_last_modified datetime,
   global_product_notifications int(1) DEFAULT '0',
   PRIMARY KEY (customers_info_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_ip;
 CREATE TABLE customers_ip (
@@ -502,7 +502,7 @@ CREATE TABLE customers_ip (
   customers_referer_url varchar(255) default NULL,
   PRIMARY KEY  (customers_ip_id),
   KEY customers_id (customers_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_status;
 CREATE TABLE customers_status (
@@ -530,13 +530,13 @@ CREATE TABLE customers_status (
   customers_status_accumulated_limit decimal(15,4) DEFAULT '0' ,
   PRIMARY KEY  (customers_status_id,language_id),
   KEY idx_orders_status_name (customers_status_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_status_orders_status;
 CREATE TABLE customers_status_orders_status (
   customers_status_id int(11) default '0' not null ,
   orders_status_id int(11) default '0' not null
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_status_history;
 CREATE TABLE customers_status_history (
@@ -547,7 +547,7 @@ CREATE TABLE customers_status_history (
   date_added datetime NOT NULL default '0000-00-00 00:00:00',
   customer_notified int(1) default '0',
   PRIMARY KEY  (customers_status_history_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS languages;
 CREATE TABLE languages (
@@ -560,7 +560,7 @@ CREATE TABLE languages (
   language_charset text NOT NULL,
   PRIMARY KEY (languages_id),
   KEY IDX_LANGUAGES_NAME (name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS latest_news;
 CREATE TABLE latest_news (
@@ -571,7 +571,7 @@ CREATE TABLE latest_news (
    language int(11) NOT NULL default '1',
    status tinyint(1) DEFAULT '0' NOT NULL,
    PRIMARY KEY (news_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS manufacturers;
 CREATE TABLE manufacturers (
@@ -582,7 +582,7 @@ CREATE TABLE manufacturers (
   last_modified datetime NULL,
   PRIMARY KEY (manufacturers_id),
   KEY IDX_MANUFACTURERS_NAME (manufacturers_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS manufacturers_info;
 CREATE TABLE manufacturers_info (
@@ -595,7 +595,7 @@ CREATE TABLE manufacturers_info (
   url_clicked int(5) NOT NULL default '0',
   date_last_click datetime NULL,
   PRIMARY KEY (manufacturers_id, languages_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS newsletters;
 CREATE TABLE newsletters (
@@ -608,7 +608,7 @@ CREATE TABLE newsletters (
   status int(1),
   locked int(1) DEFAULT '0',
   PRIMARY KEY (newsletters_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS newsletter_recipients;
 CREATE TABLE newsletter_recipients (
@@ -622,7 +622,7 @@ CREATE TABLE newsletter_recipients (
   mail_key varchar(255) NOT NULL default '',
   date_added datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (mail_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS newsletters_history;
 CREATE TABLE newsletters_history (
@@ -630,7 +630,7 @@ CREATE TABLE newsletters_history (
   news_hist_cs int(11) NOT NULL default '0',
   news_hist_cs_date_sent date default NULL,
   PRIMARY KEY  (news_hist_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
@@ -708,7 +708,7 @@ CREATE TABLE orders (
   orig_reference text,
   login_reference text,
   PRIMARY KEY (orders_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS card_blacklist;
 CREATE TABLE card_blacklist (
@@ -717,7 +717,7 @@ CREATE TABLE card_blacklist (
   date_added datetime default NULL,
   last_modified datetime default NULL,
   KEY blacklist_id (blacklist_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_products;
 CREATE TABLE orders_products (
@@ -734,7 +734,7 @@ CREATE TABLE orders_products (
   products_quantity int(2) NOT NULL,
   allow_tax int(1) NOT NULL,
   PRIMARY KEY (orders_products_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_status;
 CREATE TABLE orders_status (
@@ -743,7 +743,7 @@ CREATE TABLE orders_status (
   orders_status_name varchar(255) NOT NULL,
   PRIMARY KEY (orders_status_id, language_id),
   KEY idx_orders_status_name (orders_status_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS shipping_status;
 CREATE TABLE shipping_status (
@@ -753,7 +753,7 @@ CREATE TABLE shipping_status (
   shipping_status_image varchar(255) NOT NULL,
   PRIMARY KEY (shipping_status_id, language_id),
   KEY idx_shipping_status_name (shipping_status_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_status_history;
 CREATE TABLE orders_status_history (
@@ -764,7 +764,7 @@ CREATE TABLE orders_status_history (
   customer_notified int(1) DEFAULT '0',
   comments text,
   PRIMARY KEY (orders_status_history_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_products_attributes;
 CREATE TABLE orders_products_attributes (
@@ -776,7 +776,7 @@ CREATE TABLE orders_products_attributes (
   options_values_price decimal(15,4) NOT NULL,
   price_prefix char(1) NOT NULL,
   PRIMARY KEY (orders_products_attributes_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_products_download;
 CREATE TABLE orders_products_download (
@@ -787,7 +787,7 @@ CREATE TABLE orders_products_download (
   download_maxdays int(2) NOT NULL default '0',
   download_count int(2) NOT NULL default '0',
   PRIMARY KEY  (orders_products_download_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_total;
 CREATE TABLE orders_total (
@@ -800,7 +800,7 @@ CREATE TABLE orders_total (
   sort_order int NOT NULL,
   PRIMARY KEY (orders_total_id),
   KEY idx_orders_total_orders_id (orders_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS orders_recalculate;
 CREATE TABLE orders_recalculate (
@@ -812,7 +812,7 @@ CREATE TABLE orders_recalculate (
   tax_rate decimal(7,4) NOT NULL default '0.0000',
   class varchar(255) NOT NULL default '',
   PRIMARY KEY  (orders_recalculate_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
@@ -848,7 +848,7 @@ CREATE TABLE products (
   products_to_xml tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (products_id),
   KEY idx_products_date_added (products_date_added)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 
@@ -867,7 +867,7 @@ CREATE TABLE products_attributes (
   sortorder int(11) NULL,
   PRIMARY KEY  (products_attributes_id),
   KEY PRODUCTS_ID_INDEX (products_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_attributes_download;
 CREATE TABLE products_attributes_download (
@@ -876,7 +876,7 @@ CREATE TABLE products_attributes_download (
   products_attributes_maxdays int(2) default '0',
   products_attributes_maxcount int(2) default '0',
   PRIMARY KEY  (products_attributes_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_description;
 CREATE TABLE products_description (
@@ -893,7 +893,7 @@ CREATE TABLE products_description (
   products_viewed int(5) default '0',
   PRIMARY KEY  (products_id,language_id),
   KEY products_name (products_name)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_images;
 CREATE TABLE products_images (
@@ -902,7 +902,7 @@ CREATE TABLE products_images (
   image_nr SMALLINT NOT NULL ,
   image_name VARCHAR( 254 ) NOT NULL ,
   PRIMARY KEY ( image_id )
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_notifications;
 CREATE TABLE products_notifications (
@@ -910,7 +910,7 @@ CREATE TABLE products_notifications (
   customers_id int NOT NULL,
   date_added datetime NOT NULL,
   PRIMARY KEY (products_id, customers_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_options;
 CREATE TABLE products_options (
@@ -918,7 +918,7 @@ CREATE TABLE products_options (
   language_id int NOT NULL default '1',
   products_options_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (products_options_id,language_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_options_values;
 CREATE TABLE products_options_values (
@@ -926,7 +926,7 @@ CREATE TABLE products_options_values (
   language_id int NOT NULL default '1',
   products_options_values_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (products_options_values_id,language_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_options_values_to_products_options;
 CREATE TABLE products_options_values_to_products_options (
@@ -934,7 +934,7 @@ CREATE TABLE products_options_values_to_products_options (
   products_options_id int NOT NULL,
   products_options_values_id int NOT NULL,
   PRIMARY KEY (products_options_values_to_products_options_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_graduated_prices;
 CREATE TABLE products_graduated_prices (
@@ -942,21 +942,21 @@ CREATE TABLE products_graduated_prices (
   quantity int(11) NOT NULL default '0',
   unitprice decimal(15,4) NOT NULL default '0.0000',
   KEY products_id (products_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_to_categories;
 CREATE TABLE products_to_categories (
   products_id int NOT NULL,
   categories_id int NOT NULL,
   PRIMARY KEY (products_id,categories_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_vpe;
 CREATE TABLE products_vpe (
   products_vpe_id int(11) NOT NULL default '0',
   language_id int(11) NOT NULL default '0',
   products_vpe_name varchar(255) NOT NULL default ''
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
@@ -969,7 +969,7 @@ CREATE TABLE reviews (
   last_modified datetime,
   reviews_read int(5) NOT NULL default '0',
   PRIMARY KEY (reviews_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS reviews_description;
 CREATE TABLE reviews_description (
@@ -977,7 +977,7 @@ CREATE TABLE reviews_description (
   languages_id int NOT NULL,
   reviews_text text NOT NULL,
   PRIMARY KEY (reviews_id, languages_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS scart;
 CREATE TABLE scart (
@@ -985,7 +985,7 @@ CREATE TABLE scart (
   customers_id INT(11) NOT NULL ,
   dateadded VARCHAR(8) NOT NULL ,
   PRIMARY KEY (scartid)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS sessions;
 CREATE TABLE sessions (
@@ -993,7 +993,7 @@ CREATE TABLE sessions (
   expiry int(11) unsigned NOT NULL,
   value text NOT NULL,
   PRIMARY KEY (sesskey)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS specials;
 CREATE TABLE specials (
@@ -1009,7 +1009,7 @@ CREATE TABLE specials (
   PRIMARY KEY (specials_id),
   KEY idx_products_id (products_id),
   KEY PRODUCTS_ID_INDEX (products_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS featured;
 CREATE TABLE featured (
@@ -1022,7 +1022,7 @@ CREATE TABLE featured (
   date_status_change datetime,
   status int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (featured_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS tax_class;
 CREATE TABLE tax_class (
@@ -1032,7 +1032,7 @@ CREATE TABLE tax_class (
   last_modified datetime NULL,
   date_added datetime NOT NULL,
   PRIMARY KEY (tax_class_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS tax_rates;
 CREATE TABLE tax_rates (
@@ -1045,7 +1045,7 @@ CREATE TABLE tax_rates (
   last_modified datetime NULL,
   date_added datetime NOT NULL,
   PRIMARY KEY (tax_rates_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS geo_zones;
 CREATE TABLE geo_zones (
@@ -1055,7 +1055,7 @@ CREATE TABLE geo_zones (
   last_modified datetime NULL,
   date_added datetime NOT NULL,
   PRIMARY KEY (geo_zone_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS whos_online;
 CREATE TABLE whos_online (
@@ -1066,7 +1066,7 @@ CREATE TABLE whos_online (
   time_entry varchar(14) NOT NULL,
   time_last_click varchar(14) NOT NULL,
   last_page_url varchar(255) NOT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS zones;
 CREATE TABLE zones (
@@ -1075,7 +1075,7 @@ CREATE TABLE zones (
   zone_code varchar(255) NOT NULL,
   zone_name varchar(255) NOT NULL,
   PRIMARY KEY (zone_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS zones_to_geo_zones;
 CREATE TABLE zones_to_geo_zones (
@@ -1086,7 +1086,7 @@ CREATE TABLE zones_to_geo_zones (
    last_modified datetime NULL,
    date_added datetime NOT NULL,
    PRIMARY KEY (association_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE IF EXISTS content_manager;
@@ -1110,7 +1110,7 @@ CREATE TABLE content_manager (
   content_meta_description TEXT,
   content_meta_keywords TEXT,
   PRIMARY KEY  (content_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS media_content;
 CREATE TABLE media_content (
@@ -1119,7 +1119,7 @@ CREATE TABLE media_content (
   new_filename text NOT NULL,
   file_comment text NOT NULL,
   PRIMARY KEY  (file_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_content;
 CREATE TABLE products_content (
@@ -1133,7 +1133,7 @@ CREATE TABLE products_content (
   content_read int(11) NOT NULL default '0',
   file_comment text NOT NULL,
   PRIMARY KEY  (content_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS module_newsletter;
 CREATE TABLE module_newsletter (
@@ -1145,14 +1145,14 @@ CREATE TABLE module_newsletter (
   status int(1) NOT NULL default '0',
   body text NOT NULL,
   PRIMARY KEY  (newsletter_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if exists cm_file_flags;
 CREATE TABLE cm_file_flags (
   file_flag int(11) NOT NULL,
   file_flag_name varchar(255) NOT NULL,
   PRIMARY KEY (file_flag)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 
@@ -1161,7 +1161,7 @@ CREATE TABLE payment_moneybookers_currencies (
   mb_currID char(3) NOT NULL default '',
   mb_currName varchar(255) NOT NULL default '',
   PRIMARY KEY  (mb_currID)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE if EXISTS payment_moneybookers;
@@ -1174,7 +1174,7 @@ CREATE TABLE payment_moneybookers (
   mb_STATUS tinyint(1) NOT NULL default '0',
   mb_ORDERID int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (mb_TRID)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 DROP TABLE if EXISTS payment_moneybookers_countries;
@@ -1182,7 +1182,7 @@ CREATE TABLE payment_moneybookers_countries (
   osc_cID int(11) NOT NULL default '0',
   mb_cID char(3) NOT NULL default '',
   PRIMARY KEY  (osc_cID)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupon_email_track;
 CREATE TABLE coupon_email_track (
@@ -1194,7 +1194,7 @@ CREATE TABLE coupon_email_track (
   emailed_to varchar(255) default NULL,
   date_sent datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (unique_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupon_gv_customer;
 CREATE TABLE coupon_gv_customer (
@@ -1202,7 +1202,7 @@ CREATE TABLE coupon_gv_customer (
   amount decimal(8,4) NOT NULL default '0.0000',
   PRIMARY KEY  (customer_id),
   KEY customer_id (customer_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupon_gv_queue;
 CREATE TABLE coupon_gv_queue (
@@ -1215,7 +1215,7 @@ CREATE TABLE coupon_gv_queue (
   release_flag char(1) NOT NULL default 'N',
   PRIMARY KEY  (unique_id),
   KEY uid (unique_id,customer_id,order_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupon_redeem_track;
 CREATE TABLE coupon_redeem_track (
@@ -1226,7 +1226,7 @@ CREATE TABLE coupon_redeem_track (
   redeem_ip varchar(255) NOT NULL default '',
   order_id int(11) NOT NULL default '0',
   PRIMARY KEY  (unique_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupons;
 CREATE TABLE coupons (
@@ -1246,7 +1246,7 @@ CREATE TABLE coupons (
   date_created datetime NOT NULL default '0000-00-00 00:00:00',
   date_modified datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (coupon_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS coupons_description;
 CREATE TABLE coupons_description (
@@ -1255,7 +1255,7 @@ CREATE TABLE coupons_description (
   coupon_name varchar(255) NOT NULL default '',
   coupon_description text,
   KEY coupon_id (coupon_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if exists payment_qenta;
 CREATE TABLE payment_qenta (
@@ -1266,7 +1266,7 @@ CREATE TABLE payment_qenta (
   q_STATUS tinyint(1) NOT NULL default '0',
   q_ORDERID int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (q_TRID)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE if EXISTS personal_offers_by_customers_status_0;
 DROP TABLE if EXISTS personal_offers_by_customers_status_1;
@@ -1279,7 +1279,7 @@ CREATE TABLE personal_offers_by_customers_status_0 (
   quantity int(11) default NULL,
   personal_offer decimal(15,4) default NULL,
   PRIMARY KEY  (price_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE personal_offers_by_customers_status_1 (
   price_id int(11) NOT NULL auto_increment,
@@ -1287,7 +1287,7 @@ CREATE TABLE personal_offers_by_customers_status_1 (
   quantity int(11) default NULL,
   personal_offer decimal(15,4) default NULL,
   PRIMARY KEY  (price_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
 CREATE TABLE personal_offers_by_customers_status_2 (
@@ -1296,7 +1296,7 @@ CREATE TABLE personal_offers_by_customers_status_2 (
   quantity int(11) default NULL,
   personal_offer decimal(15,4) default NULL,
   PRIMARY KEY  (price_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE personal_offers_by_customers_status_3 (
   price_id int(11) NOT NULL auto_increment,
@@ -1304,7 +1304,7 @@ CREATE TABLE personal_offers_by_customers_status_3 (
   quantity int(11) default NULL,
   personal_offer decimal(15,4) default NULL,
   PRIMARY KEY  (price_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #Contribution Installer Tables
 
@@ -1318,7 +1318,7 @@ create table cip (
   cip_ident varchar(255) not null ,
   cip_version varchar(255) not null ,
   PRIMARY KEY (cip_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 drop table if exists cip_depend;
 create table cip_depend (
@@ -1326,7 +1326,7 @@ create table cip_depend (
   cip_ident_req varchar(255) not null ,
   cip_req_type int(2) default '0' not null ,
   PRIMARY KEY (cip_ident)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
 INSERT INTO database_version(version) VALUES ('1.34');
