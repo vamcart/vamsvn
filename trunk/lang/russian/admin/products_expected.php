@@ -17,11 +17,11 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Îæèäàåìûå Òîâàðû');
+define('HEADING_TITLE', 'ÐžÐ¶Ð¸Ð´Ð°ÐµÐ¼Ñ‹Ðµ Ð¢Ð¾Ð²Ð°Ñ€Ñ‹');
 
-define('TABLE_HEADING_PRODUCTS', 'Òîâàðû');
-define('TABLE_HEADING_DATE_EXPECTED', 'Äàòà Ïîñòóïëåíèÿ');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_PRODUCTS', 'Ð¢Ð¾Ð²Ð°Ñ€Ñ‹');
+define('TABLE_HEADING_DATE_EXPECTED', 'Ð”Ð°Ñ‚Ð° ÐŸÐ¾ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_DATE_EXPECTED', 'Äàòà Îæèäàåìîãî Ïîñòóïëåíèÿ Òîâàðà:');
+define('TEXT_INFO_DATE_EXPECTED', 'Ð”Ð°Ñ‚Ð° ÐžÐ¶Ð¸Ð´Ð°ÐµÐ¼Ð¾Ð³Ð¾ ÐŸÐ¾ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ Ð¢Ð¾Ð²Ð°Ñ€Ð°:');
 ?>

@@ -26,7 +26,7 @@ if(PRODUCT_IMAGE_POPUP_ACTIVE == 'true') {
 //	$a = new image_manipulation(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name, $width, $height, DIR_FS_CATALOG_POPUP_IMAGES . $products_image_name, IMAGE_QUALITY, '');
 
 ########## start Andreaz
-# если оригинал картинки меньше поп-апа, то размер поп-апа равен оригиналу
+# РµСЃР»Рё РѕСЂРёРіРёРЅР°Р» РєР°СЂС‚РёРЅРєРё РјРµРЅСЊС€Рµ РїРѕРї-Р°РїР°, С‚Рѕ СЂР°Р·РјРµСЂ РїРѕРї-Р°РїР° СЂР°РІРµРЅ РѕСЂРёРіРёРЅР°Р»Сѓ
 
 $size = getimagesize(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name);
     if ($size['0'] >= PRODUCT_IMAGE_POPUP_WIDTH || $size['1'] >= PRODUCT_IMAGE_POPUP_HEIGHT) {

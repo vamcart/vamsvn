@@ -17,32 +17,32 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
    
-define('HEADING_TITLE', 'Âàëþòû');
+define('HEADING_TITLE', 'Ð’Ð°Ð»ÑŽÑ‚Ñ‹');
 
-define('TABLE_HEADING_CURRENCY_NAME', 'Âàëþòà');
-define('TABLE_HEADING_CURRENCY_CODES', 'Êîä');
-define('TABLE_HEADING_CURRENCY_VALUE', 'Âåëè÷èíà');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_CURRENCY_NAME', 'Ð’Ð°Ð»ÑŽÑ‚Ð°');
+define('TABLE_HEADING_CURRENCY_CODES', 'ÐšÐ¾Ð´');
+define('TABLE_HEADING_CURRENCY_VALUE', 'Ð’ÐµÐ»Ð¸Ñ‡Ð¸Ð½Ð°');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ïîæàëóéñòà, âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_CURRENCY_TITLE', 'Íàçâàíèå:');
-define('TEXT_INFO_CURRENCY_CODE', 'Êîä:');
-define('TEXT_INFO_CURRENCY_SYMBOL_LEFT', 'Ñèìâîë ñëåâà:');
-define('TEXT_INFO_CURRENCY_SYMBOL_RIGHT', 'Ñèìâîë ñïðàâà:');
-define('TEXT_INFO_CURRENCY_DECIMAL_POINT', 'Äåñÿòè÷íûé çíàê:');
-define('TEXT_INFO_CURRENCY_THOUSANDS_POINT', 'Ðàçäåëèòåëü òûñÿ÷:');
-define('TEXT_INFO_CURRENCY_DECIMAL_PLACES', 'Äåñÿòè÷íûå ïîðÿäêè:');
-define('TEXT_INFO_CURRENCY_LAST_UPDATED', 'Ïîñëåäíèé ðàç ñêîððåêòèðîâàíî:');
-define('TEXT_INFO_CURRENCY_VALUE', 'Âåëè÷èíà:');
-define('TEXT_INFO_CURRENCY_EXAMPLE', 'Ïðèìåð:');
-define('TEXT_INFO_INSERT_INTRO', 'Ïîæàëóéñòà, ââåäèòå äàííûå äëÿ íîâîé âàëþòû');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ýòó âàëþòó?');
-define('TEXT_INFO_HEADING_NEW_CURRENCY', 'Íîâàÿ Âàëþòà');
-define('TEXT_INFO_HEADING_EDIT_CURRENCY', 'Èçìåíèòü Âàëþòó');
-define('TEXT_INFO_HEADING_DELETE_CURRENCY', 'Óäàëèòü Âàëþòó');
-define('TEXT_INFO_SET_AS_DEFAULT', TEXT_SET_DEFAULT . ' (ýòó âàëþòó íóæíî êîððåêòèðîâàòü âðó÷íóþ)');
-define('TEXT_INFO_CURRENCY_UPDATED', 'Îáìåííûé êóðñ äëÿ %s (%s) óñïåøíî îáíîâë¸í ñ ïîìîùüþ %s.');
+define('TEXT_INFO_EDIT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_CURRENCY_TITLE', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ:');
+define('TEXT_INFO_CURRENCY_CODE', 'ÐšÐ¾Ð´:');
+define('TEXT_INFO_CURRENCY_SYMBOL_LEFT', 'Ð¡Ð¸Ð¼Ð²Ð¾Ð» ÑÐ»ÐµÐ²Ð°:');
+define('TEXT_INFO_CURRENCY_SYMBOL_RIGHT', 'Ð¡Ð¸Ð¼Ð²Ð¾Ð» ÑÐ¿Ñ€Ð°Ð²Ð°:');
+define('TEXT_INFO_CURRENCY_DECIMAL_POINT', 'Ð”ÐµÑÑÑ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð·Ð½Ð°Ðº:');
+define('TEXT_INFO_CURRENCY_THOUSANDS_POINT', 'Ð Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ñ‚Ñ‹ÑÑÑ‡:');
+define('TEXT_INFO_CURRENCY_DECIMAL_PLACES', 'Ð”ÐµÑÑÑ‚Ð¸Ñ‡Ð½Ñ‹Ðµ Ð¿Ð¾Ñ€ÑÐ´ÐºÐ¸:');
+define('TEXT_INFO_CURRENCY_LAST_UPDATED', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ Ñ€Ð°Ð· ÑÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾:');
+define('TEXT_INFO_CURRENCY_VALUE', 'Ð’ÐµÐ»Ð¸Ñ‡Ð¸Ð½Ð°:');
+define('TEXT_INFO_CURRENCY_EXAMPLE', 'ÐŸÑ€Ð¸Ð¼ÐµÑ€:');
+define('TEXT_INFO_INSERT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð¹ Ð²Ð°Ð»ÑŽÑ‚Ñ‹');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð²Ð°Ð»ÑŽÑ‚Ñƒ?');
+define('TEXT_INFO_HEADING_NEW_CURRENCY', 'ÐÐ¾Ð²Ð°Ñ Ð’Ð°Ð»ÑŽÑ‚Ð°');
+define('TEXT_INFO_HEADING_EDIT_CURRENCY', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð’Ð°Ð»ÑŽÑ‚Ñƒ');
+define('TEXT_INFO_HEADING_DELETE_CURRENCY', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð’Ð°Ð»ÑŽÑ‚Ñƒ');
+define('TEXT_INFO_SET_AS_DEFAULT', TEXT_SET_DEFAULT . ' (ÑÑ‚Ñƒ Ð²Ð°Ð»ÑŽÑ‚Ñƒ Ð½ÑƒÐ¶Ð½Ð¾ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ñ€ÑƒÑ‡Ð½ÑƒÑŽ)');
+define('TEXT_INFO_CURRENCY_UPDATED', 'ÐžÐ±Ð¼ÐµÐ½Ð½Ñ‹Ð¹ ÐºÑƒÑ€Ñ Ð´Ð»Ñ %s (%s) ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¾Ð±Ð½Ð¾Ð²Ð»Ñ‘Ð½ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ %s.');
 
-define('ERROR_REMOVE_DEFAULT_CURRENCY', 'Îøèáêà: Âàëþòà, óñòàíîâëåííàÿ ïî óìîë÷àíèþ íå ìîæåò áûòü óäàëåíà. Îïðåäåëèòå äðóãóþ âàëþòó ïî óìîë÷àíèþ è ïîïðîáóéòå ñíîâà.');
-define('ERROR_CURRENCY_INVALID', 'Îøèáêà: Îáìåííûé êóðñ äëÿ %s (%s) íå áûë îáíîâë¸í ñ ïîìîùüþ %s. Âû ïðàâèëüíî óêàçàëè êîä âàëþòû? ×òîáû îáíîâèòü îáìåííûé êóðñ, Âû äîëæíû áûòü ïîäêëþ÷åíû ê èíòåðíåòó.');
+define('ERROR_REMOVE_DEFAULT_CURRENCY', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð’Ð°Ð»ÑŽÑ‚Ð°, ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ð°Ñ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑƒÐ´Ð°Ð»ÐµÐ½Ð°. ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚Ðµ Ð´Ñ€ÑƒÐ³ÑƒÑŽ Ð²Ð°Ð»ÑŽÑ‚Ñƒ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¸ Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°.');
+define('ERROR_CURRENCY_INVALID', 'ÐžÑˆÐ¸Ð±ÐºÐ°: ÐžÐ±Ð¼ÐµÐ½Ð½Ñ‹Ð¹ ÐºÑƒÑ€Ñ Ð´Ð»Ñ %s (%s) Ð½Ðµ Ð±Ñ‹Ð» Ð¾Ð±Ð½Ð¾Ð²Ð»Ñ‘Ð½ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ %s. Ð’Ñ‹ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾ ÑƒÐºÐ°Ð·Ð°Ð»Ð¸ ÐºÐ¾Ð´ Ð²Ð°Ð»ÑŽÑ‚Ñ‹? Ð§Ñ‚Ð¾Ð±Ñ‹ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¾Ð±Ð¼ÐµÐ½Ð½Ñ‹Ð¹ ÐºÑƒÑ€Ñ, Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ðº Ð¸Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚Ñƒ.');
 ?>

@@ -20,28 +20,28 @@
    // CUSTOMIZE THIS SETTING
 define('NUMBER_OF_ZONES',10);
 
-define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'Тарифы для зоны');
-define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'зональный базовый тариф');
-define('MODULE_SHIPPING_ZONES_TEXT_WAY', 'Доставка до');
-define('MODULE_SHIPPING_ZONES_TEXT_UNITS', 'Кг.');
-define('MODULE_SHIPPING_ZONES_INVALID_ZONE', 'Для выбранной страны нет возможности доставки ');
-define('MODULE_SHIPPING_ZONES_UNDEFINED_RATE', 'Стоимость пересылки сейчас не может быть определена ');
+define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'РўР°СЂРёС„С‹ РґР»СЏ Р·РѕРЅС‹');
+define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'Р·РѕРЅР°Р»СЊРЅС‹Р№ Р±Р°Р·РѕРІС‹Р№ С‚Р°СЂРёС„');
+define('MODULE_SHIPPING_ZONES_TEXT_WAY', 'Р”РѕСЃС‚Р°РІРєР° РґРѕ');
+define('MODULE_SHIPPING_ZONES_TEXT_UNITS', 'РљРі.');
+define('MODULE_SHIPPING_ZONES_INVALID_ZONE', 'Р”Р»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ СЃС‚СЂР°РЅС‹ РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґРѕСЃС‚Р°РІРєРё ');
+define('MODULE_SHIPPING_ZONES_UNDEFINED_RATE', 'РЎС‚РѕРёРјРѕСЃС‚СЊ РїРµСЂРµСЃС‹Р»РєРё СЃРµР№С‡Р°СЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕРїСЂРµРґРµР»РµРЅР° ');
 
-define('MODULE_SHIPPING_ZONES_STATUS_TITLE' , 'Разрешить модуль тарифы для зоны');
-define('MODULE_SHIPPING_ZONES_STATUS_DESC' , 'Вы хотите разрешить модуль тарифы для зоны?');
-define('MODULE_SHIPPING_ZONES_ALLOWED_TITLE' , 'Разрешённые страны');
-define('MODULE_SHIPPING_ZONES_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_SHIPPING_ZONES_TAX_CLASS_TITLE' , 'Налог');
-define('MODULE_SHIPPING_ZONES_TAX_CLASS_DESC' , 'Использовать налог.');
-define('MODULE_SHIPPING_ZONES_SORT_ORDER_TITLE' , 'Порядок сортировки');
-define('MODULE_SHIPPING_ZONES_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
+define('MODULE_SHIPPING_ZONES_STATUS_TITLE' , 'Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ С‚Р°СЂРёС„С‹ РґР»СЏ Р·РѕРЅС‹');
+define('MODULE_SHIPPING_ZONES_STATUS_DESC' , 'Р’С‹ С…РѕС‚РёС‚Рµ СЂР°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ С‚Р°СЂРёС„С‹ РґР»СЏ Р·РѕРЅС‹?');
+define('MODULE_SHIPPING_ZONES_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+define('MODULE_SHIPPING_ZONES_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
+define('MODULE_SHIPPING_ZONES_TAX_CLASS_TITLE' , 'РќР°Р»РѕРі');
+define('MODULE_SHIPPING_ZONES_TAX_CLASS_DESC' , 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅР°Р»РѕРі.');
+define('MODULE_SHIPPING_ZONES_SORT_ORDER_TITLE' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+define('MODULE_SHIPPING_ZONES_SORT_ORDER_DESC' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 
 for ($ii=0;$ii<NUMBER_OF_ZONES;$ii++) {
-define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_TITLE' , 'Страны зоны '.$ii.'');
-define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_DESC' , 'Список стран через запятую для зоны '.$ii.'.');
-define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_TITLE' , 'Стоимость доставки для '.$ii.' зоны');
-define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'Стоимость доставки для зоны '.$ii.' на базе максимальной стоимость заказа. Например: 3:8.50,7:10.50,... Это значит, что стоимость доставки для заказов, весом до 3 кг. будет стоить 8.50 для покупателей из стран '.$ii.' зоны.');
-define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_TITLE' , 'Стоимость использования модуля для '.$ii.' зоны');
-define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_DESC' , 'Стоимость использования данного способа доставки.');
+define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_TITLE' , 'РЎС‚СЂР°РЅС‹ Р·РѕРЅС‹ '.$ii.'');
+define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_DESC' , 'РЎРїРёСЃРѕРє СЃС‚СЂР°РЅ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ РґР»СЏ Р·РѕРЅС‹ '.$ii.'.');
+define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_TITLE' , 'РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё РґР»СЏ '.$ii.' Р·РѕРЅС‹');
+define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё РґР»СЏ Р·РѕРЅС‹ '.$ii.' РЅР° Р±Р°Р·Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ СЃС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР°Р·Р°. РќР°РїСЂРёРјРµСЂ: 3:8.50,7:10.50,... Р­С‚Рѕ Р·РЅР°С‡РёС‚, С‡С‚Рѕ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё РґР»СЏ Р·Р°РєР°Р·РѕРІ, РІРµСЃРѕРј РґРѕ 3 РєРі. Р±СѓРґРµС‚ СЃС‚РѕРёС‚СЊ 8.50 РґР»СЏ РїРѕРєСѓРїР°С‚РµР»РµР№ РёР· СЃС‚СЂР°РЅ '.$ii.' Р·РѕРЅС‹.');
+define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_TITLE' , 'РЎС‚РѕРёРјРѕСЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РјРѕРґСѓР»СЏ РґР»СЏ '.$ii.' Р·РѕРЅС‹');
+define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_DESC' , 'РЎС‚РѕРёРјРѕСЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РґР°РЅРЅРѕРіРѕ СЃРїРѕСЃРѕР±Р° РґРѕСЃС‚Р°РІРєРё.');
 }
 ?>

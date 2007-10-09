@@ -155,7 +155,7 @@ class moneybookers {
 
 		// moneyboocers.com payment gateway does not accept accented characters!
 		// Please feel free to add any other accented characters to the list.
-		return strtr($process_button_string, "áéíóöõúüûÁÉÍÓÖÕÚÜÛ", "aeiooouuuAEIOOOUUU");
+		return strtr($process_button_string, "Ğ±Ğ¹Ğ½ÑƒÑ†Ñ…ÑŠÑŒÑ‹Ğ‘Ğ™ĞĞ£Ğ¦Ğ¥ĞªĞ¬Ğ«", "aeiooouuuAEIOOOUUU");
 	}
 
 	// manage returning data from moneybookers (errors, failures, success etc.)

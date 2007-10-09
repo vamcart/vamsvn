@@ -14,33 +14,33 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'Оплата "электронными деньгами" (WebMoney, Яндекс.Деньги, E-gold, MoneyMail, RuPay, INOCard)');
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (WebMoney, Яндекс.Деньги, E-gold, MoneyMail, RuPay, INOCard)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'РћРїР»Р°С‚Р° "СЌР»РµРєС‚СЂРѕРЅРЅС‹РјРё РґРµРЅСЊРіР°РјРё" (WebMoney, РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё, E-gold, MoneyMail, RuPay, INOCard)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (WebMoney, РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё, E-gold, MoneyMail, RuPay, INOCard)');
   
-  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Разрешить модуль roboxchange');
-  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Установка<br />
-1) Зарегистрируйтесь на сайте http://roboxchange.net как продавец, указав валюту, которая эквивалентна валюте по умолючанию Вашего магазина, затем отправьте заявку администрации на активацию Вашего логина, только после активации Вы можете пользоваться сервисом roboXchange.net.<br />
-2) На сайте http://roboxchange.net в разделе "Администрирование" укажите:<br />
-"пароль #1" любой<br />
-"пароль #2" любой<br />
-"Result URL" http://ваш-сайт/robox.php<br />
-"метод отсылки в Result URL" POST<br />
-"Success URL" http://ваш-сайт/checkout_success.php<br />
-"метод отсылки в Success URL" POST<br />
-"Fail URL" http://ваш-сайт/checkout_payment.php<br />
-"метод отсылки в Fail URL" POST<br />
-3) Укажите в Админке - Модули - Оплата, в настройках модуля: логин для входа в http://roboxchange.net и пароли 1 и 2.<br /><br />Разрешить использование модуля roboxchange.');
-  define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_TITLE' , 'Разрешённые страны');
-  define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-  define('MODULE_PAYMENT_ROBOXCHANGE_LOGIN_TITLE','Ваш логин');
-  define('MODULE_PAYMENT_ROBOXCHANGE_LOGIN_DESC','Ваш логин в системе roboxchange cash register');
-  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1_TITLE','Пароль номер 1');
-  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1_DESC','Ваш первый пароль в roboxchange cash register');
-  define('MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER_DESC','Порядок сортировки модуля.');
-  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2_TITLE','Пароль номер 2');
-  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2_DESC','Ваш второй пароль в roboxchange cash register');
-  define('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_TITLE','Статус оплаченного заказа');
-  define('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_DESC','Статус, устанавливаемый заказу после успешной оплаты');
+  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ roboxchange');
+  define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','РЈСЃС‚Р°РЅРѕРІРєР°<br />
+1) Р—Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ РЅР° СЃР°Р№С‚Рµ http://roboxchange.net РєР°Рє РїСЂРѕРґР°РІРµС†, СѓРєР°Р·Р°РІ РІР°Р»СЋС‚Сѓ, РєРѕС‚РѕСЂР°СЏ СЌРєРІРёРІР°Р»РµРЅС‚РЅР° РІР°Р»СЋС‚Рµ РїРѕ СѓРјРѕР»СЋС‡Р°РЅРёСЋ Р’Р°С€РµРіРѕ РјР°РіР°Р·РёРЅР°, Р·Р°С‚РµРј РѕС‚РїСЂР°РІСЊС‚Рµ Р·Р°СЏРІРєСѓ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё РЅР° Р°РєС‚РёРІР°С†РёСЋ Р’Р°С€РµРіРѕ Р»РѕРіРёРЅР°, С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ Р°РєС‚РёРІР°С†РёРё Р’С‹ РјРѕР¶РµС‚Рµ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃРµСЂРІРёСЃРѕРј roboXchange.net.<br />
+2) РќР° СЃР°Р№С‚Рµ http://roboxchange.net РІ СЂР°Р·РґРµР»Рµ "РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ" СѓРєР°Р¶РёС‚Рµ:<br />
+"РїР°СЂРѕР»СЊ #1" Р»СЋР±РѕР№<br />
+"РїР°СЂРѕР»СЊ #2" Р»СЋР±РѕР№<br />
+"Result URL" http://РІР°С€-СЃР°Р№С‚/robox.php<br />
+"РјРµС‚РѕРґ РѕС‚СЃС‹Р»РєРё РІ Result URL" POST<br />
+"Success URL" http://РІР°С€-СЃР°Р№С‚/checkout_success.php<br />
+"РјРµС‚РѕРґ РѕС‚СЃС‹Р»РєРё РІ Success URL" POST<br />
+"Fail URL" http://РІР°С€-СЃР°Р№С‚/checkout_payment.php<br />
+"РјРµС‚РѕРґ РѕС‚СЃС‹Р»РєРё РІ Fail URL" POST<br />
+3) РЈРєР°Р¶РёС‚Рµ РІ РђРґРјРёРЅРєРµ - РњРѕРґСѓР»Рё - РћРїР»Р°С‚Р°, РІ РЅР°СЃС‚СЂРѕР№РєР°С… РјРѕРґСѓР»СЏ: Р»РѕРіРёРЅ РґР»СЏ РІС…РѕРґР° РІ http://roboxchange.net Рё РїР°СЂРѕР»Рё 1 Рё 2.<br /><br />Р Р°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РјРѕРґСѓР»СЏ roboxchange.');
+  define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+  define('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
+  define('MODULE_PAYMENT_ROBOXCHANGE_LOGIN_TITLE','Р’Р°С€ Р»РѕРіРёРЅ');
+  define('MODULE_PAYMENT_ROBOXCHANGE_LOGIN_DESC','Р’Р°С€ Р»РѕРіРёРЅ РІ СЃРёСЃС‚РµРјРµ roboxchange cash register');
+  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1_TITLE','РџР°СЂРѕР»СЊ РЅРѕРјРµСЂ 1');
+  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1_DESC','Р’Р°С€ РїРµСЂРІС‹Р№ РїР°СЂРѕР»СЊ РІ roboxchange cash register');
+  define('MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER_DESC','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
+  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2_TITLE','РџР°СЂРѕР»СЊ РЅРѕРјРµСЂ 2');
+  define('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2_DESC','Р’Р°С€ РІС‚РѕСЂРѕР№ РїР°СЂРѕР»СЊ РІ roboxchange cash register');
+  define('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_TITLE','РЎС‚Р°С‚СѓСЃ РѕРїР»Р°С‡РµРЅРЅРѕРіРѕ Р·Р°РєР°Р·Р°');
+  define('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_DESC','РЎС‚Р°С‚СѓСЃ, СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРјС‹Р№ Р·Р°РєР°Р·Сѓ РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕР№ РѕРїР»Р°С‚С‹');
   
 ?>

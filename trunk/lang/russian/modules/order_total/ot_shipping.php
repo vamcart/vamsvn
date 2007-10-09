@@ -17,27 +17,27 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_TITLE', 'Äîñòàâêà');
-  define('MODULE_ORDER_TOTAL_SHIPPING_DESCRIPTION', 'Äîñòàâêà');
+  define('MODULE_ORDER_TOTAL_SHIPPING_TITLE', 'Ð”Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+  define('MODULE_ORDER_TOTAL_SHIPPING_DESCRIPTION', 'Ð”Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
 
-  define('FREE_SHIPPING_TITLE', 'Áåñïëàòíàÿ äîñòàâêà');
-  define('FREE_SHIPPING_DESCRIPTION', 'Áåñïëàòíàÿ äîñòàâêà äëÿ çàêàçîâ íà ñóììó ñâûøå %s');
+  define('FREE_SHIPPING_TITLE', 'Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+  define('FREE_SHIPPING_DESCRIPTION', 'Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ° Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² Ð½Ð° ÑÑƒÐ¼Ð¼Ñƒ ÑÐ²Ñ‹ÑˆÐµ %s');
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_STATUS_TITLE','Ïîêàçûâàòü äîñòàâêó');
-  define('MODULE_ORDER_TOTAL_SHIPPING_STATUS_DESC','Âû õîòèòå ïîêàçûâàòü ñòîèìîñòü äîñòàâêè?');
+  define('MODULE_ORDER_TOTAL_SHIPPING_STATUS_TITLE','ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+  define('MODULE_ORDER_TOTAL_SHIPPING_STATUS_DESC','Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸?');
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_SORT_ORDER_TITLE','Ïîðÿäîê ñîðòèðîâêè');
-  define('MODULE_ORDER_TOTAL_SHIPPING_SORT_ORDER_DESC', 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+  define('MODULE_ORDER_TOTAL_SHIPPING_SORT_ORDER_TITLE','ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+  define('MODULE_ORDER_TOTAL_SHIPPING_SORT_ORDER_DESC', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_TITLE','Ðàçðåøèòü áåñïëàòíóþ äîñòàâêó');
-  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_DESC','Âû õîòèòå ðàçðåøèòü áåñëàòíóþ äîñòàâêó?');
+  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_TITLE','Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½ÑƒÑŽ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_DESC','Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð±ÐµÑÐ»Ð°Ñ‚Ð½ÑƒÑŽ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ?');
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER_TITLE','Áåñïëàòíàÿ äîñòàâêà äëÿ çàêàçîâ ñâûøå');
-  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER_DESC','Äëÿ çàêàçîâ, ñâûøå óêàçàííîé âåëè÷èíû, äîñòàâêà áóäåò áåñïëàòíîé.');
+  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER_TITLE','Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ° Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² ÑÐ²Ñ‹ÑˆÐµ');
+  define('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER_DESC','Ð”Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð², ÑÐ²Ñ‹ÑˆÐµ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð¹ Ð²ÐµÐ»Ð¸Ñ‡Ð¸Ð½Ñ‹, Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ° Ð±ÑƒÐ´ÐµÑ‚ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð¾Ð¹.');
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_DESTINATION_TITLE','Áåñïëàòíàÿ äîñòàâêà äëÿ çàêàçîâ');
-  define('MODULE_ORDER_TOTAL_SHIPPING_DESTINATION_DESC','Óêàæèòå, äëÿ êàêèõ èìåííî çàêàçîâ áóäåò äåéñòâèòåëüíà áåñïëàòíàÿ äîñòàâêà.');
+  define('MODULE_ORDER_TOTAL_SHIPPING_DESTINATION_TITLE','Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ° Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²');
+  define('MODULE_ORDER_TOTAL_SHIPPING_DESTINATION_DESC','Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ, Ð´Ð»Ñ ÐºÐ°ÐºÐ¸Ñ… Ð¸Ð¼ÐµÐ½Ð½Ð¾ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² Ð±ÑƒÐ´ÐµÑ‚ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð° Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°.');
   
-  define('MODULE_ORDER_TOTAL_SHIPPING_TAX_CLASS_TITLE','Íàëîã');
-  define('MODULE_ORDER_TOTAL_SHIPPING_TAX_CLASS_DESC','Èñïîëüçîâàòü íàëîã (òîëüêî ïðè ðåäàêòèðîâàíèè çàêàçà â àäìèíêå).');   
+  define('MODULE_ORDER_TOTAL_SHIPPING_TAX_CLASS_TITLE','ÐÐ°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_SHIPPING_TAX_CLASS_DESC','Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³ (Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸ Ð·Ð°ÐºÐ°Ð·Ð° Ð² Ð°Ð´Ð¼Ð¸Ð½ÐºÐµ).');   
 ?>

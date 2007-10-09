@@ -17,65 +17,65 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('TEXT_DUMPER_SUBMIT', 'Применить');
-define('TEXT_DUMPER_SEC', ' сек.');
-define('TEXT_DUMPER_DIR_ERROR', 'Не удалось создать каталог для бекапа');
-define('TEXT_DUMPER_DOWNLOAD', 'Скачать файл');
-define('TEXT_DUMPER_BACK', 'Вернуться');
-define('TEXT_DUMPER_CREATE', 'Создается резервная копия БД');
-define('TEXT_DUMPER_NAME_ERROR', 'ОШИБКА! Не указана база данных!');
-define('TEXT_DUMPER_CONNECT', 'Подключение к БД ');
-define('TEXT_DUMPER_CONNECT_ERROR', 'Не удается выбрать базу данных.');
-define('TEXT_DUMPER_CREATE_FILE', 'Создание файла с резервной копией БД:');
-define('TEXT_DUMPER_CHARSET_ERROR', 'Не удается изменить кодировку соединения.');
-define('TEXT_DUMPER_CHARSET', 'Установлена кодировка соединения ');
-define('TEXT_DUMPER_CHARSET_COLLATION', 'Кодировка соединения и таблицы не совпадает:');
-define('TEXT_DUMPER_TABLE', 'Таблица ');
-define('TEXT_DUMPER_CONNECT1', 'соединение ');
-define('TEXT_DUMPER_PROCESS', 'Обработка таблицы ');
-define('TEXT_DUMPER_MAKE', 'Резервная копия БД ');
-define('TEXT_DUMPER_MAKE1', ' создана.');
-define('TEXT_DUMPER_SIZE', 'Размер БД:       ');
-define('TEXT_DUMPER_MB', ' МБ');
-define('TEXT_DUMPER_FILE_SIZE', 'Размер файла: ');
-define('TEXT_DUMPER_TABLES_COUNT', 'Таблиц обработано: ');
-define('TEXT_DUMPER_STRING_COUNT', 'Строк обработано:   ');
-define('TEXT_DUMPER_RESTORE', 'Восстановление БД из резервной копии');
-define('TEXT_DUMPER_FILE_ERROR', 'ОШИБКА! Файл не найден!');
-define('TEXT_DUMPER_FILE_READ', 'Чтение файла ');
-define('TEXT_DUMPER_FILE_ERROR1', 'ОШИБКА! Не выбран файл!');
-define('TEXT_DUMPER_QUERY_ERROR', 'Неправильный запрос.');
-define('TEXT_DUMPER_RESTORED', 'БД восстановлена из резервной копии.');
-define('TEXT_DUMPER_DATE', 'Дата создания копии: ');
-define('TEXT_DUMPER_QUERY_COUNT', 'Запросов к БД: ');
-define('TEXT_DUMPER_TABLES_CREATED', 'Таблиц создано: ');
-define('TEXT_DUMPER_STRINGS_CREATED', 'Строк добавлено: ');
-define('TEXT_DUMPER_MAX', '9 (максимальная)');
-define('TEXT_DUMPER_MED', '5 (средняя)');
-define('TEXT_DUMPER_MIN', '1 (минимальная)');
-define('TEXT_DUMPER_NO', 'Без сжатия');
+define('TEXT_DUMPER_SUBMIT', 'РџСЂРёРјРµРЅРёС‚СЊ');
+define('TEXT_DUMPER_SEC', ' СЃРµРє.');
+define('TEXT_DUMPER_DIR_ERROR', 'РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ РєР°С‚Р°Р»РѕРі РґР»СЏ Р±РµРєР°РїР°');
+define('TEXT_DUMPER_DOWNLOAD', 'РЎРєР°С‡Р°С‚СЊ С„Р°Р№Р»');
+define('TEXT_DUMPER_BACK', 'Р’РµСЂРЅСѓС‚СЊСЃСЏ');
+define('TEXT_DUMPER_CREATE', 'РЎРѕР·РґР°РµС‚СЃСЏ СЂРµР·РµСЂРІРЅР°СЏ РєРѕРїРёСЏ Р‘Р”');
+define('TEXT_DUMPER_NAME_ERROR', 'РћРЁРР‘РљРђ! РќРµ СѓРєР°Р·Р°РЅР° Р±Р°Р·Р° РґР°РЅРЅС‹С…!');
+define('TEXT_DUMPER_CONNECT', 'РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р” ');
+define('TEXT_DUMPER_CONNECT_ERROR', 'РќРµ СѓРґР°РµС‚СЃСЏ РІС‹Р±СЂР°С‚СЊ Р±Р°Р·Сѓ РґР°РЅРЅС‹С….');
+define('TEXT_DUMPER_CREATE_FILE', 'РЎРѕР·РґР°РЅРёРµ С„Р°Р№Р»Р° СЃ СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРµР№ Р‘Р”:');
+define('TEXT_DUMPER_CHARSET_ERROR', 'РќРµ СѓРґР°РµС‚СЃСЏ РёР·РјРµРЅРёС‚СЊ РєРѕРґРёСЂРѕРІРєСѓ СЃРѕРµРґРёРЅРµРЅРёСЏ.');
+define('TEXT_DUMPER_CHARSET', 'РЈСЃС‚Р°РЅРѕРІР»РµРЅР° РєРѕРґРёСЂРѕРІРєР° СЃРѕРµРґРёРЅРµРЅРёСЏ ');
+define('TEXT_DUMPER_CHARSET_COLLATION', 'РљРѕРґРёСЂРѕРІРєР° СЃРѕРµРґРёРЅРµРЅРёСЏ Рё С‚Р°Р±Р»РёС†С‹ РЅРµ СЃРѕРІРїР°РґР°РµС‚:');
+define('TEXT_DUMPER_TABLE', 'РўР°Р±Р»РёС†Р° ');
+define('TEXT_DUMPER_CONNECT1', 'СЃРѕРµРґРёРЅРµРЅРёРµ ');
+define('TEXT_DUMPER_PROCESS', 'РћР±СЂР°Р±РѕС‚РєР° С‚Р°Р±Р»РёС†С‹ ');
+define('TEXT_DUMPER_MAKE', 'Р РµР·РµСЂРІРЅР°СЏ РєРѕРїРёСЏ Р‘Р” ');
+define('TEXT_DUMPER_MAKE1', ' СЃРѕР·РґР°РЅР°.');
+define('TEXT_DUMPER_SIZE', 'Р Р°Р·РјРµСЂ Р‘Р”:       ');
+define('TEXT_DUMPER_MB', ' РњР‘');
+define('TEXT_DUMPER_FILE_SIZE', 'Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: ');
+define('TEXT_DUMPER_TABLES_COUNT', 'РўР°Р±Р»РёС† РѕР±СЂР°Р±РѕС‚Р°РЅРѕ: ');
+define('TEXT_DUMPER_STRING_COUNT', 'РЎС‚СЂРѕРє РѕР±СЂР°Р±РѕС‚Р°РЅРѕ:   ');
+define('TEXT_DUMPER_RESTORE', 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ Р‘Р” РёР· СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРё');
+define('TEXT_DUMPER_FILE_ERROR', 'РћРЁРР‘РљРђ! Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ!');
+define('TEXT_DUMPER_FILE_READ', 'Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° ');
+define('TEXT_DUMPER_FILE_ERROR1', 'РћРЁРР‘РљРђ! РќРµ РІС‹Р±СЂР°РЅ С„Р°Р№Р»!');
+define('TEXT_DUMPER_QUERY_ERROR', 'РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р·Р°РїСЂРѕСЃ.');
+define('TEXT_DUMPER_RESTORED', 'Р‘Р” РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅР° РёР· СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРё.');
+define('TEXT_DUMPER_DATE', 'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ РєРѕРїРёРё: ');
+define('TEXT_DUMPER_QUERY_COUNT', 'Р—Р°РїСЂРѕСЃРѕРІ Рє Р‘Р”: ');
+define('TEXT_DUMPER_TABLES_CREATED', 'РўР°Р±Р»РёС† СЃРѕР·РґР°РЅРѕ: ');
+define('TEXT_DUMPER_STRINGS_CREATED', 'РЎС‚СЂРѕРє РґРѕР±Р°РІР»РµРЅРѕ: ');
+define('TEXT_DUMPER_MAX', '9 (РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ)');
+define('TEXT_DUMPER_MED', '5 (СЃСЂРµРґРЅСЏСЏ)');
+define('TEXT_DUMPER_MIN', '1 (РјРёРЅРёРјР°Р»СЊРЅР°СЏ)');
+define('TEXT_DUMPER_NO', 'Р‘РµР· СЃР¶Р°С‚РёСЏ');
 
-define('TEXT_DUMPER_BACKUP', 'Создание резервной копии БД&nbsp;');
-define('TEXT_DUMPER_DB', 'БД:');
-define('TEXT_DUMPER_FILTER', 'Фильтр таблиц:');
-define('TEXT_DUMPER_COMPRESS', 'Метод сжатия:');
-define('TEXT_DUMPER_COMPRESS_LEVEL', 'Степень сжатия:');
+define('TEXT_DUMPER_BACKUP', 'РЎРѕР·РґР°РЅРёРµ СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРё Р‘Р”&nbsp;');
+define('TEXT_DUMPER_DB', 'Р‘Р”:');
+define('TEXT_DUMPER_FILTER', 'Р¤РёР»СЊС‚СЂ С‚Р°Р±Р»РёС†:');
+define('TEXT_DUMPER_COMPRESS', 'РњРµС‚РѕРґ СЃР¶Р°С‚РёСЏ:');
+define('TEXT_DUMPER_COMPRESS_LEVEL', 'РЎС‚РµРїРµРЅСЊ СЃР¶Р°С‚РёСЏ:');
 
-define('TEXT_DUMPER_RESTORE_DB', 'Восстановление БД из резервной копии&nbsp;');
-define('TEXT_DUMPER_FILE', 'Файл:');
+define('TEXT_DUMPER_RESTORE_DB', 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ Р‘Р” РёР· СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРё&nbsp;');
+define('TEXT_DUMPER_FILE', 'Р¤Р°Р№Р»:');
 
-define('TEXT_DUMPER_TABLE_STATUS', 'Статус таблицы:');
-define('TEXT_DUMPER_TOTAL_STATUS', 'Общий статус:');
+define('TEXT_DUMPER_TABLE_STATUS', 'РЎС‚Р°С‚СѓСЃ С‚Р°Р±Р»РёС†С‹:');
+define('TEXT_DUMPER_TOTAL_STATUS', 'РћР±С‰РёР№ СЃС‚Р°С‚СѓСЃ:');
 
-define('TEXT_DUMPER_ERROR', 'Ошибка');
-define('TEXT_DUMPER_BROWSER_ERROR', 'Для работы Sypex Dumper Lite требуется:<br /> - Internet Explorer 5.5+, Mozilla либо Opera 8+ (<span id=sie>-</span>)<br /> - включено выполнение JavaScript скриптов (<span id=sjs>-</span>)');
+define('TEXT_DUMPER_ERROR', 'РћС€РёР±РєР°');
+define('TEXT_DUMPER_BROWSER_ERROR', 'Р”Р»СЏ СЂР°Р±РѕС‚С‹ Sypex Dumper Lite С‚СЂРµР±СѓРµС‚СЃСЏ:<br /> - Internet Explorer 5.5+, Mozilla Р»РёР±Рѕ Opera 8+ (<span id=sie>-</span>)<br /> - РІРєР»СЋС‡РµРЅРѕ РІС‹РїРѕР»РЅРµРЅРёРµ JavaScript СЃРєСЂРёРїС‚РѕРІ (<span id=sjs>-</span>)');
 
-define('TEXT_DUMPER_LOGIN_HEADER', 'Введите логин и пароль');
-define('TEXT_DUMPER_LOGIN', 'Логин:');
-define('TEXT_DUMPER_PASSWORD', 'Пароль:');
+define('TEXT_DUMPER_LOGIN_HEADER', 'Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ Рё РїР°СЂРѕР»СЊ');
+define('TEXT_DUMPER_LOGIN', 'Р›РѕРіРёРЅ:');
+define('TEXT_DUMPER_PASSWORD', 'РџР°СЂРѕР»СЊ:');
 
-define('TEXT_DUMPER_FORBIDDEN', 'У вас нет прав для просмотра этого каталога');
-define('TEXT_DUMPER_DB_CONNECT', 'Ошибка при подключении к БД');
-define('TEXT_DUMPER_DB_ERROR', 'Возникла ошибка!');
+define('TEXT_DUMPER_FORBIDDEN', 'РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° СЌС‚РѕРіРѕ РєР°С‚Р°Р»РѕРіР°');
+define('TEXT_DUMPER_DB_CONNECT', 'РћС€РёР±РєР° РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё Рє Р‘Р”');
+define('TEXT_DUMPER_DB_ERROR', 'Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР°!');
 
 ?>

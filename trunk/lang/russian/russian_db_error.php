@@ -11,18 +11,18 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-// Обработка MySQL ошибок
+// РћР±СЂР°Р±РѕС‚РєР° MySQL РѕС€РёР±РѕРє
 
-define('DB_ERR_MAIL', 'Администратор </dev/null>'); // Укажите E-Mail адрес и имя получателя, куда будут приходить письма с технической информацией, в случае возникновения проблем с MySQL сервером.
+define('DB_ERR_MAIL', 'РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ </dev/null>'); // РЈРєР°Р¶РёС‚Рµ E-Mail Р°РґСЂРµСЃ Рё РёРјСЏ РїРѕР»СѓС‡Р°С‚РµР»СЏ, РєСѓРґР° Р±СѓРґСѓС‚ РїСЂРёС…РѕРґРёС‚СЊ РїРёСЃСЊРјР° СЃ С‚РµС…РЅРёС‡РµСЃРєРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№, РІ СЃР»СѓС‡Р°Рµ РІРѕР·РЅРёРєРЅРѕРІРµРЅРёСЏ РїСЂРѕР±Р»РµРј СЃ MySQL СЃРµСЂРІРµСЂРѕРј.
 define('DB_ERR_MSG', "<br /><br /><center><font face=\"verdana,tahoma,arial\" size=\"2\" color=\"ff0000\"><b>"
-                     ."Интернет-магазин закрыт на техническое обслуживание, заходите позже!</b><font></center>"); // Сообщение, которое будет выводиться при возникновении проблем с MySQL сервером.
+                     ."РРЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅ Р·Р°РєСЂС‹С‚ РЅР° С‚РµС…РЅРёС‡РµСЃРєРѕРµ РѕР±СЃР»СѓР¶РёРІР°РЅРёРµ, Р·Р°С…РѕРґРёС‚Рµ РїРѕР·Р¶Рµ!</b><font></center>"); // РЎРѕРѕР±С‰РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµС‚ РІС‹РІРѕРґРёС‚СЊСЃСЏ РїСЂРё РІРѕР·РЅРёРєРЅРѕРІРµРЅРёРё РїСЂРѕР±Р»РµРј СЃ MySQL СЃРµСЂРІРµСЂРѕРј.
 
-define('MYSQL QUERY ERROR_TEXT', 'Проблемы с MySQL');
-define('MYSQL QUERY ERROR_SUBJECT', 'Проблемы с MySQL сервером!');
-define('MYSQL QUERY ERROR_SERVER_NAME', 'Сервер: ');
-define('MYSQL QUERY ERROR_REMOTE_ADDR', 'Адрес: ');
-define('MYSQL QUERY ERROR_REFERER', 'Реферер: ');
-define('MYSQL QUERY ERROR_REQUESTED', 'Страница: ');
-define('MYSQL QUERY ERROR_FROM', 'От: db_error@');
+define('MYSQL QUERY ERROR_TEXT', 'РџСЂРѕР±Р»РµРјС‹ СЃ MySQL');
+define('MYSQL QUERY ERROR_SUBJECT', 'РџСЂРѕР±Р»РµРјС‹ СЃ MySQL СЃРµСЂРІРµСЂРѕРј!');
+define('MYSQL QUERY ERROR_SERVER_NAME', 'РЎРµСЂРІРµСЂ: ');
+define('MYSQL QUERY ERROR_REMOTE_ADDR', 'РђРґСЂРµСЃ: ');
+define('MYSQL QUERY ERROR_REFERER', 'Р РµС„РµСЂРµСЂ: ');
+define('MYSQL QUERY ERROR_REQUESTED', 'РЎС‚СЂР°РЅРёС†Р°: ');
+define('MYSQL QUERY ERROR_FROM', 'РћС‚: db_error@');
 
 ?>

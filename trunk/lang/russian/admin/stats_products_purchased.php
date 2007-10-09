@@ -17,9 +17,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Çàêàçàííûå òîâàðû');
+define('HEADING_TITLE', 'Ð—Ð°ÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹');
 
-define('TABLE_HEADING_NUMBER', 'Íîìåð');
-define('TABLE_HEADING_PRODUCTS', 'Òîâàðû');
-define('TABLE_HEADING_PURCHASED', 'Êóïëåíî');
+define('TABLE_HEADING_NUMBER', 'ÐÐ¾Ð¼ÐµÑ€');
+define('TABLE_HEADING_PRODUCTS', 'Ð¢Ð¾Ð²Ð°Ñ€Ñ‹');
+define('TABLE_HEADING_PURCHASED', 'ÐšÑƒÐ¿Ð»ÐµÐ½Ð¾');
 ?>

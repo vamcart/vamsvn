@@ -21,7 +21,7 @@
 
   // include needed functions (for modules)
 
-	//Eingef�gt um Fehler in CC Modul zu unterdr�cken. 
+	//EingefпїЅgt um Fehler in CC Modul zu unterdrпїЅcken. 
    require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vam_price.php');
    $vamPrice = new vamPrice($_SESSION['currency'],''); 
  

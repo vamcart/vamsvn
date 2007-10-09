@@ -15,7 +15,7 @@ class Tc_make_dir extends ContribInstallerBaseTag {
 // Class Constructor
     function Tc_make_dir($contrib='', $id='', $xml_data='', $dep='') {
         $this->params=array(
-            //Можно убрать этот параметр и использовать только dir:
+            //РњРѕР¶РЅРѕ СѓР±СЂР°С‚СЊ СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ dir:
             'parent_dir'=>array(
                                 'sql_type'=>'varchar(255)',
                                 'xml_error'=>''//NAME_OF_PARENT_DIR_MISSING_IN_MAKE_DIR_SECTION_TEXT

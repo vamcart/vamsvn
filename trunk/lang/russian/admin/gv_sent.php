@@ -27,21 +27,21 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Îòïðàâëåííûå ñåðòèôèêàòû');
+define('HEADING_TITLE', 'ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ñ‹');
 
-define('TABLE_HEADING_SENDERS_NAME', 'Îòïðàâèòåëü');
-define('TABLE_HEADING_VOUCHER_VALUE', 'Ñóììà ñåðòèôèêàòà');
-define('TABLE_HEADING_VOUCHER_CODE', 'Êîä ñåðòèôèêàòà');
-define('TABLE_HEADING_DATE_SENT', 'Äàòà îòïðàâêè');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_SENDERS_NAME', 'ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒ');
+define('TABLE_HEADING_VOUCHER_VALUE', 'Ð¡ÑƒÐ¼Ð¼Ð° ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°');
+define('TABLE_HEADING_VOUCHER_CODE', 'ÐšÐ¾Ð´ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°');
+define('TABLE_HEADING_DATE_SENT', 'Ð”Ð°Ñ‚Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_SENDERS_ID', 'Êîä îòïðàâèòåëÿ:');
-define('TEXT_INFO_AMOUNT_SENT', 'Ñóììà ñåðòèôèêàòà:');
-define('TEXT_INFO_DATE_SENT', 'Äàòà îòïðàâêè:');
-define('TEXT_INFO_VOUCHER_CODE', 'Êîä ñåðòèôèêàòà:');
-define('TEXT_INFO_EMAIL_ADDRESS', 'E-Mail àäðåñ:');
-define('TEXT_INFO_DATE_REDEEMED', 'Äàòà àêòèâàöèè:');
-define('TEXT_INFO_IP_ADDRESS', 'IP àäðåñ:');
-define('TEXT_INFO_CUSTOMERS_ID', 'Êîä ïîêóïàòåëÿ:');
-define('TEXT_INFO_NOT_REDEEMED', 'Íåàêòèâèðîâàí');
+define('TEXT_INFO_SENDERS_ID', 'ÐšÐ¾Ð´ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»Ñ:');
+define('TEXT_INFO_AMOUNT_SENT', 'Ð¡ÑƒÐ¼Ð¼Ð° ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°:');
+define('TEXT_INFO_DATE_SENT', 'Ð”Ð°Ñ‚Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸:');
+define('TEXT_INFO_VOUCHER_CODE', 'ÐšÐ¾Ð´ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°:');
+define('TEXT_INFO_EMAIL_ADDRESS', 'E-Mail Ð°Ð´Ñ€ÐµÑ:');
+define('TEXT_INFO_DATE_REDEEMED', 'Ð”Ð°Ñ‚Ð° Ð°ÐºÑ‚Ð¸Ð²Ð°Ñ†Ð¸Ð¸:');
+define('TEXT_INFO_IP_ADDRESS', 'IP Ð°Ð´Ñ€ÐµÑ:');
+define('TEXT_INFO_CUSTOMERS_ID', 'ÐšÐ¾Ð´ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»Ñ:');
+define('TEXT_INFO_NOT_REDEEMED', 'ÐÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½');
 ?>

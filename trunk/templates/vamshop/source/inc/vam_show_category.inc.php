@@ -52,7 +52,7 @@
     $categories_string .= '">';
 
     if ( ($id) && (in_array($counter, $id)) ) {
-// Выделенная категория
+// Р’С‹РґРµР»РµРЅРЅР°СЏ РєР°С‚РµРіРѕСЂРёСЏ
       $categories_string .= '<span>';
     }
 
@@ -60,7 +60,7 @@
     $categories_string .= $foo[$counter]['name'];
 
     if ( ($id) && (in_array($counter, $id)) ) {
-// /Выделенная категория
+// /Р’С‹РґРµР»РµРЅРЅР°СЏ РєР°С‚РµРіРѕСЂРёСЏ
       $categories_string .= '</span>';
     }
 
@@ -77,7 +77,7 @@
     $categories_string .= '</a></div>';
     }
 
-// Окончание строки каждой категории
+// РћРєРѕРЅС‡Р°РЅРёРµ СЃС‚СЂРѕРєРё РєР°Р¶РґРѕР№ РєР°С‚РµРіРѕСЂРёРё
     $categories_string .= "\n";
 
     if ($foo[$counter]['next_id']) {

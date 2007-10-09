@@ -235,7 +235,7 @@ FORM { display: inline; }
 .main { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
 .errorText { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #ff0000; }
 
-/* Сборка VaM */
+/* РЎР±РѕСЂРєР° VaM */
 
 div.buttonadmin {
   font-family: Tahoma, Verdana, Arial, sans-serif;
@@ -384,7 +384,7 @@ h3 {
 display: none;
 }
 
-/* Подсказки */
+/* РџРѕРґСЃРєР°Р·РєРё */
 
 .help
    {
@@ -437,9 +437,9 @@ a.info:hover span
      font-size: 11px;
    }
 
-/* /Подсказки */
+/* /РџРѕРґСЃРєР°Р·РєРё */
 
-/* Навигационное меню */
+/* РќР°РІРёРіР°С†РёРѕРЅРЅРѕРµ РјРµРЅСЋ */
 
 #nav, #nav ul 
    {
@@ -534,4 +534,4 @@ select.hide
      visibility: hidden; 
    }
 
-/* /Навигационное меню */
+/* /РќР°РІРёРіР°С†РёРѕРЅРЅРѕРµ РјРµРЅСЋ */

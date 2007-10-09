@@ -2,14 +2,14 @@
 
 require_once (DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
 
-// Íàñòðîéêè äëÿ MY site
+// ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð´Ð»Ñ MY site
 
-// Íàñòðîéêè Email
-$site['from_name'] = 'my name'; // from (îò) èìÿ
-$site['from_email'] = 'email@mywebsite.com'; // from (îò) email àäðåñ
-// Íà âñÿêèé ñëó÷àé óêàçûâàåì íàñòðîéêè
-// äëÿ äîïîëíèòåëüíîãî (âíåøíåãî) SMTP ñåðâåðà.
-$site['smtp_mode'] = 'disabled'; // enabled or disabled (âêëþ÷åí èëè âûêëþ÷åí)
+// ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Email
+$site['from_name'] = 'my name'; // from (Ð¾Ñ‚) Ð¸Ð¼Ñ
+$site['from_email'] = 'email@mywebsite.com'; // from (Ð¾Ñ‚) email Ð°Ð´Ñ€ÐµÑ
+// ÐÐ° Ð²ÑÑÐºÐ¸Ð¹ ÑÐ»ÑƒÑ‡Ð°Ð¹ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
+// Ð´Ð»Ñ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ (Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾) SMTP ÑÐµÑ€Ð²ÐµÑ€Ð°.
+$site['smtp_mode'] = 'disabled'; // enabled or disabled (Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½ Ð¸Ð»Ð¸ Ð²Ñ‹ÐºÐ»ÑŽÑ‡ÐµÐ½)
 $site['smtp_host'] = null;
 $site['smtp_port'] = null;
 $site['smtp_username'] = null;
@@ -56,7 +56,7 @@ class vamMail extends PHPMailer
     }
 }
 
-// èíèöèàëèçèðóåì êëàññ
+// Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ ÐºÐ»Ð°ÑÑ
 $vamMail = new vamMail();
 
 ?>

@@ -17,12 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_TITLE', '<b>Стоимость товара, без налога</b>');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_DESCRIPTION', 'Стоимость товара');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_TITLE', '<b>РЎС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°, Р±РµР· РЅР°Р»РѕРіР°</b>');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_DESCRIPTION', 'РЎС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°');
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_STATUS_TITLE','Показывать стоимость товара без налога');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_STATUS_DESC','Вы хотите показывать стоимость товара без налога?');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_STATUS_TITLE','РџРѕРєР°Р·С‹РІР°С‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР° Р±РµР· РЅР°Р»РѕРіР°');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_STATUS_DESC','Р’С‹ С…РѕС‚РёС‚Рµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР° Р±РµР· РЅР°Р»РѕРіР°?');
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_SORT_ORDER_DESC', 'Порядок сортировки модуля.');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_SORT_ORDER_DESC', 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 ?>

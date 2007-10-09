@@ -30,25 +30,25 @@
 
 class AccountCheck {
 
-/* Folgende Returncodes werden übergeben                                      */
+/* Folgende Returncodes werden ÑŒbergeben                                      */
 /*                                                                            */
 /* 0 -> Kontonummer & BLZ OK                                                  */
 /* 1 -> Kontonummer & BLZ passen nicht                                        */
-/* 2 -> Für diese Kontonummer ist kein Prüfziffernverfahren definiert         */
-/* 3 -> Dieses Prüfziffernverfahren ist noch nicht implementiert              */
-/* 4 -> Diese Kontonummer ist technisch nicht prüfbar                         */
+/* 2 -> FÑŒr diese Kontonummer ist kein PrÑŒfziffernverfahren definiert         */
+/* 3 -> Dieses PrÑŒfziffernverfahren ist noch nicht implementiert              */
+/* 4 -> Diese Kontonummer ist technisch nicht prÑŒfbar                         */
 /* 5 -> BLZ nicht gefunden                                                    */
-/* 8 -> Keine BLZ übergeben                                                   */
-/* 9 -> Keine Kontonummer übergeben                                           */
-/* 10 -> Kein Kontoinhaber übergeben                                          */
+/* 8 -> Keine BLZ ÑŒbergeben                                                   */
+/* 9 -> Keine Kontonummer ÑŒbergeben                                           */
+/* 10 -> Kein Kontoinhaber ÑŒbergeben                                          */
 /* 128 -> interner Fehler,der zeigt, das eine Methode nicht implementiert ist */
 /*                                                                            */
 
-var $Bankname; // Enthält den Namen der Bank bei der Suche nach BLZ
-var $PRZ; //Enthält die Prüfziffer
+var $Bankname; // EnthÐ´lt den Namen der Bank bei der Suche nach BLZ
+var $PRZ; //EnthÐ´lt die PrÑŒfziffer
 
 ////
-// Diese function gibt die Bankinformationen aus der csv-Datei zurück*/
+// Diese function gibt die Bankinformationen aus der csv-Datei zurÑŒck*/
   function csv_query($blz) {
     $cdata = -1;
     $fp = fopen(DIR_WS_INCLUDES . 'data/blz.csv', 'r');
@@ -63,7 +63,7 @@ var $PRZ; //Enthält die Prüfziffer
   }
 
 ////
-// Diese function gibt die Bankinformationen aus der Datenbank zurück*/
+// Diese function gibt die Bankinformationen aus der Datenbank zurÑŒck*/
   function db_query($blz) {
     $blz_query = vam_db_query("SELECT * from " . TABLE_BANKTRANSFER . " WHERE blz = '" . $blz . "'");
     if (vam_db_num_rows($blz_query)){
@@ -74,7 +74,7 @@ var $PRZ; //Enthält die Prüfziffer
   }
 
 ////
-// Diese function gibt die Bankinformationen aus der Datenbank zurück*/
+// Diese function gibt die Bankinformationen aus der Datenbank zurÑŒck*/
   function query($blz) {
     if (MODULE_PAYMENT_BANKTRANSFER_DATABASE_BLZ == 'true' && defined(MODULE_PAYMENT_BANKTRANSFER_DATABASE_BLZ))
       $data = $this->db_query($blz);
@@ -102,7 +102,7 @@ var $PRZ; //Enthält die Prüfziffer
   }  /* End of Quersumme */
 
 ///
-// Auffüllen der Konto-Nr. mit '0' auf 10 Stellen
+// AuffÑŒllen der Konto-Nr. mit '0' auf 10 Stellen
   function ExpandAccount($AccountNo) {
     $AccountNo = str_pad($AccountNo, 10, "0", STR_PAD_LEFT);
 
@@ -448,7 +448,7 @@ var $PRZ; //Enthält die Prüfziffer
       case 4 :
       case 5 :
       case 6 :
-        // deaktivert, da die Postbank diese Definition nicht einhält
+        // deaktivert, da die Postbank diese Definition nicht einhÐ´lt
         //$AccountNo = Substr($AccountNo,1);
         break;
       case 9 :
@@ -2025,7 +2025,7 @@ function MarkB9($AccountNo) {
         $AccountNo = $this->ExpandAccount($AccountNo);
         $RetVal = 1;
         
-        // Variante 1 - Zwei führende Nullen
+        // Variante 1 - Zwei fÑŒhrende Nullen
         if ((substr($AccountNo,0,2) == "00")And (substr($AccountNo,2,1) != "0")){
                 $Significance = '1231231';
                 for ($Run = 0;$Run < strlen($Significance);$Run++) {
@@ -2046,7 +2046,7 @@ function MarkB9($AccountNo) {
                         }
                 }
 
-        // Variante 2 - Drei führende Nullen
+        // Variante 2 - Drei fÑŒhrende Nullen
         } elseif ((substr($AccountNo,0,3) == "000")And (substr($AccountNo,3,1) != "0")){
                 $Significance = '654321';
                 for ($Run = 0;$Run < strlen($Significance);$Run++) {
@@ -2092,10 +2092,10 @@ function MarkC0($AccountNo,$BLZ) {
 
     $Result = 0;
     if ($BLZ == '' || strlen($BLZ) < 8) {
-      return 8;  /* Keine BLZ übergeben */
+      return 8;  /* Keine BLZ ÑŒbergeben */
     }
     if ($KontoNR == '') {
-      return 9;  /* Keine Kontonummer übergeben */
+      return 9;  /* Keine Kontonummer ÑŒbergeben */
     }
 
 /*     Beginn Implementierung */

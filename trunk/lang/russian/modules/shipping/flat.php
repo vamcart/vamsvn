@@ -17,20 +17,20 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_FLAT_TEXT_TITLE', 'Êóðüåðñêàÿ äîñòàâêà');
-define('MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION', 'Êóðüåðñêàÿ äîñòàâêà');
-define('MODULE_SHIPPING_FLAT_TEXT_WAY', 'Äëÿ æèòåëåé Ìîñêâû');
+define('MODULE_SHIPPING_FLAT_TEXT_TITLE', 'ÐšÑƒÑ€ÑŒÐµÑ€ÑÐºÐ°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+define('MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION', 'ÐšÑƒÑ€ÑŒÐµÑ€ÑÐºÐ°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+define('MODULE_SHIPPING_FLAT_TEXT_WAY', 'Ð”Ð»Ñ Ð¶Ð¸Ñ‚ÐµÐ»ÐµÐ¹ ÐœÐ¾ÑÐºÐ²Ñ‹');
 
-define('MODULE_SHIPPING_FLAT_STATUS_TITLE' , 'Ðàçðåøèòü ìîäóëü êóðüåðñêàÿ äîñòàâêà');
-define('MODULE_SHIPPING_FLAT_STATUS_DESC' , 'Âû õîòèòå ðàçðåøèòü ìîäóëü êóðüåðñêàÿ äîñòàâêà?');
-define('MODULE_SHIPPING_FLAT_ALLOWED_TITLE' , 'Ðàçðåø¸ííûå ñòðàíû');
-define('MODULE_SHIPPING_FLAT_ALLOWED_DESC' , 'Óêàæèòå êîäû ñòðàí, äëÿ êîòîðûõ áóäåò äîñòóïåí äàííûé ìîäóëü (íàïðèìåð RU,DE (îñòàâüòå ïîëå ïóñòûì, åñëè õîòèòå ÷òî á ìîäóëü áûë äîñòóïåí ïîêóïàòåëÿì èç ëþáûõ ñòðàí))');
-define('MODULE_SHIPPING_FLAT_COST_TITLE' , 'Ñòîèìîñòü äîñòàâêè');
-define('MODULE_SHIPPING_FLAT_COST_DESC' , 'Ñòîèìîñòü äîñòàâêè äàííûì ñïîñîáîì.');
-define('MODULE_SHIPPING_FLAT_TAX_CLASS_TITLE' , 'Íàëîã');
-define('MODULE_SHIPPING_FLAT_TAX_CLASS_DESC' , 'Èñïîëüçîâàòü íàëîã.');
-define('MODULE_SHIPPING_FLAT_ZONE_TITLE' , 'Çîíà');
-define('MODULE_SHIPPING_FLAT_ZONE_DESC' , 'Åñëè âûáðàíà çîíà, òî äàííûé ìîäóëü äîñòàâêè áóäåò âèäåí òîëüêî ïîêóïàòåëÿì èç âûáðàííîé çîíû.');
-define('MODULE_SHIPPING_FLAT_SORT_ORDER_TITLE' , 'Ïîðÿäîê ñîðòèðîâêè');
-define('MODULE_SHIPPING_FLAT_SORT_ORDER_DESC' , 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+define('MODULE_SHIPPING_FLAT_STATUS_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÐºÑƒÑ€ÑŒÐµÑ€ÑÐºÐ°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+define('MODULE_SHIPPING_FLAT_STATUS_DESC' , 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÐºÑƒÑ€ÑŒÐµÑ€ÑÐºÐ°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°?');
+define('MODULE_SHIPPING_FLAT_ALLOWED_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÑ‘Ð½Ð½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ñ‹');
+define('MODULE_SHIPPING_FLAT_ALLOWED_DESC' , 'Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð´Ñ‹ ÑÑ‚Ñ€Ð°Ð½, Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ RU,DE (Ð¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿Ð¾Ð»Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼, ÐµÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ‡Ñ‚Ð¾ Ð± Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð±Ñ‹Ð» Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð»ÑŽÐ±Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½))');
+define('MODULE_SHIPPING_FLAT_COST_TITLE' , 'Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('MODULE_SHIPPING_FLAT_COST_DESC' , 'Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼ ÑÐ¿Ð¾ÑÐ¾Ð±Ð¾Ð¼.');
+define('MODULE_SHIPPING_FLAT_TAX_CLASS_TITLE' , 'ÐÐ°Ð»Ð¾Ð³');
+define('MODULE_SHIPPING_FLAT_TAX_CLASS_DESC' , 'Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³.');
+define('MODULE_SHIPPING_FLAT_ZONE_TITLE' , 'Ð—Ð¾Ð½Ð°');
+define('MODULE_SHIPPING_FLAT_ZONE_DESC' , 'Ð•ÑÐ»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð° Ð·Ð¾Ð½Ð°, Ñ‚Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð±ÑƒÐ´ÐµÑ‚ Ð²Ð¸Ð´ÐµÐ½ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ð¹ Ð·Ð¾Ð½Ñ‹.');
+define('MODULE_SHIPPING_FLAT_SORT_ORDER_TITLE' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('MODULE_SHIPPING_FLAT_SORT_ORDER_DESC' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 ?>

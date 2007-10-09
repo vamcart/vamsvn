@@ -17,33 +17,33 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Производители');
+define('HEADING_TITLE', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»Рё');
 
-define('TABLE_HEADING_MANUFACTURERS', 'Производители');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_MANUFACTURERS', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»Рё');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
 
-define('TEXT_HEADING_NEW_MANUFACTURER', 'Новый Производитель');
-define('TEXT_HEADING_EDIT_MANUFACTURER', 'Изменить Производителя');
-define('TEXT_HEADING_DELETE_MANUFACTURER', 'Удалить Производителя');
+define('TEXT_HEADING_NEW_MANUFACTURER', 'РќРѕРІС‹Р№ РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ');
+define('TEXT_HEADING_EDIT_MANUFACTURER', 'РР·РјРµРЅРёС‚СЊ РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ');
+define('TEXT_HEADING_DELETE_MANUFACTURER', 'РЈРґР°Р»РёС‚СЊ РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ');
 
-define('TEXT_MANUFACTURERS', 'Производители:');
-define('TEXT_DATE_ADDED', 'Дата Добавления:');
-define('TEXT_LAST_MODIFIED', 'Последнее Изменение:');
-define('TEXT_PRODUCTS', 'Товары:');
-define('TEXT_IMAGE_NONEXISTENT', 'КАРТИНКА ОТСУТСТВУЕТ');
+define('TEXT_MANUFACTURERS', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»Рё:');
+define('TEXT_DATE_ADDED', 'Р”Р°С‚Р° Р”РѕР±Р°РІР»РµРЅРёСЏ:');
+define('TEXT_LAST_MODIFIED', 'РџРѕСЃР»РµРґРЅРµРµ РР·РјРµРЅРµРЅРёРµ:');
+define('TEXT_PRODUCTS', 'РўРѕРІР°СЂС‹:');
+define('TEXT_IMAGE_NONEXISTENT', 'РљРђР РўРРќРљРђ РћРўРЎРЈРўРЎРўР’РЈР•Рў');
 
-define('TEXT_NEW_INTRO', 'Пожалуйста, внесите требуемую информацию для нового производителя');
-define('TEXT_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
+define('TEXT_NEW_INTRO', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРµСЃРёС‚Рµ С‚СЂРµР±СѓРµРјСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ РЅРѕРІРѕРіРѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ');
+define('TEXT_EDIT_INTRO', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёР·РјРµРЅРµРЅРёСЏ');
 
-define('TEXT_MANUFACTURERS_NAME', 'Название Производителя:');
-define('TEXT_MANUFACTURERS_IMAGE', 'Картинка Производителя:');
-define('TEXT_MANUFACTURERS_URL', 'URL Производителя (с http://):');
+define('TEXT_MANUFACTURERS_NAME', 'РќР°Р·РІР°РЅРёРµ РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ:');
+define('TEXT_MANUFACTURERS_IMAGE', 'РљР°СЂС‚РёРЅРєР° РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ:');
+define('TEXT_MANUFACTURERS_URL', 'URL РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ (СЃ http://):');
 
-define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить этого производителя?'); 
-define('TEXT_DELETE_IMAGE', 'Удалить фото производителя?');
-define('TEXT_DELETE_PRODUCTS', 'Удалить товары этого производителя? (включая отзывы, специальные предложения и предстоящие поступления)');
-define('TEXT_DELETE_WARNING_PRODUCTS', '<b>ПРЕДУПРЕЖДЕНИЕ:</b> %s наименований товара связаны с данным производителем!');  
+define('TEXT_DELETE_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕРіРѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ?'); 
+define('TEXT_DELETE_IMAGE', 'РЈРґР°Р»РёС‚СЊ С„РѕС‚Рѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ?');
+define('TEXT_DELETE_PRODUCTS', 'РЈРґР°Р»РёС‚СЊ С‚РѕРІР°СЂС‹ СЌС‚РѕРіРѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ? (РІРєР»СЋС‡Р°СЏ РѕС‚Р·С‹РІС‹, СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рё РїСЂРµРґСЃС‚РѕСЏС‰РёРµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ)');
+define('TEXT_DELETE_WARNING_PRODUCTS', '<b>РџР Р•Р”РЈРџР Р•Р–Р”Р•РќРР•:</b> %s РЅР°РёРјРµРЅРѕРІР°РЅРёР№ С‚РѕРІР°СЂР° СЃРІСЏР·Р°РЅС‹ СЃ РґР°РЅРЅС‹Рј РїСЂРѕРёР·РІРѕРґРёС‚РµР»РµРј!');  
 
-define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: В эту директорию невозможно записать. Смените права доступа для: %s');
-define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория не существует: %s');
+define('ERROR_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: Р’ СЌС‚Сѓ РґРёСЂРµРєС‚РѕСЂРёСЋ РЅРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РїРёСЃР°С‚СЊ. РЎРјРµРЅРёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РґР»СЏ: %s');
+define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'РћС€РёР±РєР°: Р”РёСЂРµРєС‚РѕСЂРёСЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚: %s');
 ?>

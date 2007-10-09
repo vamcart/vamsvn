@@ -306,7 +306,7 @@ $vamTemplate->assign('error','
 
   }
 
-// Ìåòêè äëÿ çàêëàäîê
+// ÐœÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ Ð·Ð°ÐºÐ»Ð°Ð´Ð¾Ðº
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
 $vamTemplate->assign('1',' class="current"');
@@ -332,7 +332,7 @@ if (strstr($PHP_SELF, FILENAME_LOGIN)) {
 $vamTemplate->assign('6',' class="current"');
 }
 
-// /Ìåòêè äëÿ çàêëàäîê
+// /ÐœÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ Ð·Ð°ÐºÐ»Ð°Ð´Ð¾Ðº
 
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
 ?>

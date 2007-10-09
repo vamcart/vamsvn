@@ -1,7 +1,7 @@
 <?php
 /* -----------------------------------------------------------------------------------------
    $Id: schet.php 998 2007/02/07 13:24:46 VaM $
-витанц
+РІРёС‚Р°РЅС†
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
@@ -16,74 +16,74 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_SCHET_TEXT_TITLE', 'Оплата по счёту');
-  define('MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION', '<br /><strong>Счёт Вы сможете распечатать на следующей странице.</strong><br /><br />Информация для оплаты:<br />' .
-                                                         '<br />Поставщик: ' . MODULE_PAYMENT_SCHET_1 .
-                                                         '<br />Адрес: ' . MODULE_PAYMENT_SCHET_2 .
-                                                         '<br />Телефон: ' . MODULE_PAYMENT_SCHET_3 .
-                                                         '<br />Факс: ' . MODULE_PAYMENT_SCHET_4 .
-                                                         '<br />Р/c: ' . MODULE_PAYMENT_SCHET_5 .
-                                                         '<br />Название банка: ' . MODULE_PAYMENT_SCHET_6 .
-                                                         '<br />К/c: ' . MODULE_PAYMENT_SCHET_7 .
-                                                         '<br />БИК: ' . MODULE_PAYMENT_SCHET_8 .
-                                                         '<br />ИНН: ' . MODULE_PAYMENT_SCHET_9 .
-                                                         '<br />КПП: ' . MODULE_PAYMENT_SCHET_10 .
-                                                         '<br />ОГРН: ' . MODULE_PAYMENT_SCHET_11 .
-                                                         '<br />ОКПО: ' . MODULE_PAYMENT_SCHET_12 .
-                                                         '<br /><br />Ваш заказ будет выполнен только после получения оплаты.<br />');
+  define('MODULE_PAYMENT_SCHET_TEXT_TITLE', 'РћРїР»Р°С‚Р° РїРѕ СЃС‡С‘С‚Сѓ');
+  define('MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION', '<br /><strong>РЎС‡С‘С‚ Р’С‹ СЃРјРѕР¶РµС‚Рµ СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РЅР° СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂР°РЅРёС†Рµ.</strong><br /><br />РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:<br />' .
+                                                         '<br />РџРѕСЃС‚Р°РІС‰РёРє: ' . MODULE_PAYMENT_SCHET_1 .
+                                                         '<br />РђРґСЂРµСЃ: ' . MODULE_PAYMENT_SCHET_2 .
+                                                         '<br />РўРµР»РµС„РѕРЅ: ' . MODULE_PAYMENT_SCHET_3 .
+                                                         '<br />Р¤Р°РєСЃ: ' . MODULE_PAYMENT_SCHET_4 .
+                                                         '<br />Р /c: ' . MODULE_PAYMENT_SCHET_5 .
+                                                         '<br />РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°: ' . MODULE_PAYMENT_SCHET_6 .
+                                                         '<br />Рљ/c: ' . MODULE_PAYMENT_SCHET_7 .
+                                                         '<br />Р‘РРљ: ' . MODULE_PAYMENT_SCHET_8 .
+                                                         '<br />РРќРќ: ' . MODULE_PAYMENT_SCHET_9 .
+                                                         '<br />РљРџРџ: ' . MODULE_PAYMENT_SCHET_10 .
+                                                         '<br />РћР“Р Рќ: ' . MODULE_PAYMENT_SCHET_11 .
+                                                         '<br />РћРљРџРћ: ' . MODULE_PAYMENT_SCHET_12 .
+                                                         '<br /><br />Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹.<br />');
   define('MODULE_PAYMENT_SCHET_TEXT_EMAIL_FOOTER', str_replace('<br />','\n',MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION));
 
-  define('MODULE_PAYMENT_SCHET_STATUS_TITLE','Разрешить модуль Оплата по счёту');
-  define('MODULE_PAYMENT_SCHET_STATUS_DESC','Разрешить использование модуля Оплата по счёту при оформлении заказа в магазине?');
+  define('MODULE_PAYMENT_SCHET_STATUS_TITLE','Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ РћРїР»Р°С‚Р° РїРѕ СЃС‡С‘С‚Сѓ');
+  define('MODULE_PAYMENT_SCHET_STATUS_DESC','Р Р°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РјРѕРґСѓР»СЏ РћРїР»Р°С‚Р° РїРѕ СЃС‡С‘С‚Сѓ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё Р·Р°РєР°Р·Р° РІ РјР°РіР°Р·РёРЅРµ?');
 
   define('MODULE_PAYMENT_SCHET_TEXT_INFO','');
 
-  define('MODULE_PAYMENT_SCHET_1_TITLE','Поставщик');
-  define('MODULE_PAYMENT_SCHET_1_DESC','Укажите название организации.');
+  define('MODULE_PAYMENT_SCHET_1_TITLE','РџРѕСЃС‚Р°РІС‰РёРє');
+  define('MODULE_PAYMENT_SCHET_1_DESC','РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё.');
 
-  define('MODULE_PAYMENT_SCHET_2_TITLE','Адрес');
-  define('MODULE_PAYMENT_SCHET_2_DESC','Укажите адрес организации.');
+  define('MODULE_PAYMENT_SCHET_2_TITLE','РђРґСЂРµСЃ');
+  define('MODULE_PAYMENT_SCHET_2_DESC','РЈРєР°Р¶РёС‚Рµ Р°РґСЂРµСЃ РѕСЂРіР°РЅРёР·Р°С†РёРё.');
 
-  define('MODULE_PAYMENT_SCHET_3_TITLE','Телефон');
-  define('MODULE_PAYMENT_SCHET_3_DESC','Укажите телефон.');
+  define('MODULE_PAYMENT_SCHET_3_TITLE','РўРµР»РµС„РѕРЅ');
+  define('MODULE_PAYMENT_SCHET_3_DESC','РЈРєР°Р¶РёС‚Рµ С‚РµР»РµС„РѕРЅ.');
 
-  define('MODULE_PAYMENT_SCHET_4_TITLE','Факс');
-  define('MODULE_PAYMENT_SCHET_4_DESC','Укажите факс.');
+  define('MODULE_PAYMENT_SCHET_4_TITLE','Р¤Р°РєСЃ');
+  define('MODULE_PAYMENT_SCHET_4_DESC','РЈРєР°Р¶РёС‚Рµ С„Р°РєСЃ.');
 
-  define('MODULE_PAYMENT_SCHET_5_TITLE','Р/с');
-  define('MODULE_PAYMENT_SCHET_5_DESC','Укажите р/с.');
+  define('MODULE_PAYMENT_SCHET_5_TITLE','Р /СЃ');
+  define('MODULE_PAYMENT_SCHET_5_DESC','РЈРєР°Р¶РёС‚Рµ СЂ/СЃ.');
 
-  define('MODULE_PAYMENT_SCHET_6_TITLE','Название банка');
-  define('MODULE_PAYMENT_SCHET_6_DESC','Укажите название банка.');
+  define('MODULE_PAYMENT_SCHET_6_TITLE','РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°');
+  define('MODULE_PAYMENT_SCHET_6_DESC','РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°.');
 
-  define('MODULE_PAYMENT_SCHET_7_TITLE','К/c');
-  define('MODULE_PAYMENT_SCHET_7_DESC','Укажите к/c.');
+  define('MODULE_PAYMENT_SCHET_7_TITLE','Рљ/c');
+  define('MODULE_PAYMENT_SCHET_7_DESC','РЈРєР°Р¶РёС‚Рµ Рє/c.');
 
-  define('MODULE_PAYMENT_SCHET_8_TITLE','БИК');
-  define('MODULE_PAYMENT_SCHET_8_DESC','Укажите БИК.');
+  define('MODULE_PAYMENT_SCHET_8_TITLE','Р‘РРљ');
+  define('MODULE_PAYMENT_SCHET_8_DESC','РЈРєР°Р¶РёС‚Рµ Р‘РРљ.');
 
-  define('MODULE_PAYMENT_SCHET_9_TITLE','ИНН');
-  define('MODULE_PAYMENT_SCHET_9_DESC','Укажите ИНН.');
+  define('MODULE_PAYMENT_SCHET_9_TITLE','РРќРќ');
+  define('MODULE_PAYMENT_SCHET_9_DESC','РЈРєР°Р¶РёС‚Рµ РРќРќ.');
 
-  define('MODULE_PAYMENT_SCHET_10_TITLE','КПП');
-  define('MODULE_PAYMENT_SCHET_10_DESC','Укажите КПП.');
+  define('MODULE_PAYMENT_SCHET_10_TITLE','РљРџРџ');
+  define('MODULE_PAYMENT_SCHET_10_DESC','РЈРєР°Р¶РёС‚Рµ РљРџРџ.');
 
-  define('MODULE_PAYMENT_SCHET_11_TITLE','ОГРН');
-  define('MODULE_PAYMENT_SCHET_11_DESC','Укажите ОГРН.');
+  define('MODULE_PAYMENT_SCHET_11_TITLE','РћР“Р Рќ');
+  define('MODULE_PAYMENT_SCHET_11_DESC','РЈРєР°Р¶РёС‚Рµ РћР“Р Рќ.');
 
-  define('MODULE_PAYMENT_SCHET_12_TITLE','ОКПО');
-  define('MODULE_PAYMENT_SCHET_12_DESC','Укажите ОКПО.');
+  define('MODULE_PAYMENT_SCHET_12_TITLE','РћРљРџРћ');
+  define('MODULE_PAYMENT_SCHET_12_DESC','РЈРєР°Р¶РёС‚Рµ РћРљРџРћ.');
 
-  define('MODULE_PAYMENT_SCHET_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_PAYMENT_SCHET_SORT_ORDER_DESC','Укажите порядок сортировки модуля.');
+  define('MODULE_PAYMENT_SCHET_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_PAYMENT_SCHET_SORT_ORDER_DESC','РЈРєР°Р¶РёС‚Рµ РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 
-  define('MODULE_PAYMENT_SCHET_ALLOWED_TITLE' , 'Разрешённые страны');
-  define('MODULE_PAYMENT_SCHET_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+  define('MODULE_PAYMENT_SCHET_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+  define('MODULE_PAYMENT_SCHET_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
 
-  define('MODULE_PAYMENT_SCHET_ZONE_TITLE' , 'Зона');
-  define('MODULE_PAYMENT_SCHET_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
+  define('MODULE_PAYMENT_SCHET_ZONE_TITLE' , 'Р—РѕРЅР°');
+  define('MODULE_PAYMENT_SCHET_ZONE_DESC' , 'Р•СЃР»Рё РІС‹Р±СЂР°РЅР° Р·РѕРЅР°, С‚Рѕ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ Р±СѓРґРµС‚ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· РІС‹Р±СЂР°РЅРЅРѕР№ Р·РѕРЅС‹.');
 
-  define('MODULE_PAYMENT_SCHET_ORDER_STATUS_ID_TITLE' , 'Статус заказа');
-  define('MODULE_PAYMENT_SCHET_ORDER_STATUS_ID_DESC' , 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
+  define('MODULE_PAYMENT_SCHET_ORDER_STATUS_ID_TITLE' , 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°');
+  define('MODULE_PAYMENT_SCHET_ORDER_STATUS_ID_DESC' , 'Р—Р°РєР°Р·С‹, РѕС„РѕСЂРјР»РµРЅРЅС‹Рµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РѕРїР»Р°С‚С‹ Р±СѓРґСѓС‚ РїСЂРёРЅРёРјР°С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ.');
 
 ?>

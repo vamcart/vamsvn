@@ -1,7 +1,7 @@
 <?php
 /* -----------------------------------------------------------------------------------------
    $Id: eustandardtransfer.php 998 2007/02/07 13:24:46 VaM $
-витанц
+РІРёС‚Р°РЅС†
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
@@ -16,57 +16,57 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_KVITANCIA_TEXT_TITLE', 'Квитанция СБ РФ');
-  define('MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION', '<br /><strong>Квитанцию для оплаты Вы сможете распечатать на следующей странице.</strong><br /><br />Информация для оплаты:<br />' .
-                                                         '<br />Название банка: ' . MODULE_PAYMENT_KVITANCIA_1 .
-                                                         '<br />Расчётный счёт: ' . MODULE_PAYMENT_KVITANCIA_2 .
-                                                         '<br />БИК: ' . MODULE_PAYMENT_KVITANCIA_3 .
-                                                         '<br />Кор./счет: ' . MODULE_PAYMENT_KVITANCIA_4 .
-                                                         '<br />ИНН: ' . MODULE_PAYMENT_KVITANCIA_5 .
-                                                         '<br />Получатель: ' . MODULE_PAYMENT_KVITANCIA_6 .
-                                                         '<br />КПП: ' . MODULE_PAYMENT_KVITANCIA_7 .
-                                                         '<br /><br />Ваш заказ будет выполнен только после получения оплаты.<br />');
+  define('MODULE_PAYMENT_KVITANCIA_TEXT_TITLE', 'РљРІРёС‚Р°РЅС†РёСЏ РЎР‘ Р Р¤');
+  define('MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION', '<br /><strong>РљРІРёС‚Р°РЅС†РёСЋ РґР»СЏ РѕРїР»Р°С‚С‹ Р’С‹ СЃРјРѕР¶РµС‚Рµ СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РЅР° СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂР°РЅРёС†Рµ.</strong><br /><br />РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:<br />' .
+                                                         '<br />РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°: ' . MODULE_PAYMENT_KVITANCIA_1 .
+                                                         '<br />Р Р°СЃС‡С‘С‚РЅС‹Р№ СЃС‡С‘С‚: ' . MODULE_PAYMENT_KVITANCIA_2 .
+                                                         '<br />Р‘РРљ: ' . MODULE_PAYMENT_KVITANCIA_3 .
+                                                         '<br />РљРѕСЂ./СЃС‡РµС‚: ' . MODULE_PAYMENT_KVITANCIA_4 .
+                                                         '<br />РРќРќ: ' . MODULE_PAYMENT_KVITANCIA_5 .
+                                                         '<br />РџРѕР»СѓС‡Р°С‚РµР»СЊ: ' . MODULE_PAYMENT_KVITANCIA_6 .
+                                                         '<br />РљРџРџ: ' . MODULE_PAYMENT_KVITANCIA_7 .
+                                                         '<br /><br />Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹.<br />');
   define('MODULE_PAYMENT_KVITANCIA_TEXT_EMAIL_FOOTER', str_replace('<br />','\n',MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION));
 
-  define('MODULE_PAYMENT_KVITANCIA_STATUS_TITLE','Разрешить модуль Квитанция СБ РФ');
-  define('MODULE_PAYMENT_KVITANCIA_STATUS_DESC','Разрешить использование модуля Квитанция СБ РФ при оформлении заказа в магазине?');
+  define('MODULE_PAYMENT_KVITANCIA_STATUS_TITLE','Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ РљРІРёС‚Р°РЅС†РёСЏ РЎР‘ Р Р¤');
+  define('MODULE_PAYMENT_KVITANCIA_STATUS_DESC','Р Р°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РјРѕРґСѓР»СЏ РљРІРёС‚Р°РЅС†РёСЏ РЎР‘ Р Р¤ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё Р·Р°РєР°Р·Р° РІ РјР°РіР°Р·РёРЅРµ?');
 
   define('MODULE_PAYMENT_KVITANCIA_TEXT_INFO','');
 
-  define('MODULE_PAYMENT_KVITANCIA_1_TITLE','Название банка');
-  define('MODULE_PAYMENT_KVITANCIA_1_DESC','Укажите название банка.');
+  define('MODULE_PAYMENT_KVITANCIA_1_TITLE','РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°');
+  define('MODULE_PAYMENT_KVITANCIA_1_DESC','РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°.');
 
-  define('MODULE_PAYMENT_KVITANCIA_2_TITLE','Расчётный счёт');
-  define('MODULE_PAYMENT_KVITANCIA_2_DESC','Укажите Ваш расчетный счет.');
+  define('MODULE_PAYMENT_KVITANCIA_2_TITLE','Р Р°СЃС‡С‘С‚РЅС‹Р№ СЃС‡С‘С‚');
+  define('MODULE_PAYMENT_KVITANCIA_2_DESC','РЈРєР°Р¶РёС‚Рµ Р’Р°С€ СЂР°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚.');
 
-  define('MODULE_PAYMENT_KVITANCIA_3_TITLE','БИК');
-  define('MODULE_PAYMENT_KVITANCIA_3_DESC','Укажите БИК.');
+  define('MODULE_PAYMENT_KVITANCIA_3_TITLE','Р‘РРљ');
+  define('MODULE_PAYMENT_KVITANCIA_3_DESC','РЈРєР°Р¶РёС‚Рµ Р‘РРљ.');
 
-  define('MODULE_PAYMENT_KVITANCIA_4_TITLE','Кор./счет');
-  define('MODULE_PAYMENT_KVITANCIA_4_DESC','Укажите Кор./счет.');
+  define('MODULE_PAYMENT_KVITANCIA_4_TITLE','РљРѕСЂ./СЃС‡РµС‚');
+  define('MODULE_PAYMENT_KVITANCIA_4_DESC','РЈРєР°Р¶РёС‚Рµ РљРѕСЂ./СЃС‡РµС‚.');
 
-  define('MODULE_PAYMENT_KVITANCIA_5_TITLE','ИНН');
-  define('MODULE_PAYMENT_KVITANCIA_5_DESC','Укажите ИНН.');
+  define('MODULE_PAYMENT_KVITANCIA_5_TITLE','РРќРќ');
+  define('MODULE_PAYMENT_KVITANCIA_5_DESC','РЈРєР°Р¶РёС‚Рµ РРќРќ.');
 
-  define('MODULE_PAYMENT_KVITANCIA_6_TITLE','Получатель');
-  define('MODULE_PAYMENT_KVITANCIA_6_DESC','Укажите получателя платежа.');
+  define('MODULE_PAYMENT_KVITANCIA_6_TITLE','РџРѕР»СѓС‡Р°С‚РµР»СЊ');
+  define('MODULE_PAYMENT_KVITANCIA_6_DESC','РЈРєР°Р¶РёС‚Рµ РїРѕР»СѓС‡Р°С‚РµР»СЏ РїР»Р°С‚РµР¶Р°.');
 
-  define('MODULE_PAYMENT_KVITANCIA_7_TITLE','КПП');
-  define('MODULE_PAYMENT_KVITANCIA_7_DESC','Укажите КПП.');
+  define('MODULE_PAYMENT_KVITANCIA_7_TITLE','РљРџРџ');
+  define('MODULE_PAYMENT_KVITANCIA_7_DESC','РЈРєР°Р¶РёС‚Рµ РљРџРџ.');
 
-  define('MODULE_PAYMENT_KVITANCIA_8_TITLE','Назначение платежа');
-  define('MODULE_PAYMENT_KVITANCIA_8_DESC','Укажите название платежа.');
+  define('MODULE_PAYMENT_KVITANCIA_8_TITLE','РќР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°');
+  define('MODULE_PAYMENT_KVITANCIA_8_DESC','РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РїР»Р°С‚РµР¶Р°.');
 
-  define('MODULE_PAYMENT_KVITANCIA_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_PAYMENT_KVITANCIA_SORT_ORDER_DESC','Укажите порядок сортировки модуля.');
+  define('MODULE_PAYMENT_KVITANCIA_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_PAYMENT_KVITANCIA_SORT_ORDER_DESC','РЈРєР°Р¶РёС‚Рµ РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 
-  define('MODULE_PAYMENT_KVITANCIA_ALLOWED_TITLE' , 'Разрешённые страны');
-  define('MODULE_PAYMENT_KVITANCIA_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+  define('MODULE_PAYMENT_KVITANCIA_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+  define('MODULE_PAYMENT_KVITANCIA_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
 
-  define('MODULE_PAYMENT_KVITANCIA_ZONE_TITLE' , 'Зона');
-  define('MODULE_PAYMENT_KVITANCIA_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
+  define('MODULE_PAYMENT_KVITANCIA_ZONE_TITLE' , 'Р—РѕРЅР°');
+  define('MODULE_PAYMENT_KVITANCIA_ZONE_DESC' , 'Р•СЃР»Рё РІС‹Р±СЂР°РЅР° Р·РѕРЅР°, С‚Рѕ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ Р±СѓРґРµС‚ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· РІС‹Р±СЂР°РЅРЅРѕР№ Р·РѕРЅС‹.');
 
-  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_TITLE' , 'Статус заказа');
-  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_DESC' , 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
+  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_TITLE' , 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°');
+  define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_DESC' , 'Р—Р°РєР°Р·С‹, РѕС„РѕСЂРјР»РµРЅРЅС‹Рµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РѕРїР»Р°С‚С‹ Р±СѓРґСѓС‚ РїСЂРёРЅРёРјР°С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ.');
 
 ?>

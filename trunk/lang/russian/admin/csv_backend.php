@@ -15,23 +15,23 @@
    --------------------------------------------------------------*/
 
    define('TITLE','CSV');
-   define('HEADING_TITLE','CSV èìïîðò/ýêñïîðò');
+   define('HEADING_TITLE','CSV Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚/ÑÐºÑÐ¿Ð¾Ñ€Ñ‚');
 
-   define('IMPORT','Èìïîðò');
-   define('EXPORT','Ýêñïîðò');
-   define('UPLOAD','Çàãðóçèòü ôàéë');
-   define('SELECT','Âûáåðèòå ôàéë äëÿ èìïîðòà (ïàïêà /import)');
-   define('SAVE','Ñîõðàíèòü ôàéë â ïàïêó /export');
-   define('LOAD','Îòïðàâèòü ôàéë â áðàóçåð');
-   define('CSV_TEXTSIGN_TITLE','Ïîëÿ çàêëþ÷åíû â');
-   define('CSV_TEXTSIGN_DESC','Òåêñòîâîå ïîëå â CSV-ôàéëå. Îáû÷íî äâîéíàÿ (íàïðèìåð ") èëè îäèíàðíàÿ êàâû÷êà.');
-   define('CSV_SEPERATOR_TITLE','Ðàçäåëèòåëü ïîëåé');
-   define('CSV_SEPERATOR_DESC','Ñèìâîë, èñïîëüçóåìûé äëÿ îïðåäåëåíèÿ îêîí÷àíèÿ ïîëÿ, íàïðèìåð ;');
-   define('COMPRESS_EXPORT_TITLE','Ñæàòèå');
-   define('COMPRESS_EXPORT_DESC','Ñæàòü ýêñïîðòèðóåìûé ôàéë');
-   define('CSV_SETUP','Íàñòðîéêà');
+   define('IMPORT','Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚');
+   define('EXPORT','Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚');
+   define('UPLOAD','Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»');
+   define('SELECT','Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ„Ð°Ð¹Ð» Ð´Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð° (Ð¿Ð°Ð¿ÐºÐ° /import)');
+   define('SAVE','Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð² Ð¿Ð°Ð¿ÐºÑƒ /export');
+   define('LOAD','ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð² Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€');
+   define('CSV_TEXTSIGN_TITLE','ÐŸÐ¾Ð»Ñ Ð·Ð°ÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ð²');
+   define('CSV_TEXTSIGN_DESC','Ð¢ÐµÐºÑÑ‚Ð¾Ð²Ð¾Ðµ Ð¿Ð¾Ð»Ðµ Ð² CSV-Ñ„Ð°Ð¹Ð»Ðµ. ÐžÐ±Ñ‹Ñ‡Ð½Ð¾ Ð´Ð²Ð¾Ð¹Ð½Ð°Ñ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ ") Ð¸Ð»Ð¸ Ð¾Ð´Ð¸Ð½Ð°Ñ€Ð½Ð°Ñ ÐºÐ°Ð²Ñ‹Ñ‡ÐºÐ°.');
+   define('CSV_SEPERATOR_TITLE','Ð Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð¿Ð¾Ð»ÐµÐ¹');
+   define('CSV_SEPERATOR_DESC','Ð¡Ð¸Ð¼Ð²Ð¾Ð», Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ð¹ Ð´Ð»Ñ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ñ Ð¿Ð¾Ð»Ñ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ ;');
+   define('COMPRESS_EXPORT_TITLE','Ð¡Ð¶Ð°Ñ‚Ð¸Ðµ');
+   define('COMPRESS_EXPORT_DESC','Ð¡Ð¶Ð°Ñ‚ÑŒ ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÐ¼Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»');
+   define('CSV_SETUP','ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°');
    define('TEXT_IMPORT','');
-   define('TEXT_PRODUCTS','Òîâàðû');
-   define('TEXT_EXPORT','Ñîçäàòü ôàéë è ñîõðàíèòü åãî â ïàïêå /export');
+   define('TEXT_PRODUCTS','Ð¢Ð¾Ð²Ð°Ñ€Ñ‹');
+   define('TEXT_EXPORT','Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐµÐ³Ð¾ Ð² Ð¿Ð°Ð¿ÐºÐµ /export');
 
 ?>

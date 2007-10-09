@@ -17,12 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_TITLE', 'Ñêèäêà');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_DESCRIPTION', 'Ñêèäêà îò ñòîèìîñòè çàêàçà');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_TITLE', 'Ð¡ÐºÐ¸Ð´ÐºÐ°');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_DESCRIPTION', 'Ð¡ÐºÐ¸Ð´ÐºÐ° Ð¾Ñ‚ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚Ð¸ Ð·Ð°ÐºÐ°Ð·Ð°');
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_TITLE', 'Ïîêàçûâàòü ñêèäêó');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_DESC', 'Âû õîòèòå ïîêàçûâàòü ñêèäêó â çàâèñèìîñòè îò îáùåé ñóììû çàêàçà?');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_TITLE', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐºÐ¸Ð´ÐºÑƒ');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_STATUS_DESC', 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐºÐ¸Ð´ÐºÑƒ Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð¾Ð±Ñ‰ÐµÐ¹ ÑÑƒÐ¼Ð¼Ñ‹ Ð·Ð°ÐºÐ°Ð·Ð°?');
 
-  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_TITLE', 'Ïîðÿäîê ñîðòèðîâêè');
-  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_DESC','Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_TITLE', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+  define('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER_DESC','ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 ?>

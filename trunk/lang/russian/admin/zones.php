@@ -17,20 +17,20 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ñïèñîê ðåãèîíîâ');
+define('HEADING_TITLE', 'Ð¡Ð¿Ð¸ÑÐ¾Ðº Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¾Ð²');
 
-define('TABLE_HEADING_COUNTRY_NAME', 'Ñòðàíà');
-define('TABLE_HEADING_ZONE_NAME', 'Ðåãèîí');
-define('TABLE_HEADING_ZONE_CODE', 'Êîä');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_COUNTRY_NAME', 'Ð¡Ñ‚Ñ€Ð°Ð½Ð°');
+define('TABLE_HEADING_ZONE_NAME', 'Ð ÐµÐ³Ð¸Ð¾Ð½');
+define('TABLE_HEADING_ZONE_CODE', 'ÐšÐ¾Ð´');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ïîæàëóéñòà, âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_ZONES_NAME', 'Íàçâàíèå Ðåãèîíà:');
-define('TEXT_INFO_ZONES_CODE', 'Êîä Ðåãèîíà:');
-define('TEXT_INFO_COUNTRY_NAME', 'Ñòðàíà:');
-define('TEXT_INFO_INSERT_INTRO', 'Ïîæàëóéñòà, âíåñèòå òðåáóåìóþ èíôîðìàöèþ äëÿ íîâîãî ðåãèîíà');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ðåãèîí?');
-define('TEXT_INFO_HEADING_NEW_ZONE', 'Íîâûé Ðåãèîí');
-define('TEXT_INFO_HEADING_EDIT_ZONE', 'Èçìåíèòü Ðåãèîí');
-define('TEXT_INFO_HEADING_DELETE_ZONE', 'Óäàëèòü Ðåãèîí');
+define('TEXT_INFO_EDIT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_ZONES_NAME', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð ÐµÐ³Ð¸Ð¾Ð½Ð°:');
+define('TEXT_INFO_ZONES_CODE', 'ÐšÐ¾Ð´ Ð ÐµÐ³Ð¸Ð¾Ð½Ð°:');
+define('TEXT_INFO_COUNTRY_NAME', 'Ð¡Ñ‚Ñ€Ð°Ð½Ð°:');
+define('TEXT_INFO_INSERT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ñ‚Ñ€ÐµÐ±ÑƒÐµÐ¼ÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð°');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ñ€ÐµÐ³Ð¸Ð¾Ð½?');
+define('TEXT_INFO_HEADING_NEW_ZONE', 'ÐÐ¾Ð²Ñ‹Ð¹ Ð ÐµÐ³Ð¸Ð¾Ð½');
+define('TEXT_INFO_HEADING_EDIT_ZONE', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð ÐµÐ³Ð¸Ð¾Ð½');
+define('TEXT_INFO_HEADING_DELETE_ZONE', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð ÐµÐ³Ð¸Ð¾Ð½');
 ?>

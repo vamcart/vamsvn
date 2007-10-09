@@ -84,7 +84,7 @@
 <div class="tabber">
 
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
-<!-- êàòåãîðèè -->
+<!-- ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ -->
         <div class="tabbertab">
         <h3><?php echo $languages[$i]['name']; ?></h3>
           <table border="0" class="main">
@@ -122,7 +122,7 @@
           </table>
         </div>
 <?php } ?>
-<!-- /êàòåãîðèè -->
+<!-- /ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ -->
 
 <!-- info -->
         <div class="tabbertab">
@@ -224,7 +224,7 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
         </div>
 <!-- info -->
 
-<!-- êàðòèíêà -->
+<!-- ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ° -->
         <div class="tabbertab">
         <h3><?php echo TEXT_TAB_CATEGORIES_IMAGE; ?></h3>
           <table border="0">

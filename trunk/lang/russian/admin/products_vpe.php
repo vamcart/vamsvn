@@ -17,17 +17,17 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Упаковочная единица');
+define('HEADING_TITLE', 'РЈРїР°РєРѕРІРѕС‡РЅР°СЏ РµРґРёРЅРёС†Р°');
 
-define('TABLE_HEADING_PRODUCTS_VPE', 'Упаковочная единица');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_PRODUCTS_VPE', 'РЈРїР°РєРѕРІРѕС‡РЅР°СЏ РµРґРёРЅРёС†Р°');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Сделайте необходиме изменения');
-define('TEXT_INFO_PRODUCTS_VPE_NAME', 'Название:');
-define('TEXT_INFO_INSERT_INTRO', 'Введите новую упаковочную </span title="единица измерения короткомерного баланса, равная 5,66 складочных кубических метра">единицу</span>');
-define('TEXT_INFO_DELETE_INTRO', 'Вы уверены, что хотите удалить эту единицу?');
-define('TEXT_INFO_HEADING_NEW_PRODUCTS_VPE', 'Новая упаковочная единица');
-define('TEXT_INFO_HEADING_EDIT_PRODUCTS_VPE', 'Редактировать упаковочную единицу');
-define('TEXT_INFO_HEADING_DELETE_PRODUCTS_VPE', 'Удалить упаковочную единицу');
-define('ERROR_REMOVE_DEFAULT_PRODUCTS_VPE', 'Ошибка: единица по умолчанию не может быть удалена. Пожалуйста, установите другую единицу по умолчанию и попробуйте еще раз.');
+define('TEXT_INFO_EDIT_INTRO', 'РЎРґРµР»Р°Р№С‚Рµ РЅРµРѕР±С…РѕРґРёРјРµ РёР·РјРµРЅРµРЅРёСЏ');
+define('TEXT_INFO_PRODUCTS_VPE_NAME', 'РќР°Р·РІР°РЅРёРµ:');
+define('TEXT_INFO_INSERT_INTRO', 'Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ СѓРїР°РєРѕРІРѕС‡РЅСѓСЋ </span title="РµРґРёРЅРёС†Р° РёР·РјРµСЂРµРЅРёСЏ РєРѕСЂРѕС‚РєРѕРјРµСЂРЅРѕРіРѕ Р±Р°Р»Р°РЅСЃР°, СЂР°РІРЅР°СЏ 5,66 СЃРєР»Р°РґРѕС‡РЅС‹С… РєСѓР±РёС‡РµСЃРєРёС… РјРµС‚СЂР°">РµРґРёРЅРёС†Сѓ</span>');
+define('TEXT_INFO_DELETE_INTRO', 'Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РµРґРёРЅРёС†Сѓ?');
+define('TEXT_INFO_HEADING_NEW_PRODUCTS_VPE', 'РќРѕРІР°СЏ СѓРїР°РєРѕРІРѕС‡РЅР°СЏ РµРґРёРЅРёС†Р°');
+define('TEXT_INFO_HEADING_EDIT_PRODUCTS_VPE', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓРїР°РєРѕРІРѕС‡РЅСѓСЋ РµРґРёРЅРёС†Сѓ');
+define('TEXT_INFO_HEADING_DELETE_PRODUCTS_VPE', 'РЈРґР°Р»РёС‚СЊ СѓРїР°РєРѕРІРѕС‡РЅСѓСЋ РµРґРёРЅРёС†Сѓ');
+define('ERROR_REMOVE_DEFAULT_PRODUCTS_VPE', 'РћС€РёР±РєР°: РµРґРёРЅРёС†Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓРґР°Р»РµРЅР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓСЃС‚Р°РЅРѕРІРёС‚Рµ РґСЂСѓРіСѓСЋ РµРґРёРЅРёС†Сѓ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.');
 ?>

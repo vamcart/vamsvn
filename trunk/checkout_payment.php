@@ -17,7 +17,7 @@
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
    Third Party contributions:
-   agree_conditions_1.01        	Autor:	Thomas Pl‰nkers (webmaster@oscommerce.at)
+   agree_conditions_1.01        	Autor:	Thomas Pl–¥nkers (webmaster@oscommerce.at)
 
    Customers Status v3.x  (c) 2002-2003 Copyright Elari elari@free.fr | www.unlockgsm.com/dload-osc/ | CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/elari/?sortby=date#dirlist
 

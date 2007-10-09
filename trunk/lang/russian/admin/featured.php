@@ -17,31 +17,31 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ðåêîìåíäóåìûå òîâàðû');
+define('HEADING_TITLE', 'Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼Ñ‹Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹');
 
-define('TABLE_HEADING_PRODUCTS', 'Òîâàðû');
-define('TABLE_HEADING_STATUS', 'Ñîñòîÿíèå');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_PRODUCTS', 'Ð¢Ð¾Ð²Ð°Ñ€Ñ‹');
+define('TABLE_HEADING_STATUS', 'Ð¡Ð¾ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_FEATURED_PRODUCT', 'Òîâàð:');
-define('TEXT_FEATURED_QUANTITY', 'Êîëè÷åñòâî:');
-define('TEXT_FEATURED_EXPIRES_DATE', 'Äàòà èñòåêàåò:');
+define('TEXT_FEATURED_PRODUCT', 'Ð¢Ð¾Ð²Ð°Ñ€:');
+define('TEXT_FEATURED_QUANTITY', 'ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾:');
+define('TEXT_FEATURED_EXPIRES_DATE', 'Ð”Ð°Ñ‚Ð° Ð¸ÑÑ‚ÐµÐºÐ°ÐµÑ‚:');
 
-define('TEXT_INFO_DATE_ADDED', 'Äàòà äîáàâëåíèÿ:');
-define('TEXT_INFO_LAST_MODIFIED', 'Ïîñëåäíåå èçìåíåíèå:');
-define('TEXT_INFO_EXPIRES_DATE', 'Äåéñòâóåò äî:');
-define('TEXT_INFO_STATUS_CHANGE', 'Èçìåíèòü ñòàòóñ:');
+define('TEXT_INFO_DATE_ADDED', 'Ð”Ð°Ñ‚Ð° Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ:');
+define('TEXT_INFO_LAST_MODIFIED', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½ÐµÐµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ:');
+define('TEXT_INFO_EXPIRES_DATE', 'Ð”ÐµÐ¹ÑÑ‚Ð²ÑƒÐµÑ‚ Ð´Ð¾:');
+define('TEXT_INFO_STATUS_CHANGE', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ:');
 
-define('TEXT_INFO_HEADING_DELETE_FEATURED', 'Óäàëèòü òîâàð èç ðåêîìåíäóåìûõ');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü äàííûé òîâàð èç ðåêîìåíäóåìûõ?');
+define('TEXT_INFO_HEADING_DELETE_FEATURED', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€ Ð¸Ð· Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼Ñ‹Ñ…');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€ Ð¸Ð· Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼Ñ‹Ñ…?');
 
-define('TEXT_IMAGE_NONEXISTENT','Íåò êàðòèíêè!');
+define('TEXT_IMAGE_NONEXISTENT','ÐÐµÑ‚ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ¸!');
 
-// Äîáàâëåíî VaM ñáîðêà
+// Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¾ VaM ÑÐ±Ð¾Ñ€ÐºÐ°
 
-define('IMAGE_ICON_STATUS_GREEN', 'Àêòèâíà');
-define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Àêòèâèçèðîâàòü');
-define('IMAGE_ICON_STATUS_RED', 'Íåàêòèâíà');
-define('IMAGE_ICON_STATUS_RED_LIGHT', 'Ñäåëàòü íåàêòèâíîé');
+define('IMAGE_ICON_STATUS_GREEN', 'ÐÐºÑ‚Ð¸Ð²Ð½Ð°');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'ÐÐºÑ‚Ð¸Ð²Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ');
+define('IMAGE_ICON_STATUS_RED', 'ÐÐµÐ°ÐºÑ‚Ð¸Ð²Ð½Ð°');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Ð¡Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ð½ÐµÐ°ÐºÑ‚Ð¸Ð²Ð½Ð¾Ð¹');
 
 ?>

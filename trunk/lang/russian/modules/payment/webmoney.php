@@ -18,23 +18,23 @@
    ---------------------------------------------------------------------------------------*/
 
   define('MODULE_PAYMENT_WEBMONEY_TEXT_TITLE', 'WebMoney');
-  define('MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION', 'Информация для оплаты:<br /><br />WM идентификатор: ' . MODULE_PAYMENT_WEBMONEY_WMID . '<br />Кошелёк WMZ: ' . MODULE_PAYMENT_WEBMONEY_WMZ . '<br />Кошелёк WMR: ' . MODULE_PAYMENT_WEBMONEY_WMR . '<br /><br />' . 'Ваш заказ будет выполнен только после получения оплаты!');
-  define('MODULE_PAYMENT_WEBMONEY_TEXT_EMAIL_FOOTER', "Информация для оплаты:\n\nНаш WM идентификатор: ". MODULE_PAYMENT_WEBMONEY_WMID . "\n\nКошелёк WMZ: ". MODULE_PAYMENT_WEBMONEY_WMZ . "\n\nКошелёк WMR: ". MODULE_PAYMENT_WEBMONEY_WMR . "\n\n" . 'Ваш заказ будет выполнен только после получения оплаты!');
+  define('MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION', 'РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:<br /><br />WM РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ: ' . MODULE_PAYMENT_WEBMONEY_WMID . '<br />РљРѕС€РµР»С‘Рє WMZ: ' . MODULE_PAYMENT_WEBMONEY_WMZ . '<br />РљРѕС€РµР»С‘Рє WMR: ' . MODULE_PAYMENT_WEBMONEY_WMR . '<br /><br />' . 'Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹!');
+  define('MODULE_PAYMENT_WEBMONEY_TEXT_EMAIL_FOOTER', "РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:\n\nРќР°С€ WM РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ: ". MODULE_PAYMENT_WEBMONEY_WMID . "\n\nРљРѕС€РµР»С‘Рє WMZ: ". MODULE_PAYMENT_WEBMONEY_WMZ . "\n\nРљРѕС€РµР»С‘Рє WMR: ". MODULE_PAYMENT_WEBMONEY_WMR . "\n\n" . 'Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹!');
 define('MODULE_PAYMENT_WEBMONEY_TEXT_INFO','');
-  define('MODULE_PAYMENT_WEBMONEY_STATUS_TITLE' , 'Разрешить модуль WebMoney');
-define('MODULE_PAYMENT_WEBMONEY_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
-define('MODULE_PAYMENT_WEBMONEY_ALLOWED_TITLE' , 'Разрешённые страны');
-define('MODULE_PAYMENT_WEBMONEY_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+  define('MODULE_PAYMENT_WEBMONEY_STATUS_TITLE' , 'Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ WebMoney');
+define('MODULE_PAYMENT_WEBMONEY_STATUS_DESC' , 'Р’С‹ С…РѕС‚РёС‚Рµ СЂР°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РјРѕРґСѓР»СЏ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё Р·Р°РєР°Р·РѕРІ?');
+define('MODULE_PAYMENT_WEBMONEY_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+define('MODULE_PAYMENT_WEBMONEY_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
 define('MODULE_PAYMENT_WEBMONEY_WMID_TITLE' , 'WM ID:');
-define('MODULE_PAYMENT_WEBMONEY_WMID_DESC' , 'Укажите Ваш WM ID');
-define('MODULE_PAYMENT_WEBMONEY_WMZ_TITLE' , 'Ваш WMZ кошелёк:');
-define('MODULE_PAYMENT_WEBMONEY_WMZ_DESC' , 'Укажите номер Вашего WMZ кошелька');
-define('MODULE_PAYMENT_WEBMONEY_WMR_TITLE' , 'Ваш WMR кошелёк:');
-define('MODULE_PAYMENT_WEBMONEY_WMR_DESC' , 'Укажите номер Вашего WMR кошелька');
-define('MODULE_PAYMENT_WEBMONEY_SORT_ORDER_TITLE' , 'Порядок сортировки');
-define('MODULE_PAYMENT_WEBMONEY_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
-define('MODULE_PAYMENT_WEBMONEY_ZONE_TITLE' , 'Зона');
-define('MODULE_PAYMENT_WEBMONEY_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_WEBMONEY_ORDER_STATUS_ID_TITLE' , 'Статус заказа');
-define('MODULE_PAYMENT_WEBMONEY_ORDER_STATUS_ID_DESC' , 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
+define('MODULE_PAYMENT_WEBMONEY_WMID_DESC' , 'РЈРєР°Р¶РёС‚Рµ Р’Р°С€ WM ID');
+define('MODULE_PAYMENT_WEBMONEY_WMZ_TITLE' , 'Р’Р°С€ WMZ РєРѕС€РµР»С‘Рє:');
+define('MODULE_PAYMENT_WEBMONEY_WMZ_DESC' , 'РЈРєР°Р¶РёС‚Рµ РЅРѕРјРµСЂ Р’Р°С€РµРіРѕ WMZ РєРѕС€РµР»СЊРєР°');
+define('MODULE_PAYMENT_WEBMONEY_WMR_TITLE' , 'Р’Р°С€ WMR РєРѕС€РµР»С‘Рє:');
+define('MODULE_PAYMENT_WEBMONEY_WMR_DESC' , 'РЈРєР°Р¶РёС‚Рµ РЅРѕРјРµСЂ Р’Р°С€РµРіРѕ WMR РєРѕС€РµР»СЊРєР°');
+define('MODULE_PAYMENT_WEBMONEY_SORT_ORDER_TITLE' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+define('MODULE_PAYMENT_WEBMONEY_SORT_ORDER_DESC' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
+define('MODULE_PAYMENT_WEBMONEY_ZONE_TITLE' , 'Р—РѕРЅР°');
+define('MODULE_PAYMENT_WEBMONEY_ZONE_DESC' , 'Р•СЃР»Рё РІС‹Р±СЂР°РЅР° Р·РѕРЅР°, С‚Рѕ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ Р±СѓРґРµС‚ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· РІС‹Р±СЂР°РЅРЅРѕР№ Р·РѕРЅС‹.');
+define('MODULE_PAYMENT_WEBMONEY_ORDER_STATUS_ID_TITLE' , 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°');
+define('MODULE_PAYMENT_WEBMONEY_ORDER_STATUS_ID_DESC' , 'Р—Р°РєР°Р·С‹, РѕС„РѕСЂРјР»РµРЅРЅС‹Рµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РѕРїР»Р°С‚С‹ Р±СѓРґСѓС‚ РїСЂРёРЅРёРјР°С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ.');
 ?>

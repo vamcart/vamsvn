@@ -17,205 +17,205 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
  
-define('TEXT_EDIT_STATUS', 'Статус');
-define('HEADING_TITLE', 'Категории / Товары');
-define('HEADING_TITLE_SEARCH', 'Поиск:');
-define('HEADING_TITLE_GOTO', 'Перейти в:');
+define('TEXT_EDIT_STATUS', 'РЎС‚Р°С‚СѓСЃ');
+define('HEADING_TITLE', 'РљР°С‚РµРіРѕСЂРёРё / РўРѕРІР°СЂС‹');
+define('HEADING_TITLE_SEARCH', 'РџРѕРёСЃРє:');
+define('HEADING_TITLE_GOTO', 'РџРµСЂРµР№С‚Рё РІ:');
 
-define('TABLE_HEADING_ID', 'ID код');
-define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Категории / Товары');
-define('TABLE_HEADING_ACTION', 'Действие');
-define('TABLE_HEADING_STATUS', 'Статус');
-define('TABLE_HEADING_STARTPAGE', 'Показывать на главной');
-define('TABLE_HEADING_STOCK','Количество на складе');
-define('TABLE_HEADING_SORT','Порядок');
-define('TABLE_HEADING_EDIT','Выделить всё');
+define('TABLE_HEADING_ID', 'ID РєРѕРґ');
+define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'РљР°С‚РµРіРѕСЂРёРё / РўРѕРІР°СЂС‹');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
+define('TABLE_HEADING_STATUS', 'РЎС‚Р°С‚СѓСЃ');
+define('TABLE_HEADING_STARTPAGE', 'РџРѕРєР°Р·С‹РІР°С‚СЊ РЅР° РіР»Р°РІРЅРѕР№');
+define('TABLE_HEADING_STOCK','РљРѕР»РёС‡РµСЃС‚РІРѕ РЅР° СЃРєР»Р°РґРµ');
+define('TABLE_HEADING_SORT','РџРѕСЂСЏРґРѕРє');
+define('TABLE_HEADING_EDIT','Р’С‹РґРµР»РёС‚СЊ РІСЃС‘');
 
-define('TEXT_ACTIVE_ELEMENT','Активный элемент');
-define('TEXT_INFORMATIONS','Информация');
-define('TEXT_MARKED_ELEMENTS','Отмеченные элементы');
-define('TEXT_INSERT_ELEMENT','Новый элемент');
+define('TEXT_ACTIVE_ELEMENT','РђРєС‚РёРІРЅС‹Р№ СЌР»РµРјРµРЅС‚');
+define('TEXT_INFORMATIONS','РРЅС„РѕСЂРјР°С†РёСЏ');
+define('TEXT_MARKED_ELEMENTS','РћС‚РјРµС‡РµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹');
+define('TEXT_INSERT_ELEMENT','РќРѕРІС‹Р№ СЌР»РµРјРµРЅС‚');
 
 define('TEXT_WARN_MAIN','0');
-define('TEXT_NEW_PRODUCT', 'Новый товар в &quot;%s&quot;');
-define('TEXT_CATEGORIES', 'Категории:');
-define('TEXT_PRODUCTS', 'Товаров на странице:');
-define('TEXT_PRODUCTS_PRICE_INFO', 'Цены:');
-define('TEXT_PRODUCTS_TAX_CLASS', 'Класс налогов:');
-define('TEXT_PRODUCTS_AVERAGE_RATING', 'Средний рейтинг:');
-define('TEXT_PRODUCTS_QUANTITY_INFO', 'Количество:');
-define('TEXT_PRODUCTS_DISCOUNT_ALLOWED_INFO', 'Максимальная скидка');
-define('TEXT_DATE_ADDED', 'Добавлено:');
-define('TEXT_DATE_AVAILABLE', 'Доступно:');
-define('TEXT_LAST_MODIFIED', 'Изменено:');
-define('TEXT_IMAGE_NONEXISTENT', 'Картинка отсутствует');
-define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Пожалуйста, добавьте категорию или товар <br />&nbsp;<br /><b>%s</b>');
-define('TEXT_PRODUCT_MORE_INFORMATION', 'Для получения дополнительной информации, пожалуйста, посетите эту <a href="http://%s" target="blank"><u>страницу</u></a>.');
-define('TEXT_PRODUCT_DATE_ADDED', 'Этот товар добавлен в наш каталог %s.');
-define('TEXT_PRODUCT_DATE_AVAILABLE', 'Этот товар появится в продаже %s.');
-define('TEXT_CHOOSE_INFO_TEMPLATE', 'Шаблон страницы товара:');
-define('TEXT_CHOOSE_OPTIONS_TEMPLATE', 'Шаблон атрибутов товара:');
-define('TEXT_SELECT', 'Выберите:');
+define('TEXT_NEW_PRODUCT', 'РќРѕРІС‹Р№ С‚РѕРІР°СЂ РІ &quot;%s&quot;');
+define('TEXT_CATEGORIES', 'РљР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_PRODUCTS', 'РўРѕРІР°СЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ:');
+define('TEXT_PRODUCTS_PRICE_INFO', 'Р¦РµРЅС‹:');
+define('TEXT_PRODUCTS_TAX_CLASS', 'РљР»Р°СЃСЃ РЅР°Р»РѕРіРѕРІ:');
+define('TEXT_PRODUCTS_AVERAGE_RATING', 'РЎСЂРµРґРЅРёР№ СЂРµР№С‚РёРЅРі:');
+define('TEXT_PRODUCTS_QUANTITY_INFO', 'РљРѕР»РёС‡РµСЃС‚РІРѕ:');
+define('TEXT_PRODUCTS_DISCOUNT_ALLOWED_INFO', 'РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃРєРёРґРєР°');
+define('TEXT_DATE_ADDED', 'Р”РѕР±Р°РІР»РµРЅРѕ:');
+define('TEXT_DATE_AVAILABLE', 'Р”РѕСЃС‚СѓРїРЅРѕ:');
+define('TEXT_LAST_MODIFIED', 'РР·РјРµРЅРµРЅРѕ:');
+define('TEXT_IMAGE_NONEXISTENT', 'РљР°СЂС‚РёРЅРєР° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚');
+define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РґРѕР±Р°РІСЊС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ РёР»Рё С‚РѕРІР°СЂ <br />&nbsp;<br /><b>%s</b>');
+define('TEXT_PRODUCT_MORE_INFORMATION', 'Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕСЃРµС‚РёС‚Рµ СЌС‚Сѓ <a href="http://%s" target="blank"><u>СЃС‚СЂР°РЅРёС†Сѓ</u></a>.');
+define('TEXT_PRODUCT_DATE_ADDED', 'Р­С‚РѕС‚ С‚РѕРІР°СЂ РґРѕР±Р°РІР»РµРЅ РІ РЅР°С€ РєР°С‚Р°Р»РѕРі %s.');
+define('TEXT_PRODUCT_DATE_AVAILABLE', 'Р­С‚РѕС‚ С‚РѕРІР°СЂ РїРѕСЏРІРёС‚СЃСЏ РІ РїСЂРѕРґР°Р¶Рµ %s.');
+define('TEXT_CHOOSE_INFO_TEMPLATE', 'РЁР°Р±Р»РѕРЅ СЃС‚СЂР°РЅРёС†С‹ С‚РѕРІР°СЂР°:');
+define('TEXT_CHOOSE_OPTIONS_TEMPLATE', 'РЁР°Р±Р»РѕРЅ Р°С‚СЂРёР±СѓС‚РѕРІ С‚РѕРІР°СЂР°:');
+define('TEXT_SELECT', 'Р’С‹Р±РµСЂРёС‚Рµ:');
 
-define('TEXT_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
-define('TEXT_EDIT_CATEGORIES_ID', 'ID категории:');
-define('TEXT_EDIT_CATEGORIES_NAME', 'Название категории:');
-define('TEXT_EDIT_CATEGORIES_HEADING_TITLE', 'Заголовок категории:');
-define('TEXT_EDIT_CATEGORIES_DESCRIPTION', 'Описание категории:');
-define('TEXT_EDIT_CATEGORIES_IMAGE', 'Картинка категории:');
+define('TEXT_EDIT_INTRO', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёР·РјРµРЅРµРЅРёСЏ');
+define('TEXT_EDIT_CATEGORIES_ID', 'ID РєР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_EDIT_CATEGORIES_NAME', 'РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_EDIT_CATEGORIES_HEADING_TITLE', 'Р—Р°РіРѕР»РѕРІРѕРє РєР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_EDIT_CATEGORIES_DESCRIPTION', 'РћРїРёСЃР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_EDIT_CATEGORIES_IMAGE', 'РљР°СЂС‚РёРЅРєР° РєР°С‚РµРіРѕСЂРёРё:');
 
-define('TEXT_EDIT_SORT_ORDER', 'Порядок сортировки:');
+define('TEXT_EDIT_SORT_ORDER', 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё:');
 
-define('TEXT_INFO_COPY_TO_INTRO', 'Пожалуйста, выберите новую категорию, в которую Вы желаете скопировать этот товар');
-define('TEXT_INFO_CURRENT_CATEGORIES', 'Текущая категория:');
+define('TEXT_INFO_COPY_TO_INTRO', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РЅРѕРІСѓСЋ РєР°С‚РµРіРѕСЂРёСЋ, РІ РєРѕС‚РѕСЂСѓСЋ Р’С‹ Р¶РµР»Р°РµС‚Рµ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЌС‚РѕС‚ С‚РѕРІР°СЂ');
+define('TEXT_INFO_CURRENT_CATEGORIES', 'РўРµРєСѓС‰Р°СЏ РєР°С‚РµРіРѕСЂРёСЏ:');
 
-define('TEXT_INFO_HEADING_NEW_CATEGORY', 'Новая категория');
-define('TEXT_INFO_HEADING_EDIT_CATEGORY', 'Редактировать категорию');
-define('TEXT_INFO_HEADING_DELETE_CATEGORY', 'Удалить категорию');
-define('TEXT_INFO_HEADING_MOVE_CATEGORY', 'Перенести категорию');
-define('TEXT_INFO_HEADING_DELETE_PRODUCT', 'Удалить товар');
-define('TEXT_INFO_HEADING_MOVE_PRODUCT', 'Переместить товар');
-define('TEXT_INFO_HEADING_COPY_TO', 'Копировать в');
-define('TEXT_INFO_HEADING_MOVE_ELEMENTS', 'Переместить элементы');
-define('TEXT_INFO_HEADING_DELETE_ELEMENTS', 'Удалить элементы');
+define('TEXT_INFO_HEADING_NEW_CATEGORY', 'РќРѕРІР°СЏ РєР°С‚РµРіРѕСЂРёСЏ');
+define('TEXT_INFO_HEADING_EDIT_CATEGORY', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєР°С‚РµРіРѕСЂРёСЋ');
+define('TEXT_INFO_HEADING_DELETE_CATEGORY', 'РЈРґР°Р»РёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ');
+define('TEXT_INFO_HEADING_MOVE_CATEGORY', 'РџРµСЂРµРЅРµСЃС‚Рё РєР°С‚РµРіРѕСЂРёСЋ');
+define('TEXT_INFO_HEADING_DELETE_PRODUCT', 'РЈРґР°Р»РёС‚СЊ С‚РѕРІР°СЂ');
+define('TEXT_INFO_HEADING_MOVE_PRODUCT', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ С‚РѕРІР°СЂ');
+define('TEXT_INFO_HEADING_COPY_TO', 'РљРѕРїРёСЂРѕРІР°С‚СЊ РІ');
+define('TEXT_INFO_HEADING_MOVE_ELEMENTS', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ СЌР»РµРјРµРЅС‚С‹');
+define('TEXT_INFO_HEADING_DELETE_ELEMENTS', 'РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚С‹');
 
-define('TEXT_DELETE_CATEGORY_INTRO', 'Вы согласны удалить эту категорию?');
-define('TEXT_DELETE_PRODUCT_INTRO', 'Отметьте Категории из которых надо удалить данный товар. Вы согласны навсегда удалить эти товары?');
+define('TEXT_DELETE_CATEGORY_INTRO', 'Р’С‹ СЃРѕРіР»Р°СЃРЅС‹ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РєР°С‚РµРіРѕСЂРёСЋ?');
+define('TEXT_DELETE_PRODUCT_INTRO', 'РћС‚РјРµС‚СЊС‚Рµ РљР°С‚РµРіРѕСЂРёРё РёР· РєРѕС‚РѕСЂС‹С… РЅР°РґРѕ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Р№ С‚РѕРІР°СЂ. Р’С‹ СЃРѕРіР»Р°СЃРЅС‹ РЅР°РІСЃРµРіРґР° СѓРґР°Р»РёС‚СЊ СЌС‚Рё С‚РѕРІР°СЂС‹?');
 
-define('TEXT_DELETE_WARNING_CHILDS', '<b>ВНИМАНИЕ:</b> С данной категорий связано %s подкатегорий!');
-define('TEXT_DELETE_WARNING_PRODUCTS', '<b>ВНИМАНИЕ:</b> С данной категорий связано %s товаров!');
+define('TEXT_DELETE_WARNING_CHILDS', '<b>Р’РќРРњРђРќРР•:</b> РЎ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёР№ СЃРІСЏР·Р°РЅРѕ %s РїРѕРґРєР°С‚РµРіРѕСЂРёР№!');
+define('TEXT_DELETE_WARNING_PRODUCTS', '<b>Р’РќРРњРђРќРР•:</b> РЎ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёР№ СЃРІСЏР·Р°РЅРѕ %s С‚РѕРІР°СЂРѕРІ!');
 
-define('TEXT_MOVE_WARNING_CHILDS', '<b>Информация:</b> С данной категорий связано %s подкатегорий!');
-define('TEXT_MOVE_WARNING_PRODUCTS', '<b>Информация:</b> С данной категорий связано %s товаров!');
+define('TEXT_MOVE_WARNING_CHILDS', '<b>РРЅС„РѕСЂРјР°С†РёСЏ:</b> РЎ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёР№ СЃРІСЏР·Р°РЅРѕ %s РїРѕРґРєР°С‚РµРіРѕСЂРёР№!');
+define('TEXT_MOVE_WARNING_PRODUCTS', '<b>РРЅС„РѕСЂРјР°С†РёСЏ:</b> РЎ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёР№ СЃРІСЏР·Р°РЅРѕ %s С‚РѕРІР°СЂРѕРІ!');
 
-define('TEXT_MOVE_PRODUCTS_INTRO', 'Выберите категорию, в которую Вы хотите переместить <b>%s</b>');
-define('TEXT_MOVE_CATEGORIES_INTRO', 'Выберите категорию, в которую Вы хотите переместить <b>%s</b>');
-define('TEXT_MOVE', 'Перенести <b>%s</b> в:');
-define('TEXT_MOVE_ALL', 'Переместить всё в:');
+define('TEXT_MOVE_PRODUCTS_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ, РІ РєРѕС‚РѕСЂСѓСЋ Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ <b>%s</b>');
+define('TEXT_MOVE_CATEGORIES_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ, РІ РєРѕС‚РѕСЂСѓСЋ Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ <b>%s</b>');
+define('TEXT_MOVE', 'РџРµСЂРµРЅРµСЃС‚Рё <b>%s</b> РІ:');
+define('TEXT_MOVE_ALL', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІСЃС‘ РІ:');
 
-define('TEXT_NEW_CATEGORY_INTRO', 'Введите всю необходимую информацию для новой категории.');
-define('TEXT_CATEGORIES_NAME', 'Название категории:');
-define('TEXT_CATEGORIES_IMAGE', 'Картинка категории:');
+define('TEXT_NEW_CATEGORY_INTRO', 'Р’РІРµРґРёС‚Рµ РІСЃСЋ РЅРµРѕР±С…РѕРґРёРјСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ РЅРѕРІРѕР№ РєР°С‚РµРіРѕСЂРёРё.');
+define('TEXT_CATEGORIES_NAME', 'РќР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё:');
+define('TEXT_CATEGORIES_IMAGE', 'РљР°СЂС‚РёРЅРєР° РєР°С‚РµРіРѕСЂРёРё:');
 
 define('TEXT_META_TITLE', 'Meta Title:');
 define('TEXT_META_DESCRIPTION', 'Meta Description:');
 define('TEXT_META_KEYWORDS', 'Meta Keywords:');
 
-define('TEXT_SORT_ORDER', 'Порядок сортировки:');
+define('TEXT_SORT_ORDER', 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё:');
 
-define('TEXT_PRODUCTS_STATUS', 'Статус:');
-define('TEXT_PRODUCTS_STARTPAGE', 'На главной странице:');
-define('TEXT_PRODUCTS_STARTPAGE_YES', 'Да');
-define('TEXT_PRODUCTS_STARTPAGE_NO', 'Нет');
-define('TEXT_PRODUCTS_STARTPAGE_SORT', 'Сортировка (на главной):');
-define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Дата доступности:');
-define('TEXT_PRODUCT_AVAILABLE', 'Активен');
-define('TEXT_PRODUCT_NOT_AVAILABLE', 'Неактивен');
-define('TEXT_PRODUCTS_MANUFACTURER', 'Производитель:');
-define('TEXT_PRODUCTS_NAME', 'Название товара:');
-define('TEXT_PRODUCTS_DESCRIPTION', 'Описание товара:');
-define('TEXT_PRODUCTS_QUANTITY', 'Количество товара:');
-define('TEXT_PRODUCTS_MODEL', 'Код товара:');
-define('TEXT_PRODUCTS_IMAGE', 'Картинка товара');
-define('TEXT_PRODUCTS_URL', 'URL товара:');
-define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(без http://)');
-define('TEXT_PRODUCTS_PRICE', 'Цена товара:');
-define('TEXT_PRODUCTS_WEIGHT', 'Вес товара:');
-define('TEXT_PRODUCTS_EAN','Штрих-код:');
-define('TEXT_PRODUCT_LINKED_TO','Ссылается на:');
+define('TEXT_PRODUCTS_STATUS', 'РЎС‚Р°С‚СѓСЃ:');
+define('TEXT_PRODUCTS_STARTPAGE', 'РќР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ:');
+define('TEXT_PRODUCTS_STARTPAGE_YES', 'Р”Р°');
+define('TEXT_PRODUCTS_STARTPAGE_NO', 'РќРµС‚');
+define('TEXT_PRODUCTS_STARTPAGE_SORT', 'РЎРѕСЂС‚РёСЂРѕРІРєР° (РЅР° РіР»Р°РІРЅРѕР№):');
+define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Р”Р°С‚Р° РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё:');
+define('TEXT_PRODUCT_AVAILABLE', 'РђРєС‚РёРІРµРЅ');
+define('TEXT_PRODUCT_NOT_AVAILABLE', 'РќРµР°РєС‚РёРІРµРЅ');
+define('TEXT_PRODUCTS_MANUFACTURER', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ:');
+define('TEXT_PRODUCTS_NAME', 'РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_DESCRIPTION', 'РћРїРёСЃР°РЅРёРµ С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_QUANTITY', 'РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_MODEL', 'РљРѕРґ С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_IMAGE', 'РљР°СЂС‚РёРЅРєР° С‚РѕРІР°СЂР°');
+define('TEXT_PRODUCTS_URL', 'URL С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(Р±РµР· http://)');
+define('TEXT_PRODUCTS_PRICE', 'Р¦РµРЅР° С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_WEIGHT', 'Р’РµСЃ С‚РѕРІР°СЂР°:');
+define('TEXT_PRODUCTS_EAN','РЁС‚СЂРёС…-РєРѕРґ:');
+define('TEXT_PRODUCT_LINKED_TO','РЎСЃС‹Р»Р°РµС‚СЃСЏ РЅР°:');
 
-define('TEXT_DELETE', 'Удалить');
+define('TEXT_DELETE', 'РЈРґР°Р»РёС‚СЊ');
 
-define('EMPTY_CATEGORY', 'Пустая категория');
+define('EMPTY_CATEGORY', 'РџСѓСЃС‚Р°СЏ РєР°С‚РµРіРѕСЂРёСЏ');
 
-define('TEXT_HOW_TO_COPY', 'Способ копирования:');
-define('TEXT_COPY_AS_LINK', 'Ссылка на товар');
-define('TEXT_COPY_AS_DUPLICATE', 'Копия товара');
+define('TEXT_HOW_TO_COPY', 'РЎРїРѕСЃРѕР± РєРѕРїРёСЂРѕРІР°РЅРёСЏ:');
+define('TEXT_COPY_AS_LINK', 'РЎСЃС‹Р»РєР° РЅР° С‚РѕРІР°СЂ');
+define('TEXT_COPY_AS_DUPLICATE', 'РљРѕРїРёСЏ С‚РѕРІР°СЂР°');
 
-define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'Ошибка: Вы не можете создавать ссылку на товар в той же категории, что и сам товар.');
-define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория картинок закрыта на запись: ' . DIR_FS_CATALOG_IMAGES);
-define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория картинок отсутствует: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CANNOT_LINK_TO_SAME_CATEGORY', 'РћС€РёР±РєР°: Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРѕР·РґР°РІР°С‚СЊ СЃСЃС‹Р»РєСѓ РЅР° С‚РѕРІР°СЂ РІ С‚РѕР№ Р¶Рµ РєР°С‚РµРіРѕСЂРёРё, С‡С‚Рѕ Рё СЃР°Рј С‚РѕРІР°СЂ.');
+define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: Р”РёСЂРµРєС‚РѕСЂРёСЏ РєР°СЂС‚РёРЅРѕРє Р·Р°РєСЂС‹С‚Р° РЅР° Р·Р°РїРёСЃСЊ: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'РћС€РёР±РєР°: Р”РёСЂРµРєС‚РѕСЂРёСЏ РєР°СЂС‚РёРЅРѕРє РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚: ' . DIR_FS_CATALOG_IMAGES);
 
-define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','Максимально возможная скидка:');
-define('HEADING_PRICES_OPTIONS','<b>Цены</b>');
-define('HEADING_PRODUCT_IMAGES','<b>Картинки товара</b>');
-define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(кг.)</small>');
-define('TEXT_PRODUCTS_SHORT_DESCRIPTION','Краткое описание:');
-define('TEXT_PRODUCTS_KEYWORDS', 'Дополнительные слова для поиска:');
-define('TXT_STK','Количество: ');
-define('TXT_PRICE','Цена:');
-define('TXT_NETTO','Цена с налогом: ');
-define('TEXT_NETTO','Налог: ');
-define('TXT_STAFFELPREIS','Цена от количества');
+define('TEXT_PRODUCTS_DISCOUNT_ALLOWED','РњР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅР°СЏ СЃРєРёРґРєР°:');
+define('HEADING_PRICES_OPTIONS','<b>Р¦РµРЅС‹</b>');
+define('HEADING_PRODUCT_IMAGES','<b>РљР°СЂС‚РёРЅРєРё С‚РѕРІР°СЂР°</b>');
+define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(РєРі.)</small>');
+define('TEXT_PRODUCTS_SHORT_DESCRIPTION','РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ:');
+define('TEXT_PRODUCTS_KEYWORDS', 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃР»РѕРІР° РґР»СЏ РїРѕРёСЃРєР°:');
+define('TXT_STK','РљРѕР»РёС‡РµСЃС‚РІРѕ: ');
+define('TXT_PRICE','Р¦РµРЅР°:');
+define('TXT_NETTO','Р¦РµРЅР° СЃ РЅР°Р»РѕРіРѕРј: ');
+define('TEXT_NETTO','РќР°Р»РѕРі: ');
+define('TXT_STAFFELPREIS','Р¦РµРЅР° РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР°');
 
-define('HEADING_PRODUCTS_MEDIA','<b>Картинки товара</b>');
-define('TABLE_HEADING_PRICE','Цена');
+define('HEADING_PRODUCTS_MEDIA','<b>РљР°СЂС‚РёРЅРєРё С‚РѕРІР°СЂР°</b>');
+define('TABLE_HEADING_PRICE','Р¦РµРЅР°');
 
-define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон информации о товаре');
-define('TEXT_SELECT','--Выберите--');
-define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Шаблон атрибутов товара');
-define('SAVE_ENTRY','Сохранить ?');
+define('TEXT_CHOOSE_INFO_TEMPLATE','РЁР°Р±Р»РѕРЅ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С‚РѕРІР°СЂРµ');
+define('TEXT_SELECT','--Р’С‹Р±РµСЂРёС‚Рµ--');
+define('TEXT_CHOOSE_OPTIONS_TEMPLATE','РЁР°Р±Р»РѕРЅ Р°С‚СЂРёР±СѓС‚РѕРІ С‚РѕРІР°СЂР°');
+define('SAVE_ENTRY','РЎРѕС…СЂР°РЅРёС‚СЊ ?');
 
-define('TEXT_FSK18','товар до 18 лет:');
-define('TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE','Шаблон для списка категорий');
-define('TEXT_CHOOSE_INFO_TEMPLATE_LISTING','Шаблон для списка товаров');
-define('TEXT_PRODUCTS_SORT','Порядок:');
-define('TEXT_EDIT_PRODUCT_SORT_ORDER','Сортировка товара');
-define('TXT_PRICES','Цена');
-define('TXT_NAME','Название товара');
-define('TXT_ORDERED','Заказанное количество товара');
-define('TXT_SORT','Порядок');
-define('TXT_WEIGHT','Вес');
-define('TXT_QTY','Количество на складе');
+define('TEXT_FSK18','С‚РѕРІР°СЂ РґРѕ 18 Р»РµС‚:');
+define('TEXT_CHOOSE_INFO_TEMPLATE_CATEGORIE','РЁР°Р±Р»РѕРЅ РґР»СЏ СЃРїРёСЃРєР° РєР°С‚РµРіРѕСЂРёР№');
+define('TEXT_CHOOSE_INFO_TEMPLATE_LISTING','РЁР°Р±Р»РѕРЅ РґР»СЏ СЃРїРёСЃРєР° С‚РѕРІР°СЂРѕРІ');
+define('TEXT_PRODUCTS_SORT','РџРѕСЂСЏРґРѕРє:');
+define('TEXT_EDIT_PRODUCT_SORT_ORDER','РЎРѕСЂС‚РёСЂРѕРІРєР° С‚РѕРІР°СЂР°');
+define('TXT_PRICES','Р¦РµРЅР°');
+define('TXT_NAME','РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°');
+define('TXT_ORDERED','Р—Р°РєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°');
+define('TXT_SORT','РџРѕСЂСЏРґРѕРє');
+define('TXT_WEIGHT','Р’РµСЃ');
+define('TXT_QTY','РљРѕР»РёС‡РµСЃС‚РІРѕ РЅР° СЃРєР»Р°РґРµ');
 
-define('TEXT_MULTICOPY','Массовое копирование');
-define('TEXT_MULTICOPY_DESC','Копировать элементы в следующие категории (Если выбрано, настройка Один будет игнорирована.)');
-define('TEXT_SINGLECOPY','Один');
-define('TEXT_SINGLECOPY_DESC','Копировать элементы в следующую категорию');
-define('TEXT_SINGLECOPY_CATEGORY','Категория:');
+define('TEXT_MULTICOPY','РњР°СЃСЃРѕРІРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ');
+define('TEXT_MULTICOPY_DESC','РљРѕРїРёСЂРѕРІР°С‚СЊ СЌР»РµРјРµРЅС‚С‹ РІ СЃР»РµРґСѓСЋС‰РёРµ РєР°С‚РµРіРѕСЂРёРё (Р•СЃР»Рё РІС‹Р±СЂР°РЅРѕ, РЅР°СЃС‚СЂРѕР№РєР° РћРґРёРЅ Р±СѓРґРµС‚ РёРіРЅРѕСЂРёСЂРѕРІР°РЅР°.)');
+define('TEXT_SINGLECOPY','РћРґРёРЅ');
+define('TEXT_SINGLECOPY_DESC','РљРѕРїРёСЂРѕРІР°С‚СЊ СЌР»РµРјРµРЅС‚С‹ РІ СЃР»РµРґСѓСЋС‰СѓСЋ РєР°С‚РµРіРѕСЂРёСЋ');
+define('TEXT_SINGLECOPY_CATEGORY','РљР°С‚РµРіРѕСЂРёСЏ:');
 
-define('TEXT_PRODUCTS_VPE','Единица: ');
-define('TEXT_PRODUCTS_VPE_VISIBLE','Показывать единицу упаковки: ');
-define('TEXT_PRODUCTS_VPE_VALUE',' Значение: ');
+define('TEXT_PRODUCTS_VPE','Р•РґРёРЅРёС†Р°: ');
+define('TEXT_PRODUCTS_VPE_VISIBLE','РџРѕРєР°Р·С‹РІР°С‚СЊ РµРґРёРЅРёС†Сѓ СѓРїР°РєРѕРІРєРё: ');
+define('TEXT_PRODUCTS_VPE_VALUE',' Р—РЅР°С‡РµРЅРёРµ: ');
 
-define('CROSS_SELLING','Сопутствующие товары');
-define('CROSS_SELLING_SEARCH','Поиск товара:');
-define('BUTTON_EDIT_CROSS_SELLING','Сопутствующие');
-define('HEADING_DEL','удалить');
-define('HEADING_SORTING','сортировать');
-define('HEADING_MODEL','код');
-define('HEADING_NAME','статья');
-define('HEADING_CATEGORY','категория');
-define('HEADING_ADD','Добавить?');
-define('HEADING_GROUP','Группа');
+define('CROSS_SELLING','РЎРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ С‚РѕРІР°СЂС‹');
+define('CROSS_SELLING_SEARCH','РџРѕРёСЃРє С‚РѕРІР°СЂР°:');
+define('BUTTON_EDIT_CROSS_SELLING','РЎРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ');
+define('HEADING_DEL','СѓРґР°Р»РёС‚СЊ');
+define('HEADING_SORTING','СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ');
+define('HEADING_MODEL','РєРѕРґ');
+define('HEADING_NAME','СЃС‚Р°С‚СЊСЏ');
+define('HEADING_CATEGORY','РєР°С‚РµРіРѕСЂРёСЏ');
+define('HEADING_ADD','Р”РѕР±Р°РІРёС‚СЊ?');
+define('HEADING_GROUP','Р“СЂСѓРїРїР°');
 
-// Сборка VaM
+// РЎР±РѕСЂРєР° VaM
 
-define('IMAGE_ICON_STATUS_GREEN', 'Активна');
-define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
-define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
-define('IMAGE_ICON_STATUS_RED', 'Неактивна');
-define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
-define('TABLE_HEADING_MAX_DISCOUNT', 'Максимально возможная скидка');
+define('IMAGE_ICON_STATUS_GREEN', 'РђРєС‚РёРІРЅР°');
+define('IMAGE_ICON_STATUS_GREEN_STOCK', 'РµРґРёРЅРёС† РЅР° СЃРєР»Р°РґРµ');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'РђРєС‚РёРІРёР·РёСЂРѕРІР°С‚СЊ');
+define('IMAGE_ICON_STATUS_RED', 'РќРµР°РєС‚РёРІРЅР°');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'РЎРґРµР»Р°С‚СЊ РЅРµР°РєС‚РёРІРЅРѕР№');
+define('TABLE_HEADING_MAX_DISCOUNT', 'РњР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅР°СЏ СЃРєРёРґРєР°');
 
-define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Директория загрузки:');
-define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'Использовать загруженный файл:');
-define('TEXT_STANDART_IMAGE', 'Картинка');
-define('TEXT_SELECT_DIRECTORY', '-- Выберите поддиректорию --');
-define('TEXT_SELECT_IMAGE', '-- Выберите файл --');
+define('TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY', 'Р”РёСЂРµРєС‚РѕСЂРёСЏ Р·Р°РіСЂСѓР·РєРё:');
+define('TEXT_PRODUCTS_IMAGE_GET_FILE', 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»:');
+define('TEXT_STANDART_IMAGE', 'РљР°СЂС‚РёРЅРєР°');
+define('TEXT_SELECT_DIRECTORY', '-- Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґРґРёСЂРµРєС‚РѕСЂРёСЋ --');
+define('TEXT_SELECT_IMAGE', '-- Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р» --');
 
 define('TABLE_HEADING_XML', 'XML');
-define('TEXT_PRODUCTS_TO_XML', 'Яндекс-маркет:');
-define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Включить');
-define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'Не включать');
+define('TEXT_PRODUCTS_TO_XML', 'РЇРЅРґРµРєСЃ-РјР°СЂРєРµС‚:');
+define('TEXT_PRODUCT_AVAILABLE_TO_XML', 'Р’РєР»СЋС‡РёС‚СЊ');
+define('TEXT_PRODUCT_NOT_AVAILABLE_TO_XML', 'РќРµ РІРєР»СЋС‡Р°С‚СЊ');
 
-define('TEXT_EDIT','[редактировать]');
-define('TEXT_PRODUCTS_DATA','Дополнительно');
-define('TEXT_TAB_CATEGORIES_IMAGE', 'Картинка категории');
+define('TEXT_EDIT','[СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ]');
+define('TEXT_PRODUCTS_DATA','Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ');
+define('TEXT_TAB_CATEGORIES_IMAGE', 'РљР°СЂС‚РёРЅРєР° РєР°С‚РµРіРѕСЂРёРё');
 
-define('ENTRY_CUSTOMERS_ACCESS','Доступ');
+define('ENTRY_CUSTOMERS_ACCESS','Р”РѕСЃС‚СѓРї');
 
-define('TEXT_PAGES', 'Страницы: ');
-define('TEXT_TOTAL_PRODUCTS', 'Всего товаров: ');
+define('TEXT_PAGES', 'РЎС‚СЂР°РЅРёС†С‹: ');
+define('TEXT_TOTAL_PRODUCTS', 'Р’СЃРµРіРѕ С‚РѕРІР°СЂРѕРІ: ');
 
 ?>

@@ -86,7 +86,7 @@
   define('TABLE_BLACKLIST', 'card_blacklist');
   define('TABLE_CAMPAIGNS_IP','campaigns_ip');
   
-// Ñáîðêà VaM
+// Ð¡Ð±Ð¾Ñ€ÐºÐ° VaM
 
   define('TABLE_LATEST_NEWS', 'latest_news');
   define('TABLE_FEATURED', 'featured');

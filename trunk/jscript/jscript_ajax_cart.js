@@ -142,7 +142,7 @@ function doAddProduct(form) {
       }
     }
   }
-// собираем все элементы формы:
+// СЃРѕР±РёСЂР°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ С„РѕСЂРјС‹:
   var senddata = new Object();
   var fe = form.elements;
   for(var i=0 ; i<fe.length ; i++) {

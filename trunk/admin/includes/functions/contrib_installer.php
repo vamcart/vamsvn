@@ -37,8 +37,8 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
             elseif ($report=='add_session')     $message->add_session($error, 'error');
             return false;
         } else {
-            //         Только для запросов SELECT, SHOW, EXPLAIN, DESCRIBE
-            //         mysql_query() возвращает указатель на результат запроса
+            //         РўРѕР»СЊРєРѕ РґР»СЏ Р·Р°РїСЂРѕСЃРѕРІ SELECT, SHOW, EXPLAIN, DESCRIBE
+            //         mysql_query() РІРѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР°
             return $result;
         }
     }
@@ -163,7 +163,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 	} # end function
 
 
-    function echo_array($array, $tab='') {    // Тест ЛЮБОГО массива
+    function echo_array($array, $tab='') {    // РўРµСЃС‚ Р›Р®Р‘РћР“Рћ РјР°СЃСЃРёРІР°
             $tab=$tab.'<img width="20"> ';
             if (is_array($array) ) {
                 foreach ($array as $key =>$value) {
@@ -333,7 +333,7 @@ function recursive_chmod($path, $mod=0777) {
 
 
     function get_all_folders_in_tree($dir='', $exclude_folders=array()) {
-    //Исключаются папки содержащие лунакод.
+    //РСЃРєР»СЋС‡Р°СЋС‚СЃСЏ РїР°РїРєРё СЃРѕРґРµСЂР¶Р°С‰РёРµ Р»СѓРЅР°РєРѕРґ.
 
         if (!$dir)    $dir=DIR_FS_CURRENT;
         $folders[0]=$dir;

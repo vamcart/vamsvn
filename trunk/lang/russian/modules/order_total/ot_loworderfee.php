@@ -17,27 +17,27 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TITLE', 'Íèçêàÿ ñòîèìîñòü çàêàçà');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESCRIPTION', 'Íèçêàÿ ñòîèìîñòü çàêàçà');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TITLE', 'ÐÐ¸Ð·ÐºÐ°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESCRIPTION', 'ÐÐ¸Ð·ÐºÐ°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_TITLE','Ïîêàçûâàòü íèçêóþ ñòîèìîñòü çàêàçà');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_DESC','Âû õîòèòå ïîêàçûâàòü íèçêóþ ñòîèìîñòü çàêàçà?');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_TITLE','ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð¸Ð·ÐºÑƒÑŽ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_STATUS_DESC','Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð¸Ð·ÐºÑƒÑŽ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°?');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_TITLE','Ïîðÿäîê ñîðòèðîâêè');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_DESC','Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_TITLE','ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_SORT_ORDER_DESC','ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_TITLE','Ðàçðåøèòü íèçêóþ ñòîèìîñòü çàêàçà');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_DESC','Âû õîòèòå ðàçðåøèòü ìîäóëü íèçêîé ñòîèìîñòü çàêàçà?');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_TITLE','Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð½Ð¸Ð·ÐºÑƒÑŽ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_LOW_ORDER_FEE_DESC','Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð½Ð¸Ð·ÐºÐ¾Ð¹ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°?');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_TITLE','Íèçêàÿ ñòîèìîñòü äëÿ çàêàçîâ äî');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_DESC','Íèçêàÿ ñòîèìîñòü çàêàçîâ äëÿ çàêàçîâ äî óêàçàííîé âåëè÷èíû.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_TITLE','ÐÐ¸Ð·ÐºÐ°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² Ð´Ð¾');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_ORDER_UNDER_DESC','ÐÐ¸Ð·ÐºÐ°Ñ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² Ð´Ð¾ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð¹ Ð²ÐµÐ»Ð¸Ñ‡Ð¸Ð½Ñ‹.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_TITLE','Ïëàòà');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_DESC','Ïëàòà.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_TITLE','ÐŸÐ»Ð°Ñ‚Ð°');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_FEE_DESC','ÐŸÐ»Ð°Ñ‚Ð°.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_TITLE','Ïðèáàâëÿòü ïëàòó ê çàêàçó');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_DESC','Ïðèáàâëÿòü ïëàòó ê ñëåäóþùèì çàêàçàì.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_TITLE','ÐŸÑ€Ð¸Ð±Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¿Ð»Ð°Ñ‚Ñƒ Ðº Ð·Ð°ÐºÐ°Ð·Ñƒ');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_DESTINATION_DESC','ÐŸÑ€Ð¸Ð±Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¿Ð»Ð°Ñ‚Ñƒ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¼ Ð·Ð°ÐºÐ°Ð·Ð°Ð¼.');
 
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_TITLE','Íàëîã');
-  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_DESC','Èñïîëüçîâàòü íàëîã.');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_TITLE','ÐÐ°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_LOWORDERFEE_TAX_CLASS_DESC','Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³.');
 ?>

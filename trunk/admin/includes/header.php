@@ -26,7 +26,7 @@
 
 <script type="text/javascript" src="includes/javascript/ie.js"></script>
 
-<!-- øàïêà -->        
+<!-- ÑˆÐ°Ð¿ÐºÐ° -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="200" align="left">
@@ -45,7 +45,7 @@
               &nbsp;
               </td>
               <td width="470" align="center">
-<!-- êíîïêè -->
+<!-- ÐºÐ½Ð¾Ð¿ÐºÐ¸ -->
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr class="buttonadmin">
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
@@ -67,7 +67,7 @@
               </td>
 <?php 
 
-# Âûáîð ÿçûêà â àäìèíêå, àâòîð íåçíàìà
+# Ð’Ñ‹Ð±Ð¾Ñ€ ÑÐ·Ñ‹ÐºÐ° Ð² Ð°Ð´Ð¼Ð¸Ð½ÐºÐµ, Ð°Ð²Ñ‚Ð¾Ñ€ Ð½ÐµÐ·Ð½Ð°Ð¼Ð°
 
   if (!isset($lng) && !is_object($lng)) {
     include(DIR_WS_CLASSES . 'language.php');
@@ -92,13 +92,13 @@
  ';
   }
   
-# /Âûáîð ÿçûêà â àäìèíêå, àâòîð íåçíàìà
+# /Ð’Ñ‹Ð±Ð¾Ñ€ ÑÐ·Ñ‹ÐºÐ° Ð² Ð°Ð´Ð¼Ð¸Ð½ÐºÐµ, Ð°Ð²Ñ‚Ð¾Ñ€ Ð½ÐµÐ·Ð½Ð°Ð¼Ð°
 ?>
               <?php if ($count_lng > 1 ) { echo $languages_string; } ?>
               <td align="center" valign="top"><img src="images/corners/corner_top_right.gif" width="3" height="3" align="right" hspace="0" /></td>
             </tr>
           </table>
-<!-- /êíîïêè -->
+<!-- /ÐºÐ½Ð¾Ð¿ÐºÐ¸ -->
 
               </td>
               <td width="200">
@@ -408,4 +408,4 @@
 </tr>
 <?php } ?>
           </table>
-<!-- /øàïêà -->
+<!-- /ÑˆÐ°Ð¿ÐºÐ° -->

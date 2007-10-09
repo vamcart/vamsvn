@@ -15,12 +15,12 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
  
-  define('HEADING_TITLE','Добро пожаловать');
-  define('ATTENTION_TITLE','! ВНИМАНИЕ !');
+  define('HEADING_TITLE','Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ');
+  define('ATTENTION_TITLE','! Р’РќРРњРђРќРР• !');
 
   // text for Warnings:
-  define('TEXT_FILE_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие файлы не закрыты от записи. Установите права доступа <b>444</b> для юникса, или <b>read-only</b> для Windows.');
-  define('TEXT_FOLDER_WARNING','<b>ВНИМАНИЕ:</b><br />Следующие папки закрыты от записи. Измените права доступа на эти папки. Например установите <b>777</b> для юникса, или <b>(read-write)</b> для Windows.');
+  define('TEXT_FILE_WARNING','<b>Р’РќРРњРђРќРР•:</b><br />РЎР»РµРґСѓСЋС‰РёРµ С„Р°Р№Р»С‹ РЅРµ Р·Р°РєСЂС‹С‚С‹ РѕС‚ Р·Р°РїРёСЃРё. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° <b>444</b> РґР»СЏ СЋРЅРёРєСЃР°, РёР»Рё <b>read-only</b> РґР»СЏ Windows.');
+  define('TEXT_FOLDER_WARNING','<b>Р’РќРРњРђРќРР•:</b><br />РЎР»РµРґСѓСЋС‰РёРµ РїР°РїРєРё Р·Р°РєСЂС‹С‚С‹ РѕС‚ Р·Р°РїРёСЃРё. РР·РјРµРЅРёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР° СЌС‚Рё РїР°РїРєРё. РќР°РїСЂРёРјРµСЂ СѓСЃС‚Р°РЅРѕРІРёС‚Рµ <b>777</b> РґР»СЏ СЋРЅРёРєСЃР°, РёР»Рё <b>(read-write)</b> РґР»СЏ Windows.');
   define('REPORT_GENERATED_FOR','Report For:');
   define('REPORT_GENERATED_ON','Generated On:');
   define('FIRST_VISIT_ON','First Visit:');

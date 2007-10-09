@@ -27,30 +27,30 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_GV_TITLE', 'Ñåðòèôèêàò');
-  define('MODULE_ORDER_TOTAL_GV_HEADER', 'Ñåðòèôèêàòû/Êóïîíû');
-  define('MODULE_ORDER_TOTAL_GV_DESCRIPTION', 'Ïîäàðî÷íûå ñåðòèôèêàòû');
-  define('SHIPPING_NOT_INCLUDED', ' [Ñòîèìîñòü äîñòàâêè íå âêëþ÷åíà]');
-  define('TAX_NOT_INCLUDED', ' [Íàëîã íå âêëþ÷¸í]');
-  define('MODULE_ORDER_TOTAL_GV_USER_PROMPT', 'Èñïîëüçîâàòü ñåðòèôèêàò:&nbsp;');
-  define('TEXT_ENTER_GV_CODE', 'Êîä ñåðòèôèêàòà&nbsp;&nbsp;');
+  define('MODULE_ORDER_TOTAL_GV_TITLE', 'Ð¡ÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚');
+  define('MODULE_ORDER_TOTAL_GV_HEADER', 'Ð¡ÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ñ‹/ÐšÑƒÐ¿Ð¾Ð½Ñ‹');
+  define('MODULE_ORDER_TOTAL_GV_DESCRIPTION', 'ÐŸÐ¾Ð´Ð°Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ñ‹');
+  define('SHIPPING_NOT_INCLUDED', ' [Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð°]');
+  define('TAX_NOT_INCLUDED', ' [ÐÐ°Ð»Ð¾Ð³ Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡Ñ‘Ð½]');
+  define('MODULE_ORDER_TOTAL_GV_USER_PROMPT', 'Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚:&nbsp;');
+  define('TEXT_ENTER_GV_CODE', 'ÐšÐ¾Ð´ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°&nbsp;&nbsp;');
   
-  define('MODULE_ORDER_TOTAL_GV_STATUS_TITLE', 'Ïîêàçûâàòü âñåãî');
-  define('MODULE_ORDER_TOTAL_GV_STATUS_DESC', 'Âû õîòèòå ïîêàçûâàòü íîìèíàë ïîäàðî÷íîãî ñåðòèôèêàòà?');
-  define('MODULE_ORDER_TOTAL_GV_SORT_ORDER_TITLE', 'Ïîðÿäîê ñîðòèðîâêè');
-  define('MODULE_ORDER_TOTAL_GV_SORT_ORDER_DESC', 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
-  define('MODULE_ORDER_TOTAL_GV_QUEUE_TITLE', 'Àêòèâàöèÿ ñåðòèôèêàòîâ');
-  define('MODULE_ORDER_TOTAL_GV_QUEUE_DESC', 'Âû õîòèòå âðó÷íóþ àêòèâèðîâàòü êóïëåííûå ïîäàðî÷íûå ñåðòèôèêàòû?');
-  define('MODULE_ORDER_TOTAL_GV_INC_SHIPPING_TITLE', 'Ó÷èòûâàòü äîñòàâêó');
-  define('MODULE_ORDER_TOTAL_GV_INC_SHIPPING_DESC', 'Âêëþ÷àòü â ðàñ÷¸ò äîñòàâêó.');
-  define('MODULE_ORDER_TOTAL_GV_INC_TAX_TITLE', 'Ó÷èòûâàòü íàëîã');
-  define('MODULE_ORDER_TOTAL_GV_INC_TAX_DESC', 'Âêëþ÷àòü â ðàñ÷¸ò íàëîã.');
-  define('MODULE_ORDER_TOTAL_GV_CALC_TAX_TITLE', 'Ïåðåñ÷èòûâàòü íàëîã');
-  define('MODULE_ORDER_TOTAL_GV_CALC_TAX_DESC', 'Ïåðåñ÷èòûâàòü íàëîã.');
-  define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_TITLE', 'Íàëîã');
-  define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_DESC', 'Èñïîëüçîâàòü íàëîã.');
-  define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_TITLE', 'Íàëîã ñåðòèôèêàòà');
-  define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_DESC', 'Äîáàâëÿòü íàëîã ê êóïëåííûì ïîäàðî÷íûì ñåðòèôèêàòàì.');
-  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_TITLE', 'Ñòàòóñ çàêàçà');
-  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_DESC', 'Çàêàçû, îôîðìëåííûå ñ èñïîëüçîâàíèåì ïîäàðî÷íîãî ñåðòèôèêàòà, ïîêðûâàþùåãî ïîëíóþ ñòîèìîñòü çàêàçà, áóäóò èìåòü óêàçàííûé ñòàòóñ.');
+  define('MODULE_ORDER_TOTAL_GV_STATUS_TITLE', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð²ÑÐµÐ³Ð¾');
+  define('MODULE_ORDER_TOTAL_GV_STATUS_DESC', 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð¼Ð¸Ð½Ð°Ð» Ð¿Ð¾Ð´Ð°Ñ€Ð¾Ñ‡Ð½Ð¾Ð³Ð¾ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°?');
+  define('MODULE_ORDER_TOTAL_GV_SORT_ORDER_TITLE', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+  define('MODULE_ORDER_TOTAL_GV_SORT_ORDER_DESC', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
+  define('MODULE_ORDER_TOTAL_GV_QUEUE_TITLE', 'ÐÐºÑ‚Ð¸Ð²Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ð²');
+  define('MODULE_ORDER_TOTAL_GV_QUEUE_DESC', 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð²Ñ€ÑƒÑ‡Ð½ÑƒÑŽ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÑƒÐ¿Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð¿Ð¾Ð´Ð°Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ñ‹?');
+  define('MODULE_ORDER_TOTAL_GV_INC_SHIPPING_TITLE', 'Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+  define('MODULE_ORDER_TOTAL_GV_INC_SHIPPING_DESC', 'Ð’ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² Ñ€Ð°ÑÑ‡Ñ‘Ñ‚ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ.');
+  define('MODULE_ORDER_TOTAL_GV_INC_TAX_TITLE', 'Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_GV_INC_TAX_DESC', 'Ð’ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² Ñ€Ð°ÑÑ‡Ñ‘Ñ‚ Ð½Ð°Ð»Ð¾Ð³.');
+  define('MODULE_ORDER_TOTAL_GV_CALC_TAX_TITLE', 'ÐŸÐµÑ€ÐµÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_GV_CALC_TAX_DESC', 'ÐŸÐµÑ€ÐµÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³.');
+  define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_TITLE', 'ÐÐ°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_GV_TAX_CLASS_DESC', 'Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³.');
+  define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_TITLE', 'ÐÐ°Ð»Ð¾Ð³ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°');
+  define('MODULE_ORDER_TOTAL_GV_CREDIT_TAX_DESC', 'Ð”Ð¾Ð±Ð°Ð²Ð»ÑÑ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³ Ðº ÐºÑƒÐ¿Ð»ÐµÐ½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð´Ð°Ñ€Ð¾Ñ‡Ð½Ñ‹Ð¼ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°Ð¼.');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_TITLE', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°');
+  define('MODULE_ORDER_TOTAL_GV_ORDER_STATUS_ID_DESC', 'Ð—Ð°ÐºÐ°Ð·Ñ‹, Ð¾Ñ„Ð¾Ñ€Ð¼Ð»ÐµÐ½Ð½Ñ‹Ðµ Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼ Ð¿Ð¾Ð´Ð°Ñ€Ð¾Ñ‡Ð½Ð¾Ð³Ð¾ ÑÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð°, Ð¿Ð¾ÐºÑ€Ñ‹Ð²Ð°ÑŽÑ‰ÐµÐ³Ð¾ Ð¿Ð¾Ð»Ð½ÑƒÑŽ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð·Ð°ÐºÐ°Ð·Ð°, Ð±ÑƒÐ´ÑƒÑ‚ Ð¸Ð¼ÐµÑ‚ÑŒ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ.');
 ?>

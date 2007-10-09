@@ -17,18 +17,18 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ãðóïïû ñîïóòñòâóþùèõ òîâàðîâ');
+define('HEADING_TITLE', 'Ð“Ñ€ÑƒÐ¿Ð¿Ñ‹ ÑÐ¾Ð¿ÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ñ… Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð²');
 
-define('TABLE_HEADING_XSELL_GROUP_NAME', 'Íàçâàíèå ãðóïïû');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_XSELL_GROUP_NAME', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_XSELL_GROUP_NAME', 'Íàçâàíèå ãðóïïû:');
-define('TEXT_INFO_INSERT_INTRO', 'Óêàæèòå íàçâàíèå ãðóïïû');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü äàííûå ñòàòóñ çàêàçà?');
-define('TEXT_INFO_HEADING_NEW_XSELL_GROUP', 'Íîâàÿ ãðóïïà');
-define('TEXT_INFO_HEADING_EDIT_XSELL_GROUP', 'Ðåäàêòèðîâàòü ãðóïïó');
-define('TEXT_INFO_HEADING_DELETE_XSELL_GROUP', 'Óäàëèòü ãðóïïó');
+define('TEXT_INFO_EDIT_INTRO', 'Ð’Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_XSELL_GROUP_NAME', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹:');
+define('TEXT_INFO_INSERT_INTRO', 'Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ðµ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°?');
+define('TEXT_INFO_HEADING_NEW_XSELL_GROUP', 'ÐÐ¾Ð²Ð°Ñ Ð³Ñ€ÑƒÐ¿Ð¿Ð°');
+define('TEXT_INFO_HEADING_EDIT_XSELL_GROUP', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð³Ñ€ÑƒÐ¿Ð¿Ñƒ');
+define('TEXT_INFO_HEADING_DELETE_XSELL_GROUP', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð³Ñ€ÑƒÐ¿Ð¿Ñƒ');
 
-define('ERROR_STATUS_USED_IN_ORDERS', 'Îøèáêà: Äàííàÿ ãðóïïà óæå èñïîëüçóåòñÿ â ñîïóòñòâóþùèõ òîâàðàõ â ñòàòüÿõ.');
+define('ERROR_STATUS_USED_IN_ORDERS', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð”Ð°Ð½Ð½Ð°Ñ Ð³Ñ€ÑƒÐ¿Ð¿Ð° ÑƒÐ¶Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð² ÑÐ¾Ð¿ÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ñ… Ñ‚Ð¾Ð²Ð°Ñ€Ð°Ñ… Ð² ÑÑ‚Ð°Ñ‚ÑŒÑÑ….');
 ?>

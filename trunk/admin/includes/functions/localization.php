@@ -45,7 +45,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     }
   }
   
-// Синхронизация курса валют с текущим курсом Центрального банка России  
+// РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РєСѓСЂСЃР° РІР°Р»СЋС‚ СЃ С‚РµРєСѓС‰РёРј РєСѓСЂСЃРѕРј Р¦РµРЅС‚СЂР°Р»СЊРЅРѕРіРѕ Р±Р°РЅРєР° Р РѕСЃСЃРёРё  
 function quote_cbr_currency($code, $base = DEFAULT_CURRENCY) { 
     global $quote_cbr_cashed; 
     if (sizeof($quote_cbr_cash)==0){ 
@@ -53,7 +53,7 @@ function quote_cbr_currency($code, $base = DEFAULT_CURRENCY) {
       $quote_cbr_cash['RUB'] = 1.00; 
       $quote_cbr_cash['RUR'] = 1.00; 
       $page = file('http://www.cbr.ru/scripts/XML_daily.asp'); 
-      if (!is_array($page)){ // Что-то не так у нас с ЦБР 
+      if (!is_array($page)){ // Р§С‚Рѕ-С‚Рѕ РЅРµ С‚Р°Рє Сѓ РЅР°СЃ СЃ Р¦Р‘Р  
         return false; 
       } 
       $page = implode('', $page); 

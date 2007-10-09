@@ -88,7 +88,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 
 
 
-<!-- Artikel Einf�gen Anfang //-->
+<!-- Artikel EinfпїЅgen Anfang //-->
 
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
@@ -156,7 +156,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 </table>
 
 <br /><br />
-<!-- Artikel Einf�gen Ende //-->
+<!-- Artikel EinfпїЅgen Ende //-->
 
 
 

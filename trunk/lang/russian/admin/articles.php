@@ -15,97 +15,97 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Разделы / Статьи');
-define('HEADING_TITLE_SEARCH', 'Поиск:');
-define('HEADING_TITLE_GOTO', 'Перейти:');
+define('HEADING_TITLE', 'Р Р°Р·РґРµР»С‹ / РЎС‚Р°С‚СЊРё');
+define('HEADING_TITLE_SEARCH', 'РџРѕРёСЃРє:');
+define('HEADING_TITLE_GOTO', 'РџРµСЂРµР№С‚Рё:');
 
 define('TABLE_HEADING_ID', 'ID');
-define('TABLE_HEADING_TOPICS_ARTICLES', 'Разделы / Статьи');
-define('TABLE_HEADING_ACTION', 'Действие');
-define('TABLE_HEADING_STATUS', 'Статус');
+define('TABLE_HEADING_TOPICS_ARTICLES', 'Р Р°Р·РґРµР»С‹ / РЎС‚Р°С‚СЊРё');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
+define('TABLE_HEADING_STATUS', 'РЎС‚Р°С‚СѓСЃ');
 
-define('TEXT_ARTICLES_CURRENT', 'Текущие статьи:');
+define('TEXT_ARTICLES_CURRENT', 'РўРµРєСѓС‰РёРµ СЃС‚Р°С‚СЊРё:');
 
-define('TEXT_NEW_ARTICLE', 'Добавление новой статьи в раздел &quot;%s&quot;');
-define('TEXT_TOPICS', 'Разделы:');
-define('TEXT_SUBTOPICS', 'Подразделы:');
-define('TEXT_ARTICLES', 'Статьи:');
-define('TEXT_ARTICLES_AVERAGE_RATING', 'Средний рейтинг:');
+define('TEXT_NEW_ARTICLE', 'Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ СЃС‚Р°С‚СЊРё РІ СЂР°Р·РґРµР» &quot;%s&quot;');
+define('TEXT_TOPICS', 'Р Р°Р·РґРµР»С‹:');
+define('TEXT_SUBTOPICS', 'РџРѕРґСЂР°Р·РґРµР»С‹:');
+define('TEXT_ARTICLES', 'РЎС‚Р°С‚СЊРё:');
+define('TEXT_ARTICLES_AVERAGE_RATING', 'РЎСЂРµРґРЅРёР№ СЂРµР№С‚РёРЅРі:');
 define('TEXT_ARTICLES_HEAD_TITLE_TAG', 'Meta Title:');
 define('TEXT_ARTICLES_HEAD_DESC_TAG', 'Meta Description:');
 define('TEXT_ARTICLES_HEAD_KEYWORDS_TAG', 'Meta Keywords:');
-define('TEXT_DATE_ADDED', 'Дата добавления:');
-define('TEXT_DATE_AVAILABLE', 'Доступна с:');
-define('TEXT_LAST_MODIFIED', 'Последнее изменение:');
-define('TEXT_NO_CHILD_TOPICS_OR_ARTICLES', 'Добавьте раздел или статью.');
-define('TEXT_ARTICLE_MORE_INFORMATION', 'Чтобы узнать больше, зайдите <a href="http://%s" target="blank"><u>сюда</u></a>.');
-define('TEXT_ARTICLE_DATE_ADDED', 'Статья была добавлена %s.');
-define('TEXT_ARTICLE_DATE_AVAILABLE', 'Статья будет доступна с %s.');
+define('TEXT_DATE_ADDED', 'Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ:');
+define('TEXT_DATE_AVAILABLE', 'Р”РѕСЃС‚СѓРїРЅР° СЃ:');
+define('TEXT_LAST_MODIFIED', 'РџРѕСЃР»РµРґРЅРµРµ РёР·РјРµРЅРµРЅРёРµ:');
+define('TEXT_NO_CHILD_TOPICS_OR_ARTICLES', 'Р”РѕР±Р°РІСЊС‚Рµ СЂР°Р·РґРµР» РёР»Рё СЃС‚Р°С‚СЊСЋ.');
+define('TEXT_ARTICLE_MORE_INFORMATION', 'Р§С‚РѕР±С‹ СѓР·РЅР°С‚СЊ Р±РѕР»СЊС€Рµ, Р·Р°Р№РґРёС‚Рµ <a href="http://%s" target="blank"><u>СЃСЋРґР°</u></a>.');
+define('TEXT_ARTICLE_DATE_ADDED', 'РЎС‚Р°С‚СЊСЏ Р±С‹Р»Р° РґРѕР±Р°РІР»РµРЅР° %s.');
+define('TEXT_ARTICLE_DATE_AVAILABLE', 'РЎС‚Р°С‚СЊСЏ Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРЅР° СЃ %s.');
 
-define('TEXT_EDIT_INTRO', 'Внесите необходимые изменения');
+define('TEXT_EDIT_INTRO', 'Р’РЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёР·РјРµРЅРµРЅРёСЏ');
 define('TEXT_EDIT_TOPICS_ID', 'ID:');
-define('TEXT_EDIT_TOPICS_NAME', 'Название раздела:');
-define('TEXT_EDIT_SORT_ORDER', 'Порядок сортировки:');
+define('TEXT_EDIT_TOPICS_NAME', 'РќР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р°:');
+define('TEXT_EDIT_SORT_ORDER', 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё:');
 
-define('TEXT_INFO_COPY_TO_INTRO', 'Выберите раздел, в который Вы хотите скопировать статью');
-define('TEXT_INFO_CURRENT_TOPICS', 'Текущие разделы:');
+define('TEXT_INFO_COPY_TO_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР», РІ РєРѕС‚РѕСЂС‹Р№ Р’С‹ С…РѕС‚РёС‚Рµ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЃС‚Р°С‚СЊСЋ');
+define('TEXT_INFO_CURRENT_TOPICS', 'РўРµРєСѓС‰РёРµ СЂР°Р·РґРµР»С‹:');
 
-define('TEXT_INFO_HEADING_NEW_TOPIC', 'Новый раздел');
-define('TEXT_INFO_HEADING_EDIT_TOPIC', 'Редактировать раздел');
-define('TEXT_INFO_HEADING_DELETE_TOPIC', 'Удалить раздел');
-define('TEXT_INFO_HEADING_MOVE_TOPIC', 'Переместить раздел');
-define('TEXT_INFO_HEADING_DELETE_ARTICLE', 'Удалить статью');
-define('TEXT_INFO_HEADING_MOVE_ARTICLE', 'Переместить статью');
-define('TEXT_INFO_HEADING_COPY_TO', 'Копировать в');
+define('TEXT_INFO_HEADING_NEW_TOPIC', 'РќРѕРІС‹Р№ СЂР°Р·РґРµР»');
+define('TEXT_INFO_HEADING_EDIT_TOPIC', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЂР°Р·РґРµР»');
+define('TEXT_INFO_HEADING_DELETE_TOPIC', 'РЈРґР°Р»РёС‚СЊ СЂР°Р·РґРµР»');
+define('TEXT_INFO_HEADING_MOVE_TOPIC', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ СЂР°Р·РґРµР»');
+define('TEXT_INFO_HEADING_DELETE_ARTICLE', 'РЈРґР°Р»РёС‚СЊ СЃС‚Р°С‚СЊСЋ');
+define('TEXT_INFO_HEADING_MOVE_ARTICLE', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ СЃС‚Р°С‚СЊСЋ');
+define('TEXT_INFO_HEADING_COPY_TO', 'РљРѕРїРёСЂРѕРІР°С‚СЊ РІ');
 
-define('TEXT_DELETE_TOPIC_INTRO', 'Вы действительно хотите удалить данный раздел?');
-define('TEXT_DELETE_ARTICLE_INTRO', 'Вы действительно хотите удалить данную статью?');
+define('TEXT_DELETE_TOPIC_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Р№ СЂР°Р·РґРµР»?');
+define('TEXT_DELETE_ARTICLE_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅСѓСЋ СЃС‚Р°С‚СЊСЋ?');
 
-define('TEXT_DELETE_WARNING_CHILDS', '<b>ВНИМАНИЕ:</b> В данном разделе находится %s подразделов!');
-define('TEXT_DELETE_WARNING_ARTICLES', '<b>ВНИМАНИЕ:</b> В данном разделе находится %s статей!');
+define('TEXT_DELETE_WARNING_CHILDS', '<b>Р’РќРРњРђРќРР•:</b> Р’ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ РЅР°С…РѕРґРёС‚СЃСЏ %s РїРѕРґСЂР°Р·РґРµР»РѕРІ!');
+define('TEXT_DELETE_WARNING_ARTICLES', '<b>Р’РќРРњРђРќРР•:</b> Р’ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ РЅР°С…РѕРґРёС‚СЃСЏ %s СЃС‚Р°С‚РµР№!');
 
-define('TEXT_MOVE_ARTICLES_INTRO', 'Выберите раздел, в который Вы хотите переместить статью <b>%s</b>');
-define('TEXT_MOVE_TOPICS_INTRO', 'Выберите раздел, в который Вы хотите переместить раздел <b>%s</b>');
-define('TEXT_MOVE', 'Переместить <b>%s</b> в:');
+define('TEXT_MOVE_ARTICLES_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР», РІ РєРѕС‚РѕСЂС‹Р№ Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ СЃС‚Р°С‚СЊСЋ <b>%s</b>');
+define('TEXT_MOVE_TOPICS_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР», РІ РєРѕС‚РѕСЂС‹Р№ Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ СЂР°Р·РґРµР» <b>%s</b>');
+define('TEXT_MOVE', 'РџРµСЂРµРјРµСЃС‚РёС‚СЊ <b>%s</b> РІ:');
 
-define('TEXT_NEW_TOPIC_INTRO', 'Заполните данную форму, чтобы добавить новый раздел');
-define('TEXT_TOPICS_NAME', 'Название раздела:');
-define('TEXT_SORT_ORDER', 'Порядок сортировки:');
+define('TEXT_NEW_TOPIC_INTRO', 'Р—Р°РїРѕР»РЅРёС‚Рµ РґР°РЅРЅСѓСЋ С„РѕСЂРјСѓ, С‡С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЂР°Р·РґРµР»');
+define('TEXT_TOPICS_NAME', 'РќР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р°:');
+define('TEXT_SORT_ORDER', 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё:');
 
-define('TEXT_EDIT_TOPICS_HEADING_TITLE', 'Название раздела подробно:');
-define('TEXT_EDIT_TOPICS_DESCRIPTION', 'Описание раздела:');
+define('TEXT_EDIT_TOPICS_HEADING_TITLE', 'РќР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р° РїРѕРґСЂРѕР±РЅРѕ:');
+define('TEXT_EDIT_TOPICS_DESCRIPTION', 'РћРїРёСЃР°РЅРёРµ СЂР°Р·РґРµР»Р°:');
 
-define('TEXT_ARTICLES_STATUS', 'Статус:');
-define('TEXT_ARTICLES_DATE_AVAILABLE', 'Доступна с:');
-define('TEXT_ARTICLE_AVAILABLE', 'Активна');
-define('TEXT_ARTICLE_NOT_AVAILABLE', 'Не активна');
-define('TEXT_ARTICLES_AUTHOR', 'Автор:');
-define('TEXT_ARTICLES_NAME', 'Название статьи:');
-define('TEXT_ARTICLES_DESCRIPTION', 'Текст статьи:');
-define('TEXT_ARTICLES_URL', 'URL адрес:');
-define('TEXT_ARTICLES_URL_WITHOUT_HTTP', '<small>(без http://)</small>');
+define('TEXT_ARTICLES_STATUS', 'РЎС‚Р°С‚СѓСЃ:');
+define('TEXT_ARTICLES_DATE_AVAILABLE', 'Р”РѕСЃС‚СѓРїРЅР° СЃ:');
+define('TEXT_ARTICLE_AVAILABLE', 'РђРєС‚РёРІРЅР°');
+define('TEXT_ARTICLE_NOT_AVAILABLE', 'РќРµ Р°РєС‚РёРІРЅР°');
+define('TEXT_ARTICLES_AUTHOR', 'РђРІС‚РѕСЂ:');
+define('TEXT_ARTICLES_NAME', 'РќР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё:');
+define('TEXT_ARTICLES_DESCRIPTION', 'РўРµРєСЃС‚ СЃС‚Р°С‚СЊРё:');
+define('TEXT_ARTICLES_URL', 'URL Р°РґСЂРµСЃ:');
+define('TEXT_ARTICLES_URL_WITHOUT_HTTP', '<small>(Р±РµР· http://)</small>');
 
-define('EMPTY_TOPIC', 'Раздел пуст.');
+define('EMPTY_TOPIC', 'Р Р°Р·РґРµР» РїСѓСЃС‚.');
 
-define('TEXT_HOW_TO_COPY', 'Способ копирования:');
-define('TEXT_COPY_AS_LINK', 'Ссылка');
-define('TEXT_COPY_AS_DUPLICATE', 'Копирование');
+define('TEXT_HOW_TO_COPY', 'РЎРїРѕСЃРѕР± РєРѕРїРёСЂРѕРІР°РЅРёСЏ:');
+define('TEXT_COPY_AS_LINK', 'РЎСЃС‹Р»РєР°');
+define('TEXT_COPY_AS_DUPLICATE', 'РљРѕРїРёСЂРѕРІР°РЅРёРµ');
 
-define('ERROR_CANNOT_LINK_TO_SAME_TOPIC', 'Ошибка: Нельзя создавать ссылку на статью в том же разделе, где находится статья.');
-define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Каталог картинок защищён от записи. Установите права доступа на запись для данного каталога: ' . DIR_FS_CATALOG_IMAGES);
-define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Каталог картинок отсутствует: ' . DIR_FS_CATALOG_IMAGES);
-define('ERROR_CANNOT_MOVE_TOPIC_TO_PARENT', 'Ошибка: Раздел не может быть перемещён в подраздел.');
+define('ERROR_CANNOT_LINK_TO_SAME_TOPIC', 'РћС€РёР±РєР°: РќРµР»СЊР·СЏ СЃРѕР·РґР°РІР°С‚СЊ СЃСЃС‹Р»РєСѓ РЅР° СЃС‚Р°С‚СЊСЋ РІ С‚РѕРј Р¶Рµ СЂР°Р·РґРµР»Рµ, РіРґРµ РЅР°С…РѕРґРёС‚СЃСЏ СЃС‚Р°С‚СЊСЏ.');
+define('ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: РљР°С‚Р°Р»РѕРі РєР°СЂС‚РёРЅРѕРє Р·Р°С‰РёС‰С‘РЅ РѕС‚ Р·Р°РїРёСЃРё. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР° Р·Р°РїРёСЃСЊ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєР°С‚Р°Р»РѕРіР°: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'РћС€РёР±РєР°: РљР°С‚Р°Р»РѕРі РєР°СЂС‚РёРЅРѕРє РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚: ' . DIR_FS_CATALOG_IMAGES);
+define('ERROR_CANNOT_MOVE_TOPIC_TO_PARENT', 'РћС€РёР±РєР°: Р Р°Р·РґРµР» РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРµРјРµС‰С‘РЅ РІ РїРѕРґСЂР°Р·РґРµР».');
 
-define('BUTTON_NEW_TOPIC','Добавить категорию');
-define('BUTTON_NEW_ARTICLE','Добавить статью');
-define('BUTTON_COPY_TO', 'Копировать в');
+define('BUTTON_NEW_TOPIC','Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ');
+define('BUTTON_NEW_ARTICLE','Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СЊСЋ');
+define('BUTTON_COPY_TO', 'РљРѕРїРёСЂРѕРІР°С‚СЊ РІ');
 
-define('IMAGE_ICON_STATUS_GREEN', 'Активна');
-define('IMAGE_ICON_STATUS_GREEN_STOCK', 'единиц на складе');
-define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
-define('IMAGE_ICON_STATUS_RED', 'Неактивна');
-define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+define('IMAGE_ICON_STATUS_GREEN', 'РђРєС‚РёРІРЅР°');
+define('IMAGE_ICON_STATUS_GREEN_STOCK', 'РµРґРёРЅРёС† РЅР° СЃРєР»Р°РґРµ');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'РђРєС‚РёРІРёР·РёСЂРѕРІР°С‚СЊ');
+define('IMAGE_ICON_STATUS_RED', 'РќРµР°РєС‚РёРІРЅР°');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'РЎРґРµР»Р°С‚СЊ РЅРµР°РєС‚РёРІРЅРѕР№');
 
-define('TEXT_ARTICLE_OTHER', 'Дополнительно');
+define('TEXT_ARTICLE_OTHER', 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ');
 
 ?>
