@@ -1,0 +1,161 @@
+/* This is a very basic stylesheet for the date-picker. Feel free to create your own. */
+.datePicker
+        {
+        position:absolute;
+        min-width:10em;
+        z-index:9999;
+        text-align:center;
+        font:900 0.8em/0.8em Verdana, Sans-Serif;
+        background:transparent;
+        }
+.iehack
+        {
+        position:absolute;
+        background:#fff;
+        z-index:9998;
+        padding:0;
+        border:0;
+        display:none;
+        }
+.date-picker-control
+        {
+        border:0 none;
+        padding:0;
+        margin-left:4px;
+        background:transparent url(../media/cal.gif) no-repeat 0 0;
+        width:16px;
+        height:16px;
+        margin-top:0em;
+        vertical-align:top;
+        cursor:pointer;
+        }
+.datePicker th button
+        {
+        display:inline;
+        padding:0;
+        margin:0;
+        color:#000;
+        height:1em;
+        width:0.8em;
+        line-height:0.8em;
+        border-width:0;
+        font-family: georgia, times new roman, palatino, times, bookman, serif;
+        background:transparent;
+        font-weight:bold;
+        cursor:pointer;
+        }
+.datePicker th button:active,
+.datePicker th button:focus,
+.date-picker-control:active,
+.date-picker-control:focus
+        {
+        outline:none;
+        }
+.datePicker th button.prev-but
+        {
+        text-align:left;
+        }
+.datePicker th button.next-but
+        {
+        text-align:right;
+        }
+.datePicker th button.fd-day-header
+        {
+        text-align:center;
+        margin:0 auto;
+        font:900 1em Verdana, Sans-Serif;
+        height:auto;
+        width:auto;
+        text-decoration:none;
+        line-height:1.4em;
+        }
+.datePicker table
+        {
+        position:relative;
+        margin-top:2px;
+        padding:0;
+        border:1px solid #ccc;
+        background:#fff url(../media/gradient-e5e5e5-ffffff.gif) repeat-x 0 -20px;
+        text-align:center;
+        }
+.datePicker table tfoot td
+        {
+        background:#fff url(../media/gradient-e5e5e5-ffffff.gif) repeat-x 0 -40px;
+        }
+.datePicker table td
+        {
+        border: 1px solid #ccc;
+        padding:0.6em 0.5em 0.5em 0.5em;
+        /* Opera requires a line-height bigger than 1em in order to redraw properly */
+        line-height:1.2em;
+        cursor:default;
+        background:#fff url(../media/gradient-e5e5e5-ffffff.gif) repeat-x 0 -50px;
+        }
+.datePicker table th
+        {
+        border:0 none;
+        padding:0;
+        line-height:1em;
+        font-weight:bold;
+        color:#222;
+        text-align:center;
+        }
+.datePicker table th.date-picker-day-header
+        {
+        text-transform:lowercase;
+        cursor:help;
+        }
+.datePicker table td.date-picker-today
+        {
+        background:#fff url(../media/bullet2.gif) no-repeat 0 0;
+        color:rgb(100,100,100) !important;
+        }
+        /*
+.datePicker table td.date-picker-selected
+        {
+        background:#fff url(../media/bg_header.jpg) no-repeat 0 0;
+        border-color:rgb(100,130,170)  !important;
+        color:rgb(100,130,170) !important;
+        }
+        */
+.datePicker table td.date-picker-selected-date
+        {
+        color:#333 !important;
+        border-color:#333 !important;
+        }
+td.date-picker-highlight
+        {
+        color:#a86666;
+        }
+.datePicker table td.out-of-range
+        {
+        color:#ccc !important;
+        font-style:oblique;
+        background:transparent !important;
+        }
+.datePicker table td.day-disabled
+        {
+        color:#aaa !important;
+        background:transparent !important;
+        }
+.datePicker table td#date-picker-hover
+        {
+        background:#fff url(../media/bg_header.jpg) no-repeat 0 0;
+        cursor:pointer;
+        border-color:rgb(100,130,170);
+        color:rgb(100,130,170);
+        }
+/* Remove the images for Internet Explorer */
+/* * html .datePicker table td.date-picker-today,*/
+* html .datePicker table td.date-picker-selected,
+* html .datePicker table td.date-picker-hover,
+* html .datePicker table td
+        {
+        background-image:none;
+        }
+* html .datePicker table td.date-picker-hover
+        {
+        border-color:rgb(100,130,170);
+        }
+
+
