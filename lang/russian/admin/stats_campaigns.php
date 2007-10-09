@@ -17,24 +17,24 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Îò÷¸ò ïî êàìïàíèÿì');
+define('HEADING_TITLE', 'ÐžÑ‚Ñ‡Ñ‘Ñ‚ Ð¿Ð¾ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸ÑÐ¼');
 
-define('REPORT_TYPE_YEARLY', 'Ãîäîâàÿ');
-define('REPORT_TYPE_MONTHLY', 'Ìåñÿ÷íàÿ');
-define('REPORT_TYPE_WEEKLY', 'Íåäåëüíàÿ');
-define('REPORT_TYPE_DAILY', 'Äíåâíàÿ');
-define('REPORT_START_DATE', 'Äàòû îò');
-define('REPORT_END_DATE', 'äî (âêëþ÷èòåëüíî)');
+define('REPORT_TYPE_YEARLY', 'Ð“Ð¾Ð´Ð¾Ð²Ð°Ñ');
+define('REPORT_TYPE_MONTHLY', 'ÐœÐµÑÑÑ‡Ð½Ð°Ñ');
+define('REPORT_TYPE_WEEKLY', 'ÐÐµÐ´ÐµÐ»ÑŒÐ½Ð°Ñ');
+define('REPORT_TYPE_DAILY', 'Ð”Ð½ÐµÐ²Ð½Ð°Ñ');
+define('REPORT_START_DATE', 'Ð”Ð°Ñ‚Ñ‹ Ð¾Ñ‚');
+define('REPORT_END_DATE', 'Ð´Ð¾ (Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾)');
 
-define('REPORT_ALL', 'Âñå');
-define('REPORT_STATUS_FILTER', 'Ñòàòóñû çàêàçîâ:');
-define('REPORT_CAMPAIGN_FILTER', 'Êàìïàíèÿ');
+define('REPORT_ALL', 'Ð’ÑÐµ');
+define('REPORT_STATUS_FILTER', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑÑ‹ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²:');
+define('REPORT_CAMPAIGN_FILTER', 'ÐšÐ°Ð¼Ð¿Ð°Ð½Ð¸Ñ');
 
-define('HEADING_TOTAL', 'Èòîãî:');
-define('HEADING_LEADS', 'Ïåðåõîäîâ');
-define('HEADING_SELLS', 'Ïðîäàæè');
-define('HEADING_HITS','Êëèêîâ');
-define('HEADING_LATESELLS', 'Ïîâòîðíûå ïðîäàæè');
-define('HEADING_SUM', 'Ñóììà');
-define('TEXT_REFERER', 'Ðåôåðåð:');
+define('HEADING_TOTAL', 'Ð˜Ñ‚Ð¾Ð³Ð¾:');
+define('HEADING_LEADS', 'ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¾Ð²');
+define('HEADING_SELLS', 'ÐŸÑ€Ð¾Ð´Ð°Ð¶Ð¸');
+define('HEADING_HITS','ÐšÐ»Ð¸ÐºÐ¾Ð²');
+define('HEADING_LATESELLS', 'ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð¸');
+define('HEADING_SUM', 'Ð¡ÑƒÐ¼Ð¼Ð°');
+define('TEXT_REFERER', 'Ð ÐµÑ„ÐµÑ€ÐµÑ€:');
 ?>

@@ -16,10 +16,10 @@ var fdLocale = {
         fullDay:[
                 "Lunes",
                 "Martes",
-                "MiÈrcoles",
+                "Mi–πrcoles",
                 "Jueves",
                 "Viernes",
-                "S·bado",
+                "S–±bado",
                 "Domingo"
                 ],
         /* Only stipulate the dayAbbr should the first letter of the fullDay not suffice
@@ -34,7 +34,7 @@ var fdLocale = {
         titles:[
                 "Mes Anterior",
                 "Mes Siguiente",
-                "AÒo anterior",
-                "AÒo Siguiente"
+                "A—Åo anterior",
+                "A—Åo Siguiente"
                 ]
 };

@@ -27,33 +27,33 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_COUPON_TITLE', 'Êóïîí');
-  define('MODULE_ORDER_TOTAL_COUPON_HEADER', 'Ñåðòèôèêàòû/Êóïîíû');
-  define('MODULE_ORDER_TOTAL_COUPON_DESCRIPTION', 'Êóïîí');
-  define('SHIPPING_NOT_INCLUDED', ' [Ñòîèìîñòü äîñòàâêè íå âêëþ÷åíà]');
-  define('TAX_NOT_INCLUDED', ' [Íàëîã íå âêëþ÷¸í]');
+  define('MODULE_ORDER_TOTAL_COUPON_TITLE', 'ÐšÑƒÐ¿Ð¾Ð½');
+  define('MODULE_ORDER_TOTAL_COUPON_HEADER', 'Ð¡ÐµÑ€Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ñ‹/ÐšÑƒÐ¿Ð¾Ð½Ñ‹');
+  define('MODULE_ORDER_TOTAL_COUPON_DESCRIPTION', 'ÐšÑƒÐ¿Ð¾Ð½');
+  define('SHIPPING_NOT_INCLUDED', ' [Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð°]');
+  define('TAX_NOT_INCLUDED', ' [ÐÐ°Ð»Ð¾Ð³ Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡Ñ‘Ð½]');
   define('MODULE_ORDER_TOTAL_COUPON_USER_PROMPT', '');
-  define('ERROR_NO_INVALID_REDEEM_COUPON', 'Íåâåðíûé êîä êóïîíà');
-  define('ERROR_INVALID_STARTDATE_COUPON', 'Óêàçàííûé êóïîí íå ñóùåñòâóåò');
-  define('ERROR_INVALID_FINISDATE_COUPON', 'Ó äàííîãî êóïîíà èñò¸ê ñðîê äåéñòâèÿ');
-  define('ERROR_INVALID_USES_COUPON', 'Êóïîí óæå áûë èñïîëüçîâàí ');  
-  define('TIMES', ' ðàç.');
-  define('ERROR_INVALID_USES_USER_COUPON', 'Âû èñïîëüçîâàëè êóïîí ìàêñèìàëüíî âîçìîæíîå êîëè÷åñòâî ðàç.'); 
-  define('REDEEMED_COUPON', 'ñóììà êóïîíà ');  
-  define('REDEEMED_MIN_ORDER', 'çàêàçû âûøå ');  
-  define('REDEEMED_RESTRICTIONS', ' [Äåéñòâèå êóïîíà îãðàíè÷åíî ñëåäóþùèìè êàòåãîðèÿìè]');  
-  define('TEXT_ENTER_COUPON_CODE', 'Âàø êîä:&nbsp;&nbsp;');
+  define('ERROR_NO_INVALID_REDEEM_COUPON', 'ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ ÐºÑƒÐ¿Ð¾Ð½Ð°');
+  define('ERROR_INVALID_STARTDATE_COUPON', 'Ð£ÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¹ ÐºÑƒÐ¿Ð¾Ð½ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚');
+  define('ERROR_INVALID_FINISDATE_COUPON', 'Ð£ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ ÐºÑƒÐ¿Ð¾Ð½Ð° Ð¸ÑÑ‚Ñ‘Ðº ÑÑ€Ð¾Ðº Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ');
+  define('ERROR_INVALID_USES_COUPON', 'ÐšÑƒÐ¿Ð¾Ð½ ÑƒÐ¶Ðµ Ð±Ñ‹Ð» Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½ ');  
+  define('TIMES', ' Ñ€Ð°Ð·.');
+  define('ERROR_INVALID_USES_USER_COUPON', 'Ð’Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð»Ð¸ ÐºÑƒÐ¿Ð¾Ð½ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ€Ð°Ð·.'); 
+  define('REDEEMED_COUPON', 'ÑÑƒÐ¼Ð¼Ð° ÐºÑƒÐ¿Ð¾Ð½Ð° ');  
+  define('REDEEMED_MIN_ORDER', 'Ð·Ð°ÐºÐ°Ð·Ñ‹ Ð²Ñ‹ÑˆÐµ ');  
+  define('REDEEMED_RESTRICTIONS', ' [Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ ÐºÑƒÐ¿Ð¾Ð½Ð° Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¾ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¼Ð¸ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑÐ¼Ð¸]');  
+  define('TEXT_ENTER_COUPON_CODE', 'Ð’Ð°Ñˆ ÐºÐ¾Ð´:&nbsp;&nbsp;');
   
-  define('MODULE_ORDER_TOTAL_COUPON_STATUS_TITLE', 'Ïîêàçûâàòü âñåãî');
-  define('MODULE_ORDER_TOTAL_COUPON_STATUS_DESC', 'Âû õîòèòå ïîêàçûâàòü íîìèíàë êóïîíà?');
-  define('MODULE_ORDER_TOTAL_COUPON_SORT_ORDER_TITLE', 'Ïîðÿäîê ñîðòèðîâêè');
-  define('MODULE_ORDER_TOTAL_COUPON_SORT_ORDER_DESC', 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
-  define('MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING_TITLE', 'Ó÷èòûâàòü äîñòàâêó');
-  define('MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING_DESC', 'Âêëþ÷àòü â ðàñ÷¸ò äîñòàâêó.');
-  define('MODULE_ORDER_TOTAL_COUPON_INC_TAX_TITLE', 'Ó÷èòûâàòü íàëîã');
-  define('MODULE_ORDER_TOTAL_COUPON_INC_TAX_DESC', 'Âêëþ÷àòü â ðàñ÷¸ò íàëîã.');
-  define('MODULE_ORDER_TOTAL_COUPON_CALC_TAX_TITLE', 'Ïåðåñ÷èòûâàòü íàëîã');
-  define('MODULE_ORDER_TOTAL_COUPON_CALC_TAX_DESC', 'Ïåðåñ÷èòûâàòü íàëîã.');
-  define('MODULE_ORDER_TOTAL_COUPON_TAX_CLASS_TITLE', 'Íàëîã');
-  define('MODULE_ORDER_TOTAL_COUPON_TAX_CLASS_DESC', 'Èñïîëüçîâàòü íàëîã äëÿ êóïîíîâ.');
+  define('MODULE_ORDER_TOTAL_COUPON_STATUS_TITLE', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð²ÑÐµÐ³Ð¾');
+  define('MODULE_ORDER_TOTAL_COUPON_STATUS_DESC', 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð¼Ð¸Ð½Ð°Ð» ÐºÑƒÐ¿Ð¾Ð½Ð°?');
+  define('MODULE_ORDER_TOTAL_COUPON_SORT_ORDER_TITLE', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+  define('MODULE_ORDER_TOTAL_COUPON_SORT_ORDER_DESC', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
+  define('MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING_TITLE', 'Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+  define('MODULE_ORDER_TOTAL_COUPON_INC_SHIPPING_DESC', 'Ð’ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² Ñ€Ð°ÑÑ‡Ñ‘Ñ‚ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ.');
+  define('MODULE_ORDER_TOTAL_COUPON_INC_TAX_TITLE', 'Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_COUPON_INC_TAX_DESC', 'Ð’ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² Ñ€Ð°ÑÑ‡Ñ‘Ñ‚ Ð½Ð°Ð»Ð¾Ð³.');
+  define('MODULE_ORDER_TOTAL_COUPON_CALC_TAX_TITLE', 'ÐŸÐµÑ€ÐµÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_COUPON_CALC_TAX_DESC', 'ÐŸÐµÑ€ÐµÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³.');
+  define('MODULE_ORDER_TOTAL_COUPON_TAX_CLASS_TITLE', 'ÐÐ°Ð»Ð¾Ð³');
+  define('MODULE_ORDER_TOTAL_COUPON_TAX_CLASS_DESC', 'Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³ Ð´Ð»Ñ ÐºÑƒÐ¿Ð¾Ð½Ð¾Ð².');
 ?>

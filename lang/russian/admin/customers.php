@@ -17,45 +17,45 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Êëèåíòû');
-define('HEADING_TITLE_SEARCH', 'Ïîèñê:');
+define('HEADING_TITLE', 'ÐšÐ»Ð¸ÐµÐ½Ñ‚Ñ‹');
+define('HEADING_TITLE_SEARCH', 'ÐŸÐ¾Ð¸ÑÐº:');
 
-define('TABLE_HEADING_FIRSTNAME', 'Èìÿ');
-define('TABLE_HEADING_LASTNAME', 'Ôàìèëèÿ');
-define('TABLE_HEADING_ACCOUNT_CREATED', 'Äàòà ðåãèñòðàöèè');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
-define('TEXT_DATE_ACCOUNT_CREATED', 'Äàòà ðåãèñòðàöèè:');
-define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'Ïîñëåäíèå èçìåíåíèÿ:');
-define('TEXT_INFO_DATE_LAST_LOGON', 'Ïîñëåäíèé âõîä:');
-define('TEXT_INFO_NUMBER_OF_LOGONS', 'Êîëè÷åñòâî âõîäîâ:');
-define('TEXT_INFO_COUNTRY', 'Ñòðàíà:');
-define('TEXT_INFO_NUMBER_OF_REVIEWS', 'Êîë-âî îòçûâîâ:');
-define('TEXT_DELETE_INTRO', 'Âû äåéñòâèòåëüíî æåëàåòå óäàëèòü ýòîãî êëèåíòà?');
-define('TEXT_DELETE_REVIEWS', 'Óäàëèòü %s îòçûâ(û)');
-define('TEXT_INFO_HEADING_DELETE_CUSTOMER', 'Óäàëèòü êëèåíòà');
-define('TYPE_BELOW', 'Ââåäèòå íèæå');
-define('PLEASE_SELECT', 'Âûáåðèòå');
-define('HEADING_TITLE_STATUS','Ãðóïïû êëèåíòîâ:');
-define('TEXT_ALL_CUSTOMERS','âñå ãðóïïû');
-define('TEXT_INFO_HEADING_STATUS_CUSTOMER','Ãðóïïû êëèåíòîâ');
-define('TABLE_HEADING_NEW_VALUE','Íîâûé ñòàòóñ');
-define('TABLE_HEADING_DATE_ADDED','Äàòà');
-define('TEXT_NO_CUSTOMER_HISTORY','-ïîêà íåò èçìåíåíèé-');
-define('TABLE_HEADING_GROUPIMAGE','Èêîíêà');
-define('ENTRY_MEMO','Çàìåòêè:');
-define('TEXT_DATE','Äàòà');
-define('TEXT_TITLE','Çàãîëîâîê');
-define('TEXT_POSTER','Àâòîð');
-define('ENTRY_PASSWORD_CUSTOMER','Ïàðîëü:');
-define('TEXT_SELECT','-Âûáåðèòå-');
-define('TABLE_HEADING_ACCOUNT_TYPE','Çàðåãèñòðèðîâàí');
-define('TEXT_ACCOUNT','Äà');
-define('TEXT_GUEST','Íåò');
-define('NEW_ORDER','Íîâûé çàêàç');
-define('ENTRY_PAYMENT_UNALLOWED','Çàïðåù¸ííûå ìîäóëè îïëàòû:');
-define('ENTRY_SHIPPING_UNALLOWED','Çàïðåù¸ííûå ìîäóëè äîñòàâêè:');
-define('ENTRY_NEW_PASSWORD','Íîâûé ïàðîëü:');
+define('TABLE_HEADING_FIRSTNAME', 'Ð˜Ð¼Ñ');
+define('TABLE_HEADING_LASTNAME', 'Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ');
+define('TABLE_HEADING_ACCOUNT_CREATED', 'Ð”Ð°Ñ‚Ð° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
+define('TEXT_DATE_ACCOUNT_CREATED', 'Ð”Ð°Ñ‚Ð° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸:');
+define('TEXT_DATE_ACCOUNT_LAST_MODIFIED', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ:');
+define('TEXT_INFO_DATE_LAST_LOGON', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ Ð²Ñ…Ð¾Ð´:');
+define('TEXT_INFO_NUMBER_OF_LOGONS', 'ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²Ñ…Ð¾Ð´Ð¾Ð²:');
+define('TEXT_INFO_COUNTRY', 'Ð¡Ñ‚Ñ€Ð°Ð½Ð°:');
+define('TEXT_INFO_NUMBER_OF_REVIEWS', 'ÐšÐ¾Ð»-Ð²Ð¾ Ð¾Ñ‚Ð·Ñ‹Ð²Ð¾Ð²:');
+define('TEXT_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¶ÐµÐ»Ð°ÐµÑ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ð³Ð¾ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°?');
+define('TEXT_DELETE_REVIEWS', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ %s Ð¾Ñ‚Ð·Ñ‹Ð²(Ñ‹)');
+define('TEXT_INFO_HEADING_DELETE_CUSTOMER', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°');
+define('TYPE_BELOW', 'Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¸Ð¶Ðµ');
+define('PLEASE_SELECT', 'Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ');
+define('HEADING_TITLE_STATUS','Ð“Ñ€ÑƒÐ¿Ð¿Ñ‹ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¾Ð²:');
+define('TEXT_ALL_CUSTOMERS','Ð²ÑÐµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹');
+define('TEXT_INFO_HEADING_STATUS_CUSTOMER','Ð“Ñ€ÑƒÐ¿Ð¿Ñ‹ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¾Ð²');
+define('TABLE_HEADING_NEW_VALUE','ÐÐ¾Ð²Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ');
+define('TABLE_HEADING_DATE_ADDED','Ð”Ð°Ñ‚Ð°');
+define('TEXT_NO_CUSTOMER_HISTORY','-Ð¿Ð¾ÐºÐ° Ð½ÐµÑ‚ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹-');
+define('TABLE_HEADING_GROUPIMAGE','Ð˜ÐºÐ¾Ð½ÐºÐ°');
+define('ENTRY_MEMO','Ð—Ð°Ð¼ÐµÑ‚ÐºÐ¸:');
+define('TEXT_DATE','Ð”Ð°Ñ‚Ð°');
+define('TEXT_TITLE','Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº');
+define('TEXT_POSTER','ÐÐ²Ñ‚Ð¾Ñ€');
+define('ENTRY_PASSWORD_CUSTOMER','ÐŸÐ°Ñ€Ð¾Ð»ÑŒ:');
+define('TEXT_SELECT','-Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ-');
+define('TABLE_HEADING_ACCOUNT_TYPE','Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½');
+define('TEXT_ACCOUNT','Ð”Ð°');
+define('TEXT_GUEST','ÐÐµÑ‚');
+define('NEW_ORDER','ÐÐ¾Ð²Ñ‹Ð¹ Ð·Ð°ÐºÐ°Ð·');
+define('ENTRY_PAYMENT_UNALLOWED','Ð—Ð°Ð¿Ñ€ÐµÑ‰Ñ‘Ð½Ð½Ñ‹Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ð¸ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹:');
+define('ENTRY_SHIPPING_UNALLOWED','Ð—Ð°Ð¿Ñ€ÐµÑ‰Ñ‘Ð½Ð½Ñ‹Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ð¸ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸:');
+define('ENTRY_NEW_PASSWORD','ÐÐ¾Ð²Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ:');
 
-define('TEXT_INFO_ORIGINAL_REFERER', 'Ðåôåðåð:');
+define('TEXT_INFO_ORIGINAL_REFERER', 'Ð ÐµÑ„ÐµÑ€ÐµÑ€:');
 
 ?>

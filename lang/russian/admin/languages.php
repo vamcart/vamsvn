@@ -17,27 +17,27 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'ßçûêè');
+define('HEADING_TITLE', 'Ð¯Ð·Ñ‹ÐºÐ¸');
 
-define('TABLE_HEADING_LANGUAGE_NAME', 'ßçûê');
-define('TABLE_HEADING_LANGUAGE_CODE', 'Êîä');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_LANGUAGE_NAME', 'Ð¯Ð·Ñ‹Ðº');
+define('TABLE_HEADING_LANGUAGE_CODE', 'ÐšÐ¾Ð´');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ïîæàëóéñòà, âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_LANGUAGE_NAME', 'Íàçâàíèå:');
-define('TEXT_INFO_LANGUAGE_CODE', 'Êîä:');
-define('TEXT_INFO_LANGUAGE_IMAGE', 'Êàðòèíêà:');
-define('TEXT_INFO_LANGUAGE_DIRECTORY', 'Äèðåêòîðèÿ:');
-define('TEXT_INFO_LANGUAGE_SORT_ORDER', 'Ïîðÿäîê Ñîðòèðîâêè:');
-define('TEXT_INFO_INSERT_INTRO', 'Ïîæàëóéñòà, âíåñèòå òðåáóåìóþ èíôîðìàöèþ äëÿ íîâîãî ÿçûêà');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ÿçûê?');
-define('TEXT_INFO_HEADING_NEW_LANGUAGE', 'Íîâûé ßçûê');
-define('TEXT_INFO_HEADING_EDIT_LANGUAGE', 'Ðåäàêòèðîâàòü ßçûê');
-define('TEXT_INFO_HEADING_DELETE_LANGUAGE', 'Óäàëèòü ßçûê');
-define('TEXT_INFO_LANGUAGE_CHARSET','Êîäèðîâêà');
+define('TEXT_INFO_EDIT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_LANGUAGE_NAME', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ:');
+define('TEXT_INFO_LANGUAGE_CODE', 'ÐšÐ¾Ð´:');
+define('TEXT_INFO_LANGUAGE_IMAGE', 'ÐšÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ°:');
+define('TEXT_INFO_LANGUAGE_DIRECTORY', 'Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ:');
+define('TEXT_INFO_LANGUAGE_SORT_ORDER', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸:');
+define('TEXT_INFO_INSERT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ñ‚Ñ€ÐµÐ±ÑƒÐµÐ¼ÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ·Ñ‹ÐºÐ°');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ·Ñ‹Ðº?');
+define('TEXT_INFO_HEADING_NEW_LANGUAGE', 'ÐÐ¾Ð²Ñ‹Ð¹ Ð¯Ð·Ñ‹Ðº');
+define('TEXT_INFO_HEADING_EDIT_LANGUAGE', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¯Ð·Ñ‹Ðº');
+define('TEXT_INFO_HEADING_DELETE_LANGUAGE', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¯Ð·Ñ‹Ðº');
+define('TEXT_INFO_LANGUAGE_CHARSET','ÐšÐ¾Ð´Ð¸Ñ€Ð¾Ð²ÐºÐ°');
 define('TEXT_INFO_LANGUAGE_CHARSET_INFO','meta-content:');
 
 
-define('ERROR_REMOVE_DEFAULT_LANGUAGE', 'Îøèáêà: ßçûê ïî óìîë÷àíèþ íå ìîæåò áûòü óäàë¸í. Ñíà÷àëà âûáåðèòå äðóãîé ÿçûê ïî óìîë÷àíèþ, çàòåì ïîïðîáóéòå ñíîâà óäàëèòü.');
+define('ERROR_REMOVE_DEFAULT_LANGUAGE', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð¯Ð·Ñ‹Ðº Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑƒÐ´Ð°Ð»Ñ‘Ð½. Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð²Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð´Ñ€ÑƒÐ³Ð¾Ð¹ ÑÐ·Ñ‹Ðº Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ, Ð·Ð°Ñ‚ÐµÐ¼ Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð° ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ.');
 
 ?>

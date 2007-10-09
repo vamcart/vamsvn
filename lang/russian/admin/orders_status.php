@@ -17,20 +17,20 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ñòàòóñ çàêàçîâ');
+define('HEADING_TITLE', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²');
 
-define('TABLE_HEADING_ORDERS_STATUS', 'Ñòàòóñ çàêàçîâ');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_ORDERS_STATUS', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ïîæàëóéñòà, âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_ORDERS_STATUS_NAME', 'Ñòàòóñ çàêàçîâ:');
-define('TEXT_INFO_INSERT_INTRO', 'Ââåäèòå, ïîæàëóéñòà, íîâûé ñòàòóñ çàêàçà, íà îñíîâå èñõîäíûõ äàííûõ');
-define('TEXT_INFO_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ñòàòóñ ýòîãî çàêàçà?');
-define('TEXT_INFO_HEADING_NEW_ORDERS_STATUS', 'Íîâûé ñòàòóñ çàêàçà');
-define('TEXT_INFO_HEADING_EDIT_ORDERS_STATUS', 'Ðåäàêòèðîâàòü ñòàòóñ çàêàçà');
-define('TEXT_INFO_HEADING_DELETE_ORDERS_STATUS', 'Óäàëèòü ñòàòóñ çàêàçà');
+define('TEXT_INFO_EDIT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_ORDERS_STATUS_NAME', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²:');
+define('TEXT_INFO_INSERT_INTRO', 'Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð½Ð¾Ð²Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°, Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ðµ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ ÑÑ‚Ð¾Ð³Ð¾ Ð·Ð°ÐºÐ°Ð·Ð°?');
+define('TEXT_INFO_HEADING_NEW_ORDERS_STATUS', 'ÐÐ¾Ð²Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°');
+define('TEXT_INFO_HEADING_EDIT_ORDERS_STATUS', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°');
+define('TEXT_INFO_HEADING_DELETE_ORDERS_STATUS', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°');
 
-define('ERROR_REMOVE_DEFAULT_ORDER_STATUS', 'Îøèáêà: Ñòàòóñ çàêàçà ïî óìîë÷àíèþ íå ìîæåò áûòü óäàëåí, èçìåíèòå ñòàòóñ è ïîïðîáóéòå ñíîâà.');
-define('ERROR_STATUS_USED_IN_ORDERS', 'Îøèáêà: Ýòîò ñòàòóñ èñïîëüçóåòñÿ â íàñòîÿùåå âðåìÿ.');
-define('ERROR_STATUS_USED_IN_HISTORY', 'Îøèáêà: Ýòîò ñòàòóñ èñïîëüçóåòñÿ ñåé÷àñ â èñòîðèè çàêàçîâ.');
+define('ERROR_REMOVE_DEFAULT_ORDER_STATUS', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð° Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑƒÐ´Ð°Ð»ÐµÐ½, Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¸ Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°.');
+define('ERROR_STATUS_USED_IN_ORDERS', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð² Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ.');
+define('ERROR_STATUS_USED_IN_HISTORY', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ ÑÐµÐ¹Ñ‡Ð°Ñ Ð² Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸ Ð·Ð°ÐºÐ°Ð·Ð¾Ð².');
 ?>

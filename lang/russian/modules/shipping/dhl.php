@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------
    Third Party contributions:
-   dhl_austria_1.02       	Autor:	Copyright (C) 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl‰nkers | http://www.themedia.at & http://www.oscommerce.at
+   dhl_austria_1.02       	Autor:	Copyright (C) 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl–¥nkers | http://www.themedia.at & http://www.oscommerce.at
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/

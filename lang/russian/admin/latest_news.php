@@ -14,32 +14,32 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Íîâîñòè');
+define('HEADING_TITLE', 'ÐÐ¾Ð²Ð¾ÑÑ‚Ð¸');
 
-define('TABLE_HEADING_LATEST_NEWS_HEADLINE', 'Çàãîëîâîê íîâîñòè');
-define('TABLE_HEADING_LATEST_NEWS_ACTION', 'Äåéñòâèå');
-define('TABLE_HEADING_LATEST_NEWS_STATUS', 'Ñòàòóñ');
+define('TABLE_HEADING_LATEST_NEWS_HEADLINE', 'Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸');
+define('TABLE_HEADING_LATEST_NEWS_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
+define('TABLE_HEADING_LATEST_NEWS_STATUS', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ');
 
-define('TEXT_NEWS_ITEMS', 'Êîëè÷åñòâî íîâîñòåé:');
-define('TEXT_INFO_HEADING_DELETE_ITEM', 'Óäàëèòü íîâîñòü');
-define('TEXT_DELETE_ITEM_INTRO', 'Âû óâåðåíû, ÷òî õîòèòå óäàëèòü ýòó íîâîñòü?');
+define('TEXT_NEWS_ITEMS', 'ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ð¾ÑÑ‚ÐµÐ¹:');
+define('TEXT_INFO_HEADING_DELETE_ITEM', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ');
+define('TEXT_DELETE_ITEM_INTRO', 'Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ?');
 
-define('TEXT_LATEST_NEWS_HEADLINE', 'Çàãîëîâîê');
-define('TEXT_LATEST_NEWS_CONTENT', 'Íîâîñòü');
+define('TEXT_LATEST_NEWS_HEADLINE', 'Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº');
+define('TEXT_LATEST_NEWS_CONTENT', 'ÐÐ¾Ð²Ð¾ÑÑ‚ÑŒ');
 
-define('IMAGE_NEW_NEWS_ITEM', 'Äîáàâèòü íîâîñòü');
-define('IMAGE_EDIT_NEWS_ITEM', 'Èçìåíèòü íîâîñòü');
-define('TEXT_LATEST_NEWS_LANGUAGE', 'ßçûê');
-define('TEXT_LATEST_NEWS_DATE', 'Äàòà');
+define('IMAGE_NEW_NEWS_ITEM', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ');
+define('IMAGE_EDIT_NEWS_ITEM', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ');
+define('TEXT_LATEST_NEWS_LANGUAGE', 'Ð¯Ð·Ñ‹Ðº');
+define('TEXT_LATEST_NEWS_DATE', 'Ð”Ð°Ñ‚Ð°');
 
-// Ñáîðêà VaM
+// Ð¡Ð±Ð¾Ñ€ÐºÐ° VaM
 
-define('IMAGE_ICON_STATUS_GREEN', 'Àêòèâíà');
-define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Àêòèâèçèðîâàòü');
-define('IMAGE_ICON_STATUS_RED', 'Íåàêòèâíà');
-define('IMAGE_ICON_STATUS_RED_LIGHT', 'Ñäåëàòü íåàêòèâíîé');
+define('IMAGE_ICON_STATUS_GREEN', 'ÐÐºÑ‚Ð¸Ð²Ð½Ð°');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'ÐÐºÑ‚Ð¸Ð²Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ');
+define('IMAGE_ICON_STATUS_RED', 'ÐÐµÐ°ÐºÑ‚Ð¸Ð²Ð½Ð°');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Ð¡Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ð½ÐµÐ°ÐºÑ‚Ð¸Ð²Ð½Ð¾Ð¹');
 
-define('EMPTY_CATEGORY', 'Íåò íîâîñòåé');
-define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Äîáàâüòå íîâîñòü');
+define('EMPTY_CATEGORY', 'ÐÐµÑ‚ Ð½Ð¾Ð²Ð¾ÑÑ‚ÐµÐ¹');
+define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Ð”Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ');
 
 ?>

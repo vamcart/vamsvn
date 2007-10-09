@@ -17,5 +17,5 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ñêëàä');
+define('HEADING_TITLE', 'Ð¡ÐºÐ»Ð°Ð´');
 ?>

@@ -17,36 +17,36 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Отзывы');
+define('HEADING_TITLE', 'РћС‚Р·С‹РІС‹');
 
-define('TABLE_HEADING_PRODUCTS', 'Товар');
-define('TABLE_HEADING_RATING', 'Рейтинг');
-define('TABLE_HEADING_DATE_ADDED', 'Дата добавления');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_PRODUCTS', 'РўРѕРІР°СЂ');
+define('TABLE_HEADING_RATING', 'Р РµР№С‚РёРЅРі');
+define('TABLE_HEADING_DATE_ADDED', 'Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
 
-define('ENTRY_PRODUCT', 'Товар:');
-define('ENTRY_FROM', 'От:');
-define('ENTRY_DATE', 'Дата:');
-define('ENTRY_REVIEW', 'Отзыв:');
-define('ENTRY_REVIEW_TEXT', '<small><font color="#ff0000"><b>ЗАМЕЧАНИЕ:</b></font></small>&nbsp;HTML не поддерживается!&nbsp;');
-define('ENTRY_RATING', 'Рейтинг:');
+define('ENTRY_PRODUCT', 'РўРѕРІР°СЂ:');
+define('ENTRY_FROM', 'РћС‚:');
+define('ENTRY_DATE', 'Р”Р°С‚Р°:');
+define('ENTRY_REVIEW', 'РћС‚Р·С‹РІ:');
+define('ENTRY_REVIEW_TEXT', '<small><font color="#ff0000"><b>Р—РђРњР•Р§РђРќРР•:</b></font></small>&nbsp;HTML РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ!&nbsp;');
+define('ENTRY_RATING', 'Р РµР№С‚РёРЅРі:');
 
-define('TEXT_INFO_DELETE_REVIEW_INTRO', 'Вы действительно хотите удалить этот отзыв?');
+define('TEXT_INFO_DELETE_REVIEW_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ РѕС‚Р·С‹РІ?');
 
-define('TEXT_INFO_DATE_ADDED', 'Дата Добавления:');
-define('TEXT_INFO_LAST_MODIFIED', 'Последние Изменения:');
-define('TEXT_INFO_IMAGE_NONEXISTENT', 'КАРТИНКА ОТСУТСТВУЕТ');
-define('TEXT_INFO_REVIEW_AUTHOR', 'Автор:');
-define('TEXT_INFO_REVIEW_RATING', 'Рейтинг:');
-define('TEXT_INFO_REVIEW_READ', 'Прочитано:');
-define('TEXT_INFO_REVIEW_SIZE', 'Размер:');
-define('TEXT_INFO_PRODUCTS_AVERAGE_RATING', 'Средний Рейтинг:');
+define('TEXT_INFO_DATE_ADDED', 'Р”Р°С‚Р° Р”РѕР±Р°РІР»РµРЅРёСЏ:');
+define('TEXT_INFO_LAST_MODIFIED', 'РџРѕСЃР»РµРґРЅРёРµ РР·РјРµРЅРµРЅРёСЏ:');
+define('TEXT_INFO_IMAGE_NONEXISTENT', 'РљРђР РўРРќРљРђ РћРўРЎРЈРўРЎРўР’РЈР•Рў');
+define('TEXT_INFO_REVIEW_AUTHOR', 'РђРІС‚РѕСЂ:');
+define('TEXT_INFO_REVIEW_RATING', 'Р РµР№С‚РёРЅРі:');
+define('TEXT_INFO_REVIEW_READ', 'РџСЂРѕС‡РёС‚Р°РЅРѕ:');
+define('TEXT_INFO_REVIEW_SIZE', 'Р Р°Р·РјРµСЂ:');
+define('TEXT_INFO_PRODUCTS_AVERAGE_RATING', 'РЎСЂРµРґРЅРёР№ Р РµР№С‚РёРЅРі:');
 
-define('TEXT_OF_5_STARS', '%s из 5 Звёзд!');
-define('TEXT_GOOD', '<small><font color="#ff0000"><b>ХОРОШО</b></font></small>');
-define('TEXT_BAD', '<small><font color="#ff0000"><b>ПЛОХО</b></font></small>');
-define('TEXT_INFO_HEADING_DELETE_REVIEW', 'Удалить отзыв');
+define('TEXT_OF_5_STARS', '%s РёР· 5 Р—РІС‘Р·Рґ!');
+define('TEXT_GOOD', '<small><font color="#ff0000"><b>РҐРћР РћРЁРћ</b></font></small>');
+define('TEXT_BAD', '<small><font color="#ff0000"><b>РџР›РћРҐРћ</b></font></small>');
+define('TEXT_INFO_HEADING_DELETE_REVIEW', 'РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ');
 
-define('TEXT_IMAGE_NONEXISTENT','Картинка отсутствует');
+define('TEXT_IMAGE_NONEXISTENT','РљР°СЂС‚РёРЅРєР° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚');
 
 ?>

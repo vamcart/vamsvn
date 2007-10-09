@@ -888,23 +888,23 @@ class vat_validation {
 	/********************************************************************
 	* Live Check                                     *
 	********************************************************************/
-	// Live Check überprüft die USTid beim Bundesamt für Finanzen
+	// Live Check ÑŒberprÑŒft die USTid beim Bundesamt fÑŒr Finanzen
 	function live($abfrage_nummer) {
 
 		$eigene_nummer = STORE_OWNER_VAT_ID;
 
-		/* Hier wird der String für den POST per URL aufgebaut */
+		/* Hier wird der String fÑŒr den POST per URL aufgebaut */
 		$ustid_post = "eigene_id=".$eigene_nummer."&abfrage_id=".$abfrage_nummer."";
 
 		/* Zur Verbindung mit dem Server wird CURL verwendet */
-		/* mit curl_init wird zunächst die URL festgelegt */
+		/* mit curl_init wird zunÐ´chst die URL festgelegt */
 
 		$ch = curl_init("http://wddx.bff-online.de//ustid.php?".$ustid_post."");
 
-		/* Hier werden noch einige Parameter für CURL gesetzt */
+		/* Hier werden noch einige Parameter fÑŒr CURL gesetzt */
 		curl_setopt($ch, CURLOPT_HEADER, 0); /* Header nicht in die Ausgabe */
 		curl_setopt($ch, CURLOPT_NOBODY, 0); /* Ausgabe nicht in die HTML-Seite */
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); /* Umleitung der Ausgabe in eine Variable ermöglichen */
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); /* Umleitung der Ausgabe in eine Variable ermÑ†glichen */
 
 		/* Aufruf von CURL und Ausgabe mit WDDX deserialisieren */
 

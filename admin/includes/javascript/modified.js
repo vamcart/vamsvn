@@ -1,4 +1,4 @@
-var MSG_BEFOREUNLOAD = "Часть данных исправленных вами в этой форме не будет сохранена.";
+var MSG_BEFOREUNLOAD = "Р§Р°СЃС‚СЊ РґР°РЅРЅС‹С… РёСЃРїСЂР°РІР»РµРЅРЅС‹С… РІР°РјРё РІ СЌС‚РѕР№ С„РѕСЂРјРµ РЅРµ Р±СѓРґРµС‚ СЃРѕС…СЂР°РЅРµРЅР°.";
 var form_modified = false;
 var root = (window.addEventListener || window.attachEvent ? window : document.addEventListener ? document : null);
 

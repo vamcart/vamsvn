@@ -22,19 +22,19 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_FREEAMOUNT_TEXT_TITLE', 'Áåñïëàòíàÿ äîñòàâêà');
-define('MODULE_SHIPPING_FREEAMOUNT_TEXT_DESCRIPTION', 'Ìîäóëü áåñïëàòíîé äîñòàâêè');
-define('MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY', 'Áåñïëàòíàÿ äîñòàâêà äëÿ çàêàçîâ ñâûøå: %s');
-define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER', 'Ïîðÿäîê ñîðòèðîâêè');
+define('MODULE_SHIPPING_FREEAMOUNT_TEXT_TITLE', 'Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°');
+define('MODULE_SHIPPING_FREEAMOUNT_TEXT_DESCRIPTION', 'ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð¾Ð¹ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('MODULE_SHIPPING_FREEAMOUNT_TEXT_WAY', 'Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ° Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ð¾Ð² ÑÐ²Ñ‹ÑˆÐµ: %s');
+define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
 
-define('MODULE_SHIPPING_FREEAMOUNT_ALLOWED_TITLE' , 'Ðàçðåø¸ííûå ñòðàíû');
-define('MODULE_SHIPPING_FREEAMOUNT_ALLOWED_DESC' , 'Óêàæèòå êîäû ñòðàí, äëÿ êîòîðûõ áóäåò äîñòóïåí äàííûé ìîäóëü (íàïðèìåð RU,DE (îñòàâüòå ïîëå ïóñòûì, åñëè õîòèòå ÷òî á ìîäóëü áûë äîñòóïåí ïîêóïàòåëÿì èç ëþáûõ ñòðàí))');
-define('MODULE_SHIPPING_FREEAMOUNT_STATUS_TITLE' , 'Ðàçðåøèòü áåñïëàòíóþ äîñòàâêó');
-define('MODULE_SHIPPING_FREEAMOUNT_STATUS_DESC' , 'Âû õîòèòå ðàçðåøèòü ìîäóëü áåñïëàòíàÿ äîñòàâêà?');
-define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_TITLE' , 'Ïîêàçûâàòü óâåäîìëåíèå î áåñïëàòíîé äîñòàâêå');
-define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_DESC' , 'Ïîêàçûâàòü òåêñò óâåäîìëåíèÿ î âîçìîæíîé áåñïëàòíîé äîñòàâêè çàêàçà ïðè äîñòèæåíèè îïðåäåë¸ííîé ñóììû çàêàçà?');
-define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_TITLE' , 'Ìèíèìàëüíàÿ ñóììà çàêàçà');
-define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_DESC' , 'Ìèíèìàëüíàÿ ñóììà çàêàçà äëÿ áåñïëàòíîé äîñòàâêè.');
-define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_TITLE' , 'Ïîðÿäîê ñîðòèðîâêè');
-define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_DESC' , 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+define('MODULE_SHIPPING_FREEAMOUNT_ALLOWED_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÑ‘Ð½Ð½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ñ‹');
+define('MODULE_SHIPPING_FREEAMOUNT_ALLOWED_DESC' , 'Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð´Ñ‹ ÑÑ‚Ñ€Ð°Ð½, Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ RU,DE (Ð¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿Ð¾Ð»Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼, ÐµÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ‡Ñ‚Ð¾ Ð± Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð±Ñ‹Ð» Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð»ÑŽÐ±Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½))');
+define('MODULE_SHIPPING_FREEAMOUNT_STATUS_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½ÑƒÑŽ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+define('MODULE_SHIPPING_FREEAMOUNT_STATUS_DESC' , 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°?');
+define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_TITLE' , 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ðµ Ð¾ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð¾Ð¹ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐµ');
+define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_DESC' , 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾Ð¹ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð¾Ð¹ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð·Ð°ÐºÐ°Ð·Ð° Ð¿Ñ€Ð¸ Ð´Ð¾ÑÑ‚Ð¸Ð¶ÐµÐ½Ð¸Ð¸ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‘Ð½Ð½Ð¾Ð¹ ÑÑƒÐ¼Ð¼Ñ‹ Ð·Ð°ÐºÐ°Ð·Ð°?');
+define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_TITLE' , 'ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð·Ð°ÐºÐ°Ð·Ð°');
+define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_DESC' , 'ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð·Ð°ÐºÐ°Ð·Ð° Ð´Ð»Ñ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð¾Ð¹ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸.');
+define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_TITLE' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_DESC' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 ?>

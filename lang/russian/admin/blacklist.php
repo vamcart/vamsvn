@@ -17,24 +17,24 @@
   Released under the GNU General Public License
 ------------------------------------------------------------------------------*/
 
-define('HEADING_TITLE', '×åðíûé ñïèñîê Êðåäèòíûõ Êàðò');
+define('HEADING_TITLE', 'Ð§ÐµÑ€Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº ÐšÑ€ÐµÐ´Ð¸Ñ‚Ð½Ñ‹Ñ… ÐšÐ°Ñ€Ñ‚');
 
-define('TABLE_HEADING_BLACKLIST', '×åðíûé ñïèñîê Êðåäèòíûõ Êàðò');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_BLACKLIST', 'Ð§ÐµÑ€Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº ÐšÑ€ÐµÐ´Ð¸Ñ‚Ð½Ñ‹Ñ… ÐšÐ°Ñ€Ñ‚');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_HEADING_NEW_BLACKLIST_CARD', 'Íîâàÿ Êàðòà');
-define('TEXT_HEADING_EDIT_BLACKLIST_CARD', 'Ðåäàêòèðîâàòü Êàðòó');
-define('TEXT_HEADING_DELETE_BLACKLIST_CARD', 'Óäàëèòü Êàðòó');
-define('TEXT_DISPLAY_NUMBER_OF_BLACKLIST_CARDS', 'Ïîêàçàíî Êàðò');
-define('TEXT_DATE_ADDED', 'Äîáàâëåíà:');
-define('TEXT_LAST_MODIFIED', 'Èçìåíåíà:');
+define('TEXT_HEADING_NEW_BLACKLIST_CARD', 'ÐÐ¾Ð²Ð°Ñ ÐšÐ°Ñ€Ñ‚Ð°');
+define('TEXT_HEADING_EDIT_BLACKLIST_CARD', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐšÐ°Ñ€Ñ‚Ñƒ');
+define('TEXT_HEADING_DELETE_BLACKLIST_CARD', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÐšÐ°Ñ€Ñ‚Ñƒ');
+define('TEXT_DISPLAY_NUMBER_OF_BLACKLIST_CARDS', 'ÐŸÐ¾ÐºÐ°Ð·Ð°Ð½Ð¾ ÐšÐ°Ñ€Ñ‚');
+define('TEXT_DATE_ADDED', 'Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð°:');
+define('TEXT_LAST_MODIFIED', 'Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð°:');
 
 
-define('TEXT_NEW_INTRO', 'Çàïîëíèòå èíôîðìàöèþ î êðåäèòíîé êàðòå');
-define('TEXT_EDIT_INTRO', 'Ñäåëàéòå íåîáõîäèìûå èçìåíåíèÿ');
+define('TEXT_NEW_INTRO', 'Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð½Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ðµ');
+define('TEXT_EDIT_INTRO', 'Ð¡Ð´ÐµÐ»Ð°Ð¹Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
 
-define('TEXT_BLACKLIST_CARD_NUMBER', 'Íîìåð Êàðòû:');
-define('TEXT_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ýòó Êàðòó èç ÷åðíîãî ñïèñêà?');
+define('TEXT_BLACKLIST_CARD_NUMBER', 'ÐÐ¾Ð¼ÐµÑ€ ÐšÐ°Ñ€Ñ‚Ñ‹:');
+define('TEXT_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ ÐšÐ°Ñ€Ñ‚Ñƒ Ð¸Ð· Ñ‡ÐµÑ€Ð½Ð¾Ð³Ð¾ ÑÐ¿Ð¸ÑÐºÐ°?');
 
 
 ?>

@@ -17,16 +17,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Èíôîðìàöèÿ î Ñåðâåðå');
+define('HEADING_TITLE', 'Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð¡ÐµÑ€Ð²ÐµÑ€Ðµ');
 
-define('TITLE_SERVER_HOST', 'Õîñò:');
-define('TITLE_SERVER_OS', 'Îïåðàöèîííàÿ Ñèñòåìà:');
-define('TITLE_SERVER_DATE', 'Äàòà íà Ñåðâåðå:');
-define('TITLE_SERVER_UP_TIME', 'Âðåìÿ íà ñåðâåðå:');
-define('TITLE_HTTP_SERVER', 'HTTP Ñåðâåð:');
-define('TITLE_PHP_VERSION', 'Âåðñèÿ PHP:');
+define('TITLE_SERVER_HOST', 'Ð¥Ð¾ÑÑ‚:');
+define('TITLE_SERVER_OS', 'ÐžÐ¿ÐµÑ€Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð°Ñ Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð°:');
+define('TITLE_SERVER_DATE', 'Ð”Ð°Ñ‚Ð° Ð½Ð° Ð¡ÐµÑ€Ð²ÐµÑ€Ðµ:');
+define('TITLE_SERVER_UP_TIME', 'Ð’Ñ€ÐµÐ¼Ñ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€Ðµ:');
+define('TITLE_HTTP_SERVER', 'HTTP Ð¡ÐµÑ€Ð²ÐµÑ€:');
+define('TITLE_PHP_VERSION', 'Ð’ÐµÑ€ÑÐ¸Ñ PHP:');
 define('TITLE_ZEND_VERSION', 'Zend:');
-define('TITLE_DATABASE_HOST', 'Õîñò Áàçû Äàííûõ:');
-define('TITLE_DATABASE', 'ÁÄ:');
-define('TITLE_DATABASE_DATE', 'Äàòà ÁÄ:');
+define('TITLE_DATABASE_HOST', 'Ð¥Ð¾ÑÑ‚ Ð‘Ð°Ð·Ñ‹ Ð”Ð°Ð½Ð½Ñ‹Ñ…:');
+define('TITLE_DATABASE', 'Ð‘Ð”:');
+define('TITLE_DATABASE_DATE', 'Ð”Ð°Ñ‚Ð° Ð‘Ð”:');
 ?>

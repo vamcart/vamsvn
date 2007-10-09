@@ -24,8 +24,8 @@
  */
 
 define('TITLE', STORE_NAME);
-define('HEADER_TITLE_TOP', 'Начало');     
-define('HEADER_TITLE_CATALOG', 'Каталог');
+define('HEADER_TITLE_TOP', 'РќР°С‡Р°Р»Рѕ');     
+define('HEADER_TITLE_CATALOG', 'РљР°С‚Р°Р»РѕРі');
 
 define('HTML_PARAMS','xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"');
 
@@ -33,7 +33,7 @@ define('HTML_PARAMS','xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="r
 
 function vam_date_long_translate($date_string) {
 $eng = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-$loc = array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря");
+$loc = array("РџРѕРЅРµРґРµР»СЊРЅРёРє", "Р’С‚РѕСЂРЅРёРє", "РЎСЂРµРґР°", "Р§РµС‚РІРµСЂРі", "РџСЏС‚РЅРёС†Р°", "РЎСѓР±Р±РѕС‚Р°", "Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ", "РЇРЅРІР°СЂСЏ", "Р¤РµРІСЂР°Р»СЏ", "РњР°СЂС‚Р°", "РђРїСЂРµР»СЏ", "РњР°СЏ", "РСЋРЅСЏ", "РСЋР»СЏ", "РђРІРіСѓСЃС‚Р°", "РЎРµРЅС‚СЏР±СЂСЏ", "РћРєС‚СЏР±СЂСЏ", "РќРѕСЏР±СЂСЏ", "Р”РµРєР°Р±СЂСЏ");
 
 return str_replace($eng, $loc, $date_string);
 }
@@ -55,8 +55,8 @@ function vam_date_raw($date, $reverse = false) {
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
 define('LANGUAGE_CURRENCY', 'RUR');
 
-define('MALE', 'уважаемый');
-define('FEMALE', 'уважаемая');
+define('MALE', 'СѓРІР°Р¶Р°РµРјС‹Р№');
+define('FEMALE', 'СѓРІР°Р¶Р°РµРјР°СЏ');
 
 /*
  *
@@ -65,40 +65,40 @@ define('FEMALE', 'уважаемая');
  */
 
 // text for gift voucher redeeming
-define('IMAGE_REDEEM_GIFT','Использовать сертификат!');
+define('IMAGE_REDEEM_GIFT','РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРµСЂС‚РёС„РёРєР°С‚!');
 
-define('BOX_TITLE_STATISTICS','Статистика:');
-define('BOX_ENTRY_CUSTOMERS','Клиенты');
-define('BOX_ENTRY_PRODUCTS','Товары');
-define('BOX_ENTRY_REVIEWS','Отзывы');
-define('TEXT_VALIDATING','Не проверено');
+define('BOX_TITLE_STATISTICS','РЎС‚Р°С‚РёСЃС‚РёРєР°:');
+define('BOX_ENTRY_CUSTOMERS','РљР»РёРµРЅС‚С‹');
+define('BOX_ENTRY_PRODUCTS','РўРѕРІР°СЂС‹');
+define('BOX_ENTRY_REVIEWS','РћС‚Р·С‹РІС‹');
+define('TEXT_VALIDATING','РќРµ РїСЂРѕРІРµСЂРµРЅРѕ');
 
 // manufacturer box text
-define('BOX_MANUFACTURER_INFO_HOMEPAGE', 'Официальный сайт %s');
-define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары данного производителя');
+define('BOX_MANUFACTURER_INFO_HOMEPAGE', 'РћС„РёС†РёР°Р»СЊРЅС‹Р№ СЃР°Р№С‚ %s');
+define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Р”СЂСѓРіРёРµ С‚РѕРІР°СЂС‹ РґР°РЅРЅРѕРіРѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ');
 
-define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
+define('BOX_HEADING_ADD_PRODUCT_ID','Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ');
   
-define('BOX_LOGINBOX_STATUS','Группа:');     
-define('BOX_LOGINBOX_DISCOUNT','Скидка');
-define('BOX_LOGINBOX_DISCOUNT_TEXT','Скидка');
+define('BOX_LOGINBOX_STATUS','Р“СЂСѓРїРїР°:');     
+define('BOX_LOGINBOX_DISCOUNT','РЎРєРёРґРєР°');
+define('BOX_LOGINBOX_DISCOUNT_TEXT','РЎРєРёРґРєР°');
 define('BOX_LOGINBOX_DISCOUNT_OT','');
 
 // reviews box text in includes/boxes/reviews.php
-define('BOX_REVIEWS_WRITE_REVIEW', 'Оставить отзыв!');
-define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s из 5 звёзд!');
+define('BOX_REVIEWS_WRITE_REVIEW', 'РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ!');
+define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s РёР· 5 Р·РІС‘Р·Рґ!');
 
 // pull down default text
-define('PULL_DOWN_DEFAULT', 'Выберите');
+define('PULL_DOWN_DEFAULT', 'Р’С‹Р±РµСЂРёС‚Рµ');
 
 // javascript messages
-define('JS_ERROR', 'Не указана необходимая информация!\nПожалуйста, исправьте допущенные ошибки.\n\n');
+define('JS_ERROR', 'РќРµ СѓРєР°Р·Р°РЅР° РЅРµРѕР±С…РѕРґРёРјР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ!\nРџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёСЃРїСЂР°РІСЊС‚Рµ РґРѕРїСѓС‰РµРЅРЅС‹Рµ РѕС€РёР±РєРё.\n\n');
 
-define('JS_REVIEW_TEXT', '* Поле Текст отзыва должно содержать не менее ' . REVIEW_TEXT_MIN_LENGTH . ' символов.\n');
-define('JS_REVIEW_RATING', '* Вы не указали рейтинг.\n');
-define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
-define('JS_ERROR_SUBMITTED', 'Эта форма уже заполнена. Нажимайте Ok.');
-define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
+define('JS_REVIEW_TEXT', '* РџРѕР»Рµ РўРµРєСЃС‚ РѕС‚Р·С‹РІР° РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ РјРµРЅРµРµ ' . REVIEW_TEXT_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.\n');
+define('JS_REVIEW_RATING', '* Р’С‹ РЅРµ СѓРєР°Р·Р°Р»Рё СЂРµР№С‚РёРЅРі.\n');
+define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ РґР»СЏ Р’Р°С€РµРіРѕ Р·Р°РєР°Р·Р°.\n');
+define('JS_ERROR_SUBMITTED', 'Р­С‚Р° С„РѕСЂРјР° СѓР¶Рµ Р·Р°РїРѕР»РЅРµРЅР°. РќР°Р¶РёРјР°Р№С‚Рµ Ok.');
+define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ РґР»СЏ Р’Р°С€РµРіРѕ Р·Р°РєР°Р·Р°.\n');
 
 /*
  *
@@ -108,43 +108,43 @@ define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего 
 
 define('ENTRY_COMPANY_ERROR', '');
 define('ENTRY_COMPANY_TEXT', '');
-define('ENTRY_GENDER_ERROR', 'Вы должны указать свой пол.');
+define('ENTRY_GENDER_ERROR', 'Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ СЃРІРѕР№ РїРѕР».');
 define('ENTRY_GENDER_TEXT', '*');
-define('ENTRY_FIRST_NAME_ERROR', 'Поле Имя должно содержать как минимум ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символа.');
+define('ENTRY_FIRST_NAME_ERROR', 'РџРѕР»Рµ РРјСЏ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
 define('ENTRY_FIRST_NAME_TEXT', '*');
-define('ENTRY_LAST_NAME_ERROR', 'Поле Фамилия должно содержать как минимум ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символа.');
+define('ENTRY_LAST_NAME_ERROR', 'РџРѕР»Рµ Р¤Р°РјРёР»РёСЏ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_LAST_NAME_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
 define('ENTRY_LAST_NAME_TEXT', '*');
-define('ENTRY_DATE_OF_BIRTH_ERROR', 'Дату рождения необходимо вводить в следующем формате: DD/MM/YYYY (пример 21/05/1970)');
-define('ENTRY_DATE_OF_BIRTH_TEXT', '* (пример 21/05/1970)');
-define('ENTRY_EMAIL_ADDRESS_ERROR', 'Поле E-Mail должно правильно заполнено и содержать как минимум ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' символов.');
-define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Ваш E-Mail адрес указан неправильно, попробуйте ещё раз.');
-define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Введённый Вами E-Mail уже зарегистрирован в нашем магазине, попробуйте указать другой E-Mail адрес.');
+define('ENTRY_DATE_OF_BIRTH_ERROR', 'Р”Р°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјРѕ РІРІРѕРґРёС‚СЊ РІ СЃР»РµРґСѓСЋС‰РµРј С„РѕСЂРјР°С‚Рµ: DD/MM/YYYY (РїСЂРёРјРµСЂ 21/05/1970)');
+define('ENTRY_DATE_OF_BIRTH_TEXT', '* (РїСЂРёРјРµСЂ 21/05/1970)');
+define('ENTRY_EMAIL_ADDRESS_ERROR', 'РџРѕР»Рµ E-Mail РґРѕР»Р¶РЅРѕ РїСЂР°РІРёР»СЊРЅРѕ Р·Р°РїРѕР»РЅРµРЅРѕ Рё СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.');
+define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Р’Р°С€ E-Mail Р°РґСЂРµСЃ СѓРєР°Р·Р°РЅ РЅРµРїСЂР°РІРёР»СЊРЅРѕ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Р’РІРµРґС‘РЅРЅС‹Р№ Р’Р°РјРё E-Mail СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ РЅР°С€РµРј РјР°РіР°Р·РёРЅРµ, РїРѕРїСЂРѕР±СѓР№С‚Рµ СѓРєР°Р·Р°С‚СЊ РґСЂСѓРіРѕР№ E-Mail Р°РґСЂРµСЃ.');
 define('ENTRY_EMAIL_ADDRESS_TEXT', '*');
-define('ENTRY_STREET_ADDRESS_ERROR', 'Поле Улица и номер дома должно содержать как минимум ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов.');
-define('ENTRY_STREET_ADDRESS_TEXT', '* Пример: ул. Мира 346, кв. 78');
+define('ENTRY_STREET_ADDRESS_ERROR', 'РџРѕР»Рµ РЈР»РёС†Р° Рё РЅРѕРјРµСЂ РґРѕРјР° РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.');
+define('ENTRY_STREET_ADDRESS_TEXT', '* РџСЂРёРјРµСЂ: СѓР». РњРёСЂР° 346, РєРІ. 78');
 define('ENTRY_SUBURB_TEXT', '');
-define('ENTRY_POST_CODE_ERROR', 'Поле Почтовый индекс должно содержать как минимум ' . ENTRY_POSTCODE_MIN_LENGTH . ' символа.');
+define('ENTRY_POST_CODE_ERROR', 'РџРѕР»Рµ РџРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_POSTCODE_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
 define('ENTRY_POST_CODE_TEXT', '*');
-define('ENTRY_CITY_ERROR', 'Поле Город должно содержать как минимум ' . ENTRY_CITY_MIN_LENGTH . ' символа.');
+define('ENTRY_CITY_ERROR', 'РџРѕР»Рµ Р“РѕСЂРѕРґ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_CITY_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
 define('ENTRY_CITY_TEXT', '*');
-define('ENTRY_STATE_ERROR', 'Поле Регион должно содержать как минимум ' . ENTRY_STATE_MIN_LENGTH . ' символа.');
-define('ENTRY_STATE_ERROR_SELECT', 'Укажите регион.');
+define('ENTRY_STATE_ERROR', 'РџРѕР»Рµ Р РµРіРёРѕРЅ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_STATE_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
+define('ENTRY_STATE_ERROR_SELECT', 'РЈРєР°Р¶РёС‚Рµ СЂРµРіРёРѕРЅ.');
 define('ENTRY_STATE_TEXT', '*');
-define('ENTRY_COUNTRY_ERROR', 'Укажите страну.');
+define('ENTRY_COUNTRY_ERROR', 'РЈРєР°Р¶РёС‚Рµ СЃС‚СЂР°РЅСѓ.');
 define('ENTRY_COUNTRY_TEXT', '*');
-define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Поле Телефон должно содержать как минимум ' . ENTRY_TELEPHONE_MIN_LENGTH . ' символа.');
+define('ENTRY_TELEPHONE_NUMBER_ERROR', 'РџРѕР»Рµ РўРµР»РµС„РѕРЅ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_TELEPHONE_MIN_LENGTH . ' СЃРёРјРІРѕР»Р°.');
 define('ENTRY_TELEPHONE_NUMBER_TEXT', '*');
 define('ENTRY_FAX_NUMBER_TEXT', '');
 define('ENTRY_NEWSLETTER_TEXT', '');
-define('ENTRY_PASSWORD_ERROR', 'Ваш пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
-define('ENTRY_PASSWORD_ERROR_NOT_MATCHING', 'Поле Подтвердите пароль должно совпадать с полем Пароль.');
+define('ENTRY_PASSWORD_ERROR', 'Р’Р°С€ РїР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_PASSWORD_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.');
+define('ENTRY_PASSWORD_ERROR_NOT_MATCHING', 'РџРѕР»Рµ РџРѕРґС‚РІРµСЂРґРёС‚Рµ РїР°СЂРѕР»СЊ РґРѕР»Р¶РЅРѕ СЃРѕРІРїР°РґР°С‚СЊ СЃ РїРѕР»РµРј РџР°СЂРѕР»СЊ.');
 define('ENTRY_PASSWORD_TEXT', '*');
 define('ENTRY_PASSWORD_CONFIRMATION_TEXT', '*');
 define('ENTRY_PASSWORD_CURRENT_TEXT', '*');
-define('ENTRY_PASSWORD_CURRENT_ERROR', 'Поле Пароль должно содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_CURRENT_ERROR', 'РџРѕР»Рµ РџР°СЂРѕР»СЊ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_PASSWORD_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.');
 define('ENTRY_PASSWORD_NEW_TEXT', '*');
-define('ENTRY_PASSWORD_NEW_ERROR', 'Ваш Новый пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
-define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Поля Подтвердите пароль и Новый пароль должны совпадать.');
+define('ENTRY_PASSWORD_NEW_ERROR', 'Р’Р°С€ РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј ' . ENTRY_PASSWORD_MIN_LENGTH . ' СЃРёРјРІРѕР»РѕРІ.');
+define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'РџРѕР»СЏ РџРѕРґС‚РІРµСЂРґРёС‚Рµ РїР°СЂРѕР»СЊ Рё РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ РґРѕР»Р¶РЅС‹ СЃРѕРІРїР°РґР°С‚СЊ.');
 
 /*
  *
@@ -152,13 +152,13 @@ define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Поля Подтвердите пароль и Новый
  *
  */
 
-define('TEXT_RESULT_PAGE', 'Страницы:');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> позиций)');
-define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> заказов)');
-define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> отзывов)');
-define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> новинок)');
-define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> специальных предложений)');
-define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> рекомендуемых товаров)');
+define('TEXT_RESULT_PAGE', 'РЎС‚СЂР°РЅРёС†С‹:');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> РїРѕР·РёС†РёР№)');
+define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> Р·Р°РєР°Р·РѕРІ)');
+define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> РѕС‚Р·С‹РІРѕРІ)');
+define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> РЅРѕРІРёРЅРѕРє)');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> СЃРїРµС†РёР°Р»СЊРЅС‹С… РїСЂРµРґР»РѕР¶РµРЅРёР№)');
+define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> СЂРµРєРѕРјРµРЅРґСѓРµРјС‹С… С‚РѕРІР°СЂРѕРІ)');
 
 /*
  *
@@ -166,11 +166,11 @@ define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <span class="bold">%d</span>
  *
  */
 
-define('PREVNEXT_TITLE_PREVIOUS_PAGE', 'Предыдущая страница');
-define('PREVNEXT_TITLE_NEXT_PAGE', 'Следующая страница');
-define('PREVNEXT_TITLE_PAGE_NO', 'Страница %d');
-define('PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE', 'Предыдущие %d страниц');
-define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Следующие %d страниц');
+define('PREVNEXT_TITLE_PREVIOUS_PAGE', 'РџСЂРµРґС‹РґСѓС‰Р°СЏ СЃС‚СЂР°РЅРёС†Р°');
+define('PREVNEXT_TITLE_NEXT_PAGE', 'РЎР»РµРґСѓСЋС‰Р°СЏ СЃС‚СЂР°РЅРёС†Р°');
+define('PREVNEXT_TITLE_PAGE_NO', 'РЎС‚СЂР°РЅРёС†Р° %d');
+define('PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE', 'РџСЂРµРґС‹РґСѓС‰РёРµ %d СЃС‚СЂР°РЅРёС†');
+define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'РЎР»РµРґСѓСЋС‰РёРµ %d СЃС‚СЂР°РЅРёС†');
 
 /*
  *
@@ -178,8 +178,8 @@ define('PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE', 'Следующие %d страниц');
  *
  */
 
-define('PREVNEXT_BUTTON_PREV', 'Предыдущая');
-define('PREVNEXT_BUTTON_NEXT', 'Следующая');
+define('PREVNEXT_BUTTON_PREV', 'РџСЂРµРґС‹РґСѓС‰Р°СЏ');
+define('PREVNEXT_BUTTON_NEXT', 'РЎР»РµРґСѓСЋС‰Р°СЏ');
 
 /*
  *
@@ -187,30 +187,30 @@ define('PREVNEXT_BUTTON_NEXT', 'Следующая');
  *
  */
 
-define('IMAGE_BUTTON_ADD_ADDRESS', 'Добавить адрес');
-define('IMAGE_BUTTON_BACK', 'Назад');
-define('IMAGE_BUTTON_CHANGE_ADDRESS', 'Изменить адрес');
-define('IMAGE_BUTTON_CHECKOUT', 'Оформить заказ');
-define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить Заказ');
-define('IMAGE_BUTTON_CONTINUE', 'Продолжить');
-define('IMAGE_BUTTON_DELETE', 'Удалить');
-define('IMAGE_BUTTON_LOGIN', 'Продолжить');
-define('IMAGE_BUTTON_IN_CART', 'Добавить в корзину');
-define('IMAGE_BUTTON_SEARCH', 'Искать');
-define('IMAGE_BUTTON_UPDATE', 'Обновить');
-define('IMAGE_BUTTON_UPDATE_CART', 'Пересчитать');
-define('IMAGE_BUTTON_WRITE_REVIEW', 'Написать отзыв');
-define('IMAGE_BUTTON_ADMIN', 'Админка');
-define('IMAGE_BUTTON_PRODUCT_EDIT', 'Редактировать товар');
+define('IMAGE_BUTTON_ADD_ADDRESS', 'Р”РѕР±Р°РІРёС‚СЊ Р°РґСЂРµСЃ');
+define('IMAGE_BUTTON_BACK', 'РќР°Р·Р°Рґ');
+define('IMAGE_BUTTON_CHANGE_ADDRESS', 'РР·РјРµРЅРёС‚СЊ Р°РґСЂРµСЃ');
+define('IMAGE_BUTTON_CHECKOUT', 'РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·');
+define('IMAGE_BUTTON_CONFIRM_ORDER', 'РџРѕРґС‚РІРµСЂРґРёС‚СЊ Р—Р°РєР°Р·');
+define('IMAGE_BUTTON_CONTINUE', 'РџСЂРѕРґРѕР»Р¶РёС‚СЊ');
+define('IMAGE_BUTTON_DELETE', 'РЈРґР°Р»РёС‚СЊ');
+define('IMAGE_BUTTON_LOGIN', 'РџСЂРѕРґРѕР»Р¶РёС‚СЊ');
+define('IMAGE_BUTTON_IN_CART', 'Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ');
+define('IMAGE_BUTTON_SEARCH', 'РСЃРєР°С‚СЊ');
+define('IMAGE_BUTTON_UPDATE', 'РћР±РЅРѕРІРёС‚СЊ');
+define('IMAGE_BUTTON_UPDATE_CART', 'РџРµСЂРµСЃС‡РёС‚Р°С‚СЊ');
+define('IMAGE_BUTTON_WRITE_REVIEW', 'РќР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ');
+define('IMAGE_BUTTON_ADMIN', 'РђРґРјРёРЅРєР°');
+define('IMAGE_BUTTON_PRODUCT_EDIT', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ С‚РѕРІР°СЂ');
 
-define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
-define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
-define('SMALL_IMAGE_BUTTON_VIEW', 'Смотреть');
+define('SMALL_IMAGE_BUTTON_DELETE', 'РЈРґР°Р»РёС‚СЊ');
+define('SMALL_IMAGE_BUTTON_EDIT', 'РР·РјРµРЅРёС‚СЊ');
+define('SMALL_IMAGE_BUTTON_VIEW', 'РЎРјРѕС‚СЂРµС‚СЊ');
 
-define('ICON_ARROW_RIGHT', 'Перейти');
-define('ICON_CART', 'В корзину');
-define('ICON_SUCCESS', 'Выполнено');
-define('ICON_WARNING', 'Внимание');
+define('ICON_ARROW_RIGHT', 'РџРµСЂРµР№С‚Рё');
+define('ICON_CART', 'Р’ РєРѕСЂР·РёРЅСѓ');
+define('ICON_SUCCESS', 'Р’С‹РїРѕР»РЅРµРЅРѕ');
+define('ICON_WARNING', 'Р’РЅРёРјР°РЅРёРµ');
 
 /*
  *
@@ -218,22 +218,22 @@ define('ICON_WARNING', 'Внимание');
  *
  */
 
-define('TEXT_GREETING_PERSONAL', 'Добро пожаловать, <span class="greetUser">%s!</span> Вы хотите посмотреть какие <a href="%s">новые товары</a> поступили в наш магазин?');
-define('TEXT_GREETING_PERSONAL_RELOGON', '<small>Если Вы не %s, пожалуйста, <a href="%s">введите</a> свои данные для входа.</small>');
-define('TEXT_GREETING_GUEST', 'Добро пожаловать, <span class="greetUser">УВАЖАЕМЫЙ ГОСТЬ!</span><br /> Если Вы наш постоянный клиент, <a href="%s">введите Ваши персональные данные</a> для входа. Если Вы у нас впервые и хотите сделать покупки, Вам необходимо <a href="%s">зарегистрироваться</a>.');
+define('TEXT_GREETING_PERSONAL', 'Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ, <span class="greetUser">%s!</span> Р’С‹ С…РѕС‚РёС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ РєР°РєРёРµ <a href="%s">РЅРѕРІС‹Рµ С‚РѕРІР°СЂС‹</a> РїРѕСЃС‚СѓРїРёР»Рё РІ РЅР°С€ РјР°РіР°Р·РёРЅ?');
+define('TEXT_GREETING_PERSONAL_RELOGON', '<small>Р•СЃР»Рё Р’С‹ РЅРµ %s, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, <a href="%s">РІРІРµРґРёС‚Рµ</a> СЃРІРѕРё РґР°РЅРЅС‹Рµ РґР»СЏ РІС…РѕРґР°.</small>');
+define('TEXT_GREETING_GUEST', 'Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ, <span class="greetUser">РЈР’РђР–РђР•РњР«Р™ Р“РћРЎРўР¬!</span><br /> Р•СЃР»Рё Р’С‹ РЅР°С€ РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ РєР»РёРµРЅС‚, <a href="%s">РІРІРµРґРёС‚Рµ Р’Р°С€Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ</a> РґР»СЏ РІС…РѕРґР°. Р•СЃР»Рё Р’С‹ Сѓ РЅР°СЃ РІРїРµСЂРІС‹Рµ Рё С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРєСѓРїРєРё, Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ <a href="%s">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>.');
 
-define('TEXT_SORT_PRODUCTS', 'Сортировать товар по ');
-define('TEXT_DESCENDINGLY', 'убыванию');
-define('TEXT_ASCENDINGLY', 'возрастанию');
-define('TEXT_BY', ' по ');
+define('TEXT_SORT_PRODUCTS', 'РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ С‚РѕРІР°СЂ РїРѕ ');
+define('TEXT_DESCENDINGLY', 'СѓР±С‹РІР°РЅРёСЋ');
+define('TEXT_ASCENDINGLY', 'РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ');
+define('TEXT_BY', ' РїРѕ ');
 
 define('TEXT_REVIEW_BY', '- %s');
-define('TEXT_REVIEW_WORD_COUNT', '%s слов');
-define('TEXT_REVIEW_RATING', 'Рейтинг: %s [%s]');
-define('TEXT_REVIEW_DATE_ADDED', 'Отзыв добавлен: %s');
-define('TEXT_NO_REVIEWS', 'К настоящему времени нет отзывов.');
-define('TEXT_NO_NEW_PRODUCTS', 'На данный момент нет новых товаров.');
-define('TEXT_UNKNOWN_TAX_RATE', 'Неизвестная налоговая ставка');
+define('TEXT_REVIEW_WORD_COUNT', '%s СЃР»РѕРІ');
+define('TEXT_REVIEW_RATING', 'Р РµР№С‚РёРЅРі: %s [%s]');
+define('TEXT_REVIEW_DATE_ADDED', 'РћС‚Р·С‹РІ РґРѕР±Р°РІР»РµРЅ: %s');
+define('TEXT_NO_REVIEWS', 'Рљ РЅР°СЃС‚РѕСЏС‰РµРјСѓ РІСЂРµРјРµРЅРё РЅРµС‚ РѕС‚Р·С‹РІРѕРІ.');
+define('TEXT_NO_NEW_PRODUCTS', 'РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµС‚ РЅРѕРІС‹С… С‚РѕРІР°СЂРѕРІ.');
+define('TEXT_UNKNOWN_TAX_RATE', 'РќРµРёР·РІРµСЃС‚РЅР°СЏ РЅР°Р»РѕРіРѕРІР°СЏ СЃС‚Р°РІРєР°');
 
 /*
  *
@@ -241,41 +241,41 @@ define('TEXT_UNKNOWN_TAX_RATE', 'Неизвестная налоговая ставка');
  *
  */
 
-define('WARNING_INSTALL_DIRECTORY_EXISTS', 'Предупреждение: Не удалена директория установки магазина: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/install. Пожалуйста, удалите эту директорию в целях безопасности.');
-define('WARNING_CONFIG_FILE_WRITEABLE', 'Предупреждение: Файл конфигурации доступен для записи: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php. Это - потенциальный риск безопасности - пожалуйста, установите необходимые права доступа к этому файлу.');
-define('WARNING_SESSION_DIRECTORY_NON_EXISTENT', 'Предупреждение: директория сессий не существует: ' . vam_session_save_path() . '. Сессии не будут работать пока эта директория не будет создана.');
-define('WARNING_SESSION_DIRECTORY_NOT_WRITEABLE', 'Предупреждение: Нет доступа к директории сессий: ' . vam_session_save_path() . '. Сессии не будут работать пока не установлены необходимые права доступа.');
-define('WARNING_SESSION_AUTO_START', 'Предупреждение: опция session.auto_start включена - пожалуйста, выключите данную опцию в файле php.ini и перезапустите веб-сервер.');
-define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'Предупреждение: Директория отсутствует: ' . DIR_FS_DOWNLOAD . '. Создайте директорию.');
+define('WARNING_INSTALL_DIRECTORY_EXISTS', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: РќРµ СѓРґР°Р»РµРЅР° РґРёСЂРµРєС‚РѕСЂРёСЏ СѓСЃС‚Р°РЅРѕРІРєРё РјР°РіР°Р·РёРЅР°: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/install. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРґР°Р»РёС‚Рµ СЌС‚Сѓ РґРёСЂРµРєС‚РѕСЂРёСЋ РІ С†РµР»СЏС… Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.');
+define('WARNING_CONFIG_FILE_WRITEABLE', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: Р¤Р°Р№Р» РєРѕРЅС„РёРіСѓСЂР°С†РёРё РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ Р·Р°РїРёСЃРё: ' . dirname($_SERVER['SCRIPT_FILENAME']) . '/includes/configure.php. Р­С‚Рѕ - РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹Р№ СЂРёСЃРє Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё - РїРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓСЃС‚Р°РЅРѕРІРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° Рє СЌС‚РѕРјСѓ С„Р°Р№Р»Сѓ.');
+define('WARNING_SESSION_DIRECTORY_NON_EXISTENT', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: РґРёСЂРµРєС‚РѕСЂРёСЏ СЃРµСЃСЃРёР№ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚: ' . vam_session_save_path() . '. РЎРµСЃСЃРёРё РЅРµ Р±СѓРґСѓС‚ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕРєР° СЌС‚Р° РґРёСЂРµРєС‚РѕСЂРёСЏ РЅРµ Р±СѓРґРµС‚ СЃРѕР·РґР°РЅР°.');
+define('WARNING_SESSION_DIRECTORY_NOT_WRITEABLE', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: РќРµС‚ РґРѕСЃС‚СѓРїР° Рє РґРёСЂРµРєС‚РѕСЂРёРё СЃРµСЃСЃРёР№: ' . vam_session_save_path() . '. РЎРµСЃСЃРёРё РЅРµ Р±СѓРґСѓС‚ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕРєР° РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР°.');
+define('WARNING_SESSION_AUTO_START', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: РѕРїС†РёСЏ session.auto_start РІРєР»СЋС‡РµРЅР° - РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹РєР»СЋС‡РёС‚Рµ РґР°РЅРЅСѓСЋ РѕРїС†РёСЋ РІ С„Р°Р№Р»Рµ php.ini Рё РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚Рµ РІРµР±-СЃРµСЂРІРµСЂ.');
+define('WARNING_DOWNLOAD_DIRECTORY_NON_EXISTENT', 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: Р”РёСЂРµРєС‚РѕСЂРёСЏ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚: ' . DIR_FS_DOWNLOAD . '. РЎРѕР·РґР°Р№С‚Рµ РґРёСЂРµРєС‚РѕСЂРёСЋ.');
 
-define('SUCCESS_ACCOUNT_UPDATED', 'Ваши данные обновлены!');
-define('SUCCESS_PASSWORD_UPDATED', 'Ваш пароль изменён!');
-define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'Указанный пароль не совпадает с текущим паролем. Попробуйте ещё раз.');
-define('TEXT_MAXIMUM_ENTRIES', '<span class="bold">ЗАМЕЧАНИЕ:</span> Максимальный объем адресной книги - <span class="bold">%s</span> записей');
-define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Выбранный адрес удалён из адресной книги.');
-define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Ваша адресная книга обновлена.');
-define('WARNING_PRIMARY_ADDRESS_DELETION', 'Адрес, установленный по умолчанию, не может быть удалён. Установите статус по умолчанию на другой адрес и попробуйте ещё раз.');
-define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'Адресная книга не найдена.');
-define('ERROR_ADDRESS_BOOK_FULL', 'Ваша адресная книга полностью заполнена. Удалите ненужный Вам адрес и только после этого Вы сможете добавить новый адрес.');
+define('SUCCESS_ACCOUNT_UPDATED', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ РѕР±РЅРѕРІР»РµРЅС‹!');
+define('SUCCESS_PASSWORD_UPDATED', 'Р’Р°С€ РїР°СЂРѕР»СЊ РёР·РјРµРЅС‘РЅ!');
+define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'РЈРєР°Р·Р°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ РЅРµ СЃРѕРІРїР°РґР°РµС‚ СЃ С‚РµРєСѓС‰РёРј РїР°СЂРѕР»РµРј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.');
+define('TEXT_MAXIMUM_ENTRIES', '<span class="bold">Р—РђРњР•Р§РђРќРР•:</span> РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј Р°РґСЂРµСЃРЅРѕР№ РєРЅРёРіРё - <span class="bold">%s</span> Р·Р°РїРёСЃРµР№');
+define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Р’С‹Р±СЂР°РЅРЅС‹Р№ Р°РґСЂРµСЃ СѓРґР°Р»С‘РЅ РёР· Р°РґСЂРµСЃРЅРѕР№ РєРЅРёРіРё.');
+define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Р’Р°С€Р° Р°РґСЂРµСЃРЅР°СЏ РєРЅРёРіР° РѕР±РЅРѕРІР»РµРЅР°.');
+define('WARNING_PRIMARY_ADDRESS_DELETION', 'РђРґСЂРµСЃ, СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹Р№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓРґР°Р»С‘РЅ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ СЃС‚Р°С‚СѓСЃ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅР° РґСЂСѓРіРѕР№ Р°РґСЂРµСЃ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.');
+define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'РђРґСЂРµСЃРЅР°СЏ РєРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР°.');
+define('ERROR_ADDRESS_BOOK_FULL', 'Р’Р°С€Р° Р°РґСЂРµСЃРЅР°СЏ РєРЅРёРіР° РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°РїРѕР»РЅРµРЅР°. РЈРґР°Р»РёС‚Рµ РЅРµРЅСѓР¶РЅС‹Р№ Р’Р°Рј Р°РґСЂРµСЃ Рё С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ СЌС‚РѕРіРѕ Р’С‹ СЃРјРѕР¶РµС‚Рµ РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ Р°РґСЂРµСЃ.');
 
 //  conditions check
 
-define('ERROR_CONDITIONS_NOT_ACCEPTED', 'Мы не сможем принять Ваш заказ пока Вы не согласитесь с условиями!');
+define('ERROR_CONDITIONS_NOT_ACCEPTED', 'РњС‹ РЅРµ СЃРјРѕР¶РµРј РїСЂРёРЅСЏС‚СЊ Р’Р°С€ Р·Р°РєР°Р· РїРѕРєР° Р’С‹ РЅРµ СЃРѕРіР»Р°СЃРёС‚РµСЃСЊ СЃ СѓСЃР»РѕРІРёСЏРјРё!');
 
-define('SUB_TITLE_OT_DISCOUNT','Скидка:');
+define('SUB_TITLE_OT_DISCOUNT','РЎРєРёРґРєР°:');
 
-define('TAX_ADD_TAX','Включая ');
-define('TAX_NO_TAX','Плюс ');
+define('TAX_ADD_TAX','Р’РєР»СЋС‡Р°СЏ ');
+define('TAX_NO_TAX','РџР»СЋСЃ ');
 
-define('NOT_ALLOWED_TO_SEE_PRICES','У Вас нет доступа для просмотра цен ');
-define('NOT_ALLOWED_TO_SEE_PRICES_TEXT','У Вас нет доступа для просмотра цен, пожалуйста, зарегистрируйтесь.');
+define('NOT_ALLOWED_TO_SEE_PRICES','РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° С†РµРЅ ');
+define('NOT_ALLOWED_TO_SEE_PRICES_TEXT','РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° С†РµРЅ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ.');
 
-define('TEXT_DOWNLOAD','Загрузки');
-define('TEXT_VIEW','Смотреть');
+define('TEXT_DOWNLOAD','Р—Р°РіСЂСѓР·РєРё');
+define('TEXT_VIEW','РЎРјРѕС‚СЂРµС‚СЊ');
 
-define('TEXT_BUY', 'Купить \'');
+define('TEXT_BUY', 'РљСѓРїРёС‚СЊ \'');
 define('TEXT_NOW', '\'');
-define('TEXT_GUEST','Посетитель');
+define('TEXT_GUEST','РџРѕСЃРµС‚РёС‚РµР»СЊ');
 
 /*
  *
@@ -283,36 +283,36 @@ define('TEXT_GUEST','Посетитель');
  *
  */
 
-define('TEXT_ALL_CATEGORIES', 'Все категории');
-define('TEXT_ALL_MANUFACTURERS', 'Все производители');
-define('JS_AT_LEAST_ONE_INPUT', '* Одно из полей должно быть заполнено:\n    Ключевые слова\n    Дата добавления от:\n    Дата добавления до:\n    Цена от \n    Цена до\n');
-define('AT_LEAST_ONE_INPUT', 'Одно из полей должно быть заполнено:<br />Ключевые слова как минимум 3 символа<br />Цена от<br />Цена до<br />');
-define('JS_INVALID_FROM_DATE', '* Дата указана в неверном формате\n');
-define('JS_INVALID_TO_DATE', '* Неправильная дата добавления до\n');
-define('JS_TO_DATE_LESS_THAN_FROM_DATE', '* Дата до должна быть больше даты от\n');
-define('JS_PRICE_FROM_MUST_BE_NUM', '* Цена от должна быть номером\n');
-define('JS_PRICE_TO_MUST_BE_NUM', '* Цена до должна быть номером\n');
-define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Цена до должна быть больше цены от.\n');
-define('JS_INVALID_KEYWORDS', '* Неверные ключевые слова\n');
-define('TEXT_LOGIN_ERROR', '<span class="bold">ОШИБКА:</span> Указанный \'E-Mail\' и/или \'пароль\' неверный.');
-define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">ПРЕДУПРЕЖДЕНИЕ:</span> Указанный E-Mail не найден. Попробуйте ещё раз.');
-define('TEXT_PASSWORD_SENT', 'Новый пароль был отправлен на E-Mail.');
-define('TEXT_PRODUCT_NOT_FOUND', 'Товар не найден!');
-define('TEXT_MORE_INFORMATION', 'Для получения дополнительной информации посетите <a href="%s" onclick="window.open(this.href); return false;">сайт</a> товара.');
+define('TEXT_ALL_CATEGORIES', 'Р’СЃРµ РєР°С‚РµРіРѕСЂРёРё');
+define('TEXT_ALL_MANUFACTURERS', 'Р’СЃРµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»Рё');
+define('JS_AT_LEAST_ONE_INPUT', '* РћРґРЅРѕ РёР· РїРѕР»РµР№ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅРѕ:\n    РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°\n    Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ РѕС‚:\n    Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕ:\n    Р¦РµРЅР° РѕС‚ \n    Р¦РµРЅР° РґРѕ\n');
+define('AT_LEAST_ONE_INPUT', 'РћРґРЅРѕ РёР· РїРѕР»РµР№ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅРѕ:<br />РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РєР°Рє РјРёРЅРёРјСѓРј 3 СЃРёРјРІРѕР»Р°<br />Р¦РµРЅР° РѕС‚<br />Р¦РµРЅР° РґРѕ<br />');
+define('JS_INVALID_FROM_DATE', '* Р”Р°С‚Р° СѓРєР°Р·Р°РЅР° РІ РЅРµРІРµСЂРЅРѕРј С„РѕСЂРјР°С‚Рµ\n');
+define('JS_INVALID_TO_DATE', '* РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕ\n');
+define('JS_TO_DATE_LESS_THAN_FROM_DATE', '* Р”Р°С‚Р° РґРѕ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕС‚\n');
+define('JS_PRICE_FROM_MUST_BE_NUM', '* Р¦РµРЅР° РѕС‚ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРѕРјРµСЂРѕРј\n');
+define('JS_PRICE_TO_MUST_BE_NUM', '* Р¦РµРЅР° РґРѕ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРѕРјРµСЂРѕРј\n');
+define('JS_PRICE_TO_LESS_THAN_PRICE_FROM', '* Р¦РµРЅР° РґРѕ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ С†РµРЅС‹ РѕС‚.\n');
+define('JS_INVALID_KEYWORDS', '* РќРµРІРµСЂРЅС‹Рµ РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°\n');
+define('TEXT_LOGIN_ERROR', '<span class="bold">РћРЁРР‘РљРђ:</span> РЈРєР°Р·Р°РЅРЅС‹Р№ \'E-Mail\' Рё/РёР»Рё \'РїР°СЂРѕР»СЊ\' РЅРµРІРµСЂРЅС‹Р№.');
+define('TEXT_NO_EMAIL_ADDRESS_FOUND', '<span class="bold">РџР Р•Р”РЈРџР Р•Р–Р”Р•РќРР•:</span> РЈРєР°Р·Р°РЅРЅС‹Р№ E-Mail РЅРµ РЅР°Р№РґРµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.');
+define('TEXT_PASSWORD_SENT', 'РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ Р±С‹Р» РѕС‚РїСЂР°РІР»РµРЅ РЅР° E-Mail.');
+define('TEXT_PRODUCT_NOT_FOUND', 'РўРѕРІР°СЂ РЅРµ РЅР°Р№РґРµРЅ!');
+define('TEXT_MORE_INFORMATION', 'Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РїРѕСЃРµС‚РёС‚Рµ <a href="%s" onclick="window.open(this.href); return false;">СЃР°Р№С‚</a> С‚РѕРІР°СЂР°.');
 
-define('TEXT_DATE_ADDED', 'Товар был добавлен в наш каталог %s');
-define('TEXT_DATE_AVAILABLE', 'Товар будет в наличии %s');
-define('SUB_TITLE_SUB_TOTAL', 'Стоимость товара:');
+define('TEXT_DATE_ADDED', 'РўРѕРІР°СЂ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ РЅР°С€ РєР°С‚Р°Р»РѕРі %s');
+define('TEXT_DATE_AVAILABLE', 'РўРѕРІР°СЂ Р±СѓРґРµС‚ РІ РЅР°Р»РёС‡РёРё %s');
+define('SUB_TITLE_SUB_TOTAL', 'РЎС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°:');
 
-define('OUT_OF_STOCK_CANT_CHECKOUT', 'Товары, выделенные ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' имеются на нашем складе в недостаточном для Вашего заказа количестве.<br />Пожалуйста, измените количество продуктов выделенных (' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '), благодарим Вас.');
-define('OUT_OF_STOCK_CAN_CHECKOUT', 'Товары, выделенные ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' имеются на нашем складе в недостаточном для Вашего заказа количестве.<br />Тем не менее, Вы можете оформить заказ для поэтапной доставки заказанного товара.');
+define('OUT_OF_STOCK_CANT_CHECKOUT', 'РўРѕРІР°СЂС‹, РІС‹РґРµР»РµРЅРЅС‹Рµ ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' РёРјРµСЋС‚СЃСЏ РЅР° РЅР°С€РµРј СЃРєР»Р°РґРµ РІ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРј РґР»СЏ Р’Р°С€РµРіРѕ Р·Р°РєР°Р·Р° РєРѕР»РёС‡РµСЃС‚РІРµ.<br />РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёР·РјРµРЅРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґСѓРєС‚РѕРІ РІС‹РґРµР»РµРЅРЅС‹С… (' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '), Р±Р»Р°РіРѕРґР°СЂРёРј Р’Р°СЃ.');
+define('OUT_OF_STOCK_CAN_CHECKOUT', 'РўРѕРІР°СЂС‹, РІС‹РґРµР»РµРЅРЅС‹Рµ ' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . ' РёРјРµСЋС‚СЃСЏ РЅР° РЅР°С€РµРј СЃРєР»Р°РґРµ РІ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРј РґР»СЏ Р’Р°С€РµРіРѕ Р·Р°РєР°Р·Р° РєРѕР»РёС‡РµСЃС‚РІРµ.<br />РўРµРј РЅРµ РјРµРЅРµРµ, Р’С‹ РјРѕР¶РµС‚Рµ РѕС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р· РґР»СЏ РїРѕСЌС‚Р°РїРЅРѕР№ РґРѕСЃС‚Р°РІРєРё Р·Р°РєР°Р·Р°РЅРЅРѕРіРѕ С‚РѕРІР°СЂР°.');
 
-define('MINIMUM_ORDER_VALUE_NOT_REACHED_1', 'Минимальная сумма заказа должна быть: ');
-define('MINIMUM_ORDER_VALUE_NOT_REACHED_2', ' <br />Увеличьте Ваш заказ как минимум на: ');
-define('MAXIMUM_ORDER_VALUE_REACHED_1', 'Вы превысили максимально разрешённую сумму заказа, установленную в: ');
-define('MAXIMUM_ORDER_VALUE_REACHED_2', '<br /> Уменьшите Ваш заказ как минимум на: ');
+define('MINIMUM_ORDER_VALUE_NOT_REACHED_1', 'РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ: ');
+define('MINIMUM_ORDER_VALUE_NOT_REACHED_2', ' <br />РЈРІРµР»РёС‡СЊС‚Рµ Р’Р°С€ Р·Р°РєР°Р· РєР°Рє РјРёРЅРёРјСѓРј РЅР°: ');
+define('MAXIMUM_ORDER_VALUE_REACHED_1', 'Р’С‹ РїСЂРµРІС‹СЃРёР»Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕ СЂР°Р·СЂРµС€С‘РЅРЅСѓСЋ СЃСѓРјРјСѓ Р·Р°РєР°Р·Р°, СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅСѓСЋ РІ: ');
+define('MAXIMUM_ORDER_VALUE_REACHED_2', '<br /> РЈРјРµРЅСЊС€РёС‚Рµ Р’Р°С€ Р·Р°РєР°Р· РєР°Рє РјРёРЅРёРјСѓРј РЅР°: ');
 
-define('ERROR_INVALID_PRODUCT', 'Товар не найден!');
+define('ERROR_INVALID_PRODUCT', 'РўРѕРІР°СЂ РЅРµ РЅР°Р№РґРµРЅ!');
 
 /*
  *
@@ -320,55 +320,55 @@ define('ERROR_INVALID_PRODUCT', 'Товар не найден!');
  *
  */
 
-define('NAVBAR_TITLE_ACCOUNT', 'Ваши данные');
-define('NAVBAR_TITLE_1_ACCOUNT_EDIT', 'Ваши данные');
-define('NAVBAR_TITLE_2_ACCOUNT_EDIT', 'Редактирование данных');
-define('NAVBAR_TITLE_1_ACCOUNT_HISTORY', 'Ваши данные');
-define('NAVBAR_TITLE_2_ACCOUNT_HISTORY', 'Ваши заказы');
-define('NAVBAR_TITLE_1_ACCOUNT_HISTORY_INFO', 'Ваши данные');
-define('NAVBAR_TITLE_2_ACCOUNT_HISTORY_INFO', 'Оформленные заказы');
-define('NAVBAR_TITLE_3_ACCOUNT_HISTORY_INFO', 'Заказ номер %s');
-define('NAVBAR_TITLE_1_ACCOUNT_PASSWORD', 'Ваши данные');
-define('NAVBAR_TITLE_2_ACCOUNT_PASSWORD', 'Изменить пароль');
-define('NAVBAR_TITLE_1_ADDRESS_BOOK', 'Ваши данные');
-define('NAVBAR_TITLE_2_ADDRESS_BOOK', 'Адресная книга');
-define('NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS', 'Ваши данные');
-define('NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS', 'Адресная книга');
-define('NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS', 'Добавить запись');
-define('NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS', 'Изменить запись');
-define('NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS', 'Удалить запись');
-define('NAVBAR_TITLE_ADVANCED_SEARCH', 'Расширенный поиск');
-define('NAVBAR_TITLE1_ADVANCED_SEARCH', 'Расширенный поиск');
-define('NAVBAR_TITLE2_ADVANCED_SEARCH', 'Результаты поиска');
-define('NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION', 'Оформление заказа');
-define('NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION', 'Подтверждение');
-define('NAVBAR_TITLE_1_CHECKOUT_PAYMENT', 'Оформление заказа');
-define('NAVBAR_TITLE_2_CHECKOUT_PAYMENT', 'Способ оплаты');
-define('NAVBAR_TITLE_1_PAYMENT_ADDRESS', 'Оформление заказа');
-define('NAVBAR_TITLE_2_PAYMENT_ADDRESS', 'Изменить адрес покупателя');
-define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING', 'Оформление заказа');
-define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING', 'Способ доставки');
-define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING_ADDRESS', 'Оформление заказа');
-define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS', 'Изменить адрес доставки');
-define('NAVBAR_TITLE_1_CHECKOUT_SUCCESS', 'Оформление заказа');
-define('NAVBAR_TITLE_2_CHECKOUT_SUCCESS', 'Заказ успешно оформлен');
-define('NAVBAR_TITLE_CREATE_ACCOUNT', 'Регистрация');
-define('NAVBAR_TITLE_LOGIN', 'Вход');
-define('NAVBAR_TITLE_LOGOFF','Выход');
-define('NAVBAR_TITLE_PRODUCTS_NEW', 'Новые товары');
-define('NAVBAR_TITLE_SHOPPING_CART', 'Корзина');
-define('NAVBAR_TITLE_SPECIALS', 'Скидки');
-define('NAVBAR_TITLE_FEATURED', 'Рекомендуемые товары');
-define('NAVBAR_TITLE_COOKIE_USAGE', 'Ошибка cookies');
-define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'Отзывы');
-define('NAVBAR_TITLE_REVIEWS_WRITE', 'Написать отзыв');
-define('NAVBAR_TITLE_REVIEWS','Отзывы');
-define('NAVBAR_TITLE_SSL_CHECK', 'Безопасный режим');
-define('NAVBAR_TITLE_CREATE_GUEST_ACCOUNT','Регистрация');
-define('NAVBAR_TITLE_PASSWORD_DOUBLE_OPT','Забыли пароль?');
-define('NAVBAR_TITLE_NEWSLETTER','Рассылка');
-define('NAVBAR_GV_REDEEM', 'Использовать сертификат');
-define('NAVBAR_GV_SEND', 'Отправить сертификат');
+define('NAVBAR_TITLE_ACCOUNT', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_1_ACCOUNT_EDIT', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ACCOUNT_EDIT', 'Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С…');
+define('NAVBAR_TITLE_1_ACCOUNT_HISTORY', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ACCOUNT_HISTORY', 'Р’Р°С€Рё Р·Р°РєР°Р·С‹');
+define('NAVBAR_TITLE_1_ACCOUNT_HISTORY_INFO', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ACCOUNT_HISTORY_INFO', 'РћС„РѕСЂРјР»РµРЅРЅС‹Рµ Р·Р°РєР°Р·С‹');
+define('NAVBAR_TITLE_3_ACCOUNT_HISTORY_INFO', 'Р—Р°РєР°Р· РЅРѕРјРµСЂ %s');
+define('NAVBAR_TITLE_1_ACCOUNT_PASSWORD', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ACCOUNT_PASSWORD', 'РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ');
+define('NAVBAR_TITLE_1_ADDRESS_BOOK', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ADDRESS_BOOK', 'РђРґСЂРµСЃРЅР°СЏ РєРЅРёРіР°');
+define('NAVBAR_TITLE_1_ADDRESS_BOOK_PROCESS', 'Р’Р°С€Рё РґР°РЅРЅС‹Рµ');
+define('NAVBAR_TITLE_2_ADDRESS_BOOK_PROCESS', 'РђРґСЂРµСЃРЅР°СЏ РєРЅРёРіР°');
+define('NAVBAR_TITLE_ADD_ENTRY_ADDRESS_BOOK_PROCESS', 'Р”РѕР±Р°РІРёС‚СЊ Р·Р°РїРёСЃСЊ');
+define('NAVBAR_TITLE_MODIFY_ENTRY_ADDRESS_BOOK_PROCESS', 'РР·РјРµРЅРёС‚СЊ Р·Р°РїРёСЃСЊ');
+define('NAVBAR_TITLE_DELETE_ENTRY_ADDRESS_BOOK_PROCESS', 'РЈРґР°Р»РёС‚СЊ Р·Р°РїРёСЃСЊ');
+define('NAVBAR_TITLE_ADVANCED_SEARCH', 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РїРѕРёСЃРє');
+define('NAVBAR_TITLE1_ADVANCED_SEARCH', 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РїРѕРёСЃРє');
+define('NAVBAR_TITLE2_ADVANCED_SEARCH', 'Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°');
+define('NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION', 'РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ');
+define('NAVBAR_TITLE_1_CHECKOUT_PAYMENT', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_CHECKOUT_PAYMENT', 'РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹');
+define('NAVBAR_TITLE_1_PAYMENT_ADDRESS', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_PAYMENT_ADDRESS', 'РР·РјРµРЅРёС‚СЊ Р°РґСЂРµСЃ РїРѕРєСѓРїР°С‚РµР»СЏ');
+define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING', 'РЎРїРѕСЃРѕР± РґРѕСЃС‚Р°РІРєРё');
+define('NAVBAR_TITLE_1_CHECKOUT_SHIPPING_ADDRESS', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_CHECKOUT_SHIPPING_ADDRESS', 'РР·РјРµРЅРёС‚СЊ Р°РґСЂРµСЃ РґРѕСЃС‚Р°РІРєРё');
+define('NAVBAR_TITLE_1_CHECKOUT_SUCCESS', 'РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р°');
+define('NAVBAR_TITLE_2_CHECKOUT_SUCCESS', 'Р—Р°РєР°Р· СѓСЃРїРµС€РЅРѕ РѕС„РѕСЂРјР»РµРЅ');
+define('NAVBAR_TITLE_CREATE_ACCOUNT', 'Р РµРіРёСЃС‚СЂР°С†РёСЏ');
+define('NAVBAR_TITLE_LOGIN', 'Р’С…РѕРґ');
+define('NAVBAR_TITLE_LOGOFF','Р’С‹С…РѕРґ');
+define('NAVBAR_TITLE_PRODUCTS_NEW', 'РќРѕРІС‹Рµ С‚РѕРІР°СЂС‹');
+define('NAVBAR_TITLE_SHOPPING_CART', 'РљРѕСЂР·РёРЅР°');
+define('NAVBAR_TITLE_SPECIALS', 'РЎРєРёРґРєРё');
+define('NAVBAR_TITLE_FEATURED', 'Р РµРєРѕРјРµРЅРґСѓРµРјС‹Рµ С‚РѕРІР°СЂС‹');
+define('NAVBAR_TITLE_COOKIE_USAGE', 'РћС€РёР±РєР° cookies');
+define('NAVBAR_TITLE_PRODUCT_REVIEWS', 'РћС‚Р·С‹РІС‹');
+define('NAVBAR_TITLE_REVIEWS_WRITE', 'РќР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ');
+define('NAVBAR_TITLE_REVIEWS','РћС‚Р·С‹РІС‹');
+define('NAVBAR_TITLE_SSL_CHECK', 'Р‘РµР·РѕРїР°СЃРЅС‹Р№ СЂРµР¶РёРј');
+define('NAVBAR_TITLE_CREATE_GUEST_ACCOUNT','Р РµРіРёСЃС‚СЂР°С†РёСЏ');
+define('NAVBAR_TITLE_PASSWORD_DOUBLE_OPT','Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ?');
+define('NAVBAR_TITLE_NEWSLETTER','Р Р°СЃСЃС‹Р»РєР°');
+define('NAVBAR_GV_REDEEM', 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРµСЂС‚РёС„РёРєР°С‚');
+define('NAVBAR_GV_SEND', 'РћС‚РїСЂР°РІРёС‚СЊ СЃРµСЂС‚РёС„РёРєР°С‚');
 
 /*
  *
@@ -376,54 +376,54 @@ define('NAVBAR_GV_SEND', 'Отправить сертификат');
  *
  */
 
-define('TEXT_NEWSLETTER','Хотите узнавать о новинках первым?<br />Подпишитесь на наши новости и Вы первым узнаете обо всех изменениях и новинках.');
-define('TEXT_EMAIL_INPUT','Ваш E-Mail адрес был успешно зарегистрирован в нашей системе.<br />Вам было отправлено письмо с персональной ссылкой на подтверждение. Пожалуйста, перейдите по ссылке, указаной в письме. В противном случае Вы не будете получать почтовую рассылку!');
+define('TEXT_NEWSLETTER','РҐРѕС‚РёС‚Рµ СѓР·РЅР°РІР°С‚СЊ Рѕ РЅРѕРІРёРЅРєР°С… РїРµСЂРІС‹Рј?<br />РџРѕРґРїРёС€РёС‚РµСЃСЊ РЅР° РЅР°С€Рё РЅРѕРІРѕСЃС‚Рё Рё Р’С‹ РїРµСЂРІС‹Рј СѓР·РЅР°РµС‚Рµ РѕР±Рѕ РІСЃРµС… РёР·РјРµРЅРµРЅРёСЏС… Рё РЅРѕРІРёРЅРєР°С….');
+define('TEXT_EMAIL_INPUT','Р’Р°С€ E-Mail Р°РґСЂРµСЃ Р±С‹Р» СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ РЅР°С€РµР№ СЃРёСЃС‚РµРјРµ.<br />Р’Р°Рј Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕР№ СЃСЃС‹Р»РєРѕР№ РЅР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ, СѓРєР°Р·Р°РЅРѕР№ РІ РїРёСЃСЊРјРµ. Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ Р’С‹ РЅРµ Р±СѓРґРµС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ РїРѕС‡С‚РѕРІСѓСЋ СЂР°СЃСЃС‹Р»РєСѓ!');
 
-define('TEXT_WRONG_CODE','Заполните поля E-mail и Секретный код.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
-define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','Указанный E-Mail адрес зарегистрирован, но не активирован!');
-define('TEXT_EMAIL_EXIST_NEWSLETTER','Указанный E-Mail адрес зарегистрирован и активирован!');
-define('TEXT_EMAIL_NOT_EXIST','Указанный E-Mail адрес не зарегистрирован!');
-define('TEXT_EMAIL_DEL','Указанный E-Mail адрес был успешно удалён.');
-define('TEXT_EMAIL_DEL_ERROR','Произошла ошибка, E-Mail адрес не был удалён!');
-define('TEXT_EMAIL_ACTIVE','Ваш E-Mail адрес был добавлен к списку рассылки!');
-define('TEXT_EMAIL_ACTIVE_ERROR','Произошла ошибка, E-Mail адрес не был активирован!');
-define('TEXT_EMAIL_SUBJECT','Почтовая рассылка');
+define('TEXT_WRONG_CODE','Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»СЏ E-mail Рё РЎРµРєСЂРµС‚РЅС‹Р№ РєРѕРґ.<br />РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р±СѓРґСЊС‚Рµ РІРЅРёРјР°С‚РµР»СЊРЅС‹!<br />РЈС‡РёС‚С‹РІР°Р№С‚Рµ СЂРµРіРёСЃС‚СЂ, РµСЃР»Рё РЅР° РєР°СЂС‚РёРЅРєРµ Р·Р°РіР»Р°РІРЅР°СЏ Р±СѓРєРІР°, С‚Рѕ РЅСѓР¶РЅРѕ РїРёСЃР°С‚СЊ РёРјРµРЅРЅРѕ Р·Р°РіР»Р°РІРЅСѓСЋ Р±СѓРєРІСѓ, Р° РЅРµ СЃС‚СЂРѕС‡РЅСѓСЋ.');
+define('TEXT_EMAIL_EXIST_NO_NEWSLETTER','РЈРєР°Р·Р°РЅРЅС‹Р№ E-Mail Р°РґСЂРµСЃ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ, РЅРѕ РЅРµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ!');
+define('TEXT_EMAIL_EXIST_NEWSLETTER','РЈРєР°Р·Р°РЅРЅС‹Р№ E-Mail Р°РґСЂРµСЃ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ Рё Р°РєС‚РёРІРёСЂРѕРІР°РЅ!');
+define('TEXT_EMAIL_NOT_EXIST','РЈРєР°Р·Р°РЅРЅС‹Р№ E-Mail Р°РґСЂРµСЃ РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!');
+define('TEXT_EMAIL_DEL','РЈРєР°Р·Р°РЅРЅС‹Р№ E-Mail Р°РґСЂРµСЃ Р±С‹Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»С‘РЅ.');
+define('TEXT_EMAIL_DEL_ERROR','РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, E-Mail Р°РґСЂРµСЃ РЅРµ Р±С‹Р» СѓРґР°Р»С‘РЅ!');
+define('TEXT_EMAIL_ACTIVE','Р’Р°С€ E-Mail Р°РґСЂРµСЃ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ Рє СЃРїРёСЃРєСѓ СЂР°СЃСЃС‹Р»РєРё!');
+define('TEXT_EMAIL_ACTIVE_ERROR','РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, E-Mail Р°РґСЂРµСЃ РЅРµ Р±С‹Р» Р°РєС‚РёРІРёСЂРѕРІР°РЅ!');
+define('TEXT_EMAIL_SUBJECT','РџРѕС‡С‚РѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР°');
 
-define('TEXT_CUSTOMER_GUEST','Гость');
+define('TEXT_CUSTOMER_GUEST','Р“РѕСЃС‚СЊ');
 
-define('TEXT_LINK_MAIL_SENDED','Вам отправлено письмо с персональной ссылкой на подтверждение о восстановлении пароля. <br />Вам необходимо перейти по ссылке, указанной в письме. После подтверждения запроса на восстановление пароля мы отправим Вам новый пароль для входа в магазин. Если Вы не перейдёте по указанной ссылке, новый пароль не будет отправлен!');
-define('TEXT_PASSWORD_MAIL_SENDED','Вам отправлено письмо с новым паролем к Вашей персональной информации.<br />Пожалуйста, не забудьте изменить Ваш новый пароль после первого входа в магазин.');
-define('TEXT_CODE_ERROR','Вы ввели неправильный e-mail и/или надпись на картинке.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
-define('TEXT_EMAIL_ERROR','Вы ввели неправильный e-mail и/или надпись на картинке.<br />Пожалуйста, будьте внимательны!<br />Учитывайте регистр, если на картинке заглавная буква, то нужно писать именно заглавную букву, а не строчную.');
-define('TEXT_NO_ACCOUNT','К сожалению, запрос-подтверждение на новый пароль неверный либо устарел. Возможно, Вы активируете старую ссылку, в то время как была отправлена более новая. Пожалуйста, попробуйте ещё раз.');
+define('TEXT_LINK_MAIL_SENDED','Р’Р°Рј РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕР№ СЃСЃС‹Р»РєРѕР№ РЅР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ Рѕ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРё РїР°СЂРѕР»СЏ. <br />Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР№С‚Рё РїРѕ СЃСЃС‹Р»РєРµ, СѓРєР°Р·Р°РЅРЅРѕР№ РІ РїРёСЃСЊРјРµ. РџРѕСЃР»Рµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р·Р°РїСЂРѕСЃР° РЅР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ РјС‹ РѕС‚РїСЂР°РІРёРј Р’Р°Рј РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РґР»СЏ РІС…РѕРґР° РІ РјР°РіР°Р·РёРЅ. Р•СЃР»Рё Р’С‹ РЅРµ РїРµСЂРµР№РґС‘С‚Рµ РїРѕ СѓРєР°Р·Р°РЅРЅРѕР№ СЃСЃС‹Р»РєРµ, РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РЅРµ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅ!');
+define('TEXT_PASSWORD_MAIL_SENDED','Р’Р°Рј РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃ РЅРѕРІС‹Рј РїР°СЂРѕР»РµРј Рє Р’Р°С€РµР№ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё.<br />РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ РёР·РјРµРЅРёС‚СЊ Р’Р°С€ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РїРѕСЃР»Рµ РїРµСЂРІРѕРіРѕ РІС…РѕРґР° РІ РјР°РіР°Р·РёРЅ.');
+define('TEXT_CODE_ERROR','Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ e-mail Рё/РёР»Рё РЅР°РґРїРёСЃСЊ РЅР° РєР°СЂС‚РёРЅРєРµ.<br />РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р±СѓРґСЊС‚Рµ РІРЅРёРјР°С‚РµР»СЊРЅС‹!<br />РЈС‡РёС‚С‹РІР°Р№С‚Рµ СЂРµРіРёСЃС‚СЂ, РµСЃР»Рё РЅР° РєР°СЂС‚РёРЅРєРµ Р·Р°РіР»Р°РІРЅР°СЏ Р±СѓРєРІР°, С‚Рѕ РЅСѓР¶РЅРѕ РїРёСЃР°С‚СЊ РёРјРµРЅРЅРѕ Р·Р°РіР»Р°РІРЅСѓСЋ Р±СѓРєРІСѓ, Р° РЅРµ СЃС‚СЂРѕС‡РЅСѓСЋ.');
+define('TEXT_EMAIL_ERROR','Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ e-mail Рё/РёР»Рё РЅР°РґРїРёСЃСЊ РЅР° РєР°СЂС‚РёРЅРєРµ.<br />РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р±СѓРґСЊС‚Рµ РІРЅРёРјР°С‚РµР»СЊРЅС‹!<br />РЈС‡РёС‚С‹РІР°Р№С‚Рµ СЂРµРіРёСЃС‚СЂ, РµСЃР»Рё РЅР° РєР°СЂС‚РёРЅРєРµ Р·Р°РіР»Р°РІРЅР°СЏ Р±СѓРєРІР°, С‚Рѕ РЅСѓР¶РЅРѕ РїРёСЃР°С‚СЊ РёРјРµРЅРЅРѕ Р·Р°РіР»Р°РІРЅСѓСЋ Р±СѓРєРІСѓ, Р° РЅРµ СЃС‚СЂРѕС‡РЅСѓСЋ.');
+define('TEXT_NO_ACCOUNT','Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, Р·Р°РїСЂРѕСЃ-РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РЅР° РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РЅРµРІРµСЂРЅС‹Р№ Р»РёР±Рѕ СѓСЃС‚Р°СЂРµР». Р’РѕР·РјРѕР¶РЅРѕ, Р’С‹ Р°РєС‚РёРІРёСЂСѓРµС‚Рµ СЃС‚Р°СЂСѓСЋ СЃСЃС‹Р»РєСѓ, РІ С‚Рѕ РІСЂРµРјСЏ РєР°Рє Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР° Р±РѕР»РµРµ РЅРѕРІР°СЏ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.');
 
-define('HEADING_PASSWORD_FORGOTTEN','Забыли пароль?');
-define('TEXT_PASSWORD_FORGOTTEN','Измените пароль в три шага.');
-define('TEXT_EMAIL_PASSWORD_FORGOTTEN','Подтверждение E-Mail для отправки нового пароля');
-define('TEXT_EMAIL_PASSWORD_NEW_PASSWORD','Ваш новый пароль');
-define('ERROR_MAIL','Пожалуйста, проверьте указанные в форме данные');
+define('HEADING_PASSWORD_FORGOTTEN','Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ?');
+define('TEXT_PASSWORD_FORGOTTEN','РР·РјРµРЅРёС‚Рµ РїР°СЂРѕР»СЊ РІ С‚СЂРё С€Р°РіР°.');
+define('TEXT_EMAIL_PASSWORD_FORGOTTEN','РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ E-Mail РґР»СЏ РѕС‚РїСЂР°РІРєРё РЅРѕРІРѕРіРѕ РїР°СЂРѕР»СЏ');
+define('TEXT_EMAIL_PASSWORD_NEW_PASSWORD','Р’Р°С€ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ');
+define('ERROR_MAIL','РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕРІРµСЂСЊС‚Рµ СѓРєР°Р·Р°РЅРЅС‹Рµ РІ С„РѕСЂРјРµ РґР°РЅРЅС‹Рµ');
 
-define('CATEGORIE_NOT_FOUND','Категория не найдена');
+define('CATEGORIE_NOT_FOUND','РљР°С‚РµРіРѕСЂРёСЏ РЅРµ РЅР°Р№РґРµРЅР°');
 
-define('GV_FAQ', 'Вопросы и ответы по сертификатам');
-define('ERROR_NO_REDEEM_CODE', 'Вы не указали код сертификата ');  
-define('ERROR_NO_INVALID_REDEEM_GV', 'Неверный код сертификата '); 
-define('TABLE_HEADING_CREDIT', 'Использовать купон/сертификат');
-define('EMAIL_GV_TEXT_SUBJECT', 'Подарок от %s');
-define('MAIN_MESSAGE', 'Вы решили отправить сертификат на сумму %s своему знакомому %s, его E-Mail адрес: %s<br /><br />Получатель сертификата получит следующее сообщение:<br /><br />Уважаемый %s<br /><br />
-                        Вам отправлен сертификат на сумму %s, отправитель: %s');
-define('ERROR_REDEEMED_AMOUNT', 'Ваш сертификат использован ');
-define('REDEEMED_COUPON','Ваш купон записан и будет использован при оформлении следующего заказа.');
+define('GV_FAQ', 'Р’РѕРїСЂРѕСЃС‹ Рё РѕС‚РІРµС‚С‹ РїРѕ СЃРµСЂС‚РёС„РёРєР°С‚Р°Рј');
+define('ERROR_NO_REDEEM_CODE', 'Р’С‹ РЅРµ СѓРєР°Р·Р°Р»Рё РєРѕРґ СЃРµСЂС‚РёС„РёРєР°С‚Р° ');  
+define('ERROR_NO_INVALID_REDEEM_GV', 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ СЃРµСЂС‚РёС„РёРєР°С‚Р° '); 
+define('TABLE_HEADING_CREDIT', 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєСѓРїРѕРЅ/СЃРµСЂС‚РёС„РёРєР°С‚');
+define('EMAIL_GV_TEXT_SUBJECT', 'РџРѕРґР°СЂРѕРє РѕС‚ %s');
+define('MAIN_MESSAGE', 'Р’С‹ СЂРµС€РёР»Рё РѕС‚РїСЂР°РІРёС‚СЊ СЃРµСЂС‚РёС„РёРєР°С‚ РЅР° СЃСѓРјРјСѓ %s СЃРІРѕРµРјСѓ Р·РЅР°РєРѕРјРѕРјСѓ %s, РµРіРѕ E-Mail Р°РґСЂРµСЃ: %s<br /><br />РџРѕР»СѓС‡Р°С‚РµР»СЊ СЃРµСЂС‚РёС„РёРєР°С‚Р° РїРѕР»СѓС‡РёС‚ СЃР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ:<br /><br />РЈРІР°Р¶Р°РµРјС‹Р№ %s<br /><br />
+                        Р’Р°Рј РѕС‚РїСЂР°РІР»РµРЅ СЃРµСЂС‚РёС„РёРєР°С‚ РЅР° СЃСѓРјРјСѓ %s, РѕС‚РїСЂР°РІРёС‚РµР»СЊ: %s');
+define('ERROR_REDEEMED_AMOUNT', 'Р’Р°С€ СЃРµСЂС‚РёС„РёРєР°С‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅ ');
+define('REDEEMED_COUPON','Р’Р°С€ РєСѓРїРѕРЅ Р·Р°РїРёСЃР°РЅ Рё Р±СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё СЃР»РµРґСѓСЋС‰РµРіРѕ Р·Р°РєР°Р·Р°.');
 
-define('ERROR_INVALID_USES_USER_COUPON','Клиент может использовать только данный купон ');
-define('ERROR_INVALID_USES_COUPON','Покупатели могут использовать данный купон ');
-define('TIMES',' раз.');
-define('ERROR_INVALID_STARTDATE_COUPON','Ваш купон ещё недоступен.');
-define('ERROR_INVALID_FINISDATE_COUPON','Ваш купон устарел.');
-define('PERSONAL_MESSAGE', '%s пишет:');
+define('ERROR_INVALID_USES_USER_COUPON','РљР»РёРµРЅС‚ РјРѕР¶РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РґР°РЅРЅС‹Р№ РєСѓРїРѕРЅ ');
+define('ERROR_INVALID_USES_COUPON','РџРѕРєСѓРїР°С‚РµР»Рё РјРѕРіСѓС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР°РЅРЅС‹Р№ РєСѓРїРѕРЅ ');
+define('TIMES',' СЂР°Р·.');
+define('ERROR_INVALID_STARTDATE_COUPON','Р’Р°С€ РєСѓРїРѕРЅ РµС‰С‘ РЅРµРґРѕСЃС‚СѓРїРµРЅ.');
+define('ERROR_INVALID_FINISDATE_COUPON','Р’Р°С€ РєСѓРїРѕРЅ СѓСЃС‚Р°СЂРµР».');
+define('PERSONAL_MESSAGE', '%s РїРёС€РµС‚:');
 
 //Popup Window
-define('TEXT_CLOSE_WINDOW', 'Закрыть окно.');
+define('TEXT_CLOSE_WINDOW', 'Р—Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ.');
 
 /*
  *
@@ -431,110 +431,110 @@ define('TEXT_CLOSE_WINDOW', 'Закрыть окно.');
  *
  */
 
-define('TEXT_COUPON_HELP_HEADER', 'Поздравляем, Вы использовали купон.');
-define('TEXT_COUPON_HELP_NAME', '<br /><br />Название купона: %s');
-define('TEXT_COUPON_HELP_FIXED', '<br /><br />Купон предоставляет скидку в размере %s');
-define('TEXT_COUPON_HELP_MINORDER', '<br /><br />Заказ должен быть минимум на сумму %s чтобы у Вас появилась возможность использовать купон');
-define('TEXT_COUPON_HELP_FREESHIP', '<br /><br />Данный купон предоставляет возможность бесплатной доставки Вашего заказа');
-define('TEXT_COUPON_HELP_DESC', '<br /><br />Описание купона: %s');
-define('TEXT_COUPON_HELP_DATE', '<br /><br />Данный купон действителен с %s до %s');
-define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />Ограничения Товары / Категории');
-define('TEXT_COUPON_HELP_CATEGORIES', 'Категория');
-define('TEXT_COUPON_HELP_PRODUCTS', 'Товар');
+define('TEXT_COUPON_HELP_HEADER', 'РџРѕР·РґСЂР°РІР»СЏРµРј, Р’С‹ РёСЃРїРѕР»СЊР·РѕРІР°Р»Рё РєСѓРїРѕРЅ.');
+define('TEXT_COUPON_HELP_NAME', '<br /><br />РќР°Р·РІР°РЅРёРµ РєСѓРїРѕРЅР°: %s');
+define('TEXT_COUPON_HELP_FIXED', '<br /><br />РљСѓРїРѕРЅ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ СЃРєРёРґРєСѓ РІ СЂР°Р·РјРµСЂРµ %s');
+define('TEXT_COUPON_HELP_MINORDER', '<br /><br />Р—Р°РєР°Р· РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјРёРЅРёРјСѓРј РЅР° СЃСѓРјРјСѓ %s С‡С‚РѕР±С‹ Сѓ Р’Р°СЃ РїРѕСЏРІРёР»Р°СЃСЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєСѓРїРѕРЅ');
+define('TEXT_COUPON_HELP_FREESHIP', '<br /><br />Р”Р°РЅРЅС‹Р№ РєСѓРїРѕРЅ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕР№ РґРѕСЃС‚Р°РІРєРё Р’Р°С€РµРіРѕ Р·Р°РєР°Р·Р°');
+define('TEXT_COUPON_HELP_DESC', '<br /><br />РћРїРёСЃР°РЅРёРµ РєСѓРїРѕРЅР°: %s');
+define('TEXT_COUPON_HELP_DATE', '<br /><br />Р”Р°РЅРЅС‹Р№ РєСѓРїРѕРЅ РґРµР№СЃС‚РІРёС‚РµР»РµРЅ СЃ %s РґРѕ %s');
+define('TEXT_COUPON_HELP_RESTRICT', '<br /><br />РћРіСЂР°РЅРёС‡РµРЅРёСЏ РўРѕРІР°СЂС‹ / РљР°С‚РµРіРѕСЂРёРё');
+define('TEXT_COUPON_HELP_CATEGORIES', 'РљР°С‚РµРіРѕСЂРёСЏ');
+define('TEXT_COUPON_HELP_PRODUCTS', 'РўРѕРІР°СЂ');
 
 // VAT ID
-define('ENTRY_VAT_TEXT','* только для Германии и стран Евросоюза');
-define('ENTRY_VAT_ERROR', 'Выбранный VatID неверный! Укажите правильно ID или оставьте данное поле пустым.');
-define('MSRP','Розничная цена ');
-define('YOUR_PRICE','Ваша цена ');
-define('ONLY',' всего ');
+define('ENTRY_VAT_TEXT','* С‚РѕР»СЊРєРѕ РґР»СЏ Р“РµСЂРјР°РЅРёРё Рё СЃС‚СЂР°РЅ Р•РІСЂРѕСЃРѕСЋР·Р°');
+define('ENTRY_VAT_ERROR', 'Р’С‹Р±СЂР°РЅРЅС‹Р№ VatID РЅРµРІРµСЂРЅС‹Р№! РЈРєР°Р¶РёС‚Рµ РїСЂР°РІРёР»СЊРЅРѕ ID РёР»Рё РѕСЃС‚Р°РІСЊС‚Рµ РґР°РЅРЅРѕРµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј.');
+define('MSRP','Р РѕР·РЅРёС‡РЅР°СЏ С†РµРЅР° ');
+define('YOUR_PRICE','Р’Р°С€Р° С†РµРЅР° ');
+define('ONLY',' РІСЃРµРіРѕ ');
 define('FROM',' ');
-define('YOU_SAVE','Вы экономите ');
-define('INSTEAD','вместо ');
-define('TXT_PER',' за ');
-define('TAX_INFO_INCL','включая %s налог');
-define('TAX_INFO_EXCL','исключая %s налог');
-define('TAX_INFO_ADD','плюс %s налог');
+define('YOU_SAVE','Р’С‹ СЌРєРѕРЅРѕРјРёС‚Рµ ');
+define('INSTEAD','РІРјРµСЃС‚Рѕ ');
+define('TXT_PER',' Р·Р° ');
+define('TAX_INFO_INCL','РІРєР»СЋС‡Р°СЏ %s РЅР°Р»РѕРі');
+define('TAX_INFO_EXCL','РёСЃРєР»СЋС‡Р°СЏ %s РЅР°Р»РѕРі');
+define('TAX_INFO_ADD','РїР»СЋСЃ %s РЅР°Р»РѕРі');
 define('SHIPPING_EXCL','+');
-define('SHIPPING_COSTS','доставка');
+define('SHIPPING_COSTS','РґРѕСЃС‚Р°РІРєР°');
 
-// Сборка VaM
+// РЎР±РѕСЂРєР° VaM
 
-define('BOX_HEADING_SEARCH', 'Поиск');
-define('ICON_ERROR', 'Ошибка');
+define('BOX_HEADING_SEARCH', 'РџРѕРёСЃРє');
+define('ICON_ERROR', 'РћС€РёР±РєР°');
 
 // RSS2 Info
-define('NAVBAR_TITLE_RSS2_INFO','RSS каналы');
+define('NAVBAR_TITLE_RSS2_INFO','RSS РєР°РЅР°Р»С‹');
 define('TEXT_RSS2_INFO', '
-<h3>Основные запросы</h3>
-Новости - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news</a><br />
-Статьи - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles</a><br />
-Категории - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories</a><br />
-Товары - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;limit=10</a><br />
-Товар с id кодом 43 - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;products_id=43' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;products_id=43</a><br />
-Товары в категории - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;cPath=25&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;cPath=25&amp;limit=10</a><br />
-Товары в категории (25 это идентификатор категории, идентификаторы можно узнать, к примеру в ?feed=categories, в ссылке категории, т.е. Вы можете показывать товары только из определённых категорий).<br />
+<h3>РћСЃРЅРѕРІРЅС‹Рµ Р·Р°РїСЂРѕСЃС‹</h3>
+РќРѕРІРѕСЃС‚Рё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news</a><br />
+РЎС‚Р°С‚СЊРё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles</a><br />
+РљР°С‚РµРіРѕСЂРёРё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories</a><br />
+РўРѕРІР°СЂС‹ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;limit=10</a><br />
+РўРѕРІР°СЂ СЃ id РєРѕРґРѕРј 43 - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;products_id=43' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;products_id=43</a><br />
+РўРѕРІР°СЂС‹ РІ РєР°С‚РµРіРѕСЂРёРё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;cPath=25&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=products&amp;cPath=25&amp;limit=10</a><br />
+РўРѕРІР°СЂС‹ РІ РєР°С‚РµРіРѕСЂРёРё (25 СЌС‚Рѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєР°С‚РµРіРѕСЂРёРё, РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РјРѕР¶РЅРѕ СѓР·РЅР°С‚СЊ, Рє РїСЂРёРјРµСЂСѓ РІ ?feed=categories, РІ СЃСЃС‹Р»РєРµ РєР°С‚РµРіРѕСЂРёРё, С‚.Рµ. Р’С‹ РјРѕР¶РµС‚Рµ РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕРІР°СЂС‹ С‚РѕР»СЊРєРѕ РёР· РѕРїСЂРµРґРµР»С‘РЅРЅС‹С… РєР°С‚РµРіРѕСЂРёР№).<br />
 <br />
-<h3>Дополнительные запросы</h3>
-Новинки - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10</a><br />
-Лучшие товары - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10</a><br />
-Рекомендуемые - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10</a><br />
-Скидки - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10</a><br />
-Ожидаемые товары - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10</a><br />
+<h3>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ Р·Р°РїСЂРѕСЃС‹</h3>
+РќРѕРІРёРЅРєРё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10</a><br />
+Р›СѓС‡С€РёРµ С‚РѕРІР°СЂС‹ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10</a><br />
+Р РµРєРѕРјРµРЅРґСѓРµРјС‹Рµ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10</a><br />
+РЎРєРёРґРєРё - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10</a><br />
+РћР¶РёРґР°РµРјС‹Рµ С‚РѕРІР°СЂС‹ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10</a><br />
 <br />
-<h3>Случайные товары</h3>
-Случайный товар из новых товаров - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products_random</a><br />
-Случайный товар из лучших товаров - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers_random</a><br />
-Случайный товар из рекомендуемых - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured_random</a><br />
-Случайный товар из скидок - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials_random</a><br />
-Случайный товар из ожидаемых товаров - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random</a><br />
+<h3>РЎР»СѓС‡Р°Р№РЅС‹Рµ С‚РѕРІР°СЂС‹</h3>
+РЎР»СѓС‡Р°Р№РЅС‹Р№ С‚РѕРІР°СЂ РёР· РЅРѕРІС‹С… С‚РѕРІР°СЂРѕРІ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products_random</a><br />
+РЎР»СѓС‡Р°Р№РЅС‹Р№ С‚РѕРІР°СЂ РёР· Р»СѓС‡С€РёС… С‚РѕРІР°СЂРѕРІ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers_random</a><br />
+РЎР»СѓС‡Р°Р№РЅС‹Р№ С‚РѕРІР°СЂ РёР· СЂРµРєРѕРјРµРЅРґСѓРµРјС‹С… - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured_random</a><br />
+РЎР»СѓС‡Р°Р№РЅС‹Р№ С‚РѕРІР°СЂ РёР· СЃРєРёРґРѕРє - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials_random</a><br />
+РЎР»СѓС‡Р°Р№РЅС‹Р№ С‚РѕРІР°СЂ РёР· РѕР¶РёРґР°РµРјС‹С… С‚РѕРІР°СЂРѕРІ - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming_random</a><br />
 <br />
-<h3>Лимит запросов</h3>
-<p>Обратите внимание на параметр limit.<br />
-Можно выводить, к примеру, не все новинки (rss2.php?feed=new_products), а только 10, просто добавляете параметр limit (rss2.php?feed=new_products&amp;limit=10)</p>
-<h3>Партнёрский ID код</h3>
-<p>Обратите внимание на параметр ref.<br />
-Если у Вас в магазине установлен модуль партнёрской программы, Ваши партнёры могут получать RSS каналы со своим партнёрским кодом, например, партнёр с id кодом 1 может получить список новинок следующим образом rss2.php?feed=new_products&amp;ref=1</p>
+<h3>Р›РёРјРёС‚ Р·Р°РїСЂРѕСЃРѕРІ</h3>
+<p>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ РЅР° РїР°СЂР°РјРµС‚СЂ limit.<br />
+РњРѕР¶РЅРѕ РІС‹РІРѕРґРёС‚СЊ, Рє РїСЂРёРјРµСЂСѓ, РЅРµ РІСЃРµ РЅРѕРІРёРЅРєРё (rss2.php?feed=new_products), Р° С‚РѕР»СЊРєРѕ 10, РїСЂРѕСЃС‚Рѕ РґРѕР±Р°РІР»СЏРµС‚Рµ РїР°СЂР°РјРµС‚СЂ limit (rss2.php?feed=new_products&amp;limit=10)</p>
+<h3>РџР°СЂС‚РЅС‘СЂСЃРєРёР№ ID РєРѕРґ</h3>
+<p>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ РЅР° РїР°СЂР°РјРµС‚СЂ ref.<br />
+Р•СЃР»Рё Сѓ Р’Р°СЃ РІ РјР°РіР°Р·РёРЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ РјРѕРґСѓР»СЊ РїР°СЂС‚РЅС‘СЂСЃРєРѕР№ РїСЂРѕРіСЂР°РјРјС‹, Р’Р°С€Рё РїР°СЂС‚РЅС‘СЂС‹ РјРѕРіСѓС‚ РїРѕР»СѓС‡Р°С‚СЊ RSS РєР°РЅР°Р»С‹ СЃРѕ СЃРІРѕРёРј РїР°СЂС‚РЅС‘СЂСЃРєРёРј РєРѕРґРѕРј, РЅР°РїСЂРёРјРµСЂ, РїР°СЂС‚РЅС‘СЂ СЃ id РєРѕРґРѕРј 1 РјРѕР¶РµС‚ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РЅРѕРІРёРЅРѕРє СЃР»РµРґСѓСЋС‰РёРј РѕР±СЂР°Р·РѕРј rss2.php?feed=new_products&amp;ref=1</p>
 ');
 
-define('ENTRY_STATE_RELOAD', 'Нажмите на кнопку <span class="bold">"Обновить"</span> чтобы заполнить поле Регион');
-define('ENTRY_NOSTATE_AVAILIABLE', 'У выбранной страны нет регионов');
-define('ENTRY_STATEXML_LOADING', 'Загрузка регионов ...');
+define('ENTRY_STATE_RELOAD', 'РќР°Р¶РјРёС‚Рµ РЅР° РєРЅРѕРїРєСѓ <span class="bold">"РћР±РЅРѕРІРёС‚СЊ"</span> С‡С‚РѕР±С‹ Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕР»Рµ Р РµРіРёРѕРЅ');
+define('ENTRY_NOSTATE_AVAILIABLE', 'РЈ РІС‹Р±СЂР°РЅРЅРѕР№ СЃС‚СЂР°РЅС‹ РЅРµС‚ СЂРµРіРёРѕРЅРѕРІ');
+define('ENTRY_STATEXML_LOADING', 'Р—Р°РіСЂСѓР·РєР° СЂРµРіРёРѕРЅРѕРІ ...');
 
-define('SHIPPING_TIME','Время доставки: ');
-define('MORE_INFO','[Подробнее]');
+define('SHIPPING_TIME','Р’СЂРµРјСЏ РґРѕСЃС‚Р°РІРєРё: ');
+define('MORE_INFO','[РџРѕРґСЂРѕР±РЅРµРµ]');
 
-define('TABLE_HEADING_LATEST_NEWS', 'Последние новости');
-define('NAVBAR_TITLE_NEWS', 'Новости');
+define('TABLE_HEADING_LATEST_NEWS', 'РџРѕСЃР»РµРґРЅРёРµ РЅРѕРІРѕСЃС‚Рё');
+define('NAVBAR_TITLE_NEWS', 'РќРѕРІРѕСЃС‚Рё');
 
-define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> новостей)');
-define('TEXT_NO_NEWS', 'Нет новостей.');
+define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'РџРѕРєР°Р·Р°РЅРѕ <span class="bold">%d</span> - <span class="bold">%d</span> (РІСЃРµРіРѕ <span class="bold">%d</span> РЅРѕРІРѕСЃС‚РµР№)');
+define('TEXT_NO_NEWS', 'РќРµС‚ РЅРѕРІРѕСЃС‚РµР№.');
 
-define('TEXT_INFO_SHOW_PRICE_NO','У Вас нет доступа для просмотра цен');
+define('TEXT_INFO_SHOW_PRICE_NO','РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° С†РµРЅ');
 
-define('TEXT_OF_5_STARS', '%s из 5 звёзд!');
+define('TEXT_OF_5_STARS', '%s РёР· 5 Р·РІС‘Р·Рґ!');
 
-define('IMAGE_BUTTON_PRINT', 'Распечатать');
+define('IMAGE_BUTTON_PRINT', 'Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ');
 
-define('TEXT_AJAX_QUICKSEARCH_TOP', 'Первые %s позиций...');
-define('TEXT_AJAX_ADDQUICKIE_SEARCH_TOP', 'Первые %s товаров...');
+define('TEXT_AJAX_QUICKSEARCH_TOP', 'РџРµСЂРІС‹Рµ %s РїРѕР·РёС†РёР№...');
+define('TEXT_AJAX_ADDQUICKIE_SEARCH_TOP', 'РџРµСЂРІС‹Рµ %s С‚РѕРІР°СЂРѕРІ...');
 
-define('BOX_ALL_ARTICLES', 'Все статьи');
-define('BOX_NEW_ARTICLES', 'Новые статьи');
-define('TEXT_DISPLAY_NUMBER_OF_ARTICLES', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> статей)');
-define('TEXT_DISPLAY_NUMBER_OF_ARTICLES_NEW', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новых статей)');
-define('TABLE_HEADING_AUTHOR', 'Автор');
-define('TABLE_HEADING_ABSTRACT', 'Резюме');
-define('BOX_HEADING_AUTHORS', 'Авторы статей');
-define('NAVBAR_TITLE_DEFAULT', 'Статьи');
-define('ARTICLES_BY','Статьи автора ');
+define('BOX_ALL_ARTICLES', 'Р’СЃРµ СЃС‚Р°С‚СЊРё');
+define('BOX_NEW_ARTICLES', 'РќРѕРІС‹Рµ СЃС‚Р°С‚СЊРё');
+define('TEXT_DISPLAY_NUMBER_OF_ARTICLES', 'РџРѕРєР°Р·Р°РЅРѕ <b>%d</b> - <b>%d</b> (РІСЃРµРіРѕ <b>%d</b> СЃС‚Р°С‚РµР№)');
+define('TEXT_DISPLAY_NUMBER_OF_ARTICLES_NEW', 'РџРѕРєР°Р·Р°РЅРѕ <b>%d</b> - <b>%d</b> (РІСЃРµРіРѕ <b>%d</b> РЅРѕРІС‹С… СЃС‚Р°С‚РµР№)');
+define('TABLE_HEADING_AUTHOR', 'РђРІС‚РѕСЂ');
+define('TABLE_HEADING_ABSTRACT', 'Р РµР·СЋРјРµ');
+define('BOX_HEADING_AUTHORS', 'РђРІС‚РѕСЂС‹ СЃС‚Р°С‚РµР№');
+define('NAVBAR_TITLE_DEFAULT', 'РЎС‚Р°С‚СЊРё');
+define('ARTICLES_BY','РЎС‚Р°С‚СЊРё Р°РІС‚РѕСЂР° ');
 
-define('MODULE_PAYMENT_SCHET_PRINT','Распечатать счёт для оплаты');
-define('MODULE_PAYMENT_KVITANCIA_PRINT','Распечатать квитанцию для оплаты');
+define('MODULE_PAYMENT_SCHET_PRINT','Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ СЃС‡С‘С‚ РґР»СЏ РѕРїР»Р°С‚С‹');
+define('MODULE_PAYMENT_KVITANCIA_PRINT','Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ РєРІРёС‚Р°РЅС†РёСЋ РґР»СЏ РѕРїР»Р°С‚С‹');
 
-define('ENTRY_CAPTCHA_ERROR','Вы указали неправильный код картинки. Код, указанный на картинке нужно вводить с учётом регистра. 
-Если на картинке буква заглавная, Вы тоже должны вводить заглавную букву.');
+define('ENTRY_CAPTCHA_ERROR','Р’С‹ СѓРєР°Р·Р°Р»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ РєР°СЂС‚РёРЅРєРё. РљРѕРґ, СѓРєР°Р·Р°РЅРЅС‹Р№ РЅР° РєР°СЂС‚РёРЅРєРµ РЅСѓР¶РЅРѕ РІРІРѕРґРёС‚СЊ СЃ СѓС‡С‘С‚РѕРј СЂРµРіРёСЃС‚СЂР°. 
+Р•СЃР»Рё РЅР° РєР°СЂС‚РёРЅРєРµ Р±СѓРєРІР° Р·Р°РіР»Р°РІРЅР°СЏ, Р’С‹ С‚РѕР¶Рµ РґРѕР»Р¶РЅС‹ РІРІРѕРґРёС‚СЊ Р·Р°РіР»Р°РІРЅСѓСЋ Р±СѓРєРІСѓ.');
 
-define('TEXT_FIRST_REVIEW','Ваш отзыв может быть первым.');
+define('TEXT_FIRST_REVIEW','Р’Р°С€ РѕС‚Р·С‹РІ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРІС‹Рј.');
 
 ?>

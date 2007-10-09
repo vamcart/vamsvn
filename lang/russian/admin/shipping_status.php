@@ -17,21 +17,21 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ñòàòóñ äîñòàâêè');
+define('HEADING_TITLE', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
 
-define('TABLE_HEADING_SHIPPING_STATUS', 'Ñòàòóñ äîñòàâêè');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_SHIPPING_STATUS', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ñäåëàéòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_SHIPPING_STATUS_NAME', 'Ñòàòóñ äîñòàâêè:');
-define('TEXT_INFO_INSERT_INTRO', 'Äîáàâüòå íîâûé ñòàòóñ');
-define('TEXT_INFO_DELETE_INTRO', 'Âû óâåðåíû ÷òî õîòèòå óäàëèòü ýòîò ñòàòóñ äîñòàâêè?');
-define('TEXT_INFO_HEADING_NEW_SHIPPING_STATUS', 'Íîâûé ñòàòóñ äîñòàâêè');
-define('TEXT_INFO_HEADING_EDIT_SHIPPING_STATUS', 'Èçìåíèòü ñòàòóñ äîñòàâêè');
-define('TEXT_INFO_SHIPPING_STATUS_IMAGE', 'Êàðòèíêà:');
-define('TEXT_INFO_HEADING_DELETE_SHIPPING_STATUS', 'Óäàëèòü ñòàòóñ äîñòàâêè');
+define('TEXT_INFO_EDIT_INTRO', 'Ð¡Ð´ÐµÐ»Ð°Ð¹Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_SHIPPING_STATUS_NAME', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸:');
+define('TEXT_INFO_INSERT_INTRO', 'Ð”Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹ Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸?');
+define('TEXT_INFO_HEADING_NEW_SHIPPING_STATUS', 'ÐÐ¾Ð²Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TEXT_INFO_HEADING_EDIT_SHIPPING_STATUS', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TEXT_INFO_SHIPPING_STATUS_IMAGE', 'ÐšÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ°:');
+define('TEXT_INFO_HEADING_DELETE_SHIPPING_STATUS', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
 
-define('ERROR_REMOVE_DEFAULT_SHIPPING_STATUS', 'Îøèáêà: Ñòàòóñ ïî óìîë÷àíèþ íå ìîæåò áûòü óäàëåí.');
-define('ERROR_STATUS_USED_IN_ORDERS', 'Îøèáêà: Ýòîò ñòàòóñ äîñòàâêè èñïîëüçóåòñÿ â òîâàðå.');
-define('ERROR_STATUS_USED_IN_HISTORY', 'Îøèáêà: Ýòîò ñòàòóñ äîñòàâêè èñïîëüçóåòñÿ â èñòîðèè.');
+define('ERROR_REMOVE_DEFAULT_SHIPPING_STATUS', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑƒÐ´Ð°Ð»ÐµÐ½.');
+define('ERROR_STATUS_USED_IN_ORDERS', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð² Ñ‚Ð¾Ð²Ð°Ñ€Ðµ.');
+define('ERROR_STATUS_USED_IN_HISTORY', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð² Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸.');
 ?>

@@ -52,7 +52,7 @@ class campaigns {
 
 			$this->counter = 0;
 			$this->counterCMP = 0;
-			// tŠglich
+			// tÐ‰glich
 
 			$this->getTotalLeads();
 			$this->getTotalSells();

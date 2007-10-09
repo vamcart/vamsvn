@@ -617,7 +617,7 @@ background:#fcc;
 	padding-top: 2px;
 }
 
-/* VaM Shop стили */
+/* VaM Shop СЃС‚РёР»Рё */
 
 .cartBoxContents {
   font-family: Tahoma, Verdana, Arial, sans-serif;
@@ -744,7 +744,7 @@ TD.line {
   color: #990000;
 }
 
-/* VaM Shop боксы */
+/* VaM Shop Р±РѕРєСЃС‹ */
 
 span.addaquickieBox {
   font-family: Tahoma, Verdana, Arial, sans-serif;
@@ -942,7 +942,7 @@ TD.parsetime {
   text-align:center;
 }
 
-/* Заголовок страницы */
+/* Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ */
 h1.contentBoxHeading {
   display: block;
   width: 97%;
@@ -959,9 +959,9 @@ h1.contentBoxHeading a {
   color: #990000;
   text-decoration: none;
 }
-/* /Заголовок страницы */
+/* /Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ */
 
-/* Скругленные углы */
+/* РЎРєСЂСѓРіР»РµРЅРЅС‹Рµ СѓРіР»С‹ */
 .page {background: transparent; width:100%;}
 .page h1, .page p {margin:0 10px;}
 .page h1 {font-size:2em; color:#fff;}
@@ -983,13 +983,13 @@ h1.contentBoxHeading a {
 .page .b1b {margin:0 5px; background:#999;}
 .page .pagecontent {display:block; padding-left:0.5em; padding-right:0.5em; background:#f1f1f6; border-left:1px solid #fff; border-right:1px solid #999;}
 .page .pagecontentfooter {display:block; text-align: right; background:#ffffff;}
-/* /Скругленные углы */
+/* /РЎРєСЂСѓРіР»РµРЅРЅС‹Рµ СѓРіР»С‹ */
 
-/* Ошибка на странице свяжитесь с нами */
+/* РћС€РёР±РєР° РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃРІСЏР¶РёС‚РµСЃСЊ СЃ РЅР°РјРё */
 div.contacterror {border:1px solid; border-color:#ff0000; background-color:#FFCCCC; text-align:center; margin-bottom:0.5em; margin-top:0.5em;}
-/* /Ошибка на странице свяжитесь с нами */
+/* /РћС€РёР±РєР° РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃРІСЏР¶РёС‚РµСЃСЊ СЃ РЅР°РјРё */
 
-/*- Время парсинга */
+/*- Р’СЂРµРјСЏ РїР°СЂСЃРёРЅРіР° */
 div#parseTime
    {
      clear: left;
@@ -1000,9 +1000,9 @@ div#parseTime
      padding-top: 0.5em;
      padding-bottom: 0.5em;
    }
-/*- /Время парсинга */
+/*- /Р’СЂРµРјСЏ РїР°СЂСЃРёРЅРіР° */
 
-/*- /Информация о магазине */
+/*- /РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјР°РіР°Р·РёРЅРµ */
 div#copyright
    {
      clear: left;
@@ -1024,7 +1024,7 @@ div.copyright
      padding-top: 0.5em;
      padding-bottom: 0.5em;
    }
-/*- /Информация о магазине */
+/*- /РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјР°РіР°Р·РёРЅРµ */
 
 div.clear
    {

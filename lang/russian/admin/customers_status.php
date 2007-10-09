@@ -17,95 +17,95 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Группы клиентов');
+define('HEADING_TITLE', 'Р“СЂСѓРїРїС‹ РєР»РёРµРЅС‚РѕРІ');
 
-define('ENTRY_CUSTOMERS_FSK18','Блокировать покупку товаров FSK18?');
-define('ENTRY_CUSTOMERS_FSK18_DISPLAY','Блокировать покупку товаров FSK18?');
-define('ENTRY_CUSTOMERS_STATUS_ADD_TAX','Показывать налог на странице подтверждения заказа');
-define('ENTRY_CUSTOMERS_STATUS_MIN_ORDER','Минимальная сумма заказа:');
-define('ENTRY_CUSTOMERS_STATUS_MAX_ORDER','Максимальная сумма заказа:');
-define('ENTRY_CUSTOMERS_STATUS_BT_PERMISSION','Оплата через банковский перевод');
-define('ENTRY_CUSTOMERS_STATUS_CC_PERMISSION','Оплата кредиткой');
-define('ENTRY_CUSTOMERS_STATUS_COD_PERMISSION','Оплата наличными');
-define('ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES','Скидка');
-define('ENTRY_CUSTOMERS_STATUS_PAYMENT_UNALLOWED','Укажите неразрешенные методы оплаты');
-define('ENTRY_CUSTOMERS_STATUS_PUBLIC','Показывать в магазине бокс инфо (группа станет открытая)<br />');
-define('ENTRY_CUSTOMERS_STATUS_SHIPPING_UNALLOWED','Укажите неразрешенные методы доставки');
-define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE','Цена');
-define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX','Цена включая налоги');
-define('ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS','Разрешить этой группе клиентов писать отзывы?');
-define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Разрешить этой группе клиентов читать отзывы?');
-define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Разрешить этой группе клиентов читать отзывы?');
-define('ENTRY_GRADUATED_PRICES','Цены от количества');
-define('ENTRY_NO','Нет');
-define('ENTRY_OT_XMEMBER', 'Скидка от общей стоимости заказа?');
-define('ENTRY_YES','Да');
+define('ENTRY_CUSTOMERS_FSK18','Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ РїРѕРєСѓРїРєСѓ С‚РѕРІР°СЂРѕРІ FSK18?');
+define('ENTRY_CUSTOMERS_FSK18_DISPLAY','Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ РїРѕРєСѓРїРєСѓ С‚РѕРІР°СЂРѕРІ FSK18?');
+define('ENTRY_CUSTOMERS_STATUS_ADD_TAX','РџРѕРєР°Р·С‹РІР°С‚СЊ РЅР°Р»РѕРі РЅР° СЃС‚СЂР°РЅРёС†Рµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р·Р°РєР°Р·Р°');
+define('ENTRY_CUSTOMERS_STATUS_MIN_ORDER','РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р°:');
+define('ENTRY_CUSTOMERS_STATUS_MAX_ORDER','РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р°:');
+define('ENTRY_CUSTOMERS_STATUS_BT_PERMISSION','РћРїР»Р°С‚Р° С‡РµСЂРµР· Р±Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ');
+define('ENTRY_CUSTOMERS_STATUS_CC_PERMISSION','РћРїР»Р°С‚Р° РєСЂРµРґРёС‚РєРѕР№');
+define('ENTRY_CUSTOMERS_STATUS_COD_PERMISSION','РћРїР»Р°С‚Р° РЅР°Р»РёС‡РЅС‹РјРё');
+define('ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES','РЎРєРёРґРєР°');
+define('ENTRY_CUSTOMERS_STATUS_PAYMENT_UNALLOWED','РЈРєР°Р¶РёС‚Рµ РЅРµСЂР°Р·СЂРµС€РµРЅРЅС‹Рµ РјРµС‚РѕРґС‹ РѕРїР»Р°С‚С‹');
+define('ENTRY_CUSTOMERS_STATUS_PUBLIC','РџРѕРєР°Р·С‹РІР°С‚СЊ РІ РјР°РіР°Р·РёРЅРµ Р±РѕРєСЃ РёРЅС„Рѕ (РіСЂСѓРїРїР° СЃС‚Р°РЅРµС‚ РѕС‚РєСЂС‹С‚Р°СЏ)<br />');
+define('ENTRY_CUSTOMERS_STATUS_SHIPPING_UNALLOWED','РЈРєР°Р¶РёС‚Рµ РЅРµСЂР°Р·СЂРµС€РµРЅРЅС‹Рµ РјРµС‚РѕРґС‹ РґРѕСЃС‚Р°РІРєРё');
+define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE','Р¦РµРЅР°');
+define('ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX','Р¦РµРЅР° РІРєР»СЋС‡Р°СЏ РЅР°Р»РѕРіРё');
+define('ENTRY_CUSTOMERS_STATUS_WRITE_REVIEWS','Р Р°Р·СЂРµС€РёС‚СЊ СЌС‚РѕР№ РіСЂСѓРїРїРµ РєР»РёРµРЅС‚РѕРІ РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІС‹?');
+define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS','Р Р°Р·СЂРµС€РёС‚СЊ СЌС‚РѕР№ РіСЂСѓРїРїРµ РєР»РёРµРЅС‚РѕРІ С‡РёС‚Р°С‚СЊ РѕС‚Р·С‹РІС‹?');
+define('ENTRY_CUSTOMERS_STATUS_READ_REVIEWS_DISPLAY','Р Р°Р·СЂРµС€РёС‚СЊ СЌС‚РѕР№ РіСЂСѓРїРїРµ РєР»РёРµРЅС‚РѕРІ С‡РёС‚Р°С‚СЊ РѕС‚Р·С‹РІС‹?');
+define('ENTRY_GRADUATED_PRICES','Р¦РµРЅС‹ РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР°');
+define('ENTRY_NO','РќРµС‚');
+define('ENTRY_OT_XMEMBER', 'РЎРєРёРґРєР° РѕС‚ РѕР±С‰РµР№ СЃС‚РѕРёРјРѕСЃС‚Рё Р·Р°РєР°Р·Р°?');
+define('ENTRY_YES','Р”Р°');
 
-define('ERROR_REMOVE_DEFAULT_CUSTOMER_STATUS', 'Ошибка: Группа по умолчанию не может быть удалена. Установите другую группу по умолчанию и попробуйте снова.');
-define('ERROR_REMOVE_DEFAULT_CUSTOMERS_STATUS','ОШИБКА! Вы не можете удалить стандартные группы');
-define('ERROR_STATUS_USED_IN_CUSTOMERS', 'Ошибка: Эта группа активна и в ней есть клиенты.');
-define('ERROR_STATUS_USED_IN_HISTORY', 'Ошибка: Эта группа используется в истории заказов.');
+define('ERROR_REMOVE_DEFAULT_CUSTOMER_STATUS', 'РћС€РёР±РєР°: Р“СЂСѓРїРїР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓРґР°Р»РµРЅР°. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РґСЂСѓРіСѓСЋ РіСЂСѓРїРїСѓ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.');
+define('ERROR_REMOVE_DEFAULT_CUSTOMERS_STATUS','РћРЁРР‘РљРђ! Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РіСЂСѓРїРїС‹');
+define('ERROR_STATUS_USED_IN_CUSTOMERS', 'РћС€РёР±РєР°: Р­С‚Р° РіСЂСѓРїРїР° Р°РєС‚РёРІРЅР° Рё РІ РЅРµР№ РµСЃС‚СЊ РєР»РёРµРЅС‚С‹.');
+define('ERROR_STATUS_USED_IN_HISTORY', 'РћС€РёР±РєР°: Р­С‚Р° РіСЂСѓРїРїР° РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РёСЃС‚РѕСЂРёРё Р·Р°РєР°Р·РѕРІ.');
 
-define('YES','да');
-define('NO','нет');
+define('YES','РґР°');
+define('NO','РЅРµС‚');
 
-define('TABLE_HEADING_ACTION','Действие');
-define('TABLE_HEADING_CUSTOMERS_GRADUATED','Цена от количества');
-define('TABLE_HEADING_CUSTOMERS_STATUS','Группа');
-define('TABLE_HEADING_CUSTOMERS_UNALLOW','Запрещённые модули оплаты');
-define('TABLE_HEADING_CUSTOMERS_UNALLOW_SHIPPING','Запрещённые модули доставки');
-define('TABLE_HEADING_DISCOUNT','Скидка');
-define('TABLE_HEADING_TAX_PRICE','Показывать цены / включая налог');
+define('TABLE_HEADING_ACTION','Р”РµР№СЃС‚РІРёРµ');
+define('TABLE_HEADING_CUSTOMERS_GRADUATED','Р¦РµРЅР° РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР°');
+define('TABLE_HEADING_CUSTOMERS_STATUS','Р“СЂСѓРїРїР°');
+define('TABLE_HEADING_CUSTOMERS_UNALLOW','Р—Р°РїСЂРµС‰С‘РЅРЅС‹Рµ РјРѕРґСѓР»Рё РѕРїР»Р°С‚С‹');
+define('TABLE_HEADING_CUSTOMERS_UNALLOW_SHIPPING','Р—Р°РїСЂРµС‰С‘РЅРЅС‹Рµ РјРѕРґСѓР»Рё РґРѕСЃС‚Р°РІРєРё');
+define('TABLE_HEADING_DISCOUNT','РЎРєРёРґРєР°');
+define('TABLE_HEADING_TAX_PRICE','РџРѕРєР°Р·С‹РІР°С‚СЊ С†РµРЅС‹ / РІРєР»СЋС‡Р°СЏ РЅР°Р»РѕРі');
 
-define('TAX_NO','нет');
-define('TAX_YES','да');
+define('TAX_NO','РЅРµС‚');
+define('TAX_YES','РґР°');
 
-define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS_STATUS', 'Существующие группы клиентов:');
+define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS_STATUS', 'РЎСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РіСЂСѓРїРїС‹ РєР»РёРµРЅС‚РѕРІ:');
 
-define('TEXT_INFO_CUSTOMERS_FSK18_DISPLAY_INTRO','<b>FSK18 товары</b>');
-define('TEXT_INFO_CUSTOMERS_FSK18_INTRO','<b>FSK18 Заблокирован</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_ADD_TAX_INTRO','<b>Если цена включает налог, установите налог в = "нет"</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_MIN_ORDER_INTRO','Определите минимальную сумму заказа или оставьте поле пустым.');
-define('TEXT_INFO_CUSTOMERS_STATUS_MAX_ORDER_INTRO','Определите максимальную сумму заказа или оставьте поле пустым.');
-define('TEXT_INFO_CUSTOMERS_STATUS_BT_PERMISSION_INTRO', '<b>Разрешить покупателям этой группы оплату через банковский перевод?</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_CC_PERMISSION_INTRO', '<b>Разрешить покупателям этой группы оплату кредитными картами?</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_COD_PERMISSION_INTRO', '<b>Разрешить покупателям этой группы оплату наличными?</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO','<b>Скидка для атрибутов товара</b><br />(Макс. % скидки на единицу товара)');
-define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO','<b>Скидка от общей стоимости заказа</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE', 'Скидка (от 0 до 100%):');
-define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE_INTRO', 'Укажите скидку от 0 до 100%, которая будет применена к каждому товару.');
-define('TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO','<b>Цены от количества</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_IMAGE','Картинка группы');
-define('TEXT_INFO_CUSTOMERS_STATUS_NAME','<b>Название группы</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_PAYMENT_UNALLOWED_INTRO','<b>Неразрешенные методы оплаты</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_PUBLIC_INTRO','<b>Показывать инфо в магазине?</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_SHIPPING_UNALLOWED_INTRO','<b>Неразрешенные методы доставки</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_INTRO','<b>Показывать цены в магазине</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_TAX_INTRO','<b>Показывать цены с налогом или без</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_WRITE_REVIEWS_INTRO','<b>Написание отзывов</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_READ_REVIEWS_INTRO', '<b>Чтение отзывов</b>');
+define('TEXT_INFO_CUSTOMERS_FSK18_DISPLAY_INTRO','<b>FSK18 С‚РѕРІР°СЂС‹</b>');
+define('TEXT_INFO_CUSTOMERS_FSK18_INTRO','<b>FSK18 Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_ADD_TAX_INTRO','<b>Р•СЃР»Рё С†РµРЅР° РІРєР»СЋС‡Р°РµС‚ РЅР°Р»РѕРі, СѓСЃС‚Р°РЅРѕРІРёС‚Рµ РЅР°Р»РѕРі РІ = "РЅРµС‚"</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_MIN_ORDER_INTRO','РћРїСЂРµРґРµР»РёС‚Рµ РјРёРЅРёРјР°Р»СЊРЅСѓСЋ СЃСѓРјРјСѓ Р·Р°РєР°Р·Р° РёР»Рё РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј.');
+define('TEXT_INFO_CUSTOMERS_STATUS_MAX_ORDER_INTRO','РћРїСЂРµРґРµР»РёС‚Рµ РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ СЃСѓРјРјСѓ Р·Р°РєР°Р·Р° РёР»Рё РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј.');
+define('TEXT_INFO_CUSTOMERS_STATUS_BT_PERMISSION_INTRO', '<b>Р Р°Р·СЂРµС€РёС‚СЊ РїРѕРєСѓРїР°С‚РµР»СЏРј СЌС‚РѕР№ РіСЂСѓРїРїС‹ РѕРїР»Р°С‚Сѓ С‡РµСЂРµР· Р±Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ?</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_CC_PERMISSION_INTRO', '<b>Р Р°Р·СЂРµС€РёС‚СЊ РїРѕРєСѓРїР°С‚РµР»СЏРј СЌС‚РѕР№ РіСЂСѓРїРїС‹ РѕРїР»Р°С‚Сѓ РєСЂРµРґРёС‚РЅС‹РјРё РєР°СЂС‚Р°РјРё?</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_COD_PERMISSION_INTRO', '<b>Р Р°Р·СЂРµС€РёС‚СЊ РїРѕРєСѓРїР°С‚РµР»СЏРј СЌС‚РѕР№ РіСЂСѓРїРїС‹ РѕРїР»Р°С‚Сѓ РЅР°Р»РёС‡РЅС‹РјРё?</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO','<b>РЎРєРёРґРєР° РґР»СЏ Р°С‚СЂРёР±СѓС‚РѕРІ С‚РѕРІР°СЂР°</b><br />(РњР°РєСЃ. % СЃРєРёРґРєРё РЅР° РµРґРёРЅРёС†Сѓ С‚РѕРІР°СЂР°)');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO','<b>РЎРєРёРґРєР° РѕС‚ РѕР±С‰РµР№ СЃС‚РѕРёРјРѕСЃС‚Рё Р·Р°РєР°Р·Р°</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE', 'РЎРєРёРґРєР° (РѕС‚ 0 РґРѕ 100%):');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE_INTRO', 'РЈРєР°Р¶РёС‚Рµ СЃРєРёРґРєСѓ РѕС‚ 0 РґРѕ 100%, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїСЂРёРјРµРЅРµРЅР° Рє РєР°Р¶РґРѕРјСѓ С‚РѕРІР°СЂСѓ.');
+define('TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO','<b>Р¦РµРЅС‹ РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР°</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_IMAGE','РљР°СЂС‚РёРЅРєР° РіСЂСѓРїРїС‹');
+define('TEXT_INFO_CUSTOMERS_STATUS_NAME','<b>РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_PAYMENT_UNALLOWED_INTRO','<b>РќРµСЂР°Р·СЂРµС€РµРЅРЅС‹Рµ РјРµС‚РѕРґС‹ РѕРїР»Р°С‚С‹</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_PUBLIC_INTRO','<b>РџРѕРєР°Р·С‹РІР°С‚СЊ РёРЅС„Рѕ РІ РјР°РіР°Р·РёРЅРµ?</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_SHIPPING_UNALLOWED_INTRO','<b>РќРµСЂР°Р·СЂРµС€РµРЅРЅС‹Рµ РјРµС‚РѕРґС‹ РґРѕСЃС‚Р°РІРєРё</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_INTRO','<b>РџРѕРєР°Р·С‹РІР°С‚СЊ С†РµРЅС‹ РІ РјР°РіР°Р·РёРЅРµ</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_TAX_INTRO','<b>РџРѕРєР°Р·С‹РІР°С‚СЊ С†РµРЅС‹ СЃ РЅР°Р»РѕРіРѕРј РёР»Рё Р±РµР·</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_WRITE_REVIEWS_INTRO','<b>РќР°РїРёСЃР°РЅРёРµ РѕС‚Р·С‹РІРѕРІ</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_READ_REVIEWS_INTRO', '<b>Р§С‚РµРЅРёРµ РѕС‚Р·С‹РІРѕРІ</b>');
 
-define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить эту группу?');
-define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
-define('TEXT_INFO_INSERT_INTRO', 'Создайте новую группу.');
+define('TEXT_INFO_DELETE_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РіСЂСѓРїРїСѓ?');
+define('TEXT_INFO_EDIT_INTRO', 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёР·РјРµРЅРµРЅРёСЏ');
+define('TEXT_INFO_INSERT_INTRO', 'РЎРѕР·РґР°Р№С‚Рµ РЅРѕРІСѓСЋ РіСЂСѓРїРїСѓ.');
 
-define('TEXT_INFO_HEADING_DELETE_CUSTOMERS_STATUS', 'Удаление группы');
-define('TEXT_INFO_HEADING_EDIT_CUSTOMERS_STATUS','Редактирование группы');
-define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'Новая группа');
+define('TEXT_INFO_HEADING_DELETE_CUSTOMERS_STATUS', 'РЈРґР°Р»РµРЅРёРµ РіСЂСѓРїРїС‹');
+define('TEXT_INFO_HEADING_EDIT_CUSTOMERS_STATUS','Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РіСЂСѓРїРїС‹');
+define('TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS', 'РќРѕРІР°СЏ РіСЂСѓРїРїР°');
 
-define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Цена для группы</b>');
-define('ENTRY_CUSTOMERS_STATUS_BASE', 'Какая цена будет показываться данной группе (Посетитель, Покупатель или Оптовый покупатель). Если выбран Админ, то цены не показываются.');
+define('TEXT_INFO_CUSTOMERS_STATUS_BASE', '<b>Р¦РµРЅР° РґР»СЏ РіСЂСѓРїРїС‹</b>');
+define('ENTRY_CUSTOMERS_STATUS_BASE', 'РљР°РєР°СЏ С†РµРЅР° Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊСЃСЏ РґР°РЅРЅРѕР№ РіСЂСѓРїРїРµ (РџРѕСЃРµС‚РёС‚РµР»СЊ, РџРѕРєСѓРїР°С‚РµР»СЊ РёР»Рё РћРїС‚РѕРІС‹Р№ РїРѕРєСѓРїР°С‚РµР»СЊ). Р•СЃР»Рё РІС‹Р±СЂР°РЅ РђРґРјРёРЅ, С‚Рѕ С†РµРЅС‹ РЅРµ РїРѕРєР°Р·С‹РІР°СЋС‚СЃСЏ.');
 
-// Сборка VaM
+// РЎР±РѕСЂРєР° VaM
 
-define('TEXT_PUBLIC',', открытая');
-define('TABLE_HEADING_ICON','Картинка');
-define('TABLE_HEADING_USERS','Клиентов');
+define('TEXT_PUBLIC',', РѕС‚РєСЂС‹С‚Р°СЏ');
+define('TABLE_HEADING_ICON','РљР°СЂС‚РёРЅРєР°');
+define('TABLE_HEADING_USERS','РљР»РёРµРЅС‚РѕРІ');
 
-define('TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO', '<b>Накопительный предел</b>');
-define('ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY','Общая сумма заказов, достигнув которую, покупатель попадает в данную группу');
+define('TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO', '<b>РќР°РєРѕРїРёС‚РµР»СЊРЅС‹Р№ РїСЂРµРґРµР»</b>');
+define('ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY','РћР±С‰Р°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·РѕРІ, РґРѕСЃС‚РёРіРЅСѓРІ РєРѕС‚РѕСЂСѓСЋ, РїРѕРєСѓРїР°С‚РµР»СЊ РїРѕРїР°РґР°РµС‚ РІ РґР°РЅРЅСѓСЋ РіСЂСѓРїРїСѓ');
 
-define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO', '<b>Накопительные статусы:</b>');
-define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY', 'Какие именно заказы будут учитываться при подсчёте общей суммы покупок покупателя');
+define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO', '<b>РќР°РєРѕРїРёС‚РµР»СЊРЅС‹Рµ СЃС‚Р°С‚СѓСЃС‹:</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY', 'РљР°РєРёРµ РёРјРµРЅРЅРѕ Р·Р°РєР°Р·С‹ Р±СѓРґСѓС‚ СѓС‡РёС‚С‹РІР°С‚СЊСЃСЏ РїСЂРё РїРѕРґСЃС‡С‘С‚Рµ РѕР±С‰РµР№ СЃСѓРјРјС‹ РїРѕРєСѓРїРѕРє РїРѕРєСѓРїР°С‚РµР»СЏ');
 
 ?>

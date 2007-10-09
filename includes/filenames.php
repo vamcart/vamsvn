@@ -98,7 +98,7 @@ define('FILENAME_ERROR_HANDLER', 'error_handler.php');
 define('FILENAME_CONTENT', 'shop_content.php');
 define('FILENAME_BANNER', 'banners.php');
 
-// Ñáîðêà VaM
+// Ð¡Ð±Ð¾Ñ€ÐºÐ° VaM
 
 define('FILENAME_RSS2', 'rss2.php');
 

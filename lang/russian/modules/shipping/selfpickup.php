@@ -22,16 +22,16 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Ñàìîâûâîç');
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_DESCRIPTION', 'Ïîêóïàòåëü ñàì çàáèðàåò ñâîé çàêàç');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER', 'Ïîðÿäîê ñîðòèðîâêè');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Ð¡Ð°Ð¼Ð¾Ð²Ñ‹Ð²Ð¾Ð·');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_DESCRIPTION', 'ÐŸÐ¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑŒ ÑÐ°Ð¼ Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÑ‚ ÑÐ²Ð¾Ð¹ Ð·Ð°ÐºÐ°Ð·');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
 
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Ñàìîâûâîç');
-define('MODULE_SHIPPING_SELFPICKUP_TEXT_WAY', 'Ïîêóïàòåëü ñàì çàáèðàåò ñâîé çàêàç');
-define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_TITLE' , 'Ðàçðåø¸ííûå ñòðàíû');
-define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_DESC' , 'Óêàæèòå êîäû ñòðàí, äëÿ êîòîðûõ áóäåò äîñòóïåí äàííûé ìîäóëü (íàïðèìåð RU,DE (îñòàâüòå ïîëå ïóñòûì, åñëè õîòèòå ÷òî á ìîäóëü áûë äîñòóïåí ïîêóïàòåëÿì èç ëþáûõ ñòðàí))');
-define('MODULE_SHIPPING_SELFPICKUP_STATUS_TITLE', 'Ðàçðåøèòü ìîäóëü ñàìîâûâîç');
-define('MODULE_SHIPPING_SELFPICKUP_STATUS_DESC', 'Âû õîòèòå ðàçðåøèòü ìîäóëü ñàìîâûâîç?');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_TITLE', 'Ïîðÿäîê ñîðòèðîâêè');
-define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_DESC', 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_TITLE', 'Ð¡Ð°Ð¼Ð¾Ð²Ñ‹Ð²Ð¾Ð·');
+define('MODULE_SHIPPING_SELFPICKUP_TEXT_WAY', 'ÐŸÐ¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑŒ ÑÐ°Ð¼ Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÑ‚ ÑÐ²Ð¾Ð¹ Ð·Ð°ÐºÐ°Ð·');
+define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÑ‘Ð½Ð½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ñ‹');
+define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_DESC' , 'Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð´Ñ‹ ÑÑ‚Ñ€Ð°Ð½, Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ RU,DE (Ð¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿Ð¾Ð»Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼, ÐµÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ‡Ñ‚Ð¾ Ð± Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð±Ñ‹Ð» Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð»ÑŽÐ±Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½))');
+define('MODULE_SHIPPING_SELFPICKUP_STATUS_TITLE', 'Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÑÐ°Ð¼Ð¾Ð²Ñ‹Ð²Ð¾Ð·');
+define('MODULE_SHIPPING_SELFPICKUP_STATUS_DESC', 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÑÐ°Ð¼Ð¾Ð²Ñ‹Ð²Ð¾Ð·?');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_TITLE', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_DESC', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
 ?>

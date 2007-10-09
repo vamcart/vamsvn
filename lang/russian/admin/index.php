@@ -17,54 +17,54 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Выберите нужное действие..');
+define('HEADING_TITLE', 'Р’С‹Р±РµСЂРёС‚Рµ РЅСѓР¶РЅРѕРµ РґРµР№СЃС‚РІРёРµ..');
 
-define('BOX_TITLE_ORDERS', 'Заказы');
-define('BOX_TITLE_STATISTICS', 'Статистика');
+define('BOX_TITLE_ORDERS', 'Р—Р°РєР°Р·С‹');
+define('BOX_TITLE_STATISTICS', 'РЎС‚Р°С‚РёСЃС‚РёРєР°');
 
-define('BOX_ENTRY_SUPPORT_SITE', 'Сайт поддержки');
-define('BOX_ENTRY_SUPPORT_FORUMS', 'Форумы поддержки');
-define('BOX_ENTRY_MAILING_LISTS', 'Лист рассылки');
-define('BOX_ENTRY_BUG_REPORTS', 'Сообщения об ошибках');
-define('BOX_ENTRY_FAQ', 'ЧаВО');
-define('BOX_ENTRY_LIVE_DISCUSSIONS', 'Обсуждение проекта');
-define('BOX_ENTRY_CVS_REPOSITORY', 'CVS Сервер');
-define('BOX_ENTRY_INFORMATION_PORTAL', 'Информационный портал');
+define('BOX_ENTRY_SUPPORT_SITE', 'РЎР°Р№С‚ РїРѕРґРґРµСЂР¶РєРё');
+define('BOX_ENTRY_SUPPORT_FORUMS', 'Р¤РѕСЂСѓРјС‹ РїРѕРґРґРµСЂР¶РєРё');
+define('BOX_ENTRY_MAILING_LISTS', 'Р›РёСЃС‚ СЂР°СЃСЃС‹Р»РєРё');
+define('BOX_ENTRY_BUG_REPORTS', 'РЎРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С…');
+define('BOX_ENTRY_FAQ', 'Р§Р°Р’Рћ');
+define('BOX_ENTRY_LIVE_DISCUSSIONS', 'РћР±СЃСѓР¶РґРµРЅРёРµ РїСЂРѕРµРєС‚Р°');
+define('BOX_ENTRY_CVS_REPOSITORY', 'CVS РЎРµСЂРІРµСЂ');
+define('BOX_ENTRY_INFORMATION_PORTAL', 'РРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹Р№ РїРѕСЂС‚Р°Р»');
 
-define('BOX_ENTRY_CUSTOMERS', 'Клиенты:');
-define('BOX_ENTRY_PRODUCTS', 'Товары:');
-define('BOX_ENTRY_REVIEWS', 'Отзывы:');
+define('BOX_ENTRY_CUSTOMERS', 'РљР»РёРµРЅС‚С‹:');
+define('BOX_ENTRY_PRODUCTS', 'РўРѕРІР°СЂС‹:');
+define('BOX_ENTRY_REVIEWS', 'РћС‚Р·С‹РІС‹:');
 
-define('BOX_CONNECTION_PROTECTED', 'Вы защищены %s безопасным SSL соединением.');
-define('BOX_CONNECTION_UNPROTECTED', 'Вы <font color="#ff0000">не</font> защищены безопасным SSL соединением.');
-define('BOX_CONNECTION_UNKNOWN', 'неизвестно'); 
+define('BOX_CONNECTION_PROTECTED', 'Р’С‹ Р·Р°С‰РёС‰РµРЅС‹ %s Р±РµР·РѕРїР°СЃРЅС‹Рј SSL СЃРѕРµРґРёРЅРµРЅРёРµРј.');
+define('BOX_CONNECTION_UNPROTECTED', 'Р’С‹ <font color="#ff0000">РЅРµ</font> Р·Р°С‰РёС‰РµРЅС‹ Р±РµР·РѕРїР°СЃРЅС‹Рј SSL СЃРѕРµРґРёРЅРµРЅРёРµРј.');
+define('BOX_CONNECTION_UNKNOWN', 'РЅРµРёР·РІРµСЃС‚РЅРѕ'); 
 
-define('BOX_HEADING_CONFIGURATION', 'Конфигурация');
-define('BOX_CONFIGURATION_MYSTORE', 'Мой магазин');
-define('BOX_CONFIGURATION_LOGGING', 'Логин информация');
-define('BOX_CONFIGURATION_CACHE', 'Кеш опции');
+define('BOX_HEADING_CONFIGURATION', 'РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ');
+define('BOX_CONFIGURATION_MYSTORE', 'РњРѕР№ РјР°РіР°Р·РёРЅ');
+define('BOX_CONFIGURATION_LOGGING', 'Р›РѕРіРёРЅ РёРЅС„РѕСЂРјР°С†РёСЏ');
+define('BOX_CONFIGURATION_CACHE', 'РљРµС€ РѕРїС†РёРё');
 
-define('BOX_MODULES_PAYMENT', 'Оплата');
-define('BOX_MODULES_SHIPPING', 'Доставка');
+define('BOX_MODULES_PAYMENT', 'РћРїР»Р°С‚Р°');
+define('BOX_MODULES_SHIPPING', 'Р”РѕСЃС‚Р°РІРєР°');
 
-define('BOX_CATALOG_MANUFACTURERS', 'Производители');
+define('BOX_CATALOG_MANUFACTURERS', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»Рё');
 
-define('BOX_CUSTOMERS_CUSTOMERS', 'Покупатели');
-define('BOX_CUSTOMERS_ORDERS', 'Заказы');
-define('BOX_CUSTOMERS_ACCOUNTING', 'Бухгалтерия');
+define('BOX_CUSTOMERS_CUSTOMERS', 'РџРѕРєСѓРїР°С‚РµР»Рё');
+define('BOX_CUSTOMERS_ORDERS', 'Р—Р°РєР°Р·С‹');
+define('BOX_CUSTOMERS_ACCOUNTING', 'Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ');
 
-define('BOX_TAXES_COUNTRIES', 'Страны');
-define('BOX_TAXES_GEO_ZONES', 'Зоны');
+define('BOX_TAXES_COUNTRIES', 'РЎС‚СЂР°РЅС‹');
+define('BOX_TAXES_GEO_ZONES', 'Р—РѕРЅС‹');
 
-define('BOX_LOCALIZATION_CURRENCIES', 'Валюта');
-define('BOX_LOCALIZATION_LANGUAGES', 'Язык');
+define('BOX_LOCALIZATION_CURRENCIES', 'Р’Р°Р»СЋС‚Р°');
+define('BOX_LOCALIZATION_LANGUAGES', 'РЇР·С‹Рє');
 
-define('CATALOG_CONTENTS', 'Содержание');
+define('CATALOG_CONTENTS', 'РЎРѕРґРµСЂР¶Р°РЅРёРµ');
 
-define('REPORTS_PRODUCTS', 'Товары');
-define('REPORTS_ORDERS', 'Заказы');
+define('REPORTS_PRODUCTS', 'РўРѕРІР°СЂС‹');
+define('REPORTS_ORDERS', 'Р—Р°РєР°Р·С‹');
 
-define('TOOLS_BACKUP', 'Резервное Копирование');
-define('TOOLS_BANNERS', 'Баннеры');
-define('TOOLS_FILES', 'Файловый Менеджер');
+define('TOOLS_BACKUP', 'Р РµР·РµСЂРІРЅРѕРµ РљРѕРїРёСЂРѕРІР°РЅРёРµ');
+define('TOOLS_BANNERS', 'Р‘Р°РЅРЅРµСЂС‹');
+define('TOOLS_FILES', 'Р¤Р°Р№Р»РѕРІС‹Р№ РњРµРЅРµРґР¶РµСЂ');
 ?>

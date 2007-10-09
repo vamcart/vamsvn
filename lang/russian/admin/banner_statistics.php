@@ -17,25 +17,25 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Статистика Баннера');
+define('HEADING_TITLE', 'РЎС‚Р°С‚РёСЃС‚РёРєР° Р‘Р°РЅРЅРµСЂР°');
 
-define('TABLE_HEADING_SOURCE', 'Источник');
-define('TABLE_HEADING_VIEWS', 'Показы');
-define('TABLE_HEADING_CLICKS', 'Клики');
+define('TABLE_HEADING_SOURCE', 'РСЃС‚РѕС‡РЅРёРє');
+define('TABLE_HEADING_VIEWS', 'РџРѕРєР°Р·С‹');
+define('TABLE_HEADING_CLICKS', 'РљР»РёРєРё');
 
-define('TEXT_BANNERS_DATA', 'Д<br>а<br>т<br>а');
-define('TEXT_BANNERS_DAILY_STATISTICS', '%s Ежедневная статистика за %s %s');
-define('TEXT_BANNERS_MONTHLY_STATISTICS', '%s Ежемесячная статистика за %s');
-define('TEXT_BANNERS_YEARLY_STATISTICS', '%s Статистика за год');
+define('TEXT_BANNERS_DATA', 'Р”<br>Р°<br>С‚<br>Р°');
+define('TEXT_BANNERS_DAILY_STATISTICS', '%s Р•Р¶РµРґРЅРµРІРЅР°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° Р·Р° %s %s');
+define('TEXT_BANNERS_MONTHLY_STATISTICS', '%s Р•Р¶РµРјРµСЃСЏС‡РЅР°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° Р·Р° %s');
+define('TEXT_BANNERS_YEARLY_STATISTICS', '%s РЎС‚Р°С‚РёСЃС‚РёРєР° Р·Р° РіРѕРґ');
 
-define('STATISTICS_TYPE_DAILY', 'За день');
-define('STATISTICS_TYPE_MONTHLY', 'За месяц');
-define('STATISTICS_TYPE_YEARLY', 'За год');
+define('STATISTICS_TYPE_DAILY', 'Р—Р° РґРµРЅСЊ');
+define('STATISTICS_TYPE_MONTHLY', 'Р—Р° РјРµСЃСЏС†');
+define('STATISTICS_TYPE_YEARLY', 'Р—Р° РіРѕРґ');
 
-define('TITLE_TYPE', 'Тип:');
-define('TITLE_YEAR', 'Год:');
-define('TITLE_MONTH', 'Месяц:');
+define('TITLE_TYPE', 'РўРёРї:');
+define('TITLE_YEAR', 'Р“РѕРґ:');
+define('TITLE_MONTH', 'РњРµСЃСЏС†:');
 
-define('ERROR_GRAPHS_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория для баннеров отсутствует. Создайте поддиректорию \'graphs\' в директории \'images\'.');
-define('ERROR_GRAPHS_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория имеет неверные права доступа.');
+define('ERROR_GRAPHS_DIRECTORY_DOES_NOT_EXIST', 'РћС€РёР±РєР°: Р”РёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ Р±Р°РЅРЅРµСЂРѕРІ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚. РЎРѕР·РґР°Р№С‚Рµ РїРѕРґРґРёСЂРµРєС‚РѕСЂРёСЋ \'graphs\' РІ РґРёСЂРµРєС‚РѕСЂРёРё \'images\'.');
+define('ERROR_GRAPHS_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: Р”РёСЂРµРєС‚РѕСЂРёСЏ РёРјРµРµС‚ РЅРµРІРµСЂРЅС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР°.');
 ?>

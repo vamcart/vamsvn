@@ -17,16 +17,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE_MODULES_PAYMENT', 'Ìîäóëè îïëàòû');
-define('HEADING_TITLE_MODULES_SHIPPING', 'Ìîäóëè äîñòàâêè');
-define('HEADING_TITLE_MODULES_ORDER_TOTAL', 'Ìîäóëè èòîãî');
+define('HEADING_TITLE_MODULES_PAYMENT', 'ÐœÐ¾Ð´ÑƒÐ»Ð¸ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹');
+define('HEADING_TITLE_MODULES_SHIPPING', 'ÐœÐ¾Ð´ÑƒÐ»Ð¸ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('HEADING_TITLE_MODULES_ORDER_TOTAL', 'ÐœÐ¾Ð´ÑƒÐ»Ð¸ Ð¸Ñ‚Ð¾Ð³Ð¾');
 
-define('TABLE_HEADING_MODULES', 'Ìîäóëè');
-define('TABLE_HEADING_SORT_ORDER', 'Ïîðÿäîê ñîðòèðîâêè');
-define('TABLE_HEADING_STATUS', 'Ñòàòóñ');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_MODULES', 'ÐœÐ¾Ð´ÑƒÐ»Ð¸');
+define('TABLE_HEADING_SORT_ORDER', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('TABLE_HEADING_STATUS', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_MODULE_DIRECTORY', 'Äèðåêòîðèÿ ìîäóëåé:');
+define('TEXT_MODULE_DIRECTORY', 'Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ Ð¼Ð¾Ð´ÑƒÐ»ÐµÐ¹:');
 
-define('TABLE_HEADING_FILENAME','Íàçâàíèÿ ìîäóëåé (äëÿ ñèñòåìíîãî èñïîëüçîâàíèÿ)');
+define('TABLE_HEADING_FILENAME','ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ñ Ð¼Ð¾Ð´ÑƒÐ»ÐµÐ¹ (Ð´Ð»Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ð¾Ð³Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ)');
 ?>

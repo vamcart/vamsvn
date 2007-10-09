@@ -36,14 +36,14 @@
 <body>
 
 
-<!-- Êîíòåéíåð -->
+<!-- ÐšÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ -->
 <div id="container">
 
-<!-- Øàïêà -->
+<!-- Ð¨Ð°Ð¿ÐºÐ° -->
 <div id="header">
 <img src="images/logo.gif" alt="VaM Shop" />
 </div>
-<!-- /Øàïêà -->
+<!-- /Ð¨Ð°Ð¿ÐºÐ° -->
 
 <div id="menu">
 <ul>
@@ -58,23 +58,23 @@
 </ul>
 </div>
 
-<!-- Íàâèãàöèÿ -->
+<!-- ÐÐ°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ñ -->
 <div id="navigation">
 <span><?php echo TEXT_INSTALL; ?></span>
 </div>
-<!-- /Íàâèãàöèÿ -->
+<!-- /ÐÐ°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ñ -->
 
-<!-- Öåíòð -->
+<!-- Ð¦ÐµÐ½Ñ‚Ñ€ -->
 <div id="wrapper">
 <div id="content">
 
-<!-- Çàãîëîâîê ñòðàíèöû -->
+<!-- Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ -->
 <h1><?php echo TITLE_STEP1; ?></h1>
-<!-- /Çàãîëîâîê ñòðàíèöû -->
-<!-- Ñêðóãëåííûå óãëû -->
+<!-- /Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ -->
+<!-- Ð¡ÐºÑ€ÑƒÐ³Ð»ÐµÐ½Ð½Ñ‹Ðµ ÑƒÐ³Ð»Ñ‹ -->
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
-<!-- Ñîäåðæèìîå ñòðàíèöû -->
+<!-- Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ -->
 <div class="pagecontent">
 
 <form name="install" method="post" action="step2.php">
@@ -109,39 +109,39 @@
 </form>
 
 </div>
-<!-- /Ñîäåðæèìîå ñòðàíèöû -->
+<!-- /Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ -->
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
-<!-- /Ñêðóãëåííûå óãëû -->
+<!-- /Ð¡ÐºÑ€ÑƒÐ³Ð»ÐµÐ½Ð½Ñ‹Ðµ ÑƒÐ³Ð»Ñ‹ -->
 
 </div>
 <p></p>
 
 </div>
 </div>
-<!-- /Öåíòð -->
+<!-- /Ð¦ÐµÐ½Ñ‚Ñ€ -->
 
-<!-- Ëåâàÿ êîëîíêà -->
+<!-- Ð›ÐµÐ²Ð°Ñ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° -->
 <div id="left">
 &nbsp;
 </div>
-<!-- /Ëåâàÿ êîëîíêà -->
+<!-- /Ð›ÐµÐ²Ð°Ñ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° -->
 
-<!-- Ïðàâàÿ êîëîíêà -->
+<!-- ÐŸÑ€Ð°Ð²Ð°Ñ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° -->
 <div id="right">
 &nbsp;
 </div>
-<!-- /Ïðàâàÿ êîëîíêà -->
+<!-- /ÐŸÑ€Ð°Ð²Ð°Ñ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° -->
 
-<!-- Íèç -->
+<!-- ÐÐ¸Ð· -->
 <div id="footer">
 &nbsp;
 </div>
-<!-- /Íèç -->
+<!-- /ÐÐ¸Ð· -->
 
 </div>
-<!-- /Êîíòåéíåð -->
+<!-- /ÐšÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ -->
 
-<div class="copyright">eCommerce Engine ©2007 <a href="http://xt-commerce.com" target="_blank">xt:Commerce</a></div>
+<div class="copyright">eCommerce Engine Â©2007 <a href="http://xt-commerce.com" target="_blank">xt:Commerce</a></div>
 <div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a></div>
 
 </body>

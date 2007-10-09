@@ -14,40 +14,40 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('WARNING_MESSAGE','После внесения необходимых изменений нажмите кнопку Обновить для сохранения внесённых изменений.');
-define('TOP_BAR_TITLE', 'Изменение цен');
-define('HEADING_TITLE', 'Изменение цен');
-define('TEXT_MARGE_INFO','Массовое изменение цен, отметьте, если Вы хотите изменить цены сразу всех товаров, например, чтобы снизить цены всех товаров на 10$, пишите -10, чтобы увеличить пишите 10. Если Вы укажите 25%, то цены повысятся на 33%.');
-define('TEXT_PRODUCTS_UPDATED', 'цен обновлено!');
-define('TEXT_IMAGE_PREVIEW','Предварительный просмотр');
-define('TEXT_IMAGE_SWITCH_EDIT','Переключиться для завершения редактирования');
-define('TEXT_QTY_UPDATED', 'значений изменено!');
-define('TEXT_INPUT_SPEC_PRICE','<b>(+/-) Сумма или процент:</b>');
-define('TEXT_SPEC_PRICE_INFO1','Например: 10, 15%, -20, -25%');
-define('TEXT_SPEC_PRICE_INFO2','<b>Замечание: </b>Снимите выделение с тех товаров, цены которых Вы не хотите менять.');
-define('TEXT_MAXI_ROW_BY_PAGE', 'Количество товара на одной странице:');
-define('TEXT_SPECIALS_PRODUCTS', 'Специальная цена!');
-define('TEXT_ALL_MANUFACTURERS', 'Все производители');
-define('NO_TAX_TEXT','нет данных');
-define('NO_MANUFACTURER','нет данных');
-define('TABLE_HEADING_CATEGORIES', 'Категория');
-define('TABLE_HEADING_MODEL', 'Код товара');
-define('TABLE_HEADING_PRODUCTS', 'Название');
-define('TABLE_HEADING_PRICE', 'Цена');
-define('TABLE_HEADING_TAX', 'Статус налога');
-define('TABLE_HEADING_WEIGHT', 'Вес');
-define('TABLE_HEADING_QUANTITY', 'Количество');
-define('TABLE_HEADING_STATUS', 'Статус');
-define('TABLE_HEADING_MANUFACTURERS', 'Производитель');
-define('TABLE_HEADING_IMAGE', 'Изображение');
+define('WARNING_MESSAGE','РџРѕСЃР»Рµ РІРЅРµСЃРµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјС‹С… РёР·РјРµРЅРµРЅРёР№ РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ РћР±РЅРѕРІРёС‚СЊ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РІРЅРµСЃС‘РЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№.');
+define('TOP_BAR_TITLE', 'РР·РјРµРЅРµРЅРёРµ С†РµРЅ');
+define('HEADING_TITLE', 'РР·РјРµРЅРµРЅРёРµ С†РµРЅ');
+define('TEXT_MARGE_INFO','РњР°СЃСЃРѕРІРѕРµ РёР·РјРµРЅРµРЅРёРµ С†РµРЅ, РѕС‚РјРµС‚СЊС‚Рµ, РµСЃР»Рё Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ С†РµРЅС‹ СЃСЂР°Р·Сѓ РІСЃРµС… С‚РѕРІР°СЂРѕРІ, РЅР°РїСЂРёРјРµСЂ, С‡С‚РѕР±С‹ СЃРЅРёР·РёС‚СЊ С†РµРЅС‹ РІСЃРµС… С‚РѕРІР°СЂРѕРІ РЅР° 10$, РїРёС€РёС‚Рµ -10, С‡С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ РїРёС€РёС‚Рµ 10. Р•СЃР»Рё Р’С‹ СѓРєР°Р¶РёС‚Рµ 25%, С‚Рѕ С†РµРЅС‹ РїРѕРІС‹СЃСЏС‚СЃСЏ РЅР° 33%.');
+define('TEXT_PRODUCTS_UPDATED', 'С†РµРЅ РѕР±РЅРѕРІР»РµРЅРѕ!');
+define('TEXT_IMAGE_PREVIEW','РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РїСЂРѕСЃРјРѕС‚СЂ');
+define('TEXT_IMAGE_SWITCH_EDIT','РџРµСЂРµРєР»СЋС‡РёС‚СЊСЃСЏ РґР»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ');
+define('TEXT_QTY_UPDATED', 'Р·РЅР°С‡РµРЅРёР№ РёР·РјРµРЅРµРЅРѕ!');
+define('TEXT_INPUT_SPEC_PRICE','<b>(+/-) РЎСѓРјРјР° РёР»Рё РїСЂРѕС†РµРЅС‚:</b>');
+define('TEXT_SPEC_PRICE_INFO1','РќР°РїСЂРёРјРµСЂ: 10, 15%, -20, -25%');
+define('TEXT_SPEC_PRICE_INFO2','<b>Р—Р°РјРµС‡Р°РЅРёРµ: </b>РЎРЅРёРјРёС‚Рµ РІС‹РґРµР»РµРЅРёРµ СЃ С‚РµС… С‚РѕРІР°СЂРѕРІ, С†РµРЅС‹ РєРѕС‚РѕСЂС‹С… Р’С‹ РЅРµ С…РѕС‚РёС‚Рµ РјРµРЅСЏС‚СЊ.');
+define('TEXT_MAXI_ROW_BY_PAGE', 'РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР° РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ:');
+define('TEXT_SPECIALS_PRODUCTS', 'РЎРїРµС†РёР°Р»СЊРЅР°СЏ С†РµРЅР°!');
+define('TEXT_ALL_MANUFACTURERS', 'Р’СЃРµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»Рё');
+define('NO_TAX_TEXT','РЅРµС‚ РґР°РЅРЅС‹С…');
+define('NO_MANUFACTURER','РЅРµС‚ РґР°РЅРЅС‹С…');
+define('TABLE_HEADING_CATEGORIES', 'РљР°С‚РµРіРѕСЂРёСЏ');
+define('TABLE_HEADING_MODEL', 'РљРѕРґ С‚РѕРІР°СЂР°');
+define('TABLE_HEADING_PRODUCTS', 'РќР°Р·РІР°РЅРёРµ');
+define('TABLE_HEADING_PRICE', 'Р¦РµРЅР°');
+define('TABLE_HEADING_TAX', 'РЎС‚Р°С‚СѓСЃ РЅР°Р»РѕРіР°');
+define('TABLE_HEADING_WEIGHT', 'Р’РµСЃ');
+define('TABLE_HEADING_QUANTITY', 'РљРѕР»РёС‡РµСЃС‚РІРѕ');
+define('TABLE_HEADING_STATUS', 'РЎС‚Р°С‚СѓСЃ');
+define('TABLE_HEADING_MANUFACTURERS', 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ');
+define('TABLE_HEADING_IMAGE', 'РР·РѕР±СЂР°Р¶РµРЅРёРµ');
 define('TABLE_HEADING_XML', 'XML');
-define('TABLE_HEADING_SORT', 'Сортировка');
-define('DISPLAY_CATEGORIES', 'Выберите категорию:');
-define('DISPLAY_MANUFACTURERS', 'Выберите производителя:');
-define('PRINT_TEXT', 'Распечатать эту страницу');
-define('TOTAL_COST', 'Цена');
+define('TABLE_HEADING_SORT', 'РЎРѕСЂС‚РёСЂРѕРІРєР°');
+define('DISPLAY_CATEGORIES', 'Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ:');
+define('DISPLAY_MANUFACTURERS', 'Р’С‹Р±РµСЂРёС‚Рµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ:');
+define('PRINT_TEXT', 'Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ СЌС‚Сѓ СЃС‚СЂР°РЅРёС†Сѓ');
+define('TOTAL_COST', 'Р¦РµРЅР°');
 
-define('HEADING_TITLE_SEARCH', 'Поиск:');
-define('HEADING_TITLE_SEARCH_MODEL', 'Поиск по коду товара:');
+define('HEADING_TITLE_SEARCH', 'РџРѕРёСЃРє:');
+define('HEADING_TITLE_SEARCH_MODEL', 'РџРѕРёСЃРє РїРѕ РєРѕРґСѓ С‚РѕРІР°СЂР°:');
 
 ?>

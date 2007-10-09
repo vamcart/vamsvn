@@ -18,7 +18,7 @@
    -----------------------------------------------------------------------------------------
    Third Party contributions:
    German Post (Deutsche Post WorldNet)
-   Autor:	Copyright (C) 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl‰nkers | http://www.themedia.at & http://www.oscommerce.at
+   Autor:	Copyright (C) 2002 - 2003 TheMedia, Dipl.-Ing Thomas Pl–¥nkers | http://www.themedia.at & http://www.oscommerce.at
    Changes for personal use: Copyright (C) 2004 Comm4All, Bernd Blazynski | http://www.comm4all.com & http://www.cheapshirt.de
 
    Released under the GNU General Public License 

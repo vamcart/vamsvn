@@ -19,7 +19,7 @@
 	define("AJAX_ADDQUICK_DROPDOWN_SIZE", 5);
 	define("AJAX_ADDQUICK_LIMIT", 15);
 
-	$q = addslashes(preg_replace("%[^0-9a-zA-Z‡-ˇ¿-ﬂ]%", "", $_REQUEST['quickie']) );
+	$q = addslashes(preg_replace("%[^0-9a-zA-Z–∞-—è–ê-–Ø]%", "", $_REQUEST['quickie']) );
 
 	$out = "";
 	if(isset($q) && vam_not_null($q)) {

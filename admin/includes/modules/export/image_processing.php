@@ -18,12 +18,12 @@
    ---------------------------------------------------------------------------------------*/
 defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
-define('MODULE_IMAGE_PROCESS_TEXT_DESCRIPTION', 'Пакетная обработка изображений');
-define('MODULE_IMAGE_PROCESS_TEXT_TITLE', 'Пакетная обработка изображений');
-define('MODULE_IMAGE_PROCESS_STATUS_DESC','Статус модуля');
-define('MODULE_IMAGE_PROCESS_STATUS_TITLE','Статус');
-define('IMAGE_EXPORT','Нажмите [Одобрить] для начала пакетной обработки изображений, этот процесс может длиться некоторое время, ничего не трогайте и не прерывайте!');
-define('IMAGE_EXPORT_TYPE','<hr noshade><b>Пакетная обработка:</b>');
+define('MODULE_IMAGE_PROCESS_TEXT_DESCRIPTION', 'РџР°РєРµС‚РЅР°СЏ РѕР±СЂР°Р±РѕС‚РєР° РёР·РѕР±СЂР°Р¶РµРЅРёР№');
+define('MODULE_IMAGE_PROCESS_TEXT_TITLE', 'РџР°РєРµС‚РЅР°СЏ РѕР±СЂР°Р±РѕС‚РєР° РёР·РѕР±СЂР°Р¶РµРЅРёР№');
+define('MODULE_IMAGE_PROCESS_STATUS_DESC','РЎС‚Р°С‚СѓСЃ РјРѕРґСѓР»СЏ');
+define('MODULE_IMAGE_PROCESS_STATUS_TITLE','РЎС‚Р°С‚СѓСЃ');
+define('IMAGE_EXPORT','РќР°Р¶РјРёС‚Рµ [РћРґРѕР±СЂРёС‚СЊ] РґР»СЏ РЅР°С‡Р°Р»Р° РїР°РєРµС‚РЅРѕР№ РѕР±СЂР°Р±РѕС‚РєРё РёР·РѕР±СЂР°Р¶РµРЅРёР№, СЌС‚РѕС‚ РїСЂРѕС†РµСЃСЃ РјРѕР¶РµС‚ РґР»РёС‚СЊСЃСЏ РЅРµРєРѕС‚РѕСЂРѕРµ РІСЂРµРјСЏ, РЅРёС‡РµРіРѕ РЅРµ С‚СЂРѕРіР°Р№С‚Рµ Рё РЅРµ РїСЂРµСЂС‹РІР°Р№С‚Рµ!');
+define('IMAGE_EXPORT_TYPE','<hr noshade><b>РџР°РєРµС‚РЅР°СЏ РѕР±СЂР°Р±РѕС‚РєР°:</b>');
 
 
   class image_processing {

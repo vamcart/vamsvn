@@ -17,15 +17,15 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE_MODULES_EXPORT', 'XT-Ìîäóëè');
+define('HEADING_TITLE_MODULES_EXPORT', 'XT-ÐœÐ¾Ð´ÑƒÐ»Ð¸');
 
-define('TABLE_HEADING_MODULES', 'Ìîäóëè');
-define('TABLE_HEADING_SORT_ORDER', 'Ïîðÿäîê ñîðòèðîâêè');
-define('TABLE_HEADING_STATUS', 'Ñòàòóñ');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_MODULES', 'ÐœÐ¾Ð´ÑƒÐ»Ð¸');
+define('TABLE_HEADING_SORT_ORDER', 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('TABLE_HEADING_STATUS', 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_MODULE_DIRECTORY', 'Äèðåêòîðèÿ ìîäóëÿ:');
+define('TEXT_MODULE_DIRECTORY', 'Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ Ð¼Ð¾Ð´ÑƒÐ»Ñ:');
 
-define('TABLE_HEADING_FILENAME','Íàçâàíèå ìîäóëÿ (äëÿ âíóòðåííåãî ïîëüçîâàíèÿ)');
-define('ERROR_EXPORT_FOLDER_NOT_WRITEABLE','Çàïèñü â ïàïêó export/ çàïðåùåíà, èñïðàâüòå!');
+define('TABLE_HEADING_FILENAME','ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ñ (Ð´Ð»Ñ Ð²Ð½ÑƒÑ‚Ñ€ÐµÐ½Ð½ÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ)');
+define('ERROR_EXPORT_FOLDER_NOT_WRITEABLE','Ð—Ð°Ð¿Ð¸ÑÑŒ Ð² Ð¿Ð°Ð¿ÐºÑƒ export/ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð°, Ð¸ÑÐ¿Ñ€Ð°Ð²ÑŒÑ‚Ðµ!');
 ?>

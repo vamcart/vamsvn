@@ -23,7 +23,7 @@
   
   function vam_get_country_list($name, $selected = '', $parameters = '') {
    $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
-//    Probleme mit register_globals=off -> erstmal nur auskommentiert. Kann u.U. gelöscht werden.
+//    Probleme mit register_globals=off -> erstmal nur auskommentiert. Kann u.U. gelÑ†scht werden.
     $countries = vam_get_countriesList();
 
     for ($i=0, $n=sizeof($countries); $i<$n; $i++) {

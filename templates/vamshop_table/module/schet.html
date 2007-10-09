@@ -1,32 +1,32 @@
 {config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
 <link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
-<!-- Информация о заказе -->
+<!-- РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°РєР°Р·Рµ -->
 <div class="page">
 
 
 
-<p><b>Поставщик</b> {$1}</p>
-<p><b>Адрес</b> {$2}</p>
-<p><b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}</p>
-<p><b>Р/с</b> 
-{$5} <b>в банке</b> {$6}</p>
-<p><b>К/с</b> 
-{$7} <b>БИК</b> {$8}</p>
-<p><b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
-ОКПО</b> {$12}</p>
-<p><b>Покупатель</b> {$address_label_customer}</p>
+<p><b>РџРѕСЃС‚Р°РІС‰РёРє</b> {$1}</p>
+<p><b>РђРґСЂРµСЃ</b> {$2}</p>
+<p><b>РўРµР»РµС„РѕРЅ</b>&nbsp;{$3} <b>Р¤Р°РєСЃ</b> {$4}</p>
+<p><b>Р /СЃ</b> 
+{$5} <b>РІ Р±Р°РЅРєРµ</b> {$6}</p>
+<p><b>Рљ/СЃ</b> 
+{$7} <b>Р‘РРљ</b> {$8}</p>
+<p><b>РРќРќ</b> {$9}&nbsp; <b>РљРџРџ</b> {$10}&nbsp; <b>РћР“Р Рќ</b> {$11} <b>РљРѕРґ РїРѕ 
+РћРљРџРћ</b> {$12}</p>
+<p><b>РџРѕРєСѓРїР°С‚РµР»СЊ</b> {$address_label_customer}</p>
 <hr>
-<p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
+<p><b><font size="5">РЎС‡РµС‚ в„– {$oID} РѕС‚ {$DATE}</font></b></p>
 <p>&nbsp;</p>
 <table border="0" width="92%" id="table1" cellspacing="0">
 	<tr>
-		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
+		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>в„– Рї/Рї</b></td>
 		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
-		Н/номер</td>
-		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
-		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
-		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Цена</b></td>
-		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>Сумма руб.</b></td>
+		Рќ/РЅРѕРјРµСЂ</td>
+		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР°, СѓСЃР»СѓРі</b></td>
+		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>РљРѕР»РёС‡РµСЃС‚РІРѕ</b></td>
+		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Р¦РµРЅР°</b></td>
+		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>РЎСѓРјРјР° СЂСѓР±.</b></td>
 	</tr>
 	
         {foreach name=aussen item=order_values from=$order_data} 
@@ -49,30 +49,30 @@
   {/foreach} 
 
 </table>
-<p><b>Всего к оплате: {$summa}</b></p>
+<p><b>Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ: {$summa}</b></p>
 <p>&nbsp;</p>
 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Директор ______________________ /Фамилия/</b></p>
-<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Главный бухгалтер __________________/Фамилия/</b></p>
+Р”РёСЂРµРєС‚РѕСЂ ______________________ /Р¤Р°РјРёР»РёСЏ/</b></p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; РњРџ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Р“Р»Р°РІРЅС‹Р№ Р±СѓС…РіР°Р»С‚РµСЂ __________________/Р¤Р°РјРёР»РёСЏ/</b></p>
 <p>&nbsp;</p>
-<p><b>Внимание</b></p>
-<p><b>Срок оплаты - 3 банковских дня. В случае нарушения указанного срока 
-поставщик имеет право</b></p>
-<p><b>в одностороннем порядке изменить условия поставки (сроки, цена)</b></p>
-<p><b>Оплата данного счета означает согласие с условиями поставки товара. 
-Уведомление об оплате</b></p>
-<p><b>обязательно, в противном случае не гарантируется наличие товара на складе.</b></p>
-<p><b>Срок поставки - в течении 5 дней с момента оплаты. Фактом оплаты считается 
-зачисление</b></p>
-<p><b>денежных средств на р/с поставщика.</b></p>
-<p><b>Для оформления накладной и с/ф необходимо иметь следующие документы:</b></p>
-<p><b>1. Доверенность. 2. паспорт. 3. Копию платежного поручения. (Если товар 
-получается лично.)</b></p>
-<p><b>При отправке товара другими средствами доставки сопроводительные документы 
-прилагаются.</b></p>
+<p><b>Р’РЅРёРјР°РЅРёРµ</b></p>
+<p><b>РЎСЂРѕРє РѕРїР»Р°С‚С‹ - 3 Р±Р°РЅРєРѕРІСЃРєРёС… РґРЅСЏ. Р’ СЃР»СѓС‡Р°Рµ РЅР°СЂСѓС€РµРЅРёСЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃСЂРѕРєР° 
+РїРѕСЃС‚Р°РІС‰РёРє РёРјРµРµС‚ РїСЂР°РІРѕ</b></p>
+<p><b>РІ РѕРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРµРј РїРѕСЂСЏРґРєРµ РёР·РјРµРЅРёС‚СЊ СѓСЃР»РѕРІРёСЏ РїРѕСЃС‚Р°РІРєРё (СЃСЂРѕРєРё, С†РµРЅР°)</b></p>
+<p><b>РћРїР»Р°С‚Р° РґР°РЅРЅРѕРіРѕ СЃС‡РµС‚Р° РѕР·РЅР°С‡Р°РµС‚ СЃРѕРіР»Р°СЃРёРµ СЃ СѓСЃР»РѕРІРёСЏРјРё РїРѕСЃС‚Р°РІРєРё С‚РѕРІР°СЂР°. 
+РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± РѕРїР»Р°С‚Рµ</b></p>
+<p><b>РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ, РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ РЅРµ РіР°СЂР°РЅС‚РёСЂСѓРµС‚СЃСЏ РЅР°Р»РёС‡РёРµ С‚РѕРІР°СЂР° РЅР° СЃРєР»Р°РґРµ.</b></p>
+<p><b>РЎСЂРѕРє РїРѕСЃС‚Р°РІРєРё - РІ С‚РµС‡РµРЅРёРё 5 РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° РѕРїР»Р°С‚С‹. Р¤Р°РєС‚РѕРј РѕРїР»Р°С‚С‹ СЃС‡РёС‚Р°РµС‚СЃСЏ 
+Р·Р°С‡РёСЃР»РµРЅРёРµ</b></p>
+<p><b>РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РЅР° СЂ/СЃ РїРѕСЃС‚Р°РІС‰РёРєР°.</b></p>
+<p><b>Р”Р»СЏ РѕС„РѕСЂРјР»РµРЅРёСЏ РЅР°РєР»Р°РґРЅРѕР№ Рё СЃ/С„ РЅРµРѕР±С…РѕРґРёРјРѕ РёРјРµС‚СЊ СЃР»РµРґСѓСЋС‰РёРµ РґРѕРєСѓРјРµРЅС‚С‹:</b></p>
+<p><b>1. Р”РѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ. 2. РїР°СЃРїРѕСЂС‚. 3. РљРѕРїРёСЋ РїР»Р°С‚РµР¶РЅРѕРіРѕ РїРѕСЂСѓС‡РµРЅРёСЏ. (Р•СЃР»Рё С‚РѕРІР°СЂ 
+РїРѕР»СѓС‡Р°РµС‚СЃСЏ Р»РёС‡РЅРѕ.)</b></p>
+<p><b>РџСЂРё РѕС‚РїСЂР°РІРєРµ С‚РѕРІР°СЂР° РґСЂСѓРіРёРјРё СЃСЂРµРґСЃС‚РІР°РјРё РґРѕСЃС‚Р°РІРєРё СЃРѕРїСЂРѕРІРѕРґРёС‚РµР»СЊРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ 
+РїСЂРёР»Р°РіР°СЋС‚СЃСЏ.</b></p>
 <p>&nbsp;</p>
 
 </div>
-<!-- /Информация о заказе -->
+<!-- /РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°РєР°Р·Рµ -->
 </body></html>

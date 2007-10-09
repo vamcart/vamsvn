@@ -17,19 +17,19 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Ñïèñîê íàëîãîâ');
+define('HEADING_TITLE', 'Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð½Ð°Ð»Ð¾Ð³Ð¾Ð²');
 
-define('TABLE_HEADING_TAX_CLASSES', 'Òèï íàëîãà');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_TAX_CLASSES', 'Ð¢Ð¸Ð¿ Ð½Ð°Ð»Ð¾Ð³Ð°');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_INFO_EDIT_INTRO', 'Ïîæàëóéñòà, âíåñèòå íåîáõîäèìûå èçìåíåíèÿ');
-define('TEXT_INFO_CLASS_TITLE', 'Íàçâàíèå íàëîãà:');
-define('TEXT_INFO_CLASS_DESCRIPTION', 'Îïèñàíèå:');
-define('TEXT_INFO_DATE_ADDED', 'Äàòà äîáàâëåíèÿ:');
-define('TEXT_INFO_LAST_MODIFIED', 'Ïîñëåäíåå èçìåíåíèå:');
-define('TEXT_INFO_INSERT_INTRO', 'Ïîæàëóéñòà, âíåñèòå òðåáóåìóþ èíôîðìàöèþ äëÿ íîâîãî íàëîãà');
-define('TEXT_INFO_DELETE_INTRO', 'Âû íà ñàìîì äåëå õîòèòå óäàëèòü íàëîã?');
-define('TEXT_INFO_HEADING_NEW_TAX_CLASS', 'Íîâûé íàëîã');
-define('TEXT_INFO_HEADING_EDIT_TAX_CLASS', 'Ðåäàêòèðîâàòü íàëîã');
-define('TEXT_INFO_HEADING_DELETE_TAX_CLASS', 'Óäàëèòü íàëîã');
+define('TEXT_INFO_EDIT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ');
+define('TEXT_INFO_CLASS_TITLE', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð½Ð°Ð»Ð¾Ð³Ð°:');
+define('TEXT_INFO_CLASS_DESCRIPTION', 'ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ:');
+define('TEXT_INFO_DATE_ADDED', 'Ð”Ð°Ñ‚Ð° Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ:');
+define('TEXT_INFO_LAST_MODIFIED', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½ÐµÐµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ:');
+define('TEXT_INFO_INSERT_INTRO', 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½ÐµÑÐ¸Ñ‚Ðµ Ñ‚Ñ€ÐµÐ±ÑƒÐµÐ¼ÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð½Ð°Ð»Ð¾Ð³Ð°');
+define('TEXT_INFO_DELETE_INTRO', 'Ð’Ñ‹ Ð½Ð° ÑÐ°Ð¼Ð¾Ð¼ Ð´ÐµÐ»Ðµ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³?');
+define('TEXT_INFO_HEADING_NEW_TAX_CLASS', 'ÐÐ¾Ð²Ñ‹Ð¹ Ð½Ð°Ð»Ð¾Ð³');
+define('TEXT_INFO_HEADING_EDIT_TAX_CLASS', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
+define('TEXT_INFO_HEADING_DELETE_TAX_CLASS', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð½Ð°Ð»Ð¾Ð³');
 ?>

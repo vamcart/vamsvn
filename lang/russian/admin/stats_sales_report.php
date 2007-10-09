@@ -17,46 +17,46 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('REPORT_DATE_FORMAT', 'Д. М. Г');
+define('REPORT_DATE_FORMAT', 'Р”. Рњ. Р“');
 
-define('HEADING_TITLE', 'Статистика продаж');
+define('HEADING_TITLE', 'РЎС‚Р°С‚РёСЃС‚РёРєР° РїСЂРѕРґР°Р¶');
 
-define('REPORT_TYPE_YEARLY', 'Годовая');
-define('REPORT_TYPE_MONTHLY', 'Месячная');
-define('REPORT_TYPE_WEEKLY', 'Недельная');
-define('REPORT_TYPE_DAILY', 'Дневная');
-define('REPORT_START_DATE', 'Дата от');
-define('REPORT_END_DATE', 'до (включительно)');
-define('REPORT_DETAIL', 'Подробнее');
-define('REPORT_MAX', 'Показать лучшие');
-define('REPORT_ALL', 'Все');
-define('REPORT_SORT', 'Сортировка по');
-define('REPORT_EXP', 'Экспорт');
-define('REPORT_SEND', 'Выполнить');
-define('EXP_NORMAL', 'Стандартно');
-define('EXP_HTML', 'Только HTML');
+define('REPORT_TYPE_YEARLY', 'Р“РѕРґРѕРІР°СЏ');
+define('REPORT_TYPE_MONTHLY', 'РњРµСЃСЏС‡РЅР°СЏ');
+define('REPORT_TYPE_WEEKLY', 'РќРµРґРµР»СЊРЅР°СЏ');
+define('REPORT_TYPE_DAILY', 'Р”РЅРµРІРЅР°СЏ');
+define('REPORT_START_DATE', 'Р”Р°С‚Р° РѕС‚');
+define('REPORT_END_DATE', 'РґРѕ (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ)');
+define('REPORT_DETAIL', 'РџРѕРґСЂРѕР±РЅРµРµ');
+define('REPORT_MAX', 'РџРѕРєР°Р·Р°С‚СЊ Р»СѓС‡С€РёРµ');
+define('REPORT_ALL', 'Р’СЃРµ');
+define('REPORT_SORT', 'РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ');
+define('REPORT_EXP', 'Р­РєСЃРїРѕСЂС‚');
+define('REPORT_SEND', 'Р’С‹РїРѕР»РЅРёС‚СЊ');
+define('EXP_NORMAL', 'РЎС‚Р°РЅРґР°СЂС‚РЅРѕ');
+define('EXP_HTML', 'РўРѕР»СЊРєРѕ HTML');
 define('EXP_CSV', 'CSV');
 
-define('TABLE_HEADING_DATE', 'Дата');
-define('TABLE_HEADING_ORDERS', 'Заказов');
-define('TABLE_HEADING_ITEMS', 'Товаров');
-define('TABLE_HEADING_REVENUE', 'Сумма');
-define('TABLE_HEADING_SHIPPING', 'Доставка');
+define('TABLE_HEADING_DATE', 'Р”Р°С‚Р°');
+define('TABLE_HEADING_ORDERS', 'Р—Р°РєР°Р·РѕРІ');
+define('TABLE_HEADING_ITEMS', 'РўРѕРІР°СЂРѕРІ');
+define('TABLE_HEADING_REVENUE', 'РЎСѓРјРјР°');
+define('TABLE_HEADING_SHIPPING', 'Р”РѕСЃС‚Р°РІРєР°');
 
-define('DET_HEAD_ONLY', 'Нет подробностей');
-define('DET_DETAIL', 'Показать подробности');
-define('DET_DETAIL_ONLY', 'Подробности с суммой');
+define('DET_HEAD_ONLY', 'РќРµС‚ РїРѕРґСЂРѕР±РЅРѕСЃС‚РµР№');
+define('DET_DETAIL', 'РџРѕРєР°Р·Р°С‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё');
+define('DET_DETAIL_ONLY', 'РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё СЃ СЃСѓРјРјРѕР№');
 
-define('SORT_VAL0', 'стандартно');
-define('SORT_VAL1', 'описание');
-define('SORT_VAL2', 'описание по убыванию');
-define('SORT_VAL3', '№ товаров');
-define('SORT_VAL4', '№ товаров по убыванию');
-define('SORT_VAL5', 'Цена');
-define('SORT_VAL6', 'Цена по убыванию');
+define('SORT_VAL0', 'СЃС‚Р°РЅРґР°СЂС‚РЅРѕ');
+define('SORT_VAL1', 'РѕРїРёСЃР°РЅРёРµ');
+define('SORT_VAL2', 'РѕРїРёСЃР°РЅРёРµ РїРѕ СѓР±С‹РІР°РЅРёСЋ');
+define('SORT_VAL3', 'в„– С‚РѕРІР°СЂРѕРІ');
+define('SORT_VAL4', 'в„– С‚РѕРІР°СЂРѕРІ РїРѕ СѓР±С‹РІР°РЅРёСЋ');
+define('SORT_VAL5', 'Р¦РµРЅР°');
+define('SORT_VAL6', 'Р¦РµРЅР° РїРѕ СѓР±С‹РІР°РЅРёСЋ');
 
-define('REPORT_STATUS_FILTER', 'Статусы заказов');
-define('REPORT_PAYMENT_FILTER','Способ оплаты');
+define('REPORT_STATUS_FILTER', 'РЎС‚Р°С‚СѓСЃС‹ Р·Р°РєР°Р·РѕРІ');
+define('REPORT_PAYMENT_FILTER','РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹');
 
 define('SR_SEPARATOR1', ';');
 define('SR_SEPARATOR2', ';');

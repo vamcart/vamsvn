@@ -14,27 +14,27 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-  define('HEADING_TITLE','Рассылка');
-  define('TITLE_CUSTOMERS','Группа покупателей');
-  define('TITLE_STK','Подписаны');
-  define('TEXT_TITLE','Тема:');
-  define('TEXT_TO','Кому:');
-  define('TEXT_CC','Копия:');
-  define('TEXT_BODY','Текст сообщения:');
-  define('TITLE_NOT_SEND','Заголовок');
-  define('TITLE_ACTION','Действие');
-  define('TEXT_EDIT','Изменить');
-  define('TEXT_DELETE','Удалить');
-  define('TEXT_SEND','Отправить');
-  define('CONFIRM_DELETE','Вы уверены?');
-  define('TITLE_SEND','Отправлено');
-  define('TEXT_NEWSLETTER_ONLY','Пользователи группы, но не подписанные на рассылку');
-  define('TEXT_USERS','подписчиков, из них ');
-  define('TEXT_CUSTOMERS',' покупателей)</i>');
-  define('TITLE_DATE','Дата');
-  define('TEXT_SEND_TO','Получатель:');
-  define('TEXT_PREVIEW','<b>Предварительные просмотр:</b>');
-  define('TEXT_REMOVE_LINK', 'Отказаться от рассылки');
-  define('TEXT_NEWSLETTER_REMOVE', 'Отказаться от рассылки: ');
+  define('HEADING_TITLE','Р Р°СЃСЃС‹Р»РєР°');
+  define('TITLE_CUSTOMERS','Р“СЂСѓРїРїР° РїРѕРєСѓРїР°С‚РµР»РµР№');
+  define('TITLE_STK','РџРѕРґРїРёСЃР°РЅС‹');
+  define('TEXT_TITLE','РўРµРјР°:');
+  define('TEXT_TO','РљРѕРјСѓ:');
+  define('TEXT_CC','РљРѕРїРёСЏ:');
+  define('TEXT_BODY','РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ:');
+  define('TITLE_NOT_SEND','Р—Р°РіРѕР»РѕРІРѕРє');
+  define('TITLE_ACTION','Р”РµР№СЃС‚РІРёРµ');
+  define('TEXT_EDIT','РР·РјРµРЅРёС‚СЊ');
+  define('TEXT_DELETE','РЈРґР°Р»РёС‚СЊ');
+  define('TEXT_SEND','РћС‚РїСЂР°РІРёС‚СЊ');
+  define('CONFIRM_DELETE','Р’С‹ СѓРІРµСЂРµРЅС‹?');
+  define('TITLE_SEND','РћС‚РїСЂР°РІР»РµРЅРѕ');
+  define('TEXT_NEWSLETTER_ONLY','РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РіСЂСѓРїРїС‹, РЅРѕ РЅРµ РїРѕРґРїРёСЃР°РЅРЅС‹Рµ РЅР° СЂР°СЃСЃС‹Р»РєСѓ');
+  define('TEXT_USERS','РїРѕРґРїРёСЃС‡РёРєРѕРІ, РёР· РЅРёС… ');
+  define('TEXT_CUSTOMERS',' РїРѕРєСѓРїР°С‚РµР»РµР№)</i>');
+  define('TITLE_DATE','Р”Р°С‚Р°');
+  define('TEXT_SEND_TO','РџРѕР»СѓС‡Р°С‚РµР»СЊ:');
+  define('TEXT_PREVIEW','<b>РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РїСЂРѕСЃРјРѕС‚СЂ:</b>');
+  define('TEXT_REMOVE_LINK', 'РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё');
+  define('TEXT_NEWSLETTER_REMOVE', 'РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё: ');
 
 ?>

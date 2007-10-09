@@ -17,68 +17,68 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('TABLE_HEADING', 'Ðåäàêòèðîâàòü çàêàç');
+define('TABLE_HEADING', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð·Ð°ÐºÐ°Ð·');
 
-define('TEXT_EDIT_ADDRESS', 'Ðåäàêòèðîâàòü àäðåñ');
-define('TEXT_EDIT_PRODUCTS', 'Ðåäàêòèðîâàòü òîâàðû');
-define('TEXT_EDIT_ATTRIBUTES', 'Ðåäàêòèðîâàòü àòðèáóòû');
-define('TEXT_EDIT_SHIPPING', 'Ðåäàêòèðîâàòü äîñòàâêó');
-define('TEXT_EDIT_ADDRESS_SUCCESS', 'Àäðåñ ñîõðàíåí');
+define('TEXT_EDIT_ADDRESS', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð°Ð´Ñ€ÐµÑ');
+define('TEXT_EDIT_PRODUCTS', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹');
+define('TEXT_EDIT_ATTRIBUTES', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹');
+define('TEXT_EDIT_SHIPPING', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÑƒ');
+define('TEXT_EDIT_ADDRESS_SUCCESS', 'ÐÐ´Ñ€ÐµÑ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½');
 
-define('TEXT_PRODUCT_ID', 'ID êîä:');
-define('TEXT_PRODUCTS_MODEL', 'Êîä òîâàðà:');
-define('TEXT_QUANTITY', 'Êîëè÷åñòâî:');
-define('TEXT_PRODUCT', 'Òîâàð:');
-define('TEXT_TAX', 'Íàëîã:');
-define('TEXT_PRICE', 'Öåíà:');
-define('TEXT_FINAL', 'Èòîãî:');
-define('TEXT_CUSTOMER_GROUP', 'Ãðóïïà ïîêóïàòåëÿ:');
+define('TEXT_PRODUCT_ID', 'ID ÐºÐ¾Ð´:');
+define('TEXT_PRODUCTS_MODEL', 'ÐšÐ¾Ð´ Ñ‚Ð¾Ð²Ð°Ñ€Ð°:');
+define('TEXT_QUANTITY', 'ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾:');
+define('TEXT_PRODUCT', 'Ð¢Ð¾Ð²Ð°Ñ€:');
+define('TEXT_TAX', 'ÐÐ°Ð»Ð¾Ð³:');
+define('TEXT_PRICE', 'Ð¦ÐµÐ½Ð°:');
+define('TEXT_FINAL', 'Ð˜Ñ‚Ð¾Ð³Ð¾:');
+define('TEXT_CUSTOMER_GROUP', 'Ð“Ñ€ÑƒÐ¿Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»Ñ:');
 
-define('TEXT_PRODUCT_SEARCH', 'Èñêàòü òîâàð:');
+define('TEXT_PRODUCT_SEARCH', 'Ð˜ÑÐºÐ°Ñ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€:');
 
-define('TEXT_PRODUCT_OPTION', 'Àòòðèáóòû:');
-define('TEXT_PRODUCT_OPTION_VALUE', 'Îïöèÿ:');
-define('TEXT_PRICE', 'Öåíà:');
-define('TEXT_PRICE_PREFIX', 'Ïðåôèêñ öåíû:');
-define('TEXT_SAVE_ORDER', 'Íàæìèòå êíîïêó Ñîõðàíèòü äëÿ ñîõðàíåíèÿ âíåñ¸ííûõ â çàêàç èçìåíåíèé: ');
+define('TEXT_PRODUCT_OPTION', 'ÐÑ‚Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹:');
+define('TEXT_PRODUCT_OPTION_VALUE', 'ÐžÐ¿Ñ†Ð¸Ñ:');
+define('TEXT_PRICE', 'Ð¦ÐµÐ½Ð°:');
+define('TEXT_PRICE_PREFIX', 'ÐŸÑ€ÐµÑ„Ð¸ÐºÑ Ñ†ÐµÐ½Ñ‹:');
+define('TEXT_SAVE_ORDER', 'ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð´Ð»Ñ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ Ð²Ð½ÐµÑÑ‘Ð½Ð½Ñ‹Ñ… Ð² Ð·Ð°ÐºÐ°Ð· Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹: ');
 
-define('TEXT_INVOICE_ADDRESS', 'Êëèåíò');
-define('TEXT_SHIPPING_ADDRESS', 'Àäðåñ äîñòàâêè');
-define('TEXT_BILLING_ADDRESS', 'Àäðåñ ïëàòåëüùèêà');
+define('TEXT_INVOICE_ADDRESS', 'ÐšÐ»Ð¸ÐµÐ½Ñ‚');
+define('TEXT_SHIPPING_ADDRESS', 'ÐÐ´Ñ€ÐµÑ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TEXT_BILLING_ADDRESS', 'ÐÐ´Ñ€ÐµÑ Ð¿Ð»Ð°Ñ‚ÐµÐ»ÑŒÑ‰Ð¸ÐºÐ°');
 
-define('TEXT_INS', 'Äîáàâèòü:');
-define('TEXT_SHIPPING', 'Ñòîèìîñòü äîñòàâêè');
-define('TEXT_COD_COSTS', 'Íàëè÷íûå â èçäåðæêàõ äîñòàâêè');
-define('TEXT_VALUE', 'Öåíà');
-define('TEXT_DESC', 'âñòàâèòü');
+define('TEXT_INS', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ:');
+define('TEXT_SHIPPING', 'Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TEXT_COD_COSTS', 'ÐÐ°Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ Ð² Ð¸Ð·Ð´ÐµÑ€Ð¶ÐºÐ°Ñ… Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸');
+define('TEXT_VALUE', 'Ð¦ÐµÐ½Ð°');
+define('TEXT_DESC', 'Ð²ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ');
 
-define('TEXT_COMPANY', 'Êîìïàíèÿ:');
-define('TEXT_NAME', 'Èìÿ:');
-define('TEXT_STREET', 'Àäðåñ');
-define('TEXT_ZIP', 'Ïî÷òîâûé èíäåêñ:');
-define('TEXT_CITY', 'Ãîðîä:');
-define('TEXT_COUNTRY', 'Ñòðàíà:');
+define('TEXT_COMPANY', 'ÐšÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ:');
+define('TEXT_NAME', 'Ð˜Ð¼Ñ:');
+define('TEXT_STREET', 'ÐÐ´Ñ€ÐµÑ');
+define('TEXT_ZIP', 'ÐŸÐ¾Ñ‡Ñ‚Ð¾Ð²Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ:');
+define('TEXT_CITY', 'Ð“Ð¾Ñ€Ð¾Ð´:');
+define('TEXT_COUNTRY', 'Ð¡Ñ‚Ñ€Ð°Ð½Ð°:');
 
 
-define('TEXT_PAYMENT', 'Ñïîñîá îïëàòû:');
-define('TEXT_SHIPPING', 'Äîñòàâêà:');
-define('TEXT_LANGUAGE', 'ßçûê:');
-define('TEXT_CURRENCIES', 'Âàëþòà:');
-define('TEXT_ORDER_TOTAL', 'Âñåãî:');
-define('TEXT_SAVE', 'Ñîõðàíèòü');
+define('TEXT_PAYMENT', 'Ð¡Ð¿Ð¾ÑÐ¾Ð± Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹:');
+define('TEXT_SHIPPING', 'Ð”Ð¾ÑÑ‚Ð°Ð²ÐºÐ°:');
+define('TEXT_LANGUAGE', 'Ð¯Ð·Ñ‹Ðº:');
+define('TEXT_CURRENCIES', 'Ð’Ð°Ð»ÑŽÑ‚Ð°:');
+define('TEXT_ORDER_TOTAL', 'Ð’ÑÐµÐ³Ð¾:');
+define('TEXT_SAVE', 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ');
 
-define('TEXT_ACTUAL', 'Òåêóùèé: ');
-define('TEXT_NEW', 'Íîâûé: ');
+define('TEXT_ACTUAL', 'Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹: ');
+define('TEXT_NEW', 'ÐÐ¾Ð²Ñ‹Ð¹: ');
 
-// Ñáîðêà VaM
+// Ð¡Ð±Ð¾Ñ€ÐºÐ° VaM
 
-define('TABLE_HEADING_ORDER', 'Ðåäàêòèðîâàòü çàêàç íîìåð ');
-define('TEXT_EDIT_OTHER', 'Ðåäàêòèðîâàòü äðóãèå äàííûå çàêàçà');
+define('TABLE_HEADING_ORDER', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð·Ð°ÐºÐ°Ð· Ð½Ð¾Ð¼ÐµÑ€ ');
+define('TEXT_EDIT_OTHER', 'Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°ÐºÐ°Ð·Ð°');
 define('TEXT_CUSTOMER_EMAIL', 'E-Mail:');
-define('TEXT_CUSTOMER_TELEPHONE', 'Òåëåôîí:');
+define('TEXT_CUSTOMER_TELEPHONE', 'Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½:');
 define('TEXT_CUSTOMER_UST', 'Vat ID:');
-define('TEXT_SMALL_NETTO', ' (Íåòòî)');
+define('TEXT_SMALL_NETTO', ' (ÐÐµÑ‚Ñ‚Ð¾)');
 
-define('HEADING_TITLE','Ðåäàêòèðîâàíèå çàêàçà');
+define('HEADING_TITLE','Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð·Ð°ÐºÐ°Ð·Ð°');
 
 ?>

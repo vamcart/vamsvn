@@ -14,106 +14,106 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Установка модулей');
+define('HEADING_TITLE', 'РЈСЃС‚Р°РЅРѕРІРєР° РјРѕРґСѓР»РµР№');
 
-define('TABLE_HEADING_FILENAME', 'Название');
-define('TABLE_HEADING_SIZE', 'Размер');
-define('TABLE_HEADING_PERMISSIONS', 'Права доступа');
-define('TABLE_HEADING_USER', 'Пользователь');
-define('TABLE_HEADING_GROUP', 'Группа');
-define('TABLE_HEADING_UPLOADED', 'Загружен');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_FILENAME', 'РќР°Р·РІР°РЅРёРµ');
+define('TABLE_HEADING_SIZE', 'Р Р°Р·РјРµСЂ');
+define('TABLE_HEADING_PERMISSIONS', 'РџСЂР°РІР° РґРѕСЃС‚СѓРїР°');
+define('TABLE_HEADING_USER', 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ');
+define('TABLE_HEADING_GROUP', 'Р“СЂСѓРїРїР°');
+define('TABLE_HEADING_UPLOADED', 'Р—Р°РіСЂСѓР¶РµРЅ');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
 
-define('TEXT_INFO_HEADING_UPLOAD', 'Загрузить');
-define('TEXT_FILE_NAME', 'Имя файла:');
-define('TEXT_FILE_SIZE', 'Размер:');
-define('TEXT_FILE_CONTENTS', 'Содержимое:');
-define('TEXT_LAST_MODIFIED', 'Последние изменения:');
-define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данный файл?');
-define('TEXT_UPLOAD_INTRO', 'Выберите файл для загрузки.');
-define('TEXT_UPLOAD_LIMITS','Вы можете загружать только <b>ZIP архивы</b>, не более <b>'.round(MAX_UPLOADED_FILESIZE/1024).'Kb</b> и только <b>архивы с модулями</b>!');
+define('TEXT_INFO_HEADING_UPLOAD', 'Р—Р°РіСЂСѓР·РёС‚СЊ');
+define('TEXT_FILE_NAME', 'РРјСЏ С„Р°Р№Р»Р°:');
+define('TEXT_FILE_SIZE', 'Р Р°Р·РјРµСЂ:');
+define('TEXT_FILE_CONTENTS', 'РЎРѕРґРµСЂР¶РёРјРѕРµ:');
+define('TEXT_LAST_MODIFIED', 'РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ:');
+define('TEXT_DELETE_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Р№ С„Р°Р№Р»?');
+define('TEXT_UPLOAD_INTRO', 'Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р» РґР»СЏ Р·Р°РіСЂСѓР·РєРё.');
+define('TEXT_UPLOAD_LIMITS','Р’С‹ РјРѕР¶РµС‚Рµ Р·Р°РіСЂСѓР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ <b>ZIP Р°СЂС…РёРІС‹</b>, РЅРµ Р±РѕР»РµРµ <b>'.round(MAX_UPLOADED_FILESIZE/1024).'Kb</b> Рё С‚РѕР»СЊРєРѕ <b>Р°СЂС…РёРІС‹ СЃ РјРѕРґСѓР»СЏРјРё</b>!');
 
-define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данную директорию. Установите правильные права доступа на: %s');
-define('ERROR_FILE_NOT_WRITEABLE', 'Ошибка: Нет доступа на запись в данный файл. Установите правильные права доступа на: %s');
-define('ERROR_DIRECTORY_NOT_REMOVEABLE', 'Ошибка: Не могу удалить данную директорию. Установите правильные права доступа на: %s');
-define('ERROR_FILE_NOT_REMOVEABLE', 'Ошибка: Не могу удалить данный файл. Установите правильные права доступа на: %s');
-define('ERROR_FILE_ALREADY_EXISTS','Файл %s  <b>уже существует</b>.');
+define('ERROR_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: РќРµС‚ РґРѕСЃС‚СѓРїР° РЅР° Р·Р°РїРёСЃСЊ РІ РґР°РЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР°: %s');
+define('ERROR_FILE_NOT_WRITEABLE', 'РћС€РёР±РєР°: РќРµС‚ РґРѕСЃС‚СѓРїР° РЅР° Р·Р°РїРёСЃСЊ РІ РґР°РЅРЅС‹Р№ С„Р°Р№Р». РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР°: %s');
+define('ERROR_DIRECTORY_NOT_REMOVEABLE', 'РћС€РёР±РєР°: РќРµ РјРѕРіСѓ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР°: %s');
+define('ERROR_FILE_NOT_REMOVEABLE', 'РћС€РёР±РєР°: РќРµ РјРѕРіСѓ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Р№ С„Р°Р№Р». РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР°: %s');
+define('ERROR_FILE_ALREADY_EXISTS','Р¤Р°Р№Р» %s  <b>СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚</b>.');
 
-define('ICON_EDIT', 'Редактировать');
-define('ICON_INSTALL', 'Установить');
-define('ICON_REMOVE', 'Удалить модуль');
-define('ICON_DELETE_MODULE', 'Удалить архив с модулем из магазина');
-define('ICON_WITHOUT_DATA_REMOVING', 'сохранив изменения, произведённые модулем');
+define('ICON_EDIT', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ');
+define('ICON_INSTALL', 'РЈСЃС‚Р°РЅРѕРІРёС‚СЊ');
+define('ICON_REMOVE', 'РЈРґР°Р»РёС‚СЊ РјРѕРґСѓР»СЊ');
+define('ICON_DELETE_MODULE', 'РЈРґР°Р»РёС‚СЊ Р°СЂС…РёРІ СЃ РјРѕРґСѓР»РµРј РёР· РјР°РіР°Р·РёРЅР°');
+define('ICON_WITHOUT_DATA_REMOVING', 'СЃРѕС…СЂР°РЅРёРІ РёР·РјРµРЅРµРЅРёСЏ, РїСЂРѕРёР·РІРµРґС‘РЅРЅС‹Рµ РјРѕРґСѓР»РµРј');
 define('ICON_EMPTY', '');
-define('ICON_INSTALLED_CURRENT_FOLDER', 'Текущая папка была установлена');
+define('ICON_INSTALLED_CURRENT_FOLDER', 'РўРµРєСѓС‰Р°СЏ РїР°РїРєР° Р±С‹Р»Р° СѓСЃС‚Р°РЅРѕРІР»РµРЅР°');
 
-define('CIP_MANAGER_SUPPORT','Поддержка: ');
-define('CIP_MANAGER_UPLOADER','Модуль добавил: ');
-define('CIP_MANAGER_SUPPORT_FORUM','Форум поддержки для данного модуля на официальном сайте магазина');
-define('CIP_MANAGER_CONTRIBUTION_PAGE','Официальная страница модуля');
-define('CIP_MANAGER_SUPPORT_FORUM_DEVELOPER','Форум поддержки данного модуля на сайте разработчика');
-define('CIP_MANAGER_INFO','Информация о модуле: ');
-define('CIP_MANAGER_INSTALLED','Модуль установлен');
-define('CIP_MANAGER_NOT_INSTALLED','Модуль не был установлен');
-define('CIP_MANAGER_UPLOAD_NOTE','Вы можете загружать <b>только ZIP архивы</b>, <br><b>не более 500Kb</b><br>и <b>только архивы с модулями</b>.');
-define('CIP_MANAGER_XML_NOT_FOUND',' не найден!');
-define('CIP_MANAGER_GENERAL_INFO','Информация о файле: ');
-define('CIP_MANAGER_IMAGE_PREVIEW','Картинка: ');
-define('CIP_MANAGER_ENLARGE','Увеличить');
-define('CIP_MANAGER_INSTALLED','Модуль <b>установлен!</b>');
-define('CIP_MANAGER_REMOVED','Модуль <b>удалён!</b>');
+define('CIP_MANAGER_SUPPORT','РџРѕРґРґРµСЂР¶РєР°: ');
+define('CIP_MANAGER_UPLOADER','РњРѕРґСѓР»СЊ РґРѕР±Р°РІРёР»: ');
+define('CIP_MANAGER_SUPPORT_FORUM','Р¤РѕСЂСѓРј РїРѕРґРґРµСЂР¶РєРё РґР»СЏ РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РЅР° РѕС„РёС†РёР°Р»СЊРЅРѕРј СЃР°Р№С‚Рµ РјР°РіР°Р·РёРЅР°');
+define('CIP_MANAGER_CONTRIBUTION_PAGE','РћС„РёС†РёР°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° РјРѕРґСѓР»СЏ');
+define('CIP_MANAGER_SUPPORT_FORUM_DEVELOPER','Р¤РѕСЂСѓРј РїРѕРґРґРµСЂР¶РєРё РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РЅР° СЃР°Р№С‚Рµ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°');
+define('CIP_MANAGER_INFO','РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјРѕРґСѓР»Рµ: ');
+define('CIP_MANAGER_INSTALLED','РњРѕРґСѓР»СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅ');
+define('CIP_MANAGER_NOT_INSTALLED','РњРѕРґСѓР»СЊ РЅРµ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ');
+define('CIP_MANAGER_UPLOAD_NOTE','Р’С‹ РјРѕР¶РµС‚Рµ Р·Р°РіСЂСѓР¶Р°С‚СЊ <b>С‚РѕР»СЊРєРѕ ZIP Р°СЂС…РёРІС‹</b>, <br><b>РЅРµ Р±РѕР»РµРµ 500Kb</b><br>Рё <b>С‚РѕР»СЊРєРѕ Р°СЂС…РёРІС‹ СЃ РјРѕРґСѓР»СЏРјРё</b>.');
+define('CIP_MANAGER_XML_NOT_FOUND',' РЅРµ РЅР°Р№РґРµРЅ!');
+define('CIP_MANAGER_GENERAL_INFO','РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„Р°Р№Р»Рµ: ');
+define('CIP_MANAGER_IMAGE_PREVIEW','РљР°СЂС‚РёРЅРєР°: ');
+define('CIP_MANAGER_ENLARGE','РЈРІРµР»РёС‡РёС‚СЊ');
+define('CIP_MANAGER_INSTALLED','РњРѕРґСѓР»СЊ <b>СѓСЃС‚Р°РЅРѕРІР»РµРЅ!</b>');
+define('CIP_MANAGER_REMOVED','РњРѕРґСѓР»СЊ <b>СѓРґР°Р»С‘РЅ!</b>');
 
-define('CONTRIB_INSTALLER_NAME','Установка модулей');
+define('CONTRIB_INSTALLER_NAME','РЈСЃС‚Р°РЅРѕРІРєР° РјРѕРґСѓР»РµР№');
 define('CONTRIB_INSTALLER_VERSION','2.0.6');
 define('CONFIG_FILENAME','install.xml');
 define('INIT_CONTRIB_INSTALLER', 'contrib_installer.php');
 
-define('CANT_CREATE_DIR_TEXT', 'Не могу создать директорию: ');
-define('COLUDNT_REMOVE_DIR_TEXT', 'Не могу удалить директорию: ');
-define('WRITE_PERMISSINS_NEEDED_TEXT', 'Необходимы права доступа на запись для: ');
-define('COULDNT_REMOVE_FILE_TEXT', 'Не могу удалить файл: ');
-define('COULDNT_COPY_TO_TEXT', 'Не могу скопировать файл: ');
-define('COULDNT_FIND_TEXT', 'Не могу найти ');
-define('NO_CONTRIBUTION_NAME_TEXT', 'Не указано название модуля.');
-define('NAME_OF_FILE_MISSING_IN_ADDFILE_SECTION_TEXT', 'Название отсутствующего файла.');
-define('NO_QUERY_TAG_IN_SQL_SECTION_TEXT', 'Нет тэга query.');
-define('NO_REMOVE_QUERY_NESSESARY_FOR_SQL_QUERY_TEXT', 'Нет необходимого запроса на удаление для SQL запроса: ');
-define('NAME_OF_DIR_MISSING_IN_MAKE_DIR_SECTION_TEXT', 'Название отсутствующей директории.');
-define('IN_THE_FILE_TEXT', 'в файле: ');
-define('NO_INSTALL_TAG_IN_PHP_SECTION_TEXT', 'Нет тэга INSTALL.');
-define('NO_REMOVE_TAG_IN_PHP_SECTION_TEXT', 'Нет тэга REMOVE.');
-define('FILE_NOT_EXISTS_TEXT', 'Файл не найден');
-define('NAME_OF_FILE_MISSING_IN_DEL_FILE_SECTION_TEXT', 'Название отсутствующего файла.');
-define('ERROR_COULD_NOT_OPEN_XML', 'Не могу открыть XML в: ');
-define('TEXT_NOT_ORIGINAL_TEXT', 'Не оригинальный текст в find разделе. ');
-define('TEXT_HAVE_BEEN_FOUND', 'был найден ');
-define('TEXT_TIMES', ' раз!');
-define('NO_COMMENTS_TAG_IN_DESCRIPTION_SECTION_TEXT', 'Нет тэга comments в разделе описания');
-define('NO_CREDITS_TAG_IN_DESCRIPTION_SECTION_TEXT', 'Нет тэга credits в разделе описания');
-define('NO_CONTRIB_REF_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра contrib_ref в тэге details');
-define('NO_FORUM_REF_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра forum_ref в тэге details');
-define('NO_CONTRIB_TYPE_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра contrib_type в тэге details');
-define('NO_STATUS_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра status в тэге details');
-define('NO_LAST_UPDATE_PARAMETER_IN_DETAILS_TAG_TEXT', 'Нет параметра last_update в тэге details');
+define('CANT_CREATE_DIR_TEXT', 'РќРµ РјРѕРіСѓ СЃРѕР·РґР°С‚СЊ РґРёСЂРµРєС‚РѕСЂРёСЋ: ');
+define('COLUDNT_REMOVE_DIR_TEXT', 'РќРµ РјРѕРіСѓ СѓРґР°Р»РёС‚СЊ РґРёСЂРµРєС‚РѕСЂРёСЋ: ');
+define('WRITE_PERMISSINS_NEEDED_TEXT', 'РќРµРѕР±С…РѕРґРёРјС‹ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РЅР° Р·Р°РїРёСЃСЊ РґР»СЏ: ');
+define('COULDNT_REMOVE_FILE_TEXT', 'РќРµ РјРѕРіСѓ СѓРґР°Р»РёС‚СЊ С„Р°Р№Р»: ');
+define('COULDNT_COPY_TO_TEXT', 'РќРµ РјРѕРіСѓ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»: ');
+define('COULDNT_FIND_TEXT', 'РќРµ РјРѕРіСѓ РЅР°Р№С‚Рё ');
+define('NO_CONTRIBUTION_NAME_TEXT', 'РќРµ СѓРєР°Р·Р°РЅРѕ РЅР°Р·РІР°РЅРёРµ РјРѕРґСѓР»СЏ.');
+define('NAME_OF_FILE_MISSING_IN_ADDFILE_SECTION_TEXT', 'РќР°Р·РІР°РЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РµРіРѕ С„Р°Р№Р»Р°.');
+define('NO_QUERY_TAG_IN_SQL_SECTION_TEXT', 'РќРµС‚ С‚СЌРіР° query.');
+define('NO_REMOVE_QUERY_NESSESARY_FOR_SQL_QUERY_TEXT', 'РќРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕРіРѕ Р·Р°РїСЂРѕСЃР° РЅР° СѓРґР°Р»РµРЅРёРµ РґР»СЏ SQL Р·Р°РїСЂРѕСЃР°: ');
+define('NAME_OF_DIR_MISSING_IN_MAKE_DIR_SECTION_TEXT', 'РќР°Р·РІР°РЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РµР№ РґРёСЂРµРєС‚РѕСЂРёРё.');
+define('IN_THE_FILE_TEXT', 'РІ С„Р°Р№Р»Рµ: ');
+define('NO_INSTALL_TAG_IN_PHP_SECTION_TEXT', 'РќРµС‚ С‚СЌРіР° INSTALL.');
+define('NO_REMOVE_TAG_IN_PHP_SECTION_TEXT', 'РќРµС‚ С‚СЌРіР° REMOVE.');
+define('FILE_NOT_EXISTS_TEXT', 'Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ');
+define('NAME_OF_FILE_MISSING_IN_DEL_FILE_SECTION_TEXT', 'РќР°Р·РІР°РЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РµРіРѕ С„Р°Р№Р»Р°.');
+define('ERROR_COULD_NOT_OPEN_XML', 'РќРµ РјРѕРіСѓ РѕС‚РєСЂС‹С‚СЊ XML РІ: ');
+define('TEXT_NOT_ORIGINAL_TEXT', 'РќРµ РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Р№ С‚РµРєСЃС‚ РІ find СЂР°Р·РґРµР»Рµ. ');
+define('TEXT_HAVE_BEEN_FOUND', 'Р±С‹Р» РЅР°Р№РґРµРЅ ');
+define('TEXT_TIMES', ' СЂР°Р·!');
+define('NO_COMMENTS_TAG_IN_DESCRIPTION_SECTION_TEXT', 'РќРµС‚ С‚СЌРіР° comments РІ СЂР°Р·РґРµР»Рµ РѕРїРёСЃР°РЅРёСЏ');
+define('NO_CREDITS_TAG_IN_DESCRIPTION_SECTION_TEXT', 'РќРµС‚ С‚СЌРіР° credits РІ СЂР°Р·РґРµР»Рµ РѕРїРёСЃР°РЅРёСЏ');
+define('NO_CONTRIB_REF_PARAMETER_IN_DETAILS_TAG_TEXT', 'РќРµС‚ РїР°СЂР°РјРµС‚СЂР° contrib_ref РІ С‚СЌРіРµ details');
+define('NO_FORUM_REF_PARAMETER_IN_DETAILS_TAG_TEXT', 'РќРµС‚ РїР°СЂР°РјРµС‚СЂР° forum_ref РІ С‚СЌРіРµ details');
+define('NO_CONTRIB_TYPE_PARAMETER_IN_DETAILS_TAG_TEXT', 'РќРµС‚ РїР°СЂР°РјРµС‚СЂР° contrib_type РІ С‚СЌРіРµ details');
+define('NO_STATUS_PARAMETER_IN_DETAILS_TAG_TEXT', 'РќРµС‚ РїР°СЂР°РјРµС‚СЂР° status РІ С‚СЌРіРµ details');
+define('NO_LAST_UPDATE_PARAMETER_IN_DETAILS_TAG_TEXT', 'РќРµС‚ РїР°СЂР°РјРµС‚СЂР° last_update РІ С‚СЌРіРµ details');
 
-define('TEXT_INFO_SUPPORT', 'Поддержка');
-define('TEXT_INFO_CONTRIB', 'Информация о модуле');
-define('CONTRIBS_PAGE_ALT','Официальная страница модуля');
-define('CONTRIBS_PAGE','Официальная страница модуля');
+define('TEXT_INFO_SUPPORT', 'РџРѕРґРґРµСЂР¶РєР°');
+define('TEXT_INFO_CONTRIB', 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјРѕРґСѓР»Рµ');
+define('CONTRIBS_PAGE_ALT','РћС„РёС†РёР°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° РјРѕРґСѓР»СЏ');
+define('CONTRIBS_PAGE','РћС„РёС†РёР°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° РјРѕРґСѓР»СЏ');
 
-define('CONTRIBS_FORUM_ALT','Форум поддержки данного модуля на официальном сайте магазина');
-define('CONTRIBS_FORUM','Форум поддержки данного модуля на официальном сайте магазина');
+define('CONTRIBS_FORUM_ALT','Р¤РѕСЂСѓРј РїРѕРґРґРµСЂР¶РєРё РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РЅР° РѕС„РёС†РёР°Р»СЊРЅРѕРј СЃР°Р№С‚Рµ РјР°РіР°Р·РёРЅР°');
+define('CONTRIBS_FORUM','Р¤РѕСЂСѓРј РїРѕРґРґРµСЂР¶РєРё РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РЅР° РѕС„РёС†РёР°Р»СЊРЅРѕРј СЃР°Р№С‚Рµ РјР°РіР°Р·РёРЅР°');
 
-define('CIP_STATUS_REMOVED_ALT', 'Модуль не был установлен');
-define('CIP_STATUS_INSTALLED_ALT', 'Модуль установлен');
+define('CIP_STATUS_REMOVED_ALT', 'РњРѕРґСѓР»СЊ РЅРµ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ');
+define('CIP_STATUS_INSTALLED_ALT', 'РњРѕРґСѓР»СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅ');
 
-define('CIP_USES', 'CIP использует');
-define('TEXT_DOESNT_EXISTS', ' не существует');
+define('CIP_USES', 'CIP РёСЃРїРѕР»СЊР·СѓРµС‚');
+define('TEXT_DOESNT_EXISTS', ' РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚');
 
-define('MSG_WAS_INSTALLED','Модуль установлен!');
-define('MSG_WAS_APPLIED',' был также установлен!');
-define('MSG_WAS_REMOVED','Модуль удалён!');
+define('MSG_WAS_INSTALLED','РњРѕРґСѓР»СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅ!');
+define('MSG_WAS_APPLIED',' Р±С‹Р» С‚Р°РєР¶Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ!');
+define('MSG_WAS_REMOVED','РњРѕРґСѓР»СЊ СѓРґР°Р»С‘РЅ!');
 
-define('TEXT_POST_INSTALL_NOTES','Сообщение');
+define('TEXT_POST_INSTALL_NOTES','РЎРѕРѕР±С‰РµРЅРёРµ');
 
 ?>

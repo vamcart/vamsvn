@@ -16,10 +16,10 @@
 
    Released under the GNU General Public License 
 
-   To do: Rabatte berücksichtigen
+   To do: Rabatte berГјcksichtigen
    --------------------------------------------------------------*/
 
-// Benötigte Funktionen und Klassen Anfang:
+// BenГ¶tigte Funktionen und Klassen Anfang:
 require ('includes/application_top.php');
 
 require (DIR_WS_CLASSES.'order.php');
@@ -36,7 +36,7 @@ require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
 require_once (DIR_FS_INC.'vam_oe_get_options_name.inc.php');
 require_once (DIR_FS_INC.'vam_oe_get_options_values_name.inc.php');
 require_once (DIR_FS_INC.'vam_oe_customer_infos.inc.php');
-// Ben�tigte Funktionen und Klassen Ende
+// BenпїЅtigte Funktionen und Klassen Ende
 
 // Adressbearbeitung Anfang
 if ($_GET['action'] == "address_edit") {
@@ -57,7 +57,7 @@ if ($_GET['action'] == "address_edit") {
 }
 // Adressbearbeitung Ende
 
-// Artikeldaten einfügen / bearbeiten Anfang:
+// Artikeldaten einfГјgen / bearbeiten Anfang:
 
 // Artikel bearbeiten Anfang:
 if ($_GET['action'] == "product_edit") {
@@ -76,7 +76,7 @@ if ($_GET['action'] == "product_edit") {
 }
 // Artikel bearbeiten Ende:
 
-// Artikel einfügen Anfang
+// Artikel einfГјgen Anfang
 
 if ($_GET['action'] == "product_ins") {
 
@@ -101,7 +101,7 @@ if ($_GET['action'] == "product_ins") {
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
-// Artikel einfügen Ende
+// Artikel einfГјgen Ende
 
 // Produkt Optionen bearbeiten Anfang
 if ($_GET['action'] == "product_option_edit") {
@@ -138,7 +138,7 @@ if ($_GET['action'] == "product_option_edit") {
 }
 // Produkt Optionen bearbeiten Ende
 
-// Produkt Optionen einfügen Anfang
+// Produkt Optionen einfГјgen Anfang
 if ($_GET['action'] == "product_option_ins") {
 
 	$products_attributes_query = vam_db_query("select options_id, options_values_id, options_values_price, price_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." where products_attributes_id = '".$_POST['aID']."'");
@@ -210,9 +210,9 @@ if ($_GET['action'] == "product_option_ins") {
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=options&oID='.$_POST['oID'].'&pID='.$products['products_id'].'&opID='.$_POST['opID']));
 }
 
-// Produkt Optionen einfügen Ende
+// Produkt Optionen einfГјgen Ende
 
-// Artikeldaten einfügen / bearbeiten Ende:
+// Artikeldaten einfГјgen / bearbeiten Ende:
 
 // Zahlung Anfang
 if ($_GET['action'] == "payment_edit") {
@@ -280,10 +280,10 @@ if ($_GET['action'] == "ot_edit") {
 
 if ($_GET['action'] == "lang_edit") {
 
-	// Daten für Sprache wählen
+	// Daten fГјr Sprache wГ¤hlen
 	$lang_query = vam_db_query("select languages_id, name, directory from ".TABLE_LANGUAGES." where languages_id = '".$_POST['lang']."'");
 	$lang = vam_db_fetch_array($lang_query);
-	// Daten für Sprache w�hlen Ende	
+	// Daten fГјr Sprache wпїЅhlen Ende	
 
 	// Produkte
 	$order_products_query = vam_db_query("select orders_products_id , products_id from ".TABLE_ORDERS_PRODUCTS." where orders_id = '".$_POST['oID']."'");
@@ -321,7 +321,7 @@ if ($_GET['action'] == "lang_edit") {
 
 // Sprachupdate Ende
 
-// Währungswechsel Anfang
+// WГ¤hrungswechsel Anfang
 
 if ($_GET['action'] == "curr_edit") {
 
@@ -397,11 +397,11 @@ if ($_GET['action'] == "curr_edit") {
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=other&oID='.$_POST['oID']));
 }
 
-// Währungswechsel Ende
+// WГ¤hrungswechsel Ende
 
-// Löschfunktionen Anfang:
+// LГ¶schfunktionen Anfang:
 
-// Löschen eines Artikels aus der Bestellung Anfang:
+// LГ¶schen eines Artikels aus der Bestellung Anfang:
 if ($_GET['action'] == "product_delete") {
 
 	vam_db_query("delete from ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." where orders_products_id = '".vam_db_input($_POST['opID'])."'");
@@ -409,9 +409,9 @@ if ($_GET['action'] == "product_delete") {
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
-// Löschen eines Artikels aus der Bestellung Ende:
+// LГ¶schen eines Artikels aus der Bestellung Ende:
 
-// Löschen einer Artikeloption aus der Bestellung Anfang:
+// LГ¶schen einer Artikeloption aus der Bestellung Anfang:
 if ($_GET['action'] == "product_option_delete") {
 
 	vam_db_query("delete from ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." where orders_products_attributes_id = '".vam_db_input($_POST['opAID'])."'");
@@ -439,33 +439,33 @@ if ($_GET['action'] == "product_option_delete") {
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=options&oID='.$_POST['oID'].'&pID='.$products['products_id'].'&opID='.$_POST['opID']));
 }
-// Löschen einer Artikeloptions aus der Bestellung Ende:   
+// LГ¶schen einer Artikeloptions aus der Bestellung Ende:   
 
-// Löschen eines OT Moduls aus der Bestellung Anfang:
+// LГ¶schen eines OT Moduls aus der Bestellung Anfang:
 if ($_GET['action'] == "ot_delete") {
 
 	vam_db_query("delete from ".TABLE_ORDERS_TOTAL." where orders_total_id = '".vam_db_input($_POST['otID'])."'");
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=other&oID='.$_POST['oID']));
 }
-// Löschen eines OT Moduls aus der Bestellung Ende:
+// LГ¶schen eines OT Moduls aus der Bestellung Ende:
 
-// Löschfunktionen Ende
+// LГ¶schfunktionen Ende
 
-// Rückberechnung Anfang
+// RГјckberechnung Anfang
 
 if ($_GET['action'] == "save_order") {
 
-	// Errechne neue Zwischensumme für Artikel Anfang
+	// Errechne neue Zwischensumme fГјr Artikel Anfang
 	$products_query = vam_db_query("select SUM(final_price) as subtotal_final from ".TABLE_ORDERS_PRODUCTS." where orders_id = '".$_POST['oID']."' ");
 	$products = vam_db_fetch_array($products_query);
 	$subtotal_final = $products['subtotal_final'];
 	$subtotal_text = $vamPrice->Format($subtotal_final, true);
 
 	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_text."', value = '".$subtotal_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal' ");
-	// Errechne neue Zwischensumme für Artikel Ende
+	// Errechne neue Zwischensumme fГјr Artikel Ende
 
-	// Errechne neue Netto Zwischensumme für Artikel Anfang
+	// Errechne neue Netto Zwischensumme fГјr Artikel Anfang
 
 	$check_no_tax_value_query = vam_db_query("select count(*) as count from ".TABLE_ORDERS_TOTAL." where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal_no_tax'");
 	$check_no_tax_value = vam_db_fetch_array($check_no_tax_value_query);
@@ -478,18 +478,18 @@ if ($_GET['action'] == "save_order") {
 		vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_no_tax_text."', value = '".$subtotal_no_tax_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal_no_tax' ");
 	}
 
-	// Errechne neue Netto Zwischensumme für Artikel Anfang
+	// Errechne neue Netto Zwischensumme fГјr Artikel Anfang
 
-	// Errechne neue Zwischensumme für Artikel Anfang
+	// Errechne neue Zwischensumme fГјr Artikel Anfang
 	$subtotal_query = vam_db_query("select SUM(value) as value from ".TABLE_ORDERS_TOTAL." where orders_id = '".$_POST['oID']."' and class != 'ot_subtotal_no_tax' and class != 'ot_tax' and class != 'ot_total'");
 	$subtotal = vam_db_fetch_array($subtotal_query);
 
 	$subtotal_final = $subtotal['value'];
 	$subtotal_text = $vamPrice->Format($subtotal_final, true);
 	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_text."', value = '".$subtotal_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_total'");
-	// Errechne neue Zwischensumme f�r Artikel Ende
+	// Errechne neue Zwischensumme fпїЅr Artikel Ende
 
-	// Errechne neue MwSt. für die Bestellung Anfang
+	// Errechne neue MwSt. fГјr die Bestellung Anfang
 	// Produkte
 	$products_query = vam_db_query("select final_price, products_tax, allow_tax from ".TABLE_ORDERS_PRODUCTS." where orders_id = '".$_POST['oID']."' ");
 	while ($products = vam_db_fetch_array($products_query)) {
@@ -566,9 +566,9 @@ if ($_GET['action'] == "save_order") {
 	}
 	// Module Ende  
 
-	// Alte UST Löschen ANFANG
+	// Alte UST LГ¶schen ANFANG
 	vam_db_query("delete from ".TABLE_ORDERS_TOTAL." where orders_id = '".vam_db_input($_POST['oID'])."' and class='ot_tax'");
-	// Alte UST Löschen ENDE
+	// Alte UST LГ¶schen ENDE
 
 	// Neue Mwst. zusammenrechnen Anfang
 
@@ -594,13 +594,13 @@ if ($_GET['action'] == "save_order") {
 
 	// Neue Mwst. zusammenrechnen Ende
 
-	// Löschen des Zwischenspeichers Anfang
+	// LГ¶schen des Zwischenspeichers Anfang
 	vam_db_query("delete from ".TABLE_ORDERS_RECALCULATE." where orders_id = '".vam_db_input($_POST['oID'])."'");
-	// Löschen des Zwischenspeichers Ende
+	// LГ¶schen des Zwischenspeichers Ende
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS, 'action=edit&oID='.$_POST['oID']));
 }
-// Rückberechnung Ende
+// RГјckberechnung Ende
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 ?>

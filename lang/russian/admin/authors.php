@@ -15,35 +15,35 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Авторы');
+define('HEADING_TITLE', 'РђРІС‚РѕСЂС‹');
 
-define('TABLE_HEADING_AUTHORS', 'Авторы');
-define('TABLE_HEADING_ACTION', 'Действие');
+define('TABLE_HEADING_AUTHORS', 'РђРІС‚РѕСЂС‹');
+define('TABLE_HEADING_ACTION', 'Р”РµР№СЃС‚РІРёРµ');
 
-define('TEXT_HEADING_NEW_AUTHOR', 'Добавить автора');
-define('TEXT_HEADING_EDIT_AUTHOR', 'Редактировать автора');
-define('TEXT_HEADING_DELETE_AUTHOR', 'Удалить автора');
+define('TEXT_HEADING_NEW_AUTHOR', 'Р”РѕР±Р°РІРёС‚СЊ Р°РІС‚РѕСЂР°');
+define('TEXT_HEADING_EDIT_AUTHOR', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р°РІС‚РѕСЂР°');
+define('TEXT_HEADING_DELETE_AUTHOR', 'РЈРґР°Р»РёС‚СЊ Р°РІС‚РѕСЂР°');
 
-define('TEXT_ARTICLE_BY', 'Автор статьи: ');
-define('TEXT_MORE_INFORMATION', 'Чтобы узнать больше, зайдите <a href="http://%s" target="_blank">сюда</a>.');
+define('TEXT_ARTICLE_BY', 'РђРІС‚РѕСЂ СЃС‚Р°С‚СЊРё: ');
+define('TEXT_MORE_INFORMATION', 'Р§С‚РѕР±С‹ СѓР·РЅР°С‚СЊ Р±РѕР»СЊС€Рµ, Р·Р°Р№РґРёС‚Рµ <a href="http://%s" target="_blank">СЃСЋРґР°</a>.');
 
-define('TEXT_AUTHORS', 'Авторы:');
-define('TEXT_DATE_ADDED', 'Дата добавления:');
-define('TEXT_LAST_MODIFIED', 'Последнее изменение:');
-define('TEXT_ARTICLES', 'Статьи:');
+define('TEXT_AUTHORS', 'РђРІС‚РѕСЂС‹:');
+define('TEXT_DATE_ADDED', 'Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ:');
+define('TEXT_LAST_MODIFIED', 'РџРѕСЃР»РµРґРЅРµРµ РёР·РјРµРЅРµРЅРёРµ:');
+define('TEXT_ARTICLES', 'РЎС‚Р°С‚СЊРё:');
 
-define('TEXT_NEW_INTRO', 'Заполните данную форму');
-define('TEXT_EDIT_INTRO', 'Внесите необходимые изменения.');
+define('TEXT_NEW_INTRO', 'Р—Р°РїРѕР»РЅРёС‚Рµ РґР°РЅРЅСѓСЋ С„РѕСЂРјСѓ');
+define('TEXT_EDIT_INTRO', 'Р’РЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёР·РјРµРЅРµРЅРёСЏ.');
 
-define('TEXT_AUTHORS_NAME', 'Имя автора:');
-define('TEXT_AUTHORS_DESCRIPTION', 'Описание:');
-define('TEXT_AUTHORS_URL', 'URL ссылка (без http://):');
+define('TEXT_AUTHORS_NAME', 'РРјСЏ Р°РІС‚РѕСЂР°:');
+define('TEXT_AUTHORS_DESCRIPTION', 'РћРїРёСЃР°РЅРёРµ:');
+define('TEXT_AUTHORS_URL', 'URL СЃСЃС‹Р»РєР° (Р±РµР· http://):');
 
-define('TEXT_DELETE_INTRO', 'Вы действительно хотите удалить данного автора?');
-define('TEXT_DELETE_ARTICLES', 'Удалить статьи данного автора?');
-define('TEXT_DELETE_WARNING_ARTICLES', '<b>Внимание:</b> Имеется %s статей данного автора!');
+define('TEXT_DELETE_INTRO', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅРѕРіРѕ Р°РІС‚РѕСЂР°?');
+define('TEXT_DELETE_ARTICLES', 'РЈРґР°Р»РёС‚СЊ СЃС‚Р°С‚СЊРё РґР°РЅРЅРѕРіРѕ Р°РІС‚РѕСЂР°?');
+define('TEXT_DELETE_WARNING_ARTICLES', '<b>Р’РЅРёРјР°РЅРёРµ:</b> РРјРµРµС‚СЃСЏ %s СЃС‚Р°С‚РµР№ РґР°РЅРЅРѕРіРѕ Р°РІС‚РѕСЂР°!');
 
-define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Каталог защищён от записи, установите необходимые права доступа: %s');
-define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Каталог отсутствует: %s');
+define('ERROR_DIRECTORY_NOT_WRITEABLE', 'РћС€РёР±РєР°: РљР°С‚Р°Р»РѕРі Р·Р°С‰РёС‰С‘РЅ РѕС‚ Р·Р°РїРёСЃРё, СѓСЃС‚Р°РЅРѕРІРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР°: %s');
+define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'РћС€РёР±РєР°: РљР°С‚Р°Р»РѕРі РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚: %s');
 
 ?>

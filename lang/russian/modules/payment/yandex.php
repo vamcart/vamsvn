@@ -17,20 +17,20 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_YANDEX_TEXT_TITLE', 'Яндекс-Деньги');
-  define('MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION', 'Информация для оплаты:<br /><br />Номер Яндекс-кошелька: ' . MODULE_PAYMENT_YANDEX_ID . '<br /><br />' . 'Ваш заказ будет выполнен только после получения оплаты!');
-  define('MODULE_PAYMENT_YANDEX_TEXT_EMAIL_FOOTER', "Информация для оплаты:\n\nНомер нашего Яндекс-кошелька: ". MODULE_PAYMENT_YANDEX_ID . "\n\n" . 'Ваш заказ будет выполнен только после получения оплаты!');
+  define('MODULE_PAYMENT_YANDEX_TEXT_TITLE', 'РЇРЅРґРµРєСЃ-Р”РµРЅСЊРіРё');
+  define('MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION', 'РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:<br /><br />РќРѕРјРµСЂ РЇРЅРґРµРєСЃ-РєРѕС€РµР»СЊРєР°: ' . MODULE_PAYMENT_YANDEX_ID . '<br /><br />' . 'Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹!');
+  define('MODULE_PAYMENT_YANDEX_TEXT_EMAIL_FOOTER', "РРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РѕРїР»Р°С‚С‹:\n\nРќРѕРјРµСЂ РЅР°С€РµРіРѕ РЇРЅРґРµРєСЃ-РєРѕС€РµР»СЊРєР°: ". MODULE_PAYMENT_YANDEX_ID . "\n\n" . 'Р’Р°С€ Р·Р°РєР°Р· Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹!');
 define('MODULE_PAYMENT_YANDEX_TEXT_INFO','');
-  define('MODULE_PAYMENT_YANDEX_STATUS_TITLE' , 'Разрешить модуль Яндекс-Деньги');
-define('MODULE_PAYMENT_YANDEX_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
-define('MODULE_PAYMENT_YANDEX_ALLOWED_TITLE' , 'Разрешённые страны');
-define('MODULE_PAYMENT_YANDEX_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_PAYMENT_YANDEX_ID_TITLE' , 'Номер кошелька:');
-define('MODULE_PAYMENT_YANDEX_ID_DESC' , 'Укажите Ваш номер в Яндекс-деньгах');
-define('MODULE_PAYMENT_YANDEX_SORT_ORDER_TITLE' , 'Порядок сортировки');
-define('MODULE_PAYMENT_YANDEX_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
-define('MODULE_PAYMENT_YANDEX_ZONE_TITLE' , 'Зона');
-define('MODULE_PAYMENT_YANDEX_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_YANDEX_ORDER_STATUS_ID_TITLE' , 'Статус заказа');
-define('MODULE_PAYMENT_YANDEX_ORDER_STATUS_ID_DESC' , 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
+  define('MODULE_PAYMENT_YANDEX_STATUS_TITLE' , 'Р Р°Р·СЂРµС€РёС‚СЊ РјРѕРґСѓР»СЊ РЇРЅРґРµРєСЃ-Р”РµРЅСЊРіРё');
+define('MODULE_PAYMENT_YANDEX_STATUS_DESC' , 'Р’С‹ С…РѕС‚РёС‚Рµ СЂР°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РјРѕРґСѓР»СЏ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё Р·Р°РєР°Р·РѕРІ?');
+define('MODULE_PAYMENT_YANDEX_ALLOWED_TITLE' , 'Р Р°Р·СЂРµС€С‘РЅРЅС‹Рµ СЃС‚СЂР°РЅС‹');
+define('MODULE_PAYMENT_YANDEX_ALLOWED_DESC' , 'РЈРєР°Р¶РёС‚Рµ РєРѕРґС‹ СЃС‚СЂР°РЅ, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ (РЅР°РїСЂРёРјРµСЂ RU,DE (РѕСЃС‚Р°РІСЊС‚Рµ РїРѕР»Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё С…РѕС‚РёС‚Рµ С‡С‚Рѕ Р± РјРѕРґСѓР»СЊ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· Р»СЋР±С‹С… СЃС‚СЂР°РЅ))');
+define('MODULE_PAYMENT_YANDEX_ID_TITLE' , 'РќРѕРјРµСЂ РєРѕС€РµР»СЊРєР°:');
+define('MODULE_PAYMENT_YANDEX_ID_DESC' , 'РЈРєР°Р¶РёС‚Рµ Р’Р°С€ РЅРѕРјРµСЂ РІ РЇРЅРґРµРєСЃ-РґРµРЅСЊРіР°С…');
+define('MODULE_PAYMENT_YANDEX_SORT_ORDER_TITLE' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+define('MODULE_PAYMENT_YANDEX_SORT_ORDER_DESC' , 'РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
+define('MODULE_PAYMENT_YANDEX_ZONE_TITLE' , 'Р—РѕРЅР°');
+define('MODULE_PAYMENT_YANDEX_ZONE_DESC' , 'Р•СЃР»Рё РІС‹Р±СЂР°РЅР° Р·РѕРЅР°, С‚Рѕ РґР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ Р±СѓРґРµС‚ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РїРѕРєСѓРїР°С‚РµР»СЏРј РёР· РІС‹Р±СЂР°РЅРЅРѕР№ Р·РѕРЅС‹.');
+define('MODULE_PAYMENT_YANDEX_ORDER_STATUS_ID_TITLE' , 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°');
+define('MODULE_PAYMENT_YANDEX_ORDER_STATUS_ID_DESC' , 'Р—Р°РєР°Р·С‹, РѕС„РѕСЂРјР»РµРЅРЅС‹Рµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РґР°РЅРЅРѕРіРѕ РјРѕРґСѓР»СЏ РѕРїР»Р°С‚С‹ Р±СѓРґСѓС‚ РїСЂРёРЅРёРјР°С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ.');
 ?>

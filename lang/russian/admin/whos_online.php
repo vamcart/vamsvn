@@ -17,17 +17,17 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Êòî ñåé÷àñ â ìàãàçèíå');
+define('HEADING_TITLE', 'ÐšÑ‚Ð¾ ÑÐµÐ¹Ñ‡Ð°Ñ Ð² Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ðµ');
 
-define('TABLE_HEADING_ONLINE', 'Îíëàéí');
+define('TABLE_HEADING_ONLINE', 'ÐžÐ½Ð»Ð°Ð¹Ð½');
 define('TABLE_HEADING_CUSTOMER_ID', 'ID');
-define('TABLE_HEADING_FULL_NAME', 'Èìÿ');
-define('TABLE_HEADING_IP_ADDRESS', 'IP Àäðåñ');
-define('TABLE_HEADING_ENTRY_TIME', 'Âðåìÿ Âõîäà');
-define('TABLE_HEADING_LAST_CLICK', 'Ïîñëåäíèé Êëèê');
-define('TABLE_HEADING_LAST_PAGE_URL', 'Ïîñëåäíèé URL');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
-define('TABLE_HEADING_SHOPPING_CART', 'Êîðçèíà ïîëüçîâàòåëÿ');
-define('TEXT_SHOPPING_CART_SUBTOTAL', 'Ñòîèìîñòü òîâàðà');
-define('TEXT_NUMBER_OF_CUSTOMERS', 'Íà äàííûé ìîìåíò â ìàãàçèíå êëèåíòîâ: %s');
+define('TABLE_HEADING_FULL_NAME', 'Ð˜Ð¼Ñ');
+define('TABLE_HEADING_IP_ADDRESS', 'IP ÐÐ´Ñ€ÐµÑ');
+define('TABLE_HEADING_ENTRY_TIME', 'Ð’Ñ€ÐµÐ¼Ñ Ð’Ñ…Ð¾Ð´Ð°');
+define('TABLE_HEADING_LAST_CLICK', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ ÐšÐ»Ð¸Ðº');
+define('TABLE_HEADING_LAST_PAGE_URL', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ URL');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
+define('TABLE_HEADING_SHOPPING_CART', 'ÐšÐ¾Ñ€Ð·Ð¸Ð½Ð° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ');
+define('TEXT_SHOPPING_CART_SUBTOTAL', 'Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€Ð°');
+define('TEXT_NUMBER_OF_CUSTOMERS', 'ÐÐ° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð² Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ðµ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¾Ð²: %s');
 ?>

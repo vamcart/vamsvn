@@ -17,27 +17,27 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Êàìïàíèè');
+define('HEADING_TITLE', 'ÐšÐ°Ð¼Ð¿Ð°Ð½Ð¸Ð¸');
 
-define('TABLE_HEADING_CAMPAIGNS', 'Êàìïàíèè');
-define('TABLE_HEADING_ACTION', 'Äåéñòâèå');
+define('TABLE_HEADING_CAMPAIGNS', 'ÐšÐ°Ð¼Ð¿Ð°Ð½Ð¸Ð¸');
+define('TABLE_HEADING_ACTION', 'Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ');
 
-define('TEXT_HEADING_NEW_CAMPAIGN', 'Íîâàÿ êàìïàíèÿ');
-define('TEXT_HEADING_EDIT_CAMPAIGN', 'Èçìåíèòü êàìïàíèþ');
-define('TEXT_HEADING_DELETE_CAMPAIGN', 'Óäàëèòü êàìïàíèþ');
+define('TEXT_HEADING_NEW_CAMPAIGN', 'ÐÐ¾Ð²Ð°Ñ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸Ñ');
+define('TEXT_HEADING_EDIT_CAMPAIGN', 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸ÑŽ');
+define('TEXT_HEADING_DELETE_CAMPAIGN', 'Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸ÑŽ');
 
-define('TEXT_CAMPAIGNS', 'Êàìïàíèè:');
-define('TEXT_DATE_ADDED', 'Äàòà ñîçäàíèÿ:');
-define('TEXT_LAST_MODIFIED', 'Ïîñëåäíèå èçìåíåíèÿ:');
-define('TEXT_LEADS', 'Ïåðåõîäîâ:');
-define('TEXT_SALES', 'Ïðîäàæ:');
-define('TEXT_LATE_CONVERSIONS', 'Êîíâåðñèÿ:');
-define('TEXT_NEW_INTRO', 'Ñîçäàíèå íîâîé êàìïàíèè.');
-define('TEXT_EDIT_INTRO', 'Âíåñèòå íåîáõîäèìûå èçìåíåíèÿ.');
+define('TEXT_CAMPAIGNS', 'ÐšÐ°Ð¼Ð¿Ð°Ð½Ð¸Ð¸:');
+define('TEXT_DATE_ADDED', 'Ð”Ð°Ñ‚Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ:');
+define('TEXT_LAST_MODIFIED', 'ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ:');
+define('TEXT_LEADS', 'ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¾Ð²:');
+define('TEXT_SALES', 'ÐŸÑ€Ð¾Ð´Ð°Ð¶:');
+define('TEXT_LATE_CONVERSIONS', 'ÐšÐ¾Ð½Ð²ÐµÑ€ÑÐ¸Ñ:');
+define('TEXT_NEW_INTRO', 'Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð¹ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸Ð¸.');
+define('TEXT_EDIT_INTRO', 'Ð’Ð½ÐµÑÐ¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ.');
 
-define('TEXT_CAMPAIGNS_NAME', 'Íàçâàíèå:');
-define('TEXT_CAMPAIGNS_REFID', 'Êîä refID:');
-define('TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS', 'Îòñëåæèâàåìûå êàìïàíèè:');
+define('TEXT_CAMPAIGNS_NAME', 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ:');
+define('TEXT_CAMPAIGNS_REFID', 'ÐšÐ¾Ð´ refID:');
+define('TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS', 'ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°ÐµÐ¼Ñ‹Ðµ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸Ð¸:');
 
-define('TEXT_DELETE_INTRO', 'Âû äåéñòâèòåëüíî õîòèòå óäàëèòü êàìïàíèþ?');
+define('TEXT_DELETE_INTRO', 'Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÐºÐ°Ð¼Ð¿Ð°Ð½Ð¸ÑŽ?');
 ?>

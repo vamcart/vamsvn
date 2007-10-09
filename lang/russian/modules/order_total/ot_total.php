@@ -17,14 +17,14 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE', '<b>Всего</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX', '<b>Всего, без налога</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX_BRUTTO','<b>Всего, с налогом</b>');
-  define('MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION', 'Всего');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE', '<b>Р’СЃРµРіРѕ</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX', '<b>Р’СЃРµРіРѕ, Р±РµР· РЅР°Р»РѕРіР°</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_TITLE_NO_TAX_BRUTTO','<b>Р’СЃРµРіРѕ, СЃ РЅР°Р»РѕРіРѕРј</b>');
+  define('MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION', 'Р’СЃРµРіРѕ');
 
-  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_TITLE','Показывать всего');
-  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_DESC','Вы хотите показывать общую стоимость заказа?');
+  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_TITLE','РџРѕРєР°Р·С‹РІР°С‚СЊ РІСЃРµРіРѕ');
+  define('MODULE_ORDER_TOTAL_TOTAL_STATUS_DESC','Р’С‹ С…РѕС‚РёС‚Рµ РїРѕРєР°Р·С‹РІР°С‚СЊ РѕР±С‰СѓСЋ СЃС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР°Р·Р°?');
 
-  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_DESC','Порядок сортировки модуля.');
+  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_ORDER_TOTAL_TOTAL_SORT_ORDER_DESC','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 ?>

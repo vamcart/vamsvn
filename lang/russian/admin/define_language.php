@@ -17,9 +17,9 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'ßçûêîâûå ôàéëû');
+define('HEADING_TITLE', 'Ð¯Ð·Ñ‹ÐºÐ¾Ð²Ñ‹Ðµ Ñ„Ð°Ð¹Ð»Ñ‹');
 
-define('TEXT_FILE_DOES_NOT_EXIST', 'Ôàéë îòñóòñòâóåò.');
+define('TEXT_FILE_DOES_NOT_EXIST', 'Ð¤Ð°Ð¹Ð» Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚.');
 
-define('ERROR_FILE_NOT_WRITEABLE', 'Îøèáêà: íåâåðíûå ïðàâà äîñòóïà ê ôàéëó, èçìåíèòå ïðàâà äîñòóïà ê %s');
+define('ERROR_FILE_NOT_WRITEABLE', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ Ð¿Ñ€Ð°Ð²Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº Ñ„Ð°Ð¹Ð»Ñƒ, Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ Ð¿Ñ€Ð°Ð²Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº %s');
 ?>

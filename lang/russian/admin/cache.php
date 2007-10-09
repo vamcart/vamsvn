@@ -17,14 +17,14 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Êîíòðîëü êýøà');
+define('HEADING_TITLE', 'ÐšÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÑŒ ÐºÑÑˆÐ°');
 
-define('TEXT_FILES', 'Ôàéëû: ');
-define('TEXT_CACHE_DIRECTORY', 'Äèðåêòîðèÿ êåøà: ');
-define('TEXT_RESET_CACHE','Ñáðîñèòü êåø');
-define('TEXT_TOTAL_FILES', 'Âñåãî ôàéëîâ: ');
-define('TEXT_NOCACHE_FILES', 'Êåø-ôàéëîâ íå ñóùåñòâóåò.');
-define('USED_SPACE', 'Èñïîëüçîâàííîå ìåñòî: ');
-define('ERROR_CACHE_DIRECTORY_DOES_NOT_EXIST', 'Îøèáêà: Äèðåêòîðèÿ êåøà íå ñóùåñòâóåò.');
-define('ERROR_CACHE_DIRECTORY_NOT_WRITEABLE', 'Îøèáêà: Äèðåêòîðÿ Êåøà çàùèùåíà îò çàïèñè.');
+define('TEXT_FILES', 'Ð¤Ð°Ð¹Ð»Ñ‹: ');
+define('TEXT_CACHE_DIRECTORY', 'Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ ÐºÐµÑˆÐ°: ');
+define('TEXT_RESET_CACHE','Ð¡Ð±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ ÐºÐµÑˆ');
+define('TEXT_TOTAL_FILES', 'Ð’ÑÐµÐ³Ð¾ Ñ„Ð°Ð¹Ð»Ð¾Ð²: ');
+define('TEXT_NOCACHE_FILES', 'ÐšÐµÑˆ-Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.');
+define('USED_SPACE', 'Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ð¾Ðµ Ð¼ÐµÑÑ‚Ð¾: ');
+define('ERROR_CACHE_DIRECTORY_DOES_NOT_EXIST', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ ÐºÐµÑˆÐ° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.');
+define('ERROR_CACHE_DIRECTORY_NOT_WRITEABLE', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ñ ÐšÐµÑˆÐ° Ð·Ð°Ñ‰Ð¸Ñ‰ÐµÐ½Ð° Ð¾Ñ‚ Ð·Ð°Ð¿Ð¸ÑÐ¸.');
 ?>

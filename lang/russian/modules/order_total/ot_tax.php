@@ -17,12 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_ORDER_TOTAL_TAX_TITLE', 'Налог');
-  define('MODULE_ORDER_TOTAL_TAX_DESCRIPTION', 'Налог');
+  define('MODULE_ORDER_TOTAL_TAX_TITLE', 'РќР°Р»РѕРі');
+  define('MODULE_ORDER_TOTAL_TAX_DESCRIPTION', 'РќР°Р»РѕРі');
 
-  define('MODULE_ORDER_TOTAL_TAX_STATUS_TITLE','Показывать налог');
-  define('MODULE_ORDER_TOTAL_TAX_STATUS_DESC','Вы хотите показывать налог?');
+  define('MODULE_ORDER_TOTAL_TAX_STATUS_TITLE','РџРѕРєР°Р·С‹РІР°С‚СЊ РЅР°Р»РѕРі');
+  define('MODULE_ORDER_TOTAL_TAX_STATUS_DESC','Р’С‹ С…РѕС‚РёС‚Рµ РїРѕРєР°Р·С‹РІР°С‚СЊ РЅР°Р»РѕРі?');
 
-  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_TITLE','Порядок сортировки');
-  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_DESC','Порядок сортировки модуля.');
+  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_TITLE','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё');
+  define('MODULE_ORDER_TOTAL_TAX_SORT_ORDER_DESC','РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РјРѕРґСѓР»СЏ.');
 ?>

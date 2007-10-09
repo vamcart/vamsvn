@@ -1,13 +1,13 @@
-Уважаемый (ая) {$NAME}!
-Вы оформили заказ в нашем интернет-магазине!
+РЈРІР°Р¶Р°РµРјС‹Р№ (Р°СЏ) {$NAME}!
+Р’С‹ РѕС„РѕСЂРјРёР»Рё Р·Р°РєР°Р· РІ РЅР°С€РµРј РёРЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅРµ!
 
-Пожалуйста, проверьте правильность следующей информации:
+РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ СЃР»РµРґСѓСЋС‰РµР№ РёРЅС„РѕСЂРјР°С†РёРё:
 
-Вы заказали:
+Р’С‹ Р·Р°РєР°Р·Р°Р»Рё:
 
 {foreach name=aussen item=order_values from=$order_data}
 {$order_values.PRODUCTS_QTY} x {$order_values.PRODUCTS_NAME}{if $order_values.PRODUCTS_MODEL neq ''} ({$order_values.PRODUCTS_MODEL}) {/if} {$order_values.PRODUCTS_PRICE}
-{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Время доставки: {$order_values.PRODUCTS_SHIPPING_TIME}{/if}
+{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Р’СЂРµРјСЏ РґРѕСЃС‚Р°РІРєРё: {$order_values.PRODUCTS_SHIPPING_TIME}{/if}
 
 {if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
 
@@ -17,25 +17,25 @@
 {$order_total_values.TITLE}{$order_total_values.TEXT}
 {/foreach}
 
-Выбранный Вами способ оплаты: {if $PAYMENT_METHOD}{$PAYMENT_METHOD}{/if}
+Р’С‹Р±СЂР°РЅРЅС‹Р№ Р’Р°РјРё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹: {if $PAYMENT_METHOD}{$PAYMENT_METHOD}{/if}
 
 {$PAYMENT_INFO_TXT}
 
 {if $SHIPPING_METHOD}
-Доставка: {$SHIPPING_METHOD}
+Р”РѕСЃС‚Р°РІРєР°: {$SHIPPING_METHOD}
 {/if}
 
-Адрес доставки вашего заказа:
+РђРґСЂРµСЃ РґРѕСЃС‚Р°РІРєРё РІР°С€РµРіРѕ Р·Р°РєР°Р·Р°:
 {$address_label_shipping}
 
 {if $COMMENTS}
-Ваши комментарии к заказу:
+Р’Р°С€Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє Р·Р°РєР°Р·Сѓ:
 {$COMMENTS}
 {/if}
 
-Номер заказа: {$oID}
-Ваш контантный телефон: {$PHONE},
-Электронный адрес: {$EMAIL}.
+РќРѕРјРµСЂ Р·Р°РєР°Р·Р°: {$oID}
+Р’Р°С€ РєРѕРЅС‚Р°РЅС‚РЅС‹Р№ С‚РµР»РµС„РѕРЅ: {$PHONE},
+Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р°РґСЂРµСЃ: {$EMAIL}.
 
-В случае, если Вы обнаружите ошибку, сделанную при оформлении заказа -
-сообщите нам об этом как можно скорее в ответном письме.
+Р’ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё Р’С‹ РѕР±РЅР°СЂСѓР¶РёС‚Рµ РѕС€РёР±РєСѓ, СЃРґРµР»Р°РЅРЅСѓСЋ РїСЂРё РѕС„РѕСЂРјР»РµРЅРёРё Р·Р°РєР°Р·Р° -
+СЃРѕРѕР±С‰РёС‚Рµ РЅР°Рј РѕР± СЌС‚РѕРј РєР°Рє РјРѕР¶РЅРѕ СЃРєРѕСЂРµРµ РІ РѕС‚РІРµС‚РЅРѕРј РїРёСЃСЊРјРµ.

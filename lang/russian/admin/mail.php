@@ -17,16 +17,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Îòïðàâèòü Email Êëèåíòàì');
+define('HEADING_TITLE', 'ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Email ÐšÐ»Ð¸ÐµÐ½Ñ‚Ð°Ð¼');
 
-define('TEXT_CUSTOMER', 'Êëèåíò:');
-define('TEXT_SUBJECT', 'Òåìà:');
-define('TEXT_FROM', 'Îò:');
-define('TEXT_MESSAGE', 'Ñîîáùåíèå:');
-define('TEXT_SELECT_CUSTOMER', 'Âûáåðèòå Êëèåíòà');
-define('TEXT_ALL_CUSTOMERS', 'Âñå Êëèåíòû');
-define('TEXT_NEWSLETTER_CUSTOMERS', 'Äëÿ Âñåõ Ïîäïèñ÷èêîâ Íîâîñòåé');
+define('TEXT_CUSTOMER', 'ÐšÐ»Ð¸ÐµÐ½Ñ‚:');
+define('TEXT_SUBJECT', 'Ð¢ÐµÐ¼Ð°:');
+define('TEXT_FROM', 'ÐžÑ‚:');
+define('TEXT_MESSAGE', 'Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ:');
+define('TEXT_SELECT_CUSTOMER', 'Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐšÐ»Ð¸ÐµÐ½Ñ‚Ð°');
+define('TEXT_ALL_CUSTOMERS', 'Ð’ÑÐµ ÐšÐ»Ð¸ÐµÐ½Ñ‚Ñ‹');
+define('TEXT_NEWSLETTER_CUSTOMERS', 'Ð”Ð»Ñ Ð’ÑÐµÑ… ÐŸÐ¾Ð´Ð¿Ð¸ÑÑ‡Ð¸ÐºÐ¾Ð² ÐÐ¾Ð²Ð¾ÑÑ‚ÐµÐ¹');
 
-define('NOTICE_EMAIL_SENT_TO', 'Óâåäîìëåíèå: ïèñüìî óñïåøíî îòïðàâëåíî ïî àäðåñó: %s');
-define('ERROR_NO_CUSTOMER_SELECTED', 'Îøèáêà: Âû äîëæíû âûáðàòü êëèåíòà, êîòîðîìó îòïðàâëÿåòå ïèñüìî!');
+define('NOTICE_EMAIL_SENT_TO', 'Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ðµ: Ð¿Ð¸ÑÑŒÐ¼Ð¾ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ Ð¿Ð¾ Ð°Ð´Ñ€ÐµÑÑƒ: %s');
+define('ERROR_NO_CUSTOMER_SELECTED', 'ÐžÑˆÐ¸Ð±ÐºÐ°: Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÑ‚Ðµ Ð¿Ð¸ÑÑŒÐ¼Ð¾!');
 ?>

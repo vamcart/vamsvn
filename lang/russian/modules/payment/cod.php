@@ -18,17 +18,17 @@
    ---------------------------------------------------------------------------------------*/
 
 define('MODULE_PAYMENT_TYPE_PERMISSION', 'cod');
-define('MODULE_PAYMENT_COD_TEXT_TITLE', 'Îïëàòà êóðüåðó ïðè ïîëó÷åíèè ');
-define('MODULE_PAYMENT_COD_TEXT_DESCRIPTION', 'Îïëàòà êóðüåðó ïðè ïîëó÷åíèè ');
+define('MODULE_PAYMENT_COD_TEXT_TITLE', 'ÐžÐ¿Ð»Ð°Ñ‚Ð° ÐºÑƒÑ€ÑŒÐµÑ€Ñƒ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ð¸ ');
+define('MODULE_PAYMENT_COD_TEXT_DESCRIPTION', 'ÐžÐ¿Ð»Ð°Ñ‚Ð° ÐºÑƒÑ€ÑŒÐµÑ€Ñƒ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ð¸ ');
 define('MODULE_PAYMENT_COD_TEXT_INFO','');
-define('MODULE_PAYMENT_COD_ZONE_TITLE' , 'Çîíà');
-define('MODULE_PAYMENT_COD_ZONE_DESC' , 'Åñëè âûáðàíà çîíà, òî äàííûé ìîäóëü îïëàòû áóäåò âèäåí òîëüêî ïîêóïàòåëÿì èç âûáðàííîé çîíû.');
-define('MODULE_PAYMENT_COD_ALLOWED_TITLE' , 'Ðàçðåø¸ííûå ñòðàíû');
-define('MODULE_PAYMENT_COD_ALLOWED_DESC' , 'Óêàæèòå êîäû ñòðàí, äëÿ êîòîðûõ áóäåò äîñòóïåí äàííûé ìîäóëü (íàïðèìåð RU,DE (îñòàâüòå ïîëå ïóñòûì, åñëè õîòèòå ÷òî á ìîäóëü áûë äîñòóïåí ïîêóïàòåëÿì èç ëþáûõ ñòðàí))');
-define('MODULE_PAYMENT_COD_STATUS_TITLE' , 'Ðàçðåøèòü ìîäóëü Îïëàòà íàëè÷íûìè ïðè ïîëó÷åíèè');
-define('MODULE_PAYMENT_COD_STATUS_DESC' , 'Âû õîòèòå ðàçðåøèòü èñïîëüçîâàíèå ìîäóëÿ ïðè îôîðìëåíèè çàêàçîâ?');
-define('MODULE_PAYMENT_COD_SORT_ORDER_TITLE' , 'Ïîðÿäîê ñîðòèðîâêè');
-define('MODULE_PAYMENT_COD_SORT_ORDER_DESC' , 'Ïîðÿäîê ñîðòèðîâêè ìîäóëÿ.');
-define('MODULE_PAYMENT_COD_ORDER_STATUS_ID_TITLE' , 'Ñòàòóñ çàêàçà');
-define('MODULE_PAYMENT_COD_ORDER_STATUS_ID_DESC' , 'Çàêàçû, îôîðìëåííûå ñ èñïîëüçîâàíèåì äàííîãî ìîäóëÿ îïëàòû áóäóò ïðèíèìàòü óêàçàííûé ñòàòóñ.');
+define('MODULE_PAYMENT_COD_ZONE_TITLE' , 'Ð—Ð¾Ð½Ð°');
+define('MODULE_PAYMENT_COD_ZONE_DESC' , 'Ð•ÑÐ»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð° Ð·Ð¾Ð½Ð°, Ñ‚Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹ Ð±ÑƒÐ´ÐµÑ‚ Ð²Ð¸Ð´ÐµÐ½ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ð¹ Ð·Ð¾Ð½Ñ‹.');
+define('MODULE_PAYMENT_COD_ALLOWED_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÑ‘Ð½Ð½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ñ‹');
+define('MODULE_PAYMENT_COD_ALLOWED_DESC' , 'Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð´Ñ‹ ÑÑ‚Ñ€Ð°Ð½, Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ RU,DE (Ð¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿Ð¾Ð»Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼, ÐµÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ‡Ñ‚Ð¾ Ð± Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð±Ñ‹Ð» Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ñ‚ÐµÐ»ÑÐ¼ Ð¸Ð· Ð»ÑŽÐ±Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½))');
+define('MODULE_PAYMENT_COD_STATUS_TITLE' , 'Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÐžÐ¿Ð»Ð°Ñ‚Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ñ‹Ð¼Ð¸ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ð¸');
+define('MODULE_PAYMENT_COD_STATUS_DESC' , 'Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð¿Ñ€Ð¸ Ð¾Ñ„Ð¾Ñ€Ð¼Ð»ÐµÐ½Ð¸Ð¸ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²?');
+define('MODULE_PAYMENT_COD_SORT_ORDER_TITLE' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸');
+define('MODULE_PAYMENT_COD_SORT_ORDER_DESC' , 'ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¼Ð¾Ð´ÑƒÐ»Ñ.');
+define('MODULE_PAYMENT_COD_ORDER_STATUS_ID_TITLE' , 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ð°');
+define('MODULE_PAYMENT_COD_ORDER_STATUS_ID_DESC' , 'Ð—Ð°ÐºÐ°Ð·Ñ‹, Ð¾Ñ„Ð¾Ñ€Ð¼Ð»ÐµÐ½Ð½Ñ‹Ðµ Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð¼Ð¾Ð´ÑƒÐ»Ñ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹ Ð±ÑƒÐ´ÑƒÑ‚ Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°Ñ‚ÑŒ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ.');
 ?>

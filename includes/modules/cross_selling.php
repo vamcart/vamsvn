@@ -21,7 +21,7 @@ $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $data = $product->getCrossSells();
 if (count($data) > 0) {
-//âûâîäèò Òàêæå ðåêîìåíäóåì ñëåäóþùèå òîâàðû:
+//Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ Ð¢Ð°ÐºÐ¶Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹:
     $module->assign('language', $_SESSION['language']);
     $module->assign('module_content', $data);
     // set cache ID
@@ -33,7 +33,7 @@ if (count($data) > 0) {
 if (ACTIVATE_REVERSE_CROSS_SELLING=='true') {
 $module = new vamTemplate;
 $ids = array();
-// åñëè òåêóùèé òîâàð ïåðåêðåñòíî ññûëàåòñÿ íà äðóãîé
+// ÐµÑÐ»Ð¸ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€ Ð¿ÐµÑ€ÐµÐºÑ€ÐµÑÑ‚Ð½Ð¾ ÑÑÑ‹Ð»Ð°ÐµÑ‚ÑÑ Ð½Ð° Ð´Ñ€ÑƒÐ³Ð¾Ð¹
 if (count($data) > 0) {
 foreach ($data as $v1) {
         foreach($v1[PRODUCTS] as $val){
@@ -42,7 +42,7 @@ foreach ($data as $v1) {
         }
 }
         $data = array();
-//  åñëè íà òåêóùèé òîâàð èìååòñÿ êðîññ-ññûëêà
+//  ÐµÑÐ»Ð¸ Ð½Ð° Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€ Ð¸Ð¼ÐµÐµÑ‚ÑÑ ÐºÑ€Ð¾ÑÑ-ÑÑÑ‹Ð»ÐºÐ°
 $datarev = $product->getReverseCrossSells();
 if (count($datarev) > 0) {
 foreach ($datarev as $val) {
@@ -52,7 +52,7 @@ foreach ($datarev as $val) {
         }
 }
 if (count($data) > 0) {
-//âûâîäèò Îáðàòèòå âíèìàíèå íà ñëåäóþùèå òîâàðû:
+//Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ ÐžÐ±Ñ€Ð°Ñ‚Ð¸Ñ‚Ðµ Ð²Ð½Ð¸Ð¼Ð°Ð½Ð¸Ðµ Ð½Ð° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹:
     $module->assign('language', $_SESSION['language']);
     $module->assign('module_content', $data);
     // set cache ID

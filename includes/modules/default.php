@@ -9,16 +9,16 @@
    Copyright (c) 2007 VaM Shop
   -----------------------------------------------------------------------------------------
   based on:
-  © 2000-2001 The Exchange Project  (earlier name of osCommerce)
-  © 2002-2003 osCommerce(default.php,v 1.84 2003/05/07); www.oscommerce.com
-  © 2003  nextcommerce (default.php,v 1.11 2003/08/22); www.nextcommerce.org
-  © 2004  xt:Commerce (default.php,v 1.11 2003/08/22); xt-commerce.com
+  Â© 2000-2001 The Exchange Project  (earlier name of osCommerce)
+  Â© 2002-2003 osCommerce(default.php,v 1.84 2003/05/07); www.oscommerce.com
+  Â© 2003  nextcommerce (default.php,v 1.11 2003/08/22); www.nextcommerce.org
+  Â© 2004  xt:Commerce (default.php,v 1.11 2003/08/22); xt-commerce.com
 
   Released under the GNU General Public License
   -----------------------------------------------------------------------------------------
   Third Party contributions:
   Enable_Disable_Categories 1.3        Autor: Mikel Williams | mikel@ladykatcostumes.com
-  Customers Status v3.x  © 2002-2003 Copyright Elari elari@free.fr | www.unlockgsm.com/dload-osc/ | CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs...by=date#dirlist
+  Customers Status v3.x  Â© 2002-2003 Copyright Elari elari@free.fr | www.unlockgsm.com/dload-osc/ | CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs...by=date#dirlist
 
   Released under the GNU General Public License
   ---------------------------------------------------------------------------------------*/
