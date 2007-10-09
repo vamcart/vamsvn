@@ -61,6 +61,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
 	$path = DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/';
 	$vamTemplate->assign('tpl_path', $path);
+	$vamTemplate->assign('charset', $_SESSION['language_charset']);
 
 	// dont allow cache
 	$vamTemplate->caching = false;
