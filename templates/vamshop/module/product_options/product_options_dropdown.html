@@ -1,0 +1,18 @@
+{if $options!=''}
+  {foreach name=outer item=options_data from=$options}
+<p>
+<span class="bold">{$options_data.NAME}:</span>&nbsp;
+</p>
+{if count($options_data.DATA) eq 1}
+        {assign var="item_data" value=$options_data.DATA[0]}
+        <input type="hidden" name="id[{$options_data.ID}]" value="{$item_data.ID}">
+        {$item_data.TEXT} {if $item_data.PRICE !='' }({$item_data.PREFIX} {$item_data.PRICE}){/if}
+{else}
+        <select name="id[{$options_data.ID}]">
+        {foreach key=key_data item=item_data from=$options_data.DATA}
+                <option value="{$item_data.ID}">{$item_data.TEXT} {if $item_data.PRICE !='' }{$item_data.PREFIX} {$item_data.PRICE}{/if} </option>
+        {/foreach}
+        </select>
+{/if}
+  {/foreach}
+{/if}

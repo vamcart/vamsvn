@@ -1,0 +1,37 @@
+#  -----------------------------------------------------------------------------------------
+#  $Id: tld.txt 899 2007-02-07 10:51:57 VaM $
+#
+#  VaM Shop - open source ecommerce solution
+#  http://vamshop.ru
+#  http://vamshop.com
+#
+#  Copyright (c) 2007 VaM Shop
+#  -----------------------------------------------------------------------------------------
+#  based on: 
+#  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   
+  
+#  (c) 2002-2003 osCommerce (tld.txt,v 1.2 2003/02/10); www.oscommerce.com 
+#  (c) 2003	 nextcommerce (tld.txt,v 1.1 2003/08/14); www.nextcommerce.org
+#  (c) 2004	 xt:Commerce (tld.txt,v 1.1 2003/08/14); xt-commerce.com
+#
+#  Released under the GNU General Public License 
+#  -----------------------------------------------------------------------------------------
+
+# Original 7 TLDs
+com     # all are eligible to register
+edu     # degree-granting educational institutions of higher education
+gov     # United States Government
+int     # organizations established by international treaties
+mil     # United States Military
+net     # all are eligible to register
+org     # noncommercial community, all are eligible to register
+
+# Recent additions
+aero    # members of the air-transport industry
+biz     # businesses
+coop    # cooperative associations
+info    # all are eligible to register
+museum  # museums
+name    # individuals
+pro     # credentialed professionals
