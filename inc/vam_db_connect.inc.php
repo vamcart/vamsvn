@@ -27,10 +27,7 @@ $$link = @mysql_connect($server, $username, $password);
     
    }
 
-if ($$link){
-   @mysql_select_db($database);
-   @mysql_query("SET CHARACTER SET utf8");
-}
+    if ($$link) @mysql_select_db($database);
 
 //Start VaM db-error processing
     if (!$$link) {
