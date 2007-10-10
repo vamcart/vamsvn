@@ -828,7 +828,7 @@ CREATE TABLE products (
   products_sort int(4) NOT NULL DEFAULT '0',
   products_image varchar(255),
   products_price decimal(15,4) NOT NULL,
-  products_discount_allowed decimal(3,2) DEFAULT '0' NOT NULL,
+  products_discount_allowed decimal(15,4) DEFAULT '0' NOT NULL,
   products_date_added datetime NOT NULL,
   products_last_modified datetime,
   products_date_available datetime,
