@@ -53,17 +53,16 @@ class InputFilter {
 	function process($source) {
 		// clean all elements in this array
 		if (is_array($source)) {
-			foreach ($source as $key => $value) {
+			foreach ($source as $key => $value)
 				// filter element for XSS and other 'bad' code etc.
 				$tmp_key = $key;
-				unset ($source[$key]);
-				$key = $this->remove($this->decode($key));
-				if ($key != $tmp_key) {
-					return $source;
-				} else {
-					if (is_string($value))
-						$source[$key] = $this->remove($this->decode($value));
-				}
+			unset ($source[$key]);
+			$key = $this->remove($this->decode($key));
+			if ($key != $tmp_key) {
+				return $source;
+			} else {
+				if (is_string($value))
+					$source[$key] = $this->remove($this->decode($value));
 			}
 			return $source;
 			// clean this string
@@ -269,7 +268,7 @@ class InputFilter {
 	function decode($source = '') {
 		if ($source!='') {
 		// url decode
-		if (function_exists('html_entity_decode')) {
+		if (function_exists(html_entity_decode)) {
 		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
 		}
 		// convert decimal
