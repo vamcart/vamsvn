@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<locale lang="ru">
+   <header>
+      <project>Project Name</project>
+      <create>2007-10-13 17:24-0500</create>
+      <revise>2007-10-13 19:15-0500</revise>
+      <trans>Александр Меновщиков - vam@kypi.ru</trans>
+      <lang>Русский</lang>
+   </header>
+   <message>
+      <id>Hello</id>
+      <string>Привет</string>
+   </message>
+</locale>

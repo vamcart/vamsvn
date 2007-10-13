@@ -334,5 +334,7 @@ $vamTemplate->assign('6',' class="current"');
 
 // /Метки для закладок
 
+$vamTemplate->register_block("trans", "smarty_t", false); 
+
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
 ?>
