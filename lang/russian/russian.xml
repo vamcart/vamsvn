@@ -21,4 +21,159 @@
 
 <!-- /Системные сообщения -->
 
+<!-- Заголовки боксов -->
+
+   <message>
+      <id><![CDATA[Quick purchase]]></id>
+      <string><![CDATA[Быстрый заказ]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Admin Info]]></id>
+      <string><![CDATA[Информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Articles]]></id>
+      <string><![CDATA[Статьи]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New articles]]></id>
+      <string><![CDATA[Новые статьи]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Authors]]></id>
+      <string><![CDATA[Авторы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Best seller]]></id>
+      <string><![CDATA[Лучшие товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shopping Cart]]></id>
+      <string><![CDATA[Корзина]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Categories]]></id>
+      <string><![CDATA[Разделы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[More about...]]></id>
+      <string><![CDATA[Узнайте больше...]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Featured products]]></id>
+      <string><![CDATA[Рекомендуемые]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Info]]></id>
+      <string><![CDATA[Информация о группе]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Informations]]></id>
+      <string><![CDATA[Информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Languages]]></id>
+      <string><![CDATA[Языки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last viewed:]]></id>
+      <string><![CDATA[Просмотренные товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[News]]></id>
+      <string><![CDATA[Новости]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Welcome back!]]></id>
+      <string><![CDATA[Вход]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Manufacturer]]></id>
+      <string><![CDATA[Производитель]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Information about manufacturer]]></id>
+      <string><![CDATA[Информация о производителе]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Newsletter Subscribing!]]></id>
+      <string><![CDATA[Рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Ordering information]]></id>
+      <string><![CDATA[История заказов]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Reviews]]></id>
+      <string><![CDATA[Отзывы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Search]]></id>
+      <string><![CDATA[Поиск]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Special offers]]></id>
+      <string><![CDATA[Скидки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New Products]]></id>
+      <string><![CDATA[Новинки]]></string>
+   </message>
+
+<!-- /Заголовки боксов -->
+
+<!-- Содержимое боксов -->
+
+   <message>
+      <id><![CDATA[Please enter the article number from our catalogue.]]></id>
+      <string><![CDATA[Укажите код товара.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Discount]]></id>
+      <string><![CDATA[Скидка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Sum]]></id>
+      <string><![CDATA[Всего]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Coupon:]]></id>
+      <string><![CDATA[Купон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You do not have any products in your shopping cart yet.]]></id>
+      <string><![CDATA[Корзина пуста.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[More on your personal Page]]></id>
+      <string><![CDATA[Дополнительная информация на странице Мои данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Here you find: ]]></id>
+      <string><![CDATA[Результаты поиска: ]]></string>
+   </message>
+   <message>
+      <id><![CDATA[eMail Address]]></id>
+      <string><![CDATA[E-Mail]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Password]]></id>
+      <string><![CDATA[Пароль]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New account]]></id>
+      <string><![CDATA[Регистрация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Password forgotten?]]></id>
+      <string><![CDATA[Забыли пароль?]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Advanced search]]></id>
+      <string><![CDATA[Расширенный поиск]]></string>
+   </message>
+
+<!-- /Содержимое боксов -->
+
+
 </locale>

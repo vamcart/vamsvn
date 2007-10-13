@@ -1,7 +1,6 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс просмотренные товары -->
 <div id="boxLastViewed">
-<h5>{#heading_last_viewed#}</h5>
+<h5>[[Last viewed:]]</h5>
 
 <div id="boxLastViewedContent">
 {if $box_content.PRODUCTS_IMAGE!=''}
@@ -27,11 +26,11 @@
 {/if}
 
 <p>
-<a href="{$MY_PERSONAL_PAGE}">{#text_my_page#}</a>
+<a href="{$MY_PERSONAL_PAGE}">[[More on your personal Page]]</a>
 </p>
 
 <p>
-{#text_watch_category#} 
+[[Here you find: ]]
 <a href="{$CATEGORY_LINK}">{$CATEGORY_NAME}</a>
 </p>
 
