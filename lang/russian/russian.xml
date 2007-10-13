@@ -7,12 +7,18 @@
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
+
+<!-- Системные сообщения -->
+
    <message>
-      <id><![CDATA[Hello]]></id>
-      <string><![CDATA[Привет]]></string>
+      <id><![CDATA[Parse time: ]]></id>
+      <string><![CDATA[Время генерации: ]]></string>
    </message>
    <message>
-      <id><![CDATA[Sample Text!]]></id>
-      <string><![CDATA[<br />Просто текст!]]></string>
+      <id><![CDATA[queries: ]]></id>
+      <string><![CDATA[запросов: ]]></string>
    </message>
+
+<!-- /Системные сообщения -->
+
 </locale>
