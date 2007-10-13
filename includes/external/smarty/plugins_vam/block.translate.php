@@ -28,8 +28,8 @@ function t($string, $args = array()) {
 global $xml;
 
 if(empty($xml)) {
-if(file_exists("lang/{$_SESSION['language']}/{$_SESSION['language_code']}.xml")) {
-$xml = getXmlTree("lang/{$_SESSION['language']}/{$_SESSION['language_code']}.xml");
+if(file_exists("lang/{$_SESSION['language']}/{$_SESSION['language']}.xml")) {
+$xml = getXmlTree("lang/{$_SESSION['language']}/{$_SESSION['language']}.xml");
 } else {
 return strtr($string, $args);
 }
