@@ -1,4 +1,3 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
 {if $deny_cart neq 'true'}
 <!-- shopping_cart //-->
 <script type="text/javascript" src="jscript/jscript_ajax_cart.js"></script>
@@ -13,7 +12,7 @@
         <tr class="cartBox">
           <td colspan="2" class="cartHeader">
             <img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" />
-            <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" />&nbsp;&raquo;&nbsp;{#heading_cart#}
+            <img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" />&nbsp;&raquo;&nbsp;[[Shopping Cart]]
           </td>
         </tr>
 {if $empty=='false'}
@@ -37,13 +36,13 @@
 
             {if $DISCOUNT}
 			<tr class="cartBox">
-              <td colspan="2" align="right" class="productDiscountPrice">{#text_discount#}&nbsp;{$DISCOUNT}</td>
+              <td colspan="2" align="right" class="productDiscountPrice">[[Discount]]&nbsp;{$DISCOUNT}</td>
             </tr>{/if}
 
 {else} <!-- cart has no content --> 
     <tr class="cartBox">
       <td width="100%" class="cartBoxContents" align="right">
-      {#text_empty_cart#}
+      [[You do not have any products in your shopping cart yet.]]
       </td>
       <td align="center">
         <img src="{$tpl_path}img/cart_big_empty.gif" alt="" hspace="0" vspace="3" />
@@ -64,7 +63,7 @@
         <td><img src="{$tpl_path}img/pixel_trans.gif" alt="" width="100%" height="1" /></td>
       </tr>
       <tr>
-        <td align="center" class="smalltext">{#cart_coupon#}</td>
+        <td align="center" class="smalltext">[[Coupon:]]</td>
       </tr>
       <tr>
         <td align="center" class="gvBox" valign="bottom">{$coupon_amount}</td>
@@ -95,7 +94,7 @@
         <table width="100%" cellspacing="0" cellpadding="0" class="cartBox1">
            <tr>
              <td width="100%" class="cartBoxContents" align="right"></td>
-             <td class="price"><nobr>&nbsp;{$UST}<strong>{#text_total#}</strong> {$TOTAL}&nbsp;</nobr></td>
+             <td class="price"><nobr>&nbsp;{$UST}<strong>[[Sum]]</strong> {$TOTAL}&nbsp;</nobr></td>
            </tr>
            <tr>
              <td width="100%"></td>
