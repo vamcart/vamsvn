@@ -1,5 +1,16 @@
 <?php
+/* -----------------------------------------------------------------------------------------
+   $Id: vam_template.php 899 2007-10-13 20:14:57 VaM $   
 
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   Released under the GNU General Public License
+   ---------------------------------------------------------------------------------------*/
+   
 require_once (DIR_FS_CATALOG.'includes/external/smarty/Smarty.class.php');
 
 class vamTemplate extends Smarty {
@@ -17,8 +28,12 @@ class vamTemplate extends Smarty {
         DIR_FS_CATALOG.'includes/external/smarty/plugins',
         DIR_FS_CATALOG.'includes/external/smarty/plugins_vam',
         );
+        $this->autoload_filters = array(
+        'pre' => array('template_translate')
+        );
 
         $this->assign('app_name', 'vamTemplate');
+
    }
 
 }
