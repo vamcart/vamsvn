@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: block.translate.php 899 2007-10-13 20:14:56 VaM $   
+   $Id: block.translate.php 899 2007-10-13 20:14:57 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
