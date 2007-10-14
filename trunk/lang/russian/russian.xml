@@ -457,4 +457,224 @@
 
 <!-- /account_password.html -->
 
+<!-- address_book.html -->
+
+   <message>
+      <id><![CDATA[My Personal address book]]></id>
+      <string><![CDATA[Моя адресная книга]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Standard postal address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   <message>
+      <id><![CDATA[This postal address will be used as supplying postal address and bill postal address automaticly. This postal address will also be used  for the calculation of possible taxes and dispatch charges.]]></id>
+      <string><![CDATA[Это адрес установлен по умолчанию, данный адрес будет использоваться при оформлении заказа.<br /><br />Также данный адрес будет использоваться при расчёте стоимости доставки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Address book entries]]></id>
+      <string><![CDATA[Записи в адресной книге]]></string>
+   </message>
+
+<!-- /address_book.html -->
+
+<!-- address_book_details.html -->
+
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your postal address]]></id>
+      <string><![CDATA[Ваш адрес]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Gender:]]></id>
+      <string><![CDATA[Обращение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[First name:]]></id>
+      <string><![CDATA[Имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name:]]></id>
+      <string><![CDATA[Фамилия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company:]]></id>
+      <string><![CDATA[Компания:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[No./Street:]]></id>
+      <string><![CDATA[Адрес:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Suburb:]]></id>
+      <string><![CDATA[Район:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postcode:]]></id>
+      <string><![CDATA[Почтовый индекс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[City:]]></id>
+      <string><![CDATA[Город:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Country:]]></id>
+      <string><![CDATA[Страна:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[State:]]></id>
+      <string><![CDATA[Регион:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Standard address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   
+<!-- /address_book_details.html -->
+   
+<!-- address_book_process.html -->
+   
+   <message>
+      <id><![CDATA[Address Book]]></id>
+      <string><![CDATA[Адресная книга]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Delete entry]]></id>
+      <string><![CDATA[Удалить запись]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Standard postal address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Would  you like to delete the postal address - this is irreversable?]]></id>
+      <string><![CDATA[Вы действительно хотите удалить адрес?]]></string>
+   </message>
+
+<!-- /address_book_process.html -->
+
+<!-- advanced_search.html -->
+
+   <message>
+      <id><![CDATA[Advanced Search]]></id>
+      <string><![CDATA[Расширенный поиск]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Help for the advanced search (?)]]></id>
+      <string><![CDATA[Помощь по расширенному поиску (?)]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Enter your Search Keys:]]></id>
+      <string><![CDATA[Ключевые слова:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Categories:]]></id>
+      <string><![CDATA[Категории:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Include sub-categories]]></id>
+      <string><![CDATA[Включая подкатегории]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Manufacturer:]]></id>
+      <string><![CDATA[Производитель:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price over:]]></id>
+      <string><![CDATA[Цена от:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price up to:]]></id>
+      <string><![CDATA[до:]]></string>
+   </message>
+
+<!-- /advanced_search.html -->
+
+<!-- also_purchased.html -->
+
+   <message>
+      <id><![CDATA[Customers who bought this product bought also the following products:]]></id>
+      <string><![CDATA[С данным товаром также покупают:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /also_purchased.html -->
+
+<!-- article_info.html -->
+
+   <message>
+      <id><![CDATA[Article not found.]]></id>
+      <string><![CDATA[Статья не найдена.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date:]]></id>
+      <string><![CDATA[Дата:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[URL:]]></id>
+      <string><![CDATA[Дополнительная информация по ссылке:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[a]]></id>
+      <string><![CDATA[b]]></string>
+   </message>
+   
+<!-- /article_info.html -->
+
+<!-- articles.html -->
+
+   <message>
+      <id><![CDATA[Articles not found.]]></id>
+      <string><![CDATA[На данный момент нет ни одной статьи.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Category:]]></id>
+      <string><![CDATA[Раздел:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date:]]></id>
+      <string><![CDATA[Дата:]]></string>
+   </message>
+
+<!-- /articles.html -->
+
+<!-- articles_new.html -->
+
+   <message>
+      <id><![CDATA[New articles]]></id>
+      <string><![CDATA[Новые статьи]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New articles not found.]]></id>
+      <string><![CDATA[На данный момент нет новых статей.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Category:]]></id>
+      <string><![CDATA[Раздел:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date:]]></id>
+      <string><![CDATA[Дата:]]></string>
+   </message>
+
+<!-- /articles_new.html -->
+
 </locale>

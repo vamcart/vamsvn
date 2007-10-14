@@ -1,9 +1,8 @@
-{config_load file="$language/lang_$language.conf" section="articles"}
 <h1 class="contentBoxHeading">{$ARTICLE_NAME}</h1>
 
 {if $no_article=='true'}
 <p>
-{#text_no_article#}
+[[Article not found.]]
 </p>
 {else}
 
@@ -19,19 +18,19 @@
 
 {if $AUTHOR_NAME}
 <p>
-{#text_author#} <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
+[[Author:]] <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
 </p>
 {/if}
 
 {if $ARTICLE_DATE}
 <p>
-{#text_date#} {$ARTICLE_DATE}
+[[Date:]] {$ARTICLE_DATE}
 </p>
 {/if}
 
 {if $ARTICLE_URL}
 <p>
-{#text_url#} <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
+[[URL:]] <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
 </p>
 {/if}
     

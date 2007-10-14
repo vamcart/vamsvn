@@ -1,8 +1,7 @@
-{config_load file="$language/lang_$language.conf" section="articles"} 
-<h1 class="contentBoxHeading">{#heading_text#}</h1>
+<h1 class="contentBoxHeading">[[New articles]]</h1>
 {if $no_new_articles=='true'}
 <p>
-{#text_no_new_articles#}
+[[New articles not found.]]
 </p>
 {else}
 <table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>  {foreach name=aussen item=module_data from=$module_content}  {php} $col++;   {/php}    <td class="main">
@@ -29,12 +28,12 @@
      <br />
 
 {if $module_data.AUTHOR_NAME}
-{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
+[[Author:]] <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
 <br />
 {/if}
  
 {if $module_data.ARTICLE_CATEGORY_NAME}
-{#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
+[[Category:]] <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
 <br />
 {/if}
 
@@ -45,7 +44,7 @@
 {/if}
 
 {if $module_data.ARTICLE_DATE}
-{#text_date#} {$module_data.ARTICLE_DATE}
+[[Date:]] {$module_data.ARTICLE_DATE}
 <br />
 {/if}
      
