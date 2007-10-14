@@ -175,5 +175,286 @@
 
 <!-- /Содержимое боксов -->
 
+<!-- account.html -->
+
+   <message>
+      <id><![CDATA[Your personal information]]></id>
+      <string><![CDATA[Ваши персональные данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Welcome!]]></id>
+      <string><![CDATA[Добро пожаловать!]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Here is your personal page, where you get comfortably an overview of your transacted orders as well as a listing of your last visited products.]]></id>
+      <string><![CDATA[Это Ваша персональная страница, где Вы можете просмотреть выполненные заказы, а также список просмотренных Вами товаров.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Login or create new account]]></id>
+      <string><![CDATA[Войдите или зарегистрируйтесь]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your account]]></id>
+      <string><![CDATA[Персональная информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Show or change my account Information]]></id>
+      <string><![CDATA[Посмотреть или изменить Ваши персональные данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Show or change my address book information]]></id>
+      <string><![CDATA[Посмотреть или изменить Вашу адресную книгу]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Change My Password]]></id>
+      <string><![CDATA[Изменить пароль]]></string>
+   </message>
+   <message>
+      <id><![CDATA[My Orders]]></id>
+      <string><![CDATA[Мои заказы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[(show all orders)]]></id>
+      <string><![CDATA[(показать все заказы)]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order No.:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order total:]]></id>
+      <string><![CDATA[Сумма:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order status:]]></id>
+      <string><![CDATA[Статус заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[e-mail notication]]></id>
+      <string><![CDATA[Уведомления]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Subscribing to newsletter or cancelling newsletter.]]></id>
+      <string><![CDATA[Подписка на рассылку или отказ от подписки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[The last visited products:]]></id>
+      <string><![CDATA[Последние просмотренные товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Found in this category]]></id>
+      <string><![CDATA[Найдены в данной категории]]></string>
+   </message>
+
+<!-- /account.html -->
+
+<!-- account_edit.html -->
+
+   <message>
+      <id><![CDATA[Change your personal dates]]></id>
+      <string><![CDATA[Редактирование персональных данных]]></string>
+   </message>
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your personal dates]]></id>
+      <string><![CDATA[Ваши персональные данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Customer ID:]]></id>
+      <string><![CDATA[Код покупателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Gender:]]></id>
+      <string><![CDATA[Обращение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[First name:]]></id>
+      <string><![CDATA[Имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name:]]></id>
+      <string><![CDATA[Фамилия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of birth:]]></id>
+      <string><![CDATA[Дата рождения:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[e-mail address:]]></id>
+      <string><![CDATA[E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Phone:]]></id>
+      <string><![CDATA[Телефон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Fax:]]></id>
+      <string><![CDATA[Факс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Vat ID:]]></id>
+      <string><![CDATA[Vat ID:]]></string>
+   </message>
+
+<!-- /account_edit.html -->
+
+<!-- account_history.html -->
+
+   <message>
+      <id><![CDATA[Your completed orders]]></id>
+      <string><![CDATA[Ваши заказы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order number:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of order:]]></id>
+      <string><![CDATA[Дата заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Items:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Total:]]></id>
+      <string><![CDATA[Сумма:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order status:]]></id>
+      <string><![CDATA[Статус заказа:]]></string>
+   </message>
+
+<!-- /account_history.html -->
+
+<!-- account_history_info.html -->
+
+   <message>
+      <id><![CDATA[Order information]]></id>
+      <string><![CDATA[Информация о заказе]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order number:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of order:]]></id>
+      <string><![CDATA[Дата заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Delivery method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your comments]]></id>
+      <string><![CDATA[Ваши комментарии к заказу]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment information]]></id>
+      <string><![CDATA[Информация об оплате]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order history]]></id>
+      <string><![CDATA[История заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products]]></id>
+      <string><![CDATA[Товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Qty:]]></id>
+      <string><![CDATA[Количество:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Model:]]></id>
+      <string><![CDATA[Код товара:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Singleprice:]]></id>
+      <string><![CDATA[Цена за единицу:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price:]]></id>
+      <string><![CDATA[Стоимость:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Print version of the order]]></id>
+      <string><![CDATA[Версия для печати]]></string>
+   </message>
+   <message>
+      <id><![CDATA[For your convenience you can print the order.]]></id>
+      <string><![CDATA[Для удобства, Вы можете распечатать Ваш заказ.]]></string>
+   </message>
+
+<!-- /account_history_info.html -->
+
+<!-- account_newsletter.html -->
+
+   <message>
+      <id><![CDATA[Newsletter]]></id>
+      <string><![CDATA[Рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[My Newsletter]]></id>
+      <string><![CDATA[Моя рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[General newsletter]]></id>
+      <string><![CDATA[Основная рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Includes general news about our shop, information about new products, special offers and other information of general interest.]]></id>
+      <string><![CDATA[Информация о скидках, призах, подарках.]]></string>
+   </message>
+
+<!-- /account_newsletter.html -->
+
+<!-- account_password.html -->
+
+   <message>
+      <id><![CDATA[My password]]></id>
+      <string><![CDATA[Пароль]]></string>
+   </message>
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Current password:]]></id>
+      <string><![CDATA[Текущий пароль:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New password:]]></id>
+      <string><![CDATA[Новый пароль:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Confirmation:]]></id>
+      <string><![CDATA[Подтверждение:]]></string>
+   </message>
+
+<!-- /account_password.html -->
 
 </locale>

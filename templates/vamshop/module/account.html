@@ -1,18 +1,18 @@
-{config_load file="$language/lang_$language.conf" section="account"}<h1>{#heading_account#}</h1>
+<h1>[[Your personal information]]</h1>
 <!-- Приветствие -->
 {$error_message}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-{#title_welcome#}
+[[Welcome!]]
 </p>
 <p>
-{#text_welcome#}
+[[Here is your personal page, where you get comfortably an overview of your transacted orders as well as a listing of your last visited products.]]
 </p>
 {if $LINK_LOGIN}
 <ul class="accountLinks">
-<li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
+<li class="accountLinks"><a href="{$LINK_LOGIN}">[[Login or create new account]]</a></li>
 </ul>
 {/if}
 </div>
@@ -25,12 +25,12 @@
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-{#title_account#}
+[[Your account]]
 </p>
 <ul class="accountLinks">
-<li class="accountLinks"><a href="{$LINK_EDIT}">{#text_edit#}</a></li>
-<li class="accountLinks"><a href="{$LINK_ADDRESS}">{#text_address#}</a></li>
-<li class="accountLinks"><a href="{$LINK_PASSWORD}">{#text_password#}</a></li>
+<li class="accountLinks"><a href="{$LINK_EDIT}">[[Show or change my account Information]]</a></li>
+<li class="accountLinks"><a href="{$LINK_ADDRESS}">[[Show or change my address book information]]</a></li>
+<li class="accountLinks"><a href="{$LINK_PASSWORD}">[[Change My Password]]</a></li>
 </ul>
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
@@ -43,12 +43,12 @@
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-{#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
+[[My Orders]]&nbsp;<a href="{$LINK_ALL}">[[(show all orders)]]</a>
 </p>
 {foreach name=aussen item=order_data from=$order_content} <p>
-<a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a>&nbsp;&nbsp;{#order_nr#} {$order_data.ORDER_ID}
+<a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a>&nbsp;&nbsp;[[Order No.:]] {$order_data.ORDER_ID}
 </p><p>
-{#order_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#order_status#} {$order_data.ORDER_STATUS} </p><p>
+[[Order total:]] {$order_data.ORDER_TOTAL}&nbsp;&nbsp;[[Order status:]] {$order_data.ORDER_STATUS} </p><p>
 {$order_data.ORDER_BUTTON}</p>{/foreach} 
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
@@ -61,10 +61,10 @@
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-{#title_notification#}
+[[e-mail notication]]
 </p>
 <ul class="accountLinks">
-<li class="accountLinks"><a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></li>
+<li class="accountLinks"><a href="{$LINK_NEWSLETTER}">[[Subscribing to newsletter or cancelling newsletter.]]</a></li>
 </ul>
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
@@ -75,7 +75,7 @@
 <!-- Просмотренные товары -->
 <div class="page">
 <p>
-{#title_viewed_products#}
+[[The last visited products:]]
 </p>
 {foreach name=history_products item=products_history from=$products_history} 
 <dl class="itemLastViewed">
@@ -101,7 +101,7 @@
 </dd>
 
 <dd class="itemDescription">
-<a href="{$products_history.PRODUCTS_LINK}"></a><a href="{$products_history.PRODUCTS_CATEGORY_URL}">{#text_goto_cat#}</a>
+<a href="{$products_history.PRODUCTS_LINK}"></a><a href="{$products_history.PRODUCTS_CATEGORY_URL}">[[Found in this category]]</a>
 </dd>
 
 <dd class="itemDescription">
