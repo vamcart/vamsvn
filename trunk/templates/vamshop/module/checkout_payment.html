@@ -1,4 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
+<h1>[[Payment Method]]</h1>
 {$FORM_ACTION}{if $error!=''}
 {$error}
 {/if}<div class="page">
@@ -6,7 +6,7 @@
 <div class="pagecontent">
 
 {if $BILLING_ADDRESS=='true'} 
-<span class="bold">{#title_address#}</span>
+<span class="bold">[[Bill postal address:]]</span>
 {/if}
 
 {if $BILLING_ADDRESS=='true'} 
@@ -16,7 +16,7 @@
 </dt>
 
 <dd class="AddressBook">
-{#text_address#}
+[[Please choose from your address book the desired bill postal address for your order.]]
 </dd>
 
 <dd class="AddressBook">
@@ -29,7 +29,7 @@
 <!-- Адрес по умолчанию -->
 <dl class="AddressBook">
 <dt class="AddressBook">
-<span class="bold">{#title_address#}</span>
+<span class="bold">[[Default Address]]</span>
 <br />
 <img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
 </dt>
@@ -43,21 +43,21 @@
 <div class="clear"></div>
 {/if}
 
-<span class="bold">{#title_payment#}</span>
+<span class="bold">[[Payment Method:]]</span>
 <br />
 <br />
 {if $GV_COVER!='true'}
 <fieldset class="form">
-<legend>{#text_payment#}</legend>
+<legend>[[Please choose the desired mode of payment for your order.]]</legend>
 {$PAYMENT_BLOCK}
 </fieldset>
 {$module_gift}
 {else}
-{#text_gccover#}
+[[Your Coupon covers your order total ammout, please accept our general business and supplying-conditions and proceed the order procedure.]]
 {/if}
 
 <fieldset class="form">
-<legend>{#title_comments#}</legend>
+<legend>[[Insert personal memo depending to your order]]</legend>
 <p>
 {$COMMENTS}
 </p>
@@ -65,21 +65,21 @@
 
 {if $conditions=='true'}
 <fieldset class="form">
-<legend>{#title_agb#}&nbsp;{$AGB_LINK}</legend>
+<legend>[[General business conditions:]]&nbsp;{$AGB_LINK}</legend>
 <p>
 {$AGB}
 </p><p>
-{$AGB_checkbox} <span class="bold">{#text_accept_agb#}</span>
+{$AGB_checkbox} <span class="bold">[[I accept your general business and supplying-conditions]]</span>
 </p>
 </fieldset>
 {/if}
 
 <p>
-<span class="bold">{#title_continue#}</span>
+<span class="bold">[[Continuation the ordering procedure]]</span>
 </p>
 
 <p>
-{#text_continue#}
+[[To the confirmation of your order.]]
 </p>
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
