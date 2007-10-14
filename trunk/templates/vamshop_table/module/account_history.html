@@ -1,16 +1,16 @@
-{config_load file="$language/lang_$language.conf" section="account_history"} <font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#heading_history#} 
+<font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong>[[Your completed orders]] 
 <br />
 <br />
-</strong></font> {foreach name=aussen item=order_data from=$order_content} <strong>{#text_oid#} {$order_data.ORDER_ID}</strong><br />
+</strong></font> {foreach name=aussen item=order_data from=$order_content} <strong>[[Order number:]] {$order_data.ORDER_ID}</strong><br />
 <table width="100%" border="0" cellspacing="0" cellpadding="3">
          
         <tr> 
 
           
     <td style="border-top: 1px solid; border-color: #cccccc;" class="main"><strong> 
-      </strong> <font size="2"><strong>{#text_date#}</strong> {$order_data.ORDER_DATE}</font><br />
-      <strong>{#text_articles#}</strong> {$order_data.ORDER_PRODUCTS} <br />
-      <strong>{#text_total#}</strong> {$order_data.ORDER_TOTAL}&nbsp;&nbsp;<strong>{#text_status#}</strong> {$order_data.ORDER_STATUS} 
+      </strong> <font size="2"><strong>[[Date of order:]]</strong> {$order_data.ORDER_DATE}</font><br />
+      <strong>[[Items:]]</strong> {$order_data.ORDER_PRODUCTS} <br />
+      <strong>[[Total:]]</strong> {$order_data.ORDER_TOTAL}&nbsp;&nbsp;<strong>[[Order status:]]</strong> {$order_data.ORDER_STATUS} 
       <br />
       {$order_data.ORDER_BUTTON}<br />
     </td>

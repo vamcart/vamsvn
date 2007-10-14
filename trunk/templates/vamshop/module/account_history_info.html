@@ -1,24 +1,21 @@
-{config_load file="$language/lang_$language.conf" section="account_history_info"}
-{config_load file="$language/lang_$language.conf" section="print_order"}
-{config_load file="$language/lang_$language.conf" section="product_info"}
 {if $downloads_content neq ''}
 <!-- Файлы -->
 {$downloads_content}
 <!-- /Файлы -->
 {/if}
 
-<h1>{#heading_history_info#}</h1>
+<h1>[[Order information]]</h1>
 <!-- Информация о заказе -->
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 
 <p>
-<span class="bold">{#text_oid#}</span> {$ORDER_NUMBER} ({$ORDER_STATUS})
+<span class="bold">[[Order number:]]</span> {$ORDER_NUMBER} ({$ORDER_STATUS})
 </p>
 
 <p>
-<span class="bold">{#text_date#}</span> {$ORDER_DATE}
+<span class="bold">[[Date of order:]]</span> {$ORDER_DATE}
 </p>
 
 <!-- Адрес доставки -->
@@ -27,7 +24,7 @@
 </dt>
 
 <dd class="ordersAddress">
-<span class="bold">{#text_shipping_address#}:</span>
+<span class="bold">[[Mailing address]]:</span>
 </dd>
 
 <dd class="ordersAddress">
@@ -44,7 +41,7 @@
 </dt>
 
 <dd class="ordersAddress">
-<span class="bold">{#text_payment_address#}:</span>
+<span class="bold">[[Bill postal address]]:</span>
 </dd>
 
 <dd class="ordersAddress">
@@ -57,18 +54,18 @@
 <div class="clear"></div>
 
 <p>
-<span class="bold">{#text_shipping_method#}</span> {$SHIPPING_METHOD}
+<span class="bold">[[Delivery method:]]</span> {$SHIPPING_METHOD}
 </p>
 
 {if $PAYMENT_METHOD}
 <p>
-<span class="bold">{#text_payment_method#}</span> {$PAYMENT_METHOD}
+<span class="bold">[[Payment method:]]</span> {$PAYMENT_METHOD}
 </p>
 {/if}
 
 {if $ORDER_COMMENTS!=''}
 <p>
-<span class="bold">{#text_comments#}</span>
+<span class="bold">[[Your comments]]</span>
 </p>
 <p>
 <!--{$ORDER_COMMENTS}-->
@@ -77,7 +74,7 @@
 
 {if $PAYMENT_INFORMATION!=''}
 <p>
-<span class="bold">{#text_payment_info#}</span>
+<span class="bold">[[Payment information]]</span>
 </p>
 <p>
 {$PAYMENT_INFORMATION}
@@ -95,7 +92,7 @@
 <div class="pagecontent">
 
 <p>
-<span class="bold">{#title_history#}</span>
+<span class="bold">[[Order history]]</span>
 </p>
 
 {$HISTORY_BLOCK}
@@ -111,23 +108,23 @@
 <div class="pagecontent">
 
 <p>
-<span class="bold">{#heading_products#}</span>
+<span class="bold">[[Products]]</span>
 </p>
 
 	<table width="100%" border="0" cellpadding="3" cellspacing="0">
         <tr> 
-          <td colspan="2"><span class="bold">{#head_units#}</span></td>
-          <td><span class="bold">{#head_products#}</span></td>
-          <td><span class="bold">{#head_artnr#}</span></td>
-          <td><span class="bold">{#head_single_price#}</span></td>
-          <td width="150"><span class="bold">{#head_price#}</span></td>
+          <td colspan="2"><span class="bold">[[Qty:]]</span></td>
+          <td><span class="bold">[[Products:]]</span></td>
+          <td><span class="bold">[[Model:]]</span></td>
+          <td><span class="bold">[[Singleprice:]]</span></td>
+          <td width="150"><span class="bold">[[Price:]]</span></td>
         </tr>
         {foreach name=aussen item=order_values from=$order_data} 
         <tr> 
           <td width="20"><span class="bold">{$order_values.PRODUCTS_QTY}</span></td>
           <td width="20"><span class="bold">x</span></td>
           <td><span class="bold">{$order_values.PRODUCTS_NAME}</span><em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
-            {#text_shippingtime#} {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
+            [[Shipping time:]] {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
           <td>{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
           <td>{$order_values.PRODUCTS_SINGLE_PRICE}</td>
           <td width="150"><span class="bold">{$order_values.PRODUCTS_PRICE}</span></td>
@@ -156,10 +153,10 @@
 
 <div class="pagecontentfooter">
 <p>
-<span class="bold">{#title_print#}</span>
+<span class="bold">[[Print version of the order]]</span>
 </p>
 <p>
-{#text_print#}
+[[For your convenience you can print the order.]]
 </p>
 <p>
 {$BUTTON_SCHET_PRINT}
