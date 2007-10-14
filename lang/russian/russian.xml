@@ -677,4 +677,299 @@
 
 <!-- /articles_new.html -->
 
+<!-- checkout_confirmation.html -->
+
+   <message>
+      <id><![CDATA[Make an order:]]></id>
+      <string><![CDATA[Подтверждение заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Before you confirm your order on this site, you can change your address and products by editing them. (Click on <em>(Edit)</em> links to your data).<br />You can cancel your order by closing your browser, or confirm your order by pressing the <span class="bold">Confirm Order</span> Button at the end of your product list.]]></id>
+      <string><![CDATA[Вы можете изменить адрес доставки, заказанные товары, отредактировав свой заказ. (Нажмите ссылку <em>(Изменить)</em>).<br />Вы можете отменить свой заказ, просто закрыв окно браузера, либо подтвердить свой заказ, нажав кнопку <span class="bold">Подтвердить</span>.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your IP-Address:]]></id>
+      <string><![CDATA[Ваш IP адрес:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[(Edit)]]></id>
+      <string><![CDATA[(Изменить)]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Delivery method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment Method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your comments:]]></id>
+      <string><![CDATA[Ваши комментарии:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment information]]></id>
+      <string><![CDATA[Оплата]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+
+<!-- /checkout_confirmation.html -->
+
+<!-- checkout_new_address.html -->
+
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New Postal Address]]></id>
+      <string><![CDATA[Новый адрес]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Gender:]]></id>
+      <string><![CDATA[Обращение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[First name:]]></id>
+      <string><![CDATA[Имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name:]]></id>
+      <string><![CDATA[Фамилия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company:]]></id>
+      <string><![CDATA[Компания:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[No./Street:]]></id>
+      <string><![CDATA[Адрес:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Suburb:]]></id>
+      <string><![CDATA[Район:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postcode:]]></id>
+      <string><![CDATA[Почтовый индекс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[City:]]></id>
+      <string><![CDATA[Город:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Country:]]></id>
+      <string><![CDATA[Страна:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[State:]]></id>
+      <string><![CDATA[Регион:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Standard address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   
+<!-- /checkout_new_address.html -->
+
+<!-- checkout_payment.html -->
+
+   <message>
+      <id><![CDATA[Payment Method]]></id>
+      <string><![CDATA[Способы оплаты]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address:]]></id>
+      <string><![CDATA[Адрес покупателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please choose from your address book the desired bill postal address for your order.]]></id>
+      <string><![CDATA[Текущий адрес доставки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Default Address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment Method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please choose the desired mode of payment for your order.]]></id>
+      <string><![CDATA[Выберите способ оплаты.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your Coupon covers your order total ammout, please accept our general business and supplying-conditions and proceed the order procedure.]]></id>
+      <string><![CDATA[Ваш купон полностью покрывает стоимость заказа, чтобы продолжить оформление заказа, Вы должны согласиться с условиями.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Insert personal memo depending to your order]]></id>
+      <string><![CDATA[Вы можете добавить комментарии к заказу]]></string>
+   </message>
+   <message>
+      <id><![CDATA[General business conditions:]]></id>
+      <string><![CDATA[Условия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[I accept your general business and supplying-conditions]]></id>
+      <string><![CDATA[Я согласен]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Continuation the ordering procedure]]></id>
+      <string><![CDATA[Продолжить оформление заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[To the confirmation of your order.]]></id>
+      <string><![CDATA[Перейти к подтверждению заказа.]]></string>
+   </message>
+
+<!-- /checkout_payment.html -->
+
+<!-- checkout_payment_address.html -->
+
+   <message>
+      <id><![CDATA[Information on the bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Текущий адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[This is the currently selected bill postal address to which we will send your bill.]]></id>
+      <string><![CDATA[Это текущий адрес покупателя.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postal addresses from your address book]]></id>
+      <string><![CDATA[Адреса из Вашей адресной книги]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You have the possibility to select postal addresses which already exist in your address book.]]></id>
+      <string><![CDATA[Вы можете выбрать адрес из адресной книги.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Continuation of the ordering procedure]]></id>
+      <string><![CDATA[Продолжить оформление заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[to the selection of the desired methode of payment.]]></id>
+      <string><![CDATA[Перейти к выбору способа оплаты.]]></string>
+   </message>
+
+<!-- /checkout_payment_address.html -->
+
+<!-- checkout_shipping.html -->
+
+   <message>
+      <id><![CDATA[Shipping Method]]></id>
+      <string><![CDATA[Способы доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address:]]></id>
+      <string><![CDATA[Адрес доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please choose from your address book the desired mailing address for your order.]]></id>
+      <string><![CDATA[Текущий адрес доставки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Default Address]]></id>
+      <string><![CDATA[Адрес по умолчанию]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping Method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please choose the desired mode of delivery for your order.]]></id>
+      <string><![CDATA[Выберите способ доставки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Continuation the ordering procedure]]></id>
+      <string><![CDATA[Продолжить оформление заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[to the selection of the desired mode of payment.]]></id>
+      <string><![CDATA[Перейти к выбору способа оплаты.]]></string>
+   </message>
+
+<!-- /checkout_shipping.html -->
+
+<!-- checkout_shipping_address.html -->
+
+   <message>
+      <id><![CDATA[Information on your mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Текущий адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[This is the currently selected mailing address to which we will send your order.]]></id>
+      <string><![CDATA[Это текущий адрес доставки.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postal addresses from your address book]]></id>
+      <string><![CDATA[Адреса из Вашей адресной книги]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You have the possibility to select postal addresses which already exist in your address book.]]></id>
+      <string><![CDATA[Вы можете выбрать адрес из адресной книги.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Continuation of the ordering procedure]]></id>
+      <string><![CDATA[Продолжить оформление заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[to the selection of the desired delivery method.]]></id>
+      <string><![CDATA[Перейти к выбору способа доставки.]]></string>
+   </message>
+
+<!-- /checkout_shipping_address.html -->
+
+<!-- checkout_success.html -->
+
+   <message>
+      <id><![CDATA[Your order has been completed sucessfully.]]></id>
+      <string><![CDATA[Ваш заказ успешно оформлен.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your order has been sent to us and you got a confirmation e-mail with the dates of invoice for you!]]></id>
+      <string><![CDATA[Мы получили Ваш заказ, также Вам отправлено письмо на E-Mail с информацией о заказе!]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Print version of the order]]></id>
+      <string><![CDATA[Версия для печати]]></string>
+   </message>
+   <message>
+      <id><![CDATA[For your convenience you can print the order.]]></id>
+      <string><![CDATA[Для удобства, Вы можете распечатать Ваш заказ.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Thank you for your online-purchase!]]></id>
+      <string><![CDATA[Спасибо за покупки!]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You have funds in your Gift Voucher Account. If you want <br />you can send those funds by]]></id>
+      <string><![CDATA[У Вас остались средства на подарочном сертификате. Если Вы хотите, <br />Вы можете отправить любую сумму по]]></string>
+   </message>
+   <message>
+      <id><![CDATA[e-mail</a> to someone]]></id>
+      <string><![CDATA[e-mail</a> своим знакомым, друзьям.]]></string>
+   </message>
+
+<!-- /checkout_success.html -->
+
 </locale>

@@ -1,5 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="checkout_payment_address"}
-<h1 class="contentBoxHeading">{#heading_address#}</h1>
+<h1 class="contentBoxHeading">[[Information on the bill postal address]]</h1>
 {$FORM_ACTION}
 {if $error!=''}
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -14,7 +13,7 @@
         </tr>
 {if $BILLING_ADDRESS=='true'} 
   <tr>
-    <td><strong>{#title_current_address#}</strong></td>
+    <td><strong>[[Bill postal address]]</strong></td>
   </tr>
 {/if}
 </table>
@@ -24,11 +23,11 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr> 
-          <td class="main">{#text_current_address#}<br /><br /></td>
+          <td class="main">[[This is the currently selected bill postal address to which we will send your bill.]]<br /><br /></td>
           <td>
 		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
               <tr> 
-                <td align="center" valign="top" class="main"><strong>{#title_current_address#}</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
+                <td align="center" valign="top" class="main"><strong>[[Bill postal address]]</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
                 <td class="boxTextBG" style="border-right: 1px solid; border-color: #cccccc;" align="left">{$ADDRESS_LABEL}</td>
               </tr>
             </table></td>
@@ -43,7 +42,7 @@
           <td class="main">&nbsp;</td>
         </tr>
   <tr>
-    <td class="main"><strong>{#title_old_addresses#}</strong></td>
+    <td class="main"><strong>[[Postal addresses from your address book]]</strong></td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -51,7 +50,7 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr> 
-          <td class="main">{#text_old_addresses#}<br /><br />{$BLOCK_ADDRESS}<br /><br /></td>
+          <td class="main">[[You have the possibility to select postal addresses which already exist in your address book.]]<br /><br />{$BLOCK_ADDRESS}<br /><br /></td>
         </tr>
       </table></td>
   </tr>
@@ -65,7 +64,7 @@
           <td class="main">&nbsp;</td>
         </tr>
   <tr>
-    <td><strong>{#title_continue#}</strong></td>
+    <td><strong>[[Continuation of the ordering procedure]]</strong></td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -73,7 +72,7 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr> 
-          <td class="main">{#text_continue#}<br /><br />
+          <td class="main">[[to the selection of the desired methode of payment.]]<br /><br />
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td>{$BUTTON_BACK}</td>
@@ -112,12 +111,6 @@
                       <td><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="5" alt="" /></td>
                     </tr>
                   </table></td>
-              </tr>
-              <tr> 
-                <td align="center" class="checkoutBarTo">{#text_shipping_info#}</td>
-                <td align="center" class="checkoutBarCurrent">{#text_payment_info#}</td>
-                <td align="center" class="checkoutBarTo">{#text_confirm#}</td>
-                <td align="center" class="checkoutBarTo">{#text_finished#}</td>
               </tr>
             </table></td>
         </tr>
