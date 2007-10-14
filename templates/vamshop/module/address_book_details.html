@@ -1,24 +1,23 @@
-{config_load file="$language/lang_$language.conf" section="address_book_process"}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
-<span class="Requirement">{#text_must#}</span>
+<span class="Requirement"> [[* necessary Information]] </span>
 <br />
 <br />
 <!-- форма -->
 <fieldset class="form">
-<legend>{#title_address#}</legend>
-{if $gender=='1'}<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>{/if} 
-<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
-{if $company=='1'}<p>{#text_company#} {$INPUT_COMPANY}</p>{/if}
-{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label> {$INPUT_STREET}</p>{/if}
-{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>{/if}
-{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label> {$INPUT_CODE}</p>{/if}
-{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">{#text_city#}</label> {$INPUT_CITY}</p>{/if}
-{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label> {$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</p>{/if}
-{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>{/if}
-{if $new=='1'}<p>{$CHECKBOX_PRIMARY} {#text_standard#}</p>{/if}
+<legend>[[Your postal address]]</legend>
+{if $gender=='1'}<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">[[Gender:]]</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>{/if} 
+<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">[[First name:]]</label> {$INPUT_FIRSTNAME}</p>
+<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">[[Last name:]]</label> {$INPUT_LASTNAME}</p>
+{if $company=='1'}<p>[[Company:]] {$INPUT_COMPANY}</p>{/if}
+{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">[[No./Street:]]</label> {$INPUT_STREET}</p>{/if}
+{if $suburb=='1'}<p>[[Suburb:]] {$INPUT_SUBURB}</p>{/if}
+{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">[[Postcode:]]</label> {$INPUT_CODE}</p>{/if}
+{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">[[City:]]</label> {$INPUT_CITY}</p>{/if}
+{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">[[Country:]]</label> {$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</p>{/if}
+{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">[[State:]]</label> <span id="stateXML">{$INPUT_STATE}</span></p>{/if}
+{if $new=='1'}<p>{$CHECKBOX_PRIMARY} [[Standard address]]</p>{/if}
 </fieldset>
 <!-- /форма -->
 </div>
