@@ -1,5 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="latest_news"} 
-<h1 class="contentBoxHeading">{#heading_text#}</h1>
+<h1 class="contentBoxHeading">[[News]]</h1>
 <table width="100%" border="0" cellpadding="0" cellspacing="4">
 {if $ONE eq 1}
   {assign var="module_data" value=$module_content[0]}
@@ -64,7 +63,7 @@
         </table></td>    
     
   </tr>
-  <tr><td class="main" align="right"><a href="{$NEWS_LINK}">{#other_news#}</a></td></tr>
+  <tr><td class="main" align="right"><a href="{$NEWS_LINK}">[[Other news...]]</a></td></tr>
 {else}
   <tr>
 

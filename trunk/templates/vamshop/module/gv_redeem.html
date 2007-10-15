@@ -1,18 +1,17 @@
-{config_load file="$language/lang_$language.conf" section="gv_redeem"}
-<h1>{#heading_gvredeem#}</h1>
+<h1>[[Redeem Voucher]]</h1>
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-{#text_information#}
+[[Questions and answers regarding voucher you find under]]
 </p>
 {if $error eq 'true'}
 <p>
-{#text_invalid_gv#}
+[[The entered voucher code is invalid or the voucher has been redeemed already. Please check your details again or contact us via the contact page]]
 </p>
 {else}
 <p>
-{#text_valid_gva#} {$coupon_amount} {#text_valid_gvb#}
+[[Congartulations, have redeemed your voucher for]] {$coupon_amount} [[successfully]]
 </p>
 {/if}
 <p>
