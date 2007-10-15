@@ -1,5 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="gv_send"}
-<h1>{#heading_gvsend#}</h1>
+<h1>[[Send voucher]]</h1>
 {if $action eq 'process'}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
@@ -37,16 +36,16 @@
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 
-{#heading_text#}
+[[Please fill in your personal details for the voucher.]]
 <br />
 <br />
 <!-- форма -->
 <fieldset class="form">
-<legend>{#heading_gvsend#}</legend>
-<p>{#entry_name#} {$INPUT_TO_NAME}</p>
-<p>{#entry_email#} {$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</p>
-<p>{#entry_amount#} {$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</p>
-<p>{#entry_message#} {$TEXTAREA_MESSAGE}</p>
+<legend>[[Send voucher]]</legend>
+<p>[[Recipient Name:]] {$INPUT_TO_NAME}</p>
+<p>[[Recipient e-mail address:]] {$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</p>
+<p>[[Value of the voucher:]] {$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</p>
+<p>[[Your message for the recipient:]] {$TEXTAREA_MESSAGE}</p>
 </fieldset>
 <!-- /форма -->
 

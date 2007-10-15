@@ -1,5 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="gv_send"}
-<h1 class="contentBoxHeading">{#heading_gvsend#}</h1>
+<h1 class="contentBoxHeading">[[Send voucher]]</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 {if $action eq 'process'}
   <tr>
@@ -28,21 +27,21 @@
   </tr>
 {elseif $action eq ''}
    <tr>
-     <td class="main">{#heading_text#}</td>
+     <td class="main">[[Please fill in your personal details for the voucher.]]</td>
    </tr>
    <tr>
      <td>{$FORM_ACTION}<table border="0" width="100%" cellspacing="0" cellpadding="2">
        <tr>
-         <td class="main">{#entry_name#}<br />{$INPUT_TO_NAME}</td>
+         <td class="main">[[Recipient Name:]]<br />{$INPUT_TO_NAME}</td>
        </tr>
        <tr>
-         <td class="main">{#entry_email#}<br />{$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</td>
+         <td class="main">[[Recipient e-mail address:]]<br />{$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</td>
        </tr>
        <tr>
-         <td class="main">{#entry_amount#}<br />{$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</td>
+         <td class="main">[[Value of the voucher:]]<br />{$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</td>
        </tr>
        <tr>
-         <td class="main">{#entry_message#}<br />{$TEXTAREA_MESSAGE}</td>
+         <td class="main">[[Your message for the recipient:]]<br />{$TEXTAREA_MESSAGE}</td>
        </tr>
      </table>
      <table border="0" width="100%" cellspacing="0" cellpadding="2">

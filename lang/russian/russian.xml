@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-15 15:35</revise>
+      <revise>2007-10-15 17:35</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -1277,7 +1277,7 @@
 
 <!-- /featured_products_category.html -->
 
-<!-- featured_products_category.html -->
+<!-- featured_products_default.html -->
 
    <message>
       <id><![CDATA[Featured products]]></id>
@@ -1288,6 +1288,280 @@
       <string><![CDATA[Время доставки:]]></string>
    </message>
 
-<!-- /featured_products_category.html -->
+<!-- /featured_products_default.html -->
+
+<!-- gift_cart.html -->
+
+   <message>
+      <id><![CDATA[Info]]></id>
+      <string><![CDATA[Информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Voucher Balance]]></id>
+      <string><![CDATA[Баланс сертификата]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Send gift voucher to]]></id>
+      <string><![CDATA[Отправить подарочный сертификат]]></string>
+   </message>
+   <message>
+      <id><![CDATA[friend]]></id>
+      <string><![CDATA[другу]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Voucher Redeemed]]></id>
+      <string><![CDATA[Сертификат использован]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Coupon:]]></id>
+      <string><![CDATA[Купон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[... more Information]]></id>
+      <string><![CDATA[... подробнее]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You have received a Gift Voucher or a Coupon, just enter the code below]]></id>
+      <string><![CDATA[Если у Вас есть подарочный сертификат или купон, укажите код ниже]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Coupon code:]]></id>
+      <string><![CDATA[Код:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Registration]]></id>
+      <string><![CDATA[Регистрация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Create Account]]></id>
+      <string><![CDATA[Зарегистрироваться]]></string>
+   </message>
+
+<!-- /gift_cart.html -->
+
+<!-- graduated_price.html -->
+
+   <message>
+      <id><![CDATA[Sliding-scale prices]]></id>
+      <string><![CDATA[Скидки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[pcs]]></id>
+      <string><![CDATA[шт.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[per]]></id>
+      <string><![CDATA[за]]></string>
+   </message>
+
+<!-- /graduated_price.html -->
+
+<!-- gv_faq.html -->
+
+   <message>
+      <id><![CDATA[Vouchers - Questions and Answers]]></id>
+      <string><![CDATA[Сертификаты - Вопросы и ответы]]></string>
+   </message>
+
+<!-- /gv_faq.html -->
+
+<!-- gv_redeem.html -->
+
+   <message>
+      <id><![CDATA[Redeem Voucher]]></id>
+      <string><![CDATA[Активировать сертификат]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Questions and answers regarding voucher you find under]]></id>
+      <string><![CDATA[Вопросы и ответы Вы найдете в разделе]]></string>
+   </message>
+   <message>
+      <id><![CDATA[The entered voucher code is invalid or the voucher has been redeemed already. Please check your details again or contact us via the contact page]]></id>
+      <string><![CDATA[Указанный код сертификата неверный, либо данный сертификат уже был активирован. Проверьте данные ещё раз, либо свяжитесь с нами.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Congartulations, have redeemed your voucher for]]></id>
+      <string><![CDATA[Поздравляем, Вы активировали сертификат для]]></string>
+   </message>
+   <message>
+      <id><![CDATA[successfully]]></id>
+      <string><![CDATA[успешно]]></string>
+   </message>
+
+<!-- /gv_redeem.html -->
+
+<!-- gv_send.html -->
+
+   <message>
+      <id><![CDATA[Send voucher]]></id>
+      <string><![CDATA[Отправить сертификат]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please fill in your personal details for the voucher.]]></id>
+      <string><![CDATA[Чтобы отправить сертификат, Вы должны заполнить следующую форму.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Recipient Name:]]></id>
+      <string><![CDATA[Имя получателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Recipient e-mail address:]]></id>
+      <string><![CDATA[E-Mail получателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Value of the voucher:]]></id>
+      <string><![CDATA[Сумма сертификата:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your message for the recipient:]]></id>
+      <string><![CDATA[Сообщение:]]></string>
+   </message>
+
+<!-- /gv_send.html -->
+
+<!-- kvitancia.html -->
+
+   <message>
+      <id><![CDATA[Kvitancia]]></id>
+      <string><![CDATA[Квитанция]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Izveschenie]]></id>
+      <string><![CDATA[Извещение]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Kassir]]></id>
+      <string><![CDATA[Кассир]]></string>
+   </message>
+   <message>
+      <id><![CDATA[INN]]></id>
+      <string><![CDATA[ИНН]]></string>
+   </message>
+   <message>
+      <id><![CDATA[poluchatel platega]]></id>
+      <string><![CDATA[получатель платежа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Raschetny schet no:]]></id>
+      <string><![CDATA[Расчетный счет №:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[BIK:]]></id>
+      <string><![CDATA[БИК:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Kor. schet:]]></id>
+      <string><![CDATA[Кор. сч.:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[KPP]]></id>
+      <string><![CDATA[КПП]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Vid platega]]></id>
+      <string><![CDATA[Вид платежа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date]]></id>
+      <string><![CDATA[Дата]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Summ]]></id>
+      <string><![CDATA[Сумма]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Platelschik:]]></id>
+      <string><![CDATA[Плательщик:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Penya:]]></id>
+      <string><![CDATA[Пеня:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Total:]]></id>
+      <string><![CDATA[Всего:]]></string>
+   </message>
+
+<!-- /kvitancia.html -->
+
+<!-- latest_news.html -->
+
+   <message>
+      <id><![CDATA[News]]></id>
+      <string><![CDATA[Новости]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Other news...]]></id>
+      <string><![CDATA[Другие новости...]]></string>
+   </message>
+
+<!-- /latest_news.html -->
+
+<!-- latest_news_default.html -->
+
+   <message>
+      <id><![CDATA[News]]></id>
+      <string><![CDATA[Новости]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Other news...]]></id>
+      <string><![CDATA[Другие новости...]]></string>
+   </message>
+
+<!-- /latest_news_default.html -->
+
+<!-- login.html -->
+
+   <message>
+      <id><![CDATA[Create a new account or login]]></id>
+      <string><![CDATA[Зарегистрируйтесь или войдите в магазин]]></string>
+   </message>
+   <message>
+      <id><![CDATA[New Customer]]></id>
+      <string><![CDATA[Зарегистрируйстесь в магазине]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Through your registration at our shop you are able to shop faster, know at any time the status of your orders and have always a current survey of your previous orders.]]></id>
+      <string><![CDATA[Зарегистрировавшись в нашем магазине, Вы сможете совершать покупки намного быстрее и удобнее, кроме того, Вы сможете следить за выполнением заказов, смотреть историю своих заказов.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[I am a customer]]></id>
+      <string><![CDATA[Введите свои данные для входа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[E-Mail address:]]></id>
+      <string><![CDATA[E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Password:]]></id>
+      <string><![CDATA[Пароль:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Password forgotten?]]></id>
+      <string><![CDATA[Забыли пароль?]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Visitor orderer]]></id>
+      <string><![CDATA[Быстрое оформление заказа]]></string>
+   </message>
+   <message>
+      <id><![CDATA[I would like to order only as visitor<br /><br />Through your order as visitor at our shop your dates are not stored and you do not have an account. With a further order you must enter however all dates again.]]></id>
+      <string><![CDATA[Если Вы хотите максимально быстро оформить заказ, нажимайте кнопку "Продолжить", которая расположена ниже, быстрое оформление заказа сэкономит Ваше время, но у Вас не будет адресной книги, Вы не сможете получать новости о последних новинках в нашем магазине.<br /><br />Если Вы уже зарегистрированы в нашем магазине, введите свой e-mail адрес и пароль.]]></string>
+   </message>
+
+<!-- /login.html -->
+
+<!-- logoff.html -->
+
+   <message>
+      <id><![CDATA[Logoff]]></id>
+      <string><![CDATA[Выход]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Thanks a lot for your visit to our Store!]]></id>
+      <string><![CDATA[Спасибо, что посетили наш магазин!]]></string>
+   </message>
+
+<!-- /logoff.html -->
 
 </locale>
