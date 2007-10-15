@@ -1,10 +1,9 @@
 {if $dl neq ''}
-{config_load file="$language/lang_$language.conf" section="downloads_module"}
-<h1 class="contentBoxHeading">{#heading_download#}</h1>
+<h1 class="contentBoxHeading">[[Downloads]]</h1>
 <table width="100%" border="0" cellpadding="2" cellspacing="0">
 {if $dl_prevented eq 'true'}
 <tr>
-  <td class="main"><b>{#download_not_allowed#}</b></td>
+  <td class="main"><b>[[Your downloads are not approved yet.]]</b></td>
 </tr>
 {/if}
 {foreach name=aussen item=dl_data from=$dl}
@@ -15,8 +14,8 @@
         <td align="left" valign="middle" class="main">{$dl_data.download_link}</td>
       </tr>
     </table></td>
-    <td bgcolor="FFFEC2" style="border: 2px solid; border-left: 0px solid; border-right: 0px solid; border-color: #ff0000;" class="main">{#table_heading_download_date#}&nbsp;{$dl_data.date}</td>
-    <td bgcolor="FFFEC2" style="border: 2px solid; border-left: 0px solid; border-color: #ff0000;" class="main" align="right"><strong>{$dl_data.count}</strong>&nbsp;{#table_heading_download_count#}</td>
+    <td bgcolor="FFFEC2" style="border: 2px solid; border-left: 0px solid; border-right: 0px solid; border-color: #ff0000;" class="main">[[Download expires:]]&nbsp;{$dl_data.date}</td>
+    <td bgcolor="FFFEC2" style="border: 2px solid; border-left: 0px solid; border-color: #ff0000;" class="main" align="right"><strong>{$dl_data.count}</strong>&nbsp;[[times to download]]</td>
   </tr>
 {/foreach}
 </table>

@@ -1,6 +1,5 @@
-{config_load file="$language/lang_$language.conf" section="featured"} 
-<h1><a href="{$FEATURED_LINK}">{#heading_text#}</a></h1>
-  {foreach name=aussen item=module_data from=$module_content}<div class="page">
+<h1><a href="{$FEATURED_LINK}">[[Featured products]]</a></h1>
+{foreach name=aussen item=module_data from=$module_content}<div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">
 
@@ -33,7 +32,7 @@
 
 {if $module_data.PRODUCTS_SHIPPING_NAME}
 <dd class="itemDescription">
-{#text_shippingtime#}&nbsp;
+[[Shipping time:]]&nbsp;
 {if $module_data.PRODUCTS_SHIPPING_IMAGE}
 <img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
 {/if}
@@ -48,7 +47,7 @@
 
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
-          {/foreach} 
+{/foreach} 
 
 <div class="clear"></div>
 <p></p>
