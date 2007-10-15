@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-15 17:35</revise>
+      <revise>2007-10-15 19:24</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -1563,5 +1563,268 @@
    </message>
 
 <!-- /logoff.html -->
+
+<!-- new_products_category.html -->
+
+   <message>
+      <id><![CDATA[New Products]]></id>
+      <string><![CDATA[Новинки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /new_products_category.html -->
+
+<!-- new_products_default.html -->
+
+   <message>
+      <id><![CDATA[New Products]]></id>
+      <string><![CDATA[Новинки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /new_products_default.html -->
+
+<!-- new_products_overview.html -->
+
+   <message>
+      <id><![CDATA[New Products]]></id>
+      <string><![CDATA[Новинки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /new_products_overview.html -->
+
+<!-- newsletter.html -->
+
+   <message>
+      <id><![CDATA[Newsletter]]></id>
+      <string><![CDATA[Рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Our Newsletter]]></id>
+      <string><![CDATA[Наша рассылка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Security code]]></id>
+      <string><![CDATA[Секретный код]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your E-Mail:]]></id>
+      <string><![CDATA[Ваш E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[receive]]></id>
+      <string><![CDATA[получать]]></string>
+   </message>
+   <message>
+      <id><![CDATA[don't receive either]]></id>
+      <string><![CDATA[не получать]]></string>
+   </message>
+
+<!-- /newsletter.html -->
+
+<!-- order_details.html -->
+
+   <message>
+      <id><![CDATA[Qty:]]></id>
+      <string><![CDATA[Количество:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Product:]]></id>
+      <string><![CDATA[Товар:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Singleprice:]]></id>
+      <string><![CDATA[Цена за единицу:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Total:]]></id>
+      <string><![CDATA[Сумма:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Remove:]]></id>
+      <string><![CDATA[Удалить:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /order_details.html -->
+
+<!-- password_double_opt_in.html -->
+
+   <message>
+      <id><![CDATA[How has been my password?]]></id>
+      <string><![CDATA[Восстановление пароля]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Step 1:]]></id>
+      <string><![CDATA[Шаг 1:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Please give us the e-mail address, which you used to create your account at]]></id>
+      <string><![CDATA[Пожалуйста, введите E-Mail адрес, который Вы указывали при регистрации в магазине]]></string>
+   </message>
+   <message>
+      <id><![CDATA[!]]></id>
+      <string><![CDATA[!]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Click Continue and we send an e-Mail with your personal Confirmation Code to you!]]></id>
+      <string><![CDATA[Нажмите кнопку продолжить и на Ваш E-Mail будет отправлен персональный код подтверждения.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Security-Code:]]></id>
+      <string><![CDATA[Секретный код:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[eMail-Address:]]></id>
+      <string><![CDATA[E-Mail адрес:]]></string>
+   </message>
+
+<!-- /password_double_opt_in.html -->
+
+<!-- popup_coupon_help.html -->
+
+   <message>
+      <id><![CDATA[Informations about your coupon]]></id>
+      <string><![CDATA[Информация о Вашем купоне]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Close window (x)]]></id>
+      <string><![CDATA[Закрыть окно (x)]]></string>
+   </message>
+
+<!-- /popup_coupon_help.html -->
+
+<!-- popup_search_help.html -->
+
+   <message>
+      <id><![CDATA[Help for advanced search]]></id>
+      <string><![CDATA[Помощь по расширенному поиску]]></string>
+   </message>
+   <message>
+      <id><![CDATA[The Search function makes the search possible for Product descriptions, manufacturers and article number.<br /><br />You can use logical operators as "AND" and "OR" br><br />For example you could write: <span class="underline">Microsoft AND Mouse</span>.<br /><br />Furthermore you can use brackets around the search interleave, i.e.:<br /><br /><span class="underline">Microsoft AND (Maus OR Tastatur OR "Visual Basic")</span>.<br /><br />You can combine several words with quotation marks into a search key.]]></id>
+      <string><![CDATA[Система поиска позволяет Вам искать названия товаров, описания, производителей и коды товаров.<br /><br />При поиске Вы можете использовать операторы "AND", "OR".<br /><br />Например, Вы можете указать в поиске: <span class="underline">Карманные компьютеры AND аксессуары</span>. В результате будут найдены товары, содержащие оба слова. Если Вы указываете в поиске <span class="underline">Карманные компьютеры OR аксессуары</span>, Вы получите список, который содержит оба или одно из слов, заданных в поиске. Если слова не разделяются символами AND или OR, поиск будет работать с определением OR.<br /><br />Вы можете также найти точно заданные слова, заключая их в кавычки. Например, если Вы ищите <span class="underline">"Карты памяти"</span>, Вы получите список товаров, которые содержат эту фразу целиком.<br /><br />Скобки могут использоваться чтобы управлять порядком логических действий. Например, Вы можете ввести <span class="underline">Компьютеры (карманные OR ноутбуки)</span>.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Close window (x)]]></id>
+      <string><![CDATA[Закрыть окно (x)]]></string>
+   </message>
+
+<!-- /popup_search_help.html -->
+
+<!-- print_order.html -->
+
+   <message>
+      <id><![CDATA[Order number]]></id>
+      <string><![CDATA[Заказ номер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Customer ID:]]></id>
+      <string><![CDATA[Код покупателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order number:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of order:]]></id>
+      <string><![CDATA[Дата заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products]]></id>
+      <string><![CDATA[Товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Qty:]]></id>
+      <string><![CDATA[Количество:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Model:]]></id>
+      <string><![CDATA[Код товара:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Singleprice:]]></id>
+      <string><![CDATA[Цена за единицу:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price:]]></id>
+      <string><![CDATA[Стоимость:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- print_order.html -->
+
+<!-- print_product_info.html -->
+
+   <message>
+      <id><![CDATA[Options:]]></id>
+      <string><![CDATA[Атрибуты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price:]]></id>
+      <string><![CDATA[Стоимость:]]></string>
+   </message>
+
+<!-- /print_product_info.html -->
+
+<!-- product_navigator.html -->
+
+   <message>
+      <id><![CDATA[[&lt;&lt;First]]]></id>
+      <string><![CDATA[первый]]></string>
+   </message>
+   <message>
+      <id><![CDATA[[&lt;Back]]]></id>
+      <string><![CDATA[предыдущий]]></string>
+   </message>
+   <message>
+      <id><![CDATA[[Next&gt;]]]></id>
+      <string><![CDATA[следующий]]></string>
+   </message>
+   <message>
+      <id><![CDATA[[last&gt;&gt;]]]></id>
+      <string><![CDATA[последний]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products in this categorie:]]></id>
+      <string><![CDATA[Товаров в данной категории:]]></string>
+   </message>
+
+<!-- /product_navigator.html -->
 
 </locale>
