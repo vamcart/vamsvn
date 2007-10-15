@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-13 15:35</revise>
+      <revise>2007-10-15 15:35</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -971,5 +971,323 @@
    </message>
 
 <!-- /checkout_success.html -->
+
+<!-- contact_us.html -->
+
+   <message>
+      <id><![CDATA[Your name:]]></id>
+      <string><![CDATA[Ваше имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your e-mail:]]></id>
+      <string><![CDATA[Ваш E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your message:]]></id>
+      <string><![CDATA[Ваше сообщение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your enquiry has been submitted sucessfully.]]></id>
+      <string><![CDATA[Ваше сообщение было успешно отправлено.]]></string>
+   </message>
+
+<!-- /contact_us.html -->
+
+<!-- cookie_usage.html -->
+
+   <message>
+      <id><![CDATA[Usage of Cookies]]></id>
+      <string><![CDATA[Использование Cookies]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your browser does not allows any Cookies.<br /><br />To continue your purchase, you should change the rights to make the page able to set cookies.<br /><br />If you use <span class="bold">Internet Explorer</span> follow this instructions:<br /><br />At menu; <span class="bold">Extras</span> choose <span class="bold">Internet Options</span><br />accrete at <span class="bold">adapting Safety-stage</span><br />At the lower field you will find a Drop-Down-box. There use <span class="bold">Average</span>.<br />Accrete now onto <span class="bold">Rollback</span><br /><br />This measure is used for your safety. Should there still be problems, please accept our apology for any inconveniences.]]></id>
+      <string><![CDATA[Ваш браузер не поддерживает cookies, либо поддержка выключена.<br />Для работы с нашим магазином Вам необходимо включить поддержку cookies в Вашем браузере.<br />Инструкция для браузера Internet Explorer:<br /><br />Сервис, далее Свойства обозревателя<br />Выбираете закладку Безопасность, ставите уровень безопасности Средний<br /><br />Если у Вас позникли проблемы при совершении покупок в нашем магазине, пожалуйста, свяжитесь с администратором магазина для решения проблемы.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Cookies and your privacy and safety]]></id>
+      <string><![CDATA[Использование cookies]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Through the commitment of Cookies the safety is lifted and  the protection of  your privacy is much better.<br /><br />There are no personal informations stored within the cookies.]]></id>
+      <string><![CDATA[Для работы с нашим магазином Вам необходимо включить поддержку cookies в Вашем браузере.<br />Если у Вас позникли проблемы при совершении покупок в нашем магазине, свяжитесь с администратором магазина для решения проблемы.]]></string>
+   </message>
+
+<!-- /cookie_usage.html -->
+
+<!-- create_account.html -->
+
+   <message>
+      <id><![CDATA[Information on your customer account]]></id>
+      <string><![CDATA[Регистрация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your personal dates]]></id>
+      <string><![CDATA[Ваши персональные данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Gender:]]></id>
+      <string><![CDATA[Обращение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[First name:]]></id>
+      <string><![CDATA[Имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name:]]></id>
+      <string><![CDATA[Фамилия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of birth:]]></id>
+      <string><![CDATA[Дата рождения:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[E-mail address:]]></id>
+      <string><![CDATA[Ваш E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company dates]]></id>
+      <string><![CDATA[Информация о компании]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company:]]></id>
+      <string><![CDATA[Компания:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Vat ID:]]></id>
+      <string><![CDATA[Vat ID:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your postal address]]></id>
+      <string><![CDATA[Ваш адрес]]></string>
+   </message>
+   <message>
+      <id><![CDATA[No./Street:]]></id>
+      <string><![CDATA[Адрес:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Suburb:]]></id>
+      <string><![CDATA[Район:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postcode:]]></id>
+      <string><![CDATA[Почтовый индекс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[City:]]></id>
+      <string><![CDATA[Город:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Country:]]></id>
+      <string><![CDATA[Страна:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[State:]]></id>
+      <string><![CDATA[Регион:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your contact information]]></id>
+      <string><![CDATA[Ваша контактная информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Phone:]]></id>
+      <string><![CDATA[Телефон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Fax:]]></id>
+      <string><![CDATA[Факс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Secure your information with a password]]></id>
+      <string><![CDATA[Укажите свой пароль]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Password:]]></id>
+      <string><![CDATA[Пароль:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Confirmation:]]></id>
+      <string><![CDATA[Подтверждение:]]></string>
+   </message>
+
+<!-- /create_account.html -->
+
+<!-- create_account_guest.html -->
+
+   <message>
+      <id><![CDATA[Information on your customer account]]></id>
+      <string><![CDATA[Регистрация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[* necessary Information]]></id>
+      <string><![CDATA[поля, отмеченные *, обязательны для заполнения]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your personal dates]]></id>
+      <string><![CDATA[Ваши персональные данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Gender:]]></id>
+      <string><![CDATA[Обращение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[First name:]]></id>
+      <string><![CDATA[Имя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name:]]></id>
+      <string><![CDATA[Фамилия:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of birth:]]></id>
+      <string><![CDATA[Дата рождения:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[E-mail address:]]></id>
+      <string><![CDATA[Ваш E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company dates]]></id>
+      <string><![CDATA[Информация о компании]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Company:]]></id>
+      <string><![CDATA[Компания:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Vat ID:]]></id>
+      <string><![CDATA[Vat ID:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your postal address]]></id>
+      <string><![CDATA[Ваш адрес]]></string>
+   </message>
+   <message>
+      <id><![CDATA[No./Street:]]></id>
+      <string><![CDATA[Адрес:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Suburb:]]></id>
+      <string><![CDATA[Район:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postcode:]]></id>
+      <string><![CDATA[Почтовый индекс:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[City:]]></id>
+      <string><![CDATA[Город:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Country:]]></id>
+      <string><![CDATA[Страна:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[State:]]></id>
+      <string><![CDATA[Регион:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your contact information]]></id>
+      <string><![CDATA[Ваша контактная информация]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Phone:]]></id>
+      <string><![CDATA[Телефон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Fax:]]></id>
+      <string><![CDATA[Факс:]]></string>
+   </message>
+
+<!-- /create_account_guest.html -->
+
+<!-- cross_selling.html -->
+
+   <message>
+      <id><![CDATA[We recommend following products:]]></id>
+      <string><![CDATA[Также рекомендуем следующие товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /cross_selling.html -->
+
+<!-- downloads.html -->
+
+   <message>
+      <id><![CDATA[Downloads]]></id>
+      <string><![CDATA[Загрузки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your downloads are not approved yet.]]></id>
+      <string><![CDATA[Ваши загрузки ещё недоступны.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Download expires:]]></id>
+      <string><![CDATA[Ссылка активна до:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[times to download]]></id>
+      <string><![CDATA[раз можно загрузить файл]]></string>
+   </message>
+
+<!-- /downloads.html -->
+
+<!-- error_message.html -->
+
+   <message>
+      <id><![CDATA[Sorry, we did not find a product matching your search request. Try again?]]></id>
+      <string><![CDATA[Не найдено товаров, соответствующих Вашему запросу.<br /><span class="bold">Воспользуйтесь поиском!</span>]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Keyword:]]></id>
+      <string><![CDATA[Ключевые слова:]]></string>
+   </message>
+
+<!-- /error_message.html -->
+
+<!-- featured.html -->
+
+   <message>
+      <id><![CDATA[Featured products]]></id>
+      <string><![CDATA[Рекомендуемые товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /featured.html -->
+
+<!-- featured_products_category.html -->
+
+   <message>
+      <id><![CDATA[Featured products]]></id>
+      <string><![CDATA[Рекомендуемые товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /featured_products_category.html -->
+
+<!-- featured_products_category.html -->
+
+   <message>
+      <id><![CDATA[Featured products]]></id>
+      <string><![CDATA[Рекомендуемые товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /featured_products_category.html -->
 
 </locale>
