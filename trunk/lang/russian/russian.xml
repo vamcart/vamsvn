@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-16 14:24</revise>
+      <revise>2007-10-16 15:25</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -1805,7 +1805,7 @@
       <string><![CDATA[Время доставки:]]></string>
    </message>
 
-<!-- print_order.html -->
+<!-- /print_order.html -->
 
 <!-- print_product_info.html -->
 
@@ -2313,5 +2313,135 @@
 <!-- /Системные сообщения -->
 
 <!-- /Тексты php файлов --> 
+
+<!-- admin/print_order.html -->
+
+   <message>
+      <id><![CDATA[Order number]]></id>
+      <string><![CDATA[Заказ номер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Customer ID:]]></id>
+      <string><![CDATA[Код покупателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order number:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Telephone:]]></id>
+      <string><![CDATA[Телефон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[E-Mail:]]></id>
+      <string><![CDATA[E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of order:]]></id>
+      <string><![CDATA[Дата заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products]]></id>
+      <string><![CDATA[Товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Qty:]]></id>
+      <string><![CDATA[Количество:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Model:]]></id>
+      <string><![CDATA[Код товара:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price:]]></id>
+      <string><![CDATA[Стоимость:]]></string>
+   </message>
+
+<!-- /admin/print_order.html -->
+
+<!-- admin/print_packingslip.html -->
+
+   <message>
+      <id><![CDATA[Order number]]></id>
+      <string><![CDATA[Заказ номер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Customer ID:]]></id>
+      <string><![CDATA[Код покупателя:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Payment method:]]></id>
+      <string><![CDATA[Способ оплаты:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping method:]]></id>
+      <string><![CDATA[Способ доставки:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Order number:]]></id>
+      <string><![CDATA[Номер заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Telephone:]]></id>
+      <string><![CDATA[Телефон:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[E-Mail:]]></id>
+      <string><![CDATA[E-Mail:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date of order:]]></id>
+      <string><![CDATA[Дата заказа:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Mailing address]]></id>
+      <string><![CDATA[Адрес доставки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Bill postal address]]></id>
+      <string><![CDATA[Адрес покупателя]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products]]></id>
+      <string><![CDATA[Товары]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Qty:]]></id>
+      <string><![CDATA[Количество:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Products:]]></id>
+      <string><![CDATA[Товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Model:]]></id>
+      <string><![CDATA[Код товара:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price:]]></id>
+      <string><![CDATA[Стоимость:]]></string>
+   </message>
+
+<!-- /admin/print_packingslip.html -->
 
 </locale>
