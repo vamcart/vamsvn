@@ -1,8 +1,7 @@
-{config_load file="$language/lang_$language.conf" section="print_order"} 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>{#title#} {$oID}</title>
+<title>[[Order number]] {$oID}</title>
 <meta http-equiv="Content-Type" content="text/html; charset={$charset}">
 </head>
 
@@ -13,13 +12,13 @@
         <tr> 
           <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$address_label_customer}<br>
             <br>
-			{if $csID}<strong>{#csID#}</strong>{$csID}<br>{/if}
-            <strong>{#payment#}</strong> {$PAYMENT_METHOD}<br>
-            {if $SHIPPING_METHOD}<strong>{#shipping#}</strong> {$SHIPPING_METHOD}<br>{/if}
-            <strong>{#order#}</strong> {$oID}<br>
-            <strong>{#date#}</strong> {$DATE}<br>
-            <strong>{#phone#}</strong> {$phone}<br>
-            <strong>{#email#}</strong> {$email}<br>
+			{if $csID}<strong>[[Customer ID:]]</strong>{$csID}<br>{/if}
+            <strong>[[Payment method:]]</strong> {$PAYMENT_METHOD}<br>
+            {if $SHIPPING_METHOD}<strong>[[Shipping method:]]</strong> {$SHIPPING_METHOD}<br>{/if}
+            <strong>[[Order number:]]</strong> {$oID}<br>
+            <strong>[[Telephone:]]</strong> {$phone}<br>
+            <strong>[[E-Mail:]]</strong> {$email}<br>
+            <strong>[[Date of order:]]</strong> {$DATE}<br>
             </font></td>
           <td width="1"><img src="{$logo_path}logo.gif"></td>
         </tr>
@@ -29,12 +28,12 @@
         <tr bgcolor="#f1f1f1"> 
           <td width="50%"> 
             <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>
-              {#shipping_address#}
+              [[Mailing address]]
             </strong><br>
           </font></p></td>
           <td> 
             <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>              </strong><strong>
-              {if $address_label_payment}{#payment_address#}{/if}
+              {if $address_label_payment}[[Bill postal address]]{/if}
             </strong><br>
           </font> </p></td>
         </tr>
@@ -51,15 +50,15 @@
 </table>
 <table style="border-bottom:1px solid;" width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr> 
-    <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#heading_products#}</strong></font></td>
+    <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>[[Products]]</strong></font></td>
   </tr>
   <tr>
     <td>
 	<table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="f1f1f1">
         <tr> 
-          <td colspan="2" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="center"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_units#}</font></strong></div></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_products#}</font></strong></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_artnr#}</font></strong></td>
+          <td colspan="2" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="center"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">[[Qty:]]</font></strong></div></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">[[Products:]]</font></strong></td>
+          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">[[Model:]]</font></strong></td>
         </tr>
         {foreach name=aussen item=order_values from=$order_data} 
         <tr> 
