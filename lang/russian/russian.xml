@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-15 19:24</revise>
+      <revise>2007-10-16 19:24</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -1826,5 +1826,399 @@
    </message>
 
 <!-- /product_navigator.html -->
+
+<!-- product_reviews.html -->
+
+   <message>
+      <id><![CDATA[Customer reviews:]]></id>
+      <string><![CDATA[Отзывы:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Nr.]]></id>
+      <string><![CDATA[Номер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author]]></id>
+      <string><![CDATA[Автор]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Evaluation]]></id>
+      <string><![CDATA[Оценка]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date]]></id>
+      <string><![CDATA[Дата]]></string>
+   </message>
+
+<!-- /product_reviews.html -->
+
+<!-- product_reviews_info.html -->
+
+   <message>
+      <id><![CDATA[Reviews to:]]></id>
+      <string><![CDATA[Отзыв о товаре:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Date:]]></id>
+      <string><![CDATA[Дата:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Review:]]></id>
+      <string><![CDATA[Отзыв:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Evaluation:]]></id>
+      <string><![CDATA[Оценка:]]></string>
+   </message>
+
+<!-- /product_reviews_info.html -->
+
+<!-- product_reviews_write.html -->
+
+   <message>
+      <id><![CDATA[What do you think?]]></id>
+      <string><![CDATA[Что вы думаете об этом товаре?]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Product:]]></id>
+      <string><![CDATA[Товар:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your opinion:]]></id>
+      <string><![CDATA[Ваше мнение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[<span class="bold">Caution:</span> HTML is not supported!]]></id>
+      <string><![CDATA[<span class="bold">Предупреждение:</span> HTML не поддерживается!]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Evaluation:]]></id>
+      <string><![CDATA[Оценка:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[BAD]]></id>
+      <string><![CDATA[ПЛОХО]]></string>
+   </message>
+   <message>
+      <id><![CDATA[VERY GOOD]]></id>
+      <string><![CDATA[ОЧЕНЬ ХОРОШО]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Captcha:]]></id>
+      <string><![CDATA[Картинка:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Type captcha code here (case sensitive):]]></id>
+      <string><![CDATA[Укажите код на картинке (учитывая регистр):]]></string>
+   </message>
+
+<!-- /product_reviews_write.html -->
+
+<!-- products_media.html -->
+
+   <message>
+      <id><![CDATA[File]]></id>
+      <string><![CDATA[Файл]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Size]]></id>
+      <string><![CDATA[Размер]]></string>
+   </message>
+
+<!-- /products_media.html -->
+
+<!-- products_reviews.html -->
+
+   <message>
+      <id><![CDATA[Reviews]]></id>
+      <string><![CDATA[Отзывы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Evaluation:]]></id>
+      <string><![CDATA[Оценка:]]></string>
+   </message>
+
+<!-- /products_reviews.html -->
+
+<!-- reverse_cross_selling.html -->
+
+   <message>
+      <id><![CDATA[This product is compatible too (for example):]]></id>
+      <string><![CDATA[Обратите внимание на следующие товары:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /reverse_cross_selling.html -->
+
+<!-- reviews.html -->
+
+   <message>
+      <id><![CDATA[Reviews]]></id>
+      <string><![CDATA[Отзывы]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Product:]]></id>
+      <string><![CDATA[Товар:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Author:]]></id>
+      <string><![CDATA[Автор:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Your opinion:]]></id>
+      <string><![CDATA[Ваше мнение:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Evaluation:]]></id>
+      <string><![CDATA[Оценка:]]></string>
+   </message>
+   
+<!-- /reviews.html -->
+
+<!-- schet.html -->
+
+   <message>
+      <id><![CDATA[Schet]]></id>
+      <string><![CDATA[Счёт]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Postavschik]]></id>
+      <string><![CDATA[Поставщик]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Address]]></id>
+      <string><![CDATA[Адрес]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Telephone]]></id>
+      <string><![CDATA[Телефон]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Fax]]></id>
+      <string><![CDATA[Факс]]></string>
+   </message>
+   <message>
+      <id><![CDATA[R/s]]></id>
+      <string><![CDATA[Р/с]]></string>
+   </message>
+   <message>
+      <id><![CDATA[v banke]]></id>
+      <string><![CDATA[в банке]]></string>
+   </message>
+   <message>
+      <id><![CDATA[K/s]]></id>
+      <string><![CDATA[К/с]]></string>
+   </message>
+   <message>
+      <id><![CDATA[BIK]]></id>
+      <string><![CDATA[БИК]]></string>
+   </message>
+   <message>
+      <id><![CDATA[INN]]></id>
+      <string><![CDATA[ИНН]]></string>
+   </message>
+   <message>
+      <id><![CDATA[KPP]]></id>
+      <string><![CDATA[КПП]]></string>
+   </message>
+   <message>
+      <id><![CDATA[OGRN]]></id>
+      <string><![CDATA[ОГРН]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Kod po OKPO]]></id>
+      <string><![CDATA[Код по ОКПО]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Pokupatel]]></id>
+      <string><![CDATA[Покупатель]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Invoice no.]]></id>
+      <string><![CDATA[Счет №]]></string>
+   </message>
+   <message>
+      <id><![CDATA[ot]]></id>
+      <string><![CDATA[от]]></string>
+   </message>
+   <message>
+      <id><![CDATA[No.]]></id>
+      <string><![CDATA[№ п/п]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Number]]></id>
+      <string><![CDATA[Н/номер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Product]]></id>
+      <string><![CDATA[Наименование товара, услуг]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Qty]]></id>
+      <string><![CDATA[Количество]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Price]]></id>
+      <string><![CDATA[Цена]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Total]]></id>
+      <string><![CDATA[Сумма руб.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Vsego k oplate:]]></id>
+      <string><![CDATA[Всего к оплате:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Director]]></id>
+      <string><![CDATA[Директор]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Last name]]></id>
+      <string><![CDATA[Фамилия]]></string>
+   </message>
+   <message>
+      <id><![CDATA[MP]]></id>
+      <string><![CDATA[МП]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Glav. buh.]]></id>
+      <string><![CDATA[Главный бухгалтер]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Warning]]></id>
+      <string><![CDATA[Внимание]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Srok oplaty - 3 bankovskih dnia. V sluchae narushenia ukazannogo sroka postavshik imeet pravo]]></id>
+      <string><![CDATA[Срок оплаты - 3 банковских дня. В случае нарушения указанного срока 
+поставщик имеет право]]></string>
+   </message>
+   <message>
+      <id><![CDATA[v odnostoronnem poryadke izmenit uslovia postavki (sroki, tsena)]]></id>
+      <string><![CDATA[в одностороннем порядке изменить условия поставки (сроки, цена)]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Oplata dannogo scheta oznachaet soglasie s usloviami postavki tovara. Uvedomlenie ob oplate]]></id>
+      <string><![CDATA[Оплата данного счета означает согласие с условиями поставки товара. Уведомление об оплате]]></string>
+   </message>
+   <message>
+      <id><![CDATA[obyazatelno, v protivnom sluchae ne garantiruetsia nalichie tovara na sklade.]]></id>
+      <string><![CDATA[обязательно, в противном случае не гарантируется наличие товара на складе.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Srok postavki - v techenie 5 dnei c momenta oplaty. Faktom oplaty schitaetsia zachislenie]]></id>
+      <string><![CDATA[Срок поставки - в течение 5 дней с момента оплаты. Фактом оплаты считается 
+зачисление]]></string>
+   </message>
+   <message>
+      <id><![CDATA[denegnyh sredstv na r/s postavschika.]]></id>
+      <string><![CDATA[денежных средств на р/с поставщика.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Dlya oformlenia nakladnoi i s/f neobhodimo imet sleduyschie dokumenty:]]></id>
+      <string><![CDATA[Для оформления накладной и с/ф необходимо иметь следующие документы:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[1. Doverennost. 2. pasport. 3. Kopiu plategnogo poruchenia. (Esli tovar poluchaetsia lichno.)]]></id>
+      <string><![CDATA[1. Доверенность. 2. паспорт. 3. Копию платежного поручения. (Если товар 
+получается лично.)]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Pri otpravke tovara drugimi sredstvami dostavki soprovoditelnye dokumenty prilagautsia.]]></id>
+      <string><![CDATA[При отправке товара другими средствами доставки сопроводительные документы 
+прилагаются.]]></string>
+   </message>
+
+<!-- /schet.html -->
+
+<!-- shopping_cart.html -->
+
+   <message>
+      <id><![CDATA[Your shopping cart contains:]]></id>
+      <string><![CDATA[В корзине:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[You do not have anything in your shopping cart yet.]]></id>
+      <string><![CDATA[Корзина пуста.]]></string>
+   </message>
+
+<!-- /shopping_cart.html -->
+
+<!-- sitemap.html -->
+
+   <message>
+      <id><![CDATA[No subcategories.]]></id>
+      <string><![CDATA[Нет подкатегорий.]]></string>
+   </message>
+
+<!-- /sitemap.html -->
+
+<!-- specials.html -->
+
+   <message>
+      <id><![CDATA[Specials]]></id>
+      <string><![CDATA[Скидки]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /specials.html -->
+
+<!-- ssl_check.html.html -->
+
+   <message>
+      <id><![CDATA[Note on safety]]></id>
+      <string><![CDATA[Замечание по безопасности]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Our Safety inspection has shown that your browser has changed the SSL-Session-Id while your visit.<br /><br />For safety reasons we ask you to announce yourself again.<br /><br />Different browsers, e.g. Konqueror 3.1,are not able to generate the Secure SSL Session-Id on their own - but this is a requirement. If you use such a browser, update it to the latest version or install another browser. For example  <a href="http://www.microsoft.com/ie/" target="_blank">Microsoft Internet Explorer</a>, <a href="http://channels.netscape.com/ns/browsers/download_other.jsp" target="_blank">Netscape</a>, or <a href="http://www.mozilla.org/releases/" target="_blank">Mozilla</a>. After updating to one of this browsers you should be able to use our shop without any problems, with the certainty o be on the safe side.br><br />This security measure is used for your safety. Should there still be problems, please accept our apology for any inconveniences.]]></id>
+      <string><![CDATA[Обнаружено, что ваш браузер изменил SSL-Session-Id во время Вашего пребывания в магазине.<br /><br />В целях безопасности мы просим Вас зайти в магазин еще раз.]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Privacy and safety]]></id>
+      <string><![CDATA[О безопасности]]></string>
+   </message>
+   <message>
+      <id><![CDATA[The simulator scenario language session ID made from your browser is checked for a secure page by us at every grip.<br /><br />This inspection guarantees that in fact the grip occurs from your browser and does not come from another browser.]]></id>
+      <string><![CDATA[The simulator scenario language session ID made from your browser is checked for a secure page by us at every grip.<br /><br />This inspection guarantees that in fact the grip occurs from your browser and does not come from another browser.]]></string>
+   </message>
+
+<!-- /ssl_check.html -->
+
+<!-- upcoming_products.html -->
+
+   <message>
+      <id><![CDATA[Available soon at our shop!]]></id>
+      <string><![CDATA[Скоро в продаже!]]></string>
+   </message>
+
+<!-- /upcoming_products.html -->
+
+<!-- vam_rss2_info.html -->
+
+   <message>
+      <id><![CDATA[RSS channels]]></id>
+      <string><![CDATA[RSS каналы]]></string>
+   </message>
+
+<!-- /vam_rss2_info.html -->
 
 </locale>

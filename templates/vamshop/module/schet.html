@@ -1,32 +1,28 @@
-{config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>[[Schet]] {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
 <link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
-<!-- Информация о заказе -->
 <div class="page">
 
-
-
-<p><b>Поставщик</b> {$1}</p>
-<p><b>Адрес</b> {$2}</p>
-<p><b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}</p>
-<p><b>Р/с</b> 
-{$5} <b>в банке</b> {$6}</p>
-<p><b>К/с</b> 
-{$7} <b>БИК</b> {$8}</p>
-<p><b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
-ОКПО</b> {$12}</p>
-<p><b>Покупатель</b> {$address_label_customer}</p>
+<p><b>[[Postavschik]]</b> {$1}</p>
+<p><b>[[Address]]</b> {$2}</p>
+<p><b>[[Telephone]]</b>&nbsp;{$3} <b>[[Fax]]</b> {$4}</p>
+<p><b>[[R/s]]</b> 
+{$5} <b>[[v banke]]</b> {$6}</p>
+<p><b>[[K/s]]</b> 
+{$7} <b>[[BIK]]</b> {$8}</p>
+<p><b>[[INN]]</b> {$9}&nbsp; <b>[[KPP]]</b> {$10}&nbsp; <b>[[OGRN]]</b> {$11} <b>[[Kod po OKPO]]</b> {$12}</p>
+<p><b>[[Pokupatel]]</b> {$address_label_customer}</p>
 <hr>
-<p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
+<p><b><font size="5">[[Invoice no.]] {$oID} [[ot]] {$DATE}</font></b></p>
 <p>&nbsp;</p>
 <table border="0" width="92%" id="table1" cellspacing="0">
 	<tr>
-		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
+		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>[[No.]]</b></td>
 		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
-		Н/номер</td>
-		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
-		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
-		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Цена</b></td>
-		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>Сумма руб.</b></td>
+		[[Number]]</td>
+		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>[[Product]]</b></td>
+		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>[[Qty]]</b></td>
+		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>[[Price]]</b></td>
+		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>[[Total]]</b></td>
 	</tr>
 	
         {foreach name=aussen item=order_values from=$order_data} 
@@ -49,30 +45,24 @@
   {/foreach} 
 
 </table>
-<p><b>Всего к оплате: {$summa}</b></p>
+<p><b>[[Vsego k oplate:]] {$summa}</b></p>
 <p>&nbsp;</p>
 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Директор ______________________ /Фамилия/</b></p>
-<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Главный бухгалтер __________________/Фамилия/</b></p>
+[[Director]] ______________________ /[[Last name]]/</b></p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [[MP]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[[Glav. buh.]] __________________/[[Last name]]/</b></p>
 <p>&nbsp;</p>
-<p><b>Внимание</b></p>
-<p><b>Срок оплаты - 3 банковских дня. В случае нарушения указанного срока 
-поставщик имеет право</b></p>
-<p><b>в одностороннем порядке изменить условия поставки (сроки, цена)</b></p>
-<p><b>Оплата данного счета означает согласие с условиями поставки товара. 
-Уведомление об оплате</b></p>
-<p><b>обязательно, в противном случае не гарантируется наличие товара на складе.</b></p>
-<p><b>Срок поставки - в течении 5 дней с момента оплаты. Фактом оплаты считается 
-зачисление</b></p>
-<p><b>денежных средств на р/с поставщика.</b></p>
-<p><b>Для оформления накладной и с/ф необходимо иметь следующие документы:</b></p>
-<p><b>1. Доверенность. 2. паспорт. 3. Копию платежного поручения. (Если товар 
-получается лично.)</b></p>
-<p><b>При отправке товара другими средствами доставки сопроводительные документы 
-прилагаются.</b></p>
+<p><b>[[Warning]]</b></p>
+<p><b>[[Srok oplaty - 3 bankovskih dnia. V sluchae narushenia ukazannogo sroka postavshik imeet pravo]]</b></p>
+<p><b>[[v odnostoronnem poryadke izmenit uslovia postavki (sroki, tsena)]]</b></p>
+<p><b>[[Oplata dannogo scheta oznachaet soglasie s usloviami postavki tovara. Uvedomlenie ob oplate]]</b></p>
+<p><b>[[obyazatelno, v protivnom sluchae ne garantiruetsia nalichie tovara na sklade.]]</b></p>
+<p><b>[[Srok postavki - v techenie 5 dnei c momenta oplaty. Faktom oplaty schitaetsia zachislenie]]</b></p>
+<p><b>[[denegnyh sredstv na r/s postavschika.]]</b></p>
+<p><b>[[Dlya oformlenia nakladnoi i s/f neobhodimo imet sleduyschie dokumenty:]]</b></p>
+<p><b>[[1. Doverennost. 2. pasport. 3. Kopiu plategnogo poruchenia. (Esli tovar poluchaetsia lichno.)]]</b></p>
+<p><b>[[Pri otpravke tovara drugimi sredstvami dostavki soprovoditelnye dokumenty prilagautsia.]]</b></p>
 <p>&nbsp;</p>
 
 </div>
-<!-- /Информация о заказе -->
 </body></html>
