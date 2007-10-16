@@ -1,5 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="shopping_cart"}
-<h1>{#heading_cart#}</h1>
+<h1>[[Your shopping cart contains:]]</h1>
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}
 {$MODULE_gift_cart}
@@ -9,7 +8,7 @@
 <div class="pagecontent">
 
 <p>
-{#text_empty#}
+[[You do not have anything in your shopping cart yet.]]
 </p>
 
 </div>
