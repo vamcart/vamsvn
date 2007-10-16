@@ -3,23 +3,12 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-16 19:24</revise>
+      <revise>2007-10-16 14:24</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
 
-<!-- Системные сообщения -->
-
-   <message>
-      <id><![CDATA[Parse time: ]]></id>
-      <string><![CDATA[Время генерации: ]]></string>
-   </message>
-   <message>
-      <id><![CDATA[queries: ]]></id>
-      <string><![CDATA[запросов: ]]></string>
-   </message>
-
-<!-- /Системные сообщения -->
+<!-- Тексты html шаблонов --> 
 
 <!-- Заголовки боксов -->
 
@@ -174,6 +163,35 @@
    </message>
 
 <!-- /Содержимое боксов -->
+
+<!-- index.html -->
+
+   <message>
+      <id><![CDATA[Main page]]></id>
+      <string><![CDATA[Главная]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Account]]></id>
+      <string><![CDATA[Мои данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Cart]]></id>
+      <string><![CDATA[Корзина]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Checkout]]></id>
+      <string><![CDATA[Оформить]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Logout]]></id>
+      <string><![CDATA[Выход]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Login]]></id>
+      <string><![CDATA[Вход]]></string>
+   </message>
+
+<!-- /index.html -->
 
 <!-- account.html -->
 
@@ -2220,5 +2238,80 @@
    </message>
 
 <!-- /vam_rss2_info.html -->
+
+<!-- categorie_listing.html -->
+
+   <message>
+      <id><![CDATA[More sub catagories:]]></id>
+      <string><![CDATA[Подкатегории:]]></string>
+   </message>
+
+<!-- /categorie_listing.html -->
+
+<!-- product_info_v1.html -->
+
+   <message>
+      <id><![CDATA[Product No.:]]></id>
+      <string><![CDATA[Код товара:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Discount:]]></id>
+      <string><![CDATA[Скидка:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Print product data sheet:]]></id>
+      <string><![CDATA[Версия для печати:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /product_info_v1.html -->
+
+<!-- product_listing_columns.html -->
+
+   <message>
+      <id><![CDATA[Filter:]]></id>
+      <string><![CDATA[Фильтр:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /product_listing_columns.html -->
+
+<!-- product_listing_list.html -->
+
+   <message>
+      <id><![CDATA[Filter:]]></id>
+      <string><![CDATA[Фильтр:]]></string>
+   </message>
+   <message>
+      <id><![CDATA[Shipping time:]]></id>
+      <string><![CDATA[Время доставки:]]></string>
+   </message>
+
+<!-- /product_listing_list.html -->
+
+<!-- /Тексты html шаблонов --> 
+
+<!-- Тексты php файлов --> 
+
+<!-- Системные сообщения -->
+
+   <message>
+      <id><![CDATA[Parse time: ]]></id>
+      <string><![CDATA[Время генерации: ]]></string>
+   </message>
+   <message>
+      <id><![CDATA[queries: ]]></id>
+      <string><![CDATA[запросов: ]]></string>
+   </message>
+
+<!-- /Системные сообщения -->
+
+<!-- /Тексты php файлов --> 
 
 </locale>
