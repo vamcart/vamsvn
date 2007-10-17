@@ -177,6 +177,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
 	// assign language to template for caching
 	$vamTemplate->assign('language', $_SESSION['language']);
+   $vamTemplate->assign('charset', $_SESSION['language_charset']); 
 	$vamTemplate->assign('oID', (int) $_GET['oID']);
 	if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
 		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
