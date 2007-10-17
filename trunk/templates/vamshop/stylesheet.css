@@ -1884,9 +1884,10 @@ div.contacterror
 /* Количества колонок с товаром на странице новинки */
 dl.itemNewProducts 
    {
+     display: block;
      width: 100%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 160px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      background: transparent;
@@ -1896,9 +1897,10 @@ dl.itemNewProducts
 /* Количества колонок с товаром на странице рекомендуемые товары */
 dl.itemFeaturedProducts 
    {
+     display: block;
      width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 160px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
@@ -1908,9 +1910,10 @@ dl.itemFeaturedProducts
 /* Количества колонок с товаром в блоке новинки на главной странице */
 dl.itemNewProductsDefault 
    {
+     display: block;
      width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 160px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      background: transparent;
@@ -1920,6 +1923,7 @@ dl.itemNewProductsDefault
 /* Количества колонок с новостями на главной странице */
 dl.itemLatestNewsDefault 
    {
+     display: block;
      width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0.5em 0 0.5em 0;
@@ -1930,6 +1934,7 @@ dl.itemLatestNewsDefault
 /* Количества колонок с новостями на странице новостей */
 dl.itemLatestNews 
    {
+     display: block;
      width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0.5em 0 0.5em 0;
@@ -1940,9 +1945,10 @@ dl.itemLatestNews
 /* Количества колонок с товаром на странице скидки */
 dl.itemSpecials 
    {
+     display: block;
      width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 160px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
@@ -1952,9 +1958,10 @@ dl.itemSpecials
 /* Количества колонок с товаром на странице мои данные */
 dl.itemLastViewed 
    {
+     display: block;
      width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 160px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      border-bottom: 1px #e5e5e5 solid;
@@ -1965,6 +1972,7 @@ dl.itemLastViewed
 /* Информация о заказе, адрес клиента и адрес доставки */
 dl.ordersAddress 
    {
+     display: block;
      width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0 0 0 0;
@@ -1974,6 +1982,7 @@ dl.ordersAddress
 
 dt.ordersAddress 
    {
+     display: block;
      float: left;
      background: transparent;
      border-right: 0px #f1f1f6 solid;
@@ -1984,6 +1993,7 @@ dt.ordersAddress
 
 dd.ordersAddress
    {
+     display: block;
      margin: 0 0 0 1em;
      padding: 0 0 0 0;
      line-height: normal;
@@ -1995,6 +2005,7 @@ dd.ordersAddress
 /* Адресная книга */
 dl.AddressBook 
    {
+     display: block;
      width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0 0 0 0;
@@ -2003,6 +2014,7 @@ dl.AddressBook
 
 dt.AddressBook 
    {
+     display: block;
      float: left;
      width: 90px;
      background: transparent;
@@ -2014,6 +2026,7 @@ dt.AddressBook
 
 dd.AddressBook
    {
+     display: block;
      margin: 0 0 0 90px;
      padding: 0 0 0 0;
      line-height: normal;
@@ -2022,6 +2035,7 @@ dd.AddressBook
 
 dl.AddressBookList 
    {
+     display: block;
      width: 50%;
      float: left;
      height: 100px;
@@ -2031,6 +2045,7 @@ dl.AddressBookList
 
 dt.AddressBookList 
    {
+     display: block;
      float: left;
      background: transparent;
      border-right: 0px #f1f1f6 solid;
@@ -2041,6 +2056,7 @@ dt.AddressBookList
 
 dd.AddressBookList
    {
+     display: block;
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      line-height: normal;
@@ -2052,6 +2068,7 @@ dd.AddressBookList
 /* Вход */
 dl.Login 
    {
+     display: block;
      width: 50%;
      float: left;
      margin: 0 0 0 0;
@@ -2061,6 +2078,7 @@ dl.Login
 dt.Login
    {
      float: left;
+     display: block;
      background: transparent;
      margin: 0 0 0 0;
      padding: 0 0 0 0;
@@ -2069,6 +2087,7 @@ dt.Login
 
 dd.Login
    {
+     display: block;
      margin: 0 0 0 1em;
      padding: 0 0 0 0;
      line-height: normal;
@@ -2080,8 +2099,7 @@ dd.Login
 dt.itemImage 
    {
      float: left;
-     width: 120px;
-     height: 160px;
+     display: block;
      background: transparent;
      border-right: 0px #f1f1f6 solid;
      margin: 0 0 0 0;
@@ -2102,7 +2120,8 @@ dt.itemNews
 
 dd.itemDescription
    {
-     margin: 0 1em 0 120px;
+     display: block;
+     margin: 0 0 0 0;
      padding: 0 0;
      line-height: normal;
      background: transparent;
@@ -2110,7 +2129,8 @@ dd.itemDescription
 
 dd.itemDescriptionPrice
    {
-     margin: 1em 1em 0 120px;
+     display: block;
+     margin: 1em 0 0 0;
      padding: 0 0;
      line-height: normal;
      background: transparent;
@@ -2118,6 +2138,7 @@ dd.itemDescriptionPrice
 
 dd.itemNews
    {
+     display: block;
      margin-left: 1em;
      padding: 0 0;
      line-height: normal;
