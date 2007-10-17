@@ -493,9 +493,9 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
 	#$EXPORT_TIME=time();
 	$EXPORT_TIME = strftime('%Y%b%d-%H%I');
 	if ($dltype == 'froogle'){
-		$EXPORT_TIME = "FroogleEP" . $EXPORT_TIME;
+		$EXPORT_TIME = "FroogleEP";
 	} else {
-		$EXPORT_TIME = "EPA" . $EXPORT_TIME;
+		$EXPORT_TIME = "EPA";
 	}
 		//end froogle
 
