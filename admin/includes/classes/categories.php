@@ -449,7 +449,7 @@ class categories {
 		$products_date_available = (date('Y-m-d') < $products_date_available) ? $products_date_available : 'null';
  
          if ($products_data['products_startpage'] == 1 ) {
-         	$this->link_product($products_data['products_id'], 0);
+//         	$this->link_product($products_data['products_id'], 0);
          	$products_status = 1;
          } else {
          	$products_status = vam_db_prepare_input($products_data['products_status']);
