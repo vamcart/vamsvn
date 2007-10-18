@@ -3,7 +3,7 @@
    <header>
       <project>VaM Shop</project>
       <create>2007-10-13 14:24</create>
-      <revise>2007-10-16 15:25</revise>
+      <revise>2007-10-18 15:25</revise>
       <trans>Александр Меновщиков - vam@kypi.ru</trans>
       <lang>Русский</lang>
    </header>
@@ -2295,25 +2295,6 @@
 
 <!-- /product_listing_list.html -->
 
-<!-- /Тексты html шаблонов --> 
-
-<!-- Тексты php файлов --> 
-
-<!-- Системные сообщения -->
-
-   <message>
-      <id><![CDATA[Parse time: ]]></id>
-      <string><![CDATA[Время генерации: ]]></string>
-   </message>
-   <message>
-      <id><![CDATA[queries: ]]></id>
-      <string><![CDATA[запросов: ]]></string>
-   </message>
-
-<!-- /Системные сообщения -->
-
-<!-- /Тексты php файлов --> 
-
 <!-- admin/print_order.html -->
 
    <message>
@@ -2443,5 +2424,24 @@
    </message>
 
 <!-- /admin/print_packingslip.html -->
+
+<!-- /Тексты html шаблонов --> 
+
+<!-- Тексты php файлов --> 
+
+<!-- /includes/application_bottom.php -->
+
+   <message>
+      <id><![CDATA[Parse time: ]]></id>
+      <string><![CDATA[Время генерации: ]]></string>
+   </message>
+   <message>
+      <id><![CDATA[queries: ]]></id>
+      <string><![CDATA[запросов: ]]></string>
+   </message>
+
+<!-- /includes/application_bottom.php -->
+
+<!-- /Тексты php файлов --> 
 
 </locale>
