@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: outputfilter.template_translate.php 899 2007-10-13 20:14:57 VaM $   
+   $Id: outputfilter.template_translate.php 899 2007-10-18 20:14:57 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
