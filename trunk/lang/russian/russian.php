@@ -205,7 +205,6 @@ define('IMAGE_BUTTON_PRODUCT_EDIT', 'Редактировать товар');
 
 define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
 define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
-define('SMALL_IMAGE_BUTTON_VIEW', 'Смотреть');
 
 define('ICON_ARROW_RIGHT', 'Перейти');
 define('ICON_CART', 'В корзину');
@@ -320,7 +319,6 @@ define('ERROR_INVALID_PRODUCT', 'Товар не найден!');
  *
  */
 
-define('NAVBAR_TITLE_ACCOUNT', 'Ваши данные');
 define('NAVBAR_TITLE_1_ACCOUNT_EDIT', 'Ваши данные');
 define('NAVBAR_TITLE_2_ACCOUNT_EDIT', 'Редактирование данных');
 define('NAVBAR_TITLE_1_ACCOUNT_HISTORY', 'Ваши данные');
