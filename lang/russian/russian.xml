@@ -2442,6 +2442,19 @@
 
 <!-- /includes/application_bottom.php -->
 
+<!-- account.php -->
+
+   <message>
+      <id><![CDATA[Your account]]></id>
+      <string><![CDATA[Ваши данные]]></string>
+   </message>
+   <message>
+      <id><![CDATA[View]]></id>
+      <string><![CDATA[Смотреть]]></string>
+   </message>
+
+<!-- /account.php -->
+
 <!-- /Тексты php файлов --> 
 
 </locale>
