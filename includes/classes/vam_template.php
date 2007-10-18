@@ -30,6 +30,7 @@ class vamTemplate extends Smarty {
         );
         $this->autoload_filters = array(
         'pre' => array('template_translate')
+//        'output' => array('template_translate')
         );
 
         $this->assign('app_name', 'vamTemplate');
