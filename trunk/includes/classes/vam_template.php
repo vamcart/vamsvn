@@ -28,9 +28,6 @@ class vamTemplate extends Smarty {
         DIR_FS_CATALOG.'includes/external/smarty/plugins',
         DIR_FS_CATALOG.'includes/external/smarty/plugins_vam',
         );
-        $this->autoload_filters = array(
-        'pre' => array('template_translate')
-        );
 
         $this->assign('app_name', 'vamTemplate');
 

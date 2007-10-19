@@ -29,7 +29,7 @@ if (STORE_PAGE_PARSE_TIME == 'true') {
     	$time_start = explode(' ', PAGE_PARSE_START_TIME);
     $time_end = explode(' ', microtime());
     $parse_time = number_format(($time_end[1] + $time_end[0] - ($time_start[1] + $time_start[0])), 3);
-      echo '<div id="parseTime">' . t("Parse time: ") . $parse_time . ', ' . t("queries: ") . $query_counts . '</div>';
+      echo '<div id="parseTime">Parse time: ' . $parse_time . ', queries: ' . $query_counts . '</div>';
     }
 
 if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1)) {
