@@ -1,3 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="index"}
 {if $CATEGORIES_NAME}
 <h1>{$CATEGORIES_NAME}</h1>
 <div class="page">
@@ -25,7 +26,7 @@
 {/if}
 
 {if $MANUFACTURER_DROPDOWN}<div class="pagecontentfooter">
-[[Filter:]]&nbsp;{$MANUFACTURER_DROPDOWN}</div>
+{#text_show#}&nbsp;{$MANUFACTURER_DROPDOWN}</div>
 {/if}
 
 {foreach name=aussen item=module_data from=$module_content} <div class="page">
@@ -61,7 +62,7 @@
 
 {if $module_data.PRODUCTS_SHIPPING_NAME}
 <dd class="itemDescription">
-[[Shipping time:]]&nbsp;
+{#text_shippingtime#}&nbsp;
 {if $module_data.PRODUCTS_SHIPPING_IMAGE}
 <img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
 {/if}

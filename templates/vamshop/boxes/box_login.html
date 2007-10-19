@@ -1,20 +1,21 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс вход -->
 <div id="boxLogin">
 <b class="top"><b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b><b class="b5"></b></b>
 <div class="boxheader">
-<p>&nbsp;&raquo;&nbsp;[[Welcome back!]]</p>
+<p>&nbsp;&raquo;&nbsp;{#heading_login#}</p>
 </div>
 <div class="boxcontent">
 
 {$FORM_ACTION}
 <p>
-[[eMail Address]]:
+{#text_email#}:
 </p>
 <p class="loginform">
 {$FIELD_EMAIL}
 </p>
 <p>
-[[Password]]:
+{#text_pwd#}:
 </p>
 <p class="loginform">
 {$FIELD_PWD}
@@ -24,7 +25,7 @@
 </p>
 {$FORM_END}
 <p class="LoginContentCenter">
-<a href="{$LINK_NEW_ACCOUNT}">[[New account]]</a> | <a href="{$LINK_LOST_PASSWORD}">[[Password forgotten?]]</a>
+<a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a> | <a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a>
 </p>
 
 </div>

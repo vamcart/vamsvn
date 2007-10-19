@@ -1,10 +1,11 @@
-<h1>[[Shipping Method]]</h1>
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+<h1>{#heading_shipping#}</h1>
 {$FORM_ACTION}<div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 
 {if $SHIPPING_ADDRESS=='true'} 
-<span class="bold">[[Mailing address:]]</span>
+<span class="bold">{#title_address#}</span>
 {/if}
 
 {if $SHIPPING_ADDRESS=='true'} 
@@ -14,7 +15,7 @@
 </dt>
 
 <dd class="AddressBook">
-[[Please choose from your address book the desired mailing address for your order.]]
+{#text_addressbook#}
 </dd>
 
 <dd class="AddressBook">
@@ -27,7 +28,7 @@
 <!-- Адрес по умолчанию -->
 <dl class="AddressBook">
 <dt class="AddressBook">
-<span class="bold">[[Default Address]]</span>
+<span class="bold">{#title_address#}</span>
 <br />
 <img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
 </dt>
@@ -41,20 +42,20 @@
 <div class="clear"></div>
 {/if}
 
-<span class="bold">[[Shipping Method:]]</span>
+<span class="bold">{#title_shipping#}</span>
 <br />
 <br />
 <fieldset class="form">
-<legend>[[Please choose the desired mode of delivery for your order.]]</legend>
+<legend>{#text_shipping#}</legend>
 {$SHIPPING_BLOCK}
 </fieldset>
 
 <p>
-<span class="bold">[[Continuation the ordering procedure]]</span>
+<span class="bold">{#title_continue#}</span>
 </p>
 
 <p>
-[[to the selection of the desired mode of payment.]]
+{#text_continue#}
 </p>
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>

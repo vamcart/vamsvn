@@ -1,3 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
 <h1>{$CATEGORIES_NAME}</h1>
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
@@ -27,7 +28,7 @@
 	  
 	  
 {if $module_content !=''}
-<h1>[[More sub catagories:]]</h1>       
+<h1>{#heading_more_categories#}</h1>       
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">

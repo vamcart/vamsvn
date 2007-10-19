@@ -1,6 +1,7 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс поиск -->
 <div id="boxSearch">
-<h5><a href="{$LINK_ADVANCED}">[[Search]]</a></h5>
+<h5><a href="{$LINK_ADVANCED}">{#heading_search#}</a></h5>
 
 <div id="boxSearchContent">
 {$FORM_ACTION}
@@ -23,7 +24,7 @@
 	}
 </script>
 {/literal}
-<p><a href="{$LINK_ADVANCED}"> [[Advanced search]]</a></p>
+<p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
 </div>
 </div>
 <!-- /Бокс поиск -->

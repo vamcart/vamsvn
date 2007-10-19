@@ -1,13 +1,13 @@
-<h1>{$ERROR}</h1>
+{config_load file="$language/lang_$language.conf" section="error_handler"}<h1>{$ERROR}</h1>
 {$FORM_ACTION}<div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
-[[Sorry, we did not find a product matching your search request. Try again?]]
+{#text_search_again#}
 <br />
 <br />
 <!-- форма -->
 <fieldset class="form">
-<legend>[[Keyword:]]</legend>
+<legend>{#text_search#}</legend>
 <p>{$INPUT_SEARCH}</p>
 <p>{$BUTTON_SUBMIT}</p>
 </fieldset>

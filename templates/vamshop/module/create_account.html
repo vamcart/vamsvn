@@ -1,60 +1,60 @@
-<h1>[[Information on your customer account]]</h1>
+{config_load file="$language/lang_$language.conf" section="create_account"}<h1>{#heading_create_account#}</h1>
 {$FORM_ACTION}{if $error!=''}
 {$error}
 {/if}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
-<span class="Requirement"> [[* necessary Information]] </span>
+<span class="Requirement">{#text_must#}</span>
 <br />
 <br />
 <!-- форма -->
 <fieldset class="form">
-<legend>[[Your personal dates]]</legend>
+<legend>{#title_personal#}</legend>
 {if $gender=='1'} 
-<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">[[Gender:]]</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
-<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">[[First name:]]</label> {$INPUT_FIRSTNAME}</p>
-<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">[[Last name:]]</label> {$INPUT_LASTNAME}</p>
+<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
 {if $birthdate=='1'} 
-<p><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">[[Date of birth:]]</label> {$INPUT_DOB}</p>
+<p><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label> {$INPUT_DOB}</p>
 {/if}
-<p><label for="email" title="{$ENTRY_EMAIL_ADDRESS_ERROR}">[[E-mail address:]]</label> {$INPUT_EMAIL}</p>
+<p><label for="email" title="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label> {$INPUT_EMAIL}</p>
 </fieldset>
 {if $company=='1'}<fieldset class="form">
-<legend>[[Company dates]]</legend>
-<p>[[Company:]] {$INPUT_COMPANY}</p>
-{if $vat=='1'}<p>[[Vat ID:]] {$INPUT_VAT}</p>
+<legend>{#title_company#}</legend>
+<p>{#text_company#} {$INPUT_COMPANY}</p>
+{if $vat=='1'}<p>{#text_ustid#} {$INPUT_VAT}</p>
 {/if}
 </fieldset>
 {/if}<fieldset class="form">
-{if $street_address=='1'}<legend>[[Your postal address]]</legend>
+{if $street_address=='1'}<legend>{#title_address#}</legend>
 {/if}
-{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">[[No./Street:]]</label> {$INPUT_STREET}</p>
+{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label> {$INPUT_STREET}</p>
 {/if}
-{if $suburb=='1'}<p>[[Suburb:]] {$INPUT_SUBURB}</p>
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
 {/if}
-{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">[[Postcode:]]</label> {$INPUT_CODE}</p>
+{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label> {$INPUT_CODE}</p>
 {/if}
-{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">[[City:]]</label> {$INPUT_CITY}</p>
+{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">{#text_city#}</label> {$INPUT_CITY}</p>
 {/if}
-{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">[[State:]]</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
 {/if}
-{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">[[Country:]]</label> {$SELECT_COUNTRY}</p>
-{/if}
-</fieldset>
-<fieldset class="form">
-{if $telephone=='1'}<legend>[[Your contact information]]</legend>
-{/if}
-{if $telephone=='1'}<p><label for="telephone" title="{$ENTRY_TELEPHONE_NUMBER_ERROR}">[[Phone:]]</label> {$INPUT_TEL}</p>
-{/if}
-{if $fax=='1'}<p>[[Fax:]] {$INPUT_FAX}</p>
+{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label> {$SELECT_COUNTRY}</p>
 {/if}
 </fieldset>
 <fieldset class="form">
-<legend>[[Secure your information with a password]]</legend>
-<p><label for="pass" title="{$ENTRY_PASSWORD_ERROR}">[[Password:]]</label> {$INPUT_PASSWORD}</p>
-<p><label for="confirmation" title="{$ENTRY_PASSWORD_ERROR_NOT_MATCHING}">[[Confirmation:]]</label> {$INPUT_CONFIRMATION}</p>
+{if $telephone=='1'}<legend>{#title_contact#}</legend>
+{/if}
+{if $telephone=='1'}<p><label for="telephone" title="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+<legend>{#title_password#}</legend>
+<p><label for="pass" title="{$ENTRY_PASSWORD_ERROR}">{#text_password#}</label> {$INPUT_PASSWORD}</p>
+<p><label for="confirmation" title="{$ENTRY_PASSWORD_ERROR_NOT_MATCHING}">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
 </fieldset>
 <!-- /форма -->
 </div>
