@@ -1,15 +1,16 @@
-<h1 class="contentBoxHeading">[[Redeem Voucher]]</h1>
+{config_load file="$language/lang_$language.conf" section="gv_redeem"}
+<h1 class="contentBoxHeading">{#heading_gvredeem#}</h1>
 <table>
   <tr>
-    <td class="main">[[Questions and answers regarding voucher you find under]]</td>
+    <td class="main">{#text_information#}</td>
   </tr>
   {if $error eq 'true'}
   <tr>
-    <td class="main">[[The entered voucher code is invalid or the voucher has been redeemed already. Please check your details again or contact us via the contact page]]</td>
+    <td class="main">{#text_invalid_gv#}</td>
   </tr>
   {else}
   <tr>
-	<td class="main">[[Congartulations, have redeemed your voucher for]] {$coupon_amount} [[successfully]]</td>
+	<td class="main">{#text_valid_gva#} {$coupon_amount} {#text_valid_gvb#}</td>
   </tr>
   {/if}
   <tr>

@@ -1,4 +1,5 @@
-<h1 class="contentBoxHeading">[[What do you think?]]</h1>
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<h1 class="contentBoxHeading">{#heading_reviews_write#}</h1>
 {if $captcha_error}
 <div class="contacterror">{$captcha_error}</div>
 {/if}
@@ -8,15 +9,15 @@
 {$FORM_ACTION}
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td class="main"><p><strong>[[Product:]]</strong> {$PRODUCTS_NAME}<br />
-        <strong>[[Author:]]</strong> {$AUTHOR}</p>
-      <p><strong>[[Your opinion:]]</strong><br />
+    <td class="main"><p><strong>{#text_product#}</strong> {$PRODUCTS_NAME}<br />
+        <strong>{#text_author#}</strong> {$AUTHOR}</p>
+      <p><strong>{#text_input#}</strong><br />
         {$INPUT_TEXT}<br />
-        <font size="1" face="Verdana, Arial, Helvetica, sans-serif">[[<span class="bold">Caution:</span> HTML is not supported!]]</font><br />
+        <font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_note#}</font><br />
         <br />
-        <strong>[[Evaluation:]]&nbsp;<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">[[BAD]]</font></strong>{$INPUT_RATING}<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>[[VERY GOOD]]</strong></font></p>
-		  <p>[[Captcha:]] {$VVIMG}</p>
-		  <p>[[Type captcha code here (case sensitive):]] {$INPUT_CODE}</p>
+        <strong>{#text_rating#}&nbsp;<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif">{#text_bad#}</font></strong>{$INPUT_RATING}<font color="#FF0000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#text_good#}</strong></font></p>
+		  <p>{#text_sec_code#} {$VVIMG}</p>
+		  <p>{#text_sec_code_text#} {$INPUT_CODE}</p>
         </td>
   </tr>
 </table>

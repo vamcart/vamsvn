@@ -1,10 +1,11 @@
-<h1 class="contentBoxHeading">[[Reviews]]</h1>
+{config_load file="$language/lang_$language.conf" section="reviews"}<br />
+<h1 class="contentBoxHeading">{#heading_reviews#}</h1>
 {foreach name=aussen item=module_data from=$module_content} 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr> 
         
-    <td class="main"><b>[[Author:]]</b>{$module_data.AUTHOR} {$module_data.DATE}<br />
-      <strong>[[Evaluation:]]</strong>{$module_data.RATING} </td>
+    <td class="main"><b>{#text_author#}</b>{$module_data.AUTHOR} {$module_data.DATE}<br />
+      <strong>{#text_rating#}</strong>{$module_data.RATING} </td>
       </tr>
       <tr> 
         <td style="border-bottom: 1px solid; border-color: #cccccc;" class="main" ><br />

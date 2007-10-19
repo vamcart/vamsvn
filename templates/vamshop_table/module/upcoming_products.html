@@ -1,4 +1,5 @@
-<h1 class="contentBoxHeading">[[Available soon at our shop!]]</h1>
+{config_load file="$language/lang_$language.conf" section="upcoming_products"}
+<h1 class="contentBoxHeading">{#heading_upcoming#}</h1>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   {foreach name=aussen item=module_data from=$module_content}
   <tr>

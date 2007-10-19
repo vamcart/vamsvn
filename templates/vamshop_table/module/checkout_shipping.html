@@ -1,11 +1,12 @@
-<h1 class="contentBoxHeading">[[Shipping Method]]</h1>
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+<h1 class="contentBoxHeading">{#heading_shipping#}</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td class="main">&nbsp;</td>
         </tr>
 {if $SHIPPING_ADDRESS=='true'} 
   <tr>
-    <td><strong>[[Mailing address:]]</strong></td>
+    <td><strong>{#title_address#}</strong></td>
   </tr>
 {/if}
 </table>
@@ -15,12 +16,12 @@
   <tr>
     <td style="border-top: 1px solid; border-color: #cccccc;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="main">[[Please choose from your address book the desired mailing address for your order.]]<br />
+          <td class="main">{#text_addressbook#}<br />
             <br />
             {$BUTTON_ADDRESS}</td>
           <td><table width="100%" border="0" cellspacing="0" cellpadding="4">
               <tr> 
-                <td align="center" valign="top" class="main"><strong>[[Default Address]]</strong><br />
+                <td align="center" valign="top" class="main"><strong>{#title_address#}</strong><br />
                     <img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
                 <td class="boxTextBG" style="border-right: 1px solid; border-color: #cccccc;" align="left">{$ADDRESS_LABEL}</td>
               </tr>
@@ -36,7 +37,7 @@
           <td class="main">&nbsp;</td>
         </tr>
   <tr>
-    <td><strong>[[Shipping Method:]]</strong></td>
+    <td><strong>{#title_shipping#}</strong></td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -44,7 +45,7 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr> 
-          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">[[Please choose the desired mode of delivery for your order.]]<br />
+          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_shipping#}<br />
             <br />
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
@@ -64,8 +65,8 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr> 
-          <td valign="top" class="main"><strong>[[Continuation the ordering procedure]]</strong><br />
-            [[to the selection of the desired mode of payment.]]<br /> 
+          <td valign="top" class="main"><strong>{#title_continue#}</strong><br />
+            {#text_continue#}<br /> 
           </td>
           <td style="border-right: 1px solid; border-color: #cccccc;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr> 
@@ -103,6 +104,12 @@
                 <td><img src="{$tpl_path}img/pixel_silver.gif" width="1" height="1" alt="" /></td>
               </tr>
             </table></td>
+          </tr>
+          <tr>            
+          <td align="center" class="checkoutBarCurrent">{#text_shipping_info#}</td>            
+          <td align="center" class="checkoutBarTo">{#text_payment_info#}</td>            
+          <td align="center" class="checkoutBarTo">{#text_confirm#}</td>            
+          <td align="center" class="checkoutBarTo">{#text_finished#}</td>
           </tr>
         </table></td>
       </tr>

@@ -1,3 +1,5 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -28,41 +30,41 @@
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="89" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$mainpage}">[[Main page]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$mainpage}">{#text_mainpage#}</a></div>              
               </td>
 {if $account}{if $smarty.session.customer_id}
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="89" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$account}">[[Account]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$account}">{#link_account#}</a></div>              
               </td>
 {/if}{/if}              
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="84" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$cart}">[[Cart]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$cart}">{#link_cart#}</a></div>              
               </td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="98" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$checkout}">[[Checkout]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$checkout}">{#link_checkout#}</a></div>              
               </td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
 {if $account}{if $smarty.session.customer_id}
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="85" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$logoff}">[[Logout]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$logoff}">{#link_logoff#}</a></div>              
               </td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
 {else}
               <td width="5" align="center" valign="top" class="button1">&nbsp;</td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_left.gif" align="left" hspace="0" alt="" /></td>
               <td width="85" align="center" valign="top">
-              <div class="button"><a class="shippingInfo" href="{$login}">[[Login]]</a></div>              
+              <div class="button"><a class="shippingInfo" href="{$login}">{#link_login#}</a></div>              
               </td>
               <td align="center" valign="top"><img src="{$tpl_path}img/corners/corner_top_right.gif" align="right" hspace="0" alt="" /></td>
 {/if}

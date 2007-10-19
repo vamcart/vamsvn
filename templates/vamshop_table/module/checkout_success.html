@@ -1,17 +1,19 @@
+{config_load file="$language/lang_$language.conf" section="checkout_success"}
+
 {$FORM_ACTION}
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td rowspan="14"><img src="{$tpl_path}img/checkout_success.gif" alt="" /></td>
-    <td class="main" valign="top"><h1 class="contentBoxHeading">[[Your order has been completed sucessfully.]]</h1></td>
+    <td class="main" valign="top"><h1 class="contentBoxHeading">{#heading_success#}</h1></td>
   </tr>
   <tr>
-    <td class="main" valign="top">[[Your order has been sent to us and you got a confirmation e-mail with the dates of invoice for you!]]</td>
+    <td class="main" valign="top">{#text_success#}</td>
   </tr>
   <tr>
-    <td class="contentsTopics" valign="top">[[Print version of the order]]</td>
+    <td class="contentsTopics" valign="top">{#title_printorder#}</td>
   </tr>
   <tr>
-    <td class="main" valign="top">[[For your convenience you can print the order.]]</td>
+    <td class="main" valign="top">{#text_printorder#}</td>
   </tr>
   <tr>
     <td class="main">{$BUTTON_PRINT}</td>
@@ -23,7 +25,7 @@
     <td class="main">{$BUTTON_KVITANCIA_PRINT}</td>
   </tr>
   <tr>
-    <td class="contentsTopics" valign="top">[[Thank you for your online-purchase!]]</td>
+    <td class="contentsTopics" valign="top">{#text_thankyou#}</td>
   </tr>
   <tr>
     <td class="contentsTopics" valign="top">
@@ -31,7 +33,7 @@
 			{if $GV_SEND_LINK}
 			<!--GV Code Start-->
 			<tr>
-				<td class="main">[[You have funds in your Gift Voucher Account. If you want <br />you can send those funds by]] <a class="pageResults" href="{$GV_SEND_LINK}"> [[e-mail</a> to someone]]</td>
+				<td class="main">{#gv_has_vouchera#} {$GV_SEND_LINK} {#gv_has_voucherb#}</td>
 			</tr>
 			<!--GV Code End-->
 			{/if}
@@ -69,6 +71,12 @@
 						</tr>
 				  </table>
 				</td>
+			</tr>
+			<tr> 
+				<td align="center" class="checkoutBarTo">{#text_shipping_info#}</td>
+				<td align="center" class="checkoutBarTo">{#text_payment_info#}</td>
+				<td align="center" class="checkoutBarTo">{#text_confirm#}</td>
+				<td align="center" class="checkoutBarCurrent">{#text_finished#}</td>
 			</tr>
 		</table>
 	</td>
