@@ -1,9 +1,10 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс быстрый заказ -->
 <div id="boxAddQuickie">
-<h5>[[Quick purchase]]</h5>
+<h5>{#heading_add_a_quickie#}</h5>
 
 <div id="boxAddQuickieContent">
-[[Please enter the article number from our catalogue.]]
+{#text_quickie#}
 {$FORM_ACTION}
 <p class="addquickieform">{$INPUT_FIELD}</p>
 <div class="ajaxAddQuickie" id="ajaxAddQuickie" style="text-align: left;"></div>

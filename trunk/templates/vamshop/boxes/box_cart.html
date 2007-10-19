@@ -1,3 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
 {if $deny_cart neq 'true'}
 <!-- Бокс корзина -->
 <script type="text/javascript" src="jscript/jscript_ajax_cart.js"></script>
@@ -5,7 +6,7 @@
 <div id="boxCart">
 <b class="top"><b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b><b class="b5"></b></b>
 <div class="boxheader">
-<p>&nbsp;&raquo;&nbsp;<a href="{$LINK_CART}">[[Shopping Cart]]</a></p>
+<p>&nbsp;&raquo;&nbsp;<a href="{$LINK_CART}">{#heading_cart#}</a></p>
 </div>
 <div class="boxcontent">
 
@@ -17,18 +18,18 @@
 {/foreach}
 {if $DISCOUNT}
 <p class="CartContentRight">
-[[Discount]]&nbsp;{$DISCOUNT}
+{#text_discount#}&nbsp;{$DISCOUNT}
 </p>
 {/if}
 <p class="CartContentRight">
-{$UST}[[Sum]]&nbsp;<span>{$TOTAL}</span>
+{$UST}{#text_total#}&nbsp;<span>{$TOTAL}</span>
 </p>
 <p class="CartContentRight">
 {if $SHIPPING_INFO}{$SHIPPING_INFO}{/if}
 </p>
 {if $coupon_valid == 'true'}
 <p>
-[[Coupon:]]
+{#cart_coupon#}
 </p>
 <p>
 {$coupon_amount}
@@ -36,7 +37,7 @@
 {/if}              
 {else} <!-- Пустая корзина --> 
 <p>
-[[You do not have any products in your shopping cart yet.]]
+{#text_empty_cart#}
 </p>
 {/if}
 

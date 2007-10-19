@@ -1,4 +1,5 @@
-<h1>[[Information on your mailing address]]</h1>
+{config_load file="$language/lang_$language.conf" section="checkout_shipping_address"}
+<h1>{#heading_address#}</h1>
 {$FORM_ACTION}
 {if $error!=''}
 {$error}
@@ -9,7 +10,7 @@
 
 {if $SHIPPING_ADDRESS=='true'} 
 <p>
-<span class="bold">[[Mailing address]]</span>
+<span class="bold">{#title_current_address#}</span>
 </p>
 {/if}
 
@@ -20,7 +21,7 @@
 </dt>
 
 <dd class="AddressBook">
-[[This is the currently selected mailing address to which we will send your order.]]
+{#text_current_address#}
 </dd>
 
 </dl>
@@ -29,7 +30,7 @@
 <!-- Адрес по умолчанию -->
 <dl class="AddressBook">
 <dt class="AddressBook">
-<span class="bold">[[Mailing address]]</span>
+<span class="bold">{#title_current_address#}</span>
 <br />
 <img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
 </dt>
@@ -45,11 +46,11 @@
 
 {if $BLOCK_ADDRESS}
 <p>
-<span class="bold">[[Postal addresses from your address book]]</span>
+<span class="bold">{#title_old_addresses#}</span>
 </p>
 
 <p>
-[[You have the possibility to select postal addresses which already exist in your address book.]]
+{#text_old_addresses#}
 </p>
 
 {$BLOCK_ADDRESS}
@@ -60,11 +61,11 @@
 {/if}
 
 <p>
-<span class="bold">[[Continuation of the ordering procedure]]</span>
+<span class="bold">{#title_continue#}</span>
 </p>
 
 <p>
-[[to the selection of the desired delivery method.]]
+{#text_continue#}
 </p>
 
 </div>

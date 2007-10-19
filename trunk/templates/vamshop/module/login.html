@@ -1,4 +1,4 @@
-<h1>[[Create a new account or login]]</h1>
+{config_load file="$language/lang_$language.conf" section="login"}<h1>{#heading_login#}</h1>
 {$FORM_ACTION}
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}<div class="page">
@@ -9,11 +9,11 @@
 </dt>
 
 <dd class="Login">
-<span class="bold">[[New Customer]]</span>
+<span class="bold">{#title_new#}</span>
 </dd>
 
 <dd>
-[[Through your registration at our shop you are able to shop faster, know at any time the status of your orders and have always a current survey of your previous orders.]]
+{#text_new#}
 </dd>
 
 <dd>
@@ -26,17 +26,21 @@
 </dt>
 
 <dd>
+{#text_returning#}
+</dd>
+
+<dd>
 <!-- форма -->
 <fieldset class="form">
-<legend>[[I am a customer]]</legend>
+<legend>{#title_returning#}</legend>
 {if $VVIMG !=''}<p>{$VVIMG} {$INPUT_CODE}</p>{/if}
-<p>[[E-Mail address:]] {$INPUT_MAIL}</p>
-<p>[[Password:]] {$INPUT_PASSWORD}</p>
+<p>{#text_email#} {$INPUT_MAIL}</p>
+<p>{#text_password#} {$INPUT_PASSWORD}</p>
 </fieldset>
 <!-- /форма -->
 
 <p>
-<a href="{$LINK_LOST_PASSWORD}">[[Password forgotten?]]</a>
+<a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a>
 </p>
 <p>
 {$BUTTON_LOGIN}
@@ -52,11 +56,11 @@
 </dt>
 
 <dd class="Login">
-<span class="bold">[[Visitor orderer]]</span>
+<span class="bold">{#title_guest#}</span>
 </dd>
 
 <dd>
-[[I would like to order only as visitor<br /><br />Through your order as visitor at our shop your dates are not stored and you do not have an account. With a further order you must enter however all dates again.]]
+{#text_guest#}
 </dd>
 
 <dd>

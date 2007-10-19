@@ -1,17 +1,18 @@
-<h1>[[Newsletter]]</h1>
+{config_load file="$language/lang_$language.conf" section="account_newsletter"}
+<h1>{#heading_newsletter#}</h1>
 {$FORM_ACTION}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 
-<span class="bold">[[My Newsletter]]</span>
+<span class="bold">{#title_newsletter#}</span>
 
 <p>
-{$CHECKBOX} <span class="bold">[[General newsletter]]</span>
+{$CHECKBOX} <span class="bold">{#text_newsletter#}</span>
 </p>
 
 <p>
-[[Includes general news about our shop, information about new products, special offers and other information of general interest.]]
+{#text_newsletter_desc#}
 </p>
 
 </div>

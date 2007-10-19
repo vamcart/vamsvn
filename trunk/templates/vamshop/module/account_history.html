@@ -1,20 +1,21 @@
-<h1>[[Your completed orders]]</h1>
+{config_load file="$language/lang_$language.conf" section="account_history"}
+<h1>{#heading_history#}</h1>
 <!-- Список заказов -->
 {foreach name=aussen item=order_data from=$order_content}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-[[Order number:]] {$order_data.ORDER_ID}
+{#text_oid#} {$order_data.ORDER_ID}
 </p>
 <p>
-[[Date of order:]] {$order_data.ORDER_DATE}
+{#text_date#} {$order_data.ORDER_DATE}
 </p>
 <p>
-[[Items:]] {$order_data.ORDER_PRODUCTS}
+{#text_articles#} {$order_data.ORDER_PRODUCTS}
 </p>
 <p>
-[[Total:]] {$order_data.ORDER_TOTAL}&nbsp;&nbsp;[[Order status:]] {$order_data.ORDER_STATUS} 
+{#text_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#text_status#} {$order_data.ORDER_STATUS} 
 </p>
 <p>
 {$order_data.ORDER_BUTTON}

@@ -1,4 +1,5 @@
-<h1>[[My Personal address book]]</h1>
+{config_load file="$language/lang_$language.conf" section="address_book"}
+<h1>{#heading_address#}</h1>
 {$FORM_ACTION}
 {if $error!=''}
 <div class="contacterror">{$error}</div>
@@ -8,7 +9,7 @@
 <div class="pagecontent">
 
 <p>
-<span class="bold">[[Standard postal address]]</span>
+<span class="bold">{#title_standard#}</span>
 </p>
 
 <!-- Адрес -->
@@ -17,7 +18,7 @@
 </dt>
 
 <dd class="AddressBook">
-[[This postal address will be used as supplying postal address and bill postal address automaticly. This postal address will also be used  for the calculation of possible taxes and dispatch charges.]]
+{#text_standard#}
 </dd>
 
 <dd class="AddressBook">
@@ -30,7 +31,7 @@
 <!-- Адрес по умолчанию -->
 <dl class="AddressBook">
 <dt class="AddressBook">
-<span class="bold">[[Standard postal address]]</span>
+<span class="bold">{#title_standard#}</span>
 <br />
 <img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
 </dt>
@@ -44,7 +45,7 @@
 <div class="clear"></div>
 
 <p>
-<span class="bold">[[Address book entries]]</span>
+<span class="bold">{#title_addresses#}</span>
 </p>
 
 <!-- Список адресов -->
@@ -59,7 +60,7 @@
 </dd>
 
 <dd class="AddressBookList">
-{if $addresses.PRIMARY=='1'}<em>([[Standard postal address]])</em>{/if}
+{if $addresses.PRIMARY=='1'}<em>({#title_standard#})</em>{/if}
 </dd>
 
 <dd class="AddressBookList">

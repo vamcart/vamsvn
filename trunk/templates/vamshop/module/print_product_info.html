@@ -1,3 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="print_product_info"} 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -40,7 +41,7 @@
 
 {if $module_content !=''}
 <p>
-<span class="bold">[[Options:]]</span>
+<span class="bold">{#options#}</span>
 </p>
 {foreach name=aussen item=module_data from=$module_content} 
 <p>
@@ -51,7 +52,7 @@
 
 <p>
 <span class="bold">
-[[Price:]] {$PRODUCTS_PRICE}
+{#price#} {$PRODUCTS_PRICE}
 </span>
 </p>
 

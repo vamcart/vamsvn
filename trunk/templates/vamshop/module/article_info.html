@@ -1,8 +1,9 @@
+{config_load file="$language/lang_$language.conf" section="articles"} 
 <h1>{$ARTICLE_NAME}</h1>
 
 {if $no_article=='true'}
 <p>
-[[Article not found.]]
+{#text_no_article#}
 </p>
 {else}
 
@@ -18,19 +19,19 @@
 
 {if $AUTHOR_NAME}
 <p>
-[[Author:]] <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
+{#text_author#} <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
 </p>
 {/if}
 
 {if $ARTICLE_DATE}
 <p>
-[[Date:]] {$ARTICLE_DATE}
+{#text_date#} {$ARTICLE_DATE}
 </p>
 {/if}
 
 {if $ARTICLE_URL}
 <p>
-[[URL:]] <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
+{#text_url#} <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
 </p>
 {/if}
 

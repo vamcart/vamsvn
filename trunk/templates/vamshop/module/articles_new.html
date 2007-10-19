@@ -1,8 +1,9 @@
-<h1>[[New articles]]</h1>
+{config_load file="$language/lang_$language.conf" section="articles"} 
+<h1>{#heading_text#}</h1>
 
 {if $no_new_articles=='true'}
 <p>
-[[New articles not found.]]
+{#text_no_new_articles#}
 </p>
 {else}
 
@@ -17,13 +18,13 @@
 
 {if $module_data.AUTHOR_NAME}
 <p>
-[[Author:]] <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
+{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
 </p>
 {/if}
  
 {if $module_data.ARTICLE_CATEGORY_NAME}
 <p>
-[[Category:]] <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
+{#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
 </p>
 {/if}
 
@@ -35,7 +36,7 @@
 
 {if $module_data.ARTICLE_DATE}
 <p>
-[[Date:]] {$module_data.ARTICLE_DATE}
+{#text_date#} {$module_data.ARTICLE_DATE}
 </p>
 {/if}
 

@@ -1,16 +1,17 @@
+{config_load file="$language/lang_$language.conf" section="popup_search_help"} 
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
-<span class="bold">[[Help for advanced search]]</span>
+<span class="bold">{#title_help#}</span>
 </p>
 <p>
-[[The Search function makes the search possible for Product descriptions, manufacturers and article number.<br /><br />You can use logical operators as "AND" and "OR" br><br />For example you could write: <span class="underline">Microsoft AND Mouse</span>.<br /><br />Furthermore you can use brackets around the search interleave, i.e.:<br /><br /><span class="underline">Microsoft AND (Maus OR Tastatur OR "Visual Basic")</span>.<br /><br />You can combine several words with quotation marks into a search key.]]
+{#text_help#}
 </p>
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 <div class="pagecontentfooter">
-<a href="{$link_close}">[[Close window (x)]]</a>
+<a href="{$link_close}">{#text_close#}</a>
 </div>
 </div>
 </body>
