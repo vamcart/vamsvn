@@ -31,7 +31,7 @@ require_once (DIR_FS_INC.'vam_get_product_path.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_name.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_image.inc.php');
 
-$breadcrumb->add(t("Your account"), vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_ACCOUNT, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 
 require (DIR_WS_INCLUDES.'header.php');
 
@@ -84,7 +84,7 @@ if (vam_count_customer_orders() > 0) {
 			$order_name = $orders['billing_name'];
 			$order_country = $orders['billing_country'];
 		}
-		$order_content[] = array ('ORDER_ID' => $orders['orders_id'], 'ORDER_DATE' => vam_date_short($orders['date_purchased']), 'ORDER_STATUS' => $orders['orders_status_name'], 'ORDER_TOTAL' => $orders['order_total'], 'ORDER_LINK' => vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL'), 'ORDER_BUTTON' => '<a href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL').'">'.vam_image_button('small_view.gif', t("View")).'</a>');
+		$order_content[] = array ('ORDER_ID' => $orders['orders_id'], 'ORDER_DATE' => vam_date_short($orders['date_purchased']), 'ORDER_STATUS' => $orders['orders_status_name'], 'ORDER_TOTAL' => $orders['order_total'], 'ORDER_LINK' => vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL'), 'ORDER_BUTTON' => '<a href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$orders['orders_id'], 'SSL').'">'.vam_image_button('small_view.gif', SMALL_IMAGE_BUTTON_VIEW).'</a>');
 	}
 
 }
