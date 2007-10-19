@@ -1,4 +1,6 @@
-<h1 class="contentBoxHeading">[[Featured products]]</h1>
+{config_load file="$language/lang_$language.conf" section="featured"} 
+{config_load file="$language/lang_$language.conf" section="index"} 
+<h1 class="contentBoxHeading">{#heading_text#}</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>  {foreach name=aussen item=module_data from=$module_content}  {php} $col++;   {/php}    <td class="main">
     
 <table border="0" width="100%" cellspacing="0" cellpadding="0">

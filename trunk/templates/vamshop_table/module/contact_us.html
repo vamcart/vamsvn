@@ -1,3 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="contact_us"}
 <h1 class="contentBoxHeading">{$CONTACT_HEADING}</h1>
 {if $error_message!=''}
 <div class="contacterror">{$error_message}</div>
@@ -7,24 +8,24 @@
 {$CONTACT_CONTENT}
 <br />
 <br />
-[[Your name:]]
+{#text_name#}
 <br />
 {$INPUT_NAME}
 <br />
 <br />
-[[Your e-mail:]]
+{#text_email#}
 <br />
 {$INPUT_EMAIL}
 <br />
 <br />
-[[Your message:]]
+{#text_message#}
 <br />
 {$INPUT_TEXT}
 <br />
 {$BUTTON_SUBMIT}
 {$FORM_END}
 {else}
-[[Your enquiry has been submitted sucessfully.]]
+{#text_success#}
 <br />
 {$BUTTON_CONTINUE}
 {/if}

@@ -1,4 +1,5 @@
-<h1 class="contentBoxHeading">[[Address Book]]</h1>
+{config_load file="$language/lang_$language.conf" section="address_book_process"}
+<h1 class="contentBoxHeading">{#heading_address#}</h1>
 {$FORM_ACTION}
 {if $error!=''}
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -14,7 +15,7 @@
     <td class="main">&nbsp;</td>
   </tr>
   <tr>
-    <td><b>[[Delete entry]]</b></td>
+    <td><b>{#title_delete#}</b></td>
   </tr>
 </table> 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -22,10 +23,10 @@
     <td style="border-top: 1px solid; border-color: #cccccc;">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="main">[[Would  you like to delete the postal address - this is irreversable?]]<br /><br /></td>
+          <td class="main">{#text_delete#}<br /><br /></td>
           <td><table width="100%" border="0" cellspacing="0" cellpadding="4">
               <tr> 
-                <td align="center" valign="top" class="main"><strong>[[Standard postal address]]</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
+                <td align="center" valign="top" class="main"><strong>{#text_address#}</strong><br /><img src="{$tpl_path}img/arrow_south_east.gif" alt="" /></td>
                 <td class="boxTextBG" style="border-right: 1px solid; border-color: #cccccc;" align="left">{$ADDRESS}</td>
               </tr>
             </table></td>
