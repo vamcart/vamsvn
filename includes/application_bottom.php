@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: application_bottom.php 1239 2007-02-06 20:14:56 VaM $   
+   $Id: application_bottom.php 1239 2007-10-19 20:14:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -29,7 +29,7 @@ if (STORE_PAGE_PARSE_TIME == 'true') {
     	$time_start = explode(' ', PAGE_PARSE_START_TIME);
     $time_end = explode(' ', microtime());
     $parse_time = number_format(($time_end[1] + $time_end[0] - ($time_start[1] + $time_start[0])), 3);
-      echo '<div id="parseTime">Parse time: ' . $parse_time . ', queries: ' . $query_counts . '</div>';
+      echo '<div id="parseTime">Время генерации: ' . $parse_time . ', запросов: ' . $query_counts . '</div>';
     }
 
 if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_output_compression < 1)) {
