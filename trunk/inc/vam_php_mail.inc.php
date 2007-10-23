@@ -19,7 +19,7 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 	global $mail_error;
 
 	$mail = new PHPMailer();
-	$mail->PluginDir = DIR_FS_DOCUMENT_ROOT.'includes/classes/';
+	$mail->PluginDir = DIR_FS_DOCUMENT_ROOT.'includes/external/phpmailer/';
 
 	if (isset ($_SESSION['language_charset'])) {
 		$mail->CharSet = $_SESSION['language_charset'];
@@ -75,7 +75,7 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		$mail->AddBCC($forwarding_to);
 	$mail->AddReplyTo($reply_address, $reply_address_name);
 
-	$mail->WordWrap = 50; // set word wrap to 50 characters
+	$mail->WordWrap = 100; // set word wrap to 50 characters
 	//$mail->AddAttachment($path_to_attachement);                     // add attachments
 	//$mail->AddAttachment($path_to_more_attachements);               // optional name                                          
 
