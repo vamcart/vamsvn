@@ -30,9 +30,9 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		$mail->CharSet = $lang_data['language_charset'];
 	}
 	if ($_SESSION['language'] == 'russian') {
-		$mail->SetLanguage("ru", DIR_WS_CLASSES);
+		$mail->SetLanguage("ru", DIR_FS_DOCUMENT_ROOT.'includes/external/phpmailer/language/');
 	} else {
-		$mail->SetLanguage("en", DIR_WS_CLASSES);
+		$mail->SetLanguage("en", DIR_FS_DOCUMENT_ROOT.'includes/external/phpmailer/language/');
 	}
 	if (EMAIL_TRANSPORT == 'smtp') {
 		$mail->IsSMTP();
