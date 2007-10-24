@@ -82,8 +82,8 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 	$mail->Subject = $email_subject;
 
 	if (!$mail->Send()) {
-		echo "Message was not sent <p>";
-		echo "Mailer Error: ".$mail->ErrorInfo;
+		echo TEXT_PHP_MAILER_ERROR;
+		echo TEXT_PHP_MAILER_ERROR1 . $mail->ErrorInfo;
 		exit;
 	}
 }
