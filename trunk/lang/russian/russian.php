@@ -537,4 +537,7 @@ define('ENTRY_CAPTCHA_ERROR','Вы указали неправильный ко�
 
 define('TEXT_FIRST_REVIEW','Ваш отзыв может быть первым.');
 
+define('TEXT_PHP_MAILER_ERROR','Не удалось отправить email.<br />');
+define('TEXT_PHP_MAILER_ERROR1','Ошибка: ');
+
 ?>
