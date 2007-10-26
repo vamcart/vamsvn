@@ -123,6 +123,8 @@ class categories {
 
 		$sort_order = vam_db_prepare_input($categories_data['sort_order']);
 		$categories_status = vam_db_prepare_input($categories_data['status']);
+		$yml_bid = vam_db_prepare_input($categories_data['yml_bid']);
+		$yml_cbid = vam_db_prepare_input($categories_data['yml_cbid']);
 
 
 
@@ -162,7 +164,7 @@ class categories {
 		}
 
 
-		$sql_data_array = array ('sort_order' => $sort_order, 'categories_status' => $categories_status, 'products_sorting' => vam_db_prepare_input($categories_data['products_sorting']), 'products_sorting2' => vam_db_prepare_input($categories_data['products_sorting2']), 'categories_template' => vam_db_prepare_input($categories_data['categories_template']), 'listing_template' => vam_db_prepare_input($categories_data['listing_template']));
+		$sql_data_array = array ('sort_order' => $sort_order, 'categories_status' => $categories_status, 'products_sorting' => vam_db_prepare_input($categories_data['products_sorting']), 'products_sorting2' => vam_db_prepare_input($categories_data['products_sorting2']), 'categories_template' => vam_db_prepare_input($categories_data['categories_template']), 'listing_template' => vam_db_prepare_input($categories_data['listing_template']), 'yml_bid' => $yml_bid, 'yml_cbid' => $yml_cbid);
 		$sql_data_array = array_merge($sql_data_array,$permission_array);
 		if ($action == 'insert') {
 			$insert_sql_data = array ('parent_id' => $dest_category_id, 'date_added' => 'now()');
@@ -499,7 +501,7 @@ class categories {
 			}
 		}
 		//
-		$sql_data_array = array ('products_quantity' => vam_db_prepare_input($products_data['products_quantity']), 'products_to_xml' => vam_db_prepare_input($products_data['products_to_xml']), 'products_model' => vam_db_prepare_input($products_data['products_model']), 'products_ean' => vam_db_prepare_input($products_data['products_ean']), 'products_price' => vam_db_prepare_input($products_data['products_price']), 'products_sort' => vam_db_prepare_input($products_data['products_sort']), 'products_shippingtime' => vam_db_prepare_input($products_data['shipping_status']), 'products_discount_allowed' => vam_db_prepare_input($products_data['products_discount_allowed']), 'products_date_available' => $products_date_available, 'products_weight' => vam_db_prepare_input($products_data['products_weight']), 'products_status' => $products_status, 'products_startpage' => vam_db_prepare_input($products_data['products_startpage']), 'products_startpage_sort' => vam_db_prepare_input($products_data['products_startpage_sort']), 'products_tax_class_id' => vam_db_prepare_input($products_data['products_tax_class_id']), 'product_template' => vam_db_prepare_input($products_data['info_template']), 'options_template' => vam_db_prepare_input($products_data['options_template']), 'manufacturers_id' => vam_db_prepare_input($products_data['manufacturers_id']), 'products_fsk18' => vam_db_prepare_input($products_data['fsk18']), 'products_vpe_value' => vam_db_prepare_input($products_data['products_vpe_value']), 'products_vpe_status' => vam_db_prepare_input($products_data['products_vpe_status']), 'products_vpe' => vam_db_prepare_input($products_data['products_vpe']));
+		$sql_data_array = array ('products_quantity' => vam_db_prepare_input($products_data['products_quantity']), 'products_to_xml' => vam_db_prepare_input($products_data['products_to_xml']), 'products_model' => vam_db_prepare_input($products_data['products_model']), 'products_ean' => vam_db_prepare_input($products_data['products_ean']), 'products_price' => vam_db_prepare_input($products_data['products_price']), 'products_sort' => vam_db_prepare_input($products_data['products_sort']), 'products_shippingtime' => vam_db_prepare_input($products_data['shipping_status']), 'products_discount_allowed' => vam_db_prepare_input($products_data['products_discount_allowed']), 'products_date_available' => $products_date_available, 'products_weight' => vam_db_prepare_input($products_data['products_weight']), 'products_status' => $products_status, 'products_startpage' => vam_db_prepare_input($products_data['products_startpage']), 'products_startpage_sort' => vam_db_prepare_input($products_data['products_startpage_sort']), 'products_tax_class_id' => vam_db_prepare_input($products_data['products_tax_class_id']), 'product_template' => vam_db_prepare_input($products_data['info_template']), 'options_template' => vam_db_prepare_input($products_data['options_template']), 'manufacturers_id' => vam_db_prepare_input($products_data['manufacturers_id']), 'products_fsk18' => vam_db_prepare_input($products_data['fsk18']), 'products_vpe_value' => vam_db_prepare_input($products_data['products_vpe_value']), 'products_vpe_status' => vam_db_prepare_input($products_data['products_vpe_status']), 'products_vpe' => vam_db_prepare_input($products_data['products_vpe']), 'yml_bid' => vam_db_prepare_input($products_data['yml_bid']), 'yml_cbid' => vam_db_prepare_input($products_data['yml_cbid']));
 		$sql_data_array = array_merge($sql_data_array, $permission_array);
 		//get the next ai-value from table products if no products_id is set
 		if (!$products_id || $products_id == '') {
