@@ -123,7 +123,7 @@ echo "  </currencies>\n\n";
 echo "  <categories>\n";
 $categories_to_xml_query = vam_db_query('describe ' . TABLE_CATEGORIES . ' categories_to_xml');
 $categories_bid = vam_db_query('describe ' . TABLE_CATEGORIES . ' yml_bid');
-$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . .((vam_db_num_rows($categories_bid) > 0) ? ", c.yml_bid, c.yml_cbid " : "") . "
+$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . ((vam_db_num_rows($categories_bid) > 0) ? ", c.yml_bid, c.yml_cbid " : "") . "
 														from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
 														where c.categories_status = '1'
 															and c.categories_id = cd.categories_id
