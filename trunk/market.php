@@ -9,7 +9,7 @@
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
-   (c) 2005 Andrew Berezin (market.php,v 1.8 2003/08/24); zen-cart.com
+   (c) 2005 Andrew Berezin (market.php,v 1.8 2003/08/24); ecommerce-service.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -122,7 +122,8 @@ echo "  </currencies>\n\n";
 
 echo "  <categories>\n";
 $categories_to_xml_query = vam_db_query('describe ' . TABLE_CATEGORIES . ' categories_to_xml');
-$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . "
+$categories_bid = vam_db_query('describe ' . TABLE_CATEGORIES . ' yml_bid');
+$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " .((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . .((vam_db_num_rows($categories_bid) > 0) ? ", c.yml_bid, c.yml_cbid " : "") . "
 														from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
 														where c.categories_status = '1'
 															and c.categories_id = cd.categories_id
@@ -132,6 +133,8 @@ $categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.
 $categories_disable = array();
 while ($categories = vam_db_fetch_array($categories_query)) {
 	if (!isset($categories["categories_to_xml"]) || $categories["categories_to_xml"] == 1) {
+    $categories_bid[$categories['categories_id']] = (!isset($categories["yml_bid"])) ? 0 : $categories["yml_bid"];
+    $categories_cbid[$categories['categories_id']] = (!isset($categories["yml_cbid"])) ? 0 : $categories["yml_cbid"];
 		echo "<category id=\"" . $categories["categories_id"] . "\"" .
 				 (($categories["parent_id"] == "0") ? ">" : " parentId=\"" . $categories["parent_id"] . "\">" ) .
 				 _clear_string($categories["categories_name"]) .
@@ -145,8 +148,11 @@ echo "  </categories>\n";
 echo"<offers>\n";
 $products_short_desc_query = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
 $products_to_xml_query = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
+$products_bid = vam_db_query('describe ' . TABLE_PRODUCTS . ' yml_bid');
 $products_sql = "select p.products_id, p.products_model, p.products_quantity, p.products_image, p.products_price, products_tax_class_id, p.manufacturers_id, pd.products_name, p2c.categories_id, pd.products_description" .
-								((vam_db_num_rows($products_short_desc_query) > 0) ? ", pd.products_short_description " : " ") . ", l.code as language " .
+								((vam_db_num_rows($products_short_desc_query) > 0) ? ", pd.products_short_description " : " ") . 
+								((vam_db_num_rows($products_bid) > 0) ? ", p.yml_bid, p.yml_cbid " : " ") . 
+								", l.code as language " .
 								"from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_LANGUAGES . " l
 								 where p.products_id = pd.products_id
 									 and p.products_status = 1" .
@@ -182,13 +188,19 @@ for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <
 					break;
 			}
 
+		  $cbid = $bid = '';
+		  $prev_prod["yml_bid"] = max((!isset($prev_prod["yml_bid"]) ? 0 : $prev_prod["yml_bid"]), $categories_bid[$cats_id[0]]);
+		  if($prev_prod["yml_bid"] > 0) $bid = ' bid="' . $prev_prod["yml_bid"] . '"';
+		  $prev_prod["yml_cbid"] = max((!isset($prev_prod["yml_cbid"]) ? 0 : $prev_prod["yml_cbid"]), $categories_cbid[$cats_id[0]]);
+		  if($prev_prod["yml_cbid"] > 0) $cbid = ' cbid="' . $prev_prod["yml_cbid"] . '"';
+
 //			if ($products_price = vam_get_products_special_price($prev_prod['products_id'])) {
 			if ($products_price = $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
 			} else {
 				$products_price = $prev_prod['products_price'];
 			}
 
-			echo "<offer id=\"" . $prev_prod['products_id'] . "\" available=\"" . $available . "\">\n" .
+			echo "<offer id=\"" . $prev_prod['products_id'] . "\" available=\"" . $available . $bid . $cbid . "\">\n" .
 					 "  <url>" . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($prev_prod['products_id'], $prev_prod['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false) . "</url>\n" .
 //					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
 					 "  <price>" . $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
