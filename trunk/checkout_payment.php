@@ -133,7 +133,7 @@ $vamTemplate->assign('FORM_END', '</form>');
 
 require (DIR_WS_INCLUDES . 'header.php');
 $module = new vamTemplate;
-if ($order->info['total'] > 0) {
+//if ($order->info['total'] > 0 || $_SESSION['cart']->get_content_type() == 'virtual') {
 	if (isset ($_GET['payment_error']) && is_object(${ $_GET['payment_error'] }) && ($error = ${$_GET['payment_error']}->get_error())) {
 
 		$vamTemplate->assign('error', htmlspecialchars($error['error']));
@@ -166,9 +166,9 @@ if ($order->info['total'] > 0) {
 
 	$module->assign('module_content', $selection);
 
-} else {
-	$vamTemplate->assign('GV_COVER', 'true');
-}
+//} else {
+//	$vamTemplate->assign('GV_COVER', 'true');
+//}
 
 if (ACTIVATE_GIFT_SYSTEM == 'true') {
 	$vamTemplate->assign('module_gift', $order_total_modules->credit_selection());
