@@ -218,4 +218,8 @@ define('ENTRY_CUSTOMERS_ACCESS','Доступ');
 define('TEXT_PAGES', 'Страницы: ');
 define('TEXT_TOTAL_PRODUCTS', 'Всего товаров: ');
 
+define('TEXT_YANDEX_MARKET','<br />Настройки для яндекс-маркет:<br />');
+define('TEXT_YANDEX_MARKET_BID','Основная ставка (bid):');
+define('TEXT_YANDEX_MARKET_CBID','Ставка для карточек (cbid):');
+
 ?>

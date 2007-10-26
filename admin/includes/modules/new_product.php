@@ -250,8 +250,19 @@ foreach (array('product_info', 'product_options') as $key) {
             <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('options_template', $files['product_options'], $pInfo->options_template); ?></td>
           </tr>
           <tr>
+            <td valign="top" colspan="2" class="main"><?php echo TEXT_YANDEX_MARKET; ?></td>
+          </tr>
+          <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_TO_XML; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_radio_field('products_to_xml', '1', $in_xml) . '&nbsp;' . TEXT_PRODUCT_AVAILABLE_TO_XML . '&nbsp;' . vam_draw_radio_field('products_to_xml', '0', $out_xml) . '&nbsp;' . TEXT_PRODUCT_NOT_AVAILABLE_TO_XML; ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_YANDEX_MARKET_BID; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('yml_bid', $pInfo->yml_bid, 'size="2"'); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_YANDEX_MARKET_CBID; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('yml_cbid', $pInfo->yml_cbid, 'size="2"'); ?></td>
           </tr>
           </table>
         </div>
