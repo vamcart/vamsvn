@@ -733,8 +733,8 @@ define('LOGIN_TIME_DESC','Через сколько времени каптча 
 define('ENABLE_TABS_TITLE','Разрешить закладки в админке');
 define('ENABLE_TABS_DESC','Использовать закладки в админке при добавлении/редактировании категорий, товаров, при редактировании заказов и т.д.');
 
-define('YML_VENDOR_TITLE','Генерация <vendor>');
-define('YML_VENDOR_DESC','Генерировать тег <vendor>?');
+define('YML_VENDOR_TITLE','Генерация vendor');
+define('YML_VENDOR_DESC','Генерировать тэг vendor?');
 define('YML_REF_ID_TITLE','Ссылка');
 define('YML_REF_ID_DESC','Добавить в адрес товара параметр.');
 define('YML_REF_IP_TITLE','Ссылка на IP');
