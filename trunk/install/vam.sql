@@ -341,6 +341,9 @@ CREATE TABLE categories (
   products_sorting2 varchar(255),
   date_added datetime,
   last_modified datetime,
+  yml_enable tinyint(1) NOT NULL DEFAULT '1',
+  yml_bid int(4) NOT NULL DEFAULT '0',
+  yml_cbid int(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -846,6 +849,9 @@ CREATE TABLE products (
   products_startpage int(1) NOT NULL DEFAULT '0',
   products_startpage_sort int(4) NOT NULL DEFAULT '0',
   products_to_xml tinyint(1) NOT NULL DEFAULT '1',
+  yml_enable tinyint(1) NOT NULL DEFAULT '1',
+  yml_bid tinyint(1) NOT NULL DEFAULT '0',
+  yml_cbid tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (products_id),
   KEY idx_products_date_added (products_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -1687,6 +1693,9 @@ INSERT INTO configuration (configuration_id,  configuration_key, configuration_v
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_REFERER', 'false', '23', '7', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'false\', \'ip\', \'agent\'),');
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_STRIP_TAGS', 'true', '23', '8', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_UTF8', 'false', '23', '9', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_VENDOR', 'false', '23', '10', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES   ('', 'YML_REF_ID', 'ref=yml', '23', '11', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'YML_REF_IP', 'true', '23', '12', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 #configuration_group_id 24, Изменение цен
 INSERT INTO configuration (configuration_id,  configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('', 'DISPLAY_MODEL', 'true', '24', '1', NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
