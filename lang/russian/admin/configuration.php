@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2007-02-07 17:36:57 VaM $
+   $Id: configuration.php 1286 2007-10-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -358,7 +358,7 @@ define('STORE_PARSE_DATE_TIME_FORMAT_DESC', 'Формат даты');
 define('DISPLAY_PAGE_PARSE_TIME_TITLE' , 'Показывать время парсинга страниц');
 define('DISPLAY_PAGE_PARSE_TIME_DESC', 'Показывать время парсинга страницы в интернет-магазине (опция Сохранять время парсинга страниц должна быть включена)');
 
-define('STORE_DB_TRANSACTIONS_TITLE' , 'Сохранять запросы к базе дынных');
+define('STORE_DB_TRANSACTIONS_TITLE' , 'Сохранять запросы к базе данных');
 define('STORE_DB_TRANSACTIONS_DESC', 'Сохранять все запросы к базе данных в файле, указанном в переменной Директория хранение логов (только для PHP4 и выше)');
 
 define('USE_CACHE_TITLE' , 'Использовать кэш');

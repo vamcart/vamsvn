@@ -81,9 +81,6 @@ define('SECURITY_CODE_LENGTH', '10');
 // Set the coupon ID that will be sent by email to a new signup, if no id is set then no email :)
 //  define('NEW_SIGNUP_DISCOUNT_COUPON', '3'); // placed in the admin configuration mystore
 
-// Store DB-Querys in a Log File
-define('STORE_DB_TRANSACTIONS', 'false');
-
 // graduated prices model or products assigned ?
 define('GRADUATED_ASSIGN', 'true');
 

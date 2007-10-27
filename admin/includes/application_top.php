@@ -274,9 +274,6 @@
   define('CURRENCY_SERVER_PRIMARY', 'cbr');
   define('CURRENCY_SERVER_BACKUP', 'xe');
   
-  // Use the DB-Logger
-  define('STORE_DB_TRANSACTIONS', 'false');
-
   // include the database functions
 //  require(DIR_WS_FUNCTIONS . 'database.php');
 
