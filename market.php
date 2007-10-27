@@ -218,8 +218,8 @@ for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <
 																							where manufacturers_id ='" . $prev_prod['manufacturers_id'] . "'");
 					$manufacturer = vam_db_fetch_array($manufacturer_query);
 					$manufacturers_array[$prev_prod['manufacturers_id']] = $manufacturer['manufacturers_name'];
-				}
-//				echo "  <vendor>" . _clear_string($manufacturers_array[$prev_prod['manufacturers_id']]) . "</vendor>\n";
+				} 
+if (YML_VENDOR == 'true' && $prev_prod['manufacturers_id'] != 0) echo "<vendor>" . _clear_string($manufacturers_array[$prev_prod['manufacturers_id']])  . "</vendor>\n"; 
 			} 
 			if (isset($prev_prod['products_short_description']) && vam_not_null($prev_prod['products_short_description'])) {
 				echo "  <description>" . _clear_string($prev_prod['products_short_description']) . "</description>\n";
