@@ -51,11 +51,15 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
     $admin_link='<p class="LoginContentLeft"><a href="' . vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id']) . '&amp;action=new_product' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit_product.gif', IMAGE_BUTTON_PRODUCT_EDIT) . '</a></p>';
   }
 
+   if (isset($_GET['articles_id'])) {
+    $admin_link_article='<p class="LoginContentLeft"><a href="' . vam_href_link_admin('admin/'.FILENAME_ARTICLES, 'aID=' . $_GET['articles_id']) . '&amp;action=new_article' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit_article.gif', IMAGE_BUTTON_ARTICLE_EDIT) . '</a></p>';
+  }
+
   $box_content= '<b>' . BOX_TITLE_STATISTICS . '</b><br />' . $orders_contents . '<br />' .
                                          BOX_ENTRY_CUSTOMERS . ' ' . $customers['count'] . '<br />' .
                                          BOX_ENTRY_PRODUCTS . ' ' . $products['count'] . '<br />' .
                                          BOX_ENTRY_REVIEWS . ' ' . $reviews['count'] .'<br />' .
-                                         $admin_image . '<br />' .$admin_link;
+                                         $admin_image . '<br />' .$admin_link.$admin_link_article;
 
     if ($flag==true) define('SEARCH_ENGINE_FRIENDLY_URLS',true);
     $box->assign('BOX_CONTENT', $box_content);

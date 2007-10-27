@@ -202,6 +202,7 @@ define('IMAGE_BUTTON_UPDATE_CART', 'Пересчитать');
 define('IMAGE_BUTTON_WRITE_REVIEW', 'Написать отзыв');
 define('IMAGE_BUTTON_ADMIN', 'Админка');
 define('IMAGE_BUTTON_PRODUCT_EDIT', 'Редактировать товар');
+define('IMAGE_BUTTON_ARTICLE_EDIT', 'Редактировать статью');
 
 define('SMALL_IMAGE_BUTTON_DELETE', 'Удалить');
 define('SMALL_IMAGE_BUTTON_EDIT', 'Изменить');
