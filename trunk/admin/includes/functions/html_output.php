@@ -289,18 +289,18 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
           case FILENAME_CUSTOMERS:
 
           $nav='<br><a href="'.vam_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">';
-          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
+          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '' ,'').'</a>&nbsp;';
           $nav.='<a href="'.vam_href_link(FILENAME_CUSTOMERS,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">';
-          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a>';
+          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '' ,'').'</a>&nbsp;';
 
           break;
           
           case FILENAME_CATEGORIES:
 
           $nav='<br><div><a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">';
-          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '20' ,'20').'</a>';
+          $nav.=vam_image(DIR_WS_ICONS . 'sort_down.gif', '', '' ,'').'</a>&nbsp;';
           $nav.='<a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">';
-          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '20' ,'20').'</a></div>';
+          $nav.= vam_image(DIR_WS_ICONS . 'sort_up.gif', '', '' ,'').'</a></div>&nbsp;';
 
           break;          
 

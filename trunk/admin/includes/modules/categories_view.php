@@ -242,9 +242,9 @@
              <?php
                 //if active category, show arrow, else show symbol with link (action col)
                 if ( (is_object($cInfo)) && ($categories['categories_id'] == $cInfo->categories_id) ) { 
-                    echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+                    echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); 
                 } else { 
-                    echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+                    echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; 
                 } 
              ?>
              </td>
@@ -502,7 +502,7 @@ if ($numr>$max_count){
       </td>
       <td class="categories_view_data">
       <?php 
-        if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } 
+        if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; } 
       ?>
       </td>
      </tr>    
