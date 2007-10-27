@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders.php 1193 2007-02-07 17:36:57 VaM $
+   $Id: orders.php 1193 2007-10-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -93,7 +93,7 @@ define('ENTRY_NOTIFY_CUSTOMER', 'Уведомить Клиента:');
 define('ENTRY_NOTIFY_COMMENTS', 'Добавить комментарии:');
 define('ENTRY_PRINTABLE', 'Напечатать счёт');
 
-define('TEXT_INFO_HEADING_DELETE_ORDER', 'Удалить зказ');
+define('TEXT_INFO_HEADING_DELETE_ORDER', 'Удалить заказ');
 define('TEXT_INFO_DELETE_INTRO', 'Вы действительно хотите удалить этот заказ?');
 define('TEXT_INFO_RESTOCK_PRODUCT_QUANTITY', 'Пересчитать количество товара на складе');
 define('TEXT_DATE_ORDER_CREATED', 'Дата Создания:');
