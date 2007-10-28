@@ -361,7 +361,7 @@ $vamTemplate->assign('FORM_ACTION', vam_draw_form('create_account', vam_href_lin
 if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '1');
 
-	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender"'));
+	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
 	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
    $vamTemplate->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 
