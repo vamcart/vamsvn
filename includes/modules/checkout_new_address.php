@@ -31,7 +31,7 @@ if (ACCOUNT_GENDER == 'true') {
 	$male = ($gender == 'm') ? true : false;
 	$female = ($gender == 'f') ? true : false;
 	$module->assign('gender', '1');
-	$module->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender"'));
+	$module->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
 	$module->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
    $module->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 

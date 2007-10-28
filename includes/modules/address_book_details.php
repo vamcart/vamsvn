@@ -32,7 +32,7 @@
     $female = ($entry['entry_gender'] == 'f') ? true : false;
 
   $module->assign('gender','1');
-  $module->assign('INPUT_MALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>MALE.'&nbsp;'), 'm',$male, 'id="gender"'));
+  $module->assign('INPUT_MALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>MALE.'&nbsp;'), 'm',$male, 'id="gender" checked="checked"'));
   $module->assign('INPUT_FEMALE',vam_draw_radio_field(array('name'=>'gender','suffix'=>FEMALE.'&nbsp;','text'=>(vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">&nbsp;' . ENTRY_GENDER_TEXT . '</span>': '')), 'f',$female, 'id="gender"'));
   $module->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 

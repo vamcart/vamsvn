@@ -144,7 +144,7 @@ if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '1');
 	$male = ($account['customers_gender'] == 'm') ? true : false;
 	$female = !$male;
-	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', $male, 'id="gender"'));
+	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', $male, 'id="gender" checked="checked"'));
 	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE.'&nbsp;', 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', $female, 'id="gender"'));
 	$vamTemplate->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 }
