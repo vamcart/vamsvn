@@ -61,9 +61,9 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		// Action for bцse ?
     require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
     $vlcode = vam_random_charcode(32);
-    $vamTemplate->assign('VVIMG', '<img src="'.FILENAME_DISPLAY_VVCODES.'" alt="" />');    
-    $vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6" maxlength="6"', 'text', false));
-    if ($_POST['vvcode'] == $_SESSION['vvcode']){
+    $vamTemplate->assign('CAPTCHA_IMG', '<img src="'.FILENAME_DISPLAY_CAPTCHA.'" alt="captcha" />');    
+    $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
+    if ($_POST['captcha'] == $_SESSION['captcha_keystring']){
     // code ok
 		// Check that password is good
 		if (!vam_validate_password($password, $check_customer['customers_password'])) {

@@ -75,7 +75,7 @@ define('FILENAME_MEDIA_CONTENT', 'media_content.php');
 define('FILENAME_PASSWORD_DOUBLE_OPT', 'password_double_opt.php');
 define('FILENAME_CREATE_GUEST_ACCOUNT', 'create_guest_account.php');
 define('FILENAME_POPUP_CVV', 'popup_cvv.php');
-define('FILENAME_DISPLAY_VVCODES', 'display_vvcodes.php');
+define('FILENAME_DISPLAY_CAPTCHA', 'captcha.php');
 define('FILENAME_CART_ACTIONS', 'cart_actions.php');
 define('FILENAME_CROSS_SELLING', 'cross_selling.php');
 define('FILENAME_GV_FAQ', 'gv_faq.php');

@@ -29,7 +29,6 @@ $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
@@ -55,7 +54,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 
 	// Check if email exists 
 
-	if (($_POST['check'] == 'inp') && ($_POST['vvcode'] == $_SESSION['vvcode'])) {
+	if (($_POST['check'] == 'inp') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address, mail_status from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
@@ -113,7 +112,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		$info_message = TEXT_WRONG_CODE;
 	}
 
-	if (($_POST['check'] == 'del') && ($_POST['vvcode'] == $_SESSION['vvcode'])) {
+	if (($_POST['check'] == 'del') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
@@ -161,13 +160,13 @@ $breadcrumb->add(NAVBAR_TITLE_NEWSLETTER, vam_href_link(FILENAME_NEWSLETTER, '',
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6"', 'text', false));
 
 $vamTemplate->assign('text_newsletter', TEXT_NEWSLETTER);
 $vamTemplate->assign('info_message', $info_message);
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_NEWSLETTER, 'action=process', 'NONSSL')));
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 $vamTemplate->assign('CHECK_INP', vam_draw_radio_field('check', 'inp'));
 $vamTemplate->assign('CHECK_DEL', vam_draw_radio_field('check', 'del'));
 $vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
