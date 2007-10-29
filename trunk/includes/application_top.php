@@ -614,9 +614,6 @@ vam_count_cart();
 
     require('includes/local_modules.php');
 
-require_once(DIR_FS_CATALOG.'includes/classes/vam_data.php');
-require_once(DIR_FS_CATALOG.'includes/classes/vam_form.php');
-require_once(DIR_FS_CATALOG.'includes/classes/vam_mail.php');
 require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
 
 ?>
