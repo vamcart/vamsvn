@@ -35,7 +35,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process') {
 
     $error = false;
     
-    if ($_POST['vvcode'] != $_SESSION['vvcode']) {
+    if ($_POST['vvcode'] == '' or $_POST['vvcode'] != $_SESSION['vvcode']) {
       $error = true;
 	   $vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
     }
@@ -91,7 +91,7 @@ if (!$product->isProduct()) {
 		$customer_info['customers_lastname'] = TEXT_GUEST;
 	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
-	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, '', '', false));
+	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, $_POST['review'], '', false));
 	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
