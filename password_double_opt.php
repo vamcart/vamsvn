@@ -29,7 +29,6 @@ $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
-require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
@@ -59,7 +58,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'first_opt_in')) {
 	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.html');
 	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.txt');
 
-	if ($_POST['vvcode'] == $_SESSION['vvcode']) {
+	if ($_POST['captcha'] == $_SESSION['captcha_keystring']) {
 		if (!vam_db_num_rows($check_customer_query)) {
 			$case = wrong_mail;
 			$info_message = TEXT_EMAIL_ERROR;
@@ -135,14 +134,14 @@ switch ($case) {
 		break;
 	case code_error :
 
-		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		$vamTemplate->assign('info_message', $info_message);
 		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
@@ -152,14 +151,14 @@ switch ($case) {
 		break;
 	case wrong_mail :
 
-		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		$vamTemplate->assign('info_message', $info_message);
 		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
@@ -177,14 +176,14 @@ switch ($case) {
 		break;
 	case double_opt :
 
-		$vamTemplate->assign('VVIMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_VVCODES).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		//    $vamTemplate->assign('info_message', $info_message);
 		$vamTemplate->assign('message', TEXT_PASSWORD_FORGOTTEN);
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('INPUT_CODE', vam_draw_input_field('vvcode', '', 'size="6"', 'text', false));
 		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_continue.gif', IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
