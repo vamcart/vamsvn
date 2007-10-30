@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vam_break_string.inc.php 899 2007-02-07 10:51:57 VaM $
+   $Id: vam_break_string.inc.php 899 2007-10-30 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
