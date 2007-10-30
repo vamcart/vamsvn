@@ -20,6 +20,7 @@
   function vam_break_string($string, $len, $break_char = '-') {
     $l = 0;
     $output = '';
+    if (function_exists('iconv')) $string = iconv('utf-8', 'cp1251', $string);
     for ($i=0, $n=strlen($string); $i<$n; $i++) {
       $char = substr($string, $i, 1);
       if ($char != ' ') {
@@ -33,7 +34,7 @@
       }
       $output .= $char;
     }
-
+    if (function_exists('iconv')) $output = iconv('cp1251', 'utf-8', $output);
     return $output;
   }
  ?>

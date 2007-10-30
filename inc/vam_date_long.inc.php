@@ -20,20 +20,18 @@
 // Output a raw date string in the selected locale date format
 // $raw_date needs to be in this format: YYYY-MM-DD HH:MM:SS
   function vam_date_long($raw_date) {
-    if ( ($raw_date == '0000-00-00 00:00:00') || empty($raw_date) ) return false;
+    if ( ($raw_date == '0000-00-00 00:00:00') || ($raw_date == '') ) return false;
 
-    $year = substr($raw_date, 0, 4);
+    $year = (int)substr($raw_date, 0, 4);
     $month = (int)substr($raw_date, 5, 2);
     $day = (int)substr($raw_date, 8, 2);
     $hour = (int)substr($raw_date, 11, 2);
     $minute = (int)substr($raw_date, 14, 2);
     $second = (int)substr($raw_date, 17, 2);
 
-    if (@date('Y', mktime($hour, $minute, $second, $month, $day, $year)) == $year) {
-      return date(DATE_FORMAT, mktime($hour, $minute, $second, $month, $day, $year));
-    } else {
-      return ereg_replace('2037' . '$', $year, date(DATE_FORMAT, mktime($hour, $minute, $second, $month, $day, 2037)));
-    }
+if (function_exists('vam_date_long_translate')) 
+    return vam_date_long_translate(strftime(DATE_FORMAT_LONG, mktime($hour,$minute,$second,$month,$day,$year))); 
+    return strftime(DATE_FORMAT_LONG, mktime($hour,$minute,$second,$month,$day,$year));
   }
 
  ?>
