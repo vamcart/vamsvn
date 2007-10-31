@@ -2038,7 +2038,7 @@ dl.AddressBookList
      display: block;
      width: 50%;
      float: left;
-     height: 100px;
+     height: auto;
      margin: 0 0 0 0;
      padding: 0 0 1em 0;
    }
@@ -2170,7 +2170,7 @@ dl.itemCategoriesListing
    {
      width: 30%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
-     height: 100px; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
      margin: 0 0 0 0;
      padding: 0 0 0 0;
      background: transparent;
@@ -2179,7 +2179,7 @@ dl.itemCategoriesListing
 dt.itemCategoriesListing 
    {
      float: left;
-     height: 100px;
+     height: auto;
      background: transparent;
      border-right: 0px #f1f1f6 solid;
      margin: 0 0 0 0;
