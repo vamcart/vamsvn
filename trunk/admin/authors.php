@@ -161,7 +161,7 @@ function popupImageWindow(url) {
             <td>
               <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;'; ?></td>
+                  <td class="main" valign="top"><?php echo $languages[$i]['name'] . '&nbsp;'; ?></td>
                   <td class="main" valign="top"><?php echo vam_draw_textarea_field('authors_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', ''); ?></td>
                 </tr>
               </table>
@@ -172,7 +172,7 @@ function popupImageWindow(url) {
           </tr>
           <tr>
             <td class="main" valign="top"><?php echo TEXT_AUTHORS_URL; ?></td>
-            <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('authors_url[' . $languages[$i]['id'] . ']', '', 'size="30"'); ?></td>
+            <td class="main" valign="top"><?php echo $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('authors_url[' . $languages[$i]['id'] . ']', '', 'size="30"'); ?></td>
           <tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -230,7 +230,7 @@ function popupImageWindow(url) {
             <td>
               <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;'; ?></td>
+                  <td class="main" valign="top"><?php echo $languages[$i]['name'] . '&nbsp;'; ?></td>
                   <td class="main" valign="top"><?php echo vam_draw_textarea_field('authors_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', vam_get_author_description($authors['authors_id'], $languages[$i]['id'])); ?></td>
                 </tr>
               </table>
@@ -241,7 +241,7 @@ function popupImageWindow(url) {
           </tr>
           <tr>
             <td class="main" valign="top"><?php echo TEXT_AUTHORS_URL; ?></td>
-            <td class="main" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('authors_url[' . $languages[$i]['id'] . ']', vam_get_author_url($authors['authors_id'], $languages[$i]['id']), 'size="30"'); ?></td>
+            <td class="main" valign="top"><?php echo $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('authors_url[' . $languages[$i]['id'] . ']', vam_get_author_url($authors['authors_id'], $languages[$i]['id']), 'size="30"'); ?></td>
           <tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -282,7 +282,7 @@ function popupImageWindow(url) {
   for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
           <tr>
-            <td class="main" colspan="2" valign="top"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']); ?></td>
+            <td class="main" colspan="2" valign="top"><?php echo $languages[$i]['name']; ?></td>
           <tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>

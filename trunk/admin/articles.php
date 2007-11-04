@@ -519,7 +519,7 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . $tInfo->topics_heading_title; ?></td>
+            <td class="pageHeading"><?php echo $languages[$i]['name'] . '&nbsp;' . $tInfo->topics_heading_title; ?></td>
           </tr>
         </table></td>
       </tr>
@@ -807,7 +807,7 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading" colspan="2"><?php echo vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . $aInfo->articles_name; ?></td>
+            <td class="pageHeading" colspan="2"><?php echo $languages[$i]['name'] . '&nbsp;' . $aInfo->articles_name; ?></td>
           </tr>
         </table></td>
       </tr>
@@ -1066,7 +1066,7 @@
         $topic_inputs_string = '';
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $topic_inputs_string .= '<br>' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']');
+          $topic_inputs_string .= '<br>' . $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']');
         }
 
         $contents[] = array('text' => '<br>' . TEXT_TOPICS_NAME . $topic_inputs_string);
@@ -1082,7 +1082,7 @@
         $topic_inputs_string = '';
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $topic_inputs_string .= '<br>' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']', vam_get_topic_name($tInfo->topics_id, $languages[$i]['id']));
+          $topic_inputs_string .= '<br>' . $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('topics_name[' . $languages[$i]['id'] . ']', vam_get_topic_name($tInfo->topics_id, $languages[$i]['id']));
         }
 
         $contents[] = array('text' => '<br>' . TEXT_EDIT_TOPICS_NAME . $topic_inputs_string);
