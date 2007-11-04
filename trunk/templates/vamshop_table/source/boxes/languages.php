@@ -32,7 +32,7 @@
   reset($lng->catalog_languages);
   while (list($key, $value) = each($lng->catalog_languages)) {
   $count_lng++;
-    $languages_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . vam_image('lang/' .  $value['directory'] .'/' . $value['image'], $value['name']) . '</a> ';
+    $languages_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . $value['name'] . '</a> ';
   }
 
   // dont show box if there's only 1 language
