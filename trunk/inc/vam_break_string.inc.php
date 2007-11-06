@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vam_break_string.inc.php 899 2007-10-30 10:51:57 VaM $
+   $Id: vam_break_string.inc.php 899 2007-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -20,9 +20,8 @@
   function vam_break_string($string, $len, $break_char = '-') {
     $l = 0;
     $output = '';
-    if (function_exists('iconv')) $string = iconv('utf-8', 'cp1251', $string);
-    for ($i=0, $n=strlen($string); $i<$n; $i++) {
-      $char = substr($string, $i, 1);
+    for ($i=0, $n=mb_strlen($string); $i<$n; $i++) {
+      $char = mb_substr($string, $i, 1);
       if ($char != ' ') {
         $l++;
       } else {
@@ -34,7 +33,52 @@
       }
       $output .= $char;
     }
-    if (function_exists('iconv')) $output = iconv('cp1251', 'utf-8', $output);
     return $output;
   }
+  
+
+  
+if (function_exists('mb_substr')) {
+    mb_internal_encoding("UTF-8");
+ }
+ else {
+    function mb_substr($str, $start, $len = '', $encoding="UTF-8"){
+        $limit = strlen($str);
+        for ($s = 0; $start > 0;--$start) {// found the real start
+            if ($s >= $limit)
+                break;
+            if ($str[$s] <= "\x7F")
+                ++$s;
+            else {
+                ++$s; // skip length
+                while ($str[$s] >= "\x80" && $str[$s] <= "\xBF")
+                    ++$s;
+            }
+        }
+        if ($len == '')
+            return substr($str, $s);
+        else
+            for ($e = $s; $len > 0; --$len) {//found the real end
+                if ($e >= $limit)
+                    break;
+                if ($str[$e] <= "\x7F")
+                    ++$e;
+                else {
+                    ++$e;//skip length
+                    while ($str[$e] >= "\x80" && $str[$e] <= "\xBF" && $e < $limit)
+                        ++$e;
+                       }
+            }
+        return substr($str, $s, $e - $s);
+    }
+ }
+ 
+if (!function_exists('mb_strlen'))
+{
+	function mb_strlen($t, $encoding = 'UTF-8')
+	{
+		return strlen(utf8_decode($t));
+	}
+} 
+	  
  ?>
