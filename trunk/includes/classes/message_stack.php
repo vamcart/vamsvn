@@ -55,17 +55,14 @@
     }
 
     function output($class) {
-      $output = array();
       for ($i=0, $n=sizeof($this->messages); $i<$n; $i++) {
         if ($this->messages[$i]['class'] == $class) {
-          $output[] = $this->messages[$i];
+
+          $messages .= $this->messages[$i]['text'];
         }
-
-        $output = $this->messages[$i]['text'];
-
       }
-    
-      return $output;
+
+      return $messages;
     }
 
     function size($class) {
