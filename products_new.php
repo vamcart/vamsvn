@@ -23,145 +23,121 @@
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
-// create template elements
+// create smarty elements
+$module = new vamTemplate;
 $vamTemplate = new vamTemplate;
+$vamTemplate->assign('language', $_SESSION['language']);
 // include boxes
-require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
+require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
 // include needed function
-require_once (DIR_FS_INC.'vam_date_long.inc.php');
-require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
+
+require_once (DIR_FS_INC . 'vam_date_long.inc.php');
+require_once (DIR_FS_INC . 'vam_get_vpe_name.inc.php');
 
 $breadcrumb->add(NAVBAR_TITLE_PRODUCTS_NEW, vam_href_link(FILENAME_PRODUCTS_NEW));
 
-require (DIR_WS_INCLUDES.'header.php');
+require (DIR_WS_INCLUDES . 'header.php');
 
-$products_new_array = array ();
-$fsk_lock = '';
-if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
-	$fsk_lock = ' and p.products_fsk18!=1';
+$rebuild = false;
+
+$module->assign('language', $_SESSION['language']);
+// set cache ID
+if (!CacheCheck()) {
+	$cache = false;
+	$module->caching = 0;
+} else {
+	$cache = true;
+	$module->caching = 1;
+	$module->cache_lifetime = CACHE_LIFETIME;
+	$module->cache_modified_check = CACHE_CHECK;
+	$cache_id = $_SESSION['language'] . $_SESSION['customers_status']['customers_status_id'] . $_SESSION['currency'] . $_GET['page'];
 }
-if (GROUP_CHECK == 'true') {
-	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
-}
-if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
-	$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
-	$days = " and p.products_date_added > '".$date_new_products."' ";
-}
-$products_new_query_raw = "select distinct
-                                    p.products_id,
-                                    p.products_fsk18,
-                                    pd.products_name,
-                                    pd.products_short_description,
-                                    p.products_image,
-                                    p.products_price,
-                               	    p.products_vpe,
-                               	    p.products_vpe_status,
-                                    p.products_vpe_value,                                                          
-                                    p.products_tax_class_id,
-                                    p.products_date_added,
-                                    m.manufacturers_name
-                                    from ".TABLE_PRODUCTS." p
-                                    left join ".TABLE_MANUFACTURERS." m
-                                    on p.manufacturers_id = m.manufacturers_id
-                                    left join ".TABLE_PRODUCTS_DESCRIPTION." pd
-                                    on p.products_id = pd.products_id,
-                                    ".TABLE_CATEGORIES." c,
-                                    ".TABLE_PRODUCTS_TO_CATEGORIES." p2c 
-                                    WHERE pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                    and c.categories_status=1
-                                    and p.products_id = p2c.products_id
-                                    and c.categories_id = p2c.categories_id
-                                    and products_status = '1'
-                                    ".$group_check."
-                                    ".$fsk_lock."                                    
-                                    ".$days."
-                                    order
-                                    by
-                                    p.products_date_added DESC ";
 
+if (!$module->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id) || !$cache) {
+	$module->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
+	$rebuild = true;
 
-$products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
+	$products_new_array = array ();
+	$fsk_lock = '';
+	if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+		$fsk_lock = ' and p.products_fsk18!=1';
+	}
+	if (GROUP_CHECK == 'true') {
+		$group_check = " and p.group_permission_" . $_SESSION['customers_status']['customers_status_id'] . "=1 ";
+	}
+	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
+		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
+		$days = " and p.products_date_added > '" . $date_new_products . "' ";
+	}
+	$products_new_query_raw = "select distinct
+	                                    p.products_id,
+	                                    p.products_fsk18,
+	                                    pd.products_name,
+	                                    pd.products_short_description,
+	                                    p.products_image,
+	                                    p.products_price,
+	                               	    p.products_vpe,
+	                               	    p.products_quantity,
+	                               	    p.products_vpe_status,
+	                                    p.products_vpe_value,                                                          
+	                                    p.products_tax_class_id,
+	                                    p.products_date_added,
+	                                    m.manufacturers_name
+	                                    from " . TABLE_PRODUCTS . " p
+	                                    left join " . TABLE_MANUFACTURERS . " m
+	                                    on p.manufacturers_id = m.manufacturers_id
+	                                    left join " . TABLE_PRODUCTS_DESCRIPTION . " pd
+	                                    on p.products_id = pd.products_id,
+	                                    " . TABLE_CATEGORIES . " c,
+	                                    " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
+	                                    WHERE pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
+	                                    and c.categories_status=1
+	                                    and p.products_id = p2c.products_id
+	                                    and c.categories_id = p2c.categories_id
+	                                    and products_status = '1'
+	                                    " . $group_check . "
+	                                    " . $fsk_lock . "                                    
+	                                    " . $days . "
+	                                    order
+	                                    by
+	                                    p.products_date_added DESC ";
 
-if (($products_new_split->number_of_rows > 0)) {
+	$products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
+
+	if (($products_new_split->number_of_rows > 0)) { 
 	$vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
 
 }
 
-$module_content = '';
-if ($products_new_split->number_of_rows > 0) {
-	$products_new_query = vam_db_query($products_new_split->sql_query);
-	while ($products_new = vam_db_fetch_array($products_new_query)) {
-		$products_price = $vamPrice->GetPrice($products_new['products_id'], $format = true, 1, $products_new['products_tax_class_id'], $products_new['products_price'], 1);
-		$vpePrice = '';
-		if ($products_new['products_vpe_status'] == 1 && $products_new['products_vpe_value'] != 0.0)
-			$vpePrice = $vamPrice->Format($products_price['plain'] * (1 / $products_new['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($products_new['products_vpe']);
-		$buy_now = '';
-		$buy_now_new = '';
-		if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
-			if ($products_new['products_fsk18'] == '0')
-				$buy_now = '<a href="'.vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$products_new['products_id'], 'NONSSL').'">'.vam_image_button('button_buy_now.gif', TEXT_BUY.$products_new['products_name'].TEXT_NOW).'</a>';
-				$buy_now_new = '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$products_new['products_id'].'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$products_new['products_name'].TEXT_NOW).'</a>';
-		} else {
-			$buy_now = '<a href="'.vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array ('action')).'action=buy_now&BUYproducts_id='.$products_new['products_id'], 'NONSSL').'">'.vam_image_button('button_buy_now.gif', TEXT_BUY.$products_new['products_name'].TEXT_NOW).'</a>';
-			$buy_now_new = '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$products_new['products_id'].'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$products_new['products_name'].TEXT_NOW).'</a>';
-		}
-		if ($products_new['products_image'] != '') {
-			$products_image = DIR_WS_THUMBNAIL_IMAGES.$products_new['products_image'];
-		} else {
-			$products_image = '';
-		}
-		if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
-			$tax_rate = $vamPrice->TAX[$products_new['products_tax_class_id']];
-			// price incl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] != 0) {
-				$tax_info = sprintf(TAX_INFO_INCL, $tax_rate.' %');
-			} 
-			// excl tax + tax at checkout
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-				$tax_info = sprintf(TAX_INFO_ADD, $tax_rate.' %');
-			}
-			// excl tax
-			if ($tax_rate > 0 && $_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) {
-				$tax_info = sprintf(TAX_INFO_EXCL, $tax_rate.' %');
-			}
-		}
-		$ship_info="";
-		if (SHOW_SHIPPING=='true') {
-		$ship_info=' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>';
-		}
-		$module_content[] = array (
-		
-		'PRODUCTS_NAME' => $products_new['products_name'],
-		'PRODUCTS_SHIPPING_LINK' => $ship_info,
-		'PRODUCTS_TAX_INFO' => $tax_info, 
-		'PRODUCTS_DESCRIPTION' => $products_new['products_short_description'], 
-		'PRODUCTS_PRICE' => $products_price['formated'], 
-		'PRODUCTS_VPE' => $vpePrice, 
-		'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products_new['products_id'], $products_new['products_name'])), 
-		'PRODUCTS_IMAGE' => $products_image, 
-		'BUTTON_BUY_NOW' => $buy_now, 
-		'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new
-		
-		);
+	$module_content = '';
+	if ($products_new_split->number_of_rows > 0) {
+		$products_new = vam_db_query($products_new_split->sql_query);
+		while ($products_data = vam_db_fetch_array($products_new)) {
+			$module_content[] = $product->buildDataArray($products_data);
 
+		}
+	} else {
+		$module->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
 	}
-} else {
-
-	$vamTemplate->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
 
 }
 
-$vamTemplate->assign('language', $_SESSION['language']);
-$vamTemplate->caching = 0;
-$vamTemplate->assign('module_content', $module_content);
-$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/new_products_overview.html');
+if (!$cache || $rebuild) {
+	if (count($module_content) > 0) {
+		$module->assign('module_content', $module_content);
+		if ($rebuild)
+			$module->clear_cache(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+		$main_content = $module->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+	}
+} else {
+	$main_content = $module->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+}
+
 $vamTemplate->assign('main_content', $main_content);
 
-$vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 if (!defined(RM))
 	$vamTemplate->load_filter('output', 'note');
-$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display(CURRENT_TEMPLATE . '/index.html');
 include ('includes/application_bottom.php');
 ?>
