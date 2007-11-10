@@ -289,6 +289,11 @@ div#navigation
      background: #f1f1f6;
    }
 
+.pagecontent p 
+   {
+     height: 20px;
+   }
+
 .pagecontentfooter 
    {
      display: block;
@@ -1973,7 +1978,7 @@ dl.itemLastViewed
 dl.ordersAddress 
    {
      display: block;
-     width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0 0 0 0;
      padding: 0 0 0 0;
@@ -2006,7 +2011,7 @@ dd.ordersAddress
 dl.AddressBook 
    {
      display: block;
-     width: 50%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
      float: left;
      margin: 0 0 0 0;
      padding: 0 0 0 0;
@@ -2036,7 +2041,7 @@ dd.AddressBook
 dl.AddressBookList 
    {
      display: block;
-     width: 50%;
+     width: 49%;
      float: left;
      height: auto;
      margin: 0 0 0 0;
@@ -2069,7 +2074,7 @@ dd.AddressBookList
 dl.Login 
    {
      display: block;
-     width: 50%;
+     width: 49%;
      float: left;
      margin: 0 0 0 0;
      padding: 0 0 0 0;
