@@ -38,7 +38,8 @@ $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DIS
 
 if ($reviews_split->number_of_rows > 0) {
 
-	$vamTemplate->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
+	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVBAR_PAGES', $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS));
 
 }
 
