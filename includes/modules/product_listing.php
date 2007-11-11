@@ -27,7 +27,8 @@ $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], MAX_DISP
 $module_content = array ();
 if ($listing_split->number_of_rows > 0) {
 
-	$navigation = '<span class="right">'.TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
+	$navigation = TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y')));
+	$navigation_pages = $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 	}
@@ -85,6 +86,7 @@ if ($result != false) {
 	$module->assign('module_content', $module_content);
 
 	$module->assign('NAVIGATION', $navigation);
+	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 	// set cache ID
 	 if (!CacheCheck()) {
 		$module->caching = 0;
