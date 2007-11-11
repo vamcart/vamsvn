@@ -60,7 +60,8 @@ while ($specials = vam_db_fetch_array($specials_query)) {
 }
 
 if (($specials_split->number_of_rows > 0)) {
-	$vamTemplate->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $specials_split->display_count(TEXT_DISPLAY_NUMBER_OF_SPECIALS));
+	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVBAR_PAGES', $specials_split->display_count(TEXT_DISPLAY_NUMBER_OF_SPECIALS));
 
 }
 

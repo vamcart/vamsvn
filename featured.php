@@ -59,7 +59,8 @@ while ($featured = vam_db_fetch_array($featured_query)) {
 }
 
 if (($featured_split->number_of_rows > 0)) {
-	$vamTemplate->assign('NAVBAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED));
+	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVBAR_PAGES', $featured_split->display_count(TEXT_DISPLAY_NUMBER_OF_FEATURED));
 
 }
 
