@@ -720,7 +720,6 @@ if ($error == true) {
 	if ($entry_mail_error == true) {
 		echo vam_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO.'&nbsp;'.ENTRY_MAIL_ERROR;
 	} else {
-		echo ($customers_gender == 'm') ? YES : NO;
 		echo vam_draw_radio_field('customers_mail', 'yes', true, $customers_send_mail).'&nbsp;&nbsp;'.YES.'&nbsp;&nbsp;'.vam_draw_radio_field('customers_mail', 'no', false, $customers_send_mail).'&nbsp;&nbsp;'.NO;
 	}
 } else {
