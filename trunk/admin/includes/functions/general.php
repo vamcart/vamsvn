@@ -1109,7 +1109,7 @@ function vam_remove_order($order_id, $restock = false) {
 	if ($restock == 'on') {
 		$order_query = vam_db_query("select products_id, products_quantity from ".TABLE_ORDERS_PRODUCTS." where orders_id = '".vam_db_input($order_id)."'");
 		while ($order = vam_db_fetch_array($order_query)) {
-			vam_db_query("update ".TABLE_PRODUCTS." set products_quantity = products_quantity + ".$order['products_quantity'].", products_ordered = products_ordered - ".$order['products_quantity']." where products_id = '".$order['products_id']."'");
+			vam_db_query("update ".TABLE_PRODUCTS." set products_status = '1', products_quantity = products_quantity + ".$order['products_quantity'].", products_ordered = products_ordered - ".$order['products_quantity']." where products_id = '".$order['products_id']."'");
 		}
 	}
 
