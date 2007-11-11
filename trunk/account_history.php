@@ -59,8 +59,8 @@ if (($orders_total = vam_count_customer_orders()) > 0) {
 }
 
 if ($orders_total > 0) {
-	$vamTemplate->assign('SPLIT_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS));
-
+	$vamTemplate->assign('SPLIT_BAR', TEXT_RESULT_PAGE.' '.$history_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y')))); 
+	$vamTemplate->assign('SPLIT_BAR_PAGES', $history_split->display_count(TEXT_DISPLAY_NUMBER_OF_ORDERS)); 
 }
 $vamTemplate->assign('order_content', $module_content);
 $vamTemplate->assign('language', $_SESSION['language']);
