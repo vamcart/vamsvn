@@ -36,49 +36,4 @@
     return $output;
   }
   
-
-  
-if (function_exists('mb_substr')) {
-    mb_internal_encoding("UTF-8");
- }
- else {
-    function mb_substr($str, $start, $len = '', $encoding="UTF-8"){
-        $limit = strlen($str);
-        for ($s = 0; $start > 0;--$start) {// found the real start
-            if ($s >= $limit)
-                break;
-            if ($str[$s] <= "\x7F")
-                ++$s;
-            else {
-                ++$s; // skip length
-                while ($str[$s] >= "\x80" && $str[$s] <= "\xBF")
-                    ++$s;
-            }
-        }
-        if ($len == '')
-            return substr($str, $s);
-        else
-            for ($e = $s; $len > 0; --$len) {//found the real end
-                if ($e >= $limit)
-                    break;
-                if ($str[$e] <= "\x7F")
-                    ++$e;
-                else {
-                    ++$e;//skip length
-                    while ($str[$e] >= "\x80" && $str[$e] <= "\xBF" && $e < $limit)
-                        ++$e;
-                       }
-            }
-        return substr($str, $s, $e - $s);
-    }
- }
- 
-if (!function_exists('mb_strlen'))
-{
-	function mb_strlen($t, $encoding = 'UTF-8')
-	{
-		return strlen(utf8_decode($t));
-	}
-} 
-	  
  ?>
