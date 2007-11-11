@@ -41,6 +41,7 @@ require (DIR_WS_INCLUDES . 'header.php');
 $rebuild = false;
 
 $module->assign('language', $_SESSION['language']);
+
 // set cache ID
 if (!CacheCheck()) {
 	$cache = false;
@@ -105,7 +106,8 @@ if (!$module->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html',
 	$products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
 
 	if (($products_new_split->number_of_rows > 0)) { 
-	$vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' . $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
+	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_BAR_PAGES', $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
 
 }
 
