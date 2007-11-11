@@ -24,7 +24,6 @@
 
 include ('includes/application_top.php');
 // create smarty elements
-$module = new vamTemplate;
 $vamTemplate = new vamTemplate;
 $vamTemplate->assign('language', $_SESSION['language']);
 // include boxes
@@ -40,22 +39,20 @@ require (DIR_WS_INCLUDES . 'header.php');
 
 $rebuild = false;
 
-$module->assign('language', $_SESSION['language']);
-
 // set cache ID
 if (!CacheCheck()) {
 	$cache = false;
-	$module->caching = 0;
+	$vamTemplate->caching = 0;
 } else {
 	$cache = true;
-	$module->caching = 1;
-	$module->cache_lifetime = CACHE_LIFETIME;
-	$module->cache_modified_check = CACHE_CHECK;
+	$vamTemplate->caching = 1;
+	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
+	$vamTemplate->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'] . $_SESSION['customers_status']['customers_status_id'] . $_SESSION['currency'] . $_GET['page'];
 }
 
-if (!$module->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id) || !$cache) {
-	$module->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
+if (!$vamTemplate->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id) || !$cache) {
+	$vamTemplate->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
 	$rebuild = true;
 
 	$products_new_array = array ();
@@ -119,20 +116,20 @@ if (!$module->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html',
 
 		}
 	} else {
-		$module->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
+		$vamTemplate->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
 	}
 
 }
 
 if (!$cache || $rebuild) {
 	if (count($module_content) > 0) {
-		$module->assign('module_content', $module_content);
+		$vamTemplate->assign('module_content', $module_content);
 		if ($rebuild)
-			$module->clear_cache(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
-		$main_content = $module->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+			$vamTemplate->clear_cache(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
 	}
 } else {
-	$main_content = $module->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
+	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
 }
 
 $vamTemplate->assign('main_content', $main_content);
