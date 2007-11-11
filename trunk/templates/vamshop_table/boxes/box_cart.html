@@ -24,7 +24,7 @@
 				{foreach name=aussen item=products_data from=$products}
 				  <tr>
 					<td class="main" align="left">&nbsp;{$products_data.QTY}&nbsp;x&nbsp;</td>
-					<td class="main" width="100%" align="left"><a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></td>
+					<td class="main" width="100%" align="left"><a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></td>
 				  </tr>
 				{/foreach}
 				</table>
