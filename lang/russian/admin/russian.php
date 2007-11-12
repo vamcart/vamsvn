@@ -284,7 +284,7 @@ define('ICON_FILE_DOWNLOAD', 'Загрузка');
 define('ICON_FOLDER', 'Папка');
 define('ICON_LOCKED', 'Заблокировать');
 define('ICON_PREVIOUS_LEVEL', 'Предыдущий уровень');
-define('ICON_PREVIEW', 'Редактировать');
+define('ICON_PREVIEW', 'Выделить');
 define('ICON_STATISTICS', 'Статистика');
 define('ICON_SUCCESS', 'Выполнено');
 define('ICON_TICK', 'Истина');
