@@ -80,6 +80,11 @@ if ($_GET['action'] == "product_edit") {
 
 if ($_GET['action'] == "product_ins") {
 
+if (0==round($_POST['products_quantity']))
+	{
+		$_POST['products_quantity'] = 1;
+	}
+	
 	$status_query = vam_db_query("select customers_status_show_price_tax from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$order->info['status']."'");
 	$status = vam_db_fetch_array($status_query);
 
