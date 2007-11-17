@@ -173,14 +173,3 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 <?php } ?>
 <br /><br />
 <!-- Artikel EinfпїЅgen Ende //-->
-
-
-
-
-
-
-
-
-
-
-
