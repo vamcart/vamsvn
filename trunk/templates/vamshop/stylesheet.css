@@ -475,7 +475,31 @@ div#navigation
      padding-left: 1em;
    }
 
+#categoriesBoxMenu .boxMenuSubCategory2 
+   {
+     position: relative;
+     padding-left: 1em;
+   }
+   
+#categoriesBoxMenu .boxMenuSubCategory3 
+   {
+     position: relative;
+     padding-left: 2em;
+   }
+      
 #categoriesBoxMenu .boxMenuSubCategory span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory2 span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory3 span 
    {
      font-weight: bold;
      position: relative;
