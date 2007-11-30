@@ -43,7 +43,7 @@
     $categories_string .= $img_1;
     $categories_string .= '<div class="boxMenuCategory"><a href="';
     } else {
-    $categories_string .= '<div class="boxMenuSubCategory"><a href="';
+    $categories_string .= '<div class="boxMenuSubCategory'.($foo[$counter]['level']+1).'"><a href="'; 
     }
 
 	$cPath_new=vam_category_link($counter,$foo[$counter]['name']);
