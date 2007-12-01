@@ -486,6 +486,24 @@ div#navigation
      position: relative;
      padding-left: 2em;
    }
+
+#categoriesBoxMenu .boxMenuSubCategory4 
+   {
+     position: relative;
+     padding-left: 3em;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory5 
+   {
+     position: relative;
+     padding-left: 4em;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory6 
+   {
+     position: relative;
+     padding-left: 5em;
+   }
       
 #categoriesBoxMenu .boxMenuSubCategory span 
    {
@@ -504,6 +522,25 @@ div#navigation
      font-weight: bold;
      position: relative;
    }
+
+#categoriesBoxMenu .boxMenuSubCategory4 span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory5 span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
+#categoriesBoxMenu .boxMenuSubCategory6 span 
+   {
+     font-weight: bold;
+     position: relative;
+   }
+
 /*- /Список разделов */
 
 /*- /Бокс разделы */
