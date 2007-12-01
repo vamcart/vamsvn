@@ -244,7 +244,8 @@
   //UTF8 functions
   require_once (DIR_FS_INC.'vam_mb_substr.inc.php');
   require_once (DIR_FS_INC.'vam_mb_strlen.inc.php');
-  
+  require_once (DIR_FS_INC.'vam_mb_utf8.inc.php');
+
   require_once(DIR_FS_INC . 'vam_db_connect.inc.php');
   require_once(DIR_FS_INC . 'vam_db_close.inc.php');
   require_once(DIR_FS_INC . 'vam_db_error.inc.php');
