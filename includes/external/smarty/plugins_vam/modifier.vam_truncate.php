@@ -31,14 +31,14 @@ function smarty_modifier_vam_truncate($string, $length = 80, $etc = '...',
         return '';
 
     if (strlen($string) > $length) {
-        $length -= min($length, mb_strlen($etc));
+        $length -= min($length, utf8_strlen($etc));
         if (!$break_words && !$middle) {
-            $string = preg_replace('/\s+?(\S+)?$/', '', mb_substr($string, 0, $length+1));
+            $string = preg_replace('/\s+?(\S+)?$/', '', utf8_substr($string, 0, $length+1));
         }
         if(!$middle) {
-            return mb_substr($string, 0, $length) . $etc;
+            return utf8_substr($string, 0, $length) . $etc;
         } else {
-            return mb_substr($string, 0, $length/2) . $etc . mb_substr($string, -$length/2);
+            return utf8_substr($string, 0, $length/2) . $etc . utf8_substr($string, -$length/2);
         }
     } else {
         return $string;
