@@ -47,7 +47,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id
 		// Display a list
 		$manufacturers_list = '';
 		while ($manufacturers = vam_db_fetch_array($manufacturers_query, true)) {
-			$manufacturers_name = ((strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
+			$manufacturers_name = ((utf8_strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? utf8_substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
 			if (isset ($_GET['manufacturers_id']) && ($_GET['manufacturers_id'] == $manufacturers['manufacturers_id']))
 				$manufacturers_name = '<b>'.$manufacturers_name.'</b>';
 			$manufacturers_list .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturers['manufacturers_id']).'">'.$manufacturers_name.'</a><br />';
@@ -61,7 +61,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id
 		}
 
 		while ($manufacturers = vam_db_fetch_array($manufacturers_query, true)) {
-			$manufacturers_name = ((strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
+			$manufacturers_name = ((utf8_strlen($manufacturers['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? utf8_substr($manufacturers['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN).'..' : $manufacturers['manufacturers_name']);
 			$manufacturers_array[] = array ('id' => $manufacturers['manufacturers_id'], 'text' => $manufacturers_name);
 		}
 
