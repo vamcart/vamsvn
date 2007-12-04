@@ -217,10 +217,27 @@ $content_meta = vam_db_fetch_array($content_meta_query);
     break;
 
 default:
+
+if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
+
+$content_meta_default_query = vamDBquery("select cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '5' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
+
+$content_meta_default = vam_db_fetch_array($content_meta_default_query);
+
+		if ($content_meta_default['content_meta_title'] == '') {
+			$content_default_title = $content_meta_default['content_heading'];
+		} else {
+			$content_default_title = $content_meta_default['content_meta_title'];
+		}
+
+} else {
+			$content_default_title = TITLE;
+}
+
 ?>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
-<title><?php echo TITLE; ?></title>
+<title><?php echo $content_default_title; ?></title>
 <?php
      }
 	}
