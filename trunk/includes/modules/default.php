@@ -112,9 +112,15 @@ if ($category_depth == 'nested') {
  
   $width = (int) (100 / MAX_DISPLAY_CATEGORIES_PER_ROW).'%';
   $image = '';
-  if ($categories['categories_image'] != '') {
-    $image = DIR_WS_IMAGES.'categories/'.$categories['categories_image'];
-  }
+
+if ($categories['categories_image'] != '')
+               {
+                    $image = DIR_WS_IMAGES.'categories/'.$categories['categories_image'];
+               }
+               else
+               {
+                    $image = DIR_WS_IMAGES.'product_images/noimage.gif';
+               }
 
   $categories_content[] = array ('CATEGORIES_NAME' => $categories['categories_name'], 'CATEGORIES_HEADING_TITLE' => $categories['categories_heading_title'], 'CATEGORIES_IMAGE' => $image, 'CATEGORIES_LINK' => vam_href_link(FILENAME_DEFAULT, $cPath_new), 'CATEGORIES_DESCRIPTION' => $categories['categories_description']);
 
