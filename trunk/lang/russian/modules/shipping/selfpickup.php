@@ -32,6 +32,10 @@ define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_TITLE' , 'Разрешённые ст
 define('MODULE_SHIPPING_SELFPICKUP_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_SHIPPING_SELFPICKUP_STATUS_TITLE', 'Разрешить модуль самовывоз');
 define('MODULE_SHIPPING_SELFPICKUP_STATUS_DESC', 'Вы хотите разрешить модуль самовывоз?');
+define('MODULE_SHIPPING_SELFPICKUP_TAX_CLASS_TITLE' , 'Налог');
+define('MODULE_SHIPPING_SELFPICKUP_TAX_CLASS_DESC' , 'Использовать налог.');
+define('MODULE_SHIPPING_SELFPICKUP_ZONE_TITLE' , 'Зона');
+define('MODULE_SHIPPING_SELFPICKUP_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
 define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_TITLE', 'Порядок сортировки');
 define('MODULE_SHIPPING_SELFPICKUP_SORT_ORDER_DESC', 'Порядок сортировки модуля.');
 ?>
