@@ -240,6 +240,9 @@
              <td class="categories_view_data">--</td>
              <td class="categories_view_data">
              <?php
+
+			 	echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id'] . "&action=edit_category") . '">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
+			 	            
                 //if active category, show arrow, else show symbol with link (action col)
                 if ( (is_object($cInfo)) && ($categories['categories_id'] == $cInfo->categories_id) ) { 
                     echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); 
@@ -502,6 +505,9 @@ if ($numr>$max_count){
       </td>
       <td class="categories_view_data">
       <?php 
+      
+	  echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '&action=new_product">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
+	        
         if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; } 
       ?>
       </td>
