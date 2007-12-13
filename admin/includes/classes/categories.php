@@ -199,7 +199,10 @@ class categories {
 			$cnsuffix = array_pop($cname_arr);
 			$categories_image_name = $categories_id.'.'.$cnsuffix;
 			@ unlink(DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image_name);
-			rename(DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image->filename, DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image_name);
+			rename(DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image->filename, DIR_FS_CATALOG_IMAGES.'categories/old_'.$categories_image_name);
+			require (DIR_WS_INCLUDES.'category_thumbnail_images.php');      
+			@ unlink(DIR_FS_CATALOG_IMAGES.'categories/old_'.$categories_image_name);
+
 			vam_db_query("UPDATE ".TABLE_CATEGORIES."
 						    		                 SET categories_image = '".vam_db_input($categories_image_name)."'
 						    		               WHERE categories_id = '".(int) $categories_id."'");

@@ -760,7 +760,7 @@ if ($numr>$max_count){
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; border-top: 1px solid Black; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
             $contents[] = array('text'  => '<div style="padding-left: 50px;">' . TEXT_DATE_ADDED . ' ' . vam_date_short($cInfo->date_added) . '</div>');
             if (vam_not_null($cInfo->last_modified)) $contents[] = array('text' => '<div style="padding-left: 50px;">' . TEXT_LAST_MODIFIED . ' ' . vam_date_short($cInfo->last_modified) . '</div>');            
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_info_image_c($cInfo->categories_image, $cInfo->categories_name, 200)  . '</div><div style="padding-bottom: 10px;">' . $cInfo->categories_image . '</div>');            
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_info_image_c($cInfo->categories_image, $cInfo->categories_name)  . '</div><div style="padding-bottom: 10px;">' . $cInfo->categories_image . '</div>');            
           } elseif (is_object($pInfo)) { 
             // product info box contents
             $heading[]  = array('align' => 'center', 'text' => '<b>' . vam_get_products_name($pInfo->products_id, $_SESSION['languages_id']) . '</b>');
