@@ -460,4 +460,6 @@ define('TEXT_SUMMARY_ORDERS','Заказы');
 define('TEXT_SUMMARY_PRODUCTS','Товары');
 define('TEXT_SUMMARY_NEWS','Новости');
 
+define('BOX_SALES_REPORT2','Статистика продаж 2');
+
 ?>

@@ -552,5 +552,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     define('DIR_FS_CIP', DIR_FS_ADMIN . 'contributions');
 
 require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
+
+define('FILENAME_STATS_SALES_REPORT2','stats_sales_report2.php');
   
 ?>
