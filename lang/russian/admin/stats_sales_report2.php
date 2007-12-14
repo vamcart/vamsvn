@@ -57,4 +57,9 @@ define('TO_DATE_FORMAT', 'd, Y');
 define('DAILY_TOTAL','всего за день');
 define('AVERAGE_TOTAL','средний заказ');
 
+define('IMAGE_ICON_STATUS_GREEN', 'Активный');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
+define('IMAGE_ICON_STATUS_RED', 'Неактивный');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивным');
+
 ?>
