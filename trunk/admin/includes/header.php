@@ -312,6 +312,8 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_sales_report'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_SALES_REPORT, '', 'NONSSL') . '">' . BOX_SALES_REPORT . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_sales_report2'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, '', 'NONSSL') . '">' . BOX_SALES_REPORT2 . '</a></li>' . "\n";
+
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_campaigns'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CAMPAIGNS_REPORT, '', 'NONSSL') . '">' . BOX_CAMPAIGNS_REPORT . '</a></li>' . "\n";
 
 ?>
