@@ -298,14 +298,14 @@ g.build();
 														<td align=left>
 <?php
     if (strlen($report->previous) > 0) {
-      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->previous, 'NONSSL') . '">&lt;&lt;&nbsp;Previous</a>';
+      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->previous, 'NONSSL') . '">&lt;&lt;&nbsp;' . TEXT_PREVIOUS . '</a>';
     }
 ?>
 														</td>
 										                <td align=right>
 <?php
     if (strlen($report->next) > 0) {
-      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->next, 'NONSSL') . '">Next&nbsp;&gt;&gt;</a>';
+      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->next, 'NONSSL') . '">' . TEXT_NEXT . '&nbsp;&gt;&gt;</a>';
       echo "";
     }
 ?>
