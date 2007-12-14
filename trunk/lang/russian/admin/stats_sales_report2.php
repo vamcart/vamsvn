@@ -62,4 +62,10 @@ define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
 define('IMAGE_ICON_STATUS_RED', 'Неактивный');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивным');
 
+define('TABLE_HEADING_DATE', 'Дата');
+
+define('TEXT_NUMBER_OF_ORDERS','Количество заказов');
+define('TEXT_AVERAGE_ORDER','Средняя сумма заказа');
+define('TEXT_TOTAL_SUMM','Общая сумма заказов');
+
 ?>
