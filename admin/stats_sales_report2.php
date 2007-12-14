@@ -123,7 +123,7 @@
 					<td colspan=2>
 						<table border="0" width="100%" cellspacing="0" cellpadding="0">
 							<tr>
-<td align=right class="menuBoxHeading">
+<td align="right">
 <?php
   echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, 'report=1' . $sales_report_filter_link, 'NONSSL') . '">' . REPORT_TYPE_HOURLY .'</a> | ';
   echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, 'report=2' . $sales_report_filter_link, 'NONSSL') . '">' . REPORT_TYPE_DAILY .'</a> | ';
@@ -137,110 +137,21 @@
 					</td>
 				</tr>
 				<tr>
-					<td valign=top width=200 align=center>
-<?php 
-if ($sales_report_view > 1) {
-if ($report->size > 1) {
-  echo vam_draw_separator('pixel_trans.gif', 250,10).'<br>';
-  $last_value = 0;
-  $order_cnt = 0;
-  $sum = 0;
-  for ($i = 0; $i < $report->size; $i++) {
-    if ($last_value != 0) {
-      $percent = 100 * $report->info[$i]['sum'] / $last_value - 100;
-    } else {
-      $percent = "0";
-    }
-    $sum += $report->info[$i]['sum'];
-    $avg += $report->info[$i]['avg'];
-    $order_cnt += $report->info[$i]['count'];
-    $last_value = $report->info[$i]['sum'];
-}
-}
-//define variables for graph
-if ($report->size > 1) {
-$scale_x = ($sum / $report->size) / 4;
-$scale_y = $scale_x + 50;
-$scale_z = $scale_y / 100;
-$scale = round($scale_z) * 100;
-?>
-<SCRIPT LANGUAGE="JavaScript1.2">
-var g = new Graph(<?php 
-if ($report->size > 2){
-echo '200';
-} else {
-echo ($report->size * 50);} ?>,100,true);
-g.addRow(<?php
-  for ($i = 0; $i < $report->size; $i++) {
-if ($report->info[$i]['sum'] == ""){
-	echo '0';
-	}else{
-	echo $report->info[$i]['sum'] - $report->info[$i]['avg'];
-}
-	  if (($i+1) < $report->size) {
-		echo ',';
-	  }
-	}
-	echo ');';
-	echo '
-	';
-?>
-<?php  if ($sales_report_view == 2){
-echo 'g.addRow(';
-  for ($i = 0; $i < $report->size; $i++) {
-if ($report->info[$i]['sum'] == ""){
-	echo '0';
-	}else{
-	echo $report->info[$i]['avg'];
-}
-	  if (($i+1) < $report->size) {
-		echo ',';
-	  }
-	}
-	echo ');';
-	echo '
-	';
-echo 'g.setLegend("'.DAILY_TOTAL.'","'.AVERAGE_TOTAL.'");';
-	echo '
-	';
-}?>
+					<td valign="top" width="200" align="center">
 <?php
- echo 'g.setXScaleValues("';
-  for ($i = 0; $i < $report->size; $i++) {
- if (($sales_report_view == 5) && ($report->size > 5)) {
- echo substr($report->info[$i]['text'] . $date_text[$i], 0,1);
-  }else{
-  if ($sales_report_view == 4){
- echo substr($report->info[$i]['text'] . $date_text[$i], 0,3);
-  }else{
-   if ($report->size > 5) {
- echo substr($report->info[$i]['text'] . $date_text[$i], 3,2);
- } else {
- echo substr($report->info[$i]['text'] . $date_text[$i], 0,5);
- }
-}
-}
-   if (($i+1) < $report->size) {
-  echo '","';
-   }
- }
- echo '");';
-?>
-g.scale = <?php echo $scale; ?>;
-g.build();
-</SCRIPT>
-<?php
-}
-}
+include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
+open_flash_chart_object( 800, 250, vam_href_link('chart_data.php', vam_get_all_get_params(), 'NONSSL'), false );
 ?>
 					</td>
+				</tr>
+				<tr>
 			        <td width=100% valign=top>
 						<table border="0" width="100%" cellspacing="0" cellpadding="2">
 							<tr>
 								<td valign="top">
 									<table border="0" width="100%" cellspacing="0" cellpadding="2">
 										<tr class="dataTableHeadingRow">
-											<td class="dataTableHeadingContent"></td>
+											<td class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
 											<td class="dataTableHeadingContent" align=center><?php echo TABLE_HEADING_ORDERS; ?></td>
 											<td class="dataTableHeadingContent" align=right><?php echo TABLE_HEADING_CONV_PER_ORDER; ?></td>
 											<td class="dataTableHeadingContent" align=right><?php echo TABLE_HEADING_CONVERSION; ?></td>
