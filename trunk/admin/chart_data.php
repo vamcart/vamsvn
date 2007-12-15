@@ -1,12 +1,14 @@
 <?php
 
-global $report;
+  $report = $_GET['report'];
 
   require('includes/application_top.php');
 
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.FILENAME_STATS_SALES_REPORT2);
+
   require(DIR_WS_CLASSES . 'currencies.php');
   $currencies = new currencies();
-  
+
   // default view (daily)
   $sales_report_default_view = 2;
   // report views (1: hourly 2: daily 3: weekly 4: monthly 5: yearly)
@@ -90,10 +92,8 @@ $data_date[] = $report->info[$i]['text'];
 include_once(DIR_WS_CLASSES . 'ofc-library/open-flash-chart.php');
 $g = new graph();
 
-require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.FILENAME_STATS_SALES_REPORT2);
-
 // Spoon sales, March 2007
-$g->title( HEADING_TITLE, '{font-size: 26px;}' );
+$g->title( $report_desc . TEXT_STATS_SALES, '{font-size: 26px;}' );
 
 $g->set_data( $data );
 $g->line_hollow( 2, 4, '0x80a033', TEXT_NUMBER_OF_ORDERS, 10 );

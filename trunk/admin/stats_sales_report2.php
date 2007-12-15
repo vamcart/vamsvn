@@ -97,6 +97,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<?php if (ENABLE_TABS == 'true') { ?>
+<script type="text/javascript" src="includes/javascript/tabber.js"></script>
+<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+<?php } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -136,6 +141,14 @@
 						</table>
 					</td>
 				</tr>
+			</table>
+			
+<div class="tabber">
+				
+
+        <div class="tabbertab">
+        <h3><?php echo TAB_CHART; ?></h3>				
+			<table border="0" width="100%" cellspacing="0" cellpadding="2">
 				<tr>
 					<td valign="top" width="200" align="center">
 <?php
@@ -144,15 +157,45 @@ open_flash_chart_object( 800, 250, vam_href_link('chart_data.php', vam_get_all_g
 ?>
 					</td>
 				</tr>
-				<tr>
-			        <td width=100% valign=top>
-						<table border="0" width="100%" cellspacing="0" cellpadding="2">
-							<tr>
-								<td valign="top">
+<?php
+  if (strlen($report->previous . " " . $report->next) > 1) {
+?>
+										<tr>
+											<td width=100% colspan=5>
+												<table width=100%>
+													<tr>
+														<td align=left>
+<?php
+    if (strlen($report->previous) > 0) {
+      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->previous, 'NONSSL') . '">&lt;&lt;&nbsp;' . TEXT_PREVIOUS . '</a>';
+    }
+?>
+														</td>
+										                <td align=right>
+<?php
+    if (strlen($report->next) > 0) {
+      echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, $report->next, 'NONSSL') . '">' . TEXT_NEXT . '&nbsp;&gt;&gt;</a>';
+      echo "";
+    }
+?>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+<?php
+  }
+?>				
+          </table>
+        </div>				
+
+        <div class="tabbertab">
+        <h3><?php echo TAB_TABLE; ?></h3>				
+				
 									<table border="0" width="100%" cellspacing="0" cellpadding="2">
 										<tr class="dataTableHeadingRow">
 											<td class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
-											<td class="dataTableHeadingContent" align=center><?php echo TABLE_HEADING_ORDERS; ?></td>
+											<td class="dataTableHeadingContent" align=center><?php echo TABLE_HEADING_STAT_ORDERS; ?></td>
 											<td class="dataTableHeadingContent" align=right><?php echo TABLE_HEADING_CONV_PER_ORDER; ?></td>
 											<td class="dataTableHeadingContent" align=right><?php echo TABLE_HEADING_CONVERSION; ?></td>
 											<td class="dataTableHeadingContent" align=right><?php echo TABLE_HEADING_VARIANCE; ?></td>
@@ -230,7 +273,7 @@ open_flash_chart_object( 800, 250, vam_href_link('chart_data.php', vam_get_all_g
 ?>
 
                   </table>
-                  <p>
+                 
                   <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php if ($order_cnt != 0){
 ?>
@@ -251,8 +294,13 @@ open_flash_chart_object( 800, 250, vam_href_link('chart_data.php', vam_get_all_g
                       <td class="dataTableContent" align=right><?php echo $currencies->format($sum) ?></td>
                     </tr>
                   </table>
+             
+                </div>                  
+
+        <div class="tabbertab">
+        <h3><?php echo TAB_STATUS; ?></h3>				
+
                   <table border="0" width="100%" cellspacing="0" cellpadding="2">
-                    <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                     <tr class="dataTableRow">
                       <td class="dataTableContent" align="left" width="100%"><?php echo FILTER_STATUS  ?></td>
                       <td class="dataTableContent" align="center"><?php echo FILTER_VALUE ?></td>
@@ -289,12 +337,10 @@ open_flash_chart_object( 800, 250, vam_href_link('chart_data.php', vam_get_all_g
   }
 ?>
                   </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+               </div>
+</div>
+
+
     </td>
 <!-- body_text_eof //-->
   </tr>
