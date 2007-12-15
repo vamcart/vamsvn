@@ -93,10 +93,10 @@ include_once(DIR_WS_CLASSES . 'ofc-library/open-flash-chart.php');
 $g = new graph();
 
 // Spoon sales, March 2007
-$g->title( $report_desc . TEXT_STATS_SALES, '{font-size: 26px;}' );
+$g->title( $report_desc . TEXT_STATS_SALES, '{font-size: 18px;}' );
 
 $g->set_data( $data );
-$g->line_hollow( 2, 4, '0x80a033', TEXT_NUMBER_OF_ORDERS, 10 );
+$g->line_hollow( 2, 4, '0x80a033', TEXT_NUMBER_OF_ORDERS, 12 );
 
 // label each point with its value
 $g->set_x_labels( $data_date );
