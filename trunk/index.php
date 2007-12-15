@@ -35,7 +35,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // the following cPath references come from application_top.php
 $category_depth = 'top';
 if (isset ($cPath) && vam_not_null($cPath)) {
-	$categories_products_query = "select count(*) as total from ".TABLE_PRODUCTS_TO_CATEGORIES." where categories_id = '".$current_category_id."'";
+	$categories_products_query = "select count(p.products_id) as total from ".TABLE_PRODUCTS_TO_CATEGORIES." as ptc, products as p where ptc.categories_id = '".$current_category_id."' and ptc.products_id=p.products_id and p.products_status='1'";
 	$categories_products_query = vamDBquery($categories_products_query);
 	$cateqories_products = vam_db_fetch_array($categories_products_query, true);
 	if ($cateqories_products['total'] > 0) {
