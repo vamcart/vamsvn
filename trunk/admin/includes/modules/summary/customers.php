@@ -22,7 +22,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				  <tr> 
 				    <td colspan="3" class="pageHeading" width="100%">
 
-    <h1 class="contentBoxHeading"><?php echo TABLE_HEADING_CUSTOMERS; ?></h1>
+    <h1 class="contentBoxHeading"><?php echo '<a href="' . vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL') . '">' . TABLE_HEADING_CUSTOMERS . '</a>'; ?></h1>
 				    
 				    </td>
 				  </tr>
