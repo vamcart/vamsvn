@@ -38,11 +38,11 @@ define('MONTH_TO_DATE', 'Всего за месяц:');
 define('YEAR_TO_DATE', 'Всего за год:');
 define('YEARLY_TOTAL', 'Всего:');
 
-define('REPORT_TYPE_HOURLY', 'Часовая');
-define('REPORT_TYPE_DAILY', 'Дневная');
-define('REPORT_TYPE_WEEKLY', 'Недельная');
-define('REPORT_TYPE_MONTHLY', 'Месячная');
-define('REPORT_TYPE_YEARLY', 'Годовая');
+define('REPORT_TYPE_HOURLY', 'Час');
+define('REPORT_TYPE_DAILY', 'День');
+define('REPORT_TYPE_WEEKLY', 'Неделя');
+define('REPORT_TYPE_MONTHLY', 'Месяц');
+define('REPORT_TYPE_YEARLY', 'Год');
 
 define('FILTER_STATUS', 'Статусы');
 define('FILTER_VALUE', 'Значение');

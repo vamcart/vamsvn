@@ -106,13 +106,6 @@ require ('includes/application_top.php');
 </table>
 </div>
 
-<div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_NEWS; ?></h3>
-<table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/news.php'); ?>
-</table>
-</div>
-  
 </div>    
 
 </td>
