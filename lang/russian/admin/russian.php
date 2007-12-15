@@ -455,6 +455,7 @@ define('IMAGE_NEW_TOPIC', 'Новый раздел');
 define('IMAGE_NEW_ARTICLE', 'Новая статья');
 define('TEXT_DISPLAY_NUMBER_OF_AUTHORS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> авторов)'); 
 
+define('TEXT_SUMMARY_STAT','Статистика');
 define('TEXT_SUMMARY_CUSTOMERS','Покупатели');
 define('TEXT_SUMMARY_ORDERS','Заказы');
 define('TEXT_SUMMARY_PRODUCTS','Товары');

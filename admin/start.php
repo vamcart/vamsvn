@@ -79,6 +79,13 @@ require ('includes/application_top.php');
 <div class="tabber">
 
 <div class="tabbertab">
+<h3><?php echo TEXT_SUMMARY_STAT; ?></h3>
+<table border="0" width="99%">
+<?php include(DIR_WS_MODULES . 'summary/statistics.php'); ?>
+</table>
+</div>
+
+<div class="tabbertab">
 <h3><?php echo TEXT_SUMMARY_CUSTOMERS; ?></h3>
 <table border="0" width="99%">
 <?php include(DIR_WS_MODULES . 'summary/customers.php'); ?>
