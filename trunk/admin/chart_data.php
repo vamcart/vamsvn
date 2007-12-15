@@ -39,13 +39,12 @@
 // use the chart class to build the chart:
 include_once(DIR_WS_CLASSES . 'ofc-library/open-flash-chart.php');
 
-$bar = new bar_outline( 50, '#1a87d5', '#0077cc' );
-$bar->key( TEXT_NUMBER_OF_ORDERS, 12 );
-
-$data = array();
+$data_count = array();
+$data_sum = array();
 for ($i = 0; $i < $report->size; $i++) { 
 
-  $bar->data[] = $report->info[$i]['count'];
+$data_count[] = $report->info[$i]['count'];
+$data_sum[] = number_format($currencies->format($report->info[$i]['sum']),0,'','');
 									
 }
 
@@ -56,35 +55,26 @@ $data_date[] = $report->info[$i]['text'];
 									
 }
 
+include_once( 'ofc-library/open-flash-chart.php' );
 $g = new graph();
 $g->bg_colour = '0xFFFFFF';
-$g->x_axis_colour = '0x000000';
-$g->y_axis_colour = '0x000000';
 $g->x_grid_colour = '0xd8d8d8';
 $g->y_grid_colour = '0xd8d8d8';
+
 $g->title( HEADING_TITLE . ': ' . $report_desc, '{font-size: 18px;}' );
 
-//
-// BAR CHART:
-//
-// ------------------------
-//
-$g->data_sets[] = $bar;
-//
-// X axis tweeks:
-//
-$g->set_x_labels( $data_date );
-//
-// set the X axis to show every 2nd label:
-//
-$g->set_x_label_style( 10, '#000', 0, 2 );
-//
-// and tick every second value:
-//
-//$g->set_x_axis_steps( 2 );
-//
+$g->set_data( $data_sum );
+$g->bar( 60, '#ff9900', TEXT_TOTAL_SUMM, 12 );
 
-$g->set_y_max( (max($bar->data) / 10) + max($bar->data) );
+$g->set_data( $data_count );
+$g->line_hollow( 3, 4, '#0077cc', TEXT_NUMBER_OF_ORDERS, 12 );
+
+$g->attach_to_y_right_axis(2);
+
+$g->set_x_labels( $data_date );
+$g->set_x_label_style( 10, '0x000000', 0, 2 );
+$g->set_y_max( (max($data_sum) / 10) + max($data_sum) );
+$g->set_y_right_max( (max($data_count) / 10) + max($data_count) );
 $g->y_label_steps( 4 );
 echo $g->render();
 
@@ -152,10 +142,14 @@ echo $g->render();
     $sales_report_filter_link = "";
   }
 
-$data = array();
+$data_count = array();
+$data_avg = array();
+$data_sum = array();
 for ($i = 0; $i < $report->size; $i++) { 
 
-$data[] = $report->info[$i]['count'];
+$data_count[] = $report->info[$i]['count'];
+//$data_avg[] = $report->info[$i]['avg'];
+$data_sum[] = number_format($currencies->format($report->info[$i]['sum']),0,'','');
 									
 }
 
@@ -170,23 +164,32 @@ $data_date[] = $report->info[$i]['text'];
 include_once(DIR_WS_CLASSES . 'ofc-library/open-flash-chart.php');
 $g = new graph();
 $g->bg_colour = '0xFFFFFF';
-$g->x_axis_colour = '0x000000';
-$g->y_axis_colour = '0x000000';
 $g->x_grid_colour = '0xd8d8d8';
 $g->y_grid_colour = '0xd8d8d8';
 
 $g->title( HEADING_TITLE . ': ' . $report_desc, '{font-size: 18px;}' );
 
-$g->set_data( $data );
+$g->set_data( $data_count );
 $g->line_hollow( 3, 4, '0x0077cc', TEXT_NUMBER_OF_ORDERS, 12 );
+
+$g->set_data( $data_sum );
+$g->line_dot( 3, 4, '0xff9900', TEXT_TOTAL_SUMM, 12 );
+
+//
+// Attach the second data line (Free Ram) to the right axis:
+//
+$g->attach_to_y_right_axis(2);
+//
 
 // label each point with its value
 $g->set_x_labels( $data_date );
+$g->set_x_label_style( 10, '0x000000', 0, 2 );
 
 // set the Y max
-$g->set_y_max( (max($data) / 10) + max($data) );
+$g->set_y_max( (max($data_count) / 10) + max($data_count) );
+$g->set_y_right_max( (max($data_sum) / 10) + max($data_sum) );
 // label every 20 (0,20,40,60)
-$g->y_label_steps( 6 );
+$g->y_label_steps( 4 );
 
 // display the data
 echo $g->render();
