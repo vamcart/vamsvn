@@ -375,7 +375,9 @@ h1.contentBoxHeading {
   padding: 0 0 0 20px; 
   margin: 0.2em 0 0.2em 0; 
 }
-h1.contentBoxHeading a {
+h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
+  font: 16px Tahoma, Verdana, Arial, sans-serif;
+  font-weight: bold;
   color: #990000;
   text-decoration: none;
 }
