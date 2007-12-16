@@ -55,7 +55,6 @@ $data_date[] = $report->info[$i]['text'];
 									
 }
 
-include_once( 'ofc-library/open-flash-chart.php' );
 $g = new graph();
 $g->bg_colour = '0xFFFFFF';
 $g->x_grid_colour = '0xd8d8d8';
