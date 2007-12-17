@@ -169,8 +169,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$check = vam_db_fetch_array($check_query);
 		$entry_state_has_zones = ($check['total'] > 0);
 		if ($entry_state_has_zones == true) {
-			$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".vam_db_input($state)."%' or zone_code like '%".vam_db_input($state)."%')");
-			if (vam_db_num_rows($zone_query) > 1) {
+			$zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and zone_name = '" . vam_db_input($state) . "'");			if (vam_db_num_rows($zone_query) > 1) {
 				$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".vam_db_input($state)."'");
 			}
 			if (vam_db_num_rows($zone_query) >= 1) {
@@ -397,7 +396,7 @@ if (ACCOUNT_STATE == 'true') {
 
 	      } else {
 
-		   $zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".vam_db_input($state)."%' or zone_code like '%".vam_db_input($state)."%')");
+		   $zone = vam_db_query("select distinct zone_id, zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
 
 	      if (vam_db_num_rows($zone) > 0) {
 	          $zone_id = $zone['zone_id'];
