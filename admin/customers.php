@@ -1064,7 +1064,7 @@ if ($error == true) {
 	$search = '';
 	if (($_GET['search']) && (vam_not_null($_GET['search']))) {
 		$keywords = vam_db_input(vam_db_prepare_input($_GET['search']));
-		$search = "and (c.customers_lastname like '%".$keywords."%' or c.customers_firstname like '%".$keywords."%' or c.customers_email_address like '%".$keywords."%')";
+		$search = "and (c.customers_lastname like '%".$keywords."%' or c.customers_firstname like '%".$keywords."%' or c.customers_email_address like '%".$keywords."%' or c.customers_telephone like '%".$keywords."%')";
 	}
 
 	if ($_GET['status'] && $_GET['status'] != '100' or $_GET['status'] == '0') {
