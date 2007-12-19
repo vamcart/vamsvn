@@ -344,7 +344,7 @@ function display_ttc(action, prix, taxe, up){
 									   	<td align="center"><?php
 										 if ($preview_global_price != true) {
 												echo '&nbsp;<input type="submit" class="button" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">';
-										 } else echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '") . '">' . BUTTON_CANCEL . '</a>';?></td>
+										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '") . '">' . BUTTON_CANCEL . '</a>'; } ?></td>
 									 	 <?php if(ACTIVATE_COMMERCIAL_MARGIN == 'true'){ echo '<td align="center">&nbsp;&nbsp;' . vam_draw_checkbox_field('marge','yes','','no') . '&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_MARGE_INFO) . '</td>';}?>
 									 </tr>
 									 <tr>
