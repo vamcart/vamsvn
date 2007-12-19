@@ -321,7 +321,7 @@ function display_ttc(action, prix, taxe, up){
 <td width="100%" valign="top">
   <table class="boxCenter" border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr><td align="center">
-		   <table width="100%" cellspacing="0" cellpadding="0" border="1" bgcolor="#F3F9FB"<tr><td>
+		   <table width="100%" cellspacing="0" cellpadding="0" border="1" bgcolor="#F3F9FB"><tr><td>
 				<table width="100%" cellspacing="0" cellpadding="0" border="0">
 					<tr><td height="5"></td></tr>
 					<tr align="center">
@@ -344,7 +344,7 @@ function display_ttc(action, prix, taxe, up){
 									   	<td align="center"><?php
 										 if ($preview_global_price != true) {
 												echo '&nbsp;<input type="submit" class="button" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">';
-										 } else echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '">' . BUTTON_CANCEL . '</a>';?></td>
+										 } else echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '") . '">' . BUTTON_CANCEL . '</a>';?></td>
 									 	 <?php if(ACTIVATE_COMMERCIAL_MARGIN == 'true'){ echo '<td align="center">&nbsp;&nbsp;' . vam_draw_checkbox_field('marge','yes','','no') . '&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_MARGE_INFO) . '</td>';}?>
 									 </tr>
 									 <tr>
@@ -362,7 +362,7 @@ function display_ttc(action, prix, taxe, up){
 				</table>
 			</td></tr></table>
 			<br />
-		<form name="update" method="POST" action="<?php echo "$PHP_SELF?action=update&page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer&search=$search&search_model_key=$search_model_key"; ?>">
+		<form name="update" method="POST" action="<?php echo vam_href_link(FILENAME_QUICK_UPDATES, 'action=update&'.vam_get_all_get_params()); ?>">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0">
 					<tr align="center">
 						<td>&nbsp;<?php echo WARNING_MESSAGE; ?> </td>
@@ -380,7 +380,7 @@ function display_ttc(action, prix, taxe, up){
 							-->
 							</script>' . "</td>\n";
 						?>
-						<td><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo "$PHP_SELF"; ?>?update&cPath=<?php echo $current_category_id; ?>&page=<?php echo $page; ?>&sort_by=<?php echo $sort_by; ?>&row_by_page=<?php echo $row_by_page; ?>"></td>
+						<td><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo vam_href_link(FILENAME_QUICK_UPDATES, 'action=update&'.vam_get_all_get_params()); ?>"></td>
 					</tr>
 			</table>
 
@@ -624,7 +624,7 @@ function display_ttc(action, prix, taxe, up){
 ?><input type="button" class="button" value="<?=PRINT_TEXT?>" title="<?=PRINT_TEXT?>" onclick="print();" id="box_properties_input">
 </td>
 <td colspan="3">
-<input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo "$PHP_SELF"; ?>?update&cPath=<?php echo $current_category_id; ?>&page=<?php echo $page; ?>&sort_by=<?php echo $sort_by; ?>&row_by_page=<?php echo $row_by_page; ?>">
+<input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo vam_href_link(FILENAME_QUICK_UPDATES, 'action=update&'.vam_get_all_get_params()); ?>">
 </td>
 </tr>
     </table>
