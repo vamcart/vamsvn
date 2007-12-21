@@ -40,7 +40,7 @@ $box_content='';
       while ($products = vam_db_fetch_array($products_query)) {
         $customer_orders_string .= '  <tr>' .
                                    '    <td class="infoBoxContents"><a href="' . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'],$products['products_name'])) . '">' . $products['products_name'] . '</a></td>' .
-                                   '    <td class="infoBoxContents" align="right" valign="top"><a href="' . vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $products['products_id']) . '">' . vam_image(DIR_WS_ICONS . 'cart.gif', ICON_CART) . '</a></td>' .
+                                   '    <td class="infoBoxContents" align="right" valign="top"><a href="' . vam_href_link(basename($_SERVER['PHP_SELF']), vam_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $products['products_id']) . '">' . vam_image(DIR_WS_ICONS . 'cart.gif', ICON_CART) . '</a></td>' .
                                    '  </tr>';
       }
       $customer_orders_string .= '</table>';

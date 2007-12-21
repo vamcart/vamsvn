@@ -167,13 +167,13 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
       $articles_new_count = '';
     }
 
-    if (strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
+    if (strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW) or strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW)) {
       $new_articles_string = '<b>';
     }
 
     $new_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '">' . BOX_NEW_ARTICLES . '</a>';
 
-    if (strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
+    if (strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW) or strstr($_SERVER['PHP_SELF'],FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
     }
 

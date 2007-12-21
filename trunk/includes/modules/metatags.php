@@ -26,7 +26,7 @@
 <meta name="language" content="<?php echo $_SESSION['language_code']; ?>" />
 <?php
 
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_PRODUCT_INFO)) {
 
 	if ($product->isProduct()) {
         $description = $product->data['products_meta_description'];
@@ -218,7 +218,7 @@ $content_meta = vam_db_fetch_array($content_meta_query);
 
 default:
 
-if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_DEFAULT) && !isset($_GET['cat'])) {
 
 $content_meta_default_query = vamDBquery("select cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '5' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
 
