@@ -46,7 +46,7 @@ if (isset ($_GET['action'])) {
 			'pid'
 		);
 	} else {
-		$goto = basename($PHP_SELF);
+		$goto = basename($_SERVER['PHP_SELF']);
 		if ($_GET['action'] == 'buy_now') {
 			$parameters = array (
 				'action',

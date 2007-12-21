@@ -37,7 +37,7 @@
   $module->caching = 0;
   $module= $module->fetch(CURRENT_TEMPLATE.'/module/error_message.html');
 
-  if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO))  $product_info=$module;
+  if (strstr($_SERVER['PHP_SELF'], FILENAME_PRODUCT_INFO))  $product_info=$module;
 
   $vamTemplate->assign('main_content',$module);
 ?>

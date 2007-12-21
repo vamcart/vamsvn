@@ -53,30 +53,30 @@
 // require theme based javascript
 require('templates/'.CURRENT_TEMPLATE.'/javascript/general.js.php');
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_PAYMENT)) {
  echo $payment_modules->javascript_validation();
 }
 
-if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CREATE_ACCOUNT)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 
 
-if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CREATE_GUEST_ACCOUNT )) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 }
-if (strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_PASSWORD )) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 }
-if (strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_EDIT )) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 }
-if (strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_ADDRESS_BOOK_PROCESS )) {
   if (isset($_GET['delete']) == false) {
     include(DIR_WS_INCLUDES.'form_check.js.php');
   }
   }
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($PHP_SELF,FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($_SERVER['PHP_SELF'],FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 ?>
 <script type="text/javascript"><!--
@@ -97,7 +97,7 @@ function check_form_optional(form_name) {
 <?php
 }
 
-if (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_ADVANCED_SEARCH )) {
 ?>
 <script type="text/javascript" src="includes/general.js"></script>
 <script type="text/javascript"><!--
@@ -161,7 +161,7 @@ function popupWindow(url) {
 <?php
 }
 
-if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_PRODUCT_REVIEWS_WRITE )) {
 ?>
 
 <script type="text/javascript"><!--
@@ -191,7 +191,7 @@ function checkForm() {
 //--></script>
 <?php
 }
-if (strstr($PHP_SELF, FILENAME_POPUP_IMAGE )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_POPUP_IMAGE )) {
 ?>
 
 <script type="text/javascript"><!--
@@ -208,13 +208,13 @@ function resize() {
 ?>
 </head>
 <?php
-if (strstr($PHP_SELF, FILENAME_POPUP_IMAGE )) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_POPUP_IMAGE )) {
 echo '<body onload="resize();"> ';
 } else {
 echo '<body>';
 }
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 
@@ -308,27 +308,27 @@ $vamTemplate->assign('error','
 
 // Метки для закладок
 
-if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_DEFAULT)) {
 $vamTemplate->assign('1',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT) or strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_EDIT) or strstr($_SERVER['PHP_SELF'], FILENAME_ADDRESS_BOOK)or strstr($_SERVER['PHP_SELF'], FILENAME_ADDRESS_BOOK_PROCESS) or strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_HISTORY) or strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_HISTORY_INFO) or strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_PASSWORD) or strstr($_SERVER['PHP_SELF'], FILENAME_NEWSLETTER)) {
 $vamTemplate->assign('2',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_SHOPPING_CART)) {
 $vamTemplate->assign('3',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_SHIPPING) or strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_PAYMENT) or strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_CONFIRMATION) or strstr($_SERVER['PHP_SELF'], FILENAME_CHECKOUT_SUCCESS)) {
 $vamTemplate->assign('4',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_LOGOFF)) {
 $vamTemplate->assign('5',' class="current"');
 }
 
-if (strstr($PHP_SELF, FILENAME_LOGIN)) {
+if (strstr($_SERVER['PHP_SELF'], FILENAME_LOGIN)) {
 $vamTemplate->assign('6',' class="current"');
 }
 

@@ -24,8 +24,8 @@
   function vam_redirect($url) {
 
 if (AJAX_CART == 'true') {
-  global $_GET, $PHP_SELF, $_RESULT;
-    if ( strpos( basename($PHP_SELF), 'ajax_shopping_cart.php')!==FALSE ) {
+  global $_GET, $_SERVER['PHP_SELF'], $_RESULT;
+    if ( strpos( basename($_SERVER['PHP_SELF']), 'ajax_shopping_cart.php')!==FALSE ) {
       if ( $url == vam_href_link(FILENAME_SSL_CHECK) ||
            $url == vam_href_link(FILENAME_LOGIN) ||
            $url == vam_href_link(FILENAME_COOKIE_USAGE) ||

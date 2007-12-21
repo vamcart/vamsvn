@@ -24,7 +24,7 @@ if (!function_exists('vam_date_long')) {
 
 $module = new vamTemplate;
 
-if (!strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO)) {
+if (!strstr($_SERVER['PHP_SELF'], FILENAME_ACCOUNT_HISTORY_INFO)) {
 	// Get last order id for checkout_success
 	$orders_query = vam_db_query("select orders_id, orders_status from ".TABLE_ORDERS." where customers_id = '".$_SESSION['customer_id']."' order by orders_id desc limit 1");
 	$orders = vam_db_fetch_array($orders_query);
