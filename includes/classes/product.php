@@ -359,15 +359,15 @@ class product {
 	
 	// beta
 	function getBuyNowButton($id, $name) {
-		global $_SERVER['PHP_SELF'];
-		return '<a href="'.vam_href_link(basename($_SERVER['PHP_SELF']), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image_button('button_buy_now.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
+		global $PHP_SELF;
+		return '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image_button('button_buy_now.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
 
 	}
 
 	// beta
 	function getBuyNowButtonNew($id, $name) {
-		global $_SERVER['PHP_SELF'];
-		return '<a href="'.vam_href_link(basename($_SERVER['PHP_SELF']), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
+		global $PHP_SELF;
+		return '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
 
 	}
 

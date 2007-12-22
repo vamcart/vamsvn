@@ -30,11 +30,11 @@
     }
 
     function add_current_page() {
-      global $_SERVER['PHP_SELF'], $cPath;
+      global $PHP_SELF, $cPath;
 
       $set = 'true';
       for ($i=0, $n=sizeof($this->path); $i<$n; $i++) {
-        if ( ($this->path[$i]['page'] == basename($_SERVER['PHP_SELF'])) ) {
+        if ( ($this->path[$i]['page'] == basename($PHP_SELF)) ) {
           if (isset($cPath)) {
             if (!isset($this->path[$i]['get']['cPath'])) {
               continue;
@@ -65,7 +65,7 @@
       }
 
       if ($set == 'true') {
-        $this->path[] = array('page' => basename($_SERVER['PHP_SELF']),
+        $this->path[] = array('page' => basename($PHP_SELF),
                               'mode' => (($_SERVER['HTTPS'] == 'on') ? 'SSL' : 'NONSSL'),
                               'get' => $_GET,
                               'post' => $_POST);
@@ -73,16 +73,16 @@
     }
 
     function remove_current_page() {
-      global $_SERVER['PHP_SELF'];
+      global $PHP_SELF;
 
       $last_entry_position = sizeof($this->path) - 1;
-      if ($this->path[$last_entry_position]['page'] == basename($_SERVER['PHP_SELF'])) {
+      if ($this->path[$last_entry_position]['page'] == basename($PHP_SELF)) {
         unset($this->path[$last_entry_position]);
       }
     }
 
     function set_snapshot($page = '') {
-      global $_SERVER['PHP_SELF'];
+      global $PHP_SELF;
 
       if (is_array($page)) {
         $this->snapshot = array('page' => $page['page'],
@@ -90,7 +90,7 @@
                                 'get' => $page['get'],
                                 'post' => $page['post']);
       } else {
-        $this->snapshot = array('page' => basename($_SERVER['PHP_SELF']),
+        $this->snapshot = array('page' => basename($PHP_SELF),
                                 'mode' => (($_SERVER['HTTPS'] == 'on') ? 'SSL' : 'NONSSL'),
                                 'get' => $_GET,
                                 'post' => $_POST);

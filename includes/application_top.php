@@ -56,7 +56,7 @@ define('PROJECT_VERSION', 'VaM Shop 1.37');
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
 
 // set php_self in the local scope
-$_SERVER['PHP_SELF'] = $_SERVER['PHP_SELF'];
+$PHP_SELF = $_SERVER['PHP_SELF'];
 
 // include the list of project filenames
 require (DIR_WS_INCLUDES.'filenames.php');
@@ -212,7 +212,7 @@ if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded = extension_loaded('zlib')
 if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
 	if (strlen(getenv('PATH_INFO')) > 1) {
 		$GET_array = array ();
-		$_SERVER['PHP_SELF'] = str_replace(getenv('PATH_INFO'), '', $_SERVER['PHP_SELF']);
+		 $PHP_SELF = str_replace(getenv('PATH_INFO'), '', $_SERVER['PHP_SELF']);
 		$vars = explode('/', substr(getenv('PATH_INFO'), 1));
 		for ($i = 0, $n = sizeof($vars); $i < $n; $i ++) {
 			if (strpos($vars[$i], '[]')) {

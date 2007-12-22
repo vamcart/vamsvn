@@ -25,7 +25,7 @@
   require(DIR_WS_BOXES . 'add_a_quickie.php');
   }
   require(DIR_WS_BOXES . 'last_viewed.php');
-   if (substr(basename($_SERVER['PHP_SELF']), 0,8) != 'advanced') {require(DIR_WS_BOXES . 'whats_new.php'); }
+   if (substr(basename($PHP_SELF), 0,8) != 'advanced') {require(DIR_WS_BOXES . 'whats_new.php'); }
   require(DIR_WS_BOXES . 'search.php');
   require(DIR_WS_BOXES . 'content.php');
   require(DIR_WS_BOXES . 'information.php');
@@ -54,7 +54,7 @@
 
   if ($_SESSION['customers_status']['customers_status_read_reviews'] == 1) require(DIR_WS_BOXES . 'reviews.php');
 
-  if (substr(basename($_SERVER['PHP_SELF']), 0, 8) != 'checkout') {
+  if (substr(basename($PHP_SELF), 0, 8) != 'checkout') {
 
     include(DIR_WS_BOXES . 'currencies.php');
   }

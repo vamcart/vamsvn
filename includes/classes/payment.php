@@ -38,14 +38,14 @@
 
     // class constructor
     function payment($module = '') {
-      global $_SERVER['PHP_SELF'],$order;
+      global $PHP_SELF,$order;
 
       if (defined('MODULE_PAYMENT_INSTALLED') && vam_not_null(MODULE_PAYMENT_INSTALLED)) {
         $this->modules = explode(';', MODULE_PAYMENT_INSTALLED);
 
         $include_modules = array();
 
-        if ( (vam_not_null($module)) && (in_array($module . '.' . substr($_SERVER['PHP_SELF'], (strrpos($_SERVER['PHP_SELF'], '.')+1)), $this->modules)) ) {
+        if ( (vam_not_null($module)) && (in_array($module . '.' . substr($PHP_SELF, (strrpos($PHP_SELF, '.')+1)), $this->modules)) ) {
           $this->selected_module = $module;
 
           $include_modules[] = array('class' => $module, 'file' => $module . '.php');
