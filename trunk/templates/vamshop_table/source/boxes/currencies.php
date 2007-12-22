@@ -48,7 +48,7 @@
   $box = new vamTemplate;
   $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $box_content='';
-  $box_content=vam_draw_form('currencies', vam_href_link(basename($PHP_SELF), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onChange="this.form.submit();" style="width: 100%"') . $hidden_get_variables . vam_hide_session_id().'</form>';
+  $box_content=vam_draw_form('currencies', vam_href_link(basename($_SERVER['SCRIPT_NAME']), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onChange="this.form.submit();" style="width: 100%"') . $hidden_get_variables . vam_hide_session_id().'</form>';
 
 
   $box->assign('BOX_CONTENT', $box_content);
