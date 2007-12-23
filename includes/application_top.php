@@ -56,7 +56,7 @@ define('PROJECT_VERSION', 'VaM Shop 1.37');
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
 
 // set php_self in the local scope
-$PHP_SELF = $_SERVER['PHP_SELF'];
+if (!isset($PHP_SELF)) $PHP_SELF = $_SERVER['PHP_SELF'];
 
 // include the list of project filenames
 require (DIR_WS_INCLUDES.'filenames.php');
