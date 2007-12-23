@@ -165,7 +165,7 @@ switch ($_GET['action']) {
               $current_group = @mysql_result($acc_query, "customers_status_name");
                                                                                                                                                                                                  
               // ok, looking for available group
-              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount < " . $current_discount . " and customers_status_accumulated_limit > " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount > " . $current_discount . " and customers_status_accumulated_limit > " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
 
               if (vam_db_num_rows($groups_query)) {
                  // new group found
