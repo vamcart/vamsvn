@@ -281,7 +281,7 @@ foreach (array('product_info', 'product_options') as $key) {
         <table border="0" class="main">
           <?php include(DIR_WS_MODULES.'group_prices.php'); ?>
           <tr>
-            <td colspan="4"><? echo vam_draw_separator('pixel_black.gif', '100%', '1'); ?></td>
+            <td colspan="4"><?php echo vam_draw_separator('pixel_black.gif', '100%', '1'); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_VPE_VISIBLE; ?></td>

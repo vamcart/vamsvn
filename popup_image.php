@@ -66,7 +66,7 @@ if ($mo_images != false) {
 var i=0;
 function resize() {
   if (navigator.appName == 'Netscape') i=40;
-  window.resizeTo(<? echo $size[0] ?> +105, <? echo $size[1] + $bheight ?>+150+i);
+  window.resizeTo(<?php echo $size[0] ?> +105, <?php echo $size[1] + $bheight ?>+150+i);
   self.focus();
 }
 //--></script>

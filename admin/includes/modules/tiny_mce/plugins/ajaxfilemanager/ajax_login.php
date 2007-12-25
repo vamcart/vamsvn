@@ -24,8 +24,8 @@ if(isset($_POST['username']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" href="theme/<?=CONFIG_THEME_NAME; ?>/css/login.css" rel="stylesheet" />
-<title><?=LOGIN_PAGE_TITLE; ?></title>
+<link type="text/css" href="theme/<?php echo CONFIG_THEME_NAME; ?>/css/login.css" rel="stylesheet" />
+<title><?php echo LOGIN_PAGE_TITLE; ?></title>
 </head>
 <body>
 <div id="container">
@@ -34,16 +34,16 @@ if(isset($_POST['username']))
 			    <table class="adminLoginTable" cellpadding="0" cellspacing="0">
 			        <thead>
 			            <tr>
-			                <th colspan="2"><?=LOGIN_FORM_TITLE; ?></th>
+			                <th colspan="2"><?php echo LOGIN_FORM_TITLE; ?></th>
 			            </tr>
 			        </thead>
 			        <tbody>
 			            <tr>
-			                <th class="padTop"><label><?=LOGIN_USERNAME; ?> </label></th>
+			                <th class="padTop"><label><?php echo LOGIN_USERNAME; ?> </label></th>
 			                <td class="padTop"><input type="text" value="" class="input" name="username" id="username" /></td>
 			            </tr>
 			            <tr>
-			                <th><label><?=LOGIN_PASSWORD; ?> </label></th>
+			                <th><label><?php echo LOGIN_PASSWORD; ?> </label></th>
 			                <td><input type="password" value="" class="input" name="password" id="password" /></td>
 			            </tr>
 			        </tbody>
