@@ -58,4 +58,8 @@ define('ENTRY_NEW_PASSWORD','Новый пароль:');
 
 define('TEXT_INFO_ORIGINAL_REFERER', 'Реферер:');
 
+define('SHIPPING_FLAT','Курьерская доставка');
+define('ORDER_TOTAL','<b>Всего:</b>');
+define('ORDER_SUBTOTAL','<b>Стоимость товара:</b>');
+
 ?>
