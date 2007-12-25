@@ -621,7 +621,7 @@ function display_ttc(action, prix, taxe, up){
 <?php
 		 //// display bottom page buttons
     echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties">' . BUTTON_CANCEL . '</a> ';
-?><input type="button" class="button" value="<?=PRINT_TEXT?>" title="<?=PRINT_TEXT?>" onclick="print();" id="box_properties_input">
+?><input type="button" class="button" value="<?php echo PRINT_TEXT?>" title="<?php echo PRINT_TEXT?>" onclick="print();" id="box_properties_input">
 </td>
 <td colspan="3">
 <input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo vam_href_link(FILENAME_QUICK_UPDATES, 'action=update&'.vam_get_all_get_params()); ?>">
