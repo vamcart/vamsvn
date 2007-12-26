@@ -540,4 +540,12 @@ define('TEXT_FIRST_REVIEW','Ваш отзыв может быть первым.'
 define('TEXT_PHP_MAILER_ERROR','Не удалось отправить email.<br />');
 define('TEXT_PHP_MAILER_ERROR1','Ошибка: ');
 
+define('BOX_TEXT_DOWNLOAD', 'Ваши загрузки: ');
+define('BOX_TEXT_DOWNLOAD_NOW', 'Загрузить');
+
+define('TABLE_HEADING_DOWNLOAD_DATE','Ссылка активна до: ');
+define('TABLE_HEADING_DOWNLOAD_COUNT','Осталось загрузок: ');
+define('TEXT_FOOTER_DOWNLOAD','Все доступные загрузки также можно найти в ');
+define('TEXT_DOWNLOAD_MY_ACCOUNT','Истории заказов');
+
 ?>

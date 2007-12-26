@@ -59,5 +59,7 @@
     include(DIR_WS_BOXES . 'currencies.php');
   }
 
+  include(DIR_WS_BOXES . 'download.php');
+
 $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 ?>
