@@ -740,4 +740,9 @@ define('YML_REF_ID_DESC','Добавить в адрес товара парам
 define('YML_REF_IP_TITLE','Ссылка на IP');
 define('YML_REF_IP_DESC','Добавить в адрес товара параметр ref_ip с адресом ip агента, запрашивающего yml.');
 
+define('SESSION_TIMEOUT_ADMIN_TITLE','Сессия администратора');
+define('SESSION_TIMEOUT_ADMIN_DESC','Время жизни сессии администратора (секунд).');
+define('SESSION_TIMEOUT_CATALOG_TITLE','Сессия покупателя');
+define('SESSION_TIMEOUT_CATALOG_DESC','Время жизни сессии покупателя (секунд).');
+
 ?>
