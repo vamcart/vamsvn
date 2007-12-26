@@ -17,10 +17,8 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
+
   if (STORE_SESSIONS == 'mysql') {
-    if (!$SESS_LIFE = get_cfg_var('session.gc_maxlifetime')) {
-      $SESS_LIFE = 1440;
-    }
 
     function _sess_open($save_path, $session_name) {
       return true;
@@ -42,9 +40,8 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function _sess_write($key, $val) {
-      global $SESS_LIFE;
 
-      $expiry = time() + $SESS_LIFE;
+      $expiry = time() + SESSION_TIMEOUT_ADMIN;
       $value = addslashes($val);
 
       $qid = vam_db_query("select count(*) as total from " . TABLE_SESSIONS . " where sesskey = '" . $key . "'");
@@ -71,6 +68,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   }
 
   function vam_session_start() {
+	@ini_set('session.gc_maxlifetime', SESSION_TIMEOUT_ADMIN);
     return session_start();
   }
 
