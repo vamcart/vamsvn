@@ -463,4 +463,7 @@ define('TEXT_SUMMARY_NEWS','Новости');
 
 define('BOX_SALES_REPORT2','Статистика продаж 2');
 
+define('TEXT_PHP_MAILER_ERROR','Не удалось отправить email.<br />');
+define('TEXT_PHP_MAILER_ERROR1','Ошибка: ');
+
 ?>
