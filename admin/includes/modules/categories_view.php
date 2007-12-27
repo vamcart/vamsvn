@@ -137,32 +137,29 @@
                 <?php echo TABLE_HEADING_EDIT; ?>
                 <input type="checkbox" onClick="javascript:CheckAll(this.checked);">
              </td>
-             <td class="dataTableHeadingContent" align="center" width="7%">
-                <?php echo TABLE_HEADING_SORT.vam_sorting(FILENAME_CATEGORIES,'sort'); ?>
-             </td>
              <td class="dataTableHeadingContent" align="center" width="30%">
                 <?php echo TABLE_HEADING_CATEGORIES_PRODUCTS.vam_sorting(FILENAME_CATEGORIES,'name'); ?>
              </td>
              <?php
              // check Produkt and attributes stock
              if (STOCK_CHECK == 'true') {
-                    echo '<td class="dataTableHeadingContent" align="center" width="20%">' . TABLE_HEADING_STOCK . vam_sorting(FILENAME_CATEGORIES,'stock') . '</td>';
+                    echo '<td class="dataTableHeadingContent" align="center" width="10%">' . TABLE_HEADING_STOCK . vam_sorting(FILENAME_CATEGORIES,'stock') . '</td>';
              }
              ?>
-             <td class="dataTableHeadingContent" align="center" width="7%">
+             <td class="dataTableHeadingContent" align="center" width="8%">
                 <?php echo TABLE_HEADING_STATUS.vam_sorting(FILENAME_CATEGORIES,'status'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="7%">
+             <td class="dataTableHeadingContent" align="center" width="15%">
                 <?php echo TABLE_HEADING_STARTPAGE.vam_sorting(FILENAME_CATEGORIES,'startpage'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="7%">
+             <td class="dataTableHeadingContent" align="center" width="8%">
                 <?php echo TABLE_HEADING_XML.vam_sorting(FILENAME_CATEGORIES,'yandex'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="10%">
+             <td class="dataTableHeadingContent" align="center" width="8%">
                 <?php echo TABLE_HEADING_PRICE.vam_sorting(FILENAME_CATEGORIES,'price'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="10%">
-                <?php echo TABLE_HEADING_MAX_DISCOUNT . vam_sorting(FILENAME_CATEGORIES,'discount'); ?>
+             <td class="dataTableHeadingContent" align="center" width="8%">
+                <?php echo TABLE_HEADING_SORT.vam_sorting(FILENAME_CATEGORIES,'sort'); ?>
              </td>
              <td class="dataTableHeadingContent" width="10%" align="center">
                 <?php echo TABLE_HEADING_ACTION; ?>
@@ -210,7 +207,6 @@
         }
     ?>              
              <td class="categories_view_data"><input type="checkbox" name="multi_categories[]" value="<?php echo $categories['categories_id'] . '" '; if (is_array($_POST['multi_categories'])) { if (in_array($categories['categories_id'], $_POST['multi_categories'])) { echo 'checked="checked"'; } } ?>></td>
-             <td class="categories_view_data"><?php echo $categories['sort_order']; ?></td>
              <td class="categories_view_data" style="text-align: left; padding-left: 5px;">
              <?php 
                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . vam_get_path($categories['categories_id'])) . '">' . vam_image(DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '<a>&nbsp;<b><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id']) .'">' . $categories['categories_name'] . '</a></b>'; 
@@ -237,7 +233,7 @@
              <td class="categories_view_data">--</td>
              <td class="categories_view_data">--</td>
              <td class="categories_view_data">--</td>
-             <td class="categories_view_data">--</td>
+             <td class="categories_view_data"><?php echo $categories['sort_order']; ?></td>
              <td class="categories_view_data">
              <?php
 
@@ -445,15 +441,6 @@ if ($numr>$max_count){
       <td class="categories_view_data">        
         <input type="checkbox" name="multi_products[]" value="<?php echo $products['products_id']; ?>" <?php echo $is_checked; ?>>
       </td>
-      <td class="categories_view_data">
-        <?php 
-        if ($current_category_id == 0){
-        echo $products['products_startpage_sort'];
-        } else {
-        echo $products['products_sort'];
-        }
-         ?>
-      </td>
       <td class="categories_view_data" style="text-align: left; padding-left: 8px;">
         <?php echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id'] ) . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '&nbsp;</a><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) .'">' . $products['products_name']; ?></a>
       </td>          
@@ -498,10 +485,13 @@ if ($numr>$max_count){
       ?>
       </td>
       <td class="categories_view_data">
-      <?php
-        // Show Max Allowed discount
-        echo $products['products_discount_allowed'] . '%';
-      ?>
+        <?php 
+        if ($current_category_id == 0){
+        echo $products['products_startpage_sort'];
+        } else {
+        echo $products['products_sort'];
+        }
+         ?>
       </td>
       <td class="categories_view_data">
       <?php 
