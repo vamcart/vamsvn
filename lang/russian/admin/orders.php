@@ -136,4 +136,14 @@ define('TEXT_ORDER_PAYMENT','Оплата / Доставка');
 define('TEXT_ORDER_PRODUCTS','Товары');
 define('TEXT_ORDER_STATUS','Статус');
 
+define('BUS_HEADING_TITLE','Смена статуса');
+define('BUS_TEXT_NEW_STATUS', 'Выберите новый статус');
+define('BUS_NOTIFY_CUSTOMERS', 'Уведомить покупателя (ей)');
+define('BUS_ORDER','Заказ номер ');
+define('BUS_SUCCESS','обновлён!');
+define('BUS_WARNING','не обновлён!');
+define('BUS_DELETE_SUCCESS','удалён!');
+define('BUS_DELETE_WARNING','не удалён!');
+define('BUS_DELETE_ORDERS','Удалить выбранные заказы');
+
 ?>
