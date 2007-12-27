@@ -101,7 +101,7 @@ switch ($_GET['action']) {
 <?php
 
 $campaigns_query_raw = "select * from ".TABLE_CAMPAIGNS." order by campaigns_name";
-$campaigns_split = new splitPageResults($_GET['page'], '20', $campaigns_query_raw, $campaigns_query_numrows);
+$campaigns_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $campaigns_query_raw, $campaigns_query_numrows);
 $campaigns_query = vam_db_query($campaigns_query_raw);
 while ($campaigns = vam_db_fetch_array($campaigns_query)) {
 	if (((!$_GET['cID']) || (@ $_GET['cID'] == $campaigns['campaigns_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
@@ -124,8 +124,8 @@ while ($campaigns = vam_db_fetch_array($campaigns_query)) {
               <tr>
                 <td colspan="2"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
-                    <td class="smallText" valign="top"><?php echo $campaigns_split->display_count($campaigns_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS); ?></td>
-                    <td class="smallText" align="right"><?php echo $campaigns_split->display_links($campaigns_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
+                    <td class="smallText" valign="top"><?php echo $campaigns_split->display_count($campaigns_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_CAMPAIGNS); ?></td>
+                    <td class="smallText" align="right"><?php echo $campaigns_split->display_links($campaigns_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
                 </table></td>
               </tr>
