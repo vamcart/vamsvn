@@ -40,7 +40,7 @@ define('HEADING_TITLE_SEARCH', 'Поиск по номеру заказа');
 define('HEADING_TITLE_STATUS', 'Статус:');
 
 define('TABLE_HEADING_COMMENTS', 'Комментарий');
-define('TABLE_HEADING_CUSTOMERS', 'Клиенты');
+define('TABLE_HEADING_CUSTOMER', 'Покупатель');
 define('TABLE_HEADING_ORDER_TOTAL', 'Сумма заказа');
 define('TABLE_HEADING_DATE_PURCHASED', 'Дата покупки');
 define('TABLE_HEADING_STATUS', 'Состояние');
