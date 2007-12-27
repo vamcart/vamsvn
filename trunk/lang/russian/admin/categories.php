@@ -26,10 +26,10 @@ define('TABLE_HEADING_ID', 'ID код');
 define('TABLE_HEADING_CATEGORIES_PRODUCTS', 'Категории / Товары');
 define('TABLE_HEADING_ACTION', 'Действие');
 define('TABLE_HEADING_STATUS', 'Статус');
-define('TABLE_HEADING_STARTPAGE', 'Показывать на главной');
-define('TABLE_HEADING_STOCK','Количество на складе');
+define('TABLE_HEADING_STARTPAGE', 'На главной');
+define('TABLE_HEADING_STOCK','Склад');
 define('TABLE_HEADING_SORT','Порядок');
-define('TABLE_HEADING_EDIT','Выделить всё');
+define('TABLE_HEADING_EDIT','');
 
 define('TEXT_ACTIVE_ELEMENT','Активный элемент');
 define('TEXT_INFORMATIONS','Информация');
