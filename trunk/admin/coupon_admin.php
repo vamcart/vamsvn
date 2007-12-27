@@ -238,7 +238,7 @@
               </tr>
 <?php
     $cc_query_raw = "select * from " . TABLE_COUPON_REDEEM_TRACK . " where coupon_id = '" . $_GET['cid'] . "'";
-    $cc_split = new splitPageResults($_GET['page'], '20', $cc_query_raw, $cc_query_numrows);
+    $cc_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $cc_query_raw, $cc_query_numrows);
     $cc_query = vam_db_query($cc_query_raw);
     while ($cc_list = vam_db_fetch_array($cc_query)) {
       $rows++;
@@ -759,7 +759,7 @@ $customer = vam_db_fetch_array($customer_query);
     } else {
       $cc_query_raw = "select coupon_id, coupon_code, coupon_amount, coupon_type, coupon_start_date,coupon_expire_date,uses_per_user,uses_per_coupon,restrict_to_products, restrict_to_categories, date_created,date_modified from " . TABLE_COUPONS . " where coupon_type != 'G'";
     }
-    $cc_split = new splitPageResults($_GET['page'], '20', $cc_query_raw, $cc_query_numrows);
+    $cc_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $cc_query_raw, $cc_query_numrows);
     $cc_query = vam_db_query($cc_query_raw);
     while ($cc_list = vam_db_fetch_array($cc_query)) {
       $rows++;
@@ -799,8 +799,8 @@ $customer = vam_db_fetch_array($customer_query);
             <td colspan="5"><table border="0" width="100%" cellspacing="0" cellpadding="2">
             <?php if (is_object($cc_split)) { ?>
               <tr>
-                <td class="smallText">&nbsp;<?php echo $cc_split->display_count($cc_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_COUPONS); ?>&nbsp;</td>
-                <td align="right" class="smallText">&nbsp;<?php echo $cc_split->display_links($cc_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?>&nbsp;</td>
+                <td class="smallText">&nbsp;<?php echo $cc_split->display_count($cc_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_COUPONS); ?>&nbsp;</td>
+                <td align="right" class="smallText">&nbsp;<?php echo $cc_split->display_links($cc_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?>&nbsp;</td>
               </tr>
             <?php } ?>
               <tr>

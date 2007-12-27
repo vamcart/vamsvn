@@ -96,7 +96,7 @@
               </tr>
 <?php
   $countries_query_raw = "select countries_id, countries_name, countries_iso_code_2, countries_iso_code_3, status, address_format_id from " . TABLE_COUNTRIES . " order by countries_name";
-  $countries_split = new splitPageResults($_GET['page'], '20', $countries_query_raw, $countries_query_numrows);
+  $countries_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $countries_query_raw, $countries_query_numrows);
   $countries_query = vam_db_query($countries_query_raw);
   while ($countries = vam_db_fetch_array($countries_query)) {
     if (((!$_GET['cID']) || (@$_GET['cID'] == $countries['countries_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
@@ -129,8 +129,8 @@
               <tr>
                 <td colspan="5"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
-                    <td class="smallText" valign="top"><?php echo $countries_split->display_count($countries_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_COUNTRIES); ?></td>
-                    <td class="smallText" align="right"><?php echo $countries_split->display_links($countries_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
+                    <td class="smallText" valign="top"><?php echo $countries_split->display_count($countries_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_COUNTRIES); ?></td>
+                    <td class="smallText" align="right"><?php echo $countries_split->display_links($countries_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
 <?php
   if (!$_GET['action']) {

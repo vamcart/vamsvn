@@ -27,7 +27,7 @@
   $search = $_GET['search'];
   $search_model_key = $_GET['search_model_key'];
   
- ($row_by_page) ? define('MAX_DISPLAY_ROW_BY_PAGE' , $row_by_page ) : $row_by_page = MAX_DISPLAY_SEARCH_RESULTS; define('MAX_DISPLAY_ROW_BY_PAGE' , MAX_DISPLAY_SEARCH_RESULTS );
+ ($row_by_page) ? define('MAX_DISPLAY_ROW_BY_PAGE' , $row_by_page ) : $row_by_page = MAX_DISPLAY_ADMIN_PAGE; define('MAX_DISPLAY_ROW_BY_PAGE' , MAX_DISPLAY_ADMIN_PAGE );
 
 //// Tax Row
     $tax_class_array = array(array('id' => '0', 'text' => NO_TAX_TEXT));

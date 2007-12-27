@@ -176,7 +176,7 @@
               </tr>
 <?php
     $featured_query_raw = "select p.products_id, pd.products_name,p.products_tax_class_id, p.products_price, f.featured_id, f.featured_date_added, f.featured_last_modified, f.expires_date, f.date_status_change, f.status from " . TABLE_PRODUCTS . " p, " . TABLE_FEATURED . " f, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = f.products_id order by pd.products_name";
-    $featured_split = new splitPageResults($_GET['page'], '20', $featured_query_raw, $featured_query_numrows);
+    $featured_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $featured_query_raw, $featured_query_numrows);
     $featured_query = vam_db_query($featured_query_raw);
     while ($featured = vam_db_fetch_array($featured_query)) {
 
@@ -210,8 +210,8 @@
               <tr>
                 <td colspan="4"><table border="0" width="100%" cellpadding="0"cellspacing="2">
                   <tr>
-                    <td class="smallText" valign="top"><?php echo $featured_split->display_count($featured_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_FEATURED); ?></td>
-                    <td class="smallText" align="right"><?php echo $featured_split->display_links($featured_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
+                    <td class="smallText" valign="top"><?php echo $featured_split->display_count($featured_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_FEATURED); ?></td>
+                    <td class="smallText" align="right"><?php echo $featured_split->display_links($featured_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
 <?php
   if (!$_GET['action']) {

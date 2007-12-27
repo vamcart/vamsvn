@@ -121,7 +121,7 @@
               </tr>
 <?php
   $products_vpe_query_raw = "select products_vpe_id, products_vpe_name from " . TABLE_PRODUCTS_VPE . " where language_id = '" . $_SESSION['languages_id'] . "' order by products_vpe_id";
-  $products_vpe_split = new splitPageResults($_GET['page'], '20', $products_vpe_query_raw, $products_vpe_query_numrows);
+  $products_vpe_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $products_vpe_query_raw, $products_vpe_query_numrows);
   $products_vpe_query = vam_db_query($products_vpe_query_raw);
   while ($products_vpe = vam_db_fetch_array($products_vpe_query)) {
     if (((!$_GET['oID']) || ($_GET['oID'] == $products_vpe['products_vpe_id'])) && (!$oInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
@@ -148,8 +148,8 @@
               <tr>
                 <td colspan="2"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
-                    <td class="smallText" valign="top"><?php echo $products_vpe_split->display_count($products_vpe_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_PRODUCTS_VPE); ?></td>
-                    <td class="smallText" align="right"><?php echo $products_vpe_split->display_links($products_vpe_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
+                    <td class="smallText" valign="top"><?php echo $products_vpe_split->display_count($products_vpe_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_PRODUCTS_VPE); ?></td>
+                    <td class="smallText" align="right"><?php echo $products_vpe_split->display_links($products_vpe_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
 <?php
   if (substr($_GET['action'], 0, 3) != 'new') {
