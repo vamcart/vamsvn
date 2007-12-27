@@ -18,7 +18,7 @@
    --------------------------------------------------------------*/
 
 // buttons
-define('BUTTON_REVERSE_SELECTION', 'Отметить всё/Снять отметку');
+define('BUTTON_REVERSE_SELECTION', 'Отметить все/Снять отметку');
 define('BUTTON_SWITCH_PRODUCTS', 'Только товары');
 define('BUTTON_SWITCH_CATEGORIES', 'Только категории');
 define('BUTTON_NEW_CATEGORIES', 'Новая категория');
@@ -76,5 +76,6 @@ define('BUTTON_DETAILS', 'Настроить');
 define('BUTTON_NEW_TAX_CLASS', 'Новый налог');
 define('BUTTON_NEW_TAX_RATE', 'Новая ставка налога');
 define('BUTTON_SEND', 'Отправить');
+define('BUTTON_SUBMIT', 'Обновить');
 
 ?>

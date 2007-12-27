@@ -39,7 +39,6 @@ $vamTemplate = new vamTemplate;
 require (DIR_WS_CLASSES.'currencies.php');
 $currencies = new currencies();
 
-
 if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($_GET['oID'])) {
 	$oID = vam_db_prepare_input($_GET['oID']);
 
@@ -79,6 +78,87 @@ while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
 	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
 }
+
+// Start Batch Update Status v0.4
+if (isset($_POST['submit'])){
+ if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['new_status']))&&(!isset($_POST['delete_orders']))){ // Fair enough, let's update ;)
+  $status = vam_db_prepare_input($_POST['new_status']);
+  if ($status == '') { // New status not selected      vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
+  }
+  foreach ($_POST['multi_orders'] as $this_orderID){
+    $order_updated = false;
+    $check_status_query = vam_db_query("select customers_name, customers_email_address, orders_status, date_purchased from " . TABLE_ORDERS . " where orders_id = '" . (int)$this_orderID . "'");
+    $check_status = vam_db_fetch_array($check_status_query);
+
+    if ($check_status['orders_status'] != $status) {
+       vam_db_query("update " . TABLE_ORDERS . " set orders_status = '" . vam_db_input($status) . "', last_modified = now() where orders_id = '" . (int)$this_orderID . "'");
+       $customer_notified ='0'; 
+          if (isset($_POST['notify'])) {
+            $notify_comments = '';
+
+				// assign language to template for caching
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
+
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$vamTemplate->assign('ORDER_NR', $oID);
+				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$_POST['multi_orders'], 'SSL'));
+				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
+				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
+
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.html');
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.txt');
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_BILLING_SUBJECT, $html_mail, $txt_mail);
+
+            $customer_notified = '1';
+          }
+          vam_db_query("insert into " . TABLE_ORDERS_STATUS_HISTORY . " (orders_id, orders_status_id, date_added, customer_notified, comments) values ('" . (int)$this_orderID . "', '" . vam_db_input($status) . "', now(), '" . vam_db_input($customer_notified) . "', '" . vam_db_input($comments)  . "')");
+          $order_updated = true;
+    }
+        if ($order_updated == true) {
+         $messageStack->add_session(BUS_ORDER . $this_orderID . ' ' . BUS_SUCCESS, 'success');
+        } else {
+          $messageStack->add_session(BUS_ORDER . $this_orderID . ' ' . BUS_WARNING, 'warning');
+        }
+  } // End foreach ID loop
+ }
+
+// /delete orders 
+ 
+ if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['delete_orders']))){ 
+
+  foreach ($_POST['multi_orders'] as $this_orderID){
+
+    $orders_deleted = false;
+
+		  vam_db_query("delete from " . TABLE_ORDERS . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_ORDERS_STATUS_HISTORY . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$this_orderID . "'");
+
+          $orders_deleted = true;
+
+        if ($orders_deleted == true) {
+         $messageStack->add_session(BUS_ORDER . $this_orderID . ' ' . BUS_DELETE_SUCCESS, 'success');
+        } else {
+          $messageStack->add_session(BUS_ORDER . $this_orderID . ' ' . BUS_DELETE_WARNING, 'warning');
+        }
+  } // End foreach ID loop
+ }
+
+// /delete orders 
+
+   vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
+}
+
+// End Batch Update Status v0.4
+
 switch ($_GET['action']) {
 	case 'update_order' :
 		$oID = vam_db_prepare_input($_GET['oID']);
@@ -264,6 +344,8 @@ switch ($_GET['action']) {
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/general.js"></script>
+<script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
 <script type="text/javascript" src="includes/javascript/tabber.js"></script>
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
@@ -775,8 +857,13 @@ elseif ($_GET['action'] == 'custom_action') {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top">
+<?php 
+echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params()); 
+?>
+            <table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
+                <td class="dataTableHeadingContent"><input type="checkbox" onClick="javascript:CheckAll(this.checked);"></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_CUSTOMERS; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_NUMBER; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ORDER_TOTAL; ?></td>
@@ -809,13 +896,15 @@ elseif ($_GET['action'] == 'custom_action') {
 			$oInfo = new objectInfo($orders);
 		}
 
-		if ((is_object($oInfo)) && ($orders['orders_id'] == $oInfo->orders_id)) {
-			echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\''.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'\'">'."\n";
-		} else {
-			echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\''.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID')).'oID='.$orders['orders_id']).'\'">'."\n";
-		}
+        if ( (is_object($oInfo)) && ($orders['orders_id'] == $oInfo->orders_id) ) {
+            echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">' . "\n";
+        } else {
+            echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
+        }
+
 ?>
-                <td class="dataTableContent"><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit') . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;' . $orders['customers_name']; ?></td>
+                <td class="dataTableContent"><input type="checkbox" name="multi_orders[]" value="<?php echo $orders['orders_id'];?>"></td>
+                <td class="dataTableContent"><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit') . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id']) . '">' . $orders['customers_name'] . '</a>'; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $orders['orders_id']; ?></td>
                 <td class="dataTableContent" align="right"><?php echo strip_tags($orders['order_total']); ?></td>
                 <td class="dataTableContent" align="center"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
@@ -836,8 +925,16 @@ elseif ($_GET['action'] == 'custom_action') {
 
 	}
 ?>
+<?php
+echo '<tr class="dataTableContent"><td colspan="7">' . BUS_HEADING_TITLE . ': ' . vam_draw_pull_down_menu('new_status', array_merge(array(array('id' => '', 'text' => BUS_TEXT_NEW_STATUS)), $orders_statuses), '', '') . vam_draw_checkbox_field('notify','1',true) . ' ' . BUS_NOTIFY_CUSTOMERS . '</td></tr>';
+echo '<tr class="dataTableContent" align="left"><td colspan="7" nobr="nobr" align="left">' .
+BUS_DELETE_ORDERS . ': ' . vam_draw_checkbox_field('delete_orders','1') . '</td></tr>';
+echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" align="left">' .
+     '<a class="button" href="javascript:SwitchCheck()" onClick="this.blur()">' . BUTTON_REVERSE_SELECTION . '</a>&nbsp;<input type="submit" name="submit" class="button" onClick="this.blur();" value="' . BUTTON_SUBMIT . '"/></td></tr>';
+?>
+</form>
               <tr>
-                <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="7"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $orders_split->display_count($orders_query_numrows, '20', $_GET['page'], TEXT_DISPLAY_NUMBER_OF_ORDERS); ?></td>
                     <td class="smallText" align="right"><?php echo $orders_split->display_links($orders_query_numrows, '20', MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'oID', 'action'))); ?></td>
