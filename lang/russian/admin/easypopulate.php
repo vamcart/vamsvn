@@ -35,6 +35,8 @@ define('TEXT_SELECT_ONE', 'Выберите файл для импортиров
 define('TEXT_SPLIT_FILE', 'Выберите файл');
 define('EASY_LABEL_CREATE', 'Экспорт:');
 define('EASY_LABEL_IMPORT', 'Импорт:');
+define('EASY_LABEL_EXPORT_CHARSET', 'Кодировка экспортируемого файла: ');
+define('EASY_LABEL_IMPORT_CHARSET', 'Кодировка импортируемого файла: ');
 define('EASY_LABEL_CREATE_SELECT', 'Способ сохранения экспортируемого файла: ');
 define('EASY_LABEL_CREATE_SAVE', 'Сохранить в папке temp на сервере');
 define('EASY_LABEL_SELECT_DOWN', 'Выберите поля для загрузки: ');
