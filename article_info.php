@@ -55,6 +55,8 @@ if ($article_check['total'] > 0) {
 	$vamTemplate->assign('AUTHOR_NAME', $article_info['authors_name']);
 	$vamTemplate->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
 
+include (DIR_WS_MODULES.FILENAME_ARTICLES_XSELL);
+
 
 } else {
 
