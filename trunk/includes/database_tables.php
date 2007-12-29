@@ -98,6 +98,7 @@
   define('TABLE_AUTHORS_INFO', 'authors_info');
   define('TABLE_TOPICS', 'topics');
   define('TABLE_TOPICS_DESCRIPTION', 'topics_description');
+  define('TABLE_ARTICLES_XSELL', 'articles_xsell');
 
   define('TABLE_MONEYBOOKERS','payment_moneybookers');
   define('TABLE_MONEYBOOKERS_COUNTRIES','payment_moneybookers_countries');
