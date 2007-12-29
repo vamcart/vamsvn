@@ -332,6 +332,8 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['authors'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '">' . BOX_ARTICLES_AUTHORS . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '">' . BOX_ARTICLES_XSELL . '</a></li>' . "\n";
+
 ?>
 
 				</ul>

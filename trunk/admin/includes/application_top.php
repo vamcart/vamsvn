@@ -521,6 +521,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   define('FILENAME_ARTICLES', 'articles.php');
   define('FILENAME_ARTICLES_CONFIG', 'articles_config.php');
   define('FILENAME_AUTHORS', 'authors.php');
+  define('FILENAME_ARTICLES_XSELL', 'articles_xsell.php');
 
   define('TABLE_ARTICLES', 'articles');
   define('TABLE_ARTICLES_DESCRIPTION', 'articles_description');
@@ -529,6 +530,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   define('TABLE_AUTHORS_INFO', 'authors_info');
   define('TABLE_TOPICS', 'topics');
   define('TABLE_TOPICS_DESCRIPTION', 'topics_description');
+  define('TABLE_ARTICLES_XSELL', 'articles_xsell');
 
 // include the articles functions
   require(DIR_WS_FUNCTIONS . 'articles.php');
