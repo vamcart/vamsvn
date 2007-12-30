@@ -368,6 +368,8 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES) . '">' . BOX_TOOLS_RECOVER_CART . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_EMAIL_MANAGER) . '">' . BOX_TOOLS_EMAIL_MANAGER . '</a></li>' . "\n";
+
 ?>
 
 				</ul>
