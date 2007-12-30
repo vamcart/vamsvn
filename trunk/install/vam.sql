@@ -5,15 +5,8 @@
 #  http://vamshop.com 
 #  http://vamshop.ru 
 #
-#  Copyright (c) 2006 VaM Shop
+#  Copyright (c) 2007 VaM Shop
 #  -----------------------------------------------------------------------------------------
-#  Third Party Contributions:
-#  Customers status v3.x (c) 2002-2003 Elari elari@free.fr
-#  Download area : www.unlockgsm.com/dload-osc/
-#  CVS : http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/elari/?sortby=date#dirlist
-#  BMC 2003 for the CC CVV Module
-#  qenta v1.0          Andreas Oberzier <xtc@netz-designer.de>
-#  --------------------------------------------------------------
 #  based on:
 #  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
 #  (c) 2002-2003 osCommerce (oscommerce.sql,v 1.83); www.oscommerce.com
@@ -1356,7 +1349,7 @@ CREATE TABLE post_index (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.37');
+INSERT INTO database_version(version) VALUES ('1.38');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
