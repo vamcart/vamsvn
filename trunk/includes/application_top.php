@@ -553,11 +553,11 @@ vam_count_cart();
 
   // get referrer from _SERVER array  ************
 //  Referer ***********
-    if (!vam_session_is_registered('referer')) {
+//    if (!vam_session_is_registered('referer')) {
         $ref = $_SERVER["HTTP_REFERER"];
-         vam_session_register('referer');
+//         vam_session_register('referer');
          $referer =$ref;
-         }
+//         }
            $html_referer = $referer ;
 //***********************
 
