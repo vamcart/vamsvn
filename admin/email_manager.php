@@ -99,6 +99,7 @@ echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' 
 
 <?php } else { ?>
 
+<?php if (isset($_GET['file'])) { ?>
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
@@ -122,6 +123,8 @@ echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' 
 </tr>
 
 </table>
+
+<?php } ?>
 
 <?php } ?>
 
