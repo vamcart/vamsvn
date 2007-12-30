@@ -72,6 +72,11 @@ if ($_GET['action'] == "product_edit") {
 	$sql_data_array = vam_array_merge($sql_data_array, $update_sql_data);
 	vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array, 'update', 'orders_products_id = \''.vam_db_input($_POST['opID']).'\'');
 
+    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
+	products_quantity = products_quantity - " . $_POST['products_quantity'] . ",
+	products_ordered = products_ordered + " . $_POST['products_quantity'] . " 
+	WHERE products_id = '" . $_POST['products_id'] . "'");
+
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
 // Artikel bearbeiten Ende:
@@ -84,7 +89,7 @@ if (0==round($_POST['products_quantity']))
 	{
 		$_POST['products_quantity'] = 1;
 	}
-	
+
 	$status_query = vam_db_query("select customers_status_show_price_tax from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$order->info['status']."'");
 	$status = vam_db_fetch_array($status_query);
 
@@ -103,6 +108,11 @@ if (0==round($_POST['products_quantity']))
 	$insert_sql_data = array ('products_model' => vam_db_prepare_input($product['products_model']));
 	$sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
 	vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
+
+    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
+	products_quantity = products_quantity - " . $_POST['products_quantity'] . ",
+	products_ordered = products_ordered + " . $_POST['products_quantity'] . " 
+	WHERE products_id = '" . $_POST['products_id'] . "'");
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
