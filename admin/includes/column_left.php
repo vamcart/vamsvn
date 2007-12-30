@@ -70,6 +70,7 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['quick_updates'] == '1')) echo '<a href="' . vam_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CATALOG_QUICK_UPDATES . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['latest_news'] == '1')) echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CATALOG_LATEST_NEWS . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOOLS_RECOVER_CART . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<a href="' . vam_href_link(FILENAME_EMAIL_MANAGER, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOOLS_EMAIL_MANAGER . '</a><br>';
 
 if (ACTIVATE_GIFT_SYSTEM=='true') {
   echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_GV_ADMIN.'</b></div>');
