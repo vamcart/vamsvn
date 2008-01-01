@@ -69,15 +69,15 @@ $box_content .= TEXT_FOOTER_DOWNLOAD . '<a href="' . vam_href_link(FILENAME_ACCO
 
    }
 
-}
-
-// /downloads
-
 $box->assign('BOX_CONTENT', $box_content);
 
 $box->caching = 0;
 $box->assign('language', $_SESSION['language']);
 $box_download= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_download.html');
 $vamTemplate->assign('box_DOWNLOADS',$box_download);
+
+}
+
+// /downloads
 
 ?>
