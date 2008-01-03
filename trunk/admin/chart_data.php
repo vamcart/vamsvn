@@ -44,7 +44,7 @@ $data_sum = array();
 for ($i = 0; $i < $report->size; $i++) { 
 
 $data_count[] = $report->info[$i]['count'];
-$data_sum[] = number_format($currencies->format($report->info[$i]['sum']),0,'','');
+$data_sum[] = number_format($report->info[$i]['sum'],0,'','');
 									
 }
 
@@ -148,7 +148,7 @@ for ($i = 0; $i < $report->size; $i++) {
 
 $data_count[] = $report->info[$i]['count'];
 //$data_avg[] = $report->info[$i]['avg'];
-$data_sum[] = number_format($currencies->format($report->info[$i]['sum']),0,'','');
+$data_sum[] = number_format($report->info[$i]['sum'],0,'','');
 									
 }
 
