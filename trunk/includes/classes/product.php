@@ -367,7 +367,7 @@ class product {
 	// beta
 	function getBuyNowButtonNew($id, $name) {
 		global $PHP_SELF;
-		return '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image('templates/'.CURRENT_TEMPLATE.'/img/cart_big.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
+		return '<a href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image_button('cart_big.gif', TEXT_BUY.$name.TEXT_NOW).'</a>';
 
 	}
 
