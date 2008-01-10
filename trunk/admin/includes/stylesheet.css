@@ -216,7 +216,7 @@ div.stock_warn {
 .messageStackSuccess { font-family: Verdana, Arial, sans-serif; font-size: 12px; background-color: #99ff00; }
 
 /* forms */
-CHECKBOX, INPUT, RADIO, SELECT, TEXTAREA, FILE { font-family: Verdana, Arial, sans-serif; font-size: 11px; }
+CHECKBOX, INPUT, RADIO, SELECT, TEXTAREA, FILE { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
 FORM { display: inline; }
 
 /* account */
