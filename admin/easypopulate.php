@@ -23,6 +23,11 @@
 // utf8cp1251 and cp1251toutf8 functions
 
 function Utf8ToWin($fcontents) {
+
+    if (function_exists('iconv')) {
+       return iconv('UTF-8', 'CP1251', $fcontents); 
+    } else {
+
     $out = $c1 = '';
     $byte2 = false;
     for ($c = 0;$c < strlen($fcontents);$c++) {
@@ -52,9 +57,18 @@ function Utf8ToWin($fcontents) {
         }
     }
     return $out;
+
+
+    }
+
 }
 
 function CP1251toUTF8($str){
+
+    if (function_exists('iconv')) {
+       return iconv('CP1251', 'UTF-8', $str); 
+    } else {
+
 static $table = array("\xA8" => "\xD0\x81", 
 "\xB8" => "\xD1\x91", 
 // украинские символы
@@ -83,6 +97,9 @@ return preg_replace('#[\x80-\xFF]#se',
 )',
 $str
 );
+
+    }
+
 }
 
 // utf8cp1251 and cp1251toutf8 functions
