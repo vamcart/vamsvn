@@ -25,6 +25,7 @@
 $start = microtime();
 $box = new vamTemplate;
 $box_content = '';
+$id = '';
 
 $box->assign('language', $_SESSION['language']);
 // set cache ID
