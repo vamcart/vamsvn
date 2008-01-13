@@ -50,6 +50,10 @@
 <script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
 <script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <?php
+if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
+require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
+}
+
 // require theme based javascript
 require('templates/'.CURRENT_TEMPLATE.'/javascript/general.js.php');
 
@@ -213,11 +217,6 @@ echo '<body onload="resize();"> ';
 } else {
 echo '<body>';
 }
-
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
-require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
-}
-
 
   // include needed functions
   require_once(DIR_FS_INC.'vam_output_warning.inc.php');

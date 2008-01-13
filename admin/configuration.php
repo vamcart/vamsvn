@@ -68,33 +68,7 @@
     <h1 class="contentBoxHeading"><?php echo BOX_CONFIGURATION; ?></h1>
             
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
-         <?php
-         	switch ($_GET['gID']) {
-         		case 21:
-         			echo AFTERBUY_URL;
-         		case 19:
-         			echo '<table class="infoBoxHeading" width="100%">
-            				<tr>
-                			<td width="150" align="center">
-                			<a href="'.vam_href_link(FILENAME_CONFIGURATION, 'gID=21', 'NONSSL').'">Afterbuy</a>
-                			</td>
-                			<td width="1">|
-                			</td>
-                			<td width="150" align="center">
-                			<a href="'.vam_href_link(FILENAME_CONFIGURATION, 'gID=19', 'NONSSL').'">Google Conversion</a>
-                			</td>
-                			<td width="1">|
-                			</td>
-                			<td>
-                			</td>
-            				</tr>
-        					</table>';
-         		
-         			break;
-         	}
-         	?> 
          
-          
           <tr>
             <td valign="top" align="right">
             
