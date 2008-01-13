@@ -85,13 +85,28 @@ $vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVI
 // Google Conversion tracking
 if (GOOGLE_CONVERSION == 'true') {
 
+include(DIR_WS_MODULES . 'analytics/analytics.php');
+
 	$vamTemplate->assign('google_tracking', 'true');
 	$vamTemplate->assign('tracking_code', '
-		<noscript>
-		<a href="http://services.google.com/sitestats/'.GOOGLE_LANG.'.html" onclick="window.open(this.href); return false;">
-		<img height=27 width=135 border=0 src="http://www.googleadservices.com/pagead/conversion/'.GOOGLE_CONVERSION_ID.'/?hl='.GOOGLE_LANG.'" />
-		</a>
-		</noscript>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("' . GOOGLE_CONVERSION_ID . '");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+   pageTracker._addTrans(
+' . $transaction_string . '
+
+);
+  pageTracker._addItem(
+' . $item_string . '
+
+);
+  pageTracker._trackTrans();
+</script>
 		    ');
 
 }

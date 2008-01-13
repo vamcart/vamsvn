@@ -576,12 +576,12 @@ define('ACCOUNT_VAT_BLOCK_ERROR_DESC' , 'Установите в true, на да
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_TITLE','Группа покупателей - правильный VAT код (Страна, аналогичная стране магазина)');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_DESC','Группа для покупателей с правильно указанным VAT кодом, страна магазина = стране покупателя');
 // Google Conversion
-define('GOOGLE_CONVERSION_TITLE','Google конверсионная трассировка');
-define('GOOGLE_CONVERSION_DESC','Отслеживать конверсионные ключевые слова в заказах');
-define('GOOGLE_CONVERSION_ID_TITLE','ID преобразования');
-define('GOOGLE_CONVERSION_ID_DESC','Ваш Google конверсионный ID');
-define('GOOGLE_LANG_TITLE','Google язык');
-define('GOOGLE_LANG_DESC','ISO код используемоего языка (ru, en, fr, de...)');
+define('GOOGLE_CONVERSION_TITLE','Включить статистику Google Analytics');
+define('GOOGLE_CONVERSION_DESC','Включить Google Analytics. Вы должны зарегистрироваться в системе Google Analytics - http://google.com/analytics/ru-RU/');
+define('GOOGLE_CONVERSION_ID_TITLE','Ваш ID');
+define('GOOGLE_CONVERSION_ID_DESC','ID Вашего сайта в Google Analytics. Обычно в виде UA-XXXXXX-X');
+define('GOOGLE_LANG_TITLE','Язык');
+define('GOOGLE_LANG_DESC','Язык магазина (ru, en, fr, de...), можно не указывать, это необязательный параметр.');
 
 // Afterbuy
 define('AFTERBUY_ACTIVATED_TITLE','Активировать');

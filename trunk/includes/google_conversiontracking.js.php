@@ -15,22 +15,13 @@
    ---------------------------------------------------------------------------------------*/
 ?>
 
-<!-- Google Code for Purchase Conversion Page -->
-<script language="JavaScript" type="text/javascript">
-<!--
-var google_conversion_id = <?php echo GOOGLE_CONVERSION_ID; ?>;
-var google_conversion_language = "<?php echo GOOGLE_LANG; ?>";
-var google_conversion_format = "1";
-var google_conversion_color = "666666";
-if (1) {
-  var google_conversion_value = 1;
-}
-var google_conversion_label = "Purchase";
-//-->
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
-<script language="JavaScript" src="http://www.googleadservices.com/pagead/conversion.js">
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("<?php echo GOOGLE_CONVERSION_ID; ?>");
+	pageTracker._initData();
+	pageTracker._trackPageview();
 </script>
-<noscript>
-<img height=1 width=1 border=0 src="http://www.googleadservices.com/pagead/conversion/<?php echo GOOGLE_CONVERSION_ID; ?>/?value=1&label=Purchase&script=0">
-</noscript>
 

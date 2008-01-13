@@ -108,7 +108,7 @@ define('BOX_CONFIGURATION_14', 'GZip компрессия');
 define('BOX_CONFIGURATION_15', 'Сессии');
 define('BOX_CONFIGURATION_16', 'Мета теги / Поисковики');
 define('BOX_CONFIGURATION_17', 'Настройки других модулей');
-define('BOX_CONFIGURATION_19', 'xt:C Партнер');
+define('BOX_CONFIGURATION_19', 'Google Analytics');
 define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
 define('BOX_CONFIGURATION_24', 'Изменение цен');
