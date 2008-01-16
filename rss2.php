@@ -138,7 +138,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			// don't build a tree when no categories
 			$check_categories_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where categories_status=1 limit 1");
 			if (vam_db_num_rows($check_categories_query) > 0) {
-				vam_rss_category_tree(0, '', isset($_GET['limit']) ? $_GET['limit'] : null);
+				vam_rss_category_tree(0, '', (isset($_GET['limit']) && (int)$_GET['limit'] > 0) ? (int)$_GET['limit'] : null);
 				$rss->rss_feed_out();
 			}
 			break;
@@ -248,7 +248,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 
 		case "products":
 		default:
-			if (isset($_GET['products_id']))
+			if (isset($_GET['products_id']) && (int)$_GET['products_id'] > 0)
 				$days_limit .= ' and p.products_id=' . (int)$_GET['products_id'];
 			$sql_products = "select p.products_id, pd.products_name, pd.products_description, p.products_image, p.products_date_added, p.products_last_modified
 												from " . TABLE_PRODUCTS . " p, " .
@@ -281,8 +281,8 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			$rss->rss_feed_set('lastBuildDate', date('r', strtotime(max($maxdate['max_date_added'], $maxdate['max_date_modified']))));
 		}
 
-		if(isset($_GET['limit']) && !$random)
-			$sql_products .= ' limit ' . $_GET['limit'];
+		if(isset($_GET['limit']) && (int)$_GET['limit'] > 0 && !$random)
+			$sql_products .= ' limit ' . (int)$_GET['limit'];
 
 		if ($random)
 			$products = vam_random_select($sql_products);
