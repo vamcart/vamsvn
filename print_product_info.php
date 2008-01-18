@@ -58,6 +58,7 @@ if ($products_attributes['total'] > 0) {
 // assign language to template for caching
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('charset', $_SESSION['language_charset']);
+$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 $image = '';
 if ($product_info['products_image'] != '') {
