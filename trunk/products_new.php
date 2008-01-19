@@ -74,6 +74,7 @@ if (!$vamTemplate->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.h
 	                                    pd.products_short_description,
 	                                    p.products_image,
 	                                    p.products_price,
+	                                    p.products_model,
 	                               	    p.products_vpe,
 	                               	    p.products_quantity,
 	                               	    p.products_vpe_status,
