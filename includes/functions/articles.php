@@ -42,11 +42,11 @@
         $tPath_new = $current_topic_id;
       } else {
         $tPath_new = '';
-        $last_topic_query = vam_db_query("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$tPath_array[($cp_size-1)] . "'");
-        $last_topic = vam_db_fetch_array($last_topic_query);
+        $last_topic_query = vamDBquery("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$tPath_array[($cp_size-1)] . "'");
+        $last_topic = vam_db_fetch_array($last_topic_query,true);
 
-        $current_topic_query = vam_db_query("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'");
-        $current_topic = vam_db_fetch_array($current_topic_query);
+        $current_topic_query = vamDBquery("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$current_topic_id . "'");
+        $current_topic = vam_db_fetch_array($current_topic_query,true);
 
         if ($last_topic['parent_id'] == $current_topic['parent_id']) {
           for ($i=0; $i<($cp_size-1); $i++) {
@@ -76,16 +76,16 @@
   function vam_count_articles_in_topic($topic_id, $include_inactive = false) {
     $articles_count = 0;
     if ($include_inactive == true) {
-      $articles_query = vam_db_query("select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a2t.topics_id = '" . (int)$topic_id . "'");
+      $articles_query = vamDBquery("select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a2t.topics_id = '" . (int)$topic_id . "'");
     } else {
-      $articles_query = vam_db_query("select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a2t.topics_id = '" . (int)$topic_id . "'");
+      $articles_query = vamDBquery("select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a2t.topics_id = '" . (int)$topic_id . "'");
     }
-    $articles = vam_db_fetch_array($articles_query);
+    $articles = vam_db_fetch_array($articles_query,true);
     $articles_count += $articles['total'];
 
-    $child_topics_query = vam_db_query("select topics_id from " . TABLE_TOPICS . " where parent_id = '" . (int)$topic_id . "'");
-    if (vam_db_num_rows($child_topics_query)) {
-      while ($child_topics = vam_db_fetch_array($child_topics_query)) {
+    $child_topics_query = vamDBquery("select topics_id from " . TABLE_TOPICS . " where parent_id = '" . (int)$topic_id . "'");
+    if (vam_db_num_rows($child_topics_query,true)) {
+      while ($child_topics = vam_db_fetch_array($child_topics_query,true)) {
         $articles_count += vam_count_articles_in_topic($child_topics['topics_id'], $include_inactive);
       }
     }
@@ -97,8 +97,8 @@
 // Return true if the topic has subtopics
 // TABLES: topics
   function vam_has_topic_subtopics($topic_id) {
-    $child_topic_query = vam_db_query("select count(*) as count from " . TABLE_TOPICS . " where parent_id = '" . (int)$topic_id . "'");
-    $child_topic = vam_db_fetch_array($child_topic_query);
+    $child_topic_query = vamDBquery("select count(*) as count from " . TABLE_TOPICS . " where parent_id = '" . (int)$topic_id . "'");
+    $child_topic = vam_db_fetch_array($child_topic_query,true);
 
     if ($child_topic['count'] > 0) {
       return true;
@@ -115,8 +115,8 @@
 
     if (!is_array($topics_array)) $topics_array = array();
 
-    $topics_query = vam_db_query("select t.topics_id, td.topics_name from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where parent_id = '" . (int)$parent_id . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
-    while ($topics = vam_db_fetch_array($topics_query)) {
+    $topics_query = vamDBquery("select t.topics_id, td.topics_name from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where parent_id = '" . (int)$parent_id . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+    while ($topics = vam_db_fetch_array($topics_query,true)) {
       $topics_array[] = array('id' => $topics['topics_id'],
                                   'text' => $indent . $topics['topics_name']);
 
@@ -134,8 +134,8 @@
   function vam_get_authors($authors_array = '') {
     if (!is_array($authors_array)) $authors_array = array();
 
-    $authors_query = vam_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
-    while ($authors = vam_db_fetch_array($authors_query)) {
+    $authors_query = vamDBquery("select authors_id, authors_name from " . TABLE_AUTHORS . " order by authors_name");
+    while ($authors = vam_db_fetch_array($authors_query,true)) {
       $authors_array[] = array('id' => $authors['authors_id'], 'text' => $authors['authors_name']);
     }
 
@@ -146,8 +146,8 @@
 // Return all subtopic IDs
 // TABLES: topics
   function vam_get_subtopics(&$subtopics_array, $parent_id = 0) {
-    $subtopics_query = vam_db_query("select topics_id from " . TABLE_TOPICS . " where parent_id = '" . (int)$parent_id . "'");
-    while ($subtopics = vam_db_fetch_array($subtopics_query)) {
+    $subtopics_query = vamDBquery("select topics_id from " . TABLE_TOPICS . " where parent_id = '" . (int)$parent_id . "'");
+    while ($subtopics = vam_db_fetch_array($subtopics_query,true)) {
       $subtopics_array[sizeof($subtopics_array)] = $subtopics['topics_id'];
       if ($subtopics['topics_id'] != $parent_id) {
         vam_get_subtopics($subtopics_array, $subtopics['topics_id']);
@@ -159,8 +159,8 @@
 // Recursively go through the topics and retreive all parent topic IDs
 // TABLES: topics
   function vam_get_parent_topics(&$topics, $topics_id) {
-    $parent_topics_query = vam_db_query("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$topics_id . "'");
-    while ($parent_topics = vam_db_fetch_array($parent_topics_query)) {
+    $parent_topics_query = vamDBquery("select parent_id from " . TABLE_TOPICS . " where topics_id = '" . (int)$topics_id . "'");
+    while ($parent_topics = vam_db_fetch_array($parent_topics_query,true)) {
       if ($parent_topics['parent_id'] == 0) return true;
       $topics[sizeof($topics)] = $parent_topics['parent_id'];
       if ($parent_topics['parent_id'] != $topics_id) {
@@ -175,9 +175,9 @@
   function vam_get_article_path($articles_id) {
     $tPath = '';
 
-    $topic_query = vam_db_query("select a2t.topics_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = '" . (int)$articles_id . "' and a.articles_status = '1' and a.articles_id = a2t.articles_id limit 1");
-    if (vam_db_num_rows($topic_query)) {
-      $topic = vam_db_fetch_array($topic_query);
+    $topic_query = vamDBquery("select a2t.topics_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = '" . (int)$articles_id . "' and a.articles_status = '1' and a.articles_id = a2t.articles_id limit 1");
+    if (vam_db_num_rows($topic_query,true)) {
+      $topic = vam_db_fetch_array($topic_query,true);
 
       $topics = array();
       vam_get_parent_topics($topics, $topic['topics_id']);
@@ -201,8 +201,8 @@
 
     if (empty($language)) $language = $_SESSION['languages_id'];
 
-    $article_query = vam_db_query("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$article_id . "' and language_id = '" . (int)$language . "'");
-    $article = vam_db_fetch_array($article_query);
+    $article_query = vamDBquery("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$article_id . "' and language_id = '" . (int)$language . "'");
+    $article = vam_db_fetch_array($article_query,true);
 
     return $article['articles_name'];
   }
