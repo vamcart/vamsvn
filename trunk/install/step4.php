@@ -166,7 +166,7 @@ admin/includes/configure.org.php<br />
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
 <p><?php echo vam_draw_checkbox_field_installer('USE_PCONNECT', 'true'); ?><b><?php echo TEXT_PERSIST; ?></b><br /><?php echo TEXT_PERSIST_LONG; ?></p>
-<p><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'files', false); ?><b><?php echo TEXT_SESS_FILE; ?></b><br /><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'mysql',true); ?><b><?php echo TEXT_SESS_DB; ?></b><br /><?php echo TEXT_SESS_LONG; ?></p>
+<p><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'files', true); ?><b><?php echo TEXT_SESS_FILE; ?></b><br /><?php echo vam_draw_radio_field_installer('STORE_SESSIONS', 'mysql',false); ?><b><?php echo TEXT_SESS_DB; ?></b><br /><?php echo TEXT_SESS_LONG; ?></p>
 </fieldset>
 
 <p>
