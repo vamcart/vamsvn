@@ -28,10 +28,6 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
   $orders_contents = '';
   
-  $orders_status_validating = vam_db_num_rows(vam_db_query("select orders_status from " . TABLE_ORDERS ." where orders_status ='0'"));
-  $orders_contents .='<a href="' . vam_href_link_admin(FILENAME_ORDERS, 'selected_box=customers&amp;status=0', 'SSL') . '">' . TEXT_VALIDATING . '</a>: ' . $orders_status_validating . '<br />'; 
- 
-  
   $orders_status_query = vam_db_query("select orders_status_name, orders_status_id from " . TABLE_ORDERS_STATUS . " where language_id = '" . (int)$_SESSION['languages_id'] . "'");
   while ($orders_status = vam_db_fetch_array($orders_status_query)) {
     $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . $orders_status['orders_status_id'] . "'");
