@@ -12,7 +12,7 @@
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(whats_new.php,v 1.31 2003/02/10); www.oscommerce.com 
    (c) 2003	 nextcommerce (whats_new.php,v 1.12 2003/08/21); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (whats_new.php,v 1.12 2003/08/21); xt-commerce.com 
+   (c) 2004	 xt:Commerce (whats_new.php,v 1.12 2003/08/13); xt-commerce.com 
 
    Released under the GNU General Public License 
    -----------------------------------------------------------------------------------------
@@ -39,15 +39,17 @@ if (GROUP_CHECK == 'true') {
 }
 if ($random_product = vam_random_select("select distinct
                                            p.products_id,
+                                           pd.products_name,
                                            p.products_image,
                                            p.products_tax_class_id,
                                            p.products_vpe,
 				                           p.products_vpe_status,
 				                           p.products_vpe_value,
                                            p.products_price
-                                           from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
+                                           from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
                                            where p.products_status=1
                                            and p.products_id = p2c.products_id
+                                           and pd.products_id = p.products_id
                                            and p.products_id !='".(int) $_GET['products_id']."'
                                            and c.categories_id = p2c.categories_id
                                            ".$group_check."
@@ -57,8 +59,6 @@ if ($random_product = vam_random_select("select distinct
 
 	$whats_new_price = $vamPrice->GetPrice($random_product['products_id'], $format = true, 1, $random_product['products_tax_class_id'], $random_product['products_price']);
 }
-
-$random_product['products_name'] = vam_get_products_name($random_product['products_id']);
 
 if ($random_product['products_name'] != '') {
 
