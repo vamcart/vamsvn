@@ -259,59 +259,7 @@ function popupImageWindow(url) {
         </table></td>
       </tr>
 <?php
-  } elseif ($action == 'preview') {
-
-    $authors_query = vam_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " where authors_id = '" . $_GET['auID'] . "'");
-    $authors = vam_db_fetch_array($authors_query)
-
-?>
-      <tr>
-        <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo TEXT_ARTICLE_BY . $authors['authors_name']; ?></h1></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
-      <tr>
-        <td><table border="0" cellspacing="0" cellpadding="2">
-<?php
-  $languages = vam_get_languages();
-  for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-?>
-          <tr>
-            <td class="main" colspan="2" valign="top"><?php echo $languages[$i]['name']; ?></td>
-          <tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main" valign="top"><?php echo vam_get_author_description($authors['authors_id'], $languages[$i]['id']); ?></td>
-          <tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <?php if(vam_not_null(vam_get_author_url($authors['authors_id'], $languages[$i]['id']))) { ?>
-          <tr>
-            <td class="main" valign="top"><?php echo sprintf(TEXT_MORE_INFORMATION, vam_get_author_url($authors['authors_id'], $languages[$i]['id'])); ?></td>
-          <tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <?php } ?>
-<?php
-  }
-?>
-      <tr>
-        <td class="main" colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $authors['authors_id']) . '">' . BUTTON_BACK . '</a>'; ?></td>
-      </form>
-      </tr>
-          </tr>
-        </table></td>
-      </tr>
-<?php } else { ?>
+  } else { ?>
       <tr>
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -393,7 +341,7 @@ function popupImageWindow(url) {
       if (isset($auInfo) && is_object($auInfo)) {
         $heading[] = array('text' => '<b>' . $auInfo->authors_name . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=delete') . '">' . BUTTON_DELETE . '</a><br>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $_GET['auID']) . '&action=preview' . '">' . BUTTON_PREVIEW . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
         $contents[] = array('text' => '<br>' . TEXT_DATE_ADDED . ' ' . vam_date_short($auInfo->date_added));
         if (vam_not_null($auInfo->last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . vam_date_short($auInfo->last_modified));
         $contents[] = array('text' => '<br>' . TEXT_ARTICLES . ' ' . $auInfo->articles_count);
