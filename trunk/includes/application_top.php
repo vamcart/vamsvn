@@ -584,27 +584,27 @@ vam_count_cart();
 // add topic names or the author name to the breadcrumb trail
   if (isset($tPath_array)) {
     for ($i=0, $n=sizeof($tPath_array); $i<$n; $i++) {
-      $topics_query = vam_db_query("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
-      if (vam_db_num_rows($topics_query) > 0) {
-        $topics = vam_db_fetch_array($topics_query);
+      $topics_query = vamDBquery("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
+      if (vam_db_num_rows($topics_query,true) > 0) {
+        $topics = vam_db_fetch_array($topics_query,true);
         $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1)))));
       } else {
         break;
       }
     }
   } elseif (isset($_GET['authors_id'])) {
-    $authors_query = vam_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
-    if (vam_db_num_rows($authors_query)) {
-      $authors = vam_db_fetch_array($authors_query);
+    $authors_query = vamDBquery("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$_GET['authors_id'] . "'");
+    if (vam_db_num_rows($authors_query,true)) {
+      $authors = vam_db_fetch_array($authors_query,true);
       $breadcrumb->add(ARTICLES_BY . $authors['authors_name'], vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $_GET['authors_id']));
     }
   }
 
 // add the articles name to the breadcrumb trail
   if (isset($_GET['articles_id'])) {
-    $article_query = vam_db_query("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
-    if (vam_db_num_rows($article_query)) {
-      $article = vam_db_fetch_array($article_query);
+    $article_query = vamDBquery("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
+    if (vam_db_num_rows($article_query,true)) {
+      $article = vam_db_fetch_array($article_query,true);
       if (isset($_GET['authors_id'])) {
         $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id']));
       } else {
