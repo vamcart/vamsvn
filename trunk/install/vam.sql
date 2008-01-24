@@ -2431,6 +2431,8 @@ INSERT INTO zones VALUES ('383','223','WV','West Virginia');
 INSERT INTO zones VALUES ('384','223','WI','Wisconsin');
 INSERT INTO zones VALUES ('385','223','WY','Wyoming');
 
+INSERT INTO zones VALUES ('386', '115', 'Бишкек', 'Бишкек');
+
 #
 # Dumping data for table `payment_moneybookers_countries`
 #
