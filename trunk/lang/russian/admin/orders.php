@@ -146,4 +146,7 @@ define('BUS_DELETE_SUCCESS','удалён!');
 define('BUS_DELETE_WARNING','не удалён!');
 define('BUS_DELETE_ORDERS','Удалить выбранные заказы');
 
+define('TEXT_QTY','склад: ');
+define('TEXT_UNITS',' шт.');
+
 ?>

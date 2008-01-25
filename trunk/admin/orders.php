@@ -661,7 +661,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
 	for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 
-		echo '          <tr class="dataTableRow">'."\n".'            <td class="dataTableContent" valign="top" align="right">'.$order->products[$i]['qty'].'&nbsp;x&nbsp;</td>'."\n".'            <td class="dataTableContent" valign="top">'.$order->products[$i]['name'];
+				$products_id_order=$order->products[$i]['id'];
+				
+				echo '          <tr class="dataTableRow">'."\n".'            <td class="dataTableContent" valign="top" align="right">'.$order->products[$i]['qty'].'&nbsp;x&nbsp;</td>'."\n".'            <td class="dataTableContent" valign="top"><a href="'.vam_href_link(FILENAME_CATEGORIES, 'pID='.$products_id_order.'&action=new_product').'">'.$order->products[$i]['name'].'</a>';
 
 		if (sizeof($order->products[$i]['attributes']) > 0) {
 			for ($j = 0, $k = sizeof($order->products[$i]['attributes']); $j < $k; $j ++) {
@@ -980,7 +982,14 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 				$order = new order($oInfo->orders_id);
 				$contents[] = array ('text' => '<br /><br />'.sizeof($order->products).TEXT_PRODUCTS);
 				for ($i = 0; $i < sizeof($order->products); $i ++) {
-					$contents[] = array ('text' => $order->products[$i]['qty'].'&nbsp;x&nbsp;'.$order->products[$i]['name']);
+
+					$products_id_order=$order->products[$i]['id'];
+					
+					$rest_order_query = vam_db_query("SELECT products_quantity FROM products WHERE products_id = '".$products_id_order."'");
+					$rest_order = vam_db_fetch_array($rest_order_query);	
+					$rest_order_quantity=$rest_order['products_quantity'];
+					
+					$contents[] = array ('text' => $order->products[$i]['qty'].'&nbsp;x&nbsp;<a href="'.vam_href_link(FILENAME_CATEGORIES, 'pID='.$products_id_order.'&action=new_product').'">'.$order->products[$i]['name'].' ('.$order->products[$i]['model'].') ('.TEXT_QTY.$rest_order_quantity.TEXT_UNITS.')</a>');
 
 					if (sizeof($order->products[$i]['attributes']) > 0) {
 						for ($j = 0; $j < sizeof($order->products[$i]['attributes']); $j ++) {
