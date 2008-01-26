@@ -35,6 +35,8 @@ var fdLocale = {
                 "Previous month",
                 "Next month",
                 "Previous year",
-                "Next year"
+                "Next year",
+                "Today",
+                "Show Calendar"
                 ]
 };
