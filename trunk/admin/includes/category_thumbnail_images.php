@@ -13,50 +13,50 @@
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
-if(PRODUCT_IMAGE_THUMBNAIL_ACTIVE == 'true') {
+if(CATEGORIES_IMAGE_THUMBNAIL_ACTIVE == 'true') {
 
 	require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
 
 	vam_mkdir_recursive(DIR_FS_CATALOG_THUMBNAIL_IMAGES, dirname($products_image_name));
 
-	list($width, $height) = vam_get_image_size(DIR_FS_CATALOG_IMAGES.'categories/old_' . $categories_image_name, PRODUCT_IMAGE_THUMBNAIL_WIDTH, PRODUCT_IMAGE_THUMBNAIL_HEIGHT);
+	list($width, $height) = vam_get_image_size(DIR_FS_CATALOG_IMAGES.'categories/old_' . $categories_image_name, CATEGORIES_IMAGE_THUMBNAIL_WIDTH, CATEGORIES_IMAGE_THUMBNAIL_HEIGHT);
 
   $a = new image_manipulation(DIR_FS_CATALOG_IMAGES.'categories/old_' . $categories_image_name, $width, $height, DIR_FS_CATALOG_IMAGES.'categories/' . $categories_image_name, IMAGE_QUALITY, '');
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_BEVEL);
-if (PRODUCT_IMAGE_THUMBNAIL_BEVEL != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_BEVEL);
+if (CATEGORIES_IMAGE_THUMBNAIL_BEVEL != ''){
 $a->bevel($array[0],$array[1],$array[2]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_GREYSCALE);
-if (PRODUCT_IMAGE_THUMBNAIL_GREYSCALE != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_GREYSCALE);
+if (CATEGORIES_IMAGE_THUMBNAIL_GREYSCALE != ''){
 $a->greyscale($array[0],$array[1],$array[2]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_ELLIPSE);
-if (PRODUCT_IMAGE_THUMBNAIL_ELLIPSE !== ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_ELLIPSE);
+if (CATEGORIES_IMAGE_THUMBNAIL_ELLIPSE !== ''){
 $a->ellipse($array[0]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES);
-if (PRODUCT_IMAGE_THUMBNAIL_ROUND_EDGES != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_ROUND_EDGES);
+if (CATEGORIES_IMAGE_THUMBNAIL_ROUND_EDGES != ''){
 $a->round_edges($array[0],$array[1],$array[2]);}
 
-$string=str_replace("'",'',PRODUCT_IMAGE_THUMBNAIL_MERGE);
+$string=str_replace("'",'',CATEGORIES_IMAGE_THUMBNAIL_MERGE);
 $string=str_replace(')','',$string);
 $string=str_replace('(',DIR_FS_CATALOG_IMAGES,$string);
 $array=explode(',',$string);
 //$array=clear_string();
-if (PRODUCT_IMAGE_THUMBNAIL_MERGE != ''){
+if (CATEGORIES_IMAGE_THUMBNAIL_MERGE != ''){
 $a->merge($array[0],$array[1],$array[2],$array[3],$array[4]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_FRAME);
-if (PRODUCT_IMAGE_THUMBNAIL_FRAME != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_FRAME);
+if (CATEGORIES_IMAGE_THUMBNAIL_FRAME != ''){
 $a->frame($array[0],$array[1],$array[2],$array[3]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_DROP_SHADOW);
-if (PRODUCT_IMAGE_THUMBNAIL_DROP_SHADOW != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_DROP_SHADOW);
+if (CATEGORIES_IMAGE_THUMBNAIL_DROP_SHADOW != ''){
 $a->drop_shadow($array[0],$array[1],$array[2]);}
 
-$array=clear_string(PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR);
-if (PRODUCT_IMAGE_THUMBNAIL_MOTION_BLUR != ''){
+$array=clear_string(CATEGORIES_IMAGE_THUMBNAIL_MOTION_BLUR);
+if (CATEGORIES_IMAGE_THUMBNAIL_MOTION_BLUR != ''){
 $a->motion_blur($array[0],$array[1]);}
 
 	  $a->create();
