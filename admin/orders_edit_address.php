@@ -111,6 +111,21 @@
 
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left">
+<?php echo TEXT_STATE;?>
+</td>
+<td class="dataTableContent" align="left">
+<?php echo vam_draw_input_field('customers_state', $order->customer['state']);?>
+</td>
+<td class="dataTableContent" align="left">
+<?php echo vam_draw_input_field('delivery_state', $order->delivery['state']);?>
+</td>
+<td class="dataTableContent" align="left">
+<?php echo vam_draw_input_field('billing_state', $order->billing['state']);?>
+</td>
+</tr>
+
+<tr class="dataTableRow">
+<td class="dataTableContent" align="left">
 <?php echo TEXT_COUNTRY;?>
 </td>
 <td class="dataTableContent" align="left">

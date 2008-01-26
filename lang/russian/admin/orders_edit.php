@@ -57,6 +57,7 @@ define('TEXT_NAME', 'Имя:');
 define('TEXT_STREET', 'Адрес');
 define('TEXT_ZIP', 'Почтовый индекс:');
 define('TEXT_CITY', 'Город:');
+define('TEXT_STATE', 'Регион:');
 define('TEXT_COUNTRY', 'Страна:');
 
 
