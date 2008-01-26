@@ -282,6 +282,30 @@ define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_DESC' , 'Картинка в pop-up ок
 define('MO_PICS_TITLE','Количество дополнительных картинок товара');
 define('MO_PICS_DESC','Количество дополнительных картинок товара, не считая стандартную картинку.');
 
+define('CATEGORIES_IMAGE_THUMBNAIL_ACTIVE_TITLE' , 'Разрешить генерацию картинки категории');
+define('CATEGORIES_IMAGE_THUMBNAIL_ACTIVE_DESC' , 'Разрешить использование библиотеки GD для картинки категории. Если установлено false, то не забудьте вручную загрузить картинки через ftp.');
+define('CATEGORIES_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Ширина превьюшки категории');
+define('CATEGORIES_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Ширина превьюшки категории в пикселах');
+define('CATEGORIES_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'Высота превьюшки категории');
+define('CATEGORIES_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Высота превьюшки категории в пикселах');
+
+define('CATEGORIES_IMAGE_THUMBNAIL_BEVEL_TITLE' , 'Картинка категории: Обрамление<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_BEVEL_DESC' , 'Картинка категории: Обрамление<br /><br />По умолчанию: (8,FFCCCC,330000)<br /><br />Затененные скошенные края.<br /><br />Используется:<br />(ширина края,светлый цвет,темный цвет)');
+define('CATEGORIES_IMAGE_THUMBNAIL_GREYSCALE_TITLE' , 'Картинка категории: Чёрно-белый<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_GREYSCALE_DESC' , 'Картинка категории: Чёрно-белый<br /><br />По умолчанию: (32,22,22)<br /><br />Чёрно-белая картика.<br /><br />Используется:<br />(R (код красного оттенка),G (код зелёного оттенка),B (код синего оттенка))');
+define('CATEGORIES_IMAGE_THUMBNAIL_ELLIPSE_TITLE' , 'Картинка категории: Эллипс<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_ELLIPSE_DESC' , 'Картинка категории: Эллипс<br /><br />По умолчанию: (FFFFFF)<br /><br />Картинка будет вырезана в виде эллипса.<br /><br />Используется:<br />(цвет фона)');
+define('CATEGORIES_IMAGE_THUMBNAIL_ROUND_EDGES_TITLE' , 'Картинка категории: Скругленные углы<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_ROUND_EDGES_DESC' , 'Картинка категории: Скругленные углы<br /><br />По умолчанию: (5,FFFFFF,3)<br /><br />Округление углов картинки.<br /><br />Используется:<br />(радиус,фон,ширина сглаживания)');
+define('CATEGORIES_IMAGE_THUMBNAIL_MERGE_TITLE' , 'Картинка категории: Водяной знак<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_MERGE_DESC' , 'Картинка категории: Водяной знак<br /><br />По умолчанию: (overlay.gif,10,-50,60,FF0000)<br /><br />Водяной знак, накладываемый на картинку.<br /><br />Используется:<br />(файл картинки,отступ слева по x [отрицательное значение = отступ справа],отступ по y [отрицательное значение = нет отступа],прозрачность, цвет прозрачности)');
+define('CATEGORIES_IMAGE_THUMBNAIL_FRAME_TITLE' , 'Картинка категории: Рамка<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_FRAME_DESC' , 'Картинка категории: Рамка<br /><br />По умолчанию: <br /><br />Рамка картинки.<br /><br />Используется:<br />(светлый цвет,тёмный цвет,ширина рамки,цвет рамки [на выбор - обычно цвет в гамме между установленными светлым и тёмным цветами])');
+define('CATEGORIES_IMAGE_THUMBNAIL_DROP_SHADDOW_TITLE' , 'Картинка категории: Тень<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_DROP_SHADDOW_DESC' , 'Картинка категории: Тень<br /><br />По умолчанию: (3,333333,FFFFFF)<br /><br />Отбрасываемая картинкой тень.<br /><br />Используется:<br />(ширина тени,цвет тени,цвет фона)');
+define('CATEGORIES_IMAGE_THUMBNAIL_MOTION_BLUR_TITLE' , 'Картинка категории: Размытие<br />');
+define('CATEGORIES_IMAGE_THUMBNAIL_MOTION_BLUR_DESC' , 'Картинка категории: Размытие<br /><br />По умолчанию: (4,FFFFFF)<br /><br />Затухающие параллельные линии.<br /><br />Используется:<br />(количество линий,цвет фона)');
+
 define('IMAGE_MANIPULATOR_TITLE','Обработка картинок библиотекой GD');
 define('IMAGE_MANIPULATOR_DESC','Автоматическая нарезка картинок и спец. эффекты с использованием библиотеки GD');
 
