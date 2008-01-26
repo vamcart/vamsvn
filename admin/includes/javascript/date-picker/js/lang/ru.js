@@ -1,4 +1,4 @@
-var fdLocale = {
+﻿var fdLocale = {
         months:[
                 "Январь",
                 "Февраль",
@@ -29,12 +29,12 @@ var fdLocale = {
 
         /* Only stipulate the firstDayOfWeek should the first day not be Monday
 
-        firstDayOfWeek:1,
+        firstDayOfWeek:0,
         */
         titles:[
                 "Предыдущий месяц",
                 "Следующий месяц",
                 "Предыдущий год",
-                "Следующий  год"
+                "Следующий год"
                 ]
 };
