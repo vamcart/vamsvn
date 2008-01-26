@@ -91,7 +91,7 @@
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
 <p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
 <p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
-<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_PASSWORD', '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
+<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
 <p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
 </fieldset>
 
