@@ -86,6 +86,11 @@
     case 'deleteconfirm':
       $specials_id = vam_db_prepare_input($_GET['sID']);
 
+      $product_query = vam_db_query("select products_id from " . TABLE_SPECIALS . " where specials_id = '" . (int)$specials_id . "'");
+      $product = vam_db_fetch_array($product_query);
+
+      vam_db_query("delete from " . TABLE_SPECIAL_PRODUCT . " where product_id = '" . (int)$product['products_id'] . "'");
+
       vam_db_query("delete from " . TABLE_SPECIALS . " where specials_id = '" . vam_db_input($specials_id) . "'");
 
       vam_redirect(vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page']));
@@ -291,7 +296,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_PRODUCTS . '</a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_PRODUCTS . '</a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_CATEGORIES . '</a>'; ?></td>
                   </tr>
 <?php
   }
