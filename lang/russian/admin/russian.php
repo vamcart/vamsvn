@@ -468,4 +468,14 @@ define('TEXT_PHP_MAILER_ERROR1','Ошибка: ');
 
 define('BOX_TOOLS_EMAIL_MANAGER','Шаблоны писем');
 
+define('BOX_CATEGORY_SPECIALS', 'Категории со скидками');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIAL_CATEGORY', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> категорий со скидками)');
+
+define('IMAGE_ICON_STATUS_GREEN', 'Активна');
+define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
+define('IMAGE_ICON_STATUS_RED', 'Неактивна');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+
+define('TEXT_IMAGE_NONEXISTENT','Нет картинки!');
+
 ?>

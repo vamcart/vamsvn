@@ -557,5 +557,9 @@ require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
 
 define('FILENAME_STATS_SALES_REPORT2','stats_sales_report2.php');
 define('FILENAME_EMAIL_MANAGER','email_manager.php');
+
+  define('TABLE_SPECIAL_CATEGORY', 'special_category');
+  define('TABLE_SPECIAL_PRODUCT', 'special_product');
+  define('FILENAME_CATEGORY_SPECIALS', 'category_specials.php');
   
 ?>
