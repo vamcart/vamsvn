@@ -23,6 +23,8 @@ $xsell_query = vamDBquery("select distinct a.products_id, a.products_fsk18, ad.p
 $num_products_xsell = vam_db_num_rows($xsell_query); 
 if ($num_products_xsell >= MIN_DISPLAY_ALSO_PURCHASED) {
 
+$module_content = array ();
+
       while ($xsell = vam_db_fetch_array($xsell_query,true)) {
 			$module_content[] = $product->buildDataArray($xsell);
       }
@@ -30,13 +32,14 @@ if ($num_products_xsell >= MIN_DISPLAY_ALSO_PURCHASED) {
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 //выводит Также рекомендуем следующие товары:
+if (sizeof($module_content) > 0) { 
     $module->assign('language', $_SESSION['language']);
     $module->assign('module_content', $module_content);
     // set cache ID
     $module->caching = 0;
     $module = $module->fetch(CURRENT_TEMPLATE.'/module/articles_xsell.html');
     $vamTemplate->assign('MODULE_articles_xsell', $module);
-
+  }
  }
 }
 
