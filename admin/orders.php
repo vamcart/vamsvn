@@ -80,7 +80,7 @@ while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 }
 
 // Start Batch Update Status v0.4
-if (isset($_POST['submit'])){
+if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
  if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['new_status']))&&(!isset($_POST['delete_orders']))){ // Fair enough, let's update ;)
   $status = vam_db_prepare_input($_POST['new_status']);
   if ($status == '') { // New status not selected      vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
