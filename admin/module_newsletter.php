@@ -283,11 +283,11 @@ $limit_up = $limits['1'];
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<?php if (USE_WYSIWYG=='true') {
+<?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
- if ($_GET['action']!='') echo vam_wysiwyg_tiny('newsletter',$data['code']);
- } ?>
+ if ($_GET['action']!='') echo vam_wysiwyg_tiny('newsletter',$data['code']); 
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -593,7 +593,7 @@ echo vam_draw_checkbox_field('status_all', 'yes',in_array('all', $bc_array)).' <
 
 echo vam_draw_textarea_field('newsletter_body', 'soft', '103', '25', stripslashes($newsletters_data['body']));
 
-        ?></td>
+        ?><br /><a href="javascript:toggleHTMLEditor('newsletter_body');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
    </tr>
    </table>
    <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER); ?>"><?php echo BUTTON_BACK; ?></a>

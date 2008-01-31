@@ -291,7 +291,7 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 		<script type="text/javascript" src="includes/general.js"></script>
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
-<?php if (USE_WYSIWYG=='true') {
+<?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
 	$data = vam_db_fetch_array($query);
 	// generate editor for categories EDIT
@@ -310,8 +310,7 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 			echo vam_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
 			echo vam_wysiwyg_tiny('products_short_description', $data['code'], $languages[$i]['id']);
 		}
-	}
-}
+	} 
 ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
