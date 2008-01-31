@@ -75,8 +75,15 @@ font-color: #000000;
  background: #ffffff;
  }
 
-.pageHeading { font-family: Verdana, Arial, sans-serif; font-size: 18px; color: #000000; font-weight: bold; }
+.pageHeading { 
 
+  display: block;
+  font: 14px Tahoma, Verdana, Arial, sans-serif;
+  font-weight: bold;
+  color: #990000;
+  
+ }
+ 
 /* data table */
 .dataTableHeadingRow {
 background-color: #F6F6F6;
