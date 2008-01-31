@@ -336,7 +336,7 @@
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
 <link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 <?php } ?>
-<?php if (USE_WYSIWYG=='true') {
+<?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
 	$data = vam_db_fetch_array($query);
 	// generate editor for categories EDIT
@@ -354,8 +354,7 @@
 		for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('articles_description', $data['code'], $languages[$i]['id']);
 		}
-	}
-}
+	} 
 ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -447,7 +446,7 @@
 <?php
           echo vam_draw_textarea_field('topics_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($topics_description[$languages[$i]['id']]) ? stripslashes($topics_description[$languages[$i]['id']]) : vam_get_topic_description($tInfo->topics_id, $languages[$i]['id']))); 
 ?>
-
+<br /><a href="javascript:toggleHTMLEditor('<?php echo 'topics_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
 </td>
               </tr>
             </table></td>
@@ -710,7 +709,7 @@
 <?php
           echo vam_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : vam_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
 ?>
-
+<br /><a href="javascript:toggleHTMLEditor('<?php echo 'articles_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
 </td>
 
               </tr>

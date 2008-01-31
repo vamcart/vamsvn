@@ -90,13 +90,13 @@
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
-<?php if (USE_WYSIWYG=='true') {
+<?php 
 if (!isset($_GET['action'])) {
 $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
 $data=vam_db_fetch_array($query);
 echo vam_wysiwyg_tiny('mail',$data['code']);
-}
-} ?>
+} 
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
@@ -246,7 +246,7 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
               </tr>
               <tr>
                 <td valign="top" class="main"><?php echo TEXT_MESSAGE; ?></td>
-                <td><?php echo vam_draw_textarea_field('message', 'soft', '100%', '30'); ?></td>
+                <td><?php echo vam_draw_textarea_field('message', 'soft', '100%', '20'); ?><br /><a href="javascript:toggleHTMLEditor('message');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
               </tr>
               <tr>
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>

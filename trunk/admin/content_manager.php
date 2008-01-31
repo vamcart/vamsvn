@@ -260,13 +260,13 @@ if ($select_file=='default') {
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
 <link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
 <?php } ?>
-<?php if (USE_WYSIWYG=='true') {
+<?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
  if ($_GET['action']!='new_products_content' && $_GET['action']!='') echo vam_wysiwyg_tiny('content_manager',$data['code']);
  if ($_GET['action']=='new_products_content') echo vam_wysiwyg_tiny('products_content',$data['code']);
- if ($_GET['action']=='edit_products_content') echo vam_wysiwyg_tiny('products_content',$data['code']);
- } ?>
+ if ($_GET['action']=='edit_products_content') echo vam_wysiwyg_tiny('products_content',$data['code']); 
+?>
 
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -725,7 +725,7 @@ echo vam_draw_pull_down_menu('select_file',$files,$default_value);
       <td width="90%">
    <?php
 echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
-?>
+?><br /><a href="javascript:toggleHTMLEditor('cont');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
       </td>
    </tr>
   
@@ -875,7 +875,7 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
       <td width="10%" valign="top"><?php echo TEXT_FILE_DESC; ?></td>
       <td width="90%"><?php
           echo vam_draw_textarea_field('file_comment','','100','30',$content['file_comment']);
-        ?></td>
+        ?><br /><a href="javascript:toggleHTMLEditor('file_comment');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
    </tr>
          <tr> 
       <td width="10%" valign="top"><?php echo TEXT_CHOOSE_FILE; ?></td>

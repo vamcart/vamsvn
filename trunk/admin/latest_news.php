@@ -73,11 +73,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<?php if (USE_WYSIWYG=='true') {
+<?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
- if ($_GET['action']=='new_latest_news') echo vam_wysiwyg_tiny('latest_news',$data['code']);
- } ?>
+ if ($_GET['action']=='new_latest_news') echo vam_wysiwyg_tiny('latest_news',$data['code']); 
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -120,7 +120,7 @@
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_CONTENT; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('content', '', '100%', '25', stripslashes($latest_news['content'])); ?></td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('content', '', '100%', '25', stripslashes($latest_news['content'])); ?><br /><a href="javascript:toggleHTMLEditor('content');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
