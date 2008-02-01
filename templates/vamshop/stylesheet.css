@@ -34,7 +34,7 @@ h2, h3
 /* Цвет обычных ссылок в магазине */
 a 
    {
-     color: #67748B;
+     color: #000;
      text-decoration: underline;
    }
 
@@ -431,27 +431,35 @@ div#navigation
 /*- Список разделов */
 #categoriesBoxMenu 
    {
-     padding-left: 1em; /* отступ разделов от левого края бокса */
-     margin: 0 auto;
+     padding: 0;
+     margin: 0;
    }
 
-#categoriesBoxMenu a, #categoriesBoxMenu a:visited 
-   {
+#categoriesBoxMenu #CatNavi, #CatNavi ul, #CatNavi li 
+   { 
+     margin: 0; 
+     padding: 0; 
+     list-style-type: none; 
+   }
+
+#categoriesBoxMenu #CatNavi li a
+   { 
+     width: 95%;
      display: block; 
      padding: 0.1em 0;
      color: #000;
      text-indent: 0.4em;
      background-color: #fff; 
      text-decoration: none;
-     margin: 0.4em 0; 
+     margin: 0.2em 0; 
      border-left: 0.4em solid #67748B; 
      border-top:1px solid #fff; 
      border-bottom:1px solid #fff; 
      border-right:1px solid #fff; 
    }
 
-#categoriesBoxMenu a:hover 
-   {
+#categoriesBoxMenu #CatNavi li a:hover
+   { 
      color: #f00; 
      border-left: 0.4em solid #3169C6; 
      background-color: #c6d3ef;
@@ -460,89 +468,35 @@ div#navigation
      border-right:1px solid #3169C6; 
    }
 
-#categoriesBoxMenu .boxMenuCategory 
+#categoriesBoxMenu #CatNavi .CatLevel1, 
+#categoriesBoxMenu #CatNavi .CatLevel2, 
+#categoriesBoxMenu #CatNavi .CatLevel3,
+#categoriesBoxMenu #CatNavi .CatLevel4,
+#categoriesBoxMenu #CatNavi .CatLevel5,
+#categoriesBoxMenu #CatNavi .CatLevel6
    {
-     position: relative;
+     padding-left: 0.5em;
    }
 
-#categoriesBoxMenu .boxMenuCategory span 
-   {
-     font-weight: bold;
-     position: relative;
+#categoriesBoxMenu #CatNavi .CurrentParent a 
+   { 
+     font-weight: bold; 
    }
 
-#categoriesBoxMenu .boxMenuSubCategory 
-   {
-     position: relative;
-     padding-left: 1em;
+#categoriesBoxMenu #CatNavi li a,
+#categoriesBoxMenu #CatNavi .Current li a,
+#categoriesBoxMenu #CatNavi .CurrentParent li a,
+#categoriesBoxMenu #CatNavi .CurrentParent .Current li a 
+   { 
+     font-weight: normal; 
    }
 
-#categoriesBoxMenu .boxMenuSubCategory2 
-   {
-     position: relative;
-     padding-left: 1em;
+#categoriesBoxMenu #CatNavi .Current a,
+#categoriesBoxMenu #CatNavi .CurrentParent .Current a 
+   { 
+     font-weight: bold; 
    }
    
-#categoriesBoxMenu .boxMenuSubCategory3 
-   {
-     position: relative;
-     padding-left: 2em;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory4 
-   {
-     position: relative;
-     padding-left: 3em;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory5 
-   {
-     position: relative;
-     padding-left: 4em;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory6 
-   {
-     position: relative;
-     padding-left: 5em;
-   }
-      
-#categoriesBoxMenu .boxMenuSubCategory span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory2 span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory3 span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory4 span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory5 span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
-#categoriesBoxMenu .boxMenuSubCategory6 span 
-   {
-     font-weight: bold;
-     position: relative;
-   }
-
 /*- /Список разделов */
 
 /*- /Бокс разделы */
