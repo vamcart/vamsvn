@@ -120,8 +120,8 @@ $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout_success.h
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
 $vamTemplate->caching = 0;
-if (!defined(RM))
-	$vamTemplate->load_filter('output', 'note');
-$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
+if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_SUCCESS.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_SUCCESS.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
 include ('includes/application_bottom.php');
 ?>

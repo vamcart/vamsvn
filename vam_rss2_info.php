@@ -29,8 +29,9 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/vam_rss2_info.html');
 $vamTemplate->assign('main_content', $main_content);
-if (!defined(RM))
-	$vamTemplate->load_filter('output', 'note');
-$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
+if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_RSS2_INFO.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_RSS2_INFO.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
 
+include ('includes/application_bottom.php');
 ?>

@@ -101,6 +101,7 @@ define('FILENAME_BANNER', 'banners.php');
 // Сборка VaM
 
 define('FILENAME_RSS2', 'rss2.php');
+define('FILENAME_RSS2_INFO', 'vam_rss2.php');
 
 define('FILENAME_LATEST_NEWS', 'latest_news.php');
 define('FILENAME_NEWS', 'news.php');
