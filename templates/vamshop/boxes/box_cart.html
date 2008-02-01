@@ -27,14 +27,6 @@
 <p class="CartContentRight">
 {if $SHIPPING_INFO}{$SHIPPING_INFO}{/if}
 </p>
-{if $coupon_valid == 'true'}
-<p>
-{#cart_coupon#}
-</p>
-<p>
-{$coupon_amount}
-</p>
-{/if}              
 {else} <!-- Пустая корзина --> 
 <p>
 {#text_empty_cart#}
