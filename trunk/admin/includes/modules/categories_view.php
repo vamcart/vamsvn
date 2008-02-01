@@ -103,7 +103,7 @@
              <td class="smallText" align="right">
                 <?php 
                     echo vam_draw_form('search', FILENAME_CATEGORIES, '', 'get'); 
-                    echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search', $_GET['search']).vam_draw_hidden_field(vam_session_name(), vam_session_id()); 
+                    echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search').vam_draw_hidden_field(vam_session_name(), vam_session_id()); 
                 ?>
                 </form>
              </td>
