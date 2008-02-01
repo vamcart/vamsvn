@@ -613,6 +613,27 @@ vam_count_cart();
     }
   }
 
+  if (strstr($PHP_SELF, FILENAME_NEWS)) {   
+       $breadcrumb->add(NAVBAR_TITLE_NEWS, vam_href_link(FILENAME_NEWS));
+  } 
+
+  if (isset($_GET['news_id'])) {
+    $news_query = vamDBquery("select news_id, headline from " . TABLE_LATEST_NEWS . " where news_id = '" . (int)$_GET['news_id'] . "' and language = '" . (int)$_SESSION['languages_id'] . "'");
+    if (vam_db_num_rows($news_query,true)) {
+      $news = vam_db_fetch_array($news_query,true);
+
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&headline='.vam_cleanName($news['headline']);
+			
+      if (isset($_GET['news_id'])) {
+        $breadcrumb->add($news['headline'], vam_href_link(FILENAME_NEWS, 'news_id='.$news['news_id'] . $SEF_parameter, 'NONSSL'));
+      } else {
+        $breadcrumb->add($news['headline'], vam_href_link(FILENAME_NEWS, 'news_id='.$news['news_id'] . $SEF_parameter, 'NONSSL'));
+      }
+    }
+  }
+  
     require('includes/local_modules.php');
 
 require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
