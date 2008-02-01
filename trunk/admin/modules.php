@@ -142,6 +142,9 @@
       $module = new $class();
       if ($module->check() > 0) {
         if ($module->sort_order > 0) {
+          if ($installed_modules[$module->sort_order] != '') {
+            $zc_valid = false;
+          }        
           $installed_modules[$module->sort_order] = $file;
         } else {
           $installed_modules[] = $file;
@@ -201,6 +204,9 @@
   } else {
     vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( '" . $module_key . "', '" . implode(';', $installed_modules) . "','6', '0', now())");
   }
+  if (isset($zc_valid) && $zc_valid == false) {
+    $messageStack->add_session(WARNING_MODULES_SORT_ORDER, 'error');
+  }  
 ?>
               <tr>
                 <td colspan="3" class="smallText"><?php echo TEXT_MODULE_DIRECTORY . ' ' . $module_directory; ?></td>
