@@ -20,114 +20,93 @@
    Enable_Disable_Categories 1.3        	Autor: Mikel Williams | mikel@ladykatcostumes.com
 
    Released under the GNU General Public License 
-   ---------------------------------------------------------------------------------------*/
+   ---------------------------------------------------------------------------------------
+	BITTE BEACHTEN SIE: 
+
+	1) Der Einsatz dieser Kategorien-Navi geschieht auf eigene Gefahr! 
+	2) Jegliche Haftung fьr Schдden an Ihrem System oder Verdienst-
+	Ausfдlle wird abgelehnt 
+	3) Ich empfehle dringend, diese Erweiterung VOR einem produktiven
+	Einsatz zunдchst an einem Test-System auszuprobieren!
+  ---------------------------------------------------------------------------------------
+	IN EIGENER SACHE:
+	
+	Diese Funktionen wurden kostenlos und ohne Anspruch auf Gegen-
+	leistung zur Verfьgung gestellt. Ich bitte allerdings darum, den 
+	Autoren-Hinweis intakt zu lassen bzw. bei Bearbeitungen mit zu 
+	ьbernehmen. 
+	
+	Ein Backlink zu meiner Website http://www.gunnart.de wьrde mich 
+	natьrlich auch freuen.
+	
+	Vielen Dank
+	
+	Gunnar Tillmann 
+  ---------------------------------------------------------------------------------------
+	Feedback is Welcome: http://www.gunnart.de?p=311
+  ---------------------------------------------------------------------------------------
+*/	
+
 // reset var
-$start = microtime();
 $box = new vamTemplate;
 $box_content = '';
 $id = '';
-
-$box->assign('language', $_SESSION['language']);
-// set cache ID
-if (!CacheCheck()) {
-	$cache=false;
-	$box->caching = 0;
-} else {
-	$cache=true;
-	$box->caching = 1;
-	$box->cache_lifetime = CACHE_LIFETIME;
-	$box->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$cPath;
-}
-
-if(!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id) || !$cache){
-
-$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
-require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/vam_show_category.inc.php');
-require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
-require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
+require_once(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/inc/vam_show_category.inc.php');
+require_once(DIR_FS_INC . 'vam_has_category_subcategories.inc.php');
+require_once(DIR_FS_INC . 'vam_count_products_in_category.inc.php');
 
 
 $categories_string = '';
-if (GROUP_CHECK == 'true') {
+if (GROUP_CHECK=='true') {
 	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 }
-$categories_query = "select c.categories_id,
-                                           cd.categories_name,
-                                           c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
-                                           where c.categories_status = '1'
-                                           and c.parent_id = '0'
-                                           ".$group_check."
-                                           and c.categories_id = cd.categories_id
-                                           and cd.language_id='".(int) $_SESSION['languages_id']."'
-                                           order by sort_order, cd.categories_name";
-$categories_query = vamDBquery($categories_query);
+$categories_query = vamDBquery(	"select c.categories_id,
+									cd.categories_name,
+									c.parent_id from " .
+									TABLE_CATEGORIES . " c, " .
+									TABLE_CATEGORIES_DESCRIPTION . " cd
+									where c.categories_status = '1'
+									".$group_check."
+									and c.categories_id = cd.categories_id
+									and cd.language_id='" . (int)$_SESSION['languages_id'] ."'
+									order by sort_order, cd.categories_name");
 
-while ($categories = vam_db_fetch_array($categories_query, true)) {
-	$foo[$categories['categories_id']] = array ('name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
+while ($categories = vam_db_fetch_array($categories_query,true))  {
+	$foo[$categories['categories_id']] = array(	'name' => $categories['categories_name'],
+												'parent' => $categories['parent_id']);
+}
+ 
+vam_show_category(0, 0, $foo, '');
 
-	if (isset ($prev_id)) {
-		$foo[$prev_id]['next_id'] = $categories['categories_id'];
-	}
+// NaviListe bekommt die ID "CatNavi"
+$CatNaviStart = "\n<ul id=\"CatNavi\">\n";
 
-	$prev_id = $categories['categories_id'];
-
-	if (!isset ($first_element)) {
-		$first_element = $categories['categories_id'];
-	}
+// Hдtte man auch einfacher machen kцnnen, aber mit Tabulatoren ist schicker.
+// AuЯerdem kann man so leichter nachprьfen, ob auch wirklich alles korrekt lдuft.
+for ($counter = 1; $counter < $old_level+1; $counter++) {
+	$CatNaviEnd .= "</li>\n".str_repeat("\t", $old_level - $counter)."</ul>\n";
+	if ($old_level - $counter > 0)
+		$CatNaviEnd .= str_repeat("\t", ($old_level - $counter)-1);
 }
 
-//------------------------
-if ($cPath) {
-	$new_path = '';
-	$id = split('_', $cPath);
-	reset($id);
-	while (list ($key, $value) = each($id)) {
-		unset ($prev_id);
-		unset ($first_id);
-		$categories_query = "select c.categories_id, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
-		$categories_query = vamDBquery($categories_query);
-		$category_check = vam_db_num_rows($categories_query, true);
-		if ($category_check > 0) {
-			$new_path .= $value;
-			while ($row = vam_db_fetch_array($categories_query, true)) {
-				$foo[$row['categories_id']] = array ('name' => $row['categories_name'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
+// Fertige Liste zusammensetzen
+$box->assign('BOX_CONTENT', $CatNaviStart.$categories_string.$CatNaviEnd);
+$box->assign('language', $_SESSION['language']);
+// Jibbie - darauf einen Dujardin
 
-				if (isset ($prev_id)) {
-					$foo[$prev_id]['next_id'] = $row['categories_id'];
-				}
-
-				$prev_id = $row['categories_id'];
-
-				if (!isset ($first_id)) {
-					$first_id = $row['categories_id'];
-				}
-
-				$last_id = $row['categories_id'];
-			}
-			$foo[$last_id]['next_id'] = $foo[$value]['next_id'];
-			$foo[$value]['next_id'] = $first_id;
-			$new_path .= '_';
-		} else {
-			break;
-		}
-	}
-}
-
-vam_show_category($first_element);
-
-$box->assign('BOX_CONTENT', $categories_string);
-
-}
-
-// set cache ID
-if (!$cache) {
-	$box_categories = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html');
+// Viele, viele bunte Smarties
+if (USE_CACHE=='false') {
+	$box->caching = 0;
+	$box_categories= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html');
 } else {
-	$box_categories = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id);
+	$box->caching = 1;
+	$box->cache_lifetime=CACHE_LIFETIME;
+	$box->cache_modified_check=CACHE_CHECK;
+	$cache_id = $_SESSION['language'].$_GET['cPath'];
+	$box_categories= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html',$cache_id);
 }
-
-$vamTemplate->assign('box_CATEGORIES', $box_categories);
+$vamTemplate->assign('box_CATEGORIES',$box_categories);
 ?>
