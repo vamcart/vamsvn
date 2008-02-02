@@ -74,6 +74,8 @@ $categories_query = vamDBquery(	"select c.categories_id,
 									and cd.language_id='" . (int)$_SESSION['languages_id'] ."'
 									order by sort_order, cd.categories_name");
 
+      if (vam_db_num_rows($categories_query,true)) {
+
 while ($categories = vam_db_fetch_array($categories_query,true))  {
 	$foo[$categories['categories_id']] = array(	'name' => $categories['categories_name'],
 												'parent' => $categories['parent_id']);
@@ -91,6 +93,8 @@ for ($counter = 1; $counter < $old_level+1; $counter++) {
 	if ($old_level - $counter > 0)
 		$CatNaviEnd .= str_repeat("\t", ($old_level - $counter)-1);
 }
+
+      }
 
 // Fertige Liste zusammensetzen
 $box->assign('BOX_CONTENT', $CatNaviStart.$categories_string.$CatNaviEnd);
