@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2007-02-07 17:36:57 VaM $
+   $Id: russian.php 1231 2008-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -477,6 +477,8 @@ define('IMAGE_ICON_STATUS_RED', 'Неактивна');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 
 define('TEXT_IMAGE_NONEXISTENT','Нет картинки!');
+
+define('TEXT_TOGGLE_EDITOR', 'Включить/Выключить HTML-редактор');
 
 define('WARNING_MODULES_SORT_ORDER','ВНИМАНИЕ: Значение опции порядок сортировки у модулей не должно повторяться!');
 
