@@ -37,11 +37,15 @@ define('MAX_ROW_LISTS_OPTIONS', 10);
 
 define('TEXT_WARNING_OF_DELETE', 'Эта опция связана с товарами и не сохранится после ее удаления.');
 define('TEXT_OK_TO_DELETE', 'Эта опция не связана с товарами и не сохранится после ее удаления.');
+define('TEXT_SEARCH','Поиск: ');
 define('TEXT_OPTION_ID', 'Код атрибута');
 define('TEXT_OPTION_NAME', 'Название атрибута');
 
 // VaM
 
-define('TEXT_SEARCH','Поиск: ');
+define('TABLE_HEADING_OPT_IMAGE','Картинка');
+define('TABLE_HEADING_OPT_DESC','Описание');
+define('TABLE_TEXT_DELETE','удалить картинку');
+define('TEXT_OPTIONS_IMAGE','Картинка атрибута')
 
 ?>
