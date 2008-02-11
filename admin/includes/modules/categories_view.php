@@ -137,28 +137,28 @@
                 <?php echo TABLE_HEADING_EDIT; ?>
                 <input type="checkbox" onClick="javascript:CheckAll(this.checked);">
              </td>
-             <td class="dataTableHeadingContent" align="center" width="30%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_CATEGORIES_PRODUCTS.vam_sorting(FILENAME_CATEGORIES,'name'); ?>
              </td>
              <?php
              // check Produkt and attributes stock
              if (STOCK_CHECK == 'true') {
-                    echo '<td class="dataTableHeadingContent" align="center" width="10%">' . TABLE_HEADING_STOCK . vam_sorting(FILENAME_CATEGORIES,'stock') . '</td>';
+                    echo '<td class="dataTableHeadingContent" align="center">' . TABLE_HEADING_STOCK . vam_sorting(FILENAME_CATEGORIES,'stock') . '</td>';
              }
              ?>
-             <td class="dataTableHeadingContent" align="center" width="8%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_STATUS.vam_sorting(FILENAME_CATEGORIES,'status'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="15%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_STARTPAGE.vam_sorting(FILENAME_CATEGORIES,'startpage'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="8%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_XML.vam_sorting(FILENAME_CATEGORIES,'yandex'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="8%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_PRICE.vam_sorting(FILENAME_CATEGORIES,'price'); ?>
              </td>
-             <td class="dataTableHeadingContent" align="center" width="8%">
+             <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_SORT.vam_sorting(FILENAME_CATEGORIES,'sort'); ?>
              </td>
              <td class="dataTableHeadingContent" width="10%" align="center">
