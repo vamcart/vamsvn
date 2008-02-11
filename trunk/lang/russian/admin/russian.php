@@ -119,7 +119,7 @@ define('BOX_PAYMENT', 'Модули оплаты');
 define('BOX_SHIPPING', 'Модули доставки');
 define('BOX_ORDER_TOTAL', 'Модули итого');
 define('BOX_CATEGORIES', 'Категории / Товары');
-define('BOX_PRODUCTS_ATTRIBUTES', 'Атрибуты - Настройка');
+define('BOX_PRODUCTS_ATTRIBUTES', 'Атрибуты - Значения');
 define('BOX_MANUFACTURERS', 'Производители');
 define('BOX_REVIEWS', 'Отзывы о товарах');
 define('BOX_CAMPAIGNS', 'Кампании');
@@ -481,5 +481,7 @@ define('TEXT_IMAGE_NONEXISTENT','Нет картинки!');
 define('TEXT_TOGGLE_EDITOR', 'Включить/Выключить HTML-редактор');
 
 define('WARNING_MODULES_SORT_ORDER','ВНИМАНИЕ: Значение опции порядок сортировки у модулей не должно повторяться!');
+
+define('BOX_PRODUCTS_OPTIONS', 'Атрибуты - Названия');
 
 ?>

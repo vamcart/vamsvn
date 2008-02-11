@@ -561,5 +561,7 @@ define('FILENAME_EMAIL_MANAGER','email_manager.php');
   define('TABLE_SPECIAL_CATEGORY', 'special_category');
   define('TABLE_SPECIAL_PRODUCT', 'special_product');
   define('FILENAME_CATEGORY_SPECIALS', 'category_specials.php');
+
+  define('FILENAME_PRODUCTS_OPTIONS', 'products_options.php');
   
 ?>
