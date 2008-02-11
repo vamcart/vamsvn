@@ -356,10 +356,10 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 
 				$value_name = vam_db_query("select products_options_values_name, products_options_values_description from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $values_values['products_options_values_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
 				$value_name = vam_db_fetch_array($value_name);
-				$flag = vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image']);
-				$inputs = $flag . '&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<br />';
+				$flag = $languages[$i]['name'];
+				$inputs = $flag . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<br />';
 
-				$inputs_desc = $flag . '&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4">' . $value_name['products_options_values_description'] . '</textarea>&nbsp;<br />';
+				$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4">' . $value_name['products_options_values_description'] . '</textarea>&nbsp;<br />';
 ?>
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
@@ -440,10 +440,10 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 
 		$inputs = '';
 		for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-			$flag = vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image']);
-			$inputs = $flag . '&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
-			$inputs_image = $flag . '&nbsp;' . vam_draw_file_field('value_image' . $i) . '&nbsp;<br />';
-			$inputs_desc = $flag . '&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4"></textarea>&nbsp;<br />';
+			$flag = $languages[$i]['name'];
+			$inputs = $flag . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
+			$inputs_image = $flag . ':&nbsp;' . vam_draw_file_field('value_image' . $i) . '&nbsp;<br />';
+			$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4"></textarea>&nbsp;<br />';
 ?>
 
   <tr class="dataTableRowSelected">
