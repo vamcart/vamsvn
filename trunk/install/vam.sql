@@ -487,6 +487,7 @@ CREATE TABLE customers_basket_attributes (
   products_id tinytext NOT NULL,
   products_options_id int NOT NULL,
   products_options_value_id int NOT NULL,
+  products_options_value_text text,
   PRIMARY KEY (customers_basket_attributes_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
