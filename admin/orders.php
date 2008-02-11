@@ -400,20 +400,45 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
           <tr>
             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+              <tr>
+                <td class="main" valign="top"><b><?php echo ENTRY_CUSTOMER; ?></b></td>
+                <td class="main"><?php echo vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
+              </tr>
+            </table></td>
+            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+              <tr>
+                <td class="main" valign="top"><b><?php echo ENTRY_SHIPPING_ADDRESS; ?></b></td>
+                <td class="main"><?php echo vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
+              </tr>
+            </table></td>
+            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+              <tr>
+                <td class="main" valign="top"><b><?php echo ENTRY_BILLING_ADDRESS; ?></b></td>
+                <td class="main"><?php echo vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
+              </tr>
+            </table></td>
+          </tr>
+          
+          <tr>
+          <td colspan="3">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+              <tr>
+                <td class="main"><b><?php echo TABLE_HEADING_DATE_PURCHASED; ?>:</b></td>
+                <td class="main"><?php echo vam_date_long($order->info['date_purchased']); ?></td>
+              </tr>
+	          <tr>
+	            <td class="main"><b><?php echo ENTRY_ORDER_NUMBER; ?></b></td>
+	            <td class="main"><?php echo $oID; ?></td>
+	          </tr>
+                    
+          <tr>
             <?php if ($order->customer['csID']!='') { ?>
                 <tr>
                 <td class="main" valign="top" bgcolor="#FFCC33"><b><?php echo ENTRY_CID; ?></b></td>
                 <td class="main" bgcolor="#FFCC33"><?php echo $order->customer['csID']; ?></td>
               </tr>
             <?php } ?>
-              <tr>
-                <td class="main" valign="top"><b><?php echo ENTRY_CUSTOMER; ?></b></td>
-                <td class="main"><?php echo vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'); ?></td>
-              </tr>
-              <tr>
-                <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '5'); ?></td>
-              </tr>
-
               <tr>
                 <td class="main" valign="top"><b><?php echo CUSTOMERS_MEMO; ?></b></td>
 <?php
@@ -437,31 +462,18 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
                 <td class="main"><?php echo $order->customer['vat_id']; ?></td>
               </tr>
               <tr>
-                <td class="main" valign="top" bgcolor="#FFCC33"><b><?php echo IP; ?></b></td>
-                <td class="main" bgcolor="#FFCC33"><b><?php echo $order->customer['cIP']; ?></b></td>
+                <td class="main" valign="top"><b><?php echo IP; ?></b></td>
+                <td class="main"><b><?php echo $order->customer['cIP']; ?></b></td>
               </tr>
-	          <tr>
-	            <td class="main"><b><?php echo ENTRY_ORDER_NUMBER; ?></b></td>
-	            <td class="main"><?php echo $oID; ?></td>
-	          </tr>
 	          <tr>
 	            <td class="main"><b><?php echo ENTRY_ORIGINAL_REFERER; ?></b></td>
 	            <td class="main"><?php echo $order->customer['orig_reference']; ?></td>
 	          </tr>
-            </table></td>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-              <tr>
-                <td class="main" valign="top"><b><?php echo ENTRY_SHIPPING_ADDRESS; ?></b></td>
-                <td class="main"><?php echo vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'); ?></td>
-              </tr>
-            </table></td>
-            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2">
-              <tr>
-                <td class="main" valign="top"><b><?php echo ENTRY_BILLING_ADDRESS; ?></b></td>
-                <td class="main"><?php echo vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'); ?></td>
-              </tr>
-            </table></td>
-          </tr>
+
+             </table>   
+             </td>       
+             </tr>
+
 </table>
 
 </div>
