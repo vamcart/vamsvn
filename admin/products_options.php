@@ -222,6 +222,26 @@ function go_option() {
     <td class="boxCenter" width="100%" valign="top">
     
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_OPT . ' - ' . HEADING_TITLE_VAL; ?></h1>
+        
+	<table border="0">
+		<tr>
+			<td class="main">
+			<form name="search" action="<?php echo FILENAME_PRODUCTS_OPTIONS; ?>" method="GET">
+			<?php echo TEXT_SEARCH; ?><input type="text" name="searchoption" size="20" value="<?php echo $_GET['searchoption']; ?>">
+			</form>
+			</td>
+			<td class="main">
+			<form name="option_order_by" action="<?php echo FILENAME_PRODUCTS_OPTIONS; ?>">
+			<select name="selected" onChange="go_option()">
+			<option value="products_options_id"<?php if ($option_order_by == 'products_options_id') { echo ' SELECTED'; } ?>>
+			<?php echo TEXT_OPTION_ID; ?></option>
+			<option value="products_options_name"<?php if ($option_order_by == 'products_options_name') { echo ' SELECTED'; } ?>>
+			<?php echo TEXT_OPTION_NAME; ?></option>
+			</select>
+			</form>		
+			</td>
+		</tr>
+	</table>	    
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <!-- options and values//-->
@@ -302,28 +322,6 @@ function go_option() {
       $option_order_by = 'products_options_id';
     }
 ?>
-              <tr>
-                <td colspan="4" class="pageHeading">
-					<table border="0">
-						<tr>
-							<td class="main">
-							<form name="search" action="<?php echo FILENAME_PRODUCTS_OPTIONS; ?>" method="GET">
-							<?php echo TEXT_SEARCH; ?><input type="text" name="searchoption" size="20" value="<?php echo $_GET['searchoption']; ?>">
-							</form>
-							</td>
-							<td class="main">
-							<form name="option_order_by" action="<?php echo FILENAME_PRODUCTS_OPTIONS; ?>">
-							<select name="selected" onChange="go_option()">
-							<option value="products_options_id"<?php if ($option_order_by == 'products_options_id') { echo ' SELECTED'; } ?>>
-							<?php echo TEXT_OPTION_ID; ?></option>
-							<option value="products_options_name"<?php if ($option_order_by == 'products_options_name') { echo ' SELECTED'; } ?>>
-							<?php echo TEXT_OPTION_NAME; ?></option>
-							</select>
-							</form>		
-							</td>
-						</tr>
-					</table>																
-				</td>  
               <tr>
                 <td colspan="3" class="smallText">
 <?php
@@ -475,7 +473,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                 <?php echo TEXT_ROWS; ?>: <input type="text" name="option_rows" size="4" value="1">
                 <?php echo TEXT_SIZE; ?>: <input type="text" name="option_size" size="4" value="32">
                 <?php echo TEXT_MAX_LENGTH; ?>: <input type="text" name="option_length" size="4" value="64">
-                <br /><?php echo TEXT_NOTE; ?><br />
+                <br /><br /><?php echo TEXT_NOTE; ?><br />
                 </td>
               </tr>  
                 
