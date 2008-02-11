@@ -147,10 +147,13 @@
 				
 
         <div class="tabbertab">
+
+			<table border="0" width="95%" cellspacing="0" cellpadding="0">
+			    <tr>
+					<td valign="top" width="100%" align="center">
+					
         <h3><?php echo TAB_CHART; ?></h3>				
-			<table border="0" width="100%" cellspacing="0" cellpadding="2">
-				<tr>
-					<td valign="top" width="95%" align="center">
+
 <?php
 include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
 open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_all_get_params(), 'NONSSL'), false );
