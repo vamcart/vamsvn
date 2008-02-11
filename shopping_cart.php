@@ -48,8 +48,8 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		// Push all attributes information in an array
 		if (isset ($products[$i]['attributes'])) {
 			while (list ($option, $value) = each($products[$i]['attributes'])) {
-				$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
-				$attributes = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model
+				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
+				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model
 				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
 				                                      where pa.products_id = '".$products[$i]['id']."'
 				                                       and pa.options_id = '".$option."'
@@ -60,9 +60,17 @@ if ($_SESSION['cart']->count_contents() > 0) {
 				                                       and poval.language_id = '".(int) $_SESSION['languages_id']."'");
 				$attributes_values = vam_db_fetch_array($attributes);
 
+				if($attributes_values['products_options_type']=='2' || $attributes_values['products_options_type']=='3'){
+					$hidden_options .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][txt_' . $option . '_'.$value.']',  $products[$i]['attributes_values'][$option]);
+				    $attr_value = $products[$i]['attributes_values'][$option];
+				}else{
+					$hidden_options .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $value);
+				    $attr_value = $attributes_values['products_options_values_name'];
+				}
+
 				$products[$i][$option]['products_options_name'] = $attributes_values['products_options_name'];
 				$products[$i][$option]['options_values_id'] = $value;
-				$products[$i][$option]['products_options_values_name'] = $attributes_values['products_options_values_name'];
+				$products[$i][$option]['products_options_values_name'] = $attr_value;
 				$products[$i][$option]['options_values_price'] = $attributes_values['options_values_price'];
 				$products[$i][$option]['price_prefix'] = $attributes_values['price_prefix'];
 				$products[$i][$option]['weight_prefix'] = $attributes_values['weight_prefix'];
