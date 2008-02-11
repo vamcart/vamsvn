@@ -193,11 +193,11 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['categories'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL') . '">' . BOX_CATEGORIES . '</a></li>' . "\n";
 
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['new_attributes'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_NEW_ATTRIBUTES, '', 'NONSSL') . '">' . BOX_ATTRIBUTES_MANAGER . '</a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_options'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL') . '">' . BOX_PRODUCTS_OPTIONS . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_attributes'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '', 'NONSSL') . '">' . BOX_PRODUCTS_ATTRIBUTES . '</a></li>' . "\n";
 
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_options'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL') . '">' . BOX_PRODUCTS_OPTIONS . '</a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['new_attributes'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_NEW_ATTRIBUTES, '', 'NONSSL') . '">' . BOX_ATTRIBUTES_MANAGER . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['manufacturers'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '">' . BOX_MANUFACTURERS . '</a></li>' . "\n";
 
