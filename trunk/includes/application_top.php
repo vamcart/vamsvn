@@ -550,17 +550,6 @@ if (isset ($_SESSION['customer_id'])) {
 unset ($_SESSION['actual_content']);
 vam_count_cart();
 
-
-  // get referrer from _SERVER array  ************
-//  Referer ***********
-//    if (!vam_session_is_registered('referer')) {
-        $ref = $_SERVER["HTTP_REFERER"];
-//         vam_session_register('referer');
-         $referer =$ref;
-//         }
-           $html_referer = $referer ;
-//***********************
-
 // include the articles functions
   require(DIR_WS_FUNCTIONS . 'articles.php');
 
@@ -633,8 +622,10 @@ vam_count_cart();
       }
     }
   }
+
+$html_referer = $_SESSION['tracking']['http_referer']['scheme'] . '://' . $_SESSION['tracking']['http_referer']['host'] . $_SESSION['tracking']['http_referer']['path'] . '?' . $_SESSION['tracking']['http_referer']['query'];
   
-    require('includes/local_modules.php');
+require('includes/local_modules.php');
 
 require_once(DIR_FS_CATALOG.'includes/classes/vam_template.php');
 
