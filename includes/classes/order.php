@@ -77,7 +77,7 @@
                                 'value'=>$totals['value']);
       }
 
-      $order_total_query = vam_db_query("select text, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $order_id . "' and class = 'ot_total'");
+      $order_total_query = vam_db_query("select text from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $order_id . "' and class = 'ot_total'");
       $order_total = vam_db_fetch_array($order_total_query);
 
       $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . $order_id . "' and class = 'ot_shipping'");
@@ -380,11 +380,17 @@
           $subindex = 0;
           reset($products[$i]['attributes']);
           while (list($option, $value) = each($products[$i]['attributes'])) {
-            $attributes_query = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $products[$i]['id'] . "' and pa.options_id = '" . $option . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $value . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $_SESSION['languages_id'] . "' and poval.language_id = '" . $_SESSION['languages_id'] . "'");
+            $attributes_query = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $products[$i]['id'] . "' and pa.options_id = '" . $option . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $value . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $_SESSION['languages_id'] . "' and poval.language_id = '" . $_SESSION['languages_id'] . "'");
             $attributes = vam_db_fetch_array($attributes_query);
 
+            if($attributes['products_options_type']=='2' || $attributes['products_options_type']=='3'){
+              $attr_value = $products[$i]['attributes_values'][$option];
+            } else {
+              $attr_value = $attributes['products_options_values_name'];
+            }
+
             $this->products[$index]['attributes'][$subindex] = array('option' => $attributes['products_options_name'],
-                                                                     'value' => $attributes['products_options_values_name'],
+                                                                     'value' => $attr_value,
                                                                      'option_id' => $option,
                                                                      'value_id' => $value,
                                                                      'prefix' => $attributes['price_prefix'],
