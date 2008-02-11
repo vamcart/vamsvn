@@ -563,5 +563,6 @@ define('FILENAME_EMAIL_MANAGER','email_manager.php');
   define('FILENAME_CATEGORY_SPECIALS', 'category_specials.php');
 
   define('FILENAME_PRODUCTS_OPTIONS', 'products_options.php');
+  define('TABLE_PRODUCTS_OPTIONS_IMAGES','products_options_images');
   
 ?>

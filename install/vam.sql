@@ -940,6 +940,15 @@ CREATE TABLE products_options_values (
   PRIMARY KEY  (products_options_values_id,language_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_options_images;
+CREATE TABLE products_options_images (
+  image_id INT NOT NULL auto_increment,
+  products_options_values_id INT NOT NULL ,
+  image_nr SMALLINT NOT NULL ,
+  image_name VARCHAR( 254 ) NOT NULL ,
+  PRIMARY KEY ( image_id )
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
 DROP TABLE IF EXISTS products_options_values_to_products_options;
 CREATE TABLE products_options_values_to_products_options (
   products_options_values_to_products_options_id int NOT NULL auto_increment,
