@@ -26,8 +26,8 @@
   $type_array[]=array('id'=>'2','text'=>TEXT_TYPE_TEXT);
   $type_array[]=array('id'=>'3','text'=>TEXT_TYPE_TEXTAREA);
   $type_array[]=array('id'=>'4','text'=>TEXT_TYPE_RADIO);
-  $type_array[]=array('id'=>'6','text'=>TEXT_TYPE_CHECKBOX);
-  $type_array[]=array('id'=>'7','text'=>TEXT_TYPE_READ_ONLY);
+  $type_array[]=array('id'=>'5','text'=>TEXT_TYPE_CHECKBOX);
+  $type_array[]=array('id'=>'6','text'=>TEXT_TYPE_READ_ONLY);
 
   if ($_GET['action']) {
     $page_info = 'option_page=' . $_GET['option_page'] . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $_GET['attribute_page'];
