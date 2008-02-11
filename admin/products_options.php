@@ -223,7 +223,7 @@ function go_option() {
     
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_OPT . ' - ' . HEADING_TITLE_VAL; ?></h1>
         
-	<table border="0">
+	<table border="0" align="right" cellpadding="2" cellspacing="0">
 		<tr>
 			<td class="main">
 			<form name="search" action="<?php echo FILENAME_PRODUCTS_OPTIONS; ?>" method="GET">
@@ -242,7 +242,7 @@ function go_option() {
 			</td>
 		</tr>
 	</table>	    
-    
+    <br />
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <!-- options and values//-->
             <td valign="top" width="100%"><table width="100%" border="0" cellspacing="0" cellpadding="2">
