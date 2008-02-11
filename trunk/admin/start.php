@@ -72,7 +72,9 @@ require ('includes/application_top.php');
         <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
         </td>
        </tr>
+     </table>
 
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
 <tr>
 <td>
 

@@ -17,10 +17,9 @@
 defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 ?>
-          <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+
 				  <tr> 
-				    <td colspan="3" class="pageHeading" width="100%">
+				    <td colspan="2" class="pageHeading" width="100%">
 
     <h1 class="contentBoxHeading"><?php echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, '', 'NONSSL') . '">' . BOX_SALES_REPORT . '</a>'; ?></h1>
 				    
@@ -31,15 +30,12 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
                 <td class="dataTableContentRss" valign="top" width="50%">
 <?php
 include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
-open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_all_get_params(), 'NONSSL'), false );
+open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', 'NONSSL'), false );
 ?>
                 </td>
-                <td class="dataTableContentRss" valign="top" width="45%">
+                <td class="dataTableContentRss" valign="top" width="50%">
 <?php
 open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', 'report_type=orders', 'NONSSL'), false );
 ?>
                 </td>
-              </tr>
-
-                </table></td>
               </tr>
