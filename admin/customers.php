@@ -1026,8 +1026,7 @@ if ($error == true) {
         
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr><?php echo vam_draw_form('search', FILENAME_CUSTOMERS, '', 'get'); ?>
-            <td class="pageHeading"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '">' . BUTTON_CREATE_ACCOUNT . '</a>'; ?></td>
-            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading" align="left"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '">' . BUTTON_CREATE_ACCOUNT . '</a>'; ?></td>
             <td class="smallText" align="right"><?php echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?></td>
           </form></tr>
           <tr><?php echo vam_draw_form('status', FILENAME_CUSTOMERS, '', 'get'); ?>
@@ -1140,10 +1139,7 @@ if ($error == true) {
 			$reviews_query = vam_db_query("select count(*) as number_of_reviews from ".TABLE_REVIEWS." where customers_id = '".$customers['customers_id']."'");
 			$reviews = vam_db_fetch_array($reviews_query);
 
-        $reference_query = vam_db_query("select orig_reference, login_reference from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customers['customers_id'] . "'");
-        $reference = vam_db_fetch_array($reference_query);
-        
-        $customer_info = array_merge($country, $info, $reviews, $reference);
+        $customer_info = array_merge($country, $info, $reviews);
         
 			$cInfo_array = vam_array_merge($customers, $customer_info);
 			$cInfo = new objectInfo($cInfo_array);
@@ -1286,7 +1282,6 @@ if ($error == true) {
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_NUMBER_OF_LOGONS.' '.$cInfo->number_of_logons);
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_COUNTRY.' '.$cInfo->countries_name);
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_NUMBER_OF_REVIEWS.' '.$cInfo->number_of_reviews);
-            $contents[] = array('text' => '<br>' . TEXT_INFO_ORIGINAL_REFERER . ' ' . $cInfo->orig_reference);
 			}
 
 			if ($_GET['action'] == 'iplog') {
