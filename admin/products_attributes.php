@@ -33,7 +33,8 @@
       case 'add_product_option_values':
         for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
           $value_name = $_POST['value_name'];
-          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . $_POST['value_id'] . "', '" . $languages[$i]['id'] . "', '" . $value_name[$languages[$i]['id']] . "')");
+          $value_description = $_POST['value_description'];
+          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name, products_options_values_description) values ('" . $_POST['value_id'] . "', '" . $languages[$i]['id'] . "', '" . $value_name[$languages[$i]['id']] . "', '" . $value_description[$languages[$i]['id']] . "')");
         }
 			vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " (products_options_id, products_options_values_id) values ('" . $_POST['option_id'] . "', '" . $_POST['value_id'] . "')");
 			vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
@@ -55,8 +56,10 @@
 			break;
 		case 'update_value' :
        $value_name = $_POST['value_name'];
+       $value_description = $_POST['value_description'];
        for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
          vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . $value_name[$languages[$i]['id']] . "' where products_options_values_id = '" . $_POST['value_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
+         vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_description = '" . $value_description[$languages[$i]['id']] . "' where products_options_values_id = '" . $_POST['value_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
        }
        vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " set products_options_id = '" . $_POST['option_id'] . "' where products_options_values_id = '" . $_POST['value_id'] . "'");
        vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
