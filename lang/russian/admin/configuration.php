@@ -766,4 +766,7 @@ define('SESSION_TIMEOUT_ADMIN_DESC','Время жизни сессии адми
 define('SESSION_TIMEOUT_CATALOG_TITLE','Сессия покупателя');
 define('SESSION_TIMEOUT_CATALOG_DESC','Время жизни сессии покупателя (секунд).');
 
+define('STAY_PAGE_EDIT_TITLE','Оставаться на странице редактирования');
+define('STAY_PAGE_EDIT_DESC','После нажатия кнопки сохранить, оставаться на странице редактирования товара/категории (true) или возвращаться к списку товаров/категорий (false).');
+
 ?>

@@ -110,7 +110,13 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 <?php } ?>
 
 <tr><td>
-<?php $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product'; ?>
+<?php 
+if (STAY_PAGE_EDIT == 'true') { 
+$form_action = ($_GET['pID']) ? 'new_product' : 'insert_product'; 
+} else { 
+$form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';  
+} 
+?>
 <?php $fsk18_array=array(array('id'=>0,'text'=>NO),array('id'=>1,'text'=>YES)); ?>
 <span class="pageHeading"><?php echo sprintf(TEXT_NEW_PRODUCT, vam_output_generated_category_path($current_category_id)); ?></span><br />
 <?php
