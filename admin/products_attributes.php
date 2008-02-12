@@ -345,13 +345,15 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 	</select>
 	</td>
    </tr>
+<!--   
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
     <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
     <td class="dataTableContent">
     <?php include(DIR_WS_MODULES.'options_images.php'); ?>
     </td>
-  </tr> 
+  </tr>
+-->
 <?php
 
 
@@ -430,6 +432,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 ?>
                 </select><input type="hidden" name="value_id" value="<?php echo $next_id; ?>"></td>
                 </tr>
+<!--
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
     <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
@@ -437,7 +440,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
     <?php include(DIR_WS_MODULES.'options_images.php'); ?>
     </td>
   </tr>                
-
+-->
 <?php
 
 
