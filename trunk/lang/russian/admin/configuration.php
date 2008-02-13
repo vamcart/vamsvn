@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2007-10-07 17:36:57 VaM $
+   $Id: configuration.php 1286 2008-02-13 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -169,7 +169,7 @@ define('MAX_DISPLAY_PRODUCTS_NEW_DESC', 'Максимальное количес
 define('MAX_DISPLAY_BESTSELLERS_TITLE' , 'Лидеры продаж');
 define('MAX_DISPLAY_BESTSELLERS_DESC', 'Максимальное количество лидеров продаж, выводимых в боксе Лидеры продаж');
 define('MAX_DISPLAY_ALSO_PURCHASED_TITLE' , 'Также заказали');
-define('MAX_DISPLAY_ALSO_PURCHASED_DESC', 'Максимальное количество товаров в боксе Наши покупатели также заказали');
+define('MAX_DISPLAY_ALSO_PURCHASED_DESC', 'Максимальное количество товаров в блоке Наши покупатели также заказали, а также данная опция регулирует максимальное количество товара, выводимого в блоке связанных со статьёй товаров.');
 define('MAX_DISPLAY_PRODUCTS_IN_ORDER_HISTORY_BOX_TITLE' , 'Бокс История заказов');
 define('MAX_DISPLAY_PRODUCTS_IN_ORDER_HISTORY_BOX_DESC', 'Максимальное количество товаров, выводимых в боксе История заказов');
 define('MAX_DISPLAY_ORDER_HISTORY_TITLE' , 'История заказов');
