@@ -1139,7 +1139,7 @@ if ($error == true) {
 			$reviews_query = vam_db_query("select count(*) as number_of_reviews from ".TABLE_REVIEWS." where customers_id = '".$customers['customers_id']."'");
 			$reviews = vam_db_fetch_array($reviews_query);
 
-        $customer_info = array_merge($country, $info, $reviews);
+        $customer_info = array_merge((array)$country, (array)$info, (array)$reviews);
         
 			$cInfo_array = vam_array_merge($customers, $customer_info);
 			$cInfo = new objectInfo($cInfo_array);
