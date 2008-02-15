@@ -18,7 +18,7 @@
    --------------------------------------------------------------*/
 
 define('HEADING_TITLE_OPT', 'Атрибуты товаров');
-define('HEADING_TITLE_VAL', 'Значения атрибутов');
+define('HEADING_TITLE_VAL', 'Названия атрибутов');
 define('HEADING_TITLE_ATRIB', 'Атрибуты товаров');
 
 define('TABLE_HEADING_ID', 'ID');
