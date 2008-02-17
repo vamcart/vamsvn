@@ -26,7 +26,7 @@
 
       $wo_full_name = addslashes($customer['customers_firstname'] . ' ' . $customer['customers_lastname']);
     } else {
-      $wo_customer_id = '';
+      $wo_customer_id = 0;
       $wo_full_name = TEXT_GUEST;
     }
 
