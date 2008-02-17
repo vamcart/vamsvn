@@ -161,6 +161,10 @@
                      '  define(\'DIR_FS_DOWNLOAD_PUBLIC\', DIR_FS_CATALOG . \'pub/\');' . "\n" .
                      '  define(\'DIR_FS_INC\', DIR_FS_CATALOG . \'inc/\');' . "\n" .
                      '' . "\n" .
+                     '  define(\'DIR_FS_FORUM_ROOT\', \'\');' . "\n" .
+                     '  define(\'DIR_FS_SITE_ROOT\', \'\');' . "\n" .
+                     '  define(\'VAM_COOKIE_NAME\', \'VAMCookie\');' . "\n" .
+                     '' . "\n" .
                      '// define our database connection' . "\n" .
                      '  define(\'DB_SERVER\', \'' . $_POST['DB_SERVER'] . '\'); // eg, localhost - should not be empty for productive servers' . "\n" .
                      '  define(\'DB_SERVER_USERNAME\', \'' . $_POST['DB_SERVER_USERNAME'] . '\');' . "\n" .
@@ -232,6 +236,10 @@
                      '  define(\'DIR_FS_BACKUP\', DIR_FS_ADMIN . \'backups/\');' . "\n" .
                      '  define(\'DIR_FS_INC\', DIR_FS_CATALOG . \'inc/\');' . "\n" .
                      '  define(\'DIR_WS_FILEMANAGER\', DIR_WS_MODULES . \'fckeditor/editor/filemanager/browser/default/\');' . "\n" .
+                     '' . "\n" .
+                     '  define(\'DIR_FS_FORUM_ROOT\', \'\');' . "\n" .
+                     '  define(\'DIR_FS_SITE_ROOT\', \'\');' . "\n" .
+                     '  define(\'VAM_COOKIE_NAME\', \'VAMCookie\');' . "\n" .
                      '' . "\n" .
                      '// define our database connection' . "\n" .
                      '  define(\'DB_SERVER\', \'' . $_POST['DB_SERVER'] . '\'); // eg, localhost - should not be empty for productive servers' . "\n" .
