@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: buttons.php 1125 2007-02-07 17:36:57 VaM $
+   $Id: buttons.php 1125 2008-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -54,7 +54,7 @@ define('BUTTON_NEW_ORDER', 'Создать заказ');
 define('BUTTON_CREATE_ACCOUNT', 'Создать покупателя');
 define('BUTTON_SEARCH', 'Поиск');
 define('BUTTON_PRODUCT_OPTIONS', 'Атрибуты');
-define('BUTTON_PREVIEW', 'Предварительные просмотр');
+define('BUTTON_PREVIEW', 'Предварительный просмотр');
 define('BUTTON_MODULE_REMOVE', 'Удалить');
 define('BUTTON_MODULE_INSTALL', 'Установить');
 define('BUTTON_START', 'Старт');
