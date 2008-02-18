@@ -55,12 +55,12 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_author = '&author='.vam_cleanName($authors['authors_name']);
 
-        $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
+        $authors_name = ((utf8_strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? utf8_substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($_GET['authors_id']) && ($_GET['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
         $authors_list .= '<a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
       }
 
-      $authors_list = substr($authors_list, 0, -4);
+      $authors_list = utf8_substr($authors_list, 0, -4);
 
       $content_string .= $authors_list;
     } else {
@@ -71,7 +71,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !
       }
 
       while ($authors = vam_db_fetch_array($authors_query,true)) {
-        $authors_name = ((strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
+        $authors_name = ((utf8_strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? utf8_substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         $authors_array[] = array('id' => $authors['authors_id'],
                                        'text' => $authors_name);
       }
