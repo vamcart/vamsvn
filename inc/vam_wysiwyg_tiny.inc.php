@@ -61,7 +61,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -120,7 +119,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -179,7 +177,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -238,7 +235,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -297,7 +293,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -356,7 +351,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -415,7 +409,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -474,7 +467,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -533,7 +525,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -592,7 +583,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
@@ -651,7 +641,6 @@ tinyMCE.init({
 	   paste_convert_middot_lists : false,
 	   paste_unindented_list_class : "unindentedList",
 	   paste_convert_headers_to_strong : true,
-	   paste_insert_word_content_callback : "convertWord",	
 		external_link_list_url : "example_data/example_link_list.js",
 		external_image_list_url : "example_data/example_image_list.js",
 		flash_external_list_url : "example_data/example_flash_list.js"  
