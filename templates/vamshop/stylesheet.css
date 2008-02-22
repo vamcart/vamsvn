@@ -514,6 +514,33 @@ div#navigation
      border-bottom-color: #67748B;
    }
 
+/*- Заголовок бокса контент */
+#boxContent h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #CC0000;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса контент */
+
+/*- Содержимое бокса контент */
+#boxContentContent 
+   {
+     padding-left: 0;
+     text-align: center;
+  }
+
+#boxContentContent p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
 #boxContent ul
    {
      list-style-type: none;
@@ -529,6 +556,8 @@ div#navigation
      background: url(img/icon_arrow1.jpg) no-repeat left center;
      padding: 0 0 0 12px; 
    }
+
+/*- /Содержимое бокса контент */
 
 /*- /Бокс контент */
 
@@ -546,6 +575,33 @@ div#navigation
      border-bottom-color: #67748B;
    }
 
+/*- Заголовок бокса информация */
+#boxInformation h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #CC0000;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса информация */
+
+/*- Содержимое бокса информация */
+#boxInformationContent 
+   {
+     padding-left: 0;
+     text-align: center;
+  }
+
+#boxInformationContent p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
 #boxInformation ul
    {
      list-style-type: none;
@@ -560,6 +616,8 @@ div#navigation
    background: url(img/icon_arrow2.jpg) no-repeat left center;
    padding: 0 0 0 12px; 
 }
+
+/*- /Содержимое бокса контент */
 
 /*- /Бокс информация */
 
