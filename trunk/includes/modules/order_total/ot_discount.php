@@ -35,7 +35,7 @@
     function process() {
       global $order, $vamPrice;
 //      echo 'xx';
-      $this->title = $_SESSION['customers_status']['customers_status_ot_discount'] . ' % ' . SUB_TITLE_OT_DISCOUNT;
+      $this->title = SUB_TITLE_OT_DISCOUNT . ' ' . $_SESSION['customers_status']['customers_status_ot_discount'] . '%';
       if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' && $_SESSION['customers_status']['customers_status_ot_discount']!='0.00') {
         $discount_price = $vamPrice->Format($order->info['subtotal'], false) / 100 * $_SESSION['customers_status']['customers_status_ot_discount']*-1;
         $this->output[] = array('title' => $this->title . ':',
