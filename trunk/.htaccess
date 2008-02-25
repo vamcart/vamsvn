@@ -80,3 +80,5 @@
   php_value mbstring.internal_encoding UTF-8
   php_value mbstring.language Russian
 </IfModule>
+
+AddDefaultCharset utf-8
