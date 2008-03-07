@@ -100,6 +100,9 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 
 		$info->assign('PRODUCTS_IMAGE', $image);
 
+		$image_pop = DIR_WS_POPUP_IMAGES.$product->data['products_image'];
+		$info->assign('PRODUCTS_POPUP_IMAGE', $image_pop);
+		
 		//mo_images - by Novalis@eXanto.de
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
 			$connector = '/';
@@ -114,10 +117,11 @@ $info->assign('PRODUCTS_POPUP_LINK', $products_popup_link);
         if ($mo_images != false) {
     $info->assign('PRODUCTS_MO_IMAGES', $mo_images);
             foreach ($mo_images as $img) {
-                $products_mo_popup_link = vam_href_link(FILENAME_POPUP_IMAGE, 'pID=' . $product->data['products_id'] . $connector . 'imgID='.$img['image_nr']);
+                $products_mo_popup_link = DIR_WS_POPUP_IMAGES . $img['image_name'];
 if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_link = '';
                 $mo_img[] = array(
-                'PRODUCTS_MO_IMAGE' => vam_image(DIR_WS_INFO_IMAGES . $img['image_name'], '', '', '', 'class="mo_img"'),
+                'PRODUCTS_MO_IMAGE' => DIR_WS_INFO_IMAGES . $img['image_name'],
+                'PRODUCTS_MO_POPUP_IMAGE' => $products_mo_popup_link,
                 'PRODUCTS_MO_POPUP_LINK' => $products_mo_popup_link);
         $info->assign('mo_img', $mo_img);
             }
