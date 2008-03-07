@@ -195,28 +195,10 @@ function checkForm() {
 //--></script>
 <?php
 }
-if (strstr($PHP_SELF, FILENAME_POPUP_IMAGE )) {
-?>
-
-<script type="text/javascript"><!--
-var i=0;
-function resize() {
-  if (navigator.appName == 'Netscape') i=40;
-  if (document.images[0]) window.resizeTo(document.images[0].width +30, document.images[0].height+60-i);
-  self.focus();
-}
-//--></script>
-<?php
-}
-
 ?>
 </head>
+<body>
 <?php
-if (strstr($PHP_SELF, FILENAME_POPUP_IMAGE )) {
-echo '<body onload="resize();"> ';
-} else {
-echo '<body>';
-}
 
   // include needed functions
   require_once(DIR_FS_INC.'vam_output_warning.inc.php');
