@@ -172,6 +172,7 @@ class Tc_addfile extends ContribInstallerBaseTag {
       if ($this->error)    return;
       for($i = 0; $i < count($this->data['filename']);$i++){
         $backup_file=DIR_FS_ADMIN_BACKUP.$this->contrib.'/'.$this->data['filename'][$i];
+        if (!file_exists($backup_file)) @unlink($this->fs_filename($i));
         if (ALLOW_FILES_RESTORE=='false' && file_exists($backup_file))     $this->restore_file($this->data['filename'][$i]);
       }
       return $this->error;
