@@ -47,6 +47,15 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
+<?php
+if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
+?>
+<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
+<script type="text/javascript" src="jscript/jquery/plugins/thickbox/thickbox.js"></script>
+<link rel="stylesheet" href="jscript/jquery/plugins/thickbox/thickbox.css" type="text/css" media="screen" />
+<?php
+ }
+?>
 <script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
 <script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <?php
