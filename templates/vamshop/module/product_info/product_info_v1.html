@@ -9,13 +9,12 @@
 <div class="pagecontent">
 
 <div class="ProductInfoLeft">
-{if $PRODUCTS_POPUP_LINK!=''}
-<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/thickbox/thickbox.js"></script>
-<link rel="stylesheet" href="jscript/jquery/plugins/thickbox/thickbox.css" type="text/css" media="screen" />
-{/if}
 {if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
 {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="thickbox" {if $PRODUCTS_MO_IMAGES}rel="gallery-plants"{/if} target="_blank">{/if}<img src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
+{/if}
+
+{if $PRODUCTS_POPUP_LINK!=''}
+<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="thickbox" {if $PRODUCTS_MO_IMAGES}rel="gallery-plants"{/if} target="_blank"><img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="12" height="12" /></a>
 {/if}
 
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
@@ -108,6 +107,9 @@
 {if $PRODUCTS_MO_IMAGES}
 {foreach name=mo_pic item=img_values from=$mo_img}
 {if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="thickbox" rel="gallery-plants" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}&nbsp;
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}
+<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="thickbox" rel="gallery-plants" target="_blank"><img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="12" height="12" /></a>
+{/if}
 {/foreach}
 {/if}
 <!-- more images eof -->
