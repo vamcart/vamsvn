@@ -368,8 +368,8 @@ if (isset($_SESSION['language']) && !isset($_SESSION['language_charset'])) {
 	
 }
 // include the language translations
-require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.php');
-require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.inc.php');
+require_once (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.php');
+require_once (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.inc.php');
 
 // currency
 if (!isset ($_SESSION['currency']) || isset ($_GET['currency']) || ((USE_DEFAULT_LANGUAGE_CURRENCY == 'true') && (LANGUAGE_CURRENCY != $_SESSION['currency']))) {
