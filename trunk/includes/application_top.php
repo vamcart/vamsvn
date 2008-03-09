@@ -29,6 +29,9 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
+   
+  header('Content-Type: text/html; charset=utf-8');
+   
 // start the timer for the page parse time log
 define('PAGE_PARSE_START_TIME', microtime());
 define('DEBUG', false);
