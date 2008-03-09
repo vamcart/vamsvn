@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vam_date_raw.inc.php 899 2008-02-07 10:51:57 VaM $
+   $Id: english.inc.php 899 2008-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -16,10 +16,14 @@
    ---------------------------------------------------------------------------------------*/
    
 
-////
-// Return date in raw format
-// $date should be in format mm/dd/yyyy
-// raw date is in format YYYYMMDD, or DDMMYYYY
+function vam_date_long_translate($date_string) {
+$eng = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+$loc = array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря");
+
+return str_replace($eng, $loc, $date_string);
+}
+
+////// Return date in raw format// $date should be in format mm/dd/yyyy// raw date is in format YYYYMMDD, or DDMMYYYY
 function vam_date_raw($date, $reverse = false) {
   if ($reverse) {
     return substr($date, 3, 2) . substr($date, 0, 2) . substr($date, 6, 4);
