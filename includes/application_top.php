@@ -165,8 +165,6 @@ require_once (DIR_FS_INC.'vam_input_validation.inc.php');
 require_once (DIR_FS_INC.'vam_js_lang.php');
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
 require_once (DIR_FS_INC.'vam_break_string.inc.php');
-require_once (DIR_FS_INC.'vam_date_raw.inc.php');
-require_once (DIR_FS_INC.'vam_date_long_translate.inc.php');
 
 // make a connection to the database... now
 vam_db_connect() or die('Unable to connect to database server!');
@@ -371,6 +369,7 @@ if (isset($_SESSION['language']) && !isset($_SESSION['language_charset'])) {
 }
 // include the language translations
 require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.php');
+require (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.inc.php');
 
 // currency
 if (!isset ($_SESSION['currency']) || isset ($_GET['currency']) || ((USE_DEFAULT_LANGUAGE_CURRENCY == 'true') && (LANGUAGE_CURRENCY != $_SESSION['currency']))) {
