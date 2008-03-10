@@ -627,7 +627,7 @@ vam_count_cart();
     }
   }
 
-$html_referer = $_SESSION['tracking']['http_referer']['scheme'] . '://' . $_SESSION['tracking']['http_referer']['host'] . $_SESSION['tracking']['http_referer']['path'] . '?' . $_SESSION['tracking']['http_referer']['query'];
+if (isset($_SESSION['tracking']['http_referer'])) $html_referer = $_SESSION['tracking']['http_referer']['scheme'] . '://' . $_SESSION['tracking']['http_referer']['host'] . $_SESSION['tracking']['http_referer']['path'] . '?' . $_SESSION['tracking']['http_referer']['query'];
   
 require('includes/local_modules.php');
 
