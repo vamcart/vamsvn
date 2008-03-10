@@ -162,6 +162,11 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=23', 'NONSSL') . '">' . BOX_CONFIGURATION_23 . '</a></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '">' . BOX_CONFIGURATION_24 . '</a></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=25', 'NONSSL') . '">' . BOX_CONFIGURATION_25 . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['configuration'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+
 ?>
 
 				</ul>
@@ -180,6 +185,14 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '">' . BOX_CAMPAIGNS . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['orders_status'] == '0') && 
+ ($admin_access['shipping_status'] == '0') && 
+ ($admin_access['products_vpe'] == '0') && 
+ ($admin_access['campaigns'] == '0') && 
+ ($admin_access['cross_sell_groups'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
   
 ?>
 
@@ -207,6 +220,17 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['featured'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_FEATURED, '', 'NONSSL') . '">' . BOX_FEATURED . '</a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['categories'] == '0') && 
+ ($admin_access['products_options'] == '0') && 
+ ($admin_access['products_attributes'] == '0') && 
+ ($admin_access['new_attributes'] == '0') && 
+ ($admin_access['manufacturers'] == '0') && 
+ ($admin_access['reviews'] == '0') && 
+ ($admin_access['specials'] == '0') && 
+ ($admin_access['featured'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+
 ?>
 
 		</ul>
@@ -222,6 +246,12 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_status'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CUSTOMERS_STATUS, '', 'NONSSL') . '">' . BOX_CUSTOMERS_STATUS . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_ORDERS, '', 'NONSSL') . '">' . BOX_ORDERS . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['customers'] == '0') && 
+ ($admin_access['customers_status'] == '0') && 
+ ($admin_access['orders'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
 
 ?>
 
@@ -242,6 +272,12 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_export'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_MODULE_EXPORT) . '">' . BOX_MODULE_EXPORT . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cip_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CIP_MANAGER) . '">' . BOX_CONTRIBUTION_INSTALLER . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['modules'] == '0') && 
+ ($admin_access['module_export'] == '0') && 
+ ($admin_access['cip_manager'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
 
 ?>
 
@@ -265,6 +301,14 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['tax_rates'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_TAX_RATES, '', 'NONSSL') . '">' . BOX_TAX_RATES . '</a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['countries'] == '0') && 
+ ($admin_access['zones'] == '0') && 
+ ($admin_access['geo_zones'] == '0') &&
+ ($admin_access['tax_classes'] == '0') &&
+ ($admin_access['tax_rates'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+ 
 ?>
 
 				</ul>
@@ -278,6 +322,11 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_LANGUAGES, '', 'NONSSL') . '">' . BOX_LANGUAGES . '</a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['currencies'] == '0') && 
+ ($admin_access['languages'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+ 
 ?>
 
 				</ul>
@@ -295,6 +344,13 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['gv_mail'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_GV_MAIL, '', 'NONSSL') . '">' . BOX_GV_ADMIN_MAIL . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['gv_sent'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_GV_SENT, '', 'NONSSL') . '">' . BOX_GV_ADMIN_SENT . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['coupon_admin'] == '0') && 
+ ($admin_access['gv_queue'] == '0') && 
+ ($admin_access['gv_mail'] == '0') && 
+ ($admin_access['gv_sent'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
 
 ?>
 
@@ -318,6 +374,14 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_campaigns'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CAMPAIGNS_REPORT, '', 'NONSSL') . '">' . BOX_CAMPAIGNS_REPORT . '</a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['stats_products_viewed'] == '0') && 
+ ($admin_access['stats_products_purchased'] == '0') && 
+ ($admin_access['stats_sales_report'] == '0') && 
+ ($admin_access['stats_sales_report2'] == '0') && 
+ ($admin_access['stats_campaigns'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+
 ?>
 
 				</ul>
@@ -335,6 +399,13 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['authors'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '">' . BOX_ARTICLES_AUTHORS . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '">' . BOX_ARTICLES_XSELL . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['articles'] == '0') && 
+ ($admin_access['articles_config'] == '0') && 
+ ($admin_access['authors'] == '0') && 
+ ($admin_access['articles_xsell'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
 
 ?>
 
@@ -372,6 +443,22 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_EMAIL_MANAGER) . '">' . BOX_TOOLS_EMAIL_MANAGER . '</a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['backup'] == '0') && 
+ ($admin_access['content_manager'] == '0') && 
+ ($admin_access['blacklist'] == '0') && 
+ ($admin_access['module_newsletter'] == '0') && 
+ ($admin_access['banner_manager'] == '0') && 
+ ($admin_access['server_info'] == '0') && 
+ ($admin_access['latest_news'] == '0') && 
+ ($admin_access['whos_online'] == '0') && 
+ ($admin_access['easypopulate'] == '0') && 
+ ($admin_access['csv_backend'] == '0') && 
+ ($admin_access['quick_updates'] == '0') && 
+ ($admin_access['recover_cart_sales'] == '0') && 
+ ($admin_access['email_manager'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
+
 ?>
 
 				</ul>
@@ -383,6 +470,10 @@
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li><a href="http://vamshop.ru" target="_blank">' . BOX_SUPPORT_SITE . '</a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['languages'] == '0')
+ ) echo '<li><a href="#"></a></li>'; 
 
 ?>
 
