@@ -466,7 +466,7 @@ CREATE TABLE customers (
   login_reference text,
   login_tries char(2) NOT NULL default '0',
   login_time datetime NOT NULL default '0000-00-00 00:00:00',
-  customers_username VARCHAR(40) DEFAULT NULL,
+  customers_username VARCHAR(64) DEFAULT NULL,
   customers_fid INT(5) DEFAULT NULL,
   customers_sid INT(5) DEFAULT NULL,
   PRIMARY KEY (customers_id)
