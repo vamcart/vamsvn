@@ -438,7 +438,7 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
   customers_id int NOT NULL auto_increment,
   customers_cid varchar(255),
-  customers_vat_id varchar (20),
+  customers_vat_id varchar (20) DEFAULT NULL,
   customers_vat_id_status int(2) DEFAULT '0' NOT NULL,
   customers_warning varchar(255),
   customers_status int(5) DEFAULT '1' NOT NULL,
@@ -648,7 +648,7 @@ CREATE TABLE orders (
   orders_id int NOT NULL auto_increment,
   customers_id int NOT NULL,
   customers_cid varchar(255),
-  customers_vat_id varchar (20),
+  customers_vat_id varchar (20) DEFAULT NULL,
   customers_status int(11),
   customers_status_name varchar(255) NOT NULL,
   customers_status_image varchar (64),
