@@ -75,12 +75,8 @@
 
 <tr>
 <td>
-      <?php
-if (STAY_PAGE_EDIT == 'true') { 
-$form_action = ($_GET['cID']) ? 'new_category' : 'insert_category'; 
-} else { 
+<?php
 $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category'; 
-} 
 
     echo vam_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
