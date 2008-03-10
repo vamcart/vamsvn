@@ -46,4 +46,9 @@ define('TEXT_DELETE_WARNING_PRODUCTS', '<b>ПРЕДУПРЕЖДЕНИЕ:</b> %s 
 
 define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Ошибка: В эту директорию невозможно записать. Смените права доступа для: %s');
 define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория не существует: %s');
+
+define('TEXT_MANUFACTURERS_META_TITLE', 'Meta title:');
+define('TEXT_MANUFACTURERS_META_KEYWORDS', 'Meta keywords:');
+define('TEXT_MANUFACTURERS_META_DESCRIPTION', 'Meta description:');
+
 ?>
