@@ -17,13 +17,13 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
  //  include(DIR_WS_CLASSES.'/adodb/adodb.inc.php');
-  function vam_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  function vam_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link', $use_pconnect = USE_PCONNECT, $new_link = false) {
     global $$link;
 
-    if (USE_PCONNECT == 'true') {
+    if ($use_pconnect == 'true') {
      $$link = mysql_pconnect($server, $username, $password);
     } else {
-$$link = @mysql_connect($server, $username, $password);
+$$link = @mysql_connect($server, $username, $password, $new_link);
     
    }
 

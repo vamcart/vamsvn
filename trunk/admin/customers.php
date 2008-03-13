@@ -294,7 +294,7 @@ if ($_GET['action']) {
 			}
 
 			if ($error == false) {
-				$sql_data_array = array ('customers_firstname' => $customers_firstname, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_newsletter' => $customers_newsletter,'customers_last_modified' => 'now()');
+				$sql_data_array = array ('customers_firstname' => $customers_firstname, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => (int)$customers_vat_id_status, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_newsletter' => $customers_newsletter,'customers_last_modified' => 'now()');
 
 				// if new password is set
 				if ($password != "") {			
@@ -313,7 +313,7 @@ if ($_GET['action']) {
 				if ($entry_zone_id > 0)
 					$entry_state = '';
 
-				$sql_data_array = array ('entry_firstname' => $customers_firstname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => $entry_country_id,'address_last_modified' => 'now()');
+				$sql_data_array = array ('entry_firstname' => $customers_firstname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => (int)$entry_country_id,'address_last_modified' => 'now()');
 				
 				
 				if (ACCOUNT_COMPANY == 'true')
@@ -323,10 +323,10 @@ if ($_GET['action']) {
 
 				if (ACCOUNT_STATE == 'true') {
 					if ($entry_zone_id > 0) {
-						$sql_data_array['entry_zone_id'] = $entry_zone_id;
+						$sql_data_array['entry_zone_id'] = (int)$entry_zone_id;
 						$sql_data_array['entry_state'] = '';
 					} else {
-						$sql_data_array['entry_zone_id'] = '0';
+						$sql_data_array['entry_zone_id'] = 0;
 						$sql_data_array['entry_state'] = $entry_state;
 					}
 				}

@@ -110,7 +110,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 
 	if ($error == false) {
-		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => (int) $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $gender;
