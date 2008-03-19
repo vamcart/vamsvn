@@ -279,6 +279,7 @@ class shoppingCart {
 	function calculate() {
 		global $vamPrice;
 		$this->total = 0;
+		$this->qty = 0;
 		$this->weight = 0;
 		$this->tax = array ();
 		if (!is_array($this->contents))
@@ -294,6 +295,7 @@ class shoppingCart {
 
 				$products_price = $vamPrice->GetPrice($product['products_id'], $format = false, $qty, $product['products_tax_class_id'], $product['products_price']);
 				$this->total += $products_price * $qty;
+				$this->qty += $qty;
 				$this->weight += ($qty * $product['products_weight']);
 
 
@@ -306,6 +308,7 @@ class shoppingCart {
 					$values = $vamPrice->GetOptionPrice($product['products_id'], $option, $value);
 					$this->weight += $values['weight'] * $qty;
 					$this->total += $values['price'] * $qty;
+					$this->qty += $qty;
 					$attribute_price+=$values['price'];
 				}
 			}
@@ -421,6 +424,12 @@ class shoppingCart {
 		$this->calculate();
 
 		return $this->weight;
+	}
+
+	function show_quantity() {
+		$this->calculate();
+
+		return $this->qty;
 	}
 
 	function show_tax($format = true) {
