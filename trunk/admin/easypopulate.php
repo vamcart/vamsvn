@@ -914,6 +914,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 			<option value="category" size="10"><?php echo EASY_LABEL_EP_MC //model category;?>
 			<option value="froogle" size="10"><?php echo EASY_LABEL_EP_FROGGLE //froggle;?>
 			<option value="attrib" size="10"><?php echo EASY_LABEL_EP_ATTRIB //attibutes;?>
+		  <option value="extra_field" size="10"><?php echo EASY_LABEL_EXTRA_FIELDS //product extra fields;?>
 			</select><br>
 
 <span class="smallText">
@@ -1070,7 +1071,37 @@ function ep_create_filelayout($dltype){
 	$fieldmap = array(); // default to no mapping to change internal field names to external.
 
 //category range to download
-switch( $dltype ){
+ switch( $dltype ){
+ 
+// start EP for product extra field ============================= DEVSOFTVN - 10/20/2005 	
+	case 'extra_field':
+		$iii = 0;
+		// uncomment the customer_price and customer_group to support multi-price per product contrib
+		// Mofificata Davide Duca
+		$filelayout = array(
+			'v_products_id'		=> $iii++,
+			'v_products_extra_fields_name'		=> $iii++, 
+			'v_products_extra_fields_id'		=> $iii++,
+			'v_products_extra_fields_value'		=> $iii++,
+						);
+	
+		$filelayout_sql = "SELECT
+                        p.products_id as v_products_id,
+						subc.products_extra_fields_id as v_products_extra_fields_id,
+						subc.products_extra_fields_value as v_products_extra_fields_value,
+						ptoc.products_extra_fields_name as v_products_extra_fields_name
+                        FROM
+                        ".TABLE_PRODUCTS." as p,
+                        ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS." as subc,
+						".TABLE_PRODUCTS_EXTRA_FIELDS." as ptoc
+                        WHERE
+                        p.products_id = subc.products_id AND
+						ptoc.products_extra_fields_id = subc.products_extra_fields_id
+                        ";	
+// Fine modifica
+		
+		break;
+// end of EP for extra field code ======= DEVSOFTVN================       
 	case 'full':
 	case 'category':
 	case 'froogle':
@@ -1603,7 +1634,28 @@ function walk( $item1 ) {
 		}
 	}
 
+// EP for product extra fields Contrib by minhmaster DEVSOFTVN ==========
+		$v_products_extra_fields_id = $items[$filelayout['v_products_extra_fields_id']];
+		$v_products_id	=	$items[$filelayout['v_products_id']];
+		$v_products_extra_fields_value	=	$items[$filelayout['v_products_extra_fields_value']];
 
+	if (isset($v_products_extra_fields_id) ){					
+				$sql_exist	=	"SELECT products_extra_fields_value FROM ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS. " WHERE (products_id ='".$v_products_id. "') AND (products_extra_fields_id ='".$v_products_extra_fields_id ."')";
+				if (vam_db_num_rows(vam_db_query($sql_exist)) <= 0) {
+					$sql_extra_field	=	"INSERT INTO ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS."(products_id,products_extra_fields_id,products_extra_fields_value) VALUES ('".$v_products_id."','".$v_products_extra_fields_id."','".$v_products_extra_fields_value."')";
+					$str_err_report= " $v_products_extra_fields_id | $v_products_id  | $v_products_extra_fields_value | <b><font color=blue>" . EASY_LABEL_NEW_PRODUCT . "</font></b><br>";					
+				} else {
+					$sql_extra_field	=	"UPDATE ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS." SET products_extra_fields_value='".$v_products_extra_fields_value."' WHERE (products_id ='".$v_products_id. "') AND (products_extra_fields_id ='".$v_products_extra_fields_id ."')";
+					$str_err_report= " $v_products_extra_fields_id | $v_products_id  | $v_products_extra_fields_value | <b><font color=blue>" . EASY_LABEL_UPDATED . "</font></b><br>";					
+				}
+				
+
+				$result = vam_db_query($sql_extra_field);
+				//echo $sql_extra_field;
+				echo $str_err_report;
+				
+	} else  {
+//============ EP for product extra fields Contrib by minhmt DEVSOFTVN off============
 	// now do a query to get the record's current contents
 	$sql = "SELECT
 		p.products_id as v_products_id,
@@ -2449,6 +2501,6 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 	}
 // end of row insertion code
 }
-
+  } // end of EP for extra filed 	
 
 require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
