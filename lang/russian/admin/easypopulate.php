@@ -64,6 +64,7 @@ define('EASY_LABEL_MPQ', 'Код товара/Цена/Количество');
 define('EASY_LABEL_EP_MC', 'Код товара/Категория');
 define('EASY_LABEL_EP_FROGGLE', 'Файл с данными для системы Фругл');
 define('EASY_LABEL_EP_ATTRIB', 'Атрибуты товара');
+define('EASY_LABEL_EXTRA_FIELDS', 'Дополнительные поля товаров');
 define('EASY_LABEL_NONE', 'Нет');
 define('EASY_LABEL_CATEGORY', 'Корневой раздел');
 define('PULL_DOWN_MANUFACTURES', 'Все производители');
