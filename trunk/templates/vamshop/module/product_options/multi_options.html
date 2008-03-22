@@ -50,7 +50,10 @@
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" checked="checked" />
 {$item_data.TEXT} {if $item_data.PRICE!=''}({$item_data.PREFIX}{$item_data.PRICE}){/if}
-{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
+{if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
+{if $item_data.IMAGE}<img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}
+{if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
 {/foreach}
 </p>
 <!-- /radio -->
