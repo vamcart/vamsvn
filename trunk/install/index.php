@@ -183,6 +183,31 @@
     $folder_flag=true;
     $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/</div>';
  }
+
+     if (!is_writeable(DIR_FS_CATALOG . 'images/attribute_images/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/attribute_images/</div>';
+ }
+
+     if (!is_writeable(DIR_FS_CATALOG . 'images/attribute_images/mini/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/attribute_images/mini/</div>';
+ }
+
+     if (!is_writeable(DIR_FS_CATALOG . 'images/attribute_images/original/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/attribute_images/original/</div>';
+ }
+
+     if (!is_writeable(DIR_FS_CATALOG . 'images/attribute_images/thumbs/')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'images/attribute_images/thumbs/</div>';
+ }
+ 
      if (!is_writeable(DIR_FS_CATALOG . 'images/categories/')) {
     $error_flag=true;
     $folder_flag=true;
