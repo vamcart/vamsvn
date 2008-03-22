@@ -57,4 +57,13 @@ define('DELETE_TEXT','удалить');
 define('IMAGE_EDIT','изменить');
 define('IMAGE_DELETE','удалить');
 
+define('TEXT_ATTRIBUTE_FILE_1','Ошибка');
+define('TEXT_ATTRIBUTE_FILE_2','Картинка слишком большая');
+define('TEXT_ATTRIBUTE_FILE_3','Картинка не была загружена');
+define('TEXT_ATTRIBUTE_FILE_4','Картинка не была загружена');
+define('TEXT_ATTRIBUTE_FILE_5','Недопустимый формат картинки');
+define('TEXT_ATTRIBUTE_FILE_6','Не могу создать картинку');
+define('TEXT_ATTRIBUTE_FILE_7','Нарезка картинок не получилась');
+define('TEXT_ATTRIBUTE_FILE_8','Не могу создать файл');
+
 ?>
