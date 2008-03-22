@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: buttons.php 1125 2008-02-07 17:36:57 VaM $
+   $Id: buttons.php 1125 2008-03-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -19,8 +19,8 @@
 
 // buttons
 define('BUTTON_REVERSE_SELECTION', 'Отметить все/Снять отметку');
-define('BUTTON_SWITCH_PRODUCTS', 'Только товары');
-define('BUTTON_SWITCH_CATEGORIES', 'Только категории');
+define('BUTTON_SWITCH_PRODUCTS', 'Товары');
+define('BUTTON_SWITCH_CATEGORIES', 'Категории');
 define('BUTTON_NEW_CATEGORIES', 'Новая категория');
 define('BUTTON_NEW_PRODUCTS', 'Новый товар');
 define('BUTTON_COPY', 'Копировать');
