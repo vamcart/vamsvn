@@ -30,14 +30,14 @@
   
   //Maximal einstellungen fьr Bilder aus DB auslesen, wenn vorhanden -eof
   
-  if($_GET['status'] == '0') $messageStack->add('common error');
-  if($_GET['status'] == '1') $messageStack->add('image too large');
-  if($_GET['status'] == '2') $messageStack->add('image not uploaded');
-  if($_GET['status'] == '3') $messageStack->add('image not uploaded');
-  if($_GET['status'] == '4') $messageStack->add('wrong data type');
-  if($_GET['status'] == '5') $messageStack->add('could not create image');
-  if($_GET['status'] == '6') $messageStack->add('image processing failed');
-  if($_GET['status'] == '7') $messageStack->add('could not create filename');
+  if($_GET['status'] == '0') $messageStack->add(TEXT_ATTRIBUTE_FILE_1);
+  if($_GET['status'] == '1') $messageStack->add(TEXT_ATTRIBUTE_FILE_2);
+  if($_GET['status'] == '2') $messageStack->add(TEXT_ATTRIBUTE_FILE_3);
+  if($_GET['status'] == '3') $messageStack->add(TEXT_ATTRIBUTE_FILE_4);
+  if($_GET['status'] == '4') $messageStack->add(TEXT_ATTRIBUTE_FILE_5);
+  if($_GET['status'] == '5') $messageStack->add(TEXT_ATTRIBUTE_FILE_6);
+  if($_GET['status'] == '6') $messageStack->add(TEXT_ATTRIBUTE_FILE_7);
+  if($_GET['status'] == '7') $messageStack->add(TEXT_ATTRIBUTE_FILE_8);
   if($_GET['status'] == 'image_processing') {
 	  $files_to_rebuild = vam_db_query('SELECT products_options_values_image FROM '.TABLE_PRODUCTS_OPTIONS_VALUES.' WHERE products_options_values_image != ""');
 	  while($file_to_rebuild = vam_db_fetch_array($files_to_rebuild)) {
