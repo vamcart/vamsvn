@@ -45,6 +45,7 @@
 {#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}<br />
 {/if}
 {#print#}&nbsp;{$PRODUCTS_PRINT}<br />
+{#question#}&nbsp;{$ASK_PRODUCT_QUESTION}<br />
 {if $SHIPPING_NAME}
             <table border="0" cellpadding="0" cellspacing="0">
               <tr valign="middle">
@@ -105,6 +106,13 @@
 {if $PRODUCTS_DESCRIPTION !=''}
    {$PRODUCTS_DESCRIPTION}<br />
 {/if}
+
+{if $extra_fields_data}
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+{/foreach}
+{/if}
+
 {if $MODULE_tpt != ''}
    {$MODULE_tpt}<br />
 {/if}

@@ -30,6 +30,10 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
+if (!is_object($_SESSION['cart'])) {
+	$_SESSION['cart'] = new shoppingCart();
+}
+
 // Shopping cart actions
 if (isset ($_GET['action'])) {
 	// redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled

@@ -181,6 +181,7 @@ if ($error == 1 && $keyerror != 1) {
 	$from_str .= $subcat_join;
 	if (SEARCH_IN_ATTR == 'true') { $from_str .= " LEFT OUTER JOIN ".TABLE_PRODUCTS_ATTRIBUTES." AS pa ON (p.products_id = pa.products_id) LEFT OUTER JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." AS pov ON (pa.options_values_id = pov.products_options_values_id) "; }
 	$from_str .= "LEFT OUTER JOIN ".TABLE_SPECIALS." AS s ON (p.products_id = s.products_id) AND s.status = '1'";
+   $from_str .= " LEFT OUTER JOIN ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS." AS pe ON (p.products_id = pe.products_id)";
 
 	if ((DISPLAY_PRICE_WITH_TAX == 'true') && ((isset ($_GET['pfrom']) && vam_not_null($_GET['pfrom'])) || (isset ($_GET['pto']) && vam_not_null($_GET['pto'])))) {
 		if (!isset ($_SESSION['customer_country_id'])) {
@@ -217,6 +218,7 @@ if ($error == 1 && $keyerror != 1) {
 						}						
 						$where_str .= "OR pd.products_name LIKE ('%".addslashes($search_keywords[$i])."%') ";
 						$where_str .= "OR p.products_model LIKE ('%".addslashes($search_keywords[$i])."%') ";
+                  $where_str .= " OR pe.products_extra_fields_value LIKE ('%".addslashes($search_keywords[$i])."%') ";
 						if (SEARCH_IN_ATTR == 'true') {
 						   $where_str .= "OR (pov.products_options_values_name LIKE ('%".addslashes($search_keywords[$i])."%') ";
 						   $where_str .= "AND pov.language_id = '".(int) $_SESSION['languages_id']."')";

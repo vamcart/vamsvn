@@ -106,5 +106,10 @@
   define('TABLE_BANKTRANSFER','banktransfer');
   define('TABLE_NEWSLETTER_TEMP','module_newsletter_temp_');
   define('TABLE_PERSONAL_OFFERS','personal_offers_by_customers_status_');
+
+  define('TABLE_SHIP2PAY','ship2pay');
+
+  define('TABLE_PRODUCTS_EXTRA_FIELDS', 'products_extra_fields'); 
+  define('TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS', 'products_to_products_extra_fields'); 
   
 ?>

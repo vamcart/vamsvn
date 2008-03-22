@@ -533,4 +533,9 @@ define('TABLE_HEADING_DOWNLOAD_COUNT','Осталось загрузок: ');
 define('TEXT_FOOTER_DOWNLOAD','Все доступные загрузки также можно найти в ');
 define('TEXT_DOWNLOAD_MY_ACCOUNT','Истории заказов');
 
+define('NAVBAR_TITLE_ASK','Вопрос о товаре');
+define('TEXT_EMAIL_SUCCESSFUL_SENT','Ваш вопрос о товаре <b>%s</b> успешно отправлен, мы ответим на него в самое ближайшее время.');
+define('THX_SUCCESSFUL_SENT','Спасибо большое!');
+define('TEXT_MESSAGE_ERROR','Вы не заполнили поле Ваш вопрос.');
+
 ?>

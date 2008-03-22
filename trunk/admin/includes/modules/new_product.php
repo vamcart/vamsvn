@@ -35,6 +35,13 @@ if (($_GET['pID']) && (!$_POST)) {
         $product = vam_db_fetch_array($product_query);
         $pInfo = new objectInfo($product);
 
+      $products_extra_fields_query = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " WHERE products_id=" . (int)$_GET['pID']);
+      while ($products_extra_fields = vam_db_fetch_array($products_extra_fields_query)) {
+        $extra_field[$products_extra_fields['products_extra_fields_id']] = $products_extra_fields['products_extra_fields_value'];
+      }
+	  $extra_field_array=array('extra_field'=>$extra_field);
+	  $pInfo->objectInfo($extra_field_array);
+
 }
 elseif ($_POST) {
         $pInfo = new objectInfo($_POST);
@@ -318,6 +325,36 @@ foreach (array('product_info', 'product_options') as $key) {
 ?>
         </div>
 <?php } ?>
+
+        <div class="tabbertab">
+        <h3><?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></h3>
+        <table border="0" class="main">
+
+<?php
+// START: Extra Fields Contribution (chapter 1.4)
+      // Sort language by ID  
+	  for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+	    $languages_array[$languages[$i]['id']]=$languages[$i];
+	  }
+      $extra_fields_query = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_EXTRA_FIELDS . " ORDER BY products_extra_fields_order");
+      while ($extra_fields = vam_db_fetch_array($extra_fields_query)) {
+	  // Display language icon or blank space
+        if ($extra_fields['languages_id']==0) {
+	      $m=vam_draw_separator('pixel_trans.gif', '24', '15');
+	    } else $m= $languages_array[$extra_fields['languages_id']]['name'];
+?>
+          <tr>
+            <td class="main"><?php echo $m . ' ' . $extra_fields['products_extra_fields_name']; ?>:</td>
+            <td class="main"><?php echo vam_draw_input_field("extra_field[".$extra_fields['products_extra_fields_id']."]", $pInfo->extra_field[$extra_fields['products_extra_fields_id']]); ?></td>
+          </tr>
+<?php
+}
+// END: Extra Fields Contribution
+?>     
+        
+        </table>
+        </div>
+
 <!-- group check-->
 
 </div>

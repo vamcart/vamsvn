@@ -93,6 +93,9 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
       $info->assign('PRODUCTS_PRINT', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/print.gif"  style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" alt="" />');
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$image = '';
+
+		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" alt="" />');
+
 		if ($product->data['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$product->data['products_image'];
 	   
@@ -153,6 +156,27 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 
 		if ($_SESSION['customers_status']['customers_status_graduated_prices'] == 1)
 			include (DIR_WS_MODULES.FILENAME_GRADUATED_PRICE);
+
+                      $extra_fields_query = vam_db_query("
+                      SELECT pef.products_extra_fields_status as status, pef.products_extra_fields_name as name, ptf.products_extra_fields_value as value
+                      FROM ". TABLE_PRODUCTS_EXTRA_FIELDS ." pef
+             LEFT JOIN  ". TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS ." ptf
+            ON ptf.products_extra_fields_id=pef.products_extra_fields_id
+            WHERE ptf.products_id=". $product->data['products_id'] ." and ptf.products_extra_fields_value<>'' and (pef.languages_id='0' or pef.languages_id='".$_SESSION['languages_id']."')
+            ORDER BY products_extra_fields_order");
+
+  while ($extra_fields = vam_db_fetch_array($extra_fields_query,true)) {
+        if (! $extra_fields['status'])  // show only enabled extra field
+           continue;
+  
+  $extra_fields_data[] = array (
+  'NAME' => $extra_fields['name'], 
+  'VALUE' => $extra_fields['value']
+  );
+  
+  }
+
+  $info->assign('extra_fields_data', $extra_fields_data);
 
 		include (DIR_WS_MODULES.FILENAME_PRODUCTS_MEDIA);
 		include (DIR_WS_MODULES.FILENAME_ALSO_PURCHASED_PRODUCTS);

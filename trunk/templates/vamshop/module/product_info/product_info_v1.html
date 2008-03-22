@@ -67,6 +67,9 @@
 <p>
 {#print#}&nbsp;{$PRODUCTS_PRINT}
 </p>
+<p>
+{#question#}&nbsp;{$ASK_PRODUCT_QUESTION}
+</p>
 
 {if $SHIPPING_NAME}
 <p>
@@ -96,6 +99,11 @@
 </p>
 {/if}
 
+{if $extra_fields_data}
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+{/foreach}
+{/if}
 
 {if $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
 <p>
