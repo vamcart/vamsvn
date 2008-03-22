@@ -40,16 +40,11 @@
     function payment($module = '') {
       global $PHP_SELF,$order;
 
-			if (defined('MODULE_PAYMENT_INSTALLED') && vam_not_null(MODULE_PAYMENT_INSTALLED)) {
-			require(DIR_WS_CLASSES . 'ship2pay.php');
-			$my_ship2pay = new ship2pay;
-			$arrship=explode('_',$_SESSION['shipping']['id']);
-			$ship2pay_mods = $my_ship2pay->get_pay_modules($arrship[0]);
-			if (vam_not_null($ship2pay_mods)){
-			$this->modules = explode(';', $ship2pay_mods);
-			}else{
-			$this->modules = explode(';', MODULE_PAYMENT_INSTALLED);
-			}
+      if (defined('MODULE_PAYMENT_INSTALLED') && vam_not_null(MODULE_PAYMENT_INSTALLED)) {
+
+        require_once(DIR_WS_FUNCTIONS . 'ship2pay.php');
+//      $this->modules = explode(';', MODULE_PAYMENT_INSTALLED);
+        $this->modules = ship2pay();
 			
         $include_modules = array();
 
