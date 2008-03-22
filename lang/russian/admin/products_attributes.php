@@ -25,6 +25,9 @@ define('TABLE_HEADING_ID', 'ID');
 define('TABLE_HEADING_PRODUCT', 'Название товара');
 define('TABLE_HEADING_OPT_NAME', 'Название атрибута');
 define('TABLE_HEADING_OPT_VALUE', 'Значение атрибута');
+define('TABLE_HEADING_OPT_TEXT', 'Краткое описание');
+define('TABLE_HEADING_OPT_IMAGE', 'Картинка атрибута');
+define('TABLE_HEADING_OPT_LINK', 'URL ссылка атрибута');
 define('TABLE_HEADING_OPT_PRICE', 'Цена');
 define('TABLE_HEADING_OPT_PRICE_PREFIX', 'Префикс');
 define('TABLE_HEADING_ACTION', 'Действие');
@@ -47,5 +50,11 @@ define('TABLE_HEADING_OPT_IMAGE','Картинка');
 define('TABLE_HEADING_OPT_DESC','Описание');
 define('TABLE_TEXT_DELETE','удалить картинку');
 define('TEXT_OPTIONS_IMAGE','Картинка атрибута')
+
+define('EDIT_TEXT','изменить');
+define('DELETE_TEXT','удалить');
+
+define('IMAGE_EDIT','изменить');
+define('IMAGE_DELETE','удалить');
 
 ?>

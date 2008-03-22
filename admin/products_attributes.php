@@ -19,7 +19,36 @@
 
   require('includes/application_top.php'); 
   $languages = vam_get_languages();
-
+  
+  //Options update
+  //Maximal einstellungen fьr Bilder aus DB auslesen, wenn vorhanden
+  $max_byte_size = MAX_BYTE_SIZE;
+  $max_thumb_width = MAX_THUMB_WIDTH;
+  $max_thumb_height = MAX_THUMB_HEIGHT;
+  $max_admin_width = MAX_ADMIN_WIDTH;
+  $max_admin_height = MAX_ADMIN_HEIGHT;
+  
+  //Maximal einstellungen fьr Bilder aus DB auslesen, wenn vorhanden -eof
+  
+  if($_GET['status'] == '0') $messageStack->add('common error');
+  if($_GET['status'] == '1') $messageStack->add('image too large');
+  if($_GET['status'] == '2') $messageStack->add('image not uploaded');
+  if($_GET['status'] == '3') $messageStack->add('image not uploaded');
+  if($_GET['status'] == '4') $messageStack->add('wrong data type');
+  if($_GET['status'] == '5') $messageStack->add('could not create image');
+  if($_GET['status'] == '6') $messageStack->add('image processing failed');
+  if($_GET['status'] == '7') $messageStack->add('could not create filename');
+  if($_GET['status'] == 'image_processing') {
+	  $files_to_rebuild = vam_db_query('SELECT products_options_values_image FROM '.TABLE_PRODUCTS_OPTIONS_VALUES.' WHERE products_options_values_image != ""');
+	  while($file_to_rebuild = vam_db_fetch_array($files_to_rebuild)) {
+		  $filename = $file_to_rebuild['products_options_values_image'];
+		  $filetyp = explode('.',$filename);
+		  $filetyp = ($filetyp[((count($filetyp))-1)]);
+		  if(!vam_attribute_image_processing($filename,$filetyp,DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/',$max_thumb_width,$max_thumb_height,$max_admin_width,$max_admin_height)) $messageStack->add('failed while image_processing filename: '.$filename);
+	  }
+  }
+  //Options update
+  
   if ($_GET['action']) {
     $page_info = 'option_page=' . $_GET['option_page'] . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $_GET['attribute_page'];
     switch($_GET['action']) {
@@ -30,15 +59,28 @@
         }
         vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info)); 
         break;
+
+      //Options_Update
       case 'add_product_option_values':
         for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
           $value_name = $_POST['value_name'];
           $value_description = $_POST['value_description'];
-          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name, products_options_values_description) values ('" . $_POST['value_id'] . "', '" . $languages[$i]['id'] . "', '" . $value_name[$languages[$i]['id']] . "', '" . $value_description[$languages[$i]['id']] . "')");
+          $value_text = $_POST['value_text'];
+          $value_link = $_POST['value_link'];
+          
+          $status = vam_upload_attribute_image($_FILES['value_image'],$languages[$i]['id'],$max_byte_size,DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/',$max_thumb_width,$max_thumb_height,$max_admin_width,$max_admin_height);
+          
+          if($status[0] == 'success') {
+	          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name, products_options_values_description, products_options_values_text, products_options_values_image, products_options_values_link) values ('" . $_POST['value_id'] . "', '" . $languages[$i]['id'] . "', '" . $value_name[$languages[$i]['id']] . "', '" . $value_description[$languages[$i]['id']] . "', '" . $value_text[$languages[$i]['id']] . "', '" . $status[1] . "', '" . $value_link[$languages[$i]['id']] . "')");
+          }
         }
-			vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " (products_options_id, products_options_values_id) values ('" . $_POST['option_id'] . "', '" . $_POST['value_id'] . "')");
-			vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
-			break;
+        if($status[0] == 'success') {
+	        vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " (products_options_id, products_options_values_id) values ('" . $_POST['option_id'] . "', '" . $_POST['value_id'] . "')");
+        }
+        vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info.'&status='.$status[1]));
+        break;
+
+      //Options_Update
 		case 'add_product_attributes' :
 			vam_db_query("insert into " . TABLE_PRODUCTS_ATTRIBUTES . " values ('', '" . $_POST['products_id'] . "', '" . $_POST['options_id'] . "', '" . $_POST['values_id'] . "', '" . $_POST['value_price'] . "', '" . $_POST['price_prefix'] . "')");
 			$products_attributes_id = vam_db_insert_id();
@@ -54,16 +96,42 @@
 			}
 			vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
 			break;
+
+      //Options update
 		case 'update_value' :
        $value_name = $_POST['value_name'];
        $value_description = $_POST['value_description'];
        for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
-         vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . $value_name[$languages[$i]['id']] . "' where products_options_values_id = '" . $_POST['value_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
-         vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_description = '" . $value_description[$languages[$i]['id']] . "' where products_options_values_id = '" . $_POST['value_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
+	       $value_text = $_POST['value_text'];
+           $value_link = $_POST['value_link'];
+	       $new_image = $_POST['orig_image_'.$languages[$i]['code']];
+	       $status = array('success','');
+	     
+		     //Bild lцschen?
+		     if((isset($_POST['delete_flag'])) and (in_array($languages[$i]['code'],$_POST['delete_flag']))) {
+			     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/original/'.$new_image);
+			     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/thumbs/'.$new_image);
+			     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/mini/'.$new_image);
+			     $new_image = '';
+		     }
+		     
+		     //auf neues Bild testen
+		     if((isset($_POST['edit_flag'])) and (in_array($languages[$i]['code'],$_POST['edit_flag']))) {
+			     $status = vam_upload_attribute_image($_FILES['value_image'],$languages[$i]['id'],$max_byte_size,DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/',$max_thumb_width,$max_thumb_height,$max_admin_width,$max_admin_height);
+			     if($status[0] == 'success') {
+				     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/original/'.$new_image);
+				     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/thumbs/'.$new_image);
+				     unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/mini/'.$new_image);
+				     $new_image = $status[1];
+			     }
+	     	}
+         vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . $value_name[$languages[$i]['id']] . "', products_options_values_description = '" . $value_description[$languages[$i]['id']] . "', products_options_values_text = '" . $value_text[$languages[$i]['id']] . "', products_options_values_image = '" . $new_image . "', products_options_values_link = '" . $value_link[$languages[$i]['id']] . "' where products_options_values_id = '" . $_POST['value_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
        }
        vam_db_query("update " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " set products_options_id = '" . $_POST['option_id'] . "' where products_options_values_id = '" . $_POST['value_id'] . "'");
-       vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
+       vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info.'&status='.$status[1]));
        break;
+
+      //Options update
       case 'update_product_attribute':
         vam_db_query("update " . TABLE_PRODUCTS_ATTRIBUTES . " set products_id = '" . $_POST['products_id'] . "', options_id = '" . $_POST['options_id'] . "', options_values_id = '" . $_POST['values_id'] . "', options_values_price = '" . $_POST['value_price'] . "', price_prefix = '" . $_POST['price_prefix'] . "' where products_attributes_id = '" . $_POST['attribute_id'] . "'");
         if ((DOWNLOAD_ENABLED == 'true') && $_POST['products_attributes_filename'] != '') {
@@ -87,6 +155,18 @@
         vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
         break;
       case 'delete_value':
+
+      	//Option_update
+      	$filenames_to_delete = vam_db_query("SELECT products_options_values_image from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $_GET['value_id'] . "'");
+      	while($filename_to_delete = vam_db_fetch_array($filenames_to_delete)){
+	      	if($filename_to_delete['products_options_values_image'] != '') {
+		      	unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/original/'.$filename_to_delete['products_options_values_image']);
+		      	unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/thumbs/'.$filename_to_delete['products_options_values_image']);
+		      	unlink(DIR_FS_DOCUMENT_ROOT.DIR_WS_IMAGES.'attribute_images/mini/'.$filename_to_delete['products_options_values_image']);
+	      	}
+      	}
+
+      	//Option_update
         vam_db_query("delete from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $_GET['value_id'] . "'");
         vam_db_query("delete from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $_GET['value_id'] . "'");
         vam_db_query("delete from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_values_id = '" . $_GET['value_id'] . "'");
@@ -96,14 +176,14 @@
         vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_attributes_id = '" . $_GET['attribute_id'] . "'");
 // Added for DOWNLOAD_ENABLED. Always try to remove attributes, even if downloads are no longer enabled
         vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " where products_attributes_id = '" . $_GET['attribute_id'] . "'");
-        vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
+//        vam_redirect(vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, $page_info));
         break;
     }
   }
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
-<head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
@@ -231,6 +311,10 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 		$values = "select distinct 
 								pov.products_options_values_id, 
 								pov.products_options_values_name, 
+								pov.products_options_values_description, 
+						pov.products_options_values_text,
+						pov.products_options_values_image,
+						pov.products_options_values_link,
 								pov2po.products_options_id 
 							from " . TABLE_PRODUCTS_OPTIONS . " po,
 								" . TABLE_PRODUCTS_OPTIONS_VALUES . " pov 
@@ -244,6 +328,10 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 		$values = "select 
 								pov.products_options_values_id, 
 								pov.products_options_values_name, 
+								pov.products_options_values_description, 
+						pov.products_options_values_text,
+						pov.products_options_values_image,
+						pov.products_options_values_link,
 								pov2po.products_options_id 
 							from " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov 
 								left join " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " pov2po 
@@ -345,26 +433,37 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 	</select>
 	</td>
    </tr>
-<!--   
-  <tr class="dataTableRowSelected">
-    <td class="dataTableContent" width="100">&nbsp;</td>
-    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
-    <td class="dataTableContent">
-    <?php include(DIR_WS_MODULES.'options_images.php'); ?>
-    </td>
-  </tr>
--->
 <?php
 
+        $inputs = '';
+        $inputs_desc = '';
+        $inputs_text = '';
+        $inputs_image = '';
+        $inputs_image_edit = '';
+        $inputs_image_delete = '';
+        $inputs_link = '';
 
 			for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
 
-				$value_name = vam_db_query("select products_options_values_name, products_options_values_description from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $values_values['products_options_values_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
+          $value_name = vam_db_query("select products_options_values_name, products_options_values_description, products_options_values_text, products_options_values_image, products_options_values_link from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $values_values['products_options_values_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
 				$value_name = vam_db_fetch_array($value_name);
 				$flag = $languages[$i]['name'];
-				$inputs = $flag . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<br />';
+          $inputs .= $languages[$i]['name'] . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<input type="hidden" name="orig_image_'.$languages[$i]['code'].'" value="'.$value_name['products_options_values_image'].'"></input><br />';
+          $inputs_text .= $languages[$i]['name'] . ':&nbsp;<input type="text" name="value_text[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_text'] . '">&nbsp;<br />';
 
 				$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4">' . $value_name['products_options_values_description'] . '</textarea>&nbsp;<br />';
+
+          if($value_name['products_options_values_image'] != '') {
+	          $inputs_image .= $languages[$i]['name'] . ':&nbsp;<img src="'.(($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER).DIR_WS_CATALOG.DIR_WS_IMAGES.'attribute_images/mini/'.$value_name['products_options_values_image'].'">&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=edit', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'icon_edit.gif', IMAGE_EDIT).'</a>&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=delete', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'delete.gif', IMAGE_DELETE).'</a>';
+	          $inputs_image_delete .= $languages[$i]['name'] . ':&nbsp;<img src="'.(($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER).DIR_WS_CATALOG.DIR_WS_IMAGES.'attribute_images/mini/'.$value_name['products_options_values_image'].'"></img>&nbsp;'.vam_draw_checkbox_field('delete_flag[]',$languages[$i]['code']).'&nbsp;'.DELETE_TEXT;
+          } else {
+	          $inputs_image .= $languages[$i]['name'] . ':&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=edit', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'icon_edit.gif', IMAGE_EDIT).'</a>&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=delete', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'delete.gif', IMAGE_DELETE).'</a>';
+	          $inputs_image_delete .= $languages[$i]['name'] . ':&nbsp;'.vam_draw_checkbox_field('delete_flag[]',$languages[$i]['code']).'&nbsp;'.DELETE_TEXT;
+          }
+
+          $inputs_image_edit .= $languages[$i]['code'] . ':&nbsp;<input type="file" name="value_image[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_image'] . '">&nbsp;'.vam_draw_checkbox_field('edit_flag[]',$languages[$i]['code']).'&nbsp;'.EDIT_TEXT.'&nbsp;<br />';
+          $inputs_link .= $languages[$i]['name'] . ':&nbsp;http://<input type="text" name="value_link[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_link'] . '">&nbsp;<br />';
+
 ?>
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
@@ -373,9 +472,40 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
   </tr>
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_TEXT; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_text; ?></td>
+  </tr>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
     <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_DESC; ?></b></td>
     <td class="dataTableContent"><?php echo $inputs_desc; ?></td>
   </tr>
+
+<?php if(($_GET['image'] == 'nothing') || (!isset($_GET['image']))) { ?>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_image; ?></td>
+  </tr>
+<?php } elseif($_GET['image'] == 'edit') { ?>      
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_image_edit; ?></td>
+  </tr>
+<?php } elseif($_GET['image'] == 'delete') { ?>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_image_delete; ?></td>
+  </tr>
+<?php } ?> 
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_LINK; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_link; ?></td>
+  </tr>
+
 <?php
 
 			}
@@ -448,8 +578,11 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 		for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
 			$flag = $languages[$i]['name'];
 			$inputs = $flag . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
-			$inputs_image = $flag . ':&nbsp;' . vam_draw_file_field('value_image' . $i) . '&nbsp;<br />';
 			$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4"></textarea>&nbsp;<br />';
+
+			$inputs_text = $flag . ':&nbsp;<input type="text" name="value_text[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
+			$inputs_image = $flag . ':&nbsp;<input type="file" name="value_image[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
+			$inputs_link = $flag . ':&nbsp;http://<input type="text" name="value_link[' . $languages[$i]['id'] . ']" size="15">&nbsp;<br />';
 ?>
 
   <tr class="dataTableRowSelected">
@@ -459,9 +592,25 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
   </tr>
   <tr class="dataTableRowSelected">
     <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_TEXT; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_text; ?></td>
+  </tr>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
     <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_DESC; ?></b></td>
     <td class="dataTableContent"><?php echo $inputs_desc; ?></td>
   </tr>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_IMAGE; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_image; ?></td>
+  </tr>
+  <tr class="dataTableRowSelected">
+    <td class="dataTableContent" width="100">&nbsp;</td>
+    <td class="dataTableContent" width="150"><b><?php echo TABLE_HEADING_OPT_LINK; ?></b></td>
+    <td class="dataTableContent"><?php echo $inputs_link; ?></td>
+  </tr>  
+  
 <?php
 
 
@@ -478,6 +627,12 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 
 		echo '</form>';
 ?>
+              </tr>
+              <tr>
+                <td colspan="7"><?php echo vam_black_line(); ?></td>
+              </tr>
+              <tr>
+                <td align="right" colspan="7"><?php echo vam_button_link(BUTTON_IMAGE_PROCESSING, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'status=image_processing', 'NONSSL')); ?></td>
               </tr>
 <?php
 

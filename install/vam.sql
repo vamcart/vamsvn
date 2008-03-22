@@ -973,6 +973,9 @@ CREATE TABLE products_options_values (
   language_id int NOT NULL default '1',
   products_options_values_name varchar(255) NOT NULL default '',
   products_options_values_description text,
+  products_options_values_text varchar(255) NOT NULL default '',
+  products_options_values_image varchar(255) NOT NULL default '',
+  products_options_values_link varchar(255) NOT NULL default '',
   PRIMARY KEY  (products_options_values_id,language_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1579,6 +1582,12 @@ INSERT INTO  configuration (configuration_key, configuration_value, configuratio
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('USE_EP_IMAGE_MANIPULATOR', 'false', 4, 51, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MO_PICS', '0', '4', '3', '', '0000-00-00 00:00:00', NULL , NULL);
 INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('IMAGE_MANIPULATOR', 'image_manipulator_GD2.php', '4', '3', '', '0000-00-00 00:00:00', NULL , 'vam_cfg_select_option(array(\'image_manipulator_GD2.php\', \'image_manipulator_GD1.php\'),');
+
+INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_THUMB_WIDTH', '120', 4, 52, '2003-12-15 12:10:45', '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_THUMB_HEIGHT', '100', 4, 53, '2003-12-15 12:10:45', '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_ADMIN_WIDTH', '100', 4, 54, '2003-12-15 12:10:45', '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_ADMIN_HEIGHT', '80', 4, 55, '2003-12-15 12:10:45', '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_BYTE_SIZE', '1000000', 4, 56, '2003-12-15 12:10:45', '0000-00-00 00:00:00', NULL, NULL);
 
 # configuration_group_id 5
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_GENDER', 'false',  5, 1, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');

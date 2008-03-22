@@ -1765,5 +1765,173 @@ function vam_button_link($value, $href='javascript:void(null)', $parameter='') {
     }
   }
 
+//OPTIONS_UPDATE
+// return: 0 = $_FILES nicht gesetzt / 1 = Datei zu groЯ / 2 = Datei nur teilweise hochgeladen / 3 = Datei nicht hochgeladen / 4 = Falscher Dateityp / 5 = Verschieben der Temp Datei fehlgeschlagen / 6 = Image Processing fehlgeschlagen / 7 = Kein geeigneter Dateiname gefunden
+function vam_upload_attribute_image($file,$lang,$max_byte_size,$upload_dir,$thumb_width,$thumb_height,$admin_width,$admin_height) {
+	
+	if(!isset($file)) return array('failed','0');
+	if(($file['error'][$lang] == 1) || ($file['error'][$lang] == 2) || ($file['size'][$lang] > $max_byte_size)) return array('failed','1');
+	if($file['error'][$lang] == 3) return array('failed','2');
+	if($file['error'][$lang] == 4) return array('success','');
+	
+	// TEST auf unterstьtzte Bildformate
+	$valid_suffix = array();
+	$gd_typ = gd_info();
+	if(($gd_typ["GIF Read Support"]) and ($gd_typ["GIF Create Support"])) { array_push($valid_suffix, 'gif', 'GIF'); }
+	if($gd_typ["JPG Support"]) { array_push($valid_suffix, 'jpg', 'JPG'); }
+	if($gd_typ["PNG Support"]) { array_push($valid_suffix, 'png', 'PNG'); }
+	// TEST auf unterstьtzte Bildformate -eof
+	
+	$filetyp = explode('.',$file['name'][$lang]);
+	$filetyp = ($filetyp[((count($filetyp))-1)]);
+	if(!in_array($filetyp, $valid_suffix)) return array('failed','4');
+	
+	//filename bestimmen
+	$file_exist = false;
+	$filename = 'temp'; // dummy
+	do {
+		$file_exist = false;
+		$filename = time().rand(0,9999).$lang.'.'.$filetyp;
+		if(file_exists($filename)) {
+			$file_exist = true;
+		}
+	} while($file_exist and $count <= 20);
+	
+	if($count > 20) return array('failed','7');
+	//filename bestimmen -eof	
+
+	if (move_uploaded_file($file['tmp_name'][$lang], $upload_dir.'original/'.$filename)) {
+		if(vam_attribute_image_processing($filename,$filetyp,$upload_dir,$thumb_width,$thumb_height,$admin_width,$admin_height)) {
+			return array('success',$filename);
+		} else {
+			return array('failed','6');
+		}
+	} else {
+		return array('failed','5');
+	}
+}
+
+function vam_attribute_image_processing($filename,$filetyp,$upload_dir,$thumb_width,$thumb_height,$admin_width,$admin_height) {
+	
+	//GrцЯen berechnen
+	$orig_size = getimagesize($upload_dir.'original/'.$filename);
+	$orig_width = $orig_size[0];
+	$orig_height = $orig_size[1];
+	
+	//GrцЯe thumb
+	if(($orig_width > $thumb_width) || ($orig_height > $thumb_height)) {
+		$faktor = ($thumb_width / $orig_width);
+		if(($orig_height * $faktor) > $thumb_height) {
+			$faktor = ($thumb_height / $orig_height);	
+		}
+		$new_thumb_width = abs($orig_width * $faktor);
+		$new_thumb_height = abs($orig_height * $faktor);
+	} else {
+		$new_thumb_width = $orig_width;
+		$new_thumb_height = $orig_height;
+	}
+	//GrцЯe thumb -eof
+	
+	//GrцЯe admin
+	if(($orig_width > $admin_width) || ($orig_height > $admin_height)) {
+		$faktor = ($admin_width / $orig_width);
+		if(($orig_height * $faktor) > $admin_height) {
+			$faktor = ($admin_height / $orig_height);	
+		}
+		$new_admin_width = abs($orig_width * $faktor);
+		$new_admin_height = abs($orig_height * $faktor);
+	} else {
+		$new_admin_width = $orig_width;
+		$new_admin_height = $orig_height;
+	}
+	//GrцЯe admin -eof
+	//GrцЯen berechnen -eof
+
+	//thumbs
+	if(($filetyp == 'gif') || ($filetyp == 'GIF')) {
+		$img = imagecreatefromgif($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_thumb_width,$new_thumb_height);
+		// Transparente Farbe des Quell-Bildes abfragen
+        $colorTransparent = imagecolortransparent($bild_neu);
+        // Parlette kopieren
+        imagepalettecopy($bild_neu,$img);
+        // Zielbild mit transparenter Farbe fьllen
+        imagefill($bild_neu,0,0,$colorTransparent);
+        // Die Fьllfarbe als transparent deklarieren
+        imagecolortransparent($bild_neu, $colorTransparent);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_thumb_width,$new_thumb_height,$orig_width,$orig_height);
+        imagegif($bild_neu,$upload_dir.'thumbs/'.$filename);
+        imagedestroy($bild_neu);
+	}
+	if(($filetyp == 'jpg') || ($filetyp == 'JPG')) {
+		$img = imagecreatefromjpeg($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_thumb_width,$new_thumb_height);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_thumb_width,$new_thumb_height,$orig_width,$orig_height);
+        imagejpeg($bild_neu,$upload_dir.'thumbs/'.$filename);
+        imagedestroy($bild_neu);
+	}
+	if(($filetyp == 'png') || ($filetyp == 'PNG')) {
+		$img = imagecreatefrompng($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_thumb_width,$new_thumb_height);
+		// Transparente Farbe des Quell-Bildes abfragen
+        $colorTransparent = imagecolortransparent($bild_neu);
+        // Parlette kopieren
+        imagepalettecopy($bild_neu,$img);
+        // Zielbild mit transparenter Farbe fьllen
+        imagefill($bild_neu,0,0,$colorTransparent);
+        // Die Fьllfarbe als transparent deklarieren
+        imagecolortransparent($bild_neu, $colorTransparent);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_thumb_width,$new_thumb_height,$orig_width,$orig_height);
+        imagepng($bild_neu,$upload_dir.'thumbs/'.$filename);
+        imagedestroy($bild_neu);
+	}	
+	
+	//mini
+	if(($filetyp == 'gif') || ($filetyp == 'GIF')) {
+		$img = imagecreatefromgif($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_admin_width,$new_admin_height);
+		// Transparente Farbe des Quell-Bildes abfragen
+        $colorTransparent = imagecolortransparent($bild_neu);
+        // Parlette kopieren
+        imagepalettecopy($bild_neu,$img);
+        // Zielbild mit transparenter Farbe fьllen
+        imagefill($bild_neu,0,0,$colorTransparent);
+        // Die Fьllfarbe als transparent deklarieren
+        imagecolortransparent($bild_neu, $colorTransparent);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_admin_width,$new_admin_height,$orig_width,$orig_height);
+        imagegif($bild_neu,$upload_dir.'mini/'.$filename);
+        imagedestroy($bild_neu);
+	}
+	if(($filetyp == 'jpg') || ($filetyp == 'JPG')) {
+		$img = imagecreatefromjpeg($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_admin_width,$new_admin_height);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_admin_width,$new_admin_height,$orig_width,$orig_height);
+        imagejpeg($bild_neu,$upload_dir.'mini/'.$filename);
+        imagedestroy($bild_neu);
+	}
+	if(($filetyp == 'png') || ($filetyp == 'PNG')) {
+		$img = imagecreatefrompng($upload_dir.'original/'.$filename);
+		if(!$img) return false;
+		$bild_neu = imagecreatetruecolor($new_admin_width,$new_admin_height);
+		// Transparente Farbe des Quell-Bildes abfragen
+        $colorTransparent = imagecolortransparent($bild_neu);
+        // Parlette kopieren
+        imagepalettecopy($bild_neu,$img);
+        // Zielbild mit transparenter Farbe fьllen
+        imagefill($bild_neu,0,0,$colorTransparent);
+        // Die Fьllfarbe als transparent deklarieren
+        imagecolortransparent($bild_neu, $colorTransparent);
+        imagecopyresampled($bild_neu,$img,0,0,0,0,$new_admin_width,$new_admin_height,$orig_width,$orig_height);
+        imagepng($bild_neu,$upload_dir.'mini/'.$filename);
+        imagedestroy($bild_neu);
+	}	
+	return true;
+}
+//OPTIONS_UPDATE
 //--------------------------------------------------------------------------------------Ende 
 ?>

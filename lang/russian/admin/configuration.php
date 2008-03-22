@@ -769,4 +769,19 @@ define('SESSION_TIMEOUT_CATALOG_DESC','Время жизни сессии пок
 define('STAY_PAGE_EDIT_TITLE','Оставаться на странице редактирования');
 define('STAY_PAGE_EDIT_DESC','После нажатия кнопки сохранить, оставаться на странице редактирования товара/категории (true) или возвращаться к списку товаров/категорий (false).');
 
+define('MAX_THUMB_WIDTH_TITLE','Ширина картинки атрибута');
+define('MAX_THUMB_WIDTH_DESC','Ширина картинки атрибута, отображаемого в каталоге.');
+
+define('MAX_THUMB_HEIGHT_TITLE','Высота картинки атрибута');
+define('MAX_THUMB_HEIGHT_DESC','Высота картинки атрибута, отображаемого в каталоге.');
+
+define('MAX_ADMIN_WIDTH_TITLE','Ширина картинки атрибута в админке');
+define('MAX_ADMIN_WIDTH_DESC','Ширина картинки атрибута, отображаемого в админке.');
+
+define('MAX_ADMIN_HEIGHT_TITLE','Высота картинки атрибута в админке');
+define('MAX_ADMIN_HEIGHT_DESC','Высота картинки атрибута, отображаемого в админке.');
+
+define('MAX_BYTE_SIZE_TITLE','Максимально возможный размер картинки атрибута');
+define('MAX_BYTE_SIZE_DESC','Размер файла картинки в байтах.');
+
 ?>
