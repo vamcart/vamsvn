@@ -93,7 +93,12 @@ if (vam_not_null($action)) {
      <td width="100%">
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
        <tr>
-        <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+        <td class="main">
+        
+    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+        
+        
+        </td>
        </tr>
       </table>
      </td>
