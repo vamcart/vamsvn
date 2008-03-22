@@ -1,13 +1,17 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $CATEGORIES_NAME}
 <h1>{$CATEGORIES_NAME}</h1>
+{/if}
+{if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">
 
+{if $CATEGORIES_HEADING_TITLE}
 <p>
 {$CATEGORIES_HEADING_TITLE}
 </p>
+{/if}
 {if $CATEGORIES_DESCRIPTION}
 <p>
 {$CATEGORIES_DESCRIPTION}
