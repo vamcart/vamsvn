@@ -349,6 +349,22 @@ foreach (array('product_info', 'product_options') as $key) {
           </tr>
 <?php
 }
+?>
+
+          <tr>
+            <td colspan="2" class="main"><a href="<?php echo vam_href_link(FILENAME_PRODUCTS_EXTRA_FIELDS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT_FIELDS; ?></a></td>
+          </tr>
+
+<?php
+	if (vam_db_num_rows($extra_fields_query) <= 0) {
+?>
+
+          <tr>
+            <td colspan="2" class="main"><a href="<?php echo vam_href_link(FILENAME_PRODUCTS_EXTRA_FIELDS, '', 'NONSSL', false); ?>"><?php echo TEXT_ADD_FIELDS; ?></a></td>
+          </tr>
+
+<?php
+}
 // END: Extra Fields Contribution
 ?>     
         

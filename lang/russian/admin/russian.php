@@ -469,5 +469,7 @@ define('BOX_MODULES_SHIP2PAY','Доставка-оплата');
 define('TEXT_DISPLAY_NUMBER_OF_PAYMENTS','Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> зависимостей)');
 
 define('BOX_PRODUCT_EXTRA_FIELDS','Дополнительные поля товаров');
+define('TEXT_EDIT_FIELDS','Редактировать дополнительные поля товаров.');
+define('TEXT_ADD_FIELDS','Добавить дополнительные поля товаров.');
 
 ?>
