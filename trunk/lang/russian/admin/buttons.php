@@ -78,4 +78,6 @@ define('BUTTON_NEW_TAX_RATE', 'Новая ставка налога');
 define('BUTTON_SEND', 'Отправить');
 define('BUTTON_SUBMIT', 'Обновить');
 
+define('BUTTON_IMAGE_PROCESSING', 'Нарезать картинки атрибутов');
+
 ?>
