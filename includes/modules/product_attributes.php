@@ -50,7 +50,11 @@ if ($product->getAttributesCount() > 0) {
 		);
 
 		$products_options_query = vamDBquery("select pov.products_options_values_id,
-		                                                 pov.products_options_values_name,pov.products_options_values_description,
+		                                                 pov.products_options_values_name,
+		                                                 pov.products_options_values_description,
+		                                                 pov.products_options_values_text,
+		                                                 pov.products_options_values_image,
+		                                                 pov.products_options_values_link,
 		                                                 pa.attributes_model,
 		                                                 pa.options_values_price,
 		                                                 pa.price_prefix,
@@ -72,6 +76,9 @@ if ($product->getAttributesCount() > 0) {
 				'ID' => $products_options['products_options_values_id'], 
 				'TEXT' => $products_options['products_options_values_name'],
 				'DESCRIPTION' => $products_options['products_options_values_description'], 
+				'SHORT_DESCRIPTION' => $products_options['products_options_values_text'], 
+				'IMAGE' => $products_options['products_options_values_image'], 
+				'LINK' => $products_options['products_options_values_link'], 
 				'MODEL' => $products_options['attributes_model'], 
 				'PRICE' => '', 
 				'FULL_PRICE' => '', 
@@ -100,6 +107,9 @@ if ($product->getAttributesCount() > 0) {
 			'ID' => $products_options['products_options_values_id'], 
 			'TEXT' => $products_options['products_options_values_name'],
 			'DESCRIPTION' => $products_options['products_options_values_description'], 
+			'SHORT_DESCRIPTION' => $products_options['products_options_values_text'], 
+			'IMAGE' => $products_options['products_options_values_image'], 
+			'LINK' => $products_options['products_options_values_link'], 
 			'MODEL' => $products_options['attributes_model'], 
 			'PRICE' => $price, 
 			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix']
@@ -127,6 +137,7 @@ if ($product->data['options_template'] == '' or $product->data['options_template
 	$product->data['options_template'] = $files[0]['id'];
 }
 
+$module->assign('image_dir', (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER).DIR_WS_CATALOG.DIR_WS_IMAGES.'attribute_images/');
 $module->assign('language', $_SESSION['language']);
 $module->assign('options', $products_options_data);
 // set cache ID
