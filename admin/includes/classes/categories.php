@@ -422,6 +422,8 @@ class categories {
 
 		for ($i = 0, $n = sizeof($product_categories); $i < $n; $i ++) {
 
+      vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
+
 			vam_db_query("DELETE FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 											              WHERE products_id   = '".vam_db_input($product_id)."'
 											              AND categories_id = '".vam_db_input($product_categories[$i])."'");
@@ -725,6 +727,24 @@ class categories {
 				vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array, 'update', 'products_id = \''.vam_db_input($products_id).'\' and language_id = \''.$language_id.'\'');
 			}
 		}
+		
+          $extra_fields_query = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " WHERE products_id = " . vam_db_input($products_id));
+          while ($products_extra_fields = vam_db_fetch_array($extra_fields_query)) {
+            $extra_product_entry[$products_extra_fields['products_extra_fields_id']] = $products_extra_fields['products_extra_fields_value'];
+          }
+
+          if ($_POST['extra_field']) { // Check to see if there are any need to update extra fields.
+            foreach ($_POST['extra_field'] as $key=>$val) {
+              if (isset($extra_product_entry[$key])) { // an entry exists
+                if ($val == '') vam_db_query("DELETE FROM " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($products_id) . " AND  products_extra_fields_id = " . $key);
+                else vam_db_query("UPDATE " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " SET products_extra_fields_value = '" . vam_db_prepare_input($val) . "' WHERE products_id = " . vam_db_input($products_id) . " AND  products_extra_fields_id = " . $key);
+              }
+              else { // an entry does not exist
+                if ($val != '') vam_db_query("INSERT INTO " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " (products_id, products_extra_fields_id, products_extra_fields_value) VALUES ('" . vam_db_input($products_id) . "', '" . $key . "', '" . vam_db_prepare_input($val) . "')");
+              }
+            }
+          } // Check to see if there are any need to update extra fields.
+		
 	} // insert_product ends
 
 	// ----------------------------------------------------------------------------------------------------- //   

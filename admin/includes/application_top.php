@@ -566,5 +566,12 @@ define('FILENAME_EMAIL_MANAGER','email_manager.php');
 
   define('FILENAME_PRODUCTS_OPTIONS', 'products_options.php');
   define('TABLE_PRODUCTS_OPTIONS_IMAGES','products_options_images');
+
+define('FILENAME_SHIP2PAY', 'ship2pay.php');
+define('TABLE_SHIP2PAY', 'ship2pay');
+
+define('FILENAME_PRODUCTS_EXTRA_FIELDS', 'product_extra_fields.php'); 
+define('TABLE_PRODUCTS_EXTRA_FIELDS', 'products_extra_fields'); 
+define('TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS', 'products_to_products_extra_fields'); 
   
 ?>

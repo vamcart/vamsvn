@@ -273,10 +273,13 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cip_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CIP_MANAGER) . '">' . BOX_CONTRIBUTION_INSTALLER . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['ship2pay'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_SHIP2PAY) . '">' . BOX_MODULES_SHIP2PAY . '</a></li>' . "\n";
+
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['modules'] == '0') && 
  ($admin_access['module_export'] == '0') && 
- ($admin_access['cip_manager'] == '0')
+ ($admin_access['cip_manager'] == '0') && 
+ ($admin_access['ship2pay'] == '0')
  ) echo '<li><a href="#"></a></li>'; 
 
 ?>
@@ -419,6 +422,8 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['backup'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_BACKUP) . '">' . BOX_BACKUP . '</a></li>' . "\n";
 
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_extra_fields'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_PRODUCTS_EXTRA_FIELDS) . '">' . BOX_PRODUCT_EXTRA_FIELDS . '</a></li>' . "\n";
+
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONTENT_MANAGER) . '">' . BOX_CONTENT . '</a></li>' . "\n";
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blacklist'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_BLACKLIST, '', 'NONSSL') . '">' . BOX_TOOLS_BLACKLIST . '</a></li>' . "\n";
@@ -445,6 +450,7 @@
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['backup'] == '0') && 
+ ($admin_access['product_extra_fields'] == '0') && 
  ($admin_access['content_manager'] == '0') && 
  ($admin_access['blacklist'] == '0') && 
  ($admin_access['module_newsletter'] == '0') && 
