@@ -49,7 +49,7 @@ define('TEXT_OPTION_NAME', 'Название атрибута');
 define('TABLE_HEADING_OPT_IMAGE','Картинка');
 define('TABLE_HEADING_OPT_DESC','Описание');
 define('TABLE_TEXT_DELETE','удалить картинку');
-define('TEXT_OPTIONS_IMAGE','Картинка атрибута')
+define('TEXT_OPTIONS_IMAGE','Картинка атрибута');
 
 define('EDIT_TEXT','изменить');
 define('DELETE_TEXT','удалить');
