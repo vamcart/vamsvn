@@ -18,7 +18,6 @@
   require('includes/application_top.php');
 
 	function vam_p2s_get_moduleinfo($module_type) {
-		global $language;
 		if($module_type == "shipping") {
 			$module_directory = DIR_FS_CATALOG_MODULES . 'shipping/';
 			$files = explode(';',MODULE_SHIPPING_INSTALLED);
@@ -28,7 +27,7 @@
 		}
 		$installed_modules = array();
 		foreach($files as $file) {
-			include(DIR_FS_LANGUAGES . $language . '/modules/' . $module_type . '/' . $file);
+			include(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/' . $module_type . '/' . $file);
 			include(DIR_FS_CATALOG_MODULES . $module_type . '/' . $file);
 			$class = substr($file, 0, strrpos($file, '.'));
 			if (vam_class_exists($class)) {
