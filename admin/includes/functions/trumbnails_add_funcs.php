@@ -36,23 +36,23 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 		}
 	}
 
-	function vam_get_image_size($src, $width, $height) {
-		if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true') && (empty($width) || empty($height)) ) {
-			if ($image_size = @getimagesize($src)) {
-				if (!vam_not_null($width) && vam_not_null($height)) {
-					$ratio = $height / $image_size[1];
-					$width = $image_size[0] * $ratio;
-				} elseif (vam_not_null($width) && !vam_not_null($height)) {
-					$ratio = $width / $image_size[0];
-					$height = $image_size[1] * $ratio;
-				} elseif (!vam_not_null($width) && !vam_not_null($height)) {
-					$width = $image_size[0];
-					$height = $image_size[1];
-				}
-			}
-		}
-		return(array((int)$width, (int)$height));
-	}
+  function vam_get_image_size($src, $width, $height) {
+      if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true')  ) {
+         if ($image_size = @getimagesize($src)) {
+            if (!vam_not_null($width) && vam_not_null($height)) {
+               $ratio = $height / $image_size[1];
+               $width = $image_size[0] * $ratio;
+            } elseif (vam_not_null($width) && !vam_not_null($height)) {
+               $ratio = $width / $image_size[0];
+               $height = $image_size[1] * $ratio;
+            } elseif (!vam_not_null($width) && !vam_not_null($height) or $width > $image_size[0] or $height > $image_size[1]) {
+               $width = $image_size[0];
+               $height = $image_size[1];
+            }
+         }
+      }
+      return(array((int)$width, (int)$height));
+   }
 
 	function vam_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif'), $dir_only=false, $subdir = '') {
 //		echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
