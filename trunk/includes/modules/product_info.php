@@ -157,7 +157,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 		if ($_SESSION['customers_status']['customers_status_graduated_prices'] == 1)
 			include (DIR_WS_MODULES.FILENAME_GRADUATED_PRICE);
 
-                      $extra_fields_query = vam_db_query("
+                      $extra_fields_query = vamDBquery("
                       SELECT pef.products_extra_fields_status as status, pef.products_extra_fields_name as name, ptf.products_extra_fields_value as value
                       FROM ". TABLE_PRODUCTS_EXTRA_FIELDS ." pef
              LEFT JOIN  ". TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS ." ptf
