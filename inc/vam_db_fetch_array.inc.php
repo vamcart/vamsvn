@@ -27,8 +27,10 @@
 
       if (DB_CACHE=='true' && $cq) {
         if (!count($db_query)) return false;
+        if (is_array($db_query)) {
         $curr = current($db_query);
         next($db_query);
+        }
         return $curr;
       } else {
           if (is_array($db_query)) {
