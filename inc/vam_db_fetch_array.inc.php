@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vam_db_fetch_array.inc.php 864 2007-02-07 10:51:57 VaM $
+   $Id: vam_db_fetch_array.inc.php 864 2008-02-07 10:51:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
