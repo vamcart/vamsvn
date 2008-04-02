@@ -81,9 +81,9 @@ require ('includes/application_top.php');
 <div class="tabber">
 
 <div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_STAT; ?></h3>
+<h3><?php echo TEXT_SUMMARY_ORDERS; ?></h3>
 <table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/statistics.php'); ?>
+<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
 </table>
 </div>
 
@@ -95,16 +95,16 @@ require ('includes/application_top.php');
 </div>
 
 <div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_ORDERS; ?></h3>
+<h3><?php echo TEXT_SUMMARY_PRODUCTS; ?></h3>
 <table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
+<?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
 </table>
 </div>
 
 <div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_PRODUCTS; ?></h3>
+<h3><?php echo TEXT_SUMMARY_STAT; ?></h3>
 <table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
+<?php include(DIR_WS_MODULES . 'summary/statistics.php'); ?>
 </table>
 </div>
 
