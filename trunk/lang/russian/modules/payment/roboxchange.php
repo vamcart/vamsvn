@@ -25,7 +25,7 @@
 "пароль #2" любой<br />
 "Result URL" http://ваш-сайт/robox.php<br />
 "метод отсылки в Result URL" POST<br />
-"Success URL" http://ваш-сайт/checkout_success.php<br />
+"Success URL" http://ваш-сайт/checkout_process.php<br />
 "метод отсылки в Success URL" POST<br />
 "Fail URL" http://ваш-сайт/checkout_payment.php<br />
 "метод отсылки в Fail URL" POST<br />
