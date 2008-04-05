@@ -94,6 +94,7 @@ define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
 define('BOX_CONFIGURATION_24', 'Изменение цен');
 define('BOX_CONFIGURATION_25', 'Установка модулей');
+define('BOX_CONFIGURATION_27', 'Тех. обслуживание');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
 define('BOX_PAYMENT', 'Модули оплаты');
