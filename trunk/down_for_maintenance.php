@@ -28,6 +28,8 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/down_for_maintenance.html');
 $vamTemplate->assign('main_content', $main_content);
+if (!defined(RM))
+$vamTemplate->load_filter('output', 'note');
 $vamTemplate->display(CURRENT_TEMPLATE.'/module/down_for_maintenance.html');
 
 ?>
