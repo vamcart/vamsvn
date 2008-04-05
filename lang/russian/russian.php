@@ -538,4 +538,6 @@ define('TEXT_EMAIL_SUCCESSFUL_SENT','Ваш вопрос о товаре <b>%s</
 define('THX_SUCCESSFUL_SENT','Спасибо большое!');
 define('TEXT_MESSAGE_ERROR','Вы не заполнили поле Ваш вопрос.');
 
+define('NAVBAR_TITLE_MAINTENANCE','Тех. обслуживание');
+
 ?>
