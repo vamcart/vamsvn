@@ -152,7 +152,7 @@ DROP TABLE IF EXISTS products_xsell;
 
 create table products_extra_fields (
   products_extra_fields_id int(11) not null auto_increment,
-  products_extra_fields_name varchar(64) not null ,
+  products_extra_fields_name varchar(255) not null ,
   products_extra_fields_order int(3) default '0' not null ,
   products_extra_fields_status tinyint(1) default '1' not null ,
   languages_id int(11) default '0' not null ,
