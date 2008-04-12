@@ -23,6 +23,7 @@
 
 ?>
 
+
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -89,7 +90,7 @@
 
 <!-- Настройки -->
 
-<li><a href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CONFIGURATION; ?></span><b class="p0"></b><b class="p1"></b><b class="p2"></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<li><a href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CONFIGURATION; ?></span><!--[if gte IE 7]><!--></a><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
 	<ul>
 	<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
@@ -169,7 +170,7 @@
 
 <!-- Каталог -->
 
-<li><a href="<?php vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CATALOG; ?></span><b class="p0"></b><b class="p1"></b><b class="p2"></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<li><a href="<?php vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CATALOG; ?></span><!--[if gte IE 7]><!--></a><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
 	<ul>
 	<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
@@ -206,7 +207,7 @@
 
 <!-- Покупатели -->
 
-<li><a href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CUSTOMERS; ?></span><b class="p0"></b><b class="p1"></b><b class="p2"></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<li><a href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_CUSTOMERS; ?></span><!--[if gte IE 7]><!--></a><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
 	<ul>
 	<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
@@ -234,7 +235,7 @@
 
 <!-- Модули -->
 
-<li><a href="<?php vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_MODULES; ?></span><b class="p0"></b><b class="p1"></b><b class="p2"></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<li><a href="<?php vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_MODULES; ?></span><!--[if gte IE 7]><!--></a><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
 	<ul>
 	<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
@@ -266,7 +267,7 @@
 
 <!-- Разное -->
 
-<li><a href="<?php echo vam_href_link(FILENAME_BACKUP, 'gID=1', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_OTHER; ?></span><b class="p0"></b><b class="p1"></b><b class="p2"></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+<li><a href="<?php echo vam_href_link(FILENAME_BACKUP, 'gID=1', 'NONSSL'); ?>"><span><?php echo BOX_HEADING_OTHER; ?></span><!--[if gte IE 7]><!--></a><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
 	<ul>
 	<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
