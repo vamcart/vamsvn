@@ -119,4 +119,6 @@ define('FILENAME_ASK_PRODUCT_QUESTION', 'ask_a_question.php');
 
 define('DOWN_FOR_MAINTENANCE_FILENAME', 'down_for_maintenance.php');
 
+define('FILENAME_FAQ', 'faq.php');
+
 ?>
