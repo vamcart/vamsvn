@@ -1174,6 +1174,58 @@ div#navigation
 
 /*- /Бокс новости */
 
+/*- Бокс вопросы и ответы */
+#boxFaq
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- Заголовок бокса вопросы и ответы */
+#boxFaq h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #006600;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+
+#boxFaq h5 a
+   {
+     color: #006600;
+     text-decoration: none;
+   }
+/*- /Заголовок бокса вопросы и ответы */
+
+/*- Содержимое бокса вопросы и ответы */
+#boxFaq .boxFaqContent 
+   {
+     padding-left: 1em;
+     margin-bottom: 0.5em;
+     text-align: left;
+  }
+
+#boxFaq .boxFaqContent p 
+   {
+     margin: 0 0 0 0;
+     padding-bottom: 0.2em;
+  }
+
+/*- /Содержимое бокса вопросы и ответы */
+
+/*- /Бокс вопросы и ответы */
+
 /*- Бокс корзина */
 
 /* Оформление */
