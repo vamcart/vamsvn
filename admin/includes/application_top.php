@@ -573,5 +573,8 @@ define('TABLE_SHIP2PAY', 'ship2pay');
 define('FILENAME_PRODUCTS_EXTRA_FIELDS', 'product_extra_fields.php'); 
 define('TABLE_PRODUCTS_EXTRA_FIELDS', 'products_extra_fields'); 
 define('TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS', 'products_to_products_extra_fields'); 
+
+define('FILENAME_FAQ', 'faq.php');
+define('TABLE_FAQ', 'faq');
   
 ?>
