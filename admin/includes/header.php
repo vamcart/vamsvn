@@ -23,6 +23,21 @@
 
 ?>
 
+		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/bgiframe.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(".nav")
+			.find(">li:has(ul)")
+				.mouseover(function(){
+					$("ul", this).bgIframe({opacity:false});
+				})
+				.find("a")
+					.focus(function(){
+						$("ul", $(".nav>li:has(ul)")).bgIframe({opacity:false});
+					});
+		});
+		</script>
 
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -86,7 +101,7 @@
 
 ?>
 
-<ul id="nav">
+<ul class="nav" id="nav">
 
 <!-- Настройки -->
 
