@@ -540,4 +540,9 @@ define('TEXT_MESSAGE_ERROR','Вы не заполнили поле Ваш воп
 
 define('NAVBAR_TITLE_MAINTENANCE','Тех. обслуживание');
 
+define('TABLE_HEADING_FAQ', 'Последние вопросы');
+define('NAVBAR_TITLE_FAQ', 'Вопросы и ответы');
+define('TEXT_DISPLAY_NUMBER_OF_FAQ', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> вопросов)');
+define('TEXT_NO_FAQ', 'Нет вопросов.');
+
 ?>
