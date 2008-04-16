@@ -111,5 +111,7 @@
 
   define('TABLE_PRODUCTS_EXTRA_FIELDS', 'products_extra_fields'); 
   define('TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS', 'products_to_products_extra_fields'); 
+
+  define('TABLE_FAQ', 'faq');
   
 ?>
