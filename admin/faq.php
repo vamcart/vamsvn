@@ -73,11 +73,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<?php if (USE_WYSIWYG=='true') {
+<?php
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
  if ($_GET['action']=='new_faq') echo vam_wysiwyg_tiny('faq',$data['code']);
- } ?>
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -124,7 +124,7 @@
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_FAQ_ANSWER; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('answer', '', '100%', '25', stripslashes($faq['answer'])); ?><br /><a href="javascript:toggleHTMLEditor('content');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('answer', '', '100%', '25', stripslashes($faq['answer'])); ?><br /><a href="javascript:toggleHTMLEditor('answer');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
