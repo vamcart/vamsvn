@@ -178,6 +178,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".(int) $_GET['filter_id']."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -258,6 +259,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -301,6 +303,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                                 products_sorting2 FROM ".TABLE_CATEGORIES."
                                                 where categories_id='".$current_category_id."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
     $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
