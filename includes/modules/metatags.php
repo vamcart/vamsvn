@@ -38,10 +38,18 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
         if (strlen($title) == 0){
             $title = $product->data['products_name'];
         }
+
+$cat_query = vamDBquery("SELECT
+                                 categories_name
+                                 FROM ".TABLE_CATEGORIES_DESCRIPTION." 
+                                 WHERE categories_id='".$current_category_id."'
+                                 and language_id = '".(int) $_SESSION['languages_id']."'"
+                                 );
+$cat_data = vam_db_fetch_array($cat_query, true);         
 ?>	
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
-<title><?php echo $title.' '.$product->data['products_model'] . ' - ' . TITLE; ?></title>
+<title><?php echo $title.' '.$product->data['products_model'] . ' - ' . $cat_data['categories_name'] . ' - ' . TITLE; ?></title>
 	<?php
 
 	} else {
