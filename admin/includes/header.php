@@ -23,6 +23,7 @@
 
 ?>
 
+<!--[if lte IE 6]>
 		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
 		<script type="text/javascript" src="../jscript/jquery/plugins/bgiframe.js"></script>
 		<script type="text/javascript">
@@ -38,6 +39,7 @@
 					});
 		});
 		</script>
+<![endif]-->
 
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
