@@ -82,6 +82,7 @@ if ($category['listing_template'] == '' or $category['listing_template'] == 'def
 if ($result != false) {
 
 	$module->assign('MANUFACTURER_DROPDOWN', $manufacturer_dropdown);
+	$module->assign('MANUFACTURER_SORT', $manufacturer_sort);
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
 
