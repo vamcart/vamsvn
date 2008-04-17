@@ -96,6 +96,20 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 
 		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')" alt="" />');
 
+$cat_query = vamDBquery("SELECT
+                                 categories_name
+                                 FROM ".TABLE_CATEGORIES_DESCRIPTION." 
+                                 WHERE categories_id='".$current_category_id."'
+                                 and language_id = '".(int) $_SESSION['languages_id']."'"
+                                 );
+$cat_data = vam_db_fetch_array($cat_query, true);
+		
+   $manufacturer_query = vamDBquery("select m.manufacturers_id, m.manufacturers_name, m.manufacturers_image, mi.manufacturers_url from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on (m.manufacturers_id = mi.manufacturers_id and mi.languages_id = '" . (int)$_SESSION['languages_id'] . "'), " . TABLE_PRODUCTS . " p  where p.products_id = '" . $product->data['products_id'] . "' and p.manufacturers_id = m.manufacturers_id");
+      $manufacturer = vam_db_fetch_array($manufacturer_query,true);
+
+		$info->assign('CATEGORY', $cat_data['categories_name']);
+      $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
+
 		if ($product->data['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$product->data['products_image'];
 	   
