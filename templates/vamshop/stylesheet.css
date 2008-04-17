@@ -1224,6 +1224,41 @@ div#navigation
 
 /*- /Содержимое бокса вопросы и ответы */
 
+dl.itemFaqDefault 
+   {
+     width: 48%;
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+
+dl.itemFaq 
+   {
+     width: 98%;
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+
+dt.itemFaq 
+   {
+     display: none;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: left;
+   }
+
+dd.itemFaq
+   {
+     margin-left: 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
 /*- /Бокс вопросы и ответы */
 
 /*- Бокс корзина */
