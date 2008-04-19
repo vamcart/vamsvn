@@ -62,6 +62,7 @@
 
 <!-- checkbox -->
 <p>
+<strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <input type="checkbox" name="id[{$options_data.ID}]" value="{$item_data.ID}" />
 {$item_data.TEXT} {if $item_data.PRICE > 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
@@ -74,6 +75,7 @@
 
 <!-- readonly -->
 <p>
+<strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <input type="hidden" name="id[{$options_data.ID}]" value="{$item_data.ID}" />
 {$item_data.TEXT} {if $item_data.PRICE > 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
