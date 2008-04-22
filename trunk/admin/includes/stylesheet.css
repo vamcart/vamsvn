@@ -238,7 +238,7 @@ FORM { display: inline; }
 .oldPrice { text-decoration: line-through; }
 .fieldRequired { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #ff0000; }
 .smallText { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
-.main { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+.main { font-family: Verdana, Arial, sans-serif; font-size: 12px; text-align: left; }
 .errorText { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #ff0000; }
 
 /* Сборка VaM */
