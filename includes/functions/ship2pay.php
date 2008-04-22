@@ -28,7 +28,8 @@
 ////// Function to handle links between shipping and payment
 
 function ship2pay() {
-	global $shipping, $order;
+	global $order;
+	$shipping = $_SESSION['shipping'];
 	$shipping_module = substr($shipping['id'], 0, strpos($shipping['id'], '_')) . '.php';
 	$q_ship2pay = vamDBquery("SELECT payments_allowed, zones_id FROM " . TABLE_SHIP2PAY . " where shipment = '" . $shipping_module . "' and status=1");
 	$check_flag = false;
