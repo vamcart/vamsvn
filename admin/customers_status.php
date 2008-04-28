@@ -82,7 +82,7 @@
             $next_id = vam_db_fetch_array($next_id_query);
             $customers_status_id = $next_id['customers_status_id'] + 1;
             // We want to create a personal offer table corresponding to each customers_status
-            vam_db_query("create table ".TABLE_PERSONAL_OFFERS.$customers_status_id . " (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, products_id int NOT NULL, quantity int, personal_offer decimal(15,4))");
+            vam_db_query("create table ".TABLE_PERSONAL_OFFERS.$customers_status_id . " (price_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, products_id int NOT NULL, quantity int, personal_offer decimal(15,4)) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci");
 		   vam_db_query("ALTER TABLE  `products` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
 		   vam_db_query("ALTER TABLE  `categories` ADD  `group_permission_" . $customers_status_id . "` TINYINT( 1 ) NOT NULL");
 

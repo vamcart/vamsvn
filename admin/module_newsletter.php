@@ -68,7 +68,7 @@
                     date datetime NOT NULL default '0000-00-00 00:00:00',
                     comment varchar(64) NOT NULL default '',
                     PRIMARY KEY  (id)
-                    )");
+                    ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci");
    } else {
    vam_db_perform(TABLE_MODULE_NEWSLETTER, $sql_data_array);
    // create temp table
@@ -86,7 +86,7 @@
                     date datetime NOT NULL default '0000-00-00 00:00:00',
                     comment varchar(64) NOT NULL default '',
                     PRIMARY KEY  (id)
-                    )");
+                    ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci");
    }
 
    // filling temp table with data!
