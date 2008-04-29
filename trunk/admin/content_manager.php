@@ -61,6 +61,9 @@
         $content_title=vam_db_prepare_input($_POST['cont_title']);
         $content_header=vam_db_prepare_input($_POST['cont_heading']);
         $content_url=vam_db_prepare_input($_POST['cont_url']);
+        // Content URL begin
+        $content_page_url=vam_db_prepare_input($_POST['cont_page_url']);
+        // Content URL end
         $content_text=vam_db_prepare_input($_POST['cont']);
         $coID=vam_db_prepare_input($_POST['coID']);
         $upload_file=vam_db_prepare_input($_POST['file_upload']);
@@ -116,6 +119,9 @@
                                 'languages_id' => $content_language,
                                 'content_title' => $content_title,
                                 'content_heading' => $content_header,
+                                // Content URL begin
+                                'content_page_url' => $content_page_url,
+                                // Content URL end
                                 'content_url' => $content_url,
                                 'content_text' => $content_text,
                                 'content_file' => $content_file_name,
@@ -501,6 +507,7 @@ switch ($_GET['action']) {
  case 'new':    
  case 'edit':
  if ($_GET['action']!='new') {
+        // Content URL begin
         $content_query=vam_db_query("SELECT
                                         content_id,
                                         categories_id,
@@ -510,6 +517,7 @@ switch ($_GET['action']) {
                                         content_title,
                                         content_heading,
                                         content_url,
+                                        content_page_url,
                                         content_text,
                                         sort_order,
                                         file_flag,
@@ -517,12 +525,13 @@ switch ($_GET['action']) {
                                         content_status,
                                         content_group,
                                         content_delete,
-             							       content_meta_title,
+                                        content_meta_title,
                                         content_meta_description,
                                         content_meta_keywords
                                         FROM ".TABLE_CONTENT_MANAGER."
                                         WHERE content_id='".(int)$_GET['coID']."'");
 
+        // Content URL end
         $content=vam_db_fetch_array($content_query);
 }
         $languages_array = array();
@@ -644,6 +653,12 @@ echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[
       <td width="10%"><?php echo TEXT_TITLE; ?></td>
       <td width="90%"><?php echo vam_draw_input_field('cont_title',$content['content_title'],'size="60"'); ?></td>
    </tr>
+<!--// Content URL begin //-->
+   <tr>
+      <td width="10%"><?php echo TEXT_PAGE_URL; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('cont_page_url',$content['content_page_url'],'size="60"'); ?></td>
+   </tr>
+<!--// Content URL end //-->
 
 
    <tr> 

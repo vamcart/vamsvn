@@ -371,6 +371,7 @@ CREATE TABLE categories (
   last_modified datetime,
   yml_bid int(4) NOT NULL DEFAULT '0',
   yml_cbid int(4) NOT NULL DEFAULT '0',
+  categories_url varchar(255),
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -901,6 +902,7 @@ CREATE TABLE products (
   products_to_xml tinyint(1) NOT NULL DEFAULT '1',
   yml_bid tinyint(1) NOT NULL DEFAULT '0',
   yml_cbid tinyint(1) NOT NULL DEFAULT '0',
+  products_page_url varchar(255),
   PRIMARY KEY (products_id),
   KEY idx_products_date_added (products_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -1194,6 +1196,7 @@ CREATE TABLE content_manager (
   content_meta_title TEXT,
   content_meta_description TEXT,
   content_meta_keywords TEXT,
+  content_page_url varchar(255),
   PRIMARY KEY  (content_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1435,14 +1438,14 @@ INSERT INTO shipping_status VALUES (3, 1, '2 недели', '');
 
 # data
 
-INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'Условия доставки.', '', 0, 1, '', 1, 1, 0,'','','');
-INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', '', 0, 1, '', 1, 2, 0,'','','');
-INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', '', 0, 1, '', 1, 3, 0,'','','');
-INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', '', 0, 1, '', 1, 4, 0,'','','');
-INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин VaM Shop<br /><br />Данный текст можно изменить в Админке - Разное - Инструменты - Информационные страницы<br /><br />', '', 0, 1, '', 0, 5, 0,'','','');
-INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', '', 0, 1, '', 0, 6, 1,'','','');
-INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', '', 0, 1, '', 1, 7, 0,'','','');
-INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0,'','','');
+INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'Условия доставки.', '', 0, 1, '', 1, 1, 0,'','','','');
+INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', '', 0, 1, '', 1, 2, 0,'','','','');
+INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', '', 0, 1, '', 1, 3, 0,'','','','');
+INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', '', 0, 1, '', 1, 4, 0,'','','','');
+INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин VaM Shop<br /><br />Данный текст можно изменить в Админке - Разное - Инструменты - Информационные страницы<br /><br />', '', 0, 1, '', 0, 5, 0,'','','','');
+INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', '', 0, 1, '', 0, 6, 1,'','','','');
+INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', '', 0, 1, '', 1, 7, 0,'','','','');
+INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0,'','','','');
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
 INSERT INTO address_format VALUES (1, '$firstname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');

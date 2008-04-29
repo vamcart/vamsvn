@@ -129,10 +129,14 @@ $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
         <div class="tabbertab">
         <h3><?php echo TEXT_PRODUCTS_DATA; ?></h3>
           <table border="0" class="main">
-
-
-
-                <tr>
+<!--// Categories URL begin //-->
+            <tr>
+              <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORY_URL; ?></td>
+              <td valign="top" class="main"><?php echo vam_draw_input_field('categories_url', $cInfo->categories_url, 'size="40"'); ?></td>
+            </tr>
+<!--// Categories URL end //-->
+            <tr>
+            
           <?php
         $files=array();
  if ($dir= opendir(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/product_listing/')){
