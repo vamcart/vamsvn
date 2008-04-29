@@ -1,0 +1,13 @@
+AddDefaultCharset utf-8
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(product_info|index|shop_content).php(.*)$ redirector.php [L]
+
+RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]
+RewriteRule ^(.*).html(.*)$ manager.php [L]
+
+
+RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.php|\.js$ - [L]
+

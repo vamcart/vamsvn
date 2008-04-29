@@ -53,6 +53,9 @@ elseif ($_POST) {
         $products_meta_description = $_POST['products_meta_description'];
         $products_meta_keywords = $_POST['products_meta_keywords'];
         $products_url = $_POST['products_url'];
+        // Products URL begin
+        $products_page_url = $_POST['products_page_url'];
+        // Products URL end
         $pInfo->products_startpage = $_POST['products_startpage'];
    $products_startpage_sort = $_POST['products_startpage_sort'];
 } else {
@@ -199,6 +202,12 @@ $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_SORT; ?></td>
             <td valign="top" class="main"><?php echo  vam_draw_input_field('products_sort', $pInfo->products_sort,'size=3'); ?></td>
           </tr>
+<!--// Products URL begin //-->
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_PAGE_URL; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_page_url', $pInfo->products_page_url,'size=40'); ?></td>
+          </tr>
+<!--// Products URL end //-->
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_QUANTITY; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity', $pInfo->products_quantity,'size=5'); ?></td>
