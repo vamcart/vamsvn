@@ -799,4 +799,6 @@ define('MAX_DISPLAY_FAQ_PAGE_DESC' , 'Количество вопросов, о�
 define('MAX_DISPLAY_FAQ_ANSWER_TITLE' , 'Вопросы кратко');
 define('MAX_DISPLAY_FAQ_ANSWER_DESC' , 'Количество символов, отображаемых при предварительном просмотре вопросы');
 
+require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_configuration.php');
+
 ?>

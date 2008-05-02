@@ -492,6 +492,43 @@
 	</li>
 <!-- /Статьи -->
 
+<!-- Партнёрка -->
+	<li><a class="fly" href="<?php echo vam_href_link(FILENAME_AFFILIATE, '', 'NONSSL'); ?>"><?php echo BOX_HEADING_AFFILIATE; ?><!--[if gte IE 7]><!--></a><b class="p4"></b><!--<![endif]-->
+	<!--[if	lte	IE 6]><table><tr><td><![endif]-->
+
+		<ul>
+			<li class="pad1"><b class="p7"></b><b class="p3"></b></li>
+
+<?php
+
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=28', 'NONSSL') . '">' . BOX_AFFILIATE_CONFIGURATION . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_affiliates'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE, '', 'NONSSL') . '">' . BOX_AFFILIATE . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_banners'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_BANNERS, '', 'NONSSL') . '">' . BOX_AFFILIATE_BANNERS . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_clicks'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, '', 'NONSSL') . '">' . BOX_AFFILIATE_CLICKS . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_contact'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT, '', 'NONSSL') . '">' . BOX_AFFILIATE_CONTACT . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_payment'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, '', 'NONSSL') . '">' . BOX_AFFILIATE_PAYMENT . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_sales'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_SALES, '', 'NONSSL') . '">' . BOX_AFFILIATE_SALES . '</a><b class="p4"></b></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['affiliate_summary'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY, '', 'NONSSL') . '">' . BOX_AFFILIATE_SUMMARY . '</a><b class="p4"></b></li>';
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['configuration'] == '0') && 
+ ($admin_access['affiliate_affiliates'] == '0') && 
+ ($admin_access['affiliate_banners'] == '0') && 
+ ($admin_access['affiliate_clicks'] == '0') && 
+ ($admin_access['affiliate_contact'] == '0') && 
+ ($admin_access['affiliate_payment'] == '0') && 
+ ($admin_access['affiliate_sales'] == '0') && 
+ ($admin_access['affiliate_summary'] == '0')
+ ) echo '<li><a href="#"></a><b class="p4"></b></li>'; 
+
+?>
+
+			<li class="pad2"><b class="p5"></b><b class="p6"></b></li>
+		</ul>
+	<!--[if	lte	IE 6]></td></tr></table></a><b class="p4"></b><![endif]-->
+	</li>
+<!-- /Партнёрка -->
+
 <!-- Помощь -->
 	<li><a class="fly" href="#"><?php echo BOX_HEADING_HELP; ?><!--[if gte IE 7]><!--></a><b class="p4"></b><!--<![endif]-->
 	<!--[if	lte	IE 6]><table><tr><td><![endif]-->

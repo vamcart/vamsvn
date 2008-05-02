@@ -16,6 +16,7 @@
 
   define('DIR_WS_BOXES',DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/');
 
+  include(DIR_WS_BOXES . 'affiliate.php');
   include(DIR_WS_BOXES . 'categories.php');
   include(DIR_WS_BOXES . 'authors.php');
   include(DIR_WS_BOXES . 'articles.php');

@@ -340,6 +340,7 @@ if (!$tmp) {
 	// NEW EMAIL configuration !
 	$order_totals = $order_total_modules->apply_credit();
 	include ('send_order.php');
+   require_once(DIR_WS_INCLUDES . 'affiliate_checkout_process.php');
 
 	// load the after_process function from the payment modules
 	$payment_modules->after_process();

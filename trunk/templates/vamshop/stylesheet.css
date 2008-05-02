@@ -769,6 +769,50 @@ div#navigation
 
 /*- /Бокс статьи */
 
+/*- Бокс партнёрка */
+#boxAffiliate
+   {
+     text-align: left;
+     margin-bottom: 0.2em;
+     margin-top: 0.2em;
+     margin-right: 0.2em; /* отступ от правого края браузера */
+     padding-top: 0.2em;
+     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+  	  border-bottom-width: 1px;
+	  border-bottom-style: dashed;
+     border-bottom-color: #67748B;
+   }
+
+/*- Заголовок бокса партнёрка */
+#boxAffiliate h5 
+   {
+     display: block;
+     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font-weight: bold;
+     color: #990000;
+     border-bottom: 2px #e5e5e5 solid;
+     background: url(img/box.gif) no-repeat left center;
+     margin: 0 0 .4em .3em;
+     padding: .1em 0 0 16px;
+  }
+/*- /Заголовок бокса партнёрка */
+
+/*- Содержимое бокса партнёрка */
+#boxAffiliateContent 
+   {
+     padding-left: 1em;
+  }
+
+#boxAffiliateContent p 
+   {
+     margin: 0 0 0 0;
+     text-align: left;
+  }
+
+/*- /Содержимое бокса партнёрка */
+
+/*- /Бокс партнёрка */
+
 /*- Бокс новые статьи */
 #boxArticlesNew
    {

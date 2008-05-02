@@ -576,5 +576,7 @@ define('TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS', 'products_to_products_extra_fi
 
 define('FILENAME_FAQ', 'faq.php');
 define('TABLE_FAQ', 'faq');
+
+require_once(DIR_WS_INCLUDES . 'affiliate_application_top.php');
   
 ?>
