@@ -545,4 +545,6 @@ define('NAVBAR_TITLE_FAQ', 'Вопросы и ответы');
 define('TEXT_DISPLAY_NUMBER_OF_FAQ', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> вопросов)');
 define('TEXT_NO_FAQ', 'Нет вопросов.');
 
+require_once(DIR_WS_LANGUAGES . $_SESSION['language'].'/'.'affiliate_russian.php');
+
 ?>
