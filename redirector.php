@@ -6,22 +6,31 @@
   Released under the BSD License
 */
 
+  require_once('includes/configure.php');
+
+  if (defined('DIR_WS_INCLUDES') === false) {
+    header('Location: install');
+    exit();
+  }
+
   if (strpos($_SERVER['REQUEST_URI'], '?') === FALSE ) {
-    require_once('includes/configure.php');
     require_once('includes/database_tables.php');
     require_once('inc/vam_db_prepare_input.inc.php');
+
+    $root_depth = count_chars(DIR_WS_CATALOG, 0);
+    $root_depth = $root_depth[ord('/')] - 1;
 
     $db_l = mysql_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
     mysql_select_db(DB_DATABASE);
    
     $URI = array();
 
-    if (preg_match('/\/(.*)\.php/', $_SERVER['REQUEST_URI'], $URI)) {
+    if (preg_match('/(((.*)\/)*)(.*)\.php/', $_SERVER['REQUEST_URI'], $URI)) {
 
       $GET_array = array ();
       $vars = explode('/', $_SERVER['REQUEST_URI']);
 
-      for ($i = 2, $n = sizeof($vars); $i < $n; $i ++) {
+      for ($i = $root_depth + 2, $n = sizeof($vars); $i < $n; $i ++) {
         if (strpos($vars[$i], '[]')) {
           $GET_array[substr($vars[$i], 0, -2)][] = $vars[$i +1];
         } else {
@@ -36,7 +45,7 @@
         }
       }
 
-      switch ($URI[1]) {
+      switch ($URI[sizeof($URI) - 1]) {
         case 'index':
           $cat = array();
           if (preg_match('/\/cat\/c(.*)_/', $_SERVER['REQUEST_URI'], $cat)) {
@@ -50,7 +59,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($cURL) && $cURL != '') {
-              $url = HTTP_SERVER . '/'. $cURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $cURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -71,7 +80,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($pURL) && $pURL != '') {
-              $url = HTTP_SERVER . '/' . $pURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $pURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -92,7 +101,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($iURL) && $iURL != '') {
-              $url = HTTP_SERVER . '/'. $iURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $iURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -104,10 +113,13 @@
         default:
           break;
       }
+    } else {
+      $PHP_SELF = '/index.php';
+      include('index.php');
     }
-   
   } else { 
     $URI_elements = explode("?", ltrim($_SERVER['REQUEST_URI'], '/'));
+
 
     $requests = array();
     if (isset($URI_elements[1]) && (strlen($URI_elements[1]) > 0)) {
@@ -123,7 +135,6 @@
 
     if (isset($URI_elements[0]) && (strlen($URI_elements[0]) > 0)) {
 
-      require_once('includes/configure.php');
       require_once('includes/database_tables.php');
       require_once('inc/vam_db_prepare_input.inc.php');
 
@@ -146,8 +157,10 @@
         }
       }
 
-      switch ($URI_elements[0]) {
-        case 'index.php':
+      preg_match('/(((.*)\/)*)(.*)\.php/', $URI_elements[0], $URI);
+
+      switch ($URI[sizeof($URI) - 1]) {
+        case 'index':
           if (isset($_GET['cat']) && $_GET['cat'] != '') {
             $cURL = '';
             $query = 'select categories_url from ' . TABLE_CATEGORIES . ' where categories_id="' . vam_db_prepare_input($_GET['cat']) . '"';
@@ -159,7 +172,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($cURL) && $cURL != '') {
-              $url = HTTP_SERVER . '/'. $cURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $cURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -168,7 +181,7 @@
           $PHP_SELF = '/index.php';
           include('index.php');
           break;
-        case 'product_info.php':
+        case 'product_info':
           if (isset($_GET['products_id']) && $_GET['products_id'] != '') {
             $query = 'select products_page_url from ' . TABLE_PRODUCTS . ' where products_id="' . vam_db_prepare_input($_GET['products_id']) . '"';
             $result = mysql_query($query);   
@@ -179,7 +192,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($pURL) && $pURL != '') {
-              $url = HTTP_SERVER . '/' . $pURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $pURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -188,7 +201,7 @@
           $PHP_SELF = '/product_info.php';
           include('product_info.php');
           break;
-        case 'shop_content.php':
+        case 'shop_content':
           if (isset($_GET['coID']) && $_GET['coID'] != '') {
             $query = 'select content_page_url from ' . TABLE_CONTENT_MANAGER . ' where content_id="' . vam_db_prepare_input($_GET['coID']) . '"';
             $result = mysql_query($query);   
@@ -199,7 +212,7 @@
             mysql_free_result($result);
             mysql_close();
             if (isset($iURL) && $iURL != '') {
-              $url = HTTP_SERVER . '/'. $iURL;
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $iURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
