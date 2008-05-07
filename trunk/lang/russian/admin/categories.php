@@ -223,8 +223,8 @@ define('TEXT_YANDEX_MARKET_BID','Основная ставка (bid):');
 define('TEXT_YANDEX_MARKET_CBID','Ставка для карточек (cbid):');
 
 // Categiries/Products URL begin
-define('TEXT_EDIT_CATEGORY_URL', 'URL категории:');
-define('TEXT_PRODUCTS_PAGE_URL', 'URL товара:');
+define('TEXT_EDIT_CATEGORY_URL', 'SEO URL категории:');
+define('TEXT_PRODUCTS_PAGE_URL', 'SEO URL товара:');
 // Categiries/Products URL end
 
 ?>

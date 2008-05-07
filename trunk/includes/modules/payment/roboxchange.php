@@ -82,7 +82,8 @@
     function after_process() {
       global $insert_id, $vamPrice, $order, $language, $cart;
       $inv_id=$insert_id;
-      $out_summ=$order->info['total_value'];
+//      $out_summ=$order->info['total_value'];
+      $out_summ=number_format($order->info['total'],0,'.',''); 
       $crc = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$out_summ.':'.$inv_id.':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
 
       $_SESSION['cart']->reset(true);
