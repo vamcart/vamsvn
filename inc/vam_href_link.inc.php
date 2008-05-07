@@ -11,7 +11,7 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(html_output.php,v 1.52 2003/03/19); www.oscommerce.com 
-   (c) 2003	 nextcommerce (vam_href_link.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
+   (c) 2003      nextcommerce (vam_href_link.inc.php,v 1.3 2003/08/13); www.nextcommerce.org
    (c) 2004 xt:Commerce (vam_href_link.inc.php,v 1.3 2003/08/13); xt-commerce.com
 
    Released under the GNU General Public License 
@@ -26,6 +26,7 @@
     $sort = '';
     $direction = '';
     $on_page = '';
+    $page_num = '';
     $matches = array();
 
     if ($page == FILENAME_DEFAULT) {
@@ -60,6 +61,8 @@
             } else {
               $on_page = -1;
             }
+          } elseif ($parsed_param[0] === 'page') {
+            $page_num = $parsed_param[1];
           }
         }
 
@@ -111,6 +114,11 @@
             $params .= '&on_page=' . $on_page;
           }
 
+          if (vam_not_null($page_num)) {
+            $params .= '&page=' . $page_num;
+          }
+
+
           if (vam_not_null($params)) {
             if (strpos($params, '&') === 0) {
               $params = substr($params, 1);
@@ -118,7 +126,18 @@
 
             $categories_url .= '?' . $params;
           }
-          return $link . $categories_url;
+
+
+          $link_ajax = '';
+
+          if (AJAX_CART == 'true') {
+            if( vam_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
+              $link_ajax = '" onclick="doBuyNowGet(\'' . vam_href_link( 'ajax_shopping_cart.php', $parameters, $connection, $add_session_id, $search_engine_safe) . '\'); return false;';
+            }
+          }
+
+
+          return $link . $categories_url . $link_ajax;
         }
       }
     } elseif ($page == FILENAME_PRODUCT_INFO) {
@@ -263,8 +282,8 @@
         }
       }        
     }
-	
-	// remove session if useragent is a known Spider
+        
+        // remove session if useragent is a known Spider
     if ($truncate_session_id) $sid=NULL;
 
     if (isset($sid)) {
