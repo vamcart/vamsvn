@@ -153,6 +153,12 @@
     $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/images/graphs</div>';
  }
 
+      if (!is_writeable(DIR_FS_CATALOG . 'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/session')) {
+    $error_flag=true;
+    $folder_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/session</div>';
+ }
+
     if (!is_writeable(DIR_FS_CATALOG . 'admin/backups/')) {
     $error_flag=true;
     $folder_flag=true;
