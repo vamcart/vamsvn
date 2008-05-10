@@ -80,6 +80,7 @@ if ($product->getAttributesCount() > 0) {
 				'IMAGE' => $products_options['products_options_values_image'], 
 				'LINK' => $products_options['products_options_values_link'], 
 				'MODEL' => $products_options['attributes_model'], 
+				'STOCK' => $products_options['attributes_stock'], 
 				'PRICE' => '', 
 				'FULL_PRICE' => '', 
 				'PREFIX' => $products_options['price_prefix']
@@ -111,6 +112,7 @@ if ($product->getAttributesCount() > 0) {
 			'IMAGE' => $products_options['products_options_values_image'], 
 			'LINK' => $products_options['products_options_values_link'], 
 			'MODEL' => $products_options['attributes_model'], 
+			'STOCK' => $products_options['attributes_stock'], 
 			'PRICE' => $price, 
 			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix']
 			
