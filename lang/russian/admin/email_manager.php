@@ -24,4 +24,7 @@ define('TEXT_FILE_WRITE_ERROR','Не могу произвести запись 
 define('TEXT_FILE_WRITE_SUCCESS','Файл успешно сохранён!');
 define('TEXT_FILE_PERMISSION_ERROR','Файл недоступен для записи!');
 
+define('TEXT_CATALOG_TEMPLATES','Шаблоны писем каталога:');
+define('TEXT_ADMIN_TEMPLATES','Шаблоны писем админки:');
+
 ?>
