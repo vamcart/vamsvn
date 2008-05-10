@@ -45,8 +45,14 @@
 <?php } ?>
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
-    
+
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+
+<!-- catalog email -->         
+
+<br />
+<?php echo TEXT_CATALOG_TEMPLATES; ?>
+<br />
 
 <?php
 
@@ -70,7 +76,7 @@ if(file_exists($file)) {
 
 <?php
 
-$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/mail/russian/',array('.txt','.html')));
+$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/mail/' . $_SESSION['language'] . '/',array('.txt','.html')));
 
 echo vam_draw_pull_down_menu('file',$file_list,$_REQUEST['file']);
 
@@ -164,7 +170,135 @@ if (is_writable($file)) {
 <?php } ?>
 
 </form>
-         
+
+<!-- /catalog email -->         
+
+
+<!-- admin email -->         
+
+<br />
+<?php echo TEXT_ADMIN_TEMPLATES; ?>
+<br />
+
+<?php
+
+$path_parts_admin = pathinfo($_GET['file_admin']);
+
+$file_admin = DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/' . $path_parts_admin['basename'];
+
+if (is_writable($file_admin)) {
+  $chmod_admin = '<font color="Green">' . TEXT_YES . '</font>';
+}else{
+  $chmod_admin = '<font color="Red">' . TEXT_NO . '</font>';
+}
+
+if(file_exists($file_admin)) {
+	$code_admin = file_get_contents($file_admin);
+}else{
+  $code_admin = TEXT_FILE_SELECT;
+}
+?>
+<?php echo vam_draw_form('select_admin', FILENAME_EMAIL_MANAGER, '', 'get'); ?>
+
+<?php
+
+$file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/',array('.txt','.html')));
+
+echo vam_draw_pull_down_menu('file_admin',$file_list_admin,$_REQUEST['file_admin']);
+
+echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_EDIT . '"/>';
+
+               
+?>
+<br /><br />
+</form>
+<?php echo vam_draw_form('edit_admin', FILENAME_EMAIL_MANAGER, vam_get_all_get_params(), 'post'); ?>
+
+<?php if($_POST['save'] && is_file($file_admin)){ ?>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+
+<tr>
+    <td>
+
+<?php echo TEXT_FILE_SAVED; ?>
+<br />
+
+    </td>
+</tr>
+
+</table>
+
+<?php } else { ?>
+
+<?php if (isset($_GET['file_admin'])) { ?>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+    <td valign="top">
+
+		  <?php echo TEXT_FILE; ?> <b><?php echo $file_admin ?></b><br /><?php echo TEXT_FILE_WRITABLE; ?> <b><?php echo $chmod_admin ?></b><br />
+
+      <textarea name="code_admin" rows="20" cols="80">
+      <?php echo $code_admin ?>
+      </textarea>
+
+<br /><br />      
+      
+      <?php 
+  if (is_writable($file_admin)) {
+	echo '<input type="submit" name="save" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; 
+  }
+  ?>
+        
+    </td>
+</tr>
+
+</table>
+
+<?php } ?>
+
+<?php } ?>
+
+<?
+
+if($_POST['save'] && is_file($file_admin)){
+
+if (is_writable($file_admin)) {
+
+    if (!$handle = fopen($file_admin, 'w')) {
+         echo TEXT_FILE_OPEN_ERROR . " ($file_admin)";
+         exit;
+    }
+
+    if (fwrite($handle, stripslashes($_POST['code_admin'])) === FALSE) {
+        echo TEXT_FILE_WRITE_ERROR . " ($file_admin)";
+        exit;
+    }
+    
+//    echo TEXT_FILE_WRITE_SUCCESS;
+    
+    fclose($handle);
+
+} else {
+    echo TEXT_FILE_PERMISSION_ERROR;
+}
+
+}
+?>
+
+<br /><br />
+
+<?php if($_POST['save'] && is_file($file_admin)){ ?>
+
+<a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_EMAIL_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a>
+
+<?php } ?>
+
+</form>
+
+<!-- /admin email -->         
+
           </td>
         <!-- body_text_eof //-->
       </tr>
