@@ -400,12 +400,14 @@ $main = new main();
 require (DIR_WS_CLASSES.'vam_price.php');
 $vamPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
 
+if ($_SESSION['customers_status']['customers_status_id'] != 0) {
 if (EXCLUDE_ADMIN_IP_FOR_MAINTENANCE != getenv('REMOTE_ADDR')){
 	if (DOWN_FOR_MAINTENANCE=='true' and !strstr($PHP_SELF,DOWN_FOR_MAINTENANCE_FILENAME)) { vam_redirect(vam_href_link(DOWN_FOR_MAINTENANCE_FILENAME)); }
 	}
 // do not let people get to down for maintenance page if not turned on
 if (DOWN_FOR_MAINTENANCE=='false' and strstr($PHP_SELF,DOWN_FOR_MAINTENANCE_FILENAME)) {
     vam_redirect(vam_href_link(FILENAME_DEFAULT));
+}
 }
 
 require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
