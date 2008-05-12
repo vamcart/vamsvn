@@ -43,6 +43,7 @@ require_once (DIR_FS_INC.'vam_create_password.inc.php');
 require_once (DIR_FS_INC.'vam_draw_hidden_field.inc.php');
 require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
 require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
+require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 
 // needs to be included earlier to set the success message in the messageStack
 //  require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_CREATE_ACCOUNT);
@@ -407,7 +408,7 @@ if (ACCOUNT_STATE == 'true') {
 	}
 
       if ($entry_state_has_zones == true) {
-        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, $zone_name, ' id="state"');
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
 //        $state_input = vam_draw_pull_down_menu('state', $zones_array, $zone_name . ' id="state"');
       } else {
 		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state"');
