@@ -123,10 +123,11 @@
             if (strpos($params, '&') === 0) {
               $params = substr($params, 1);
             }
+            
+            $params = str_replace('&', '&amp;', $params);
 
             $categories_url .= '?' . $params;
           }
-
 
           $link_ajax = '';
 
