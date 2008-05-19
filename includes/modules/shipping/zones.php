@@ -125,7 +125,7 @@
  * 
  * + CUSTOMIZE THE SETTING IN lang/LANGUAGE/modules/shipping/zones.php
  */
-      $this->num_zones = 1;
+      $this->num_zones = 10;
     }
 
 /**
