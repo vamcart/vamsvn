@@ -76,7 +76,8 @@ if (!defined('YML_REFERER')) define('YML_REFERER','false');
 if (!defined('YML_STRIP_TAGS')) define('YML_STRIP_TAGS','true');
 if (!defined('YML_UTF8')) define('YML_UTF8','false');
 
-$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
+//$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
+$yml_referer = . '&amp;' . YML_REF_ID;
 
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
 	if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
