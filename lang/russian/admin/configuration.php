@@ -638,7 +638,7 @@ define('YML_AUTH_USER_TITLE' , 'Логин');
 define('YML_AUTH_PW_TITLE' , 'Пароль');
 define('YML_REFERER_TITLE' , 'Ссылка');
 define('YML_STRIP_TAGS_TITLE' , 'Теги');
-define('YML_UTF8_TITLE' , 'Перекодировка в UTF-8');
+define('YML_UTF8_TITLE' , 'Перекодировка в windows-1251');
 
 define('YML_NAME_DESC' , 'Название магазина для Яндекс-Маркет. Если поле пустое, то используется STORE_NAME.');
 define('YML_COMPANY_DESC' , 'Название компании для Яндекс-Маркет. Если поле пустое, то используется STORE_OWNER.');
