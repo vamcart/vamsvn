@@ -76,8 +76,7 @@ if (!defined('YML_REFERER')) define('YML_REFERER','false');
 if (!defined('YML_STRIP_TAGS')) define('YML_STRIP_TAGS','true');
 if (!defined('YML_UTF8')) define('YML_UTF8','false');
 
-//$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
-$yml_referer = . '&amp;' . YML_REF_ID;
+$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
 
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
 	if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
@@ -87,7 +86,7 @@ if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
 	} 
 }
 
-$charset = (YML_UTF8 == 'true') ? 'utf-8' : $_SESSION['language_charset'];
+$charset = (YML_UTF8 == 'true') ? 'windows-1251' : $_SESSION['language_charset'];
 
 $manufacturers_array = array();
 
@@ -245,7 +244,7 @@ echo "</offers>\n" .
 			$str = strip_tags($str);
 		}
 		if (YML_UTF8 == 'true')
-			$str = iconv($_SESSION['language_charset'], "UTF-8", $str);
+			$str = iconv($_SESSION['language_charset'], "windows-1251", $str);
 		return htmlspecialchars($str, ENT_QUOTES);
 	}
 ?>
