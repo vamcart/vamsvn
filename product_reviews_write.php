@@ -61,7 +61,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process') {
 		vam_db_query("insert into ".TABLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
 
 
-	vam_redirect(vam_href_link(FILENAME_PRODUCT_REVIEWS, $_POST['get_params']));
+	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, $_POST['get_params']));
 	}
  }
 }
