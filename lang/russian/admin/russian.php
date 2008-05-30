@@ -477,6 +477,6 @@ define('TEXT_ADD_FIELDS','Добавить дополнительные поля
 
 define('BOX_CATALOG_FAQ', 'Вопросы и ответы');
 
-require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_russian.php');
+require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_' . $_SESSION['language'] .'.php');
 
 ?>
