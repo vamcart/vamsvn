@@ -1,15 +1,19 @@
 <?php
-
-/** @class: InputFilter (PHP4 & PHP5, with comments)
-  * @project: PHP Input Filter
-  * @date: 10-05-2005
-  * @version: 1.2.2_php4/php5
-  * @author: Daniel Morris
-  * @contributors: Gianpaolo Racca, Ghislain Picard, Marco Wandschneider, Chris Tobin and Andrew Eddie.
-  * @copyright: Daniel Morris
-  * @email: dan@rootcube.com
-  * @license: GNU General Public License (GPL)
-  */
+/**
+ *  @class: InputFilter (PHP4 & PHP5, with comments)
+ * @project: PHP Input Filter
+ * @date: 10-05-2005
+ * @version: 1.2.2_php4/php5
+ * @author: Daniel Morris
+ * @contributors: Gianpaolo Racca, Ghislain Picard, Marco Wandschneider, Chris
+ * Tobin and Andrew Eddie.
+ * 
+ * Modification by Louis Landry
+ * 
+ * @copyright: Daniel Morris
+ * @email: dan@rootcube.com
+ * @license: GNU General Public License (GPL)
+ */
 class InputFilter {
 	var $tagsArray; // default = empty array
 	var $attrArray; // default = empty array
@@ -50,30 +54,34 @@ class InputFilter {
 	  * @param Mixed $source - input string/array-of-string to be 'cleaned'
 	  * @return String $source - 'cleaned' version of input parameter
 	  */
-	function process($source) {
-		// clean all elements in this array
-		if (is_array($source)) {
-			foreach ($source as $key => $value)
-				// filter element for XSS and other 'bad' code etc.
-				$tmp_key = $key;
-			unset ($source[$key]);
-			$key = $this->remove($this->decode($key));
-			if ($key != $tmp_key) {
-				return $source;
-			} else {
-				if (is_string($value))
-					$source[$key] = $this->remove($this->decode($value));
-			}
-			return $source;
-			// clean this string
-		} else
-			if (is_string($source)) {
-				// filter source for XSS and other 'bad' code etc.
-				return $this->remove($this->decode($source));
-				// return parameter as given
-			} else
-				return $source;
-	}
+	function process($source) { 
+        // clean all elements in this array 
+        if (is_array($source)) { 
+            foreach ($source as $key => $value) { 
+                // filter element for XSS and other 'bad' code etc. 
+                $tmp_key = $key; 
+                unset ($source[$key]); 
+                $key = $this->remove($this->decode($key)); 
+                if ($key != $tmp_key) { 
+                    return $source; 
+                } else { 
+                    if (is_string($value)) { 
+                        $source[$key] = $this->remove($this->decode($value)); 
+                    } elseif (is_array($value)) { 
+                        $source[$key] = $this->process($value); 
+                    } 
+                } 
+            } 
+            return $source; 
+            // clean this string 
+        } else 
+        if (is_string($source)) { 
+            // filter source for XSS and other 'bad' code etc. 
+            return $this->remove($this->decode($source)); 
+            // return parameter as given 
+        } else 
+        return $source; 
+    }  
 
 	/** 
 	  * Internal method to iteratively remove all unwanted tags and attributes
@@ -100,6 +108,7 @@ class InputFilter {
 	function filterTags($source) {
 		// filter pass setup
 		$preTag = NULL;
+		$source = str_replace('<>','',$source);
 		$postTag = $source;
 		// find initial tag's position
 		$tagOpen_start = strpos($source, '<');
