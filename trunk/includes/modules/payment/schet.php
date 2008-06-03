@@ -176,7 +176,7 @@ class schet {
 
 	function after_process() {
       global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO companies (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . $insert_id . "', '" . $this->name . "', '" . $this->inn . "', '" . $this->kpp . "', '" . $this->ogrn ."', '" . $this->okpo ."', '" . $this->rs ."', '" . $this->bank_name ."', '" . $this->bik ."', '" . $this->ks ."', '" . $this->address ."', '" . $this->yur_address ."', '" . $this->fakt_address ."', '" . $this->telephone ."', '" . $this->fax ."', '" . $this->email ."', '" . $this->director ."', '" . $this->accountant ."')");
+      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . $insert_id . "', '" . $this->name . "', '" . $this->inn . "', '" . $this->kpp . "', '" . $this->ogrn ."', '" . $this->okpo ."', '" . $this->rs ."', '" . $this->bank_name ."', '" . $this->bik ."', '" . $this->ks ."', '" . $this->address ."', '" . $this->yur_address ."', '" . $this->fakt_address ."', '" . $this->telephone ."', '" . $this->fax ."', '" . $this->email ."', '" . $this->director ."', '" . $this->accountant ."')");
 
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
