@@ -147,7 +147,22 @@ function get_string($summ,$nominal){
   					WHERE orders_id='".(int)$_GET['oID']."'");
   					
   $company = vam_db_fetch_array($company_query);
-    
+
+	$vamTemplate->assign('company_name', $company['name']);
+	$vamTemplate->assign('company_inn', $company['inn']);
+	$vamTemplate->assign('company_kpp', $company['kpp']);
+	$vamTemplate->assign('company_ogrn', $company['ogrn']);
+	$vamTemplate->assign('company_okpo', $company['okpo']);
+	$vamTemplate->assign('company_rs', $company['rs']);
+	$vamTemplate->assign('company_bank_name', $company['bank_name']);
+	$vamTemplate->assign('company_bik', $company['bik']);
+	$vamTemplate->assign('company_ks', $company['ks']);
+	$vamTemplate->assign('company_address', $company['address']);
+	$vamTemplate->assign('company_yur_address', $company['yur_address']);
+	$vamTemplate->assign('company_fakt_address', $company['fakt_address']);
+	$vamTemplate->assign('company_director', $company['name']);
+	$vamTemplate->assign('company_accountant', $company['accountant']);
+
  // if ($_SESSION['customer_id'] == $order_check['customers_id'])
   //	{
   	// get order data
@@ -217,9 +232,31 @@ function get_string($summ,$nominal){
     if ($oder_total_values['class']='ot_total') $total=$oder_total_values['value'];
   	}
 
+	$vamTemplate->assign('1', MODULE_PAYMENT_SCHET_1);
+	$vamTemplate->assign('2', MODULE_PAYMENT_SCHET_2);
+	$vamTemplate->assign('3', MODULE_PAYMENT_SCHET_3);
+	$vamTemplate->assign('4', MODULE_PAYMENT_SCHET_4);
+	$vamTemplate->assign('5', MODULE_PAYMENT_SCHET_5);
+	$vamTemplate->assign('6', MODULE_PAYMENT_SCHET_6);
+	$vamTemplate->assign('7', MODULE_PAYMENT_SCHET_7);
+	$vamTemplate->assign('8', MODULE_PAYMENT_SCHET_8);
+	$vamTemplate->assign('9', MODULE_PAYMENT_SCHET_9);
+	$vamTemplate->assign('10', MODULE_PAYMENT_SCHET_10);
+	$vamTemplate->assign('11', MODULE_PAYMENT_SCHET_11);
+	$vamTemplate->assign('12', MODULE_PAYMENT_SCHET_12);
+	$vamTemplate->assign('13', $order->customer['firstname']);
+	$vamTemplate->assign('14', $order->customer['lastname']);
+
+	$total_summ_query = vam_db_query("select value
+	                                  from ".TABLE_ORDERS_TOTAL."
+	                                  where orders_id = '".(int)$_GET['oID']."'
+	                                  and class = 'ot_total'");
+
+  $total_summ = vam_db_fetch_array($total_summ_query);
+
    $iw=new inwords; 
 
-	$vamTemplate->assign('summa', $iw->get($order->info['total']));
+	$vamTemplate->assign('summa', $iw->get($total_summ['value']));
 
   	// assign language to template for caching
   	$vamTemplate->assign('language', $_SESSION['language']);
