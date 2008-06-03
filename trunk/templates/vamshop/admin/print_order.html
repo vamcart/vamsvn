@@ -4,17 +4,23 @@
 <div class="page">
 
 
-
-<p><b>Поставщик</b> {$1}</p>
-<p><b>Адрес</b> {$2}</p>
-<p><b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}</p>
-<p><b>Р/с</b> 
-{$5} <b>в банке</b> {$6}</p>
-<p><b>К/с</b> 
-{$7} <b>БИК</b> {$8}</p>
-<p><b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
-ОКПО</b> {$12}</p>
+{if $smarty.const.MODULE_PAYMENT_SCHET_STATUS == 'True'}
+<p><b>Поставщик</b> {$1}<br />
+<b>Адрес</b> {$2}<br />
+<b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}<br />
+<b>Р/с</b> 
+{$5} <b>в банке</b> {$6}<br />
+<b>К/с</b> 
+{$7} <b>БИК</b> {$8}<br />
+<b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
+ОКПО</b> {$12}<br /></p>
+{/if}
+{if $company_name}
+<p><b>Покупатель</b> {$company_name}</p>
+{else}
 <p><b>Покупатель</b> {$address_label_customer}</p>
+{/if}
+{if $COMMENTS}<p>{$COMMENTS}</p>{/if}
 <hr>
 <p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
 <p>&nbsp;</p>
@@ -49,12 +55,12 @@
   {/foreach} 
 
 </table>
-<p><b>Всего к оплате: {$summa}</b></p>
+<p><b>Сумма прописью: {$summa}</b></p>
 <p>&nbsp;</p>
 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Директор ______________________ /Фамилия/</b></p>
+Директор _______________________________________ /Фамилия/</b></p>
 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Главный бухгалтер __________________/Фамилия/</b></p>
+Главный бухгалтер ___________________________________/Фамилия/</b></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
