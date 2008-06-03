@@ -63,14 +63,74 @@ class schet {
 	}
 
 	function selection() {
-		return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
+      global $order;
+
+      $selection = array('id' => $this->code,
+                         'module' => $this->title,
+                         'description'=>$this->info,
+      	                 'fields' => array(array('title' => MODULE_PAYMENT_SCHET_J_NAME_TITLE,
+      	                                         'field' => MODULE_PAYMENT_SCHET_J_NAME_DESC),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_NAME,
+      	                                         'field' => vam_draw_input_field('name') . MODULE_PAYMENT_SCHET_J_NAME_IP),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_INN,
+      	                                         'field' => vam_draw_input_field('inn')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_KPP,
+      	                                         'field' => vam_draw_input_field('kpp')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_OGRN,
+      	                                         'field' => vam_draw_input_field('ogrn')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_OKPO,
+      	                                         'field' => vam_draw_input_field('okpo')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_RS,
+      	                                         'field' => vam_draw_input_field('rs')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_BANK_NAME,
+      	                                         'field' => vam_draw_input_field('bank_name') . MODULE_PAYMENT_SCHET_J_BANK_NAME_HELP),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_BIK,
+      	                                         'field' => vam_draw_input_field('bik')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_KS,
+      	                                         'field' => vam_draw_input_field('ks')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_ADDRESS,
+      	                                         'field' => vam_draw_input_field('address') . MODULE_PAYMENT_SCHET_J_ADDRESS_HELP),
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_YUR_ADDRESS,
+//      	                                         'field' => vam_draw_input_field('yur_address')),
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAKT_ADDRESS,
+//      	                                         'field' => vam_draw_input_field('fakt_address')),
+      	                                   array('title' => MODULE_PAYMENT_SCHET_J_TELEPHONE,
+      	                                         'field' => vam_draw_input_field('telephone'))
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAX,
+//      	                                         'field' => vam_draw_input_field('fax')),
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_EMAIL,
+//      	                                         'field' => vam_draw_input_field('email')),
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_DIRECTOR,
+//      	                                         'field' => vam_draw_input_field('director', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
+//      	                                   array('title' => MODULE_PAYMENT_SCHET_J_ACCOUNTANT,
+//      	                                         'field' => vam_draw_input_field('accountant'))
+      	                                         
+      	                                   ));
+
+		return $selection;
+      	                                   
 	}
-	//    function selection() {
-	//      return false;
-	//    }
 
 	function pre_confirmation_check() {
-		return false;
+
+        $this->name = vam_db_prepare_input($_POST['name']);
+        $this->inn = vam_db_prepare_input($_POST['inn']);
+        $this->kpp = vam_db_prepare_input($_POST['kpp']);
+        $this->ogrn = vam_db_prepare_input($_POST['ogrn']);
+        $this->okpo = vam_db_prepare_input($_POST['okpo']);
+        $this->rs = vam_db_prepare_input($_POST['rs']);
+        $this->bank_name = vam_db_prepare_input($_POST['bank_name']);
+        $this->bik = vam_db_prepare_input($_POST['bik']);
+        $this->ks = vam_db_prepare_input($_POST['ks']);
+        $this->address = vam_db_prepare_input($_POST['address']);
+        $this->yur_address = vam_db_prepare_input($_POST['yur_address']);
+        $this->fakt_address = vam_db_prepare_input($_POST['fakt_address']);
+        $this->telephone = vam_db_prepare_input($_POST['telephone']);
+        $this->fax = vam_db_prepare_input($_POST['fax']);
+        $this->email = vam_db_prepare_input($_POST['email']);
+        $this->director = vam_db_prepare_input($_POST['director']);
+        $this->accountant = vam_db_prepare_input($_POST['accountant']);
+
 	}
 
 	// I take no credit for this, I just hunted down variables, the actual code was stolen from the 2checkout
@@ -84,15 +144,40 @@ class schet {
 	}
 
 	function process_button() {
-		return false;
+
+      $process_button_string = vam_draw_hidden_field('name', $this->name) .
+                               vam_draw_hidden_field('inn', $this->inn).
+                               vam_draw_hidden_field('kpp', $this->kpp).
+                               vam_draw_hidden_field('ogrn', $this->ogrn).
+                               vam_draw_hidden_field('okpo', $this->okpo).
+                               vam_draw_hidden_field('rs', $this->rs).
+                               vam_draw_hidden_field('bank_name', $this->bank_name).
+                               vam_draw_hidden_field('bik', $this->bik).
+                               vam_draw_hidden_field('ks', $this->ks).
+                               vam_draw_hidden_field('address', $this->address).
+                               vam_draw_hidden_field('yur_address', $this->yur_address).
+                               vam_draw_hidden_field('fakt_address', $this->fakt_address) .
+                               vam_draw_hidden_field('telephone', $this->telephone) .
+                               vam_draw_hidden_field('fax', $this->fax) .
+                               vam_draw_hidden_field('email', $this->email) .
+                               vam_draw_hidden_field('director', $this->director) .
+                               vam_draw_hidden_field('accountant', $this->accountant);
+
+      return $process_button_string;
+
 	}
 
 	function before_process() {
-		return false;
+
+    	 $this->pre_confirmation_check();
+    	return false;
+
 	}
 
 	function after_process() {
-		global $insert_id;
+      global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
+      vam_db_query("INSERT INTO companies (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . $insert_id . "', '" . $this->name . "', '" . $this->inn . "', '" . $this->kpp . "', '" . $this->ogrn ."', '" . $this->okpo ."', '" . $this->rs ."', '" . $this->bank_name ."', '" . $this->bik ."', '" . $this->ks ."', '" . $this->address ."', '" . $this->yur_address ."', '" . $this->fakt_address ."', '" . $this->telephone ."', '" . $this->fax ."', '" . $this->email ."', '" . $this->director ."', '" . $this->accountant ."')");
+
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
