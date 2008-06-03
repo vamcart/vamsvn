@@ -484,6 +484,28 @@ CREATE TABLE banktransfer (
   KEY orders_id(orders_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS companies;
+CREATE TABLE companies (
+  orders_id int(11) NOT NULL default '0',
+  name varchar(255) default NULL,
+  inn varchar(255) default NULL,
+  kpp varchar(255) default NULL,
+  ogrn varchar(255) default NULL,
+  okpo varchar(255) default NULL,
+  rs varchar(255) default NULL,
+  bank_name varchar(255) default NULL,
+  bik varchar(255) default NULL,
+  ks varchar(255) default NULL,
+  address varchar(255) default NULL,
+  yur_address varchar(255) default NULL,
+  fakt_address varchar(255) default NULL,
+  telephone varchar(255) default NULL,
+  fax varchar(255) default NULL,
+  email varchar(255) default NULL,
+  director varchar(255) default NULL,
+  accountant varchar(255) default NULL,
+  KEY orders_id(orders_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS banners;
 CREATE TABLE banners (
