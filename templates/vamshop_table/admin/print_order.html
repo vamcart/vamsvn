@@ -1,89 +1,63 @@
-{config_load file="$language/lang_$language.conf" section="print_order"} 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<title>{#title#} {$oID}</title>
-<meta http-equiv="Content-Type" content="text/html; charset={$charset}">
-</head>
+{config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
+<!-- Информация о заказе -->
+<div class="page">
 
-<body onload="window.print()">
-<table width="100%" border="0">
-  <tr> 
-    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr> 
-          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$address_label_customer}<br>
-            <br>
-			{if $csID}<strong>{#csID#}</strong>{$csID}<br>{/if}
-            <strong>{#payment#}</strong> {$PAYMENT_METHOD}<br>
-            {if $SHIPPING_METHOD}<strong>{#shipping#}</strong> {$SHIPPING_METHOD}<br>{/if}
-            <strong>{#order#}</strong> {$oID}<br>
-            <strong>{#phone#}</strong> {$phone}<br>
-            <strong>{#email#}</strong> {$email}<br>
-            <strong>{#date#}</strong> {$DATE}<br>
-            </font></td>
-          <td width="1"><img src="{$logo_path}logo.gif"></td>
-        </tr>
-      </table>
-      <br>
-      <table style="border-top:1px solid; border-bottom:1px solid;" width="100%" border="0">
-        <tr bgcolor="#f1f1f1"> 
-          <td width="50%"> 
-            <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>
-              {#shipping_address#}
-            </strong><br>
-          </font></p></td>
-          <td> 
-            <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>              </strong><strong>
-              {if $address_label_payment}{#payment_address#}{/if}
-            </strong><br>
-          </font> </p></td>
-        </tr>
-        <tr>
-          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">            {$address_label_shipping}
-          </font></td>
-          <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            {$address_label_payment}
-          </font></td>
-        </tr>
-      </table>
-      <p>&nbsp;</p></td>
-  </tr>
-</table>
-<table style="border-bottom:1px solid;" width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{#heading_products#}</strong></font></td>
-  </tr>
-  <tr>
-    <td>
-	<table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="f1f1f1">
-        <tr> 
-          <td colspan="2" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="center"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_units#}</font></strong></div></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_products#}</font></strong></td>
-		  <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_artnr#}</font></strong></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;" width="150"><div align="right"><strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{#head_price#}</font></strong></div></td>
-        </tr>
+
+
+<p><b>Поставщик</b> {$1}</p>
+<p><b>Адрес</b> {$2}</p>
+<p><b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}</p>
+<p><b>Р/с</b> 
+{$5} <b>в банке</b> {$6}</p>
+<p><b>К/с</b> 
+{$7} <b>БИК</b> {$8}</p>
+<p><b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
+ОКПО</b> {$12}</p>
+<p><b>Покупатель</b> {$address_label_customer}</p>
+<hr>
+<p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
+<p>&nbsp;</p>
+<table border="0" width="92%" id="table1" cellspacing="0">
+	<tr>
+		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
+		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
+		Н/номер</td>
+		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
+		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
+		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Цена</b></td>
+		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>Сумма руб.</b></td>
+	</tr>
+	
         {foreach name=aussen item=order_values from=$order_data} 
         <tr> 
-          <td width="20" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$order_values.PRODUCTS_QTY}</font></div></td>
-          <td width="20" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">x</font></div></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>{$order_values.PRODUCTS_NAME}</strong><em>{$order_values.PRODUCTS_ATTRIBUTES}</em></font></td>
-		  <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></font></td>
-          <td style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;" width="150"><div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">{$order_values.PRODUCTS_PRICE}</font></div></td>
+		<td width="5%" style="border-style: solid; border-width: 1px">{counter}.</td>
+		<td width="17%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_MODEL} {$order_values.PRODUCTS_ATTRIBUTES_MODEL}</td>
+		<td width="48%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_ATTRIBUTES}</td>
+		<td width="12%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_QTY}</td>
+		<td style="border-style: solid; border-width: 1px" width="6%">{$order_values.PRODUCTS_SINGLE_PRICE|string_format:"%01.2f"}</td>
+		<td width="9%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_PRICE|string_format:"%01.2f"}</td>
         </tr>
-        {/foreach} </table>
-	</td>
-  </tr>
+        {/foreach}
+	
+  {foreach name=aussen item=order_total_values from=$order_total}
+	<tr>
+		<td colspan="5" style="border-style: solid; border-width: 1px">
+		<p align="right"><b>{$order_total_values.TITLE}</b></td>
+		<td width="9%" style="border-style: solid; border-width: 1px">{$order_total_values.VALUE|string_format:"%01.2f"}</td>
+	</tr>
+  {/foreach} 
+
 </table>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td nowrap> <table width="100%" border="0" cellpadding="3" cellspacing="0">
-        {foreach name=aussen item=order_total_values from=$order_total} 
-        <tr> 
-          <td nowrap width="100%" style="border-right: 2px solid; border-bottom: 2px solid; border-color: #ffffff;"><div align="right"><font size="1" face="Arial, Helvetica, sans-serif">{$order_total_values.TITLE} 
-              {$order_total_values.TEXT}</font></div></td>
-        </tr>
-        {/foreach} </table></td>
-  </tr>
-</table>
-</body>
-</html>
+<p><b>Всего к оплате: {$summa}</b></p>
+<p>&nbsp;</p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Директор ______________________ /Фамилия/</b></p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Главный бухгалтер __________________/Фамилия/</b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</div>
+<!-- /Информация о заказе -->
+</body></html>

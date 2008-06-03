@@ -240,6 +240,7 @@
   define('TABLE_NEWSLETTER_TEMP','module_newsletter_temp_');
   define('TABLE_PERSONAL_OFFERS','personal_offers_by_customers_status_');
   define('TABLE_CIP_FILE_INTEGRITY','contrib_installer_files_integrity');
+  define('TABLE_COMPANIES','companies');
 
   // include needed functions
 
