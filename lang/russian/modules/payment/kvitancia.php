@@ -69,4 +69,10 @@
   define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_TITLE' , 'Статус заказа');
   define('MODULE_PAYMENT_KVITANCIA_ORDER_STATUS_ID_DESC' , 'Заказы, оформленные с использованием данного модуля оплаты будут принимать указанный статус.');
 
+define('MODULE_PAYMENT_KVITANCIA_NAME_TITLE','Информация о плательщике');
+define('MODULE_PAYMENT_KVITANCIA_NAME_DESC','');
+define('MODULE_PAYMENT_KVITANCIA_NAME','ФИО:');
+define('MODULE_PAYMENT_KVITANCIA_ADDRESS','Адрес:');
+define('MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP',' Пример: г. Ставрополь, ул. Мира 111, оф. 11');
+
 ?>
