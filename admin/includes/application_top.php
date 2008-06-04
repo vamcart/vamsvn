@@ -241,6 +241,7 @@
   define('TABLE_PERSONAL_OFFERS','personal_offers_by_customers_status_');
   define('TABLE_CIP_FILE_INTEGRITY','contrib_installer_files_integrity');
   define('TABLE_COMPANIES','companies');
+  define('TABLE_PERSONS','persons');
 
   // include needed functions
 

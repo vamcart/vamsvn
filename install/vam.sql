@@ -507,6 +507,14 @@ CREATE TABLE companies (
   KEY orders_id(orders_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS persons;
+CREATE TABLE persons (
+  orders_id int(11) NOT NULL default '0',
+  name varchar(255) default NULL,
+  address varchar(255) default NULL,
+  KEY orders_id(orders_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
 DROP TABLE IF EXISTS banners;
 CREATE TABLE banners (
   banners_id int NOT NULL auto_increment,
