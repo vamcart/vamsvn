@@ -24,6 +24,14 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
 $vamTemplate = new vamTemplate;
 
+  $persons_query = vam_db_query("SELECT * FROM ".TABLE_PERSONS."
+  					WHERE orders_id='".(int)$_GET['oID']."'");
+  					
+  $persons = vam_db_fetch_array($persons_query);
+
+	$vamTemplate->assign('kvit_name', $persons['name']);
+	$vamTemplate->assign('kvit_address', $persons['address']);
+
 // check if custmer is allowed to see this order!
 $order_query_check = vam_db_query("SELECT
   					customers_id
