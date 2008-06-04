@@ -63,14 +63,28 @@ class kvitancia {
 	}
 
 	function selection() {
-		return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
+      global $order;
+
+      $selection = array('id' => $this->code,
+                         'module' => $this->title,
+                         'description'=>$this->info,
+      	                 'fields' => array(array('title' => MODULE_PAYMENT_KVITANCIA_NAME_TITLE,
+      	                                         'field' => MODULE_PAYMENT_KVITANCIA_NAME_DESC),
+      	                                   array('title' => MODULE_PAYMENT_KVITANCIA_NAME,
+      	                                         'field' => vam_draw_input_field('kvit_name', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
+      	                                   array('title' => MODULE_PAYMENT_KVITANCIA_ADDRESS,
+      	                                         'field' => vam_draw_input_field('kvit_address') . MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP),
+      	                                   ));
+
+		return $selection;
+      	                                   
 	}
-	//    function selection() {
-	//      return false;
-	//    }
 
 	function pre_confirmation_check() {
-		return false;
+
+        $this->name = vam_db_prepare_input($_POST['kvit_name']);
+        $this->address = vam_db_prepare_input($_POST['kvit_address']);
+
 	}
 
 	// I take no credit for this, I just hunted down variables, the actual code was stolen from the 2checkout
@@ -84,15 +98,25 @@ class kvitancia {
 	}
 
 	function process_button() {
-		return false;
+
+      $process_button_string = vam_draw_hidden_field('kvit_name', $this->name) .
+                               vam_draw_hidden_field('kvit_address', $this->address);
+
+      return $process_button_string;
+
 	}
 
 	function before_process() {
-		return false;
+
+    	 $this->pre_confirmation_check();
+    	return false;
+
 	}
 
 	function after_process() {
-		global $insert_id;
+      global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
+      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . $insert_id . "', '" . $this->name . "', '" . $this->address ."')");
+
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
 
