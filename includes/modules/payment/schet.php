@@ -95,7 +95,7 @@ class schet {
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAKT_ADDRESS,
 //      	                                         'field' => vam_draw_input_field('fakt_address')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_TELEPHONE,
-      	                                         'field' => vam_draw_input_field('telephone'))
+      	                                         'field' => vam_draw_input_field('telephone', $order->customer['telephone']))
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAX,
 //      	                                         'field' => vam_draw_input_field('fax')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_EMAIL,
