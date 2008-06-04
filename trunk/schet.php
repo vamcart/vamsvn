@@ -142,6 +142,27 @@ $order_query_check = vam_db_query("SELECT
   					WHERE orders_id='".(int) $_GET['oID']."'");
 $oID = (int) $_GET['oID'];
 $order_check = vam_db_fetch_array($order_query_check);
+
+  $company_query = vam_db_query("SELECT * FROM ".TABLE_COMPANIES."
+  					WHERE orders_id='".(int)$_GET['oID']."'");
+  					
+  $company = vam_db_fetch_array($company_query);
+
+	$vamTemplate->assign('company_name', $company['name']);
+	$vamTemplate->assign('company_inn', $company['inn']);
+	$vamTemplate->assign('company_kpp', $company['kpp']);
+	$vamTemplate->assign('company_ogrn', $company['ogrn']);
+	$vamTemplate->assign('company_okpo', $company['okpo']);
+	$vamTemplate->assign('company_rs', $company['rs']);
+	$vamTemplate->assign('company_bank_name', $company['bank_name']);
+	$vamTemplate->assign('company_bik', $company['bik']);
+	$vamTemplate->assign('company_ks', $company['ks']);
+	$vamTemplate->assign('company_address', $company['address']);
+	$vamTemplate->assign('company_yur_address', $company['yur_address']);
+	$vamTemplate->assign('company_fakt_address', $company['fakt_address']);
+	$vamTemplate->assign('company_director', $company['name']);
+	$vamTemplate->assign('company_accountant', $company['accountant']);
+
 if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	// get order data
 
