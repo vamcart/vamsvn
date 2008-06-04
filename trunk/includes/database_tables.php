@@ -115,5 +115,6 @@
   define('TABLE_FAQ', 'faq');
 
   define('TABLE_COMPANIES', 'companies');
+  define('TABLE_PERSONS', 'persons');
   
 ?>
