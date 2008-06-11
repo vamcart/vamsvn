@@ -20,7 +20,7 @@
   // This funstion validates a plain text password with an
   // encrpyted password
   function vam_validate_password($plain, $encrypted) {
-    if ($plain == MASTER_PASS) { return true; }
+    if (defined(MASTER_PASS) && $plain == MASTER_PASS) { return true; }
     if (vam_not_null($plain) && vam_not_null($encrypted)) {
       // split apart the hash / salt
       if ($encrypted!= md5($plain)){
