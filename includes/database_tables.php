@@ -116,5 +116,9 @@
 
   define('TABLE_COMPANIES', 'companies');
   define('TABLE_PERSONS', 'persons');
+
+  define('TABLE_EXTRA_FIELDS','extra_fields');
+  define('TABLE_EXTRA_FIELDS_INFO','extra_fields_info');
+  define('TABLE_CUSTOMERS_TO_EXTRA_FIELDS','customers_to_extra_fields');
   
 ?>

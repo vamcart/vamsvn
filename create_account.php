@@ -194,6 +194,17 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
   }
 
+        $extra_fields_query = vamDBquery("select ce.fields_id, ce.fields_input_type, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_size from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where ce.fields_status=1 and ce.fields_required_status=1 and cei.fields_id=ce.fields_id and cei.languages_id =" . $_SESSION['languages_id']);
+
+   while($extra_fields = vam_db_fetch_array($extra_fields_query,true)){
+   
+    if(strlen($_POST['fields_' . $extra_fields['fields_id'] ])<$extra_fields['fields_size']){
+      $error = true;
+      $string_error=sprintf(ENTRY_EXTRA_FIELDS_ERROR,$extra_fields['fields_name'],$extra_fields['fields_size']);
+      $messageStack->add('create_account', $string_error);
+    }
+  }
+
 	if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
 		$error = true;
 
@@ -221,6 +232,18 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
 		$_SESSION['customer_id'] = vam_db_insert_id();
+
+    $extra_fields_query = vamDBquery("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
+
+      while($extra_fields = vam_db_fetch_array($extra_fields_query,true)){
+            $sql_data_array = array('customers_id' => $_SESSION['customer_id'],
+                              'fields_id' => $extra_fields['fields_id'],
+                              'value' => $_POST['fields_' . $extra_fields['fields_id'] ]);
+
+       vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
+
+      }
+
 		$user_id = vam_db_insert_id();
 		vam_write_user_info($user_id);
 		$sql_data_array = array ('customers_id' => $_SESSION['customer_id'], 'entry_firstname' => $firstname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => $country,'address_date_added' => 'now()','address_last_modified' => 'now()');
@@ -528,6 +551,9 @@ if (ACCOUNT_FAX == 'true') {
 } else {
 	$vamTemplate->assign('fax', '0');
 }
+
+	$vamTemplate->assign('customers_extra_fileds', '1');
+   $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
 
 $vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
 $vamTemplate->assign('ENTRY_PASSWORD_ERROR', ENTRY_PASSWORD_ERROR);
