@@ -51,6 +51,8 @@
 {if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
 {/if}
 </fieldset>
+{if $customers_extra_fileds=='1'}<p>{$INPUT_CUSTOMERS_EXTRA_FIELDS}</p>
+{/if}
 <fieldset class="form">
 <legend>{#title_password#}</legend>
 <p><label for="pass" title="{$ENTRY_PASSWORD_ERROR}">{#text_password#}</label> {$INPUT_PASSWORD}</p>

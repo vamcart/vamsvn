@@ -547,4 +547,7 @@ define('TEXT_NO_FAQ', 'Нет вопросов.');
 
 require_once(DIR_WS_LANGUAGES . $_SESSION['language'].'/'.'affiliate_' . $_SESSION['language'] .'.php');
 
+define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s должно содержать как минимум %d символов');
+define('CATEGORY_EXTRA_FIELDS', 'Дополнительная информация');
+
 ?>

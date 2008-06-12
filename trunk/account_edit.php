@@ -47,6 +47,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$email_address = vam_db_prepare_input($_POST['email_address']);
 	$telephone = vam_db_prepare_input($_POST['telephone']);
 	$fax = vam_db_prepare_input($_POST['fax']);
+    vam_get_extra_fields($_SESSION['customer_id'], $_SESSION['languages_id']);
 
 	$error = false;
 
@@ -108,6 +109,14 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	}
   }
 
+    $extra_fields_query = vamDBquery("select ce.fields_id, ce.fields_input_type, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_size from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where ce.fields_status=1 and ce.fields_required_status=1 and cei.fields_id=ce.fields_id and cei.languages_id =" . $_SESSION['languages_id']);
+    while($extra_fields = vam_db_fetch_array($extra_fields_query,true)){
+      if(strlen($_POST['fields_' . $extra_fields['fields_id'] ])<$extra_fields['fields_size']){
+        $error = true;
+        $string_error=sprintf(ENTRY_EXTRA_FIELDS_ERROR,$extra_fields['fields_name'],$extra_fields['fields_size']);
+        $messageStack->add('account_edit', $string_error);
+      }
+    }
 
 	if ($error == false) {
 		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => (int) $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
@@ -120,6 +129,15 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".(int) $_SESSION['customer_id']."'");
 
 		vam_db_query("update ".TABLE_CUSTOMERS_INFO." set customers_info_date_account_last_modified = now() where customers_info_id = '".(int) $_SESSION['customer_id']."'");
+
+      vam_db_query("delete from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id=" . (int)$_SESSION['customer_id']);
+      $extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
+      while($extra_fields = vam_db_fetch_array($extra_fields_query)){
+            $sql_data_array = array('customers_id' => $_SESSION['customer_id'],
+                              'fields_id' => $extra_fields['fields_id'],
+                              'value' => $_POST['fields_' . $extra_fields['fields_id'] ]);
+       vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
+      }
 
 		// reset the session variables
 		$customer_first_name = $firstname;
@@ -181,6 +199,9 @@ if (ACCOUNT_FAX == 'true') {
 	$vamTemplate->assign('fax', '1');
    $vamTemplate->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')), $account['customers_fax']));
 }
+
+	$vamTemplate->assign('customers_extra_fileds', '1');
+   $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
 
 $vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));

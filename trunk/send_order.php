@@ -37,6 +37,20 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 		$vamTemplate->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
 	}
 	$vamTemplate->assign('csID', $order->customer['csID']);
+
+  $it=0;
+	$semextrfields = vamDBquery("select * from " . TABLE_EXTRA_FIELDS . " where fields_required_email = '1'");
+	while($dataexfes = vam_db_fetch_array($semextrfields,true)) {
+	$cusextrfields = vamDBquery("select * from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id = '" . (int)$_SESSION['customer_id'] . "' and fields_id = '" . $dataexfes['fields_id'] . "'");
+	$rescusextrfields = vam_db_fetch_array($cusextrfields,true);
+
+	$extrfieldsinf = vamDBquery("select fields_name from " . TABLE_EXTRA_FIELDS_INFO . " where fields_id = '" . $dataexfes[fields_id] . "' and languages_id = '" . $languages_id . "'");
+
+	$extrfieldsres = vam_db_fetch_array($extrfieldsinf,true);
+	$extra_fields .= $extrfieldsres['fields_name'] . ' : ' .
+	$rescusextrfields['value'] . "\n";
+	$vamTemplate->assign('customer_extra_fields', $extra_fields);
+  }
 	
 	$order_total = $order->getTotalData($insert_id);
 		$vamTemplate->assign('order_data', $order->getOrderData($insert_id));
