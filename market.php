@@ -76,7 +76,7 @@ if (!defined('YML_REFERER')) define('YML_REFERER','false');
 if (!defined('YML_STRIP_TAGS')) define('YML_STRIP_TAGS','true');
 if (!defined('YML_UTF8')) define('YML_UTF8','false');
 
-$yml_referer = . '&amp;' . YML_REF_ID;
+$yml_referer = '&amp;' . YML_REF_ID;
 //$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
 
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
@@ -167,8 +167,7 @@ $products_query = vam_db_query($products_sql);
 $prev_prod['products_id'] = 0;
 $cats_id = array();
 
-for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <= $nproducts; $iproducts++) {
-	$products = vam_db_fetch_array($products_query);
+while($products = vam_db_fetch_array($products_query)) { 
 	if ($prev_prod['products_id'] == $products['products_id']) {
 		if (!in_array($products['categories_id'], $categories_disable)) {
 			$cats_id['0'] = $products['categories_id'];
