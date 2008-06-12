@@ -380,7 +380,7 @@
       $search = " where affiliate_id like '" . $keywords . "' or affiliate_firstname like '" . $keywords . "' or affiliate_lastname like '" . $keywords . "' or affiliate_email_address like '" . $keywords . "'";
     }
     $affiliate_query_raw = "select * from " . TABLE_AFFILIATE . $search . " order by affiliate_id DESC";
-    $affiliate_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS,
+    $affiliate_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE,
     $affiliate_query_raw, $affiliate_query_numrows);
     $affiliate_query = vam_db_query($affiliate_query_raw);
     while ($affiliate = vam_db_fetch_array($affiliate_query)) {
@@ -425,8 +425,8 @@
               <tr>
                 <td colspan="7"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
-                    <td class="smallText" valign="top"><?php echo $affiliate_split->display_count($affiliate_query_numrows, MAX_DISPLAY_SEARCH_RESULTS, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_AFFILIATES); ?></td>
-                    <td class="smallText" align="right"><?php echo $affiliate_split->display_links($affiliate_query_numrows, MAX_DISPLAY_SEARCH_RESULTS, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'info', 'x', 'y', 'acID'))); ?></td>
+                    <td class="smallText" valign="top"><?php echo $affiliate_split->display_count($affiliate_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_AFFILIATES); ?></td>
+                    <td class="smallText" align="right"><?php echo $affiliate_split->display_links($affiliate_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'info', 'x', 'y', 'acID'))); ?></td>
                   </tr>
 <?php
     if (vam_not_null($_GET['search'])) {
