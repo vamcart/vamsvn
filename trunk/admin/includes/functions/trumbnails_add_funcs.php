@@ -39,7 +39,15 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   function vam_get_image_size($src, $width, $height) {
       if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true')  ) {
          if ($image_size = @getimagesize($src)) {
-            if (!vam_not_null($width) && vam_not_null($height)) {
+             if (vam_not_null($width) && vam_not_null($height)) {
+            $srcratio = $image_size[0] / $image_size[1];
+              if ($ratio < $src_ratio) {
+                $height = $width / $src_ratio;
+             }
+             else {
+                $width = $height * $src_ratio;
+             }
+            }  elseif (!vam_not_null($width) && vam_not_null($height)) {
                $ratio = $height / $image_size[1];
                $width = $image_size[0] * $ratio;
             } elseif (vam_not_null($width) && !vam_not_null($height)) {
