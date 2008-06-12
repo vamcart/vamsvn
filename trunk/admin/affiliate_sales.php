@@ -39,7 +39,7 @@
       where asale.affiliate_id = '" . $_GET['acID'] . "'
       order by affiliate_date desc 
       ";
-    $affiliate_sales_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $affiliate_sales_raw, $affiliate_sales_numrows);
+    $affiliate_sales_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $affiliate_sales_raw, $affiliate_sales_numrows);
 
   } else {
 
@@ -50,7 +50,7 @@
       left join " . TABLE_AFFILIATE . " a  on (a.affiliate_id = asale.affiliate_id) 
       order by affiliate_date desc 
       ";
-    $affiliate_sales_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $affiliate_sales_raw, $affiliate_sales_numrows);
+    $affiliate_sales_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $affiliate_sales_raw, $affiliate_sales_numrows);
   }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -132,8 +132,8 @@
           <tr>
             <td colspan="7"><table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr>
-                <td class="smallText" valign="top"><?php echo $affiliate_sales_split->display_count($affiliate_sales_numrows, MAX_DISPLAY_SEARCH_RESULTS, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_SALES); ?></td>
-                <td class="smallText" align="right"><?php echo $affiliate_sales_split->display_links($affiliate_sales_numrows, MAX_DISPLAY_SEARCH_RESULTS, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'info', 'x', 'y'))); ?></td>
+                <td class="smallText" valign="top"><?php echo $affiliate_sales_split->display_count($affiliate_sales_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_SALES); ?></td>
+                <td class="smallText" align="right"><?php echo $affiliate_sales_split->display_links($affiliate_sales_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'info', 'x', 'y'))); ?></td>
               </tr>
             </table></td>
           </tr>
