@@ -580,5 +580,10 @@ define('FILENAME_FAQ', 'faq.php');
 define('TABLE_FAQ', 'faq');
 
 require_once(DIR_WS_INCLUDES . 'affiliate_application_top.php');
+
+  define('TABLE_EXTRA_FIELDS','extra_fields');
+  define('TABLE_EXTRA_FIELDS_INFO','extra_fields_info');
+  define('TABLE_CUSTOMERS_TO_EXTRA_FIELDS','customers_to_extra_fields');
+  define('FILENAME_EXTRA_FIELDS','customer_extra_fields.php');
   
 ?>

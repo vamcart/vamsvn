@@ -300,6 +300,7 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['backup'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_BACKUP) . '">' . BOX_BACKUP . '</a><b class="p4"></b></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_extra_fields'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_PRODUCTS_EXTRA_FIELDS) . '">' . BOX_PRODUCT_EXTRA_FIELDS . '</a><b class="p4"></b></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customer_extra_fields'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_EXTRA_FIELDS) . '">' . BOX_HEADING_CUSTOMER_EXTRA_FIELDS . '</a><b class="p4"></b></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_CONTENT_MANAGER) . '">' . BOX_CONTENT . '</a><b class="p4"></b></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blacklist'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_BLACKLIST, '', 'NONSSL') . '">' . BOX_TOOLS_BLACKLIST . '</a><b class="p4"></b></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<li><a href="' . vam_href_link(FILENAME_MODULE_NEWSLETTER) . '">' . BOX_MODULE_NEWSLETTER . '</a><b class="p4"></b></li>' . "\n";

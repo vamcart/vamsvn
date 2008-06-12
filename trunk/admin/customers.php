@@ -293,6 +293,15 @@ if ($_GET['action']) {
 				$entry_email_address_exists = false;
 			}
 
+      $extra_fields_query = vam_db_query("select ce.fields_id, ce.fields_input_type, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_size from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where ce.fields_status=1 and ce.fields_required_status=1 and cei.fields_id=ce.fields_id and cei.languages_id =" . (int)$_SESSION['languages_id']);
+      while($extra_fields = vam_db_fetch_array($extra_fields_query)){
+        if(strlen($_POST['fields_' . $extra_fields['fields_id'] ])<$extra_fields['fields_size']){
+          $error = true;
+          $string_error=sprintf(ENTRY_EXTRA_FIELDS_ERROR,$extra_fields['fields_name'],$extra_fields['fields_size']);
+          $messageStack->add($string_error);
+        }
+      }
+
 			if ($error == false) {
 				$sql_data_array = array ('customers_firstname' => $customers_firstname, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => (int)$customers_vat_id_status, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_newsletter' => $customers_newsletter,'customers_last_modified' => 'now()');
 
@@ -332,6 +341,16 @@ if ($_GET['action']) {
 				}
 
 				vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array, 'update', "customers_id = '".vam_db_input($customers_id)."' and address_book_id = '".vam_db_input($default_address_id)."'");
+
+        vam_db_query("delete from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id=" . (int)$customers_id);
+        $extra_fields_query =vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
+        while($extra_fields = vam_db_fetch_array($extra_fields_query)){
+            $sql_data_array = array('customers_id' => (int)$customers_id,
+                              'fields_id' => $extra_fields['fields_id'],
+                              'value' => $_POST['fields_' . $extra_fields['fields_id'] ]);
+            vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
+        }
+
 				vam_redirect(vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$customers_id));
 			}
 			elseif ($error == true) {
@@ -940,6 +959,7 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+      <?php echo vam_get_extra_fields($_GET['cID'],$_SESSION['languages_id']); ?>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_OPTIONS; ?></td>
       </tr>
