@@ -774,6 +774,31 @@ CREATE TABLE customers_status_history (
   PRIMARY KEY  (customers_status_history_id)
 );
 
+DROP TABLE IF EXISTS customers_to_extra_field;
+CREATE TABLE customers_to_extra_fields (
+  customers_id int(11) NOT NULL default '0',
+  fields_id int(11) NOT NULL default '0',
+  value text
+);
+
+DROP TABLE IF EXISTS extra_fields;
+CREATE TABLE extra_fields (
+  fields_id int(11) NOT NULL auto_increment,
+  fields_input_type tinyint(2) NOT NULL default '0',
+  fields_status tinyint(2) NOT NULL default '0',
+  fields_required_status tinyint(2) NOT NULL default '0',
+  fields_size int(5) NOT NULL default '0',
+  fields_required_email tinyint(2) NOT NULL default '0',
+  PRIMARY KEY  (fields_id)
+);
+
+DROP TABLE IF EXISTS extra_fields_info;
+CREATE TABLE extra_fields_info (
+  fields_id int(11) NOT NULL default '0',
+  languages_id int(11) NOT NULL default '0',
+  fields_name varchar(32) NOT NULL default ''
+);
+
 DROP TABLE IF EXISTS faq;
 CREATE TABLE faq (
    faq_id int(11) NOT NULL AUTO_INCREMENT,
