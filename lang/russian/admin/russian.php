@@ -479,4 +479,8 @@ define('BOX_CATALOG_FAQ', 'Вопросы и ответы');
 
 require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_' . $_SESSION['language'] .'.php');
 
+define('BOX_HEADING_CUSTOMER_EXTRA_FIELDS', 'Дополнительные поля покупателей');
+define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s должно содержать как минимум %d символов');
+define('TEXT_DISPLAY_NUMBER_OF_FIELDS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> полей)');
+
 ?>

@@ -62,4 +62,6 @@ define('SHIPPING_FLAT','Курьерская доставка');
 define('ORDER_TOTAL','<b>Всего:</b>');
 define('ORDER_SUBTOTAL','<b>Стоимость товара:</b>');
 
+define('CATEGORY_EXTRA_FIELDS','Дополнительная информация');
+
 ?>
