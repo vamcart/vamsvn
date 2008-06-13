@@ -170,7 +170,7 @@ $cats_id = array();
 while($products = vam_db_fetch_array($products_query)) { 
 	if ($prev_prod['products_id'] == $products['products_id']) {
 		if (!in_array($products['categories_id'], $categories_disable)) {
-			$cats_id['0'] = $products['categories_id'];
+			$cats_id[] = $products['categories_id'];
 		}
 	} else {
 		if (sizeof($cats_id) > 0) {
