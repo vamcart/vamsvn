@@ -40,7 +40,8 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       if ( (CONFIG_CALCULATE_IMAGE_SIZE == 'true')  ) {
          if ($image_size = @getimagesize($src)) {
              if (vam_not_null($width) && vam_not_null($height)) {
-            $srcratio = $image_size[0] / $image_size[1];
+            $ratio = $width / $height;
+            $src_ratio = $image_size[0] / $image_size[1];
               if ($ratio < $src_ratio) {
                 $height = $width / $src_ratio;
              }
