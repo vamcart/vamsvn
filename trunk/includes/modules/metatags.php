@@ -118,6 +118,8 @@ switch (true) {
 
 $content_meta_query = vamDBquery("select cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '" . (int)$_GET['coID'] . "' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
 
+if (vam_db_num_rows($content_meta_query, true) > 0) {
+
 $content_meta = vam_db_fetch_array($content_meta_query);
 
 		if ($content_meta['content_meta_title'] == '') {
@@ -137,6 +139,8 @@ $content_meta = vam_db_fetch_array($content_meta_query);
 		} else {
 			$content_key = $content_meta['content_meta_keywords'];
 		}
+
+}
 
 ?>
 <meta name="description" content="<?php echo $content_desc; ?>" />
