@@ -142,7 +142,7 @@ class cip_manager {
                         (number_format($contents[$i]['size']/1024, 1, ',', ' ') )).'</td>'."\n";
                 }
 //Play and Info Buttons
-            $output.='<td class="dataTableContentCIP" align="right" onclick="document.location.href=\''.
+            $output.='<td class="dataTableContentCIP" align="center" width="15%" onclick="document.location.href=\''.
                     vam_href_link($this->script_name(), $onclick_link).'\'">';
             if (isset($fInfo) && is_object($fInfo) && ($fInfo->name == $contents[$i]['name'])
                 && $contents[$i]['name'] != '..')
@@ -153,7 +153,7 @@ class cip_manager {
                                 urlencode($contents[$i]['name'])).'">'.vam_image(DIR_WS_ADMIN_ICONS. 'info.gif', IMAGE_ICON_INFO).'</a>';
             }
             //Delete Button
-            $output.= '<a href="'.vam_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']). '&action=deleteconfirm'). '"  onclick="return confirmSubmit()">'.vam_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE).'</a>&nbsp;';
+            $output.= '<a href="'.vam_href_link($this->script_name(), 'cip=' . urlencode($contents[$i]['name']). '&action=deleteconfirm'). '"  onclick="return confirmSubmit()">'.vam_image(DIR_WS_ADMIN_ICONS . 'cip_delete.gif', ICON_DELETE).'</a>';
             $output.='</td>'."\n";
 //Play and Info Buttons end
             $output.='</tr>';
