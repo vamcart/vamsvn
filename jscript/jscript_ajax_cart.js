@@ -152,10 +152,10 @@ function doAddProduct(form) {
       senddata[fe[i].name] = fe[i].value;
     }
   }
-  var url = 'ajax_shopping_cart.php?' + ( senddata.products_id ? 'products_id='+senddata.products_id+'&' : "" ) + ( senddata.products_qty ? '&products_qty='+senddata.products_qty+'&' : "" ) + 'action=add_product';
+  var url = 'ajax_shopping_cart.php?' + ( senddata.products_id ? 'products_id='+senddata.products_id+'&' : "" ) + ( senddata.products_qty ? '&products_qty='+senddata.products_qty+'&' : "" ) + ( senddata.id ? '&id='+senddata.id+'&' : "" ) + 'action=add_product';
 
   reqAddCart.caching = false;
-  reqAddCart.open( form.method, url, true);
+  reqAddCart.open( 'GET', url, true);
   reqAddCart.send( senddata );
   return false;
 }
