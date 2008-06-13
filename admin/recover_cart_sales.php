@@ -62,17 +62,17 @@ if ($_GET['delete']) {
   // Color for the word/phrase used to notate a current customer
   // A current customer is someone who has
   // purchased items in the past :: Default=0000FF (Blue)
-  $CURCUST_COLOR = "0000FF";
+  $CURCUST_COLOR = "#0000FF";
 
   // Row highlight color for Uncontacted Customers
   // A uncontacted customer is one that you have not used
   // this tool to send an e-mail for :: Default=0000FF (Light Red)
-  $UNCONTACTED_COLOR = "80FFFF";
+  $UNCONTACTED_COLOR = "#80FFFF";
 
   // Row highlight color for a Contacted Customers
   // A contacted customer is one that you have used
   // this tool to send an e-mail for :: Default=FF9FA2 (Teal/Baby Blue)
-  $CONTACTED_COLOR = "FF9FA2";
+  $CONTACTED_COLOR = "#FF9FA2";
 
   function seadate($day)
   {
