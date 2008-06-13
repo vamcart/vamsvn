@@ -66,7 +66,7 @@ if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or
 ?>
 
 
-<table style="border: 1px solid; border-color: #ff0000;" bgcolor="FDAC00" border="0" width="100%" cellspacing="0" cellpadding="0">
+<table style="border: 1px solid; border-color: #ff0000;" bgcolor="#FDAC00" border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 <div class"main"> 
