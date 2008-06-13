@@ -76,7 +76,7 @@ if (!defined('YML_REFERER')) define('YML_REFERER','false');
 if (!defined('YML_STRIP_TAGS')) define('YML_STRIP_TAGS','true');
 if (!defined('YML_UTF8')) define('YML_UTF8','false');
 
-$yml_referer = '&amp;' . YML_REF_ID;
+$yml_referer = YML_REF_ID;
 //$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
 
 $display_all_categories = (isset($_GET['cats']) && $_GET['cats'] == 'all');
@@ -169,10 +169,11 @@ $products_query = vam_db_query($products_sql);
 $prev_prod['products_id'] = 0;
 $cats_id = array();
 
-while($products = vam_db_fetch_array($products_query)) { 
+for ($iproducts = 0, $nproducts = vam_db_num_rows($products_query); $iproducts <= $nproducts; $iproducts++) {
+	$products = vam_db_fetch_array($products_query);
 	if ($prev_prod['products_id'] == $products['products_id']) {
 		if (!in_array($products['categories_id'], $categories_disable)) {
-			$cats_id[] = $products['categories_id'];
+			$cats_id['0'] = $products['categories_id'];
 		}
 	} else {
 		if (sizeof($cats_id) > 0) {
@@ -207,11 +208,11 @@ while($products = vam_db_fetch_array($products_query)) {
 //					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
 					 "  <price>" . $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
 					 "  <currencyId>" . $code . "</currencyId>\n";
-			echo "  <categoryId>" . $cats_id[0] . "</categoryId>\n";
-  		if($display_all_categories) {
-				for ($ic=1,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
-					echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
-				}
+	                         echo "  <categoryId>" . $cats_id[0] . "</categoryId>\n";
+	                 if($display_all_categories) {
+			for ($ic=1,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
+				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
+				        }
 			}
 			echo (vam_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
 					 (YML_DELIVERYINCLUDED == "true" ? "  <deliveryIncluded/>\n" : "") .
