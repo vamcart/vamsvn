@@ -79,6 +79,8 @@ if (!defined('YML_UTF8')) define('YML_UTF8','false');
 $yml_referer = '&amp;' . YML_REF_ID;
 //$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
 
+$display_all_categories = (isset($_GET['cats']) && $_GET['cats'] == 'all');
+
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
 	if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
 		header('WWW-Authenticate: Basic realm="Realm-Name"');
@@ -205,8 +207,11 @@ while($products = vam_db_fetch_array($products_query)) {
 //					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
 					 "  <price>" . $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
 					 "  <currencyId>" . $code . "</currencyId>\n";
-			for ($ic=0,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
-				echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
+			echo "  <categoryId>" . $cats_id[0] . "</categoryId>\n";
+  		if($display_all_categories) {
+				for ($ic=1,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
+					echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
+				}
 			}
 			echo (vam_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
 					 (YML_DELIVERYINCLUDED == "true" ? "  <deliveryIncluded/>\n" : "") .
