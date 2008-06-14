@@ -364,7 +364,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cPath='.$cPath.'&filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
     }
-    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$_GET['cat']).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
+    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cPath='.$cPath).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
     $manufacturer_dropdown .= vam_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'onchange="this.form.submit()"');
   }
   }
