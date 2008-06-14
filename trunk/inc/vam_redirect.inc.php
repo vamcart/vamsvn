@@ -32,7 +32,7 @@ if (AJAX_CART == 'true') {
            ( $_GET['action'] === 'buy_now' && vam_has_product_attributes($_GET['BUYproducts_id']) )
          ) {
         $_RESULT['ajax_redirect'] = $url;
-        vam_exit();
+//        vam_exit();
       }
       return;
     }

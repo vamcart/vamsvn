@@ -179,10 +179,14 @@ if (isset ($_GET['action'])) {
 					}
 				}
 			}
+				if (vam_has_product_attributes($_GET['BUYproducts_id'])) {
+					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
+				} else {
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params(array (
 				'action',
 				'BUYproducts_id'
 			))));
+         }
 			break;
 		case 'cust_order' :
 			if (isset ($_SESSION['customer_id']) && isset ($_GET['pid'])) {
