@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian.php 1260 2007/12/12 13:25:47 VaM $
+   $Id: russian.php 1260 2008/06/12 13:25:47 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -83,7 +83,7 @@ define('JS_REVIEW_TEXT', '* Поле Текст отзыва должно сод
 define('JS_REVIEW_RATING', '* Вы не указали рейтинг.\n');
 define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
 define('JS_ERROR_SUBMITTED', 'Эта форма уже заполнена. Нажимайте Ok.');
-define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
+define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.');
 
 /*
  *
