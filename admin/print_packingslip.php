@@ -181,6 +181,7 @@ function get_string($summ,$nominal){
         				orders_products_id,
         				products_model,
         				products_name,
+        				products_price,
         				final_price,
         				products_quantity
         				FROM ".TABLE_ORDERS_PRODUCTS."
@@ -205,6 +206,7 @@ function get_string($summ,$nominal){
         		'PRODUCTS_NAME' => $order_data_values['products_name'],
         		'PRODUCTS_ATTRIBUTES' => $attributes_data,
         		'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model,
+        		'PRODUCTS_SINGLE_PRICE' =>  vam_format_price_order($order_data_values['products_price'],1,$order->info['currency']),
         		'PRODUCTS_PRICE' =>  vam_format_price_order($order_data_values['final_price'],1,$order->info['currency']),
         		'PRODUCTS_QTY' => $order_data_values['products_quantity']);
         }
