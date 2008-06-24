@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
    
    // CUSTOMIZE THIS SETTING
-define('NUMBER_OF_ZONES',10);
+define('NUMBER_OF_ZONES',11);
 
 define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'Тарифы для зоны');
 define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'зональный базовый тариф');
