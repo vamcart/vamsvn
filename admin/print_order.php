@@ -248,6 +248,8 @@ function get_string($summ,$nominal){
 	$vamTemplate->assign('12', MODULE_PAYMENT_SCHET_12);
 	$vamTemplate->assign('13', $order->customer['firstname']);
 	$vamTemplate->assign('14', $order->customer['lastname']);
+	$vamTemplate->assign('15', $order->customer['telephone']);
+	$vamTemplate->assign('16', $order->customer['email_address']);
 
 	$total_summ_query = vam_db_query("select value
 	                                  from ".TABLE_ORDERS_TOTAL."
