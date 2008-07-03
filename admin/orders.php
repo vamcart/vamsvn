@@ -104,7 +104,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 				$vamTemplate->assign('NAME', $check_status['customers_name']);
-				$vamTemplate->assign('ORDER_NR', $oID);
+				$vamTemplate->assign('ORDER_NR', $this_orderID);
 				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$_POST['multi_orders'], 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
 				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
