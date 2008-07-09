@@ -248,6 +248,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 
 		case "products":
 		default:
+		$days_limit = "";
 			if (isset($_GET['products_id']) && (int)$_GET['products_id'] > 0)
 				$days_limit .= ' and p.products_id=' . (int)$_GET['products_id'];
 			$sql_products = "select p.products_id, pd.products_name, pd.products_description, p.products_image, p.products_date_added, p.products_last_modified
