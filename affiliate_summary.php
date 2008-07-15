@@ -60,7 +60,7 @@ $affiliate_impressions = $affiliate['banner_count'];
 if ($affiliate_impressions == 0) $affiliate_impressions="n/a";
 $vamTemplate->assign('affiliate_impressions', $affiliate_impressions);
 
-$vamTemplate->assign('period_selector', affiliate_period( 'a_period', $affiliate['start_year'], $affiliate['start_month'], true, vam_db_prepare_input( $_GET['a_period'] ), 'onChange="this.form.submit();"' ));
+$vamTemplate->assign('period_selector', affiliate_period( 'a_period', $affiliate['start_year'], $affiliate['start_month'], true, vam_db_prepare_input( $_GET['a_period'] ), 'onchange="this.form.submit();"' ));
 
 $affiliate_percent = 0;
 $affiliate_percent = $affiliate['affiliate_commission_percent'];
@@ -101,7 +101,7 @@ $vamTemplate->assign('affiliate_commission', $vamPrice->Format($affiliate_sales[
 
 require(DIR_WS_INCLUDES . 'header.php');
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('period', vam_href_link(FILENAME_AFFILIATE_SUMMARY ), 'get', 'SSL' ));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('period', vam_href_link(FILENAME_AFFILIATE_SUMMARY ), 'get'));
 
 $vamTemplate->assign('LINK_IMPRESSION', '<a href="javascript:popupAffWindow(\'' . vam_href_link(FILENAME_AFFILIATE_HELP_1) . '\')">');
 $vamTemplate->assign('LINK_VISIT', '<a href="javascript:popupAffWindow(\'' . vam_href_link(FILENAME_AFFILIATE_HELP_2) . '\')">');
