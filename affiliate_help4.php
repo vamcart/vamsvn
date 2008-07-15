@@ -36,5 +36,4 @@ $vamTemplate->assign('help_file', 'help4');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 
-if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
 $vamTemplate->display(CURRENT_TEMPLATE . '/module/affiliate_help.html');?>
