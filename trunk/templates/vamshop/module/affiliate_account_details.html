@@ -1,202 +1,69 @@
 {config_load file="$language/affiliate_lang_$language.conf" section="affiliate_account_details"}
-<table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-  <tr>
-    <td class="formAreaTitle">{#category_personal#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          {if $ACCOUNT_GENDER == 'true'}
-          <tr>
-            <td class="main">{#entry_gender#}</td>
-            <td class="main"><table><tr><td>{$gender_male}</td><td>{$gender_female}</td></tr></table></td>
-          </tr>
-          {/if}
-          <tr>
-            <td class="main">{#entry_first_name#}</td>
-            <td class="main">{$firstname_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_lastname#}</td>
-            <td class="main">{$lastname_content}</td>
-          </tr>
-          {if $ACCOUNT_DOB == 'true'}
-          <tr>
-            <td class="main">{#entry_date_of_birth#}</td>
-            <td class="main">{$dob_content}</td>
-          </tr>
-          {/if}
-          <tr>
-            <td class="main">{#entry_email_address#}</td>
-            <td class="main">{$email_content}</td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  {if $ACCOUNT_COMPANY == 'true'}
-  <tr>
-    <td class="formAreaTitle"><br>{#category_company#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main">{#entry_affiliate_company#}</td>
-            <td class="main">{$company_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_company_taxid#}</td>
-            <td class="main">{$company_taxid_content}</td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  {/if}
-  <tr>
-    <td class="formAreaTitle"><br>{#category_payment_details#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          {if $AFFILIATE_USE_CHECK == 'true'}
-          <tr>
-            <td class="main">{#entry_affiliate_payment_check#}</td>
-            <td class="main">{$payment_check_content}</td>
-          </tr>
-          {/if}
-          {if $AFFILIATE_USE_PAYPAL == 'true'}
-          <tr>
-            <td class="main">{#entry_affiliate_payment_paypal#}</td>
-            <td class="main">{$payment_paypal_content}</td>
-          </tr>
-		  {/if}
-		  {if $AFFILIATE_USE_BANK == 'true'}
-		  <tr>
-            <td class="main">{#entry_affiliate_payment_bank_name#}</td>
-            <td class="main">{$payment_bank_name_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_payment_bank_branch_number#}</td>
-            <td class="main">{$payment_bank_branch_number_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_payment_bank_swift_code#}</td>
-            <td class="main">{$payment_bank_swift_code_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_payment_bank_account_name#}</td>
-            <td class="main">{$payment_bank_account_name_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_payment_bank_account_number#}</td>
-            <td class="main">{$payment_bank_account_number_content}</td>
-          </tr>
-          {/if}
-          </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td class="formAreaTitle"><br>{#category_address#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main">{#entry_street_address#}</td>
-            <td class="main">{$street_address_content}</td>
-          </tr>
-          {if $ACCOUNT_SUBURB == 'true'}
-		  <tr>
-            <td class="main">{#entry_suburb#}</td>
-            <td class="main">{$suburb_content}</td>
-          </tr>
-          {/if}
-          <tr>
-            <td class="main">{#entry_post_code#}</td>
-            <td class="main">{$postcode_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_city#}</td>
-            <td class="main">{$city_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_country#}</td>
-            <td class="main">{$country_id_content}</td>
-          </tr>
-          {if $ACCOUNT_STATE == 'true'}
-          <tr>
-            <td class="main">{#entry_state#}</td>
-            <td class="main">{$state_content}</td>
-          </tr>
-          {/if}
-          </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td class="formAreaTitle"><br>{#category_contact#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main">{#entry_telephone_number#}</td>
-            <td class="main">{$telephone_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_fax_number#}</td>
-            <td class="main">{$fax_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_affiliate_homepage#}</td>
-            <td class="main">{$homepage_content}</td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  {if $PASSWORD_READONLY == 'false'}
-  <tr>
-    <td class="formAreaTitle"><br>{#category_password#}</td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main">{#entry_password#}</td>
-            <td class="main">{$password_content}</td>
-          </tr>
-          <tr>
-            <td class="main">{#entry_password_confirmation#}</td>
-            <td class="main">{$password_confirmation_content}</td>
-          </tr>
-          </table></td>
-      </tr>
-    </table></td>
-  </tr>
-  {/if}
-  <tr>
-    <td class="formAreaTitle"><br></td>
-  </tr>
-  <tr>
-    <td class="main"><table border="0" width="100%" cellspacing="0" cellpadding="2" class="formArea">
-      <tr>
-        <td class="main"><table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main"></td>
-            <td class="main">{$agb_content}</td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#category_personal#}</legend>
+{if $smarty.const.ACCOUNT_GENDER == 'true'}
+<p>{#entry_gender#} {$gender_male}&nbsp;{$gender_female}</p>
+{/if}
+<p>{#entry_first_name#} {$firstname_content}</p>
+<p>{#entry_lastname#} {$lastname_content}</p>
+{if $smarty.const.ACCOUNT_DOB == 'true'} 
+<p>{#entry_date_of_birth#} {$dob_content}</p>
+{/if}
+<p>{#entry_email_address#} {$email_content}</p>
+</fieldset>
+{if $smarty.const.ACCOUNT_COMPANY == 'true'}<fieldset class="form">
+<legend>{#category_company#}</legend>
+<p>{#entry_affiliate_company#} {$company_content}</p>
+<p>{#entry_affiliate_company_taxid#} {$company_taxid_content}</p>
+</fieldset>
+{/if}
+<fieldset class="form">
+<legend>{#category_payment_details#}</legend>
+{if $AFFILIATE_USE_CHECK == 'true'} 
+<p>{#entry_affiliate_payment_check#} {$payment_check_content}</p>
+{/if}
+{if $AFFILIATE_USE_PAYPAL == 'true'} 
+<p>{#entry_affiliate_payment_paypal#} {$payment_paypal_content}</p>
+{/if}
+{if $AFFILIATE_USE_BANK == 'true'} 
+<p>{#entry_affiliate_payment_bank_name#} {$payment_bank_name_content}</p>
+<p>{#entry_affiliate_payment_bank_branch_number#} {$payment_bank_branch_number_content}</p>
+<p>{#entry_affiliate_payment_bank_swift_code#} {$payment_bank_swift_code_content}</p>
+<p>{#entry_affiliate_payment_bank_account_name#} {$payment_bank_account_name_content}</p>
+<p>{#entry_affiliate_payment_bank_account_number#} {$payment_bank_account_number_content}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+<legend>{#category_address#}</legend>
+{if $smarty.const.ACCOUNT_STREET_ADDRESS == 'true'}<p>{#entry_street_address#} {$street_address_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_SUBURB == 'true'}<p>{#entry_suburb#} {$suburb_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_POSTCODE == 'true'}<p>{#entry_post_code#} {$postcode_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_CITY == 'true'}<p>{#entry_city#} {$city_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_STATE == 'true'}<p>{#entry_state#} {$state_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_COUNTRY == 'true'}<p>{#entry_country#} {$country_id_content}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+{if $smarty.const.ACCOUNT_TELE == 'true'}<legend>{#category_contact#}</legend>
+{/if}
+{if $smarty.const.ACCOUNT_TELE == 'true'}<p>{#entry_telephone_number#} {$telephone_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_FAX == 'true'}<p>{#entry_fax_number#} {$fax_content}</p>
+{/if}
+<p>{#entry_affiliate_homepage#} {$homepage_content}</p>
+</fieldset>
+{if $PASSWORD_READONLY == 'false'}
+<fieldset class="form">
+<legend>{#category_password#}</legend>
+<p>{#entry_password#} {$password_content}</p>
+<p>{#entry_password_confirmation#} {$password_confirmation_content}</p>
+</fieldset>
+{/if}
+<p>{$agb_content}</p>
+<!-- /форма -->
