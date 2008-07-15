@@ -86,14 +86,14 @@ else {
     $affiliate_sales = vam_db_fetch_array( $affiliate_sales_values );
 }
 
-$vamTemplate->assign('period_selector', affiliate_period('a_period', $affiliate_sales['start_year'], $affiliate_sales['start_month'], true, vam_db_prepare_input($_GET['a_period'] ), 'onChange="this.form.submit();"' ));
-$vamTemplate->assign('status_selector', affiliate_get_status_list('a_status', vam_db_prepare_input($_GET['a_status']), 'onChange="this.form.submit();"' ));
-$vamTemplate->assign('level_selector', affiliate_get_level_list('a_level', vam_db_prepare_input($_GET['a_level']), 'onChange="this.form.submit();"'));
+$vamTemplate->assign('period_selector', affiliate_period('a_period', $affiliate_sales['start_year'], $affiliate_sales['start_month'], true, vam_db_prepare_input($_GET['a_period'] ), 'onchange="this.form.submit();"' ));
+$vamTemplate->assign('status_selector', affiliate_get_status_list('a_status', vam_db_prepare_input($_GET['a_status']), 'onchange="this.form.submit();"' ));
+$vamTemplate->assign('level_selector', affiliate_get_level_list('a_level', vam_db_prepare_input($_GET['a_level']), 'onchange="this.form.submit();"'));
 
 require(DIR_WS_INCLUDES . 'header.php');
 
 $vamTemplate->assign('affiliate_sales_split_numbers', $affiliate_sales_split->number_of_rows);
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('params', vam_href_link(FILENAME_AFFILIATE_SALES ), 'get', 'SSL' ));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('params', vam_href_link(FILENAME_AFFILIATE_SALES ), 'get'));
 
 $affiliate_sales_table = '';
 
