@@ -75,8 +75,8 @@ else {
 	$affili_res = vam_db_fetch_array($affili_sql);
 	
     $vamTemplate->assign('FORM_ACTION', vam_draw_form('contact_us', vam_href_link(FILENAME_AFFILIATE_CONTACT, 'action=send')));
-    $vamTemplate->assign('INPUT_NAME', vam_draw_input_field('name', $affili_res['affiliate_firstname'] . ' ' . $affili_res['affiliate_lastname'], 'size=40'));
-    $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', $affili_res['affiliate_email_address'], 'size=40'));
+    $vamTemplate->assign('INPUT_NAME', vam_draw_input_field('name', $affili_res['affiliate_firstname'] . ' ' . $affili_res['affiliate_lastname']));
+    $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', $affili_res['affiliate_email_address']));
     $vamTemplate->assign('error', $error);
     $vamTemplate->assign('TEXTAREA_ENQUIRY', vam_draw_textarea_field('enquiry', 'soft', 50, 15, $_POST['enquiry']));
     $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
