@@ -6,6 +6,9 @@ RewriteBase /
 RewriteRule ^product_reviews_write\.php\/info\/p(.*)_.*\.html product_reviews_write\.php\?products_id=$1 [L]
 RewriteRule ^product_reviews_write\.php\/action\/process\/info\/p([0-9]*)_.*\.html product_reviews_write\.php\?action=process\&products_id=$1 [L]
 
+RewriteRule ^product_info\.php\/info\/p(.*)_.*\/action\/add_product product_info\.php\?products_id=$1\&action=add_product\ [L]
+RewriteRule ^shopping_cart\.php\/products_id\/([0-9]*)\/info\/p([0-9]*)_.*\.html shopping_cart\.php\?products_id=$1 [L]
+
 RewriteRule ^(product_info|index|shop_content).php(.*)$ redirector.php [L]
 
 RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]
