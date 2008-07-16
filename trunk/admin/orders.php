@@ -1078,7 +1078,7 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 			if (is_object($oInfo)) {
 				$heading[] = array ('text' => '<b>['.$oInfo->orders_id.']&nbsp;&nbsp;'.vam_datetime_short($oInfo->date_purchased).'</b>');
 
-				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'">'.BUTTON_EDIT.'</a> <a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'">'.BUTTON_DELETE.'</a>');
+				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'">'.BUTTON_EDIT.'</a> <a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'">'.BUTTON_DELETE.'</a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_ORDER,'oID='.$oInfo->orders_id).'" target="_blank">'.BUTTON_INVOICE.'</a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$oInfo->orders_id).'" target="_blank">'.BUTTON_PACKINGSLIP.'</a>');
 				if (AFTERBUY_ACTIVATED == 'true') {
 					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'">'.BUTTON_AFTERBUY_SEND.'</a>');
 
