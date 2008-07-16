@@ -78,13 +78,13 @@
 <div id="menu">
 <ul>
 <li class="current"><a href="index.php"><span><?php echo START; ?></span></a></li>
-<li><a href=""><span><?php echo STEP1; ?></span></a></li>
-<li><a href=""><span><?php echo STEP2; ?></span></a></li>
-<li><a href=""><span><?php echo STEP3; ?></span></a></li>
-<li><a href=""><span><?php echo STEP4; ?></span></a></li>
-<li><a href=""><span><?php echo STEP5; ?></span></a></li>
-<li><a href=""><span><?php echo STEP6; ?></span></a></li>
-<li><a href=""><span><?php echo END; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP1; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP2; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP3; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP4; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP5; ?></span></a></li>
+<li><a href="index.php"><span><?php echo STEP6; ?></span></a></li>
+<li><a href="index.php"><span><?php echo END; ?></span></a></li>
 </ul>
 </div>
 
