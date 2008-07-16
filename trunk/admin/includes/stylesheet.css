@@ -485,7 +485,7 @@ way to fit your requirements.
 
 #nav table {border-collapse:collapse; padding:0; margin:0 0 -1px 0; border:0;}
 
-#nav :hover ul {left:0; top:35px; width:170px; z-index:500; background:url(trans.gif);}
+#nav :hover ul {left:0; top:35px; width:170px; z-index:500; background:url(../images/menu/trans.gif);}
 #nav :hover ul ul {position:absolute; left:-9999px;}
 
 #nav :hover ul :hover ul {left:110px; top:0;}
