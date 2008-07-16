@@ -25,7 +25,7 @@ function affiliate_insert ($sql_data_array, $affiliate_parent = 0) {
     // LOCK TABLES
     @mysql_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
     if ($affiliate_parent > 0) {
-    	$affiliate_root_query = vam_db_query("select affiliate_root, affiliate_rgt, affiliate_lftÂ from  " . TABLE_AFFILIATE . " where affiliate_id = '" . $affiliate_parent . "' ");
+    	$affiliate_root_query = vam_db_query("select affiliate_root, affiliate_rgt, affiliate_lft from  " . TABLE_AFFILIATE . " where affiliate_id = '" . $affiliate_parent . "' ");
     	// Check if we have a parent affiliate
     	if ($affiliate_root_array = vam_db_fetch_array($affiliate_root_query)) {
     		vam_db_query("update " . TABLE_AFFILIATE . " SET affiliate_lft = affiliate_lft + 2 WHERE affiliate_root  =  '" . $affiliate_root_array['affiliate_root'] . "' and  affiliate_lft > "  . $affiliate_root_array['affiliate_rgt'] . "  AND affiliate_rgt >= " . $affiliate_root_array['affiliate_rgt'] . " ");
