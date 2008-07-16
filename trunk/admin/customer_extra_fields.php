@@ -173,7 +173,7 @@
       $field_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $field_inputs_string .= '<br>' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']');
+        $field_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']');
       }
       $contents[] = array('text' => '<br>' . TEXT_FIELD_NAME . $field_inputs_string);      
 	  	$contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' .
@@ -195,7 +195,7 @@
       $field_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $field_inputs_string .= '<br>'. vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']',vam_get_customers_extra_fields_name($fInfo->fields_id, $languages[$i]['id']));
+        $field_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']',vam_get_customers_extra_fields_name($fInfo->fields_id, $languages[$i]['id']));
       }
       $contents[] = array('text' => '<br>' . TEXT_FIELD_NAME . $field_inputs_string);
       $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' .
