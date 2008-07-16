@@ -73,7 +73,10 @@
     <td class="inputRequirement">{$INPUT_VAT}</td>
   </tr>
   {/if}
-  {if $customers_extra_fileds=='1'}{$INPUT_CUSTOMERS_EXTRA_FIELDS}  {/if}
+{if $customers_extra_fileds=='1'}
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}  <tr>    <td class="main">{$customers_extra_filelds.NAME}:</td>    <td class="inputRequirement">{$customers_extra_filelds.VALUE}</td>  </tr>
+{/foreach}
+{/if}
 </table>
 <br />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
