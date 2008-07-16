@@ -22,11 +22,15 @@ define('TABLE_HEADING_STATUS','Статус');
 
 define('TEXT_FIELD', 'Поле: ');
 define('TEXT_FIELD_INPUT_TYPE', 'Тип: ');
+define('TEXT_FIELD_INPUT_VALUE', 'Значения полей:<br>(одна строка - один элемент) ');
 define('TEXT_FIELD_REQUIRED_STATUS', 'Обязательно для заполнения: ');
 define('TEXT_FIELD_REQUIRED_EMAIL', 'Отправлять в письме с заказом информацию из данного поля: ');
 define('TEXT_FIELD_STATUS_EMAIL', 'Отправлять в письме с заказом информацию из данного поля: ');
 define('TEXT_INPUT_FIELD','Input поле');
 define('TEXT_TEXTAREA_FIELD','Textarea поле');
+define('TEXT_RADIO_FIELD','Radio кнопки');
+define('TEXT_CHECK_FIELD','Checkbox кнопки');
+define('TEXT_DOWN_FIELD','Drop down меню');
 define('TEXT_FIELD_SIZE', 'Минимальная длина поля (символов): ');
 define('TEXT_NEW_INTRO', 'Пожалуйста, заполните следующую форму для создания нового поля');
 define('TEXT_EDIT_INTRO', 'Пожалуйста, внесите изменения');

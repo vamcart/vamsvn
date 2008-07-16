@@ -21,11 +21,13 @@
         if (isset($_GET['fID'])) $fields_id = vam_db_prepare_input($_GET['fID']);
         //$fields_name = vam_db_prepare_input($_POST['fields_name']);
         $fields_input_type = vam_db_prepare_input($_POST['fields_input_type']);
+        $fields_input_value = vam_db_prepare_input($_POST['fields_input_value']);
         $fields_required_status =  vam_db_prepare_input($_POST['fields_required_status']);
         $fields_size = vam_db_prepare_input($_POST['fields_size']);
         $fields_required_email = vam_db_prepare_input($_POST['fields_required_email']);
         $sql_data_array = array('fields_status' => 1,
                                 'fields_input_type' => $fields_input_type,
+                                'fields_input_value' => $fields_input_value,
                                 'fields_required_status' => $fields_required_status,
                                 'fields_size' => $fields_size,
 				'fields_required_email' => $fields_required_email);
@@ -112,7 +114,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $fields_query_raw = "select ce.fields_id, ce.fields_size, ce.fields_input_type, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_required_email from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where cei.fields_id=ce.fields_id and cei.languages_id =" . (int)$_SESSION['languages_id'];
+  $fields_query_raw = "select ce.fields_id, ce.fields_size, ce.fields_input_type, ce.fields_input_value, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_required_email from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where cei.fields_id=ce.fields_id and cei.languages_id =" . (int)$_SESSION['languages_id'];
   $fields_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $fields_query_raw, $manufacturers_query_numrows);
   $fields_query = vam_db_query($fields_query_raw);
   while ($fields = vam_db_fetch_array($fields_query)) {
@@ -174,11 +176,16 @@
         $field_inputs_string .= '<br>' . vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']');
       }
       $contents[] = array('text' => '<br>' . TEXT_FIELD_NAME . $field_inputs_string);      
-	  $contents[] = array('text' => '<!--<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' . vam_draw_radio_field('fields_input_type', 1, ($fInfo->fields_input_type==1) ? true : false) . TEXT_TEXTAREA_FIELD);
-      $contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
+	  	$contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' .
+																																							vam_draw_radio_field('fields_input_type', 1, ($fInfo->fields_input_type==1) ? true : false) . TEXT_TEXTAREA_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 2, ($fInfo->fields_input_type==2) ? true : false) . TEXT_RADIO_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 3, ($fInfo->fields_input_type==3) ? true : false) . TEXT_CHECK_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 4, ($fInfo->fields_input_type==4) ? true : false) . TEXT_DOWN_FIELD);
+      $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_VALUE . '<br>' . vam_draw_textarea_field('fields_input_value', 'nowrap', /*$width*/ 30, /*$height*/ 8, $fInfo->fields_input_value /*, $parameters = '', $reinsert_value = true*/));
+			$contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
       $contents[] = array('text' =>  TEXT_FIELD_SIZE . '<br>' . vam_draw_input_field('fields_size',$fInfo->fields_size));
 	  $contents[] = array('text' => '<br>' . TEXT_FIELD_STATUS_EMAIL . '<br>' . vam_draw_radio_field('fields_required_email', 0, ($fInfo->fields_required_email==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_email', 1, ($fInfo->fields_required_email==1) ? true : false) . 'true');
-      $contents[] = array('align' => 'center', 'text' => '<br>--><input type="submit" class="button" value="' . BUTTON_SAVE .'"> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $_GET['fID']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" value="' . BUTTON_SAVE .'"> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $_GET['fID']) . '">' . BUTTON_CANCEL . '</a>');
       break;
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_EDIT_FIELD . '</b>');
@@ -191,11 +198,16 @@
         $field_inputs_string .= '<br>'. vam_image(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/admin/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field('fields_name[' . $languages[$i]['id'] . ']',vam_get_customers_extra_fields_name($fInfo->fields_id, $languages[$i]['id']));
       }
       $contents[] = array('text' => '<br>' . TEXT_FIELD_NAME . $field_inputs_string);
-      $contents[] = array('text' => '<!--<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' . vam_draw_radio_field('fields_input_type', 1, ($fInfo->fields_input_type==1) ? true : false) . TEXT_TEXTAREA_FIELD);
-      $contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
+      $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . '<br>' . vam_draw_radio_field('fields_input_type', 0, ($fInfo->fields_input_type==0) ? true : false) . TEXT_INPUT_FIELD . '<br>' .
+																																							vam_draw_radio_field('fields_input_type', 1, ($fInfo->fields_input_type==1) ? true : false) . TEXT_TEXTAREA_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 2, ($fInfo->fields_input_type==2) ? true : false) . TEXT_RADIO_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 3, ($fInfo->fields_input_type==3) ? true : false) . TEXT_CHECK_FIELD . '<br>' .
+                                                                              vam_draw_radio_field('fields_input_type', 4, ($fInfo->fields_input_type==4) ? true : false) . TEXT_DOWN_FIELD);
+      $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_VALUE . '<br>' . vam_draw_textarea_field('fields_input_value', 'nowrap', /*$width*/ 30, /*$height*/ 8, $fInfo->fields_input_value /*, $parameters = '', $reinsert_value = true*/));
+			$contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
       $contents[] = array('text' =>  TEXT_FIELD_SIZE . '<br>' . vam_draw_input_field('fields_size', $fInfo->fields_size));
 	  $contents[] = array('text' => '<br>' . TEXT_FIELD_STATUS_EMAIL . '<br>' . vam_draw_radio_field('fields_required_email',0,($fInfo->fields_required_email==0)?true:false) . 'false<br>' . vam_draw_radio_field('fields_required_email',1,($fInfo->fields_required_email==1)?true:false) . 'true');
-      $contents[] = array('align' => 'center', 'text' => '--><br><input type="submit" class="button" value="' . BUTTON_SAVE .'"> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" value="' . BUTTON_SAVE .'"> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '">' . BUTTON_CANCEL . '</a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_DELETE_FIELD . '</b>');
@@ -209,11 +221,19 @@
         $heading[] = array('text' => '<b>' . $fInfo->fields_name . '</b>');
         $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
         $contents[] = array('text' => '<br>' . TEXT_FIELD_NAME .  $fInfo->fields_name);
-        $contents[] = array('text' => '<!--<br>' . TEXT_FIELD_INPUT_TYPE . (($fInfo->fields_input_type==0) ? TEXT_INPUT_FIELD : TEXT_TEXTAREA_FIELD)) ;
+				switch($fInfo->fields_input_type)
+				{
+				  case  0: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_INPUT_FIELD ); break;
+				  case  1: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_TEXTAREA_FIELD ); break;
+				  case  2: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_RADIO_FIELD ); break;
+				  case  3: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_CHECK_FIELD ); break;
+				  case  4: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_DOWN_FIELD ); break;
+				  default: $contents[] = array('text' => '<br>' . TEXT_FIELD_INPUT_TYPE . TEXT_INPUT_FIELD );
+				}
         $contents[] = array('text' => TEXT_FIELD_REQUIRED_STATUS . (($fInfo->fields_required_status==1) ? 'true' : 'false'));
         $contents[] = array('text' => TEXT_FIELD_SIZE .  $fInfo->fields_size);
 		$contents[] = array('text' => TEXT_FIELD_REQUIRED_EMAIL . (($fInfo->fields_required_email==1) ? 'true' : 'false'));
-        $contents[] = array('text' => '--><br>');
+        $contents[] = array('text' => '<br>');
       }
       break;
   }
