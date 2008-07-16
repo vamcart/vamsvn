@@ -785,13 +785,14 @@ CREATE TABLE customers_to_extra_fields (
 
 DROP TABLE IF EXISTS extra_fields;
 CREATE TABLE extra_fields (
-  fields_id int(11) NOT NULL auto_increment,
-  fields_input_type tinyint(2) NOT NULL default '0',
-  fields_status tinyint(2) NOT NULL default '0',
-  fields_required_status tinyint(2) NOT NULL default '0',
-  fields_size int(5) NOT NULL default '0',
-  fields_required_email tinyint(2) NOT NULL default '0',
-  PRIMARY KEY  (fields_id)
+  fields_id int(11) not null auto_increment,
+  fields_input_type int(11) default '0' not null ,
+  fields_input_value text NOT NULL,
+  fields_status tinyint(2) default '0' not null ,
+  fields_required_status tinyint(2) default '0' not null ,
+  fields_size int(5) default '0' not null ,
+  fields_required_email tinyint(2) default '0' not null ,
+  PRIMARY KEY (fields_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS extra_fields_info;
