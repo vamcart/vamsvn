@@ -39,7 +39,12 @@
 <p>{#text_ustid#} {$INPUT_VAT}</p>
 {/if}
 </fieldset>
-{if $customers_extra_fileds=='1'}<p>{$INPUT_CUSTOMERS_EXTRA_FIELDS}</p>
+{if $customers_extra_fileds=='1'}
+<fieldset class="form">
+<legend>{#title_options#}</legend>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+</fieldset>
 {/if}
 <!-- /форма -->
 </div>
