@@ -1982,6 +1982,10 @@ function walk( $item1 ) {
 					$sql = "INSERT INTO ".TABLE_CATEGORIES."(
 						categories_id,
 						categories_image,
+						group_permission_0,
+						group_permission_1,
+						group_permission_2,
+						group_permission_3,
 						parent_id,
 						sort_order,
 						date_added,
@@ -1989,6 +1993,10 @@ function walk( $item1 ) {
 						) VALUES (
 						$max_category_id,
 						'$default_image_category',
+						'1',
+						'1',
+						'1',
+						'1',
 						$theparent_id,
 						0,
 						CURRENT_TIMESTAMP,
@@ -2077,6 +2085,10 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							products_id,
 					products_image,
 					products_model,
+					group_permission_0,
+					group_permission_1,
+					group_permission_2,
+					group_permission_3,
 					products_page_url,
 					products_price,
 					products_status,
@@ -2092,6 +2104,10 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							 '$v_products_id',
 							'$v_products_image',
 							'$v_products_model',
+							'1',
+							'1',
+							'1',
+							'1',
 								'$v_products_page_url',
 								'$v_products_price',
 								'$v_db_status',
@@ -2117,8 +2133,12 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					products_page_url="'.$v_products_page_url.'" ,
 					products_price="'.$v_products_price.'" ,
 					products_page_url="'.$v_products_page_url.'" ,
-					products_model="'.$v_products_model.
-					'" ,products_image="'.$v_products_image;
+					products_model="'.$v_products_model.'" ,
+					group_permission_0="1" ,
+					group_permission_1="1" ,
+					group_permission_2="1" ,
+					group_permission_3="1" ,
+					products_image="'.$v_products_image;
 
 			// uncomment these lines if you are running the image mods
 			$query .= '", products_weight="'.$v_products_weight .
