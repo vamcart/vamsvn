@@ -25,6 +25,7 @@
     $products_id = '';
     $sort = '';
     $direction = '';
+    $filter_id = '';
     $on_page = '';
     $page_num = '';
     $matches = array();
@@ -55,6 +56,8 @@
             $sort = $parsed_param[1];
           } elseif ($parsed_param[0] === 'direction') {
             $direction = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'filter_id') {
+            $filter_id = $parsed_param[1];
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
@@ -106,6 +109,10 @@
 
           if (vam_not_null($direction)) {
             $params .= '&direction=' . $direction;
+          }
+
+          if (vam_not_null($filter_id)) {
+            $params .= '&filter_id=' . $filter_id;
           }
 
           if ($on_page === -1) {
