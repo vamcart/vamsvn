@@ -101,10 +101,7 @@ include(DIR_WS_MODULES . 'analytics/analytics.php');
 ' . $transaction_string . '
 
 );
-  pageTracker._addItem(
 ' . $item_string . '
-
-);
   pageTracker._trackTrans();
 </script>
 		    ');
