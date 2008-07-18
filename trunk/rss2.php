@@ -47,7 +47,7 @@ $cdata_close = "]]>";
 $cdata_open = "";
 $cdata_close = "";
 
-
+$days_limit = "";
 
 // 0 - no description in feed; 1 - give it in...
 define('RSS_FEED_DESCRIPTION', 'false');
