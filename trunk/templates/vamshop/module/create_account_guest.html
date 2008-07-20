@@ -51,7 +51,7 @@
 {if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
 {/if}
 </fieldset>
-{if $customers_extra_fileds=='1'}
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 <fieldset class="form">
 <legend>{#title_options#}</legend>
 {foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
