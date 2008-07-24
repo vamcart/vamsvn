@@ -487,7 +487,7 @@ if (ACCOUNT_STATE == 'true') {
 
 //	if ($process == true) {
 
-    if ($process != true) {
+//    if ($process != true) {
 	    $country = (isset($_POST['country']) ? vam_db_prepare_input($_POST['country']) : STORE_COUNTRY);
 	    $zone_id = 0;
 		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
@@ -516,7 +516,7 @@ if (ACCOUNT_STATE == 'true') {
 	        }
 	      }
 		}
-	}
+//	}
 
       if ($entry_state_has_zones == true) {
         $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), 'id="state"');
