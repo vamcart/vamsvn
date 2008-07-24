@@ -3,10 +3,20 @@
  * By Cody Lindley (http://www.codylindley.com)
  * Copyright (c) 2007 cody lindley
  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
+ *
+ * Patched Version by Jamie Thompson - Fixes IE7 Positioning Issues
+ * http://jamazon.co.uk/web/2008/03/17/thickbox-31-ie7-positioning-bug/
 */
       
 var tb_pathToImage = "jscript/jquery/plugins/thickbox/loading.gif";
 /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
+
+// fixes the fact that ie7 now reports itself as MSIE 6.0 compatible
+$.browser.msie6 = 
+        $.browser.msie 
+        && /MSIE 6\.0/i.test(window.navigator.userAgent) 
+        && !/MSIE 7\.0/i.test(window.navigator.userAgent);
+
 //on page load call tb_init
 $(document).ready(function(){   
   tb_init('a.thickbox, area.thickbox, input.thickbox');//pass where to apply thickbox
@@ -22,7 +32,7 @@ function tb_init(domChunk){
   tb_show(t,a,g);
   this.blur();
   return false;
-  });
+	}).removeClass('thickbox');
 }
 function tb_show(caption, url, imageGroup) {//function called when the user clicks on a thickbox link
   try {
@@ -166,7 +176,7 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
       
       tb_position();
       $("#TB_load").remove();
-      $("#TB_ImageOff").click(tb_remove);
+			$("#TB_Image").click(tb_remove);
       $("#TB_window").css({display:"block"}); //for safari using css instead of show
       };
       
@@ -268,10 +278,12 @@ function tb_remove() {
 }
 function tb_position() {
 $("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
-  if ( !(jQuery.browser.msie && jQuery.browser.version < 7)) { // take away IE6
-    $("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
-  }
+	
+	if ( !(jQuery.browser.msie6)) { // take away IE6
+		$("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
+	}
 }
+
 function tb_parseQuery ( query ) {
    var Params = {};
    if ( ! query ) {return Params;}// return empty object
