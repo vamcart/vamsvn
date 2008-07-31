@@ -63,7 +63,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       return(array((int)$width, (int)$height));
    }
 
-	function vam_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif'), $dir_only=false, $subdir = '') {
+	function vam_get_files_in_dir($startdir, $ext=array('.jpg', '.jpeg', '.png', '.gif' '.JPG' '.bmp'), $dir_only=false, $subdir = '') {
 //		echo 'Directory: ' . $startdir . '  Subirectory: ' . $subdir . '<br />';
 		if(!is_array($ext)) $ext=array();
 		$dirname = $startdir . $subdir;
