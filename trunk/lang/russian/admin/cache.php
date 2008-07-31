@@ -27,4 +27,11 @@ define('TEXT_NOCACHE_FILES', 'Кеш-файлов не существует.');
 define('USED_SPACE', 'Использованное место: ');
 define('ERROR_CACHE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория кеша не существует.');
 define('ERROR_CACHE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директоря Кеша защищена от записи.');
+
+define('TEXT_FILES_TOTAL','Картинок всего: ');
+define('TEXT_IMAGES_TOTAL','Товаров с картинками всего: ');
+define('TEXT_NOT_FOUND','Не найдено картинок всего: ');
+define('TEXT_EXTRA_TOTAL','Неиспользуемых картинок всего: ');
+define('DELETE_FILES','Удалить неиспользуемые картинки');
+
 ?>

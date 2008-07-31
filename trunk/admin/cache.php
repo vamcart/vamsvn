@@ -46,8 +46,51 @@ if ($d = opendir($dir)) {
     closedir($d);
 }
 
+////////////////////////////////////////////////////////////////////////  
+//include needed functions
+require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
+// BOF Add existing image
+require_once(DIR_WS_FUNCTIONS . 'trumbnails_add_funcs.php');
+// EOF Add existing image 	
+require_once ('includes/classes/categories.php');
+// show images
+// BOF Add existing image
+
+$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)),vam_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
+// EOF Add existing image
+	
+ $filenames_list = array();	
+ $image_list = array();	  
+   ///////////////////   getting list of image filenames
+    for($i=1;$i<sizeof($file_list);$i++) 
+      {	 
+	    $filenames_list[]=$file_list[$i]['text'];        
+      }	  
+   ///////////////////   getting list of products_image
+    $img_list = vam_db_query("select p.products_image  from  products p where p.products_image<>'' ORDER BY p.products_image ");     
+   	 while($image_row = mysql_fetch_array($img_list))
+    {	        
+		
+		  $image_list[] = $image_row['products_image'];	 		    		
+    }		
+  
+	///////////////////   getting list of unnessesary files
+	$delete_list=array_diff($filenames_list, $image_list);
+	$not_found=array_diff($image_list,$filenames_list);		
+		
+	// deleting unused images
+	 if ($_GET['action'] == 'delete_img')
+	 {	 
+	 delete_unused_image_files($delete_list);  	
+	// echo "Files have been removed";
+	 vam_redirect(vam_href_link(FILENAME_CACHE));  	 
+	 }	 
+	 // deleting unused images		
+	
+
+///////////////////////////////////////////////////////////////////////
 if (isset($_GET['action'])) {
-  if ($_GET['action'] == 'unlink') {
+  if ($_GET['action'] == 'unlink' and $_GET['action'] == 'delete_img') {
     vam_redirect(vam_href_link(FILENAME_CACHE));
   }
 }
@@ -117,9 +160,48 @@ echo '<input type="submit" class="button" name="unlink" value="' . TEXT_RESET_CA
   } else {
     echo "<br />\n" . TEXT_NOCACHE_FILES;
 }
-?>
 
+?>	 
 
+<br>
+<?php	
+
+	echo '<br />'.TEXT_FILES_TOTAL. sizeof($filenames_list).' <div style="overflow:auto;height:50px;padding:1em;border: 1px solid black;">';
+   		while ($del=each($filenames_list)) 
+	      {	 
+		    echo $del[value]."<br />\n";
+	      }	   
+		 echo "</div><br />\n"; 	    
+ 	echo '<br>'.TEXT_IMAGES_TOTAL.sizeof($image_list).' <div style="overflow:auto;height:50px;padding:1em;border: 1px solid black;">';
+  		 while ($del=each($image_list)) 
+	      {	 
+		    echo $del[value]."<br />\n";
+	      }	 		
+    echo "</div><br />\n"; 
+	
+	echo '<br>'.TEXT_NOT_FOUND.sizeof($not_found).' <div style="overflow:auto;height:50px;padding:1em;border: 1px solid black;">';
+	   
+		while ($del=each($not_found)) 
+	      {	 
+		    echo $del[value]."<br />\n";
+	      }	   
+		 echo "</div><br />\n"; 
+		 
+		 echo '<br>'.TEXT_EXTRA_TOTAL.sizeof($delete_list).' <div style="overflow:auto;height:50px;padding:1em;border: 1px solid black;">';
+	   
+		while ($del=each($delete_list)) 
+	      {	 
+		    echo $del[value]."<br />\n";
+	      }	   
+		 echo "</div><br />\n";
+		 
+		if (sizeof($delete_list) >= 1) {
+		echo vam_draw_form('reset', FILENAME_CACHE, '', 'get'). vam_draw_hidden_field('action', 'delete_img');
+		echo '<input type="submit" class="button" name="delete_img" value="' . DELETE_FILES . '"/>'
+		. '</form>';
+	  }   
+  		
+ ?>
             </td>
           </tr>
         </table></td>
