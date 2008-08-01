@@ -496,6 +496,8 @@ if (isset ($cPath_array)) {
 	for ($i = 0, $n = sizeof($cPath_array); $i < $n; $i ++) {
 		if (GROUP_CHECK == 'true') {
 			$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+		} else {
+		   $group_check='';
 		}
 		$categories_query = vamDBquery("select
 				                                        cd.categories_name
