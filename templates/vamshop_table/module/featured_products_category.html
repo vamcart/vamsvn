@@ -23,7 +23,7 @@
      
      <br />
 
-     {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION}<br />     
+     {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}<br />     
      <a href="{$module_data.PRODUCTS_LINK}">{#text_more#}</a><br />{/if}
 
      <br />
