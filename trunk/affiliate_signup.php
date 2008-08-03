@@ -123,6 +123,7 @@ if (isset($_POST['action'])) {
 		$entry_email_address_check_error = false;
     }
 
+   if (ACCOUNT_STREET_ADDRESS == 'true') {
     if (strlen($a_street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
     	$error = true;
     	$entry_street_address_error = true;
@@ -130,7 +131,9 @@ if (isset($_POST['action'])) {
 	else {
 		$entry_street_address_error = false;
     }
+   }
   
+   if (ACCOUNT_POSTCODE == 'true') {
     if (strlen($a_postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
     	$error = true;
     	$entry_post_code_error = true;
@@ -138,7 +141,9 @@ if (isset($_POST['action'])) {
 	else {
 		$entry_post_code_error = false;
     } 
+   }
 
+   if (ACCOUNT_CITY == 'true') {
     if (strlen($a_city) < ENTRY_CITY_MIN_LENGTH) {
     	$error = true;
     	$entry_city_error = true;
@@ -146,7 +151,9 @@ if (isset($_POST['action'])) {
 	else {
 		$entry_city_error = false;
     }
+   }
 
+   if (ACCOUNT_COUNTRY == 'true') {
     if (!$a_country) {
     	$error = true;
     	$entry_country_error = true;
@@ -154,6 +161,7 @@ if (isset($_POST['action'])) {
 	else {
 		$entry_country_error = false;
     }
+   }
 
     if (ACCOUNT_STATE == 'true') {
     	if ($entry_country_error) {
@@ -192,6 +200,7 @@ if (isset($_POST['action'])) {
 		}
 	}
 	
+   if (ACCOUNT_TELE == 'true') {
     if (strlen($a_telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
     	$error = true;
     	$entry_telephone_error = true;
@@ -199,6 +208,7 @@ if (isset($_POST['action'])) {
 	else {
 		$entry_telephone_error = false;
     }
+   }
 
     $passlen = strlen($a_password);
     if ($passlen < ENTRY_PASSWORD_MIN_LENGTH) {
