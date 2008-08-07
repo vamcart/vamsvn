@@ -138,7 +138,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
 </div>
           <tr>
             <td><?php echo TEXT_PRODUCTS_DISCOUNT_ALLOWED; ?></td>
-            <td><?php echo vam_draw_input_field('products_discount_allowed', ($pInfo->products_discount_allowed==0 ? 100 : $pInfo->products_discount_allowed)); ?></td>
+            <td><?php echo vam_draw_input_field('products_discount_allowed', ($pInfo->products_discount_allowed=='' ? 100 : $pInfo->products_discount_allowed)); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_PRODUCTS_TAX_CLASS; ?></td>
