@@ -1,0 +1,300 @@
+/* ie only styles */
+
+/* commented backslash hack v2 \*/ 
+* html body {
+	height: 100%;
+}
+/* end hack */ 
+
+* html body {
+	margin: 85px 0 0px 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+* html .toolbar {
+	position: absolute;
+	top: 0;
+	padding: 0;
+	height: 85px;
+}
+ 
+* html .thwrapper {
+	padding: 0 0px;
+	overflow-y: scroll;
+	height: 100%;
+}
+
+/* Mozilla styles below */
+
+html>body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+html>body .toolbar {
+	position: fixed;
+	top: 0;
+	padding: 0;
+	height: 89px;
+}
+
+html>body .thwrapper {
+	position: fixed;
+	top: 90px;
+	bottom: 0px;
+	padding: 0px;
+	overflow: auto;
+	overflow-y: scroll;
+}
+
+.toolbar, .thwrapper {
+	width: 100%;
+}
+
+.toolbar {
+	background-color: #D4D0C8;
+	border-bottom: 1px solid black;
+}
+
+.thwrapperwrapper {
+	margin-left: 12px; margin-top: 15px
+}
+
+body {
+	overflow: hidden;
+}
+
+body, td {
+	background-color: #F0F0EE;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+a:link	{  
+	font-size: 11px; 
+	color: #000000; 
+	text-decoration: underline;
+}
+
+a:active	{  
+	text-decoration: underline;
+}
+
+a:visited	{  
+	font-size: 11px; 
+	color: #000000;
+	text-decoration: underline;
+}
+
+a:hover	{  	
+	text-decoration: underline;
+}
+
+.statusError {
+	color: #880000;
+}
+
+.statusMsg {
+	color: #000000;
+}
+
+.disabledFileName {
+	color: #888888;
+}
+
+.inputText, .inputFile {
+	background: #FFFFFF;
+	border: 1px solid #cccccc;
+}
+
+.inputFile:button {
+	background: #DDDDDD;
+	border: 1px solid #888888;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+input, select, textarea, .title {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.button {
+	background: #DDDDDD;
+	border: 1px solid #888888;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+#createdirBody, #uploadBody {
+	background-color: #F0F0EE;
+}
+
+.image {
+	/* please note that some styles for .image are in template style, for variable subsitution */
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #FFFFFF;
+}
+
+.loading {
+	background-image: url('../images/ani_snake.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.error {
+	background-image: url('../images/error.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.image img {
+	cursor: hand;
+}
+
+.thumbnail {
+	/* please note that some styles for .thumbnail are in template style, for variable subsitution */
+	position: relative;
+	float: left;
+	display: inline;
+}
+
+.imagename {
+	/* please note that some styles for .imagename are in template style, for variable subsitution */
+	overflow: hidden;
+	font-family: Verdana, Arial Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.imagewrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+}
+
+.imageinfo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #FFFFFF;
+	line-height: 14px;
+	position: absolute; 
+	top: 16px; 
+	left: 0px; 
+	clear: both; 
+	overflow: hidden;
+	display: none;
+	z-index: 100;
+}
+
+fieldset {
+	padding: 8px;
+	padding-bottom: 4px;
+	border-color: #FFFFFF;
+}
+
+/* IE specific */
+* html fieldset {
+	margin-top: -10px;
+}
+
+legend {
+	font-family: "MS Sans Serif", Verdana, Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+td {
+	font-family: "MS Sans Serif", Verdana, Arial;
+	font-size: 9pt;
+}
+
+.infotable, .infotable td, .infotable .tr { background-color: #ffffff; font-size: 10px; }
+
+/* toolbar */
+.toolbarwrap { 
+	margin: 15px;
+}
+
+.mceButtonNormal, .mceButtonOver, .mceButtonDown, .mceSeparator, .mceButtonDisabled, .mceButtonSelected {
+	margin-top: 1px;
+	margin-left: 1px;
+}
+
+.mceButtonNormal {
+	border-top: 1px solid;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-color: #D4D0C8;
+	cursor: arrow;
+}
+
+.mceButtonOver {
+	border: 1px solid #0A246A;
+	cursor: arrow;
+	background-color: #B6BDD2;
+}
+
+.mceButtonDown {
+	cursor: arrow;
+	border: 1px solid #0A246A;
+	background-color: #8592B5;
+}
+
+.mceButtonSelected {
+	border: 1px solid;
+	border-color: #C0C0BB;
+	cursor: arrow;
+}
+
+.mceButtonDisabled {
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+	-moz-opacity:0.3;
+	opacity: 0.3;
+	border-top: 1px solid;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-color: #F0F0EE;
+	cursor: arrow;
+}
+
+.mceSeparator {
+	border-top: 1px solid buttonhighlight;
+	border-left: 1px solid buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+.mceSeparatorLine {
+	margin:2px;
+	margin-left: 4px;
+	background-color: #F0F0EE;
+	border-top: 1px solid buttonshadow;
+	border-left: 1px solid buttonshadow;
+	border-bottom: 1px solid buttonhighlight;
+	border-right: 1px solid buttonhighlight;
+	width: 0px;
+	height: 15px;
+}
+
+table, td, tr {
+	background-color: transparent;
+}

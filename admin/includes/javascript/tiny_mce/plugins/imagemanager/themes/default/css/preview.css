@@ -1,0 +1,59 @@
+body {
+	background-color: #F0F0EE;
+	margin: 0px;
+	padding: 0px;
+	overflow: auto;
+}
+
+.next_prev {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 25px;
+	height: 25px;
+}
+
+.preview_image {
+	text-align: center;
+}
+
+a:link	{  
+	font-size: 12px; 
+	color: #000000; 
+	text-decoration: underline;
+}
+
+a:active	{  
+	text-decoration: underline;
+}
+
+a:visited	{  
+	text-decoration: underline;
+}
+
+a:hover	{  	
+	text-decoration: underline;
+}
+
+.error {
+	text-align: center;
+	width: 100%;
+	height: 100px;
+	background-image: url('../images/error.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+.preview_container {
+	text-align: center;
+}
+
+
+.inactive {
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+	-moz-opacity:0.3;
+	opacity: 0.3;
+	cursor: arrow;
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language-pack>
+	<header>
+		<author>Moxiecode Systems AB</author>
+		<version minor="2" major="0" releasedate="2005-10-28" />
+		<description>
+			This is the English language pack for the MCImageManager.
+		</description>
+	</header>
+
+	<language code="en" title="English" dir="ltr">
+		<group target="common">
+			<item name="filemanager">Filemanager switch</item>
+			<item name="createdir">Create directory</item>
+			<item name="refresh">Refresh</item>
+			<item name="upload">Upload new image</item>
+			<item name="error_no_access">Error: No write access on this file/folder.</item>
+			<item name="error_delete_failed">Error: You don't have access to perform the requested action.</item>
+		</group>
+
+		<group target="createdir">
+			<item name="title">Create directory</item>
+			<item name="description">Insert a name for the directory you wish to create.</item>
+			<item name="template">Template:</item>
+			<item name="select_template">-- Select template --</item>
+			<item name="directory_name">Directory name:</item>
+			<item name="create_in">Create in:</item>
+			<item name="button_create">Create</item>
+			<item name="button_cancel">Cancel</item>
+			<item name="error_missing_name">Error: You must specify a directory name.</item>
+			<item name="error_select_template">Error: You must select a directory template.</item>
+			<item name="error_template_missing">Error: The selected template is missing.</item>
+			<item name="error_invalid_name">Error: The specified directory name is invalid.</item>
+			<item name="error_exists">Error: A directory with the specified name already exists.</item>
+		</group>
+
+		<group target="upload">
+			<item name="title">Upload</item>
+			<item name="description">Use the form to upload files.</item>
+			<item name="upload_in">Upload in:</item>
+			<item name="valid_extensions">Valid extensions:</item>
+			<item name="max_upload_size">Max upload size:</item>
+			<item name="file_to_upload">File to upload:</item>
+			<item name="as_file_name">As file name:</item>
+			<item name="required_filename">You must write a filename of the file you want to upload.</item>
+			<item name="button_upload">Upload</item>
+			<item name="button_add_upload">Add upload</item>
+			<item name="button_cancel">Cancel</item>
+			<item name="error_exists">Error: A file with the specified name already exists.</item>
+			<item name="error_to_large">Error: The file you are trying to upload is to large.</item>
+			<item name="remove">Remove</item>
+		</group>
+		
+		<group target="images">
+			<item name="title">Moxiecode Image Manager</item>
+			<item name="subtitle">Image Manager</item>
+			<item name="select_category">Category:</item>
+			<item name="select_directory">Directory:</item>
+			<item name="width">Width:</item>
+			<item name="height">Height:</item>
+			<item name="type">Type:</item>
+			<item name="size">Size:</item>
+			<item name="scale">Scale:</item>
+			<item name="confirm_delete">Are you sure you wish to remove this file?</item>
+			<item name="no_files">There is no images in this directory.</item>
+			<item name="image">Image file</item>
+			<item name="bmp">BMP image</item>
+			<item name="png">PNG image</item>
+			<item name="jpg">JPEG image</item>
+			<item name="gif">GIF image</item>
+			<item name="tif">TIFF image</item>
+			<item name="editwriteaccess">No write access, temporary files can not be created.</item>
+			<item name="loading">Loading info...</item>
+		</group>
+
+		<group target="edit_image">
+			<item name="save_image">Save image</item>
+			<item name="revert_image">Revert to last saved</item>
+			<item name="toggle_color">Toggle selection color</item>
+			<item name="crop_image">Crop image</item>
+			<item name="resize_image">Resize image</item>
+			<item name="please_wait">Processing image, please wait...</item>
+			<item name="constrain">Constrain proportions</item>
+			<item name="left">l:</item>
+			<item name="top">t:</item>
+			<item name="width">w:</item>
+			<item name="height">h:</item>
+			<item name="error_selection">Use the selection tool to select an area to crop.</item>
+			<item name="error_resize">You must insert a width and height in order to resize the image.</item>
+			<item name="filename">File name:</item>
+		</group>
+
+		<group target="preview">
+			<item name="title">Preview</item>
+			<item name="prev">Previous image</item>	
+			<item name="next">Next image</item>
+			<item name="first">First image</item>
+			<item name="last">Last image</item>
+			<item name="keyboard_next">Keyboard shortcut: SPACE,N,RIGHTARROW,PAGE DOWN</item>	
+			<item name="keyboard_prev">Keyboard shortcut: P,LEFTARROW,PAGE UP</item>	
+		</group>
+	</language>
+</language-pack>
