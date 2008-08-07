@@ -70,31 +70,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -158,31 +166,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -246,31 +262,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -334,31 +358,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -422,31 +454,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -510,31 +550,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -598,31 +646,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -686,31 +742,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -774,31 +838,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -862,31 +934,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -950,31 +1030,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
@@ -1038,31 +1126,39 @@ tinyMCE.init({
 });
 
 		function ajaxfilemanager(field_name, url, type, win) {
-			var ajaxfilemanagerurl = "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php";
+			var ajaxfilemanagerurl = "../../plugins/ajaxfilemanager/ajaxfilemanager.php";
 			switch (type) {
 				case "image":
+					ajaxfilemanagerurl += "?type=img";
 					break;
 				case "media":
+					ajaxfilemanagerurl += "?type=media";
 					break;
-				case "flash": 
+				case "flash": //for older versions of tinymce
+					ajaxfilemanagerurl += "?type=media";
 					break;
 				case "file":
+					ajaxfilemanagerurl += "?type=files";
 					break;
 				default:
 					return false;
 			}
-            tinyMCE.activeEditor.windowManager.open({
-                url: "includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php",
-                width: 800,
-                height: 500,
-                inline : "yes",
-                close_previous : "no"
-            },{
-                window : win,
-                input : field_name
-            });
-            
-		}
+			var fileBrowserWindow = new Array();
+			fileBrowserWindow["file"] = ajaxfilemanagerurl;
+			fileBrowserWindow["title"] = "Ajax File Manager";
+			fileBrowserWindow["width"] = "782";
+			fileBrowserWindow["height"] = "440";
+			fileBrowserWindow["close_previous"] = "no";
+			tinyMCE.openWindow(fileBrowserWindow, {
+			  window : win,
+			  input : field_name,
+			  resizable : "yes",
+			  inline : "yes",
+			  editor_id : tinyMCE.getWindowArg("editor_id")
+			});
+			
+			return false;
+		}	
 		
 function toggleHTMLEditor(id) {
   var elm = document.getElementById(id);
