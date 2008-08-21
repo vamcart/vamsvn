@@ -132,7 +132,11 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
               $customer_query = vam_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$this_orderID );
               $customer = vam_db_fetch_array($customer_query);
 			  unset($customer_id1);
+			     if ($customer['customers_status'] == '0') {
+              $customer_id1 = 0;
+              } else {
               $customer_id1 = $customer['customers_id'];
+              }
               $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id1 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
@@ -161,8 +165,12 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
                                                                                                                                                                                                  
               // ok, looking for available group
 
-              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+			     if ($customer['customers_status'] > '0') {
 
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+            
+               }
+               
               if (vam_db_num_rows($groups_query)) {
                  // new group found
                  $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
@@ -327,7 +335,11 @@ switch ($_GET['action']) {
               // building query
               $customer_query = vam_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
               $customer = vam_db_fetch_array($customer_query);
+			     if ($customer['customers_status'] == '0') {
+              $customer_id = 0;
+              } else {
               $customer_id = $customer['customers_id'];
+              }
               $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
@@ -346,9 +358,13 @@ switch ($_GET['action']) {
               $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, "customers_status_name");
+
+			     if ($customer['customers_status'] > '0') {
                                                                                                                                                                                                  
               // ok, looking for available group
               $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+
+              }
 
               if (vam_db_num_rows($groups_query)) {
                  // new group found
