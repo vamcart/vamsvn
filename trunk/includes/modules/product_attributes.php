@@ -91,7 +91,7 @@ if ($product->getAttributesCount() > 0) {
 				$full_price = '';
 			} else {
 				if ($products_options['options_values_price'] != '0.00') {
-					$price = $vamPrice->Format($products_options['options_values_price'], false, $product->data['products_tax_class_id']);
+					$price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $products_options['options_values_price']);
 				}
 				$products_price = $vamPrice->GetPrice($product->data['products_id'], $format = false, 1, $product->data['products_tax_class_id'], $product->data['products_price']);
 				if ($_SESSION['customers_status']['customers_status_discount_attributes'] == 1 && $products_options['price_prefix'] == '+')
