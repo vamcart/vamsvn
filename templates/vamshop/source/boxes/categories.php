@@ -60,9 +60,10 @@ require_once(DIR_FS_INC . 'vam_count_products_in_category.inc.php');
 
 
 $categories_string = '';
-if (GROUP_CHECK=='true') {
-	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
-}
+if (GROUP_CHECK == 'true') {
+	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 "; 
+ } else { $group_check=''; }
+
 $categories_query = vamDBquery(	"select c.categories_id,
 									cd.categories_name,
 									c.parent_id from " .

@@ -118,10 +118,11 @@ if ($error == 1 && $keyerror != 1) {
 
 	//manufacturers if set
 	if (isset ($_GET['manufacturers_id']) && vam_not_null($_GET['manufacturers_id'])) {
-		$manu_check = " AND p.manufacturers_id = '".(int)$_GET['manufacturers_id']."' ";
-	}
+		$manu_check = " AND p.manufacturers_id = '".(int)$_GET['manufacturers_id']."' "; 
+	} else { $manu_check=''; }
 
 	//include subcategories if needed
+   $subcat_where='';
 	if (isset ($_GET['categories_id']) && vam_not_null($_GET['categories_id'])) {
 		if ($_GET['inc_subcat'] == '1') {
 			$subcategories_array = array ();
@@ -153,13 +154,13 @@ if ($error == 1 && $keyerror != 1) {
 	if (($pfrom != '') && (is_numeric($pfrom))) {
 		$pfrom_check = " AND (IF(s.status = '1' AND p.products_id = s.products_id, s.specials_new_products_price, p.products_price) >= ".$pfrom.") ";
 	} else {
-		unset ($pfrom_check);
+		$pfrom_check='';
 	}
 
 	if (($pto != '') && (is_numeric($pto))) {
 		$pto_check = " AND (IF(s.status = '1' AND p.products_id = s.products_id, s.specials_new_products_price, p.products_price) <= ".$pto." ) ";
 	} else {
-		unset ($pto_check);
+		$pto_check='';
 	}
 
 	//build query
@@ -191,7 +192,7 @@ if ($error == 1 && $keyerror != 1) {
 		$from_str .= " LEFT OUTER JOIN ".TABLE_TAX_RATES." tr ON (p.products_tax_class_id = tr.tax_class_id) LEFT OUTER JOIN ".TABLE_ZONES_TO_GEO_ZONES." gz ON (tr.tax_zone_id = gz.geo_zone_id) ";
 		$tax_where = " AND (gz.zone_country_id IS NULL OR gz.zone_country_id = '0' OR gz.zone_country_id = '".(int) $_SESSION['customer_country_id']."') AND (gz.zone_id is null OR gz.zone_id = '0' OR gz.zone_id = '".(int) $_SESSION['customer_zone_id']."')";
 	} else {
-		unset ($tax_where);
+		$tax_where='';
 	}
 
 	//where-string
