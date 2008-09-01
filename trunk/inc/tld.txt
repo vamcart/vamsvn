@@ -35,3 +35,5 @@ info    # all are eligible to register
 museum  # museums
 name    # individuals
 pro     # credentialed professionals
+mobi
+asia
