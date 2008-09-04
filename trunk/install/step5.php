@@ -258,6 +258,44 @@
     fputs($fp, $file_contents);
     fclose($fp);
 
+//create .htaccess
+    $file_contents = 
+'AddDefaultCharset utf-8'. "\n" .
+'' . "\n" .
+'RewriteEngine On' . "\n" .
+'RewriteBase '.$http_catalog. "\n" .
+'' . "\n" .
+'RewriteRule ^product_reviews_write\.php\/info\/p(.*)_.*\.html product_reviews_write\.php\?products_id=$1 [L]'. "\n" .
+'RewriteRule ^product_reviews_write\.php\/action\/process\/info\/p([0-9]*)_.*\.html product_reviews_write\.php\?action=process\&products_id=$1 [L]'. "\n" .
+'' . "\n" .
+'RewriteRule ^product_info\.php\/info\/p(.*)_.*\/action\/add_product product_info\.php\?products_id=$1\&action=add_product\ [L]'. "\n" .
+'RewriteRule ^shopping_cart\.php\/products_id\/([0-9]*)\/info\/p([0-9]*)_.*\.html shopping_cart\.php\?products_id=$1 [L]'. "\n" .
+'' . "\n" .
+'RewriteRule ^(product_info|index|shop_content).php(.*)$ redirector.php [L]'. "\n" .
+'' . "\n" .
+'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]'. "\n" .
+'RewriteRule ^(.*).html(.*)$ manager.php [L]'. "\n" .
+'' . "\n" .
+'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.php|\.js$ - [L]'. "\n" .
+'' . "\n" .
+'# PHP 5, Apache 1 and 2.'. "\n" .
+'<IfModule mod_php5.c>'. "\n" .
+'php_value magic_quotes_gpc                0'. "\n" .
+'php_value register_globals                0'. "\n" .
+'php_value session.auto_start              0'. "\n" .
+'php_value mbstring.http_input             pass'. "\n" .
+'php_value mbstring.http_output            pass'. "\n" .
+'php_value mbstring.encoding_translation   0'. "\n" .
+'php_value default_charset UTF-8'. "\n" .
+'php_value mbstring.internal_encoding UTF-8'. "\n" .
+'</IfModule>    '. "\n" . '';
+
+    $fp = fopen(DIR_FS_CATALOG . 'htaccess.txt', 'w');
+    fputs($fp, $file_contents);
+    fclose($fp);
+
+    rename(DIR_FS_CATALOG . 'htaccess.txt', DIR_FS_CATALOG . '.htaccess');
+        
 ?>
 
 <p>
