@@ -118,6 +118,11 @@
  $ok_message='';
 
  // config files
+ if (!is_writeable(DIR_FS_CATALOG . 'htaccess.txt')) {
+    $error_flag=true;
+    $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'htaccess.txt</div>';
+ }
+
  if (!is_writeable(DIR_FS_CATALOG . 'includes/configure.php')) {
     $error_flag=true;
     $message .= '<div class="error">' . ERROR_PERMISSION . '' . DIR_FS_CATALOG . 'includes/configure.php</div>';
