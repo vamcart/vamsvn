@@ -261,6 +261,7 @@ if ($select_file=='default') {
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
 <script type="text/javascript" src="includes/javascript/tabber.js"></script>
 <link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
@@ -639,7 +640,9 @@ $checked='checked ';
 } else {
 $checked='';
 }
-echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
+$check_all = '';
+if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAll(this.checked);"';
+echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
 }
 ?>
 </td>
@@ -868,7 +871,9 @@ $checked='checked ';
 } else {
 $checked='';
 }
-echo '<input type="checkbox" name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
+$check_all = '';
+if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAll(this.checked);"';
+echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
 }
 ?>
 </td>

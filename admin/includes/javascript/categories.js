@@ -26,7 +26,7 @@ function SwitchCheck ()
     for (var i = 0; i < len; i++) 
     {
       var e = maf.elements[i];
-      if (e.name == "multi_products[]" || e.name == "multi_categories[]" || e.name == "multi_orders[]") 
+      if (e.name == "multi_products[]" || e.name == "multi_categories[]" || e.name == "multi_orders[]" || e.name == "groups[]") 
       {
           if (e.checked == true) {
               e.checked = false;
@@ -45,14 +45,27 @@ function CheckAll (wert)
     for (var i = 0; i < len; i++) 
     {
       var e = maf.elements[i];
-      if (e.name == "multi_products[]" || e.name == "multi_categories[]" || e.name == "multi_orders[]") 
+      if (e.name == "multi_products[]" || e.name == "multi_categories[]" || e.name == "multi_orders[]" || e.name == "groups[]")  
       {
         e.checked = wert;
       }
     }
   }
   
-
+function CheckAll (wert)
+  {
+    var maf = document.edit_content;
+    var len = maf.length;
+    for (var i = 0; i < len; i++) 
+    {
+      var e = maf.elements[i];
+      if (e.name == "groups[]")  
+      {
+        e.checked = wert;
+      }
+    }
+  }
+  
 //for checking products only
 function SwitchProducts ()
   {
