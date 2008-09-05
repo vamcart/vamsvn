@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------------------
-#  $Id: vamshop.sql,v 1.62 2007/05/26 20:24:16 VaM Exp $
+#  $Id: vamshop.sql,v 1.62 2007/09/26 20:24:16 VaM Exp $
 #
 #  VaM Shop - open source ecommerce solution
 #  http://vamshop.com 
@@ -2791,31 +2791,31 @@ INSERT INTO zones VALUES ('284', '123', 'Таурагский уезд', 'Тау
 INSERT INTO zones VALUES ('285', '123', 'Tяльшяйский уезд', 'Tяльшяйский уезд');
 INSERT INTO zones VALUES ('286', '123', 'Утянский уезд', 'Утянский уезд');
 INSERT INTO zones VALUES ('287', '123', 'Вильнюсский уезд', 'Вильнюсский уезд');
-INSERT INTO zones VALUES ('288', '117', 'Айзкраульский', 'Айзкраульский');
+INSERT INTO zones VALUES ('288', '117', 'Аизкраукленский', 'Аизкраукленский');
 INSERT INTO zones VALUES ('289', '117', 'Алуксненский', 'Алуксненский');
 INSERT INTO zones VALUES ('290', '117', 'Балвский', 'Балвский');
-INSERT INTO zones VALUES ('291', '117', 'Баускский', 'Баускский');
-INSERT INTO zones VALUES ('292', '117', 'Валкаский', 'Валкаский');
+INSERT INTO zones VALUES ('291', '117', 'Бауский', 'Бауский');
+INSERT INTO zones VALUES ('292', '117', 'Валкский', 'Валкский');
 INSERT INTO zones VALUES ('293', '117', 'Валмиерский', 'Валмиерский');
 INSERT INTO zones VALUES ('294', '117', 'Вентспилсский', 'Вентспилсский');
-INSERT INTO zones VALUES ('295', '117', 'Гулбенеский', 'Гулбенеский');
-INSERT INTO zones VALUES ('296', '117', 'Даугавпилсский', 'Даугавпилсский');
-INSERT INTO zones VALUES ('297', '117', 'Добелеский', 'Добелеский');
-INSERT INTO zones VALUES ('298', '117', 'Екабпилсский', 'Екабпилсский');
+INSERT INTO zones VALUES ('295', '117', 'Гулбенский', 'Гулбенский');
+INSERT INTO zones VALUES ('296', '117', 'Давгавпилский', 'Давгавпилский');
+INSERT INTO zones VALUES ('297', '117', 'Добелский', 'Добелский');
+INSERT INTO zones VALUES ('298', '117', 'Екабпилский', 'Екабпилский');
 INSERT INTO zones VALUES ('299', '117', 'Елгавский', 'Елгавский');
 INSERT INTO zones VALUES ('300', '117', 'Краславский', 'Краславский');
 INSERT INTO zones VALUES ('301', '117', 'Кулдигский', 'Кулдигский');
-INSERT INTO zones VALUES ('302', '117', 'Лиепайский', 'Лиепайский');
+INSERT INTO zones VALUES ('302', '117', 'Лепайский', 'Лепайский');
 INSERT INTO zones VALUES ('303', '117', 'Лимбажский', 'Лимбажский');
-INSERT INTO zones VALUES ('304', '117', 'Лудзский', 'Лудзский');
+INSERT INTO zones VALUES ('304', '117', 'Ледзенский', 'Ледзенский');
 INSERT INTO zones VALUES ('305', '117', 'Мадонский', 'Мадонский');
-INSERT INTO zones VALUES ('306', '117', 'Огреский', 'Огреский');
+INSERT INTO zones VALUES ('306', '117', 'Огрский', 'Огрский');
 INSERT INTO zones VALUES ('307', '117', 'Прейльский', 'Прейльский');
-INSERT INTO zones VALUES ('308', '117', 'Резекнеский', 'Резекнеский');
+INSERT INTO zones VALUES ('308', '117', 'Резекненский', 'Резекненский');
 INSERT INTO zones VALUES ('309', '117', 'Рижский', 'Рижский');
-INSERT INTO zones VALUES ('310', '117', 'Салдусский', 'Салдусский');
+INSERT INTO zones VALUES ('310', '117', 'Салдуский', 'Салдуский');
 INSERT INTO zones VALUES ('311', '117', 'Талсинский', 'Талсинский');
-INSERT INTO zones VALUES ('312', '117', 'Тукумсский', 'Тукумсский');
+INSERT INTO zones VALUES ('312', '117', 'Тукумский', 'Тукумский');
 INSERT INTO zones VALUES ('313', '117', 'Цесиский', 'Цесиский');
 INSERT INTO zones VALUES ('314', '117', 'Вентспилс', 'Вентспилс');
 INSERT INTO zones VALUES ('315', '117', 'Даугавпилс', 'Даугавпилс');
