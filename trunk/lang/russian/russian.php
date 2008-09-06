@@ -550,4 +550,11 @@ require_once(DIR_WS_LANGUAGES . $_SESSION['language'].'/'.'affiliate_' . $_SESSI
 define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s должно содержать как минимум %d символов');
 define('CATEGORY_EXTRA_FIELDS', 'Дополнительная информация');
 
+define('TEXT_RSS_NEWS','Новости');
+define('TEXT_RSS_ARTICLES','Статьи');
+define('TEXT_RSS_CATEGORIES','Категории');
+define('TEXT_RSS_NEW_PRODUCTS','Новинки');
+define('TEXT_RSS_FEATURED_PRODUCTS','Рекомендуемые товары');
+define('TEXT_RSS_BEST_SELLERS','Лучшие товары');
+
 ?>
