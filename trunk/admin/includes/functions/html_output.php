@@ -282,6 +282,20 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     return $field;
   }
 
+  include_once(DIR_FS_INC . 'vam_get_countries.inc.php');
+  
+  function vam_get_country_list($name, $selected = '', $parameters = '') {
+   $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
+//    Probleme mit register_globals=off -> erstmal nur auskommentiert. Kann u.U. gelцscht werden.
+    $countries = vam_get_countriesList();
+
+    for ($i=0, $n=sizeof($countries); $i<$n; $i++) {
+      $countries_array[] = array('id' => $countries[$i]['countries_id'], 'text' => $countries[$i]['countries_name']);
+    }
+	if (is_array($name)) return vam_draw_pull_down_menuNote($name, $countries_array, $selected, $parameters);
+    return vam_draw_pull_down_menu($name, $countries_array, $selected, $parameters);
+  }
+
   // output 2 Soring arrows
   function vam_sorting($page,$sort) {
 
