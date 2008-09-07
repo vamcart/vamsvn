@@ -44,9 +44,9 @@
 {/if}
 {if $smarty.const.ACCOUNT_CITY == 'true'}<p>{#entry_city#} {$city_content}</p>
 {/if}
-{if $smarty.const.ACCOUNT_STATE == 'true'}<p>{#entry_state#} {$state_content}</p>
-{/if}
 {if $smarty.const.ACCOUNT_COUNTRY == 'true'}<p>{#entry_country#} {$country_id_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_STATE == 'true'}<p>{#entry_state#} <span id="stateXML">{$state_content}</span></p>
 {/if}
 </fieldset>
 <fieldset class="form">

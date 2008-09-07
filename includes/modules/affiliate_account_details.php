@@ -367,7 +367,7 @@ elseif ($error == true) {
     }
 }
 else {
-	$country_id_content = vam_get_country_list(array('name'=>'a_country', 'text'=>'&nbsp;' . ENTRY_COUNTRY_TEXT), $affiliate['affiliate_country_id']);
+	$country_id_content = vam_get_country_list('a_country', $affiliate['affiliate_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadAffiliateStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': '');
 }
 $module->assign('country_id_content', $country_id_content);
 
@@ -377,28 +377,48 @@ if (ACCOUNT_STATE == 'true') {
     if ($is_read_only == true) {
     	$state_content = vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $affiliate['affiliate_state']);
     }
-	elseif ($error == true) {
-		if ($entry_state_error == true) {
-			if ($entry_state_has_zones == true) {
-				$zones_array = array();
-				$zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . vam_db_input($a_country) . "' order by zone_name");
-				while ($zones_values = vam_db_fetch_array($zones_query)) {
-					$zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-				}
-				$state_content = vam_draw_pull_down_menuNote(array('name'=>'a_state', 'text'=>'&nbsp;' . ENTRY_STATE_ERROR), $zones_array);
+
+    if ($processed != true) {
+
+//	    $a_country = (isset($_POST['a_country']) ? vam_db_prepare_input($_POST['a_country']) : STORE_COUNTRY);
+	    $zone_id = 0;
+		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."'");
+		 $check = vam_db_fetch_array($check_query);
+		 $entry_state_has_zones = ($check['total'] > 0);
+		 if ($entry_state_has_zones == true) {
+			$zones_array = array ();
+			$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' order by zone_name");
+			while ($zones_values = vam_db_fetch_array($zones_query)) {
+				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 			}
-			else {
-				$state_content = vam_draw_input_fieldNote(array('name'=>'a_state', 'text'=>'&nbsp;' . ENTRY_STATE_ERROR));
-			}
-		}
-		else {
-			$state_content = $state . vam_draw_hidden_field('a_zone_id') . vam_draw_hidden_field('a_state');
+			
+			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' and zone_code = '".vam_db_input($a_state)."'");
+
+	      if (vam_db_num_rows($zone) > 0) {
+	        $zone_id = $zone['zone_id'];
+	        $zone_name = $zone['zone_name'];
+
+	      } else {
+
+		   $zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' and zone_code = '".vam_db_input($a_state)."'");
+
+	      if (vam_db_num_rows($zone) > 0) {
+	          $zone_id = $zone['zone_id'];
+	          $zone_name = $zone['zone_name'];
+	        }
+	      }
 		}
 	}
-	else {
-		$state_content = vam_draw_input_fieldNote(array('name'=>'a_state', 'text'=>'&nbsp;' . ENTRY_STATE_TEXT), vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $affiliate['affiliate_state']));
-	}
-	$module->assign('state_content', $state_content);
+
+      if ($entry_state_has_zones == true) {
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'a_state', 'text' => '&nbsp;'. (defined(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $affiliate['affiliate_state']), ' id="state"');
+
+      } else {
+		 $state_input = vam_draw_input_fieldNote(array ('name' => 'a_state', 'text' => '&nbsp;'. (defined(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $affiliate['affiliate_state']), ' id="state"');
+
+      }
+
+	$module->assign('state_content', $state_input);
 }
 
 if ($is_read_only == true) {
