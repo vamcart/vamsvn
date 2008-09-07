@@ -271,7 +271,7 @@
       $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_NAME . '<br />' . vam_draw_input_field('name'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_CODE . '<br />' . vam_draw_input_field('code'));
-      $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_CHARSET . '<br />' . vam_draw_input_field('charset'));
+      $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_CHARSET . '<br />' . vam_draw_input_field('charset','utf-8'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_IMAGE . '<br />' . vam_draw_input_field('image', 'icon.gif'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br />' . vam_draw_input_field('directory'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order'));
