@@ -224,14 +224,11 @@ if ($_GET['action'] == 'edit') {
 	}
         }
 
-        if (ACCOUNT_COUNTRY == 'true') {
-	if ($entry_country_id == false) {
-		$error = true;
-		$entry_country_error = true;
-	} else {
+
 		$entry_country_error = false;
-	}
-        }
+
+if (isset($_POST['country'])) { $entry_country_id = $_POST['country']; } else { $entry_country_id = STORE_COUNTRY; }
+$entry_state = $_POST['state'];
 
 	if (ACCOUNT_STATE == 'true') {
 		if ($entry_country_error == true) {
@@ -676,60 +673,57 @@ if ($error == true) {
 	}
 ?>
 <?php
-
+  if (ACCOUNT_COUNTRY == 'true') {
+?>
+              <tr>
+                <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
+                <td class="main"><?php echo vam_get_country_list('country',STORE_COUNTRY, 'onChange="changeselect();"') . '&nbsp;' . (defined(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
+              </tr>
+<?php
+  }
+?>
+<?php
 if (ACCOUNT_STATE == 'true') {
 ?>
-          <tr>
-            <td class="main"><?php echo ENTRY_STATE; ?></td>
-            <td class="main"><?php
-
-	$entry_state = vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state);
-	if ($error == true) {
-		if ($entry_state_error == true) {
-			if ($entry_state_has_zones == true) {
-				$zones_array = array ();
-				$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."' order by zone_name");
-				while ($zones_values = vam_db_fetch_array($zones_query)) {
-					$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-				}
-				echo vam_draw_pull_down_menu('entry_state', $zones_array).'&nbsp;'.ENTRY_STATE_ERROR;
-			} else {
-				echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state)).'&nbsp;'.ENTRY_STATE_ERROR;
-			}
-		} else {
-			echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
-		}
-	} else {
-		echo vam_draw_input_field('entry_state', vam_get_zone_name($entry_country_id, $entry_zone_id, $entry_state));
-	}
-?></td>
-         </tr>
-<?php
-
+             <tr>
+               <td class="main"><?php echo ENTRY_STATE;?></td>
+               <td class="main">
+<script language="javascript">
+<!--
+function changeselect(reg) {
+//clear select
+    document.customers.state.length=0;
+    var j=0;
+    for (var i=0;i<zones.length;i++) {
+      if (zones[i][0]==document.customers.country.value) {
+   document.customers.state.options[j]=new Option(zones[i][1],zones[i][1]);
+   j++;
+   }
+      }
+    if (j==0) {
+      document.customers.state.options[0]=new Option('-','-');
+      }
+    if (reg) { document.customers.state.value = reg; }
 }
-?>
+   var zones = new Array(
+   <?php
+       $zones_query = vam_db_query("select zone_country_id,zone_name from " . TABLE_ZONES . " order by zone_name asc");
+       $mas=array();
+       while ($zones_values = vam_db_fetch_array($zones_query)) {
+         $zones[] = 'new Array('.$zones_values['zone_country_id'].',"'.$zones_values['zone_name'].'")';
+       }
+       echo implode(',',$zones);
+       ?>
+       );
+document.write('<SELECT NAME="state">');
+document.write('</SELECT>');
+changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
+-->
+</script>
+          </td>
+             </tr>
 <?php
-
-	if (ACCOUNT_COUNTRY == 'true') {
-?>
-          <tr>
-            <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
-            <td class="main"><?php
-
-if ($error == true) {
-	if ($entry_country_error == true) {
-		echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id).'&nbsp;'.ENTRY_COUNTRY_ERROR;
-	} else {
-		echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id);
-	}
-} else {
-	echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(vam_get_country_name(STORE_COUNTRY)), $entry_country_id);
 }
-?></td>
-          </tr>
-<?php
-
-	}
 ?>
         </table></td>
       </tr>
