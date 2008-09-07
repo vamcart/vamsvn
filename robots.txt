@@ -35,3 +35,5 @@ Disallow: /download/
 Disallow: /includes/ 
 Disallow: /pub/ 
 Disallow: /media/
+
+Disallow: /index.php/action/
