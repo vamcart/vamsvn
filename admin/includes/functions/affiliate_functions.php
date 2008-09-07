@@ -22,7 +22,7 @@
    ---------------------------------------------------------------------------*/
 
 function affiliate_delete ($affiliate_id) {
-  $affiliate_query = vam_db_query("SELECT affiliate_rgt, affiliate_lft, affiliate_root  FROM " . TABLE_AFFILIATE . " WHERE affiliate_id = '" . $affiliate_id . "' ");
+  $affiliate_query = vam_db_query("SELECT affiliate_rgt, affiliate_lft, affiliate_root FROM " . TABLE_AFFILIATE . " WHERE affiliate_id = '" . $affiliate_id . "' ");
   if ($affiliate = vam_db_fetch_array($affiliate_query)) {
     if ($affiliate['affiliate_root'] == $affiliate_id) {
       // a root entry is deleted -> his childs get root
