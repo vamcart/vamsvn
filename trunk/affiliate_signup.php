@@ -339,7 +339,7 @@ $vamTemplate->assign('FORM_ACTION', vam_draw_form('affiliate_signup',  vam_href_
 $vamTemplate->assign('HIDDEN_ACTION', vam_draw_hidden_field('action', 'process'));
 
 if (isset($_GET['affiliate_email_address'])) $a_email_address = vam_db_prepare_input($_GET['affiliate_email_address']);
-$affiliate['affiliate_country_id'] = STORE_COUNTRY;
+//$affiliate['affiliate_country_id'] = STORE_COUNTRY;
 
 include(DIR_WS_MODULES . 'affiliate_account_details.php');
 
