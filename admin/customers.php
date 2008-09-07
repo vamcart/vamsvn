@@ -937,7 +937,7 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 ?>
 <?php
 
-	if (ACCOUNT_TELE == 'true') {
+	if (ACCOUNT_FAX == 'true') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_FAX_NUMBER; ?></td>

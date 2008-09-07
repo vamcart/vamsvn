@@ -197,33 +197,41 @@ if ($_GET['action'] == 'edit') {
 		$entry_email_address_check_error = false;
 	}
 
+        if (ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($entry_street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 		$entry_street_address_error = true;
 	} else {
 		$entry_street_address_error = false;
 	}
+        }
 
+        if (ACCOUNT_POSTCODE == 'true') {
 	if (strlen($entry_postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 		$entry_post_code_error = true;
 	} else {
 		$entry_post_code_error = false;
 	}
+		  }
 
+        if (ACCOUNT_CITY == 'true') {
 	if (strlen($entry_city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 		$entry_city_error = true;
 	} else {
 		$entry_city_error = false;
 	}
+        }
 
+        if (ACCOUNT_COUNTRY == 'true') {
 	if ($entry_country_id == false) {
 		$error = true;
 		$entry_country_error = true;
 	} else {
 		$entry_country_error = false;
 	}
+        }
 
 	if (ACCOUNT_STATE == 'true') {
 		if ($entry_country_error == true) {
@@ -258,12 +266,14 @@ if ($_GET['action'] == 'edit') {
 		}
 	}
 
+        if (ACCOUNT_TELE == 'true') {
 	if (strlen($customers_telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
 		$error = true;
 		$entry_telephone_error = true;
 	} else {
 		$entry_telephone_error = false;
 	}
+        }
 
 	$check_email = vam_db_query("select customers_email_address from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($customers_email_address)."' and customers_id <> '".vam_db_input($customers_id)."'");
 	if (vam_db_num_rows($check_email)) {
@@ -540,11 +550,23 @@ if (ACCOUNT_COMPANY == 'true') {
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+<?php
+
+	if (ACCOUNT_STREET_ADDRESS == 'true') {
+?>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_ADDRESS; ?></td>
       </tr>
+<?php
+
+	}
+?>
       <tr>
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
+<?php
+
+	if (ACCOUNT_STREET_ADDRESS == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_STREET_ADDRESS; ?></td>
             <td class="main"><?php
@@ -560,6 +582,10 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
 <?php
 
 if (ACCOUNT_SUBURB == 'true') {
@@ -583,6 +609,10 @@ if (ACCOUNT_SUBURB == 'true') {
 
 }
 ?>
+<?php
+
+	if (ACCOUNT_POSTCODE == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_POST_CODE; ?></td>
             <td class="main"><?php
@@ -598,6 +628,14 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
+<?php
+
+	if (ACCOUNT_CITY == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_CITY; ?></td>
             <td class="main"><?php
@@ -613,6 +651,10 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
 <?php
 
 if (ACCOUNT_STATE == 'true') {
@@ -646,6 +688,10 @@ if (ACCOUNT_STATE == 'true') {
 
 }
 ?>
+<?php
+
+	if (ACCOUNT_COUNTRY == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
             <td class="main"><?php
@@ -661,16 +707,32 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
         </table></td>
       </tr>
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+<?php
+
+	if (ACCOUNT_TELE == 'true') {
+?>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_CONTACT; ?></td>
       </tr>
+<?php
+
+	}
+?>
       <tr>
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
+<?php
+
+	if (ACCOUNT_TELE == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
             <td class="main"><?php
@@ -686,10 +748,22 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
+<?php
+
+	if (ACCOUNT_FAX == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_FAX_NUMBER; ?></td>
             <td class="main"><?php echo vam_draw_input_field('customers_fax'); ?></td>
           </tr>
+<?php
+
+	}
+?>
         </table></td>
       </tr>
       <tr>
