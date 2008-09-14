@@ -641,7 +641,7 @@ $checked='checked ';
 $checked='';
 }
 $check_all = '';
-if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAll(this.checked);"';
+if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAllContent(this.checked);"';
 echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
 }
 ?>
@@ -872,7 +872,7 @@ $checked='checked ';
 $checked='';
 }
 $check_all = '';
-if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAll(this.checked);"';
+if ($customers_statuses_array[$i]['id'] == 'all') $check_all = 'onClick="javascript:CheckAllContent(this.checked);"';
 echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_statuses_array[$i]['id'].'"'.$checked.'> '.$customers_statuses_array[$i]['text'].'<br />';
 }
 ?>

@@ -52,7 +52,7 @@ function CheckAll (wert)
     }
   }
   
-function CheckAll (wert)
+function CheckAllContent (wert)
   {
     var maf = document.edit_content;
     var len = maf.length;
