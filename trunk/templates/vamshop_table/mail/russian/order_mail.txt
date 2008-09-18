@@ -35,7 +35,7 @@
 {/if}
 
 Номер заказа: {$oID}
-Ваш контантный телефон: {$PHONE}
+Ваш контактный телефон: {$PHONE}
 Электронный адрес: {$EMAIL}.
 {if $customer_extra_fields}{$customer_extra_fields}{/if}
 
