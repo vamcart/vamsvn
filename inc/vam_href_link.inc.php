@@ -27,6 +27,7 @@
     $direction = '';
     $filter_id = '';
     $on_page = '';
+    $language = '';
     $page_num = '';
     $matches = array();
 
@@ -58,11 +59,19 @@
             $direction = $parsed_param[1];
           } elseif ($parsed_param[0] === 'filter_id') {
             $filter_id = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'language') {
+            $filter_id = $parsed_param[1];
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
             } else {
               $on_page = -1;
+            }
+          } elseif ($parsed_param[0] === 'language') {
+            if (vam_not_null($parsed_param[1])) {
+              $language = $parsed_param[1];
+            } else {
+              $language = -1;
             }
           } elseif ($parsed_param[0] === 'page') {
             $page_num = $parsed_param[1];
@@ -121,6 +130,12 @@
             $params .= '&on_page=' . $on_page;
           }
 
+          if ($language === -1) {
+            $params .= '&language=';
+          } elseif ($language > 0) {
+            $params .= '&language=' . $language;
+          }
+          
           if (vam_not_null($page_num)) {
             $params .= '&page=' . $page_num;
           }
