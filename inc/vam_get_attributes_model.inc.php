@@ -28,6 +28,7 @@ WHERE
 po.language_id = '".$language."' AND
 po.products_options_name = '".$options_name."' AND
 pov.language_id = '".$language."' AND
+pa.products_id = '".$product_id."' AND 
 pov.products_options_values_name = '".$attribute_name."'");
 
 
