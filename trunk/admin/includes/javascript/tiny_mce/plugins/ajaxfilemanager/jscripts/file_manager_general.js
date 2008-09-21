@@ -336,8 +336,8 @@ function uploadFile(msgNameFormat, msgFileEmpty)
 {
 
 	
-        var pattern=/ ^.*[\/|\\]?[A-Za-z0-9_\-. ]+\.[A-Za-z0-9]+$/i;
-	var file = $('#new_file');
+       var pattern=/[A-Za-z0-9_\-. ]+\.[A-Za-z0-9]+$/i;
+   	var file = $('#new_file');
 	if ($(file).val() == "")
 	{
 		
