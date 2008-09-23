@@ -12,7 +12,7 @@
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(languages.php,v 1.14 2003/02/12); www.oscommerce.com
    (c) 2003	 nextcommerce (languages.php,v 1.8 2003/08/17); www.nextcommerce.org 
-   (c) 2004	 xt:Commerce (languages.php,v 1.8 2003/08/17); xt-commerce.com 
+   (c) 2004	 xt:Commerce (languages.php,v 1.8 2003/08/13); xt-commerce.com 
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
