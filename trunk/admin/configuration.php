@@ -34,8 +34,6 @@
     }
   }
 
-  $cfg_group_query = vam_db_query("select configuration_group_title from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '" . (int)$_GET['gID'] . "'");
-  $cfg_group = vam_db_fetch_array($cfg_group_query);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
