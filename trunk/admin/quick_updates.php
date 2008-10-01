@@ -380,7 +380,8 @@ function display_ttc(action, prix, taxe, up){
 							-->
 							</script>' . "</td>\n";
 						?>
-						<td align="right" valign="middle"><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo "action=update&cPath=$current_category_id&page=$page&sort_by=$sort_by&row_by_page=$row_by_page"; ?>""></td>
+
+						<td><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>"></td>
 					</tr>
 			</table>
 
@@ -624,7 +625,8 @@ function display_ttc(action, prix, taxe, up){
 ?><input type="button" class="button" value="<?php echo PRINT_TEXT?>" title="<?php echo PRINT_TEXT?>" onclick="print();" id="box_properties_input">
 </td>
 <td colspan="3">
-<input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>" action="<?php echo "action=update&cPath=$current_category_id&page=$page&sort_by=$sort_by&row_by_page=$row_by_page"; ?>"">
+
+<input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>">
 </td>
 </tr>
     </table>
