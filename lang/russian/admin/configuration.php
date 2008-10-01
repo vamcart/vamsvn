@@ -801,4 +801,31 @@ define('MAX_DISPLAY_FAQ_ANSWER_DESC' , 'Количество символов, �
 
 require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_configuration.php');
 
+define('CG_MY_SHOP_TITLE', 'Мой магазин');
+define('CG_MINIMAL_VALUES_TITLE', 'Минимальные');
+define('CG_MAXIMAL_VALUES_TITLE', 'Максимальные');
+define('CG_PICTURES_PARAMETERS_TITLE', 'Картинки');
+define('CG_CUSTOMERS_TITLE', 'Данные покупателя');
+define('CG_MODULES_TITLE', 'Модули');
+define('CG_SHIPPING_TITLE', 'Доставка/Упаковка');
+define('CG_PRODUCTS_TITLE', 'Вывод товара');
+define('CG_WAREHOUSE_TITLE', 'Склад');
+define('CG_LOGGING_TITLE', 'Логи');
+define('CG_CACHE_TITLE', 'Кэш');
+define('CG_EMAIL_TITLE', 'Настройка E-Mail');
+define('CG_DOWNLOAD_TITLE', 'Скачивание');
+define('CG_MY_GZIP_TITLE', 'GZip компрессия');
+define('CG_MY_SESSIONS_TITLE', 'Сессии');
+define('CG_META_TAGS_TITLE', 'Мета теги');
+define('CG_VAT_ID_TITLE', 'Vat');
+define('CG_GOOGLE_TITLE', 'Google Analytics');
+define('CG_IMPORT_EXPORT_TITLE', 'Импорт/Экспорт');
+define('CG_AFTER_BUY_TITLE', 'Afterbuy');
+define('CG_SEARCH_TITLE', 'Настройки поиска');
+define('CG_YANDEX_MARKET_TITLE', 'Яндекс-Маркет');
+define('CG_QUICK_PRICE_UPDATES_TITLE', 'Изменение цен');
+define('CG_CIP_MANAGER_TITLE', 'Установка модулей');
+define('CG_MAINTENANCE_TITLE', 'Тех. обслуживание');
+define('CG_AFFILIATE_PROGRAM_TITLE', 'Партнёрская программа');
+
 ?>

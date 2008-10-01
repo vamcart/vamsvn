@@ -34,6 +34,9 @@
     }
   }
 
+  $cfg_group_query = vam_db_query("select configuration_group_key from " . TABLE_CONFIGURATION_GROUP . " where configuration_group_id = '" . (int)$_GET['gID'] . "'");
+  $cfg_group = vam_db_fetch_array($cfg_group_query);
+  
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
@@ -63,7 +66,7 @@
       <tr>
         <td class="main">
         
-    <h1 class="contentBoxHeading"><?php echo BOX_CONFIGURATION; ?></h1>
+    <h1 class="contentBoxHeading"><?php echo BOX_CONFIGURATION . ' - ' . constant(strtoupper($cfg_group['configuration_group_key'].'_TITLE')); ?></h1>
             
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
          
