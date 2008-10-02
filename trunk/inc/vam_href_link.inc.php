@@ -60,18 +60,12 @@
           } elseif ($parsed_param[0] === 'filter_id') {
             $filter_id = $parsed_param[1];
           } elseif ($parsed_param[0] === 'language') {
-            $filter_id = $parsed_param[1];
+            $language = $parsed_param[1];
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
             } else {
               $on_page = -1;
-            }
-          } elseif ($parsed_param[0] === 'language') {
-            if (vam_not_null($parsed_param[1])) {
-              $language = $parsed_param[1];
-            } else {
-              $language = -1;
             }
           } elseif ($parsed_param[0] === 'page') {
             $page_num = $parsed_param[1];
@@ -124,18 +118,16 @@
             $params .= '&filter_id=' . $filter_id;
           }
 
+          if (vam_not_null($language)) {
+            $params .= '&language=' . $language;
+          }
+
           if ($on_page === -1) {
             $params .= '&on_page=';
           } elseif ($on_page > 0) {
             $params .= '&on_page=' . $on_page;
           }
 
-          if ($language === -1) {
-            $params .= '&language=';
-          } elseif ($language > 0) {
-            $params .= '&language=' . $language;
-          }
-          
           if (vam_not_null($page_num)) {
             $params .= '&page=' . $page_num;
           }
@@ -167,6 +159,7 @@
 
       $products_id = -1;
       $action = '';
+      $language = '';
       $param_array = explode('&', $parameters);
 
       for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
@@ -175,6 +168,8 @@
           $products_id = $parsed_param[1];
         } elseif ($parsed_param[0] === 'action') {
           $action = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
         } elseif ($parsed_param[0] === 'info') {
           if (preg_match('/^p(.*)_/', $parsed_param[1], $matches)) {
             $products_id = $matches[1];
@@ -210,6 +205,10 @@
 
           if (vam_not_null($action)) {
             $products_page_url .= '?action=' . $action;
+          }
+
+          if (vam_not_null($language)) {
+            $products_page_url .= '?language=' . $language;
           }
 
           return $link . $products_page_url;
