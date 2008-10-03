@@ -827,5 +827,6 @@ define('CG_QUICK_PRICE_UPDATES_TITLE', 'Изменение цен');
 define('CG_CIP_MANAGER_TITLE', 'Установка модулей');
 define('CG_MAINTENANCE_TITLE', 'Тех. обслуживание');
 define('CG_AFFILIATE_PROGRAM_TITLE', 'Партнёрская программа');
+define('_TITLE', 'Разное');
 
 ?>
