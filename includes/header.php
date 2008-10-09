@@ -37,7 +37,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
-<meta name="generator" content="(c) by xt:Commerce vx.x.x , http://www.xt-commerce.com" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
