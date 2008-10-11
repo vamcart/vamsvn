@@ -28,6 +28,7 @@
     $filter_id = '';
     $on_page = '';
     $language = '';
+    $currency = '';
     $page_num = '';
     $matches = array();
 
@@ -61,6 +62,8 @@
             $filter_id = $parsed_param[1];
           } elseif ($parsed_param[0] === 'language') {
             $language = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'currency') {
+            $currency = $parsed_param[1];
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
@@ -122,6 +125,10 @@
             $params .= '&language=' . $language;
           }
 
+          if (vam_not_null($currency)) {
+            $params .= '&currency=' . $currency;
+          }
+
           if ($on_page === -1) {
             $params .= '&on_page=';
           } elseif ($on_page > 0) {
@@ -160,6 +167,7 @@
       $products_id = -1;
       $action = '';
       $language = '';
+      $currency = '';
       $param_array = explode('&', $parameters);
 
       for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
@@ -170,6 +178,8 @@
           $action = $parsed_param[1];
         } elseif ($parsed_param[0] === 'language') {
           $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
         } elseif ($parsed_param[0] === 'info') {
           if (preg_match('/^p(.*)_/', $parsed_param[1], $matches)) {
             $products_id = $matches[1];
@@ -209,6 +219,10 @@
 
           if (vam_not_null($language)) {
             $products_page_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $products_page_url .= '?currency=' . $currency;
           }
 
           return $link . $products_page_url;
