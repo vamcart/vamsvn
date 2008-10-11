@@ -21,13 +21,13 @@
   require_once(DIR_FS_INC . 'vam_hide_session_id.inc.php');
   if (isset($vamPrice) && is_object($vamPrice)) {
 
-    $count_cur='';
-    reset($vamPrice->currencies);
-    $currencies_array = array();
-    while (list($key, $value) = each($vamPrice->currencies)) {
-    $count_cur++;
-      $currencies_array[] = array('id' => $key, 'text' => $value['title']);
-    }
+  $currencies_string = '';
+  $count_cur='';
+  reset($vamPrice->currencies);
+  while (list($key, $value) = each($vamPrice->currencies)) {
+  $count_cur++;
+    $currencies_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'currency=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . $value['title'] . '</a> ';
+  }
 
     $hidden_get_variables = '';
     reset($_GET);
@@ -44,14 +44,7 @@
   // dont show box if there's only 1 currency
   if ($count_cur > 1 ) {
 
-  // reset var
-  $box = new vamTemplate;
-  $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
-  $box_content='';
-  $box_content=vam_draw_form('currencies', vam_href_link(basename($PHP_SELF), '', $request_type, false), 'get').vam_draw_pull_down_menu('currency', $currencies_array, $_SESSION['currency'], 'onChange="this.form.submit();" style="width: 100%"') . $hidden_get_variables . vam_hide_session_id().'</form>';
-
-
-  $box->assign('BOX_CONTENT', $box_content);
+  $box->assign('BOX_CONTENT', $currencies_string . $hidden_get_variables);
   $box->assign('language', $_SESSION['language']);
     	  // set cache ID
    if (!CacheCheck()) {
