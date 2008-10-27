@@ -311,7 +311,7 @@ create table products_extra_fields (
 create table products_to_products_extra_fields (
   products_id int(11) default '0' not null ,
   products_extra_fields_id int(11) default '0' not null ,
-  products_extra_fields_value varchar(64) ,
+  products_extra_fields_value varchar(255) ,
   PRIMARY KEY (products_id, products_extra_fields_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
