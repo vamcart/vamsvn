@@ -88,7 +88,7 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 		if ($error == false) {
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
-		$vamTemplate->assign('TEXT_MESSAGE', $message);
+		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
 		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
 		$vamTemplate->assign('TEXT_LASTNAME', $lastname);
 		$vamTemplate->assign('TEXT_EMAIL', $email_address);
