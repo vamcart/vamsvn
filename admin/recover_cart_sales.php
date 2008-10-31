@@ -210,7 +210,7 @@ if ($_GET['delete']) {
       $tpprice_formated = $currencies->format(($inrec['qty'] * $inrec2['price']));
       $cline .= "<tr class='dataTableRow'>
                     <td class='dataTableContent' align='left'   width='15%' nowrap>" . $inrec2['model'] . "</td>
-                    <td class='dataTableContent' align='left'  colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'>" . $inrec2['name'] . "</a></td>
+                    <td class='dataTableContent' align='left'  colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'>" . $inrec2['name'] . "</a></td>
                     <td class='dataTableContent' align='center' width='10%' nowrap>" . $inrec['qty'] . "</td>
                     <td class='dataTableContent' align='right'  width='10%' nowrap>" . $pprice_formated . "</td>
                     <td class='dataTableContent' align='right'  width='10%' nowrap>" . $tpprice_formated . "</td>
@@ -451,7 +451,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
       $cline .= "<tr class='dataTableRow'>
                     <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='12%' nowrap> &nbsp;</td>
                     <td class='dataTableContent' align='left' vAlign='top' width='13%' nowrap>" . $inrec2['model'] . "</td>
-                    <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product_preview&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'><b>" . $inrec2['name'] . "</b></a>
+                    <td class='dataTableContent' align='left' vAlign='top' colspan='2' width='55%'><a href='" . vam_href_link(FILENAME_CATEGORIES, 'action=new_product&read=only&pID=' . $inrec['pid'] . '&origin=' . FILENAME_RECOVER_CART_SALES . '?page=' . $_GET['page'], 'NONSSL') . "'><b>" . $inrec2['name'] . "</b></a>
                     " . $prodAttribs . "
                     </td>
                     <td class='dataTableContent' align='center' vAlign='top' width='5%' nowrap>" . $inrec['qty'] . "</td>
