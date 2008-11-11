@@ -837,9 +837,17 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 <span class="smallText">
 								<br><b><?php echo EASY_SPLIT_EP_FILE;?></b><br>
 </span>
+
+	
 								 <INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="1000000000">
 
 									<input name="usrfl" type="file" size="50">
+
+			<select name="import_charset">
+			<option selected value ="cp1251" size="5">cp1251</option>
+			<option value="utf8" size="5">utf8</option>
+			</select>
+
 									<input type="submit" name="buttonsplit" value="<?PHP ECHO EASY_SPLIT;?>">
 
 							</div>
@@ -872,6 +880,11 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 				echo vam_draw_pull_down_menu('localfile', $contents, $_POST['localfile']);
 		?>
 </span>
+
+			<select name="import_charset">
+			<option selected value ="cp1251" size="5">cp1251</option>
+			<option value="utf8" size="5">utf8</option>
+			</select>
 												<input type="submit" name="buttoninsert" value="<?php echo TEXT_INSERT_INTO_DB ; ?>"><br>
 
 
