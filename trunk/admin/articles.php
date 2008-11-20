@@ -49,11 +49,15 @@
             $topics_id = vam_db_prepare_input($_GET['tID']);
             }
         $sort_order = vam_db_prepare_input($_POST['sort_order']);
+        $topics_page_url = vam_db_prepare_input($_POST['topics_page_url']);
 
-        $sql_data_array = array('sort_order' => $sort_order);
+        $sql_data_array = array('sort_order' => $sort_order,
+                                   'topics_page_url' => vam_db_prepare_input($_POST['topics_page_url']),
+       );
 
         if ($action == 'insert_topic') {
           $insert_sql_data = array('parent_id' => $current_topic_id,
+                                   'topics_page_url' => vam_db_prepare_input($_POST['topics_page_url']),
                                    'date_added' => 'now()');
 
           $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
@@ -219,6 +223,7 @@
 
           $sql_data_array = array('articles_date_available' => $articles_date_available,
                                   'articles_status' => vam_db_prepare_input($_POST['articles_status']),
+                                  'articles_page_url' => vam_db_prepare_input($_POST['articles_page_url']),
                                   'authors_id' => vam_db_prepare_input($_POST['authors_id']));
 
           if ($action == 'insert_article') {
@@ -292,10 +297,10 @@
               $messageStack->add_session(ERROR_CANNOT_LINK_TO_SAME_TOPIC, 'error');
             }
           } elseif ($_POST['copy_as'] == 'duplicate') {
-            $article_query = vam_db_query("select articles_date_available, authors_id from " . TABLE_ARTICLES . " where articles_id = '" . (int)$articles_id . "'");
+            $article_query = vam_db_query("select articles_date_available, authors_id, articles_page_url from " . TABLE_ARTICLES . " where articles_id = '" . (int)$articles_id . "'");
             $article = vam_db_fetch_array($article_query);
 
-            vam_db_query("insert into " . TABLE_ARTICLES . " (articles_date_added, articles_date_available, articles_status, authors_id) values (now(), '" . vam_db_input($article['articles_date_available']) . "', '0', '" . (int)$article['authors_id'] . "')");
+            vam_db_query("insert into " . TABLE_ARTICLES . " (articles_date_added, articles_date_available, articles_status, authors_id, articles_page_url) values (now(), '" . vam_db_input($article['articles_date_available']) . "', '0', '" . (int)$article['authors_id'] . "', '" . (int)$article['articles_page_url'] . "')");
             $dup_articles_id = vam_db_insert_id();
 
             $description_query = vam_db_query("select language_id, articles_name, articles_description, articles_url, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$articles_id . "'");
@@ -378,7 +383,7 @@
    //----- new_topic / edit_topic  -----
   if ($_GET['action'] == 'new_topic_ACD' || $_GET['action'] == 'edit_topic_ACD') {
     if ( ($_GET['tID']) && (!$_POST) ) {
-      $topics_query = vam_db_query("select t.topics_id, td.topics_name, td.topics_heading_title, td.topics_description, t.parent_id, t.sort_order, t.date_added, t.last_modified from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . $_GET['tID'] . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by t.sort_order, td.topics_name");
+      $topics_query = vam_db_query("select t.topics_id, td.topics_name, td.topics_heading_title, td.topics_description, t.parent_id, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . $_GET['tID'] . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by t.sort_order, td.topics_name");
       $topic = vam_db_fetch_array($topics_query);
 
       $tInfo = new objectInfo($topic);
@@ -467,6 +472,13 @@
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
+            <td class="main"><?php echo TEXT_TOPIC_PAGE_URL; ?></td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('topics_page_url', $tInfo->topics_page_url, ''); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          <tr>
             <td class="main"><?php echo TEXT_EDIT_SORT_ORDER; ?></td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('sort_order', $tInfo->sort_order, 'size="2"'); ?></td>
           </tr>
@@ -493,7 +505,7 @@
       $topics_heading_title = $_POST['topics_heading_title'];
       $topics_description = $_POST['topics_description'];
     } else {
-      $topic_query = vam_db_query("select t.topics_id, td.language_id, td.topics_name, td.topics_heading_title, td.topics_description, t.sort_order, t.date_added, t.last_modified from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = td.topics_id and t.topics_id = '" . $_GET['tID'] . "'");
+      $topic_query = vam_db_query("select t.topics_id, td.language_id, td.topics_name, td.topics_heading_title, td.topics_description, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = td.topics_id and t.topics_id = '" . $_GET['tID'] . "'");
       $topic = vam_db_fetch_array($topic_query);
 
       $tInfo = new objectInfo($topic);
@@ -593,12 +605,13 @@
                        'articles_last_modified' => '',
                        'articles_date_available' => '',
                        'articles_status' => '',
-                       'authors_id' => '');
+                       'authors_id' => '',
+                       'articles_page_url' => '');
 
     $aInfo = new objectInfo($parameters);
 
     if (isset($_GET['aID']) && empty($_POST)) {
-      $article_query = vam_db_query("select ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_head_title_tag, ad.articles_head_desc_tag, ad.articles_head_keywords_tag, a.articles_id, a.articles_date_added, a.articles_last_modified, date_format(a.articles_date_available, '%Y-%m-%d') as articles_date_available, a.articles_status, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . (int)$_GET['aID'] . "' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+      $article_query = vam_db_query("select ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_head_title_tag, ad.articles_head_desc_tag, ad.articles_head_keywords_tag, a.articles_id, a.articles_date_added, a.articles_last_modified, date_format(a.articles_date_available, '%Y-%m-%d') as articles_date_available, a.articles_status, a.articles_page_url, a.authors_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = '" . (int)$_GET['aID'] . "' and a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'");
       $article = vam_db_fetch_array($article_query);
 
       $aInfo->objectInfo($article);
@@ -735,6 +748,13 @@
         <h3><?php echo TEXT_ARTICLE_OTHER; ?></h3>
           <table border="0">
 
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLE_PAGE_URL; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('articles_page_url', $aInfo->articles_page_url, ''); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
           <tr>
             <td class="main"><?php echo TEXT_ARTICLES_STATUS; ?></td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_radio_field('articles_status', '0', $out_status) . '&nbsp;' . TEXT_ARTICLE_NOT_AVAILABLE . '&nbsp;' . vam_draw_radio_field('articles_status', '1', $in_status) . '&nbsp;' . TEXT_ARTICLE_AVAILABLE; ?></td>
