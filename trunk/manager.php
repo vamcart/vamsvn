@@ -90,10 +90,34 @@
           $PHP_SELF = '/shop_content.php';
           include('shop_content.php');
         } else {
+        
+        mysql_free_result($result);
+        $query = 'select articles_id from ' . TABLE_ARTICLES . ' where articles_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $result = mysql_query($query);
+        if (mysql_num_rows($result) > 0) {
+          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+          $aID = $row['articles_id'];
+          $matched = true;
+        } else {
+          $matched = false;
+        }
+        if ($matched) {
+          $HTTP_GET_VARS['articles_id']  = $aID;
+          $_GET['articles_id']  = $aID;
+          mysql_free_result($result);
+          mysql_close();
+          $PHP_SELF = '/article_info.php';
+          include('article_info.php');
+        } else {
+        
+        
           mysql_free_result($result);
           mysql_close();
           $PHP_SELF = '/index.php';
           include('index.php');
+          
+          }
+          
         }
       }
     }
