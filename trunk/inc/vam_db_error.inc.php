@@ -40,9 +40,9 @@ function vam_db_error($query, $errno, $error) {
 	 error_log($log, 3, 'mysql_db_error.log');
    mail(DB_ERR_MAIL, 'MySQL DB Error!', $msg,
         'From: db_error@'.$_SERVER["SERVER_NAME"]);
-if (!headers_sent() && file_exists('db_error.html') ) {
-     header('Location: db_error.html');
-     //include('db_error.html');
+if (!headers_sent() && file_exists('db_error.htm') ) {
+     header('Location: db_error.htm');
+     //include('db_error.htm');
    }
    die(DB_ERR_MSG);
 }
