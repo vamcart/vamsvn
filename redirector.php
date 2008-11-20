@@ -338,7 +338,7 @@
           break;
         case 'articles':
           if (isset($_GET['tPath']) && $_GET['tPath'] != '') {
-            $query = 'select articles_page_url from ' . TABLE_TOPICS . ' where topics_id="' . vam_db_prepare_input($_GET['tPath']) . '"';
+            $query = 'select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . vam_db_prepare_input($_GET['tPath']) . '"';
             $result = mysql_query($query);   
             if (mysql_num_rows($result) > 0) {
               $row = mysql_fetch_array($result, MYSQL_ASSOC);
