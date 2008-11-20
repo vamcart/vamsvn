@@ -271,7 +271,7 @@
 'RewriteRule ^product_info\.php\/info\/p(.*)_.*\/action\/add_product product_info\.php\?products_id=$1\&action=add_product\ [L]'. "\n" .
 'RewriteRule ^shopping_cart\.php\/products_id\/([0-9]*)\/info\/p([0-9]*)_.*\.html shopping_cart\.php\?products_id=$1 [L]'. "\n" .
 '' . "\n" .
-'RewriteRule ^(product_info|index|shop_content).php(.*)$ redirector.php [L]'. "\n" .
+'RewriteRule ^(product_info|index|shop_content|news|articles|article_info).php(.*)$ redirector.php [L]'. "\n" .
 '' . "\n" .
 'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]'. "\n" .
 'RewriteRule ^(.*).html(.*)$ manager.php [L]'. "\n" .
