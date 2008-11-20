@@ -206,6 +206,7 @@ CREATE TABLE topics (
   sort_order int(3) default NULL,
   date_added datetime default NULL,
   last_modified datetime default NULL,
+  topics_page_url varchar(255),
   PRIMARY KEY  (topics_id),
   KEY idx_topics_parent_id (parent_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -229,6 +230,7 @@ CREATE TABLE articles (
   articles_date_available datetime default NULL,
   articles_status tinyint(1) NOT NULL default '0',
   authors_id int(11) default NULL,
+  articles_page_url varchar(255),
   PRIMARY KEY  (articles_id),
   KEY idx_articles_date_added (articles_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;

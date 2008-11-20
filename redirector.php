@@ -110,6 +110,27 @@
           $PHP_SELF = '/shop_content.php';
           include('shop_content.php');
           break;
+        case 'article_info':
+          $articleid = array();
+          if (preg_match('/\/articles_id\/(.*)\//', $_SERVER['REQUEST_URI'], $articleid)) {
+            $query = 'select articles_page_url from ' . TABLE_ARTICLES . ' where articles_id="' . (int)$articleid[1] . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $aURL = $row['articles_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($aURL) && $aURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $aURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/article_info.php';
+          include('article_info.php');
+          break;
         default:
           break;
       }
@@ -151,6 +172,9 @@
             break;
           case 'information':
             $URI_elements[0] = 'information.php';
+            break;
+          case 'article_info':
+            $URI_elements[0] = 'article_info.php';
             break;
           default:
             break;
@@ -220,6 +244,26 @@
           }
           $PHP_SELF = '/shop_content.php';
           include('shop_content.php');
+          break;
+        case 'article_info':
+          if (isset($_GET['articles_id']) && $_GET['articles_id'] != '') {
+            $query = 'select articles_page_url from ' . TABLE_ARTICLES . ' where articles_id="' . vam_db_prepare_input($_GET['articles_id']) . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $aURL = $row['articles_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($aURL) && $aURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $aURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/article_info.php';
+          include('article_info.php');
           break;
         default:
           break;
