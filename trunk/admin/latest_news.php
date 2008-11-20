@@ -43,6 +43,7 @@
       case 'insert_latest_news': //insert a new news article.
         if ($_POST['headline']) {
           $sql_data_array = array('headline'   => vam_db_prepare_input($_POST['headline']),
+                                  'news_page_url'    => vam_db_prepare_input($_POST['news_page_url']),
                                   'content'    => vam_db_prepare_input($_POST['content']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -56,6 +57,7 @@
       case 'update_latest_news': //user wants to modify a news article.
         if($_GET['latest_news_id']) {
           $sql_data_array = array('headline' => vam_db_prepare_input($_POST['headline']),
+                                  'news_page_url'    => vam_db_prepare_input($_POST['news_page_url']),
                                   'content'  => vam_db_prepare_input($_POST['content']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -103,7 +105,7 @@
 <?php
   if ($_GET['action'] == 'new_latest_news') { //insert or edit a news item
     if ( isset($_GET['latest_news_id']) ) { //editing exsiting news item
-      $latest_news_query = vam_db_query("select news_id, headline, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['latest_news_id'] . "'");
+      $latest_news_query = vam_db_query("select news_id, headline, news_page_url, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['latest_news_id'] . "'");
       $latest_news = vam_db_fetch_array($latest_news_query);
     } else { //adding new news item
       $latest_news = array();
@@ -114,6 +116,13 @@
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_HEADLINE; ?>:</td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('headline', $latest_news['headline'], 'size="60"', true); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo TEXT_NEWS_PAGE_URL; ?>:</td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('news_page_url', $latest_news['news_page_url'], 'size="60"', true); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -198,7 +207,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $latest_news_count = 0;
-    $latest_news_query = vam_db_query('select news_id, headline, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc');
+    $latest_news_query = vam_db_query('select news_id, headline, news_page_url, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc');
     
     while ($latest_news = vam_db_fetch_array($latest_news_query)) {
       $latest_news_count++;
