@@ -223,6 +223,7 @@ if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
 				$GET_array[substr($vars[$i], 0, -2)][] = $vars[$i +1];
 			} else {
 				$_GET[$vars[$i]] = htmlspecialchars($vars[$i +1]);
+				if(get_magic_quotes_gpc()) $_GET[$vars[$i]] = addslashes($_GET[$vars[$i]]);
 			}
 			$i ++;
 		}
@@ -230,6 +231,7 @@ if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') {
 		if (sizeof($GET_array) > 0) {
 			while (list ($key, $value) = each($GET_array)) {
 				$_GET[$key] = htmlspecialchars($value);
+				if(get_magic_quotes_gpc()) $_GET[$key] = addslashes($_GET[$key]);
 			}
 		}
 	}
