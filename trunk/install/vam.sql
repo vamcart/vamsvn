@@ -824,6 +824,7 @@ CREATE TABLE latest_news (
    date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
    language int(11) NOT NULL default '1',
    status tinyint(1) DEFAULT '0' NOT NULL,
+   news_page_url varchar(255),
    PRIMARY KEY (news_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 

@@ -131,6 +131,51 @@
           $PHP_SELF = '/article_info.php';
           include('article_info.php');
           break;
+
+        case 'news':
+          $newsid = array();
+          if (preg_match('/\/articles_id\/(.*)\//', $_SERVER['REQUEST_URI'], $newsid)) {
+            $query = 'select news_page_url from ' . TABLE_LATEST_NEWS . ' where news_id="' . (int)$newsid[1] . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $nURL = $row['news_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($nURL) && $nURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $nURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/news.php';
+          include('news.php');
+          break;
+
+        case 'articles':
+          $topicid = array();
+          if (preg_match('/\/tPath\/(.*)\//', $_SERVER['REQUEST_URI'], $topicid)) {
+            $query = 'select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . (int)$topicid[1] . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $tURL = $row['topics_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($tURL) && $tURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $tURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/articles.php';
+          include('articles.php');
+          break;
+
         default:
           break;
       }
@@ -175,6 +220,12 @@
             break;
           case 'article_info':
             $URI_elements[0] = 'article_info.php';
+            break;
+          case 'articles':
+            $URI_elements[0] = 'articles.php';
+            break;
+          case 'news':
+            $URI_elements[0] = 'news.php';
             break;
           default:
             break;
@@ -264,6 +315,46 @@
           }
           $PHP_SELF = '/article_info.php';
           include('article_info.php');
+          break;
+        case 'news':
+          if (isset($_GET['news_id']) && $_GET['news_id'] != '') {
+            $query = 'select news_page_url from ' . TABLE_LATEST_NEWS . ' where news_id="' . vam_db_prepare_input($_GET['news_id']) . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $nURL = $row['news_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($nURL) && $nURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $nURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/news.php';
+          include('news.php');
+          break;
+        case 'articles':
+          if (isset($_GET['tPath']) && $_GET['tPath'] != '') {
+            $query = 'select articles_page_url from ' . TABLE_TOPICS . ' where topics_id="' . vam_db_prepare_input($_GET['tPath']) . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $tURL = $row['topics_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($tURL) && $tURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $tURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/articles.php';
+          include('articles.php');
           break;
         default:
           break;

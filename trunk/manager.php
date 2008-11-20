@@ -110,14 +110,54 @@
           include('article_info.php');
         } else {
         
-        
+
+        mysql_free_result($result);
+        $query = 'select topics_id from ' . TABLE_TOPICS . ' where topics_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $result = mysql_query($query);
+        if (mysql_num_rows($result) > 0) {
+          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+          $tID = $row['topics_id'];
+          $matched = true;
+        } else {
+          $matched = false;
+        }
+        if ($matched) {
+          $HTTP_GET_VARS['tPath']  = $tID;
+          $_GET['tPath']  = $tID;
+          mysql_free_result($result);
+          mysql_close();
+          $PHP_SELF = '/articles.php';
+          include('articles.php');
+        } else {
+
+        mysql_free_result($result);
+        $query = 'select news_id from ' . TABLE_LATEST_NEWS . ' where news_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $result = mysql_query($query);
+        if (mysql_num_rows($result) > 0) {
+          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+          $nID = $row['news_id'];
+          $matched = true;
+        } else {
+          $matched = false;
+        }
+        if ($matched) {
+          $HTTP_GET_VARS['news_id']  = $nID;
+          $_GET['news_id']  = $nID;
+          mysql_free_result($result);
+          mysql_close();
+          $PHP_SELF = '/news.php';
+          include('news.php');
+        } else {
+       
           mysql_free_result($result);
           mysql_close();
           $PHP_SELF = '/index.php';
           include('index.php');
           
           }
-          
+        }        
+      }
+         
         }
       }
     }
