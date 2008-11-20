@@ -134,7 +134,7 @@
 
         case 'news':
           $newsid = array();
-          if (preg_match('/\/articles_id\/(.*)\//', $_SERVER['REQUEST_URI'], $newsid)) {
+          if (preg_match('/\/news_id\/(.*)\//', $_SERVER['REQUEST_URI'], $newsid)) {
             $query = 'select news_page_url from ' . TABLE_LATEST_NEWS . ' where news_id="' . (int)$newsid[1] . '"';
             $result = mysql_query($query);   
             if (mysql_num_rows($result) > 0) {
