@@ -108,4 +108,7 @@ define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 
 define('TEXT_ARTICLE_OTHER', 'Дополнительно');
 
+define('TEXT_ARTICLE_PAGE_URL', 'SEO URL статьи:');
+define('TEXT_TOPIC_PAGE_URL', 'SEO URL категории:');
+
 ?>

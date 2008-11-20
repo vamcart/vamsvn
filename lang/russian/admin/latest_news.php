@@ -42,4 +42,6 @@ define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 define('EMPTY_CATEGORY', 'Нет новостей');
 define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте новость');
 
+define('TEXT_NEWS_PAGE_URL', 'SEO URL новости');
+
 ?>
