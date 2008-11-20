@@ -318,10 +318,12 @@
       for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
         $parsed_param = explode('=', $param_array[$i]);
         if ($parsed_param[0] === 'tPath') {
-          $a_id = $parsed_param[1];
+          $t_id = $parsed_param[1];
         } 
       }
 
+
+  
       $t_url = vam_db_query('select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . $t_id . '"');
       $t_url = vam_db_fetch_array($t_url);
       $t_url = $t_url['topics_page_url'];

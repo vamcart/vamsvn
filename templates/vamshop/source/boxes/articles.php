@@ -46,11 +46,11 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
 
     $topics_string .= '<a href="';
 
-    if ($tree[$counter]['parent'] == 0) {
+//    if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
-    } else {
-      $tPath_new = 'tPath=' . $tree[$counter]['path'];
-    }
+//    } else {
+//      $tPath_new = 'tPath=' . $tree[$counter]['path'];
+//    }
 
 		$SEF_parameter_cat = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
