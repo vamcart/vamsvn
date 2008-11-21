@@ -21,6 +21,7 @@ Disallow: /create_account_success.php
 Disallow: /info_shopping_cart.php 
 Disallow: /login.php 
 Disallow: /logoff.php
+Disallow: /newsletter.php
 Disallow: /password_double_opt.php
 Disallow: /popup_image.php 
 Disallow: /popup_search_help.php 
