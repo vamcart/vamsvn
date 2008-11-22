@@ -573,18 +573,18 @@ CREATE TABLE categories_description (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS configuration;
-CREATE TABLE configuration (
-  configuration_id int NOT NULL auto_increment,
-  configuration_key varchar(255) NOT NULL,
-  configuration_value varchar(255) NOT NULL,
-  configuration_group_id int NOT NULL,
-  sort_order int(5) NULL,
-  last_modified datetime NULL,
-  date_added datetime NOT NULL,
-  use_function varchar(255) NULL,
-  set_function varchar(255) NULL,
-  PRIMARY KEY (configuration_id),
-  KEY idx_configuration_group_id (configuration_group_id)
+CREATE TABLE `configuration` (
+  `configuration_id` int(11) NOT NULL auto_increment,
+  `configuration_key` varchar(255) NOT NULL default '',
+  `configuration_value` varchar(255) NOT NULL default '',
+  `configuration_group_id` int(11) NOT NULL default '0',
+  `sort_order` int(5) default NULL,
+  `last_modified` datetime default NULL,
+  `date_added` datetime NOT NULL default '0000-00-00 00:00:00',
+  `use_function` varchar(255) default NULL,
+  `set_function` varchar(255) default NULL,
+  PRIMARY KEY  (`configuration_id`),
+  KEY `idx_configuration_group_id` (`configuration_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS configuration_group;
