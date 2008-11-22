@@ -829,4 +829,11 @@ define('CG_MAINTENANCE_TITLE', 'Тех. обслуживание');
 define('CG_AFFILIATE_PROGRAM_TITLE', 'Партнёрская программа');
 define('_TITLE', 'Разное');
 
+define('STORE_TELEPHONE_TITLE','Телефон');
+define('STORE_TELEPHONE_DESC','Телефон магазина.');
+define('STORE_ICQ_TITLE','ICQ');
+define('STORE_ICQ_DESC','ICQ магазина.');
+define('STORE_SKYPE_TITLE','Skype');
+define('STORE_SKYPE_DESC','Skype магазина.');
+
 ?>
