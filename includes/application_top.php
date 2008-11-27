@@ -597,7 +597,12 @@ vam_count_cart();
       $topics_query = vamDBquery("select topics_name from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . (int)$tPath_array[$i] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
       if (vam_db_num_rows($topics_query,true) > 0) {
         $topics = vam_db_fetch_array($topics_query,true);
-        $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1)))));
+
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&category='.vam_cleanName($topics['topics_name']);
+
+        $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1))).$SEF_parameter));
       } else {
         break;
       }
@@ -613,12 +618,18 @@ vam_count_cart();
 // add the articles name to the breadcrumb trail
   if (isset($_GET['articles_id'])) {
     $article_query = vamDBquery("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
-    if (vam_db_num_rows($article_query,true)) {
+
+   if (vam_db_num_rows($article_query,true)) {
       $article = vam_db_fetch_array($article_query,true);
+
+		$SEF_parameter = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter = '&article='.vam_cleanName($article['articles_name']);
+
       if (isset($_GET['authors_id'])) {
-        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id']));
+        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id'] . $SEF_parameter));
       } else {
-        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'tPath=' . $tPath . '&articles_id=' . $_GET['articles_id']));
+        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $_GET['articles_id'] . $SEF_parameter));
       }
     }
   }
