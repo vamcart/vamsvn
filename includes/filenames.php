@@ -121,4 +121,6 @@ define('DOWN_FOR_MAINTENANCE_FILENAME', 'down_for_maintenance.php');
 
 define('FILENAME_FAQ', 'faq.php');
 
+define('FILENAME_CHECKOUT_ALTERNATIVE', 'checkout_alternative.php');
+
 ?>

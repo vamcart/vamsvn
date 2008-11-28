@@ -26,9 +26,9 @@ require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 require (DIR_WS_CLASSES . 'shipping.php');
 require (DIR_WS_CLASSES . 'payment.php');
 
-$breadcrumb->add("CheckOut Alternative");
+$breadcrumb->add(TEXT_CHECKOUT_ALTERNATIVE);
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_alternative', vam_href_link('checkout_alternative.php', '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_alternative', vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
 $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'));
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');

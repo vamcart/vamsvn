@@ -557,4 +557,6 @@ define('TEXT_RSS_NEW_PRODUCTS','Новинки');
 define('TEXT_RSS_FEATURED_PRODUCTS','Рекомендуемые товары');
 define('TEXT_RSS_BEST_SELLERS','Лучшие товары');
 
+define('TEXT_CHECKOUT_ALTERNATIVE', 'Оформление заказа');
+
 ?>
