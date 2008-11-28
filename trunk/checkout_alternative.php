@@ -535,7 +535,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 					if ((isset ($quote[0]['methods'][0]['title'])) && (isset ($quote[0]['methods'][0]['cost']))) {
 						$_SESSION['shipping'] = array ('id' => $_SESSION['shipping'], 'title' => (($free_shipping == true) ? $quote[0]['methods'][0]['title'] : $quote[0]['module'].' ('.$quote[0]['methods'][0]['title'].')'), 'cost' => $quote[0]['methods'][0]['cost']);
 
-                        print "FILENAME_CHECKOUT_PAYMENT => ".FILENAME_CHECKOUT_PAYMENT;
+                        //print "FILENAME_CHECKOUT_PAYMENT => ".FILENAME_CHECKOUT_PAYMENT;
                         //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 					}
 				}
@@ -546,7 +546,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	} else {
 		$_SESSION['shipping'] = false;
 
-        print "redirect to ".FILENAME_CHECKOUT_PAYMENT;
+        //print "redirect to ".FILENAME_CHECKOUT_PAYMENT;
 		//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 	}
 }
