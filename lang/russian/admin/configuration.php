@@ -836,4 +836,7 @@ define('STORE_ICQ_DESC','ICQ магазина.');
 define('STORE_SKYPE_TITLE','Skype');
 define('STORE_SKYPE_DESC','Skype магазина.');
 
+define('QUICK_CHECKOUT_TITLE','Быстрое оформление заказа');
+define('QUICK_CHECKOUT_DESC','Разрешить модуль быстрого оформления заказа.');
+
 ?>

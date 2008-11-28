@@ -2099,6 +2099,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('REVOCATION_ID', '', 17, 14, NULL, '2003-12-05 05:01:41', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('LOGIN_NUM', '3', '17', '16', NULL, '0000-00-00 00:00:00', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('LOGIN_TIME', '300',  '17', '17', NULL, '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('QUICK_CHECKOUT', 'false',  17, 18, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 #configuration_group_id 18
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_COMPANY_VAT_CHECK', 'false', 18, 4, '', '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
