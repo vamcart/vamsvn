@@ -47,11 +47,11 @@
               <td width="200" align="left">
               <?php echo vam_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop', '160', '60'); ?>
               </td>
-              <td width="470" align="center">
+              <td width="370" align="center">
               &nbsp;
               </td>
-              <td width="200">
-              &nbsp;
+              <td width="300">
+              <?php echo VAMSHOP_SUPPORT_KEY_TEXT; ?> <?php echo VAMSHOP_SUPPORT_KEY; ?><br />
               </td>
             </tr>
 
