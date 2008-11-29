@@ -111,4 +111,6 @@ define('TEXT_ARTICLE_OTHER', 'Дополнительно');
 define('TEXT_ARTICLE_PAGE_URL', 'SEO URL статьи:');
 define('TEXT_TOPIC_PAGE_URL', 'SEO URL категории:');
 
+define('TEXT_ARTICLE_SORT_ORDER', 'Порядок сортировки:');
+
 ?>
