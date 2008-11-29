@@ -231,7 +231,7 @@ CREATE TABLE articles (
   articles_status tinyint(1) NOT NULL default '0',
   authors_id int(11) default NULL,
   articles_page_url varchar(255),
-  articles_sort_order int(4) NOT NULL default '0',
+  sort_order int(4) NOT NULL default '0',
   PRIMARY KEY  (articles_id),
   KEY idx_articles_date_added (articles_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
