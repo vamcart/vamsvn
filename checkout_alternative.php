@@ -6,7 +6,7 @@
    http://vamshop.ru
    http://vamshop.com
 
-   Copyright (c) 2007 VaM Shop
+   Copyright (c) 2008 VaM Shop
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
