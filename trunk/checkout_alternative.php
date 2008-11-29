@@ -33,47 +33,6 @@ $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id']
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
 
-// register a random ID in the session to check throughout the checkout procedure
-// against alterations in the shopping cart contents
-$_SESSION['cartID'] = $_SESSION['cart']->cartID;
-
-$total_weight = $_SESSION['cart']->show_weight();
-$total_count = $_SESSION['cart']->count_contents();
-
-if ($order->delivery['country']['iso_code_2'] != '') {
-	$_SESSION['delivery_zone'] = $order->delivery['country']['iso_code_2'];
-}
-// load all enabled shipping modules
-$shipping_modules = new shipping;
-
-if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
-	switch (MODULE_ORDER_TOTAL_SHIPPING_DESTINATION) {
-		case 'national' :
-			if ($order->delivery['country_id'] == STORE_COUNTRY)
-				$pass = true;
-			break;
-		case 'international' :
-			if ($order->delivery['country_id'] != STORE_COUNTRY)
-				$pass = true;
-			break;
-		case 'both' :
-			$pass = true;
-			break;
-		default :
-			$pass = false;
-			break;
-	}
-
-	$free_shipping = false;
-	if (($pass == true) && ($order->info['total'] - $order->info['shipping_cost'] >= $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, false, 0, true))) {
-		$free_shipping = true;
-
-		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_shipping.php');
-	}
-} else {
-	$free_shipping = false;
-}
-
 $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
@@ -562,6 +521,8 @@ if (ACCOUNT_FAX == 'true') {
  /*  */
 /* SHIPPING_BLOCK */
 // load all enabled shipping modules
+
+$shipping_modules = new shipping;
 
 if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
 	switch (MODULE_ORDER_TOTAL_SHIPPING_DESTINATION) {
