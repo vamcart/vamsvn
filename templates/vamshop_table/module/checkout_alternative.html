@@ -169,6 +169,8 @@
 </td>
   </tr>
 </table>
+
+{if $virtual=='true'} 
  <!-- checkout_shipping.php  -->
 {config_load file="$language/lang_$language.conf" section="checkout_shipping"}
 <h1 class="contentBoxHeading">{#heading_shipping#}</h1>
@@ -190,6 +192,7 @@
       </table></td>
   </tr>
 </table>
+{/if}
 
 <!-- checkout_payment.php -->
 {config_load file="$language/lang_$language.conf" section="checkout_payment"}

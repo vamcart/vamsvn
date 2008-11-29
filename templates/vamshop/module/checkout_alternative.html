@@ -66,6 +66,7 @@
 
 
 
+{if $virtual=='true'} 
 {config_load file="$language/lang_$language.conf" section="checkout_shipping"}
 <h1>{#heading_shipping#}</h1>
 <div class="page">
@@ -83,6 +84,7 @@
 </div>
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
+{/if}
 
 {config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
 <div class="page">
