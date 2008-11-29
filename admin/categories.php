@@ -104,9 +104,9 @@ if ($_GET['action']) {
 				}
 			}
 			if ($_GET['pID']) {
-				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&pID='.$_GET['pID']));
 			} else {
-				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&cID='.$_GET['cID']));
 			}
 			break;
 			//EOB setpflag
@@ -118,7 +118,7 @@ if ($_GET['action']) {
           }
          }
          
-        vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID']));
+        vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&page=' . $_GET['page'] . '&pID=' . $_GET['pID']));
         break;
 
 			
@@ -130,9 +130,9 @@ if ($_GET['action']) {
 				}
 			}
 			if ($_GET['pID']) {
-				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$_GET['pID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&pID='.$_GET['pID']));
 			} else {
-				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&cID='.$_GET['pID']));
 			}
 			break;
 			//EOB setsflag
