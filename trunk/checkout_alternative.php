@@ -36,7 +36,7 @@ $vamTemplate->assign('FORM_END', '</form>');
 
 $vamTemplate->assign('virtual', 'false');
 
-if ($order->content_type == 'virtual' || ($order->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) { 
+if ($_SESSION['cart']->content_type == 'virtual' || ($_SESSION['cart']->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) { 
 
 	$_SESSION['shipping'] = false;
 	$_SESSION['sendto'] = false;
