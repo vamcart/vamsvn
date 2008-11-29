@@ -2,6 +2,17 @@
 
 include ('includes/application_top.php');
 
+// check if checkout is allowed
+if ($_SESSION['allow_checkout'] == 'false')
+	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
+	
+
+// if there is nothing in the customers cart, redirect them to the shopping cart page
+if ($_SESSION['cart']->count_contents() < 1) {
+	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
+}
+
+	
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
