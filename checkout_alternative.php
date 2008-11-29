@@ -113,27 +113,27 @@ if (isset ($_POST['payment']))
 		if (($gender != 'm') && ($gender != 'f')) {
 			$error = true;
 
-			$messageStack->add('create_account', ENTRY_GENDER_ERROR.'<br>');
+			$messageStack->add('checkout_alternative', ENTRY_GENDER_ERROR.'<br>');
 		}
 	}
 
 	if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_FIRST_NAME_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_FIRST_NAME_ERROR.'<br>');
 	}
 
 	if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_LAST_NAME_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_LAST_NAME_ERROR.'<br>');
 	}
 
 	if (ACCOUNT_DOB == 'true') {
 		if (checkdate(substr(vam_date_raw($dob), 4, 2), substr(vam_date_raw($dob), 6, 2), substr(vam_date_raw($dob), 0, 4)) == false) {
 			$error = true;
 
-			$messageStack->add('create_account', ENTRY_DATE_OF_BIRTH_ERROR.'<br>');
+			$messageStack->add('checkout_alternative', ENTRY_DATE_OF_BIRTH_ERROR.'<br>');
 		}
 	}
 
@@ -146,16 +146,35 @@ if (isset ($_POST['payment']))
 	$error = $vatID->vat_info['error'];
 
 	if($error==1){
-	$messageStack->add('create_account', ENTRY_VAT_ERROR.'<br>');
+	$messageStack->add('checkout_alternative', ENTRY_VAT_ERROR.'<br>');
 	$error = true;
   }
 // New VAT CHECK END
+
+	if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
+		$error = true;
+
+		$messageStack->add('checkout_alternative', ENTRY_EMAIL_ADDRESS_ERROR);
+	}
+	elseif (vam_validate_email($email_address) == false) {
+		$error = true;
+
+		$messageStack->add('checkout_alternative', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
+	} else {
+		$check_email_query = vam_db_query("select count(*) as total from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0'");
+		$check_email = vam_db_fetch_array($check_email_query);
+		if ($check_email['total'] > 0) {
+			$error = true;
+
+			$messageStack->add('checkout_alternative', ENTRY_EMAIL_ADDRESS_ERROR_EXISTS);
+		}
+	}
 
    if (ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_STREET_ADDRESS_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_STREET_ADDRESS_ERROR.'<br>');
 	}
   }
 
@@ -163,7 +182,7 @@ if (isset ($_POST['payment']))
 	if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_POST_CODE_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_POST_CODE_ERROR.'<br>');
 	}
   }
 
@@ -171,7 +190,7 @@ if (isset ($_POST['payment']))
 	if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_CITY_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_CITY_ERROR.'<br>');
 	}
   }
 
@@ -179,7 +198,7 @@ if (isset ($_POST['payment']))
 	if (is_numeric($country) == false) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_COUNTRY_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_COUNTRY_ERROR.'<br>');
 	}
   }
 
@@ -199,13 +218,13 @@ if (isset ($_POST['payment']))
 			} else {
 				$error = true;
 
-				$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT.'<br>');
+				$messageStack->add('checkout_alternative', ENTRY_STATE_ERROR_SELECT.'<br>');
 			}
 		} else {
 			if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
 				$error = true;
 
-				$messageStack->add('create_account', ENTRY_STATE_ERROR.'<br>');
+				$messageStack->add('checkout_alternative', ENTRY_STATE_ERROR.'<br>');
 			}
 		}
 	}
@@ -214,7 +233,7 @@ if (isset ($_POST['payment']))
 	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
 		$error = true;
 
-		$messageStack->add('create_account', ENTRY_TELEPHONE_NUMBER_ERROR.'<br>');
+		$messageStack->add('checkout_alternative', ENTRY_TELEPHONE_NUMBER_ERROR.'<br>');
 	}
   }
 
@@ -225,7 +244,7 @@ if (isset ($_POST['payment']))
     if(strlen($_POST['fields_' . $extra_fields['fields_id'] ])<$extra_fields['fields_size']){
       $error = true;
       $string_error=sprintf(ENTRY_EXTRA_FIELDS_ERROR,$extra_fields['fields_name'],$extra_fields['fields_size']);
-      $messageStack->add('create_account', $string_error.'<br>');
+      $messageStack->add('checkout_alternative', $string_error.'<br>');
     }
   }
 
@@ -361,8 +380,8 @@ if (!isset ($_SESSION['sendto'])) {
 	}
 }
 
-if ($messageStack->size('create_account') > 0) {
-	$vamTemplate->assign('error', $messageStack->output('create_account'));
+if ($messageStack->size('checkout_alternative') > 0) {
+	$vamTemplate->assign('error', $messageStack->output('checkout_alternative'));
 
 }
 
