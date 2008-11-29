@@ -63,10 +63,7 @@
 <?php } ?>
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
-    
-    <h1 class="contentBoxHeading"><?php echo TITLE_EDIT; ?></h1>
-    
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
+
 <?php
 
   if (empty($_POST['action']))
@@ -98,7 +95,8 @@
       break;
   }
 ?>
-    </table></td>
+
+    </td>
   </tr>
 <!-- body_eof //-->
   <tr>
