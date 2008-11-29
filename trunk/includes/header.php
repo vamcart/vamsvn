@@ -73,6 +73,9 @@ if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 }
 
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE)) {
+require(DIR_WS_INCLUDES.'form_check.js.php');
+}
 
 if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
