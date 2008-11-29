@@ -33,6 +33,18 @@ $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id']
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
 
+
+$vamTemplate->assign('virtual', 'false');
+
+if ($order->content_type == 'virtual' || ($order->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) { 
+
+	$_SESSION['shipping'] = false;
+	$_SESSION['sendto'] = false;
+
+$vamTemplate->assign('virtual', 'true');
+
+}
+
 $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
