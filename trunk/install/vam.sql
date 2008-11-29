@@ -2194,6 +2194,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_AUTHOR_NAME_LEN', '20', '26', '12', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_AUTHORS_IN_A_LIST', '1', '26', '13', now(), now(), NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_AUTHORS_LIST', '1', '26', '14', now(), now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_ARTICLES_CONTENT', '150', 26, 15, 'NULL', '', NULL, NULL);
 
 #configuration_group_id 27
 
