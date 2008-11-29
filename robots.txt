@@ -6,6 +6,7 @@ Disallow: /account_edit_process.php
 Disallow: /account_history.php 
 Disallow: /account_history_info.php 
 Disallow: /address_book.php 
+Disallow: /checkout_alternative.php 
 Disallow: /checkout_process.php 
 Disallow: /advanced_search.php 
 Disallow: /advanced_search_result.php 
