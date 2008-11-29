@@ -25,6 +25,9 @@
 defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 $adminImages = DIR_WS_CATALOG . "lang/". $_SESSION['language'] ."/admin/images/buttons/";
 ?>
+    <h1 class="contentBoxHeading"><?php echo $pageTitle; ?></h1>
+   
+    <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" name="SELECT_PRODUCT" method="post"><input type="hidden" name="action" value="edit">
 <?php
 echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
@@ -89,3 +92,4 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
 ?>
 </form>
+</table>
