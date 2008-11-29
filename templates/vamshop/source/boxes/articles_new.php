@@ -26,6 +26,7 @@ while ($articles = vam_db_fetch_array($articles_query,true)) {
 
     $articles_content[]=array(
         'ARTICLES_NAME' => $articles['articles_name'],
+        'ARTICLES_CONTENT' => $articles['articles_description'],
         'ARTICLES_URL'    => vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles['articles_id'] . $SEF_parameter)
         );
 }

@@ -6,7 +6,8 @@
 <div id="boxArticlesNewContent">
 {foreach name=aussen item=articles from=$articles_content}
 <a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a><br />
- {/foreach}  
+{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}<br />
+{/foreach}  
 </div>
 
 </div>

@@ -89,4 +89,7 @@ define('ARTICLE_MANAGER_WYSIWYG_FONT_COLOUR_DESC', 'Цвет шрифта инт
 define('ARTICLE_MANAGER_WYSIWYG_BG_COLOUR_DESC', 'Цвет фона интерфейса HTML редактора, никак не связано с теми данными, которые Вы будете вводить с помощью HTML редактора. Вы можете указать либо код цвета, например #FFFFFF, либо название цвета, например black.');
 define('ARTICLE_MANAGER_WYSIWYG_DEBUG_DESC', 'Следить за генерируемым HTML-кодом, т.е. Вы можете видеть, какой HTML-код создаётся при использовании HTML редактора.<br><br>0 - Отключить.<br>1 - Включить<br>По умолчанию стоит 0');
 
+define('MAX_DISPLAY_ARTICLES_CONTENT_TITLE' , 'Статьи кратко');
+define('MAX_DISPLAY_ARTICLES_CONTENT_DESC' , 'Количество символов, отображаемых при предварительном просмотре статьи в боксе Новые статьи.');
+
 ?>
