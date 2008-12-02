@@ -51,6 +51,7 @@ if ($random_product = vam_random_select("select distinct
                                            and p.products_id = p2c.products_id
                                            and pd.products_id = p.products_id
                                            and p.products_id !='".(int) $_GET['products_id']."'
+                                           and pd.language_id = '".$_SESSION['languages_id']."'
                                            and c.categories_id = p2c.categories_id
                                            ".$group_check."
                                            ".$fsk_lock."
