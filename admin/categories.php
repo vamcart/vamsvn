@@ -103,6 +103,7 @@ if ($_GET['action']) {
 					$catfunc->set_product_status($_GET['pID'], $_GET['flag']);
 				}
 			}
+			if (!isset($_GET['page'])) $_GET['page'] = 0;
 			if ($_GET['pID']) {
 				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&pID='.$_GET['pID']));
 			} else {
@@ -117,6 +118,7 @@ if ($_GET['action']) {
             vam_set_product_xml($_GET['pID'], $_GET['flagxml']);
           }
          }
+			if (!isset($_GET['page'])) $_GET['page'] = 0;
          
         vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&page=' . $_GET['page'] . '&pID=' . $_GET['pID']));
         break;
@@ -129,6 +131,7 @@ if ($_GET['action']) {
 //					if ($_GET['flag'] == '1') $catfunc->link_product($_GET['pID'], 0);
 				}
 			}
+			if (!isset($_GET['page'])) $_GET['page'] = 0;
 			if ($_GET['pID']) {
 				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&page='.$_GET['page'].'&pID='.$_GET['pID']));
 			} else {
