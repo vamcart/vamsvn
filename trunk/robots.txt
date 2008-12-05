@@ -20,6 +20,7 @@ Disallow: /create_account_guest.php
 Disallow: /create_account_process.php 
 Disallow: /create_account_success.php 
 Disallow: /info_shopping_cart.php 
+Disallow: /shopping_cart.php 
 Disallow: /login.php 
 Disallow: /logoff.php
 Disallow: /newsletter.php
