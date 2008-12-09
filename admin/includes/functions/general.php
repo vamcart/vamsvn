@@ -101,16 +101,16 @@ function vam_set_groups($categories_id, $permission_array) {
 // Set Admin Access Rights
 function vam_set_admin_access($fieldname, $status, $cID) {
 	if ($status == '1') {
-		return vam_db_query("update ".TABLE_ADMIN_ACCESS." set ".$fieldname." = '1' where customers_id = '".$cID."'");
+		return vam_db_query("update ".TABLE_ADMIN_ACCESS." set `".$fieldname."` = '1' where customers_id = '".$cID."'");
 	} else {
-		return vam_db_query("update ".TABLE_ADMIN_ACCESS." set ".$fieldname." = '0' where customers_id = '".$cID."'");
+		return vam_db_query("update ".TABLE_ADMIN_ACCESS." set `".$fieldname."` = '0' where customers_id = '".$cID."'");
 	}
 }
 
 // Check whether a referer has enough permission to open an admin page
 function vam_check_permission($pagename) {
 	if ($pagename != 'index') {
-		$access_permission_query = vam_db_query("select ".$pagename." from ".TABLE_ADMIN_ACCESS." where customers_id = '".$_SESSION['customer_id']."'");
+		$access_permission_query = vam_db_query("select `".$pagename."` from ".TABLE_ADMIN_ACCESS." where customers_id = '".$_SESSION['customer_id']."'");
 		$access_permission = vam_db_fetch_array($access_permission_query);
 
 		if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($access_permission[$pagename] == '1')) {
