@@ -36,7 +36,7 @@
                     if ($field!='customers_id') {
 
                     vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET
-                                  ".$field."=0 where customers_id='".(int)$_GET['cID']."'");
+                                  `".$field."`=0 where customers_id='".(int)$_GET['cID']."'");
     		}
         }
 
@@ -45,7 +45,7 @@
       $access_ids='';
         if(isset($_POST['access'])) foreach($_POST['access'] as $key){
 
-        vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET ".$key."=1 where customers_id='".(int)$_GET['cID']."'");
+        vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET `".$key."`=1 where customers_id='".(int)$_GET['cID']."'");
 
         }
 
