@@ -38,12 +38,12 @@
 		}
 		$q = implode(" ",$searchwords);
 
-		$products_query = vam_db_query("select pd.products_id, pd.products_name, p.products_model
+		$products_query = vam_db_query("select pd.products_id, pd.products_name, pd.products_keywords, p.products_model
 							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
 							inner join " . TABLE_PRODUCTS . " p
 							on (p.products_id = pd.products_id)
 							where (match (pd.products_name) against ('" . $q . "' in boolean mode)
-							or match (p.products_model) against ('" . $q . "' in boolean mode)" .
+							or match (p.products_model) against ('" . $q . "' in boolean mode) or match (pd.products_keywords) against ('" . $q . "' in boolean mode)" .
 							($_REQUEST['search_in_description'] == '1' ? "or match (pd.products_description) against ('" . $q . "' in boolean mode)" : "") . ")
 							and p.products_status = '1'
 							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
