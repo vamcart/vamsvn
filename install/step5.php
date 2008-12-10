@@ -274,6 +274,10 @@
 'RewriteRule ^(product_info|index|shop_content|news|articles|article_info).php(.*)$ redirector.php [L]'. "\n" .
 '' . "\n" .
 'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]'. "\n" .
+'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.js$ - [L]'. "\n" .
+'RewriteCond %{REQUEST_FILENAME} !-f'. "\n" .
+'RewriteCond %{REQUEST_FILENAME} !-d'. "\n" .
+'RewriteCond %{REQUEST_FILENAME} !-l'. "\n" .
 'RewriteRule ^(.*).html(.*)$ manager.php [L]'. "\n" .
 '' . "\n" .
 'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.php|\.js$ - [L]'. "\n" .
