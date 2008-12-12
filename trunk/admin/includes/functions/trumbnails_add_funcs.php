@@ -68,7 +68,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 		if(!is_array($ext)) $ext=array();
 		$dirname = $startdir . $subdir;
 		if ($dir= opendir($dirname)){
-			while ($file = readdir($dir)) {
+			while (false !== ($file = readdir($dir)) ) { 
 				if(substr($file, 0, 1) != '.') {
 					if (is_file($dirname.$file) && !$dir_only) {
 						if (in_array(substr($file, strrpos($file, '.')), $ext)) {
