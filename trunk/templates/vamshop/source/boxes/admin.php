@@ -52,9 +52,9 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   }
 
   $box_content= '<b>' . BOX_TITLE_STATISTICS . '</b><br />' . $orders_contents . '<br />' .
-                                         BOX_ENTRY_CUSTOMERS . ' ' . $customers['count'] . '<br />' .
-                                         BOX_ENTRY_PRODUCTS . ' ' . $products['count'] . '<br />' .
-                                         BOX_ENTRY_REVIEWS . ' ' . $reviews['count'] .'<br />' .
+                                         '<a href="' . vam_href_link_admin('admin/customers.php','', 'SSL').'">' . BOX_ENTRY_CUSTOMERS . '</a>: ' . $customers['count'] . '<br />' .
+                                         '<a href="' . vam_href_link_admin('admin/categories.php','', 'SSL').'">' . BOX_ENTRY_PRODUCTS . '</a>: ' . $products['count'] . '<br />' .
+                                         '<a href="' . vam_href_link_admin('admin/'.FILENAME_REVIEWS,'', 'SSL').'">' . BOX_ENTRY_REVIEWS . '</a>: ' . $reviews['count'] .'<br />' .
                                          $admin_image . '<br />' .$admin_link.$admin_link_article;
 
     if ($flag==true) define('SEARCH_ENGINE_FRIENDLY_URLS',true);
