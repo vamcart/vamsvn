@@ -34,7 +34,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT * FROM
+	$featured_products_query = "SELECT distinct * FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f where
 	                                         p.products_id=f.products_id ".$group_check."
@@ -46,7 +46,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	if (GROUP_CHECK == 'true')
 		$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT * FROM
+	$featured_products_query = "SELECT distinct * FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
