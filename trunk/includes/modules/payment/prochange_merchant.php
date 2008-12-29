@@ -309,7 +309,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('PRO_CLIENT', MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_CLIENT) .
                                vam_draw_hidden_field('PRO_RA', MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_RA) .
                                vam_draw_hidden_field('PRO_PAYMENT_DESC', vam_cleanName('Заказ номер: ' . substr($cart_prochange_id, strpos($cart_prochange_id, '-')+1) . ', покупатель номер: ' . $_SESSION['customer_id'])) .
-                               vam_draw_hidden_field('PRO_SUMMA', 1);
+                               vam_draw_hidden_field('PRO_SUMMA', $order_sum);
 
       return $process_button_string;
     }
