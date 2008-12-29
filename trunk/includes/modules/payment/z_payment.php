@@ -545,19 +545,5 @@ $vamTemplate = new vamTemplate;
       return array('MODULE_PAYMENT_Z_PAYMENT_STATUS', 'MODULE_PAYMENT_Z_PAYMENT_ALLOWED', 'MODULE_PAYMENT_Z_PAYMENT_ID', 'MODULE_PAYMENT_Z_PAYMENT_SORT_ORDER', 'MODULE_PAYMENT_Z_PAYMENT_ZONE', 'MODULE_PAYMENT_Z_PAYMENT_PREPARE_ORDER_STATUS_ID', 'MODULE_PAYMENT_Z_PAYMENT_ORDER_STATUS_ID');
     }
 
-// format prices without currency formatting
-    function format_raw($number, $currency_code = '', $currency_value = '') {
-      global $currencies, $currency;
-
-      if (empty($currency_code) || !$this->is_set($currency_code)) {
-        $currency_code = $currency;
-      }
-
-      if (empty($currency_value) || !is_numeric($currency_value)) {
-        $currency_value = $currencies->currencies[$currency_code]['value'];
-      }
-
-      return number_format(vam_round($number * $currency_value, $currencies->currencies[$currency_code]['decimal_places']), $currencies->currencies[$currency_code]['decimal_places'], '.', '');
-    }
   }
 ?>
