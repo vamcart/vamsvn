@@ -92,7 +92,7 @@
       vam_session_unregister('shipping');
       vam_session_unregister('payment');
       vam_session_unregister('comments');
-      vam_redirect('https://www.roboxchange.com/ssl/calc.asp?mrh='.MODULE_PAYMENT_ROBOXCHANGE_LOGIN.'&out_summ='.$out_summ.'&inv_id='.$inv_id.'&lang='.(($language=='russian')?'ru':'en').'&crc='.$crc.'&p=vecher');
+      vam_redirect('https://www.roboxchange.com/ssl/calc.asp?mrh='.MODULE_PAYMENT_ROBOXCHANGE_LOGIN.'&out_summ='.$out_summ.'&inv_id='.$inv_id.'&lang='.(($_SESSION['language']=='russian')?'ru':'en').'&crc='.$crc.'&p=vecher');
     }
 
     function output_error() {
