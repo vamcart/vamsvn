@@ -639,6 +639,7 @@ define('YML_AUTH_PW_TITLE' , 'Пароль');
 define('YML_REFERER_TITLE' , 'Ссылка');
 define('YML_STRIP_TAGS_TITLE' , 'Теги');
 define('YML_UTF8_TITLE' , 'Перекодировка в windows-1251');
+define('YML_USE_CDATA_TITLE' , 'Использовать CDATA');
 
 define('YML_NAME_DESC' , 'Название магазина для Яндекс-Маркет. Если поле пустое, то используется STORE_NAME.');
 define('YML_COMPANY_DESC' , 'Название компании для Яндекс-Маркет. Если поле пустое, то используется STORE_OWNER.');
@@ -649,6 +650,7 @@ define('YML_AUTH_PW_DESC' , 'Пароль для доступа к YML');
 define('YML_REFERER_DESC' , 'Добавить в адрес товара параметр с ссылкой на User agent или ip?');
 define('YML_STRIP_TAGS_DESC' , 'Убирать html-теги в строках?');
 define('YML_UTF8_DESC' , 'Перекодировать в UTF-8?');
+define('YML_USE_CDATA_DESC' , 'Использовать CDATA для названий и описаний товаров.');
 
 // Изменение цен
 
