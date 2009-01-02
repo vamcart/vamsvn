@@ -1,255 +1,334 @@
 <?php
-/* -----------------------------------------------------------------------------------------
-   $Id: market.php v1.0 998 2007-02-06 19:20:03 VaM $
-
-   VaM Shop - open source ecommerce solution
-   http://vamshop.ru
-   http://vamshop.com
-
-   Copyright (c) 2007 VaM Shop
-   -----------------------------------------------------------------------------------------
-   based on: 
-   (c) 2005 Andrew Berezin (market.php,v 1.8 2003/08/24); ecommerce-service.com
-
-   Released under the GNU General Public License 
-   ---------------------------------------------------------------------------------------*/
-
+/**
+ * yml.php
+ *
+ * @package yml feed
+ * @copyright Copyright 2005-2008 Andrew Berezin eCommerce-Service.com
+ * @copyright Portions Copyright 2003-2006 Zen Cart Development Team
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: yml.php,v 3.12 27.07.2008 17:52 Andrew Berezin $
+ */
+// http://partner.market.yandex.ru/legal/tt/
 /*
-1. Язык, в котором отдаётся xml, определяется по умолчанию или задаётся в адресной строке.
+1. Язык, в котором отдаётся yml, определяется по умолчанию или задаётся в адресной строке.
 2. Валюта, в которой отдаются цены, определяется по умолчанию или задаётся в адресной строке.
-	 Т.е. можно определять для сторонних сайтов ссылки вида:
-	 http://<domain>/xml_yml_catalog.php?language=ru&currency=RUR
+   Т.е. можно определять для сторонних сайтов ссылки вида:
+   http://<domain>/yml.php?language=ru&currency=RUR
 3. Изготовителя может быть задан, а может и не быть задан;
 4. Короткие описания могут быть установлены, а могут и не быть установлены;
-5. Поле xml-флага в таблице товаров может существовать, а может и не существовать.
+5. Поле yml-флага в таблице товаров может существовать, а может и не существовать.
 6. Все валюты и их курсы формируются автоматически;
 7. Все ссылки на товар и картинки преобразуются в соответсвии с правилами (urlencode()),
-	 что решает проблему с использованием нестандарных символов в ссылках.
-8. Поддержка xml-флага для категорий, содержащих только товары;
+   что решает проблему с использованием нестандарных символов в ссылках.
+8. Поддержка yml-флага для категорий, содержащих только товары;
 9. Поддержка нескольких категорий для товара;
 10. Поддержка доступа по паролю (логин/пароль можно задать в админе или определить здесь,
-		в константах). Константы YML_AUTH_USER, YML_AUTH_PW;
+    в константах). Константы YML_AUTH_USER, YML_AUTH_PW;
 11. Доставка включена или нет определяется константой доступа по паролю (логин/пароль можно
-		задать в админе или определить здесь, в константах). Константа YML_DELIVERYINCLUDED;
+    задать в админе или определить здесь, в константах). Константа YML_DELIVERYINCLUDED;
 12. Поддерживает типы продуктов (страницы отображения информации о товаре для разных типов
-		товара);
-13. Поддержка <offer available; Константа YML_AVAILABLE может принимать одно из трёх 
-		значений: "true", "false" и "stock". В последнем случае доступность товара определяется
-		по наличию его на складе (поле products_quantity);
+    товара);
+13. Поддержка <offer available; Константа YML_AVAILABLE может принимать одно из трёх значений:
+    "true", "false" и "stock". В последнем случае доступность товара определяется по наличию его на складе
+    (поле products_quantity);
 14. Добавлены константы YML_NAME & YML_COMPANY;
-15. Добавлены константы YML_REFERER (для тех, кто не умеет отслеживать заходы через 
-		партнёрку);
+15. Добавлены константы YML_REF_ID и YML_REF_IP (для тех, кто не умеет отслеживать заходы иначе);
 16. Добавлена опция "убирания" тегов (константа YML_STRIP_TAGS);
 17. Добавлена опция перекодирования в utf-8 (константа YML_UTF8);
 18. Поддержка специальных цен;
 19. Кеширование производителей;
+20. Добавлена опция генерации тега <vendor> (константа YML_VENDOR);
+21. Добавлен тег <vendorCode>;
+22. Добавлена замена кода валюты RUB на RUR для совместимости с Яндекс.Маркет;
+23. Добавлена возможность генерации статического файла. Для этого надо задать имя файла в параметре $_GET['file']. В этом случае надо помнить о YML_REF_IP - при запуске по cron использование этого параметра теряет смысл;
+24. Добавлена возможность задания параметра $_GET['ref']. Это удобно при генерации разных статических файлов для разных торговых площадок. Не забывайте об YML_REF_ID - в данном случае его использование не должно быть противоречивым и избыточным;
+25. Добавлена опция генерации тега <vendorCode> (константа YML_VENDORCODE);
+26. Добавлена опция использования тега CDATA (константа YML_USE_CDATA);
+27. Убрал YML_REF_IP;
+28. Использование yml_bid, yml_cbid, yml_bid, yml_cbid;
+29. Добавлен параметр cats=all/master. По умолчанию - cats=master;
+30. Параметр YML_UTF8 заменён на YML_CHARSET. Определяет выходную кодировку по умолчанию.
+31. Добавлен параметр charset=. Задаёт выходную кодировку;
 
+TODO:
+1.
 
--- TODO:
-1. Поддержка xml-флага для категорий, включая вложенные категории;
 
 -- Константы в админе:
-insert into configuration values ('', 'Название магазина', 'YML_NAME', '', 'Название магазина для Яндекс-Маркет. Если поле пустое, то используется STORE_NAME.', 999, 2, NULL, NOW(), NULL,  NULL);
-insert into configuration values ('', 'Название компании', 'YML_COMPANY', '', 'Название компании для Яндекс-Маркет. Если поле пустое, то используется STORE_OWNER.', 999, 2, NULL, NOW(), NULL,  NULL);
-insert into configuration values ('', 'Доставка включена', 'YML_DELIVERYINCLUDED', 'true', 'Доставка включена в стоимость товара?', 999, 2, NULL, NOW(), NULL, 'zen_cfg_select_option(array(\'true\', '\false\'),');
-insert into configuration values ('', 'Товар в наличии', 'YML_AVAILABLE', 'stock', 'Товар в наличии или под заказ?', 999, 2, NULL, NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\', \'stock\'),');
-insert into configuration values ('', 'Логин', 'YML_AUTH_USER', '', 'Логин для доступа к YML', 999, 2, NULL, NOW(), NULL, NULL);
-insert into configuration values ('', 'Пароль', 'YML_AUTH_PW', '', 'Пароль для доступа к YML', 999, 2, NULL, NOW(), NULL, NULL);
-insert into configuration values ('', 'Ссылка', 'YML_REFERER', 'stock', 'Добавить в адрес товара параметр с ссылкой на User agent или ip?', 999, 2, NULL, NOW(), NULL, 'zen_cfg_select_option(array(\'false\', \'ip\', \'agent\'),');
-insert into configuration values ('', 'Теги', 'YML_STRIP_TAGS', 'true', 'Убирать html-теги в строках?', 999, 2, NULL, NOW(), NULL, 'zen_cfg_select_option(array(\'false\', \'true\'),');
-insert into configuration values ('', 'Перекодировка в UTF-8', 'YML_UTF8', 'true', 'Перекодировать в UTF-8?', 999, 2, NULL, NOW(), NULL, 'zen_cfg_select_option(array(\'false\', \'true\'),');
+INSERT INTO configuration_group (configuration_group_id, configuration_group_title, configuration_group_description, sort_order, visible) VALUES (NULL, 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '1', '1');
+SET @configuration_group_id = last_insert_id();
+UPDATE configuration_group SET sort_order = @configuration_group_id WHERE configuration_group_id = @configuration_group_id;
 
-insert into configuration_group (configuration_group_id, configuration_group_title, configuration_group_description, sort_order, visible) values ('', 'Яндекс-Маркет', 'Конфигурирование Яндекс-Маркет', '99', '1');
-update configuration set configuration_group_id=last_insert_id() where configuration_group_id='999';
+INSERT INTO configuration (configuration_id, configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added, use_function, set_function) VALUES (NULL, 'Название магазина', 'YML_NAME', '', 'Название магазина для Яндекс-Маркет. Если поле пустое, то используется STORE_NAME.', @configuration_group_id, 1, NOW(), NULL,  NULL),
+(NULL, 'Название компании', 'YML_COMPANY', '', 'Название компании для Яндекс-Маркет. Если поле пустое, то используется STORE_OWNER.', @configuration_group_id, 2, NOW(), NULL,  NULL),
+(NULL, 'Доставка включена', 'YML_DELIVERYINCLUDED', 'true', 'Доставка включена в стоимость товара?', @configuration_group_id, 3, NOW(), NULL, 'vam_cfg_select_option(array(\'true\', '\false\'),'),
+(NULL, 'Товар в наличии', 'YML_AVAILABLE', 'stock', 'Товар в наличии или под заказ?', @configuration_group_id, 4, NOW(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\', \'stock\'),'),
+(NULL, 'Теги', 'YML_STRIP_TAGS', 'true', 'Убирать html-теги в строках?', @configuration_group_id, 6, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Тег CDATA', 'YML_USE_CDATA', 'true', 'Использовать тег CDATA для наименований и описаний товарови категорий', @configuration_group_id, 6, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Ссылка', 'YML_REF_ID', 'ref=yml', 'Добавить в адрес товара параметр', @configuration_group_id, 9, NOW(), NULL, NULL),
+(NULL, 'Генерация <vendor>', 'YML_VENDOR', 'false', 'Генерировать тег <vendor>?', @configuration_group_id, 8, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Генерация <vendorCode>', 'YML_VENDORCODE', 'true', 'Генерировать тег <vendorCode>?', @configuration_group_id, 8, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Использовать cPath', YML_USE_CPATH', 'true', 'Использовать cPath в адресе товара?', @configuration_group_id, 8, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Сжатие', 'YML_GZIP', 'false', 'Использование сжатие GZIP', @configuration_group_id, 10, NOW(), NULL, 'vam_cfg_select_option(array(\'false\', \'true\'),'),
+(NULL, 'Логин', 'YML_AUTH_USER', '', 'Логин для доступа к YML', @configuration_group_id, 11, NOW(), NULL, NULL),
+(NULL, 'Пароль', 'YML_AUTH_PW', '', 'Пароль для доступа к YML', @configuration_group_id, 12, NOW(), NULL, NULL);
+
+ALTER TABLE categories ADD yml_enable TINYINT(1) DEFAULT '1' NOT NULL;
+ALTER TABLE products ADD yml_enable TINYINT(1) DEFAULT '1' NOT NULL;
+
+ALTER TABLE categories ADD yml_bid INT(4) DEFAULT '0' NOT NULL;
+ALTER TABLE categories ADD yml_cbid INT(4) DEFAULT '0' NOT NULL;
+
+ALTER TABLE products ADD yml_bid INT(4) DEFAULT '0' NOT NULL;
+ALTER TABLE products ADD yml_cbid INT(4) DEFAULT '0' NOT NULL;
 */
+@define('GZIP_LEVEL','0');
+require('includes/application_top.php');
 
- require('includes/application_top.php');
- require('inc/vam_round.inc.php');
+@define('YML_NAME', '');
+@define('YML_COMPANY', '');
+@define('YML_AVAILABLE', 'stock');
+@define('YML_DELIVERYINCLUDED', 'false');
+@define('YML_AUTH_USER', '');
+@define('YML_AUTH_PW', '');
+@define('YML_REF_ID', '');
+@define('YML_STRIP_TAGS', 'true');
+@define('YML_USE_CDATA', 'true');
+@define('YML_UT8', '');
+@define('YML_VENDOR', 'false');
+@define('YML_VENDORCODE', 'true');
+@define('YML_USE_CPATH', 'false');
+@define('YML_OUTPUT_BUFFER_MAXSIZE', 1024);
+@define('YML_OUTPUT_DIRECTORY', 'temp/');
+@define('YML_GZIP', 'false');
 
-if (!defined('YML_NAME')) define('YML_NAME','');
-if (!defined('YML_COMPANY')) define('YML_COMPANY','');
-if (!defined('YML_AVAILABLE')) define('YML_AVAILABLE','stock');
-if (!defined('YML_DELIVERYINCLUDED')) define('YML_DELIVERYINCLUDED','false');
-if (!defined('YML_AUTH_USER')) define('YML_AUTH_USER','');
-if (!defined('YML_AUTH_PW')) define('YML_AUTH_PW','');
-if (!defined('YML_REFERER')) define('YML_REFERER','false');
-if (!defined('YML_STRIP_TAGS')) define('YML_STRIP_TAGS','true');
-if (!defined('YML_UTF8')) define('YML_UTF8','false');
-
-$yml_referer = YML_REF_ID;
-//$yml_referer = (YML_REFERER == 'false' ? "" : (YML_REFERER == 'ip' ? '&amp;ref_ip=' . $_SERVER["REMOTE_ADDR"] : '&amp;ref_ua=' . $_SERVER["HTTP_USER_AGENT"]));
-
-$display_all_categories = (isset($_GET['cats']) && $_GET['cats'] == 'all');
+if (!get_cfg_var('safe_mode') && function_exists('set_time_limit')) {
+  set_time_limit(0);
+}
 
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
-	if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
-		header('WWW-Authenticate: Basic realm="Realm-Name"');
-		header("HTTP/1.0 401 Unauthorized");
-		die;
-	} 
+  if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
+    header('WWW-Authenticate: Basic realm="Realm-Name"');
+    header("HTTP/1.0 401 Unauthorized");
+    die;
+  }
 }
 
 $charset = (YML_UTF8 == 'true') ? 'windows-1251' : $_SESSION['language_charset'];
 
-$manufacturers_array = array();
+$referrer = (YML_REF_ID != '' ? '&' . YML_REF_ID : '');
+$referrer .= (!empty($_GET['ref']) ? '&ref=' . $_GET['ref'] : '');
 
-header('Content-Type: text/xml');
+if($_SESSION["language_code"] != DEFAULT_LANGUAGE) $language_get = '&language=' . $_SESSION["language_code"];
 
-echo "<?xml version=\"1.0\" encoding=\"" . $charset ."\"?><!DOCTYPE yml_catalog SYSTEM \"shops.dtd\">\n" .
-		 "<yml_catalog date=\"" . date('Y-m-d H:i') . "\">\n\n" .
-		 "<shop>\n" .
-		 "<name>" . _clear_string((YML_NAME == "" ? STORE_NAME : YML_NAME)) ."</name>\n" .
-		 "<company>" . _clear_string((YML_COMPANY == "" ? STORE_OWNER : YML_COMPANY)) . "</company>\n" .
-		 "<url>" . HTTP_SERVER . "/</url>\n\n";
+$display_all_categories = (isset($_GET['cats']) && $_GET['cats'] == 'all');
 
-//echo "  <currencies>\n";
+if(!vam_yml_out()) {
+  echo 'Ошибка при создании yml-файла'; // Убрать в константы
+  die;
+}
+
+vam_yml_out('<?xml version="1.0" encoding="' . $charset .'"?' . '><!DOCTYPE yml_catalog SYSTEM "shops.dtd">');
+vam_yml_out('<yml_catalog date="' . date('Y-m-d H:i') . '">');
+vam_yml_out('<shop>');
+vam_yml_out('<name>' . vam_yml_clear_string((YML_NAME == '' ? STORE_NAME : YML_NAME)) .'</name>');
+vam_yml_out('<company>' . vam_yml_clear_string((YML_COMPANY == '' ? STORE_OWNER : YML_COMPANY)) . '</company>');
+vam_yml_out('<url>' . HTTP_SERVER . '/</url>');
+
+$current_currency = $_SESSION['currency'];
+if($_SESSION['currency'] == 'RUB') $current_currency = 'RUR';
+vam_yml_out('  <currencies>');
 //foreach($vamPrice->currencies as $code => $v){
-//	echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
+//  if($code == 'RUB') $code = 'RUR';
+//  vam_yml_out('    <currency id="' . $code . '" rate="' . number_format(1/$v['value'],4) . '"/>');
 //}
-//echo "  </currencies>\n\n";
-
-echo "  <currencies>\n";
 if ($_GET['currency'] == "") {
     foreach($vamPrice->currencies as $code => $v){
-        echo "    <currency id=\"" . $code . "\" rate=\"" . number_format(1/$v["value"],4) . "\"/>\n";
+vam_yml_out('    <currency id="' . $code . '" rate="' . number_format(1/$v["value"],4) . '"/>');
     }
 }  else {
     $varcurrency = $vamPrice->currencies[$_GET['currency']];
         foreach($vamPrice->currencies as $code => $v){
-        echo "    <currency id=\"" . $code . "\" rate=\"" . number_format($varcurrency['value']/$v['value'],4) . "\"/>\n";
+vam_yml_out('    <currency id="' . $code . '" rate="' . number_format($varcurrency['value']/$v['value'],4) . '"/>');
     }
     }
+vam_yml_out('  </currencies>');
 
-
-echo "  </currencies>\n\n";
-
-echo "  <categories>\n";
-$categories_to_xml_query = vam_db_query('describe ' . TABLE_CATEGORIES . ' categories_to_xml');
-$categories_bid_query = vam_db_query('describe ' . TABLE_CATEGORIES . ' yml_bid');
-$categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.parent_id " . ((vam_db_num_rows($categories_to_xml_query) > 0) ? ", c.categories_to_xml " : "") . ((vam_db_num_rows($categories_bid_query) > 0) ? ", c.yml_bid, c.yml_cbid " : "") . "
-														from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
-														where c.categories_status = '1'
-															and c.categories_id = cd.categories_id
-															and cd.language_id='" . $_SESSION['languages_id'] ."'
-														order by c.parent_id, c.sort_order, cd.categories_name"
-													);
-$categories_disable = array();
+vam_yml_out('  <categories>');
+if($yml_select === false) {
+  $yml_select = vam_db_query('describe ' . TABLE_CATEGORIES . ' yml_enable');
+  $yml_select = ($yml_select > 0) ? ", c.yml_enable, c.yml_bid, c.yml_cbid " : "";
+}
+$categories_bid = $categories_disable = array();
+$categories_query = vam_db_query("SELECT c.categories_id, c.parent_id, cd.categories_name" . $yml_select . "
+                            FROM " . TABLE_CATEGORIES . " c
+                              LEFT JOIN " . TABLE_CATEGORIES_DESCRIPTION . " cd ON (c.categories_id = cd.categories_id)
+                            WHERE cd.language_id='" . (int)$_SESSION['languages_id'] . "'
+                              AND c.categories_status= '1'
+                            ORDER BY c.categories_id");
 while ($categories = vam_db_fetch_array($categories_query)) {
-	if (!isset($categories["categories_to_xml"]) || $categories["categories_to_xml"] == 1) {
-    $categories_bid[$categories['categories_id']] = (!isset($categories["yml_bid"])) ? 0 : $categories["yml_bid"];
-    $categories_cbid[$categories['categories_id']] = (!isset($categories["yml_cbid"])) ? 0 : $categories["yml_cbid"];
-		echo "<category id=\"" . $categories["categories_id"] . "\"" .
-				 (($categories["parent_id"] == "0") ? ">" : " parentId=\"" . $categories["parent_id"] . "\">" ) .
-				 _clear_string($categories["categories_name"]) .
-				 "</category>\n";
-	} else {
-		$categories_disable[] = $categories["categories_id"];
-	}
+  if(vam_not_null($categories['categories_name'])) {
+    if (!isset($categories["yml_enable"]) || $categories["yml_enable"] == 1) {
+      $categories_bid[$categories['categories_id']] = (!isset($categories["yml_bid"])) ? 0 : $categories["yml_bid"];
+      $categories_cbid[$categories['categories_id']] = (!isset($categories["yml_cbid"])) ? 0 : $categories["yml_cbid"];
+      vam_yml_out('    <category id="' . $categories['categories_id'] . '"' . (($categories['parent_id'] == "0") ? '>' : ' parentId="' . $categories['parent_id'] . '">') . vam_yml_clear_string($categories['categories_name']) . '</category>');
+    } else {
+      $categories_disable[] = $categories_id;
+    }
+  }
 }
-echo "  </categories>\n";
+vam_yml_out('  </categories>');
 
-echo"<offers>\n";
-$products_short_desc_query = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
-$products_to_xml_query = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
-$products_bid_query = vam_db_query('describe ' . TABLE_PRODUCTS . ' yml_bid');
-$products_sql = "select p.products_id, p.products_model, p.products_quantity, p.products_image, p.products_price, products_tax_class_id, p.manufacturers_id, pd.products_name, p2c.categories_id, pd.products_description" .
-								((vam_db_num_rows($products_short_desc_query) > 0) ? ", pd.products_short_description " : " ") . 
-								((vam_db_num_rows($products_bid_query) > 0) ? ", p.yml_bid, p.yml_cbid " : " ") . 
-								", l.code as language " .
-								"from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_LANGUAGES . " l
-								 where p.products_id = pd.products_id
-									 and p.products_status = 1" .
-									 ((vam_db_num_rows($products_to_xml_query) > 0) ? " and p.products_to_xml = 1" : "") .
-								 " and p.products_id = p2c.products_id
-									 and pd.language_id = " . $_SESSION['languages_id'] . "
-									 and p.products_price > 0
-									 and l.languages_id=pd.language_id
-								 order by pd.products_name";
+vam_yml_out('  <offers>');
+$products_short_description = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_short_description');
+$yml_select = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
+$products_sql = "SELECT p.products_id, p2c.categories_id, p.products_model, p.products_quantity, p.products_image, p.products_price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
+                (($products_short_description > 0) ? ", pd.products_short_description " : " ") . "as proddesc " .
+                (($yml_select > 0) ? ", p.yml_bid, p.yml_cbid " : "") .
+                "FROM " . TABLE_PRODUCTS . " p
+                    LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON (p.products_id = pd.products_id)
+                    LEFT JOIN " . TABLE_MANUFACTURERS . " m ON (p.manufacturers_id = m.manufacturers_id)
+                    LEFT JOIN " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c ON (p.products_id = p2c.products_id)
+                 WHERE p.products_status = 1" .
+                   (($yml_select > 0) ? " and p.products_to_xml = 1" : "") .
+                 " AND pd.language_id = " . (int)$_SESSION['languages_id'] . "
+                 ORDER BY p.products_id ASC";
 $products_query = vam_db_query($products_sql);
-$prev_prod['products_id'] = 0;
-$cats_id = array();
+while ($products = vam_db_fetch_array($products_query)) {
+  $available = "false";
+  switch(YML_AVAILABLE) {
+    case "stock":
+      if($products['products_quantity'] > 0)
+        $available = "true";
+      else
+        $available = "false";
+      break;
+    case "false":
+    case "true":
+      $available = YML_AVAILABLE;
+      break;
+  }
+  $cbid = $bid = '';
+  $products["yml_bid"] = max((!isset($products["yml_bid"]) ? 0 : $products["yml_bid"]), $categories_bid[$products["categories_id"]]);
+  if($products["yml_bid"] > 0) $bid = ' bid="' . $products["yml_bid"] . '"';
+  $products["yml_cbid"] = max((!isset($products["yml_cbid"]) ? 0 : $products["yml_cbid"]), $categories_cbid[$products["categories_id"]]);
+  if($products["yml_cbid"] > 0) $cbid = ' cbid="' . $products["yml_cbid"] . '"';
+  $price = $products['products_price'];
+  $price = $vamPrice->GetPrice($price, $format = false, 1, $products['products_tax_class_id'], $price);
+  $url = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false);
+  $available = ' available="' . $available . '"';
+  vam_yml_out('<offer id="' . $products['products_id'] . '"' . $available . $bid . $cbid . '>');
+  vam_yml_out('  <url>' . $url . '</url>');
+  vam_yml_out('  <price>' . $price . '</price>');
+  vam_yml_out('  <currencyId>' . $current_currency . '</currencyId>');
 
-while($products = vam_db_fetch_array($products_query)) { 
-	if ($prev_prod['products_id'] == $products['products_id']) {
-		if (!in_array($products['categories_id'], $categories_disable)) {
-			$cats_id[] = $products['categories_id'];
-		}
-	} else {
-		if (sizeof($cats_id) > 0) {
-		$available = "false";
-			switch(YML_AVAILABLE) {
-				case "stock":
-					if($prev_prod['products_quantity'] > 0)
-						$available = "true";
-					else
-						$available = "false";
-					break;
-				case "false":
-				case "true":
-					$available = YML_AVAILABLE;
-					break;
-			}
+  vam_yml_out('  <categoryId>' . $products['categories_id'] . '</categoryId>');
+  if($display_all_categories) {
+    $p2c_query = vam_db_query("SELECT categories_id
+                         FROM " . TABLE_PRODUCTS_TO_CATEGORIES . "
+                         WHERE products_id=" . (int)$products['products_id'] . "
+                           AND categories_id<>" . (int)$products['categories_id'] . "");
+    while($p2c = vam_db_fetch_array($p2c_query)) {
+      vam_yml_out('  <categoryId>' . $p2c['categories_id'] . '</categoryId>');
+    }
+  }
 
-		  $cbid = $bid = '';
-		  $prev_prod["yml_bid"] = max((!isset($prev_prod["yml_bid"]) ? 0 : $prev_prod["yml_bid"]), $categories_bid[$cats_id[0]]);
-		  if($prev_prod["yml_bid"] > 0) $bid = ' bid="' . $prev_prod["yml_bid"] . '"';
-		  $prev_prod["yml_cbid"] = max((!isset($prev_prod["yml_cbid"]) ? 0 : $prev_prod["yml_cbid"]), $categories_cbid[$cats_id[0]]);
-		  if($prev_prod["yml_cbid"] > 0) $cbid = ' cbid="' . $prev_prod["yml_cbid"] . '"';
+  if(vam_not_null($products['products_image'])) vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urlencode(basename($products['products_image'])) . '</picture>');
+  if(YML_DELIVERYINCLUDED == "true") vam_yml_out('  <deliveryIncluded/>');
+  vam_yml_out('  <name>' . vam_yml_clear_string($products['products_name']) . '</name>');
 
-//			if ($products_price = vam_get_products_special_price($prev_prod['products_id'])) {
-			if ($products_price = $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price'])) {
-			} else {
-				$products_price = $prev_prod['products_price'];
-			}
+  if(YML_VENDOR == "true" && $products['manufacturers_id'] != 0) {
+    vam_yml_out('  <vendor>' . vam_yml_clear_string($products['manufacturers_name']) . '</vendor>');
+  }
 
-			echo "<offer id=\"" . $prev_prod['products_id'] . "\" available=\"" . $available . '"' . $bid . $cbid . ">\n" .
-					 "  <url>" . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($prev_prod['products_id'], $prev_prod['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false) . "</url>\n" .
-//					 "  <price>" . number_format(vam_round(vam_add_tax($products_price, vam_get_tax_rate($prev_prod['products_tax_class_id']))*$currencies->currencies[$currency]['value'],$currencies->currencies[$currency]['decimal_places']),$currencies->currencies[$currency]['decimal_places'],'.','') . "</price>\n" .
-					 "  <price>" . $vamPrice->GetPrice($prev_prod['products_id'], $format = false, 1, $prev_prod['products_tax_class_id'], $prev_prod['products_price']) . "</price>\n" .
-					 "  <currencyId>" . $code . "</currencyId>\n";
-			echo "  <categoryId>" . $cats_id[0] . "</categoryId>\n";
-  		if($display_all_categories) {
-				for ($ic=1,$nc=sizeof($cats_id); $ic < $nc; $ic++) {
-					echo "  <categoryId>" . $cats_id[$ic] . "</categoryId>\n";
-				}
-			}
-			echo (vam_not_null($prev_prod['products_image']) ? "<picture>" . dirname(HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_INFO_IMAGES . $prev_prod['products_image']) . "/" . urlencode(basename($prev_prod['products_image'])) . "</picture>\n" : "") .
-					 (YML_DELIVERYINCLUDED == "true" ? "  <deliveryIncluded/>\n" : "") .
-					 "  <name>" . _clear_string($prev_prod['products_name']) . "</name>\n";
-			if ($prev_prod['manufacturers_id'] != 0) {
-				if(!isset($manufacturers_array[$prev_prod['manufacturers_id']])) {
-					$manufacturer_query = vam_db_query("select manufacturers_name
-																							from " . TABLE_MANUFACTURERS . "
-																							where manufacturers_id ='" . $prev_prod['manufacturers_id'] . "'");
-					$manufacturer = vam_db_fetch_array($manufacturer_query);
-					$manufacturers_array[$prev_prod['manufacturers_id']] = $manufacturer['manufacturers_name'];
-				} 
-if (YML_VENDOR == 'true' && $prev_prod['manufacturers_id'] != 0) echo "<vendor>" . _clear_string($manufacturers_array[$prev_prod['manufacturers_id']])  . "</vendor>\n"; 
-			} 
-			if (isset($prev_prod['products_short_description']) && vam_not_null($prev_prod['products_short_description'])) {
-				echo "  <description>" . _clear_string($prev_prod['products_short_description']) . "</description>\n";
-			} elseif (vam_not_null($prev_prod['products_description'])) {
-				echo "  <description>" . _clear_string($prev_prod['products_description']) . "</description>\n";
-			}
-			echo "</offer>\n\n";
-		}
-		$prev_prod = $products;
-		$cats_id = array();
-		if (!in_array($products['categories_id'], $categories_disable)) {
-			$cats_id[] = $products['categories_id'];
-		}
-	}
+  if(YML_VENDORCODE == "true" && vam_not_null($products['products_model'])) {
+    vam_yml_out('  <vendorCode>' . $products['products_model'] . '</vendorCode>');
+  }
+
+  vam_yml_out('  <description>' . vam_yml_clear_string($products['products_description']) . '</description>');
+  vam_yml_out('</offer>' . "\n");
+
 }
-echo "</offers>\n" .
-		 "</shop>\n" .
-		 "</yml_catalog>\n";
+vam_yml_out('</offers>');
+vam_yml_out('</shop>');
+vam_yml_out('</yml_catalog>');
 
-	function _clear_string($str) {
-		if (YML_STRIP_TAGS == 'true') {
-			$str = strip_tags($str);
-		}
-		if (YML_UTF8 == 'true')
-			$str = iconv($_SESSION['language_charset'], "windows-1251", $str);
-		return htmlspecialchars($str, ENT_QUOTES);
-	}
+vam_yml_out();
+
+  function vam_yml_out($output='') {
+    static $fp = false;
+    static $output_buffer = "";
+    $retval = true;
+    if($output == '') {
+      if(!$fp) {
+        if(isset($_GET['file'])) {
+          if(YML_GZIP == 'true') {
+            $retval = $fp = gzopen(DIR_FS_CATALOG . YML_OUTPUT_DIRECTORY . $_GET['file'] . '.gz', "wb");
+          } else {
+            $retval = $fp = fopen(DIR_FS_CATALOG . YML_OUTPUT_DIRECTORY . $_GET['file'], "wb");
+          }
+        } else {
+          if(YML_GZIP == 'true') {
+            if (($ini_zlib_output_compression = (int)ini_get('zlib.output_compression')) < 1) {
+              ob_start('ob_gzhandler');
+            } else {
+              @ini_set('zlib.output_compression_level', GZIP_LEVEL);
+            }
+          }
+          header('Content-Type: text/xml');
+          $fp = true;
+        }
+      } else {
+        if(strlen($output_buffer) > 0) {
+          if(isset($_GET['file'])) {
+            if(YML_GZIP == 'true') {
+              $retval = gzwrite($fp, $output_buffer, strlen($output_buffer));
+            } else {
+              $retval = fwrite($fp, $output_buffer, strlen($output_buffer));
+            }
+          } else {
+            echo $output_buffer;
+          }
+          $output_buffer = "";
+        }
+        if(isset($_GET['file'])) {
+          fclose($fp);
+          $fp = false;
+        }
+      }
+    } else {
+      if(strlen($output_buffer) > YML_OUTPUT_BUFFER_MAXSIZE) {
+        if(isset($_GET['file'])) {
+          if(YML_GZIP == 'true') {
+            $retval = gzwrite($fp, $output_buffer, strlen($output_buffer));
+          } else {
+            $retval = fwrite($fp, $output_buffer, strlen($output_buffer));
+          }
+        } else {
+          echo $output_buffer;
+        }
+        $output_buffer = "";
+      }
+      $output_buffer .= $output . "\n";
+    }
+    return $retval;
+  }
+
+  function vam_yml_clear_string($str) {
+  	global $charset;
+    $str = htmlspecialchars_decode($str, ENT_QUOTES);
+    if (YML_STRIP_TAGS == 'true') {
+      $str = strip_tags($str);
+    }
+    if ($charset != $_SESSION['language_charset']) {
+      $str = iconv($_SESSION['language_charset'], $charset, $str);
+    }
+    if (YML_USE_CDATA == 'true') {
+      $str = '<![CDATA[' . $str . ']]>';
+    } else {
+      $str = htmlspecialchars($str, ENT_QUOTES);
+    }
+
+    return $str;
+  }
 ?>
