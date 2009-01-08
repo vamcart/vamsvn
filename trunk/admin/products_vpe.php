@@ -176,7 +176,7 @@
       $products_vpe_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $products_vpe_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('products_vpe_name[' . $languages[$i]['id'] . ']');
+        $products_vpe_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('products_vpe_name[' . $languages[$i]['id'] . ']');
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_PRODUCTS_VPE_NAME . $products_vpe_inputs_string);
@@ -193,7 +193,7 @@
       $products_vpe_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $products_vpe_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('products_vpe_name[' . $languages[$i]['id'] . ']', vam_get_products_vpe_name($oInfo->products_vpe_id, $languages[$i]['id']));
+        $products_vpe_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('products_vpe_name[' . $languages[$i]['id'] . ']', vam_get_products_vpe_name($oInfo->products_vpe_id, $languages[$i]['id']));
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_PRODUCTS_VPE_NAME . $products_vpe_inputs_string);
@@ -220,7 +220,7 @@
         $products_vpe_inputs_string = '';
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $products_vpe_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_get_products_vpe_name($oInfo->products_vpe_id, $languages[$i]['id']);
+          $products_vpe_inputs_string .= '<br />' .$languages[$i]['name'] . ':&nbsp;' . vam_get_products_vpe_name($oInfo->products_vpe_id, $languages[$i]['id']);
         }
 
         $contents[] = array('text' => $products_vpe_inputs_string);
