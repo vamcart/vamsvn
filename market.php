@@ -321,8 +321,10 @@ vam_yml_out();
     if (YML_STRIP_TAGS == 'true') {
       $str = strip_tags($str);
     }
+    if (function_exists('iconv')) {
     if ($charset != $_SESSION['language_charset']) {
       $str = iconv($_SESSION['language_charset'], $charset, $str);
+    }
     }
     if (YML_USE_CDATA == 'true') {
       $str = '<![CDATA[' . $str . ']]>';
