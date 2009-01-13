@@ -96,31 +96,31 @@ function manufacturers_list(){
 		}
 	  	
 		if($_POST['product_new_price1']){
-		   foreach($_POST['product_new_price1'] as $id => $new_price) {
+		   foreach($_POST['product_new_price1'] as $id => $new_price1) {
 			 if ($_POST['product_new_price1'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			   mysql_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price1' WHERE `products_id` = '$id'");
 			 }
 		   }
 		}
 	  	
 		if($_POST['product_new_price2']){
-		   foreach($_POST['product_new_price2'] as $id => $new_price) {
-			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
+		   foreach($_POST['product_new_price2'] as $id => $new_price2) {
+			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price1'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			   mysql_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price2' WHERE `products_id` = '$id'");
 			 }
 		   }
 		}
 		
 		if($_POST['product_new_price3']){
-		   foreach($_POST['product_new_price3'] as $id => $new_price) {
-			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price3'][$id] && $_POST['update_price'][$id] == 'yes') {
+		   foreach($_POST['product_new_price3'] as $id => $new_price3) {
+			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price' WHERE `products_id` = '$id'");
+			   mysql_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price3' WHERE `products_id` = '$id'");
 			 }
 		   }
 		}
@@ -552,45 +552,94 @@ function display_ttc(action, prix, taxe, up){
 		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_1` WHERE `products_id` = '" . $products['products_id'] . "'";
 		$xres = mysql_query($xquery);
 		$xobj = mysql_fetch_object($xres);
-		$xprice = $xobj->personal_offer;
+		$xprice1 = $xobj->personal_offer;
+
+    if ($_POST['spec_price']){
+    // dopisac aby dzialalo
+      $spec_price = $_POST['spec_price'];
+      $flag_spec = 'true' ;
+
+      if (substr($_POST['spec_price'],-1) == '%') {
+	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
+			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$xprice1 = sprintf("%01.2f", round($xobj->personal_offer / $valeur,2));
+		}else{
+        	$xprice1 = sprintf("%01.2f", round($xobj->personal_offer + (($spec_price / 100) * $xobj->personal_offer),2));
+      	}
+	  } else $xprice1 = sprintf("%01.2f", round($xobj->personal_offer + $spec_price,2));
+    } else $xprice1 = $xobj->personal_offer ;
+
+
         if ( in_array($products['products_id'],$specials_array)) {
             echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
         } else {
             if ($flag_spec == 'true') {
-                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
-            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice1 ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price1[".$products['products_id']."]\" value=\"".$xprice1 ."\"></td>\n";
 			}
-       		echo vam_draw_hidden_field('product_old_price1['.$products['products_id'].']', $xprice);
+       		echo vam_draw_hidden_field('product_old_price1['.$products['products_id'].']', $xprice1);
         }
 
 		//
-		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_2` WHERE `products_id` = '" . $products['products_id'] . "'";
-		$xres = mysql_query($xquery);
-		$xobj = mysql_fetch_object($xres);
-		$xprice = $xobj->personal_offer;
+		$xquery2 = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_2` WHERE `products_id` = '" . $products['products_id'] . "'";
+		$xres2 = mysql_query($xquery2);
+		$xobj2 = mysql_fetch_object($xres2);
+		$xprice2 = $xobj->personal_offer;
+		
+    if ($_POST['spec_price']){
+    // dopisac aby dzialalo
+      $spec_price = $_POST['spec_price'];
+      $flag_spec = 'true' ;
+
+      if (substr($_POST['spec_price'],-1) == '%') {
+	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
+			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$xprice2 = sprintf("%01.2f", round($xobj2->personal_offer / $valeur,2));
+		}else{
+        	$xprice2 = sprintf("%01.2f", round($xobj2->personal_offer + (($spec_price / 100) * $xobj2->personal_offer),2));
+      	}
+	  } else $xprice2 = sprintf("%01.2f", round($xobj2->personal_offer + $spec_price,2));
+    } else $xprice2 = $xobj2->personal_offer ;
+		
         if ( in_array($products['products_id'],$specials_array)) {
             echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
         } else {
             if ($flag_spec == 'true') {
-                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
-            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice2 ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price2[".$products['products_id']."]\" value=\"".$xprice2 ."\"></td>\n";
 			}
-       		echo vam_draw_hidden_field('product_old_price2['.$products['products_id'].']', $xprice);
+       		echo vam_draw_hidden_field('product_old_price2['.$products['products_id'].']', $xprice2);
         }
 
 		//
-		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_3` WHERE `products_id` = '" . $products['products_id'] . "'";
-		$xres = mysql_query($xquery);
-		$xobj = mysql_fetch_object($xres);
-		$xprice = $xobj->personal_offer;
+		$xquery3 = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_3` WHERE `products_id` = '" . $products['products_id'] . "'";
+		$xres3 = mysql_query($xquery3);
+		$xobj3 = mysql_fetch_object($xres3);
+		$xprice3 = $xobj3->personal_offer;
+		
+    if ($_POST['spec_price']){
+    // dopisac aby dzialalo
+      $spec_price = $_POST['spec_price'];
+      $flag_spec = 'true' ;
+
+      if (substr($_POST['spec_price'],-1) == '%') {
+	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
+			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$xprice3 = sprintf("%01.2f", round($xobj3->personal_offer / $valeur,2));
+		}else{
+        	$xprice3 = sprintf("%01.2f", round($xobj3->personal_offer + (($spec_price / 100) * $xobj3->personal_offer),2));
+      	}
+	  } else $xprice3 = sprintf("%01.2f", round($xobj3->personal_offer + $spec_price,2));
+    } else $xprice3 = $xobj3->personal_offer ;
+		
         if ( in_array($products['products_id'],$specials_array)) {
             echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
         } else {
             if ($flag_spec == 'true') {
-                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
-            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice ."\"></td>\n";
+                   echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice3 ."\"></td>\n";
+            } else { echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price3[".$products['products_id']."]\" value=\"".$xprice3 ."\"></td>\n";
 			}
-       		echo vam_draw_hidden_field('product_old_price3['.$products['products_id'].']', $xprice);
+       		echo vam_draw_hidden_field('product_old_price3['.$products['products_id'].']', $xprice3);
         }
         
         if(DISPLAY_TAX == 'true'){if(MODIFY_TAX == 'true')echo "<td align=\"center\">".vam_draw_pull_down_menu("product_new_tax[".$products['products_id']."]\"", $tax_class_array, $products['products_tax_class_id'])."</td>\n";else echo "<td align=\"center\">" . $tax_rate['tax_class_title'] . "&nbsp;</td>";}else{ echo "<td>&nbsp;</td>";}
