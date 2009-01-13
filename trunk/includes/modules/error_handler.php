@@ -40,4 +40,7 @@
   if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO))  $product_info=$module;
 
   $vamTemplate->assign('main_content',$module);
+  
+  header('HTTP/1.1 404 Not Found');
+  
 ?>
