@@ -313,12 +313,16 @@
     } elseif ($page == FILENAME_ARTICLES) {
 
       $t_id = -1;
+      $page_num = '';
       $param_array = explode('&', $parameters);
 
       for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
         $parsed_param = explode('=', $param_array[$i]);
         if ($parsed_param[0] === 'tPath') {
           $t_id = $parsed_param[1];
+        } 
+        if ($parsed_param[0] === 'page') {
+          $page_num = $parsed_param[1];
         } 
       }
 
@@ -348,6 +352,10 @@
             $link .= DIR_WS_HTTPS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
+          }
+
+          if (vam_not_null($page_num)) {
+            $t_url .= '?page=' . $page_num;
           }
 
           return $link . $t_url;
