@@ -470,7 +470,7 @@ $vamTemplate = new vamTemplate;
 	$vamTemplate->assign('SHIPPING_METHOD', $shipping_method);
 	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
 
-	$vamTemplate->assign('NAME', $order->customer['name']);
+	$vamTemplate->assign('NAME', $order->customer['firstname'] . ' ' . $order->customer['lastname']);
 	$vamTemplate->assign('COMMENTS', $order->info['comments']);
 	$vamTemplate->assign('EMAIL', $order->customer['email_address']);
 	$vamTemplate->assign('PHONE',$order->customer['telephone']);
