@@ -97,31 +97,31 @@ function manufacturers_list(){
 	  	
 		if($_POST['product_new_price1']){
 		   foreach($_POST['product_new_price1'] as $id => $new_price1) {
-			 if ($_POST['product_new_price1'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
+//			 if ($_POST['product_new_price1'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
 			   mysql_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price1' WHERE `products_id` = '$id'");
-			 }
+//			 }
 		   }
 		}
 	  	
 		if($_POST['product_new_price2']){
 		   foreach($_POST['product_new_price2'] as $id => $new_price2) {
-			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price1'][$id] && $_POST['update_price'][$id] == 'yes') {
+//			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price1'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
 			   mysql_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price2' WHERE `products_id` = '$id'");
-			 }
+//			 }
 		   }
 		}
 		
 		if($_POST['product_new_price3']){
 		   foreach($_POST['product_new_price3'] as $id => $new_price3) {
-			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
+//			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
 			   mysql_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price3' WHERE `products_id` = '$id'");
-			 }
+//			 }
 		   }
 		}
 		// prices
