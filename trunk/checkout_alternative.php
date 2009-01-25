@@ -257,9 +257,20 @@ if (isset ($_POST['payment']))
     }
   }
 
+	if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
+		$error = true;
+
+		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR);
+	}
+	elseif ($password != $confirmation) {
+		$error = true;
+
+		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+	}
+
 	if ($customers_status == 0 || !$customers_status)
 		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID_GUEST;
-	$password = vam_create_password(8);
+//	$password = vam_create_password(8);
 
 	if (!$newsletter)
 		$newsletter = 0;
@@ -546,6 +557,12 @@ if (ACCOUNT_FAX == 'true') {
 
 	$vamTemplate->assign('customers_extra_fileds', '1');
    $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
+   
+	$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
+	$vamTemplate->assign('ENTRY_PASSWORD_ERROR', ENTRY_PASSWORD_ERROR);
+	$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
+	$vamTemplate->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+   
  /*  */
 /* SHIPPING_BLOCK */
 // load all enabled shipping modules
