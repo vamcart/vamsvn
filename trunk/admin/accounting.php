@@ -179,7 +179,7 @@ for ($i = 0; $i < $columns; $i++) {
     <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="'.$color.'" >'.vam_draw_separator('pixel_trans.gif',15, 15).'</td>
         <td width="100%" class="dataTableContentRow">
         <input type="checkbox" name="access[]" value="'.$field.'"'.$checked.'>
-        '.$field.'</td>
+        <b>'.$field.'</b>: ' . constant(strtoupper('ACCESS_'.$field)).'</td>
         <td></td></tr>';
     }
 }
