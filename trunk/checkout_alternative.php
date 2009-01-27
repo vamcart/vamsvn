@@ -77,6 +77,72 @@ $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
 
+
+$shipping_modules = new shipping;
+
+if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
+	switch (MODULE_ORDER_TOTAL_SHIPPING_DESTINATION) {
+		case 'national' :
+			if ($order->delivery['country_id'] == STORE_COUNTRY)
+				$pass = true;
+			break;
+		case 'international' :
+			if ($order->delivery['country_id'] != STORE_COUNTRY)
+				$pass = true;
+			break;
+		case 'both' :
+			$pass = true;
+			break;
+		default :
+			$pass = false;
+			break;
+	}
+
+	$free_shipping = false;
+	if (($pass == true) && ($order->info['total'] - $order->info['shipping_cost'] >= $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, false, 0, true))) {
+		$free_shipping = true;
+
+		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_shipping.php');
+	}
+} else {
+	$free_shipping = false;
+}
+// process the selected shipping method
+
+
+	if ((vam_count_shipping_modules() > 0) || ($free_shipping == true)) {
+		if ((isset ($_POST['shipping'])) && (strpos($_POST['shipping'], '_'))) {
+			$_SESSION['shipping'] = $_POST['shipping'];
+
+			list ($module, $method) = explode('_', $_SESSION['shipping']);
+			if (is_object($$module) || ($_SESSION['shipping'] == 'free_free')) {
+				if ($_SESSION['shipping'] == 'free_free') {
+					$quote[0]['methods'][0]['title'] = FREE_SHIPPING_TITLE;
+					$quote[0]['methods'][0]['cost'] = '0';
+				} else {
+					$quote = $shipping_modules->quote($method, $module);
+				}
+				if (isset ($quote['error'])) {
+					unset ($_SESSION['shipping']);
+				} else {
+					if ((isset ($quote[0]['methods'][0]['title'])) && (isset ($quote[0]['methods'][0]['cost']))) {
+						$_SESSION['shipping'] = array ('id' => $_SESSION['shipping'], 'title' => (($free_shipping == true) ? $quote[0]['methods'][0]['title'] : $quote[0]['module'].' ('.$quote[0]['methods'][0]['title'].')'), 'cost' => $quote[0]['methods'][0]['cost']);
+
+                        //print "FILENAME_CHECKOUT_PAYMENT => ".FILENAME_CHECKOUT_PAYMENT;
+                        //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+					}
+				}
+			} else {
+				unset ($_SESSION['shipping']);
+			}
+		}
+	} else {
+		$_SESSION['shipping'] = false;
+
+        //print "redirect to ".FILENAME_CHECKOUT_PAYMENT;
+		//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+	}
+
 if (isset ($_POST['payment']))
 	$_SESSION['payment'] = vam_db_prepare_input($_POST['payment']);
 
