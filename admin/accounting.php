@@ -98,23 +98,23 @@
 
       <table width="100%" cellpadding="0" cellspacing="2">
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FF6969" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="#FF6969" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_SYSTEM; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="69CDFF" ><?php echo vam_draw_separator('pixel_trans.gif',10, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="#69CDFF" ><?php echo vam_draw_separator('pixel_trans.gif',10, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_PRODUCTS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="6BFF7F" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="#6BFF7F" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_CUSTOMERS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="BFA8FF" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="#BFA8FF" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_STATISTICS; ?></td>
       </tr>
       <tr>
-       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="FFE6A8" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
+       <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="#FFE6A8" ><?php echo vam_draw_separator('pixel_trans.gif',15, 15); ?></td>
        <td width="100%" class="main"><?php echo TXT_TOOLS; ?></td>
       </tr>
       </table>
