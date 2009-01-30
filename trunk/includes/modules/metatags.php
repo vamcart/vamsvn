@@ -173,16 +173,12 @@ $content_meta = vam_db_fetch_array($content_meta_query);
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
 			$articles_cat_meta = vam_db_fetch_array($articles_cat_meta_query, true);
 
-		if ($articles_cat_meta['topics_heading_title'] == '') {
 			$articles_cat_title = $articles_cat_meta['topics_name'];
-		} else {
-			$articles_cat_title = $articles_cat_meta['topics_heading_title'];
-		}
 
 		if ($articles_cat_meta['topics_description'] == '') {
 			$articles_cat_desc = META_DESCRIPTION;
 		} else {
-			$articles_cat_desc = $articles_cat_meta['topics_description'];
+			$articles_cat_desc = $articles_cat_meta['topics_heading_title'];
 		}
 
 ?>
