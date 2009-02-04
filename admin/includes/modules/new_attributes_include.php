@@ -65,7 +65,9 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
       echo "</TR>";
 
       // Find all of the Current Option's Available Values
-      $query2 = "SELECT * FROM ".TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS." WHERE products_options_id = '" . $current_product_option_id . "' ORDER BY products_options_values_id DESC";
+      $query2 = "SELECT * FROM ".TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS." povto
+	  LEFT JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." pov ON povto.products_options_values_id=pov.products_options_values_id 
+	  WHERE povto.products_options_id = '" . $current_product_option_id . "' AND language_id = '" . $_SESSION['languages_id'] . "' ORDER BY pov.products_options_values_name ASC";
       $result2 = vam_db_query($query2);
       $matches2 = vam_db_num_rows($result2);
 
