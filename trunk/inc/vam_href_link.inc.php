@@ -237,6 +237,10 @@
         $parsed_param = explode('=', $param_array[$i]);
         if ($parsed_param[0] === 'articles_id') {
           $a_id = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
         } 
       }
 
@@ -266,6 +270,14 @@
             $link .= DIR_WS_CATALOG;
           }
 
+          if (vam_not_null($language)) {
+            $a_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $a_url .= '?currency=' . $currency;
+          }
+
           return $link . $a_url;
       }
 
@@ -278,6 +290,10 @@
         $parsed_param = explode('=', $param_array[$i]);
         if ($parsed_param[0] === 'news_id') {
           $n_id = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
         } 
       }
 
@@ -307,6 +323,14 @@
             $link .= DIR_WS_CATALOG;
           }
 
+          if (vam_not_null($language)) {
+            $n_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $n_url .= '?currency=' . $currency;
+          }
+
           return $link . $n_url;
       }
 
@@ -323,6 +347,10 @@
         } 
         if ($parsed_param[0] === 'page') {
           $page_num = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
         } 
       }
 
@@ -358,6 +386,14 @@
             $t_url .= '?page=' . $page_num;
           }
 
+          if (vam_not_null($language)) {
+            $t_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $t_url .= '?currency=' . $currency;
+          }
+
           return $link . $t_url;
       }
 
@@ -370,6 +406,10 @@
         $parsed_param = explode('=', $param_array[$i]);
         if ($parsed_param[0] === 'coID') {
           $co_id = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
         } 
       }
 
@@ -397,6 +437,14 @@
             $link .= DIR_WS_HTTPS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
+          }
+
+          if (vam_not_null($language)) {
+            $co_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $co_url .= '?currency=' . $currency;
           }
 
           return $link . $co_url;
