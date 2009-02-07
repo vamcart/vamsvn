@@ -10,8 +10,8 @@
 	v.1
 	Modification: osCommerce standart
 */
-define('MODULE_SHIPPING_RP_TEXT_TITLE_PREPAY', 'Доставка «Почтой России» —  предварительная оплата заказа');
-define('MODULE_SHIPPING_RP_TEXT_DESCRIPTION_PREPAY', 'При этом способе доставки, заказ необходимо сначало оплатить.');
+define('MODULE_SHIPPING_RP_TEXT_TITLE_PREPAY', 'Почта России');
+define('MODULE_SHIPPING_RP_TEXT_DESCRIPTION_PREPAY', 'При этом способе доставки, заказ необходимо сначала оплатить.');
 define('MODULE_SHIPPING_RP_INVALID_ZONE', 'В этот регион доставка «Почтой России» невозможна.');
 define('MODULE_SHIPPING_RP_TEXT_WAY_PARCEL', 'Цена доставки посылкой, при <i>предварительной оплате</i> заказа.');
 define('MODULE_SHIPPING_RP_TEXT_WAY_WRAPPER', 'Цена доставки бандеролью, при <i>предварительной оплате</i> заказа.');
