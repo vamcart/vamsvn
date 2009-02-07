@@ -10,7 +10,7 @@
 	v.1
 	Modification: osCommerce standart
 */
-define('MODULE_SHIPPING_RP_TEXT_TITLE_PF', 'Доставка «Почтой России» — наложенный платёж');
+define('MODULE_SHIPPING_RP_TEXT_TITLE_PF', 'Почта России - наложенный платёж');
 define('MODULE_SHIPPING_RP_TEXT_DESCRIPTION_PF', 'При этом способе доставки, заказ можно будет оплатить при получении на почте.');
 define('MODULE_SHIPPING_RP_INVALID_ZONE_PF', 'В этот регион доставка наложенным платежом «Почты России» невозможна.');
 define('MODULE_SHIPPING_RP_TEXT_WAY_PARCEL_PF', 'Цена доставки посылкой, заказ оплачивается <i>при получени  на почте</i>.');
