@@ -743,10 +743,10 @@ class categories {
             foreach ($_POST['extra_field'] as $key=>$val) {
               if (isset($extra_product_entry[$key])) { // an entry exists
                 if ($val == '') vam_db_query("DELETE FROM " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($products_id) . " AND  products_extra_fields_id = " . $key);
-                else vam_db_query("UPDATE " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " SET products_extra_fields_value = '" . vam_db_prepare_input($val) . "' WHERE products_id = " . vam_db_input($products_id) . " AND  products_extra_fields_id = " . $key);
+                else vam_db_query("UPDATE " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " SET products_extra_fields_value = '" . vam_db_input($val) . "' WHERE products_id = " . vam_db_input($products_id) . " AND  products_extra_fields_id = " . $key);
               }
               else { // an entry does not exist
-                if ($val != '') vam_db_query("INSERT INTO " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " (products_id, products_extra_fields_id, products_extra_fields_value) VALUES ('" . vam_db_input($products_id) . "', '" . $key . "', '" . vam_db_prepare_input($val) . "')");
+                if ($val != '') vam_db_query("INSERT INTO " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " (products_id, products_extra_fields_id, products_extra_fields_value) VALUES ('" . vam_db_input($products_id) . "', '" . $key . "', '" . vam_db_input($val) . "')");
               }
             }
           } // Check to see if there are any need to update extra fields.
