@@ -61,6 +61,13 @@ if ($listing_split->number_of_rows > 0) {
 	$module->assign('CATEGORIES_IMAGE', $image);
 	$module->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
+	$query = "SELECT manufacturers_description FROM ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and languages_id = '".$_SESSION['languages_id']."'";
+
+		$open_query = vamDBquery($query);
+		$open_data = vam_db_fetch_array($open_query, true);
+		$manufacturers_description = $open_data["manufacturers_description"]; 
+		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
+		
 	$rows = 0;
 	$listing_query = vamDBquery($listing_split->sql_query);
 	while ($listing = vam_db_fetch_array($listing_query, true)) {
