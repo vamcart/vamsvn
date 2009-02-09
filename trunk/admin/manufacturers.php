@@ -40,6 +40,12 @@
 	    return $manufacturer['manufacturers_meta_description'];
 	  }
 
+	  function vam_get_manufacturers_description($manufacturer_id, $language_id) {
+	    $manufacturer_query = vam_db_query("select manufacturers_description from " . TABLE_MANUFACTURERS_INFO . " where manufacturers_id = '" . (int)$manufacturer_id . "' and languages_id = '" . (int)$language_id . "'");
+	    $manufacturer = vam_db_fetch_array($manufacturer_query);
+	    return $manufacturer['manufacturers_description'];
+	  }
+	  
 // EOF manufacturers meta tags
   switch ($_GET['action']) {
     case 'insert':
@@ -75,6 +81,7 @@
 					$manufacturers_meta_title_array = $_POST['manufacturers_meta_title'];
 					$manufacturers_meta_keywords_array = $_POST['manufacturers_meta_keywords'];
 					$manufacturers_meta_description_array = $_POST['manufacturers_meta_description'];
+					$manufacturers_description_array = $_POST['manufacturers_description'];					
 
 // EOF manufacturers descriptions + meta tags
         $language_id = $languages[$i]['id'];
@@ -83,7 +90,7 @@
 
 // BOF manufacturers descriptions + meta tags
 
-					$sql_data_array = array_merge($sql_data_array, array('manufacturers_meta_title' => vam_db_prepare_input($manufacturers_meta_title_array[$language_id]),'manufacturers_meta_keywords' => vam_db_prepare_input($manufacturers_meta_keywords_array[$language_id]),'manufacturers_meta_description' => vam_db_prepare_input($manufacturers_meta_description_array[$language_id]),));
+					$sql_data_array = array_merge($sql_data_array, array('manufacturers_meta_title' => vam_db_prepare_input($manufacturers_meta_title_array[$language_id]),'manufacturers_meta_keywords' => vam_db_prepare_input($manufacturers_meta_keywords_array[$language_id]),'manufacturers_meta_description' => vam_db_prepare_input($manufacturers_meta_description_array[$language_id]),'manufacturers_description' => vam_db_prepare_input($manufacturers_description_array[$language_id]),));
 
 // EOF manufacturers descriptions + meta tags
 
@@ -249,6 +256,14 @@
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_META_DESCRIPTION . $manufacturer_inputs_string);
 
 // EOF manufacturers meta tags
+
+      $manufacturer_inputs_string = '';
+      $languages = vam_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $manufacturer_desc_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_description[' . $languages[$i]['id'] . ']', 'soft', '30', '5');
+      }
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_DESCRIPTION . $manufacturer_desc_string);
+
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . vam_draw_file_field('manufacturers_image'));
 
       $manufacturer_inputs_string = '';
@@ -292,6 +307,13 @@
       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_META_DESCRIPTION . $manufacturer_inputs_string);
 
 // EOF manufacturers meta tags
+
+      $manufacturer_inputs_string = '';
+      $languages = vam_get_languages();
+      for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+        $manufacturer_desc_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_description[' . $languages[$i]['id'] . ']', 'soft', '30', '5', vam_get_manufacturers_description($mInfo->manufacturers_id, $languages[$i]['id']));
+      }
+      $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_DESCRIPTION . $manufacturer_desc_string);
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_IMAGE . '<br />' . vam_draw_file_field('manufacturers_image') . '<br />' . $mInfo->manufacturers_image);
 
