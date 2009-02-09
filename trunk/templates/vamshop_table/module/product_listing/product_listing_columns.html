@@ -1,5 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="index"}<h1 class="contentBoxHeading">{$CATEGORIES_NAME}</h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr valign="top">    <td class="contentsTopics">{$CATEGORIES_HEADING_TITLE}</td>  </tr>  </table>{if $CATEGORIES_DESCRIPTION}<br />{$CATEGORIES_DESCRIPTION}{/if}<br />{if $CATEGORIES_IMAGE}<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /><br /><table width="100%"  border="0" cellspacing="0" cellpadding="0">  <tr>    <td style="border-bottom: 1px solid; border-color: #000000;">&nbsp;</td>  </tr></table>{/if}{if $MANUFACTURER_SORT}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr valign="top">    <td class="contentsTopics">{$CATEGORIES_HEADING_TITLE}</td>  </tr>  </table>{if $CATEGORIES_DESCRIPTION}<br />{$CATEGORIES_DESCRIPTION}{/if}<br />{if $CATEGORIES_IMAGE}<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /><br /><table width="100%"  border="0" cellspacing="0" cellpadding="0">  <tr>    <td style="border-bottom: 1px solid; border-color: #000000;">&nbsp;</td>  </tr></table>{/if}{if $MANUFACTURERS_DESCRIPTION}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
+	{$MANUFACTURERS_DESCRIPTION}
+    </td>  </tr></table><br />{/if}
+{if $MANUFACTURER_SORT}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
 	{$MANUFACTURER_SORT}
     </td>  </tr></table><br />{/if}
 {if $CATEGORIES_NAME}
