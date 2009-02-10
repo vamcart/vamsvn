@@ -632,7 +632,11 @@ if (ACCOUNT_FAX == 'true') {
 /* SHIPPING_BLOCK */
 // load all enabled shipping modules
 
+if (!isset ($_POST['action']) && ($_POST['action'] != 'process')) {
+
 $shipping_modules = new shipping;
+
+}
 
 if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
 	switch (MODULE_ORDER_TOTAL_SHIPPING_DESTINATION) {
