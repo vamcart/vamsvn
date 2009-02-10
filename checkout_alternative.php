@@ -77,8 +77,6 @@ $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
 
-if (is_object($shipping_modules)) {
-
 $shipping_modules = new shipping;
 
 if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
@@ -143,8 +141,6 @@ if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_
         //print "redirect to ".FILENAME_CHECKOUT_PAYMENT;
 		//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 	}
-
-}
 
 if (isset ($_POST['payment']))
 	$_SESSION['payment'] = vam_db_prepare_input($_POST['payment']);
