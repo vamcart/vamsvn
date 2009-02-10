@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: customers_status.php 1062 2007-02-07 17:36:57 VaM $
+   $Id: customers_status.php 1062 2009-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -20,7 +20,7 @@
 define('HEADING_TITLE', 'Группы клиентов');
 
 define('ENTRY_CUSTOMERS_FSK18','Блокировать покупку товаров FSK18?');
-define('ENTRY_CUSTOMERS_FSK18_DISPLAY','Блокировать покупку товаров FSK18?');
+define('ENTRY_CUSTOMERS_FSK18_DISPLAY','Показывать товары FSK18?');
 define('ENTRY_CUSTOMERS_STATUS_ADD_TAX','Показывать налог на странице подтверждения заказа');
 define('ENTRY_CUSTOMERS_STATUS_MIN_ORDER','Минимальная сумма заказа:');
 define('ENTRY_CUSTOMERS_STATUS_MAX_ORDER','Максимальная сумма заказа:');
