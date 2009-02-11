@@ -60,7 +60,7 @@ define('EASY_IMPORT_TEMP_DIR', 'Импортировать и папки temp ')
 define('EASY_LABEL_DOWNLOAD', 'Скачать файл');
 define('EASY_LABEL_COMPLETE', 'Все поля');
 define('EASY_LABEL_TAB', 'tab-delimited .txt file to edit');
-define('EASY_LABEL_MPQ', 'Код товара/Цена/Количество');
+define('EASY_LABEL_MPQ', 'Код товара/Название/Цена/Количество');
 define('EASY_LABEL_EP_MC', 'Код товара/Категория');
 define('EASY_LABEL_EP_FROGGLE', 'Файл с данными для системы Фругл');
 define('EASY_LABEL_EP_ATTRIB', 'Атрибуты товара');
