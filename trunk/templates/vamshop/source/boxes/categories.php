@@ -110,7 +110,7 @@ if (USE_CACHE=='false') {
 	$box->caching = 1;
 	$box->cache_lifetime=CACHE_LIFETIME;
 	$box->cache_modified_check=CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_GET['cPath'];
+	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$current_category_id;
 	$box_categories= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories.html',$cache_id);
 }
 $vamTemplate->assign('box_CATEGORIES',$box_categories);

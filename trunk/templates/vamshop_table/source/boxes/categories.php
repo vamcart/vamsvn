@@ -37,7 +37,7 @@ if (!CacheCheck()) {
 	$box->caching = 1;
 	$box->cache_lifetime = CACHE_LIFETIME;
 	$box->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$cPath;
+	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$current_category_id;
 }
 
 if(!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id) || !$cache){
