@@ -9,6 +9,11 @@
 	06.11.2006.
 	v.1
 	Modification: osCommerce standart
+
+   -----------------------------------------------------------------------------------------
+   Released under the GNU General Public License 
+   -----------------------------------------------------------------------------------------
+
 */
 define('MODULE_SHIPPING_RP_TEXT_TITLE_PREPAY', 'Почта России');
 define('MODULE_SHIPPING_RP_TEXT_DESCRIPTION_PREPAY', 'При этом способе доставки, заказ необходимо сначала оплатить.');
