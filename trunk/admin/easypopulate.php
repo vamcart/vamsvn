@@ -1358,6 +1358,7 @@ break;
 		$filelayout = array(
 			'v_products_id'   => $iii++,  //added
 			'v_products_model'    => $iii++,
+			'v_products_name_1'    => $iii++,
 			'v_products_page_url'    => $iii++,
 			'v_products_price'    => $iii++,
 			'v_products_quantity'   => $iii++,
@@ -1377,12 +1378,13 @@ break;
 		$filelayout_sql = "SELECT
 			p.products_id as v_products_id,
 			p.products_model as v_products_model,
+			pd.products_name as v_products_name,
 			p.products_page_url as v_products_page_url,
 			p.products_price as v_products_price,
 			p.products_quantity as v_products_quantity,
 			p.products_sort as v_products_sort
 			FROM
-			".TABLE_PRODUCTS." as p
+			".TABLE_PRODUCTS." as p left join ".TABLE_PRODUCTS_DESCRIPTION." as pd on pd.products_id = p.products_id 
 			".$WHERE."
 			".$categories_range."
 			".$limitman_sql."
@@ -2096,7 +2098,6 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 
 			$query = "INSERT INTO ".TABLE_PRODUCTS." (
 							products_id,
-					products_image,
 					products_model,
 					group_permission_0,
 					group_permission_1,
@@ -2105,9 +2106,6 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					products_page_url,
 					products_price,
 					products_status,
-					products_last_modified,
-					products_date_added,
-					products_date_available,
 					products_tax_class_id,
 					products_weight,
 					products_quantity,
@@ -2115,7 +2113,6 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					manufacturers_id)
 						VALUES (
 							 '$v_products_id',
-							'$v_products_image',
 							'$v_products_model',
 							'1',
 							'1',
@@ -2124,9 +2121,6 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 								'$v_products_page_url',
 								'$v_products_price',
 								'$v_db_status',
-									CURRENT_TIMESTAMP,
-								$v_date_added,
-								$v_date_avail,
 								'$v_tax_class_id',
 								'$v_products_weight',
 								'$v_products_quantity',
@@ -2150,8 +2144,7 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					group_permission_0="1" ,
 					group_permission_1="1" ,
 					group_permission_2="1" ,
-					group_permission_3="1" ,
-					products_image="'.$v_products_image;
+					group_permission_3="1';
 
 			// uncomment these lines if you are running the image mods
 			$query .= '", products_weight="'.$v_products_weight .
