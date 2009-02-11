@@ -66,5 +66,13 @@
 </td></tr></table>
 <!-- desc eof -->
 
+<p>
+{if $extra_fields_data}
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+{/foreach}
+{/if}
+</p>
+
 </body>
 </html>
