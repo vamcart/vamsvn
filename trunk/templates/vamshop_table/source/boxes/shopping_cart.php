@@ -12,7 +12,7 @@
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(shopping_cart.php,v 1.18 2003/02/10); www.oscommerce.com
    (c) 2003	 nextcommerce (shopping_cart.php,v 1.15 2003/08/17); www.nextcommerce.org 
-   (c) 2004	 xt:Commerce (shopping_cart.php,v 1.15 2003/08/17); xt-commerce.com 
+   (c) 2004	 xt:Commerce (shopping_cart.php,v 1.15 2003/08/13); xt-commerce.com 
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -96,6 +96,7 @@ if (isset ($_SESSION['cc_id'])) {
 }
 // GV Code End
 $box->assign('LINK_CART', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$box->assign('LINK_CHECKOUT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $box->assign('products', $products_in_cart);
 
 $box->caching = 0;
