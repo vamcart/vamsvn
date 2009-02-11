@@ -1442,6 +1442,11 @@ p.CartContentRight
      padding-right: 0.2em;
    }
 
+p.CartContentCenter
+   {
+     text-align: center;
+   }
+
 /*- /Бокс корзина */
 
 /*- Бокс вход/админ */
