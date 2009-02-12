@@ -50,6 +50,7 @@
             $tax_flag = 'true';
         } else if ($totals['class'] == 'ot_shipping') {
             $analytics_shipping = $totals['value'];
+			{ if ($analytics_shipping === "0.0000") $analytics_shipping = ''; }
             $shipping_flag = 'true';
         }
 
