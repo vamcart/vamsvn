@@ -2486,7 +2486,7 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 						// options_values_prices table update begin
 						// insert into options_values_prices table if no price exists
 						if (vam_db_num_rows($attribute_prices_values) <= 0) {
-							$attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . (int)$$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "')";
+							$attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . $$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "')";
 
 							$attribute_prices_insert = vam_db_query($attribute_prices_insert_query);
 						} else { // update options table, if options already exists
