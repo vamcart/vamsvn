@@ -1639,7 +1639,7 @@ CREATE TABLE post_index (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.48');
+INSERT INTO database_version(version) VALUES ('1.49');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
