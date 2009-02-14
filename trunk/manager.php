@@ -151,6 +151,7 @@
        
           mysql_free_result($result);
           mysql_close();
+          header('HTTP/1.1 404 Not Found');
           $PHP_SELF = '/index.php';
           include('index.php');
           
