@@ -19,6 +19,7 @@
 
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_TITLE', 'WebMoney Merchant');
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_PUBLIC_TITLE', 'WebMoney Merchant');
+  define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты WebMoney Merchant<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/node/343" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   
   define('MODULE_PAYMENT_WEBMONEYMERCHANT_TEXT_TYPE','Способ оплаты:');
@@ -39,7 +40,7 @@ define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER_TITLE' , 'Порядок с�
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY_TITLE' , 'Укажите Ваш секретный ключ');
+define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY_TITLE' , 'Секретный ключ');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ, указанный в опции Secret Key на сайте WebMoney Merchant.');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
