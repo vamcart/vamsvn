@@ -408,6 +408,8 @@
           $co_id = $parsed_param[1];
         } elseif ($parsed_param[0] === 'language') {
           $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'action') {
+          $action = $parsed_param[1];
         } elseif ($parsed_param[0] === 'currency') {
           $currency = $parsed_param[1];
         } 
@@ -441,6 +443,10 @@
 
           if (vam_not_null($language)) {
             $co_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($action)) {
+            $co_url .= '?action=' . $action;
           }
 
           if (vam_not_null($currency)) {
