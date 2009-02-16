@@ -39,8 +39,8 @@ define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER_TITLE' , 'Порядок с�
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_WEBMONEY_MERCHANT_PREPARE_ORDER_STATUS_ID_TITLE' , 'Укажите статус заказа, ожидающий оплаты');
-define('MODULE_PAYMENT_WEBMONEY_MERCHANT_PREPARE_ORDER_STATUS_ID_DESC' , 'Укажите статус заказа, ожидающий оплаты.');
+define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY_TITLE' , 'Укажите Ваш секретный ключ');
+define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ, указанный в опции Secret Key на сайте WebMoney Merchant.');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
   
