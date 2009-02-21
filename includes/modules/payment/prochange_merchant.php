@@ -27,15 +27,9 @@
       $this->code = 'prochange_merchant';
       $this->title = MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_TITLE;
       $this->public_title = MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_PUBLIC_TITLE;
-      $this->description = MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_DESCRIPTION;
+      $this->description = MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_ADMIN_DESCRIPTION;
       $this->sort_order = MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS == 'True') ? true : false);
-
-      if ((int)MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID > 0) {
-        $this->order_status = MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID;
-      }
-
-      if (is_object($order)) $this->update_status();
 
         $this->form_action_url = 'http://merchant.prochange.ru/pay.pro';
     }
@@ -308,7 +302,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = vam_draw_hidden_field('PRO_FIELD_1', substr($cart_prochange_id, strpos($cart_prochange_id, '-')+1)) .
                                vam_draw_hidden_field('PRO_CLIENT', MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_CLIENT) .
                                vam_draw_hidden_field('PRO_RA', MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_RA) .
-                               vam_draw_hidden_field('PRO_PAYMENT_DESC', vam_cleanName('Заказ номер: ' . substr($cart_prochange_id, strpos($cart_prochange_id, '-')+1) . ', покупатель номер: ' . $_SESSION['customer_id'])) .
+                               vam_draw_hidden_field('PRO_PAYMENT_DESC', substr($_SESSION['cart_prochange_id'], strpos($_SESSION['cart_prochange_id'], '-')+1)) .
                                vam_draw_hidden_field('PRO_SUMMA', $order_sum);
 
       return $process_button_string;
@@ -319,31 +313,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $$payment;
 
       $order_id = substr($_SESSION['cart_prochange_id'], strpos($_SESSION['cart_prochange_id'], '-')+1);
-
-      $check_query = vam_db_query("select orders_status from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
-      if (vam_db_num_rows($check_query)) {
-        $check = vam_db_fetch_array($check_query);
-
-        if ($check['orders_status'] == MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID) {
-          $sql_data_array = array('orders_id' => $order_id,
-                                  'orders_status_id' => MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID,
-                                  'date_added' => 'now()',
-                                  'customer_notified' => '0',
-                                  'comments' => '');
-
-          vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
-        }
-      }
-
-      vam_db_query("update " . TABLE_ORDERS . " set orders_status = '" . (MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID > 0 ? (int)MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID : (int)DEFAULT_ORDERS_STATUS_ID) . "', last_modified = now() where orders_id = '" . (int)$order_id . "'");
-
-      $sql_data_array = array('orders_id' => $order_id,
-                              'orders_status_id' => (MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID > 0 ? (int)MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID : (int)DEFAULT_ORDERS_STATUS_ID),
-                              'date_added' => 'now()',
-                              'customer_notified' => (SEND_EMAILS == 'true') ? '1' : '0',
-                              'comments' => $order->info['comments']);
-
-      vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
 // initialized for the email confirmation
       $products_ordered = '';
@@ -532,7 +501,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_RA', '', '6', '6', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER', '0', '6', '7', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID', '0', '6', '9', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY', '', '6', '9', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
@@ -541,7 +510,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ALLOWED', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_CLIENT', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_RA', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ZONE', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ALLOWED', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_CLIENT', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_PRO_RA', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ZONE', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID');
     }
 
   }
