@@ -30,7 +30,7 @@ require('includes/application_top.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 // variables prepearing
-$crc = get_var('MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY');
+$crc = get_var('PRO_SECRET_KEY');
 
 $inv_id = get_var('PRO_FIELD_1');
 
