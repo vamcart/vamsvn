@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: prochange_merchant.php 998 2007/02/07 13:24:46 VaM $
+   $Id: prochange_merchant.php 998 2009/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -20,6 +20,7 @@
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_TITLE', 'Яндекс-деньги (Через ЯД Мерчант)');
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс-деньги (Через ЯД Мерчант)');
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
+  define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс-деньги (Через ЯД Мерчант)<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/node/344" target="_blank"><u>здесь</u></a>.');
   
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс-деньги');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
@@ -33,8 +34,8 @@ define('MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER_TITLE' , 'Порядок с
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID_TITLE' , 'Укажите статус заказа, ожидающий оплаты');
-define('MODULE_PAYMENT_PROCHANGE_MERCHANT_PREPARE_ORDER_STATUS_ID_DESC' , 'Укажите статус заказа, ожидающий оплаты.');
+define('MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY_TITLE' , 'Секретный ключ');
+define('MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ, указанный в опции Секретный ключ на сайте ЯД Мерчант (http://prochange.ru/merchant.html).');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
   
