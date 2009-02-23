@@ -184,19 +184,27 @@ class image_manipulation
 		$this->mw = $this->md[0];
 		$this->mh = $this->md[1];
 		$this->mm = ($this->md[2] < 4) ? ($this->md[2] < 3) ? ($this->md[2] < 2) ? imagecreatefromgif($this->mi) : imagecreatefromjpeg($this->mi) : imagecreatefrompng($this->mi) : Null;
-		for($this->ypo = 0; $this->ypo < $this->mh; $this->ypo++)
+		if ($this->md[2] == 3) // Если PNG, то сливаем картинки с альфаканалом от пнг.
+		{
+			ImageAlphaBlending($this->t, true); 
+			ImageCopy($this->t, $this->mm, $this->xx, $this->yy, 0, 0, $this->mw, $this->mh); 
+		}
+		else // Для GIF и JPEG
+		{
+			for($this->ypo = 0; $this->ypo < $this->mh; $this->ypo++)
 			{
-			for($this->xpo = 0; $this->xpo < $this->mw; $this->xpo++)
-				{
-				$this->indx_ref = @imagecolorat($this->mm, $this->xpo, $this->ypo);
-				$this->indx_rgb = @imagecolorsforindex($this->mm, $this->indx_ref);
-				if(($this->indx_rgb['red'] == $this->tr) && ($this->indx_rgb['green'] == $this->tg) && ($this->indx_rgb['blue'] == $this->tb))
+				for($this->xpo = 0; $this->xpo < $this->mw; $this->xpo++)
 					{
-					// transparent colour, so ignore merging this pixel
-					}
-				else
-					{
+					$this->indx_ref = @imagecolorat($this->mm, $this->xpo, $this->ypo);
+					$this->indx_rgb = @imagecolorsforindex($this->mm, $this->indx_ref);
+					if(($this->indx_rgb['red'] == $this->tr) && ($this->indx_rgb['green'] == $this->tg) && ($this->indx_rgb['blue'] == $this->tb))
+						{
+						// transparent colour, so ignore merging this pixel
+						}
+					else
+						{
 					@imagecopymerge($this->t, $this->mm, $this->xx+$this->xpo, $this->yy+$this->ypo, $this->xpo, $this->ypo, 1, 1, $this->mo);
+						}
 					}
 				}
 			}
