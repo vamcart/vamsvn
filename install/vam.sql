@@ -1628,16 +1628,6 @@ create table cip_depend (
   PRIMARY KEY (cip_ident)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
-DROP table IF EXISTS post_index;
-CREATE TABLE post_index (
-  Id int(6) unsigned NOT NULL auto_increment,
-  tax_zone_id int(1) NOT NULL default '0',
-  low int(7) NOT NULL default '0',
-  high int(7) NOT NULL default '0',
-  mono int(7) NOT NULL default '0',
-  PRIMARY KEY  (Id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
-
 #database Version
 INSERT INTO database_version(version) VALUES ('1.49');
 
@@ -3135,21 +3125,3 @@ INSERT INTO customers_status (customers_status_id, language_id, customers_status
 INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (2, 1, 'Покупатель', 1, NULL, NULL, 'customer_status.gif', 0.00, '0', 0.00, '1', 1, 1, 0, '', '', 0, 1, 1, 1, 1, 0.00);
 
 INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (3, 1, 'Оптовый покупатель', 1, NULL, NULL, 'merchant_status.gif', 0.00, '0', 0.00, '1', 1, 0, 0, '', '', 0, 1, 1, 1, 1, 0.00);
-
-INSERT INTO post_index VALUES
-(1, 1, 101000, 663981, 0),
-(2, 1, 667000, 668551, 0),
-(3, 1, 901951, 901989, 0),
-(4, 1, 0, 0, 901991),
-(5, 1, 0, 0, 901034),
-(6, 1, 0, 0, 901072),
-(7, 1, 0, 0, 901073),
-(8, 1, 0, 0, 901075),
-(9, 1, 0, 0, 901993),
-(10, 4, 664000, 666960, 0),
-(11, 4, 669000, 678997, 0),
-(12, 4, 687000, 687510, 0),
-(13, 5, 679000, 686442, 0),
-(14, 5, 688000, 694923, 0),
-(15, 5, 0, 0, 901050),
-(16, 5, 0, 0, 901071);
