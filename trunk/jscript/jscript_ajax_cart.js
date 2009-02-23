@@ -58,8 +58,8 @@ loadingImage.src = "images/loading.gif";
 okImage.src = "images/ok.gif";
 
 if (window.opera || (navigator.userAgent.indexOf('MSIE') > -1)) { //IE + Opera
-  getM_x = function () { return event.clientX + document.body.scrollLeft; }
-  getM_y = function () { return event.clientY + document.body.scrollTop; }
+  getM_x = function () { return event.pageX || (event.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)) || 0;}
+  getM_y = function () { return event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)) || 0;}
 } else { // Mozilla
   addHandler(document, 'mousemove', function(e) {
     x = e.pageX;
