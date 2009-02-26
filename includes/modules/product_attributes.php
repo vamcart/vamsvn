@@ -101,6 +101,7 @@ if ($product->getAttributesCount() > 0) {
 					$attr_price=$price;
 					if ($products_options['price_prefix']=="-") $attr_price=$price*(-1);
 					$full_price = $products_price + $attr_price;
+					$price_plain = $vamPrice->Format($price, false);
 					$price = $vamPrice->Format($price, true);
 					$full_price = $vamPrice->Format($full_price, true);
 			}
@@ -116,6 +117,7 @@ if ($product->getAttributesCount() > 0) {
 			'MODEL' => $products_options['attributes_model'], 
 			'STOCK' => $products_options['attributes_stock'], 
 			'PRICE' => $price, 
+			'PRICE_PLAIN' => $price_plain, 
 			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix']
 			
 			);
