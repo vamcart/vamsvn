@@ -503,7 +503,7 @@
 		// class methods
     	function quote($method = '')
     	{
-			global $order, $shipping_weight, $xtPrice;
+			global $order, $shipping_weight, $vamPrice;
 
    			$home = false;
 
@@ -653,7 +653,7 @@
 						$delivery = $shipping+(($shipping/100)*$burden);
 
 					elseif($burden_method == 'products' && $burden_proc)
-						$delivery = $shipping+(($xtPrice->xtcRemoveCurr($_SESSION['cart']->show_total())/100)*$burden);
+						$delivery = $shipping+(($vamPrice->RemoveCurr($_SESSION['cart']->show_total())/100)*$burden);
 
 					elseif($burden_method == 'all'  && $burden_proc)
                          $delivery = $shipping+
