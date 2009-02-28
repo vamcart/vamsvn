@@ -2165,7 +2165,7 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 		// the following is common in both the updating an existing product and creating a new product
 		if ( isset($v_products_name)){
 			foreach( $v_products_name as $key => $name){
-							if ($name!=''){
+							if ($name!='' or $v_products_description[$key] !=''){
 					$sql = "SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE
 							products_id = $v_products_id AND
 							language_id = " . $key;
