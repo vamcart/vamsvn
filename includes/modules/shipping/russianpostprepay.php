@@ -501,7 +501,7 @@
 		// class methods
     	function quote($method = '')
     	{
-			global $order, $shipping_weight, $xtPrice;
+			global $order, $shipping_weight, $vamPrice;
 
    			$home = false;
 
