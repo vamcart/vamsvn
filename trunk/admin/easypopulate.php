@@ -1358,6 +1358,7 @@ break;
 		$filelayout = array(
 			'v_products_id'   => $iii++,  //added
 			'v_products_model'    => $iii++,
+			'v_products_image'    => $iii++,
 			'v_products_name_1'    => $iii++,
 			'v_products_page_url'    => $iii++,
 			'v_products_price'    => $iii++,
@@ -1378,6 +1379,7 @@ break;
 		$filelayout_sql = "SELECT
 			p.products_id as v_products_id,
 			p.products_model as v_products_model,
+			p.products_image as v_products_image,
 			pd.products_name as v_products_name,
 			p.products_page_url as v_products_page_url,
 			p.products_price as v_products_price,
@@ -1413,6 +1415,7 @@ break;
 		$filelayout_sql = "SELECT
 			p.products_id as v_products_id,
 			p.products_model as v_products_model,
+			p.products_image as v_products_image,
 			p.products_page_url as v_products_page_url,
 			subc.categories_id as v_categories_id
 			FROM
@@ -2098,6 +2101,7 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 
 			$query = "INSERT INTO ".TABLE_PRODUCTS." (
 							products_id,
+					products_image,
 					products_model,
 					group_permission_0,
 					group_permission_1,
@@ -2113,6 +2117,7 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					manufacturers_id)
 						VALUES (
 							 '$v_products_id',
+							'$v_products_image',
 							'$v_products_model',
 							'1',
 							'1',
@@ -2144,7 +2149,8 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					group_permission_0="1" ,
 					group_permission_1="1" ,
 					group_permission_2="1" ,
-					group_permission_3="1';
+					group_permission_3="1" ,
+					products_image="'.$v_products_image;
 
 			// uncomment these lines if you are running the image mods
 			$query .= '", products_weight="'.$v_products_weight .
