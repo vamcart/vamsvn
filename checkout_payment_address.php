@@ -47,6 +47,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 		if (ACCOUNT_COMPANY == 'true')
 			$company = vam_db_prepare_input($_POST['company']);
 		$firstname = vam_db_prepare_input($_POST['firstname']);
+	if (ACCOUNT_SECOND_NAME == 'true')
+	$secondname = vam_db_prepare_input($_POST['secondname']);
 		$lastname = vam_db_prepare_input($_POST['lastname']);
       if (ACCOUNT_STREET_ADDRESS == 'true')
 		$street_address = vam_db_prepare_input($_POST['street_address']);
@@ -144,7 +146,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 		}
 
 		if ($error == false) {
-			$sql_data_array = array ('customers_id' => $_SESSION['customer_id'], 'entry_firstname' => $firstname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => $country);
+			$sql_data_array = array ('customers_id' => $_SESSION['customer_id'], 'entry_firstname' => $firstname, 'entry_secondname' => $secondname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => $country);
 
 			if (ACCOUNT_GENDER == 'true')
 				$sql_data_array['entry_gender'] = $gender;
@@ -229,7 +231,7 @@ if ($process == false) {
 		$address_content = '';
 		$radio_buttons = 0;
 
-		$addresses_query = vam_db_query("select address_book_id, entry_firstname as firstname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".$_SESSION['customer_id']."'");
+		$addresses_query = vam_db_query("select address_book_id, entry_firstname as firstname, entry_secondname as secondname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".$_SESSION['customer_id']."'");
 		while ($addresses = vam_db_fetch_array($addresses_query)) {
 			$format_id = vam_get_address_format_id($address['country_id']);
 			$address_content .= '';
@@ -238,7 +240,7 @@ if ($process == false) {
 			} else {
 				$address_content .= ''."\n";
 			}
-			$address_content .= '<p><span class="bold">'.$addresses['firstname'].' '.$addresses['lastname'].'</span>&nbsp;'.vam_draw_radio_field('address', $addresses['address_book_id'], ($addresses['address_book_id'] == $_SESSION['billto'])).'</p>
+			$address_content .= '<p><span class="bold">'.$addresses['firstname'].' '.$addresses['secondname'].' '.$addresses['lastname'].'</span>&nbsp;'.vam_draw_radio_field('address', $addresses['address_book_id'], ($addresses['address_book_id'] == $_SESSION['billto'])).'</p>
 			                        <p>'.vam_address_format($format_id, $addresses, true, ' ', ', ').'</p>';
 
 			$radio_buttons ++;
