@@ -39,6 +39,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	if (ACCOUNT_GENDER == 'true')
 		$gender = vam_db_prepare_input($_POST['gender']);
 	$firstname = vam_db_prepare_input($_POST['firstname']);
+	if (ACCOUNT_SECOND_NAME == 'true')
+	$secondname = vam_db_prepare_input($_POST['secondname']);
 	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
 		$dob = vam_db_prepare_input($_POST['dob']);
@@ -121,7 +123,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
   }
 
 	if ($error == false) {
-		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => (int) $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => (int) $customers_vat_id_status, 'customers_firstname' => $firstname, 'customers_secondname' => $secondname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax,'customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $gender;
@@ -174,7 +176,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		vam_redirect(vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 	}
 } else {
-	$account_query = vam_db_query("select customers_gender, customers_cid, customers_vat_id, customers_vat_id_status, customers_firstname, customers_lastname, customers_dob, customers_email_address, customers_telephone, customers_fax from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
+	$account_query = vam_db_query("select customers_gender, customers_cid, customers_vat_id, customers_vat_id_status, customers_firstname, customers_secondname, customers_lastname, customers_dob, customers_email_address, customers_telephone, customers_fax from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
 	$account = vam_db_fetch_array($account_query);
 }
 
@@ -205,6 +207,9 @@ if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $account['customers_firstname'], 'id="firstname"'));
 $vamTemplate->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
+if (ACCOUNT_SECOND_NAME == 'true') {
+	$vamTemplate->assign('secondname', '1');
+$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : ''))));
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
 $vamTemplate->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 $vamTemplate->assign('csID', $account['customers_cid']);
