@@ -110,6 +110,7 @@
       $this->customer = array('id' => $order['customers_id'],
                               'name' => $order['customers_name'],
                               'firstname' => $order['customers_firstname'],
+                              'secondname' => $order['customers_secondname'],
                               'lastname' => $order['customers_lastname'],                            
                               'csID' => $order['customers_cid'],
                               'company' => $order['customers_company'],
@@ -125,6 +126,7 @@
 
       $this->delivery = array('name' => $order['delivery_name'],
       							'firstname' => $order['delivery_firstname'],
+      							'secondname' => $order['delivery_secondname'],
       							'lastname' => $order['delivery_lastname'],
                               'company' => $order['delivery_company'],
                               'street_address' => $order['delivery_street_address'],
@@ -141,6 +143,7 @@
 
       $this->billing = array('name' => $order['billing_name'],
       							'firstname' => $order['billing_firstname'],
+      							'secondname' => $order['billing_secondname'],
       							'lastname' => $order['billing_lastname'],
                              'company' => $order['billing_company'],
                              'street_address' => $order['billing_street_address'],
@@ -270,13 +273,13 @@
 
       $this->content_type = $_SESSION['cart']->get_content_type();
 
-      $customer_address_query = vam_db_query("select c.payment_unallowed,c.shipping_unallowed,c.customers_firstname,c.customers_cid, c.customers_gender,c.customers_lastname, c.customers_telephone, c.customers_email_address, c.orig_reference, c.login_reference, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, co.countries_id, co.countries_name, co.countries_iso_code_2, co.countries_iso_code_3, co.address_format_id, ab.entry_state from " . TABLE_CUSTOMERS . " c, " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " co on (ab.entry_country_id = co.countries_id) where c.customers_id = '" . $_SESSION['customer_id'] . "' and ab.customers_id = '" . $_SESSION['customer_id'] . "' and c.customers_default_address_id = ab.address_book_id");
+      $customer_address_query = vam_db_query("select c.payment_unallowed,c.shipping_unallowed,c.customers_firstname,c.customers_secondname,c.customers_cid, c.customers_gender,c.customers_lastname, c.customers_telephone, c.customers_email_address, c.orig_reference, c.login_reference, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, co.countries_id, co.countries_name, co.countries_iso_code_2, co.countries_iso_code_3, co.address_format_id, ab.entry_state from " . TABLE_CUSTOMERS . " c, " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " co on (ab.entry_country_id = co.countries_id) where c.customers_id = '" . $_SESSION['customer_id'] . "' and ab.customers_id = '" . $_SESSION['customer_id'] . "' and c.customers_default_address_id = ab.address_book_id");
       $customer_address = vam_db_fetch_array($customer_address_query);
 
-      $shipping_address_query = vam_db_query("select ab.entry_firstname, ab.entry_lastname, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id, c.countries_id, c.countries_name, c.countries_iso_code_2, c.countries_iso_code_3, c.address_format_id, ab.entry_state from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . $_SESSION['sendto'] . "'");
+      $shipping_address_query = vam_db_query("select ab.entry_firstname, ab.entry_secondname, ab.entry_lastname, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id, c.countries_id, c.countries_name, c.countries_iso_code_2, c.countries_iso_code_3, c.address_format_id, ab.entry_state from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . $_SESSION['sendto'] . "'");
       $shipping_address = vam_db_fetch_array($shipping_address_query);
       
-      $billing_address_query = vam_db_query("select ab.entry_firstname, ab.entry_lastname, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id, c.countries_id, c.countries_name, c.countries_iso_code_2, c.countries_iso_code_3, c.address_format_id, ab.entry_state from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . $_SESSION['billto'] . "'");
+      $billing_address_query = vam_db_query("select ab.entry_firstname, ab.entry_secondname, ab.entry_lastname, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id, c.countries_id, c.countries_name, c.countries_iso_code_2, c.countries_iso_code_3, c.address_format_id, ab.entry_state from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . $_SESSION['billto'] . "'");
       $billing_address = vam_db_fetch_array($billing_address_query);
 
       $tax_address_query = vam_db_query("select ab.entry_country_id, ab.entry_zone_id from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . ($this->content_type == 'virtual' ? $_SESSION['billto'] : $_SESSION['sendto']) . "'");
@@ -309,6 +312,7 @@
       }
 
       $this->customer = array('firstname' => $customer_address['customers_firstname'],
+                              'secondname' => $customer_address['customers_secondname'],
                               'lastname' => $customer_address['customers_lastname'],
                               'csID' => $customer_address['customers_cid'],
                               'gender' => $customer_address['customers_gender'],
@@ -329,6 +333,7 @@
                               'login_reference' => $customer_address['login_reference']);  //*******
 
       $this->delivery = array('firstname' => $shipping_address['entry_firstname'],
+                              'secondname' => $shipping_address['entry_secondname'],
                               'lastname' => $shipping_address['entry_lastname'],
                               'company' => $shipping_address['entry_company'],
                               'street_address' => $shipping_address['entry_street_address'],
@@ -342,6 +347,7 @@
                               'format_id' => $shipping_address['address_format_id']);
 
       $this->billing = array('firstname' => $billing_address['entry_firstname'],
+                             'secondname' => $billing_address['entry_secondname'],
                              'lastname' => $billing_address['entry_lastname'],
                              'company' => $billing_address['entry_company'],
                              'street_address' => $billing_address['entry_street_address'],
