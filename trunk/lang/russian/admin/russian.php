@@ -215,6 +215,7 @@ define('CATEGORY_CONTACT', 'Для контакта');
 define('CATEGORY_COMPANY', 'Компания');
 define('CATEGORY_OPTIONS', 'Настройки');
 
+define('ENTRY_SECOND_NAME', 'Отчество:');
 define('ENTRY_GENDER', 'Пол:');
 define('ENTRY_GENDER_ERROR', '&nbsp;<span class="errorText">обязательно</span>');
 define('ENTRY_FIRST_NAME', 'Имя:');
