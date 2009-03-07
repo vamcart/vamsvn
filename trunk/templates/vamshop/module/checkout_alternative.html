@@ -16,6 +16,8 @@
 <p><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
 <p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{/if}
 <p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
 {if $birthdate=='1'} 
 <p><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label> {$INPUT_DOB}</p>
