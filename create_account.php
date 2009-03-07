@@ -55,6 +55,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	if (ACCOUNT_GENDER == 'true')
 		$gender = vam_db_prepare_input($_POST['gender']);
 	$firstname = vam_db_prepare_input($_POST['firstname']);
+	if (ACCOUNT_SECOND_NAME == 'true')
+	$secondname = vam_db_prepare_input($_POST['secondname']);
 	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
 		$dob = vam_db_prepare_input($_POST['dob']);
@@ -222,7 +224,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	if (!$newsletter)
 		$newsletter = 0;
 	if ($error == false) {
-		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_status' => $customers_status, 'customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax, 'orig_reference' => $html_referer, 'customers_newsletter' => $newsletter, 'customers_password' => vam_encrypt_password($password),'customers_date_added' => 'now()','customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_vat_id' => $vat, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_status' => $customers_status, 'customers_firstname' => $firstname, 'customers_secondname' => $secondname, 'customers_lastname' => $lastname, 'customers_email_address' => $email_address, 'customers_telephone' => $telephone, 'customers_fax' => $fax, 'orig_reference' => $html_referer, 'customers_newsletter' => $newsletter, 'customers_password' => vam_encrypt_password($password),'customers_date_added' => 'now()','customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $gender;
@@ -270,7 +272,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 		$user_id = vam_db_insert_id();
 		vam_write_user_info($user_id);
-		$sql_data_array = array ('customers_id' => $_SESSION['customer_id'], 'entry_firstname' => $firstname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => $country,'address_date_added' => 'now()','address_last_modified' => 'now()');
+		$sql_data_array = array ('customers_id' => $_SESSION['customer_id'], 'entry_firstname' => $firstname, 'entry_secondname' => $secondname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => $country,'address_date_added' => 'now()','address_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['entry_gender'] = $gender;
@@ -304,6 +306,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		}
 
 		$_SESSION['customer_first_name'] = $firstname;
+		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
@@ -419,6 +422,7 @@ if (ACCOUNT_GENDER == 'true') {
 
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), '', 'id="firstname"'));
 $vamTemplate->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
+$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : ''))));
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'id="lastname"'));
 $vamTemplate->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 
