@@ -26,6 +26,7 @@ function vam_address_format($address_format_id, $address, $html, $boln, $eoln) {
 
     $company = addslashes($address['company']);
     $firstname = addslashes($address['firstname']);
+    $secondname = addslashes($address['secondname']);
     $lastname = addslashes($address['lastname']);
     $street = addslashes($address['street_address']);
     $suburb = addslashes($address['suburb']);
