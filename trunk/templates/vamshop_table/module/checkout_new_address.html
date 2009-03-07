@@ -26,7 +26,7 @@
     <td class="main" ><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_FIRSTNAME}</td>
   </tr>
-  <tr> 
+{if $secondname=='1'}  <tr>     <td class="main">{#text_secondname#}</td>    <td class="inputRequirement" >{$INPUT_SECONDNAME}</td>  </tr>  {/if}  <tr> 
     <td class="main"><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label></td>
     <td class="inputRequirement" align="left">{$INPUT_LASTNAME}</td>
   </tr>
