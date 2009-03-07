@@ -1777,11 +1777,11 @@ INSERT INTO content_manager VALUES (11, 0, 0, '', 1, 'Вопросы и отве
 <p align="right" style="line-height: 100%; word-spacing: 0; text-indent: 0; margin: 0">&nbsp;</p>', '', 0, 2, '', 1, 11, 0,'','','','');
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
-INSERT INTO address_format VALUES (1, '$firstname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
-INSERT INTO address_format VALUES (2, '$firstname $lastname$cr$streets$cr$city, $state    $postcode$cr$country','$city, $state / $country');
-INSERT INTO address_format VALUES (3, '$firstname $lastname$cr$streets$cr$city$cr$postcode - $statecomma$country','$state / $country');
-INSERT INTO address_format VALUES (4, '$firstname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
-INSERT INTO address_format VALUES (5, '$firstname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
+INSERT INTO address_format VALUES (1, '$firstname $secondname$lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
+INSERT INTO address_format VALUES (2, '$firstname $secondname$lastname$cr$streets$cr$city, $state    $postcode$cr$country','$city, $state / $country');
+INSERT INTO address_format VALUES (3, '$firstname $secondname$lastname$cr$streets$cr$city$cr$postcode - $statecomma$country','$state / $country');
+INSERT INTO address_format VALUES (4, '$firstname $secondname$lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
+INSERT INTO address_format VALUES (5, '$firstname $secondname$lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
 
 INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
