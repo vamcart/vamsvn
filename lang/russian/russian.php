@@ -97,6 +97,7 @@ define('ENTRY_GENDER_ERROR', 'Вы должны указать свой пол.'
 define('ENTRY_GENDER_TEXT', '*');
 define('ENTRY_FIRST_NAME_ERROR', 'Поле Имя должно содержать как минимум ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символа.');
 define('ENTRY_FIRST_NAME_TEXT', '*');
+define('ENTRY_SECOND_NAME_TEXT', '');
 define('ENTRY_LAST_NAME_ERROR', 'Поле Фамилия должно содержать как минимум ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символа.');
 define('ENTRY_LAST_NAME_TEXT', '*');
 define('ENTRY_DATE_OF_BIRTH_ERROR', 'Дату рождения необходимо вводить в следующем формате: DD/MM/YYYY (пример 21/05/1970)');
