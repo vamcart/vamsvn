@@ -49,6 +49,8 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	if (ACCOUNT_COMPANY == 'true')
 		$company = vam_db_prepare_input($_POST['company']);
 	$firstname = vam_db_prepare_input($_POST['firstname']);
+	if (ACCOUNT_SECOND_NAME == 'true')
+	$secondname = vam_db_prepare_input($_POST['secondname']);
 	$lastname = vam_db_prepare_input($_POST['lastname']);
    if (ACCOUNT_STREET_ADDRESS == 'true')
 	   $street_address = vam_db_prepare_input($_POST['street_address']);
@@ -145,7 +147,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
 
 	if ($error == false) {
-		$sql_data_array = array ('entry_firstname' => $firstname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => (int) $country,'address_last_modified' => 'now()');
+		$sql_data_array = array ('entry_firstname' => $firstname, 'entry_secondname' => $secondname, 'entry_lastname' => $lastname, 'entry_street_address' => $street_address, 'entry_postcode' => $postcode, 'entry_city' => $city, 'entry_country_id' => (int) $country,'address_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['entry_gender'] = $gender;
@@ -169,11 +171,12 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 			// reregister session variables
 			if ((isset ($_POST['primary']) && ($_POST['primary'] == 'on')) || ($_GET['edit'] == $_SESSION['customer_default_address_id'])) {
 				$_SESSION['customer_first_name'] = $firstname;
+				$_SESSION['customer_second_name'] = $secondname;
 				$_SESSION['customer_country_id'] = $country_id;
 				$_SESSION['customer_zone_id'] = (($zone_id > 0) ? (int) $zone_id : '0');
 				$_SESSION['customer_default_address_id'] = (int) $_GET['edit'];
 
-				$sql_data_array = array ('customers_firstname' => $firstname, 'customers_lastname' => $lastname, 'customers_default_address_id' => (int) $_GET['edit'],'customers_last_modified' => 'now()');
+				$sql_data_array = array ('customers_firstname' => $firstname, 'customers_secondname' => $secondname, 'customers_lastname' => $lastname, 'customers_default_address_id' => (int) $_GET['edit'],'customers_last_modified' => 'now()');
 
 				if (ACCOUNT_GENDER == 'true')
 					$sql_data_array['customers_gender'] = $gender;
@@ -190,12 +193,13 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 			// reregister session variables
 			if (isset ($_POST['primary']) && ($_POST['primary'] == 'on')) {
 				$_SESSION['customer_first_name'] = $firstname;
+				$_SESSION['customer_second_name'] = $secondname;
 				$_SESSION['customer_country_id'] = $country_id;
 				$_SESSION['customer_zone_id'] = (($zone_id > 0) ? (int) $zone_id : '0');
 				if (isset ($_POST['primary']) && ($_POST['primary'] == 'on'))
 					$_SESSION['customer_default_address_id'] = $new_address_book_id;
 
-				$sql_data_array = array ('customers_firstname' => $firstname, 'customers_lastname' => $lastname,'customers_last_modified' => 'now()','customers_date_added' => 'now()');
+				$sql_data_array = array ('customers_firstname' => $firstname, 'customers_secondname' => $secondname, 'customers_lastname' => $lastname,'customers_last_modified' => 'now()','customers_date_added' => 'now()');
 
 				if (ACCOUNT_GENDER == 'true')
 					$sql_data_array['customers_gender'] = $gender;
@@ -213,7 +217,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 }
 
 if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-	$entry_query = vam_db_query("select entry_gender, entry_company, entry_firstname, entry_lastname, entry_street_address, entry_suburb, entry_postcode, entry_city, entry_state, entry_zone_id, entry_country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $_SESSION['customer_id']."' and address_book_id = '".(int) $_GET['edit']."'");
+	$entry_query = vam_db_query("select entry_gender, entry_company, entry_firstname, entry_secondname, entry_lastname, entry_street_address, entry_suburb, entry_postcode, entry_city, entry_state, entry_zone_id, entry_country_id from ".TABLE_ADDRESS_BOOK." where customers_id = '".(int) $_SESSION['customer_id']."' and address_book_id = '".(int) $_GET['edit']."'");
 
 	if (vam_db_num_rows($entry_query) == false) {
 		$messageStack->add_session('addressbook', ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY);
