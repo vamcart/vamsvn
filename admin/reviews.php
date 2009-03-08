@@ -146,7 +146,7 @@
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top" class="main"><b><?php echo ENTRY_REVIEW; ?></b><br /><br /><?php echo nl2br(vam_db_output(vam_break_string($rInfo->reviews_text, 15))); ?></td>
+            <td valign="top" class="main"><b><?php echo ENTRY_REVIEW; ?></b><br /><br /><?php echo nl2br(vam_db_output($rInfo->reviews_text)); ?></td>
           </tr>
         </table></td>
       </tr>
