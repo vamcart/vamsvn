@@ -617,14 +617,22 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	}
 ?></td>
           </tr>
+<?php
+
+	if (ACCOUNT_SECOND_NAME == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_SECOND_NAME; ?></td>
             <td class="main"><?php
 
-		echo vam_draw_input_field('customers_secondname', $cInfo->customers_secondname, 'maxlength="32"', true);
+		echo vam_draw_input_field('customers_secondname', $cInfo->customers_secondname, 'maxlength="32"', false);
 
 ?></td>
           </tr>
+<?php
+
+	}
+?>
           <tr>
             <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>
             <td class="main"><?php
