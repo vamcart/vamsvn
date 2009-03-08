@@ -40,6 +40,7 @@ if ($customers_password == '') {
 }
 if ($_GET['action'] == 'edit') {
 	$customers_firstname = vam_db_prepare_input($_POST['customers_firstname']);
+	$customers_secondname = vam_db_prepare_input($_POST['customers_secondname']);
 	$customers_cid = vam_db_prepare_input($_POST['csID']);
 	$customers_vat_id = vam_db_prepare_input($_POST['customers_vat_id']);
 	$customers_vat_id_status = vam_db_prepare_input($_POST['customers_vat_id_status']);
@@ -290,7 +291,7 @@ $entry_state = $_POST['state'];
       }
 
 	if ($error == false) {
-		$sql_data_array = array ('customers_status' => $customers_status_c, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $customers_firstname, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_password' => $customers_password,'customers_date_added' => 'now()','customers_last_modified' => 'now()');
+		$sql_data_array = array ('customers_status' => $customers_status_c, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $customers_firstname, 'customers_secondname' => $customers_secondname, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_password' => $customers_password,'customers_date_added' => 'now()','customers_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['customers_gender'] = $customers_gender;
@@ -301,7 +302,7 @@ $entry_state = $_POST['state'];
 
 		$cc_id = vam_db_insert_id();
 
-		$sql_data_array = array ('customers_id' => $cc_id, 'entry_firstname' => $customers_firstname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => $entry_country_id,'address_date_added' => 'now()','address_last_modified' => 'now()');
+		$sql_data_array = array ('customers_id' => $cc_id, 'entry_firstname' => $customers_firstname, 'entry_secondname' => $customers_secondname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => $entry_country_id,'address_date_added' => 'now()','address_last_modified' => 'now()');
 
 		if (ACCOUNT_GENDER == 'true')
 			$sql_data_array['entry_gender'] = $customers_gender;
@@ -446,6 +447,22 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+if (ACCOUNT_SECOND_NAME == 'true') {
+?>
+          <tr>
+            <td class="main"><?php echo ENTRY_SECOND_NAME; ?></td>
+            <td class="main"><?php
+
+	echo vam_draw_input_field('customers_secondname', $customers_secondname, 'maxlength="32"');
+
+?></td>
+          </tr>
+<?php
+
+	}
+?>
           <tr>
             <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>
             <td class="main"><?php
