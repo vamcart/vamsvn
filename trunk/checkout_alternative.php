@@ -77,6 +77,8 @@ $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
 
+$_SESSION['comments'] = vam_db_prepare_input($_POST['comments']);
+
 $shipping_modules = new shipping;
 
 if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING == 'true')) {
