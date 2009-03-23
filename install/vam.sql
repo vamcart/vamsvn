@@ -1230,7 +1230,8 @@ DROP TABLE IF EXISTS products_to_categories;
 CREATE TABLE products_to_categories (
   products_id int NOT NULL,
   categories_id int NOT NULL,
-  PRIMARY KEY (products_id,categories_id)
+  PRIMARY KEY (products_id,categories_id),
+  KEY idx_categories_id (categories_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_vpe;
