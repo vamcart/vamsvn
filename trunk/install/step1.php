@@ -23,6 +23,11 @@
   include('language/'.$_SESSION['language'].'.php');
   require_once(DIR_FS_INC.'vam_image.inc.php');
   require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
+
+ if (@file_exists('config_tempv.php'))
+{
+  include_once('config_tempv.php');
+}
   
 ?>
 
@@ -89,10 +94,10 @@
 
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
-<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
-<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
-<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', DB_HOST, 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
+<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', DB_USER, 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
+<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', DB_PASSWORD, 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', DB_NAME, 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
 </fieldset>
 
 <fieldset class="form">
