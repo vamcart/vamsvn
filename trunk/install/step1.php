@@ -94,10 +94,10 @@
 
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', DB_HOST, 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
-<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', DB_USER, 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
-<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', DB_PASSWORD, 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
-<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', DB_NAME, 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', (!defined('DB_HOST') === false) ? DB_HOST : '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
+<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', (!defined('DB_USER') === false) ? DB_USER : '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
+<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', (!defined('DB_PASSWORD') === false) ? DB_PASSWORD : '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
+<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', (!defined('DB_NAME') === false) ? DB_NAME : '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
 </fieldset>
 
 <fieldset class="form">
