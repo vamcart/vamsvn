@@ -2218,6 +2218,36 @@ INSERT INTO configuration VALUES ('', 'AFFILATE_USE_TIER', 'false', '28', '11', 
 INSERT INTO configuration VALUES ('', 'AFFILIATE_TIER_LEVELS', '0', '28', '12', NULL, now(), NULL, NULL);
 INSERT INTO configuration VALUES ('', 'AFFILIATE_TIER_PERCENTAGE', '8.00;5.00;1.00', '28', '13', NULL, now(), NULL, NULL);
 
+#configuration_group_id 29
+
+INSERT INTO configuration VALUES ('', 'BOX_CATEGORIES', 'true', '29', '1', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_CONTENT', 'true', '29', '2', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_INFORMATION', 'true', '29', '3', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_ADD_QUICKIE', 'true', '29', '4', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_LAST_VIEWED', 'true', '29', '5', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_REVIEWS', 'true', '29', '6', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_SEARCH', 'true', '29', '7', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_SPECIALS', 'true', '29', '8', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_FEATURED', 'true', '29', '9', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_LATESTNEWS', 'true', '29', '10', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_ARTICLES', 'true', '29', '11', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_ARTICLESNEW', 'true', '29', '12', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_AUTHORS', 'true', '29', '13', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_CART', 'true', '29', '14', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_LOGIN', 'true', '29', '15', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_ADMIN', 'true', '29', '16', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_DOWNLOADS', 'true', '29', '17', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_AFFILIATE', 'true', '29', '18', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_WHATSNEW', 'true', '29', '19', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_NEWSLETTER', 'true', '29', '20', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_BESTSELLERS', 'true', '29', '21', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_INFOBOX', 'true', '29', '22', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_CURRENCIES', 'true', '29', '23', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_LANGUAGES', 'true', '29', '24', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_MANUFACTURERS', 'true', '29', '25', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_MANUFACTURERS_INFO', 'true', '29', '26', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration VALUES ('', 'BOX_FAQ', 'true', '29', '27', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+
 INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
 INSERT INTO configuration_group VALUES ('3', 'CG_MAXIMAL_VALUES', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
