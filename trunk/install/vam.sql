@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------------------
-#  $Id: vamshop.sql,v 1.62 2009/09/26 20:24:16 VaM Exp $
+#  $Id: vamshop.sql,v 1.62 2009/04/26 20:24:16 VaM Exp $
 #
 #  VaM Shop - open source ecommerce solution
 #  http://vamshop.com 
