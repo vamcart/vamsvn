@@ -44,7 +44,7 @@
  			$wrapper = 1;
       		foreach($products as $prod)
 			{
-				$signal_num = strpos($prod['model'], MODULE_SHIPPING_RP_WRAPPER_SEPARATOR);
+				$signal_num = strpos($prod['model'], MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_SEPARATOR);
 
 				if ($signal_num === false)
 				{
@@ -52,7 +52,7 @@
 					break;
 				}
 
-				$signal_table = constant('MODULE_SHIPPING_RP_WRAPPER_ISSET');
+				$signal_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_ISSET');
 				$signals = split("[,]", $signal_table);
 				if (!in_array(substr($prod['model'],0, $signal_num), $signals))
 				{
@@ -144,20 +144,20 @@
 			******************************/
 			if($module != 'prepay')
 			{
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RP_PARCEL_STATUS_PF', 'True', '6', '15', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ( 'MODULE_SHIPPING_RP_WRAPPER_STATUS_PF', 'True', '6', '18', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS_PF', 'True', '6', '15', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ( 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS_PF', 'True', '6', '18', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_SORT_ORDER_PF', '9', '6', '24', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PF', '9', '6', '24', now())");
 
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RP_TAX_CLASS_PF', '0', '6', '21', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS_PF', '0', '6', '21', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
 
 				//расходы магазина на наложку
-		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_COST', '0', '6', '74', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_COST', '0', '6', '77', now())");
+		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_COST', '0', '6', '74', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_COST', '0', '6', '77', now())");
 
 			 	//ограничение регионов для наложки
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_LIMITATION_PF', '0', '6', '83', now())");
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_LIMITATION_PF', '0', '6', '86', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_LIMITATION_PF', '0', '6', '83', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_LIMITATION_PF', '0', '6', '86', now())");
 
 				// в какие страны можно посылать наложку
 				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPF_ALLOWED', 'RU', '6', '86', now())");
@@ -172,40 +172,40 @@
 			******************************/
 			if($module == 'prepay')
 			{
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RP_PARCEL_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RP_WRAPPER_STATUS', 'True',  '6', '6', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS', 'True',  '6', '6', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RP_TAX_CLASS', '0', '6', '21', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS', '0', '6', '21', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
 
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_SORT_ORDER_PREPAY', '7', '6', '24', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PREPAY', '7', '6', '24', now())");
 
 				//страны первого уровня - Беларусь, Узбекистан, Эстония
 		   		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,
 				configuration_group_id, sort_order, date_added) values (
-				'MODULE_SHIPPING_RP_COUNTRY_1', '" . $countries[0][0]  ."', '6', '50', now())");
+				'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_1', '" . $countries[0][0]  ."', '6', '50', now())");
 
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_COUNTRY_PRICE_1', '" . $countries[0][1]  ." ',  '6', '53', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_1', '" . $countries[0][1]  ." ',  '6', '53', now())");
 
 				//остальные страны
 		   		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,
 				configuration_group_id, sort_order, date_added) values (
-				'MODULE_SHIPPING_RP_COUNTRY_2', '" . $countries[1][0]  ."', '6', '56', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RP_COUNTRY_PRICE_2', '" . $countries[1][1]  ." ',  '6', '59', now())");
+				'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_2', '" . $countries[1][0]  ."', '6', '56', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_2', '" . $countries[1][1]  ." ',  '6', '59', now())");
 
 				//оценочная сумма
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_INSURANCE_PRICE', '0',  '6', '68', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RP_WRAPPER_INSURANCE_PRICE', '0', '6', '71', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_INSURANCE_PRICE', '0',  '6', '68', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_INSURANCE_PRICE', '0', '6', '71', now())");
 
 
 
-		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_INTER_REG', '0', '6', '85', now())");
+		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_REG', '0', '6', '85', now())");
 
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_INTER_MAXWEIGHT', '10',  '6', '65', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_MAXWEIGHT', '10',  '6', '65', now())");
 
 				//бесплатная доставка
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_FREE', '0', '6', '86', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RP_WRAPPER_FREE', '0', '6', '89', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_INTER_FREE', '0', '6', '92', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_FREE', '0', '6', '86', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ( 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_FREE', '0', '6', '89', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_FREE', '0', '6', '92', now())");
 
 			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_ALLOWED', '', '6', '86', now())");
 			}
@@ -213,16 +213,16 @@
 
             //установка свежего модуля
 			if(
-			   !@in_array(MODULE_SHIPPING_RP_PARCEL_STATUS , $this->settings) &&
-			   !@in_array(MODULE_SHIPPING_RP_WRAPPER_STATUS , $this->settings) &&
-			   !@in_array(MODULE_SHIPPING_RP_PARCEL_STATUS_PF , $this->settings) &&
-			   !@in_array(MODULE_SHIPPING_RP_WRAPPER_STATUS_PF , $this->settings)
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS , $this->settings) &&
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS , $this->settings) &&
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS_PF , $this->settings) &&
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS_PF , $this->settings)
 			   )
 			{
 
 				//вычисление бандероли
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_SEPARATOR', '-', '6', '9', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_ISSET', 'bn,book', '6', '12', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_SEPARATOR', '-', '6', '9', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_ISSET', 'bn,book', '6', '12', now())");
 
 
        	     //внутренние зоны
@@ -232,26 +232,26 @@
   		          	$k = $i -1;
 	   				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,configuration_group_id, sort_order,
 	   				date_added) values (
-					'MODULE_SHIPPING_RP_STATES_" . $i ."', '" . $zones[$k][0] . "', '6', '".(27+$g)."', now())");
+					'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_" . $i ."', '" . $zones[$k][0] . "', '6', '".(27+$g)."', now())");
 
-			        vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_" . $i ."', '" . $zones[$k][1]  ."', '6', '".(27+$g+1)."',  now())");
-			        vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_" . $i ."', '" . $zones[$k][2]  ."', '6', '".(27+$g+2)."',  now())");
+			        vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_" . $i ."', '" . $zones[$k][1]  ."', '6', '".(27+$g+1)."',  now())");
+			        vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_" . $i ."', '" . $zones[$k][2]  ."', '6', '".(27+$g+2)."',  now())");
 			        $g = $g+3;
 	            }
 
 		 		//страховые проценты
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_INSURANCE', '4', '6', '62', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_INSURANCE', '3', '6', '65', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_INSURANCE', '4', '6', '62', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_INSURANCE', '3', '6', '65', now())");
 
 			 	//максимальный вес
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_MAXWEIGHT', '2', '6', '65', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_MAXWEIGHT', '10', '6', '65', now())");
-			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RP_WRAPPERS_OR_PARCEL', 'True', '6', '6', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_MAXWEIGHT', '2', '6', '65', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_MAXWEIGHT', '10', '6', '65', now())");
+			 	vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPERS_OR_PARCEL', 'True', '6', '6', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
 
 				//стоимость оформления почтового отправления
-				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_PARCEL_REG', '0','6', '80', now())");
-		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RP_WRAPPER_REG', '0','6', '83', now())");
+				vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_REG', '0','6', '80', now())");
+		 		vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_REG', '0','6', '83', now())");
 
 		 	}
 	    }
@@ -266,8 +266,8 @@
 			*
 			******************************/
 			if($module != 'prepay' &&
-			   !@in_array(MODULE_SHIPPING_RP_PARCEL_STATUS , $this->settings) &&
-			   !@in_array(MODULE_SHIPPING_RP_WRAPPER_STATUS , $this->settings)
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS , $this->settings) &&
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS , $this->settings)
 			   )
             		vam_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key IN ('" . implode("', '", $this->_keys('all')) . "')");
 
@@ -279,8 +279,8 @@
 			*
 			******************************/
 			if($module == 'prepay' &&
-			   !@in_array(MODULE_SHIPPING_RP_PARCEL_STATUS_PF , $this->settings) &&
-			   !@in_array(MODULE_SHIPPING_RP_WRAPPER_STATUS_PF , $this->settings)
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS_PF , $this->settings) &&
+			   !@in_array(MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS_PF , $this->settings)
 			   )
             		vam_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key IN ('" . implode("', '", $this->_keys('all')) . "')");
 
@@ -293,47 +293,47 @@
 		{
 			//обычная
 			$Pkeys = array(
-			0 => 'MODULE_SHIPPING_RP_PARCEL_STATUS',//вкл./выкл. ПОСЫЛКУ - 1
-			3 => 'MODULE_SHIPPING_RP_WRAPPER_STATUS', //вкл./выкл. БАНДЕРОЛЬ - 1
+			0 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS',//вкл./выкл. ПОСЫЛКУ - 1
+			3 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS', //вкл./выкл. БАНДЕРОЛЬ - 1
 
-			6 => 'MODULE_SHIPPING_RP_TAX_CLASS',//налог
+			6 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS',//налог
 
-			9 => 'MODULE_SHIPPING_RP_SORT_ORDER_PREPAY',//сортировка - 3
+			9 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PREPAY',//сортировка - 3
 
-			45 => 'MODULE_SHIPPING_RP_COUNTRY_1',//коды стран "первого уровня" (Белоруссия, Узбекистан, Эстония)
-			48 => 'MODULE_SHIPPING_RP_COUNTRY_2',//Коды остальных стран (* - любая страна) - *
+			45 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_1',//коды стран "первого уровня" (Белоруссия, Узбекистан, Эстония)
+			48 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_2',//Коды остальных стран (* - любая страна) - *
 
-			46 => 'MODULE_SHIPPING_RP_COUNTRY_PRICE_1',//цены для стран "первого уровня" (Белоруссия, Узбекистан, Эстония)
-			49 => 'MODULE_SHIPPING_RP_COUNTRY_PRICE_2',//цены для остальных стран (* - любая страна) - *
+			46 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_1',//цены для стран "первого уровня" (Белоруссия, Узбекистан, Эстония)
+			49 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_2',//цены для остальных стран (* - любая страна) - *
 
-			55 => 'MODULE_SHIPPING_RP_PARCEL_INSURANCE_PRICE',//оценочная стоимость: 0=стоимость заказа с доставкой;
-			58 => 'MODULE_SHIPPING_RP_WRAPPER_INSURANCE_PRICE',//оценочная стоимость: 0=стоимость заказа с доставкой;
+			55 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_INSURANCE_PRICE',//оценочная стоимость: 0=стоимость заказа с доставкой;
+			58 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_INSURANCE_PRICE',//оценочная стоимость: 0=стоимость заказа с доставкой;
 
-			73 => 'MODULE_SHIPPING_RP_INTER_REG',//цена за оформление международной посылки
+			73 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_REG',//цена за оформление международной посылки
 
-			77 => 'MODULE_SHIPPING_RP_INTER_MAXWEIGHT',//максимальный вес международной посылки
+			77 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_MAXWEIGHT',//максимальный вес международной посылки
 
-			80 => 'MODULE_SHIPPING_RP_PARCEL_FREE',//сумма, при которой доставка ПОСЫЛКОЙ бесплатна - 0
-			83 => 'MODULE_SHIPPING_RP_WRAPPER_FREE',//сумма, при которой доставка БАНДЕРОЛЬЮ бесплатна - 0
-			87 => 'MODULE_SHIPPING_RP_INTER_FREE',//сумма, при которой международная доставка бесплатна
+			80 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_FREE',//сумма, при которой доставка ПОСЫЛКОЙ бесплатна - 0
+			83 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_FREE',//сумма, при которой доставка БАНДЕРОЛЬЮ бесплатна - 0
+			87 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_FREE',//сумма, при которой международная доставка бесплатна
 
 			95 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_ALLOWED',//в какие страны разрешена доставка
 			);
 
             //наложка
 			$PFkeys = array(
-			0 => 'MODULE_SHIPPING_RP_PARCEL_STATUS_PF',//вкл./выкл. наложку ПОСЫЛКИ - 1
-			3 => 'MODULE_SHIPPING_RP_WRAPPER_STATUS_PF',//вкл./выкл. наложку БАНДЕРОЛИ - 1
+			0 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS_PF',//вкл./выкл. наложку ПОСЫЛКИ - 1
+			3 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS_PF',//вкл./выкл. наложку БАНДЕРОЛИ - 1
 
-			9 => 'MODULE_SHIPPING_RP_SORT_ORDER_PF',//сортировка - 3
+			9 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PF',//сортировка - 3
 
-			6 => 'MODULE_SHIPPING_RP_TAX_CLASS_PF',//налог
+			6 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS_PF',//налог
 
-			80 => 'MODULE_SHIPPING_RP_PARCEL_COST',//процент или сумма за наложку (типа "расходы" магазина из-за "зависания денег") ПОСЫЛКИ - 0
-			83 => 'MODULE_SHIPPING_RP_WRAPPER_COST',//процент или сумма за наложку (типа "расходы" магазина из-за "зависания денег") БАНДЕРОЛИ - 0
+			80 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_COST',//процент или сумма за наложку (типа "расходы" магазина из-за "зависания денег") ПОСЫЛКИ - 0
+			83 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_COST',//процент или сумма за наложку (типа "расходы" магазина из-за "зависания денег") БАНДЕРОЛИ - 0
 
-			86 => 'MODULE_SHIPPING_RP_PARCEL_LIMITATION_PF',//регионы, в которые нельзя отправлять ПОСЫЛКИ наложкой
-			87 => 'MODULE_SHIPPING_RP_WRAPPER_LIMITATION_PF',//регионы, в которые нельзя отправлять БАНДЕРОЛИ наложкой
+			86 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_LIMITATION_PF',//регионы, в которые нельзя отправлять ПОСЫЛКИ наложкой
+			87 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_LIMITATION_PF',//регионы, в которые нельзя отправлять БАНДЕРОЛИ наложкой
 
 			95 => 'MODULE_SHIPPING_RUSSIANPOSTPF_ALLOWED',//в какие страны разрешена наложка
 			);
@@ -341,40 +341,40 @@
 
 			$ALLkeys = array(
 
-			12 => 'MODULE_SHIPPING_RP_WRAPPER_SEPARATOR',//по какой строке искать бандероль - -
-			15=> 'MODULE_SHIPPING_RP_WRAPPER_ISSET',//сигнальная часть модели (артикула) - band
+			12 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_SEPARATOR',//по какой строке искать бандероль - -
+			15=> 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_ISSET',//сигнальная часть модели (артикула) - band
 
-			27 => 'MODULE_SHIPPING_RP_STATES_1',//Первая зона
-			30 => 'MODULE_SHIPPING_RP_STATES_2',//Вторая зона
-			34 => 'MODULE_SHIPPING_RP_STATES_3',//Третья зона
-			37 => 'MODULE_SHIPPING_RP_STATES_4',//Четвертая зона
-			40 => 'MODULE_SHIPPING_RP_STATES_5',//Пятая зона
+			27 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_1',//Первая зона
+			30 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_2',//Вторая зона
+			34 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_3',//Третья зона
+			37 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_4',//Четвертая зона
+			40 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_5',//Пятая зона
 
 			//стоимость бандероли
-			28 => 'MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_1',//Первая цена
-			31 => 'MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_2',//Вторая цена
-			35 => 'MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_3',//Третья цена
-			38 => 'MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_4',//Четвертая цена
-			41 => 'MODULE_SHIPPING_RP_STATES_PRICE_WRAPPER_5',//Пятая цена
+			28 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_1',//Первая цена
+			31 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_2',//Вторая цена
+			35 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_3',//Третья цена
+			38 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_4',//Четвертая цена
+			41 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_WRAPPER_5',//Пятая цена
 
 			//стоимость посылки
-			29 => 'MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_1',//Первая цена
-			32 => 'MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_2',//Вторая цена
-			36 => 'MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_3',//Третья цена
-			39 => 'MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_4',//Четвертая цена
-			42 => 'MODULE_SHIPPING_RP_STATES_PRICE_PARCEL_5',//Пятая цена
+			29 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_1',//Первая цена
+			32 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_2',//Вторая цена
+			36 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_3',//Третья цена
+			39 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_4',//Четвертая цена
+			42 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_PARCEL_5',//Пятая цена
 
-			61 => 'MODULE_SHIPPING_RP_PARCEL_INSURANCE',//страховой процент взимаемый почтой за ПОСЫЛКУ - 3
-			64 => 'MODULE_SHIPPING_RP_WRAPPER_INSURANCE',//страховой процент взимаемый почтой за БАНДЕРОЛЬ - 3
+			61 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_INSURANCE',//страховой процент взимаемый почтой за ПОСЫЛКУ - 3
+			64 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_INSURANCE',//страховой процент взимаемый почтой за БАНДЕРОЛЬ - 3
 
-			67 => 'MODULE_SHIPPING_RP_PARCEL_REG',//цена за оформление ПОСЫЛКИ
-			70 => 'MODULE_SHIPPING_RP_WRAPPER_REG',//цена за оформление БАНДЕРОЛИ
+			67 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_REG',//цена за оформление ПОСЫЛКИ
+			70 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_REG',//цена за оформление БАНДЕРОЛИ
 
-			75 => 'MODULE_SHIPPING_RP_WRAPPER_MAXWEIGHT',//макисмальный вес бандероли
-			76 => 'MODULE_SHIPPING_RP_PARCEL_MAXWEIGHT',//макисмальный вес бандероли
+			75 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_MAXWEIGHT',//макисмальный вес бандероли
+			76 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_MAXWEIGHT',//макисмальный вес бандероли
 
 
-			78 => 'MODULE_SHIPPING_RP_WRAPPERS_OR_PARCEL',//при перевесе использовать разбивку на несколько бандеролей или переходить в посылки
+			78 => 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPERS_OR_PARCEL',//при перевесе использовать разбивку на несколько бандеролей или переходить в посылки
 			);
 
 			//наложка
@@ -477,12 +477,12 @@
 		function russianpostprepay()
 		{
 		      $this->code = 'russianpostprepay';
-		      $this->title = MODULE_SHIPPING_RP_TEXT_TITLE_PREPAY;
-		      $this->description = MODULE_SHIPPING_RP_TEXT_DESCRIPTION_PREPAY;
-		      $this->sort_order = MODULE_SHIPPING_RP_SORT_ORDER_PREPAY;
+		      $this->title = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PREPAY;
+		      $this->description = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_DESCRIPTION_PREPAY;
+		      $this->sort_order = MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PREPAY;
 		      $this->icon = '';
-		      $this->tax_class = MODULE_SHIPPING_RP_TAX_CLASS;
-		      $this->enabled = ((MODULE_SHIPPING_RP_PARCEL_STATUS == 'True' || MODULE_SHIPPING_RP_WRAPPER_STATUS == 'True') ? true : false);
+		      $this->tax_class = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS;
+		      $this->enabled = ((MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS == 'True' || MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS == 'True') ? true : false);
 		}
 
 
@@ -490,7 +490,7 @@
 		{
 			if (!isset($this->_check))
 			{
-				$check_query = vam_db_query("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_RP_PARCEL_STATUS' || configuration_key = 'MODULE_SHIPPING_RP_WRAPPER_STATUS' LIMIT 1");
+				$check_query = vam_db_query("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS' || configuration_key = 'MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS' LIMIT 1");
 				$this->_check = vam_db_num_rows($check_query);
 			}
 			return $this->_check;
@@ -531,7 +531,7 @@
 			{
 				for ($i=1; $i<=5; $i++)
 				{
-					$zones_table = constant('MODULE_SHIPPING_RP_STATES_' . $i);
+					$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_' . $i);
 					$zones = split("[,]", $zones_table);
 					if (in_array($dest_zone_id, $zones))
 					{
@@ -544,14 +544,14 @@
 			//смотрим нужную страну
 			else
 			{
-				$zones_table = constant('MODULE_SHIPPING_RP_COUNTRY_1');
+				$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_1');
 				$zones = split("[,]", $zones_table);
 				if (in_array($dest_zone_id, $zones))$dest_zone = 21;
 
 				//тогда ищем в странах второго уровня
 				else
 				{
-					$zones_table = constant('MODULE_SHIPPING_RP_COUNTRY_2');
+					$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_2');
 					$zones = split("[,]", $zones_table);
 					if (in_array($dest_zone_id, $zones) || in_array('*', $zones))$dest_zone = 22;
 				}
@@ -559,19 +559,19 @@
 
 			//узнаем посылка или бандероль
 			//вес заказа меньше максимального для бандероли
-			$need_wr = (MODULE_SHIPPING_RP_WRAPPER_MAXWEIGHT < $shipping_weight) ? ((MODULE_SHIPPING_RP_WRAPPERS_OR_PARCEL == 'True') ? 1 : 0) : 1;
+			$need_wr = (MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_MAXWEIGHT < $shipping_weight) ? ((MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPERS_OR_PARCEL == 'True') ? 1 : 0) : 1;
 
 			//$wrapper = 0 - посылка
 			//$wrapper = 1 - бандероль
-			$wrapper = (MODULE_SHIPPING_RP_WRAPPER_STATUS == 'True' && $need_wr) ? $this->is_wrapper($_SESSION['cart']->get_products())  : 0;
+			$wrapper = (MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS == 'True' && $need_wr) ? $this->is_wrapper($_SESSION['cart']->get_products())  : 0;
 
-			if($wrapper == 0 && MODULE_SHIPPING_RP_PARCEL_STATUS != 'True')return false;
+			if($wrapper == 0 && MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS != 'True')return false;
 
 			$mode = ($wrapper == 1) ? 'WRAPPER' : 'PARCEL';
 
 			//высчитываем на сколько посылок/бандеролей нужно разбить заказ
 			$need_parcel = 1;
-			$maxweight = constant('MODULE_SHIPPING_RP_'.(($dest_zone < 20) ? $mode : 'INTER').'_MAXWEIGHT');
+			$maxweight = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.(($dest_zone < 20) ? $mode : 'INTER').'_MAXWEIGHT');
 			if($shipping_weight > $maxweight)
 			{
 				$need_parcel = ceil($shipping_weight/$maxweight);
@@ -582,7 +582,7 @@
       		if ($dest_zone == 0)
 	      	{
 				$error = true;
-				$err_msg = MODULE_SHIPPING_RP_INVALID_ZONE;
+				$err_msg = MODULE_SHIPPING_RUSSIANPOSTPREPAY_INVALID_ZONE;
 			}
 
 			else
@@ -591,18 +591,18 @@
 				if($dest_zone < 20)
 				{
 					$shipping = -1;
-					$zones_cost = constant('MODULE_SHIPPING_RP_STATES_PRICE_'.$mode.'_' . $dest_zone);
+					$zones_cost = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_'.$mode.'_' . $dest_zone);
 
 					$cost_table = split("[:,]" , $zones_cost);
 
-					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RP_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
+					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
 
-	    			$shipping_method = constant('MODULE_SHIPPING_RP_TEXT_WAY_'.$mode).' <nobr>('.$order->delivery['state'].
-	       		     							' - '.$shipping_weight.' '.MODULE_SHIPPING_RP_TEXT_UNITS.'</nobr> <nobr>['.
-	       		     							constant('MODULE_SHIPPING_RP_'.$mode.'_NEED').
-	       		     							$this->om_number($need_parcel, array(constant('MODULE_SHIPPING_RP_'.$mode.'_1'),
-	       		     														constant('MODULE_SHIPPING_RP_'.$mode.'_2'),
-	       		     														constant('MODULE_SHIPPING_RP_'.$mode.'_5'))).
+	    			$shipping_method = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_'.$mode).' <nobr>('.$order->delivery['state'].
+	       		     							' - '.$shipping_weight.' '.MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_UNITS.'</nobr> <nobr>['.
+	       		     							constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_NEED').
+	       		     							$this->om_number($need_parcel, array(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_1'),
+	       		     														constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_2'),
+	       		     														constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_5'))).
 	       		     							']</nobr>)';
 				}
 
@@ -610,18 +610,18 @@
 				else
 				{
 					$shipping = -1;
-					$zones_cost = constant('MODULE_SHIPPING_RP_COUNTRY_PRICE_' . (($dest_zone == '21') ? 1 : 2));
+					$zones_cost = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_' . (($dest_zone == '21') ? 1 : 2));
 
 					$cost_table = split("[:,]" , $zones_cost);
 
-					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RP_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
+					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
 
-   		     		$shipping_method = constant('MODULE_SHIPPING_RP_TEXT_WAY_COUNTRY').' <nobr>('.$order->delivery['country']['title'].
-	       		     							' - '.$shipping_weight.' '.MODULE_SHIPPING_RP_TEXT_UNITS.'</nobr> <nobr>['.
-	       		     							constant('MODULE_SHIPPING_RP_INTER_NEED').
-	       		     							$this->om_number($need_parcel, array(constant('MODULE_SHIPPING_RP_INTER_1'),
-	       		     														constant('MODULE_SHIPPING_RP_INTER_2'),
-	       		     														constant('MODULE_SHIPPING_RP_INTER_5'))).
+   		     		$shipping_method = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_COUNTRY').' <nobr>('.$order->delivery['country']['title'].
+	       		     							' - '.$shipping_weight.' '.MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_UNITS.'</nobr> <nobr>['.
+	       		     							constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_NEED').
+	       		     							$this->om_number($need_parcel, array(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_1'),
+	       		     														constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_2'),
+	       		     														constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_5'))).
 	       		     							']</nobr>)';
 
 
@@ -634,7 +634,7 @@
 				if ($shipping == -1)
 				{
 					$error = true;
-          			$err_msg = MODULE_SHIPPING_RP_UNDEFINED_RATE;
+          			$err_msg = MODULE_SHIPPING_RUSSIANPOSTPREPAY_UNDEFINED_RATE;
         		}
 
         		else
@@ -646,13 +646,13 @@
                     {
 	          			/*-- Оценочная стоимость в настройках --*/
 	          			$appraisal = 0;
-	          			if(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE') != 0)
+	          			if(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE') != 0)
 	          			{
-	                    	$appraisal = (strpos(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE'), '%') === false ) ?
-	                    				constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE') :
-	                    				substr(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE'), 0, strpos(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE'), '%'));
+	                    	$appraisal = (strpos(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE'), '%') === false ) ?
+	                    				constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE') :
+	                    				substr(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE'), 0, strpos(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE'), '%'));
 
-	                    	$appraisal_proc = (strpos(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE_PRICE'), '%') === false) ? false : true;
+	                    	$appraisal_proc = (strpos(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE_PRICE'), '%') === false) ? false : true;
 	          			}
 
 						$appraisal = intval($appraisal);
@@ -676,16 +676,16 @@
 							$appraisal_price = $shipping + $_SESSION['cart']->show_total();
 
 						//высчитываем страховую стоимость
-						$insurance_price = $this->insurance($appraisal_price, intval(constant('MODULE_SHIPPING_RP_'.$mode.'_INSURANCE')));
+						$insurance_price = $this->insurance($appraisal_price, intval(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_INSURANCE')));
 
 	       				//итоговая стоимость доставки = доставка + плата за сбор посылки + страховой процент
 						$shipping_cost = $shipping + $insurance_price;
 
 
 						//БЕСПЛАТНАЯ ДОСТАВКА
-						if(intval(constant('MODULE_SHIPPING_RP_'.$mode.'_FREE')) > 0)
+						if(intval(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_FREE')) > 0)
 						{
-							if($_SESSION['cart']->show_total() >= intval(constant('MODULE_SHIPPING_RP_'.$mode.'_FREE')))$shipping_cost = 0;
+							if($_SESSION['cart']->show_total() >= intval(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_FREE')))$shipping_cost = 0;
 						}
 					}
 
@@ -696,9 +696,9 @@
 						$shipping_cost = $shipping;
 
 						//БЕСПЛАТНАЯ ДОСТАВКА
-						if(intval(constant('MODULE_SHIPPING_RP_INTER_FREE')) > 0)
+						if(intval(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_FREE')) > 0)
 						{
-							if($_SESSION['cart']->show_total() >= intval(constant('MODULE_SHIPPING_RP_INTER_FREE')))$shipping_cost = 0;
+							if($_SESSION['cart']->show_total() >= intval(constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INTER_FREE')))$shipping_cost = 0;
 						}
 					}
         		}
@@ -706,7 +706,7 @@
 
 
       $this->quotes = array('id' => $this->code,
-                            'module' => MODULE_SHIPPING_RP_TEXT_TITLE_PREPAY,
+                            'module' => MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PREPAY,
                             'methods' => array(
                             					array('id' => $this->code,
                                                      'title' => $shipping_method,
