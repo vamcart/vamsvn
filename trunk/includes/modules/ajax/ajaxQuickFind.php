@@ -19,7 +19,7 @@
 	define("AJAX_QUICKSEARCH_DROPDOWN_SIZE", 5);
 	define("AJAX_QUICKSEARCH_LIMIT", 15);
 
-	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я]%", "", $_REQUEST['keywords']) );
+	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я\s]%iu", "", $_REQUEST['keywords']) );
 
 	$out = "";
 	if(isset($q) && vam_not_null($q)) {
@@ -50,7 +50,7 @@
 							order by pd.products_name asc
 							limit " . AJAX_QUICKSEARCH_LIMIT);
 
-		if($products = vam_db_fetch_array($products_query)) {
+		if(vam_db_num_rows($products_query)) {
 			$out .= sprintf(TEXT_AJAX_QUICKSEARCH_TOP, AJAX_QUICKSEARCH_LIMIT) . '<br />';
 			$dropdown = array();
 			$out .= '<ul class="ajaxQuickFind">';
