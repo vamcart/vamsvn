@@ -19,7 +19,7 @@
 	define("AJAX_ADDQUICK_DROPDOWN_SIZE", 5);
 	define("AJAX_ADDQUICK_LIMIT", 15);
 
-	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я]%", "", $_REQUEST['quickie']) );
+	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я\s]%iu", "", $_REQUEST['quickie']) );
 
 	$out = "";
 	if(isset($q) && vam_not_null($q)) {
@@ -34,7 +34,7 @@
 							order by pd.products_name asc
 							limit " . AJAX_ADDQUICK_LIMIT);
 
-		if($model = vam_db_fetch_array($model_query)) {
+		if(vam_db_num_rows($model_query)) {
 			$out .= sprintf(TEXT_AJAX_ADDQUICKIE_SEARCH_TOP, AJAX_ADDQUICK_LIMIT) . '<br />';
 			$dropdown = array();
 			$out .= '<ul class="ajaxAddQuickie">';
