@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: ajaxQuickFind.php 1243 2007-02-06 20:41:56 VaM $   
+   $Id: ajaxQuickFind.php 1243 2009-02-06 20:41:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
