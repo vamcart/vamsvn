@@ -94,6 +94,8 @@ if ($_GET['action']) {
 
 				// create insert for admin access table if customers status is set to 0
 				if ($_POST['status'] == 0) {
+               $q = vam_db_query("select * from ".TABLE_ADMIN_ACCESS." where customers_id='".vam_db_input($_GET['cID'])."'");
+               if (!vam_db_num_rows($q))					
 					vam_db_query("INSERT into ".TABLE_ADMIN_ACCESS." (customers_id,start) VALUES ('".vam_db_input($_GET['cID'])."','1')");
 				} else {
 					vam_db_query("DELETE FROM ".TABLE_ADMIN_ACCESS." WHERE customers_id = '".vam_db_input($_GET['cID'])."'");
