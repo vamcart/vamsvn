@@ -45,7 +45,7 @@
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="200" align="left">
-              <?php echo vam_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop', '160', '60'); ?>
+              <?php echo vam_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop'); ?>
               </td>
               <td width="370" align="center">
               &nbsp;
