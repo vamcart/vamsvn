@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2008-02-13 17:36:58 VaM $
+   $Id: configuration.php 1286 2009-02-13 17:36:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -433,7 +433,7 @@ define('CONTACT_US_NAME_DESC' , 'Пожалуйста, введите Имя (п
 define('CONTACT_US_FORWARDING_STRING_TITLE' , 'Свяжитесь с нами - адреса переадресации (через запятую)');
 define('CONTACT_US_FORWARDING_STRING_DESC' , 'Введите E-Mail адреса (поле: Скрытая копия) разделенные запятой на которые также будут отправляться письма из магазина, со страницы Свяжитесь с нами.<br />Это поле можно оставить пустым.');
 define('CONTACT_US_REPLY_ADDRESS_TITLE' , 'Свяжитесь с нами - Адрес для ответов');
-define('CONTACT_US_REPLY_ADDRESS_DESC' , 'Пожалуйста, введите E-Mail адрес, на который клиенты будут отвечать. В почтовой программе это поле <b>Обратный адрес</b>.<br />Это поле не рекомендуется заполнять.');
+define('CONTACT_US_REPLY_ADDRESS_DESC' , 'Пожалуйста, введите E-Mail адрес, на который клиенты будут отвечать. В почтовой программе это поле <b>Обратный адрес</b>.');
 define('CONTACT_US_REPLY_ADDRESS_NAME_TITLE' , 'Свяжитесь с нами - Имя отвечающего');
 define('CONTACT_US_REPLY_ADDRESS_NAME_DESC' , 'Имя в обратном адресе. Можно указать название Магазина.<br />Это поле не надо заполнять если не заполнено поле Адрес для ответов.');
 define('CONTACT_US_EMAIL_SUBJECT_TITLE' , 'Свяжитесь с нами - Тема письма');
@@ -447,7 +447,7 @@ define('EMAIL_SUPPORT_NAME_DESC' , 'Введите название  <b>Служ
 define('EMAIL_SUPPORT_FORWARDING_STRING_TITLE' , 'Служба поддержки - адреса переадресации (через запятую)');
 define('EMAIL_SUPPORT_FORWARDING_STRING_DESC' , 'Введите E-Mail адреса (поле: Скрытая копия) разделенные запятой на которые также будут отправляться письма в <b>Службу поддержки</b>.');
 define('EMAIL_SUPPORT_REPLY_ADDRESS_TITLE' , 'Служба поддержки - Адрес для ответов');
-define('EMAIL_SUPPORT_REPLY_ADDRESS_DESC' , 'Пожалуйста, введите E-Mail адрес, на который клиенты будут отвечать. В почтовой программе это поле <b>Обратный адрес</b>.<br />Это поле не рекомендуется заполнять.');
+define('EMAIL_SUPPORT_REPLY_ADDRESS_DESC' , 'Пожалуйста, введите E-Mail адрес, на который клиенты будут отвечать. В почтовой программе это поле <b>Обратный адрес</b>.');
 define('EMAIL_SUPPORT_REPLY_ADDRESS_NAME_TITLE' , 'Служба поддержки - Имя отвечающего');
 define('EMAIL_SUPPORT_REPLY_ADDRESS_NAME_DESC' , 'Имя в обратном адресе. Можно указать название Магазина.');
 define('EMAIL_SUPPORT_SUBJECT_TITLE' , 'Служба поддержки - Тема письма');
