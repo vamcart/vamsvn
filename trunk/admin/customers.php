@@ -230,47 +230,44 @@ if ($_GET['action']) {
 			}
         }
 
-        if (ACCOUNT_COUNTRY == 'true') {
-			if ($entry_country_id == false) {
-				$error = true;
-				$entry_country_error = true;
-			} else {
-				$entry_country_error = false;
-			}
-        }
+		$entry_country_error = false;
 
-			if (ACCOUNT_STATE == 'true') {
-				if ($entry_country_error == true) {
-					$entry_state_error = true;
+if (isset($_POST['country'])) { $entry_country_id = $_POST['country']; } else { $entry_country_id = STORE_COUNTRY; }
+$entry_state = $_POST['state'];
+
+	if (ACCOUNT_STATE == 'true') {
+		if ($entry_country_error == true) {
+			$entry_state_error = true;
+		} else {
+			$zone_id = 0;
+			$entry_state_error = false;
+			$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."'");
+			$check_value = vam_db_fetch_array($check_query);
+			$entry_state_has_zones = ($check_value['total'] > 0);
+			if ($entry_state_has_zones == true) {
+				$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."' and zone_name = '".vam_db_input($entry_state)."'");
+				if (vam_db_num_rows($zone_query) == 1) {
+					$zone_values = vam_db_fetch_array($zone_query);
+					$entry_zone_id = $zone_values['zone_id'];
 				} else {
-					$zone_id = 0;
-					$entry_state_error = false;
-					$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."'");
-					$check_value = vam_db_fetch_array($check_query);
-					$entry_state_has_zones = ($check_value['total'] > 0);
-					if ($entry_state_has_zones == true) {
-						$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country_id)."' and zone_name = '".vam_db_input($entry_state)."'");
-						if (vam_db_num_rows($zone_query) == 1) {
-							$zone_values = vam_db_fetch_array($zone_query);
-							$entry_zone_id = $zone_values['zone_id'];
-						} else {
-							$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country)."' and zone_code = '".vam_db_input($entry_state)."'");
-							if (vam_db_num_rows($zone_query) >= 1) {
-								$zone_values = vam_db_fetch_array($zone_query);
-								$zone_id = $zone_values['zone_id'];
-							} else {
-								$error = true;
-								$entry_state_error = true;
-							}
-						}
+					$zone_query = vam_db_query("select zone_id from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($entry_country)."' and zone_code = '".vam_db_input($entry_state)."'");
+					if (vam_db_num_rows($zone_query) >= 1) {
+						$zone_values = vam_db_fetch_array($zone_query);
+						$zone_id = $zone_values['zone_id'];
 					} else {
-						if ($entry_state == false) {
-							$error = true;
-							$entry_state_error = true;
-						}
+						$error = true;
+						$entry_state_error = true;
 					}
 				}
+			} else {
+				if ($entry_state == false) {
+					$error = true;
+					$entry_state_error = true;
+				}
 			}
+		}
+	}
+
 
         if (ACCOUNT_TELE == 'true') {
 			if (strlen($customers_telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
@@ -858,60 +855,62 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	}
 ?>
 <?php
-
-	if (ACCOUNT_STATE == 'true') {
+  if (ACCOUNT_COUNTRY == 'true') {
 ?>
-          <tr>
-            <td class="main"><?php echo ENTRY_STATE; ?></td>
-            <td class="main"><?php
-
-		$entry_state = vam_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state);
-		if ($error == true) {
-			if ($entry_state_error == true) {
-				if ($entry_state_has_zones == true) {
-					$zones_array = array ();
-					$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".vam_db_input($cInfo->entry_country_id)."' order by zone_name");
-					while ($zones_values = vam_db_fetch_array($zones_query)) {
-						$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-					}
-					echo vam_draw_pull_down_menu('entry_state', $zones_array).'&nbsp;'.ENTRY_STATE_ERROR;
-				} else {
-					echo vam_draw_input_field('entry_state', vam_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state)).'&nbsp;'.ENTRY_STATE_ERROR;
-				}
-			} else {
-				echo $entry_state.vam_draw_hidden_field('entry_zone_id').vam_draw_hidden_field('entry_state');
-			}
-		} else {
-			echo vam_draw_input_field('entry_state', vam_get_zone_name($cInfo->entry_country_id, $cInfo->entry_zone_id, $cInfo->entry_state));
-		}
-?></td>
-         </tr>
+              <tr>
+                <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
+                <td class="main"><?php echo vam_get_country_list('country',$cInfo->entry_country_id, 'onChange="changeselect();"') . '&nbsp;' . (defined(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
+              </tr>
 <?php
-
-	}
+  }
 ?>
 <?php
-
-	if (ACCOUNT_COUNTRY == 'true') {
+if (ACCOUNT_STATE == 'true') {
 ?>
-          <tr>
-            <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
-            <td class="main"><?php
+             <tr>
+               <td class="main"><?php echo ENTRY_STATE;?></td>
+               <td class="main">
+<script language="javascript">
+<!--
+function changeselect(reg) {
+//clear select
+    document.customers.state.length=0;
+    var j=0;
+    for (var i=0;i<zones.length;i++) {
+      if (zones[i][0]==document.customers.country.value) {
+   document.customers.state.options[j]=new Option(zones[i][1],zones[i][1]);
+   j++;
+   }
+      }
+    if (j==0) {
+      document.customers.state.options[0]=new Option('-','-');
+      }
+    if (reg) { document.customers.state.value = reg; }
+}
+   var zones = new Array(
+   <?php
+       $zones_query = vam_db_query("select zone_country_id,zone_name from " . TABLE_ZONES . " order by zone_name asc");
+       $mas=array();
+       while ($zones_values = vam_db_fetch_array($zones_query)) {
+         $zones[] = 'new Array('.$zones_values['zone_country_id'].',"'.$zones_values['zone_name'].'")';
+       }
 
-	if ($error == true) {
-		if ($entry_country_error == true) {
-			echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(), $cInfo->entry_country_id).'&nbsp;'.ENTRY_COUNTRY_ERROR;
-		} else {
-			echo vam_get_country_name($cInfo->entry_country_id).vam_draw_hidden_field('entry_country_id');
-		}
-	} else {
-		echo vam_draw_pull_down_menu('entry_country_id', vam_get_countries(), $cInfo->entry_country_id);
-	}
-?></td>
-          </tr>
+        $zones_array1[] = 'new Array('.$cInfo->entry_country_id.',"'.vam_get_zone_name($cInfo->entry_country_id,$cInfo->entry_zone_id,'').'")';
+
+        $zones = array_merge($zones_array1, $zones);
+
+       echo implode(',',$zones);
+       ?>
+       );
+document.write('<SELECT NAME="state">');
+document.write('</SELECT>');
+changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
+-->
+</script>
+          </td>
+             </tr>
 <?php
-
-	}
+}
 ?>
         </table></td>
       </tr>
