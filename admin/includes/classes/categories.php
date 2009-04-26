@@ -222,15 +222,14 @@ class categories {
 
 	function set_category_recursive($categories_id, $status = "0") {
 
-			// get products in category
-	/* // don't set products status at the moment
-	$products_query=vam_db_query("SELECT products_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." where categories_id='".$categories_id."'");
-	while ($products=vam_db_fetch_array($products_query)) {
-	    vam_db_query("UPDATE ".TABLE_PRODUCTS." SET products_status='".$status."' where products_id='".$products['products_id']."'");
-	}
-	*/
-			// set status of category
 	vam_db_query("UPDATE ".TABLE_CATEGORIES." SET categories_status = '".$status."' WHERE categories_id = '".$categories_id."'");
+		$q = "select ptc.products_id from ".TABLE_PRODUCTS_TO_CATEGORIES." as ptc";
+		$q .= " where ptc.categories_id='".$categories_id."';";
+		$q_data = vam_db_query($q);
+		while ($products = vam_db_fetch_array($q_data)) {
+			$this->set_product_status($products['products_id'], $status);
+		}
+		
 		// look for deeper categories and go rekursiv
 		$categories_query = vam_db_query("SELECT categories_id FROM ".TABLE_CATEGORIES." WHERE parent_id='".$categories_id."'");
 		while ($categories = vam_db_fetch_array($categories_query)) {
