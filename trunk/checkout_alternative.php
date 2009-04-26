@@ -81,6 +81,8 @@ $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$process = true;
 
+$_SESSION['wm'] = $_POST['wm'];
+
 if (isset($_POST['conditions'])) {
 	$_SESSION['conditions'] = true;
 }

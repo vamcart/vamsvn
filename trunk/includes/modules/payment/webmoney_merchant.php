@@ -309,7 +309,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-     if ($_POST['wm'] == 'wmr') {
+     if ($_SESSION['wm'] == 'wmr') {
                                $purse = MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR;
                                $order_sum = $order->info['total'];
         } else {
