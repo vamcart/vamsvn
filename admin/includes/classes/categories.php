@@ -238,6 +238,23 @@ class categories {
 
 	}
 
+	function set_category_xml_recursive($categories_id, $status = "0") {
+
+	vam_db_query("UPDATE ".TABLE_CATEGORIES." SET yml_enable = '".$status."' WHERE categories_id = '".$categories_id."'");
+		$q = "select ptc.products_id from ".TABLE_PRODUCTS_TO_CATEGORIES." as ptc";
+		$q .= " where ptc.categories_id='".$categories_id."';";
+		$q_data = vam_db_query($q);
+		while ($products = vam_db_fetch_array($q_data)) {
+			$this->set_product_xml_status($products['products_id'], $status);
+		}
+		
+		// look for deeper categories and go rekursiv
+		$categories_query = vam_db_query("SELECT categories_id FROM ".TABLE_CATEGORIES." WHERE parent_id='".$categories_id."'");
+		while ($categories = vam_db_fetch_array($categories_query)) {
+			$this->set_category_recursive($categories['categories_id'], $status);
+		}
+
+	}
 	// ----------------------------------------------------------------------------------------------------- //
 
 	// moves a category to new parent category
@@ -964,6 +981,17 @@ class categories {
 		}
 		elseif ($status == '0') {
 			return vam_db_query("update ".TABLE_PRODUCTS." set products_status = '0', products_last_modified = now() where products_id = '".$products_id."'");
+		} else {
+			return -1;
+		}
+	}
+
+	function set_product_xml_status($products_id, $status) {
+		if ($status == '1') {
+			return vam_db_query("update ".TABLE_PRODUCTS." set products_to_xml = '1', products_last_modified = now() where products_id = '".$products_id."'");
+		}
+		elseif ($status == '0') {
+			return vam_db_query("update ".TABLE_PRODUCTS." set products_to_xml = '0', products_last_modified = now() where products_id = '".$products_id."'");
 		} else {
 			return -1;
 		}
