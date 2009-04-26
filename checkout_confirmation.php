@@ -74,7 +74,12 @@ if (isset ($_POST['cot_gv']))
 // if conditions are not accepted, redirect the customer to the payment method selection page
 
 if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
-	if ($_POST['conditions'] == false) {
+
+	if (isset($_POST['conditions'])) {
+		$_SESSION['conditions'] = true;
+	}
+
+	if ($_SESSION['conditions'] == false) {
 		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
 		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
 	}
