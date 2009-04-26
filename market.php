@@ -165,7 +165,7 @@ $categories_query = vam_db_query("SELECT c.categories_id, c.parent_id, cd.catego
                             FROM " . TABLE_CATEGORIES . " c
                               LEFT JOIN " . TABLE_CATEGORIES_DESCRIPTION . " cd ON (c.categories_id = cd.categories_id)
                             WHERE cd.language_id='" . (int)$_SESSION['languages_id'] . "'
-                              AND c.categories_status= '1'
+                              AND c.categories_status= '1' AND c.yml_enable = '1' 
                             ORDER BY c.categories_id");
 while ($categories = vam_db_fetch_array($categories_query)) {
   if(vam_not_null($categories['categories_name'])) {
