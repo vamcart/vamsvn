@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: checkout_alternative.php 993 2008-11-29 19:20:03 VaM $
+   $Id: checkout_alternative.php 993 2009-11-29 19:20:03 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
