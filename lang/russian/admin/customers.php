@@ -64,4 +64,6 @@ define('ORDER_SUBTOTAL','<b>Стоимость товара:</b>');
 
 define('CATEGORY_EXTRA_FIELDS','Дополнительная информация');
 
+define('PULL_DOWN_DEFAULT','Выберите');
+
 ?>
