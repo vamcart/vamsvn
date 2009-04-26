@@ -123,6 +123,14 @@ if ($_GET['action']) {
         vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&page=' . $_GET['page'] . '&pID=' . $_GET['pID']));
         break;
 
+		case 'setcxml' :
+			if (($_GET['flag'] == '0') || ($_GET['flag'] == '1')) {
+				if ($_GET['cID']) {
+					$catfunc->set_category_xml_recursive($_GET['cID'], $_GET['flag']);
+				}
+			}
+			vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&cID='.$_GET['cID']));
+			break;
 			
 		case 'setsflag' :
 			if (($_GET['flag'] == '0') || ($_GET['flag'] == '1')) {

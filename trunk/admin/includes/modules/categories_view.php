@@ -185,9 +185,9 @@
     $categories_count = 0;
     $rows = 0;
     if ($_GET['search']) {
-      $categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.categories_image, c.parent_id, c.sort_order, c.date_added, c.last_modified, c.categories_status from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' and cd.categories_name like '%" . $_GET['search'] . "%' order by " . $catsort);
+      $categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.categories_image, c.parent_id, c.sort_order, c.date_added, c.last_modified, c.yml_enable, c.categories_status from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = cd.categories_id and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' and cd.categories_name like '%" . $_GET['search'] . "%' order by " . $catsort);
     } else {
-      $categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.categories_image, c.parent_id, c.sort_order, c.date_added, c.last_modified, c.categories_status from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.parent_id = '" . $current_category_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by " . $catsort);
+      $categories_query = vam_db_query("select c.categories_id, cd.categories_name, c.categories_image, c.parent_id, c.sort_order, c.date_added, c.last_modified, c.yml_enable, c.categories_status from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.parent_id = '" . $current_category_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by " . $catsort);
     } 
 
     while ($categories = vam_db_fetch_array($categories_query)) {
@@ -231,7 +231,16 @@
              ?>
              </td>
              <td class="categories_view_data">--</td>
-             <td class="categories_view_data">--</td>
+             <td class="categories_view_data">
+             <?php
+             //show status icons (green & red circle) with links
+             if ($categories['yml_enable'] == '1') {
+                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcxml&flag=0&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+             } else {
+                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcxml&flag=1&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+             }
+             ?>
+             </td>
              <td class="categories_view_data">--</td>
              <td class="categories_view_data"><?php echo $categories['sort_order']; ?></td>
              <td class="categories_view_data">
