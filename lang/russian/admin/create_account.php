@@ -36,4 +36,6 @@ define('ENTRY_SHIPPING_UNALLOWED','Запрещённые модули дост�
 
 define('CATEGORY_EXTRA_FIELDS','Дополнительная информация');
 
+define('PULL_DOWN_DEFAULT','Выберите');
+
 ?>
