@@ -370,7 +370,7 @@ if ($flag==true) define('SEARCH_ENGINE_FRIENDLY_URLS',true);
 
 $box->caching = 0;
 $box->assign('language', $_SESSION['language']);
-$box_admin= $box->fetch(CURRENT_TEMPLATE.'/boxes/search_filters.html');
+$box_admin= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_search_filters.html');
 $vamTemplate->assign('box_SEARCH_FILTERS',$box_admin);
 
 ?>
