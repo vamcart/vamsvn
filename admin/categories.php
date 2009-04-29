@@ -183,6 +183,9 @@ if ($_GET['action']) {
 					foreach ($_POST['multi_products'] AS $product_id) {
 						$catfunc->delete_product($product_id, $_POST['multi_products_categories'][$product_id]);
 					}
+
+					   @mysql_query("DELETE FROM ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." WHERE products_id IN (".implode(", ", $_POST['multi_products']).")");
+					   
 				}
 			}
 			// --- MULTI DELETE ENDS ---

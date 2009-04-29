@@ -305,7 +305,7 @@
         p.products_date_available, 
         p.products_status,
         p.products_startpage,
-        p.products_startpage_sort FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
+        p.products_startpage_sort, p2c.categories_id FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
         WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' AND 
         p.products_id = p2c.products_id AND p2c.categories_id = '" . $current_category_id . "' ORDER BY " . $prodsort);
     }
@@ -382,7 +382,7 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
         p.products_date_available, 
         p.products_status,
         p.products_startpage,
-        p.products_startpage_sort FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
+        p.products_startpage_sort, p2c.categories_id FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
         WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' AND 
         p.products_id = p2c.products_id AND p2c.categories_id = '" . $current_category_id . "' ORDER BY " . $prodsort . " limit ".$page.",".$max_count);
 
