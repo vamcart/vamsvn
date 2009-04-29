@@ -15,7 +15,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
 {#text_products_per_page#} <a href="{$LINK_PAGE}10">10</a>, <a href="{$LINK_PAGE}20">20</a>, <a href="{$LINK_PAGE}50">50</a>, <a href="{$LINK_PAGE}100">100</a>
     </td>  </tr></table>
-{/if}<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>           {foreach name=aussen item=module_data from=$module_content}   {php} $col++;   {/php}
+{/if}<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr> <form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
+          {foreach name=aussen item=module_data from=$module_content}   {php} $col++;   {/php}
     <td class="main" valign="top">
     
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -39,6 +40,8 @@
      <strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong>
      
      <br />
+
+<input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" />{#text_compare#}<br />
 
      {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}<br />     
      <a href="{$module_data.PRODUCTS_LINK}">{#text_more#}</a><br />{/if}
@@ -75,10 +78,12 @@
 </table>    
     
 </td>
-  {php}   if ($col>=1) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}    </tr>
+  {php}   if ($col>=1) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}  </form>  </tr>
   
 <tr>
 <td>
+
+{$BUTTON_COMPARE}</form>
 
 <div class="clear"></div>
 <div class="navigation">

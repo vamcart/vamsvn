@@ -74,6 +74,35 @@ if ($listing_split->number_of_rows > 0) {
 		$rows ++;
 		$module_content[] =  $product->buildDataArray($listing);		
 	}
+
+// Parameters end
+	
+    if (is_array($ids) && sizeof($ids) > 0)
+    {
+        $cats = vam_db_query("SELECT products_id, categories_id FROM products_to_categories WHERE products_id IN (".implode(", ", $ids).")");
+        $temp = array();
+	    while ($c = vam_db_fetch_array($cats, true))
+	    {
+	        if ($temp[$c['products_id']] < 1) $temp[$c['products_id']] =  $c['categories_id'];
+	    }
+
+        $p_list = array();
+        $params_r = mysql_query("SELECT products_id, categories_id, products_parameters_title, products_parameters2products_value, products_parameters_titlesuff FROM products_parameters2products LEFT JOIN products_parameters USING(products_parameters_id) WHERE products_id IN (".implode(", ", $ids).") AND products_parameters_useinsdesc = 1 ORDER BY products_parameters_order ASC");
+        while($p = mysql_fetch_assoc($params_r))
+        {
+            if ($temp[$p['products_id']] == $p['categories_id'])
+            	$p_list[$p['products_id']][] = array('name' => $p['products_parameters_title'], 'value' => $p['products_parameters2products_value'], 'suff' => $p['products_parameters_titlesuff']);
+        }
+        foreach($module_content as $k => $m)
+        {
+            $module_content[$k]['params'] = $p_list[$m['PRODUCTS_ID']];
+        }
+    }
+
+	$module->assign('BUTTON_COMPARE', vam_image_submit('button_compare.gif', TEXT_PRODUCT_COMPARE));
+	
+// Parameters end
+	
 } else {
 
 	// no product found
