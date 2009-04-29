@@ -1,0 +1,72 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<div id="boxCategories">
+<h5>Фильтры<!--{#heading_search_filters#}--> </h5>
+
+<div id="categoriesBoxMenu">
+{literal}
+<script language="JavaScript">
+<!--
+function open_hide_values(obj, a)
+{
+    obj = document.getElementById(obj);
+    if (obj.style.display == '')
+    {
+        obj.style.display = 'none';
+        a.innerHTML = 'Показать все значения'
+    }
+    else
+    {
+        obj.style.display = '';
+        a.innerHTML = 'Скрыть значения'
+    }
+}
+//-->
+</script>
+{/literal}
+
+{foreach name=aussen item=parameter from=$params_list}
+    {if $parameter.unhidden_count > 0}
+    <div style="padding:5px;"><strong> {$parameter.products_parameters_title}</strong></div>
+    {foreach name=aussen1 item=parameter_data from=$parameter.values_list}
+    {if $parameter_data.count > 0}
+        {if !$parameter_data.is_hidden}
+            {if !$parameter_data.is_selected}
+                <a href="{$parameter.products_parameters_base_url}{$parameter_data.value_url_part}{if $price_min}&price_min={$price_min}{/if}{if $price_max}&price_max={$price_max}{/if}&c={$parameter.products_parameters_id}">{$parameter_data.value} ({$parameter_data.count})</a><br>
+            {/if}
+        {/if}
+    {/if}
+    {/foreach}
+
+    {if $parameter.hidden_count > 0}
+        <div id="hidden_values_{$parameter.products_parameters_id}" style="display: none; text-align: left;">
+        {foreach name=aussen1 item=parameter_data from=$parameter.values_list}
+        {if $parameter_data.count > 0}
+            {if $parameter_data.is_hidden}
+                {if !$parameter_data.is_selected}
+                    <a href="{$parameter.products_parameters_base_url}{$parameter_data.value_url_part}{if $price_min}&price_min={$price_min}{/if}{if $price_max}&price_max={$price_max}{/if}&c={$parameter.products_parameters_id}">{$parameter_data.value} ({$parameter_data.count})</a><br>
+                {/if}
+            {/if}
+        {/if}
+        {/foreach}
+        </div>
+        <a href="javascript:void(0);" onclick="open_hide_values('hidden_values_{$parameter.products_parameters_id}', this);">Показать все значения</a>
+    {/if}
+    {/if}
+{/foreach}
+
+<br />
+
+  <form action="/index.php">
+  <input type="hidden" name="cat" value="{$categories_id}">
+  {foreach name=aussen2 item=params_filter from=$current_filters}
+  <input type="hidden" name="{$params_filter.name}" value="{$params_filter.value}">
+  {/foreach}
+  Цена:
+  от: <input type="text" size="3" name="price_min"> до: <input type="text" size="3" name="price_max"> <input type="submit" value="Фильтровать">
+  </form>
+</div>
+
+</div>
+
+
+

@@ -1,0 +1,23 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<div id="boxCategoriesFilter"><H5>Выбранные фильтры</H5><!--{#heading_search_filters_list#}-->
+<div id="categoriesBoxMenu">
+          <table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="boxText">
+		  {foreach name=aussen item=module_data from=$module_content}
+		  	{if $module_data.is_selected}
+		    <div style="padding:5px;"><strong>{$module_data.products_parameters_name}</strong></div>
+            {foreach name=aussen1 item=parameter_data from=$module_data.values_list}
+            {if $parameter_data.is_selected}    <a href="{$module_data.products_parameters_base_url}{$parameter_data.value_url_part_exclude}{if $price_min}&price_min={$price_min}{/if}{if $price_max}&price_max={$price_max}{/if}">{$parameter_data.value}</a><br> {/if}
+            {/foreach}
+    		{/if}
+		  {/foreach}
+
+          {if $price_min||$price_max}
+          <a href="/index.php?cat={$categories_id}{foreach name=aussen2 item=params_filter from=$current_filters}&{$params_filter.name}={$params_filter.value}{/foreach}">Цена {if $price_min}от {$price_min}{/if} {if $price_max} до {$price_max}{/if}</a>
+          {/if}
+        <a href="/index.php?cat={$categories_id}" style="color:;">Отключить фильтры</a>
+          </td>
+        </tr>
+    </table>   </div>
+                      </div>
