@@ -86,6 +86,14 @@
 {$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
 </dd>
 
+<dd class="itemDescription">
+<p>
+{foreach name=params item=module_params from=$module_data.params}
+{$module_params.name}: <strong>{$module_params.value} {$module_params.suff} </strong><br />
+{/foreach}
+</p>
+</dd>
+
 <dd class="itemDescriptionPrice">
 {$module_data.PRODUCTS_PRICE}
 </dd>

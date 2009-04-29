@@ -43,7 +43,13 @@
 
 <input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" />{#text_compare#}<br />
 
-     {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}<br />     
+     {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}<br />
+<p>
+{foreach name=params item=module_params from=$module_data.params}
+{$module_params.name}: <strong>{$module_params.value} {$module_params.suff} </strong><br />
+{/foreach}
+</p>
+     
      <a href="{$module_data.PRODUCTS_LINK}">{#text_more#}</a><br />{/if}
 
      <br />
