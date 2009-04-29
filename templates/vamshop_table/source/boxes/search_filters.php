@@ -366,6 +366,8 @@ $box->assign('price_min', $_GET['price_min']);
 $box->assign('price_max', $_GET['price_max']);
 $box->assign('filtes_url', $filtes_url);
 
+$box->assign('BUTTON_FILTER', vam_image_submit('button_filter.gif', TEXT_PRODUCT_FILTER));
+
 if ($flag==true) define('SEARCH_ENGINE_FRIENDLY_URLS',true);
 
 $box->caching = 0;
