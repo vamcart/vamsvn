@@ -27,11 +27,22 @@ else { $blocks = split('-', $query );}
 //print "<pre>";
 //print_r($filterParams);
 //*
+$price_query = "";
+if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
+{
+	$price_query .= "&price_min=".intval($_GET['price_min']);
+}
+if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
+{
+	$price_query .= "&price_max=".intval($_GET['price_max']);
+}
 
 $selectedParamsFilters = array();
 $j = 0;
+$title_line = "";
 foreach($selected as $block => $blockItems)
 {
+	$title_block = array();
 	for($i = 0; $i < count($blockItems); $i++)
 	{		
 		if(in_array( $blockItems[$i]["products_parameters_values_id"], $blocks) ){
@@ -41,17 +52,19 @@ foreach($selected as $block => $blockItems)
 		}else{
 			$set_query = $query;
 		}	
-		$blockItems[$i]['set_query'] = $set_query;
+		$blockItems[$i]['set_query'] = $set_query.$price_query;
+		$title_block[] = $blockItems[$i]["parameters_value"];
 	}
 	$selectedParamsFilters[$j]["name"] = $parametersNames[$block];
 	$selectedParamsFilters[$j]["list"] = $blockItems;
+	$title_line = $parametersNames[$block] . " " . join(', ', $title_block);
 	$j++;
 }
-
 
 $mainParamsFilters = array();
 for($i = 0; $i < count($filterParams); $i++)
 {
+	$count_opened = $filterParams[$i]["products_parameters_maxopened"];
 	$values = get_parameters_block( $filterParams[$i]["products_parameters_id"] , $selectedGroups);
 	if( count($values) == 0 )
 	{
@@ -68,10 +81,12 @@ for($i = 0; $i < count($filterParams); $i++)
 		}
 		$znak = ( array_key_exists( $filterParams[$i]["products_parameters_id"], $selectedGroups)) ? "+" : "" ;
 		$values[$j]['znak'] = $znak;
-		$values[$j]['set_query'] = $set_query;
+		$values[$j]['set_query'] = $set_query.$price_query ;
+		$values[$j]['opened'] = ($count_opened == $j && $count_opened != 0) ? true : false ;
 	}
 	$mainParamsFilters[$i] = $filterParams[$i];
 	$mainParamsFilters[$i]['blockValues'] = $values;
+	$mainParamsFilters[$i]['opened'] = ($count_opened != 0 && $count_opened < count($values)) ? true : false ;
 }
 //print_r($filterParams);
 //*/
@@ -84,6 +99,9 @@ $flag='';
 $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $is_params_selected = ( count($selectedParamsFilters) > 0) ? true : false;
 $box->assign('categories_id', $categories_id);
+$box->assign('all_query', $query);
+$box->assign('price_min', $_GET['price_min']);
+$box->assign('price_max', $_GET['price_max']);
 $box->assign('is_params_selected', $is_params_selected);
 $box->assign('filterParams', $mainParamsFilters);
 $box->assign('selectedParamsFilters', $selectedParamsFilters);

@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: product_listing.php 1286 2007-02-06 20:41:56 VaM $   
+   $Id: product_listing.php 1286 2007-02-06 20:41:56 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -10,7 +10,7 @@
    -----------------------------------------------------------------------------------------
    based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(product_listing.php,v 1.42 2003/05/27); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(product_listing.php,v 1.42 2003/05/27); www.oscommerce.com
    (c) 2003	 nextcommerce (product_listing.php,v 1.19 2003/08/1); www.nextcommerce.org
    (c) 2004	 xt:Commerce (product_listing.php,v 1.19 2003/08/1); xt-commerce.com
 
@@ -23,17 +23,109 @@ $result = true;
 // include needed functions
 require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
-if (isset($_GET['on_page']) && is_numeric($_GET['on_page'])) { 
+require_once (DIR_WS_FUNCTIONS.'params_filters.php');
+if (isset($_GET['on_page']) && is_numeric($_GET['on_page'])) {
  $num_page =  $_GET['on_page'];
- } else { 
+ } else {
  $num_page =  MAX_DISPLAY_SEARCH_RESULTS;
- } 
+ }
+
+/* all products list */
+$current_manufacturers_id = 0;
+$where_manufacturers = "";
+if(isset($_GET["filter_id"]))
+{
+    $current_manufacturers_id = intval($_GET["filter_id"]);
+}
+if($current_manufacturers_id != 0){
+    $where_manufacturers = " and p.manufacturers_id = '" . $current_manufacturers_id . "' ";
+}
+
+if($current_manufacturers_id != 0){
+
+    $product_list_rs = mysql_query("select p.products_model,
+                                    p.products_ean,
+                                    pd.products_name,
+                                    p.products_id
+
+                                from products_description pd,
+                                    products_to_categories p2c,
+                                    products p
+
+                                where p.products_status = '1'
+                                    " . $where_manufacturers . "
+                                    and p.products_id = p2c.products_id
+                                    and pd.products_id = p2c.products_id
+                                    and pd.language_id = '1'
+                                    and p2c.categories_id = '" . $current_category_id . "'
+                                ORDER BY pd.products_name ");
+
+    $product_list = array();
+    while($product_row = mysql_fetch_array($product_list_rs))
+    {
+        $product_list[] = $product_row;
+    }
+    $product_list_info = "TEST";
+    $module->assign('product_list', $product_list);
+
+} elseif (!empty($search_by_params_ids)) {
+    $product_list_rs = mysql_query("select p.products_model,
+                                    p.products_ean,
+                                    pd.products_name,
+                                    p.products_id
+
+                                from products_description pd,
+                                    products_to_categories p2c,
+                                    products p
+
+                                where p.products_status = '1' and
+                                    " . $search_by_params_ids . "
+                                    p.products_id = p2c.products_id
+                                    and pd.products_id = p2c.products_id
+                                    and pd.language_id = '1'
+                                    and p2c.categories_id = '" . $current_category_id . "'
+                                ORDER BY pd.products_name ");
+    $product_list = array();
+    while($product_row = mysql_fetch_array($product_list_rs))
+    {
+        $product_list[] = $product_row;
+    }
+    $product_list_info = "TEST";
+    $module->assign('product_list', $product_list);
+
+} else {
+
+    $module->assign('product_list_info', "(Выберите производителя)");
+
+}
+/* */
 
 $module->assign('LINK_PAGE',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','on_page','sort', 'direction', 'info','x','y')) . 'on_page='));
 
+$listing_sql = str_replace("where p.products_status = '1'", "where $search_by_params_ids p.products_status = '1'", $listing_sql);
+
+if (isset($_GET['status']))
+{
+
+    if ('all' === $_GET['status'])
+    {
+        $listing_sql = str_replace("p.products_status = '1'", "1", $listing_sql);
+    }
+    else
+    {
+        $_GET['status'] = intval($_GET['status']);
+        $listing_sql = str_replace("p.products_status = '1'", "p.products_status = '".$_GET['status']."'", $listing_sql);
+    }
+}
+$listing_sql = get_params_listing_sql($listing_sql, intval($_GET['cat']), $selectedGroups);
+
+//print "[".$listing_sql."]";
+//exit;
 $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], $num_page, 'p.products_id');
 $module_content = array ();
 if ($listing_split->number_of_rows > 0) {
+
+
 
 	$navigation = TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y')));
 	$navigation_pages = $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
@@ -61,22 +153,20 @@ if ($listing_split->number_of_rows > 0) {
 	$module->assign('CATEGORIES_IMAGE', $image);
 	$module->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
-	$query = "SELECT manufacturers_description FROM ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and languages_id = '".$_SESSION['languages_id']."'";
-
-		$open_query = vamDBquery($query);
-		$open_data = vam_db_fetch_array($open_query, true);
-		$manufacturers_description = $open_data["manufacturers_description"]; 
-		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
-		
 	$rows = 0;
-	$listing_query = vamDBquery($listing_split->sql_query);
-	while ($listing = vam_db_fetch_array($listing_query, true)) {
-		$rows ++;
-		$module_content[] =  $product->buildDataArray($listing);		
-	}
 
-// Parameters end
-	
+	$listing_query = vamDBquery($listing_split->sql_query);
+    $ids = array();
+    while ($listing = vam_db_fetch_array($listing_query, true)) {
+        $rows ++;
+
+		$product_data = $product->buildDataArray($listing);
+   		$module_content[] = $product_data;
+        $ids[] = $module_content[sizeof($module_content) - 1]['PRODUCTS_ID'];
+   }
+
+// Parameters start
+
     if (is_array($ids) && sizeof($ids) > 0)
     {
         $cats = vam_db_query("SELECT products_id, categories_id FROM products_to_categories WHERE products_id IN (".implode(", ", $ids).")");
@@ -100,9 +190,9 @@ if ($listing_split->number_of_rows > 0) {
     }
 
 	$module->assign('BUTTON_COMPARE', vam_image_submit('button_compare.gif', TEXT_PRODUCT_COMPARE));
-	
+
 // Parameters end
-	
+
 } else {
 
 	// no product found
@@ -130,7 +220,7 @@ if ($result != false) {
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
 
-	$module->assign('LINK_sort_name_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=name&direction=asc'));
+ 	$module->assign('LINK_sort_name_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=name&direction=asc'));
 	$module->assign('LINK_sort_name_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=name&direction=desc'));
 	$module->assign('LINK_sort_price_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=price&direction=asc'));
 	$module->assign('LINK_sort_price_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=price&direction=desc'));
@@ -145,7 +235,7 @@ if ($result != false) {
 		$module->caching = 1;
 		$module->cache_lifetime = CACHE_LIFETIME;
 		$module->cache_modified_check = CACHE_CHECK;
-		$cache_id = $current_category_id.'_'.$_SESSION['language'].'_'.$_SESSION['customers_status']['customers_status_name'].'_'.$_SESSION['currency'].'_'.$_GET['manufacturers_id'].'_'.$_GET['filter_id'].'_'.$_GET['page'].'_'.$_GET['sort'].'_'.$_GET['name'].'_'.$_GET['direction'].'_'.$_GET['asc'].'_'.$_GET['desc'].'_'.$_GET['on_page'].'_'.$_GET['keywords'].'_'.$_GET['categories_id'].'_'.$_GET['pfrom'].'_'.$_GET['pto'].'_'.$_GET['x'].'_'.$_GET['y'];
+		$cache_id = $current_category_id.'_'.$_SESSION['language'].'_'.$_SESSION['customers_status']['customers_status_name'].'_'.$_SESSION['currency'].'_'.$_GET['manufacturers_id'].'_'.$_GET['filter_id'].'_'.$_GET['page'].'_'.$_GET['keywords'].'_'.$_GET['categories_id'].'_'.$_GET['pfrom'].'_'.$_GET['pto'].'_'.$_GET['x'].'_'.$_GET['y'];
 		$module = $module->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template'], $cache_id);
 	}
 	$vamTemplate->assign('main_content', $module);
