@@ -585,5 +585,12 @@ require_once(DIR_WS_INCLUDES . 'affiliate_application_top.php');
   define('TABLE_EXTRA_FIELDS_INFO','extra_fields_info');
   define('TABLE_CUSTOMERS_TO_EXTRA_FIELDS','customers_to_extra_fields');
   define('FILENAME_EXTRA_FIELDS','customer_extra_fields.php');
+
+define('TABLE_PRODUCTS_PARAMETERS', 'products_parameters');
+define('TABLE_PRODUCTS_PARAMETERS2PRODUCTS', 'products_parameters2products');
+define('TABLE_PRODUCTS_PARAMETERS_VALUES', 'products_parameters_values');
+
+define('FILENAME_PARAMETERS', 'parameters.php');
+define('FILENAME_PARAMETERS_EXPORT', 'parameters_export.php');
   
 ?>
