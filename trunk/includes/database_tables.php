@@ -120,5 +120,9 @@
   define('TABLE_EXTRA_FIELDS','extra_fields');
   define('TABLE_EXTRA_FIELDS_INFO','extra_fields_info');
   define('TABLE_CUSTOMERS_TO_EXTRA_FIELDS','customers_to_extra_fields');
+
+  define('TABLE_PRODUCTS_PARAMETERS', 'products_parameters');
+  define('TABLE_PRODUCTS_PARAMETERS2PRODUCTS', 'products_parameters2products');
+  define('TABLE_PRODUCTS_PARAMETERS_VALUES', 'products_parameters_values');
   
 ?>

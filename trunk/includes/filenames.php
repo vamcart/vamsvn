@@ -123,4 +123,6 @@ define('FILENAME_FAQ', 'faq.php');
 
 define('FILENAME_CHECKOUT_ALTERNATIVE', 'checkout_alternative.php');
 
+define('FILENAME_PRODUCT_COMPARE', 'product_compare.php');
+
 ?>

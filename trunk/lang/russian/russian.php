@@ -560,4 +560,6 @@ define('TEXT_RSS_BEST_SELLERS','Лучшие товары');
 
 define('TEXT_CHECKOUT_ALTERNATIVE', 'Оформление заказа');
 
+define('TEXT_PRODUCT_COMPARE','Сравнить');
+
 ?>
