@@ -21,7 +21,7 @@
   </tr>
   <tr height="90" class="contentBoxContents1" valign="top">
     <td height="90" class="contentBoxContents1" valign="top">
-      <table width="100%" cellpadding="0" cellspacing="5"><tr>
+      <table width="100%" cellpaddind="0" cellspacing="5"><tr>
         <td class="contents" valign="top">
 {if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
 {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="thickbox" {if $PRODUCTS_MO_IMAGES}rel="gallery-plants"{/if} target="_blank">{/if}<img src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}
@@ -111,6 +111,18 @@
 {foreach name=aussen item=extra_fields from=$extra_fields_data} 
 {$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
 {/foreach}
+{/if}
+
+{if $parameters}
+<!-- Parameters -->
+<table cellspacing="0" cellpadding="0" class="fulldesc" border="0" width="70%">
+	{foreach name=aussen item=parameters_data from=$parameters}
+	<tr class="stroka">
+	<td {if $parameters_data.is_group} colspan="2" class="zagolovok"{else}class="texparam"{/if}>{$parameters_data.parameters_name} </td>
+    	{if $parameters_data.is_group}{else}<td  class="texznachen" align="left">{if $parameters_data.parameters_value}{$parameters_data.parameters_value} {$parameters_data.parameters_suff}{else}&nbsp;{/if}</td>{/if}
+	</tr>{/foreach}
+</table>
+<!-- /Parameters -->
 {/if}
 
 {if $MODULE_tpt != ''}
