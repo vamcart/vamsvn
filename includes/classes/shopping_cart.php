@@ -33,6 +33,7 @@
 // include needed functions
 require_once (DIR_FS_INC.'vam_create_random_value.inc.php');
 require_once (DIR_FS_INC.'vam_get_prid.inc.php');
+require_once (DIR_FS_INC.'vam_rus_chars.inc.php');
 require_once (DIR_FS_INC.'vam_draw_form.inc.php');
 require_once (DIR_FS_INC.'vam_draw_input_field.inc.php');
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
@@ -189,7 +190,7 @@ class shoppingCart {
                 $option = $option_2[0];
                 $attr_value = htmlspecialchars(stripslashes($value), ENT_QUOTES);
                 $value = $option_2[1];
-                $this->contents[$products_id]['attributes_values'][$option] = $attr_value;
+                $this->contents[$products_id]['attributes_values'][$option] = String_RusCharsDeCode($attr_value);
               }
             }
 
