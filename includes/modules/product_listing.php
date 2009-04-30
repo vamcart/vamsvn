@@ -69,7 +69,7 @@ if($current_manufacturers_id != 0){
     $module->assign('product_list', $product_list);
 
 } elseif (!empty($search_by_params_ids)) {
-    $product_list_rs = mysql_query("select p.products_model,
+    $product_list_rs = vamDBquery("select p.products_model,
                                     p.products_ean,
                                     pd.products_name,
                                     p.products_id
@@ -86,7 +86,7 @@ if($current_manufacturers_id != 0){
                                     and p2c.categories_id = '" . $current_category_id . "'
                                 ORDER BY pd.products_name ");
     $product_list = array();
-    while($product_row = mysql_fetch_array($product_list_rs))
+    while($product_row = vam_fetch_array($product_list_rs,true))
     {
         $product_list[] = $product_row;
     }
@@ -177,8 +177,8 @@ if ($listing_split->number_of_rows > 0) {
 	    }
 
         $p_list = array();
-        $params_r = mysql_query("SELECT products_id, categories_id, products_parameters_title, products_parameters2products_value, products_parameters_titlesuff FROM products_parameters2products LEFT JOIN products_parameters USING(products_parameters_id) WHERE products_id IN (".implode(", ", $ids).") AND products_parameters_useinsdesc = 1 ORDER BY products_parameters_order ASC");
-        while($p = mysql_fetch_assoc($params_r))
+        $params_r = vamDBquery("SELECT products_id, categories_id, products_parameters_title, products_parameters2products_value, products_parameters_titlesuff FROM products_parameters2products LEFT JOIN products_parameters USING(products_parameters_id) WHERE products_id IN (".implode(", ", $ids).") AND products_parameters_useinsdesc = 1 ORDER BY products_parameters_order ASC");
+        while($p = vam_db_fetch_array($params_r,true))
         {
             if ($temp[$p['products_id']] == $p['categories_id'])
             	$p_list[$p['products_id']][] = array('name' => $p['products_parameters_title'], 'value' => $p['products_parameters2products_value'], 'suff' => $p['products_parameters_titlesuff']);
