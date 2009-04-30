@@ -48,9 +48,9 @@ if($current_manufacturers_id != 0){
                                     pd.products_name,
                                     p.products_id
 
-                                from products_description pd,
-                                    products_to_categories p2c,
-                                    products p
+                                from ".TABLE_PRODUCTS_DESCRIPTION." pd,
+                                    ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+                                    ".TABLE_PRODUCTS." p
 
                                 where p.products_status = '1'
                                     " . $where_manufacturers . "
@@ -74,9 +74,9 @@ if($current_manufacturers_id != 0){
                                     pd.products_name,
                                     p.products_id
 
-                                from products_description pd,
-                                    products_to_categories p2c,
-                                    products p
+                                from ".TABLE_PRODUCTS_DESCRIPTION." pd,
+                                    ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+                                    ".TABLE_PRODUCTS." p
 
                                 where p.products_status = '1' and
                                     " . $search_by_params_ids . "
@@ -169,7 +169,7 @@ if ($listing_split->number_of_rows > 0) {
 
     if (is_array($ids) && sizeof($ids) > 0)
     {
-        $cats = vam_db_query("SELECT products_id, categories_id FROM products_to_categories WHERE products_id IN (".implode(", ", $ids).")");
+        $cats = vam_db_query("SELECT products_id, categories_id FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id IN (".implode(", ", $ids).")");
         $temp = array();
 	    while ($c = vam_db_fetch_array($cats, true))
 	    {
@@ -177,7 +177,7 @@ if ($listing_split->number_of_rows > 0) {
 	    }
 
         $p_list = array();
-        $params_r = vamDBquery("SELECT products_id, categories_id, products_parameters_title, products_parameters2products_value, products_parameters_titlesuff FROM products_parameters2products LEFT JOIN products_parameters USING(products_parameters_id) WHERE products_id IN (".implode(", ", $ids).") AND products_parameters_useinsdesc = 1 ORDER BY products_parameters_order ASC");
+        $params_r = vamDBquery("SELECT products_id, categories_id, products_parameters_title, products_parameters2products_value, products_parameters_titlesuff FROM ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." LEFT JOIN ".TABLE_PRODUCTS_PARAMETERS." USING(products_parameters_id) WHERE products_id IN (".implode(", ", $ids).") AND products_parameters_useinsdesc = 1 ORDER BY products_parameters_order ASC");
         while($p = vam_db_fetch_array($params_r,true))
         {
             if ($temp[$p['products_id']] == $p['categories_id'])
