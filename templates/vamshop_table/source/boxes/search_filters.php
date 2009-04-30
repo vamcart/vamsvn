@@ -236,7 +236,7 @@ if (is_array($products_query) && sizeof($products_query) > 0)
         $r = vamDBquery("SELECT DISTINCT products_id FROM products WHERE ".implode(' and ', $products_query));
     //echo "<br>"."SELECT DISTINCT products_parameters2products.products_id FROM products_parameters2products LEFT JOIN products USING(products_id) WHERE products.products_id IS NOT NULL and ".implode(' and ', $products_query)."<br>".mysql_error()."<br>";
     $products_ids = array(-1);
-    while($row = mysql_fetch_assoc($r))
+    while($row = vam_db_fetch_array($r,true))
     {
         $products_ids[] = $row['products_id'];
     }
@@ -250,7 +250,7 @@ if (is_array($products_query) && sizeof($products_query) > 0)
             $psq = implode(' or ', $psq);
             $temp = array();
             $r = vamDBquery("SELECT DISTINCT products_parameters2products.products_parameters_id, products_parameters2products.products_id FROM products_parameters2products LEFT JOIN products USING(products_id) WHERE products.products_id IS NOT NULL and ".$psq);
-            while($row = mysql_fetch_assoc($r))
+            while($row = vam_db_fetch_array($r,true))
             {
                 $temp[] = $row['products_id'];
             }
