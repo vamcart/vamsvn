@@ -90,12 +90,9 @@ if($current_manufacturers_id != 0){
     {
         $product_list[] = $product_row;
     }
-    $product_list_info = "TEST";
     $module->assign('product_list', $product_list);
 
 } else {
-
-    $module->assign('product_list_info', "(Выберите производителя)");
 
 }
 /* */
