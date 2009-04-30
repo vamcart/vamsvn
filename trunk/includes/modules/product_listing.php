@@ -86,7 +86,7 @@ if($current_manufacturers_id != 0){
                                     and p2c.categories_id = '" . $current_category_id . "'
                                 ORDER BY pd.products_name ");
     $product_list = array();
-    while($product_row = vam_fetch_array($product_list_rs,true))
+    while($product_row = vam_db_fetch_array($product_list_rs,true))
     {
         $product_list[] = $product_row;
     }
