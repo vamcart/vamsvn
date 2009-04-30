@@ -43,7 +43,7 @@ if($current_manufacturers_id != 0){
 
 if($current_manufacturers_id != 0){
 
-    $product_list_rs = mysql_query("select p.products_model,
+    $product_list_rs = vamDBquery("select p.products_model,
                                     p.products_ean,
                                     pd.products_name,
                                     p.products_id
@@ -61,7 +61,7 @@ if($current_manufacturers_id != 0){
                                 ORDER BY pd.products_name ");
 
     $product_list = array();
-    while($product_row = mysql_fetch_array($product_list_rs))
+    while($product_row = vam_db_fetch_array($product_list_rs,true))
     {
         $product_list[] = $product_row;
     }
