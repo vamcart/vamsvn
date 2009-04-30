@@ -35,10 +35,10 @@
 		//print $sql."<hr />";
 		//return array();
 	
-		$rs = mysql_query($sql);
+		$rs = vamDBquery($sql,true);
 		print mysql_error();
 		$data = array();
-		while($r = mysql_fetch_array($rs))
+		while($r = vam_db_fetch_array($rs,true))
 		{
 			$data[] = $r;
 		}
@@ -115,10 +115,10 @@
 
 //		print $sql."<hr />";
 		//return array();
-		$rs = mysql_query($sql);
+		$rs = vamDBquery($sql);
 		print mysql_error();
 		$data = array();
-		while($r = mysql_fetch_array($rs))
+		while($r = vam_db_fetch_array($rs,true))
 		{
 			$data[] = $r;
 		}
@@ -191,10 +191,10 @@
 			$sql .= " ORDER BY p1.products_parameters2products_value";
 		}
 		//print $sql;
-		$rs = mysql_query($sql);
+		$rs = vamDBquery($sql,true);
 		print mysql_error();
 		$data = array();
-		while($r = mysql_fetch_array($rs))
+		while($r = vam_db_fetch_array($rs,true))
 		{
 			$data[] = $r;
 		}
@@ -222,10 +222,10 @@
 		$sql .= " GROUP BY p1.products_parameters_values_id";
 		$sql .= " ORDER BY p1.products_parameters2products_value, p1.products_parameters2products_order";
 		//print $sql;
-		$rs = mysql_query($sql);
+		$rs = vamDBquery($sql,true);
 		print mysql_error();
 		$data = array();
-		while($r = mysql_fetch_array($rs))
+		while($r = vam_db_fetch_array($rs,true))
 		{
 			$data[ $r['products_parameters_id'] ][] = $r;
 		}
@@ -263,10 +263,10 @@
 			$sql .= " where ppv.products_parameters_values_id in ( '".join("', '", $blocks)."')";
 			$sql .= " GROUP BY p1.products_parameters_values_id";
 
-			$rs = mysql_query($sql);
+			$rs = vamDBquery($sql,true);
 			print mysql_error();
 			$data = array();
-			while($r = mysql_fetch_array($rs))
+			while($r = vam_db_fetch_array($rs,true))
 			{
 				$paramId = $r['products_parameters_id'];
 				$data[$paramId][] = $r;
@@ -294,8 +294,8 @@
 		{
 			return $paramNames[$paramId];
 		}else{
-			$sql = "select products_parameters_title from products_parameters where products_parameters_id = '".$paramId."'";
-			list($name) = mysql_fetch_array(mysql_query($sql));
+			$sql = vamDBquery("select products_parameters_title from products_parameters where products_parameters_id = '".$paramId."'");
+			list($name) = vam_db_fetch_array($sql,true);
 			return $name;
 		}
 	}
@@ -304,8 +304,8 @@
 	{
 		$sql = "select products_parameters_id, products_parameters_title from products_parameters where categories_id = '".$categories_id."'";
 		$data = array();
-		$rs = mysql_query($sql);
-		while($r = mysql_fetch_array($rs))
+		$rs = vamDBquery($sql,true);
+		while($r = vam_db_fetch_array($rs,true))
 		{
 			$data[ $r['products_parameters_id'] ] = $r['products_parameters_title'];
 		}
