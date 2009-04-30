@@ -23,7 +23,7 @@ define('SEARCH_TITLE', 'Поиск');
 define('INTERVALS_TITLE', 'Интервалы');
 define('NAMEINTITLE_TITLE', 'Название в титле');
 define('SUFFINTITLE_TITLE', 'Суффикc в титле');
-define('DESC_TITLE', 'Кр. опис.');
+define('DESC_TITLE', 'Показывать в списке товара');
 define('DCLICK_TITLE', 'двойной клик для редактирования');
 define('ONECLICK_TITLE', 'один клик для выбора, ');
 define('CLICK_TITLE', 'клик для редактирования');
