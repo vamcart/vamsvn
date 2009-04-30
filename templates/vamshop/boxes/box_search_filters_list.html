@@ -9,7 +9,7 @@
 		  	{if $module_data.is_selected}
 		    <div><strong>{$module_data.products_parameters_name}</strong></div>
             {foreach name=aussen1 item=parameter_data from=$module_data.values_list}
-            {if $parameter_data.is_selected}    <a href="{$module_data.products_parameters_base_url}{$parameter_data.value_url_part_exclude}{if $price_min}&price_min={$price_min}{/if}{if $price_max}&price_max={$price_max}{/if}">{$parameter_data.value}</a><br> {/if}
+            {if $parameter_data.is_selected}    <a href="{$module_data.products_parameters_base_url}{$parameter_data.value_url_part_exclude}{if $price_min}&price_min={$price_min}{/if}{if $price_max}&price_max={$price_max}{/if}">{$parameter_data.value}</a><br /> {/if}
             {/foreach}
     		{/if}
 		  {/foreach}
