@@ -319,6 +319,7 @@ create table products_to_products_extra_fields (
   PRIMARY KEY (products_id, products_extra_fields_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_parameters;
 create table `products_parameters` (
   `products_parameters_id` int(10) unsigned NOT NULL auto_increment,
   `products_parameters_name` varchar(255) NOT NULL default '',
@@ -340,6 +341,7 @@ create table `products_parameters` (
   KEY `products_parameters_useinsdesc` (`products_parameters_useinsdesc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_parameters2products;
 create table `products_parameters2products` (
   `products_parameters_id` int(10) unsigned NOT NULL default '0',
   `products_id` int(10) unsigned NOT NULL default '0',
@@ -354,6 +356,7 @@ create table `products_parameters2products` (
   KEY `products_parameters_id` (`products_parameters_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_parameters_values;
 create table `products_parameters_values` (
   `products_parameters_values_id` int(8) NOT NULL auto_increment,
   `products_parameters_id` int(8) NOT NULL,
