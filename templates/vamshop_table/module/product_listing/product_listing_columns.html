@@ -16,8 +16,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
 {#text_products_per_page#} <a href="{$LINK_PAGE}10">10</a>, <a href="{$LINK_PAGE}20">20</a>, <a href="{$LINK_PAGE}50">50</a>, <a href="{$LINK_PAGE}100">100</a>
     </td>  </tr></table>
-{/if}<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr> <form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
-          {foreach name=aussen item=module_data from=$module_content}   {php} $col++;   {/php}
+{/if}<form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
+<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>           {foreach name=aussen item=module_data from=$module_content}   {php} $col++;   {/php}
     <td class="main" valign="top">
     
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
