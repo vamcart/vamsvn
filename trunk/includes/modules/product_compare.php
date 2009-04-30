@@ -37,15 +37,15 @@ if (is_array($_REQUEST["products"]))
 }
 
 if (is_array($temp) && sizeof($temp) > 0)
-{                     //vam_db
-    $products_query = mysql_query("SELECT
+{
+    $products_query = vamDBquery("SELECT
                                      *
                                      FROM ".TABLE_PRODUCTS." p,
                                      ".TABLE_PRODUCTS_DESCRIPTION." pd
                                      WHERE p.products_id IN (".implode(", ", $temp).") and 
                                      p.products_id = pd.products_id
                                      and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                     order by products_name limit 5");
+                                     and p.products_status=1 order by products_name limit 5");
     $c_id = array();
     $temp_parameters = array();
     while ($products_data = vam_db_fetch_array($products_query, true))
@@ -64,7 +64,7 @@ if (is_array($temp) && sizeof($temp) > 0)
 	        $temp[] =  $c['categories_id'];
 	    }
 
-        $parameters_query = vam_db_query("SELECT * FROM `products_parameters2products`
+        $parameters_query = vamDBquery("SELECT * FROM `products_parameters2products`
         LEFT JOIN `products_parameters` using(products_parameters_id)
         WHERE products_id IN (".implode(", ", $c_id).") and
         categories_id IN (".implode(", ", $temp).") and
@@ -110,7 +110,7 @@ if (is_array($temp) && sizeof($temp) > 0)
         }
     }
     
-    $parameters_query = vam_db_query("SELECT * FROM `products_parameters` WHERE products_parameters_type = 'g' order by products_parameters_order");
+    $parameters_query = vamDBquery("SELECT * FROM `products_parameters` WHERE products_parameters_type = 'g' order by products_parameters_order");
     while ($parameters_data = vam_db_fetch_array($parameters_query, true))
     {
         $parameters_data["is_group"] = $parameters_data["products_parameters_type"] == 'g';
