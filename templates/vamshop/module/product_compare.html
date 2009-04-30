@@ -8,7 +8,10 @@
     <tr>
         <td>&nbsp;</td>
         {foreach name=aussen item=module_data from=$module_content}
-        <td><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a> {$module_data.PRODUCTS_PRICE}</td>{/foreach}
+        <td><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a> {$module_data.PRODUCTS_PRICE}
+       <br />
+       {$module_data.PRODUCTS_BUTTON_BUY_NOW}        
+        </td>{/foreach}
     </tr>
 
     {foreach name=aussen item=parameters_data from=$parameters}
