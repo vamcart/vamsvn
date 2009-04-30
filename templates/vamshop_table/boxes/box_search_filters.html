@@ -1,11 +1,21 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {if $params_list}
-<!-- Бокс фильтры -->
-<div id="boxFilters">
-<h5>{#heading_filters#}</h5>
-
-<div id="boxFiltersContent">
-
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="infoBoxHeading"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="14" class="infoBoxHeading"><img src="{$tpl_path}img/infobox/corner_right_left.gif" border="0" alt="" /></td>
+    <td width="100%" height="14" class="infoBoxHeading"><span class="categoriesBox">{#heading_filters#}</span></td>
+    <td height="14" class="infoBoxHeading"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="11" height="14" /></td>
+  </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td class="infoBox" align="left"><table width="95%"  border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td class="blockTitle">
+          
+          
 {literal}
 <script language="JavaScript">
 <!--
@@ -67,9 +77,13 @@ function open_hide_values(obj, a)
   {#text_filters_price#}:
   {#text_filters_price_from#}: <input type="text" size="3" name="price_min" /> {#text_filters_price_to#}: <input type="text" size="3" name="price_max" /> {$BUTTON_FILTER}
   </form>
+          
+          
+          
+          </td>
+        </tr>
 
-</div>
-
-</div>
-<!-- /Бокс фильтры -->
+    </table></td>
+  </tr>
+</table>
 {/if}
