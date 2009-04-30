@@ -601,7 +601,7 @@ var orders_values_list = new Array();
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=order"><?php echo ORDER_TITLE; ?></a></td>
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=opened"><?php echo OPENED_TITLE; ?></a></td>
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=useinsearch"><?php echo SEARCH_TITLE; ?></a></td>
-                <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=intervals"><?php echo INTERVALS_TITLE; ?></a></td>
+<!--                <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=intervals"><?php echo INTERVALS_TITLE; ?></a></td> -->
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=titlename"><?php echo NAMEINTITLE_TITLE; ?></a></td>
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=titlesuff"><?php echo SUFFINTITLE_TITLE; ?></a></td>
                 <td class="dataTableHeadingContent" align="right"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=useinsearch"><?php echo DESC_TITLE; ?></a></td>
@@ -691,7 +691,7 @@ var orders_values_list = new Array();
       ?>
               <tr class="dataTableHeadingRow">
                 <td class="dataTableContent" align="right"><input type="checkbox" name="selected[]" value="<?php echo $p['products_parameters_id']; ?>"></td>
-                <td title="<?php echo DCLICK_TITLE; ?>" id="products_parameters_title_<?php echo $p['products_parameters_id']; ?>" class="dataTableContent" onmouseover="this.style.cursor='hand'" ondblclick="set_edit(<?php echo $p['products_parameters_id']; ?>, this);"><?php echo htmlspecialchars($p['products_parameters_title']); ?></td>
+<!--                <td title="<?php echo DCLICK_TITLE; ?>" id="products_parameters_title_<?php echo $p['products_parameters_id']; ?>" class="dataTableContent" onmouseover="this.style.cursor='hand'" ondblclick="set_edit(<?php echo $p['products_parameters_id']; ?>, this);"><?php echo htmlspecialchars($p['products_parameters_title']); ?></td> -->
                 <td class="dataTableContent" align="right"><input type="text" size="3" name="orders[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_order']; ?>"></td>
                 <td class="dataTableContent" align="right"><input type="text" size="3" name="opened[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_maxopened']; ?>"></td>
                 <td class="dataTableContent" align="right"><input type="checkbox" name="useinsearch[<?php echo $p['products_parameters_id']; ?>]" value="1" <?php echo ($p['products_parameters_useinsearch'] == 1 ? 'checked' : ''); ?>></td>
