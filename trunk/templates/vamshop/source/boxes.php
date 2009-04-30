@@ -18,8 +18,9 @@
 
   if ($_GET['cat'] > 0 && file_exists(DIR_WS_BOXES . 'search_filters.php'))
   {
-  	include(DIR_WS_BOXES . 'search_filters.php');
-  	if (is_array($params_current) && sizeof($params_current) > 0 || $price_max > 0 || $price_min > 0) include(DIR_WS_BOXES . 'search_filters_list.php');
+  	if (SET_BOX_FILTERS == 'true') include(DIR_WS_BOXES . 'search_filters.php');
+  	
+  	if (is_array($params_current) && sizeof($params_current) > 0 || $price_max > 0 || $price_min > 0) if (SET_BOX_FILTERS_LIST == 'true') include(DIR_WS_BOXES . 'search_filters_list.php');
   }
 
   if (SET_BOX_AFFILIATE == 'true') include(DIR_WS_BOXES . 'affiliate.php');
