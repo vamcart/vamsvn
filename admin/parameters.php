@@ -543,6 +543,14 @@ var orders_values_list = new Array();
 
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
 
+<br />
+
+<a class="button" href="../filters/update_parameters.php?clear=1" target="_blank"><?php echo BUTTON_UPDATE_PARAMETERS; ?></a>
+
+<br /><br />
+
+<?php echo TEXT_UPDATE_PARAMETERS; ?>
+
   </td>
   </tr>
   <tr>
