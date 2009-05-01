@@ -106,6 +106,8 @@ $box->assign('is_params_selected', $is_params_selected);
 $box->assign('filterParams', $mainParamsFilters);
 $box->assign('selectedParamsFilters', $selectedParamsFilters);
 
+$box->assign('BUTTON_FILTER', vam_image_submit('button_filter.gif', TEXT_PRODUCT_FILTER));
+
 $box->caching = 0;
 $box->assign('language', $_SESSION['language']);
 $box_admin= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_params_filters.html');
