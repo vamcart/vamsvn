@@ -846,7 +846,6 @@ define('QUICK_CHECKOUT_DESC','Разрешить модуль быстрого �
 
 define('SET_BOX_CATEGORIES_TITLE', 'Разделы');
 define('SET_BOX_FILTERS_TITLE', 'Фильтры');
-define('SET_BOX_FILTERS_LIST_TITLE', 'Выбранные фильтры');
 define('SET_BOX_CONTENT_TITLE', 'Узнайте больше');
 define('SET_BOX_INFORMATION_TITLE', 'Информация');
 define('SET_BOX_ADD_QUICKIE_TITLE', 'Быстрый заказ');
@@ -876,7 +875,6 @@ define('SET_BOX_FAQ_TITLE', 'Вопросы и ответы');
 
 define('SET_BOX_CATEGORIES_DESC', 'Включить/выключить бокс.');
 define('SET_BOX_FILTERS_DESC', 'Включить/выключить бокс.');
-define('SET_BOX_FILTERS_LIST_DESC', 'Включить/выключить бокс.');
 define('SET_BOX_CONTENT_DESC', 'Включить/выключить бокс.');
 define('SET_BOX_INFORMATION_DESC', 'Включить/выключить бокс.');
 define('SET_BOX_ADD_QUICKIE_DESC', 'Включить/выключить бокс.');
