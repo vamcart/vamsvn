@@ -111,6 +111,6 @@ $box->assign('BUTTON_FILTER', vam_image_submit('button_filter.gif', TEXT_PRODUCT
 $box->caching = 0;
 $box->assign('language', $_SESSION['language']);
 $box_admin= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_params_filters.html');
-$vamTemplate->assign('box_PARAMS_FILTERS',$box_admin);
+$vamTemplate->assign('box_FILTERS',$box_admin);
 
 ?>
