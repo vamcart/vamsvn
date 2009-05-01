@@ -73,7 +73,7 @@
 		if(!empty($query)){
 			$blocks = split("-", $query);
 		}else{ $blocks = array(); }
-		if( array_key_exists( $products_parameters_id, $selected))
+		if( array_key_exists( $products_parameters_id, $selected_blocks))
 		{
 			$group_blocks = array_diff($blocks, $selected_blocks[$products_parameters_id]);
 		

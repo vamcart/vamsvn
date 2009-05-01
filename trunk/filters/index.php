@@ -16,7 +16,7 @@
 	include("config.php");
 	require_once("function.php");
 
-	$categories_id = '7';
+	$categories_id = '1';
 	$parametersNames = getAllParameters($categories_id);
 	$selected = get_selected();
 	$selectedGroups = get_selected_groups($selected );

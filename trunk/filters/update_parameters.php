@@ -15,6 +15,9 @@
 	
 	include("config.php");
 		
+	if($_GET['clear'] == '1'){
+		mysql_query("update products_parameters2products pp2p set products_parameters_values_id = '0'");//
+	}
 	
 	$rs = mysql_query("select * from products_parameters2products pp2p where products_parameters_values_id = '0'");//
 	print mysql_num_rows($rs ).'-';
