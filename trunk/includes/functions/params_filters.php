@@ -102,7 +102,7 @@
 				$sql .= " WHERE ".join(" AND ", $wheres);
 			}
 			$sql .= " ORDER BY pd.products_name ASC";
-			//print $sql;
+//			print $sql;
 			return $sql;
 	}
 
@@ -261,8 +261,10 @@
 				if($price_max != -1 ) $sql .= " AND p0.products_price <= '$price_max' ";
 			}
 			$sql .= " where ppv.products_parameters_values_id in ( '".join("', '", $blocks)."')";
-			$sql .= " GROUP BY p1.products_parameters_values_id";
-
+			if($price_max != -1 || $price_min != -1){
+				$sql .= " GROUP BY p1.products_parameters_values_id";
+			}			
+			//print $sql;exit;
 			$rs = vamDBquery($sql,true);
 			print mysql_error();
 			$data = array();
