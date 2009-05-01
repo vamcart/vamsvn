@@ -55,4 +55,8 @@ define('SAVE_BUTTON_TITLE', 'Сохранить');
 define('CANCEL_BUTTON_TITLE', 'Отмена');
 define('SET_INTERVALS_BUTTON_TITLE', 'Задать');
 define('SET_INTERVALS_ADDINTERVAL_BUTTON_TITLE', 'Добавить');
+
+define('BUTTON_UPDATE_PARAMETERS','Обновить параметры');
+define('TEXT_UPDATE_PARAMETERS','Если Вы видите ошибку в выводе фильтров (выводятся не все значения, либо подсчёт товаров по параметрам неправильный) в каталоге, нажмите кнопку Обновить параметры.');
+
 ?>
