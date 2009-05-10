@@ -11,14 +11,6 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-	function get_categories_name($category_id) { 
-	
-	$product_query = vam_db_query("select categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " where categories_id = '" . $category_id . "' and language_id = '" . (int) $_SESSION['languages_id'] . "'"); 
-	$product_info = vam_db_fetch_array($product_query); 
-	
-	return $product_info['categories_name']; 
-	} 
-
 	function get_products($categories_id,  $selected_blocks)
 	{
 	
