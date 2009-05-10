@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: parameters.php 1167 2009-04-29 11:13:01Z VaM $   
+   $Id: parameters.php 1167 2009-04-28 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -22,7 +22,7 @@ define('OPENED_TITLE', 'Открыто');
 define('SEARCH_TITLE', 'Поиск');
 define('INTERVALS_TITLE', 'Интервалы');
 define('NAMEINTITLE_TITLE', 'Название в титле');
-define('SUFFINTITLE_TITLE', 'Суффикc в титле');
+define('SUFFINTITLE_TITLE', 'Суффикc');
 define('DESC_TITLE', 'Показывать в списке товара');
 define('DCLICK_TITLE', 'двойной клик для редактирования');
 define('ONECLICK_TITLE', 'один клик для выбора, ');
