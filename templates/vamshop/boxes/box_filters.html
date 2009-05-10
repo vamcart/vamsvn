@@ -29,10 +29,13 @@ function open_hide_values(obj, a)
 
 {if $is_params_selected}
 	{foreach name=aussen1 item=selectedParam from=$selectedParamsFilters}
-		{$selectedParam.name}<br />
+<div class="close">
+		{$selectedParam.name}
 		{foreach name=aussen2 item=selectedItem from=$selectedParam.list}
-			 <a href='index.php?cat={$categories_id}&q={$selectedItem.set_query}'>{$selectedItem.parameters_value}</a><br />
+		<div class="content"><span class="name">{$selectedItem.parameters_value}</span><span class="close"><a href='{$selectedItem.url}'>X</a></span></div>
 		{/foreach}
+<div class="clear"></div>
+</div>
 	{/foreach}
 {/if}
 
@@ -42,7 +45,7 @@ function open_hide_values(obj, a)
 		 {if $blockValue.opened}
 		<div id="hidden_values_{$filterParam.products_parameters_id}" style="display: none; text-align: left;">
 		 {/if}
-		 <a href='index.php?cat={$categories_id}&q={$blockValue.set_query}'>{$blockValue.parameters_value} ({$blockValue.znak}{$blockValue.count})</a><br />
+		 <a href='{$blockValue.url}'>{$blockValue.parameters_value} ({$blockValue.znak}{$blockValue.count})</a><br />
 	{/foreach}
 	{if $filterParam.opened}
 		</div>
@@ -52,7 +55,7 @@ function open_hide_values(obj, a)
 
 <br />
 
-  <form action="index.php?cat={$categories_id}&q={$all_query}" method="GET">
+  <form action="{$priceForm}" method="GET">
   <input type="hidden" name="cat" value="{$categories_id}" />
   <input type="hidden" name="q" value="{$all_query}" />
   {#text_filters_price#}:
