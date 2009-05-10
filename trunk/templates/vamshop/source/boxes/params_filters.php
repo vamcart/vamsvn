@@ -13,7 +13,8 @@
 
 require_once(DIR_WS_FUNCTIONS."params_filters.php");
 
-$categories_id = intval($_GET['cat']);
+//$categories_id = intval($_GET['cat']);
+$categories_id = intval($current_category_id);
 $parametersNames = getAllParameters($categories_id);
 $selected = get_selected();
 $selectedGroups = get_selected_groups( $selected );
@@ -53,7 +54,7 @@ foreach($selected as $block => $blockItems)
 			$set_query = $query;
 		}	
 		$blockItems[$i]['set_query'] = $set_query.$price_query;
-		$blockItems[$i]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$set_query.$price_query);
+		$blockItems[$i]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, get_categories_name($categories_id)) .'&q='.$set_query.$price_query);
 		$title_block[] = $blockItems[$i]["parameters_value"];
 	}
 	$selectedParamsFilters[$j]["name"] = $parametersNames[$block];
@@ -83,7 +84,7 @@ for($i = 0; $i < count($filterParams); $i++)
 		$znak = ( array_key_exists( $filterParams[$i]["products_parameters_id"], $selectedGroups)) ? "+" : "" ;
 		$values[$j]['znak'] = $znak;
 		$values[$j]['set_query'] = $set_query.$price_query ;
-		$values[$j]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$set_query.$price_query);
+		$values[$j]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, get_categories_name($categories_id)) .'&q='.$set_query.$price_query);
 		$values[$j]['opened'] = ($count_opened == $j && $count_opened != 0) ? true : false ;
 	}
 	$mainParamsFilters[$i] = $filterParams[$i];
