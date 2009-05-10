@@ -27,6 +27,9 @@
     $direction = '';
     $filter_id = '';
     $on_page = '';
+    $q = '';
+    $price_min = '';
+    $price_max = '';
     $language = '';
     $currency = '';
     $page_num = '';
@@ -64,6 +67,12 @@
             $language = $parsed_param[1];
           } elseif ($parsed_param[0] === 'currency') {
             $currency = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'q') {
+            $q = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'price_min') {
+            $price_min = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'price_max') {
+            $price_max = $parsed_param[1];
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
@@ -127,6 +136,18 @@
 
           if (vam_not_null($currency)) {
             $params .= '&currency=' . $currency;
+          }
+
+          if (vam_not_null($q)) {
+            $params .= '&q=' . $q;
+          }
+
+          if (vam_not_null($price_min)) {
+            $params .= '&price_min=' . $price_min;
+          }
+
+          if (vam_not_null($price_max)) {
+            $params .= '&price_max=' . $price_max;
           }
 
           if ($on_page === -1) {
