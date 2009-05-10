@@ -54,7 +54,7 @@ foreach($selected as $block => $blockItems)
 			$set_query = $query;
 		}	
 		$blockItems[$i]['set_query'] = $set_query.$price_query;
-		$blockItems[$i]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, get_categories_name($categories_id)) .'&q='.$set_query.$price_query);
+		$blockItems[$i]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories['categories_name']) .'&q='.$set_query.$price_query);
 		$title_block[] = $blockItems[$i]["parameters_value"];
 	}
 	$selectedParamsFilters[$j]["name"] = $parametersNames[$block];
@@ -84,7 +84,7 @@ for($i = 0; $i < count($filterParams); $i++)
 		$znak = ( array_key_exists( $filterParams[$i]["products_parameters_id"], $selectedGroups)) ? "+" : "" ;
 		$values[$j]['znak'] = $znak;
 		$values[$j]['set_query'] = $set_query.$price_query ;
-		$values[$j]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, get_categories_name($categories_id)) .'&q='.$set_query.$price_query);
+		$values[$j]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories['categories_name']) .'&q='.$set_query.$price_query);
 		$values[$j]['opened'] = ($count_opened == $j && $count_opened != 0) ? true : false ;
 	}
 	$mainParamsFilters[$i] = $filterParams[$i];
