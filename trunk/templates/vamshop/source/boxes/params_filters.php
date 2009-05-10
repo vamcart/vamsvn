@@ -53,6 +53,7 @@ foreach($selected as $block => $blockItems)
 			$set_query = $query;
 		}	
 		$blockItems[$i]['set_query'] = $set_query.$price_query;
+		$blockItems[$i]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$set_query.$price_query);
 		$title_block[] = $blockItems[$i]["parameters_value"];
 	}
 	$selectedParamsFilters[$j]["name"] = $parametersNames[$block];
@@ -82,6 +83,7 @@ for($i = 0; $i < count($filterParams); $i++)
 		$znak = ( array_key_exists( $filterParams[$i]["products_parameters_id"], $selectedGroups)) ? "+" : "" ;
 		$values[$j]['znak'] = $znak;
 		$values[$j]['set_query'] = $set_query.$price_query ;
+		$values[$j]['url'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$set_query.$price_query);
 		$values[$j]['opened'] = ($count_opened == $j && $count_opened != 0) ? true : false ;
 	}
 	$mainParamsFilters[$i] = $filterParams[$i];
@@ -105,6 +107,7 @@ $box->assign('price_max', $_GET['price_max']);
 $box->assign('is_params_selected', $is_params_selected);
 $box->assign('filterParams', $mainParamsFilters);
 $box->assign('selectedParamsFilters', $selectedParamsFilters);
+$box->assign('priceForm', vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$query));
 
 $box->assign('BUTTON_FILTER', vam_image_submit('button_filter.gif', TEXT_PRODUCT_FILTER));
 
