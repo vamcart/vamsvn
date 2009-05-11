@@ -20,7 +20,7 @@
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_TITLE', 'Яндекс-деньги (Через ЯД Мерчант)');
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс-деньги (Через ЯД Мерчант)');
   define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
-  define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс-деньги (Через ЯД Мерчант)<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/node/344" target="_blank"><u>здесь</u></a>.');
+  define('MODULE_PAYMENT_PROCHANGE_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс-деньги (Через ЯД Мерчант)<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/faq.php/faq_id/71/question/Nastroika-modulya-oplaty-Yandeks-Dengi--YaD-Merchant-" target="_blank"><u>здесь</u></a>.');
   
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс-деньги');
 define('MODULE_PAYMENT_PROCHANGE_MERCHANT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
