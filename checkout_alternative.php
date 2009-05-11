@@ -8,13 +8,13 @@
 
    Copyright (c) 2008 VaM Shop
    -----------------------------------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(checkout_payment_address.php,v 1.13 2003/05/27); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(checkout_payment_address.php,v 1.13 2003/05/27); www.oscommerce.com
    (c) 2003	 nextcommerce (checkout_payment_address.php,v 1.14 2003/08/17); www.nextcommerce.org
    (c) 2004	 xt:Commerce (checkout_payment_address.php,v 1.14 2003/08/17); xt-commerce.com
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
@@ -66,14 +66,16 @@ $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id']
 $vamTemplate->assign('FORM_END', '</form>');
 
 
-$vamTemplate->assign('virtual', 'false');
-
-if ($_SESSION['cart']->content_type == 'virtual' || ($_SESSION['cart']->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) { 
+if ($_SESSION['cart']->content_type == 'virtual' || ($_SESSION['cart']->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) {
 
 	$_SESSION['shipping'] = false;
 	$_SESSION['sendto'] = false;
 
 $vamTemplate->assign('virtual', 'true');
+
+} else {
+
+$vamTemplate->assign('virtual', 'false');
 
 }
 
