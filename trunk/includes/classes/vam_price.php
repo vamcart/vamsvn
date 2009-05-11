@@ -348,6 +348,12 @@ class vamPrice {
 		if ($format) {
 			$Pprice = number_format($price, $this->currencies[$this->actualCurr]['decimal_places'], $this->currencies[$this->actualCurr]['decimal_point'], $this->currencies[$this->actualCurr]['thousands_point']);
 			$Pprice = $this->checkAttributes($pID).$this->currencies[$this->actualCurr]['symbol_left'].' '.$Pprice.' '.$this->currencies[$this->actualCurr]['symbol_right'];
+			
+         if ($price == 0) {
+         $Pprice = TXT_FREE;
+//         $price = TXT_FREE;
+         }			
+			
 			if ($vpeStatus == 0) {
 				return $Pprice;
 			} else {
