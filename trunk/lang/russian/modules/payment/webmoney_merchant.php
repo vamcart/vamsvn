@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: webmoney_merchant.php 998 2007/02/07 13:24:46 VaM $
+   $Id: webmoney_merchant.php 998 2009/05/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -19,7 +19,7 @@
 
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_TITLE', 'WebMoney Merchant');
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_PUBLIC_TITLE', 'WebMoney Merchant');
-  define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты WebMoney Merchant<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/node/343" target="_blank"><u>здесь</u></a>.');
+  define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты WebMoney Merchant<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/faq.php/faq_id/70/question/Nastroika-modulya-oplaty-WebMoney-Merchant" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   
   define('MODULE_PAYMENT_WEBMONEYMERCHANT_TEXT_TYPE','Способ оплаты:');
