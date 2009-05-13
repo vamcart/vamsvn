@@ -128,6 +128,7 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product')));
 		$info->assign('FORM_END', '</form>');
 		$info->assign('PRODUCTS_PRICE', $products_price['formated']);
+		$info->assign('PRODUCTS_PRICE_PLAIN', $products_price['plain']);
 		if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
 			$info->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
 		$info->assign('PRODUCTS_ID', $product->data['products_id']);
