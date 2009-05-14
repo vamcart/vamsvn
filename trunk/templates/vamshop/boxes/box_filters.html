@@ -7,7 +7,7 @@
 <div id="boxFiltersContent">
 
 {literal}
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function open_hide_values(obj, a)
 {
@@ -55,7 +55,7 @@ function open_hide_values(obj, a)
 
 <br />
 
-  <form action="{$priceForm}" method="GET">
+  <form action="{$priceForm}" method="get">
   <input type="hidden" name="cat" value="{$categories_id}" />
   <input type="hidden" name="q" value="{$all_query}" />
   {#text_filters_price#}:
