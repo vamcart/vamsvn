@@ -78,9 +78,9 @@ if (vam_not_null($action))
 		case 'insert':
 			$categ_id = vam_db_prepare_input($_POST['categ_id']);
 			$specials_price = vam_db_prepare_input($_POST['specials_price']);
-			$day = vam_db_prepare_input($_POST['day']);
-			$month = vam_db_prepare_input($_POST['month']);
-			$year = vam_db_prepare_input($_POST['year']);
+         $day = vam_db_prepare_input($_POST['expires-dd']);
+         $month = vam_db_prepare_input($_POST['expires-mm']);
+         $year = vam_db_prepare_input($_POST['expires']);
 			$override = vam_db_prepare_input($_POST['override']);
 	
 			$query = "select special_id from ". TABLE_SPECIAL_CATEGORY. " where categ_id = $categ_id";
