@@ -485,8 +485,8 @@ define('BOX_HEADING_CUSTOMER_EXTRA_FIELDS', 'Дополнительные пол
 define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s должно содержать как минимум %d символов');
 define('TEXT_DISPLAY_NUMBER_OF_FIELDS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> полей)');
 
-define('VAMSHOP_SUPPORT_KEY_TEXT','<a href="http://vamshop.ru/shop/key.php" target="_blank"><u>Ключ поддержки:</u></a>');
-define('VAMSHOP_REGISTER_SUPPORT_KEY','<a href="http://vamshop.ru/shop/key.php" target="_blank">получить бесплатный ключ</a>.');
+define('VAMSHOP_SUPPORT_KEY_TEXT','<a href="http://vamshop.ru/key.php" target="_blank"><u>Ключ поддержки:</u></a>');
+define('VAMSHOP_REGISTER_SUPPORT_KEY','<a href="http://vamshop.ru/key.php" target="_blank">получить бесплатный ключ</a>.');
 define('VAMSHOP_SUPPORT_KEY',(file_exists(DIR_FS_CATALOG .'vamshop.key') ? implode('', file(DIR_FS_CATALOG .'vamshop.key')) : VAMSHOP_REGISTER_SUPPORT_KEY));
 
 define('BOX_PARAMETERS', 'Параметры');
