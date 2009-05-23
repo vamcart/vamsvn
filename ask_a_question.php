@@ -175,16 +175,7 @@ $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a href="javascript:window.close()">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
 
-// set cache ID
- if (!CacheCheck()) {
 	$vamTemplate->caching = 0;
 	$vamTemplate->display(CURRENT_TEMPLATE.'/module/ask_a_question.html');
-} else {
-	$vamTemplate->caching = 1;
-	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
-	$vamTemplate->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'];
-	$vamTemplate->display(CURRENT_TEMPLATE.'/module/ask_a_question.html', $cache_id);
-	}
 }
 ?>
