@@ -71,39 +71,39 @@ class schet {
       	                 'fields' => array(array('title' => MODULE_PAYMENT_SCHET_J_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_SCHET_J_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_NAME,
-      	                                         'field' => vam_draw_input_field('name') . MODULE_PAYMENT_SCHET_J_NAME_IP),
+      	                                         'field' => vam_draw_input_field('s_name') . MODULE_PAYMENT_SCHET_J_NAME_IP),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_INN,
-      	                                         'field' => vam_draw_input_field('inn')),
+      	                                         'field' => vam_draw_input_field('s_inn')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_KPP,
-      	                                         'field' => vam_draw_input_field('kpp')),
+      	                                         'field' => vam_draw_input_field('s_kpp')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_OGRN,
-      	                                         'field' => vam_draw_input_field('ogrn')),
+      	                                         'field' => vam_draw_input_field('s_ogrn')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_OKPO,
-      	                                         'field' => vam_draw_input_field('okpo')),
+      	                                         'field' => vam_draw_input_field('s_okpo')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_RS,
-      	                                         'field' => vam_draw_input_field('rs')),
+      	                                         'field' => vam_draw_input_field('s_rs')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_BANK_NAME,
-      	                                         'field' => vam_draw_input_field('bank_name') . MODULE_PAYMENT_SCHET_J_BANK_NAME_HELP),
+      	                                         'field' => vam_draw_input_field('s_bank_name') . MODULE_PAYMENT_SCHET_J_BANK_NAME_HELP),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_BIK,
-      	                                         'field' => vam_draw_input_field('bik')),
+      	                                         'field' => vam_draw_input_field('s_bik')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_KS,
-      	                                         'field' => vam_draw_input_field('ks')),
+      	                                         'field' => vam_draw_input_field('s_ks')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_ADDRESS,
-      	                                         'field' => vam_draw_input_field('address') . MODULE_PAYMENT_SCHET_J_ADDRESS_HELP),
+      	                                         'field' => vam_draw_input_field('s_address') . MODULE_PAYMENT_SCHET_J_ADDRESS_HELP),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_YUR_ADDRESS,
-//      	                                         'field' => vam_draw_input_field('yur_address')),
+//      	                                         'field' => vam_draw_input_field('s_yur_address')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAKT_ADDRESS,
-//      	                                         'field' => vam_draw_input_field('fakt_address')),
+//      	                                         'field' => vam_draw_input_field('s_fakt_address')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_TELEPHONE,
-      	                                         'field' => vam_draw_input_field('telephone', $order->customer['telephone']))
+      	                                         'field' => vam_draw_input_field('s_telephone', $order->customer['telephone']))
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAX,
-//      	                                         'field' => vam_draw_input_field('fax')),
+//      	                                         'field' => vam_draw_input_field('s_fax')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_EMAIL,
-//      	                                         'field' => vam_draw_input_field('email')),
+//      	                                         'field' => vam_draw_input_field('s_email')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_DIRECTOR,
-//      	                                         'field' => vam_draw_input_field('director', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
+//      	                                         'field' => vam_draw_input_field('s_director', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_ACCOUNTANT,
-//      	                                         'field' => vam_draw_input_field('accountant'))
+//      	                                         'field' => vam_draw_input_field('s_accountant'))
       	                                         
       	                                   ));
 
@@ -113,23 +113,23 @@ class schet {
 
 	function pre_confirmation_check() {
 
-        $this->name = vam_db_prepare_input($_POST['name']);
-        $this->inn = vam_db_prepare_input($_POST['inn']);
-        $this->kpp = vam_db_prepare_input($_POST['kpp']);
-        $this->ogrn = vam_db_prepare_input($_POST['ogrn']);
-        $this->okpo = vam_db_prepare_input($_POST['okpo']);
-        $this->rs = vam_db_prepare_input($_POST['rs']);
-        $this->bank_name = vam_db_prepare_input($_POST['bank_name']);
-        $this->bik = vam_db_prepare_input($_POST['bik']);
-        $this->ks = vam_db_prepare_input($_POST['ks']);
-        $this->address = vam_db_prepare_input($_POST['address']);
-        $this->yur_address = vam_db_prepare_input($_POST['yur_address']);
-        $this->fakt_address = vam_db_prepare_input($_POST['fakt_address']);
-        $this->telephone = vam_db_prepare_input($_POST['telephone']);
-        $this->fax = vam_db_prepare_input($_POST['fax']);
-        $this->email = vam_db_prepare_input($_POST['email']);
-        $this->director = vam_db_prepare_input($_POST['director']);
-        $this->accountant = vam_db_prepare_input($_POST['accountant']);
+        $this->name = vam_db_prepare_input($_POST['s_name']);
+        $this->inn = vam_db_prepare_input($_POST['s_inn']);
+        $this->kpp = vam_db_prepare_input($_POST['s_kpp']);
+        $this->ogrn = vam_db_prepare_input($_POST['s_ogrn']);
+        $this->okpo = vam_db_prepare_input($_POST['s_okpo']);
+        $this->rs = vam_db_prepare_input($_POST['s_rs']);
+        $this->bank_name = vam_db_prepare_input($_POST['s_bank_name']);
+        $this->bik = vam_db_prepare_input($_POST['s_bik']);
+        $this->ks = vam_db_prepare_input($_POST['s_ks']);
+        $this->address = vam_db_prepare_input($_POST['s_address']);
+        $this->yur_address = vam_db_prepare_input($_POST['s_yur_address']);
+        $this->fakt_address = vam_db_prepare_input($_POST['s_fakt_address']);
+        $this->telephone = vam_db_prepare_input($_POST['s_telephone']);
+        $this->fax = vam_db_prepare_input($_POST['s_fax']);
+        $this->email = vam_db_prepare_input($_POST['s_email']);
+        $this->director = vam_db_prepare_input($_POST['s_director']);
+        $this->accountant = vam_db_prepare_input($_POST['s_accountant']);
 
 	}
 
