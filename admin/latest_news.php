@@ -23,8 +23,8 @@
     switch ($_GET['action']) {
       case 'setflag': //set the status of a news item.
         if ( ($_GET['flag'] == '0') || ($_GET['flag'] == '1') ) {
-          if ($_GET['latest_news_id']) {
-            vam_db_query("update " . TABLE_LATEST_NEWS . " set status = '" . $_GET['flag'] . "' where news_id = '" . $_GET['latest_news_id'] . "'");
+          if ($_GET['news_id']) {
+            vam_db_query("update " . TABLE_LATEST_NEWS . " set status = '" . $_GET['flag'] . "' where news_id = '" . $_GET['news_id'] . "'");
           }
         }
 
@@ -32,9 +32,9 @@
         break;
 
       case 'delete_latest_news_confirm': //user has confirmed deletion of news article.
-        if ($_POST['latest_news_id']) {
-          $latest_news_id = vam_db_prepare_input($_POST['latest_news_id']);
-          vam_db_query("delete from " . TABLE_LATEST_NEWS . " where news_id = '" . vam_db_input($latest_news_id) . "'");
+        if ($_POST['news_id']) {
+          $news_id = vam_db_prepare_input($_POST['news_id']);
+          vam_db_query("delete from " . TABLE_LATEST_NEWS . " where news_id = '" . vam_db_input($news_id) . "'");
         }
 
    //     vam_redirect(vam_href_link(FILENAME_LATEST_NEWS));
@@ -55,14 +55,14 @@
         break;
 
       case 'update_latest_news': //user wants to modify a news article.
-        if($_GET['latest_news_id']) {
+        if($_GET['news_id']) {
           $sql_data_array = array('headline' => vam_db_prepare_input($_POST['headline']),
                                   'news_page_url'    => vam_db_prepare_input($_POST['news_page_url']),
                                   'content'  => vam_db_prepare_input($_POST['content']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
                                   );
-          vam_db_perform(TABLE_LATEST_NEWS, $sql_data_array, 'update', "news_id = '" . vam_db_prepare_input($_GET['latest_news_id']) . "'");
+          vam_db_perform(TABLE_LATEST_NEWS, $sql_data_array, 'update', "news_id = '" . vam_db_prepare_input($_GET['news_id']) . "'");
         }
   //      vam_redirect(vam_href_link(FILENAME_LATEST_NEWS));
         break;
@@ -104,14 +104,14 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
   if ($_GET['action'] == 'new_latest_news') { //insert or edit a news item
-    if ( isset($_GET['latest_news_id']) ) { //editing exsiting news item
-      $latest_news_query = vam_db_query("select news_id, headline, news_page_url, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['latest_news_id'] . "'");
+    if ( isset($_GET['news_id']) ) { //editing exsiting news item
+      $latest_news_query = vam_db_query("select news_id, headline, news_page_url, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['news_id'] . "'");
       $latest_news = vam_db_fetch_array($latest_news_query);
     } else { //adding new news item
       $latest_news = array();
     }
 ?>
-      <tr><?php echo vam_draw_form('new_latest_news', FILENAME_LATEST_NEWS, isset($_GET['latest_news_id']) ? 'latest_news_id=' . $_GET['latest_news_id'] . '&action=update_latest_news' : 'action=insert_latest_news', 'post', 'enctype="multipart/form-data"'); ?>
+      <tr><?php echo vam_draw_form('new_latest_news', FILENAME_LATEST_NEWS, isset($_GET['news_id']) ? vam_get_all_get_params(array('action')) . 'action=update_latest_news' : vam_get_all_get_params(array('action')) . 'action=insert_latest_news', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_HEADLINE; ?>:</td>
@@ -136,7 +136,7 @@
           </tr>
 
 <?php
-if ( isset($_GET['latest_news_id']) ) {
+if ( isset($_GET['news_id']) ) {
 ?>
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_DATE; ?>:</td>
@@ -185,7 +185,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       <tr>
         <td class="main" align="right">
           <?php
-            isset($_GET['latest_news_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $_GET['latest_news_id']) . '">' . BUTTON_CANCEL . '</a>' : $cancel_button = '';
+            isset($_GET['news_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'news_id=' . $_GET['news_id']) . '">' . BUTTON_CANCEL . '</a>' : $cancel_button = '';
             echo '<input type="submit" class="button" value="' . BUTTON_INSERT .'">' . $cancel_button;
           ?>
         </td>
@@ -207,31 +207,37 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $latest_news_count = 0;
-    $latest_news_query = vam_db_query('select news_id, headline, news_page_url, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc');
+    $latest_news_query_raw = 'select news_id, headline, news_page_url, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc';
+
+	$latest_news_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $latest_news_query_raw, $latest_news_query_numrows);
+
+    $latest_news_query = vam_db_query($latest_news_query_raw);
     
     while ($latest_news = vam_db_fetch_array($latest_news_query)) {
       $latest_news_count++;
       $rows++;
       
-      if ( ((!$_GET['latest_news_id']) || (@$_GET['latest_news_id'] == $latest_news['news_id'])) && (!$selected_item) && (substr($_GET['action'], 0, 4) != 'new_') ) {
-        $selected_item = $latest_news;
-      }
-      if ( (is_array($selected_item)) && ($latest_news['news_id'] == $selected_item['news_id']) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $latest_news['news_id']) . '\'">' . "\n";
+		if (((!$_GET['news_id']) || (@ $_GET['news_id'] == $latest_news['news_id'])) && (!$nInfo)) {
+			$nInfo = new objectInfo($latest_news);
+		}
+
+		if ((is_object($nInfo)) && ($latest_news['news_id'] == $nInfo->news_id)) {
+		
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_LATEST_NEWS, vam_get_all_get_params(array('news_id','action')) . 'news_id=' . $latest_news['news_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $latest_news['news_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_LATEST_NEWS, vam_get_all_get_params(array('news_id','action')) . 'news_id=' . $latest_news['news_id']) . '\'">' . "\n";
       }
 ?>
                 <td class="dataTableContent"><?php echo '&nbsp;' . $latest_news['headline']; ?></td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($latest_news['status'] == '1') {
-        echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=setflag&flag=0&latest_news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=setflag&flag=0&news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=setflag&flag=1&latest_news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=setflag&flag=1&news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?></td>
-                <td class="dataTableContent" align="right"><?php if ($latest_news['news_id'] == $_GET['latest_news_id']) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+                <td class="dataTableContent" align="right"><?php if ($latest_news['news_id'] == $_GET['news_id']) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, 'news_id=' . $latest_news['news_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
     }
@@ -245,6 +251,14 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
                   </tr>																																		  
                 </table></td>
               </tr>
+              <tr>
+                <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                  <tr>
+                    <td class="smallText" valign="top"><?php echo $latest_news_split->display_count($latest_news_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_NEWS); ?></td>
+                    <td class="smallText" align="right"><?php echo $latest_news_split->display_links($latest_news_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'action', 'x', 'y', 'news_id'))); ?></td>
+                  </tr>              
+                </table></td>
+              </tr>
             </table></td>
 <?php
     $heading = array();
@@ -253,23 +267,23 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       case 'delete_latest_news': //generate box for confirming a news article deletion
         $heading[] = array('text'   => '<b>' . TEXT_INFO_HEADING_DELETE_ITEM . '</b>');
         
-        $contents = array('form'    => vam_draw_form('news', FILENAME_LATEST_NEWS, 'action=delete_latest_news_confirm') . vam_draw_hidden_field('latest_news_id', $_GET['latest_news_id']));
+        $contents = array('form'    => vam_draw_form('news', FILENAME_LATEST_NEWS, vam_get_all_get_params(array('action')) . 'action=delete_latest_news_confirm') . vam_draw_hidden_field('news_id', $_GET['news_id']));
         $contents[] = array('text'  => TEXT_DELETE_ITEM_INTRO);
         $contents[] = array('text'  => '<br><b>' . $selected_item['headline'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><input type="submit" class="button" value="' . BUTTON_DELETE .'"><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $selected_item['news_id']) . '">' . BUTTON_CANCEL . '</a>');
+                            'text'  => '<br><input type="submit" class="button" value="' . BUTTON_DELETE .'"><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '">' . BUTTON_CANCEL . '</a>');
         break;
 
       default:
         if ($rows > 0) {
-          if (is_array($selected_item)) { //an item is selected, so make the side box
-            $heading[] = array('text' => '<b>' . $selected_item['headline'] . '</b>');
+          if (is_object($nInfo)) { //an item is selected, so make the side box
+            $heading[] = array('text' => '<b>' . $nInfo->headline . '</b>');
 
             $contents[] = array('align' => 'center', 
-                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $selected_item['news_id'] . '&action=new_latest_news') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'latest_news_id=' . $selected_item['news_id'] . '&action=delete_latest_news') . '">' . BUTTON_DELETE . '</a>');
+                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=new_latest_news') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=delete_latest_news') . '">' . BUTTON_DELETE . '</a>');
 
-            $contents[] = array('text' => '<br>' . $selected_item['content']);
+            $contents[] = array('text' => '<br>' . $nInfo->content);
           }
         } else { // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
