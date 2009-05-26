@@ -319,13 +319,13 @@ if (isset ($_POST['payment']))
 		}
 	}
 
-//   if (ACCOUNT_TELE == 'true') {
-//	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
-//		$error = true;
-//
-//		$messageStack->add('checkout_alternative', ENTRY_TELEPHONE_NUMBER_ERROR.'<br>');
-//	}
-//  }
+   if (ACCOUNT_TELE == 'true') {
+	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
+		$error = true;
+
+		$messageStack->add('checkout_alternative', ENTRY_TELEPHONE_NUMBER_ERROR.'<br>');
+	}
+  }
 
         $extra_fields_query = vamDBquery("select ce.fields_id, ce.fields_input_type, ce.fields_required_status, cei.fields_name, ce.fields_status, ce.fields_input_type, ce.fields_size from " . TABLE_EXTRA_FIELDS . " ce, " . TABLE_EXTRA_FIELDS_INFO . " cei where ce.fields_status=1 and ce.fields_required_status=1 and cei.fields_id=ce.fields_id and cei.languages_id =" . $_SESSION['languages_id']);
 
