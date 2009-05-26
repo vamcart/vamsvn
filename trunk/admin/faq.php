@@ -113,7 +113,7 @@
       $faq = array();
     }
 ?>
-      <tr><?php echo vam_draw_form('new_faq', FILENAME_FAQ, isset($_GET['faq_id']) ? 'faq_id=' . $_GET['faq_id'] . '&action=update_faq' : 'action=insert_faq', 'post', 'enctype="multipart/form-data"'); ?>
+      <tr><?php echo vam_draw_form('new_faq', FILENAME_FAQ, isset($_GET['faq_id']) ? vam_get_all_get_params(array('action')) . 'action=update_faq' : vam_get_all_get_params(array('action')) . 'action=insert_faq', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
           <tr>
             <td class="main"><?php echo TEXT_FAQ_QUESTION; ?>:</td>
@@ -203,19 +203,25 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $faq_count = 0;
-    $faq_query = vam_db_query('select faq_id, question, answer, status from ' . TABLE_FAQ . ' order by date_added desc');
-    
+    $faq_query_raw = 'select faq_id, question, answer, status from ' . TABLE_FAQ . ' order by date_added desc';
+
+	$faq_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $faq_query_raw, $faq_query_numrows);
+
+    $faq_query = vam_db_query($faq_query_raw);
+	    
     while ($faq = vam_db_fetch_array($faq_query)) {
       $faq_count++;
       $rows++;
       
-      if ( ((!$_GET['faq_id']) || (@$_GET['faq_id'] == $faq['faq_id'])) && (!$selected_item) && (substr($_GET['action'], 0, 4) != 'new_') ) {
-        $selected_item = $faq;
-      }
-      if ( (is_array($selected_item)) && ($faq['faq_id'] == $selected_item['faq_id']) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $faq['faq_id']) . '\'">' . "\n";
+		if (((!$_GET['faq_id']) || (@ $_GET['faq_id'] == $faq['faq_id'])) && (!$fInfo)) {
+			$fInfo = new objectInfo($faq);
+		}
+
+		if ((is_object($fInfo)) && ($faq['faq_id'] == $fInfo->faq_id)) {
+		
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array('faq_id','action')) . 'faq_id=' . $faq['faq_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $faq['faq_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array('faq_id','action')) . 'faq_id=' . $faq['faq_id']) . '\'">' . "\n";
       }
 ?>
                 <td class="dataTableContent"><?php echo '&nbsp;' . $faq['question']; ?></td>
@@ -241,6 +247,14 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
                   </tr>																																		  
                 </table></td>
               </tr>
+              <tr>
+                <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                  <tr>
+                    <td class="smallText" valign="top"><?php echo $faq_split->display_count($faq_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_FAQS); ?></td>
+                    <td class="smallText" align="right"><?php echo $faq_split->display_links($faq_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'action', 'x', 'y', 'faq_id'))); ?></td>
+                  </tr>              
+                </table></td>
+              </tr>
             </table></td>
 <?php
     $heading = array();
@@ -249,23 +263,23 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       case 'delete_faq': //generate box for confirming a faqdeletion
         $heading[] = array('text'   => '<b>' . TEXT_INFO_HEADING_DELETE_ITEM . '</b>');
         
-        $contents = array('form'    => vam_draw_form('faq', FILENAME_FAQ, 'action=delete_faq_confirm') . vam_draw_hidden_field('faq_id', $_GET['faq_id']));
+        $contents = array('form'    => vam_draw_form('faq', FILENAME_FAQ, vam_get_all_get_params(array('action')) . 'action=delete_faq_confirm') . vam_draw_hidden_field('faq_id', $_GET['faq_id']));
         $contents[] = array('text'  => TEXT_DELETE_ITEM_INTRO);
         $contents[] = array('text'  => '<br><b>' . $selected_item['question'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><input type="submit" class="button" value="' . BUTTON_DELETE .'"><a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $selected_item['faq_id']) . '">' . BUTTON_CANCEL . '</a>');
+                            'text'  => '<br><input type="submit" class="button" value="' . BUTTON_DELETE .'"><a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $selected_item['faq_id']) . '">' . BUTTON_CANCEL . '</a>');
         break;
 
       default:
         if ($rows > 0) {
-          if (is_array($selected_item)) { //an item is selected, so make the side box
-            $heading[] = array('text' => '<b>' . $selected_item['question'] . '</b>');
+          if (is_object($fInfo)) { //an item is selected, so make the side box
+            $heading[] = array('text' => '<b>' . $fInfo->question . '</b>');
 
             $contents[] = array('align' => 'center', 
-                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $selected_item['faq_id'] . '&action=new_faq') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $selected_item['faq_id'] . '&action=delete_faq') . '">' . BUTTON_DELETE . '</a>');
+                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=new_faq') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=delete_faq') . '">' . BUTTON_DELETE . '</a>');
 
-            $contents[] = array('text' => '<br>' . $selected_item['answer']);
+            $contents[] = array('text' => '<br>' . $fInfo->answer);
           }
         } else { // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
