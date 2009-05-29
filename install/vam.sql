@@ -842,7 +842,7 @@ DROP TABLE IF EXISTS extra_fields_info;
 CREATE TABLE extra_fields_info (
   fields_id int(11) NOT NULL default '0',
   languages_id int(11) NOT NULL default '0',
-  fields_name varchar(32) NOT NULL default ''
+  fields_name varchar(255) NOT NULL default ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS faq;
