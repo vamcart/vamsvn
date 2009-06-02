@@ -370,6 +370,7 @@ class vamPrice {
 	function FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus = 0) {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
+		if ($pPrice > 0)
 			$price = '<span class="productOldPrice">'.INSTEAD.$this->Format($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.YOU_SAVE.$discount.'%';
 			if ($vpeStatus == 0) {
 				return $price;
