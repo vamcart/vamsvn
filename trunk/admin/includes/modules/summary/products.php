@@ -21,8 +21,7 @@ require_once (DIR_WS_CLASSES.'currencies.php');
 $currencies = new currencies();
 
 ?>
-          <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
 				  <tr> 
 				    <td colspan="3" class="pageHeading" width="100%">
 
@@ -64,5 +63,4 @@ $currencies = new currencies();
 	}
 ?>
 
-                </table></td>
-              </tr>
+                </table>
