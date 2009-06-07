@@ -521,7 +521,6 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
       </tr>
 </table>
-<br />
 <div id="tabs">
 
 			<ul>

@@ -141,8 +141,6 @@ $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';
     <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_ATTRIBUTES; ?></a>
     <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_CROSS_SELLING; ?></a>
 
-<br /><br />
-
 <div id="tabs">
 
 			<ul>

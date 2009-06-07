@@ -87,8 +87,6 @@ $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
     
         	<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">&nbsp;&nbsp;<a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
     
-    <br /><br />
-    
 <div id="tabs">
 
 			<ul>
