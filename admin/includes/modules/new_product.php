@@ -114,9 +114,14 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 
 <tr><td>
@@ -136,10 +141,33 @@ $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';
     <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_ATTRIBUTES; ?></a>
     <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_CROSS_SELLING; ?></a>
 
-<div class="tabber">
+<br /><br />
+
+<div id="tabs">
+
+			<ul>
+<?php
+    for ($i=0; $i<sizeof($languages); $i++) {
+?>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo $languages[$i]['name']; ?></a></li>
+<?php 
+}
+?>
+				<li><a href="#data"><?php echo TEXT_PRODUCTS_DATA; ?></a></li>
+				<li><a href="#images"><?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></a></li>
+				<li><a href="#options"><?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></a></li>
+<?php
+    if (GROUP_CHECK == 'true') {
+?>
+				<li><a href="#groups"><?php echo ENTRY_CUSTOMERS_ACCESS; ?></a></li>
+<?php 
+}
+?>
+				<li><a href="#fields"><?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></a></li>
+			</ul>
+
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
-        <div class="tabbertab">
-        <h3><?php echo $languages[$i]['name']; ?></h3>
+        <div id="tab<?php echo $i; ?>">
           <table border="0">
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_NAME; ?></td>
@@ -178,8 +206,7 @@ $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';
 <?php } ?>
 
 <!-- info -->
-        <div class="tabbertab">
-        <h3><?php echo TEXT_PRODUCTS_DATA; ?></h3>
+        <div id="data">
           <table border="0">
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_STATUS; ?></td>
@@ -286,16 +313,14 @@ foreach (array('product_info', 'product_options') as $key) {
         </div>
 <!-- info -->
 <!-- images -->
-        <div class="tabbertab">
-        <h3><?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></h3>
+        <div id="images">
         <table border="0" class="main">
         <?php include (DIR_WS_MODULES.'products_images.php'); ?>
         </table>
         </div>
 <!-- images -->
 <!-- price -->
-        <div class="tabbertab">
-        <h3><?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></h3>
+        <div id="options">
         <table border="0" class="main">
           <?php include(DIR_WS_MODULES.'group_prices.php'); ?>
           <tr>
@@ -322,8 +347,7 @@ foreach (array('product_info', 'product_options') as $key) {
         $customers_statuses_array = vam_get_customers_statuses();
         $customers_statuses_array = array_merge(array (array ('id' => 'all', 'text' => TXT_ALL)), $customers_statuses_array);
 ?>
-        <div class="tabbertab">
-        <h3><?php echo ENTRY_CUSTOMERS_ACCESS; ?></h3>
+        <div id="groups">
 <?php
     for ($i = 0; $n = sizeof($customers_statuses_array), $i < $n; $i ++) {
         $code = '$id=$pInfo->group_permission_'.$customers_statuses_array[$i]['id'].';';
@@ -335,8 +359,7 @@ foreach (array('product_info', 'product_options') as $key) {
         </div>
 <?php } ?>
 
-        <div class="tabbertab">
-        <h3><?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></h3>
+        <div id="fields">
         <table border="0" class="main">
 
 <?php
