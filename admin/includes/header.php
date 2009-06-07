@@ -48,7 +48,7 @@
 	<div id="nav" class="nav">
 		<div id="menu">
 			<ul>
-				<li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CONFIGURATION_MAIN; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CONFIGURATION; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
@@ -435,8 +435,37 @@
 				</div>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
-				<li><a href="#url"><b>Помощь</b></a></li>
-				<li><a href="#url"><b>Выход</b></a></li>
+				<li><a class="sub" href="http://vamshop.ru" target="_blank"><b><?php echo BOX_HEADING_HELP; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<div class="holder">
+					<div class="leftSide">
+						<div class="rightSide">
+						<table><tr>
+
+							<td>
+								<dl>
+<?php
+
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru" target="_blank">' . BOX_SUPPORT_SITE . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/manual" target="_blank">' . HEADER_TITLE_DOCS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/faq.php" target="_blank">' . BOX_SUPPORT_FAQ . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum" target="_blank">' . BOX_SUPPORT_FORUM . '</a></dd>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['languages'] == '0')
+ ) echo '<dd><a href="#"></a></dd>'; 
+
+?>
+								</dl>
+
+							</td>
+						</tr></table>
+						</div>
+					</div>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
+				</li>
+				<li class="level1"><a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_LOGOFF; ?></b></a></li>
 			</ul>
 		</div>
 
