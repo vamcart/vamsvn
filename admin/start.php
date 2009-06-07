@@ -26,24 +26,16 @@ require ('includes/application_top.php');
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<style type="text/css">
-.h2 {
-  font-family: Trebuchet MS,Palatino,Times New Roman,serif;
-  font-size: 13pt;
-  font-weight: bold;
-}
-
-.h3 {
-  font-family: Verdana,Arial,Helvetica,sans-serif;
-  font-size: 9pt;
-  font-weight: bold;
-}
-</style> 
 
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -76,37 +68,26 @@ require ('includes/application_top.php');
 <tr>
 <td>
 
-<div class="tabber">
-
-<div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_ORDERS; ?></h3>
-<table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
-</table>
-</div>
-
-<div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_CUSTOMERS; ?></h3>
-<table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/customers.php'); ?>
-</table>
-</div>
-
-<div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_PRODUCTS; ?></h3>
-<table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
-</table>
-</div>
-
-<div class="tabbertab">
-<h3><?php echo TEXT_SUMMARY_STAT; ?></h3>
-<table border="0" width="99%">
-<?php include(DIR_WS_MODULES . 'summary/statistics.php'); ?>
-</table>
-</div>
-
-</div>    
+		<div id="tabs">
+			<ul>
+				<li><a href="#orders"><?php echo TEXT_SUMMARY_ORDERS; ?></a></li>
+				<li><a href="#customers"><?php echo TEXT_SUMMARY_CUSTOMERS; ?></a></li>
+				<li><a href="#products"><?php echo TEXT_SUMMARY_PRODUCTS; ?></a></li>
+				<li><a href="#stat"><?php echo TEXT_SUMMARY_STAT; ?></a></li>
+			</ul>
+			<div id="orders">
+			<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>
+			</div>
+			<div id="customers">
+			<?php include(DIR_WS_MODULES . 'summary/customers.php'); ?>
+			</div>
+			<div id="products">
+			<?php include(DIR_WS_MODULES . 'summary/products.php'); ?>
+			</div>
+			<div id="stat">
+			<?php include(DIR_WS_MODULES . 'summary/statistics.php'); ?>
+			</div>
+		</div>
 
 </td>
 </tr>
