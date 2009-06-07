@@ -455,65 +455,53 @@ This copyright notice must be kept untouched in the stylesheet at
 all times.
 
 The original version of this stylesheet and the associated (x)html
-is available at http://www.cssplay.co.uk/menus/pro_drop10.html
-Copyright (c) 2005-2008 Stu Nicholls. All rights reserved.
+is available at http://www.cssplay.co.uk/menus/multi-column.html
+Copyright (c) 2005-2009 Stu Nicholls. All rights reserved.
 This stylesheet and the associated (x)html may be modified in any 
 way to fit your requirements.
 =================================================================== */
-#nav {padding:0 0 0 20px; margin:0; list-style:none; height:43px; font-family:verdana, arial, sans-serif; font-size:12px; background:url(../images/menu/back.gif) repeat-x; border-top:1px solid #ced5ac;}
-#nav li {float:left; width:108px; height:43px;}
-#nav li a {display:block; float:left; width:108px; height:43px; line-height:35px; text-decoration:none; color:#000;}
-#nav li a span {display:block; height:35px; width:100px; float:left; text-align:center; background:transparent;}
-#nav li a b.p0 {display:block; width:8px; height:35px; background:transparent; float:left;}
-#nav li a b.p1 {clear:left; float:left; display:block; height:8px; width:100px; background:transparent; font-size:1px;}
-#nav li a b.p2 {display:block; float:left; height:8px; width:8px; background:transparent; font-size:1px;}
 
-#nav li a:hover {position:relative; visibility:visible; cursor:pointer; line-height:32px;}
+#nav {height: 41px; float:left; padding-left:20px; background:#fff url(../images/menu/tabLeft.gif) no-repeat left top; font-family:arial, sans-serif;}
 
-#nav li:hover {position:relative;}
-#nav li:hover > a {line-height:33px;}
+#menu {height:41px;position:relative;font-size:11px; margin: 0; z-index:1000; background:#fff url(../images/menu/tabRight.gif) no-repeat right top; float:left; padding-right:0;width:100%;}
+#menu table.ie6 {border-collapse:collapse; margin:0; padding:0;}
 
-#nav li:hover a b.p0 {background:url(../images/menu/right2.gif);}
-#nav li:hover a b.p1 {background:url(../images/menu/bottom2.gif) no-repeat;}
-#nav li:hover a b.p2 {background:url(../images/menu/corner2.gif);}
+#menu ul {padding:0; margin:0; list-style: none;}
+#menu ul li {float:left;}
+#menu ul li a {display:block; float:left;padding:0 15px 0 0;text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:11px; background:url(../images/menu/tabCenter.gif) no-repeat right top;}
+#menu ul li a b {display:block; float:left;padding:0 0 0 15px; text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:11px;background:url(../images/menu/tabCenter.gif) no-repeat left top; cursor:pointer;}
 
-#nav li a:hover span {background:url(../images/menu/greytab.gif);}
-#nav li:hover > a span {background:url(../images/menu/greytab.gif);}
+#menu ul li div.holder {position:absolute; left:-9999px;}
 
+#menu ul li div .leftSide {float:left;background: #ddd url(../images/menu/dropLeft.gif) no-repeat left bottom;}
+#menu ul li div .rightSide {float:left; margin-left:10px; display:inline; padding:0 10px 0 0; background: #aaa url(../images/menu/dropRight.gif) no-repeat right bottom;}
 
-#nav ul {padding:0; margin:0; list-style:none; position:absolute; left:-9999px; width:0; height:0; border-top:0;}
+#menu ul li:hover {position:relative;}
+#menu ul li a:hover {color:#910; background-position:right center; white-space:nowrap; position:relative;}
+#menu ul li a:hover b {color:#910; background-position:left center;}
+#menu ul li a.sub:hover {color:#910; background-position:right bottom; white-space:nowrap; position:relative;}
+#menu ul li a.sub:hover b {color:#910; background-position:left bottom;}
 
-#nav table {border-collapse:collapse; padding:0; margin:0 0 -1px 0; border:0;}
+#menu ul li:hover > a {color:#910; position:relative;}
+#menu ul li:hover a.sub {color:#910; background-position:right bottom; white-space:nowrap; position:relative;}
+#menu ul li:hover a.sub > b {color:#910; background-position:left bottom;}
 
-#nav :hover ul {left:0; top:35px; width:170px; z-index:500; background:url(../images/menu/trans.gif);}
-#nav :hover ul ul {position:absolute; left:-9999px;}
+#menu ul :hover div.holder {position:absolute; top:41px; left:4px; margin: 0; padding: 0;}
 
-#nav :hover ul :hover ul {left:110px; top:0;}
+#menu ul li.right a:hover div.holder {left:auto; right:3px; top:41px;}
+#menu ul li.right:hover div.holder {left:auto; right:4px; top:41px;}
 
-#nav :hover ul li {height:25px; width:170px;}
-#nav :hover ul li.pad1 {height:8px; width:170px; background:transparent;}
-#nav :hover ul li.pad2 {height:8px; width:170px; background:transparent;}
-#nav :hover ul li.pad1 b.p3 {display:block; width:8px; height:8px; font-size:1px; float:right; background:url(../images/menu/right2.gif);}
-#nav :hover ul li b.p4 {display:block; width:8px; height:25px; float:right; background:url(../images/menu/side2.gif);}
-#nav :hover ul li.pad2 b.p5 {display:block; width:162px; height:8px; font-size:1px; float:left; background:url(../images/menu/bottom2.gif) no-repeat;}
-#nav :hover ul li.pad2 b.p6 {display:block; width:8px; height:8px; font-size:1px; float:left; background:url(../images/menu/corner2.gif);}
-#nav :hover ul li.pad1 b.p7 {display:block; width:161px; height:7px; font-size:1px; float:left; background:#ced5ac; border-top:1px solid #ced5ac; border-left:1px solid #adb67f;}
-#nav :hover ul li a {height:25px; line-height:10px; padding-left:10px; width:151px; background:#ced5ac; border-left:1px solid #adb67f;}
-#nav :hover ul li a.fly {background:#ced5ac url(../images/menu/arrow.gif) no-repeat 140px 5px;}
+#menu ul dl {width:auto; margin:5px 0 10px 0; padding:0 5px;list-style:none;}
+#menu ul dl dt {padding:0 10px; margin:0; line-height:20px; background:#488; color:#fff; white-space:nowrap;}
+#menu ul dl dd {display:block; padding:0; margin:0;}
+#menu ul dd a {background-image: none; display:block; height: 20px; line-height: 20px; color:#421; text-align:left; margin: 0; padding:0 10px;font-weight:normal; white-space:nowrap; float:none;}
+#menu ul dd a:hover {color:#c60;}
 
-#nav :hover ul.green li.pad1 b.p7 {background:#85c226; border-top:1px solid #c5e98d; border-left:1px solid #c5e98d;}
-#nav :hover ul.green li a {background:#85c226; border-left:1px solid #c5e98d;}
+#menu ul table td {vertical-align:top;}
 
-#nav :hover ul.pink li.pad1 b.p7 {background:#f19abd; border-top:1px solid #f9d0e0; border-left:1px solid #f9d0e0;}
-#nav :hover ul.pink li a {background:#f19abd; border-left:1px solid #f9d0e0;}
-
-#nav :hover ul li a:hover {color:#fff;}
-#nav :hover ul li:hover > a {color:#fff;}
-
-#nav :hover ul :hover ul li.pad1 b.p7 {background:#ddd9bf; border-top:1px solid #cfcbb1; border-left:1px solid #cfcbb1;}
-#nav :hover ul :hover ul li a {background:#ddd9bf; border-left:1px solid #cfcbb1;}
-
-#nav :hover ul :hover ul.orange li.pad1 b.p7 {background:#ef9a5a; border-top:1px solid #f8cfb1; border-left:1px solid #f8cfb1;}
-#nav :hover ul :hover ul.orange li a {background:#ef9a5a; border-left:1px solid #f8cfb1;}
-
+div.clear
+   {
+  	  clear: both;
+   }
+   
 /* /Навигационное меню */
