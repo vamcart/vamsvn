@@ -17,8 +17,7 @@
 defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 ?>
-          <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
 				  <tr> 
 				    <td colspan="3" class="pageHeading" width="100%">
 
@@ -56,5 +55,4 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 	}
 ?>
 
-                </table></td>
-              </tr>
+                </table>
