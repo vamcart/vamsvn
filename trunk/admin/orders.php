@@ -472,9 +472,14 @@ switch ($_GET['action']) {
 <script type="text/javascript" src="includes/general.js"></script>
 <script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -516,10 +521,17 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
       </tr>
 </table>
+<br />
+<div id="tabs">
 
-<div class="tabber">
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ORDER_SUMMARY; ?></h3>
+			<ul>
+				<li><a href="#summary"><?php echo TEXT_ORDER_SUMMARY; ?></a></li>
+				<li><a href="#payment"><?php echo TEXT_ORDER_PAYMENT; ?></a></li>
+				<li><a href="#products"><?php echo TEXT_ORDER_PRODUCTS; ?></a></li>
+				<li><a href="#status"><?php echo TEXT_ORDER_STATUS; ?></a></li>
+			</ul>
+
+        <div id="summary">
 
           <table border="0">
 
@@ -605,8 +617,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
 </div>
 
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ORDER_PAYMENT; ?></h3>
+        <div id="payment">
 
           <table border="0">
 
@@ -767,8 +778,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
 </div>
 
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ORDER_PRODUCTS; ?></h3>
+        <div id="products">
 
           <table border="0" width="100%">
 
@@ -870,8 +880,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 </table>
       
 </div>
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ORDER_STATUS; ?></h3>
+        <div id="status">
       
           <table border="0">
 
