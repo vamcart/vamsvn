@@ -263,9 +263,14 @@ if ($select_file=='default') {
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 <?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
@@ -306,7 +311,18 @@ if (!$_GET['action']) {
 echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div>';
 ?>
 
-<div class="tabber">
+<div id="tabs">
+
+			<ul>
+<?php
+    for ($i=0; $i<sizeof($languages); $i++) {
+?>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo $languages[$i]['name']; ?></a></li>
+<?php 
+}
+?>
+			</ul>
+
 <?php
 // Display Content
 for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
@@ -361,9 +377,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         
         
 ?>
-<br />
-        <div class="tabbertab">
-        <h3><?php echo $languages[$i]['name']; ?></h3>
+        <div id="tab<?php echo $i; ?>">
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr class="dataTableHeadingRow">
@@ -957,6 +971,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 
 if (!$_GET['action']) {
 ?>
+<br />
 <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>
 <?php
 }
@@ -1144,6 +1159,7 @@ echo '</table></td></tr>';
 
        
  </table>
+ <br />
  <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>                 
  <?php
 } // if !$_GET['action']
