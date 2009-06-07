@@ -436,11 +436,12 @@
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 				<li><a class="sub" href="http://vamshop.ru" target="_blank"><b><?php echo BOX_HEADING_HELP; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
+
 					<div class="leftSide">
 						<div class="rightSide">
 						<table><tr>
-
 							<td>
 								<dl>
 <?php
@@ -460,10 +461,10 @@
 							</td>
 						</tr></table>
 						</div>
+
 					</div>
 				</div>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-
 				</li>
 				<li class="level1"><a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_LOGOFF; ?></b></a></li>
 			</ul>
