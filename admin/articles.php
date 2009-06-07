@@ -338,9 +338,14 @@
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 <?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
@@ -414,15 +419,27 @@
 
 <?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
 
-<div class="tabber">
+<br /><br />
 
+<div id="tabs">
+
+
+			<ul>
+<?php
+    for ($i=0; $i<sizeof($languages); $i++) {
+?>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo $languages[$i]['name']; ?></a></li>
+<?php 
+}
+?>
+				<li><a href="#other"><?php echo TEXT_ARTICLE_OTHER; ?></a></li>
+			</ul>
 
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
 
-        <div class="tabbertab">
-        <h3><?php echo $languages[$i]['name']; ?></h3>
+       <div id="tab<?php echo $i; ?>">
           <table border="0">
 
           <tr>
@@ -465,8 +482,7 @@
     }
 ?>
 
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ARTICLE_OTHER; ?></h3>
+        <div id="other">
           <table border="0">
 
           <tr>
@@ -659,15 +675,26 @@
 
 <?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?>
 
-<div class="tabber">
+<br /><br />
 
+<div id="tabs">
+
+			<ul>
+<?php
+    for ($i=0; $i<sizeof($languages); $i++) {
+?>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo $languages[$i]['name']; ?></a></li>
+<?php 
+}
+?>
+				<li><a href="#other"><?php echo TEXT_ARTICLE_OTHER; ?></a></li>
+			</ul>
 
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
 
-        <div class="tabbertab">
-        <h3><?php echo $languages[$i]['name']; ?></h3>
+        <div id="tab<?php echo $i; ?>">
           <table border="0">
 
           <tr>
@@ -746,8 +773,7 @@
     }
 ?>
 
-        <div class="tabbertab">
-        <h3><?php echo TEXT_ARTICLE_OTHER; ?></h3>
+        <div id="other">
           <table border="0">
 
           <tr>
