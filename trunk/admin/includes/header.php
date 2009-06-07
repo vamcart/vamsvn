@@ -129,7 +129,7 @@
  ($admin_access['campaigns'] == '0') && 
  ($admin_access['configuration'] == '0') && 
  ($admin_access['cross_sell_groups'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 
@@ -172,7 +172,7 @@
  ($admin_access['reviews'] == '0') && 
  ($admin_access['specials'] == '0') && 
  ($admin_access['featured'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
@@ -204,7 +204,7 @@
  ($admin_access['customers'] == '0') && 
  ($admin_access['customers_status'] == '0') && 
  ($admin_access['orders'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
@@ -240,7 +240,7 @@
  ($admin_access['module_export'] == '0') && 
  ($admin_access['cip_manager'] == '0') && 
  ($admin_access['ship2pay'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
@@ -297,7 +297,7 @@
  ($admin_access['quick_updates'] == '0') && 
  ($admin_access['recover_cart_sales'] == '0') && 
  ($admin_access['email_manager'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
@@ -318,7 +318,7 @@
  ($admin_access['geo_zones'] == '0') &&
  ($admin_access['tax_classes'] == '0') &&
  ($admin_access['tax_rates'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
  
 ?>
 									<dt><?php echo BOX_HEADING_LOCALIZATION; ?></dt>
@@ -330,7 +330,7 @@
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['currencies'] == '0') && 
  ($admin_access['languages'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
  
 ?>
 									<dt><?php echo BOX_HEADING_GV_ADMIN; ?></dt>
@@ -345,7 +345,7 @@
  ($admin_access['gv_queue'] == '0') && 
  ($admin_access['gv_mail'] == '0') && 
  ($admin_access['gv_sent'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 									<dt><?php echo BOX_HEADING_STATISTICS; ?></dt>
@@ -361,7 +361,7 @@
  ($admin_access['stats_sales_report'] == '0') && 
  ($admin_access['stats_sales_report2'] == '0') && 
  ($admin_access['stats_campaigns'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
@@ -380,7 +380,7 @@
  ($admin_access['stats_sales_report'] == '0') && 
  ($admin_access['stats_sales_report2'] == '0') && 
  ($admin_access['stats_campaigns'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 
@@ -397,7 +397,7 @@
  ($admin_access['articles_config'] == '0') && 
  ($admin_access['authors'] == '0') && 
  ($admin_access['articles_xsell'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 
@@ -422,7 +422,7 @@
  ($admin_access['affiliate_payment'] == '0') && 
  ($admin_access['affiliate_sales'] == '0') && 
  ($admin_access['affiliate_summary'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 
@@ -453,7 +453,7 @@
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['languages'] == '0')
- ) echo '<dd><a href="#"></a></dd>'; 
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
 								</dl>
