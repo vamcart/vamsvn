@@ -503,5 +503,10 @@ div.clear
    {
   	  clear: both;
    }
+
+div#tabs
+   {
+  	  margin-top: .5em;
+   }
    
 /* /Навигационное меню */
