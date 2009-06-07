@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2008-02-07 17:36:57 VaM $
+   $Id: russian.php 1231 2009-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -148,7 +148,7 @@ define('BOX_GV_ADMIN_QUEUE', 'Активация сертификатов');
 define('BOX_GV_ADMIN_MAIL', 'Отправить сертификат');
 define('BOX_GV_ADMIN_SENT', 'Отправленные сертификаты');
 define('BOX_COUPON_ADMIN','Управление купонами');
-define('BOX_TOOLS_BLACKLIST','Кредитные карты (CC) черный список');
+define('BOX_TOOLS_BLACKLIST','Чёрный список карточек');
 define('BOX_IMPORT','CSV импорт/Экспорт');
 define('BOX_PRODUCTS_VPE','Единица упаковки');
 define('BOX_CAMPAIGNS_REPORT','Отчёт по кампаниям');
@@ -475,7 +475,7 @@ define('BOX_PRODUCTS_OPTIONS', 'Атрибуты - Названия');
 define('BOX_MODULES_SHIP2PAY','Доставка-оплата');
 define('TEXT_DISPLAY_NUMBER_OF_PAYMENTS','Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> зависимостей)');
 
-define('BOX_PRODUCT_EXTRA_FIELDS','Дополнительные поля товаров');
+define('BOX_PRODUCT_EXTRA_FIELDS','Доп. поля товаров');
 define('TEXT_EDIT_FIELDS','Редактировать дополнительные поля товаров.');
 define('TEXT_ADD_FIELDS','Добавить дополнительные поля товаров.');
 
@@ -483,7 +483,7 @@ define('BOX_CATALOG_FAQ', 'Вопросы и ответы');
 
 require_once(DIR_FS_LANGUAGES . $_SESSION['language'].'/admin/'.'affiliate_' . $_SESSION['language'] .'.php');
 
-define('BOX_HEADING_CUSTOMER_EXTRA_FIELDS', 'Дополнительные поля покупателей');
+define('BOX_HEADING_CUSTOMER_EXTRA_FIELDS', 'Доп. поля покупателей');
 define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s должно содержать как минимум %d символов');
 define('TEXT_DISPLAY_NUMBER_OF_FIELDS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> полей)');
 
