@@ -44,6 +44,7 @@ define('TITLE', PROJECT_VERSION);
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Администрирование');
 define('HEADER_TITLE_SUPPORT_SITE', 'Сайт поддержки');
+define('HEADER_TITLE_DOCS', 'Документация');
 define('HEADER_TITLE_ONLINE_CATALOG', 'Каталог');
 define('HEADER_TITLE_ADMINISTRATION', 'Администрация');
 
