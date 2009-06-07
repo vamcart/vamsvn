@@ -98,9 +98,14 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <?php if (ENABLE_TABS == 'true') { ?>
-<script type="text/javascript" src="includes/javascript/tabber.js"></script>
-<link rel="stylesheet" href="includes/javascript/tabber.css" TYPE="text/css" MEDIA="screen">
-<link rel="stylesheet" href="includes/javascript/tabber-print.css" TYPE="text/css" MEDIA="print">
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+			});
+		</script>
 <?php } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -143,16 +148,19 @@
 				</tr>
 			</table>
 			
-<div class="tabber">
+<div id="tabs">
 				
+			<ul>
+				<li><a href="#chart"><?php echo TAB_CHART; ?></a></li>
+				<li><a href="#table"><?php echo TAB_TABLE; ?></a></li>
+				<li><a href="#status"><?php echo TAB_STATUS; ?></a></li>
+			</ul>
 
-        <div class="tabbertab">
+        <div id="chart">
 
 			<table border="0" width="95%" cellspacing="0" cellpadding="0">
 			    <tr>
 					<td valign="top" width="100%" align="center">
-					
-        <h3><?php echo TAB_CHART; ?></h3>				
 
 <?php
 include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
@@ -192,8 +200,7 @@ open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_al
           </table>
         </div>				
 
-        <div class="tabbertab">
-        <h3><?php echo TAB_TABLE; ?></h3>				
+        <div id="table">
 				
 									<table border="0" width="100%" cellspacing="0" cellpadding="2">
 										<tr class="dataTableHeadingRow">
@@ -300,8 +307,7 @@ open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_al
              
                 </div>                  
 
-        <div class="tabbertab">
-        <h3><?php echo TAB_STATUS; ?></h3>				
+        <div id="status">
 
                   <table border="0" width="100%" cellspacing="0" cellpadding="2">
                     <tr class="dataTableRow">
