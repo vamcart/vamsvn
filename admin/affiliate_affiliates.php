@@ -346,7 +346,7 @@
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
        <tr>
-        <td align="right" class="main"><?php echo '<input type="submit" class="button" value="' . BUTTON_SAVE . '"><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('action'))) .'">' . BUTTON_CANCEL . '</a>';?></td>
+        <td align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>';?></td>
       </tr></form>
 <?php
   } else {
@@ -432,7 +432,7 @@
     if (vam_not_null($_GET['search'])) {
 ?>
                   <tr>
-                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE) . '">' . BUTTON_RESET . '</a>'; ?></td>
+                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE) . '"><span>' . BUTTON_RESET . '</span></a>'; ?></td>
                   </tr>
 <?php
     }
@@ -449,13 +449,13 @@
 
       $contents = array('form' => vam_draw_form('affiliate', FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO . '<br><br><b>' . $aInfo->affiliate_firstname . ' ' . $aInfo->affiliate_lastname . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" value="' . BUTTON_DELETE . '"><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($aInfo)) {
         $heading[] = array('text' => '<b>' . $aInfo->affiliate_firstname . ' ' . $aInfo->affiliate_lastname . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=confirm') . '">' . BUTTON_DELETE . '</a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT, 'selected_box=affiliate&affiliate=' . $aInfo->affiliate_email_address) . '">' . BUTTON_SEND_EMAIL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=confirm') . '"><span>' . BUTTON_DELETE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT, 'selected_box=affiliate&affiliate=' . $aInfo->affiliate_email_address) . '"><span>' . BUTTON_SEND_EMAIL . '</span></a>');
 
         $affiliate_sales_raw = "select count(*) as count, sum(affiliate_value) as total, sum(affiliate_payment) as payment from " . TABLE_AFFILIATE_SALES . " a left join " . TABLE_ORDERS . " o on (a.affiliate_orders_id=o.orders_id) where o.orders_status >= " . AFFILIATE_PAYMENT_ORDER_MIN_STATUS . " and  affiliate_id = '" . $aInfo->affiliate_id . "'";
         $affiliate_sales_values = vam_db_query($affiliate_sales_raw);

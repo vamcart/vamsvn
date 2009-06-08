@@ -329,7 +329,7 @@
                 <td class="main"><b><?php echo PAYMENT_NOTIFY_AFFILIATE; ?></b><?php echo vam_draw_checkbox_field('notify', '', true); ?></td>
               </tr>
             </table></td>
-            <td valign="top"><?php echo '<input type="submit" class="button" value="' . BUTTON_UPDATE . '">'; ?></td>
+            <td valign="top"><?php echo '<span class="button"><input type="submit" class="button" value="' . BUTTON_UPDATE . '"></span>'; ?></td>
           </tr>
         </table></td>
       </form></tr>
@@ -370,7 +370,7 @@
         </table></td>
       </tr>
       <tr>
-        <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_INVOICE, 'pID=' . $_GET['pID']) . '" target="_blank">' . BUTTON_INVOICE . '</a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?></td>
+        <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_INVOICE, 'pID=' . $_GET['pID']) . '" target="_blank"><span>' . BUTTON_INVOICE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('action'))) . '"><span>' . BUTTON_BACK . '</span></a>'; ?></td>
       </tr>
 <?php
   } else {
@@ -380,7 +380,7 @@
           <tr>
             <td class="pageHeading"></td>
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="pageHeading"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, 'pID=' . $pInfo->affiliate_payment_id. '&action=start_billing' ) . '">' . IMAGE_AFFILIATE_BILLING . '</a>'; ?></td>
+            <td class="pageHeading"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, 'pID=' . $pInfo->affiliate_payment_id. '&action=start_billing' ) . '"><span>' . IMAGE_AFFILIATE_BILLING . '</span></a>'; ?></td>
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr><?php echo vam_draw_form('orders', FILENAME_AFFILIATE_PAYMENT, '', 'get'); ?>
@@ -457,14 +457,14 @@
 
       $contents = array('form' => vam_draw_form('payment', FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id. '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO . '<br>');
-      $contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" value="' . BUTTON_DELETE . '"><a class="button" href="' . vam_href_link(AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"></span><a class="button" href="' . vam_href_link(AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($pInfo)) {
         $heading[] = array('text' => '<b>[' . $pInfo->affiliate_payment_id . ']&nbsp;&nbsp;' . vam_datetime_short($pInfo->affiliate_payment_date) . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id  . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_INVOICE, 'pID=' . $pInfo->affiliate_payment_id ) . '" TARGET="_blank">' . BUTTON_INVOICE . '</a> ');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id  . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_INVOICE, 'pID=' . $pInfo->affiliate_payment_id ) . '" TARGET="_blank"><span>' . BUTTON_INVOICE . '</span></a> ');
       }
       break;
   }

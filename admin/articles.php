@@ -417,7 +417,7 @@
       <tr><?php echo vam_draw_form('new_topic', FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID'] . '&action=new_topic_preview', 'post', 'enctype="multipart/form-data"'); ?>
         <td>
 
-<?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>'; ?>
+<?php echo vam_draw_hidden_field('topics_date_added', (($tInfo->date_added) ? $tInfo->date_added : date('Y-m-d'))) . vam_draw_hidden_field('parent_id', $tInfo->parent_id) . '<span class="button"><input type="submit" value="' . BUTTON_PREVIEW . '"/></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
 
 <div id="tabs">
 
@@ -574,7 +574,7 @@
       }
 ?>
       <tr>
-        <td align="right"><?php echo '<a class="button" href="' . vam_href_link($back_url, $back_url_params, 'NONSSL') . '">' . BUTTON_BACK . '</a>'; ?></td>
+        <td align="right"><?php echo '<a class="button" href="' . vam_href_link($back_url, $back_url_params, 'NONSSL') . '"><span>' . BUTTON_BACK . '</span></a>'; ?></td>
       </tr>
 <?php
     } else {
@@ -596,14 +596,14 @@
         echo vam_draw_hidden_field('topics_description[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_description[$languages[$i]['id']])));
       }
 
-      echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_BACK . '"/>&nbsp;&nbsp;';
+      echo '<span class="button"><input type="submit" value="' . BUTTON_BACK . '"/></span>&nbsp;&nbsp;';
 
       if ($_GET['tID']) {
-        echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>';
+        echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>';
       } else {
-        echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/>';
+        echo '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>';
       }
-      echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '">' . BUTTON_CANCEL . '</a>';
+      echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID']) . '"><span>' . BUTTON_CANCEL . '</span></a>';
 ?></td>
       </form></tr>
 <?php
@@ -671,7 +671,7 @@
       <tr>
         <td>
 
-<?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?>
+<?php echo vam_draw_hidden_field('articles_date_added', (vam_not_null($aInfo->articles_date_added) ? $aInfo->articles_date_added : date('Y-m-d'))) . '<span class="button"><input type="submit" value="' . BUTTON_PREVIEW . '"/></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
 
 <div id="tabs">
 
@@ -925,7 +925,7 @@
       }
 ?>
       <tr>
-        <td align="right"><?php echo '<a class="button" href="' . vam_href_link($back_url, $back_url_params, 'NONSSL') . '">' . BUTTON_BACK . '</a>'; ?></td>
+        <td align="right"><?php echo '<a class="button" href="' . vam_href_link($back_url, $back_url_params, 'NONSSL') . '"><span>' . BUTTON_BACK . '</span></a>'; ?></td>
       </tr>
 <?php
     } else {
@@ -950,14 +950,14 @@
         echo vam_draw_hidden_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($articles_head_keywords_tag[$languages[$i]['id']])));
       }
 
-      echo '<input type="submit" class="button" name="edit" onClick="this.blur();" value="' . BUTTON_BACK . '"/>' . '&nbsp;&nbsp;';
+      echo '<span class="button"><input type="submit" name="edit" value="' . BUTTON_BACK . '"/></span>' . '&nbsp;&nbsp;';
 
       if (isset($_GET['aID'])) {
-        echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>';
+        echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>';
       } else {
-        echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/>';
+        echo '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>';
       }
-      echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '">' . BUTTON_CANCEL . '</a>';
+      echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '')) . '"><span>' . BUTTON_CANCEL . '</span></a>';
 ?></td>
       </tr>
     </table></form>
@@ -1098,7 +1098,7 @@
                 <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo TEXT_TOPICS . '&nbsp;' . $topics_count . '<br>' . TEXT_ARTICLES . '&nbsp;' . $articles_count; ?></td>
-                    <td align="right" class="smallText"><?php if (sizeof($tPath_array) > 0) echo '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, $tPath_back . 'tID=' . $current_topic_id) . '">' . BUTTON_BACK . '</a>&nbsp;'; if (!isset($_GET['search'])) echo '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&action=new_topic') . '">' . BUTTON_NEW_TOPIC . '</a>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&action=new_article') . '">' . BUTTON_NEW_ARTICLE . '</a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php if (sizeof($tPath_array) > 0) echo '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, $tPath_back . 'tID=' . $current_topic_id) . '"><span>' . BUTTON_BACK . '</span></a>&nbsp;'; if (!isset($_GET['search'])) echo '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&action=new_topic') . '"><span>' . BUTTON_NEW_TOPIC . '</span></a>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&action=new_article') . '"><span>' . BUTTON_NEW_ARTICLE . '</span></a>'; ?>&nbsp;</td>
                   </tr>
                 </table></td>
               </tr>
@@ -1121,7 +1121,7 @@
 
         $contents[] = array('text' => '<br>' . TEXT_TOPICS_NAME . $topic_inputs_string);
         $contents[] = array('text' => '<br>' . TEXT_SORT_ORDER . '<br>' . vam_draw_input_field('sort_order', '', 'size="2"'));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'edit_topic':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_TOPIC . '</b>');
@@ -1137,7 +1137,7 @@
 
         $contents[] = array('text' => '<br>' . TEXT_EDIT_TOPICS_NAME . $topic_inputs_string);
         $contents[] = array('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . vam_draw_input_field('sort_order', $tInfo->sort_order, 'size="2"'));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'delete_topic':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_TOPIC . '</b>');
@@ -1147,7 +1147,7 @@
         $contents[] = array('text' => '<br><b>' . $tInfo->topics_name . '</b>');
         if ($tInfo->childs_count > 0) $contents[] = array('text' => '<br>' . sprintf(TEXT_DELETE_WARNING_CHILDS, $tInfo->childs_count));
         if ($tInfo->articles_count > 0) $contents[] = array('text' => '<br>' . sprintf(TEXT_DELETE_WARNING_ARTICLES, $tInfo->articles_count));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'move_topic':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_MOVE_TOPIC . '</b>');
@@ -1155,7 +1155,7 @@
         $contents = array('form' => vam_draw_form('topics', FILENAME_ARTICLES, 'action=move_topic_confirm&tPath=' . $tPath) . vam_draw_hidden_field('topics_id', $tInfo->topics_id));
         $contents[] = array('text' => sprintf(TEXT_MOVE_TOPICS_INTRO, $tInfo->topics_name));
         $contents[] = array('text' => '<br>' . sprintf(TEXT_MOVE, $tInfo->topics_name) . '<br>' . vam_draw_pull_down_menu('move_to_topic_id', vam_get_topic_tree(), $current_topic_id));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_MOVE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_MOVE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'delete_article':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_ARTICLE . '</b>');
@@ -1177,7 +1177,7 @@
         $article_topics_string = substr($article_topics_string, 0, -4);
 
         $contents[] = array('text' => '<br>' . $article_topics_string);
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'move_article':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_MOVE_ARTICLE . '</b>');
@@ -1186,7 +1186,7 @@
         $contents[] = array('text' => sprintf(TEXT_MOVE_ARTICLES_INTRO, $aInfo->articles_name));
         $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENT_TOPICS . '<br><b>' . vam_output_generated_topic_path($aInfo->articles_id, 'article') . '</b>');
         $contents[] = array('text' => '<br>' . sprintf(TEXT_MOVE, $aInfo->articles_name) . '<br>' . vam_draw_pull_down_menu('move_to_topic_id', vam_get_topic_tree(), $current_topic_id));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_MOVE . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_MOVE . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'copy_to':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_COPY_TO . '</b>');
@@ -1196,7 +1196,7 @@
         $contents[] = array('text' => '<br>' . TEXT_INFO_CURRENT_TOPICS . '<br><b>' . vam_output_generated_topic_path($aInfo->articles_id, 'article') . '</b>');
         $contents[] = array('text' => '<br>' . TEXT_TOPICS . '<br>' . vam_draw_pull_down_menu('topics_id', vam_get_topic_tree(), $current_topic_id));
         $contents[] = array('text' => '<br>' . TEXT_HOW_TO_COPY . '<br>' . vam_draw_radio_field('copy_as', 'link', true) . ' ' . TEXT_COPY_AS_LINK . '<br>' . vam_draw_radio_field('copy_as', 'duplicate') . ' ' . TEXT_COPY_AS_DUPLICATE);
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_COPY . '"/>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><input type="submit" value="' . BUTTON_COPY . '"/></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
@@ -1204,14 +1204,14 @@
           if (isset($tInfo) && is_object($tInfo)) { // topic info box contents
             $heading[] = array('text' => '<b>' . $tInfo->topics_name . '</b>');
 
-            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=edit_topic') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=delete_topic') . '">' . BUTTON_DELETE . '</a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=move_topic') . '">' . BUTTON_MOVE . '</a>');
+            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=edit_topic') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=delete_topic') . '"><span>' . BUTTON_DELETE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id . '&action=move_topic') . '"><span>' . BUTTON_MOVE . '</span></a>');
             $contents[] = array('text' => '<br>' . TEXT_DATE_ADDED . ' ' . vam_date_short($tInfo->date_added));
             if (vam_not_null($tInfo->last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . vam_date_short($tInfo->last_modified));
             $contents[] = array('text' => '<br>' . TEXT_SUBTOPICS . ' ' . $tInfo->childs_count . '<br>' . TEXT_ARTICLES . ' ' . $tInfo->articles_count);
           } elseif (isset($aInfo) && is_object($aInfo)) { // article info box contents
             $heading[] = array('text' => '<b>' . vam_get_articles_name($aInfo->articles_id, $_SESSION['languages_id']) . '</b>');
 
-            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=new_article') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=delete_article') . '">' . BUTTON_DELETE . '</a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=move_article') . '">' . BUTTON_MOVE . '</a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=copy_to') . '">' . BUTTON_COPY_TO . '</a>');            $contents[] = array('text' => '<br>' . TEXT_DATE_ADDED . ' ' . vam_date_short($aInfo->articles_date_added));
+            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=new_article') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=delete_article') . '"><span>' . BUTTON_DELETE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=move_article') . '"><span>' . BUTTON_MOVE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id . '&action=copy_to') . '"><span>' . BUTTON_COPY_TO . '</span></a>');            $contents[] = array('text' => '<br>' . TEXT_DATE_ADDED . ' ' . vam_date_short($aInfo->articles_date_added));
             if (vam_not_null($aInfo->articles_last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . vam_date_short($aInfo->articles_last_modified));
             if (date('Y-m-d') < $aInfo->articles_date_available) $contents[] = array('text' => TEXT_DATE_AVAILABLE . ' ' . vam_date_short($aInfo->articles_date_available));
             $contents[] = array('text' => '<br>' . TEXT_ARTICLES_AVERAGE_RATING . ' ' . number_format($aInfo->average_rating, 2) . '%');

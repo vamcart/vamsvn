@@ -236,7 +236,7 @@ function popupImageWindow(url) {
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
-<td class="main" align="right" valign="top" nowrap><?php echo (($form_action == 'insert') ? '<input type="submit" class="button" value="' . BUTTON_INSERT . '">' : '<input type="submit" class="button" value="' . BUTTON_UPDATE . '">'). '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $_GET['abID']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>        </table></td>
+<td class="main" align="right" valign="top" nowrap><?php echo (($form_action == 'insert') ? '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"></span>' : '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"></span>'). '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $_GET['abID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>        </table></td>
       </form></tr>
 <?php
   } else {
@@ -288,7 +288,7 @@ function popupImageWindow(url) {
                     <td class="smallText" align="right"><?php echo $affiliate_banners_split->display_links($affiliate_banners_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
                   <tr>
-                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'action=new') . '">' . BUTTON_INSERT . '</a>'; ?></td>
+                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'action=new') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -304,7 +304,7 @@ function popupImageWindow(url) {
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br><b>' . $abInfo->affiliate_banners_title . '</b>');
       if ($abInfo->affiliate_banners_image) $contents[] = array('text' => '<br>' . vam_draw_checkbox_field('delete_image', 'on', true) . ' ' . TEXT_INFO_DELETE_IMAGE);
-      $contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" value="' . BUTTON_DELETE . '">&nbsp;<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $_GET['abID']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $_GET['abID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($abInfo)) {
@@ -313,7 +313,7 @@ function popupImageWindow(url) {
         $product_description = vam_db_fetch_array($product_description_query);
         $heading[] = array('text' => '<b>' . $abInfo->affiliate_banners_title . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $abInfo->affiliate_banners_id . '&action=new') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $abInfo->affiliate_banners_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $abInfo->affiliate_banners_id . '&action=new') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $abInfo->affiliate_banners_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
         $contents[] = array('text' => $product_description['products_name']);
         $contents[] = array('text' => '<br>' . TEXT_BANNERS_DATE_ADDED . ' ' . vam_date_short($abInfo->affiliate_date_added));
         $contents[] = array('text' => '' . sprintf(TEXT_BANNERS_STATUS_CHANGE, vam_date_short($abInfo->affiliate_date_status_change)));
