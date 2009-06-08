@@ -150,7 +150,7 @@ $gID = 26;
   }
 ?>
             </table>
-<?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?></form>
+<?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?></form>
             </td>
 
           </tr>

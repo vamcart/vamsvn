@@ -165,8 +165,8 @@
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
-                    <td><?php echo '<input type="submit" name="back" class="button" value="' . BUTTON_BACK . '">'; ?></td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT) . '">' . BUTTON_CANCEL . '</a> ' . '<input type="submit" class="button" value="' . BUTTON_SEND . '">'; ?></td>
+                    <td><?php echo '<span class="button"><input type="submit" name="back" value="' . BUTTON_BACK . '"></span>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT) . '"><span>' . BUTTON_CANCEL . '</span></a> ' . '<span class="button"><input type="submit" value="' . BUTTON_SEND . '"></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -220,7 +220,7 @@
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="2" align="right"><?php echo '<input type="submit" class="button" value="' . BUTTON_SEND . '">'; ?></td>
+                <td colspan="2" align="right"><?php echo '<span class="button"><input type="submit" class="button" value="' . BUTTON_SEND . '"></span>'; ?></td>
               </tr>
             </table></td>
           </form></tr>
