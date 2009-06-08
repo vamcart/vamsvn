@@ -53,7 +53,7 @@ echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
 <td class="dataTableContent">
 <?php
 echo vam_draw_hidden_field('allow_tax', $order->products[$i]['allow_tax']);
-echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>';
 ?>
 </form>
 </td>
@@ -63,7 +63,7 @@ echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></s
 echo vam_draw_form('product_delete', FILENAME_ORDERS_EDIT, 'action=product_delete', 'post');
 echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
-echo '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span>';
 ?>
 </form>
 </td>
@@ -79,7 +79,7 @@ echo vam_draw_hidden_field('edit_action', 'options');
 echo vam_draw_hidden_field('pID', $order->products[$i]['id']);
 echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo vam_draw_hidden_field('opID', $order->products[$i]['opid']);
-echo '<span class="button"><input type="submit" value="' . BUTTON_PRODUCT_OPTIONS . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_PRODUCT_OPTIONS . '">' . BUTTON_PRODUCT_OPTIONS . '</button></span>';
 ?>
 </form>
 </td>
@@ -110,7 +110,7 @@ echo vam_draw_hidden_field('cID', $_POST['cID']);
 <td class="dataTableContent" width="40"><?php echo vam_draw_input_field('search', '', 'size="30"');?></td>
 <td class="dataTableContent">
 <?php
-echo '<span class="button"><input type="submit" value="' . BUTTON_SEARCH . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_SEARCH . '">' . BUTTON_SEARCH . '</button></span>';
 ?>
 </td>
 </form>
@@ -161,7 +161,7 @@ echo vam_draw_hidden_field('products_id', $products[products_id]);
 <td class="dataTableContent"><?php echo $products[products_model];?></td>
 <td class="dataTableContent">
 <?php
-echo '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button></span>';
 ?>
 </form>
 </td>

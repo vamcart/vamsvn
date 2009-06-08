@@ -60,7 +60,7 @@ require('includes/application_top.php');
 <br>
 <table width="550" border="0" cellspacing="1">
 <tr>
-<td align=middle><span class="button"><input type="button" value="Close Window" onClick="window.close()"></span></td>
+<td align=middle><span class="button"><button type="button" value="Close Window" onClick="window.close()">Close Window</button></span></td>
 </tr></table>
 </body>
 </html>

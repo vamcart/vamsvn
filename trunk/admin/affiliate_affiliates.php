@@ -346,7 +346,7 @@
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
        <tr>
-        <td align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>';?></td>
+        <td align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>';?></td>
       </tr></form>
 <?php
   } else {
@@ -449,7 +449,7 @@
 
       $contents = array('form' => vam_draw_form('affiliate', FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO . '<br><br><b>' . $aInfo->affiliate_firstname . ' ' . $aInfo->affiliate_lastname . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($aInfo)) {

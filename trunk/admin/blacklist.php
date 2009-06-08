@@ -153,7 +153,7 @@
 
       $blacklist_inputs_string = '';
 
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_EDIT_BLACKLIST_CARD . '</b>');
@@ -164,7 +164,7 @@
 
       $blacklist_inputs_string = '';
 
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $mInfo->blacklist_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $mInfo->blacklist_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_DELETE_BLACKLIST_CARD . '</b>');
@@ -174,7 +174,7 @@
       $contents[] = array('text' => '<br /><b>' . $bInfo->blacklist_card_number . '</b>');
 
 
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $bInfo->blacklist_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_BLACKLIST, 'page=' . $_GET['page'] . '&bID=' . $bInfo->blacklist_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($bInfo)) {

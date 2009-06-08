@@ -597,7 +597,7 @@ echo vam_draw_textarea_field('newsletter_body', 'soft', '103', '25', stripslashe
    </tr>
    </table>
    <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER); ?>"><span><?php echo BUTTON_BACK; ?></span></a>
-   <right><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?></right>
+   <right><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; ?></right>
   </form>
   <?php
 

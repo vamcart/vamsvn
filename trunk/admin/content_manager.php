@@ -767,7 +767,7 @@ echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
    </tr>
  
     <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
 </table>
 </form>
@@ -956,7 +956,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 }
 ?>
        <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
    </form>
    </table>

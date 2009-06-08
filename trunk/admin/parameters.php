@@ -597,7 +597,7 @@ var orders_values_list = new Array();
             ?>
             <input type="text" name="new_param_name" id="new_param_name">
             <select name="new_param_type"><option value="p"><?php echo PARAMETER_TITLE; ?></option><option value="g"><?php echo GROUP_TITLE; ?></option></select>
-            <span class="button"><input type="submit" value="<?php echo ADD_BUTTON_TITLE; ?>"></span>
+            <span class="button"><button type="submit" value="<?php echo ADD_BUTTON_TITLE; ?>"><?php echo ADD_BUTTON_TITLE; ?></button></span>
             </form>
 
             <form name="params_form" method="POST" >
@@ -803,14 +803,14 @@ function set_edit(id, obj)
 }
 //-->
 </script>
-            <span class="button"><input type="submit" value="<?php echo SAVE_BUTTON_TITLE; ?>"></span>
+            <span class="button"><button type="submit" value="<?php echo SAVE_BUTTON_TITLE; ?>"><?php echo SAVE_BUTTON_TITLE; ?></button></span>
             </form>
             </td>
             <form action="">
             <input type="hidden" name="category" value="<?php echo $_REQUEST["category"]; ?>">
             <td style="padding-left: 50px;" valign="top">
             <?php echo SEARCHPRODUCT_TITLE; ?>:<br>
-            <input type="text" name="search_product" value="<?php echo htmlspecialchars($_REQUEST["search_product"]); ?>"> <span class="button"><input type="submit" value="<?php echo SEARCH_BUTTON_TITLE; ?>"></span>
+            <input type="text" name="search_product" value="<?php echo htmlspecialchars($_REQUEST["search_product"]); ?>"> <span class="button"><button type="submit" value="<?php echo SEARCH_BUTTON_TITLE; ?>"><?php echo SEARCH_BUTTON_TITLE; ?></button></span>
 
             <?php
             if (!empty($_REQUEST["search_product"]))

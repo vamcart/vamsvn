@@ -272,7 +272,7 @@ if ($srExp < 1) {
                 </tr>
                 <tr>
                   <td colspan="5" class="menuBoxHeading" align="right">
-                  <?php echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'; ?>
+                  <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?>
                   </td>
               </table>
             </form>

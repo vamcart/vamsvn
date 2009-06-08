@@ -75,7 +75,7 @@ $file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FIL
 
 echo vam_draw_pull_down_menu('file',$file_list,$_REQUEST['file']);
 
-echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '"/></span>';
+echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . BUTTON_EDIT . '</button></span>';
 
                
 ?>
@@ -116,7 +116,7 @@ echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '
       
       <?php 
   if (is_writable($file)) {
-	echo '<span class="button"><input type="submit" name="save" value="' . BUTTON_SAVE . '"/></span>'; 
+	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; 
   }
   ?>
         
@@ -201,7 +201,7 @@ $file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELE
 
 echo vam_draw_pull_down_menu('file_admin',$file_list_admin,$_REQUEST['file_admin']);
 
-echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '"/></span>';
+echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . BUTTON_EDIT . '</button></span>';
 
                
 ?>
@@ -242,7 +242,7 @@ echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '
       
       <?php 
   if (is_writable($file_admin)) {
-	echo '<span class="button"><input type="submit" name="save" value="' . BUTTON_SAVE . '"/></span>'; 
+	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; 
   }
   ?>
         
