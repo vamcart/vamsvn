@@ -153,8 +153,8 @@ echo $cip_list;
             <table border="0" width="100%" cellspacing="0" cellpadding="2">
                <tr valign="top">
                  <td><?php
-                    echo '<a class="button" href="' . vam_href_link($cip_manager->script_name(), 'action=upload').'">'.
-                     BUTTON_UPLOAD . '</a>'; ?></td>
+                    echo '<a class="button" href="' . vam_href_link($cip_manager->script_name(), 'action=upload').'"><span>'.
+                     BUTTON_UPLOAD . '</span></a>'; ?></td>
               </tr>
             </table>
             </td>

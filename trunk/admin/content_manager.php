@@ -767,7 +767,7 @@ echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
    </tr>
  
     <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
 </table>
 </form>
@@ -956,7 +956,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 }
 ?>
        <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?><a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
    </form>
    </table>
@@ -972,7 +972,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 if (!$_GET['action']) {
 ?>
 <br />
-<a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>
+<a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><span><?php echo BUTTON_NEW_CONTENT; ?></span></a>
 <?php
 }
 ?>
@@ -1160,7 +1160,7 @@ echo '</table></td></tr>';
        
  </table>
  <br />
- <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><?php echo BUTTON_NEW_CONTENT; ?></a>                 
+ <a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><span><?php echo BUTTON_NEW_CONTENT; ?></span></a>                 
  <?php
 } // if !$_GET['action']
 ?>       
