@@ -85,7 +85,7 @@ $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
 
     echo vam_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
-        	<span class="button"><input type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"></span>&nbsp;&nbsp;<a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
+        	<span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"><?php echo BUTTON_SAVE; ?></button></span>&nbsp;&nbsp;<a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
     
 <div id="tabs">
 

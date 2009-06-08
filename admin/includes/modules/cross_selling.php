@@ -119,7 +119,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 
 <?php } ?>
 </table>
-<span class="button"><input type="submit" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"></span>
+<span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo BUTTON_SAVE; ?></button></span>
 </form>
 </td>
 </tr>
@@ -143,7 +143,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 <?php
 
 
-	echo '<span class="button"><input type="submit" value="' . BUTTON_SEARCH . '"/></span>';
+	echo '<span class="button"><button type="submit" value="' . BUTTON_SEARCH . '"/>' . BUTTON_SEARCH . '</button></span>';
 ?>
 </td>
 </form>
@@ -202,7 +202,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 ?>
 
 </table>
-<span class="button"><input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"></span>
+<span class="button"><button type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo BUTTON_SAVE; ?></button></span>
 </form>
 <?php } ?>
 
