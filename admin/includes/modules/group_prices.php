@@ -121,7 +121,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
                         }
 ?>
  </td>
-                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&function=delete&quantity=' . $staffel_values['quantity'] . '&statusID=' . $group_data[$col]['STATUS_ID'] . '&action=new_product&pID=' . $_GET['pID']); ?>"><?php echo BUTTON_DELETE; ?></a></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&function=delete&quantity=' . $staffel_values['quantity'] . '&statusID=' . $group_data[$col]['STATUS_ID'] . '&action=new_product&pID=' . $_GET['pID']); ?>"><span><?php echo BUTTON_DELETE; ?></span></a></td>
               </tr>
 <?php
                 }
@@ -131,7 +131,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
                 echo TXT_PRICE;
                 echo vam_draw_input_field('products_price_staffel_'.$group_data[$col]['STATUS_ID'], 0);
                 echo vam_draw_separator('pixel_trans.gif', '10', '10');
-                echo '<input type="submit" class="button" onClick="return confirm(\''.SAVE_ENTRY.'\')" value="' . BUTTON_INSERT . '"/>';
+                echo '<span class="button"><input type="submit" onClick="return confirm(\''.SAVE_ENTRY.'\')" value="' . BUTTON_INSERT . '"/></span>';
 ?><br></td>
           </tr>
 <?php } } ?>

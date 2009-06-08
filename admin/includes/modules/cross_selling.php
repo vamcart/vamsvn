@@ -54,7 +54,7 @@ function getParent($catID) {
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><?php echo BUTTON_BACK; ?></a></td>
+            <td colspan="2"><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
           </tr>
         </table></td>
       </tr>
@@ -119,7 +119,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 
 <?php } ?>
 </table>
-<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')">
+<span class="button"><input type="submit" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"></span>
 </form>
 </td>
 </tr>
@@ -143,7 +143,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 <?php
 
 
-	echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEARCH . '"/>';
+	echo '<span class="button"><input type="submit" value="' . BUTTON_SEARCH . '"/></span>';
 ?>
 </td>
 </form>
@@ -202,7 +202,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 ?>
 
 </table>
-<input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')">
+<span class="button"><input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"></span>
 </form>
 <?php } ?>
 

@@ -135,11 +135,11 @@ $form_action = ($_GET['pID']) ? 'update_product' : 'insert_product';
     echo vam_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
     echo vam_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
-    <input type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" cf="false">
-    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><?php echo BUTTON_CANCEL; ?></a>
+    <span class="button"><input type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"></span>
+    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><span><?php echo BUTTON_CANCEL; ?></span></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_ATTRIBUTES; ?></a>
-    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><?php echo BUTTON_EDIT_CROSS_SELLING; ?></a>
+    <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo BUTTON_EDIT_ATTRIBUTES; ?></span></a>
+    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo BUTTON_EDIT_CROSS_SELLING; ?></span></a>
 
 <div id="tabs">
 
