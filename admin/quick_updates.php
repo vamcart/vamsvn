@@ -343,8 +343,8 @@ function display_ttc(action, prix, taxe, up){
 									   	<td align="center"> <?php echo vam_draw_input_field('spec_price',0,'size="5"'); ?> </td>
 									   	<td align="center"><?php
 										 if ($preview_global_price != true) {
-												echo '&nbsp;<input type="submit" class="button" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">';
-										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '">' . BUTTON_CANCEL . '</a>'; } ?></td>
+												echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '"></span>';
+										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '"><span>' . BUTTON_CANCEL . '</span></a>'; } ?></td>
 									 	 <?php if(ACTIVATE_COMMERCIAL_MARGIN == 'true'){ echo '<td align="center">&nbsp;&nbsp;' . vam_draw_checkbox_field('marge','yes','','no') . ' ' . TEXT_MARGE_INFO;}?>
 									 </tr>
 									 <tr>
@@ -381,7 +381,7 @@ function display_ttc(action, prix, taxe, up){
 							</script>' . "</td>\n";
 						?>
 
-						<td><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>"></td>
+						<td><span class="button"><input type="submit" value="<?php echo BUTTON_UPDATE; ?>"></span></td>
 					</tr>
 			</table>
 
@@ -670,12 +670,12 @@ function display_ttc(action, prix, taxe, up){
 <td colspan="15">
 <?php
 		 //// display bottom page buttons
-    echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties">' . BUTTON_CANCEL . '</a> ';
-?><input type="button" class="button" value="<?php echo PRINT_TEXT?>" title="<?php echo PRINT_TEXT?>" onclick="print();" id="box_properties_input">
+    echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties"><span>' . BUTTON_CANCEL . '</span></a> ';
+?><span class="button"><input type="button" value="<?php echo PRINT_TEXT?>" title="<?php echo PRINT_TEXT?>" onclick="print();" id="box_properties_input"></span>
 </td>
 <td colspan="3">
 
-<input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>">
+<span class="button"><input type="submit" value="<?php echo BUTTON_UPDATE; ?>"></span>
 </td>
 </tr>
     </table>

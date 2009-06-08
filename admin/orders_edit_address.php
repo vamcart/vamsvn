@@ -190,7 +190,7 @@
 
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" colspan="4">
-<?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>'; ?>
+<?php echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'; ?>
 </td>
 </tr>
 

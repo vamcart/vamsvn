@@ -183,7 +183,7 @@ if ($_GET['delete']) {
         </tr>
         <tr>
         <!-- Delete Button //-->
-          <td colspan='6' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
+          <td colspan='6' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . "><span>" . BUTTON_DELETE . "</span></a></td>
         </tr>\n";
        echo $cline;
       }
@@ -270,7 +270,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 }
       $tcart_formated = $currencies->format($tprice);
       echo  "<tr> <td class='dataTableContent' align='right' colspan='8'><b>" . TABLE_CART_TOTAL . "</b>" . $tcart_formated . "</td> </tr>";
-  echo "<tr><td colspan=6 align=center><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES) . ">" . TEXT_RETURN . "</a></td></tr>";
+  echo "<tr><td colspan=6 align=center><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES) . "><span>" . TEXT_RETURN . "</span></a></td></tr>";
 } else {
 //
 
@@ -285,7 +285,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                 <?php echo vam_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
                   <table align="right" width="100%" border="0">
                     <tr class="dataTableContent" align="right">
-                      <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><input type="submit" class="button" value="<?php echo DAYS_FIELD_BUTTON; ?>"></td>
+                      <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><span class="button"><input type="submit" value="<?php echo DAYS_FIELD_BUTTON; ?>"></span></td>
                     </tr>
                   </table>
                 </form>
@@ -347,7 +347,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                         </tr>
                         <tr>
                         <!-- Delete Button //-->
-                          <td colspan='8' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . ">" . BUTTON_DELETE . "</a></td>
+                          <td colspan='8' align='right'><a class=button href=" . vam_href_link(FILENAME_RECOVER_CART_SALES,"action=delete&customer_id=$curcus&tdate=$tdate") . "><span>" . BUTTON_DELETE . "</span></a></td>
                         </tr>
                         <tr align='left'> 
                         <td colspan='8'><?php echo vam_draw_separator('pixel_trans.gif', '1', '40'); ?></td>
