@@ -299,7 +299,7 @@ function popupImageWindow(url) {
         <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
             <td class="main"><?php echo TEXT_BANNERS_BANNER_NOTE . '<br />' . TEXT_BANNERS_INSERT_NOTE . '<br />' . TEXT_BANNERS_EXPIRCY_NOTE . '<br />' . TEXT_BANNERS_SCHEDULE_NOTE; ?></td>
-            <td class="main" align="right" valign="top" nowrap><?php echo (($form_action == 'insert') ? '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/>' : '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>'). '&nbsp;&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
+            <td class="main" align="right" valign="top" nowrap><?php echo (($form_action == 'insert') ? '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>' : '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'). '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
           </tr>
         </table></td>
       </form></tr>
@@ -362,7 +362,7 @@ function popupImageWindow(url) {
                     <td class="smallText" align="right"><?php echo $banners_split->display_links($banners_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
                   <tr>
-                    <td align="right" colspan="2"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'action=new') . '">' . BUTTON_NEW_BANNER . '</a>'; ?></td>
+                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'action=new') . '"><span>' . BUTTON_NEW_BANNER . '</span></a>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -378,13 +378,13 @@ function popupImageWindow(url) {
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br /><b>' . $bInfo->banners_title . '</b>');
       if ($bInfo->banners_image) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('delete_image', 'on', true) . ' ' . TEXT_INFO_DELETE_IMAGE);
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $_GET['bID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($bInfo)) {
         $heading[] = array('text' => '<b>' . $bInfo->banners_title . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=new') . '">' . BUTTON_EDIT . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=new') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_BANNER_MANAGER, 'page=' . $_GET['page'] . '&bID=' . $bInfo->banners_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
         $contents[] = array('text' => '<br />' . TEXT_BANNERS_DATE_ADDED . ' ' . vam_date_short($bInfo->date_added));
 
         if ( (function_exists('imagecreate')) && ($dir_ok) && ($banner_extension) ) {

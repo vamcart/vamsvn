@@ -430,7 +430,7 @@ if ( ($action == 'new') || ($action == 'edit') )
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
             <td class="main"><br><?php echo TEXT_SPECIALS_PRICE_TIP; ?></td>
-            <td class="main" align="right" valign="top"><br><?php echo (($form_action == 'insert') ? '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/>' : '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>'). '&nbsp;&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . (isset($_GET['sID']) ? '&sID=' . $_GET['sID'] : '')) . '">' . BUTTON_CANCEL . '</a>'; ?></td>
+            <td class="main" align="right" valign="top"><br><?php echo (($form_action == 'insert') ? '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>' : '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'). '&nbsp;&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . (isset($_GET['sID']) ? '&sID=' . $_GET['sID'] : '')) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
           </tr></TABLE>	  
 	  </td>
       </tr>
@@ -524,19 +524,19 @@ while ($specials = vam_db_fetch_array($specials_query))
 if($specials['specials_id'] > 0)
 {
 ?>
-			    <input type="button" class="button" value="<?php echo BUTTON_UPDATE; ?>" onClick="this.form.act.value = 'update'; this.form.submit();">&nbsp;&nbsp;<input type="button" class="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();">
+			    <span class="button"><input type="button" value="<?php echo BUTTON_UPDATE; ?>" onClick="this.form.act.value = 'update'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
 <?
 }
 else if($specials['special_id'] > 0 )
 {
 ?>
-			    <input type="button" class="button" value="<?php echo BUTTON_RE_ADD; ?>" onClick="this.form.act.value = 're-add'; this.form.submit();">&nbsp;&nbsp;<input type="button" class="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();">
+			    <span class="button"><input type="button" value="<?php echo BUTTON_RE_ADD; ?>" onClick="this.form.act.value = 're-add'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
 <?
 }
 else
 {
 ?>
-			    <input type="button" class="button" value="<?php echo BUTTON_MAKE_SPECIAL; ?>" onClick="this.form.act.value = 'make-special'; this.form.submit();">
+			    <span class="button"><input type="button" value="<?php echo BUTTON_MAKE_SPECIAL; ?>" onClick="this.form.act.value = 'make-special'; this.form.submit();"></span>
 <?
 }
 ?>			    
@@ -559,7 +559,7 @@ else
           {
 ?>
                         <tr>
-                          <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_PRODUCTS . '</a>'; ?></td>
+                          <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
                         </tr>
                         <?php
           }
@@ -658,7 +658,7 @@ if (empty($action))
 {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_CATEGORIES . '</a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_PRODUCTS . '</a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
                   </tr>
 <?php
 }
@@ -678,7 +678,7 @@ switch ($action)
 	$contents = array('form' => vam_draw_form('specials', FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=deleteconfirm'));
 	$contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
 	$contents[] = array('text' => '<br><b>' . $sInfo->categories_name . '</b>');
-	$contents[] = array('align' => 'center', 'text' => '<br><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id) . '">' . BUTTON_CANCEL . '</a>');
+	$contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
 	break;
 	default:
 	if (is_object($sInfo))
@@ -688,7 +688,7 @@ switch ($action)
 
 		$heading[] = array('text' => '<b>' . $sInfo->categories_name . '</b>');
 
-		$contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
+		$contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
 		$contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($sInfo->special_date_added));
 		$contents[] = array('text' => '' . TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($sInfo->special_last_modified));
 		$contents[] = array('align' => 'center', 'text' => '<br>' . vam_info_image($sInfo->categories_image, $sInfo->categories_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT));

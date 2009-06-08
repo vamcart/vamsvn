@@ -256,7 +256,7 @@ else{
 
 if (!$auth || (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] == 'reload')) {
 	setcookie("sxd");
-	echo tpl_page(tpl_auth($error ? tpl_error($error) : ''), "<script>if (jsEnabled) {document.write('<input type=submit class=button value=" . TEXT_DUMPER_SUBMIT . ">');}</script>");
+	echo tpl_page(tpl_auth($error ? tpl_error($error) : ''), "<script>if (jsEnabled) {document.write('<span class=button><input type=submit value=" . TEXT_DUMPER_SUBMIT . "></span>');}</script>");
 	echo "<script>document.getElementById('timer').innerHTML = '" . round(array_sum(explode(' ', microtime())) - $timer, 4) . TEXT_DUMPER_SEC . "'</script>";
 	exit;
 }
@@ -348,7 +348,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 	
 		if (!isset($_REQUEST)) {$this->main();}
 		set_error_handler("SXD_errorHandler");
-		$buttons = "<a id=save href='' style='display: none;'>" . TEXT_DUMPER_DOWNLOAD . "</a> &nbsp; <input id=back type=button class=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\">";
+		$buttons = "<a id=save href='' style='display: none;'>" . TEXT_DUMPER_DOWNLOAD . "</a> &nbsp; <span class=button><input id=back type=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\"></span>";
 		echo tpl_page(tpl_process($TEXT_DUMPER_CREATE), $buttons);
 
 		$this->SET['last_action']     = 0;
@@ -567,7 +567,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 
 		if (!isset($_REQUEST)) {$this->main();}
 		set_error_handler("SXD_errorHandler");
-		$buttons = "<input id=back type=button class=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\">";
+		$buttons = "<span class=button><input id=back type=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\"></span>";
 		echo tpl_page(tpl_process($TEXT_DUMPER_RESTORE), $buttons);
 
 		$this->SET['last_action']     = 1;
@@ -783,7 +783,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 		$this->vars['comp_methods'] = $this->fn_select($this->comp_methods, $this->SET['comp_method']);
 		$this->vars['tables']       = $this->SET['tables'];
 		$this->vars['files']        = $this->fn_select($this->file_select(), '');
-		$buttons = "<input type=submit value=" . TEXT_DUMPER_SUBMIT . ">";
+		$buttons = "<span class=button><input type=submit value=" . TEXT_DUMPER_SUBMIT . "></span>";
 		echo tpl_page(tpl_main(), $buttons);
 	}
 

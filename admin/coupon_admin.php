@@ -358,7 +358,7 @@ $customer = vam_db_fetch_array($customer_query);
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><?php ?>&nbsp;</td>
-                    <td align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '">' . BUTTON_CANCEL . '</a> <input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEND_EMAIL . '"/>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><input type="submit" value="' . BUTTON_SEND_EMAIL . '"/></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -441,7 +441,7 @@ $customer = vam_db_fetch_array($customer_query);
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="2" align="right"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SEND_EMAIL . '"/>'; ?></td>
+                <td colspan="2" align="right"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SEND_EMAIL . '"/></span>'; ?></td>
               </tr>
             </table></td>
           </form></tr>
@@ -571,8 +571,8 @@ $customer = vam_db_fetch_array($customer_query);
     echo vam_draw_hidden_field('coupon_finishdate', date('Y-m-d', mktime(0, 0, 0, $_POST['finishdate-mm'],$_POST['finishdate-dd'] ,$_POST['finishdate'] )));
 ?>
      <tr>
-        <td align="left"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_CONFIRM . '"/>'; ?></td>
-        <td align="left"><?php echo '<input type="submit" name="back" class="button" onClick="this.blur();" value="' . BUTTON_BACK . '"/>'; ?></td>
+        <td align="left"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_CONFIRM . '"/></span>'; ?></td>
+        <td align="left"><?php echo '<span class="button"><input type="submit" name="back" value="' . BUTTON_BACK . '"/></span>'; ?></td>
       </td>
       </tr>
 
@@ -708,8 +708,8 @@ $customer = vam_db_fetch_array($customer_query);
         <td align="left" class="main"><?php echo COUPON_FINISHDATE_HELP; ?></td>
       </tr>
       <tr>
-        <td align="left"><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_PREVIEW . '"/>'; ?></td>
-        <td align="left"><?php echo '&nbsp;&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link('coupon_admin.php', ''); ?>"><?php echo BUTTON_CANCEL; ?></a>
+        <td align="left"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_PREVIEW . '"/></span>'; ?></td>
+        <td align="left"><?php echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link('coupon_admin.php', ''); ?>"><span><?php echo BUTTON_CANCEL; ?></span></a>
       </td>
       </tr>
       </td></table></form>
@@ -743,7 +743,7 @@ $customer = vam_db_fetch_array($customer_query);
         </table></td>
       </tr>
       <tr>
-        <td><a class="button" onClick="this.blur();" href="<?php echo vam_href_link('coupon_admin.php', 'action=new'); ?>"><?php echo BUTTON_INSERT; ?></a><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td><a class="button" href="<?php echo vam_href_link('coupon_admin.php', 'action=new'); ?>"><span><?php echo BUTTON_INSERT; ?></span></a><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
@@ -804,7 +804,7 @@ $customer = vam_db_fetch_array($customer_query);
               </tr>
             <?php } ?>
               <tr>
-                <td align="right" colspan="2" class="smallText"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link('coupon_admin.php', 'page=' . $_GET['page'] . '&cID=' . $cInfo->coupon_id . '&action=new') . '">' . BUTTON_INSERT . '</a>'; ?></td>
+                <td align="right" colspan="2" class="smallText"><?php echo '<a class="button" href="' . vam_href_link('coupon_admin.php', 'page=' . $_GET['page'] . '&cID=' . $cInfo->coupon_id . '&action=new') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
             </table></td>
           </tr>
@@ -840,8 +840,8 @@ $customer = vam_db_fetch_array($customer_query);
       }
       if ($_GET['action'] == 'voucherdelete') {
         $contents[] = array('text'=> TEXT_CONFIRM_DELETE . '</br></br>' .
-                '<a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','action=confirmdelete&cid='.$_GET['cid'],'NONSSL').'">'.BUTTON_CONFIRM.'</a>' .
-                '<a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','cid='.$cInfo->coupon_id,'NONSSL').'">'.BUTTON_CANCEL.'</a>'
+                '<a class="button" href="'.vam_href_link('coupon_admin.php','action=confirmdelete&cid='.$_GET['cid'],'NONSSL').'"><span>'.BUTTON_CONFIRM.'</span></a>' .
+                '<a class="button" href="'.vam_href_link('coupon_admin.php','cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_CANCEL.'</span></a>'
                 );
       } else {
         $prod_details = NONE;
@@ -864,10 +864,10 @@ $customer = vam_db_fetch_array($customer_query);
                      COUPON_CATEGORIES . '&nbsp;::&nbsp; ' . $cat_details . '<br />' .
                      DATE_CREATED . '&nbsp;::&nbsp; ' . vam_date_short($cInfo->date_created) . '<br />' .
                      DATE_MODIFIED . '&nbsp;::&nbsp; ' . vam_date_short($cInfo->date_modified) . '<br /><br />' .
-                     '<table border=0 align=center><tr><td align="center"><a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','action=email&cid='.$cInfo->coupon_id,'NONSSL').'">'.BUTTON_EMAIL.'</a></td></tr><tr><td align="center">' .
-                     '<a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','action=voucheredit&cid='.$cInfo->coupon_id,'NONSSL').'">'.BUTTON_EDIT.'</a></td></tr><tr><td align="center">' .
-                     '<a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','action=voucherdelete&cid='.$cInfo->coupon_id,'NONSSL').'">'.BUTTON_DELETE.'</a></td></tr><tr><td align="center">' .
-                     '<a class="button" onClick="this.blur();" href="'.vam_href_link('coupon_admin.php','action=voucherreport&cid='.$cInfo->coupon_id,'NONSSL').'">'.BUTTON_REPORT.'</a></center></td></tr>'
+                     '<table border=0 align=center><tr><td align="center"><a class="button" href="'.vam_href_link('coupon_admin.php','action=email&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_EMAIL.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucheredit&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_EDIT.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherdelete&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_DELETE.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherreport&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_REPORT.'</span></a></center></td></tr>'
                      );
         }
         break;

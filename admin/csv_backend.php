@@ -184,7 +184,7 @@
   }
 ?>
             </table>
-<?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?></form>
+<?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?></form>
 </div>
 <?php
 
@@ -248,7 +248,7 @@
 <?php
 echo vam_draw_form('upload',FILENAME_CSV_BACKEND,'action=upload','POST','enctype="multipart/form-data"');
 echo vam_draw_file_field('file_upload');
-echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPLOAD . '"/>';
+echo '<br/><span class="button"><input type="submit" value="' . BUTTON_UPLOAD . '"/></span>';
 ?>
 </form>
           </td>
@@ -276,7 +276,7 @@ echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' .
              closedir($dir);
             }
           echo vam_draw_pull_down_menu('select_file',$files,'');
-          echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_IMPORT . '"/>';
+          echo '<br/><span class="button"><input type="submit" value="' . BUTTON_IMPORT . '"/></span>';
 
           ?></form>
 </td>
@@ -301,7 +301,7 @@ echo vam_draw_form('export',FILENAME_CSV_BACKEND,'action=export','POST','enctype
 $content=array();
 $content[]=array('id'=>'products','text'=>TEXT_PRODUCTS);
 echo vam_draw_pull_down_menu('select_content',$content,'products');
-echo '<br/><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_EXPORT . '"/>';
+echo '<br/><span class="button"><input type="submit" value="' . BUTTON_EXPORT . '"/></span>';
 ?>
 </form>
           </td>

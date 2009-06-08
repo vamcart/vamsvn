@@ -136,7 +136,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&action=new') . '">' . BUTTON_NEW_COUNTRY . '</a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_COUNTRY . '</span></a>'; ?></td>
                   </tr>
 <?php
   }
@@ -157,7 +157,7 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_2 . '<br />' . vam_draw_input_field('countries_iso_code_2'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_3 . '<br />' . vam_draw_input_field('countries_iso_code_3'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_ADDRESS_FORMAT . '<br />' . vam_draw_pull_down_menu('address_format_id', vam_get_address_formats()));
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_COUNTRY . '</b>');
@@ -168,7 +168,7 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_2 . '<br />' . vam_draw_input_field('countries_iso_code_2', $cInfo->countries_iso_code_2));
       $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_3 . '<br />' . vam_draw_input_field('countries_iso_code_3', $cInfo->countries_iso_code_3));
       $contents[] = array('text' => '<br />' . TEXT_INFO_ADDRESS_FORMAT . '<br />' . vam_draw_pull_down_menu('address_format_id', vam_get_address_formats(), $cInfo->address_format_id));
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_COUNTRY . '</b>');
@@ -176,13 +176,13 @@
       $contents = array('form' => vam_draw_form('countries', FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br /><b>' . $cInfo->countries_name . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>&nbsp;<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($cInfo)) {
         $heading[] = array('text' => '<b>' . $cInfo->countries_name . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&cID=' . $cInfo->countries_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_NAME . '<br />' . $cInfo->countries_name);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_2 . ' ' . $cInfo->countries_iso_code_2);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_CODE_3 . ' ' . $cInfo->countries_iso_code_3);
