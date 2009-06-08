@@ -181,7 +181,7 @@ class cip_manager {
             }
             $contents[] = array('text' => '<br>' . $file_upload);
             $contents[] = array('align' =>'left',
-                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<input type="submit" class="button" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;">' : '') . '&nbsp;<a class="button" href="' . vam_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '">' . BUTTON_CANCEL . '</a><br /><br />');
+                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<span class="button"><input type="submit" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;"></span>' : '') . '&nbsp;<a class="button" href="' . vam_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '"><span>' . BUTTON_CANCEL . '</span></a><br /><br />');
             break;
 
         default:
