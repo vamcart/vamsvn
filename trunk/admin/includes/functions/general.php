@@ -1747,11 +1747,11 @@ function vam_try_upload($file = '', $destination = '', $permissions = '777', $ex
 }
 
 function vam_button($value, $type='submit', $parameter='') {
-   return '<input type="'.$type.'" class="button" onClick="this.blur();" value="' . $value . '" ' . $parameter . ' >';
+   return '<input type="'.$type.'" class="button" value="' . $value . '" ' . $parameter . ' >';
 }
 
 function vam_button_link($value, $href='javascript:void(null)', $parameter='') {
-   return '<a href="'.$href.'" class="button" onClick="this.blur()" '.$parameter.' >'.$value.'</a>';
+   return '<a href="'.$href.'" class="button" '.$parameter.' >'.$value.'</a>';
 }
 
 ////// Sets the status of a product to XML
