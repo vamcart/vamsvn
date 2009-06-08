@@ -185,8 +185,8 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       <tr>
         <td class="main" align="right">
           <?php
-            isset($_GET['news_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'news_id=' . $_GET['news_id']) . '">' . BUTTON_CANCEL . '</a>' : $cancel_button = '';
-            echo '<input type="submit" class="button" value="' . BUTTON_INSERT .'">' . $cancel_button;
+            isset($_GET['news_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'news_id=' . $_GET['news_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>' : $cancel_button = '';
+            echo '<span class="name"><input type="submit" value="' . BUTTON_INSERT .'"></span>' . $cancel_button;
           ?>
         </td>
       </form></tr>
@@ -247,7 +247,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
                 <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo '<br>' . TEXT_NEWS_ITEMS . '&nbsp;' . $latest_news_count; ?></td>
-                    <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=new_latest_news') . '">' . BUTTON_INSERT . '</a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=new_latest_news') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?>&nbsp;</td>
                   </tr>																																		  
                 </table></td>
               </tr>
@@ -272,7 +272,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         $contents[] = array('text'  => '<br><b>' . $selected_item['headline'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><input type="submit" class="button" value="' . BUTTON_DELETE .'"><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '">' . BUTTON_CANCEL . '</a>');
+                            'text'  => '<br><span class="name"><input type="submit" value="' . BUTTON_DELETE .'"></span><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
@@ -281,7 +281,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
             $heading[] = array('text' => '<b>' . $nInfo->headline . '</b>');
 
             $contents[] = array('align' => 'center', 
-                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=new_latest_news') . '">' . BUTTON_EDIT . '</a> <a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=delete_latest_news') . '">' . BUTTON_DELETE . '</a>');
+                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=new_latest_news') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=delete_latest_news') . '"><span>' . BUTTON_DELETE . '</span></a>');
 
             $contents[] = array('text' => '<br>' . $nInfo->content);
           }

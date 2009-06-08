@@ -248,7 +248,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td align="right" colspan="2"><?php echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=new') . '">' . BUTTON_NEW_LANGUAGE . '</a>'; ?></td>
+                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=new') . '"><span>' . BUTTON_NEW_LANGUAGE . '</span></a>'; ?></td>
                   </tr>
 <?php
   }
@@ -276,7 +276,7 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br />' . vam_draw_input_field('directory'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order'));
       $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
-      $contents[] = array('align' => 'center', 'text' => '<br /><button class="button" type="submit" />' . BUTTON_INSERT . '</button> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $_GET['lID']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" />' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $_GET['lID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     case 'edit':
@@ -291,7 +291,7 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br />' . vam_draw_input_field('directory', $lInfo->directory));
       $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order', $lInfo->sort_order));
       if (DEFAULT_LANGUAGE != $lInfo->code) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     case 'delete':
@@ -299,14 +299,14 @@
 
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br /><b>' . $lInfo->name . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br />' . (($remove_language) ? '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=deleteconfirm') . '">' . BUTTON_DELETE . '</a>' : '') . ' <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br />' . (($remove_language) ? '<a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=deleteconfirm') . '"><span>' . BUTTON_DELETE . '</span></a>' : '') . ' <a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     default:
       if (is_object($lInfo)) {
         $heading[] = array('text' => '<b>' . $lInfo->name . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=delete') . '">' . BUTTON_DELETE . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
         $contents[] = array('text' => '<br />' . TEXT_INFO_LANGUAGE_NAME . ' ' . $lInfo->name);
         $contents[] = array('text' => TEXT_INFO_LANGUAGE_CODE . ' ' . $lInfo->code);
         $contents[] = array('text' => TEXT_INFO_LANGUAGE_CHARSET_INFO . ' ' . $lInfo->language_charset);

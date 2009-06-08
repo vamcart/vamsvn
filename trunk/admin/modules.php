@@ -236,7 +236,7 @@
 
       $contents = array('form' => vam_draw_form('modules', FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $_GET['module'] . '&action=save'));
       $contents[] = array('text' => $keys);
-      $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $_GET['module']) . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $_GET['module']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     default:
@@ -270,11 +270,11 @@
         }
         $keys = substr($keys, 0, strrpos($keys, '<br /><br />'));
 
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $mInfo->code . '&action=remove') . '">' . BUTTON_MODULE_REMOVE . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $_GET['module'] . '&action=edit') . '">' . BUTTON_EDIT . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $mInfo->code . '&action=remove') . '"><span>' . BUTTON_MODULE_REMOVE . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $_GET['module'] . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a>');
         $contents[] = array('text' => '<br />' . $mInfo->description);
         $contents[] = array('text' => '<br />' . $keys);
       } else {
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $mInfo->code . '&action=install') . '">' . BUTTON_MODULE_INSTALL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_MODULES, 'set=' . $_GET['set'] . '&module=' . $mInfo->code . '&action=install') . '"><span>' . BUTTON_MODULE_INSTALL . '</span></a>');
         $contents[] = array('text' => '<br />' . $mInfo->description);
       }
       break;

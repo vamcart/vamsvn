@@ -383,7 +383,7 @@ for ($i=0,$n=sizeof($customer_group); $i<$n; $i++) {
 ?>
       </table></td>
     <td width="30%" align="right" valign="top""><?php
-    echo '<a class="button" href="'.vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=new').'">'.BUTTON_NEW_NEWSLETTER.'</a>';
+    echo '<a class="button" href="'.vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=new').'"><span>'.BUTTON_NEW_NEWSLETTER.'</span></a>';
 
 
     ?></td>
@@ -438,10 +438,10 @@ $total_data=vam_db_fetch_array($total_query);
 <td colspan="2" class="dataTableContent_products" style="border-bottom: 1px solid; border-color: #f1f1f1;" align="left"><?php echo TEXT_SEND_TO.$total_data['count']; ?></td>
 </tr>
 <td class="dataTableContent" valign="top" style="border-bottom: 1px solid; border-color: #999999;" align="left">
-  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=delete&ID='.$news_data[$i]['id']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')"><?php echo BUTTON_DELETE.'</a><br />'; ?>
-  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=edit&ID='.$news_data[$i]['id']); ?>"><?php echo BUTTON_EDIT.'</a>'; ?>
+  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=delete&ID='.$news_data[$i]['id']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')"><span><?php echo BUTTON_DELETE.'</span></a><br />'; ?>
+  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=edit&ID='.$news_data[$i]['id']); ?>"><span><?php echo BUTTON_EDIT.'</span></a>'; ?>
   <br /><br /><div style="height: 1px; background: Black; margin: 3px 0;"></div>
-  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=send&ID='.$news_data[$i]['id']); ?>"><?php echo BUTTON_SEND.'</a>'; ?>
+  <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=send&ID='.$news_data[$i]['id']); ?>"><span><?php echo BUTTON_SEND.'</span></a>'; ?>
 
 </td>
 <td colspan="2" class="dataTableContent" style="border-bottom: 1px solid; border-color: #999999; text-align: left;">
@@ -596,8 +596,8 @@ echo vam_draw_textarea_field('newsletter_body', 'soft', '103', '25', stripslashe
         ?><br /><a href="javascript:toggleHTMLEditor('newsletter_body');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
    </tr>
    </table>
-   <a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER); ?>"><?php echo BUTTON_BACK; ?></a>
-   <right><?php echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; ?></right>
+   <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER); ?>"><span><?php echo BUTTON_BACK; ?></span></a>
+   <right><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?></right>
   </form>
   <?php
 

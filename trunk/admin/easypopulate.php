@@ -811,7 +811,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 								<br><b><?PHP ECHO EASY_UPLOAD_EP_FILE;?></b><br>
 </span>
 									<input name="usrfl" type="file" size="50">
-									<input type="submit" name="buttoninsert" value="<?PHP ECHO EASY_INSERT;?>"><br>
+									<span class="button"><input type="submit" name="buttoninsert" value="<?PHP ECHO EASY_INSERT;?>"></span><br>
 
 							</div>
 
@@ -848,7 +848,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 			<option value="utf8" size="5">utf8</option>
 			</select>
 
-									<input type="submit" name="buttonsplit" value="<?PHP ECHO EASY_SPLIT;?>">
+									<span class="button"><input type="submit" name="buttonsplit" value="<?PHP ECHO EASY_SPLIT;?>"></span>
 
 							</div>
 
@@ -885,7 +885,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 			<option selected value ="cp1251" size="5">cp1251</option>
 			<option value="utf8" size="5">utf8</option>
 			</select>
-												<input type="submit" name="buttoninsert" value="<?php echo TEXT_INSERT_INTO_DB ; ?>"><br>
+												<span class="button"><input type="submit" name="buttoninsert" value="<?php echo TEXT_INSERT_INTO_DB ; ?>"></span><br>
 
 
 							</div>
@@ -995,7 +995,7 @@ if (is_uploaded_file($_FILES['usrfl']['tmp_name']) && $_GET['split']==1) {
 <span class="smallText">
 					<?php echo EASY_LABEL_PRODUCT_AVAIL . EASY_LABEL_PRODUCT_FROM . $firstid1 . EASY_LABEL_PRODUCT_TO . $firstid2a;?><br>
 				<?php echo EASY_LABEL_PRODUCT_RECORDS . $total3; ?><br>
-					 <br><input type="submit" name="buttoninsert" value="<?php echo EASY_LABEL_PRODUCT_START;?>">
+					 <br><span class="button"><input type="submit" name="buttoninsert" value="<?php echo EASY_LABEL_PRODUCT_START;?>"></span>
 </span>
 											</form>
 

@@ -187,7 +187,7 @@ function update_zone(theForm) {
                 </table></td>
               </tr>
               <tr>
-                <td align="right" colspan="3"><?php if (!$_GET['saction']) echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '">' . BUTTON_BACK . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=new') . '">' . BUTTON_INSERT . '</a>'; ?></td>
+                <td align="right" colspan="3"><?php if (!$_GET['saction']) echo '<a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '"><span>' . BUTTON_BACK . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=new') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
             </table>
 <?php
@@ -234,7 +234,7 @@ function update_zone(theForm) {
                 </table></td>
               </tr>
               <tr>
-                <td align="right" colspan="2"><?php if (!$_GET['action']) echo '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=new_zone') . '">' . BUTTON_INSERT . '</a>'; ?></td>
+                <td align="right" colspan="2"><?php if (!$_GET['action']) echo '<a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=new_zone') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
             </table>
 <?php
@@ -254,7 +254,7 @@ function update_zone(theForm) {
         $contents[] = array('text' => TEXT_INFO_NEW_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY . '<br />' . vam_draw_pull_down_menu('zone_country_id', vam_get_countries(TEXT_ALL_COUNTRIES), '', 'onChange="update_zone(this.form);"'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_ZONE . '<br />' . vam_draw_pull_down_menu('zone_id', vam_prepare_country_zones_pull_down()));
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $_GET['sID']) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $_GET['sID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'edit':
@@ -264,7 +264,7 @@ function update_zone(theForm) {
         $contents[] = array('text' => TEXT_INFO_EDIT_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY . '<br />' . vam_draw_pull_down_menu('zone_country_id', vam_get_countries(TEXT_ALL_COUNTRIES), $sInfo->zone_country_id, 'onChange="update_zone(this.form);"'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_ZONE . '<br />' . vam_draw_pull_down_menu('zone_id', vam_prepare_country_zones_pull_down($sInfo->zone_country_id), $sInfo->zone_id));
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'delete':
@@ -273,14 +273,14 @@ function update_zone(theForm) {
         $contents = array('form' => vam_draw_form('zones', FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=deleteconfirm_sub'));
         $contents[] = array('text' => TEXT_INFO_DELETE_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br /><b>' . $sInfo->countries_name . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
         if (is_object($sInfo)) {
           $heading[] = array('text' => '<b>' . $sInfo->countries_name . '</b>');
 
-          $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=edit') . '">' . BUTTON_EDIT . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=delete') . '">' . BUTTON_DELETE . '</a>');
+          $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=edit') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=delete') . '"><span>' . BUTTON_DELETE . '</span></a>');
           $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($sInfo->date_added));
           if (vam_not_null($sInfo->last_modified)) $contents[] = array('text' => TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($sInfo->last_modified));
         }
@@ -295,7 +295,7 @@ function update_zone(theForm) {
         $contents[] = array('text' => TEXT_INFO_NEW_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_NAME . '<br />' . vam_draw_input_field('geo_zone_name'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_DESCRIPTION . '<br />' . vam_draw_input_field('geo_zone_description'));
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_INSERT . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'edit_zone':
@@ -305,7 +305,7 @@ function update_zone(theForm) {
         $contents[] = array('text' => TEXT_INFO_EDIT_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_NAME . '<br />' . vam_draw_input_field('geo_zone_name', $zInfo->geo_zone_name));
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_DESCRIPTION . '<br />' . vam_draw_input_field('geo_zone_description', $zInfo->geo_zone_description));
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_UPDATE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'delete_zone':
@@ -314,14 +314,14 @@ function update_zone(theForm) {
         $contents = array('form' => vam_draw_form('zones', FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=deleteconfirm_zone'));
         $contents[] = array('text' => TEXT_INFO_DELETE_ZONE_INTRO);
         $contents[] = array('text' => '<br /><b>' . $zInfo->geo_zone_name . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<br /><input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '">' . BUTTON_CANCEL . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
         if (is_object($zInfo)) {
           $heading[] = array('text' => '<b>' . $zInfo->geo_zone_name . '</b>');
 
-          $contents[] = array('align' => 'center', 'text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=edit_zone') . '">' . BUTTON_EDIT . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=delete_zone') . '">' . BUTTON_DELETE . '</a>' . ' <a class="button" onClick="this.blur();" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=list') . '">' . BUTTON_DETAILS . '</a>');
+          $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=edit_zone') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=delete_zone') . '"><span>' . BUTTON_DELETE . '</span></a>' . ' <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=list') . '"><span>' . BUTTON_DETAILS . '</span></a>');
           $contents[] = array('text' => '<br />' . TEXT_INFO_NUMBER_ZONES . ' ' . $zInfo->num_zones);
           $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($zInfo->date_added));
           if (vam_not_null($zInfo->last_modified)) $contents[] = array('text' => TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($zInfo->last_modified));
