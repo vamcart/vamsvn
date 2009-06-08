@@ -779,7 +779,7 @@ set_time_limit(600);
 				}
 				?>
 				</select>
-				<input type="submit" value="<?php echo DOWNLOAD_BUTTON_TITLE; ?>" name="load">
+				<span class="button"><input type="submit" value="<?php echo DOWNLOAD_BUTTON_TITLE; ?>" name="load"></span>
 				</form>
 
 				<br><br>
@@ -787,7 +787,7 @@ set_time_limit(600);
 				<?php echo UPLOAD_TITLE; ?>:<br>
 				<form name="editForm" method="POST" enctype="multipart/form-data">
 				<input type="file" name="excell" value="" style="width: 300px;"><br>
-				<input type="submit" value="<?php echo UPLOAD_BUTTON_TITLE; ?>" name="load">
+				<span class="button"><input type="submit" value="<?php echo UPLOAD_BUTTON_TITLE; ?>" name="load"></span>
 				</form>
 
 			</td>

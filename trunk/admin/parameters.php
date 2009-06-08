@@ -492,7 +492,7 @@ var orders_values_list = new Array();
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <div id="set_intervals_box" style="display:none; width: 550px; height: 400px;">
     <h1 class="contentBoxHeading"><?php echo SET_INTERVALS_BOX_TITLE; ?> <span id="set_intervals_box_title_paramname"></span></h1>
-    <?php echo SET_INTERVALS_BOX_EDITINTERVAL_INTERVALTITLE; ?>: <input type="text" id="set_intervals_box_editinterval_intervaltitle"> <input type="button" value="<?php echo SET_INTERVALS_ADDINTERVAL_BUTTON_TITLE; ?>" onclick="set_intervals_dialog_add_interval();"><br />
+    <?php echo SET_INTERVALS_BOX_EDITINTERVAL_INTERVALTITLE; ?>: <input type="text" id="set_intervals_box_editinterval_intervaltitle"> <span class="button"><input type="button" value="<?php echo SET_INTERVALS_ADDINTERVAL_BUTTON_TITLE; ?>" onclick="set_intervals_dialog_add_interval();"></span><br />
     <table>
     <tr>
         <td width="300" valign="top">
@@ -508,7 +508,7 @@ var orders_values_list = new Array();
     </tr>
     </table>
     <br />
-    <input type="button" value="<?php echo SAVE_BUTTON_TITLE; ?>" onclick="save_intervals()"> <input type="button" value="<?php echo CANCEL_BUTTON_TITLE; ?>" onclick="set_intervals_dialog_close()">
+    <span class="button"><input type="button" value="<?php echo SAVE_BUTTON_TITLE; ?>" onclick="save_intervals()"></span> <span class="button"><input type="button" value="<?php echo CANCEL_BUTTON_TITLE; ?>" onclick="set_intervals_dialog_close()"></span>
 </div>
 
 <div id="set_orders_box" style="display:none; width: 550px; height: 400px;">
@@ -528,7 +528,7 @@ var orders_values_list = new Array();
     </tr>
     </table>
     <br />
-    <input type="button" value="<?php echo SAVE_BUTTON_TITLE; ?>" onclick="save_orders()"> <input type="button" value="<?php echo CANCEL_BUTTON_TITLE; ?>" onclick="set_orders_dialog_close()">
+    <span class="button"><input type="button" value="<?php echo SAVE_BUTTON_TITLE; ?>" onclick="save_orders()"></span> <span class="button"><input type="button" value="<?php echo CANCEL_BUTTON_TITLE; ?>" onclick="set_orders_dialog_close()"></span>
 </div>
 
 
@@ -545,7 +545,7 @@ var orders_values_list = new Array();
 
 <br />
 
-<a class="button" href="../filters/update_parameters.php?clear=1" target="_blank"><?php echo BUTTON_UPDATE_PARAMETERS; ?></a>
+<a class="button" href="../filters/update_parameters.php?clear=1" target="_blank"><span><?php echo BUTTON_UPDATE_PARAMETERS; ?></span></a>
 
 <br /><br />
 
@@ -597,7 +597,7 @@ var orders_values_list = new Array();
             ?>
             <input type="text" name="new_param_name" id="new_param_name">
             <select name="new_param_type"><option value="p"><?php echo PARAMETER_TITLE; ?></option><option value="g"><?php echo GROUP_TITLE; ?></option></select>
-            <input type="submit" value="<?php echo ADD_BUTTON_TITLE; ?>">
+            <span class="button"><input type="submit" value="<?php echo ADD_BUTTON_TITLE; ?>"></span>
             </form>
 
             <form name="params_form" method="POST" >
@@ -704,7 +704,7 @@ var orders_values_list = new Array();
                 <td class="dataTableContent" align="right"><input type="text" size="3" name="opened[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_maxopened']; ?>"></td>
                 <td class="dataTableContent" align="right"><input type="checkbox" name="useinsearch[<?php echo $p['products_parameters_id']; ?>]" value="1" <?php echo ($p['products_parameters_useinsearch'] == 1 ? 'checked' : ''); ?>></td>
                 <!-- <td class="dataTableContent" align="center">
-                <a href="javascript: void(0);" onclick="set_intervals_dialog_open(<?php echo $p['products_parameters_id']; ?>);"><?php echo SET_INTERVALS_BUTTON_TITLE; ?></a>
+                <a href="javascript: void(0);" class="button" onclick="set_intervals_dialog_open(<?php echo $p['products_parameters_id']; ?>);"><span><?php echo SET_INTERVALS_BUTTON_TITLE; ?></span></a>
                  <input type="text" size="30" name="intervals[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_intervals']; ?>"> -->
                 <script language="JavaScript">
                 <!--
@@ -803,14 +803,14 @@ function set_edit(id, obj)
 }
 //-->
 </script>
-            <input type="submit" value="<?php echo SAVE_BUTTON_TITLE; ?>">
+            <span class="button"><input type="submit" value="<?php echo SAVE_BUTTON_TITLE; ?>"></span>
             </form>
             </td>
             <form action="">
             <input type="hidden" name="category" value="<?php echo $_REQUEST["category"]; ?>">
             <td style="padding-left: 50px;" valign="top">
             <?php echo SEARCHPRODUCT_TITLE; ?>:<br>
-            <input type="text" name="search_product" value="<?php echo htmlspecialchars($_REQUEST["search_product"]); ?>"> <input type="submit" value="<?php echo SEARCH_BUTTON_TITLE; ?>">
+            <input type="text" name="search_product" value="<?php echo htmlspecialchars($_REQUEST["search_product"]); ?>"> <span class="button"><input type="submit" value="<?php echo SEARCH_BUTTON_TITLE; ?>"></span>
 
             <?php
             if (!empty($_REQUEST["search_product"]))

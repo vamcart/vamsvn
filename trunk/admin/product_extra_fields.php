@@ -132,7 +132,7 @@ if (vam_not_null($action)) {
 		 echo vam_draw_pull_down_menu('field[language]', $values, '0', '');?>
         </td>		
         <td class="dataTableHeadingContent" align="right">
-	<?php echo '<input type="submit" class="button" value="' . BUTTON_INSERT . '"/>'; ?>
+	<?php echo '<span class="button"><input type="submit" value="' . BUTTON_INSERT . '"/>'; ?></span>
         </td>
        </tr>
        </form>
@@ -182,9 +182,9 @@ while ($extra_fields = vam_db_fetch_array($products_extra_fields_query)) {
 <? } ?>
        <tr>
         <td colspan="4">
-         <?php echo '<input type="submit" class="button" value="' . BUTTON_UPDATE . '"/>'; ?> 
+         <?php echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'; ?> 
          &nbsp;&nbsp;
-	 <?php echo '<input type="submit" class="button" value="' . BUTTON_DELETE . '" name="remove" />'; ?>
+	 <?php echo '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '" name="remove" /></span>'; ?>
         </td>
        </tr>
        </form>

@@ -513,9 +513,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 ?>
       <tr>
       <td width="100%">
- <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '">' . BUTTON_BACK . '</a>'; ?>
+ <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . BUTTON_BACK . '</span></a>'; ?>
  <!-- Bestellbearbeitung Anfang -->
-   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><?php echo BUTTON_EDIT ?></a>
+   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo BUTTON_EDIT ?></span></a>
 <!-- Bestellbearbeitung Ende -->
  </td>
 
@@ -940,7 +940,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
                 <td class="main"><b><?php echo ENTRY_NOTIFY_COMMENTS; ?></b> <?php echo vam_draw_checkbox_field('notify_comments', '', true); ?></td>
               </tr>
             </table></td>
-            <td valign="top"><input type="submit" class="button" value="<?php echo BUTTON_UPDATE; ?>"></td>
+            <td valign="top"><span class="button"><input type="submit" value="<?php echo BUTTON_UPDATE; ?>"></span></td>
           </tr>
         </table></td>
       </form></tr>
@@ -957,14 +957,14 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         <br />
 <?php
 	if (ACTIVATE_GIFT_SYSTEM == 'true') {
-		echo '<a class="button" href="'.vam_href_link(FILENAME_GV_MAIL, vam_get_all_get_params(array ('cID', 'action')).'cID='.$order->customer['ID']).'">'.BUTTON_SEND_COUPON.'</a>';
+		echo '<a class="button" href="'.vam_href_link(FILENAME_GV_MAIL, vam_get_all_get_params(array ('cID', 'action')).'cID='.$order->customer['ID']).'"><span>'.BUTTON_SEND_COUPON.'</span></a>';
 	}
 ?>
-   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_ORDER,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_INVOICE; ?></a>
-   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_PACKINGSLIP; ?></a>
+   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_ORDER,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><span><?php echo BUTTON_INVOICE; ?></span></a>
+   <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><span><?php echo BUTTON_PACKINGSLIP; ?></span></a>
 	<!-- BMC Delete CC Info -->
-	<a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=deleteccinfo').'">'.BUTTON_REMOVE_CC_INFO;?></a>&nbsp;
-   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'">'.BUTTON_BACK;?></a>
+	<a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=deleteccinfo').'"><span>'.BUTTON_REMOVE_CC_INFO;?></span></a>&nbsp;
+   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'"><span>'.BUTTON_BACK;?></span></a>
        </td>
       </tr>
 
@@ -1079,7 +1079,7 @@ echo '<tr class="dataTableContent"><td colspan="7">' . BUS_HEADING_TITLE . ': ' 
 echo '<tr class="dataTableContent" align="left"><td colspan="7" nobr="nobr" align="left">' .
 BUS_DELETE_ORDERS . ': ' . vam_draw_checkbox_field('delete_orders','1') . '</td></tr>';
 echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" align="left">' .
-     '<a class="button" href="javascript:SwitchCheck()" onClick="this.blur()">' . BUTTON_REVERSE_SELECTION . '</a>&nbsp;<input type="submit" name="submit" class="button" onClick="this.blur();" value="' . BUTTON_SUBMIT . '"/></td></tr>';
+     '<a class="button" href="javascript:SwitchCheck()"><span>' . BUTTON_REVERSE_SELECTION . '</span></a>&nbsp;<span class="button"><input type="submit" name="submit" value="' . BUTTON_SUBMIT . '"/></span></td></tr>';
 ?>
 </form>
               <tr>
@@ -1102,15 +1102,15 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 			$contents = array ('form' => vam_draw_form('orders', FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=deleteconfirm'));
 			$contents[] = array ('text' => TEXT_INFO_DELETE_INTRO.'<br /><br /><b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
 			$contents[] = array ('text' => '<br />'.vam_draw_checkbox_field('restock').' '.TEXT_INFO_RESTOCK_PRODUCT_QUANTITY);
-			$contents[] = array ('align' => 'center', 'text' => '<br /><input type="submit" class="button" value="'. BUTTON_DELETE .'"><a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'">' . BUTTON_CANCEL . '</a>');
+			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><input type="submit" value="'. BUTTON_DELETE .'"></span><a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'"><span>' . BUTTON_CANCEL . '</span></a>');
 			break;
 		default :
 			if (is_object($oInfo)) {
 				$heading[] = array ('text' => '<b>['.$oInfo->orders_id.']&nbsp;&nbsp;'.vam_datetime_short($oInfo->date_purchased).'</b>');
 
-				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'">'.BUTTON_EDIT.'</a> <a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'">'.BUTTON_DELETE.'</a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_ORDER,'oID='.$oInfo->orders_id).'" target="_blank">'.BUTTON_INVOICE.'</a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$oInfo->orders_id).'" target="_blank">'.BUTTON_PACKINGSLIP.'</a>');
+				$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=edit').'"><span>'.BUTTON_EDIT.'</span></a> <a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=delete').'"><span>'.BUTTON_DELETE.'</span></a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_ORDER,'oID='.$oInfo->orders_id).'" target="_blank"><span>'.BUTTON_INVOICE.'</span></a>&nbsp;<a class="button" href="'.vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$oInfo->orders_id).'" target="_blank"><span>'.BUTTON_PACKINGSLIP.'</span></a>');
 				if (AFTERBUY_ACTIVATED == 'true') {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'">'.BUTTON_AFTERBUY_SEND.'</a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'"><span>'.BUTTON_AFTERBUY_SEND.'</span></a>');
 
 				}
 				//$contents[] = array('align' => 'center', 'text' => '');

@@ -53,7 +53,7 @@ if ($lang['directory']==$order->info['language']){
 <td class="dataTableContent" align="left" colspan="3">
 <?php
 echo vam_draw_hidden_field('oID', $_GET['oID']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
 ?></td>
 </tr>
 
@@ -100,7 +100,7 @@ if ($curr['code']==$order->info['currency']){
 <?php
 echo vam_draw_hidden_field('old_currency', $order->info['currency']);
 echo vam_draw_hidden_field('oID', $_GET['oID']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
 ?></td>
 </tr>
 
@@ -152,7 +152,7 @@ echo TEXT_NEW . vam_draw_pull_down_menu('payment', $payment_array);
 <td class="dataTableContent" align="left">
 <?php
 echo vam_draw_hidden_field('oID', $_GET['oID']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
 ?></td>
 </tr>
 
@@ -216,7 +216,7 @@ echo TEXT_PRICE . vam_draw_input_field('value', $order_total['value']);
 <td class="dataTableContent" align="left">
 <?php
 echo vam_draw_hidden_field('oID', $_GET['oID']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
 ?></td>
 </tr>
 
@@ -265,7 +265,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 echo vam_draw_hidden_field('class', $total);
 echo vam_draw_hidden_field('sort_order', constant(MODULE_ORDER_TOTAL_.strtoupper($total_name)._SORT_ORDER));
 echo vam_draw_hidden_field('oID', $_GET['oID']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
 ?>
 </form>
 </td>
@@ -274,7 +274,7 @@ echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTT
 echo vam_draw_form('ot_delete', FILENAME_ORDERS_EDIT, 'action=ot_delete', 'post');
 echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo vam_draw_hidden_field('otID', $ototal['orders_total_id']);
-echo '<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_DELETE . '"/>';
+echo '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>';
 ?>
 </form>
 </td>
