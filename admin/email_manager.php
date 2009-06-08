@@ -75,7 +75,7 @@ $file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FIL
 
 echo vam_draw_pull_down_menu('file',$file_list,$_REQUEST['file']);
 
-echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_EDIT . '"/>';
+echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '"/></span>';
 
                
 ?>
@@ -116,7 +116,7 @@ echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' 
       
       <?php 
   if (is_writable($file)) {
-	echo '<input type="submit" name="save" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; 
+	echo '<span class="button"><input type="submit" name="save" value="' . BUTTON_SAVE . '"/></span>'; 
   }
   ?>
         
@@ -160,7 +160,7 @@ if (is_writable($file)) {
 
 <?php if($_POST['save'] && is_file($file)){ ?>
 
-<a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_EMAIL_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a>
+<a class="button" href="<?php echo vam_href_link(FILENAME_EMAIL_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a>
 
 <?php } ?>
 
@@ -201,7 +201,7 @@ $file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELE
 
 echo vam_draw_pull_down_menu('file_admin',$file_list_admin,$_REQUEST['file_admin']);
 
-echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' . BUTTON_EDIT . '"/>';
+echo '&nbsp;<span class="button"><input type="submit" value="' . BUTTON_EDIT . '"/></span>';
 
                
 ?>
@@ -242,7 +242,7 @@ echo '&nbsp;<input type="submit" class="button" onClick="this.blur();" value="' 
       
       <?php 
   if (is_writable($file_admin)) {
-	echo '<input type="submit" name="save" class="button" onClick="this.blur();" value="' . BUTTON_SAVE . '"/>'; 
+	echo '<span class="button"><input type="submit" name="save" value="' . BUTTON_SAVE . '"/></span>'; 
   }
   ?>
         
@@ -286,7 +286,7 @@ if (is_writable($file_admin)) {
 
 <?php if($_POST['save'] && is_file($file_admin)){ ?>
 
-<a class="button" onClick="this.blur();" href="<?php echo vam_href_link(FILENAME_EMAIL_MANAGER); ?>"><?php echo BUTTON_BACK; ?></a>
+<a class="button" href="<?php echo vam_href_link(FILENAME_EMAIL_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a>
 
 <?php } ?>
 

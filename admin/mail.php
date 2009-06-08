@@ -189,8 +189,8 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
-                    <td><input type="submit" class="button" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')" value="<?php echo BUTTON_BACK; ?>" name="back"></td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MAIL) . '">' . BUTTON_CANCEL . '</a> <input type="submit" class="button" value="'.BUTTON_SEND_EMAIL.'">' ?></td>
+                    <td><span class="button"><input type="submit" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')" value="<?php echo BUTTON_BACK; ?>" name="back"></span></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MAIL) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><input type="submit" value="'.BUTTON_SEND_EMAIL.'"></span>' ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -252,7 +252,7 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="2" align="right"><input type="submit" class="button" value="<?php echo BUTTON_SEND_EMAIL; ?>"></td>
+                <td colspan="2" align="right"><span class="button"><input type="submit" value="<?php echo BUTTON_SEND_EMAIL; ?>"></span></td>
               </tr>
             </table></td>
           </form></tr>

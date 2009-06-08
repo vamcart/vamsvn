@@ -165,12 +165,12 @@
     case 'release':
       $heading[] = array('text' => '[' . $gInfo->unique_id . '] ' . vam_datetime_short($gInfo->date_created) . ' ' . $currencies->format($gInfo->amount));
 
-      $contents[] = array('align' => 'center', 'text' => '<a class="button" style="font-color: red;" onClick="this.blur();" href="' . vam_href_link('gv_queue.php','action=confirmrelease&gid='.$gInfo->unique_id,'NONSSL').'">'. BUTTON_CONFIRM . '</a> <a class="button" onClick="this.blur();" href="' . vam_href_link('gv_queue.php','action=cancel&gid=' . $gInfo->unique_id,'NONSSL') . '">' . BUTTON_CANCEL . '</a>');
+      $contents[] = array('align' => 'center', 'text' => '<a class="button" style="font-color: red;" href="' . vam_href_link('gv_queue.php','action=confirmrelease&gid='.$gInfo->unique_id,'NONSSL').'"><span>'. BUTTON_CONFIRM . '</span></a> <a class="button" href="' . vam_href_link('gv_queue.php','action=cancel&gid=' . $gInfo->unique_id,'NONSSL') . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       $heading[] = array('text' => '[' . $gInfo->unique_id . '] ' . vam_datetime_short($gInfo->date_created) . ' ' . $currencies->format($gInfo->amount));
 
-      $contents[] = array('align' => 'center','text' => '<a class="button" onClick="this.blur();" href="' . vam_href_link('gv_queue.php','action=release&gid=' . $gInfo->unique_id,'NONSSL'). '">' . BUTTON_RELEASE . '</a>');
+      $contents[] = array('align' => 'center','text' => '<a class="button" href="' . vam_href_link('gv_queue.php','action=release&gid=' . $gInfo->unique_id,'NONSSL'). '"><span>' . BUTTON_RELEASE . '</span></a>');
       break;
    }
 
