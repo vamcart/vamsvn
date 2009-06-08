@@ -285,7 +285,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                 <?php echo vam_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
                   <table align="right" width="100%" border="0">
                     <tr class="dataTableContent" align="right">
-                      <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><span class="button"><input type="submit" value="<?php echo DAYS_FIELD_BUTTON; ?>"></span></td>
+                      <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><span class="button"><button type="submit" value="<?php echo DAYS_FIELD_BUTTON; ?>"><?php echo DAYS_FIELD_BUTTON; ?></button></span></td>
                     </tr>
                   </table>
                 </form>

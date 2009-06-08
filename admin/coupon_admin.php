@@ -358,7 +358,7 @@ $customer = vam_db_fetch_array($customer_query);
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><?php ?>&nbsp;</td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><input type="submit" value="' . BUTTON_SEND_EMAIL . '"/></span>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . BUTTON_SEND_MAIL . '</button></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -441,7 +441,7 @@ $customer = vam_db_fetch_array($customer_query);
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="2" align="right"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_SEND_EMAIL . '"/></span>'; ?></td>
+                <td colspan="2" align="right"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . BUTTON_SEND_MAIL . '</button></span>'; ?></td>
               </tr>
             </table></td>
           </form></tr>
@@ -571,8 +571,8 @@ $customer = vam_db_fetch_array($customer_query);
     echo vam_draw_hidden_field('coupon_finishdate', date('Y-m-d', mktime(0, 0, 0, $_POST['finishdate-mm'],$_POST['finishdate-dd'] ,$_POST['finishdate'] )));
 ?>
      <tr>
-        <td align="left"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_CONFIRM . '"/></span>'; ?></td>
-        <td align="left"><?php echo '<span class="button"><input type="submit" name="back" value="' . BUTTON_BACK . '"/></span>'; ?></td>
+        <td align="left"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_CONFIRM . '">' . BUTTON_CONFIRM . '</button></span>'; ?></td>
+        <td align="left"><?php echo '<span class="button"><button type="submit" name="back" value="' . BUTTON_BACK . '">' . BUTTON_BACK . '</button></span>'; ?></td>
       </td>
       </tr>
 
@@ -708,7 +708,7 @@ $customer = vam_db_fetch_array($customer_query);
         <td align="left" class="main"><?php echo COUPON_FINISHDATE_HELP; ?></td>
       </tr>
       <tr>
-        <td align="left"><?php echo '<span class="button"><input type="submit" value="' . BUTTON_PREVIEW . '"/></span>'; ?></td>
+        <td align="left"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . BUTTON_PREVIEW . '</button></span>'; ?></td>
         <td align="left"><?php echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link('coupon_admin.php', ''); ?>"><span><?php echo BUTTON_CANCEL; ?></span></a>
       </td>
       </tr>

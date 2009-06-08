@@ -190,7 +190,7 @@
 
 <tr class="dataTableRow">
 <td class="dataTableContent" align="left" colspan="4">
-<?php echo '<span class="button"><input type="submit" value="' . BUTTON_UPDATE . '"/></span>'; ?>
+<?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?>
 </td>
 </tr>
 

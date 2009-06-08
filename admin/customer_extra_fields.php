@@ -185,7 +185,7 @@
 			$contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
       $contents[] = array('text' =>  TEXT_FIELD_SIZE . '<br>' . vam_draw_input_field('fields_size',$fInfo->fields_size));
 	  $contents[] = array('text' => '<br>' . TEXT_FIELD_STATUS_EMAIL . '<br>' . vam_draw_radio_field('fields_required_email', 0, ($fInfo->fields_required_email==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_email', 1, ($fInfo->fields_required_email==1) ? true : false) . 'true');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_SAVE .'"></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $_GET['fID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_SAVE .'">' . BUTTON_SAVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $_GET['fID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_EDIT_FIELD . '</b>');
@@ -207,14 +207,14 @@
 			$contents[] = array('text' => '<br>' . TEXT_FIELD_REQUIRED_STATUS . '<br>' . vam_draw_radio_field('fields_required_status', 0, ($fInfo->fields_required_status==0) ? true : false) . 'false<br>' . vam_draw_radio_field('fields_required_status', 1, ($fInfo->fields_required_status==1) ? true : false) . 'true');
       $contents[] = array('text' =>  TEXT_FIELD_SIZE . '<br>' . vam_draw_input_field('fields_size', $fInfo->fields_size));
 	  $contents[] = array('text' => '<br>' . TEXT_FIELD_STATUS_EMAIL . '<br>' . vam_draw_radio_field('fields_required_email',0,($fInfo->fields_required_email==0)?true:false) . 'false<br>' . vam_draw_radio_field('fields_required_email',1,($fInfo->fields_required_email==1)?true:false) . 'true');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_SAVE .'"></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_SAVE .'">' . BUTTON_SAVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_HEADING_DELETE_FIELD . '</b>');
       $contents = array('form' => vam_draw_form('manufacturers', FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO);
       $contents[] = array('text' => '<br><b>' . $fInfo->fields_name . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><input type="submit" value="' . BUTTON_DELETE .'"></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (isset($fInfo) && is_object($fInfo)) {

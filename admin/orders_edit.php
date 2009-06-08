@@ -699,7 +699,7 @@ echo vam_draw_form('save_order', FILENAME_ORDERS_EDIT, 'action=save_order', 'pos
 echo vam_draw_hidden_field('customers_status_id', $address[customers_status]);
 echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo vam_draw_hidden_field('cID', $_GET[cID]);
-echo '<span class="button"><input type="submit" value="'.BUTTON_SAVE.'"/></span>';
+echo '<span class="button"><button type="submit" value="'.BUTTON_SAVE.'">' . BUTTON_SAVE . '</button></span>';
 ?>
 </form>
 </td>

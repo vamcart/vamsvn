@@ -157,7 +157,7 @@
   }
 ?>
             </table>
-<?php echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>'; ?></form>
+<?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; ?></form>
             </td>
 
           </tr>

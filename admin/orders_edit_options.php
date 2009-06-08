@@ -63,7 +63,7 @@ echo vam_draw_hidden_field('opAID', $attributes['orders_products_attributes_id']
 </td>
 <td class="dataTableContent">
 <?php
-echo '<span class="button"><input type="submit" value="' . BUTTON_SAVE . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>';
 ?>
 </form>
 </td>
@@ -74,7 +74,7 @@ echo vam_draw_form('product_option_delete', FILENAME_ORDERS_EDIT, 'action=produc
 echo vam_draw_hidden_field('oID', $_GET['oID']);
 echo vam_draw_hidden_field('opID', $_GET['opID']);
 echo vam_draw_hidden_field('opAID', $attributes['orders_products_attributes_id']);
-echo '<span class="button"><input type="submit" value="' . BUTTON_DELETE . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span>';
 ?>
 </form>
 </td>
@@ -145,7 +145,7 @@ $options_values_price = vam_round($products['options_values_price'], PRICE_PRECI
 </td>
 <td class="dataTableContent">
 <?php
-echo '<span class="button"><input type="submit" value="' . BUTTON_EDIT . '"/></span>';
+echo '<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . BUTTON_EDIT . '</button></span>';
 ?>
 </form>
 </td>
