@@ -1,18 +1,14 @@
 <?php
-/*------------------------------------------------------------------------------
-  $Id: rbkmoney.php 1310 2009-02-06 19:20:03 VaM $
+/*
+  $Id: webmoney.php 1778 2008-01-09 23:37:44Z hpdl $
 
-   VaM Shop - open source ecommerce solution
-   http://vamshop.ru
-   http://vamshop.com
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
 
-   Copyright (c) 2007 VaM Shop
-  -----------------------------------------------------------------------------
-   based on:
-   (c) 2005 Vetal (robox.php,v 1.48 2003/05/27); metashop.ru
+  Copyright (c) 2008 osCommerce
 
   Released under the GNU General Public License
-------------------------------------------------------------------------------*/
+*/
 
 function get_var($name, $default = 'none') {
   return (isset($_GET[$name])) ? $_GET[$name] : ((isset($_POST[$name])) ? $_POST[$name] : $default);
@@ -30,26 +26,27 @@ require('includes/application_top.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 // variables prepearing
+$crc = get_var('LMI_HASH');
 
-$inv_id = get_var('orderId');
-$order = new order($inv_id);
-$order_sum = $order->info['total'];
+$inv_id = get_var('LMI_PAYMENT_NO');
+
+$hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
+$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY. 
+$_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
 
 // checking and handling
-if ($order_sum == $_POST['recipientAmount']) {
-if ($_POST['paymentStatus'] == '5') {
+if ($hash == $crc) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID);
-  vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
+  tep_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
   $sql_data_arrax = array('orders_id' => $inv_id,
                           'orders_status_id' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'RBK Money accepted this order payment');
-  vam_db_perform('orders_status_history', $sql_data_arrax);
+                          'comments' => 'WebMoney accepted this order payment');
+  tep_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
-}
 }
 
 ?>
