@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: parameters_export.php 1167 2009-04-29 11:13:01Z VaM $   
+   $Id: parameters_export.php 1167 2009-05-29 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -11,7 +11,7 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Импорт/експорт параметров');
+define('HEADING_TITLE', 'Импорт/экспорт параметров');
 
 define('REPORT_WORKPR_TITLE', 'Обработано товаров');
 define('REPORT_NOTFOUND_TITLE', 'Товаров не найдено');
