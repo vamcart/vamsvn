@@ -23,14 +23,31 @@
   Released under the GNU General Public License
   ---------------------------------------------------------------------------------------*/
 
+
 $default = new vamTemplate;
 $default->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $default->assign('session', session_id());
 $main_content = '';
+
 // include needed functions
 require_once (DIR_FS_INC.'vam_customer_greeting.inc.php');
 require_once (DIR_FS_INC.'vam_get_path.inc.php');
 require_once (DIR_FS_INC.'vam_check_categories_status.inc.php');
+
+
+if (PRODUCT_LIST_RECURSIVE == 'true') {
+  if (isset ($_GET['cat']) && vam_not_null($_GET['cat'])) {
+    $parent_query = "select c.parent_id, c.categories_id
+        from ".TABLE_CATEGORIES." c where c.categories_id = '".$current_category_id."'";
+    $parent_query = vamDBquery($parent_query);
+
+    $parent = vam_db_fetch_array($parent_query, true);
+//    if($parent['parent_id'] != '0' ){
+      $category_depth = "products";
+//    }
+  }
+}
+
 
 if (vam_check_categories_status($current_category_id) >= 1) {
 
@@ -40,6 +57,7 @@ include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
 } else {
 
 if ($category_depth == 'nested') {
+
   if (GROUP_CHECK == 'true') {
   $group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
   }
@@ -58,25 +76,36 @@ if ($category_depth == 'nested') {
 
   $category = vam_db_fetch_array($category_query, true);
 
+
   if (isset ($cPath) && ereg('_', $cPath)) {
   // check to see if there are deeper categories within the current category
   $category_links = array_reverse($cPath_array);
+
+
   for ($i = 0, $n = sizeof($category_links); $i < $n; $i ++) {
     if (GROUP_CHECK == 'true') {
     $group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
     }
+    if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $recursive_check="and c.parent_id = '".$category_links[$i]."'";
+    } else {
+    $recursive_check="";
+    }
+
     $categories_query = "select      cd.categories_description,
                                               c.categories_id,
                                               cd.categories_name,
-          cd.categories_heading_title,
+                                              cd.categories_heading_title,
                                               c.categories_image,
                                               c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
                                               where c.categories_status = '1'
                                               and c.parent_id = '".$category_links[$i]."'
                                               and c.categories_id = cd.categories_id
+                                              ".$recursive_check."
                                               ".$group_check."
                                               and cd.language_id = '".(int) $_SESSION['languages_id']."'
                                               order by sort_order, cd.categories_name";
+
     $categories_query = vamDBquery($categories_query);
 
     if (vam_db_num_rows($categories_query, true) < 1) {
@@ -89,18 +118,25 @@ if ($category_depth == 'nested') {
   if (GROUP_CHECK == 'true') {
     $group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
   }
+  if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $recursive_check="and c.parent_id = '".$current_category_id."'";
+  } else {
+    $recursive_check="";
+  }
   $categories_query = "select      cd.categories_description,
                                           c.categories_id,
                                           cd.categories_name,
-        cd.categories_heading_title,
+                                          cd.categories_heading_title,
                                           c.categories_image,
                                           c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
                                           where c.categories_status = '1'
                                           and c.parent_id = '".$current_category_id."'
                                           and c.categories_id = cd.categories_id
+                                          ".$recursive_check."
                                           ".$group_check."
                                           and cd.language_id = '".(int) $_SESSION['languages_id']."'
                                           order by sort_order, cd.categories_name";
+
   $categories_query = vamDBquery($categories_query);
   }
 
@@ -267,6 +303,13 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
     }
+    if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $recursive_check= "and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."')";
+    $recursive_table_categories=TABLE_CATEGORIES." c, ";
+    } else {
+    $recursive_check="and p2c.categories_id = '".$current_category_id."'";
+    $recursive_table_categories="";
+    }
     $listing_sql = "select p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
@@ -286,7 +329,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                   p.products_vpe_value,                           
                                   p.products_discount_allowed,
                                   p.products_tax_class_id
-                                  from  ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
+                                  from  ".$recursive_table_categories.TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_MANUFACTURERS." m, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
                                   where p.products_status = '1'
                                   and p.manufacturers_id = m.manufacturers_id
                                   and m.manufacturers_id = '".(int) $_GET['filter_id']."'
@@ -294,8 +337,9 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                   and pd.products_id = p2c.products_id
                                   ".$group_check."
                                   ".$fsk_lock."
-                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                  and p2c.categories_id = '".$current_category_id."'".$sorting;
+                                  and pd.language_id = '".(int) $_SESSION['languages_id']."' "
+                                  .$recursive_check
+                                  .$sorting;
   } else {
 
     // sorting query
@@ -310,6 +354,13 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     // We show them all
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+    }
+    if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $recursive_check= "and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."')";
+    $recursive_table_categories=TABLE_CATEGORIES." c, ";
+    } else {
+    $recursive_check="and p2c.categories_id = '".$current_category_id."'";
+    $recursive_table_categories="";
     }
     $listing_sql = "select p.products_fsk18,
                                   p.products_shippingtime,
@@ -330,15 +381,16 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                   p.products_vpe_value,                             
                                   p.products_discount_allowed,
                                   p.products_tax_class_id
-                                  from  ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_MANUFACTURERS." m on p.manufacturers_id = m.manufacturers_id
+                                  from  ".$recursive_table_categories.TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_PRODUCTS." p left join ".TABLE_MANUFACTURERS." m on p.manufacturers_id = m.manufacturers_id
                                   left join ".TABLE_SPECIALS." s on p.products_id = s.products_id
                                   where p.products_status = '1'
                                   and p.products_id = p2c.products_id
                                   and pd.products_id = p2c.products_id
                                   ".$group_check."
                                   ".$fsk_lock."                             
-                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                  and p2c.categories_id = '".$current_category_id."'".$sorting;
+                                  and pd.language_id = '".(int) $_SESSION['languages_id']."' "
+                                  .$recursive_check
+                                  .$sorting;
   }
   }
   // optional Product List Filter
@@ -346,7 +398,11 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   if (isset ($_GET['manufacturers_id'])) {
     $filterlist_sql = "select distinct c.categories_id as id, cd.categories_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where p.products_status = '1' and c.categories_status = '1' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id and p2c.categories_id = cd.categories_id and cd.language_id = '".(int) $_SESSION['languages_id']."' and p.manufacturers_id = '".(int) $_GET['manufacturers_id']."' order by cd.categories_name";
   } else {
+    if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c,".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."') order by m.manufacturers_name";
+    } else {
     $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
+    }
   }
   $filterlist_query = vamDBquery($filterlist_sql);
   if (vam_db_num_rows($filterlist_query, true) > 1) {
@@ -382,7 +438,6 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   $image = vam_db_fetch_array($image,true);
   $image = $image['categories_image'];
   }
-
   include (DIR_WS_MODULES.FILENAME_PRODUCT_LISTING);
 
 } else { // default page
