@@ -49,6 +49,8 @@
     $languages = vam_get_languages();
 
     $text_new_or_edit = ($_GET['action']=='new_category_ACD') ? TEXT_INFO_HEADING_NEW_CATEGORY : TEXT_INFO_HEADING_EDIT_CATEGORY;
+
+    $manual_link = ($_GET['action']=='new_category') ? MANUAL_LINK_NEW_CATEGORY : MANUAL_LINK_EDIT_CATEGORY;
 ?>
 
 <link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
@@ -70,7 +72,7 @@
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo sprintf($text_new_or_edit, vam_output_generated_category_path($current_category_id)); ?></td>
-            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo $manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table></td>
       </tr>
