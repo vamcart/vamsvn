@@ -97,7 +97,21 @@
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+<?php 
+$manual_link = 'add-faq';
+if ($_GET['action'] == 'new_faq' and isset($_GET['faq_id'])) {
+$manual_link = 'edit-faq';
+}  
+if ($_GET['action'] == 'delete_faq') {
+$manual_link = 'delete-faq';
+}  
+?>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_FAQ.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
   
   </td>
   </tr>
