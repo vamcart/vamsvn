@@ -506,5 +506,7 @@ define('MANUAL_LINK_EASYPOPULATE','http://vamshop.ru/manual/ch05s04.html');
 define('MANUAL_LINK_ATTRIBUTE','http://vamshop.ru/manual/ch05s05.html');
 define('MANUAL_LINK_TAX','http://vamshop.ru/manual/ch05s06.html');
 define('MANUAL_LINK_FILTERS','http://vamshop.ru/manual/ch05s07.html');
+define('MANUAL_LINK_GV','http://vamshop.ru/manual/ch08.html');
+define('MANUAL_LINK_COUPONS','http://vamshop.ru/manual/ch08s02.html');
 
 ?>
