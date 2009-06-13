@@ -64,7 +64,15 @@ $gID = 26;
       <tr>
         <td class="main">
         
-    <h1 class="contentBoxHeading"><?php echo BOX_CONFIGURATION; ?></h1>
+<?php 
+$manual_link = 'article-settings';
+?>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo BOX_CONFIGURATION; ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_ARTICLES.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
             
 <?php echo vam_draw_form('configuration', FILENAME_ARTICLES_CONFIG, 'gID=' . (int)$gID . '&action=save'); ?>
             <table width="100%"  border="0" cellspacing="0" cellpadding="4">
