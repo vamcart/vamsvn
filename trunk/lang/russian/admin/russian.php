@@ -514,5 +514,6 @@ define('MANUAL_LINK_RCS','http://vamshop.ru/manual/ch11s03.html');
 define('MANUAL_LINK_NEWS','http://vamshop.ru/manual/ch12.html');
 define('MANUAL_LINK_INFOPAGES','http://vamshop.ru/manual/ch12s02.html');
 define('MANUAL_LINK_FAQ','http://vamshop.ru/manual/ch12s03.html');
+define('MANUAL_LINK_BACKUP','http://vamshop.ru/manual/ch12s06.html');
 
 ?>

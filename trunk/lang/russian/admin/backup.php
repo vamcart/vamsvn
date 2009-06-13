@@ -78,4 +78,6 @@ define('TEXT_DUMPER_FORBIDDEN', 'У вас нет прав для просмот
 define('TEXT_DUMPER_DB_CONNECT', 'Ошибка при подключении к БД');
 define('TEXT_DUMPER_DB_ERROR', 'Возникла ошибка!');
 
+define('HEADING_TITLE','Резервное копирование');
+
 ?>
