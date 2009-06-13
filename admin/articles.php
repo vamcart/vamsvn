@@ -408,11 +408,18 @@
     $text_new_or_edit = ($_GET['action']=='new_topic_ACD') ? TEXT_INFO_HEADING_NEW_TOPIC : TEXT_INFO_HEADING_EDIT_TOPIC;
 ?>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td>
+<?php 
+$manual_link = 'add-topic';
+?>
+       <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo sprintf($text_new_or_edit, vam_output_generated_topic_path($current_topic_id)); ?></h1></td>
+            <td class="pageHeading"><?php echo sprintf($text_new_or_edit, vam_output_generated_topic_path($current_topic_id)); ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_ARTICLES.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
-        </table></td>
+        </table>
+        
+       </td>
       </tr>
       <tr><?php echo vam_draw_form('new_topic', FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $_GET['tID'] . '&action=new_topic_preview', 'post', 'enctype="multipart/form-data"'); ?>
         <td>
@@ -662,11 +669,22 @@
     <?php echo vam_draw_form('new_article', FILENAME_ARTICLES, 'tPath=' . $tPath . (isset($_GET['aID']) ? '&aID=' . $_GET['aID'] : '') . '&action=article_preview', 'post', 'enctype="multipart/form-data"'); ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td>
+        
+<?php 
+$manual_link = 'add-article';
+if ($_GET['action'] == 'new_article' and isset($_GET['aID'])) {
+$manual_link = 'edit-article';
+}  
+?>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo sprintf(TEXT_NEW_ARTICLE, vam_output_generated_topic_path($current_topic_id)); ?></h1></td>
+            <td class="pageHeading"><?php echo sprintf(TEXT_NEW_ARTICLE, vam_output_generated_topic_path($current_topic_id)); ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_ARTICLES.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
-        </table></td>
+        </table>
+                
+        </td>
       </tr>
       <tr>
         <td>
@@ -969,7 +987,30 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="2" class="pageHeading"><h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1></td>
+            <td colspan="2" class="pageHeading">
+            
+            
+<?php 
+$manual_link = 'add-article';
+if ($_GET['action'] == 'delete_article') {
+$manual_link = 'delete-article';
+}  
+if ($_GET['action'] == 'move_article') {
+$manual_link = 'move-article';
+}  
+if ($_GET['action'] == 'copy_to') {
+$manual_link = 'copy-article';
+}  
+?>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_ARTICLES.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
+            
+            
+            </td>
           </tr>
           <tr>
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
@@ -1177,7 +1218,7 @@
         $article_topics_string = substr($article_topics_string, 0, -4);
 
         $contents[] = array('text' => '<br>' . $article_topics_string);
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DLETE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&aID=' . $aInfo->articles_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'move_article':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_MOVE_ARTICLE . '</b>');
