@@ -300,10 +300,16 @@ if ($select_file=='default') {
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
+<?php 
+$manual_link = 'add-infopage';
+if ($_GET['action'] == 'edit') {
+$manual_link = 'edit-infopage';
+}  
+?>
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_INFOPAGES; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_INFOPAGES.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
     
