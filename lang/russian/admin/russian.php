@@ -502,5 +502,6 @@ define('MANUAL_LINK_EDIT_CATEGORY','http://vamshop.ru/manual/ch05.html#edit-cate
 define('MANUAL_LINK_NEW_CATEGORY','http://vamshop.ru/manual/ch05.html#new-category');
 define('MANUAL_LINK_PRODUCTS','http://vamshop.ru/manual/ch05s03.html');
 define('MANUAL_LINK_MANUFACTURERS','http://vamshop.ru/manual/ch05s02.html');
+define('MANUAL_LINK_EASYPOPULATE','http://vamshop.ru/manual/ch05s04.html');
 
 ?>
