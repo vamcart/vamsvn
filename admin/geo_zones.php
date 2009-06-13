@@ -139,7 +139,15 @@ function update_zone(theForm) {
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+<?php 
+$manual_link = 'add-tax-zone';
+?>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_TAX.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
