@@ -99,7 +99,21 @@
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+<?php 
+$manual_link = 'add-news';
+if ($_GET['action'] == 'new_latest_news' and isset($_GET['news_id'])) {
+$manual_link = 'edit-news';
+}  
+if ($_GET['action'] == 'delete_latest_news') {
+$manual_link = 'delete-news';
+}  
+?>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_NEWS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
@@ -186,7 +200,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         <td class="main" align="right">
           <?php
             isset($_GET['news_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'news_id=' . $_GET['news_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>' : $cancel_button = '';
-            echo '<span class="name"><button type="submit" value="' . BUTTON_INSERT .'">' . BUTTON_INSERT . '</button></span>' . $cancel_button;
+            echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT .'">' . BUTTON_INSERT . '</button></span>' . $cancel_button;
           ?>
         </td>
       </form></tr>
@@ -272,7 +286,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         $contents[] = array('text'  => '<br><b>' . $selected_item['headline'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><span class="name"><button type="submit" value="' . BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:

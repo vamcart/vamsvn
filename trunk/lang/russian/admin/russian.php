@@ -511,5 +511,8 @@ define('MANUAL_LINK_COUPONS','http://vamshop.ru/manual/ch08s02.html');
 define('MANUAL_LINK_AFFILIATE','http://vamshop.ru/manual/ch09.html');
 define('MANUAL_LINK_NEWSLETTER','http://vamshop.ru/manual/ch11.html#id2647059');
 define('MANUAL_LINK_RCS','http://vamshop.ru/manual/ch11s03.html');
+define('MANUAL_LINK_NEWS','http://vamshop.ru/manual/ch12.html');
+define('MANUAL_LINK_INFOPAGES','http://vamshop.ru/manual/ch12s02.html');
+define('MANUAL_LINK_FAQ','http://vamshop.ru/manual/ch12s03.html');
 
 ?>
