@@ -497,4 +497,10 @@ define('BOX_PARAMETERS_EXPORT', 'Импорт/экспорт параметро�
 
 define('TEXT_ACCESS_FORBIDDEN','Нет доступа');
 
+define('TEXT_MANUAL_LINK','Справка');
+define('MANUAL_LINK_EDIT_CATEGORY','http://vamshop.ru/manual/ch05.html#edit-category');
+define('MANUAL_LINK_NEW_CATEGORY','http://vamshop.ru/manual/ch05.html#new-category');
+define('MANUAL_LINK_PRODUCTS','http://vamshop.ru/manual/ch05s03.html');
+define('MANUAL_LINK_MANUFACTURERS','http://vamshop.ru/manual/ch05s02.html');
+
 ?>
