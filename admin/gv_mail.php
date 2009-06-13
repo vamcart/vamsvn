@@ -248,7 +248,7 @@
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><?php echo '<span class="button"><button type="submit" name="back" value="' . BUTTON_BACK . '">' . BUTTON_BACK . '</button></span>'; ?></td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_GV_MAIL) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="name"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . BUTTON_SEND_EMAIL . '</button></span>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_GV_MAIL) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . BUTTON_SEND_EMAIL . '</button></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
