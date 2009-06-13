@@ -509,5 +509,7 @@ define('MANUAL_LINK_FILTERS','http://vamshop.ru/manual/ch05s07.html');
 define('MANUAL_LINK_GV','http://vamshop.ru/manual/ch08.html');
 define('MANUAL_LINK_COUPONS','http://vamshop.ru/manual/ch08s02.html');
 define('MANUAL_LINK_AFFILIATE','http://vamshop.ru/manual/ch09.html');
+define('MANUAL_LINK_NEWSLETTER','http://vamshop.ru/manual/ch11.html#id2647059');
+define('MANUAL_LINK_RCS','http://vamshop.ru/manual/ch11s03.html');
 
 ?>

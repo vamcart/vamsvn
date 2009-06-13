@@ -307,7 +307,12 @@ $limit_up = $limits['1'];
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_NEWSLETTER; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
  <?php
