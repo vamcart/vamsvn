@@ -69,8 +69,8 @@ if (vam_not_null($action))
 			$specials_price = $special['discount_type'] == "p" ? $product['products_price'] - ($product['products_price'] * $special['discount'] / 100) : $product['products_price'] - $special['discount'];
 			$specials_price = sprintf("%0.2f", $specials_price);
 
-			$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, specials_date_added, expires_date, status) 
-					values ($product_id, $specials_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
+			$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, specials_date_added, expires_date, status) 
+					values ($product_id, '100000', $specials_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
 			vam_db_query($query);
 	
 			vam_redirect(vam_href_link(FILENAME_CATEGORY_SPECIALS, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'sID=' . $_GET['sID']. "&action=edit", 'NONSSL'));
@@ -123,7 +123,7 @@ if (vam_not_null($action))
 						$product_query = vam_db_query($query);
 						if(mysql_num_rows($product_query) < 1)
 						{
-							$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, expires_date) values ($product_id, $new_price, '$expires_date')";
+							$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, expires_date) values ($product_id, '100000', $new_price, '$expires_date')";
 							vam_db_query($query);
 						}
 						else
@@ -149,7 +149,7 @@ if (vam_not_null($action))
 						$query = "insert into ". TABLE_SPECIAL_PRODUCT. " values (null, $specials_id, $product_id)";
 						vam_db_query($query);
 	
-						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, expires_date) values ($product_id, $new_price, '$expires_date')";
+						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, expires_date) values ($product_id, '100000', $new_price, '$expires_date')";
 						vam_db_query($query);
 					}
 				}
@@ -210,8 +210,8 @@ if (vam_not_null($action))
 						$query = "insert into ". TABLE_SPECIAL_PRODUCT. " values (null, $specials_id, $product_id)";
 						vam_db_query($query);
 	
-						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, expires_date, status) values
-									($product_id, $new_price, '$expires_date', '$status')";
+						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, expires_date, status) values
+									($product_id, '100000', $new_price, '$expires_date', '$status')";
 						vam_db_query($query);
 					}
 					else
@@ -274,8 +274,8 @@ if (vam_not_null($action))
 						$special_query = vam_db_query($query);
 						$special = vam_db_fetch_array($special_query);
 		
-						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, specials_date_added, expires_date, status)
-							values ($product_id, $new_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
+						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, specials_date_added, expires_date, status)
+							values ($product_id, '100000', $new_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
 						vam_db_query($query);
 					}	
 
@@ -303,8 +303,8 @@ if (vam_not_null($action))
 				case 'make-special':
 					if($new_price > 0.00)
 					{
-						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, specials_date_added, expires_date, status)
-							values ($product_id, $new_price, now(), '0000-00-00', '1')";
+						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, specials_date_added, expires_date, status)
+							values ($product_id, '100000', $new_price, now(), '0000-00-00', '1')";
 						vam_db_query($query);
 					}	
 					else 
@@ -320,8 +320,8 @@ if (vam_not_null($action))
 						$specials_price = $special['discount_type'] == "p" ? $product['products_price'] - ($product['products_price'] * $special['discount'] / 100) : $product['products_price'] - $special['discount'];
 						$specials_price = sprintf("%0.2f", $specials_price);
 
-						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_new_products_price, specials_date_added, expires_date, status)
-								values ($product_id, $specials_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
+						$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, specials_date_added, expires_date, status)
+								values ($product_id, '100000', $specials_price, now(), '". $special['expire_date']. "', '". $special['status']. "')";
 						vam_db_query($query);
 
 						$query = "insert into ". TABLE_SPECIAL_PRODUCT. " (special_id, product_id) values ($special_id, $product_id)";
