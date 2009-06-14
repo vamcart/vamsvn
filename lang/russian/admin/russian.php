@@ -517,4 +517,6 @@ define('MANUAL_LINK_FAQ','http://vamshop.ru/manual/ch12s03.html');
 define('MANUAL_LINK_ARTICLES','http://vamshop.ru/manual/ch12s04.html');
 define('MANUAL_LINK_BACKUP','http://vamshop.ru/manual/ch12s06.html');
 
+define('TXT_FREE','<span class="Requirement"><strong>free</strong></span>');
+
 ?>
