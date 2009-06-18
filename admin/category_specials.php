@@ -451,20 +451,11 @@ if($action == 'edit')
                         <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
                       </tr>
 <?php
-/*
-$specials_query_raw = "select p.products_id, pd.products_name, p.products_price, s.specials_id, s.specials_new_products_price, s.specials_date_added, 
-				s.specials_last_modified, s.expires_date, s.date_status_change, s.status, sc.special_id from " . 
-				TABLE_PRODUCTS . " p, " . TABLE_SPECIALS . " s, " . TABLE_PRODUCTS_DESCRIPTION . " pd , products_to_categories ptc 
-				left join special_product sp on p.products_id = sp.product_id left join special_category sc on ptc.categories_id = sc.categ_id 
-				where ptc.categories_id = $categ_id and p.products_id = ptc.products_id and 
-				p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "' and p.products_id = s.products_id order by pd.products_name";
-*/
-
 $categ_id = $sInfo->categ_id;			    
 $specials_query_raw = "select A.products_id, B.products_name, A.products_price, C.specials_id, C.specials_new_products_price, 
 				C.specials_date_added, C.specials_last_modified, C.expires_date, C.date_status_change, C.status, F.special_id from " . 
 				TABLE_PRODUCTS . " A, " . TABLE_PRODUCTS_DESCRIPTION . " B , products_to_categories E 
-				left join " . TABLE_SPECIALS . " C on C.products_id = A.products_id left join special_product F on A.products_id = F.product_id 
+				left join " . TABLE_SPECIALS . " C on C.products_id = E.products_id left join special_product F on F.product_id = C.products_id
 				left join special_category D on E.categories_id = D.categ_id where E.categories_id = $categ_id and E.products_id = A.products_id and 
 				A.products_id = B.products_id and B.language_id = '" . (int)$_SESSION['languages_id'] . "' order by F.special_id, C.specials_id, B.products_name ";
 $specials_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $specials_query_raw, $specials_query_numrows);
