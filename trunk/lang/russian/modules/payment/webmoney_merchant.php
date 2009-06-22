@@ -32,8 +32,6 @@ define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ALLOWED_TITLE' , 'Разрешённы�
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ID_TITLE' , 'WM ID:');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_ID_DESC' , 'Укажите Ваш WM ID');
-define('MODULE_PAYMENT_WEBMONEY_MERCHANT_WMZ_TITLE' , 'Ваш WMZ кошелёк:');
-define('MODULE_PAYMENT_WEBMONEY_MERCHANT_WMZ_DESC' , 'Укажите номер Вашего WMZ кошелька');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR_TITLE' , 'Ваш WMR кошелёк:');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR_DESC' , 'Укажите номер Вашего WMR кошелька');
 define('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER_TITLE' , 'Порядок сортировки');
