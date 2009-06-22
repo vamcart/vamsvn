@@ -79,8 +79,6 @@ if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
 		$_SESSION['conditions'] = true;
 	}
 
-$_SESSION['wm'] = $_POST['wm'];
-
 	if ($_SESSION['conditions'] == false) {
 		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
 		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
