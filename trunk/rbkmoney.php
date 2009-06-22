@@ -19,6 +19,7 @@ function get_var($name, $default = 'none') {
 }
 
 require('includes/application_top.php');
+require (DIR_WS_CLASSES.'order.php');
 
 // logging
 //$fp = fopen('webmoney.log', 'a+');
@@ -36,7 +37,7 @@ $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
 // checking and handling
-if ($order_sum == $_POST['recipientAmount']) {
+if (number_format($order_sum,0) == number_format($_POST['recipientAmount'],0)) {
 if ($_POST['paymentStatus'] == '5') {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_RBKMONEY_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
