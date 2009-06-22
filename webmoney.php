@@ -19,6 +19,7 @@ function get_var($name, $default = 'none') {
 }
 
 require('includes/application_top.php');
+require (DIR_WS_CLASSES.'order.php');
 
 // logging
 //$fp = fopen('webmoney.log', 'a+');
@@ -42,7 +43,7 @@ $_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM']));
 
 // checking and handling
 if ($hash == $crc) {
-if ($_POST['LMI_PAYMENT_AMOUNT'] == $order->info['total']) {
+if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
