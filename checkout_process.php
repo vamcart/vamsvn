@@ -110,7 +110,7 @@ if (strtolower(CC_ENC) == 'true') {
 // BMC CC Mod End
 
 if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1) {
-	$discount = $_SESSION['customers_status']['customers_status_ot_discount'];
+  	$discount = $order->customer['personal_discount'] ? $order->customer['personal_discount'] : $_SESSION['customers_status']['customers_status_ot_discount'];
 } else {
 	$discount = '0.00';
 }

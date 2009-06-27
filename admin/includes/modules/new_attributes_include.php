@@ -27,7 +27,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
    require_once(DIR_FS_INC .'vam_get_tax_rate.inc.php');
    require_once(DIR_FS_INC .'vam_get_tax_class_id.inc.php');
    require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vam_price.php');
-   $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
+   $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id'],$_SESSION['customer_id'] ? $_SESSION['customer_id'] : "");
 ?>
     <h1 class="contentBoxHeading"><?php echo $pageTitle; ?></h1>
    
@@ -127,8 +127,7 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
                // echo "<td colspan=\"2\">File: <input type=\"file\" name=\"" . $current_value_id . "_download_file\"></td>";
 //                echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . vam_draw_pull_down_menu($current_value_id . '_download_file', vam_getDownloads(), $attribute_value_download_filename, '')."</td>";
-                echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . vam_draw_pull_down_menu($current_value_id . '_download_file',$file_list,$attribute_value_download_filename)."</td>";                echo "<td class=\"main\">&nbsp;". DL_COUNT . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_count\" value=\"" . $attribute_value_download_count . "\"></td>";
-                echo "<td class=\"main\">&nbsp;". DL_EXPIRE . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_expire\" value=\"" . $attribute_value_download_expire . "\"></td>";
+                echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . vam_draw_pull_down_menu($current_value_id . '_download_file',$file_list,$attribute_value_download_filename)."</td>";                echo "<td class=\"main\">&nbsp;". DL_COUNT . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_count\" value=\"" . $attribute_value_download_count . "\"></td>";                echo "<td class=\"main\">&nbsp;". DL_EXPIRE . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_expire\" value=\"" . $attribute_value_download_expire . "\"></td>";
                 echo "</tr>";
             }
             // Download function end

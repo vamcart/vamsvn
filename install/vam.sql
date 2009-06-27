@@ -725,7 +725,16 @@ CREATE TABLE customers (
   customers_username VARCHAR(64) DEFAULT NULL,
   customers_fid INT(5) DEFAULT NULL,
   customers_sid INT(5) DEFAULT NULL,
+  customers_personal_discount decimal(4,2) DEFAULT '0',
   PRIMARY KEY (customers_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE customers_to_manufacturers_discount (
+  discount_id int(11) NOT NULL auto_increment,
+  customers_id int(11) default NULL,
+  manufacturers_id int(11) default NULL,
+  discount decimal(4,2) default NULL,
+  PRIMARY KEY  (discount_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS customers_basket;

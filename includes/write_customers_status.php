@@ -23,7 +23,7 @@
 
   // write customers status in session
   if (isset($_SESSION['customer_id'])) {
-    $customers_status_query_1 = vam_db_query("SELECT customers_status FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $_SESSION['customer_id'] . "'");
+    $customers_status_query_1 = vam_db_query("SELECT customers_status, customers_personal_discount FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $_SESSION['customer_id'] . "'");
     $customers_status_value_1 = vam_db_fetch_array($customers_status_query_1);
 
     $customers_status_query = vam_db_query("SELECT
@@ -43,7 +43,7 @@
       'customers_status_public' => $customers_status_value['customers_status_public'],
       'customers_status_min_order' => $customers_status_value['customers_status_min_order'],
       'customers_status_max_order' => $customers_status_value['customers_status_max_order'],
-      'customers_status_discount' => $customers_status_value['customers_status_discount'],
+      'customers_status_discount' => $customers_status_value_1['customers_personal_discount'] ? $customers_status_value_1['customers_personal_discount'] : $customers_status_value['customers_status_discount'],
       'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'],
       'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'],
       'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'],

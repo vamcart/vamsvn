@@ -400,7 +400,7 @@ require (DIR_WS_CLASSES.'main.php');
 $main = new main();
 
 require (DIR_WS_CLASSES.'vam_price.php');
-$vamPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id']);
+$vamPrice = new vamPrice($_SESSION['currency'], $_SESSION['customers_status']['customers_status_id'],$_SESSION['customer_id']);
 
 if ($_SESSION['customers_status']['customers_status_id'] != 0) {
 if (!strstr($PHP_SELF,FILENAME_LOGIN)) {

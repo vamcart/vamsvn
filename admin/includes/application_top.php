@@ -120,6 +120,7 @@
   define('FILENAME_CREATE_ACCOUNT','create_account.php');
   define('FILENAME_CREATE_ACCOUNT_SUCCESS','create_account_success.php');
   define('FILENAME_CUSTOMER_MEMO','customer_memo.php');
+  define('FILENAME_CUSTOMER_TO_MANUFACTURER_DISCOUNT','customer_to_manufacturer_discount.php');
   define('FILENAME_CONTENT_MANAGER','content_manager.php');
   define('FILENAME_CONTENT_PREVIEW','content_preview.php');
   define('FILENAME_SECURITY_CHECK','security_check.php');
@@ -213,6 +214,7 @@
   define('TABLE_ZONES', 'zones');
   define('TABLE_BOX_ALIGN','box_align');
   define('TABLE_CUSTOMERS_MEMO','customers_memo');
+  define('TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT','customers_to_manufacturers_discount');
   define('TABLE_CONTENT_MANAGER','content_manager');
   define('TABLE_MEDIA_CONTENT','media_content');
   define('TABLE_MODULE_NEWSLETTER','module_newsletter');

@@ -39,6 +39,7 @@
   define('TABLE_CUSTOMERS_IP', 'customers_ip');
   define('TABLE_CUSTOMERS_STATUS', 'customers_status');
   define('TABLE_CUSTOMERS_STATUS_HISTORY', 'customers_status_history');
+  define('TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT', 'customers_to_manufacturers_discount');
   define('TABLE_LANGUAGES', 'languages');
   define('TABLE_MANUFACTURERS', 'manufacturers');
   define('TABLE_MANUFACTURERS_INFO', 'manufacturers_info');

@@ -28,7 +28,7 @@ if (!$_GET['oID'])
 $order = new order($_GET['oID']);
 
 require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
-$vamPrice = new vamPrice($order->info['currency'], $order->info['status']);
+$vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
 
 require_once (DIR_FS_INC.'vam_get_tax_class_id.inc.php');
 require_once (DIR_FS_INC.'vam_get_tax_rate.inc.php');
@@ -355,20 +355,20 @@ if ($_GET['action'] == "curr_edit") {
 
 		if ($old_curr['code'] == DEFAULT_CURRENCY) {
 
-			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$products_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $order_products['products_price'], '', $order->customer['ID']);
 
 			$final_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $order_products['final_price'], '', $order->customer['ID']);
 		} else {
 
-			$vamPrice = new vamPrice($old_curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($old_curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$p_price = $vamPrice->RemoveCurr($order_products['products_price']);
 
 			$f_price = $vamPrice->RemoveCurr($order_products['final_price']);
 
-			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$products_price = $vamPrice->GetPrice($order_products['products_id'], $format = false, '', '', $p_price, '', $order->customer['ID']);
 
@@ -386,17 +386,17 @@ if ($_GET['action'] == "curr_edit") {
 
 		if ($old_curr['code'] == DEFAULT_CURRENCY) {
 
-			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$value = $vamPrice->GetPrice('', $format = false, '', '', $order_total['value'], '', $order->customer['ID']);
 
 		} else {
 
-			$vamPrice = new vamPrice($old_curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($old_curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$nvalue = $vamPrice->RemoveCurr($order_total['value']);
 
-			$vamPrice = new vamPrice($curr['code'], $order->info['status']);
+			$vamPrice = new vamPrice($curr['code'], $order->info['status'], $order->customer['ID']);
 
 			$value = $vamPrice->GetPrice('', $format = false, '', '', $nvalue, '', $order->customer['ID']);
 		}
