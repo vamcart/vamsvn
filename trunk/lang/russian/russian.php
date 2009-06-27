@@ -65,8 +65,8 @@ define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары дан
 define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
   
 define('BOX_LOGINBOX_STATUS','Группа:');     
-define('BOX_LOGINBOX_DISCOUNT','Скидка');
-define('BOX_LOGINBOX_DISCOUNT_TEXT','Скидка');
+define('BOX_LOGINBOX_DISCOUNT','Личная (групповая) скидка');
+define('BOX_LOGINBOX_DISCOUNT_TEXT','Скидка от суммы заказа');
 define('BOX_LOGINBOX_DISCOUNT_OT','');
 
 // reviews box text in includes/boxes/reviews.php

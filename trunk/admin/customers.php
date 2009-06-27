@@ -36,6 +36,13 @@ if ($_GET['special'] == 'remove_memo') {
 	vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID='.(int) $_GET['cID'].'&action=edit'));
 }
 
+
+if ($_GET['special'] == 'remove_discount') {
+	$mID = vam_db_prepare_input($_GET['mID']);
+	vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE discount_id = '".$mID."'");
+	vam_redirect(vam_href_link(FILENAME_CUSTOMERS, 'cID='.(int) $_GET['cID'].'&action=edit'));
+}
+
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	if ($_GET['cID'] == 1 && $_SESSION['customer_id'] == 1) {
 	} else {
@@ -62,8 +69,7 @@ if ($_GET['action']) {
 			$stat_query = vam_db_query("select * from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$customers1[customers_status]."' ");
 			$stat = vam_db_fetch_array($stat_query);
 
-			$sql_data_array = array ('customers_id' => vam_db_prepare_input($customers['customers_id']), 'customers_cid' => vam_db_prepare_input($customers1['customers_cid']), 'customers_vat_id' => vam_db_prepare_input($customers1['customers_vat_id']), 'customers_status' => vam_db_prepare_input($customers1['customers_status']), 'customers_status_name' => vam_db_prepare_input($stat['customers_status_name']), 'customers_status_image' => vam_db_prepare_input($stat['customers_status_image']), 'customers_status_discount' => vam_db_prepare_input($stat['customers_status_discount']), 'customers_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'customers_company' => vam_db_prepare_input($customers['entry_company']), 'customers_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'customers_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'customers_city' => vam_db_prepare_input($customers['entry_city']), 'customers_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'customers_state' => vam_db_prepare_input($customers['entry_state']), 'customers_country' => vam_db_prepare_input($country['countries_name']), 'customers_telephone' => vam_db_prepare_input($customers1['customers_telephone']), 'customers_email_address' => vam_db_prepare_input($customers1['customers_email_address']), 'customers_address_format_id' => '5', 'customers_ip' => '0', 'delivery_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'delivery_company' => vam_db_prepare_input($customers['entry_company']), 'delivery_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'delivery_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'delivery_city' => vam_db_prepare_input($customers['entry_city']), 'delivery_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'delivery_state' => vam_db_prepare_input($customers['entry_state']), 'delivery_country' => vam_db_prepare_input($country['countries_name']), 'delivery_address_format_id' => '5', 'billing_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'billing_company' => vam_db_prepare_input($customers['entry_company']), 'billing_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'billing_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'billing_city' => vam_db_prepare_input($customers['entry_city']), 'billing_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'billing_state' => vam_db_prepare_input($customers['entry_state']), 'billing_country' => vam_db_prepare_input($country['countries_name']), 'billing_address_format_id' => '5', 'payment_method' => 'cod', 'cc_type' => '', 'cc_owner' => '', 'cc_number' => '', 'cc_expires' => '', 'cc_start' => '', 'cc_issue' => '', 'cc_cvv' => '', 'comments' => '', 'last_modified' => 'now()', 'date_purchased' => 'now()', 'orders_status' => '1', 'orders_date_finished' => '', 'currency' => DEFAULT_CURRENCY, 'currency_value' => '1.0000', 'account_type' => '0', 'payment_class' => 'cod', 'shipping_method' => SHIPPING_FLAT, 'shipping_class' => 'flat_flat', 'customers_ip' => '', 'language' => $_SESSION['language']);
-
+			$sql_data_array = array ('customers_id' => vam_db_prepare_input($customers['customers_id']), 'customers_cid' => vam_db_prepare_input($customers1['customers_cid']), 'customers_vat_id' => vam_db_prepare_input($customers1['customers_vat_id']), 'customers_status' => vam_db_prepare_input($customers1['customers_status']), 'customers_status_name' => vam_db_prepare_input($stat['customers_status_name']), 'customers_status_image' => vam_db_prepare_input($stat['customers_status_image']), 'customers_status_discount' => vam_db_prepare_input($customers1[customers_personal_discount] ? $customers1[customers_personal_discount] : $stat['customers_status_discount']), 'customers_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'customers_company' => vam_db_prepare_input($customers['entry_company']), 'customers_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'customers_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'customers_city' => vam_db_prepare_input($customers['entry_city']), 'customers_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'customers_state' => vam_db_prepare_input($customers['entry_state']), 'customers_country' => vam_db_prepare_input($country['countries_name']), 'customers_telephone' => vam_db_prepare_input($customers1['customers_telephone']), 'customers_email_address' => vam_db_prepare_input($customers1['customers_email_address']), 'customers_address_format_id' => '5', 'customers_ip' => '0', 'delivery_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'delivery_company' => vam_db_prepare_input($customers['entry_company']), 'delivery_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'delivery_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'delivery_city' => vam_db_prepare_input($customers['entry_city']), 'delivery_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'delivery_state' => vam_db_prepare_input($customers['entry_state']), 'delivery_country' => vam_db_prepare_input($country['countries_name']), 'delivery_address_format_id' => '5', 'billing_name' => vam_db_prepare_input($customers['entry_firstname'].' '.$customers['entry_secondname'].' '.$customers['entry_lastname']), 'billing_company' => vam_db_prepare_input($customers['entry_company']), 'billing_street_address' => vam_db_prepare_input($customers['entry_street_address']), 'billing_suburb' => vam_db_prepare_input($customers['entry_suburb']), 'billing_city' => vam_db_prepare_input($customers['entry_city']), 'billing_postcode' => vam_db_prepare_input($customers['entry_postcode']), 'billing_state' => vam_db_prepare_input($customers['entry_state']), 'billing_country' => vam_db_prepare_input($country['countries_name']), 'billing_address_format_id' => '5', 'payment_method' => 'cod', 'cc_type' => '', 'cc_owner' => '', 'cc_number' => '', 'cc_expires' => '', 'cc_start' => '', 'cc_issue' => '', 'cc_cvv' => '', 'comments' => '', 'last_modified' => 'now()', 'date_purchased' => 'now()', 'orders_status' => '1', 'orders_date_finished' => '', 'currency' => DEFAULT_CURRENCY, 'currency_value' => '1.0000', 'account_type' => '0', 'payment_class' => 'cod', 'shipping_method' => SHIPPING_FLAT, 'shipping_class' => 'flat_flat', 'customers_ip' => '', 'language' => $_SESSION['language']);
 			$insert_sql_data = array ('currency_value' => '1.0000');
 			$sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
 			vam_db_perform(TABLE_ORDERS, $sql_data_array);
@@ -121,6 +127,9 @@ if ($_GET['action']) {
 			$customers_telephone = vam_db_prepare_input($_POST['customers_telephone']);
 			$customers_fax = vam_db_prepare_input($_POST['customers_fax']);
 			$customers_newsletter = vam_db_prepare_input($_POST['customers_newsletter']);
+			$customers_personal_discount = vam_db_prepare_input($_POST['customers_personal_discount']);
+			$customers_manufacturer_discount_new = vam_db_prepare_input($_POST['manufacturer_discount_new']);
+			$customers_manufacturer_discount_select = vam_db_prepare_input($_POST['manufacturer_discount_select']);
 
 			$customers_gender = vam_db_prepare_input($_POST['customers_gender']);
 			$customers_dob = vam_db_prepare_input($_POST['customers_dob']);
@@ -147,6 +156,11 @@ if ($_GET['action']) {
 			if ($memo_text != '' && $memo_title != '') {
 				$sql_data_array = array ('customers_id' => $_GET['cID'], 'memo_date' => date("Y-m-d"), 'memo_title' => $memo_title, 'memo_text' => $memo_text, 'poster_id' => $_SESSION['customer_id']);
 				vam_db_perform(TABLE_CUSTOMERS_MEMO, $sql_data_array);
+			}
+
+			if ($customers_manufacturer_discount_new != '') {
+				$sql_data_array = array ('customers_id' => $_GET['cID'], 'manufacturers_id' => $customers_manufacturer_discount_select, 'discount' => $customers_manufacturer_discount_new);
+				vam_db_perform(TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT, $sql_data_array);
 			}
 			$error = false; // reset error flag
 
@@ -303,7 +317,7 @@ $entry_state = $_POST['state'];
       }
 
 			if ($error == false) {
-				$sql_data_array = array ('customers_firstname' => $customers_firstname, 'customers_secondname' => $customers_secondname, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => (int)$customers_vat_id_status, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_newsletter' => $customers_newsletter,'customers_last_modified' => 'now()');
+				$sql_data_array = array ('customers_firstname' => $customers_firstname, 'customers_secondname' => $customers_secondname, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => (int)$customers_vat_id_status, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'customers_personal_discount' => $customers_personal_discount, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_newsletter' => $customers_newsletter,'customers_last_modified' => 'now()');
 
 				// if new password is set
 				if ($password != "") {			
@@ -387,7 +401,7 @@ $entry_state = $_POST['state'];
 			break;
 
 		default :
-			$customers_query = vam_db_query("select c.customers_id,c.customers_cid, c.customers_gender, c.customers_firstname, c.customers_secondname, c.customers_lastname, c.customers_dob, c.customers_email_address, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id, c.customers_telephone, c.customers_fax, c.customers_newsletter, c.customers_default_address_id from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
+			$customers_query = vam_db_query("select c.customers_id,c.customers_cid, c.customers_gender, c.customers_firstname, c.customers_secondname, c.customers_lastname, c.customers_dob, c.customers_email_address, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id, c.customers_telephone, c.customers_fax, c.customers_newsletter, c.customers_default_address_id, c.customers_personal_discount from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
 			$customers = vam_db_fetch_array($customers_query);
 			$cInfo = new objectInfo($customers);
 	}
@@ -418,6 +432,25 @@ function check_form() {
   var entry_postcode = document.customers.entry_postcode.value;
   var entry_city = document.customers.entry_city.value;
   var customers_telephone = document.customers.customers_telephone.value;
+  var manufacturer_discount_select = document.customers.manufacturer_discount_select.value;
+
+
+<?php 
+$discount_query = vam_db_query("SELECT count(discount_id) as dcount FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE customers_id = '" . $_GET['cID'] . "'");
+$discount_data = vam_db_fetch_array($discount_query);
+if ($discount_data['dcount'] > 0) {
+  for ($i = 0; $i < $discount_data['dcount']; $i++) {
+?>
+    if (document.customers.manufacturer_discount_new.value != '' && manufacturer_discount_select == document.customers.manufacturer_<?php echo $i ?>.value) {
+      error_message = error_message + "<?php echo vam_js_lang(JS_DISCOUNT); ?>";
+      error = 1;
+alert(unescape(error_message));
+return false;
+    }
+<?php
+  }
+}
+?>
 
 <?php if (ACCOUNT_GENDER == 'true') { ?>
   if (document.customers.customers_gender[0].checked || document.customers.customers_gender[1].checked) {
@@ -537,7 +570,7 @@ function check_form() {
 <?php
 
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
-	$customers_query = vam_db_query("select c.payment_unallowed, c.shipping_unallowed, c.customers_gender, c.customers_vat_id, c.customers_status, c.member_flag, c.customers_firstname, c.customers_secondname,c.customers_cid, c.customers_lastname, c.customers_dob, c.customers_email_address, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id, c.customers_telephone, c.customers_fax, c.customers_newsletter, c.customers_default_address_id from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
+	$customers_query = vam_db_query("select c.payment_unallowed, c.shipping_unallowed, c.customers_gender, c.customers_vat_id, c.customers_status, c.member_flag, c.customers_firstname, c.customers_secondname,c.customers_cid, c.customers_lastname, c.customers_dob, c.customers_email_address, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id, c.customers_telephone, c.customers_fax, c.customers_newsletter, c.customers_default_address_id, c.customers_personal_discount from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
 
 	$customers = vam_db_fetch_array($customers_query);
 	$cInfo = new objectInfo($customers);
@@ -979,11 +1012,35 @@ changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
       </tr>
       <?php echo vam_get_extra_fields($_GET['cID'],$_SESSION['languages_id']); ?>
       <tr>
-        <td class="formAreaTitle"><?php echo CATEGORY_OPTIONS; ?></td>
+        <td class="formAreaTitle"><?php echo ENTRY_DISCOUNT; ?></td>
       </tr>
       <tr>
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
         
+                  <tr>
+            <td class="main"><?php echo ENTRY_DISCOUNT_CUSTOMER; ?></td>
+            <td class="main"><?php
+
+	if ($processed == true) {
+		echo $cInfo->discount.vam_draw_hidden_field('customers_personal_discount');
+	} else {
+		echo vam_draw_input_field('customers_personal_discount', $cInfo->customers_personal_discount, 'maxlength="5"');
+	}
+?>%</td>
+          </tr>
+          <tr>
+          <?php include(DIR_WS_MODULES . FILENAME_CUSTOMER_TO_MANUFACTURER_DISCOUNT); ?>
+          </tr>
+          </table>
+      </tr>
+      <tr>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+      </tr>
+      <tr>
+        <td class="formAreaTitle"><?php echo CATEGORY_OPTIONS; ?></td>
+      </tr>
+      <tr>
+        <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
         
                   <tr>
             <td class="main"><?php echo ENTRY_PAYMENT_UNALLOWED; ?></td>
@@ -1285,7 +1342,11 @@ if ($error == true) {
 			$cs_member_flag = $customer_status['member_flag'];
 			$cs_name = $customer_status['customers_status_name'];
 			$cs_image = $customer_status['customers_status_image'];
-			$cs_discount = $customer_status['customers_status_discount'];
+			if ($customer_status['customers_personal_discount'] > 0) {
+			  $cs_discount = $customer_status['customers_personal_discount'];
+			} else {
+			  $cs_discount = $customer_status['customers_status_discount'];
+			}
 			$cs_ot_discount_flag = $customer_status['customers_status_ot_discount_flag'];
 			$cs_ot_discount = $customer_status['customers_status_ot_discount'];
 			$cs_staffelpreise = $customer_status['customers_status_staffelpreise'];

@@ -20,7 +20,7 @@
   require('includes/application_top.php');
 
   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'vam_price.php');
-  $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id']);
+  $vamPrice = new vamPrice(DEFAULT_CURRENCY,$_SESSION['customers_status']['customers_status_id'],$_SESSION['customer_id']);
 
   require_once(DIR_FS_INC .'vam_get_tax_rate.inc.php');
 

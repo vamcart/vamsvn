@@ -21,8 +21,10 @@ class vamPrice {
 	var $currencies;
 
 	// class constructor
-	function vamPrice($currency, $cGroup) {
-
+	function vamPrice($currency, $cGroup, $customer_id = null) {
+//		if (!$customer_id && $_SESSION['customer_id']) {
+//			$customer_id=$_SESSION['customer_id'];
+//		}
 		$this->currencies = array ();
 		$this->cStatus = array ();
 		$this->actualGroup = $cGroup;
@@ -30,6 +32,7 @@ class vamPrice {
 		$this->TAX = array ();
 		$this->SHIPPING = array();
 		$this->showFrom_Attributes = true;
+
 
 		// select Currencies
 
@@ -58,13 +61,20 @@ class vamPrice {
 				                                             customers_status_id = '".$this->actualGroup."' AND language_id = '".$_SESSION['languages_id']."'";
 		$customers_status_query = vamDBquery($customers_status_query);
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
+
+		if ($customer_id) {
+		  $customers_query = vam_db_query("SELECT customers_personal_discount FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $customer_id . "'");
+		  $customers_value = vam_db_fetch_array($customers_query);
+		}
+
+
 		$this->cStatus = array (
 		
 		'customers_status_id' => $this->actualGroup, 
 		'customers_status_name' => $customers_status_value['customers_status_name'], 
 		'customers_status_image' => $customers_status_value['customers_status_image'], 
 		'customers_status_public' => $customers_status_value['customers_status_public'], 
-		'customers_status_discount' => $customers_status_value['customers_status_discount'], 
+		'customers_status_discount' => $customers_value['customers_personal_discount'] ? $customers_value['customers_personal_discount'] : $customers_status_value['customers_status_discount'], 
 		'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 
 		'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 
 		'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 
@@ -76,7 +86,6 @@ class vamPrice {
 		'customers_status_discount_attributes' => $customers_status_value['customers_status_discount_attributes'], 
 		'customers_fsk18' => $customers_status_value['customers_fsk18'], 
 		'customers_fsk18_display' => $customers_status_value['customers_fsk18_display']
-		
 		);
 
 		// prefetch tax rates for standard zone
@@ -120,9 +129,16 @@ class vamPrice {
 			$pPrice = $this->getPprice($pID);
 		$pPrice = $this->AddTax($pPrice, $products_tax);
 
+
+
 		// check specialprice
 		if ($sPrice = $this->CheckSpecial($pID))
 			return $this->FormatSpecial($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus);
+
+		// check special manufacturer price
+		if ($discount = $this->CheckManufacturerDiscount($_SESSION['customer_id'], $pID)) {
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus);
+		}
 
 		// check graduated
 		if ($this->cStatus['customers_status_graduated_prices'] == '1') {
@@ -265,6 +281,17 @@ class vamPrice {
 
 		return $product['specials_new_products_price'];
 
+	}
+
+	function CheckManufacturerDiscount($cID, $pID) {
+		$product_query = "select manufacturers_id from ".TABLE_PRODUCTS." where products_id = '".$pID."'";
+		$product_query = vamDBquery($product_query);
+		$product = vam_db_fetch_array($product_query, true);
+		$manufacturer_query = "SELECT discount FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE customers_id = '".$cID."' AND manufacturers_id = '".$product['manufacturers_id']."'";
+		$manufacturer_query = vamDBquery($manufacturer_query);
+		$manufacturer = vam_db_fetch_array($manufacturer_query, true);
+
+		return $manufacturer['discount'];
 	}
 
 	function CalculateCurr($price) {

@@ -1472,7 +1472,7 @@ function vam_get_customers_statuses() {
 function vam_get_customer_status($customers_id) {
 
 	$customer_status_array = array ();
-	$customer_status_query = vam_db_query("select customers_status, member_flag, customers_status_name, customers_status_public, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices  FROM ".TABLE_CUSTOMERS." left join ".TABLE_CUSTOMERS_STATUS." on customers_status = customers_status_id where customers_id='".$customers_id."' and language_id = '".$_SESSION['languages_id']."'");
+	$customer_status_query = vam_db_query("select customers_status, customers_personal_discount, member_flag, customers_status_name, customers_status_public, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices  FROM ".TABLE_CUSTOMERS." left join ".TABLE_CUSTOMERS_STATUS." on customers_status = customers_status_id where customers_id='".$customers_id."' and language_id = '".$_SESSION['languages_id']."'");
 	$customer_status_array = vam_db_fetch_array($customer_status_query);
 	return $customer_status_array;
 }

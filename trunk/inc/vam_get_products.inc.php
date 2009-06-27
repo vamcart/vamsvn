@@ -40,7 +40,7 @@ function vam_get_products($session) {
 
 
           // dirty workaround
-          $vamPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id']);
+          $vamPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id'], $_SESSION['customer_id'] ? $_SESSION['customer_id'] : "");
           $products_price=$vamPrice->GetPrice($products['products_id'],
                                         $format=false,
                                         $session['cart']->contents[$products_id]['qty'],
@@ -65,7 +65,7 @@ function vam_get_products($session) {
     }
     
 function attributes_price($products_id,$session) {
-      $vamPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id']);
+      $vamPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id'],$_SESSION['customer_id'] ? $_SESSION['customer_id'] : "");
       if (isset($session['contents'][$products_id]['attributes'])) {
         reset($session['contents'][$products_id]['attributes']);
         while (list($option, $value) = each($session['contents'][$products_id]['attributes'])) {
