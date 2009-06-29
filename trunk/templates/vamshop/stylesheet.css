@@ -1463,6 +1463,7 @@ dd.itemFaq
      background: #f1f1f6; 
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
+     padding-left: .5em;
    }
 
 #boxCart .boxcontent  span 
