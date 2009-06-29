@@ -129,30 +129,35 @@ class vamPrice {
 			$pPrice = $this->getPprice($pID);
 		$pPrice = $this->AddTax($pPrice, $products_tax);
 
+		if ($this->cStatus['customers_status_graduated_prices'] != '1' AND $this->GetGroupPrice($pID, 1)) {
+		   $message_old_price=GROUP_PRICE;
+		} else {
+		   $message_old_price=RETAIL_PRICE;
+		}
 
 
 		// check specialprice
 		if ($sPrice = $this->CheckSpecial($pID))
-			return $this->FormatSpecial($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus);
+			return $this->FormatSpecial($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $message_old_price);
 
 		// check special manufacturer price
 		if ($discount = $this->CheckManufacturerDiscount($_SESSION['customer_id'], $pID)) {
-			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus);
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, MANUFACTURER_DISCOUNT);
 		}
 
 		// check graduated
 		if ($this->cStatus['customers_status_graduated_prices'] == '1') {
 			if ($sPrice = $this->GetGraduatedPrice($pID, $qty))
-				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
+				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $message_old_price, YOUR_GRADUATED_PRICE, "");
 		} else {
 			// check Group Price
-			if ($sPrice = $this->GetGroupPrice($pID, 1))
-				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, $pID);
+			if ($sPrice = $this->GetGroupPrice($pID, 1)) 
+				return $this->FormatSpecialGraduated($pID, $this->AddTax($sPrice, $products_tax), $pPrice, $format, $vpeStatus, GROUP_PRICE, YOUR_PRICE, PERSONAL_DISCOUNT);
 		}
 
 		// check Product Discount
 		if ($discount = $this->CheckDiscount($pID))
-			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus);
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, RETAIL_PRICE, YOUR_PRICE, PERSONAL_DISCOUNT);
 
 		return $this->Format($pPrice, $format, 0, false, $vpeStatus, $pID);
 
@@ -394,11 +399,11 @@ class vamPrice {
 
 	}
 
-	function FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus = 0) {
+	function FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus = 0, $message_old_price, $message_price, $message_discount) {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
 		if ($pPrice > 0)
-			$price = '<span class="productOldPrice">'.INSTEAD.$this->Format($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.YOU_SAVE.$discount.'%';
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><br />'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.$message_discount.$discount.'%';
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -409,9 +414,9 @@ class vamPrice {
 		}
 	}
 
-	function FormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0) {
+	function FormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $message_old_price) {
 		if ($format) {
-			$price = '<span class="productOldPrice">'.INSTEAD.$this->Format($pPrice, $format).'</span><br />'.ONLY.$this->checkAttributes($pID).$this->Format($sPrice, $format);
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><br />'.YOUR_SPECIAL_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format);
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -422,14 +427,15 @@ class vamPrice {
 		}
 	}
 
-	function FormatSpecialGraduated($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $pID) {
+	function FormatSpecialGraduated($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $message_old_price, $message_price, $message_discount) {
+		$oldsPrice=$sPrice;
 		if ($pPrice == 0)
 			return $this->Format($sPrice, $format, 0, false, $vpeStatus);
 		if ($discount = $this->CheckDiscount($pID))
 			$sPrice -= $sPrice / 100 * $discount;
 		if ($format) {
 			if ($sPrice != $pPrice) {
-				$price = '<span class="productOldPrice">'.MSRP.$this->Format($pPrice, $format).'</span><br />'.YOUR_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format);
+				$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($oldsPrice, $format).'</span><br />'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.$message_discount.$discount.'%';
 			} else {
 				$price = FROM.$this->Format($sPrice, $format);
 			}
