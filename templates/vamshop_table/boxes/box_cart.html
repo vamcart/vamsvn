@@ -27,6 +27,16 @@
 					<td class="main" align="left">&nbsp;{$products_data.QTY}&nbsp;x&nbsp;</td>
 					<td class="main" width="100%" align="left"><a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></td>
 				  </tr>
+				  
+				  <tr>
+					<td class="main" align="left" colspan="2">
+{if $products_data.ATTRIBUTES!=''} 
+{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+{$item_data.NAME}: {$item_data.VALUE}<br />
+{/foreach} 
+{/if}</td>
+				  </tr>
+				  
 				{/foreach}
 				</table>
 <!-- /содержимое корзины -->
