@@ -71,8 +71,10 @@ if (isset ($_GET['action'])) {
 		// customer wants to update the product quantity in their shopping cart
 		case 'update_product' :
 
+       foreach( $_REQUEST as $key => $value) $_POST[$key]=$value;
 			for ($i = 0, $n = sizeof($_POST['products_id']); $i < $n; $i++) {
-					if (in_array($_POST['products_id'][$i], (is_array($_POST['cart_delete']) ? $_POST['cart_delete'] : array ()))) {
+
+				if (in_array($_POST['products_id'][$i], (is_array($_POST['cart_delete']) ? $_POST['cart_delete'] : array ()))) {
 					$_SESSION['cart']->remove($_POST['products_id'][$i]);
 				} else {
 					if ($_POST['cart_quantity'][$i] > MAX_PRODUCTS_QTY)
