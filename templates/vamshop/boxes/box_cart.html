@@ -24,7 +24,6 @@
 {/if}
 
 {if $products_data.ATTRIBUTES!=''} 
-<br />
 {foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
 {$item_data.NAME}: {$item_data.VALUE}<br />
 {/foreach} 
