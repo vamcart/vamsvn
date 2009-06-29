@@ -295,8 +295,8 @@ CREATE TABLE customers_memo (
   memo_id int(11) NOT NULL auto_increment,
   customers_id int(11) NOT NULL default '0',
   memo_date date NOT NULL default '0000-00-00',
-  memo_title text NOT NULL,
-  memo_text text NOT NULL,
+  memo_title text,
+  memo_text text,
   poster_id int(11) NOT NULL default '0',
   PRIMARY KEY  (memo_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci COLLATE utf8_general_ci;
@@ -329,7 +329,7 @@ create table `products_parameters` (
   `products_parameters_type` enum('p','g') NOT NULL default 'p',
   `products_parameters_group` int(11) NOT NULL default '0',
   `products_parameters_useinsearch` tinyint(1) NOT NULL default '0',
-  `products_parameters_intervals` text NOT NULL,
+  `products_parameters_intervals` text,
   `products_parameters_titlename` varchar(255) NOT NULL default '',
   `products_parameters_titlesuff` varchar(10) NOT NULL default '',
   `products_parameters_useinsdesc` tinyint(1) NOT NULL default '0',
@@ -616,7 +616,7 @@ CREATE TABLE categories_description (
   language_id int DEFAULT '1' NOT NULL,
   categories_name varchar(255) NOT NULL,
   categories_heading_title varchar(255) NOT NULL,
-  categories_description text NOT NULL,
+  categories_description text,
   categories_meta_title varchar(255) NOT NULL,
   categories_meta_description varchar(255) NOT NULL,
   categories_meta_keywords varchar(255) NOT NULL,
@@ -741,7 +741,7 @@ DROP TABLE IF EXISTS customers_basket;
 CREATE TABLE customers_basket (
   customers_basket_id int NOT NULL auto_increment,
   customers_id int NOT NULL,
-  products_id tinytext NOT NULL,
+  products_id tinytext,
   customers_basket_quantity int(2) NOT NULL,
   final_price decimal(15,4) NOT NULL,
   customers_basket_date_added char(8),
@@ -752,7 +752,7 @@ DROP TABLE IF EXISTS customers_basket_attributes;
 CREATE TABLE customers_basket_attributes (
   customers_basket_attributes_id int NOT NULL auto_increment,
   customers_id int NOT NULL,
-  products_id tinytext NOT NULL,
+  products_id tinytext,
   products_options_id int NOT NULL,
   products_options_value_id int NOT NULL,
   products_options_value_text text,
@@ -839,7 +839,7 @@ DROP TABLE IF EXISTS extra_fields;
 CREATE TABLE extra_fields (
   fields_id int(11) not null auto_increment,
   fields_input_type int(11) default '0' not null ,
-  fields_input_value text NOT NULL,
+  fields_input_value text,
   fields_status tinyint(2) default '0' not null ,
   fields_required_status tinyint(2) default '0' not null ,
   fields_size int(5) default '0' not null ,
@@ -858,7 +858,7 @@ DROP TABLE IF EXISTS faq;
 CREATE TABLE faq (
    faq_id int(11) NOT NULL AUTO_INCREMENT,
    question varchar(255) NOT NULL,
-   answer text NOT NULL,
+   answer text,
    date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
    language int(11) NOT NULL default '1',
    status tinyint(1) DEFAULT '0' NOT NULL,
@@ -873,7 +873,7 @@ CREATE TABLE languages (
   image varchar(255),
   directory varchar(255),
   sort_order int(3),
-  language_charset text NOT NULL,
+  language_charset text,
   PRIMARY KEY (languages_id),
   KEY IDX_LANGUAGES_NAME (name)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -882,7 +882,7 @@ DROP TABLE IF EXISTS latest_news;
 CREATE TABLE latest_news (
    news_id int(11) NOT NULL AUTO_INCREMENT,
    headline varchar(255) NOT NULL,
-   content text NOT NULL,
+   content text,
    date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
    language int(11) NOT NULL default '1',
    status tinyint(1) DEFAULT '0' NOT NULL,
@@ -919,7 +919,7 @@ DROP TABLE IF EXISTS newsletters;
 CREATE TABLE newsletters (
   newsletters_id int NOT NULL auto_increment,
   title varchar(255) NOT NULL,
-  content text NOT NULL,
+  content text,
   module varchar(255) NOT NULL,
   date_added datetime NOT NULL,
   date_sent datetime,
@@ -1218,9 +1218,9 @@ CREATE TABLE products_description (
   products_description text,
   products_short_description text,
   products_keywords VARCHAR(255) DEFAULT NULL,
-  products_meta_title text NOT NULL,
-  products_meta_description text NOT NULL,
-  products_meta_keywords text NOT NULL,
+  products_meta_title text,
+  products_meta_description text,
+  products_meta_keywords text,
   products_url varchar(255) default NULL,
   products_viewed int(5) default '0',
   PRIMARY KEY  (products_id,language_id),
@@ -1316,7 +1316,7 @@ DROP TABLE IF EXISTS reviews_description;
 CREATE TABLE reviews_description (
   reviews_id int NOT NULL,
   languages_id int NOT NULL,
-  reviews_text text NOT NULL,
+  reviews_text text,
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1332,7 +1332,7 @@ DROP TABLE IF EXISTS sessions;
 CREATE TABLE sessions (
   sesskey varchar(255) NOT NULL,
   expiry int(11) unsigned NOT NULL,
-  value text NOT NULL,
+  value text,
   PRIMARY KEY (sesskey)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1459,10 +1459,10 @@ CREATE TABLE content_manager (
   parent_id int(11) NOT NULL default '0',
   group_ids TEXT,
   languages_id int(11) NOT NULL default '0',
-  content_title text NOT NULL,
-  content_heading text NOT NULL,
-  content_text text NOT NULL,
-  content_url text NOT NULL,
+  content_title text,
+  content_heading text,
+  content_text text,
+  content_url text,
   sort_order int(4) NOT NULL default '0',
   file_flag int(1) NOT NULL default '0',
   content_file varchar(255) NOT NULL default '',
@@ -1479,9 +1479,9 @@ CREATE TABLE content_manager (
 DROP TABLE IF EXISTS media_content;
 CREATE TABLE media_content (
   file_id int(11) NOT NULL auto_increment,
-  old_filename text NOT NULL,
-  new_filename text NOT NULL,
-  file_comment text NOT NULL,
+  old_filename text,
+  new_filename text,
+  file_comment text,
   PRIMARY KEY  (file_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1492,22 +1492,22 @@ CREATE TABLE products_content (
   group_ids TEXT,
   content_name varchar(255) NOT NULL default '',
   content_file varchar(255) NOT NULL,
-  content_link text NOT NULL,
+  content_link text,
   languages_id int(11) NOT NULL default '0',
   content_read int(11) NOT NULL default '0',
-  file_comment text NOT NULL,
+  file_comment text,
   PRIMARY KEY  (content_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS module_newsletter;
 CREATE TABLE module_newsletter (
   newsletter_id int(11) NOT NULL auto_increment,
-  title text NOT NULL,
-  bc text NOT NULL,
-  cc text NOT NULL,
+  title text,
+  bc text,
+  cc text,
   date datetime default NULL,
   status int(1) NOT NULL default '0',
-  body text NOT NULL,
+  body text,
   PRIMARY KEY  (newsletter_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
