@@ -13,10 +13,25 @@
 
 {if $empty=='false'}
 {foreach name=aussen item=products_data from=$products}
-<p>
-{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>
-</p>
+
+{if $smarty.const.AJAX_CART == 'true'}
+<form class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct(this); return false;">{$products_data.PRODUCTS_QTY}
+{/if}
+
+{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>&nbsp;
+{if $smarty.const.AJAX_CART == 'true'}
+<input type="image" src="images/delete.gif" title="{#text_delete#}" /></form>
+{/if}
+
+{if $products_data.ATTRIBUTES!=''} 
+<br />
+{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+{$item_data.NAME}: {$item_data.VALUE}<br />
+{/foreach} 
+{/if}
+
 {/foreach}
+
 {if $DISCOUNT}
 <p class="CartContentRight">
 {#text_discount#}&nbsp;{$DISCOUNT}

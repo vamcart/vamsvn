@@ -159,3 +159,38 @@ function doAddProduct(form) {
   reqAddCart.send( senddata );
   return false;
 }
+
+function doDelProduct(form) {
+  showLoading();
+  var reqAddCart = new JsHttpRequest();
+  reqAddCart.onreadystatechange = function() {
+    if (reqAddCart.readyState == 4) {
+      if (reqAddCart.responseJS) {
+        document.location.href = reqAddCart.responseJS.ajax_redirect;
+        return;
+      }
+      else {
+        document.getElementById('divShoppingCart').innerHTML = ''+(reqAddCart.responseText||'')+''
+        if ( SHOW_ADDED ) {
+          showOk();
+          timerID = setTimeout( "addHandler(document, \'mousemove\', hideOk)", 500);
+        }
+      }
+    }
+  }
+
+  var senddata = new Object();
+  var fe = form.elements;
+  for(var i=0 ; i<fe.length ; i++) {
+
+    if ( fe[i].type=="hidden" ) {
+      senddata[fe[i].name] = fe[i].value;
+    }
+  }
+  var url = 'ajax_shopping_cart.php?' + ( senddata["products_id[]"] ? 'products_id[]='+senddata["products_id[]"]+'&' : "" ) + ( senddata["old_qty[]"] ? '&old_qty[]='+senddata["old_qty[]"]+'&' : "" ) + ( senddata["cart_quantity[]"] ? '&cart_quantity[]='+senddata["cart_quantity[]"]+'&' : "" ) + ( senddata["cart_delete[]"] ? '&cart_delete[]='+senddata["cart_delete[]"]+'&' : "" ) + 'action=update_product';
+
+  reqAddCart.caching = false;
+  reqAddCart.open( 'GET', url, true);
+  reqAddCart.send( senddata );
+  return false;
+}
