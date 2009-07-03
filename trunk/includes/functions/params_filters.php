@@ -174,7 +174,10 @@
 				if($price_max != -1 ) $sql .= " AND p0.products_price <= '$price_max' ";
 			}
 
+        $sql .= " LEFT JOIN products prd ON prd.products_id = p1.products_id ";
+
 			$sql .= " WHERE ".join(" AND ", $wheres);
+         $sql .= " and prd.products_status = 1 ";
 			$sql .= " GROUP BY p.products_parameters_values_id ";
 			$sql .= " ORDER BY p.products_parameters2products_value";
 		
@@ -186,7 +189,11 @@
 				if($price_min != -1 ) $sql .= " AND p0.products_price >= '$price_min' ";
 				if($price_max != -1 ) $sql .= " AND p0.products_price <= '$price_max' ";
 			}
+
+        $sql .= " LEFT JOIN products prd ON prd.products_id = p1.products_id ";
+
 			$sql .= " WHERE p1.products_parameters_id = '".$products_parameters_id."'";
+         $sql .= " and prd.products_status = 1 ";
 			$sql .= " GROUP BY p1.products_parameters_values_id";
 			$sql .= " ORDER BY p1.products_parameters2products_value";
 		}
