@@ -174,7 +174,7 @@
 				if($price_max != -1 ) $sql .= " AND p0.products_price <= '$price_max' ";
 			}
 
-        $sql .= " LEFT JOIN products prd ON prd.products_id = p1.products_id ";
+        $sql .= " LEFT JOIN products prd ON prd.products_id = p.products_id ";
 
 			$sql .= " WHERE ".join(" AND ", $wheres);
          $sql .= " and prd.products_status = 1 ";
