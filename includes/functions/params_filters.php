@@ -72,6 +72,7 @@
 					p.products_tax_class_id 
 				from products p 
 				left join products_description pd on pd.products_id = p.products_id
+				left join products_to_categories p2c on p2c.products_id = p.products_id
 				left join manufacturers m on p.manufacturers_id = m.manufacturers_id ";
 		$tables = 0;
 		$wheres = array();
@@ -87,7 +88,7 @@
 			$wheres[] = " p.products_price <= '".intval($_GET['price_max'])."' ";;
 		}
 		
-		$wheres[] = "  p.products_status = '1' ";
+		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int) $_GET['cat']."' ";
 		$wheres[] = " pd.language_id = '1' ";
 		foreach( $selected_blocks as $index => $group_blocks)
 		{
