@@ -79,7 +79,7 @@ if (is_array($temp) && sizeof($temp) > 0)
             $i = $parameters_data['products_parameters_id'];
             
             $parameters[$i]["parameters_id"] = $parameters_data["products_parameters_id"];
-            $parameters[$i]["parameters_name"] = $parameters_data["products_parameters_name"];
+            $parameters[$i]["parameters_name"] = $parameters_data["products_parameters_title"];
             $parameters[$i]["parameters_group"] = $parameters_data["products_parameters_group"];
             $parameters[$i]["is_group"] = $parameters_data["products_parameters_type"] == 'g';
             if (!is_array($parameters[$i]["parameters_values"]))
