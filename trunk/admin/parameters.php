@@ -634,6 +634,7 @@ var orders_values_list = new Array();
 
 <?php
 
+if (isset($_REQUEST["category"])) {
   $order = $_REQUEST["order"] == "name" ? "products_parameters_name" : "products_parameters_order";
   $join = $_REQUEST["pid"] > 0 ? "left join products_parameters2products on (products_parameters.products_parameters_id = products_parameters2products.products_parameters_id and products_id  = ".intval($_REQUEST["pid"]).")" : "";
   $fields = $_REQUEST["pid"] > 0 ? "products_parameters.products_parameters_id, products_parameters_useinsdesc, products_parameters_useinsearch, products_parameters_intervals, products_parameters_titlename, products_parameters_titlesuff, products_parameters_name, products_parameters_order, categories_id, products_parameters_title, products_parameters_type, products_parameters_group, products_parameters_maxopened, products_id, products_parameters2products_value" :
@@ -651,7 +652,7 @@ var orders_values_list = new Array();
          $params[$parameters["products_parameters_group"]]["params"][] = $parameters;
       $p_ids[] = $parameters["products_parameters_id"];
   }
-
+}
   if (sizeof($p_ids) > 0)
   {
       $values_query = mysql_query("SELECT products_parameters2products_value, products_parameters_id, products_parameters2products_md5, products_parameters2products_order FROM `products_parameters2products` WHERE products_parameters_id IN (".implode(",", $p_ids).") and products_parameters2products_value != '' ORDER by products_parameters2products_value");
