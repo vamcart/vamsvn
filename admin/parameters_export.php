@@ -480,12 +480,6 @@ function to_translit($str) {
 	return $b;
 }
 
-$res = mysql_query("select categories_id, categories_name from categories_description order by categories_name");
-while($category = mysql_fetch_assoc($res))
-{
-	$category_all[] = $category;
-}
-
 $categories_id = intval($_GET["category"]);
 
 //$_POST["load"] = "1";
@@ -769,16 +763,9 @@ set_time_limit(600);
 
 				<?php echo DOWNLOAD_TITLE; ?>:<br>
 				<form>
-				<select name="category">
 				<?php
-				foreach($category_all as $k => $c)
-				{
+				echo vam_draw_pull_down_menu('category', vam_get_category_tree('','',0));
 				?>
-				<option value="<?php echo $c["categories_id"]; ?>"><?php echo $c["categories_name"]; ?></option>
-				<?php
-				}
-				?>
-				</select>
 				<span class="button"><button type="submit" value="<?php echo DOWNLOAD_BUTTON_TITLE; ?>" name="load"><?php echo DOWNLOAD_BUTTON_TITLE; ?></button></span>
 				</form>
 
