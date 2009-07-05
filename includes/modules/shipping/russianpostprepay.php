@@ -458,9 +458,8 @@
 		{
 			if($rate==0)return 0;
 
-			$x = 100-$rate;
-            $y = ($price/$x)*100;
-			return $y-$price;
+			$x = ($_SESSION['cart']->show_total()/100)*$rate;
+			return $x;
 		}
 
 	}
