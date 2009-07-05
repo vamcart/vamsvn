@@ -31,7 +31,7 @@ $box_content='';
       $box->assign('NAME',$manufacturer['manufacturers_name']);
       
         if ($manufacturer['manufacturers_url']!='')$box->assign('URL','<a href="' . vam_href_link(FILENAME_REDIRECT, 'action=manufacturer&'.vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '" onclick="window.open(this.href); return false;">' . sprintf(BOX_MANUFACTURER_INFO_HOMEPAGE, $manufacturer['manufacturers_name']) . '</a>');
-        $box->assign('LINK_MORE','<a href="' . vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link($manufacturer['manufacturers_id'],$manufacturer['manufacturers_name'])) . '">' . BOX_MANUFACTURER_INFO_OTHER_PRODUCTS . '</a>');
+        $box->assign('LINK_MORE','<a href="' .vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']) . '">' . BOX_MANUFACTURER_INFO_OTHER_PRODUCTS . '</a>');
 
     }
   
