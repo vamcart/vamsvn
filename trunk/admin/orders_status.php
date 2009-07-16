@@ -186,7 +186,7 @@
       $orders_status_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $orders_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']');
+        $orders_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']');
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);
@@ -203,7 +203,7 @@
       $orders_status_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $orders_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']', vam_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']));
+        $orders_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']', vam_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']));
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);
@@ -229,7 +229,7 @@
         $orders_status_inputs_string = '';
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $orders_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']);
+          $orders_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']);
         }
 
         $contents[] = array('text' => $orders_status_inputs_string);
