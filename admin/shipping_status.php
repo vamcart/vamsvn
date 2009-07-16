@@ -192,7 +192,7 @@
       $shipping_status_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $shipping_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('shipping_status_name[' . $languages[$i]['id'] . ']');
+        $shipping_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('shipping_status_name[' . $languages[$i]['id'] . ']');
       }
       $contents[] = array('text' => '<br />' . TEXT_INFO_SHIPPING_STATUS_IMAGE . '<br />' . vam_draw_file_field('shipping_status_image'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_SHIPPING_STATUS_NAME . $shipping_status_inputs_string);
@@ -209,7 +209,7 @@
       $shipping_status_inputs_string = '';
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-        $shipping_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_draw_input_field('shipping_status_name[' . $languages[$i]['id'] . ']', vam_get_shipping_status_name($oInfo->shipping_status_id, $languages[$i]['id']));
+        $shipping_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('shipping_status_name[' . $languages[$i]['id'] . ']', vam_get_shipping_status_name($oInfo->shipping_status_id, $languages[$i]['id']));
       }
       $contents[] = array('text' => '<br />' . TEXT_INFO_SHIPPING_STATUS_IMAGE . '<br />' . vam_draw_file_field('shipping_status_image',$oInfo->shipping_status_image));
       $contents[] = array('text' => '<br />' . TEXT_INFO_SHIPPING_STATUS_NAME . $shipping_status_inputs_string);
@@ -235,7 +235,7 @@
         $shipping_status_inputs_string = '';
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $shipping_status_inputs_string .= '<br />' . vam_image(DIR_WS_LANGUAGES.$languages[$i]['directory'].'/admin/images/'.$languages[$i]['image']) . '&nbsp;' . vam_get_shipping_status_name($oInfo->shipping_status_id, $languages[$i]['id']);
+          $shipping_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_get_shipping_status_name($oInfo->shipping_status_id, $languages[$i]['id']);
         }
 
         $contents[] = array('text' => $shipping_status_inputs_string);
