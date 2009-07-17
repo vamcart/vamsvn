@@ -466,6 +466,7 @@
 				</div>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
+				<li class="level1"><a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>"><b><?php echo HEADER_TITLE_ONLINE_CATALOG; ?></b></a></li>
 				<li class="level1"><a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_LOGOFF; ?></b></a></li>
 			</ul>
 		</div>
