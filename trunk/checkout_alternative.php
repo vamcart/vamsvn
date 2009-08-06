@@ -37,6 +37,10 @@ if ($_SESSION['cart']->count_contents() < 1) {
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
+$total_weight = $_SESSION['cart']->show_weight();
+
+//  $total_count = $_SESSION['cart']->count_contents();
+$total_count = $_SESSION['cart']->count_contents_virtual(); // GV Code ICW ADDED FOR CREDIT CLASS SYSTEM
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
