@@ -149,6 +149,8 @@ $order_check = vam_db_fetch_array($order_query_check);
   $company = vam_db_fetch_array($company_query);
 
 	$vamTemplate->assign('company_name', $company['name']);
+	$vamTemplate->assign('company_telephone', $company['telephone']);
+	$vamTemplate->assign('company_fax', $company['fax']);
 	$vamTemplate->assign('company_inn', $company['inn']);
 	$vamTemplate->assign('company_kpp', $company['kpp']);
 	$vamTemplate->assign('company_ogrn', $company['ogrn']);

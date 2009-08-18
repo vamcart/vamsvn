@@ -21,6 +21,14 @@
 {else}
 <p><b>Покупатель</b> {$address_label_customer}</p>
 {/if}
+<p>
+{if $company_address}<b>Адрес</b> {$company_address}<br />{/if}
+{if $company_rs}<b>Р/с</b> 
+{$company_rs}{/if} {if $company_bank_name}<b>в банке</b> {$company_bank_name}<br />{/if}
+{if $company_ks}<b>К/с</b> 
+{$company_ks}{/if} {if $company_bik}<b>БИК</b> {$company_bik}<br />{/if}
+{if $company_inn}<b>ИНН</b> {$company_inn}{/if}{if $company_kpp}&nbsp; <b>КПП</b> {$company_kpp}{/if}{if $company_ogrn}&nbsp; <b>ОГРН</b> {$company_ogrn}{/if} {if $company_okpo}<b>Код по 
+ОКПО</b> {$company_okpo}{/if}<br /></p>
 {if $COMMENTS}<p>{$COMMENTS}</p>{/if}
 <hr>
 <p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
