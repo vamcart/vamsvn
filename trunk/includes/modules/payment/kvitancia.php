@@ -102,8 +102,12 @@ class kvitancia {
       $process_button_string = vam_draw_hidden_field('kvit_name', $this->name) .
                                vam_draw_hidden_field('kvit_address', $this->address);
 
+  $order_query = vam_db_query("select MAX(orders_id) AS orders_id FROM " . TABLE_ORDERS_TOTAL);
+  $order_id = vam_db_fetch_array($order_query);
+  $order_num = $order_id['orders_id'] + 1;
+
       global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->address) ."')");
+      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_input($order_num) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->address) ."')");
 
       return $process_button_string;
 
