@@ -102,6 +102,9 @@ class kvitancia {
       $process_button_string = vam_draw_hidden_field('kvit_name', $this->name) .
                                vam_draw_hidden_field('kvit_address', $this->address);
 
+      global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
+      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->address) ."')");
+
       return $process_button_string;
 
 	}
@@ -114,8 +117,6 @@ class kvitancia {
 	}
 
 	function after_process() {
-      global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->address) ."')");
 
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");

@@ -163,6 +163,9 @@ class schet {
                                vam_draw_hidden_field('director', $this->director) .
                                vam_draw_hidden_field('accountant', $this->accountant);
 
+      global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
+      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->inn) . "', '" . vam_db_input($this->kpp) . "', '" . vam_db_input($this->ogrn) ."', '" . vam_db_input($this->okpo) ."', '" . vam_db_input($this->rs) ."', '" . vam_db_input($this->bank_name) ."', '" . vam_db_input($this->bik) ."', '" . vam_db_input($this->ks) ."', '" . vam_db_input($this->address) ."', '" . vam_db_input($this->yur_address) ."', '" . vam_db_input($this->fakt_address) ."', '" . vam_db_input($this->telephone) ."', '" . vam_db_input($this->fax) ."', '" . vam_db_input($this->email) ."', '" . vam_db_input($this->director) ."', '" . vam_db_input($this->accountant) ."')");
+
       return $process_button_string;
 
 	}
@@ -175,8 +178,6 @@ class schet {
 	}
 
 	function after_process() {
-      global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($this->name) . "', '" . vam_db_input($this->inn) . "', '" . vam_db_input($this->kpp) . "', '" . vam_db_input($this->ogrn) ."', '" . vam_db_input($this->okpo) ."', '" . vam_db_input($this->rs) ."', '" . vam_db_input($this->bank_name) ."', '" . vam_db_input($this->bik) ."', '" . vam_db_input($this->ks) ."', '" . vam_db_input($this->address) ."', '" . vam_db_input($this->yur_address) ."', '" . vam_db_input($this->fakt_address) ."', '" . vam_db_input($this->telephone) ."', '" . vam_db_input($this->fax) ."', '" . vam_db_input($this->email) ."', '" . vam_db_input($this->director) ."', '" . vam_db_input($this->accountant) ."')");
 
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
