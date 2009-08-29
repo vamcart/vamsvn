@@ -74,7 +74,7 @@ class vamPrice {
 		'customers_status_name' => $customers_status_value['customers_status_name'], 
 		'customers_status_image' => $customers_status_value['customers_status_image'], 
 		'customers_status_public' => $customers_status_value['customers_status_public'], 
-		'customers_status_discount' => $customers_value['customers_personal_discount'] ? $customers_value['customers_personal_discount'] : $customers_status_value['customers_status_discount'], 
+		'customers_status_discount' => ($customers_value['customers_personal_discount'] > 0 ? $customers_value['customers_personal_discount'] : $customers_status_value['customers_status_discount']),
 		'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 
 		'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 
 		'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 

@@ -43,7 +43,7 @@
       'customers_status_public' => $customers_status_value['customers_status_public'],
       'customers_status_min_order' => $customers_status_value['customers_status_min_order'],
       'customers_status_max_order' => $customers_status_value['customers_status_max_order'],
-      'customers_status_discount' => $customers_status_value_1['customers_personal_discount'] ? $customers_status_value_1['customers_personal_discount'] : $customers_status_value['customers_status_discount'],
+      'customers_status_discount' => ($customers_status_value_1['customers_personal_discount'] > 0 ? $customers_status_value_1['customers_personal_discount'] : $customers_status_value['customers_status_discount']),
       'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'],
       'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'],
       'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'],
