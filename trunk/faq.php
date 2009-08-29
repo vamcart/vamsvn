@@ -101,6 +101,7 @@
   $vamTemplate->caching = 0;
   if (!defined(RM))
       $vamTemplate->load_filter('output', 'note');
-  $vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_FAQ.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_FAQ.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
   include ('includes/application_bottom.php');
 ?>
