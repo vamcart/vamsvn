@@ -214,11 +214,11 @@ vam_db_perform(TABLE_CUSTOMERS, array(
 
 vam_db_perform(TABLE_CUSTOMERS_INFO, array(
               'customers_info_id' => '1',
-              'customers_info_date_of_last_logon' => '',
-              'customers_info_number_of_logons' => '',
+              'customers_info_date_of_last_logon' => 'now()',
+              'customers_info_number_of_logons' => '0',
               'customers_info_date_account_created' => 'now()',
               'customers_info_date_account_last_modified' => 'now()',
-              'global_product_notifications' => ''),
+              'global_product_notifications' => '0'),
               $db_action, 'customers_info_id = 1'
               );
 
