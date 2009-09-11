@@ -232,7 +232,7 @@ vam_db_perform(TABLE_ADDRESS_BOOK, array(
               'entry_city' => ($city),
               'entry_state' => ($state),
               'entry_country_id' => ($country),
-              'entry_zone_id' => ((!isset($zone_id) ? 0 : $zone_id)),
+              'entry_zone_id' => ((isset($zone_id) ? 0 : $zone_id)),
               'address_date_added' => 'now()',
               'address_last_modified' => 'now()'),
               $db_action, 'customers_id = 1'
