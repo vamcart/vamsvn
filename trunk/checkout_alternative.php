@@ -921,6 +921,7 @@ $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout_alternative.html');
 $vamTemplate->assign('main_content', $main_content);
 if (!defined(RM))$vamTemplate->load_filter('output', 'note');
-$vamTemplate->display(CURRENT_TEMPLATE.'/index.html');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_ALTERNATIVE.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_ALTERNATIVE.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
 
 ?>
