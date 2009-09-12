@@ -235,6 +235,7 @@ if (isset ($_POST['payment']))
 	require_once(DIR_WS_CLASSES.'vat_validation.php');
 	$vatID = new vat_validation($vat, '', '', $country,true);
 
+	$customers_vat_id_status = 0;
 	$customers_status = $vatID->vat_info['status'];
 	$customers_vat_id_status = $vatID->vat_info['vat_id_status'];
 	$error = $vatID->vat_info['error'];
