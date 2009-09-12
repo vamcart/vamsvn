@@ -41,6 +41,7 @@ define('TABLE_HEADING_STATUS', 'Статус');
 define('TABLE_HEADING_MANUFACTURERS', 'Производитель');
 define('TABLE_HEADING_IMAGE', 'Изображение');
 define('TABLE_HEADING_XML', 'XML');
+define('TABLE_HEADING_START_PAGE', 'На главной');
 define('TABLE_HEADING_SORT', 'Сортировка');
 define('DISPLAY_CATEGORIES', 'Выберите категорию:');
 define('DISPLAY_MANUFACTURERS', 'Выберите производителя:');
