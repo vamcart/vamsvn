@@ -75,11 +75,13 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 //							echo '&nbsp;&nbsp;File: ' . $subdir.$file . '<br />';
 							$files[]=array('id' => $subdir.$file,
 														 'text' => $subdir.$file);
+							array_multisort ($files, SORT_ASC);
 						}
 					} elseif (is_dir($dirname.$file)) {
 						if($dir_only) {
 							$files[]=array('id' => $subdir.$file.'/',
 														 'text' => $subdir.$file.'/');
+							array_multisort ($files, SORT_ASC);
 						}
 						$files = vam_array_merge($files, vam_get_files_in_dir($startdir, $ext, $dir_only, $subdir.$file.'/'));
 					}
