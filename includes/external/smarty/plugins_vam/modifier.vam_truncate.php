@@ -27,6 +27,9 @@
 function smarty_modifier_vam_truncate($string, $length = 80, $etc = '...',
                                   $break_words = false, $middle = false)
 {
+
+$string = strip_tags($string); 
+
     if ($length == 0)
         return '';
 
