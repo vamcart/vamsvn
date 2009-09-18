@@ -97,7 +97,7 @@ $vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 
 $vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
 $vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
 $vamTemplate->assign('BUTTON_PRINT', '<a style="cursor:pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')"><img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" alt="' . IMAGE_BUTTON_PRINT . '" /></a>');
-$from_history = eregi("page=", vam_get_all_get_params()); // referer from account_history yes/no
+$from_history = preg_match("/page=/i", vam_get_all_get_params()); // referer from account_history yes/no
 $back_to = $from_history ? FILENAME_ACCOUNT_HISTORY : FILENAME_ACCOUNT; // if from account_history => return to account_history
 $vamTemplate->assign('BUTTON_BACK','<a href="' . vam_href_link($back_to,vam_get_all_get_params(array ('order_id')), 'SSL') . '">' . vam_image_button('button_back.gif', IMAGE_BUTTON_BACK) . '</a>');
 
