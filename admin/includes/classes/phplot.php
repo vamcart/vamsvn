@@ -680,7 +680,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 			if ($which_valign == 'top') { 
 				$which_ypos = $which_ypos - ImageFontHeight($which_font);
 			}
-			$which_text = ereg_replace("\r","",$which_text);
+			$which_text = preg_replace("/\r/","",$which_text);
 			$str = split("\n",$which_text); //multiple lines submitted by Remi Ricard
 			$height = ImageFontHeight($which_font);
 			$width = ImageFontWidth($which_font);
@@ -785,7 +785,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 	function SetPlotType($which_pt) {
 		$accepted = "bars,lines,linepoints,area,points,pie,thinbarline";
 		$asked = trim($which_pt);
-		if (eregi($asked, $accepted)) {
+		if (preg_match('/'.$asked.'/i', $accepted)) {
 			$this->plot_type = $which_pt;
 			return true;
 		} else {
