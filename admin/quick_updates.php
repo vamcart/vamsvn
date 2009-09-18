@@ -464,7 +464,7 @@ function display_ttc(action, prix, taxe, up){
        $specials_array[] = $specials['products_id'];
      }
 //// control string sort page
-     if ($sort_by && !ereg('order by',$sort_by)) $sort_by = 'order by '.$sort_by ;
+     if ($sort_by && !preg_match('/order by/i',$sort_by)) $sort_by = 'order by '.$sort_by ;
 //// define the string parameters for good back preview product
      $origin = FILENAME_QUICK_UPDATES . "?info_back=$sort_by-$page-$current_category_id-$row_by_page-$manufacturer";
 //// controle lenght (lines per page)
@@ -515,7 +515,7 @@ function display_ttc(action, prix, taxe, up){
 
       if (substr($_POST['spec_price'],-1) == '%') {
 	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
-			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$valeur = (1 - (preg_replace("/%/", "", $_POST['spec_price']) / 100));
 			$price = sprintf("%01.2f", round($products['products_price'] / $valeur,2));
 		}else{
         	$price = sprintf("%01.2f", round($products['products_price'] + (($spec_price / 100) * $products['products_price']),2));
@@ -575,7 +575,7 @@ function display_ttc(action, prix, taxe, up){
 
       if (substr($_POST['spec_price'],-1) == '%') {
 	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
-			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$valeur = (1 - (preg_replace("/%/", "", $_POST['spec_price']) / 100));
 			$xprice1 = sprintf("%01.2f", round($xobj->personal_offer / $valeur,2));
 		}else{
         	$xprice1 = sprintf("%01.2f", round($xobj->personal_offer + (($spec_price / 100) * $xobj->personal_offer),2));
@@ -607,7 +607,7 @@ function display_ttc(action, prix, taxe, up){
 
       if (substr($_POST['spec_price'],-1) == '%') {
 	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
-			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$valeur = (1 - (preg_replace("/%/", "", $_POST['spec_price']) / 100));
 			$xprice2 = sprintf("%01.2f", round($xobj2->personal_offer / $valeur,2));
 		}else{
         	$xprice2 = sprintf("%01.2f", round($xobj2->personal_offer + (($spec_price / 100) * $xobj2->personal_offer),2));
@@ -638,7 +638,7 @@ function display_ttc(action, prix, taxe, up){
 
       if (substr($_POST['spec_price'],-1) == '%') {
 	  	if($_POST['marge'] && substr($_POST['spec_price'],0,1) != '-'){
-			$valeur = (1 - (ereg_replace("%", "", $_POST['spec_price']) / 100));
+			$valeur = (1 - (preg_replace("/%/", "", $_POST['spec_price']) / 100));
 			$xprice3 = sprintf("%01.2f", round($xobj3->personal_offer / $valeur,2));
 		}else{
         	$xprice3 = sprintf("%01.2f", round($xobj3->personal_offer + (($spec_price / 100) * $xobj3->personal_offer),2));
