@@ -389,7 +389,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     // '<session-name>=<session-id>' to allow URLs of the form
     // http://yoursite/<session-name>=<session-id>/script.php 
     if (empty($session->id)) {
-      eregi($session->name . '=([^/]+)', $GLOBALS['REQUEST_URI'], $regs);
+      preg_match('/'.$session->name . '=([^/]+)/', $GLOBALS['REQUEST_URI'], $regs);
       $regs[1] = trim($regs[1]);
       if (!empty($regs[1])) {
         $session->id = $regs[1];
