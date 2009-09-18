@@ -113,7 +113,7 @@ class PEAR_RunTest
             $line = fgets($fp);
 
             // Match the beginning of a section.
-            if (ereg('^--([A-Z]+)--',$line,$r)) {
+            if (preg_match('/^--([A-Z]+)--/',$line,$r)) {
                 $section = $r[1];
                 $section_text[$section] = '';
                 continue;
@@ -136,7 +136,7 @@ class PEAR_RunTest
 
         $tmp = realpath(dirname($file));
         $tmp_skipif = $tmp . uniqid('/phpt.');
-        $tmp_file   = ereg_replace('\.phpt$','.php',$file);
+        $tmp_file   = preg_replace('/\.phpt$/','.php',$file);
         $tmp_post   = $tmp . uniqid('/phpt.');
 
         @unlink($tmp_skipif);
@@ -144,10 +144,10 @@ class PEAR_RunTest
         @unlink($tmp_post);
 
         // unlink old test results
-        @unlink(ereg_replace('\.phpt$','.diff',$file));
-        @unlink(ereg_replace('\.phpt$','.log',$file));
-        @unlink(ereg_replace('\.phpt$','.exp',$file));
-        @unlink(ereg_replace('\.phpt$','.out',$file));
+        @unlink(preg_replace('/\.phpt$/','.diff',$file));
+        @unlink(preg_replace('/\.phpt$/','.log',$file));
+        @unlink(preg_replace('/\.phpt$/','.exp',$file));
+        @unlink(preg_replace('/\.phpt$/','.out',$file));
 
         // Check if test should be skipped.
         $info = '';
@@ -161,9 +161,9 @@ class PEAR_RunTest
                 //$output = `$extra $php $info_params -f $tmp_skipif`;
                 $output = `$php $info_params -f $tmp_skipif`;
                 unlink($tmp_skipif);
-                if (eregi("^skip", trim($output))) {
+                if (preg_match("/^skip/", trim($output))) {
                     $skipreason = "SKIP $tested";
-                    $reason = (eregi("^skip[[:space:]]*(.+)\$", trim($output))) ? eregi_replace("^skip[[:space:]]*(.+)\$", "\\1", trim($output)) : FALSE;
+                    $reason = (preg_match("/^skip[[:space:]]*(.+)\$/", trim($output))) ? preg_replace("/^skip[[:space:]]*(.+)\$/", "\\1", trim($output)) : FALSE;
                     if ($reason) {
                         $skipreason .= " (reason: $reason)";
                     }
@@ -175,14 +175,14 @@ class PEAR_RunTest
                     }
                     return 'SKIPPED';
                 }
-                if (eregi("^info", trim($output))) {
-                    $reason = (ereg("^info[[:space:]]*(.+)\$", trim($output))) ? ereg_replace("^info[[:space:]]*(.+)\$", "\\1", trim($output)) : FALSE;
+                if (preg_match("/^info/", trim($output))) {
+                    $reason = (preg_match("/^info[[:space:]]*(.+)\$/", trim($output))) ? preg_replace("/^info[[:space:]]*(.+)\$/", "\\1", trim($output)) : FALSE;
                     if ($reason) {
                         $info = " (info: $reason)";
                     }
                 }
-                if (eregi("^warn", trim($output))) {
-                    $reason = (ereg("^warn[[:space:]]*(.+)\$", trim($output))) ? ereg_replace("^warn[[:space:]]*(.+)\$", "\\1", trim($output)) : FALSE;
+                if (preg_match("/^warn/", trim($output))) {
+                    $reason = (preg_match("/^warn[[:space:]]*(.+)\$/", trim($output))) ? preg_replace("/^warn[[:space:]]*(.+)\$/", "\\1", trim($output)) : FALSE;
                     if ($reason) {
                         $warn = true; /* only if there is a reason */
                         $info = " (warn: $reason)";
@@ -288,8 +288,8 @@ class PEAR_RunTest
             $GLOBALS['__PHP_FAILED_TESTS__'][] = array(
                             'name' => $file,
                             'test_name' => $tested,
-                            'output' => ereg_replace('\.phpt$','.log', $file),
-                            'diff'   => ereg_replace('\.phpt$','.diff', $file),
+                            'output' => preg_replace('/\.phpt$/','.log', $file),
+                            'diff'   => preg_replace('/\.phpt$/','.diff', $file),
                             'info'   => $info,
                             'return' => $return_value
                             );
@@ -297,15 +297,15 @@ class PEAR_RunTest
             $GLOBALS['__PHP_FAILED_TESTS__'][] = array(
                             'name' => $file,
                             'test_name' => $tested,
-                            'output' => ereg_replace('\.phpt$','.log', $file),
-                            'diff'   => ereg_replace('\.phpt$','.diff', $file),
+                            'output' => preg_replace('/\.phpt$/','.log', $file),
+                            'diff'   => preg_replace('/\.phpt$/','.diff', $file),
                             'info'   => $info,
                             );
         }
 
         // write .exp
         if (strpos($log_format,'E') !== FALSE) {
-            $logname = ereg_replace('\.phpt$','.exp',$file);
+            $logname = preg_replace('/\.phpt$/','.exp',$file);
             if (!$log = fopen($logname,'w')) {
                 return PEAR::raiseError("Cannot create test log - $logname");
             }
@@ -315,7 +315,7 @@ class PEAR_RunTest
 
         // write .out
         if (strpos($log_format,'O') !== FALSE) {
-            $logname = ereg_replace('\.phpt$','.out',$file);
+            $logname = preg_replace('/\.phpt$/','.out',$file);
             if (!$log = fopen($logname,'w')) {
                 return PEAR::raiseError("Cannot create test log - $logname");
             }
@@ -325,7 +325,7 @@ class PEAR_RunTest
 
         // write .diff
         if (strpos($log_format,'D') !== FALSE) {
-            $logname = ereg_replace('\.phpt$','.diff',$file);
+            $logname = preg_replace('/\.phpt$/','.diff',$file);
             if (!$log = fopen($logname,'w')) {
                 return PEAR::raiseError("Cannot create test log - $logname");
             }
@@ -337,7 +337,7 @@ class PEAR_RunTest
 
         // write .log
         if (strpos($log_format,'L') !== FALSE) {
-            $logname = ereg_replace('\.phpt$','.log',$file);
+            $logname = preg_replace('/\.phpt$/','.log',$file);
             if (!$log = fopen($logname,'w')) {
                 return PEAR::raiseError("Cannot create test log - $logname");
             }
