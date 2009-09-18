@@ -229,7 +229,7 @@ class InputFilter {
 			$attrSubSet = explode('=', trim($attrSet[$i]));
 			list ($attrSubSet[0]) = explode(' ', $attrSubSet[0]);
 			// removes all "non-regular" attr names AND also attr blacklisted
-			if ((!eregi("^[a-z]*$", $attrSubSet[0])) || (($this->xssAuto) && ((in_array(strtolower($attrSubSet[0]), $this->attrBlacklist)) || (substr($attrSubSet[0], 0, 2) == 'on'))))
+			if ((!preg_match("/^[a-z]*$/", $attrSubSet[0])) || (($this->xssAuto) && ((in_array(strtolower($attrSubSet[0]), $this->attrBlacklist)) || (substr($attrSubSet[0], 0, 2) == 'on'))))
 				continue;
 			// xss attr value filtering
 			if ($attrSubSet[1]) {
