@@ -94,7 +94,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
                 if ($next == '') { // get the last insert query
                     $next = 'insert';
                 }
-                if ((eregi('update', $next)) || (eregi('create', $next)) || (eregi('insert', $next)) || (eregi('drop t', $next)) ) {
+                if ((preg_match('/update/i', $next)) || (preg_match('/create/i', $next)) || (preg_match('/insert/i', $next)) || (preg_match('/drop t/i', $next)) ) {
                     $next = '';
                     $sql_array[] = substr($restore_query, 0, $i);
                     $restore_query = ltrim(substr($restore_query, $i+1));

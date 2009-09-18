@@ -1131,19 +1131,19 @@ for ($xx=0,$zz=sizeof($languages); $xx<$zz;$xx++){
 <?php
 // display preview button if filetype 
 // .gif,.jpg,.png,.html,.htm,.txt,.tif,.bmp
-if (	eregi('.gif',$content_array[$ii]['file'])
+if (	preg_match('/.gif/i',$content_array[$ii]['file'])
 	or
-	eregi('.jpg',$content_array[$ii]['file'])
+	preg_match('/.jpg/i',$content_array[$ii]['file'])
 	or
-	eregi('.png',$content_array[$ii]['file'])
+	preg_match('/.png/i',$content_array[$ii]['file'])
 	or
-	eregi('.html',$content_array[$ii]['file'])
+	preg_match('/.html/i',$content_array[$ii]['file'])
 	or
-	eregi('.htm',$content_array[$ii]['file'])
+	preg_match('/.htm/i',$content_array[$ii]['file'])
 	or
-	eregi('.txt',$content_array[$ii]['file'])
+	preg_match('/.txti/',$content_array[$ii]['file'])
 	or
-	eregi('.bmp',$content_array[$ii]['file'])
+	preg_match('/.bmp/i',$content_array[$ii]['file'])
 	) {
 ?>
  <a style="cursor:pointer" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_CONTENT_PREVIEW,'pID=media&coID='.$content_array[$ii]['id']); ?>', 'popup', 'toolbar=0, width=640, height=600')"
