@@ -54,19 +54,19 @@ function vam_Security()
  //echo '</pre>';
         foreach ($_GET as $secvalue) {
             if (!is_array($secvalue)) {
-                if ((eregi("<[^>]*script.*\"?[^>]*>", $secvalue)) ||
-                        (eregi(".*[[:space:]](or|and)[[:space:]].*(=|like).*", $secvalue)) ||
-                        (eregi("<[^>]*object.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*iframe.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*applet.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*meta.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*style.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*form.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*window.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*alert.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*img.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*document.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*cookie.*\"?[^>]*>", $secvalue))) {
+                if ((preg_match("/<[^>]*script.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/.*[[:space:]](or|and)[[:space:]].*(=|like).*/", $secvalue)) ||
+                        (preg_match("/<[^>]*object.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*iframe.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*applet.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*meta.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*style.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*form.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*window.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*alert.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*img.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*document.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*cookie.*\"?[^>]*>/", $secvalue))) {
                         vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
                        vam_redirect(FILENAME_DEFAULT);
                 }
@@ -78,15 +78,15 @@ function vam_Security()
     if ( count($_POST) > 0) {
         foreach ($_POST as $secvalue) {
             if (!is_array($secvalue)) {
-                if ((eregi("<[^>]*script.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*object.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*iframe.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*applet.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*window.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*alert.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*document.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*cookie.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*meta.*\"?[^>]*>", $secvalue))
+                if ((preg_match("/<[^>]*script.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*object.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*iframe.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*applet.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*window.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*alert.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*document.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*cookie.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*meta.*\"?[^>]*>/", $secvalue))
                         ) {
 
                         vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
@@ -100,19 +100,19 @@ function vam_Security()
     if ( count($_COOKIE) > 0) {
         foreach ($_COOKIE as $secvalue) {
             if (!is_array($secvalue)) {
-                if ((eregi("<[^>]*script.*\"?[^>]*>", $secvalue)) ||
-                        (eregi(".*[[:space:]](or|and)[[:space:]].*(=|like).*", $secvalue)) ||
-                        (eregi("<[^>]*object.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*iframe.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*applet.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*meta.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*style.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*form.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*window.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*alert.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*document.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*cookie.*\"?[^>]*>", $secvalue)) ||
-                        (eregi("<[^>]*img.*\"?[^>]*>", $secvalue))
+                if ((preg_match("/<[^>]*script.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/.*[[:space:]](or|and)[[:space:]].*(=|like).*/", $secvalue)) ||
+                        (preg_match("/<[^>]*object.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*iframe.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*applet.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*meta.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*style.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*form.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*window.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*alert.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*document.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*cookie.*\"?[^>]*>/", $secvalue)) ||
+                        (preg_match("/<[^>]*img.*\"?[^>]*>/", $secvalue))
                         ) {
 
                         vamMailHackAttempt(__FILE__,__LINE__,'xt:C Security Alert','Intrusion detection.');
