@@ -158,7 +158,7 @@ function vam_redirect($url) {
   }
 
   function vam_sanitize_string($string) {
-    $string = ereg_replace(' +', ' ', $string);
+    $string = preg_replace('/ +/', ' ', $string);
 
     return preg_replace("/[<>]/", '_', $string);
   }
@@ -253,7 +253,7 @@ function vam_date_short($raw_date) {
 	if (@ date('Y', mktime($hour, $minute, $second, $month, $day, $year)) == $year) {
 		return date(DATE_FORMAT, mktime($hour, $minute, $second, $month, $day, $year));
 	} else {
-		return ereg_replace('2037'.'$', $year, date(DATE_FORMAT, mktime($hour, $minute, $second, $month, $day, 2037)));
+		return preg_replace('/2037/'.'$', $year, date(DATE_FORMAT, mktime($hour, $minute, $second, $month, $day, 2037)));
 	}
 
 }
@@ -1131,8 +1131,8 @@ function vam_reset_cache_block($cache_block) {
 						$cached_file = $cache_blocks[$i]['file'];
 						$languages = vam_get_languages();
 						for ($j = 0, $k = sizeof($languages); $j < $k; $j ++) {
-							$cached_file_unlink = ereg_replace('-language', '-'.$languages[$j]['directory'], $cached_file);
-							if (ereg('^'.$cached_file_unlink, $cache_file)) {
+							$cached_file_unlink = preg_replace('/-language/i', '-'.$languages[$j]['directory'], $cached_file);
+							if (preg_match('/^/'.$cached_file_unlink, $cache_file)) {
 								@ unlink(DIR_FS_CACHE.$cache_file);
 							}
 						}
@@ -1143,7 +1143,7 @@ function vam_reset_cache_block($cache_block) {
 				$cached_file = $cache_blocks[$i]['file'];
 				$languages = vam_get_languages();
 				for ($i = 0, $n = sizeof($languages); $i < $n; $i ++) {
-					$cached_file = ereg_replace('-language', '-'.$languages[$i]['directory'], $cached_file);
+					$cached_file = preg_replace('/-language/i', '-'.$languages[$i]['directory'], $cached_file);
 					@ unlink(DIR_FS_CACHE.$cached_file);
 				}
 			}
@@ -1449,7 +1449,7 @@ function vam_rand($min = null, $max = null) {
 // nl2br() prior PHP 4.2.0 did not convert linefeeds on all OSs (it only converted \n)
 function vam_convert_linefeeds($from, $to, $string) {
 	if ((PHP_VERSION < "4.0.5") && is_array($from)) {
-		return ereg_replace('('.implode('|', $from).')', $to, $string);
+		return preg_replace('/('.implode('|', $from).')/', $to, $string);
 	} else {
 		return str_replace($from, $to, $string);
 	}
@@ -1577,7 +1577,7 @@ function vam_get_lang_definition($search_lang, $lang_array, $modifier) {
 function vam_CheckExt($filename, $ext) {
 	$passed = FALSE;
 	$testExt = "\.".$ext."$";
-	if (eregi($testExt, $filename)) {
+	if (preg_match('/'.$testExt.'/', $filename)) {
 		$passed = TRUE;
 	}
 	return $passed;
