@@ -69,9 +69,9 @@ class vam_afterbuy_functions {
 		$customer['firma'] = $oData['billing_company'];
 		$customer['vorname'] = $oData['billing_firstname'];
 		$customer['nachname'] = $oData['billing_lastname'];
-		$customer['strasse'] = ereg_replace(" ", "%20", $oData['billing_street_address']);
+		$customer['strasse'] = preg_replace(" ", "%20", $oData['billing_street_address']);
 		$customer['plz'] = $oData['billing_postcode'];
-		$customer['ort'] = ereg_replace(" ", "%20", $oData['billing_city']);
+		$customer['ort'] = preg_replace(" ", "%20", $oData['billing_city']);
 		$customer['tel'] = $oData['billing_telephone'];
 		$customer['fax'] = "";
 		$customer['mail'] = $oData['customers_email_address'];
@@ -93,9 +93,9 @@ class vam_afterbuy_functions {
 		$customer['d_firma'] = $oData['delivery_company'];
 		$customer['d_vorname'] = $oData['delivery_firstname'];
 		$customer['d_nachname'] = $oData['delivery_lastname'];
-		$customer['d_strasse'] = ereg_replace(" ", "%20", $oData['delivery_street_address']);
+		$customer['d_strasse'] = preg_replace(" ", "%20", $oData['delivery_street_address']);
 		$customer['d_plz'] = $oData['delivery_postcode'];
-		$customer['d_ort'] = ereg_replace(" ", "%20", $oData['delivery_city']);
+		$customer['d_ort'] = preg_replace(" ", "%20", $oData['delivery_city']);
 		$customer['d_land'] = $oData['delivery_country_iso_code_2'];
 
 		// get products related to order
@@ -139,12 +139,12 @@ class vam_afterbuy_functions {
 			if ($artnr == '')
 				$artnr = $pDATA['products_id'];
 			$DATAstring .= "Artikelnr_".$nr."=".$artnr."&";
-			$DATAstring .= "Artikelname_".$nr."=".ereg_replace("&", "%38", ereg_replace("\"", "", ereg_replace(" ", "%20", $pDATA['products_name'])))."&";
+			$DATAstring .= "Artikelname_".$nr."=".preg_replace("&", "%38", preg_replace("\"", "", preg_replace(" ", "%20", $pDATA['products_name'])))."&";
 			
 			if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $pDATA['products_price']+=$pDATA['products_tax'];
 			if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 0) $pDATA['products_tax']=0; 
-			$price = ereg_replace("\.", ",", $pDATA['products_price']);
-			$tax = ereg_replace("\.", ",", $pDATA['products_tax']);
+			$price = preg_replace("\.", ",", $pDATA['products_price']);
+			$tax = preg_replace("\.", ",", $pDATA['products_tax']);
 
 			$DATAstring .= "ArtikelEPreis_".$nr."=".$price."&";
 			$DATAstring .= "ArtikelMwst_".$nr."=".$tax."&";
@@ -219,7 +219,7 @@ class vam_afterbuy_functions {
 			$nr ++;
 			$DATAstring .= "Artikelnr_".$nr."=99999999&";
 			$DATAstring .= "Artikelname_".$nr."=Nachname&";
-			$cod_fee = ereg_replace("\.", ",", $cod_fee);
+			$cod_fee = preg_replace("\.", ",", $cod_fee);
 			$DATAstring .= "ArtikelEPreis_".$nr."=".$cod_fee."&";
 			$DATAstring .= "ArtikelMwst_".$nr."=".$tax."&";
 			$DATAstring .= "ArtikelMenge_".$nr."=1&";
@@ -231,7 +231,7 @@ class vam_afterbuy_functions {
 			$nr ++;
 			$DATAstring .= "Artikelnr_".$nr."=99999998&";
 			$DATAstring .= "Artikelname_".$nr."=Rabatt&";
-			$discount = ereg_replace("\.", ",", $discount);
+			$discount = preg_replace("\.", ",", $discount);
 			$DATAstring .= "ArtikelEPreis_".$nr."=".$discount."&";
 			$DATAstring .= "ArtikelMwst_".$nr."=".$tax."&";
 			$DATAstring .= "ArtikelMenge_".$nr."=1&";
@@ -242,7 +242,7 @@ class vam_afterbuy_functions {
 			$nr ++;
 			$DATAstring .= "Artikelnr_".$nr."=99999997&";
 			$DATAstring .= "Artikelname_".$nr."=Gutschein&";
-			$gv = ereg_replace("\.", ",", ($gv * (-1)));
+			$gv = preg_replace("\.", ",", ($gv * (-1)));
 			$DATAstring .= "ArtikelEPreis_".$nr."=".$gv."&";
 			$DATAstring .= "ArtikelMwst_".$nr."=0&";
 			$DATAstring .= "ArtikelMenge_".$nr."=1&";
@@ -253,7 +253,7 @@ class vam_afterbuy_functions {
 			$nr ++;
 			$DATAstring .= "Artikelnr_".$nr."=99999996&";
 			$DATAstring .= "Artikelname_".$nr."=Kupon&";
-			$coupon = ereg_replace("\.", ",", ($coupon * (-1)));
+			$coupon = preg_replace("\.", ",", ($coupon * (-1)));
 			$DATAstring .= "ArtikelEPreis_".$nr."=".$coupon."&";
 			$DATAstring .= "ArtikelMwst_".$nr."=0&";
 			$DATAstring .= "ArtikelMenge_".$nr."=1&";
@@ -262,7 +262,7 @@ class vam_afterbuy_functions {
 
 		$DATAstring .= "PosAnz=".$p_count."&";
 
-		$vK = ereg_replace("\.", ",", $shipping);
+		$vK = preg_replace("\.", ",", $shipping);
 
 		if ($oData['payment_method'] == 'cod')
 			$oData['payment_method'] = 'Nachnahme';
@@ -296,7 +296,7 @@ class vam_afterbuy_functions {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $DATAstring);
 		$result = curl_exec($ch);
 
-		if (ereg("<success>1</success>", $result)) {
+		if (preg_match("/<success>1</success>/i", $result)) {
 			// result ok, mark order
 			// extract ID from result
 			$cdr = explode('<KundenNr>', $result);
