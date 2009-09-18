@@ -574,7 +574,7 @@ class CIP {
                 if (isset($fields['Extra']))    $schema.=' '.$fields['Extra'];
                 $schema.=','."\n";
             }
-            $schema = ereg_replace(",\n$", '', $schema);
+            $schema = preg_replace("/,\n$/", '', $schema);
             // add the keys
             $index = array();
             $keys_query = cip_db_query("show keys from `".$table."`");
@@ -612,11 +612,11 @@ class CIP {
                     if (!isset($rows[$i]))    $schema .= 'NULL, ';
                     elseif (vam_not_null($rows[$i])) {
                         $row=addslashes($rows[$i]);
-                        $row=ereg_replace("\n#", "\n".'\#', $row);
+                        $row=preg_replace("/\n#/", "\n".'\#', $row);
                         $schema.='\''.$row.'\', ';
                     } else    $schema .= '\'\', ';
                 }
-                $schema=ereg_replace(', $', '', $schema).');'."\n";
+                $schema=preg_replace('/, $/', '', $schema).');'."\n";
                 fputs($fp, $schema);
             }
         }

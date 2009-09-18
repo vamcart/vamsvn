@@ -331,7 +331,7 @@ class ContribInstallerBaseTag {
         fwrite($file, $content);
         fclose($file);
     }
-    function linebreak_view($line) {return ereg_replace( "[[:space:]]*\n", "[r][n]\r\n",  ereg_replace("[[:space:]]*\r", "", $line));}
+    function linebreak_view($line) {return preg_replace( "/[[:space:]]*\n/i", "[r][n]\r\n",  preg_replace("/[[:space:]]*\r/i", "", $line));}
 
     function linebreak_fixing($line) {
 		$line = str_replace("\r\n","\r",$line);
