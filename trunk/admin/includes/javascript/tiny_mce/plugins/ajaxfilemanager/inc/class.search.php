@@ -113,7 +113,7 @@
 
 							$fileTime = @filemtime($path);
 							$fileSize = @filesize($path);
-							if($this->searchkeywords['name'] !== ''  && @eregi($this->searchkeywords['name'], $file) === false)
+							if($this->searchkeywords['name'] !== ''  && @preg_match('/'.$this->searchkeywords['name'].'/i', $file) === false)
 							{
 								$isValid = false;
 							}

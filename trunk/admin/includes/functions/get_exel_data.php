@@ -598,7 +598,7 @@ class Db {
     }
 
     function strip_loops($fid) {
-      $this->files[$fid]=eregi_replace("<loop.+<\/loop [1-9A-Za-z_]+>","",$this->files[$fid]);
+      $this->files[$fid]=preg_replace("/<loop.+<\/loop [1-9A-Za-z_]+>/","",$this->files[$fid]);
     }
 
   function fid_select($fid, $select, $a, $active = 0, $ass = false, $ass_title = ""){
@@ -844,9 +844,9 @@ class Db {
             }
             if (strpos($tempcode,"<if $key") !== false ) {
               if ($value >'' ) {
-                $tempcode=eregi_replace("<if $key>(.*)</if $key>","\\1",$tempcode);
+                $tempcode=preg_replace("/<if $key>(.*)</if $key>/","\\1",$tempcode);
               } else {
-                $tempcode=eregi_replace("<if $key>(.*)</if $key>","",$tempcode);
+                $tempcode=preg_replace("/<if $key>(.*)</if $key>/","",$tempcode);
               }
             }
             if ($numfield) {
