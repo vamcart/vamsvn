@@ -17,7 +17,7 @@
    
 function vam_remove_non_numeric($var) 
 	{	  
-	  $var=ereg_replace('[^0-9]','',$var);
+	  $var=preg_replace('/[^0-9]/','',$var);
 	  return $var;
      }
  ?>
