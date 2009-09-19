@@ -79,7 +79,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       if(vam_not_null($host) && vam_not_null($type)) {
         @exec("nslookup -type=$type $host", $output);
         while(list($k, $line) = each($output)) {
-          if(preg_match("/^$host/", $line)) {
+          if(preg_match("/^$host/i", $line)) {
             return true;
           }
         }
