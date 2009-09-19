@@ -22,7 +22,7 @@ function vam_count_modules($modules = '') {
 
     if (empty($modules)) return $count;
 
-    $modules_array = split(';', $modules);
+    $modules_array = preg_split('/;/', $modules);
 
     for ($i=0, $n=sizeof($modules_array); $i<$n; $i++) {
       $class = substr($modules_array[$i], 0, strrpos($modules_array[$i], '.'));

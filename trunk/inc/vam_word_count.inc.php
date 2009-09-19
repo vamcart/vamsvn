@@ -19,7 +19,7 @@
 
   // Get the number of times a word/character is present in a string
   function vam_word_count($string, $needle) {
-    $temp_array = split($needle, $string);
+    $temp_array = preg_split('/'.$needle.'/', $string);
 
     return sizeof($temp_array);
   }
