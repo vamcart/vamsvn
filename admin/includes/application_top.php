@@ -428,7 +428,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   require_once (DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$_SESSION['language'] . '.php');
   require_once (DIR_WS_LANGUAGES.$_SESSION['language'].'/'.$_SESSION['language'].'.inc.php');
   require_once (DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/buttons.php');
-  $current_page = split('\?', basename($_SERVER['PHP_SELF'])); $current_page = $current_page[0]; // for BadBlue(Win32) webserver compatibility
+  $current_page = preg_split('/\?/', basename($_SERVER['PHP_SELF'])); $current_page = $current_page[0]; // for BadBlue(Win32) webserver compatibility
   if (file_exists(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$current_page)) {
     include(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.  $current_page);
   }
