@@ -63,12 +63,12 @@
 
         if ($age > '0') {
           //process installed shipping modules
-          if ($_SESSION['shipping']['id'] == 'flat_flat') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_FLAT);
-          if ($_SESSION['shipping']['id'] == 'item_item') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_ITEM);
-          if ($_SESSION['shipping']['id'] == 'table_table') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_TABLE);
-          if ($_SESSION['shipping']['id'] == 'zones_zones') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_ZONES);
-          if ($_SESSION['shipping']['id'] == 'ap_ap') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_AP);
-          if ($_SESSION['shipping']['id'] == 'dp_dp') $ps_zones = split("[:,]", MODULE_ORDER_TOTAL_PS_FEE_DP);
+          if ($_SESSION['shipping']['id'] == 'flat_flat') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_FLAT);
+          if ($_SESSION['shipping']['id'] == 'item_item') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_ITEM);
+          if ($_SESSION['shipping']['id'] == 'table_table') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_TABLE);
+          if ($_SESSION['shipping']['id'] == 'zones_zones') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_ZONES);
+          if ($_SESSION['shipping']['id'] == 'ap_ap') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_AP);
+          if ($_SESSION['shipping']['id'] == 'dp_dp') $ps_zones = preg_split("/[:,]/", MODULE_ORDER_TOTAL_PS_FEE_DP);
 
             for ($i = 0; $i < count($ps_zones); $i++) {
             if ($ps_zones[$i] == $order->billing['country']['iso_code_2']) {
