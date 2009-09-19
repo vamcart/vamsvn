@@ -139,7 +139,7 @@ class shoppingCart {
                 $blank_value = TRUE;
               } else {
                 $option_1 = substr($option, strlen('txt_'));
-                $option_2 = split('_', $option_1);
+                $option_2 = preg_split('/_/', $option_1);
                 $option = $option_2[0];
                 $attr_value = htmlspecialchars(stripslashes($value), ENT_QUOTES);
                 $value = $option_2[1];
@@ -186,7 +186,7 @@ class shoppingCart {
                 $blank_value = TRUE;
               } else {
                 $option_1 = substr($option, strlen('txt_'));
-                $option_2 = split('_', $option_1);
+                $option_2 = preg_split('/_/', $option_1);
                 $option = $option_2[0];
                 $attr_value = htmlspecialchars(stripslashes($value), ENT_QUOTES);
                 $value = $option_2[1];

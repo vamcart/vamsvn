@@ -175,7 +175,7 @@ class ot_coupon {
 						
 						for ($i = 0; $i < sizeof($order->products); $i ++) {
 							if ($get_result['restrict_to_products']) {
-								$pr_ids = split("[,]", $get_result['restrict_to_products']);
+								$pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
 								for ($ii = 0; $p < count($pr_ids); $ii ++) {
 									if ($pr_ids[$ii] == vam_get_prid($order->products[$i]['id'])) {
 										if ($get_result['coupon_type'] == 'P') {
@@ -191,10 +191,10 @@ class ot_coupon {
 									}
 								}
 							} else {
-								$cat_ids = split("[,]", $get_result['restrict_to_categories']);
+								$cat_ids = preg_split("/[,]/", $get_result['restrict_to_categories']);
 								for ($i = 0; $i < sizeof($order->products); $i ++) {
 									$my_path = vam_get_product_path(vam_get_prid($order->products[$i]['id']));
-									$sub_cat_ids = split("[_]", $my_path);
+									$sub_cat_ids = preg_split("/[_]/", $my_path);
 									for ($iii = 0; $iii < count($sub_cat_ids); $iii ++) {
 										for ($ii = 0; $ii < count($cat_ids); $ii ++) {
 											if ($sub_cat_ids[$iii] == $cat_ids[$ii]) {
@@ -263,7 +263,7 @@ class ot_coupon {
 						
 						
 						if ($get_result['restrict_to_products']) {
-							$pr_ids = split("[,]", $get_result['restrict_to_products']);
+							$pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
 							for ($p = 0; $p < sizeof($pr_ids); $p ++) {
 								if ($pr_ids[$p] == $t_prid)
 									$valid_product = true;
@@ -272,9 +272,9 @@ class ot_coupon {
 						                                          
 						if ($get_result['restrict_to_categories']) {
                         // v5.13a Tanaka 2005-4-30:  New code, this correctly identifies valid products in subcategories
-                        $cat_ids = split("[,]", $get_result['restrict_to_categories']);
+                        $cat_ids = preg_split("/[,]/", $get_result['restrict_to_categories']);
                         $my_path = vam_get_product_path($t_prid);
-                        $sub_cat_ids = split("[_]", $my_path);
+                        $sub_cat_ids = preg_split("/[_]/", $my_path);
                         for ($iii = 0; $iii < count($sub_cat_ids); $iii++) {
                             for ($ii = 0; $ii < count($cat_ids); $ii++) {
                                 if ($sub_cat_ids[$iii] == $cat_ids[$ii]) {
@@ -427,7 +427,7 @@ $order->info['tax'] -= $tod_amount;
 			$get_result = vam_db_fetch_array($coupon_get);
 			$in_cat = true;
 			if ($get_result['restrict_to_categories']) {
-				$cat_ids = split("[,]", $get_result['restrict_to_categories']);
+				$cat_ids = preg_split("/[,]/", $get_result['restrict_to_categories']);
 				$in_cat = false;
 				for ($i = 0; $i < count($cat_ids); $i ++) {
 					if (is_array($this->contents)) {
@@ -445,7 +445,7 @@ $order->info['tax'] -= $tod_amount;
 			$in_cart = true;
 			if ($get_result['restrict_to_products']) {
 
-				$pr_ids = split("[,]", $get_result['restrict_to_products']);
+				$pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
 
 				$in_cart = false;
 				$products_array = $_SESSION['cart']->get_products();
