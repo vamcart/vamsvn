@@ -21,7 +21,7 @@
     $search_str = trim(utf8_strtolower($search_str));
 
 // Break up $search_str on whitespace; quoted string will be reconstructed later
-    $pieces = split('[[:space:]]+', $search_str);
+    $pieces = preg_split('/[[:space:]]+/', $search_str);
     $objects = array();
     $tmpstring = '';
     $flag = '';

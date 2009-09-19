@@ -71,7 +71,7 @@
 	{
 		$query = $_GET['q'];
 		if(!empty($query)){
-			$blocks = split("-", $query);
+			$blocks = preg_split("/-/", $query);
 		}else{ $blocks = array(); }
 		if( array_key_exists( $products_parameters_id, $selected_blocks))
 		{
@@ -125,7 +125,7 @@
 	{
 		$query = $_GET['q'];
 		if(!empty($query)){
-			$blocks = split("-", $query);
+			$blocks = preg_split("/-/", $query);
 		}else{ $blocks = array(); }
 		
 		$params_ids = array();
@@ -162,7 +162,7 @@
 	{
 		$query = $_GET['q'];
 		if(!empty($query)){
-			$blocks = split("-", $query);
+			$blocks = preg_split("/-/", $query);
 		}else{ $blocks = array(); }
 		$paramNames = array();
 		if( count($blocks) > 0){
