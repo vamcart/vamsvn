@@ -92,38 +92,6 @@
           </tr>
         </table></td>
       </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
-      <tr>
-        <td align="center">
-<?php
-  if (function_exists('ob_start')) {
-?>
-<style type="text/css">
-.p {text-align: left;}
-.e {background-color: #ccccff; font-weight: bold;}
-.h {background-color: #9999cc; font-weight: bold;}
-.v {background-color: #cccccc;}
-i {color: #666666;}
-hr {display: none;}
-</style>
-<?php
-    ob_start();
-    phpinfo();
-    $phpinfo = ob_get_contents();
-    ob_end_clean();
-
-    $phpinfo = str_replace('border: 1px', '', $phpinfo);
-    preg_match('/<body>(.*)</body>/', $phpinfo, $regs);
-    echo $regs[1];
-  } else {
-    phpinfo();
-  }
-?>
-
-        </td>
-      </tr>
     </table></td>
 <!-- body_text_eof //-->
   </tr>
