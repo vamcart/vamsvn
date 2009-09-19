@@ -59,7 +59,7 @@ if ($_GET['action'] == 'send') {
 	$gv_result = vam_db_fetch_array($gv_query);
 	$customer_amount = $gv_result['amount'];
 	$gv_amount = trim(str_replace(",", ".", $_POST['amount']));
-	if (ereg('[^0-9/.]', $gv_amount)) {
+	if (preg_match('/[^0-9/.]/', $gv_amount)) {
 		$error = true;
 		$error_amount = ERROR_ENTRY_AMOUNT_CHECK;
 	}

@@ -402,7 +402,7 @@ $order->info['tax'] -= $tod_amount;
 			$t_prid = vam_get_prid($products[$i]['id']);
 			$gv_query = vam_db_query("select products_price, products_tax_class_id, products_model from ".TABLE_PRODUCTS." where products_id = '".$t_prid."'");
 			$gv_result = vam_db_fetch_array($gv_query);
-			if (ereg('^GIFT', addslashes($gv_result['products_model']))) {
+			if (preg_match('/^GIFT/', addslashes($gv_result['products_model']))) {
 				$qty = $_SESSION['cart']->get_quantity($t_prid);
 				$products_tax = $vamPrice->TAX[$gv_result['products_tax_class_id']];
 				if ($this->include_tax == 'false') {

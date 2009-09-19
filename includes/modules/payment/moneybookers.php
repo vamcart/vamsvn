@@ -149,7 +149,7 @@ class moneybookers {
 
 		$process_button_string = vam_draw_hidden_field('pay_to_email', MODULE_PAYMENT_MONEYBOOKERS_EMAILID).vam_draw_hidden_field('transaction_id', $this->transaction_id).vam_draw_hidden_field('return_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, 'trid='.$this->transaction_id, 'NONSSL', false)).vam_draw_hidden_field('cancel_url', vam_href_link(FILENAME_CHECKOUT_PAYMENT, MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT1.$this->code.MODULE_PAYMENT_MONEYBOOKERS_ERRORTEXT2, 'SSL', true, false)).vam_draw_hidden_field('status_url', 'mailto:'.MODULE_PAYMENT_MONEYBOOKERS_EMAILID).vam_draw_hidden_field('language', $mbLanguage).vam_draw_hidden_field('pay_from_email', $order->customer['email_address']).vam_draw_hidden_field('amount', $amount).vam_draw_hidden_field('currency', $mbCurrency).vam_draw_hidden_field('detail1_description', STORE_NAME).vam_draw_hidden_field('detail1_text', MODULE_PAYMENT_MONEYBOOKERS_ORDER_TEXT.strftime(DATE_FORMAT_LONG)).vam_draw_hidden_field('firstname', $order->billing['firstname']).vam_draw_hidden_field('lastname', $order->billing['lastname']).vam_draw_hidden_field('address', $order->billing['street_address']).vam_draw_hidden_field('postal_code', $order->billing['postcode']).vam_draw_hidden_field('city', $order->billing['city']).vam_draw_hidden_field('state', $order->billing['state']).vam_draw_hidden_field('country', $mbCountry).vam_draw_hidden_field('confirmation_note', MODULE_PAYMENT_MONEYBOOKERS_CONFIRMATION_TEXT);
 
-		if (ereg("[0-9]{6}", MODULE_PAYMENT_MONEYBOOKERS_REFID)) {
+		if (preg_match("/[0-9]{6}/", MODULE_PAYMENT_MONEYBOOKERS_REFID)) {
 			$process_button_string .= vam_draw_hidden_field('rid', MODULE_PAYMENT_MONEYBOOKERS_REFID);
 		}
 

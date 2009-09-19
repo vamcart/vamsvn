@@ -116,7 +116,7 @@
               $GLOBALS[$this->selected_module]->update_status();
             }
           } else { // PHP3 compatibility
-            @call_user_method('update_status', $GLOBALS[$this->selected_module]);
+            @call_user_func('update_status', $GLOBALS[$this->selected_module]);
           }
         }
       }

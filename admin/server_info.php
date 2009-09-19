@@ -115,7 +115,7 @@ hr {display: none;}
     ob_end_clean();
 
     $phpinfo = str_replace('border: 1px', '', $phpinfo);
-    ereg('<body>(.*)</body>', $phpinfo, $regs);
+    preg_match('/<body>(.*)</body>/', $phpinfo, $regs);
     echo $regs[1];
   } else {
     phpinfo();
