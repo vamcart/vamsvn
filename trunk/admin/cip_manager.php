@@ -55,7 +55,7 @@ if (isset($_REQUEST['contrib_dir']) && $_REQUEST['action']=='install'
   $current_path=$_REQUEST['contrib_dir'];
 }
 
-if (strstr($current_path, '..') or !is_dir($current_path) or (defined(DIR_FS_CIP) && !ereg('^' . DIR_FS_CIP, $current_path))) {
+if (strstr($current_path, '..') or !is_dir($current_path) or (defined(DIR_FS_CIP) && !preg_match('/^/' . DIR_FS_CIP, $current_path))) {
     $current_path = DIR_FS_CIP;
 }
 
