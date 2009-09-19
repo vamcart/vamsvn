@@ -37,7 +37,7 @@
 		if(mysql_num_rows($rs_row) == 0)
 		{
 			$insert = "insert into products_parameters_values(products_parameters_id, parameters_value) ";
-			$insert .= " values('".$r["products_parameters_id"]."', '" . mysql_escape_string($value) . "') ";
+			$insert .= " values('".$r["products_parameters_id"]."', '" . mysql_real_escape_string($value) . "') ";
 			mysql_query($insert);
 			if(mysql_error())
 			{
