@@ -46,7 +46,7 @@ $breadcrumb->add(NAVBAR_TITLE_SALES, vam_href_link(FILENAME_AFFILIATE_SALES, '',
 if (!isset($_GET['page'])) $_GET['page'] = 1;
 
 if (vam_not_null($_GET['a_period'])) {
-    $period_split = split('-', vam_db_prepare_input( $_GET['a_period'] ) );
+    $period_split = preg_split('/-/', vam_db_prepare_input( $_GET['a_period'] ) );
     $period_clause = " AND year(a.affiliate_date) = " . $period_split[0] . " and month(a.affiliate_date) = " . $period_split[1];
 }
 if (vam_not_null($_GET['a_status'])) {

@@ -60,7 +60,7 @@ if (isset($_SESSION['affiliate_ref'])) {
                                                             AND aa1.affiliate_rgt BETWEEN aa2.affiliate_lft AND aa2.affiliate_rgt
                                                             AND aa1.affiliate_id =  '" . $_SESSION['affiliate_ref'] . "'
                                                       ORDER by height asc limit 1, " . AFFILIATE_TIER_LEVELS);
-      	$affiliate_tier_percentage = split("[;]" , AFFILIATE_TIER_PERCENTAGE);
+      	$affiliate_tier_percentage = preg_split("/[;]/" , AFFILIATE_TIER_PERCENTAGE);
       	$i=0;
       	while ($affiliate_tiers_array = vam_db_fetch_array($affiliate_tiers_query)) {
       		$affiliate_percent = $affiliate_tier_percentage[$i];
