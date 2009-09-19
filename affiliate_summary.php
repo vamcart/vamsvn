@@ -67,7 +67,7 @@ $affiliate_percent = $affiliate['affiliate_commission_percent'];
 if ($affiliate_percent < AFFILIATE_PERCENT) $affiliate_percent = AFFILIATE_PERCENT;
 $vamTemplate->assign('affiliate_percent', vam_round($affiliate_percent, 2));
 
-$affiliate_percent_tier = split(";", AFFILIATE_TIER_PERCENTAGE, AFFILIATE_TIER_LEVELS );
+$affiliate_percent_tier = preg_split("/;/", AFFILIATE_TIER_PERCENTAGE, AFFILIATE_TIER_LEVELS );
 
 if ( (empty($_GET['a_period'])) or ( $_GET['a_period'] == "all" ) ) {
     $affiliate_sales = affiliate_level_statistics_query( $_SESSION['affiliate_id'] );
