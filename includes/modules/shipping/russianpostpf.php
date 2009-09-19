@@ -53,7 +53,7 @@
 				}
 
 				$signal_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_ISSET');
-				$signals = split("[,]", $signal_table);
+				$signals = preg_split("/[,]/", $signal_table);
 				if (!in_array(substr($prod['model'],0, $signal_num), $signals))
 				{
 					$wrapper = 0;
@@ -530,7 +530,7 @@
 			for ($i=1; $i<=5; $i++)
 			{
 				$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_' . $i);
-				$zones = split("[,]", $zones_table);
+				$zones = preg_split("/[,]/", $zones_table);
 				if (in_array($dest_zone_id, $zones))
 				{
 					$dest_zone = $i;
@@ -554,7 +554,7 @@
 
 			//смотрим запрещённые регионы
 			$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_LIMITATION_PF');
-			$zones = split("[,]", $zones_table);
+			$zones = preg_split("/[,]/", $zones_table);
 			if (in_array($dest_zone_id, $zones))
 			{
 				return false;
@@ -584,7 +584,7 @@
 			{
 				$zones_cost = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_'.$mode.'_' . $dest_zone);
 
-				$cost_table = split("[:,]" , $zones_cost);
+				$cost_table = preg_split("/[:,]/" , $zones_cost);
 
 				$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.$mode.'_REG'));
 

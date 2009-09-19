@@ -85,7 +85,7 @@
 
       for ($j=1; $j<=$this->num_dhl; $j++) {
         $countries_table = constant('MODULE_SHIPPING_DHL_COUNTRIES_' . $j);
-        $country_zones = split("[,]", $countries_table);
+        $country_zones = preg_split("/[,]/", $countries_table);
         if (in_array($dest_country, $country_zones)) {
           $dest_zone = $j;
           break;
@@ -106,7 +106,7 @@
         $n = 0;
 
         if ($dhl_cost_ecx != '') {
-          $dhl_table_ecx = split("[:,]" , $dhl_cost_ecx);
+          $dhl_table_ecx = preg_split("/[:,]/" , $dhl_cost_ecx);
           if ( ($shipping_weight > 10) and ($shipping_weight <= 20) ) {
             $shipping_ecx = number_format((($shipping_weight - 10)* 2 + 0.5), 0) * constant('MODULE_SHIPPING_DHL_STEP_ECX_20_' .$j) + $dhl_table_ecx[count ($dhl_table_ecx)-1];
           } elseif ( ($shipping_weight > 20) and ($shipping_weight <= 30) ) {
@@ -139,7 +139,7 @@
         }
 
         if ($dhl_cost_dox != '') {
-          $dhl_table_dox = split("[:,]" , $dhl_cost_dox);
+          $dhl_table_dox = preg_split("/[:,]/" , $dhl_cost_dox);
           if ( ($shipping_weight > 10) and ($shipping_weight <= 20) ) {
             $shipping_dox = number_format((($shipping_weight - 10)* 2 + 0.5), 0) * constant('MODULE_SHIPPING_DHL_STEP_DOX_20_' .$j) + $dhl_table_dox[count ($dhl_table_dox)-1];
           } elseif ( ($shipping_weight > 20) and ($shipping_weight <= 30) ) {
@@ -172,7 +172,7 @@
         }  
 
         if ($dhl_cost_wpx != '') {
-          $dhl_table_wpx = split("[:,]" , $dhl_cost_wpx);
+          $dhl_table_wpx = preg_split("/[:,]/" , $dhl_cost_wpx);
           if ( ($shipping_weight > 10) and ($shipping_weight <= 20) ) {
             $shipping_wpx = number_format((($shipping_weight - 10)* 2 + 0.5), 0) * constant('MODULE_SHIPPING_DHL_STEP_WPX_20_' .$j) + $dhl_table_wpx[count ($dhl_table_wpx)-1];
           } elseif ( ($shipping_weight > 20) and ($shipping_weight <= 30) ) {
@@ -205,7 +205,7 @@
         }
 
         if ($dhl_cost_mdx != '') {
-          $dhl_table_mdx = split("[:,]" , $dhl_cost_mdx);
+          $dhl_table_mdx = preg_split("/[:,]/" , $dhl_cost_mdx);
           if ( ($shipping_weight > 10) and ($shipping_weight <= 20) ) {
             $shipping_mdx = number_format((($shipping_weight - 10)* 2 + 0.5), 0) * constant('MODULE_SHIPPING_DHL_STEP_MDX_20_' .$j) + $dhl_table_mdx[count ($dhl_table_mdx)-1];
           } elseif ( ($shipping_weight > 20) and ($shipping_weight <= 30) ) {
@@ -238,7 +238,7 @@
         }
 
         if ($dhl_cost_sdx != '') {
-          $dhl_table_sdx = split("[:,]" , $dhl_cost_sdx);
+          $dhl_table_sdx = preg_split("/[:,]/" , $dhl_cost_sdx);
           if ( ($shipping_weight > 10) and ($shipping_weight <= 20) ) {
             $shipping_sdx = number_format((($shipping_weight - 10)* 2 + 0.5), 0) * constant('MODULE_SHIPPING_DHL_STEP_SDX_20_' .$j) + $dhl_table_sdx[count ($dhl_table_sdx)-1];
           } elseif ( ($shipping_weight > 20) and ($shipping_weight <= 30) ) {
