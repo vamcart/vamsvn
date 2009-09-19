@@ -34,7 +34,7 @@ function affiliate_level_statistics_query( $affiliate_id, $period = NULL) {
 	if (empty($affiliate_id) || !is_numeric($affiliate_id)) return false;
     $sales = array();
     if ( !( is_null( $period ) ) ) {
-    	$period_split = split( "-", $period );
+    	$period_split = preg_split( "/-/", $period );
     	$period_clause = " AND year(affiliate_date) = " . $period_split[0] . " and month(affiliate_date) = " . $period_split[1];
     }
 	else {

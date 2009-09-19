@@ -31,7 +31,7 @@
 	$query = $_GET['q'];
 	if(empty($query))
 	{ $blocks = array(); }
-	else { $blocks = split('-', $query );}
+	else { $blocks = preg_split('/-/', $query );}
 	
 	foreach($selected as $block => $blockItems)
 	{
