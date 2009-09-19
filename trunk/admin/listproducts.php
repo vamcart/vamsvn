@@ -57,7 +57,7 @@ td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: xx-small}
    $get_result=vam_db_fetch_array($coupon_get);
 
     echo "<tr><th>Product ID</th><th>Product Name</th><th>Product Size</th></tr><tr>";
-    $pr_ids = split("[,]", $get_result['restrict_to_products']);
+    $pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
     for ($i = 0; $i < count($pr_ids); $i++) {
       $result = vam_db_query("SELECT * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'and p.products_id = '" . $pr_ids[$i] . "'");
       if ($row = vam_db_fetch_array($result)) {

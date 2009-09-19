@@ -24,7 +24,7 @@ $filterParams = get_parameters_by_categories($categories_id);
 $query = $_GET['q'];
 if(empty($query))
 { $blocks = array(); }
-else { $blocks = split('-', $query );}
+else { $blocks = preg_split('/-/', $query );}
 //print "<pre>";
 //print_r($filterParams);
 //*
