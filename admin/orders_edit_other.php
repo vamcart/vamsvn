@@ -121,7 +121,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 </tr>
 
 <?php
-  $payments = split(';', MODULE_PAYMENT_INSTALLED);
+  $payments = preg_split('/;/', MODULE_PAYMENT_INSTALLED);
   for ($i=0; $i<count($payments); $i++){
   
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $payments[$i]);	
@@ -174,7 +174,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 </tr>
 
 <?php
-  $shippings = split(';', MODULE_SHIPPING_INSTALLED);
+  $shippings = preg_split('/;/', MODULE_SHIPPING_INSTALLED);
   for ($i=0; $i<count($shippings); $i++){
   
   if (isset($shippings[$i]) && is_file(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $shippings[$i])) {
@@ -188,7 +188,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
   }
   }
   
-  $order_shipping = split('_', $order->info['shipping_class']);
+  $order_shipping = preg_split('/_/', $order->info['shipping_class']);
   $order_shipping = $order_shipping[0];
   if (is_file(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $order_shipping .'.php')) {
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/shipping/' . $order_shipping .'.php');	
@@ -239,7 +239,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 
 
 <?php
-  $totals = split(';', MODULE_ORDER_TOTAL_INSTALLED);
+  $totals = preg_split('/;/', MODULE_ORDER_TOTAL_INSTALLED);
   for ($i=0; $i<count($totals); $i++){
   
   require(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/order_total/' . $totals[$i]);	
