@@ -310,7 +310,7 @@
                       <option value="0"><?php echo REPORT_ALL; ?></option>
 <?php
 
-  $payments = split(';', MODULE_PAYMENT_INSTALLED);
+  $payments = preg_split('/;/', MODULE_PAYMENT_INSTALLED);
   for ($i=0; $i<count($payments); $i++){
   
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $payments[$i]);	

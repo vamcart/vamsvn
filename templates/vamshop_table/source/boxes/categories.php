@@ -83,7 +83,7 @@ while ($categories = vam_db_fetch_array($categories_query, true)) {
 //------------------------
 if ($cPath) {
 	$new_path = '';
-	$id = split('_', $cPath);
+	$id = preg_split('/_/', $cPath);
 	reset($id);
 	while (list ($key, $value) = each($id)) {
 		unset ($prev_id);
