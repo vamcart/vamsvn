@@ -665,4 +665,6 @@ require_once(DIR_WS_INCLUDES . 'affiliate_application_top.php');
 
 require(DIR_WS_FUNCTIONS . 'customers_extra_fields.php');
 
+define('TAX_DECIMAL_PLACES','2');
+
 ?>
