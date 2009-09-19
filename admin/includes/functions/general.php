@@ -1132,7 +1132,7 @@ function vam_reset_cache_block($cache_block) {
 						$languages = vam_get_languages();
 						for ($j = 0, $k = sizeof($languages); $j < $k; $j ++) {
 							$cached_file_unlink = preg_replace('/-language/i', '-'.$languages[$j]['directory'], $cached_file);
-							if (preg_match('/^/'.$cached_file_unlink, $cache_file)) {
+							if (preg_match('/^/i'.$cached_file_unlink, $cache_file)) {
 								@ unlink(DIR_FS_CACHE.$cache_file);
 							}
 						}
@@ -1577,7 +1577,7 @@ function vam_get_lang_definition($search_lang, $lang_array, $modifier) {
 function vam_CheckExt($filename, $ext) {
 	$passed = FALSE;
 	$testExt = "\.".$ext."$";
-	if (preg_match('/'.$testExt.'/', $filename)) {
+	if (preg_match('/'.$testExt.'/i', $filename)) {
 		$passed = TRUE;
 	}
 	return $passed;
