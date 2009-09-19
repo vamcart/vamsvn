@@ -76,7 +76,7 @@
 
       for ($i=1; $i<=$this->num_dp; $i++) {
         $countries_table = constant('MODULE_SHIPPING_DP_COUNTRIES_' . $i);
-        $country_zones = split("[,]", $countries_table);
+        $country_zones = preg_split("/[,]/", $countries_table);
         if (in_array($dest_country, $country_zones)) {
           $dest_zone = $i;
           break;
@@ -89,7 +89,7 @@
         $shipping = -1;
         $dp_cost = constant('MODULE_SHIPPING_DP_COST_' . $i);
 
-        $dp_table = split("[:,]" , $dp_cost);
+        $dp_table = preg_split("/[:,]/" , $dp_cost);
         for ($i=0; $i<sizeof($dp_table); $i+=2) {
           if ($shipping_weight <= $dp_table[$i]) {
             $shipping = $dp_table[$i+1];

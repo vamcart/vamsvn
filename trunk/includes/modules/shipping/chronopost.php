@@ -81,7 +81,7 @@
       $dest_zone = 0;
       for ($i = 1; $i <= $this->num_chronopost; $i ++) {
 	$countries_table = constant('MODULE_SHIPPING_CHRONOPOST_COUNTRIES_' . $i);
-	$country = split("[,]", $countries_table);
+	$country = preg_split("/[,]/", $countries_table);
 	if ( in_array($dest_country, $country ) ) {
 	  $dest_zone = $i;
 	  break;
@@ -92,7 +92,7 @@
 	return $this->quotes;
       }
 
-      $table = split("[:,]" , constant('MODULE_SHIPPING_CHRONOPOST_COST_' . $dest_zone));
+      $table = preg_split("/[:,]/" , constant('MODULE_SHIPPING_CHRONOPOST_COST_' . $dest_zone));
       $cost = -1;
       for ($i = 0, $n = sizeof($table); $i < $n; $i+=2) {
 	if ($shipping_weight <= $table[$i]) {

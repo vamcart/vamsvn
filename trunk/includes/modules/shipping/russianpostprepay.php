@@ -53,7 +53,7 @@
 				}
 
 				$signal_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_ISSET');
-				$signals = split("[,]", $signal_table);
+				$signals = preg_split("/[,]/", $signal_table);
 				if (!in_array(substr($prod['model'],0, $signal_num), $signals))
 				{
 					$wrapper = 0;
@@ -526,7 +526,7 @@
 				for ($i=1; $i<=5; $i++)
 				{
 					$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_' . $i);
-					$zones = split("[,]", $zones_table);
+					$zones = preg_split("/[,]/", $zones_table);
 					if (in_array($dest_zone_id, $zones))
 					{
 						$dest_zone = $i;
@@ -539,14 +539,14 @@
 			else
 			{
 				$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_1');
-				$zones = split("[,]", $zones_table);
+				$zones = preg_split("/[,]/", $zones_table);
 				if (in_array($dest_zone_id, $zones))$dest_zone = 21;
 
 				//тогда ищем в странах второго уровня
 				else
 				{
 					$zones_table = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_2');
-					$zones = split("[,]", $zones_table);
+					$zones = preg_split("/[,]/", $zones_table);
 					if (in_array($dest_zone_id, $zones) || in_array('*', $zones))$dest_zone = 22;
 				}
 			}
@@ -587,7 +587,7 @@
 					$shipping = -1;
 					$zones_cost = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_STATES_PRICE_'.$mode.'_' . $dest_zone);
 
-					$cost_table = split("[:,]" , $zones_cost);
+					$cost_table = preg_split("/[:,]/" , $zones_cost);
 
 					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
 
@@ -606,7 +606,7 @@
 					$shipping = -1;
 					$zones_cost = constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_COUNTRY_PRICE_' . (($dest_zone == '21') ? 1 : 2));
 
-					$cost_table = split("[:,]" , $zones_cost);
+					$cost_table = preg_split("/[:,]/" , $zones_cost);
 
 					$shipping = $this->price($cost_table, $shipping_weight, $need_parcel, $maxweight, constant('MODULE_SHIPPING_RUSSIANPOSTPREPAY_'.(($dest_zone < 20) ? $mode : 'INTER').'_REG'));
 
