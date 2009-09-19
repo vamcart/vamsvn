@@ -44,7 +44,7 @@ if (AJAX_CART == 'true') {
 	}
     }
     
-    header('Location: ' . preg_replace("/[\r\n]+(.*)$/", "", $url));
+    header('Location: ' . preg_replace("/[\r\n]+(.*)$/i", "", $url));
 
     vam_exit();
     

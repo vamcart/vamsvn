@@ -29,9 +29,9 @@ function vam_create_random_value($length, $type = 'mixed') {
         $char = chr(vam_rand(0,255));
       }
       if ($type == 'mixed') {
-        if (preg_match('/^[a-z0-9]$/', $char)) $rand_value .= $char;
+        if (preg_match('/^[a-z0-9]$/i', $char)) $rand_value .= $char;
       } elseif ($type == 'chars') {
-        if (preg_match('/^[a-z]$/', $char)) $rand_value .= $char;
+        if (preg_match('/^[a-z]$/i', $char)) $rand_value .= $char;
       } elseif ($type == 'digits') {
         if (preg_match('/^[0-9]$/', $char)) $rand_value .= $char;
       }
