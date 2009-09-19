@@ -771,9 +771,9 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 	function main(){
 		$this->comp_levels = array('9' => TEXT_DUMPER_MAX, '8' => '8', '7' => '7', '6' => '6', '5' => TEXT_DUMPER_MED, '4' => '4', '3' => '3', '2' => '2', '1' => TEXT_DUMPER_MIN,'0' => TEXT_DUMPER_NO);
 
-		if (function_exists("bzopen")) {
-		    $this->comp_methods[2] = 'BZip2';
-		}
+//		if (function_exists("bzopen")) {
+//		    $this->comp_methods[2] = 'BZip2';
+//		}
 		if (function_exists("gzopen")) {
 		    $this->comp_methods[1] = 'GZip';
 		}
