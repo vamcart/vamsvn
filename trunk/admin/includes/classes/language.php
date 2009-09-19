@@ -94,7 +94,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       for ($i=0, $n=sizeof($this->browser_languages); $i<$n; $i++) {
         reset($this->languages);
         while (list($key, $value) = each($this->languages)) {
-          if (preg_match('/^(' . $value[0] . ')(;q=[0-9]\\.[0-9])?$/', $this->browser_languages[$i]) && isset($this->catalog_languages[$key])) {
+          if (preg_match('/^(' . $value[0] . ')(;q=[0-9]\\.[0-9])?$/i', $this->browser_languages[$i]) && isset($this->catalog_languages[$key])) {
             $this->language = $this->catalog_languages[$key];
             break 2;
           }
