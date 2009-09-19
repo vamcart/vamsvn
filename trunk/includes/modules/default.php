@@ -77,7 +77,7 @@ if ($category_depth == 'nested') {
   $category = vam_db_fetch_array($category_query, true);
 
 
-  if (isset ($cPath) && ereg('_', $cPath)) {
+  if (isset ($cPath) && preg_match('/_/', $cPath)) {
   // check to see if there are deeper categories within the current category
   $category_links = array_reverse($cPath_array);
 
