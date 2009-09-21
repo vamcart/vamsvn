@@ -69,6 +69,7 @@ $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id']
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
 
+if (!isset ($_SESSION['payment'])) $_SESSION['payment'] = 'cod';
 
 if ($_SESSION['cart']->content_type == 'virtual' || ($_SESSION['cart']->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) {
 
