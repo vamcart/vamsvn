@@ -64,6 +64,8 @@ if (isset ($_SESSION['cart']->cartID) && isset ($_SESSION['cartID'])) {
 		vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 }
 
+if (!isset ($_SESSION['payment'])) $_SESSION['payment'] = 'cod';
+
 if (isset ($_SESSION['credit_covers']))
 	unset ($_SESSION['credit_covers']); //ICW ADDED FOR CREDIT CLASS SYSTEM
 // Stock Check
