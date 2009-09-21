@@ -290,7 +290,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
                 <?php echo vam_draw_form('form', FILENAME_RECOVER_CART_SALES); ?>
                   <table align="right" width="100%" border="0">
                     <tr class="dataTableContent" align="right">
-                      <td><?php echo DAYS_FIELD_PREFIX; ?><input type=text size=4 width=4 value=<?php echo $tdate; ?> name=tdate><?php echo DAYS_FIELD_POSTFIX; ?><span class="button"><button type="submit" value="<?php echo DAYS_FIELD_BUTTON; ?>"><?php echo DAYS_FIELD_BUTTON; ?></button></span></td>
+                      <td><?php echo DAYS_FIELD_PREFIX; ?><?php echo vam_draw_input_field('tdate', $tdate, 'size="4"'); ?><?php echo DAYS_FIELD_POSTFIX; ?><span class="button"><button type="submit" value="<?php echo DAYS_FIELD_BUTTON; ?>"><?php echo DAYS_FIELD_BUTTON; ?></button></span></td>
                     </tr>
                   </table>
                 </form>
@@ -470,7 +470,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
               </tr>";
 
   echo $cline;
- echo "<tr><td colspan=8><b>". PSMSG ."</b><br>". vam_draw_textarea_field('message', 'soft', '80', '5') ."<br>" . vam_draw_selection_field('submit_button', 'submit', TEXT_SEND_EMAIL) . "</td></tr>";
+ echo "<tr><td colspan=8><b>". PSMSG ."</b><br>". vam_draw_textarea_field('message', 'soft', '80', '5') ."<br /><span class=button><button type=submit value=.TEXT_SEND_EMAIL.>".TEXT_SEND_EMAIL."</button></span></td></tr>";
 ?>
  </form>
 <?php }
