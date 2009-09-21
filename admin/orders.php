@@ -84,7 +84,8 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
  if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['new_status']))&&(!isset($_POST['delete_orders']))){ // Fair enough, let's update ;)
   $status = vam_db_prepare_input($_POST['new_status']);
   $comments = vam_db_prepare_input($_POST['comments']);
-  if ($status == '') { // New status not selected      vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
+  if ($status == '') { // New status not selected
+     vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
   }
   foreach ($_POST['multi_orders'] as $this_orderID){
     $order_updated = false;
@@ -93,7 +94,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 
     if ($check_status['orders_status'] != $status) {
        vam_db_query("update " . TABLE_ORDERS . " set orders_status = '" . vam_db_input($status) . "', last_modified = now() where orders_id = '" . (int)$this_orderID . "'");
-       $customer_notified ='0'; 
+       $customer_notified ='0';
           if (isset($_POST['notify'])) {
             $notify_comments = '';
 
@@ -241,9 +242,9 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
   } // End foreach ID loop
  }
 
-// /delete orders 
+// /delete orders
  
- if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['delete_orders']))){ 
+ if (($_POST['submit'] == BUTTON_SUBMIT)&&(isset($_POST['delete_orders']))){
 
   foreach ($_POST['multi_orders'] as $this_orderID){
 
@@ -255,6 +256,8 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 		  vam_db_query("delete from " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " where orders_id = '" . (int)$this_orderID . "'");
 		  vam_db_query("delete from " . TABLE_ORDERS_STATUS_HISTORY . " where orders_id = '" . (int)$this_orderID . "'");
 		  vam_db_query("delete from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_PERSONS . " where orders_id = '" . (int)$this_orderID . "'");
+		  vam_db_query("delete from " . TABLE_COMPANIES . " where orders_id = '" . (int)$this_orderID . "'");
 
           $orders_deleted = true;
 
@@ -266,7 +269,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
   } // End foreach ID loop
  }
 
-// /delete orders 
+// /delete orders
 
    vam_redirect(vam_href_link(FILENAME_ORDERS),vam_get_all_get_params());
 }
@@ -410,14 +413,14 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('ACCUMULATED_LIMIT', $currencies->display_price($limit, 0));
 				
 
-            //email to admin            
+            //email to admin
             
 				$html_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
 				$txt_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
 
-            //email to customer            
+            //email to customer
 
 				$html_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
 				$txt_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
@@ -427,7 +430,8 @@ switch ($_GET['action']) {
            }
         }
         
-        // eof denuz added accumulated discount
+        // eof denuz added accumulated discount
+
 		vam_redirect(vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('action')).'action=edit'));
 		break;
 	case 'deleteconfirm' :
@@ -472,7 +476,7 @@ switch ($_GET['action']) {
 <script type="text/javascript" src="includes/general.js"></script>
 <script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
 		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
 		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
 		<script type="text/javascript">
@@ -608,8 +612,8 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
               <?echo vam_get_extra_fields_order($order->customer['ID'],$_SESSION['languages_id'])?>
 
-             </table>   
-             </td>       
+             </table>
+             </td>
              </tr>
 
 </table>
@@ -630,12 +634,12 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
             <td class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></td>
             <td class="main"><?php echo $order_payment_text; ?></td>
           </tr>
-<?php if ($order->info['shipping_class'] != '') { ?>          
+<?php if ($order->info['shipping_class'] != '') { ?>
           <tr>
             <td class="main"><b><?php echo ENTRY_SHIPPING_METHOD; ?></b></td>
             <td class="main"><?php echo $order_shipping_text; ?></td>
           </tr>
-<?php } ?>          
+<?php } ?>
 <?php
 
 	if ((($order->info['cc_type']) || ($order->info['cc_owner']) || ($order->info['cc_number']))) {
@@ -947,7 +951,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       
 </table>
       
-</div>      
+</div>
 </div>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
@@ -968,7 +972,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
        </td>
       </tr>
 
-</table>      
+</table>
       
 <?php
 
@@ -1007,8 +1011,8 @@ elseif ($_GET['action'] == 'custom_action') {
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top">
-<?php 
-echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params()); 
+<?php
+echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params());
 ?>
             <table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr class="dataTableHeadingRow">
@@ -1133,7 +1137,7 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 					$products_id_order=$order->products[$i]['id'];
 					
 					$rest_order_query = vam_db_query("SELECT products_quantity FROM products WHERE products_id = '".$products_id_order."'");
-					$rest_order = vam_db_fetch_array($rest_order_query);	
+					$rest_order = vam_db_fetch_array($rest_order_query);
 					$rest_order_quantity=$rest_order['products_quantity'];
 					
 					$contents[] = array ('text' => $order->products[$i]['qty'].'&nbsp;x&nbsp;<a href="'.vam_href_link(FILENAME_CATEGORIES, 'pID='.$products_id_order.'&action=new_product').'">'.$order->products[$i]['name'].' ('.$order->products[$i]['model'].') ('.TEXT_QTY.$rest_order_quantity.TEXT_UNITS.')</a>');
