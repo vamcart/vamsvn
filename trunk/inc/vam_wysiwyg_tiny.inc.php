@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-    $Id: vam_wysiwyg_tiny.inc.php 923 2007-02-07 10:51:57 VaM $
+    $Id: vam_wysiwyg_tiny.inc.php 923 2009-02-07 10:51:57 VaM $
    
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -40,7 +40,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -83,7 +83,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -125,7 +125,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -168,7 +168,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -211,7 +211,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -254,7 +254,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -297,7 +297,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -340,7 +340,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -383,7 +383,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -426,7 +426,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
@@ -469,7 +469,7 @@ tinyMCE.init({
 
 	file_browser_callback : "tinyBrowser",
 
-	spellchecker_languages : "+English=en,Russian=ru",
+	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
 
 	// Theme options
