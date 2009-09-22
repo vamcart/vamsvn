@@ -709,33 +709,6 @@ if (isset($_REQUEST["category"])) {
                 <td class="dataTableContent" align="right"><input type="text" size="3" name="orders[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_order']; ?>"></td>
                 <td class="dataTableContent" align="right"><input type="text" size="3" name="opened[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_maxopened']; ?>"></td>
                 <td class="dataTableContent" align="right"><input type="checkbox" name="useinsearch[<?php echo $p['products_parameters_id']; ?>]" value="1" <?php echo ($p['products_parameters_useinsearch'] == 1 ? 'checked' : ''); ?>></td>
-                <!-- <td class="dataTableContent" align="center">
-                <a href="javascript: void(0);" class="button" onclick="set_intervals_dialog_open(<?php echo $p['products_parameters_id']; ?>);"><span><?php echo SET_INTERVALS_BUTTON_TITLE; ?></span></a>
-                 <input type="text" size="30" name="intervals[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_intervals']; ?>"> -->
-                <script language="JavaScript">
-                <!--
-
-                orders_values_list[<?php echo $p['products_parameters_id']; ?>] = new Array(<?php echo implode(", ", $orders_values_list[$p['products_parameters_id']]); ?>);
-                intervals_values_list[<?php echo $p['products_parameters_id']; ?>] = new Array(<?php echo implode(", ", $intervals_values_list[$p['products_parameters_id']]); ?>);
-
-                intervals_list[<?php echo $p['products_parameters_id']; ?>] = new Array(<?php
-                $p['products_parameters_intervals'] = unserialize($p['products_parameters_intervals']);
-                if (is_array($p['products_parameters_intervals']) && sizeof($p['products_parameters_intervals']) > 0)
-                {
-                    foreach($p['products_parameters_intervals'] as $k => $interval)
-                    {
-                        if ($k > 0) echo ", ";
-                        foreach($interval['values'] as $vk => $v)
-                        {
-                            $interval['values'][$vk] = addcslashes($v, "'");
-                        }
-                        $values = is_array($interval['values']) && sizeof($interval['values']) > 0 ? "'".implode("', '", $interval['values'])."'" : '';;
-                        echo "{'title': '".addcslashes($interval['title'], "'")."', 'values': new Array(".$values."), 'default_title': '".addcslashes($interval['title'], "'")."', 'default_values': new Array(".$values.")}";
-                    }
-                }
-                ?>);
-                //-->
-                </script>
 
                 <!-- </td> -->
                 <td class="dataTableContent" align="right"><input type="text" size="30" name="titlename[<?php echo $p['products_parameters_id']; ?>]" value="<?php echo $p['products_parameters_titlename']; ?>"></td>
