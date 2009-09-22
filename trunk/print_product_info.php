@@ -83,7 +83,7 @@ $vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
   
 $image = '';
 if ($product_info['products_image'] != '') {
-	$image = DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$product_info['products_image'];
+	$image = DIR_WS_CATALOG.DIR_WS_INFO_IMAGES.$product_info['products_image'];
 }
 if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 	$tax_rate = $vamPrice->TAX[$product_info['products_tax_class_id']];
