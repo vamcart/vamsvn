@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2009-02-07 17:36:58 VaM $
+   $Id: russian.php 1231 2009-09-07 17:36:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -45,7 +45,7 @@ define('TITLE', PROJECT_VERSION);
 define('HEADER_TITLE_TOP', 'Администрирование');
 define('HEADER_TITLE_SUPPORT_SITE', 'Сайт поддержки');
 define('HEADER_TITLE_DOCS', 'Документация');
-define('HEADER_TITLE_ONLINE_CATALOG', 'Сайт');
+define('HEADER_TITLE_ONLINE_CATALOG', 'Магазин');
 define('HEADER_TITLE_ADMINISTRATION', 'Администрация');
 
 // text for gender
