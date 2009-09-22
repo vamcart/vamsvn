@@ -771,6 +771,8 @@ class categories {
             }
           } // Check to see if there are any need to update extra fields.
 		
+				vam_redirect(vam_href_link(FILENAME_CATEGORIES, 'cPath='.$_GET['cPath'].'&pID='.$products_id));
+
 	} // insert_product ends
 
 	// ----------------------------------------------------------------------------------------------------- //   
