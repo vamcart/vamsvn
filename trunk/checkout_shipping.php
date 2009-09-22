@@ -42,6 +42,18 @@ require_once (DIR_FS_INC.'vam_count_shipping_modules.inc.php');
 require (DIR_WS_CLASSES.'http_client.php');
 
 // check if checkout is allowed
+
+if ($_SESSION['cart']->show_total() > 0 ) {
+ if ($_SESSION['cart']->show_total() < $_SESSION['customers_status']['customers_status_min_order'] ) {
+  $_SESSION['allow_checkout'] = 'false';
+ }
+ if  ($_SESSION['customers_status']['customers_status_max_order'] != 0) {
+  if ($_SESSION['cart']->show_total() > $_SESSION['customers_status']['customers_status_max_order'] ) {
+  $_SESSION['allow_checkout'] = 'false';
+  }
+ }
+}
+
 if ($_SESSION['allow_checkout'] == 'false')
 	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 
