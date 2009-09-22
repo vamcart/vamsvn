@@ -103,10 +103,10 @@ $tinybrowser['window']['width']  = 770;
 $tinybrowser['window']['height'] = 480;
 
 // Assign Permissions for Upload, Edit, Delete & Folders
-$tinybrowser['allowupload']  = false;
-$tinybrowser['allowedit']    = false;
-$tinybrowser['allowdelete']  = false;
-$tinybrowser['allowfolders'] = false;
+$tinybrowser['allowupload']  = true;
+$tinybrowser['allowedit']    = true;
+$tinybrowser['allowdelete']  = true;
+$tinybrowser['allowfolders'] = true;
 
 // Clean filenames on upload
 $tinybrowser['cleanfilename'] = true;
