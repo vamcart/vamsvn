@@ -111,7 +111,8 @@ $manual_link = 'delete-news';
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_NEWS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right">
+            <?php if ($_GET['action'] != 'new_latest_news') { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS, 'action=new_latest_news') . '"><span>' . BUTTON_INSERT . '</span></a>'; } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_NEWS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
     

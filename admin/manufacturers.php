@@ -179,7 +179,14 @@ if ($_GET['action'] == 'delete') {
 $manual_link = 'delete-manufacturer';
 }  
 ?>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_MANUFACTURERS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right">
+<?php
+  if ($_GET['action'] != 'new') {
+?><?php echo vam_button_link(BUTTON_INSERT, vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=new')); ?>
+<?php
+  }
+?>            
+            <a class="button" href="<?php echo MANUAL_LINK_MANUFACTURERS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
 
