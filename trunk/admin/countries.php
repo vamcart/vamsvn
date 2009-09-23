@@ -81,7 +81,12 @@
 <!-- body_text //-->
     <td class="boxCenter" width="100%" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new') { ?><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUNTRIES, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_COUNTRY . '</span></a>'; ?><?php } ?></td>
+          </tr>
+        </table>
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
