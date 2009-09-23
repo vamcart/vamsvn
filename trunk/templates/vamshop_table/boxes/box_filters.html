@@ -59,6 +59,7 @@ function open_hide_values(obj, a)
 	{/if}
 {/foreach}
 
+{if $is_params_selected}
 <br />
 
   <form action="{$priceForm}" method="get">
@@ -67,7 +68,8 @@ function open_hide_values(obj, a)
   {#text_filters_price#}:
   {#text_filters_price_from#}: <input type="text" size="3" name="price_min" value="{$price_min}" /> {#text_filters_price_to#}: <input type="text" size="3" name="price_max" value="{$price_max}" /> {$BUTTON_FILTER}
   </form>
-          
+{/if}
+         
           
           
           </td>
