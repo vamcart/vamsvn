@@ -98,7 +98,7 @@
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'edit') { ?>
-<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?><?php } ?>
+<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?><?php } ?>
 </td>
           </tr>
         </table>
@@ -127,30 +127,39 @@
 
       $fInfo = new objectInfo($product);
     } else {
-      $fInfo = new objectInfo(array());
+      if ( ($_GET['action'] == 'new') && isset($_GET['prodID']) ) {
+      	$product_query = vam_db_query("select p.products_id, pd.products_name from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = pd.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "' and p.products_id = '". (int) $_GET['prodID']. "'");
+      	$product = vam_db_fetch_array($product_query);
+      	$fInfo = new objectInfo($product);
+      }
+      else {
+      	$fInfo = new objectInfo(array());
 
-      // create an array of products on featured, which will be excluded from the pull down menu of products
-      // (when creating a new product on featured)
-      $featured_array = array();
-      $featured_query = vam_db_query("select
-                                      p.products_id from
-                                      " . TABLE_PRODUCTS . " p,
-                                      " . TABLE_FEATURED . " f
-                                      where f.products_id = p.products_id");
-
-      while ($featured = vam_db_fetch_array($featured_query)) {
-        $featured_array[] = $featured['products_id'];
+		// create an array of featured products, which will be excluded from the pull down menu of products
+		// (when creating a new featured product)
+      	$featured_array = array();
+      	$featured_query = vam_db_query("select p.products_id from " . TABLE_PRODUCTS . " p, " . TABLE_FEATURED . " s where s.products_id = p.products_id");
+      	while ($featured = vam_db_fetch_array($featured_query)) {
+        	$featured_array[] = $featured['products_id'];
+        }
       }
     }
 ?>
       <tr><form name="new_featured" <?php echo 'action="' . vam_href_link(FILENAME_FEATURED, vam_get_all_get_params(array('action', 'info', 'fID')) . 'action=' . $form_action, 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo vam_draw_hidden_field('featured_id', $_GET['fID']); ?>
         <td><br /><table border="0" cellspacing="0" cellpadding="2">
 
-                <td class="main"><?php echo TEXT_FEATURED_PRODUCT; echo ($fInfo->products_name) ? "" :  ''; ?>&nbsp;</td>
-           <?php
-                echo '<input type="hidden" name="products_up_id" value="' . $fInfo->products_id . '">';
-           ?>
-          <td class="main"><?php echo ($fInfo->products_name) ? $fInfo->products_name : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $featured_array); ?></td>
+                <td class="main"><?php echo TEXT_FEATURED_PRODUCT; ?>&nbsp;</td>
+	    <td class="main">
+<?php
+		if ( ($_GET['action'] == 'new') && isset($_GET['prodID']) ) {
+        		echo vam_draw_hidden_field('products_id', $_GET['prodID']);
+			echo $fInfo->products_name;
+		}
+        else
+        	echo (isset($fInfo->products_name)) ? $fInfo->products_name : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $featured_array);
+
+?>
+            </td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_FEATURED_QUANTITY; ?>&nbsp;</td>
@@ -224,7 +233,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
                   </tr>
 <?php
   }

@@ -595,4 +595,6 @@ define('TABLE_PRODUCTS_PARAMETERS_VALUES', 'products_parameters_values');
 define('FILENAME_PARAMETERS', 'parameters.php');
 define('FILENAME_PARAMETERS_EXPORT', 'parameters_export.php');
   
+define('FILENAME_SELECT_FEATURED', 'select_featured.php'); 
+  
 ?>
