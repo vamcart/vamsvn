@@ -846,6 +846,9 @@ define('STORE_SKYPE_DESC','Skype магазина.');
 define('QUICK_CHECKOUT_TITLE','Быстрое оформление заказа');
 define('QUICK_CHECKOUT_DESC','Разрешить модуль быстрого оформления заказа.');
 
+define('XSELL_CART_TITLE','Сопутствующие товары в корзине');
+define('XSELL_CART_DESC','Показывать сопутствующие товары в корзине?');
+
 define('SET_BOX_CATEGORIES_TITLE', 'Разделы');
 define('SET_BOX_FILTERS_TITLE', 'Фильтры');
 define('SET_BOX_CONTENT_TITLE', 'Узнайте больше');

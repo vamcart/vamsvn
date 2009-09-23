@@ -30,6 +30,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
+require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
 $breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART, vam_href_link(FILENAME_SHOPPING_CART));
 
@@ -84,6 +85,8 @@ if ($_SESSION['cart']->count_contents() > 0) {
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_cart.php');
+	include (DIR_WS_MODULES.'cross_selling_cart.php');
+
 $_SESSION['allow_checkout'] = 'true';
 	if (STOCK_CHECK == 'true') {
 		if ($_SESSION['any_out_of_stock'] == 1) {
