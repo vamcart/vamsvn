@@ -194,3 +194,32 @@ function doDelProduct(form) {
   reqAddCart.send( senddata );
   return false;
 }
+
+function ReviewsPage(page,products_id) {
+  showLoading();
+  var reqAddCart = new JsHttpRequest();
+  reqAddCart.onreadystatechange = function() {
+    if (reqAddCart.readyState == 4) {
+      if (reqAddCart.responseJS) {
+        document.location.href = reqAddCart.responseJS.ajax_redirect;
+        return;
+      }
+      else {
+        document.getElementById('divReviews').innerHTML = ''+(reqAddCart.responseText||'')+''
+		
+        if ( SHOW_ADDED ) {
+          showOk();
+          timerID = setTimeout( "addHandler(document, \'mousemove\', hideOk)", 500);
+        }
+      }
+    }
+  }
+
+  var senddata = new Object();
+  var url = 'ajax_reviews_page.php?page=' + page + '&products_id=' + products_id + '&type=ajax';
+
+  reqAddCart.caching = false;
+  reqAddCart.open( 'GET', url, true);
+  reqAddCart.send( senddata );
+  return false;
+}
