@@ -510,7 +510,7 @@ CREATE TABLE `admin_access` (
   `customer_extra_fields` int(1) NOT NULL default '0',
   `parameters` int(1) NOT NULL default '0',
   `parameters_export` int(1) NOT NULL default '0',
-  `select_featured` int(1) NOT NULL default '0'
+  `select_featured` int(1) NOT NULL default '0',
   PRIMARY KEY  (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
