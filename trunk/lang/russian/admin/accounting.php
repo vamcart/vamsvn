@@ -106,5 +106,6 @@ define('ACCESS_AFFILIATE_SUMMARY', 'Админка - Разное - Партнё
 define('ACCESS_CUSTOMER_EXTRA_FIELDS', 'Админка - Разное - Инструменты - Дополнительные поля покупателей');
 define('ACCESS_PARAMETERS','Админка - Каталог - Параметры');
 define('ACCESS_PARAMETERS_EXPORT','Админка - Каталог - Импорт/экспорт параметров');
+define('ACCESS_SELECT_FEATURED','Админка - Каталог - Рекомендуемые - Поиск');
 
 ?>
