@@ -40,6 +40,19 @@
           and language = '" . (int)$_SESSION['languages_id'] . "'
       ORDER BY date_added DESC
       ";
+      
+  if ($_GET['akeywords'] != ""){
+  
+    $all_sql = "SELECT
+          faq_id,
+          question,
+          answer,
+          date_added
+      FROM " . TABLE_FAQ . "
+      WHERE status = '1' and language = '" . (int)$_SESSION['languages_id'] . "' and (question like '%" . $_GET['akeywords'] . "%' or answer like '%" . $_GET['akeywords'] . "%') order by date_added DESC";
+
+ }      
+      
   $one_sql = "
       SELECT
           faq_id,
