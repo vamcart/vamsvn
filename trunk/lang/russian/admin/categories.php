@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: categories.php 1249 2008-02-07 17:36:57 VaM $
+   $Id: categories.php 1249 2009-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -222,9 +222,12 @@ define('TEXT_YANDEX_MARKET','<br />Настройки для яндекс-мар
 define('TEXT_YANDEX_MARKET_BID','Основная ставка (bid):');
 define('TEXT_YANDEX_MARKET_CBID','Ставка для карточек (cbid):');
 
-// Categiries/Products URL begin
+// Categories/Products URL begin
 define('TEXT_EDIT_CATEGORY_URL', 'SEO URL категории:');
 define('TEXT_PRODUCTS_PAGE_URL', 'SEO URL товара:');
-// Categiries/Products URL end
+// Categories/Products URL end
+
+define('TEXT_PRODUCTS_QUANTITY_MIN', 'Мин. количество для заказа:');
+define('TEXT_PRODUCTS_QUANTITY_MAX', 'Макс. количество для заказа:');
 
 ?>
