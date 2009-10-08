@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: soglas.php 998 2007/04/24 13:24:46 VaM $
+   $Id: soglas.php 998 2009/04/24 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
