@@ -91,9 +91,27 @@ if (isset ($_GET['action'])) {
 			if (isset ($_POST['products_id']) && is_numeric($_POST['products_id'])) {
 				if ($_POST['products_qty'] > MAX_PRODUCTS_QTY)
 					$_POST['products_qty'] = MAX_PRODUCTS_QTY;
+
+          $error_cart_msg = '';
+
+          if ( ($_POST['products_qty'] >= vam_get_products_quantity_order_min($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_min($_POST['products_id']) ) ) {
+
+          if ( ($_POST['products_qty'] <= vam_get_products_quantity_order_max($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_max($_POST['products_id']) ) ) {
+          
 				$_SESSION['cart']->add_cart((int) $_POST['products_id'], $_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) + vam_remove_non_numeric($_POST['products_qty']), $_POST['id']);
+
+          } else {
+            $error_cart_msg = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id']);
+          }
+
+          } else {
+            $error_cart_msg = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id']);
+          }
+          
 			}
+         if ( strlen($error_cart_msg)==0 ) {
 			vam_redirect(vam_href_link($goto, 'products_id=' . (int) $_POST['products_id'] . '&' . vam_get_all_get_params($parameters)));
+			}
 			break;
 
 		case 'check_gift' :
