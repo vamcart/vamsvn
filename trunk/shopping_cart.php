@@ -39,9 +39,7 @@ include (DIR_WS_MODULES.'gift_cart.php');
 
 if ($_SESSION['cart']->count_contents() > 0) {
 
-if ( isset($_SESSION['error_cart_msg']) ) {
   $vamTemplate->assign('info_message', $_SESSION['error_cart_msg']);
-}
 
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_SHOPPING_CART, 'action=update_product')));
 	$vamTemplate->assign('FORM_END', '</form>');
