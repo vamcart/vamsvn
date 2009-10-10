@@ -33,8 +33,6 @@ $info = new vamTemplate;
 $info->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
 
-
-
 if (!is_object($product) || !$product->isProduct()) { // product not found in database
 
 	$error = TEXT_PRODUCT_NOT_FOUND;
@@ -247,6 +245,10 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
   }
 
   $info->assign('extra_fields_data', $extra_fields_data);
+
+if ( isset($error_cart_msg) ) {
+  $info->assign('info_message', $error_cart_msg);
+}
 
 		include (DIR_WS_MODULES.FILENAME_PRODUCTS_MEDIA);
 		include (DIR_WS_MODULES.FILENAME_ALSO_PURCHASED_PRODUCTS);

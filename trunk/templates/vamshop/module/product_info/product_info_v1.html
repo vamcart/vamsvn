@@ -2,6 +2,12 @@
 {$FORM_ACTION}
 <h1 class="contentBoxHeading">{$PRODUCTS_NAME}</h1>
 
+{if $info_message}
+<div class="contacterror">
+{$info_message}
+</div>
+{/if}
+
 {$PRODUCT_NAVIGATOR}
 
 <div class="page">
