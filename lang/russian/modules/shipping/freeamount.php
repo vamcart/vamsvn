@@ -35,6 +35,10 @@ define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_TITLE' , 'Показывать уве
 define('MODULE_SHIPPING_FREEAMOUNT_DISPLAY_DESC' , 'Показывать текст уведомления о возможной бесплатной доставки заказа при достижении определённой суммы заказа?');
 define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_TITLE' , 'Минимальная сумма заказа');
 define('MODULE_SHIPPING_FREEAMOUNT_AMOUNT_DESC' , 'Минимальная сумма заказа для бесплатной доставки.');
+define('MODULE_SHIPPING_FREEAMOUNT_TAX_CLASS_TITLE' , 'Налог');
+define('MODULE_SHIPPING_FREEAMOUNT_TAX_CLASS_DESC' , 'Использовать налог.');
+define('MODULE_SHIPPING_FREEAMOUNT_ZONE_TITLE' , 'Зона');
+define('MODULE_SHIPPING_FREEAMOUNT_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
 define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_SHIPPING_FREEAMOUNT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 ?>
