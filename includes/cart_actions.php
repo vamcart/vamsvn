@@ -80,7 +80,23 @@ if (isset ($_GET['action'])) {
 					if ($_POST['cart_quantity'][$i] > MAX_PRODUCTS_QTY)
 						$_POST['cart_quantity'][$i] = MAX_PRODUCTS_QTY;
 					$attributes = ($_POST['id'][$_POST['products_id'][$i]]) ? $_POST['id'][$_POST['products_id'][$i]] : '';
+
+          if ( ($_POST['cart_quantity'][$i] >= vam_get_products_quantity_order_min($_POST['products_id'][$i])) ) {
+
+          if ( ($_POST['cart_quantity'][$i] <= vam_get_products_quantity_order_max($_POST['products_id'][$i])) ) {
+
+               unset($_SESSION['error_cart_msg']);
+               
 					$_SESSION['cart']->add_cart($_POST['products_id'][$i], vam_remove_non_numeric($_POST['cart_quantity'][$i]), $attributes, false);
+
+          } else {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id'][$i]);
+          }
+
+          } else {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id'][$i]);
+          }
+
 				}
 			}
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params($parameters)));
