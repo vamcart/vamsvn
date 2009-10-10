@@ -108,7 +108,7 @@ if (isset ($_GET['action'])) {
 				if ($_POST['products_qty'] > MAX_PRODUCTS_QTY)
 					$_POST['products_qty'] = MAX_PRODUCTS_QTY;
 
-          $error_cart_msg = '';
+          $_SESSION['error_cart_msg'] = '';
 
           if ( ($_POST['products_qty'] >= vam_get_products_quantity_order_min($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_min($_POST['products_id']) ) ) {
 
@@ -117,15 +117,15 @@ if (isset ($_GET['action'])) {
 				$_SESSION['cart']->add_cart((int) $_POST['products_id'], $_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) + vam_remove_non_numeric($_POST['products_qty']), $_POST['id']);
 
           } else {
-            $error_cart_msg = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id']);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id']);
           }
 
           } else {
-            $error_cart_msg = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id']);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id']);
           }
           
 			}
-         if ( strlen($error_cart_msg)==0 ) {
+         if ( strlen($_SESSION['error_cart_msg'])==0 ) {
 			vam_redirect(vam_href_link($goto, 'products_id=' . (int) $_POST['products_id'] . '&' . vam_get_all_get_params($parameters)));
 			}
 			break;
@@ -205,6 +205,14 @@ if (isset ($_GET['action'])) {
 						vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
 					}
 				}
+
+            unset($_SESSION['error_cart_msg']);
+            
+          if ( (vam_get_products_quantity_order_min($_GET['BUYproducts_id']) > 1)) {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_GET['BUYproducts_id']);
+					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
+          }
+
 				if (vam_has_product_attributes($_GET['BUYproducts_id'])) {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
 				} else {
