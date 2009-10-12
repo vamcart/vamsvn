@@ -288,6 +288,11 @@ $limit_up = $limits['1'];
  $data=vam_db_fetch_array($query);
  if ($_GET['action']!='') echo vam_wysiwyg_tiny('newsletter',$data['code']); 
 ?>
+<?php if ($_GET['action'] == 'new') {
+ $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
+ $data=vam_db_fetch_array($query);
+ echo vam_wysiwyg_tiny('mail',$data['code']);
+ } ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
