@@ -196,7 +196,7 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
    $iw=new inwords; 
 
-	$vamTemplate->assign('summa', $iw->get($order->info['total']));
+	$vamTemplate->assign('summa', $iw->get($order->info['total_value']));
 
 	// assign language to template for caching
 	$vamTemplate->assign('language', $_SESSION['language']);
