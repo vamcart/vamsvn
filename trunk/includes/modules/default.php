@@ -396,10 +396,10 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   // optional Product List Filter
   if (PRODUCT_LIST_FILTER > 0) {
   if (isset ($_GET['manufacturers_id'])) {
-    $filterlist_sql = "select distinct c.categories_id as id, cd.categories_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where p.products_status = '1' and c.categories_status = '1' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id and p2c.categories_id = cd.categories_id and cd.language_id = '".(int) $_SESSION['languages_id']."' and p.manufacturers_id = '".(int) $_GET['manufacturers_id']."' order by cd.categories_name";
+    $filterlist_sql = "select distinct p.manufacturers_id, c.categories_id as id, cd.categories_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where p.products_status = '1' and c.categories_status = '1' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id and p2c.categories_id = cd.categories_id and cd.language_id = '".(int) $_SESSION['languages_id']."' and p.manufacturers_id = '".(int) $_GET['manufacturers_id']."' order by cd.categories_name";
   } else {
     if (PRODUCT_LIST_RECURSIVE == 'true') {
-    $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c,".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."') order by m.manufacturers_name";
+    $filterlist_sql = "select distinct p.manufacturers_id, m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c,".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."') order by m.manufacturers_name";
     } else {
     $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
     }
@@ -416,9 +416,14 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     }
     $manufacturer_dropdown .= vam_draw_hidden_field('sort', $_GET['sort']);
     $manufacturer_dropdown .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
+    global $current_category_id;
     while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
     $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
-    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$_GET['manufacturers_id'].'&filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+	if (isset($current_category_id)) {
+    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id.'&filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+    } else {
+    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+    }
     }
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
     $manufacturer_dropdown .= vam_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'onchange="this.form.submit()"');
