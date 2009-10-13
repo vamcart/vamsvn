@@ -2137,6 +2137,24 @@ form
 	  padding: 2px;
    }
 
+.pagecontent fieldset.form
+   {
+     border: 0px;
+   }
+
+.pagecontent fieldset.form legend
+   {
+     font-weight: bold;
+	  font: 12pt arial,sans-serif;
+	  font-weight: bold;
+   }
+
+.pagecontent .form p
+   {
+	  font: 12pt arial,sans-serif;
+	  font-weight: normal;
+   }
+   
 /*- Подсветка ошибок формы */
 #errormsg
    {
