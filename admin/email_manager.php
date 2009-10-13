@@ -50,6 +50,7 @@
 <br />
 
 <?php
+if (isset($_GET['file'])) {
 
 $path_parts = pathinfo($_GET['file']);
 
@@ -65,6 +66,8 @@ if(file_exists($file)) {
 	$code = file_get_contents($file);
 }else{
   $code = TEXT_FILE_SELECT;
+}
+
 }
 ?>
 <?php echo vam_draw_form('select', FILENAME_EMAIL_MANAGER, '', 'get'); ?>
@@ -176,6 +179,7 @@ if (is_writable($file)) {
 <br />
 
 <?php
+if (isset($_GET['file_admin'])) {
 
 $path_parts_admin = pathinfo($_GET['file_admin']);
 
@@ -191,6 +195,8 @@ if(file_exists($file_admin)) {
 	$code_admin = file_get_contents($file_admin);
 }else{
   $code_admin = TEXT_FILE_SELECT;
+}
+
 }
 ?>
 <?php echo vam_draw_form('select_admin', FILENAME_EMAIL_MANAGER, '', 'get'); ?>
