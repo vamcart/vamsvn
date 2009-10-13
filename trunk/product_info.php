@@ -61,7 +61,11 @@ require (DIR_WS_INCLUDES.'header.php');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+if ((file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_INFO.'_'.$actual_products_id.'.html'))) {
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_INFO.'_'.$actual_products_id.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_INFO.'_'.$actual_products_id.'.html' : CURRENT_TEMPLATE.'/index.html');
+} else {
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_INFO.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_INFO.'.html' : CURRENT_TEMPLATE.'/index.html');
+}
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
 ?>
