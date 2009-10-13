@@ -198,16 +198,16 @@ TD.headerInfo {
 }
 
 TR.footer {
-  background: #bbc3d3;
+  background: transparent;
 }
 
 TD.footer {
   font-family: Verdana, Arial, sans-serif;
   font-size: 10px;
-    background: #F6F6F6;
+  background: transparent;
   color: #000000;
   font-weight : bold;
-  border-bottom: 1px solid;
+  border-bottom: 0px solid;
   border-color: #b6b7cb;
 }
 
@@ -419,7 +419,7 @@ TD.copyright {
   font-family: Verdana, Arial, sans-serif;
   font-size: 11px;
   line-height: 1.5;
-  background: #f1f1f6;
+  background: transparent;
   text-align:center;
 }
 A.copyright {
@@ -667,7 +667,7 @@ TD.blockTitle
 	padding: 0px 0px 10px 15px;
 	margin-bottom: 2px;
 	background-color: #ffffff;
-	border-bottom-width: 1px;
+	border-bottom-width: 0px;
 	border-bottom-style: dashed;
 	border-bottom-color: #67748B;
 }
@@ -955,7 +955,7 @@ h1.contentBoxHeading {
   font: 16px Tahoma, Verdana, Arial, sans-serif;
   font-weight: bold;
   color: #990000;
-  border-bottom: 2px #990000 solid;
+  border-bottom: 0px #990000 solid;
   background: url(img/heading1.gif) no-repeat left center;
   padding: 0 0 0 20px; 
   margin: 0.2em 0 0.2em 0; 
@@ -999,7 +999,7 @@ div.contacterror {border:1px solid; border-color:#ff0000; background-color:#FFCC
 div#parseTime
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -1012,7 +1012,7 @@ div#parseTime
 div#copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -1023,7 +1023,7 @@ div#copyright
 div.copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
