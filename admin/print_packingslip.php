@@ -208,8 +208,8 @@ function get_string($summ,$nominal){
         		'PRODUCTS_NAME' => $order_data_values['products_name'],
         		'PRODUCTS_ATTRIBUTES' => $attributes_data,
         		'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model,
-        		'PRODUCTS_SINGLE_PRICE' =>  vam_format_price_order($order_data_values['products_price'],1,$order->info['currency']),
-        		'PRODUCTS_PRICE' =>  vam_format_price_order($order_data_values['final_price'],1,$order->info['currency']),
+        		'PRODUCTS_SINGLE_PRICE' =>  $order_data_values['products_price'],1,$order->info['currency'],
+        		'PRODUCTS_PRICE' =>  $order_data_values['final_price'],1,$order->info['currency'],
         		'PRODUCTS_QTY' => $order_data_values['products_quantity']);
         }
   	// get order_total data
