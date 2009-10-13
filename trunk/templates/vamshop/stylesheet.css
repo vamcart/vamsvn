@@ -85,8 +85,8 @@ div#footer
    {
      clear: left;
      width: 100%;
-     background: #f1f1f6;
-     border-top: 3px solid #67748B;
+     background: transparent;
+     border-top: 0px solid #67748B;
      text-align: center;
      color: #000;
    }
@@ -2101,7 +2101,7 @@ div#parseTime
 div#copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -2112,7 +2112,7 @@ div#copyright
 div.copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
