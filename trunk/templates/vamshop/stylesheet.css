@@ -409,7 +409,7 @@ div#navigation
      margin-bottom: 0.5em;
      margin-top: 0.5em;
      padding-bottom: 0.3em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -421,7 +421,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -509,7 +509,7 @@ div#navigation
      margin-top: 0.2em;
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -521,7 +521,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -580,7 +580,7 @@ div#navigation
      margin-top: 0.2em;
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -592,7 +592,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -641,7 +641,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -653,7 +653,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -701,7 +701,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -713,7 +713,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -761,7 +761,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -773,7 +773,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -805,7 +805,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -817,7 +817,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -849,7 +849,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -861,7 +861,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #990000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -893,7 +893,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -905,7 +905,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -937,7 +937,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -949,7 +949,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -982,7 +982,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -994,7 +994,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1027,7 +1027,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1039,7 +1039,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1093,7 +1093,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1105,7 +1105,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1144,7 +1144,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1156,7 +1156,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1195,7 +1195,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1207,7 +1207,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #990000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1246,7 +1246,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1258,7 +1258,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1298,7 +1298,7 @@ div#navigation
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1310,7 +1310,7 @@ div#navigation
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1676,7 +1676,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1688,7 +1688,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1721,7 +1721,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1733,7 +1733,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1781,7 +1781,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1793,7 +1793,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1837,7 +1837,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1849,7 +1849,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1887,7 +1887,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1899,7 +1899,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1944,7 +1944,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -1956,7 +1956,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -1989,7 +1989,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -2001,7 +2001,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
@@ -2046,7 +2046,7 @@ p.LoginContentLeft
      margin-right: 0.2em; /* отступ от правого края браузера */
      padding-top: 0.2em;
      padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 1px;
+  	  border-bottom-width: 0px;
 	  border-bottom-style: dashed;
      border-bottom-color: #67748B;
    }
@@ -2058,7 +2058,7 @@ p.LoginContentLeft
      font: 12px Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
-     border-bottom: 2px #e5e5e5 solid;
+     border-bottom: 0px #e5e5e5 solid;
      background: url(img/box.gif) no-repeat left center;
      margin: 0 0 .4em .3em;
      padding: .1em 0 0 16px;
