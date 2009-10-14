@@ -35,6 +35,22 @@
   require_once(DIR_FS_INC . 'vam_draw_input_field.inc.php');
   require_once(DIR_FS_INC . 'vam_get_country_list.inc.php');
 
+  include_once(DIR_FS_INC . 'vam_draw_pull_down_menu.inc.php');
+  include_once(DIR_FS_INC . 'vam_get_countries.inc.php');
+  
+  if (!function_exists('vam_get_country_list')) { 
+  function vam_get_country_list($name, $selected = '', $parameters = '') {
+   $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
+//    Probleme mit register_globals=off -> erstmal nur auskommentiert. Kann u.U. gelцscht werden.
+    $countries = vam_get_countriesList();
+
+    for ($i=0, $n=sizeof($countries); $i<$n; $i++) {
+      $countries_array[] = array('id' => $countries[$i]['countries_id'], 'text' => $countries[$i]['countries_name']);
+    }
+	if (is_array($name)) return vam_draw_pull_down_menuNote($name, $countries_array, $selected, $parameters);
+    return vam_draw_pull_down_menu($name, $countries_array, $selected, $parameters);
+  }
+  }
 
     include('language/'.$_SESSION['language'].'.php');
   
