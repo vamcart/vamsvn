@@ -367,13 +367,20 @@ elseif ($error == true) {
     }
 }
 else {
+if (!isset($affiliate['affiliate_country_id'])) $affiliate['affiliate_country_id']  = STORE_COUNTRY;
+if (!isset($affiliate['affiliate_zone_id'])) $affiliate['affiliate_zone_id']  = STORE_ZONE;
+
 	$country_id_content = vam_get_country_list('a_country', $affiliate['affiliate_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadAffiliateStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': '');
 }
 $module->assign('country_id_content', $country_id_content);
 
 if (ACCOUNT_STATE == 'true') {
+
+if (!isset($affiliate['affiliate_country_id'])) $affiliate['affiliate_country_id']  = STORE_COUNTRY;
+if (!isset($affiliate['affiliate_zone_id'])) $affiliate['affiliate_zone_id']  = STORE_ZONE;
+
 	$module->assign('ACCOUNT_STATE', 'true');
-	$state = vam_get_zone_name($a_country, $a_zone_id, $a_state);
+	$state = vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $a_state);
     if ($is_read_only == true) {
     	$state_content = vam_get_zone_name($affiliate['affiliate_country_id'], $affiliate['affiliate_zone_id'], $affiliate['affiliate_state']);
     }
@@ -382,17 +389,17 @@ if (ACCOUNT_STATE == 'true') {
 
 //	    $a_country = (isset($_POST['a_country']) ? vam_db_prepare_input($_POST['a_country']) : STORE_COUNTRY);
 	    $zone_id = 0;
-		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."'");
+		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int)$affiliate['affiliate_country_id']."'");
 		 $check = vam_db_fetch_array($check_query);
 		 $entry_state_has_zones = ($check['total'] > 0);
 		 if ($entry_state_has_zones == true) {
 			$zones_array = array ();
-			$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' order by zone_name");
+			$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$affiliate['affiliate_country_id']."' order by zone_name");
 			while ($zones_values = vam_db_fetch_array($zones_query)) {
 				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 			}
 			
-			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' and zone_code = '".vam_db_input($a_state)."'");
+			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$affiliate['affiliate_country_id']."' and zone_code = '".vam_db_input($affiliate['affiliate_zone_id'])."'");
 
 	      if (vam_db_num_rows($zone) > 0) {
 	        $zone_id = $zone['zone_id'];
@@ -400,7 +407,7 @@ if (ACCOUNT_STATE == 'true') {
 
 	      } else {
 
-		   $zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$a_country."' and zone_code = '".vam_db_input($a_state)."'");
+		   $zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$affiliate['affiliate_country_id']."' and zone_code = '".vam_db_input($affiliate['affiliate_zone_id'])."'");
 
 	      if (vam_db_num_rows($zone) > 0) {
 	          $zone_id = $zone['zone_id'];
