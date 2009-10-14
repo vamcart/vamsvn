@@ -135,7 +135,7 @@
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'edit') { ?><?php if ($_GET['action'] != 'new') { ?>
-<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a>'; ?><?php } ?><?php } ?>
+            <?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_SPECIAL, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a>'; ?><?php } ?><?php } ?>
 </td>
           </tr>
         </table>
@@ -166,6 +166,12 @@
 
       $sInfo = new objectInfo($product);
     } else {
+      if ( ($_GET['action'] == 'new') && isset($_GET['prodID']) ) {
+      	$product_query = vam_db_query("select p.products_id, pd.products_name from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = pd.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "' and p.products_id = '". (int) $_GET['prodID']. "'");
+      	$product = vam_db_fetch_array($product_query);
+      	$fInfo = new objectInfo($product);
+      }
+      else {
       $sInfo = new objectInfo(array());
 
       // create an array of products on special, which will be excluded from the pull down menu of products
@@ -181,6 +187,7 @@
         $specials_array[] = $specials['products_id'];
       }
     }
+  }
 ?>
       <tr><form name="new_special" <?php echo 'action="' . vam_href_link(FILENAME_SPECIALS, vam_get_all_get_params(array('action', 'info', 'sID')) . 'action=' . $form_action, 'NONSSL') . '"'; ?> method="post"><?php if ($form_action == 'update') echo vam_draw_hidden_field('specials_id', $_GET['sID']); ?>
         <td><br /><table border="0" cellspacing="0" cellpadding="2">
@@ -200,7 +207,17 @@
 
                 echo '<input type="hidden" name="products_up_id" value="' . $sInfo->products_id . '">';
            ?>
-          <td class="main"><?php echo ($sInfo->products_name) ? $sInfo->products_name . ' <small>(' . $vamPrice->Format($price,true). ')</small>' : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $specials_array); echo vam_draw_hidden_field('products_price', $sInfo->products_price); ?></td>
+          <td class="main">
+<?php
+		if ( ($_GET['action'] == 'new') && isset($_GET['prodID']) ) {
+        		echo vam_draw_hidden_field('products_id', $_GET['prodID']);
+			echo $fInfo->products_name;
+		}
+        else
+        	echo ($sInfo->products_name) ? $sInfo->products_name . ' <small>(' . $vamPrice->Format($price,true). ')</small>' : vam_draw_products_pull_down('products_id', 'style="font-size:10px"', $specials_array); echo vam_draw_hidden_field('products_price', $sInfo->products_price);
+
+?>          
+</td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_SPECIALS_SPECIAL_PRICE; ?>&nbsp;</td>
@@ -304,7 +321,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_SPECIAL, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a>'; ?></td>
                   </tr>
 <?php
   }

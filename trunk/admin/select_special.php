@@ -1,14 +1,21 @@
 <?php
-/*
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+/* --------------------------------------------------------------
+   $Id: select_special.php 1125 2007-02-08 11:13:01Z VaM $   
 
-  Copyright (c) 2002 osCommerce
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Released under the GNU General Public License
+   Copyright (c) 2009 VaM Shop
+   --------------------------------------------------------------
+   based on:
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(specials.php,v 1.38 2002/05/16); www.oscommerce.com
+   (c) 2003         nextcommerce (specials.php,v 1.9 2003/08/18); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (specials.php,v 1.9 2003/08/18); xt-commerce.com
 
-  Featured Products admin
-*/
+   Released under the GNU General Public License
+   --------------------------------------------------------------*/
 
   require('includes/application_top.php');
 
@@ -54,7 +61,7 @@
           <tr>
             <td class="main"><br/>
 
-            <?php echo vam_draw_form('search_featured', FILENAME_SELECT_FEATURED, '', 'post'); ?>
+            <?php echo vam_draw_form('search_featured', FILENAME_SELECT_SPECIAL, '', 'post'); ?>
               <table border='0'>
                 <tr>
                   <td class='main'><?php echo TEXT_FEATURED_PRODUCT; ?></td>
@@ -99,9 +106,9 @@
 			else
 				$icon = vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', '', 10, 10) . '&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
 ?>
-                <tr class="dataTableRow" onMouseOver="rowOverEffect(this)" onMouseOut="rowOutEffect(this)" onClick="document.location.href='<?php echo vam_href_link(FILENAME_FEATURED, '&prodID=' . $result['products_id'] . '&action=new'); ?>'">
+                <tr class="dataTableRow" onMouseOver="rowOverEffect(this)" onMouseOut="rowOutEffect(this)" onClick="document.location.href='<?php echo vam_href_link(FILENAME_SPECIALS, '&prodID=' . $result['products_id'] . '&action=new'); ?>'">
                   <td  class="dataTableContent">
-                    <a href="<?php echo vam_href_link(FILENAME_FEATURED, '&prodID=' . $result['products_id'] . '&action=new'); ?>"><?php echo $result['products_name']; ?></a>
+                    <a href="<?php echo vam_href_link(FILENAME_SPECIALS, '&prodID=' . $result['products_id'] . '&action=new'); ?>"><?php echo $result['products_name']; ?></a>
                   </td>
                   <td  class="dataTableContent" align="left"><?php echo $result['products_model']; ?></td>
                   <td  class="dataTableContent" align="right"><?php echo $currencies->format($result['products_price']); ?></td>
