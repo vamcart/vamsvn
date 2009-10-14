@@ -107,5 +107,6 @@ define('ACCESS_CUSTOMER_EXTRA_FIELDS', 'Админка - Разное - Инст
 define('ACCESS_PARAMETERS','Админка - Каталог - Параметры');
 define('ACCESS_PARAMETERS_EXPORT','Админка - Каталог - Импорт/экспорт параметров');
 define('ACCESS_SELECT_FEATURED','Админка - Каталог - Рекомендуемые - Поиск');
+define('ACCESS_SELECT_SPECIAL','Админка - Каталог - Скидки - Поиск');
 
 ?>
