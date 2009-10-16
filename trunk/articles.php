@@ -94,6 +94,8 @@ require (DIR_WS_INCLUDES.'header.php');
 
   if ($_GET['akeywords'] != ""){
   
+  $_GET['akeywords'] = urldecode($_GET['akeywords']);
+  
   if (isset($_GET['description'])) {
     $listing_sql = "select ad.articles_name, a.articles_date_added, a.articles_date_available, a.articles_id, ad.articles_description from " . TABLE_ARTICLES_DESCRIPTION . " ad inner join " . TABLE_ARTICLES . " a on ad.articles_id = a.articles_id where a.articles_status = '1' and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and (ad.articles_name like '%" . $_GET['akeywords'] . "%' or ad.articles_description like '%" . $_GET['akeywords'] . "%' or ad.articles_head_desc_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_keywords_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_title_tag like '%" . $_GET['akeywords'] . "%') order by ad.articles_name ASC";
   }  else {
