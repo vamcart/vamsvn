@@ -43,6 +43,8 @@
       
   if ($_GET['akeywords'] != ""){
   
+  $_GET['akeywords'] = urldecode($_GET['akeywords']);
+  
     $all_sql = "SELECT
           faq_id,
           question,
