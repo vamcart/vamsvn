@@ -907,4 +907,7 @@ define('SET_BOX_MANUFACTURERS_DESC', 'Включить/выключить бок
 define('SET_BOX_MANUFACTURERS_INFO_DESC', 'Включить/выключить бокс.');
 define('SET_BOX_FAQ_DESC', 'Включить/выключить бокс.');
 
+define('DISPLAY_START_PAGE_TITLE', 'Показывать на главной странице');
+define('DISPLAY_START_PAGE_DESC', 'Показывать/не показывать колонку на главной странице.');
+
 ?>
