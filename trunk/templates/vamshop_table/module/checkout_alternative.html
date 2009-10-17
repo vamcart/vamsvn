@@ -1,5 +1,107 @@
 <!-- create_guest_account.php  -->
 {config_load file="$language/lang_$language.conf" section="create_account"}
+
+{if $virtual=='false'} 
+ <!-- checkout_shipping.php  -->
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+<h1 class="contentBoxHeading">{#heading_shipping#}</h1>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_shipping#}<br />
+            <br />
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>{$SHIPPING_BLOCK}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+{/if}
+
+<!-- checkout_payment.php -->
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}
+<h1 class="contentBoxHeading">{#heading_payment#}</h1>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_payment#}<br /><br />
+		    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main">{if $GV_COVER!='true'}{$PAYMENT_BLOCK}{$module_gift}{else}
+                  <table width="100%"  border="0">
+                    <tr>
+                      <td class="headerMessage" align="center">{#text_gccover#}</td>
+                    </tr>
+                  </table>
+                {/if}</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+  <tr>
+    <td><strong>{#title_comments#}</strong></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />
+		    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>{$COMMENTS}</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+{if $conditions=='true'}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="main">&nbsp;</td>
+        </tr>
+  <tr>
+    <td><strong>{#title_agb#}</strong>&nbsp;{$AGB_LINK}</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="border-top: 1px solid; border-color: #cccccc;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main">{$AGB}</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid; border-color: #ff0000;" class="conditions">{$AGB_checkbox} <strong>{#text_accept_agb#}</strong></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+{/if}
+
 <h1 class="contentBoxHeading">{#heading_checkout#}</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -170,106 +272,6 @@
   </tr>
 </table>
 
-{if $virtual=='false'} 
- <!-- checkout_shipping.php  -->
-{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
-<h1 class="contentBoxHeading">{#heading_shipping#}</h1>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td style="border-top: 1px solid; border-color: #cccccc;">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_shipping#}<br />
-            <br />
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>{$SHIPPING_BLOCK}</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
-{/if}
-
-<!-- checkout_payment.php -->
-{config_load file="$language/lang_$language.conf" section="checkout_payment"}
-<h1 class="contentBoxHeading">{#heading_payment#}</h1>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td style="border-top: 1px solid; border-color: #cccccc;">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main">{#text_payment#}<br /><br />
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main">{if $GV_COVER!='true'}{$PAYMENT_BLOCK}{$module_gift}{else}
-                  <table width="100%"  border="0">
-                    <tr>
-                      <td class="headerMessage" align="center">{#text_gccover#}</td>
-                    </tr>
-                  </table>
-                {/if}</td>
-              </tr>
-            </table></td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-  <tr>
-    <td><strong>{#title_comments#}</strong></td>
-  </tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td style="border-top: 1px solid; border-color: #cccccc;">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>{$COMMENTS}</td>
-              </tr>
-            </table></td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
-{if $conditions=='true'}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="main">&nbsp;</td>
-        </tr>
-  <tr>
-    <td><strong>{#title_agb#}</strong>&nbsp;{$AGB_LINK}</td>
-  </tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td style="border-top: 1px solid; border-color: #cccccc;">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td style="border-right: 1px solid; border-color: #cccccc;" valign="top" class="main"><br />
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="main">{$AGB}</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid; border-color: #ff0000;" class="conditions">{$AGB_checkbox} <strong>{#text_accept_agb#}</strong></td>
-              </tr>
-            </table></td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
-{/if}
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td class="main">&nbsp;</td>
