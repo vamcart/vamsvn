@@ -245,11 +245,11 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_QUANTITY_MIN; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity_min', ($pInfo->products_quantity_min=='0' ? 1 : $pInfo->products_quantity_min)); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity_min', ($pInfo->products_quantity_min=='' ? 1 : $pInfo->products_quantity_min)); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_QUANTITY_MAX; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity_max', ($pInfo->products_quantity_max=='0' ? 1000 : $pInfo->products_quantity_max)); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity_max', ($pInfo->products_quantity_max=='' ? 1000 : $pInfo->products_quantity_max)); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_WEIGHT; ?></td>
