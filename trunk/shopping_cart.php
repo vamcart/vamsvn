@@ -23,6 +23,7 @@
    ---------------------------------------------------------------------------------------*/
 $cart_empty = false;
 require ("includes/application_top.php");
+
 // create template elements
 $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
