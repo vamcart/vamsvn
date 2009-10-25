@@ -2137,6 +2137,11 @@ form
 	  padding: 2px;
    }
 
+.form textarea 
+   {
+	  width: 80%;
+   }
+
 .pagecontent fieldset.form
    {
      border: 0px;
