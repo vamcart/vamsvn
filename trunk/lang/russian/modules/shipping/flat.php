@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: flat.php 899 2007/02/07 13:24:46 VaM $
+   $Id: flat.php 899 2009/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -19,7 +19,7 @@
 
 define('MODULE_SHIPPING_FLAT_TEXT_TITLE', 'Курьерская доставка');
 define('MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION', 'Курьерская доставка');
-define('MODULE_SHIPPING_FLAT_TEXT_WAY', 'Для жителей Москвы');
+define('MODULE_SHIPPING_FLAT_TEXT_WAY', 'На указанный адрес доставки');
 
 define('MODULE_SHIPPING_FLAT_STATUS_TITLE' , 'Разрешить модуль курьерская доставка');
 define('MODULE_SHIPPING_FLAT_STATUS_DESC' , 'Вы хотите разрешить модуль курьерская доставка?');
