@@ -65,7 +65,7 @@ if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {
 		}
 		$module_content = '';
 				
-		    $reviews_query = vam_db_query($reviews_split->sql_query);
+		    $reviews_query = vamDBquery($reviews_split->sql_query);
 			$row = 0;
 			$data_reviews = array ();
 			while ($reviews = vam_db_fetch_array($reviews_query, true)) {
