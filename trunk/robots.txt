@@ -9,8 +9,6 @@ Disallow: /account_history_info.php
 Disallow: /address_book.php
 Disallow: /advanced_search_result.php?
 Disallow: /affiliate_affiliate.php
-Disallow: /articles_new.php
-Disallow: /articles.php
 Disallow: /ask_a_question.php
 Disallow: /checkout_alternative.php
 Disallow: /checkout_process.php
@@ -28,7 +26,6 @@ Disallow: /create_account.php
 Disallow: /create_account_guest.php 
 Disallow: /create_account_process.php
 Disallow: /create_account_success.php
-Disallow: /faq.php
 Disallow: /featured.php
 Disallow: /highslide/
 Disallow: /index.php/manufacturers_id/
