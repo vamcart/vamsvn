@@ -53,6 +53,8 @@ Disallow: /includes/
 Disallow: /pub/
 Disallow: /media/
 Disallow: /index.php/action/
+Disallow: /articles.php
+Disallow: /articles_new.php
 Disallow: /article_info.php/action/
 Disallow: /product_info.php/action/
 Disallow: /special.php
@@ -69,3 +71,5 @@ Disallow: /cookie_usage.php
 Disallow: /index.php/products_id
 Disallow: /*sort/
 Disallow: /*on_page/
+Disallow: /index.php?action=buy_now
+Disallow: /specials.php/action/buy_now 
