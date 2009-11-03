@@ -2133,14 +2133,6 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SESSION_TIMEOUT_CATALOG', '1440',  15, 9, NULL, '', NULL, NULL);
 
 # configuration_group_id 16
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_MIN_KEYWORD_LENGTH', '6', 16, 2, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_KEYWORDS_NUMBER', '5',  16, 3, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_AUTHOR', '',  16, 4, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_PUBLISHER', '',  16, 5, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_COMPANY', '',  16, 6, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_TOPIC', 'shopping',  16, 7, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_REPLY_TO', 'xx@xx.com',  16, 8, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_REVISIT_AFTER', '14',  16, 9, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_ROBOTS', 'index,follow',  16, 10, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_DESCRIPTION', '',  16, 11, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_KEYWORDS', '',  16, 12, NULL, '', NULL, NULL);
