@@ -16,14 +16,6 @@
    ---------------------------------------------------------------------------------------*/
 ?>
 <meta name="robots" content="<?php echo META_ROBOTS; ?>" />
-<meta name="company" content="<?php echo META_COMPANY; ?>" />
-<meta name="author" content="<?php echo META_AUTHOR; ?>" />
-<meta name="publisher" content="<?php echo META_PUBLISHER; ?>" />
-<meta name="distribution" content="global" />
-<meta name="reply-to" content="<?php echo META_REPLY_TO; ?>" />
-<meta name="revisit-after" content="<?php echo META_REVISIT_AFTER; ?>" />
-<meta name="page-topic" content="<?php echo META_TOPIC; ?>" />
-<meta name="language" content="<?php echo $_SESSION['language_code']; ?>" />
 <?php
 
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
