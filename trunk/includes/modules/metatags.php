@@ -247,6 +247,9 @@ $content_meta_default = vam_db_fetch_array($content_meta_default_query);
 			$content_default_title = TITLE;
 }
 
+   $mDesc = (isset($content_meta_default['content_meta_description']) ? ' ' . $content_meta_default['content_meta_description'] : null);
+   $mKey = (isset($content_meta_default['content_meta_keywords']) ? ' ' . $content_meta_default['content_meta_keywords'] : null);
+
 		if (isset($_GET['filter_id']) or isset($_GET['manufacturers_id'])) {		
 
 	$mID = (isset($_GET['filter_id']) ? $_GET['filter_id'] : $_GET['manufacturers_id']);
