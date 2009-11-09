@@ -99,18 +99,18 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_ERROR);
 	}
 
-	if (vam_validate_email($email_address) == false) {
-		$error = true;
-		$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
-	} else {
-		$check_email_query = vam_db_query("select count(*) as total from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0'");
-		$check_email = vam_db_fetch_array($check_email_query);
-		if ($check_email['total'] > 0) {
-			$error = true;
-
-			$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_ERROR_EXISTS);
-		}
-	}
+//	if (vam_validate_email($email_address) == false) {
+//		$error = true;
+//		$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
+//	} else {
+//		$check_email_query = vam_db_query("select count(*) as total from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0'");
+//		$check_email = vam_db_fetch_array($check_email_query);
+//		if ($check_email['total'] > 0) {
+//			$error = true;
+//
+//			$messageStack->add('account_edit', ENTRY_EMAIL_ADDRESS_ERROR_EXISTS);
+//		}
+//	}
 
 	if (ACCOUNT_TELE == 'true') {
 	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
