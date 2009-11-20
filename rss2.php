@@ -160,9 +160,9 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 			break;
 
 		case "articles":
-			$articles_query = "SELECT articles_id, articles_name, articles_description 
-			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
-			                                            WHERE language_id='" . (int)$_SESSION['languages_id'] . "'";
+			$articles_query = "SELECT ad.articles_id, ad.articles_name, ad.articles_description, a.articles_date_added 
+			                                            FROM " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad
+			                                            WHERE ad.articles_id = a.articles_id and ad.language_id='" . (int)$_SESSION['languages_id'] . "'";
 			                                            
 			vam_rss_articles($articles_query);
 			break;
