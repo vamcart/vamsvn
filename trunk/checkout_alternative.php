@@ -354,7 +354,7 @@ if (isset ($_POST['payment']))
 	}
 
 	if ($customers_status == 0 || !$customers_status)
-		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID_GUEST;
+		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID;
 //	$password = vam_create_password(8);
 
 	if (!$newsletter)
