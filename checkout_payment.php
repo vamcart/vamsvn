@@ -151,10 +151,12 @@ $module = new vamTemplate;
 		}
 
 		if (sizeof($selection) > 1) {
-			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $selection[0]['id']));
+			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $selection[0]['id']), 'id="'.$selection[$i]['id'].'"');
 		} else {
 			$selection[$i]['selection'] = vam_draw_hidden_field('payment', $selection[$i]['id']);
 		}
+
+			$selection[$i]['id'] = $selection[$i]['id'];
 
 		if (isset ($selection[$i]['error'])) {
 
