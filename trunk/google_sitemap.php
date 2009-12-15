@@ -303,5 +303,4 @@
     fopen('http://www.google.com/webmasters/sitemaps/ping?sitemap='.urlencode($notify_url), 'r');
   }
 
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
