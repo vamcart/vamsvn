@@ -17,7 +17,7 @@ html,body
 
 body
    {
-     font: 76% arial,sans-serif;
+     font: 11pt arial,sans-serif;
    }
 
 img
@@ -113,7 +113,7 @@ div#navigation
 #navigation span 
    {
      display: block;
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #ffffff;
      border-bottom: 2px #990000 solid;
@@ -123,7 +123,7 @@ div#navigation
    
 #navigation a
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #ffffff;
      text-decoration: none;
@@ -131,7 +131,7 @@ div#navigation
 
 #navigation a:hover
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #ffffff;
      text-decoration: none;
@@ -139,7 +139,7 @@ div#navigation
 
 #navigation a:visited
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #ffffff;
      text-decoration: none;
@@ -418,7 +418,7 @@ div#navigation
 #boxCategories h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
      border-bottom: 0px #e5e5e5 solid;
@@ -518,7 +518,7 @@ div#navigation
 #boxFilters h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -589,7 +589,7 @@ div#navigation
 #boxContent h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -623,7 +623,7 @@ div#navigation
 #boxContent li 
    {
 	  display: block;
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      background: url(img/icon_arrow1.jpg) no-repeat left center;
      padding: 0 0 0 12px; 
    }
@@ -650,7 +650,7 @@ div#navigation
 #boxInformation h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -683,7 +683,7 @@ div#navigation
 
 #boxInformation li {
 	display: block;
-   font: 11px Tahoma, Verdana, Arial, sans-serif;
+   font: 11pt Tahoma, Verdana, Arial, sans-serif;
    background: url(img/icon_arrow2.jpg) no-repeat left center;
    padding: 0 0 0 12px; 
 }
@@ -710,7 +710,7 @@ div#navigation
 #boxAddQuickie h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -770,7 +770,7 @@ div#navigation
 #boxAuthors h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -814,7 +814,7 @@ div#navigation
 #boxArticles h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -858,7 +858,7 @@ div#navigation
 #boxAffiliate h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #990000;
      border-bottom: 0px #e5e5e5 solid;
@@ -902,7 +902,7 @@ div#navigation
 #boxArticlesNew h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -946,7 +946,7 @@ div#navigation
 #boxLastViewed h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
      border-bottom: 0px #e5e5e5 solid;
@@ -991,7 +991,7 @@ div#navigation
 #boxReviews h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -1036,7 +1036,7 @@ div#navigation
 #boxSearch h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1102,7 +1102,7 @@ div#navigation
 #boxSpecials h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #67748B;
      border-bottom: 0px #e5e5e5 solid;
@@ -1153,7 +1153,7 @@ div#navigation
 #boxFeatured h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1204,7 +1204,7 @@ div#navigation
 #boxWhatsNew h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #990000;
      border-bottom: 0px #e5e5e5 solid;
@@ -1255,7 +1255,7 @@ div#navigation
 #boxNews h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1307,7 +1307,7 @@ div#navigation
 #boxFaq h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1451,7 +1451,7 @@ dd.itemFaq
      display: block; 
      background: #006600; 
      color: #fff;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
@@ -1596,7 +1596,7 @@ p.CartContentCenter
      display: block; 
      background: #67748B; 
      color: #fff;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
@@ -1685,7 +1685,7 @@ p.LoginContentLeft
 #boxDownloads h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1730,7 +1730,7 @@ p.LoginContentLeft
 #boxNewsletter h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1790,7 +1790,7 @@ p.LoginContentLeft
 #boxBestsellers h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1846,7 +1846,7 @@ p.LoginContentLeft
 #boxGroupInfo h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -1896,7 +1896,7 @@ p.LoginContentLeft
 #boxCurrencies h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -1953,7 +1953,7 @@ p.LoginContentLeft
 #boxLanguages h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #CC0000;
      border-bottom: 0px #e5e5e5 solid;
@@ -1998,7 +1998,7 @@ p.LoginContentLeft
 #boxManufacturers h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #006600;
      border-bottom: 0px #e5e5e5 solid;
@@ -2055,7 +2055,7 @@ p.LoginContentLeft
 #boxManufacturersInfo h5 
    {
      display: block;
-     font: 12px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      font-weight: bold;
      color: #FF6600;
      border-bottom: 0px #e5e5e5 solid;
@@ -2584,7 +2584,7 @@ ul.accountLinks
 li.accountLinks 
    {
 	  display: block;
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
+     font: 11pt Tahoma, Verdana, Arial, sans-serif;
      background: url(img/icon_arrow1.jpg) no-repeat left center;
      padding: 0 0 0 14px; 
    }
