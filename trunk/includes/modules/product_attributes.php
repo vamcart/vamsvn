@@ -99,7 +99,7 @@ if ($product->getAttributesCount() > 0) {
 				if ($_SESSION['customers_status']['customers_status_discount_attributes'] == 1 && $products_options['price_prefix'] == '+')
 					$price -= $price / 100 * $discount;				
 					$attr_price=$price;
-					if ($products_options['price_prefix']=="-") { $attr_price=$price*(-1); $price=$attr_price; }
+					//if ($products_options['price_prefix']=="-") { $attr_price=$price*(-1); $price=$attr_price; }
 					$full_price = $products_price + $attr_price;
 					$price_plain = $vamPrice->Format($price, false);
 					$price = $vamPrice->Format($price, true);
