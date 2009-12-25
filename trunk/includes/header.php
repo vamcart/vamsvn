@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: header.php 1140 2007-02-06 20:14:56 VaM $   
+   $Id: header.php 1140 2009-02-06 20:14:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -235,6 +235,11 @@ function checkForm() {
     }
   }
 
+    if ((!file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/vamshop.key'))) {
+
+      vam_output_warning(WARNING_VAMSHOP_KEY);
+    }
+  
   // check if the session folder is writeable
   if (WARN_SESSION_DIRECTORY_NOT_WRITEABLE == 'true') {
     if (STORE_SESSIONS == '') {
