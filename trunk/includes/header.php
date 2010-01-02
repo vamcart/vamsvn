@@ -277,7 +277,7 @@ $vamTemplate->assign('cart',vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $vamTemplate->assign('checkout',vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $vamTemplate->assign('store_name',TITLE);
 $vamTemplate->assign('login',vam_href_link(FILENAME_LOGIN, '', 'SSL'));
-$vamTemplate->assign('mainpage',vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
+$vamTemplate->assign('mainpage',HTTP_SERVER . DIR_WS_CATALOG);
 
 
 
