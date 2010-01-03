@@ -48,7 +48,7 @@ if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
  }
 ?>
 <?php
-if (isset($_GET['cat']) && isset($current_category_id)) {
+if (isset($_GET['cat']) && isset($current_category_id) && strstr($PHP_SELF, FILENAME_DEFAULT)) {
 ?>
 <link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
 <?php
@@ -69,7 +69,7 @@ if (isset($tPath) && strstr($PHP_SELF, FILENAME_ARTICLES)) {
  }
 ?>
 <?php
-if (isset($_GET['news_id']) && strstr($PHP_SELF, FILENAME_LATEST_NEWS)) {
+if (isset($_GET['news_id']) && strstr($PHP_SELF, FILENAME_NEWS)) {
 ?>
 <link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
 <?php
