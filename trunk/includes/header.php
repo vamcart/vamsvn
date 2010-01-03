@@ -40,6 +40,48 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
+<?php
+if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
+<?php
+if (isset($_GET['cat']) && isset($current_category_id)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
+<?php
+if (isset($_GET['articles_id']) && strstr($PHP_SELF, FILENAME_ARTICLE_INFO)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
+<?php
+if (isset($tPath) && strstr($PHP_SELF, FILENAME_ARTICLES)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
+<?php
+if (isset($_GET['news_id']) && strstr($PHP_SELF, FILENAME_LATEST_NEWS)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
+<?php
+if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
+?>
+<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
+<?php
+ }
+?>
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_NEWS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_ARTICLES; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_CATEGORIES; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories'; ?>" />
