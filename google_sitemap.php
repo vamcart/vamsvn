@@ -336,6 +336,53 @@
     }
   }
 
+  $product_result = vam_db_query("
+    SELECT
+      a.articles_id,
+      ad.articles_name,
+      ad.language_id,
+      UNIX_TIMESTAMP(a.articles_date_added) as articles_date_added,
+      UNIX_TIMESTAMP(a.articles_last_modified) as articles_last_modified,
+      l.code
+    FROM
+      ".TABLE_ARTICLES." a, 
+      ".TABLE_ARTICLES_DESCRIPTION." ad,
+      ".TABLE_LANGUAGES." l
+    WHERE ad.language_id = '".$_SESSION['languages_id']."' and 
+      a.articles_status='1' AND
+      a.articles_id = ad.articles_id AND
+      ad.language_id = l.languages_id
+    ORDER BY
+      a.articles_id
+  ");
+
+  if (vam_db_num_rows($product_result) > 0) {
+    while($product_data = vam_db_fetch_array($product_result)) {
+    
+      $lang_param = ($product_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$product_data['code'] : '';
+      $date = ($product_data['articles_last_modified'] != NULL) ? $product_data['articles_last_modified'] : $product_data['articles_date_added'];
+      
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$product_data['articles_id']))) , PRIORITY_PRODUCTS, iso8601_date($date), CHANGEFREQ_PRODUCTS);
+      
+      output($string);
+      $strlen += strlen($string);
+      
+      $c++;
+      if ($autogenerate) {
+        // 500000 entrys or filesize > 10,485,760 - some space for the last entry
+        if ( $c == MAX_ENTRYS || $strlen >= MAX_SIZE) {
+          output(SITEMAP_FOOTER);
+          $function_close($fp);
+          $c = 0;
+          $i++;
+          $fp = $function_open('sitemap'.$i.$file_extension, 'w');
+          output(SITEMAP_HEADER);
+          $strlen = strlen(SITEMAP_HEADER);
+        }
+      }
+    }
+  }
+
 
   output(SITEMAP_FOOTER);
   if ($output_to_file || $autogenerate) {
