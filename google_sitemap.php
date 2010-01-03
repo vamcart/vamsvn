@@ -190,7 +190,7 @@
       ".TABLE_CATEGORIES." c,
       ".TABLE_CATEGORIES_DESCRIPTION." cd,
       ".TABLE_LANGUAGES." l
-    WHERE cd.language_id = '".$_SESSION['languages_id']."' and 
+    WHERE c.categories_status = '1' and cd.language_id = '".$_SESSION['languages_id']."' and 
       c.categories_id = cd.categories_id AND
       cd.language_id = l.languages_id
     ORDER by 
@@ -233,7 +233,62 @@
     }
   }
 
+  $cat_result = vam_db_query("
+    SELECT
+      t.topics_id,
+      t.parent_id,
+      td.language_id,
+      td.topics_name,
+      UNIX_TIMESTAMP(t.date_added) as date_added,
+      UNIX_TIMESTAMP(t.last_modified) as last_modified,
+      l.code
+    FROM 
+      ".TABLE_TOPICS." t,
+      ".TABLE_TOPICS_DESCRIPTION." td,
+      ".TABLE_LANGUAGES." l
+    WHERE td.language_id = '".$_SESSION['languages_id']."' and 
+      t.topics_id = td.topics_id AND
+      td.language_id = l.languages_id
+    ORDER by 
+      td.topics_id
+  ");
 
+  $cat_array = array();
+  if (vam_db_num_rows($cat_result) > 0) {
+    while($cat_data = vam_db_fetch_array($cat_result)) {
+      $cat_array[$cat_data['topics_id']][$cat_data['code']] = $cat_data;
+    }
+  }
+  reset($cat_array);
+
+
+  foreach($cat_array as $lang_array) {
+    foreach($lang_array as $cat_id => $cat_data) {
+    
+      $lang_param = ($cat_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$cat_data['code'] : '';
+      $date = ($cat_data['last_modified'] != NULL) ? $cat_data['last_modified'] : $cat_data['date_added'];
+
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_ARTICLES, 'tPath='.$cat_data['topics_id'] . $SEF_parameter_cat))) ,PRIORITY_CATEGORIES, iso8601_date($date), CHANGEFREQ_CATEGORIES);
+      
+      output($string);
+      $strlen += strlen($string);
+      
+      $c++;
+      if ($autogenerate) {
+        // 500000 entrys or filesize > 10,485,760 - some space for the last entry
+        if ( $c == MAX_ENTRYS || $strlen >= MAX_SIZE) {
+          output(SITEMAP_FOOTER);
+          $function_close($fp);
+          $c = 0;
+          $i++;
+          $fp = $function_open('sitemap'.$i.$file_extension, 'w');
+          output(SITEMAP_HEADER);
+          $strlen = strlen(SITEMAP_HEADER);
+        }
+      }
+    }
+  }
+  
   $product_result = vam_db_query("
     SELECT
       p.products_id,
