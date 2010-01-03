@@ -670,13 +670,13 @@ require(DIR_WS_FUNCTIONS . 'customers_extra_fields.php');
 
 define('TAX_DECIMAL_PLACES','2');
 
-// starts canonical tag function - www.webshoptimizer.com
+// starts canonical tag function
 function CanonicalUrl() {
-$domain = (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER); // gets the base URL minus the trailing slash
+$domain = substr((($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER), 0); // gets the base URL minus the trailing slash
 $string = $_SERVER['REQUEST_URI']; // gets the url
-$search = '\&sid.*|\?sid.*'; // searches for the session id in the url
+$search = '/\&sid.*|\?sid.*|\?sort.*|\&sort.*|\?direction.*|\&direction.*|\?page.*|\&page.*|\?on_page.*|\&on_page.*|\&cat.*|\&filter_id.*|\&manufacturers_id.*|\&params.*|\?q.*|\&q.*|\?price_min.*|\&price_min.*|\?price_max.*|\&price_max.*/'; // searches for the session id in the url
 $replace = ''; // replaces with nothing i.e. deletes
-echo $domain . ereg_replace( $search, $replace, $string ); // merges the variables and echoing them
+echo $domain . preg_replace( $search, $replace, $string ); // merges the variables and echoing them
 }
 // eof - canonical tag
 
