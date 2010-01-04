@@ -7,7 +7,7 @@
 <div class="boxFaqContent">
 {$module_data.FAQ_DATA}
 <p><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></p>
-<p>{$module_data.FAQ_ANSWER|truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}</p>
+<p>{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}</p>
 </div>
  {/foreach}  
 
