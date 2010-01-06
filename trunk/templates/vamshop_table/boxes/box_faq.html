@@ -18,7 +18,7 @@
 		{$module_data.FAQ_DATA}
 		<div style="padding-left:1em">
 		<strong><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></strong><br />
-		{$module_data.FAQ_ANSWER|truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}
+		{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}
 		</div>
   {/foreach}  
           </td>
