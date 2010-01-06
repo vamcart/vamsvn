@@ -781,11 +781,11 @@ class categories {
 
 	function duplicate_product($src_products_id, $dest_categories_id) {
 
-		$product_query = vamDBquery("SELECT *
+		$product_query = vam_db_query("SELECT *
 				    	                                 FROM ".TABLE_PRODUCTS."
 				    	                                WHERE products_id = '".vam_db_input($src_products_id)."'");
 
-		$product = vam_db_fetch_array($product_query,true);
+		$product = vam_db_fetch_array($product_query);
 		if ($dest_categories_id == 0) { $startpage = 1; $products_status = 1; } else { $startpage= 0; $products_status = $product['products_status'];}
 		
 		$sql_data_array=array('products_quantity'=>$product['products_quantity'],
@@ -833,7 +833,7 @@ class categories {
 			$dup_products_image_name = $dup_products_id.'_0'.'.'.$nsuffix;
 
 			//write to DB
-			vamDBquery("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."' WHERE products_id = '".$dup_products_id."'");
+			vam_db_query("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."' WHERE products_id = '".$dup_products_id."'");
 
 			@ copy(DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$dup_products_image_name);
 			@ copy(DIR_FS_CATALOG_INFO_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_INFO_IMAGES.'/'.$dup_products_image_name);
