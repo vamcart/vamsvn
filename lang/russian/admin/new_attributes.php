@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: new_attributes.php 899 2007-02-07 17:36:57 VaM $
+   $Id: new_attributes.php 899 2010-02-07 17:36:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -26,7 +26,7 @@
    define('DL_COUNT','Максимально возможное количество загрузок: ');
    define('DL_EXPIRE','Время жизни ссылки на скачивание (дней): ');
    define('TITLE_EDIT','Редактировать атрибуты ');
-   define('TITLE_UPDATED','Атрибуты товары обновлены.');
+   define('TITLE_UPDATED','Атрибуты товара обновлены.');
    define('SELECT_PRODUCT','Пожалуйста, выберите товар для редактирования:');
    define('SELECT_COPY','Пожалуйста, выберите товар, с которого будем копировать атрибуты:');
    define('SELECT_FILE','Выберите файл');
