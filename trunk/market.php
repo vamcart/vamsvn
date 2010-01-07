@@ -248,6 +248,9 @@ while ($products = vam_db_fetch_array($products_query)) {
   }
 
   vam_yml_out('  <description>' . vam_yml_clear_string($products['proddesc']) . '</description>');
+  if(YML_SALES_NOTES != "") {
+    vam_yml_out('  <sales_notes>' . YML_SALES_NOTES . '</sales_notes>');
+  }
   vam_yml_out('</offer>' . "\n");
 
 }
