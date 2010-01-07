@@ -357,7 +357,7 @@
 
     } elseif ($page == FILENAME_FAQ) {
 
-      $n_id = -1;
+      $f_id = -1;
       $param_array = explode('&', $parameters);
 
       for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
