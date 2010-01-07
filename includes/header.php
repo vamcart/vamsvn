@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: header.php 1140 2009-02-06 20:14:56 VaM $   
+   $Id: header.php 1140 2010-02-06 20:14:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
