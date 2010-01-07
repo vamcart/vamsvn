@@ -148,6 +148,24 @@
           $PHP_SELF = '/news.php';
           include('news.php');
         } else {
+
+        $query = 'select faq_id from ' . TABLE_FAQ . ' where faq_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $result = mysql_query($query);
+        if (mysql_num_rows($result) > 0) {
+          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+          $nID = $row['faq_id'];
+          $matched = true;
+        } else {
+          $matched = false;
+        }
+        if ($matched) {
+          $HTTP_GET_VARS['faq_id']  = $fID;
+          $_GET['faq_id']  = $fID;
+          mysql_free_result($result);
+          mysql_close();
+          $PHP_SELF = '/faq.php';
+          include('faq.php');
+        } else {
        
           mysql_free_result($result);
           mysql_close();
@@ -158,6 +176,7 @@
           }
         }        
       }
+     }
          
         }
       }

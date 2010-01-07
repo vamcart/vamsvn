@@ -154,6 +154,28 @@
           include('news.php');
           break;
 
+        case 'faq':
+          $faqid = array();
+          if (preg_match('/\/faq_id\/(.*)\//', $_SERVER['REQUEST_URI'], $faqid)) {
+            $query = 'select faq_page_url from ' . TABLE_FAQ . ' where faq_id="' . (int)$faqid[1] . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $fURL = $row['faq_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($fURL) && $fURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $fURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/faq.php';
+          include('faq.php');
+          break;
+
         case 'articles':
           $topicid = array();
           if (preg_match('/\/tPath\/(.*)\//', $_SERVER['REQUEST_URI'], $topicid)) {
