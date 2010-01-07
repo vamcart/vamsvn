@@ -153,7 +153,7 @@
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
-          $nID = $row['faq_id'];
+          $fID = $row['faq_id'];
           $matched = true;
         } else {
           $matched = false;
