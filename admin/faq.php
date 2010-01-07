@@ -43,6 +43,7 @@
       case 'insert_faq': //insert a new faq.
         if ($_POST['question']) {
           $sql_data_array = array('question'   => vam_db_prepare_input($_POST['question']),
+                                  'faq_page_url'    => vam_db_prepare_input($_POST['faq_page_url']),
                                   'answer'    => vam_db_prepare_input($_POST['answer']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -56,6 +57,7 @@
       case 'update_faq': //user wants to modify a faq.
         if($_GET['faq_id']) {
           $sql_data_array = array('question' => vam_db_prepare_input($_POST['question']),
+                                  'faq_page_url'    => vam_db_prepare_input($_POST['faq_page_url']),
                                   'answer'  => vam_db_prepare_input($_POST['answer']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -121,7 +123,7 @@ $manual_link = 'delete-faq';
 <?php
   if ($_GET['action'] == 'new_faq') { //insert or edit a faq
     if ( isset($_GET['faq_id']) ) { //editing exsiting faq
-      $faq_query = vam_db_query("select faq_id, question, language, date_added, answer from " . TABLE_FAQ . " where faq_id = '" . $_GET['faq_id'] . "'");
+      $faq_query = vam_db_query("select faq_id, question, language, faq_page_url, date_added, answer from " . TABLE_FAQ . " where faq_id = '" . $_GET['faq_id'] . "'");
       $faq = vam_db_fetch_array($faq_query);
     } else { //adding new faq
       $faq = array();
@@ -139,6 +141,10 @@ $manual_link = 'delete-faq';
           <tr>
             <td class="main"><?php echo TEXT_FAQ_ANSWER; ?>:</td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('answer', '', '100%', '25', stripslashes($faq['answer'])); ?><br /><a href="javascript:toggleHTMLEditor('answer');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo TEXT_FAQ_PAGE_URL; ?>:</td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('faq_page_url', $faq['faq_page_url'], 'size="60"', true); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -217,7 +223,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $faq_count = 0;
-    $faq_query_raw = 'select faq_id, question, answer, status from ' . TABLE_FAQ . ' order by date_added desc';
+    $faq_query_raw = 'select faq_id, question, faq_page_url, answer, status from ' . TABLE_FAQ . ' order by date_added desc';
 
 	$faq_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $faq_query_raw, $faq_query_numrows);
 

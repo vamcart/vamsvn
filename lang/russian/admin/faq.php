@@ -42,4 +42,6 @@ define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 define('EMPTY_CATEGORY', 'Нет faq');
 define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте faq');
 
+define('TEXT_FAQ_PAGE_URL', 'SEO URL вопроса и ответа');
+
 ?>
