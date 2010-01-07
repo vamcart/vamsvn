@@ -40,6 +40,7 @@ $featured_query_raw = "select p.products_id,
                                 pd.products_name,
                                 pd.products_short_description,
                                 p.products_price,
+                                p.products_model,
                                 p.products_tax_class_id,p.products_shippingtime,
                                 p.products_image,p.products_vpe_status,p.products_vpe_value,p.products_vpe,p.products_fsk18 from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_FEATURED." f
                                 where p.products_status = '1'
