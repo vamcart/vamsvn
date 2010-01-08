@@ -275,7 +275,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
           <?php if (ACTIVATE_SHIPPING_STATUS=='true') { ?>
           <tr>
             <td valign="top" class="main"><?php echo BOX_SHIPPING_STATUS.':'; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('shipping_status', $shipping_statuses, $pInfo->products_shippingtime); ?>&nbsp;<a href="<?php echo vam_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
+            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('shipping_status', $shipping_statuses, (isset($pInfo->products_shippingtime) ? $pInfo->products_shippingtime : DEFAULT_SHIPPING_STATUS_ID)); ?>&nbsp;<a href="<?php echo vam_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
           </tr>
           <?php } ?>
       <tr>
