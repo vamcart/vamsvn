@@ -215,6 +215,8 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 		if (vam_not_null($product->data['products_url']))
 			$info->assign('PRODUCTS_URL', sprintf(TEXT_MORE_INFORMATION, vam_href_link(FILENAME_REDIRECT, 'action=product&id='.$product->data['products_id'], 'NONSSL', true, false)));
 
+			$info->assign('PRODUCTS_URL1', $product->data['products_url']);
+
 		if ($product->data['products_date_available'] > date('Y-m-d H:i:s')) {
 			$info->assign('PRODUCTS_DATE_AVIABLE', sprintf(TEXT_DATE_AVAILABLE, vam_date_long($product->data['products_date_available'])));
 
