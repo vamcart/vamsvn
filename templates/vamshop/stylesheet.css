@@ -9,6 +9,8 @@
 
 /*<![CDATA[*/
 
+@import url("local.css");
+
 html,body
    {
      margin: 0;
