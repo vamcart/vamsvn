@@ -82,6 +82,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['customer_gender'] = $check_customer['customers_gender'];
 			$_SESSION['customer_first_name'] = $check_customer['customers_firstname'];
 			$_SESSION['customer_last_name'] = $check_customer['customers_lastname'];
+			$_SESSION['customer_email_address'] = $check_customer['customers_email_address'];
 			$_SESSION['customer_id'] = $check_customer['customers_id'];
 			$_SESSION['customer_vat_id'] = $check_customer['customers_vat_id'];
 			$_SESSION['customer_default_address_id'] = $check_customer['customers_default_address_id'];
@@ -128,6 +129,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['customer_gender'] = $check_customer['customers_gender'];
 			$_SESSION['customer_first_name'] = $check_customer['customers_firstname'];
 			$_SESSION['customer_last_name'] = $check_customer['customers_lastname'];
+			$_SESSION['customer_email_address'] = $check_customer['customers_email_address'];
 			$_SESSION['customer_id'] = $check_customer['customers_id'];
 			$_SESSION['customer_vat_id'] = $check_customer['customers_vat_id'];
 			$_SESSION['customer_default_address_id'] = $check_customer['customers_default_address_id'];

@@ -50,6 +50,8 @@ vam_session_destroy();
 unset ($_SESSION['customer_id']);
 unset ($_SESSION['customer_default_address_id']);
 unset ($_SESSION['customer_first_name']);
+unset ($_SESSION['customer_last_name']);
+unset ($_SESSION['customer_email_address']);
 unset ($_SESSION['customer_country_id']);
 unset ($_SESSION['customer_zone_id']);
 unset ($_SESSION['comments']);
