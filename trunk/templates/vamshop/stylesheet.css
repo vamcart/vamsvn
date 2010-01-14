@@ -470,14 +470,39 @@ div#navigation
      border-right:1px solid #3169C6; 
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel1, 
-#categoriesBoxMenu #CatNavi .CatLevel2, 
-#categoriesBoxMenu #CatNavi .CatLevel3,
-#categoriesBoxMenu #CatNavi .CatLevel4,
-#categoriesBoxMenu #CatNavi .CatLevel5,
+#categoriesBoxMenu #CatNavi .CatLevel0 
+   {
+     padding-left: 10px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel1 
+   {
+     padding-left: 20px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel2 
+   {
+     padding-left: 30px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel3
+   {
+     padding-left: 40px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel4
+   {
+     padding-left: 50px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel5
+   {
+     padding-left: 60px;
+   }
+
 #categoriesBoxMenu #CatNavi .CatLevel6
    {
-     padding-left: 0.5em;
+     padding-left: 70px;
    }
 
 #categoriesBoxMenu #CatNavi .CurrentParent a 
