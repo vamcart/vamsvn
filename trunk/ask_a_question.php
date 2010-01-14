@@ -22,11 +22,6 @@ include ('includes/header.php');
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int)$_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int)$_SESSION['languages_id']."'");
 $product_info = vam_db_fetch_array($product_info_query);
 
-if (isset($_SESSION['customer_id'])) { 
-$account_query = vam_db_query("select customers_firstname, customers_lastname, customers_email_address from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$_SESSION['customer_id'] . "'");
-$account = vam_db_fetch_array($account_query);
-}
-
 // include needed functions
 require_once(DIR_FS_INC.'vam_validate_email.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
@@ -37,9 +32,9 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$error = false;
 
 	if (isset($_SESSION['customer_id'])) { 
-		$firstname = $account['customers_firstname'];
-		$lastname = $account['customers_lastname'];
-		$email_address = $account['customers_email_address'];
+		$firstname = $_SESSION['customer_first_name'];
+		$lastname = $_SESSION['customer_last_name'];
+		$email_address =$_SESSION['customer_email_address'];
 		$message = vam_db_input($_POST['message_body']);
 		$to_email_address = $email_address;
 		$to_name = $firstname .' '. $lastname;
@@ -123,9 +118,9 @@ $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size=
 
         if (isset($_SESSION['customer_id'])) { 
 		//-> registered user********************************************************
-$vamTemplate->assign('INPUT_FIRSTNAME', $account['customers_firstname']);
-$vamTemplate->assign('INPUT_LASTNAME', $account['customers_lastname']);
-$vamTemplate->assign('INPUT_EMAIL', $account['customers_email_address']);
+$vamTemplate->assign('INPUT_FIRSTNAME', $_SESSION['customer_first_name']);
+$vamTemplate->assign('INPUT_LASTNAME', $_SESSION['customer_last_name']);
+$vamTemplate->assign('INPUT_EMAIL', $_SESSION['customer_email_address']);
         }else{
 		//-> guest *********************************************************  
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : ''))));
@@ -161,9 +156,9 @@ $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size=
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'action=process&products_id='.$product->data['products_id'], 'SSL')));
         if (isset($_SESSION['customer_id'])) { 
 		//-> registered user********************************************************
-$vamTemplate->assign('INPUT_FIRSTNAME', $account['customers_firstname']);
-$vamTemplate->assign('INPUT_LASTNAME', $account['customers_lastname']);
-$vamTemplate->assign('INPUT_EMAIL', $account['customers_email_address']);
+$vamTemplate->assign('INPUT_FIRSTNAME', $_SESSION['customer_first_name']);
+$vamTemplate->assign('INPUT_LASTNAME', $_SESSION['customer_last_name']);
+$vamTemplate->assign('INPUT_EMAIL', $_SESSION['customer_email_address']);
         }else{
 		//-> guest *********************************************************  
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : ''))));
