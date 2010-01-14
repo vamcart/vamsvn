@@ -84,8 +84,8 @@
           }
         }
 
-        $categories_url = vam_db_query('select categories_url from ' . TABLE_CATEGORIES . ' where categories_id="' . $categories_id . '"');
-        $categories_url = vam_db_fetch_array($categories_url);
+        $categories_url = vamDBquery('select categories_url from ' . TABLE_CATEGORIES . ' where categories_id="' . $categories_id . '"');
+        $categories_url = vam_db_fetch_array($categories_url,true);
         $categories_url = $categories_url['categories_url'];
 
         if ($categories_url == '') {
@@ -208,8 +208,8 @@
         }
       }
 
-      $products_page_url = vam_db_query('select products_page_url from ' . TABLE_PRODUCTS . ' where products_id="' . $products_id . '"');
-      $products_page_url = vam_db_fetch_array($products_page_url);
+      $products_page_url = vamDBquery('select products_page_url from ' . TABLE_PRODUCTS . ' where products_id="' . $products_id . '"');
+      $products_page_url = vam_db_fetch_array($products_page_url,true);
       $products_page_url = $products_page_url['products_page_url'];
 
       if ($products_page_url == '') {
@@ -265,8 +265,8 @@
         } 
       }
 
-      $a_url = vam_db_query('select articles_page_url from ' . TABLE_ARTICLES . ' where articles_id="' . $a_id . '"');
-      $a_url = vam_db_fetch_array($a_url);
+      $a_url = vamDBquery('select articles_page_url from ' . TABLE_ARTICLES . ' where articles_id="' . $a_id . '"');
+      $a_url = vam_db_fetch_array($a_url,true);
       $a_url = $a_url['articles_page_url'];
 
       if ($a_url == '') {
@@ -318,8 +318,8 @@
         } 
       }
 
-      $n_url = vam_db_query('select news_page_url from ' . TABLE_LATEST_NEWS . ' where news_id="' . $n_id . '"');
-      $n_url = vam_db_fetch_array($n_url);
+      $n_url = vamDBquery('select news_page_url from ' . TABLE_LATEST_NEWS . ' where news_id="' . $n_id . '"');
+      $n_url = vam_db_fetch_array($n_url,true);
       $n_url = $n_url['news_page_url'];
 
       if ($n_url == '') {
@@ -355,59 +355,6 @@
           return $link . $n_url;
       }
 
-    } elseif ($page == FILENAME_FAQ) {
-
-      $f_id = -1;
-      $param_array = explode('&', $parameters);
-
-      for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
-        $parsed_param = explode('=', $param_array[$i]);
-        if ($parsed_param[0] === 'faq_id') {
-          $f_id = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'language') {
-          $language = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'currency') {
-          $currency = $parsed_param[1];
-        } 
-      }
-
-      $f_url = vam_db_query('select faq_page_url from ' . TABLE_FAQ . ' where faq_id="' . $f_id . '"');
-      $f_url = vam_db_fetch_array($f_url);
-      $f_url = $f_url['faq_page_url'];
-
-      if ($f_url == '') {
-        return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
-      } else {
-
-          if ($connection == 'NONSSL') {
-            $link = HTTP_SERVER;
-          } elseif ($connection == 'SSL') {
-            if (ENABLE_SSL == 'true') {
-              $link = HTTPS_SERVER ;
-            } else {
-              $link = HTTP_SERVER;
-            }
-          } else {
-            die('</td></tr></table></td></tr></table><br /><br /><strong class="note">Error!<br /><br />Unable to determine connection method on a link!<br /><br />Known methods: NONSSL SSL</strong><br /><br />');
-          }
-
-          if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
-          } else {
-            $link .= DIR_WS_CATALOG;
-          }
-
-          if (vam_not_null($language)) {
-            $f_url .= '?language=' . $language;
-          }
-
-          if (vam_not_null($currency)) {
-            $f_url .= '?currency=' . $currency;
-          }
-
-          return $link . $f_url;
-      }
-
     } elseif ($page == FILENAME_ARTICLES) {
 
       $t_id = -1;
@@ -430,8 +377,8 @@
 
 
   
-      $t_url = vam_db_query('select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . $t_id . '"');
-      $t_url = vam_db_fetch_array($t_url);
+      $t_url = vamDBquery('select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . $t_id . '"');
+      $t_url = vam_db_fetch_array($t_url,true);
       $t_url = $t_url['topics_page_url'];
 
       if ($t_url == '') {
