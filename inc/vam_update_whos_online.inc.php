@@ -21,10 +21,7 @@
     if (isset($_SESSION['customer_id'])) {
       $wo_customer_id = $_SESSION['customer_id'];
 
-      $customer_query = vam_db_query("select customers_firstname, customers_lastname from " . TABLE_CUSTOMERS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
-      $customer = vam_db_fetch_array($customer_query);
-
-      $wo_full_name = addslashes($customer['customers_firstname'] . ' ' . $customer['customers_lastname']);
+      $wo_full_name = addslashes($_SESSION['customer_first_name'] . ' ' . $_SESSION['customer_last_name']);
     } else {
       $wo_customer_id = 0;
       $wo_full_name = TEXT_GUEST;
