@@ -97,6 +97,9 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
 
   $topics_query = "select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name";
   $topics_query = vamDBquery($topics_query);
+
+if (vam_db_num_rows($topics_query, true) > 0) {
+
   while ($topics = vam_db_fetch_array($topics_query,true))  {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
@@ -204,6 +207,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
 
   }
 
+}
 
   $box_content = $new_articles_string . $all_articles_string . $topics_string;
 
