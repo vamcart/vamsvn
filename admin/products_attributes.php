@@ -462,10 +462,12 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
           $value_name = vam_db_query("select products_options_values_name, products_options_values_description, products_options_values_text, products_options_values_image, products_options_values_link from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . $values_values['products_options_values_id'] . "' and language_id = '" . $languages[$i]['id'] . "'");
 				$value_name = vam_db_fetch_array($value_name);
 				$flag = $languages[$i]['name'];
-          $inputs .= $languages[$i]['name'] . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<input type="hidden" name="orig_image_'.$languages[$i]['code'].'" value="'.$value_name['products_options_values_image'].'"></input><br />';
-          $inputs_text .= $languages[$i]['name'] . ':&nbsp;<input type="text" name="value_text[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_text'] . '">&nbsp;<br />';
+				
+			$flag = $languages[$i]['name'];
+			$inputs = $flag . ':&nbsp;<input type="text" name="value_name[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_name'] . '">&nbsp;<input type="hidden" name="orig_image_'.$languages[$i]['code'].'" value="'.$value_name['products_options_values_image'].'"><br />';
+			$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4">' . $value_name['products_options_values_description'] . '</textarea>&nbsp;<br />';
 
-				$inputs_desc = $flag . ':&nbsp;<textarea name="value_description[' . $languages[$i]['id'] . ']" cols="50" rows="4">' . $value_name['products_options_values_description'] . '</textarea>&nbsp;<br />';
+			$inputs_text = $flag . ':&nbsp;<input type="text" name="value_text[' . $languages[$i]['id'] . ']" size="15" value="' . $value_name['products_options_values_text'] . '">&nbsp;<br />';
 
           if($value_name['products_options_values_image'] != '') {
 	          $inputs_image .= $languages[$i]['name'] . ':&nbsp;<img src="'.(($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER).DIR_WS_CATALOG.DIR_WS_IMAGES.'attribute_images/mini/'.$value_name['products_options_values_image'].'">&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=edit', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'icon_edit.gif', IMAGE_EDIT).'</a>&nbsp;<a href="'.vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'] . '&image=delete', 'NONSSL').'">'.vam_image(DIR_WS_ICONS.'delete.gif', IMAGE_DELETE).'</a>';
