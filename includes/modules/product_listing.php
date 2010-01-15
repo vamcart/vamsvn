@@ -157,7 +157,7 @@ if ($listing_split->number_of_rows > 0) {
     while ($listing = vam_db_fetch_array($listing_query, true)) {
         $rows ++;
 
-        $module_content[] =  $product->buildDataArray($listing);		
+        $module_content[] =  $product->buildDataArray($listing);
 		
         $ids[] = $module_content[sizeof($module_content) - 1]['PRODUCTS_ID'];
    }
@@ -232,7 +232,7 @@ if ($result != false) {
 		$module->caching = 1;
 		$module->cache_lifetime = CACHE_LIFETIME;
 		$module->cache_modified_check = CACHE_CHECK;
-		$cache_id = $current_category_id.'_'.$_SESSION['language'].'_'.$_SESSION['customers_status']['customers_status_name'].'_'.$_SESSION['currency'].'_'.$_GET['manufacturers_id'].'_'.$_GET['filter_id'].'__'.$_GET['q'].'_'.$_GET['price_min'].'_'.$_GET['price_max'].'_'.$_GET['on_page'].'_'.$_GET['page'].'_'.$_GET['keywords'].'_'.$_GET['categories_id'].'_'.$_GET['pfrom'].'_'.$_GET['pto'].'_'.$_GET['x'].'_'.$_GET['y'];
+		$cache_id = $current_category_id.'_'.$_SESSION['language'].'_'.$_SESSION['customers_status']['customers_status_name'].'_'.$_SESSION['currency'].'_'.$_GET['manufacturers_id'].'_'.$_GET['filter_id'].'__'.$_GET['q'].'_'.$_GET['price_min'].'_'.$_GET['price_max'].'_'.$_GET['on_page'].'_'.$_GET['page'].'__'.$_GET['sort'].'_'.$_GET['direction'].'_'.$_GET['keywords'].'_'.$_GET['categories_id'].'_'.$_GET['pfrom'].'_'.$_GET['pto'].'_'.$_GET['x'].'_'.$_GET['y'];
 		$module = $module->fetch(CURRENT_TEMPLATE.'/module/product_listing/'.$category['listing_template'], $cache_id);
 	}
 	$vamTemplate->assign('main_content', $module);
