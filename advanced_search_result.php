@@ -178,7 +178,7 @@ if ($error == 1 && $keyerror != 1) {
 	                  pd.products_short_description,
 	                  pd.products_description ";
 
-	$from_str  = "FROM ".TABLE_PRODUCTS." AS p LEFT JOIN ".TABLE_PRODUCTS_DESCRIPTION." AS pd ON (p.products_id = pd.products_id) ";
+	$from_str  = "FROM ".TABLE_PRODUCTS."  AS p LEFT JOIN ".TABLE_PRODUCTS_DESCRIPTION." AS pd ON (p.products_id = pd.products_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id)";
 	$from_str .= $subcat_join;
 	if (SEARCH_IN_ATTR == 'true') { $from_str .= " LEFT OUTER JOIN ".TABLE_PRODUCTS_ATTRIBUTES." AS pa ON (p.products_id = pa.products_id) LEFT OUTER JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." AS pov ON (pa.options_values_id = pov.products_options_values_id) "; }
 	$from_str .= "LEFT OUTER JOIN ".TABLE_SPECIALS." AS s ON (p.products_id = s.products_id) AND s.status = '1'";
@@ -196,7 +196,7 @@ if ($error == 1 && $keyerror != 1) {
 	}
 
 	//where-string
-	$where_str = " WHERE p.products_status = '1' "." AND pd.language_id = '".(int) $_SESSION['languages_id']."'".$subcat_where.$fsk_lock.$manu_check.$group_check.$tax_where.$pfrom_check.$pto_check;
+	$where_str = " WHERE p.products_status = '1' "." AND c.categories_status=1 AND pd.language_id = '".(int) $_SESSION['languages_id']."'".$subcat_where.$fsk_lock.$manu_check.$group_check.$tax_where.$pfrom_check.$pto_check;
 
 	//go for keywords... this is the main search process
 	if (isset ($_GET['keywords']) && vam_not_null($_GET['keywords'])) {
