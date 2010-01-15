@@ -29,10 +29,10 @@
   require(DIR_FS_INC .'vam_findTitle.inc.php');
   require_once(DIR_FS_INC . 'vam_format_filesize.inc.php');
 
-  if ( isset($cPathID) && $_POST['action'] == 'change') {
+  if ($_POST['cpath']!='' && $_POST['action'] == 'change') {
     include(DIR_WS_MODULES.'new_attributes_change.php');
 
-    vam_redirect( './' . FILENAME_CATEGORIES . '?cPath=' . $cPathID . '&pID=' . $_POST['current_product_id'] );
+    vam_redirect( './' . FILENAME_CATEGORIES . '?cPath=' . $_POST['cpath'] . '&pID=' . $_POST['current_product_id'] );
   }
 
 ?>
