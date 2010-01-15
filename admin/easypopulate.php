@@ -2111,6 +2111,8 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					group_permission_1,
 					group_permission_2,
 					group_permission_3,
+					products_quantity_min,
+					products_quantity_max,
 					products_page_url,
 					products_price,
 					products_status,
@@ -2130,6 +2132,8 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 							'1',
 							'1',
 							'1',
+							'1',
+							'1000',
 								'$v_products_page_url',
 								'$v_products_price',
 								'$v_db_status',
@@ -2160,6 +2164,8 @@ vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id ='
 					group_permission_1="1" ,
 					group_permission_2="1" ,
 					group_permission_3="1" ,
+					products_quantity_min="1" ,
+					products_quantity_max="1000" ,
 					products_image="'.$v_products_image;
 
 			// uncomment these lines if you are running the image mods
