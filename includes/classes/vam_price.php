@@ -295,9 +295,13 @@ class vamPrice {
 		$product_query = "select manufacturers_id from ".TABLE_PRODUCTS." where products_id = '".$pID."'";
 		$product_query = vamDBquery($product_query);
 		$product = vam_db_fetch_array($product_query, true);
+		if ($product['manufacturers_id'] > 0) {
 		$manufacturer_query = "SELECT discount FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE customers_id = '".$cID."' AND manufacturers_id = '".$product['manufacturers_id']."'";
 		$manufacturer_query = vamDBquery($manufacturer_query);
 		$manufacturer = vam_db_fetch_array($manufacturer_query, true);
+		} else {
+		$manufacturer['discount'] = 0;
+		}
 
 		return $manufacturer['discount'];
 	}
