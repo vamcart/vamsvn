@@ -63,8 +63,8 @@ class vamPrice {
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
 
 		if ($customer_id) {
-		  $customers_query = vam_db_query("SELECT customers_personal_discount FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $customer_id . "'");
-		  $customers_value = vam_db_fetch_array($customers_query);
+		  $customers_query = vamDBquery("SELECT customers_personal_discount FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $customer_id . "'");
+		  $customers_value = vam_db_fetch_array($customers_query, true);
 		}
 
 
