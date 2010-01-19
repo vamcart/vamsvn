@@ -62,19 +62,13 @@ class vamPrice {
 		$customers_status_query = vamDBquery($customers_status_query);
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
 
-		if ($customer_id) {
-		  $customers_query = vamDBquery("SELECT customers_personal_discount FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . $customer_id . "'");
-		  $customers_value = vam_db_fetch_array($customers_query, true);
-		}
-
-
-		$this->cStatus = array (
+	$this->cStatus = array (
 		
 		'customers_status_id' => $this->actualGroup, 
 		'customers_status_name' => $customers_status_value['customers_status_name'], 
 		'customers_status_image' => $customers_status_value['customers_status_image'], 
 		'customers_status_public' => $customers_status_value['customers_status_public'], 
-		'customers_status_discount' => ($customers_value['customers_personal_discount'] > 0 ? $customers_value['customers_personal_discount'] : $customers_status_value['customers_status_discount']),
+		'customers_status_discount' => ($_SESSION['customers_status']['customers_status_discount'] > 0 ? $_SESSION['customers_status']['customers_status_discount'] : $customers_status_value['customers_status_discount']),
 		'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 
 		'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 
 		'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 
