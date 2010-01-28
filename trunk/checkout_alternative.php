@@ -62,6 +62,9 @@ require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 require (DIR_WS_CLASSES . 'shipping.php');
 require (DIR_WS_CLASSES . 'payment.php');
 
+require (DIR_WS_CLASSES . 'order.php');
+$order = new order();
+
 $breadcrumb->add(TEXT_CHECKOUT_ALTERNATIVE);
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_alternative', vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
@@ -69,7 +72,7 @@ $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id']
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
 
-if ($_SESSION['cart']->content_type == 'virtual' || ($_SESSION['cart']->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) {
+if ($order->content_type == 'virtual' || ($order->content_type == 'virtual_weight') || ($_SESSION['cart']->count_contents_virtual() == 0)) {
 
 	$_SESSION['shipping'] = false;
 	$_SESSION['sendto'] = false;
@@ -822,9 +825,6 @@ $vamTemplate->assign('SHIPPING_BLOCK', $shipping_block);
 
 /* PAYMENT_BLOCK */
 // load all enabled payment modules
-
-require (DIR_WS_CLASSES . 'order.php');
-$order = new order();
 
 require (DIR_WS_CLASSES . 'order_total.php'); // GV Code ICW ADDED FOR CREDIT CLASS SYSTEM
 $order_total_modules = new order_total(); // GV Code ICW ADDED FOR CREDIT CLASS SYSTEM
