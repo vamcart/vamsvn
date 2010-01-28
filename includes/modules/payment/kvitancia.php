@@ -116,7 +116,7 @@ class kvitancia {
 	function after_process() {
 
       global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_input($insert_id) . "', '" . vam_db_input($_POST['kvit_name']) . "', '" . vam_db_input($_POST['kvit_address']) ."')");
+      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_POST['kvit_name']) . "', '" . vam_db_prepare_input($_POST['kvit_address']) ."')");
 
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");
