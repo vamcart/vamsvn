@@ -92,8 +92,18 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
 <script type="text/javascript" src="jscript/jquery/jquery.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/thickbox/thickbox.js"></script>
-<link rel="stylesheet" href="jscript/jquery/plugins/thickbox/thickbox.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.zoom").fancybox({
+		"zoomOpacity"			: true,
+		"overlayShow"			: false,
+		"zoomSpeedIn"			: 500,
+		"zoomSpeedOut"			: 500
+	});
+	});
+</script>
 <?php
  }
 ?>
