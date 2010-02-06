@@ -238,7 +238,7 @@ if (isset ($_POST['payment']))
 	$vatID = new vat_validation($vat, '', '', $country,true);
 
 	$customers_vat_id_status = 0;
-//	$customers_status = $vatID->vat_info['status'];
+	$customers_status = $vatID->vat_info['status'];
 	$customers_vat_id_status = $vatID->vat_info['vat_id_status'];
 	$error = $vatID->vat_info['error'];
 
@@ -356,7 +356,7 @@ if (isset ($_POST['payment']))
 		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
 	}
 
-	if ($customers_status == 0 || !$customers_status)
+//	if ($customers_status == 0 || !$customers_status)
 		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID;
 //	$password = vam_create_password(8);
 
