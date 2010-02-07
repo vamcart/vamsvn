@@ -234,6 +234,7 @@ $default_value='pd.products_name';
           </tr>
           <tr>
 <?php
+if ($cInfo->categories_status == NULL) $cInfo->categories_status = 1;
 $order_array='';
 $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
                    array('id' => 'DESC','text'=>'DESC (1 last)'));
