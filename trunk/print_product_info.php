@@ -19,6 +19,11 @@
 
 include ('includes/application_top.php');
 
+if (!isset($_GET['products_id'])) { 
+	header('HTTP/1.1 404 Not Found');
+	vam_redirect(vam_href_link(FILENAME_DEFAULT));
+}
+
 // include needed functions
 require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
