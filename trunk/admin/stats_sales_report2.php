@@ -99,7 +99,7 @@
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <?php if (ENABLE_TABS == 'true') { ?>
 		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
-		<script type="text/javascript" src="../jscript/jquery/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
 		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
