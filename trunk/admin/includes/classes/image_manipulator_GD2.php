@@ -61,6 +61,7 @@ class image_manipulation
 		if($this->s !== Null)
 			{
 			$this->t = imagecreatetruecolor($this->q, $this->r); // created thumbnail reference
+			$this->setTransparency($this->t,$this->s); 
 			$this->u = imagecopyresampled($this->t, $this->s, 0, 0, 0, 0, $this->q, $this->r, $this->i, $this->j);
 			}
 		}
@@ -332,5 +333,22 @@ class image_manipulation
 			imagedestroy($this->t);
 			}
 		}
+		
+function setTransparency($new_image,$image_source)
+    {
+       
+            $transparencyIndex = imagecolortransparent($image_source);
+            $transparencyColor = array('red' => 255, 'green' => 255, 'blue' => 255);
+            
+            if ($transparencyIndex >= 0) {
+                $transparencyColor    = imagecolorsforindex($image_source, $transparencyIndex);   
+            }
+           
+            $transparencyIndex    = imagecolorallocate($new_image, $transparencyColor['red'], $transparencyColor['green'], $transparencyColor['blue']);
+            imagefill($new_image, 0, 0, $transparencyIndex);
+             imagecolortransparent($new_image, $transparencyIndex);
+       
+    } 		
+		
 	}
 ?>
