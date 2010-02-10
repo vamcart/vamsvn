@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian.php 1260 2008/06/12 13:25:47 VaM $
+   $Id: russian.php 1260 2010/06/12 13:25:47 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -65,7 +65,7 @@ define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары дан
 define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
   
 define('BOX_LOGINBOX_STATUS','Группа:');     
-define('BOX_LOGINBOX_DISCOUNT','Личная (групповая) скидка');
+define('BOX_LOGINBOX_DISCOUNT','Ваша скидка');
 define('BOX_LOGINBOX_DISCOUNT_TEXT','Скидка от суммы заказа');
 define('BOX_LOGINBOX_DISCOUNT_OT','');
 
@@ -450,7 +450,7 @@ define('RETAIL_PRICE','Розничная цена ');
 define('GROUP_PRICE','Базовая цена группы');
 define('MANUFACTURER_DISCOUNT','Личная скидка на производителя ');
 define('PRODUCT_DISCOUNT','Скидка на товар ');
-define('PERSONAL_DISCOUNT','Личная (групповая) скидка ');
+define('PERSONAL_DISCOUNT','Ваша скидка ');
 
 // Сборка VaM
 
