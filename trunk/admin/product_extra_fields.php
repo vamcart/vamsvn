@@ -108,11 +108,11 @@ if (vam_not_null($action)) {
      <td width="100%">
       <!--
       <div style="font-family: verdana; font-weight: bold; font-size: 17px; margin-bottom: 8px; color: #727272;">
-       <? echo SUBHEADING_TITLE; ?>
+       <?php echo SUBHEADING_TITLE; ?>
       </div>
       -->
       <br />
-      <? echo vam_draw_form("add_field", FILENAME_PRODUCTS_EXTRA_FIELDS, 'action=add', 'post'); ?>
+      <?php echo vam_draw_form("add_field", FILENAME_PRODUCTS_EXTRA_FIELDS, 'action=add', 'post'); ?>
       <table border="0" width="400" cellspacing="0" cellpadding="2">
        <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIELDS; ?></td>
@@ -122,13 +122,13 @@ if (vam_not_null($action)) {
 
        <tr>
         <td class="dataTableContent">
-         <? echo vam_draw_input_field('field[name]', $field['name'], 'size=30', false, 'text', true);?>
+         <?php echo vam_draw_input_field('field[name]', $field['name'], 'size=30', false, 'text', true);?>
         </td>
 		<td class="dataTableContent" align="center">
-         <? echo vam_draw_input_field('field[order]', $field['order'], 'size=5', false, 'text', true);?>
+         <?php echo vam_draw_input_field('field[order]', $field['order'], 'size=5', false, 'text', true);?>
         </td>
 		<td class="dataTableContent" align="center">
-         <?
+         <?php
 		 echo vam_draw_pull_down_menu('field[language]', $values, '0', '');?>
         </td>		
         <td class="dataTableHeadingContent" align="right">
@@ -139,10 +139,10 @@ if (vam_not_null($action)) {
       </table>
       <hr />
       <br>
-      <?
+      <?php
        echo vam_draw_form('extra_fields', FILENAME_PRODUCTS_EXTRA_FIELDS,'action=update','post');
       ?>
-      <? echo $action_message; ?>
+      <?php echo $action_message; ?>
       <table border="0" width="100%" cellspacing="0" cellpadding="2">
        <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent" width="20">&nbsp;</td>
@@ -151,22 +151,22 @@ if (vam_not_null($action)) {
 		<td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_LANGUAGE; ?></td>
         <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_STATUS; ?></td>
        </tr>
-<?
+<?php
 $products_extra_fields_query = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_EXTRA_FIELDS . " ORDER BY products_extra_fields_order");
 while ($extra_fields = vam_db_fetch_array($products_extra_fields_query)) {
 ?>
        <tr>
         <td width="20">
-         <? echo vam_draw_checkbox_field('mark['.$extra_fields['products_extra_fields_id'].']', 1) ?>
+         <?php echo vam_draw_checkbox_field('mark['.$extra_fields['products_extra_fields_id'].']', 1) ?>
         </td>
         <td class="dataTableContent">
-         <? echo vam_draw_input_field('field['.$extra_fields['products_extra_fields_id'].'][name]', $extra_fields['products_extra_fields_name'], 'size=30', false, 'text', true);?>
+         <?php echo vam_draw_input_field('field['.$extra_fields['products_extra_fields_id'].'][name]', $extra_fields['products_extra_fields_name'], 'size=30', false, 'text', true);?>
         </td>
 		<td class="dataTableContent" align="center">
-         <? echo vam_draw_input_field('field['.$extra_fields['products_extra_fields_id'].'][order]', $extra_fields['products_extra_fields_order'], 'size=5', false, 'text', true);?>
+         <?php echo vam_draw_input_field('field['.$extra_fields['products_extra_fields_id'].'][order]', $extra_fields['products_extra_fields_order'], 'size=5', false, 'text', true);?>
         </td>
 		<td class="dataTableContent" align="center">
-		 <? echo vam_draw_pull_down_menu('field['.$extra_fields['products_extra_fields_id'].'][language]', $values, $extra_fields['languages_id'], ''); ?>
+		 <?php echo vam_draw_pull_down_menu('field['.$extra_fields['products_extra_fields_id'].'][language]', $values, $extra_fields['languages_id'], ''); ?>
         </td>	
 				<td  class="dataTableContent" align="center">
          <?php
@@ -179,7 +179,7 @@ while ($extra_fields = vam_db_fetch_array($products_extra_fields_query)) {
          ?>
         </td>
        </tr>
-<? } ?>
+<?php } ?>
        <tr>
         <td colspan="4">
          <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?> 
