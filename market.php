@@ -235,7 +235,7 @@ while ($products = vam_db_fetch_array($products_query)) {
     }
   }
 
-  if(vam_not_null($products['products_image'])) vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urlencode(basename($products['products_image'])) . '</picture>');
+  if(vam_not_null($products['products_image'])) vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urldecode($products['products_image']) . '</picture>');
   if(YML_DELIVERYINCLUDED == "true") vam_yml_out('  <deliveryIncluded/>');
   vam_yml_out('  <name>' . vam_yml_clear_string($products['products_name']) . '</name>');
 
