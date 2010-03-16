@@ -151,7 +151,7 @@ $vamTemplate->assign('module_content', $module_content);
 
 // Parameters start
 
-    $parameters_query = vamDBquery("SELECT * FROM ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." LEFT JOIN ".TABLE_PRODUCTS_PARAMETERS." using(products_parameters_id) WHERE products_id = ".$product->data['products_id']." and products_parameters.products_parameters_id is not null and products_parameters_order >= 0 and products_parameters2products_order >= 0 order by IF(products_parameters2products_order > 0, products_parameters2products_order, products_parameters_order)");
+    $parameters_query = vamDBquery("SELECT * FROM ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." LEFT JOIN ".TABLE_PRODUCTS_PARAMETERS." using(products_parameters_id) WHERE products_id = ".$product_info['products_id']." and products_parameters.products_parameters_id is not null and products_parameters_order >= 0 and products_parameters2products_order >= 0 order by IF(products_parameters2products_order > 0, products_parameters2products_order, products_parameters_order)");
 
     $parameters = array();
     $i = 0;
