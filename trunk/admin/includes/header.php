@@ -27,7 +27,7 @@
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="200" align="left">
-              <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.gif', 'VaM Shop'); ?></a>
+              <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.png', 'VaM Shop'); ?></a>
               </td>
               <td width="370" align="center">
               &nbsp;

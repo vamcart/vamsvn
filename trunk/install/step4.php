@@ -39,7 +39,7 @@
 
 <!-- Шапка -->
 <div id="header">
-<img src="images/logo.gif" alt="VaM Shop" />
+<img src="images/logo.png" alt="VaM Shop" />
 </div>
 <!-- /Шапка -->
 
