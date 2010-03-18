@@ -29,8 +29,8 @@ require (DIR_WS_CLASSES.'order.php');
 //  $str.=$vn.'='.$vv.';';
 //}
 
-fwrite($fp, $str."\n");
-fclose($fp);
+//fwrite($fp, $str."\n");
+//fclose($fp);
 
 // variables prepearing
 $crc = get_var('signature');
@@ -39,8 +39,8 @@ $inv_id = get_var('order_id');
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = "|".$_POST['version']."|".MODULE_PAYMENT_LIQPAY_SECRET_KEY."|".$_POST['action_name']."|".$_POST['sender_phone']."|".MODULE_PAYMENT_LIQPAY_ID."|".$_POST['amount']."|".$_POST['currency']."|".$_POST['order_id']."|".$_POST['transaction_id']."|".$_POST['status']."|".$_POST['code']."|";
-$hash = base64_encode(sha1($signature_source,1));
+$hash_source = "|".$_POST['version']."|".MODULE_PAYMENT_LIQPAY_SECRET_KEY."|".$_POST['action_name']."|".$_POST['sender_phone']."|".MODULE_PAYMENT_LIQPAY_ID."|".$_POST['amount']."|".$_POST['currency']."|".$_POST['order_id']."|".$_POST['transaction_id']."|".$_POST['status']."|".$_POST['code']."|";
+$hash = base64_encode(sha1($hash_source,1));
 
 // checking and handling
 if ($hash == $crc) {
