@@ -554,7 +554,7 @@ class categories {
 // EOF Image subdirectories
 			$pname_arr = explode('.', $products_image->filename);
 			$nsuffix = array_pop($pname_arr);
-			$products_image_name = $products_id.'_0.'.$nsuffix;
+			$products_image_name = strtolower($products_id.'_0.'.$nsuffix);
 // BOF Image subdirectories
 			$products_image_name = $_POST['upload_dir_image_0'].$products_image_name;
 // EOF Image subdirectories
@@ -595,7 +595,7 @@ class categories {
 // EOF Image subdirectories
 				$pname_arr = explode('.', $pIMG->filename);
 				$nsuffix = array_pop($pname_arr);
-				$products_image_name = $products_id.'_'. ($img +1).'.'.$nsuffix;
+				$products_image_name = strtolower($products_id.'_'. ($img +1).'.'.$nsuffix);
 // BOF Image subdirectories
 				$products_image_name = $_POST['mo_pics_upload_dir_image_'.$img].$products_image_name;
 // EOF Image subdirectories
