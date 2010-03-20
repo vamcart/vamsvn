@@ -200,7 +200,7 @@ class categories {
 		if ($categories_image = & vam_try_upload('categories_image', DIR_FS_CATALOG_IMAGES.'categories/')) {
 			$cname_arr = explode('.', $categories_image->filename);
 			$cnsuffix = array_pop($cname_arr);
-			$categories_image_name = $categories_id.'.'.$cnsuffix;
+			$categories_image_name = strtolower($categories_id.'.'.$cnsuffix);
 			@ unlink(DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image_name);
 			rename(DIR_FS_CATALOG_IMAGES.'categories/'.$categories_image->filename, DIR_FS_CATALOG_IMAGES.'categories/old_'.$categories_image_name);
 			require (DIR_WS_INCLUDES.'category_thumbnail_images.php');      
