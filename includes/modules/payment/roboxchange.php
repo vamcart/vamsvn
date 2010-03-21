@@ -87,8 +87,8 @@
       $crc = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$out_summ.':'.$inv_id.':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
 
       $_SESSION['cart']->reset(true);
-      vam_session_unregister('sendto');
-      vam_session_unregister('billto');
+//      vam_session_unregister('sendto');
+//      vam_session_unregister('billto');
       vam_session_unregister('shipping');
       vam_session_unregister('payment');
       vam_session_unregister('comments');
