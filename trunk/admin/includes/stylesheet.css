@@ -665,6 +665,8 @@ way to fit your requirements.
 
 #menu ul table td {vertical-align:top;}
 
+/* /Навигационное меню */
+
 div.clear
    {
   	  clear: both;
@@ -675,4 +677,31 @@ div#tabs
   	  margin-top: .5em;
    }
    
-/* /Навигационное меню */
+div#map
+	{
+		font-family: Verdana, Arial, sans-serif; 
+		font-size: 12px; 
+		color: #000000; 
+		font-weight: normal; 
+		text-decoration: none;
+	}   
+
+div#map #error
+	{
+		border: 1px solid #ff0000;
+		padding: .5em;
+		margin: 0 0 .5em 0;
+		background: #fcc;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+	}   
