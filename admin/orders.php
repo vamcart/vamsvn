@@ -891,6 +891,17 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
 			<div id="map">
 			
+    			<?php
+    			
+    			$street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"] . ', ';
+    			$city = (!isset($order->delivery["city"])) ? null : $order->delivery["city"] . ', ';
+    			$postcode = (!isset($order->delivery["postcode"])) ? null : $order->delivery["postcode"] . ', ';
+    			$state = (!isset($order->delivery["state"])) ? null : $order->delivery["state"] . ', ';
+    			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"];
+    			$ship_address = $street_address . $city . $postcode . $state . $country;
+    			
+    			?>
+
     <script type="text/javascript">
 
         // Флаг, обозачающий произошла ли ошибка при загрузке API
@@ -923,7 +934,22 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
             var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
             
             // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
-            map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+            map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 16);
+    			
+                    ml = new YMaps.YMapsML( 'http://geocode-maps.yandex.ru/1.x/?geocode=<?php echo $ship_address; ?>&key=<?php echo MAP_API_KEY; ?>' );
+                    map.addOverlay(ml);
+    
+         		       // Обработчик неудачного создание документа YMapsML
+			            YMaps.Events.observe(ml, ml.Events.Fault, function (ml, error) {
+         		       alert(error);
+			            });
+
+                    map.addControl(new YMaps.TypeControl());
+                    map.addControl(new YMaps.ToolBar());
+                    map.addControl(new YMaps.Zoom());
+                    map.addControl(new YMaps.ScaleLine());
+
+            
         })
         }
         		})
