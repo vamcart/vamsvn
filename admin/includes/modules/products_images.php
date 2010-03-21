@@ -26,7 +26,7 @@ if ($_GET['action'] == 'new_product') {
 
 // BOF Add existing image
 $dir_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_DIRECTORY)),vam_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES, '', true));
-$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)),vam_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
+//$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT_IMAGE)),vam_get_files_in_dir(DIR_FS_CATALOG_ORIGINAL_IMAGES));
 // EOF Add existing image
 
 	// display images fields:
@@ -37,7 +37,7 @@ $file_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELEC
 	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.vam_draw_file_field('products_image').'<br />'.vam_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.vam_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . vam_draw_pull_down_menu('upload_dir_image_0',$dir_list, dirname($pInfo->products_image).'/');
-	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('get_file_image_0',$file_list,$pInfo->products_image);
+//	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('get_file_image_0',$file_list,$pInfo->products_image);
 // EOF Add existing image
 	if ($pInfo->products_image != '') {
 		echo '</tr><tr><td align="center" class="main" valign="middle">'.vam_draw_selection_field('del_pic', 'checkbox', $pInfo->products_image).' '.TEXT_DELETE.'</td></tr></table>';
