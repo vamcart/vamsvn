@@ -364,7 +364,7 @@ div.stock_warn {
 .messageStackSuccess { font-family: Verdana, Arial, sans-serif; font-size: 12px; background-color: #99ff00; }
 
 /* forms */
-CHECKBOX, INPUT, RADIO, SELECT, TEXTAREA, FILE { 
+CHECKBOX, input[type=text], RADIO, SELECT, TEXTAREA, FILE { 
 font-family: Verdana, Arial, sans-serif;
 	font-size: 1em;
 	border: 1px solid;
