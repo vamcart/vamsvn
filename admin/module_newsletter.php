@@ -601,7 +601,7 @@ echo vam_draw_checkbox_field('status_all', 'yes',in_array('all', $bc_array)).' <
       <td width="10%" valign="top"><?php echo TEXT_BODY; ?></td>
       <td width="90%"><?php
 
-echo vam_draw_textarea_field('newsletter_body', 'soft', '103', '25', stripslashes($newsletters_data['body']));
+echo vam_draw_textarea_field('newsletter_body', 'soft', '95', '25', stripslashes($newsletters_data['body']));
 
         ?><br /><a href="javascript:toggleHTMLEditor('newsletter_body');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
    </tr>

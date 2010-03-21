@@ -127,7 +127,7 @@ $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
 
           <tr>
             <td valign="top" class="main"><?php echo TEXT_EDIT_CATEGORIES_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '103', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : vam_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'categories_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+            <td valign="top" class="main"><?php echo vam_draw_textarea_field('categories_description[' . $languages[$i]['id'] . ']', 'soft', '95', '25', (($categories_description[$languages[$i]['id']]) ? stripslashes($categories_description[$languages[$i]['id']]) : vam_get_categories_description($cInfo->categories_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'categories_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
           </tr>
 
           <tr>

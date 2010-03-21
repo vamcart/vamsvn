@@ -183,11 +183,11 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_textarea_field('products_description_' . $languages[$i]['id'], 'soft', '103', '25', (($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : vam_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'products_description_' . $languages[$i]['id'];?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+            <td valign="top" class="main"><?php echo vam_draw_textarea_field('products_description_' . $languages[$i]['id'], 'soft', '95', '25', (($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : vam_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'products_description_' . $languages[$i]['id'];?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_SHORT_DESCRIPTION; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_textarea_field('products_short_description_' . $languages[$i]['id'], 'soft', '103', '25', (($products_short_description[$languages[$i]['id']]) ? stripslashes($products_short_description[$languages[$i]['id']]) : vam_get_products_short_description($pInfo->products_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'products_short_description_' . $languages[$i]['id'];?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+            <td valign="top" class="main"><?php echo vam_draw_textarea_field('products_short_description_' . $languages[$i]['id'], 'soft', '95', '25', (($products_short_description[$languages[$i]['id']]) ? stripslashes($products_short_description[$languages[$i]['id']]) : vam_get_products_short_description($pInfo->products_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'products_short_description_' . $languages[$i]['id'];?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_KEYWORDS; ?></td>
