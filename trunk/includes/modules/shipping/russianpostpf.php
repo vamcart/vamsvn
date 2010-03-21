@@ -474,7 +474,7 @@
 		      $this->title = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PF;
 		      $this->description = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_DESCRIPTION_PF;
 		      $this->sort_order = MODULE_SHIPPING_RUSSIANPOSTPREPAY_SORT_ORDER_PF;
-		      $this->icon = '';
+		      $this->icon = DIR_WS_ICONS . 'russianpost.png';
 		      $this->tax_class = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TAX_CLASS_PF;
 		      $this->enabled = ((MODULE_SHIPPING_RUSSIANPOSTPREPAY_PARCEL_STATUS_PF == 'True' || MODULE_SHIPPING_RUSSIANPOSTPREPAY_WRAPPER_STATUS_PF == 'True') ? true : false);
 
