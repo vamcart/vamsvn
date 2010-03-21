@@ -531,6 +531,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 				<li><a href="#summary"><?php echo TEXT_ORDER_SUMMARY; ?></a></li>
 				<li><a href="#payment"><?php echo TEXT_ORDER_PAYMENT; ?></a></li>
 				<li><a href="#products"><?php echo TEXT_ORDER_PRODUCTS; ?></a></li>
+				<li><a href="#map" id="getmap"><?php echo TEXT_ORDER_MAP; ?></a></li>
 				<li><a href="#status"><?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
@@ -883,6 +884,54 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 </table>
       
 </div>
+
+			<div id="map">
+			
+    <script type="text/javascript">
+
+        // Флаг, обозачающий произошла ли ошибка при загрузке API
+        var flagApiFault = 0;
+			
+        // Функция для обработки ошибок при загрузке API
+        function apifault (err) {
+            // Создание обработчика для события window.onLoad
+            // Отображаем сообщение об ошибке в контейнере над картой
+            window.onload = function () {
+                var errorContainer = document.getElementById("error");
+                errorContainer.innerHTML = "<?php echo MAP_API_KEY_ERROR; ?> \"" + err + "\"";
+                errorContainer.style.display = "";
+            }
+            flagApiFault = 1;
+        }
+        
+    </script>
+    <script src="http://api-maps.yandex.ru/1.1/index.xml?key=<?php echo MAP_API_KEY; ?>&onerror=apifault" type="text/javascript"></script>
+    <script type="text/javascript">
+
+	$(document).ready(function(){
+			$("#getmap").click(function() {
+			
+			
+        if (!flagApiFault) {
+        // Создает обработчик события window.onLoad
+        YMaps.jQuery(function () {
+            // Создает экземпляр карты и привязывает его к созданному контейнеру
+            var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+            
+            // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
+            map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+        })
+        }
+        		})
+        		
+        	});
+    </script>
+
+    <div id="error" style="display:none"></div>
+    <div id="YMapsID" style="width:100%;height:350px"></div>
+    			
+			</div>
+
         <div id="status">
       
           <table border="0">
@@ -952,6 +1001,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 </table>
       
 </div>
+
 </div>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="2">

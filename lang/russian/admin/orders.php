@@ -149,4 +149,7 @@ define('BUS_DELETE_ORDERS','Удалить выбранные заказы');
 define('TEXT_QTY','склад: ');
 define('TEXT_UNITS',' шт.');
 
+define('TEXT_ORDER_MAP','Карта');
+define('MAP_API_KEY_ERROR','Зарегистрируйте ключ на <a href=\"http://api.yandex.ru/maps/form.xml\" target=\"_blank\">http://api.yandex.ru/maps/form.xml</a> и укажите Ваш ключ в Админке - Настройки - Разное - Яндекс карты API-Ключ. <br /> Ошибка:');
+
 ?>
