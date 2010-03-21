@@ -912,6 +912,8 @@ define('SET_BOX_FAQ_DESC', 'Включить/выключить бокс.');
 define('DISPLAY_START_PAGE_TITLE', 'Показывать на главной странице');
 define('DISPLAY_START_PAGE_DESC', 'Показывать/не показывать колонку на главной странице.');
 
+define('ENABLE_MAP_TAB_TITLE','Показывать закладку карта на странице заказа');
+define('ENABLE_MAP_TAB_DESC','Включить/Отключить закладку карта на странице заказа.');
 define('MAP_API_KEY_TITLE','Яндекс карты API-Ключ');
 define('MAP_API_KEY_DESC','Укажите Ваш API ключ.');
 

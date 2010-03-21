@@ -531,7 +531,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 				<li><a href="#summary"><?php echo TEXT_ORDER_SUMMARY; ?></a></li>
 				<li><a href="#payment"><?php echo TEXT_ORDER_PAYMENT; ?></a></li>
 				<li><a href="#products"><?php echo TEXT_ORDER_PRODUCTS; ?></a></li>
+<?php if (ENABLE_MAP_TAB == 'true') { ?>
 				<li><a href="#map" id="getmap"><?php echo TEXT_ORDER_MAP; ?></a></li>
+<?php } ?>
 				<li><a href="#status"><?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
@@ -885,6 +887,8 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       
 </div>
 
+<?php if (ENABLE_MAP_TAB == 'true') { ?>
+
 			<div id="map">
 			
     <script type="text/javascript">
@@ -931,6 +935,8 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
     <div id="YMapsID" style="width:100%;height:350px"></div>
     			
 			</div>
+
+<?php } ?>
 
         <div id="status">
       
