@@ -17,187 +17,24 @@
 
 function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
-$js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce.js';
+$js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce_gzip.js';
 $js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php';
 
 	switch($type) {
                 // WYSIWYG editor latest news textarea named latest_news
                 case 'latest_news':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
-
-	file_browser_callback : "tinyBrowser",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
 });
-
-function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
-	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
-}
-                        	   	</script>';
-                        break;
-
-                // WYSIWYG editor faq textarea named faq
-                case 'faq':
-                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
-
-	file_browser_callback : "tinyBrowser",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
-});
-
-function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
-	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
-}
-                        	   	</script>';
-                        break;
-
-                // WYSIWYG editor latest news textarea named articles_description
-                case 'articles_description':
-                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
-
-	file_browser_callback : "tinyBrowser",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
-});
-
-function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
-	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
-}
-                        	   	</script>';
-                        break;
-
-                // WYSIWYG editor latest news textarea named topics_description
-                case 'topics_description':
-                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
-
-	file_browser_callback : "tinyBrowser",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
-});
-
-function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
-	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
-}
-                        	   	</script>';
-                        break;
-
-                // WYSIWYG editor products description textarea named products_description
-                case 'products_description':
-                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -233,14 +70,241 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
+                        break;
+
+                // WYSIWYG editor faq textarea named faq
+                case 'faq':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	editor_deselector : "notinymce",
+	theme : "advanced",
+	language : "'.$lang.'",
+	paste_create_paragraphs : false,
+	paste_create_linebreaks : false,
+	paste_use_dialog : true,
+	convert_urls : false,
+
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
+
+	file_browser_callback : "tinyBrowser",
+
+	spellchecker_languages : "+Russian=ru,English=en",
+	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
+
+	// Theme options
+	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true
+
+});
+
+function toggleHTMLEditor(id) {
+	if (!tinyMCE.get(id))
+		tinyMCE.execCommand("mceAddControl", false, id);
+	else
+		tinyMCE.execCommand("mceRemoveControl", false, id);
+}
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
+                        break;
+
+                // WYSIWYG editor latest news textarea named articles_description
+                case 'articles_description':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	editor_deselector : "notinymce",
+	theme : "advanced",
+	language : "'.$lang.'",
+	paste_create_paragraphs : false,
+	paste_create_linebreaks : false,
+	paste_use_dialog : true,
+	convert_urls : false,
+
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
+
+	file_browser_callback : "tinyBrowser",
+
+	spellchecker_languages : "+Russian=ru,English=en",
+	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
+
+	// Theme options
+	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true
+
+});
+
+function toggleHTMLEditor(id) {
+	if (!tinyMCE.get(id))
+		tinyMCE.execCommand("mceAddControl", false, id);
+	else
+		tinyMCE.execCommand("mceRemoveControl", false, id);
+}
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
+                        break;
+
+                // WYSIWYG editor latest news textarea named topics_description
+                case 'topics_description':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	editor_deselector : "notinymce",
+	theme : "advanced",
+	language : "'.$lang.'",
+	paste_create_paragraphs : false,
+	paste_create_linebreaks : false,
+	paste_use_dialog : true,
+	convert_urls : false,
+
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
+
+	file_browser_callback : "tinyBrowser",
+
+	spellchecker_languages : "+Russian=ru,English=en",
+	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
+
+	// Theme options
+	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true
+
+});
+
+function toggleHTMLEditor(id) {
+	if (!tinyMCE.get(id))
+		tinyMCE.execCommand("mceAddControl", false, id);
+	else
+		tinyMCE.execCommand("mceRemoveControl", false, id);
+}
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
+                        break;
+
+                // WYSIWYG editor products description textarea named products_description
+                case 'products_description':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	editor_deselector : "notinymce",
+	theme : "advanced",
+	language : "'.$lang.'",
+	paste_create_paragraphs : false,
+	paste_create_linebreaks : false,
+	paste_use_dialog : true,
+	convert_urls : false,
+
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
+
+	file_browser_callback : "tinyBrowser",
+
+	spellchecker_languages : "+Russian=ru,English=en",
+	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
+
+	// Theme options
+	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true
+
+});
+
+function toggleHTMLEditor(id) {
+	if (!tinyMCE.get(id))
+		tinyMCE.execCommand("mceAddControl", false, id);
+	else
+		tinyMCE.execCommand("mceRemoveControl", false, id);
+}
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor products short description textarea named products_short_description
                 case 'products_short_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -251,7 +315,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -276,14 +340,25 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor content manager
                 case 'content_manager':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -294,7 +369,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -319,14 +394,24 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor products content manager
-                case 'products_content':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -337,7 +422,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -362,14 +447,25 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor categories description
                 case 'categories_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -380,7 +476,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -405,14 +501,25 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor newsletter
                 case 'mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -423,7 +530,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -448,14 +555,25 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
                 // WYSIWYG editor gift voucher
                 case 'gv_mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
-                        	   <script type="text/javascript">
+<script type="text/javascript">
+// This is where the compressor will load all components, include all components used on the page here
+tinyMCE_GZ.init({
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	themes : "advanced",
+	languages : "'.$lang.'",
+	disk_cache : true,
+	debug : false
+});
+</script>
+<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -466,7 +584,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -491,7 +609,9 @@ function toggleHTMLEditor(id) {
 	else
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
-                        	   	</script>';
+                        	   	</script>
+                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
+                        	   	';
                         break;
 
     }
