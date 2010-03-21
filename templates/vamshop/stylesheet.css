@@ -770,6 +770,18 @@ div#navigation
 	padding: 2px;
    margin-top: 0.2em;
    margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
 }
 
 .addquickieform input:focus, .sffocus, .sffocus {
@@ -1102,6 +1114,18 @@ div#navigation
 	padding: 2px;
    margin-top: 0.2em;
    margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
 }
 
 .searchboxform input:focus, .sffocus, .sffocus {
@@ -1675,6 +1699,18 @@ p.CartContentCenter
 	padding: 2px;
    margin-top: 0.2em;
    margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
 }
 
 .loginform input:focus, .sffocus, .sffocus {
@@ -1790,6 +1826,18 @@ p.LoginContentLeft
 	padding: 2px;
    margin-top: 0.2em;
    margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
 }
 
 .newsletterform input:focus, .sffocus, .sffocus {
@@ -2156,12 +2204,24 @@ form
 	  margin: 0;
    }
 
-.form input, textarea 
+.form input, textarea,
    {
-	  font-size: 1em;
-	  border: 1px solid;
-	  border-color: #666 #ccc #ccc #666;
-	  padding: 2px;
+		font-size: 1em;
+		border: 1px solid;
+		border-color: #666 #ccc #ccc #666;
+		padding: 2px;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
    }
 
 .form textarea 
