@@ -1,5 +1,5 @@
 {foreach name=aussen item=module_data from=$module_content} <p>
-<label for="{$module_data.id}">{$module_data.selection} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
+<label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
 </p>{if $module_data.description}<p>
 {$module_data.description}
 </p>{/if}
