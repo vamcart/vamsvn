@@ -893,7 +893,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 			
     			<?php
     			
-    			$street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"] . ', ';
+    			$street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"];
     			$city = (!isset($order->delivery["city"])) ? null : $order->delivery["city"] . ', ';
     			$postcode = (!isset($order->delivery["postcode"])) ? null : $order->delivery["postcode"] . ', ';
     			$state = (!isset($order->delivery["state"])) ? null : $order->delivery["state"] . ', ';
