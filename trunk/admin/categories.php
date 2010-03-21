@@ -303,7 +303,6 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 		<title><?php echo TITLE; ?></title>
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-		<script type="text/javascript" src="includes/general.js"></script>
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
@@ -322,7 +321,6 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 	if ($_GET['action'] == 'new_product') {
 		for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
-			echo vam_wysiwyg_tiny('products_short_description', $data['code'], $languages[$i]['id']);
 		}
 	} 
 ?>

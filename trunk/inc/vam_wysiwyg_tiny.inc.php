@@ -27,7 +27,7 @@ $js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_t
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -36,7 +36,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -70,7 +70,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -79,7 +79,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -113,7 +113,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -122,7 +122,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -156,7 +156,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -165,7 +165,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -199,7 +199,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -208,7 +208,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -242,7 +242,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -251,7 +251,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -285,7 +285,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -294,7 +294,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -328,7 +328,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -337,7 +337,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -371,7 +371,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -380,7 +380,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -414,7 +414,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -423,7 +423,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
@@ -457,7 +457,7 @@ function toggleHTMLEditor(id) {
                         <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   <script type="text/javascript">
 tinyMCE.init({
-	mode : "none",
+	mode : "textareas",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -466,7 +466,7 @@ tinyMCE.init({
 	paste_use_dialog : true,
 	convert_urls : false,
 
-	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
+	plugins : "safari,typograf,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking",
 
 	file_browser_callback : "tinyBrowser",
 
