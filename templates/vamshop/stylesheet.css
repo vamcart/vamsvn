@@ -2205,6 +2205,7 @@ form
    }
 
 .form input, textarea,
+input[type=text]
    {
 		font-size: 1em;
 		border: 1px solid;
