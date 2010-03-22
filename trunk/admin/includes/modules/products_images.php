@@ -59,7 +59,7 @@ $dir_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT
 			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br />'.vam_draw_file_field('mo_pics_'.$i).'<br />'.vam_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].vam_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . vam_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list, dirname($mo_images[$i]["image_name"]).'/');
-	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list,$mo_images[$i]["image_name"]);
+	//echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list,$mo_images[$i]["image_name"]);
 // EOF Add existing image
 			if (isset ($mo_images[$i]["image_name"])) {
 				echo '</tr><tr><td align="center" class="main" valign="middle">'.vam_draw_selection_field('del_mo_pic[]', 'checkbox', $mo_images[$i]["image_name"]).' '.TEXT_DELETE.'</td></tr></table>';
