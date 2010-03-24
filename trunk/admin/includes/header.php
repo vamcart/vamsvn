@@ -33,8 +33,7 @@
               &nbsp;
               </td>
               <td width="300">
-              <?php echo VAMSHOP_SUPPORT_KEY_TEXT; ?>
-              <?php echo VAMSHOP_SUPPORT_KEY; ?>
+              &nbsp;
               </td>
             </tr>
 </table>
