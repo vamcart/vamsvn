@@ -93,7 +93,7 @@ if (0==round($_POST['products_quantity']))
 	$status_query = vam_db_query("select customers_status_show_price_tax from ".TABLE_CUSTOMERS_STATUS." where customers_status_id = '".$order->info['status']."'");
 	$status = vam_db_fetch_array($status_query);
 
-	$product_query = vam_db_query("select p.products_model, p.products_tax_class_id, pd.products_name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id = '".$_POST['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+	$product_query = vam_db_query("select p.products_model, p.products_tax_class_id, pd.products_name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id = '".vam_db_input($_POST['products_id'])."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 	$product = vam_db_fetch_array($product_query);
 
 	$c_info = vam_oe_customer_infos($order->customer['ID']);
@@ -427,9 +427,7 @@ if ($_GET['action'] == "product_delete") {
 // LГ¶schen eines Artikels aus der Bestellung Ende:
 
 // LГ¶schen einer Artikeloption aus der Bestellung Anfang:
-if ($_GET['action'] == "product_option_delete") {
-
-	vam_db_query("delete from ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." where orders_products_attributes_id = '".vam_db_input($_POST['opAID'])."'");
+if ($_GET['action'] == "product_option_delete") {vam_db_input($_POST['opAID']."'");
 
 	$products_query = vam_db_query("select op.products_id, op.products_quantity, p.products_tax_class_id from ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_PRODUCTS." p where op.orders_products_id = '".$_POST['opID']."' and op.products_id = p.products_id");
 	$products = vam_db_fetch_array($products_query);
@@ -477,7 +475,7 @@ if ($_GET['action'] == "save_order") {
 	$subtotal_final = $products['subtotal_final'];
 	$subtotal_text = $vamPrice->Format($subtotal_final, true);
 
-	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".$subtotal_text."', value = '".$subtotal_final."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal' ");
+	vam_db_query("update ".TABLE_ORDERS_TOTAL." set text = '".vam_db_input($subtotal_text)."', value = '".vam_db_input($subtotal_final)."' where orders_id = '".$_POST['oID']."' and class = 'ot_subtotal' ");
 	// Errechne neue Zwischensumme fГјr Artikel Ende
 
 	// Errechne neue Netto Zwischensumme fГјr Artikel Anfang
