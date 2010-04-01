@@ -80,5 +80,8 @@ if (!$cache) {
 	$box_manufacturers = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id);
 }
 
+if (vam_db_num_rows($manufacturers_query, true) > 0) {
 $vamTemplate->assign('box_MANUFACTURERS', $box_manufacturers);
+}
+
 ?>
