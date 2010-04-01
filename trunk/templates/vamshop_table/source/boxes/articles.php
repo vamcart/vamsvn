@@ -221,6 +221,8 @@ if (!$cache) {
 	$box_articles = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id);
 }
 
-    $vamTemplate->assign('box_ARTICLES',$box_articles);
+if (vam_db_num_rows($topics_query, true) > 0) {
+	$vamTemplate->assign('box_ARTICLES',$box_articles);
+}	
 
 ?>
