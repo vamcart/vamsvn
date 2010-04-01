@@ -1,4 +1,15 @@
-{config_load file="$language/lang_$language.conf" section="login"}<h1>{#heading_login#}</h1>
+{config_load file="$language/lang_$language.conf" section="login"}<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
+<script type="text/javascript" src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+$(function () {
+  $(window).load(function () {
+    $('#login :input:text:visible:enabled:first').focus();
+  });
+})
+{/literal}
+</script>
+<h1>{#heading_login#}</h1>
 {$FORM_ACTION}
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}<div class="page">
