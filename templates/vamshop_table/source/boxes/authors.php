@@ -94,6 +94,8 @@ if (!$cache) {
 	$box_authors = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id);
 }
 
+if (vam_db_num_rows($authors_query,true) > 0) {
    $vamTemplate->assign('box_AUTHORS',$box_authors);
+}
 
 ?>
