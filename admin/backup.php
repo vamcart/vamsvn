@@ -354,7 +354,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 	
 		if (!isset($_REQUEST)) {$this->main();}
 		set_error_handler("SXD_errorHandler");
-		$buttons = "<a id=save href='' style='display: none;'>" . TEXT_DUMPER_DOWNLOAD . "</a> &nbsp; <span class=button><button id=back type=button value='" . TEXT_DUMPER_BACK . "' disabled onclick=\"history.back();\">" . TEXT_DUMPER_BACK . "</button></span>";
+		$buttons = "<a class=\"button\" href=\"\" onclick=\"history.back();\"><span>" . TEXT_DUMPER_BACK . "</span></a>";
 		echo tpl_page(tpl_process($TEXT_DUMPER_CREATE), $buttons);
 
 		$this->SET['last_action']     = 0;
@@ -535,7 +535,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 		echo tpl_l($TEXT_DUMPER_FILE_SIZE . "{$filesize}", C_RESULT);
 		echo tpl_l($TEXT_DUMPER_TABLES_COUNT . "{$tabs}", C_RESULT);
 		echo tpl_l($TEXT_DUMPER_STRING_COUNT . fn_int($tabinfo[0]), C_RESULT);
-		echo "<script>with (document.getElementById('save')) {style.display = ''; innerHTML = '" . TEXT_DUMPER_DOWNLOAD . " ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</script>";
+		//echo "<script>with (document.getElementById('save')) {style.display = ''; innerHTML = '" . TEXT_DUMPER_DOWNLOAD . " ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</script>";
 		// Передача данных для глобальной статистики
 		if (GS) echo "<script>document.getElementById('GS').src = 'http://sypex.net/gs.php?b={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</script>";
 
