@@ -322,7 +322,7 @@ class product {
 
   foreach ($products AS $product_id_in_cart) {
 
-		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".$product_id_in_cart['id']."' GROUP BY products_xsell_grp_name_id";
+		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".intval($product_id_in_cart['id'])."' GROUP BY products_xsell_grp_name_id";
 		$cs_groups = vamDBquery($cs_groups);
 		$cross_sell_data = array ();
 		if (vam_db_num_rows($cs_groups, true)>0) {
@@ -347,7 +347,7 @@ class product {
 						                           																									p.products_vpe_status,
 						                           																									p.products_vpe_value,
 																								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-																								                                            where xp.products_id = '".number_format($product_id_in_cart['id'])."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
+																								                                            where xp.products_id = '".intval($product_id_in_cart['id'])."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
 																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
 																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
 																								                                            and p.products_status = '1'
