@@ -52,7 +52,7 @@
         <tr>
 		<td width="5%" style="border-style: solid; border-width: 1px">{counter}.</td>
 <!-- // BOF barcode -->
-		<td style="border-style: solid; border-width: 1px"><img src="/products_barcode.php?products_id={$order_values.PRODUCTS_ID}" title="" alt="" /></td>
+		<td style="border-style: solid; border-width: 1px"><img src="{$smarty.const.DIR_WS_CATALOG}products_barcode.php?products_id={$order_values.PRODUCTS_ID}" title="" alt="" /></td>
 <!-- // EOF barcode -->
 		<td width="17%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_MODEL} {$order_values.PRODUCTS_ATTRIBUTES_MODEL}</td>
 		<td width="48%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_ATTRIBUTES}</td>
