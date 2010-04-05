@@ -244,10 +244,10 @@ class ot_gv {
 	}
 
 	function calculate_credit($amount) {
-		global $order;
+		global $order, $vamPrice; 
 		$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 		$gv_result = vam_db_fetch_array($gv_query);
-		$gv_payment_amount = $gv_result['amount'];
+		$gv_payment_amount = $vamPrice->CalculateCurr($gv_result['amount']);
 		$gv_amount = $gv_payment_amount;
 		$save_total_cost = $amount;
 		$full_cost = $save_total_cost - $gv_payment_amount;

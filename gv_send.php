@@ -57,13 +57,16 @@ if ($_GET['action'] == 'send') {
 	}
 	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id = '".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
-	$customer_amount = $gv_result['amount'];
+    
+    
+	$customer_amount = $gv_result['amount']; 
 	$gv_amount = trim(str_replace(",", ".", $_POST['amount']));
-	if (preg_match('/[^0-9/.]/', $gv_amount)) {
+    $gv_amount_r = trim(str_replace(",", ".", $vamPrice->CalculateCurrEx($_POST['amount'], DEFAULT_CURRENCY)));
+	if (ereg('[^0-9/.]', $gv_amount)) {
 		$error = true;
 		$error_amount = ERROR_ENTRY_AMOUNT_CHECK;
 	}
-	if ($gv_amount > $customer_amount || $gv_amount == 0) {
+	if ($gv_amount_r > $customer_amount || $gv_amount == 0) {
 		$error = true;
 		$error_amount = ERROR_ENTRY_AMOUNT_CHECK;
 	}
@@ -72,7 +75,7 @@ if ($_GET['action'] == 'process') {
 	$id1 = create_coupon_code($mail['customers_email_address']);
 	$gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id='".$_SESSION['customer_id']."'");
 	$gv_result = vam_db_fetch_array($gv_query);
-	$new_amount = $gv_result['amount'] - str_replace(",", ".", $_POST['amount']);
+	$new_amount = $gv_result['amount'] - str_replace(",", ".", $vamPrice->CalculateCurrEx($_POST['amount'], DEFAULT_CURRENCY));
 	$new_amount = str_replace(",", ".", $new_amount);
 	if ($new_amount < 0) {
 		$error = true;
@@ -82,7 +85,7 @@ if ($_GET['action'] == 'process') {
 		$gv_query = vam_db_query("update ".TABLE_COUPON_GV_CUSTOMER." set amount = '".$new_amount."' where customer_id = '".$_SESSION['customer_id']."'");
 		$gv_query = vam_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".$_SESSION['customer_id']."'");
 		$gv_customer = vam_db_fetch_array($gv_query);
-		$gv_query = vam_db_query("insert into ".TABLE_COUPONS." (coupon_type, coupon_code, date_created, coupon_amount) values ('G', '".$id1."', NOW(), '".str_replace(",", ".", vam_db_input($_POST['amount']))."')");
+		$gv_query = vam_db_query("insert into ".TABLE_COUPONS." (coupon_type, coupon_code, date_created, coupon_amount) values ('G', '".$id1."', NOW(), '".str_replace(",", ".", vam_db_input($vamPrice->CalculateCurrEx($_POST['amount'], DEFAULT_CURRENCY)))."')");
 		$insert_id = vam_db_insert_id($gv_query);
 		$gv_query = vam_db_query("insert into ".TABLE_COUPON_EMAIL_TRACK." (coupon_id, customer_id_sent, sent_firstname, sent_lastname, emailed_to, date_sent) values ('".$insert_id."' ,'".$_SESSION['customer_id']."', '".addslashes($gv_customer['customers_firstname'])."', '".addslashes($gv_customer['customers_lastname'])."', '".vam_db_input($_POST['email'])."', now())");
 

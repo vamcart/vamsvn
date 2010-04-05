@@ -74,9 +74,11 @@ if ((!$error) && (isset ($_SESSION['customer_id']))) {
 
 $breadcrumb->add(NAVBAR_GV_REDEEM);
 
+$coupon_r = $vamPrice->CalculateCurr($coupon['coupon_amount']);
+
 // if we get here then either the url gv_no was not set or it was invalid
 // so output a message.
-$vamTemplate->assign('coupon_amount', $vamPrice->Format($coupon['coupon_amount'], true));
+$vamTemplate->assign('coupon_amount', $vamPrice->Format($coupon_r, true));
 $vamTemplate->assign('error', $error);
 $vamTemplate->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
