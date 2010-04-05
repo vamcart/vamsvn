@@ -62,7 +62,7 @@ if ($_GET['action'] == 'send') {
 	$customer_amount = $gv_result['amount']; 
 	$gv_amount = trim(str_replace(",", ".", $_POST['amount']));
     $gv_amount_r = trim(str_replace(",", ".", $vamPrice->CalculateCurrEx($_POST['amount'], DEFAULT_CURRENCY)));
-	if (ereg('[^0-9/.]', $gv_amount)) {
+	if (preg_match('/[^0-9/.]/', $gv_amount)) {
 		$error = true;
 		$error_amount = ERROR_ENTRY_AMOUNT_CHECK;
 	}
