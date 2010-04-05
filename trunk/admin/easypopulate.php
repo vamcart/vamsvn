@@ -1996,7 +1996,8 @@ function walk( $item1 ) {
 					$sql = "SELECT MAX( categories_id) max FROM ".TABLE_CATEGORIES;
 					$result = vam_db_query($sql);
 					$row =  vam_db_fetch_array($result);
-									var_dump($sql);echo '<br />';
+									//var_dump($sql);
+									echo '<br />';
 					$max_category_id = $row['max']+1;
 					if (!is_numeric($max_category_id) ){
 						$max_category_id=1;
