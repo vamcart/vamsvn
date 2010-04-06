@@ -130,7 +130,18 @@ class categories {
 
 		$customers_statuses_array = vam_get_customers_statuses();
                 // Categories URL begin
-                $categories_url = vam_db_prepare_input($categories_data['categories_url']);
+
+					if ($categories_data['categories_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $categories_data['categories_name'][$_SESSION['languages_id']];
+						
+						$alias = make_alias($alias);
+                  $categories_url = $alias;
+
+					} else {
+						
+                $categories_url = $categories_data['categories_url'];
+					}
+
                 // Categories URL end
 
 		$permission = array ();
