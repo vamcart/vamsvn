@@ -62,7 +62,18 @@
         $content_header=vam_db_prepare_input($_POST['cont_heading']);
         $content_url=vam_db_prepare_input($_POST['cont_url']);
         // Content URL begin
-        $content_page_url=vam_db_prepare_input($_POST['cont_page_url']);
+
+					if (file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $content_title;
+						
+						$alias = make_alias($alias);
+                  $content_page_url = $alias;
+
+					} else {
+						
+                $content_page_url = vam_db_prepare_input($_POST['cont_page_url']);
+					}
+
         // Content URL end
         $content_text=vam_db_prepare_input($_POST['cont']);
         $coID=vam_db_prepare_input($_POST['coID']);
@@ -601,10 +612,14 @@ echo vam_draw_form('edit_content',FILENAME_CONTENT_MANAGER,'action=edit&id=inser
    </tr>
 <?php
 if ($content['content_delete']!=0 or $_GET['action']=='new') {
+
+           $next_id_query = vam_db_query("select max(content_id) as max_content_id from " . TABLE_CONTENT_MANAGER . "");
+            $next_id = vam_db_fetch_array($next_id_query);
+            $next_id = $next_id['max_content_id'] + 1;
 ?>   
       <tr> 
       <td width="10%"><?php echo TEXT_GROUP; ?></td>
-      <td width="90%"><?php echo vam_draw_input_field('content_group',$content['content_group'],'size="5"'); ?><?php echo TEXT_GROUP_DESC; ?></td>
+      <td width="90%"><?php echo vam_draw_input_field('content_group',(isset($content['content_group']) ? $content['content_group'] : $next_id),'size="5"'); ?><?php echo TEXT_GROUP_DESC; ?></td>
    </tr>
 <?php
 } else {
