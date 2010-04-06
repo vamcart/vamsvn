@@ -355,6 +355,59 @@
           return $link . $n_url;
       }
 
+    } elseif ($page == FILENAME_FAQ) {
+
+      $f_id = -1;
+      $param_array = explode('&', $parameters);
+
+      for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
+        $parsed_param = explode('=', $param_array[$i]);
+        if ($parsed_param[0] === 'faq_id') {
+          $f_id = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'language') {
+          $language = $parsed_param[1];
+        } elseif ($parsed_param[0] === 'currency') {
+          $currency = $parsed_param[1];
+        } 
+      }
+
+      $f_url = vamDBquery('select faq_page_url from ' . TABLE_FAQ . ' where faq_id="' . $f_id . '"');
+      $f_url = vam_db_fetch_array($f_url,true);
+      $f_url = $f_url['faq_page_url'];
+
+      if ($f_url == '') {
+        return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
+      } else {
+
+          if ($connection == 'NONSSL') {
+            $link = HTTP_SERVER;
+          } elseif ($connection == 'SSL') {
+            if (ENABLE_SSL == 'true') {
+              $link = HTTPS_SERVER ;
+            } else {
+              $link = HTTP_SERVER;
+            }
+          } else {
+            die('</td></tr></table></td></tr></table><br /><br /><strong class="note">Error!<br /><br />Unable to determine connection method on a link!<br /><br />Known methods: NONSSL SSL</strong><br /><br />');
+          }
+
+          if ($connection == 'SSL' && ENABLE_SSL == 'true') {
+            $link .= DIR_WS_HTTPS_CATALOG;
+          } else {
+            $link .= DIR_WS_CATALOG;
+          }
+
+          if (vam_not_null($language)) {
+            $f_url .= '?language=' . $language;
+          }
+
+          if (vam_not_null($currency)) {
+            $f_url .= '?currency=' . $currency;
+          }
+
+          return $link . $f_url;
+      }
+
     } elseif ($page == FILENAME_ARTICLES) {
 
       $t_id = -1;
