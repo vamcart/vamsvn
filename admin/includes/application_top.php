@@ -274,6 +274,7 @@
   require_once(DIR_FS_INC . 'vam_get_qty.inc.php');
   require_once(DIR_FS_INC . 'vam_product_link.inc.php');
   require_once(DIR_FS_INC . 'vam_cleanName.inc.php');
+  require_once(DIR_FS_INC . 'vam_make_alias.inc.php');
 
   // customization for the design layout
   define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
