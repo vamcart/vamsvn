@@ -49,15 +49,37 @@
             $topics_id = vam_db_prepare_input($_GET['tID']);
             }
         $sort_order = vam_db_prepare_input($_POST['sort_order']);
-        $topics_page_url = vam_db_prepare_input($_POST['topics_page_url']);
+
+					if ($_POST['topics_page_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $_POST['topics_name'][$_SESSION['languages_id']];
+						
+						$alias = make_alias($alias);
+                  $topics_page_url = $alias;
+
+					} else {
+						
+                $topics_page_url = $_POST['topics_page_url'];
+					}
 
         $sql_data_array = array('sort_order' => $sort_order,
-                                   'topics_page_url' => vam_db_prepare_input($_POST['topics_page_url']),
+                                   'topics_page_url' => vam_db_prepare_input($topics_page_url),
        );
 
         if ($action == 'insert_topic') {
+        	
+					if ($_POST['topics_page_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $_POST['topics_name'][$_SESSION['languages_id']];
+						
+						$alias = make_alias($alias);
+                  $topics_page_url = $alias;
+
+					} else {
+						
+                $topics_page_url = $_POST['topics_page_url'];
+					}        	
+        	
           $insert_sql_data = array('parent_id' => $current_topic_id,
-                                   'topics_page_url' => vam_db_prepare_input($_POST['topics_page_url']),
+                                   'topics_page_url' => vam_db_prepare_input($topics_page_url),
                                    'date_added' => 'now()');
 
           $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
@@ -221,9 +243,20 @@
 
           $articles_date_available = (date('Y-m-d') < $articles_date_available) ? $articles_date_available : 'null';
 
+					if ($_POST['articles_page_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $_POST['articles_name'][$_SESSION['languages_id']];
+						
+						$alias = make_alias($alias);
+                  $articles_page_url = $alias;
+
+					} else {
+						
+                $articles_page_url = $_POST['articles_page_url'];
+					}      
+
           $sql_data_array = array('articles_date_available' => $articles_date_available,
                                   'articles_status' => vam_db_prepare_input($_POST['articles_status']),
-                                  'articles_page_url' => vam_db_prepare_input($_POST['articles_page_url']),
+                                  'articles_page_url' => vam_db_prepare_input($articles_page_url),
                                   'sort_order' => vam_db_prepare_input($_POST['sort_order']),
                                   'authors_id' => vam_db_prepare_input($_POST['authors_id']));
 
