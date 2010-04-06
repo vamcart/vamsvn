@@ -917,4 +917,7 @@ define('ENABLE_MAP_TAB_DESC','Включить/Отключить закладк
 define('MAP_API_KEY_TITLE','Яндекс карты API-Ключ');
 define('MAP_API_KEY_DESC','Укажите Ваш API ключ.');
 
+define('AUTOMATIC_SEO_URL_TITLE','Автоматически генерировать SEO URL');
+define('AUTOMATIC_SEO_URL_DESC','Автоматически генерировать SEO URL из названий товаров, категорий, информационных страниц и т.д.');
+
 ?>
