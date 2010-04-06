@@ -80,7 +80,7 @@
       }
 
       vam_db_query("update " . TABLE_SPECIALS . " set specials_quantity = '" . $_POST['specials_quantity'] . "', specials_new_products_price = '" . $_POST['specials_price'] . "', specials_last_modified = now(), expires_date = '" . $expires_date . "' where specials_id = '" . $_POST['specials_id'] . "'");
-      vam_redirect(vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $specials_id));
+      vam_redirect(vam_href_link(FILENAME_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $_POST['specials_id']));
       break;
 
     case 'deleteconfirm':
