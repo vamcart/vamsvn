@@ -173,46 +173,62 @@ class ot_coupon {
 
 					if ($get_result['restrict_to_products'] || $get_result['restrict_to_categories']) {
 						
-						for ($i = 0; $i < sizeof($order->products); $i ++) {
-							if ($get_result['restrict_to_products']) {
-								$pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
-								for ($ii = 0; $p < count($pr_ids); $ii ++) {
-									if ($pr_ids[$ii] == vam_get_prid($order->products[$i]['id'])) {
-										if ($get_result['coupon_type'] == 'P') {
-											
-											$od_amount = $amount * $get_result['coupon_amount'] / 100;
-											$pr_c = $this->product_price($pr_ids[$ii]); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
-											$pod_amount = round($pr_c*10)/10*$c_deduct/100;
-											$od_amount = $od_amount + $pod_amount;
-										
-										} else {
-											$od_amount = $c_deduct;
-										}
-									}
-								}
-							} else {
-								$cat_ids = preg_split("/[,]/", $get_result['restrict_to_categories']);
-								for ($i = 0; $i < sizeof($order->products); $i ++) {
-									$my_path = vam_get_product_path(vam_get_prid($order->products[$i]['id']));
-									$sub_cat_ids = preg_split("/[_]/", $my_path);
-									for ($iii = 0; $iii < count($sub_cat_ids); $iii ++) {
-										for ($ii = 0; $ii < count($cat_ids); $ii ++) {
-											if ($sub_cat_ids[$iii] == $cat_ids[$ii]) {
-												if ($get_result['coupon_type'] == 'P') {
+            for ($i=0; $i<sizeof($order->products); $i++) {
+              if ($get_result['restrict_to_products']) {
+                $pr_ids = preg_split("/[,]/", $get_result['restrict_to_products']);
+                for ($ii = 0; $ii < count($pr_ids); $ii++) {
+                  if ($pr_ids[$ii] == vam_get_prid($order->products[$i]['id'])) {
+                    if ($get_result['coupon_type'] == 'P') {
+ 											/* Fixes to Gift Voucher module 5.03
+ 											=================================
+ 											Submitted by Rob Cote, robc@traininghott.com
+
+ 											original code: $od_amount = round($amount*10)/10*$c_deduct/100;
+ 											$pr_c = $order->products[$i]['final_price']*$order->products[$i]['qty'];
+ 											$pod_amount = round($pr_c*10)/10*$c_deduct/100;
+ 											*/
+ 											//$pr_c = $order->products[$i]['final_price']*$order->products[$i]['qty'];
+ 											$pr_c = $this->product_price($pr_ids[$ii]); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
+                      $pod_amount = round($pr_c*10)/10*$c_deduct/100;
+                      $od_amount = $od_amount + $pod_amount;
+                    } else {
+                      $od_amount = $c_deduct;
+                    }
+                  }
+                }
+              } else {
+                $cat_ids = preg_split("/[,]/", $get_result['restrict_to_categories']);
+                for ($i=0; $i<sizeof($order->products); $i++) {
+                  $my_path = vam_get_product_path(vam_get_prid($order->products[$i]['id']));
+                  $sub_cat_ids = preg_split("/[_]/", $my_path);
+                  for ($iii = 0; $iii < count($sub_cat_ids); $iii++) {
+                    for ($ii = 0; $ii < count($cat_ids); $ii++) {
+                      if ($sub_cat_ids[$iii] == $cat_ids[$ii]) {
+                        if ($get_result['coupon_type'] == 'P') {
+													/* Category Restriction Fix to Gift Voucher module 5.04
+													Date: August 3, 2003
+													=================================
+													Nick Stanko of UkiDev.com, nick@ukidev.com
+
+													original code:
+													$od_amount = round($amount*10)/10*$c_deduct/100;
+													$pr_c = $order->products[$i]['final_price']*$order->products[$i]['qty'];
+													$pod_amount = round($pr_c*10)/10*$c_deduct/100;
+													*/
+													//$od_amount = round($amount*10)/10*$c_deduct/100;
+													//$pr_c = $order->products[$i]['final_price']*$order->products[$i]['qty'];
 													$pr_c = $this->product_price(vam_get_prid($order->products[$i]['id'])); //Fred 2003-10-28, fix for the row above, otherwise the discount is calc based on price excl VAT!
 													$pod_amount = round($pr_c*10)/10*$c_deduct/100;
 													$od_amount = $od_amount + $pod_amount;
-                                                       continue 3;      // v5.13a Tanaka 2005-4-30: to prevent double counting of a product discount
-												} else {
-													$od_amount = $c_deduct;
-													continue 3;
-     											}
-											}
-										}
-									}
-								}
-							}
-						}
+                        } else {
+                          $od_amount = $c_deduct;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
 					} else {
 						if ($get_result['coupon_type'] != 'P') {
 							$od_amount = $c_deduct;
