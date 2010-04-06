@@ -42,8 +42,20 @@
 
       case 'insert_latest_news': //insert a new news article.
         if ($_POST['headline']) {
+
+					if ($_POST['news_page_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $_POST['headline'];
+						
+						$alias = make_alias($alias);
+                  $news_page_url = $alias;
+
+					} else {
+						
+                $news_page_url = $_POST['news_page_url'];
+					}
+
           $sql_data_array = array('headline'   => vam_db_prepare_input($_POST['headline']),
-                                  'news_page_url'    => vam_db_prepare_input($_POST['news_page_url']),
+                                  'news_page_url'    => vam_db_prepare_input($news_page_url),
                                   'content'    => vam_db_prepare_input($_POST['content']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
