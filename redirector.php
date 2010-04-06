@@ -249,6 +249,9 @@
           case 'news':
             $URI_elements[0] = 'news.php';
             break;
+          case 'faq':
+            $URI_elements[0] = 'faq.php';
+            break;
           default:
             break;
         }
@@ -357,6 +360,26 @@
           }
           $PHP_SELF = '/news.php';
           include('news.php');
+          break;
+        case 'faq':
+          if (isset($_GET['faq_id']) && $_GET['faq_id'] != '') {
+            $query = 'select faq_page_url from ' . TABLE_FAQ . ' where faq_id="' . vam_db_prepare_input($_GET['faq_id']) . '"';
+            $result = mysql_query($query);   
+            if (mysql_num_rows($result) > 0) {
+              $row = mysql_fetch_array($result, MYSQL_ASSOC);
+              $fURL = $row['faq_page_url'];
+            }
+            mysql_free_result($result);
+            mysql_close();
+            if (isset($fURL) && $fURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $fURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          $PHP_SELF = '/faq.php';
+          include('faq.php');
           break;
         case 'articles':
           if (isset($_GET['tPath']) && $_GET['tPath'] != '') {
