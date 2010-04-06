@@ -1080,7 +1080,7 @@ elseif ($_GET['action'] == 'custom_action') {
   </tr>
   <tr>
     <td colspan="2" class="main" valign="top" align="right"><?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
-                <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)),array(array('id' => '0', 'text' => TEXT_VALIDATING)), $orders_statuses), '', 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
+                <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form></td>
   </tr>
 </table>
