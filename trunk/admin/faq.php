@@ -42,8 +42,20 @@
 
       case 'insert_faq': //insert a new faq.
         if ($_POST['question']) {
+
+					if ($_POST['faq_page_url'] == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+						$alias = $_POST['question'];
+						
+						$alias = make_alias($alias);
+                  $faq_page_url = $alias;
+
+					} else {
+						
+                $faq_page_url = $_POST['faq_page_url'];
+					}
+					
           $sql_data_array = array('question'   => vam_db_prepare_input($_POST['question']),
-                                  'faq_page_url'    => vam_db_prepare_input($_POST['faq_page_url']),
+                                  'faq_page_url'    => vam_db_prepare_input($faq_page_url),
                                   'answer'    => vam_db_prepare_input($_POST['answer']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
