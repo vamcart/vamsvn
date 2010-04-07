@@ -264,7 +264,8 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $inrec['email'], $custname, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_TEXT_SUBJECT, $html_mail, $txt_mail);
 
-
+   $mline = "";
+   
 // vam_php_mail($custname, $inrec['email'], EMAIL_TEXT_SUBJECT, $email, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 //   $mline = "";
 
