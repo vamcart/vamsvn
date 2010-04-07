@@ -1120,18 +1120,28 @@ function ep_create_filelayout($dltype){
 		break;
 // end of EP for extra field code ======= DEVSOFTVN================       
 	case 'full':
-	case 'category':
-	case 'froogle':
-		if ($_POST['limit_cat'] == '0'){
-		}else{
-// for one level down
-			$categories_range .= 'ptoc.categories_id =  \'' . $_POST['limit_cat']. '\' and ';
+    case 'category':
+      if ($limit_cat == '0'){
+      } else {
+        /**************/
+        $str_query1 = vam_db_query("select parent_id from categories where categories_id = '".$_POST['limit_cat']."'");
+        $result_1 = vam_db_fetch_array($str_query1);
+        $cat_parent_id = $result_1['parent_id'];
+
+        if($cat_parent_id == 0){
+          $categories_range .= 'subc.parent_id = \'' . $_POST['limit_cat']. '\' and ';
+        } else {
+          $categories_range .= 'ptoc.categories_id = \'' . $_POST['limit_cat']. '\' and ';
+        }
+        /**************/ 
+       // for one level down
+      // $categories_range .= 'ptoc.categories_id =  \'' . $limit_cat. '\' and ';
 
 // for two levels down
-//  $catfeild=vam_get_category_treea($_POST['limit_cat']);
+//  $catfield=vam_get_category_treea($limit_cat);
 //          $categories_range .= "( ";
-//for ($i=0, $n=sizeof($catfeild); $i<$n; $i++) {
-//  $categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfeild[$i]['id'] . "' ");
+//for ($i=0, $n=sizeof($catfield); $i<$n; $i++) {
+//  $categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfield[$i]['id'] . "' ");
 //if ($i<$n){
 // $categories_range .= ' or ';
 //         }
@@ -1139,8 +1149,8 @@ function ep_create_filelayout($dltype){
 //    }
 //     $categories_range=substr_replace($categories_range, ')and ', -4);
 
-		}
-		break;
+      }
+      break;
 	case 'attrib':
 
 		if ($_POST['limit_cat'] == '0'){
