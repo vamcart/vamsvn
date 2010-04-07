@@ -195,6 +195,9 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
            $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+
+			if ($groups['customers_status_id'] != $customers_groups_id) {           
+
            if ($changed) {
 
              // send emails
@@ -230,6 +233,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
 
            }
+          }
         }
         // eof denuz added accumulated discount
 
@@ -392,6 +396,9 @@ switch ($_GET['action']) {
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
            $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+
+			if ($groups['customers_status_id'] != $customers_groups_id) {           
+			
            if ($changed) {
 
              // send emails
@@ -428,6 +435,7 @@ switch ($_GET['action']) {
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
 
            }
+          }
         }
         
         // eof denuz added accumulated discount
