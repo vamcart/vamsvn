@@ -40,7 +40,8 @@ $tinybrowser['language'] = 'ru';
 $tinybrowser['integration'] = 'tinymce'; // Possible values: 'tinymce', 'fckeditor'
 
 // Default is rtrim($_SERVER['DOCUMENT_ROOT'],'/') (suitable when using absolute paths, but can be set to '' if using relative paths)
-$tinybrowser['docroot'] = rtrim(__DIR__,'/');
+//$tinybrowser['docroot'] = rtrim(__DIR__,'/');
+$tinybrowser['docroot'] = rtrim($_SERVER['DOCUMENT_ROOT'],'/');
 
 // Folder permissions for Unix servers only
 $tinybrowser['unixpermissions'] = 0777;
