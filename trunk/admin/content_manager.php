@@ -63,17 +63,17 @@
         $content_url=vam_db_prepare_input($_POST['cont_url']);
         // Content URL begin
 
-					if (file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
-						$alias = $content_title;
-						
-						$alias = make_alias($alias);
-                  $content_page_url = $alias;
+      $content_page_url = vam_db_prepare_input($_POST['cont_page_url']);
+      // Content URL begin
 
-					} else {
-						
-                $content_page_url = vam_db_prepare_input($_POST['cont_page_url']);
-					}
-
+               if ($content_page_url == '' && file_exists(DIR_FS_CATALOG . '.htaccess') && AUTOMATIC_SEO_URL == 'true') {
+                   $alias = $content_title;
+                  $alias = make_alias($alias);
+                        $content_page_url = $alias;
+               } else {
+                        $content_page_url = vam_db_prepare_input($_POST['cont_page_url']);
+               }
+               
         // Content URL end
         $content_text=vam_db_prepare_input($_POST['cont']);
         $coID=vam_db_prepare_input($_POST['coID']);
