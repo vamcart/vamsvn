@@ -43,6 +43,7 @@ $hash_source = "|".$_POST['version']."|".MODULE_PAYMENT_LIQPAY_SECRET_KEY."|".$_
 $hash = base64_encode(sha1($hash_source,1));
 
 // checking and handling
+if ($_POST['status'] == 'success') {
 if ($hash == $crc) {
 if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_LIQPAY_ORDER_STATUS_ID);
@@ -56,6 +57,7 @@ if (number_format($_POST['amount'],0) == number_format($order->info['total'],0))
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+}
 }
 }
 
