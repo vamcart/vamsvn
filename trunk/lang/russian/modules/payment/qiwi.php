@@ -28,8 +28,6 @@ define('MODULE_PAYMENT_QIWI_ALLOWED_TITLE' , 'Разрешённые стран�
 define('MODULE_PAYMENT_QIWI_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_PAYMENT_QIWI_ID_TITLE' , 'ID номер магазина:');
 define('MODULE_PAYMENT_QIWI_ID_DESC' , 'Укажите ID номер Вашего магазина');
-define('MODULE_PAYMENT_QIWI_WMR_TITLE' , 'Ваш WMR кошелёк:');
-define('MODULE_PAYMENT_QIWI_WMR_DESC' , 'Укажите номер Вашего WMR кошелька');
 define('MODULE_PAYMENT_QIWI_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_QIWI_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_QIWI_ZONE_TITLE' , 'Зона');
