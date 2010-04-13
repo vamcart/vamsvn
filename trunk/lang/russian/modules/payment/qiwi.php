@@ -41,5 +41,7 @@ define('MODULE_PAYMENT_QIWI_NAME_TITLE' , '');
 define('MODULE_PAYMENT_QIWI_NAME_DESC' , 'Укажите номер Вашего мобильного телефона.');
 define('MODULE_PAYMENT_QIWI_TELEPHONE' , 'Телефон: ');
 define('MODULE_PAYMENT_QIWI_TELEPHONE_HELP' , ' Пример: <strong>916820XXXX</strong>');
+
+define('MODULE_PAYMENT_QIWI_EMAIL_SUBJECT' , 'КИВИ: Оплачен заказ номер');
   
 ?>
