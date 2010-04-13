@@ -1,12 +1,12 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: qiwi.php 998 2009/05/07 13:24:46 VaM $
+   $Id: qiwi.php 2588 2010/04/13 13:24:46 oleg_vamsoft $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
-   Copyright (c) 2007 VaM Shop
+   Copyright (c) 2010 VaMSoft Ltd.
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
