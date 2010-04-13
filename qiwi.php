@@ -32,7 +32,7 @@ if ( !empty($password) && $password != md5(MODULE_PAYMENT_QIWI_SECRET_KEY) )
 return 150;
 
 // получаем номер заказа
-$transaction = intval('2185');
+$transaction = intval($transaction);
 
 // меняем статус заказа при условии оплаты счёта
 if ( $status == 60 ) {
