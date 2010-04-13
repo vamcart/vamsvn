@@ -77,30 +77,8 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	$vamTemplate->assign('EMAIL', $order->customer['email_address']);
 	$vamTemplate->assign('PHONE',$order->customer['telephone']);
 
-	// PAYMENT MODUL TEXTS
-	// EU Bank Transfer
-	if ($order->info['payment_method'] == 'eustandardtransfer') {
-		$vamTemplate->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_EUTRANSFER_TEXT_DESCRIPTION);
-		$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_EUTRANSFER_TEXT_DESCRIPTION));
-	}
-
-	// MONEYORDER
-	if ($order->info['payment_method'] == 'moneyorder') {
-		$vamTemplate->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_MONEYORDER_TEXT_DESCRIPTION);
-		$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_MONEYORDER_TEXT_DESCRIPTION));
-	}
-
-	// WebMoney
-	if ($order->info['payment_method'] == 'webmoney') {
-		$vamTemplate->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION);
-		$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_WEBMONEY_TEXT_DESCRIPTION));
-	}
-
-	// Yandex
-	if ($order->info['payment_method'] == 'yandex') {
-		$vamTemplate->assign('PAYMENT_INFO_HTML', MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION);
-		$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION));
-	}
+	$vamTemplate->assign('PAYMENT_INFO_HTML', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION));
+	$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION)));
 
 	// dont allow cache
 	$vamTemplate->caching = false;
