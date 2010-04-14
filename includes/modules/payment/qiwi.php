@@ -363,6 +363,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			//}
 			//}
 
+	      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input((int)substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1)) . "', '" . vam_db_prepare_input($_POST['kvit_name']) . "', '" . vam_db_prepare_input($_POST['qiwi_telephone']) ."')");
+
         }
 
       }
@@ -545,10 +547,7 @@ $vamTemplate = new vamTemplate;
     }
 
 	function after_process() {
-
-      global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_POST['kvit_name']) . "', '" . vam_db_prepare_input($_POST['qiwi_telephone']) ."')");
-
+      return false;
 	}
 
     function output_error() {
