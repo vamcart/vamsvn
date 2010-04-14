@@ -32,7 +32,6 @@
       $this->sort_order = MODULE_PAYMENT_QIWI_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_QIWI_STATUS == 'True') ? true : false);
 		
-        //$this->form_action_url = 'https://mobw.ru/services/ishop';
     }
 
 // class methods
@@ -371,14 +370,10 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       return array('title' => MODULE_PAYMENT_QIWI_TEXT_DESCRIPTION);
     }
 
-    function process_button() {
-      global $customer_id, $order, $sendto, $vamPrice, $currencies, $cart_qiwi_id, $shipping;
-
-      $process_button_string = '';
-
-      return $process_button_string;
-    }
-
+	function process_button() {
+		return false;
+	}
+	
     function before_process() {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_qiwi_id;
       global $$payment;
