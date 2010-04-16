@@ -216,7 +216,7 @@ while ($products = vam_db_fetch_array($products_query)) {
   $products["yml_cbid"] = max((!isset($products["yml_cbid"]) ? 0 : $products["yml_cbid"]), $categories_cbid[$products["categories_id"]]);
   if($products["yml_cbid"] > 0) $cbid = ' cbid="' . $products["yml_cbid"] . '"';
   $price = $products['products_price'];
-  $price = $vamPrice->GetPrice($price, $format = false, 1, $products['products_tax_class_id'], $price);
+  $price = $vamPrice->GetPrice($products['products_id'], $format = false, 1, $products['products_tax_class_id'], $price);
   $url = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false);
   $available = ' available="' . $available . '"';
   vam_yml_out('<offer id="' . $products['products_id'] . '"' . $available . $bid . $cbid . '>');
