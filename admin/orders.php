@@ -621,7 +621,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	            <td class="main"><?php echo $order->customer['orig_reference']; ?></td>
 	          </tr>
 
-              <?echo vam_get_extra_fields_order($order->customer['ID'],$_SESSION['languages_id'])?>
+              <?php echo vam_get_extra_fields_order($order->customer['ID'],$_SESSION['languages_id']) ?>
 
              </table>
              </td>
