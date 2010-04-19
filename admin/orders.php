@@ -828,15 +828,14 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 				
 				echo '          <tr class="dataTableRow">'."\n".'            <td class="dataTableContent" valign="top" align="right">'.$order->products[$i]['qty'].'&nbsp;x&nbsp;</td>'."\n".'            <td class="dataTableContent" valign="top"><a href="'.vam_href_link(FILENAME_CATEGORIES, 'pID='.$products_id_order.'&action=new_product').'">'.$order->products[$i]['name'].'</a>';
 
-		if (sizeof($order->products[$i]['attributes']) > 0) {
-			for ($j = 0, $k = sizeof($order->products[$i]['attributes']); $j < $k; $j ++) {
-
-				echo '<br /><nobr><small>&nbsp;<i> - '.$order->products[$i]['attributes'][$j]['option'].': '.$order->products[$i]['attributes'][$j]['value'].': ';
-
-			}
-
-			echo '</i></small></nobr>';
-		}
+    if (sizeof($order->products[$i]['attributes']) > 0) {
+        echo '<br /><small>';
+        for ($j = 0, $k = sizeof($order->products[$i]['attributes']); $j < $k; $j ++) {
+            echo '&nbsp;<i> - '.$order->products[$i]['attributes'][$j]['option'].': '.$order->products[$i]['attributes'][$j]['value'].';</i><br />';
+        }
+       
+        echo '</small>';
+    }
 
 		echo '            </td>'."\n".'            <td class="dataTableContent" valign="top">';
 
