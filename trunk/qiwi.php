@@ -14,7 +14,7 @@
   Released under the GNU General Public License
 ------------------------------------------------------------------------------*/
 
-require('includes/application_top.php');
+include('includes/application_top.php');
 
 require_once(DIR_WS_CLASSES . 'nusoap/nusoap.php');
         
@@ -32,7 +32,7 @@ if ( !empty($password) && $password != md5(MODULE_PAYMENT_QIWI_SECRET_KEY) )
 return 150;
 
 // получаем номер заказа
-$transaction = intval($transaction);
+$transaction = intval($txn);
 
 // меняем статус заказа при условии оплаты счёта
 if ( $status == 60 ) {
