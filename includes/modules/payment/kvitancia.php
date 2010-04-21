@@ -24,6 +24,7 @@ class kvitancia {
 		$this->code = 'kvitancia';
 		$this->title = MODULE_PAYMENT_KVITANCIA_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION;
+		$this->icon = DIR_WS_ICONS . 'kvitancia.png';
 		$this->sort_order = MODULE_PAYMENT_KVITANCIA_SORT_ORDER;
 		$this->info = MODULE_PAYMENT_KVITANCIA_TEXT_INFO;
 		$this->enabled = ((MODULE_PAYMENT_KVITANCIA_STATUS == 'True') ? true : false);
@@ -65,8 +66,11 @@ class kvitancia {
 	function selection() {
       global $order;
 
+		if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);		
+		
       $selection = array('id' => $this->code,
                          'module' => $this->title,
+                         'icon' => $icon,
                          'description'=>$this->info,
       	                 'fields' => array(array('title' => MODULE_PAYMENT_KVITANCIA_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_KVITANCIA_NAME_DESC),
