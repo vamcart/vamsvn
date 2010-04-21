@@ -91,6 +91,11 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 $_SESSION['wm'] = $_POST['wm'];
 
+if (!isset($_SESSION['kvit_name'])) $_SESSION['kvit_name'] = $_POST['kvit_name'];
+if (!isset($_SESSION['kvit_address'])) $_SESSION['kvit_address'] = $_POST['kvit_address'];
+
+if (!isset($_SESSION['qiwi_telephone'])) $_SESSION['qiwi_telephone'] = $_POST['qiwi_telephone'];
+
 if (isset($_POST['conditions'])) {
 	$_SESSION['conditions'] = true;
 }
