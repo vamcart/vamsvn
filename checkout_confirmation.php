@@ -68,6 +68,11 @@ if (isset ($_POST['payment']))
 if ($_POST['comments_added'] != '')
 	$_SESSION['comments'] = vam_db_prepare_input($_POST['comments']);
 
+if (!isset($_SESSION['kvit_name'])) $_SESSION['kvit_name'] = $_POST['kvit_name'];
+if (!isset($_SESSION['kvit_address'])) $_SESSION['kvit_address'] = $_POST['kvit_address'];
+
+if (!isset($_SESSION['qiwi_telephone'])) $_SESSION['qiwi_telephone'] = $_POST['qiwi_telephone'];
+
 //-- TheMedia Begin check if display conditions on checkout page is true
 if (isset ($_POST['cot_gv']))
 	$_SESSION['cot_gv'] = true;
