@@ -28,8 +28,8 @@ function updateBill($login, $password, $txn, $status) {
 if ( $login != MODULE_PAYMENT_QIWI_ID )
 return 150;
 
-//if ( !empty($password) && $password != strtoupper(md5($txn+strtoupper(md5(MODULE_PAYMENT_QIWI_SECRET_KEY)))) )
-//return 150;
+if ( !empty($password) && $password != strtoupper(md5($txn.strtoupper(md5(MODULE_PAYMENT_QIWI_SECRET_KEY)))) )
+return 150;
 
 // получаем номер заказа
 $transaction = intval($txn);
