@@ -88,7 +88,7 @@
 							
 						//$alias = trim($alias);
 						//$alias = strtolower($alias);
-						//$alias = str_replace(' ','-',$alias);
+						$alias = str_replace(' ','-',$alias);
 						//Replace cyrillic symbols to translit
 						$alias = strtr(stripslashes($alias), $trdic);
 						$alias = preg_replace("/[^a-zA-Z0-9-s]/", "", $alias);						
