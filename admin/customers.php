@@ -1270,7 +1270,7 @@ if ($error == true) {
 			echo TEXT_ACCOUNT;
 		}
 ?></td>
-                <td class="dataTableContent"><b><?php echo $customers['customers_lastname']; ?></b></td>
+                <td class="dataTableContent"><?php echo $customers['customers_lastname']; ?></td>
                 <td class="dataTableContent"><?php echo $customers['customers_firstname']; ?></td>
                 <td class="dataTableContent" align="left"><?php echo $customers_statuses_array[$customers['customers_status']]['text'] . ' (' . $customers['customers_status'] . ')' ; ?></td>
                 <?php if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {?>
