@@ -44,7 +44,7 @@ require ('includes/application_top.php');
 <!-- header_eof //-->
 
 <!-- body //-->
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
   <tr>
 <?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
     <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
@@ -56,17 +56,10 @@ require ('includes/application_top.php');
 <!-- body_text //-->
     <td class="boxCenter" valign="top">
     
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
-      <tr>
-        <td colspan="2">
-        <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
-        </td>
-       </tr>
-     </table>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
-<tr>
-<td>
+        <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
+
+
 
 		<div id="tabs">
 			<ul>
@@ -89,9 +82,6 @@ require ('includes/application_top.php');
 			</div>
 		</div>
 
-</td>
-</tr>
-</table>
   
 <!-- body_text_eof //-->
 </td>
