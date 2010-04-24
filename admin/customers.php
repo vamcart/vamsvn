@@ -563,7 +563,7 @@ return false;
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 
@@ -576,7 +576,7 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	$cInfo = new objectInfo($customers);
 	$newsletter_array = array (array ('id' => '1', 'text' => ENTRY_NEWSLETTER_YES), array ('id' => '0', 'text' => ENTRY_NEWSLETTER_NO));
 ?>
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     <h1 class="contentBoxHeading"><?php echo $cInfo->customers_lastname.' '.$cInfo->customers_firstname.' '.$cInfo->customers_secondname; ?></h1>
   
   </td>
@@ -584,7 +584,7 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 
   <tr>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td class="boxCenter" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td>
         <table border="0" width="100%" cellspacing="0" cellpadding="0">

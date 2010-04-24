@@ -342,7 +342,7 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
     <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
     

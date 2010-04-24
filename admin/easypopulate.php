@@ -637,7 +637,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
     <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>

@@ -54,7 +54,7 @@ require ('includes/application_top.php');
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
