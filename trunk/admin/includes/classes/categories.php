@@ -501,7 +501,7 @@ class categories {
                 // Products URL end
 		$products_date_available = vam_db_prepare_input($products_data['products_date_available']);
 
-		$products_date_available = (date('Y-m-d') < $products_date_available) ? $products_date_available : 'null';
+		//$products_date_available = (date('Y-m-d') < $products_date_available) ? $products_date_available : 'null';
  
          if ($products_data['products_startpage'] == 1 ) {
 //         	$this->link_product($products_data['products_id'], 0);
