@@ -45,8 +45,20 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/tooltip/jquery.tooltip.pack.js"></script>
+		<script type="text/javascript">
+			$(function() {
+			$('a.tooltip').tooltip({
+			track: true,
+			delay: 0,
+			showURL: false,
+			fade: 200
+			});
+			});
+		</script>
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
@@ -143,7 +155,7 @@
 
    echo '
   <tr>
-    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b> <a class="info" href="#">' . vam_image(DIR_WS_IMAGES . 'icons/help.jpg', '?') . ' <span class="help">'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'<!--[if lte IE 6.5]><iframe frameborder="0"></iframe><![endif]--></span></a></td>
+    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b> <a class="tooltip" title="'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'" href="#">' . vam_image(DIR_WS_IMAGES . 'icons/help.jpg', '?') . '</a></td>
     <td valign="top" class="dataTableContent">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>
