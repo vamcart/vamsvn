@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders.php 1189 2007-02-08 11:13:01Z VaM $
+   $Id: orders.php 1189 2010-02-08 11:13:01Z VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -514,9 +514,7 @@ require (DIR_WS_INCLUDES.'header.php');
 <?php } ?>
 <!-- body_text //-->
     <td class="boxCenter" valign="top">
-    
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
-    
+     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 <?php
 
@@ -1076,24 +1074,26 @@ elseif ($_GET['action'] == 'custom_action') {
       <tr>
         <td width="100%">
         
+          <table border="0" width="100%" cellspacing="0" cellpadding="0" class="pageHead">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
+         </td>
+         <td align="right">
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td colspan="2" class="main" align="right">
+             <?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
+                <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
+              </form>
+              
+         </td>
+         <td align="right">
               <?php echo vam_draw_form('orders', FILENAME_ORDERS, '', 'get'); ?>
                 <?php echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('oID', '', 'size="12"') . vam_draw_hidden_field('action', 'edit').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form>
-</td>
-  </tr>
-  <tr>
-    <td colspan="2" class="main" valign="top" align="right"><?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
-                <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
-              </form></td>
-  </tr>
-</table>
-        
+         </td>
+       </tr>
+       </table>
 
-        
         
         </td>
       </tr>
