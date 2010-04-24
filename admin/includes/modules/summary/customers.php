@@ -25,6 +25,10 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				    
 				    </td>
 				  </tr>
+
+</table>
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">				  
+              
               <tr class="dataTableHeadingRow">
                 <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_LASTNAME; ?></td>
                 <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIRSTNAME; ?></td>
@@ -43,12 +47,18 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 	$customers_query = vam_db_query($customers_query_raw);
 	while ($customers = vam_db_fetch_array($customers_query)) {
 
+        $rows++;
 
+        if (($rows/2) == floor($rows/2)) {
+          $css_class = 'categories_view_data_even';
+        } else {
+          $css_class = 'categories_view_data_odd';
+        }
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
-                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
-                <td class="dataTableContent"><?php echo $customers['customers_date_added']; ?></td>
+                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
+                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
+                <td class="<?php echo $css_class; ?>"><?php echo $customers['customers_date_added']; ?></td>
               </tr>
 <?php
 
