@@ -140,13 +140,9 @@ table.contentListingTable
 		-moz-border-radius-bottomright: 4px;
 		-webkit-border-bottom-right-radius: 4px;    
 }
-.dataTableRow {
-background-color: #f7f7f7;
-
-}
 
 .dataTableRowSelected {
- background-color: #FFF9E9;
+ background: #f7f7f7;
  font-weight: bold;
 
  }
@@ -185,8 +181,7 @@ td.categories_view_data_even {
  color: #000000;
  vertical-align: middle;
  padding: .1em;
- background: #f7f7f7;
- text-align: left;
+ text-align: center;
 }
 
 td.categories_view_data_odd {
@@ -195,8 +190,7 @@ td.categories_view_data_odd {
  color: #000000;
  vertical-align: middle;
  padding: .1em;
- background: #fff;
- text-align: left;
+ text-align: center;
 }
 
 .dataTableContent_products {
