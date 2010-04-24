@@ -737,7 +737,7 @@ This stylesheet and the associated (x)html may be modified in any
 way to fit your requirements.
 =================================================================== */
 
-#nav {width: 98%; height: 41px; float:left; padding-left:20px; background:#fff url(../images/menu/tabLeft.gif) no-repeat left top; font-family:arial, sans-serif;}
+#nav {margin: 0 5px 0 5px; width: 98%; height: 41px; float:left; padding-left:20px; background:#fff url(../images/menu/tabLeft.gif) no-repeat left top; font-family:arial, sans-serif;}
 
 #menu {height:41px;position:relative;font-size:13px; margin: 0; z-index:1000; background:#fff url(../images/menu/tabRight.gif) no-repeat right top; float:left; padding-right:0;width:100%;}
 #menu table.ie6 {border-collapse:collapse; margin:0; padding:0;}
