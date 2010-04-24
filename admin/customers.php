@@ -1110,32 +1110,45 @@ if ($error == true) {
 } else {
 ?>
   <tr>
-        <td width="100%">
-
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
   
-  </td>
-  </tr>
-      <tr>
-        <td>
-        
-        <table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr><?php echo vam_draw_form('search', FILENAME_CUSTOMERS, '', 'get'); ?>
-            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?></td>
-            <td class="smallText" align="right"><?php echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?></td>
-          </form></tr>
-          <tr><?php echo vam_draw_form('status', FILENAME_CUSTOMERS, '', 'get'); ?>
+  
+          <table border="0" width="100%" cellspacing="0" cellpadding="0" class="pageHead">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
+         </td>
+         <td align="right">
+
+          <?php echo vam_draw_form('status', FILENAME_CUSTOMERS, '', 'get'); ?>
 <?php
 
 	$select_data = array ();
 	$select_data = array (array ('id' => '99', 'text' => TEXT_SELECT), array ('id' => '100', 'text' => TEXT_ALL_CUSTOMERS));
 ?>          
-            <td class="smallText" align="right" colspan="3"><?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status',vam_array_merge($select_data, $customers_statuses_array), '99', 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?></td>
+            <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status',vam_array_merge($select_data, $customers_statuses_array), '99', 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
 
 
 
 
-          </form></tr>
+          </form>
+         </td>
+         <td align="right">
+<?php echo vam_draw_form('search', FILENAME_CUSTOMERS, '', 'get'); ?>
+<?php echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
+          </form>
+         </td>
+       </tr>
+       </table>
+       
+
+  </tr>
+      <tr>
+        <td>
+        
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?></td>
+            <td class="smallText" align="right"></tr>
         </table></td>
       </tr>
       <tr>
