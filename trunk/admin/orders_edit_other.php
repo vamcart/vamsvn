@@ -22,7 +22,7 @@
 
 <!-- Sprachen Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="100%" colspan="3"><b><?php echo TEXT_LANGUAGE; ?></b></td>
 </tr>
@@ -68,7 +68,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 
 <!-- WпїЅhrungen Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="100%" colspan="3"><b><?php echo TEXT_CURRENCIES; ?></b></td>
 </tr>
@@ -115,7 +115,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 
 <!-- Zahlung Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="100%" colspan="4"><b><?php echo TEXT_PAYMENT; ?></td>
 </tr>
@@ -168,7 +168,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 
 <!-- Versand Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="100%" colspan="4"><b><?php echo TEXT_SHIPPING; ?></td>
 </tr>
@@ -232,7 +232,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' .
 
 <!-- OT Module Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="100%" colspan="5"><b><?php echo TEXT_ORDER_TOTAL; ?></b></td>
 </tr>

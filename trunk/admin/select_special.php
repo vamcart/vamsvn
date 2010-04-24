@@ -81,7 +81,7 @@
 
               <?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?>
 
-			  <table border="0" width="100%" cellspacing="0" cellpadding="2">
+			 <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 			    <tr class="dataTableHeadingRow">
                   <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
                   <td class="dataTableHeadingContent" align="left"><?php echo TABLE_HEADING_MODEL; ?></td>

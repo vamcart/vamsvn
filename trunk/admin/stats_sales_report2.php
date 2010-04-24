@@ -202,7 +202,7 @@ open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_al
 
         <div id="table">
 				
-									<table border="0" width="100%" cellspacing="0" cellpadding="2">
+									<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 										<tr class="dataTableHeadingRow">
 											<td class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
 											<td class="dataTableHeadingContent" align=center><?php echo TABLE_HEADING_STAT_ORDERS; ?></td>

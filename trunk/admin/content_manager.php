@@ -401,7 +401,7 @@ for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
 ?>
         <div id="tab<?php echo $i; ?>">
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent" width="10" ><?php echo TABLE_HEADING_CONTENT_ID; ?></td>
                 <td class="dataTableHeadingContent" width="10" >&nbsp;</td>
@@ -1032,7 +1032,7 @@ if (!$_GET['action']) {
  vam_spaceUsed(DIR_FS_CATALOG.'media/products/');
 echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div></br>';
 ?>      
- <table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
     <tr class="dataTableHeadingRow">
      <td class="dataTableHeadingContent" nowrap width="5%" ><?php echo TABLE_HEADING_PRODUCTS_ID; ?></td>
      <td class="dataTableHeadingContent" width="95%" align="left"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
@@ -1080,7 +1080,7 @@ if ($_GET['pID']==$products_ids[$i]['id']){
  <td class="dataTableContent" align="left"></td>
  <td class="dataTableContent" align="left">
 
- <table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
     <tr class="dataTableHeadingRow">
     <td class="dataTableHeadingContent" nowrap width="2%" ><?php echo TABLE_HEADING_PRODUCTS_CONTENT_ID; ?></td>
     <td class="dataTableHeadingContent" nowrap width="2%" >&nbsp;</td>

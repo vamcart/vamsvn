@@ -244,7 +244,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                 <td>&nbsp;<?php echo vam_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '53'); ?>&nbsp;</td>
               </tr>
               <tr>
-                <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
                   <tr>
                     <td colspan="3"><?php echo vam_black_line(); ?></td>
                   </tr>
@@ -427,7 +427,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                 <td align="center" class="smallText" colspan="4">
                 
 <hr size="4" noshade>                
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
   <tr class="dataTableHeadingRow">
     <td class="dataTableHeadingContent" width="100"><?php echo $values_values['products_options_values_id']; ?><input type="hidden" name="value_id" value="<?php echo $values_values['products_options_values_id']; ?>"></td>
     <td class="dataTableHeadingContent" width="150"><b><?php echo TABLE_HEADING_OPT_NAME; ?></b></td>

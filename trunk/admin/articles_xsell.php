@@ -93,7 +93,7 @@
 	list ($articles_id, $articles_name, $articles_description, $articles_url) = general_db_conct($query);
 	?>
 				
-            <table border="0" cellspacing="1" cellpadding="3" bgcolor="#CCCCCC">
+            <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow"> 
                 <td class="dataTableHeadingContent" align="center" nowrap><?php echo TEXT_PRODUCT_ID; ?></td>
                 <td class="dataTableHeadingContent"><?php echo HEADING_ARTICLE_NAME; ?></td>
@@ -168,7 +168,7 @@ if ($_POST[xsell_id])
 		
         if ($_GET['add_related_article_ID'] && ! $_POST && !$sort)
 	{	?>
- 	  <table border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+ 	 <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
                <form action="<?php vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL'); ?>" method="post">
                 <tr class="dataTableHeadingRow">
                   <td class="dataTableHeadingContent">&nbsp;</td>
@@ -244,7 +244,7 @@ if ($_POST[xsell_id])
 	}// end of foreach.
 	?>
 	<form method="post" action="<?php vam_href_link(FILENAME_ARTICLES_XSELL, 'sort=1&add_related_article_ID=' . $_GET['add_related_article_ID'], 'NONSSL'); ?>">
-              <table cellpadding="3" cellspacing="1" bgcolor="#CCCCCC" border="0">
+             <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
                 <tr class="dataTableHeadingRow">
                   <td class="dataTableHeadingContent"><?php echo TEXT_PRODUCT_ID; ?></td>
                   <td class="dataTableHeadingContent"><?php echo HEADING_PRODUCT_NAME; ?></td>

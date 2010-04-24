@@ -271,7 +271,7 @@ $manual_link = 'add-attribute';
                 <td>&nbsp;<?php echo vam_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '53'); ?>&nbsp;</td>
               </tr>
               <tr>
-                <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
                   <tr>
                     <td colspan="3"><?php echo vam_black_line(); ?></td>
                   </tr>
@@ -512,7 +512,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                 <td>&nbsp;<?php echo vam_image(DIR_WS_IMAGES . 'pixel_trans.gif', '', '1', '53'); ?>&nbsp;</td>
               </tr>
               <tr>
-                <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
                   <tr>
                     <td colspan="3"><?php echo vam_black_line(); ?></td>
                   </tr>

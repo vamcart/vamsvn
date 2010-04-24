@@ -26,7 +26,7 @@
  echo vam_draw_hidden_field('oID', $_GET['oID']);
  echo vam_draw_hidden_field('cID', $order->customer['ID']);
 ?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" width="10%" align="left">&nbsp;</td>
 <td class="dataTableHeadingContent" width="30%" align="left"><?php echo TEXT_INVOICE_ADDRESS;?></td>

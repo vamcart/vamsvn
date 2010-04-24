@@ -797,7 +797,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
           <table border="0" width="100%">
 
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
           <tr class="dataTableHeadingRow">
             <td class="dataTableHeadingContent" colspan="2"><?php echo TABLE_HEADING_PRODUCTS; ?></td>
             <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCTS_MODEL; ?></td>
@@ -1104,7 +1104,7 @@ elseif ($_GET['action'] == 'custom_action') {
 <?php
 echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params());
 ?>
-            <table border="0" width="100%" cellspacing="0" cellpadding="2">
+           <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><input type="checkbox" onClick="javascript:CheckAll(this.checked);"></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_CUSTOMER; ?></td>
