@@ -131,7 +131,7 @@
          <td valign="top">
          
             <!-- categories and products table -->
-            <table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
             <tr class="dataTableHeadingRow">
              <td class="dataTableHeadingContent" width="5%" align="center">
                 <?php echo TABLE_HEADING_EDIT; ?>
@@ -195,6 +195,12 @@
         $categories_count++;
         $rows++;
 
+        if (($rows/2) == floor($rows/2)) {
+          $css_class = 'categories_view_data_even';
+        } else {
+          $css_class = 'categories_view_data_odd';
+        }
+        
         if ($_GET['search']) $cPath = $categories['parent_id'];
         if ( ((!$_GET['cID']) && (!$_GET['pID']) || (@$_GET['cID'] == $categories['categories_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 4) != 'new_') ) {
             $cInfo = new objectInfo($categories);
@@ -206,8 +212,8 @@
             echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
         }
     ?>              
-             <td class="categories_view_data"><input type="checkbox" name="multi_categories[]" value="<?php echo $categories['categories_id'] . '" '; if (is_array($_POST['multi_categories'])) { if (in_array($categories['categories_id'], $_POST['multi_categories'])) { echo 'checked="checked"'; } } ?>></td>
-             <td class="categories_view_data" style="text-align: left; padding-left: 5px;">
+             <td class="<?php echo $css_class; ?>"><input type="checkbox" name="multi_categories[]" value="<?php echo $categories['categories_id'] . '" '; if (is_array($_POST['multi_categories'])) { if (in_array($categories['categories_id'], $_POST['multi_categories'])) { echo 'checked="checked"'; } } ?>></td>
+             <td class="<?php echo $css_class; ?>" style="text-align: left; padding-left: 5px;">
              <?php 
                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . vam_get_path($categories['categories_id'])) . '">' . vam_image(DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '<a>&nbsp;<b><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . vam_get_path($categories['categories_id'])) .'">' . $categories['categories_name'] . '</a></b>'; 
              ?>
@@ -216,11 +222,11 @@
              <?php
              // check product and attributes stock
              if (STOCK_CHECK == 'true') {
-                     echo '<td class="categories_view_data">--</td>';
+                     echo '<td class="'.$css_class.'">--</td>';
              }
              ?>
         
-             <td class="categories_view_data">
+             <td class="<?php echo $css_class; ?>">
              <?php
              //show status icons (green & red circle) with links
              if ($categories['categories_status'] == '1') {
@@ -230,8 +236,8 @@
              }
              ?>
              </td>
-             <td class="categories_view_data">--</td>
-             <td class="categories_view_data">
+             <td class="<?php echo $css_class; ?>">--</td>
+             <td class="<?php echo $css_class; ?>">
              <?php
              //show status icons (green & red circle) with links
              if ($categories['yml_enable'] == '1') {
@@ -241,9 +247,9 @@
              }
              ?>
              </td>
-             <td class="categories_view_data">--</td>
-             <td class="categories_view_data"><?php echo $categories['sort_order']; ?></td>
-             <td class="categories_view_data">
+             <td class="<?php echo $css_class; ?>">--</td>
+             <td class="<?php echo $css_class; ?>"><?php echo $categories['sort_order']; ?></td>
+             <td class="<?php echo $css_class; ?>">
              <?php
 
 			 	echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id'] . "&action=edit_category") . '">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
@@ -418,6 +424,7 @@ if ($numr>$max_count){
       $products_count++;
       $rows++;
 
+
       // Get categories_id for product if search
       if ($_GET['search']) $cPath=$products['categories_id'];
 
@@ -435,6 +442,12 @@ if ($numr>$max_count){
         echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" >' . "\n";
       }
 
+        if (($rows/2) == floor($rows/2)) {
+          $css_class = 'categories_view_data_even';
+        } else {
+          $css_class = 'categories_view_data_odd';
+        }
+
       ?>
       
       <?php
@@ -447,20 +460,20 @@ if ($numr>$max_count){
       } 
       ?>      
       
-      <td class="categories_view_data">        
+      <td class="<?php echo $css_class; ?>">        
         <input type="checkbox" name="multi_products[]" value="<?php echo $products['products_id']; ?>" <?php echo $is_checked; ?>>
       </td>
-      <td class="categories_view_data" style="text-align: left; padding-left: 8px;">
+      <td class="<?php echo $css_class; ?>" style="text-align: left; padding-left: 8px;">
         <?php echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id'] ) . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '&nbsp;</a><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) .'">' . $products['products_name']; ?></a>
       </td>          
       <?php
       // check product and attributes stock
       if (STOCK_CHECK == 'true') { ?>
-        <td class="categories_view_data">
+        <td class="<?php echo $css_class; ?>">
         <?php echo check_stock($products['products_id']); ?>
         </td>
       <?php } ?>     
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_status'] == '1') {
                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setpflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
@@ -469,7 +482,7 @@ if ($numr>$max_count){
             }
       ?>
       </td>
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_startpage'] == '1') {
                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setsflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
@@ -478,7 +491,7 @@ if ($numr>$max_count){
             }
       ?>
       </td>
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_to_xml'] == '1') {
                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setxml&flagxml=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
@@ -487,13 +500,13 @@ if ($numr>$max_count){
             }
       ?>
       </td>
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
       <?php
         //show price
         echo $currencies->format($products['products_price']);
       ?>
       </td>
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
         <?php 
         if ($current_category_id == 0){
         echo $products['products_startpage_sort'];
@@ -502,7 +515,7 @@ if ($numr>$max_count){
         }
          ?>
       </td>
-      <td class="categories_view_data">
+      <td class="<?php echo $css_class; ?>">
       <?php 
       
 	  echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '&action=new_product">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
