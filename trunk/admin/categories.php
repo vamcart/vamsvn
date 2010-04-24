@@ -344,7 +344,7 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 <!-- body_text //-->
     <td class="boxCenter" valign="top">
     
-        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="pageHead">
         <tr>
          <td class="pageHeading" align="left">
          <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
