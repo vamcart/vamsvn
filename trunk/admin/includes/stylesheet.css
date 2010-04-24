@@ -739,13 +739,13 @@ way to fit your requirements.
 
 #nav {width: 98%; height: 41px; float:left; padding-left:20px; background:#fff url(../images/menu/tabLeft.gif) no-repeat left top; font-family:arial, sans-serif;}
 
-#menu {height:41px;position:relative;font-size:12px; margin: 0; z-index:1000; background:#fff url(../images/menu/tabRight.gif) no-repeat right top; float:left; padding-right:0;width:100%;}
+#menu {height:41px;position:relative;font-size:13px; margin: 0; z-index:1000; background:#fff url(../images/menu/tabRight.gif) no-repeat right top; float:left; padding-right:0;width:100%;}
 #menu table.ie6 {border-collapse:collapse; margin:0; padding:0;}
 
 #menu ul {padding:0; margin:0; list-style: none;}
 #menu ul li {float:left;}
-#menu ul li a {display:block; float:left;padding:0 15px 0 0;text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:12px; background:url(../images/menu/tabCenter.gif) no-repeat right top;}
-#menu ul li a b {display:block; float:left;padding:0 0 0 15px; text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:12px;background:url(../images/menu/tabCenter.gif) no-repeat left top; cursor:pointer;}
+#menu ul li a {display:block; float:left;padding:0 15px 0 0;text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:13px; background:url(../images/menu/tabCenter.gif) no-repeat right top;}
+#menu ul li a b {display:block; float:left;padding:0 0 0 15px; text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:13px;background:url(../images/menu/tabCenter.gif) no-repeat left top; cursor:pointer;}
 
 #menu ul li div.holder {position:absolute; left:-9999px;}
 
