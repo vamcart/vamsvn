@@ -5,13 +5,5 @@
 .messageNotice {font-family: Arial, sans-serif;font-size: 12px;background-color: #98c0e9;border-bottom: 1px solid white;}
 .messageSuccess {font-family: Arial, sans-serif;font-size: 12px;background-color: #91E951;border-bottom: 1px solid white;}
 /* data table --------------------------------------------------------------------------------------*/
-.dataTableRowOver { background-color: #C9F667; cursor: pointer; cursor: hand; }
-.dataTableHeadingContent {font-size: 11px;padding: 2px;}
-.dataTableRow { background-color: #dee2e6;}
-.dataTableRowSelected { background-color: #cdd2d5; }
-.dataTableHeadingRow {height: 25px;background-color:#0e72a4;}
-/* info box  ----------------------------------------------------------------------------------------*/
-.infoBoxContent { font-family: Arial, sans-serif; font-size: 12px; color: #000000; background-color: #dee2e6;padding-top:0px;padding-bottom:0px;}
-.infoBoxHeading {height: 25px;background-color:#0e72a4;border:1px solid white;}
 /* tabke content-------------------------------------------------------------------------------------*/
 td.dataTableContentCIP {font-family:Arial,sans-serif;font-size:14px; color:#0000; font-weight:bold;text-decoration:none;}
