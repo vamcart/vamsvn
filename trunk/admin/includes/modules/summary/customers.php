@@ -50,14 +50,14 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
         $rows++;
 
         if (($rows/2) == floor($rows/2)) {
-          $css_class = 'categories_view_data_even';
+          $css_class = 'view_data_even';
         } else {
-          $css_class = 'categories_view_data_odd';
+          $css_class = 'view_data_odd';
         }
 ?>
               <tr>
-                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
-                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
+                <td class="<?php echo $css_class; ?>" align="left"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_lastname']; ?></a></td>
+                <td class="<?php echo $css_class; ?>" align="left"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id'].'&action=edit'); ?>"><?php echo $customers['customers_firstname']; ?></a></td>
                 <td class="<?php echo $css_class; ?>"><?php echo $customers['customers_date_added']; ?></td>
               </tr>
 <?php
