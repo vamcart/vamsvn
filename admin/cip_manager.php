@@ -136,7 +136,7 @@ else  return false ;
 <?php
 if ($_REQUEST['action']!='upload') {
 ?>
-            <td valign="top"><table border="0" width="100%" cellspacing="1" cellpadding="0">
+            <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION;?>&nbsp;</td>
                 <td class="dataTableHeadingContent" width="90%"><?php echo TABLE_HEADING_FILENAME; ?></td>

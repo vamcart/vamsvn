@@ -296,7 +296,7 @@ if (count($campaign->result)) {
     
     
     
- <table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
  
    <tr class="dataTableHeadingRow"> 
     <td class="dataTableHeadingContent" colspan="2" width="25%"><?php echo HEADING_TOTAL; ?></td>

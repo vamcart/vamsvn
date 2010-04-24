@@ -607,7 +607,7 @@ var orders_values_list = new Array();
 
             <form name="params_form" method="POST" >
             <input type="hidden" name="pid" value="<?php echo $_REQUEST["pid"]; ?>">
-            <table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent">&nbsp;</td>
                 <td class="dataTableHeadingContent"><a href="?<?php echo ($_REQUEST["category"] > 0 ? "category=".$_REQUEST["category"]."&" : ""); ?>order=name"><?php echo PARAMETER_TITLE; ?></a></td>

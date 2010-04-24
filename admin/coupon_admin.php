@@ -233,7 +233,7 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo CUSTOMER_ID; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo CUSTOMER_NAME; ?></td>
@@ -750,7 +750,7 @@ $customer = vam_db_fetch_array($customer_query);
       <tr>
         <td><a class="button" href="<?php echo vam_href_link('coupon_admin.php', 'action=new'); ?>"><span><?php echo BUTTON_INSERT; ?></span></a><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo COUPON_NAME; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo COUPON_AMOUNT; ?></td>

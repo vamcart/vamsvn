@@ -131,7 +131,7 @@
         break;
     }
 ?>
-          <table border="0" width="600" cellspacing="0" cellpadding="2">
+          <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
             <tr class="dataTableHeadingRow">
              <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_SOURCE; ?></td>
              <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_VIEWS; ?></td>

@@ -21,7 +21,7 @@
 
 <!-- Artikelbearbeitung Anfang //-->
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
        <tr class="dataTableHeadingRow">
            <td class="dataTableHeadingContent"><b><?php echo TEXT_PRODUCT_ID;?></b></td>
            <td class="dataTableHeadingContent"><b><?php echo TEXT_QUANTITY;?></b></td>
@@ -93,7 +93,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_PRODUCT_OPTIO
 <!-- Artikelbearbeitung Ende //-->
 
 <!-- Artikel EinfпїЅgen Anfang //-->
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0">
 
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent" colspan="2"><b><?php echo TEXT_PRODUCT_SEARCH;?></b></td>

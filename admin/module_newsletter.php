@@ -375,7 +375,7 @@ switch ($_GET['action']) {
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
         <tr class="dataTableHeadingRow">
           <td class="dataTableHeadingContent" width="150" ><?php echo TITLE_CUSTOMERS; ?></td>
           <td class="dataTableHeadingContent"  ><?php echo TITLE_STK; ?></td>
@@ -417,7 +417,7 @@ for ($i=0,$n=sizeof($customer_group); $i<$n; $i++) {
  }
 
 ?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
         <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent" width="30" ><?php echo TITLE_DATE; ?></td>
           <td class="dataTableHeadingContent" width="80%" ><?php echo TITLE_NOT_SEND; ?></td>

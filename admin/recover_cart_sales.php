@@ -137,7 +137,7 @@ if ($_GET['delete']) {
           <tr>
 
  <?php if (count($custid) > 0 ) {  ?>
-         <table border="0" width="100%" cellspacing="0" cellpadding="2">
+         <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
             <tr>
               <td class="main" align="left" colspan=8 width="100%"><?php echo HEADING_EMAIL_SENT; ?> </td>
             </tr>
@@ -283,7 +283,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
 ?>
 <?php //we are not doing an e-mail to some customers ?>
         <!-- REPORT TABLE BEGIN //-->
-          <table border="0" width="100%" cellspacing="0" cellpadding="2">
+          <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
             <tr>
               <td class="pageHeading" align="left" width="100%" colspan="8">
                 <?php  $tdate = $_POST['tdate'];

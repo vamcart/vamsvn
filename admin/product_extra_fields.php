@@ -113,7 +113,7 @@ if (vam_not_null($action)) {
       -->
       <br />
       <?php echo vam_draw_form("add_field", FILENAME_PRODUCTS_EXTRA_FIELDS, 'action=add', 'post'); ?>
-      <table border="0" width="400" cellspacing="0" cellpadding="2">
+      <table border="0" width="400" cellspacing="2" cellpadding="0" class="contentListingTable">
        <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIELDS; ?></td>
         <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_ORDER; ?></td>
@@ -143,7 +143,7 @@ if (vam_not_null($action)) {
        echo vam_draw_form('extra_fields', FILENAME_PRODUCTS_EXTRA_FIELDS,'action=update','post');
       ?>
       <?php echo $action_message; ?>
-      <table border="0" width="100%" cellspacing="0" cellpadding="2">
+      <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
        <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent" width="20">&nbsp;</td>
         <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIELDS; ?></td>

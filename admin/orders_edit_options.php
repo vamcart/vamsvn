@@ -28,7 +28,7 @@
 <?php
   $attributes_query = vam_db_query("select * from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . $_GET['oID'] . "' and orders_products_id = '" . $_GET['opID'] . "'");
 ?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent"><b><?php echo TEXT_PRODUCT_OPTION;?></b></td>
@@ -107,7 +107,7 @@ echo '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">'
      sortorder");
 
 ?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
 
 <tr class="dataTableHeadingRow">
 <td class="dataTableHeadingContent"><b><?php echo TEXT_PRODUCT_ID;?></b></td>

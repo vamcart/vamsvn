@@ -122,7 +122,7 @@
       </td>
       </tr>
       <tr>
-        <td><table valign="top" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <td><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
           <tr class="dataTableHeadingRow">
             <td class="dataTableHeadingContent"><?php echo TEXT_ACCESS; ?></td>
             <td class="dataTableHeadingContent"><?php echo TEXT_ALLOWED; ?></td>
