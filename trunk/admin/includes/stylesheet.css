@@ -117,6 +117,7 @@ table.contentListingTable
     font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
     font-size: 11pt;
     font-weight: bold;
+    text-align: center;
     
 		color: #000;
 		font-weight: normal;
@@ -191,6 +192,26 @@ td.categories_view_data_odd {
  vertical-align: middle;
  padding: .1em;
  text-align: center;
+}
+
+td.view_data_even {
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
+ color: #000000;
+ vertical-align: middle;
+ background: #f7f7f7;
+ padding: .1em;
+ text-align: left;
+}
+
+td.view_data_odd {
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
+ color: #000000;
+ vertical-align: middle;
+ background: transparent;
+ padding: .1em;
+ text-align: left;
 }
 
 .dataTableContent_products {
