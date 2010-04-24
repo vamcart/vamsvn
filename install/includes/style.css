@@ -2,7 +2,7 @@
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
 
-   Copyright (c) 2006 VaM Shop 
+   Copyright (c) 2005-2008 VaM Shop 
    -----------------------------------------------------------------------------------------
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -11,13 +11,18 @@
 
 html,body
    {
-     margin: 0;
-     padding: 0;
+		margin: 0;
+		padding: 0;
+		background-color: #fff;
+		background-image: url(../images/vamcart/bg.png);
+		background-position: 0 0;
+		background-repeat: repeat-x; 
    }
 
 body
    {
-     font: 76% arial,sans-serif;
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+		font-size: 11pt;
    }
 
 img
@@ -34,7 +39,7 @@ h2, h3
 /* Цвет обычных ссылок в магазине */
 a 
    {
-     color: #67748B;
+     color: #000;
      text-decoration: underline;
    }
 
@@ -65,7 +70,7 @@ div#left
      float: left;
      width: 18%; /* Ширина левой колонки */
      margin-left: -100%;
-     background: #fff;
+     background: transparent;
    }
 /* /Левая колонка */
 
@@ -73,19 +78,49 @@ div#left
 div#right
    {
      float: left;
+     overflow: auto;
      width: 18%; /* Ширина правой колонки */
      margin-left: -18%;
-     background: #fff;
+     background: transparent;
    }
 /* /Правая колонка */
+
+/* Header */
+
+#header 
+	{
+		background-color: #fff;
+		background-image: url(../images/vamcart/bg.png);
+		background-position: 0 -2305px;
+		background-repeat: repeat-x; 
+		height: 100px;
+	}
+
+
+#header div.header-left 
+	{
+		float: left;
+		margin: 0; 
+		padding: 0; 
+	}
+
+
+#header div.header-right 
+	{
+		float: right;
+		margin: 0; 
+		padding: .3em;
+	}
+
+/* /Header */
 
 /* Низ */
 div#footer
    {
      clear: left;
      width: 100%;
-     background: #f1f1f6;
-     border-top: 3px solid #67748B;
+     background: transparent;
+     border-top: 0px solid #67748B;
      text-align: center;
      color: #000;
    }
@@ -104,44 +139,28 @@ div#navigation
      padding-top: 0.5em;
      padding-bottom: 0.5em;
      padding-left: 10px;
-     border-bottom: 1px solid #000;
-     background: #990000;
-     color: #ffffff;
+     border-bottom: 0px solid #000;
+     background: transparent;
+     color: #000;
    }
 
 #navigation span 
    {
-     display: block;
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     border-bottom: 2px #990000 solid;
-     background: url(../images/navigation.gif) no-repeat left center;
-     padding: 0 0 0 20px; 
    }
    
 #navigation a
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
 
 #navigation a:hover
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
 
 #navigation a:visited
    {
-     font: 11px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
    
 /* /Навигация */
@@ -149,34 +168,61 @@ div#navigation
 /* Заголовок страницы */
 #content h1 
    {
-     display: block;
-     font: 16px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #990000;
-     border-bottom: 2px #990000 solid;
-     background: url(../images/heading.gif) no-repeat left center;
-     padding: 0 0 0 20px; 
-     margin: 0.2em 0 0.2em 0; 
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(../images/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
    }
 
 #content h1 a 
    {
-     color: #990000;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /* /Заголовок страницы */
 
 /* Скругленные углы */
 .page 
    {
-     background: transparent;
-     width: 100%;
-     margin-top: 0.5em;
+		margin: 0 0 .5em 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(../images/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
    }
 
 .pageItem 
    {
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
    }
 
@@ -199,85 +245,97 @@ div#navigation
 
 .page .b1, .page .b2, .page .b3, .page .b4, .page .b1b, .page .b2b, .page .b3b, .page .b4b 
    {
-     display: block;
+     display: none;
      overflow: hidden;
      font-size: 1px;
    }
 
 .page .b1, .page .b2, .page .b3, .page .b1b, .page .b2b, .page .b3b 
    {
+     display: none;
      height: 1px;
    }
 
 .page .b2 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b3 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b4 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b4b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b3b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b2b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b1 
    {
+     display: none;
      margin: 0 5px;
-     background: #fff;
+     background: transparent;
    }
 
 .page .b2, .page .b2b 
    {
+     display: none;
      margin: 0 3px;
      border-width: 0 2px;
    }
 
 .page .b3, .page .b3b 
    {
+     display: none;
      margin: 0 2px;
    }
 
 .page .b4, .page .b4b 
    {
+     display: none;
      height: 2px;
      margin: 0 1px;
    }
 
 .page .b1b 
    {
+     display: none;
      margin: 0 5px;
-     background: #f1f1f6;
+     background: transparent;
    }
 
 .pagecontent 
@@ -285,107 +343,104 @@ div#navigation
      display: block;
      padding-left: 0.5em;
      padding-right: 0.5em;
-     background: #f1f1f6;
+     background: transparent;
    }
 
 .pagecontentfooter 
    {
      display: block;
      text-align: right;
-     background:#ffffff;
+     background: transparent;
      margin-top: 0.5em;
+     margin-bottom: 0.5em;
    }
 /* /Скругленные углы */
 
 /*- Меню-закладки сверху */
 
-#menu 
-   {
-	  background: #fff;
-	  border-bottom: 1px solid #000;
-	  border-width: 1px;
-	  margin-top: 1em;
-	  padding-top: .6em;
-   }
+div#menu
+	{
+		border-top: 3px solid #ff7b08;
+		background-color: #fff;
+		background-image: url(../images/vamcart/bg.png);
+		background-position: 0 -2406px;
+		background-repeat: repeat-x; 
+		padding: 0;
+		margin: 0 auto;
+	}
 
-#menu ul, #navigation ul li 
-   {
-	  list-style: none;
-	  margin: 0;
-	  padding: 0;
-   }
+#menu ul, #menu ul li 
+	{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
 #menu ul 
-   {
-	  padding: 5px 0 0px;
-	  text-align: center;
-   }
+	{
+		padding: 5px 0 4px;
+		text-align: center;
+	}
 
 #menu ul li 
-   {
-	  display: inline;
-	  margin:0 .375em;
-   }
+	{
+		display: inline;
+		margin-right: .3em;
+	}
 
-#menu ul li.last 
-   {
-	  margin-right: 0;
-   }
+#menu ul li.current a
+	{
+		display: inline;
+		color: #fff;
+		background: #ff7b08;
+		margin-right: .3em;
+	}
 
 #menu ul li a 
-   {
-	  background: url("../images/tabs/tab-right.gif") no-repeat 100% 0;
-	  background-color: #67748b;
-	  color: #fff;
-	  padding: 0px 0 0px;
-     font-weight: bold;
-	  text-decoration: none;
-   }
-
-#menu ul li.current a 
-   {
-	  background: url("../images/tabs/tab-right-active.gif") no-repeat 100% 0;
-	  background-color: #990000;
-	  color: #fff;
-	  padding: 0px 0 1px;
-     font-weight: bold;
-	  text-decoration: none;
-   }
+	{
+		color: #000;
+		padding: 5px 0;
+		text-decoration: none;
+	}
 
 #menu ul li a span 
-   {
-	  background: url("../images/tabs/tab-left.gif") no-repeat;
-	  padding: 0px 1em;
-     border-bottom:1px solid #000;
-   }
-
-#menu ul li.current a span 
-   {
-	  background: url("../images/tabs/tab-left-active.gif") no-repeat;
-	  padding: 0px 1em 1px;
-     border-bottom:0;
-   }
+	{
+		padding: 5px .5em;
+	}
 
 #menu ul li a:hover span 
-   {
-	  color: #fff;
-     font-weight: bold;
-	  text-decoration: none;
-   }
+	{
+		color: #fff;
+		text-decoration: none;
+	}
+
+#menu ul li a:hover 
+	{
+		color: #69C;
+		background: #ff7b08;
+		text-decoration: none;
+	}
 
 /*\*//*/
 #menu ul li a 
-   {
-	  display: inline-block;
-	  white-space: nowrap;
-	  width: 1px;
-   }
+	{
+		display: inline-block;
+		white-space: nowrap;
+		width: 1px;
+	}
 
 #menu ul 
-   {
-	  padding-bottom: 0;
-	  margin-bottom: -1px;
-   }
+	{
+		padding-bottom: 0;
+		margin-bottom: -1px;
+	}
+/**/
+
+/*\*/
+* html #menu ul li a 
+	{
+		padding: 0;
+	}
 /**/
 
 /*\*/
@@ -401,7 +456,7 @@ div#navigation
 div#parseTime
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -414,7 +469,7 @@ div#parseTime
 div#copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -425,7 +480,7 @@ div#copyright
 div.copyright
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -442,14 +497,50 @@ form
 	  margin: 0;
    }
 
-.form input, textarea 
+.form input, textarea,
+input[type=text]
    {
-	  font-size: 1em;
-	  border: 1px solid;
-	  border-color: #666 #ccc #ccc #666;
-	  padding: 2px;
+		font-size: 1em;
+		border: 1px solid;
+		border-color: #666 #ccc #ccc #666;
+		padding: 2px;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
    }
 
+.form textarea 
+   {
+	  width: 80%;
+   }
+
+.pagecontent fieldset.form
+   {
+     border: 0px;
+   }
+
+.pagecontent fieldset.form legend
+   {
+     font-weight: bold;
+	  font: 12pt arial,sans-serif;
+	  font-weight: bold;
+   }
+
+.pagecontent .form p
+   {
+	  font: 12pt arial,sans-serif;
+	  font-weight: normal;
+   }
+   
 /*- Подсветка ошибок формы */
 #errormsg
    {
@@ -476,6 +567,32 @@ span.Requirement
 
 /*- /Формы */
 
+/*- Цены */
+
+span.markProductOutOfStock 
+   {
+     color: #c76170;
+     font-weight: bold;
+   }
+
+span.productSpecialPrice 
+   {
+     color: #ff0000;
+   }
+
+span.productOldPrice 
+   {
+	  color: #ff0000;
+	  text-decoration: line-through;
+   }
+
+span.errorText 
+   {
+     color: #ff0000;
+   }
+
+/*- /Цены */
+
 /* Ошибка на странице свяжитесь с нами */
 
 div.contacterror 
@@ -490,6 +607,449 @@ div.contacterror
 
 /* /Ошибка на странице свяжитесь с нами */
 
+/* Вывод товаров */
+
+/* Количество колонок с товаром на странице новинки */
+dl.itemNewProducts 
+   {
+     display: block;
+     width: 100%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+/* /Количество колонок с товаром на странице новинки */
+
+/* Количество колонок с товаром на странице рекомендуемые товары */
+dl.itemFeaturedProducts 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+/* /Количество колонок с товаром на странице рекомендуемые товары */
+
+/* Количество колонок с товаром в блоке новинки на главной странице */
+dl.itemNewProductsDefault 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+/* /Количество колонок с товаром в блоке новинки на главной странице */
+
+/* Количество колонок с новостями на главной странице */
+dl.itemLatestNewsDefault 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+/* /Количество колонок с новостями на главной странице */
+
+/* Количество колонок с новостями на странице новостей */
+dl.itemLatestNews 
+   {
+     display: block;
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+/* /Количество колонок с новостями на странице новостей */
+
+/* Количество колонок с товаром на странице скидки */
+dl.itemSpecials 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+/* /Количество колонок с товаром на странице скидки */
+
+/* Количество колонок с товаром на странице мои данные */
+dl.itemLastViewed 
+   {
+     display: block;
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+/* /Количество колонок с товаром на странице мои данные */
+
+/* Информация о заказе, адрес клиента и адрес доставки */
+dl.ordersAddress 
+   {
+     display: block;
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+dt.ordersAddress 
+   {
+     display: block;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.ordersAddress
+   {
+     display: block;
+     margin: 0 0 0 1em;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Информация о заказе, адрес клиента и адрес доставки */
+
+/* Адресная книга */
+dl.AddressBook 
+   {
+     display: block;
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+
+dt.AddressBook 
+   {
+     display: block;
+     float: left;
+     width: 90px;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBook
+   {
+     display: block;
+     margin: 0 0 0 90px;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dl.AddressBookList 
+   {
+     display: block;
+     width: 49%;
+     float: left;
+     height: auto;
+     margin: 0 0 0 0;
+     padding: 0 0 1em 0;
+   }
+
+dt.AddressBookList 
+   {
+     display: block;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBookList
+   {
+     display: block;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Адресная книга */
+
+/* Вход */
+dl.Login 
+   {
+     display: block;
+     width: 49%;
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+
+dt.Login
+   {
+     float: left;
+     display: block;
+     background: transparent;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.Login
+   {
+     display: block;
+     margin: 0 0 0 1em;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Вход */
+
+dt.itemImage 
+   {
+     float: left;
+     display: block;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: center;
+   }
+
+dt.itemNews 
+   {
+     display: none;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: left;
+   }
+
+dd.itemDescription
+   {
+     display: block;
+     margin: 0 0 0 0;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dd.itemDescriptionPrice
+   {
+     display: block;
+     margin: 1em 0 0 0;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dd.itemNews
+   {
+     display: block;
+     margin-left: 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+div.clear
+   {
+     clear: both;
+   }
+
+div.navigation
+   {
+     display: block;
+     width: 100%;
+     padding-top: 1em;
+   }
+
+span.right
+   {
+     float: right;
+   }
+
+/* /Вывод товаров */
+
+/* Вывод категорий */
+
+dl.itemCategoriesListing 
+   {
+     width: 33%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+
+dt.itemCategoriesListing 
+   {
+     float: left;
+     height: auto;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: center;
+   }
+
+dd.itemCategoriesListing 
+   {
+     margin: 0 1em 0 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+     text-align: center;
+   }
+
+/* /Вывод категорий */
+
+/* Страница карточки товара */
+
+p.center
+   {
+     text-align: center;
+   }
+
+div.ProductInfoLeft
+   {
+     float: left;
+     margin-right: 1em;
+   }
+
+div.ProductInfoRight
+   {
+     float: left;
+     margin-left: 1em;
+     text-align: right;
+   }
+
+/* /Страница карточки товара */
+
+/* Ссылки на странице мои данные */
+
+ul.accountLinks 
+   {
+     list-style-type: none;
+     text-align: left;
+     padding-left: 1em;
+     margin: 0 0 0 0;
+   }
+
+li.accountLinks 
+   {
+	  display: block;
+     padding: 0; 
+   }
+
+/* /Ссылки на странице мои данные */
+
+span.bold 
+   {
+     font-weight: bold;
+   }
+
+/* Ajax quick find */
+
+div.ajaxQuickFind 
+   {
+     text-align: left;
+   }
+
+ul.ajaxQuickFind 
+   {
+     list-style-type: none;
+     list-style-image: none;
+     padding-left: 0px;
+   }
+
+li.ajaxQuickFind 
+   {
+     font-size: 80%;
+     padding-left: 0px;
+   } 
+
+/* /Ajax quick find */
+
+/* Ajax add quickie suggest */
+
+div.ajaxAddQuickie 
+   {
+     text-align: left;
+   }
+
+div.addQuick 
+   {
+     text-align: left;
+     color: #67748B;
+     text-decoration: underline;
+     cursor: pointer;
+   }
+   
+ul.ajaxAddQuickie 
+   {
+     list-style-type: none;
+     list-style-image: none;
+     padding-left: 0px;
+   }
+
+li.ajaxAddQuickie 
+   {
+     font-size: 80%;
+     padding-left: 0px;
+   } 
+
+/* /Ajax add quickie suggest */
+
+.errorBox 
+   {
+	  background-color: #ffb3b5;
+   }
+
+.messageStackError, .messageStackWarning 
+   { 
+     background-color: #ffb3b5; 
+   }
+
+.messageStackSuccess 
+   { 
+     background-color: #99ff00; 
+   }
+
+.headerError 
+   {
+	  background-color: #ffb3b5;
+     border: 1px solid red;
+   }
+
+.messageStack
+   {
+     background-color: #ffb3b5; 
+     padding: 0.5em 0.5em 0.5em 0.5em; 
+   }
+      
 .errorBox 
    {
 	  background-color: #ffb3b5;
