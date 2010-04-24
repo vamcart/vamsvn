@@ -17,34 +17,34 @@
    --------------------------------------------------------------*/
 
 /* links */
-a:link { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a:visited { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a:active { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a:hover { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: underline; }
+a:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: underline; }
 
-a.headerLink:link { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:visited { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:active { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:hover { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: bold; text-decoration: underline; }
+a.headerLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: underline; }
 
-a.menuBoxHeadingLink:link { font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.menuBoxHeadingLink:visited { font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.menuBoxHeadingLink:active { font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
-a.menuBoxHeadingLink:hover { font-size: 12px; color: #000000; font-weight: bold; text-decoration: none; }
+a.menuBoxHeadingLink:link { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.menuBoxHeadingLink:visited { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.menuBoxHeadingLink:active { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.menuBoxHeadingLink:hover { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
 
-a.menuBoxContentLink:link { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:visited { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:active { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:hover { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #cccccc; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #cccccc; font-weight: normal; text-decoration: none; }
 
-a.splitPageLink:link { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:visited { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:active { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:hover { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
+a.splitPageLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
 
 /* menu box */
-.menuBoxHeading { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #000000; background-color: #f1f1f1; }
-.menuBoxContent { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #616060; }
+.menuBoxHeading { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; background-color: #f1f1f1; }
+.menuBoxContent { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #616060; }
 .longDescription { visibility: hidden; display: none; }
 
 /* page */
@@ -55,8 +55,8 @@ body { background-color: #ffffff; color: #000000; margin: 0px; }
     border-bottom: 1px solid;  
  }
 .headerBarContent { 
-font-family: Verdana, Arial, sans-serif; 
-font-size: 12px; 
+font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+font-size: 11pt; 
 color: #000000; 
 font-weight: bold; 
 padding: 2px;
@@ -77,7 +77,7 @@ font-color: #000000;
 
 .pageHeading { 
 
-  font: 14px Tahoma, Verdana, Arial, sans-serif;
+  font: 14px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   
@@ -94,7 +94,7 @@ border-color: #000000;
 .dataTableHeadingContent {
 
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 11pt;
     font-weight: bold;
     padding: 5px;
     background-color: #f1f1f1;
@@ -116,23 +116,23 @@ background-color: #F9F0F1;
  }
  
 .dataTableContent {
- font-family: Verdana, Arial, sans-serif; 
- font-size: 12px; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 1px dashed #cccccc;
  }
  
 .dataTableContentRss {
- font-family: Verdana, Arial, sans-serif; 
- font-size: 12px; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  }
  
 td.categories_view_data {
- font-family: Verdana, Arial, sans-serif; 
- font-size: 12px; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 1px dashed #cccccc;
@@ -140,8 +140,8 @@ td.categories_view_data {
 }
 
 .dataTableContent_products {
- font-family: Verdana, Arial, sans-serif; 
- font-size: 12px; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
  color: #000000; 
  vertical-align: middle;
  background-color: #FFF2F2;
@@ -150,8 +150,8 @@ td.categories_view_data {
 
  
 .dataTableContentRow {
-font-family: Verdana, Arial, sans-serif; 
-font-size: 12px; 
+font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+font-size: 11pt; 
 color: #000000; 
 vertical-align: middle;
 border-bottom: 1px solid;
@@ -161,18 +161,18 @@ border-color: #cccccc;
 /* info box */
 .infoBoxHeading {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 11pt;
     font-weight: bold;
 }
 .infoBoxContent { 
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+    font-size: 11pt;
 }
 
 .headTable {
 		color: #ff7b08;
 		font-weight: bold;
-		font-size: 12pt;
+		font-size: 11pt;
 		margin: 0 auto;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
@@ -193,8 +193,8 @@ border-color: #cccccc;
 }
 
 .contentTable {
- 	font-family: Verdana, Arial, sans-serif;
- 	font-size: 12px;
+ 	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+ 	font-size: 11pt;
 		margin: 0 auto;
 		padding: .5em;
 		background-color: #fff;
@@ -389,13 +389,13 @@ div.stock_warn {
 
 /* message box */
 
-.messageBox { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
-.messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-size: 12px; background-color: #ffb3b5; }
-.messageStackSuccess { font-family: Verdana, Arial, sans-serif; font-size: 12px; background-color: #99ff00; }
+.messageBox { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; }
+.messageStackError, .messageStackWarning { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; background-color: #ffb3b5; }
+.messageStackSuccess { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; background-color: #99ff00; }
 
 /* forms */
 CHECKBOX, input[type=text], RADIO, SELECT, TEXTAREA, FILE { 
-font-family: Verdana, Arial, sans-serif;
+font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
 	font-size: 1em;
 	border: 1px solid;
 	border-color: #666 #ccc #ccc #666;
@@ -423,7 +423,7 @@ input:focus, .sffocus, .sffocus {
 
 /* account */
 .formArea { background-color: #f1f1f1; border-color: #cccccc; border-style: solid; border-width: 1px; }
-.formAreaTitle { font-family: Tahoma, Verdana, Arial, sans-serif; font-size: 12px; font-weight: bold; }
+.formAreaTitle { font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; font-weight: bold; }
 
 /* attributes */
 .attributes-odd { background-color: #f4f7fd; }
@@ -432,15 +432,15 @@ input:focus, .sffocus, .sffocus {
 /* miscellaneous */
 .specialPrice { color: #ff0000; }
 .oldPrice { text-decoration: line-through; }
-.fieldRequired { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #ff0000; }
-.smallText { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
-.main { font-family: Verdana, Arial, sans-serif; font-size: 12px; text-align: left; }
-.errorText { font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #ff0000; }
+.fieldRequired { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #ff0000; }
+.smallText { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; }
+.main { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; text-align: left; }
+.errorText { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #ff0000; }
 
 /* Сборка VaM */
 
 div.buttonadmin {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -449,7 +449,7 @@ div.buttonadmin {
 }
 
 TD.buttonadmin {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -463,7 +463,7 @@ TR.buttonadmin {
 }
 
 A.shippingInfo { 
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -473,7 +473,7 @@ A.shippingInfo {
 }
 
 A.shippingInfo:hover {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -483,7 +483,7 @@ A.shippingInfo:hover {
 }
 
 A.shippingInfo:visited {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -498,7 +498,7 @@ TD.button1 {
 }
 
 TD.navigation {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #990000;
@@ -507,7 +507,7 @@ TD.navigation {
 }
 
 TD.navigationTop {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #000000;
@@ -516,7 +516,7 @@ TD.navigationTop {
 }
 
 TD.contentBoxHeading1, p.contentBoxHeading1 {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -524,7 +524,7 @@ TD.contentBoxHeading1, p.contentBoxHeading1 {
 
 A.contentBoxHeading1 {
   color: #0000FF;
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -533,7 +533,7 @@ A.contentBoxHeading1 {
 
 a:hover.contentBoxHeading1 {
   color: #0000FF;
-  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -550,8 +550,8 @@ TR.headerNavigation {
 }
 
 TD.headerNavigation {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 12px;
+	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-size: 11pt;
 	color: #000000;
 	font-weight : bold;
 	border-bottom: 1px solid;
@@ -569,7 +569,7 @@ A.headerNavigation:hover {
 
 h1.contentBoxHeading {
   display: block;
-  font: 16px Tahoma, Verdana, Arial, sans-serif;
+  font: 16px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   border-bottom: 0px #990000 solid;
@@ -578,7 +578,7 @@ h1.contentBoxHeading {
   margin: 0.2em 0 0.2em 0; 
 }
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
-  font: 16px Tahoma, Verdana, Arial, sans-serif;
+  font: 16px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   text-decoration: none;
@@ -709,8 +709,8 @@ div#tabs
    
 div#map
 	{
-		font-family: Verdana, Arial, sans-serif; 
-		font-size: 12px; 
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-size: 11pt; 
 		color: #000000; 
 		font-weight: normal; 
 		text-decoration: none;
