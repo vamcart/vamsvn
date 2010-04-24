@@ -812,7 +812,7 @@ if ($numr>$max_count){
 
     if ((vam_not_null($heading)) && (vam_not_null($contents))) {
       //display info box
-      echo '<td valign="top" style="padding-left: 5px;">' . "\n";
+      echo '<td valign="top">' . "\n";
       $box = new box;
       echo $box->infoBox($heading, $contents);
       echo '</td>' . "\n";
