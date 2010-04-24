@@ -56,9 +56,9 @@ $currencies = new currencies();
         $rows++;
 
         if (($rows/2) == floor($rows/2)) {
-          $css_class = 'categories_view_data_even';
+          $css_class = 'view_data_even';
         } else {
-          $css_class = 'categories_view_data_odd';
+          $css_class = 'view_data_odd';
         }
         
             $price = $products['products_price'];

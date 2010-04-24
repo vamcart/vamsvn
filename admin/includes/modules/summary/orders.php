@@ -57,14 +57,14 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
         $rows++;
 
         if (($rows/2) == floor($rows/2)) {
-          $css_class = 'categories_view_data_even';
+          $css_class = 'view_data_even';
         } else {
-          $css_class = 'categories_view_data_odd';
+          $css_class = 'view_data_odd';
         }
 ?>
               <tr>
-                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
-                <td class="<?php echo $css_class; ?>"><?php echo $orders['orders_id']; ?></td>
+                <td class="<?php echo $css_class; ?>" align="left"><a href="<?php echo vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
+                <td class="<?php echo $css_class; ?>" align="center"><?php echo $orders['orders_id']; ?></td>
                 <td class="<?php echo $css_class; ?>"><?php echo strip_tags($orders['order_total']); ?></td>
                 <td class="<?php echo $css_class; ?>"><?php echo $orders['orders_status_name']; ?></td>
                 <td class="<?php echo $css_class; ?>"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
