@@ -215,7 +215,7 @@
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -229,7 +229,7 @@
   switch ($_GET['action']) {
   case 'voucherreport':
 ?>
-      <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+      <td class="boxCenter" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>

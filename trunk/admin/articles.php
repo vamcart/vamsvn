@@ -417,7 +417,7 @@
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td class="boxCenter" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
  <?php
    //----- new_topic / edit_topic  -----
   if ($_GET['action'] == 'new_topic_ACD' || $_GET['action'] == 'edit_topic_ACD') {

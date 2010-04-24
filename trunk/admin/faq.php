@@ -109,7 +109,7 @@
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top">
+    <td class="boxCenter" valign="top">
     
 <?php 
 $manual_link = 'add-faq';

@@ -60,7 +60,7 @@ $gID = 26;
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+    <td class="boxCenter" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td class="main">
         
