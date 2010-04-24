@@ -2,7 +2,7 @@
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
 
-   Copyright (c) 2005-2010 VaM Shop 
+   Copyright (c) 2005-2008 VaM Shop 
    -----------------------------------------------------------------------------------------
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -13,13 +13,18 @@
 
 html,body
    {
-     margin: 0;
-     padding: 0;
+		margin: 0;
+		padding: 0;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 0;
+		background-repeat: repeat-x; 
    }
 
 body
    {
-     font: 11pt arial,sans-serif;
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+		font-size: 11pt;
    }
 
 img
@@ -67,7 +72,7 @@ div#left
      float: left;
      width: 18%; /* Ширина левой колонки */
      margin-left: -100%;
-     background: #fff;
+     background: transparent;
    }
 /* /Левая колонка */
 
@@ -78,9 +83,38 @@ div#right
      overflow: auto;
      width: 18%; /* Ширина правой колонки */
      margin-left: -18%;
-     background: #fff;
+     background: transparent;
    }
 /* /Правая колонка */
+
+/* Header */
+
+#header 
+	{
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2305px;
+		background-repeat: repeat-x; 
+		height: 100px;
+	}
+
+
+#header div.header-left 
+	{
+		float: left;
+		margin: 0; 
+		padding: 0; 
+	}
+
+
+#header div.header-right 
+	{
+		float: right;
+		margin: 0; 
+		padding: .3em;
+	}
+
+/* /Header */
 
 /* Низ */
 div#footer
@@ -107,44 +141,28 @@ div#navigation
      padding-top: 0.5em;
      padding-bottom: 0.5em;
      padding-left: 10px;
-     border-bottom: 1px solid #000;
-     background: #990000;
-     color: #ffffff;
+     border-bottom: 0px solid #000;
+     background: transparent;
+     color: #000;
    }
 
 #navigation span 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     border-bottom: 2px #990000 solid;
-     background: url(img/navigation.gif) no-repeat left center;
-     padding: 0 0 0 20px; 
    }
    
 #navigation a
    {
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
 
 #navigation a:hover
    {
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
 
 #navigation a:visited
    {
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #ffffff;
-     text-decoration: none;
+   	text-decoration: none;
    }
    
 /* /Навигация */
@@ -152,35 +170,61 @@ div#navigation
 /* Заголовок страницы */
 #content h1 
    {
-     display: block;
-     font: 16px Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #990000;
-     border-bottom: 0px #990000 solid;
-     background: url(img/heading1.gif) no-repeat left center;
-     padding: 0 0 0 20px; 
-     margin: 0.2em 0 0.2em 0; 
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
    }
 
 #content h1 a 
    {
-     color: #990000;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /* /Заголовок страницы */
 
 /* Скругленные углы */
 .page 
    {
-     background: transparent;
-     width: 100%;
-     margin-top: 0.5em;
-     margin-bottom: 0.5em;
+		margin: 0 0 .5em 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
    }
 
 .pageItem 
    {
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
    }
 
@@ -203,85 +247,97 @@ div#navigation
 
 .page .b1, .page .b2, .page .b3, .page .b4, .page .b1b, .page .b2b, .page .b3b, .page .b4b 
    {
-     display: block;
+     display: none;
      overflow: hidden;
      font-size: 1px;
    }
 
 .page .b1, .page .b2, .page .b3, .page .b1b, .page .b2b, .page .b3b 
    {
+     display: none;
      height: 1px;
    }
 
 .page .b2 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b3 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b4 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #fff;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b4b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b3b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b2b 
    {
-     background: #f1f1f6;
+     display: none;
+     background: transparent;
      border-left: 1px solid #f1f1f6;
      border-right: 1px solid #f1f1f6;
    }
 
 .page .b1 
    {
+     display: none;
      margin: 0 5px;
-     background: #fff;
+     background: transparent;
    }
 
 .page .b2, .page .b2b 
    {
+     display: none;
      margin: 0 3px;
      border-width: 0 2px;
    }
 
 .page .b3, .page .b3b 
    {
+     display: none;
      margin: 0 2px;
    }
 
 .page .b4, .page .b4b 
    {
+     display: none;
      height: 2px;
      margin: 0 1px;
    }
 
 .page .b1b 
    {
+     display: none;
      margin: 0 5px;
-     background: #f1f1f6;
+     background: transparent;
    }
 
 .pagecontent 
@@ -289,14 +345,14 @@ div#navigation
      display: block;
      padding-left: 0.5em;
      padding-right: 0.5em;
-     background: #f1f1f6;
+     background: transparent;
    }
 
 .pagecontentfooter 
    {
      display: block;
      text-align: right;
-     background:#ffffff;
+     background: transparent;
      margin-top: 0.5em;
      margin-bottom: 0.5em;
    }
@@ -304,93 +360,89 @@ div#navigation
 
 /*- Меню-закладки сверху */
 
-#menu 
-   {
-	  background: #fff;
-	  border-bottom: 1px solid #000;
-	  border-width: 1px;
-	  margin-top: 1em;
-	  padding-top: .6em;
-   }
+div#menu
+	{
+		border-top: 3px solid #ff7b08;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2406px;
+		background-repeat: repeat-x; 
+		padding: 0;
+		margin: 0 auto;
+	}
 
-#menu ul, #navigation ul li 
-   {
-	  list-style: none;
-	  margin: 0;
-	  padding: 0;
-   }
+#menu ul, #menu ul li 
+	{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
 #menu ul 
-   {
-	  padding: 5px 0 0px;
-	  text-align: center;
-   }
+	{
+		padding: 5px 0 4px;
+		text-align: center;
+	}
 
 #menu ul li 
-   {
-	  display: inline;
-	  margin:0 .375em;
-   }
+	{
+		display: inline;
+		margin-right: .3em;
+	}
 
-#menu ul li.last 
-   {
-	  margin-right: 0;
-   }
+#menu ul li.current a
+	{
+		display: inline;
+		color: #fff;
+		background: #ff7b08;
+		margin-right: .3em;
+	}
 
 #menu ul li a 
-   {
-	  background: url("img/tab-right.gif") no-repeat 100% 0;
-	  background-color: #67748b;
-	  color: #fff;
-	  padding: 0px 0 0px;
-     font-weight: bold;
-	  text-decoration: none;
-   }
-
-#menu ul li.current a 
-   {
-	  background: url("img/tab-right-active.gif") no-repeat 100% 0;
-	  background-color: #990000;
-	  color: #fff;
-	  padding: 0px 0 1px;
-     font-weight: bold;
-	  text-decoration: none;
-   }
+	{
+		color: #000;
+		padding: 5px 0;
+		text-decoration: none;
+	}
 
 #menu ul li a span 
-   {
-	  background: url("img/tab-left.gif") no-repeat;
-	  padding: 0px 1em;
-     border-bottom:1px solid #000;
-   }
-
-#menu ul li.current a span 
-   {
-	  background: url("img/tab-left-active.gif") no-repeat;
-	  padding: 0px 1em 1px;
-     border-bottom:0;
-   }
+	{
+		padding: 5px .5em;
+	}
 
 #menu ul li a:hover span 
-   {
-	  color: #fff;
-     font-weight: bold;
-	  text-decoration: none;
-   }
+	{
+		color: #fff;
+		text-decoration: none;
+	}
+
+#menu ul li a:hover 
+	{
+		color: #69C;
+		background: #ff7b08;
+		text-decoration: none;
+	}
 
 /*\*//*/
 #menu ul li a 
-   {
-	  display: inline-block;
-	  white-space: nowrap;
-	  width: 1px;
-   }
+	{
+		display: inline-block;
+		white-space: nowrap;
+		width: 1px;
+	}
 
 #menu ul 
-   {
-	  padding-bottom: 0;
-	  margin-bottom: -1px;
-   }
+	{
+		padding-bottom: 0;
+		margin-bottom: -1px;
+	}
+/**/
+
+/*\*/
+* html #menu ul li a 
+	{
+		padding: 0;
+	}
 /**/
 
 /*\*/
@@ -407,34 +459,55 @@ div#navigation
 /*- Бокс разделы */
 #boxCategories
    {
-     text-align: left;
-     margin-bottom: 0.5em;
-     margin-top: 0.5em;
-     padding-bottom: 0.3em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса разделы */
 #boxCategories h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #67748B;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса разделы */
 
 /*- Список разделов */
 #categoriesBoxMenu 
    {
-     padding: 0;
-     margin: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
    }
 
 #categoriesBoxMenu #CatNavi, #CatNavi ul, #CatNavi li 
@@ -451,23 +524,15 @@ div#navigation
      padding: 0.1em 0;
      color: #000;
      text-indent: 0.4em;
-     background-color: #fff; 
+     background-color: transparent; 
      text-decoration: none;
      margin: 0.2em 0; 
-     border-left: 0.4em solid #67748B; 
-     border-top:1px solid #fff; 
-     border-bottom:1px solid #fff; 
-     border-right:1px solid #fff; 
    }
 
 #categoriesBoxMenu #CatNavi li a:hover
    { 
      color: #f00; 
-     border-left: 0.4em solid #3169C6; 
-     background-color: #c6d3ef;
-     border-top:1px solid #3169C6; 
-     border-bottom:1px solid #3169C6; 
-     border-right:1px solid #3169C6; 
+     background-color: transparent;
    }
 
 #categoriesBoxMenu #CatNavi .CatLevel0 
@@ -531,34 +596,55 @@ div#navigation
 /*- Бокс фильтры */
 #boxFilters
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса фильтры */
 #boxFilters h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса фильтры */
 
 /*- Содержимое бокса фильтры */
 #boxFiltersContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: left;
   }
 
@@ -602,34 +688,55 @@ div#navigation
 /*- Бокс контент */
 #boxContent
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса контент */
 #boxContent h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса контент */
 
 /*- Содержимое бокса контент */
 #boxContentContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -650,9 +757,7 @@ div#navigation
 #boxContent li 
    {
 	  display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     background: url(img/icon_arrow1.jpg) no-repeat left center;
-     padding: 0 0 0 12px; 
+     padding: 0; 
    }
 
 /*- /Содержимое бокса контент */
@@ -662,36 +767,55 @@ div#navigation
 /*- Бокс информация */
 #boxInformation
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса информация */
 #boxInformation h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса информация */
 
 /*- Содержимое бокса информация */
 #boxInformationContent 
    {
-     padding-left: 0;
-     text-align: center;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxInformationContent p 
@@ -710,9 +834,7 @@ div#navigation
 
 #boxInformation li {
 	display: block;
-   font: 11pt Tahoma, Verdana, Arial, sans-serif;
-   background: url(img/icon_arrow2.jpg) no-repeat left center;
-   padding: 0 0 0 12px; 
+   padding: 0; 
 }
 
 /*- /Содержимое бокса контент */
@@ -722,35 +844,55 @@ div#navigation
 /*- Бокс быстрый заказ */
 #boxAddQuickie
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса быстрый заказ */
 #boxAddQuickie h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса быстрый заказ */
 
 /*- Содержимое бокса быстрый заказ */
 #boxAddQuickieContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxAddQuickieContent p 
@@ -794,35 +936,55 @@ div#navigation
 /*- Бокс авторы */
 #boxAuthors
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса авторы */
 #boxAuthors h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса авторы */
 
 /*- Содержимое бокса авторы */
 #boxAuthorsContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxAuthorsContent p 
@@ -838,35 +1000,55 @@ div#navigation
 /*- Бокс статьи */
 #boxArticles
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса статьи */
 #boxArticles h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса статьи */
 
 /*- Содержимое бокса статьи */
 #boxArticlesContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxArticlesContent p 
@@ -882,35 +1064,55 @@ div#navigation
 /*- Бокс партнёрка */
 #boxAffiliate
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса партнёрка */
 #boxAffiliate h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #990000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса партнёрка */
 
 /*- Содержимое бокса партнёрка */
 #boxAffiliateContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxAffiliateContent p 
@@ -926,35 +1128,55 @@ div#navigation
 /*- Бокс новые статьи */
 #boxArticlesNew
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса новые статьи */
 #boxArticlesNew h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса новые статьи */
 
 /*- Содержимое бокса новые статьи */
 #boxArticlesNewContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxArticlesNewContent p 
@@ -970,35 +1192,55 @@ div#navigation
 /*- Бокс просмотренные товары */
 #boxLastViewed
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса просмотренные товары */
 #boxLastViewed h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #67748B;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса просмотренные товары */
 
 /*- Содержимое бокса просмотренные товары */
 #boxLastViewedContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1015,35 +1257,55 @@ div#navigation
 /*- Бокс отзывы */
 #boxReviews
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса отзывы */
 #boxReviews h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса отзывы */
 
 /*- Содержимое бокса отзывы */
 #boxReviewsContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1060,41 +1322,63 @@ div#navigation
 /*- Бокс поиск */
 #boxSearch
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса поиск */
 #boxSearch h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #FF6600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 
 #boxSearch h5 a
    {
-     color: #FF6600;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса поиск */
 
 /*- Содержимое бокса поиск */
 #boxSearchContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxSearchContent p 
@@ -1138,41 +1422,63 @@ div#navigation
 /*- Бокс скидки */
 #boxSpecials
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса скидки */
 #boxSpecials h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #67748B;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 
 #boxSpecials h5 a
    {
-     color: #67748B;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса скидки */
 
 /*- Содержимое бокса скидки */
 #boxSpecialsContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1189,41 +1495,63 @@ div#navigation
 /*- Бокс рекомендуемые */
 #boxFeatured
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса рекомендуемые */
 #boxFeatured h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
   
 #boxFeatured h5 a
    {
-     color: #006600;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса рекомендуемые */
 
 /*- Содержимое бокса рекомендуемые */
 #boxFeaturedContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1240,41 +1568,63 @@ div#navigation
 /*- Бокс новинки */
 #boxWhatsNew
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса новинки */
 #boxWhatsNew h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #990000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 
 #boxWhatsNew h5 a
    {
-     color: #990000;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса новинки */
 
 /*- Содержимое бокса новинки */
 #boxWhatsNewContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1291,42 +1641,63 @@ div#navigation
 /*- Бокс новости */
 #boxNews
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса новости */
 #boxNews h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 
 #boxNews h5 a
    {
-     color: #006600;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса новости */
 
 /*- Содержимое бокса новости */
 #boxNews .boxNewsContent 
    {
-     padding-left: 1em;
-     margin-bottom: 0.5em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: left;
   }
 
@@ -1343,42 +1714,63 @@ div#navigation
 /*- Бокс вопросы и ответы */
 #boxFaq
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса вопросы и ответы */
 #boxFaq h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 
 #boxFaq h5 a
    {
-     color: #006600;
-     text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
    }
 /*- /Заголовок бокса вопросы и ответы */
 
 /*- Содержимое бокса вопросы и ответы */
 #boxFaq .boxFaqContent 
    {
-     padding-left: 1em;
-     margin-bottom: 0.5em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: left;
   }
 
@@ -1432,17 +1824,13 @@ dd.itemFaq
 /* Оформление */
 #boxCart 
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.5em;
-     margin-right: 0.4em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 #boxCart .top, #boxCart .bottom 
    {
-     display: block; 
+     display: none;
      background: transparent; 
      font-size: 1px;
    }
@@ -1450,7 +1838,7 @@ dd.itemFaq
 /* Шапка с углами */
 #boxCart .b1, #boxCart .b2, #boxCart .b3, #boxCart .b4, #boxCart .b5 
    {
-     display: block; 
+     display: none;
      overflow: hidden; 
      height: 1px; 
      background: #006600; 
@@ -1462,10 +1850,10 @@ dd.itemFaq
 /* Низ с углами */
 #boxCart .b1b, #boxCart .b2b, #boxCart .b3b, #boxCart .b4b, #boxCart .b5b 
    {
-     display: block; 
+     display: none;
      overflow: hidden; 
      height: 1px; 
-     background: #f1f1f6; 
+     background: transparent; 
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
    }
@@ -1473,48 +1861,77 @@ dd.itemFaq
 
 #boxCart .b1, #boxCart .b1b
    {
+     display: none;
      margin: 0 5px; 
      background: #000;
    }
 
 #boxCart .b2, #boxCart .b2b
    {
+     display: none;
      margin: 0 4px;
    }
 
 #boxCart .b3, #boxCart .b3b 
    {
+     display: none;
      margin: 0 3px;
    }
 
 #boxCart .b4, #boxCart .b4b 
    {
+     display: none;
      margin: 0 2px;
    }
 
 #boxCart .b5, #boxCart .b5b 
    {
+     display: none;
      margin: 0 1px;
    }
 
 #boxCart .boxheader 
    {
-     display: block; 
-     background: #006600; 
-     color: #fff;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     border-left: 1px solid #000; 
-     border-right: 1px solid #000;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
    }
 
 #boxCart .boxcontent 
    {
-     display: block; 
-     background: #f1f1f6; 
-     border-left: 1px solid #000; 
-     border-right: 1px solid #000;
-     padding-left: .5em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
    }
 
 #boxCart .boxcontent  span 
@@ -1524,13 +1941,8 @@ dd.itemFaq
 
 #boxCart .boxheader p 
    {
-     padding-top: 0;
-     padding-bottom: 0.4em;
-     padding-left: 0.5em;
-     margin-top: 0;
-     margin-bottom: 0;
-     margin-left: 0;
-     margin-right: 0;
+     padding: 0;
+     margin: 0;
    }
 
 #boxCart .boxcontent p 
@@ -1548,13 +1960,13 @@ dd.itemFaq
 /* Ссылки в заголовке бокса */
 #boxCart .boxheader a 
    {
-     color: #fff;
+     color: #ff7b08;
      text-decoration: none;
    }
 
 #boxCart .boxheader a:hover 
    {
-     color: #fff;
+     color: #ff7b08;
      text-decoration: none;
    }
 /* /Ссылки в заголовке бокса */
@@ -1577,17 +1989,13 @@ p.CartContentCenter
 /* Оформление */
 #boxLogin 
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.4em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 #boxLogin .top, #boxLogin .bottom 
    {
-     display: block; 
+     display: none;
      background: transparent; 
      font-size: 1px;
    }
@@ -1595,7 +2003,7 @@ p.CartContentCenter
 /* Шапка с углами */
 #boxLogin .b1, #boxLogin .b2, #boxLogin .b3, #boxLogin .b4, #boxLogin .b5 
    {
-     display: block; 
+     display: none;
      overflow: hidden; 
      height: 1px; 
      background: #67748B; 
@@ -1607,10 +2015,10 @@ p.CartContentCenter
 /* Низ с углами */
 #boxLogin .b1b, #boxLogin .b2b, #boxLogin .b3b, #boxLogin .b4b, #boxLogin .b5b 
    {
-     display: block; 
+     display: none;
      overflow: hidden; 
      height: 1px; 
-     background: #f1f1f6; 
+     background: transparent; 
      border-left: 1px solid #000; 
      border-right: 1px solid #000;
    }
@@ -1618,48 +2026,77 @@ p.CartContentCenter
 
 #boxLogin .b1, #boxLogin .b1b
    {
+     display: none;
      margin: 0 5px; 
      background: #000;
    }
 
 #boxLogin .b2, #boxLogin .b2b
    {
+     display: none;
      margin: 0 4px;
    }
 
 #boxLogin .b3, #boxLogin .b3b 
    {
+     display: none;
      margin: 0 3px;
    }
 
 #boxLogin .b4, #boxLogin .b4b 
    {
+     display: none;
      margin: 0 2px;
    }
 
 #boxLogin .b5, #boxLogin .b5b 
    {
+     display: none;
      margin: 0 1px;
    }
 
 #boxLogin .boxheader 
    {
-     display: block; 
-     background: #67748B; 
-     color: #fff;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     border-left: 1px solid #000; 
-     border-right: 1px solid #000;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
    }
 
 #boxLogin .boxcontent 
    {
-     display: block;
-     padding-left: 0.5em; 
-     background: #f1f1f6; 
-     border-left: 1px solid #000; 
-     border-right: 1px solid #000;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
    }
 
 #boxLogin .boxcontent  span 
@@ -1669,13 +2106,8 @@ p.CartContentCenter
 
 #boxLogin .boxheader p 
    {
-     padding-top: 0;
-     padding-bottom: 0.4em;
-     padding-left: 0.5em;
-     margin-top: 0;
-     margin-bottom: 0;
-     margin-left: 0;
-     margin-right: 0;
+     padding: 0;
+     margin: 0;
    }
 
 #boxLogin .boxcontent p 
@@ -1733,35 +2165,55 @@ p.LoginContentLeft
 /*- Бокс мои загрузки */
 #boxDownloads
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса мои загрузки */
 #boxDownloads h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса мои загрузки */
 
 /*- Содержимое бокса мои загрузки */
 #boxDownloadsContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: left;
   }
 
@@ -1778,35 +2230,55 @@ p.LoginContentLeft
 /*- Бокс рассылка */
 #boxNewsletter
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса рассылка */
 #boxNewsletter h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #FF6600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса рассылка */
 
 /*- Содержимое бокса рассылка */
 #boxNewsletterContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxNewsletterContent p 
@@ -1850,35 +2322,55 @@ p.LoginContentLeft
 /*- Бокс лучшие товары */
 #boxBestsellers
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса лучшие товары */
 #boxBestsellers h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса лучшие товары */
 
 /*- Содержимое бокса лучшие товары */
 #boxBestsellersContent 
    {
-     padding-left: 1em;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
   }
 
 #boxBestsellersContent p 
@@ -1906,35 +2398,55 @@ p.LoginContentLeft
 /*- Бокс информация о группе */
 #boxGroupInfo
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса информация о группе */
 #boxGroupInfo h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса информация о группе */
 
 /*- Содержимое бокса информация о группе */
 #boxGroupInfoContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -1956,35 +2468,55 @@ p.LoginContentLeft
 /*- Бокс валюты */
 #boxCurrencies
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса валюты */
 #boxCurrencies h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса валюты */
 
 /*- Содержимое бокса валюты */
 #boxCurrenciesContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -2013,35 +2545,55 @@ p.LoginContentLeft
 /*- Бокс языки */
 #boxLanguages
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса языки */
 #boxLanguages h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #CC0000;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса языки */
 
 /*- Содержимое бокса языки */
 #boxLanguagesContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -2058,35 +2610,55 @@ p.LoginContentLeft
 /*- Бокс производители */
 #boxManufacturers
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса производители */
 #boxManufacturers h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #006600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса производители */
 
 /*- Содержимое бокса производители */
 #boxManufacturersContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -2115,35 +2687,55 @@ p.LoginContentLeft
 /*- Бокс информация о производителе */
 #boxManufacturersInfo
    {
-     text-align: left;
-     margin-bottom: 0.2em;
-     margin-top: 0.2em;
-     margin-right: 0.2em; /* отступ от правого края браузера */
-     padding-top: 0.2em;
-     padding-bottom: 0.4em; /* отступ от края бокса, т.е. от пунктирной линии */
-  	  border-bottom-width: 0px;
-	  border-bottom-style: dashed;
-     border-bottom-color: #67748B;
+		margin: 0 .5em .5em .5em;
+		padding: 0;
    }
 
 /*- Заголовок бокса информация о производителе */
 #boxManufacturersInfo h5 
    {
-     display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     font-weight: bold;
-     color: #FF6600;
-     border-bottom: 0px #e5e5e5 solid;
-     background: url(img/box.gif) no-repeat left center;
-     margin: 0 0 .4em .3em;
-     padding: .1em 0 0 16px;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		margin: 0;
+		padding: 7px 0 7px 10px;
+		background-color: #f4f4f4;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -2843px;
+		background-repeat: repeat-x; 
+		border-top: 1px solid #c0c1c2;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-webkit-border-top-left-radius: 8px;
+		-moz-border-radius-topright: 8px;
+		-webkit-border-top-right-radius: 8px;
+		vertical-align: middle;
   }
 /*- /Заголовок бокса информация о производителе */
 
 /*- Содержимое бокса информация о производителе */
 #boxManufacturersInfoContent 
    {
-     padding-left: 0;
+		margin: 0;
+		padding: .5em;
+		background-color: #fff;
+		background-image: url(img/vamcart/bg.png);
+		background-position: 0 -3314px;
+		background-repeat: repeat-x; 
+		border-top: 0px;
+		border-left: 1px solid #c0c1c2;
+		border-right: 1px solid #c0c1c2;
+		border-bottom: 1px solid #c0c1c2;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-right-radius: 8px;
      text-align: center;
   }
 
@@ -2163,7 +2755,7 @@ p.LoginContentLeft
 div#parseTime
    {
      clear: left;
-     background: #f1f1f6;
+     background: transparent;
      width: 100%;
      text-align: center;
      color: #000;
@@ -2278,27 +2870,23 @@ span.Requirement
 
 span.markProductOutOfStock 
    {
-     font-family: Tahoma, Verdana, Arial, sans-serif;
      color: #c76170;
      font-weight: bold;
    }
 
 span.productSpecialPrice 
    {
-     font-family: Verdana, Arial, sans-serif;
      color: #ff0000;
    }
 
 span.productOldPrice 
    {
-	  font-family: Verdana, Arial, sans-serif;
 	  color: #ff0000;
 	  text-decoration: line-through;
    }
 
 span.errorText 
    {
-     font-family: Verdana, Arial, sans-serif;
      color: #ff0000;
    }
 
@@ -2672,9 +3260,7 @@ ul.accountLinks
 li.accountLinks 
    {
 	  display: block;
-     font: 11pt Tahoma, Verdana, Arial, sans-serif;
-     background: url(img/icon_arrow1.jpg) no-repeat left center;
-     padding: 0 0 0 14px; 
+     padding: 0; 
    }
 
 /* /Ссылки на странице мои данные */
