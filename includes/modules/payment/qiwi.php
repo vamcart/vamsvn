@@ -341,7 +341,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			'login' => MODULE_PAYMENT_QIWI_ID,
 			'password' => MODULE_PAYMENT_QIWI_SECRET_KEY,
 			'user' => $_SESSION['qiwi_telephone'],
-			'amount' => number_format($order->info['total'],0),
+			'amount' => number_format($order->info['total'],0,'',''),
 			'comment' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
 			'txn' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
 			'lifetime' => date("d.m.Y H:i:s", strtotime("+2 weeks")),
