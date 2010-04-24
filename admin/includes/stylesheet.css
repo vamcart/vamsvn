@@ -174,7 +174,7 @@ td.categories_view_data {
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
- text-align: center;
+ text-align: left;
 }
 
 td.categories_view_data_even {
@@ -182,8 +182,9 @@ td.categories_view_data_even {
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
+ padding: .1em;
  background: #f7f7f7;
- text-align: center;
+ text-align: left;
 }
 
 td.categories_view_data_odd {
@@ -191,8 +192,9 @@ td.categories_view_data_odd {
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
+ padding: .1em;
  background: #fff;
- text-align: center;
+ text-align: left;
 }
 
 .dataTableContent_products {
@@ -624,20 +626,20 @@ A.headerNavigation:hover {
 }
 
 h1.contentBoxHeading {
-  display: block;
-  font: 16px 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
-  font-weight: bold;
-  color: #990000;
-  border-bottom: 0px #990000 solid;
-  background: url(../images/heading1.gif) no-repeat left center;
-  padding: 0 0 0 20px; 
-  margin: 0.2em 0 0.2em 0; 
-}
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		padding: 0;
+		margin: 0;
+		}
+		
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
-  font: 16px 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
-  font-weight: bold;
-  color: #990000;
-  text-decoration: none;
+		color: #ff7b08;
+		font-weight: bold;
+		font-size: 12pt;
+		text-decoration: none;
+		padding: 0;
+		margin: 0;
 }
 
 h3 {
