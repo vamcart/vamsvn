@@ -25,6 +25,11 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				    
 				    </td>
 				  </tr>
+
+</table>
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">				  
+
+
               <tr class="dataTableHeadingRow">
                 <td width="40%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_CUSTOMER; ?></td>
                 <td width="10%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_NUMBER; ?></td>
@@ -49,14 +54,20 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 	$orders_query = vam_db_query($orders_query_raw);
 	while ($orders = vam_db_fetch_array($orders_query)) {
 
+        $rows++;
 
+        if (($rows/2) == floor($rows/2)) {
+          $css_class = 'categories_view_data_even';
+        } else {
+          $css_class = 'categories_view_data_odd';
+        }
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
-                <td class="dataTableContent"><?php echo $orders['orders_id']; ?></td>
-                <td class="dataTableContent"><?php echo strip_tags($orders['order_total']); ?></td>
-                <td class="dataTableContent"><?php echo $orders['orders_status_name']; ?></td>
-                <td class="dataTableContent"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
+                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit'); ?>"><?php echo $orders['customers_name']; ?></a></td>
+                <td class="<?php echo $css_class; ?>"><?php echo $orders['orders_id']; ?></td>
+                <td class="<?php echo $css_class; ?>"><?php echo strip_tags($orders['order_total']); ?></td>
+                <td class="<?php echo $css_class; ?>"><?php echo $orders['orders_status_name']; ?></td>
+                <td class="<?php echo $css_class; ?>"><?php echo vam_datetime_short($orders['date_purchased']); ?></td>
               </tr>
 <?php
 

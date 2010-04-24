@@ -29,6 +29,10 @@ $currencies = new currencies();
 				    
 				    </td>
 				  </tr>
+				  
+</table>
+<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">				  
+				  
               <tr class="dataTableHeadingRow">
                 <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCT_NAME; ?></td>
                 <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCT_PRICE; ?></td>
@@ -49,14 +53,22 @@ $currencies = new currencies();
 
 	while ($products = vam_db_fetch_array($products_query_raw)) {
 
+        $rows++;
+
+        if (($rows/2) == floor($rows/2)) {
+          $css_class = 'categories_view_data_even';
+        } else {
+          $css_class = 'categories_view_data_odd';
+        }
+        
             $price = $products['products_price'];
             $price = vam_round($price,PRICE_PRECISION);
 
 ?>
               <tr>
-                <td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $products['products_id'] . '&action=new_product'); ?>"><?php echo $products['products_name']; ?></a></td>
-                <td class="dataTableContent"><?php echo $currencies->format($price); ?></td>
-                <td class="dataTableContent"><?php echo $products['products_date_added']; ?></td>
+                <td class="<?php echo $css_class; ?>"><a href="<?php echo vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $products['products_id'] . '&action=new_product'); ?>"><?php echo $products['products_name']; ?></a></td>
+                <td class="<?php echo $css_class; ?>"><?php echo $currencies->format($price); ?></td>
+                <td class="<?php echo $css_class; ?>"><?php echo $products['products_date_added']; ?></td>
               </tr>
 <?php
 
