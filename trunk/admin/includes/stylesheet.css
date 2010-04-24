@@ -77,31 +77,69 @@ font-color: #000000;
 
 .pageHeading { 
 
-  font: 14px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font: 14px 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   
  }
  
 /* data table */
-.dataTableHeadingRow {
-background-color: #F6F6F6;
-color: #000000;
-border-bottom: 1px solid;
-border-color: #000000;
 
+table.contentListingTable
+	{
+		width: 100%;
+		padding: 1px;
+		margin: 0 0 .2em 0;
+		border: 1px solid #97a5b0;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+		
+	}
+
+.dataTableHeadingRow {
 }
+
+
 .dataTableHeadingContent {
 
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
     font-size: 11pt;
     font-weight: bold;
-    padding: 5px;
-    background-color: #f1f1f1;
-    border: 1px solid #CCCCCC;
+    
+		color: #000;
+		font-weight: normal;
+		padding: .9em;
+		margin: 0;
+		background-color: #e3eff7;
+		background-image: url(../images/bg.png);
+		background-position: 0 -3231px;
+		background-repeat: repeat-x; 
+		border: 1px solid #97a5b0;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;    
 }
 .dataTableRow {
-background-color: #F9F0F1;
+background-color: #f7f7f7;
 
 }
 
@@ -111,7 +149,7 @@ background-color: #F9F0F1;
 
  }
 .dataTableRowOver {
- background-color: #F6F6F6; 
+ background-color: #ffc; 
 
  }
  
@@ -120,7 +158,7 @@ background-color: #F9F0F1;
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
- border-bottom: 1px dashed #cccccc;
+ border-bottom: 0px dashed #cccccc;
  }
  
 .dataTableContentRss {
@@ -135,7 +173,25 @@ td.categories_view_data {
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
- border-bottom: 1px dashed #cccccc;
+ border-bottom: 0px dashed #cccccc;
+ text-align: center;
+}
+
+td.categories_view_data_even {
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
+ color: #000000;
+ vertical-align: middle;
+ background: #f7f7f7;
+ text-align: center;
+}
+
+td.categories_view_data_odd {
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-size: 11pt; 
+ color: #000000;
+ vertical-align: middle;
+ background: #fff;
  text-align: center;
 }
 
@@ -160,7 +216,7 @@ border-color: #cccccc;
 
 /* info box */
 .infoBoxHeading {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
     font-size: 11pt;
     font-weight: bold;
 }
@@ -423,7 +479,7 @@ input:focus, .sffocus, .sffocus {
 
 /* account */
 .formArea { background-color: #f1f1f1; border-color: #cccccc; border-style: solid; border-width: 1px; }
-.formAreaTitle { font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; font-weight: bold; }
+.formAreaTitle { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; font-weight: bold; }
 
 /* attributes */
 .attributes-odd { background-color: #f4f7fd; }
@@ -440,7 +496,7 @@ input:focus, .sffocus, .sffocus {
 /* Сборка VaM */
 
 div.buttonadmin {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -449,7 +505,7 @@ div.buttonadmin {
 }
 
 TD.buttonadmin {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -463,7 +519,7 @@ TR.buttonadmin {
 }
 
 A.shippingInfo { 
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -473,7 +529,7 @@ A.shippingInfo {
 }
 
 A.shippingInfo:hover {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -483,7 +539,7 @@ A.shippingInfo:hover {
 }
 
 A.shippingInfo:visited {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -498,7 +554,7 @@ TD.button1 {
 }
 
 TD.navigation {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #990000;
@@ -507,7 +563,7 @@ TD.navigation {
 }
 
 TD.navigationTop {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #000000;
@@ -516,7 +572,7 @@ TD.navigationTop {
 }
 
 TD.contentBoxHeading1, p.contentBoxHeading1 {
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -524,7 +580,7 @@ TD.contentBoxHeading1, p.contentBoxHeading1 {
 
 A.contentBoxHeading1 {
   color: #0000FF;
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -533,7 +589,7 @@ A.contentBoxHeading1 {
 
 a:hover.contentBoxHeading1 {
   color: #0000FF;
-  font-family: Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -569,7 +625,7 @@ A.headerNavigation:hover {
 
 h1.contentBoxHeading {
   display: block;
-  font: 16px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font: 16px 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   border-bottom: 0px #990000 solid;
@@ -578,7 +634,7 @@ h1.contentBoxHeading {
   margin: 0.2em 0 0.2em 0; 
 }
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
-  font: 16px Tahoma, 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font: 16px 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
   font-weight: bold;
   color: #990000;
   text-decoration: none;
