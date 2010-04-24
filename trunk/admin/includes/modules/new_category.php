@@ -71,23 +71,23 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo sprintf($text_new_or_edit, vam_output_generated_category_path($current_category_id)); ?></td>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo $manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
-
-<tr>
-<td>
-<?php
+            <td class="pageHeading">
+            
+ <?php
 $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category'; 
 
     echo vam_draw_form('new_category', FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID'] . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"'); ?>
     
         	<span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"><?php echo BUTTON_SAVE; ?></button></span>&nbsp;&nbsp;<a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&cID=' . $_GET['cID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
+        	
+        	</td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo $manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table></td>
+      </tr>
+
+<tr>
+<td>
     
 <div id="tabs">
 
