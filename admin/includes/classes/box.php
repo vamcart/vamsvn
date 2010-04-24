@@ -39,10 +39,15 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function infoBox($heading, $contents) {
+      $this->table_class = 'headTable';
+      $this->table_cellspacing = '0';
+      $this->table_width = '97%';
+      $this->table_parameters = 'align="center"';
       $this->table_row_parameters = 'class="infoBoxHeading"';
       $this->table_data_parameters = 'class="infoBoxHeading"';
       $this->heading = $this->tableBlock($heading);
 
+      $this->table_class = 'contentTable';
       $this->table_row_parameters = '';
       $this->table_data_parameters = 'class="infoBoxContent"';
       $this->contents = $this->tableBlock($contents);

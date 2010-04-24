@@ -18,6 +18,7 @@
    --------------------------------------------------------------*/
 defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   class tableBlock {
+    var $table_class = 'contentTable';
     var $table_border = '0';
     var $table_width = '100%';
     var $table_cellspacing = '0';
@@ -36,7 +37,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         vam_array_shift($contents);
       }
 
-      $tableBox_string .= '<table class="contentTable" border="' . $this->table_border . '" width="' . $this->table_width . '" cellspacing="' . $this->table_cellspacing . '" cellpadding="' . $this->table_cellpadding . '"';
+      $tableBox_string .= '<table class="' . $this->table_class . '" border="' . $this->table_border . '" width="' . $this->table_width . '" cellspacing="' . $this->table_cellspacing . '" cellpadding="' . $this->table_cellpadding . '"';
       if ($this->table_parameters != '') $tableBox_string .= ' ' . $this->table_parameters;
       $tableBox_string .= '>' . "\n";
 
