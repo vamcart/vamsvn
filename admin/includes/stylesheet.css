@@ -48,7 +48,9 @@ a.splitPageLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, A
 .longDescription { visibility: hidden; display: none; }
 
 /* page */
-body { background-color: #ffffff; color: #000000; margin: 0px; }
+body { 	background-color: #fff; background-image: url(../images/bg.png);
+
+ color: #000000; margin: 0px; }
 .headerBar {
     background-color: #cccccc; 
     border-color: #000000; 
@@ -72,7 +74,7 @@ font-color: #000000;
  .boxCenter {
  border: 0px solid;
  border-color: #cccccc;
- background: #ffffff;
+ background: transparent;
  }
 
 .pageHeading { 
