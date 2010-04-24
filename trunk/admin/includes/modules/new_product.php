@@ -132,10 +132,9 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 <?php $fsk18_array=array(array('id'=>0,'text'=>NO),array('id'=>1,'text'=>YES)); ?>
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo sprintf(TEXT_NEW_PRODUCT, vam_output_generated_category_path($current_category_id)); ?></td>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_PRODUCTS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
-          </tr>
-        </table>
+            <td>
+            
+            
 <?php
     echo vam_draw_form('new_product', FILENAME_CATEGORIES, 'cPath=' . $_GET['cPath'] . '&pID=' . $_GET['pID'] . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '') . '&action='.$form_action, 'post', 'enctype="multipart/form-data" cf="true"');
     echo vam_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
@@ -146,6 +145,13 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo BUTTON_EDIT_ATTRIBUTES; ?></span></a>
     <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo BUTTON_EDIT_CROSS_SELLING; ?></span></a>
+            
+            
+            
+            </td>
+            <td align="right"><a class="button" href="<?php echo MANUAL_LINK_PRODUCTS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+          </tr>
+        </table>
 
 <div id="tabs">
 
