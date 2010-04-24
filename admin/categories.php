@@ -344,7 +344,29 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 <!-- body_text //-->
     <td class="boxCenter" valign="top">
     
-    <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
+         </td>
+         <td align="right">
+                <?php 
+                    echo vam_draw_form('goto', FILENAME_CATEGORIES, '', 'get');
+                    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu('cPath', vam_get_category_tree(), $current_category_id, 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); 
+                ?>
+                </form>
+         </td>
+         <td align="right">
+                <?php 
+                    echo vam_draw_form('search', FILENAME_CATEGORIES, '', 'get'); 
+                    echo HEADING_TITLE_SEARCH . ' ' . vam_draw_input_field('search').vam_draw_hidden_field(vam_session_name(), vam_session_id()); 
+                ?>
+                </form>
+         </td>
+       </tr>
+       </table>
+
+    
     
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 
