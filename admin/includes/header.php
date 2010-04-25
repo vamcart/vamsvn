@@ -26,7 +26,7 @@
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="200" valign="top" align="left" class="header">
+              <td width="200" align="left" class="header">
               <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.png', 'VaM Shop'); ?></a>
               </td>
               <td width="370" align="center" class="header">
