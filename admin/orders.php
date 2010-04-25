@@ -1146,7 +1146,7 @@ echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params()
         }
 
 ?>
-                <td class="dataTableContent"><input type="checkbox" name="multi_orders[]" value="<?php echo $orders['orders_id'];?>"></td>
+                <td class="dataTableContent" align="center"><input type="checkbox" name="multi_orders[]" value="<?php echo $orders['orders_id'];?>"></td>
                 <td class="dataTableContent"><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id'] . '&action=edit') . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $orders['orders_id']) . '">' . $orders['customers_name'] . '</a>'; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $orders['orders_id']; ?></td>
                 <td class="dataTableContent" align="right"><?php echo strip_tags($orders['order_total']); ?></td>
