@@ -19,7 +19,7 @@
 
   define('MODULE_PAYMENT_QIWI_TEXT_TITLE', 'Киви');
   define('MODULE_PAYMENT_QIWI_TEXT_PUBLIC_TITLE', 'Киви');
-  define('MODULE_PAYMENT_QIWI_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Киви.<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/Nastrojka-modulja-oplaty-kivi.html" target="_blank"><u>здесь</u></a>.');
+  define('MODULE_PAYMENT_QIWI_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Киви.<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/blog/2010/04/18/%d0%bf%d0%be%d0%b4%d0%ba%d0%bb%d1%8e%d1%87%d0%b5%d0%bd%d0%b8%d0%b5-vam-shop-%d0%ba-%d0%ba%d0%b8%d0%b2%d0%b8-qiwi/" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_QIWI_TEXT_DESCRIPTION', 'Для подтверждения заказа нажмите кнопку Подтвердить.<br /><br /><br /><br /><strong><span class="Requirement">Вам был выписан счёт для оплаты заказа в QIWI Кошельке, Вы можете оплатить счёт в любом терминале киви, в своём личном кабинете (киви кошелёк), либо через интернет-версию киви кошелька по адресу <a href="http://mylk.qiwi.ru">http://mylk.qiwi.ru</a></span></strong><br /><br />');
   
 define('MODULE_PAYMENT_QIWI_STATUS_TITLE' , 'Разрешить модуль Киви');
