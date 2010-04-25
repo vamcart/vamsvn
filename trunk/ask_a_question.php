@@ -15,10 +15,6 @@
 */
 include ('includes/application_top.php');
 
-// create smarty elements
-$vamTemplate = new vamTemplate;
-include ('includes/header.php');
-
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int)$_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int)$_SESSION['languages_id']."'");
 $product_info = vam_db_fetch_array($product_info_query);
 
@@ -26,9 +22,13 @@ $product_info = vam_db_fetch_array($product_info_query);
 require_once(DIR_FS_INC.'vam_validate_email.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
 
+// create smarty elements
+$vamTemplate = new vamTemplate;
+
 $vamTemplate->assign('language', $_SESSION['language']);
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
+
 	$error = false;
 
 	if (isset($_SESSION['customer_id'])) { 
@@ -145,6 +145,8 @@ $vamTemplate->assign('BUTTON_CONTINUE', '<a href="javascript:window.close()">'.v
 	}
 }
 }else{
+
+include ('includes/header.php');
 
 $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id'], 'SSL'));
 
