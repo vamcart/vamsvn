@@ -79,6 +79,7 @@ font-color: #000000;
 
 .pageHeading { 
 
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -650,6 +651,7 @@ A.headerNavigation:hover {
 }
 
 h1.contentBoxHeading {
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -658,6 +660,7 @@ h1.contentBoxHeading {
 		}
 		
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
+		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;

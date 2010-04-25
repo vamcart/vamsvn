@@ -377,7 +377,8 @@ if ($numr>$max_count){
 			$im++;
 			}
 }
-			//-----------------------
+			//-----------------------
+
 // VaM Shop admin paging end
 
 
@@ -529,12 +530,14 @@ if ($numr>$max_count){
          ?>
          </td>
         </tr>
-<!-- // VaM Shop admin paging start -->        <tr>
+<!-- // VaM Shop admin paging start -->
+        <tr>
          <td colspan="2" class="smallText">
            <?php echo $stp; ?>
          </td>
         </tr>
-<!-- // VaM Shop admin paging end -->        </table>                
+<!-- // VaM Shop admin paging end -->
+        </table>                
         
      </td>
      <!-- categories & products column ENDS -->
@@ -724,16 +727,17 @@ if ($numr>$max_count){
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;">' . TEXT_MARKED_ELEMENTS . '</div>');
             $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><span class="button"><button type="submit" name="multi_delete" value="'. BUTTON_DELETE . '">'. BUTTON_DELETE . '</button></span></td></tr><tr><td align="center"><span class="button"><button type="submit" name="multi_move" value="' . BUTTON_MOVE . '">'. BUTTON_MOVE . '</button></span></td></tr><tr><td align="center"><span class="button"><button type="submit" name="multi_copy" value="' . BUTTON_COPY . '">'. BUTTON_COPY . '</button></span></td></tr></table>');
             $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><span class="button"><button type="submit" name="multi_status_on" value="'. BUTTON_STATUS_ON . '">'. BUTTON_STATUS_ON . '</button></span></td></tr><tr><td align="center"><span class="button"><button type="submit" name="multi_status_off" value="' . BUTTON_STATUS_OFF . '">'. BUTTON_STATUS_OFF . '</button></span></td></tr></table>');
+            $contents[] = array('text'  => '</form>');
             //Single Element Actions
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_ACTIVE_ELEMENT . '</div>');
             $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $cInfo->categories_id . '&action=edit_category') . '"><span>' . BUTTON_EDIT . '</span></a>');
             //Insert new Element Actions
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
             if (!$_GET['search']) {
             	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
             }
             //Informations
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
             $contents[] = array('text'  => '<div style="padding-left: 50px;">' . TEXT_DATE_ADDED . ' ' . vam_date_short($cInfo->date_added) . '</div>');
             if (vam_not_null($cInfo->last_modified)) $contents[] = array('text' => '<div style="padding-left: 50px;">' . TEXT_LAST_MODIFIED . ' ' . vam_date_short($cInfo->last_modified) . '</div>');            
             $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_info_image_c($cInfo->categories_image, $cInfo->categories_name, 100, 100)  . '</div><div style="padding-bottom: 10px;">' . $cInfo->categories_image . '</div>');            
@@ -744,16 +748,17 @@ if ($numr>$max_count){
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;">' . TEXT_MARKED_ELEMENTS . '</div>');
             $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center">' . vam_button(BUTTON_DELETE, 'submit', 'name="multi_delete"').'</td></tr><tr><td>'.vam_button(BUTTON_MOVE, 'submit', 'name="multi_move"').'</td></tr><tr><td align="center">'.vam_button(BUTTON_COPY, 'submit', 'name="multi_copy"').'</td></tr></table>');
             $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><span class="button"><button type="submit" name="multi_status_on" value="'. BUTTON_STATUS_ON . '">'. BUTTON_STATUS_ON . '</button></span></td></tr><tr><td align="center"><span class="button"><button type="submit" name="multi_status_off" value="' . BUTTON_STATUS_OFF . '">'. BUTTON_STATUS_OFF . '</button></span></td></tr></table>');
+            $contents[] = array('text'  => '</form>');            
             //Single Product Actions
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;; margin-top: 5px;">' . TEXT_ACTIVE_ELEMENT . '</div>');
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_ACTIVE_ELEMENT . '</div>');
             $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&action=new_product') . '"><span>' . BUTTON_EDIT . '</span></a></td></tr><tr><td align="center"><form action="' . FILENAME_NEW_ATTRIBUTES . '" name="edit_attributes" method="post"><input type="hidden" name="action" value="edit"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_ATTRIBUTES . '">' . BUTTON_EDIT_ATTRIBUTES . '</button></span></form></td></tr><tr><td align="center" style="text-align: center;"><form action="' . FILENAME_CATEGORIES . '" name="edit_crossselling" method="GET"><input type="hidden" name="action" value="edit_crossselling"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath  . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_CROSS_SELLING . '">' . BUTTON_EDIT_CROSS_SELLING . '</button></span></form></td></tr><tr><td align="center"><a class="button"href="' . vam_href_link(FILENAME_PARAMETERS, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'category=' . $cPath . '&search_product=' . $pInfo->products_name . '&pid=' . $pInfo->products_id .'') . '"><span>' . BOX_PARAMETERS . '</span></a></td></tr></table>');
             //Insert new Element Actions
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
             if (!$_GET['search']) {
             	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
             }            
             //Informations
-            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%;; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
+            $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
             $contents[] = array('text'  => '<div style="padding-left: 30px;">' . TEXT_DATE_ADDED . ' ' . vam_date_short($pInfo->products_date_added) . '</div>');
             if (vam_not_null($pInfo->products_last_modified))    $contents[] = array('text' => '<div style="padding-left: 30px;">' . TEXT_LAST_MODIFIED . '&nbsp;' . vam_date_short($pInfo->products_last_modified) . '</div>');
             if (date('Y-m-d') < $pInfo->products_date_available) $contents[] = array('text' => '<div style="padding-left: 30px;">' . TEXT_DATE_AVAILABLE . ' ' . vam_date_short($pInfo->products_date_available) . '</div>');            
@@ -795,7 +800,6 @@ if ($numr>$max_count){
     }
 ?>
         </tr>
-        </form>
         </table>
      </td>
     </tr>
