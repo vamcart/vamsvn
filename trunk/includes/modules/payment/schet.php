@@ -144,23 +144,23 @@ class schet {
 
 	function process_button() {
 
-      $process_button_string = vam_draw_hidden_field('name', $this->name) .
-                               vam_draw_hidden_field('inn', $this->inn).
-                               vam_draw_hidden_field('kpp', $this->kpp).
-                               vam_draw_hidden_field('ogrn', $this->ogrn).
-                               vam_draw_hidden_field('okpo', $this->okpo).
-                               vam_draw_hidden_field('rs', $this->rs).
-                               vam_draw_hidden_field('bank_name', $this->bank_name).
-                               vam_draw_hidden_field('bik', $this->bik).
-                               vam_draw_hidden_field('ks', $this->ks).
-                               vam_draw_hidden_field('address', $this->address).
-                               vam_draw_hidden_field('yur_address', $this->yur_address).
-                               vam_draw_hidden_field('fakt_address', $this->fakt_address) .
-                               vam_draw_hidden_field('telephone', $this->telephone) .
-                               vam_draw_hidden_field('fax', $this->fax) .
-                               vam_draw_hidden_field('email', $this->email) .
-                               vam_draw_hidden_field('director', $this->director) .
-                               vam_draw_hidden_field('accountant', $this->accountant);
+      $process_button_string = vam_draw_hidden_field('s_name', $this->name) .
+                               vam_draw_hidden_field('s_inn', $this->inn).
+                               vam_draw_hidden_field('s_kpp', $this->kpp).
+                               vam_draw_hidden_field('s_ogrn', $this->ogrn).
+                               vam_draw_hidden_field('s_okpo', $this->okpo).
+                               vam_draw_hidden_field('s_rs', $this->rs).
+                               vam_draw_hidden_field('s_bank_name', $this->bank_name).
+                               vam_draw_hidden_field('s_bik', $this->bik).
+                               vam_draw_hidden_field('s_ks', $this->ks).
+                               vam_draw_hidden_field('s_address', $this->address).
+                               vam_draw_hidden_field('s_yur_address', $this->yur_address).
+                               vam_draw_hidden_field('s_fakt_address', $this->fakt_address) .
+                               vam_draw_hidden_field('s_telephone', $this->telephone) .
+                               vam_draw_hidden_field('s_fax', $this->fax) .
+                               vam_draw_hidden_field('s_email', $this->email) .
+                               vam_draw_hidden_field('s_director', $this->director) .
+                               vam_draw_hidden_field('s_accountant', $this->accountant);
 
       return $process_button_string;
 
@@ -176,7 +176,7 @@ class schet {
 	function after_process() {
 
       global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_SESSION['name']) . "', '" . vam_db_prepare_input($_SESSION['inn']) . "', '" . vam_db_prepare_input($_SESSION['kpp']) . "', '" . vam_db_prepare_input($_SESSION['ogrn']) ."', '" . vam_db_prepare_input($_SESSION['okpo']) ."', '" . vam_db_prepare_input($_SESSION['rs']) ."', '" . vam_db_prepare_input($_SESSION['bank_name']) ."', '" . vam_db_prepare_input($_SESSION['bik']) ."', '" . vam_db_prepare_input($_SESSION['ks']) ."', '" . vam_db_prepare_input($_SESSION['address']) ."', '" . vam_db_prepare_input($_SESSION['yur_address']) ."', '" . vam_db_prepare_input($_SESSION['fakt_address']) ."', '" . vam_db_prepare_input($_SESSION['telephone']) ."', '" . vam_db_prepare_input($_SESSION['fax']) ."', '" . vam_db_prepare_input($_SESSION['email']) ."', '" . vam_db_prepare_input($_SESSION['director']) ."', '" . vam_db_prepare_input($_SESSION['accountant']) ."')");
+      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_SESSION['s_name']) . "', '" . vam_db_prepare_input($_SESSION['s_inn']) . "', '" . vam_db_prepare_input($_SESSION['s_kpp']) . "', '" . vam_db_prepare_input($_SESSION['s_ogrn']) ."', '" . vam_db_prepare_input($_SESSION['s_okpo']) ."', '" . vam_db_prepare_input($_SESSION['s_rs']) ."', '" . vam_db_prepare_input($_SESSION['s_bank_name']) ."', '" . vam_db_prepare_input($_SESSION['s_bik']) ."', '" . vam_db_prepare_input($_SESSION['s_ks']) ."', '" . vam_db_prepare_input($_SESSION['s_address']) ."', '" . vam_db_prepare_input($_SESSION['s_yur_address']) ."', '" . vam_db_prepare_input($_SESSION['s_fakt_address']) ."', '" . vam_db_prepare_input($_SESSION['s_telephone']) ."', '" . vam_db_prepare_input($_SESSION['s_fax']) ."', '" . vam_db_prepare_input($_SESSION['s_email']) ."', '" . vam_db_prepare_input($_SESSION['s_director']) ."', '" . vam_db_prepare_input($_SESSION['s_accountant']) ."')");
       
 
 		if ($this->order_status)
