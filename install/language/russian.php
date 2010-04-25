@@ -239,7 +239,7 @@ define('TITLE_CHMOD','Установка прав доступа на файлы
 // fnished.php
 
 define('TEXT_SHOP_CONFIG_SUCCESS','Настройка магазина <strong>VaM Shop</strong> успешно завершена.');
-define('TEXT_TEAM','<a href="http://vamshop.ru" target="_blank">Русская поддержка VaM Shop</a>');
+define('TEXT_TEAM','');
 
 // Сборка VaM
 
