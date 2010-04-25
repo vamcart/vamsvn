@@ -96,6 +96,24 @@ if (!isset($_SESSION['kvit_address'])) $_SESSION['kvit_address'] = $_POST['kvit_
 
 if (!isset($_SESSION['qiwi_telephone'])) $_SESSION['qiwi_telephone'] = $_POST['qiwi_telephone'];
 
+if (!isset($_SESSION['s_name'])) $_SESSION['s_name'] = $_POST['s_name'];
+if (!isset($_SESSION['s_inn'])) $_SESSION['s_inn'] = $_POST['s_inn'];
+if (!isset($_SESSION['s_kpp'])) $_SESSION['s_kpp'] = $_POST['s_kpp'];
+if (!isset($_SESSION['s_ogrn'])) $_SESSION['s_ogrn'] = $_POST['s_ogrn'];
+if (!isset($_SESSION['s_okpo'])) $_SESSION['s_okpo'] = $_POST['s_okpo'];
+if (!isset($_SESSION['s_rs'])) $_SESSION['s_rs'] = $_POST['s_rs'];
+if (!isset($_SESSION['s_bank_name'])) $_SESSION['s_bank_name'] = $_POST['s_bank_name'];
+if (!isset($_SESSION['s_bik'])) $_SESSION['s_bik'] = $_POST['s_bik'];
+if (!isset($_SESSION['s_ks'])) $_SESSION['s_ks'] = $_POST['s_ks'];
+if (!isset($_SESSION['s_address'])) $_SESSION['s_address'] = $_POST['s_address'];
+if (!isset($_SESSION['s_yur_address'])) $_SESSION['s_yur_address'] = $_POST['s_yur_address'];
+if (!isset($_SESSION['s_fakt_address'])) $_SESSION['s_fakt_address'] = $_POST['s_fakt_address'];
+if (!isset($_SESSION['s_telephone'])) $_SESSION['s_telephone'] = $_POST['s_telephone'];
+if (!isset($_SESSION['s_fax'])) $_SESSION['s_fax'] = $_POST['s_fax'];
+if (!isset($_SESSION['s_email'])) $_SESSION['s_email'] = $_POST['s_email'];
+if (!isset($_SESSION['s_director'])) $_SESSION['s_director'] = $_POST['s_director'];
+if (!isset($_SESSION['s_accountant'])) $_SESSION['s_accountant'] = $_POST['s_accountant'];
+
 if (isset($_POST['conditions'])) {
 	$_SESSION['conditions'] = true;
 }
