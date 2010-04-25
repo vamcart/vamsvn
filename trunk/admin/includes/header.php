@@ -26,13 +26,13 @@
 <!-- шапка -->        
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="200" align="left">
+              <td width="200" valign="top" align="left" class="header">
               <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.png', 'VaM Shop'); ?></a>
               </td>
-              <td width="370" align="center">
+              <td width="370" align="center" class="header">
               &nbsp;
               </td>
-              <td width="300">
+              <td width="300" class="header">
               &nbsp;
               </td>
             </tr>

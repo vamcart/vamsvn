@@ -833,3 +833,12 @@ border-radius: 5px;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 }
+
+td.header {
+
+		background-color: transparent;
+		background-image: url(../images/bg.png);
+		background-position: 0 -2305px;
+		background-repeat: repeat-x; 
+		height: 100px;
+}
