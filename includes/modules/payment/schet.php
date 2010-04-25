@@ -113,30 +113,29 @@ class schet {
 
 	function pre_confirmation_check() {
 
-        $this->name = vam_db_prepare_input($_POST['s_name']);
-        $this->inn = vam_db_prepare_input($_POST['s_inn']);
-        $this->kpp = vam_db_prepare_input($_POST['s_kpp']);
-        $this->ogrn = vam_db_prepare_input($_POST['s_ogrn']);
-        $this->okpo = vam_db_prepare_input($_POST['s_okpo']);
-        $this->rs = vam_db_prepare_input($_POST['s_rs']);
-        $this->bank_name = vam_db_prepare_input($_POST['s_bank_name']);
-        $this->bik = vam_db_prepare_input($_POST['s_bik']);
-        $this->ks = vam_db_prepare_input($_POST['s_ks']);
-        $this->address = vam_db_prepare_input($_POST['s_address']);
-        $this->yur_address = vam_db_prepare_input($_POST['s_yur_address']);
-        $this->fakt_address = vam_db_prepare_input($_POST['s_fakt_address']);
-        $this->telephone = vam_db_prepare_input($_POST['s_telephone']);
-        $this->fax = vam_db_prepare_input($_POST['s_fax']);
-        $this->email = vam_db_prepare_input($_POST['s_email']);
-        $this->director = vam_db_prepare_input($_POST['s_director']);
-        $this->accountant = vam_db_prepare_input($_POST['s_accountant']);
+        $this->name = vam_db_prepare_input($_SESSION['s_name']);
+        $this->inn = vam_db_prepare_input($_SESSION['s_inn']);
+        $this->kpp = vam_db_prepare_input($_SESSION['s_kpp']);
+        $this->ogrn = vam_db_prepare_input($_SESSION['s_ogrn']);
+        $this->okpo = vam_db_prepare_input($_SESSION['s_okpo']);
+        $this->rs = vam_db_prepare_input($_SESSION['s_rs']);
+        $this->bank_name = vam_db_prepare_input($_SESSION['s_bank_name']);
+        $this->bik = vam_db_prepare_input($_SESSION['s_bik']);
+        $this->ks = vam_db_prepare_input($_SESSION['s_ks']);
+        $this->address = vam_db_prepare_input($_SESSION['s_address']);
+        $this->yur_address = vam_db_prepare_input($_SESSION['s_yur_address']);
+        $this->fakt_address = vam_db_prepare_input($_SESSION['s_fakt_address']);
+        $this->telephone = vam_db_prepare_input($_SESSION['s_telephone']);
+        $this->fax = vam_db_prepare_input($_SESSION['s_fax']);
+        $this->email = vam_db_prepare_input($_SESSION['s_email']);
+        $this->director = vam_db_prepare_input($_SESSION['s_director']);
+        $this->accountant = vam_db_prepare_input($_SESSION['s_accountant']);
 
 	}
 
 	// I take no credit for this, I just hunted down variables, the actual code was stolen from the 2checkout
 	// module.  About 20 minutes of trouble shooting and poof, here it is. -- Thomas Keats
 	function confirmation() {
-		global $_POST;
 
 		$confirmation = array ('title' => $this->title.': '.$this->check, 'fields' => array (array ('title' => MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION)), 'description' => $this->info);
 
@@ -177,7 +176,7 @@ class schet {
 	function after_process() {
 
       global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_POST['name']) . "', '" . vam_db_prepare_input($_POST['inn']) . "', '" . vam_db_prepare_input($_POST['kpp']) . "', '" . vam_db_prepare_input($_POST['ogrn']) ."', '" . vam_db_prepare_input($_POST['okpo']) ."', '" . vam_db_prepare_input($_POST['rs']) ."', '" . vam_db_prepare_input($_POST['bank_name']) ."', '" . vam_db_prepare_input($_POST['bik']) ."', '" . vam_db_prepare_input($_POST['ks']) ."', '" . vam_db_prepare_input($_POST['address']) ."', '" . vam_db_prepare_input($_POST['yur_address']) ."', '" . vam_db_prepare_input($_POST['fakt_address']) ."', '" . vam_db_prepare_input($_POST['telephone']) ."', '" . vam_db_prepare_input($_POST['fax']) ."', '" . vam_db_prepare_input($_POST['email']) ."', '" . vam_db_prepare_input($_POST['director']) ."', '" . vam_db_prepare_input($_POST['accountant']) ."')");
+      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_SESSION['name']) . "', '" . vam_db_prepare_input($_SESSION['inn']) . "', '" . vam_db_prepare_input($_SESSION['kpp']) . "', '" . vam_db_prepare_input($_SESSION['ogrn']) ."', '" . vam_db_prepare_input($_SESSION['okpo']) ."', '" . vam_db_prepare_input($_SESSION['rs']) ."', '" . vam_db_prepare_input($_SESSION['bank_name']) ."', '" . vam_db_prepare_input($_SESSION['bik']) ."', '" . vam_db_prepare_input($_SESSION['ks']) ."', '" . vam_db_prepare_input($_SESSION['address']) ."', '" . vam_db_prepare_input($_SESSION['yur_address']) ."', '" . vam_db_prepare_input($_SESSION['fakt_address']) ."', '" . vam_db_prepare_input($_SESSION['telephone']) ."', '" . vam_db_prepare_input($_SESSION['fax']) ."', '" . vam_db_prepare_input($_SESSION['email']) ."', '" . vam_db_prepare_input($_SESSION['director']) ."', '" . vam_db_prepare_input($_SESSION['accountant']) ."')");
       
 
 		if ($this->order_status)
