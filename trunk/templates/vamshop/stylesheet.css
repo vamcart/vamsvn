@@ -106,6 +106,10 @@ div#right
 		padding: 0; 
 	}
 
+#header img 
+	{
+		margin: 18px 0 0 0; 
+	}
 
 #header div.header-right 
 	{
