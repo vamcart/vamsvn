@@ -1,21 +1,35 @@
-<?php/*
+<?php
+/* -----------------------------------------------------------------------------------------
+   $Id: assist.php 998 2007-02-06 21:07:20 VaM $   
 
-$Id: assist.php,v 1.0 2006/01/15 15:10:00 mbs Exp $
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Released under the GNU General Public License
+   Copyright (c) 2010 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(authorizenet.php,v 1.48 2003/04/10); www.oscommerce.com 
+   (c) 2003	 nextcommerce (authorizenet.php,v 1.9 2003/08/23); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (authorizenet.php,v 1.9 2003/08/23); xt-commerce.com
 
-*/
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
+
+ 
   class assist {
   
-    var $code, $title, $description, $enabled;
-
-// class constructor
-    function assist() {     
+    var $code, $title, $description, $enabled;
+
+    function assist() {
+    	
+     $this->code = 'assist';     
+      $this->title = MODULE_PAYMENT_ASSIST_TEXT_TITLE;      
+      $this->description = MODULE_PAYMENT_ASSIST_TEXT_DESCRIPTION;      
+      $this->sort_order = MODULE_PAYMENT_ASSIST_SORT_ORDER;
     
-     $this->code = 'assist';     
-      $this->title = MODULE_PAYMENT_ASSIST_TEXT_TITLE;      $this->description = MODULE_PAYMENT_ASSIST_TEXT_DESCRIPTION;      $this->sort_order = MODULE_PAYMENT_ASSIST_SORT_ORDER;
-    
-      $this->enabled = ((MODULE_PAYMENT_ASSIST_STATUS == 'True') ? true : false);
+      $this->enabled = ((MODULE_PAYMENT_ASSIST_STATUS == 'True') ? true : false);
       $this->form_action_url = MODULE_PAYMENT_ASSIST_URL;
       if ((int)MODULE_PAYMENT_ASSIST_ORDER_STATUS_ID > 0) {
         $this->order_status = MODULE_PAYMENT_ASSIST_ORDER_STATUS_ID;
