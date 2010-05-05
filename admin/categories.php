@@ -312,16 +312,16 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 
 	// generate editor for categories
 	if ($_GET['action'] == 'new_category' || $_GET['action'] == 'edit_category') {
-		for ($i = 0; $i < sizeof($languages); $i ++) {
+		//for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('categories_description', $data['code'], $languages[$i]['id']);
-		}
+		//}
 	}
 
 	// generate editor for products
 	if ($_GET['action'] == 'new_product') {
-		for ($i = 0; $i < sizeof($languages); $i ++) {
+		//for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('products_description', $data['code'], $languages[$i]['id']);
-		}
+		//}
 	} 
 ?>
 </head>
