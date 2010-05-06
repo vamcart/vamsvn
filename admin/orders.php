@@ -349,12 +349,12 @@ switch ($_GET['action']) {
               $customer_query = vam_db_query("select c.* from " . TABLE_CUSTOMERS . " as c, " . TABLE_ORDERS . " as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
               $customer = vam_db_fetch_array($customer_query);
 			     if ($customer['customers_status'] == '0') {
-              $customer_id = 0;
+              $customer_id2 = 0;
               } else {
-              $customer_id = $customer['customers_id'];
+              $customer_id2 = $customer['customers_id'];
               }
               $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
-              $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
+              $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id2 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
               $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
               while ($statuses = vam_db_fetch_array($statuses_groups_query)) {
@@ -367,7 +367,7 @@ switch ($_GET['action']) {
               $customers_total = $total_purchase['total'];
 
               // looking for current accumulated limit & discount
-              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id);
+              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id2);
               $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, "customers_status_name");
@@ -387,11 +387,11 @@ switch ($_GET['action']) {
                  $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
     
                  // updating customers group
-                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
+                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id2);
                  $changed = true;
              }
            }
-           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
+           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id2);
            $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
@@ -439,6 +439,7 @@ switch ($_GET['action']) {
         }
         
         // eof denuz added accumulated discount
+
 
 		vam_redirect(vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('action')).'action=edit'));
 		break;
