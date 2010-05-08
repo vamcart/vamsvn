@@ -388,16 +388,16 @@
 
 	// generate editor for categories
   if ($_GET['action'] == 'new_topic_ACD' || $_GET['action'] == 'edit_topic_ACD') {
-    for ($i=0; $i<sizeof($languages); $i++) {
+    //for ($i=0; $i<sizeof($languages); $i++) {
 			echo vam_wysiwyg_tiny('topics_description', $data['code'], $languages[$i]['id']);
-		}
+		//}
 	}
 
 	// generate editor for products
 	if ($_GET['action'] == 'new_article') {
-		for ($i = 0; $i < sizeof($languages); $i ++) {
+		//for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('articles_description', $data['code'], $languages[$i]['id']);
-		}
+		//}
 	} 
 ?>
 </head>
