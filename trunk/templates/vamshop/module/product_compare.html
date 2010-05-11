@@ -19,7 +19,7 @@
         {if $parameters_data.parameters_name != 1}<td {if $parameters_data.is_group}colspan="3" style="font-weight: bold; text-align: center;"{/if}>{$parameters_data.parameters_name}</td>{/if}
         {if $parameters_data.parameters_values}
         {foreach name=aussen item=values from=$parameters_data.parameters_values}
-        <td>{if $values.value != 1}{$values.value}{else}&nbsp;{/if}</td>{/foreach}
+        <td>{$values.value}</td>{/foreach}
         {/if}
     </tr>{/foreach}
 </table>
