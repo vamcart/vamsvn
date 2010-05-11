@@ -68,6 +68,8 @@ if ($product->getAttributesCount() > 0) {
 		                                                 and pov.language_id = '".(int) $_SESSION['languages_id']."'
 		                                                 order by pa.sortorder");
 		$col = 0;
+        // added by mosq
+        $checked = 'checked="checked"';
 		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
 			$price = '';
 			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
@@ -83,8 +85,9 @@ if ($product->getAttributesCount() > 0) {
 				'STOCK' => $products_options['attributes_stock'], 
 				'PRICE' => '', 
 				'FULL_PRICE' => '', 
-				'PREFIX' => $products_options['price_prefix']
-				
+				'PREFIX' => $products_options['price_prefix'],
+				// added by mosq
+                'CHECKED' => $checked,
 				);
 			
 				$price = '';
@@ -118,11 +121,12 @@ if ($product->getAttributesCount() > 0) {
 			'STOCK' => $products_options['attributes_stock'], 
 			'PRICE' => $price, 
 			'PRICE_PLAIN' => $price_plain, 
-			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix']
-			
+			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix'],
+			// added by mosq
+            'CHECKED' => $checked,
 			);
 			
-			
+			$checked = '';
 			$col ++;
 		}
 		$row ++;
