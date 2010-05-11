@@ -396,9 +396,9 @@
         $country_query = vam_db_query("select countries_name from " . TABLE_COUNTRIES . " where countries_id = '" . $affiliate['affiliate_country_id'] . "'");
         $country = vam_db_fetch_array($country_query);
 
-        $affiliate_info = array_merge($country, $info);
+        $affiliate_info = array_merge((array)$country, $info);
 
-        $aInfo_array = array_merge($affiliate, $affiliate_info);
+        $aInfo_array = array_merge($affiliate, (array)$affiliate_info);
         $aInfo = new objectInfo($aInfo_array);
       }
       
