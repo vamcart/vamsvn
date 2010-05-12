@@ -304,6 +304,7 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<title><?php echo TITLE; ?></title>
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
+		<script type="text/javascript" src="includes/general.js"></script>
 <?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
 	$data = vam_db_fetch_array($query);
