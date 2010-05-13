@@ -17,23 +17,13 @@
 
 function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
-$js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce_gzip.js';
+$js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce.js';
 $js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php';
 
 	switch($type) {
                 // WYSIWYG editor latest news textarea named latest_news
                 case 'latest_news':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
 <script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
@@ -79,16 +69,6 @@ function toggleHTMLEditor(id) {
                 case 'faq':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -132,16 +112,6 @@ function toggleHTMLEditor(id) {
                 // WYSIWYG editor latest news textarea named articles_description
                 case 'articles_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
 <script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
@@ -187,16 +157,6 @@ function toggleHTMLEditor(id) {
                 case 'topics_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -240,16 +200,6 @@ function toggleHTMLEditor(id) {
                 // WYSIWYG editor products description textarea named products_description
                 case 'products_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
 <script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
@@ -295,16 +245,6 @@ function toggleHTMLEditor(id) {
                 case 'products_short_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -349,16 +289,6 @@ function toggleHTMLEditor(id) {
                 case 'content_manager':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -401,16 +331,6 @@ function toggleHTMLEditor(id) {
 
                 // WYSIWYG editor products content manager
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
 <script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
@@ -456,16 +376,6 @@ function toggleHTMLEditor(id) {
                 case 'categories_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -510,16 +420,6 @@ function toggleHTMLEditor(id) {
                 case 'mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
-<script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
 	editor_deselector : "notinymce",
@@ -563,16 +463,6 @@ function toggleHTMLEditor(id) {
                 // WYSIWYG editor gift voucher
                 case 'gv_mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-// This is where the compressor will load all components, include all components used on the page here
-tinyMCE_GZ.init({
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	themes : "advanced",
-	languages : "'.$lang.'",
-	disk_cache : true,
-	debug : false
-});
-</script>
 <script type="text/javascript">
 tinyMCE.init({
 	mode : "textareas",
