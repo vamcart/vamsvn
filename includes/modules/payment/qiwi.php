@@ -340,7 +340,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			$params = array(
 			'login' => MODULE_PAYMENT_QIWI_ID,
 			'password' => MODULE_PAYMENT_QIWI_SECRET_KEY,
-			'user' => ($_SESSION['qiwi_telephone'] == '' ? $POST['qiwi_telephone'] : $_SESSION['qiwi_telephone']),
+			'user' => ($_SESSION['qiwi_telephone'] == '' ? $_POST['qiwi_telephone'] : $_SESSION['qiwi_telephone']),
 			'amount' => number_format($order->info['total'],0,'',''),
 			'comment' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
 			'txn' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
