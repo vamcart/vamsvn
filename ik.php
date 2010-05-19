@@ -45,7 +45,7 @@ $hash = md5($hash_source);
 // checking and handling
 if ($_POST['ik_payment_state'] == 'success') {
 if (strtoupper($hash) == strtoupper($crc)) {
-if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
+if (number_format($_POST['ik_payment_amount'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_IK_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
