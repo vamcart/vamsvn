@@ -71,8 +71,7 @@ function CP1251toUTF8($str){
 
 static $table = array("\xA8" => "\xD0\x81", 
 "\xB8" => "\xD1\x91", 
-// украинские символы
-"\xA1" => "\xD0\x8E", 
+// б�Кб�АаИаНб�КаИаЕ б�ИаМаВаОаЛб�"\xA1" => "\xD0\x8E", 
 "\xA2" => "\xD1\x9E", 
 "\xAA" => "\xD0\x84", 
 "\xAF" => "\xD0\x87", 
@@ -80,8 +79,7 @@ static $table = array("\xA8" => "\xD0\x81",
 "\xB3" => "\xD1\x96", 
 "\xBA" => "\xD1\x94", 
 "\xBF" => "\xD1\x97", 
-// чувашские символы
-"\x8C" => "\xD3\x90", 
+// б��ВаАб��КаИаЕ б�ИаМаВаОаЛб�"\x8C" => "\xD3\x90", 
 "\x8D" => "\xD3\x96", 
 "\x8E" => "\xD2\xAA", 
 "\x8F" => "\xD3\xB2", 
@@ -637,7 +635,7 @@ if ( $_POST['download'] == 'stream' or $_POST['download'] == 'tempfile' ){
     </td>
 <?php } ?>
 <!-- body_text //-->
-    <td class="boxCenter" valign="top">
+    <td class="boxCenter" width="100%" valign="top">
     
     <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -1120,28 +1118,18 @@ function ep_create_filelayout($dltype){
 		break;
 // end of EP for extra field code ======= DEVSOFTVN================       
 	case 'full':
-    case 'category':
-      if ($limit_cat == '0'){
-      } else {
-        /**************/
-        $str_query1 = vam_db_query("select parent_id from categories where categories_id = '".$_POST['limit_cat']."'");
-        $result_1 = vam_db_fetch_array($str_query1);
-        $cat_parent_id = $result_1['parent_id'];
-
-        if($cat_parent_id == 0){
-          $categories_range .= 'subc.parent_id = \'' . $_POST['limit_cat']. '\' and ';
-        } else {
-          $categories_range .= 'ptoc.categories_id = \'' . $_POST['limit_cat']. '\' and ';
-        }
-        /**************/ 
-       // for one level down
-      // $categories_range .= 'ptoc.categories_id =  \'' . $limit_cat. '\' and ';
+	case 'category':
+	case 'froogle':
+		if ($_POST['limit_cat'] == '0'){
+		}else{
+// for one level down
+			$categories_range .= 'ptoc.categories_id =  \'' . $_POST['limit_cat']. '\' and ';
 
 // for two levels down
-//  $catfield=vam_get_category_treea($limit_cat);
+//  $catfeild=vam_get_category_treea($_POST['limit_cat']);
 //          $categories_range .= "( ";
-//for ($i=0, $n=sizeof($catfield); $i<$n; $i++) {
-//  $categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfield[$i]['id'] . "' ");
+//for ($i=0, $n=sizeof($catfeild); $i<$n; $i++) {
+//  $categories_range .= 'ptoc.categories_id = ' . "'"  . vam_output_string($catfeild[$i]['id'] . "' ");
 //if ($i<$n){
 // $categories_range .= ' or ';
 //         }
@@ -1149,8 +1137,8 @@ function ep_create_filelayout($dltype){
 //    }
 //     $categories_range=substr_replace($categories_range, ')and ', -4);
 
-      }
-      break;
+		}
+		break;
 	case 'attrib':
 
 		if ($_POST['limit_cat'] == '0'){
