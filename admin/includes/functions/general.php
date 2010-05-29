@@ -2032,4 +2032,15 @@ function vam_attribute_image_processing($filename,$filetyp,$upload_dir,$thumb_wi
     return $fields['fields_name'];
   }
 
+function vam_get_spsr_zone_id($zone_id) {
+    $spsr_zone_query = vam_db_query("select spsr_zone_id from " . TABLE_SPSR_ZONES . " where zone_id = '" . $zone_id . "'");
+    if (vam_db_num_rows($spsr_zone_query)) {
+      $spsr_zone = vam_db_fetch_array($spsr_zone_query);
+	  $spsr_zone_id = $spsr_zone['spsr_zone_id'];
+	  return $spsr_zone_id;
+    } else {
+	  return false;
+    }
+   }
+
 ?>
