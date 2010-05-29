@@ -630,7 +630,7 @@ DROP TABLE IF EXISTS configuration;
 CREATE TABLE `configuration` (
   `configuration_id` int(11) NOT NULL auto_increment,
   `configuration_key` varchar(255) NOT NULL default '',
-  `configuration_value` varchar(255) NOT NULL default '',
+  `configuration_value` text,
   `configuration_group_id` int(11) NOT NULL default '0',
   `sort_order` int(5) default NULL,
   `last_modified` datetime default NULL,
