@@ -3224,3 +3224,94 @@ INSERT INTO customers_status (customers_status_id, language_id, customers_status
 INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (2, 1, 'Покупатель', 1, NULL, NULL, 'customer_status.gif', 0.00, '0', 0.00, '1', 1, 1, 0, '', '', 0, 1, 1, 1, 1, 0.00);
 
 INSERT INTO customers_status (customers_status_id, language_id, customers_status_name, customers_status_public, customers_status_min_order, customers_status_max_order, customers_status_image, customers_status_discount, customers_status_ot_discount_flag, customers_status_ot_discount, customers_status_graduated_prices, customers_status_show_price, customers_status_show_price_tax, customers_status_add_tax_ot, customers_status_payment_unallowed, customers_status_shipping_unallowed, customers_status_discount_attributes, customers_fsk18, customers_fsk18_display, customers_status_write_reviews, customers_status_read_reviews, customers_status_accumulated_limit) VALUES (3, 1, 'Оптовый покупатель', 1, NULL, NULL, 'merchant_status.gif', 0.00, '0', 0.00, '1', 1, 0, 0, '', '', 0, 1, 1, 1, 1, 0.00);
+
+drop table if exists spsr_zones;
+create table spsr_zones (
+  id int(11) not null auto_increment,
+  zone_id int(11) default '0' not null ,
+  spsr_zone_id int(11) default '0' not null,
+  PRIMARY KEY (id)
+);
+
+insert into spsr_zones values ('1', '22', '53');
+insert into spsr_zones values ('2', '23', '55');
+insert into spsr_zones values ('3', '24', '56');
+insert into spsr_zones values ('4', '25', '54');
+insert into spsr_zones values ('5', '26', '57');
+insert into spsr_zones values ('6', '27', '101');
+insert into spsr_zones values ('7', '28', '19');
+insert into spsr_zones values ('8', '29', '58');
+insert into spsr_zones values ('9', '30', '24');
+insert into spsr_zones values ('10', '31', '59');
+insert into spsr_zones values ('11', '32', '60');
+insert into spsr_zones values ('12', '33', '61');
+insert into spsr_zones values ('13', '34', '62');
+insert into spsr_zones values ('14', '35', '63');
+insert into spsr_zones values ('15', '36', '64');
+insert into spsr_zones values ('16', '37', '65');
+insert into spsr_zones values ('17', '38', '66');
+insert into spsr_zones values ('18', '39', '84');
+insert into spsr_zones values ('19', '40', '67');
+insert into spsr_zones values ('20', '41', '92');
+insert into spsr_zones values ('21', '42', '94');
+insert into spsr_zones values ('22', '43', '3');
+insert into spsr_zones values ('23', '44', '30');
+insert into spsr_zones values ('24', '45', '31');
+insert into spsr_zones values ('25', '46', '51');
+insert into spsr_zones values ('26', '47', '75');
+insert into spsr_zones values ('27', '48', '89');
+insert into spsr_zones values ('28', '49', '4');
+insert into spsr_zones values ('29', '50', '6');
+insert into spsr_zones values ('30', '51', '7');
+insert into spsr_zones values ('31', '52', '8');
+insert into spsr_zones values ('32', '53', '10');
+insert into spsr_zones values ('33', '54', '11');
+insert into spsr_zones values ('34', '55', '12');
+insert into spsr_zones values ('35', '56', '13');
+insert into spsr_zones values ('36', '57', '14');
+insert into spsr_zones values ('37', '58', '17');
+insert into spsr_zones values ('38', '59', '18');
+insert into spsr_zones values ('39', '60', '21');
+insert into spsr_zones values ('40', '61', '22');
+insert into spsr_zones values ('41', '62', '23');
+insert into spsr_zones values ('42', '63', '25');
+insert into spsr_zones values ('43', '64', '27');
+insert into spsr_zones values ('44', '65', '29');
+insert into spsr_zones values ('45', '66', '32');
+insert into spsr_zones values ('46', '67', '33');
+insert into spsr_zones values ('47', '68', '35');
+insert into spsr_zones values ('48', '69', '36');
+insert into spsr_zones values ('49', '70', '38');
+insert into spsr_zones values ('50', '71', '40');
+insert into spsr_zones values ('51', '72', '41');
+insert into spsr_zones values ('52', '73', '43');
+insert into spsr_zones values ('53', '74', '44');
+insert into spsr_zones values ('54', '75', '45');
+insert into spsr_zones values ('55', '76', '46');
+insert into spsr_zones values ('56', '77', '47');
+insert into spsr_zones values ('57', '78', '48');
+insert into spsr_zones values ('58', '79', '49');
+insert into spsr_zones values ('59', '80', '50');
+insert into spsr_zones values ('60', '81', '52');
+insert into spsr_zones values ('61', '82', '68');
+insert into spsr_zones values ('62', '83', '69');
+insert into spsr_zones values ('63', '84', '70');
+insert into spsr_zones values ('64', '85', '71');
+insert into spsr_zones values ('65', '86', '72');
+insert into spsr_zones values ('66', '87', '73');
+insert into spsr_zones values ('67', '88', '74');
+insert into spsr_zones values ('68', '89', '78');
+insert into spsr_zones values ('69', '90', '79');
+insert into spsr_zones values ('70', '91', '80');
+insert into spsr_zones values ('71', '92', '81');
+insert into spsr_zones values ('72', '93', '83');
+insert into spsr_zones values ('73', '94', '87');
+insert into spsr_zones values ('74', '95', '91');
+insert into spsr_zones values ('75', '97', '100');
+insert into spsr_zones values ('76', '100', '16');
+insert into spsr_zones values ('77', '104', '42');
+insert into spsr_zones values ('78', '106', '88');
+insert into spsr_zones values ('79', '107', '90');
+insert into spsr_zones values ('80', '108', '95');
+insert into spsr_zones values ('81', '109', '97');
+insert into spsr_zones values ('82', '110', '99');

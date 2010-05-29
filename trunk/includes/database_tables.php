@@ -125,5 +125,7 @@
   define('TABLE_PRODUCTS_PARAMETERS', 'products_parameters');
   define('TABLE_PRODUCTS_PARAMETERS2PRODUCTS', 'products_parameters2products');
   define('TABLE_PRODUCTS_PARAMETERS_VALUES', 'products_parameters_values');
+
+define('TABLE_SPSR_ZONES', 'spsr_zones');
   
 ?>

@@ -175,6 +175,8 @@ require_once (DIR_FS_INC.'vam_get_products_quantity_order_max.inc.php');
 
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
+require_once (DIR_FS_INC.'vam_get_spsr_zone_id.inc.php');
+
 // make a connection to the database... now
 vam_db_connect() or die('Unable to connect to database server!');
 
