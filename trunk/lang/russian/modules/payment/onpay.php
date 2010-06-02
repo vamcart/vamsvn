@@ -32,8 +32,8 @@
 	define('MODULE_PAYMENT_ONPAY_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 	define('MODULE_PAYMENT_ONPAY_ZONE_TITLE' , 'Зона');
 	define('MODULE_PAYMENT_ONPAY_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-	define('MODULE_PAYMENT_ONPAY_SECRET_KEY_TITLE' , 'Пароль API IN');
-	define('MODULE_PAYMENT_ONPAY_SECRET_KEY_DESC' , 'Ваш API IN (секретный ключ) в системе OnPay.');
+	define('MODULE_PAYMENT_ONPAY_SECRET_KEY_TITLE' , 'Секретный ключ');
+	define('MODULE_PAYMENT_ONPAY_SECRET_KEY_DESC' , 'Укажите любой набор цифр, символов.');
 	define('MODULE_PAYMENT_ONPAY_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 	define('MODULE_PAYMENT_ONPAY_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
   
