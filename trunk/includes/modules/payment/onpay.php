@@ -311,8 +311,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = number_format($order->info['total'], 1);
-                               $hash = md5('fix'.';'.$order_sum.';'.'RUR'.';'.substr($cart_onpay_id, strpos($cart_onpay_id, '-')+1).';'.'yes'.';'.MODULE_PAYMENT_ONPAY_SECRET_KEY);
+                               $order_sum = number_format($order->info['total'],1,'.','');
+                               $hash = strtoupper(md5('fix'.';'.$order_sum.';'.'RUR'.';'.substr($cart_onpay_id, strpos($cart_onpay_id, '-')+1).';'.'yes'.';'.MODULE_PAYMENT_ONPAY_SECRET_KEY));
 
       $process_button_string = vam_draw_hidden_field('pay_mode', 'fix') .
                                vam_draw_hidden_field('price', $order_sum) .
