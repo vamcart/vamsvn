@@ -19,7 +19,7 @@
 
   define('MODULE_PAYMENT_ONPAY_TEXT_TITLE', 'OnPay');
   define('MODULE_PAYMENT_ONPAY_TEXT_PUBLIC_TITLE', 'OnPay');
-  define('MODULE_PAYMENT_ONPAY_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты OnPay<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/faq.php/faq_id/70/question/Nastroika-modulya-oplaty-OnPay-Merchant" target="_blank"><u>здесь</u></a>.');
+  define('MODULE_PAYMENT_ONPAY_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты OnPay<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/blog/2010/06/02/подключаем-vam-shop-к-onpay-ru/" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_ONPAY_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   
 	define('MODULE_PAYMENT_ONPAY_STATUS_TITLE' , 'Разрешить модуль OnPay');
