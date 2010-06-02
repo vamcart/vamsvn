@@ -34,7 +34,7 @@ require (DIR_WS_CLASSES.'order.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 
-$order = new order($inv_id);
+$order = new order(get_var('pay_for'));
 
 
 if (get_var('type') == 'check') {
@@ -45,6 +45,10 @@ if (get_var('type') == 'check') {
 
 if (get_var('type') == 'pay') {
 
+$crc = strtoupper(md5('pay'.';'.get_var('pay_for').';'.get_var('onpay_id').';'.get_var('order_amount').';'.'RUR'.';'.MODULE_PAYMENT_ONPAY_SECRET_KEY));
+$hash = get_var('md5');
+
+if($crc == $hash) {
 if (number_format(get_var('order_amount'),0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_ONPAY_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".get_var('pay_for')."'");
@@ -57,10 +61,10 @@ if (number_format(get_var('order_amount'),0) == number_format($order->info['tota
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
 }
-
-   $md5 = strtoupper(md5('pay'.';'.get_var('pay_for').';'.';'.get_var('onpay_id').';'.';'.get_var('pay_for').';'.get_var('order_amount').';'.'RUR'.';'.'0'.';'.MODULE_PAYMENT_ONPAY_SECRET_KEY));
+}
+   $md5 = strtoupper(md5('pay'.';'.get_var('pay_for').';'.get_var('onpay_id').';'.get_var('pay_for').';'.get_var('order_amount').';'.'RUR'.';'.'0'.';'.MODULE_PAYMENT_ONPAY_SECRET_KEY));
    $text = 'Payment Received';
-	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<result>\n<code>0</code>\n <comment>$text</comment>\n<onpay_id>".get_var('onpay_id')."</onpay_id>\n <pay_for>".get_var('pay_for')."</pay_for>\n<order_id>".get_var('order_id')."</order_id>\n<md5>$md5</md5>\n</result>";
+	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<result>\n<code>0</code>\n <comment>$text</comment>\n<onpay_id>".get_var('onpay_id')."</onpay_id>\n <pay_for>".get_var('pay_for')."</pay_for>\n<order_id>".get_var('pay_for')."</order_id>\n<md5>$md5</md5>\n</result>";
 
 }
 
