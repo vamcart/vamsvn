@@ -194,6 +194,7 @@ $products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_mo
                  WHERE p.products_status = 1" .
                    (($yml_select > 0) ? " and p.products_to_xml = 1" : "") .
                  " AND pd.language_id = " . (int)$_SESSION['languages_id'] . "
+                 group by p.products_id 
                  ORDER BY p.products_id ASC";
 $products_query = vam_db_query($products_sql);
 while ($products = vam_db_fetch_array($products_query)) {
