@@ -141,6 +141,7 @@ function vam_get_filelist_func ($startdir,
                             'id' => $subdir . $file,
                             'text' => $subdir . $file
                         );
+							array_multisort ($files, SORT_ASC);
                     }
                 } elseif (is_dir($dirname . $file)) {
                     if ($dir_only) {
