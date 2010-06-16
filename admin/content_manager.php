@@ -826,8 +826,7 @@ echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
                                 products_id,
                                 products_name
                                 FROM ".TABLE_PRODUCTS_DESCRIPTION."
-                                WHERE language_id='".(int)$_SESSION['languages_id']."'");
- $products_array=array();
+                                WHERE language_id='".(int)$_SESSION['languages_id']."' order by products_name");
 
  while ($products_data=vam_db_fetch_array($products_query)) {
  
