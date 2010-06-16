@@ -141,7 +141,6 @@ function vam_get_filelist_func ($startdir,
                             'id' => $subdir . $file,
                             'text' => $subdir . $file
                         );
-							array_multisort ($files, SORT_ASC);
                     }
                 } elseif (is_dir($dirname . $file)) {
                     if ($dir_only) {
@@ -149,7 +148,6 @@ function vam_get_filelist_func ($startdir,
                             'id' => $subdir . $file . '/',
                             'text' => $subdir . $file . '/'
                         );
-							array_multisort ($files, SORT_ASC);
                     }
                     $files = vam_array_merge($files, vam_get_filelist_func ($startdir, $file_filter, $dir_only, $subdir . $file . '/'));
                 }
