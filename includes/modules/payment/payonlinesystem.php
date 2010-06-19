@@ -17,14 +17,14 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  class webmoney_merchant {
+  class payonlinesystem {
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function webmoney_merchant() {
+    function payonlinesystem() {
       global $order;
 
-      $this->code = 'webmoney_merchant';
+      $this->code = 'payonlinesystem';
       $this->title = MODULE_PAYMENT_PAYONLINESYSTEM_TEXT_TITLE;
       $this->public_title = MODULE_PAYMENT_PAYONLINESYSTEM_TEXT_PUBLIC_TITLE;
       $this->description = MODULE_PAYMENT_PAYONLINESYSTEM_TEXT_ADMIN_DESCRIPTION;
@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_PAYONLINESYSTEM_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_PAYONLINESYSTEM_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://merchant.webmoney.ru/lmi/payment.asp';
+        $this->form_action_url = 'https://secure.payonlinesystem.com/ru/payment/';
     }
 
 // class methods
@@ -64,8 +64,8 @@
 
     function selection() {
 
-      if (isset($_SESSION['cart_webmoney_id'])) {
-        $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      if (isset($_SESSION['cart_payonline_id'])) {
+        $order_id = substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
@@ -77,7 +77,7 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          unset($_SESSION['cart_webmoney_id']);
+          unset($_SESSION['cart_payonline_id']);
         }
       }
 
@@ -102,17 +102,17 @@
     }
 
     function confirmation() {
-      global $cartID, $cart_webmoney_id, $customer_id, $languages_id, $order, $order_total_modules;
+      global $cartID, $cart_payonline_id, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (isset($_SESSION['cart_webmoney_id'])) {
-          $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+        if (isset($_SESSION['cart_payonline_id'])) {
+          $order_id = substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_webmoney_id, 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_payonline_id, 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -298,8 +298,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $cart_webmoney_id = $cartID . '-' . $insert_id;
-          $_SESSION['cart_webmoney_id'] = $cart_webmoney_id;
+          $cart_payonline_id = $cartID . '-' . $insert_id;
+          $_SESSION['cart_payonline_id'] = $cart_payonline_id;
         }
       }
 
@@ -307,27 +307,28 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     }
 
     function process_button() {
-      global $customer_id, $order, $sendto, $vamPrice, $currencies, $cart_webmoney_id, $shipping;
+      global $customer_id, $order, $sendto, $vamPrice, $currencies, $cart_payonline_id, $shipping;
 
       $process_button_string = '';
 
-                               $purse = MODULE_PAYMENT_PAYONLINESYSTEM_WMR;
-                               $order_sum = $order->info['total'];
+                               $order_sum = number_format($order->info['total'],2,'.','');
+                               $hash = md5('MerchantId='.MODULE_PAYMENT_PAYONLINESYSTEM_ID.'&OrderId='.substr($cart_payonline_id, strpos($cart_payonline_id, '-')+1).'&Amount='.$order_sum.'&Currency=RUB&PrivateSecurityKey='.MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY);
 
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($cart_webmoney_id, strpos($cart_webmoney_id, '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($cart_webmoney_id, strpos($cart_webmoney_id, '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
+      $process_button_string = vam_draw_hidden_field('OrderId', substr($cart_payonline_id, strpos($cart_payonline_id, '-')+1)) .
+                               vam_draw_hidden_field('MerchantId', MODULE_PAYMENT_PAYONLINESYSTEM_ID) .
+                               vam_draw_hidden_field('Amount', $order_sum) .
+                               vam_draw_hidden_field('SecurityKey', $hash) .
+                               vam_draw_hidden_field('Currency', 'RUB') .
+                               vam_draw_hidden_field('ReturnUrl', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL'));
 
       return $process_button_string;
     }
 
     function before_process() {
-      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_webmoney_id;
+      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_payonline_id;
       global $$payment;
 
-      $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      $order_id = substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1);
 
 // initialized for the email confirmation
       $products_ordered = '';
@@ -487,7 +488,7 @@ $vamTemplate = new vamTemplate;
       unset($_SESSION['payment']);
       unset($_SESSION['comments']);
 
-      unset($_SESSION['cart_webmoney_id']);
+      unset($_SESSION['cart_payonline_id']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
@@ -513,10 +514,9 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_ALLOWED', '', '6', '4', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_ID', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_WMR', '', '6', '6', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY', '', '6', '6', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_SORT_ORDER', '0', '6', '7', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY', '', '6', '9', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
@@ -525,7 +525,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_PAYONLINESYSTEM_STATUS', 'MODULE_PAYMENT_PAYONLINESYSTEM_ALLOWED', 'MODULE_PAYMENT_PAYONLINESYSTEM_ID', 'MODULE_PAYMENT_PAYONLINESYSTEM_WMR', 'MODULE_PAYMENT_PAYONLINESYSTEM_SORT_ORDER', 'MODULE_PAYMENT_PAYONLINESYSTEM_ZONE', 'MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY', 'MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_PAYONLINESYSTEM_STATUS', 'MODULE_PAYMENT_PAYONLINESYSTEM_ALLOWED', 'MODULE_PAYMENT_PAYONLINESYSTEM_ID', 'MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY', 'MODULE_PAYMENT_PAYONLINESYSTEM_SORT_ORDER', 'MODULE_PAYMENT_PAYONLINESYSTEM_ZONE', 'MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID');
     }
 
   }

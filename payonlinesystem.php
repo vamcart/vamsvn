@@ -22,7 +22,7 @@ require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
 // logging
-//$fp = fopen('webmoney.log', 'a+');
+//$fp = fopen('payonline.log', 'a+');
 //$str=date('Y-m-d H:i:s').' - ';
 //foreach ($_REQUEST as $vn=>$vv) {
 //  $str.=$vn.'='.$vv.';';
@@ -31,19 +31,17 @@ require (DIR_WS_CLASSES.'order.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 // variables prepearing
-$crc = get_var('LMI_HASH');
+$crc = get_var('SecurityKey');
 
-$inv_id = get_var('LMI_PAYMENT_NO');
+$inv_id = get_var('OrderId');
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
-$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY. 
-$_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
+$hash = md5('DateTime='.get_var('DateTime').'&TransactionID='.get_var('TransactionID').'&OrderId='.get_var('OrderId').'&Amount='.get_var('Amount').'&Currency=RUB&PrivateSecurityKey='.MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY);
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
+if (number_format($_POST['Amount'],2,'.','') == number_format($order->info['total'],2,'.','')) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
@@ -51,7 +49,7 @@ if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info[
                           'orders_status_id' => MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'WebMoney accepted this order payment');
+                          'comments' => 'PayOnline System accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
