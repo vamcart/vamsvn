@@ -214,7 +214,11 @@ if (isset ($_GET['action'])) {
           }
 
 				if (vam_has_product_attributes($_GET['BUYproducts_id'])) {
-					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
+					//vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
+					$_POST['products_id'] = $_GET['BUYproducts_id'];
+					$_POST['products_qty'] = 1;
+					$_POST['id'] = array('1' => '1');
+					$_SESSION['cart']->add_cart((int) $_POST['products_id'], $_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) + vam_remove_non_numeric($_POST['products_qty']), $_POST['id']);
 				} else {
 					if (isset ($_SESSION['cart'])) {
 						$_SESSION['cart']->add_cart((int) $_GET['BUYproducts_id'], $_SESSION['cart']->get_quantity((int) $_GET['BUYproducts_id']) + 1);
@@ -224,7 +228,7 @@ if (isset ($_GET['action'])) {
 				}
 			}
 				if (vam_has_product_attributes($_GET['BUYproducts_id'])) {
-					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
+					//vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
 				} else {
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params(array (
 				'action',
