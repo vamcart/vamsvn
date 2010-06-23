@@ -27,7 +27,7 @@ $vamTemplate = new vamTemplate;
 
 $vamTemplate->assign('language', $_SESSION['language']);
 
-if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
+if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 
 	$error = false;
 
@@ -112,7 +112,7 @@ if (!CacheCheck()) {
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'action=process&products_id='.$product->data['products_id'], 'SSL')));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION)).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
 $vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha'));    
 $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
 
@@ -155,7 +155,7 @@ $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 $vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha'));    
 $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'action=process&products_id='.$product->data['products_id'], 'SSL')));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION)).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
         if (isset($_SESSION['customer_id'])) { 
 		//-> registered user********************************************************
 $vamTemplate->assign('INPUT_FIRSTNAME', $_SESSION['customer_first_name']);
