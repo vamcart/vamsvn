@@ -1,22 +1,25 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russianpostems.php 899 2010/05/29 13:24:46 oleg_vamsoft $   
+   $Id: russianpostems.php 899 2010/05/29 13:24:46 oleg_vamsoft $
 
+   Modified by Nagh
+   http://www.tail.ru
+   -----------------------------------------------------------------------------------------
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(russianpostems.php,v 1.39 2003/02/05); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(russianpostems.php,v 1.39 2003/02/05); www.oscommerce.com
    (c) 2003	 nextcommerce (russianpostems.php,v 1.7 2003/08/24); www.nextcommerce.org
    (c) 2004	 xt:Commerce (russianpostems.php,v 1.7 2003/08/24); xt-commerce.com
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-   
+
 
   class russianpostems {
     var $code, $title, $description, $icon, $enabled;
@@ -57,42 +60,87 @@
     function quote($method = '') {
       global $order, $shipping_weight, $total_count;
 
+        $this->quotes = array('id' => $this->code,
+                            'module' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_TITLE,
+                            'methods' => array(array('id' => $this->code,
+                                                     'title' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_NOTE)));
 
-        $from_city = strtolower('city--'.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY);
-        $to_city = strtolower('city--'.vam_cleanName($order->delivery['city']));
-        
-        $url = 'http://emspost.ru/api/rest?method=ems.calculate&from='.$from_city.'&to='.$to_city.'&weight='.$shipping_weight;
+        if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);
+
+        $urlCities = 'http://emspost.ru/api/rest?method=ems.get.locations&type=cities';
 
         // create curl resource
         $ch = curl_init();
 
-        // set url
-        curl_setopt($ch, CURLOPT_URL, $url);
-
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // $output contains the output string
+        // set url
+		curl_setopt($ch, CURLOPT_URL, $urlCities);
+		$outCities = curl_exec($ch);
+
+
+		//---- get city list
+        $citiesList = json_decode(utf8_encode($outCities), true);
+        foreach ($citiesList['rsp']['locations'] as $city){
+          if (strtolower($city['name']) == strtolower(MODULE_SHIPPING_RUSSIANPOSTEMS_CITY)){
+            $from_city = $city['value'];
+          }
+          if (strtolower($city['name']) == strtolower($order->delivery['city'])){
+            $to_city = $city['value'];
+          }
+        }
+	if ($from_city === null){
+	  $this->quotes['error']='Доставка из города '.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY.' не производится!';
+	  return $this->quotes;
+	} else if ($to_city === null){
+	  $this->quotes['error']='Доставка в город '.$order->delivery['city'].' не производится!';
+	  return $this->quotes;
+	}
+	//----
+
+		$url = 'http://emspost.ru/api/rest?method=ems.calculate&from='.$from_city.'&to='.$to_city.'&weight='.$shipping_weight;
+		curl_setopt($ch, CURLOPT_URL, $url);
         $output = curl_exec($ch);
 
         // close curl resource to free up system resources
-        curl_close($ch);  
+        curl_close($ch);
 
         $contents = $output;
         $contents = utf8_encode($contents);
-        $results = json_decode($contents, true); 
+        $results = json_decode($contents, true);
 
-      $this->quotes = array('id' => $this->code,
-                            'module' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_TITLE,
-                            'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_NOTE,
-                                                     'cost' => $results['rsp']['price'] + MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING)));
+        if ($results['rsp']['stat'] == 'fail'){
+          $this->quotes['error'] = 'Ошибка: '.$results['rsp']['err']['msg'];
+		  return $this->quotes;
+		}
+	$shPrice = $results['rsp']['price'];
+	if (MODULE_SHIPPING_RUSSIANPOSTEMS_DCVAL_PERCENT >0){
+	  $shPrice += $order->info['subtotal']*MODULE_SHIPPING_RUSSIANPOSTEMS_DCVAL_PERCENT/100;
+	}
+        $this->quotes['methods'][key($this->quotes['methods'])]['cost'] = $shPrice + MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING;
+        $dlvr_min = $results['rsp']['term']['min'];
+        $dlvr_max = $results['rsp']['term']['max'];
+        if (($dlvr_min > 0) AND ( $dlvr_max > 0)){
+          if ($dlvr_min == $dlvr_max){
+            $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= '<br /><i>(срок доставки '.$dlvr_max;
+          } else {
+            $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= '<br /><i>(срок доставки '.$dlvr_min.' - '.$dlvr_max;
+          }
+          if ($dlvr_max == 1){
+            $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= ' день';
+          } else if (($dlvr_max > 1) and ($dlvr_max < 5)){
+            $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= ' дня';
+          } else {
+            $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= ' дней';
+          }
+          $this->quotes['methods'][key($this->quotes['methods'])]['title'] .= ') </i>';
+        }
 
       if ($this->tax_class > 0) {
         $this->quotes['tax'] = vam_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
       }
 
-      if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);
 
       return $this->quotes;
     }
@@ -114,6 +162,7 @@
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTEMS_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTEMS_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTEMS_SORT_ORDER', '0', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTEMS_DCVAL_PERCENT', '0', '6', '0', now())");
     }
 
     function remove() {
@@ -121,7 +170,7 @@
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_RUSSIANPOSTEMS_STATUS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_CITY', 'MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING','MODULE_SHIPPING_RUSSIANPOSTEMS_ALLOWED', 'MODULE_SHIPPING_RUSSIANPOSTEMS_TAX_CLASS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_ZONE', 'MODULE_SHIPPING_RUSSIANPOSTEMS_SORT_ORDER');
+      return array('MODULE_SHIPPING_RUSSIANPOSTEMS_STATUS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_CITY', 'MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING','MODULE_SHIPPING_RUSSIANPOSTEMS_ALLOWED', 'MODULE_SHIPPING_RUSSIANPOSTEMS_TAX_CLASS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_ZONE', 'MODULE_SHIPPING_RUSSIANPOSTEMS_SORT_ORDER', 'MODULE_SHIPPING_RUSSIANPOSTEMS_DCVAL_PERCENT');
     }
   }
 ?>
