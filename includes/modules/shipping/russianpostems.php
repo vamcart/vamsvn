@@ -60,6 +60,9 @@
     function quote($method = '') {
       global $order, $shipping_weight, $total_count;
 
+		$from_city = strtolower('city--'.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY);
+		$to_city = strtolower('city--'.vam_cleanName($order->delivery['city']));
+ 	        
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
