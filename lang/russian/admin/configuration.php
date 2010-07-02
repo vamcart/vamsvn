@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2010-02-13 17:36:58 VaM $
+   $Id: configuration.php 1286 2009-07-13 17:36:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -661,7 +661,7 @@ define('YML_SALES_NOTES_DESC' , 'Текст для тэга sales_notes');
 // Изменение цен
 
 define('DISPLAY_MODEL_TITLE' , 'Показывать код товара');
-define('MODIFY_MODEL_TITLE' , 'Показывать код товара');
+define('MODIFY_MODEL_TITLE' , 'Изменение кода товара');
 define('MODIFY_NAME_TITLE' , 'Показывать название товара');
 define('DISPLAY_STATUT_TITLE' , 'Показывать статус товара');
 define('DISPLAY_WEIGHT_TITLE' , 'Показывать вес товара');
@@ -680,7 +680,7 @@ define('DISPLAY_EDIT_TITLE' , 'Показывать ссылку на редак
 define('ACTIVATE_COMMERCIAL_MARGIN_TITLE' , 'Показывать возможность массового изменения цен');
 
 define('DISPLAY_MODEL_DESC', 'Показывать/Не показывать код товара');
-define('MODIFY_MODEL_DESC', 'Показывать/Не показывать код товара');
+define('MODIFY_MODEL_DESC', 'Показывать/Не показывать изменение кода товара');
 define('MODIFY_NAME_DESC', 'Показывать/Не показывать название товара');
 define('DISPLAY_STATUT_DESC', 'Показывать/Не показывать статус товара');
 define('DISPLAY_WEIGHT_DESC', 'Показывать/Не показывать вес товара');
@@ -867,7 +867,7 @@ define('SET_BOX_ARTICLESNEW_TITLE', 'Новые статьи');
 define('SET_BOX_AUTHORS_TITLE', 'Авторы');
 define('SET_BOX_CART_TITLE', 'Корзина');
 define('SET_BOX_LOGIN_TITLE', 'Вход');
-define('SET_BOX_ADMIN_TITLE', 'Статистика');
+define('SET_BOX_ADMIN_TITLE', 'Информация');
 define('SET_BOX_DOWNLOADS_TITLE', 'Мои загрузки');
 define('SET_BOX_AFFILIATE_TITLE', 'Партнёрская программа');
 define('SET_BOX_WHATSNEW_TITLE', 'Новинки');
