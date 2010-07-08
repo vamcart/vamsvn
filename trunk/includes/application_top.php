@@ -624,7 +624,7 @@ vam_count_cart();
 
 // add the articles name to the breadcrumb trail
   if (isset($_GET['articles_id'])) {
-    $article_query = vamDBquery("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'");
+    $article_query = vamDBquery("select articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
 
    if (vam_db_num_rows($article_query,true)) {
       $article = vam_db_fetch_array($article_query,true);
