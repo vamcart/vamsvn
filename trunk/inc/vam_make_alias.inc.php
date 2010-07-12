@@ -91,6 +91,7 @@
 						$alias = str_replace(' ','-',$alias);
 						//Replace cyrillic symbols to translit
 						$alias = strtr(stripslashes($alias), $trdic);
+                  $alias = strtolower($alias);
 						$alias = preg_replace("/[^a-zA-Z0-9-s]/", "", $alias);						
 						
                   $alias = $alias.'.html';
