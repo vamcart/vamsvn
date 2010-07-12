@@ -1,12 +1,12 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: webmoney.php 1310 2010-02-06 19:20:03 VaM $
+  $Id: lendshop.php 1310 2010-07-12 19:20:03 oleg_vamsoft $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
-   Copyright (c) 2007 VaM Shop
+   Copyright (c) 2010 VaM Shop
   -----------------------------------------------------------------------------
    based on:
    (c) 2005 Vetal (robox.php,v 1.48 2003/05/27); metashop.ru
@@ -22,7 +22,7 @@ require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
 // logging
-//$fp = fopen('webmoney.log', 'a+');
+//$fp = fopen('lendshop.log', 'a+');
 //$str=date('Y-m-d H:i:s').' - ';
 //foreach ($_REQUEST as $vn=>$vv) {
 //  $str.=$vn.'='.$vv.';';
@@ -38,20 +38,20 @@ $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
 $hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
-$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY. 
+$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_LENDSHOP_SECRET_KEY. 
 $_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
 
 // checking and handling
 if ($hash == $crc) {
 if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
-  $sql_data_array = array('orders_status' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID);
+  $sql_data_array = array('orders_status' => MODULE_PAYMENT_LENDSHOP_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
   $sql_data_arrax = array('orders_id' => $inv_id,
-                          'orders_status_id' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID,
+                          'orders_status_id' => MODULE_PAYMENT_LENDSHOP_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'WebMoney accepted this order payment');
+                          'comments' => 'LendShop accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
