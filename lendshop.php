@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: webmoney.php 1310 2009-02-06 19:20:03 VaM $
+  $Id: webmoney.php 1310 2010-02-06 19:20:03 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
