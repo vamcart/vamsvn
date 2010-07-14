@@ -555,7 +555,7 @@ function display_ttc(action, prix, taxe, up){
 		if(DISPLAY_MANUFACTURER == 'true'){if(MODIFY_MANUFACTURER == 'true')echo "<td align=\"center\">".vam_draw_pull_down_menu("product_new_manufacturer[".$products['products_id']."]\"", $manufacturers_array, $products['manufacturers_id'])."</td>\n";else echo "<td align=\"center\">" . $manufacturer['manufacturers_name'] . "</td>";}else{ echo "<td>&nbsp;</td>";}
 //// check specials
         if ( in_array($products['products_id'],$specials_array)) {
-            echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS, 'sID='.$products['products_id'])."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
+            echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price[".$products['products_id']."]\" value=\"".$products['products_price']."\" disabled >&nbsp;<a href=\"".vam_href_link (FILENAME_SPECIALS)."\">". vam_image(DIR_WS_IMAGES . 'icon_info.gif', TEXT_SPECIALS_PRODUCTS) ."</a></td>\n";
         } else {
             if ($flag_spec == 'true') {
                    echo "<td align=\"center\">&nbsp;<input type=\"text\" size=\"6\" name=\"product_new_price[".$products['products_id']."]\" "; if(DISPLAY_TVA_UP == 'true'){ echo "onKeyUp=\"display_ttc('keyup', this.value" . ", " . $tax_rate['tax_rate'] . ", 1);\"";} echo " value=\"".$price ."\">".vam_draw_checkbox_field('update_price['.$products['products_id'].']','yes','checked','no')."</td>\n";
