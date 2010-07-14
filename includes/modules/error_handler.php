@@ -17,7 +17,23 @@
    $module= new vamTemplate;
    $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
+  $category_query = "select
+                                      cd.categories_description,
+                                      cd.categories_name,
+          cd.categories_heading_title,       
+                                      c.categories_template,
+                                      c.categories_image from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
+                                      where c.categories_id = '".$current_category_id."'
+                                      and cd.categories_id = '".$current_category_id."'
+                                      ".$group_check."
+                                      and cd.language_id = '".(int) $_SESSION['languages_id']."'";
 
+  $category_query = vamDBquery($category_query);
+
+  $category = vam_db_fetch_array($category_query, true);
+  
+  $module->assign('CATEGORIES_NAME', $category['categories_name']);
+  $module->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
   $module->assign('language', $_SESSION['language']);
   $module->assign('ERROR',$error);
