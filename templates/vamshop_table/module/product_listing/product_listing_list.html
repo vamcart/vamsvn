@@ -14,7 +14,23 @@
     </td>  </tr></table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
 {if count($module_content) >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
-{#text_products_per_page#} <a href="{$LINK_PAGE}10">10</a>, <a href="{$LINK_PAGE}20">20</a>, <a href="{$LINK_PAGE}50">50</a>, <a href="{$LINK_PAGE}100">100</a>
+{#text_products_per_page#}
+
+{if count($module_content) > 10}
+<a href="{$LINK_PAGE}10">10</a> 
+{/if}
+
+{if count($module_content) > 20}
+<a href="{$LINK_PAGE}20">20</a> 
+{/if}
+
+{if count($module_content) > 50}
+<a href="{$LINK_PAGE}50">50</a> 
+{/if}
+
+{if count($module_content) > 100}
+<a href="{$LINK_PAGE}100">100</a>
+{/if} 
 {/if}
     </td>  </tr></table>
 {/if}<form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
