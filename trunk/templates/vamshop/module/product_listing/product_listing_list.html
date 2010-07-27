@@ -59,9 +59,11 @@
 <a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> | 
 <a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
 </p>
+{if count($module_content) >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
 <p>
 {#text_products_per_page#} <a href="{$LINK_PAGE}10">10</a>, <a href="{$LINK_PAGE}20">20</a>, <a href="{$LINK_PAGE}50">50</a>, <a href="{$LINK_PAGE}100">100</a>
 </p>
+{/if}
 <div class="clear"></div>
 </div>
 
