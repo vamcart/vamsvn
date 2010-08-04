@@ -18,21 +18,21 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 $file_warning = '';
 
-if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'includes/configure.php')), '444')) {
-	$file_warning .= '<br>'.DIR_FS_CATALOG.'includes/configure.php';
-}
+//if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'includes/configure.php')), '444')) {
+//	$file_warning .= '<br>'.DIR_FS_CATALOG.'includes/configure.php';
+//}
 
-if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'includes/configure.org.php')), '444')) {
-	$file_warning .= '<br>'.DIR_FS_CATALOG.'includes/configure.org.php';
-}
+//if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'includes/configure.org.php')), '444')) {
+//	$file_warning .= '<br>'.DIR_FS_CATALOG.'includes/configure.org.php';
+//}
 
-if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.php')), '444')) {
-	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.php';
-}
+//if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.php')), '444')) {
+//	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.php';
+//}
 
-if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.org.php')), '444')) {
-	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.org.php';
-}
+//if (!strpos(decoct(fileperms(DIR_FS_ADMIN.'includes/configure.org.php')), '444')) {
+//	$file_warning .= '<br>'.DIR_FS_ADMIN.'includes/configure.org.php';
+//}
 
 if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'cache/')), '777') and !strpos(decoct(fileperms(DIR_FS_CATALOG.'cache/')), '755')) {
 	$folder_warning .= '<br>'.DIR_FS_CATALOG.'cache/';
