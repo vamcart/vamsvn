@@ -1180,6 +1180,8 @@ if ($error == true) {
 		$search = "and c.customers_status = '".$status."'";
 	}
 
+	$sort = 'order by ci.customers_info_date_account_created DESC';
+
 	if ($_GET['sorting']) {
 		switch ($_GET['sorting']) {
 
