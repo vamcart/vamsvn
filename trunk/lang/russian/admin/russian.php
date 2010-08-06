@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2009-09-07 17:37:58 VaM $
+   $Id: russian.php 1231 2010-09-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -150,7 +150,7 @@ define('BOX_GV_ADMIN_MAIL', 'Отправить сертификат');
 define('BOX_GV_ADMIN_SENT', 'Отправленные');
 define('BOX_COUPON_ADMIN','Управление купонами');
 define('BOX_TOOLS_BLACKLIST','Чёрный список карточек');
-define('BOX_IMPORT','CSV импорт/Экспорт');
+define('BOX_IMPORT','CSV импорт/экспорт');
 define('BOX_PRODUCTS_VPE','Единица упаковки');
 define('BOX_CAMPAIGNS_REPORT','Отчёт по кампаниям');
 define('BOX_ORDERS_XSELL_GROUP','Сопутствующие');
