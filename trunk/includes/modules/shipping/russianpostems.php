@@ -60,9 +60,6 @@
     function quote($method = '') {
       global $order, $shipping_weight, $total_count;
 
-		$from_city = strtolower('city--'.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY);
-		$to_city = strtolower('city--'.vam_cleanName($order->delivery['city']));
- 	        
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_RUSSIANPOSTEMS_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
@@ -84,26 +81,54 @@
 
 
 		//---- get city list
+        $tocity = $order->delivery['city'];
         $citiesList = json_decode(utf8_encode($outCities), true);
         foreach ($citiesList['rsp']['locations'] as $city){
           if (strtolower($city['name']) == strtolower(MODULE_SHIPPING_RUSSIANPOSTEMS_CITY)){
             $from_city = $city['value'];
           }
-          if (strtolower($city['name']) == strtolower($order->delivery['city'])){
+          if (strtolower($city['name']) == strtolower($tocity)){
             $to_city = $city['value'];
           }
         }
-	if ($from_city === null){
-	  $this->quotes['error']='Доставка из города '.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY.' не производится!';
-	  return $this->quotes;
-	} else if ($to_city === null){
-	  $this->quotes['error']='Доставка в город '.$order->delivery['city'].' не производится!';
-	  return $this->quotes;
-	}
-	//----
+    if ($from_city === null){
+      $this->quotes['error']='Доставка из города '.MODULE_SHIPPING_RUSSIANPOSTEMS_CITY.' не производится!';
+      return $this->quotes;
+    } else if ($to_city === null){
+      $this->quotes['error']='Доставка в город '.$order->delivery['city'].' не производится!';
+      return $this->quotes;
+    }
+    //----
 
-		$url = 'http://emspost.ru/api/rest?method=ems.calculate&from='.$from_city.'&to='.$to_city.'&weight='.$shipping_weight;
-		curl_setopt($ch, CURLOPT_URL, $url);
+        
+//Проверка на максимальный вес    
+$urlWeight = 'http://emspost.ru/api/rest/?method=ems.get.max.weight';        
+    
+// create curl resource
+        $ch = curl_init();
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, $urlWeight);
+        $outWeight = curl_exec($ch);
+    
+        $WeightList = json_decode($outWeight, true);
+
+       foreach ($WeightList as $weight){
+       $max_weight = $weight['max_weight'];
+
+    if ($shipping_weight > $max_weight){
+      $this->quotes['error']='Превышен максимально возможный вес одного отправления. Разбейте заказ на несколько частей.';
+      return $this->quotes;
+
+}
+}
+
+        $url = 'http://emspost.ru/api/rest?method=ems.calculate&from='.$from_city.'&to='.$to_city.'&weight='.$shipping_weight;
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
         $output = curl_exec($ch);
 
         // close curl resource to free up system resources
