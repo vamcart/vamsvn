@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2009-09-07 17:36:58 VaM $
+   $Id: russian.php 1231 2009-09-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -582,6 +582,6 @@ define('text_trillions', 'триллионов');
 define('text_one_trillion', 'один триллион');
 define('text_two_trillion', 'два триллиона');
 
-define('BOX_YML_IMPORT','Яндекс-маркет импорт/экспорт');
+define('BOX_YML_IMPORT','Я-маркет импорт/экспорт');
 
 ?>
