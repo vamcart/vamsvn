@@ -61,7 +61,7 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
     foreach ($xml->shop->offers->offer as $product) {
     	
       $products_id = $product['id'];
-      $products_quantity = ((!$product['available']) ? 0 : 10000);
+      $products_quantity = (($product['available']) ? 0 : 10000);
       $products_price = $product->price;
       $categoryId = $product->categoryId;
       $products_image = $product->picture;
