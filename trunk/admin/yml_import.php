@@ -49,8 +49,8 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
           $count_cat_upd++;
         }
       } else {
-          vam_db_perform(TABLE_CATEGORIES, array('last_modified' => 'now()', 'parent_id' => $parent_id, 'categories_status' => 1, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'date_added' => 'now()'), 'update', 'categories_id=\''.$categories_id.'\'');
-          vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, array('categories_name' => $categories_name, 'categories_description' => $categories_description), 'update', 'categories_id=\''.$categories_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
+          vam_db_perform(TABLE_CATEGORIES, array('categories_id' => $categories_id, 'last_modified' => 'now()', 'parent_id' => $parent_id, 'categories_status' => 1, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'date_added' => 'now()'));
+          vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, array('categories_id' => $categories_id, 'categories_name' => $categories_name, 'categories_description' => $categories_description));
         $count_cat_add++;
       }
       
@@ -73,12 +73,12 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
       if (vam_db_num_rows($products_query)) {
         $row=vam_db_fetch_array($products_query);
         if ($row['products_price']!=$products_price) {
-          vam_db_perform(TABLE_PRODUCTS, array('products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'), 'update', 'products_id=\''.$products_id.'\'');
+          vam_db_perform(TABLE_PRODUCTS, array('products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'), 'update', 'products_id=\''.$products_id.'\'');
           vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_name' => $products_name), 'update', 'products_id=\''.$products_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
           $count_upd++;
         }
       } else {
-        vam_db_perform(TABLE_PRODUCTS, array('products_id' => $products_id, 'products_last_modified' => 'now()', 'products_price' => $products_price, $products_price, 'products_image' => $products_image, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'));
+        vam_db_perform(TABLE_PRODUCTS, array('products_id' => $products_id, 'products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'));
         vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_id' => $products_id, 'products_name' => $products_name, 'language_id' => $_SESSION['languages_id']));
         vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, array('products_id' => $products_id, 'categories_id' => $categoryId));
         $count_add++;
