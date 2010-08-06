@@ -40,10 +40,10 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
       $categories_name = unhtmlentities($category);
       $categories_description = '';
 
-      $categories_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where categories_id = '" . $categories_id . "' limit 1");
+      $categories_query = vam_db_query("select categories_name from " . TABLE_CATEGORIES_DESCRIPTION . " where categories_id = '" . $categories_id . "' and language_id = '".$_SESSION['languages_id']."' limit 1");
       if (vam_db_num_rows($categories_query)) {
         $row=vam_db_fetch_array($categories_query);
-        if ($row['categories_id']!=$categories_id) {
+        if ($row['categories_name']!=$categories_name) {
           vam_db_perform(TABLE_CATEGORIES, array('last_modified' => 'now()', 'parent_id' => $parent_id, 'categories_status' => 1, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'date_added' => 'now()'), 'update', 'categories_id=\''.$categories_id.'\'');
           vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, array('categories_name' => $categories_name, 'categories_description' => $categories_description), 'update', 'categories_id=\''.$categories_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
           $count_cat_upd++;
@@ -88,6 +88,8 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
     $messageStack->add_session(TEXT_YML_UPDATED.$count_upd, 'success');
     $messageStack->add_session(TEXT_YML_CHANGED.($count-$count_upd), 'success');
     $messageStack->add_session(TEXT_YML_ADDED.$count_add, 'success');
+    $messageStack->add_session(TEXT_YML_CAT_ADDED.$count_cat_add, 'success');
+    $messageStack->add_session(TEXT_YML_CAT_UPDATED.$count_cat_upd, 'success');
   } else {
     $messageStack->add_session(TEXT_YML_ERROR, 'error');
   }
