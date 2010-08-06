@@ -135,7 +135,7 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
           <?php echo vam_draw_form('xml_import', FILENAME_YML_IMPORT, '', 'post', 'enctype="multipart/form-data"') ."\n". vam_draw_file_field('xml_file') ."\n"; ?>
           <input type="hidden" name="action" value="import">
           <br>
-          <?php echo TEXT_YML_MAX_SIZE; ?><b><?php echo ini_get('upload_max_filesize'); ?></b><br />
+          <?php echo TEXT_YML_MAX_SIZE; ?> <b><?php echo ini_get('upload_max_filesize'); ?></b><br />
           <span class="button"><button type="submit" value="<?php echo TEXT_YML_IMPORT; ?>"><?php echo TEXT_YML_IMPORT; ?></button>
           </form>
         </td>
