@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: yml_import.php,v 1.1 2010-08-06 17:36:57 VaM $
+   $Id: yml_import.php,v 1.1 2010-08-06 17:37:57 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
