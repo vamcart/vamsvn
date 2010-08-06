@@ -139,7 +139,7 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
           <span class="button"><button type="submit" value="<?php echo TEXT_YML_IMPORT; ?>"><?php echo TEXT_YML_IMPORT; ?></button>
           </form>
         </td>
-        <td class="main" width="50%">
+        <td class="main" width="50%" valign="bottom">
           <a class="button" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG.'market.php'; ?>" target="_blank"><span><?php echo TEXT_YML_EXPORT; ?></span></a>
         </td>
       </tr>
