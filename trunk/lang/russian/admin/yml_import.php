@@ -20,5 +20,7 @@ define('TEXT_YML_ERROR', 'Файл не загружен');
 define('TEXT_YML_MAX_SIZE', 'Максиальный размер файла:');
 define('TEXT_YML_IMPORT', 'Импорт');
 define('TEXT_YML_EXPORT', 'Экспорт');
+define('TEXT_YML_CAT_ADDED','Добавлено категорий: ');
+define('TEXT_YML_CAT_UPDATED','Обновлено категорий: ');
 
 ?>
