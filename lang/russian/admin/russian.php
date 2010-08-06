@@ -582,4 +582,6 @@ define('text_trillions', 'триллионов');
 define('text_one_trillion', 'один триллион');
 define('text_two_trillion', 'два триллиона');
 
+define('BOX_YML_IMPORT','Яндекс-маркет импорт/экспорт');
+
 ?>

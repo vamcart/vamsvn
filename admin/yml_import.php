@@ -92,7 +92,7 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
     $messageStack->add_session(TEXT_YML_ERROR, 'error');
   }
 
-  vam_redirect(vam_href_link(basename($_SERVER['PHP_SELF'])));
+  vam_redirect(vam_href_link(FILENAME_YML_IMPORT));
 }
 
 ?>
@@ -130,7 +130,7 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
          
           <tr>
         <td class="main">
-          <?php echo vam_draw_form('xml_import', basename($_SERVER['PHP_SELF']), '', 'post', 'enctype="multipart/form-data"') ."\n". vam_draw_file_field('xml_file') ."\n"; ?>
+          <?php echo vam_draw_form('xml_import', FILENAME_YML_IMPORT, '', 'post', 'enctype="multipart/form-data"') ."\n". vam_draw_file_field('xml_file') ."\n"; ?>
           <input type="hidden" name="action" value="import">
           <br>
           <?php echo TEXT_YML_MAX_SIZE; ?> <b><?php echo ini_get('upload_max_filesize'); ?></b>

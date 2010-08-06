@@ -600,5 +600,7 @@ define('FILENAME_SELECT_FEATURED', 'select_featured.php');
 define('FILENAME_SELECT_SPECIAL', 'select_special.php'); 
 
 define('TABLE_SPSR_ZONES', 'spsr_zones');
+
+  define('FILENAME_YML_IMPORT','yml_import.php');
   
 ?>
