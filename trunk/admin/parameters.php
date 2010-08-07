@@ -795,7 +795,7 @@ function set_edit(id, obj)
             if (!empty($_REQUEST["search_product"]))
             {
                 $_REQUEST["search_product"] = get_magic_quotes_gpc() ? $_REQUEST["search_product"] : addslashes($_REQUEST["search_product"]);
-                $p_query = "select products_description.products_id, products_name from products_to_categories left join products_description using (products_id) where categories_id = '".$_REQUEST["category"]."' and products_name regexp('".$_REQUEST["search_product"]."')";
+                $p_query = "select products_description.products_id, products_name from products_to_categories left join products_description using (products_id) where language_id = '".$_SESSION['languages_id']."' and categories_id = '".$_REQUEST["category"]."' and products_name regexp('".$_REQUEST["search_product"]."')";
                 $p = mysql_query($p_query);
                 ?>
                 <table width="100%">
