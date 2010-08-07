@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2009-07-13 17:36:58 VaM $
+   $Id: configuration.php 1286 2010-08-13 17:36:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -867,7 +867,7 @@ define('SET_BOX_ARTICLESNEW_TITLE', 'Новые статьи');
 define('SET_BOX_AUTHORS_TITLE', 'Авторы');
 define('SET_BOX_CART_TITLE', 'Корзина');
 define('SET_BOX_LOGIN_TITLE', 'Вход');
-define('SET_BOX_ADMIN_TITLE', 'Информация');
+define('SET_BOX_ADMIN_TITLE', 'Статистика');
 define('SET_BOX_DOWNLOADS_TITLE', 'Мои загрузки');
 define('SET_BOX_AFFILIATE_TITLE', 'Партнёрская программа');
 define('SET_BOX_WHATSNEW_TITLE', 'Новинки');
