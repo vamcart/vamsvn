@@ -88,7 +88,7 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
 	
-	$module->assign('download_permission', false);
+	$module->assign('download_permission', 0);
 
 // Get last order id for checkout_success
     $orders_query_raw = "SELECT orders_id FROM " . TABLE_ORDERS . " WHERE customers_id = '" . (int)$_SESSION['customer_id'] . "' ORDER BY orders_id DESC LIMIT 1";
@@ -127,7 +127,7 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
           (($downloads_values['download_maxdays'] == 0) ||
            ($download_timestamp > time()))) {
            	
-	$module->assign('download_permission', true);
+	$module->assign('download_permission', 1);
   	
   	}
 	
@@ -136,6 +136,10 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 	// set cache ID
 
 		$module->caching = 0;
+		//$module->cache_lifetime = CACHE_LIFETIME;
+		//$module->cache_modified_check = CACHE_CHECK;
+		//$cache_id = $_SESSION['customer_id'].'_'.$_SESSION['language'].'_'.$downloads_values['download_count'].'_'.$shop_content_data['content_id'];
+		//$module = $module->fetch(CURRENT_TEMPLATE.'/module/products_media.html', $cache_id);
 		$module = $module->fetch(CURRENT_TEMPLATE.'/module/products_media.html');
 
 	$info->assign('MODULE_products_media', $module);
