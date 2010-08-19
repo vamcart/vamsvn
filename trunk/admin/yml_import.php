@@ -74,12 +74,12 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
         $row=vam_db_fetch_array($products_query);
         if ($row['products_price']!=$products_price) {
           vam_db_perform(TABLE_PRODUCTS, array('products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'), 'update', 'products_id=\''.$products_id.'\'');
-          vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_name' => $products_name), 'update', 'products_id=\''.$products_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
+          vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_name' => $products_name, 'products_description' => $products_description), 'update', 'products_id=\''.$products_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
           $count_upd++;
         }
       } else {
         vam_db_perform(TABLE_PRODUCTS, array('products_id' => $products_id, 'products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'));
-        vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_id' => $products_id, 'products_name' => $products_name, 'language_id' => $_SESSION['languages_id']));
+        vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_id' => $products_id, 'products_name' => $products_name, 'products_description' => $products_description, 'language_id' => $_SESSION['languages_id']));
         vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, array('products_id' => $products_id, 'categories_id' => $categoryId));
         $count_add++;
       }
