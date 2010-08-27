@@ -28,7 +28,7 @@
     }
 
     $wo_session_id = vam_session_id();
-    $wo_ip_address = getenv('REMOTE_ADDR');
+    $wo_ip_address = vam_get_ip_address();
     $wo_last_page_url = addslashes(getenv('REQUEST_URI'));
 
     $current_time = time();
