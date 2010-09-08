@@ -320,7 +320,7 @@
   
                          
 ?>                           
-    <option value="<?php echo $payment; ?>"<?php if ($srPayment == $payment) echo " selected"; ?>><?php echo $payment_text ; ?></option>
+    <option value="<?php echo $payment; ?>"<?php if ($payment = $srPayment) echo " selected"; ?>><?php echo $payment_text; ?></option>
                            
   <?php                         
   }
