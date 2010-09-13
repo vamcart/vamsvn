@@ -1,59 +1,38 @@
 {config_load file="$language/lang_$language.conf" section="ask_a_question"}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="contentsTopics">{#title_question#}</td>
-	<td class="main">{#heading_title#}</td>
-  </tr>
-  <tr>
-    <td class="main">&nbsp;</td>
-	<td class="main">{#model#}&nbsp;{$PRODUCTS_MODEL}</td>
-  </tr>
-  <tr>
-    <td class="main">&nbsp;</td>
-	<td class="main">{#name#}&nbsp;{$PRODUCTS_NAME}</td>
-  </tr>
-</table>
-{if $error!=''}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="main" style="border: 1 px solid; border-color: #000000;" bgcolor="#FFCCCC" align="center">{$error}</td>
-  </tr>
-</table>
-{/if}
-<br />
+
 {$FORM_ACTION}
-    <table width="100%" border="0" cellspacing="2" cellpadding="0">
-		<tr>
-		  <td class="main">{#text_sec_code#}</td>
-		  <td class="main">{$CAPTCHA_IMG}</td>
-		</tr>
-		<tr>
-		  <td class="main">&nbsp;</td>
-		  <td class="main"><b><font size="1" color="#0B3168">{#text_ask_a_question_help#}</font></b></td>
-		</tr>
-		<tr>
-		  <td class="main">{#text_inp_code#}</td>
-		  <td class="main">{$CAPTCHA_INPUT}</td>
-		</tr>
-        <tr> 
-          <td class="main">{#text_firstname#}</td>
-          <td>{$INPUT_FIRSTNAME}</td>
-        </tr>
-        <tr> 
-          <td class="main">{#text_lastname#}</td>
-          <td>{$INPUT_LASTNAME}</td>
-        </tr>
-		<tr> 
-          <td class="main">{#text_email#}</td>
-          <td>{$INPUT_EMAIL}</td>
-        </tr>
-        <tr>
-          <td class="main" valign="top">{#text_message#}</td>
-          <td>{$INPUT_TEXT}</td>
-        </tr>
-		<tr>
-		  <td class="main">{$BUTTON_CONTINUE}</td>
-		  <td class="main" align="right">{$BUTTON_SUBMIT}</td>
-		</tr>
-      </table>
+
+<div id="content">
+
+{if $error!=''}
+<div class="contacterror">
+{$error}
+</div>
+{/if}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{#heading_title#}
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_question#} {$PRODUCTS_NAME}</legend>
+<p>{#text_sec_code#} {$CAPTCHA_IMG}</p>
+<p>{#text_inp_code#} {$CAPTCHA_INPUT}</p>
+<p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
+<p>{#text_lastname#} {$INPUT_LASTNAME}</p>
+<p>{#text_email#} {$INPUT_EMAIL}</p>
+<p>{#text_message#} {$INPUT_TEXT}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
 {$FORM_END}
+
+</div>

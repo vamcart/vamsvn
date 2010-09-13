@@ -1,10 +1,14 @@
 {config_load file="$language/lang_$language.conf" section="ask_a_question"}
+
+{$FORM_ACTION}
+
+<div id="content">
+
 {if $error!=''}
 <div class="contacterror">
 {$error}
 </div>
 {/if}
-{$FORM_ACTION}
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
@@ -30,3 +34,5 @@
 {$BUTTON_SUBMIT}
 </div>
 {$FORM_END}
+
+</div>
