@@ -15,9 +15,6 @@
 */
 include ('includes/application_top.php');
 
-$product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int)$_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int)$_SESSION['languages_id']."'");
-$product_info = vam_db_fetch_array($product_info_query);
-
 // include needed functions
 require_once(DIR_FS_INC.'vam_validate_email.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
@@ -28,6 +25,11 @@ $vamTemplate = new vamTemplate;
 $vamTemplate->assign('language', $_SESSION['language']);
 
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
+
+include ('includes/header.php');
+
+$product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int)$_POST['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int)$_SESSION['languages_id']."'");
+$product_info = vam_db_fetch_array($product_info_query);
 
 	$error = false;
 
@@ -88,7 +90,7 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 		$vamTemplate->assign('TEXT_LASTNAME', $lastname);
 		$vamTemplate->assign('TEXT_EMAIL', $email_address);
 		$vamTemplate->assign('TEXT_EMAIL_SUCCESSFUL', sprintf(TEXT_EMAIL_SUCCESSFUL_SENT, $product_info['products_name']));
-		$vamTemplate->assign('PRODUCT_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
+		$vamTemplate->assign('PRODUCT_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_info['products_id'], $product_info['products_name'])));
 		$vamTemplate->caching = 0;
 		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.html');
 		$vamTemplate->caching = 0;
@@ -112,7 +114,7 @@ if (!CacheCheck()) {
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION)).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
 $vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha'));    
 $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
 
@@ -146,6 +148,9 @@ $vamTemplate->assign('BUTTON_CONTINUE', '<a href="javascript:window.close()">'.v
 }
 }else{
 
+$product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int)$_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int)$_SESSION['languages_id']."'");
+$product_info = vam_db_fetch_array($product_info_query);
+
 include ('includes/header.php');
 
 $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id'], 'SSL'));
@@ -155,7 +160,7 @@ $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 $vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha'));    
 $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION)).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
         if (isset($_SESSION['customer_id'])) { 
 		//-> registered user********************************************************
 $vamTemplate->assign('INPUT_FIRSTNAME', $_SESSION['customer_first_name']);
