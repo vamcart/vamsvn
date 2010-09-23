@@ -904,7 +904,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
     			$postcode = (!isset($order->delivery["postcode"])) ? null : $order->delivery["postcode"] . ', ';
     			$state = (!isset($order->delivery["state"])) ? null : $order->delivery["state"] . ', ';
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
-    			$ship_address = $postcode . $country . $state. $city . $street_address;
+    			$ship_address = $postcode . $city . $street_address;
     			
     			?>
 
@@ -1222,7 +1222,10 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$order_payment_text);
 				// elari added to display product list for selected order
 				$order = new order($oInfo->orders_id);
-				$contents[] = array ('text' => '<br /><br />'.sizeof($order->products).TEXT_PRODUCTS);
+				$contents[] = array ('text' => $order->customer['email_address']);
+				$contents[] = array ('text' => $order->customer['telephone']);
+				$contents[] = array ('text' => vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+				$contents[] = array ('text' => '<br />'.sizeof($order->products).TEXT_PRODUCTS);
 				for ($i = 0; $i < sizeof($order->products); $i ++) {
 
 					$products_id_order=$order->products[$i]['id'];
