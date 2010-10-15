@@ -141,7 +141,7 @@ define('HEADING_PRICES_OPTIONS','<b>Цены</b>');
 define('HEADING_PRODUCT_IMAGES','<b>Картинки товара</b>');
 define('TEXT_PRODUCTS_WEIGHT_INFO','<small>(кг.)</small>');
 define('TEXT_PRODUCTS_SHORT_DESCRIPTION','Краткое описание:');
-define('TEXT_PRODUCTS_KEYWORDS', 'Дополнительные слова для поиска:');
+define('TEXT_PRODUCTS_KEYWORDS', 'Тэги:');
 define('TXT_STK','Количество: ');
 define('TXT_PRICE','Цена:');
 define('TXT_NETTO','Цена с налогом: ');
