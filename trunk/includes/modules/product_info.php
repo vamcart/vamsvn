@@ -152,6 +152,22 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=760\')" alt="" />');
 		$info->assign('ASK_PRODUCT_QUESTION_LINK', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']));
 
+
+		if ($product->data['products_keywords'] != '') {
+
+		$products_tags = explode (",", $product->data['products_keywords']);
+
+          	foreach ($products_tags as $tags) {
+                $tags_data[] = array(
+                'NAME' => trim($tags),
+                'LINK' => vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.trim($tags)));
+        $info->assign('tags_data', $tags_data);
+            }
+
+		$info->assign('PRODUCTS_TAGS', $products_tags);
+
+		}
+
 $cat_query = vamDBquery("SELECT
                                  categories_name
                                  FROM ".TABLE_CATEGORIES_DESCRIPTION." 

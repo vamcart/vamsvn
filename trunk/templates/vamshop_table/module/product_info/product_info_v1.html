@@ -135,6 +135,15 @@
 <!-- /Parameters -->
 {/if}
 
+{if $PRODUCTS_TAGS}
+<p>
+{#text_tags#}: 
+{foreach name=tags item=tag from=$tags_data}
+<a href="{$tag.LINK}">{$tag.NAME}</a> 
+{/foreach}
+</p>
+{/if}
+
 {if $MODULE_tpt != ''}
    {$MODULE_tpt}<br />
 {/if}
