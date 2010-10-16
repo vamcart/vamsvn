@@ -130,7 +130,7 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 		if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
 			$info->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
 		$info->assign('PRODUCTS_ID', $product->data['products_id']);
-		$info->assign('PRODUCTS_NAME', $product->data['products_name']);
+		$info->assign('PRODUCTS_NAME', vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')));
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 			// price incl tax
 			$tax_rate = $vamPrice->TAX[$product->data['products_tax_class_id']];				

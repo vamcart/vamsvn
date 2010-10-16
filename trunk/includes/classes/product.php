@@ -474,7 +474,7 @@ class product {
 			$shipping_status_image = $main->getShippingStatusImage($array['products_shippingtime']);
 		
 		
-		return array ('PRODUCTS_NAME' => $array['products_name'], 
+		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		      'PRODUCTS_MODEL'=>$array['products_model'],
 		      'PRODUCTS_QUANTITY'=>$array['products_quantity'],
 				'COUNT'=>$array['ID'],
