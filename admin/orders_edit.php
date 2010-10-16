@@ -427,7 +427,9 @@ if ($_GET['action'] == "product_delete") {
 // LГ¶schen eines Artikels aus der Bestellung Ende:
 
 // LГ¶schen einer Artikeloption aus der Bestellung Anfang:
-if ($_GET['action'] == "product_option_delete") {vam_db_input($_POST['opAID']."'");
+if ($_GET['action'] == "product_option_delete") {
+	
+	vam_db_input($_POST['opAID']."'");
 
 	$products_query = vam_db_query("select op.products_id, op.products_quantity, p.products_tax_class_id from ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_PRODUCTS." p where op.orders_products_id = '".$_POST['opID']."' and op.products_id = p.products_id");
 	$products = vam_db_fetch_array($products_query);
@@ -437,13 +439,15 @@ if ($_GET['action'] == "product_option_delete") {vam_db_input($_POST['opAID']."'
 		$options_values_price += $products_a['price_prefix'].$products_a['options_values_price'];
 	};
 
+	vam_db_query("delete from ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." where orders_products_id = '".$_POST['opID']."'");
+	
 	$products_old_price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], '', '', '', $order->customer['ID']);
 
 	$products_price = ($products_old_price + $options_values_price);
 
 	$price = $vamPrice->GetPrice($products['products_id'], $format = false, $products['products_quantity'], $products['products_tax_class_id'], $products_price, '', $order->customer['ID']);
 
-	$final_price = $price * $products['products_quantity'];
+	$final_price = $price * $products['products_quantity'] - $options_values_price;
 
 	$sql_data_array = array ('products_price' => vam_db_prepare_input($price));
 	$update_sql_data = array ('final_price' => vam_db_prepare_input($final_price));
