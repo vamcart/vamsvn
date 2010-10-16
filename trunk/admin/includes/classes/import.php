@@ -351,11 +351,11 @@ class vamImport {
 			$prod_desc_array = array ('products_id' => $products_id, 'language_id' => $this->languages[$i_insert]['id']);
 
 			if ($this->FileSheme['p_name.'.$this->languages[$i_insert]['code']] == 'Y')
-				$prod_desc_array = array_merge($prod_desc_array, array ('products_name' => addslashes($dataArray['p_name.'.$this->languages[$i_insert]['code']])));
+				$prod_desc_array = array_merge($prod_desc_array, array ('products_name' => $dataArray['p_name.'.$this->languages[$i_insert]['code']]));
 			if ($this->FileSheme['p_desc.'.$this->languages[$i_insert]['code']] == 'Y')
-				$prod_desc_array = array_merge($prod_desc_array, array ('products_description' => addslashes($dataArray['p_desc.'.$this->languages[$i_insert]['code']])));
+				$prod_desc_array = array_merge($prod_desc_array, array ('products_description' => $dataArray['p_desc.'.$this->languages[$i_insert]['code']]));
 			if ($this->FileSheme['p_shortdesc.'.$this->languages[$i_insert]['code']] == 'Y')
-				$prod_desc_array = array_merge($prod_desc_array, array ('products_short_description' => addslashes($dataArray['p_shortdesc.'.$this->languages[$i_insert]['code']])));
+				$prod_desc_array = array_merge($prod_desc_array, array ('products_short_description' => $dataArray['p_shortdesc.'.$this->languages[$i_insert]['code']]));
 			if ($this->FileSheme['p_meta_title.'.$this->languages[$i_insert]['code']] == 'Y')
 				$prod_desc_array = array_merge($prod_desc_array, array ('products_meta_title' => $dataArray['p_meta_title.'.$this->languages[$i_insert]['code']]));
 			if ($this->FileSheme['p_meta_desc.'.$this->languages[$i_insert]['code']] == 'Y')
