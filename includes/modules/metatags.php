@@ -21,14 +21,14 @@
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 
 	if ($product->isProduct()) {
-        $description = $product->data['products_meta_description'];
+        $description = vam_parse_input_field_data($product->data['products_meta_description'], array('"' => '&quot;'));
         if (strlen($description) == 0){
-            $description = $product->data['products_name'];
+            $description = vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;'));
         }
 
-        $title = $product->data['products_meta_title'];
+        $title = vam_parse_input_field_data($product->data['products_meta_title'], array('"' => '&quot;'));
         if (strlen($title) == 0){
-            $title = $product->data['products_name'];
+            $title = vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;'));
         }
 
 $cat_query = vamDBquery("SELECT
