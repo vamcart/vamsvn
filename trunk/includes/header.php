@@ -287,7 +287,7 @@ function checkForm() {
     }
   }
 
-    if ((!file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/vamshop.key'))) {
+    if ((!file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/vamshop.key')) && (!file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/vamshop.key.txt'))) {
 
       vam_output_warning(WARNING_VAMSHOP_KEY);
     }
