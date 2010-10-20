@@ -1031,7 +1031,7 @@ class categories {
 	                    products_id='".vam_db_input($src_products_id)."' AND
 	                    products_parameters_id NOT IN (". implode(',', $_ids) .")
 	                    ";
-	             dumper($_sql);
+	             //dumper($_sql);
 	             vam_db_query($_sql);
 	        }
 						    		           
