@@ -66,7 +66,7 @@ if (is_array($temp) && sizeof($temp) > 0)
 
         $parameters_query = vamDBquery("SELECT * FROM `products_parameters2products`
         LEFT JOIN `products_parameters` using(products_parameters_id)
-        WHERE products_id IN (".implode(", ", $c_id).") and
+        WHERE products_id IN (".implode(", ", $c_id).") and categories_id IN (".implode(", ", $temp).") and 
         products_parameters.products_parameters_id is not null and
         products_parameters_order >= 0 and
         products_parameters2products_order >= 0
