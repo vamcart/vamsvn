@@ -203,6 +203,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                   'shipping_method' => $order->info['shipping_method'],
                                   'shipping_class' => $order->info['shipping_class'],
                                   'language' => $_SESSION['language'],
+                                  'comments' => $order->info['comments'],
                                   'customers_ip' => $customers_ip,
                                   'orig_reference' => $order->customer['orig_reference'],
                                   'login_reference' => $order->customer['login_reference'],
@@ -218,6 +219,10 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           vam_db_perform(TABLE_ORDERS, $sql_data_array);
 
           $insert_id = vam_db_insert_id();
+
+			$customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
+			$sql_data_array = array ('orders_id' => $insert_id, 'orders_status_id' => $order->info['order_status'], 'date_added' => 'now()', 'customer_notified' => $customer_notification, 'comments' => $order->info['comments']);
+			vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
           for ($i=0, $n=sizeof($order_totals); $i<$n; $i++) {
             $sql_data_array = array('orders_id' => $insert_id,
