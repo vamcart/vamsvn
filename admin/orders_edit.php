@@ -66,16 +66,25 @@ if ($_GET['action'] == "product_edit") {
 
 	$final_price = $_POST['products_price'] * $_POST['products_quantity'];
 
+			$order_query = vam_db_query("
+			SELECT products_id, products_quantity 
+			FROM " . TABLE_ORDERS_PRODUCTS . " 
+			WHERE orders_id = '" . $_POST['oID'] . "'
+			AND orders_products_id = '" . $_POST['opID'] . "'");
+			$orders_product_info = vam_db_fetch_array($order_query);
+			
+			$quantity_difference = ($_POST['products_quantity'] - $orders_product_info['products_quantity']);
+
+    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
+	products_quantity = products_quantity - " . $quantity_difference . ",
+	products_ordered = products_ordered + " . $quantity_difference . " 
+	WHERE products_id = '" . $_POST['products_id'] . "'");
+
 	$sql_data_array = array ('orders_id' => vam_db_prepare_input($_POST['oID']), 'products_id' => vam_db_prepare_input($_POST['products_id']), 'products_name' => vam_db_prepare_input($_POST['products_name']), 'products_price' => vam_db_prepare_input($_POST['products_price']), 'products_discount_made' => '', 'final_price' => vam_db_prepare_input($final_price), 'products_tax' => vam_db_prepare_input($_POST['products_tax']), 'products_quantity' => vam_db_prepare_input($_POST['products_quantity']), 'allow_tax' => vam_db_prepare_input($status['customers_status_show_price_tax']));
 
 	$update_sql_data = array ('products_model' => vam_db_prepare_input($_POST['products_model']));
 	$sql_data_array = vam_array_merge($sql_data_array, $update_sql_data);
 	vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array, 'update', 'orders_products_id = \''.vam_db_input($_POST['opID']).'\'');
-
-    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
-	products_quantity = products_quantity - " . $_POST['products_quantity'] . ",
-	products_ordered = products_ordered + " . $_POST['products_quantity'] . " 
-	WHERE products_id = '" . $_POST['products_id'] . "'");
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
@@ -103,16 +112,25 @@ if (0==round($_POST['products_quantity']))
 
 	$final_price = $price * $_POST['products_quantity'];
 
+			$order_query = vam_db_query("
+			SELECT products_id, products_quantity 
+			FROM " . TABLE_ORDERS_PRODUCTS . " 
+			WHERE orders_id = '" . $_POST['oID'] . "'
+			AND orders_products_id = '" . $_POST['opID'] . "'");
+			$orders_product_info = vam_db_fetch_array($order_query);
+			
+			$quantity_difference = ($_POST['products_quantity'] - $orders_product_info['products_quantity']);
+
+    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
+	products_quantity = products_quantity - " . $quantity_difference . ",
+	products_ordered = products_ordered + " . $quantity_difference . " 
+	WHERE products_id = '" . $_POST['products_id'] . "'");
+
 	$sql_data_array = array ('orders_id' => vam_db_prepare_input($_POST['oID']), 'products_id' => vam_db_prepare_input($_POST['products_id']), 'products_name' => vam_db_prepare_input($product['products_name']), 'products_price' => vam_db_prepare_input($price), 'products_discount_made' => '', 'final_price' => vam_db_prepare_input($final_price), 'products_tax' => vam_db_prepare_input($tax_rate), 'products_quantity' => vam_db_prepare_input($_POST['products_quantity']), 'allow_tax' => vam_db_prepare_input($status['customers_status_show_price_tax']));
 
 	$insert_sql_data = array ('products_model' => vam_db_prepare_input($product['products_model']));
 	$sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
 	vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
-
-    vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET 
-	products_quantity = products_quantity - " . $_POST['products_quantity'] . ",
-	products_ordered = products_ordered + " . $_POST['products_quantity'] . " 
-	WHERE products_id = '" . $_POST['products_id'] . "'");
 
 	vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT, 'edit_action=products&oID='.$_POST['oID']));
 }
