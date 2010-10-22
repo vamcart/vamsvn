@@ -196,7 +196,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
            $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
 
-			if ($groups['customers_status_id'] != $customers_groups_id) {           
+			if ($customer['customers_status'] != $customers_groups_id) {           
 
            if ($changed) {
 
@@ -397,7 +397,7 @@ switch ($_GET['action']) {
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
            $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
 
-			if ($groups['customers_status_id'] != $customers_groups_id) {           
+			if ($customer['customers_status'] != $customers_groups_id) {           
 			
            if ($changed) {
 
