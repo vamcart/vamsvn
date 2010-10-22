@@ -114,7 +114,7 @@ if (isset($_GET['status']))
         $listing_sql = str_replace("p.products_status = '1'", "p.products_status = '".$_GET['status']."'", $listing_sql);
     }
 }
-$listing_sql = get_params_listing_sql($listing_sql, intval($_GET['cat']), $selectedGroups);
+$listing_sql = get_params_listing_sql($listing_sql, intval($current_category_id), $selectedGroups);
 
 //print "[".$listing_sql."]";
 //exit;
