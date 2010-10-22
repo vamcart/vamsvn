@@ -88,7 +88,7 @@
 			$wheres[] = " p.products_price <= '".intval($_GET['price_max'])."' ";;
 		}
 		
-		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int) $_GET['cat']."' ";
+		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int)$categories_id."' ";
 		$wheres[] = " pd.language_id = '1' ";
 		foreach( $selected_blocks as $index => $group_blocks)
 		{
