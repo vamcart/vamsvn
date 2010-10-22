@@ -265,6 +265,8 @@ function get_string($summ,$nominal){
 
 	$vamTemplate->assign('summa', $iw->get($total_summ['value']));
 
+  $vamTemplate->assign('extra_fields_data', vam_get_extra_fields_order($order_check['customers_id'], $_SESSION['languages_id']));
+
       // assign language to template for caching
       $vamTemplate->assign('language', $_SESSION['language']);
 	 $vamTemplate->assign('charset', $_SESSION['language_charset']);
