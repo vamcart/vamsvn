@@ -1136,7 +1136,7 @@ class Sypex_Dumper {
 				if(V_MYSQL > 50100) $shows[] = "EVENTS WHERE db='{$db_name}'";
 				// TODO: Поправить проверку событий и триггеров
 				for($i = 0, $l = count($shows); $i < $l; $i++){
-					$r = mysql_query('SHOW ' . $shows[$i]) or sxd_my_error();
+					$r = mysql_query('SHOW ' . $shows[$i]);
 					if($r && mysql_num_rows($r) > 0) {
 						$col_name = $shows[$i] == 'TRIGGERS' ? 'Trigger' : 'Name';
 						$type = substr($shows[$i], 0, 2);
