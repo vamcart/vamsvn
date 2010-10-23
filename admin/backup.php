@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: cache.php,v 1.1 2007-02-08 11:13:01Z VaM $   
+   $Id: cache.php,v 1.1 2010-02-08 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
