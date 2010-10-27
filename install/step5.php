@@ -320,7 +320,7 @@
 '' . "\n" .
 'RewriteRule ^(product_info|index|shop_content|news|faq|articles|article_info).php(.*)$ redirector.php [L]'. "\n" .
 '' . "\n" .
-'RewriteRule ^.*\.gif|\.jpg|\.png|\.css|\.php|\.js$ - [L]'. "\n" .
+'RewriteRule ^.*\.gif|\.jpg|\.jpeg|\.png|\.css|\.php|\.js$ - [L]'. "\n" .
 'RewriteCond %{REQUEST_FILENAME} !-f'. "\n" .
 'RewriteCond %{REQUEST_FILENAME} !-d'. "\n" .
 'RewriteCond %{REQUEST_FILENAME} !-l'. "\n" .
