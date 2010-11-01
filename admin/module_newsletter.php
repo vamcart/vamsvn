@@ -208,20 +208,20 @@ $limit_up = $limits['1'];
                                   FROM ".TABLE_MODULE_NEWSLETTER."
                                   WHERE  newsletter_id='".(int)$_GET['ID']."'");
  $newsletters_data=vam_db_fetch_array($newsletters_query);
-// if ($newsletters_data['cc']!='') {
-// vam_php_mail(EMAIL_SUPPORT_ADDRESS,
-//              EMAIL_SUPPORT_NAME,
-//              $newsletters_data['cc'],
-//              '' ,
-//              '',
-//              EMAIL_SUPPORT_REPLY_ADDRESS,
-//              EMAIL_SUPPORT_REPLY_ADDRESS_NAME,
-//              '',
-//              '',
-//              $newsletters_data['title'],
-//              $newsletters_data['body'],
-//              $newsletters_data['body']);
-//              }
+ if ($newsletters_data['cc']!='') {
+ vam_php_mail(EMAIL_SUPPORT_ADDRESS,
+              EMAIL_SUPPORT_NAME,
+              $newsletters_data['cc'],
+              '' ,
+              '',
+              EMAIL_SUPPORT_REPLY_ADDRESS,
+              EMAIL_SUPPORT_REPLY_ADDRESS_NAME,
+              '',
+              '',
+              $newsletters_data['title'],
+              $newsletters_data['body'],
+              $newsletters_data['body']);
+              }
 
  for ($i=1;$i<=$max_runtime;$i++)
  {
