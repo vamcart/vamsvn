@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_LIQPAY_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_LIQPAY_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://liqpay.com/?do=clickNbuy';
+        $this->form_action_url = 'https://www.liqpay.com/?do=clickNbuy';
     }
 
 // class methods
@@ -203,7 +203,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                   'shipping_method' => $order->info['shipping_method'],
                                   'shipping_class' => $order->info['shipping_class'],
                                   'language' => $_SESSION['language'],
-                                  'comments' => $order->info['comments'],
                                   'customers_ip' => $customers_ip,
                                   'orig_reference' => $order->customer['orig_reference'],
                                   'login_reference' => $order->customer['login_reference'],
@@ -219,10 +218,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           vam_db_perform(TABLE_ORDERS, $sql_data_array);
 
           $insert_id = vam_db_insert_id();
-
-			$customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
-			$sql_data_array = array ('orders_id' => $insert_id, 'orders_status_id' => $order->info['order_status'], 'date_added' => 'now()', 'customer_notified' => $customer_notification, 'comments' => $order->info['comments']);
-			vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
           for ($i=0, $n=sizeof($order_totals); $i<$n; $i++) {
             $sql_data_array = array('orders_id' => $insert_id,
@@ -322,14 +317,27 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-      $process_button_string = vam_draw_hidden_field('order_id', $order_id) .
-                               vam_draw_hidden_field('currency', $curr['currency']) .
-                               vam_draw_hidden_field('description', $order_id) .
-                               vam_draw_hidden_field('amount', $order_sum) .
-                               vam_draw_hidden_field('server_url', vam_href_link('liqpay.php', '', 'SSL')) .
-                               vam_draw_hidden_field('result_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('merchant_id', MODULE_PAYMENT_LIQPAY_ID) .
-                               vam_draw_hidden_field('version', '1.1');
+        $xml = '<?xml version="1.0" encoding="utf-8"?>
+                <request>
+                    <version>1.2</version>
+                    <merchant_id>'.MODULE_PAYMENT_LIQPAY_ID.'</merchant_id>
+                    <result_url>'.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'</result_url>
+                    <server_url>'.vam_href_link('liqpay.php', '', 'SSL').'</server_url>
+                    <order_id>'.$order_id.'</order_id>
+                    <amount>'.$order_sum.'</amount>
+                    <currency>RUR</currency>
+                    <description>'.$order_id.'</description>
+                    <default_phone></default_phone>
+                    <pay_way>card</pay_way>
+                </request>';
+                
+$merchant_pass = MODULE_PAYMENT_LIQPAY_SECRET_KEY; 
+
+        $operation_xml = base64_encode($xml);
+        $signature = base64_encode(sha1($merchant_pass.$xml.$merchant_pass, 1));        
+        
+      $process_button_string = vam_draw_hidden_field('operation_xml', $operation_xml) . 
+                               vam_draw_hidden_field('signature', $signature);
 
       return $process_button_string;
     }
