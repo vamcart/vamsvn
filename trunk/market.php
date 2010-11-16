@@ -134,7 +134,7 @@ vam_yml_out('<yml_catalog date="' . date('Y-m-d H:i') . '">');
 vam_yml_out('<shop>');
 vam_yml_out('<name>' . vam_yml_clear_string((YML_NAME == '' ? STORE_NAME : YML_NAME)) .'</name>');
 vam_yml_out('<company>' . vam_yml_clear_string((YML_COMPANY == '' ? STORE_OWNER : YML_COMPANY)) . '</company>');
-vam_yml_out('<url>' . HTTP_SERVER . '/</url>');
+vam_yml_out('<url>' . HTTP_SERVER . DIR_WS_CATALOG . '</url>');
 
 $current_currency = $_SESSION['currency'];
 if($_SESSION['currency'] == 'RUB') $current_currency = 'RUR';
