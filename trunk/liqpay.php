@@ -33,31 +33,25 @@ require (DIR_WS_CLASSES.'order.php');
 //fclose($fp);
 
 // variables prepearing
-$crc = get_var('signature');
 
-$inv_id = get_var('order_id');
-$order = new order($inv_id);
-$order_sum = $order->info['total'];
+$xml_decoded=decode_base64($_POST['xml']);
 
-$hash_source = "|".$_POST['version']."|".MODULE_PAYMENT_LIQPAY_SECRET_KEY."|".$_POST['action_name']."|".$_POST['sender_phone']."|".MODULE_PAYMENT_LIQPAY_ID."|".$_POST['amount']."|".$_POST['currency']."|".$_POST['order_id']."|".$_POST['transaction_id']."|".$_POST['status']."|".$_POST['code']."|";
-$hash = base64_encode(sha1($hash_source,1));
-
+$xml = simplexml_load_string($xml_decoded);
+ 
 // checking and handling
-if ($_POST['status'] == 'success') {
-if ($hash == $crc) {
-if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
+if ($xml->status == 'success') {
+if (number_format($xml->amount,0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_LIQPAY_ORDER_STATUS_ID);
-  vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
+  vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$xml->order_id."'");
 
-  $sql_data_arrax = array('orders_id' => $inv_id,
+  $sql_data_arrax = array('orders_id' => $xml->order_id,
                           'orders_status_id' => MODULE_PAYMENT_LIQPAY_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
                           'comments' => 'LiqPAY accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
-  echo 'OK'.$inv_id;
-}
+  echo 'OK'.$xml->order_id;
 }
 }
 
