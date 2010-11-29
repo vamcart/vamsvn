@@ -57,7 +57,7 @@ if (is_array($temp) && sizeof($temp) > 0)
     
     if (is_array($c_id) && sizeof($c_id) > 0)
     {
-        $cats = vam_db_query("SELECT DISTINCT MAX(categories_id) as categories_id FROM products_to_categories WHERE products_id IN (".implode(", ", $c_id).") GROUP by products_id");
+        $cats = vamDBquery("SELECT DISTINCT MAX(categories_id) as categories_id FROM products_to_categories WHERE products_id IN (".implode(", ", $c_id).") GROUP by products_id");
         $temp = array(-1);
 	    while ($c = vam_db_fetch_array($cats, true))
 	    {
