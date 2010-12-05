@@ -20,7 +20,7 @@ function vam_delete_file($file){
 	$delete= @unlink($file);
 	clearstatcache();
 	if (@file_exists($file)) {
-		$filesys=preg_replace("/","\\",$file);
+		$filesys = preg_replace("//","\\",$file);
 		$delete = @system("del $filesys");
 		clearstatcache();
 		if (@file_exists($file)) {
