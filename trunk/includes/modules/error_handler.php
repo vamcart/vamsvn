@@ -17,6 +17,10 @@
    $module= new vamTemplate;
    $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
+  if (GROUP_CHECK == 'true') {
+  $group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+  }
+  
   $category_query = "select
                                       cd.categories_description,
                                       cd.categories_name,
