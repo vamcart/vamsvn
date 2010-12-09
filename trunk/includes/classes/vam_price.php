@@ -394,7 +394,7 @@ class vamPrice {
 			}
 		} else {
 
-			return round($price, $this->currencies[$this->actualCurr]['decimal_places']);
+			return round($price, (int)$this->currencies[$this->actualCurr]['decimal_places']);
 
 		}
 
