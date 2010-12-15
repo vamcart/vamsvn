@@ -293,6 +293,10 @@ class vamImport {
 		if ($this->FileSheme['p_sorting'] == 'Y')
 			$products_array = array_merge($products_array, array ('products_sort' => $dataArray['p_sorting']));
 
+			$products_array = array_merge($products_array, array ('products_quantity_min' => '1'));
+
+			$products_array = array_merge($products_array, array ('products_quantity_max' => '1000'));
+
 		if ($mode == 'insert') {
 			$this->counter['prod_new']++;
 			vam_db_perform(TABLE_PRODUCTS, $products_array);
