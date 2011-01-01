@@ -92,7 +92,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
             $this->size = ($this->endDate - $this->startDate) / (60 * 60 * 24);
           } else {
             // startDate to start of this week
-            $this->startDate = mktime(0, 0, 0, date("m"), date("d") - date("w") + 1, date("Y"));
+            $this->startDate = mktime(0, 0, 0, date("m"), date("d") - date("w"), date("Y"));
             $this->endDate = mktime(0, 0, 0, date("m"), date("d") + 1, date("Y"));
             // size to number of days
             $this->size = date("w") + 1;
