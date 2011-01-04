@@ -34,7 +34,7 @@ require (DIR_WS_CLASSES.'order.php');
 
 // variables prepearing
 
-$xml_decoded=decode_base64($_POST['xml']);
+$xml_decoded=base64_decode($_POST['xml']);
 
 $xml = simplexml_load_string($xml_decoded);
  
