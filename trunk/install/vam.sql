@@ -3232,7 +3232,7 @@ create table spsr_zones (
   zone_id int(11) default '0' not null ,
   spsr_zone_id int(11) default '0' not null,
   PRIMARY KEY (id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 insert into spsr_zones values ('1', '22', '53');
 insert into spsr_zones values ('2', '23', '55');
