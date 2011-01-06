@@ -17,9 +17,6 @@
    (c) 2004 xt:Commerce (also_purchased_products.php,v 1.9 2005/10/25); xt-commerce.com 
    ---------------------------------------------------------------------------------------*/
 
-
-$PHP_SELF = 'index.php';
-
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $data = $product->getCrossSells();
