@@ -397,11 +397,9 @@
       ".TABLE_LANGUAGES." l
     WHERE c.languages_id = '".$_SESSION['languages_id']."' and 
       c.content_status='1' AND
-      c.content_delete='0' AND
       c.content_url='' AND
       c.content_id!='5' AND
       c.content_group!='5' AND
-      c.file_flag<'2' AND
       c.languages_id = l.languages_id
     ORDER BY
       c.content_id
