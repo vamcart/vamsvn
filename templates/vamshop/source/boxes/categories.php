@@ -67,7 +67,7 @@ $categories_query = "select c.categories_id,
 $categories_query = vamDBquery($categories_query);
 
 while ($categories = vam_db_fetch_array($categories_query, true)) {
-	$foo[$categories['categories_id']] = array ('name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
+	$foo[$categories['categories_id']] = array ('id' => $categories['categories_id'], 'name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
 
 	if (isset ($prev_id)) {
 		$foo[$prev_id]['next_id'] = $categories['categories_id'];
