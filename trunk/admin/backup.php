@@ -173,58 +173,58 @@ $TEXT_DUMPER_DB_ERROR = TEXT_DUMPER_DB_ERROR;
 // ["add_prefix"]
 // ["update_time"]=>
 
-// а�б�б�б� аИ URL аК б�аАаЙаЛаАаМ аБаЕаКаАаПаА
+// Путь и URL к файлам бекапа
 
 define('PATH', 'backups/');
 define('URL',  'backups/');
 
-// а�аАаКб�аИаМаАаЛб�аНаОаЕ аВб�аЕаМб� аВб�аПаОаЛаНаЕаНаИб� б�аКб�аИаПб�аА аВ б�аЕаКб�аНаДаАб�
-// 0 - аБаЕаЗ аОаГб�аАаНаИб�аЕаНаИаЙ
+// Максимальное время выполнения скрипта в секундах
+// 0 - без ограничений
 
 define('TIME_LIMIT', 600);
 
-// а�аГб�аАаНаИб�аЕаНаИаЕ б�аАаЗаМаЕб�аА аДаАаНаНб�б� аДаОб�б�аАаВаАаЕаМб�б� аЗаА аОаДаНаО аОаБб�аАб�аЕаНаИб� аК а�а� (аВ аМаЕаГаАаБаАаЙб�аАб�)
-// а�б�аЖаНаО аДаЛб� аОаГб�аАаНаИб�аЕаНаИб� аКаОаЛаИб�аЕб�б�аВаА аПаАаМб�б�аИ аПаОаЖаИб�аАаЕаМаОаЙ б�аЕб�аВаЕб�аОаМ аПб�аИ аДаАаМаПаЕ аОб�аЕаНб� аОаБб�аЕаМаНб�б� б�аАаБаЛаИб�
+// Ограничение размера данных доставаемых за одно обращения к БД (в мегабайтах)
+// Нужно для ограничения количества памяти пожираемой сервером при дампе очень объемных таблиц
 
 define('LIMIT', 1);
 
-// mysql б�аЕб�аВаЕб�
+// mysql сервер
 
 define('DBHOST', DB_SERVER);
 //define('DBHOST', 'localhost:3306');
 
-// а�аАаЗб� аДаАаНаНб�б�, аЕб�аЛаИ б�аЕб�аВаЕб� аНаЕ б�аАаЗб�аЕб�аАаЕб� аПб�аОб�аМаАб�б�аИаВаАб�б� б�аПаИб�аОаК аБаАаЗ аДаАаНаНб�б�,
-// аИ аНаИб�аЕаГаО аНаЕ аПаОаКаАаЗб�аВаАаЕб�б�б� аПаОб�аЛаЕ аАаВб�аОб�аИаЗаАб�аИаИ. а�аЕб�аЕб�аИб�аЛаИб�аЕ аНаАаЗаВаАаНаИб� б�аЕб�аЕаЗ аЗаАаПб�б�б�б�
+// Базы данных, если сервер не разрешает просматривать список баз данных,
+// и ничего не показывается после авторизации. Перечислите названия через запятую
 
 define('DBNAMES', DB_DATABASE);
 
-// а�аОаДаИб�аОаВаКаА б�аОаЕаДаИаНаЕаНаИб� б� MySQL
-// auto - аАаВб�аОаМаАб�аИб�аЕб�аКаИаЙ аВб�аБаОб� (б�б�б�аАаНаАаВаЛаИаВаАаЕб�б�б� аКаОаДаИб�аОаВаКаА б�аАаБаЛаИб�б�), cp1251 - windows-1251, аИ б�.аП.
+// Кодировка соединения с MySQL
+// auto - автоматический выбор (устанавливается кодировка таблицы), cp1251 - windows-1251, и т.п.
 
 define('CHARSET', 'utf8');
 
-// а�аОаДаИб�аОаВаКаА б�аОаЕаДаИаНаЕаНаИб� б� MySQL аПб�аИ аВаОб�б�б�аАаНаОаВаЛаЕаНаИаИ
-// а�аА б�аЛб�б�аАаЙ аПаЕб�аЕаНаОб�аА б�аО б�б�аАб�б�б� аВаЕб�б�аИаЙ MySQL (аДаО 4.1), б� аКаОб�аОб�б�б� аНаЕ б�аКаАаЗаАаНаА аКаОаДаИб�аОаВаКаА б�аАаБаЛаИб� аВ аДаАаМаПаЕ
-// а�б�аИ аДаОаБаАаВаЛаЕаНаИаИ 'forced->', аК аПб�аИаМаЕб�б� 'forced->cp1251', аКаОаДаИб�аОаВаКаА б�аАаБаЛаИб� аПб�аИ аВаОб�б�б�аАаНаОаВаЛаЕаНаИаИ аБб�аДаЕб� аПб�аИаНб�аДаИб�аЕаЛб�аНаО аЗаАаМаЕаНаЕаНаА аНаА cp1251
-// а�аОаЖаНаО б�аАаКаЖаЕ б�аКаАаЗб�аВаАб�б� б�б�аАаВаНаЕаНаИаЕ аНб�аЖаНаОаЕ аК аПб�аИаМаЕб�б� 'cp1251_ukrainian_ci' аИаЛаИ 'forced->cp1251_ukrainian_ci'
+// Кодировка соединения с MySQL при восстановлении
+// На случай переноса со старых версий MySQL (до 4.1), у которых не указана кодировка таблиц в дампе
+// При добавлении 'forced->', к примеру 'forced->cp1251', кодировка таблиц при восстановлении будет принудительно заменена на cp1251
+// Можно также указывать сравнение нужное к примеру 'cp1251_ukrainian_ci' или 'forced->cp1251_ukrainian_ci'
 
-define('RESTORE_CHARSET', 'utf8');
+define('RESTORE_CHARSET', 'forced->utf8');
 
-// а�аКаЛб�б�аИб�б� б�аОб�б�аАаНаЕаНаИаЕ аНаАб�б�б�аОаЕаК аИ аПаОб�аЛаЕаДаНаИб� аДаЕаЙб�б�аВаИаЙ
-// а�аЛб� аОб�аКаЛб�б�аЕаНаИб� б�б�б�аАаНаОаВаИб�б� аЗаНаАб�аЕаНаИаЕ 0
+// Включить сохранение настроек и последних действий
+// Для отключения установить значение 0
 
 define('SC', 0);
 
-// аЂаИаПб� б�аАаБаЛаИб� б� аКаОб�аОб�б�б� б�аОб�б�аАаНб�аЕб�б�б� б�аОаЛб�аКаО б�б�б�б�аКб�б�б�аА, б�аАаЗаДаЕаЛаЕаНаНб�аЕ аЗаАаПб�б�аОаЙ
+// Типы таблиц у которых сохраняется только структура, разделенные запятой
 
 define('ONLY_CREATE', 'MRG_MyISAM,MERGE,HEAP,MEMORY');
 
-// а�аЛаОаБаАаЛб�аНаАб� б�б�аАб�аИб�б�аИаКаА
-// а�аЛб� аОб�аКаЛб�б�аЕаНаИб� б�б�б�аАаНаОаВаИб�б� аЗаНаАб�аЕаНаИаЕ 0
+// Глобальная статистика
+// Для отключения установить значение 0
 
 define('GS', 0);
 
-// а�аАаЛб�б�аЕ аНаИб�аЕаГаО б�аЕаДаАаКб�аИб�аОаВаАб�б� аНаЕ аНб�аЖаНаО
+// Дальше ничего редактировать не нужно
 
 $is_safe_mode = ini_get('safe_mode') == '1' ? 1 : 0;
 if (!$is_safe_mode && function_exists('set_time_limit')) set_time_limit(TIME_LIMIT);
@@ -319,7 +319,7 @@ class dumper {
 		$this->size = 0;
 		$this->comp = 0;
 
-		// а�аЕб�б�аИб� MySQL аВаИаДаА 40101
+		// Версия MySQL вида 40101
 		preg_match("/^(\d+)\.(\d+)\.(\d+)/", mysql_get_server_info(), $m);
 		$this->mysql_version = sprintf("%d%02d%02d", $m[1], $m[2], $m[3]);
 
@@ -427,7 +427,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
         }
 
 		$tabs = count($tables);
-		// а�аПб�аЕаДаЕаЛаЕаНаИаЕ б�аАаЗаМаЕб�аОаВ б�аАаБаЛаИб�
+		// Определение размеров таблиц
 		$result = mysql_query("SHOW table STATUS");
 		$tabinfo = array();
 		$tab_charset = array();
@@ -458,7 +458,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 		$t=0;
 		echo tpl_l(str_repeat("-", 60));
 		$result = mysql_query("SET SQL_QUOTE_SHOW_CREATE = 1");
-		// а�аОаДаИб�аОаВаКаА б�аОаЕаДаИаНаЕаНаИб� аПаО б�аМаОаЛб�аАаНаИб�
+		// Кодировка соединения по умолчанию
 		if ($this->mysql_version > 40101 && CHARSET != 'auto') {
 			mysql_query("SET NAMES '" . CHARSET . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 			$last_charset = CHARSET;
@@ -467,7 +467,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 			$last_charset = '';
 		}
         foreach ($tables AS $table){
-			// а�б�б�б�аАаВаЛб�аЕаМ аКаОаДаИб�аОаВаКб� б�аОаЕаДаИаНаЕаНаИб� б�аОаОб�аВаЕб�б�б�аВб�б�б�б�б� аКаОаДаИб�аОаВаКаЕ б�аАаБаЛаИб�б�
+			// Выставляем кодировку соединения соответствующую кодировке таблицы
 			if ($this->mysql_version > 40101 && $tab_charset[$table] != $last_charset) {
 				if (CHARSET == 'auto') {
 					mysql_query("SET NAMES '" . $tab_charset[$table] . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
@@ -480,16 +480,16 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 				}
 			}
 			echo tpl_l($TEXT_DUMPER_PROCESS . "`{$table}` [" . fn_int($tabinfo[$table]) . "].");
-        	// аЁаОаЗаДаАаНаИаЕ б�аАаБаЛаИб�б�
+        	// Создание таблицы
 			$result = mysql_query("SHOW CREATE table `{$table}`");
         	$tab = mysql_fetch_array($result);
 			$tab = preg_replace('/(default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP|DEFAULT CHARSET=\w+|COLLATE=\w+|character set \w+|collate \w+)/i', '/*!40101 \\1 */', $tab);
         	$this->fn_write($fp, "DROP table IF EXISTS `{$table}`;\n{$tab[1]};\n\n");
-        	// а�б�аОаВаЕб�б�аЕаМ аНб�аЖаНаО аЛаИ аДаАаМаПаИб�б� аДаАаНаНб�аЕ
+        	// Проверяем нужно ли дампить данные
         	if (in_array($tab_type[$table], $this->only_create)) {
 				continue;
 			}
-        	// а�аПб�аЕаДаЕаДаЕаЛб�аЕаМ б�аИаПб� б�б�аОаЛаБб�аОаВ
+        	// Опредеделяем типы столбцов
             $NumericColumn = array();
             $result = mysql_query("SHOW COLUMNS FROM `{$table}`");
             $field = 0;
@@ -545,7 +545,7 @@ $TEXT_DUMPER_STRING_COUNT = TEXT_DUMPER_STRING_COUNT;
 		echo tpl_l($TEXT_DUMPER_TABLES_COUNT . "{$tabs}", C_RESULT);
 		echo tpl_l($TEXT_DUMPER_STRING_COUNT . fn_int($tabinfo[0]), C_RESULT);
 		//echo "<script>with (document.getElementById('save')) {style.display = ''; innerHTML = '" . TEXT_DUMPER_DOWNLOAD . " ({$filesize})'; href = '" . URL . $this->filename . "'; }document.getElementById('back').disabled = 0;</script>";
-		// а�аЕб�аЕаДаАб�аА аДаАаНаНб�б� аДаЛб� аГаЛаОаБаАаЛб�аНаОаЙ б�б�аАб�аИб�б�аИаКаИ
+		// Передача данных для глобальной статистики
 		if (GS) echo "<script>document.getElementById('GS').src = 'http://sypex.net/gs.php?b={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</script>";
 
 	}
@@ -599,7 +599,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 		echo tpl_l($TEXT_DUMPER_CONNECT . "`{$db}`.");
 		mysql_select_db($db) or trigger_error ($TEXT_DUMPER_CONNECT_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 
-		// а�аПб�аЕаДаЕаЛаЕаНаИаЕ б�аОб�аМаАб�аА б�аАаЙаЛаА
+		// Определение формата файла
 		if(preg_match("/^(.+?)\.sql(\.(bz2|gz))?$/", $file, $matches)) {
 			if (isset($matches[3]) && $matches[3] == 'bz2') {
 			    $this->SET['comp_method'] = 2;
@@ -634,8 +634,8 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 		$cache = '';
 		$info = array();
 
-		// аЃб�б�аАаНаОаВаКаА аКаОаДаИб�аОаВаКаИ б�аОаЕаДаИаНаЕаНаИб�
-		if ($this->mysql_version > 40101 && (CHARSET != 'auto' || $this->forced_charset)) { // а�аОаДаИб�аОаВаКаА аПаО б�аМаОаЛб�аАаНаИб�, аЕб�аЛаИ аВ аДаАаМаПаЕ аНаЕ б�аКаАаЗаАаНаА аКаОаДаИб�аОаВаКаА
+		// Установка кодировки соединения
+		if ($this->mysql_version > 40101 && (CHARSET != 'auto' || $this->forced_charset)) { // Кодировка по умолчанию, если в дампе не указана кодировка
 			mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />" . mysql_error(), E_USER_ERROR);
 			echo tpl_l($TEXT_DUMPER_CHARSET . "`" . $this->restore_charset . "`.", C_WARNING);
 			$last_charset = $this->restore_charset;
@@ -659,7 +659,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 				if ($table != $m[2]) {
 				    $table = $m[2];
 					$tabs++;
-					$cache .= tpl_l("аЂаАаБаЛаИб�аА `{$table}`.");
+					$cache .= tpl_l("Таблица `{$table}`.");
 					$last_showed = $table;
 					$i = 0;
 					if ($is_skd)
@@ -703,7 +703,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 				    		$sql = preg_replace("/ENGINE\s?=/", "type=", $sql);
 						}
 						elseif (preg_match("/CREATE table/i", $sql)){
-							// а�б�б�б�аАаВаЛб�аЕаМ аКаОаДаИб�аОаВаКб� б�аОаЕаДаИаНаЕаНаИб�
+							// Выставляем кодировку соединения
 							if (preg_match("/(CHARACTER SET|CHARSET)[=\s]+(\w+)/i", $sql, $charset)) {
 								if (!$this->forced_charset && $charset[2] != $last_charset) {
 									if (CHARSET == 'auto') {
@@ -716,13 +716,13 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 										$cache .= tpl_l($TEXT_DUMPER_TABLE . '`'. $table .'` -> ' . $charset[2] . ' (' . $TEXT_DUMPER_CONNECT1 . $this->restore_charset . ')', C_ERROR);
 									}
 								}
-								// а�аЕаНб�аЕаМ аКаОаДаИб�аОаВаКб� аЕб�аЛаИ б�аКаАаЗаАаНаО б�аОб�б�аИб�аОаВаАб�б� аКаОаДаИб�аОаВаКб�
+								// Меняем кодировку если указано форсировать кодировку
 								if ($this->forced_charset) {
 									$sql = preg_replace("/(\/\*!\d+\s)?((COLLATE)[=\s]+)\w+(\s+\*\/)?/i", '', $sql);
 									$sql = preg_replace("/((CHARACTER SET|CHARSET)[=\s]+)\w+/i", "\\1" . $this->restore_charset . $this->restore_collate, $sql);
 								}
 							}
-							elseif(CHARSET == 'auto'){ // а�б�б�аАаВаЛб�аЕаМ аКаОаДаИб�аОаВаКб� аДаЛб� б�аАаБаЛаИб�, аЕб�аЛаИ аОаНаА аНаЕ б�аКаАаЗаАаНаА аИ б�б�б�аАаНаОаВаЛаЕаНаА auto аКаОаДаИб�аОаВаКаА
+							elseif(CHARSET == 'auto'){ // Вставляем кодировку для таблиц, если она не указана и установлена auto кодировка
 								$sql .= ' DEFAULT CHARSET=' . $this->restore_charset . $this->restore_collate;
 								if ($this->restore_charset != $last_charset) {
 									mysql_query("SET NAMES '" . $this->restore_charset . "'") or trigger_error ($TEXT_DUMPER_CHARSET_ERROR . "<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
@@ -733,7 +733,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 						}
 						if ($last_showed != $table) {$cache .= tpl_l($TEXT_DUMPER_TABLE . "`{$table}`."); $last_showed = $table;}
 					}
-					elseif($this->mysql_version > 40101 && empty($last_charset)) { // аЃб�б�аАаНаАаВаЛаИаВаАаЕаМ аКаОаДаИб�аОаВаКб� аНаА б�аЛб�б�аАаЙ аЕб�аЛаИ аОб�б�б�б�б�б�аВб�аЕб� CREATE table
+					elseif($this->mysql_version > 40101 && empty($last_charset)) { // Устанавливаем кодировку на случай если отсутствует CREATE table
 						mysql_query("SET $this->restore_charset '" . $this->restore_charset . "'") or trigger_error (TEXT_DUMPER_CHARSET_ERROR . "<br />{$sql}<br />" . mysql_error(), E_USER_ERROR);
 						echo tpl_l($TEXT_DUMPER_CHARSET . "`" . $this->restore_charset . "`.", C_WARNING);
 						$last_charset = $this->restore_charset;
@@ -771,7 +771,7 @@ $TEXT_DUMPER_NO = TEXT_DUMPER_NO;
 		$this->size = filesize(PATH . $this->filename);
 		$this->comp = $this->SET['comp_method'] * 10 + $this->SET['comp_level'];
 		echo "<script>document.getElementById('back').disabled = 0;</script>";
-		// а�аЕб�аЕаДаАб�аА аДаАаНаНб�б� аДаЛб� аГаЛаОаБаАаЛб�аНаОаЙ б�б�аАб�аИб�б�аИаКаИ
+		// Передача данных для глобальной статистики
 		if (GS) echo "<script>document.getElementById('GS').src = 'http://sypex.net/gs.php?r={$this->tabs},{$this->records},{$this->size},{$this->comp},108';</script>";
 
 		$this->fn_close($fp);
@@ -975,7 +975,7 @@ function fn_arr2str($array) {
 	return $str . ")";
 }
 
-// аЈаАаБаЛаОаНб�
+// Шаблоны
 
 function tpl_page($content = '', $buttons = ''){
 
