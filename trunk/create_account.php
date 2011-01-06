@@ -392,7 +392,7 @@ if (isset ($_SESSION['tracking']['refID'])){
     if ($newsletter) {
       $vlcode = vam_random_charcode(32);
       $link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.$email_address.'&key='.$vlcode, 'NONSSL');
-      $sql_data_array = array ('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($_SESSION['customer_id']), 'customers_status' => vam_db_input($_SESSION['customers_status']['customers_status_id']), 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => vam_db_input($lastname), 'mail_status' => '0', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
+      $sql_data_array = array ('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($_SESSION['customer_id']), 'customers_status' => 2, 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => vam_db_input($lastname), 'mail_status' => '0', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
       vam_db_perform(TABLE_NEWSLETTER_RECIPIENTS, $sql_data_array);
       // assign vars
       $vamTemplate->assign('LINK', $link);
