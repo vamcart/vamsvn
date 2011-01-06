@@ -78,15 +78,15 @@ if (DOWNLOAD_ENABLED == 'true') include (DIR_WS_MODULES.'downloads.php');
 // Stuff
 
 if ($order->info['payment_method'] == 'schet') {
-$vamTemplate->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'schet') {
-$vamTemplate->assign('BUTTON_PACKINGSLIP_PRINT', '<img alt="' . MODULE_PAYMENT_PACKINGSLIP_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_packingslip.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_PACKINGSLIP, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_PACKINGSLIP_PRINT', '<img alt="' . MODULE_PAYMENT_PACKINGSLIP_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_packingslip.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_PACKINGSLIP, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:hand" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
 }
 
 $vamTemplate->assign('ORDER_NUMBER', (int)$_GET['order_id']);
