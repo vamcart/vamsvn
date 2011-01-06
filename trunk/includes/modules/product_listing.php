@@ -214,6 +214,14 @@ if ($result != false) {
 
 	$module->assign('MANUFACTURER_DROPDOWN', $manufacturer_dropdown);
 	$module->assign('MANUFACTURER_SORT', $manufacturer_sort);
+	
+	$query = "SELECT manufacturers_description FROM ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and languages_id = '".$_SESSION['languages_id']."'";
+
+		$open_query = vamDBquery($query);
+		$open_data = vam_db_fetch_array($open_query, true);
+		$manufacturers_description = $open_data["manufacturers_description"]; 
+		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
+
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
 
