@@ -35,10 +35,10 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process') {
 
     $error = false;
     
-    if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['captcha_keystring']) {
-      $error = true;
-	   $vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
-    }
+    //if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['captcha_keystring']) {
+      //$error = true;
+	   //$vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+    //}
 
     if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
       $error = true;
