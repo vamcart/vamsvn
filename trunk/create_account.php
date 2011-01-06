@@ -47,6 +47,7 @@ require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
 require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 require_once (DIR_FS_INC.'vam_write_user_info.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 
 $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
@@ -86,6 +87,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
    if (ACCOUNT_FAX == 'true')
 	   $fax = vam_db_prepare_input($_POST['fax']);
 	$newsletter = '0';
+	$newsletter = vam_db_prepare_input($_POST['newsletter']);
 	$password = vam_db_prepare_input($_POST['password']);
 	$confirmation = vam_db_prepare_input($_POST['confirmation']);
 
@@ -386,6 +388,18 @@ if (isset ($_SESSION['tracking']['refID'])){
 			// GV Code End       // create templates
 		}
 		$vamTemplate->caching = 0;
+		
+    if ($newsletter) {
+      $vlcode = vam_random_charcode(32);
+      $link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.$email_address.'&key='.$vlcode, 'NONSSL');
+      $sql_data_array = array ('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($_SESSION['customer_id']), 'customers_status' => vam_db_input($_SESSION['customers_status']['customers_status_id']), 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => vam_db_input($lastname), 'mail_status' => '0', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
+      vam_db_perform(TABLE_NEWSLETTER_RECIPIENTS, $sql_data_array);
+      // assign vars
+      $vamTemplate->assign('LINK', $link);
+    } else {
+      $vamTemplate->assign('LINK', false);
+    }		
+		
 		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
 		$vamTemplate->caching = 0;
 		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
@@ -442,6 +456,8 @@ if (ACCOUNT_DOB == 'true') {
 
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email"'));
 $vamTemplate->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
+
+$vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true));
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company', '1');
