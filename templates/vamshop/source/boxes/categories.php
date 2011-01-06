@@ -94,7 +94,7 @@ if ($cPath) {
 		if ($category_check > 0) {
 			$new_path .= $value;
 			while ($row = vam_db_fetch_array($categories_query, true)) {
-				$foo[$row['categories_id']] = array ('name' => $row['categories_name'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
+				$foo[$row['categories_id']] = array ('id' => $row['categories_id'], 'name' => $row['categories_name'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
 
 				if (isset ($prev_id)) {
 					$foo[$prev_id]['next_id'] = $row['categories_id'];

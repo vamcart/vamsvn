@@ -23,11 +23,9 @@
     $categories_string .= '<li class="CatLevel'.$foo[$counter]['level'].'';
 
     if ( ($id) && (in_array($counter, $id)) ) {
-      $categories_string .=  ' '.$foo[$counter]['id'].' '.'Current">';
-
+      $categories_string .=  ' Current">';
     } else {
-      $categories_string .=  ' ' .$foo[$counter]['id']. ' ' . '">';
-
+      $categories_string .=  '">';
     }
 
       $categories_string .=  '<a href="';
