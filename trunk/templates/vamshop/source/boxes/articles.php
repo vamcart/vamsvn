@@ -46,12 +46,12 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
 
     $topics_string .= '<a href="';
 
-//    if ($tree[$counter]['parent'] == 0) {
+    if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
-//    } else {
-//      $tPath_new = 'tPath=' . $tree[$counter]['path'];
-//    }
-
+    } else {
+      $tPath_new = 'tPath=' . $tree[$counter]['path'];
+    }
+    
 		$SEF_parameter_cat = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
@@ -104,7 +104,7 @@ if (vam_db_num_rows($topics_query, true) > 0) {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
                                         'level' => 0,
-                                        'path' => $topics['topics_id'],
+                                        'path' => $tPath,
                                         'next_id' => false);
 
     if (isset($parent_id)) {
