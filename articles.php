@@ -140,7 +140,7 @@ if ($articles_split->number_of_rows > 0) {
 		'AUTHOR_NAME' => $articles['authors_name'], 
 		'AUTHOR_LINK' =>  vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles['topics_name'],
-		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $articles['topics_id'] . $SEF_parameter_category)
+		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . $SEF_parameter_category)
 		
 		);
 
