@@ -1,80 +1,0 @@
-{config_load file="$language/lang_$language.conf" section="articles"} 
-<h1 class="contentBoxHeading">{#heading_text#}</h1>
-{if $no_new_articles=='true'}
-<p>
-{#text_no_new_articles#}
-</p>
-{else}
-<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>  {foreach name=aussen item=module_data from=$module_content}  {php} $col++;   {/php}    <td class="main">
-    
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr class="contentBoxContents1">
-    <td class="contentBoxContents1">
-      <img src="{$tpl_path}img/corners/corner_top_left.gif" border="0" alt="" align="left" hspace="0" />
-      <img src="{$tpl_path}img/corners/corner_top_right.gif" border="0" alt="" align="right" hspace="0" />
-    </td>
-  </tr>
-  <tr height="90" class="contentBoxContents1" valign="top">
-    <td height="90" class="contentBoxContents1" valign="top">
-      <table width="100%" cellpadding="0" cellspacing="4" border="0"><tr>
-                                    
-     <td class="contents" width="100%" valign="top">
-     
-     <strong>
-     
-<a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a>
-     
-     </strong>
-     
-     <br />
-
-{if $module_data.AUTHOR_NAME}
-{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
-<br />
-{/if}
- 
-{if $module_data.ARTICLE_CATEGORY_NAME}
-{#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
-<br />
-{/if}
-
-{if $module_data.ARTICLE_SHORT_DESCRIPTION}
-<p>
-{$module_data.ARTICLE_SHORT_DESCRIPTION}
-</p>
-{/if}
-
-{if $module_data.ARTICLE_DATE}
-{#text_date#} {$module_data.ARTICLE_DATE}
-<br />
-{/if}
-     
-     </td>
-
-     <td class="contents" align="right">
-
-      </td>
-     </tr>
-    </table>
-   </td>
-
-  </tr>
-  
-  <tr class="contentBoxContents1">
-    <td class="contentBoxContents1">
-      <img src="{$tpl_path}img/corners/corner_bottom_left.gif" border="0" alt="" align="left" hspace="0" />
-      <img src="{$tpl_path}img/corners/corner_bottom_right.gif" border="0" alt="" align="right" hspace="0" />
-    </td>
-  </tr>
-  <tr>
-    <td width="100%" colspan="2" class="boxText"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="4" /></td>
-  </tr>
-</table>    
-    
-</td>  {php}   if ($col>=1) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}    </tr></table>
-<div class="clear"></div>
-<div class="navigation">
-<span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
-</div>
-<div class="clear"></div>
-{/if}

@@ -1,65 +1,0 @@
-{config_load file="$language/lang_$language.conf" section="latest_news"} <h1 class="contentBoxHeading"><a class="contentBoxHeading1" href="{$NEWS_LINK}">{#heading_text#}</a></h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>  {foreach name=aussen item=module_data from=$module_content}  {php} $col++;   {/php}    <td class="main" width="50%" valign="top">        <table  width="100%" border="0" cellpadding="0" cellspacing="0">
-
-  <tr class="boxText">
-    <td class="boxText" width="100%" colspan="2"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="5" /></td>
-  </tr>
-  <tr class="contentBoxContents1">
-    <td class="contentBoxContents1">
-    <img src="{$tpl_path}img/corners/corner_top_left.gif" border="0" alt="" align="left" hspace="0" />
-    <img src="{$tpl_path}img/corners/corner_top_right.gif" border="0" alt="" align="right" hspace="0" />
-  </td>
-  </tr>
-  <tr height="90" class="contentBoxContents1" valign="top">
-    <td height="90" class="contentBoxContents1" valign="top">
-      <table border="0" width="100%" cellspacing="5" cellpadding="0">
-        <tr>
-                <td class="contents">
-                
-                <span class="date">{$module_data.NEWS_DATA}</span><br /><strong><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></strong>
-                
-                </td>
-
-                <td class="contents" align="right"></td>
-                
-        </tr>
-        <tr>
-                <td class="contents" valign="top" width="100%" colspan="2">
-
-
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-
-<tr>
-        <td class="contents">
-
-		<div style="padding-left:1em">
-		{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}
-		</div>
-
-</td>
-</tr>
-
-<tr>
-        <td class="contents">
-<a href="{$NEWS_LINK}" class="contents">{#other_news#}</a>
-        </td>
-</tr>
-
-</table>
-
-                </td>
-
-        </tr>
-</table>
-</td>
-  </tr>
-  <tr class="contentBoxContents1">
-
-    <td class="contentBoxContents1">
-    <img src="{$tpl_path}img/corners/corner_bottom_left.gif" border="0" alt="" align="left" hspace="0" />
-    <img src="{$tpl_path}img/corners/corner_bottom_right.gif" border="0" alt="" align="right" hspace="0" />
-    </td>
-
-  </tr>
-
-        </table></td>  {php}   if ($col>=2) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}    </tr></table>

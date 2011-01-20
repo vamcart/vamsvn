@@ -1,132 +1,0 @@
-{config_load file="$language/lang_$language.conf" section="index"}<h1 class="contentBoxHeading">{$CATEGORIES_NAME}</h1>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr valign="top">    <td class="contentsTopics">{$CATEGORIES_HEADING_TITLE}</td>  </tr>  </table>{if $CATEGORIES_DESCRIPTION}<br />{$CATEGORIES_DESCRIPTION}{/if}<br />{if $CATEGORIES_IMAGE}<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /><br /><table width="100%"  border="0" cellspacing="0" cellpadding="0">  <tr>    <td style="border-bottom: 1px solid; border-color: #000000;">&nbsp;</td>  </tr></table>{/if}{if $MANUFACTURERS_DESCRIPTION}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
-	{$MANUFACTURERS_DESCRIPTION}
-    </td>  </tr></table><br />{/if}
-{if $MANUFACTURER_SORT}<br /><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
-	{$MANUFACTURER_SORT}
-    </td>  </tr></table><br />{/if}
-{if $CATEGORIES_NAME}
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
-{#text_sort#} 
-<a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a> | 
-<a href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a> | 
-<a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> | 
-<a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
-    </td>  </tr></table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>    <td class="main" align="left">
-{if count($module_content) >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
-{#text_products_per_page#}
-
-{if count($module_content) > 10}
-<a href="{$LINK_PAGE}10">10</a> 
-{/if}
-
-{if count($module_content) > 20}
-<a href="{$LINK_PAGE}20">20</a> 
-{/if}
-
-{if count($module_content) > 50}
-<a href="{$LINK_PAGE}50">50</a> 
-{/if}
-
-{if count($module_content) > 100}
-<a href="{$LINK_PAGE}100">100</a>
-{/if} 
-{/if}
-    </td>  </tr></table>
-{/if}<form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
-<table width="100%" border="0" cellspacing="0" cellpadding="4">  <tr>           {foreach name=aussen item=module_data from=$module_content}   {php} $col++;   {/php}
-    <td class="main" valign="top">
-    
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr class="contentBoxContents1">
-    <td class="contentBoxContents1">
-      <img src="{$tpl_path}img/corners/corner_top_left.gif" border="0" alt="" align="left" hspace="0">
-      <img src="{$tpl_path}img/corners/corner_top_right.gif" border="0" alt="" align="right" hspace="0">
-    </td>
-  </tr>
-  <tr height="90" class="contentBoxContents1" valign="top">
-    <td height="90" class="contentBoxContents1" valign="top">
-      <table width="100%" cellpaddind="0" cellspacing="5" border="0">
-      
-      
-<tr>
-
-     <td class="contents" width="100%" valign="top" colspan="2" align="center">
-     
-     <strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong>
-
-<input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" />{#text_compare#}<br />
-     
-</td>
-</tr>      
-      
-      <tr>
-        <td class="contents" valign="top" align="center">
-        
-        {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>{/if}{if $module_data.PRODUCTS_FSK18=='true'}<br /><img src="{$tpl_path}img/fsk18.gif" alt="" />{/if}
-        
-        </td>
-                                                  
-     <td class="contents" align="center">
-
-             {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
-
-      </td>
-     </tr>
-     
-<tr>
-
-     <td class="contents" width="100%" valign="top" colspan="2">
-     
-     {if $module_data.PRODUCTS_SHORT_DESCRIPTION}{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}<br />
-<p>
-{foreach name=params item=module_params from=$module_data.params}
-{$module_params.name}: <strong>{$module_params.value} {$module_params.suff} </strong><br />
-{/foreach}
-</p>
-     
-     <a href="{$module_data.PRODUCTS_LINK}">{#text_more#}</a><br />{/if}
-
-     <br />
-
-            <strong>{$module_data.PRODUCTS_PRICE} </strong><br />            {$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}             {if $module_data.PRODUCTS_VPE}<br />{$module_data.PRODUCTS_VPE}{/if} 
-<br />
-
-{if $module_data.PRODUCTS_SHIPPING_NAME}                          <table width="200" border="0" cellpadding="0" cellspacing="0">                            <tr valign="middle">                              <td class="main" align="right">{#text_shippingtime#}</td>                              {if $module_data.PRODUCTS_SHIPPING_IMAGE}                              <td><img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" /></td>                              {/if}                              <td class="main" align="left">&nbsp;{$module_data.PRODUCTS_SHIPPING_NAME}</td>                            </tr>                          </table>                          {/if}
-     
-     </td>
-
-
-</tr>     
-     
-    </table>
-   </td>
-
-  </tr>
-  
-  <tr class="contentBoxContents1">
-    <td class="contentBoxContents1">
-      <img src="{$tpl_path}img/corners/corner_bottom_left.gif" border="0" alt="" align="left" hspace="0">
-      <img src="{$tpl_path}img/corners/corner_bottom_right.gif" border="0" alt="" align="right" hspace="0">
-    </td>
-  </tr>
-  <tr>
-    <td width="100%" colspan="2" class="boxText"><img src="{$tpl_path}img/pixel_trans.gif" border="0" alt="" width="1" height="10" /></td>
-  </tr>
-</table>    
-    
-</td>
-  {php}   if ($col>=2) {  $col=0;  echo '</tr><tr>';  }  {/php}  {/foreach}    </tr>
-</table>
-
-<input type="hidden" name="cat" value="{$smarty.get.cat}" />
-{$BUTTON_COMPARE}</form>
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td>
-<span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
-</td>
-</tr>
-</table>
