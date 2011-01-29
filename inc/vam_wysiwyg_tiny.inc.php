@@ -26,7 +26,7 @@ $js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_t
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -70,7 +70,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -114,7 +114,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -158,7 +158,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -202,7 +202,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -246,7 +246,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -290,7 +290,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -333,7 +333,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -377,7 +377,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -421,7 +421,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
@@ -465,7 +465,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinyMCE.init({
-	mode : "textareas",
+	mode : "none",
 	editor_deselector : "notinymce",
 	theme : "advanced",
 	language : "'.$lang.'",
