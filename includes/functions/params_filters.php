@@ -46,11 +46,13 @@
 		return $data;
 	}
 	function get_params_listing_sql($listing_sql, $categories_id,  $selected_blocks)
-	{
-		if( count($selected_blocks) == 0) return $listing_sql; 
-		// p.products_statuses_id, 
+	{   
+		if ((count($selected_blocks) == 0) and !isset($_GET['price_max']) and !isset($_GET['price_min'])) { 
+            return $listing_sql; 
+         }
+        // p.products_statuses_id, 
 
-		$sql = "select p.products_fsk18, 
+		$sql = "select DISTINCT p.products_fsk18, 
 					p.products_shippingtime, 
 					p.products_model, 
 					p.products_ean, 
@@ -70,7 +72,7 @@
 					p.products_vpe_value, 
 					p.products_discount_allowed, 
 					p.products_tax_class_id 
-				from products p 
+				from products_parameters_values pcc, products p 
 				left join products_description pd on pd.products_id = p.products_id
 				left join products_to_categories p2c on p2c.products_id = p.products_id
 				left join manufacturers m on p.manufacturers_id = m.manufacturers_id ";
@@ -85,61 +87,92 @@
 		$price_max = -1;
 		if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
 		{
-			$wheres[] = " p.products_price <= '".intval($_GET['price_max'])."' ";;
+			$wheres[] = " p.products_price <= '".intval($_GET['price_max'])."' ";
 		}
 		
-		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int)$categories_id."' ";
+		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int) $_GET['cat']."' ";
 		$wheres[] = " pd.language_id = '1' ";
+
 		foreach( $selected_blocks as $index => $group_blocks)
 		{
 			if($index !=  $products_parameters_id){
 				$tables++;
-				$sql .= " LEFT JOIN products_parameters2products p".$tables." ON p.products_id = p".$tables.".products_id AND p".$tables.".products_parameters_values_id IN ( '".join("', '", $group_blocks)."' ) ";
-				$wheres[] = " p".$tables.".products_id IS NOT NULL ";
+				$sql .= " LEFT JOIN products_parameters2products p".$tables." ON p.products_id = p".$tables.".products_id AND p".$tables.".products_parameters_values_id IN ( '".join("', '", $group_blocks)."' ) 
+                AND p".$tables.".products_parameters_id = '".$index."'";
+                $wheres[] = " p".$tables.".products_id IS NOT NULL ";
 			}
-		}
-		
+		} 
+
 			if(count($wheres) > 0){
 				$sql .= " WHERE ".join(" AND ", $wheres);
 			}
+            if ($_GET['sort'] == 'name') $sql .= " ORDER BY pd.products_name ";
+            if ($_GET['sort'] == 'price') $sql .= " ORDER BY p.products_price ";
+            if ($_GET['direction'] == 'asc') $sql .= " ASC";
+            if ($_GET['direction'] == 'desc') $sql .= " DESC";
+            
+            if  (!isset($_GET['sort']) and !isset($_GET['direction']))
+            
 			$sql .= " ORDER BY pd.products_name ASC";
-//			print $sql;
 			return $sql;
 	}
 
 	function get_parameters_by_categories($categories_id)
 	{
+        $sql1 = "select pp.products_parameters_title,pp.products_parameters_id from products_parameters pp";
+        $sql1 .= " where pp.categories_id = '".$categories_id."'";
+        $sql1 .= " and pp.products_parameters_type='g'";
+        $sql1 .= " order by pp.products_parameters_order ";
+
+        //print $sql1."<hr />";
+        //return array();
+        $rs1 = mysql_query($sql1);
+        print mysql_error();
+        $data = array();
+        while($r1 = mysql_fetch_array($rs1))
+        {
+         $r1val = $r1["products_parameters_title"];
+         $r1id =  $r1["products_parameters_id"];
+
 		$sql = "select pp.* from products_parameters pp";
 		$sql .= " where pp.categories_id = '".$categories_id."'";
-		$sql .= " and pp.products_parameters_useinsearch = '1' ";
+		$sql .= " and pp.products_parameters_useinsearch = '1' and products_parameters_group='".$r1id."'";
 		$sql .= " order by pp.products_parameters_order ";
 
 //		print $sql."<hr />";
 		//return array();
 		$rs = vamDBquery($sql);
 		print mysql_error();
-		$data = array();
 		while($r = vam_db_fetch_array($rs,true))
 		{
-			$data[] = $r;
+			$data[$r1val][] = $r;
 		}
+        }
+        
 		return $data;
 	}
 	
 	function get_parameters_block( $products_parameters_id , $selected_blocks)
 	{
-		$query = $_GET['q'];
+        $query = $_GET['q'];
+		$query1 = $_GET['p'];
 		if(!empty($query)){
-			$blocks = preg_split("/-/", $query);
+			$blocks = preg_split("/-/", $_GET['q']);
 		}else{ $blocks = array(); }
+        
+        if(!empty($query1)){
+            $blocks1 = preg_split("/-/", $_GET['p']);
+        }else{ $blocks1 = array(); }
+        
+         $par = preg_split('/-/', $_GET['p']);
 		if( array_key_exists( $products_parameters_id, $selected_blocks))
 		{
-			$group_blocks = array_diff($blocks, $selected_blocks[$products_parameters_id]);
+			$group_blocks = array_diff($blocks, $selected_blocks[$products_parameters_id]);  
 		
 		}else{
 			$group_blocks = $blocks;
 		}
-		$price_min = -1;
+        $price_min = -1;
 		if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
 		{
 			$price_min = intval($_GET['price_min']);
@@ -151,23 +184,27 @@
 		}
 
 //		print_r($blocks); 
-//		print_r($group_block); 
+//	print_r($group_block); 
 		//print count($blocks);
 
 		if(count($blocks) > 0){
-			$sql = "SELECT p.*, p.products_parameters2products_value as parameters_value , count( p.products_id ) count";
+			$sql = "SELECT DISTINCT p.*, p.products_parameters2products_value as parameters_value , count( p.products_id ) count";
 			$sql .= " FROM products_parameters2products p";
 			$tables = 0;
 			$wheres = array();
+            $row=0;
 			foreach( $selected_blocks as $index => $group_blocks)
 			{
 				if($index !=  $products_parameters_id){
 					$tables++;
-					$sql .= " LEFT JOIN products_parameters2products p".$tables." ON p.products_id = p".$tables.".products_id AND p".$tables.".products_parameters_values_id IN ( '".join("', '", $group_blocks)."' ) ";
-					$wheres[] = " p".$tables.".products_id IS NOT NULL ";
-				}
+					$sql .= " LEFT JOIN products_parameters2products p".$tables." ON p.products_id = p".$tables.".products_id AND p".$tables.".products_parameters_values_id IN ( '".join("', '", $group_blocks)."') 
+                    AND p".$tables.".products_parameters_id = '". $index."'";
+                    $wheres[] = " p".$tables.".products_id IS NOT NULL ";
+                    
+				} 
+                $row++;
 			}
-			$wheres[] = " p.products_parameters_values_id NOT IN ( '".join("', '", $blocks)."') ";
+			$wheres[] = " p.products_parameters_id NOT IN ( '".join("', '", $blocks1)."') ";
 			$wheres[] = " p.products_parameters_id = '".$products_parameters_id."' ";
 			if($price_max != -1 || $price_min != -1){
 				$sql .= " JOIN products p0 ON  p0.products_id = p.products_id ";
@@ -176,12 +213,11 @@
 			}
 
         $sql .= " LEFT JOIN products prd ON prd.products_id = p.products_id ";
-
-			$sql .= " WHERE ".join(" AND ", $wheres);
-         $sql .= " and prd.products_status = 1 ";
-			$sql .= " GROUP BY p.products_parameters_values_id ";
-			$sql .= " ORDER BY p.products_parameters2products_value";
-		
+        $sql .= " WHERE ".join(" AND ", $wheres);
+        $sql .= " and prd.products_status = 1 "; 
+        $sql .= " GROUP BY p.products_parameters_values_id ";
+		$sql .= " ORDER BY p.products_parameters2products_value"; 
+		    
 		} else {
 			$sql = "SELECT p1.*, p1.products_parameters2products_value as parameters_value , count( p1.products_id ) count";
 			$sql .= " FROM products_parameters2products p1";
@@ -192,11 +228,10 @@
 			}
 
         $sql .= " LEFT JOIN products prd ON prd.products_id = p1.products_id ";
-
-			$sql .= " WHERE p1.products_parameters_id = '".$products_parameters_id."'";
-         $sql .= " and prd.products_status = 1 ";
-			$sql .= " GROUP BY p1.products_parameters_values_id";
-			$sql .= " ORDER BY p1.products_parameters2products_value";
+        $sql .= " WHERE p1.products_parameters_id = '".$products_parameters_id."' ";  
+        $sql .= " and prd.products_status = 1 ";
+		$sql .= " GROUP BY p1.products_parameters_values_id";
+		$sql .= " ORDER BY p1.products_parameters2products_value";
 		}
 		//print $sql;
 		$rs = vamDBquery($sql,true);
@@ -206,6 +241,8 @@
 		{
 			$data[] = $r;
 		}
+       // echo "<pre>";
+        //var_dump($data);
 		return $data;
 	}
 	
@@ -242,12 +279,17 @@
 
 	function get_selected()
 	{
-		$query = $_GET['q'];
+        $query = $_GET['q'];
+		$query1 = $_GET['p'];
 		if(!empty($query)){
 			$blocks = preg_split("/-/", $query);
 		}else{ $blocks = array(); }
+        
+        if(!empty($query1)){
+            $blocks1 = preg_split("/-/", $query1);
+        }else{ $blocks1 = array(); }
 		
-		$price_min = -1;
+        $price_min = -1;
 		if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
 		{
 			$price_min = intval($_GET['price_min']);
@@ -261,7 +303,7 @@
 		$paramNames = array();
 		if( count($blocks) > 0){
 			
-			$sql = "select ppv.* from products_parameters_values ppv";
+		/*	$sql = "select ppv.* from products_parameters_values ppv";
 			if($price_max != -1 || $price_min != -1){
 				$sql .= " JOIN products_parameters2products p1 ON  p1.products_parameters_values_id = ppv.products_parameters_values_id ";
 				$sql .= " JOIN products p0 ON  p0.products_id = p1.products_id ";
@@ -272,15 +314,36 @@
 			if($price_max != -1 || $price_min != -1){
 				$sql .= " GROUP BY p1.products_parameters_values_id";
 			}			
-			//print $sql;exit;
+			//print $sql;
+            //exit;
+            $sql .= " order by products_parameters_id";
 			$rs = vamDBquery($sql,true);
 			print mysql_error();
-			$data = array();
-			while($r = vam_db_fetch_array($rs,true))
-			{
-				$paramId = $r['products_parameters_id'];
-				$data[$paramId][] = $r;
-			}
+			*/
+            $data = array();
+          
+            for($i = 0; $i < count($blocks); $i++)  {     
+                $paramId = $blocks1[$i]; 
+                $data[$paramId][0]["products_parameters_id"] = $blocks1[$i];
+                $data[$paramId][0]["products_parameters_values_id"] = $blocks[$i];
+                 // 
+                  $sql1 = "select ppv.parameters_value from products_parameters_values ppv ";
+                  
+             /* if($price_max != -1 || $price_min != -1){
+                $sql1 .= " JOIN products_parameters2products p1 ON  p1.products_parameters_values_id = ppv.products_parameters_values_id ";
+                $sql1 .= " JOIN products p0 ON  p0.products_id = p1.products_id ";
+                if($price_min != -1 ) $sql1 .= " AND p0.products_price >= '$price_min' ";
+                if($price_max != -1 ) $sql1 .= " AND p0.products_price <= '$price_max' ";
+            }
+            */
+                  $sql1 .= "where ppv.products_parameters_values_id ='".$blocks[$i]."'";
+                  $rs1 = vamDBquery($sql1,true);
+                  print mysql_error();
+                  $rs1 = vam_db_fetch_array($rs1,true);
+                  //
+                  $data[$paramId][0]["parameters_value"] = $rs1["parameters_value"];
+            }
+
 		}else{ $data = array(); }
 		return $data;
 	}
