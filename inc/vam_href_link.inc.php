@@ -69,6 +69,8 @@
             $currency = $parsed_param[1];
           } elseif ($parsed_param[0] === 'q') {
             $q = $parsed_param[1];
+           } elseif ($parsed_param[0] === 'p') {
+            $p = $parsed_param[1];
           } elseif ($parsed_param[0] === 'price_min') {
             $price_min = $parsed_param[1];
           } elseif ($parsed_param[0] === 'price_max') {
