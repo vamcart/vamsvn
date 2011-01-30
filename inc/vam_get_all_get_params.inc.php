@@ -26,9 +26,9 @@
     if (is_array($_GET) && (sizeof($_GET) > 0)) {
       reset($_GET);
       while (list($key, $value) = each($_GET)) {
-        if ( (strlen((int)$value) > 0) && ($key != vam_session_name()) && ($key != 'error') && ($key != 'cPath') && (!in_array($key, $exclude_array)) && ($key != 'x') && ($key != 'y') ) {
-          $key =rawurlencode(stripslashes((int)$key));
-          $value=rawurlencode(stripslashes((int)$value));          
+        if ( (strlen((string)$value) > 0) && ($key != vam_session_name()) && ($key != 'error') && ($key != 'cPath') && (!in_array($key, $exclude_array)) && ($key != 'x') && ($key != 'y') ) {
+          $key =rawurlencode(stripslashes((string)$key));
+          $value=rawurlencode(stripslashes((string)$value));          
           $get_url .= $key . '=' . $value . '&';
         }
       }
