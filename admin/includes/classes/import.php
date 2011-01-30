@@ -297,6 +297,10 @@ class vamImport {
 
 			$products_array = array_merge($products_array, array ('products_quantity_max' => '1000'));
 
+			$products_array = array_merge($products_array, array ('products_date_added' => 'now()'));
+
+			$products_array = array_merge($products_array, array ('products_last_modified' => 'now()'));
+
 		if ($mode == 'insert') {
 			$this->counter['prod_new']++;
 			vam_db_perform(TABLE_PRODUCTS, $products_array);
