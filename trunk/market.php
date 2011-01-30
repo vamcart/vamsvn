@@ -94,7 +94,7 @@ require('includes/application_top.php');
 @define('YML_REF_ID', '');
 @define('YML_STRIP_TAGS', 'true');
 @define('YML_USE_CDATA', 'true');
-@define('YML_UT8', '');
+@define('YML_UTF8', '');
 @define('YML_VENDOR', 'false');
 @define('YML_VENDORCODE', 'true');
 @define('YML_USE_CPATH', 'false');
