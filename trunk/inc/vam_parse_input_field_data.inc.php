@@ -19,6 +19,6 @@
    
 // Parse the data used in the html tags to ensure the tags will not break
   function vam_parse_input_field_data($data, $parse) {
-    return strtr(trim($data), $parse);
+    return strtr(trim((int)$data), $parse);
   }
  ?>
