@@ -23,7 +23,7 @@ function vvcode_render_code($code) {
     $ttf=array();
     if ($dir= opendir(DIR_WS_INCLUDES.'fonts/')){
     while  (($file = readdir($dir)) !==false) {
-    if (is_file(DIR_WS_INCLUDES.'fonts/'.$file) and (strstr(strtoupper($file),'.TTF'))){
+    if (is_file(DIR_WS_INCLUDES.'fonts/'.$file) and (strstr($file,'.ttf'))){
         $ttf[]=DIR_FS_CATALOG.'/includes/fonts/'.$file;
         }
         }
@@ -35,7 +35,7 @@ function vvcode_render_code($code) {
     $imgh = imagecreate($width, $height);
     // BOF - Tomcraft - 2009-11-06 - Set VVCODE Colors back to default
     // BOF - Dokuman - 2009-10-14 - Set VVCODE Colors to default template color
-    $fonts = imagecolorallocate($imgh, 112, 112, 112);
+    $fonts = imagecolorallocate($imgh, vam_rand(0, 255), vam_rand(0, 255), vam_rand(0, 255));
     $lines = imagecolorallocate($imgh, 220, 148, 002);
     $background = imagecolorallocate($imgh, 196, 196, 196);
     /*
