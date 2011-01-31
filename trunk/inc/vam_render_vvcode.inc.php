@@ -1,16 +1,20 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: xtc_render_vvcode.inc.php,v 1.0
-   
-   Copyright (c) 2003 XT-Commerce
+  $Id: vam_render_vvcode.inc.php 831 2007-10-29 19:20:03 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
-   
-   by Guido Winger for XT:Commerce (gwinger@xtcommerce.com)
-  
+   based on: 
+   (c) 2007 KCAPTCHA - author Kruglov Sergei; captcha.ru 
+
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-require_once(DIR_FS_INC . 'xtc_rand.inc.php');
+require_once(DIR_FS_INC . 'vam_rand.inc.php');
 
 function vvcode_render_code($code) {
     if (!empty($code)) {
@@ -44,32 +48,32 @@ function vvcode_render_code($code) {
 
     imagefill($imgh, 0, 0, $background);
 
-    $x = xtc_rand(0, 20);
-    $y = xtc_rand(20, 40);
+    $x = vam_rand(0, 20);
+    $y = vam_rand(20, 40);
     for ($i = $x, $z = $y; $i < $width && $z < $width;) {
         imageLine($imgh, $i, 0, $z, $height, $lines);
         $i += $x;
         $z += $y;
     }
 
-    $x = xtc_rand(0, 20);
-    $y = xtc_rand(20, 40);
+    $x = vam_rand(0, 20);
+    $y = vam_rand(20, 40);
     for ($i = $x, $z = $y; $i < $width && $z < $width;) {
         imageLine($imgh, $z, 0, $i, $height, $lines);
         $i += $x;
         $z += $y;
     }    
     
-    $x = xtc_rand(0, 10);
-    $y = xtc_rand(10, 20);
+    $x = vam_rand(0, 10);
+    $y = vam_rand(10, 20);
     for ($i = $x, $z = $y; $i < $height && $z < $height;) {
         imageLine($imgh, 0, $i, $width, $z, $lines);
         $i += $x;
         $z += $y;
     }
 
-    $x = xtc_rand(0, 10);
-    $y = xtc_rand(10, 20);
+    $x = vam_rand(0, 10);
+    $y = vam_rand(10, 20);
     for ($i = $x, $z = $y; $i < $height && $z < $height;) {
         imageLine($imgh, 0, $z, $width, $i, $lines);
         $i += $x;
@@ -77,10 +81,10 @@ function vvcode_render_code($code) {
     }    
        
     for ($i = 0; $i < strlen($code); $i++) {
-        $font = $ttf[(int)xtc_rand(0, count($ttf)-1)];
-        $size = xtc_rand(30, 36);
-        $rand = xtc_rand(1,20);
-        $direction = xtc_rand(0,1);
+        $font = $ttf[(int)vam_rand(0, count($ttf)-1)];
+        $size = vam_rand(30, 36);
+        $rand = vam_rand(1,20);
+        $direction = vam_rand(0,1);
 
       if ($direction == 0) {
        $angle = 0-$rand;
