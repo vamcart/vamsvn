@@ -35,6 +35,9 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
 require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
 require_once (DIR_FS_INC.'vam_write_user_info.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
+
 // redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
 if ($session_started == false) {
 	vam_redirect(vam_href_link(FILENAME_COOKIE_USAGE));
@@ -61,7 +64,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		// Action for bцse ?
     $vamTemplate->assign('CAPTCHA_IMG', '<img src="'.FILENAME_DISPLAY_CAPTCHA.'" alt="captcha" />');    
     $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
-    if ($_POST['captcha'] == $_SESSION['captcha_keystring']){
+    if ($_POST['captcha'] == $_SESSION['vvcode']){
     // code ok
 		// Check that password is good
 		if (!vam_validate_password($password, $check_customer['customers_password'])) {

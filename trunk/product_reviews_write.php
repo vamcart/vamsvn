@@ -18,6 +18,9 @@
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
+
 // create template elements
 $vamTemplate = new vamTemplate;
 // include boxes
@@ -35,10 +38,10 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process') {
 
     $error = false;
     
-    //if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['captcha_keystring']) {
-      //$error = true;
-	   //$vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
-    //}
+    if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['vvcode']) {
+      $error = true;
+	   $vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+    }
 
     if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
       $error = true;

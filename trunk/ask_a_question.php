@@ -18,6 +18,8 @@ include ('includes/application_top.php');
 // include needed functions
 require_once(DIR_FS_INC.'vam_validate_email.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
 // create smarty elements
 $vamTemplate = new vamTemplate;
@@ -68,7 +70,7 @@ $product_info = vam_db_fetch_array($product_info_query);
 		$messageStack->add('ask_a_question', ENTRY_EMAIL_ADDRESS_ERROR);
 	} 
 
-	if (($_POST['captcha'] != $_SESSION['captcha_keystring'])) {
+	if (($_POST['captcha'] != $_SESSION['vvcode'])) {
 		$error = true;
         $messageStack->add('ask_a_question', TEXT_WRONG_CODE);
 	}

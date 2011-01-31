@@ -33,6 +33,8 @@ require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
 require_once (DIR_FS_INC.'vam_rand.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
+
 $case = double_opt;
 $info_message = TEXT_PASSWORD_FORGOTTEN;
 if (isset ($_GET['action']) && ($_GET['action'] == 'first_opt_in')) {
@@ -58,7 +60,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'first_opt_in')) {
 	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.html');
 	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/password_verification_mail.txt');
 
-	if ($_POST['captcha'] == $_SESSION['captcha_keystring']) {
+	if ($_POST['captcha'] == $_SESSION['vvcode']) {
 		if (!vam_db_num_rows($check_customer_query)) {
 			$case = wrong_mail;
 			$info_message = TEXT_EMAIL_ERROR;
