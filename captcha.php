@@ -15,16 +15,11 @@
    ---------------------------------------------------------------------------------------*/
 
 require ('includes/application_top.php');
-require_once (DIR_WS_CLASSES.'kcaptcha.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 
-if(isset($_REQUEST[session_name()])){
-	session_start();
-}
-
-$captcha = new KCAPTCHA();
-
-if($_REQUEST[session_name()]){
-	$_SESSION['captcha_keystring'] = $captcha->getKeyString();
-}
+$visual_verify_code = vam_random_charcode(6);
+$_SESSION['vvcode'] = $visual_verify_code;
+$vvimg = vvcode_render_code($visual_verify_code);
 
 ?>
