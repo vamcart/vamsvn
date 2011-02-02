@@ -93,16 +93,16 @@
       global $cartID, $cart;
 
       if (empty($_SESSION['cart']->cartID)) {
-        $cartID = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
+        $_SESSION['cartID'] = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
       }
 
       if (!isset($_SESSION['cartID'])) {
-        $_SESSION['cartID'] = $cartID;
+        $_SESSION['cartID'] = $_SESSION['cart']->generate_cart_id();
       }
     }
 
     function confirmation() {
-      global $cartID, $cart_liqpay_id, $customer_id, $languages_id, $order, $order_total_modules;
+      global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
@@ -112,7 +112,7 @@
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_liqpay_id, 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_liqpay_id'], 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -303,8 +303,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $cart_liqpay_id = $cartID . '-' . $insert_id;
-          $_SESSION['cart_liqpay_id'] = $cart_liqpay_id;
+          $_SESSION['cart_liqpay_id'] = $cartID . '-' . $insert_id;
         }
       }
 
@@ -312,7 +311,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     }
 
     function process_button() {
-      global $customer_id, $order, $sendto, $vamPrice, $currencies, $cart_liqpay_id, $shipping;
+      global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
       $process_button_string = '';
 
@@ -348,7 +347,7 @@ $merchant_pass = MODULE_PAYMENT_LIQPAY_SECRET_KEY;
     }
 
     function before_process() {
-      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_liqpay_id;
+      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
       $order_id = substr($_SESSION['cart_liqpay_id'], strpos($_SESSION['cart_liqpay_id'], '-')+1);
