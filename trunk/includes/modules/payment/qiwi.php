@@ -101,16 +101,16 @@
         $this->phone = vam_db_prepare_input($_SESSION['qiwi_telephone']);
 
       if (empty($_SESSION['cart']->cartID)) {
-        $cartID = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
+        $_SESSION['cartID'] = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
       }
 
       if (!isset($_SESSION['cartID'])) {
-        $_SESSION['cartID'] = $cartID;
+        $_SESSION['cartID'] = $_SESSION['cart']->generate_cart_id();
       }
     }
-
+    
     function confirmation() {
-      global $cartID, $cart_qiwi_id, $customer_id, $languages_id, $order, $order_total_modules;
+      global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
@@ -120,7 +120,7 @@
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_qiwi_id, 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_qiwi_id'], 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -311,8 +311,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $cart_qiwi_id = $cartID . '-' . $insert_id;
-          $_SESSION['cart_qiwi_id'] = $cart_qiwi_id;
+          $_SESSION['cart_qiwi_id'] = $cartID . '-' . $insert_id;
         }
 
 // Выписываем qiwi счёт для покупателя
@@ -347,8 +346,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			'password' => MODULE_PAYMENT_QIWI_SECRET_KEY,
 			'user' => ($_SESSION['qiwi_telephone'] == '' ? $_POST['qiwi_telephone'] : $_SESSION['qiwi_telephone']),
 			'amount' => number_format($order->info['total'],0,'',''),
-			'comment' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
-			'txn' => substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1),
+			'comment' => substr($_SESSION['cart_qiwi_id'], strpos($_SESSION['cart_qiwi_id'], '-')+1),
+			'txn' => substr($_SESSION['cart_qiwi_id'], strpos($_SESSION['cart_qiwi_id'], '-')+1),
 			'lifetime' => date("d.m.Y H:i:s", strtotime("+2 weeks")),
 			'alarm' => 1,
 			'create' => 1
@@ -371,7 +370,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			//}
 			//}
 
-	      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input((int)substr($cart_qiwi_id, strpos($cart_qiwi_id, '-')+1)) . "', '" . vam_db_prepare_input($_SESSION['kvit_name']) . "', '" . vam_db_prepare_input($_SESSION['qiwi_telephone']) ."')");
+	      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input((int)substr($_SESSION['cart_qiwi_id'], strpos($_SESSION['cart_qiwi_id'], '-')+1)) . "', '" . vam_db_prepare_input($_SESSION['kvit_name']) . "', '" . vam_db_prepare_input($_SESSION['qiwi_telephone']) ."')");
 
         }
 
@@ -390,7 +389,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 	}
 	
     function before_process() {
-      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_qiwi_id;
+      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
       $order_id = substr($_SESSION['cart_qiwi_id'], strpos($_SESSION['cart_qiwi_id'], '-')+1);

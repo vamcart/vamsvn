@@ -93,16 +93,16 @@
       global $cartID, $cart;
 
       if (empty($_SESSION['cart']->cartID)) {
-        $cartID = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
+        $_SESSION['cartID'] = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
       }
 
       if (!isset($_SESSION['cartID'])) {
-        $_SESSION['cartID'] = $cartID;
+        $_SESSION['cartID'] = $_SESSION['cart']->generate_cart_id();
       }
     }
 
     function confirmation() {
-      global $cartID, $cart_payonline_id, $customer_id, $languages_id, $order, $order_total_modules;
+      global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
@@ -112,7 +112,7 @@
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_payonline_id, 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_payonline_id'], 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -303,8 +303,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $cart_payonline_id = $cartID . '-' . $insert_id;
-          $_SESSION['cart_payonline_id'] = $cart_payonline_id;
+          $_SESSION['cart_payonline_id'] = $cartID . '-' . $insert_id;
         }
       }
 
@@ -312,14 +311,14 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     }
 
     function process_button() {
-      global $customer_id, $order, $sendto, $vamPrice, $currencies, $cart_payonline_id, $shipping;
+      global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
       $process_button_string = '';
 
                                $order_sum = number_format($order->info['total'],2,'.','');
-                               $hash = md5('MerchantId='.MODULE_PAYMENT_PAYONLINESYSTEM_ID.'&OrderId='.substr($cart_payonline_id, strpos($cart_payonline_id, '-')+1).'&Amount='.$order_sum.'&Currency=RUB&PrivateSecurityKey='.MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY);
+                               $hash = md5('MerchantId='.MODULE_PAYMENT_PAYONLINESYSTEM_ID.'&OrderId='.substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1).'&Amount='.$order_sum.'&Currency=RUB&PrivateSecurityKey='.MODULE_PAYMENT_PAYONLINESYSTEM_SECRET_KEY);
 
-      $process_button_string = vam_draw_hidden_field('OrderId', substr($cart_payonline_id, strpos($cart_payonline_id, '-')+1)) .
+      $process_button_string = vam_draw_hidden_field('OrderId', substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1)) .
                                vam_draw_hidden_field('MerchantId', MODULE_PAYMENT_PAYONLINESYSTEM_ID) .
                                vam_draw_hidden_field('Amount', $order_sum) .
                                vam_draw_hidden_field('SecurityKey', $hash) .
@@ -330,7 +329,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     }
 
     function before_process() {
-      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_payonline_id;
+      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
       $order_id = substr($_SESSION['cart_payonline_id'], strpos($_SESSION['cart_payonline_id'], '-')+1);
