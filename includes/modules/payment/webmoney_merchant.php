@@ -64,7 +64,7 @@
 
     function selection() {
 
-      if (isset ($_SESSION['cart_webmoney_id'])) {
+      if (isset($_SESSION['cart_webmoney_id'])) {
         $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
@@ -77,7 +77,7 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          unset ($_SESSION['cart_webmoney_id']);
+          unset($_SESSION['cart_webmoney_id']);
         }
       }
 
@@ -96,7 +96,7 @@
         $_SESSION['cartID'] = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
       }
 
-      if (!isset ($_SESSION['cartID'])) {
+      if (!isset($_SESSION['cartID'])) {
         $_SESSION['cartID'] = $_SESSION['cart']->generate_cart_id();
       }
     }
@@ -104,10 +104,10 @@
     function confirmation() {
       global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
-      if (isset ($_SESSION['cartID'])) {
+      if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (isset ($_SESSION['cart_webmoney_id'])) {
+        if (isset($_SESSION['cart_webmoney_id'])) {
           $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
@@ -304,7 +304,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           }
 
           $_SESSION['cart_webmoney_id'] = $_SESSION['cartID'] . '-' . $insert_id;
-          $_SESSION['cart_webmoney_id'] = $_SESSION['cart_webmoney_id'];
         }
       }
 
@@ -486,13 +485,13 @@ $vamTemplate = new vamTemplate;
       $_SESSION['cart']->reset(true);
 
 // unregister session variables used during checkout
-      unset ($_SESSION['sendto']);
-      unset ($_SESSION['billto']);
-      unset ($_SESSION['shipping']);
-      unset ($_SESSION['payment']);
-      unset ($_SESSION['comments']);
+      unset($_SESSION['sendto']);
+      unset($_SESSION['billto']);
+      unset($_SESSION['shipping']);
+      unset($_SESSION['payment']);
+      unset($_SESSION['comments']);
 
-      unset ($_SESSION['cart_webmoney_id']);
+      unset($_SESSION['cart_webmoney_id']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
