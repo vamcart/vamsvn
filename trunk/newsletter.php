@@ -32,6 +32,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$vlcode = vam_random_charcode(32);
@@ -54,7 +55,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 
 	// Check if email exists 
 
-	if (($_POST['check'] == 'inp') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
+	if (($_POST['check'] == 'inp') && ($_POST['captcha'] == $_SESSION['vvcode'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address, mail_status from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
@@ -112,7 +113,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		$info_message = TEXT_WRONG_CODE;
 	}
 
-	if (($_POST['check'] == 'del') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
+	if (($_POST['check'] == 'del') && ($_POST['captcha'] == $_SESSION['vvcode'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
