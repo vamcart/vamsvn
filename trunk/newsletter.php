@@ -30,6 +30,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 // include needed functions
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
 if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$vlcode = vam_random_charcode(32);
