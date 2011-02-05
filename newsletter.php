@@ -52,7 +52,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 
 	// Check if email exists 
 
-	if (($_POST['check'] == 'inp') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
+	if (($_POST['check'] == 'inp') && ($_POST['captcha'] == $_SESSION['vvcode'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address, mail_status from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
@@ -110,7 +110,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 		$info_message = TEXT_WRONG_CODE;
 	}
 
-	if (($_POST['check'] == 'del') && ($_POST['captcha'] == $_SESSION['captcha_keystring'])) {
+	if (($_POST['check'] == 'del') && ($_POST['captcha'] == $_SESSION['vvcode'])) {
 
 		$check_mail_query = vam_db_query("select customers_email_address from ".TABLE_NEWSLETTER_RECIPIENTS." where customers_email_address = '".vam_db_input($_POST['email'])."'");
 		if (!vam_db_num_rows($check_mail_query)) {
