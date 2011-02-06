@@ -13,9 +13,9 @@ html,body
    {
 		margin: 0;
 		padding: 0;
-		background-color: #fff;
+		background-color: transparent;
 		background-image: url(../images/vamcart/bg.png);
-		background-position: 0 0;
+		background-position: 0 -221px;
 		background-repeat: repeat-x; 
    }
 
@@ -91,7 +91,7 @@ div#right
 	{
 		background-color: #fff;
 		background-image: url(../images/vamcart/bg.png);
-		background-position: 0 -2305px;
+		background-position: 0 0;
 		background-repeat: repeat-x; 
 		height: 100px;
 	}
@@ -179,7 +179,7 @@ div#navigation
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
 		background-image: url(../images/vamcart/bg.png);
-		background-position: 0 -2843px;
+		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
 		border-left: 1px solid #c0c1c2;
@@ -210,7 +210,7 @@ div#navigation
 		padding: .5em;
 		background-color: #fff;
 		background-image: url(../images/vamcart/bg.png);
-		background-position: 0 -3314px;
+		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
 		border-left: 1px solid #c0c1c2;
@@ -367,7 +367,7 @@ div#menu
 		border-top: 3px solid #ff7b08;
 		background-color: #fff;
 		background-image: url(../images/vamcart/bg.png);
-		background-position: 0 -2406px;
+		background-position: 0 -100px;
 		background-repeat: repeat-x; 
 		padding: 0;
 		margin: 0 auto;
