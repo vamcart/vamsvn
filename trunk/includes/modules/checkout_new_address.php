@@ -87,6 +87,9 @@ $module->assign('city', '0');
 if (ACCOUNT_STATE == 'true') {
 	$module->assign('state', '1');
 
+if (!isset($entry['entry_country_id'])) $entry['entry_country_id']  = STORE_COUNTRY;
+if (!isset($entry['entry_zone_id'])) $entry['entry_zone_id']  = STORE_ZONE;
+
     if ($process != true) {
 
 //	    $country = (isset($_POST['country']) ? vam_db_prepare_input($_POST['country']) : STORE_COUNTRY);
@@ -120,10 +123,10 @@ if (ACCOUNT_STATE == 'true') {
 	}
 
       if ($entry_state_has_zones == true) {
-        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, $zone_name, ' id="state"');
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, vam_get_zone_name($entry['entry_country_id'], $entry['entry_zone_id'], $entry['entry_state']), ' id="state"');
 
       } else {
-		 $state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="inputRequirement">'.ENTRY_STATE_TEXT.'</span>' : '')), vam_get_zone_name($entry['entry_country_id'], $entry['entry_zone_id'], $entry['entry_state']), ' id="state"');
+		 $state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), vam_get_zone_name(STORE_COUNTRY, STORE_ZONE), ' id="state"');
 
       }
 		
