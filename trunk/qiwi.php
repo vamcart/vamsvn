@@ -63,7 +63,7 @@ if ( $status == 60 ) {
 
 				$vamTemplate->assign('NAME', $order->customer['firstname'].' '.$order->customer['lastname']);
 				$vamTemplate->assign('ORDER_NR', $transaction);
-				$vamTemplate->assign('ORDER_LINK', vam_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$transaction, 'SSL'));
+				$vamTemplate->assign('ORDER_LINK', vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$transaction, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($order->info['date_purchased']));
 
 			  $lang_query = vam_db_query("select languages_id from " . TABLE_LANGUAGES . " where directory = '" . $_SESSION['language'] . "'");
