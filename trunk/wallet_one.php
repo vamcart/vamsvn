@@ -48,7 +48,7 @@ if (number_format($_POST['WMI_PAYMENT_AMOUNT'],2) == number_format($order->info[
                           'comments' => 'W1 accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
-  echo 'OK'.$inv_id;
+  echo 'WMI_RESULT=OK';
 }
 }
 
