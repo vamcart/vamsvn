@@ -31,19 +31,13 @@ require (DIR_WS_CLASSES.'order.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 // variables prepearing
-$crc = get_var('LMI_HASH');
 
-$inv_id = get_var('LMI_PAYMENT_NO');
+$inv_id = get_var('WMI_PAYMENT_NO');
 $order = new order($inv_id);
-$order_sum = $order->info['total'];
-
-$hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
-$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_WALLET_ONE_SECRET_KEY. 
-$_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
 
 // checking and handling
-if ($hash == $crc) {
-if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
+if ($_POST['WMI_ORDER_STATE'] == 'Accepted') {
+if (number_format($_POST['WMI_PAYMENT_AMOUNT'],2) == number_format($order->info['total'],2)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_WALLET_ONE_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
