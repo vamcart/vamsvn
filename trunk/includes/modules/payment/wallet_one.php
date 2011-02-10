@@ -315,14 +315,15 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $purse = MODULE_PAYMENT_WALLET_ONE_WMR;
-                               $order_sum = $order->info['total'];
+                               $order_sum = number_format($order->info['total'],2);
 
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_wallet_id'], strpos($_SESSION['cart_wallet_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_wallet_id'], strpos($_SESSION['cart_wallet_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
+      $process_button_string = vam_draw_hidden_field('WMI_MERCHANT_ID', MODULE_PAYMENT_WALLET_ONE_ID) .
+                               vam_draw_hidden_field('WMI_PAYMENT_AMOUNT', $order_sum) .
+                               vam_draw_hidden_field('WMI_CURRENCY_ID', '643') .
+                               vam_draw_hidden_field('WMI_PAYMENT_NO', substr($_SESSION['cart_wallet_id'], strpos($_SESSION['cart_wallet_id'], '-')+1)) .
+                               vam_draw_hidden_field('WMI_DESCRIPTION', substr($_SESSION['cart_wallet_id'], strpos($_SESSION['cart_wallet_id'], '-')+1)) .
+                               vam_draw_hidden_field('WMI_SUCCESS_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('WMI_FAIL_URL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
       return $process_button_string;
     }
