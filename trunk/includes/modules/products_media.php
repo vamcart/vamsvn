@@ -60,9 +60,9 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 		$filename = '';
 		if ($content_data['content_link'] != '') {
 
-			$icon = vam_image(DIR_WS_CATALOG.'admin/images/icons/icon_link.gif');
+			$icon = vam_image(DIR_WS_CATALOG.'images/icons/file/icon_link.gif');
 		} else {
-			$icon = vam_image(DIR_WS_CATALOG.'admin/images/icons/icon_'.str_replace('.', '', strstr($content_data['content_file'], '.')).'.gif');
+			$icon = vam_image(DIR_WS_CATALOG.'images/icons/file/icon_'.str_replace('.', '', strstr($content_data['content_file'], '.')).'.gif');
 		}
 
 		if ($content_data['content_link'] != '')
