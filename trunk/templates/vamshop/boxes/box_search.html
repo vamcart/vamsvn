@@ -9,22 +9,30 @@
 <div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
 {$BUTTON_SUBMIT}
 {$FORM_END}
+<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
+<script type="text/javascript">
 {literal}
-<script language="javascript" type="text/javascript">
-	function ajaxQuickFind(elt) {
-//		if(ajaxQuickFindUpForm.keywords.value.length > 2)
-			loadXMLDoc('ajaxQuickFind', hashFormFields(ajaxQuickFindUpForm), true);
-	}
-	var timeout = null;
-	var ajaxQuickFindUpForm = null;
-	function ajaxQuickFindUp(elt) {
-		ajaxQuickFindUpForm = elt.form;
-	  if (timeout) clearTimeout(timeout);
-	  timeout = setTimeout('ajaxQuickFind()', 500);
-	}
-</script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+  jQuery("#quick_find_keyword").keyup(function(){
+      var searchString = jQuery("#quick_find_keyword").val(); 
+      jQuery.ajax({
+      	url: "index_ajax1.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+      	success: function(msg){jQuery("#ajaxQuickFind").html(msg);}            
+ });     
+                           
+                           
+   });
+
+
+})
+
 {/literal}
-<p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
+</script><p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
 </div>
 </div>
 <!-- /Бокс поиск -->
