@@ -39,7 +39,7 @@
 			$dropdown = array();
 			$out .= '<ul class="ajaxAddQuickie">';
 			while($model = vam_db_fetch_array($model_query)) {
-				$out .= "<li class=\"ajaxAddQuickie\"><div class=\"addQuick\" onclick=\"javascript:document.getElementById('quick_add_quickie').value='". $model['products_model'] . "';return false;\">" . $model['products_model'] . "</div></li>" . "\n";
+				$out .= '<li class="ajaxAddQuickie"><a href="' . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($model['products_id'], $model['products_name']), 'NONSSL', false) . '">' . $model['products_name'] . '</a></li>' . "\n";
 				$dropdown[] = array('id' => $model['products_id'],
 														'text' => $model['products_name']);
 			}
