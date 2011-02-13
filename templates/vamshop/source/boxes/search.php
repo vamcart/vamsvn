@@ -24,7 +24,7 @@ require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
 $box->assign('FORM_ACTION', vam_draw_form('quick_find', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get').vam_hide_session_id());
-$box->assign('INPUT_SEARCH', vam_draw_input_field('keywords', '', 'onkeyup="ajaxQuickFindUp(this);" id="quick_find_keyword"'));
+$box->assign('INPUT_SEARCH', vam_draw_input_field('keywords', '', 'id="quick_find_keyword"'));
 $box->assign('BUTTON_SUBMIT', vam_image_submit('button_quick_find.gif', IMAGE_BUTTON_SEARCH));
 $box->assign('FORM_END', '</form>');
 $box->assign('LINK_ADVANCED', vam_href_link(FILENAME_ADVANCED_SEARCH));

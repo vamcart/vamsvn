@@ -107,6 +107,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 <?php
  }
 ?>
+<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
 <script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
 <script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <?php
