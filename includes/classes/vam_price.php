@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: vam_price.php 1316 2007-02-06 20:23:03 VaM $ 
+   $Id: vam_price.php 1286 2007-02-06 20:23:03 VaM $ 
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -8,15 +8,14 @@
 
    Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
-   based on:
+   based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(currencies.php,v 1.15 2003/03/17); www.oscommerce.com
-   (c) 2003         nextcommerce (currencies.php,v 1.9 2003/08/17); www.nextcommerce.org
-   (c) 2004         xt:Commerce (currencies.php,v 1.9 2003/08/17); xt-commerce.com
+   (c) 2002-2003 osCommerce(Coding Standards); www.oscommerce.com 
+   (c) 2004 xt:Commerce (mmain.php); www.oscommerce.com 
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-
+ 
 class vamPrice {
 	var $currencies;
 
@@ -453,6 +452,8 @@ class vamPrice {
 	function get_decimal_places($code) {
 		return $this->currencies[$this->actualCurr]['decimal_places'];
 	}
-
-}
+ 	
+ }
+ 
+ 
 ?>
