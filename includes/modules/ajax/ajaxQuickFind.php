@@ -14,7 +14,6 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-//var_dump($_POST);echo '<br>';
 	define("AJAX_QUICKSEARCH_RESULT", 'text'); // dropdown or text
 	define("AJAX_QUICKSEARCH_DROPDOWN_SIZE", 5);
 	define("AJAX_QUICKSEARCH_LIMIT", 15);
@@ -65,5 +64,5 @@
 			}
 		}
 	}
-	$_RESULT['ajaxQuickFind'] = $out;
+	echo $out;
 ?>
