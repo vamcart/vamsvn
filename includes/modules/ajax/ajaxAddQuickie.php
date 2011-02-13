@@ -49,5 +49,5 @@
 			}
 		}
 	}
-	$_RESULT['ajaxAddQuickie'] = $out;
+	echo $out;
 ?>
