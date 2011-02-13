@@ -11,20 +11,29 @@
 {$SUBMIT_BUTTON}
 {$FORM_END}
 {literal}
-<script language="javascript" type="text/javascript">
-	function ajaxAddQuickie(elt) {
-//		if(ajaxAddQuickieUpForm.quickie.value.length > 2)
-			loadXMLDoc('ajaxAddQuickie', hashFormFields(ajaxAddQuickieUpForm), true);
-	}
-	var timeout = null;
-	var ajaxAddQuickieUpForm = null;
-	function ajaxAddQuickieUp(elt) {
-		ajaxAddQuickieUpForm = elt.form;
-	  if (timeout) clearTimeout(timeout);
-	  timeout = setTimeout('ajaxAddQuickie()', 500);
-	}
-</script>
+<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+  jQuery("#quick_add_quickie").keyup(function(){
+      var searchString = jQuery("#quick_add_quickie").val(); 
+      jQuery.ajax({
+      	url: "index_ajax1.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxAddQuickie.php&quickie="+searchString,
+      	success: function(msg){jQuery("#ajaxAddQuickie").html(msg);}            
+ });     
+                           
+                           
+   });
+
+
+})
+
 {/literal}
+</script>
 </div>
 </div>
 <!-- /Бокс быстрый заказ -->
