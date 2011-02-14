@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_YANDEX_MERCHANT_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://demomoney.yandex.ru/eshop.xml';
+        $this->form_action_url = 'https://money.yandex.ru/eshop.xml';
     }
 
 // class methods
