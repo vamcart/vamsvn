@@ -20,7 +20,7 @@ define ('EP_CURRENT_VERSION', '2.77a');
 require('includes/application_top.php');
 require('easypopulate_functions.php');
 
-$system = tep_get_system_information();
+$system = vam_get_system_information();
 
 //
 //*******************************
@@ -422,9 +422,9 @@ if (!empty($languages_id) && !empty($language)) {
   define ('EP_DEFAULT_LANGUAGE_NAME', $language);
 } else {
   //elari check default language_id from configuration table DEFAULT_LANGUAGE
-  $epdlanguage_query = tep_db_query("select languages_id, name from " . TABLE_LANGUAGES . " where code = '" . DEFAULT_LANGUAGE . "'");
-  if (tep_db_num_rows($epdlanguage_query) > 0) {
-    $epdlanguage = tep_db_fetch_array($epdlanguage_query);
+  $epdlanguage_query = vam_db_query("select languages_id, name from " . TABLE_LANGUAGES . " where code = '" . DEFAULT_LANGUAGE . "'");
+  if (vam_db_num_rows($epdlanguage_query) > 0) {
+    $epdlanguage = vam_db_fetch_array($epdlanguage_query);
     define ('EP_DEFAULT_LANGUAGE_ID', $epdlanguage['languages_id']);
     define ('EP_DEFAULT_LANGUAGE_NAME', $epdlanguage['name']);
   } else {
@@ -432,7 +432,7 @@ if (!empty($languages_id) && !empty($language)) {
   }
 }
 
-$languages = tep_get_languages();
+$languages = vam_get_languages();
 
 // VJ product attributes begin
 $attribute_options_array = array();
@@ -442,18 +442,18 @@ if (EP_PRODUCTS_WITH_ATTRIBUTES == true) {
         foreach ($attribute_options_select as $value) {
             $attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " where products_options_name = '" . $value . "'";
 
-            $attribute_options_values = tep_db_query($attribute_options_query);
+            $attribute_options_values = vam_db_query($attribute_options_query);
 
-            if ($attribute_options = tep_db_fetch_array($attribute_options_values)){
+            if ($attribute_options = vam_db_fetch_array($attribute_options_values)){
                 $attribute_options_array[] = array('products_options_id' => $attribute_options['products_options_id']);
             }
         }
     } else {
         $attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " order by products_options_id";
 
-        $attribute_options_values = tep_db_query($attribute_options_query);
+        $attribute_options_values = vam_db_query($attribute_options_query);
 
-        while ($attribute_options = tep_db_fetch_array($attribute_options_values)){
+        while ($attribute_options = vam_db_fetch_array($attribute_options_values)){
             $attribute_options_array[] = array('products_options_id' => $attribute_options['products_options_id']);
         }
     }
@@ -567,8 +567,8 @@ if ( !empty($_GET['dltype']) ) {
 //*******************************
 if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['download'] == 'activestream' or $_GET['download'] == 'tempfile') ){
     $filestring = ""; // this holds the csv file we want to download
-    $result = tep_db_query($filelayout_sql);
-    $row =  tep_db_fetch_array($result);
+    $result = vam_db_query($filelayout_sql);
+    $row =  vam_db_fetch_array($result);
 
 
     // $EXPORT_TIME=time();  // start export time when export is started.
@@ -650,8 +650,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                     products_id = " . $row['v_products_id'] . " AND
                     language_id = '" . $lid . "'
                 ";
-            $result2 = tep_db_query($sql2);
-            $row2 =  tep_db_fetch_array($result2);
+            $result2 = vam_db_query($sql2);
+            $row2 =  vam_db_fetch_array($result2);
 
             // I'm only doing this for the first language, since right now froogle is US only.. Fix later!
             // adding url for froogle, but it should be available no matter what
@@ -692,8 +692,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
             if (EP_ADDITIONAL_IMAGES == true) {
               $i = 2;
-              $ai_result = tep_db_query("SELECT * FROM ".TABLE_ADDITIONAL_IMAGES."  WHERE products_id = " . $row['v_products_id'] . " limit " . EP_ADDITIONAL_IMAGES_MAX);
-              while ($ai_row = tep_db_fetch_array($ai_result)) {
+              $ai_result = vam_db_query("SELECT * FROM ".TABLE_ADDITIONAL_IMAGES."  WHERE products_id = " . $row['v_products_id'] . " limit " . EP_ADDITIONAL_IMAGES_MAX);
+              while ($ai_row = vam_db_fetch_array($ai_result)) {
                 $row['v_products_image_'.$i] = (!empty($ai_row['popup_images'])?$ai_row['popup_images']:$ai_row['thumb_images']);
                 $row['v_products_image_description_'.$i] = $ai_row['images_description'];
                 $i++;
@@ -702,8 +702,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 		
 		
             if (EP_MVS_SUPPORT == true) { 
-              $vend_result = tep_db_query("select vendors_name from ".TABLE_VENDORS." where vendors_id = " . $row['v_vendor_id'] . "");
-              if ($vend_row = tep_db_fetch_array($vend_result)) {
+              $vend_result = vam_db_query("select vendors_name from ".TABLE_VENDORS." where vendors_id = " . $row['v_vendor_id'] . "");
+              if ($vend_row = vam_db_fetch_array($vend_result)) {
                 $row['v_vendor'] = $vend_row['vendors_name'];
               }
             }
@@ -724,8 +724,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 						 FROM ".TABLE_CATEGORIES."
 						 WHERE    
 								categories_id = " . $thecategory_id . '';
-				$result3 = tep_db_query($sql3);
-				if ($row3 = tep_db_fetch_array($result3)) {
+				$result3 = vam_db_query($sql3);
+				if ($row3 = vam_db_fetch_array($result3)) {
 					$temprow['v_categories_image_' . $categorylevel] = $row3['categories_image'];
 				}
 
@@ -735,8 +735,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 							 WHERE    
 									categories_id = " . $thecategory_id . " AND
 									language_id = " . $lang['id'];
-					$result2 = tep_db_query($sql2);
-					if ($row2 =  tep_db_fetch_array($result2)) {
+					$result2 = vam_db_query($sql2);
+					if ($row2 =  vam_db_fetch_array($result2)) {
 						$temprow['v_categories_name_' . $categorylevel . '_' . $lang['id']] = $row2['categories_name'];
 					}
 					if ($lang['id'] == '1') {
@@ -796,8 +796,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                     WHERE
                     manufacturers_id = " . $row['v_manufacturers_id']
                     ;
-                $result2 = tep_db_query($sql2);
-                $row2 =  tep_db_fetch_array($result2);
+                $result2 = vam_db_query($sql2);
+                $row2 =  vam_db_fetch_array($result2);
                 $row['v_manufacturers_name'] = $row2['manufacturers_name'];
             }
         }
@@ -817,26 +817,26 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
                     $attribute_options_languages_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options['products_options_id'] . "' and language_id = '" . (int)$lid . "'";
 
-                    $attribute_options_languages_values = tep_db_query($attribute_options_languages_query);
+                    $attribute_options_languages_values = vam_db_query($attribute_options_languages_query);
 
-                    $attribute_options_languages = tep_db_fetch_array($attribute_options_languages_values);
+                    $attribute_options_languages = vam_db_fetch_array($attribute_options_languages_values);
 
                     $row['v_attribute_options_name_' . $attribute_options_count . '_' . $lid] = $attribute_options_languages['products_options_name'];
                 }
 
                 $attribute_values_query = "select products_options_values_id from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options['products_options_id'] . "' order by products_options_values_id";
 
-                $attribute_values_values = tep_db_query($attribute_values_query);
+                $attribute_values_values = vam_db_query($attribute_values_query);
 
                 $attribute_values_count = 1;
-                while ($attribute_values = tep_db_fetch_array($attribute_values_values)) {
+                while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
                     $row['v_attribute_values_id_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values['products_options_values_id'];
 
                     $attribute_values_price_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "' and options_id = '" . (int)$attribute_options['products_options_id'] . "' and options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "'";
 
-                    $attribute_values_price_values = tep_db_query($attribute_values_price_query);
+                    $attribute_values_price_values = vam_db_query($attribute_values_price_query);
 
-                    $attribute_values_price = tep_db_fetch_array($attribute_values_price_values);
+                    $attribute_values_price = vam_db_fetch_array($attribute_values_price_values);
 
                     $row['v_attribute_values_price_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['price_prefix'] . $attribute_values_price['options_values_price'];
 
@@ -844,8 +844,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
     if ( EP_PRODUCTS_ATTRIBUTES_STOCK    == true ) {   
            $stock_attributes = $attribute_options['products_options_id'].'-'.$attribute_values['products_options_values_id'];
            
-           $stock_quantity_query = tep_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$row['v_products_id'] . "' and products_stock_attributes = '" . $stock_attributes . "'");
-           $stock_quantity = tep_db_fetch_array($stock_quantity_query);
+           $stock_quantity_query = vam_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$row['v_products_id'] . "' and products_stock_attributes = '" . $stock_attributes . "'");
+           $stock_quantity = vam_db_fetch_array($stock_quantity_query);
            
            $row['v_attribute_values_stock_' . $attribute_options_count . '_' . $attribute_values_count] = $stock_quantity['products_stock_quantity'];
      }
@@ -857,9 +857,9 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
                         $attribute_values_languages_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "' and language_id = '" . (int)$lid . "'";
 
-                        $attribute_values_languages_values = tep_db_query($attribute_values_languages_query);
+                        $attribute_values_languages_values = vam_db_query($attribute_values_languages_query);
 
-                        $attribute_values_languages = tep_db_fetch_array($attribute_values_languages_values);
+                        $attribute_values_languages = vam_db_fetch_array($attribute_values_languages_values);
 
                         $row['v_attribute_values_name_' . $attribute_options_count . '_' . $attribute_values_count . '_' . $lid] = $attribute_values_languages['products_options_values_name'];
                     }
@@ -886,8 +886,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 px.xsell_id = p.products_id and 
                 px.products_id = " . $row['v_products_id'] . "
                 ";
-            $cross_sell_result = tep_db_query($sql2);
-			while( $cross_sell_row = tep_db_fetch_array($cross_sell_result) ){
+            $cross_sell_result = vam_db_query($sql2);
+			while( $cross_sell_row = vam_db_fetch_array($cross_sell_result) ){
 				$px_models .= $cross_sell_row['products_model'] . ',';
 			}
 			if (strlen($px_models) > 0) { $px_models = substr($px_models, 0, -1); }
@@ -906,15 +906,15 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 ORDER BY
                 customers_group_id"
                 ;
-            $result2 = tep_db_query($sql2);
+            $result2 = vam_db_query($sql2);
             $ll = 1;
-            $row2 =  tep_db_fetch_array($result2);
+            $row2 =  vam_db_fetch_array($result2);
 	    
             // do pricing specials
             if (isset($filelayout['v_customer_specials_price_1'])){
               $sppc_specials = array();
-              $specials_result = tep_db_query("SELECT specials_new_products_price, status, customers_group_id FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " and customers_group_id <> 0 and expires_date < CURRENT_TIMESTAMP ORDER BY specials_id DESC");
-              while( $specials_result_row = tep_db_fetch_array($specials_result) ){
+              $specials_result = vam_db_query("SELECT specials_new_products_price, status, customers_group_id FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " and customers_group_id <> 0 and expires_date < CURRENT_TIMESTAMP ORDER BY specials_id DESC");
+              while( $specials_result_row = vam_db_fetch_array($specials_result) ){
                 $sppc_specials[$specials_result_row['customers_group_id']] = $specials_result_row['specials_new_products_price'];
               }
             }
@@ -926,12 +926,12 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 if (isset($filelayout['v_customer_specials_price_1'])){
                   $row['v_customer_specials_price_' . $ll]     = $sppc_specials[$ll];
                 }
-                $row2 = tep_db_fetch_array($result2);
+                $row2 = vam_db_fetch_array($result2);
                 $ll++;
             }
             // do pricing specials
-            $specials_result = tep_db_query("SELECT specials_new_products_price, status FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " and customers_group_id <> 0 and expires_date < CURRENT_TIMESTAMP ORDER BY specials_id DESC");
-            if( $specials_result_row = tep_db_fetch_array($specials_result) ){
+            $specials_result = vam_db_query("SELECT specials_new_products_price, status FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " and customers_group_id <> 0 and expires_date < CURRENT_TIMESTAMP ORDER BY specials_id DESC");
+            if( $specials_result_row = vam_db_fetch_array($specials_result) ){
               if ($specials_result_row['status'] == 1) {
                 $row['v_products_specials_price']     = $specials_result_row['specials_new_products_price'];
               } else {
@@ -958,9 +958,9 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 ORDER BY
                     specials_id DESC"
                 ;
-            $result2 = tep_db_query($sql2);
+            $result2 = vam_db_query($sql2);
             $ll = 1;
-            $row2 =  tep_db_fetch_array($result2);
+            $row2 =  vam_db_fetch_array($result2);
             if( $row2 ){
                 // reset the products price to our special price if there is one for this product
                 $row['v_products_price']     = $row2['specials_new_products_price'];
@@ -970,16 +970,16 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
         //elari -
         //We check the value of tax class and title instead of the id
         //Then we add the tax to price if EP_PRICE_WITH_TAX is set to true
-        $row_tax_multiplier         = tep_get_tax_class_rate($row['v_tax_class_id']);
-        $row['v_tax_class_title']   = tep_get_tax_class_title($row['v_tax_class_id']);
+        $row_tax_multiplier         = vam_get_tax_class_rate($row['v_tax_class_id']);
+        $row['v_tax_class_title']   = vam_get_tax_class_title($row['v_tax_class_id']);
         $row['v_products_price']    = $row['v_products_price'] +
                 (EP_PRICE_WITH_TAX == true ? round( ($row['v_products_price'] * $row_tax_multiplier / 100), EP_PRECISION) : 0);
 
         // do pricing specials
         if (EP_SPPC_SUPPORT == true) { $SPPC_extra_query = 'and customers_group_id = 0 '; } else { $SPPC_extra_query = ''; }
         if (isset($filelayout['v_products_specials_price'])){
-            $specials_result = tep_db_query("SELECT specials_new_products_price, status FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " " . $SPPC_extra_query . "and (expires_date < CURRENT_TIMESTAMP or expires_date is null) ORDER BY specials_id DESC");
-            if( $specials_result_row = tep_db_fetch_array($specials_result) ){
+            $specials_result = vam_db_query("SELECT specials_new_products_price, status FROM ".TABLE_SPECIALS." WHERE products_id = " . $row['v_products_id'] . " " . $SPPC_extra_query . "and (expires_date < CURRENT_TIMESTAMP or expires_date is null) ORDER BY specials_id DESC");
+            if( $specials_result_row = vam_db_fetch_array($specials_result) ){
               if ($specials_result_row['status'] == 1) {
                 $row['v_products_specials_price']     = $specials_result_row['specials_new_products_price'];
               } else {
@@ -1029,7 +1029,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
           $filestring .= $therow;
         }
         // grab the next row from the db
-        $row =  tep_db_fetch_array($result);
+        $row =  vam_db_fetch_array($result);
     }
 
     // now either stream it to them or put it in the temp directory
@@ -1182,7 +1182,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
         </table></td>
       </tr>
@@ -1201,15 +1201,15 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 		?>
 		</p>
-		<form name="clear_form" action="easypopulate.php<?php if (defined('SID') && tep_not_null(SID)) { echo '?'.tep_session_name().'='.tep_session_id(); } ?>" method="post" id="clear_form">
+		<form name="clear_form" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form">
 		<input type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
 		<?php
 
     if (isset($_FILES['usrfl'])){
         // move the file to where we can work with it
-        $file = tep_get_uploaded_file('usrfl');
+        $file = vam_get_uploaded_file('usrfl');
         if (is_uploaded_file($file['tmp_name'])) {
-            tep_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
+            vam_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
         }
 
         echo "<p class=smallText>";
@@ -1223,15 +1223,15 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
     }
     if (!empty($_POST['localfile'])){
         // move the file to where we can work with it
-        //$file = tep_get_uploaded_file('usrfl');
+        //$file = vam_get_uploaded_file('usrfl');
 
         //$attribute_options_query = "select distinct products_options_id from " . TABLE_PRODUCTS_OPTIONS . " order by products_options_id";
-        //$attribute_options_values = tep_db_query($attribute_options_query);
+        //$attribute_options_values = vam_db_query($attribute_options_query);
         //$attribute_options_count = 1;
-        //while ($attribute_options = tep_db_fetch_array($attribute_options_values)){
+        //while ($attribute_options = vam_db_fetch_array($attribute_options_values)){
 
         //if (is_uploaded_file($file['tmp_name'])) {
-        //    tep_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
+        //    vam_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
         //}
 
         echo "<p class=smallText>";
@@ -1357,7 +1357,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
     // array_walk($readed, $filelayout, $filelayout_count, $default_these, 'process_row');
 	  	?>
 		</p>
-		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && tep_not_null(SID)) { echo '?'.tep_session_name().'='.tep_session_id(); } ?>" method="post" id="clear_form2">
+		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
 		<input type="submit" name="clear_button2" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
 		<?php
 
@@ -1372,15 +1372,15 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 		?>
 		</p>
-		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && tep_not_null(SID)) { echo '?'.tep_session_name().'='.tep_session_id(); } ?>" method="post" id="clear_form2">
+		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
 		<input type="submit" name="clear_button2" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
 		<?php
         echo "<p class=smallText>";
     // move the file to where we can work with it
-    $file = tep_get_uploaded_file('usrfl');
+    $file = vam_get_uploaded_file('usrfl');
     //echo "Trying to move file...";
     if (is_uploaded_file($file['tmp_name'])) {
-        tep_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
+        vam_copy_uploaded_file($file, EP_TEMP_DIRECTORY);
     }
 
     $infp = fopen(EP_TEMP_DIRECTORY . $file['name'], "r");
@@ -1442,7 +1442,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="main" width="100%"><span style="background-color:#FFFFCC; width:100%;">&nbsp; &nbsp;<?php echo TEXT_EASYPOPULATE_PLEASE; ?> <a href="<?php echo tep_href_link(FILENAME_BACKUP); ?>"><u><?php echo TEXT_EASYPOPULATE_BACKUP_TEXT; ?></u></a><?php echo TEXT_EASYPOPULATE_BACKUP_TEXT1; ?></span>&nbsp;
+          <td class="main" width="100%"><span style="background-color:#FFFFCC; width:100%;">&nbsp; &nbsp;<?php echo TEXT_EASYPOPULATE_PLEASE; ?> <a href="<?php echo vam_href_link(FILENAME_BACKUP); ?>"><u><?php echo TEXT_EASYPOPULATE_BACKUP_TEXT; ?></u></a><?php echo TEXT_EASYPOPULATE_BACKUP_TEXT1; ?></span>&nbsp;
 		  <?php
 		  // Quick Backup Button
 		   if (EP_QUICK_BACKUP == true){
@@ -1478,7 +1478,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="import">			
 			
-           <?php echo tep_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=0', 'post', 'enctype="multipart/form-data"') . tep_hide_session_id(); ?>       
+           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=0', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>       
                 <p><b><?php echo EASY_UPLOAD_EP_FILE; ?></b></p>
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
@@ -1498,7 +1498,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="import-temp">			
 
-           <?php echo tep_draw_form('localfile_insert', FILENAME_EASYPOPULATE, '', 'post', 'enctype="multipart/form-data"') . tep_hide_session_id(); ?>       
+           <?php echo vam_draw_form('localfile_insert', FILENAME_EASYPOPULATE, '', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>       
                 <p><b><?php echo EASY_IMPORT_TEMP_DIR; ?></b></p>
                 <p>
                   <?php
@@ -1541,7 +1541,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="split">			
 
-           <?php echo tep_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=1', 'post', 'enctype="multipart/form-data"') . tep_hide_session_id(); ?>
+           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=1', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>
                 <p><b><?php echo EASY_SPLIT_EP_FILE; ?></b></p>
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="1000000000">
@@ -1558,48 +1558,48 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
         <p><b><?php echo TEXT_EASYPOPULATE_EXPORT; ?></b></p>
         <p><!-- Download file links -  Add your custom fields here -->
           <table border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #666666; padding: 3px;">
-          <?php echo tep_draw_form('custom', 'easypopulate.php', ((defined('SID') && tep_not_null(SID)) ? tep_session_name().'='.tep_session_id() : ''), 'get','id="custom"'); ?><?php if (defined('SID') && tep_not_null(SID)) { echo tep_draw_hidden_field(tep_session_name(), tep_session_id()); } ?>
+          <?php echo vam_draw_form('custom', 'easypopulate.php', ((defined('SID') && vam_not_null(SID)) ? vam_session_name().'='.vam_session_id() : ''), 'get','id="custom"'); ?><?php if (defined('SID') && vam_not_null(SID)) { echo vam_draw_hidden_field(vam_session_name(), vam_session_id()); } ?>
           <tr><td class="smallText"><?php 
           
-          echo tep_draw_pull_down_menu('download',array( 0 => array( "id" => 'activestream', 'text' => TEXT_EASYPOPULATE_ON_THE_FLY), 1 => array( "id" => 'stream', 'text' => TEXT_EASYPOPULATE_CREATE_THEN_DOWNLOAD), 2 => array( "id" => 'tempfile', 'text' => TEXT_EASYPOPULATE_CREATE_IN_TEMP)));
-          echo '&nbsp;' . TEXT_EASYPOPULATE_TYPE . '&nbsp;' . tep_draw_pull_down_menu('dltype',array( 0 => array( "id" => 'full', 'text' => TEXT_EASYPOPULATE_COMPLETE), 1 => array( "id" => 'custom', 'text' => TEXT_EASYPOPULATE_CUSTOM), 2 => array( "id" => 'priceqty', 'text' => TEXT_EASYPOPULATE_PRICE_QTY), 3 => array( "id" => 'category', 'text' => TEXT_EASYPOPULATE_CATEGORIES), 4 => array( "id" => 'attrib', 'text' => TEXT_EASYPOPULATE_ATTRIBUTES), 5 => array( "id" => 'froogle', 'text' => TEXT_EASYPOPULATE_FROOGLE)),'full','onChange="return switchForm(this);"');
+          echo vam_draw_pull_down_menu('download',array( 0 => array( "id" => 'activestream', 'text' => TEXT_EASYPOPULATE_ON_THE_FLY), 1 => array( "id" => 'stream', 'text' => TEXT_EASYPOPULATE_CREATE_THEN_DOWNLOAD), 2 => array( "id" => 'tempfile', 'text' => TEXT_EASYPOPULATE_CREATE_IN_TEMP)));
+          echo '&nbsp;' . TEXT_EASYPOPULATE_TYPE . '&nbsp;' . vam_draw_pull_down_menu('dltype',array( 0 => array( "id" => 'full', 'text' => TEXT_EASYPOPULATE_COMPLETE), 1 => array( "id" => 'custom', 'text' => TEXT_EASYPOPULATE_CUSTOM), 2 => array( "id" => 'priceqty', 'text' => TEXT_EASYPOPULATE_PRICE_QTY), 3 => array( "id" => 'category', 'text' => TEXT_EASYPOPULATE_CATEGORIES), 4 => array( "id" => 'attrib', 'text' => TEXT_EASYPOPULATE_ATTRIBUTES), 5 => array( "id" => 'froogle', 'text' => TEXT_EASYPOPULATE_FROOGLE)),'full','onChange="return switchForm(this);"');
           echo '&nbsp;' . ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt") . TEXT_EASYPOPULATE_FILE_FORMAT; 
 
           $cells = array();
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_name', 'show', (!empty($_GET['epcust_name'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_NAME.'</td></tr></table>');
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_description', 'show', (!empty($_GET['epcust_description'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_DESC.'</td></tr></table>');
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_url', 'show', (!empty($_GET['epcust_url'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_URL.'</td></tr></table>');
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_image', 'show', (!empty($_GET['epcust_image'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_IMAGE.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_name', 'show', (!empty($_GET['epcust_name'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_NAME.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_description', 'show', (!empty($_GET['epcust_description'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_DESC.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_url', 'show', (!empty($_GET['epcust_url'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_URL.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_image', 'show', (!empty($_GET['epcust_image'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_IMAGE.'</td></tr></table>');
           if (EP_PRODUCTS_WITH_ATTRIBUTES == true) {
-            $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_attributes', 'show', (!empty($_GET['epcust_attributes'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_ATTRIBUTES.'</td></tr></table>');
+            $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_attributes', 'show', (!empty($_GET['epcust_attributes'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_ATTRIBUTES.'</td></tr></table>');
           }
 
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_category', 'show', (!empty($_GET['epcust_category'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_CATEGORIES.'</td></tr></table>');
-          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_manufacturer', 'show', (!empty($_GET['epcust_manufacturer'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_MANUFACTURERS.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_category', 'show', (!empty($_GET['epcust_category'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_CATEGORIES.'</td></tr></table>');
+          $cells[0][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_manufacturer', 'show', (!empty($_GET['epcust_manufacturer'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_MANUFACTURERS.'</td></tr></table>');
 
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_price', 'show', (!empty($_GET['epcust_price'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_PRICE.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_quantity', 'show', (!empty($_GET['epcust_quantity'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_QUANTITY.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_weight', 'show', (!empty($_GET['epcust_weight'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_WEIGHT.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_tax_class', 'show', (!empty($_GET['epcust_tax_class'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_TAX_CLASS.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_avail', 'show', (!empty($_GET['epcust_avail'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_AVAILABLE.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_date_added', 'show', (!empty($_GET['epcust_date_added'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_DATE_ADDED.'</td></tr></table>');
-          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_status', 'show', (!empty($_GET['epcust_status'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_STATUS.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_price', 'show', (!empty($_GET['epcust_price'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_PRICE.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_quantity', 'show', (!empty($_GET['epcust_quantity'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_QUANTITY.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_weight', 'show', (!empty($_GET['epcust_weight'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_WEIGHT.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_tax_class', 'show', (!empty($_GET['epcust_tax_class'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_TAX_CLASS.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_avail', 'show', (!empty($_GET['epcust_avail'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_AVAILABLE.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_date_added', 'show', (!empty($_GET['epcust_date_added'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_DATE_ADDED.'</td></tr></table>');
+          $cells[1][] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_status', 'show', (!empty($_GET['epcust_status'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_STATUS.'</td></tr></table>');
 
           $tmp_row_count = 2;
           $tmp_col_count = 0;
-          $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_specials_price', 'show', (!empty($_GET['epcust_specials_price'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_SPECIALS.'</td></tr></table>');
+          $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_specials_price', 'show', (!empty($_GET['epcust_specials_price'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_SPECIALS.'</td></tr></table>');
           if (EP_ADDITIONAL_IMAGES == true) {
-            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_add_images', 'show', (!empty($_GET['epcust_sppc'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_ADD_IMAGES.'</td></tr></table>');
+            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_add_images', 'show', (!empty($_GET['epcust_sppc'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_ADD_IMAGES.'</td></tr></table>');
           }
           if (EP_MVS_SUPPORT == true) { 
-            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_vendor', 'show', (!empty($_GET['epcust_vendor'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_VENDOR.'</td></tr></table>');
+            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_vendor', 'show', (!empty($_GET['epcust_vendor'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_VENDOR.'</td></tr></table>');
           }
           if (EP_XSELL_SUPPORT == true) { 
-            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_cross_sell', 'show', (!empty($_GET['epcust_cross_sell'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_XSELL.'</td></tr></table>');
+            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_cross_sell', 'show', (!empty($_GET['epcust_cross_sell'])?true:false)) . '</td><td class="smallText"> '.TEXT_EASYPOPULATE_LABEL_XSELL.'</td></tr></table>');
           }
 
           foreach ($custom_fields[TABLE_PRODUCTS] as $key => $name) { 
-            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_' . $key, 'show', (!empty($_GET['epcust_' . $key])?true:false)) . '</td><td class="smallText"> ' . $name . '</td></tr></table>');
+            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_' . $key, 'show', (!empty($_GET['epcust_' . $key])?true:false)) . '</td><td class="smallText"> ' . $name . '</td></tr></table>');
             if ($tmp_col_count >= 7) { 
               $tmp_row_count += 1; 
               $tmp_col_count = 0; 
@@ -1607,7 +1607,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
           }
 
           foreach ($custom_fields[TABLE_PRODUCTS_DESCRIPTION] as $key => $name) { 
-            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . tep_draw_checkbox_field('epcust_' . $key, 'show', (!empty($_GET['epcust_' . $key])?true:false)) . '</td><td class="smallText"> ' . $name . '</td></tr></table>');
+            $cells[$tmp_row_count][$tmp_col_count++] = array('text' => '<table border="0" cellpadding="0" cellspacing="0"><tr><td class="smallText">' . vam_draw_checkbox_field('epcust_' . $key, 'show', (!empty($_GET['epcust_' . $key])?true:false)) . '</td><td class="smallText"> ' . $name . '</td></tr></table>');
             if ($tmp_col_count >= 7) { 
               $tmp_row_count += 1; 
               $tmp_col_count = 0; 
@@ -1620,17 +1620,17 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
           $manufacturers_array = array();
           $manufacturers_array[] = array( "id" => '', 'text' => TEXT_EASYPOPULATE_FILTER_MANUFACTURER);
-          $manufacturers_query = tep_db_query("select manufacturers_id, manufacturers_name from " . TABLE_MANUFACTURERS . " order by manufacturers_name");
-          while ($manufacturers = tep_db_fetch_array($manufacturers_query)) {
+          $manufacturers_query = vam_db_query("select manufacturers_id, manufacturers_name from " . TABLE_MANUFACTURERS . " order by manufacturers_name");
+          while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
             $manufacturers_array[] = array( "id" => $manufacturers['manufacturers_id'], 'text' => $manufacturers['manufacturers_name'] );
           }
 
           $status_array = array(array( "id" => '', 'text' => TEXT_EASYPOPULATE_FILTER_STATUS),array( "id" => '1', 'text' => TEXT_EASYPOPULATE_FILTER_STATUS_ACTIVE),array( "id" => '0', 'text' => TEXT_EASYPOPULATE_FILTER_STATUS_DISABLED));
 
-          echo TEXT_EASYPOPULATE_FILTER_BY . tep_draw_pull_down_menu('epcust_category_filter', array_merge(array( 0 => array( "id" => '', 'text' => TEXT_EASYPOPULATE_FILTER_CATEGORY)), tep_get_category_tree()));
-          echo ' ' . tep_draw_pull_down_menu('epcust_manufacturer_filter', $manufacturers_array) . ' ';
-          echo ' ' . tep_draw_pull_down_menu('epcust_status_filter', $status_array) . ' ';
-          echo tep_draw_input_field('submit', TEXT_EASYPOPULATE_BUILD_BUTTON, ' style="padding: 0px"', false, 'submit');
+          echo TEXT_EASYPOPULATE_FILTER_BY . vam_draw_pull_down_menu('epcust_category_filter', array_merge(array( 0 => array( "id" => '', 'text' => TEXT_EASYPOPULATE_FILTER_CATEGORY)), vam_get_category_tree()));
+          echo ' ' . vam_draw_pull_down_menu('epcust_manufacturer_filter', $manufacturers_array) . ' ';
+          echo ' ' . vam_draw_pull_down_menu('epcust_status_filter', $status_array) . ' ';
+          echo vam_draw_input_field('submit', TEXT_EASYPOPULATE_BUILD_BUTTON, ' style="padding: 0px"', false, 'submit');
           ?></td></tr>
           </form>
           </table>
@@ -1645,16 +1645,16 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
         <p style="margin-top: 8px;"><b><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_1; ?></b><br />
         <font size="-2"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_2; ?></font></p>
         <p><!-- Download file links -  Add your custom fields here -->
-          <a href="easypopulate.php?download=stream&dltype=full<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_3; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=full<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_3; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
 <?php if (EP_EXTRA_FIELDS_SUPPORT == true) { ?>
-          <a href="easypopulate.php?download=stream&dltype=extra_fields<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_7; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=extra_fields<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_7; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
 <?php } ?>
-          <a href="easypopulate.php?download=stream&dltype=priceqty<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_8; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
-          <a href="easypopulate.php?download=stream&dltype=category<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_9; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
-          <a href="easypopulate.php?download=stream&dltype=froogle<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_10; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=priceqty<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_8; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=category<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_9; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=froogle<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_10; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
           <!-- VJ product attributes begin //-->
           <?php if (EP_PRODUCTS_WITH_ATTRIBUTES == true) { ?>
-          <a href="easypopulate.php?download=stream&dltype=attrib<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_11; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
+          <a href="easypopulate.php?download=stream&dltype=attrib<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_11; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
           <?php } ?>
           <!-- VJ product attributes end //-->
         </p><br />
@@ -1662,13 +1662,13 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
         <p style="margin-top: 8px;"><b><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_13; ?></b><br />
         <font size="-2"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_14; ?></font></p>
         <p>
-          <a href="easypopulate.php?download=tempfile&dltype=full<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_15; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
-          <a href="easypopulate.php?download=tempfile&dltype=priceqty<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_16; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
-          <a href="easypopulate.php?download=tempfile&dltype=category<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_17; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
-          <a href="easypopulate.php?download=tempfile&dltype=froogle<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_18; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
+          <a href="easypopulate.php?download=tempfile&dltype=full<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_15; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
+          <a href="easypopulate.php?download=tempfile&dltype=priceqty<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_16; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
+          <a href="easypopulate.php?download=tempfile&dltype=category<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_17; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
+          <a href="easypopulate.php?download=tempfile&dltype=froogle<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_18; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
           <!-- VJ product attributes begin //-->
           <?php if (EP_PRODUCTS_WITH_ATTRIBUTES == true) { ?>
-          <a href="easypopulate.php?download=tempfile&dltype=attrib<?php if (defined('SID') && tep_not_null(SID)) { echo '&'.tep_session_name().'='.tep_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_19; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
+          <a href="easypopulate.php?download=tempfile&dltype=attrib<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_19; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_6; ?></a><br />
           <?php } ?>
           <!-- VJ product attributes end //-->
         </p><br />
@@ -1773,7 +1773,7 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
     if (!empty($_GET['epcust_category_filter'])) {
       $sub_categories = array();
       $categories_query_addition = 'ptoc.categories_id = ' . (int)$_GET['epcust_category_filter'] . '';
-      tep_get_sub_categories($sub_categories, $_GET['epcust_category_filter']);
+      vam_get_sub_categories($sub_categories, $_GET['epcust_category_filter']);
       foreach ($sub_categories AS $ckey => $category ) {
         $categories_query_addition .= ' or ptoc.categories_id = ' . (int)$category . '';
       }
@@ -1975,10 +1975,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             }
 
             $attribute_values_query = "select products_options_values_id  from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options_values['products_options_id'] . "' order by products_options_values_id";
-            $attribute_values_values = tep_db_query($attribute_values_query);
+            $attribute_values_values = vam_db_query($attribute_values_query);
 
             $attribute_values_count = 1;
-            while ($attribute_values = tep_db_fetch_array($attribute_values_values)) {
+            while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
                 $filelayout['v_attribute_values_id_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 foreach ($languages as $tkey => $lang ) {
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
@@ -2108,10 +2108,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             }
 
             $attribute_values_query = "select products_options_values_id  from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options_values['products_options_id'] . "' order by products_options_values_id";
-            $attribute_values_values = tep_db_query($attribute_values_query);
+            $attribute_values_values = vam_db_query($attribute_values_query);
 
             $attribute_values_count = 1;
-            while ($attribute_values = tep_db_fetch_array($attribute_values_values)) {
+            while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
                 $filelayout['v_attribute_values_id_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 foreach ($languages as $tkey => $lang ) {
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
@@ -2295,10 +2295,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             }
 
             $attribute_values_query = "select products_options_values_id  from " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$attribute_options_values['products_options_id'] . "' order by products_options_values_id";
-            $attribute_values_values = tep_db_query($attribute_values_query);
+            $attribute_values_values = vam_db_query($attribute_values_query);
 
             $attribute_values_count = 1;
-            while ($attribute_values = tep_db_fetch_array($attribute_values_values)) {
+            while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
                 $filelayout['v_attribute_values_id_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 foreach ($languages as $tkey2 => $lang ) {
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
@@ -2420,12 +2420,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         $v_products_extra_fields_value    =    $items[$filelayout['v_products_extra_fields_value']];
         
         $sql = "SELECT p.products_id as v_products_id FROM ".TABLE_PRODUCTS." as p WHERE p.products_model = '" . $v_products_model . "'";
-        $result = tep_db_query($sql);
-        $row =  tep_db_fetch_array($result);
+        $result = vam_db_query($sql);
+        $row =  vam_db_fetch_array($result);
 
 		$sql_exist	=	"SELECT products_extra_fields_value FROM ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS. " WHERE (products_id ='".$row['v_products_id']. "') AND (products_extra_fields_id ='".$v_products_extra_fields_id ."')";
 
-		if (tep_db_num_rows(tep_db_query($sql_exist)) > 0) {
+		if (vam_db_num_rows(vam_db_query($sql_exist)) > 0) {
 			$sql_extra_field	=	"UPDATE ".TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS." SET products_extra_fields_value='".$v_products_extra_fields_value."' WHERE (products_id ='". $row['v_products_id'] . "') AND (products_extra_fields_id ='".$v_products_extra_fields_id ."')";
 			$str_err_report= " $v_products_extra_fields_id | $v_products_id  | $v_products_model | $v_products_extra_fields_value | <b><font color=black>".EASY_EXTRA_FIELD_UPDATED."</font></b><br />";
 		} else {
@@ -2433,7 +2433,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 			$str_err_report= " $v_products_extra_fields_id | $v_products_id | $v_products_model | $v_products_extra_fields_value | <b><font color=green>".EASY_EXTRA_FIELD_ADDED."</font></b><br />";
 		}
 
-        $result = tep_db_query($sql_extra_field);
+        $result = vam_db_query($sql_extra_field);
         
         echo $str_err_report;
         // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============
@@ -2443,41 +2443,41 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
     } elseif ( $items[$filelayout['v_status']] == EP_DELETE_IT ) {
       // Get the ID
       $sql = "SELECT p.products_id as v_products_id    FROM ".TABLE_PRODUCTS." as p WHERE p.products_model = '" . $items[$filelayout['v_products_model']] . "'";
-      $result = tep_db_query($sql);
-      $row =  tep_db_fetch_array($result);
-      if (tep_db_num_rows($result) == 1 ) {
-        tep_db_query("delete from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . $row['v_products_id'] . "'");
+      $result = vam_db_query($sql);
+      $row =  vam_db_fetch_array($result);
+      if (vam_db_num_rows($result) == 1 ) {
+        vam_db_query("delete from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . $row['v_products_id'] . "'");
 
-        $product_categories_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . $row['v_products_id'] . "'");
-        $product_categories = tep_db_fetch_array($product_categories_query);
+        $product_categories_query = vam_db_query("select count(*) as total from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . $row['v_products_id'] . "'");
+        $product_categories = vam_db_fetch_array($product_categories_query);
 
         if ($product_categories['total'] == '0') {
           // gather product attribute data
-          $result = tep_db_query("select pov.products_options_values_id from " . TABLE_PRODUCTS_ATTRIBUTES . " pa left join " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov on pa.options_values_id=pov.products_options_values_id where pa.products_id = '" . (int)$row['v_products_id'] . "'");
+          $result = vam_db_query("select pov.products_options_values_id from " . TABLE_PRODUCTS_ATTRIBUTES . " pa left join " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov on pa.options_values_id=pov.products_options_values_id where pa.products_id = '" . (int)$row['v_products_id'] . "'");
           $remove_attribs = array();
-          while ($tmp_attrib = tep_db_fetch_array($result)) {
+          while ($tmp_attrib = vam_db_fetch_array($result)) {
             $remove_attribs[] = $tmp_attrib;
           }
 
           // check each attribute name for links to other products
           foreach ($remove_attribs as $rakey => $ravalue) {
-            $product_attribs_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS_ATTRIBUTES . " where options_values_id = '" . (int)$ravalue['products_options_values_id'] . "'");
-            $product_attribs = tep_db_fetch_array($product_attribs_query);
+            $product_attribs_query = vam_db_query("select count(*) as total from " . TABLE_PRODUCTS_ATTRIBUTES . " where options_values_id = '" . (int)$ravalue['products_options_values_id'] . "'");
+            $product_attribs = vam_db_fetch_array($product_attribs_query);
             // if no other products linked, remove attribute name
             if ((int)$product_attribs['total'] == 1) {
-              tep_db_query("delete from " . TABLE_PRODUCTS_OPTIONS_VALUES. " where products_options_values_id = '" . (int)$ravalue['products_options_values_id'] . "'");
+              vam_db_query("delete from " . TABLE_PRODUCTS_OPTIONS_VALUES. " where products_options_values_id = '" . (int)$ravalue['products_options_values_id'] . "'");
             }
           }
           // remove attribute records
-          tep_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "'");
+          vam_db_query("delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "'");
 
           // remove product
-          tep_remove_product($row['v_products_id']);
+          vam_remove_product($row['v_products_id']);
         }
 
         if (USE_CACHE == 'true') {
-          tep_reset_cache_block('categories');
-          tep_reset_cache_block('also_purchased');
+          vam_reset_cache_block('categories');
+          vam_reset_cache_block('also_purchased');
         }
         echo EASY_TEXT_DELETED . $items[$filelayout['v_products_model']] . EASY_TEXT_DELETED . "<br />";
         
@@ -2556,8 +2556,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                 LIMIT 1
             ";
 
-        $result = tep_db_query($sql);
-        $row =  tep_db_fetch_array($result);
+        $result = vam_db_query($sql);
+        $row =  vam_db_fetch_array($result);
 
         // determine processing status based on dropdown choice on EP menu
 		// Delete product included in normal & update options
@@ -2587,8 +2587,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 language_id = '" . $lang['id'] . "'
                             LIMIT 1
                             ";
-                    $result2 = tep_db_query($sql2);
-                    $row2 =  tep_db_fetch_array($result2);
+                    $result2 = vam_db_query($sql2);
+                    $row2 =  vam_db_fetch_array($result2);
                     // Need to report from ......_name_1 not ..._name_0
                     $row['v_products_name_' . $lang['id']]         = $row2['products_name'];
                     $row['v_products_description_' . $lang['id']]     = $row2['products_description'];
@@ -2618,8 +2618,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 							     FROM ".TABLE_CATEGORIES."
 							     WHERE    
 								        categories_id = " . $thecategory_id . '';
-						$result3 = tep_db_query($sql3);
-						if ($row3 = tep_db_fetch_array($result3)) {
+						$result3 = vam_db_query($sql3);
+						if ($row3 = vam_db_fetch_array($result3)) {
 							$temprow['v_categories_image_' . $categorylevel] = $row3['categories_image'];
 						}
 		
@@ -2629,8 +2629,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 								     WHERE    
 									        categories_id = " . $thecategory_id . " AND
 									        language_id = " . $lang['id'];
-							$result2 = tep_db_query($sql2);
-							if ($row2 =  tep_db_fetch_array($result2)) {
+							$result2 = vam_db_query($sql2);
+							if ($row2 =  vam_db_fetch_array($result2)) {
 								$temprow['v_categories_name_' . $categorylevel . '_' . $lang['id']] = $row2['categories_name'];
 							}
 						}
@@ -2679,22 +2679,22 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         FROM ".TABLE_MANUFACTURERS."
                         WHERE manufacturers_id = " . $row['v_manufacturers_id']
                         ;
-                    $result2 = tep_db_query($sql2);
-                    $row2 =  tep_db_fetch_array($result2);
+                    $result2 = vam_db_query($sql2);
+                    $row2 =  vam_db_fetch_array($result2);
                     $row['v_manufacturers_name'] = $row2['manufacturers_name'];
                 }
 
                 if (EP_MVS_SUPPORT == true) {
-                  $result2 = tep_db_query("select vendors_name from ".TABLE_VENDORS." WHERE vendors_id = " . $row['v_vendor_id']);
-                  $row2 =  tep_db_fetch_array($result2);		
+                  $result2 = vam_db_query("select vendors_name from ".TABLE_VENDORS." WHERE vendors_id = " . $row['v_vendor_id']);
+                  $row2 =  vam_db_fetch_array($result2);		
                   $row['v_vendor'] = $row2['vendors_name'];
                 }
 
                 //elari -
                 //We check the value of tax class and title instead of the id
                 //Then we add the tax to price if EP_PRICE_WITH_TAX is set to true
-                $row_tax_multiplier = tep_get_tax_class_rate($row['v_tax_class_id']);
-                $row['v_tax_class_title'] = tep_get_tax_class_title($row['v_tax_class_id']);
+                $row_tax_multiplier = vam_get_tax_class_rate($row['v_tax_class_id']);
+                $row['v_tax_class_title'] = vam_get_tax_class_title($row['v_tax_class_id']);
                 if (EP_PRICE_WITH_TAX == true){
                     $row['v_products_price'] = $row['v_products_price'] + round(($row['v_products_price'] * $row_tax_multiplier / 100), EP_PRECISION);
                 }
@@ -2704,7 +2704,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                     $$thisvar = $row[$thisvar];
                 }
         
-                $row =  tep_db_fetch_array($result);
+                $row =  vam_db_fetch_array($result);
             }
         
             // this is an important loop.  What it does is go thru all the fields in the incoming 
@@ -2720,10 +2720,10 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
             //elari... we get the tax_clas_id from the tax_title
             //on screen will still be displayed the tax_class_title instead of the id....
             if ( isset( $v_tax_class_title) ){
-                $v_tax_class_id          = tep_get_tax_title_class_id($v_tax_class_title);
+                $v_tax_class_id          = vam_get_tax_title_class_id($v_tax_class_title);
             }
             //we check the tax rate of this tax_class_id
-                $row_tax_multiplier = tep_get_tax_class_rate($v_tax_class_id);
+                $row_tax_multiplier = vam_get_tax_class_rate($v_tax_class_id);
         
             //And we recalculate price without the included tax...
             //Since it seems display is made before, the displayed price will still include tax
@@ -2820,9 +2820,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
             if ( isset($v_manufacturers_name) && $v_manufacturers_name != '' ){
                 $sql = "SELECT man.manufacturers_id
                     FROM ".TABLE_MANUFACTURERS." as man
-                    WHERE man.manufacturers_name = '" . tep_db_input($v_manufacturers_name) . "'";
-                $result = tep_db_query($sql);
-                $row =  tep_db_fetch_array($result);
+                    WHERE man.manufacturers_name = '" . vam_db_input($v_manufacturers_name) . "'";
+                $result = vam_db_query($sql);
+                $row =  vam_db_fetch_array($result);
                 if ( $row != '' ){
                     foreach( $row as $item ){
                         $v_manufacturer_id = $item;
@@ -2830,8 +2830,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                 } else {
                     // to add, we need to put stuff in categories and categories_description
                     $sql = "SELECT MAX( manufacturers_id) max FROM ".TABLE_MANUFACTURERS;
-                    $result = tep_db_query($sql);
-                    $row =  tep_db_fetch_array($result);
+                    $result = vam_db_query($sql);
+                    $row =  vam_db_fetch_array($result);
                     $max_mfg_id = $row['max']+1;
                     // default the id if there are no manufacturers yet
                     if (!is_numeric($max_mfg_id) ){
@@ -2858,12 +2858,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         last_modified
                         ) VALUES (
                         $max_mfg_id,
-                        '".tep_db_input($v_manufacturers_name)."',
+                        '".vam_db_input($v_manufacturers_name)."',
                         '".EP_DEFAULT_IMAGE_MANUFACTURER."',
                         '".date("Y-m-d H:i:s")."',
                         '".date("Y-m-d H:i:s")."'
                         )";
-                    $result = tep_db_query($sql);
+                    $result = vam_db_query($sql);
                     $v_manufacturer_id = $max_mfg_id;
         
                     $sql = "INSERT INTO ".TABLE_MANUFACTURERS_INFO."(
@@ -2883,7 +2883,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         '',
                         '".EP_DEFAULT_LANGUAGE_ID."'
                         )";
-                    $result = tep_db_query($sql);
+                    $result = vam_db_query($sql);
                 }
             }
             
@@ -2908,9 +2908,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 cat.categories_id = des.categories_id AND
                                 des.language_id = " . $baselang_id . " AND
                                 cat.parent_id = " . $theparent_id . " AND
-                                des.categories_name like '" . tep_db_input($thiscategoryname) . "'";
-                        $result = tep_db_query($sql);
-                        $row =  tep_db_fetch_array($result);
+                                des.categories_name like '" . vam_db_input($thiscategoryname) . "'";
+                        $result = vam_db_query($sql);
+                        $row =  vam_db_fetch_array($result);
 
                         if ( $row != '' ){
                             // we have an existing category, update image and date
@@ -2919,7 +2919,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                             }
 							$cat_image = '';
 							if (!empty($v_categories_image[$categorylevel])) {
-							   $cat_image = "categories_image='".tep_db_input($v_categories_image[$categorylevel])."', ";
+							   $cat_image = "categories_image='".vam_db_input($v_categories_image[$categorylevel])."', ";
 							} elseif (isset($filelayout['v_categories_image_' . $categorylevel])) {
 							   $cat_image = "categories_image='', ";
 							} 
@@ -2931,12 +2931,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                         categories_id = '".$row['categories_id']."'
                                       LIMIT 1";
                 
-                            tep_db_query($query);
+                            vam_db_query($query);
                         } else {
                             // to add, we need to put stuff in categories and categories_description
                             $sql = "SELECT MAX( categories_id) max FROM ".TABLE_CATEGORIES;
-                            $result = tep_db_query($sql);
-                            $row =  tep_db_fetch_array($result);
+                            $result = vam_db_query($sql);
+                            $row =  vam_db_fetch_array($result);
                             $max_category_id = $row['max']+1;
                             if (!is_numeric($max_category_id) ){
                                 $max_category_id=1;
@@ -2951,12 +2951,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                    ) VALUES (
                                         $max_category_id,
                                         $theparent_id,
-                                        '".tep_db_input($v_categories_image[$categorylevel])."',
+                                        '".vam_db_input($v_categories_image[$categorylevel])."',
                                         0,
                                         '".date("Y-m-d H:i:s")."',
                                         '".date("Y-m-d H:i:s")."'
                                    )";
-                            $result = tep_db_query($sql);
+                            $result = vam_db_query($sql);
                             
                             foreach ($languages as $key => $lang){
                                 $sql = "INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION." (
@@ -2966,9 +2966,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                        ) VALUES (
                                                 $max_category_id,
                                                 '".$lang['id']."',
-                                                '".(!empty($v_categories_name[$categorylevel][$lang['id']])?tep_db_input($v_categories_name[$categorylevel][$lang['id']]):'')."'
+                                                '".(!empty($v_categories_name[$categorylevel][$lang['id']])?vam_db_input($v_categories_name[$categorylevel][$lang['id']]):'')."'
                                        )";
-                                tep_db_query($sql);
+                                vam_db_query($sql);
                             }
                             
                             $thiscategoryid = $max_category_id;
@@ -2990,16 +2990,16 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                 // find the vendor id from the name imported
                 if (EP_MVS_SUPPORT == true) {
-                  $vend_result = tep_db_query("SELECT vendors_id FROM ".TABLE_VENDORS." WHERE vendors_name = '". $v_vendor . "'");
-                  $vend_row = tep_db_fetch_array($vend_result);
+                  $vend_result = vam_db_query("SELECT vendors_id FROM ".TABLE_VENDORS." WHERE vendors_name = '". $v_vendor . "'");
+                  $vend_row = vam_db_fetch_array($vend_result);
                   $v_vendor_id = $vend_row['vendors_id'];
                 }
 
                 // process the PRODUCTS table
-                $result = tep_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE (products_model = '". $v_products_model . "')");
+                $result = vam_db_query("SELECT products_id FROM ".TABLE_PRODUCTS." WHERE (products_model = '". $v_products_model . "')");
         
                 // First we check to see if this is a product in the current db.
-                if (tep_db_num_rows($result) == 0)  {
+                if (vam_db_num_rows($result) == 0)  {
                 
                     //   insert into products
                     echo EASY_LABEL_NEW_PRODUCT;
@@ -3014,7 +3014,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 
                     if (EP_ADDITIONAL_IMAGES == true) { 
                       $ep_additional_fields .= 'products_image_description,';
-                      $ep_additional_data .= "'".tep_db_input($v_products_image_description)."',";
+                      $ep_additional_data .= "'".vam_db_input($v_products_image_description)."',";
                     } 
 			
                     foreach ($custom_fields[TABLE_PRODUCTS] as $key => $name) { 
@@ -3082,15 +3082,15 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 '$v_products_quantity',
                                 ".(!empty($v_manufacturer_id)?$v_manufacturer_id:'NULL').")
                                 ";
-                    $result = tep_db_query($query);
+                    $result = vam_db_query($query);
                     
-                    $v_products_id = tep_db_insert_id();
+                    $v_products_id = vam_db_insert_id();
         
                 } else {
         
                   // existing product(s), get the id from the query
                   // and update the product data
-                  while ($row = tep_db_fetch_array($result)) {
+                  while ($row = vam_db_fetch_array($result)) {
         
                     $v_products_id = $row['products_id'];
                     echo EASY_LABEL_UPDATED;
@@ -3108,7 +3108,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                     }
 
                     if (EP_ADDITIONAL_IMAGES == true && isset($v_products_image_description)) { 
-                      $ep_additional_updates .= "products_image_description='".tep_db_input($v_products_image_description)."',";
+                      $ep_additional_updates .= "products_image_description='".vam_db_input($v_products_image_description)."',";
                     } 
 
                     if (EP_MORE_PICS_6_SUPPORT == true) { 
@@ -3162,34 +3162,34 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 (products_id = $v_products_id)
                               LIMIT 1";
         
-                    tep_db_query($query);
+                    vam_db_query($query);
                   }
                 }
 		
 		  if (isset($v_products_specials_price)) {
 		      if (EP_SPPC_SUPPORT == true) { $SPPC_extra_query = ' and customers_group_id = 0'; } else { $SPPC_extra_query = ''; }
-			  $result = tep_db_query('select * from '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . $SPPC_extra_query );
+			  $result = vam_db_query('select * from '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . $SPPC_extra_query );
 
 			  if ($v_products_specials_price == '') {
 			  
-				  $result = tep_db_query('DELETE FROM '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . $SPPC_extra_query );
+				  $result = vam_db_query('DELETE FROM '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . $SPPC_extra_query );
 			      if (EP_SPPC_SUPPORT == true) { 
-				    $result = tep_db_query('DELETE FROM specials_retail_prices WHERE products_id = ' . $v_products_id );
+				    $result = vam_db_query('DELETE FROM specials_retail_prices WHERE products_id = ' . $v_products_id );
 			      }
 
 			  } else {
-				  if ($specials = tep_db_fetch_array($result)) {
+				  if ($specials = vam_db_fetch_array($result)) {
 					  $sql_data_array = array('products_id' => $v_products_id,
 											  'specials_new_products_price' => $v_products_specials_price,
 											  'specials_last_modified' => 'now()'
 					  );
-					  tep_db_perform(TABLE_SPECIALS, $sql_data_array, 'update', 'specials_id = '.$specials['specials_id']);
+					  vam_db_perform(TABLE_SPECIALS, $sql_data_array, 'update', 'specials_id = '.$specials['specials_id']);
 					  
 			          if (EP_SPPC_SUPPORT == true) { 
 					    $sql_data_array = array('products_id' => $v_products_id,
 											    'specials_new_products_price' => $v_products_specials_price
 					    );
-					    tep_db_perform('specials_retail_prices', $sql_data_array, 'update', 'products_id = '.$v_products_id);
+					    vam_db_perform('specials_retail_prices', $sql_data_array, 'update', 'products_id = '.$v_products_id);
 				      }
 				  } else {
 					  $sql_data_array = array('products_id' => $v_products_id,
@@ -3198,7 +3198,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 											  'status' => '1'
 					  );
 		              if (EP_SPPC_SUPPORT == true) { $sql_data_array = array_merge($sql_data_array,array('customers_group_id' => '0')); }
-					  tep_db_perform(TABLE_SPECIALS, $sql_data_array, 'insert');
+					  vam_db_perform(TABLE_SPECIALS, $sql_data_array, 'insert');
 					  
 			          if (EP_SPPC_SUPPORT == true) { 
 					    $sql_data_array = array('products_id' => $v_products_id,
@@ -3206,7 +3206,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 											    'status' => '1',
 											    'customers_group_id' => '0'
 					    );
-					    tep_db_perform('specials_retail_prices', $sql_data_array, 'insert');
+					    vam_db_perform('specials_retail_prices', $sql_data_array, 'insert');
 				      }
 				  }
 			  }
@@ -3215,12 +3215,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
 			if (EP_ADDITIONAL_IMAGES == true) { 
 			  if (isset($filelayout['v_products_image_2'])) {
-				  tep_db_query("delete from " . TABLE_ADDITIONAL_IMAGES . " where products_id = '" . (int)$v_products_id . "'");
+				  vam_db_query("delete from " . TABLE_ADDITIONAL_IMAGES . " where products_id = '" . (int)$v_products_id . "'");
 				  for ($i=2;$i<=EP_ADDITIONAL_IMAGES_MAX+1;$i++) {
 					$ai_description_var = 'v_products_image_description_'.$i;
 					$ai_image_var = 'v_products_image_'.$i;
 					if (!empty($$ai_image_var) || !empty($$ai_description_var)) {
-					  tep_db_query("insert into " . TABLE_ADDITIONAL_IMAGES . " (products_id, images_description, thumb_images) values ('" . (int)$v_products_id . "', '" . tep_db_input($$ai_description_var) . "', '" . tep_db_input($$ai_image_var) . "')");
+					  vam_db_query("insert into " . TABLE_ADDITIONAL_IMAGES . " (products_id, images_description, thumb_images) values ('" . (int)$v_products_id . "', '" . vam_db_input($$ai_description_var) . "', '" . vam_db_input($$ai_image_var) . "')");
 					}
 				  }
 			  }
@@ -3238,7 +3238,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         $sql = "SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE
                                 products_id = $v_products_id AND
                                 language_id = " . $lang['id'];
-                        $result = tep_db_query($sql);
+                        $result = vam_db_query($sql);
         
                         $products_var = 'v_products_name_'.$lang['id'];
                         $description_var = 'v_products_description_'.$lang['id'];
@@ -3255,9 +3255,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 
                         foreach ($custom_fields[TABLE_PRODUCTS_DESCRIPTION] as $key => $name) { 
                           $tmp_var = 'v_' . $key . '_' . $lang['id'];
-                          $ep_additional_updates .= $key . " = '" . tep_db_input($$tmp_var) ."',";
+                          $ep_additional_updates .= $key . " = '" . vam_db_input($$tmp_var) ."',";
                           $ep_additional_fields .= $key . ",";
-                          $ep_additional_data .= "'". tep_db_input($$tmp_var) . "',";
+                          $ep_additional_data .= "'". vam_db_input($$tmp_var) . "',";
                         }
 
                         // header tags controller support
@@ -3266,9 +3266,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                           $head_desc_tag_var = 'v_products_head_desc_tag_'.$lang['id'];
                           $head_keywords_tag_var = 'v_products_head_keywords_tag_'.$lang['id'];
         
-                          $ep_additional_updates .= "products_head_title_tag = '" . tep_db_input($$head_title_tag_var) ."', products_head_desc_tag = '" . tep_db_input($$head_desc_tag_var) ."', products_head_keywords_tag = '" . tep_db_input($$head_keywords_tag_var) ."',";
+                          $ep_additional_updates .= "products_head_title_tag = '" . vam_db_input($$head_title_tag_var) ."', products_head_desc_tag = '" . vam_db_input($$head_desc_tag_var) ."', products_head_keywords_tag = '" . vam_db_input($$head_keywords_tag_var) ."',";
                           $ep_additional_fields .= "products_head_title_tag,products_head_desc_tag,products_head_keywords_tag,";
-                          $ep_additional_data .= "'". tep_db_input($$head_title_tag_var) . "','". tep_db_input($$head_desc_tag_var) . "','". tep_db_input($$head_keywords_tag_var) . "',";
+                          $ep_additional_data .= "'". vam_db_input($$head_title_tag_var) . "','". vam_db_input($$head_desc_tag_var) . "','". vam_db_input($$head_keywords_tag_var) . "',";
                         }
                         // end: header tags controller support
                         
@@ -3278,25 +3278,25 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                         
                         // existing product?
-                        if (tep_db_num_rows($result) > 0) {
+                        if (vam_db_num_rows($result) > 0) {
                             // already in the description, let's just update it
                             $sql =
                                 "UPDATE ".TABLE_PRODUCTS_DESCRIPTION." 
                                  SET
-                                    products_name='" . tep_db_input($$products_var) . "',
-                                    products_description='" . tep_db_input($$description_var) . "',
+                                    products_name='" . vam_db_input($$products_var) . "',
+                                    products_description='" . vam_db_input($$description_var) . "',
                                     $ep_additional_updates
                                     products_url='" . $$url_var . "'
                                  WHERE
                                     products_id = '$v_products_id' AND
                                     language_id = '".$lang['id']."'
                                  LIMIT 1";
-                            $result = tep_db_query($sql);
+                            $result = vam_db_query($sql);
         
                         } else {
         
                             // nope, this is a new product description
-                            $result = tep_db_query($sql);
+                            $result = vam_db_query($sql);
                             $sql =
                                 "INSERT INTO ".TABLE_PRODUCTS_DESCRIPTION."
                                     ( products_id,
@@ -3309,12 +3309,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                  VALUES (
                                         '" . $v_products_id . "',
                                         " . $lang['id'] . ",
-                                        '". tep_db_input($$products_var) . "',
-                                        '". tep_db_input($$description_var) . "',
+                                        '". vam_db_input($$products_var) . "',
+                                        '". vam_db_input($$description_var) . "',
                                         $ep_additional_data
                                         '". $$url_var . "'
                                         )";
-                            $result = tep_db_query($sql);
+                            $result = vam_db_query($sql);
                         }
                     }
                 }
@@ -3323,7 +3323,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                 if (isset($v_categories_id)){
                     //find out if this product is listed in the category given
-                    $result_incategory = tep_db_query('SELECT
+                    $result_incategory = vam_db_query('SELECT
                                 '.TABLE_PRODUCTS_TO_CATEGORIES.'.products_id,
                                 '.TABLE_PRODUCTS_TO_CATEGORIES.'.categories_id
                                 FROM
@@ -3332,9 +3332,9 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 '.TABLE_PRODUCTS_TO_CATEGORIES.'.products_id='.$v_products_id.' AND
                                 '.TABLE_PRODUCTS_TO_CATEGORIES.'.categories_id='.$v_categories_id);
         
-                    if (tep_db_num_rows($result_incategory) == 0) {
+                    if (vam_db_num_rows($result_incategory) == 0) {
                         // nope, this is a new category for this product
-                        $res1 = tep_db_query('INSERT INTO '.TABLE_PRODUCTS_TO_CATEGORIES.' (products_id, categories_id)
+                        $res1 = vam_db_query('INSERT INTO '.TABLE_PRODUCTS_TO_CATEGORIES.' (products_id, categories_id)
                                               VALUES ("' . $v_products_id . '", "' . $v_categories_id . '")');
                     } else {
                         // already in this category, nothing to do!
@@ -3343,17 +3343,17 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                 // this is for the cross sell contribution
                 if (isset($v_cross_sell)){
-                  tep_db_query("delete from ".TABLE_PRODUCTS_XSELL." where products_id = " . $v_products_id . " or xsell_id = " . $v_products_id . "");
+                  vam_db_query("delete from ".TABLE_PRODUCTS_XSELL." where products_id = " . $v_products_id . " or xsell_id = " . $v_products_id . "");
                   if (!empty($v_cross_sell)){
                     $xsells_array = explode(',',$v_cross_sell);
                       foreach ($xsells_array as $xs_key => $xs_model ) {
                         $cross_sell_sql = "select products_id from ".TABLE_PRODUCTS." where products_model = '" . trim($xs_model) . "' limit 1";
-                        $cross_sell_result = tep_db_query($cross_sell_sql);
-                        $cross_sell_row = tep_db_fetch_array($cross_sell_result);
+                        $cross_sell_result = vam_db_query($cross_sell_sql);
+                        $cross_sell_row = vam_db_fetch_array($cross_sell_result);
                         
-                        tep_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
+                        vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
                                       values ( ".$v_products_id.", ".$cross_sell_row['products_id'].", 1)");
-                        tep_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
+                        vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
 								  values ( ".$cross_sell_row['products_id'].", ".$v_products_id.", 1)");
                     }
                   }
@@ -3368,7 +3368,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         die();
                     }
                     // they spec'd some prices, so clear all existing entries
-                    $result = tep_db_query('
+                    $result = vam_db_query('
                                 DELETE
                                 FROM
                                     '.TABLE_PRODUCTS_GROUPS.'
@@ -3377,7 +3377,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                 );
                     // and insert the new record
                     if ($v_customer_price_1 != ''){
-                        $result = tep_db_query('
+                        $result = vam_db_query('
                                     INSERT INTO
                                         '.TABLE_PRODUCTS_GROUPS.'
                                     VALUES
@@ -3389,7 +3389,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     );
                     }
                     if ($v_customer_price_2 != ''){
-                        $result = tep_db_query('
+                        $result = vam_db_query('
                                     INSERT INTO
                                         '.TABLE_PRODUCTS_GROUPS.'
                                     VALUES
@@ -3401,7 +3401,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     );
                     }
                     if ($v_customer_price_3 != ''){
-                        $result = tep_db_query('
+                        $result = vam_db_query('
                                     INSERT INTO
                                         '.TABLE_PRODUCTS_GROUPS.'
                                     VALUES
@@ -3413,7 +3413,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     );
                     }
                     if ($v_customer_price_4 != ''){
-                        $result = tep_db_query('
+                        $result = vam_db_query('
                                     INSERT INTO
                                         '.TABLE_PRODUCTS_GROUPS.'
                                     VALUES
@@ -3426,19 +3426,19 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                     }
 
                     if (isset($v_customer_specials_price_1)) {
-                    $result = tep_db_query('select * from '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . ' and customers_group_id = 1' );
+                    $result = vam_db_query('select * from '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . ' and customers_group_id = 1' );
 
                       if ($v_customer_specials_price_1 == '') {
 			  
-                        $result = tep_db_query('DELETE FROM '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . ' and customers_group_id = 1' );
+                        $result = vam_db_query('DELETE FROM '.TABLE_SPECIALS.' WHERE products_id = ' . $v_products_id . ' and customers_group_id = 1' );
 
                       } else {
-                        if ($specials = tep_db_fetch_array($result)) {
+                        if ($specials = vam_db_fetch_array($result)) {
 					  $sql_data_array = array('products_id' => $v_products_id,
 											  'specials_new_products_price' => $v_customer_specials_price_1,
 											  'specials_last_modified' => 'now()'
 					  );
-					  tep_db_perform(TABLE_SPECIALS, $sql_data_array, 'update', 'specials_id = '.$specials['specials_id']);
+					  vam_db_perform(TABLE_SPECIALS, $sql_data_array, 'update', 'specials_id = '.$specials['specials_id']);
                         } else {
 					  $sql_data_array = array('products_id' => $v_products_id,
 											  'specials_new_products_price' => $v_customer_specials_price_1,
@@ -3446,7 +3446,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 											  'status' => '1',
 											  'customers_group_id' => '1'
 					  );
-					  tep_db_perform(TABLE_SPECIALS, $sql_data_array, 'insert');
+					  vam_db_perform(TABLE_SPECIALS, $sql_data_array, 'insert');
                         }
                       }
                     }
@@ -3468,16 +3468,16 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         // this is useful for removing attributes linked to a product
                         $attributes_clean_query = "delete from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "'";
         
-                        tep_db_query($attributes_clean_query);
+                        vam_db_query($attributes_clean_query);
         
                         $attribute_options_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$$v_attribute_options_id_var . "'";
         
-                        $attribute_options_values = tep_db_query($attribute_options_query);
+                        $attribute_options_values = vam_db_query($attribute_options_query);
         
                         // option table update begin
                         if ($attribute_rows == 1) {
                             // insert into options table if no option exists
-                            if (tep_db_num_rows($attribute_options_values) <= 0) {
+                            if (vam_db_num_rows($attribute_options_values) <= 0) {
                                 for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                                     $lid = $languages[$i]['id'];
         
@@ -3486,7 +3486,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     if (isset($$v_attribute_options_name_var)) {
                                         $attribute_options_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id, language_id, products_options_name) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_options_name_var . "')";
         
-                                        $attribute_options_insert = tep_db_query($attribute_options_insert_query);
+                                        $attribute_options_insert = vam_db_query($attribute_options_insert_query);
                                     }
                                 }
                             } else { // update options table, if options already exists
@@ -3498,17 +3498,17 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     if (isset($$v_attribute_options_name_var)) {
                                         $attribute_options_update_lang_query = "select products_options_name from " . TABLE_PRODUCTS_OPTIONS . " where products_options_id = '" . (int)$$v_attribute_options_id_var . "' and language_id ='" . (int)$lid . "'";
         
-                                        $attribute_options_update_lang_values = tep_db_query($attribute_options_update_lang_query);
+                                        $attribute_options_update_lang_values = vam_db_query($attribute_options_update_lang_query);
         
                                         // if option name doesn't exist for particular language, insert value
-                                        if (tep_db_num_rows($attribute_options_update_lang_values) <= 0) {
+                                        if (vam_db_num_rows($attribute_options_update_lang_values) <= 0) {
                                             $attribute_options_lang_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id, language_id, products_options_name) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$lid . "', '" . $$v_attribute_options_name_var . "')";
         
-                                            $attribute_options_lang_insert = tep_db_query($attribute_options_lang_insert_query);
+                                            $attribute_options_lang_insert = vam_db_query($attribute_options_lang_insert_query);
                                         } else { // if option name exists for particular language, update table
                                             $attribute_options_update_query = "update " . TABLE_PRODUCTS_OPTIONS . " set products_options_name = '" . $$v_attribute_options_name_var . "' where products_options_id ='" . (int)$$v_attribute_options_id_var . "' and language_id = '" . (int)$lid . "'";
         
-                                            $attribute_options_update = tep_db_query($attribute_options_update_query);
+                                            $attribute_options_update = vam_db_query($attribute_options_update_query);
                                         }
                                     }
                                 }
@@ -3523,21 +3523,21 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         while (isset($$v_attribute_values_id_var) && !empty($$v_attribute_values_id_var)) {
                             $attribute_values_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
         
-                            $attribute_values_values = tep_db_query($attribute_values_query);
+                            $attribute_values_values = vam_db_query($attribute_values_query);
         
                             // options_values table update begin
                             if ($attribute_rows == 1) {
                                 // insert into options_values table if no option exists
-                                if (tep_db_num_rows($attribute_values_values) <= 0) {
+                                if (vam_db_num_rows($attribute_values_values) <= 0) {
                                     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                                         $lid = $languages[$i]['id'];
         
                                         $v_attribute_values_name_var = 'v_attribute_values_name_' . $attribute_options_count . '_' . $attribute_values_count . '_' . $lid;
         
                                         if (isset($$v_attribute_values_name_var)) {
-                                            $attribute_values_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . tep_db_input($$v_attribute_values_name_var) . "')";
+                                            $attribute_values_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . vam_db_input($$v_attribute_values_name_var) . "')";
         
-                                            $attribute_values_insert = tep_db_query($attribute_values_insert_query);
+                                            $attribute_values_insert = vam_db_query($attribute_values_insert_query);
                                         }
                                     }
         
@@ -3545,7 +3545,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                     // insert values to pov2po table
                                     $attribute_values_pov2po_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES_TO_PRODUCTS_OPTIONS . " (products_options_id, products_options_values_id) values ('" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "')";
         
-                                    $attribute_values_pov2po = tep_db_query($attribute_values_pov2po_query);
+                                    $attribute_values_pov2po = vam_db_query($attribute_values_pov2po_query);
                                 } else { // update options table, if options already exists
                                     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                                         $lid = $languages[$i]['id'];
@@ -3555,17 +3555,17 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                                         if (isset($$v_attribute_values_name_var)) {
                                             $attribute_values_update_lang_query = "select products_options_values_name from " . TABLE_PRODUCTS_OPTIONS_VALUES . " where products_options_values_id = '" . (int)$$v_attribute_values_id_var . "' and language_id ='" . (int)$lid . "'";
         
-                                            $attribute_values_update_lang_values = tep_db_query($attribute_values_update_lang_query);
+                                            $attribute_values_update_lang_values = vam_db_query($attribute_values_update_lang_query);
         
                                             // if options_values name doesn't exist for particular language, insert value
-                                            if (tep_db_num_rows($attribute_values_update_lang_values) <= 0) {
-                                                $attribute_values_lang_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . tep_db_input($$v_attribute_values_name_var) . "')";
+                                            if (vam_db_num_rows($attribute_values_update_lang_values) <= 0) {
+                                                $attribute_values_lang_insert_query = "insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . (int)$$v_attribute_values_id_var . "', '" . (int)$lid . "', '" . vam_db_input($$v_attribute_values_name_var) . "')";
         
-                                                $attribute_values_lang_insert = tep_db_query($attribute_values_lang_insert_query);
+                                                $attribute_values_lang_insert = vam_db_query($attribute_values_lang_insert_query);
                                             } else { // if options_values name exists for particular language, update table
-                                                $attribute_values_update_query = "update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . tep_db_input($$v_attribute_values_name_var) . "' where products_options_values_id ='" . (int)$$v_attribute_values_id_var . "' and language_id = '" . (int)$lid . "'";
+                                                $attribute_values_update_query = "update " . TABLE_PRODUCTS_OPTIONS_VALUES . " set products_options_values_name = '" . vam_db_input($$v_attribute_values_name_var) . "' where products_options_values_id ='" . (int)$$v_attribute_values_id_var . "' and language_id = '" . (int)$lid . "'";
         
-                                                $attribute_values_update = tep_db_query($attribute_values_update_query);
+                                                $attribute_values_update = vam_db_query($attribute_values_update_query);
                                             }
                                         }
                                     }
@@ -3579,7 +3579,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                             if (isset($$v_attribute_values_price_var) && ($$v_attribute_values_price_var != '')) {
                                 $attribute_prices_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id ='" . (int)$$v_attribute_options_id_var . "' and options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
         
-                                $attribute_prices_values = tep_db_query($attribute_prices_query);
+                                $attribute_prices_values = vam_db_query($attribute_prices_query);
         
                                 $attribute_values_price_prefix = ($$v_attribute_values_price_var < 0) ? '-' : '+';
                                 // if negative, remove the negative sign for storing since the prefix is stored in another field.
@@ -3587,14 +3587,14 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                                 // options_values_prices table update begin
                                 // insert into options_values_prices table if no price exists
-                                if (tep_db_num_rows($attribute_prices_values) <= 0) {
+                                if (vam_db_num_rows($attribute_prices_values) <= 0) {
                                     $attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . (float)$$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "')";
         
-                                    $attribute_prices_insert = tep_db_query($attribute_prices_insert_query);
+                                    $attribute_prices_insert = vam_db_query($attribute_prices_insert_query);
                                 } else { // update options table, if options already exists
                                     $attribute_prices_update_query = "update " . TABLE_PRODUCTS_ATTRIBUTES . " set options_values_price = '" . $$v_attribute_values_price_var . "', price_prefix = '" . $attribute_values_price_prefix . "' where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "' and options_values_id ='" . (int)$$v_attribute_values_id_var . "'";
         
-                                    $attribute_prices_update = tep_db_query($attribute_prices_update_query);
+                                    $attribute_prices_update = vam_db_query($attribute_prices_update_query);
                                 }
                             }
                             // options_values price update end
@@ -3605,17 +3605,17 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                             if (isset($$v_attribute_values_stock_var) && ($$v_attribute_values_stock_var != '')) {
                                 
                                 $stock_attributes = $$v_attribute_options_id_var.'-'.$$v_attribute_values_id_var;
-                                $attribute_stock_query = tep_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$v_products_id . "' and products_stock_attributes ='" . $stock_attributes . "'");        
+                                $attribute_stock_query = vam_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$v_products_id . "' and products_stock_attributes ='" . $stock_attributes . "'");        
                                 
                                 // insert into products_stock_quantity table if no stock exists
-                                if (tep_db_num_rows($attribute_stock_query) <= 0) {
-                                    $attribute_stock_insert_query =tep_db_query("insert into " . TABLE_PRODUCTS_STOCK . " (products_id, products_stock_attributes, products_stock_quantity) values ('" . (int)$v_products_id . "', '" . $stock_attributes . "', '" . (int)$$v_attribute_values_stock_var . "')");
+                                if (vam_db_num_rows($attribute_stock_query) <= 0) {
+                                    $attribute_stock_insert_query =vam_db_query("insert into " . TABLE_PRODUCTS_STOCK . " (products_id, products_stock_attributes, products_stock_quantity) values ('" . (int)$v_products_id . "', '" . $stock_attributes . "', '" . (int)$$v_attribute_values_stock_var . "')");
                                         
                                 } else { // update options table, if options already exists
-                                    $attribute_stock_insert_query = tep_db_query("update " . TABLE_PRODUCTS_STOCK. " set products_stock_quantity = '" . (int)$$v_attribute_values_stock_var . "' where products_id = '" . (int)$v_products_id . "' and products_stock_attributes = '" . $stock_attributes . "'");
+                                    $attribute_stock_insert_query = vam_db_query("update " . TABLE_PRODUCTS_STOCK. " set products_stock_quantity = '" . (int)$$v_attribute_values_stock_var . "' where products_id = '" . (int)$v_products_id . "' and products_stock_attributes = '" . $stock_attributes . "'");
                                                 
                                     // turn on stock tracking on products_options table
-                                    $stock_tracking_query = tep_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_track_stock = '1' where products_options_id = '" . (int)$$v_attribute_options_id_var . "'");
+                                    $stock_tracking_query = vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_track_stock = '1' where products_options_id = '" . (int)$$v_attribute_options_id_var . "'");
                                 
                                 }
                             }
