@@ -68,7 +68,7 @@
 		$category_query = vam_db_query("select p2c.categories_id, cd.categories_name from " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where p2c.products_id = '" . $items['products_id'] . "' AND cd.categories_id = p2c.categories_id AND cd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
 		$category = vam_db_fetch_array($category_query);
 		
-	  $item_string .=  'pageTracker._addItem(' . '"' . $order_id . '","' . $items['products_id'] . '","' . $items['products_name'] . '","' . $category['categories_name'] . '","' . $items['final_price'] . '","' . $items['products_quantity'] . '"' . ');' . "\n";
+	  $item_string .=  'pageTracker._addItem(' . '"' . $order_id . '","' . $items['products_id'] . '","' . htmlspecialchars($items['products_name']) . '","' . htmlspecialchars($category['categories_name']) . '","' . $items['final_price'] . '","' . $items['products_quantity'] . '"' . ');' . "\n";
     }
 
 // ############## Google Analytics - end ###############
