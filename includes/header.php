@@ -88,10 +88,12 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_NEW_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_FEATURED_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_BEST_SELLERS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10'; ?>" />
+<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
+<script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
+<script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
-<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
 <script type="text/javascript" src="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
 <script type="text/javascript">
@@ -107,9 +109,6 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 <?php
  }
 ?>
-<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
-<script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
-<script type="text/javascript" src="jscript/jscript_ajax.js"></script>
 <?php
 if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
