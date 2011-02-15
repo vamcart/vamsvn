@@ -1088,6 +1088,17 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script type="text/javascript" src="includes/javascript/categories.js"></script>
+<?php if (ENABLE_TABS == 'true') { ?>
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
+			});
+		</script>
+<?php } ?>
 <script type="text/javascript"><!--
   function switchForm( field ) {
     var d = document;
@@ -1454,16 +1465,6 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 			} 
 			?>
 			
-<?php
-  if (ENABLE_TABS == 'true') { 
-?>
-		<script type="text/javascript">
-			$(function(){
-				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
-			});
-		</script>
-<?php } ?>
-
 <div id="tabs">
 
 			<ul>
