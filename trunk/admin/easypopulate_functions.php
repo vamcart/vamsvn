@@ -89,13 +89,13 @@ function vam_get_tax_title_class_id($tax_class_title) {
 
 if (!function_exists(print_el)){
 function print_el( $item2 ) {
-	echo " | " . substr(strip_tags($item2), 0, 10);
+	echo " | " . utf8_substr(strip_tags($item2), 0, 10);
 }
 }
 
 if (!function_exists(print_el1)){
 function print_el1( $item2 ) {
-	echo sprintf("| %'.4s ", substr(strip_tags($item2), 0, 80));
+	echo sprintf("| %'.4s ", utf8_substr(strip_tags($item2), 0, 80));
 }
 }
 
