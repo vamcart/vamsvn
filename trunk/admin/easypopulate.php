@@ -1214,7 +1214,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		?>
 		</p>
 		<form name="clear_form" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form">
-		<input type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
 
     if (isset($_FILES['usrfl'])){
@@ -1370,7 +1370,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 	  	?>
 		</p>
 		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
-		<input type="submit" name="clear_button2" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
 
 
@@ -1385,7 +1385,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		?>
 		</p>
 		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
-		<input type="submit" name="clear_button2" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>" style="padding: 0px" /></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
         echo "<p class=smallText>";
     // move the file to where we can work with it
@@ -1460,7 +1460,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		   if (EP_QUICK_BACKUP == true){
 		   ?>
 		   <form name="skb" action="backup.php" method="post" id="quick_backup">
-				<input type="submit" name="quick_backup_button" value="<?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?>"  style="padding: 0px" /></form>
+				<span class="button"><button type="submit" name="quick_backup_button" value="<?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?>"><?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?></button></span></form>
 		   <?php
 			} 
 			?>
@@ -1491,7 +1491,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="update"><?php echo TEXT_EASYPOPULATE_UPDATE; ?></option>
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
-                  <input type="submit" name="buttoninsert" value="<?php echo EASY_INSERT; ?>">
+                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT;?>"><?php echo EASY_INSERT; ?></button></span>
                 <br />
                 </p>
               </form>
@@ -1534,7 +1534,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="update"><?php echo TEXT_EASYPOPULATE_UPDATE; ?></option>
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
-                  <input type="submit" name="buttoninsert" value="<?php echo EASY_INSERT; ?>">
+                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT; ?>"><?php echo EASY_INSERT; ?></button></span>
                   <br />
                 </p>
              </form>
@@ -1548,7 +1548,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="1000000000">
                   <input name="usrfl" type="file" size="50">
-                  <input type="submit" name="buttonsplit" value="<?php echo EASYPOPULATE_BUTTON_SPLIT; ?>">
+                  <span class="button"><button type="submit" name="buttonsplit" value="<?php echo EASYPOPULATE_BUTTON_SPLIT; ?>"><?php echo EASYPOPULATE_BUTTON_SPLIT; ?></button></span>
                 <br />
                 </p>
              </form>
@@ -1632,8 +1632,9 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
           echo TEXT_EASYPOPULATE_FILTER_BY . vam_draw_pull_down_menu('epcust_category_filter', array_merge(array( 0 => array( "id" => '', 'text' => TEXT_EASYPOPULATE_FILTER_CATEGORY)), vam_get_category_tree()));
           echo ' ' . vam_draw_pull_down_menu('epcust_manufacturer_filter', $manufacturers_array) . ' ';
           echo ' ' . vam_draw_pull_down_menu('epcust_status_filter', $status_array) . ' ';
-          echo vam_draw_input_field('submit', TEXT_EASYPOPULATE_BUILD_BUTTON, ' style="padding: 0px"', false, 'submit');
-          ?></td></tr>
+          ?>
+          <span class="button"><button type="submit" name="build_button" value="<?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?>"><?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?></button></span>          
+          </td></tr>
           </form>
           </table>
         </p>
