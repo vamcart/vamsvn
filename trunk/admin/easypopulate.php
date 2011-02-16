@@ -109,7 +109,7 @@ define ('EP_SHOW_EP_SETTINGS', true); // default is: false
 
 ////////////////////////////////////////////////////////////////////////// */
 // **** Temp directory **** 
-define ('EP_TEMP_DIRECTORY', DIR_FS_CATALOG . 'temp/'); 
+define ('EP_TEMP_DIRECTORY', DIR_FS_CATALOG . 'export/'); 
 
 
 //**** File Splitting Configuration ****
@@ -1480,7 +1480,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="import">			
 			
-           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=0', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>       
+           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=0', 'post', 'enctype="multipart/form-data"'); ?>       
                 <p><b><?php echo EASY_UPLOAD_EP_FILE; ?></b></p>
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
@@ -1500,7 +1500,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="import-temp">			
 
-           <?php echo vam_draw_form('localfile_insert', FILENAME_EASYPOPULATE, '', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>       
+           <?php echo vam_draw_form('localfile_insert', FILENAME_EASYPOPULATE, '', 'post', 'enctype="multipart/form-data"'); ?>       
                 <p><b><?php echo EASY_IMPORT_TEMP_DIR; ?></b></p>
                 <p>
                   <?php
@@ -1543,7 +1543,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
 <div id="split">			
 
-           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=1', 'post', 'enctype="multipart/form-data"') . vam_hide_session_id(); ?>
+           <?php echo vam_draw_form('easypopulate', FILENAME_EASYPOPULATE, 'split=1', 'post', 'enctype="multipart/form-data"'); ?>
                 <p><b><?php echo EASY_SPLIT_EP_FILE; ?></b></p>
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="1000000000">
