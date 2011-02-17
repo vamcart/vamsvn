@@ -375,7 +375,7 @@ define ('EP_MVS_SUPPORT', false);  // default is false
 define ('EP_EXTRA_FIELDS_SUPPORT', true);  // default is false
 
 // UltraPics 2.05 LightBox Contrib (***FUNCTIONAL***)
-define ('EP_ULTRPICS_SUPPORT', true);  // default is false
+define ('EP_ULTRPICS_SUPPORT', false);  // default is false
 
 // PDF File Upload and Display v2.01 (***FUNCTIONAL***)
 define ('EP_PDF_UPLOAD_SUPPORT', false);  // default is false
