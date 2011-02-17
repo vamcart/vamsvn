@@ -197,9 +197,9 @@ $ep_separator = "\t"; // tab is default
 define ('EP_EXCEL_SAFE_OUTPUT', true); // default is: true
 
 if (EP_EXCEL_SAFE_OUTPUT == true) { 
-  if ($language == 'russian') { 
+  if ($_SESSION['language'] == 'russian') { 
     $ep_separator = "\t";  // comma
-  } elseif ($language == 'german') {
+  } elseif ($_SESSION['language'] == 'german') {
     $ep_separator = ';';  // semi-colon
   } else {
     $ep_separator = ',';  // comma  // default for all others.
@@ -300,8 +300,8 @@ $custom_fields = array();
 // may need to incorporate custom code to correctly import your data.
 //
 
-$custom_fields[TABLE_PRODUCTS] = array(); // this line is used if you have no custom fields to import/export
-$custom_fields[TABLE_PRODUCTS_DESCRIPTION] = array(); // this line is used if you have no custom fields to import/export
+$custom_fields[TABLE_PRODUCTS] = array('products_quantity_min' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN,'products_quantity_max' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX,'products_sort' => TEXT_EASYPOPULATE_LABEL_SORT,'products_page_url' => TEXT_EASYPOPULATE_LABEL_PAGE_URL); // this line is used if you have no custom fields to import/export
+$custom_fields[TABLE_PRODUCTS_DESCRIPTION] = array('products_short_description' => TEXT_EASYPOPULATE_LABEL_SHORT_DESCRIPTION,'products_keywords' => TEXT_EASYPOPULATE_LABEL_KEYWORDS); // this line is used if you have no custom fields to import/export
 
 //
 // FINAL NOTE: this currently only works with the "products" & "products_description" table.
@@ -418,9 +418,9 @@ define ('EP_QUICK_BACKUP', true);  // default is true
     }
   }
 
-if (!empty($languages_id) && !empty($language)) {
-  define ('EP_DEFAULT_LANGUAGE_ID', $languages_id);
-  define ('EP_DEFAULT_LANGUAGE_NAME', $language);
+if (!empty($_SESSION['languages_id']) && !empty($_SESSION['language'])) {
+  define ('EP_DEFAULT_LANGUAGE_ID', $_SESSION['languages_id']);
+  define ('EP_DEFAULT_LANGUAGE_NAME', $_SESSION['language']);
 } else {
   //elari check default language_id from configuration table DEFAULT_LANGUAGE
   $epdlanguage_query = vam_db_query("select languages_id, name from " . TABLE_LANGUAGES . " where code = '" . DEFAULT_LANGUAGE . "'");

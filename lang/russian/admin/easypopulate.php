@@ -74,6 +74,12 @@ define('TEXT_EASYPOPULATE_LABEL_SPECIALS','скидки');
 define('TEXT_EASYPOPULATE_LABEL_ADD_IMAGES','добавить картинки');
 define('TEXT_EASYPOPULATE_LABEL_VENDOR','вендор');
 define('TEXT_EASYPOPULATE_LABEL_XSELL','сопутствующие товары');
+define('TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN','минимум для заказа');
+define('TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX','максимум для заказа');
+define('TEXT_EASYPOPULATE_LABEL_SORT','порядок сортировки');
+define('TEXT_EASYPOPULATE_LABEL_PAGE_URL','seo url товара');
+define('TEXT_EASYPOPULATE_LABEL_SHORT_DESCRIPTION','краткое описание');
+define('TEXT_EASYPOPULATE_LABEL_KEYWORDS','тэги товара');
 
 define('TEXT_EASYPOPULATE_FILTER_BY','Фильтр: ');
 define('TEXT_EASYPOPULATE_FILTER_CATEGORY','- Категория -');
