@@ -80,6 +80,10 @@ define('TEXT_EASYPOPULATE_LABEL_SORT','порядок сортировки');
 define('TEXT_EASYPOPULATE_LABEL_PAGE_URL','seo url товара');
 define('TEXT_EASYPOPULATE_LABEL_SHORT_DESCRIPTION','краткое описание');
 define('TEXT_EASYPOPULATE_LABEL_KEYWORDS','тэги товара');
+define('TEXT_EASYPOPULATE_LABEL_DISCOUNT_ALLOWED','максимальная скидка');
+define('TEXT_EASYPOPULATE_LABEL_STARTPAGE','показывать на главной');
+define('TEXT_EASYPOPULATE_LABEL_STARTPAGE_SORT','сортировка на главной');
+define('TEXT_EASYPOPULATE_LABEL_XML','яндекс маркет');
 
 define('TEXT_EASYPOPULATE_FILTER_BY','Фильтр: ');
 define('TEXT_EASYPOPULATE_FILTER_CATEGORY','- Категория -');

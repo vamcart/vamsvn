@@ -300,7 +300,7 @@ $custom_fields = array();
 // may need to incorporate custom code to correctly import your data.
 //
 
-$custom_fields[TABLE_PRODUCTS] = array('products_quantity_min' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN,'products_quantity_max' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX,'products_sort' => TEXT_EASYPOPULATE_LABEL_SORT,'products_page_url' => TEXT_EASYPOPULATE_LABEL_PAGE_URL); // this line is used if you have no custom fields to import/export
+$custom_fields[TABLE_PRODUCTS] = array('products_quantity_min' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN,'products_quantity_max' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX,'products_sort' => TEXT_EASYPOPULATE_LABEL_SORT,'products_page_url' => TEXT_EASYPOPULATE_LABEL_PAGE_URL,'products_discount_allowed' => TEXT_EASYPOPULATE_LABEL_DISCOUNT_ALLOWED,'products_startpage' => TEXT_EASYPOPULATE_LABEL_STARTPAGE,'products_startpage_sort' => TEXT_EASYPOPULATE_LABEL_STARTPAGE_SORT,'products_to_xml' => TEXT_EASYPOPULATE_LABEL_XML); // this line is used if you have no custom fields to import/export
 $custom_fields[TABLE_PRODUCTS_DESCRIPTION] = array('products_short_description' => TEXT_EASYPOPULATE_LABEL_SHORT_DESCRIPTION,'products_keywords' => TEXT_EASYPOPULATE_LABEL_KEYWORDS); // this line is used if you have no custom fields to import/export
 
 //
