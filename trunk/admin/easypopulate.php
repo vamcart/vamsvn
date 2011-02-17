@@ -1565,7 +1565,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
           <tr><td class="smallText"><?php 
           
           echo vam_draw_pull_down_menu('download',array( 0 => array( "id" => 'activestream', 'text' => TEXT_EASYPOPULATE_ON_THE_FLY), 1 => array( "id" => 'stream', 'text' => TEXT_EASYPOPULATE_CREATE_THEN_DOWNLOAD), 2 => array( "id" => 'tempfile', 'text' => TEXT_EASYPOPULATE_CREATE_IN_TEMP)));
-          echo '&nbsp;' . TEXT_EASYPOPULATE_TYPE . '&nbsp;' . vam_draw_pull_down_menu('dltype',array( 0 => array( "id" => 'full', 'text' => TEXT_EASYPOPULATE_COMPLETE), 1 => array( "id" => 'custom', 'text' => TEXT_EASYPOPULATE_CUSTOM), 2 => array( "id" => 'priceqty', 'text' => TEXT_EASYPOPULATE_PRICE_QTY), 3 => array( "id" => 'category', 'text' => TEXT_EASYPOPULATE_CATEGORIES), 4 => array( "id" => 'attrib', 'text' => TEXT_EASYPOPULATE_ATTRIBUTES), 5 => array( "id" => 'froogle', 'text' => TEXT_EASYPOPULATE_FROOGLE)),'full','onChange="return switchForm(this);"');
+          echo '&nbsp;' . TEXT_EASYPOPULATE_TYPE . '&nbsp;' . vam_draw_pull_down_menu('dltype',array( 0 => array( "id" => 'full', 'text' => TEXT_EASYPOPULATE_COMPLETE), 1 => array( "id" => 'custom', 'text' => TEXT_EASYPOPULATE_CUSTOM), 2 => array( "id" => 'priceqty', 'text' => TEXT_EASYPOPULATE_PRICE_QTY), 3 => array( "id" => 'category', 'text' => TEXT_EASYPOPULATE_CATEGORIES), 4 => array( "id" => 'attrib', 'text' => TEXT_EASYPOPULATE_ATTRIBUTES), 5 => array( "id" => 'froogle', 'text' => TEXT_EASYPOPULATE_FROOGLE)),'custom','onChange="return switchForm(this);"');
           echo '&nbsp;' . ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt") . TEXT_EASYPOPULATE_FILE_FORMAT; 
 
           $cells = array();
