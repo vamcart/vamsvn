@@ -406,6 +406,7 @@ define ('EP_QUICK_BACKUP', true);  // default is true
   class epbox extends tableBlock {
     // constructor
     function epbox($contents, $direct_ouput = true) {
+      $this->table_class = 'exportTable';
       $this->table_width = '';
       if (!empty($contents) && $direct_ouput == true) {
         echo $this->tableBlock($contents);
@@ -1559,7 +1560,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 
         <p><b><?php echo TEXT_EASYPOPULATE_EXPORT; ?></b></p>
         <p><!-- Download file links -  Add your custom fields here -->
-          <table border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #666666; padding: 3px;">
+          <table border="0" cellpadding="0" cellspacing="0">
           <?php echo vam_draw_form('custom', 'easypopulate.php', ((defined('SID') && vam_not_null(SID)) ? vam_session_name().'='.vam_session_id() : ''), 'get','id="custom"'); ?><?php if (defined('SID') && vam_not_null(SID)) { echo vam_draw_hidden_field(vam_session_name(), vam_session_id()); } ?>
           <tr><td class="smallText"><?php 
           
