@@ -472,9 +472,9 @@ foreach ($languages as $key => $lang){
     $default_these[] = 'v_' . $key . '_' . $lang['id'];
   }
   if (EP_HTC_SUPPORT == true) {
-    $default_these[] = 'v_products_head_title_tag_' . $lang['id'];
-    $default_these[] = 'v_products_head_desc_tag_' . $lang['id'];
-    $default_these[] = 'v_products_head_keywords_tag_' . $lang['id'];
+    $default_these[] = 'v_products_meta_title_' . $lang['id'];
+    $default_these[] = 'v_products_meta_description_' . $lang['id'];
+    $default_these[] = 'v_products_meta_keywords_' . $lang['id'];
   }
 }
 $default_these[] = 'v_products_image';
@@ -681,10 +681,10 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
             $row['v_froogle_products_description_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_description'])) . '"';
 
             // support for Linda's Header Controller 2.0 here
-            if(isset($filelayout['v_products_head_title_tag_' . $lid])){
-                $row['v_products_head_title_tag_' . $lid]     = $row2['products_head_title_tag'];
-                $row['v_products_head_desc_tag_' . $lid]      = $row2['products_head_desc_tag'];
-                $row['v_products_head_keywords_tag_' . $lid]  = $row2['products_head_keywords_tag'];
+            if(isset($filelayout['v_products_meta_title_' . $lid])){
+                $row['v_products_meta_title_' . $lid]     = $row2['products_meta_title'];
+                $row['v_products_meta_description_' . $lid]      = $row2['products_meta_description'];
+                $row['v_products_meta_keywords_' . $lid]  = $row2['products_meta_keywords'];
             }
             // end support for Header Controller 2.0
 		
@@ -1899,9 +1899,9 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
       }
     }
     if (EP_HTC_SUPPORT == true) {
-      $ep_additional_layout_product_description .= '$filelayout[\'v_products_head_title_tag_\'.$lang[\'id\']]    = $iii++;
-                                                    $filelayout[\'v_products_head_desc_tag_\'.$lang[\'id\']]     = $iii++;
-                                                    $filelayout[\'v_products_head_keywords_tag_\'.$lang[\'id\']] = $iii++;
+      $ep_additional_layout_product_description .= '$filelayout[\'v_products_meta_title_\'.$lang[\'id\']]    = $iii++;
+                                                    $filelayout[\'v_products_meta_description_\'.$lang[\'id\']]     = $iii++;
+                                                    $filelayout[\'v_products_meta_keywords_\'.$lang[\'id\']] = $iii++;
                                                     ';
     }
     
@@ -2600,10 +2600,10 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                       $row['v_' . $key . '_' . $lang['id']]         = $row2[$key];
                     }
                     // header tags controller support
-                    if(isset($filelayout['v_products_head_title_tag_' . $lang['id'] ])){
-                        $row['v_products_head_title_tag_' . $lang['id']]     = $row2['products_head_title_tag'];
-                        $row['v_products_head_desc_tag_' . $lang['id']]     = $row2['products_head_desc_tag'];
-                        $row['v_products_head_keywords_tag_' . $lang['id']]     = $row2['products_head_keywords_tag'];
+                    if(isset($filelayout['v_products_meta_title_' . $lang['id'] ])){
+                        $row['v_products_meta_title_' . $lang['id']]     = $row2['products_meta_title'];
+                        $row['v_products_meta_description_' . $lang['id']]     = $row2['products_meta_description'];
+                        $row['v_products_meta_keywords_' . $lang['id']]     = $row2['products_meta_keywords'];
                     }
                     // end: header tags controller support
                 }
@@ -3236,7 +3236,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                       if (isset($filelayout['v_' . $key . '_'.$lang['id']])) { $doit = true; }
                     }
 
-                    if ( isset($filelayout['v_products_name_'.$lang['id']]) || isset($filelayout['v_products_description_'.$lang['id']]) || isset($filelayout['v_products_url_'.$lang['id']]) || isset($filelayout['v_products_head_title_tag_'.$lang['id']]) || $doit == true ) {
+                    if ( isset($filelayout['v_products_name_'.$lang['id']]) || isset($filelayout['v_products_description_'.$lang['id']]) || isset($filelayout['v_products_url_'.$lang['id']]) || isset($filelayout['v_products_meta_title_'.$lang['id']]) || $doit == true ) {
         
                         $sql = "SELECT * FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE
                                 products_id = $v_products_id AND
@@ -3264,14 +3264,14 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                         }
 
                         // header tags controller support
-                        if (isset($filelayout['v_products_head_title_tag_'.$lang['id']])){
-                          $head_title_tag_var = 'v_products_head_title_tag_'.$lang['id'];
-                          $head_desc_tag_var = 'v_products_head_desc_tag_'.$lang['id'];
-                          $head_keywords_tag_var = 'v_products_head_keywords_tag_'.$lang['id'];
+                        if (isset($filelayout['v_products_meta_title_'.$lang['id']])){
+                          $meta_title_var = 'v_products_meta_title_'.$lang['id'];
+                          $meta_description_var = 'v_products_meta_description_'.$lang['id'];
+                          $meta_keywords_var = 'v_products_meta_keywords_'.$lang['id'];
         
-                          $ep_additional_updates .= "products_head_title_tag = '" . vam_db_input($$head_title_tag_var) ."', products_head_desc_tag = '" . vam_db_input($$head_desc_tag_var) ."', products_head_keywords_tag = '" . vam_db_input($$head_keywords_tag_var) ."',";
-                          $ep_additional_fields .= "products_head_title_tag,products_head_desc_tag,products_head_keywords_tag,";
-                          $ep_additional_data .= "'". vam_db_input($$head_title_tag_var) . "','". vam_db_input($$head_desc_tag_var) . "','". vam_db_input($$head_keywords_tag_var) . "',";
+                          $ep_additional_updates .= "products_meta_title = '" . vam_db_input($$meta_title_var) ."', products_meta_description = '" . vam_db_input($$meta_description_var) ."', products_meta_keywords = '" . vam_db_input($$meta_keywords_var) ."',";
+                          $ep_additional_fields .= "products_meta_title,products_meta_description,products_meta_keywords,";
+                          $ep_additional_data .= "'". vam_db_input($$meta_title_var) . "','". vam_db_input($$meta_description_var) . "','". vam_db_input($$meta_keywords_var) . "',";
                         }
                         // end: header tags controller support
                         
