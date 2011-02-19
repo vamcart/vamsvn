@@ -1195,7 +1195,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_EASYPOPULATE; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table></td>
       </tr>
