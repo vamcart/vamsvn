@@ -19,12 +19,41 @@
 
 
 ?>
+<?php
+
+$form_id = '';
+
+if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
+$form_id = 'create_account';
+}
+
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE)) {
+$form_id = 'checkout_alternative';
+}
+
+if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
+$form_id = 'create_account';
+}
+if (strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD )) {
+$form_id = 'account_password';
+}
+if (strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT )) {
+$form_id = 'account_edit';
+}
+if (strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS )) {
+$form_id = 'addressbook';
+}
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($PHP_SELF,FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
+$form_id = 'checkout_address';
+}
+
+?>
 <script type="text/javascript" src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script type="text/javascript"><!--
 
 jQuery(document).ready(function() {
 	// validate signup form on keyup and submit
-	jQuery("#create_account").validate({
+	jQuery("#<?php echo $form_id; ?>").validate({
 		rules: {
 			gender: "required",
 			firstname: {
