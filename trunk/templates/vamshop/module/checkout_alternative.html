@@ -3,35 +3,6 @@
 {$error}
 {/if}
 
-<script type="text/javascript" src="jscript/modified.js"></script>
-<script type="text/javascript">
-{literal}
-jQuery.noConflict();
-jQuery(document).ready(function(){
-
-jQuery(function () {
-    jQuery('#checkout_alternative :input:text:visible:enabled:first').focus();
-})
-
-  jQuery("#country").change(function(){
-      var searchString = jQuery(this).val();
-      jQuery.ajax({
-                     url: "index_ajax1.php",             
-                     dataType : "html",                       
-                     data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
-                     type: "POST",   
-                     success: function(msg){jQuery("#stateXML").html(msg);}            
-                   });                     
-                           
-                           
-   });
-
-
-})
-
-{/literal}
-</script>
-
 {if $virtual=='false'} 
 {config_load file="$language/lang_$language.conf" section="checkout_shipping"}
 <h1>{#heading_shipping#}</h1>
