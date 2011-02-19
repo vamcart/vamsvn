@@ -101,6 +101,7 @@ font-color: #000000;
 table.contentListingTable
 	{
 		width: 100%;
+		background: #fff;
 		padding: 1px;
 		margin: 0 0 .2em 0;
 		border: 1px solid #97a5b0;
