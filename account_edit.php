@@ -192,7 +192,7 @@ $breadcrumb->add(NAVBAR_TITLE_1_ACCOUNT_EDIT, vam_href_link(FILENAME_ACCOUNT, ''
 $breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_EDIT, vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'));
 
 require (DIR_WS_INCLUDES.'header.php');
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('account_edit', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,telephone', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('account_edit', vam_href_link(FILENAME_ACCOUNT_EDIT, '', 'SSL'), 'post').vam_draw_hidden_field('action', 'process'));
 
 if ($messageStack->size('account_edit') > 0)
 	$vamTemplate->assign('error', $messageStack->output('account_edit'));
@@ -203,7 +203,6 @@ if (ACCOUNT_GENDER == 'true') {
 	$female = !$male;
 	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', $male, 'id="gender" checked="checked"'));
 	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE.'&nbsp;', 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', $female, 'id="gender"'));
-	$vamTemplate->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 }
 
 if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
@@ -214,29 +213,24 @@ if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 }
 
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $account['customers_firstname'], 'id="firstname"'));
-$vamTemplate->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $account['customers_secondname'], 'id="secondname"'));
 }
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
-$vamTemplate->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 $vamTemplate->assign('csID', $account['customers_cid']);
 
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), vam_date_short($account['customers_dob']), 'id="dob"'));
-   $vamTemplate->assign('ENTRY_DATE_OF_BIRTH_ERROR', ENTRY_DATE_OF_BIRTH_ERROR);
 }
 
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $account['customers_email_address'], 'id="email_address"'));
-$vamTemplate->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
 
 if (ACCOUNT_TELE == 'true') {
 	$vamTemplate->assign('telephone', '1');
    $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $account['customers_telephone'], 'id="telephone"'));
-   $vamTemplate->assign('ENTRY_TELEPHONE_NUMBER_ERROR', ENTRY_TELEPHONE_NUMBER_ERROR);
-}
+   $
 
 if (ACCOUNT_FAX == 'true') {
 	$vamTemplate->assign('fax', '1');

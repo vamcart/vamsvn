@@ -67,7 +67,7 @@ $order = new order();
 
 $breadcrumb->add(TEXT_CHECKOUT_ALTERNATIVE);
 
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_alternative', vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_alternative', vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'), 'post').vam_draw_hidden_field('action', 'process'));
 $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'));
 //$vamTemplate->assign('BUTTON_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
@@ -522,33 +522,28 @@ if (ACCOUNT_GENDER == 'true') {
 
 	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
 	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
-   $vamTemplate->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 
 } else {
 	$vamTemplate->assign('gender', '0');
 }
 
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), '', 'id="firstname"'));
-$vamTemplate->assign('ENTRY_FIRST_NAME_ERROR', ENTRY_FIRST_NAME_ERROR);
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname"'));
 }
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'id="lastname"'));
-$vamTemplate->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 
 	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), '', 'id="dob"'));
-   $vamTemplate->assign('ENTRY_DATE_OF_BIRTH_ERROR', ENTRY_DATE_OF_BIRTH_ERROR);
 
 } else {
 	$vamTemplate->assign('birthdate', '0');
 }
 
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email_address"'));
-$vamTemplate->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company', '1');
@@ -567,7 +562,6 @@ if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 if (ACCOUNT_STREET_ADDRESS == 'true') {
    $vamTemplate->assign('street_address', '1');
    $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="street_address"'));
-   $vamTemplate->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
 } else {
 	$vamTemplate->assign('street_address', '0');
 }
@@ -582,7 +576,6 @@ if (ACCOUNT_SUBURB == 'true') {
 if (ACCOUNT_POSTCODE == 'true') {
    $vamTemplate->assign('postcode', '1');
    $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), '', 'id="postcode"'));
-   $vamTemplate->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
 } else {
 	$vamTemplate->assign('postcode', '0');
 }
@@ -590,7 +583,6 @@ if (ACCOUNT_POSTCODE == 'true') {
 if (ACCOUNT_CITY == 'true') {
    $vamTemplate->assign('city', '1');
    $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), '', 'id="city"'));
-   $vamTemplate->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
 } else {
 	$vamTemplate->assign('city', '0');
 }
@@ -634,7 +626,6 @@ if (ACCOUNT_STATE == 'true') {
       }
 
 	$vamTemplate->assign('INPUT_STATE', $state_input);
-   $vamTemplate->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
 } else {
 	$vamTemplate->assign('state', '0');
 }
@@ -650,8 +641,6 @@ if (ACCOUNT_COUNTRY == 'true') {
 
    $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected, 'id="country" onchange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"'));
 
-
-   $vamTemplate->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
 } else {
 	$vamTemplate->assign('country', '0');
 }
@@ -659,7 +648,6 @@ if (ACCOUNT_COUNTRY == 'true') {
 if (ACCOUNT_TELE == 'true') {
    $vamTemplate->assign('telephone', '1');
    $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), '', 'id="telephone"'));
-   $vamTemplate->assign('ENTRY_TELEPHONE_NUMBER_ERROR', ENTRY_TELEPHONE_NUMBER_ERROR);
 } else {
 	$vamTemplate->assign('telephone', '0');
 }
@@ -675,9 +663,7 @@ if (ACCOUNT_FAX == 'true') {
    $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
    
 	$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
-	$vamTemplate->assign('ENTRY_PASSWORD_ERROR', ENTRY_PASSWORD_ERROR);
 	$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
-	$vamTemplate->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
    
  /*  */
 /* SHIPPING_BLOCK */
