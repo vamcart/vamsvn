@@ -59,7 +59,7 @@ $module->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 's
 
   if (ACCOUNT_STREET_ADDRESS == 'true') {
   $module->assign('street_address','1');
-  $module->assign('INPUT_STREET',vam_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address'], 'id="address"'));
+  $module->assign('INPUT_STREET',vam_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address'], 'id="street_address"'));
   $module->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
   }
 

@@ -422,7 +422,7 @@ if ($messageStack->size('create_account') > 0) {
 	$vamTemplate->assign('error', $messageStack->output('create_account'));
 
 }
-$vamTemplate->assign('FORM_ACTION', vam_draw_form('create_account', vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return checkform(this);"').vam_draw_hidden_field('action', 'process') . vam_draw_hidden_field('required', 'gender,firstname,lastname,dob,email,address,postcode,city,state,country,telephone,pass,confirmation', 'id="required"'));
+$vamTemplate->assign('FORM_ACTION', vam_draw_form('create_account', vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post').vam_draw_hidden_field('action', 'process'));
 
 if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '1');
@@ -454,7 +454,7 @@ if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '0');
 }
 
-$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email"'));
+$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email_address"'));
 $vamTemplate->assign('ENTRY_EMAIL_ADDRESS_ERROR', ENTRY_EMAIL_ADDRESS_ERROR);
 
 $vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true));
@@ -475,7 +475,7 @@ if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
 
 if (ACCOUNT_STREET_ADDRESS == 'true') {
    $vamTemplate->assign('street_address', '1');
-   $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="address"'));
+   $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="street_address"'));
    $vamTemplate->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
 } else {
 	$vamTemplate->assign('street_address', '0');
