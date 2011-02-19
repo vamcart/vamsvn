@@ -1,32 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="address_book_process"}
-<script type="text/javascript" src="jscript/modified.js"></script>
-<script type="text/javascript">
-{literal}
-jQuery.noConflict();
-jQuery(document).ready(function(){
-
-jQuery(function () {
-    jQuery('#addressbook :input:text:visible:enabled:first').focus();
-})
-
-  jQuery("#country").change(function(){
-      var searchString = jQuery(this).val();
-      jQuery.ajax({
-                     url: "index_ajax1.php",             
-                     dataType : "html",                       
-                     data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
-                     type: "POST",   
-                     success: function(msg){jQuery("#stateXML").html(msg);}            
-                   });                     
-                           
-                           
-   });
-
-
-})
-
-{/literal}
-</script>
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
