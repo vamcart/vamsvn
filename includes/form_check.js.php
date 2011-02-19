@@ -92,10 +92,7 @@ jQuery(document).ready(function() {
 				required: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>",
 				minlength: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>"
 			},
-			email_address: {
-				required: "<?php echo ENTRY_EMAIL_ADDRESS_ERROR; ?>",
-				minlength: "<?php echo ENTRY_EMAIL_ADDRESS_ERROR; ?>"
-			},
+			email_address: "<?php echo ENTRY_EMAIL_ADDRESS_ERROR; ?>",
 			street_address: {
 				required: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>",
 				minlength: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>"
