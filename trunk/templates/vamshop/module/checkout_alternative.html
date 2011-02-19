@@ -103,16 +103,16 @@ jQuery(function () {
 <fieldset class="form">
 <legend>{#title_personal#}</legend>
 {if $gender=='1'} 
-<p><label for="gender" title="{$ENTRY_GENDER_ERROR}">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
-<p><label for="firstname" title="{$ENTRY_FIRST_NAME_ERROR}">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
 {if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
 {/if}
-<p><label for="lastname" title="{$ENTRY_LAST_NAME_ERROR}">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
 {if $birthdate=='1'} 
-<p><label for="dob" title="{$ENTRY_DATE_OF_BIRTH_ERROR}">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
 {/if}
-<p><label for="email" title="{$ENTRY_EMAIL_ADDRESS_ERROR}">{#text_email#}</label> {$INPUT_EMAIL}</p>
+<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
 </fieldset>
 {if $company=='1'}<fieldset class="form">
 <legend>{#title_company#}</legend>
@@ -123,23 +123,23 @@ jQuery(function () {
 {/if}<fieldset class="form">
 {if $street_address=='1'}<legend>{#title_address#}</legend>
 {/if}
-{if $street_address=='1'}<p><label for="address" title="{$ENTRY_STREET_ADDRESS_ERROR}">{#text_street#}</label> {$INPUT_STREET}</p>
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
 {/if}
 {if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
 {/if}
-{if $postcode=='1'}<p><label for="postcode" title="{$ENTRY_POST_CODE_ERROR}">{#text_code#}</label> {$INPUT_CODE}</p>
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
 {/if}
-{if $city=='1'}<p><label for="city" title="{$ENTRY_CITY_ERROR}">{#text_city#}</label> {$INPUT_CITY}</p>
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
 {/if}
-{if $state=='1'}<p><label for="state" title="{$ENTRY_STATE_ERROR_SELECT}">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
 {/if}
-{if $country=='1'}<p><label for="country" title="{$ENTRY_COUNTRY_ERROR}">{#text_country#}</label> {$SELECT_COUNTRY}</p>
+{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
 {/if}
 </fieldset>
 <fieldset class="form">
 {if $telephone=='1'}<legend>{#title_contact#}</legend>
 {/if}
-{if $telephone=='1'}<p><label for="telephone" title="{$ENTRY_TELEPHONE_NUMBER_ERROR}">{#text_tel#}</label> {$INPUT_TEL}</p>
+{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
 {if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
 {/if}
@@ -153,8 +153,8 @@ jQuery(function () {
 {/if}
 <fieldset class="form">
 <legend>{#title_password#}</legend>
-<p><label for="pass" title="{$ENTRY_PASSWORD_ERROR}">{#text_password#}</label> {$INPUT_PASSWORD}</p>
-<p><label for="confirmation" title="{$ENTRY_PASSWORD_ERROR_NOT_MATCHING}">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
+<p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
+<p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
 </fieldset>
 <!-- /форма -->
 </div>
