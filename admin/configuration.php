@@ -45,6 +45,7 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
+<script type="text/javascript" src="includes/javascript/modified.js"></script>
 		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
 		<script type="text/javascript" src="../jscript/jquery/plugins/tooltip/jquery.tooltip.pack.js"></script>
 		<script type="text/javascript">
@@ -85,7 +86,7 @@
           <tr>
             <td valign="top" align="right">
             
-<?php echo vam_draw_form('configuration', FILENAME_CONFIGURATION, 'gID=' . (int)$_GET['gID'] . '&action=save'); ?>
+<?php echo vam_draw_form('configuration', FILENAME_CONFIGURATION, 'gID=' . (int)$_GET['gID'] . '&action=save', 'post', 'enctype="multipart/form-data" cf="true"'); ?>
             <table width="100%"  border="0" cellspacing="0" cellpadding="4">
 <?php
   $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = '" . (int)$_GET['gID'] . "' order by sort_order");
