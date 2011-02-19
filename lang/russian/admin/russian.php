@@ -503,7 +503,7 @@ define('MANUAL_LINK_EDIT_CATEGORY','http://vamshop.ru/manual/ch05.html#edit-cate
 define('MANUAL_LINK_NEW_CATEGORY','http://vamshop.ru/manual/ch05.html#new-category');
 define('MANUAL_LINK_PRODUCTS','http://vamshop.ru/manual/ch05s03.html');
 define('MANUAL_LINK_MANUFACTURERS','http://vamshop.ru/manual/ch05s02.html');
-define('MANUAL_LINK_EASYPOPULATE','http://vamshop.ru/manual/ch05s04.html');
+define('MANUAL_LINK_EASYPOPULATE','http://vamshop.ru/manual/catalog.html#easypopulate');
 define('MANUAL_LINK_ATTRIBUTE','http://vamshop.ru/manual/ch05s05.html');
 define('MANUAL_LINK_TAX','http://vamshop.ru/manual/ch05s06.html');
 define('MANUAL_LINK_FILTERS','http://vamshop.ru/manual/ch05s07.html');
