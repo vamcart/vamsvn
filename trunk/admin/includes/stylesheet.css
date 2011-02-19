@@ -159,7 +159,7 @@ table.pageHead
 }
 
 .dataTableRowSelected {
- background: #f7f7f7;
+ background: #ffc;
  font-weight: bold;
 
  }
@@ -182,7 +182,7 @@ table.pageHead
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
- background: transparent;
+ background: #fff;
  }
 
 .dataTableContent-even {
