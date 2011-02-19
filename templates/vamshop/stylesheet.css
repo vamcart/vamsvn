@@ -2852,6 +2852,14 @@ input[type=text]
      width: 96%;
    }    
 
+label.error 
+	{
+		margin-left: 10px;
+		width: auto;
+		display: inline;
+		background: transparent;
+}
+
 .error
    {
 	  background: #fcc;
