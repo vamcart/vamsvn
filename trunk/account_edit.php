@@ -230,6 +230,7 @@ $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'e
 if (ACCOUNT_TELE == 'true') {
 	$vamTemplate->assign('telephone', '1');
    $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $account['customers_telephone'], 'id="telephone"'));
+}
 
 if (ACCOUNT_FAX == 'true') {
 	$vamTemplate->assign('fax', '1');
