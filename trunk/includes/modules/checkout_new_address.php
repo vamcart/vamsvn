@@ -33,7 +33,6 @@ if (ACCOUNT_GENDER == 'true') {
 	$module->assign('gender', '1');
 	$module->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
 	$module->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
-   $module->assign('ENTRY_GENDER_ERROR', ENTRY_GENDER_ERROR);
 
 }
 $module->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), '', 'id="firstname"'));
@@ -43,7 +42,6 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 $module->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname"'));
 }
 $module->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'id="lastname"'));
-$module->assign('ENTRY_LAST_NAME_ERROR', ENTRY_LAST_NAME_ERROR);
 
 if (ACCOUNT_COMPANY == 'true') {
 	$module->assign('company', '1');
@@ -56,7 +54,6 @@ if (ACCOUNT_COMPANY == 'true') {
 if (ACCOUNT_STREET_ADDRESS == 'true') {
 $module->assign('street_address', '1');
 $module->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), '', 'id="street_address"'));
-$module->assign('ENTRY_STREET_ADDRESS_ERROR', ENTRY_STREET_ADDRESS_ERROR);
 } else {
 $module->assign('street_address', '0');
 }
@@ -71,7 +68,6 @@ if (ACCOUNT_SUBURB == 'true') {
 if (ACCOUNT_POSTCODE == 'true') {
 $module->assign('postcode', '1');
 $module->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), '', 'id="postcode"'));
-$module->assign('ENTRY_POST_CODE_ERROR', ENTRY_POST_CODE_ERROR);
 } else {
 $module->assign('postcode', '0');
 }
@@ -79,7 +75,6 @@ $module->assign('postcode', '0');
 if (ACCOUNT_CITY == 'true') {
 $module->assign('city', '1');
 $module->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">'.ENTRY_CITY_TEXT.'</span>' : '')), '', 'id="city"'));
-$module->assign('ENTRY_CITY_ERROR', ENTRY_CITY_ERROR);
 } else {
 $module->assign('city', '0');
 }
@@ -131,7 +126,6 @@ if (!isset($entry['entry_zone_id'])) $entry['entry_zone_id']  = STORE_ZONE;
       }
 		
 	$module->assign('INPUT_STATE', $state_input);
-   $module->assign('ENTRY_STATE_ERROR_SELECT', ENTRY_STATE_ERROR_SELECT);
 } else {
 	$module->assign('state', '0');
 }
@@ -146,8 +140,6 @@ if (ACCOUNT_COUNTRY == 'true') {
    $module->assign('SELECT_COUNTRY', vam_get_country_list('country', $entry['entry_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="alert">' . ENTRY_COUNTRY_TEXT . '</span>': ''));
 
    $module->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
-
-   $module->assign('ENTRY_COUNTRY_ERROR', ENTRY_COUNTRY_ERROR);
 
 } else {
 	$vamTemplate->assign('country', '0');
