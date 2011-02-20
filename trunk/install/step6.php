@@ -361,14 +361,14 @@ if ($messageStack->size('step6') > 0) {
 
 <fieldset class="form">
 <legend><?php echo TITLE_ADMIN_CONFIG; ?></legend>
-<p><strong><?php echo TEXT_FIRSTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('FIRST_NAME'); ?></p>
-<p><strong><?php echo TEXT_LASTNAME; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('LAST_NAME'); ?></p>
-<p><strong><?php echo TEXT_EMAIL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS'); ?></p>
-<p><strong><?php echo TEXT_STREET; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?>&nbsp;<?php echo ENTRY_STREET_ADDRESS_TEXT; ?></p>
-<p><strong><?php echo TEXT_POSTCODE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('POST_CODE'); ?></p>
-<p><strong><?php echo TEXT_CITY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('CITY'); ?></p>
-<p><strong><?php echo TEXT_COUNTRY; ?></strong>&nbsp;<?php echo vam_get_country_list('country',STORE_COUNTRY, 'onChange="changeselect();"') . '&nbsp;'; ?></p>
-<p><strong><?php echo TEXT_STATE; ?></strong>&nbsp;
+<p><?php echo TEXT_FIRSTNAME; ?>&nbsp;<?php echo vam_draw_input_field_installer('FIRST_NAME'); ?></p>
+<p><?php echo TEXT_LASTNAME; ?>&nbsp;<?php echo vam_draw_input_field_installer('LAST_NAME'); ?></p>
+<p><?php echo TEXT_EMAIL; ?>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS'); ?></p>
+<p><?php echo TEXT_STREET; ?>&nbsp;<?php echo vam_draw_input_field_installer('STREET_ADRESS'); ?>&nbsp;<?php echo ENTRY_STREET_ADDRESS_TEXT; ?></p>
+<p><?php echo TEXT_POSTCODE; ?>&nbsp;<?php echo vam_draw_input_field_installer('POST_CODE'); ?></p>
+<p><?php echo TEXT_CITY; ?>&nbsp;<?php echo vam_draw_input_field_installer('CITY'); ?></p>
+<p><?php echo TEXT_COUNTRY; ?>&nbsp;<?php echo vam_get_country_list('country',STORE_COUNTRY, 'onChange="changeselect();"') . '&nbsp;'; ?></p>
+<p><?php echo TEXT_STATE; ?>&nbsp;
 <script language="javascript">
 <!--
 function changeselect(reg) {
@@ -402,16 +402,16 @@ changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
 -->
 </script>
 </p>
-<p><strong><?php echo TEXT_TEL; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('TELEPHONE'); ?></p>
-<p><strong><?php echo TEXT_PASSWORD; ?></strong>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD'); ?></p>
-<p><strong><?php echo TEXT_PASSWORD_CONF; ?></strong>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD_CONFIRMATION'); ?></p>
+<p><?php echo TEXT_TEL; ?>&nbsp;<?php echo vam_draw_input_field_installer('TELEPHONE'); ?></p>
+<p><?php echo TEXT_PASSWORD; ?>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD'); ?></p>
+<p><?php echo TEXT_PASSWORD_CONF; ?>&nbsp;<?php echo vam_draw_password_field_installer('PASSWORD_CONFIRMATION'); ?></p>
 </fieldset>
 
 <fieldset class="form">
 <legend><?php echo TITLE_SHOP_CONFIG; ?></legend>
-<p><strong><?php echo TEXT_STORE; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('STORE_NAME'); ?></p>
-<p><strong><?php echo TEXT_COMPANY; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('COMPANY'); ?></p>
-<p><strong><?php echo TEXT_EMAIL_FROM; ?></strong>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?></p>
+<p><?php echo TEXT_STORE; ?>&nbsp;<?php echo vam_draw_input_field_installer('STORE_NAME'); ?></p>
+<p><?php echo TEXT_COMPANY; ?>&nbsp;<?php echo vam_draw_input_field_installer('COMPANY'); ?></p>
+<p><?php echo TEXT_EMAIL_FROM; ?>&nbsp;<?php echo vam_draw_input_field_installer('EMAIL_ADRESS_FROM'); ?></p>
 </fieldset>
 
 <p>

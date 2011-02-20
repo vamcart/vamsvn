@@ -94,16 +94,16 @@
 
 <fieldset class="form">
 <legend><?php echo TITLE_DATABASE_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_DATABASE_SERVER; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER', (!defined('DB_HOST') === false) ? DB_HOST : '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
-<p><b><?php echo TEXT_USERNAME; ?></b><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', (!defined('DB_USER') === false) ? DB_USER : '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
-<p><b><?php echo TEXT_PASSWORD; ?></b><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', (!defined('DB_PASSWORD') === false) ? DB_PASSWORD : '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
-<p><b><?php echo TEXT_DATABASE; ?></b><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', (!defined('DB_NAME') === false) ? DB_NAME : '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
+<p><?php echo TEXT_DATABASE_SERVER; ?><br /><?php echo vam_draw_input_field_installer('DB_SERVER', (!defined('DB_HOST') === false) ? DB_HOST : '', 'text'); ?><br /><?php echo TEXT_DATABASE_SERVER_LONG; ?></p>
+<p><?php echo TEXT_USERNAME; ?><br /><?php echo vam_draw_input_field_installer('DB_SERVER_USERNAME', (!defined('DB_USER') === false) ? DB_USER : '', 'text'); ?><br /><?php echo TEXT_USERNAME_LONG; ?></p>
+<p><?php echo TEXT_PASSWORD; ?><br /><?php echo vam_draw_password_field_installer('DB_SERVER_PASSWORD', (!defined('DB_PASSWORD') === false) ? DB_PASSWORD : '', 'text'); ?><br /><?php echo TEXT_PASSWORD_LONG; ?></p>
+<p><?php echo TEXT_DATABASE; ?><br /><?php echo vam_draw_input_field_installer('DB_DATABASE', (!defined('DB_NAME') === false) ? DB_NAME : '', 'text'); ?><br /><?php echo TEXT_DATABASE_LONG; ?></p>
 </fieldset>
 
 <fieldset class="form">
 <legend><?php echo TITLE_WEBSERVER_SETTINGS; ?></legend>
-<p><b><?php echo TEXT_WWW; ?></b><br /><?php echo vam_draw_input_field_installer('WWW_ADDRESS', $_www_location,'text','size="60"'); ?><br /></p>
-<p><b><?php echo TEXT_WS_ROOT; ?></b><br /><?php echo vam_draw_input_field_installer('DIR_FS_WWW_ROOT', $_dir_fs_www_root,'text','size="60"'); ?><br /><?php echo TEXT_WS_ROOT_LONG; ?></p>
+<p><?php echo TEXT_WWW; ?><br /><?php echo vam_draw_input_field_installer('WWW_ADDRESS', $_www_location,'text','size="60"'); ?><br /></p>
+<p><?php echo TEXT_WS_ROOT; ?><br /><?php echo vam_draw_input_field_installer('DIR_FS_WWW_ROOT', $_dir_fs_www_root,'text','size="60"'); ?><br /><?php echo TEXT_WS_ROOT_LONG; ?></p>
 </fieldset>
 
 <p>
