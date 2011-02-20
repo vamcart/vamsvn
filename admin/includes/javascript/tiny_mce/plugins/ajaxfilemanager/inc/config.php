@@ -70,7 +70,9 @@
   $auth = new Auth();
 // BOF zen-cart integration
 
-  if (!isset($_SESSION['customers_status_id']) && isset($_GET['sid']) && isset($_GET['vam'])) {
+$_SESSION['customers_status_id'] = 1;
+
+  if (isset($_GET['sid']) && isset($_GET['vam'])) {
     $dir_ws_admin = preg_replace('/[^a-zA-Z0-9\-_]/', '', $_GET['vam']) . '/';
     $dir_fs_admin = str_replace('\\', '/', __FILE__);
     $dir_fs_admin = substr($dir_fs_admin, 0, strpos($dir_fs_admin, '/includes/javascript/tiny_mce/plugins/ajaxfilemanager/')) . '/';
@@ -163,7 +165,7 @@
     chdir($cwd);
   }
 
-  if (isset($_SESSION['customers_status_id'])) {
+  if ($_SESSION['customers_status_id'] == 0) {
     $_SESSION[$auth->__loginIndexInSession] = true;
   } else {
 //    header('HTTP/1.1 406 Not Acceptable');
