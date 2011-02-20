@@ -976,31 +976,43 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
           <table border="0">
 
       <tr>
-        <td class="main"><table border="1" cellspacing="0" cellpadding="5">
+        <td class="main"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
           <tr>
-            <td class="smallText" align="center"><b><?php echo TABLE_HEADING_DATE_ADDED; ?></b></td>
-            <td class="smallText" align="center"><b><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></b></td>
-            <td class="smallText" align="center"><b><?php echo TABLE_HEADING_STATUS; ?></b></td>
-            <td class="smallText" align="center"><b><?php echo TABLE_HEADING_COMMENTS; ?></b></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_DATE_ADDED; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_STATUS; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_COMMENTS; ?></td>
           </tr>
 <?php
 
 	$orders_history_query = vam_db_query("select orders_status_id, date_added, customer_notified, comments from ".TABLE_ORDERS_STATUS_HISTORY." where orders_id = '".vam_db_input($oID)."' order by date_added");
 	if (vam_db_num_rows($orders_history_query)) {
+
+	$rows = 0;
+			
 		while ($orders_history = vam_db_fetch_array($orders_history_query)) {
-			echo '          <tr>'."\n".'            <td class="smallText" align="center">'.vam_datetime_short($orders_history['date_added']).'</td>'."\n".'            <td class="smallText" align="center">';
+			
+	$rows++;
+
+        if (($rows/2) == floor($rows/2)) {
+          $class = "even";
+        } else {
+          $class = "odd";
+        }				
+			
+			echo '          <tr>'."\n".'            <td class="dataTableContent-'.$class.'" align="center">'.vam_datetime_short($orders_history['date_added']).'</td>'."\n".'            <td class="dataTableContent-'.$class.'" align="center">';
 			if ($orders_history['customer_notified'] == '1') {
 				echo vam_image(DIR_WS_ICONS.'tick.gif', ICON_TICK)."</td>\n";
 			} else {
 				echo vam_image(DIR_WS_ICONS.'cross.gif', ICON_CROSS)."</td>\n";
 			}
-			echo '            <td class="smallText">';
+			echo '            <td class="dataTableContent-'.$class.'">';
 			if($orders_history['orders_status_id']!='0') {
 				echo $orders_status_array[$orders_history['orders_status_id']];
 			}else{
 				echo '<font color="#FF0000">'.TEXT_VALIDATING.'</font>';
 			}
-			echo '</td>'."\n".'            <td class="smallText">'.nl2br(vam_db_output($orders_history['comments'])).'&nbsp;</td>'."\n".'          </tr>'."\n";
+			echo '</td>'."\n".'            <td class="dataTableContent-'.$class.'">'.nl2br(vam_db_output($orders_history['comments'])).'&nbsp;</td>'."\n".'          </tr>'."\n";
 		}
 	} else {
 		echo '          <tr>'."\n".'            <td class="smallText" colspan="5">'.TEXT_NO_ORDER_HISTORY.'</td>'."\n".'          </tr>'."\n";
