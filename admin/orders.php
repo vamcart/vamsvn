@@ -973,7 +973,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
         <div id="status">
       
-          <table border="0">
+          <table border="0" width="100%">
 
       <tr>
         <td class="main"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
