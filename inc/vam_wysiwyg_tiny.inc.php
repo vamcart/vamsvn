@@ -19,6 +19,7 @@ function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
 $js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce.js';
 $js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php';
+$tiny_mce_file_browser_callback = 'ajaxfilemanager';
 
 	switch($type) {
                 // WYSIWYG editor latest news textarea named latest_news
@@ -37,7 +38,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -54,6 +56,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -81,7 +109,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -98,6 +127,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -125,7 +180,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -142,6 +198,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -169,7 +251,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -186,6 +269,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -213,7 +322,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -230,6 +340,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -257,7 +393,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -274,6 +411,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -301,7 +464,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -318,6 +482,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -344,7 +534,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -361,6 +552,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -388,7 +605,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -405,6 +623,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -432,7 +676,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -449,6 +694,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
@@ -476,7 +747,8 @@ tinyMCE.init({
 
 	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
 
-	file_browser_callback : "tinyBrowser",
+	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
+	elements : "'.$tiny_mce_file_browser_callback.'",
 
 	spellchecker_languages : "+Russian=ru,English=en",
 	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
@@ -493,6 +765,32 @@ tinyMCE.init({
 
 });
 
+  function ajaxfilemanager(field_name, url, type, win) {
+    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
+    switch (type) {
+      case "image":
+        break;
+      case "media":
+        break;
+      case "flash":
+        break;
+      case "file":
+        break;
+      default:
+        return false;
+    }
+    tinyMCE.activeEditor.windowManager.open({
+      url: ajaxfilemanagerurl,
+      width: 782,
+      height: 440,
+      inline : "yes",
+      close_previous : "no"
+    },{
+      window : win,
+      input : field_name
+    });
+  }
+  
 function toggleHTMLEditor(id) {
 	if (!tinyMCE.get(id))
 		tinyMCE.execCommand("mceAddControl", false, id);
