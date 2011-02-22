@@ -51,6 +51,9 @@
   function vam_validate_email($email) {
     $valid_address = true;
 
+   // sql injection fix 16.02.2011
+   if (strpos($email,"\0")!==false) {return false;}
+   
     $mail_pat = '/^(.+)@(.+)$/i';
     $valid_chars = "[^] \(\)<>@,;:\.\\\"\[]";
     $atom = "$valid_chars+";
