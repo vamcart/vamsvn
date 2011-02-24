@@ -84,7 +84,7 @@ $_SESSION['customers_status_id'] = 1;
     if (file_exists('includes/configure.php')) {
       include('includes/configure.php');
     }
-    define('SESSION_WRITE_DIRECTORY', DIR_FS_CATALOG . 'tmp');
+    define('SESSION_WRITE_DIRECTORY', session_save_path());
     if (defined('DB_DATABASE')) {
       if (($zen_mysql_link = @mysql_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD)) && (@mysql_select_db(DB_DATABASE, $zen_mysql_link))) {
         if (!defined('DB_PREFIX')) define('DB_PREFIX', '');
