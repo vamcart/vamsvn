@@ -121,10 +121,10 @@ $_SESSION['customers_status_id'] = 1;
         $suhosinExtension = extension_loaded('suhosin');
         $suhosinSetting = strtoupper(@ini_get('suhosin.session.encrypt'));
 
-        if (!$suhosinExtension) {
+        //if (!$suhosinExtension) {
           if (strpos($session_data, 'customers_status_id') == 0) $session_data = base64_decode($session_data);
           if (strpos($session_data, 'customers_status_id') == 0) $session_data = '';
-        }
+        //}
         // uncomment the following line if you have suhosin enabled and see errors on the cart-contents sidebar
         //$hardenedStatus = ($suhosinExtension == TRUE || $suhosinSetting == 'On' || $suhosinSetting == 1) ? TRUE : FALSE;
         if ($session_data != '' && $hardenedStatus == TRUE) $session_data = '';
