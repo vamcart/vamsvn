@@ -306,7 +306,7 @@ if (SESSION_FORCE_COOKIE_USE == 'True') {
 
 // check the Agent
 $truncate_session_id = false;
-if (CHECK_CLIENT_AGENT) {
+if (CHECK_CLIENT_AGENT=='true') {
 	if (vam_check_agent() == 1) {
 		$truncate_session_id = true;
 	}
