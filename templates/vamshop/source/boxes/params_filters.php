@@ -47,7 +47,8 @@ if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
 
 $selectedParamsFilters = array();
 $j = 0;
-$title_line = "";  
+$title_line = ""; 
+if( (count($blocks) > 0) and ((count($blocks1) > 0)) ){ 
 foreach($selected as $block => $blockItems)
 {
     $title_block = array();
@@ -78,10 +79,10 @@ foreach($selected as $block => $blockItems)
     $title_line = $parametersNames[$block] . " " . join(', ', $title_block);
     $j++;
 }
-
+}
 //var_dump($filterParams);
 
-$mainParamsFilters = array();
+$mainParamsFilters = array(); 
 foreach ($filterParams as $key => $value) {
 
 for($i = 0; $i < count($filterParams[$key]); $i++) 
@@ -150,6 +151,7 @@ $box->assign('is_params_selected', $is_params_selected);
 $box->assign('filterParams', $mainParamsFilters);
 $box->assign('selectedParamsFilters', $selectedParamsFilters);
 $box->assign('priceForm', vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name) .'&q='.$query. '&p='.$query1));
+$box->assign('cansel_sel', vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_id, $categories_name)));
 $box->assign('BUTTON_FILTER', vam_image_submit('button_filter.gif', TEXT_PRODUCT_FILTER));
 $box->caching = 0;
 $box->assign('language', $_SESSION['language']);

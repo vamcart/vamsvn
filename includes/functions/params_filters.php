@@ -46,7 +46,8 @@
 		return $data;
 	}
 	function get_params_listing_sql($listing_sql, $categories_id,  $selected_blocks)
-	{   
+	{ 
+     global $vamPrice;
 		if ((count($selected_blocks) == 0) and !isset($_GET['price_max']) and !isset($_GET['price_min'])) { 
             return $listing_sql; 
          }
@@ -75,19 +76,19 @@
 				from products_parameters_values pcc, products p 
 				left join products_description pd on pd.products_id = p.products_id
 				left join products_to_categories p2c on p2c.products_id = p.products_id
-				left join manufacturers m on p.manufacturers_id = m.manufacturers_id ";
+				left join manufacturers m on m.manufacturers_id = p.manufacturers_id ";
 		$tables = 0;
 		$wheres = array();
 		
 		$price_min = -1;
 		if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
 		{
-			$wheres[] = " p.products_price >= '".intval($_GET['price_min'])."' ";;
+			$wheres[] = " p.products_price >= '".$vamPrice->RemoveCurr(intval($_GET['price_min']))."' ";;
 		}
 		$price_max = -1;
 		if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
 		{
-			$wheres[] = " p.products_price <= '".intval($_GET['price_max'])."' ";
+			$wheres[] = " p.products_price <= '".$vamPrice->RemoveCurr(intval($_GET['price_max']))."' ";
 		}
 		
 		$wheres[] = "  p.products_status = '1' and p2c.categories_id = '".(int) $_GET['cat']."' ";
@@ -126,10 +127,10 @@
 
         //print $sql1."<hr />";
         //return array();
-        $rs1 = mysql_query($sql1);
+        $rs1 = vamDBquery($sql1,true);
         print mysql_error();
         $data = array();
-        while($r1 = mysql_fetch_array($rs1))
+        while($r1 = vam_db_fetch_array($rs1,true))
         {
          $r1val = $r1["products_parameters_title"];
          $r1id =  $r1["products_parameters_id"];
@@ -141,7 +142,7 @@
 
 //		print $sql."<hr />";
 		//return array();
-		$rs = vamDBquery($sql);
+		$rs = vamDBquery($sql,true);
 		print mysql_error();
 		while($r = vam_db_fetch_array($rs,true))
 		{
@@ -154,8 +155,12 @@
 	
 	function get_parameters_block( $products_parameters_id , $selected_blocks)
 	{
+        global $vamPrice;
         $query = $_GET['q'];
 		$query1 = $_GET['p'];
+       
+       if (!isset($_GET['p'])) unset($_GET['q']);
+       
 		if(!empty($query)){
 			$blocks = preg_split("/-/", $_GET['q']);
 		}else{ $blocks = array(); }
@@ -172,22 +177,25 @@
 		}else{
 			$group_blocks = $blocks;
 		}
+         
+        
+        
         $price_min = -1;
 		if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
 		{
-			$price_min = intval($_GET['price_min']);
+			$price_min = $vamPrice->RemoveCurr(intval($_GET['price_min']));
 		}
 		$price_max = -1;
 		if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
 		{
-			$price_max = intval($_GET['price_max']);
+			$price_max = $vamPrice->RemoveCurr(intval($_GET['price_max']));
 		}
 
 //		print_r($blocks); 
 //	print_r($group_block); 
 		//print count($blocks);
 
-		if(count($blocks) > 0){
+		if( (count($blocks) > 0) and ((count($blocks1) > 0)) ){
 			$sql = "SELECT DISTINCT p.*, p.products_parameters2products_value as parameters_value , count( p.products_id ) count";
 			$sql .= " FROM products_parameters2products p";
 			$tables = 0;
@@ -279,8 +287,10 @@
 
 	function get_selected()
 	{
+        global $vamPrice;
         $query = $_GET['q'];
 		$query1 = $_GET['p'];
+               if (!isset($_GET['p'])) unset($_GET['q']);   
 		if(!empty($query)){
 			$blocks = preg_split("/-/", $query);
 		}else{ $blocks = array(); }
@@ -292,16 +302,16 @@
         $price_min = -1;
 		if(isset($_GET['price_min']) && intval($_GET['price_min']) != 0 )
 		{
-			$price_min = intval($_GET['price_min']);
+			$price_min = $vamPrice->RemoveCurr(intval($_GET['price_min']));
 		}
 		$price_max = -1;
 		if(isset($_GET['price_max']) && intval($_GET['price_max']) != 0 )
 		{
-			$price_max = intval($_GET['price_max']);
+			$price_max = $vamPrice->RemoveCurr(intval($_GET['price_max']));
 		}
 
 		$paramNames = array();
-		if( count($blocks) > 0){
+		if( (count($blocks) > 0) and (count($blocks1) > 0)){
 			
 		/*	$sql = "select ppv.* from products_parameters_values ppv";
 			if($price_max != -1 || $price_min != -1){
