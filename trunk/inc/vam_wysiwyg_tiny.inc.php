@@ -18,7 +18,6 @@
 function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
 $js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce.js';
-$js_browser_src = DIR_WS_INCLUDES .'javascript/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php';
 $tiny_mce_file_browser_callback = 'ajaxfilemanager';
 
 	switch($type) {
@@ -89,7 +88,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -160,7 +158,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -231,7 +228,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -302,7 +298,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -373,7 +368,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -444,7 +438,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -515,7 +508,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -585,7 +577,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -656,7 +647,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -727,7 +717,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
@@ -798,7 +787,6 @@ function toggleHTMLEditor(id) {
 		tinyMCE.execCommand("mceRemoveControl", false, id);
 }
                         	   	</script>
-                        <script type="text/javascript" src="'.$js_browser_src.'"></script>
                         	   	';
                         break;
 
