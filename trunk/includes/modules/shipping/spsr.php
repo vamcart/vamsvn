@@ -99,7 +99,7 @@
 		$region_id = vam_get_spsr_zone_id($order->delivery['zone_id']);
 		
 		//вытаскиваем свой Region ID из базы
-		$own_cpcr_id = vam_get_spsr_zone_id($order->delivery['zone_id']);
+		$own_cpcr_id = vam_get_spsr_zone_id($own_zone_id);
 
 	//oscommerce дважды запрашивает цену доставки c cpcr.ru - до подтверждения цены доставки (для показа пользователю) и после подтверждения цены доставки (нажатие кнопки "Продолжить"). Х.з. почему, видимо так работает oscommerce. Чтобы не запрашивать дважды кешируем $cost в hidden поле cost.
 	if (!isset($_POST['cost'])) {		 		
@@ -219,6 +219,7 @@
 			(is_object($xmlstring)?"<textarea readonly=\"readonly\" rows=\"5\">".$xmlstring->asXML()."</textarea>":'');			
 			}
 			
+		if ($method != '') $title = strip_tags($title);	
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_SPSR_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
