@@ -68,6 +68,9 @@ class kvitancia {
 
 		if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);		
 		
+		//$person_query = vam_db_query("select * from ".TABLE_PERSONS." where customers_id = '" . (int)$order->customer['id'] . "'");
+		//$person_data = vam_db_fetch_array($payment_query);
+		
       $selection = array('id' => $this->code,
                          'module' => $this->title,
                          'icon' => $icon,
@@ -119,7 +122,7 @@ class kvitancia {
 	function after_process() {
 
       global $insert_id, $name, $address, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, name, address) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_SESSION['kvit_name']) . "', '" . vam_db_prepare_input($_SESSION['kvit_address']) ."')");
+      vam_db_query("INSERT INTO ".TABLE_PERSONS." (orders_id, customers_id, name, address) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . (int)$_SESSION['customer_id'] . "', '" . vam_db_prepare_input($_SESSION['kvit_name']) . "', '" . vam_db_prepare_input($_SESSION['kvit_address']) ."')");
 
 		if ($this->order_status)
 			vam_db_query("UPDATE ".TABLE_ORDERS." SET orders_status='".$this->order_status."' WHERE orders_id='".$insert_id."'");

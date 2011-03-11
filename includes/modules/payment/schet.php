@@ -65,13 +65,16 @@ class schet {
 	function selection() {
       global $order;
 
+		$payment_query = vam_db_query("select * from ".TABLE_COMPANIES." where customers_id = '" . (int)$order->customer['id'] . "'");
+		$payment_data = vam_db_fetch_array($payment_query);
+
       $selection = array('id' => $this->code,
                          'module' => $this->title,
                          'description'=>$this->info,
       	                 'fields' => array(array('title' => MODULE_PAYMENT_SCHET_J_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_SCHET_J_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_NAME,
-      	                                         'field' => vam_draw_input_field('s_name') . MODULE_PAYMENT_SCHET_J_NAME_IP),
+      	                                         'field' => vam_draw_input_field('s_name', $payment_data['name']) . MODULE_PAYMENT_SCHET_J_NAME_IP),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_INN,
 //      	                                         'field' => vam_draw_input_field('s_inn')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_KPP,
@@ -176,7 +179,7 @@ class schet {
 	function after_process() {
 
       global $insert_id, $name, $inn, $kpp, $ogrn, $okpo, $rs, $bank_name, $bik, $ks, $address, $yur_address, $fakt_address, $telephone, $fax, $email, $director, $accountant, $checkout_form_action, $checkout_form_submit;
-      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . vam_db_prepare_input($_SESSION['s_name']) . "', '" . vam_db_prepare_input($_SESSION['s_inn']) . "', '" . vam_db_prepare_input($_SESSION['s_kpp']) . "', '" . vam_db_prepare_input($_SESSION['s_ogrn']) ."', '" . vam_db_prepare_input($_SESSION['s_okpo']) ."', '" . vam_db_prepare_input($_SESSION['s_rs']) ."', '" . vam_db_prepare_input($_SESSION['s_bank_name']) ."', '" . vam_db_prepare_input($_SESSION['s_bik']) ."', '" . vam_db_prepare_input($_SESSION['s_ks']) ."', '" . vam_db_prepare_input($_SESSION['s_address']) ."', '" . vam_db_prepare_input($_SESSION['s_yur_address']) ."', '" . vam_db_prepare_input($_SESSION['s_fakt_address']) ."', '" . vam_db_prepare_input($_SESSION['s_telephone']) ."', '" . vam_db_prepare_input($_SESSION['s_fax']) ."', '" . vam_db_prepare_input($_SESSION['s_email']) ."', '" . vam_db_prepare_input($_SESSION['s_director']) ."', '" . vam_db_prepare_input($_SESSION['s_accountant']) ."')");
+      vam_db_query("INSERT INTO ".TABLE_COMPANIES." (orders_id, customers_id, name, inn, kpp, ogrn, okpo, rs, bank_name, bik, ks, address, yur_address, fakt_address, telephone, fax, email, director, accountant) VALUES ('" . vam_db_prepare_input($insert_id) . "', '" . (int)$_SESSION['customer_id'] . "', '" . vam_db_prepare_input($_SESSION['s_name']) . "', '" . vam_db_prepare_input($_SESSION['s_inn']) . "', '" . vam_db_prepare_input($_SESSION['s_kpp']) . "', '" . vam_db_prepare_input($_SESSION['s_ogrn']) ."', '" . vam_db_prepare_input($_SESSION['s_okpo']) ."', '" . vam_db_prepare_input($_SESSION['s_rs']) ."', '" . vam_db_prepare_input($_SESSION['s_bank_name']) ."', '" . vam_db_prepare_input($_SESSION['s_bik']) ."', '" . vam_db_prepare_input($_SESSION['s_ks']) ."', '" . vam_db_prepare_input($_SESSION['s_address']) ."', '" . vam_db_prepare_input($_SESSION['s_yur_address']) ."', '" . vam_db_prepare_input($_SESSION['s_fakt_address']) ."', '" . vam_db_prepare_input($_SESSION['s_telephone']) ."', '" . vam_db_prepare_input($_SESSION['s_fax']) ."', '" . vam_db_prepare_input($_SESSION['s_email']) ."', '" . vam_db_prepare_input($_SESSION['s_director']) ."', '" . vam_db_prepare_input($_SESSION['s_accountant']) ."')");
       
 
 		if ($this->order_status)
