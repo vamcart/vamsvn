@@ -53,9 +53,6 @@
     $manual_link = ($_GET['action']=='new_category') ? MANUAL_LINK_NEW_CATEGORY : MANUAL_LINK_EDIT_CATEGORY;
 ?>
 
-<link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
-
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
 		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
