@@ -34,9 +34,11 @@ require (DIR_WS_CLASSES.'order.php');
 
 // variables prepearing
 
-$xml_decoded=base64_decode($_POST['operation_xml']);
+$xml_decoded=base64_decode($_POST['xml']);
 
 $xml = simplexml_load_string($xml_decoded);
+
+$order = new order($xml->order_id);
  
 // checking and handling
 if ($xml->status == 'success') {
