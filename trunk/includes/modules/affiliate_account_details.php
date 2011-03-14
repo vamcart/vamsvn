@@ -370,7 +370,7 @@ else {
 if (!isset($affiliate['affiliate_country_id'])) $affiliate['affiliate_country_id']  = STORE_COUNTRY;
 if (!isset($affiliate['affiliate_zone_id'])) $affiliate['affiliate_zone_id']  = STORE_ZONE;
 
-	$country_id_content = vam_get_country_list('a_country', $affiliate['affiliate_country_id'], 'id="country", onChange="document.getElementById(\'stateXML\').innerHTML = \'' . ENTRY_STATEXML_LOADING . '\';loadXMLDoc(\'loadAffiliateStateXML\',{country_id: this.value});"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': '');
+	$country_id_content = vam_get_country_list('a_country', $affiliate['affiliate_country_id'], 'id="country"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': '');
 }
 $module->assign('country_id_content', $country_id_content);
 
