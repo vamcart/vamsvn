@@ -165,6 +165,8 @@
                      '  define(\'DIR_FS_SITE_ROOT\', \'\');' . "\n" .
                      '  define(\'VAM_COOKIE_NAME\', \'VAMCookie\');' . "\n" .
                      '' . "\n" .
+                     '  define(\'SESSION_WRITE_DIRECTORY\', DIR_FS_CATALOG . \'tmp/\');' . "\n" .
+                     '' . "\n" .
                      '// define our database connection' . "\n" .
                      '  define(\'DB_SERVER\', \'' . $_POST['DB_SERVER'] . '\'); // eg, localhost - should not be empty for productive servers' . "\n" .
                      '  define(\'DB_SERVER_USERNAME\', \'' . $_POST['DB_SERVER_USERNAME'] . '\');' . "\n" .
@@ -240,6 +242,8 @@
                      '  define(\'DIR_FS_FORUM_ROOT\', \'\');' . "\n" .
                      '  define(\'DIR_FS_SITE_ROOT\', \'\');' . "\n" .
                      '  define(\'VAM_COOKIE_NAME\', \'VAMCookie\');' . "\n" .
+                     '' . "\n" .
+                     '  define(\'SESSION_WRITE_DIRECTORY\', DIR_FS_CATALOG . \'tmp/\');' . "\n" .
                      '' . "\n" .
                      '// define our database connection' . "\n" .
                      '  define(\'DB_SERVER\', \'' . $_POST['DB_SERVER'] . '\'); // eg, localhost - should not be empty for productive servers' . "\n" .
