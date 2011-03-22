@@ -97,6 +97,8 @@ if ($_GET['action']) {
 			$check_status = vam_db_fetch_array($check_status_query);
 			if ($check_status['customers_status'] != $status) {
 				vam_db_query("update ".TABLE_CUSTOMERS." set customers_status = '".vam_db_input($_POST['status'])."' where customers_id = '".vam_db_input($_GET['cID'])."'");
+				
+				vam_db_query("update ".TABLE_NEWSLETTER_RECIPIENTS." set customers_status = '".vam_db_input($_POST['status'])."' where customers_id = '".vam_db_input($_GET['cID'])."'");
 
 				// create insert for admin access table if customers status is set to 0
 				if ($_POST['status'] == 0) {
