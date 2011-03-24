@@ -1,5 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-{if $filterParams || $is_params_selected}
+{if $filterParams}
 <!-- Бокс фильтры -->
 <div id="boxFilters">
 <h5>{#heading_filters#}</h5>
@@ -27,91 +27,43 @@ function open_hide_values(obj, a)
 </script>
 {/literal}
 
- <div class="module filter">
-
 {if $is_params_selected}
-<div class="param_sel">
-    {foreach name=aussen1 item=selectedParam from=$selectedParamsFilters}
+	{foreach name=aussen1 item=selectedParam from=$selectedParamsFilters}
 <div class="close">
-        <ul class="param">
-         <li><span class="name">{$selectedParam.name}</span></li></ul>
-        {foreach name=aussen2 item=selectedItem from=$selectedParam.list}
-         <ul class="param select">
-         <li><span class="name">{$selectedItem.parameters_value}</span>&nbsp;<span class="close"><a href='{$selectedItem.url}' class="nodecor">x</a></span></li>
-         </ul>
-        {/foreach}
-</div>        
-<div class="clr"></div>
-
-    {/foreach}
-    </div>
+		{$selectedParam.name}
+		{foreach name=aussen2 item=selectedItem from=$selectedParam.list}
+		<div class="content"><span class="name">{$selectedItem.parameters_value}</span><span class="close"><a href='{$selectedItem.url}'>X</a></span></div>
+		{/foreach}
+<div class="clear"></div>
+</div>
+	{/foreach}
 {/if}
 
-{assign var="count" value="0"} 
-{foreach key=key name=aussen5 item=filterParam1 from=$filterParams}
- {if $count > 0}
-  <div class="line"></div>  
- {/if}
-  <span class="name_f_group"> {$key}</span>
-  <div class="clr"></div>
-  {assign var="count1" value="0"} 
-  {foreach name=aussen6 item=filterParam from=$filterParam1}
-     {assign var="count1" value=$count1+1} 
-  {/foreach}
- 
-{foreach name=aussen6 item=filterParam from=$filterParam1}
-   {if $count1 > 0}
-   <ul class="param">
-   <li><span class="name">{$filterParam.products_parameters_title}{if $filterParam.products_parameters_titlesuff !=""}({$filterParam.products_parameters_titlesuff}){/if}:</span>
-   {if $filterParam.opened}
-     &nbsp;&nbsp;&nbsp;<span class="all-list"><a href="javascript:void(0);" onclick="open_hide_values('hidden_values_{$filterParam.products_parameters_id}', this);" class="nodecor">все</a></span>
-   {/if}
-   </li> 
-   </ul>
-   {else}
-   {if $filterParam.opened}
-    <ul class="param">
-   <li>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="all-list"><a href="javascript:void(0);" onclick="open_hide_values('hidden_values_{$filterParam.products_parameters_id}', this);" class="nodecor">все</a></span>
-      </li> 
-   </ul>
-   {/if}
-   {/if}
-
-  {foreach name=aussen4 item=blockValue from=$filterParam.blockValues}
-         {if $blockValue.opened}
-        <div id="hidden_values_{$filterParam.products_parameters_id}" style="display: none; text-align: left;">
-         {/if}
-         <ul><li>
-         {if $blockValue.url !=''}
-         <a href='{$blockValue.url}'>{$blockValue.parameters_value} ({$blockValue.znak}{$blockValue.count})</a>
-         {else}
-         {$blockValue.parameters_value} ({$blockValue.znak}{$blockValue.count})  
-         {/if}
-         
-         </li></ul> 
-    {/foreach}
-        {if $filterParam.opened}
-        </div>
-    {/if}
-  {assign var="count" value=$count+1}
+{foreach name=aussen3 item=filterParam from=$filterParams}
+	<strong>{$filterParam.products_parameters_title}</strong> <br />
+	{foreach name=aussen4 item=blockValue from=$filterParam.blockValues}
+		 {if $blockValue.opened}
+		<div id="hidden_values_{$filterParam.products_parameters_id}" style="display: none; text-align: left;">
+		 {/if}
+		 <a href='{$blockValue.url}'>{$blockValue.parameters_value} ({$blockValue.znak}{$blockValue.count})</a><br />
+	{/foreach}
+	{if $filterParam.opened}
+		</div>
+        <a href="javascript:void(0);" onclick="open_hide_values('hidden_values_{$filterParam.products_parameters_id}', this);">{#text_filters_show#}</a><br />
+	{/if}
 {/foreach}
-{/foreach} 
 
- <div class="filter_cena">
- <form action="{$priceForm}" method="get">
+{if $is_params_selected}
+<br />
+
+  <form action="{$priceForm}" method="get">
   <input type="hidden" name="cat" value="{$categories_id}" />
   <input type="hidden" name="q" value="{$all_query}" />
-  <input type="hidden" name="p" value="{$all_query1}" />
-  <span class="name_cena">{#text_filters_price#}:</span>
-  <span class="name_cena">{#text_filters_price_from#}:</span> <input type="text" size="3" name="price_min" value="{$price_min}" /> <span class="name_cena">{#text_filters_price_to#}:</span> <input type="text" size="3" name="price_max" value="{$price_max}" />
-  <table width="100%">
-   <tr><td align="center">{$BUTTON_FILTER}</td></tr>
-  </table>
+  {#text_filters_price#}:
+  {#text_filters_price_from#}: <input type="text" size="3" name="price_min" value="{$price_min}" /> {#text_filters_price_to#}: <input type="text" size="3" name="price_max" value="{$price_max}" /> {$BUTTON_FILTER}
   </form>
-  </div>   
-  </div>
-  
+{/if}
+
 </div>
 
 </div>
