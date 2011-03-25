@@ -620,7 +620,7 @@ if (ACCOUNT_STATE == 'true') {
 		}
 
       if ($entry_state_has_zones == true) {
-        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, ($process == true) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
       } else {
 		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state"');
       }
