@@ -20,6 +20,8 @@ define ('EP_CURRENT_VERSION', '2.77a');
 require('includes/application_top.php');
 require('easypopulate_functions.php');
 
+require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
+	
 $system = vam_get_system_information();
 
 //
@@ -997,6 +999,18 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
         } else {
             $row['v_status'] = EP_TEXT_INACTIVE;
         }
+
+// BOF mo_image
+		for ($i = 0; $i < MO_PICS; $i ++) {
+			$row['v_mo_image_'.($i+1)] = "";
+		}
+		if($mo_image = vam_get_products_mo_images($row['v_products_id'])) {
+//			echo '<pre>';var_dump($mo_image);echo '</pre>';
+			for($i=0, $n=sizeof($mo_image); $i<$n; $i++) {
+				$row['v_mo_image_'.$mo_image[$i]["image_nr"]] = $mo_image[$i]["image_name"];
+			}
+		}
+// EOF mo_image
 
          if (strlen($row['v_products_image_array'])>0)  $row['v_products_image_array']=implode("|", unserialize($row['v_products_image_array']));
 
@@ -2025,6 +2039,13 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             ptoc.categories_id = subc.categories_id
             " . $sql_filter;
 
+// BOF mo_image
+//		echo '<pre>';var_dump($fileheaders);echo '</pre>';
+		for ($i = 0; $i < MO_PICS; $i ++) {
+			$filelayout['v_mo_image_'.($i+1)] = $iii++;
+		}
+// EOF mo_image
+
         break;
 
     case 'priceqty':
@@ -2812,6 +2833,8 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
             if (trim($v_products_image)==''){
                 $v_products_image = EP_DEFAULT_IMAGE_PRODUCT;
+            } else {
+                if (USE_EP_IMAGE_MANIPULATOR == 'true') { prepare_image($v_products_image); } else { $v_products_image; }
             }
         
             if (strlen($v_products_model) > EP_MODEL_NUMBER_SIZE ){
@@ -3636,6 +3659,31 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                     $attribute_rows++;
                 }
                 // VJ product attribs end
+        
+// BOF mo_image
+		for ($i = 0; $i < MO_PICS; $i++) {
+			if(isset($filelayout['v_mo_image_'.($i+1)])) {
+//				echo '<pre>';var_dump($items[$filelayout['v_mo_image_'.($i+1)]]);echo '</pre>';
+				if($items[$filelayout['v_mo_image_'.($i+1)]] != "") {
+					$items[$filelayout['v_mo_image_'.($i+1)]];
+      		if (USE_EP_IMAGE_MANIPULATOR == 'true') { prepare_image($items[$filelayout['v_mo_image_'.($i+1)]]); } else { $items[$filelayout['v_mo_image_'.($i+1)]]; }
+				}
+				$check_query = vam_db_query("select image_id, image_name from " . TABLE_PRODUCTS_IMAGES . " where products_id='" . (int)$v_products_id . "' and image_nr='" . ($i+1) . "'");
+				if (vam_db_num_rows($check_query) <= 0) {
+					if($items[$filelayout['v_mo_image_'.($i+1)]] != "") {
+						vam_db_query("insert into " . TABLE_PRODUCTS_IMAGES . " (products_id, image_nr, image_name) values ('" . (int)$v_products_id . "', '" . ($i+1) . "', '" . $items[$filelayout['v_mo_image_'.($i+1)]] . "')");
+					}
+				} else {
+					$check = vam_db_fetch_array($check_query);
+					if($items[$filelayout['v_mo_image_'.($i+1)]] == "") {
+						vam_db_query("delete from " . TABLE_PRODUCTS_IMAGES . " where image_id='" . $check['image_id'] . "'");
+					} elseif ($items[$filelayout['v_mo_image_'.($i+1)]] != $check['image_name']) {
+						vam_db_query("update " . TABLE_PRODUCTS_IMAGES . " set image_name='" . $items[$filelayout['v_mo_image_'.($i+1)]] . "' where image_id='" . $check['image_id'] . "'");
+					}
+				}
+			}
+		}
+// EOF mo_image        
         
             } else {
                 // this record was missing the product_model
