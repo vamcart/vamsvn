@@ -11,8 +11,6 @@
 * SAXY is Free Software
 **/
 
-defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
-
 if (!defined('SAXY_INCLUDE_PATH')) {
 	define('SAXY_INCLUDE_PATH', (dirname(__FILE__) . "/"));
 }
@@ -117,7 +115,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	/** @var array A track used to track the uri of the current default namespace */
 	var $defaultNamespaceStack = array();
 	/** @var array A stack containing tag names of unclosed elements */
-	var $elementNameStack = array();	
+	var $elementNameStack = array();
 
 	/**
 	* Constructor for SAX parser
@@ -126,31 +124,31 @@ class SAXY_Parser extends SAXY_Parser_Base {
 		$this->SAXY_Parser_Base();
 		$this->state = SAXY_STATE_PROLOG_NONE;
 	} //SAXY_Parser
-	
+
 	/**
-	* Sets a reference to the handler for the DocType event 
-	* @param mixed A reference to the DocType handler 
+	* Sets a reference to the handler for the DocType event
+	* @param mixed A reference to the DocType handler
 	*/
 	function xml_set_doctype_handler($handler) {
 		$this->DTDHandler =& $handler;
 	} //xml_set_doctype_handler
-	
+
 	/**
-	* Sets a reference to the handler for the Comment event 
-	* @param mixed A reference to the Comment handler 
+	* Sets a reference to the handler for the Comment event
+	* @param mixed A reference to the Comment handler
 	*/
 	function xml_set_comment_handler($handler) {
 		$this->commentHandler =& $handler;
 	} //xml_set_comment_handler
-	
+
 	/**
-	* Sets a reference to the handler for the Processing Instruction event 
-	* @param mixed A reference to the Processing Instruction handler 
+	* Sets a reference to the handler for the Processing Instruction event
+	* @param mixed A reference to the Processing Instruction handler
 	*/
 	function xml_set_processing_instruction_handler($handler) {
 		$this->processingInstructionHandler =& $handler;
 	} //xml_set_processing_instruction_handler
-	
+
 	/**
 	* Sets a reference to the handler for the Start Namespace Declaration event
 	* @param mixed A reference to the Start Namespace Declaration handler
@@ -158,7 +156,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	function xml_set_start_namespace_decl_handler($handler) {
 		$this->startNamespaceDeclarationHandler =& $handler;
 	} //xml_set_start_namespace_decl_handler
-	
+
 	/**
 	* Sets a reference to the handler for the End Namespace Declaration event
 	* @param mixed A reference to the Start Namespace Declaration handler
@@ -166,7 +164,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	function xml_set_end_namespace_decl_handler($handler) {
 		$this->endNamespaceDeclarationHandler =& $handler;
 	} //xml_set_end_namespace_decl_handler
-	
+
 	/**
 	* Specifies whether SAXY is namespace sensitive
 	* @param boolean True if SAXY is namespace aware
@@ -174,40 +172,41 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	function setNamespaceAwareness($isNamespaceAware) {
 		$this->isNamespaceAware =& $isNamespaceAware;
 	} //setNamespaceAwareness
-	
+
 	/**
 	* Returns the current version of SAXY
 	* @return Object The current version of SAXY
 	*/
 	function getVersion() {
 		return SAXY_VERSION;
-	} //getVersion		
-	
+	} //getVersion
+
 	/**
 	* Processes the xml prolog, doctype, and any other nodes that exist outside of the main xml document
 	* @param string The xml text to be processed
 	* @return string The preprocessed xml text
-	*/	
+	*/
 	function preprocessXML($xmlText) {
 		//strip prolog
 		$xmlText = trim($xmlText);
 		$startChar = -1;
 		$total = strlen($xmlText);
-		
+
 		for ($i = 0; $i < $total; $i++) {
-			$currentChar = $xmlText{$i};
+//			$currentChar = $xmlText{$i};
+			$currentChar = substr($xmlText, $i, 1);
 
 			switch ($this->state) {
-				case SAXY_STATE_PROLOG_NONE:	
+				case SAXY_STATE_PROLOG_NONE:
 					if ($currentChar == '<') {
 						$nextChar = $xmlText{($i + 1)};
-						
+
 						if ($nextChar == '?')  {
 							$this->state = SAXY_STATE_PROLOG_PROCESSINGINSTRUCTION;
 							$this->charContainer = '';
 						}
-						else if ($nextChar == '!') {								
-							$this->state = SAXY_STATE_PROLOG_EXCLAMATION;								
+						else if ($nextChar == '!') {
+							$this->state = SAXY_STATE_PROLOG_EXCLAMATION;
 							$this->charContainer .= $currentChar;
 							break;
 						}
@@ -218,45 +217,45 @@ class SAXY_Parser extends SAXY_Parser_Base {
 							return (substr($xmlText, $startChar));
 						}
 					}
-					
+
 					break;
-					
+
 				case SAXY_STATE_PROLOG_EXCLAMATION:
 					if ($currentChar == 'D') {
-						$this->state = SAXY_STATE_PROLOG_DTD;	
-						$this->charContainer .= $currentChar;							
+						$this->state = SAXY_STATE_PROLOG_DTD;
+						$this->charContainer .= $currentChar;
 					}
 					else if ($currentChar == '-') {
-						$this->state = SAXY_STATE_PROLOG_COMMENT;	
+						$this->state = SAXY_STATE_PROLOG_COMMENT;
 						$this->charContainer = '';
 					}
 					else {
 						//will trap ! and add it
 						$this->charContainer .= $currentChar;
-					}						
-					
+					}
+
 					break;
-					
+
 				case SAXY_STATE_PROLOG_PROCESSINGINSTRUCTION:
 					if ($currentChar == '>') {
-						$this->state = SAXY_STATE_PROLOG_NONE;							
-						$this->parseProcessingInstruction($this->charContainer);							
+						$this->state = SAXY_STATE_PROLOG_NONE;
+						$this->parseProcessingInstruction($this->charContainer);
 						$this->charContainer = '';
 					}
 					else {
 						$this->charContainer .= $currentChar;
 					}
-					
+
 					break;
-					
+
 				case SAXY_STATE_PROLOG_COMMENT:
 					if ($currentChar == '>') {
-						$this->state = SAXY_STATE_PROLOG_NONE;							
-						$this->parseComment($this->charContainer);							
+						$this->state = SAXY_STATE_PROLOG_NONE;
+						$this->parseComment($this->charContainer);
 						$this->charContainer = '';
 					}
 					else if ($currentChar == '-') {
-						if ((($xmlText{($i + 1)} == '-')  && ($xmlText{($i + 2)} == '>')) || 
+						if ((($xmlText{($i + 1)} == '-')  && ($xmlText{($i + 2)} == '>')) ||
 							($xmlText{($i + 1)} == '>') ||
 							(($xmlText{($i - 1)} == '-')  && ($xmlText{($i - 2)}== '!')) ){
 							//do nothing
@@ -268,62 +267,63 @@ class SAXY_Parser extends SAXY_Parser_Base {
 					else {
 						$this->charContainer .= $currentChar;
 					}
-					
+
 					break;
-				
+
 				case SAXY_STATE_PROLOG_DTD:
 					if ($currentChar == '[') {
 						$this->charContainer .= $currentChar;
 						$this->state = SAXY_STATE_PROLOG_INLINEDTD;
-					}					
+					}
 					else if ($currentChar == '>') {
 						$this->state = SAXY_STATE_PROLOG_NONE;
-						
+
 						if ($this->DTDHandler != null) {
 							$this->fireDTDEvent($this->charContainer . $currentChar);
 						}
-						
+
 						$this->charContainer = '';
 					}
 					else {
 						$this->charContainer .= $currentChar;
-					}	
-					
+					}
+
 					break;
-					
+
 				case SAXY_STATE_PROLOG_INLINEDTD:
 					$previousChar = $xmlText{($i - 1)};
 
 					if (($currentChar == '>') && ($previousChar == ']')){
 						$this->state = SAXY_STATE_PROLOG_NONE;
-						
+
 						if ($this->DTDHandler != null) {
 							$this->fireDTDEvent($this->charContainer . $currentChar);
 						}
-						
+
 						$this->charContainer = '';
 					}
 					else {
 						$this->charContainer .= $currentChar;
-					}	
-					
+					}
+
 					break;
-				
+
 			}
 		}
 	} //preprocessXML
 
 	/**
-	* The controlling method for the parsing process 
+	* The controlling method for the parsing process
 	* @param string The xml text to be processed
 	* @return boolean True if parsing is successful
 	*/
 	function parse ($xmlText) {
-		$xmlText = $this->preprocessXML($xmlText);			
+		$xmlText = $this->preprocessXML($xmlText);
 		$total = strlen($xmlText);
 
 		for ($i = 0; $i < $total; $i++) {
-			$currentChar = $xmlText{$i};
+//			$currentChar = $xmlText{$i};
+			$currentChar = substr($xmlText, $i, 1);
 
 			switch ($this->state) {
 				case SAXY_STATE_PARSING:
@@ -335,9 +335,9 @@ class SAXY_Parser extends SAXY_Parser_Base {
 							else {
 								$this->parseBetweenTags($this->charContainer);
 								$this->charContainer = '';
-							}						
+							}
 							break;
-							
+
 						case '-':
 							if (($xmlText{($i - 1)} == '-') && ($xmlText{($i - 2)} == '!')
 								&& ($xmlText{($i - 3)} == '<')) {
@@ -360,18 +360,18 @@ class SAXY_Parser extends SAXY_Parser_Base {
 								$this->charContainer = '';
 							}
 							break;
-							
+
 						default:
 							$this->charContainer .= $currentChar;
 					}
-					
+
 					break;
-					
+
 				case SAXY_STATE_PARSING_COMMENT:
 					switch ($currentChar) {
 						case '>':
 							if (($xmlText{($i - 1)} == '-') && ($xmlText{($i - 2)} == '-')) {
-								$this->fireCommentEvent(substr($this->charContainer, 0, 
+								$this->fireCommentEvent(substr($this->charContainer, 0,
 													(strlen($this->charContainer) - 2)));
 								$this->charContainer = '';
 								$this->state = SAXY_STATE_PARSING;
@@ -380,14 +380,14 @@ class SAXY_Parser extends SAXY_Parser_Base {
 								$this->charContainer .= $currentChar;
 							}
 							break;
-						
+
 						default:
 							$this->charContainer .= $currentChar;
 					}
-					
+
 					break;
 			}
-		}	
+		}
 
 		return ($this->errorCode == 0);
 	} //parse
@@ -403,22 +403,23 @@ class SAXY_Parser extends SAXY_Parser_Base {
 
 		switch ($firstChar) {
 			case '/':
-				$tagName = substr($tagText, 1);				
+				$tagName = substr($tagText, 1);
 				$this->_fireEndElementEvent($tagName);
 				break;
-			
+
 			case '!':
 				$upperCaseTagText = strtoupper($tagText);
-			
+
 				if (strpos($upperCaseTagText, SAXY_SEARCH_CDATA) !== false) { //CDATA Section
 					$total = strlen($tagText);
 					$openBraceCount = 0;
 					$textNodeText = '';
-					
+
 					for ($i = 0; $i < $total; $i++) {
-						$currentChar = $tagText{$i};
-						
-						if (($currentChar == ']') && ($tagText{($i + 1)} == ']')&& (($i + 2)== $total)) {
+//						$currentChar = $tagText{$i};
+						$currentChar = substr($tagText, $i, 1);
+
+						if (($currentChar == ']') && ($tagText{($i + 1)} == ']')) {
 							break;
 						}
 						else if ($openBraceCount > 1) {
@@ -428,7 +429,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 							$openBraceCount ++;
 						}
 					}
-					
+
 					if ($this->cDataSectionHandler == null) {
 						$this->fireCharacterDataEvent($textNodeText);
 					}
@@ -447,20 +448,21 @@ class SAXY_Parser extends SAXY_Parser_Base {
 				}
 				*/
 				break;
-				
-			case '?': 
+
+			case '?':
 				//Processing Instruction node
 				$this->parseProcessingInstruction($tagText);
 				break;
-				
-			default:				
+
+			default:
 				if ((strpos($tagText, '"') !== false) || (strpos($tagText, "'") !== false)) {
 					$total = strlen($tagText);
 					$tagName = '';
 
 					for ($i = 0; $i < $total; $i++) {
-						$currentChar = $tagText{$i};
-						
+//						$currentChar = $tagText{$i};
+						$currentChar = substr($tagText, $i, 1);
+
 						if (($currentChar == ' ') || ($currentChar == "\t") ||
 							($currentChar == "\n") || ($currentChar == "\r") ||
 							($currentChar == "\x0B")) {
@@ -489,7 +491,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 					else {
 						$this->_fireStartElementEvent($tagText, $myAttributes);
 					}
-				}					
+				}
 		}
 	} //parseTag
 
@@ -500,24 +502,24 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	*/
 	function _fireStartElementEvent($tagName, &$myAttributes) {
 	    $this->elementNameStack[] = $tagName;
-	    
+
 	    if ($this->isNamespaceAware) {
 			$this->detectStartNamespaceDeclaration($myAttributes);
 			$tagName = $this->expandNamespacePrefix($tagName);
-			
+
 			$this->expandAttributePrefixes($myAttributes);
 	    }
-	    
+
 	    $this->fireStartElementEvent($tagName, $myAttributes);
 	} //_fireStartElementEvent
-	
+
 	/**
 	* Expands attribute prefixes to full namespace uri
 	* @param Array The start element attributes
 	*/
 	function expandAttributePrefixes(&$myAttributes) {
 	    $arTransform = array();
-	    
+
 	    foreach ($myAttributes as $key => $value) {
 	        if (strpos($key, 'xmlns') === false) {
 	            if (strpos($key, ':') !== false) {
@@ -526,13 +528,13 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	            }
 	        }
 	    }
-	    
+
 	    foreach ($arTransform as $key => $value) {
 	        $myAttributes[$value] = $myAttributes[$key];
 	        unset($myAttributes[$key]);
 	    }
 	} //expandAttributePrefixes
-	
+
 	/**
 	* Expands the namespace prefix (if one exists) to the full namespace uri
 	* @param string The tagName with the namespace prefix
@@ -546,7 +548,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 
 	    if ($colonIndex !== false) {
 			$prefix = substr($tagName, 0, $colonIndex);
-			
+
 			if ($prefix != 'xml') {
 	        	$tagName = $this->getNamespaceURI($prefix) . substr($tagName, $colonIndex);
 			}
@@ -560,7 +562,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 
 	    return $tagName;
 	} //expandNamespacePrefix
-	
+
 	/**
 	* Searches the namespaceMap for the specified prefix, and returns the full namespace URI
 	* @param string The namespace prefix
@@ -583,7 +585,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 
 	    return $uri;
 	} //getNamespaceURI
-	
+
 	/**
 	* Searches the attributes array for an xmlns declaration and fires an event if found
 	* @param Array The start element attributes
@@ -593,7 +595,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	    $namespaceMapUpper = 0;
 	    $userDefinedDefaultNamespace = false;
 	    $total = count($myAttributes);
-	    
+
 	    foreach ($myAttributes as $key => $value) {
 	        if (strpos($key, 'xmlns') !== false) {
 	            //add an array to store all namespaces for the current element
@@ -610,19 +612,19 @@ class SAXY_Parser extends SAXY_Parser_Base {
 				else {
 				    $prefix = '';
 					$userDefinedDefaultNamespace = true;
-					
+
 					//if default namespace '', store in map using key ':'
 					$this->namespaceMap[$namespaceMapUpper][':'] = $value;
 					$this->defaultNamespaceStack[] = $value;
 				}
-				
+
 	            $this->fireStartNamespaceDeclarationEvent($prefix, $value);
 	            $namespaceExists = true;
-				
+
 				unset($myAttributes[$key]);
 	        }
 	    }
-	    
+
 	    //store the default namespace (inherited from the parent elements so grab last one)
 		if (!$userDefinedDefaultNamespace) {
 		    $stackLen = count($this->defaultNamespaceStack);
@@ -634,10 +636,10 @@ class SAXY_Parser extends SAXY_Parser_Base {
 					$this->defaultNamespaceStack[($stackLen - 1)];
 		    }
 		}
-		
+
 	    $this->namespaceStack[] = $namespaceExists;
 	} //detectStartNamespaceDeclaration
-	
+
 	/**
 	* Fires an end element event and pops the element name from the elementName stack
 	* @param string The end element tag name
@@ -666,10 +668,10 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	*/
 	function detectEndNamespaceDeclaration() {
 	    $isNamespaceEnded = array_pop($this->namespaceStack);
-	    
+
 	    if ($isNamespaceEnded) {
 			$map = array_pop($this->namespaceMap);
-			
+
 	        foreach ($map as $key => $value) {
 	            if ($key == ':') {
 					$key = '';
@@ -686,22 +688,23 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	function parseProcessingInstruction($data) {
 		$endTarget = 0;
 		$total = strlen($data);
-		
+
 		for ($x = 2; $x < $total; $x++) {
-			if (trim($data{$x}) == '') {
+//			if (trim($data{$x}) == '') {
+			if (trim(substr($data, $x, 1)) == '') {
 				$endTarget = $x;
 				break;
 			}
 		}
-		
+
 		$target = substr($data, 1, ($endTarget - 1));
 		$data = substr($data, ($endTarget + 1), ($total - $endTarget - 2));
-	
+
 		if ($this->processingInstructionHandler != null) {
 			$this->fireProcessingInstructionEvent($target, $data);
 		}
 	} //parseProcessingInstruction
-	
+
 	/**
 	* Parses a comment
 	* @param string The interior text of the comment
@@ -711,48 +714,48 @@ class SAXY_Parser extends SAXY_Parser_Base {
 			$this->fireCommentEvent($data);
 		}
 	} //parseComment
-	
+
 	/**
 	* Fires a doctype event
 	* @param string The doctype data
 	*/
 	function fireDTDEvent($data) {
-		call_user_func($this->DTDHandler, $this, $data);
+		call_user_func($this->DTDHandler, &$this, $data);
 	} //fireDTDEvent
-	
+
 	/**
 	* Fires a comment event
 	* @param string The text of the comment
 	*/
 	function fireCommentEvent($data) {
-		call_user_func($this->commentHandler, $this, $data);
+		call_user_func($this->commentHandler, &$this, $data);
 	} //fireCommentEvent
-	
+
 	/**
 	* Fires a processing instruction event
 	* @param string The processing instruction data
 	*/
 	function fireProcessingInstructionEvent($target, $data) {
-		call_user_func($this->processingInstructionHandler, $this, $target, $data);
+		call_user_func($this->processingInstructionHandler, &$this, $target, $data);
 	} //fireProcessingInstructionEvent
-	
+
 	/**
 	* Fires a start namespace declaration event
 	* @param string The namespace prefix
 	* @param string The namespace uri
 	*/
 	function fireStartNamespaceDeclarationEvent($prefix, $uri) {
-		call_user_func($this->startNamespaceDeclarationHandler, $this, $prefix, $uri);
+		call_user_func($this->startNamespaceDeclarationHandler, &$this, $prefix, $uri);
 	} //fireStartNamespaceDeclarationEvent
-	
+
 	/**
 	* Fires an end namespace declaration event
 	* @param string The namespace prefix
 	*/
 	function fireEndNamespaceDeclarationEvent($prefix) {
-		call_user_func($this->endNamespaceDeclarationHandler, $this, $prefix);
+		call_user_func($this->endNamespaceDeclarationHandler, &$this, $prefix);
 	} //fireEndNamespaceDeclarationEvent
-	
+
 	/**
 	* Returns the current error code
 	* @return int The current error code
@@ -760,7 +763,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	function xml_get_error_code() {
 		return $this->errorCode;
 	} //xml_get_error_code
-	
+
 	/**
 	* Returns a textual description of the error code
 	* @param int The error code
