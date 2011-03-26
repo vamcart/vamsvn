@@ -99,4 +99,15 @@ function print_el1( $item2 ) {
 }
 }
 
+function prepare_image($image) {
+	$products_image_name = vam_db_prepare_input($image);
+	if(!is_file(DIR_FS_CATALOG_ORIGINAL_IMAGES . $products_image_name))
+		return false;
+	require_once(DIR_WS_CLASSES . FILENAME_IMAGEMANIPULATOR);
+	require(DIR_WS_INCLUDES . 'product_thumbnail_images.php');
+	require(DIR_WS_INCLUDES . 'product_info_images.php');
+	require(DIR_WS_INCLUDES . 'product_popup_images.php');
+	return $products_image_name;
+}
+
 ?>
