@@ -69,4 +69,6 @@ define('CATEGORY_EXTRA_FIELDS','Дополнительная информаци�
 
 define('PULL_DOWN_DEFAULT','Выберите');
 
+define('BUTTON_CUSTOMERS_EXPORT','Экспорт клиентов');
+
 ?>

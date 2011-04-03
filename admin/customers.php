@@ -1149,7 +1149,7 @@ if ($error == true) {
         
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?></td>
+            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS_EXPORT) . '"><span>' . BUTTON_CUSTOMERS_EXPORT . '</span></a>'; ?></td>
             <td class="smallText" align="right"></tr>
         </table></td>
       </tr>
