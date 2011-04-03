@@ -37,7 +37,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
-<meta http-equiv="Content-Style-Type" content="text/css" />
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 <?php
@@ -359,27 +358,27 @@ $vamTemplate->assign('error','
 // Метки для закладок
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
-$vamTemplate->assign('1',' class="current"');
+$vamTemplate->assign('1','_active');
 }
 
-if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
-$vamTemplate->assign('2',' class="current"');
+if ($_GET['coID'] == 4 && strstr($PHP_SELF, FILENAME_CONTENT)) {
+$vamTemplate->assign('2','_active');
 }
 
-if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
-$vamTemplate->assign('3',' class="current"');
+if (strstr($PHP_SELF, FILENAME_NEWS)) {
+$vamTemplate->assign('3','_active');
 }
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
-$vamTemplate->assign('4',' class="current"');
+if ($_GET['coID'] == 1 && strstr($PHP_SELF, FILENAME_CONTENT)) {
+$vamTemplate->assign('4','_active');
 }
 
-if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
-$vamTemplate->assign('5',' class="current"');
+if (strstr($PHP_SELF, FILENAME_ACCOUNT)) {
+$vamTemplate->assign('5','_active');
 }
 
-if (strstr($PHP_SELF, FILENAME_LOGIN)) {
-$vamTemplate->assign('6',' class="current"');
+if ($_GET['coID'] == 7 && strstr($PHP_SELF, FILENAME_CONTENT)) {
+$vamTemplate->assign('6','_active');
 }
 
 // /Метки для закладок
