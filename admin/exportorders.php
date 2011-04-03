@@ -17,21 +17,17 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-  define('FILENAME_EXPORTORDERS', 'exportorders.php');
-
-
 require('includes/application_top.php'); 
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_EXPORTORDERS);
 
 // Check if the form is submitted
 if (!$_GET['submitted'])
 {
 ?>
 <!-- header_eof //-->
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 </head>
@@ -39,15 +35,18 @@ if (!$_GET['submitted'])
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
+
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
-        <!-- left_navigation //-->
-        <?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
-        <!-- left_navigation_eof //-->
-      </table></td>
-    <!-- body_text //-->
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
+<!-- left_navigation //-->
+<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
+<!-- left_navigation_eof //-->
+    </td>
+<?php } ?>
+<!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
           <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -67,15 +66,15 @@ if (!$_GET['submitted'])
                         <td><?php echo INPUT_START; ?></td>
                         <td><!-- input name="start" size="5" value="<?php echo $start; ?>"> -->
                           <?php
-    	                    $orders_list_query = tep_db_query("SELECT orders_id, date_purchased FROM orders ORDER BY orders_id");
+    	                    $orders_list_query = vam_db_query("SELECT orders_id, date_purchased FROM orders ORDER BY orders_id");
    							$orders_list_array = array();
 							$orders_list_array[] = array('id' => '', 'text' => '---');
-   						    while ($orders_list = tep_db_fetch_array($orders_list_query)) {
+   						    while ($orders_list = vam_db_fetch_array($orders_list_query)) {
    					        $orders_list_array[] = array('id' => $orders_list['orders_id'],
-                                       'text' => $orders_list['orders_id']." - ".tep_date_short($orders_list['date_purchased']));
+                                       'text' => $orders_list['orders_id']." - ".vam_date_short($orders_list['date_purchased']));
 							}  
 
-							echo '&nbsp;&nbsp;' . tep_draw_pull_down_menu('start', $orders_list_array, (isset($_GET['orders_id']) ? $_GET['orders_id'] : ''), 'size="1"') . '&nbsp;&nbsp;&nbsp;';
+							echo '&nbsp;&nbsp;' . vam_draw_pull_down_menu('start', $orders_list_array, (isset($_GET['orders_id']) ? $_GET['orders_id'] : ''), 'size="1"') . '&nbsp;&nbsp;&nbsp;';
 
 						?></td>
                       </tr>
@@ -83,7 +82,7 @@ if (!$_GET['submitted'])
                         <td><?php echo INPUT_END; ?></td>
                         <td><!-- <input name="end" size="5" value="<?php echo $end; ?>"> -->
                           <?php 
-						echo '&nbsp;&nbsp;' . tep_draw_pull_down_menu('end', $orders_list_array, (isset($_GET['orders_id']) ? $_GET['orders_id'] : ''), 'size="1"') . '&nbsp;&nbsp;&nbsp;';
+						echo '&nbsp;&nbsp;' . vam_draw_pull_down_menu('end', $orders_list_array, (isset($_GET['orders_id']) ? $_GET['orders_id'] : ''), 'size="1"') . '&nbsp;&nbsp;&nbsp;';
 						?></td>
                       </tr>
                       <tr>
@@ -206,19 +205,19 @@ $csv_output .= "\n";
 // Patch dlan
 // if both fields are empty we select all orders
 if ($start=="" && $end=="") {
- $orders = tep_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+ $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
 FROM orders ORDER BY orders_id"); 
 // if $start is empty we select all orders up to $end
 } else if($start=="" && $end!="") {
- $orders = tep_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+ $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
 FROM orders WHERE orders_id <= $end ORDER BY orders_id"); 
 // if $end is empty we select all orders from $start
 } else if($start!="" && $end=="") {
- $orders = tep_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+ $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
 FROM orders WHERE orders_id >= $start ORDER BY orders_id");
 // if both fields are filed in we select orders betwenn $start and $end
 } else {
- $orders = tep_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+ $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
 FROM orders WHERE orders_id >= $start AND orders_id <= $end ORDER BY orders_id");
 }
 //patch
@@ -266,9 +265,9 @@ $Transaction_ID = "";
 $Order_Special_Notes = "";
 // --------------------    QUERIES 1  ------------------------------------//
 //Orders_status_history for comments
- $orders_status_history = tep_db_query("select comments from orders_status_history
+ $orders_status_history = vam_db_query("select comments from orders_status_history
  where orders_id = " . $Orders_id);
- //$row_orders_status_history = tep_db_fetch_array($comments);
+ //$row_orders_status_history = vam_db_fetch_array($comments);
  while($row_orders_status_history = mysql_fetch_array($orders_status_history)) {
  // end //
 
@@ -277,27 +276,27 @@ $Comments = filter_text($row_orders_status_history["comments"]);
 }
 // --------------------    QUERIES 2  ------------------------------------//
 //Orders_subtotal
-$orders_subtotal = tep_db_query("select value from orders_total
+$orders_subtotal = vam_db_query("select value from orders_total
 where class = 'ot_subtotal' and orders_id = " . $Orders_id);
-//$row_orders_subtotal = tep_db_fetch_array($orders_subtotal);
+//$row_orders_subtotal = vam_db_fetch_array($orders_subtotal);
 while($row_orders_subtotal = mysql_fetch_array($orders_subtotal)) {
  // end //
 $Order_Subtotal = filter_text($row_orders_subtotal["value"]);
 }
 // --------------------    QUERIES 3  ------------------------------------//
 //Orders_tax
-$orders_tax = tep_db_query("select value from orders_total
+$orders_tax = vam_db_query("select value from orders_total
 where class = 'ot_tax' and orders_id = " . $Orders_id);
-//$row_orders_tax = tep_db_fetch_array($orders_tax);
+//$row_orders_tax = vam_db_fetch_array($orders_tax);
 while($row_orders_tax = mysql_fetch_array($orders_tax)) {
  // end //
 $Order_Tax = filter_text($row_orders_tax["value"]);
 }
 // --------------------    QUERIES 4  ------------------------------------//
 //Orders_Insurance
-$orders_insurance = tep_db_query("select value from orders_total
+$orders_insurance = vam_db_query("select value from orders_total
 where class = 'ot_insurance' and orders_id = " . $Orders_id);
-//$row_orders_insurance = tep_db_fetch_array($orders_insurance);
+//$row_orders_insurance = vam_db_fetch_array($orders_insurance);
 while($row_orders_insurance = mysql_fetch_array($orders_insurance)) {
  // end //
 $Order_Insurance = filter_text($row_orders_insurance["value"]);
@@ -305,9 +304,9 @@ $Order_Insurance = filter_text($row_orders_insurance["value"]);
 $Tax_Exempt_Message = "";
 // --------------------    QUERIES 5  ------------------------------------//
 //Orders_Shipping
-$orders_shipping = tep_db_query("select title, value from orders_total
+$orders_shipping = vam_db_query("select title, value from orders_total
 where class = 'ot_shipping' and orders_id = " . $Orders_id);
-//$row_orders_shipping = tep_db_fetch_array($orders_shipping);
+//$row_orders_shipping = vam_db_fetch_array($orders_shipping);
 while($row_orders_shipping = mysql_fetch_array($orders_shipping)) {
  // end //
 $Order_Shipping_Total = $row_orders_shipping["value"];
@@ -315,9 +314,9 @@ $Shipping_Method = filter_text($row_orders_shipping["title"]); // Shipping metho
 }
 // --------------------    QUERIES 6  ------------------------------------//
 //Orders_Residential Del Fee (Giftwrap)
-$orders_residential_fee = tep_db_query("select value from orders_total
+$orders_residential_fee = vam_db_query("select value from orders_total
 where class = 'ot_giftwrap' and orders_id = " . $Orders_id);
-//$row_orders_residential_fee = tep_db_fetch_array($orders_residential_fee);
+//$row_orders_residential_fee = vam_db_fetch_array($orders_residential_fee);
 while($row_orders_residential_fee = mysql_fetch_array($orders_residential_fee)) {
  // end //
 $Small_Order_Fee = $row_orders_residential_fee["value"];
@@ -328,18 +327,18 @@ $Discount_Message  = "";
 $CODAmount  = "";
 // --------------------    QUERIES 7  ------------------------------------//
 //Orders_Total
-$orders_total = tep_db_query("select value from orders_total
+$orders_total = vam_db_query("select value from orders_total
 where class = 'ot_total' and orders_id = " . $Orders_id);
-//$row_orders_total = tep_db_fetch_array($orders_total);
+//$row_orders_total = vam_db_fetch_array($orders_total);
 while($row_orders_total = mysql_fetch_array($orders_total)) {
  // end //
 $Order_Grand_Total = $row_orders_total["value"];
 }
 // --------------------    QUERIES 8  ------------------------------------//
 //Products COunt
-$orders_count = tep_db_query("select count(products_quantity) as o_count from orders_products
+$orders_count = vam_db_query("select count(products_quantity) as o_count from orders_products
 where orders_id = " . $Orders_id);
-//$row_orders_total = tep_db_fetch_array($orders_total);
+//$row_orders_total = vam_db_fetch_array($orders_total);
 while($row_orders_count = mysql_fetch_array($orders_count)) {
  // end //
 $Number_of_Items = $row_orders_count[0]; // used array to show the number of items ordered
@@ -433,7 +432,7 @@ $csv_output .= $Shipping_Method . "," ;
 //$csv_output .= $future9 ;
 // --------------------    QUERIES 9  ------------------------------------//
 //Get list of products ordered
-$orders_products = tep_db_query("select products_model, products_price, products_quantity, products_name, orders_products_id from orders_products
+$orders_products = vam_db_query("select products_model, products_price, products_quantity, products_name, orders_products_id from orders_products
 where orders_id = " . $Orders_id);
 
 // While loop to list the item
@@ -464,7 +463,7 @@ while($row_orders_products = mysql_fetch_array($orders_products)) {
 	$csv_output_item .= filter_text($row_orders_products[3]) . "," ;
 	$Products_id = $row_orders_products[4];
 
-	$orders_products_attributes = tep_db_query("select products_options, products_options_values from orders_products_attributes 
+	$orders_products_attributes = vam_db_query("select products_options, products_options_values from orders_products_attributes 
 	where orders_id = " . $Orders_id . " and orders_products_id  = " . $Products_id);
 	
 	while($row_orders_products_attributes = mysql_fetch_array($orders_products_attributes)) {

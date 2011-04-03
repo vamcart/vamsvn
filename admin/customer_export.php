@@ -21,41 +21,41 @@ require('includes/application_top.php');
 if (!$_POST['submit'])
 {
 	?>
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//DE">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 </head>
-<body id="customers">
+<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
-<?php require(DIR_WS_INCLUDES.'header.php'); ?>
+<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
+
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
-        <!-- left_navigation //-->
-        <?php require(DIR_WS_INCLUDES.'column_left.php'); ?>
-        <script>
-new Rico.Accordion( $('accordionDiv'), {panelHeight:210, collapsedBg:'#B3BAC5', expandedBg:'#C9C9C9', hoverBg: '#C9C9C9', borderColor:'#C9C9C9', expandedTextColor:'#616060', onLoadShowTab:'5'} );
-</script>
-        <!-- left_navigation_eof //-->
-      </table></td>
-    <!-- body_text //-->
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
+<!-- left_navigation //-->
+<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
+<!-- left_navigation_eof //-->
+    </td>
+<?php } ?>
+<!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
           <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
         </tr>
         <tr>
-          <td><?php echo tep_draw_form(BOX_CUSTOMER_EXPORT, FILENAME_CUSTOMERS_EXPORT, '', 'post'); ?>
+          <td><?php echo vam_draw_form(BOX_CUSTOMER_EXPORT, FILENAME_CUSTOMERS_EXPORT, '', 'post'); ?>
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="main"><?php echo TABLE_HEADING_CUSTOMER_EXPORT; ?></td>
               </tr>
               <tr>
-                <td><?php echo tep_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
@@ -103,8 +103,8 @@ new Rico.Accordion( $('accordionDiv'), {panelHeight:210, collapsedBg:'#B3BAC5', 
     							   left join " . TABLE_COUNTRIES . " co on co.countries_id = a.entry_country_id
     							   order by c.customers_id";
     $customers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS * 4, $customers_query_raw, $customers_query_numrows);
-    $customers_query = tep_db_query($customers_query_raw);
-    while ($customers = tep_db_fetch_array($customers_query)) {
+    $customers_query = vam_db_query($customers_query_raw);
+    while ($customers = vam_db_fetch_array($customers_query)) {
 
 
 
@@ -116,7 +116,7 @@ new Rico.Accordion( $('accordionDiv'), {panelHeight:210, collapsedBg:'#B3BAC5', 
                       <td class="dataTableContent"><?php echo $customers['customers_lastname']; ?></td>
                       <td class="dataTableContent"><?php echo $customers['customers_email_address']; ?></td>
                       <td class="dataTableContent"><?php echo $customers['customers_gender']; ?></td>
-                      <td class="dataTableContent"><?php echo tep_date_short($customers['customers_dob']); ?></td>
+                      <td class="dataTableContent"><?php echo vam_date_short($customers['customers_dob']); ?></td>
                       <td class="dataTableContent"><?php echo $customers['entry_company']; ?></td>
                       <td class="dataTableContent"><?php echo $customers['entry_street_address']; ?></td>
                       <td class="dataTableContent"><?php echo $customers['entry_postcode']; ?></td>
@@ -142,7 +142,7 @@ new Rico.Accordion( $('accordionDiv'), {panelHeight:210, collapsedBg:'#B3BAC5', 
                 <td colspan="4"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $customers_split->display_count($customers_query_numrows, MAX_DISPLAY_SEARCH_RESULTS * 4, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_CUSTOMERS); ?></td>
-                    <td class="smallText" align="right"><?php echo $customers_split->display_links($customers_query_numrows, MAX_DISPLAY_SEARCH_RESULTS * 4, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], tep_get_all_get_params(array('page', 'info', 'x', 'y', 'cID'))); ?></td>
+                    <td class="smallText" align="right"><?php echo $customers_split->display_links($customers_query_numrows, MAX_DISPLAY_SEARCH_RESULTS * 4, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'info', 'x', 'y', 'cID'))); ?></td>
                   </tr>
                  </td>
                </tr>
@@ -196,8 +196,8 @@ else
     							   from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " a on c.customers_id = a.customers_id and c.customers_default_address_id = a.address_book_id
     							   left join " . TABLE_COUNTRIES . " co on co.countries_id = a.entry_country_id
     							   order by c.customers_id";
-    $customers_query = tep_db_query($customers_query_raw);
-    while ($row = tep_db_fetch_array($customers_query)) {
+    $customers_query = vam_db_query($customers_query_raw);
+    while ($row = vam_db_fetch_array($customers_query)) {
 
 
 
@@ -206,7 +206,7 @@ else
 		$contents.=$row['customers_firstname'].$sep;
 		$contents.=$row['customers_email_address'].$sep;
 		$contents.=$row['customers_gender'].$sep;
-		$contents.=tep_date_short($row['customers_dob']).$sep;
+		$contents.=vam_date_short($row['customers_dob']).$sep;
 		$contents.=$row['entry_company'].$sep;
 		$contents.=$row['entry_street_address'].$sep;
 		$contents.=$row['entry_postcode'].$sep;

@@ -603,4 +603,7 @@ define('TABLE_SPSR_ZONES', 'spsr_zones');
 
   define('FILENAME_YML_IMPORT','yml_import.php');
   
+define('FILENAME_CUSTOMERS_EXPORT', 'customer_export.php');
+define('FILENAME_EXPORTORDERS', 'exportorders.php');
+  
 ?>
