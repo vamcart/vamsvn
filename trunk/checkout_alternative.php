@@ -221,9 +221,9 @@ if (isset ($_POST['payment']))
 	$telephone = vam_db_prepare_input($_POST['telephone']);
    if (ACCOUNT_FAX == 'true')
 	$fax = vam_db_prepare_input($_POST['fax']);
-	//    $newsletter = vam_db_prepare_input($_POST['newsletter']);
 	$newsletter = '0';
-	$password = vam_db_prepare_input($_POST['password']);
+	$newsletter = vam_db_prepare_input($_POST['newsletter']);
+	$password = vam_RandomString(8);
 	$confirmation = vam_db_prepare_input($_POST['confirmation']);
 
 	$error = false;
@@ -368,20 +368,19 @@ if (isset ($_POST['payment']))
     }
   }
 
-	if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
-		$error = true;
-
-		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR);
-	}
-	elseif ($password != $confirmation) {
-		$error = true;
-
-		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
-	}
+//	if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
+//		$error = true;
+//
+//		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR);
+//	}
+//	elseif ($password != $confirmation) {
+//		$error = true;
+//
+//		$messageStack->add('checkout_alternative', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
+//	}
 
 //	if ($customers_status == 0 || !$customers_status)
 		$customers_status = DEFAULT_CUSTOMERS_STATUS_ID;
-//	$password = vam_create_password(8);
 
 	if (!$newsletter)
 		$newsletter = 0;
@@ -544,6 +543,8 @@ if (ACCOUNT_DOB == 'true') {
 }
 
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email_address"'));
+
+$vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true));
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company', '1');
