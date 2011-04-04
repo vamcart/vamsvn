@@ -551,6 +551,9 @@ if (isset ($_SESSION['tracking']['refID'])){
 			// GV Code End       // create templates
 		}
 		$vamTemplate->caching = 0;
+
+      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+      $vamTemplate->assign('PASSWORD', $password);
 		
     if ($newsletter) {
       $vlcode = vam_random_charcode(32);
