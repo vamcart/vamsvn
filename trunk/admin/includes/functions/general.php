@@ -2043,4 +2043,79 @@ function vam_get_spsr_zone_id($zone_id) {
     }
    }
 
+	// removes a product + images + more images + content
+
+	function vam_remove_product($product_id) {
+
+		// get content of product
+		$product_content_query = vam_db_query("SELECT content_file FROM ".TABLE_PRODUCTS_CONTENT." WHERE products_id = '".vam_db_input($product_id)."'");
+		// check if used elsewhere, delete db-entry + file if not
+		while ($product_content = vam_db_fetch_array($product_content_query)) {   
+		   		
+   		$duplicate_content_query = vam_db_query("SELECT count(*) AS total FROM ".TABLE_PRODUCTS_CONTENT." WHERE content_file = '".vam_db_input($product_content['content_file'])."' AND products_id != '".vam_db_input($product_id)."'");
+
+   		$duplicate_content = vam_db_fetch_array($duplicate_content_query);
+
+   		if ($duplicate_content['total'] == 0) {
+   			@unlink(DIR_FS_DOCUMENT_ROOT.'media/products/'.$product_content['content_file']);
+   		}
+         
+   		//delete DB-Entry   		
+   		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_CONTENT." WHERE products_id = '".vam_db_input($product_id)."' AND (content_file = '".$product_content['content_file']."' OR content_file = '')");
+   		
+		}
+	   
+		$product_image_query = vam_db_query("SELECT products_image FROM ".TABLE_PRODUCTS." WHERE products_id = '".vam_db_input($product_id)."'");
+		$product_image = vam_db_fetch_array($product_image_query);
+
+		$duplicate_image_query = vam_db_query("SELECT count(*) AS total FROM ".TABLE_PRODUCTS." WHERE products_image = '".vam_db_input($product_image['products_image'])."'");
+		$duplicate_image = vam_db_fetch_array($duplicate_image_query);
+
+		if ($duplicate_image['total'] < 2) {
+			vam_del_image_file($product_image['products_image']);
+		}
+
+		//delete more images
+		$mo_images_query = vam_db_query("SELECT image_name FROM ".TABLE_PRODUCTS_IMAGES." WHERE products_id = '".vam_db_input($product_id)."'");
+		while ($mo_images_values = vam_db_fetch_array($mo_images_query)) {
+			$duplicate_more_image_query = vam_db_query("SELECT count(*) AS total FROM ".TABLE_PRODUCTS_IMAGES." WHERE image_name = '".$mo_images_values['image_name']."'");
+			$duplicate_more_image = vam_db_fetch_array($duplicate_more_image_query);
+			if ($duplicate_more_image['total'] < 2) {
+				vam_del_image_file($mo_images_values['image_name']);
+			}
+		}
+
+
+		
+		vam_db_query("DELETE FROM ".TABLE_SPECIALS." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_PRODUCTS." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_IMAGES." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_DESCRIPTION." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
+
+		$customers_status_array = vam_get_customers_statuses();
+		for ($i = 0, $n = sizeof($customers_status_array); $i < $n; $i ++) {
+			if (isset($customers_statuses_array[$i]['id']))
+				vam_db_query("delete from ".TABLE_PERSONAL_OFFERS.$customers_statuses_array[$i]['id']." where products_id = '".vam_db_input($product_id)."'");
+		}
+
+		$product_reviews_query = vam_db_query("select reviews_id from ".TABLE_REVIEWS." where products_id = '".vam_db_input($product_id)."'");
+		while ($product_reviews = vam_db_fetch_array($product_reviews_query)) {
+			vam_db_query("delete from ".TABLE_REVIEWS_DESCRIPTION." where reviews_id = '".$product_reviews['reviews_id']."'");
+		}
+
+		vam_db_query("delete from ".TABLE_REVIEWS." where products_id = '".vam_db_input($product_id)."'");
+
+		vam_db_query("DELETE FROM " . TABLE_PRODUCTS_PARAMETERS2PRODUCTS . " WHERE products_id = '".vam_db_input($product_id)."'");
+
+		if (USE_CACHE == 'true') {
+			vam_reset_cache_block('categories');
+			vam_reset_cache_block('also_purchased');
+		}
+
+	} // remove_product ends
+	
 ?>
