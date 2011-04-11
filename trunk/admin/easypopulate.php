@@ -835,7 +835,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 while ($attribute_values = vam_db_fetch_array($attribute_values_values)) {
                     $row['v_attribute_values_id_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values['products_options_values_id'];
 
-                    $attribute_values_price_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "' and options_id = '" . (int)$attribute_options['products_options_id'] . "' and options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "'";
+                    $attribute_values_price_query = "select options_values_price, price_prefix, attributes_model, attributes_stock, options_values_weight, weight_prefix, sortorder from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$row['v_products_id'] . "' and options_id = '" . (int)$attribute_options['products_options_id'] . "' and options_values_id = '" . (int)$attribute_values['products_options_values_id'] . "'";
 
                     $attribute_values_price_values = vam_db_query($attribute_values_price_query);
 
@@ -843,18 +843,14 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
                     $row['v_attribute_values_price_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['price_prefix'] . $attribute_values_price['options_values_price'];
 
-    //// attributes stock add start        
-    if ( EP_PRODUCTS_ATTRIBUTES_STOCK    == true ) {   
-           $stock_attributes = $attribute_options['products_options_id'].'-'.$attribute_values['products_options_values_id'];
-           
-           $stock_quantity_query = vam_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$row['v_products_id'] . "' and products_stock_attributes = '" . $stock_attributes . "'");
-           $stock_quantity = vam_db_fetch_array($stock_quantity_query);
-           
-           $row['v_attribute_values_stock_' . $attribute_options_count . '_' . $attribute_values_count] = $stock_quantity['products_stock_quantity'];
-     }
-    //// attributes stock add end  
-                    
-                    
+                    $row['v_attribute_values_model_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['attributes_model'];
+
+                    $row['v_attribute_values_stock_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['attributes_stock'];
+
+                    $row['v_attribute_values_weight_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['weight_prefix'] . $attribute_values_price['options_values_weight'];
+
+                    $row['v_attribute_values_sort_' . $attribute_options_count . '_' . $attribute_values_count]     = $attribute_values_price['sortorder'];
+
                     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                         $lid = $languages[$i]['id'];
 
@@ -2002,6 +1998,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
                 }
                 $filelayout['v_attribute_values_price_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_model_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_weight_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_sort_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 //// attributes stock add start        
                 if ( EP_PRODUCTS_ATTRIBUTES_STOCK == true ) { 
                     $filelayout['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
@@ -2142,6 +2142,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
                 }
                 $filelayout['v_attribute_values_price_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_model_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_weight_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_sort_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 //// attributes stock add start        
                 if ( EP_PRODUCTS_ATTRIBUTES_STOCK == true ) { 
                     $filelayout['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
@@ -2329,6 +2333,10 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
                     $filelayout['v_attribute_values_name_'.$attribute_options_count.'_'.$attribute_values_count.'_'.$lang['id']] = $iii++;
                 }
                 $filelayout['v_attribute_values_price_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_model_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_weight_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
+                $filelayout['v_attribute_values_sort_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
                 //// attributes stock add start        
                 if ( EP_PRODUCTS_ATTRIBUTES_STOCK    == true ) { 
                     $header_array['v_attribute_values_stock_'.$attribute_options_count.'_'.$attribute_values_count] = $iii++;
@@ -3602,51 +3610,36 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         
                             // options_values price update begin
                           $v_attribute_values_price_var = 'v_attribute_values_price_' . $attribute_options_count . '_' . $attribute_values_count;
+                          $v_attribute_values_model = 'v_attribute_values_model_' . $attribute_options_count . '_' . $attribute_values_count;
+                          $v_attribute_values_stock = 'v_attribute_values_stock_' . $attribute_options_count . '_' . $attribute_values_count;
+                          $v_attribute_values_weight = 'v_attribute_values_weight_' . $attribute_options_count . '_' . $attribute_values_count;
+                          $v_attribute_values_sort = 'v_attribute_values_sort_' . $attribute_options_count . '_' . $attribute_values_count;
         
                             if (isset($$v_attribute_values_price_var) && ($$v_attribute_values_price_var != '')) {
-                                $attribute_prices_query = "select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id ='" . (int)$$v_attribute_options_id_var . "' and options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
+                                $attribute_prices_query = "select options_values_price, price_prefix, attributes_model, attributes_stock, options_values_weight, weight_prefix, sortorder from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . (int)$v_products_id . "' and options_id ='" . (int)$$v_attribute_options_id_var . "' and options_values_id = '" . (int)$$v_attribute_values_id_var . "'";
         
                                 $attribute_prices_values = vam_db_query($attribute_prices_query);
         
                                 $attribute_values_price_prefix = ($$v_attribute_values_price_var < 0) ? '-' : '+';
+
+                                $attribute_values_weight_prefix = ($$v_attribute_values_weight < 0) ? '-' : '+';
+
                                 // if negative, remove the negative sign for storing since the prefix is stored in another field.
                                 if ( $$v_attribute_values_price_var < 0 ) $$v_attribute_values_price_var = strval(-((float)$$v_attribute_values_price_var));
         
                                 // options_values_prices table update begin
                                 // insert into options_values_prices table if no price exists
                                 if (vam_db_num_rows($attribute_prices_values) <= 0) {
-                                    $attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . (float)$$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "')";
+                                    $attribute_prices_insert_query = "insert into " . TABLE_PRODUCTS_ATTRIBUTES . " (products_id, options_id, options_values_id, options_values_price, price_prefix, attributes_model, attributes_stock, options_values_weight, weight_prefix, sortorder) values ('" . (int)$v_products_id . "', '" . (int)$$v_attribute_options_id_var . "', '" . (int)$$v_attribute_values_id_var . "', '" . (float)$$v_attribute_values_price_var . "', '" . $attribute_values_price_prefix . "', '" . $$v_attribute_values_model . "', '" . $$v_attribute_values_stock . "', '" . (float)$$v_attribute_values_weight . "', '" . $$v_attribute_values_weight_prefix . "', '" . $$v_attribute_values_sort . "')";
         
                                     $attribute_prices_insert = vam_db_query($attribute_prices_insert_query);
                                 } else { // update options table, if options already exists
-                                    $attribute_prices_update_query = "update " . TABLE_PRODUCTS_ATTRIBUTES . " set options_values_price = '" . $$v_attribute_values_price_var . "', price_prefix = '" . $attribute_values_price_prefix . "' where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "' and options_values_id ='" . (int)$$v_attribute_values_id_var . "'";
+                                    $attribute_prices_update_query = "update " . TABLE_PRODUCTS_ATTRIBUTES . " set options_values_price = '" . $$v_attribute_values_price_var . "', price_prefix = '" . $attribute_values_price_prefix . "', set attributes_model = '" . $$v_attribute_values_model . "', set attributes_stock = '" . $$v_attribute_values_stock . "', set options_values_weight = '" . $$v_attribute_values_weight . "', set weight_prefix = '" . $$v_attribute_values_weight_prefix . "', set sortorder = '" . $$v_attribute_values_sort . "' where products_id = '" . (int)$v_products_id . "' and options_id = '" . (int)$$v_attribute_options_id_var . "' and options_values_id ='" . (int)$$v_attribute_values_id_var . "'";
         
                                     $attribute_prices_update = vam_db_query($attribute_prices_update_query);
                                 }
                             }
                             // options_values price update end
-        
-                            //////// attributes stock add start
-                            $v_attribute_values_stock_var = 'v_attribute_values_stock_' . $attribute_options_count . '_' . $attribute_values_count;
-                        
-                            if (isset($$v_attribute_values_stock_var) && ($$v_attribute_values_stock_var != '')) {
-                                
-                                $stock_attributes = $$v_attribute_options_id_var.'-'.$$v_attribute_values_id_var;
-                                $attribute_stock_query = vam_db_query("select products_stock_quantity from " . TABLE_PRODUCTS_STOCK . " where products_id = '" . (int)$v_products_id . "' and products_stock_attributes ='" . $stock_attributes . "'");        
-                                
-                                // insert into products_stock_quantity table if no stock exists
-                                if (vam_db_num_rows($attribute_stock_query) <= 0) {
-                                    $attribute_stock_insert_query =vam_db_query("insert into " . TABLE_PRODUCTS_STOCK . " (products_id, products_stock_attributes, products_stock_quantity) values ('" . (int)$v_products_id . "', '" . $stock_attributes . "', '" . (int)$$v_attribute_values_stock_var . "')");
-                                        
-                                } else { // update options table, if options already exists
-                                    $attribute_stock_insert_query = vam_db_query("update " . TABLE_PRODUCTS_STOCK. " set products_stock_quantity = '" . (int)$$v_attribute_values_stock_var . "' where products_id = '" . (int)$v_products_id . "' and products_stock_attributes = '" . $stock_attributes . "'");
-                                                
-                                    // turn on stock tracking on products_options table
-                                    $stock_tracking_query = vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_track_stock = '1' where products_options_id = '" . (int)$$v_attribute_options_id_var . "'");
-                                
-                                }
-                            }
-                            //////// attributes stock add end                    
                             
                             $attribute_values_count++;
                             $v_attribute_values_id_var = 'v_attribute_values_id_' . $attribute_options_count . '_' . $attribute_values_count;
