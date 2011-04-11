@@ -373,8 +373,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
   $fcolor = $UNCONTACTED_COLOR;
   $sentdate = "";
   $customer = "";
-  $donequery =
-      vam_db_query("select * from ". TABLE_SCART ." where customers_id = '".$curcus."'");
+  $donequery = vam_db_query("select * from ". TABLE_SCART ." where customers_id = '".$curcus."' ORDER BY dateadded DESC");
   $emailttl = seadate($EMAIL_TTL);
   if (mysql_num_rows($donequery) > 0) {
     $ttl = vam_db_fetch_array($donequery);
