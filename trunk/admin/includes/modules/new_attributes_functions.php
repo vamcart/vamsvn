@@ -24,7 +24,7 @@
 defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
   // A simple little function to determine if the current value is already selected for the current product.
   function checkAttribute($current_value_id, $current_pid, $current_product_option_id) {
-    global $attribute_value_price,$sortorder, $attribute_value_weight, $attribute_value_weight_prefix, $attribute_value_prefix, $attribute_value_model, $attribute_value_stock, $posCheck, $negCheck, $posCheck_weight, $negCheck_weight,$attribute_value_download_count, $attribute_value_download_expire,$attribute_value_download_filename;
+    global $attribute_value_price,$sortorder, $attribute_value_weight, $attribute_value_weight_prefix, $attribute_value_prefix, $attribute_value_model, $products_attributes_is_pin, $attribute_value_stock, $posCheck, $negCheck, $posCheck_weight, $negCheck_weight,$attribute_value_download_count, $attribute_value_download_expire,$attribute_value_download_filename;
 
     $query = "SELECT * FROM ".TABLE_PRODUCTS_ATTRIBUTES." where options_values_id = '" . $current_value_id . "' AND products_id = ' " . $current_pid . "' AND options_id = '" . $current_product_option_id . "'";
     $result = vam_db_query($query);
@@ -33,11 +33,12 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
     if ($isFound) {
       while($line = vam_db_fetch_array($result)) {
           // download function start
-        $dl_sql = vam_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysql_error());
+        $dl_sql = vam_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount, products_attributes_is_pin  FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysql_error());
         $dl_res = vam_db_fetch_array($dl_sql);
         $attribute_value_download_filename= $dl_res['products_attributes_filename'];
         $attribute_value_download_count = $dl_res['products_attributes_maxcount'];
         $attribute_value_download_expire = $dl_res['products_attributes_maxdays'];
+        $products_attributes_is_pin = $dl_res['products_attributes_is_pin'];
         // download function end
         $attribute_value_price = $line['options_values_price'];
         $sortorder = $line['sortorder'];
