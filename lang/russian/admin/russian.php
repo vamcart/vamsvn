@@ -584,4 +584,7 @@ define('text_two_trillion', 'два триллиона');
 
 define('BOX_YML_IMPORT','Я-маркет импорт/экспорт');
 
+define('TABLE_TEXT_IS_PIN','Товар имеет PIN код');
+define('BOX_CATALOG_PIN_LOADER','PIN коды');
+
 ?>
