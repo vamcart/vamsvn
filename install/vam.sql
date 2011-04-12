@@ -515,6 +515,7 @@ CREATE TABLE `admin_access` (
   `yml_import` int(1) NOT NULL default '0',
   `customer_export` int(1) NOT NULL default '0',
   `exportorders` int(1) NOT NULL default '0',
+  `pin_loader` int(1) NOT NULL default '0',
   PRIMARY KEY  (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1123,6 +1124,8 @@ CREATE TABLE orders_products_download (
   orders_products_filename varchar(255) NOT NULL default '',
   download_maxdays int(2) NOT NULL default '0',
   download_count int(2) NOT NULL default '0',
+  download_is_pin tinyint(1) default '0' not null ,
+  download_pin_code varchar(255) not null ,
   PRIMARY KEY  (orders_products_download_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1217,6 +1220,7 @@ CREATE TABLE products_attributes_download (
   products_attributes_filename varchar(255) NOT NULL default '',
   products_attributes_maxdays int(2) default '0',
   products_attributes_maxcount int(2) default '0',
+  products_attributes_is_pin tinyint(1) null default '0' ,
   PRIMARY KEY  (products_attributes_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1235,6 +1239,15 @@ CREATE TABLE products_description (
   products_viewed int(5) default '0',
   PRIMARY KEY  (products_id,language_id),
   KEY products_name (products_name)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS products_pins;
+CREATE TABLE products_pins (
+  products_pin_id int(11) NOT NULL auto_increment,
+  products_id int(11) NOT NULL,
+  products_pin_code char(250) NOT NULL,
+  products_pin_used tinyint(4) NOT NULL default '0',
+  PRIMARY KEY  (products_pin_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS products_images;
@@ -1852,8 +1865,8 @@ INSERT INTO address_format VALUES (3, '$firstname $secondname $lastname$cr$stree
 INSERT INTO address_format VALUES (4, '$firstname $secondname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
 INSERT INTO address_format VALUES (5, '$firstname $secondname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
 
-INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 # configuration_group_id 1
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_NAME', 'VaM Shop',  1, 1, NULL, '', NULL, NULL);
@@ -2056,10 +2069,10 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PRODUCT_LIST_RECURSIVE', 'false',  8, 2, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 9
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_CHECK', 'false',  9, 1, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ATTRIBUTE_STOCK_CHECK', 'false',  9, 2, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_LIMITED', 'false', 9, 3, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_ALLOW_CHECKOUT', 'true',  9, 4, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_CHECK', 'true',  9, 1, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ATTRIBUTE_STOCK_CHECK', 'true',  9, 2, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_LIMITED', 'true', 9, 3, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_ALLOW_CHECKOUT', 'false',  9, 4, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_MARK_PRODUCT_OUT_OF_STOCK', '***',  9, 5, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STOCK_REORDER_LEVEL', '5',  9, 6, NULL, '', NULL, NULL);
 
