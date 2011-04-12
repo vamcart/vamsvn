@@ -51,10 +51,16 @@ if (vam_db_num_rows($downloads_query) > 0) {
 		$download_expiry = date('Y-m-d H:i:s', $download_timestamp);
 
 //PIN add
+
 if ($downloads['download_is_pin']==1) { //PIN processing
+
 	$pinstring=$downloads['download_pin_code'];
 	
+if ($order_status < DOWNLOAD_MIN_ORDERS_STATUS) {
+			$dl[$jj]['download_link'] = '';
+} else {
 			$dl[$jj]['download_link'] = $downloads['products_name'] . ': ' . $pinstring;
+}
 				
 } else { //usual stuff
 
