@@ -40,7 +40,7 @@ if ($order_status < DOWNLOAD_MIN_ORDERS_STATUS) {
 	$module->assign('dl_prevented', 'true');
 }
 // Now get all downloadable products in that order
-$downloads_query = vam_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, op.products_name, opd.orders_products_download_id, opd.orders_products_filename, opd.download_count, opd.download_maxdays from ".TABLE_ORDERS." o, ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." opd where o.customers_id = '".$_SESSION['customer_id']."' and o.orders_id = '".$last_order."' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_filename != ''");
+$downloads_query = vam_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, op.products_name, opd.orders_products_download_id, opd.orders_products_filename, opd.download_count, opd.download_maxdays, opd.download_pin_code,opd.download_is_pin from ".TABLE_ORDERS." o, ".TABLE_ORDERS_PRODUCTS." op, ".TABLE_ORDERS_PRODUCTS_DOWNLOAD." opd where o.customers_id = '".$_SESSION['customer_id']."' and o.orders_id = '".$last_order."' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and (opd.orders_products_filename != '' or opd.download_is_pin='1')");
 if (vam_db_num_rows($downloads_query) > 0) {
 	$jj = 0;
 	//<!-- list of products -->
@@ -49,6 +49,16 @@ if (vam_db_num_rows($downloads_query) > 0) {
 		list ($dt_year, $dt_month, $dt_day) = explode('-', $downloads['date_purchased_day']);
 		$download_timestamp = mktime(23, 59, 59, $dt_month, $dt_day + $downloads['download_maxdays'], $dt_year);
 		$download_expiry = date('Y-m-d H:i:s', $download_timestamp);
+
+//PIN add
+if ($downloads['download_is_pin']==1) { //PIN processing
+	$pinstring=$downloads['download_pin_code'];
+	
+			$dl[$jj]['download_link'] = $downloads['products_name'] . ': ' . $pinstring;
+				
+} else { //usual stuff
+
+
 		//<!-- left box -->
 		// The link will appear only if:
 		// - Download remaining count is > 0, AND
@@ -66,6 +76,7 @@ if (vam_db_num_rows($downloads_query) > 0) {
 		$dl[$jj]['count'] = $downloads['download_count'];
 		$jj ++;
 	}
+  }
 }
 $module->assign('dl', $dl);
 $module->assign('language', $_SESSION['language']);
