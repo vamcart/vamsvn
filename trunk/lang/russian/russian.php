@@ -637,4 +637,6 @@ define('text_trillions', 'триллионов');
 define('text_one_trillion', 'один триллион');
 define('text_two_trillion', 'два триллиона');
 
+define('PIN_NOT_AVAILABLE', 'Товар закончился на складе. Отправлено уведомление на почту.');
+
 ?>

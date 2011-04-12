@@ -111,5 +111,6 @@ define('ACCESS_SELECT_SPECIAL','Админка - Каталог - Скидки -
 define('ACCESS_YML_IMPORT','Админка - Разное - Я-маркет импорт/экспорт');
 define('ACCESS_CUSTOMER_EXPORT','Админка - Покупатели - Клиенты - Экспорт клиентов');
 define('ACCESS_EXPORTORDERS','Админка - Покупатели - Заказы - Экспорт заказов');
+define('ACCESS_PIN_LOADER','Админка - Каталог - PIN коды');
 
 ?>
