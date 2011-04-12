@@ -328,7 +328,7 @@
 
   // set the session name and save path
   session_name('sid');
-	if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
+	if (STORE_SESSIONS != 'mysql') session_save_path(SESSION_WRITE_DIRECTORY);
 
   require_once (DIR_FS_INC.'vam_get_cookie_info.inc.php');  // get the session cookie parameters
   $cookie_info = vam_get_cookie_info();
