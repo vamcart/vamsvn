@@ -43,7 +43,7 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 //PIN add
 if ($downloads_values['download_is_pin']==1) { //PIN processing
 	$pinstring=$downloads_values['download_pin_code'];
-	$box_content .= $downloads_values['products_name'].': '.$pinstring;
+	$box_content .= $downloads_values['products_name'].': '.$pinstring.'<br />';
 } else { //usual stuff
 
 // The link will appear only if:
