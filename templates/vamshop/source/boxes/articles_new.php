@@ -42,6 +42,7 @@ if (sizeof($articles_content) > 0) {
         $box->caching = 1;
         $box->cache_lifetime=CACHE_LIFETIME;
         $box->cache_modified_check=CACHE_CHECK;
+        $cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
         $articiles_new = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_articles_new.html',$cache_id);
     }
     $vamTemplate->assign('box_ARTICLESNEW',$articiles_new);
