@@ -30,6 +30,8 @@ require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 
 $vamTemplate = new vamTemplate;
 
+include ('includes/header.php');
+
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int) $_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'");
 $product_info = vam_db_fetch_array($product_info_query);
 
