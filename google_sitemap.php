@@ -23,11 +23,11 @@
   define('MAX_ENTRYS', 50000);
   define('MAX_SIZE', 10000000);
 
-  define('SITEMAPINDEX_HEADER', "<?xml version='1.0' encoding='UTF-8'?>"."\n".'<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84"'."\n".'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'."\n".'xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84'."\n".'http://www.google.com/schemas/sitemap/0.84/siteindex.xsd">'."\n");
+  define('SITEMAPINDEX_HEADER', "<?xml version='1.0' encoding='UTF-8'?>"."\n".'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'."\n".'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'."\n".'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9'."\n".'http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">'."\n");
   define('SITEMAPINDEX_FOOTER', '</sitemapindex>');
   define('SITEMAPINDEX_ENTRY', "\t".'<sitemap>'."\n\t\t".'<loc>%s</loc>'."\n\t\t".'<lastmod>%s</lastmod>'."\n\t".'</sitemap>'."\n");
 
-  define('SITEMAP_HEADER', "<?xml version='1.0' encoding='UTF-8'?>"."\n".'<urlset xmlns="http://www.google.com/schemas/sitemap/0.84"'."\n".'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'."\n".'xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84'."\n".'http://www.google.com/schemas/sitemap/0.84/sitemap.xsd">'."\n");
+  define('SITEMAP_HEADER', "<?xml version='1.0' encoding='UTF-8'?>"."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'."\n".'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'."\n".'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9'."\n".'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'."\n");
   define('SITEMAP_FOOTER', '</urlset>');
   define('SITEMAP_ENTRY', "\t".'<url>'."\n\t\t".'<loc>%s</loc>'."\n\t\t".'<priority>%s</priority>'."\n\t\t".'<lastmod>%s</lastmod>'."\n\t\t".'<changefreq>%s</changefreq>'."\n\t".'</url>'."\n");
 
