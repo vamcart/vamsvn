@@ -9,6 +9,8 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
 // /downloads
 
+  if (isset($_SESSION['customer_id'])) {
+  	
   if (!strstr($_SERVER['SCRIPT_NAME'], FILENAME_ACCOUNT_HISTORY_INFO)) {
 // Get last order id for checkout_success
     $orders_query_raw = "SELECT orders_id FROM " . TABLE_ORDERS . " WHERE customers_id = '" . $_SESSION['customer_id'] . "' ORDER BY orders_id DESC LIMIT 1";
@@ -22,8 +24,8 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 // Now get all downloadable products in that order
   $downloads_query_raw = "SELECT DATE_FORMAT(date_purchased, '%Y-%m-%d') as date_purchased_day, op.products_name, opd.orders_products_download_id, opd.orders_products_filename, opd.download_count, opd.download_maxdays, opd.download_pin_code,opd.download_is_pin
                           FROM " . TABLE_ORDERS . " o, " . TABLE_ORDERS_PRODUCTS . " op, " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " opd
-                          WHERE customers_id = '" . $_SESSION['customer_id'] . "'
-                          AND o.orders_id = '" . $last_order . "'
+                          WHERE customers_id = '" . (int)$_SESSION['customer_id'] . "'
+                          AND o.orders_id = '" . (int)$last_order . "'
                           AND o.orders_status >= " . DOWNLOAD_MIN_ORDERS_STATUS . "
                           AND op.orders_id = '" . $last_order . "'
                           AND opd.orders_products_id=op.orders_products_id
@@ -82,6 +84,8 @@ $box->caching = 0;
 $box->assign('language', $_SESSION['language']);
 $box_download= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_download.html');
 $vamTemplate->assign('box_DOWNLOADS',$box_download);
+
+}
 
 }
 
