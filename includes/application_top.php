@@ -268,7 +268,7 @@ require (DIR_WS_FUNCTIONS.'sessions.php');
 
 // set the session name and save path
 session_name('sid');
-if (STORE_SESSIONS != 'mysql') session_save_path(SESSION_WRITE_DIRECTORY);
+if (STORE_SESSIONS != 'mysql') session_save_path(DIR_FS_DOCUMENT_ROOT.SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters
 if (function_exists('session_set_cookie_params')) {
@@ -306,7 +306,7 @@ if (SESSION_FORCE_COOKIE_USE == 'True') {
 
 // check the Agent
 $truncate_session_id = false;
-if (CHECK_CLIENT_AGENT=='true') {
+if (CHECK_CLIENT_AGENT) {
 	if (vam_check_agent() == 1) {
 		$truncate_session_id = true;
 	}
@@ -609,7 +609,7 @@ vam_count_cart();
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&category='.vam_cleanName($topics['topics_name']);
 
-        $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . implode('_', array_slice($tPath_array, 0, ($i+1))).$SEF_parameter));
+        $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath_array[$i].$SEF_parameter));
       } else {
         break;
       }
