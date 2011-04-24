@@ -233,7 +233,7 @@ define ('EP_MAX_CATEGORIES', 7); // default is 7
 // VJ product attributes begin
 // **** Product Attributes ****
 // change this to false, if do not want to download product attributes
-define ('EP_PRODUCTS_WITH_ATTRIBUTES', true);  // default is true
+define ('EP_PRODUCTS_WITH_ATTRIBUTES', false);  // default is true
 
 // change this to true, if you use QTYpro and want to set attributes stock with EP.
 define ('EP_PRODUCTS_ATTRIBUTES_STOCK', false); // default is false
