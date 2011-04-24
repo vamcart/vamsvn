@@ -31,6 +31,10 @@ if (strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE)) {
 $form_id = 'checkout_alternative';
 }
 
+if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
+$form_id = 'checkout_payment';
+}
+
 if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
 $form_id = 'create_account';
 }
@@ -126,6 +130,10 @@ jQuery(function () {
 				minlength: <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>,
 				equalTo: "#pass"
 			},
+			qiwi_telephone: {
+				required: "#qiwi:checked",
+				minlength: 10
+			},
 		},
 		messages: {
 			gender: "<?php echo ENTRY_GENDER_ERROR; ?>",
@@ -174,6 +182,10 @@ jQuery(function () {
 				required: "<?php echo ENTRY_PASSWORD_ERROR_NOT_MATCHING; ?>",
 				minlength: "<?php echo ENTRY_PASSWORD_CURRENT_ERROR; ?>",
 				equalTo: "<?php echo ENTRY_PASSWORD_ERROR_NOT_MATCHING; ?>"
+			},
+			qiwi_telephone: {
+				required: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>",
+				minlength: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>"
 			}
 		}
 	});
