@@ -143,6 +143,9 @@ if (strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS )) {
     include(DIR_WS_INCLUDES.'form_check.js.php');
   }
   }
+  if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
+require(DIR_WS_INCLUDES.'form_check.js.php');
+}
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($PHP_SELF,FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 ?>
