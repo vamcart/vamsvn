@@ -1,4 +1,5 @@
-{foreach name=aussen item=module_data from=$module_content} <p>
+{foreach name=aussen item=module_data from=$module_content} <div class="{cycle values="itemOdd,itemEven"}">
+<p>
 <label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
 </p>{if $module_data.description}<p>
 {$module_data.description}
@@ -7,4 +8,5 @@
 {$module_data.error}
 </p>{else} {foreach name=aussen item=method_data from=$module_data.fields} <p>
 {$method_data.title}&nbsp;{$method_data.field}
-</p> {/foreach}{/if}{/foreach}
+</p> {/foreach}{/if}
+</div>{/foreach}

@@ -3362,5 +3362,15 @@ li.ajaxAddQuickie
      background-color: #ffb3b5; 
      padding: 0.5em 0.5em 0.5em 0.5em; 
    }
-      
+
+.itemOdd 
+   {
+     background: transparent;
+   }
+   
+.itemEven 
+   {
+     background: #f4f4f4;
+   }
+            
 /*]]>*/
