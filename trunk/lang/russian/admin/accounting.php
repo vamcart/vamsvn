@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: accounting.php 1125 2010-03-09 11:13:01Z VaM $   
+   $Id: accounting.php 1125 2011-03-09 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -23,7 +23,7 @@ define('ACCESS_ZONES', 'Админка - Разное - Места/Налоги 
 define('ACCESS_GEO_ZONES', 'Админка - Разное - Места/Налоги - Регионы');
 define('ACCESS_TAX_CLASSES', 'Админка - Разное - Места/Налоги - Виды налогов');
 define('ACCESS_TAX_RATES', 'Админка - Разное - Места/Налоги - Ставки налогов');
-define('ACCESS_ACCOUNTING', 'Админка - Покупалети - Клиенты - Доступ в админку');
+define('ACCESS_ACCOUNTING', 'Админка - Покупатели - Клиенты - Доступ в админку');
 define('ACCESS_BACKUP', 'Админка - Разное - Инструменты - Резервное копирование');
 define('ACCESS_CACHE', 'Админка - Настройки - Основные - Кэш');
 define('ACCESS_SERVER_INFO', 'Админка - Разное - Инструменты - Сервер инфо');
