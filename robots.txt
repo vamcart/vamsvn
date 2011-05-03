@@ -41,10 +41,8 @@ Disallow: /popup_image.php
 Disallow: /popup_search_help.php
 Disallow: /privacy.php
 Disallow: /product_notifications.php
-Disallow: /product_reviews.php
-Disallow: /product_reviews_info.php
 Disallow: /product_compare.php
-Disallow: /reviews.php
+Disallow: /product_reviews_write.php
 Disallow: /shipping.php
 Disallow: /shop_content.php
 Disallow: /export/
