@@ -94,19 +94,24 @@ include(DIR_WS_MODULES . 'analytics/analytics.php');
 	$vamTemplate->assign('google_tracking', 'true');
 	$vamTemplate->assign('tracking_code', '
 <script type="text/javascript">
-	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-	document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-	var pageTracker = _gat._getTracker("' . GOOGLE_CONVERSION_ID . '");
-	pageTracker._initData();
-	pageTracker._trackPageview();
-   pageTracker._addTrans(
-' . $transaction_string . '
+  var _gaq = _gaq || [];
+  _gaq.push([\'_setAccount\', \'' . GOOGLE_CONVERSION_ID . '\']);
+  _gaq.push([\'_trackPageview\']);
+  _gaq.push([\'_trackPageLoadTime\']);
 
-);
+   _gaq.push([\'_addTrans\',
+' . $transaction_string . '
+]);
+
 ' . $item_string . '
-  pageTracker._trackTrans();
+  _gaq.push([\'_trackTrans\']); //submits transaction to the Analytics servers
+
+  (function() {
+    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;
+    ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 		    ');
 
