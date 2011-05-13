@@ -3372,5 +3372,21 @@ li.ajaxAddQuickie
    {
      background: #f4f4f4;
    }
-            
+
+#slide-featured 
+	{
+		width:90%;
+		margin:0 auto;
+	}
+
+#slide-featured li
+	{
+		list-style: none;
+	}
+
+#slide-new 
+	{
+		width:90%;
+		margin:0 auto;
+	}            
 /*]]>*/
