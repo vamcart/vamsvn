@@ -102,10 +102,10 @@ if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
 		$_SESSION['conditions'] = true;
 	}
 
-//	if ($_SESSION['conditions'] == false) {
-//		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
-//		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
-//	}
+	if ($_SESSION['conditions'] == false) {
+		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
+		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
+	}
 }
 
 // load the selected payment module
@@ -128,9 +128,9 @@ $order_total_modules->pre_confirmation_check();
 // GV Code End
 
 // GV Code line changed
-//if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
-	//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
-//}
+if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
+	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
+}
 
 if (is_array($payment_modules->modules))
 	$payment_modules->pre_confirmation_check();
