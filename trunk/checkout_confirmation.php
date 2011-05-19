@@ -102,10 +102,10 @@ if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
 		$_SESSION['conditions'] = true;
 	}
 
-	if ($_SESSION['conditions'] == false) {
-		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
-		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
-	}
+//	if ($_SESSION['conditions'] == false) {
+//		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
+//		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
+//	}
 }
 
 // load the selected payment module
@@ -128,9 +128,9 @@ $order_total_modules->pre_confirmation_check();
 // GV Code End
 
 // GV Code line changed
-if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
-	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
-}
+//if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
+	//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
+//}
 
 if (is_array($payment_modules->modules))
 	$payment_modules->pre_confirmation_check();
@@ -196,7 +196,7 @@ if (sizeof($order->info['tax_groups']) > 1) {
 } else {
 
 }
-$data_products = '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
+$data_products = '<table border="0" cellspacing="0" cellpadding="0">';
 for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 
 	$data_products .= '<tr>' . "\n" . '            <td class="main" align="left" valign="top">' . $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . '</td>' . "\n" . '                <td class="main" align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], true) . '</td></tr>' . "\n";
