@@ -179,34 +179,22 @@ define ('EP_PRECISION', 2);  // default is 2
 // set to false = no quote replacement
 define ('EP_REPLACE_QUOTES', false);  // default is false
 
-
 // **** Field Separator ****
 // change this if you can't use the default of tabs
 // Tab is the default, comma and semicolon are commonly supported by various progs
 // Remember, if your descriptions contain this character, you will confuse EP!
 // if EP_EXCEL_SAFE_OUTPUT if false (below) you must make EP_PRESERVE_TABS_CR_LF false also.
-$ep_separator = "\t"; // tab is default
+//$ep_separator = "\t"; // tab is default
 //$ep_separator = ',';  // comma
-//$ep_separator = ';';  // semi-colon
+$ep_separator = ';';  // semi-colon
 //$ep_separator = '~';  // tilde
 //$ep_separator = '*';  // splat
-
 
 // *** Excel safe output ***
 // this setting will supersede the previous $ep_separator setting and create a file
 // that excel will import without spanning cells from embedded commas or tabs in your products.
 // if EP_EXCEL_SAFE_OUTPUT if false (below) you must make EP_PRESERVE_TABS_CR_LF false also.
 define ('EP_EXCEL_SAFE_OUTPUT', true); // default is: true
-
-if (EP_EXCEL_SAFE_OUTPUT == true) { 
-  if ($_SESSION['language'] == 'russian') { 
-    $ep_separator = "\t";  // comma
-  } elseif ($_SESSION['language'] == 'german') {
-    $ep_separator = ';';  // semi-colon
-  } else {
-    $ep_separator = ',';  // comma  // default for all others.
-  }
-}
 
 // if EP_EXCEL_SAFE_OUTPUT if true (above) there is an alternative line parsing routine
 //  provided by Maynard that will use a manual php approach.  There is a bug in some
