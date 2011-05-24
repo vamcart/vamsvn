@@ -25,12 +25,12 @@
       global $order;
 
       $this->code = 'aviso';
-      $this->title = MODULE_PAYMENT_AVISOTEXT_TITLE;
-      $this->public_title = MODULE_PAYMENT_AVISOTEXT_PUBLIC_TITLE;
-      $this->description = MODULE_PAYMENT_AVISOTEXT_ADMIN_DESCRIPTION;
+      $this->title = MODULE_PAYMENT_AVISO_TEXT_TITLE;
+      $this->public_title = MODULE_PAYMENT_AVISO_TEXT_PUBLIC_TITLE;
+      $this->description = MODULE_PAYMENT_AVISO_TEXT_ADMIN_DESCRIPTION;
       $this->icon = DIR_WS_ICONS . 'aviso.png';
-      $this->sort_order = MODULE_PAYMENT_AVISOSORT_ORDER;
-      $this->enabled = ((MODULE_PAYMENT_AVISOSTATUS == 'True') ? true : false);
+      $this->sort_order = MODULE_PAYMENT_AVISO_SORT_ORDER;
+      $this->enabled = ((MODULE_PAYMENT_AVISO_STATUS == 'True') ? true : false);
 
         $this->form_action_url = 'https://api.avisosms.ru/mc/create_order/';
     }
@@ -39,9 +39,9 @@
     function update_status() {
       global $order;
 
-      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_AVISOZONE > 0) ) {
+      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_AVISO_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_AVISOZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_AVISO_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
         while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
@@ -64,8 +64,8 @@
 
     function selection() {
 
-      if (isset($_SESSION['cart_webmoney_id'])) {
-        $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      if (isset($_SESSION['cart_avisosms_id'])) {
+        $order_id = substr($_SESSION['cart_avisosms_id'], strpos($_SESSION['cart_avisosms_id'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
@@ -77,7 +77,7 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          unset($_SESSION['cart_webmoney_id']);
+          unset($_SESSION['cart_avisosms_id']);
         }
       }
 
@@ -107,12 +107,12 @@
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (isset($_SESSION['cart_webmoney_id'])) {
-          $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+        if (isset($_SESSION['cart_avisosms_id'])) {
+          $order_id = substr($_SESSION['cart_avisosms_id'], strpos($_SESSION['cart_avisosms_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_webmoney_id'], 0, strlen($_SESSION['cartID']))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_avisosms_id'], 0, strlen($_SESSION['cartID']))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -303,11 +303,11 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $_SESSION['cart_webmoney_id'] = $_SESSION['cartID'] . '-' . $insert_id;
+          $_SESSION['cart_avisosms_id'] = $_SESSION['cartID'] . '-' . $insert_id;
         }
       }
 
-      return array('title' => MODULE_PAYMENT_AVISOTEXT_DESCRIPTION);
+      return array('title' => MODULE_PAYMENT_AVISO_TEXT_DESCRIPTION);
     }
 
     function process_button() {
@@ -315,12 +315,52 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $purse = MODULE_PAYMENT_AVISOWMR;
+                               $purse = MODULE_PAYMENT_AVISO_WMR;
                                $order_sum = $order->info['total'];
 
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1)) .
+include_once DIR_WS_INCLUDES . 'external/avisosms/avisosmsmc.class.php';
+
+/*
+ * Инициализация
+ */
+
+$username = 'vamshop';
+$access_key = 'vamshop';
+$service_id = 10;
+
+// Создаем новый объект для работы с avisosms m_commerce
+$m_commerce = new AvisosmsMCommerce($username, $access_key, $service_id);
+// Включаем тестовый режим
+$m_commerce->test = TRUE;
+
+//------------------------------------------------------------------------------
+
+/*
+ * Создание нового заказа
+ */
+$description = 'testiruem m commerce';
+$price = 101;
+$success_message = 'testing success!';
+$phone = '79188806843';
+$merchant_order_id = '123';
+
+if ($m_commerce->createOrder($description, $price, $success_message, $phone, $merchant_order_id))
+{
+// Заказ создан успешно (status = 0)
+// Ответ ввиде массива
+    $response = $m_commerce->response();
+    var_dump($response);
+}
+else
+{
+// Ошибка создания заказа (status > 0)
+    echo 'Ошибка: '.$m_commerce->error_message();
+    var_dump($m_commerce->response());
+}
+
+      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_avisosms_id'], strpos($_SESSION['cart_avisosms_id'], '-')+1)) .
                                vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1)) .
+                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_avisosms_id'], strpos($_SESSION['cart_avisosms_id'], '-')+1)) .
                                vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
                                vam_draw_hidden_field('LMI_SIM_MODE', '0');
 
@@ -331,7 +371,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
-      $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      $order_id = substr($_SESSION['cart_avisosms_id'], strpos($_SESSION['cart_avisosms_id'], '-')+1);
 
 // initialized for the email confirmation
       $products_ordered = '';
@@ -491,7 +531,7 @@ $vamTemplate = new vamTemplate;
       unset($_SESSION['payment']);
       unset($_SESSION['comments']);
 
-      unset($_SESSION['cart_webmoney_id']);
+      unset($_SESSION['cart_avisosms_id']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
@@ -506,7 +546,7 @@ $vamTemplate = new vamTemplate;
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_AVISOSTATUS'");
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_AVISO_STATUS'");
         $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
@@ -514,14 +554,14 @@ $vamTemplate = new vamTemplate;
 
     function install() {
 
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AVISOSTATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISOALLOWED', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISOID', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISOWMR', '', '6', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISOSORT_ORDER', '0', '6', '7', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AVISOZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISOSECRET_KEY', '', '6', '9', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_AVISOORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_AVISO_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_ALLOWED', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_ID', '', '6', '5', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_WMR', '', '6', '6', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SORT_ORDER', '0', '6', '7', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AVISO_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SECRET_KEY', '', '6', '9', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_AVISO_ORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
     function remove() {
@@ -529,7 +569,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_AVISOSTATUS', 'MODULE_PAYMENT_AVISOALLOWED', 'MODULE_PAYMENT_AVISOID', 'MODULE_PAYMENT_AVISOWMR', 'MODULE_PAYMENT_AVISOSORT_ORDER', 'MODULE_PAYMENT_AVISOZONE', 'MODULE_PAYMENT_AVISOSECRET_KEY', 'MODULE_PAYMENT_AVISOORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_AVISO_STATUS', 'MODULE_PAYMENT_AVISO_ALLOWED', 'MODULE_PAYMENT_AVISO_ID', 'MODULE_PAYMENT_AVISO_WMR', 'MODULE_PAYMENT_AVISO_SORT_ORDER', 'MODULE_PAYMENT_AVISO_ZONE', 'MODULE_PAYMENT_AVISO_SECRET_KEY', 'MODULE_PAYMENT_AVISO_ORDER_STATUS_ID');
     }
 
   }
