@@ -55,7 +55,7 @@ if (GROUP_CHECK == 'true') {
 if (isset ($current_category_id) && ($current_category_id > 0)) {
 	$best_sellers_query = "select distinct
 	                                        p.products_id,
-	                                        p.products_price,
+	                                        p.products_fsk18,	                                        p.products_price,
 	                                        p.products_tax_class_id,
 	                                        p.products_image,
                                            p.products_vpe,
@@ -76,7 +76,7 @@ if (isset ($current_category_id) && ($current_category_id > 0)) {
 } else {
 	$best_sellers_query = "select distinct
 	                                        p.products_id,
-	                                        p.products_image,
+	                                        p.products_fsk18,	                                        p.products_image,
 	                                        p.products_price,
                                            p.products_vpe,
 				                           p.products_vpe_status,
