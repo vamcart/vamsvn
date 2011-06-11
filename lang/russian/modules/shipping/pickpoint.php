@@ -19,7 +19,7 @@
 
 define('MODULE_SHIPPING_PICKPOINT_TEXT_TITLE', 'Постаматы PickPoint.Ru');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_DESCRIPTION', 'Постаматы PickPoint.Ru');
-define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', 'Вы самостоятельно забираете свой заказа в постомате PickPoint.Ru.');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', 'Вы самостоятельно забираете свой заказ в постамате PickPoint.Ru.');
 
 define('MODULE_SHIPPING_PICKPOINT_STATUS_TITLE' , 'Разрешить модуль pickpoint');
 define('MODULE_SHIPPING_PICKPOINT_STATUS_DESC' , 'Вы хотите разрешить модуль pickpoint?');
