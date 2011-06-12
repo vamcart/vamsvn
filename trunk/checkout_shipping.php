@@ -164,6 +164,16 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 					if ((isset ($quote[0]['methods'][0]['title'])) && (isset ($quote[0]['methods'][0]['cost']))) {
 						$_SESSION['shipping'] = array ('id' => $_SESSION['shipping'], 'title' => (($free_shipping == true) ? $quote[0]['methods'][0]['title'] : $quote[0]['module'].' ('.$quote[0]['methods'][0]['title'].')'), 'cost' => $quote[0]['methods'][0]['cost']);
 
+						//pickpoint start
+								if ($_POST['shipping'] == 'pickpoint_pickpoint') {
+						       if ($_POST['pickpoint_address'] != '') {
+								    $_SESSION['shipping']['title'] = MODULE_SHIPPING_PICKPOINT_TEXT_TITLE . ': ' . MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS . $_POST['pickpoint_address'];
+						       } else {
+								    $_SESSION['shipping']['title'] = 'test';
+						       }
+						      }
+						//pickpoint end
+
 						vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 					}
 				}
