@@ -19,30 +19,18 @@
 
 define('MODULE_SHIPPING_PICKPOINT_TEXT_TITLE', 'Постаматы PickPoint.Ru');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_DESCRIPTION', 'Постаматы PickPoint.Ru');
+
+define('MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS','Выберите адрес доставки в Москве');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP','(откроется во всплывающем окне)');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS','Ваш заказ доставят по адресу: ');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
+
 define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', '
 
 <script type="text/javascript" src="http://www.pickpoint.ru/select/postamat.js"></script>
 
 <script type="text/javascript">
 function pickpoint_call(id_this){
-/*
-  var id = id_this.parentNode;
-  var numb = 0;
-  while(id.hasAttribute("onclick") == false) {
-    id = id.parentNode;
-    if (id.hasAttribute("onclick")) {
-      var onclk = id.getAttribute("onclick");
-      if (onclk.indexOf("selectRowEffect(this,") >= 0) {
-        var strlen = onclk.length-1;
-        numb = onclk.substring(21, strlen);
-        break;
-      }
-    }
-  }
-  alert(id);
-  alert(numb);
-  selectRowEffect(id, numb);
-*/
   PickPoint.open(pickpoint_callback_function, pickpoint_options);
 }
 function pickpoint_callback_function(result){
@@ -54,10 +42,9 @@ function pickpoint_callback_function(result){
   var pickpoint_link_help = document.getElementById("pickpoint_link_help");
   pickpoint_id.value = result["id"];
   pickpoint_address.value = result["address"];
-//  var_dump(pickpoint_address_text);
   // textContent innerHTML
-  pickpoint_address_text.innerHTML = "Ваш заказ доставят по адресу: " + result["address"] + " ";
-  pickpoint_link.innerHTML = "Выбрать другой адрес";
+  pickpoint_address_text.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS.'" + result["address"] + " ";
+  pickpoint_link.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS.'";
   if (pickpoint_error) pickpoint_error.innerHTML="";
 //  if (pickpoint_link_help) pickpoint_link_help.innerHTML="";
 }
@@ -66,7 +53,7 @@ var pickpoint_options={city:"moscow"};
 <input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
 <input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
 <span id="pickpoint_address_text"></span>
-<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">Выберите адрес доставки в Москве здесь</span></a></u> <span id="pickpoint_link_help">(откроется во всплывающем окне)</span>
+<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">'.MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS.'</span></a></u> <span id="pickpoint_link_help">'.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP.'</span>
 
 ');
 
@@ -82,4 +69,5 @@ define('MODULE_SHIPPING_PICKPOINT_ZONE_TITLE' , 'Зона');
 define('MODULE_SHIPPING_PICKPOINT_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
 define('MODULE_SHIPPING_PICKPOINT_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_SHIPPING_PICKPOINT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
+
 ?>
