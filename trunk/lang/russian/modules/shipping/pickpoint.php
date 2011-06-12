@@ -19,7 +19,56 @@
 
 define('MODULE_SHIPPING_PICKPOINT_TEXT_TITLE', 'Постаматы PickPoint.Ru');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_DESCRIPTION', 'Постаматы PickPoint.Ru');
-define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', 'Вы самостоятельно забираете свой заказ в постамате PickPoint.Ru.');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', '
+
+<script type="text/javascript" src="http://www.pickpoint.ru/select/postamat.js"></script>
+
+<script type="text/javascript">
+function pickpoint_call(id_this){
+/*
+  var id = id_this.parentNode;
+  var numb = 0;
+  while(id.hasAttribute("onclick") == false) {
+    id = id.parentNode;
+    if (id.hasAttribute("onclick")) {
+      var onclk = id.getAttribute("onclick");
+      if (onclk.indexOf("selectRowEffect(this,") >= 0) {
+        var strlen = onclk.length-1;
+        numb = onclk.substring(21, strlen);
+        break;
+      }
+    }
+  }
+  alert(id);
+  alert(numb);
+  selectRowEffect(id, numb);
+*/
+  PickPoint.open(pickpoint_callback_function, pickpoint_options);
+}
+function pickpoint_callback_function(result){
+  var pickpoint_id = document.getElementById("pickpoint_id");
+  var pickpoint_address = document.getElementById("pickpoint_address");
+  var pickpoint_address_text = document.getElementById("pickpoint_address_text");
+  var pickpoint_link = document.getElementById("pickpoint_link");
+  var pickpoint_error = document.getElementById("pickpoint_error");
+  var pickpoint_link_help = document.getElementById("pickpoint_link_help");
+  pickpoint_id.value = result["id"];
+  pickpoint_address.value = result["address"];
+//  var_dump(pickpoint_address_text);
+  // textContent innerHTML
+  pickpoint_address_text.innerHTML = "Ваш заказ доставят по адресу: " + result["address"] + " ";
+  pickpoint_link.innerHTML = "Выбрать другой адрес";
+  if (pickpoint_error) pickpoint_error.innerHTML="";
+//  if (pickpoint_link_help) pickpoint_link_help.innerHTML="";
+}
+var pickpoint_options={city:"moscow"};
+</script>
+<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
+<input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
+<span id="pickpoint_address_text"></span>
+<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">Выберите адрес доставки в Москве здесь</span></a></u> <span id="pickpoint_link_help">(откроется во всплывающем окне)</span>
+
+');
 
 define('MODULE_SHIPPING_PICKPOINT_STATUS_TITLE' , 'Разрешить модуль pickpoint');
 define('MODULE_SHIPPING_PICKPOINT_STATUS_DESC' , 'Вы хотите разрешить модуль pickpoint?');
