@@ -61,7 +61,7 @@
         $fp = fopen($file,"w");
         fwrite($fp, $stream);
         fclose($fp);
-        $result = unserialize(implode('',file($file)));
+        $result = $records;
 
    }
 
