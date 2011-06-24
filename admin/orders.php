@@ -450,30 +450,6 @@ switch ($_GET['action']) {
 
 		vam_redirect(vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action'))));
 		break;
-		// BMC Delete CC info Start
-		// Remove CVV Number
-	case 'deleteccinfo' :
-		$oID = vam_db_prepare_input($_GET['oID']);
-
-		vam_db_query("update ".TABLE_ORDERS." set cc_cvv = null where orders_id = '".vam_db_input($oID)."'");
-		vam_db_query("update ".TABLE_ORDERS." set cc_number = '0000000000000000' where orders_id = '".vam_db_input($oID)."'");
-		vam_db_query("update ".TABLE_ORDERS." set cc_expires = null where orders_id = '".vam_db_input($oID)."'");
-		vam_db_query("update ".TABLE_ORDERS." set cc_start = null where orders_id = '".vam_db_input($oID)."'");
-		vam_db_query("update ".TABLE_ORDERS." set cc_issue = null where orders_id = '".vam_db_input($oID)."'");
-
-		vam_redirect(vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=edit'));
-		break;
-
-	case 'afterbuy_send' :
-		$oID = vam_db_prepare_input($_GET['oID']);
-		require_once (DIR_FS_CATALOG.'includes/classes/afterbuy.php');
-		$aBUY = new vam_afterbuy_functions($oID);
-		if ($aBUY->order_send())
-			$aBUY->process_order();
-
-		break;
-
-		// BMC Delete CC Info End
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -1067,8 +1043,6 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 ?>
    <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_ORDER,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><span><?php echo BUTTON_INVOICE; ?></span></a>
    <a class="button" href="Javascript:void()" onclick="window.open('<?php echo vam_href_link(FILENAME_PRINT_PACKINGSLIP,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><span><?php echo BUTTON_PACKINGSLIP; ?></span></a>
-	<!-- BMC Delete CC Info -->
-	<a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'oID='.$_GET['oID'].'&action=deleteccinfo').'"><span>'.BUTTON_REMOVE_CC_INFO;?></span></a>&nbsp;
    <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS, 'page='.$_GET['page'].'&oID='.$_GET['oID']).'"><span>'.BUTTON_BACK;?></span></a>
        </td>
       </tr>
