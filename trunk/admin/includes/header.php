@@ -270,7 +270,6 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_extra_fields'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_EXTRA_FIELDS) . '">' . BOX_PRODUCT_EXTRA_FIELDS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customer_extra_fields'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_EXTRA_FIELDS) . '">' . BOX_HEADING_CUSTOMER_EXTRA_FIELDS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONTENT_MANAGER) . '">' . BOX_CONTENT . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blacklist'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_BLACKLIST, '', 'NONSSL') . '">' . BOX_TOOLS_BLACKLIST . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULE_NEWSLETTER) . '">' . BOX_MODULE_NEWSLETTER . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['banner_manager'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_BANNER_MANAGER) . '">' . BOX_BANNER_MANAGER . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['server_info'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SERVER_INFO) . '">' . BOX_SERVER_INFO . '</a></dd>' . "\n";
@@ -288,7 +287,6 @@
  ($admin_access['backup'] == '0') && 
  ($admin_access['product_extra_fields'] == '0') && 
  ($admin_access['content_manager'] == '0') && 
- ($admin_access['blacklist'] == '0') && 
  ($admin_access['module_newsletter'] == '0') && 
  ($admin_access['banner_manager'] == '0') && 
  ($admin_access['server_info'] == '0') && 
