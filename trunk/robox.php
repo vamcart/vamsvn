@@ -30,17 +30,17 @@ require('includes/application_top.php');
 //fclose($fp);
 
 // variables prepearing
-$inv_id = get_var('inv_id');
-$out_summ = get_var('out_summ');
-$crc = get_var('crc');
+$inv_id = get_var('InvId');
+$out_summ = get_var('OutSum');
+$crc = get_var('SignatureValue');
 
 // checking and handling
 if (strtoupper(md5("$out_summ:$inv_id:".MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2)) == strtoupper($crc)) {
-  $sql_data_array = array('orders_status' => MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS);
+  $sql_data_array = array('orders_status' => MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
   $sql_data_arrax = array('orders_id' => $inv_id,
-                          'orders_status_id' => MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS,
+                          'orders_status_id' => MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
                           'comments' => 'Roboxchange accepted this order payment');
