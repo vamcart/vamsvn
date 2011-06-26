@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: roboxchange.php 998 2011/02/07 13:24:46 VaM $
+   $Id: roboxchange.php 998 2011/02/07 13:24:47 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
