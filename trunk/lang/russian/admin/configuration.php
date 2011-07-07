@@ -826,7 +826,7 @@ define('CG_MY_GZIP_TITLE', 'GZip компрессия');
 define('CG_MY_SESSIONS_TITLE', 'Сессии');
 define('CG_META_TAGS_TITLE', 'Мета теги');
 define('CG_VAT_ID_TITLE', 'Vat');
-define('CG_GOOGLE_TITLE', 'Google Analytics');
+define('CG_GOOGLE_TITLE', 'Счётчики');
 define('CG_IMPORT_EXPORT_TITLE', 'Импорт/Экспорт');
 define('CG_AFTER_BUY_TITLE', 'Afterbuy');
 define('CG_SEARCH_TITLE', 'Настройки поиска');
