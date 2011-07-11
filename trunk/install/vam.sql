@@ -2192,6 +2192,8 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('GOOGLE_CONVERSION_ID', 'UA-XXXXXX-X', '19', '2', NULL , '0000-00-00 00:00:00', NULL , NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('GOOGLE_LANG', 'ru', '19', '3', NULL , '0000-00-00 00:00:00', NULL , NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('GOOGLE_CONVERSION', 'false', '19', '0', NULL , '0000-00-00 00:00:00', NULL , 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('YANDEX_METRIKA_ID', '', '19', '4', NULL , '0000-00-00 00:00:00', NULL , NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('YANDEX_METRIKA', 'false', '19', '5', NULL , '0000-00-00 00:00:00', NULL , 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 #configuration_group_id 20
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('CSV_TEXTSIGN', '"', '20', '1', NULL , '0000-00-00 00:00:00', NULL , NULL);

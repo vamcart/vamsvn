@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2010-09-07 17:37:58 VaM $
+   $Id: russian.php 1231 2011-07-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -90,7 +90,7 @@ define('BOX_CONFIGURATION_14', 'GZip компрессия');
 define('BOX_CONFIGURATION_15', 'Сессии');
 define('BOX_CONFIGURATION_16', 'Мета теги');
 define('BOX_CONFIGURATION_17', 'Разное');
-define('BOX_CONFIGURATION_19', 'Google Analytics');
+define('BOX_CONFIGURATION_19', 'Счётчики');
 define('BOX_CONFIGURATION_22', 'Настройки поиска');
 define('BOX_CONFIGURATION_23', 'Яндекс-Маркет');
 define('BOX_CONFIGURATION_24', 'Изменение цен');
