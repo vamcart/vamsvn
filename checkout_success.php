@@ -91,8 +91,7 @@ if (GOOGLE_CONVERSION == 'true') {
 
 include(DIR_WS_MODULES . 'analytics/analytics.php');
 
-	$vamTemplate->assign('google_tracking', 'true');
-	$vamTemplate->assign('tracking_code', '
+$tracking_code .= '
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push([\'_setAccount\', \'' . GOOGLE_CONVERSION_ID . '\']);
@@ -113,9 +112,49 @@ include(DIR_WS_MODULES . 'analytics/analytics.php');
   })();
 
 </script>
-		    ');
+		    ';
+
+	$vamTemplate->assign('google_tracking', 'true');
+	$vamTemplate->assign('tracking_code', $tracking_code);
 
 }
+
+if (YANDEX_METRIKA == 'true') {
+
+include(DIR_WS_MODULES . 'analytics/metrika.php');
+
+$tracking_code .= '
+<script type="text/javascript">
+var yaParams = {
+	
+'.$transaction_string.'	
+
+  goods: 
+     [
+'.$item_string.'	
+      ]
+	
+	};
+</script>
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter' . YANDEX_METRIKA_ID . ' = new Ya.Metrika({id:' . YANDEX_METRIKA_ID . ', enableAll: true});
+        }
+        catch(e) { }
+    });
+})(window, \'yandex_metrika_callbacks\');
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><div><img src="//mc.yandex.ru/watch/' . YANDEX_METRIKA_ID . '" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		    ';
+
+	$vamTemplate->assign('google_tracking', 'true');
+	$vamTemplate->assign('tracking_code', $tracking_code);
+
+}
+
 if (DOWNLOAD_ENABLED == 'true')
 	include (DIR_WS_MODULES.'downloads.php');
 $vamTemplate->assign('language', $_SESSION['language']);

@@ -603,10 +603,14 @@ define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_DESC','Группа для пок�
 // Google Conversion
 define('GOOGLE_CONVERSION_TITLE','Включить статистику Google Analytics');
 define('GOOGLE_CONVERSION_DESC','Включить Google Analytics. Вы должны зарегистрироваться в системе Google Analytics - http://google.com/analytics/ru-RU/');
-define('GOOGLE_CONVERSION_ID_TITLE','Ваш ID');
+define('GOOGLE_CONVERSION_ID_TITLE','Ваш ID в Google Analytics');
 define('GOOGLE_CONVERSION_ID_DESC','ID Вашего сайта в Google Analytics. Обычно в виде UA-XXXXXX-X');
 define('GOOGLE_LANG_TITLE','Язык');
 define('GOOGLE_LANG_DESC','Язык магазина (ru, en, fr, de...), можно не указывать, это необязательный параметр.');
+define('YANDEX_METRIKA_ID_TITLE','Ваш ID в Яндекс Метрике');
+define('YANDEX_METRIKA_ID_DESC','ID номер Вашего сайта в Яндекс Метрике.');
+define('YANDEX_METRIKA_TITLE','Включить статистику Яндекс Метрика');
+define('YANDEX_METRIKA_DESC','Включить Яндекс Метрику.');
 
 // Afterbuy
 define('AFTERBUY_ACTIVATED_TITLE','Активировать');
