@@ -15,6 +15,7 @@
    ---------------------------------------------------------------------------------------*/
 ?>
 
+<?php if (GOOGLE_CONVERSION == 'true') { ?>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -29,7 +30,8 @@
   })();
 
 </script>
-
+<?php } ?>
+<?php if (YANDEX_METRIKA == 'true') { ?>
 <!-- Yandex.Metrika counter -->
 <div style="display:none;"><script type="text/javascript">
 (function(w, c) {
@@ -44,3 +46,4 @@
 <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
 <noscript><div><img src="//mc.yandex.ru/watch/<?php echo YANDEX_METRIKA_ID; ?>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<?php } ?>
