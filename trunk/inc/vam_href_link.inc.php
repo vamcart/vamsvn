@@ -177,7 +177,7 @@
 
           if (AJAX_CART == 'true') {
             if( vam_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
-              $link_ajax = '" onclick="doBuyNowGet(\'' . vam_href_link( 'ajax_shopping_cart.php', $parameters, $connection, $add_session_id, $search_engine_safe) . '\'); return false;';
+              $link_ajax = '" onclick="doBuyNow(\'1,1\'); return false;';
             }
           }
 
@@ -609,7 +609,7 @@
 
     if (AJAX_CART == 'true') {
       if( vam_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
-        $link_ajax = '" onclick="doBuyNowGet(\'' . vam_href_link( 'ajax_shopping_cart.php', $parameters, $connection, $add_session_id, $search_engine_safe) . '\'); return false;';
+              $link_ajax = '" onclick="doBuyNow(\'1,1\'); return false;';
       }
     }
 
