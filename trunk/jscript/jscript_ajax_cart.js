@@ -30,6 +30,22 @@ jQuery.noConflict();
 
 }
 
+function doAdd( id, quantity ) {
+
+jQuery.noConflict();
+
+      jQuery.ajax({
+                     url: "index_ajax1.php",             
+                     dataType : "html",                       
+                     data: "q=includes/modules/ajax/ajaxCart.php&products_qty=1&action=add_product&products_id=2&id[2]=1&id[1]=3",
+                     type: "GET",   
+    	               success: function(msg){ jQuery("#divShoppingCart").html(msg);}       
+
+                   });                     
+                       
+                           
+
+}
 
 SHOW_ADDED = 1; // set 0 if you no need show
 Offset_X = -10;
