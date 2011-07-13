@@ -13,6 +13,22 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
+jQuery.noConflict();
+  jQuery("#header").click(function(){
+
+      jQuery.ajax({
+                     url: "index_ajax1.php",             
+                     dataType : "html",                       
+                     data: "q=includes/modules/ajax/ajaxCart.php&products_id=1&products_qty=1&action=add_product",
+                     type: "GET",   
+    	               success: function(msg){jQuery("#divShoppingCart").html(msg);}       
+
+                   });                     
+                           
+                           
+   });
+
+
 SHOW_ADDED = 1; // set 0 if you no need show
 Offset_X = -10;
 Offset_Y = -30;
