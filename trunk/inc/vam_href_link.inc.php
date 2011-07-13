@@ -173,16 +173,7 @@
             $categories_url .= '?' . $params;
           }
 
-          $link_ajax = '';
-
-          if (AJAX_CART == 'true') {
-            if( vam_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
-              $link_ajax = '" onclick="doBuyNow(\'1,1\'); return false;';
-            }
-          }
-
-
-          return $link . $categories_url . $link_ajax;
+          return $link . $categories_url;
         }
       }
     } elseif ($page == FILENAME_PRODUCT_INFO) {
@@ -605,15 +596,7 @@
       $separator = '?';
     }
 
-    $link_ajax = '';
-
-    if (AJAX_CART == 'true') {
-      if( vam_not_null($parameters) && preg_match("/buy_now/i", $parameters) && $page != 'ajax_shopping_cart.php'){
-              $link_ajax = '" onclick="doBuyNow(\'1,1\'); return false;';
-      }
-    }
-
-    return $link . $link_ajax;
+    return $link;
   }
 
     function vam_href_link_admin($page = '', $parameters = '', $connection = 'NONSSL', $add_session_id = true, $search_engine_safe = true) {
