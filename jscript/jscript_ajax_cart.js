@@ -13,20 +13,22 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-jQuery.noConflict();
-  jQuery("#header").click(function(){
+function doBuyNow( id, quantity ) {
 
+jQuery.noConflict();
+  var id = id;
       jQuery.ajax({
                      url: "index_ajax1.php",             
                      dataType : "html",                       
                      data: "q=includes/modules/ajax/ajaxCart.php&products_id=1&products_qty=1&action=add_product",
                      type: "GET",   
-    	               success: function(msg){jQuery("#divShoppingCart").html(msg);}       
+    	               success: function(msg){ alert(id, quantity); jQuery("#divShoppingCart").html(msg);}       
 
                    });                     
+                       
                            
-                           
-   });
+
+}
 
 
 SHOW_ADDED = 1; // set 0 if you no need show
