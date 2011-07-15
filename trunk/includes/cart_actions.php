@@ -41,7 +41,7 @@ if (isset ($_GET['action'])) {
 		vam_redirect(vam_href_link(FILENAME_COOKIE_USAGE));
 	}
 
-	if (DISPLAY_CART == 'true') {
+	if (DISPLAY_CART == 'true' && AJAX_CART == 'false') {
 		$goto = FILENAME_SHOPPING_CART;
 		$parameters = array (
 			'action',
