@@ -17,27 +17,31 @@ function doBuyNow( id, quantity ) {
 
 jQuery.noConflict();
 
-// prepare the form when the DOM is ready
-jQuery(document).ready(function() {
-
   // Setup the ajax indicator
-  jQuery('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
+ jQuery('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
 
+jQuery(document).click(function(e) {
+
+jQuery('#ajaxLoading').css('top', function() {
+  return e.pageY-30+"px";
+});      
+
+jQuery('#ajaxLoading').css('left', function() {
+  return e.pageX-10+"px";
+});      
 
   jQuery('#ajaxLoading').css({
-    display:"none",
     margin:"0px auto",
     paddingLeft:"0px",
     paddingRight:"0px",
     paddingTop:"0px",
     paddingBottom:"0px",
     position:"absolute",
-    right:"50%",
-    top:"50%",
     width:"30px"
   });
 
-});
+      
+})
 
 // Ajax activity indicator bound to ajax start/success/stop document events
 jQuery(document).ajaxSend(function(){
@@ -71,6 +75,7 @@ jQuery(document).ajaxStop(function(){
 
 function doAddProduct() {
 		jQuery.noConflict();
+		
 		var forma = jQuery('#cart_quantity input,select');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		forma.each(function(n,element){
