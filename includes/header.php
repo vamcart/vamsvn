@@ -88,8 +88,9 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_FEATURED_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_BEST_SELLERS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10'; ?>" />
 <script type="text/javascript" src="jscript/jquery/jquery.js"></script>
-<script type="text/javascript" src="jscript/jscript_JsHttpRequest.js"></script>
-<script type="text/javascript" src="jscript/jscript_ajax.js"></script>
+<?php if (AJAX_CART == 'true') { ?>
+<script type="text/javascript" src="jscript/jscript_ajax_cart.js"></script>
+<?php } ?>
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -100,7 +101,7 @@ jQuery.noConflict();
 	jQuery(document).ready(function() {
 		jQuery("a.zoom").fancybox({
 		"zoomOpacity"			: true,
-		"overlayShow"			: true,
+		"overlayShow"			: false,
 		"zoomSpeedIn"			: 500,
 		"zoomSpeedOut"			: 500
 	});
@@ -110,7 +111,7 @@ jQuery.noConflict();
  }
 ?>
 <?php
-if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && (GOOGLE_CONVERSION == 'true' or YANDEX_METRIKA == 'true')) {
+if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 
