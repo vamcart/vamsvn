@@ -1,5 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
-<div id="divReviews">
 <h1>{#heading_reviews#}</h1>
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
@@ -34,16 +33,6 @@
 <b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
 {/if}
-<!--kpoxas-->
-<div class="clear"></div>
-{if $NAVIGATION_BAR}
-<div class="navigation">
-<span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
-</div>
-<div class="clear"></div>
-{/if}
-<!--kpoxas-->
 <div class="pagecontentfooter">
 {$BUTTON_WRITE}
-</div>
 </div>
