@@ -30,22 +30,31 @@ jQuery.noConflict();
 
 }
 
-function doAdd( id, quantity ) {
-
-jQuery.noConflict();
-
-      jQuery.ajax({
-                     url: "index_ajax1.php",             
-                     dataType : "html",                       
-                     data: "q=includes/modules/ajax/ajaxCart.php&products_qty=1&action=add_product&products_id=2&id[2]=1&id[1]=3",
-                     type: "GET",   
-    	               success: function(msg){ jQuery("#divShoppingCart").html(msg);}       
-
-                   });                     
-                       
-                           
-
-}
+function doAdd() {
+		jQuery.noConflict();
+		var forma = jQuery('#cart_quantity input,select');
+		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		forma.each(function(n,element){
+			if (element.type == "radio" || element.type == "checkbox") {
+				if (element.checked)
+					tmp = element.name + "=" + element.value + "&";
+			} else {
+				tmp = element.name + "=" + element.value + "&";
+			}
+			if (tmp.length > 3) data = data + tmp;
+		});
+		data = data + "action=add_product";
+		
+		jQuery.ajax({
+					url : "index_ajax1.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+						jQuery("#divShoppingCart").html(msg);
+					}
+		});
+	}
 
 SHOW_ADDED = 1; // set 0 if you no need show
 Offset_X = -10;
