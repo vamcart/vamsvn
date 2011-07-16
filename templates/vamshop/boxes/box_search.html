@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
   jQuery("#quick_find_keyword").keyup(function(){
       var searchString = jQuery("#quick_find_keyword").val(); 
       jQuery.ajax({
-      	url: "index_ajax1.php",             
+      	url: "index_ajax.php",             
       	dataType : "html",
       	type: "POST",
       	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,

@@ -15,22 +15,20 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-
-	define('AJAX_APPLICATION_RUNNING', true);
-//	if(defined('AJAX_APPLICATION_RUNNING')) {
-//	}
-
-	require('includes/classes/JsHttpRequest.php');
-	$JsHttpRequest =& new JsHttpRequest('');
-
+	require_once('protect.inc.php');
+	
 	require('includes/application_top.php');
 
-	$JsHttpRequest->setEncoding($_SESSION['language_charset']);
-
-	if (!isset($_GET['ajax_page']) || !vam_not_null($_GET['ajax_page']) || !is_file(DIR_WS_MODULES . 'ajax/' . $_GET['ajax_page'] . '.php')) die('***ERROR*** Ajax page "' . $_GET['ajax_page'] . '" not define or not exist!!!');
-	if(is_file(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . $_GET['ajax_page'] . '.php'))
-		require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . $_GET['ajax_page'] . '.php');
-	require(DIR_WS_MODULES . 'ajax/' . $_GET['ajax_page'] . '.php');
-
-	exit;
+	if($axhandler = (strtoupper($_SERVER['REQUEST_METHOD'])=='GET') ? $_GET['q'] : $_POST['q']) {
+	  $axhandler = preg_replace('/[^A-Za-z0-9_\-\.\/]/', '', $axhandler);
+	  $axhandler = realpath($axhandler) or die(); 
+	  $directory = realpath(MODX_BASE_PATH.DIRECTORY_SEPARATOR.'/assets/snippets'); 
+	  $axhandler = realpath($directory.str_replace($directory, '', $axhandler));
+	  
+	  if($axhandler && (strtolower(substr($axhandler,-4))=='.php')) {
+		include_once($axhandler);
+		exit;
+	  }
+	}	
+    	
 ?>

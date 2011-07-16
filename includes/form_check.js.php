@@ -66,7 +66,7 @@ jQuery(function () {
   jQuery("#country").change(function(){
       var searchString = jQuery(this).val();
       jQuery.ajax({
-                     url: "index_ajax1.php",             
+                     url: "index_ajax.php",             
                      dataType : "html",                       
                      data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
                      type: "POST",   
