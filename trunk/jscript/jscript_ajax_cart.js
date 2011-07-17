@@ -100,9 +100,11 @@ function doAddProduct() {
 		});
 	}
 
-function doDelProduct() {
+function doDelProduct(id) {
 		jQuery.noConflict();
-		var forma = jQuery('#update_cart input,select');
+		var test1 = "#update_cart"+id+" input";
+		var forma = jQuery(test1);
+		
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		forma.each(function(n,element){
 			if (element.type == "radio" || element.type == "checkbox") {
@@ -125,3 +127,67 @@ function doDelProduct() {
 					}
 		});
 	}
+	
+	
+function doDel( cart_quantity, products_id, old_qty, cart_delete ) {
+
+jQuery.noConflict();
+
+  // Setup the ajax indicator
+ jQuery('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
+
+jQuery(document).click(function(e) {
+
+jQuery('#ajaxLoading').css('top', function() {
+  return e.pageY-30+"px";
+});      
+
+jQuery('#ajaxLoading').css('left', function() {
+  return e.pageX-10+"px";
+});      
+
+  jQuery('#ajaxLoading').css({
+    margin:"0px auto",
+    paddingLeft:"0px",
+    paddingRight:"0px",
+    paddingTop:"0px",
+    paddingBottom:"0px",
+    position:"absolute",
+    width:"30px"
+  });
+
+      
+})
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+jQuery(document).ajaxSend(function(){
+  jQuery('#ajaxLoading').show();
+});
+
+jQuery(document).ajaxSuccess(function(){
+  jQuery('#ajaxLoading').hide();
+});
+
+jQuery(document).ajaxStop(function(){
+  jQuery('#ajaxLoading').remove();
+});
+
+var test = "q=includes/modules/ajax/ajaxCart.php&cart_quantity[]="+cart_quantity+"&products_id[]="+products_id+"&old_qty[]="+old_qty+"&cart_delete[]="+cart_delete+"&action=update_product";
+
+      jQuery.ajax({
+                     url: "index_ajax.php",             
+                     dataType : "html",                       
+                     data: test,
+                     type: "GET",   
+    	               success: function(msg){ 
+    	               
+    	               jQuery("#divShoppingCart").html(msg);
+    	               
+    	               }       
+
+                   });                     
+                       
+                           
+
+}
+	
