@@ -108,11 +108,11 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($product->data['products_fsk18'] == '0') {
 					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
-					$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
+					$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 				}
 			} else {
 				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
-				$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART));
+				$info->assign('ADD_CART_BUTTON', vam_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 			}
 		}
 
