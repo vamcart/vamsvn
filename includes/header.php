@@ -101,7 +101,6 @@ jQuery.noConflict();
 	jQuery(document).ready(function() {
 		jQuery("a.zoom").fancybox({
 		"zoomOpacity"			: true,
-		"overlayShow"			: false,
 		"zoomSpeedIn"			: 500,
 		"zoomSpeedOut"			: 500
 	});
