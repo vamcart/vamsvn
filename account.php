@@ -49,7 +49,7 @@ while ($i < $max) {
 $cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
 	if ($history_product['products_status'] != 0) {
 
-		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cPath='.$cpath)));
+		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
 		$products_history[] = $product->buildDataArray($history_product);
 	}
 	$i ++;
