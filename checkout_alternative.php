@@ -411,7 +411,6 @@ if (isset ($_POST['payment']))
 
     $extra_fields_query = vamDBquery("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
 
-		$_SESSION['customer_id'] = vam_db_insert_id();
 		$customers_id = $_SESSION['customer_id'];
 
    	  	$extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
