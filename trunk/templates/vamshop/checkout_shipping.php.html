@@ -10,24 +10,10 @@
 <!-- /Шапка -->
 
 <div id="menu">
-<ul>
-<li{$1}><a href="{$mainpage}"><span>{#text_mainpage#}</span></a></li>
-{if $account}{if $smarty.session.customer_id}
-<li{$2}><a href="{$account}"><span>{#link_account#}</span></a></li>
-{/if}{/if}
-<li{$3}><a href="{$cart}"><span>{#link_cart#}</span></a></li>
-<li{$4}><a href="{$checkout}"><span>{#link_checkout#}</span></a></li>
-{if $smarty.session.customer_id}
-<li{$5}><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
-{else}
-<li{$6}><a href="{$login}"><span>{#link_login#}</span></a></li>
-{/if}    
-</ul>
 </div>
 
 <!-- Навигация -->
 <div id="navigation">
-<span>{$navtrail}</span>
 </div>
 <!-- /Навигация -->
 
