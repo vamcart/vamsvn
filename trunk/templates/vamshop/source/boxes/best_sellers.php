@@ -38,7 +38,7 @@ $box_content = '';
 		$cache_id = $_SESSION['language'].$current_category_id;
 	}
 
-if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache) {
+//if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_best_sellers.html', $cache_id) || !$cache) {
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 // include needed functions
@@ -118,5 +118,5 @@ if (vam_db_num_rows($best_sellers_query, true) >= MIN_DISPLAY_BESTSELLERS) {
 
 	$vamTemplate->assign('box_BESTSELLERS', $box_best_sellers);
 
-}
+//}
 ?>
