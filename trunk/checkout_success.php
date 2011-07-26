@@ -140,7 +140,7 @@ var yaParams = {
 (function(w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
-            w.yaCounter' . YANDEX_METRIKA_ID . ' = new Ya.Metrika({id:' . YANDEX_METRIKA_ID . ', enableAll: true});
+            w.yaCounter' . YANDEX_METRIKA_ID . ' = new Ya.Metrika({id:' . YANDEX_METRIKA_ID . ', enableAll: true,params:window.yaParams||{ }});
         }
         catch(e) { }
     });
