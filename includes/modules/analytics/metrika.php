@@ -68,7 +68,7 @@
 		$category_query = vam_db_query("select p2c.categories_id, cd.categories_name from " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where p2c.products_id = '" . $items['products_id'] . "' AND cd.categories_id = p2c.categories_id AND cd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
 		$category = vam_db_fetch_array($category_query);
 		
-	  $item_string .=  '{'."\n".'name: "' . htmlspecialchars($items['products_name']) . '",'."\n".'price: ' . number_format($items['final_price'],2,'.','') . ''."\n".'},'."\n";
+	  $item_string .=  '{'."\n".'id: "' . htmlspecialchars($items['products_id']) . '",'."\n".'name: "' . htmlspecialchars($items['products_name']) . '",'."\n".'price: ' . number_format($items['final_price'],2,'.','') . ','."\n".'quantity: ' . number_format($items['products_quantity']) . ''."\n".'},'."\n";
     }
 
 // ############## Yandex Metrika - end ###############

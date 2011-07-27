@@ -128,12 +128,10 @@ $tracking_code .= '
 var yaParams = {
 	
 '.$transaction_string.'	
-
   goods: 
      [
 '.$item_string.'	
       ]
-	
 	};
 </script>
 <div style="display:none;"><script type="text/javascript">
