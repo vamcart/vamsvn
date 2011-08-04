@@ -2334,6 +2334,12 @@ INSERT INTO configuration VALUES ('', 'SET_BOX_MANUFACTURERS', 'true', '29', '26
 INSERT INTO configuration VALUES ('', 'SET_BOX_MANUFACTURERS_INFO', 'true', '29', '27', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration VALUES ('', 'SET_BOX_FAQ', 'true', '29', '28', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 
+#configuration_group_id 72
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true', '72', '1', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_USE_SPPC', 'false', '72', '3', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_USE_AJAX', 'true', '72', '4', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_CREDIT_CARD', 'Credit Card', '72', '5', now(), now(), NULL, 'vam_cfg_pull_down_payment_methods(');
+
 INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
 INSERT INTO configuration_group VALUES ('3', 'CG_MAXIMAL_VALUES', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
@@ -2362,6 +2368,8 @@ INSERT INTO configuration_group VALUES ('27', 'CG_MAINTENANCE', 'Site Maintenanc
 
 INSERT INTO configuration_group VALUES ('28', 'CG_AFFILIATE_PROGRAM', 'Партнёрская программа', 'Настройки партнёрской программы', '28', '1');
 INSERT INTO configuration_group VALUES ('29', 'CG_BOXES', 'Боксы', 'Боксы', '29', '1');
+
+INSERT INTO configuration_group VALUES ('72', 'CG_EDIT_ORDERS', 'Order Editor', 'Order Editor Settings', '1', '1');
 
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
