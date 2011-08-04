@@ -502,7 +502,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       <td width="100%">
  <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . BUTTON_BACK . '</span></a>'; ?>
  <!-- Bestellbearbeitung Anfang -->
-   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo BUTTON_EDIT ?></span></a>
+   <a class="button" href="<?php echo vam_href_link(FILENAME_EDIT_ORDERS, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo BUTTON_EDIT ?></span></a>   
 <!-- Bestellbearbeitung Ende -->
  </td>
 
