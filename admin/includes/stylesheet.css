@@ -872,3 +872,12 @@ td.header {
 		background-repeat: repeat-x; 
 		height: 100px;
 }
+
+/* Редактор заказов */
+
+.dataRowSelected {
+ background: #ffc;
+ }
+
+
+/* /Редактор заказов */
