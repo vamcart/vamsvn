@@ -967,9 +967,9 @@ document.onmousemove=positiontip
                 <td class="dataTableContent" valign="middle" align="right" nowrap><?php echo ENTRY_STATE; ?></td>
                 <td colspan="3" valign="top" class="dataTableContent" nowrap><span id="customerStateMenu">
 				<?php if (ORDER_EDITOR_USE_AJAX == 'true') {
-				echo vam_draw_pull_down_menu('update_customer_zone_id', vam_get_country_zones($order->customer['country_id']), $order->customer['zone_id'], 'style="width: 200px;" onChange="updateOrdersField(\'customers_state\', this.options[this.selectedIndex].text);"'); 
+				echo vam_draw_pull_down_menu('update_customer_zone_id', vam_get_country_zones($order->customer['country_id']), $order->customer['zone_id'], 'style="width: 300px;" onChange="updateOrdersField(\'customers_state\', this.options[this.selectedIndex].text);"'); 
 				} else {
-				echo vam_draw_pull_down_menu('update_customer_zone_id', vam_get_country_zones($order->customer['country_id']), $order->customer['zone_id'], 'style="width: 200px;"');
+				echo vam_draw_pull_down_menu('update_customer_zone_id', vam_get_country_zones($order->customer['country_id']), $order->customer['zone_id'], 'style="width: 300px;"');
 				}?></span><span id="customerStateInput"><input name="update_customer_state" size="15" value="<?php echo stripslashes($order->customer['state']); ?>" <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>onChange="updateOrdersField('customers_state', encodeURIComponent(this.value))"<?php } ?>></span></td>
               </tr>
 <?php } ?>
@@ -980,9 +980,9 @@ document.onmousemove=positiontip
                 <td class="dataTableContent" valign="middle" align="right" nowrap><?php echo ENTRY_COUNTRY; ?></td>
                 <td colspan="3" class="dataTableContent" valign="top">
 				<?php if (ORDER_EDITOR_USE_AJAX == 'true') {
-				echo vam_draw_pull_down_menu('update_customer_country_id', vam_get_countries(), $order->customer['country_id'], 'style="width: 200px;" onChange="update_zone(\'update_customer_country_id\', \'update_customer_zone_id\', \'customerStateInput\', \'customerStateMenu\'); updateOrdersField(\'customers_country\', this.options[this.selectedIndex].text);"'); 
+				echo vam_draw_pull_down_menu('update_customer_country_id', vam_get_countries(), $order->customer['country_id'], 'style="width: 300px;" onChange="update_zone(\'update_customer_country_id\', \'update_customer_zone_id\', \'customerStateInput\', \'customerStateMenu\'); updateOrdersField(\'customers_country\', this.options[this.selectedIndex].text);"'); 
 				} else {
-				echo vam_draw_pull_down_menu('update_customer_country_id', vam_get_countries(), $order->customer['country_id'], 'style="width: 200px;" onChange="update_zone(\'update_customer_country_id\', \'update_customer_zone_id\', \'customerStateInput\', \'customerStateMenu\');"'); 
+				echo vam_draw_pull_down_menu('update_customer_country_id', vam_get_countries(), $order->customer['country_id'], 'style="width: 300px;" onChange="update_zone(\'update_customer_country_id\', \'update_customer_zone_id\', \'customerStateInput\', \'customerStateMenu\');"'); 
 				} ?></td>
               </tr>
 <?php } ?>
@@ -1088,9 +1088,9 @@ document.onmousemove=positiontip
                     <td class="dataTableContent" valign="middle" align="right" nowrap><?php echo ENTRY_STATE; ?></td>
                     <td colspan="3" valign="top" class="dataTableContent"><span id="deliveryStateMenu">
 					<?php if (ORDER_EDITOR_USE_AJAX == 'true') { 
-				echo vam_draw_pull_down_menu('update_delivery_zone_id', vam_get_country_zones($order->delivery['country_id']), $order->delivery['zone_id'], 'style="width: 200px;" onChange="updateShippingZone(\'delivery_state\', this.options[this.selectedIndex].text);"'); 
+				echo vam_draw_pull_down_menu('update_delivery_zone_id', vam_get_country_zones($order->delivery['country_id']), $order->delivery['zone_id'], 'style="width: 300px;" onChange="updateShippingZone(\'delivery_state\', this.options[this.selectedIndex].text);"'); 
 					} else {
-					echo vam_draw_pull_down_menu('update_delivery_zone_id', vam_get_country_zones($order->delivery['country_id']), $order->delivery['zone_id'], 'style="width: 200px;"'); 
+					echo vam_draw_pull_down_menu('update_delivery_zone_id', vam_get_country_zones($order->delivery['country_id']), $order->delivery['zone_id'], 'style="width: 300px;"'); 
 					} ?>
 					</span><span id="deliveryStateInput"><input name="update_delivery_state" size="15" value="<?php echo stripslashes($order->delivery['state']); ?>" <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>onChange="updateShippingZone('delivery_state', encodeURIComponent(this.value))"<?php } ?>></span></td>
                   </tr>
@@ -1102,9 +1102,9 @@ document.onmousemove=positiontip
                     <td class="dataTableContent" valign="middle" align="right"><?php echo ENTRY_COUNTRY; ?></td>
                     <td colspan="3" class="dataTableContent" valign="top">
 					<?php if (ORDER_EDITOR_USE_AJAX == 'true') {
-					echo vam_draw_pull_down_menu('update_delivery_country_id', vam_get_countries(), $order->delivery['country_id'], 'style="width: 200px;" onchange="update_zone(\'update_delivery_country_id\', \'update_delivery_zone_id\', \'deliveryStateInput\', \'deliveryStateMenu\'); updateShippingZone(\'delivery_country\', this.options[this.selectedIndex].text);"'); 
+					echo vam_draw_pull_down_menu('update_delivery_country_id', vam_get_countries(), $order->delivery['country_id'], 'style="width: 300px;" onchange="update_zone(\'update_delivery_country_id\', \'update_delivery_zone_id\', \'deliveryStateInput\', \'deliveryStateMenu\'); updateShippingZone(\'delivery_country\', this.options[this.selectedIndex].text);"'); 
 					} else {
-					echo vam_draw_pull_down_menu('update_delivery_country_id', vam_get_countries(), $order->delivery['country_id'], 'style="width: 200px;" onchange="update_zone(\'update_delivery_country_id\', \'update_delivery_zone_id\', \'deliveryStateInput\', \'deliveryStateMenu\');"'); 
+					echo vam_draw_pull_down_menu('update_delivery_country_id', vam_get_countries(), $order->delivery['country_id'], 'style="width: 300px;" onchange="update_zone(\'update_delivery_country_id\', \'update_delivery_zone_id\', \'deliveryStateInput\', \'deliveryStateMenu\');"'); 
 					}
 					?></td>
                   </tr>       
@@ -1192,9 +1192,9 @@ document.onmousemove=positiontip
                     <td class="dataTableContent" valign="middle" align="right" nowrap><?php echo ENTRY_STATE; ?></td>
                     <td colspan="3" valign="top" class="dataTableContent"><span id="billingStateMenu">
 					<?php if (ORDER_EDITOR_USE_AJAX == 'true') {
-					echo vam_draw_pull_down_menu('update_billing_zone_id', vam_get_country_zones($order->billing['country_id']), $order->billing['zone_id'], 'style="width: 200px;" onChange="updateOrdersField(\'billing_state\', this.options[this.selectedIndex].text);"'); 
+					echo vam_draw_pull_down_menu('update_billing_zone_id', vam_get_country_zones($order->billing['country_id']), $order->billing['zone_id'], 'style="width: 300px;" onChange="updateOrdersField(\'billing_state\', this.options[this.selectedIndex].text);"'); 
 					} else {
-					echo vam_draw_pull_down_menu('update_billing_zone_id', vam_get_country_zones($order->billing['country_id']), $order->billing['zone_id'], 'style="width: 200px;"');
+					echo vam_draw_pull_down_menu('update_billing_zone_id', vam_get_country_zones($order->billing['country_id']), $order->billing['zone_id'], 'style="width: 300px;"');
 					} ?>
 					</span><span id="billingStateInput"><input name="update_billing_state" size="15" value="<?php echo stripslashes($order->billing['state']); ?>" <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>onChange="updateOrdersField('billing_state', encodeURIComponent(this.value))"<?php } ?>></span></td>
                   </tr>
@@ -1206,9 +1206,9 @@ document.onmousemove=positiontip
                     <td class="dataTableContent" valign="middle" align="right" nowrap><?php echo ENTRY_COUNTRY; ?></td>
                     <td colspan="3" class="dataTableContent" valign="top">
 					<?php if (ORDER_EDITOR_USE_AJAX == 'true') {
-					echo vam_draw_pull_down_menu('update_billing_country_id', vam_get_countries(), $order->billing['country_id'], 'style="width: 200px;" onchange="update_zone(\'update_billing_country_id\', \'update_billing_zone_id\', \'billingStateInput\', \'billingStateMenu\'); updateOrdersField(\'billing_country\', this.options[this.selectedIndex].text);"'); 
+					echo vam_draw_pull_down_menu('update_billing_country_id', vam_get_countries(), $order->billing['country_id'], 'style="width: 300px;" onchange="update_zone(\'update_billing_country_id\', \'update_billing_zone_id\', \'billingStateInput\', \'billingStateMenu\'); updateOrdersField(\'billing_country\', this.options[this.selectedIndex].text);"'); 
 					} else {
-					echo vam_draw_pull_down_menu('update_billing_country_id', vam_get_countries(), $order->billing['country_id'], 'style="width: 200px;" onchange="update_zone(\'update_billing_country_id\', \'update_billing_zone_id\', \'billingStateInput\', \'billingStateMenu\'); updateOrdersField(\'billing_country\', this.options[this.selectedIndex].text);"'); 
+					echo vam_draw_pull_down_menu('update_billing_country_id', vam_get_countries(), $order->billing['country_id'], 'style="width: 300px;" onchange="update_zone(\'update_billing_country_id\', \'update_billing_zone_id\', \'billingStateInput\', \'billingStateMenu\'); updateOrdersField(\'billing_country\', this.options[this.selectedIndex].text);"'); 
 					} ?></td>
                   </tr>
 <?php } ?>
@@ -1317,9 +1317,9 @@ document.onmousemove=positiontip
 
 		    //draw the dropdown menu for payment methods and default to the order value
 	  		  if (ORDER_EDITOR_USE_AJAX == 'true') {
-			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].value); updateOrdersField(\'payment_class\', this.options[this.selectedIndex].value)"'); 
+			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].value); updateOrdersField(\'payment_class\', this.options[this.selectedIndex].value)"'); 
 			  } else {
-			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init();"'); 
+			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" onChange="init();"'); 
 			  }
 		    }  else { //draw the input field for payment methods and default to the order value  ?>
 		  
