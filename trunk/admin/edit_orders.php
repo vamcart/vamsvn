@@ -27,11 +27,6 @@
 
   require('includes/application_top.php');
 
-define('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true');
-define('ORDER_EDITOR_USE_SPPC', 'false');
-define('ORDER_EDITOR_USE_AJAX', 'true');
-define('ORDER_EDITOR_CREDIT_CARD', 'cc');
-
 //b2b
   global $customer_id;
   $customer_id=intval($_GET['cID']);
