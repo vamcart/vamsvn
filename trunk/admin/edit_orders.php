@@ -854,7 +854,7 @@ document.onmousemove=positiontip
   
       <div id="header">
 	  
-		  <p id="headerTitle" class="pageHeading"><?php echo sprintf(HEADING_TITLE, $oID, vam_datetime_short($order->info['date_purchased'])); ?></p>
+		  <p id="headerTitle" class="pageHeading"><h1 class="contentBoxHeading"><?php echo sprintf(HEADING_TITLE, $oID, vam_datetime_short($order->info['date_purchased'])); ?></h1></p>
         
           <ul>
 			  
