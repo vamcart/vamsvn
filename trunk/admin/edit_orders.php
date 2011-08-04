@@ -865,10 +865,10 @@ document.onmousemove=positiontip
 	           //--></script>
 			   <?php } ?>
 				  
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '" class="button"><span>' . IMAGE_EDIT . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . IMAGE_ORDERS_INVOICE . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . IMAGE_ORDERS_PACKINGSLIP . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '" class="button"><span>' . IMAGE_BACK . '</span></a> '; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '" class="button"><span>' . BUTTON_EDIT . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_ORDERS_INVOICE . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_ORDERS_PACKINGSLIP . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '" class="button"><span>' . BUTTON_BACK . '</span></a> '; ?></li>
 		  </ul>
       
 	  </div>
@@ -885,7 +885,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo IMAGE_UPDATE; ?>"><?php echo IMAGE_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
           </div>
 	
 	  <br>
@@ -1251,7 +1251,7 @@ document.onmousemove=positiontip
                  }
                }
              }
-            sort($directory_array);
+            //sort($directory_array);
             $dir->close();
            }
 
@@ -1679,7 +1679,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo IMAGE_UPDATE; ?>"><?php echo IMAGE_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
            </div>
 		  
 	       <br>
@@ -1828,7 +1828,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo IMAGE_UPDATE; ?>"><?php echo IMAGE_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
           </div>
 		  
 	       <br>
