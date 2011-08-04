@@ -866,8 +866,8 @@ document.onmousemove=positiontip
 			   <?php } ?>
 				  
 		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '" class="button"><span>' . BUTTON_EDIT . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_ORDERS_INVOICE . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_ORDERS_PACKINGSLIP . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_INVOICE . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_PACKINGSLIP . '</span></a>'; ?></li>
 		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '" class="button"><span>' . BUTTON_BACK . '</span></a> '; ?></li>
 		  </ul>
       
