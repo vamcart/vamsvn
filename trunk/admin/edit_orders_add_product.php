@@ -30,7 +30,6 @@ if (!$_GET['oID'])
 	$_GET['oID'] = $_POST['oID'];
 $order = new order($_GET['oID']);
 
-require (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
 
 
