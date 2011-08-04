@@ -27,7 +27,7 @@
 
         reset($this->modules);
         while (list(, $value) = each($this->modules)) {
-          include(DIR_FS_CATALOG_LANGUAGES . $language . '/modules/order_total/' . $value);
+          include(DIR_WS_LANGUAGES . $language . '/modules/order_total/' . $value);
           include(DIR_FS_CATALOG_MODULES . 'order_total/' . $value);
 		  
           $class = substr($value, 0, strrpos($value, '.'));
