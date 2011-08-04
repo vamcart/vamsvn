@@ -1002,7 +1002,9 @@ document.onmousemove=positiontip
                 <td colspan="3" valign="top" class="dataTableContent"><input name="update_customer_email_address" size="34" value="<?php echo $order->customer['email_address']; ?>" <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>onChange="updateOrdersField('customers_email_address', encodeURIComponent(this.value))"<?php } ?>></td>
               </tr>
             </table>
-			
+			   <td valign="top" width="10">&nbsp;</td>
+            <td valign="top">
+
 			<!-- customer_info_eof //-->
             <!-- shipping_address bof -->
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #C9C9C9;">
@@ -1214,7 +1216,15 @@ document.onmousemove=positiontip
                 </td>
               </tr>
               <!-- billing_address_eof //-->
+              
+            </table></td>
+          </tr>
+        </table>
+
               <!-- payment_method bof //-->
+
+      <table cellspacing="0" cellpadding="2" width="100%">
+		
               <tr>
                 <td class="dataTableContent">
              
@@ -1375,10 +1385,10 @@ document.onmousemove=positiontip
  </table>
 				
 				</td>
-              </tr>                  
-            </table></td>
-          </tr>
-        </table>
+              </tr>    
+              </table>		
+		
+              <!-- payment_method eof //-->
 		
 	<div id="productsMessageStack">
 	  <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
@@ -1548,19 +1558,71 @@ document.onmousemove=positiontip
 			 
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td valign="top" width="100%">
+                <td valign="top" width="100%" colspan="2">
 				  <br>
 				    <div>
 					  <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><span><?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
 				    </div>
 				  <br>
 			    </td>
+			    </tr>
+			    <tr>
              
+
+                <!-- shipping_quote bof //-->   
+                <td valign="bottom">
+                
+<?php 
+  if (sizeof($shipping_quotes) > 0) {
+?>
+
+                <table width="99%" cellspacing="0" cellpadding="2">
+                  <tr class="dataTableHeadingRow">
+                    <td class="dataTableHeadingContent" colspan="3"><?php echo TABLE_HEADING_SHIPPING_QUOTES; ?></td>
+                  </tr>
+				  
+				  				  
+<?php
+    $r = 0;
+    for ($i=0, $n=sizeof($shipping_quotes); $i<$n; $i++) {
+      for ($j=0, $n2=sizeof($shipping_quotes[$i]['methods']); $j<$n2; $j++) {
+        $r++;
+		if (!isset($shipping_quotes[$i]['tax'])) $shipping_quotes[$i]['tax'] = 0;
+        $rowClass = ((($r/2) == (floor($r/2))) ? 'dataRowOver' : 'dataRow');
+        echo '                  <tr class="' . $rowClass . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')" onClick="selectRowEffect(this, ' . $r . '); setShipping(' . $r . ');">' .
+             '                    <td class="dataTableContent" valign="top" align="left">
+			 <script language="JavaScript" type="text/javascript">
+                   <!--
+                    document.write("<input type=\"radio\" name=\"shipping\" id=\"shipping_radio_' . $r . '\" value=\"' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'].'\">");
+	               //-->
+                  </script>
+			 <input type="hidden" id="update_shipping[' . $r . '][title]" name="update_shipping[' . $r . '][title]" value="'.$shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'].'):">' . "\n" .
+			 '      <input type="hidden" id="update_shipping[' . $r . '][value]" name="update_shipping[' . $r . '][value]" value="'.vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']).'">' . "\n" .
+			 '      <input type="hidden" id="update_shipping[' . $r . '][id]" name="update_shipping[' . $r . '][id]" value="' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'] . '">' . "\n" .
+             '      <td class="dataTableContent" valign="top">' . $shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'] . '):</td>' . "\n" . 
+             '      <td class="dataTableContent" align="right">' . $currencies->format(vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) . '</td>' . "\n" . 
+             '                  </tr>';
+      }
+    }
+?>
+                  <tr class="dataTableHeadingRow">
+                    <td class="dataTableHeadingContent" colspan="3"><?php echo sprintf(TEXT_PACKAGE_WEIGHT_COUNT, $shipping_num_boxes . ' x ' . $shipping_weight, $total_count); ?></td>
+                  </tr>
+                </table>
+
+<?php
+  } else {
+  echo AJAX_NO_QUOTES;
+  }
+?>                </td>
+
+                <!-- shipping_quote_eof //-->
+                
 			  <!-- order_totals bof //-->
-                <td align="right" rowspan="2" valign="top" nowrap class="dataTableRow" style="border: 1px solid #C9C9C9;">
+                <td align="right" valign="top" nowrap class="dataTableRow" style="border: 1px solid #C9C9C9;">
                   <table border="0" cellspacing="0" cellpadding="2">
                     <tr class="dataTableHeadingRow">
-                      <td class="dataTableHeadingContent" width="15" nowrap onMouseover="ddrivetip('<?php echo oe_html_no_quote(HINT_TOTALS); ?>')"; onMouseout="hideddrivetip()"> <script language="JavaScript" type="text/javascript">
+                      <td class="dataTableHeadingContent" align="center"  width="15" nowrap onMouseover="ddrivetip('<?php echo oe_html_no_quote(HINT_TOTALS); ?>')"; onMouseout="hideddrivetip()"> <script language="JavaScript" type="text/javascript">
                    <!--
                     document.write("<img src=\"images/icon_info.gif\" border= \"0\" width=\"13\" height=\"13\">");
 	               //-->
@@ -1588,14 +1650,14 @@ document.onmousemove=positiontip
     if ( ($order->totals[$i]['class'] == 'ot_total') || ($order->totals[$i]['class'] == 'ot_subtotal') || ($order->totals[$i]['class'] == 'ot_tax') || ($order->totals[$i]['class'] == 'ot_loworderfee') ) {
       echo '                  <tr class="' . $rowStyle . '">' . "\n";
       if ($order->totals[$i]['class'] != 'ot_total') {
-        echo '                    <td class="dataTableContent" valign="middle" height="15">
+        echo '                    <td class="dataTableContent" align="center" valign="middle" height="15">
 		<script language="JavaScript" type="text/javascript">
 		<!--
 		document.write("<span id=\"update_totals['.$i.']\"><a href=\"javascript:setCustomOTVisibility(\'update_totals['.($i+1).']\', \'visible\', \'update_totals['.$i.']\');\"><img src=\"order_editor/images/plus.gif\" border=\"0\" alt=\"' . IMAGE_ADD_NEW_OT . '\" title=\"' . IMAGE_ADD_NEW_OT . '\"></a></span>");
 		//-->
         </script></td>' . "\n";
       } else {
-        echo '                    <td class="dataTableContent" valign="middle">&nbsp;</td>' . "\n";
+        echo '                    <td class="dataTableContent" align="center" valign="middle">&nbsp;</td>' . "\n";
       }
       
       echo '                    <td align="right" class="dataTableContent"><input name="update_totals['.$i.'][title]" value="' . strip_tags(trim($order->totals[$i]['title'])) . '" readonly="readonly"></td>' . "\n";
@@ -1607,7 +1669,7 @@ document.onmousemove=positiontip
       if ($i % 2) {
         echo '                  	    <script language="JavaScript" type="text/javascript">
 		<!--
-		document.write("<tr class=\"' . $rowStyle . '\" id=\"update_totals['.$i.']\" style=\"visibility: hidden; display: none;\"><td class=\"dataTableContent\" valign=\"middle\" height=\"15\"><a href=\"javascript:setCustomOTVisibility(\'update_totals['.($i).']\', \'hidden\', \'update_totals['.($i-1).']\');\"><img src=\"order_editor/images/minus.gif\" border=\"0\" alt=\"' . IMAGE_REMOVE_NEW_OT . '\" title=\"' . IMAGE_REMOVE_NEW_OT . '\"></a></td>");
+		document.write("<tr class=\"' . $rowStyle . '\" id=\"update_totals['.$i.']\" style=\"visibility: hidden; display: none;\"><td class=\"dataTableContent\" align=\"center\" valign=\"middle\" height=\"15\"><a href=\"javascript:setCustomOTVisibility(\'update_totals['.($i).']\', \'hidden\', \'update_totals['.($i-1).']\');\"><img src=\"order_editor/images/minus.gif\" border=\"0\" alt=\"' . IMAGE_REMOVE_NEW_OT . '\" title=\"' . IMAGE_REMOVE_NEW_OT . '\"></a></td>");
 			 //-->
         </script>
 			 
@@ -1615,7 +1677,7 @@ document.onmousemove=positiontip
              '                    <td class="dataTableContent" valign="middle" height="15"></td></noscript>' . "\n";
       } else {
         echo '                  <tr class="' . $rowStyle . '">' . "\n" .
-             '                    <td class="dataTableContent" valign="middle" height="15">
+             '                    <td class="dataTableContent" align="center" valign="middle" height="15">
 	    <script language="JavaScript" type="text/javascript">
 		<!--
 		document.write("<span id=\"update_totals['.$i.']\"><a href=\"javascript:setCustomOTVisibility(\'update_totals['.($i+1).']\', \'visible\', \'update_totals['.$i.']\');\"><img src=\"order_editor/images/plus.gif\" border=\"0\" alt=\"' . IMAGE_ADD_NEW_OT . '\" title=\"' . IMAGE_ADD_NEW_OT . '\"></a></span>");
@@ -1639,53 +1701,7 @@ document.onmousemove=positiontip
                 </table>
 			  </td>
                 <!-- order_totals_eof //-->
-              </tr>              
-              <tr>
-                <td valign="bottom">
-                
-<?php 
-  if (sizeof($shipping_quotes) > 0) {
-?>
-                <!-- shipping_quote bof //-->
-                <table width="450" cellspacing="0" cellpadding="2" style="border: 1px solid #C9C9C9;">
-                  <tr class="dataTableHeadingRow">
-                    <td class="dataTableHeadingContent" colspan="3"><?php echo TABLE_HEADING_SHIPPING_QUOTES; ?></td>
-                  </tr>
-				  
-				  				  
-<?php
-    $r = 0;
-    for ($i=0, $n=sizeof($shipping_quotes); $i<$n; $i++) {
-      for ($j=0, $n2=sizeof($shipping_quotes[$i]['methods']); $j<$n2; $j++) {
-        $r++;
-		if (!isset($shipping_quotes[$i]['tax'])) $shipping_quotes[$i]['tax'] = 0;
-        $rowClass = ((($r/2) == (floor($r/2))) ? 'dataTableRowOver' : 'dataTableRow');
-        echo '                  <tr class="' . $rowClass . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')" onClick="selectRowEffect(this, ' . $r . '); setShipping(' . $r . ');">' .
-             '                    <td class="dataTableContent" valign="top" align="left">
-			 <script language="JavaScript" type="text/javascript">
-                   <!--
-                    document.write("<input type=\"radio\" name=\"shipping\" id=\"shipping_radio_' . $r . '\" value=\"' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'].'\">");
-	               //-->
-                  </script>
-			 <input type="hidden" id="update_shipping[' . $r . '][title]" name="update_shipping[' . $r . '][title]" value="'.$shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'].'):">' . "\n" .
-			 '      <input type="hidden" id="update_shipping[' . $r . '][value]" name="update_shipping[' . $r . '][value]" value="'.vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']).'">' . "\n" .
-			 '      <input type="hidden" id="update_shipping[' . $r . '][id]" name="update_shipping[' . $r . '][id]" value="' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'] . '">' . "\n" .
-             '      <td class="dataTableContent" valign="top">' . $shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'] . '):</td>' . "\n" . 
-             '      <td class="dataTableContent" align="right">' . $currencies->format(vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) . '</td>' . "\n" . 
-             '                  </tr>';
-      }
-    }
-?>
-                  <tr class="dataTableHeadingRow">
-                    <td class="dataTableHeadingContent" colspan="3"><?php echo sprintf(TEXT_PACKAGE_WEIGHT_COUNT, $shipping_num_boxes . ' x ' . $shipping_weight, $total_count); ?></td>
-                  </tr>
-                </table>
-                <!-- shipping_quote_eof //-->
-<?php
-  } else {
-  echo AJAX_NO_QUOTES;
-  }
-?>                </td>
+
               </tr> 
             </table>
 		  
@@ -1738,21 +1754,21 @@ document.onmousemove=positiontip
           while ($orders_history = vam_db_fetch_array($orders_history_query)) {
           
 		   $r++;
-           $rowClass = ((($r/2) == (floor($r/2))) ? 'dataTableRowOver' : 'dataTableRow');
+           $rowClass = ((($r/2) == (floor($r/2))) ? 'dataRowOver' : 'dataRow');
         
 	      if (ORDER_EDITOR_USE_AJAX == 'true') { 
 		   echo '  <tr class="' . $rowClass . '" id="commentRow' . $orders_history['orders_status_history_id'] . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')">' . "\n" .
          '	  <td class="smallText" align="center"><div id="do_not_delete"><input name="update_comments[' . $orders_history['orders_status_history_id'] . '][delete]" type="checkbox" onClick="updateCommentsField(\'delete\', \'' . $orders_history['orders_status_history_id'] . '\', this.checked, \'\', this)"></div></td>' . "\n" . 
-		 '    <td class="dataTableHeadingContent" align="left" width="10"> </td>' . "\n" .
+		 '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">' . vam_datetime_short($orders_history['date_added']) . '</td>' . "\n" .
-         '    <td class="dataTableHeadingContent" align="left" width="10"> </td>' . "\n" .
+         '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">';
 		 } else {
 		 echo '  <tr class="' . $rowClass . '" id="commentRow' . $orders_history['orders_status_history_id'] . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')">' . "\n" .
          '	  <td class="smallText" align="center"><div id="do_not_delete"><input name="update_comments[' . $orders_history['orders_status_history_id'] . '][delete]" type="checkbox"></div></td>' . "\n" . 
-		 '    <td class="dataTableHeadingContent" align="left" width="10"> </td>' . "\n" .
+		 '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">' . vam_datetime_short($orders_history['date_added']) . '</td>' . "\n" .
-         '    <td class="dataTableHeadingContent" align="left" width="10"> </td>' . "\n" .
+         '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">';
 		 }
       
@@ -1762,9 +1778,9 @@ document.onmousemove=positiontip
         echo vam_image(DIR_WS_ICONS . 'cross.gif', ICON_CROSS) . "</td>\n";
          }
        
-	    echo '    <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>' . "\n" .
+	    echo '    <td class="smallText" align="left" width="10">&nbsp;</td>' . "\n" .
              '    <td class="smallText" align="left">' . $orders_status_array[$orders_history['orders_status_id']] . '</td>' . "\n";
-        echo '    <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>' . "\n" .
+        echo '    <td class="smallText" align="left" width="10">&nbsp;</td>' . "\n" .
              '    <td class="smallText" align="left">';
   
         if (ORDER_EDITOR_USE_AJAX == 'true') { 
