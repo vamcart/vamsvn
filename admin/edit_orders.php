@@ -1287,11 +1287,29 @@ document.onmousemove=positiontip
 			$enabled_payment[] = array('id' => $order->info['payment_method'], 'text' => $order->info['payment_method']);	
            }
             $enabled_payment[] = array('id' => 'Other', 'text' => 'Other');	
+
+  $payments = preg_split('/;/', MODULE_PAYMENT_INSTALLED);
+  for ($i=0; $i<count($payments); $i++){
+  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $payments[$i]);	
+  
+  $payment = substr($payments[$i], 0, strrpos($payments[$i], '.'));	
+  $payment_text = constant(MODULE_PAYMENT_.strtoupper($payment)._TEXT_TITLE);
+  
+  $payment_array[] = array('id' => $payment,
+                           'text' => $payment_text);
+  }
+  
+  $order_payment = $order->info['payment_method'];
+  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');	
+  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE); 
+
 		    //draw the dropdown menu for payment methods and default to the order value
 	  		  if (ORDER_EDITOR_USE_AJAX == 'true') {
-			  echo vam_draw_pull_down_menu('update_info_payment_method', $enabled_payment, $order->info['payment_method'], 'id="update_info_payment_method" style="width: 150px;" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].text)"'); 
+			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].value)"'); 
 			  } else {
-			  echo vam_draw_pull_down_menu('update_info_payment_method', $enabled_payment, $order->info['payment_method'], 'id="update_info_payment_method" style="width: 150px;" onChange="init();"'); 
+			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init();"'); 
 			  }
 		    }  else { //draw the input field for payment methods and default to the order value  ?>
 		  
