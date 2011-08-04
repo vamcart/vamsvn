@@ -27,6 +27,11 @@
 
   require('includes/application_top.php');
 
+define('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true');
+define('ORDER_EDITOR_USE_SPPC', 'false');
+define('ORDER_EDITOR_USE_AJAX', 'true');
+define('ORDER_EDITOR_CREDIT_CARD', 'cc');
+
 //b2b
   global $customer_id;
   $customer_id=intval($_GET['cID']);
@@ -1208,7 +1213,7 @@ document.onmousemove=positiontip
              
       <table cellspacing="0" cellpadding="2" width="100%">
         <tr class="dataTableHeadingRow"> 
-          <td colspan="2" class="dataTableHeadingContent" valign="bottom" onMouseover="ddrivetip('<?php echo oe_html_no_quote(HINT_UPDATE_TO_CC); ?>')" onMouseout="hideddrivetip()"><?php echo ENTRY_PAYMENT_METHOD; ?>
+          <td colspan="2" class="dataTableHeadingContent" valign="bottom"><?php echo ENTRY_PAYMENT_METHOD; ?>
 		  		
 				  <script language="JavaScript" type="text/javascript">
                    <!--
