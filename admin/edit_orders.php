@@ -1307,7 +1307,7 @@ document.onmousemove=positiontip
 
 		    //draw the dropdown menu for payment methods and default to the order value
 	  		  if (ORDER_EDITOR_USE_AJAX == 'true') {
-			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].value)"'); 
+			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init(); updateOrdersField(\'payment_method\', this.options[this.selectedIndex].value); updateOrdersField(\'payment_class\', this.options[this.selectedIndex].value)"'); 
 			  } else {
 			  echo vam_draw_pull_down_menu('update_info_payment_method', $payment_array, $order_payment, 'id="update_info_payment_method" style="width: 150px;" onChange="init();"'); 
 			  }
