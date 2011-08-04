@@ -48,7 +48,7 @@
             for ($i=0, $n=sizeof($GLOBALS[$class]->output); $i<$n; $i++) {
               if (vam_not_null($GLOBALS[$class]->output[$i]['title']) && vam_not_null($GLOBALS[$class]->output[$i]['text'])) {
                 $order_total_array[] = array('code' => $GLOBALS[$class]->code,
-                                             'title' => $GLOBALS[$class]->output[$i]['title'],
+                                             'title' => strip_tags($GLOBALS[$class]->output[$i]['title']),
                                              'text' => $GLOBALS[$class]->output[$i]['text'],
                                              'value' => $GLOBALS[$class]->output[$i]['value'],
                                              'sort_order' => $GLOBALS[$class]->sort_order);
@@ -71,7 +71,7 @@
             $size = sizeof($GLOBALS[$class]->output);
             for ($i=0; $i<$size; $i++) {
               $output_string .= '              <tr>' . "\n" .
-                                '                <td align="right" class="main">' . $GLOBALS[$class]->output[$i]['title'] . '</td>' . "\n" .
+                                '                <td align="right" class="main">' . strip_tags($GLOBALS[$class]->output[$i]['title']) . '</td>' . "\n" .
                                 '                <td align="right" class="main">' . $GLOBALS[$class]->output[$i]['text'] . '</td>' . "\n" .
                                 '              </tr>';
             }

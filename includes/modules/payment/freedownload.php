@@ -42,8 +42,10 @@ class freedownload {
 
 	function update_status() {
 		global $order, $vamPrice;
+		if (!is_object($_SESSION['cart'])) {
 		if ($_SESSION['cart']->get_content_type() != 'virtual' || $_SESSION['cart']->show_total() != 0) {
 			$this->enabled = false;
+		}
 		}
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_FREEDOWNLOAD_ZONE > 0)) {
 			$check_flag = false;
