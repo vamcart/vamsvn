@@ -21,15 +21,36 @@ function get_var($name, $default = 'none') {
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
-// logging
-//$fp = fopen('webmoney.log', 'a+');
-//$str=date('Y-m-d H:i:s').' - ';
-//foreach ($_REQUEST as $vn=>$vv) {
-//  $str.=$vn.'='.$vv.';';
-//}
+include_once DIR_WS_INCLUDES . 'external/avisosms/avisosmsmc.class.php';
 
-//fwrite($fp, $str."\n");
-//fclose($fp);
+$access_key     = MODULE_PAYMENT_AVISO_ACCESS_KEY;
+$m_commerce = new AvisosmsMCommerce(NULL, $access_key, NULL);
+
+if ($m_commerce->updateOrderStatus())
+{
+    // Данные получены, проверка access_key пройдена
+    // Можно обрабатывать полученные данные
+    $response = $m_commerce->response();
+    var_dump($response);
+    
+    // logging
+$fp = fopen('1.log', 'a+');
+$str=date('Y-m-d H:i:s').' - ';
+foreach ($_REQUEST as $vn=>$vv) {
+  $str.=$vn.'='.$vv.';';
+}
+
+  $str.='test'.var_dump($response);
+fwrite($fp, $str."\n");
+fclose($fp);
+
+}
+else
+{
+    // Переданные данные не верны.
+    echo 'Ошибка: '.$m_commerce->error_message();
+}
+
 // variables prepearing
 $crc = get_var('LMI_HASH');
 
