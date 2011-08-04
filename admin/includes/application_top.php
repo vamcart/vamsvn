@@ -275,7 +275,8 @@
   require_once(DIR_FS_INC . 'vam_product_link.inc.php');
   require_once(DIR_FS_INC . 'vam_cleanName.inc.php');
   require_once(DIR_FS_INC . 'vam_make_alias.inc.php');
-
+  require_once(DIR_FS_INC . 'vam_parse_input_field_data.inc.php');
+  
   // customization for the design layout
   define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
 
@@ -613,5 +614,17 @@ define('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true');
 define('ORDER_EDITOR_USE_SPPC', 'false');
 define('ORDER_EDITOR_USE_AJAX', 'true');
 define('ORDER_EDITOR_CREDIT_CARD', 'cc');
+  
+// BOF: Added for Order_edit MOD
+  define('FILENAME_CREATE_ACCOUNT', 'create_account.php');
+  define('FILENAME_CREATE_ACCOUNT_PROCESS', 'create_account_process.php');
+  define('FILENAME_CREATE_ACCOUNT_SUCCESS', 'create_account_success.php');
+  define('FILENAME_CREATE_ORDER_PROCESS', 'create_order_process.php');
+  define('FILENAME_CREATE_ORDER', 'create_order.php');
+  define('FILENAME_EDIT_ORDERS', 'edit_orders.php');
+  define('FILENAME_ORDERS_EDIT', 'edit_orders.php');
+  define('FILENAME_ORDERS_EDIT_ADD_PRODUCT', 'edit_orders_add_product.php');
+  define('FILENAME_ORDERS_EDIT_AJAX', 'edit_orders_ajax.php');
+// EOF: Added for Order_edit MOD
   
 ?>
