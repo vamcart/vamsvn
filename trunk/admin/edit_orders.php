@@ -873,7 +873,7 @@ document.onmousemove=positiontip
 			 <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>
 			  <script language="JavaScript" type="text/javascript"><!--
 			  //this button only works with javascript and is therefore only displayed on browsers with javascript enabled
-              document.write("<li><a href=\"javascript:newOrderEmail()\"><img src=\"includes/languages/<?php echo $language; ?>/images/buttons/button_send_mail.gif\" border=\"0\" alt=\"<?php echo IMAGE_NEW_ORDER_EMAIL; ?>\" title=\"<?php echo IMAGE_NEW_ORDER_EMAIL; ?>\" ></a></li>");
+              document.write("<li><a class=\"button\" href=\"javascript:newOrderEmail()\"><span><?php echo BUTTON_SEND_EMAIL; ?></span></a></li>");
 	           //--></script>
 			   <?php } ?>
 				  
