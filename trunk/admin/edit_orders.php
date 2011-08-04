@@ -52,7 +52,7 @@
   $orders_status_array = array();
   $orders_status_query = vam_db_query("SELECT orders_status_id, orders_status_name 
                                        FROM " . TABLE_ORDERS_STATUS . " 
-									   WHERE language_id = '" . (int)$languages_id . "'");
+									   WHERE language_id = '" . (int)$_SESSION['languages_id'] . "'");
 									   
   while ($orders_status = vam_db_fetch_array($orders_status_query)) {
     $orders_statuses[] = array('id' => $orders_status['orders_status_id'],
@@ -321,7 +321,7 @@
 	  } //end if is_array
 
        if (vam_not_null($shipping['id'])) {
-   vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_module = '" . $shipping['id'] . "' WHERE orders_id = '" . (int)$oID . "'");
+   vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['id'] . "' WHERE orders_id = '" . (int)$oID . "'");
        }
 
         $order = new manualOrder($oID);

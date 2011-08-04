@@ -55,7 +55,7 @@
         // Get Product Attribute Info
         if (isset($_POST['add_product_options'])) {
           foreach($_POST['add_product_options'] as $option_id => $option_value_id) {
-            $result = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_ATTRIBUTES . " pa INNER JOIN " . TABLE_PRODUCTS_OPTIONS . " po ON (po.products_options_id = pa.options_id and po.language_id = '" . $languages_id . "') INNER JOIN " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov on (pov.products_options_values_id = pa.options_values_id and pov.language_id = '" . $languages_id . "') WHERE products_id = '" . $add_product_products_id . "' and options_id = '" . $option_id . "' and options_values_id = '" . $option_value_id . "'");
+            $result = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_ATTRIBUTES . " pa INNER JOIN " . TABLE_PRODUCTS_OPTIONS . " po ON (po.products_options_id = pa.options_id and po.language_id = '" . $_SESSION['languages_id'] . "') INNER JOIN " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov on (pov.products_options_values_id = pa.options_values_id and pov.language_id = '" . $_SESSION['languages_id'] . "') WHERE products_id = '" . $add_product_products_id . "' and options_id = '" . $option_id . "' and options_values_id = '" . $option_value_id . "'");
             $row = vam_db_fetch_array($result);
 			if (is_array($row)) extract($row, EXTR_PREFIX_ALL, "opt");
 					if ($opt_price_prefix == '-')
@@ -240,12 +240,12 @@ $product['products_price']=b2b_display_price($add_product_products_id,$product['
       $product_search = oe_generate_search_SQL($search_array, $search_fields, 'AND');
     }
   
-    $products_query = vam_db_query("select p.products_id, p.products_price, p.products_model, pd.products_name from " . TABLE_PRODUCTS . " p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on (p.products_id = pd.products_id) where pd.language_id = '" . $languages_id . "' and (" . $product_search . ") order by pd.products_name");
+    $products_query = vam_db_query("select p.products_id, p.products_price, p.products_model, pd.products_name from " . TABLE_PRODUCTS . " p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on (p.products_id = pd.products_id) where pd.language_id = '" . $_SESSION['languages_id'] . "' and (" . $product_search . ") order by pd.products_name");
     $not_found = ((vam_db_num_rows($products_query)) ? false : true);
   } 
   
   if (!isset($_POST['search'])) { 
-    $product_search = " where p.products_status = '1' and p.products_id = pd.products_id and pd.language_id = '" . $languages_id . "' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id ";
+    $product_search = " where p.products_status = '1' and p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id ";
     
     $_GET['inc_subcat'] = '1';
     if ($_GET['inc_subcat'] == '1') {
@@ -257,7 +257,7 @@ $product['products_price']=b2b_display_price($add_product_products_id,$product['
       }
       $product_search .= ")";
     } else {
-      $product_search .= " and p2c.products_id = p.products_id and p2c.products_id = pd.products_id and pd.language_id = '" . $languages_id . "' and p2c.categories_id = '" . (int)$add_product_categories_id . "'";
+      $product_search .= " and p2c.products_id = p.products_id and p2c.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p2c.categories_id = '" . (int)$add_product_categories_id . "'";
     }
 
     $products_query = vam_db_query("select distinct p.products_id, p.products_price, p.products_model, pd.products_name from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c " . $product_search . " order by pd.products_name");
@@ -280,7 +280,7 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
   }
 
   $has_attributes = false;
-  $products_attributes_query = vam_db_query("select count(*) as total from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$add_product_products_id . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . $languages_id . "'");
+  $products_attributes_query = vam_db_query("select count(*) as total from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$add_product_products_id . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . $_SESSION['languages_id'] . "'");
   $products_attributes = vam_db_fetch_array($products_attributes_query);
   if ($products_attributes['total'] > 0) $has_attributes = true;   
 ?>
@@ -388,12 +388,12 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
 
     if ($has_attributes) {
       $i=1;
-      $products_options_name_query = vam_db_query("select distinct popt.products_options_id, popt.products_options_name from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$add_product_products_id . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . $languages_id . "'");
+      $products_options_name_query = vam_db_query("select distinct popt.products_options_id, popt.products_options_name from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$add_product_products_id . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . $_SESSION['languages_id'] . "'");
       while ($products_options_name = vam_db_fetch_array($products_options_name_query)) {
         $selected = 0;
         $products_options_array = array();
         if ($i > 1) echo '            <td class="dataTableContent">&nbsp;</td>' . "\n";
-        $products_options_query = vam_db_query("select pov.products_options_values_id, pov.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " pa, " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov where pa.products_id = '" . (int)$add_product_products_id . "' and pa.options_id = '" . $products_options_name['products_options_id'] . "' and pa.options_values_id = pov.products_options_values_id and pov.language_id = '" . $languages_id . "'");
+        $products_options_query = vam_db_query("select pov.products_options_values_id, pov.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " pa, " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov where pa.products_id = '" . (int)$add_product_products_id . "' and pa.options_id = '" . $products_options_name['products_options_id'] . "' and pa.options_values_id = pov.products_options_values_id and pov.language_id = '" . $_SESSION['languages_id'] . "'");
         while ($products_options = vam_db_fetch_array($products_options_query)) {
           $products_options_array[] = array('id' => $products_options['products_options_values_id'], 'text' => $products_options_name['products_options_name'] . ' - ' . $products_options['products_options_values_name']);
           if ($products_options['options_values_price'] != '0') {

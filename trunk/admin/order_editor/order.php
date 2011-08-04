@@ -53,7 +53,7 @@
                           'last_modified' => $order['last_modified'],
                           'shipping_method' => $shipping['title'],
                           'shipping_cost' => $shipping['cost'],
-						  'shipping_id' => $order['shipping_module'],
+						  'shipping_id' => $order['shipping_method'],
                           'subtotal' => 0,
                           'tax' => 0,
                           'tax_groups' => array());
