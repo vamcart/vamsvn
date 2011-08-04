@@ -341,7 +341,7 @@ $m_commerce->test = FALSE;
 /*
  * Создание нового заказа
  */
-$description = vam_random_charcode(12);
+$description = vam_random_charcode(20);
 $price = number_format($order->info['total'],0,'','');
 $success_message = 'ok!';
 $phone = ($_SESSION['aviso_telephone'] == '' ? $_POST['aviso_telephone'] : $_SESSION['aviso_telephone']);
