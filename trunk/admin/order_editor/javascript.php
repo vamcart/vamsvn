@@ -484,7 +484,7 @@ function updateShippingZone(field, value) {
   
 
   function rowOverEffect(object) {
-    object.className = 'dataTableRowSelected';
+    object.className = 'dataRowSelected';
   }
 
   function rowOutEffect(object, oldClass) {
