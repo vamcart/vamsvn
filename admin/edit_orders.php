@@ -34,6 +34,8 @@
 
 //b2b
 
+require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
+
   // include the sppropriate functions & classes
   include('order_editor/functions.php');
   include('order_editor/cart.php');
@@ -325,6 +327,9 @@
        }
 
         $order = new manualOrder($oID);
+        
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+        
         $order->adjust_zones();
 
         $cart = new manualCart();
@@ -581,6 +586,8 @@
 		$oID = vam_db_prepare_input($_GET['oID']);
 		$order = new manualOrder($oID);
 		
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+		
 		    for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
 	  //loop all the products in the order
 			 $products_ordered_attributes = '';
@@ -700,6 +707,9 @@
         }
         
         $order = new manualOrder($oID);
+        
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+        
         $shippingKey = $order->adjust_totals($oID);
         $order->adjust_zones();
         
