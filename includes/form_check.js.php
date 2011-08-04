@@ -134,6 +134,10 @@ jQuery(function () {
 				required: "#qiwi:checked",
 				minlength: 10
 			},
+			aviso_telephone: {
+				required: "#aviso:checked",
+				minlength: 10
+			},
 		},
 		messages: {
 			gender: "<?php echo ENTRY_GENDER_ERROR; ?>",
@@ -186,6 +190,10 @@ jQuery(function () {
 			qiwi_telephone: {
 				required: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>",
 				minlength: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>"
+			},
+			aviso_telephone: {
+				required: "<?php echo MODULE_PAYMENT_AVISO_NAME_DESC; ?>",
+				minlength: "<?php echo MODULE_PAYMENT_AVISO_NAME_DESC; ?>"
 			}
 		}
 	});
