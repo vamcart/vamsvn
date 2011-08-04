@@ -908,7 +908,7 @@ document.onmousemove=positiontip
 
     <!-- customer_info bof //-->
             
-        <table border="0" cellspacing="0" cellpadding="2">
+        <table border="0" width="100%" cellspacing="0" cellpadding="2">
           <tr>
             <td valign="top">
             <!-- customer_info bof //-->
@@ -1570,7 +1570,7 @@ document.onmousemove=positiontip
              
 
                 <!-- shipping_quote bof //-->   
-                <td valign="bottom">
+                <td width="99%" valign="bottom">
                 
 <?php 
   if (sizeof($shipping_quotes) > 0) {

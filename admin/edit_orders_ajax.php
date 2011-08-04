@@ -415,7 +415,7 @@ if ($action == 'update_downloads') {
 			    <tr>
                
                 <!-- shipping_quote bof //-->
-                <td valign="bottom">
+                <td width="99%" valign="bottom">
                 
 <?php 
   if (sizeof($shipping_quotes) > 0) {
