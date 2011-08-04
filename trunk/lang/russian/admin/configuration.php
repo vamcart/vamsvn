@@ -925,6 +925,8 @@ define('AUTOMATIC_SEO_URL_TITLE','Автоматически генериров�
 define('AUTOMATIC_SEO_URL_DESC','Автоматически генерировать SEO URL из названий товаров, категорий, информационных страниц и т.д.');
 
 define('CG_EDIT_ORDERS', 'Редактор заказов');
+define('CG_EDIT_ORDERS_TITLE', 'Редактор заказов');
+define('CG_EDIT_ORDERS_DESC', '');
 
 define('ORDER_EDITOR_PAYMENT_DROPDOWN_TITLE','Показывать dropdown меню с модулями оплаты?');
 define('ORDER_EDITOR_PAYMENT_DROPDOWN_DESC','Показывать способ оплаты заказа в виде drop-down меню (true), либо в виде input поля (false).');
