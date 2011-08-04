@@ -865,10 +865,10 @@ document.onmousemove=positiontip
 	           //--></script>
 			   <?php } ?>
 				  
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '">' . vam_image_button('button_edit.gif', IMAGE_EDIT) . '</a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . vam_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . vam_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '">' . vam_image_button('button_back.gif', IMAGE_BACK) . '</a> '; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '" class="button"><span>' . IMAGE_EDIT . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . IMAGE_ORDERS_INVOICE . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . IMAGE_ORDERS_PACKINGSLIP . '</span></a>'; ?></li>
+		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '" class="button"><span>' . IMAGE_BACK . '</span></a> '; ?></li>
 		  </ul>
       
 	  </div>
@@ -1527,7 +1527,7 @@ document.onmousemove=positiontip
                 <td valign="top" width="100%">
 				  <br>
 				    <div>
-					  <a href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><?php echo vam_image_button('button_new_product.gif', TEXT_ADD_NEW_PRODUCT); ?></a><input type="hidden" name="subaction" value="">
+					  <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><span><?php echo TEXT_ADD_NEW_PRODUCT); ?></span></a><input type="hidden" name="subaction" value="">
 				    </div>
 				  <br>
 			    </td>

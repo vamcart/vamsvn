@@ -397,7 +397,7 @@ if ($action == 'update_downloads') {
                 <td valign="top" width="100%">
 				 <br>
 				   <div>
-					<a href="javascript:openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_POST['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');"><?php echo vam_image_button('button_new_product.gif', TEXT_ADD_NEW_PRODUCT); ?></a><input type="hidden" name="subaction" value="">
+					<a href="javascript:openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_POST['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');" class="button"><span><?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
 					</div>
 					<br>
 				</td>
@@ -680,7 +680,7 @@ if (vam_db_num_rows($orders_history_query)) {
                 <td valign="top" width="100%">
 				 <br>
 				   <div>
-					<a href="javascript:openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');"><?php echo vam_image_button('button_new_product.gif', TEXT_ADD_NEW_PRODUCT); ?></a><input type="hidden" name="subaction" value="">
+					<a href="javascript:openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');" class="button"><span><?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
 					</div>
 					<br>
 				</td>
