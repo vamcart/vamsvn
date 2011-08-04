@@ -16,6 +16,8 @@
 
   require('includes/application_top.php');
   
+  require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
+
   // output a response header
   header('Content-type: text/html; charset=' . CHARSET . '');
 
@@ -226,6 +228,9 @@ if ($action == 'update_downloads') {
 	   }
 	   
 		$order = new manualOrder($oID);
+		
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+
 		$order->adjust_zones();
 				
 		$cart = new manualCart();
@@ -377,6 +382,9 @@ if ($action == 'update_downloads') {
 
 
         $order = new manualOrder($oID);
+        
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+        
         $shippingKey = $order->adjust_totals($oID);
         $order->adjust_zones();
         
@@ -645,6 +653,8 @@ if (vam_db_num_rows($orders_history_query)) {
      if ($action == 'insert_shipping') {
 	  
 	  $order = new manualOrder($_GET['oID']);
+
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
 	 
 	  $Query = "INSERT INTO " . TABLE_ORDERS_TOTAL . " SET
 	                orders_id = '" . $_GET['oID'] . "', 
@@ -658,6 +668,9 @@ if (vam_db_num_rows($orders_history_query)) {
 	  vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $_GET['id'] . "' WHERE orders_id = '" . $_GET['oID'] . "'");
 	
 	    $order = new manualOrder($_GET['oID']);
+	    
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+	    
         $shippingKey = $order->adjust_totals($_GET['oID']);
         $order->adjust_zones();
         
@@ -801,6 +814,9 @@ if (vam_db_num_rows($orders_history_query)) {
     if ($action == 'new_order_email')  {
 	
 		$order = new manualOrder($_GET['oID']);
+		
+      $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order->customer['ID']);
+		
 		
 		    for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
 	  //loop all the products in the order
