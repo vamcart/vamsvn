@@ -1551,21 +1551,18 @@ document.onmousemove=positiontip
   }
 ?>
             </table><!-- product_listing_eof //-->
-			
-		<div id="totalsBlock">
-		<table width="100%">
-		  <tr><td>
-			 
-            <table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr>
-                <td valign="top" width="100%" colspan="2">
+
 				  <br>
 				    <div>
 					  <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><span><?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
 				    </div>
 				  <br>
-			    </td>
-			    </tr>
+				  			
+		<div id="totalsBlock">
+		<table width="100%">
+		  <tr><td>
+			 
+            <table border="0" width="100%" cellspacing="0" cellpadding="0">
 			    <tr>
              
 
