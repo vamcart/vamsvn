@@ -25,7 +25,7 @@
   include('order_editor/order.php');
   include('order_editor/shipping.php');
   include('order_editor/http_client.php');
-  include(DIR_WS_LANGUAGES . $language. '/' . FILENAME_ORDERS_EDIT);
+  include(DIR_WS_LANGUAGES . $_SESSION['language']. '/' . FILENAME_ORDERS_EDIT);
 
    
   // Include currencies class

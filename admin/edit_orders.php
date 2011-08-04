@@ -834,13 +834,13 @@ document.onmousemove=positiontip
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top">
-    <table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
 <!-- left_navigation //-->
 <?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 <!-- left_navigation_eof //-->
-    </table>
     </td>
+<?php } ?>
 <!-- body_text //-->
     <td width="100%" valign="top">
 
@@ -1259,7 +1259,7 @@ document.onmousemove=positiontip
           for ($i=0, $n=sizeof($directory_array); $i<$n; $i++) {
           $file = $directory_array[$i];
 
-          include(DIR_WS_LANGUAGES . $language . '/modules/payment/' . $file);
+          include(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $file);
           include($module_directory . $file);
 
           $class = substr($file, 0, strrpos($file, '.'));
