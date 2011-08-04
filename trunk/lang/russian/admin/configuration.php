@@ -924,4 +924,15 @@ define('MAP_API_KEY_DESC','Укажите Ваш API ключ.');
 define('AUTOMATIC_SEO_URL_TITLE','Автоматически генерировать SEO URL');
 define('AUTOMATIC_SEO_URL_DESC','Автоматически генерировать SEO URL из названий товаров, категорий, информационных страниц и т.д.');
 
+define('CG_EDIT_ORDERS', 'Редактор заказов');
+
+define('ORDER_EDITOR_PAYMENT_DROPDOWN_TITLE','Показывать dropdown меню с модулями оплаты?');
+define('ORDER_EDITOR_PAYMENT_DROPDOWN_DESC','Показывать способ оплаты заказа в виде drop-down меню (true), либо в виде input поля (false).');
+define('ORDER_EDITOR_USE_SPPC_TITLE','Использовать возможности модуля SPPC (должно быть выключено)?');
+define('ORDER_EDITOR_USE_SPPC_DESC','Данная опция должна быть выключена, т.к. на данный момент модуль SPPC не установлен.');
+define('ORDER_EDITOR_USE_AJAX_TITLE','Использовать Ajax при редактировании заказа?');
+define('ORDER_EDITOR_USE_AJAX_DESC','Если Ваш браузер не поддерживает JavaScript, установите false.');
+define('ORDER_EDITOR_CREDIT_CARD_TITLE','Выбери способ оплаты кредитной карточкой');
+define('ORDER_EDITOR_CREDIT_CARD_DESC','Редактор заказов выведет поля для указания информации о карточке когда будет выбран указанный в настройке способ оплаты.');
+
 ?>
