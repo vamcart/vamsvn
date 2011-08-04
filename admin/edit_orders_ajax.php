@@ -222,7 +222,7 @@ if ($action == 'update_downloads') {
 	   } //end if is_array
 	
 	  if (vam_not_null($shipping['id'])) {
-    vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_module = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
+    vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
 	   }
 	   
 		$order = new manualOrder($oID);
@@ -527,7 +527,7 @@ if ($action == 'update_downloads') {
          $orders_status_array = array();
          $orders_status_query = vam_db_query("SELECT orders_status_id, orders_status_name 
                                               FROM " . TABLE_ORDERS_STATUS . " 
-									          WHERE language_id = '" . (int)$languages_id . "'");
+									          WHERE language_id = '" . (int)$_SESSION['languages_id'] . "'");
 									   
          while ($orders_status = vam_db_fetch_array($orders_status_query)) {
                 $orders_statuses[] = array('id' => $orders_status['orders_status_id'],
@@ -655,7 +655,7 @@ if (vam_db_num_rows($orders_history_query)) {
 					sort_order = '" . $_GET['sort_order'] . "'";
 					vam_db_query($Query);
 					
-	  vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_module = '" . $_GET['id'] . "' WHERE orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $_GET['id'] . "' WHERE orders_id = '" . $_GET['oID'] . "'");
 	
 	    $order = new manualOrder($_GET['oID']);
         $shippingKey = $order->adjust_totals($_GET['oID']);
