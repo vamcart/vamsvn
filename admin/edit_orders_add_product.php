@@ -27,7 +27,7 @@
   include('order_editor/functions.php');
   include('order_editor/cart.php');
   include('order_editor/order.php');
-  include(DIR_WS_LANGUAGES . $_SESSION['language']. '/' . FILENAME_ORDERS_EDIT);
+  include(DIR_WS_LANGUAGES . $_SESSION['language']. '/admin/' . FILENAME_ORDERS_EDIT);
 
   // Include currencies class
   require(DIR_WS_CLASSES . 'currencies.php');
