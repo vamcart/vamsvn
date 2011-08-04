@@ -119,12 +119,12 @@ $vamPrice = new vamPrice($order->info['currency'], $order->info['status'],$order
 
 // Спец. цена
 //Modified 4 VAM           
-            if ($new_price = 
-vam_get_products_special_price($add_product_products_id)) 
-{$product['products_price']=$new_price;} else {
             
-$product['products_price']=b2b_display_price($add_product_products_id,$product['products_price']);
-            }
+//$product['products_price']=b2b_display_price($add_product_products_id,$product['products_price']);
+            
+$products_price = $vamPrice->GetPrice($add_product_products_id, $format = true, 1, $product['products_tax_class_id'], $product['products_price'], 1);
+$product['products_price']=$products_price['plain'];
+
 //End mod 4 VAM
 
 // Спец. цена - скидка
@@ -270,7 +270,7 @@ $product['products_price']=b2b_display_price($add_product_products_id,$product['
       $product_search .= " and p2c.products_id = p.products_id and p2c.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' and p2c.categories_id = '" . (int)$add_product_categories_id . "'";
     }
 
-    $products_query = vam_db_query("select distinct p.products_id, p.products_price, p.products_model, pd.products_name from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c " . $product_search . " order by pd.products_name");
+    $products_query = vam_db_query("select distinct p.products_id, p.products_price, p.products_tax_class_id, p.products_model, pd.products_name from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_CATEGORIES . " c, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c " . $product_search . " order by pd.products_name");
     $not_found = ((vam_db_num_rows($products_query)) ? false : true);
   }
 
@@ -281,8 +281,10 @@ $product['products_price']=b2b_display_price($add_product_products_id,$product['
     $product_array = array(array('id' => 0, 'text' => TEXT_SELECT_PRODUCT));
     while($products = vam_db_fetch_array($products_query)) {
 
-$products['products_price']=b2b_display_price($products['products_id'],$products['products_price']);
+//$products['products_price']=b2b_display_price($products['products_id'],$products['products_price']);
 
+$products_price = $vamPrice->GetPrice($products['products_id'], $format = true, 1, $products['products_tax_class_id'], $products['products_price'], 1);
+$products['products_price']=$products_price['plain'];
 
       $product_array[] = array('id' => $products['products_id'],
                                'text' => $products['products_name'] . ' (' . $products['products_model'] . ')' . ':&nbsp;' . $currencies->format($products['products_price'], true, $order->info['currency'], $order->info['currency_value']));
@@ -318,7 +320,7 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
           </tr>
           <tr class="dataTableRow">
            <form action="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID']); ?>" method="POST">
-            <td class="dataTableContent" align="right"><?php echo TEXT_Svam_1; ?></td>
+            <td class="dataTableContent" align="right"><?php echo TEXT_STEP_1; ?></td>
             <td class="dataTableContent" valign="top"><?php echo vam_draw_pull_down_menu('add_product_categories_id', vam_get_category_tree('0', '', '0', $category_array), $add_product_categories_id,'style="width:300px;" onchange="this.form.submit();"'); ?></td>
             <td class="dataTableContent" align="center">
 			  <noscript>
@@ -368,7 +370,7 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
          echo vam_draw_hidden_field('cID',$customer_id);
     	//b2b
 ?>
-            <td class="dataTableContent" align="right"><?php echo TEXT_Svam_2; ?></td>
+            <td class="dataTableContent" align="right"><?php echo TEXT_STEP_2; ?></td>
             <td class="dataTableContent" valign="top"><?php echo vam_draw_pull_down_menu('add_product_products_id', $product_array, $add_product_products_id, 'style="width:300px;" onchange="this.form.submit();"'); ?></td>
             <td class="dataTableContent" align="center"><noscript><span class="button"><button type="submit" value="<?php echo TEXT_BUTTON_SELECT_PRODUCT; ?>"><?php echo TEXT_BUTTON_SELECT_PRODUCT; ?></button></span></noscript><input type="hidden" name="step" value="3">
             <input type="hidden" name="add_product_categories_id" value="<?php echo $add_product_categories_id; ?>">
@@ -390,7 +392,7 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
     
     if ($has_attributes) echo '          <form action="' . vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID']) . '" method="post">' . "\n";
 
-    echo '            <td class="dataTableContent" align="right">' . TEXT_Svam_3 . '</td>' . "\n";
+    echo '            <td class="dataTableContent" align="right">' . TEXT_STEP_3 . '</td>' . "\n";
 
 		//b2b
          echo vam_draw_hidden_field('cID',$customer_id);
@@ -446,7 +448,7 @@ $products['products_price']=b2b_display_price($products['products_id'],$products
          '          </tr>' . "\n" .
          '          <form action="' . vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&action=add_product') . '" method="post">' . "\n" .
          '          <tr class="dataTableRow">' . "\n" .
-         '            <td class="dataTableContent" align="right" valign="middle">' . TEXT_Svam_4 . '</td>' . "\n" .
+         '            <td class="dataTableContent" align="right" valign="middle">' . TEXT_STEP_4 . '</td>' . "\n" .
          '            <td class="dataTableContent" align="left" valign="middle">' . TEXT_QUANTITY . '&nbsp;<input name="add_product_quantity" size="3" value="1"></td>' . "\n" .
          '            <td class="dataTableContent" align="center" valign="middle"></td>' . "\n" .
 		 '          </tr>' . "\n" . 
