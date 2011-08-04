@@ -1259,7 +1259,7 @@ document.onmousemove=positiontip
           for ($i=0, $n=sizeof($directory_array); $i<$n; $i++) {
           $file = $directory_array[$i];
 
-          include(DIR_FS_CATALOG_LANGUAGES . $language . '/modules/payment/' . $file);
+          include(DIR_WS_LANGUAGES . $language . '/modules/payment/' . $file);
           include($module_directory . $file);
 
           $class = substr($file, 0, strrpos($file, '.'));
