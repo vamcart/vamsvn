@@ -922,9 +922,7 @@ document.onmousemove=positiontip
       
 	  </div>
 
-  	    <div id="ordersMessageStack">
-	   	  <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
-	    </div>
+  	    <div id="ordersMessageStack"></div>
 	   
 <div id="tabs">
 
@@ -1401,9 +1399,7 @@ document.onmousemove=positiontip
 <div id="products">
 		
 		
-	<div id="productsMessageStack">
-	  <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
-    </div>
+	<div id="productsMessageStack"></div>
 
 	
 	<div width="100%" style="border: 1px solid #C9C9C9;"> 
@@ -1739,9 +1735,7 @@ document.onmousemove=positiontip
 </div>
 <div id="other">
 		
-	  <div id="historyMessageStack">
-	    <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
-	  </div>
+	  <div id="historyMessageStack"></div>
 
     <div id="commentsBlock">
 	<table style="border: 1px solid #C9C9C9;" cellspacing="0" cellpadding="2" class="dataTableRow" id="commentsTable" width="100%">
