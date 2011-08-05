@@ -169,7 +169,7 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 			if (isset($_POST['notify']) && ($_POST['notify'] == 'on')) {
 			  $notify_comments = '';
 			  if (isset($_POST['notify_comments']) && ($_POST['notify_comments'] == 'on')) {
-			    $notify_comments = sprintf(EMAIL_TEXT_COMMENTS_UPDATE, $_POST['comments']) . "\n\n";
+			    $notify_comments = $_GET['comments'];
 			  }
 
 				// assign language to template for caching
@@ -183,7 +183,7 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 				$vamTemplate->assign('ORDER_NR', $_GET['oID']);
 				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
-				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
+				$vamTemplate->assign('NOTIFY_COMMENTS', ' '.$notify_comments);
 				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$_GET['status']]);
 
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.html');
