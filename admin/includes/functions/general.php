@@ -2122,45 +2122,22 @@ function vam_get_spsr_zone_id($zone_id) {
    
   // Get list of all payment modules available
   function vam_cfg_pull_down_payment_methods() {
-  global $language;
-  $enabled_payment = array();
-  $module_directory = DIR_FS_CATALOG_MODULES . 'payment/';
-  $file_extension = '.php';
 
-  if ($dir = @dir($module_directory)) {
-    while ($file = $dir->read()) {
-      if (!is_dir( $module_directory . $file)) {
-        if (substr($file, strrpos($file, '.')) == $file_extension) {
-          $directory_array[] = $file;
-        }
-      }
-    }
-    sort($directory_array);
-    $dir->close();
+  $payments = preg_split('/;/', MODULE_PAYMENT_INSTALLED);
+  for ($i=0; $i<count($payments); $i++){
+  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $payments[$i]);	
+  
+  $payment = substr($payments[$i], 0, strrpos($payments[$i], '.'));	
+  $payment_text = constant(MODULE_PAYMENT_.strtoupper($payment)._TEXT_TITLE);
+  
+  $payment_array[] = array('id' => $payment,
+                           'text' => $payment_text);
   }
-
-  // For each available payment module, check if enabled
-  for ($i=0, $n=sizeof($directory_array); $i<$n; $i++) {
-    $file = $directory_array[$i];
-
-    include(DIR_FS_CATALOG_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $file);
-    include($module_directory . $file);
-
-    $class = substr($file, 0, strrpos($file, '.'));
-    if (vam_class_exists($class)) {
-      $module = new $class;
-      if ($module->check() > 0) {
-        // If module enabled create array of titles
-      	$enabled_payment[] = array('id' => $module->title, 'text' => $module->title);
-		
-      }
-   }
- }
- 				
-    $enabled_payment[] = array('id' => TEXT_OTHER, 'text' => TEXT_OTHER);	
-		
+  
+	
 		//draw the dropdown menu for payment methods and default to the order value
-	  return vam_draw_pull_down_menu('configuration_value', $enabled_payment, '', ''); 
+	  return vam_draw_pull_down_menu('configuration_value', $payment_array, ORDER_EDITOR_CREDIT_CARD, ''); 
 		}
 
 
