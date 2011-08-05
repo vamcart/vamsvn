@@ -932,7 +932,7 @@ document.onmousemove=positiontip
 				<li><a href="#customer"><?php echo EDIT_ORDER_TAB_CUSTOMER; ?></a></li>
 				<li><a href="#payment"><?php echo EDIT_ORDER_TAB_PAYMENT; ?></a></li>
 				<li><a href="#products"><?php echo EDIT_ORDER_TAB_PRODUCTS; ?></a></li>
-				<li><a href="#status"><?php echo EDIT_ORDER_TAB_COMMENTS; ?></a></li>
+				<li><a href="#other"><?php echo EDIT_ORDER_TAB_COMMENTS; ?></a></li>
 			</ul>
 
         <div id="customer">
@@ -1737,7 +1737,7 @@ document.onmousemove=positiontip
 	 <?php } ?>
 		
 </div>
-<div id="status">
+<div id="other">
 		
 	  <div id="historyMessageStack">
 	    <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
