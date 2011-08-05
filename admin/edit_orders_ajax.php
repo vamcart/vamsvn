@@ -595,6 +595,104 @@ if ($action == 'update_downloads') {
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $billing_subject, $html_mail, $txt_mail);
 			  
 			  $customer_notified = '1';
+			  
+        // denuz added accumulated discount
+
+        $changed = false;
+        
+        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . (int)$_GET['status']);
+        if (vam_db_num_rows($check_group_query)) {
+           while ($groups = vam_db_fetch_array($check_group_query)) {
+              // calculating total customers purchase
+              // building query
+              $customer_query = vam_db_query("select c.* from customers as c, orders as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$_GET['oID']);
+              $customer = vam_db_fetch_array($customer_query);
+			     if ($customer['customers_status'] == '0') {
+              $customer_id = 0;
+              } else {
+              $customer_id = $customer['customers_id'];
+              }
+              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
+              $purchase_query = "select sum(ot.value) as total from orders_total as ot, orders as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
+              $statuses = vam_db_fetch_array($statuses_groups_query);
+              $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
+              while ($statuses = vam_db_fetch_array($statuses_groups_query)) {
+                  $purchase_query .= " or o.orders_status = " . $statuses['orders_status_id'];
+              }
+              $purchase_query .=");";
+                   
+              $total_purchase_query = vam_db_query($purchase_query);
+              $total_purchase = vam_db_fetch_array($total_purchase_query);
+              $customers_total = $total_purchase['total'];
+
+              // looking for current accumulated limit & discount
+              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id);
+              $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
+              $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
+              $current_group = @mysql_result($acc_query, "customers_status_name");
+
+			     if ($customer['customers_status'] > '0') {                                                                                                                                                                                                 
+              // ok, looking for available group
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              }
+
+              if (vam_db_num_rows($groups_query)) {
+                 // new group found
+                 $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
+                 $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
+                 $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
+                 $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+    
+                 // updating customers group
+                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
+                 $changed = true;
+                }
+             }
+           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
+           $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
+           $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
+           $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
+           $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+
+			if ($customer['customers_status'] != $customers_groups_id) {           
+
+           if ($changed) {
+             // send emails
+
+				// assign language to template for caching
+
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
+
+				// set dirs manual
+
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+				$vamTemplate->assign('CUSTOMERNAME', $check_status['customers_name']);
+				$vamTemplate->assign('EMAIL', $check_status['customers_email_address']);
+				$vamTemplate->assign('GROUPNAME', $customers_groups_name);
+				$vamTemplate->assign('GROUPDISCOUNT', $current_discount);
+				$vamTemplate->assign('ACCUMULATED_LIMIT', $currencies->display_price($limit, 0));
+				
+
+            //email to admin
+            
+				$html_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_admin.html');
+				$txt_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_admin.txt');
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
+
+            //email to customer
+
+				$html_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_customer.html');
+				$txt_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_customer.txt');
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
+           }
+          }
+        }
+        // eof denuz added accumulated discount
 			}			  
           		
 			vam_db_query("INSERT into " . TABLE_ORDERS_STATUS_HISTORY . " 
