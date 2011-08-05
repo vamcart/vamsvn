@@ -272,4 +272,9 @@ define('BOX_HEADING_MANUAL_ORDER', 'Создание заказов через �
 define('BOX_MANUAL_ORDER_CREATE_ACCOUNT', 'Регистрация клиента');
 define('BOX_MANUAL_ORDER_CREATE_ORDER', 'Создать заказ');
 
+define('EDIT_ORDER_TAB_CUSTOMER','Покупатель');
+define('EDIT_ORDER_TAB_PAYMENT','Оплата');
+define('EDIT_ORDER_TAB_PRODUCTS','Товары/Доставка');
+define('EDIT_ORDER_TAB_COMMENTS','Комментарии');
+
 ?>
