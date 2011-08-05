@@ -539,8 +539,12 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
               // building query
               $customer_query = vam_db_query("select c.* from customers as c, orders as o where o.customers_id = c.customers_id and o.orders_id = " . (int)$oID);
               $customer = vam_db_fetch_array($customer_query);
+			     if ($customer['customers_status'] == '0') {
+              $customer_id = 0;
+              } else {
               $customer_id = $customer['customers_id'];
-              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
+              }
+             $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from orders_total as ot, orders as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
               $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
@@ -559,8 +563,10 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, "customers_status_name");
                                                                                                                                                                                                  
+			     if ($customer['customers_status'] > '0') {                                                                                                                                                                                                 
               // ok, looking for available group
               $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              }
 
               if (vam_db_num_rows($groups_query)) {
                  // new group found
@@ -572,13 +578,16 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
                  // updating customers group
                  vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
                  $changed = true;
+                }
              }
-           }
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
            $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
            $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+
+			if ($customer['customers_status'] != $customers_groups_id) {           
+
            if ($changed) {
              // send emails
 
@@ -601,18 +610,19 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 
             //email to admin
             
-				$html_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.html');
-				$txt_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_admin.txt');
+				$html_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_admin.html');
+				$txt_mail_admin = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_admin.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_admin, $txt_mail_admin);
 
             //email to customer
 
-				$html_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.html');
-				$txt_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/accumulated_discount_customer.txt');
+				$html_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_customer.html');
+				$txt_mail_customer = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/accumulated_discount_customer.txt');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', EMAIL_ACC_SUBJECT, $html_mail_customer, $txt_mail_customer);
            }
+          }
         }
         // eof denuz added accumulated discount
 
