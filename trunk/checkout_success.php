@@ -134,7 +134,7 @@ var yaParams = {
       ]
 	};
 </script>
-<script type="text/javascript">
+<div style="display:none;"><script type="text/javascript">
 (function(w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
@@ -143,7 +143,7 @@ var yaParams = {
         catch(e) { }
     });
 })(window, \'yandex_metrika_callbacks\');
-</script>
+</script></div>
 <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
 <noscript><div><img src="//mc.yandex.ru/watch/' . YANDEX_METRIKA_ID . '" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 		    ';
