@@ -1305,50 +1305,6 @@ document.onmousemove=positiontip
 	        //START for payment dropdown menu use this by quick_fixer
   		      if (ORDER_EDITOR_PAYMENT_DROPDOWN == 'true') { 
 		
-		    // Get list of all payment modules available
-            $enabled_payment = array();
-            $module_directory = DIR_FS_CATALOG_MODULES . 'payment/';
-            $file_extension = substr($PHP_SELF, strrpos($PHP_SELF, '.'));
-
-             if ($dir = @dir($module_directory)) {
-              while ($file = $dir->read()) {
-               if (!is_dir( $module_directory . $file)) {
-                if (substr($file, strrpos($file, '.')) == $file_extension) {
-                   $directory_array[] = $file;
-                 }
-               }
-             }
-            sort($directory_array);
-            $dir->close();
-           }
-
-          // For each available payment module, check if enabled
-          for ($i=0, $n=sizeof($directory_array); $i<$n; $i++) {
-          $file = $directory_array[$i];
-
-          include(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $file);
-          include($module_directory . $file);
-
-          $class = substr($file, 0, strrpos($file, '.'));
-          if (vam_class_exists($class)) {
-             $module = new $class;
-             if ($module->check() > 0) {
-              // If module enabled create array of titles
-      	       $enabled_payment[] = array('id' => $module->title, 'text' => $module->title);
-		
-		      //if the payment method is the same as the payment module title then don't add it to dropdown menu
-		      if ($module->title == $order->info['payment_method']) {
-			      $paymentMatchExists='true';	
-		         }
-              }
-            }
-          }
- 		//just in case the payment method found in db is not the same as the payment module title then make it part of the dropdown array or else it cannot be the selected default value
-		  if ($paymentMatchExists !='true') {
-			$enabled_payment[] = array('id' => $order->info['payment_method'], 'text' => $order->info['payment_method']);	
-           }
-            $enabled_payment[] = array('id' => 'Other', 'text' => 'Other');	
-
   $payments = preg_split('/;/', MODULE_PAYMENT_INSTALLED);
   for ($i=0; $i<count($payments); $i++){
   
