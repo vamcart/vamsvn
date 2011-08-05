@@ -277,4 +277,7 @@ define('EDIT_ORDER_TAB_PAYMENT','Оплата');
 define('EDIT_ORDER_TAB_PRODUCTS','Товары/Доставка');
 define('EDIT_ORDER_TAB_COMMENTS','Комментарии');
 
+define('BUTTON_BACK_TO_ORDER','Вернуться к заказу');
+define('BUTTON_BACK_TO_ORDERS_LIST','Вернуться к списку заказов');
+
 ?>
