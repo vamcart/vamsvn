@@ -44,10 +44,18 @@
       $this->info = array('currency' => $order['currency'],
                           'currency_value' => $order['currency_value'],
                           'payment_method' => $order['payment_method'],
+                          'payment_class' => $order['payment_class'],
+                          'shipping_class' => $order['shipping_class'],
+                          'status' => $order['customers_status'],
+                          'status_name' => $order['customers_status_name'],
+                          'status_image' => $order['customers_status_image'],
+                          'status_discount' => $order['customers_status_discount'],
                           'cc_type' => $order['cc_type'],
                           'cc_owner' => $order['cc_owner'],
                           'cc_number' => $order['cc_number'],
                           'cc_expires' => $order['cc_expires'],
+                          'comments' => $order['comments'],
+                          'language' => $order['language'],
                           'date_purchased' => $order['date_purchased'],
                           'orders_status' => $order['orders_status'],
                           'last_modified' => $order['last_modified'],
@@ -60,6 +68,11 @@
                           
       $this->customer = array('name' => $order['customers_name'],
                               'company' => $order['customers_company'],
+                              'csID' => $order['customers_cid'],
+                              'vat_id' => $order['customers_vat_id'],                               
+                              'shop_id' => $order['shop_id'], 
+                              'ID' => $order['customers_id'],
+                              'cIP' => $order['customers_ip'],
                               'street_address' => $order['customers_street_address'],
                               'suburb' => $order['customers_suburb'],
                               'city' => $order['customers_city'],
@@ -70,7 +83,9 @@
 							  'zone_id' => oe_get_zone_id(oe_get_country_id($order['customers_country']), $order['customers_state']),  
                               'format_id' => $order['customers_address_format_id'],
                               'telephone' => $order['customers_telephone'],
-                              'email_address' => $order['customers_email_address']);
+                              'email_address' => $order['customers_email_address'],
+                              'orig_reference' => $order['orig_reference'],
+                              'login_reference' => $order['login_reference']);
 
       $this->delivery = array('name' => $order['delivery_name'],
                               'company' => $order['delivery_company'],
@@ -207,6 +222,88 @@
       return $shipping_index;
     }
 
+        function getOrderData($oID) {
+    	global $vamPrice;
+    	
+    	require_once(DIR_FS_INC . 'vam_get_attributes_model.inc.php');
+    	
+    	$order_query = "SELECT
+	        				products_id,
+	        				orders_products_id,
+	        				products_model,
+	        				products_name,
+	        				final_price,
+	        			  	products_shipping_time,
+	        				products_quantity
+	        				FROM ".TABLE_ORDERS_PRODUCTS."
+	        				WHERE orders_id='".(int) $oID."'";
+	$order_data = array ();
+	$order_query = vam_db_query($order_query);
+	while ($order_data_values = vam_db_fetch_array($order_query)) {
+		$attributes_query = "SELECT
+		        				products_options,
+		        				products_options_values,
+		        				price_prefix,
+		        				options_values_price
+		        				FROM ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES."
+		        				WHERE orders_products_id='".$order_data_values['orders_products_id']."'";
+		$attributes_data = '';
+		$attributes_model = '';
+		$attributes_query = vam_db_query($attributes_query);
+		while ($attributes_data_values = vam_db_fetch_array($attributes_query)) {
+			$attributes_data .= '<br />'.$attributes_data_values['products_options'].': '.$attributes_data_values['products_options_values'];
+			$attributes_model .= '<br />'.vam_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
 
+		}
+      	$order_data[] = array ('PRODUCTS_ID' => $order_data_values['products_id'], 'PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], false),'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price']/$order_data_values['products_quantity'], false), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
+
+	}
+	
+	return $order_data;
+    	
+    }
+    
+    function getTotalData($oID) {
+    	global $vamPrice,$db;
+    	
+    		// get order_total data
+	$oder_total_query = "SELECT
+	  					title,
+	  					text,
+	                    class,
+	                    value,
+	  					sort_order
+	  					FROM ".TABLE_ORDERS_TOTAL."
+	  					WHERE orders_id='".(int) $oID."'
+	  					ORDER BY sort_order ASC";
+
+	$order_total = array ();
+	$oder_total_query = vam_db_query($oder_total_query);
+	while ($oder_total_values = vam_db_fetch_array($oder_total_query)) {
+
+
+		$order_total[] = array (
+		
+		'TITLE' => $oder_total_values['title'], 
+		'CLASS' => $oder_total_values['class'], 
+		'VALUE' => $oder_total_values['value'], 
+		'TEXT' => $oder_total_values['text']
+		
+		);
+
+		if ($oder_total_values['class'] = 'ot_total')
+			$total = $oder_total_values['value'];
+
+	}
+	
+	return array(
+	
+	'data'=>$order_total,
+	'total'=>$total
+	
+	);
+	
+    }
+    
   }
 ?>
