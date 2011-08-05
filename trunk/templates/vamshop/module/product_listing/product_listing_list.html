@@ -105,6 +105,14 @@
 {$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
 </dd>
 
+{if $module_data.EXTRA_FIELDS}
+<dd class="itemDescription">
+{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br />
+{/foreach}
+</dd>
+{/if}
+
 <dd class="itemDescription">
 <p>
 {foreach name=params item=module_params from=$module_data.params}

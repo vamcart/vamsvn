@@ -483,11 +483,30 @@ class product {
 			$shipping_status_name = $main->getShippingStatusName($array['products_shippingtime']);
 			$shipping_status_image = $main->getShippingStatusImage($array['products_shippingtime']);
 		
+                      $extra_fields_query = vamDBquery("
+                      SELECT pef.products_extra_fields_status as status, pef.products_extra_fields_name as name, ptf.products_extra_fields_value as value
+                      FROM ". TABLE_PRODUCTS_EXTRA_FIELDS ." pef
+             LEFT JOIN  ". TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS ." ptf
+            ON ptf.products_extra_fields_id=pef.products_extra_fields_id
+            WHERE ptf.products_id=". (int)$array['products_id'] ." and ptf.products_extra_fields_value<>'' and (pef.languages_id='0' or pef.languages_id='".$_SESSION['languages_id']."')
+            ORDER BY products_extra_fields_order");
+
+  while ($extra_fields = vam_db_fetch_array($extra_fields_query,true)) {
+        if (! $extra_fields['status'])  // show only enabled extra field
+           continue;
+  
+  $extra_fields_data[] = array (
+  'NAME' => $extra_fields['name'], 
+  'VALUE' => $extra_fields['value']
+  );
+  
+  }
 		
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		      'PRODUCTS_MODEL'=>$array['products_model'],
 		      'PRODUCTS_QUANTITY'=>$array['products_quantity'],
 				'COUNT'=>$array['ID'],
+				'EXTRA_FIELDS'=>$extra_fields_data,
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
