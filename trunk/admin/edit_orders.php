@@ -770,7 +770,18 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-  
+
+<?php if (ENABLE_TABS == 'true') { ?>
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
+			});
+		</script>
+<?php } ?>
+
   <?php include('order_editor/css.php');  
       //because if you haven't got your css, what have you got?
       ?>
@@ -910,11 +921,22 @@ document.onmousemove=positiontip
 		  </ul>
       
 	  </div>
-	   
-	    <div id="ordersMessageStack">
+
+  	    <div id="ordersMessageStack">
 	   	  <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
 	    </div>
-	   	   
+	   
+<div id="tabs">
+
+			<ul>
+				<li><a href="#customer"><?php echo EDIT_ORDER_TAB_CUSTOMER; ?></a></li>
+				<li><a href="#payment"><?php echo EDIT_ORDER_TAB_PAYMENT; ?></a></li>
+				<li><a href="#products"><?php echo EDIT_ORDER_TAB_PRODUCTS; ?></a></li>
+				<li><a href="#comments"><?php echo EDIT_ORDER_TAB_COMMENTS; ?></a></li>
+			</ul>
+
+        <div id="customer">
+   	   	   
 	<?php if (ORDER_EDITOR_USE_AJAX != 'true') { ?>
 	<!-- Begin Update Block, only for non-ajax use -->
 
@@ -1247,6 +1269,9 @@ document.onmousemove=positiontip
           </tr>
         </table>
 
+        </div>
+        <div id="payment">
+
               <!-- payment_method bof //-->
 
       <table cellspacing="0" cellpadding="2" width="100%">
@@ -1415,6 +1440,10 @@ document.onmousemove=positiontip
               </table>		
 		
               <!-- payment_method eof //-->
+		
+</div>
+<div id="products">
+		
 		
 	<div id="productsMessageStack">
 	  <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
@@ -1751,21 +1780,20 @@ document.onmousemove=positiontip
 	 <!-- End of Update Block -->  
 	 <?php } ?>
 		
+</div>
+<div id="comments">
+		
 	  <div id="historyMessageStack">
 	    <?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?>
 	  </div>
 
     <div id="commentsBlock">
-	<table style="border: 1px solid #C9C9C9;" cellspacing="0" cellpadding="2" class="dataTableRow" id="commentsTable">
+	<table style="border: 1px solid #C9C9C9;" cellspacing="0" cellpadding="2" class="dataTableRow" id="commentsTable" width="100%">
      <tr class="dataTableHeadingRow">
       <td class="dataTableHeadingContent" align="left"><?php echo TABLE_HEADING_DELETE; ?></td>
-      <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>
       <td class="dataTableHeadingContent" align="left"><?php echo TABLE_HEADING_DATE_ADDED; ?></td>
-      <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>
       <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_CUSTOMER_NOTIFIED; ?></td>
-      <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>
       <td class="dataTableHeadingContent" align="left"><?php echo TABLE_HEADING_STATUS; ?></td>
-      <td class="dataTableHeadingContent" align="left" width="10">&nbsp;</td>
       <td class="dataTableHeadingContent" align="left"><?php echo TABLE_HEADING_COMMENTS; ?></td>
     </tr>
     <?php
@@ -1782,16 +1810,12 @@ document.onmousemove=positiontip
 	      if (ORDER_EDITOR_USE_AJAX == 'true') { 
 		   echo '  <tr class="' . $rowClass . '" id="commentRow' . $orders_history['orders_status_history_id'] . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')">' . "\n" .
          '	  <td class="smallText" align="center"><div id="do_not_delete"><input name="update_comments[' . $orders_history['orders_status_history_id'] . '][delete]" type="checkbox" onClick="updateCommentsField(\'delete\', \'' . $orders_history['orders_status_history_id'] . '\', this.checked, \'\', this)"></div></td>' . "\n" . 
-		 '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">' . vam_datetime_short($orders_history['date_added']) . '</td>' . "\n" .
-         '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">';
 		 } else {
 		 echo '  <tr class="' . $rowClass . '" id="commentRow' . $orders_history['orders_status_history_id'] . '" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this, \'' . $rowClass . '\')">' . "\n" .
          '	  <td class="smallText" align="center"><div id="do_not_delete"><input name="update_comments[' . $orders_history['orders_status_history_id'] . '][delete]" type="checkbox"></div></td>' . "\n" . 
-		 '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">' . vam_datetime_short($orders_history['date_added']) . '</td>' . "\n" .
-         '    <td class="smallText" align="left" width="10"> </td>' . "\n" .
          '    <td class="smallText" align="center">';
 		 }
       
@@ -1801,10 +1825,8 @@ document.onmousemove=positiontip
         echo vam_image(DIR_WS_ICONS . 'cross.gif', ICON_CROSS) . "</td>\n";
          }
        
-	    echo '    <td class="smallText" align="left" width="10">&nbsp;</td>' . "\n" .
-             '    <td class="smallText" align="left">' . $orders_status_array[$orders_history['orders_status_id']] . '</td>' . "\n";
-        echo '    <td class="smallText" align="left" width="10">&nbsp;</td>' . "\n" .
-             '    <td class="smallText" align="left">';
+	    echo '<td class="smallText" align="left">' . $orders_status_array[$orders_history['orders_status_id']] . '</td>' . "\n";
+        echo '<td class="smallText" align="left">';
   
         if (ORDER_EDITOR_USE_AJAX == 'true') { 
 		echo vam_draw_textarea_field("update_comments[" . $orders_history['orders_status_history_id'] . "][comments]", "soft", "40", "5", 
@@ -1896,6 +1918,9 @@ document.onmousemove=positiontip
 		  
 	       <br>
             <div><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></div>
+            
+</div>    
+</div>        
 	
 	<!-- End of Update Block -->
 	<?php   }  //end if (ORDER_EDITOR_USE_AJAX != 'true') {
