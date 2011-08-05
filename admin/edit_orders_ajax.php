@@ -16,7 +16,16 @@
 
   require('includes/application_top.php');
 
+require_once(DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
+require_once (DIR_FS_INC.'vam_php_mail.inc.php');
+require_once (DIR_FS_INC.'vam_add_tax.inc.php');
+require_once (DIR_FS_INC.'changedataout.inc.php');
+require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
+require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
+
   $PHP_SELF = (((strlen(ini_get('cgi.fix_pathinfo')) > 0) && ((bool)ini_get('cgi.fix_pathinfo') == false)) || !isset($_SERVER['SCRIPT_NAME'])) ? basename($_SERVER['PHP_SELF']) : basename($_SERVER['SCRIPT_NAME']);
+  
+  $vamTemplate = new vamTemplate;
   
   require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 
@@ -562,14 +571,28 @@ if ($action == 'update_downloads') {
 			  if (isset($_GET['notify_comments']) && ($_GET['notify_comments'] == 'true')) {
 			    $notify_comments = sprintf(EMAIL_TEXT_COMMENTS_UPDATE, $_GET['comments']) . "\n\n";
 			  }
-			  $email = STORE_NAME . "\n" .
-			           EMAIL_SEPARATOR . "\n" . 
-					   EMAIL_TEXT_ORDER_NUMBER . ' ' . $_GET['oID'] . "\n" . 
-	EMAIL_TEXT_INVOICE_URL . ' ' . vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $_GET['oID'], 'SSL') . "\n" . 
-					   EMAIL_TEXT_DATE_ORDERED . ' ' . vam_date_long($check_status['date_purchased']) . "\n\n" . 
-					   sprintf(EMAIL_TEXT_STATUS_UPDATE, $orders_status_array[$_GET['status']]) . $notify_comments . sprintf(EMAIL_TEXT_STATUS_UPDATE2);
-			  
-			  vam_mail($check_status['customers_name'], $check_status['customers_email_address'], EMAIL_TEXT_SUBJECT, $email, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+
+				// assign language to template for caching
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
+
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$vamTemplate->assign('ORDER_NR', $_GET['oID']);
+				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
+				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
+				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
+				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$_GET['status']]);
+
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.html');
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.txt');
+
+            // create subject
+           $billing_subject = str_replace('{$nr}', $_GET['oID'], EMAIL_BILLING_SUBJECT);
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $billing_subject, $html_mail, $txt_mail);
 			  
 			  $customer_notified = '1';
 			}			  
@@ -825,87 +848,75 @@ if (vam_db_num_rows($orders_history_query)) {
 	   $products_ordered .= $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . $products_model . ' = ' . $currencies->format(vam_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax']) * $order->products[$i]['qty'], true, $order->info['currency'], $order->info['currency_value']) . $products_ordered_attributes . "\n";
 			 }
 		   
-		//Build the email
-	   	 $email_order = STORE_NAME . "\n" . 
-                        EMAIL_SEPARATOR . "\n" . 
-						EMAIL_TEXT_ORDER_NUMBER . ' ' . (int)$_GET['oID'] . "\n" .
-                        EMAIL_TEXT_INVOICE_URL . ' ' . vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . (int)$_GET['oID'], 'SSL') . "\n" .
-                	    EMAIL_TEXT_DATE_MODIFIED . ' ' . strftime(DATE_FORMAT_LONG) . "\n\n";
+		   $oID = $_GET['oID'];
+		   
+	$vamTemplate->assign('address_label_customer', vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
+	$vamTemplate->assign('address_label_shipping', vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+	if ($_SESSION['credit_covers'] != '1') {
+		$vamTemplate->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
+	}
+	$vamTemplate->assign('csID', $order->customer['csID']);
 
-	    $email_order .= EMAIL_TEXT_PRODUCTS . "\n" . 
-    	                EMAIL_SEPARATOR . "\n" . 
-        	            $products_ordered . 
-            	        EMAIL_SEPARATOR . "\n";
+  $it=0;
+	$semextrfields = vamDBquery("select * from " . TABLE_EXTRA_FIELDS . " where fields_required_email = '1'");
+	while($dataexfes = vam_db_fetch_array($semextrfields,true)) {
+	$cusextrfields = vamDBquery("select * from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id = '" . (int)$order->customer['ID'] . "' and fields_id = '" . $dataexfes['fields_id'] . "'");
+	$rescusextrfields = vam_db_fetch_array($cusextrfields,true);
 
-	  for ($i=0, $n=sizeof($order->totals); $i<$n; $i++) {
-        $email_order .= strip_tags($order->totals[$i]['title']) . ' ' . strip_tags($order->totals[$i]['text']) . "\n";
-      }
+	$extrfieldsinf = vamDBquery("select fields_name from " . TABLE_EXTRA_FIELDS_INFO . " where fields_id = '" . $dataexfes['fields_id'] . "' and languages_id = '" . $_SESSION['languages_id'] . "'");
 
-	  if ($order->content_type != 'virtual') {
-    	$email_order .= "\n" . EMAIL_TEXT_DELIVERY_ADDRESS . "\n" . 
-        	            EMAIL_SEPARATOR . "\n" .
-						$order->delivery['name'] . "\n";
-						if ($order->delivery['company']) {
-		                  $email_order .= $order->delivery['company'] . "\n";
-	                    }
-		$email_order .= $order->delivery['street_address'] . "\n";
-		                if ($order->delivery['suburb']) {
-		                  $email_order .= $order->delivery['suburb'] . "\n";
-	                    }
-		$email_order .= $order->customer['city'] . "\n";
-		                if ($order->delivery['state']) {
-		                  $email_order .= $order->delivery['state'] . "\n";
-	                    }
-		$email_order .= $order->customer['postcode'] . "\n" .
-						$order->delivery['country'] . "\n";
-	  }
-
-    	$email_order .= "\n" . EMAIL_TEXT_BILLING_ADDRESS . "\n" .
-        	            EMAIL_SEPARATOR . "\n" .
-						$order->billing['name'] . "\n";
-						if ($order->billing['company']) {
-		                  $email_order .= $order->billing['company'] . "\n";
-	                    }
-		$email_order .= $order->billing['street_address'] . "\n";
-		                if ($order->billing['suburb']) {
-		                  $email_order .= $order->billing['suburb'] . "\n";
-	                    }
-		$email_order .= $order->customer['city'] . "\n";
-		                if ($order->billing['state']) {
-		                  $email_order .= $order->billing['state'] . "\n";
-	                    }
-		$email_order .= $order->customer['postcode'] . "\n" .
-						$order->billing['country'] . "\n\n";
-
-	    $email_order .= EMAIL_TEXT_PAYMENT_METHOD . "\n" . 
-    	                EMAIL_SEPARATOR . "\n";
-	    $email_order .= $order->info['payment_method'] . "\n\n";
-		
-		        
-			//	if ( ($order->info['payment_method'] == ORDER_EDITOR_SEND_INFO_PAYMENT_METHOD) && (EMAIL_TEXT_PAYMENT_INFO) ) { 
-		      //     $email_order .= EMAIL_TEXT_PAYMENT_INFO . "\n\n";
-		       //   }
-			 //I'm not entirely sure what the purpose of this is so it is being shelved for now
-
-				if (EMAIL_TEXT_FOOTER) {
-					$email_order .= EMAIL_TEXT_FOOTER . "\n\n";
-				  }
-      
-	  //code for plain text emails which changes the ВЂ sign to EUR, otherwise the email will show ? instead of ВЂ
-      $email_order = str_replace("ВЂ","EUR",$email_order);
-	  $email_order = str_replace("&nbsp;"," ",$email_order);
-
-	  //code which replaces the <br> tags within EMAIL_TEXT_PAYMENT_INFO and EMAIL_TEXT_FOOTER with the proper \n
-	  $email_order = str_replace("<br>","\n",$email_order);
-
-	  //send the email to the customer
-	  vam_mail($order->customer['name'], $order->customer['email_address'], EMAIL_TEXT_SUBJECT, $email_order, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
-
-   // send emails to other people as necessary
-  if (SEND_EXTRA_ORDER_EMAILS_TO != '') {
-    vam_mail('', SEND_EXTRA_ORDER_EMAILS_TO, EMAIL_TEXT_SUBJECT, $email_order, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+	$extrfieldsres = vam_db_fetch_array($extrfieldsinf,true);
+	$extra_fields .= $extrfieldsres['fields_name'] . ' : ' .
+	$rescusextrfields['value'] . "\n";
+	$vamTemplate->assign('customer_extra_fields', $extra_fields);
   }
-  
+	
+	$order_total = $order->getTotalData($oID);
+		$vamTemplate->assign('order_data', $order->getOrderData($oID));
+		$vamTemplate->assign('order_total', $order_total['data']);
+
+	// assign language to template for caching
+	$vamTemplate->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+	$vamTemplate->assign('oID', $oID);
+	if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
+		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
+		$payment_method = constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
+	}
+	$vamTemplate->assign('PAYMENT_METHOD', $payment_method);
+	if ($order->info['shipping_method'] != '') {
+		$shipping_method = $order->info['shipping_method'];
+	}
+	$vamTemplate->assign('SHIPPING_METHOD', $shipping_method);
+	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
+
+	$vamTemplate->assign('NAME', $order->customer['name']);
+	$vamTemplate->assign('COMMENTS', $order->info['comments']);
+	$vamTemplate->assign('EMAIL', $order->customer['email_address']);
+	$vamTemplate->assign('PHONE',$order->customer['telephone']);
+
+	$vamTemplate->assign('PAYMENT_INFO_HTML', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION));
+	$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION)));
+
+	// dont allow cache
+	$vamTemplate->caching = false;
+
+	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail.html');
+	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail.txt');
+
+	// create subject
+	$order_subject = str_replace('{$nr}', $oID, EMAIL_BILLING_SUBJECT_ORDER);
+	$order_subject = str_replace('{$date}', strftime(DATE_FORMAT_LONG), $order_subject);
+	$order_subject = str_replace('{$lastname}', $order->customer['lastname'], $order_subject);
+	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
+
+	// send mail to admin
+	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, EMAIL_BILLING_ADDRESS, STORE_NAME, EMAIL_BILLING_FORWARDING_STRING, $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
+
+	// send mail to customer
+	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order_subject, $html_mail, $txt_mail);
+    
   ?>
 	
 	<table>
