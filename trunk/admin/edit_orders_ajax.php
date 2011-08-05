@@ -634,7 +634,6 @@ if ($action == 'update_downloads') {
 			     if ($customer['customers_status'] > '0') {                                                                                                                                                                                                 
               // ok, looking for available group
               $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
-              }
 
               if (vam_db_num_rows($groups_query)) {
                  // new group found
@@ -647,6 +646,7 @@ if ($action == 'update_downloads') {
                  vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id);
                  $changed = true;
                 }
+               }
              }
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id);
            $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
