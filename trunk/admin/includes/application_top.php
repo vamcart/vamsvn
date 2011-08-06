@@ -620,5 +620,21 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('FILENAME_ORDERS_EDIT_ADD_PRODUCT', 'edit_orders_add_product.php');
   define('FILENAME_ORDERS_EDIT_AJAX', 'edit_orders_ajax.php');
 // EOF: Added for Order_edit MOD
+
+// Start Product Specifications
+  define('FILENAME_PRODUCTS_SPECIFICATIONS', 'products_specifications.php');
+  define('FILENAME_PRODUCTS_SPECIFICATIONS_INPUT', 'products_specifications_input.php');
+  define('FILENAME_PRODUCTS_TABS', 'products_tabs.php');
+
+  define('TABLE_PRODUCTS_SPECIFICATIONS', 'products_specifications');
+  define('TABLE_SPECIFICATION', 'specifications');
+  define('TABLE_SPECIFICATION_DESCRIPTION', 'specification_description');
+  define('TABLE_SPECIFICATION_GROUPS', 'specification_groups');
+  define('TABLE_SPECIFICATIONS_FILTERS', 'specification_filters');
+  define('TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION', 'specification_filters_description');
+  define('TABLE_SPECIFICATIONS_TO_CATEGORIES', 'specification_groups_to_categories');
+  define('TABLE_SPECIFICATIONS_VALUES', 'specification_values');
+  define('TABLE_SPECIFICATIONS_VALUES_DESCRIPTION', 'specification_values_description');
+// End Product Specifications
   
 ?>
