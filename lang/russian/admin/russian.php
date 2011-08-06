@@ -589,4 +589,7 @@ define('BOX_YML_IMPORT','Я-маркет импорт/экспорт');
 define('TABLE_TEXT_IS_PIN','Товар имеет PIN код');
 define('BOX_CATALOG_PIN_LOADER','PIN коды');
 
+// Products Specifications
+define('BOX_CATALOG_PRODUCTS_SPECIFICATIONS', 'Спецификации товаров');
+
 ?>
