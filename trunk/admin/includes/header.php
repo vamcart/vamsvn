@@ -163,6 +163,7 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '">' . BOX_REVIEWS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['specials'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '">' . BOX_SPECIALS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['featured'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_FEATURED, '', 'NONSSL') . '">' . BOX_FEATURED . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_specifications'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_SPECIFICATIONS, '', 'NONSSL') . '">' . BOX_CATALOG_PRODUCTS_SPECIFICATIONS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['pin_loader'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PIN_LOADER, '', 'NONSSL') . '">' . BOX_CATALOG_PIN_LOADER . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
