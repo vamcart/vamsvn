@@ -3347,3 +3347,192 @@ insert into spsr_zones values ('79', '107', '90');
 insert into spsr_zones values ('80', '108', '95');
 insert into spsr_zones values ('81', '109', '97');
 insert into spsr_zones values ('82', '110', '99');
+
+INSERT INTO configuration_group VALUES ('1610', 'CG_PRODUCTS_SPECIFICATIONS', 'Products Specifications', 'Products Specifications configuration options', '1610', '1');
+
+##
+## Table structure for table `specification_groups_to_categories`
+##   This table links the specification_groups table
+##   to the categories table. It allows multiple categories 
+##   to have the same specification set
+##
+DROP TABLE IF EXISTS `specification_groups_to_categories`;
+CREATE TABLE IF NOT EXISTS `specification_groups_to_categories` (
+  `specification_group_id` int(11) NOT NULL DEFAULT '0',
+  `categories_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`specification_group_id`,`categories_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_groups`
+##   This table relates to the store Categories through
+##   the specifications_to_categories table
+##
+DROP TABLE IF EXISTS `specification_groups`;
+CREATE TABLE IF NOT EXISTS `specification_groups` (
+  `specification_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specification_group_name` varchar(64) NOT NULL,
+  `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
+  `show_products` set('True','False') NOT NULL DEFAULT 'True',
+  `show_filter` set('True','False') NOT NULL DEFAULT 'True',
+  PRIMARY KEY (`specification_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+##
+## Table structure for table `specifications`
+##
+##
+DROP TABLE IF EXISTS `specifications`;
+CREATE TABLE IF NOT EXISTS `specifications` (
+  `specifications_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specification_group_id` int(11) NOT NULL DEFAULT '0',
+  `specification_sort_order` int(11) NOT NULL DEFAULT '0',
+  `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
+  `show_products` set('True','False') NOT NULL DEFAULT 'True',
+  `show_filter` set('True','False') NOT NULL DEFAULT 'True',
+  `products_column_name` varchar(32) NOT NULL,
+  `column_justify` set('Left','Center','Right') NOT NULL DEFAULT 'Left',
+  `filter_class` set('none','exact','multiple','range','reverse','start','partial','like') NOT NULL DEFAULT 'none',
+  `filter_display` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'pulldown',
+  `filter_show_all` set('True','False') NOT NULL DEFAULT 'True',
+  `enter_values` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'text',
+  PRIMARY KEY (`specifications_id`),
+  KEY `specification_group_id` (`specification_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_description`
+##   This table defines the Specification(s) for a given Specification Group
+##   There can be multiple Specifications for each Group
+##   All products in a Group use the same specification set
+##
+DROP TABLE IF EXISTS `specification_description`;
+CREATE TABLE IF NOT EXISTS `specification_description` (
+  `specification_description_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specifications_id` int(11) NOT NULL DEFAULT '0',
+  `language_id` int(11) NOT NULL DEFAULT '1',
+  `specification_name` varchar(32) NOT NULL DEFAULT '',
+  `specification_description` varchar(128) NOT NULL,
+  `specification_prefix` varchar(128) NOT NULL DEFAULT '',
+  `specification_suffix` varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (`specification_description_id`,`language_id`),
+  KEY `specifications_id` (`specifications_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_filters`
+##   This table sets up filters that can be used to search for products
+##
+DROP TABLE IF EXISTS `specification_filters`;
+CREATE TABLE IF NOT EXISTS `specification_filters` (
+  `specification_filters_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specifications_id` int(11) NOT NULL DEFAULT '0',
+  `filter_sort_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`specification_filters_id`),
+  KEY `specifications_id` (`specifications_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_filters_description`
+##   This table sets up filters that can be used to search for products
+##
+DROP TABLE IF EXISTS `specification_filters_description`;
+CREATE TABLE IF NOT EXISTS `specification_filters_description` (
+  `specification_filters_description_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specification_filters_id` int(11) NOT NULL DEFAULT '0',
+  `language_id` int(11) NOT NULL DEFAULT '1',
+  `filter` varchar(128) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`specification_filters_description_id`),
+  KEY `language_id` (`language_id`),
+  KEY `specification_filters_id` (`specification_filters_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_values`
+##   Sets up the values that can be used in product specifications
+##
+DROP TABLE IF EXISTS `specification_values`;
+CREATE TABLE IF NOT EXISTS `specification_values` (
+  `specification_values_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specifications_id` int(11) NOT NULL DEFAULT '0',
+  `value_sort_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`specification_values_id`),
+  KEY `specifications_id` (`specifications_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `specification_values_description`
+##   Sets up the values that can be used in product specifications
+##
+DROP TABLE IF EXISTS `specification_values_description`;
+CREATE TABLE IF NOT EXISTS `specification_values_description` (
+  `specification_values_description_id` int(11) NOT NULL AUTO_INCREMENT,
+  `specification_values_id` int(11) NOT NULL DEFAULT '0',
+  `language_id` int(11) NOT NULL DEFAULT '1',
+  `specification_value` varchar(128) NOT NULL,
+  PRIMARY KEY (`specification_values_description_id`),
+  KEY `specification_values_id` (`specification_values_id`),
+  KEY `language_id` (`language_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+##
+## Table structure for table `products_specifications`
+##   This table contains the specification data for each Product
+##
+DROP TABLE IF EXISTS `products_specifications`;
+CREATE TABLE IF NOT EXISTS `products_specifications` (
+  `products_specification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `products_id` int(11) NOT NULL DEFAULT '0',
+  `specifications_id` int(11) NOT NULL DEFAULT '0',
+  `language_id` int(11) NOT NULL DEFAULT '1',
+  `specification` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`products_specification_id`),
+  KEY `products_id` (`products_id`,`specifications_id`,`language_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+## 
+## Add the configuration options to table `configuration` 
+## 
+INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+('SPECIFICATIONS_PRODUCTS_HEAD', 'Subhead', 1610, 1, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_MINIMUM_PRODUCTS', '1', 1610, 5, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_SHOW_NAME_PRODUCTS', 'False', 1610, 10, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_SHOW_TITLE_PRODUCTS', 'True', 1610, 15, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_BOX_FRAME_STYLE', 'Plain', 1610, 20, '2009-08-13 21:28:59', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain'',''Tabs''), '),
+('SPECIFICATIONS_REVIEWS_TAB', 'True', 1610, 21, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_MAX_REVIEWS', '3', 1610, 22, '2009-09-09 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_QUESTION_TAB', 'True', 1610, 23, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+
+('SPECIFICATIONS_COMPARISON_HEAD', 'Subhead', 1610, 24, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_MINIMUM_COMPARISON', '2', 1610, 25, '2009-07-19 19:52:33', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMP_LINK', 'True', 1610, 30, '0000-00-00 00:00:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMP_TABLE_ROW', 'both', 1610, 35, '2009-06-26 18:24:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''top'', ''bottom'', ''both'', ''none''), '),
+('SPECIFICATIONS_BOX_COMPARISON', 'True', 1610, 40, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_BOX_COMP_INDEX', 'False', 1610, 45, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMP_SUFFIX', 'True', 1610, 50, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMPARISON_STYLE', 'Simple', 1610, 52, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain''), '),
+('SPECIFICATIONS_COMBO_MFR', '0', 1610, 55, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_WEIGHT', '0', 1610, 60, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_PRICE', '0', 1610, 65, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_MODEL', '2', 1610, 70, '2009-06-18 15:31:23', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_IMAGE', '1', 1610, 75, '2009-06-18 15:31:10', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_NAME', '0', 1610, 80, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_BUY_NOW', '0', 1610, 85, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+
+('SPECIFICATIONS_FILTERS_HEAD', 'Subhead', 1610, 89, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_FILTERS_MODULE', 'True', 1610, 90, NULL, '2009-09-09 09:09:09', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTERS_BOX', 'True', 1610, 95, NULL, '2009-07-06 00:19:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_MINIMUM', '2', 1610, 100, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_FILTER_SUBCATEGORIES', 'True', 1610, 105, '2009-08-12 15:16:55', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_SHOW_COUNT', 'True', 1610, 110, '2009-09-21 00:00:00', '2009-09-21 00:00:00', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_NO_RESULT', 'grey', 1610, 115, '2009-08-23 22:00:43', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''none'', ''grey'', ''normal''), '),
+('SPECIFICATIONS_FILTER_BREADCRUMB', 'True', 1610, 120, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_IMAGE_WIDTH', '20', 1610, 125, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
+('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
