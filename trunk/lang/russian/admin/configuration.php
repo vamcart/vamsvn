@@ -938,6 +938,8 @@ define('ORDER_EDITOR_CREDIT_CARD_TITLE','Выбери способ оплаты 
 define('ORDER_EDITOR_CREDIT_CARD_DESC','Редактор заказов выведет поля для указания информации о карточке когда будет выбран указанный в настройке способ оплаты.');
 
 define('CG_PRODUCTS_SPECIFICATIONS', 'Спецификации товаров');
+define('CG_PRODUCTS_SPECIFICATIONS_TITLE', 'Спецификации товаров');
+define('CG_PRODUCTS_SPECIFICATIONS_DESC', '');
 
 //Products Specifications
 
