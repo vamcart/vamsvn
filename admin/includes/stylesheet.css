@@ -879,5 +879,106 @@ td.header {
  background: #ffc;
  }
 
-
 /* /Редактор заказов */
+
+/* Start Products Specifications */
+
+.infoBox {
+  background: #b6b7cb;
+}
+
+.infoBoxContents {
+  background: #f8f8f9;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+.infoBoxNotice {
+  background: #FF8E90;
+}
+
+.infoBoxNoticeContents {
+  background: #FFE6E6;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+TD.infoBoxHeading {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  background: #bbc3d3;
+  color: #ffffff;
+}
+
+TD.infoBox, SPAN.infoBox {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+TR.productListing-odd {
+  background: #f8f8f9;
+}
+
+TR.productListing-even {
+  background: #f8f8f9;
+}
+
+TABLE.productListing {
+  border: 1px;
+  border-style: solid;
+  border-color: #b6b7cb;
+  border-spacing: 1px;
+}
+
+.productListing-heading {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  background: #b6b7cb;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+TD.productListing-data {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+.specification_box {
+  margin-top: 10px;
+}
+
+.specification_box li {
+  line-height: 1.5;
+}
+
+.description {
+  font-family: Verdana, Arial, sans-serif; 
+  font-size: 8pt;
+  max-width: 125px;
+}
+
+iul.specification_box {
+  line-height: 1.5;
+}
+
+mg.image_filter {
+  width: 20px;  /* Width of each image */
+  height: 20px;  /* Height of each image */
+  padding: 5px;  /* Padding between the category contents and the border */
+  border: 1px solid #182d5c;  /* Border around each image */
+  margin: 3px;  /* Margin between the image border and other objects */
+  background: #ffffff;  /* Background color behind each image */
+  float: left;  /* Don't change this */
+}
+
+.image_box { /* Used in Admin -> Categories only to display images with checkboxes */
+  width: 40px;  /* Width of each Image Box */
+  height: 60px;  /* Height of each Image Box */
+  padding: 5px;  /* Padding between the Image Box contents and the border */
+  border: 1px solid #182d5c;  /* Border around each Image Box */
+  margin: 3px;  /* Margin between the Image Box border and other objects */
+  background: #eeeeee;  /* Background color behind each Image Box */
+  float: left;  /* Don't change this */
+}
+/* End Products Specifications */
