@@ -2143,4 +2143,65 @@ function vam_get_spsr_zone_id($zone_id) {
 
 /////end payment method dropdown
 	
+// Start products specifications
+
+// Functions copied from catalog/includes/functions/general.php
+////
+// Return true if the category has subcategories
+// TABLES: categories
+  function vam_has_category_subcategories($category_id) {
+    $child_category_query = vam_db_query("select count(*) as count from " . TABLE_CATEGORIES . " where parent_id = '" . (int)$category_id . "'");
+    $child_category = vam_db_fetch_array($child_category_query);
+
+    if ($child_category['count'] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+////
+// Return all subcategory IDs
+// TABLES: categories
+  function vam_get_subcategories(&$subcategories_array, $parent_id = 0) {
+    $subcategories_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where parent_id = '" . (int)$parent_id . "'");
+    while ($subcategories = vam_db_fetch_array($subcategories_query)) {
+      $subcategories_array[sizeof($subcategories_array)] = $subcategories['categories_id'];
+      if ($subcategories['categories_id'] != $parent_id) {
+        vam_get_subcategories($subcategories_array, $subcategories['categories_id']);
+      }
+    }
+  }
+// End copied functions
+  
+////
+// Return the products_tab_x data from the database
+// TABLES: products_description
+  function vam_get_products_tabs ($product_id, $language_id) {
+    $product_query_raw = "
+      select 
+        products_tab_1,
+        products_tab_2,
+        products_tab_3,
+        products_tab_4,
+        products_tab_5,
+        products_tab_6
+      from 
+        " . TABLE_PRODUCTS_DESCRIPTION . " 
+      where 
+        products_id = '" . (int) $product_id . "' 
+        and language_id = '" . (int) $language_id . "'
+    ";
+    $product_query = vam_db_query ($product_query_raw);
+    
+    $product_tabs = array();
+    $product = vam_db_fetch_array ($product_query);
+    for ($i=1, $n=7; $i<$n; $i++) {
+      $product_tabs[$i] = $product['products_tab_' . $i];
+    }
+
+    return $product_tabs;
+  }
+// End products specifications
+	
 ?>
