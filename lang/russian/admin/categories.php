@@ -230,4 +230,23 @@ define('TEXT_PRODUCTS_PAGE_URL', 'SEO URL товара:');
 define('TEXT_PRODUCTS_QUANTITY_MIN', 'Мин. количество для заказа:');
 define('TEXT_PRODUCTS_QUANTITY_MAX', 'Макс. количество для заказа:');
 
+// Start Products Specifications
+  define ('TEXT_TAB_DESCRIPTION', 'Описание');
+  define ('TEXT_TAB_SPECIFICATIONS', 'Спецификации');
+  define ('TEXT_TAB_1', 'Руководства');
+  define ('TEXT_TAB_2', 'Видео');
+  define ('TEXT_TAB_3', 'Аксессуары');
+  define ('TEXT_TAB_4', 'Отзывы');
+  define ('TEXT_TAB_5', 'Гарантия');
+  define ('TEXT_TAB_6', 'Доставка');
+  define ('TEXT_TITLE_1', 'Руководства');
+  define ('TEXT_TITLE_2', 'Видео');
+  define ('TEXT_TITLE_3', 'Аксессуары');
+  define ('TEXT_TITLE_4', 'Отзывы');
+  define ('TEXT_TITLE_5', 'Гарантия');
+  define ('TEXT_TITLE_6', 'Доставка');
+  define ('SPECIFICATION_TITLE_PRODUCTS', '&nbsp;Спецификации:');
+  define ('SPECIFICATIONS_TEXT_ALL', 'Все');
+// End Products Specifications
+
 ?>
