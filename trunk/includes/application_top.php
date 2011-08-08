@@ -248,6 +248,7 @@ require (DIR_WS_CLASSES.'class.inputfilter.php');
 $InputFilter = new InputFilter();
 $_GET = $InputFilter->process($_GET);
 $_POST = $InputFilter->process($_POST);
+$_COOKIE = $InputFilter->process($_COOKIE);
 
 // set the top level domains
 $http_domain = vam_get_top_level_domain(HTTP_SERVER);
