@@ -30,7 +30,7 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
   require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 
   // output a response header
-  header('Content-type: text/html; charset=utf-8');
+  header('Content-type: text/html; charset='.$_SESSION['language_charset'].'');
 
   // include the appropriate functions & classes
   include('order_editor/functions.php');
