@@ -14,7 +14,7 @@
   
   */
 
-  require('includes/application_top.php');
+require('includes/application_top.php');
 
 require_once(DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
 require_once (DIR_FS_INC.'vam_php_mail.inc.php');
@@ -30,7 +30,7 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
   require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 
   // output a response header
-  header('Content-type: text/html; charset=' . CHARSET . '');
+  header('Content-type: text/html; charset=utf-8');
 
   // include the appropriate functions & classes
   include('order_editor/functions.php');
