@@ -3445,7 +3445,7 @@ CREATE TABLE IF NOT EXISTS `specification_filters_description` (
   `specification_filters_description_id` int(11) NOT NULL AUTO_INCREMENT,
   `specification_filters_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '1',
-  `filter` varchar(128) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `filter` varchar(128) NOT NULL,
   PRIMARY KEY (`specification_filters_description_id`),
   KEY `language_id` (`language_id`),
   KEY `specification_filters_id` (`specification_filters_id`)
