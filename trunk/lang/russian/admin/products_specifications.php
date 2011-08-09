@@ -249,4 +249,21 @@
   define ('TEXT_MULTI_IMAGE', 'Мульти картинки');
   define ('TEXT_FINAL_PRICE', 'Сумма');
 
+define('IMAGE_NEW_SPECIFICATION_GROUP','New Specification Group');
+define('IMAGE_BACK','Back');
+define('IMAGE_CANCEL','Cancel');
+define('IMAGE_NEW_PRODUCT','New Specification');
+define('IMAGE_NEW_FILTER','New Filter');
+define('IMAGE_NEW_VALUE','New Value');
+define('IMAGE_SAVE','Save');
+define('IMAGE_DELETE','Delete');
+define('IMAGE_MOVE','Move');
+define('IMAGE_COPY','Copy');
+define('IMAGE_LINK','Link');
+define('IMAGE_LINK_ALL','Link All');
+define('IMAGE_UNLINK','Unlink');
+define('IMAGE_UNLINK_ALL','Unlink All');
+define('IMAGE_SORT','Sort');
+define('IMAGE_IMPORT_MANUFACTURERS','Import Manufacturers');
+
 ?>
