@@ -249,21 +249,21 @@
   define ('TEXT_MULTI_IMAGE', 'Мульти картинки');
   define ('TEXT_FINAL_PRICE', 'Сумма');
 
-define('IMAGE_NEW_SPECIFICATION_GROUP','New Specification Group');
-define('IMAGE_BACK','Back');
-define('IMAGE_CANCEL','Cancel');
-define('IMAGE_NEW_PRODUCT','New Specification');
-define('IMAGE_NEW_FILTER','New Filter');
-define('IMAGE_NEW_VALUE','New Value');
-define('IMAGE_SAVE','Save');
-define('IMAGE_DELETE','Delete');
-define('IMAGE_MOVE','Move');
-define('IMAGE_COPY','Copy');
-define('IMAGE_LINK','Link');
-define('IMAGE_LINK_ALL','Link All');
-define('IMAGE_UNLINK','Unlink');
-define('IMAGE_UNLINK_ALL','Unlink All');
-define('IMAGE_SORT','Sort');
-define('IMAGE_IMPORT_MANUFACTURERS','Import Manufacturers');
+define('IMAGE_NEW_SPECIFICATION_GROUP','Новая группа спецификаций');
+define('IMAGE_BACK','Вернуться');
+define('IMAGE_CANCEL','Отменить');
+define('IMAGE_NEW_PRODUCT','Новая спецификация');
+define('IMAGE_NEW_FILTER','Новый фильтр');
+define('IMAGE_NEW_VALUE','Новое значение');
+define('IMAGE_SAVE','Сохранить');
+define('IMAGE_DELETE','Удалить');
+define('IMAGE_MOVE','Переместить');
+define('IMAGE_COPY','Копировать');
+define('IMAGE_LINK','Привязать к категории');
+define('IMAGE_LINK_ALL','Привязать ко всем категориям');
+define('IMAGE_UNLINK','Снять с категории');
+define('IMAGE_UNLINK_ALL','Снять со всех категорий');
+define('IMAGE_SORT','Сортировать');
+define('IMAGE_IMPORT_MANUFACTURERS','Импорт производителей');
 
 ?>
