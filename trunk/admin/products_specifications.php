@@ -1526,6 +1526,7 @@
 <?php
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo HEADING_TITLE_SEARCH_GROUPS . ' ' . vam_draw_input_field ('search');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1534,6 +1535,7 @@
 <?php
     echo vam_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgid', vam_get_group_names(), $specs_group_id, 'onClick="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1678,6 +1680,7 @@
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
     echo HEADING_TITLE_SEARCH_SPECIFICATIONS . ' ' . vam_draw_input_field('search');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1687,6 +1690,7 @@
     echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
     echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('spid', vam_get_specification_names ($specs_group_path, $_SESSION['languages_id']), $specification_id, 'onClick="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1870,6 +1874,7 @@
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
     echo vam_draw_hidden_field ('spath', $specs_path);
     echo HEADING_TITLE_SEARCH_FILTERS . ' ' . vam_draw_input_field ('search');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1880,6 +1885,7 @@
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
     echo vam_draw_hidden_field ('spath', $specs_path);
     echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('fid', vam_get_specification_filters ($specs_path, $_SESSION['languages_id'] = 1), $filter_id, 'onClick="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -1996,6 +2002,7 @@
     echo vam_draw_hidden_field ('spath', $specs_path);
     echo vam_draw_hidden_field ('value', '1');
     echo HEADING_TITLE_SEARCH_VALUES . ' ' . vam_draw_input_field ('search');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
@@ -2007,6 +2014,7 @@
     echo vam_draw_hidden_field ('spath', $specs_path);
     echo vam_draw_hidden_field ('value', '1');
     echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('vid', vam_get_specification_values ($specs_path, $_SESSION['languages_id']), $value_id, 'onClick="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
               </tr>
