@@ -256,6 +256,7 @@ define('IMAGE_NEW_PRODUCT','Новая спецификация');
 define('IMAGE_NEW_FILTER','Новый фильтр');
 define('IMAGE_NEW_VALUE','Новое значение');
 define('IMAGE_SAVE','Сохранить');
+define('IMAGE_EDIT','Изменить');
 define('IMAGE_DELETE','Удалить');
 define('IMAGE_MOVE','Переместить');
 define('IMAGE_COPY','Копировать');
