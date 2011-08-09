@@ -35,7 +35,7 @@
   $flag = (isset ($_GET['flag']) ? (int) $_GET['flag'] : 0); // Flag sets true/false values
 
 // Start the processing by $action
-  if (tep_not_null ($action)) {
+  if (vam_not_null ($action)) {
     switch ($action) {
 ////
 // Actions for the second pass
@@ -45,39 +45,39 @@
       case 'flag_comparison':
         if ( ($flag == '0' || $flag == '1') && $specs_group_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
                          set show_comparison = '" . $db_flag . "' 
                          where specification_group_id = '" . $specs_group_id . "'
                       ");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
         break;
         
       // Turn the Products Info page display on and off for this Specification Group
       case 'flag_products':
         if ( ($flag == '0' || $flag == '1') && $specs_group_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
                          set show_products = '" . $db_flag . "' 
                          where specification_group_id = '" . $specs_group_id . "'
                       ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
         break;
         
       // Turn this Specification Group's Filters on and off 
       case 'flag_filters':
         if ( ($flag == '0' || $flag == '1') && $specs_group_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION_GROUPS . " 
                          set show_filter = '" . $db_flag . "' 
                          where specification_group_id = '" . $specs_group_id . "'
                       ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_id) );
         break;
       
       // New or modified Specification Group
@@ -98,22 +98,22 @@
           $show_filter = ($_POST['show_filter'] == 'True') ? 'True' : 'False';
         }
         
-        $sql_data_array = array ('specification_group_name' => tep_db_prepare_input ($_POST['specification_group_name']),
+        $sql_data_array = array ('specification_group_name' => vam_db_prepare_input ($_POST['specification_group_name']),
                                  'show_comparison' => $show_comparison,
                                  'show_products' => $show_products,
                                  'show_filter' => $show_filter
         );
 
         if ($action == 'new_group_confirm') { //Add a new row
-          tep_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array);
-          $specifications_group_id = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array);
+          $specifications_group_id = vam_db_insert_id();
           
         } elseif ($action == 'update_group_confirm') { //Modify the existing row
           $specifications_group_id = (int) $_POST['specification_group_id'];
-          tep_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array, 'update', "specification_group_id = '" . $specifications_group_id . "'");
+          vam_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array, 'update', "specification_group_id = '" . $specifications_group_id . "'");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specifications_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specifications_group_id) );
         break;
         
       // Copy a Specification Group
@@ -127,16 +127,16 @@
                               from " . TABLE_SPECIFICATION_GROUPS . " 
                               where specification_group_id = '" . $group_id . "'
                              ";
-          $group_query = tep_db_query ($group_query_raw);
-          $group_array = tep_db_fetch_array ($group_query);
+          $group_query = vam_db_query ($group_query_raw);
+          $group_array = vam_db_fetch_array ($group_query);
 
           $sql_data_array = array ('specification_group_name' => $group_array['specification_group_name'],
                                    'show_comparison' => $group_array['show_comparison'],
                                    'show_products' => $group_array['show_products'],
                                    'show_filter' => $group_array['show_filter']
                                   );
-          tep_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array);
-          $new_group_id = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array);
+          $new_group_id = vam_db_insert_id();
         
           // Also copy specifications if selected
           if (isset ($_POST['copy_specs']) && $_POST['copy_specs'] == 'True') {
@@ -155,10 +155,10 @@
                                 where specification_group_id = '" . $group_id . "' 
                               ";
             // print $specs_query_raw . "<br>\n";
-            $specs_query = tep_db_query ($specs_query_raw);
+            $specs_query = vam_db_query ($specs_query_raw);
             
             $specifications_ids = array();
-            while ($specs_array = tep_db_fetch_array ($specs_query) ) {
+            while ($specs_array = vam_db_fetch_array ($specs_query) ) {
               $sql_data_array = array ('specification_group_id' => $new_group_id,
                                        'specification_sort_order' => $specs_array['specification_sort_order'],
                                        'show_comparison' => $specs_array['show_comparison'],
@@ -171,8 +171,8 @@
                                        'filter_show_all' => $specs_array['filter_show_all'],
                                        'enter_values' => $specs_array['enter_values']
                                       );
-              tep_db_perform (TABLE_SPECIFICATION, $sql_data_array);
-              $new_specs_id = tep_db_insert_id();
+              vam_db_perform (TABLE_SPECIFICATION, $sql_data_array);
+              $new_specs_id = vam_db_insert_id();
               $specifications_ids[] = array ('old_id' => $specs_array['specifications_id'],
                                              'new_id' => $new_specs_id
                                             );
@@ -187,13 +187,13 @@
                                 where specification_group_id = '" . $group_id . "' 
                               ";
             // print $links_query_raw . "<br>\n";
-            $links_query = tep_db_query ($links_query_raw);
+            $links_query = vam_db_query ($links_query_raw);
 
-            while ($links_data = tep_db_fetch_array ($links_query) ) {
+            while ($links_data = vam_db_fetch_array ($links_query) ) {
               $sql_data_array = array ('categories_id' => $group_array['categories_id'],
                                        'specification_group_id' => $new_specs_id
                                       );
-              tep_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
+              vam_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
             }
           } // if (isset ($_POST['copy_links']
         
@@ -207,15 +207,15 @@
                                      where specifications_id = '" . $specs_id['old_id'] . "' 
                                    ";
               // print $products_query_raw . "<br>\n";
-              $products_query = tep_db_query ($products_query_raw);
+              $products_query = vam_db_query ($products_query_raw);
 
-              while ($products_data = tep_db_fetch_array ($products_query) ) {
+              while ($products_data = vam_db_fetch_array ($products_query) ) {
                 $sql_data_array = array ('specifications_id' => $specs_id['new_id'],
                                          'products_id' => $specs_array['products_id'],
                                          'language_id' => $specs_array['language_id'],
                                          'specification' => $specs_array['specification']
                                         );
-                tep_db_perform (TABLE_PRODUCTS_SPECIFICATIONS, $sql_data_array);
+                vam_db_perform (TABLE_PRODUCTS_SPECIFICATIONS, $sql_data_array);
               }
             }
           } // if (isset ($_POST['copy_products']
@@ -229,16 +229,16 @@
                                     where specifications_id = '" . $specs_id['old_id'] . "' 
                                   ";
               // print $filters_query_raw . "<br>\n";
-              $filters_query = tep_db_query ($filters_query_raw);
+              $filters_query = vam_db_query ($filters_query_raw);
 
-              while ($filters_data = tep_db_fetch_array ($filters_query) ) {
+              while ($filters_data = vam_db_fetch_array ($filters_query) ) {
                 $sql_data_array = array ('specifications_id' => $specs_id['new_id'],
                                          'filter_sort_order' => $filters_data['filter_sort_order']
                                         );
-                tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
-                $new_specification_filters_id = tep_db_insert_id();
+                vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+                $new_specification_filters_id = vam_db_insert_id();
                 
-                $languages = tep_get_languages();
+                $languages = vam_get_languages();
                 for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                   $filters_description_query_raw = "select filter
                                                     from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . "
@@ -246,14 +246,14 @@
                                                       and language_id = '" . (int) $languages[$i]['id'] . "' 
                                                   ";
                   // print $filters_description_query_raw . "<br>\n";
-                  $filters_description_query = tep_db_query ($filters_description_query_raw);
+                  $filters_description_query = vam_db_query ($filters_description_query_raw);
 
-                  $filters_description_data = tep_db_fetch_array ($filters_description_query);
+                  $filters_description_data = vam_db_fetch_array ($filters_description_query);
                   $sql_data_array = array ('specification_filters_id' => $new_specification_filters_id,
                                            'language_id' => (int) $languages[$i]['id'],
                                            'filter' => $filters_description_data['filter']
                                           );
-                  tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+                  vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
                 } // for ($i=0
               } // while ($filters_data
             } // foreach ($specifications_ids
@@ -268,16 +268,16 @@
                                      where specifications_id = '" . $specs_id['old_id'] . "' 
                                    ";
               // print $values_query_raw . "<br>\n";
-              $values_query = tep_db_query ($values_query_raw);
+              $values_query = vam_db_query ($values_query_raw);
 
-              while ($values_data = tep_db_fetch_array ($values_query) ) {
+              while ($values_data = vam_db_fetch_array ($values_query) ) {
                 $sql_data_array = array ('specifications_id' => $specs_id['new_id'],
                                          'value_sort_order' => $values_data['value_sort_order']
                                         );
-                tep_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
-                $new_specification_values_id = tep_db_insert_id();
+                vam_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
+                $new_specification_values_id = vam_db_insert_id();
                 
-                $languages = tep_get_languages();
+                $languages = vam_get_languages();
                 for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
                   $values_description_query_raw = "select specification_value
                                                     from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . "
@@ -285,14 +285,14 @@
                                                       and language_id = '" . (int) $languages[$i]['id'] . "' 
                                                   ";
                   // print $values_description_query_raw . "<br>\n";
-                  $values_description_query = tep_db_query ($values_description_query_raw);
+                  $values_description_query = vam_db_query ($values_description_query_raw);
 
-                  $values_description_data = tep_db_fetch_array ($values_description_query);
+                  $values_description_data = vam_db_fetch_array ($values_description_query);
                   $sql_data_array = array ('specification_values_id' => $new_specification_values_id,
                                            'language_id' => (int) $languages[$i]['id'],
                                            'specification_value' => $values_description_data['specification_value']
                                           );
-                  tep_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
+                  vam_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
                 } // for ($i=0
               } // while ($products_data
             } // foreach ($specifications_ids
@@ -300,7 +300,7 @@
           
         } // if (isset ($_POST['specification_group_id'
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $new_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $new_group_id) );
         break;
         
       // Delete a Specification Group
@@ -313,21 +313,21 @@
                               where specification_group_id = '" . $specs_group_id . "' 
                             ";
           // print $specs_query_raw . "<br>\n";
-          $specs_query = tep_db_query ($specs_query_raw);
-          if (tep_db_num_rows ($specs_query) > 0) { //We have specifications attached
-            while ($specs_data = tep_db_fetch_array ($specs_query) ) {
+          $specs_query = vam_db_query ($specs_query_raw);
+          if (vam_db_num_rows ($specs_query) > 0) { //We have specifications attached
+            while ($specs_data = vam_db_fetch_array ($specs_query) ) {
               // Check if we have any filters attached to each specification
               $filters_query_raw = "select specification_filters_id
                                     from " . TABLE_SPECIFICATIONS_FILTERS . "
                                     where specifications_id = '" . $specs_data['specifications_id'] . "' 
                                   ";
               // print $filters_query_raw . "<br>\n";
-              $filters_query = tep_db_query ($filters_query_raw);
-              if (tep_db_num_rows ($filters_query) > 0) { //Delete the filters
-                $filters_data = tep_db_fetch_array ($filters_query);
-                tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
-                tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $filters_data['specification_filters_id'] . "'");
-              } //if (tep_db_num_rows ($filters_query
+              $filters_query = vam_db_query ($filters_query_raw);
+              if (vam_db_num_rows ($filters_query) > 0) { //Delete the filters
+                $filters_data = vam_db_fetch_array ($filters_query);
+                vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
+                vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $filters_data['specification_filters_id'] . "'");
+              } //if (vam_db_num_rows ($filters_query
             
               // Check if we have any specification values attached to each specification
               $values_query_raw = "select specification_values_id
@@ -335,12 +335,12 @@
                                     where specifications_id = '" . $specs_data['specifications_id'] . "' 
                                   ";
               // print $values_query_raw . "<br>\n";
-              $values_query = tep_db_query ($values_query_raw);
-              if (tep_db_num_rows ($values_query) > 0) { //Delete the values
-                $values_data = tep_db_fetch_array ($values_query);
-                tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
-                tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $values_data['specification_values_id'] . "'");
-              } //if (tep_db_num_rows ($filters_query
+              $values_query = vam_db_query ($values_query_raw);
+              if (vam_db_num_rows ($values_query) > 0) { //Delete the values
+                $values_data = vam_db_fetch_array ($values_query);
+                vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
+                vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $values_data['specification_values_id'] . "'");
+              } //if (vam_db_num_rows ($filters_query
 
               // Check if we have any products with specification data attached to each specification
               $products_query_raw = "select products_specification_id
@@ -348,23 +348,23 @@
                                     where specifications_id = '" . $specs_data['specifications_id'] . "' 
                                   ";
               // print $products_query_raw . "<br>\n";
-              $products_query = tep_db_query ($products_query_raw);
-              if (tep_db_num_rows ($products_query) > 0) { // Delete the product data
-                tep_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
-              } //if (tep_db_num_rows ($filters_query
+              $products_query = vam_db_query ($products_query_raw);
+              if (vam_db_num_rows ($products_query) > 0) { // Delete the product data
+                vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
+              } //if (vam_db_num_rows ($filters_query
             } // while ($specs_data
             
             // Once everything attached to this specification is deleted, delete the specification
-            tep_db_query ("delete from " . TABLE_SPECIFICATION . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
-            tep_db_query ("delete from " . TABLE_SPECIFICATION_DESCRIPTION . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
-          } //if (tep_db_num_rows ($specs_query
+            vam_db_query ("delete from " . TABLE_SPECIFICATION . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
+            vam_db_query ("delete from " . TABLE_SPECIFICATION_DESCRIPTION . " where specifications_id = '" . $specs_data['specifications_id'] . "'");
+          } //if (vam_db_num_rows ($specs_query
           
           // Once everything attached to this group is deleted, delete the group and the links
-          tep_db_query ("delete from " . TABLE_SPECIFICATION_GROUPS . " where specification_group_id = '" . $specs_group_id . "'");
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " where specification_group_id = '" . $specs_group_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATION_GROUPS . " where specification_group_id = '" . $specs_group_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " where specification_group_id = '" . $specs_group_id . "'");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS) );
         break;
         
       // Link a Specification Group to a Category
@@ -381,19 +381,19 @@
                                 and categories_id = '" . $categories_id . "'
                             ";
           //print $links_query_raw . "<br>\n";
-          $links_query = tep_db_query ($links_query_raw);
-          if (tep_db_num_rows ($links_query) < 1) {
+          $links_query = vam_db_query ($links_query_raw);
+          if (vam_db_num_rows ($links_query) < 1) {
             $sql_data_array = array ('specification_group_id' => $specification_group_id,
                                      'categories_id' => $categories_id
             );
-            tep_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
-          } // if (tep_db_num_rows
+            vam_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
+          } // if (vam_db_num_rows
         }
         
         // Link all subcategories if selected
-        if ($link_subcats == 'True' && tep_has_category_subcategories ($categories_id)) {
+        if ($link_subcats == 'True' && vam_has_category_subcategories ($categories_id)) {
           $categories_array = array();
-          tep_get_subcategories ($categories_array, $categories_id);
+          vam_get_subcategories ($categories_array, $categories_id);
           foreach ($categories_array as $categories_id) {
             $sql_data_array = array();
             $links_query_raw = "select specification_group_id
@@ -402,17 +402,17 @@
                                   and categories_id = '" . $categories_id . "'
                               ";
             //print $links_query_raw . "<br>\n";
-            $links_query = tep_db_query ($links_query_raw);
-            if (tep_db_num_rows ($links_query) < 1) {
+            $links_query = vam_db_query ($links_query_raw);
+            if (vam_db_num_rows ($links_query) < 1) {
               $sql_data_array = array ('specification_group_id' => $specification_group_id,
                                        'categories_id' => $categories_id
               );
-              tep_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
-            } // if (tep_db_num_rows
+              vam_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
+            } // if (vam_db_num_rows
           } // foreach ($categories_array
         } // if ($link_subcats
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
         break;
         
       // Link a Specification Group to all Categories
@@ -420,7 +420,7 @@
         // Link a specification group to all product categories
         if (isset ($_POST['specification_group_id']) &&  $_POST['specification_group_id'] != 0) {
           $specification_group_id = (int) $_POST['specification_group_id'];
-          $categories_array = tep_get_category_tree();
+          $categories_array = vam_get_category_tree();
           foreach ($categories_array as $category_data) {
             $sql_data_array = array();
             $links_query_raw = "select specification_group_id
@@ -429,17 +429,17 @@
                                   and categories_id = '" . $category_data['id'] . "'
                               ";
             //print $links_query_raw . "<br>\n";
-            $links_query = tep_db_query ($links_query_raw);
-            if (tep_db_num_rows ($links_query) < 1) {
+            $links_query = vam_db_query ($links_query_raw);
+            if (vam_db_num_rows ($links_query) < 1) {
               $sql_data_array = array ('specification_group_id' => $specification_group_id,
                                        'categories_id' => $category_data['id']
               );
-              tep_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
-            } // if (tep_db_num_rows
+              vam_db_perform (TABLE_SPECIFICATIONS_TO_CATEGORIES, $sql_data_array);
+            } // if (vam_db_num_rows
           } // foreach ($categories_array
         } // if (isset 
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
         break;
         
       // Unlink a Specification Group from a Category
@@ -449,13 +449,13 @@
         if (isset ($_POST['specification_group_id']) &&  $_POST['specification_group_id'] != 0) {
           $categories_id = (int) $_POST['categories_id'];
           
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " 
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " 
                          where specification_group_id = '" . $specification_group_id . "'
                            and categories_id = '" . $categories_id . "'
                        ");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
         break;
         
       // Unlink a Specification Group from all Categories
@@ -464,12 +464,12 @@
         $specification_group_id = (int) $_POST['specification_group_id'];
         if (isset ($_POST['specification_group_id']) &&  $_POST['specification_group_id'] != 0) {
           
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " 
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " 
                          where specification_group_id = '" . $specification_group_id . "'
                        ");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specification_group_id) );
         break;
 
 ////
@@ -478,39 +478,39 @@
       case 'flag_comparison_spec':
         if ( ($flag == '0' || $flag == '1') && $specification_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION . " 
                          set show_comparison = '" . $db_flag . "' 
                          where specifications_id = '" . $specification_id . "'
                       ");
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id) );
         break;
         
       // Show this Specification on the Products Info page
       case 'flag_products_spec':
         if ( ($flag == '0' || $flag == '1') && $specification_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION . " 
                          set show_products = '" . $db_flag . "' 
                          where specifications_id = '" . $specification_id . "'
                       ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . 'spid=' . $specification_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . 'spid=' . $specification_id) );
         break;
         
       // Use this Specification in the Filters section
       case 'flag_filters_spec':
         if ( ($flag == '0' || $flag == '1') && $specification_id != 0) {
           $db_flag = ($flag == '1') ? 'True' : 'False';
-          tep_db_query ("update " . TABLE_SPECIFICATION . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION . " 
                          set show_filter = '" . $db_flag . "' 
                          where specifications_id = '" . $specification_id . "'
                       ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . 'spid=' . $specs_group_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . 'spid=' . $specs_group_id) );
         break;
       
       // Add or modify a specification
@@ -534,28 +534,28 @@
         // Set specification sort order to 0 when left blank
         $sort_order = ($_POST['specification_sort_order'] == '') ? 0 : (int) $_POST['specification_sort_order'];
 
-        $sql_data_array = array ('specification_group_id' => tep_db_prepare_input ($_POST['specification_group_id']),
+        $sql_data_array = array ('specification_group_id' => vam_db_prepare_input ($_POST['specification_group_id']),
                                  'specification_sort_order' => $sort_order,
                                  'show_comparison' => $show_comparison,
                                  'show_products' => $show_products,
                                  'show_filter' => $show_filter,
-                                 'products_column_name' => tep_db_prepare_input ($_POST['products_column_name']),
-                                 'column_justify' => tep_db_prepare_input ($_POST['column_justify']),
-                                 'filter_class' => tep_db_prepare_input ($_POST['filter_class']),
-                                 'filter_show_all' => tep_db_prepare_input ($_POST['filter_show_all']),
-                                 'filter_display' => tep_db_prepare_input ($_POST['filter_display']),
-                                 'enter_values' => tep_db_prepare_input ($_POST['enter_values'])
+                                 'products_column_name' => vam_db_prepare_input ($_POST['products_column_name']),
+                                 'column_justify' => vam_db_prepare_input ($_POST['column_justify']),
+                                 'filter_class' => vam_db_prepare_input ($_POST['filter_class']),
+                                 'filter_show_all' => vam_db_prepare_input ($_POST['filter_show_all']),
+                                 'filter_display' => vam_db_prepare_input ($_POST['filter_display']),
+                                 'enter_values' => vam_db_prepare_input ($_POST['enter_values'])
                                 );
 
         switch ($action) {
           case 'new_specification_confirm':
-            tep_db_perform (TABLE_SPECIFICATION, $sql_data_array);
-            $specification_id = tep_db_insert_id();
+            vam_db_perform (TABLE_SPECIFICATION, $sql_data_array);
+            $specification_id = vam_db_insert_id();
             break;
               
           case 'edit_specification_confirm':
             $specification_id = (int) $_POST['specifications_id'];
-            tep_db_perform (TABLE_SPECIFICATION, $sql_data_array, 'update', "specifications_id = '" . $specification_id . "'");
+            vam_db_perform (TABLE_SPECIFICATION, $sql_data_array, 'update', "specifications_id = '" . $specification_id . "'");
             break;
         } //switch ($action)
         
@@ -565,14 +565,14 @@
         $specification_prefix_array = $_POST['specification_prefix'];
         $specification_suffix_array = $_POST['specification_suffix'];
 
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
           $language_id = (int) $languages[$i]['id'];
 
-          $sql_data_array = array ('specification_name' => tep_db_prepare_input ($specification_name_array[$language_id]),
-                                   'specification_description' => tep_db_prepare_input ($specification_description_array[$language_id]),
-                                   'specification_prefix' => tep_db_prepare_input ($specification_prefix_array[$language_id]),
-                                   'specification_suffix' => tep_db_prepare_input ($specification_suffix_array[$language_id])
+          $sql_data_array = array ('specification_name' => vam_db_prepare_input ($specification_name_array[$language_id]),
+                                   'specification_description' => vam_db_prepare_input ($specification_description_array[$language_id]),
+                                   'specification_prefix' => vam_db_prepare_input ($specification_prefix_array[$language_id]),
+                                   'specification_suffix' => vam_db_prepare_input ($specification_suffix_array[$language_id])
                                   );
 
           switch ($action) {
@@ -582,16 +582,16 @@
 
               $sql_data_array = array_merge ($sql_data_array, $new_sql_data);
 
-              tep_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
+              vam_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
               break;
               
             case 'edit_specification_confirm':
-              tep_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array, 'update', "specifications_id = '" . $specification_id . "' and language_id = '" . $language_id . "'");
+              vam_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array, 'update', "specifications_id = '" . $specification_id . "' and language_id = '" . $language_id . "'");
               break;
           } //switch ($action)
         } //for ($i=0
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id) );
         break;
         
       // Move a Specification
@@ -600,13 +600,13 @@
         $specification_id = (int) $_POST['specifications_id'];
         $group_id = (int) $_POST['group_id'];
         if (isset ($_POST['specifications_id']) && $_POST['specifications_id'] != 0) {
-          tep_db_query ("update " . TABLE_SPECIFICATION . " 
+          vam_db_query ("update " . TABLE_SPECIFICATION . " 
                          set specification_group_id = '" . $group_id . "'
                          where specifications_id = '" . $specification_id . "'
                        ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $group_id . '&spid=' . $specification_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $group_id . '&spid=' . $specification_id) );
         break;
         
       // Copy a Specification
@@ -627,8 +627,8 @@
                                       from " . TABLE_SPECIFICATION . " 
                                       where specifications_id = '" . $specification_id . "'
                                      ";
-          $specification_query = tep_db_query ($specification_query_raw);
-          $specification_array = tep_db_fetch_array ($specification_query);
+          $specification_query = vam_db_query ($specification_query_raw);
+          $specification_array = vam_db_fetch_array ($specification_query);
 
           $sql_data_array = array ('specification_group_id' => (int) $_POST['group_id'],
                                    'specification_sort_order' => $specification_array['specification_sort_order'],
@@ -642,11 +642,11 @@
                                    'filter_display' => $specification_array['filter_display'],
                                    'enter_values' => $specification_array['enter_values']
                                   );
-          tep_db_perform (TABLE_SPECIFICATION, $sql_data_array);
-          $specification_id_copy = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATION, $sql_data_array);
+          $specification_id_copy = vam_db_insert_id();
           
           // Insert multiple rows in the description table, one per language
-          $languages = tep_get_languages();
+          $languages = vam_get_languages();
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = (int) $languages[$i]['id'];
             $specification_query_raw = "select specification_name,
@@ -657,8 +657,8 @@
                                         where specifications_id = '" . $specification_id . "'
                                           and language_id = '" . $language_id . "'
                                        ";
-            $specification_query = tep_db_query ($specification_query_raw);
-            $specification_array = tep_db_fetch_array ($specification_query);
+            $specification_query = vam_db_query ($specification_query_raw);
+            $specification_array = vam_db_fetch_array ($specification_query);
 
             $sql_data_array = array ('specifications_id' => $specification_id_copy,
                                      'language_id' => $language_id,
@@ -667,11 +667,11 @@
                                      'specification_prefix' => $specification_array['specification_prefix'],
                                      'specification_suffix' => $specification_array['specification_suffix']
                                     );
-            tep_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
+            vam_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
           } // for ($i=0
         } // if ($specification_id
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id_copy) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id_copy) );
         break;
         
       // Delete a specification and any associated product data, values, or filters
@@ -684,15 +684,15 @@
                                 where specifications_id = '" . $specifications_id . "' 
                               ";
           // print $filters_query_raw . "<br>\n";
-          $filters_query = tep_db_query ($filters_query_raw);
+          $filters_query = vam_db_query ($filters_query_raw);
             
-          if (tep_db_num_rows ($filters_query) > 0) { // If we have any filters
-            while ($filters_array = tep_db_fetch_array ($filters_query)) { // Delete the filters
+          if (vam_db_num_rows ($filters_query) > 0) { // If we have any filters
+            while ($filters_array = vam_db_fetch_array ($filters_query)) { // Delete the filters
               $specification_filters_id = $filters_array['specification_filters_id'];
-              tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specification_filters_id = '" . $specification_filters_id . "'");
-              tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $specification_filters_id . "'");
+              vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specification_filters_id = '" . $specification_filters_id . "'");
+              vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $specification_filters_id . "'");
             } //  while ($filters_array
-          } // if (tep_db_num_rows ($filters_query
+          } // if (vam_db_num_rows ($filters_query
             
           // Check if we have any specification values attached to each specification
           $values_query_raw = "select specification_values_id
@@ -700,14 +700,14 @@
                                 where specifications_id = '" . $specifications_id . "' 
                               ";
           // print $values_query_raw . "<br>\n";
-          $values_query = tep_db_query ($values_query_raw);
-          if (tep_db_num_rows ($values_query) > 0) { //Delete the values
-            while ($values_array = tep_db_fetch_array ($values_query)) { // Delete the filters
+          $values_query = vam_db_query ($values_query_raw);
+          if (vam_db_num_rows ($values_query) > 0) { //Delete the values
+            while ($values_array = vam_db_fetch_array ($values_query)) { // Delete the filters
               $specification_values_id = $filters_array['specification_values_id'];
-              tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specification_values_id = '" . $specification_values_id . "'");
-              tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $specification_values_id . "'");
+              vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specification_values_id = '" . $specification_values_id . "'");
+              vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $specification_values_id . "'");
             } // while ($filters_array
-          } // if (tep_db_num_rows ($values_query
+          } // if (vam_db_num_rows ($values_query
 
           // Check if we have any products with specification data
           $products_query_raw = "select products_id
@@ -715,18 +715,18 @@
                                  where specifications_id = '" . $specifications_id . "' 
                                 ";
           // print $products_query_raw . "<br>\n";
-          $products_query = tep_db_query ($products_query_raw);
+          $products_query = vam_db_query ($products_query_raw);
             
-          if (tep_db_num_rows ($products_query) > 0) { // Delete the product data
-            tep_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " where specifications_id = '" . $specifications_id . "'");
-          } //if (tep_db_num_rows ($filters_query
+          if (vam_db_num_rows ($products_query) > 0) { // Delete the product data
+            vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " where specifications_id = '" . $specifications_id . "'");
+          } //if (vam_db_num_rows ($filters_query
           
           // Once everything attached to this specification is deleted, delete the specification
-          tep_db_query ("delete from " . TABLE_SPECIFICATION . " where specifications_id = '" . $specifications_id . "'");
-          tep_db_query ("delete from " . TABLE_SPECIFICATION_DESCRIPTION . " where specifications_id = '" . $specifications_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATION . " where specifications_id = '" . $specifications_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATION_DESCRIPTION . " where specifications_id = '" . $specifications_id . "'");
         } // if ($specification_id
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path) );
         break;
         
 // Filters section
@@ -743,18 +743,18 @@
 
         switch ($action) {
           case 'new_filter_confirm':
-            tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
-            $specification_filters_id = tep_db_insert_id();
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+            $specification_filters_id = vam_db_insert_id();
             break;
               
           case 'edit_filter_confirm':
             $specification_filters_id = (int) $_POST['specification_filters_id'];
-            tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array, 'update', "specification_filters_id = '" . $specification_filters_id . "'");
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array, 'update', "specification_filters_id = '" . $specification_filters_id . "'");
             break;
         } //switch ($action)
         
         // Insert/modify multiple rows, one per language
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
           $language_id = (int) $languages[$i]['id'];
           $sql_data_array = array ();
@@ -764,11 +764,11 @@
             $filter_image->set_destination (DIR_FS_CATALOG_IMAGES);
 
             if ($filter_image->parse() && $filter_image->save()) {
-              $sql_data_array = array ('filter' => tep_db_input ($filter_image->filename) );
+              $sql_data_array = array ('filter' => vam_db_input ($filter_image->filename) );
             }
             
           } else {
-            $sql_data_array = array ('filter' => tep_db_prepare_input ($_POST['filter'][$language_id]) );
+            $sql_data_array = array ('filter' => vam_db_prepare_input ($_POST['filter'][$language_id]) );
           } // if ($_POST['entry_type'] ... else ...
 
           switch ($action) {
@@ -779,19 +779,19 @@
 
               $sql_data_array = array_merge ($sql_data_array, $new_sql_data);
 
-              tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+              vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
               break;
               
             case 'edit_filter_confirm':
               if (count ($sql_data_array) > 0) {
-                tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array, 'update', "language_id = '" . $language_id . "' and specification_filters_id = '" . $specification_filters_id . "'");
+                vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array, 'update', "language_id = '" . $language_id . "' and specification_filters_id = '" . $specification_filters_id . "'");
               }
               break;
               
           } //switch ($action)
         } //for ($i=0
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
         break;
         
       // Move a Filter
@@ -799,13 +799,13 @@
         if (isset ($_POST['specification_filters_id']) && $_POST['specification_filters_id'] != 0 && $_POST['move_to_filter_id'] != 0) {
           $specification_filters_id = (int) $_POST['specification_filters_id'];
           $move_to_filter_id = (int) $_POST['move_to_filter_id'];
-          tep_db_query ("update " . TABLE_SPECIFICATIONS_FILTERS . " 
+          vam_db_query ("update " . TABLE_SPECIFICATIONS_FILTERS . " 
                          set specifications_id = '" . $move_to_filter_id . "'
                          where specification_filters_id = '" . $specification_filters_id . "'
                        ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
         break;
         
       // Copy a Filter
@@ -820,29 +820,29 @@
                                where specification_filters_id = '" . $specification_filters_id . "'
                               ";
           // print $filter_query_raw . "<br>\n";
-          $filter_query = tep_db_query ($filter_query_raw);
-          $filter_array = tep_db_fetch_array ($filter_query);
+          $filter_query = vam_db_query ($filter_query_raw);
+          $filter_array = vam_db_fetch_array ($filter_query);
 
           $sql_data_array = array ('specifications_id' => $copy_to_filter_id,
                                    'filter_sort_order' => $filter_array['filter_sort_order']
                                   );
-          tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
-          $filter_id_copy = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+          $filter_id_copy = vam_db_insert_id();
         
           // Copy multiple rows, one per language
-          $languages = tep_get_languages();
+          $languages = vam_get_languages();
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = (int) $languages[$i]['id'];
           
             $sql_data_array = array ('specification_filters_id' => $filter_id_copy,
-                                     'filter' => tep_db_prepare_input ($_POST['filter'][$language_id]),
+                                     'filter' => vam_db_prepare_input ($_POST['filter'][$language_id]),
                                      'language_id' => $language_id
                                     );
-            tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
           } //for ($i=0
         } // if ($specification_id
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $copy_to_filter_id . '&fid=' . $filter_id_copy) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $copy_to_filter_id . '&fid=' . $filter_id_copy) );
         break;
         
       // Delete a Filter
@@ -850,11 +850,11 @@
         // So delete the filter already
         $filter_id = (int) $_POST['specification_filters_id'];
         if ($filter_id != 0) {
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specification_filters_id = '" . $filter_id . "'");
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $filter_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS . " where specification_filters_id = '" . $filter_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " where specification_filters_id = '" . $filter_id . "'");
         } //if ($filter_id
           
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) );
         break;
         
       // Copy all Manufacturers to Filters
@@ -864,31 +864,31 @@
                                    order by manufacturers_name
                                   ";
         // print $manufacturer_query_raw . "<br>\n";
-        $manufacturer_query = tep_db_query ($manufacturer_query_raw);
+        $manufacturer_query = vam_db_query ($manufacturer_query_raw);
 
         $sort_order = 1;
-        while ($manufacturer_data = tep_db_fetch_array ($manufacturer_query) ) {
+        while ($manufacturer_data = vam_db_fetch_array ($manufacturer_query) ) {
           $sql_data_array = array ('specifications_id' => $specs_path,
                                    'filter_sort_order' => $sort_order
                                   );
 
-          tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
-          $specification_filters_id = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+          $specification_filters_id = vam_db_insert_id();
           
-          $languages = tep_get_languages();
+          $languages = vam_get_languages();
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = (int) $languages[$i]['id'];
             $sql_data_array = array ('specification_filters_id' => $specification_filters_id,
                                      'language_id' => $language_id,
                                      'filter' => $manufacturer_data['manufacturers_name']
                                      );
-            tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
           }
 
           $sort_order++;
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
         break;
         
       // Copy all Manufacturers to Filters
@@ -898,8 +898,8 @@
                                    where specifications_id = '" . $specs_path . "'
                                   ";
         // print $manufacturer_query_raw . "<br>\n";
-        $check_query = tep_db_query ($check_query_raw);
-        $check_data = tep_db_fetch_array ($check_query);
+        $check_query = vam_db_query ($check_query_raw);
+        $check_data = vam_db_fetch_array ($check_query);
         $sort_order = $check_data['count'] + 1;
 
         $manufacturer_query_raw = "SELECT manufacturers_name
@@ -911,30 +911,30 @@
                                    ORDER BY manufacturers_name
                                   ";
         // print $manufacturer_query_raw . "<br>\n";
-        $manufacturer_query = tep_db_query ($manufacturer_query_raw);
+        $manufacturer_query = vam_db_query ($manufacturer_query_raw);
 
-        while ($manufacturer_data = tep_db_fetch_array ($manufacturer_query) ) {
+        while ($manufacturer_data = vam_db_fetch_array ($manufacturer_query) ) {
           $sql_data_array = array ('specifications_id' => $specs_path,
                                    'filter_sort_order' => $sort_order
                                   );
 
-          tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
-          $specification_filters_id = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+          $specification_filters_id = vam_db_insert_id();
           
-          $languages = tep_get_languages();
+          $languages = vam_get_languages();
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = (int) $languages[$i]['id'];
             $sql_data_array = array ('specification_filters_id' => $specification_filters_id,
                                      'language_id' => $language_id,
                                      'filter' => $manufacturer_data['manufacturers_name']
                                      );
-            tep_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
           }
 
           $sort_order++;
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
         break;
         
       // Copy all Manufacturers to Filters
@@ -944,14 +944,14 @@
                                   " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " sfd
                              where sfd.specification_filters_id = sf.specification_filters_id
                                and sf.specifications_id = '" . $specs_path . "'
-                               and sfd.language_id = '" . $languages_id . "'
+                               and sfd.language_id = '" . $_SESSION['languages_id'] . "'
                              limit 1
                             ";
         // print $check_query_raw . "<br>\n";
-        $check_query = tep_db_query ($check_query_raw);
+        $check_query = vam_db_query ($check_query_raw);
 
-        $filter_data = tep_db_fetch_array ($check_query);
-        $type_spec = tep_get_type ($filter_data['filter']);
+        $filter_data = vam_db_fetch_array ($check_query);
+        $type_spec = vam_get_type ($filter_data['filter']);
 
         $filter_query_raw = "select sfd.filter,
                                     sf.specification_filters_id
@@ -959,22 +959,22 @@
                                   " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " sfd
                              where sfd.specification_filters_id = sf.specification_filters_id
                                and sf.specifications_id = '" . $specs_path . "'
-                               and sfd.language_id = '" . $languages_id . "'
+                               and sfd.language_id = '" . $_SESSION['languages_id'] . "'
                              order by (CONVERT (sfd.filter, $type_spec) ) 
                             ";
         // print $filter_query_raw . "<br>\n";
-        $filter_query = tep_db_query ($filter_query_raw);
+        $filter_query = vam_db_query ($filter_query_raw);
 
         $sort_order = 1;
-        while ($filter_data = tep_db_fetch_array ($filter_query) ) {
+        while ($filter_data = vam_db_fetch_array ($filter_query) ) {
           $specification_filters_id = $filter_data['specification_filters_id'];
           $sql_data_array = array ('filter_sort_order' => $sort_order);
 
-          tep_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array, 'update', "specification_filters_id = '" . $specification_filters_id . "'");
+          vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array, 'update', "specification_filters_id = '" . $specification_filters_id . "'");
           $sort_order++;
         }
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $specification_filters_id) );
         break;
         
 // Specification Values section
@@ -986,7 +986,7 @@
         
         // Insert/modify soet order and specs ID
         $return_value_id = '0';
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         $specifications_id = (int) ($_POST['specifications_id']);
             
         $sql_data_array = array ('specifications_id' => $specifications_id,
@@ -995,18 +995,18 @@
 
         switch ($action) {
           case 'new_value_confirm':
-            tep_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
-            $specification_values_id = tep_db_insert_id();
+            vam_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
+            $specification_values_id = vam_db_insert_id();
             break;
               
           case 'edit_value_confirm':
             $specification_values_id = (int) ($_POST['specification_values_id']);
-            tep_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array, 'update', "specification_values_id = '" . $specification_values_id . "'");
+            vam_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array, 'update', "specification_values_id = '" . $specification_values_id . "'");
             break;
         } //switch ($action)
         
         // Insert/modify language-dependent values
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
           $language_id = (int) $languages[$i]['id'];
           $sql_data_array = array ('specification_values_id' => $specification_values_id);
@@ -1017,11 +1017,11 @@
             $filter_image->set_destination (DIR_FS_CATALOG_IMAGES);
 
             if ($filter_image->parse() && $filter_image->save()) {
-              $value_data_array = array ('specification_value' => tep_db_input ($filter_image->filename) );
+              $value_data_array = array ('specification_value' => vam_db_input ($filter_image->filename) );
             }
             
           } else {
-            $value_data_array = array ('specification_value' => tep_db_prepare_input ($_POST['specification_value'][$language_id]) );
+            $value_data_array = array ('specification_value' => vam_db_prepare_input ($_POST['specification_value'][$language_id]) );
 
           } // if ($_POST['entry_type'] ... else ...
           $sql_data_array = array_merge ($sql_data_array, $value_data_array);
@@ -1031,16 +1031,16 @@
               $new_sql_data = array ('language_id' => $language_id);
               $sql_data_array = array_merge ($sql_data_array, $new_sql_data);
 
-              tep_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
+              vam_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
               break;
               
             case 'edit_value_confirm':
-              tep_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array, 'update', "language_id = '" . $language_id . "' and specification_values_id = '" . $specification_values_id . "'");
+              vam_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array, 'update', "language_id = '" . $language_id . "' and specification_values_id = '" . $specification_values_id . "'");
               break;
           } //switch ($action)
         } //for ($i=0
 
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $specification_values_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $specification_values_id) );
         break;
         
       // Move a Specification Value
@@ -1048,13 +1048,13 @@
         if (isset ($_POST['specification_values_id']) && $_POST['specification_values_id'] != 0 && $_POST['move_to_value_id'] != 0) {
           $specification_values_id = (int) $_POST['specification_values_id'];
           $move_to_value_id = (int) $_POST['move_to_value_id'];
-          tep_db_query ("update " . TABLE_SPECIFICATIONS_VALUES . " 
+          vam_db_query ("update " . TABLE_SPECIFICATIONS_VALUES . " 
                          set specifications_id = '" . $move_to_value_id . "'
                          where specification_values_id = '" . $specification_values_id . "'
                        ");
         }
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $move_to_value_id . '&value=1&vid=' . $specification_values_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $move_to_value_id . '&value=1&vid=' . $specification_values_id) );
         break;
         
       // Copy a Specification Value
@@ -1067,14 +1067,14 @@
                                from " . TABLE_SPECIFICATIONS_VALUES . " 
                                where specification_values_id = '" . $specification_values_id . "'
                               ";
-          $filter_query = tep_db_query ($filter_query_raw);
-          $filter_array = tep_db_fetch_array ($filter_query);
+          $filter_query = vam_db_query ($filter_query_raw);
+          $filter_array = vam_db_fetch_array ($filter_query);
 
           $sql_data_array = array ('specifications_id' => $copy_to_value_id,
                                    'value_sort_order' => $filter_array['value_sort_order']
                                   );
-          tep_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
-          $new_specification_values_id = tep_db_insert_id();
+          vam_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
+          $new_specification_values_id = vam_db_insert_id();
 
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = (int) $languages[$i]['id'];
@@ -1083,18 +1083,18 @@
                                  from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " 
                                  where specification_values_id = '" . $specification_values_id . "'
                                 ";
-            $filter_query = tep_db_query ($filter_query_raw);
-            $filter_array = tep_db_fetch_array ($filter_query);
+            $filter_query = vam_db_query ($filter_query_raw);
+            $filter_array = vam_db_fetch_array ($filter_query);
 
             $sql_data_array = array ('specification_values_id' => $new_specification_values_id,
                                      'language_id' => $language_id,
                                      'specification_value' => $filter_array['specification_value']
                                     );
-            tep_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
+            vam_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
           }
         } // if (isset ($_POST['specification_values_id']
         
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $copy_to_value_id . '&value=1&vid=' . $new_specification_values_id) );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $copy_to_value_id . '&value=1&vid=' . $new_specification_values_id) );
         break;
         
       // Delete a Specification Value
@@ -1102,11 +1102,11 @@
         // So delete the filter already
         $specification_values_id = (int) $_POST['specification_values_id'];
         if ($specification_values_id != 0) {
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specification_values_id = '" . $specification_values_id . "'");
-          tep_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $specification_values_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES . " where specification_values_id = '" . $specification_values_id . "'");
+          vam_db_query ("delete from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . " where specification_values_id = '" . $specification_values_id . "'");
         } //if ($filter_id
           
-        tep_redirect (tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
+        vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
         break;
         
 ////
@@ -1129,8 +1129,8 @@
                             where specification_group_id = '" . $specs_group_id . "' 
                           ";
         // print $links_query_raw . "<br>\n";
-        $links_query = tep_db_query ($links_query_raw);
-        $count_links = tep_db_num_rows ($links_query);
+        $links_query = vam_db_query ($links_query_raw);
+        $count_links = vam_db_num_rows ($links_query);
 
         // Check if there are any specifications attached and count them
         $specs_query_raw = "select specifications_id
@@ -1138,10 +1138,10 @@
                             where specification_group_id = '" . $specs_group_id . "' 
                           ";
         // print $specs_query_raw . "<br>\n";
-        $specs_query = tep_db_query ($specs_query_raw);
-        if (tep_db_num_rows ($specs_query) > 0) { //We have specifications attached
+        $specs_query = vam_db_query ($specs_query_raw);
+        if (vam_db_num_rows ($specs_query) > 0) { //We have specifications attached
           
-          while ($specs_data = tep_db_fetch_array ($specs_query) ) {
+          while ($specs_data = vam_db_fetch_array ($specs_query) ) {
             $count_specs++;
 
             // Check if we have any filters attached to each specification and count
@@ -1150,8 +1150,8 @@
                                   where specifications_id = '" . $specs_data['specifications_id'] . "' 
                                 ";
             // print $filters_query_raw . "<br>\n";
-            $filters_query = tep_db_query ($filters_query_raw);
-            $count_filters += tep_db_num_rows ($filters_query);
+            $filters_query = vam_db_query ($filters_query_raw);
+            $count_filters += vam_db_num_rows ($filters_query);
 
             // Check if we have any values attached to each specification and count them
             $values_query_raw = "select specification_values_id
@@ -1159,8 +1159,8 @@
                                   where specifications_id = '" . $specs_data['specifications_id'] . "' 
                                 ";
             // print $filters_query_raw . "<br>\n";
-            $values_query = tep_db_query ($values_query_raw);
-            $count_values += tep_db_num_rows ($values_query);
+            $values_query = vam_db_query ($values_query_raw);
+            $count_values += vam_db_num_rows ($values_query);
 
             // Check if we have any products with specification data and count
             $products_query_raw = "select products_id
@@ -1169,10 +1169,10 @@
                                      and language_id = '" . $language_id . "'
                                  ";
             // print $products_query_raw . "<br>\n";
-            $products_query = tep_db_query ($products_query_raw);
-            $count_products += tep_db_num_rows ($products_query);
+            $products_query = vam_db_query ($products_query_raw);
+            $count_products += vam_db_num_rows ($products_query);
           } // while ($specs_data
-        } // if (tep_db_num_rows ($specs_query
+        } // if (vam_db_num_rows ($specs_query
         break;
 
       case 'link_category':
@@ -1188,12 +1188,12 @@
                                       " . TABLE_CATEGORIES_DESCRIPTION . " cd
                                  where cd.categories_id = sg2c.categories_id 
                                    and sg2c.specification_group_id = '" . $specs_group_id . "' 
-                                   and cd.language_id = '" . (int) $languages_id . "' 
+                                   and cd.language_id = '" . (int) $_SESSION['languages_id'] . "' 
                                  order by cd.categories_name";
         // print $specifications_query_raw . "<br>\n";
-        $categories_query = tep_db_query ($categories_query_raw);
-        if (tep_db_num_rows ($categories_query) > 0) {
-          while ($categories_array = tep_db_fetch_array ($categories_query) ) {
+        $categories_query = vam_db_query ($categories_query_raw);
+        if (vam_db_num_rows ($categories_query) > 0) {
+          while ($categories_array = vam_db_fetch_array ($categories_query) ) {
             $categories_list[] = array ('id' => $categories_array['categories_id'],
                                         'text' => $categories_array['categories_name'],
                                        );
@@ -1223,10 +1223,10 @@
   
         // Add the existing fields that we might want to use
         $describe_query_raw = "describe " . TABLE_PRODUCTS;
-        $describe_query = tep_db_query ($describe_query_raw);
+        $describe_query = vam_db_query ($describe_query_raw);
   
         $products_array = array();
-        while ($row = tep_db_fetch_array ($describe_query) ) {
+        while ($row = vam_db_fetch_array ($describe_query) ) {
           switch ($row['Field']) { 
             case 'products_id': // Remove fields we don't want to see in the pulldown
             case 'products_status': // Add to this list if there are other fields you don't want
@@ -1292,10 +1292,10 @@
 
         // Add the fields from the Products Description table
         $describe_query_raw = "describe " . TABLE_PRODUCTS_DESCRIPTION;
-        $describe_query = tep_db_query ($describe_query_raw);
+        $describe_query = vam_db_query ($describe_query_raw);
   
         $products_description_array = array();
-        while ($row = tep_db_fetch_array ($describe_query) ) {
+        while ($row = vam_db_fetch_array ($describe_query) ) {
           switch ($row['Field']) { 
             case 'products_id': // Remove fields we don't want to see in the pulldown
             case 'language_id': // Add to this list if there are other fields you don't want
@@ -1395,13 +1395,13 @@
       case 'delete_specification':
         // Check for data attached to this group
         // Check if we have any filters attached to this specification
-        $count_filters = tep_count_filters ('0', $specification_id);
+        $count_filters = vam_count_filters ('0', $specification_id);
 
         // Check if we have any values attached to this specification
-        $count_values = tep_count_values ('0', $specification_id);
+        $count_values = vam_count_values ('0', $specification_id);
         
         // Check if we have any products with specification data
-        $count_products = tep_count_products ('0', $specification_id);
+        $count_products = vam_count_products ('0', $specification_id);
         break;
 
       case 'move_specification':
@@ -1413,9 +1413,9 @@
                                           order by specification_group_name
                                          ";
         // print $specification_group_query_raw . "<br>\n";
-        $specification_group_query = tep_db_query ($specification_group_query_raw);
-        if (tep_db_num_rows ($specification_group_query) > 0) {
-          while ($specification_group = tep_db_fetch_array ($specification_group_query) ) {
+        $specification_group_query = vam_db_query ($specification_group_query_raw);
+        if (vam_db_num_rows ($specification_group_query) > 0) {
+          while ($specification_group = vam_db_fetch_array ($specification_group_query) ) {
             $groups_array[] = array ('id' => $specification_group['specification_group_id'],
                                      'text' => $specification_group['specification_group_name'],
                                     );
@@ -1424,7 +1424,7 @@
           $groups_array[] = array ('id' => '',
                                    'text' => TEXT_NO_GROUP_SELECT
                                   );
-        } // if (tep_db_num_rows ... else ...
+        } // if (vam_db_num_rows ... else ...
         break;
         
       case 'new_filter':
@@ -1438,11 +1438,11 @@
                                    " . TABLE_SPECIFICATION_DESCRIPTION . " sd
                               where s.specifications_id = '" . $specs_path . "'
                                 and sd.specifications_id = '" . $specs_path . "'
-                                and sd.language_id = '" . $languages_id . "'
+                                and sd.language_id = '" . $_SESSION['languages_id'] . "'
                             ";
         // print $filters_query_raw . "<br>\n";
-        $filters_query = tep_db_query ($filters_query_raw);
-        $filters_data = tep_db_fetch_array ($filters_query);
+        $filters_query = vam_db_query ($filters_query_raw);
+        $filters_data = vam_db_fetch_array ($filters_query);
         
         $specifications_query_raw = "select sd.specifications_id,
                                             sd.specification_name
@@ -1450,13 +1450,13 @@
                                           " . TABLE_SPECIFICATION_DESCRIPTION . " sd
                                      where s.show_filter = 'True'
                                        and s.specifications_id = sd.specifications_id
-                                       and sd.language_id = '" . $languages_id . "'
+                                       and sd.language_id = '" . $_SESSION['languages_id'] . "'
                                    ";
         // print $specifications_query_raw . "<br>\n";
-        $specifications_query = tep_db_query ($specifications_query_raw);
+        $specifications_query = vam_db_query ($specifications_query_raw);
         
         $specification_list = array();
-        while ($specifications_data = tep_db_fetch_array ($specifications_query) ) {
+        while ($specifications_data = vam_db_fetch_array ($specifications_query) ) {
           $specification_list[] = array ('id' => $specifications_data['specifications_id'],
                                          'text' => $specifications_data['specification_name']
                                         );
@@ -1478,29 +1478,32 @@
   }
 
 ?>
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<script language="javascript" src="includes/general.js"></script>
+<script type="text/javascript" src="includes/general.js"></script>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
 <!-- header //-->
-<?php require_once(DIR_WS_INCLUDES . 'header.php'); ?>
+<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
 
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
   <tr>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="1" cellpadding="1" class="columnLeft">
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'false') { ?>
+    <td width="<?php echo BOX_WIDTH; ?>" align="left" valign="top">
 <!-- left_navigation //-->
-<?php require_once(DIR_WS_INCLUDES . 'column_left.php'); ?>
+<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 <!-- left_navigation_eof //-->
-    </table></td>
+    </td>
+<?php } ?>
 <!-- body_text //-->
     <td width="100%" valign="top">
+    
 <?php
 // Listings in the center section of the page
 //   There are three possible lists:
@@ -1516,24 +1519,21 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE_GROUPS; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
+				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_GROUPS; ?></h1>    
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo HEADING_TITLE_SEARCH_GROUPS . ' ' . tep_draw_input_field ('search');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo HEADING_TITLE_SEARCH_GROUPS . ' ' . vam_draw_input_field ('search');
 ?>
                 </td>
               </tr>
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo HEADING_TITLE_GOTO . ' ' . tep_draw_pull_down_menu ('sgid', tep_get_group_names(), $specs_group_id, 'onClick="this.form.submit();"');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgid', vam_get_group_names(), $specs_group_id, 'onClick="this.form.submit();"');
 ?>
                 </td>
               </tr>
@@ -1575,22 +1575,22 @@
                              order by specification_group_name
                             ";
     // print $cztegories_query_raw . "<br>\n";
-    $categories_query = tep_db_query ($categories_query_raw);
-    while ($categories = tep_db_fetch_array ($categories_query) ) {
+    $categories_query = vam_db_query ($categories_query_raw);
+    while ($categories = vam_db_fetch_array ($categories_query) ) {
       $groups_count++;
       $specifications_query_raw = "select specifications_id
                                    from " . TABLE_SPECIFICATION . "
                                    where specification_group_id = '" . (int) $categories['specification_group_id'] . "'
                                  ";
       // print $specifications_query_raw . "<br>\n";
-      $specifications_query = tep_db_query ($specifications_query_raw);
-      $specifications_in_group += tep_db_num_rows ($specifications_query);
-      $specs_count += tep_db_num_rows ($specifications_query);
+      $specifications_query = vam_db_query ($specifications_query_raw);
+      $specifications_in_group += vam_db_num_rows ($specifications_query);
+      $specs_count += vam_db_num_rows ($specifications_query);
 
       $rows++;
       $categories['specifications_in_group'] = $specifications_in_group;
-      $categories['filters_in_specifications'] = tep_count_filters ('0', '0');
-      $filters_count = tep_count_filters ('0', '0');
+      $categories['filters_in_specifications'] = vam_count_filters ('0', '0');
+      $filters_count = vam_count_filters ('0', '0');
       
       // Set the selected Specification Category
       if ( ($specs_group_id == 0 || $specs_group_id == $categories['specification_group_id']) && !isset ($cInfo) && (substr ($action, 0, 3) != 'new') ) {
@@ -1598,45 +1598,45 @@
       }
 
       if (isset ($cInfo) && is_object ($cInfo) && ($categories['specification_group_id'] == $cInfo->specification_group_id) ) {
-        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
+        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
       }
 ?>
-                <td class="dataTableContent"><?php echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '</a>&nbsp;<b>' . $categories['specification_group_name'] . '</b>'; ?></td>
+                <td class="dataTableContent"><?php echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '</a>&nbsp;<b>' . $categories['specification_group_name'] . '</b>'; ?></td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($categories['show_comparison'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison&flag=0&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison&flag=0&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison&flag=1&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison&flag=1&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($categories['show_products'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products&flag=0&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products&flag=0&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products&flag=1&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products&flag=1&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($categories['show_filter'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters&flag=0&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters&flag=0&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters&flag=1&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters&flag=1&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
                 <td class="dataTableContent" align="right">
 <?php 
         if (isset ($cInfo) && is_object ($cInfo) && ($categories['specification_group_id'] == $cInfo->specification_group_id) ) { 
-          echo tep_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+          echo vam_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
         } else { 
-          echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path. '&sgid=' . $categories['specification_group_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+          echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path. '&sgid=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
         } 
 ?>
                 &nbsp;</td>
@@ -1648,7 +1648,7 @@
                 <td colspan="5"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo TEXT_GROUPS_TOTAL . '&nbsp;' . $groups_count . '<br>' . TEXT_SPECS_TOTAL . '&nbsp;' . $specs_count . '<br>' . TEXT_FILTERS_TOTAL . '&nbsp;' . $filters_count; ?></td>
-                    <td align="right" class="smallText"><?php echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_group') . '">' . tep_image_button ('button_new_specification_group.gif', IMAGE_NEW_SPECIFICATION_GROUP) . '</a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_group') . '">' . vam_image_button ('button_new_specification_group.gif', IMAGE_NEW_SPECIFICATION_GROUP) . '</a>'; ?>&nbsp;</td>
                   </tr>
                 </table></td>
               </tr>
@@ -1662,34 +1662,31 @@
                              where specification_group_id = '" . $specs_group_path . "'
                             ";
     // print $group_name_query_raw . "<br>\n";
-    $group_name_query = tep_db_query ($group_name_query_raw);
+    $group_name_query = vam_db_query ($group_name_query_raw);
 
-    $group_name = tep_db_fetch_array ($group_name_query);
+    $group_name = vam_db_fetch_array ($group_name_query);
 ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE_SPECIFICATIONS . $group_name['specification_group_name']; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator ('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
+				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_SPECIFICATIONS . $group_name['specification_group_name']; ?></h1>    
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo HEADING_TITLE_SEARCH_SPECIFICATIONS . ' ' . tep_draw_input_field('search');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo HEADING_TITLE_SEARCH_SPECIFICATIONS . ' ' . vam_draw_input_field('search');
 ?>
                 </td>
               </tr>
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo HEADING_TITLE_GOTO . ' ' . tep_draw_pull_down_menu ('spid', tep_get_specification_names ($specs_group_path, $languages_id), $specification_id, 'onClick="this.form.submit();"');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('spid', vam_get_specification_names ($specs_group_path, $_SESSION['languages_id']), $specification_id, 'onClick="this.form.submit();"');
 ?>
                 </td>
               </tr>
@@ -1713,9 +1710,9 @@
     $rows = 0;
     $search = '';
     
-    $specs_count = tep_count_specifications ($specs_group_path);
-    $filters_count = tep_count_filters ($specs_group_path);
-    $values_count = tep_count_values ($specs_group_path);
+    $specs_count = vam_count_specifications ($specs_group_path);
+    $filters_count = vam_count_filters ($specs_group_path);
+    $values_count = vam_count_values ($specs_group_path);
 
     if (isset($_GET['search']) ) {
       $search = preg_replace ("(\r\n|\n|\r)", '', $_GET['search']);  // Remove CR &/ LF
@@ -1742,16 +1739,16 @@
                                  from " . TABLE_SPECIFICATION_DESCRIPTION . " sd,
                                       " . TABLE_SPECIFICATION . " sp
                                  where sp.specifications_id = sd.specifications_id
-                                   and sd.language_id = '" . $languages_id . "'
+                                   and sd.language_id = '" . $_SESSION['languages_id'] . "'
                                    and sp.specification_group_id = '" . $specs_group_path . "'
                                    " . $search . "
                                 order by sp.specification_sort_order,
                                          sd.specification_name
                                ";
     // print $specifications_query_raw . "<br>\n";
-    $specifications_query = tep_db_query ($specifications_query_raw);
+    $specifications_query = vam_db_query ($specifications_query_raw);
 
-    while ($specifications = tep_db_fetch_array ($specifications_query) ) {
+    while ($specifications = vam_db_fetch_array ($specifications_query) ) {
       $rows++;
       $specifications['specifications_in_group'] = $specs_count;
       $specifications['filters_in_specifications'] = $filters_count;
@@ -1763,46 +1760,46 @@
       }
 
       if (isset ($sInfo) && is_object ($sInfo) && ($specifications['specifications_id'] == $sInfo->specifications_id) ) {
-        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
+        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
       }
 
-      $filter_link = tep_image (DIR_WS_ICONS . 'blank.png', ICON_BLANK);
+      $filter_link = vam_image (DIR_WS_ICONS . 'blank.png', ICON_BLANK);
       if ($specifications['show_filter'] == 'True' && $specifications['filter_class'] != 'none') {
-        $filter_link = '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '</a>';
+        $filter_link = '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '</a>';
       }
 
-      $value_link = tep_image (DIR_WS_ICONS . 'blank.png', ICON_BLANK);
+      $value_link = vam_image (DIR_WS_ICONS . 'blank.png', ICON_BLANK);
       if ($specifications['enter_values'] != 'text') {
-        $value_link = '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specifications['specifications_id'] . '&value=1') . '">' . tep_image (DIR_WS_ICONS . 'folder_blue.gif', ICON_FOLDER) . '</a>';
+        $value_link = '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specifications['specifications_id'] . '&value=1') . '">' . vam_image (DIR_WS_ICONS . 'folder_blue.gif', ICON_FOLDER) . '</a>';
       }
 ?>
                 <td class="dataTableContent"><?php echo $filter_link . '&nbsp;' . $value_link . '&nbsp;<b>' . $specifications['specification_name'] . '</b>'; ?></td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($specifications['show_comparison'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_comparison_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($specifications['show_products'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_products_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
                 <td class="dataTableContent" align="center">
 <?php
       if ($specifications['show_filter'] == 'True') {
-        echo tep_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+        echo vam_image (DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters_spec&flag=0&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
       } else {
-        echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . tep_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+        echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'action=flag_filters_spec&flag=1&sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image (DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?>
                 </td>
@@ -1810,9 +1807,9 @@
                 <td class="dataTableContent" align="right">
 <?php 
         if (isset ($sInfo) && is_object ($sInfo) && ($specifications['specification_description_id'] == $sInfo->specification_description_id) ) { 
-          echo tep_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+          echo vam_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
         } else { 
-          echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spath=' . $specs_path . '&spid=' . $specifications['specification_description_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+          echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spath=' . $specs_path . '&spid=' . $specifications['specification_description_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
         } 
 ?>
                 &nbsp;</td>
@@ -1824,12 +1821,12 @@
                 <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo TEXT_SPECS_TOTAL_GROUP . '&nbsp;' . $specs_count . '<br>' . TEXT_FILTERS_TOTAL_GROUP . '&nbsp;' . $filters_count . '<br>' . TEXT_VALUES_TOTAL_GROUP . '&nbsp;' . $values_count; ?></td>
-                    <td align="right" class="smallText"><?php echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_path) . '">' . tep_image_button ('button_back.gif', IMAGE_BACK) . '</a>&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&action=new_specification') . '">' . tep_image_button ('button_new_specification.gif', IMAGE_NEW_PRODUCT) . '</a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $specs_group_path) . '">' . vam_image_button ('button_back.gif', IMAGE_BACK) . '</a>&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&action=new_specification') . '">' . vam_image_button ('button_new_specification.gif', IMAGE_NEW_PRODUCT) . '</a>'; ?>&nbsp;</td>
                   </tr>
                 </table></td>
               </tr>
               <tr>
-                <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
               </tr>
               <tr>
                 <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -1837,10 +1834,10 @@
                     <td class="main"><b><?php echo TEXT_SPECS_LEGEND; ?></b></td>
                   </tr>
                   <tr>
-                    <td class="smallText"><?php echo tep_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . ' ' . TEXT_SPECS_LEGEND_FILTERS; ?>&nbsp;</td>
+                    <td class="smallText"><?php echo vam_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . ' ' . TEXT_SPECS_LEGEND_FILTERS; ?>&nbsp;</td>
                   </tr>
                   <tr>
-                    <td class="smallText"><?php echo tep_image (DIR_WS_ICONS . 'folder_blue.gif', ICON_FOLDER) . ' ' . TEXT_SPECS_LEGEND_VALUES; ?>&nbsp;</td>
+                    <td class="smallText"><?php echo vam_image (DIR_WS_ICONS . 'folder_blue.gif', ICON_FOLDER) . ' ' . TEXT_SPECS_LEGEND_VALUES; ?>&nbsp;</td>
                   </tr>
                 </table></td>
               </tr>
@@ -1853,39 +1850,36 @@
       $specification_name_query_raw = "select specification_name
                                        from " . TABLE_SPECIFICATION_DESCRIPTION . "
                                        where specifications_id = '" . $specs_path . "'
-                                         and language_id = '" . $languages_id . "'
+                                         and language_id = '" . $_SESSION['languages_id'] . "'
                                      ";
       // print $specification_name_query_raw . "<br>\n";
-      $specification_name_query = tep_db_query ($specification_name_query_raw);
+      $specification_name_query = vam_db_query ($specification_name_query_raw);
 
-      $specification_name = tep_db_fetch_array ($specification_name_query);
+      $specification_name = vam_db_fetch_array ($specification_name_query);
 ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE_FILTERS . $specification_name['specification_name']; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
+				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_FILTERS . $specification_name['specification_name']; ?></h1>    
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo tep_draw_hidden_field ('spath', $specs_path);
-    echo HEADING_TITLE_SEARCH_FILTERS . ' ' . tep_draw_input_field ('search');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo HEADING_TITLE_SEARCH_FILTERS . ' ' . vam_draw_input_field ('search');
 ?>
                 </td>
               </tr>
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo tep_draw_hidden_field ('spath', $specs_path);
-    echo HEADING_TITLE_GOTO . ' ' . tep_draw_pull_down_menu ('fid', tep_get_specification_filters ($specs_path, $languages_id = 1), $filter_id, 'onClick="this.form.submit();"');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('fid', vam_get_specification_filters ($specs_path, $_SESSION['languages_id'] = 1), $filter_id, 'onClick="this.form.submit();"');
 ?>
                 </td>
               </tr>
@@ -1924,25 +1918,25 @@
                           where sfd.specification_filters_id = sf.specification_filters_id
                             and sp.specifications_id = '" . $specs_path . "'
                             and sf.specifications_id = '" . $specs_path . "'
-                            and sfd.language_id = '" . $languages_id . "'
+                            and sfd.language_id = '" . $_SESSION['languages_id'] . "'
                             " . $search . "
                           order by sf.filter_sort_order,
                                    sfd.filter
                         ";
     // print $filters_query_raw . "<br>\n";
-    $filters_query = tep_db_query ($filters_query_raw);
-    $filters_count += tep_db_num_rows ($filters_query);
+    $filters_query = vam_db_query ($filters_query_raw);
+    $filters_count += vam_db_num_rows ($filters_query);
 
-    while ($filters_array = tep_db_fetch_array ($filters_query) ) {
+    while ($filters_array = vam_db_fetch_array ($filters_query) ) {
       // Set the selected Filter
       if ( ($filter_id == 0 || $filter_id == $filters_array['specification_filters_id']) && !isset ($fInfo) && (substr ($action, 0, 3) != 'new') ) {
         $fInfo = new objectInfo ($filters_array);
       }
 
       if (isset ($fInfo) && is_object ($fInfo) && ($filters_array['specification_filters_id'] == $fInfo->specification_filters_id) ) {
-        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
+        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
       }
 ?>
                 <td class="dataTableContent"><?php echo '<b>' . $filters_array['filter'] . '</b>'; ?></td>
@@ -1950,9 +1944,9 @@
                 <td class="dataTableContent" align="right">
 <?php 
         if (isset ($fInfo) && is_object ($fInfo) && ($filters_array['specification_filters_id'] == $fInfo->specification_filters_id) ) { 
-          echo tep_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+          echo vam_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
         } else { 
-          echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '">' . tep_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+          echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '">' . vam_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
         } 
 ?>
                 &nbsp;</td>
@@ -1967,8 +1961,8 @@
                     <td class="smallText"><?php echo TEXT_FILTERS_TOTAL . '&nbsp;' . $filters_count; ?></td>
                     <td align="right" class="smallText">
 <?php 
-    echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specs_path) . '">' . tep_image_button ('button_back.gif', IMAGE_BACK) . '</a>'; 
-    echo '&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&action=new_filter') . '">' . tep_image_button ('button_new_filter.gif', IMAGE_NEW_FILTER) . '</a>'; 
+    echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specs_path) . '">' . vam_image_button ('button_back.gif', IMAGE_BACK) . '</a>'; 
+    echo '&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&action=new_filter') . '">' . vam_image_button ('button_new_filter.gif', IMAGE_NEW_FILTER) . '</a>'; 
 ?>&nbsp;</td>
                   </tr>
                 </table></td>
@@ -1981,41 +1975,38 @@
       $specification_name_query_raw = "select specification_name
                                        from " . TABLE_SPECIFICATION_DESCRIPTION . "
                                        where specifications_id = '" . $specs_path . "'
-                                         and language_id = '" . $languages_id . "'
+                                         and language_id = '" . $_SESSION['languages_id'] . "'
                                      ";
       // print $specification_name_query_raw . "<br>\n";
-      $specification_name_query = tep_db_query ($specification_name_query_raw);
+      $specification_name_query = vam_db_query ($specification_name_query_raw);
 
-      $specification_name = tep_db_fetch_array ($specification_name_query);
+      $specification_name = vam_db_fetch_array ($specification_name_query);
 ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE_VALUES . $specification_name['specification_name']; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', 1, HEADING_IMAGE_HEIGHT); ?></td>
+				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_VALUES . $specification_name['specification_name']; ?></h1>    
             <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo tep_draw_hidden_field ('spath', $specs_path);
-    echo tep_draw_hidden_field ('value', '1');
-    echo HEADING_TITLE_SEARCH_VALUES . ' ' . tep_draw_input_field ('search');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo vam_draw_hidden_field ('value', '1');
+    echo HEADING_TITLE_SEARCH_VALUES . ' ' . vam_draw_input_field ('search');
 ?>
                 </td>
               </tr>
               <tr>
                 <td class="smallText" align="right">
 <?php
-    echo tep_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo tep_draw_hidden_field ('sgpath', $specs_group_path);
-    echo tep_draw_hidden_field ('spath', $specs_path);
-    echo tep_draw_hidden_field ('value', '1');
-    echo HEADING_TITLE_GOTO . ' ' . tep_draw_pull_down_menu ('vid', tep_get_specification_values ($specs_path, $languages_id), $value_id, 'onClick="this.form.submit();"');
-    echo tep_hide_session_id() . '</form>';
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo vam_draw_hidden_field ('value', '1');
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('vid', vam_get_specification_values ($specs_path, $_SESSION['languages_id']), $value_id, 'onClick="this.form.submit();"');
 ?>
                 </td>
               </tr>
@@ -2053,25 +2044,25 @@
                          where svd.specification_values_id = sv.specification_values_id
                            and sv.specifications_id = '" . $specs_path . "'
                            and s.specifications_id = '" . $specs_path . "'
-                           and svd.language_id = '" . $languages_id . "'
+                           and svd.language_id = '" . $_SESSION['languages_id'] . "'
                            " . $search . "
                          order by sv.value_sort_order,
                                   svd.specification_value
                        ";
     // print $filters_query_raw . "<br>\n";
-    $values_query = tep_db_query ($values_query_raw);
-    $values_count += tep_db_num_rows ($values_query);
+    $values_query = vam_db_query ($values_query_raw);
+    $values_count += vam_db_num_rows ($values_query);
 
-    while ($values_array = tep_db_fetch_array ($values_query) ) {
+    while ($values_array = vam_db_fetch_array ($values_query) ) {
       // Set the selected Value
       if ( ($value_id == 0 || $value_id == $values_array['specification_values_id']) && !isset ($vInfo) && (substr ($action, 0, 3) != 'new') ) {
         $vInfo = new objectInfo ($values_array);
       }
 
       if (isset ($vInfo) && is_object ($vInfo) && ($values_array['specification_values_id'] == $vInfo->specification_values_id) ) {
-        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
+        echo '              <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
+        echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
       }
 ?>
                 <td class="dataTableContent"><?php echo '<b>' . $values_array['specification_value'] . '</b>'; ?></td>
@@ -2079,9 +2070,9 @@
                 <td class="dataTableContent" align="right">
 <?php 
         if (isset ($vInfo) && is_object ($vInfo) && ($filters_array['specification_values_id'] == $vInfo->specification_values_id) ) { 
-          echo tep_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+          echo vam_image (DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
         } else { 
-          echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '">' . tep_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+          echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '">' . vam_image (DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
         } 
 ?>
                 &nbsp;</td>
@@ -2094,7 +2085,7 @@
                 <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo TEXT_VALUES_TOTAL . '&nbsp;' . $values_count; ?></td>
-                    <td align="right" class="smallText"><?php echo '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specs_path) . '">' . tep_image_button ('button_back.gif', IMAGE_BACK) . '</a>&nbsp;<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&action=new_value&value=1') . '">' . tep_image_button ('button_new_value.gif', IMAGE_NEW_VALUE) . '</a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specs_path) . '">' . vam_image_button ('button_back.gif', IMAGE_BACK) . '</a>&nbsp;<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&action=new_value&value=1') . '">' . vam_image_button ('button_new_value.gif', IMAGE_NEW_VALUE) . '</a>'; ?>&nbsp;</td>
                   </tr>
                 </table></td>
               </tr>
@@ -2112,24 +2103,24 @@
       case 'new_group':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_NEW_GROUP . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('new_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_group_confirm', 'post') );
+        $contents = array ('form' => vam_draw_form ('new_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_group_confirm', 'post') );
         $contents[] = array ('text' => TEXT_NEW_GROUP_INTRO);
 
-        $contents[] = array ('text' => '<br>' . TEXT_GROUP_NAME . '<br>' . tep_draw_input_field ('specification_group_name') );
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . tep_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . tep_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . tep_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_GROUP_NAME . '<br>' . vam_draw_input_field ('specification_group_name') );
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . vam_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . vam_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . vam_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
 
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'edit_group':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_EDIT_GROUP . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=update_group_confirm', 'post') );
-        $contents[] = array ('text' => TEXT_EDIT_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
+        $contents = array ('form' => vam_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=update_group_confirm', 'post') );
+        $contents[] = array ('text' => TEXT_EDIT_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
 
-        $contents[] = array ('text' => '<br>' . TEXT_GROUP_NAME . '<br>' . tep_draw_input_field ('specification_group_name', $cInfo->specification_group_name) );
+        $contents[] = array ('text' => '<br>' . TEXT_GROUP_NAME . '<br>' . vam_draw_input_field ('specification_group_name', $cInfo->specification_group_name) );
 
         $show_comparison = 'True';
         $dont_show_comparison = 'False';
@@ -2137,7 +2128,7 @@
           $show_comparison = 'False';
           $dont_show_comparison = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . tep_draw_radio_field ('show_comparison', 'True', true, $dont_show_comparison) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_comparison', 'False', false, $show_comparison) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . vam_draw_radio_field ('show_comparison', 'True', true, $dont_show_comparison) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_comparison', 'False', false, $show_comparison) . '&nbsp;' . TEXT_DONT_SHOW);
 
         $show_products = 'True';
         $dont_show_products = 'False';
@@ -2145,7 +2136,7 @@
           $show_products = 'False';
           $dont_show_products = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . tep_draw_radio_field ('show_products', 'True', true, $dont_show_products) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_products', 'False', false, $show_products) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . vam_draw_radio_field ('show_products', 'True', true, $dont_show_products) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_products', 'False', false, $show_products) . '&nbsp;' . TEXT_DONT_SHOW);
 
         $show_filter = 'True';
         $dont_show_filter = 'False';
@@ -2153,71 +2144,71 @@
           $show_filter = 'False';
           $dont_show_filter = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . tep_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . vam_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
 
       case 'copy_group':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_COPY_GROUP . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('copy_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_group_confirm', 'post') );
-        $contents[] = array ('text' => TEXT_COPY_GROUP_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) . '<br>' );
+        $contents = array ('form' => vam_draw_form ('copy_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_group_confirm', 'post') );
+        $contents[] = array ('text' => TEXT_COPY_GROUP_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) . '<br>' );
         $contents[] = array ('text' => '&nbsp;');
-        if ($count_links > 0) $contents[] = array ('text' => tep_draw_checkbox_field ('copy_links', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_LINKS, $count_links) );
-        if ($count_specs > 0) $contents[] = array ('text' => tep_draw_checkbox_field ('copy_specs', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_SPECS, $count_specs) );
-        if ($count_products > 0) $contents[] = array ('text' => tep_draw_checkbox_field ('copy_products', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_PRODUCTS, $count_products) );
-        if ($count_filters > 0) $contents[] = array ('text' => tep_draw_checkbox_field ('copy_filter', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_FILTERS, $count_filters) );
-        if ($count_values > 0) $contents[] = array ('text' => tep_draw_checkbox_field ('copy_values', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_VALUES, $count_values) );
+        if ($count_links > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_links', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_LINKS, $count_links) );
+        if ($count_specs > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_specs', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_SPECS, $count_specs) );
+        if ($count_products > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_products', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_PRODUCTS, $count_products) );
+        if ($count_filters > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_filter', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_FILTERS, $count_filters) );
+        if ($count_values > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_values', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_VALUES, $count_values) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
 
       case 'delete_group':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_DELETE_GROUP . '</b>');
-        $contents = array ('form' => tep_draw_form ('delete_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_group_confirm') );
-        $contents[] = array ('text' => TEXT_DELETE_GROUP_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id));
+        $contents = array ('form' => vam_draw_form ('delete_group', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_group_confirm') );
+        $contents[] = array ('text' => TEXT_DELETE_GROUP_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id));
         $contents[] = array ('text' => '<br><b>' . $cInfo->specification_group_name . '</b>');
         // $count_specs, $count_products, $count_filters are populated in the first $action section
         if ($count_specs > 0) $contents[] = array ('text' => '<br>' . sprintf (TEXT_DELETE_WARNING_SPECS, $count_specs) );
         if ($count_products > 0) $contents[] = array ('text' => '<br>' . sprintf (TEXT_DELETE_WARNING_PRODUCTS, $count_products) );
         if ($count_filters > 0) $contents[] = array ('text' => '<br>' . sprintf (TEXT_DELETE_WARNING_FILTERS, $count_filters) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'link_category':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_LINK_CATEGORY . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('link_category_confirm', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=link_category_confirm'));
-        $contents[] = array ('text' => sprintf (TEXT_LINK_CATEGORIES_INTRO, $cInfo->categories_name) . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id));
-        $contents[] = array ('text' => '<br>' . TEXT_LINK_TO . '<br>' . tep_draw_pull_down_menu ('link_category_id', tep_get_category_tree() ) );
-        $contents[] = array ('text' => tep_draw_checkbox_field ('link_subcats', 'True') . ' ' . TEXT_LINK_TO_SUBCATS);
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_link.gif', IMAGE_LINK) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('link_category_confirm', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=link_category_confirm'));
+        $contents[] = array ('text' => sprintf (TEXT_LINK_CATEGORIES_INTRO, $cInfo->categories_name) . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id));
+        $contents[] = array ('text' => '<br>' . TEXT_LINK_TO . '<br>' . vam_draw_pull_down_menu ('link_category_id', vam_get_category_tree() ) );
+        $contents[] = array ('text' => vam_draw_checkbox_field ('link_subcats', 'True') . ' ' . TEXT_LINK_TO_SUBCATS);
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_link.gif', IMAGE_LINK) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'link_all_categories':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_LINK_ALL_CATEGORIES . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('link_all_categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=link_all_categories_confirm') );
-        $contents[] = array ('text' => TEXT_LINK_ALL_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_link_all.gif', IMAGE_LINK_ALL) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('link_all_categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=link_all_categories_confirm') );
+        $contents[] = array ('text' => TEXT_LINK_ALL_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_link_all.gif', IMAGE_LINK_ALL) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'unlink_category':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_UNLINK_CATEGORY . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_category_confirm') );
-        $contents[] = array ('text' => TEXT_UNLINK_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
-        $contents[] = array ('text' => TEXT_UNLINK_CATEGORY . '<br>' . tep_draw_pull_down_menu ('categories_id', $categories_list) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_unlink.gif', IMAGE_UNLINK) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_category_confirm') );
+        $contents[] = array ('text' => TEXT_UNLINK_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
+        $contents[] = array ('text' => TEXT_UNLINK_CATEGORY . '<br>' . vam_draw_pull_down_menu ('categories_id', $categories_list) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_unlink.gif', IMAGE_UNLINK) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'unlink_all_categories':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_UNLINK_ALL_CATEGORIES . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_all_categories_confirm') );
-        $contents[] = array ('text' => TEXT_UNLINK_ALL_INTRO . tep_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_unlink_all.gif', IMAGE_UNLINK_ALL) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_all_categories_confirm') );
+        $contents[] = array ('text' => TEXT_UNLINK_ALL_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_unlink_all.gif', IMAGE_UNLINK_ALL) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'new_specification':
@@ -2226,60 +2217,60 @@
                             where specification_group_id = '" . $specs_group_path . "'
                             limit 1
                            ";
-        $group_query = tep_db_query ($group_query_raw);
-        $group = tep_db_fetch_array ($group_query);
+        $group_query = vam_db_query ($group_query_raw);
+        $group = vam_db_fetch_array ($group_query);
 
         $heading[] = array ('text' => '<b>' . sprintf (TEXT_INFO_HEADING_NEW_SPECIFICATION, $group['specification_group_name']) . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('new_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_specification_confirm&sgpath=' . $specs_group_path, 'post') );
-        $contents[] = array ('text' => TEXT_NEW_SPECIFICATION_INTRO . $sInfo->specification_group_id . tep_draw_hidden_field ('specification_group_id', $specs_group_path) );
+        $contents = array ('form' => vam_draw_form ('new_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_specification_confirm&sgpath=' . $specs_group_path, 'post') );
+        $contents[] = array ('text' => TEXT_NEW_SPECIFICATION_INTRO . $sInfo->specification_group_id . vam_draw_hidden_field ('specification_group_id', $specs_group_path) );
 
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         $specification_name_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_name_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']');
+          $specification_name_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']');
         }
 
         $specification_description_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_description_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5');
+          $specification_description_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5');
         }
 
         $specification_prefix_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_prefix_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']');
+          $specification_prefix_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']');
         }
 
         $specification_suffix_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_suffix_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']');
+          $specification_suffix_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']');
         }
 
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_NAME . $specification_name_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_DESCRIPTION . $specification_description_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_PREFIX . $specification_prefix_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_SUFFIX . $specification_suffix_string);
-        $contents[] = array ('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . tep_draw_input_field ('specification_sort_order', '', 'size="5"'));
-        $contents[] = array ('text' => '<br>' . TEXT_COLUMN_JUSTIFY . '<br>' . tep_draw_pull_down_menu ('column_justify', $alignment_array) . '<br>' . TEXT_EXISTING_FIELD_NOTE);
-        $contents[] = array ('text' => '<br>' . TEXT_EXISTING_FIELD . '<br>' . tep_draw_pull_down_menu ('products_column_name', $products_database_fields) . '<br>');
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . tep_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . tep_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . tep_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_CLASS . '<br>' . tep_draw_pull_down_menu ('filter_class', $filter_classes) );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SHOW_ALL . '<br>' . tep_draw_radio_field ('filter_show_all', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('filter_show_all', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_DISPLAY . '<br>' . tep_draw_pull_down_menu ('filter_display', $filter_display_array) );
-        $contents[] = array ('text' => '<br>' . TEXT_ENTER_VALUE . '<br>' . tep_draw_pull_down_menu ('enter_values', $enter_filter_array) );
+        $contents[] = array ('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . vam_draw_input_field ('specification_sort_order', '', 'size="5"'));
+        $contents[] = array ('text' => '<br>' . TEXT_COLUMN_JUSTIFY . '<br>' . vam_draw_pull_down_menu ('column_justify', $alignment_array) . '<br>' . TEXT_EXISTING_FIELD_NOTE);
+        $contents[] = array ('text' => '<br>' . TEXT_EXISTING_FIELD . '<br>' . vam_draw_pull_down_menu ('products_column_name', $products_database_fields) . '<br>');
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . vam_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . vam_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . vam_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_CLASS . '<br>' . vam_draw_pull_down_menu ('filter_class', $filter_classes) );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SHOW_ALL . '<br>' . vam_draw_radio_field ('filter_show_all', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('filter_show_all', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_DISPLAY . '<br>' . vam_draw_pull_down_menu ('filter_display', $filter_display_array) );
+        $contents[] = array ('text' => '<br>' . TEXT_ENTER_VALUE . '<br>' . vam_draw_pull_down_menu ('enter_values', $enter_filter_array) );
 
-        $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'edit_specification':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_EDIT_SPECIFICATION . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('edit_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
-        $contents[] = array ('text' => TEXT_EDIT_INTRO . tep_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . tep_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
+        $contents = array ('form' => vam_draw_form ('edit_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
+        $contents[] = array ('text' => TEXT_EDIT_INTRO . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
 
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         $specification_name_string = '';
         $specification_description_string = '';
         $specification_prefix_string = '';
@@ -2295,8 +2286,8 @@
                                     where specifications_id = '" . $sInfo->specifications_id . "'
                                     limit 1";
         // print $specifications_query_raw . "<br>\n";
-        $specification_query = tep_db_query ($specification_query_raw);
-        $specification_fixed_data = tep_db_fetch_array ($specification_query);
+        $specification_query = vam_db_query ($specification_query_raw);
+        $specification_fixed_data = vam_db_fetch_array ($specification_query);
         
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           $specification_query_raw = "select specification_name, 
@@ -2308,27 +2299,27 @@
                                         and specifications_id = '" . $sInfo->specifications_id . "'
                                       limit 1";
           // print $specifications_query_raw . "<br>\n";
-          $specification_query = tep_db_query ($specification_query_raw);
-          $specification_data = tep_db_fetch_array ($specification_query);
+          $specification_query = vam_db_query ($specification_query_raw);
+          $specification_data = vam_db_fetch_array ($specification_query);
           
           $specification_data = array_merge ( (array) $specification_fixed_data, (array) $specification_data);
           
-          $specification_name_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']', $specification_data['specification_name'] );
+          $specification_name_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']', $specification_data['specification_name'] );
 
-          $specification_description_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5', $specification_data['specification_description'] );
+          $specification_description_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5', $specification_data['specification_description'] );
 
-          $specification_prefix_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']', $specification_data['specification_prefix'] );
+          $specification_prefix_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']', $specification_data['specification_prefix'] );
 
-          $specification_suffix_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']', $specification_data['specification_suffix'] );
+          $specification_suffix_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']', $specification_data['specification_suffix'] );
         }
 
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_NAME . $specification_name_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_DESCRIPTION . $specification_description_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_PREFIX . $specification_prefix_string);
         $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_SUFFIX . $specification_suffix_string);
-        $contents[] = array ('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . tep_draw_input_field ('specification_sort_order', $specification_data['specification_sort_order'], 'size="5"'));
-        $contents[] = array ('text' => '<br>' . TEXT_COLUMN_JUSTIFY . '<br>' . tep_draw_pull_down_menu ('column_justify', $alignment_array, $specification_data['column_justify']) . '<br>');
-        $contents[] = array ('text' => '<br>' . TEXT_EXISTING_FIELD . '<br>' . tep_draw_pull_down_menu ('products_column_name', $products_database_fields, $specification_data['products_column_name']) . '<br>' . TEXT_EXISTING_FIELD_NOTE);
+        $contents[] = array ('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . vam_draw_input_field ('specification_sort_order', $specification_data['specification_sort_order'], 'size="5"'));
+        $contents[] = array ('text' => '<br>' . TEXT_COLUMN_JUSTIFY . '<br>' . vam_draw_pull_down_menu ('column_justify', $alignment_array, $specification_data['column_justify']) . '<br>');
+        $contents[] = array ('text' => '<br>' . TEXT_EXISTING_FIELD . '<br>' . vam_draw_pull_down_menu ('products_column_name', $products_database_fields, $specification_data['products_column_name']) . '<br>' . TEXT_EXISTING_FIELD_NOTE);
 
         $show_comparison = 'True';
         $dont_show_comparison = 'False';
@@ -2336,7 +2327,7 @@
           $show_comparison = 'False';
           $dont_show_comparison = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . tep_draw_radio_field ('show_comparison', 'True', true, $dont_show_comparison) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_comparison', 'False', false, $show_comparison) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_COMPARISON . '<br>' . vam_draw_radio_field ('show_comparison', 'True', true, $dont_show_comparison) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_comparison', 'False', false, $show_comparison) . '&nbsp;' . TEXT_DONT_SHOW);
 
         $show_products = 'True';
         $dont_show_products = 'False';
@@ -2344,7 +2335,7 @@
           $show_products = 'False';
           $dont_show_products = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . tep_draw_radio_field ('show_products', 'True', true, $dont_show_products) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_products', 'False', false, $show_products) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_ON_PRODUCTS . '<br>' . vam_draw_radio_field ('show_products', 'True', true, $dont_show_products) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_products', 'False', false, $show_products) . '&nbsp;' . TEXT_DONT_SHOW);
 
         $show_filter = 'True';
         $dont_show_filter = 'False';
@@ -2352,9 +2343,9 @@
           $show_filter = 'False';
           $dont_show_filter = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . tep_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_CLASS . '<br>' . tep_draw_pull_down_menu ('filter_class', $filter_classes, $specification_data['filter_class']) );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_DISPLAY . '<br>' . tep_draw_pull_down_menu ('filter_display', $filter_display_array, $specification_data['filter_display']) );
+        $contents[] = array ('text' => '<br>' . TEXT_SHOW_FILTER . '<br>' . vam_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_CLASS . '<br>' . vam_draw_pull_down_menu ('filter_class', $filter_classes, $specification_data['filter_class']) );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_DISPLAY . '<br>' . vam_draw_pull_down_menu ('filter_display', $filter_display_array, $specification_data['filter_display']) );
 
         $filter_show_all = 'True';
         $filter_dont_show_all = 'False';
@@ -2362,51 +2353,51 @@
           $filter_show_all = 'False';
           $filter_dont_show_all = 'True';
         }
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SHOW_ALL . '<br>' . tep_draw_radio_field ('filter_show_all', 'True', true, $filter_dont_show_all) . '&nbsp;' . TEXT_SHOW . '<br>' . tep_draw_radio_field ('filter_show_all', 'False', false, $filter_show_all) . '&nbsp;' . TEXT_DONT_SHOW );
-        $contents[] = array ('text' => '<br>' . TEXT_ENTER_VALUE . '<br>' . tep_draw_pull_down_menu ('enter_values', $enter_filter_array, $specification_data['enter_values']) );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SHOW_ALL . '<br>' . vam_draw_radio_field ('filter_show_all', 'True', true, $filter_dont_show_all) . '&nbsp;' . TEXT_SHOW . '<br>' . vam_draw_radio_field ('filter_show_all', 'False', false, $filter_show_all) . '&nbsp;' . TEXT_DONT_SHOW );
+        $contents[] = array ('text' => '<br>' . TEXT_ENTER_VALUE . '<br>' . vam_draw_pull_down_menu ('enter_values', $enter_filter_array, $specification_data['enter_values']) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
          
       case 'delete_specification':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_DELETE_SPECIFICATION . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('delete_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
-        $contents[] = array ('text' => TEXT_DELETE_SPECIFICATION_INTRO . tep_draw_hidden_field ('specifications_id', $sInfo->specifications_id) );
+        $contents = array ('form' => vam_draw_form ('delete_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
+        $contents[] = array ('text' => TEXT_DELETE_SPECIFICATION_INTRO . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) );
         $contents[] = array ('text' => '<br><b>' . $sInfo->specification_name . '</b>');
 
         // $count_products, $count_filters are populated in the first $action section
         if ($count_products > 0) $contents[] = array ('text' => '<br>' . sprintf (TEXT_DELETE_WARNING_PRODUCTS, $count_products) );
         if ($count_filters > 0) $contents[] = array ('text' => '<br>' . sprintf (TEXT_DELETE_WARNING_FILTERS, $count_filters) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'move_specification':
         // Move a Specification to a different Group
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_MOVE_SPECIFICATION . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('move_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
-        $contents[] = array ('text' => sprintf (TEXT_MOVE_SPECIFICATION_INTRO, $sInfo->specification_name) . tep_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . tep_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
-        $contents[] = array ('text' => '<br>' . TEXT_MOVE_SPECIFICATION_TO . '<br>' . tep_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_move.gif', IMAGE_MOVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('move_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
+        $contents[] = array ('text' => sprintf (TEXT_MOVE_SPECIFICATION_INTRO, $sInfo->specification_name) . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
+        $contents[] = array ('text' => '<br>' . TEXT_MOVE_SPECIFICATION_TO . '<br>' . vam_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_move.gif', IMAGE_MOVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'copy_specification':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_COPY_SPECIFICATION . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('copy_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
-        $contents[] = array ('text' => sprintf (TEXT_INFO_COPY_SPECIFICATION_INTRO, $sInfo->specification_name) . $sInfo->specifications_id . tep_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . tep_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
-        $contents[] = array ('text' => '<br>' . TEXT_COPY_SPECIFICATION_TO . '<br>' . tep_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_copy.gif', IMAGE_COPY) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('copy_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
+        $contents[] = array ('text' => sprintf (TEXT_INFO_COPY_SPECIFICATION_INTRO, $sInfo->specification_name) . $sInfo->specifications_id . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
+        $contents[] = array ('text' => '<br>' . TEXT_COPY_SPECIFICATION_TO . '<br>' . vam_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_copy.gif', IMAGE_COPY) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
 //Filters       
       case 'new_filter':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_NEW_FILTER . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('new_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path, 'post', 'enctype="multipart/form-data"') );
-        $contents[] = array ('text' => sprintf (TEXT_NEW_FILTER_INTRO, $filters_data['specification_name'], $filters_data['filter_class']) . tep_draw_hidden_field ('specifications_id', $specs_path) );
+        $contents = array ('form' => vam_draw_form ('new_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path, 'post', 'enctype="multipart/form-data"') );
+        $contents[] = array ('text' => sprintf (TEXT_NEW_FILTER_INTRO, $filters_data['specification_name'], $filters_data['filter_class']) . vam_draw_hidden_field ('specifications_id', $specs_path) );
 
         $check_query_raw = "select products_column_name,
                                    filter_display
@@ -2414,10 +2405,10 @@
                             where specifications_id = '" . $specs_path . "'
                         ";
         // print $check_query_raw . "<br>\n";
-        $check_query = tep_db_query ($check_query_raw);
-        $check_data = tep_db_fetch_array ($check_query);
+        $check_query = vam_db_query ($check_query_raw);
+        $check_data = vam_db_fetch_array ($check_query);
         if ($check_data['products_column_name'] == 'manufacturers_id') {
-          $contents[] = array ('text' => '<br><a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=import_manufacturers') . '">' . tep_image_button ('button_import_manufacturers.gif', IMAGE_IMPORT_MANUFACTURERS) . '</a>');
+          $contents[] = array ('text' => '<br><a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=import_manufacturers') . '">' . vam_image_button ('button_import_manufacturers.gif', IMAGE_IMPORT_MANUFACTURERS) . '</a>');
         }
 
         $entry_type = 'text';
@@ -2426,25 +2417,25 @@
         }
         
         $filter_inputs_string = '';
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           if ($entry_type == 'image') {
-            $filter_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_file_field ('filter[' . $languages[$i]['id'] . ']');
+            $filter_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('filter[' . $languages[$i]['id'] . ']');
           } else {
-            $filter_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('filter[' . $languages[$i]['id'] . ']');
+            $filter_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']');
           }
         }
 
-        $contents[] = array ('text' => '<br>' . TEXT_NEW_FILTER . $filter_inputs_string . tep_draw_hidden_field ('entry_type', $entry_type) );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SORT_ORDER . '<br>' . tep_draw_input_field ('filter_sort_order', '', 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('text' => '<br>' . TEXT_NEW_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SORT_ORDER . '<br>' . vam_draw_input_field ('filter_sort_order', '', 'size="5"'));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'edit_filter':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_FILTER . '</b>');
 
-        $contents = array('form' => tep_draw_form ('edit_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path, 'post', 'enctype="multipart/form-data"') );
-        $contents[] = array('text' => sprintf (TEXT_EDIT_FILTER_INTRO, $filters_data['specification_name'], $filters_data['filter_class']) . tep_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . tep_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
+        $contents = array('form' => vam_draw_form ('edit_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path, 'post', 'enctype="multipart/form-data"') );
+        $contents[] = array('text' => sprintf (TEXT_EDIT_FILTER_INTRO, $filters_data['specification_name'], $filters_data['filter_class']) . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
 
         $check_query_raw = "select products_column_name,
                                    filter_display
@@ -2452,8 +2443,8 @@
                             where specifications_id = '" . $specs_path . "'
                         ";
         // print $check_query_raw . "<br>\n";
-        $check_query = tep_db_query ($check_query_raw);
-        $check_data = tep_db_fetch_array ($check_query);
+        $check_query = vam_db_query ($check_query_raw);
+        $check_data = vam_db_fetch_array ($check_query);
 
         $entry_type = 'text';
         if ($check_data['filter_display'] == 'image' || $check_data['filter_display'] == 'multiimage') {
@@ -2461,7 +2452,7 @@
         }
 
         $filter_inputs_string = '';
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           $filter_data_query_raw = "select sfd.filter
                                     from " . TABLE_SPECIFICATIONS_FILTERS . " sf,
@@ -2471,102 +2462,102 @@
                                       and sfd.language_id = '" . $languages[$i]['id'] . "'
                                   ";
           // print $filter_data_query_raw . "<br>\n";
-          $filter_data_query = tep_db_query ($filter_data_query_raw);
-          $filter_data = tep_db_fetch_array ($filter_data_query);
+          $filter_data_query = vam_db_query ($filter_data_query_raw);
+          $filter_data = vam_db_fetch_array ($filter_data_query);
           if ($entry_type == 'image') {
-            $filter_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_IMAGES . $filter_data['filter'], $filter_data['filter'], SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') . '<br>' . DIR_WS_CATALOG_IMAGES . '<br><b>' . $filter_data['filter'] . '</b>';
-            $filter_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_file_field ('filter' . $languages[$i]['id']);
+            $filter_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_IMAGES . $filter_data['filter'], $filter_data['filter'], SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') . '<br>' . DIR_WS_CATALOG_IMAGES . '<br><b>' . $filter_data['filter'] . '</b>';
+            $filter_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('filter' . $languages[$i]['id']);
             $filter_inputs_string .= '<br>';
           } else {
-            $filter_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('filter[' . $languages[$i]['id'] . ']', $filter_data['filter'] );
+            $filter_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']', $filter_data['filter'] );
           } // if ($entry_type
         } // for ($i = 0
 
-        $contents[] = array ('text' => '<br>' . TEXT_EDIT_FILTER . $filter_inputs_string . tep_draw_hidden_field ('entry_type', $entry_type) );
-        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SORT_ORDER . '<br>' . tep_draw_input_field ('filter_sort_order', $fInfo->filter_sort_order, 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('text' => '<br>' . TEXT_EDIT_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
+        $contents[] = array ('text' => '<br>' . TEXT_FILTER_SORT_ORDER . '<br>' . vam_draw_input_field ('filter_sort_order', $fInfo->filter_sort_order, 'size="5"'));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
 
         $import = '';
         if ($check_data['products_column_name'] == 'manufacturers_id') {
-          $import = '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=update_manufacturers') . '">' . tep_image_button ('button_import_manufacturers.gif', IMAGE_IMPORT_MANUFACTURERS) . '</a>&nbsp;';
+          $import = '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=update_manufacturers') . '">' . vam_image_button ('button_import_manufacturers.gif', IMAGE_IMPORT_MANUFACTURERS) . '</a>&nbsp;';
         }
-        $contents[] = array ('align' => 'center', 'text' => $import . '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=sort_filters') . '">' . tep_image_button ('button_sort.gif', IMAGE_SORT) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => $import . '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=sort_filters') . '">' . vam_image_button ('button_sort.gif', IMAGE_SORT) . '</a>');
         break;
         
       case 'delete_filter':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_DELETE_FILTER . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('delete_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path) );
-        $contents[] = array ('text' => TEXT_DELETE_FILTER_INTRO . tep_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . tep_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
+        $contents = array ('form' => vam_draw_form ('delete_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path) );
+        $contents[] = array ('text' => TEXT_DELETE_FILTER_INTRO . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
         $contents[] = array ('text' => '<br><b>' . $fInfo->filter . '</b>');
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'move_filter':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_MOVE_FILTER . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('move_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
-        $contents[] = array ('text' => sprintf (TEXT_MOVE_FILTER_INTRO, $fInfo->filter) . tep_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . tep_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
-        $contents[] = array ('text' => '<br>' . sprintf(TEXT_MOVE_FILTER_TO, $fInfo->filter) . '<br>' . tep_draw_pull_down_menu ('move_to_filter_id', $specification_list, $specs_path));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit('button_move.gif', IMAGE_MOVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('move_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
+        $contents[] = array ('text' => sprintf (TEXT_MOVE_FILTER_INTRO, $fInfo->filter) . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
+        $contents[] = array ('text' => '<br>' . sprintf(TEXT_MOVE_FILTER_TO, $fInfo->filter) . '<br>' . vam_draw_pull_down_menu ('move_to_filter_id', $specification_list, $specs_path));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit('button_move.gif', IMAGE_MOVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . vam_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'copy_filter':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_COPY_FILTER . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('copy_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
-        $contents[] = array ('text' => sprintf (TEXT_COPY_FILTER_INTRO, $fInfo->filter) . tep_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . tep_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
-        $contents[] = array ('text' => '<br>' . sprintf (TEXT_COPY_FILTER_TO, $fInfo->filter) . '<br>' . tep_draw_pull_down_menu ('copy_to_filter_id', $specification_list, $specs_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit('button_copy.gif', IMAGE_COPY) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('copy_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
+        $contents[] = array ('text' => sprintf (TEXT_COPY_FILTER_INTRO, $fInfo->filter) . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
+        $contents[] = array ('text' => '<br>' . sprintf (TEXT_COPY_FILTER_TO, $fInfo->filter) . '<br>' . vam_draw_pull_down_menu ('copy_to_filter_id', $specification_list, $specs_path) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit('button_copy.gif', IMAGE_COPY) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '">' . vam_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
 
 // Specification Values
       case 'new_value':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_NEW_VALUE . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('new_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1', 'post', 'enctype="multipart/form-data"') );
-        $contents[] = array ('text' => sprintf (TEXT_NEW_VALUE_INTRO, $values_data['specification_name'], $values_data['value_class']) . tep_draw_hidden_field ('specifications_id', $specs_path) );
+        $contents = array ('form' => vam_draw_form ('new_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=new_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1', 'post', 'enctype="multipart/form-data"') );
+        $contents[] = array ('text' => sprintf (TEXT_NEW_VALUE_INTRO, $values_data['specification_name'], $values_data['value_class']) . vam_draw_hidden_field ('specifications_id', $specs_path) );
 
         $values_entry_query_raw = "select enter_values
                                    from " . TABLE_SPECIFICATION . "
                                    where specifications_id = '" . $specs_path . "'
                                   ";
         // print $values_entry_query_raw . "<br>\n";
-        $values_entry_query = tep_db_query ($values_entry_query_raw);
-        $values_entry_data = tep_db_fetch_array ($values_entry_query);
+        $values_entry_query = vam_db_query ($values_entry_query_raw);
+        $values_entry_data = vam_db_fetch_array ($values_entry_query);
         $entry_type = 'text';
         if ($values_entry_data['enter_values'] == 'image' || $values_entry_data['enter_values'] == 'multiimage') {
           $entry_type = 'image';
         }
 
         $value_inputs_string = '';
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           if ($entry_type == 'image') {
-            $value_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_file_field ('specification_value' . $languages[$i]['id']);
+            $value_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
           } else {
-            $value_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']');
+            $value_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']');
           }
         }
 
-        $contents[] = array ('text' => '<br>' . TEXT_NEW_VALUE . $value_inputs_string . tep_draw_hidden_field ('entry_type', $entry_type) );
-        $contents[] = array ('text' => '<br>' . TEXT_VALUE_SORT_ORDER . '<br>' . tep_draw_input_field ('value_sort_order', '', 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&value=1&spath=' . $specs_path) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('text' => '<br>' . TEXT_NEW_VALUE . $value_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
+        $contents[] = array ('text' => '<br>' . TEXT_VALUE_SORT_ORDER . '<br>' . vam_draw_input_field ('value_sort_order', '', 'size="5"'));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&value=1&spath=' . $specs_path) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'edit_value':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_VALUE . '</b>');
 
-        $contents = array('form' => tep_draw_form ('edit_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1', 'post', 'enctype="multipart/form-data"') );
-        $contents[] = array('text' => TEXT_EDIT_VALUE_INTRO . tep_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . tep_draw_hidden_field ('specifications_id', $specs_path) );
+        $contents = array('form' => vam_draw_form ('edit_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=edit_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1', 'post', 'enctype="multipart/form-data"') );
+        $contents[] = array('text' => TEXT_EDIT_VALUE_INTRO . vam_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . vam_draw_hidden_field ('specifications_id', $specs_path) );
 
         $values_entry_query_raw = "select enter_values
                                    from " . TABLE_SPECIFICATION . "
                                    where specifications_id = '" . $specs_path . "'
                                   ";
         // print $values_entry_query_raw . "<br>\n";
-        $values_entry_query = tep_db_query ($values_entry_query_raw);
-        $values_entry_data = tep_db_fetch_array ($values_entry_query);
+        $values_entry_query = vam_db_query ($values_entry_query_raw);
+        $values_entry_data = vam_db_fetch_array ($values_entry_query);
 
         $entry_type = 'text';
         if ($values_entry_data['enter_values'] == 'image' || $values_entry_data['enter_values'] == 'multiimage') {
@@ -2574,7 +2565,7 @@
         }
 
         $value_inputs_string = '';
-        $languages = tep_get_languages();
+        $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           $specification_value_query_raw = "select svd.specification_value
                                             from " . TABLE_SPECIFICATIONS_VALUES . " sv,
@@ -2584,47 +2575,47 @@
                                               and sv.specification_values_id = '" . $vInfo->specification_values_id . "'
                                             limit 1";
           // print $specifications_query_raw . "<br>\n";
-          $specification_value_query = tep_db_query ($specification_value_query_raw);
-          $specification_value_data = tep_db_fetch_array ($specification_value_query);
+          $specification_value_query = vam_db_query ($specification_value_query_raw);
+          $specification_value_data = vam_db_fetch_array ($specification_value_query);
 
           $specification_value = $specification_value_data['specification_value'];
           if ($entry_type == 'image') {
-            $value_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_file_field ('specification_value' . $languages[$i]['id']);
+            $value_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
           } else {
-            $value_inputs_string .= '<br>' . tep_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']', $specification_value);
+            $value_inputs_string .= '<br>' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']', $specification_value);
           }
         }
 
-        $contents[] = array ('text' => '<br>' . TEXT_EDIT_VALUE . $value_inputs_string . tep_draw_hidden_field ('entry_type', $entry_type) );
-        $contents[] = array ('text' => '<br>' . TEXT_VALUE_SORT_ORDER . '<br>' . tep_draw_input_field ('value_sort_order', $vInfo->value_sort_order, 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('text' => '<br>' . TEXT_EDIT_VALUE . $value_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
+        $contents[] = array ('text' => '<br>' . TEXT_VALUE_SORT_ORDER . '<br>' . vam_draw_input_field ('value_sort_order', $vInfo->value_sort_order, 'size="5"'));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_save.gif', IMAGE_SAVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'delete_value':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_DELETE_VALUE . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('delete_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
-        $contents[] = array ('text' => TEXT_DELETE_VALUE_INTRO . tep_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . tep_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
+        $contents = array ('form' => vam_draw_form ('delete_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
+        $contents[] = array ('text' => TEXT_DELETE_VALUE_INTRO . vam_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . vam_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
         $contents[] = array ('text' => '<br><b>' . $vInfo->value . '</b>');
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . tep_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit ('button_delete.gif', IMAGE_DELETE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . vam_image_button ('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'move_value':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_MOVE_VALUE . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('move_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
-        $contents[] = array ('text' => sprintf (TEXT_MOVE_VALUE_INTRO, $vInfo->value) . tep_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . tep_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
-        $contents[] = array ('text' => '<br>' . sprintf (TEXT_MOVE_VALUE_TO, $vInfo->value) . '<br>' . tep_draw_pull_down_menu ('move_to_value_id', $specification_list, $specs_path));
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit('button_move.gif', IMAGE_MOVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('move_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
+        $contents[] = array ('text' => sprintf (TEXT_MOVE_VALUE_INTRO, $vInfo->value) . vam_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . vam_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
+        $contents[] = array ('text' => '<br>' . sprintf (TEXT_MOVE_VALUE_TO, $vInfo->value) . '<br>' . vam_draw_pull_down_menu ('move_to_value_id', $specification_list, $specs_path));
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit('button_move.gif', IMAGE_MOVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . vam_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       case 'copy_value':
         $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_COPY_VALUE . '</b>');
 
-        $contents = array ('form' => tep_draw_form ('copy_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
-        $contents[] = array ('text' => sprintf (TEXT_COPY_VALUE_INTRO, $vInfo->value) . tep_draw_hidden_field ('specification_values_id', $fInfo->specification_values_id) );
-        $contents[] = array ('text' => '<br>' . sprintf (TEXT_COPY_VALUE_TO, $vInfo->value) . '<br>' . tep_draw_pull_down_menu ('copy_to_value_id', $specification_list, $specs_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br>' . tep_image_submit('button_copy.gif', IMAGE_MOVE) . ' <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+        $contents = array ('form' => vam_draw_form ('copy_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
+        $contents[] = array ('text' => sprintf (TEXT_COPY_VALUE_INTRO, $vInfo->value) . vam_draw_hidden_field ('specification_values_id', $fInfo->specification_values_id) );
+        $contents[] = array ('text' => '<br>' . sprintf (TEXT_COPY_VALUE_TO, $vInfo->value) . '<br>' . vam_draw_pull_down_menu ('copy_to_value_id', $specification_list, $specs_path) );
+        $contents[] = array ('align' => 'center', 'text' => '<br>' . vam_image_submit('button_copy.gif', IMAGE_MOVE) . ' <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '">' . vam_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
         break;
         
       default:
@@ -2635,23 +2626,23 @@
               if (isset ($cInfo) && is_object ($cInfo)) { // Specification groups info box contents
                 $heading[] = array ('text' => '<b>' . $cInfo->specification_group_name . '</b>');
 
-                $contents[] = array ('align' => 'center', 'text' => '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=edit_group') . '">' . tep_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=delete_group') . '">' . tep_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=copy_group') . '">' . tep_image_button ('button_copy.gif', IMAGE_COPY) . '</a>');
-                $contents[] = array ('align' => 'center', 'text' => '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=link_category') . '">' . tep_image_button ('button_link.gif', IMAGE_LINK) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=link_all_categories') . '">' . tep_image_button ('button_link_all.gif', IMAGE_LINK_ALL) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=unlink_category') . '">' . tep_image_button ('button_unlink.gif', IMAGE_UNLINK) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=unlink_all_categories') . '">' . tep_image_button ('button_unlink_all.gif', IMAGE_UNLINK_ALL) . '</a> ');
+                $contents[] = array ('align' => 'center', 'text' => '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=edit_group') . '">' . vam_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=delete_group') . '">' . vam_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=copy_group') . '">' . vam_image_button ('button_copy.gif', IMAGE_COPY) . '</a>');
+                $contents[] = array ('align' => 'center', 'text' => '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=link_category') . '">' . vam_image_button ('button_link.gif', IMAGE_LINK) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=link_all_categories') . '">' . vam_image_button ('button_link_all.gif', IMAGE_LINK_ALL) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=unlink_category') . '">' . vam_image_button ('button_unlink.gif', IMAGE_UNLINK) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id . '&action=unlink_all_categories') . '">' . vam_image_button ('button_unlink_all.gif', IMAGE_UNLINK_ALL) . '</a> ');
                 $categories_query_raw = "select categories_name                                     
                                          from " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " s2c,
                                               " . TABLE_CATEGORIES_DESCRIPTION . " cd
-                                         where cd.language_id = '" . $languages_id . "'
+                                         where cd.language_id = '" . $_SESSION['languages_id'] . "'
                                            and s2c.categories_id = cd.categories_id
                                            and s2c.specification_group_id = '" . $cInfo->specification_group_id . "'
                                         ";
                 // print $specifications_query_raw . "<br>\n";
-                $categories_query = tep_db_query ($categories_query_raw);
-                if (tep_db_num_rows ($categories_query) > 0) { //We have categories linked
+                $categories_query = vam_db_query ($categories_query_raw);
+                if (vam_db_num_rows ($categories_query) > 0) { //We have categories linked
                   $contents[] = array ('text' => TEXT_LIST_CATEGORIES_LINKED);
-                  while ($categories_data = tep_db_fetch_array ($categories_query) ) {
+                  while ($categories_data = vam_db_fetch_array ($categories_query) ) {
                     $contents[] = array ('text' => '&nbsp;&nbsp;&nbsp;' . $categories_data['categories_name']);
                   } // while ($categories_data
-                } // if (tep_db_num_rows
+                } // if (vam_db_num_rows
                 $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATIONS . ' ' . $cInfo->specifications_in_group);
                 $contents[] = array ('text' => TEXT_FILTERS_GROUP . ' ' . $cInfo->filters_in_specifications);
               } 
@@ -2668,7 +2659,7 @@
               if (isset ($sInfo) && is_object ($sInfo)) { // Specification info box contents
                 $heading[] = array ('text' => '<b>' . TEXT_SPECIFICATION . '</b>');
 
-                $contents[] = array ('align' => 'center', 'text' => '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=edit_specification') . '">' . tep_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=delete_specification') . '">' . tep_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=copy_specification') . '">' . tep_image_button ('button_copy.gif', IMAGE_COPY) . '</a>  <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=move_specification') . '">' . tep_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
+                $contents[] = array ('align' => 'center', 'text' => '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=edit_specification') . '">' . vam_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=delete_specification') . '">' . vam_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=copy_specification') . '">' . vam_image_button ('button_copy.gif', IMAGE_COPY) . '</a>  <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $sInfo->specifications_id . '&action=move_specification') . '">' . vam_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
                 $contents[] = array ('text' => '<br>' . TEXT_SPEC_NAME . ' ' . $sInfo->specification_name);
                 $contents[] = array ('text' => TEXT_SPEC_DESCRIPTION . ' ' . $sInfo->specification_description);
                 $contents[] = array ('text' => TEXT_SPEC_PREFIX . ' ' . $sInfo->specification_prefix);
@@ -2696,9 +2687,9 @@
               if (isset ($fInfo) && is_object ($fInfo)) { // Filters info box contents
                 $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_FILTER . ' ' . $fInfo->filter_class . '</b>');
 
-                $contents[] = array ('align' => 'center', 'text' => '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=edit_filter') . '">' . tep_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=delete_filter') . '">' . tep_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=copy_filter') . '">' . tep_image_button ('button_copy.gif', IMAGE_COPY) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=move_filter') . '">' . tep_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
+                $contents[] = array ('align' => 'center', 'text' => '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=edit_filter') . '">' . vam_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=delete_filter') . '">' . vam_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=copy_filter') . '">' . vam_image_button ('button_copy.gif', IMAGE_COPY) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id . '&action=move_filter') . '">' . vam_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
                 if ($fInfo->filter_class == 'image' || $fInfo->filter_class == 'multiimage') {
-                  $contents[] = array ('text' => '<br>' . TEXT_FILTER_VALUE . $fInfo->filter . '<br>' . tep_image (DIR_WS_CATALOG_IMAGES . $fInfo->filter, $fInfo->filter, SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') );
+                  $contents[] = array ('text' => '<br>' . TEXT_FILTER_VALUE . $fInfo->filter . '<br>' . vam_image (DIR_WS_CATALOG_IMAGES . $fInfo->filter, $fInfo->filter, SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') );
                 } else {
                   $contents[] = array ('text' => '<br>' . TEXT_FILTER_VALUE . ' ' . $fInfo->filter);
                 }
@@ -2718,9 +2709,9 @@
               if (isset ($vInfo) && is_object ($vInfo)) { // filter values info box contents
                 $heading[] = array ('text' => '<b>' . TEXT_INFO_HEADING_VALUE . ' ' . $vInfo->enter_values . '</b>');
 
-                $contents[] = array ('align' => 'center', 'text' => '<a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=edit_value') . '">' . tep_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=delete_value') . '">' . tep_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=copy_value') . '">' . tep_image_button ('button_copy.gif', IMAGE_COPY) . '</a> <a href="' . tep_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=move_value') . '">' . tep_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
+                $contents[] = array ('align' => 'center', 'text' => '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=edit_value') . '">' . vam_image_button ('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=delete_value') . '">' . vam_image_button ('button_delete.gif', IMAGE_DELETE) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=copy_value') . '">' . vam_image_button ('button_copy.gif', IMAGE_COPY) . '</a> <a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $vInfo->specification_values_id . '&value=1&action=move_value') . '">' . vam_image_button ('button_move.gif', IMAGE_MOVE) . '</a>');
                 if ($vInfo->enter_values == 'image' || $vInfo->enter_values == 'multiimage') {
-                  $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_VALUE . ' ' . $vInfo->specification_value . '<br>' . tep_image (DIR_WS_CATALOG_IMAGES . $vInfo->specification_value, $vInfo->specification_value, SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') );
+                  $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_VALUE . ' ' . $vInfo->specification_value . '<br>' . vam_image (DIR_WS_CATALOG_IMAGES . $vInfo->specification_value, $vInfo->specification_value, SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') );
                 } else {
                   $contents[] = array ('text' => '<br>' . TEXT_SPECIFICATION_VALUE . ' ' . $vInfo->specification_value);
                 }
@@ -2736,7 +2727,7 @@
       } //switch (true)
     } //switch ($action)
 
-    if ( (tep_not_null ($heading)) && (tep_not_null ($contents) ) ) {
+    if ( (vam_not_null ($heading)) && (vam_not_null ($contents) ) ) {
       echo '            <td width="25%" valign="top">' . "\n";
 
       $box = new box;
