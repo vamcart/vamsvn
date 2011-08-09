@@ -1281,7 +1281,7 @@
               break;
         
             default:  // Show everything else by formatting the field name
-              $title_string = ereg_replace ('_', ' ', $row['Field']);
+              $title_string = preg_replace ('/_/', ' ', $row['Field']);
               $title_string = ucwords ($title_string);
               $products_array[] = array ('id' => $row['Field'],
                                          'text' => $title_string
@@ -1317,7 +1317,7 @@
               break;
         
             default:  // Show everything else by formatting the field name
-              $title_string = ereg_replace ('_', ' ', $row['Field']);
+              $title_string = preg_replace ('/_/', ' ', $row['Field']);
               $title_string = ucwords ($title_string);
               $products_array[] = array ('id' => $row['Field'],
                                          'text' => $title_string
@@ -2236,22 +2236,22 @@
         $languages = vam_get_languages();
         $specification_name_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_name_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']');
+          $specification_name_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']');
         }
 
         $specification_description_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_description_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5');
+          $specification_description_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5');
         }
 
         $specification_prefix_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_prefix_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']');
+          $specification_prefix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']');
         }
 
         $specification_suffix_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
-          $specification_suffix_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']');
+          $specification_suffix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']');
         }
 
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_NAME . $specification_name_string);
@@ -2312,13 +2312,13 @@
           
           $specification_data = array_merge ( (array) $specification_fixed_data, (array) $specification_data);
           
-          $specification_name_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']', $specification_data['specification_name'] );
+          $specification_name_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']', $specification_data['specification_name'] );
 
-          $specification_description_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5', $specification_data['specification_description'] );
+          $specification_description_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5', $specification_data['specification_description'] );
 
-          $specification_prefix_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']', $specification_data['specification_prefix'] );
+          $specification_prefix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']', $specification_data['specification_prefix'] );
 
-          $specification_suffix_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']', $specification_data['specification_suffix'] );
+          $specification_suffix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']', $specification_data['specification_suffix'] );
         }
 
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_NAME . $specification_name_string);
@@ -2428,9 +2428,9 @@
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           if ($entry_type == 'image') {
-            $filter_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('filter[' . $languages[$i]['id'] . ']');
+            $filter_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_file_field ('filter[' . $languages[$i]['id'] . ']');
           } else {
-            $filter_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']');
+            $filter_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']');
           }
         }
 
@@ -2474,10 +2474,10 @@
           $filter_data = vam_db_fetch_array ($filter_data_query);
           if ($entry_type == 'image') {
             $filter_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_IMAGES . $filter_data['filter'], $filter_data['filter'], SPECIFICATIONS_FILTER_IMAGE_WIDTH, SPECIFICATIONS_FILTER_IMAGE_HEIGHT, ' class="image_filter"') . '<br />' . DIR_WS_CATALOG_IMAGES . '<br /><b>' . $filter_data['filter'] . '</b>';
-            $filter_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('filter' . $languages[$i]['id']);
+            $filter_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_file_field ('filter' . $languages[$i]['id']);
             $filter_inputs_string .= '<br />';
           } else {
-            $filter_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']', $filter_data['filter'] );
+            $filter_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('filter[' . $languages[$i]['id'] . ']', $filter_data['filter'] );
           } // if ($entry_type
         } // for ($i = 0
 
@@ -2542,9 +2542,9 @@
         $languages = vam_get_languages();
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           if ($entry_type == 'image') {
-            $value_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
+            $value_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
           } else {
-            $value_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']');
+            $value_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']');
           }
         }
 
@@ -2588,9 +2588,9 @@
 
           $specification_value = $specification_value_data['specification_value'];
           if ($entry_type == 'image') {
-            $value_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
+            $value_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_file_field ('specification_value' . $languages[$i]['id']);
           } else {
-            $value_inputs_string .= '<br />' . vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']', $specification_value);
+            $value_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_value[' . $languages[$i]['id'] . ']', $specification_value);
           }
         }
 
