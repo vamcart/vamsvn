@@ -36,6 +36,11 @@ require_once (DIR_FS_INC.'vam_wysiwyg_tiny.inc.php');
 $currencies = new currencies();
 $catfunc = new categories();
 
+// Start Products Specifications
+  require_once (DIR_WS_CLASSES . 'boxes.php');
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
+// End Products Specifications
+
 //this is used only by group_prices
 if ($_GET['function']) {
 	switch ($_GET['function']) {
