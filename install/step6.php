@@ -312,19 +312,6 @@ function refresh_form(form_name) {
 </div>
 <!-- /Шапка -->
 
-<div id="menu">
-<ul>
-<li><a href="step6.php"><span><?php echo START; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo STEP1; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo STEP2; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo STEP3; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo STEP4; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo STEP5; ?></span></a></li>
-<li class="current"><a href="step6.php"><span><?php echo STEP6; ?></span></a></li>
-<li><a href="step6.php"><span><?php echo END; ?></span></a></li>
-</ul>
-</div>
-
 <!-- Навигация -->
 <div id="navigation">
 <span><?php echo TEXT_INSTALL; ?></span>
