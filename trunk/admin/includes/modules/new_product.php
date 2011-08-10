@@ -52,6 +52,14 @@ elseif ($_POST) {
         $products_meta_title = $_POST['products_meta_title'];
         $products_meta_description = $_POST['products_meta_description'];
         $products_meta_keywords = $_POST['products_meta_keywords'];
+// Start Products Specifications
+      $products_spec = $_POST['products_spec'];
+      $products_musthave = $_POST['products_musthave'];
+      $products_extraimage = $_POST['products_extraimage'];
+      $products_manual = $_POST['products_manual'];
+      $products_extra1 = $_POST['products_extra1'];
+      $products_moreinfo = $_POST['products_moreinfo'];
+// End Products Specifications
         $products_url = $_POST['products_url'];
         // Products URL begin
         $products_page_url = $_POST['products_page_url'];
