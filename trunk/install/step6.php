@@ -312,6 +312,9 @@ function refresh_form(form_name) {
 </div>
 <!-- /Шапка -->
 
+<div id="menu">
+</div>
+
 <!-- Навигация -->
 <div id="navigation">
 <span><?php echo TEXT_INSTALL; ?></span>
