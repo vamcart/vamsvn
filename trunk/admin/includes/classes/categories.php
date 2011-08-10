@@ -785,13 +785,13 @@ class categories {
 		}
 
 // Start Products Specifications
-          for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-            $language_id = $languages[$i]['id'];
+		foreach ($languages AS $lang) {
+			$language_id = $lang['id'];
             $specifications_query_raw = "select s.specifications_id
                                          from " . TABLE_SPECIFICATION . " s, 
                                               " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " sg2c
                                          where sg2c.specification_group_id = s.specification_group_id 
-                                           and sg2c.categories_id = '" . (int) $current_category_id . "'
+                                           and sg2c.categories_id = '" . (int) $dest_category_id . "'
                                        ";
             $specifications_query = vam_db_query ($specifications_query_raw);
 
