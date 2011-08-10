@@ -456,6 +456,12 @@ class categories {
 
       vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
 
+// Start Products Specifications
+        vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
+                       where products_id = '" . vam_db_input($product_id) . "'
+                    ");
+// End Products Specifications
+
 			vam_db_query("DELETE FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
 											              WHERE products_id   = '".vam_db_input($product_id)."'
 											              AND categories_id = '".vam_db_input($product_categories[$i])."'");
@@ -777,6 +783,59 @@ class categories {
 				vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array, 'update', 'products_id = \''.vam_db_input($products_id).'\' and language_id = \''.$language_id.'\'');
 			}
 		}
+
+// Start Products Specifications
+          for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+            $language_id = $languages[$i]['id'];
+            $specifications_query_raw = "select s.specifications_id
+                                         from " . TABLE_SPECIFICATION . " s, 
+                                              " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " sg2c
+                                         where sg2c.specification_group_id = s.specification_group_id 
+                                           and sg2c.categories_id = '" . (int) $current_category_id . "'
+                                       ";
+            $specifications_query = vam_db_query ($specifications_query_raw);
+
+            $count_specificatons = vam_db_num_rows ($specifications_query);
+            if ($count_specificatons > 0) {
+              while ($specifications = vam_db_fetch_array ($specifications_query) ) {
+                $specifications_id = (int) $specifications['specifications_id'];
+
+                vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
+                               where products_id = '" . (int) $products_id . "' 
+                                 and specifications_id = '" . $specifications_id . "'
+                                 and language_id = '" . $language_id . "'
+                            ");
+                
+                $specification = $_POST['products_specification'][$specifications_id][$language_id];
+                if (is_array ($specification) ) {
+                  foreach ($specification as $each_specification) {
+                    $each_specification = vam_db_prepare_input ($each_specification);
+                    if ($each_specification != '') {
+                      $sql_data_array = array ('specification' => $each_specification,
+                                               'products_id' => $products_id,
+                                               'specifications_id' => $specifications_id,
+                                               'language_id' => $language_id
+                                              );
+                  
+                      vam_db_perform (TABLE_PRODUCTS_SPECIFICATIONS, $sql_data_array);
+                    } // if ($each_specification
+                  } // foreach ($specification
+                  
+                } else {
+                  $specification = vam_db_prepare_input ($specification);
+                  if ($specification != '') {
+                    $sql_data_array = array ('specification' => $specification,
+                                             'products_id' => $products_id,
+                                             'specifications_id' => $specifications_id,
+                                             'language_id' => $language_id
+                                            );
+                    vam_db_perform (TABLE_PRODUCTS_SPECIFICATIONS, $sql_data_array);
+                  } // if ($specification
+                } //  if (is_array ... else ...
+              } // while ($specifications
+            } // if ($count_specificatons
+          } // for ($i=0
+// End Products Specifications
 		
           $extra_fields_query = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " WHERE products_id = " . vam_db_input($products_id));
           while ($products_extra_fields = vam_db_fetch_array($extra_fields_query)) {
@@ -894,6 +953,27 @@ class categories {
 		vam_db_query("INSERT INTO ".TABLE_PRODUCTS_TO_CATEGORIES."
 				    	                 SET products_id   = '".$dup_products_id."',
 				    	                     categories_id = '".vam_db_input($dest_categories_id)."'");
+
+// Start Products Specifications
+            $specifications_query = vam_db_query ("select specifications_id, 
+                                                          language_id, 
+                                                          specification 
+                                                   from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
+                                                   where products_id = '" . (int)$products_id . "'
+                                                 ");
+            while ($specifications = vam_db_fetch_array ($specifications_query) ) {
+              vam_db_query ("insert into " . TABLE_PRODUCTS_SPECIFICATIONS . " (
+                                         products_id,
+                                         specifications_id, 
+                                         language_id, 
+                                         specification) values (
+                                         '" . (int) $dup_products_id . "', 
+                                         '" . (int) $specifications['specifications_id'] . "', 
+                                         '" . (int)$specifications['language_id'] . "', 
+                                         '" . vam_db_input ($specifications['specification']) . "')
+                           ");
+            } // while ($specifications
+// End Products Specifications
 
 		//mo_images by Novalis@eXanto.de
 		$mo_images = vam_get_products_mo_images($src_products_id);
