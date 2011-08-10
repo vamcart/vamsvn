@@ -75,7 +75,7 @@
             
 ?>
               <tr>
-                <td class="main" valign="top"><?php echo vam_image (DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
+                <td class="main" valign="top">(<?php echo $languages[$i]['name']; ?>)&nbsp;</td>
                 <td class="main">
 <?php
 

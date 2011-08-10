@@ -182,6 +182,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 }
 ?>
 				<li><a href="#fields"><?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></a></li>
+				<li><a href="#specs"><?php echo strip_tags(TEXT_TAB_SPECIFICATIONS); ?></a></li>
 			</ul>
 
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
@@ -429,6 +430,33 @@ foreach (array('product_info', 'product_options') as $key) {
         </table>
         </div>
 
+        <div id="specs">
+        
+          <table border="0" class="main">
+
+<?php
+// Start Products Specifications
+    if (SPECIFICATIONS_BOX_FRAME_STYLE == 'Tabs') {
+?>
+          <tr>
+            <td colspan=2>
+<?php
+      require (DIR_WS_MODULES . FILENAME_PRODUCTS_TABS);
+    } else {
+// End Products Specifications
+?>
+<?php 
+// Products Specifications
+      require (DIR_WS_MODULES . FILENAME_PRODUCTS_SPECIFICATIONS_INPUT);
+?>
+<?php
+// Products Specifications
+    } // if (SPECIFICATIONS_BOX_FRAME_STYLE ... else ...
+?>
+
+          </table>
+                  
+        </div>
 <!-- group check-->
 
 </div>
