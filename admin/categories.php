@@ -162,7 +162,7 @@ if ($_GET['action']) {
 			break;
 
 		case 'update_product' :
-			$catfunc->insert_product($_POST, '', 'update');
+			$catfunc->insert_product($_POST, $current_category_id, 'update');
 			break;
 
 		case 'insert_product' :
