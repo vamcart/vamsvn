@@ -63,10 +63,10 @@ require ('includes/application_top.php');
 
 		<div id="tabs">
 			<ul>
-				<li><a href="#orders"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png'); ?>&nbsp;<?php echo TEXT_SUMMARY_ORDERS; ?></a></li>
-				<li><a href="#customers"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png'); ?>&nbsp;<?php echo TEXT_SUMMARY_CUSTOMERS; ?></a></li>
-				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/products.png'); ?>&nbsp;<?php echo TEXT_SUMMARY_PRODUCTS; ?></a></li>
-				<li><a href="#stat"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/stat.png'); ?>&nbsp;<?php echo TEXT_SUMMARY_STAT; ?></a></li>
+				<li><a href="#orders"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_ORDERS; ?></a></li>
+				<li><a href="#customers"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_CUSTOMERS; ?></a></li>
+				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/products.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_PRODUCTS; ?></a></li>
+				<li><a href="#stat"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/stat.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_STAT; ?></a></li>
 			</ul>
 			<div id="orders">
 			<?php include(DIR_WS_MODULES . 'summary/orders.php'); ?>

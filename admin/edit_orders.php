@@ -937,10 +937,10 @@ document.onmousemove=positiontip
 <div id="tabs">
 
 			<ul>
-				<li><a href="#customer"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_CUSTOMER; ?></a></li>
-				<li><a href="#payment"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/payment.png'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_PAYMENT; ?></a></li>
-				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/shipping.png'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_PRODUCTS; ?></a></li>
-				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/comment.png'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_COMMENTS; ?></a></li>
+				<li><a href="#customer"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_CUSTOMER; ?></a></li>
+				<li><a href="#payment"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/payment.png', '', '16', '16'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_PAYMENT; ?></a></li>
+				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/shipping.png', '', '16', '16'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_PRODUCTS; ?></a></li>
+				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/comment.png', '', '16', '16'); ?>&nbsp;<?php echo EDIT_ORDER_TAB_COMMENTS; ?></a></li>
 			</ul>
 
         <div id="customer">

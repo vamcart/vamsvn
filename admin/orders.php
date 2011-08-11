@@ -511,13 +511,13 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <div id="tabs">
 
 			<ul>
-				<li><a href="#summary"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png'); ?>&nbsp;<?php echo TEXT_ORDER_SUMMARY; ?></a></li>
-				<li><a href="#payment"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/payment.png'); ?>&nbsp;<?php echo TEXT_ORDER_PAYMENT; ?></a></li>
-				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/products.png'); ?>&nbsp;<?php echo TEXT_ORDER_PRODUCTS; ?></a></li>
+				<li><a href="#summary"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_SUMMARY; ?></a></li>
+				<li><a href="#payment"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/payment.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_PAYMENT; ?></a></li>
+				<li><a href="#products"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/products.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_PRODUCTS; ?></a></li>
 <?php if (ENABLE_MAP_TAB == 'true') { ?>
-				<li><a href="#map" id="getmap"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/map.png'); ?>&nbsp;<?php echo TEXT_ORDER_MAP; ?></a></li>
+				<li><a href="#map" id="getmap"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/map.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_MAP; ?></a></li>
 <?php } ?>
-				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png'); ?>&nbsp;<?php echo TEXT_ORDER_STATUS; ?></a></li>
+				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
         <div id="summary">
