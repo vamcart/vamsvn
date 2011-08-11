@@ -500,9 +500,9 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 ?>
       <tr>
       <td width="100%">
- <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . BUTTON_BACK . '</span></a>'; ?>
+ <?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK . '</span></a>'; ?>
  <!-- Bestellbearbeitung Anfang -->
-   <a class="button" href="<?php echo vam_href_link(FILENAME_EDIT_ORDERS, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo BUTTON_EDIT ?></span></a>   
+   <a class="button" href="<?php echo vam_href_link(FILENAME_EDIT_ORDERS, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_EDIT ?></span></a>   
 <!-- Bestellbearbeitung Ende -->
  </td>
 
