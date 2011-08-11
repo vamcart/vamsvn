@@ -1467,13 +1467,13 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 <div id="tabs">
 
 			<ul>
-				<li><a href="#import"><?php echo EASYPOPULATE_TAB_IMPORT; ?></a></li>
-				<li><a href="#import-temp"><?php echo EASYPOPULATE_TAB_IMPORT_TEMP; ?></a></li>
-				<li><a href="#split"><?php echo EASYPOPULATE_TAB_SPLIT; ?></a></li>
-				<li><a href="#export"><?php echo EASYPOPULATE_TAB_EXPORT; ?></a></li>
-				<li><a href="#quick-links"><?php echo EASYPOPULATE_TAB_QUICK_LINKS; ?></a></li>
+				<li><a href="#import"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/import.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_IMPORT; ?></a></li>
+				<li><a href="#import-temp"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/import-temp.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_IMPORT_TEMP; ?></a></li>
+				<li><a href="#split"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/split.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_SPLIT; ?></a></li>
+				<li><a href="#export"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/export.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_EXPORT; ?></a></li>
+				<li><a href="#quick-links"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/links.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_QUICK_LINKS; ?></a></li>
           <?php if (EP_SHOW_EP_SETTINGS == true) { ?>
-				<li><a href="#info"><?php echo EASYPOPULATE_TAB_INFO; ?></a></li>
+				<li><a href="#info"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/info.png'); ?>&nbsp;<?php echo EASYPOPULATE_TAB_INFO; ?></a></li>
           <?php } ?>
 			</ul>
 

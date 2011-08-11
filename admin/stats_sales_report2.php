@@ -151,9 +151,9 @@
 <div id="tabs">
 				
 			<ul>
-				<li><a href="#chart"><?php echo TAB_CHART; ?></a></li>
-				<li><a href="#table"><?php echo TAB_TABLE; ?></a></li>
-				<li><a href="#status"><?php echo TAB_STATUS; ?></a></li>
+				<li><a href="#chart"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/stat.png'); ?>&nbsp;<?php echo TAB_CHART; ?></a></li>
+				<li><a href="#table"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/view.png'); ?>&nbsp;<?php echo TAB_TABLE; ?></a></li>
+				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png'); ?>&nbsp;<?php echo TAB_STATUS; ?></a></li>
 			</ul>
 
         <div id="chart">

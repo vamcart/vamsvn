@@ -92,16 +92,16 @@ $form_action = ($_GET['cID']) ? 'update_category' : 'insert_category';
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
-				<li><a href="#tab<?php echo $i; ?>"><?php echo $languages[$i]['name']; ?></a></li>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
 <?php 
 }
 ?>
-				<li><a href="#data"><?php echo TEXT_PRODUCTS_DATA; ?></a></li>
-				<li><a href="#image"><?php echo TEXT_TAB_CATEGORIES_IMAGE; ?></a></li>
+				<li><a href="#data"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png'); ?>&nbsp;<?php echo TEXT_PRODUCTS_DATA; ?></a></li>
+				<li><a href="#image"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/images.png'); ?>&nbsp;<?php echo TEXT_TAB_CATEGORIES_IMAGE; ?></a></li>
 <?php
     if (GROUP_CHECK == 'true') {
 ?>
-				<li><a href="#groups"><?php echo ENTRY_CUSTOMERS_ACCESS; ?></a></li>
+				<li><a href="#groups"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/account.png'); ?>&nbsp;<?php echo ENTRY_CUSTOMERS_ACCESS; ?></a></li>
 <?php 
 }
 ?>
