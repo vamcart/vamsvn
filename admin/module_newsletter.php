@@ -603,7 +603,7 @@ echo vam_draw_checkbox_field('status_all', 'yes',in_array('all', $bc_array)).' <
 
 echo vam_draw_textarea_field('newsletter_body', 'soft', '95', '25', stripslashes($newsletters_data['body']));
 
-        ?><br /><a href="javascript:toggleHTMLEditor('newsletter_body');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+        ?><br /><a href="javascript:toggleHTMLEditor('newsletter_body');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
    </tr>
    </table>
    <a class="button" href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER); ?>"><span><?php echo BUTTON_BACK; ?></span></a>

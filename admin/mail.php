@@ -246,7 +246,7 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
               </tr>
               <tr>
                 <td valign="top" class="main"><?php echo TEXT_MESSAGE; ?></td>
-                <td><?php echo vam_draw_textarea_field('message', 'soft', '100%', '20'); ?><br /><a href="javascript:toggleHTMLEditor('message');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+                <td><?php echo vam_draw_textarea_field('message', 'soft', '100%', '20'); ?><br /><a href="javascript:toggleHTMLEditor('message');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
               </tr>
               <tr>
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>

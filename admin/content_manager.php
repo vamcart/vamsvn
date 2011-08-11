@@ -783,7 +783,7 @@ echo vam_draw_pull_down_menu('select_file',$files,$default_value);
       <td width="90%">
    <?php
 echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
-?><br /><a href="javascript:toggleHTMLEditor('cont');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
+?><br /><a href="javascript:toggleHTMLEditor('cont');"><?php echo TEXT_TOGGLE_EDITOR; ?></a>
       </td>
    </tr>
   
@@ -934,7 +934,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
       <td width="10%" valign="top"><?php echo TEXT_FILE_DESC; ?></td>
       <td width="90%"><?php
           echo vam_draw_textarea_field('file_comment','','100','30',$content['file_comment']);
-        ?><br /><a href="javascript:toggleHTMLEditor('file_comment');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+        ?><br /><a href="javascript:toggleHTMLEditor('file_comment');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
    </tr>
          <tr> 
       <td width="10%" valign="top"><?php echo TEXT_CHOOSE_FILE; ?></td>
