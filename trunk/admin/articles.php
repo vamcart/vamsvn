@@ -466,11 +466,11 @@ $manual_link = 'add-topic';
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
-				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png', '', '16', '16'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
 <?php 
 }
 ?>
-				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png'); ?>&nbsp;<?php echo TEXT_ARTICLE_OTHER; ?></a></li>
+				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ARTICLE_OTHER; ?></a></li>
 			</ul>
 
 <?php
@@ -730,11 +730,11 @@ $manual_link = 'edit-article';
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
-				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png', '', '16', '16'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
 <?php 
 }
 ?>
-				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png'); ?>&nbsp;<?php echo TEXT_ARTICLE_OTHER; ?></a></li>
+				<li><a href="#other"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ARTICLE_OTHER; ?></a></li>
 			</ul>
 
 <?php

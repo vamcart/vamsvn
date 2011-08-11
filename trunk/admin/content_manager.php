@@ -339,7 +339,7 @@ echo '<div class="main">'.USED_SPACE.vam_format_filesize($total).'</div>';
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
-				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png', '', '16', '16'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
 <?php 
 }
 ?>

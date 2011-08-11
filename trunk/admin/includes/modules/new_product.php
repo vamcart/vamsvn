@@ -167,22 +167,22 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 <?php
     for ($i=0; $i<sizeof($languages); $i++) {
 ?>
-				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
+				<li><a href="#tab<?php echo $i; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/'.$languages[$i]['code'].'.png', '', '16', '16'); ?>&nbsp;<?php echo $languages[$i]['name']; ?></a></li>
 <?php 
 }
 ?>
-				<li><a href="#data"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/edit.png'); ?>&nbsp;<?php echo TEXT_PRODUCTS_DATA; ?></a></li>
-				<li><a href="#images"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/images.png'); ?>&nbsp;<?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></a></li>
-				<li><a href="#options"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png'); ?>&nbsp;<?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></a></li>
+				<li><a href="#data"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/edit.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_PRODUCTS_DATA; ?></a></li>
+				<li><a href="#images"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/images.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></a></li>
+				<li><a href="#options"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></a></li>
 <?php
     if (GROUP_CHECK == 'true') {
 ?>
-				<li><a href="#groups"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/account.png'); ?>&nbsp;<?php echo ENTRY_CUSTOMERS_ACCESS; ?></a></li>
+				<li><a href="#groups"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/account.png', '', '16', '16'); ?>&nbsp;<?php echo ENTRY_CUSTOMERS_ACCESS; ?></a></li>
 <?php 
 }
 ?>
-				<li><a href="#fields"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png'); ?>&nbsp;<?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></a></li>
-				<li><a href="#specs"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/filter.png'); ?>&nbsp;<?php echo strip_tags(TEXT_TAB_SPECIFICATIONS); ?></a></li>
+				<li><a href="#fields"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></a></li>
+				<li><a href="#specs"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/filter.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(TEXT_TAB_SPECIFICATIONS); ?></a></li>
 			</ul>
 
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
