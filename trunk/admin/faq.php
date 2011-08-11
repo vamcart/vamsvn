@@ -152,7 +152,7 @@ $manual_link = 'delete-faq';
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_FAQ_ANSWER; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('answer', '', '100%', '25', stripslashes($faq['answer'])); ?><br /><a href="javascript:toggleHTMLEditor('answer');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a></td>
+            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('answer', '', '100%', '25', stripslashes($faq['answer'])); ?><br /><a href="javascript:toggleHTMLEditor('answer');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_FAQ_PAGE_URL; ?>:</td>

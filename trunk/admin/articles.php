@@ -507,7 +507,7 @@ $manual_link = 'add-topic';
 <?php
           echo vam_draw_textarea_field('topics_description[' . $languages[$i]['id'] . ']', 'soft', '95', '25', (($topics_description[$languages[$i]['id']]) ? stripslashes($topics_description[$languages[$i]['id']]) : vam_get_topic_description($tInfo->topics_id, $languages[$i]['id']))); 
 ?>
-<br /><a href="javascript:toggleHTMLEditor('<?php echo 'topics_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
+<br /><a href="javascript:toggleHTMLEditor('<?php echo 'topics_description[' . $languages[$i]['id'] . ']';?>');"><?php echo TEXT_TOGGLE_EDITOR; ?></a>
 </td>
               </tr>
             </table></td>
@@ -798,7 +798,7 @@ $manual_link = 'edit-article';
 <?php
           echo vam_draw_textarea_field('articles_description[' . $languages[$i]['id'] . ']', 'soft', '95', '25', (($articles_description[$languages[$i]['id']]) ? stripslashes($articles_description[$languages[$i]['id']]) : vam_get_articles_description($aInfo->articles_id, $languages[$i]['id'])));
 ?>
-<br /><a href="javascript:toggleHTMLEditor('<?php echo 'articles_description[' . $languages[$i]['id'] . ']';?>');"><?php echo vam_image(DIR_WS_IMAGES . 'icon_popup.gif', TEXT_TOGGLE_EDITOR); ?></a>
+<br /><a href="javascript:toggleHTMLEditor('<?php echo 'articles_description[' . $languages[$i]['id'] . ']';?>');"><?php echo TEXT_TOGGLE_EDITOR; ?></a>
 </td>
 
               </tr>
