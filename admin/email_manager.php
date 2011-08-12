@@ -119,7 +119,7 @@ echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . 
       
       <?php 
   if (is_writable($file)) {
-	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; 
+	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; 
   }
   ?>
         
@@ -248,7 +248,7 @@ echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . 
       
       <?php 
   if (is_writable($file_admin)) {
-	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>'; 
+	echo '<span class="button"><button type="submit" name="save" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; 
   }
   ?>
         

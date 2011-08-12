@@ -183,7 +183,7 @@ function popupImageWindow(url) {
 -->
       <tr>
         <td class="main">&nbsp;</td>
-        <td class="main" align="left"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $_GET['auID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td class="main" align="left"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $_GET['auID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form>
       </tr>
           </tr>
@@ -252,7 +252,7 @@ function popupImageWindow(url) {
 -->
       <tr>
         <td class="main">&nbsp;</td>
-        <td class="main" align="left"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $authors['authors_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td class="main" align="left"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $authors['authors_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form>
       </tr>
           </tr>

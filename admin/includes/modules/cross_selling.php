@@ -119,7 +119,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 
 <?php } ?>
 </table>
-<span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo BUTTON_SAVE; ?></button></span>
+<span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_SAVE; ?></button></span>
 </form>
 </td>
 </tr>
@@ -202,7 +202,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 ?>
 
 </table>
-<span class="button"><button type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo BUTTON_SAVE; ?></button></span>
+<span class="button"><button type="submit" class="button" value="<?php echo BUTTON_SAVE; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_SAVE; ?></button></span>
 </form>
 <?php } ?>
 

@@ -202,7 +202,7 @@ if ($_POST[xsell_id])
                       <td bgcolor="#CCCCCC">
                         <input type="hidden" name="run_update" value="<?php if ($run_update==true) echo "true"; else echo "false" ?>">
 				        <input type="hidden" name="add_related_article_ID" value="<?php echo $_GET['add_related_article_ID']; ?>">
-                        <?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES_XSELL) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
+                        <?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES_XSELL) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?>
                       </td>
                 </tr>
               </form>
@@ -269,7 +269,7 @@ if ($_POST[xsell_id])
                     ?>
                 <tr>
                   <td>&nbsp;</td>
-                  <td bgcolor="#CCCCCC"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES_XSELL) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+                  <td bgcolor="#CCCCCC"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_ARTICLES_XSELL) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
                   <td>&nbsp;</td>
                 </tr>
               </table>

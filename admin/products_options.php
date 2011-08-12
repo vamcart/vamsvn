@@ -306,7 +306,8 @@ $manual_link = 'add-attribute';
                     <td colspan="3" class="main"><br /><?php echo TEXT_WARNING_OF_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td align="right" colspan="3" class="main"><br /><?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL'));?>&nbsp;</td>
+                    <td align="right" colspan="3" class="main"><br />
+                    <?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
                   </tr>
 <?php
     } else {
@@ -315,7 +316,8 @@ $manual_link = 'add-attribute';
                     <td class="main" colspan="3"><br /><?php echo TEXT_OK_TO_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td class="main" align="right" colspan="3"><br /><?php echo vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_option&option_id=' . $_GET['option_id'], 'NONSSL'));?>&nbsp;&nbsp;&nbsp;<?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&order_by=' . $order_by . '&page=' . $page, 'NONSSL'));?>&nbsp;</td>
+                    <td class="main" align="right" colspan="3"><br /><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_option&option_id=' . $_GET['option_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;&nbsp;&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&order_by=' . $order_by . '&page=' . $page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>
+                    &nbsp;</td>
                   </tr>
 <?php
     }
@@ -433,7 +435,7 @@ $manual_link = 'add-attribute';
                  <td class="smallText">
                  <input type="text" name="option_length" size="4" value="<?php echo $options_values['products_options_length']; ?>">
                  </td>
-                <td align="center" class="smallText">&nbsp;<?php echo vam_button(BUTTON_UPDATE); ?>&nbsp;<?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL'));?>&nbsp;</td>
+                <td align="center" class="smallText">&nbsp;<?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/update.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
 <?php
         echo '</form>' . "\n";
       } else {
@@ -444,7 +446,8 @@ $manual_link = 'add-attribute';
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_rows']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_size']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_length']; ?>&nbsp;</td>
-                <td align="center" class="smallText">&nbsp;<?php echo vam_button_link(BUTTON_EDIT, vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=update_option&option_id=' . $options_values['products_options_id'] . '&option_order_by=' . $option_order_by . '&option_page=' . $option_page, 'NONSSL'));?>&nbsp;&nbsp;<?php echo vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_product_option&option_id=' . $options_values['products_options_id'], 'NONSSL'));?>&nbsp;</td>
+                <td align="center" class="smallText">&nbsp;
+                <?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=update_option&option_id=' . $options_values['products_options_id'] . '&option_order_by=' . $option_order_by . '&option_page=' . $option_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>'; ?>&nbsp;&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_product_option&option_id=' . $options_values['products_options_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;</td>
 <?php
       }
 ?>
@@ -473,7 +476,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                 <td align="center" class="dataTableContent">&nbsp;<?php echo $next_id; ?>&nbsp;</td>
                 <td class="dataTableContent"><?php echo $inputs; ?></td>
                 <td class="dataTableContent"><?php echo vam_draw_pull_down_menu('options_type',$type_array); ?></td>
-                <td align="center" class="dataTableContent" colspan="4">&nbsp;<?php echo vam_button(BUTTON_INSERT); ?>&nbsp;</td>
+                <td align="center" class="dataTableContent" colspan="4">&nbsp;<?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>'; ?>&nbsp;</td>
                 </tr>   
               <tr class="dataTableRowSelected">
                 <td align="center" class="dataTableContent">&nbsp;</td>
@@ -547,7 +550,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                     <td class="main" colspan="3"><br /><?php echo TEXT_WARNING_OF_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td class="main" align="right" colspan="3"><br /><?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL'));?>&nbsp;</td>
+                    <td class="main" align="right" colspan="3"><br /><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
                   </tr>
 <?php
     } else {
@@ -556,7 +559,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                     <td class="main" colspan="3"><br /><?php echo TEXT_OK_TO_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td class="main" align="right" colspan="3"><br /><?php echo vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_value&value_id=' . $_GET['value_id'], 'NONSSL')); ?>&nbsp;&nbsp;&nbsp;<?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&option_page=' . $option_page . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL'));?>&nbsp;</td>
+                    <td class="main" align="right" colspan="3"><br /><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_value&value_id=' . $_GET['value_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;&nbsp;&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '&option_page=' . $option_page . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
                   </tr>
 <?php
     }

@@ -185,7 +185,7 @@ for ($i = 0; $i < $columns; $i++) {
 }
 ?>
     </table>
-<span class="button"><button type="submit" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')" value="<?php echo BUTTON_SAVE; ?>"><?php echo BUTTON_SAVE; ?></button></span>
+<span class="button"><button type="submit" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')" value="<?php echo BUTTON_SAVE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_SAVE; ?></button></span>
 </td>
 
 <!-- body_text_eof //-->

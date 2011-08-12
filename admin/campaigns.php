@@ -134,7 +134,8 @@ while ($campaigns = vam_db_fetch_array($campaigns_query)) {
 if ($_GET['action'] != 'new') {
 ?>
               <tr>
-                <td align="right" colspan="2" class="smallText"><?php echo vam_button_link(BUTTON_INSERT, vam_href_link(FILENAME_CAMPAIGNS, 'page=' . $_GET['page'] . '&cID=' . $cInfo->campaigns_id . '&action=new')); ?></td>
+                <td align="right" colspan="2" class="smallText">
+                <?php echo '<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page=' . $_GET['page'] . '&cID=' . $cInfo->campaigns_id . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
 <?php
 
@@ -153,7 +154,7 @@ switch ($_GET['action']) {
 		$contents[] = array ('text' => TEXT_NEW_INTRO);
 		$contents[] = array ('text' => '<br />'.TEXT_CAMPAIGNS_NAME.'<br />'.vam_draw_input_field('campaigns_name'));
 		$contents[] = array ('text' => '<br />'.TEXT_CAMPAIGNS_REFID.'<br />'.vam_draw_input_field('campaigns_refID'));
-		$contents[] = array ('align' => 'center', 'text' => '<br />'.vam_button(BUTTON_SAVE).'&nbsp;'.vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$_GET['cID'])));
+		$contents[] = array ('align' => 'center', 'text' => '<br />'.'<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'.'&nbsp;'.'<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$_GET['cID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
 		break;
 
 	case 'edit' :
@@ -163,7 +164,7 @@ switch ($_GET['action']) {
 		$contents[] = array ('text' => TEXT_EDIT_INTRO);
 		$contents[] = array ('text' => '<br />'.TEXT_CAMPAIGNS_NAME.'<br />'.vam_draw_input_field('campaigns_name', $cInfo->campaigns_name));
 		$contents[] = array ('text' => '<br />'.TEXT_CAMPAIGNS_REFID.'<br />'.vam_draw_input_field('campaigns_refID', $cInfo->campaigns_refID));
-		$contents[] = array ('align' => 'center', 'text' => '<br />'.vam_button(BUTTON_SAVE).'&nbsp;'.vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id)));
+		$contents[] = array ('align' => 'center', 'text' => '<br />'.'<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'.'&nbsp;'.'<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
 		break;
 
 	case 'delete' :
@@ -178,14 +179,14 @@ switch ($_GET['action']) {
 			$contents[] = array ('text' => '<br />'.sprintf(TEXT_DELETE_WARNING_REFFERERS, $cInfo->refferers_count));
 		}
 
-		$contents[] = array ('align' => 'center', 'text' => '<br />'.vam_button(BUTTON_DELETE).'&nbsp;'.vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id)));
+		$contents[] = array ('align' => 'center', 'text' => '<br />'.'<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>'.'&nbsp;'.'<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
 		break;
 
 	default :
 		if (is_object($cInfo)) {
 			$heading[] = array ('text' => '<b>'.$cInfo->campaigns_name.'</b>');
 
-			$contents[] = array ('align' => 'center', 'text' => vam_button_link(BUTTON_EDIT, vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id.'&action=edit')).'&nbsp;'.vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id.'&action=delete')));
+			$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id.'&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>'.'&nbsp;'.'<a class="button" href="' . vam_href_link(FILENAME_CAMPAIGNS, 'page='.$_GET['page'].'&cID='.$cInfo->campaigns_id.'&action=delete') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 			$contents[] = array ('text' => '<br />'.TEXT_DATE_ADDED.' '.vam_date_short($cInfo->date_added));
 			if (vam_not_null($cInfo->last_modified))
 				$contents[] = array ('text' => TEXT_LAST_MODIFIED.' '.vam_date_short($cInfo->last_modified));

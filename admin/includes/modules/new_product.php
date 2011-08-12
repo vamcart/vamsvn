@@ -148,7 +148,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
     echo vam_draw_hidden_field('products_date_added', (($pInfo->products_date_added) ? $pInfo->products_date_added : date('Y-m-d')));
     echo vam_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
-    <span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"><?php echo BUTTON_SAVE; ?></button></span>
+    <span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_SAVE; ?></button></span>
     <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><span><?php echo BUTTON_CANCEL; ?></span></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo BUTTON_EDIT_ATTRIBUTES; ?></span></a>
