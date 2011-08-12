@@ -112,5 +112,9 @@ define('ACCESS_YML_IMPORT','Админка - Разное - Я-маркет им
 define('ACCESS_CUSTOMER_EXPORT','Админка - Покупатели - Клиенты - Экспорт клиентов');
 define('ACCESS_EXPORTORDERS','Админка - Покупатели - Заказы - Экспорт заказов');
 define('ACCESS_PIN_LOADER','Админка - Каталог - PIN коды');
+define('ACCESS_EDIT_ORDERS','Админка - Заказы - Редактор заказа');
+define('ACCESS_EDIT_ORDERS_ADD_PRODUCT','Админка - Заказы - Редактор заказа - Добавление товара');
+define('ACCESS_EDIT_ORDERS_AJAX','Админка - Заказы - Редактор заказа - Ajax редактор');
+define('ACCESS_PRODUCTS_SPECIFICATIONS','Админка - Каталог - Спецификации товаров');
 
 ?>
