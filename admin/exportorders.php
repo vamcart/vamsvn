@@ -87,7 +87,7 @@ if (!$_GET['submitted'])
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
-                        <td><input type="submit" value="<?php echo INPUT_VALID; ?>"></td>
+                        <td><span class="button"><button type="submit" value="<?php echo INPUT_VALID; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo INPUT_VALID; ?></button></span></td>
                       </tr>
                     </table>
                     <input type="hidden" name="submitted" value="1">

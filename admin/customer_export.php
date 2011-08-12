@@ -150,7 +150,7 @@ if (!$_POST['submit'])
                 <td>&nbsp;</td>
               </tr>
               <tr>
-              <td class="smallText" ><?php echo TEXT_CUSTOMER_EXPORT_SEPARATOR; ?>: <input name="separator" type="text" value="\t" size="3">&nbsp;&nbsp;<input type="submit" value="<?php echo TEXT_CUSTOMER_EXPORT; ?>" name="submit"></td>
+              <td class="smallText" ><?php echo TEXT_CUSTOMER_EXPORT_SEPARATOR; ?>: <input name="separator" type="text" value="\t" size="3">&nbsp;&nbsp;<span class="button"><button type="submit" name="submit" value="<?php echo TEXT_CUSTOMER_EXPORT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_CUSTOMER_EXPORT; ?></button></span></td>
               </tr>
             </table>
             </form>
