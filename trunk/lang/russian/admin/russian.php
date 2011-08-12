@@ -592,4 +592,7 @@ define('BOX_CATALOG_PIN_LOADER','PIN коды');
 // Products Specifications
 define('BOX_CATALOG_PRODUCTS_SPECIFICATIONS', 'Спецификации товаров');
 
+define('BOX_HEADING_ORDERS','Заказы');
+define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
+
 ?>
