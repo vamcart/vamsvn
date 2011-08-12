@@ -352,7 +352,7 @@ function display_ttc(action, prix, taxe, up){
 									   	<td align="center"> <?php echo vam_draw_input_field('spec_price',0,'size="5"'); ?> </td>
 									   	<td align="center"><?php
 										 if ($preview_global_price != true) {
-												echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">' . BUTTON_PREVIEW . '</button></span>';
+												echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span>';
 										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '"><span>' . BUTTON_CANCEL . '</span></a>'; } ?></td>
 									 	 <?php if(ACTIVATE_COMMERCIAL_MARGIN == 'true'){ echo '<td align="center">&nbsp;&nbsp;' . vam_draw_checkbox_field('marge','yes','','no') . ' ' . TEXT_MARGE_INFO;}?>
 									 </tr>
@@ -390,7 +390,7 @@ function display_ttc(action, prix, taxe, up){
 							</script>' . "</td>\n";
 						?>
 
-						<td><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></td>
+						<td><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span></td>
 					</tr>
 			</table>
 
@@ -690,7 +690,7 @@ function display_ttc(action, prix, taxe, up){
 </td>
 <td colspan="3">
 
-<span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span>
+<span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span>
 </td>
 </tr>
     </table>

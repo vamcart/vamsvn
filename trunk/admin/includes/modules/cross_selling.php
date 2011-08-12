@@ -143,7 +143,7 @@ while ($cross_data = vam_db_fetch_array($cross_query)) {
 <?php
 
 
-	echo '<span class="button"><button type="submit" value="' . BUTTON_SEARCH . '"/>' . BUTTON_SEARCH . '</button></span>';
+	echo '<span class="button"><button type="submit" value="' . BUTTON_SEARCH . '"/>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/search.png', '', '12', '12') . '&nbsp;' . BUTTON_SEARCH . '</button></span>';
 ?>
 </td>
 </form>

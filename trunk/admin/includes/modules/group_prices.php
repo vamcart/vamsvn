@@ -131,7 +131,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
                 echo TXT_PRICE;
                 echo vam_draw_input_field('products_price_staffel_'.$group_data[$col]['STATUS_ID'], 0);
                 echo vam_draw_separator('pixel_trans.gif', '10', '10');
-                echo '<span class="button"><button type="submit" onClick="return confirm(\''.SAVE_ENTRY.'\')" value="' . BUTTON_INSERT . '"/>' . BUTTON_INSERT . '</button></span>';
+                echo '<span class="button"><button type="submit" onClick="return confirm(\''.SAVE_ENTRY.'\')" value="' . BUTTON_INSERT . '"/>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>';
 ?><br></td>
           </tr>
 <?php } } ?>

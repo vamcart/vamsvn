@@ -136,11 +136,11 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
           <input type="hidden" name="action" value="import">
           <br>
           <?php echo TEXT_YML_MAX_SIZE; ?> <b><?php echo ini_get('upload_max_filesize'); ?></b><br />
-          <span class="button"><button type="submit" value="<?php echo TEXT_YML_IMPORT; ?>"><?php echo TEXT_YML_IMPORT; ?></button>
+          <span class="button"><button type="submit" value="<?php echo TEXT_YML_IMPORT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/import.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_YML_IMPORT; ?></button>
           </form>
         </td>
         <td class="main" width="50%" valign="bottom">
-          <a class="button" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG.'market.php'; ?>" target="_blank"><span><?php echo TEXT_YML_EXPORT; ?></span></a>
+          <a class="button" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG.'market.php'; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/export.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_YML_EXPORT; ?></span></a>
         </td>
       </tr>
     </table></td>

@@ -396,7 +396,7 @@ date("Y") - $i; ?></option><?php
                 </tr>
                 <tr>
                   <td colspan="5" class="menuBoxHeading" align="right">
-                  <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?>
+                  <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>'; ?>
                   </td>
               </table>
             </form>

@@ -1020,7 +1020,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
                 <td class="main"><b><?php echo ENTRY_NOTIFY_COMMENTS; ?></b> <?php echo vam_draw_checkbox_field('notify_comments', '', true); ?></td>
               </tr>
             </table></td>
-            <td valign="top"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></td>
+            <td valign="top"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span></td>
           </tr>
         </table></td>
       </form></tr>
@@ -1171,7 +1171,7 @@ echo '<tr class="dataTableContent"><td colspan="7">' . BUS_HEADING_TITLE . ': ' 
 echo '<tr class="dataTableContent" align="left"><td colspan="7" nobr="nobr" align="left">' .
 BUS_DELETE_ORDERS . ': ' . vam_draw_checkbox_field('delete_orders','1') . '</td></tr>';
 echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" align="left">' .
-     '<a class="button" href="javascript:SwitchCheck()"><span>' . BUTTON_REVERSE_SELECTION . '</span></a>&nbsp;<span class="button"><button type="submit" name="submit" value="' . BUTTON_SUBMIT . '">' . BUTTON_SUBMIT . '</button></span></td></tr>';
+     '<a class="button" href="javascript:SwitchCheck()"><span>' . BUTTON_REVERSE_SELECTION . '</span></a>&nbsp;<span class="button"><button type="submit" value="' . BUTTON_SUBMIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SUBMIT . '</button></span></td></tr>';
 ?>
 </form>
               <tr>
@@ -1194,7 +1194,7 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 			$contents = array ('form' => vam_draw_form('orders', FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=deleteconfirm'));
 			$contents[] = array ('text' => TEXT_INFO_DELETE_INTRO.'<br /><br /><b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
 			$contents[] = array ('text' => '<br />'.vam_draw_checkbox_field('restock').' '.TEXT_INFO_RESTOCK_PRODUCT_QUANTITY);
-			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'. BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'"><span>' . BUTTON_CANCEL . '</span></a>');
+			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'. BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id).'"><span>' . BUTTON_CANCEL . '</span></a>');
 			break;
 		default :
 			if (is_object($oInfo)) {

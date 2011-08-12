@@ -334,7 +334,7 @@
                 <td class="main"><b><?php echo PAYMENT_NOTIFY_AFFILIATE; ?></b><?php echo vam_draw_checkbox_field('notify', '', true); ?></td>
               </tr>
             </table></td>
-            <td valign="top"><?php echo '<span class="button"><button type="submit" class="button" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?></td>
+            <td valign="top"><?php echo '<span class="button"><button type="submit" class="button" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span>'; ?></td>
           </tr>
         </table></td>
       </form></tr>
@@ -462,7 +462,7 @@
 
       $contents = array('form' => vam_draw_form('payment', FILENAME_AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id. '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO . '<br>');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(AFFILIATE_PAYMENT, vam_get_all_get_params(array('pID', 'action')) . 'pID=' . $pInfo->affiliate_payment_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($pInfo)) {

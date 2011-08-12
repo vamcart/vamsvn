@@ -262,7 +262,7 @@ $manual_link = 'add-tax-zone';
         $contents[] = array('text' => TEXT_INFO_NEW_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY . '<br />' . vam_draw_pull_down_menu('zone_country_id', vam_get_countries(TEXT_ALL_COUNTRIES), '', 'onChange="update_zone(this.form);"'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_ZONE . '<br />' . vam_draw_pull_down_menu('zone_id', vam_prepare_country_zones_pull_down()));
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $_GET['sID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $_GET['sID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'edit':
@@ -272,7 +272,7 @@ $manual_link = 'add-tax-zone';
         $contents[] = array('text' => TEXT_INFO_EDIT_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY . '<br />' . vam_draw_pull_down_menu('zone_country_id', vam_get_countries(TEXT_ALL_COUNTRIES), $sInfo->zone_country_id, 'onChange="update_zone(this.form);"'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_COUNTRY_ZONE . '<br />' . vam_draw_pull_down_menu('zone_id', vam_prepare_country_zones_pull_down($sInfo->zone_country_id), $sInfo->zone_id));
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'delete':
@@ -281,7 +281,7 @@ $manual_link = 'add-tax-zone';
         $contents = array('form' => vam_draw_form('zones', FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id . '&saction=deleteconfirm_sub'));
         $contents[] = array('text' => TEXT_INFO_DELETE_SUB_ZONE_INTRO);
         $contents[] = array('text' => '<br /><b>' . $sInfo->countries_name . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID'] . '&action=list&spage=' . $_GET['spage'] . '&sID=' . $sInfo->association_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
@@ -303,7 +303,7 @@ $manual_link = 'add-tax-zone';
         $contents[] = array('text' => TEXT_INFO_NEW_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_NAME . '<br />' . vam_draw_input_field('geo_zone_name'));
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_DESCRIPTION . '<br />' . vam_draw_input_field('geo_zone_description'));
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $_GET['zID']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'edit_zone':
@@ -313,7 +313,7 @@ $manual_link = 'add-tax-zone';
         $contents[] = array('text' => TEXT_INFO_EDIT_ZONE_INTRO);
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_NAME . '<br />' . vam_draw_input_field('geo_zone_name', $zInfo->geo_zone_name));
         $contents[] = array('text' => '<br />' . TEXT_INFO_ZONE_DESCRIPTION . '<br />' . vam_draw_input_field('geo_zone_description', $zInfo->geo_zone_description));
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       case 'delete_zone':
@@ -322,7 +322,7 @@ $manual_link = 'add-tax-zone';
         $contents = array('form' => vam_draw_form('zones', FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id . '&action=deleteconfirm_zone'));
         $contents[] = array('text' => TEXT_INFO_DELETE_ZONE_INTRO);
         $contents[] = array('text' => '<br /><b>' . $zInfo->geo_zone_name . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_GEO_ZONES, 'zpage=' . $_GET['zpage'] . '&zID=' . $zInfo->geo_zone_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:

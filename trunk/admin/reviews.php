@@ -116,7 +116,7 @@
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><?php echo vam_draw_hidden_field('reviews_id', $rInfo->reviews_id) . vam_draw_hidden_field('products_id', $rInfo->products_id) . vam_draw_hidden_field('customers_name', $rInfo->customers_name) . vam_draw_hidden_field('products_name', $rInfo->products_name) . vam_draw_hidden_field('products_image', $rInfo->products_image) . vam_draw_hidden_field('date_added', $rInfo->date_added) . '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . BUTTON_PREVIEW . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="main"><?php echo vam_draw_hidden_field('reviews_id', $rInfo->reviews_id) . vam_draw_hidden_field('products_id', $rInfo->products_id) . vam_draw_hidden_field('customers_name', $rInfo->customers_name) . vam_draw_hidden_field('products_name', $rInfo->products_name) . vam_draw_hidden_field('products_image', $rInfo->products_image) . vam_draw_hidden_field('date_added', $rInfo->date_added) . '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID']) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form></tr>
 <?php
   } elseif ($_GET['action'] == 'preview') {
@@ -166,7 +166,7 @@
       while(list($key, $value) = each($_POST)) echo '<input type="hidden" name="' . $key . '" value="' . htmlspecialchars(stripslashes($value)) . '">';
 ?>
       <tr>
-        <td align="right" class="smallText"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=edit') . '"><span>' . BUTTON_BACK . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="smallText"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=edit') . '"><span>' . BUTTON_BACK . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id) . '"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form></tr>
 <?php
     } else {
@@ -251,7 +251,7 @@
         $contents = array('form' => vam_draw_form('reviews', FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=deleteconfirm'));
         $contents[] = array('text' => TEXT_INFO_DELETE_REVIEW_INTRO);
         $contents[] = array('text' => '<br /><b>' . $rInfo->products_name . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:

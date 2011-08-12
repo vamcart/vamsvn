@@ -953,7 +953,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span></div>
           </div>
 	
 	  <br>
@@ -1733,7 +1733,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span></div>
            </div>
 		  
 	       <br>
@@ -1873,7 +1873,7 @@ document.onmousemove=positiontip
               <div class="update2">&nbsp;</div>
               <div class="update3">&nbsp;</div>
               <div class="update4" align="center"><?php echo ENTRY_SEND_NEW_ORDER_CONFIRMATION; ?>&nbsp;<?php echo vam_draw_checkbox_field('nC1', '', false); ?></div>
-              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span></div>
+              <div class="update5" align="center"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span></div>
           </div>
 		  
 	       <br>
