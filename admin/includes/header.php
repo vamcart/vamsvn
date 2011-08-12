@@ -47,97 +47,7 @@
 	<div id="nav" class="nav">
 		<div id="menu">
 			<ul>
-				<li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CONFIGURATION; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
-						<td>
-							<dl>
-								<dt><?php echo BOX_HEADING_CONFIGURATION_MAIN; ?></dt>
-
-<?php
-  $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
-  $admin_access = vam_db_fetch_array($admin_access_query); 
-?>
-
-<?php
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_CONFIGURATION_1 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=2', 'NONSSL') . '">' . BOX_CONFIGURATION_2 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=3', 'NONSSL') . '">' . BOX_CONFIGURATION_3 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=4', 'NONSSL') . '">' . BOX_CONFIGURATION_4 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=5', 'NONSSL') . '">' . BOX_CONFIGURATION_5 . '</a></dd>' . "\n";
-//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=6', 'NONSSL') . '">' . BOX_CONFIGURATION_6 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=7', 'NONSSL') . '">' . BOX_CONFIGURATION_7 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=8', 'NONSSL') . '">' . BOX_CONFIGURATION_8 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=9', 'NONSSL') . '">' . BOX_CONFIGURATION_9 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=10', 'NONSSL') . '">' . BOX_CONFIGURATION_10 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=11', 'NONSSL') . '">' . BOX_CONFIGURATION_11 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cache'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CACHE, '', 'NONSSL') . '">' . BOX_CACHE_FILES . '</a></dd>' . "\n";
-?>  
-							</dl>
-						</td>
-
-						<td>
-							<dl>
-
-<?php
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=12', 'NONSSL') . '">' . BOX_CONFIGURATION_12 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=13', 'NONSSL') . '">' . BOX_CONFIGURATION_13 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=14', 'NONSSL') . '">' . BOX_CONFIGURATION_14 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=15', 'NONSSL') . '">' . BOX_CONFIGURATION_15 . '</a></dd>' . "\n";
-//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=18', 'NONSSL') . '">' . BOX_CONFIGURATION_18 . '</a></dd>' . "\n";
-//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=20', 'NONSSL') . '">' . BOX_CONFIGURATION_20 . '</a></dd>' . "\n";
-//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=21', 'NONSSL') . '">' . BOX_CONFIGURATION_21 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '">' . BOX_CONFIGURATION_22 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '">' . BOX_CONFIGURATION_24 . '</a></dd>' . "\n";
-?>
-								<dt><?php echo BOX_HEADING_OTHER; ?></dt>
-
-<?php
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_vpe'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL') . '">' . BOX_PRODUCTS_VPE . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '">' . BOX_CAMPAIGNS . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></dd>' . "\n";
-?>
-
-							</dl>
-						</td>
-
-						<td>
-							<dl>
-
-<?php
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=19', 'NONSSL') . '">' . BOX_CONFIGURATION_19 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=23', 'NONSSL') . '">' . BOX_CONFIGURATION_23 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=25', 'NONSSL') . '">' . BOX_CONFIGURATION_25 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=27', 'NONSSL') . '">' . BOX_CONFIGURATION_27 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=72', 'NONSSL') . '">' . BOX_CONFIGURATION_72 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=1610', 'NONSSL') . '">' . BOX_CONFIGURATION_1610 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=17', 'NONSSL') . '">' . BOX_CONFIGURATION_17 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=16', 'NONSSL') . '">' . BOX_CONFIGURATION_16 . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=29', 'NONSSL') . '">' . BOX_CONFIGURATION_29 . '</a></dd>' . "\n";
-
- if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
- ($admin_access['products_vpe'] == '0') && 
- ($admin_access['campaigns'] == '0') && 
- ($admin_access['configuration'] == '0') && 
- ($admin_access['cross_sell_groups'] == '0')
- ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
-
-?>
-
-							</dl>
-						</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
-
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-				</li>
-				<li><a class="sub" href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li class="level1"><a class="sub" href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
@@ -146,6 +56,12 @@
 
 							<td>
 								<dl>
+								
+<?php
+  $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
+  $admin_access = vam_db_fetch_array($admin_access_query); 
+?>
+								
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS, '', 'NONSSL') . '">' . BOX_ORDERS . '</a></dd>' . "\n";
@@ -466,6 +382,93 @@
 				</div>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
+
+				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CONFIGURATION; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+
+				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+				<div class="holder">
+					<div class="leftSide">
+						<div class="rightSide">
+						<table><tr>
+						<td>
+							<dl>
+								<dt><?php echo BOX_HEADING_CONFIGURATION_MAIN; ?></dt>
+
+<?php
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_CONFIGURATION_1 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=2', 'NONSSL') . '">' . BOX_CONFIGURATION_2 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=3', 'NONSSL') . '">' . BOX_CONFIGURATION_3 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=4', 'NONSSL') . '">' . BOX_CONFIGURATION_4 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=5', 'NONSSL') . '">' . BOX_CONFIGURATION_5 . '</a></dd>' . "\n";
+//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=6', 'NONSSL') . '">' . BOX_CONFIGURATION_6 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=7', 'NONSSL') . '">' . BOX_CONFIGURATION_7 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=8', 'NONSSL') . '">' . BOX_CONFIGURATION_8 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=9', 'NONSSL') . '">' . BOX_CONFIGURATION_9 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=10', 'NONSSL') . '">' . BOX_CONFIGURATION_10 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=11', 'NONSSL') . '">' . BOX_CONFIGURATION_11 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cache'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CACHE, '', 'NONSSL') . '">' . BOX_CACHE_FILES . '</a></dd>' . "\n";
+?>  
+							</dl>
+						</td>
+
+						<td>
+							<dl>
+
+<?php
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=12', 'NONSSL') . '">' . BOX_CONFIGURATION_12 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=13', 'NONSSL') . '">' . BOX_CONFIGURATION_13 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=14', 'NONSSL') . '">' . BOX_CONFIGURATION_14 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=15', 'NONSSL') . '">' . BOX_CONFIGURATION_15 . '</a></dd>' . "\n";
+//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=18', 'NONSSL') . '">' . BOX_CONFIGURATION_18 . '</a></dd>' . "\n";
+//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=20', 'NONSSL') . '">' . BOX_CONFIGURATION_20 . '</a></dd>' . "\n";
+//  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=21', 'NONSSL') . '">' . BOX_CONFIGURATION_21 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '">' . BOX_CONFIGURATION_22 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '">' . BOX_CONFIGURATION_24 . '</a></dd>' . "\n";
+?>
+								<dt><?php echo BOX_HEADING_OTHER; ?></dt>
+
+<?php
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_vpe'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL') . '">' . BOX_PRODUCTS_VPE . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '">' . BOX_CAMPAIGNS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></dd>' . "\n";
+?>
+
+							</dl>
+						</td>
+
+						<td>
+							<dl>
+
+<?php
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=19', 'NONSSL') . '">' . BOX_CONFIGURATION_19 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=23', 'NONSSL') . '">' . BOX_CONFIGURATION_23 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=25', 'NONSSL') . '">' . BOX_CONFIGURATION_25 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=27', 'NONSSL') . '">' . BOX_CONFIGURATION_27 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=72', 'NONSSL') . '">' . BOX_CONFIGURATION_72 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=1610', 'NONSSL') . '">' . BOX_CONFIGURATION_1610 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=17', 'NONSSL') . '">' . BOX_CONFIGURATION_17 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=16', 'NONSSL') . '">' . BOX_CONFIGURATION_16 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=29', 'NONSSL') . '">' . BOX_CONFIGURATION_29 . '</a></dd>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['products_vpe'] == '0') && 
+ ($admin_access['campaigns'] == '0') && 
+ ($admin_access['configuration'] == '0') && 
+ ($admin_access['cross_sell_groups'] == '0')
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
+
+?>
+
+							</dl>
+						</td>
+						</tr></table>
+						</div>
+					</div>
+				</div>
+
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+				</li>
+								
 				<li><a class="sub" href="http://vamshop.ru" target="_blank"><b><?php echo BOX_HEADING_HELP; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
