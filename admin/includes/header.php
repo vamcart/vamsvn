@@ -97,10 +97,6 @@
 								<dt><?php echo BOX_HEADING_OTHER; ?></dt>
 
 <?php
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders_status'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS_STATUS, '', 'NONSSL') . '">' . BOX_ORDERS_STATUS . '</a></dd>' . "\n";
-  if (ACTIVATE_SHIPPING_STATUS=='true') {
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['shipping_status'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL') . '">' . BOX_SHIPPING_STATUS . '</a></dd>' . "\n";
-  }
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_vpe'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL') . '">' . BOX_PRODUCTS_VPE . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '">' . BOX_CAMPAIGNS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></dd>' . "\n";
@@ -124,8 +120,6 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=29', 'NONSSL') . '">' . BOX_CONFIGURATION_29 . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
- ($admin_access['orders_status'] == '0') && 
- ($admin_access['shipping_status'] == '0') && 
  ($admin_access['products_vpe'] == '0') && 
  ($admin_access['campaigns'] == '0') && 
  ($admin_access['configuration'] == '0') && 
@@ -143,6 +137,44 @@
 
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
+				<li><a class="sub" href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+				<div class="holder">
+					<div class="leftSide">
+						<div class="rightSide">
+						<table><tr>
+
+							<td>
+								<dl>
+<?php
+
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS, '', 'NONSSL') . '">' . BOX_ORDERS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['exportorders'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_EXPORTORDERS, '', 'NONSSL') . '">' . BUTTON_ORDERS_EXPORT . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES) . '">' . BOX_TOOLS_RECOVER_CART . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders_status'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS_STATUS, '', 'NONSSL') . '">' . BOX_ORDERS_STATUS . '</a></dd>' . "\n";
+  if (ACTIVATE_SHIPPING_STATUS=='true') {
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['shipping_status'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SHIPPING_STATUS, '', 'NONSSL') . '">' . BOX_SHIPPING_STATUS . '</a></dd>' . "\n";
+  }
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['orders'] == '0') && 
+ ($admin_access['exportorders'] == '0') && 
+ ($admin_access['recover_cart_sales'] == '0') && 
+ ($admin_access['orders_status'] == '0') && 
+ ($admin_access['shipping_status'] == '0')
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
+
+?>
+								</dl>
+
+							</td>
+						</tr></table>
+						</div>
+					</div>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
+				</li>				
 				<li><a class="sub" href="<?php vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
@@ -189,7 +221,7 @@
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
 				</li>
-				<li><a class="sub" href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li><a class="sub" href="<?php vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
@@ -202,12 +234,10 @@
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL') . '">' . BOX_CUSTOMERS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_status'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CUSTOMERS_STATUS, '', 'NONSSL') . '">' . BOX_CUSTOMERS_STATUS . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS, '', 'NONSSL') . '">' . BOX_ORDERS . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['customers'] == '0') && 
- ($admin_access['customers_status'] == '0') && 
- ($admin_access['orders'] == '0')
+ ($admin_access['customers_status'] == '0')  
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
@@ -283,7 +313,6 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['yml_import'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_YML_IMPORT, '', 'NONSSL') . '">' . BOX_YML_IMPORT . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['csv_backend'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CSV_BACKEND, '', 'NONSSL') . '">' . BOX_IMPORT . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['quick_updates'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_QUICK_UPDATES, '', 'NONSSL') . '">' . BOX_CATALOG_QUICK_UPDATES . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES) . '">' . BOX_TOOLS_RECOVER_CART . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_EMAIL_MANAGER) . '">' . BOX_TOOLS_EMAIL_MANAGER . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
@@ -298,7 +327,6 @@
  ($admin_access['easypopulate'] == '0') && 
  ($admin_access['csv_backend'] == '0') && 
  ($admin_access['quick_updates'] == '0') && 
- ($admin_access['recover_cart_sales'] == '0') && 
  ($admin_access['email_manager'] == '0')
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
