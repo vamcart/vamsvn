@@ -1851,7 +1851,7 @@ document.onmousemove=positiontip
      <!--
 	     document.write("<tr>");
          document.write("<td colspan=\"3\" align=\"right\">");
-		 document.write("<span class=\"button\"><button type=\"button\" name=\"comments_button\" value=\"<?php echo oe_html_no_quote(AJAX_SUBMIT_COMMENT); ?>\" onClick=\"javascript:getNewComment();\"><?php echo oe_html_no_quote(AJAX_SUBMIT_COMMENT); ?></button></span>");
+		 document.write("<span class=\"button\"><button type=\"button\" name=\"comments_button\" value=\"<?php echo oe_html_no_quote(AJAX_SUBMIT_COMMENT); ?>\" onClick=\"javascript:getNewComment();\"><img src=\"images/icons/buttons/add.png\" border=\"0\" alt=\"\" width=\"12\" height=\"12\">&nbsp;&nbsp;<?php echo oe_html_no_quote(AJAX_SUBMIT_COMMENT); ?></button></span>");
 		 document.write("</td>");
 		 document.write("</tr>");
 	 //-->
