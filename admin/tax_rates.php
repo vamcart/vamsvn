@@ -159,7 +159,7 @@ $manual_link = 'add-tax-value';
       $contents[] = array('text' => '<br />' . TEXT_INFO_TAX_RATE . '<br />' . vam_draw_input_field('tax_rate'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_RATE_DESCRIPTION . '<br />' . vam_draw_input_field('tax_description'));
       $contents[] = array('text' => '<br />' . TEXT_INFO_TAX_RATE_PRIORITY . '<br />' . vam_draw_input_field('tax_priority'));
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     case 'edit':
@@ -172,7 +172,7 @@ $manual_link = 'add-tax-value';
       $contents[] = array('text' => '<br />' . TEXT_INFO_TAX_RATE . '<br />' . vam_draw_input_field('tax_rate', $trInfo->tax_rate));
       $contents[] = array('text' => '<br />' . TEXT_INFO_RATE_DESCRIPTION . '<br />' . vam_draw_input_field('tax_description', $trInfo->tax_description));
       $contents[] = array('text' => '<br />' . TEXT_INFO_TAX_RATE_PRIORITY . '<br />' . vam_draw_input_field('tax_priority', $trInfo->tax_priority));
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     case 'delete':
@@ -181,7 +181,7 @@ $manual_link = 'add-tax-value';
       $contents = array('form' => vam_draw_form('rates', FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id  . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br /><b>' . $trInfo->tax_class_title . ' ' . number_format($trInfo->tax_rate, TAX_DECIMAL_PLACES) . '%</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_TAX_RATES, 'page=' . $_GET['page'] . '&tID=' . $trInfo->tax_rates_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
 
     default:

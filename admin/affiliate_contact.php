@@ -170,8 +170,8 @@
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
-                    <td><?php echo '<span class="button"><button type="submit" name="back" value="' . BUTTON_BACK . '">' . BUTTON_BACK . '</button></span>'; ?></td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT) . '"><span>' . BUTTON_CANCEL . '</span></a> ' . '<span class="button"><button type="submit" value="' . BUTTON_SEND . '">' . BUTTON_SEND . '</button></span>'; ?></td>
+                    <td><?php echo '<span class="button"><button type="submit" name="back" value="' . BUTTON_BACK . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' .BUTTON_BACK . '</button></span>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT) . '"><span>' . BUTTON_CANCEL . '</span></a> ' . '<span class="button"><button type="submit" value="' . BUTTON_SEND . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND . '</button></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -225,7 +225,7 @@
                 <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="2" align="right"><?php echo '<span class="button"><button type="submit" class="button" value="' . BUTTON_SEND . '">' . BUTTON_SEND . '</button></span>'; ?></td>
+                <td colspan="2" align="right"><?php echo '<span class="button"><button type="submit" class="button" value="' . BUTTON_SEND . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND . '</button></span>'; ?></td>
               </tr>
             </table></td>
           </form></tr>

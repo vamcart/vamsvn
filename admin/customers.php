@@ -1105,7 +1105,7 @@ if ($error == true) {
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span><?php echo ' <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="main"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span><?php echo ' <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </tr></form>
 <?php
 
@@ -1326,7 +1326,7 @@ if ($error == true) {
 			$contents[] = array ('text' => TEXT_DELETE_INTRO.'<br /><br /><b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
 			if ($cInfo->number_of_reviews > 0)
 				$contents[] = array ('text' => '<br />'.vam_draw_checkbox_field('delete_reviews', 'on', true).' '.sprintf(TEXT_DELETE_REVIEWS, $cInfo->number_of_reviews));
-			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_DELETE.'">' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
+			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_DELETE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
 			break;
 
 		case 'editstatus' :
@@ -1348,7 +1348,7 @@ if ($error == true) {
 					$contents[] = array ('text' => '<tr>'."\n".' <td class="smallText" colspan="2">'.TEXT_NO_CUSTOMER_HISTORY.'</td>'."\n".' </tr>'."\n");
 				}
 				$contents[] = array ('text' => '</table>');
-				$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_UPDATE.'">' . BUTTON_UPDATE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
+				$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_UPDATE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
 				$status = vam_db_prepare_input($_POST['status']); // maybe this line not needed to recheck...
 			}
 			break;

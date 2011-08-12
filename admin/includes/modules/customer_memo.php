@@ -46,6 +46,6 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 ?>
     <table width="100%">
       <tr>
-        <td class="main" style="border-top: 1px solid; border-color: #cccccc;"><b><?php echo TEXT_TITLE ?></b>: <?php echo vam_draw_input_field('memo_title'); ?><br><?php echo vam_draw_textarea_field('memo_text', 'soft', '80', '5'); ?><br><span class="button"><button type="submit" value="<?php echo BUTTON_INSERT; ?>"><?php echo BUTTON_INSERT; ?></button></span></td>
+        <td class="main" style="border-top: 1px solid; border-color: #cccccc;"><b><?php echo TEXT_TITLE ?></b>: <?php echo vam_draw_input_field('memo_title'); ?><br><?php echo vam_draw_textarea_field('memo_text', 'soft', '80', '5'); ?><br><span class="button"><button type="submit" value="<?php echo BUTTON_INSERT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12');?> &nbsp;<?php echo BUTTON_INSERT; ?></button></span></td>
       </tr>
     </table></td>

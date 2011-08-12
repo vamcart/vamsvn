@@ -132,7 +132,7 @@ if (vam_not_null($action)) {
 		 echo vam_draw_pull_down_menu('field[language]', $values, '0', '');?>
         </td>		
         <td class="dataTableHeadingContent" align="right">
-	<?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button>'; ?></span>
+	<?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button>'; ?></span>
         </td>
        </tr>
        </form>
@@ -182,9 +182,9 @@ while ($extra_fields = vam_db_fetch_array($products_extra_fields_query)) {
 <?php } ?>
        <tr>
         <td colspan="4">
-         <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . BUTTON_UPDATE . '</button></span>'; ?> 
+         <?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>'; ?> 
          &nbsp;&nbsp;
-	 <?php echo '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '" name="remove">' . BUTTON_DELETE . '</button></span>'; ?>
+	 <?php echo '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '" name="remove">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>'; ?>
         </td>
        </tr>
        </form>

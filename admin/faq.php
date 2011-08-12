@@ -213,7 +213,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         <td class="main" align="right">
           <?php
             isset($_GET['faq_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $_GET['faq_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>' : $cancel_button = '';
-            echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT .'">' . BUTTON_INSERT . '</button></span>' . $cancel_button;
+            echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' .BUTTON_INSERT . '</button></span>' . $cancel_button;
           ?>
         </td>
       </form></tr>
@@ -300,7 +300,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         $contents[] = array('text'  => '<br><b>' . $selected_item['question'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $selected_item['faq_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $selected_item['faq_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:

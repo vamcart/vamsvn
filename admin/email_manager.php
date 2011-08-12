@@ -78,7 +78,7 @@ $file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FIL
 
 echo vam_draw_pull_down_menu('file',$file_list,$_REQUEST['file']);
 
-echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . BUTTON_EDIT . '</button></span>';
+echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</button></span>';
 
                
 ?>
@@ -207,7 +207,7 @@ $file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELE
 
 echo vam_draw_pull_down_menu('file_admin',$file_list_admin,$_REQUEST['file_admin']);
 
-echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . BUTTON_EDIT . '</button></span>';
+echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</button></span>';
 
                
 ?>

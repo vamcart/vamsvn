@@ -454,7 +454,7 @@
 
       $contents = array('form' => vam_draw_form('affiliate', FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO . '<br><br><b>' . $aInfo->affiliate_firstname . ' ' . $aInfo->affiliate_lastname . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, vam_get_all_get_params(array('acID', 'action')) . 'acID=' . $aInfo->affiliate_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($aInfo)) {

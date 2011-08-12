@@ -131,7 +131,7 @@ if($action=='upload') {
     </td></tr><tr><td>
     <?php echo vam_draw_textarea_field('pinstext','soft',50,15); ?>
     </td></tr><tr><td>
-    <span class="button"><button type="submit" onClick="return confirm('<?php echo BUTTON_UPDATE; ?>')" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span>
+    <span class="button"><button type="submit" onClick="return confirm('<?php echo BUTTON_UPDATE; ?>')" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span>
     </td></tr></table></form>
     <?php
 
@@ -150,7 +150,7 @@ else if($action=='edit') {
 			<td><?php echo vam_draw_textarea_field('pinstext', 'soft', 50, 30, $pin_stack);?></td>
 		</tr>
 		<tr>
-			<span class="button"><button type="submit" onClick="return confirm('<?php echo BUTTON_UPDATE; ?>')" value="<?php echo BUTTON_UPDATE; ?>"><?php echo BUTTON_UPDATE; ?></button></span>
+			<span class="button"><button type="submit" onClick="return confirm('<?php echo BUTTON_UPDATE; ?>')" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span>
 		</tr>
 	</table>
     </form>

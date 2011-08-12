@@ -90,16 +90,16 @@
         <td width="100%"><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr><?php echo vam_draw_form('year', FILENAME_BANNER_STATISTICS, '', 'get'); ?>
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', '1', HEADING_IMAGE_HEIGHT); ?></td>
-            <td class="main" align="right"><?php echo TITLE_TYPE . ' ' . vam_draw_pull_down_menu('type', $type_array, (($_GET['type']) ? $_GET['type'] : 'daily'), 'onChange="this.form.submit();"'); ?><noscript><span class="button"><button type="submit" value="GO">GO</button></span></noscript><br />
+            <td class="main" align="right"><?php echo TITLE_TYPE . ' ' . vam_draw_pull_down_menu('type', $type_array, (($_GET['type']) ? $_GET['type'] : 'daily'), 'onChange="this.form.submit();"'); ?><noscript><span class="button"><button type="submit" value="GO"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;GO</button></span></noscript><br />
 <?php
   switch ($_GET['type']) {
     case 'yearly': break;
     case 'monthly':
-      echo TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">GO</button></span></noscript>';
+      echo TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . 'GO</button></span></noscript>';
       break;
     default:
     case 'daily':
-      echo TITLE_MONTH . ' ' . vam_draw_pull_down_menu('month', $months_array, (($_GET['month']) ? $_GET['month'] : date('n')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">GO</button></span></noscript><br />' . TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">GO</button></span></noscript>';
+      echo TITLE_MONTH . ' ' . vam_draw_pull_down_menu('month', $months_array, (($_GET['month']) ? $_GET['month'] : date('n')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . 'GO</button></span></noscript><br />' . TITLE_YEAR . ' ' . vam_draw_pull_down_menu('year', $years_array, (($_GET['year']) ? $_GET['year'] : date('Y')), 'onChange="this.form.submit();"') . '<noscript><span class="button"><button type="submit" value="GO">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . 'GO</button></span></noscript>';
       break;
   }
 ?>

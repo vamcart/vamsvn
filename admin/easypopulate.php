@@ -1213,7 +1213,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		?>
 		</p>
 		<form name="clear_form" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form">
-		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
 
     if (isset($_FILES['usrfl'])){
@@ -1369,7 +1369,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 	  	?>
 		</p>
 		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
-		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
 
 
@@ -1384,7 +1384,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		?>
 		</p>
 		<form name="clear_form2" action="easypopulate.php<?php if (defined('SID') && vam_not_null(SID)) { echo '?'.vam_session_name().'='.vam_session_id(); } ?>" method="post" id="clear_form2">
-		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
+		<span class="button"><button type="submit" name="clear_button" value="<?php echo TEXT_EASYPOPULATE_CLEAR; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_EASYPOPULATE_CLEAR; ?></button></span></form>
 		<?php
         echo "<p class=smallText>";
     // move the file to where we can work with it
@@ -1459,7 +1459,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 		   if (EP_QUICK_BACKUP == true){
 		   ?>
 		   <form name="skb" action="backup.php" method="post" id="quick_backup">
-				<span class="button"><button type="submit" name="quick_backup_button" value="<?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?>"><?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?></button></span></form>
+				<span class="button"><button type="submit" name="quick_backup_button" value="<?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/backup.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_EASYPOPULATE_BACKUP_BUTTON; ?></button></span></form>
 		   <?php
 			} 
 			?>
@@ -1490,7 +1490,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="update"><?php echo TEXT_EASYPOPULATE_UPDATE; ?></option>
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
-                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT;?>"><?php echo EASY_INSERT; ?></button></span>
+                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT;?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo EASY_INSERT; ?></button></span>
                 <br />
                 </p>
               </form>
@@ -1533,7 +1533,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="update"><?php echo TEXT_EASYPOPULATE_UPDATE; ?></option>
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
-                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT; ?>"><?php echo EASY_INSERT; ?></button></span>
+                  <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo EASY_INSERT; ?></button></span>
                   <br />
                 </p>
              </form>
@@ -1547,7 +1547,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                 <p>
                   <input type="hidden" name="MAX_FILE_SIZE" value="1000000000">
                   <input name="usrfl" type="file" size="50">
-                  <span class="button"><button type="submit" name="buttonsplit" value="<?php echo EASYPOPULATE_BUTTON_SPLIT; ?>"><?php echo EASYPOPULATE_BUTTON_SPLIT; ?></button></span>
+                  <span class="button"><button type="submit" name="buttonsplit" value="<?php echo EASYPOPULATE_BUTTON_SPLIT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo EASYPOPULATE_BUTTON_SPLIT; ?></button></span>
                 <br />
                 </p>
              </form>
@@ -1632,7 +1632,7 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
           echo ' ' . vam_draw_pull_down_menu('epcust_manufacturer_filter', $manufacturers_array) . ' ';
           echo ' ' . vam_draw_pull_down_menu('epcust_status_filter', $status_array) . ' ';
           ?>
-          <span class="button"><button type="submit" name="build_button" value="<?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?>"><?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?></button></span>          
+          <span class="button"><button type="submit" name="build_button" value="<?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_EASYPOPULATE_BUILD_BUTTON; ?></button></span>          
           </td></tr>
           </form>
           </table>

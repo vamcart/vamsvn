@@ -864,7 +864,7 @@ if ($error == true) {
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </tr></form>
       </table></td>
       </tr>

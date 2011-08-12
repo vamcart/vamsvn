@@ -335,7 +335,7 @@ function popupImageWindow(url) {
         $contents[] = array('text' => '<br>' . sprintf(TEXT_DELETE_WARNING_ARTICLES, $auInfo->articles_count));
       }
 
-      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . BUTTON_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (isset($auInfo) && is_object($auInfo)) {

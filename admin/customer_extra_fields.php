@@ -214,7 +214,7 @@
       $contents = array('form' => vam_draw_form('manufacturers', FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_DELETE_INTRO);
       $contents[] = array('text' => '<br><b>' . $fInfo->fields_name . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_EXTRA_FIELDS, 'page=' . $_GET['page'] . '&fID=' . $fInfo->fields_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (isset($fInfo) && is_object($fInfo)) {

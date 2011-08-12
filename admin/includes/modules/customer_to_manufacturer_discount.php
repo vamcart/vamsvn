@@ -57,7 +57,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       <tr>
         <td class="main"><?php echo vam_draw_input_field('manufacturer_discount_new'); ?>%
         <?php echo $select_string; ?>
-        <span class="button"><button type="submit" value="<?php echo BUTTON_INSERT; ?>"><?php echo BUTTON_INSERT; ?></button></span></td>
+        <span class="button"><button type="submit" value="<?php echo BUTTON_INSERT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_INSERT; ?></button></span></td>
       </tr>
     </table></td>
     

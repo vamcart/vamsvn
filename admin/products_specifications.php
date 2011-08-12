@@ -2119,7 +2119,7 @@
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_ON_PRODUCTS . '<br />' . vam_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER . '<br />' . vam_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
 
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'edit_group':
@@ -2154,7 +2154,7 @@
         }
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER . '<br />' . vam_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
 
       case 'copy_group':
@@ -2169,7 +2169,7 @@
         if ($count_filters > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_filter', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_FILTERS, $count_filters) );
         if ($count_values > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_values', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_VALUES, $count_values) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
 
       case 'delete_group':
@@ -2181,7 +2181,7 @@
         if ($count_specs > 0) $contents[] = array ('text' => '<br />' . sprintf (TEXT_DELETE_WARNING_SPECS, $count_specs) );
         if ($count_products > 0) $contents[] = array ('text' => '<br />' . sprintf (TEXT_DELETE_WARNING_PRODUCTS, $count_products) );
         if ($count_filters > 0) $contents[] = array ('text' => '<br />' . sprintf (TEXT_DELETE_WARNING_FILTERS, $count_filters) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'link_category':
@@ -2191,7 +2191,7 @@
         $contents[] = array ('text' => sprintf (TEXT_LINK_CATEGORIES_INTRO, $cInfo->categories_name) . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id));
         $contents[] = array ('text' => '<br />' . TEXT_LINK_TO . '<br />' . vam_draw_pull_down_menu ('link_category_id', vam_get_category_tree() ) );
         $contents[] = array ('text' => vam_draw_checkbox_field ('link_subcats', 'True') . ' ' . TEXT_LINK_TO_SUBCATS);
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_LINK . '">' . IMAGE_LINK . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_LINK . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_LINK . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'link_all_categories':
@@ -2199,7 +2199,7 @@
 
         $contents = array ('form' => vam_draw_form ('link_all_categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=link_all_categories_confirm') );
         $contents[] = array ('text' => TEXT_LINK_ALL_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_LINK_ALL . '">' . IMAGE_LINK_ALL . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_LINK_ALL . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_LINK_ALL . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'unlink_category':
@@ -2208,7 +2208,7 @@
         $contents = array ('form' => vam_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_category_confirm') );
         $contents[] = array ('text' => TEXT_UNLINK_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
         $contents[] = array ('text' => TEXT_UNLINK_CATEGORY . '<br />' . vam_draw_pull_down_menu ('categories_id', $categories_list) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_UNLINK . '">' . IMAGE_UNLINK . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_UNLINK . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_UNLINK . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'unlink_all_categories':
@@ -2216,7 +2216,7 @@
 
         $contents = array ('form' => vam_draw_form ('categories', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=unlink_all_categories_confirm') );
         $contents[] = array ('text' => TEXT_UNLINK_ALL_INTRO . vam_draw_hidden_field ('specification_group_id', $cInfo->specification_group_id) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_UNLINK_ALL . '">' . IMAGE_UNLINK_ALL . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_UNLINK_ALL . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_UNLINK_ALL . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $cInfo->specification_group_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'new_specification':
@@ -2269,7 +2269,7 @@
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_DISPLAY . '<br />' . vam_draw_pull_down_menu ('filter_display', $filter_display_array) );
         $contents[] = array ('text' => '<br />' . TEXT_ENTER_VALUE . '<br />' . vam_draw_pull_down_menu ('enter_values', $enter_filter_array) );
 
-        $contents[] = array('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'edit_specification':
@@ -2364,7 +2364,7 @@
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SHOW_ALL . '<br />' . vam_draw_radio_field ('filter_show_all', 'True', true, $filter_dont_show_all) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('filter_show_all', 'False', false, $filter_show_all) . '&nbsp;' . TEXT_DONT_SHOW );
         $contents[] = array ('text' => '<br />' . TEXT_ENTER_VALUE . '<br />' . vam_draw_pull_down_menu ('enter_values', $enter_filter_array, $specification_data['enter_values']) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
          
       case 'delete_specification':
@@ -2378,7 +2378,7 @@
         if ($count_products > 0) $contents[] = array ('text' => '<br />' . sprintf (TEXT_DELETE_WARNING_PRODUCTS, $count_products) );
         if ($count_filters > 0) $contents[] = array ('text' => '<br />' . sprintf (TEXT_DELETE_WARNING_FILTERS, $count_filters) );
 
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'move_specification':
@@ -2388,7 +2388,7 @@
         $contents = array ('form' => vam_draw_form ('move_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
         $contents[] = array ('text' => sprintf (TEXT_MOVE_SPECIFICATION_INTRO, $sInfo->specification_name) . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
         $contents[] = array ('text' => '<br />' . TEXT_MOVE_SPECIFICATION_TO . '<br />' . vam_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'copy_specification':
@@ -2397,7 +2397,7 @@
         $contents = array ('form' => vam_draw_form ('copy_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
         $contents[] = array ('text' => sprintf (TEXT_INFO_COPY_SPECIFICATION_INTRO, $sInfo->specification_name) . $sInfo->specifications_id . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
         $contents[] = array ('text' => '<br />' . TEXT_COPY_SPECIFICATION_TO . '<br />' . vam_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_COPY . '">' . IMAGE_COPY . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_COPY . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_COPY . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
 //Filters       
@@ -2436,7 +2436,7 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_NEW_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SORT_ORDER . '<br />' . vam_draw_input_field ('filter_sort_order', '', 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'edit_filter':
@@ -2483,7 +2483,7 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_EDIT_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SORT_ORDER . '<br />' . vam_draw_input_field ('filter_sort_order', $fInfo->filter_sort_order, 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
 
         $import = '';
         if ($check_data['products_column_name'] == 'manufacturers_id') {
@@ -2498,7 +2498,7 @@
         $contents = array ('form' => vam_draw_form ('delete_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path) );
         $contents[] = array ('text' => TEXT_DELETE_FILTER_INTRO . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
         $contents[] = array ('text' => '<br /><b>' . $fInfo->filter . '</b>');
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'move_filter':
@@ -2507,7 +2507,7 @@
         $contents = array ('form' => vam_draw_form ('move_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
         $contents[] = array ('text' => sprintf (TEXT_MOVE_FILTER_INTRO, $fInfo->filter) . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
         $contents[] = array ('text' => '<br />' . sprintf(TEXT_MOVE_FILTER_TO, $fInfo->filter) . '<br />' . vam_draw_pull_down_menu ('move_to_filter_id', $specification_list, $specs_path));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'copy_filter':
@@ -2516,7 +2516,7 @@
         $contents = array ('form' => vam_draw_form ('copy_filter', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_filter_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path));
         $contents[] = array ('text' => sprintf (TEXT_COPY_FILTER_INTRO, $fInfo->filter) . vam_draw_hidden_field ('specification_filters_id', $fInfo->specification_filters_id) . vam_draw_hidden_field ('specifications_id', $fInfo->specifications_id) );
         $contents[] = array ('text' => '<br />' . sprintf (TEXT_COPY_FILTER_TO, $fInfo->filter) . '<br />' . vam_draw_pull_down_menu ('copy_to_filter_id', $specification_list, $specs_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_COPY . '">' . IMAGE_COPY . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_COPY . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/copy.png', '', '12', '12') . '&nbsp;' . IMAGE_COPY . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
 
 // Specification Values
@@ -2550,7 +2550,7 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_NEW_VALUE . $value_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
         $contents[] = array ('text' => '<br />' . TEXT_VALUE_SORT_ORDER . '<br />' . vam_draw_input_field ('value_sort_order', '', 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&value=1&spath=' . $specs_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&value=1&spath=' . $specs_path) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'edit_value':
@@ -2596,7 +2596,7 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_EDIT_VALUE . $value_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
         $contents[] = array ('text' => '<br />' . TEXT_VALUE_SORT_ORDER . '<br />' . vam_draw_input_field ('value_sort_order', $vInfo->value_sort_order, 'size="5"'));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'delete_value':
@@ -2605,7 +2605,7 @@
         $contents = array ('form' => vam_draw_form ('delete_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=delete_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
         $contents[] = array ('text' => TEXT_DELETE_VALUE_INTRO . vam_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . vam_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
         $contents[] = array ('text' => '<br /><b>' . $vInfo->value . '</b>');
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . IMAGE_DELETE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'move_value':
@@ -2614,7 +2614,7 @@
         $contents = array ('form' => vam_draw_form ('move_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=move_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
         $contents[] = array ('text' => sprintf (TEXT_MOVE_VALUE_INTRO, $vInfo->value) . vam_draw_hidden_field ('specification_values_id', $vInfo->specification_values_id) . vam_draw_hidden_field ('specifications_id', $vInfo->specifications_id) );
         $contents[] = array ('text' => '<br />' . sprintf (TEXT_MOVE_VALUE_TO, $vInfo->value) . '<br />' . vam_draw_pull_down_menu ('move_to_value_id', $specification_list, $specs_path));
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       case 'copy_value':
@@ -2623,7 +2623,7 @@
         $contents = array ('form' => vam_draw_form ('copy_value', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_value_confirm&sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1') );
         $contents[] = array ('text' => sprintf (TEXT_COPY_VALUE_INTRO, $vInfo->value) . vam_draw_hidden_field ('specification_values_id', $fInfo->specification_values_id) );
         $contents[] = array ('text' => '<br />' . sprintf (TEXT_COPY_VALUE_TO, $vInfo->value) . '<br />' . vam_draw_pull_down_menu ('copy_to_value_id', $specification_list, $specs_path) );
-        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
+        $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_MOVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&value=1&vid=' . $vInfo->specification_values_id) . '"><span>' . IMAGE_CANCEL . '</span></a>');
         break;
         
       default:

@@ -112,7 +112,7 @@ if ($i >= 1) {
   }
 */
 echo vam_draw_form('reset', FILENAME_CACHE, '', 'get'). vam_draw_hidden_field('action', 'unlink');
-echo '<span class="button"><button type="submit" name="unlink" value="' . TEXT_RESET_CACHE . '">' . TEXT_RESET_CACHE . '</button></span>'
+echo '<span class="button"><button type="submit" name="unlink" value="' . TEXT_RESET_CACHE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . TEXT_RESET_CACHE . '</button></span>'
 . '</form>';
   } else {
     echo "<br />\n" . TEXT_NOCACHE_FILES;

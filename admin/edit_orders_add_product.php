@@ -324,7 +324,7 @@ $products['products_price']=$products_price['plain'];
             <td class="dataTableContent" valign="top"><?php echo vam_draw_pull_down_menu('add_product_categories_id', vam_get_category_tree('0', '', '0', $category_array), $add_product_categories_id,'style="width:300px;" onchange="this.form.submit();"'); ?></td>
             <td class="dataTableContent" align="center">
 			  <noscript>
-			    <span class="button"><button type="submit" value="<?php echo TEXT_BUTTON_SELECT_CATEGORY; ?>"><?php echo TEXT_BUTTON_SELECT_CATEGORY; ?></button></span>
+			    <span class="button"><button type="submit" value="<?php echo TEXT_BUTTON_SELECT_CATEGORY; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12');?> &nbsp;<?php echo TEXT_BUTTON_SELECT_CATEGORY; ?></button></span>
 			  </noscript>
 			    <input type="hidden" name="step" value="2">
 <?php
@@ -343,7 +343,7 @@ $products['products_price']=$products_price['plain'];
             <td>&nbsp;</td>
             <td class="dataTableContent" valign="top">&nbsp;<input type="text" name="product_search" value="<?php if(isset($_POST['product_search'])) echo $_POST['product_search']; ?>" onchange="this.form.submit();">
 			</td>
-            <td class="dataTableContent" align="center"><noscript><span class="button"><button type="submit" value="Search for This Product">Search for This Product</button></span></noscript><input type="hidden" name="step" value="2"><input type="hidden" name="search" value="1"></td>
+            <td class="dataTableContent" align="center"><noscript><span class="button"><button type="submit" value="Search for This Product"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;Search for This Product</button></span></noscript><input type="hidden" name="step" value="2"><input type="hidden" name="search" value="1"></td>
           </form>
           </tr>
         <?php if ($not_found) { ?>
@@ -372,7 +372,7 @@ $products['products_price']=$products_price['plain'];
 ?>
             <td class="dataTableContent" align="right"><?php echo TEXT_STEP_2; ?></td>
             <td class="dataTableContent" valign="top"><?php echo vam_draw_pull_down_menu('add_product_products_id', $product_array, $add_product_products_id, 'style="width:300px;" onchange="this.form.submit();"'); ?></td>
-            <td class="dataTableContent" align="center"><noscript><span class="button"><button type="submit" value="<?php echo TEXT_BUTTON_SELECT_PRODUCT; ?>"><?php echo TEXT_BUTTON_SELECT_PRODUCT; ?></button></span></noscript><input type="hidden" name="step" value="3">
+            <td class="dataTableContent" align="center"><noscript><span class="button"><button type="submit" value="<?php echo TEXT_BUTTON_SELECT_PRODUCT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12');?> &nbsp;<?php echo TEXT_BUTTON_SELECT_PRODUCT; ?></button></span></noscript><input type="hidden" name="step" value="3">
             <input type="hidden" name="add_product_categories_id" value="<?php echo $add_product_categories_id; ?>">
           <?php if (isset($_POST['search'])) { ?>
             <input type="hidden" name="search" value="1">
@@ -426,7 +426,7 @@ $products['products_price']=$products_price['plain'];
         $i++;
       }
       echo '            <td class="dataTableContent">&nbsp;</td>' . "\n" .
-           '            <td class="dataTableContent" colspan="2" align="left"><span class="button"><button type="submit" value="' . TEXT_BUTTON_SELECT_OPTIONS . '">' . TEXT_BUTTON_SELECT_OPTIONS . '</button></span><input type="hidden" name="step" value="4"><input type="hidden" name="add_product_categories_id" value="' . $add_product_categories_id . '"><input type="hidden" name="add_product_products_id" value="' . $add_product_products_id . '">' . ((isset($_POST['search'])) ? '<input type="hidden" name="search" value="1"><input type="hidden" name="product_search" value="' . $_POST['product_search'] . '">' : '') . '</td>' . "\n" .
+           '            <td class="dataTableContent" colspan="2" align="left"><span class="button"><button type="submit" value="' . TEXT_BUTTON_SELECT_OPTIONS . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . TEXT_BUTTON_SELECT_OPTIONS . '</button></span><input type="hidden" name="step" value="4"><input type="hidden" name="add_product_categories_id" value="' . $add_product_categories_id . '"><input type="hidden" name="add_product_products_id" value="' . $add_product_products_id . '">' . ((isset($_POST['search'])) ? '<input type="hidden" name="search" value="1"><input type="hidden" name="product_search" value="' . $_POST['product_search'] . '">' : '') . '</td>' . "\n" .
            '          </tr>' . "\n" .
            '          </form>' . "\n";
     } else {
@@ -454,7 +454,7 @@ $products['products_price']=$products_price['plain'];
 		 '          </tr>' . "\n" . 
 		 '          <tr class="dataTableRow">' . "\n" .
 		 '             <td></td>' . "\n" . 
-		 '             <td colspan="2"><span class="button"><button type="submit" value="' . TEXT_BUTTON_ADD_PRODUCT . '">' . TEXT_BUTTON_ADD_PRODUCT . '</button></span>' . "\n" .
+		 '             <td colspan="2"><span class="button"><button type="submit" value="' . TEXT_BUTTON_ADD_PRODUCT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . TEXT_BUTTON_ADD_PRODUCT . '</button></span>' . "\n" .
 		 '           ';
     if (isset($_POST['add_product_options'])) {
       foreach($_POST['add_product_options'] as $option_id => $option_value_id) {
