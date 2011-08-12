@@ -161,7 +161,7 @@ function popupWindow(url) {
                   <td colspan="4"><?php echo vam_draw_separator(); ?></td>
                 </tr>
                 <tr>
-                  <td align="right" class="dataTableContent" colspan="4"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, 'acID=' . $_GET['acID']) . '"><span>' . IMAGE_CLICKTHROUGHS . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SALES, 'acID=' . $_GET['acID']) . '"><span>' . IMAGE_SALES . '</span></a>'; ?></td>
+                  <td align="right" class="dataTableContent" colspan="4"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, 'acID=' . $_GET['acID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12') . '&nbsp;' . IMAGE_CLICKTHROUGHS . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SALES, 'acID=' . $_GET['acID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12') . '&nbsp;' . IMAGE_SALES . '</span></a>'; ?></td>
                 </tr>
               </center>
             </table></td>

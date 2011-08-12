@@ -920,14 +920,14 @@ document.onmousemove=positiontip
 			 <?php if (ORDER_EDITOR_USE_AJAX == 'true') { ?>
 			  <script language="JavaScript" type="text/javascript"><!--
 			  //this button only works with javascript and is therefore only displayed on browsers with javascript enabled
-              document.write("<li><a class=\"button\" href=\"javascript:newOrderEmail()\"><span><?php echo BUTTON_SEND_EMAIL; ?></span></a></li>");
+              document.write("<li><a class=\"button\" href=\"javascript:newOrderEmail()\"><span><img src=\"images/icons/buttons/submit.png\" border=\"0\" alt=\"\" width=\"12\" height=\"12\">&nbsp;<?php echo BUTTON_SEND_EMAIL; ?></span></a></li>");
 	           //--></script>
 			   <?php } ?>
 				  
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_INVOICE . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank" class="button"><span>' . BUTTON_PACKINGSLIP . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '" class="button"><span>' . BUTTON_BACK_TO_ORDER . '</span></a>'; ?></li>
-		    <li><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '" class="button"><span>' . BUTTON_BACK_TO_ORDERS_LIST . '</span></a> '; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/payment.png', '', '12', '12') . '&nbsp;' . BUTTON_INVOICE . '</span></a>'; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/shipping.png', '', '12', '12') . '&nbsp;' . BUTTON_PACKINGSLIP . '</span></a>'; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK_TO_ORDER . '</span></a>'; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK_TO_ORDERS_LIST . '</span></a> '; ?></li>
 		  </ul>
       
 	  </div>
@@ -1571,7 +1571,7 @@ document.onmousemove=positiontip
 
 				  <br>
 				    <div>
-					  <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><span><?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
+					  <a class="button" href="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>" target="addProducts" onClick="openWindow('<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID'] . '&cID=' . $_GET['cID'] . '&step=1'); ?>','addProducts');return false"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_ADD_NEW_PRODUCT; ?></span></a><input type="hidden" name="subaction" value="">
 				    </div>
 				  <br>
 				  			

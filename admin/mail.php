@@ -190,7 +190,7 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><span class="button"><button type="submit" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')" value="<?php echo BUTTON_BACK; ?>" name="back"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_BACK; ?></button></span></td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MAIL) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="'.BUTTON_SEND_EMAIL.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND_EMAIL . '</button></span>' ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MAIL) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="'.BUTTON_SEND_EMAIL.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND_EMAIL . '</button></span>' ?></td>
                   </tr>
                 </table></td>
               </tr>

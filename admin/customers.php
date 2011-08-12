@@ -1105,7 +1105,7 @@ if ($error == true) {
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td align="right" class="main"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span><?php echo ' <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="main"><span class="button"><button type="submit" value="<?php echo BUTTON_UPDATE; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_UPDATE; ?></button></span><?php echo ' <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array('action'))) .'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </tr></form>
 <?php
 
@@ -1149,7 +1149,7 @@ if ($error == true) {
         
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS_EXPORT) . '"><span>' . BUTTON_CUSTOMERS_EXPORT . '</span></a>'; ?></td>
+            <td class="pageHeading" align="left"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CREATE_ACCOUNT) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/account.png', '', '12', '12') . '&nbsp;' . BUTTON_CREATE_ACCOUNT . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS_EXPORT) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/export.png', '', '12', '12') . '&nbsp;' . BUTTON_CUSTOMERS_EXPORT . '</span></a>'; ?></td>
             <td class="smallText" align="right"></tr>
         </table></td>
       </tr>
@@ -1305,7 +1305,7 @@ if ($error == true) {
 	if (vam_not_null($_GET['search'])) {
 ?>
                   <tr>
-                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS) . '"><span>' . BUTTON_RESET . '</span></a>'; ?></td>
+                    <td align="right" colspan="2"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_RESET . '</span></a>'; ?></td>
                   </tr>
 <?php
 
@@ -1326,7 +1326,7 @@ if ($error == true) {
 			$contents[] = array ('text' => TEXT_DELETE_INTRO.'<br /><br /><b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
 			if ($cInfo->number_of_reviews > 0)
 				$contents[] = array ('text' => '<br />'.vam_draw_checkbox_field('delete_reviews', 'on', true).' '.sprintf(TEXT_DELETE_REVIEWS, $cInfo->number_of_reviews));
-			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_DELETE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
+			$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_DELETE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' .BUTTON_CANCEL.'</span></a>');
 			break;
 
 		case 'editstatus' :
@@ -1348,7 +1348,7 @@ if ($error == true) {
 					$contents[] = array ('text' => '<tr>'."\n".' <td class="smallText" colspan="2">'.TEXT_NO_CUSTOMER_HISTORY.'</td>'."\n".' </tr>'."\n");
 				}
 				$contents[] = array ('text' => '</table>');
-				$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_UPDATE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_CANCEL.'</span></a>');
+				$contents[] = array ('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="'.BUTTON_UPDATE.'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' .BUTTON_CANCEL.'</span></a>');
 				$status = vam_db_prepare_input($_POST['status']); // maybe this line not needed to recheck...
 			}
 			break;
@@ -1374,24 +1374,24 @@ if ($error == true) {
 			if (is_object($cInfo)) {
 				$heading[] = array ('text' => '<b>'.$cInfo->customers_firstname.' '.$cInfo->customers_lastname.'</b>');
 				if ($cInfo->customers_id != 1) {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=edit').'"><span>'.BUTTON_EDIT.'</span></a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=edit').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' .BUTTON_EDIT.'</span></a>');
 				}
 				if ($cInfo->customers_id == 1 && $_SESSION['customer_id'] == 1) {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=edit').'"><span>'.BUTTON_EDIT.'</span></a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=edit').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' .BUTTON_EDIT.'</span></a>');
 				}
 				if ($cInfo->customers_id != 1) {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=confirm').'"><span>'.BUTTON_DELETE.'</span></a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=confirm').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' .BUTTON_DELETE.'</span></a>');
 				}
 				if ($cInfo->customers_id != 1 /*&& $_SESSION['customer_id'] == 1*/
 					) {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=editstatus').'"><span>'.BUTTON_STATUS.'</span></a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=editstatus').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/customer_status.png', '', '12', '12') . '&nbsp;' .BUTTON_STATUS.'</span></a>');
 				}
 				// elari cs v3.x changed for added accounting module
 				if ($cInfo->customers_id != 1) {
-					$contents[] = array ('align' => 'center', 'text' => '<a class="button" ' . ($cs_id != 0 ? 'onClick="alert(\'Сначала определите пользователя в группу Админ (кнопка Статус покупателя)!\nДоступ в админку можно настраивать только для пользователей, состоящих в группе Админ.\');"' : '') . ' href="'.vam_href_link(FILENAME_ACCOUNTING, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>'.BUTTON_ACCOUNTING.'</span></a>');
+					$contents[] = array ('align' => 'center', 'text' => '<a class="button" ' . ($cs_id != 0 ? 'onClick="alert(\'Сначала определите пользователя в группу Админ (кнопка Статус покупателя)!\nДоступ в админку можно настраивать только для пользователей, состоящих в группе Админ.\');"' : '') . ' href="'.vam_href_link(FILENAME_ACCOUNTING, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/gear.png', '', '12', '12') . '&nbsp;' .BUTTON_ACCOUNTING.'</span></a>');
 				}
 				// elari cs v3.x changed for added iplog module
-				$contents[] = array ('align' => 'center', 'text' => '<table><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_ORDERS, 'cID='.$cInfo->customers_id).'"><span>'.BUTTON_ORDERS.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_MAIL, 'selected_box=tools&customer='.$cInfo->customers_email_address).'"><span>'.BUTTON_EMAIL.'</span></a></td></tr><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=iplog').'"><span>'.BUTTON_IPLOG.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=new_order').'" onClick="return confirm(\''.NEW_ORDER.'\')"><span>'.BUTTON_NEW_ORDER.'</span></a></td></tr></table>');
+				$contents[] = array ('align' => 'center', 'text' => '<table><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_ORDERS, 'cID='.$cInfo->customers_id).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' .BUTTON_ORDERS.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_MAIL, 'selected_box=tools&customer='.$cInfo->customers_email_address).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/email.png', '', '12', '12') . '&nbsp;' .BUTTON_EMAIL.'</span></a></td></tr><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=iplog').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/ip.png', '', '12', '12') . '&nbsp;' .BUTTON_IPLOG.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=new_order').'" onClick="return confirm(\''.NEW_ORDER.'\')"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' .BUTTON_NEW_ORDER.'</span></a></td></tr></table>');
 
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ACCOUNT_CREATED.' '.vam_date_short($cInfo->date_account_created));
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ACCOUNT_LAST_MODIFIED.' '.vam_date_short($cInfo->date_account_last_modified));

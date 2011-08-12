@@ -353,7 +353,7 @@ function display_ttc(action, prix, taxe, up){
 									   	<td align="center"><?php
 										 if ($preview_global_price != true) {
 												echo '&nbsp;<span class="button"><button type="submit" value="' . BUTTON_PREVIEW .'" page="' . $page . '&sort_by=' . $sort_by . '&cPath=' . $current_category_id . '&row_by_page=' . $row_by_page . '&manufacturer=' . $manufacturer . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span>';
-										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '"><span>' . BUTTON_CANCEL . '</span></a>'; } ?></td>
+										 } else { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES, "page=$page&sort_by=$sort_by&cPath=$current_category_id&row_by_page=$row_by_page&manufacturer=$manufacturer") . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; } ?></td>
 									 	 <?php if(ACTIVATE_COMMERCIAL_MARGIN == 'true'){ echo '<td align="center">&nbsp;&nbsp;' . vam_draw_checkbox_field('marge','yes','','no') . ' ' . TEXT_MARGE_INFO;}?>
 									 </tr>
 									 <tr>
@@ -685,7 +685,7 @@ function display_ttc(action, prix, taxe, up){
 <td colspan="15">
 <?php
 		 //// display bottom page buttons
-    echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties"><span>' . BUTTON_CANCEL . '</span></a> ';
+    echo '<a class="button" href="' . vam_href_link(FILENAME_QUICK_UPDATES,"row_by_page=$row_by_page") . '" id="box_properties"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a> ';
 ?><span class="button"><button type="button" value="<?php echo PRINT_TEXT?>" title="<?php echo PRINT_TEXT?>" onclick="print();" id="box_properties_input"><?php echo PRINT_TEXT; ?></button></span>
 </td>
 <td colspan="3">

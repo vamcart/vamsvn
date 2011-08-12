@@ -320,7 +320,7 @@ $manual_link = 'edit-infopage';
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new') { ?><?php if ($_GET['action'] != 'edit') { ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><span><?php echo BUTTON_NEW_CONTENT;  ?></span></a><?php } } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_INFOPAGES.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new') { ?><?php if ($_GET['action'] != 'edit') { ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_NEW_CONTENT;  ?></span></a><?php } } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_INFOPAGES.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
     
@@ -793,7 +793,7 @@ echo vam_draw_textarea_field('cont','','100%','35',$content['content_text']);
    </tr>
  
     <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
 </table>
 </form>
@@ -981,7 +981,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 }
 ?>
        <tr>
-        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
+        <td colspan="2" align="right" class="main"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>'; ?><a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_BACK; ?></span></a></td>
    </tr>
    </form>
    </table>
@@ -997,7 +997,7 @@ echo '<input type="checkbox" '.$check_all.' name="groups[]" value="'.$customers_
 if (!$_GET['action']) {
 ?>
 <br />
-<a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><span><?php echo BUTTON_NEW_CONTENT; ?></span></a>
+<a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new'); ?>"><span><?php echo  vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_NEW_CONTENT; ?></span></a>
 <?php
 }
 ?>
@@ -1185,7 +1185,7 @@ echo '</table></td></tr>';
        
  </table>
  <br />
- <a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><span><?php echo BUTTON_NEW_CONTENT; ?></span></a>                 
+ <a class="button" href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER,'action=new_products_content'); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_NEW_CONTENT; ?></span></a>                 
  <?php
 } // if !$_GET['action']
 ?>       

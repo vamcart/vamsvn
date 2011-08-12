@@ -54,7 +54,7 @@ function getParent($catID) {
             <td class="pageHeading" align="right"><?php echo vam_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
           <tr>
-            <td colspan="2"><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><span><?php echo BUTTON_BACK; ?></span></a></td>
+            <td colspan="2"><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES,'cPath='.$_GET['cpath'].'&pID='.$_GET['current_product_id']); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12'); ?> &nbsp;<?php echo BUTTON_BACK; ?></span></a></td>
           </tr>
         </table></td>
       </tr>

@@ -168,7 +168,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="5" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
+                    <td colspan="5" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
                   </tr>
 <?php
   }
@@ -195,7 +195,7 @@
 				$pay_menu .= '<br />' . vam_draw_checkbox_field('pay_ids[]', $file, false) . $title;
 			}
       $contents[] = array('text' => '<br>' . TEXT_INFO_PAYMENTS . $pay_menu);
-      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'edit':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_SHP2PAY . '</b>');
@@ -213,7 +213,7 @@
 				$pay_menu .= '<br />' . vam_draw_checkbox_field('pay_ids[]', $file, (in_array($file, $allowed) ? true : false)) . $title;
 			}
       $contents[] = array('text' => '<br>' . TEXT_INFO_PAYMENTS . $pay_menu);
-      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_SHP2PAY . '</b>');
@@ -221,13 +221,13 @@
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
       $contents[] = array('text' => '<br>' . TEXT_INFO_PAYMENTS_ALLOWED . '<br><b>' . $shipping_modules[$trInfo->shipment] . ' >> <br></b>');
       $contents[] = array('text' => '<br><b>' . vam_get_zone_class_title($trInfo->zones_id) . '<br>' . vam_p2s_module_name($trInfo->payments_allowed) . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>' . '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       if (is_object($trInfo)) {
         $heading[] = array('text' => '<b>' . $shipping_modules[$trInfo->shipment] . '</b>');
-        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id . '&action=edit') . '"><span>' . BUTTON_EDIT . '</span></a>' .
-                                                           '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id . '&action=delete') . '"><span>' . BUTTON_DELETE . '</span></a>'
+        $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>' .
+                                                           '<a class="button" href="' . vam_href_link(FILENAME_SHIP2PAY, 'page=' . $_GET['page'] . '&s2p_id=' . $trInfo->s2p_id . '&action=delete') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'
                                                            );
         $contents[] = array('text' => '<br>' . TEXT_INFO_PAYMENTS_ALLOWED . '<br><b>' . vam_get_zone_class_title($trInfo->zones_id) .'</b>');
         $contents[] = array('text' => '<b>' . vam_p2s_module_name($trInfo->payments_allowed) .'</b>');
