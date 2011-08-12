@@ -145,7 +145,7 @@ function update_zone(theForm) {
 <?php 
 $manual_link = 'add-tax-zone';
 ?>
-            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_TAX.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right"><a class="button" href="<?php echo MANUAL_LINK_TAX.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
     

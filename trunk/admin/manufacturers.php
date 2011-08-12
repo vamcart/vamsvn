@@ -186,7 +186,7 @@ $manual_link = 'delete-manufacturer';
 <?php
   }
 ?>            
-            <a class="button" href="<?php echo MANUAL_LINK_MANUFACTURERS.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <a class="button" href="<?php echo MANUAL_LINK_MANUFACTURERS.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
 

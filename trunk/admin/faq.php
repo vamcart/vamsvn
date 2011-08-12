@@ -123,7 +123,7 @@ $manual_link = 'delete-faq';
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new_faq') { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . BUTTON_INSERT . '</span></a>'; } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_FAQ.'#'.$manual_link; ?>" target="_blank"><span><?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new_faq') { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . BUTTON_INSERT . '</span></a>'; } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_FAQ.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
   
