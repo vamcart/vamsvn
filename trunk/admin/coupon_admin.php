@@ -363,7 +363,7 @@ $customer = vam_db_fetch_array($customer_query);
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
                     <td><?php ?>&nbsp;</td>
-                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '"><span>' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND_MAIL . '</button></span>'; ?></td>
+                    <td align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_COUPON_ADMIN) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_SEND_EMAIL . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_SEND_MAIL . '</button></span>'; ?></td>
                   </tr>
                 </table></td>
               </tr>
@@ -714,7 +714,7 @@ $customer = vam_db_fetch_array($customer_query);
       </tr>
       <tr>
         <td align="left"><?php echo '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span>'; ?></td>
-        <td align="left"><?php echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link('coupon_admin.php', ''); ?>"><span><?php echo BUTTON_CANCEL; ?></span></a>
+        <td align="left"><?php echo '&nbsp;&nbsp;<a class="button" href="' . vam_href_link('coupon_admin.php', ''); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12');?>&nbsp;<?php echo BUTTON_CANCEL; ?></span></a>
       </td>
       </tr>
       </td></table></form>
@@ -809,7 +809,7 @@ $customer = vam_db_fetch_array($customer_query);
               </tr>
             <?php } ?>
               <tr>
-                <td align="right" colspan="2" class="smallText"><?php echo '<a class="button" href="' . vam_href_link('coupon_admin.php', 'page=' . $_GET['page'] . '&cID=' . $cInfo->coupon_id . '&action=new') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?></td>
+                <td align="right" colspan="2" class="smallText"><?php echo '<a class="button" href="' . vam_href_link('coupon_admin.php', 'page=' . $_GET['page'] . '&cID=' . $cInfo->coupon_id . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
             </table></td>
           </tr>

@@ -38,7 +38,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         <td width="142" class="main" style="border: 1px solid; border-color: #cccccc;"><?php echo $memo_values['memo_text']; ?></td>
       </tr>
       <tr>
-        <td><a class="button" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, 'cID=' . $_GET['cID'] . '&action=edit&special=remove_memo&mID=' . $memo_values['memo_id']); ?>" onClick="return confirm('<?php echo DELETE_ENTRY; ?>')"><span><?php echo BUTTON_DELETE; ?></span></a></td>
+        <td><a class="button" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, 'cID=' . $_GET['cID'] . '&action=edit&special=remove_memo&mID=' . $memo_values['memo_id']); ?>" onClick="return confirm('<?php echo DELETE_ENTRY; ?>')"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_DELETE; ?></span></a></td>
       </tr>
     </table>
 <?php

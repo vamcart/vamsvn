@@ -170,12 +170,12 @@
     case 'release':
       $heading[] = array('text' => '[' . $gInfo->unique_id . '] ' . vam_datetime_short($gInfo->date_created) . ' ' . $currencies->format($gInfo->amount));
 
-      $contents[] = array('align' => 'center', 'text' => '<a class="button" style="font-color: red;" href="' . vam_href_link('gv_queue.php','action=confirmrelease&gid='.$gInfo->unique_id,'NONSSL').'"><span>'. BUTTON_CONFIRM . '</span></a> <a class="button" href="' . vam_href_link('gv_queue.php','action=cancel&gid=' . $gInfo->unique_id,'NONSSL') . '"><span>' . BUTTON_CANCEL . '</span></a>');
+      $contents[] = array('align' => 'center', 'text' => '<a class="button" style="font-color: red;" href="' . vam_href_link('gv_queue.php','action=confirmrelease&gid='.$gInfo->unique_id,'NONSSL').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_CONFIRM . '</span></a> <a class="button" href="' . vam_href_link('gv_queue.php','action=cancel&gid=' . $gInfo->unique_id,'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
     default:
       $heading[] = array('text' => '[' . $gInfo->unique_id . '] ' . vam_datetime_short($gInfo->date_created) . ' ' . $currencies->format($gInfo->amount));
 
-      $contents[] = array('align' => 'center','text' => '<a class="button" href="' . vam_href_link('gv_queue.php','action=release&gid=' . $gInfo->unique_id,'NONSSL'). '"><span>' . BUTTON_RELEASE . '</span></a>');
+      $contents[] = array('align' => 'center','text' => '<a class="button" href="' . vam_href_link('gv_queue.php','action=release&gid=' . $gInfo->unique_id,'NONSSL'). '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_RELEASE . '</span></a>');
       break;
    }
 

@@ -121,7 +121,7 @@ for ($col = 0, $n = sizeof($group_data); $col < $n +1; $col ++) {
                         }
 ?>
  </td>
-                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&function=delete&quantity=' . $staffel_values['quantity'] . '&statusID=' . $group_data[$col]['STATUS_ID'] . '&action=new_product&pID=' . $_GET['pID']); ?>"><span><?php echo BUTTON_DELETE; ?></span></a></td>
+                <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?><a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&function=delete&quantity=' . $staffel_values['quantity'] . '&statusID=' . $group_data[$col]['STATUS_ID'] . '&action=new_product&pID=' . $_GET['pID']); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12'); ?> &nbsp;<?php echo BUTTON_DELETE; ?></span></a></td>
               </tr>
 <?php
                 }

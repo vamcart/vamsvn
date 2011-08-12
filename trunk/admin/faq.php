@@ -123,7 +123,7 @@ $manual_link = 'delete-faq';
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new_faq') { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . BUTTON_INSERT . '</span></a>'; } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_FAQ.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
+            <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'new_faq') { echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; } ?>&nbsp;<a class="button" href="<?php echo MANUAL_LINK_FAQ.'#'.$manual_link; ?>" target="_blank"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/information.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_MANUAL_LINK; ?></span></a></td>
           </tr>
         </table>
   
@@ -212,7 +212,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       <tr>
         <td class="main" align="right">
           <?php
-            isset($_GET['faq_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $_GET['faq_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>' : $cancel_button = '';
+            isset($_GET['faq_id']) ? $cancel_button = '&nbsp;&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'faq_id=' . $_GET['faq_id']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>' : $cancel_button = '';
             echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' .BUTTON_INSERT . '</button></span>' . $cancel_button;
           ?>
         </td>
@@ -275,7 +275,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
                 <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo '<br>' . TEXT_FAQ_ITEMS . '&nbsp;' . $faq_count; ?></td>
-                    <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . BUTTON_INSERT . '</span></a>'; ?>&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_FAQ, 'action=new_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?>&nbsp;</td>
                   </tr>																																		  
                 </table></td>
               </tr>
@@ -300,7 +300,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         $contents[] = array('text'  => '<br><b>' . $selected_item['question'] . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $selected_item['faq_id']) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $selected_item['faq_id']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
@@ -309,7 +309,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
             $heading[] = array('text' => '<b>' . $fInfo->question . '</b>');
 
             $contents[] = array('align' => 'center', 
-                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=new_faq') . '"><span>' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=delete_faq') . '"><span>' . BUTTON_DELETE . '</span></a>');
+                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=new_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=delete_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 
             $contents[] = array('text' => '<br>' . $fInfo->answer);
           }

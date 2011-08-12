@@ -181,7 +181,7 @@ class cip_manager {
             }
             $contents[] = array('text' => '<br>' . $file_upload);
             $contents[] = array('align' =>'left',
-                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<span class="button"><button type="submit" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPLOAD .'</button></span>' : '') . '&nbsp;<a class="button" href="' . vam_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '"><span>' . BUTTON_CANCEL . '</span></a><br /><br />');
+                  'text'=>'<br>'.(($this->upload_directory_writeable()) ? '<span class="button"><button type="submit" value="&nbsp;' . BUTTON_UPLOAD .'&nbsp;">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_UPLOAD .'</button></span>' : '') . '&nbsp;<a class="button" href="' . vam_href_link($this->script_name(), (isset($this->cip) ? 'cip=' . urlencode($this->cip) : '')) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a><br /><br />');
             break;
 
         default:
