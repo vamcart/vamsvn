@@ -1195,7 +1195,7 @@ $manual_link = 'copy-article';
 
         $contents[] = array('text' => '<br>' . TEXT_TOPICS_NAME . $topic_inputs_string);
         $contents[] = array('text' => '<br>' . TEXT_SORT_ORDER . '<br>' . vam_draw_input_field('sort_order', '', 'size="2"'));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'edit_topic':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_EDIT_TOPIC . '</b>');
@@ -1211,7 +1211,7 @@ $manual_link = 'copy-article';
 
         $contents[] = array('text' => '<br>' . TEXT_EDIT_TOPICS_NAME . $topic_inputs_string);
         $contents[] = array('text' => '<br>' . TEXT_EDIT_SORT_ORDER . '<br>' . vam_draw_input_field('sort_order', $tInfo->sort_order, 'size="2"'));
-        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br>' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath . '&tID=' . $tInfo->topics_id) . '"><span>' . BUTTON_CANCEL . '</span></a>');
         break;
       case 'delete_topic':
         $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_DELETE_TOPIC . '</b>');

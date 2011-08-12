@@ -59,7 +59,7 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 
   echo "<TR>";
   echo "<TD class=\"main\">";
-  echo vam_button(BUTTON_EDIT);
+  echo '<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</button></span>';
 
   echo "</TD>";
   echo "</TR>";
@@ -87,7 +87,7 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
   }
   echo '</select></td></tr>';
   echo "<TR>";
-  echo "<TD class=\"main\">".vam_button(BUTTON_EDIT)."</TD>";
+  echo "<TD class=\"main\">".'<span class="button"><button type="submit" value="' . BUTTON_EDIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</button></span>'."</TD>";
   echo "</TR>";
 
 ?>

@@ -282,7 +282,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                     <td class="main" colspan="3"><br /><?php echo TEXT_WARNING_OF_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td class="main" align="right" colspan="3"><br /><?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL'));?>&nbsp;</td>
+                    <td class="main" align="right" colspan="3"><br /><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
                   </tr>
 <?php
 
@@ -292,7 +292,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                     <td class="main" colspan="3"><br /><?php echo TEXT_OK_TO_DELETE; ?></td>
                   </tr>
                   <tr>
-                    <td class="main" align="right" colspan="3"><br /><?php echo vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=delete_value&value_id=' . $_GET['value_id'], 'NONSSL')); ?>&nbsp;&nbsp;&nbsp;<?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '&option_page=' . $option_page . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL'));?>&nbsp;</td>
+                    <td class="main" align="right" colspan="3"><br /><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=delete_value&value_id=' . $_GET['value_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;&nbsp;&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, '&option_page=' . $option_page . '&value_page=' . $_GET['value_page'] . '&attribute_page=' . $attribute_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
                   </tr>
 <?php
 
@@ -529,7 +529,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 			}
 ?>
 <tr class="dataTableRowSelected">
-	<td align="center" colspan="3" class="dataTableContent">&nbsp;<?php echo vam_button(BUTTON_UPDATE); ?>&nbsp;<?php echo vam_button_link(BUTTON_CANCEL, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'value_page='.$_GET['value_page'], 'NONSSL')); ?>&nbsp;</td>
+	<td align="center" colspan="3" class="dataTableContent">&nbsp;<?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/update.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'value_page='.$_GET['value_page'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
 </tr>
 </table>
 <hr size="4" noshade>
@@ -542,7 +542,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                 <td align="center" class="smallText">&nbsp;<?php echo $values_values["products_options_values_id"]; ?>&nbsp;</td>
                 <td align="center" class="smallText">&nbsp;<?php echo $options_name; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $values_name; ?>&nbsp;</td>
-                <td align="center" class="smallText">&nbsp;<?php echo vam_button_link(BUTTON_EDIT, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'], 'NONSSL')); ?>&nbsp;&nbsp;<?php echo vam_button_link(BUTTON_DELETE, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=delete_option_value&value_id=' . $values_values['products_options_values_id'], 'NONSSL')); ?>&nbsp;</td>
+                <td align="center" class="smallText">&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=update_option_value&value_id=' . $values_values['products_options_values_id'] . '&value_page=' . $_GET['value_page'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'action=delete_option_value&value_id=' . $values_values['products_options_values_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;</td>
 <?php
 
 		}
@@ -627,7 +627,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
 		}
 ?>
 <tr class="dataTableRowSelected">
-<td align="center" class="dataTableContent" colspan="3">&nbsp;<?php echo vam_button(BUTTON_INSERT); ?>&nbsp;</td>
+<td align="center" class="dataTableContent" colspan="3">&nbsp;<?php echo '<span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span>'; ?>&nbsp;</td>
 </tr>
 </table>
 <hr size="4" noshade>
@@ -642,7 +642,7 @@ if ($_GET['action'] == 'delete_option_value') { // delete product option value
                 <td colspan="7"><?php echo vam_black_line(); ?></td>
               </tr>
               <tr>
-                <td align="right" colspan="7"><?php echo vam_button_link(BUTTON_IMAGE_PROCESSING, vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'status=image_processing', 'NONSSL')); ?></td>
+                <td align="right" colspan="7"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_ATTRIBUTES, 'status=image_processing', 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_IMAGE_PROCESSING . '</span></a>'; ?></td>
               </tr>
 <?php
 

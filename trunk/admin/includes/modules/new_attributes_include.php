@@ -148,8 +148,8 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
   <tr>
     <td colspan="10" class="main"><br>
 <?php
-echo vam_button(BUTTON_SAVE) . '&nbsp;';
-echo vam_button_link(BUTTON_CANCEL,'javascript:history.back()');
+echo '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . '&nbsp;';
+echo '<a class="button" href="javascript:history.back()"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>';
 ?>
 </td>
   </tr>
