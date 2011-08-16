@@ -572,9 +572,10 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_ALLOWED', '', '6', '2', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_ID', '', '6', '3', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_ACCESS_KEY', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SERVICE_ID', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SORT_ORDER', '0', '6', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AVISO_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SECURE_HASH', '', '6', '5', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SERVICE_ID', '', '6', '6', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_AVISO_SORT_ORDER', '0', '6', '7', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_AVISO_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_AVISO_ORDER_STATUS_ID', '0', '6', '9', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
@@ -583,7 +584,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_AVISO_STATUS', 'MODULE_PAYMENT_AVISO_ALLOWED', 'MODULE_PAYMENT_AVISO_ID', 'MODULE_PAYMENT_AVISO_ACCESS_KEY', 'MODULE_PAYMENT_AVISO_SERVICE_ID', 'MODULE_PAYMENT_AVISO_SORT_ORDER', 'MODULE_PAYMENT_AVISO_ZONE', 'MODULE_PAYMENT_AVISO_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_AVISO_STATUS', 'MODULE_PAYMENT_AVISO_ALLOWED', 'MODULE_PAYMENT_AVISO_ID', 'MODULE_PAYMENT_AVISO_ACCESS_KEY', 'MODULE_PAYMENT_AVISO_SECURE_HASH', 'MODULE_PAYMENT_AVISO_SERVICE_ID', 'MODULE_PAYMENT_AVISO_SORT_ORDER', 'MODULE_PAYMENT_AVISO_ZONE', 'MODULE_PAYMENT_AVISO_ORDER_STATUS_ID');
     }
 
   }

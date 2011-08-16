@@ -30,6 +30,8 @@ define('MODULE_PAYMENT_AVISO_ID_TITLE' , 'Ваш логин в AvisoSMS:');
 define('MODULE_PAYMENT_AVISO_ID_DESC' , 'Укажите Ваше имя пользователя в системе AvisoSMS Мобильная коммерция.');
 define('MODULE_PAYMENT_AVISO_ACCESS_KEY_TITLE' , 'Ключ доступа:');
 define('MODULE_PAYMENT_AVISO_ACCESS_KEY_DESC' , 'Укажите ключ доступа (В личном кабинете AvisoSMS указывается, в разделе Настройки - Настройки удалённого доступа)');
+define('MODULE_PAYMENT_AVISO_SECURE_HASH_TITLE' , 'SECURE_HASH:');
+define('MODULE_PAYMENT_AVISO_SECURE_HASH_DESC' , 'Укажите Ваше значение опции SECURE_HASH');
 define('MODULE_PAYMENT_AVISO_SERVICE_ID_TITLE' , 'ID номер магазина:');
 define('MODULE_PAYMENT_AVISO_SERVICE_ID_DESC' , 'Укажите ID номер Вашего магазина (ID номер виден в личном кабинете AvisoSMS, в разделе Биллинг - Мобильная коммерция, в списке магазинов виден ID номер)');
 define('MODULE_PAYMENT_AVISO_SORT_ORDER_TITLE' , 'Порядок сортировки');
