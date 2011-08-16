@@ -92,6 +92,7 @@ class AvisosmsMCommerce {
      *      $m_commerce->debug = TRUE;
      *
      * @param   string  Имя пользователя в системе AvisoSMS.
+     * @param   string  Подпись
      * @param   string  Ключ доступа. Указывается в настройках платформы.
      * @param   string  ID сервиса. Указывается в личном кабинете.
      *
@@ -130,7 +131,7 @@ class AvisosmsMCommerce {
      *
      * @return  boolean Возвращает TRUE, если status = 0, иначе FALSE
      */
-    function createOrder($hash, $description, $price, $success_message, $phone, $merchant_order_id = '')
+    function createOrder($description, $price, $success_message, $phone, $merchant_order_id = '')
     {
         $data = array(
             'username'          => $this->username,
