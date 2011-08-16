@@ -328,11 +328,12 @@ require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
  */
 
 $username = MODULE_PAYMENT_AVISO_ID;
+$sign = md5(($_SESSION['aviso_telephone'] == '' ? $_POST['aviso_telephone'] : $_SESSION['aviso_telephone']).MODULE_PAYMENT_AVISO_SERVICE_ID.MODULE_PAYMENT_AVISO_ID.MODULE_PAYMENT_AVISO_SECURE_HASH);
 $access_key = MODULE_PAYMENT_AVISO_ACCESS_KEY;
 $service_id = MODULE_PAYMENT_AVISO_SERVICE_ID;
 
 // Создаем новый объект для работы с avisosms m_commerce
-$m_commerce = new AvisosmsMCommerce($username, $access_key, $service_id);
+$m_commerce = new AvisosmsMCommerce($username, $sign, $access_key, $service_id);
 // Включаем тестовый режим
 $m_commerce->test = FALSE;
 

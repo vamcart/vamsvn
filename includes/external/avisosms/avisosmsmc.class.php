@@ -21,6 +21,11 @@ class AvisosmsMCommerce {
     public $username    = NULL;
 
     /**
+     * @var  Подпись
+     */
+    public $sign  = NULL;
+
+    /**
      * @var  Ключ доступа. Указывается в настройках аккаунта (Настройки удалённого доступа)
      */
     public $access_key  = NULL;
@@ -92,9 +97,10 @@ class AvisosmsMCommerce {
      *
      * @return  boolean TRUE
      */
-    function AvisosmsMCommerce($username, $access_key, $service_id)
+    function AvisosmsMCommerce($username, $sign, $access_key, $service_id)
     {
         $this->username     = $username;
+        $this->sign   = $sign;
         $this->access_key   = $access_key;
         $this->service_id   = $service_id;
         return TRUE;
@@ -124,10 +130,11 @@ class AvisosmsMCommerce {
      *
      * @return  boolean Возвращает TRUE, если status = 0, иначе FALSE
      */
-    function createOrder($description, $price, $success_message, $phone, $merchant_order_id = '')
+    function createOrder($hash, $description, $price, $success_message, $phone, $merchant_order_id = '')
     {
         $data = array(
             'username'          => $this->username,
+            'sign'        => $this->sign,
             'access_key'        => $this->access_key,
             'description'       => $description,
             'price'             => (float)number_format($price, 2, '.', ''),
