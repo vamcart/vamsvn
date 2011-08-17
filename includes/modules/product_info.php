@@ -29,6 +29,8 @@ require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
+require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
+  
 $info = new vamTemplate;
 $info->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
@@ -275,6 +277,8 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 		include (DIR_WS_MODULES.FILENAME_PRODUCTS_MEDIA);
 		include (DIR_WS_MODULES.FILENAME_ALSO_PURCHASED_PRODUCTS);
 		include (DIR_WS_MODULES.FILENAME_CROSS_SELLING);
+
+		include_once (DIR_WS_MODULES . FILENAME_PRODUCTS_SPECIFICATIONS);
 	
 	if ($product->data['product_template'] == '' or $product->data['product_template'] == 'default') {
 		$files = array ();
