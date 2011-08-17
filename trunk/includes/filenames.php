@@ -126,4 +126,12 @@ define('FILENAME_CHECKOUT_ALTERNATIVE', 'checkout_alternative.php');
 
 define('FILENAME_PRODUCT_COMPARE', 'product_compare.php');
 
+// Start Product Specifications
+  define('FILENAME_COMPARISON', 'comparison.php');
+  define('FILENAME_PRODUCTS_SPECIFICATIONS', 'products_specifications.php');
+  define('FILENAME_PRODUCTS_FILTERS', 'products_filter.php');
+  define('FILENAME_PRODUCTS_TABS', 'products_tabs.php');
+  define('FILENAME_ASK_A_QUESTION', 'ask_a_question.php');
+// End Product Specifications
+
 ?>

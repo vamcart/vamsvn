@@ -129,5 +129,17 @@
 define('TABLE_SPSR_ZONES', 'spsr_zones');
 
 define('TABLE_PRODUCTS_PINS', 'products_pins');  
+
+// Start Products Specifications
+  define('TABLE_PRODUCTS_SPECIFICATIONS', 'products_specifications');
+  define('TABLE_SPECIFICATION', 'specifications');
+  define('TABLE_SPECIFICATION_DESCRIPTION', 'specification_description');
+  define('TABLE_SPECIFICATION_GROUPS', 'specification_groups');
+  define('TABLE_SPECIFICATIONS_FILTERS', 'specification_filters');
+  define('TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION', 'specification_filters_description');
+  define('TABLE_SPECIFICATIONS_TO_CATEGORIES', 'specification_groups_to_categories');
+  define('TABLE_SPECIFICATIONS_VALUES', 'specification_values');
+  define('TABLE_SPECIFICATIONS_VALUES_DESCRIPTION', 'specification_values_description');
+// End Products Specifications
   
 ?>

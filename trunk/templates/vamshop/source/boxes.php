@@ -17,7 +17,7 @@
   define('DIR_WS_BOXES',DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/');
 
 if (isset($_GET['cat']) && isset($current_category_id)) {
-  if (SET_BOX_FILTERS == 'true') include(DIR_WS_BOXES . 'params_filters.php');
+  if (SET_BOX_FILTERS == 'true') include(DIR_WS_BOXES . 'products_filter.php');
 }
 
   if (SET_BOX_AFFILIATE == 'true') include(DIR_WS_BOXES . 'affiliate.php');

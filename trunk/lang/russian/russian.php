@@ -639,4 +639,14 @@ define('text_two_trillion', 'два триллиона');
 
 define('PIN_NOT_AVAILABLE', 'Товар закончился на складе. Отправлено уведомление на почту.');
 
+// Start Products Specifications
+// Products Filter box text in includes/boxes/products_filter.php
+define('BOX_HEADING_PRODUCTS_FILTER', 'Фильтры');
+define('TEXT_SHOW_ALL', 'Показать все');
+define('TEXT_FIND_PRODUCTS', 'Найти подходящие товары');
+// End Products Specifications
+
+// Products Specifications
+define('TEXT_NOT_AVAILABLE', 'нет данных');
+
 ?>
