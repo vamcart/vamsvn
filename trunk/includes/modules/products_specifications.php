@@ -29,7 +29,7 @@
                             ";
   $categories_query = vamDBquery ($categories_query_raw);
   $count_categories = vam_db_num_rows ($categories_query, true);
-  $specification_text  = '<table class="specification_box" border="0" cellpadding="0" cellspacing="0" width="100%">';
+
   if ($count_categories > 0) {
   //print $count_categories . "<br>\n";
   
