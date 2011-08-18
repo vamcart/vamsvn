@@ -19,10 +19,6 @@
   $spec_object = new Specifications();
     
   if (SPECIFICATIONS_FILTERS_MODULE == 'True') {
-    // Generate the heading for the box
-    $info_box_heading = array();
-    $info_box_heading[] = array('text' => BOX_HEADING_PRODUCTS_FILTER);
-     
     $specs_query_raw = "select s.specifications_id,
                                s.products_column_name,
                                s.filter_class,
@@ -41,25 +37,24 @@
                           and s2c.categories_id = '" . $current_category_id . "'
                           and s.show_filter = 'True'
                           and sg.show_filter = 'True'
-                          and sd.language_id = '" . $languages_id . "'
+                          and sd.language_id = '" . $_SESSION['languages_id'] . "'
                         order by s.specification_sort_order,
                                  sd.specification_name
                       ";
     // print $specs_query_raw . "<br>\n";
-    $specs_query = tep_db_query ($specs_query_raw);
+    $specs_query = vamDBquery ($specs_query_raw);
 
-    $info_box_contents = array();
-    while ($specs_array = tep_db_fetch_array ($specs_query) ) {
+    while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
       $$var = '0';
       if (isset ($_GET[$var]) && $_GET[$var] != '') {
         // Sanitize variables to prevent hacking
-        $$var = tep_clean_get__recursive ($_GET[$var]);
+        $$var = vam_clean_get__recursive ($_GET[$var]);
         
         // Get rid of extra values if Select All is selected
-        $$var = tep_select_all_override ($$var);
+        $$var = vam_select_all_override ($$var);
       }
     
       $box_text =  ''; // Build an HTML string to go into the text part of the box
@@ -70,14 +65,14 @@
                                  " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " sfd
                             where sfd.specification_filters_id = sf.specification_filters_id
                               and sf.specifications_id = '" . (int) $specs_array['specifications_id'] . "'
-                              and sfd.language_id = '" . $languages_id . "'
+                              and sfd.language_id = '" . $_SESSION['languages_id'] . "'
                             order by sf.filter_sort_order,
                                      sfd.filter
                            ";
       // print $filters_query_raw . "<br>\n";
-      $filters_query = tep_db_query ($filters_query_raw);
+      $filters_query = vamDBquery ($filters_query_raw);
       
-      $count_filters = tep_db_num_rows ($filters_query);
+      $count_filters = vam_db_num_rows ($filters_query, true);
       $filters_select_array = array();
       if ($count_filters >= SPECIFICATIONS_FILTER_MINIMUM) {
         $filters_array = array();
@@ -101,7 +96,7 @@
         
         $previous_filter = 0;
         $previous_filter_id = 0;
-        while ($filters_array = tep_db_fetch_array ($filters_query) ) {
+        while ($filters_array = vam_db_fetch_array ($filters_query, true) ) {
           $filter_id = $filters_array['filter'];
 
           // Format currency if the column is a price
@@ -151,39 +146,16 @@
                                                        );
         } // if ($specs_array['filter_class'] == 'range'
 
-        $box_text .= tep_get_filter_string ($specs_array['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var);
+        $box_text .= vam_get_filter_string ($specs_array['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var);
       } // if ($count_filters
 
-    $info_box_contents[0][] = array ('text' => $box_text);  
     } // while ($specs_array
   
-if (tep_db_num_rows ($specs_query) > 0) {  
+if (vam_db_num_rows ($specs_query, true) > 0) {  
 ?>
-<!-- category_filter //-->
-          <tr>
-            <td>
 <?php
-
-// Output the box in the selected style
-      switch (SPECIFICATIONS_FILTERS_FRAME_STYLE) {
-        case 'Plain':
-          new borderlessBox ($info_box_contents);
-          break;
-          
-        case 'Simple':
-          new productListingBox ($info_box_contents);
-          break;
-        case 'Stock':
-        
-        default:
-          new contentBoxHeading ($info_box_heading, false, false);
-          new contentBox ($info_box_contents);
-          break;
-      }
+echo $box_text;
 ?>
-            </td>
-          </tr>
-<!-- category_filter_eof //-->
 <?php
   }
  }
