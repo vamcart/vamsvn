@@ -34,7 +34,9 @@ require_once (DIR_FS_INC.'vam_customer_greeting.inc.php');
 require_once (DIR_FS_INC.'vam_get_path.inc.php');
 require_once (DIR_FS_INC.'vam_check_categories_status.inc.php');
 
-
+// Products Specifications
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
+  
 if (PRODUCT_LIST_RECURSIVE == 'true') {
   if (isset ($_GET['cat']) && vam_not_null($_GET['cat'])) {
     $parent_query = "select c.parent_id, c.categories_id
@@ -443,6 +445,9 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   $image = vam_db_fetch_array($image,true);
   $image = $image['categories_image'];
   }
+
+  include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);
+
   include (DIR_WS_MODULES.FILENAME_PRODUCT_LISTING);
 
 } else { // default page
