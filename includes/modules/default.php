@@ -446,8 +446,6 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   $image = $image['categories_image'];
   }
 
-  include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);
-
   include (DIR_WS_MODULES.FILENAME_PRODUCT_LISTING);
 
 } else { // default page

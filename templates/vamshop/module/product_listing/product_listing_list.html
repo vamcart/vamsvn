@@ -47,13 +47,14 @@
 <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">
+{$FILTERS}
 {if $MANUFACTURER_SORT}
 <p>
 {$MANUFACTURER_SORT}
 </p>
 {/if}
 <p>
-{#text_sort#} 
+{#text_sort#}
 <a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a> | 
 <a href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a> | 
 <a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> | 

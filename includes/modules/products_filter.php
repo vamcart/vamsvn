@@ -11,14 +11,14 @@
   Released under the GNU General Public License
 */
 
-
-
   require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
     
   require_once (DIR_WS_CLASSES  . 'specifications.php');
   $spec_object = new Specifications();
     
   if (SPECIFICATIONS_FILTERS_MODULE == 'True') {
+    $box_text =  ''; //HTML string goes into the text part of the box
+     
     $specs_query_raw = "select s.specifications_id,
                                s.products_column_name,
                                s.filter_class,
@@ -44,21 +44,23 @@
     // print $specs_query_raw . "<br>\n";
     $specs_query = vamDBquery ($specs_query_raw);
 
+    $first = true;
     while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
       $$var = '0';
       if (isset ($_GET[$var]) && $_GET[$var] != '') {
+        // Decode the URL-encoded names, including arrays
+        $$var = vam_decode_recursive ($_GET[$var]);
+      
         // Sanitize variables to prevent hacking
         $$var = vam_clean_get__recursive ($_GET[$var]);
         
         // Get rid of extra values if Select All is selected
         $$var = vam_select_all_override ($$var);
       }
-    
-      $box_text =  ''; // Build an HTML string to go into the text part of the box
-    
+      
       $filters_query_raw = "select sf.specification_filters_id,
                                    sfd.filter
                             from " . TABLE_SPECIFICATIONS_FILTERS . " sf,
@@ -76,8 +78,12 @@
       $filters_select_array = array();
       if ($count_filters >= SPECIFICATIONS_FILTER_MINIMUM) {
         $filters_array = array();
+        if ($first == false) {
+          $box_text .=  "<br />\n";        
+        }
+        $first = false;
         
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br>';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br />';
 
         $filter_index = 0;
         if ($specs_array['filter_show_all'] == 'True') {
@@ -99,7 +105,6 @@
         while ($filters_array = vam_db_fetch_array ($filters_query, true) ) {
           $filter_id = $filters_array['filter'];
 
-          // Format currency if the column is a price
           if ($specs_array['products_column_name'] == 'products_price' || $specs_array['products_column_name'] == 'final_price') {
             $previous_filter = $currencies->format ($previous_filter);
             $filter_text = $currencies->format ($filters_array['filter']);
@@ -107,7 +112,6 @@
             $filter_text = $specs_array['specification_prefix'] . ' ' . $filters_array['filter'] . ' ' . $specs_array['specification_suffix'];
           }
           
-          // Set up the range if class is range
           if ($specs_array['filter_class'] == 'range') {
             $filter_text = $previous_filter . ' - ' . $filter_text;
             $filter_id = $previous_filter_id . '-' . $filters_array['filter'];
@@ -126,9 +130,9 @@
                                                         'count' => $count
                                                        );
           $filter_index++;
-        }
-        
-        // For the Range class only, add an extra filter at the end for maximum value +  
+        } // while ($filters_array
+
+        // For range class only, create a filter for maximum value +
         if ($specs_array['filter_class'] == 'range') {
           if ($specs_array['products_column_name'] == 'products_price' || $specs_array['products_column_name'] == 'final_price') {
             $previous_filter = $currencies->format ($previous_filter);
@@ -148,15 +152,11 @@
 
         $box_text .= vam_get_filter_string ($specs_array['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var);
       } // if ($count_filters
-
     } // while ($specs_array
   
 if (vam_db_num_rows ($specs_query, true) > 0) {  
-?>
-<?php
-echo $box_text;
-?>
-<?php
+
+	$module->assign('FILTERS', $box_text);
   }
  }
 ?>
