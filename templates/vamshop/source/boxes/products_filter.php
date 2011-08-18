@@ -58,10 +58,10 @@ $box_content='';
                                  sd.specification_name
                       ";
     // print $specs_query_raw . "<br>\n";
-    $specs_query = vamDBquery ($specs_query_raw,true);
+    $specs_query = vamDBquery ($specs_query_raw);
 
     $first = true;
-    while ($specs_array = vam_db_fetch_array ($specs_query) ) {
+    while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
@@ -88,7 +88,7 @@ $box_content='';
                                      sfd.filter
                            ";
       // print $filters_query_raw . "<br>\n";
-      $filters_query = vamDBquery ($filters_query_raw, true);
+      $filters_query = vamDBquery ($filters_query_raw);
       
       $count_filters = vam_db_num_rows ($filters_query, true);
       $filters_select_array = array();
