@@ -118,7 +118,7 @@ $box_content='';
         
         $previous_filter = 0;
         $previous_filter_id = 0;
-        while ($filters_array = vam_db_fetch_array ($filters_query) ) {
+        while ($filters_array = vam_db_fetch_array ($filters_query, true) ) {
           $filter_id = $filters_array['filter'];
 
           if ($specs_array['products_column_name'] == 'products_price' || $specs_array['products_column_name'] == 'final_price') {
