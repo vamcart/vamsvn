@@ -59,7 +59,7 @@ jQuery(document).ajaxStop(function(){
       jQuery.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
-                     data: "q=includes/modules/ajax/ajaxCart.php&products_qty=1&action=add_product&products_id="+id,
+                     data: "q=includes/modules/ajax/ajaxCart.php&products_qty=1&action=buy_now&BUYproducts_id="+id,
                      type: "GET",   
     	               success: function(msg){ 
     	               
