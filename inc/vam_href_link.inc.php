@@ -588,7 +588,7 @@
       $link .= $separator . $sid;
     }
 
-      $link = str_replace('&', '&amp;', $link);
+      //$link = str_replace('&', '&amp;', $link);
       
     if ( (SEARCH_ENGINE_FRIENDLY_URLS == 'true') && ($search_engine_safe == true) ) {
       while (strstr($link, '&&')) $link = str_replace('&&', '&', $link);
