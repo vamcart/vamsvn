@@ -126,7 +126,9 @@ if (isset ($_GET['action'])) {
           
 			}
          if ( strlen($_SESSION['error_cart_msg'])==0 ) {
+         if (AJAX_CART == 'false') {
 			vam_redirect(vam_href_link($goto, 'products_id=' . (int) $_POST['products_id'] . '&' . vam_get_all_get_params($parameters)));
+			}
 			}
 			break;
 
