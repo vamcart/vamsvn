@@ -249,7 +249,9 @@ if (isset ($_GET['action'])) {
 					$_SESSION['cart']->add_cart((int) $_GET['pid'], $_SESSION['cart']->get_quantity((int) $_GET['pid']) + 1);
 				}
 			}
+			if (AJAX_CART == 'false') {
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params($parameters)));
+			}
 			break;
 	}
 }
