@@ -94,6 +94,34 @@ function doAddProduct() {
 					}
 		});
 	}
+
+function doDelProduct(id) {
+		jQuery.noConflict();
+		var test1 = "#update_cart"+id+" input";
+		var forma = jQuery(test1);
+		
+		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		forma.each(function(n,element){
+			if (element.type == "radio" || element.type == "checkbox") {
+				if (element.checked)
+					tmp = element.name + "=" + element.value + "&";
+			} else {
+				tmp = element.name + "=" + element.value + "&";
+			}
+			if (tmp.length > 3) data = data + tmp;
+		});
+		data = data + "action=update_product";
+		
+		jQuery.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+						jQuery("#divShoppingCart").html(msg);
+					}
+		});
+	}
 	
 function doDel( cart_quantity, products_id, old_qty, cart_delete ) {
 
