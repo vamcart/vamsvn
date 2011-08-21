@@ -59,17 +59,12 @@ jQuery(document).ajaxStop(function(){
       jQuery.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
-                     data: "q=includes/modules/ajax/ajaxCart.php&products_qty=1&action=buy_now&BUYproducts_id="+id,
+                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'buy_now', products_qty : 1, BUYproducts_id : id},
                      type: "GET",   
     	               success: function(msg){ 
-    	               
     	               jQuery("#divShoppingCart").html(msg);
-    	               
     	               }       
-
                    });                     
-                       
-                           
 
 }
 
