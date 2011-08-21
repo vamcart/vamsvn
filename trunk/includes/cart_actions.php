@@ -99,7 +99,9 @@ if (isset ($_GET['action'])) {
 
 				}
 			}
+			if (AJAX_CART == 'false') {
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params($parameters)));
+			}
 			break;
 			// customer adds a product from the products page
 		case 'add_product' :
