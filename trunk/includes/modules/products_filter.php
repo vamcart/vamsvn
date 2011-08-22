@@ -1,6 +1,6 @@
 <?php
 /*
-  $Id: products_filter.php, v1.0.1 20090917 kymation Exp $
+  $Id: products_filter.php, v1.0.1 20110917 kymation Exp $
   $Loc: catalog/includes/modules/ $
 
   osCommerce, Open Source E-Commerce Solutions
