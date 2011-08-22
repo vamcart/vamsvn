@@ -85,15 +85,11 @@ $module = new vamTemplate;
     $$var = '0';
     if (isset ($_GET[$var]) && $_GET[$var] != '') {
       // Decode the URL-encoded names, including arrays
-//      $$var = vam_decode_recursive ($_GET[$var]);
+      $$var = vam_decode_recursive ($_GET[$var]);
 
-      $$var = $_GET[$var];
-      
-      // Sanitize variables to prevent hacking
-     $$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
+      // Sanitize variables to prevent hacking     //$$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
        
-      // Get rid of extra values if Select All is selected
-      $$var = vam_select_all_override ($$var);
+      // Get rid of extra values if Select All is selected      $$var = vam_select_all_override ($$var);
       
       // Get the breadcrumbs data for the filters that are set
       $filter_breadcrumbs = vam_get_filter_breadcrumbs ($specs_array, $$var);
@@ -110,50 +106,16 @@ $module = new vamTemplate;
     } // if (isset ($_GET[$var]
   } // while ($specs_array
     
-  // create column list
-  $define_list = array ('PRODUCT_LIST_MODEL' => PRODUCT_LIST_MODEL,
-                        'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,
-                        'PRODUCT_LIST_MANUFACTURER' => PRODUCT_LIST_MANUFACTURER,
-                        'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,
-                        'PRODUCT_LIST_QUANTITY' => PRODUCT_LIST_QUANTITY,
-                        'PRODUCT_LIST_WEIGHT' => PRODUCT_LIST_WEIGHT,
-                        'PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
-                        'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
+$listing_sql = '';
 
-  asort ($define_list);
-
-  $column_list = array();
-  reset ($define_list);
-
-  while (list ($key, $value) = each ($define_list) ) {
-    if ($value > 0) $column_list[] = $key;
+  //fsk18 lock
+  $fsk_lock = '';
+  if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+  $fsk_lock = ' and p.products_fsk18!=1';
   }
-
-  $listing_sql = '            select distinct ';
-
-  for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
-    switch ($column_list[$i]) {
-      case 'PRODUCT_LIST_MODEL':
-        $listing_sql .= "p.products_model, \n";
-        break;
-      case 'PRODUCT_LIST_NAME':
-        $listing_sql .= "pd.products_name, \n";
-        break;
-      case 'PRODUCT_LIST_MANUFACTURER':
-        $listing_sql .= "m.manufacturers_name, \n";
-        break;
-      case 'PRODUCT_LIST_QUANTITY':
-        $listing_sql .= "p.products_quantity, \n";
-        break;
-      case 'PRODUCT_LIST_IMAGE':
-        $listing_sql .= "p.products_image, \n";
-        break;
-      case 'PRODUCT_LIST_WEIGHT':
-        $listing_sql .= "p.products_weight, \n";
-        break;
-    } //switch
-  } //for
   
+    $listing_sql = '            select distinct ';
+    
   $listing_sql .= "p.products_id,
                                   p.products_fsk18,
                                   p.products_shippingtime,
