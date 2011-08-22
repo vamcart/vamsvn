@@ -142,7 +142,6 @@
           if (SPECIFICATION_FILTER_NO_RESULT != 'normal' || SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $count = $spec_object->getFilterCount ($previous_filter_id, $specs_array['specifications_id'], $specs_array['filter_class'], $specs_array['products_column_name']);
           }
-
 //          $filters_select_array[$filter_index] = array ('id' => rawurlencode ($previous_filter_id),
           $filters_select_array[$filter_index] = array ('id' =>  ($previous_filter_id),
                                                         'text' => $previous_filter . '+',
@@ -155,7 +154,6 @@
     } // while ($specs_array
   
 if (vam_db_num_rows ($specs_query, true) > 0) {  
-
 	$module->assign('FILTERS', $box_text);
   }
  }

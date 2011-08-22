@@ -169,6 +169,7 @@ require_once (DIR_FS_INC.'vam_js_lang.php');
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
 require_once (DIR_FS_INC.'vam_break_string.inc.php');
 require_once (DIR_FS_INC.'vam_my_sorting_products.inc.php');
+require_once (DIR_FS_INC.'vam_output_string.inc.php');
 
 require_once (DIR_FS_INC.'vam_get_products_quantity_order_min.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_quantity_order_max.inc.php');
