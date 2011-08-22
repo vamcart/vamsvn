@@ -53,19 +53,5 @@
     $comp_array = vam_clean_get__recursive ($comp_array);
   }
 
-?>
-<div class="contentContainer">
-<?php
-  if (count ($comp_array) > 0 or SPECIFICATIONS_COMPARISON_LAYOUT == 'horiz') {
-    require_once (DIR_WS_MODULES . 'comparison_horiz.php');
-  } else {
     require_once (DIR_WS_MODULES . FILENAME_COMPARISON);
-  }
-?>
-<?php
-  $filename_back = FILENAME_DEFAULT;
-  $back = sizeof( $navigation->path ) - 2;
-	if( isset( $navigation->path[ $back ] ) ) {
-		$filename_back = $navigation->path[ $back ][ 'page' ];
-	}
 ?>
