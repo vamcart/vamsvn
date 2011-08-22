@@ -817,17 +817,7 @@
     }
 
     $field_array['popup_image'] = TEXT_NOT_AVAILABLE;
-    $popup_query_raw = "
-      select
-        image
-      from
-        " . TABLE_PRODUCTS_IMAGES . "
-      where
-        products_id = '" . (int) $products_id . "'
-    ";
-    // print $popup_query_raw . "<br>\n";
-    $popup_query = vam_db_query( $popup_query_raw );
-    $popup_array = vam_db_fetch_array( $popup_query );
+    $popup_array['image'] = $columns_array['products_image'];
 
     if( vam_not_null( $popup_array[ 'image' ] ) ) {
       $field_array['popup_image'] = '<script language="javascript"><!--' . "\n";
@@ -836,38 +826,6 @@
       $field_array['popup_image'] .= '<noscript>' . "\n";
       $field_array['popup_image'] .= '<a href="' . vam_href_link (DIR_WS_IMAGES . $columns_array['image']) . '" target="_blank">' . TEXT_POPUP . '</a>' . "\n";
       $field_array['popup_image'] .= '</noscript>' . "\n";
-    }
-
-    $discount_price_query_raw = "
-      select
-        pd.products_price,
-        dd.discount
-      from
-        " . TABLE_PRODUCTS_DISCOUNT . " pd
-        join " . TABLE_DISCOUNTS . " dd
-          on dd.discounts_id = pd.discounts_id
-      where
-        pd.products_id = '" . (int) $products_id . "'
-      order by
-        dd.sort_order
-    ";
-    // print $discount_price_query_raw . "<br>\n";
-    $discount_price_query = vam_db_query( $discount_price_query_raw );
-
-    if( vam_db_num_rows( $discount_price_query ) > 0 ) {
-    	$discount_price_id = 1;
-      while( $discount_price = vam_db_fetch_array( $discount_price_query ) ) {
-        $field_array['products_price' . $discount_price_id] = TEXT_NOT_AVAILABLE;
-        $field_array['products_discount' . $discount_price_id] = 1;
-
-        if( $discount_price[ 'products_price' ] != 0.0 && vam_not_null( $discount_price[ 'discount' ] ) ) {
-          //$field_array['products_price' . $discount_price_id] = $currencies->display_price($discount_price['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
-          $field_array['products_price' . $discount_price_id] = $discount_price['products_price'];
-          $field_array['products_discount' . $discount_price_id] = $discount_price[ 'discount' ];
-        }
-
-        $discount_price_id++;
-      }
     }
 
     return $field_array;
