@@ -25,10 +25,8 @@
 
   require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
-  require_once (DIR_WS_LANGUAGES . $language . '/' . FILENAME_COMPARISON);
-
   if( $current_category_id == 0 ) {
-    tep_redirect( tep_href_link( FILENAME_DEFAULT ) );
+    vam_redirect( vam_href_link( FILENAME_DEFAULT ) );
   } else {
     //Get the name for this category
     $title_query_raw = "
@@ -40,8 +38,8 @@
         categories_id = '" . ( int )$current_category_id . "'
     ";
     // print $title_query_raw . "<br>\n";
-    $title_query = tep_db_query( $title_query_raw );
-    $title_array = tep_db_fetch_array( $title_query );
+    $title_query = vam_db_query( $title_query_raw );
+    $title_array = vam_db_fetch_array( $title_query );
     $heading_title = sprintf( HEADING_TITLE, $title_array['categories_name'] );
   }
 
@@ -49,10 +47,10 @@
   $comp_array = array();
   if (isset ($_GET['comp']) && $_GET['comp'] != '') {
     // Decode the URL-encoded names, including arrays
-    $comp_array = tep_decode_recursive ($_GET['comp']);
+    $comp_array = vam_decode_recursive ($_GET['comp']);
 
     // Sanitize variables to prevent hacking
-    $comp_array = tep_clean_get__recursive ($comp_array);
+    $comp_array = vam_clean_get__recursive ($comp_array);
   }
 
   require( DIR_WS_INCLUDES . 'template_top.php' );
@@ -74,6 +72,6 @@
 	}
 ?>
   <div class="buttonSet" style="float:left;">
-    <span class="buttonAction"><?php echo tep_draw_button( IMAGE_BUTTON_BACK, 'triangle-1-w', tep_href_link( $filename_back ), 'primary'); ?></span>
+    <span class="buttonAction"><?php echo vam_draw_button( IMAGE_BUTTON_BACK, 'triangle-1-w', vam_href_link( $filename_back ), 'primary'); ?></span>
   </div>
 </div>
