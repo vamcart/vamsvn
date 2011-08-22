@@ -53,8 +53,6 @@
     $comp_array = vam_clean_get__recursive ($comp_array);
   }
 
-  require( DIR_WS_INCLUDES . 'template_top.php' );
-
 ?>
 <div class="contentContainer">
 <?php
@@ -71,7 +69,3 @@
 		$filename_back = $navigation->path[ $back ][ 'page' ];
 	}
 ?>
-  <div class="buttonSet" style="float:left;">
-    <span class="buttonAction"><?php echo vam_draw_button( IMAGE_BUTTON_BACK, 'triangle-1-w', vam_href_link( $filename_back ), 'primary'); ?></span>
-  </div>
-</div>
