@@ -25,6 +25,9 @@
   require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
   
 $vamTemplate = new vamTemplate;
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$vamTemplate->assign('session', session_id());
 $module = new vamTemplate;
   $main_content = '';
   
@@ -96,7 +99,7 @@ $module = new vamTemplate;
       $$var = vam_set_type ($$var);
     
       // Get the SQL to apply the filters
-      $sql_string_array = vam_get_filter_sql ($specs_array['filter_class'], $specs_array['specifications_id'], $$var, $specs_array['products_column_name'], $languages_id);
+      $sql_string_array = vam_get_filter_sql ($specs_array['filter_class'], $specs_array['specifications_id'], $$var, $specs_array['products_column_name'], $_SESSION['languages_id']);
       $sql_array['from'] .= $sql_string_array['from'];
       $sql_array['where'] .= $sql_string_array['where'];
       
