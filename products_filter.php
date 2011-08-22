@@ -33,7 +33,6 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $vamTemplate->assign('session', session_id());
 $module = new vamTemplate;
-  $main_content = '';
   
 // Block Robots
 // Set a Robots NoIndex if the sort field is set
@@ -200,15 +199,6 @@ $listing_sql = '';
       $listing_sql .= '   ' . $sorting;
 
   // print $listing_sql . "<br>\n";
-
-  if ($current_category_id > 0) {
-    $image = vam_db_query ("select categories_image 
-                            from " . TABLE_CATEGORIES . " 
-                            where categories_id = '" . (int) $current_category_id . "'
-                          ");
-    $image = vam_db_fetch_array ($image);
-    $image = $image['categories_image'];
-  }
 
   // Add Filter to Breadcrumbs if selected
   if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
