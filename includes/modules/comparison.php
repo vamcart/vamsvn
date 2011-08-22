@@ -41,8 +41,8 @@
         c.categories_id = '" . (int) $current_category_id . "'
     ";
     // print $image_query_raw . "<br>\n";
-    $title_query = tep_db_query($title_query_raw);
-    $title_array = tep_db_fetch_array($title_query);
+    $title_query = vam_db_query($title_query_raw);
+    $title_array = vam_db_fetch_array($title_query);
 
 ?>
 <div class="contentContainer">
@@ -68,7 +68,7 @@
         " . TABLE_SPECIFICATION . " s
         join " . TABLE_SPECIFICATION_DESCRIPTION . " sd
           on (sd.specifications_id = s.specifications_id
-            and sd.language_id = '" . (int) $languages_id . "')
+            and sd.language_id = '" . (int) $_SESSION['languages_id'] . "')
         join " . TABLE_SPECIFICATION_GROUPS . " sg
           on (sg.specification_group_id = s.specification_group_id
             and sg.show_comparison = 'True')
@@ -79,21 +79,21 @@
       where
         s.show_comparison = 'True'
         and cd.categories_id = '" . (int) $current_category_id . "'
-        and cd.language_id = '" . (int) $languages_id . "'
+        and cd.language_id = '" . (int) $_SESSION['languages_id'] . "'
       order by s.specification_sort_order,
                sd.specification_name
     ";
     // print $specifications_query_raw . "<br>\n";
-    $specifications_query = tep_db_query($specifications_query_raw);
+    $specifications_query = vam_db_query($specifications_query_raw);
 
-    if (tep_db_num_rows($specifications_query) > 0) {
+    if (vam_db_num_rows($specifications_query) > 0) {
       $module_contents = '<div class="ui-widget infoBoxContainer">' . PHP_EOL;
     	// Start the heading output
       $module_contents .= '  <div class="ui-widget-header ui-corner-top infoBoxHeading">' . PHP_EOL;
       $module_contents .= '    <table border="0" width="100%" cellspacing="0" cellpadding="2" class="productListingHeader">' . PHP_EOL;
       $module_contents .= '      <tr>' . PHP_EOL;
       $specification_id_array = array ();
-      while ($specifications_heading = tep_db_fetch_array($specifications_query)) {
+      while ($specifications_heading = vam_db_fetch_array($specifications_query)) {
         // Set up the heading for the table
         $box_text = '&nbsp;';
         if( $specifications_heading['specification_name'] != '' ) {
@@ -105,7 +105,7 @@
         }
 
         // Add the contents of each cell
-        $module_contents .= '        <td' . (tep_not_null($specifications_heading['column_justify']) ? ' align="' . $specifications_heading['column_justify'] . '"' : '') . ' class="productListing-heading">' . $box_text . '</td>' . PHP_EOL;
+        $module_contents .= '        <td' . (vam_not_null($specifications_heading['column_justify']) ? ' align="' . $specifications_heading['column_justify'] . '"' : '') . ' class="productListing-heading">' . $box_text . '</td>' . PHP_EOL;
 
         // Build an array to use as an index on the table rows
         $id = $specifications_heading['specifications_id'];
@@ -149,15 +149,15 @@
           p.products_id
       ";
       // print 'Products Query: ' . $products_query_raw . "<br>\n";
-      $products_query = tep_db_query($products_query_raw);
+      $products_query = vam_db_query($products_query_raw);
 
-      if (tep_db_num_rows($products_query) >= SPECIFICATIONS_MINIMUM_COMPARISON) {
+      if (vam_db_num_rows($products_query) >= SPECIFICATIONS_MINIMUM_COMPARISON) {
       	// Start the rows
         $module_contents .= '  <div class="ui-widget-content ui-corner-bottom productListTable">' . PHP_EOL;
         $module_contents .= '    <table border="0" width="100%" cellspacing="0" cellpadding="2" class="productListingData">' . PHP_EOL;
 
         // Add the product rows
-        while ($products_array = tep_db_fetch_array($products_query)) { // Each product is a row
+        while ($products_array = vam_db_fetch_array($products_query)) { // Each product is a row
           $products_id = $products_array['products_id'];
           // Check to see if this product has any specifications
           $check_query_raw = "
@@ -170,26 +170,26 @@
               and (specification != '')
           ";
           // print 'Check Query: ' . $check_query_raw . "<br>\n";
-          $check_query = tep_db_query($check_query_raw);
-          $check_total = tep_db_fetch_array($check_query);
+          $check_query = vam_db_query($check_query_raw);
+          $check_total = vam_db_fetch_array($check_query);
           if ($check_total['total'] > 0 || SPECIFICATIONS_PRODUCTS_NO_SPEC == 'True') { // Show product
             reset($specification_id_array);
 
             // Get the existing fields data
-            $field_array = tep_fill_existing_fields( $products_id, $languages_id );
+            $field_array = vam_fill_existing_fields( $products_id, $languages_id );
             //Start the row
-            $module_contents .= tep_draw_form('cart_quantity', tep_href_link(FILENAME_DEFAULT, tep_get_all_get_params(array('action')) . 'action=add_product')) . PHP_EOL;
+            $module_contents .= vam_draw_form('cart_quantity', vam_href_link(FILENAME_DEFAULT, vam_get_all_get_params(array('action')) . 'action=add_product')) . PHP_EOL;
             $module_contents .= '      <tr>' . PHP_EOL;
-            $module_contents .= tep_draw_hidden_field( 'products_id', $products_id ) . PHP_EOL;
-            $module_contents .= tep_draw_hidden_field( 'cart_quantity', '1' ) . PHP_EOL;
+            $module_contents .= vam_draw_hidden_field( 'products_id', $products_id ) . PHP_EOL;
+            $module_contents .= vam_draw_hidden_field( 'cart_quantity', '1' ) . PHP_EOL;
 
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
             	// Get the cell parameters
-              $table_cell = tep_specification_table_cell( $specs_id, $products_id, $languages_id, $field_array, $specs_data );
+              $table_cell = vam_specification_table_cell( $specs_id, $products_id, $languages_id, $field_array, $specs_data );
 
               // Add the contents of each cell
-              $module_contents .= '        <td' . (tep_not_null($table_cell['box_align']) ? ' align="' . $table_cell['box_align'] . '"' : '') . ' >' . $table_cell['box_text'] . '</td>' . PHP_EOL;
+              $module_contents .= '        <td' . (vam_not_null($table_cell['box_align']) ? ' align="' . $table_cell['box_align'] . '"' : '') . ' >' . $table_cell['box_text'] . '</td>' . PHP_EOL;
 
             } // foreach ($specification_id_array
 
@@ -209,10 +209,10 @@
       } else {
         echo TEXT_NO_COMPARISON_AVAILABLE . PHP_EOL;
 
-      } // if (tep_db_num_rows ($products_query
+      } // if (vam_db_num_rows ($products_query
 
 
-    } // if (tep_db_num_rows ($category_specs_query
+    } // if (vam_db_num_rows ($category_specs_query
 
   } else {
     echo TEXT_NO_COMPARISON_AVAILABLE . PHP_EOL;
