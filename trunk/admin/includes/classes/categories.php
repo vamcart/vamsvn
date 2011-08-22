@@ -103,8 +103,6 @@ class categories {
 		vam_db_query("DELETE FROM ".TABLE_CATEGORIES_DESCRIPTION." WHERE categories_id = '".vam_db_input($category_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_TO_CATEGORIES." WHERE categories_id = '".vam_db_input($category_id)."'");
 
-		vam_db_query("DELETE ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." pp2p FROM    ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." pp2p JOIN ".TABLE_PRODUCTS_PARAMETERS." AS pp USING(products_parameters_id) WHERE categories_id = '".vam_db_input($category_id)."'");
-
 		if (USE_CACHE == 'true') {
 			vam_reset_cache_block('categories');
 			vam_reset_cache_block('also_purchased');
@@ -436,8 +434,6 @@ class categories {
 		}
 
 		vam_db_query("delete from ".TABLE_REVIEWS." where products_id = '".vam_db_input($product_id)."'");
-
-		vam_db_query("DELETE FROM " . TABLE_PRODUCTS_PARAMETERS2PRODUCTS . " WHERE products_id = '".vam_db_input($product_id)."'");
 
 		if (USE_CACHE == 'true') {
 			vam_reset_cache_block('categories');
@@ -1075,45 +1071,6 @@ class categories {
 						    		                 SET categories_id = '".vam_db_input($dest_category_id)."'
 						    		                 WHERE products_id   = '".vam_db_input($src_products_id)."'");
 
-	        $sql =  "
-	                SELECT
-	                    pp2.products_parameters_id as pp2_id, pp1.products_parameters_id as pp1_id
-	                FROM
-	                    " . TABLE_PRODUCTS_PARAMETERS . " AS pp1 JOIN
-	                    " . TABLE_PRODUCTS_PARAMETERS . " AS pp2
-	                WHERE
-	                    pp1.categories_id = '".vam_db_input($src_category_id)."' AND
-	                    pp2.categories_id = '".vam_db_input($dest_category_id)."' AND
-	                    pp1.products_parameters_name=pp2.products_parameters_name
-	                ";
-
-	        $query = vam_db_query($sql);
-
-	        $_ids = array();
-	        while ($val = vam_db_fetch_array($query)) {
-	            $_sql = "
-	                UPDATE
-	                    " . TABLE_PRODUCTS_PARAMETERS2PRODUCTS . "
-	                SET
-	                    products_parameters_id=".$val['pp2_id']."
-	                WHERE
-	                    products_parameters_id=".$val['pp1_id']." AND
-	                    products_id='".vam_db_input($src_products_id)."'
-	                    ";
-	             vam_db_query($_sql);
-	             $_ids[] = $val['pp2_id'];
-	        }
-
-	        if( count($_ids) > 0 ) {
-	            $_sql = "
-	                DELETE FROM " . TABLE_PRODUCTS_PARAMETERS2PRODUCTS . "
-	                WHERE
-	                    products_id='".vam_db_input($src_products_id)."' AND
-	                    products_parameters_id NOT IN (". implode(',', $_ids) .")
-	                    ";
-	             //dumper($_sql);
-	             vam_db_query($_sql);
-	        }
 						    		           
 		if ($dest_category_id == 0) {			
 			$this->set_product_status($src_products_id, 1);
