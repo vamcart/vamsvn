@@ -114,9 +114,32 @@ $listing_sql = '';
   $fsk_lock = ' and p.products_fsk18!=1';
   }
   
-    $listing_sql = '            select distinct ';
-    
-  $listing_sql .= "p.products_id,
+    // sorting query
+    $sorting_query = vamDBquery("SELECT products_sorting,
+                                                products_sorting2 FROM ".TABLE_CATEGORIES."
+                                                where categories_id='".$current_category_id."'");
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
+    if (!$sorting_data['products_sorting'])
+    $sorting_data['products_sorting'] = 'pd.products_name';
+    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+    // We show them all
+    if (GROUP_CHECK == 'true') {
+    $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+    }
+    if (PRODUCT_LIST_RECURSIVE == 'true') {
+    $recursive_check= "and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."')";
+    $recursive_table_categories=TABLE_CATEGORIES." c, ";
+    } else {
+    $recursive_check="and p2c.categories_id = '".$current_category_id."'";
+    $recursive_table_categories="";
+    }
+
+                         // ".$group_check."
+                         //         ".$fsk_lock."                             
+                           //            .$sorting;
+      
+  $listing_sql .= "select distinct p.products_id,
                                   p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
@@ -172,38 +195,10 @@ $listing_sql = '';
     }
   } // if ($current_category_id
 
-  if ( (!isset($_GET['sort'])) || (!preg_match('/^[1-8][ad]$/', $_GET['sort'])) || (substr($_GET['sort'], 0, 1) > sizeof($column_list)) ) {
-    $_GET['sort'] = 'products_name';
-    $listing_sql .= "             order by pd.products_name";
-    
-  } else {
-    $sort_col = substr ($_GET['sort'], 0 , 1);
-    $sort_order = substr ($_GET['sort'], 1);
+      $listing_sql .= '   ' . $fsk_lock;
+      $listing_sql .= '   ' . $group_check;
+      $listing_sql .= '   ' . $sorting;
 
-    switch ($column_list[$sort_col-1]) {
-      case 'PRODUCT_LIST_MODEL':
-        $listing_sql .= "             order by p.products_model " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
-        break;
-      case 'PRODUCT_LIST_NAME':
-        $listing_sql .= "             order by pd.products_name " . ($sort_order == 'd' ? 'desc' : '');
-        break;
-      case 'PRODUCT_LIST_MANUFACTURER':
-        $listing_sql .= "             order by m.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
-        break;
-      case 'PRODUCT_LIST_QUANTITY':
-        $listing_sql .= "             order by p.products_quantity " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
-        break;
-      case 'PRODUCT_LIST_IMAGE':
-        $listing_sql .= "             order by pd.products_name";
-        break;
-      case 'PRODUCT_LIST_WEIGHT':
-        $listing_sql .= "             order by p.products_weight " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
-        break;
-      case 'PRODUCT_LIST_PRICE':
-        $listing_sql .= "             order by final_price " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
-        break;
-    } // switch ($column_list
-  } // if ( (!isset($_GET['sort'] ... else ...
   // print $listing_sql . "<br>\n";
 
   if ($current_category_id > 0) {
