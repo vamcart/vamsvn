@@ -133,10 +133,6 @@ $listing_sql = '';
     $recursive_check="and p2c.categories_id = '".$current_category_id."'";
     $recursive_table_categories="";
     }
-
-                         // ".$group_check."
-                         //         ".$fsk_lock."                             
-                           //            .$sorting;
       
   $listing_sql .= "select distinct p.products_id,
                                   p.products_fsk18,
