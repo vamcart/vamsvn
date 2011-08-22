@@ -24,10 +24,9 @@
 
   require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
   
+$vamTemplate = new vamTemplate;
 $module = new vamTemplate;
-$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-$module->assign('session', session_id());
-$main_content = '';
+  $main_content = '';
   
 // Block Robots
 // Set a Robots NoIndex if the sort field is set
@@ -134,7 +133,7 @@ $main_content = '';
         $listing_sql .= "pd.products_name, \n";
         break;
       case 'PRODUCT_LIST_MANUFACTURER':
-        $listing_sql .= "mi.manufacturers_name, \n";
+        $listing_sql .= "m.manufacturers_name, \n";
         break;
       case 'PRODUCT_LIST_QUANTITY':
         $listing_sql .= "p.products_quantity, \n";
@@ -151,7 +150,7 @@ $main_content = '';
   $listing_sql .= "p.products_id,
                    p.products_model,
                    p.manufacturers_id,
-                   mi.manufacturers_name,
+                   m.manufacturers_name,
                    p.products_price,
                    p.products_tax_class_id,
                    IF(s.status, s.specials_new_products_price, NULL)
@@ -162,8 +161,8 @@ $main_content = '';
                    " . TABLE_PRODUCTS . " p
                  left join " . TABLE_SPECIALS . " s
                    on p.products_id = s.products_id
-                 left join " . TABLE_MANUFACTURERS_INFO . " mi
-                   on p.manufacturers_id = mi.manufacturers_id
+                 left join " . TABLE_MANUFACTURERS . " m
+                   on p.manufacturers_id = m.manufacturers_id
                  join " . TABLE_PRODUCTS_DESCRIPTION . " pd
                    on p.products_id = pd.products_id
                  join " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
@@ -204,7 +203,7 @@ $main_content = '';
         $listing_sql .= "             order by pd.products_name " . ($sort_order == 'd' ? 'desc' : '');
         break;
       case 'PRODUCT_LIST_MANUFACTURER':
-        $listing_sql .= "             order by mi.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
+        $listing_sql .= "             order by m.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
         break;
       case 'PRODUCT_LIST_QUANTITY':
         $listing_sql .= "             order by p.products_quantity " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
@@ -222,8 +221,6 @@ $main_content = '';
   } // if ( (!isset($_GET['sort'] ... else ...
   // print $listing_sql . "<br>\n";
 
-// Get the right image for the top-right
-  $image = DIR_WS_IMAGES . 'table_background_list.gif';
   if ($current_category_id > 0) {
     $image = vam_db_query ("select categories_image 
                             from " . TABLE_CATEGORIES . " 
@@ -252,5 +249,19 @@ $main_content = '';
   }
 ?>
 
+<?php
 
-<?php include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); ?>
+require (DIR_WS_INCLUDES.'header.php');
+
+include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
+
+$vamTemplate->assign('language', $_SESSION['language']);
+
+$vamTemplate->caching = 0;
+if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+$template = CURRENT_TEMPLATE.'/index.html';
+$vamTemplate->display($template);
+
+include ('includes/application_bottom.php');  
+
+?>
