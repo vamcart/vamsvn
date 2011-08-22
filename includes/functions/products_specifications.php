@@ -762,24 +762,23 @@
 
     $field_array['products_description'] = ($columns_array['products_description'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['products_description'];
 
-    $link_array = vam_get_link_data( $columns_array['products_id'] );
-    $cPath_new = $link_array['cPath'];
-    $category_name = $link_array['categories_name'];
-
-    $parameters = 'cPath=' . $cPath_new . '&products_id=' . $columns_array['products_id'];
-    $product_link = vam_href_link( FILENAME_PRODUCT_INFO, $parameters, 'NONSSL', true, true, $category_name, $columns_array['products_name'] );
+    $cPath_new = vam_get_product_path( $columns_array['products_id'] );
+    $product_link = vam_href_link( FILENAME_PRODUCT_INFO, 'cPath=' . $cPath_new . '&products_id=' . $columns_array['products_id'] );
 
     $field_array['products_image'] = '<a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . $columns_array['products_image'], $columns_array['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
 
     $field_array['products_name'] = ($columns_array['products_name'] == '') ? TEXT_NOT_AVAILABLE : '<a href="' . $product_link . '">' . $columns_array['products_name'] . '</a>';
 
     if (vam_not_null($columns_array['specials_new_products_price'])) {
-      $field_array['products_price'] = '<s>' . $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</s><br><span class="productSpecialPrice">' . $currencies->display_price($columns_array['specials_new_products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</span>';
+      //$field_array['products_price'] = '<s>' . $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</s><br><span class="productSpecialPrice">' . $currencies->display_price($columns_array['specials_new_products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</span>';
+      $field_array['products_price'] = '<s>' . $columns_array['products_price'] . '</s><br><span class="productSpecialPrice">' . $columns_array['specials_new_products_price'] . '</span>';
     } else {
-      $field_array['products_price'] = $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+      //$field_array['products_price'] = $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+      $field_array['products_price'] = $columns_array['products_price'];
     }
 
-    $field_array['final_price'] = $currencies->display_price($columns_array['final_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+    //$field_array['final_price'] = $currencies->display_price($columns_array['final_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+    $field_array['final_price'] = $columns_array['final_price'];
 
     if( $columns_array['price_in_cart_only'] == '1' ) {
       $field_array['products_price'] = '                <span class="smalltext">';
@@ -804,12 +803,12 @@
     $field_array['manufacturers_name'] = ($columns_array['manufacturers_name'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['manufacturers_name'];
 
     $field_array['buy_now'] = '              <div class="buttonSet" style="margin-left:10px;">
-                <span class="buttonAction">' . vam_draw_hidden_field('products_id', $columns_array['products_id']) . vam_draw_button(IMAGE_BUTTON_IN_CART, 'cart', null, 'primary') . '</span>
+                <span class="buttonAction">' . vam_draw_hidden_field('products_id', $columns_array['products_id']) . 'incart_button' . '</span>
               </div>';
 
     // Show Option/Attribute values if there are any
     $field_array['products_options'] ='&nbsp;';
-    $options_array = vam_get_products_attributes ($columns_array['products_id'], (int)$languages_id, $columns_array['products_tax_class_id']);
+    //$options_array = vam_get_products_attributes ($columns_array['products_id'], (int)$languages_id, $columns_array['products_tax_class_id']);
     if (is_array ($options_array) && count ($options_array) > 0) {
       $field_array['products_options'] = '';
       foreach( $options_array as $options ) {
@@ -862,7 +861,8 @@
         $field_array['products_discount' . $discount_price_id] = 1;
 
         if( $discount_price[ 'products_price' ] != 0.0 && vam_not_null( $discount_price[ 'discount' ] ) ) {
-          $field_array['products_price' . $discount_price_id] = $currencies->display_price($discount_price['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+          //$field_array['products_price' . $discount_price_id] = $currencies->display_price($discount_price['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+          $field_array['products_price' . $discount_price_id] = $discount_price['products_price'];
           $field_array['products_discount' . $discount_price_id] = $discount_price[ 'discount' ];
         }
 

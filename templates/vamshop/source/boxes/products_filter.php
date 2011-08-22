@@ -122,8 +122,10 @@ $box_content='';
           $filter_id = $filters_array['filter'];
 
           if ($specs_array['products_column_name'] == 'products_price' || $specs_array['products_column_name'] == 'final_price') {
-            $previous_filter = $currencies->format ($previous_filter);
-            $filter_text = $currencies->format ($filters_array['filter']);
+            //$previous_filter = $currencies->format ($previous_filter);
+            //$filter_text = $currencies->format ($filters_array['filter']);
+            $previous_filter = $previous_filter;
+            $filter_text = $filters_array['filter'];
           } else {
             $filter_text = $specs_array['specification_prefix'] . ' ' . $filters_array['filter'] . ' ' . $specs_array['specification_suffix'];
           }
@@ -151,7 +153,8 @@ $box_content='';
         // For range class only, create a filter for maximum value +
         if ($specs_array['filter_class'] == 'range') {
           if ($specs_array['products_column_name'] == 'products_price' || $specs_array['products_column_name'] == 'final_price') {
-            $previous_filter = $currencies->format ($previous_filter);
+            //$previous_filter = $currencies->format ($previous_filter);
+            $previous_filter = $previous_filter;
           }
 
           $count = 1;
