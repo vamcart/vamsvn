@@ -22,8 +22,13 @@
 
   require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
-  require_once (DIR_WS_LANGUAGES . $language . '/' . FILENAME_PRODUCTS_FILTERS);
-
+  require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
+  
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$module->assign('session', session_id());
+$main_content = '';
+  
 // Block Robots
 // Set a Robots NoIndex if the sort field is set
   $robots_tag = '';
@@ -33,7 +38,7 @@
   
   $category_sql = '';
   if ($current_category_id != 0) {
-    $category_sql = "and s2c.categories_id = '" . $current_category_id . "'";
+    $category_sql = "and s2c.categories_id = '" . (int)$current_category_id . "'";
   }
     
   // Check for filters on each applicable Specification
@@ -53,10 +58,10 @@
                       WHERE
                         s.show_filter = 'True'
                         AND sg.show_filter = 'True' 
-                        and sd.language_id = '" . (int) $languages_id . "'
+                        and sd.language_id = '" . (int) $_SESSION['languages_id'] . "'
                         " . $category_sql;
   // print $specs_query_raw . "<br>\n";
-  $specs_query = tep_db_query ($specs_query_raw);
+  $specs_query = vam_db_query ($specs_query_raw);
 
   //breadcrumbs : preserve the result of the specs_query
   $specs_array_breadcrumb = array(); 
@@ -67,14 +72,14 @@
     'where' => ''
   );
 
-  while ($specs_array = tep_db_fetch_array ($specs_query) ) {
+  while ($specs_array = vam_db_fetch_array ($specs_query) ) {
     // Retrieve the GET vars used as filters
     // Variable names are the letter "f" followed by the specifications_id for that spec.
     $var = 'f' . $specs_array['specifications_id'];
     $$var = '0';
     if (isset ($_GET[$var]) && $_GET[$var] != '') {
       // Decode the URL-encoded names, including arrays
-//      $$var = tep_decode_recursive ($_GET[$var]);
+//      $$var = vam_decode_recursive ($_GET[$var]);
 
       $$var = $_GET[$var];
       
@@ -82,17 +87,17 @@
      $$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
        
       // Get rid of extra values if Select All is selected
-      $$var = tep_select_all_override ($$var);
+      $$var = vam_select_all_override ($$var);
       
       // Get the breadcrumbs data for the filters that are set
-      $filter_breadcrumbs = tep_get_filter_breadcrumbs ($specs_array, $$var);
+      $filter_breadcrumbs = vam_get_filter_breadcrumbs ($specs_array, $$var);
       $specs_array_breadcrumb = array_merge ($specs_array_breadcrumb, (array) $filter_breadcrumbs);
       
       // Set the correct variable type (All _GET variables are strings by default)
-      $$var = tep_set_type ($$var);
+      $$var = vam_set_type ($$var);
     
       // Get the SQL to apply the filters
-      $sql_string_array = tep_get_filter_sql ($specs_array['filter_class'], $specs_array['specifications_id'], $$var, $specs_array['products_column_name'], $languages_id);
+      $sql_string_array = vam_get_filter_sql ($specs_array['filter_class'], $specs_array['specifications_id'], $$var, $specs_array['products_column_name'], $languages_id);
       $sql_array['from'] .= $sql_string_array['from'];
       $sql_array['where'] .= $sql_string_array['where'];
       
@@ -166,20 +171,20 @@
                    " . $sql_array['from'] . "
                  where
                    p.products_status = '1'
-                   and pd.language_id = '" . (int) $languages_id . "'
+                   and pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
                    " . $sql_array['where'] . "
                 ";
 
   if ($current_category_id != 0) {
     $subcategories_array = array();
-    tep_get_subcategories ($subcategories_array, $current_category_id);
+    vam_get_subcategories ($subcategories_array, $current_category_id);
         
     if (SPECIFICATIONS_FILTER_SUBCATEGORIES == 'True' && count ($subcategories_array) > 0) {
       $category_ids = $current_category_id . ',' . implode (',', $subcategories_array);
       $listing_sql .= '   ' . "and p2c.categories_id in (" . $category_ids . ") \n";
       
     } else {
-      $listing_sql .= '   ' . "and p2c.categories_id = '" . $current_category_id . "' \n";
+      $listing_sql .= '   ' . "and p2c.categories_id = '" . (int)$current_category_id . "' \n";
     }
   } // if ($current_category_id
 
@@ -220,110 +225,32 @@
 // Get the right image for the top-right
   $image = DIR_WS_IMAGES . 'table_background_list.gif';
   if ($current_category_id > 0) {
-    $image = tep_db_query ("select categories_image 
+    $image = vam_db_query ("select categories_image 
                             from " . TABLE_CATEGORIES . " 
                             where categories_id = '" . (int) $current_category_id . "'
                           ");
-    $image = tep_db_fetch_array ($image);
+    $image = vam_db_fetch_array ($image);
     $image = $image['categories_image'];
   }
 
   // Add Filter to Breadcrumbs if selected
   if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
     foreach ($specs_array_breadcrumb as $crumb) {
-      $breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', tep_href_link (FILENAME_PRODUCTS_FILTERS, tep_get_all_get_params (array ('f' . $crumb['specifications_id']) ) ) );
+      $breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $crumb['specifications_id']) ) ) );
     }
   }
  
 ?>
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html <?php echo HTML_PARAMS; ?>>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<?php
-// BOF: WebMakers.com Changed: Header Tag Controller v1.0
-// Replaced by header_tags.php
-if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
-  require(DIR_WS_INCLUDES . 'header_tags.php');
-} else {
-?>
-  <title><?php echo TITLE ?></title>
-<?php
-}
-// EOF: WebMakers.com Changed: Header Tag Controller v1.0
-?>
-<?php
-// Block Robots
-  echo $robots_tag;
-?>
-<base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
-</head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
-<!-- header //-->
-<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-<!-- header_eof //-->
-
-<!-- body //-->
-<table border="0" width="100%" cellspacing="3" cellpadding="3">
-  <tr>
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="0" cellpadding="2">
-<!-- left_navigation //-->
-<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
-<!-- left_navigation_eof //-->
-    </table></td>
-<!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_image(DIR_WS_IMAGES . 'table_background_specials.gif', HEADING_TITLE, HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
-          </tr>
-        </table></td>
-      </tr>
 <?php
   // Show the Filters module here if set in Admin
   if (SPECIFICATIONS_FILTERS_MODULE == 'True') {
 ?>
-      <tr>
-        <td><?php echo tep_draw_separator ('pixel_trans.gif', '100%', '10'); ?></td>
-      </tr>
-      <tr>
-        <td>
 <?php
     require (DIR_WS_MODULES . 'products_filter.php');
 ?>
-        </td>
-      </tr>
 <?php
   }
 ?>
-      <tr>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '20'); ?></td>
-      </tr>
-      <tr>
-        <td><br><table border="0" width="100%" cellspacing="0" cellpadding="2">
-          <tr>
-            <td class="main"><?php include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING_COL); ?></td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-<!-- body_text_eof //-->
-    <td width="<?php echo BOX_WIDTH; ?>" valign="top"><table border="0" width="<?php echo BOX_WIDTH; ?>" cellspacing="0" cellpadding="2">
-<!-- right_navigation //-->
-<?php require(DIR_WS_INCLUDES . 'column_right.php'); ?>
-<!-- right_navigation_eof //-->
-    </table></td>
-  </tr>
-</table>
-<!-- body_eof //-->
 
-<!-- footer //-->
-<?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
-<!-- footer_eof //-->
-<br>
-</body>
-</html>
-<?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
+
+<?php include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); ?>
