@@ -25,6 +25,10 @@
   require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
   
 $vamTemplate = new vamTemplate;
+
+// include boxes
+require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
+
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $vamTemplate->assign('session', session_id());
@@ -151,11 +155,27 @@ $module = new vamTemplate;
   } //for
   
   $listing_sql .= "p.products_id,
-                   p.products_model,
-                   p.manufacturers_id,
-                   m.manufacturers_name,
-                   p.products_price,
-                   p.products_tax_class_id,
+                                  p.products_fsk18,
+                                  p.products_shippingtime,
+                                  p.products_model,
+                                  pd.products_name,
+                                  p.products_ean,
+                                  p.products_price,
+                                  p.products_tax_class_id,
+                                  m.manufacturers_name,
+                                  p.products_quantity,
+                                  p.products_image,
+                                  p.products_weight,
+                                  pd.products_short_description,
+                                  pd.products_description,
+                                  p.products_id,
+                                  p.manufacturers_id,
+                                  p.products_price,
+                                  p.products_vpe,
+                                  p.products_vpe_status,
+                                  p.products_vpe_value,
+                                  p.products_discount_allowed,
+                                  p.products_tax_class_id,
                    IF(s.status, s.specials_new_products_price, NULL)
                      as specials_new_products_price,
                    IF(s.status, s.specials_new_products_price, p.products_price)
