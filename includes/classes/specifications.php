@@ -23,7 +23,7 @@
       global $current_category_id, $languages_id;
 
       $this->current_category_id = $current_category_id;
-      $this->languages_id = $languages_id;
+      $this->languages_id = $_SESSION['languages_id'];
 
       $this->setAppliedFilters();
     }
