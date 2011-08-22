@@ -176,7 +176,7 @@
             reset($specification_id_array);
 
             // Get the existing fields data
-            $field_array = vam_fill_existing_fields( $products_id, $languages_id );
+            $field_array = vam_fill_existing_fields( $products_id, $_SESSION['languages_id'] );
             //Start the row
             $module_contents .= vam_draw_form('cart_quantity', vam_href_link(FILENAME_DEFAULT, vam_get_all_get_params(array('action')) . 'action=add_product')) . PHP_EOL;
             $module_contents .= '      <tr>' . PHP_EOL;
@@ -186,7 +186,7 @@
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
             	// Get the cell parameters
-              $table_cell = vam_specification_table_cell( $specs_id, $products_id, $languages_id, $field_array, $specs_data );
+              $table_cell = vam_specification_table_cell( $specs_id, $products_id, $_SESSION['languages_id'], $field_array, $specs_data );
 
               // Add the contents of each cell
               $module_contents .= '        <td' . (vam_not_null($table_cell['box_align']) ? ' align="' . $table_cell['box_align'] . '"' : '') . ' >' . $table_cell['box_text'] . '</td>' . PHP_EOL;
