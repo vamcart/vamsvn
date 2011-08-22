@@ -32,6 +32,10 @@ if (!CacheCheck()) {
 	$cache_id = $_SESSION['language'].(int) $_GET['manufacturers_id'];
 }
 
+	$manufacturers_query = "select distinct m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." as m, ".TABLE_PRODUCTS." as p where m.manufacturers_id=p.manufacturers_id order by m.manufacturers_name";
+
+	$manufacturers_query = vamDBquery($manufacturers_query);
+
 if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
@@ -40,9 +44,6 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id
 	require_once (DIR_FS_INC.'vam_draw_form.inc.php');
 	require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
 
-	$manufacturers_query = "select distinct m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." as m, ".TABLE_PRODUCTS." as p where m.manufacturers_id=p.manufacturers_id order by m.manufacturers_name";
-
-	$manufacturers_query = vamDBquery($manufacturers_query);
 	if (vam_db_num_rows($manufacturers_query, true) <= MAX_DISPLAY_MANUFACTURERS_IN_A_LIST) {
 		// Display a list
 		$manufacturers_list = '';
