@@ -495,9 +495,6 @@ define('VAMSHOP_SUPPORT_KEY_TEXT','<a href="http://vamshop.ru/key.php" target="_
 define('VAMSHOP_REGISTER_SUPPORT_KEY','<a href="http://vamshop.ru/key.php" target="_blank">получить бесплатный ключ</a>.');
 define('VAMSHOP_SUPPORT_KEY',(file_exists(DIR_FS_CATALOG .'vamshop.key') ? implode('', file(DIR_FS_CATALOG .'vamshop.key')) : VAMSHOP_REGISTER_SUPPORT_KEY));
 
-define('BOX_PARAMETERS', 'Параметры');
-define('BOX_PARAMETERS_EXPORT', 'Импорт/экспорт параметров');
-
 define('TEXT_ACCESS_FORBIDDEN','Нет доступа');
 
 define('TEXT_MANUAL_LINK','Справка');
