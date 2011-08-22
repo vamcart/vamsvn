@@ -27,14 +27,43 @@
 
     if (empty($default) && isset($GLOBALS[$name])) $default = $GLOBALS[$name];
 
-    for ($i=0, $n=sizeof($values); $i<$n; $i++) {
-      $field .= '<option value="' . vam_parse_input_field_data($values[$i]['id'], array('"' => '&quot;')) . '"';
-      if ($default == $values[$i]['id']) {
-        $field .= ' selected="selected"';
-      }
+// Start Products Specifications
+    foreach ($values as $link_data) {
+      switch (true) {
+        case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'none'):
+          break;
+        
+        case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
+          $field .= '<optgroup class="no_results" label="';
+          $field .= vam_output_string ($link_data['text'] );
+          if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $link_data['count'] != '') {
+            $field .= ' (' . $link_data['count'] . ')';
+          }
+          $field .= '"></optgroup>';
+          break;
+        
+        default:
+          $field .= '<option value="' . vam_output_string ($link_data['id']) . '"';
+          if (in_array ($link_data['id'], (array) $default) ) {
+            $field .= ' SELECTED';
+          }
 
-      $field .= '>' . vam_parse_input_field_data($values[$i]['text'], array('"' => '&quot;', '\'' => '&#039;', '<' => '&lt;', '>' => '&gt;')) . '</option>';
-    }
+          $field .= '>' . vam_output_string ($link_data['text'], array (
+            '"' => '&quot;',
+            '\'' => '&#039;',
+            '<' => '&lt;',
+            '>' => '&gt;'
+          ));
+            
+          if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $link_data['count'] != '') {
+            $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+          }
+          $field .= '</option>';
+          break;
+      } // switch (true)
+    } // foreach ($values
+// End Products Specifications
+
     $field .= '</select>';
 
     if ($required == true) $field .= TEXT_FIELD_REQUIRED;
