@@ -88,7 +88,6 @@
 </div>
 {/if}
 
-<form action="{$smarty.const.FILENAME_PRODUCT_COMPARE}">
 {foreach name=aussen item=module_data from=$module_content} <div class="page">
 <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pageItem">
@@ -114,14 +113,6 @@
 </dd>
 {/if}
 
-<dd class="itemDescription">
-<p>
-{foreach name=params item=module_params from=$module_data.params}
-{$module_params.name}: <strong>{$module_params.value} {$module_params.suff} </strong><br />
-{/foreach}
-</p>
-</dd>
-
 <dd class="itemDescriptionPrice">
 {$module_data.PRODUCTS_PRICE}
 </dd>
@@ -146,10 +137,6 @@
 </dd>
 {/if}
 
-<dd class="itemDescription">
-<input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" />{#text_compare#}
-</dd>
-
 </dl>
 
 <div class="clear"></div>
@@ -160,9 +147,6 @@
 </div>
 {/foreach} 
 <div class="clear"></div>
-
-<input type="hidden" name="cat" value="{$smarty.get.cat}" />
-{$BUTTON_COMPARE}</form>
 
 <div class="navigation">
 <span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
