@@ -46,62 +46,6 @@ if (!is_object($product) || !$product->isProduct()) { // product not found in da
 
 	vam_db_query("update ".TABLE_PRODUCTS_DESCRIPTION." set products_viewed = products_viewed+1 where products_id = '".$product->data['products_id']."' and language_id = '".$_SESSION['languages_id']."'");
 
-// Parameters start
-
-    $parameters_query = vamDBquery("SELECT * FROM ".TABLE_PRODUCTS_PARAMETERS2PRODUCTS." LEFT JOIN ".TABLE_PRODUCTS_PARAMETERS." using(products_parameters_id) WHERE products_id = ".$product->data['products_id']." and products_parameters.products_parameters_id is not null and products_parameters_order >= 0 and products_parameters2products_order >= 0 order by IF(products_parameters2products_order > 0, products_parameters2products_order, products_parameters_order)");
-
-    $parameters = array();
-    $i = 0;
-    while ($parameters_data = vam_db_fetch_array($parameters_query, true))
-    {
-        $i = $parameters_data['products_parameters_id'];
-
-        $parameters[$i]["parameters_id"] = $parameters_data["products_parameters_id"];
-        $parameters[$i]["parameters_name"] = $parameters_data["products_parameters_name"];
-        $parameters[$i]["parameters_suff"] = $parameters_data["products_parameters_titlesuff"];
-        $parameters[$i]["parameters_group"] = $parameters_data["products_parameters_group"];
-        $parameters[$i]["is_group"] = $parameters_data["products_parameters_type"] == 'g';
-        $parameters[$i]["parameters_value"] = $parameters_data["products_parameters2products_value"];
-        $i++;
-    }
-
-    foreach($parameters as $i => $p)
-    {
-        foreach(array($product->data['products_id']) as $id)
-        {
-            if (!isset($parameters[$i]["parameters_values"][$id]))  $parameters[$i]["parameters_values"][$id] = "";
-        }
-    }
-
-
-    $temp = array();
-    foreach($parameters as $k => $p)
-    {
-        if ($p["parameters_group"] == 0) $temp[$p["parameters_id"]] = $p;
-    }
-    $parameters_query = vamDBquery("SELECT * FROM ".TABLE_PRODUCTS_PARAMETERS." WHERE products_parameters_type = 'g' order by products_parameters_order");
-    while ($parameters_data = vam_db_fetch_array($parameters_query, true))
-    {
-        $parameters_data["is_group"] = $parameters_data["products_parameters_type"] == 'g';
-        foreach($parameters as $k => $p)
-        {
-            if ($p["parameters_group"] == $parameters_data["products_parameters_id"])
-            {
-                if (!is_array($temp[$parameters_data["products_parameters_id"]]))
-                {
-                    $temp[$parameters_data["products_parameters_id"]] = array("parameters_id" => $parameters_data["products_parameters_id"],
-                                                                              "parameters_name" => $parameters_data["products_parameters_name"],
-                                                                              "is_group" => $parameters_data["is_group"]);
-                }
-                $temp[$p["parameters_id"]] = $p;
-            }
-        }
-    }
-    $parameters = $temp;
-    $info->assign('parameters', $parameters);
-
-// Parameters end
-
 		$products_price = $vamPrice->GetPrice($product->data['products_id'], $format = true, 1, $product->data['products_tax_class_id'], $product->data['products_price'], 1);
 
 		// check if customer is allowed to add to cart
