@@ -68,5 +68,5 @@ Disallow: /*sort/
 Disallow: /*on_page/
 Disallow: /index.php?action=buy_now
 Disallow: /specials.php/action/buy_now
-Disallow: /comparsion.php
+Disallow: /comparison.php
 Disallow: /products_filter.php  
