@@ -717,4 +717,288 @@
     return $box_text;
   } //function vam_get_filter_string
 
+////
+// Fill the table data fields in a comparison or category page with data from the existing osC fields
+  function vam_fill_existing_fields( $products_id, $languages_id ) {
+  	global $currencies, $cPath, $PHP_SELF;
+
+    $columns_query_raw = "
+              select
+                p.products_id,
+                pd.products_name,
+                pd.products_description,
+                p.products_quantity,
+                p.products_model,
+                p.products_image,
+                p.products_price,
+                p.products_weight,
+                p.products_tax_class_id,
+                m.manufacturers_name,
+                IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price,
+                IF(s.status, s.specials_new_products_price, p.products_price) as final_price
+              from
+                " . TABLE_PRODUCTS . " p
+                join " . TABLE_PRODUCTS_DESCRIPTION . " pd
+                  on (pd.products_id = p.products_id)
+                left join " . TABLE_SPECIALS . " s
+                  on (p.products_id = s.products_id)
+                left join " . TABLE_MANUFACTURERS . " m
+                  on (p.manufacturers_id = m.manufacturers_id)
+              where
+                p.products_id = '" . (int) $products_id . "'
+                and pd.language_id = '" . (int) $languages_id . "'
+            ";
+    // print $columns_query_raw . "<br>\n";
+    $columns_query = vam_db_query($columns_query_raw);
+    $columns_array = vam_db_fetch_array($columns_query);
+
+    $field_array = array();
+    // Quantities may be used in columns or combination column
+    $field_array['products_quantity'] = ($columns_array['products_quantity'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['products_quantity'];
+
+    $field_array['products_model'] = ($columns_array['products_model'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['products_model'];
+
+    $field_array['products_index_description'] = ($columns_array['products_index_description'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['products_index_description'];
+
+    $field_array['products_description'] = ($columns_array['products_description'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['products_description'];
+
+    $link_array = vam_get_link_data( $columns_array['products_id'] );
+    $cPath_new = $link_array['cPath'];
+    $category_name = $link_array['categories_name'];
+
+    $parameters = 'cPath=' . $cPath_new . '&products_id=' . $columns_array['products_id'];
+    $product_link = vam_href_link( FILENAME_PRODUCT_INFO, $parameters, 'NONSSL', true, true, $category_name, $columns_array['products_name'] );
+
+    $field_array['products_image'] = '<a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . $columns_array['products_image'], $columns_array['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
+
+    $field_array['products_name'] = ($columns_array['products_name'] == '') ? TEXT_NOT_AVAILABLE : '<a href="' . $product_link . '">' . $columns_array['products_name'] . '</a>';
+
+    if (vam_not_null($columns_array['specials_new_products_price'])) {
+      $field_array['products_price'] = '<s>' . $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</s><br><span class="productSpecialPrice">' . $currencies->display_price($columns_array['specials_new_products_price'], vam_get_tax_rate($columns_array['products_tax_class_id'])) . '</span>';
+    } else {
+      $field_array['products_price'] = $currencies->display_price($columns_array['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+    }
+
+    $field_array['final_price'] = $currencies->display_price($columns_array['final_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+
+    if( $columns_array['price_in_cart_only'] == '1' ) {
+      $field_array['products_price'] = '                <span class="smalltext">';
+
+      $field_array['products_price'] .= '<script language="javascript"><!--' . "\n";
+      $field_array['products_price'] .= 'document.write(\'' . '<a href="javascript:popupWindow(\\\'' . vam_href_link( FILENAME_POPUP_PRICE_IN_CART ) . '\\\')">' . TEXT_WHY_HIDE_PRICE . '</a>\');' . "\n";
+      $field_array['products_price'] .= '//--></script>' . "\n";
+      $field_array['products_price'] .= '<noscript>';
+      $field_array['products_price'] .= '<a href="' . vam_href_link( FILENAME_POPUP_PRICE_IN_CART ) . '" target="_new">' . TEXT_WHY_HIDE_PRICE . '</a>';
+      $field_array['products_price'] .= '</noscript>';
+      $field_array['products_price'] .= '                </span>';
+
+      $field_array['final_price'] = $field_array['products_price'];
+    }
+
+    $raw_weight = number_format($columns_array['products_weight'], 1);
+    if ($raw_weight -floor($raw_weight) == 0) {
+      $raw_weight = number_format($columns_array['products_weight'], 0);
+    }
+    $field_array['products_weight'] = ($raw_weight == 0.0) ? TEXT_NOT_AVAILABLE : $raw_weight;
+
+    $field_array['manufacturers_name'] = ($columns_array['manufacturers_name'] == '') ? TEXT_NOT_AVAILABLE : $columns_array['manufacturers_name'];
+
+    $field_array['buy_now'] = '              <div class="buttonSet" style="margin-left:10px;">
+                <span class="buttonAction">' . vam_draw_hidden_field('products_id', $columns_array['products_id']) . vam_draw_button(IMAGE_BUTTON_IN_CART, 'cart', null, 'primary') . '</span>
+              </div>';
+
+    // Show Option/Attribute values if there are any
+    $field_array['products_options'] ='&nbsp;';
+    $options_array = vam_get_products_attributes ($columns_array['products_id'], (int)$languages_id, $columns_array['products_tax_class_id']);
+    if (is_array ($options_array) && count ($options_array) > 0) {
+      $field_array['products_options'] = '';
+      foreach( $options_array as $options ) {
+        $field_array['products_options'] .= vam_select_attributes( $columns_array['products_id'], $options, $languages_id, $columns_array['products_tax_class_id'] );
+      }
+    }
+
+    $field_array['popup_image'] = TEXT_NOT_AVAILABLE;
+    $popup_query_raw = "
+      select
+        image
+      from
+        " . TABLE_PRODUCTS_IMAGES . "
+      where
+        products_id = '" . (int) $products_id . "'
+    ";
+    // print $popup_query_raw . "<br>\n";
+    $popup_query = vam_db_query( $popup_query_raw );
+    $popup_array = vam_db_fetch_array( $popup_query );
+
+    if( vam_not_null( $popup_array[ 'image' ] ) ) {
+      $field_array['popup_image'] = '<script language="javascript"><!--' . "\n";
+      $field_array['popup_image'] .= 'document.write(\'<a href="javascript:popupWindow(\\\'' . vam_href_link (FILENAME_POPUP_IMAGE, 'pID=' . $columns_array['products_id']) . '\\\')">' . TEXT_POPUP . '</a>\');' . "\n";
+      $field_array['popup_image'] .= '//--></script>' . "\n";
+      $field_array['popup_image'] .= '<noscript>' . "\n";
+      $field_array['popup_image'] .= '<a href="' . vam_href_link (DIR_WS_IMAGES . $columns_array['image']) . '" target="_blank">' . TEXT_POPUP . '</a>' . "\n";
+      $field_array['popup_image'] .= '</noscript>' . "\n";
+    }
+
+    $discount_price_query_raw = "
+      select
+        pd.products_price,
+        dd.discount
+      from
+        " . TABLE_PRODUCTS_DISCOUNT . " pd
+        join " . TABLE_DISCOUNTS . " dd
+          on dd.discounts_id = pd.discounts_id
+      where
+        pd.products_id = '" . (int) $products_id . "'
+      order by
+        dd.sort_order
+    ";
+    // print $discount_price_query_raw . "<br>\n";
+    $discount_price_query = vam_db_query( $discount_price_query_raw );
+
+    if( vam_db_num_rows( $discount_price_query ) > 0 ) {
+    	$discount_price_id = 1;
+      while( $discount_price = vam_db_fetch_array( $discount_price_query ) ) {
+        $field_array['products_price' . $discount_price_id] = TEXT_NOT_AVAILABLE;
+        $field_array['products_discount' . $discount_price_id] = 1;
+
+        if( $discount_price[ 'products_price' ] != 0.0 && vam_not_null( $discount_price[ 'discount' ] ) ) {
+          $field_array['products_price' . $discount_price_id] = $currencies->display_price($discount_price['products_price'], vam_get_tax_rate($columns_array['products_tax_class_id']));
+          $field_array['products_discount' . $discount_price_id] = $discount_price[ 'discount' ];
+        }
+
+        $discount_price_id++;
+      }
+    }
+
+    return $field_array;
+  }
+
+////
+// Draw a table cell in a comparison table or alternate category page
+  function vam_specification_table_cell( $specs_id, $products_id, $languages_id, $field_array, $specs_data ) {
+    $products_specifications_query_raw = "
+      select
+        specification
+      from
+        " . TABLE_PRODUCTS_SPECIFICATIONS . "
+      where
+        specifications_id = '" . (int) $specs_id . "'
+        and language_id = '" . (int) $languages_id . "'
+        and products_id = '" . (int) $products_id . "'
+      limit 1
+     ";
+     // print $products_specifications_query_raw . "<br>\n";
+     $products_specifications_query = vam_db_query($products_specifications_query_raw);
+
+     $products_specifications = vam_db_fetch_array($products_specifications_query);
+
+     if ($products_specifications['specification'] == '') {
+       $specs_data['specification'] = TEXT_NOT_AVAILABLE;
+     } else {
+       $specs_data['specification'] = $products_specifications['specification'];
+     }
+
+     // Get the data for the table cell, either from an existing column or from the specification
+     switch ($specs_data['column_name']) {
+       // If an existing column was selcted, use that data
+       case 'products_quantity' :
+                  $box_text = $field_array['products_quantity'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_model' :
+                  $box_text = $field_array['products_model'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_image' :
+                  $box_text = $field_array['products_image'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_price' :
+                  $box_text = $field_array['products_price'];
+                  $box_align = 'right';
+                  break;
+
+       case 'final_price' :
+                  $box_text = $field_array['final_price'];
+                  $box_align = 'right';
+                  break;
+
+       case 'products_weight' :
+                  $box_text = $field_array['products_weight'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_options' :
+                  $box_text = $field_array['products_options'];
+                  $box_align = 'center';
+                  break;
+
+       case 'manufacturers_id' :
+                  $box_text = $field_array['manufacturers_name'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_name' :
+                  $box_text = $field_array['products_name'];
+                  $box_align = 'center';
+                  break;
+
+       case 'products_description' :
+                  $box_text = stripslashes( stripslashes( $field_array['products_description'] ) );
+                  break;
+
+       case 'products_index_description' :
+                  $box_text = stripslashes( stripslashes( $field_array['products_index_description'] ) );
+                  break;
+
+       case 'buy_now' :
+                  $box_text = '<span style="font-size:0.8em;">' . $field_array['buy_now'] . '</span>';
+                  $box_align = 'center';
+                  break;
+
+       case 'combi' : // Contents of this column are set globally in the Admin Config
+                  $combi_components = array ();
+                  if (SPECIFICATIONS_COMBO_MODEL > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_MODEL] = $field_array['products_model'];
+                  if (SPECIFICATIONS_COMBO_IMAGE > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_IMAGE] = $field_array['products_image'];
+                  if (SPECIFICATIONS_COMBO_PRICE > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_PRICE] = $field_array['products_price'];
+                  if (SPECIFICATIONS_COMBO_WEIGHT > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_WEIGHT] = $field_array['products_weight'];
+                  if (SPECIFICATIONS_COMBO_MFR > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_MFR] = $field_array['manufacturers_name'];
+                  if (SPECIFICATIONS_COMBO_NAME > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_NAME] = $field_array['products_name'];
+                  if (SPECIFICATIONS_COMBO_BUY_NOW > 0)
+                    $combi_components[SPECIFICATIONS_COMBO_BUY_NOW] = $field_array['buy_now'];
+                  ksort($combi_components);
+                  $box_text = implode('<br>', $combi_components);
+                  $box_align = 'center';
+                  break;
+
+       case '' : // No existing column, so use specification data
+       default :
+                  $box_text = $specs_data['prefix'] . ' ' . PHP_EOL;
+
+                  if ($specs_data['display'] == 'image' || $specs_data['display'] == 'multiimage' || $specs_data['enter'] == 'image' || $specs_data['enter'] == 'multiimage') {
+                    $box_text .= vam_image(DIR_WS_IMAGES . $specs_data['specification'], $specs_data['column_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . PHP_EOL;
+                  } else {
+                    $box_text .= $specs_data['specification'] . ' ' . PHP_EOL;
+                  }
+
+                  if ($specs_data['suffix'] != '' && SPECIFICATIONS_COMP_SUFFIX != 'True') {
+                    $box_text .= ' ' . $specs_data['suffix'] . PHP_EOL;
+                  }
+
+                  $box_align = $specs_data['column_justify'];
+                  break;
+    } // switch ($specs_data['column_name']
+
+    return array( 'box_text' => $box_text, 'box_align' => $box_align );
+  }
+
 ?>
