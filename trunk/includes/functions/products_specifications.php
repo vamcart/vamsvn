@@ -364,11 +364,11 @@
     );
 
     $filter_array = (is_array ($filter_array) ) ? $filter_array : array ($filter_array);
- 
+
     // If the Show All option is set, return a blank string
     if (isset ($filter_array[0]) && ($filter_array[0] == '0' || $filter_array[0] == '')) {
       return $sql_array;
-      
+
     } else {
       // Scrub the filter array so apostrophes in filters don't error out.
       foreach ($filter_array as $filterKey => $filterValue) {
@@ -377,7 +377,7 @@
 
       // The Manufacturer's column contains an ID and not the name, so we have to change it
       if ($products_column_name == 'manufacturers_id') {
-        $filter_array = vam_get_manufacturer_id($filter_array, $products_column_name,$languages_id);
+        $filter_array = vam_get_manufacturer_id($filter_array, $products_column_name);
         $products_column_name = 'p.' . $products_column_name;
       } // if ($products_column_name == 'manufacturers_id')
 
@@ -467,39 +467,39 @@
           if (strlen ($products_column_name) > 1) {
             if (count ($filters_range) < 2) { // There is only one parameter, so it is a minimum
               if (DISPLAY_PRICE_WITH_TAX == 'true' && ($products_column_name == 'products_price' || $final_price == true) ) {
-                $sql_array['from'] .= " inner join " . TABLE_TAX_RATES . " tr 
+                $sql_array['from'] .= " inner join " . TABLE_TAX_RATES . " tr
                                           on tr.tax_class_id = p.products_tax_class_id
-                                        left join " . TABLE_ZONES_TO_GEO_ZONES . " za 
-                                          on (tr.tax_zone_id = za.geo_zone_id) 
-                                        left join " . TABLE_GEO_ZONES . " tz 
-                                          on (tz.geo_zone_id = tr.tax_zone_id) 
+                                        left join " . TABLE_ZONES_TO_GEO_ZONES . " za
+                                          on (tr.tax_zone_id = za.geo_zone_id)
+                                        left join " . TABLE_GEO_ZONES . " tz
+                                          on (tz.geo_zone_id = tr.tax_zone_id)
                                       ";
                 $sql_array['where'] .= " AND (" . $products_column_name . " * (1.0 + (tr.tax_rate / 100) ) ) > " . $filters_range[0] . "
-                                         and (za.zone_country_id is null 
-                                           or za.zone_country_id = '0' 
-                                           or za.zone_country_id = '" . (int) $country_id . "') 
-                                         and (za.zone_id is null 
-                                           or za.zone_id = '0' 
-                                           or za.zone_id = '" . (int) $zone_id . "') 
+                                         and (za.zone_country_id is null
+                                           or za.zone_country_id = '0'
+                                           or za.zone_country_id = '" . (int) $country_id . "')
+                                         and (za.zone_id is null
+                                           or za.zone_id = '0'
+                                           or za.zone_id = '" . (int) $zone_id . "')
                                       ";
               } else {
                 $sql_array['where'] .= " and " . $products_column_name . " > " . $filters_range[0] . " ";
               }
             } else {
               if (DISPLAY_PRICE_WITH_TAX == 'true' && ($products_column_name == 'products_price' || $final_price == true) ) {
-                $sql_array['from'] .= " inner join " . TABLE_TAX_RATES . " tr 
+                $sql_array['from'] .= " inner join " . TABLE_TAX_RATES . " tr
                                           on tr.tax_class_id = p.products_tax_class_id
-                                        left join " . TABLE_ZONES_TO_GEO_ZONES . " za 
-                                          on (tr.tax_zone_id = za.geo_zone_id) 
-                                        left join " . TABLE_GEO_ZONES . " tz 
-                                          on (tz.geo_zone_id = tr.tax_zone_id) 
+                                        left join " . TABLE_ZONES_TO_GEO_ZONES . " za
+                                          on (tr.tax_zone_id = za.geo_zone_id)
+                                        left join " . TABLE_GEO_ZONES . " tz
+                                          on (tz.geo_zone_id = tr.tax_zone_id)
                                       ";
-                $sql_array['where'] .= " and ( (" . $products_column_name . " * (1.0 + (tr.tax_rate / 100) ) ) between " . $filters_range[0] . " and " . $filters_range[1] . ") 
-                                         and (za.zone_country_id is null 
-                                           or za.zone_country_id = '0' 
-                                           or za.zone_country_id = '" . (int) $country_id . "') 
-                                         and (za.zone_id is null 
-                                           or za.zone_id = '0' 
+                $sql_array['where'] .= " and ( (" . $products_column_name . " * (1.0 + (tr.tax_rate / 100) ) ) between " . $filters_range[0] . " and " . $filters_range[1] . ")
+                                         and (za.zone_country_id is null
+                                           or za.zone_country_id = '0'
+                                           or za.zone_country_id = '" . (int) $country_id . "')
+                                         and (za.zone_id is null
+                                           or za.zone_id = '0'
                                            or za.zone_id = '" . (int) $zone_id . "')
                                       ";
               } else {
@@ -528,7 +528,7 @@
           // No existing columns are set up as a reverse range, so this filter class has no provision for existing columns
           $filter_array = array_map ('vam_set_filter_case', $filter_array);
           $sql_array['from'] .= " INNER JOIN " . TABLE_PRODUCTS_SPECIFICATIONS . " ps" . $specifications_id . " ON p.products_id = ps" . $specifications_id . ".products_id ";
-          $sql_array['where'] .= " AND " . $filter_array[0] . " BETWEEN SUBSTRING_INDEX(ps.specification,'-',1) AND SUBSTRING_INDEX(ps.specification,'-',-1)
+          $sql_array['where'] .= " AND " . $filter_array[0] . " BETWEEN SUBSTRING_INDEX(ps" . $specifications_id . ".specification,'-',1) AND SUBSTRING_INDEX(ps" . $specifications_id . ".specification,'-',-1)
                   AND ps" . $specifications_id . ".specifications_id = '" . $specifications_id . "'
                   AND ps" . $specifications_id . ".language_id = '" . (int) $languages_id . "'
                   ";
@@ -598,19 +598,19 @@
         $box_text .= vam_draw_form('filter', $target, 'get');
         $box_text .= vam_draw_pull_down_menu ($filter_name, $filters_select_array, $filter_value, 'onChange="this.form.submit();"');
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit('icon_next.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
       case 'radio':
         $box_text .= vam_draw_form('filter', $target, 'get');
         foreach ($filters_select_array as $filter) {
-          
+
           $checked = ($filter['id'] == $filter_value) ? true : false;
           switch (true) {
             case ($filter['count'] != '' && $filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'none'):
               break;
-        
+
             case ($filter['count'] != '' && $filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
               $box_text .= '<input type="radio" name="0" value="0" disabled="disabled">';
               $box_text .= '<span class="no_results">' . '&nbsp;';
@@ -633,7 +633,7 @@
           } // switch (true)
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit ('icon_next.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit ('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
@@ -642,7 +642,7 @@
         $box_text .= vam_draw_form ('filter', $target, 'get');
         $box_text .= vam_draw_input_field($filter_name, $value);
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit('icon_next.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
@@ -650,7 +650,7 @@
         $box_text .= vam_draw_form ('filter', $target, 'get');
         $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'multiple="' . $filter_name . 'f"');
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit ('icon_next.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit ('button_filter.gif', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
@@ -662,7 +662,7 @@
           switch (true) {
             case ($filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'none'):
               break;
-        
+
             case ($filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
               $box_text .= '<input type="checkbox" name="0" value="0" disabled="disabled">';
               $box_text .= '<span class="no_results">' . '&nbsp;';
@@ -673,7 +673,7 @@
               }
               $box_text .= '<br>' . "\n";
               break;
-        
+
             default:
               $box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
 
@@ -686,7 +686,7 @@
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('icon_next.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
@@ -698,13 +698,14 @@
       case 'multiimage':
         $box_text .= vam_draw_form('filter', $target, 'get');
         foreach ($filters_select_array as $filter) {
-          $checked = ($filter['id'] == $filter_value) ? true : false;
-          $box_text .= vam_draw_checkbox_field($filter_name, $filter['id'], $checked);
-          $box_text .= '&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . $filter['text'], $filter['text'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '<br>' . "\n";
+          $checked = ($filter['id'] == $filter_value[$checkbox_id]) ? true : false;
+          $box_text .= vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked);
+          $box_text .= '  ' . vam_image(DIR_WS_IMAGES . $filter['text'], $filter['text'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '<br>' . "\n";
           $box_text .= '<br>' . "\n";
+          $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('icon_next.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
