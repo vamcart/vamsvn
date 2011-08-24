@@ -924,8 +924,8 @@ document.onmousemove=positiontip
 	           //--></script>
 			   <?php } ?>
 				  
-		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/payment.png', '', '12', '12') . '&nbsp;' . BUTTON_INVOICE . '</span></a>'; ?></li>
-		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/shipping.png', '', '12', '12') . '&nbsp;' . BUTTON_PACKINGSLIP . '</span></a>'; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRINT_ORDER, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/payment.png', '', '12', '12') . '&nbsp;' . BUTTON_INVOICE . '</span></a>'; ?></li>
+		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRINT_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/shipping.png', '', '12', '12') . '&nbsp;' . BUTTON_PACKINGSLIP . '</span></a>'; ?></li>
 		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'action')) . 'oID=' . $_GET['oID'] . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK_TO_ORDER . '</span></a>'; ?></li>
 		    <li><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('action'))) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK_TO_ORDERS_LIST . '</span></a> '; ?></li>
 		  </ul>
