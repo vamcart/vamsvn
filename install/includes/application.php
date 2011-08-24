@@ -83,6 +83,7 @@
   require_once(DIR_FS_INC.'vam_draw_box_heading.inc.php');
   require_once(DIR_FS_INC.'vam_draw_box_contents.inc.php');
   require_once(DIR_FS_INC.'vam_draw_box_content_bullet.inc.php');
+  require_once (DIR_FS_INC.'vam_output_string.inc.php');
 
   // iinclude check functions
   require_once(DIR_FS_INC .'vam_gdlib_check.inc.php');
