@@ -18,8 +18,11 @@
 {/if}
 {if $company_name}
 <p><b>Покупатель</b> {$company_name}</p>
+{/if}
+{if $address_label_shipping!=$address_label_customer}
+<p><b>Доставка:</b> {$address_label_shipping}</p>
 {else}
-<p><b>Покупатель</b> {$address_label_customer}</p>
+<p><b>Доставка:</b> {$address_label_payment}</p>
 {/if}
 <p>
 {if $company_address}<b>Адрес</b> {$company_address}<br />{/if}
