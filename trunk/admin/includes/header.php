@@ -47,7 +47,7 @@
 	<div id="nav" class="nav">
 		<div id="menu">
 			<ul>
-				<li class="level1"><a class="sub" href="<?php vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
@@ -91,7 +91,7 @@
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
 				</li>				
-				<li><a class="sub" href="<?php vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
@@ -135,7 +135,7 @@
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
 				</li>
-				<li><a class="sub" href="<?php vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
@@ -165,7 +165,7 @@
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
 				</li>
-				<li><a class="sub" href="<?php vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_MODULES; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_MODULES; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
 				<div class="holder">
 					<div class="leftSide">
