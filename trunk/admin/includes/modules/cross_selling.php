@@ -92,7 +92,7 @@ $cross_query = vam_db_query($cross_query);
 if (!vam_db_num_rows($cross_query)) {
 ?>
   <tr>
-    <td class="categories_view_data" colspan="6">- NO ENRTY -</td>
+    <td class="categories_view_data" colspan="6"><?php echo TEXT_NONE; ?></td>
   </tr>
 <?php
 
