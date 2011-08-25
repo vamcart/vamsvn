@@ -1600,10 +1600,10 @@
       }
 
       if (isset ($cInfo) && is_object ($cInfo) && ($categories['specification_group_id'] == $cInfo->specification_group_id) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
       } else {
         echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgid=' . $categories['specification_group_id']) . '\'">' . "\n";
-      }
+      }      
 ?>
                 <td class="dataTableContent"><?php echo '<a href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $categories['specification_group_id']) . '">' . vam_image (DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '</a>&nbsp;<b>' . $categories['specification_group_name'] . '</b>'; ?></td>
                 <td class="dataTableContent" align="center">
@@ -1764,10 +1764,10 @@
       }
 
       if (isset ($sInfo) && is_object ($sInfo) && ($specifications['specifications_id'] == $sInfo->specifications_id) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
-      }
+        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specifications['specifications_id']) . '\'">' . "\n";
+      }      
 
       $filter_link = vam_image (DIR_WS_ICONS . 'blank.png', ICON_BLANK);
       if ($specifications['show_filter'] == 'True' && $specifications['filter_class'] != 'none') {
@@ -1940,10 +1940,11 @@
       }
 
       if (isset ($fInfo) && is_object ($fInfo) && ($filters_array['specification_filters_id'] == $fInfo->specification_filters_id) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
-      }
+        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $filters_array['specification_filters_id']) . '\'">' . "\n";
+      }      
+
 ?>
                 <td class="dataTableContent"><?php echo '<b>' . $filters_array['filter'] . '</b>'; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $filters_array['filter_sort_order']; ?></td>
@@ -2068,10 +2069,11 @@
       }
 
       if (isset ($vInfo) && is_object ($vInfo) && ($values_array['specification_values_id'] == $vInfo->specification_values_id) ) {
-        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
+        echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
       } else {
-        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
-      }
+        echo '              <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\'' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&vid=' . $values_array['specification_values_id'] . '&value=1') . '\'">' . "\n";
+      }      
+
 ?>
                 <td class="dataTableContent"><?php echo '<b>' . $values_array['specification_value'] . '</b>'; ?></td>
                 <td class="dataTableContent" align="right"><?php echo $values_array['value_sort_order']; ?></td>
