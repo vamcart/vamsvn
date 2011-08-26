@@ -2109,8 +2109,6 @@ function vam_get_spsr_zone_id($zone_id) {
 
 		vam_db_query("delete from ".TABLE_REVIEWS." where products_id = '".vam_db_input($product_id)."'");
 
-		vam_db_query("DELETE FROM " . TABLE_PRODUCTS_PARAMETERS2PRODUCTS . " WHERE products_id = '".vam_db_input($product_id)."'");
-
 		if (USE_CACHE == 'true') {
 			vam_reset_cache_block('categories');
 			vam_reset_cache_block('also_purchased');
