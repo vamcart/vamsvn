@@ -63,7 +63,30 @@ function getParent($catID) {
       </tr>
 	  <tr>
         <td>
-        
+<script src="../jscript/jquery/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        var lastChecked = null;
+ 
+        $(document).ready(function() {
+                $('input:checkbox').click(function(event) {
+                        if(!lastChecked) {
+                                lastChecked = this;
+                                return;
+                        }
+ 
+                        if(event.shiftKey) {
+                                var start = $('input:checkbox').index(this);
+                                var end = $('input:checkbox').index(lastChecked);
+ 
+                                for(i=Math.min(start,end);i<=Math.max(start,end);i++) {
+                                        $('input:checkbox')[i].checked = lastChecked.checked;
+                                }
+                        }
+ 
+                        lastChecked = this;
+                });
+        });
+        </script>        
         <?php
 
 echo vam_draw_form('cross_selling', FILENAME_CATEGORIES, '', 'GET', '');

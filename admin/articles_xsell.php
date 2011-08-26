@@ -24,6 +24,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<script src="../jscript/jquery/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        var lastChecked = null;
+ 
+        $(document).ready(function() {
+                $('input:checkbox').click(function(event) {
+                        if(!lastChecked) {
+                                lastChecked = this;
+                                return;
+                        }
+ 
+                        if(event.shiftKey) {
+                                var start = $('input:checkbox').index(this);
+                                var end = $('input:checkbox').index(lastChecked);
+ 
+                                for(i=Math.min(start,end);i<=Math.max(start,end);i++) {
+                                        $('input:checkbox')[i].checked = lastChecked.checked;
+                                }
+                        }
+ 
+                        lastChecked = this;
+                });
+        });
+        </script>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
