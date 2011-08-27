@@ -246,7 +246,7 @@ if (isset ($_GET['action'])) {
          }
 			break;
 		case 'cust_order' :
-			if (isset ($_SESSION['customer_id']) && isset ($_GET['pid'])) {
+			if (isset ($_GET['pid'])) {
 				if (vam_has_product_attributes((int) $_GET['pid'])) {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
 				} else {
