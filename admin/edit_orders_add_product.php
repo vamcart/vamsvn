@@ -17,9 +17,8 @@
   require('includes/application_top.php');
 
 //b2b
-  global $customer_id;
-  $customer_id=intval($_GET['cID']);
-  if(!$customer_id){$customer_id=intval($_POST['cID']);}
+  $cus_id=intval($_GET['cID']);
+  if(!$cus_id){$cus_id=intval($_POST['cID']);}
 
 //b2b
 
@@ -229,7 +228,7 @@ $product['products_price']=$products_price['plain'];
         $add_product_products_id = 0;
         
 			 
-		vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $oID . '&cID='.$customer_id.'&step=1&submitForm=yes'));
+		vam_redirect(vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $oID . '&cID='.$cus_id.'&step=1&submitForm=yes'));
         
 		break;
     }
@@ -329,7 +328,7 @@ $products['products_price']=$products_price['plain'];
 			    <input type="hidden" name="step" value="2">
 <?php
 		//b2b
-         echo vam_draw_hidden_field('cID',$customer_id);
+         echo vam_draw_hidden_field('cID',$cus_id);
     	//b2b
 ?>
 			 </td>
@@ -367,7 +366,7 @@ $products['products_price']=$products_price['plain'];
           <form action="<?php echo vam_href_link(FILENAME_ORDERS_EDIT_ADD_PRODUCT, 'oID=' . $_GET['oID']); ?>" method="POST">
 <?php
 		//b2b
-         echo vam_draw_hidden_field('cID',$customer_id);
+         echo vam_draw_hidden_field('cID',$cus_id);
     	//b2b
 ?>
             <td class="dataTableContent" align="right"><?php echo TEXT_STEP_2; ?></td>
@@ -395,7 +394,7 @@ $products['products_price']=$products_price['plain'];
     echo '            <td class="dataTableContent" align="right">' . TEXT_STEP_3 . '</td>' . "\n";
 
 		//b2b
-         echo vam_draw_hidden_field('cID',$customer_id);
+         echo vam_draw_hidden_field('cID',$cus_id);
     	//b2b
 
     if ($has_attributes) {
@@ -463,7 +462,7 @@ $products['products_price']=$products_price['plain'];
     }
 
 		//b2b
-         echo vam_draw_hidden_field('cID',$customer_id);
+         echo vam_draw_hidden_field('cID',$cus_id);
     	//b2b
 
     echo '<input type="hidden" name="add_product_categories_id" value="' . $add_product_categories_id . '"><input type="hidden" name="add_product_products_id" value="' . $add_product_products_id . '"><input type="hidden" name="step" value="5"></td>' . "\n" .
