@@ -833,7 +833,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 			}
 		}
 
-		echo '&nbsp;</td>'."\n".'            <td class="dataTableContent" align="right" valign="top">'.format_price($order->products[$i]['final_price'] * $order->products[$i]['qty'], 1, $order->info['currency'], $order->products[$i]['allow_tax'], $order->products[$i]['tax']).'</td>'."\n";
+		echo '&nbsp;</td>'."\n".'            <td class="dataTableContent" align="right" valign="top">'.format_price($order->products[$i]['final_price'] / $order->products[$i]['qty'], 1, $order->info['currency'], $order->products[$i]['allow_tax'], $order->products[$i]['tax']).'</td>'."\n";
 
 		if ($order->products[$i]['allow_tax'] == 1) {
 			echo '<td class="dataTableContent" align="right" valign="top">';
@@ -841,7 +841,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 			echo '</td>'."\n";
 			echo '<td class="dataTableContent" align="right" valign="top"><b>';
 
-			echo format_price($order->products[$i]['final_price'] * $order->products[$i]['qty'], 1, $order->info['currency'], 0, 0);
+			echo format_price($order->products[$i]['final_price'] / $order->products[$i]['qty'], 1, $order->info['currency'], 0, 0);
 
 			echo '</b></td>'."\n";
 		}
