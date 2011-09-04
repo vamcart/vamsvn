@@ -92,6 +92,9 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 		
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	
+
+     //Update final_price
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	
 	
 	  //generate responseText

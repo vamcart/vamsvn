@@ -98,9 +98,11 @@ function updateProductsField(action, pid, field, value, info) {
 
       createRequest();
 
+		var final_price = document.getElementById("update_products[" + pid + "][total_incl]").value;
+		
 		if ( (action == 'update') || (action == 'reload1') ) {
 
-        var url = "<?php echo FILENAME_ORDERS_EDIT_AJAX; ?>?action=update_product_field&oID=<?php echo $_GET['oID']; ?>&pid=" + pid + "&field=" + field + "&new_value=" + value;
+        var url = "<?php echo FILENAME_ORDERS_EDIT_AJAX; ?>?action=update_product_field&oID=<?php echo $_GET['oID']; ?>&pid=" + pid + "&field=" + field + "&new_value=" + value + "&final_price=" + final_price;
 
 		xmlHttp.open("GET", url, true);
 
