@@ -748,7 +748,7 @@ $customer = vam_db_fetch_array($customer_query);
         </table></td>
       </tr>
       <tr>
-        <td><a class="button" href="<?php echo vam_href_link('coupon_admin.php', 'action=new'); ?>"><span><?php echo BUTTON_INSERT; ?></span></a><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td><a class="button" href="<?php echo vam_href_link('coupon_admin.php', 'action=new'); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT; ?></span></a><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
