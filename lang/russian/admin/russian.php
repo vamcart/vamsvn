@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2011-07-07 17:37:58 VaM $
+   $Id: russian.php 1231 2011-09-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -317,7 +317,7 @@ define('TEXT_FIELD_REQUIRED', '&nbsp;<span class="fieldRequired">* Обязат�
 define('ERROR_NO_DEFAULT_CURRENCY_DEFINED', 'Ошибка: К настоящему времени ни одна валюта не была установлена по умолчанию. Пожалуйста, установите одну из них в: Локализация -> Валюта');
 
 define('TEXT_CACHE_CATEGORIES', 'Бокс категорий');
-define('TEXT_CACHE_MANUFACTURERS', 'Бокс кроизводителей');
+define('TEXT_CACHE_MANUFACTURERS', 'Бокс производителей');
 define('TEXT_CACHE_ALSO_PURCHASED', 'Бокс также заказывают'); 
 
 define('TEXT_NONE', '--нет--');
