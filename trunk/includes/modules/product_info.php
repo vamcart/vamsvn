@@ -35,7 +35,7 @@ $info = new vamTemplate;
 $info->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
 
-if (!is_object($product) || !$product->isProduct()) { // product not found in database
+if (!is_object($product) || !$product->isProduct() OR !$product->data['products_id'] ) { // product not found in database
 
 	$error = TEXT_PRODUCT_NOT_FOUND;
 	include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
