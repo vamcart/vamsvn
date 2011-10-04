@@ -38,6 +38,7 @@
           next($db_query);
           return $curr;
           }
+        if (empty($db_query)) return false;
         return mysql_fetch_array($db_query, MYSQL_ASSOC);
       }
   }
