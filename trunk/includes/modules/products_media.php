@@ -74,7 +74,7 @@ if (vam_in_array($product->data['products_id'], $check_data)) {
 		if ($content_data['content_link'] == '') {
 			if (preg_match('/.html/i', $content_data['content_file']) or preg_match('/.htm/i', $content_data['content_file']) or preg_match('/.txt/i', $content_data['content_file']) or preg_match('/.bmp/i', $content_data['content_file']) or preg_match('/.jpg/i', $content_data['content_file']) or preg_match('/.gif/i', $content_data['content_file']) or preg_match('/.png/i', $content_data['content_file']) or preg_match('/.tif/i', $content_data['content_file'])) {
 
-				$button = '<a style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_MEDIA_CONTENT, 'coID='.$content_data['content_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')">'.vam_image_button('button_view.gif', TEXT_VIEW).'</a>';
+				$button = '<a style="cursor: pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_MEDIA_CONTENT, 'coID='.$content_data['content_id']).'\', \'popup\', \'toolbar=0, width=640, height=600\')">'.vam_image_button('button_view.gif', TEXT_VIEW).'</a>';
 
 			} else {
 
