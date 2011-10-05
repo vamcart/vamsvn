@@ -52,7 +52,7 @@ if (isset ($_SESSION['gv_id'])) {
 	$gift->assign('COUPON_AMOUNT2', $vamPrice->Format($coupon['coupon_amount'], true, 0, true));
 }
 if (isset ($_SESSION['cc_id'])) {
-	$gift->assign('COUPON_HELP_LINK', '<a style="cursor:hand" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
+	$gift->assign('COUPON_HELP_LINK', '<a style="cursor: pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
 
 }
 if (isset ($_SESSION['customer_id'])) {

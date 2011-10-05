@@ -573,7 +573,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	$memo_query = vam_db_query("SELECT count(*) as count FROM ".TABLE_CUSTOMERS_MEMO." where customers_id='".$order->customer['ID']."'");
 	$memo_count = vam_db_fetch_array($memo_query);
 ?>
-                <td class="main"><b><?php echo $memo_count['count'].'</b>'; ?>  <a style="cursor:hand" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_POPUP_MEMO,'ID='.$order->customer['ID']); ?>', 'popup', 'scrollbars=yes, width=500, height=500')">(<?php echo DISPLAY_MEMOS; ?>)</a></td>
+                <td class="main"><b><?php echo $memo_count['count'].'</b>'; ?>  <a style="cursor: pointer" onClick="javascript:window.open('<?php echo vam_href_link(FILENAME_POPUP_MEMO,'ID='.$order->customer['ID']); ?>', 'popup', 'scrollbars=yes, width=500, height=500')">(<?php echo DISPLAY_MEMOS; ?>)</a></td>
               </tr>
               <tr>
                 <td class="main"><b><?php echo ENTRY_TELEPHONE; ?></b></td>

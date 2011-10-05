@@ -519,7 +519,7 @@ if ($news_data[$i]['id']!='') {
 
   <a href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=delete&ID='.$news_data[$i]['id']); ?>" onClick="return confirm('<?php echo CONFIRM_DELETE; ?>')">
   <?php
-  echo vam_image(DIR_WS_ICONS.'delete.gif','Delete','','','style="cursor:hand" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
+  echo vam_image(DIR_WS_ICONS.'delete.gif','Delete','','','style="cursor: pointer" onClick="return confirm(\''.DELETE_ENTRY.'\')"').'  '.TEXT_DELETE.'</a>&nbsp;&nbsp;';
   ?>
 <a href="<?php echo vam_href_link(FILENAME_MODULE_NEWSLETTER,'action=edit&ID='.$news_data[$i]['id']); ?>">
 <?php echo vam_image(DIR_WS_ICONS.'icon_edit.gif','Edit','','').'  '.TEXT_EDIT.'</a>'; ?>
