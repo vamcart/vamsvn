@@ -90,11 +90,11 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 			} //end if ($_GET['new_value'] != $orders_product_info['products_quantity']){
 		}//end if ($_GET['field'] = 'products_quantity'
 		
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	
 
      //Update final_price
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	
 	
 	  //generate responseText
@@ -104,7 +104,7 @@ require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
   
   //2.  Update the orders_products table for qty, tax, name, or model
 if ($action == 'update_product_field') {
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	
 	  //generate responseText
 	  echo $_GET['field'];
@@ -113,7 +113,7 @@ if ($action == 'update_product_field') {
   
   //3.  Update the orders_products table for price and final_price (interdependent values)
 if ($action == 'update_product_value_field') {
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET products_price = '" . vam_db_input(vam_db_prepare_input($_GET['price'])) . "', final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET products_price = '" . vam_db_input(vam_db_prepare_input($_GET['price'])) . "', final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	  
 	  //generate responseText
 	  echo TABLE_ORDERS_PRODUCTS;
@@ -123,11 +123,11 @@ if ($action == 'update_product_value_field') {
     //4.  Update the orders_products_attributes table 
 if ($action == 'update_attributes_field') {
 	  
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_products_attributes_id = '" . $_GET['aid'] . "' AND orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "'  WHERE orders_products_attributes_id = '" . $_GET['aid'] . "' AND orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	  
 	  if (isset($_GET['final_price'])) {
 	    
-		vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+		vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
 	  
 	  }
 	  

@@ -273,7 +273,8 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 					products_price = '" . $products_details["price"] . "',
 					final_price = '" . $products_details["price"]*$products_details["qty"] . "',
 					products_tax = '" . $products_details["tax"] . "',
-					products_quantity = '" . $products_details["qty"] . "'
+					products_quantity = '" . $products_details["qty"] . "',
+					allow_tax = '0'
 					WHERE orders_id = '" . (int)$oID . "'
 					AND orders_products_id = '$orders_products_id';";
 				vam_db_query($Query);

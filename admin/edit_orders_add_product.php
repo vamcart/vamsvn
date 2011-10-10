@@ -180,7 +180,8 @@ $product['products_price']=$products_price['plain'];
                                 'products_price' => vam_db_prepare_input($product['products_price']),
                                 'final_price' => vam_db_prepare_input(($product['products_price']*$_POST['add_product_quantity'] + $AddedOptionsPrice)),
                                 'products_tax' => vam_db_prepare_input($products_tax),
-                                'products_quantity' => vam_db_prepare_input($_POST['add_product_quantity']));
+                                'products_quantity' => vam_db_prepare_input($_POST['add_product_quantity']),
+                                'allow_tax' => '0');
         vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
         $new_product_id = vam_db_insert_id();
         
