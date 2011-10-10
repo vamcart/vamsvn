@@ -271,7 +271,7 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 					products_model = '" . $products_details["model"] . "',
 					products_name = '" . oe_html_quotes($products_details["name"]) . "',
 					products_price = '" . $products_details["price"] . "',
-					final_price = '" . $products_details["final_price"] . "',
+					final_price = '" . $products_details["price"]*$products_details["qty"] . "',
 					products_tax = '" . $products_details["tax"] . "',
 					products_quantity = '" . $products_details["qty"] . "'
 					WHERE orders_id = '" . (int)$oID . "'

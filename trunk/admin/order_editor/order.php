@@ -128,7 +128,7 @@
         'tax' => $orders_products['products_tax'],
         'tax_description' => vam_get_tax_description($orders_products_tax['products_tax_class_id'], $this->delivery["country_id"], $this->delivery["zone_id"]),
         'price' => $orders_products['products_price'],
-        'final_price' => $orders_products['price']*$orders_products['products_quantity'],
+        'final_price' => $orders_products['products_price']*$orders_products['products_quantity'],
         'products_id' => $orders_products['products_id'],
         'orders_products_id' => $orders_products['orders_products_id']);
 
@@ -256,7 +256,7 @@
 			$attributes_model .= '<br />'.vam_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
 
 		}
-      	$order_data[] = array ('PRODUCTS_ID' => $order_data_values['products_id'], 'PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], false),'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price']/$order_data_values['products_quantity'], false), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
+      	$order_data[] = array ('PRODUCTS_ID' => $order_data_values['products_id'], 'PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], false),'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price'], false), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
 
 	}
 	
