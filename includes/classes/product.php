@@ -504,6 +504,7 @@ class product {
 		
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		      'PRODUCTS_MODEL'=>$array['products_model'],
+		      'PRODUCTS_EAN'=>$array['products_ean'],
 		      'PRODUCTS_QUANTITY'=>$array['products_quantity'],
 				'COUNT'=>$array['ID'],
 				'EXTRA_FIELDS'=>$extra_fields_data,
