@@ -168,6 +168,7 @@ if ($error == 1 && $keyerror != 1) {
 	                  p.products_id,
 	                  p.products_price,
 	                  p.products_model,
+	                  p.products_ean,
 	                  p.products_quantity,
 	                  p.products_shippingtime,
 	                  p.products_fsk18,
