@@ -212,7 +212,7 @@
 </div>
 <!-- /Контейнер -->
 
-<div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VaM Shop</a></div>
+<div id="copyright">Powered by <a href="http://vamshop.ru" target="_blank">VamShop</a></div>
 
 </body>
 </html>
