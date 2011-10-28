@@ -315,7 +315,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = number_format($order->info['total'],2);
+                               $order_sum = money_format($order->info['total'],2);
 
       $process_button_string = vam_draw_hidden_field('WMI_MERCHANT_ID', MODULE_PAYMENT_WALLET_ONE_ID) .
                                vam_draw_hidden_field('WMI_PAYMENT_AMOUNT', $order_sum) .
