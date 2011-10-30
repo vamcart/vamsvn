@@ -67,7 +67,7 @@
 
     $products_attributes_id = vam_db_insert_id();
 
-        //if ($_POST[$cv_id . '_download_file'] != '') {
+        if ($_POST[$cv_id . '_download_file'] != '') {
         	if (DOWNLOAD_ENABLED == 'true') {
         $value_download_file = $_POST[$cv_id . '_download_file'];
         $value_download_expire = $_POST[$cv_id . '_download_expire'];
@@ -77,7 +77,7 @@
       $products_attributes_is_pin = isset($value_is_pin)?1:0;
 
         vam_db_query("INSERT INTO ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." (products_attributes_id, products_attributes_filename, products_attributes_maxdays, products_attributes_maxcount, products_attributes_is_pin) VALUES ('" . $products_attributes_id . "', '" . $value_download_file . "', '" . $value_download_expire . "', '" . $value_download_count . "', '" . $products_attributes_is_pin . "')") or die(mysql_error());
-    //}
+    }
    }
   }
 
