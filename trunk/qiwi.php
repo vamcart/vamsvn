@@ -34,6 +34,13 @@ return 150;
 // получаем номер заказа
 $transaction = intval($txn);
 
+// проверяем, есть ли такой заказ в базе
+$order_query = vam_db_query("select count(*) as total from " . TABLE_ORDERS . " where orders_id = '" . (int)$transaction . "'");
+$order_exists = vam_db_fetch_array($order_query);
+if ($order_exists['total'] <= 0) {
+return 210;
+}
+
 // меняем статус заказа при условии оплаты счёта
 if ( $status == 60 ) {
 	
