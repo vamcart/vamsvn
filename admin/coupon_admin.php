@@ -869,10 +869,10 @@ $customer = vam_db_fetch_array($customer_query);
                      COUPON_CATEGORIES . '&nbsp;::&nbsp; ' . $cat_details . '<br />' .
                      DATE_CREATED . '&nbsp;::&nbsp; ' . vam_date_short($cInfo->date_created) . '<br />' .
                      DATE_MODIFIED . '&nbsp;::&nbsp; ' . vam_date_short($cInfo->date_modified) . '<br /><br />' .
-                     '<table border=0 align=center><tr><td align="center"><a class="button" href="'.vam_href_link('coupon_admin.php','action=email&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_EMAIL.'</span></a></td></tr><tr><td align="center">' .
-                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucheredit&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_EDIT.'</span></a></td></tr><tr><td align="center">' .
-                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherdelete&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_DELETE.'</span></a></td></tr><tr><td align="center">' .
-                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherreport&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_REPORT.'</span></a></center></td></tr>'
+                     '<table border=0 align=center><tr><td align="center"><a class="button" href="'.vam_href_link('coupon_admin.php','action=email&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.vam_image(DIR_WS_IMAGES . 'icons/buttons/email.png', '', '12', '12') . '&nbsp;' .BUTTON_EMAIL.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucheredit&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'. vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' .BUTTON_EDIT.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherdelete&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'. vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' .BUTTON_DELETE.'</span></a></td></tr><tr><td align="center">' .
+                     '<a class="button" href="'.vam_href_link('coupon_admin.php','action=voucherreport&cid='.$cInfo->coupon_id,'NONSSL').'"><span>'. vam_image(DIR_WS_IMAGES . 'icons/buttons/stat.png', '', '12', '12') . '&nbsp;' .BUTTON_REPORT.'</span></a></center></td></tr>'
                      );
         }
         break;
