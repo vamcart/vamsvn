@@ -261,7 +261,7 @@ function checkForm() {
 </head>
 <body>
 <?php
-if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS) && GOOGLE_CONVERSION == 'true') {
+if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 ?>
