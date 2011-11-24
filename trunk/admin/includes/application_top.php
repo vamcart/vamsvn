@@ -443,7 +443,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   if (!$_SESSION['user_info']['user_ip']) {
     $_SESSION['user_info']['user_ip'] = $_SERVER['REMOTE_ADDR'];
 //    $user_info['user_ip_date'] =  value will be in fact added when login ;
-    $_SESSION['user_info']['user_host'] = gethostbyaddr( $_SERVER['REMOTE_ADDR'] );;
+    //$_SESSION['user_info']['user_host'] = gethostbyaddr( $_SERVER['REMOTE_ADDR'] );;
     $_SESSION['user_info']['advertiser'] = $_GET['ad'];
     $_SESSION['user_info']['referer_url'] = $_SERVER['HTTP_REFERER'];
   }
