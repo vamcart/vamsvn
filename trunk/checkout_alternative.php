@@ -773,6 +773,7 @@ if (defined('MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING') && (MODULE_ORDER_TOTAL_
 			break;
 	}
 
+	$pass = true;
 	$free_shipping = false;
 	if (($pass == true) && ($order->info['total'] - $order->info['shipping_cost'] >= $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, false, 0, true))) {
 		$free_shipping = true;
