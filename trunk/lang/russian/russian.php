@@ -649,4 +649,6 @@ define('TEXT_FIND_PRODUCTS', 'Найти подходящие товары');
 // Products Specifications
 define('TEXT_NOT_AVAILABLE', 'нет данных');
 
+define('FREE_SHIPPING_TITLE', 'Бесплатная доставка');
+  
 ?>
