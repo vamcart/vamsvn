@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: categories.php 1318 2007-02-08 12:17:21Z VaM $   
+   $Id: categories.php 1318 2011-02-08 12:17:21Z VaM $   
   
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -262,7 +262,7 @@ class categories {
 		// look for deeper categories and go rekursiv
 		$categories_query = vam_db_query("SELECT categories_id FROM ".TABLE_CATEGORIES." WHERE parent_id='".$categories_id."'");
 		while ($categories = vam_db_fetch_array($categories_query)) {
-			$this->set_category_recursive($categories['categories_id'], $status);
+			$this->set_category_xml_recursive($categories['categories_id'], $status);
 		}
 
 	}
