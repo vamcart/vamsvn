@@ -522,7 +522,11 @@ if (isset ($cPath_array)) {
 		if (vam_db_num_rows($categories_query,true) > 0) {
 			$categories = vam_db_fetch_array($categories_query,true);
 
-			$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));
+            if ($i < $n-1){
+                        $breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));}else {
+                if ($product->isProduct()) {$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));} else {$breadcrumb->add($categories['categories_name']);}
+                }
+
 		} else {
 			break;
 		}
@@ -538,7 +542,7 @@ elseif (vam_not_null($_GET['manufacturers_id'])) {
 
 // add the products model/name to the breadcrumb trail
 if ($product->isProduct()) {
-		$breadcrumb->add($product->getBreadcrumbName(), vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
+                $breadcrumb->add($product->getBreadcrumbName());
 }
 
 
