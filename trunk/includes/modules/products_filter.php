@@ -45,7 +45,10 @@
     $specs_query = vamDBquery ($specs_query_raw);
 
     $first = true;
+    $box_text .= '<table border="0">';
+    $box_text .= '<tr>';
     while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
+    $box_text .= '<td>';
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
@@ -79,7 +82,7 @@
       if ($count_filters >= SPECIFICATIONS_FILTER_MINIMUM) {
         $filters_array = array();
         if ($first == false) {
-          $box_text .=  "<br />\n";        
+          //$box_text .=  "<br />\n";        
         }
         $first = false;
         
@@ -154,7 +157,10 @@
 
         $box_text .= vam_get_filter_string ($specs_array['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var);
       } // if ($count_filters
+    $box_text .= '</td>';
     } // while ($specs_array
+    $box_text .= '</tr>';
+    $box_text .= '</table>';
   
 if (vam_db_num_rows ($specs_query, true) > 0) {  
 	$module->assign('FILTERS', $box_text);
