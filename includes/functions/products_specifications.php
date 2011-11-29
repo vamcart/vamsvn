@@ -700,7 +700,7 @@
         foreach ($filters_select_array as $filter) {
           $checked = ($filter['id'] == $filter_value[$checkbox_id]) ? true : false;
           $box_text .= vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked);
-          $box_text .= '  ' . vam_image(DIR_WS_IMAGES . $filter['text'], $filter['text'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '<br>' . "\n";
+          $box_text .= '  ' . vam_image(DIR_WS_IMAGES . trim($filter['text']), $filter['text']) . '<br>' . "\n";
           $box_text .= '<br>' . "\n";
           $checkbox_id++;
         }
@@ -766,7 +766,7 @@
     $cPath_new = vam_get_product_path( $columns_array['products_id'] );
     $product_link = vam_href_link( FILENAME_PRODUCT_INFO, 'cPath=' . $cPath_new . '&products_id=' . $columns_array['products_id'] );
 
-    $field_array['products_image'] = '<a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . $columns_array['products_image'], $columns_array['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
+    $field_array['products_image'] = '<a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . trim($columns_array['products_image']), $columns_array['products_name']) . '</a>';
 
     $field_array['products_name'] = ($columns_array['products_name'] == '') ? TEXT_NOT_AVAILABLE : '<a href="' . $product_link . '">' . $columns_array['products_name'] . '</a>';
 
@@ -944,7 +944,7 @@
                   $box_text = $specs_data['prefix'] . ' ' . PHP_EOL;
 
                   if ($specs_data['display'] == 'image' || $specs_data['display'] == 'multiimage' || $specs_data['enter'] == 'image' || $specs_data['enter'] == 'multiimage') {
-                    $box_text .= vam_image(DIR_WS_IMAGES . $specs_data['specification'], $specs_data['column_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . PHP_EOL;
+                    $box_text .= vam_image(DIR_WS_IMAGES . trim($specs_data['specification']), $specs_data['column_name']) . PHP_EOL;
                   } else {
                     $box_text .= $specs_data['specification'] . ' ' . PHP_EOL;
                   }
