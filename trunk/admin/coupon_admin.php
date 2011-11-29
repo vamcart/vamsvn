@@ -845,8 +845,8 @@ $customer = vam_db_fetch_array($customer_query);
       }
       if ($_GET['action'] == 'voucherdelete') {
         $contents[] = array('text'=> TEXT_CONFIRM_DELETE . '</br></br>' .
-                '<a class="button" href="'.vam_href_link('coupon_admin.php','action=confirmdelete&cid='.$_GET['cid'],'NONSSL').'"><span>'.BUTTON_CONFIRM.'</span></a>' .
-                '<a class="button" href="'.vam_href_link('coupon_admin.php','cid='.$cInfo->coupon_id,'NONSSL').'"><span>'.BUTTON_CANCEL.'</span></a>'
+                '<a class="button" href="'.vam_href_link('coupon_admin.php','action=confirmdelete&cid='.$_GET['cid'],'NONSSL').'"><span>'. vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' .BUTTON_CONFIRM.'</span></a>' .
+                '<a class="button" href="'.vam_href_link('coupon_admin.php','cid='.$cInfo->coupon_id,'NONSSL').'"><span>'. vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' .BUTTON_CANCEL.'</span></a>'
                 );
       } else {
         $prod_details = NONE;
