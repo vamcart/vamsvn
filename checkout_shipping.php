@@ -228,7 +228,7 @@ if (vam_count_shipping_modules() > 0) {
 
 		$module->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
 
-		$module->assign('FREE_SHIPPING_ICON', $quotes[$i]['icon']);
+		$module->assign('FREE_SHIPPING_ICON', '');
 
 	} else {
 
