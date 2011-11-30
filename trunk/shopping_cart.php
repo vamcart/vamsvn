@@ -111,10 +111,11 @@ $_SESSION['allow_checkout'] = 'true';
 	}
 // minimum/maximum order value
 $checkout = true;
-if ($_SESSION['cart']->show_total() > 0 ) {
- if ($_SESSION['cart']->show_total() < $_SESSION['customers_status']['customers_status_min_order'] ) {
+$total =$_SESSION['cart']->show_total();
+if ($total > 0 ) {
+ if ($total < $_SESSION['customers_status']['customers_status_min_order'] ) {
   $_SESSION['allow_checkout'] = 'false';
-  $more_to_buy = $_SESSION['customers_status']['customers_status_min_order'] - $_SESSION['cart']->show_total();
+  $more_to_buy = $_SESSION['customers_status']['customers_status_min_order'] - $total;
   $order_amount=$vamPrice->Format($more_to_buy, true);
   $min_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_min_order'], true);
   $vamTemplate->assign('info_message_1', MINIMUM_ORDER_VALUE_NOT_REACHED_1);
@@ -123,9 +124,9 @@ if ($_SESSION['cart']->show_total() > 0 ) {
   $vamTemplate->assign('min_order', $min_order);
  }
  if  ($_SESSION['customers_status']['customers_status_max_order'] != 0) {
-  if ($_SESSION['cart']->show_total() > $_SESSION['customers_status']['customers_status_max_order'] ) {
+  if ($total > $_SESSION['customers_status']['customers_status_max_order'] ) {
   $_SESSION['allow_checkout'] = 'false';
-  $less_to_buy = $_SESSION['cart']->show_total() - $_SESSION['customers_status']['customers_status_max_order'];
+  $less_to_buy = $total - $_SESSION['customers_status']['customers_status_max_order'];
   $max_order=$vamPrice->Format($_SESSION['customers_status']['customers_status_max_order'], true);
   $order_amount=$vamPrice->Format($less_to_buy, true);
   $vamTemplate->assign('info_message_1', MAXIMUM_ORDER_VALUE_REACHED_1);
