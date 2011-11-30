@@ -21,6 +21,10 @@
   include_once(DIR_FS_INC . 'vam_db_error.inc.php');
   
   function vam_db_query($query, $link = 'db_link') {
+
+	$opt2=include DIR_FS_CATALOG.'includes/modules/optimizer/sql.php';
+	if(is_array($opt2)) return $opt2;
+	
     global $$link;
     global $query_counts;
     $query_counts++; 
