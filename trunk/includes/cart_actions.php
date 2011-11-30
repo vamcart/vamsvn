@@ -110,7 +110,7 @@ if (isset ($_GET['action'])) {
 				if ($_POST['products_qty'] > MAX_PRODUCTS_QTY)
 					$_POST['products_qty'] = MAX_PRODUCTS_QTY;
 
-          $_SESSION['error_cart_msg'] = '';
+          unset($_SESSION['error_cart_msg']);
 
           if ( ($_POST['products_qty'] >= vam_get_products_quantity_order_min($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_min($_POST['products_id']) ) ) {
 
