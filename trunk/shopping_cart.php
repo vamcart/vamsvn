@@ -36,6 +36,7 @@ require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 $breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART, vam_href_link(FILENAME_SHOPPING_CART));
 
 require (DIR_WS_INCLUDES.'header.php');
+if (ACTIVATE_GIFT_SYSTEM == 'true')
 include (DIR_WS_MODULES.'gift_cart.php');
 
 if ($_SESSION['cart']->count_contents() > 0) {
