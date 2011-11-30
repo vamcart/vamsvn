@@ -17,10 +17,10 @@
    (c) 2004 xt:Commerce (also_purchased_products.php,v 1.9 2005/10/25); xt-commerce.com 
    ---------------------------------------------------------------------------------------*/
 
+if (XSELL_CART == 'true') {
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $data = $product->getCrossSellsCart();
-if (XSELL_CART == 'true') {
 if (count($data) > 0) {
 //выводит Также рекомендуем следующие товары:
     $module->assign('language', $_SESSION['language']);
