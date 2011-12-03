@@ -34,7 +34,7 @@
     $db_l = mysql_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
     mysql_select_db(DB_DATABASE);
 
-    $query = 'select categories_id from ' . TABLE_CATEGORIES . ' where categories_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+    $query = 'select categories_id from ' . TABLE_CATEGORIES . ' where BINARY categories_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
     $result = mysql_query($query);
     if (mysql_num_rows($result) > 0) {
       $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -54,7 +54,7 @@
       include('index.php');
     } else {
       mysql_free_result($result);
-      $query = 'select products_id from ' . TABLE_PRODUCTS . ' where products_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+      $query = 'select products_id from ' . TABLE_PRODUCTS . ' where BINARY products_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
       $result = mysql_query($query);
       if (mysql_num_rows($result) > 0) {
         $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -73,7 +73,7 @@
         include('product_info.php');
       } else {
         mysql_free_result($result);
-        $query = 'select content_id from ' . TABLE_CONTENT_MANAGER . ' where content_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $query = 'select content_id from ' . TABLE_CONTENT_MANAGER . ' where BINARY content_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -92,7 +92,7 @@
         } else {
         
         mysql_free_result($result);
-        $query = 'select articles_id from ' . TABLE_ARTICLES . ' where articles_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $query = 'select articles_id from ' . TABLE_ARTICLES . ' where BINARY articles_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -112,7 +112,7 @@
         
 
         mysql_free_result($result);
-        $query = 'select topics_id from ' . TABLE_TOPICS . ' where topics_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $query = 'select topics_id from ' . TABLE_TOPICS . ' where BINARY topics_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -131,7 +131,7 @@
         } else {
 
         mysql_free_result($result);
-        $query = 'select news_id from ' . TABLE_LATEST_NEWS . ' where news_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $query = 'select news_id from ' . TABLE_LATEST_NEWS . ' where BINARY news_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -149,7 +149,7 @@
           include('news.php');
         } else {
 
-        $query = 'select faq_id from ' . TABLE_FAQ . ' where faq_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+        $query = 'select faq_id from ' . TABLE_FAQ . ' where BINARY faq_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysql_query($query);
         if (mysql_num_rows($result) > 0) {
           $row = mysql_fetch_array($result, MYSQL_ASSOC);
