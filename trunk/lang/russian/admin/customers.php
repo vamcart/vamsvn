@@ -71,4 +71,11 @@ define('PULL_DOWN_DEFAULT','Выберите');
 
 define('BUTTON_CUSTOMERS_EXPORT','Экспорт клиентов');
 
+define('BUS_CUSTOMER','Покупатель номер ');
+define('BUS_SUCCESS','обновлён!');
+define('BUS_WARNING','не обновлён!');
+define('BUS_DELETE_SUCCESS','удалён!');
+define('BUS_DELETE_WARNING','не удалён!');
+define('BUS_DELETE_CUSTOMERS','Удалить выбранных покупателей');
+
 ?>

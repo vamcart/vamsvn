@@ -53,6 +53,47 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	}
 }
 
+// Start Batch Delete
+if (isset($_POST['submit']) && isset($_POST['multi_customers'])){
+	
+// delete customers
+ 
+ if (($_POST['submit'] == BUTTON_SUBMIT)){
+
+  foreach ($_POST['multi_customers'] as $this_customerID){
+
+    $customers_deleted = false;
+			if ($this_customerID != 1) {
+			vam_db_query("delete from ".TABLE_ADDRESS_BOOK." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_INFO." where customers_info_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_PRODUCTS_NOTIFICATIONS." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_WHOS_ONLINE." where customer_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_STATUS_HISTORY." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_IP." where customers_id = '".vam_db_input($this_customerID)."'");
+			vam_db_query("DELETE FROM ".TABLE_ADMIN_ACCESS." WHERE customers_id = '".vam_db_input($this_customerID)."'");
+
+			vam_db_query("delete from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id=" . (int)$this_customerID);
+
+          $customers_deleted = true;
+         }
+
+        if ($customers_deleted == true) {
+         $messageStack->add_session(BUS_CUSTOMER . $this_customerID . ' ' . BUS_DELETE_SUCCESS, 'success');
+        } else {
+          $messageStack->add_session(BUS_CUSTOMER . $this_customerID . ' ' . BUS_DELETE_WARNING, 'warning');
+        }
+  } // End foreach ID loop
+ }
+
+// /delete customers
+
+   vam_redirect(vam_href_link(FILENAME_CUSTOMERS),vam_get_all_get_params());
+}
+// End Batch Delete
+
 if ($_GET['action']) {
 	switch ($_GET['action']) {
 		case 'new_order' :
@@ -416,6 +457,7 @@ $entry_state = $_POST['state'];
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
+<script type="text/javascript" src="includes/javascript/categories.js"></script>
 <?php
 
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
@@ -1154,10 +1196,15 @@ if ($error == true) {
         </table></td>
       </tr>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td>
+<?php
+echo vam_draw_form('multi_action_form', FILENAME_CUSTOMERS,vam_get_all_get_params());
+?>        
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
+                <td class="dataTableHeadingContent"><input type="checkbox" onClick="javascript:CheckAll(this.checked);"></td>
                 <td class="dataTableHeadingContent" width="40"><?php echo TABLE_HEADING_ACCOUNT_TYPE; ?></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_LASTNAME.vam_sorting(FILENAME_CUSTOMERS,'customers_lastname'); ?></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIRSTNAME.vam_sorting(FILENAME_CUSTOMERS,'customers_firstname'); ?></td>
@@ -1258,12 +1305,14 @@ if ($error == true) {
 			$cInfo = new objectInfo($cInfo_array);
 		}
 
-		if ((is_object($cInfo)) && ($customers['customers_id'] == $cInfo->customers_id)) {
-			echo '          <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\''.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=edit').'\'">'."\n";
-		} else {
-			echo '          <tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" onclick="document.location.href=\''.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID')).'cID='.$customers['customers_id']).'\'">'."\n";
-		}
-
+        if ( (is_object($cInfo)) && ($customers['customers_id'] == $cInfo->customers_id) ) {
+            echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">' . "\n";
+        } else {
+            echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
+        }		
+?>
+                <td class="dataTableContent" align="center"><input type="checkbox" name="multi_customers[]" value="<?php echo $customers['customers_id'];?>"></td>
+<?php
 		if ($customers['account_type'] == 1) {
 
 			echo '<td class="dataTableContent">';
@@ -1294,6 +1343,11 @@ if ($error == true) {
 
 	}
 ?>
+<?php
+echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" align="left">' .
+     '<a class="button" href="javascript:SwitchCheck()"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/reverse.png', '', '12', '12') . '&nbsp;' . BUTTON_REVERSE_SELECTION . '</span></a>&nbsp;<span class="button"><button name="submit" type="submit" value="' . BUTTON_SUBMIT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUS_DELETE_CUSTOMERS . '</button></span></td></tr>';
+?>
+</form>
               <tr>
                 <td colspan="7"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
