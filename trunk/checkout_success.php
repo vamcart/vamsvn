@@ -138,7 +138,7 @@ var yaParams = {
 (function(w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
-            w.yaCounter' . YANDEX_METRIKA_ID . ' = new Ya.Metrika({id:' . YANDEX_METRIKA_ID . ', enableAll: true,ut:"noindex",params:window.yaParams||{ }});
+            w.yaCounter' . YANDEX_METRIKA_ID . ' = new Ya.Metrika({id:' . YANDEX_METRIKA_ID . ', enableAll: true,webvisor:true,ut:"noindex",params:window.yaParams||{ }});
         }
         catch(e) { }
     });
