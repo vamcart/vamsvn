@@ -202,7 +202,7 @@ define ('EP_EXCEL_SAFE_OUTPUT', true); // default is: true
 // parsing when quotes are used within a string. I suspect this should also resolve an issue
 // recently reported in which characters with a german "Umlaute" like ÄäÖöÜü at the Beginning 
 // of some text, they will disappear when importing some csv-file, reported by TurboTB.
-define ('EP_EXCEL_SAFE_OUTPUT_ALT_PARCE', false); // default is: false
+define ('EP_EXCEL_SAFE_OUTPUT_ALT_PARCE', true); // default is: false
 
 
 // *** Preserve Tabs, Carriage returns and Line feeds ***
@@ -1292,9 +1292,21 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
             // I copied this from below:
             // now we string the entire thing together in case there were carriage returns in the data
               $newreaded = "";
-              foreach ($readed as $read){
-                $newreaded .= $read;
-              }
+
+        if ($_POST['import_charset'] == 'cp1251'){
+        
+        foreach ($readed as $read){
+        $newreaded .= CP1251toUTF8($read);
+        }
+
+} else {
+
+        foreach ($readed as $read){
+        $newreaded .= $read;
+        }
+
+}
+
               // now newreaded has the entire file together without the carriage returns.
               // if for some reason excel put qoutes around our EOREOR, remove them then split into rows
               $newreaded = str_replace('"EOREOR"', 'EOREOR', $newreaded);
@@ -1342,9 +1354,20 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
       // do normal EP input
       // now we string the entire thing together in case there were carriage returns in the data
       $newreaded = "";
-      foreach ($readed as $read){
+
+			if ($_POST['import_charset'] == 'cp1251'){
+        
+        foreach ($readed as $read){
+        $newreaded .= CP1251toUTF8($read);
+        }
+
+			} else {
+
+        foreach ($readed as $read){
         $newreaded .= $read;
-      }
+        }
+
+			}
 
       // now newreaded has the entire file together without the carriage returns.
       // if for some reason excel put qoutes around our EOREOR, remove them then split into rows
