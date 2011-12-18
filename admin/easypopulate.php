@@ -1293,19 +1293,19 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
             // now we string the entire thing together in case there were carriage returns in the data
               $newreaded = "";
 
-        if ($_POST['import_charset'] == 'cp1251'){
+			if ($_POST['import_charset'] == 'cp1251'){
         
         foreach ($readed as $read){
         $newreaded .= CP1251toUTF8($read);
         }
 
-} else {
+			} else {
 
         foreach ($readed as $read){
         $newreaded .= $read;
         }
 
-}
+			}
 
               // now newreaded has the entire file together without the carriage returns.
               // if for some reason excel put qoutes around our EOREOR, remove them then split into rows
@@ -1517,13 +1517,10 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="update"><?php echo TEXT_EASYPOPULATE_UPDATE; ?></option>
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
-                  
-			<select name="import_charset">
-			<option selected value ="cp1251" size="5">cp1251</option>
-			<option value="utf8" size="5">utf8</option>
-			</select>
-
-                  
+                  <select name="import_charset">
+                      <option selected value ="cp1251" size="5">cp1251</option>
+                      <option value="utf8" size="5">utf8</option>
+                  </select>
                   <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT;?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo EASY_INSERT; ?></button></span>
                 <br />
                 </p>
