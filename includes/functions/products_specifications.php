@@ -22,7 +22,7 @@
     }
 
     // Add the preg_replace to every element.
-    //return array_map ('vam_clean_get__recursive', $get_var);
+    return array_map ('vam_clean_get__recursive', $get_var);
   } // function vam_clean_get__recursive
 
   ////
