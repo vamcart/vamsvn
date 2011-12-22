@@ -22,7 +22,7 @@
     }
 
     // Add the preg_replace to every element.
-    return array_map ('vam_clean_get__recursive', $get_var);
+    //return array_map ('vam_clean_get__recursive', $get_var);
   } // function vam_clean_get__recursive
 
   ////
@@ -675,7 +675,8 @@
               break;
 
             default:
-              $box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
+              //$box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
+              $box_text .= vam_draw_checkbox_field ($filter_name, $filter['id'], $checked) . '&nbsp;' . $filter['text'];
 
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
