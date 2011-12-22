@@ -21,13 +21,23 @@
 // Outputs a button in the selected language
   function vam_image_submit($image, $alt = '', $parameters = '') {
 
-    $image_submit = '<input type="image" src="' . vam_parse_input_field_data('templates/'.CURRENT_TEMPLATE.'/buttons/' . $_SESSION['language'] . '/'. $image, array('"' => '&quot;')) . '" alt="' . vam_parse_input_field_data($alt, array('"' => '&quot;')) . '"';
+		if (!empty($image) && file_exists(DIR_FS_CATALOG . DIR_WS_ICONS . 'buttons/' . $image)) {
 
-    if (vam_not_null($alt)) $image_submit .= ' title=" ' . vam_parse_input_field_data($alt, array('"' => '&quot;')) . ' "';
+    $image_submit = '<span class="button"><button type="submit"';
 
     if (vam_not_null($parameters)) $image_submit .= ' ' . $parameters;
 
-    $image_submit .= ' />';
+    $image_submit .= '>' . vam_image(DIR_WS_CATALOG . DIR_WS_ICONS . 'buttons/' . $image, $alt, '', '', 'width="12" height="12" '.$parameters).'&nbsp;' .$alt . '</button></span>';
+
+		} else {
+
+    $image_submit = '<span class="button"><button type="submit"';
+
+    if (vam_not_null($parameters)) $image_submit .= ' ' . $parameters;
+
+    $image_submit .= '>' . $alt . '</button></span>';
+
+		}
 
     return $image_submit;
   }
