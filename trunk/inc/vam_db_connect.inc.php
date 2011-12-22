@@ -30,6 +30,7 @@ $$link = @mysql_connect($server, $username, $password, $new_link);
 if ($$link){
    @mysql_select_db($database);
    @mysql_query("SET SQL_MODE= ''");
+   @mysql_query("SET SQL_BIG_SELECTS=1");
    @mysql_query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 }
 
