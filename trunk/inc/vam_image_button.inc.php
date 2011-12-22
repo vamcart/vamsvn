@@ -20,6 +20,12 @@
 // Output a function button in the selected language
   function vam_image_button($image, $alt = '', $parameters = '') {
 
-    return vam_image('templates/'.CURRENT_TEMPLATE.'/buttons/' . $_SESSION['language'] . '/'. $image, $alt, '', '', $parameters);
+		if (!empty($image) && file_exists('templates/'.CURRENT_TEMPLATE.'/buttons/icons/' . $image)) {
+			$content = vam_image('templates/'.CURRENT_TEMPLATE.'/buttons/icons/' . $_SESSION['language'] . '/'. $image, $alt, '', '', $parameters).'&nbsp;' .$alt.'</span>';
+		} else {
+			$content = '<span>'. $alt.'</span>';
+		}
+		
+    return $content;
   }
  ?>
