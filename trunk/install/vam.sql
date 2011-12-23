@@ -2241,50 +2241,50 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 
 #configuration_group_id 28
 
-INSERT INTO configuration VALUES ('', 'AFFILIATE_EMAIL_ADDRESS', 'affiliate@localhost.com', '28', '1', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_PERCENT', '15.0000', '28', '2', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_THRESHOLD', '30.00', '28', '3', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_COOKIE_LIFETIME', '7200', '28', '4', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_BILLING_TIME', '30', '28', '5', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_PAYMENT_ORDER_MIN_STATUS', '3', '28', '6', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_USE_CHECK', 'true', '28', '7', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'AFFILIATE_USE_PAYPAL', 'false', '28', '8', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'AFFILIATE_USE_BANK', 'false', '28', '9', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'AFFILATE_INDIVIDUAL_PERCENTAGE', 'true', '28', '10', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'AFFILATE_USE_TIER', 'false', '28', '11', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'AFFILIATE_TIER_LEVELS', '0', '28', '12', NULL, now(), NULL, NULL);
-INSERT INTO configuration VALUES ('', 'AFFILIATE_TIER_PERCENTAGE', '8.00;5.00;1.00', '28', '13', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_EMAIL_ADDRESS', 'affiliate@localhost.com', '28', '1', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_PERCENT', '15.0000', '28', '2', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_THRESHOLD', '30.00', '28', '3', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_COOKIE_LIFETIME', '7200', '28', '4', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_BILLING_TIME', '30', '28', '5', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_PAYMENT_ORDER_MIN_STATUS', '3', '28', '6', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_USE_CHECK', 'true', '28', '7', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_USE_PAYPAL', 'false', '28', '8', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_USE_BANK', 'false', '28', '9', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILATE_INDIVIDUAL_PERCENTAGE', 'true', '28', '10', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILATE_USE_TIER', 'false', '28', '11', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_TIER_LEVELS', '0', '28', '12', NULL, now(), NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('AFFILIATE_TIER_PERCENTAGE', '8.00;5.00;1.00', '28', '13', NULL, now(), NULL, NULL);
 
 #configuration_group_id 29
 
-INSERT INTO configuration VALUES ('', 'SET_BOX_CATEGORIES', 'true', '29', '1', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_FILTERS', 'true', '29', '2', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_CONTENT', 'true', '29', '3', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_INFORMATION', 'true', '29', '4', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_ADD_QUICKIE', 'true', '29', '5', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_LAST_VIEWED', 'true', '29', '6', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_REVIEWS', 'true', '29', '7', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_SEARCH', 'true', '29', '8', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_SPECIALS', 'true', '29', '9', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_FEATURED', 'true', '29', '10', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_LATESTNEWS', 'true', '29', '11', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_ARTICLES', 'true', '29', '12', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_ARTICLESNEW', 'true', '29', '13', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_AUTHORS', 'true', '29', '14', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_CART', 'true', '29', '15', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_LOGIN', 'true', '29', '16', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_ADMIN', 'true', '29', '17', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_DOWNLOADS', 'true', '29', '18', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_AFFILIATE', 'true', '29', '19', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_WHATSNEW', 'true', '29', '20', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_NEWSLETTER', 'true', '29', '21', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_BESTSELLERS', 'true', '29', '22', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_INFOBOX', 'true', '29', '23', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_CURRENCIES', 'true', '29', '24', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_LANGUAGES', 'true', '29', '25', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_MANUFACTURERS', 'true', '29', '26', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_MANUFACTURERS_INFO', 'true', '29', '27', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
-INSERT INTO configuration VALUES ('', 'SET_BOX_FAQ', 'true', '29', '28', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_CATEGORIES', 'true', '29', '1', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_FILTERS', 'true', '29', '2', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_CONTENT', 'true', '29', '3', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_INFORMATION', 'true', '29', '4', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_ADD_QUICKIE', 'true', '29', '5', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_LAST_VIEWED', 'true', '29', '6', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_REVIEWS', 'true', '29', '7', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_SEARCH', 'true', '29', '8', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_SPECIALS', 'true', '29', '9', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_FEATURED', 'true', '29', '10', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_LATESTNEWS', 'true', '29', '11', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_ARTICLES', 'true', '29', '12', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_ARTICLESNEW', 'true', '29', '13', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_AUTHORS', 'true', '29', '14', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_CART', 'true', '29', '15', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_LOGIN', 'true', '29', '16', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_ADMIN', 'true', '29', '17', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_DOWNLOADS', 'true', '29', '18', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_AFFILIATE', 'true', '29', '19', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_WHATSNEW', 'true', '29', '20', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_NEWSLETTER', 'true', '29', '21', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_BESTSELLERS', 'true', '29', '22', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_INFOBOX', 'true', '29', '23', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_CURRENCIES', 'true', '29', '24', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_LANGUAGES', 'true', '29', '25', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_MANUFACTURERS', 'true', '29', '26', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_MANUFACTURERS_INFO', 'true', '29', '27', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_FAQ', 'true', '29', '28', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 
 #configuration_group_id 72
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true', '72', '1', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
