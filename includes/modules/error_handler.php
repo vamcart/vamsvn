@@ -61,6 +61,6 @@
 
   $vamTemplate->assign('main_content',$module);
   
-  header('HTTP/1.0 404 Not Found');
+  //header('HTTP/1.0 404 Not Found');
   
 ?>
