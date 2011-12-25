@@ -7,7 +7,7 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2002 osCommerce
+  Copyright (c) 2011 osCommerce
 
   Released under the GNU General Public License
 */
@@ -62,7 +62,7 @@
   define ('TEXT_FILTER_DISPLAY', 'Показывать фильтр как');
   define ('TEXT_FILTER_SHOW_ALL', 'Фильтр показать все');
   define ('TEXT_ENTER_FILTER', 'Укажите фильтр');
-  define ('TEXT_ENTER_VALUE', 'Укажите значение спецификации');
+  define ('TEXT_ENTER_VALUE', 'Вводить значения спецификаций как');
 
   define ('TEXT_INFO_HEADING_COPY_GROUP', 'Копирование группы');
   define ('TEXT_COPY_GROUP_INTRO', 'Сделать копию данной группы?<br>Копируется только группа, включая отмеченные опции.');
