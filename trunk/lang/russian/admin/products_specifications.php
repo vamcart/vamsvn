@@ -1,7 +1,7 @@
 <?php
 /*
   $Id: products_specifications.php v1.0 20090909 kymation $
-  Based on: categories.php 1739 2007-12-20 00:52:16Z hpdl $
+  Based on: categories.php 1739 2011-12-20 00:52:16Z hpdl $
   $Loc: catalog/admin/includes/languages/english/ $
 
   osCommerce, Open Source E-Commerce Solutions
@@ -54,7 +54,7 @@
   define ('TEXT_NEW_GROUP_INTRO', 'Пожалуйста, заполните форму для создания новой группы.');
   define ('TEXT_GROUP_NAME', 'Название группы:');
   define ('TEXT_SHOW_COMPARISON', 'Показывать страницу сравнения:');
-  define ('TEXT_SHOW_ON_PRODUCTS', 'Показывать на странице сравнения');
+  define ('TEXT_SHOW_ON_PRODUCTS', 'Показывать на странице карточки товара');
   define ('TEXT_SHOW_FILTER', 'Показывать фильтр:');
   define ('TEXT_SHOW', 'Да');
   define ('TEXT_DONT_SHOW', 'Нет');
