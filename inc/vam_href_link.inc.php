@@ -407,32 +407,42 @@
       $action = '';
       $language = '';
       $currency = '';
+      $page_num = '';
       $param_array = explode('&', $parameters);
 
-      for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
-        $parsed_param = explode('=', $param_array[$i]);
-        if ($parsed_param[0] === 'tPath') {
-          $t_id = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'action') {
-          $action = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'language') {
-          $language = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'currency') {
-          $currency = $parsed_param[1];
-        } elseif ($parsed_param[0] === 'info') {
-          if (preg_match('/^tPath(.*)_/', $parsed_param[1], $matches)) {
-            $products_id = $matches[1];
+      if (strpos($parameters, 'tPath') === false) {
+        return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
+      } else {
+        $categories_id = -1;
+        $param_array = explode('&', $parameters);
+
+        for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
+          $parsed_param = explode('=', $param_array[$i]);
+          if ($parsed_param[0] === 'tPath') {
+            $pos = strrpos($parsed_param[1], '_');
+            if ($pos === false) {
+              $t_id = $parsed_param[1];
+            } else {  
+              if (preg_match('/^c(.*)_/', $parsed_param[1], $matches)) {
+                $t_id = $matches[1];
+              }
+            }
+          } elseif ($parsed_param[0] === 'language') {
+            $language = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'currency') {
+            $currency = $parsed_param[1];
+          } elseif ($parsed_param[0] === 'page') {
+            $page_num = $parsed_param[1];
           }
         }
-
 
       $t_url = vamDBquery('select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . $t_id . '"');
       $t_url = vam_db_fetch_array($t_url,true);
       $t_url = $t_url['topics_page_url'];
 
-      if ($t_url == '') {
-        return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
-      } else {
+        if ($t_url == '') {
+          return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
+        } else {
 
           if ($connection == 'NONSSL') {
             $link = HTTP_SERVER;
@@ -452,20 +462,31 @@
             $link .= DIR_WS_CATALOG;
           }
 
-          if (vam_not_null($page_num)) {
-            $t_url .= '?page=' . $page_num;
-          }
-
           if (vam_not_null($language)) {
-            $t_url .= '?language=' . $language;
+            $params .= '&language=' . $language;
           }
 
           if (vam_not_null($currency)) {
-            $t_url .= '?currency=' . $currency;
+            $params .= '&currency=' . $currency;
+          }
+
+          if (vam_not_null($page_num)) {
+            $params .= '&page=' . $page_num;
+          }
+
+
+          if (vam_not_null($params)) {
+            if (strpos($params, '&') === 0) {
+              $params = substr($params, 1);
+            }
+            
+            $params = str_replace('&', '&amp;', $params);
+
+            $t_url .= '?' . $params;
           }
 
           return $link . $t_url;
-      }
+            }
 }
 
     } elseif ($page == FILENAME_CONTENT) {
