@@ -413,7 +413,7 @@
       if (strpos($parameters, 'tPath') === false) {
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
       } else {
-        $categories_id = -1;
+        $t_id = -1;
         $param_array = explode('&', $parameters);
 
         for ($i = 0, $n = sizeof($param_array); $i < $n; $i++) {
