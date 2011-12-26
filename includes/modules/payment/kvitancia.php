@@ -75,12 +75,12 @@ class kvitancia {
                          'module' => $this->title,
                          'icon' => $icon,
                          'description'=>$this->info,
-      	                 'fields' => array(array('title' => MODULE_PAYMENT_KVITANCIA_NAME_TITLE,
+      	                 'fields' => array(array('title' => '<div id="kvitancia">'.MODULE_PAYMENT_KVITANCIA_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_KVITANCIA_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_KVITANCIA_NAME,
       	                                         'field' => vam_draw_input_field('kvit_name', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
       	                                   array('title' => MODULE_PAYMENT_KVITANCIA_ADDRESS,
-      	                                         'field' => vam_draw_input_field('kvit_address',$order->customer['city'] . ' ' . $order->customer['street_address']) . MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP),
+      	                                         'field' => vam_draw_input_field('kvit_address',$order->customer['city'] . ' ' . $order->customer['street_address']) . MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP.'</div>'),
       	                                   ));
 
 		return $selection;

@@ -86,10 +86,10 @@
                          'module' => $this->title,
                		    'icon' => $icon,
                          'description'=>$this->info,
-      	                 'fields' => array(array('title' => MODULE_PAYMENT_QIWI_NAME_TITLE,
+      	                 'fields' => array(array('title' => '<div id="qiwi">'.MODULE_PAYMENT_QIWI_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_QIWI_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_QIWI_TELEPHONE,
-      	                                         'field' => vam_draw_input_field('qiwi_telephone',$order->customer['telephone']) . MODULE_PAYMENT_QIWI_TELEPHONE_HELP,
+      	                                         'field' => vam_draw_input_field('qiwi_telephone',$order->customer['telephone']) . MODULE_PAYMENT_QIWI_TELEPHONE_HELP.'</div>',
       	                                   )));
 
     }
