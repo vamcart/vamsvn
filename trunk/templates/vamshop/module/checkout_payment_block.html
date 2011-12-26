@@ -1,3 +1,25 @@
+		<script type="text/javascript">
+		{literal}
+			jQuery(document).ready(function() {
+				jQuery("div#qiwi").hide();
+				jQuery("div#schet").hide();
+				jQuery("div#kvitancia").hide();
+				jQuery("div#aviso").hide();
+					jQuery("input#qiwi").click(function (){
+						jQuery("div#qiwi").show();
+					});
+					jQuery("input#schet").click(function (){
+						jQuery("div#schet").show();
+					});
+					jQuery("input#kvitancia").click(function (){
+						jQuery("div#kvitancia").show();
+					});
+					jQuery("input#aviso").click(function (){
+						jQuery("div#aviso").show();
+					});
+			});
+		{/literal}
+		</script>
 {foreach name=aussen item=module_data from=$module_content} <div class="{cycle values="itemOdd,itemEven"}">
 <p>
 <label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
