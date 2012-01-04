@@ -322,7 +322,7 @@
 
   /////
   // Get the manufacturers_id when given the manufacturers_name
-  function vam_get_manufacturer_id ($filter_array, $products_column_name, $languages_id) {
+  function vam_get_manufacturer_id ($filter_array, $products_column_name, $languages_id = 1) {
     if (is_array($filter_array) && $products_column_name != '') {
       $new_filter_array = array ();
       foreach ($filter_array as $filter) {
