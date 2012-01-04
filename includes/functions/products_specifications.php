@@ -328,7 +328,7 @@
       foreach ($filter_array as $filter) {
         if ($filter != '' && $filter != '0') {
           $manufacturer_query_raw = "select manufacturers_id
-                                     from " . TABLE_MANUFACTURERS_INFO . "
+                                     from " . TABLE_MANUFACTURERS . "
                                      where languages_id = '" . (int)$languages_id . "' and manufacturers_name = '" . $filter . "'
                                     ";
           // print $manufacturer_query_raw . "<br>\n";
