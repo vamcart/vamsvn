@@ -58,7 +58,7 @@
         $$var = vam_decode_recursive ($_GET[$var]);
       
         // Sanitize variables to prevent hacking
-        $$var = vam_clean_get__recursive ($_GET[$var]);
+        $$var = vam_clean_get__recursive ($$var);
         
         // Get rid of extra values if Select All is selected
         $$var = vam_select_all_override ($$var);
