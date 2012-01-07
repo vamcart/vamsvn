@@ -61,7 +61,7 @@
 
         if (isset ($_GET['f' . $var]) && $_GET['f' . $var] != '') {
           // Decode the URL-encoded names, including arrays
-          $$var = vam_decode_recursive ($_GET[$var]);
+          $$var = vam_decode_recursive ($_GET['f' . $var]);
       
           // Sanitize variables to prevent hacking
           $$var = vam_clean_get__recursive($$var);
