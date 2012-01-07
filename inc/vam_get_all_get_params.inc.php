@@ -20,20 +20,28 @@
   function vam_get_all_get_params($exclude_array = '') {
   	global $InputFilter;
 
-    if (!is_array($exclude_array)) $exclude_array = array();
-
+    if (!is_array($exclude_array))
+      $exclude_array = array ();
     $get_url = '';
+
     if (is_array($_GET) && (sizeof($_GET) > 0)) {
       reset($_GET);
-      while (list($key, $value) = each($_GET)) {
-        if ( (strlen((string)$value) > 0) && ($key != vam_session_name()) && ($key != 'error') && ($key != 'cPath') && (!in_array($key, $exclude_array)) && ($key != 'x') && ($key != 'y') ) {
-          $key =rawurlencode(stripslashes((string)$key));
-          $value=rawurlencode(stripslashes((string)$value));          
-          $get_url .= $key . '=' . $value . '&';
+
+      foreach ($_GET as $key => $value) {
+        if (is_array($value)) {
+          foreach ($value as $new_key => $new_value) {
+            if (!in_array($key, $exclude_array)) {
+              $get_url .= $key . '[' . $new_key . ']' . '=' . rawurlencode(stripslashes($new_value)) . '&';
+            }
+          }
+        }
+        elseif ((strlen($value) > 0) && ($key != vam_session_name()) && ($key != 'error') && (!in_array($key, $exclude_array)) && ($key != 'x') && ($key != 'y')) {
+          $get_url .= $key . '=' . rawurlencode(stripslashes($value)) . '&';
         }
       }
     }
 
     return $get_url;
   }
+  
  ?>
