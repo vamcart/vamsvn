@@ -3323,7 +3323,7 @@ CREATE TABLE IF NOT EXISTS `specification_groups_to_categories` (
 DROP TABLE IF EXISTS `specification_groups`;
 CREATE TABLE IF NOT EXISTS `specification_groups` (
   `specification_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `specification_group_name` varchar(64) NOT NULL,
+  `specification_group_name` varchar(255) NOT NULL,
   `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
   `show_products` set('True','False') NOT NULL DEFAULT 'True',
   `show_filter` set('True','False') NOT NULL DEFAULT 'True',
@@ -3342,7 +3342,7 @@ CREATE TABLE IF NOT EXISTS `specifications` (
   `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
   `show_products` set('True','False') NOT NULL DEFAULT 'True',
   `show_filter` set('True','False') NOT NULL DEFAULT 'True',
-  `products_column_name` varchar(32) NOT NULL,
+  `products_column_name` varchar(255) NOT NULL,
   `column_justify` set('Left','Center','Right') NOT NULL DEFAULT 'Left',
   `filter_class` set('none','exact','multiple','range','reverse','start','partial','like') NOT NULL DEFAULT 'none',
   `filter_display` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'pulldown',
@@ -3364,10 +3364,10 @@ CREATE TABLE IF NOT EXISTS `specification_description` (
   `specification_description_id` int(11) NOT NULL AUTO_INCREMENT,
   `specifications_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '1',
-  `specification_name` varchar(32) NOT NULL DEFAULT '',
-  `specification_description` varchar(128) NOT NULL,
-  `specification_prefix` varchar(128) NOT NULL DEFAULT '',
-  `specification_suffix` varchar(128) NOT NULL DEFAULT '',
+  `specification_name` varchar(255) NOT NULL DEFAULT '',
+  `specification_description` varchar(255) NOT NULL,
+  `specification_prefix` varchar(255) NOT NULL DEFAULT '',
+  `specification_suffix` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`specification_description_id`,`language_id`),
   KEY `specifications_id` (`specifications_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -3396,7 +3396,7 @@ CREATE TABLE IF NOT EXISTS `specification_filters_description` (
   `specification_filters_description_id` int(11) NOT NULL AUTO_INCREMENT,
   `specification_filters_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '1',
-  `filter` varchar(128) NOT NULL,
+  `filter` varchar(255) NOT NULL,
   PRIMARY KEY (`specification_filters_description_id`),
   KEY `language_id` (`language_id`),
   KEY `specification_filters_id` (`specification_filters_id`)
@@ -3426,7 +3426,7 @@ CREATE TABLE IF NOT EXISTS `specification_values_description` (
   `specification_values_description_id` int(11) NOT NULL AUTO_INCREMENT,
   `specification_values_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '1',
-  `specification_value` varchar(128) NOT NULL,
+  `specification_value` varchar(255) NOT NULL,
   PRIMARY KEY (`specification_values_description_id`),
   KEY `specification_values_id` (`specification_values_id`),
   KEY `language_id` (`language_id`)
