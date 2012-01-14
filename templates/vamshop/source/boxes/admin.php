@@ -42,13 +42,13 @@ $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
   $products = vam_db_fetch_array($products_query);
   $reviews_query = vam_db_query("select count(*) as count from " . TABLE_REVIEWS);
   $reviews = vam_db_fetch_array($reviews_query);
-  $admin_image = '<p class="LoginContentLeft"><a href="' . vam_href_link_admin(FILENAME_START,'', 'SSL').'">'.vam_image_button('button_admin.gif', IMAGE_BUTTON_ADMIN).'</a></p>';
+  $admin_image = '<p class="LoginContentLeft"><a class="button" href="' . vam_href_link_admin(FILENAME_START,'', 'SSL').'">'.vam_image_button('admin.png', IMAGE_BUTTON_ADMIN).'</a></p>';
    if ($product->isProduct()) {
-    $admin_link='<p class="LoginContentLeft"><a href="' . vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id']) . '&amp;action=new_product' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit_product.gif', IMAGE_BUTTON_PRODUCT_EDIT) . '</a></p>';
+    $admin_link='<p class="LoginContentLeft"><a class="button" href="' . vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id']) . '&amp;action=new_product' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit.png', IMAGE_BUTTON_PRODUCT_EDIT) . '</a></p>';
   }
 
    if (isset($_GET['articles_id'])) {
-    $admin_link_article='<p class="LoginContentLeft"><a href="' . vam_href_link_admin('admin/'.FILENAME_ARTICLES, 'aID=' . $_GET['articles_id']) . '&amp;action=new_article' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit_article.gif', IMAGE_BUTTON_ARTICLE_EDIT) . '</a></p>';
+    $admin_link_article='<p class="LoginContentLeft"><a class="button" href="' . vam_href_link_admin('admin/'.FILENAME_ARTICLES, 'aID=' . $_GET['articles_id']) . '&amp;action=new_article' . '" onclick="window.open(this.href); return false;">' . vam_image_button('edit.png', IMAGE_BUTTON_ARTICLE_EDIT) . '</a></p>';
   }
 
   $box_content= '<b>' . BOX_TITLE_STATISTICS . '</b><br />' . $orders_contents . '<br />' .
