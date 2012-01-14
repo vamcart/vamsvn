@@ -52,8 +52,8 @@ $vamTemplate->assign('DATE', vam_date_long($reviews['date_added']));
 $vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews_text));
 $vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 $vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($reviews['products_id'], $reviews['products_name'])));
-$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-$vamTemplate->assign('BUTTON_BUY_NOW', '<a href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.vam_image_button('button_in_cart.gif', IMAGE_BUTTON_IN_CART) . '</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BUY_NOW', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART) . '</a>');
 
 $products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';

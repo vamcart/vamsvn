@@ -82,7 +82,7 @@ $vamTemplate->assign('LINK_TERMS', '<a  href="' . vam_href_link(FILENAME_CONTENT
 $vamTemplate->assign('INPUT_AFFILIATE_USERNAME', vam_draw_input_field('affiliate_username'));
 $vamTemplate->assign('INPUT_AFFILIATE_PASSWORD', vam_draw_password_field('affiliate_password'));
 $vamTemplate->assign('LINK_PASSWORD_FORGOTTEN', '<a href="' . vam_href_link(FILENAME_AFFILIATE_PASSWORD_FORGOTTEN, '', 'SSL') . '">');
-$vamTemplate->assign('LINK_SIGNUP', '<a href="' . vam_href_link(FILENAME_AFFILIATE_SIGNUP, '', 'SSL') . '">' . vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE) . '</a>');
+$vamTemplate->assign('LINK_SIGNUP', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SIGNUP, '', 'SSL') . '">' . vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE) . '</a>');
 $vamTemplate->assign('BUTTON_LOGIN', vam_image_submit('button_login.gif', IMAGE_BUTTON_LOGIN));
 
 $vamTemplate->assign('language', $_SESSION['language']);

@@ -240,7 +240,7 @@ if (ACCOUNT_FAX == 'true') {
 	$vamTemplate->assign('customers_extra_fileds', '1');
    $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
 
-$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('language', $_SESSION['language']);

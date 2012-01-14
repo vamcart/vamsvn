@@ -90,7 +90,7 @@ $vamTemplate->assign('ENTRY_PASSWORD_NEW_ERROR', ENTRY_PASSWORD_NEW_ERROR);
 $vamTemplate->assign('INPUT_CONFIRM', vam_draw_password_fieldNote(array ('name' => 'password_confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="password_confirmation"'));
 $vamTemplate->assign('ENTRY_PASSWORD_ERROR_NOT_MATCHING', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
 
-$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('FORM_END', '</form>');
 

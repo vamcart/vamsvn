@@ -133,9 +133,9 @@ if ( AFFILATE_USE_TIER == 'true' ) {
 	}
 	$vamTemplate->assign('affiliate_percent_tier_table', $affiliate_percent_tier_table);
 }
-$vamTemplate->assign('LINK_BANNER', '<a href="' . vam_href_link(FILENAME_AFFILIATE_BANNERS) . '">' . vam_image_button('button_affiliate_banners.gif', IMAGE_BANNERS) . '</a>');
-$vamTemplate->assign('LINK_CLICKS', '<a href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, '', 'SSL') . '">' . vam_image_button('button_affiliate_clickthroughs.gif', IMAGE_CLICKTHROUGHS) . '</a>');
-$vamTemplate->assign('LINK_SALES', '<a href="' . vam_href_link(FILENAME_AFFILIATE_SALES, 'a_period=' . $a_period, 'SSL') . '">' . vam_image_button('button_affiliate_sales.gif', IMAGE_SALES) . '</a>');
+$vamTemplate->assign('LINK_BANNER', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_BANNERS) . '">' . vam_image_button('submit.png', IMAGE_BANNERS) . '</a>');
+$vamTemplate->assign('LINK_CLICKS', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, '', 'SSL') . '">' . vam_image_button('submit.png', IMAGE_CLICKTHROUGHS) . '</a>');
+$vamTemplate->assign('LINK_SALES', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SALES, 'a_period=' . $a_period, 'SSL') . '">' . vam_image_button('submit.png', IMAGE_SALES) . '</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_summary.html');

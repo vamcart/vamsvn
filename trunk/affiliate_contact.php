@@ -67,7 +67,7 @@ $breadcrumb->add(NAVBAR_TITLE_CONTACT, vam_href_link(FILENAME_AFFILIATE_CONTACT)
 require(DIR_WS_INCLUDES . 'header.php');
 
 if (isset($_GET['action']) && ($_GET['action'] == 'success')) {
-    $vamTemplate->assign('SUMMARY_LINK', '<a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY) . '">' . vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE) . '</a>');
+    $vamTemplate->assign('SUMMARY_LINK', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY) . '">' . vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE) . '</a>');
 }
 else {
 	// Get some values of the Affiliate

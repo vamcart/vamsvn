@@ -118,7 +118,7 @@ require (DIR_WS_INCLUDES.'header.php');
 
 if ($_GET['action'] == 'process') {
 	$vamTemplate->assign('action', 'process');
-	$vamTemplate->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT, '', 'NONSSL').'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+	$vamTemplate->assign('LINK_DEFAULT', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, '', 'NONSSL').'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 }
 if ($_GET['action'] == 'send' && !$error) {
 	$vamTemplate->assign('action', 'send');
