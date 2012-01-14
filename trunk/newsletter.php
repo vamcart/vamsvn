@@ -168,7 +168,7 @@ $vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
 $vamTemplate->assign('CHECK_INP', vam_draw_radio_field('check', 'inp'));
 $vamTemplate->assign('CHECK_DEL', vam_draw_radio_field('check', 'del'));
-$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+$vamTemplate->assign('BUTTON_SEND', vam_image_submit('submit.png', IMAGE_BUTTON_LOGIN));
 $vamTemplate->assign('FORM_END', '</form>');
 
 $vamTemplate->assign('language', $_SESSION['language']);

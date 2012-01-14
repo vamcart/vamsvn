@@ -343,7 +343,7 @@ if (isset($_GET['affiliate_email_address'])) $a_email_address = vam_db_prepare_i
 
 include(DIR_WS_MODULES . 'affiliate_account_details.php');
 
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_signup.html');

@@ -133,7 +133,7 @@ $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'e
         }
 $vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, stripslashes($_POST['message_body'])));
 $vamTemplate->assign('FORM_END', '</form>');
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:window.close()">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 // set cache ID
@@ -176,7 +176,7 @@ $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'e
         }
 $vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, stripslashes($_POST['message_body'])));
 $vamTemplate->assign('FORM_END', '</form>');
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:window.close()">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 	$vamTemplate->caching = 0;

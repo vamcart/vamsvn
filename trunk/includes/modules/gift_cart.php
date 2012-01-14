@@ -61,7 +61,7 @@ if (isset ($_SESSION['customer_id'])) {
 $gift->assign('LINK_ACCOUNT', vam_href_link(FILENAME_CREATE_ACCOUNT));
 $gift->assign('FORM_ACTION', vam_draw_form('gift_coupon', vam_href_link(FILENAME_SHOPPING_CART, 'action=check_gift', 'NONSSL')));
 $gift->assign('INPUT_CODE', vam_draw_input_field('gv_redeem_code'));
-$gift->assign('BUTTON_SUBMIT', vam_image_submit('button_redeem.gif', IMAGE_REDEEM_GIFT));
+$gift->assign('BUTTON_SUBMIT', vam_image_submit('submit.png', IMAGE_REDEEM_GIFT));
 $gift->assign('language', $_SESSION['language']);
 $gift->assign('FORM_END', '</form>');
 $gift->caching = 0;

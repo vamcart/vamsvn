@@ -35,7 +35,7 @@ $vamTemplate->assign('FORM_ACTION', vam_draw_form('advanced_search', vam_href_li
 
 $vamTemplate->assign('INPUT_KEYWORDS', vam_draw_input_field('keywords', '', ''));
 $vamTemplate->assign('HELP_LINK', 'javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_SEARCH_HELP).'\')');
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_search.gif', IMAGE_BUTTON_SEARCH));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('search.png', IMAGE_BUTTON_SEARCH));
 
 
 $vamTemplate->assign('SELECT_CATEGORIES',vam_draw_pull_down_menu('categories_id', vam_get_categories(array (array ('id' => '', 'text' => TEXT_ALL_CATEGORIES)))));

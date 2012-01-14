@@ -144,7 +144,7 @@ switch ($case) {
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('submit.png', IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
 		$vamTemplate->caching = 0;
@@ -161,7 +161,7 @@ switch ($case) {
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_send.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('submit.png', IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
 		$vamTemplate->caching = 0;
@@ -186,7 +186,7 @@ switch ($case) {
 		$vamTemplate->assign('SHOP_NAME', STORE_NAME);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('sign', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, 'action=first_opt_in', 'NONSSL')));
 		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', vam_db_input($_POST['email'])));
-		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('button_continue.gif', IMAGE_BUTTON_LOGIN));
+		$vamTemplate->assign('BUTTON_SEND', vam_image_submit('submit.png',  IMAGE_BUTTON_LOGIN));
 		$vamTemplate->assign('FORM_END', '</form>');
 		$vamTemplate->assign('language', $_SESSION['language']);
 		$vamTemplate->caching = 0;

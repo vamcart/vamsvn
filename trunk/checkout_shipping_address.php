@@ -266,7 +266,7 @@ if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
 	require (DIR_WS_MODULES.'checkout_new_address.php');
 
 }
-$vamTemplate->assign('BUTTON_CONTINUE', vam_draw_hidden_field('action', 'submit').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_CONTINUE', vam_draw_hidden_field('action', 'submit').vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 
 if ($process == true) {
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');

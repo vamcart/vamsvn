@@ -46,7 +46,7 @@ require(DIR_WS_INCLUDES . 'header.php');
 $vamTemplate->assign('affiliate_banners_title', $affiliate_banners['affiliate_banners_title']);
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('individual_banner', vam_href_link(FILENAME_AFFILIATE_BANNERS)));
 $vamTemplate->assign('INPUT_BANNER_ID', vam_draw_input_field('individual_banner_id', '', 'size="5"'));
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
 
 if (vam_not_null($_POST['individual_banner_id']) || vam_not_null($_GET['individual_banner_id'])) {
     if (vam_not_null($_POST['individual_banner_id'])) $individual_banner_id = $_POST['individual_banner_id'];

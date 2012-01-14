@@ -79,7 +79,7 @@ else {
     $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', $affili_res['affiliate_email_address']));
     $vamTemplate->assign('error', $error);
     $vamTemplate->assign('TEXTAREA_ENQUIRY', vam_draw_textarea_field('enquiry', 'soft', 50, 15, $_POST['enquiry']));
-    $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+    $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 }
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
