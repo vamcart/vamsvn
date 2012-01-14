@@ -288,7 +288,7 @@ if (isset ($_GET['delete'])) {
 
 	if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
 		$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
+		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('update.png', IMAGE_BUTTON_UPDATE));
 
 	} else {
 		if (sizeof($_SESSION['navigation']->snapshot) > 0) {
@@ -297,7 +297,7 @@ if (isset ($_GET['delete'])) {
 			$back_link = vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL');
 		}
 		$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.$back_link.'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 
 	}
 	$vamTemplate->assign('FORM_END', '</form>');

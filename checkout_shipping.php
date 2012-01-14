@@ -210,7 +210,7 @@ if (ACCOUNT_STREET_ADDRESS == 'true') {
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_address', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')).vam_draw_hidden_field('action', 'process'));
 $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'));
 $vamTemplate->assign('BUTTON_ADDRESS', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');
-$vamTemplate->assign('BUTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTON_CONTINUE', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('FORM_END', '</form>');
 
 $module = new vamTemplate;

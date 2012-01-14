@@ -1014,7 +1014,7 @@ $vamTemplate->assign('conditions', 'true');
    $vamTemplate->assign('AGB_checkbox', '<input type="checkbox" value="conditions" name="conditions" checked />');
 
 }
-$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
 
 $vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
 /* END PAYMENT_BLOCK */

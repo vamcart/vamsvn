@@ -68,7 +68,7 @@ else {
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('password_forgotten', vam_href_link(FILENAME_AFFILIATE_PASSWORD_FORGOTTEN, 'action=process', 'SSL')));
 	$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email_address', '', 'maxlength="96"'));
 	$vamTemplate->assign('LINK_AFFILIATE', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE, '', 'SSL') . '">' . vam_image_button('back.png', IMAGE_BUTTON_BACK) . '</a>');
-	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 	
 	if (isset($_GET['email']) && ($_GET['email'] == 'nonexistent')) {
 		$vamTemplate->assign('email_nonexistent', 'true');

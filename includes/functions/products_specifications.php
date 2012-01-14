@@ -598,7 +598,7 @@
         $box_text .= vam_draw_form('filter', $target, 'get');
         $box_text .= vam_draw_pull_down_menu ($filter_name, $filters_select_array, $filter_value, 'onChange="this.form.submit();"');
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
@@ -633,7 +633,7 @@
           } // switch (true)
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit ('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
@@ -642,7 +642,7 @@
         $box_text .= vam_draw_form ('filter', $target, 'get');
         $box_text .= vam_draw_input_field($filter_name, $value);
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '<noscript>' . vam_image_submit('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
@@ -650,7 +650,7 @@
         $box_text .= vam_draw_form ('filter', $target, 'get');
         $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'multiple="' . $filter_name . 'f"');
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit ('button_filter.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
@@ -686,7 +686,7 @@
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
@@ -705,7 +705,7 @@
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('button_filter.gif', TEXT_FIND_PRODUCTS);
+        $box_text .= vam_image_submit('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 

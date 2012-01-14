@@ -517,7 +517,7 @@ if (ACCOUNT_FAX == 'true') {
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/create_account_guest.html');
 
 $vamTemplate->assign('language', $_SESSION['language']);

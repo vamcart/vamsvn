@@ -318,7 +318,7 @@ $vamTemplate->assign('IMAGE_TABLE_BACKGROUND', vam_image(DIR_WS_IMAGES . 'table_
 
 require(DIR_WS_MODULES . 'affiliate_account_details.php');
 
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_details.html');

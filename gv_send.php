@@ -134,8 +134,8 @@ if ($_GET['action'] == 'send' && !$error) {
 		$vamTemplate->assign('POST_MESSAGE', stripslashes($_POST['message']));
 	}
 	$vamTemplate->assign('HIDDEN_FIELDS', vam_draw_hidden_field('send_name', $send_name).vam_draw_hidden_field('to_name', stripslashes($_POST['to_name'])).vam_draw_hidden_field('email', $_POST['email']).vam_draw_hidden_field('amount', $gv_amount).vam_draw_hidden_field('message', stripslashes($_POST['message'])));
-	$vamTemplate->assign('LINK_BACK', vam_image_submit('button_back.gif', IMAGE_BUTTON_BACK, 'name=back').'</a>');
-	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('button_send.gif', IMAGE_BUTTON_CONTINUE));
+	$vamTemplate->assign('LINK_BACK', vam_image_submit('back.png', IMAGE_BUTTON_BACK, 'name=back').'</a>');
+	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
 }
 elseif ($_GET['action'] == '' || $error) {
 	$vamTemplate->assign('action', '');
@@ -147,7 +147,7 @@ elseif ($_GET['action'] == '' || $error) {
 	$vamTemplate->assign('INPUT_AMOUNT', vam_draw_input_field('amount', $_POST['amount'], '', 'text', false));
 	$vamTemplate->assign('ERROR_AMOUNT', $error_amount);
 	$vamTemplate->assign('TEXTAREA_MESSAGE', vam_draw_textarea_field('message', 'soft', 50, 15, stripslashes($_POST['message'])));
-	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
+	$vamTemplate->assign('LINK_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 }
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('language', $_SESSION['language']);

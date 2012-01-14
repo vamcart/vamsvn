@@ -283,7 +283,7 @@ if (is_array($payment_modules->modules)) {
 	$payment_button .= $payment_modules->process_button();
 }
 $vamTemplate->assign('MODULE_BUTTONS', $payment_button);
-$vamTemplate->assign('CHECKOUT_BUTTON', vam_image_submit('button_confirm_order.gif', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
+$vamTemplate->assign('CHECKOUT_BUTTON', vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
 
 //check if display conditions on checkout page is true
 if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
