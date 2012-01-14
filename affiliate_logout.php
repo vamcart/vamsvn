@@ -62,7 +62,7 @@ else { // if they weren't logged in but came to this page somehow
 
 $vamTemplate->assign('info', $info);
 
-$vamTemplate->assign('LINK_DEFAULT', '<a href="' . vam_href_link(FILENAME_DEFAULT) . '">' . vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE) . '</a>');
+$vamTemplate->assign('LINK_DEFAULT', '<a class="button" href="' . vam_href_link(FILENAME_DEFAULT) . '">' . vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE) . '</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_logout.html');

@@ -53,7 +53,7 @@ if (($orders_total = vam_count_customer_orders()) > 0) {
 			$order_type = TEXT_ORDER_BILLED_TO;
 			$order_name = $history['billing_name'];
 		}
-		$module_content[] = array ('ORDER_ID' => $history['orders_id'], 'ORDER_STATUS' => $history['orders_status_name'], 'ORDER_DATE' => vam_date_long($history['date_purchased']), 'ORDER_PRODUCTS' => $products['count'], 'ORDER_TOTAL' => strip_tags($history['order_total']), 'ORDER_BUTTON' => '<a href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'page='.(empty($_GET['page']) ? "1" : (int)$_GET['page']) .'&order_id='.$history['orders_id'], 'SSL').'">'.vam_image_button('small_view.gif', SMALL_IMAGE_BUTTON_VIEW).'</a>');
+		$module_content[] = array ('ORDER_ID' => $history['orders_id'], 'ORDER_STATUS' => $history['orders_status_name'], 'ORDER_DATE' => vam_date_long($history['date_purchased']), 'ORDER_PRODUCTS' => $products['count'], 'ORDER_TOTAL' => strip_tags($history['order_total']), 'ORDER_BUTTON' => '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'page='.(empty($_GET['page']) ? "1" : (int)$_GET['page']) .'&order_id='.$history['orders_id'], 'SSL').'">'.vam_image_button('view.png', SMALL_IMAGE_BUTTON_VIEW).'</a>');
 
 	}
 }
@@ -64,7 +64,7 @@ if ($orders_total > 0) {
 }
 $vamTemplate->assign('order_content', $module_content);
 $vamTemplate->assign('language', $_SESSION['language']);
-$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account_history.html');
 

@@ -27,7 +27,7 @@ $breadcrumb->add(NAVBAR_TITLE_COOKIE_USAGE, vam_href_link(FILENAME_COOKIE_USAGE)
 
 require (DIR_WS_INCLUDES.'header.php');
 
-$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 
 // set cache ID

@@ -41,7 +41,7 @@
 
   $module->assign('language', $_SESSION['language']);
   $module->assign('ERROR',$error);
-  $module->assign('BUTTON','<a href="javascript:history.back(1)">'. vam_image_button('button_back.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+  $module->assign('BUTTON','<a class="button" href="javascript:history.back(1)">'. vam_image_button('back.png', IMAGE_BUTTON_CONTINUE).'</a>');
   $module->assign('language', $_SESSION['language']);
 
   // search field
@@ -60,7 +60,7 @@
   if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO))  $product_info=$module;
 
   $vamTemplate->assign('main_content',$module);
-  
+
   //header('HTTP/1.0 404 Not Found');
   
 ?>

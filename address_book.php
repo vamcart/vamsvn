@@ -49,16 +49,16 @@ while ($addresses = vam_db_fetch_array($addresses_query)) {
 	} else {
 		$primary = 0;
 	}
-	$addresses_data[] = array ('NAME' => $addresses['firstname'].' '.$addresses['lastname'], 'BUTTON_EDIT' => '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('small_edit.gif', SMALL_IMAGE_BUTTON_EDIT).'</a>', 'BUTTON_DELETE' => '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('small_delete.gif', SMALL_IMAGE_BUTTON_DELETE).'</a>', 'ADDRESS' => vam_address_format($format_id, $addresses, true, ' ', '<br />'), 'PRIMARY' => $primary);
+	$addresses_data[] = array ('NAME' => $addresses['firstname'].' '.$addresses['lastname'], 'BUTTON_EDIT' => '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('edit.png', SMALL_IMAGE_BUTTON_EDIT).'</a>', 'BUTTON_DELETE' => '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$addresses['address_book_id'], 'SSL').'">'.vam_image_button('delete.png', SMALL_IMAGE_BUTTON_DELETE).'</a>', 'ADDRESS' => vam_address_format($format_id, $addresses, true, ' ', '<br />'), 'PRIMARY' => $primary);
 
 }
 $vamTemplate->assign('addresses_data', $addresses_data);
 
-$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 if (vam_count_customer_address_book_entries() < MAX_ADDRESS_BOOK_ENTRIES) {
 
-	$vamTemplate->assign('BUTTON_NEW', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL').'">'.vam_image_button('button_add_address.gif', IMAGE_BUTTON_ADD_ADDRESS).'</a>');
+	$vamTemplate->assign('BUTTON_NEW', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL').'">'.vam_image_button('add.png', IMAGE_BUTTON_ADD_ADDRESS).'</a>');
 }
 
 $vamTemplate->assign('ADDRESS_COUNT', sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES));

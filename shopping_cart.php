@@ -140,7 +140,7 @@ if ($total > 0 ) {
 	if ($_GET['info_message'])
 		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
 	$vamTemplate->assign('BUTTON_RELOAD', vam_image_submit('button_update_cart.gif', IMAGE_BUTTON_UPDATE_CART));
-	$vamTemplate->assign('BUTTON_CHECKOUT', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('button_checkout.gif', IMAGE_BUTTON_CHECKOUT).'</a>');		
+	$vamTemplate->assign('BUTTON_CHECKOUT', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('checkout.png', IMAGE_BUTTON_CHECKOUT).'</a>');		
 } else {
 
 	// empty cart
@@ -148,7 +148,7 @@ if ($total > 0 ) {
 	if ($_GET['info_message'])
 		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
 	$vamTemplate->assign('cart_empty', $cart_empty);
-	$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 
 }
 $vamTemplate->assign('language', $_SESSION['language']);

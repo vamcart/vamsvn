@@ -127,7 +127,7 @@ $vamTemplate->assign('BILLING_ADDRESS', 'true');
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('checkout_payment', vam_href_link(FILENAME_CHECKOUT_CONFIRMATION, '', 'SSL'), 'post', 'onsubmit="return check_form();"'));
 $vamTemplate->assign('ADDRESS_LABEL', vam_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'));
-$vamTemplate->assign('BUTTON_ADDRESS', '<a href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>');
+$vamTemplate->assign('BUTTON_ADDRESS', '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>');
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('FORM_END', '</form>');
 

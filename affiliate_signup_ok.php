@@ -37,7 +37,7 @@ $breadcrumb->add(NAVBAR_TITLE_SIGNUP_OK);
 
 require(DIR_WS_INCLUDES . 'header.php');
 
-$vamTemplate->assign('LINK_SUMMARY', '<a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY, '', 'SSL') . '">' . vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE) . '</a>');
+$vamTemplate->assign('LINK_SUMMARY', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY, '', 'SSL') . '">' . vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE) . '</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_signup_ok.html');

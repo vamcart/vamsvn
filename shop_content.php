@@ -104,7 +104,7 @@ if ($_GET['coID'] == 7) {
 	$vamTemplate->assign('CONTACT_HEADING', $shop_content_data['content_title']);
 	if (isset ($_GET['action']) && ($_GET['action'] == 'success')) {
 		$vamTemplate->assign('success', '1');
-		$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+		$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 
 	} else {
 		if ($shop_content_data['content_file'] != '') {
@@ -157,7 +157,7 @@ if ($_GET['coID'] == 7) {
 	}
 	$vamTemplate->assign('CONTENT_BODY', $content_body);
 
-	$vamTemplate->assign('BUTTON_CONTINUE', '<a href="javascript:history.back(1)">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('language', $_SESSION['language']);
 
 	// set cache ID

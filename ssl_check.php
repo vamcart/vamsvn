@@ -26,7 +26,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 $breadcrumb->add(NAVBAR_TITLE_SSL_CHECK, vam_href_link(FILENAME_SSL_CHECK));
 
 require (DIR_WS_INCLUDES.'header.php');
-$vamTemplate->assign('BUTTON_CONTINUE', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 
 // set cache ID

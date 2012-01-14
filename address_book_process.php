@@ -280,14 +280,14 @@ if (isset ($_GET['delete'])) {
 	$vamTemplate->assign('delete', '1');
 	$vamTemplate->assign('ADDRESS', vam_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'));
 
-	$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
-	$vamTemplate->assign('BUTTON_DELETE', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.vam_image_button('button_delete.gif', IMAGE_BUTTON_DELETE).'</a>');
+	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_DELETE', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete='.$_GET['delete'].'&action=deleteconfirm', 'SSL').'">'.vam_image_button('delete.png', IMAGE_BUTTON_DELETE).'</a>');
 } else {
 
 	include (DIR_WS_MODULES.'address_book_details.php');
 
 	if (isset ($_GET['edit']) && is_numeric($_GET['edit'])) {
-		$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'update').vam_draw_hidden_field('edit', $_GET['edit']).vam_image_submit('button_update.gif', IMAGE_BUTTON_UPDATE));
 
 	} else {
@@ -296,7 +296,7 @@ if (isset ($_GET['delete'])) {
 		} else {
 			$back_link = vam_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL');
 		}
-		$vamTemplate->assign('BUTTON_BACK', '<a href="'.$back_link.'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+		$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.$back_link.'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 		$vamTemplate->assign('BUTTON_UPDATE', vam_draw_hidden_field('action', 'process').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 
 	}

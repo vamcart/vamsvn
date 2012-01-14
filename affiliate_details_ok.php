@@ -37,7 +37,7 @@ $breadcrumb->add(NAVBAR_TITLE_DETAILS_OK, vam_href_link(FILENAME_AFFILIATE_DETAI
 
 require(DIR_WS_INCLUDES . 'header.php');
 
-$vamTemplate->assign('LINK_SUMMARY', '<a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY) . '">' . vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE) . '</a>');
+$vamTemplate->assign('LINK_SUMMARY', '<a class="button" href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY) . '">' . vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE) . '</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/affiliate_details_ok.html');

@@ -80,7 +80,7 @@ $coupon_r = $vamPrice->CalculateCurr($coupon['coupon_amount']);
 // so output a message.
 $vamTemplate->assign('coupon_amount', $vamPrice->Format($coupon_r, true));
 $vamTemplate->assign('error', $error);
-$vamTemplate->assign('LINK_DEFAULT', '<a href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('button_continue.gif', IMAGE_BUTTON_CONTINUE).'</a>');
+$vamTemplate->assign('LINK_DEFAULT', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/gv_redeem.html');

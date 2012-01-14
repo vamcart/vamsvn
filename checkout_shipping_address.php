@@ -269,7 +269,7 @@ if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
 $vamTemplate->assign('BUTTON_CONTINUE', vam_draw_hidden_field('action', 'submit').vam_image_submit('button_continue.gif', IMAGE_BUTTON_CONTINUE));
 
 if ($process == true) {
-	$vamTemplate->assign('BUTTON_BACK', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_back.gif', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 }
 $vamTemplate->assign('FORM_END', '</form>');

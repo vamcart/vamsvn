@@ -29,7 +29,7 @@ $info->assign('options', $products_options_data);
 if ($product->getReviewsCount() > 0) {
 
 if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {
-	$module->assign('BUTTON_WRITE', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$module->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 }
 
 	$module->assign('language', $_SESSION['language']);
@@ -44,7 +44,7 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] != 0) {
 } else {
 
 if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {
-	$module->assign('BUTTON_WRITE', '<a href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('button_write_review.gif', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$module->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 }
 
 	$module->assign('TEXT_FIRST_REVIEW', TEXT_FIRST_REVIEW);
