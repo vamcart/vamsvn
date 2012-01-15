@@ -135,7 +135,7 @@
         $email_body .= $key . '=' . $value . "\n";
       }
 
-      vam_php_mail(TORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL, MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL, '', '', '', '', '', 'PayPal IPN Invalid Process', $email_body, $email_body);
+      vam_php_mail(STORE_OWNER_EMAIL_ADDRESS, STORE_OWNER, MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL, MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL, '', '', '', '', '', 'PayPal IPN Invalid Process', $email_body, $email_body);
     }
 
     if (isset($_POST['invoice']) && is_numeric($_POST['invoice']) && ($_POST['invoice'] > 0)) {
