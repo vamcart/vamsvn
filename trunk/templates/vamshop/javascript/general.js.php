@@ -19,7 +19,7 @@
    // js scripts here
 ?>
 <?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && if (AJAX_CART == 'true') {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 ?>
 <script type="text/javascript">
 (function($) {jQuery(document).ready(function(){
