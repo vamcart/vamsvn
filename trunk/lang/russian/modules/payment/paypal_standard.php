@@ -1,6 +1,6 @@
 <?php
 /*
-  $Id: paypal_standard.php 1778 2008-01-09 23:37:44Z hpdl $
+  $Id: paypal_standard.php 1778 2012-01-09 23:37:44Z hpdl $
 
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
@@ -32,8 +32,8 @@
   define('MODULE_PAYMENT_PAYPAL_STANDARD_GATEWAY_SERVER_DESC', 'Для тестирования (sandbox) или для рабочего режима (live)?');
   define('MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD_TITLE', 'Способ обработки транзакций');
   define('MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD_DESC', 'Способ обработки транзакций.');
-  define('MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE_TITLE', 'Сталь страницы');
-  define('MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE_DESC', 'Сталь paypal страницы (настраивается в Вашем PayPal профиле)');
+  define('MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE_TITLE', 'Стиль страницы');
+  define('MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE_DESC', 'Стиль paypal страницы (настраивается в Вашем PayPal профиле)');
   define('MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL_TITLE', 'E-Mail адрес для отладки');
   define('MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL_DESC', 'Вся отладочная информация будет отправляться на указанный email.');
   define('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_STATUS_TITLE', 'Разрешить шифрование платежей');
