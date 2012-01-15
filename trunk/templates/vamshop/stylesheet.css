@@ -3561,5 +3561,12 @@ del.button:hover span
 	}
 
 /* /Buttons */
+	    
+	    
+#flyimgcart 
+	{
+		position:absolute;
+		z-index:1000;
+	}
 	         
 /*]]>*/
