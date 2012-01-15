@@ -1,14 +1,21 @@
 <?php
-/*
-  $Id: paypal_standard.php 1803 2008-01-11 18:16:37Z hpdl $
+/* -----------------------------------------------------------------------------------------
+   $Id: paypal_standard.php 998 2007/02/07 13:24:46 VaM $
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2008 osCommerce
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(moneyorder.php,v 1.8 2003/02/16); www.oscommerce.com 
+   (c) 2003	 nextcommerce (moneyorder.php,v 1.4 2003/08/13); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (webmoney.php,v 1.4 2003/08/13); xt-commerce.com
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
   class paypal_standard {
     var $code, $title, $description, $enabled;
@@ -18,7 +25,7 @@
       global $order;
 
       $this->signature = 'paypal|paypal_standard|1.0|2.2';
-
+      
       $this->code = 'paypal_standard';
       $this->title = MODULE_PAYMENT_PAYPAL_STANDARD_TEXT_TITLE;
       $this->public_title = MODULE_PAYMENT_PAYPAL_STANDARD_TEXT_PUBLIC_TITLE;
@@ -38,6 +45,7 @@
       } else {
         $this->form_action_url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
       }
+
     }
 
 // class methods
@@ -68,10 +76,9 @@
     }
 
     function selection() {
-      global $cart_PayPal_Standard_ID;
 
-      if (vam_session_is_registered('cart_PayPal_Standard_ID')) {
-        $order_id = substr($cart_PayPal_Standard_ID, strpos($cart_PayPal_Standard_ID, '-')+1);
+      if (isset($_SESSION['cart_paypal_standard'])) {
+        $order_id = substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
@@ -83,42 +90,42 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          vam_session_unregister('cart_PayPal_Standard_ID');
+          unset($_SESSION['cart_paypal_standard']);
         }
       }
 
       if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);
-      
+
       return array('id' => $this->code,
-                   'icon' => $icon,
+      				'icon' => $icon,
                    'module' => $this->public_title);
+
     }
 
     function pre_confirmation_check() {
       global $cartID, $cart;
 
-      if (empty($cart->cartID)) {
-        $cartID = $cart->cartID = $cart->generate_cart_id();
+      if (empty($_SESSION['cart']->cartID)) {
+        $_SESSION['cartID'] = $_SESSION['cart']->cartID = $_SESSION['cart']->generate_cart_id();
       }
 
-      if (!vam_session_is_registered('cartID')) {
-        vam_session_register('cartID');
+      if (!isset($_SESSION['cartID'])) {
+        $_SESSION['cartID'] = $_SESSION['cart']->generate_cart_id();
       }
     }
-
+    
     function confirmation() {
-      global $cartID, $cart_PayPal_Standard_ID, $customer_id, $languages_id, $order, $order_total_modules;
+      global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
-      if (vam_session_is_registered('cartID')) {
+      if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (vam_session_is_registered('cart_PayPal_Standard_ID')) {
-          $order_id = substr($cart_PayPal_Standard_ID, strpos($cart_PayPal_Standard_ID, '-')+1);
-
+        if (isset($_SESSION['cart_paypal_standard'])) {
+          $order_id = substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($cart_PayPal_Standard_ID, 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_paypal_standard'], 0, strlen($_SESSION['cartID']))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -156,9 +163,27 @@
             }
           }
 
-          $sql_data_array = array('customers_id' => $customer_id,
+if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1) {
+	$discount = $_SESSION['customers_status']['customers_status_ot_discount'];
+} else {
+	$discount = '0.00';
+}
+
+if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
+	$customers_ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+} else {
+	$customers_ip = $_SERVER["REMOTE_ADDR"];
+}
+
+          $sql_data_array = array('customers_id' => $_SESSION['customer_id'],
                                   'customers_name' => $order->customer['firstname'] . ' ' . $order->customer['lastname'],
+                                  'customers_cid' => $order->customer['csID'],
+                                  'customers_vat_id' => $_SESSION['customer_vat_id'],
                                   'customers_company' => $order->customer['company'],
+                                  'customers_status' => $_SESSION['customers_status']['customers_status_id'],
+                                  'customers_status_name' => $_SESSION['customers_status']['customers_status_name'],
+                                  'customers_status_image' => $_SESSION['customers_status']['customers_status_image'],
+                                  'customers_status_discount' => $discount,
                                   'customers_street_address' => $order->customer['street_address'],
                                   'customers_suburb' => $order->customer['suburb'],
                                   'customers_city' => $order->customer['city'],
@@ -187,6 +212,14 @@
                                   'billing_country' => $order->billing['country']['title'],
                                   'billing_address_format_id' => $order->billing['format_id'],
                                   'payment_method' => $order->info['payment_method'],
+                                  'payment_class' => $order->info['payment_class'],
+                                  'shipping_method' => $order->info['shipping_method'],
+                                  'shipping_class' => $order->info['shipping_class'],
+                                  'language' => $_SESSION['language'],
+                                  'comments' => $order->info['comments'],
+                                  'customers_ip' => $customers_ip,
+                                  'orig_reference' => $order->customer['orig_reference'],
+                                  'login_reference' => $order->customer['login_reference'],
                                   'cc_type' => $order->info['cc_type'],
                                   'cc_owner' => $order->info['cc_owner'],
                                   'cc_number' => $order->info['cc_number'],
@@ -199,6 +232,10 @@
           vam_db_perform(TABLE_ORDERS, $sql_data_array);
 
           $insert_id = vam_db_insert_id();
+
+			$customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
+			$sql_data_array = array ('orders_id' => $insert_id, 'orders_status_id' => $order->info['order_status'], 'date_added' => 'now()', 'customer_notified' => $customer_notification, 'comments' => $order->info['comments']);
+			vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
           for ($i=0, $n=sizeof($order_totals); $i<$n; $i++) {
             $sql_data_array = array('orders_id' => $insert_id,
@@ -239,12 +276,22 @@
                                        and pa.options_id = popt.products_options_id
                                        and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "'
                                        and pa.options_values_id = poval.products_options_values_id
-                                       and popt.language_id = '" . $languages_id . "'
-                                       and poval.language_id = '" . $languages_id . "'";
+                                       and popt.language_id = '" . $_SESSION['languages_id'] . "'
+                                       and poval.language_id = '" . $_SESSION['languages_id'] . "'";
                   $attributes = vam_db_query($attributes_query);
                 } else {
-                  $attributes = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $order->products[$i]['id'] . "' and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $languages_id . "' and poval.language_id = '" . $languages_id . "'");
+                  $attributes = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $order->products[$i]['id'] . "' and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $_SESSION['languages_id'] . "' and poval.language_id = '" . $_SESSION['languages_id'] . "'");
                 }
+
+			// update attribute stock
+			vam_db_query("UPDATE ".TABLE_PRODUCTS_ATTRIBUTES." set
+						                               attributes_stock=attributes_stock - '".$order->products[$i]['qty']."'
+						                               where
+						                               products_id='".$order->products[$i]['id']."'
+						                               and options_values_id='".$order->products[$i]['attributes'][$j]['value_id']."'
+						                               and options_id='".$order->products[$i]['attributes'][$j]['option_id']."'
+						                               ");
+
                 $attributes_values = vam_db_fetch_array($attributes);
 
                 $sql_data_array = array('orders_id' => $insert_id,
@@ -269,27 +316,26 @@
             }
           }
 
-          $cart_PayPal_Standard_ID = $cartID . '-' . $insert_id;
-          vam_session_register('cart_PayPal_Standard_ID');
+          $_SESSION['cart_paypal_standard'] = $_SESSION['cartID'] . '-' . $insert_id;
         }
       }
 
-      return false;
+      return array('title' => MODULE_PAYMENT_PAYPAL_STANDARD_TEXT_DESCRIPTION);
     }
 
     function process_button() {
-      global $customer_id, $order, $sendto, $currency, $cart_PayPal_Standard_ID, $shipping;
+      global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
       $process_button_string = '';
       $parameters = array('cmd' => '_xclick',
                           'item_name' => STORE_NAME,
-                          'shipping' => $this->format_raw($order->info['shipping_cost']),
-                          'tax' => $this->format_raw($order->info['tax']),
+                          'shipping' => number_format($order->info['shipping_cost']),
+                          'tax' => number_format($order->info['tax']),
                           'business' => MODULE_PAYMENT_PAYPAL_STANDARD_ID,
-                          'amount' => $this->format_raw($order->info['total'] - $order->info['shipping_cost'] - $order->info['tax']),
-                          'currency_code' => $currency,
-                          'invoice' => substr($cart_PayPal_Standard_ID, strpos($cart_PayPal_Standard_ID, '-')+1),
-                          'custom' => $customer_id,
+                          'amount' => number_format($order->info['total'] - $order->info['shipping_cost'] - $order->info['tax']),
+                          'currency_code' => 'USD',
+                          'invoice' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
+                          'custom' => $_SESSION['customer_id'],
                           'no_note' => '1',
                           'notify_url' => vam_href_link('ext/modules/payment/paypal/standard_ipn.php', '', 'SSL', false, false),
                           'return' => vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL'),
@@ -393,10 +439,10 @@
     }
 
     function before_process() {
-      global $customer_id, $order, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart, $cart_PayPal_Standard_ID;
+      global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
-      $order_id = substr($cart_PayPal_Standard_ID, strpos($cart_PayPal_Standard_ID, '-')+1);
+      $order_id = substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1);
 
       $check_query = vam_db_query("select orders_status from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
       if (vam_db_num_rows($check_query)) {
@@ -483,11 +529,11 @@
                                    and pa.options_id = popt.products_options_id
                                    and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "'
                                    and pa.options_values_id = poval.products_options_values_id
-                                   and popt.language_id = '" . $languages_id . "'
-                                   and poval.language_id = '" . $languages_id . "'";
+                                   and popt.language_id = '" . $_SESSION['languages_id'] . "'
+                                   and poval.language_id = '" . $_SESSION['languages_id'] . "'";
               $attributes = vam_db_query($attributes_query);
             } else {
-              $attributes = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $order->products[$i]['id'] . "' and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $languages_id . "' and poval.language_id = '" . $languages_id . "'");
+              $attributes = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $order->products[$i]['id'] . "' and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $_SESSION['languages_id'] . "' and poval.language_id = '" . $_SESSION['languages_id'] . "'");
             }
             $attributes_values = vam_db_fetch_array($attributes);
 
@@ -499,67 +545,89 @@
         $total_tax += vam_calculate_tax($total_products_price, $products_tax) * $order->products[$i]['qty'];
         $total_cost += $total_products_price;
 
-        $products_ordered .= $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . ' (' . $order->products[$i]['model'] . ') = ' . $currencies->display_price($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty']) . $products_ordered_attributes . "\n";
+        $products_ordered .= $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . ' (' . $order->products[$i]['model'] . ') = ' . $vamPrice->Format($order->products[$i]['final_price'], true) . $products_ordered_attributes . "\n";
       }
 
-// lets start with the email confirmation
-      $email_order = STORE_NAME . "\n" .
-                     EMAIL_SEPARATOR . "\n" .
-                     EMAIL_TEXT_ORDER_NUMBER . ' ' . $order_id . "\n" .
-                     EMAIL_TEXT_INVOICE_URL . ' ' . vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id=' . $order_id, 'SSL', false) . "\n" .
-                     EMAIL_TEXT_DATE_ORDERED . ' ' . strftime(DATE_FORMAT_LONG) . "\n\n";
-      if ($order->info['comments']) {
-        $email_order .= vam_db_output($order->info['comments']) . "\n\n";
-      }
-      $email_order .= EMAIL_TEXT_PRODUCTS . "\n" .
-                      EMAIL_SEPARATOR . "\n" .
-                      $products_ordered .
-                      EMAIL_SEPARATOR . "\n";
+// initialize templates
+$vamTemplate = new vamTemplate;
 
-      for ($i=0, $n=sizeof($order_totals); $i<$n; $i++) {
-        $email_order .= strip_tags($order_totals[$i]['title']) . ' ' . strip_tags($order_totals[$i]['text']) . "\n";
-      }
+	$vamTemplate->assign('address_label_customer', vam_address_format($order->customer['format_id'], $order->customer, 1, '', '<br />'));
+	$vamTemplate->assign('address_label_shipping', vam_address_format($order->delivery['format_id'], $order->delivery, 1, '', '<br />'));
+	if ($_SESSION['credit_covers'] != '1') {
+		$vamTemplate->assign('address_label_payment', vam_address_format($order->billing['format_id'], $order->billing, 1, '', '<br />'));
+	}
+	$vamTemplate->assign('csID', $order->customer['csID']);
 
-      if ($order->content_type != 'virtual') {
-        $email_order .= "\n" . EMAIL_TEXT_DELIVERY_ADDRESS . "\n" .
-                        EMAIL_SEPARATOR . "\n" .
-                        vam_address_label($customer_id, $sendto, 0, '', "\n") . "\n";
-      }
+  $it=0;
+	$semextrfields = vamDBquery("select * from " . TABLE_EXTRA_FIELDS . " where fields_required_email = '1'");
+	while($dataexfes = vam_db_fetch_array($semextrfields,true)) {
+	$cusextrfields = vamDBquery("select * from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id = '" . (int)$_SESSION['customer_id'] . "' and fields_id = '" . $dataexfes['fields_id'] . "'");
+	$rescusextrfields = vam_db_fetch_array($cusextrfields,true);
 
-      $email_order .= "\n" . EMAIL_TEXT_BILLING_ADDRESS . "\n" .
-                      EMAIL_SEPARATOR . "\n" .
-                      vam_address_label($customer_id, $billto, 0, '', "\n") . "\n\n";
+	$extrfieldsinf = vamDBquery("select fields_name from " . TABLE_EXTRA_FIELDS_INFO . " where fields_id = '" . $dataexfes['fields_id'] . "' and languages_id = '" . $_SESSION['languages_id'] . "'");
 
-      if (is_object($$payment)) {
-        $email_order .= EMAIL_TEXT_PAYMENT_METHOD . "\n" .
-                        EMAIL_SEPARATOR . "\n";
-        $payment_class = $$payment;
-        $email_order .= $payment_class->title . "\n\n";
-        if ($payment_class->email_footer) {
-          $email_order .= $payment_class->email_footer . "\n\n";
-        }
-      }
+	$extrfieldsres = vam_db_fetch_array($extrfieldsinf,true);
+	$extra_fields .= $extrfieldsres['fields_name'] . ' : ' .
+	$rescusextrfields['value'] . "\n";
+	$vamTemplate->assign('customer_extra_fields', $extra_fields);
+  }
+	
+	$order_total = $order->getTotalData($order_id);
+		$vamTemplate->assign('order_data', $order->getOrderData($order_id));
+		$vamTemplate->assign('order_total', $order_total['data']);
 
-      vam_mail($order->customer['firstname'] . ' ' . $order->customer['lastname'], $order->customer['email_address'], EMAIL_TEXT_SUBJECT, $email_order, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+	// assign language to template for caching
+	$vamTemplate->assign('language', $_SESSION['language']);
+	$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+	$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+	$vamTemplate->assign('oID', $order_id);
+	if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
+		include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/payment/'.$order->info['payment_method'].'.php');
+		$payment_method = constant(strtoupper('MODULE_PAYMENT_'.$order->info['payment_method'].'_TEXT_TITLE'));
+	}
+	$vamTemplate->assign('PAYMENT_METHOD', $payment_method);
+	if ($order->info['shipping_method'] != '') {
+		$shipping_method = $order->info['shipping_method'];
+	}
+	$vamTemplate->assign('SHIPPING_METHOD', $shipping_method);
+	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
 
-// send emails to other people
-      if (SEND_EXTRA_ORDER_EMAILS_TO != '') {
-        vam_mail('', SEND_EXTRA_ORDER_EMAILS_TO, EMAIL_TEXT_SUBJECT, $email_order, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
-      }
+	$vamTemplate->assign('NAME', $order->customer['firstname'] . ' ' . $order->customer['lastname']);
+	$vamTemplate->assign('COMMENTS', $order->info['comments']);
+	$vamTemplate->assign('EMAIL', $order->customer['email_address']);
+	$vamTemplate->assign('PHONE',$order->customer['telephone']);
+
+	// dont allow cache
+	$vamTemplate->caching = false;
+
+	$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail.html');
+	$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail.txt');
+
+	// create subject
+	$order_subject = str_replace('{$nr}', $order_id, EMAIL_BILLING_SUBJECT_ORDER);
+	$order_subject = str_replace('{$date}', strftime(DATE_FORMAT_LONG), $order_subject);
+	$order_subject = str_replace('{$lastname}', $order->customer['lastname'], $order_subject);
+	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
+
+	// send mail to admin
+	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, EMAIL_BILLING_ADDRESS, STORE_NAME, EMAIL_BILLING_FORWARDING_STRING, $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
+
+	// send mail to customer
+	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order_subject, $html_mail, $txt_mail);
 
 // load the after_process function from the payment modules
       $this->after_process();
 
-      $cart->reset(true);
+      $_SESSION['cart']->reset(true);
 
 // unregister session variables used during checkout
-      vam_session_unregister('sendto');
-      vam_session_unregister('billto');
-      vam_session_unregister('shipping');
-      vam_session_unregister('payment');
-      vam_session_unregister('comments');
+      unset($_SESSION['sendto']);
+      unset($_SESSION['billto']);
+      unset($_SESSION['shipping']);
+      unset($_SESSION['payment']);
+      unset($_SESSION['comments']);
 
-      vam_session_unregister('cart_PayPal_Standard_ID');
+      unset($_SESSION['cart_paypal_standard']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
@@ -605,24 +673,24 @@
         $status_id = $check['orders_status_id'];
       }
 
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable PayPal Website Payments Standard', 'MODULE_PAYMENT_PAYPAL_STANDARD_STATUS', 'True', 'Do you want to accept PayPal Website Payments Standard payments?', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_ALLOWED', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('E-Mail Address', 'MODULE_PAYMENT_PAYPAL_STANDARD_ID', '', 'The PayPal seller e-mail address to accept payments for', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort order of display.', 'MODULE_PAYMENT_PAYPAL_STANDARD_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Payment Zone', 'MODULE_PAYMENT_PAYPAL_STANDARD_ZONE', '0', 'If a zone is selected, only enable this payment method for that zone.', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Preparing Order Status', 'MODULE_PAYMENT_PAYPAL_STANDARD_PREPARE_ORDER_STATUS_ID', '" . $status_id . "', 'Set the status of prepared orders made with this payment module to this value', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set PayPal Acknowledged Order Status', 'MODULE_PAYMENT_PAYPAL_STANDARD_ORDER_STATUS_ID', '0', 'Set the status of orders made with this payment module to this value', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Gateway Server', 'MODULE_PAYMENT_PAYPAL_STANDARD_GATEWAY_SERVER', 'Live', 'Use the testing (sandbox) or live gateway server for transactions?', '6', '6', 'vam_cfg_select_option(array(\'Live\', \'Sandbox\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Transaction Method', 'MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD', 'Sale', 'The processing method to use for each transaction.', '6', '0', 'vam_cfg_select_option(array(\'Authorization\', \'Sale\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Page Style', 'MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE', '', 'The page style to use for the transaction procedure (defined at your PayPal Profile page)', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Debug E-Mail Address', 'MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL', '', 'All parameters of an Invalid IPN notification will be sent to this email address if one is entered.', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Encrypted Web Payments', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_STATUS', 'False', 'Do you want to enable Encrypted Web Payments?', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Your Private Key', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PRIVATE_KEY', '', 'The location of your Private Key to use for signing the data. (*.pem)', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Your Public Certificate', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PUBLIC_KEY', '', 'The location of your Public Certificate to use for signing the data. (*.pem)', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('PayPals Public Certificate', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PAYPAL_KEY', '', 'The location of the PayPal Public Certificate for encrypting the data.', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Your PayPal Public Certificate ID', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_CERT_ID', '', 'The Certificate ID to use from your PayPal Encrypted Payment Settings Profile.', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Working Directory', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_WORKING_DIRECTORY', '', 'The working directory to use for temporary files. (trailing slash needed)', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('OpenSSL Location', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_OPENSSL', '/usr/bin/openssl', 'The location of the openssl binary file.', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_ID', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_SORT_ORDER', '0', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_ZONE', '0', '6', '2', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_PREPARE_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_ORDER_STATUS_ID', '0', '6', '0', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_GATEWAY_SERVER', 'Live', '6', '6', 'vam_cfg_select_option(array(\'Live\', \'Sandbox\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD', 'Sale', '6', '0', 'vam_cfg_select_option(array(\'Authorization\', \'Sale\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_STATUS', 'False', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PRIVATE_KEY', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PUBLIC_KEY', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PAYPAL_KEY', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_CERT_ID', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_WORKING_DIRECTORY', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_PAYPAL_STANDARD_EWP_OPENSSL', '/usr/bin/openssl', '6', '4', now())");
     }
 
     function remove() {
@@ -633,19 +701,5 @@
       return array('MODULE_PAYMENT_PAYPAL_STANDARD_STATUS', 'MODULE_PAYMENT_PAYPAL_STANDARD_ALLOWED', 'MODULE_PAYMENT_PAYPAL_STANDARD_ID', 'MODULE_PAYMENT_PAYPAL_STANDARD_ZONE', 'MODULE_PAYMENT_PAYPAL_STANDARD_PREPARE_ORDER_STATUS_ID', 'MODULE_PAYMENT_PAYPAL_STANDARD_ORDER_STATUS_ID', 'MODULE_PAYMENT_PAYPAL_STANDARD_GATEWAY_SERVER', 'MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD', 'MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE', 'MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL', 'MODULE_PAYMENT_PAYPAL_STANDARD_SORT_ORDER', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_STATUS', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PRIVATE_KEY', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PUBLIC_KEY', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_PAYPAL_KEY', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_CERT_ID', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_WORKING_DIRECTORY', 'MODULE_PAYMENT_PAYPAL_STANDARD_EWP_OPENSSL');
     }
 
-// format prices without currency formatting
-    function format_raw($number, $currency_code = '', $currency_value = '') {
-      global $currencies, $currency;
-
-      if (empty($currency_code) || !$this->is_set($currency_code)) {
-        $currency_code = $currency;
-      }
-
-      if (empty($currency_value) || !is_numeric($currency_value)) {
-        $currency_value = $currencies->currencies[$currency_code]['value'];
-      }
-
-      return number_format(vam_round($number * $currency_value, $currencies->currencies[$currency_code]['decimal_places']), $currencies->currencies[$currency_code]['decimal_places'], '.', '');
-    }
   }
 ?>
