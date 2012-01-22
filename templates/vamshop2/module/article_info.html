@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="articles"} 
+<h1>{$ARTICLE_NAME}</h1>
+
+{if $no_article=='true'}
+<p>
+{#text_no_article#}
+</p>
+{else}
+
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+{if $ARTICLE_DESCRIPTION}
+<p>
+{$ARTICLE_DESCRIPTION}
+</p>
+{/if}
+
+{if $ARTICLE_VIEWED}
+<p>
+{#text_viewed#} {$ARTICLE_VIEWED}
+</p>
+{/if}
+
+{if $AUTHOR_NAME}
+<p>
+{#text_author#} <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
+</p>
+{/if}
+
+{if $ARTICLE_DATE}
+<p>
+{#text_date#} {$ARTICLE_DATE}
+</p>
+{/if}
+
+{if $ARTICLE_URL}
+<p>
+{#text_url#} <a href="http://{$ARTICLE_URL}" target="_blank">http://{$ARTICLE_URL}</a>
+</p>
+{/if}
+
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+{if $MODULE_articles_xsell != ''}
+{$MODULE_articles_xsell}
+{/if}
+
+<div class="clear"></div>
+{/if}

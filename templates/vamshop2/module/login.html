@@ -1,0 +1,90 @@
+{config_load file="$language/lang_$language.conf" section="login"}<script type="text/javascript" src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+jQuery(function () {
+    jQuery('#login :input:text:visible:enabled:first').focus();
+})
+
+})
+{/literal}
+</script>
+<h1>{#heading_login#}</h1>
+{$FORM_ACTION}
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
+{/if}<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{if $account_option=='account' or $account_option=='both'} <dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd class="Login">
+<span class="bold">{#title_new#}</span>
+</dd>
+
+<dd>
+{#text_new#}
+</dd>
+
+<dd>
+{$BUTTON_NEW_ACCOUNT}
+</dd>
+
+</dl>
+<dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd>
+{#text_returning#}
+</dd>
+
+<dd>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_returning#}</legend>
+{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} {$CAPTCHA_INPUT}</p>{/if}
+<p>{#text_email#} {$INPUT_MAIL}</p>
+<p>{#text_password#} {$INPUT_PASSWORD}</p>
+</fieldset>
+<!-- /форма -->
+
+<p>
+<a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a>
+</p>
+<p>
+{$BUTTON_LOGIN}
+</p>
+
+</dd>
+
+</dl>
+<div class="clear"></div>
+{/if}
+{if $account_option=='both' or $account_option=='guest'}<br /><dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd class="Login">
+<span class="bold">{#title_guest#}</span>
+</dd>
+
+<dd>
+{#text_guest#}
+</dd>
+
+<dd>
+{$BUTTON_GUEST}
+</dd>
+
+</dl>
+
+<div class="clear"></div>
+{/if}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{$FORM_END}

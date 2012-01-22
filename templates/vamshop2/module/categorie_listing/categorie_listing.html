@@ -1,0 +1,63 @@
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
+<h1>{$CATEGORIES_NAME}</h1>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+{if $CATEGORIES_IMAGE}
+<p>
+<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /></p>
+{/if}
+
+{if $CATEGORIES_HEADING_TITLE}
+<p>
+{$CATEGORIES_HEADING_TITLE}
+</p>
+{/if}
+
+{if $CATEGORIES_DESCRIPTION}
+<p>
+{$CATEGORIES_DESCRIPTION}
+</p>
+{/if}
+
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+	  
+	  
+	  
+{if $module_content !=''}
+<h1>{#heading_more_categories#}</h1>       
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+{foreach name=aussen item=module_data from=$module_content} 
+
+<dl class="itemCategoriesListing">
+<dt class="itemCategoriesListing">
+</dt>
+{if $module_data.CATEGORIES_IMAGE}
+<dd class="itemCategoriesListing">
+<a href="{$module_data.CATEGORIES_LINK}"><img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" /></a>
+</dd>
+{/if}
+
+<dd class="itemCategoriesListing">
+<a href="{$module_data.CATEGORIES_LINK}">{$module_data.CATEGORIES_NAME}</a>
+</dd>
+
+</dl>
+
+		 {/foreach}
+		  {/if}
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{$MODULE_featured_products}
+{$MODULE_new_products}

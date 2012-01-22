@@ -1,0 +1,38 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс поиск -->
+<div id="boxSearch">
+<h5><a href="{$LINK_ADVANCED}">{#heading_search#}</a></h5>
+
+<div id="boxSearchContent">
+{$FORM_ACTION}
+<p class="searchboxform">{$INPUT_SEARCH}</p>
+<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
+{$BUTTON_SUBMIT}
+{$FORM_END}
+<script type="text/javascript">
+{literal}
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+  jQuery("#quick_find_keyword").keyup(function(){
+      var searchString = jQuery("#quick_find_keyword").val(); 
+      jQuery.ajax({
+      	url: "index_ajax.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+      	success: function(msg){jQuery("#ajaxQuickFind").html(msg);}            
+ });     
+                           
+                           
+   });
+
+
+})
+
+{/literal}
+</script>
+<p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
+</div>
+</div>
+<!-- /Бокс поиск -->

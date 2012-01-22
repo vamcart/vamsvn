@@ -1,0 +1,23 @@
+{config_load file="$language/lang_$language.conf" section="products_media"} 
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<p>{#file#}</p>
+
+{foreach name=aussen item=module_data from=$module_content}
+<p>
+{$module_data.ICON} <span class="bold">{$module_data.FILENAME}</span> ({$module_data.FILESIZE})
+</p>
+
+<p>
+{$module_data.DESCRIPTION}
+</p>
+
+<p>
+{$module_data.BUTTON}
+</p>
+{/foreach}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>

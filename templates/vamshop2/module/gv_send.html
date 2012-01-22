@@ -1,0 +1,61 @@
+{config_load file="$language/lang_$language.conf" section="gv_send"}
+<h1>{#heading_gvsend#}</h1>
+{if $action eq 'process'}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{$LINK_DEFAULT}
+</p>
+{elseif $action eq 'send'}
+{$FORM_ACTION}
+<p>
+{$MAIN_MESSAGE}
+</p>
+{if $POST_MESSAGE neq ''}
+<p>
+{$PERSONAL_MESSAGE}
+</p>
+<p>
+{$POST_MESSAGE}
+</p>
+{/if}
+{$HIDDEN_FIELDS}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$LINK_SUBMIT}</span>
+{$LINK_BACK}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+{elseif $action eq ''}
+{$FORM_ACTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+{#heading_text#}
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#heading_gvsend#}</legend>
+<p>{#entry_name#} {$INPUT_TO_NAME}</p>
+<p>{#entry_email#} {$INPUT_EMAIL} {if $error_email neq ''}{$ERROR_EMAIL}{/if}</p>
+<p>{#entry_amount#} {$INPUT_AMOUNT} {if $error_amount neq ''}{$ERROR_AMOUNT}{/if}</p>
+<p>{#entry_message#} {$TEXTAREA_MESSAGE}</p>
+</fieldset>
+<!-- /форма -->
+
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$LINK_SUBMIT}
+</div>
+{$FORM_END}
+{/if}

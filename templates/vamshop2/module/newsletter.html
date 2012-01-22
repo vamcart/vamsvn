@@ -1,0 +1,26 @@
+{config_load file="$language/lang_$language.conf" section="newsletter"}<h1>{#heading_title#}</h1>
+
+{if $info_message!=''} <div class="contacterror">{$info_message}</div>{/if}
+
+{$FORM_ACTION} 
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<fieldset class="form">
+<legend>{#heading_title#}</legend>
+<p><span class="bold">{#text_sec_code#}</span> {$CAPTCHA_IMG}</p>
+<p><span class="bold">{#text_sec_code#}</span> {$CAPTCHA_INPUT}</p>
+<p><span class="bold">{#text_email#}</span> {$INPUT_EMAIL}</p>
+<p><span class="bold">{$CHECK_INP}</span> {#text_in#}</p>
+<p><span class="bold">{$CHECK_DEL}</span> {#text_out#}</p>
+</fieldset>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SEND}
+</div>
+{$FORM_END}

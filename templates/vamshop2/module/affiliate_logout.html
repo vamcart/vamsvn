@@ -1,0 +1,20 @@
+{config_load file="$language/affiliate_lang_$language.conf" section="affiliate_logout"}
+<h1>{#heading_title#}</h1>
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{if $info == 0}
+{#text_information#}
+{elseif $info == 1}
+{#text_information_error_1#}
+{elseif $info == 2}
+{#text_information_error_2#}
+{/if}
+</p>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$LINK_DEFAULT}
+</div>
+</div>

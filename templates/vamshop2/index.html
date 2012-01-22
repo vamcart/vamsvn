@@ -1,0 +1,100 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+	<div id="header">
+		<h1><a href="#"><img src="{$tpl_path}images/logo.png" alt="" border="0" /></a></h1>
+		<ul>
+			<li class="active"><a href="#"><span>Главная</span></a></li>
+			<li><a href="#"><span>Корзина</span></a></li>
+			<li><a href="#"><span>Оформить</span></a></li>
+			<li><a href="#"><span>Вход</span></a></li>
+		</ul>
+	</div>
+	<div class="wrap">
+		<div id="sidebar">
+			<div class="title"><h2>Каталог</h2></div>
+			<div class="box">
+				<ul class="left-menu">
+					<li><a href="#">Портативная техника</a></li>
+					<li><a href="#">Компьютерная техника</a></li>
+					<li>
+						<a href="#">Офисная техника и телефония</a>
+						<ul>
+							<li>
+								<a href="#">Многофункциональные устройства (МФУ)</a>
+								<ul>
+									<li><a href="#">Принтеры</a></li>
+									<li><a href="#">Сканеры</a></li>
+									<li><a href="#">Разные штуки</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Проекторы</a></li>
+							<li><a href="#">Мобильные телефоны</a></li>
+							<li><a href="#">Радиотелефоны DECT</a></li>
+							<li><a href="#">Смартфоны (Коммуникаторы)</a></li>
+							<li><a href="#">Факсы</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Аудио и видеотехника</a></li>
+					<li><a href="#">Фото и видеокамеры</a></li>
+					<li><a href="#">Бытовая техника</a></li>
+				</ul>
+			</div>
+			<div class="title"><h2>Узнайте больше</h2></div>
+			<div class="box general">
+				<ul>
+					<li><a href="#">Доставка</a></li>
+					<li><a href="#">Безопасность магазина</a></li>
+					<li><a href="#">Условия использования</a></li>
+					<li><a href="#">Информация о магазине</a></li>
+					<li><a href="#">Свяжитесь с нами</a></li>
+				</ul>
+			</div>
+			<div class="title"><h2>Информация</h2></div>
+			<div class="box general">
+				<ul>
+					<li><a href="#">Информация</a></li>
+					<li><a href="#">Информация</a></li>
+					<li><a href="#">Информация</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="rightcol">
+			<div class="title"><h2>Корзина</h2></div>
+			<div class="box">
+				<p>Товаров нет</p>
+			</div>
+			<div class="title"><h2>Войти</h2></div>
+			<div class="box user-box">
+				<label>Электропочта:</label>
+				<input type="text" />
+				<label>Пароль:</label>
+				<input type="password" />
+				<input class="btn-submit" type="submit" value="Войти" />
+				<div class="user-links">
+					<a href="#">Регистрация</a>
+					<a href="#">Забыли пароль?</a>
+				</div>
+			</div>
+			<div class="title"><h2>Партнерам</h2></div>
+			<div class="box general">
+				<ul>
+					<li><a href="#">Информация о партнёрской программе</a></li>
+					<li><a href="#">Информация о партнёрской программе</a></li>
+					<li><a href="#">Информация о партнёрской программе</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<ul class="bread">
+				<li><a href="#">Каталог</a></li>
+				<li><a href="#">Компьютерная техника</a></li>
+				<li><a href="#">КПК</a></li>
+				<li>HTC P3600</li>
+			</ul>
+			
+			{$main_content}			
+			
+		</div>
+	</div>
+	<div id="footer">
+	</div>
