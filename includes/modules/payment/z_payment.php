@@ -542,6 +542,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_ID', '', '6', '5', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_SORT_ORDER', '0', '6', '6', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_SECRET_KEY', '', '6', '9', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_PREPARE_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_Z_PAYMENT_ORDER_STATUS_ID', '0', '6', '9', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
@@ -551,7 +552,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_Z_PAYMENT_STATUS', 'MODULE_PAYMENT_Z_PAYMENT_ALLOWED', 'MODULE_PAYMENT_Z_PAYMENT_ID', 'MODULE_PAYMENT_Z_PAYMENT_SORT_ORDER', 'MODULE_PAYMENT_Z_PAYMENT_ZONE', 'MODULE_PAYMENT_Z_PAYMENT_PREPARE_ORDER_STATUS_ID', 'MODULE_PAYMENT_Z_PAYMENT_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_Z_PAYMENT_STATUS', 'MODULE_PAYMENT_Z_PAYMENT_ALLOWED', 'MODULE_PAYMENT_Z_PAYMENT_ID', 'MODULE_PAYMENT_Z_PAYMENT_SORT_ORDER', 'MODULE_PAYMENT_Z_PAYMENT_ZONE', 'MODULE_PAYMENT_Z_PAYMENT_SECRET_KEY', 'MODULE_PAYMENT_Z_PAYMENT_PREPARE_ORDER_STATUS_ID', 'MODULE_PAYMENT_Z_PAYMENT_ORDER_STATUS_ID');
     }
 
   }
