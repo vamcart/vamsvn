@@ -1,0 +1,37 @@
+{config_load file="$language/lang_$language.conf" section="account_history"}
+<h1>{#heading_history#}</h1>
+<!-- Список заказов -->
+{foreach name=aussen item=order_data from=$order_content}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{#text_oid#} {$order_data.ORDER_ID}
+</p>
+<p>
+{#text_date#} {$order_data.ORDER_DATE}
+</p>
+<p>
+{#text_articles#} {$order_data.ORDER_PRODUCTS}
+</p>
+<p>
+{#text_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#text_status#} {$order_data.ORDER_STATUS} 
+</p>
+<p>
+{$order_data.ORDER_BUTTON}
+</p>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/foreach}
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$SPLIT_BAR}</span>{$SPLIT_BAR_PAGES}
+</div>
+<div class="clear"></div>
+
+<div class="pagecontentfooter">
+{$BUTTON_BACK}
+</div>
+<!-- /Список заказов -->

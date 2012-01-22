@@ -1,0 +1,67 @@
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+<h1>{#heading_shipping#}</h1>
+{$FORM_ACTION}<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+{if $SHIPPING_ADDRESS=='true'} 
+<span class="bold">{#title_address#}</span>
+{/if}
+
+{if $SHIPPING_ADDRESS=='true'} 
+<!-- Адрес -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+</dt>
+
+<dd class="AddressBook">
+{#text_addressbook#}
+</dd>
+
+<dd class="AddressBook">
+{$BUTTON_ADDRESS}
+</dd>
+
+</dl>
+<!-- /Адрес -->
+
+<!-- Адрес по умолчанию -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+<span class="bold">{#title_address#}</span>
+<br />
+<img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
+</dt>
+
+<dd class="AddressBook">
+{$ADDRESS_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес по умолчанию -->
+<div class="clear"></div>
+{/if}
+
+<span class="bold">{#title_shipping#}</span>
+<br />
+<br />
+<fieldset class="form">
+<legend>{#text_shipping#}</legend>
+{$SHIPPING_BLOCK}
+</fieldset>
+
+<p>
+<span class="bold">{#title_continue#}</span>
+</p>
+
+<p>
+{#text_continue#}
+</p>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTON_CONTINUE}
+</div>
+{$FORM_END}

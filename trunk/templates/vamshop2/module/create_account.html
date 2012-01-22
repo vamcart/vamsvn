@@ -1,0 +1,77 @@
+{config_load file="$language/lang_$language.conf" section="create_account"}<h1>{#heading_create_account#}</h1>
+{$FORM_ACTION}{if $error!=''}
+{$error}
+{/if}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_personal#}</legend>
+{if $gender=='1'} 
+<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+{/if}
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $birthdate=='1'} 
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+{/if}
+<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
+<p><label for="newsletter">{#text_newsletter#}</label>{$INPUT_NEWSLETTER}</p>
+</fieldset>
+{if $company=='1'}<fieldset class="form">
+<legend>{#title_company#}</legend>
+<p>{#text_company#} {$INPUT_COMPANY}</p>
+{if $vat=='1'}<p>{#text_ustid#} {$INPUT_VAT}</p>
+{/if}
+</fieldset>
+{/if}<fieldset class="form">
+{if $street_address=='1'}<legend>{#title_address#}</legend>
+{/if}
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
+{/if}
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
+{/if}
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
+{/if}
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
+{/if}
+{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+{/if}
+{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+{if $telephone=='1'}<legend>{#title_contact#}</legend>
+{/if}
+{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{/if}
+</fieldset>
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+<fieldset class="form">
+<legend>{#title_options#}</legend>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+</fieldset>
+{/if}
+<fieldset class="form">
+<legend>{#title_password#}</legend>
+<p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
+<p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+{$FORM_END}

@@ -1,0 +1,28 @@
+<!-- Заголовок страницы -->
+<h1>{$CONTENT_HEADING}</h1>
+<!-- /Заголовок страницы -->
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+
+{foreach name=aussen item=sub_pages from=$sub_pages_content}
+&nbsp;&nbsp;&nbsp;<a href="{$sub_pages.PAGE_LINK}">{$sub_pages.PAGE_TITLE}</a><br />
+{/foreach} 
+
+{if $file}
+  {$file}
+{else}
+<p>
+  {$CONTENT_BODY}
+</p>
+{/if}
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>

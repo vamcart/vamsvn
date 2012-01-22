@@ -1,0 +1,28 @@
+{config_load file="$language/lang_$language.conf" section="address_book_process"}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_address#}</legend>
+{if $gender=='1'}<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>{/if} 
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $company=='1'}<p>{#text_company#} {$INPUT_COMPANY}</p>{/if}
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>{/if}
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>{/if}
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>{/if}
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>{/if}
+{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</p>{/if}
+{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>{/if}
+{if $new=='1'}<p>{$CHECKBOX_PRIMARY} {#text_standard#}</p>{/if}
+</fieldset>
+<!-- /форма -->
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>

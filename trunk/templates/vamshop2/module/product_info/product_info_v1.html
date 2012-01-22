@@ -1,0 +1,206 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{$FORM_ACTION}
+<h1 class="contentBoxHeading">{$PRODUCTS_NAME}</h1>
+
+{if $info_message}
+<div class="contacterror">
+{$info_message}
+</div>
+{/if}
+
+{$PRODUCT_NAVIGATOR}
+
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<div class="ProductInfoLeft">
+{if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}
+{/if}
+
+{if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
+
+{if $PRODUCTS_FSK18=='true'}
+<p>
+<img src="{$tpl_path}img/fsk18.gif" alt="" />
+</p>
+{/if}
+{if $MODULE_graduated_price !=''}
+{$MODULE_graduated_price}
+{/if}
+
+{/if}
+
+</div>
+
+<div class="ProductInfoRight">
+
+<p>
+<span class="bold">{$PRODUCTS_PRICE}</span>
+</p>
+
+{if $PRODUCTS_TAX_INFO}
+<p>
+{$PRODUCTS_TAX_INFO}
+</p>
+{/if}
+
+{if $PRODUCTS_SHIPPING_LINK}
+<p>
+{$PRODUCTS_SHIPPING_LINK}
+</p>
+{/if}
+
+{if $PRODUCTS_VPE}
+<p>
+{$PRODUCTS_VPE}
+</p>
+{/if}
+
+{if $PRODUCTS_MODEL!=''}
+<p>
+{#model#} {$PRODUCTS_MODEL}
+</p>
+{/if}
+
+{if $PRODUCTS_DISCOUNT}
+<p>
+{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}
+</p>
+{/if}
+
+<p>
+<a href="{$PRODUCTS_PRINT_LINK}">{#print#}</a>&nbsp;{$PRODUCTS_PRINT}
+</p>
+<p>
+<a href="{$ASK_PRODUCT_QUESTION_LINK}"  target="_blank">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
+</p>
+
+{if $SHIPPING_NAME}
+<p>
+{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;{$SHIPPING_NAME}
+</p>
+{/if}
+
+{if $MODULE_product_options !=''}
+{$MODULE_product_options}
+{/if}
+
+</div>
+
+<div class="clear"></div>
+
+<p class="CartContentRight">
+{$ADD_QTY}
+</p>
+
+<p class="CartContentRight">
+{$ADD_CART_BUTTON}
+</p>
+
+{if $PRODUCTS_DESCRIPTION !=''}
+<p>
+{$PRODUCTS_DESCRIPTION}
+</p>
+{/if}
+
+{if $extra_fields_data}
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+{/foreach}
+{/if}
+
+{if $specifications}
+<!-- Specifications -->
+{foreach name=outer item=spec_group from=$specifications_data}
+<strong>{$spec_group.GROUP_NAME}:</strong><br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+{$spec.NAME}: {$spec.VALUE}<br /> 
+{/foreach}
+{/foreach}
+<!-- /Specifications -->
+{/if}
+
+{if $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
+<p>
+<!-- more images -->
+{if $PRODUCTS_MO_IMAGES}
+{foreach name=mo_pic item=img_values from=$mo_img}
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
+{/foreach}
+{/if}
+<!-- more images eof -->
+</p>
+
+<p>
+{if $PRODUCTS_IMAGE_LINK!=''}
+  <a href="{$PRODUCTS_IMAGE_LINK}" onclick="window.open(this.href); return false;">{$PRODUCTS_TEXT_ZOOM}</a>
+{/if}
+</p>
+{/if}
+
+{if $PRODUCTS_TAGS}
+<p>
+{#text_tags#}: 
+{foreach name=tags item=tag from=$tags_data}
+<a href="{$tag.LINK}">{$tag.NAME}</a> 
+{/foreach}
+</p>
+{/if}
+
+{if $MODULE_tpt != ''}
+<p>
+{$MODULE_tpt}
+</p>
+{/if}
+
+{if $PRODUCTS_URL != ''}
+<p align="center">
+{$PRODUCTS_URL}
+</p>
+{/if}
+
+<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,friendfeed,lj"></div> 
+
+{if $PRODUCTS_DATE_AVIABLE != ''}
+<p align="center">
+{$PRODUCTS_DATE_AVIABLE}
+</p>
+{/if}
+
+{if $PRODUCTS_ADDED != ''}
+<p align="center">
+{$PRODUCTS_ADDED}
+</p>
+{/if}
+
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+{if $MODULE_bundle != ''}
+{$MODULE_bundle}
+{/if}
+
+{if $MODULE_products_media != ''}
+{$MODULE_products_media}
+{/if}
+
+{if $MODULE_products_reviews != ''}
+{$MODULE_products_reviews}
+{/if}
+
+{if $MODULE_cross_selling != ''}
+{$MODULE_cross_selling}
+{/if}
+
+{if $MODULE_reverse_cross_selling != ''}
+{$MODULE_reverse_cross_selling}
+{/if}
+
+{if $MODULE_also_purchased != ''}
+{$MODULE_also_purchased}
+{/if}
+{$FORM_END}

@@ -1,0 +1,117 @@
+{config_load file="$language/lang_$language.conf" section="account"}<h1>{#heading_account#}</h1>
+<!-- Приветствие -->
+{$error_message}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{#title_welcome#}
+</p>
+<p>
+{#text_welcome#}
+</p>
+{if $LINK_LOGIN}
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
+</ul>
+{/if}
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<!-- /Приветствие -->
+
+<!-- Личные данные -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{#title_account#}
+</p>
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_EDIT}">{#text_edit#}</a></li>
+<li class="accountLinks"><a href="{$LINK_ADDRESS}">{#text_address#}</a></li>
+<li class="accountLinks"><a href="{$LINK_PASSWORD}">{#text_password#}</a></li>
+</ul>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<!-- /Личные данные -->
+
+{if $order_content}
+<!-- Заказы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
+</p>
+{foreach name=aussen item=order_data from=$order_content} <p>
+<a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a>&nbsp;&nbsp;{#order_nr#} {$order_data.ORDER_ID}
+</p><p>
+{#order_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#order_status#} {$order_data.ORDER_STATUS} </p><p>
+{$order_data.ORDER_BUTTON}</p>{/foreach} 
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<!-- /Заказы -->
+{/if}
+
+<!-- Уведомления -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+<p>
+{#title_notification#}
+</p>
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></li>
+</ul>
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+<!-- /Уведомления -->
+
+{if $products_history}
+<!-- Просмотренные товары -->
+<div class="page">
+<p>
+{#title_viewed_products#}
+</p>
+{foreach name=history_products item=products_history from=$products_history} 
+<dl class="itemLastViewed">
+<dt class="itemImage">
+{if $products_history.PRODUCTS_IMAGE!=''}<a href="{$products_history.PRODUCTS_LINK}"><img src="{$products_history.PRODUCTS_IMAGE}" alt="{$products_history.PRODUCTS_NAME}" border="0" /></a>{/if}
+</dt>
+<dd class="itemDescription">
+<a href="{$products_history.PRODUCTS_LINK}">{$products_history.PRODUCTS_NAME}</a>
+</dd>
+
+<dd class="itemDescriptionPrice">
+{$products_history.PRODUCTS_PRICE}
+</dd>
+
+{if $products_history.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$products_history.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$products_history.PRODUCTS_TAX_INFO}{$products_history.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+<dd class="itemDescription">
+<a href="{$products_history.PRODUCTS_LINK}"></a><a href="{$products_history.PRODUCTS_CATEGORY_URL}">{#text_goto_cat#}</a>
+</dd>
+
+<dd class="itemDescription">
+{$products_history.PRODUCTS_BUTTON_BUY_NOW}
+</dd>
+
+</dl>
+          {/foreach} 
+
+</div>
+<div class="clear"></div>
+<!-- /Просмотренные товары -->
+{/if}

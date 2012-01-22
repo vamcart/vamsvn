@@ -1,0 +1,42 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<h1>{#heading_reviews_write#}</h1>
+{if $captcha_error}
+<div class="contacterror">{$captcha_error}</div>
+{/if}
+{if $error}
+<div class="contacterror">{$error}</div>
+{else}
+{$FORM_ACTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<span class="bold">{#text_product#}</span> {$PRODUCTS_NAME}
+<br />
+<span class="bold">{#text_author#}</span> {$AUTHOR}
+<br />
+<br />
+
+<!-- форма -->
+<fieldset class="form">
+<legend>{#text_input#}</legend>
+	<p>{#text_input#} {$INPUT_TEXT}</p>
+	<p>{#text_note#}</p>
+	<p>{#text_rating#} <span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></p>
+   <p>{#text_sec_code#} {$CAPTCHA_IMG}</p>
+   <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>
+</fieldset>
+<!-- /форма -->
+
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_SUBMIT}</span>
+{$BUTTON_BACK}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+{/if}

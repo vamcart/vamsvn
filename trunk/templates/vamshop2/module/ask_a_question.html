@@ -1,0 +1,38 @@
+{config_load file="$language/lang_$language.conf" section="ask_a_question"}
+
+{$FORM_ACTION}
+
+<div id="content">
+
+{if $error!=''}
+<div class="contacterror">
+{$error}
+</div>
+{/if}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+{#heading_title#}
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_question#} {$PRODUCTS_NAME}</legend>
+<p>{#text_sec_code#} {$CAPTCHA_IMG}</p>
+<p>{#text_inp_code#} {$CAPTCHA_INPUT}</p>
+<p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
+<p>{#text_lastname#} {$INPUT_LASTNAME}</p>
+<p>{#text_email#} {$INPUT_EMAIL}</p>
+<p>{#text_message#} {$INPUT_TEXT}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+{$FORM_END}
+
+</div>

@@ -458,6 +458,30 @@ $entry_state = $_POST['state'];
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
 <script type="text/javascript" src="includes/javascript/categories.js"></script>
+<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+		        <script type="text/javascript">
+        var lastChecked = null;
+ 
+        $(document).ready(function() {
+                $('input:checkbox').click(function(event) {
+                        if(!lastChecked) {
+                                lastChecked = this;
+                                return;
+                        }
+ 
+                        if(event.shiftKey) {
+                                var start = $('input:checkbox').index(this);
+                                var end = $('input:checkbox').index(lastChecked);
+ 
+                                for(i=Math.min(start,end);i<=Math.max(start,end);i++) {
+                                        $('input:checkbox')[i].checked = lastChecked.checked;
+                                }
+                        }
+ 
+                        lastChecked = this;
+                });
+        });
+        </script>
 <?php
 
 if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {

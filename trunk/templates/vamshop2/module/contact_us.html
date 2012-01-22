@@ -1,0 +1,63 @@
+{config_load file="$language/lang_$language.conf" section="contact_us"}
+<script type="text/javascript" src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+jQuery(function () {
+    jQuery('#contact_us :input:text:visible:enabled:first').focus();
+})
+
+})
+{/literal}
+</script>
+<!-- Заголовок страницы -->
+<h1>{$CONTACT_HEADING}</h1>
+<!-- /Заголовок страницы -->
+{if $error_message!=''}
+<div class="contacterror">{$error_message}</div>
+{/if}
+{if $success!='1'}
+{$FORM_ACTION}
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+{$CONTACT_CONTENT}
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{$CONTACT_HEADING}</legend>
+	<p>{#text_name#} {$INPUT_NAME}</p>
+	<p>{#text_email#} {$INPUT_EMAIL}</p>
+	<p>{#text_message#} {$INPUT_TEXT}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+</div>
+{$FORM_END}
+{else}
+<!-- Скругленные углы -->
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<!-- Содержимое страницы -->
+<div class="pagecontent">
+{#text_success#}
+</div>
+<!-- /Содержимое страницы -->
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<!-- /Скругленные углы -->
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>
+{/if}

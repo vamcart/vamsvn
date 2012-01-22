@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс новые статьи -->
+<div id="boxArticlesNew">
+<h5>{#heading_articles_new#}</h5>
+
+<div id="boxArticlesNewContent">
+{foreach name=aussen item=articles from=$articles_content}
+<a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a><br />
+{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}<br />
+{/foreach}  
+</div>
+
+</div>
+<!-- /Бокс новые статьи -->

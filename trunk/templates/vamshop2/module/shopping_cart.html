@@ -1,0 +1,49 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+<h1>{#heading_cart#}</h1>
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
+{/if}
+{$MODULE_gift_cart}
+{if $cart_empty==true}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+<p>
+{#text_empty#}
+</p>
+
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+</div>
+<p></p>
+{else}
+{$FORM_ACTION}
+{$HIDDEN_OPTIONS}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pagecontent">
+
+{$MODULE_order_details}
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+
+{if $info_message_1!=''}
+<div class="contacterror">
+{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
+</div>
+{/if}
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_CHECKOUT}</span>{$BUTTON_RELOAD}
+</div>
+<div class="clear"></div>
+{$MODULE_cross_selling_cart}
+{$FORM_END}
+{/if}

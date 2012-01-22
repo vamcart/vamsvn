@@ -1,0 +1,154 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{if $CATEGORIES_NAME}
+<h1>{$CATEGORIES_NAME}</h1>
+{/if}
+{if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+{if $CATEGORIES_HEADING_TITLE}
+<p>
+{$CATEGORIES_HEADING_TITLE}
+</p>
+{/if}
+{if $CATEGORIES_DESCRIPTION}
+<p>
+{$CATEGORIES_DESCRIPTION}
+</p>
+{/if}
+
+{if $CATEGORIES_IMAGE}
+<p>
+<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /></p>
+{/if}
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/if}
+
+{if $MANUFACTURERS_DESCRIPTION}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+<p>
+{$MANUFACTURERS_DESCRIPTION}
+</p>
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/if}
+
+{if $CATEGORIES_NAME}
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+{$FILTERS}
+{if $MANUFACTURER_SORT}
+<p>
+{$MANUFACTURER_SORT}
+</p>
+{/if}
+<p>
+{#text_sort#}
+<a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a> | 
+<a href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a> | 
+<a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> | 
+<a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
+</p>
+{if count($module_content) >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
+<p>
+{#text_products_per_page#}
+
+{if count($module_content) > 10}
+<a href="{$LINK_PAGE}10">10</a> 
+{/if}
+
+{if count($module_content) > 20}
+<a href="{$LINK_PAGE}20">20</a> 
+{/if}
+
+{if count($module_content) > 50}
+<a href="{$LINK_PAGE}50">50</a> 
+{/if}
+
+{if count($module_content) > 100}
+<a href="{$LINK_PAGE}100">100</a>
+{/if} 
+</p>
+{/if}
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/if}
+
+{foreach name=aussen item=module_data from=$module_content} <div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+<dl class="itemNewProducts">
+<dt class="itemImage">
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+</dd>
+
+{if $module_data.EXTRA_FIELDS}
+<dd class="itemDescription">
+{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br />
+{/foreach}
+</dd>
+{/if}
+
+<dd class="itemDescriptionPrice">
+{$module_data.PRODUCTS_PRICE}
+</dd>
+
+{if $module_data.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+{if $module_data.PRODUCTS_SHIPPING_NAME}
+<dd class="itemDescription">
+{#text_shippingtime#}&nbsp;
+{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+{/if}
+{$module_data.PRODUCTS_SHIPPING_NAME}
+</dd>
+{/if}
+
+</dl>
+
+<div class="clear"></div>
+
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/foreach} 
+<div class="clear"></div>
+
+<div class="navigation">
+<span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
+</div>
+<div class="clear"></div>

@@ -1,0 +1,46 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<h1>{#heading_reviews#}</h1>
+{foreach name=aussen item=module_data from=$module_content} 
+<div class="page">
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+<div class="pageItem">
+
+<dl class="itemNewProducts">
+<dt class="itemImage">
+<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" border="0" /></a><br />
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<span class="bold">{#text_product#}</span> <a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
+
+<dd class="itemDescription">
+<span class="bold">{#text_author#}</span> {$module_data.AUTHOR}
+</dd>
+
+<dd class="itemDescription">
+<span class="bold">{#text_text#}</span>
+</dd>
+
+<dd class="itemDescription">
+{$module_data.TEXT}
+</dd>
+
+<dd class="itemDescription">
+<span class="bold">{#text_rating#}</span> {$module_data.RATING}
+</dd>
+
+</dl>
+
+<div class="clear"></div>
+</div>
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+</div>
+{/foreach} 
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
+</div>
+<div class="clear"></div>
