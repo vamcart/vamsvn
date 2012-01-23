@@ -1,29 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="index"}
-<!-- Бокс контент -->
-<div id="boxContent">
-<h5>{#heading_content#}</h5>
-
-<div id="boxContentContent">
-{if $smarty.const.STORE_TELEPHONE}
-<p>
-{#text_phone#} {$smarty.const.STORE_TELEPHONE}
-</p>
-{/if}
-{if $smarty.const.STORE_ICQ}
-<p>
-{#text_icq#} {$smarty.const.STORE_ICQ}
-</p>
-{/if}
-{if $smarty.const.STORE_SKYPE}
-<p>
-{#text_skype#} {$smarty.const.STORE_SKYPE}
-</p>
-{/if}
+<div class="title"><h2>{#heading_content#}</h2></div>
+<div class="box general">
 <ul>
 {$BOX_CONTENT}
 </ul>
 </div>
-
-</div>
-<!-- /Бокс контент -->

@@ -1,9 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<!-- Бокс рекомендуемые -->
-<div id="boxFeatured">
-<h5><a href="{$FEATURED_LINK}">{#heading_featured#}</a></h5>
-
-<div id="boxFeaturedContent">
+<div class="title"><h2>{#heading_featured#}</h2></div>
+<div class="box center">
 {if $box_content.PRODUCTS_IMAGE}
 <p>
 <a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" title="{$box_content.PRODUCTS_NAME}" /></a>
@@ -25,7 +22,4 @@
 {$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK}
 </p>
 {/if}
-
 </div>
-</div>
-<!-- /Бокс рекомендуемые -->
