@@ -100,7 +100,11 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['cart']->restore_contents();
 
 			if ($_SESSION['cart']->count_contents() > 0) {
-				vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				}
 			} else {
 				vam_redirect(vam_href_link(FILENAME_DEFAULT));
 			}
@@ -147,7 +151,11 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['cart']->restore_contents();
 
 			if ($_SESSION['cart']->count_contents() > 0) {
-				vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				}
 			} else {
 				vam_redirect(vam_href_link(FILENAME_DEFAULT));
 			}

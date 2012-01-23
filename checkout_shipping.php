@@ -29,6 +29,14 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 include ('includes/application_top.php');
+
+if (isset ($_SESSION['customer_id']))
+{
+$_SESSION['nologin'] = false;
+}else{
+$_SESSION['nologin'] = true;
+}
+
 // create template elements
 $vamTemplate = new vamTemplate;
 // include boxes

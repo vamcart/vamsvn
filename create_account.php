@@ -410,7 +410,11 @@ if (isset ($_SESSION['tracking']['refID'])){
 		vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
 
 		if (!isset ($mail_error)) {
-			vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				}
 		} else {
 			echo $mail_error;
 		}

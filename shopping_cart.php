@@ -24,6 +24,13 @@
 $cart_empty = false;
 require ("includes/application_top.php");
 
+if (isset ($_SESSION['customer_id']))
+{
+$_SESSION['nologin'] = false;
+}else{
+$_SESSION['nologin'] = true;
+}
+
 // create template elements
 $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
