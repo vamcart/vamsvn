@@ -97,9 +97,8 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 <link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
 <script type="text/javascript" src="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
 <script type="text/javascript">
-jQuery.noConflict();
-	jQuery(document).ready(function() {
-		jQuery("a.zoom").fancybox({
+	$(document).ready(function() {
+		$("a.zoom").fancybox({
 		"zoomOpacity"			: true,
 		"zoomSpeedIn"			: 500,
 		"zoomSpeedOut"			: 500

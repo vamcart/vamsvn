@@ -15,22 +15,20 @@
 
 function doBuyNow( id, quantity ) {
 
-jQuery.noConflict();
-
   // Setup the ajax indicator
- jQuery('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
+ $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
 
-jQuery(document).click(function(e) {
+$(document).click(function(e) {
 
-jQuery('#ajaxLoading').css('top', function() {
+$('#ajaxLoading').css('top', function() {
   return e.pageY-30+"px";
 });      
 
-jQuery('#ajaxLoading').css('left', function() {
+$('#ajaxLoading').css('left', function() {
   return e.pageX-10+"px";
 });      
 
-  jQuery('#ajaxLoading').css({
+  $('#ajaxLoading').css({
     margin:"0px auto",
     paddingLeft:"0px",
     paddingRight:"0px",
@@ -44,34 +42,33 @@ jQuery('#ajaxLoading').css('left', function() {
 })
 
 // Ajax activity indicator bound to ajax start/success/stop document events
-jQuery(document).ajaxSend(function(){
-  jQuery('#ajaxLoading').show();
+$(document).ajaxSend(function(){
+  $('#ajaxLoading').show();
 });
 
-jQuery(document).ajaxSuccess(function(){
-  jQuery('#ajaxLoading').hide();
+$(document).ajaxSuccess(function(){
+  $('#ajaxLoading').hide();
 });
 
-jQuery(document).ajaxStop(function(){
-  jQuery('#ajaxLoading').remove();
+$(document).ajaxStop(function(){
+  $('#ajaxLoading').remove();
 });
 
-      jQuery.ajax({
+      $.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
                      data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : 1, pid : id},
                      type: "GET",   
     	               success: function(msg){ 
-    	               jQuery("#divShoppingCart").html(msg);
+    	               $("#divShoppingCart").html(msg);
     	               }       
                    });                     
 
 }
 
 function doAddProduct() {
-		jQuery.noConflict();
 		
-		var forma = jQuery('#cart_quantity input,select');
+		var forma = $('#cart_quantity input,select');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		forma.each(function(n,element){
 			if (element.type == "radio" || element.type == "checkbox") {
@@ -84,21 +81,20 @@ function doAddProduct() {
 		});
 		data = data + "action=add_product";
 		
-		jQuery.ajax({
+		$.ajax({
 					url : "index_ajax.php",
 					dataType : "html",
 					data : data,
 					type : "GET",
 					success : function(msg) {
-						jQuery("#divShoppingCart").html(msg);
+						$("#divShoppingCart").html(msg);
 					}
 		});
 	}
 
 function doDelProduct(id) {
-		jQuery.noConflict();
 		var test1 = "#update_cart"+id+" input";
-		var forma = jQuery(test1);
+		var forma = $(test1);
 		
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		forma.each(function(n,element){
@@ -112,13 +108,13 @@ function doDelProduct(id) {
 		});
 		data = data + "action=update_product";
 		
-		jQuery.ajax({
+		$.ajax({
 					url : "index_ajax.php",
 					dataType : "html",
 					data : data,
 					type : "GET",
 					success : function(msg) {
-						jQuery("#divShoppingCart").html(msg);
+						$("#divShoppingCart").html(msg);
 					}
 		});
 	}

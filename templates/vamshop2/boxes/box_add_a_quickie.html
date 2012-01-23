@@ -9,17 +9,16 @@
 {$FORM_END}
 <script type="text/javascript">
 {literal}
-jQuery.noConflict();
-jQuery(document).ready(function(){
+$(document).ready(function(){
 
-  jQuery("#quick_add_quickie").keyup(function(){
-      var searchString = jQuery("#quick_add_quickie").val(); 
-      jQuery.ajax({
+  $("#quick_add_quickie").keyup(function(){
+      var searchString = $("#quick_add_quickie").val(); 
+      $.ajax({
       	url: "index_ajax.php",             
       	dataType : "html",
       	type: "POST",
       	data: "q=includes/modules/ajax/ajaxAddQuickie.php&quickie="+searchString,
-      	success: function(msg){jQuery("#ajaxAddQuickie").html(msg);}            
+      	success: function(msg){$("#ajaxAddQuickie").html(msg);}            
  });     
                            
                            

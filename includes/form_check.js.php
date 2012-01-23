@@ -56,28 +56,27 @@ $form_id = 'checkout_address';
 <script type="text/javascript" src="jscript/modified.js"></script>
 <script type="text/javascript"><!--
 
-jQuery.noConflict();
-jQuery(document).ready(function() {
+$(document).ready(function() {
 	
-jQuery(function () {
-    jQuery('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
+$(function () {
+    $('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
 })
 
-  jQuery("#country").change(function(){
-      var searchString = jQuery(this).val();
-      jQuery.ajax({
+  $("#country").change(function(){
+      var searchString = $(this).val();
+      $.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
                      data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
                      type: "POST",   
-                     success: function(msg){jQuery("#stateXML").html(msg);}            
+                     success: function(msg){$("#stateXML").html(msg);}            
                    });                     
                            
                            
    });
    	
 	// validate signup form on keyup and submit
-	jQuery("#<?php echo $form_id; ?>").validate({
+	$("#<?php echo $form_id; ?>").validate({
 		rules: {
 			gender: "required",
 			firstname: {
