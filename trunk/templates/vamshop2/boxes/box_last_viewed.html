@@ -1,12 +1,9 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<!-- Бокс просмотренные товары -->
-<div id="boxLastViewed">
-<h5>{#heading_last_viewed#}</h5>
-
-<div id="boxLastViewedContent">
-{if $box_content.PRODUCTS_IMAGE!=''}
+<div class="title"><h2>{#heading_last_viewed#}</h2></div>
+<div class="box center">
+{if $box_content.PRODUCTS_IMAGE}
 <p>
-<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" /></a>
+<a href="{$box_content.PRODUCTS_LINK}"><img src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_NAME}" title="{$box_content.PRODUCTS_NAME}" /></a>
 </p>
 {/if}
 
@@ -36,5 +33,3 @@
 </p>
 
 </div>
-</div>
-<!-- /Бокс просмотренные товары -->

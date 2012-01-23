@@ -1,10 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<!-- Бокс лучшие товары -->
-<div id="boxBestsellers">
-<h5>{#heading_best_sellers#}</h5>
-
-<div id="boxBestsellersContent">
-
+<div class="title"><h2>{#heading_best_sellers#}</h2></div>
+<div class="box">
 {foreach name=aussen item=box_data from=$box_content}
 <p>
 {$box_data.COUNT}.&nbsp;&nbsp;<a href="{$box_data.PRODUCTS_LINK}">{$box_data.PRODUCTS_NAME}</a>
@@ -16,7 +12,4 @@
 {if $box_data.PRODUCTS_VPE}{$box_data.PRODUCTS_VPE}<br />{/if}{$box_data.PRODUCTS_TAX_INFO}{$box_data.PRODUCTS_SHIPPING_LINK}
 </p>
 {/foreach}
-
 </div>
-</div>
-<!-- /Бокс лучшие товары -->

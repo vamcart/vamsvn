@@ -26,19 +26,19 @@ $box_content='';
 $box->assign('tpl_path',DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/');
 
 if (isset($_SESSION['affiliate_id'])) {
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY, '', 'SSL') . '">' . BOX_AFFILIATE_SUMMARY . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_ACCOUNT, '', 'SSL'). '">' . BOX_AFFILIATE_ACCOUNT . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, '', 'SSL'). '">' . BOX_AFFILIATE_PAYMENT . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, '', 'SSL'). '">' . BOX_AFFILIATE_CLICKRATE . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_SALES, '', 'SSL'). '">' . BOX_AFFILIATE_SALES . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_BANNERS). '">' . BOX_AFFILIATE_BANNERS . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT). '">' . BOX_AFFILIATE_CONTACT . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_CONTENT, 'coID=11'). '">' . BOX_AFFILIATE_FAQ . '</a><br />';
-    $box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE_LOGOUT). '">' . BOX_AFFILIATE_LOGOUT . '</a>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_SUMMARY, '', 'SSL') . '">' . BOX_AFFILIATE_SUMMARY . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_ACCOUNT, '', 'SSL'). '">' . BOX_AFFILIATE_ACCOUNT . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_PAYMENT, '', 'SSL'). '">' . BOX_AFFILIATE_PAYMENT . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_CLICKS, '', 'SSL'). '">' . BOX_AFFILIATE_CLICKRATE . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_SALES, '', 'SSL'). '">' . BOX_AFFILIATE_SALES . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_BANNERS). '">' . BOX_AFFILIATE_BANNERS . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_CONTACT). '">' . BOX_AFFILIATE_CONTACT . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_CONTENT, 'coID=11'). '">' . BOX_AFFILIATE_FAQ . '</a></li>';
+    $box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE_LOGOUT). '">' . BOX_AFFILIATE_LOGOUT . '</a></li>';
 }
 else {
-	$box_content .= '<a href="' . vam_href_link(FILENAME_CONTENT,'coID=10'). '">' . BOX_AFFILIATE_INFO . '</a><br />';
-	$box_content .= '<a href="' . vam_href_link(FILENAME_AFFILIATE, '', 'SSL') . '">' . BOX_AFFILIATE_LOGIN . '</a>';
+	$box_content .= '<li><a href="' . vam_href_link(FILENAME_CONTENT,'coID=10'). '">' . BOX_AFFILIATE_INFO . '</a></li>';
+	$box_content .= '<li><a href="' . vam_href_link(FILENAME_AFFILIATE, '', 'SSL') . '">' . BOX_AFFILIATE_LOGIN . '</a></li>';
 }
 //$box->assign('BOX_TITLE', BOX_HEADING_ADD_PRODUCT_ID);
 $box->assign('BOX_CONTENT', $box_content);
