@@ -1348,5 +1348,16 @@ del.button:hover span
      color: red;
      font-size: bold;
    }
+
+p.CartContentRight
+   {
+     text-align: right;
+     padding-right: 0.2em;
+   }
+
+p.CartContentCenter
+   {
+     text-align: center;
+   }
 	         
 /*]]>*/
