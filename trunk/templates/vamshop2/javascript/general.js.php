@@ -22,7 +22,7 @@
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 ?>
 <script type="text/javascript">
-(function($) {jQuery(document).ready(function(){
+(function($) {$(document).ready(function(){
 
 	var cartbox = $('#divShoppingCart'), addtocart = $('#add_to_cart'), prodimag = $('#img'), prodimag_idle = true;
 	if (addtocart.length > 0 && prodimag.length > 0) {
@@ -44,7 +44,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 		});
 	}
 		
-});})(jQuery)
+});})($)
 </script>
 <?php
 }
