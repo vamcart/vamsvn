@@ -2,7 +2,6 @@
 <!-- Приветствие -->
 {$error_message}
 <div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
 {#title_welcome#}
@@ -16,13 +15,11 @@
 </ul>
 {/if}
 </div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
 <!-- /Приветствие -->
 
 <!-- Личные данные -->
 <div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
 {#title_account#}
@@ -33,14 +30,12 @@
 <li class="accountLinks"><a href="{$LINK_PASSWORD}">{#text_password#}</a></li>
 </ul>
 </div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
 <!-- /Личные данные -->
 
 {if $order_content}
 <!-- Заказы -->
 <div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
 {#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
@@ -51,14 +46,12 @@
 {#order_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#order_status#} {$order_data.ORDER_STATUS} </p><p>
 {$order_data.ORDER_BUTTON}</p>{/foreach} 
 </div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
 <!-- /Заказы -->
 {/if}
 
 <!-- Уведомления -->
 <div class="page">
-<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 <div class="pagecontent">
 <p>
 {#title_notification#}
@@ -67,7 +60,6 @@
 <li class="accountLinks"><a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></li>
 </ul>
 </div>
-<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
 </div>
 <!-- /Уведомления -->
 
