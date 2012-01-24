@@ -1218,7 +1218,7 @@ del.button span
 	{
 		white-space: nowrap;
 		cursor: pointer;
-		color: #222;
+		color: #fff;
 		display: -moz-inline-box;
 		display: inline-block;
 		line-height: 1;
