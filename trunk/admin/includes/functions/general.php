@@ -2176,29 +2176,29 @@ function vam_get_spsr_zone_id($zone_id) {
 // Return the products_tab_x data from the database
 // TABLES: products_description
   function vam_get_products_tabs ($product_id, $language_id) {
-    $product_query_raw = "
-      select 
-        products_tab_1,
-        products_tab_2,
-        products_tab_3,
-        products_tab_4,
-        products_tab_5,
-        products_tab_6
-      from 
-        " . TABLE_PRODUCTS_DESCRIPTION . " 
-      where 
-        products_id = '" . (int) $product_id . "' 
-        and language_id = '" . (int) $language_id . "'
-    ";
-    $product_query = vam_db_query ($product_query_raw);
+    //$product_query_raw = "
+      //select 
+        //products_tab_1,
+        //products_tab_2,
+        //products_tab_3,
+        //products_tab_4,
+        //products_tab_5,
+        //products_tab_6
+      //from 
+        //" . TABLE_PRODUCTS_DESCRIPTION . " 
+      //where 
+        //products_id = '" . (int) $product_id . "' 
+        //and language_id = '" . (int) $language_id . "'
+    //";
+    //$product_query = vam_db_query ($product_query_raw);
     
-    $product_tabs = array();
-    $product = vam_db_fetch_array ($product_query);
-    for ($i=1, $n=7; $i<$n; $i++) {
-      $product_tabs[$i] = $product['products_tab_' . $i];
-    }
+    //$product_tabs = array();
+    //$product = vam_db_fetch_array ($product_query);
+    //for ($i=1, $n=7; $i<$n; $i++) {
+      //$product_tabs[$i] = $product['products_tab_' . $i];
+    //}
 
-    return $product_tabs;
+    //return $product_tabs;
   }
 // End products specifications
 	
