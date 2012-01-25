@@ -434,26 +434,12 @@ foreach (array('product_info', 'product_options') as $key) {
         
           <table border="0" class="main">
 
-<?php
-// Start Products Specifications
-    if (SPECIFICATIONS_BOX_FRAME_STYLE == 'Tabs') {
-?>
           <tr>
             <td colspan=2>
-<?php
-      require (DIR_WS_MODULES . FILENAME_PRODUCTS_TABS);
-    } else {
-// End Products Specifications
-?>
 <?php 
 // Products Specifications
       require (DIR_WS_MODULES . FILENAME_PRODUCTS_SPECIFICATIONS_INPUT);
 ?>
-<?php
-// Products Specifications
-    } // if (SPECIFICATIONS_BOX_FRAME_STYLE ... else ...
-?>
-
           </table>
                   
         </div>
