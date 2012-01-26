@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian.php 1260 2012/04/12 13:25:47 VaM $
+   $Id: russian.php 1260 2012/02/09 13:25:47 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -650,5 +650,9 @@ define('TEXT_FIND_PRODUCTS', 'Найти подходящие товары');
 define('TEXT_NOT_AVAILABLE', 'нет данных');
 
 define('FREE_SHIPPING_TITLE', 'Бесплатная доставка');
+
+define('BUTTON_PRINT_SCHET', 'Распечатать счёт');
+define('BUTTON_PRINT_PACKINGSLIP', 'Распечатать накладную');
+define('BUTTON_PRINT_KVITANCIA', 'Распечатать квитанцию');
   
 ?>
