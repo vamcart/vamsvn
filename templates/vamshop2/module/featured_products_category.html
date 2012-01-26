@@ -1,4 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="featured"} 
+
 	<link rel="stylesheet" href="jscript/jquery/plugins/bxslider/bx_styles/bx_styles.css" type="text/css" />
 	<script src="jscript/jquery/plugins/bxslider/jquery.bxSlider.min.js" type="text/javascript"></script>
 	{literal}
@@ -11,65 +12,22 @@
 	</script>
 	{/literal}
 
-<h1><a href="{$FEATURED_LINK}">{#heading_text#}</a></h1>
-
-<div class="page">
-<div class="pageItem">
+<div class="recomend">
+<div class="title"><h2><a href="{$FEATURED_LINK}">{#heading_text#}</a></h2></div>
 
 	<div id="slide-featured">
 			<ul id="slider-featured">
 
-  {foreach name=aussen item=module_data from=$module_content}
-
-  <li>
-<dl class="itemNewProducts">
-<dt class="itemImage">
-{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
-{$module_data.PRODUCTS_BUTTON_BUY_NOW}
-</dt>
-<dd class="itemDescription">
-<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
-</dd>
-
-<dd class="itemDescription">
-{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
-</dd>
-
-<dd class="itemDescriptionPrice">
-{$module_data.PRODUCTS_PRICE}
-</dd>
-
-{if $module_data.PRODUCTS_VPE}
-<dd class="itemDescription">
-{$module_data.PRODUCTS_VPE}
-</dd>
-{/if}
-
-<dd class="itemDescription">
-{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
-</dd>
-
-{if $module_data.PRODUCTS_SHIPPING_NAME}
-<dd class="itemDescription">
-{#text_shippingtime#}&nbsp;
-{if $module_data.PRODUCTS_SHIPPING_IMAGE}
-<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
-{/if}
-{$module_data.PRODUCTS_SHIPPING_NAME}
-</dd>
-{/if}
-
-</dl>
-
-	</li>
-
-          {/foreach}
+					{foreach name=aussen item=module_data from=$module_content}					<li>
+						{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>{/if}
+						<h3><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
+						<span><strong>{$module_data.PRODUCTS_PRICE}</strong></span>
+						{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+					</li>
+					{/foreach} 
           
-			</ul>
-		</div>           
-
-<div class="clear"></div>
-</div>
+				</ul>
+			</div>
 
 </div>
 
