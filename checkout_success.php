@@ -60,7 +60,7 @@ $order_status = $orders['orders_status'];
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('order', vam_href_link(FILENAME_CHECKOUT_SUCCESS, 'action=update', 'SSL')));
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
-$vamTemplate->assign('BUTTON_PRINT', '<img src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('BUTTON_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', IMAGE_BUTTON_PRINT).'</a>');
 $vamTemplate->assign('FORM_END', '</form>');
 // GV Code Start
 $gv_query = vam_db_query("select amount from ".TABLE_COUPON_GV_CUSTOMER." where customer_id='".$_SESSION['customer_id']."'");
@@ -75,15 +75,15 @@ if ($gv_result = vam_db_fetch_array($gv_query)) {
 	$order = new order($orders['orders_id']);
 
 if ($order->info['payment_method'] == 'schet') {
-$vamTemplate->assign('BUTTON_SCHET_PRINT', '<img alt="' . MODULE_PAYMENT_SCHET_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_schet.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_SCHET_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_SCHET).'</a>');
 }
 
 if ($order->info['payment_method'] == 'schet') {
-$vamTemplate->assign('BUTTON_PACKINGSLIP_PRINT', '<img alt="' . MODULE_PAYMENT_PACKINGSLIP_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_packingslip.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_PACKINGSLIP, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=800, height=650\')" />');
+$vamTemplate->assign('BUTTON_PACKINGSLIP_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_PACKINGSLIP, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_PACKINGSLIP).'</a>');
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<img alt="' . MODULE_PAYMENT_KVITANCIA_PRINT . '" src="'.'templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_print_kvitancia.gif" style="cursor:pointer" onclick="window.open(\''.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" />');
+$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_KVITANCIA).'</a>');
 }
 
 // Google Conversion tracking
