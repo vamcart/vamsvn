@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: webmoney_merchant.php 998 2007/02/07 13:24:46 VaM $
+   $Id: moneyua.php 998 2007/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,31 +17,31 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  class webmoney_merchant {
+  class moneyua {
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function webmoney_merchant() {
+    function moneyua() {
       global $order;
 
-      $this->code = 'webmoney_merchant';
-      $this->title = MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_TITLE;
-      $this->public_title = MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_PUBLIC_TITLE;
-      $this->description = MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_ADMIN_DESCRIPTION;
-      $this->icon = DIR_WS_ICONS . 'webmoney.png';
-      $this->sort_order = MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER;
-      $this->enabled = ((MODULE_PAYMENT_WEBMONEY_MERCHANT_STATUS == 'True') ? true : false);
+      $this->code = 'moneyua';
+      $this->title = MODULE_PAYMENT_MONEYUA_TEXT_TITLE;
+      $this->public_title = MODULE_PAYMENT_MONEYUA_TEXT_PUBLIC_TITLE;
+      $this->description = MODULE_PAYMENT_MONEYUA_TEXT_ADMIN_DESCRIPTION;
+      $this->icon = DIR_WS_ICONS . 'moneyua.png';
+      $this->sort_order = MODULE_PAYMENT_MONEYUA_SORT_ORDER;
+      $this->enabled = ((MODULE_PAYMENT_MONEYUA_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://merchant.webmoney.ru/lmi/payment.asp';
+        $this->form_action_url = 'http://money.ua/sale.php';
     }
 
 // class methods
     function update_status() {
       global $order;
 
-      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE > 0) ) {
+      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_MONEYUA_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_MONEYUA_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
         while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
@@ -64,8 +64,8 @@
 
     function selection() {
 
-      if (isset($_SESSION['cart_webmoney_id'])) {
-        $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      if (isset($_SESSION['cart_moneyua_id'])) {
+        $order_id = substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
@@ -77,7 +77,7 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          unset($_SESSION['cart_webmoney_id']);
+          unset($_SESSION['cart_moneyua_id']);
         }
       }
 
@@ -107,12 +107,12 @@
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (isset($_SESSION['cart_webmoney_id'])) {
-          $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+        if (isset($_SESSION['cart_moneyua_id'])) {
+          $order_id = substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_webmoney_id'], 0, strlen($_SESSION['cartID']))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_moneyua_id'], 0, strlen($_SESSION['cartID']))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -303,11 +303,11 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $_SESSION['cart_webmoney_id'] = $_SESSION['cartID'] . '-' . $insert_id;
+          $_SESSION['cart_moneyua_id'] = $_SESSION['cartID'] . '-' . $insert_id;
         }
       }
 
-      return array('title' => MODULE_PAYMENT_WEBMONEY_MERCHANT_TEXT_DESCRIPTION);
+      return array('title' => MODULE_PAYMENT_MONEYUA_TEXT_DESCRIPTION);
     }
 
     function process_button() {
@@ -315,14 +315,24 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $purse = MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR;
-                               $order_sum = $order->info['total'];
+                               $order_sum = number_format($order->info['total'] * 100, 0, '.','');
+                               $order_num = substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1);
+                               $hash = md5(MODULE_PAYMENT_MONEYUA_ID.':wmu:1:'.$order_sum.':'.$order_num.':'.$order_num.':'.$order_num.':'.$order_num.'::'.MODULE_PAYMENT_MONEYUA_MODE.':'.vam_href_link('moneyua.php', '', 'SSL').':'.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').':POST:'.MODULE_PAYMENT_MONEYUA_SECRET_KEY);
 
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
+      $process_button_string = vam_draw_hidden_field('PAYMENT_ORDER', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
+                               vam_draw_hidden_field('MERCHANT_INFO', MODULE_PAYMENT_MONEYUA_ID) .
+                               vam_draw_hidden_field('PAYMENT_INFO', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
+                               vam_draw_hidden_field('PAYMENT_DELIVER', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
+                               vam_draw_hidden_field('PAYMENT_ADDVALUE', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
+                               vam_draw_hidden_field('PAYMENT_AMOUNT', $order_sum) .
+                               vam_draw_hidden_field('PAYMENT_RULE', '1') .
+                               vam_draw_hidden_field('PAYMENT_RETURNRES', vam_href_link('moneyua.php', '', 'SSL')) .
+                               vam_draw_hidden_field('PAYMENT_RETURN', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('PAYMENT_RETURNMET', 'POST') .
+                               vam_draw_hidden_field('PAYMENT_TESTMODE', MODULE_PAYMENT_MONEYUA_MODE) .
+                               vam_draw_hidden_field('PAYMENT_HASH', $hash) .
+                               vam_draw_hidden_field('PAYMENT_RETURNFAIL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
+                               vam_draw_hidden_field('PAYMENT_TYPE', 'wmu');
 
       return $process_button_string;
     }
@@ -331,7 +341,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
-      $order_id = substr($_SESSION['cart_webmoney_id'], strpos($_SESSION['cart_webmoney_id'], '-')+1);
+      $order_id = substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1);
 
 // initialized for the email confirmation
       $products_ordered = '';
@@ -491,7 +501,7 @@ $vamTemplate = new vamTemplate;
       unset($_SESSION['payment']);
       unset($_SESSION['comments']);
 
-      unset($_SESSION['cart_webmoney_id']);
+      unset($_SESSION['cart_moneyua_id']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
@@ -506,7 +516,7 @@ $vamTemplate = new vamTemplate;
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_WEBMONEY_MERCHANT_STATUS'");
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_MONEYUA_STATUS'");
         $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
@@ -514,14 +524,14 @@ $vamTemplate = new vamTemplate;
 
     function install() {
 
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_ALLOWED', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_ID', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR', '', '6', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER', '0', '6', '7', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY', '', '6', '9', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYUA_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYUA_ALLOWED', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYUA_ID', '', '6', '5', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYUA_SORT_ORDER', '0', '6', '7', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_MONEYUA_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_MONEYUA_SECRET_KEY', '', '6', '9', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_MONEYUA_MODE', '0', '6', '10', 'vam_cfg_select_option(array(\'1\', \'0\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_MONEYUA_ORDER_STATUS_ID', '0', '6', '11', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
     }
 
     function remove() {
@@ -529,7 +539,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_WEBMONEY_MERCHANT_STATUS', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_ALLOWED', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_ID', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_WMR', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_ZONE', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_MONEYUA_STATUS', 'MODULE_PAYMENT_MONEYUA_ALLOWED', 'MODULE_PAYMENT_MONEYUA_ID', 'MODULE_PAYMENT_MONEYUA_SORT_ORDER', 'MODULE_PAYMENT_MONEYUA_ZONE', 'MODULE_PAYMENT_MONEYUA_SECRET_KEY', 'MODULE_PAYMENT_MONEYUA_MODE', 'MODULE_PAYMENT_MONEYUA_ORDER_STATUS_ID');
     }
 
   }
