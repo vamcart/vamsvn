@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------
-  $Id: webmoney.php 1310 2009-02-06 19:20:03 VaM $
+  $Id: moneyua.php 1310 2009-02-06 19:20:03 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -31,30 +31,30 @@ require (DIR_WS_CLASSES.'order.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 // variables prepearing
-$crc = get_var('LMI_HASH');
+$crc = get_var('RETURN_HASH');
 
-$inv_id = get_var('LMI_PAYMENT_NO');
+$inv_id = get_var('PAYMENT_ADDVALUE');
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
-$_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY. 
-$_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
+$hash = md5(get_var('RETURN_MERCHANT').':'.get_var('RETURN_ADDVALUE').':'.get_var('RETURN_CLIENTORDER').':'.get_var('RETURN_AMOUNT').':'.get_var('RETURN_COMISSION').':'.get_var('RETURN_UNIQ_ID').':'.get_var('TEST_MODE').':'.get_var('PAYMENT_DATE').':'.MODULE_PAYMENT_MONEYUA_SECRET_KEY.':'.get_var('RETURN_RESULT')); 
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
-  $sql_data_array = array('orders_status' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID);
+if (number_format($_POST['RETURN_AMOUNT'],0, '.','') == number_format($order->info['total']*100, 0, '.','')) {
+if (get_var('RETURN_RESULT') == 20) {
+  $sql_data_array = array('orders_status' => MODULE_PAYMENT_MONEYUA_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
   $sql_data_arrax = array('orders_id' => $inv_id,
-                          'orders_status_id' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID,
+                          'orders_status_id' => MODULE_PAYMENT_MONEYUA_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'WebMoney accepted this order payment');
+                          'comments' => 'MoneyUA accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
-  echo 'OK'.$inv_id;
+  echo 'OK';
+}
 }
 }
 
