@@ -1,11 +1,11 @@
 # -----------------------------------------------------------------------------------------
 #  $Id: vamshop.sql,v 1.62 2009/04/26 20:24:16 VaM Exp $
 #
-#  VaM Shop - open source ecommerce solution
+#  VamShop - open source ecommerce solution
 #  http://vamshop.com 
 #  http://vamshop.ru 
 #
-#  Copyright (c) 2007 VaM Shop
+#  Copyright (c) 2012 VamShop
 #  -----------------------------------------------------------------------------------------
 #  based on:
 #  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
@@ -1690,7 +1690,7 @@ INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'До�
 INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Безопасность магазина', 'Безопасность магазина', 'Ваш текст.', '', 0, 1, '', 1, 2, 0,'','','','');
 INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', '', 0, 1, '', 1, 3, 0,'','','','');
 INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', '', 0, 1, '', 1, 4, 0,'','','','');
-INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин VaM Shop<br /><br />Данный текст можно изменить в Админке - Разное - Инструменты - Информационные страницы<br /><br />', '', 0, 1, '', 0, 5, 0,'','','','');
+INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', 'Вы установили интернет-магазин VamShop<br /><br />Данный текст можно изменить в Админке - Разное - Инструменты - Информационные страницы<br /><br />', '', 0, 1, '', 0, 5, 0,'','','','');
 INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', '', 0, 1, '', 0, 6, 1,'','','','');
 INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', '', 0, 1, '', 1, 7, 0,'','','','');
 INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0,'','','','');
@@ -1824,13 +1824,13 @@ INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 # configuration_group_id 1
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_NAME', 'VaM Shop',  1, 1, NULL, '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_OWNER', 'VaM Shop', 1, 2, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_NAME', 'VamShop',  1, 1, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_OWNER', 'VamShop', 1, 2, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_OWNER_EMAIL_ADDRESS', 'owner@your-shop.com', 1, 3, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_TELEPHONE', '', 1, 3, NULL, '', NULL, 'vam_cfg_textarea(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_ICQ', '', 1, 3, NULL, '', NULL, 'vam_cfg_textarea(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_SKYPE', '', 1, 3, NULL, '', NULL, 'vam_cfg_textarea(');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('EMAIL_FROM', 'VaM Shop owner@your-shop.com',  1, 4, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('EMAIL_FROM', 'VamShop owner@your-shop.com',  1, 4, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_COUNTRY', '176',  1, 6, NULL, '', 'vam_get_country_name', 'vam_cfg_pull_down_country_list(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_ZONE', '98', 1, 7, NULL, '', 'vam_cfg_get_zone_name', 'vam_cfg_pull_down_zone_list(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('EXPECTED_PRODUCTS_SORT', 'desc',  1, 8, NULL, '', NULL, 'vam_cfg_select_option(array(\'asc\', \'desc\'),');
