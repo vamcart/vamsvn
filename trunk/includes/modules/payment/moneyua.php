@@ -328,11 +328,11 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('PAYMENT_RULE', '1') .
                                vam_draw_hidden_field('PAYMENT_RETURNRES', vam_href_link('moneyua.php', '', 'SSL')) .
                                vam_draw_hidden_field('PAYMENT_RETURN', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('PAYMENT_RETURNMET', 'POST') .
+                               vam_draw_hidden_field('PAYMENT_RETURNMET', '2') .
                                vam_draw_hidden_field('PAYMENT_TESTMODE', MODULE_PAYMENT_MONEYUA_MODE) .
                                vam_draw_hidden_field('PAYMENT_HASH', $hash) .
                                vam_draw_hidden_field('PAYMENT_RETURNFAIL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
-                               vam_draw_hidden_field('PAYMENT_TYPE', 'wmu');
+                               vam_draw_hidden_field('PAYMENT_TYPE', '3');
 
       return $process_button_string;
     }
