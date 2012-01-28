@@ -1,0 +1,20 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+	<div id="header">
+		<h1><a href="{$mainpage}"><img src="{$tpl_path}images/logo.png" alt="" border="0" /></a></h1>
+	</div>
+	<div class="wrap">
+		<div id="sidebar">
+		</div>
+		<div id="rightcol">
+			{$box_ADMIN}
+		</div>
+		<div id="content">
+			<div class="bread">{$navtrail}</div>
+			
+			{$main_content}			
+			
+		</div>
+	</div>
+	<div id="footer">
+	</div>
