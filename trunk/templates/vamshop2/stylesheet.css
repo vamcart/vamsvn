@@ -157,6 +157,8 @@ address
 #content 
 	{
 		overflow: hidden;
+		padding-left: .5em;
+		padding-right: .5em;
 	}
 .bread 
 	{
