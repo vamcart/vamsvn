@@ -27,7 +27,7 @@
 
     if (vam_not_null($parameters)) $image_submit .= ' ' . $parameters;
 
-    $image_submit .= '>' . vam_image(DIR_WS_CATALOG . DIR_WS_ICONS . 'buttons/' . $image, $alt, '', '', 'width="12" height="12" '.$parameters).'&nbsp;' .$alt . '</button></span>';
+    $image_submit .= '>' . vam_image(DIR_WS_CATALOG . DIR_WS_ICONS . 'buttons/' . $image, $alt, '', '', 'width="12" height="12"').'&nbsp;' .$alt . '</button></span>';
 
 		} else {
 
