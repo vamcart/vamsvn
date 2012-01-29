@@ -68,7 +68,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !
 // Display a drop-down
       $authors_array = array();
       if (MAX_AUTHORS_LIST < 2) {
-        $authors_array[] = array('id' => '', 'text' => PULL_DOWN_DEFAULT);
+        $authors_array[] = array('id' => '0', 'text' => PULL_DOWN_DEFAULT);
       }
 
       while ($authors = vam_db_fetch_array($authors_query,true)) {
