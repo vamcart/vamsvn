@@ -22,6 +22,7 @@
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 ?>
 <script type="text/javascript">
+// <![CDATA[
 (function($) {$(document).ready(function(){
 
 	var cartbox = $('#divShoppingCart'), addtocart = $('#add_to_cart'), prodimag = $('#img'), prodimag_idle = true;
@@ -45,6 +46,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 	}
 		
 });})($)
+// ]]>
 </script>
 <?php
 }
