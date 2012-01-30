@@ -315,24 +315,35 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = number_format($order->info['total'] * 100, 0, '.','');
+                               $merchant = MODULE_PAYMENT_MONEYUA_ID;
+                               $mp = 3;
+                               $comiss = 1;
+                               $order_sum = round($order->info['total']*100);
                                $order_num = substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1);
-                               $hash = md5(MODULE_PAYMENT_MONEYUA_ID.':wmu:1:'.$order_sum.':'.$order_num.':'.$order_num.':'.$order_num.':'.$order_num.'::'.MODULE_PAYMENT_MONEYUA_MODE.':'.vam_href_link('moneyua.php', '', 'SSL').':'.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').':POST:'.MODULE_PAYMENT_MONEYUA_SECRET_KEY);
+                               $testmode = PAYMENT_TESTMODE;
+                               $urlresult = vam_href_link('moneyua.php', '', 'SSL');
+                               $urlreturn = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+                               $method = 2;
+                               $mypass = MODULE_PAYMENT_MONEYUA_SECRET_KEY;
+                               
+                               $hash = md5($merchant.':'.$mp.':'.$comiss.':'.$order_sum.':'.$order_num.':'.$order_num.':'.$order_num.':'.$order_num.':'.$visa.':'.$testmode.':'.$urlresult.':'.$urlreturn.':'.$method.':'.$mypass);
 
-      $process_button_string = vam_draw_hidden_field('PAYMENT_ORDER', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
-                               vam_draw_hidden_field('MERCHANT_INFO', MODULE_PAYMENT_MONEYUA_ID) .
+      $process_button_string = vam_draw_hidden_field('PAYMENT_AMOUNT', $order_sum) .
                                vam_draw_hidden_field('PAYMENT_INFO', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
                                vam_draw_hidden_field('PAYMENT_DELIVER', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
                                vam_draw_hidden_field('PAYMENT_ADDVALUE', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
-                               vam_draw_hidden_field('PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('PAYMENT_RULE', '1') .
+                               vam_draw_hidden_field('MERCHANT_INFO', MODULE_PAYMENT_MONEYUA_ID) .
+     
+      								vam_draw_hidden_field('PAYMENT_ORDER', substr($_SESSION['cart_moneyua_id'], strpos($_SESSION['cart_moneyua_id'], '-')+1)) .
+                               vam_draw_hidden_field('PAYMENT_TYPE', 3) .
+                               vam_draw_hidden_field('PAYMENT_RULE', 1) .
+                               vam_draw_hidden_field('PAYMENT_VISA', '') .
                                vam_draw_hidden_field('PAYMENT_RETURNRES', vam_href_link('moneyua.php', '', 'SSL')) .
                                vam_draw_hidden_field('PAYMENT_RETURN', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('PAYMENT_RETURNMET', '2') .
-                               vam_draw_hidden_field('PAYMENT_TESTMODE', MODULE_PAYMENT_MONEYUA_MODE) .
-                               vam_draw_hidden_field('PAYMENT_HASH', $hash) .
+                               vam_draw_hidden_field('PAYMENT_RETURNMET', 2) .
                                vam_draw_hidden_field('PAYMENT_RETURNFAIL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
-                               vam_draw_hidden_field('PAYMENT_TYPE', '3');
+                               vam_draw_hidden_field('PAYMENT_TESTMODE', MODULE_PAYMENT_MONEYUA_MODE) .
+                               vam_draw_hidden_field('PAYMENT_HASH', $hash);
 
       return $process_button_string;
     }
