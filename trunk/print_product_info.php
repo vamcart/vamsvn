@@ -117,6 +117,9 @@ $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 $vamTemplate->assign('PRODUCTS_DESCRIPTION', $product_info['products_description']);
 $vamTemplate->assign('PRODUCTS_IMAGE', $image);
 $vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
+
+$vamTemplate->assign('BUTTON_PRINT', '<a class="button" href="javascript: window.print();">'.vam_image_button('print.png', IMAGE_BUTTON_PRINT).'</a>');
+
 if (ACTIVATE_SHIPPING_STATUS == 'true') {
 	$vamTemplate->assign('SHIPPING_NAME', $main->getShippingStatusName($product_info['products_shippingtime']));
 	if ($shipping_status['image'] != '')
