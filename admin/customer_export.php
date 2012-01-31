@@ -18,6 +18,9 @@
    --------------------------------------------------------------*/
 
 require('includes/application_top.php');
+
+$customers_statuses_array = vam_get_customers_statuses();
+
 if (!$_POST['submit'])
 {
 	?>
@@ -84,6 +87,7 @@ if (!$_POST['submit'])
                     <?php
 
     $customers_query_raw = "select c.customers_id,
+    							  c.customers_status,
     							  c.customers_lastname,
     							  c.customers_firstname,
     							  c.customers_email_address,
@@ -149,8 +153,14 @@ if (!$_POST['submit'])
               <tr>
                 <td>&nbsp;</td>
               </tr>
+              
+<?php
+
+	$select_data = array ();
+	$select_data = array (array ('id' => '100', 'text' => TEXT_ALL_CUSTOMERS));
+?>               
               <tr>
-              <td class="smallText" ><?php echo TEXT_CUSTOMER_EXPORT_SEPARATOR; ?>: <input name="separator" type="text" value="\t" size="3">&nbsp;&nbsp;<span class="button"><button type="submit" name="submit" value="<?php echo TEXT_CUSTOMER_EXPORT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_CUSTOMER_EXPORT; ?></button></span></td>
+              <td class="smallText" ><?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status',vam_array_merge($select_data, $customers_statuses_array), '100'); ?><br /><?php echo TEXT_CUSTOMER_EXPORT_SEPARATOR; ?>: <input name="separator" type="text" value="\t" size="3">&nbsp;&nbsp;<span class="button"><button type="submit" name="submit" value="<?php echo TEXT_CUSTOMER_EXPORT; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_CUSTOMER_EXPORT; ?></button></span></td>
               </tr>
             </table>
             </form>
@@ -177,7 +187,14 @@ else
 
 	$contents="customers_id".$sep."customers_lastname".$sep."customers_firstname".$sep."customers_email_address".$sep."customers_gender".$sep."customers_dob".$sep."entry_company".$sep."entry_street_address".$sep."entry_postcode".$sep."entry_city".$sep."entry_state".$sep."entry_suburb".$sep."countries_name".$sep."customers_telephone".$sep."customers_fax\n";
 
+	if ($_POST['status'] && $_POST['status'] != '100' or $_POST['status'] == '0') {
+		$status = vam_db_prepare_input($_POST['status']);
+		//  echo $status;
+		$search = "where c.customers_status = '".(int)$status."'";
+	}
+
 	$customers_query_raw = "select c.customers_id,
+    							  c.customers_status,
     							  c.customers_lastname,
     							  c.customers_firstname,
     							  c.customers_email_address,
@@ -195,6 +212,7 @@ else
     							  co.countries_name
     							   from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " a on c.customers_id = a.customers_id and c.customers_default_address_id = a.address_book_id
     							   left join " . TABLE_COUNTRIES . " co on co.countries_id = a.entry_country_id
+    							   ".$search."
     							   order by c.customers_id";
     $customers_query = vam_db_query($customers_query_raw);
     while ($row = vam_db_fetch_array($customers_query)) {

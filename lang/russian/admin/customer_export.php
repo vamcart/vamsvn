@@ -36,4 +36,8 @@ define('TABLE_HEADING_ZIP', 'Индекс');
 define('TABLE_HEADING_CITY', 'Город');
 define('TABLE_HEADING_SUBURB', 'Район');
 define('TABLE_HEADING_FAX', 'Факс');
+
+define('HEADING_TITLE_STATUS','Группы клиентов:');
+define('TEXT_ALL_CUSTOMERS','Все группы');
+
 ?>
