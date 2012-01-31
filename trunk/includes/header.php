@@ -104,7 +104,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 			"zoomSpeedOut"			: 500
 		});
 
-		$("a.print, a.ask").fancybox({
+		$("a.iframe").fancybox({
 			"padding" : 20, // отступ контента от краев окна
 			"imageScale" : false, // Принимает значение true - контент(изображения) масштабируется по размеру окна, или false - окно вытягивается по размеру контента. По умолчанию - TRUE
 			"zoomOpacity" : true, // изменение прозрачности контента во время анимации (по умолчанию false)
