@@ -94,12 +94,12 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_WEIGHT', $product->data['products_weight']);
 		$info->assign('PRODUCTS_STATUS', $product->data['products_status']);
 		$info->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
-      $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png"  style="cursor: pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, scrollbars=yes, width=640, height=600\')" alt="" />');
+      $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png" alt="" border="0" />');
 		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$image = '';
 
-		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" style="cursor: pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']).'\', \'popup\', \'toolbar=0, width=640, height=760\')" alt="" />');
+		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" alt="" border="0" />');
 		$info->assign('ASK_PRODUCT_QUESTION_LINK', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']));
 
 
