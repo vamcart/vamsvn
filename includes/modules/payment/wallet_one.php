@@ -254,7 +254,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
               $attributes_exist = '1';
               for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
                 if (DOWNLOAD_ENABLED == 'true') {
-                  $attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename
+                  $attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename, pad.products_attributes_is_pin
                                        from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa
                                        left join " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " pad
                                        on pa.products_attributes_id=pad.products_attributes_id
@@ -290,12 +290,31 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
                 vam_db_perform(TABLE_ORDERS_PRODUCTS_ATTRIBUTES, $sql_data_array);
 
-                if ((DOWNLOAD_ENABLED == 'true') && isset($attributes_values['products_attributes_filename']) && vam_not_null($attributes_values['products_attributes_filename'])) {
+                if ((DOWNLOAD_ENABLED == 'true') && ((isset($attributes_values['products_attributes_filename']) && vam_not_null($attributes_values['products_attributes_filename'])) or $attributes_values['products_attributes_is_pin'])) {
+				
+        		//PIN add
+		for($pincycle=0;$pincycle<$order->products[$i]['qty'];$pincycle++) {
+          if($attributes_values['products_attributes_is_pin']) {
+          	$pin_query=vam_db_query("SELECT products_pin_id, products_pin_code FROM ".TABLE_PRODUCTS_PINS." WHERE products_id = '".$order->products[$i]['id']."' AND products_pin_used='0' LIMIT 1");
+
+          	if(vam_db_num_rows($pin_query)=='0') { // We have no PIN for this product
+          		// insert some error notifying here
+          		$pin=PIN_NOT_AVAILABLE;
+          	} else {
+          		$pin_res=vam_db_fetch_array($pin_query);
+          		$pin=$pin_res['products_pin_code'];
+          		vam_db_query("UPDATE ".TABLE_PRODUCTS_PINS." SET products_pin_used='".$insert_id."' WHERE products_pin_id = '".$pin_res['products_pin_id']."'");
+          	}
+          }
+//PIN				
                   $sql_data_array = array('orders_id' => $insert_id,
                                           'orders_products_id' => $order_products_id,
                                           'orders_products_filename' => $attributes_values['products_attributes_filename'],
                                           'download_maxdays' => $attributes_values['products_attributes_maxdays'],
-                                          'download_count' => $attributes_values['products_attributes_maxcount']);
+                                          'download_count' => $attributes_values['products_attributes_maxcount'],
+                                          'download_is_pin' => $attributes_values['products_attributes_is_pin'],
+                                          'download_pin_code' => $pin
+                                         );
 
                   vam_db_perform(TABLE_ORDERS_PRODUCTS_DOWNLOAD, $sql_data_array);
                 }
@@ -343,7 +362,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 // Stock Update - Joao Correia
         if (STOCK_LIMITED == 'true') {
           if (DOWNLOAD_ENABLED == 'true') {
-            $stock_query_raw = "SELECT products_quantity, pad.products_attributes_filename
+            $stock_query_raw = "SELECT products_quantity, pad.products_attributes_filename, pad.products_attributes_is_pin 
                                 FROM " . TABLE_PRODUCTS . " p
                                 LEFT JOIN " . TABLE_PRODUCTS_ATTRIBUTES . " pa
                                 ON p.products_id=pa.products_id
@@ -363,7 +382,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           if (vam_db_num_rows($stock_query) > 0) {
             $stock_values = vam_db_fetch_array($stock_query);
 // do not decrement quantities if products_attributes_filename exists
-            if ((DOWNLOAD_ENABLED != 'true') || (!$stock_values['products_attributes_filename'])) {
+            if ((DOWNLOAD_ENABLED != 'true') || (!$stock_values['products_attributes_filename']) || ($stock_values['products_attributes_is_pin']==1) ) {
               $stock_left = $stock_values['products_quantity'] - $order->products[$i]['qty'];
             } else {
               $stock_left = $stock_values['products_quantity'];
@@ -385,7 +404,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           $attributes_exist = '1';
           for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
             if (DOWNLOAD_ENABLED == 'true') {
-              $attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename
+              $attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename, pad.products_attributes_is_pin
                                    from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa
                                    left join " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " pad
                                    on pa.products_attributes_id=pad.products_attributes_id
