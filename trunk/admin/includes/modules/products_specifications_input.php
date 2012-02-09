@@ -106,11 +106,11 @@
                 echo vam_get_values_menu ($enter_values, $values_select_array, 'products_specification[' . $id . '][' . $languages[$i]['id'] . ']', $products_specification);
               } else { // No allowed values have been set
                 
-                echo vam_draw_textarea_field ('products_specification[' . $id . '][' . $languages[$i]['id'] . ']', 'soft', '70', '3', $products_specification); 
+                echo vam_draw_textarea_field ('products_specification[' . $id . '][' . $languages[$i]['id'] . ']', 'soft', '70', '3', $products_specification,'class="notinymce"'); 
               } // if ($count_values
             } else { // Set to enter text 
               
-              echo vam_draw_textarea_field ('products_specification[' . $id . '][' . $languages[$i]['id'] . ']', 'soft', '70', '3', $products_specification); 
+              echo vam_draw_textarea_field ('products_specification[' . $id . '][' . $languages[$i]['id'] . ']', 'soft', '70', '3', $products_specification,'class="notinymce"'); 
             } // if ($count_products_specs
 ?>
                 </td>
