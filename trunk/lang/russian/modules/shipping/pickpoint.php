@@ -20,7 +20,7 @@
 define('MODULE_SHIPPING_PICKPOINT_TEXT_TITLE', 'Постаматы PickPoint.Ru');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_DESCRIPTION', 'Постаматы PickPoint.Ru');
 
-define('MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS','Выберите адрес доставки в Москве');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS','Выберите адрес доставки');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP','(откроется во всплывающем окне)');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS','Ваш заказ доставят по адресу: ');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
@@ -48,7 +48,7 @@ function pickpoint_callback_function(result){
   if (pickpoint_error) pickpoint_error.innerHTML="";
 //  if (pickpoint_link_help) pickpoint_link_help.innerHTML="";
 }
-var pickpoint_options={city:"moscow"};
+var pickpoint_options={};
 </script>
 <input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
 <input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
