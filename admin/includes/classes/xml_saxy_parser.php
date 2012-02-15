@@ -720,7 +720,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	* @param string The doctype data
 	*/
 	function fireDTDEvent($data) {
-		call_user_func($this->DTDHandler, &$this, $data);
+		call_user_func($this->DTDHandler, $this, $data);
 	} //fireDTDEvent
 
 	/**
@@ -728,7 +728,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	* @param string The text of the comment
 	*/
 	function fireCommentEvent($data) {
-		call_user_func($this->commentHandler, &$this, $data);
+		call_user_func($this->commentHandler, $this, $data);
 	} //fireCommentEvent
 
 	/**
@@ -736,7 +736,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	* @param string The processing instruction data
 	*/
 	function fireProcessingInstructionEvent($target, $data) {
-		call_user_func($this->processingInstructionHandler, &$this, $target, $data);
+		call_user_func($this->processingInstructionHandler, $this, $target, $data);
 	} //fireProcessingInstructionEvent
 
 	/**
@@ -745,7 +745,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	* @param string The namespace uri
 	*/
 	function fireStartNamespaceDeclarationEvent($prefix, $uri) {
-		call_user_func($this->startNamespaceDeclarationHandler, &$this, $prefix, $uri);
+		call_user_func($this->startNamespaceDeclarationHandler, $this, $prefix, $uri);
 	} //fireStartNamespaceDeclarationEvent
 
 	/**
@@ -753,7 +753,7 @@ class SAXY_Parser extends SAXY_Parser_Base {
 	* @param string The namespace prefix
 	*/
 	function fireEndNamespaceDeclarationEvent($prefix) {
-		call_user_func($this->endNamespaceDeclarationHandler, &$this, $prefix);
+		call_user_func($this->endNamespaceDeclarationHandler, $this, $prefix);
 	} //fireEndNamespaceDeclarationEvent
 
 	/**
