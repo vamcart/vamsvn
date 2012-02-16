@@ -61,7 +61,8 @@
       return false;
     }
 
-    function selection() {
+	function selection() {
+      global $order;
 
       if (isset($_SESSION['cart_qiwi_id'])) {
         $order_id = substr($_SESSION['cart_qiwi_id'], strpos($_SESSION['cart_qiwi_id'], '-')+1);
