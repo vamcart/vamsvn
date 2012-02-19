@@ -556,7 +556,8 @@ $vamTemplate = new vamTemplate;
 // load the after_process function from the payment modules
       $this->after_process();
 
-
+		require_once(DIR_WS_INCLUDES . 'affiliate_checkout_process.php');
+   
       $_SESSION['cart']->reset(true);
 
 // unregister session variables used during checkout
