@@ -48,7 +48,7 @@
     $box_text .= '<table border="0">';
     $box_text .= '<tr>';
     while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
-    $box_text .= '<td>';
+    $box_text .= '<td valign="top">';
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
