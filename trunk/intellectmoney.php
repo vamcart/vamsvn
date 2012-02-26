@@ -54,7 +54,7 @@ if (number_format($_POST['recipientAmount'],0) == number_format($order->info['to
                           'comments' => 'IntellectMoney accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
-  echo 'OK'.$inv_id;
+  echo 'OK';
 }
 }
 
