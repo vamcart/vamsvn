@@ -26,17 +26,17 @@ define('MODULE_PAYMENT_INTELLECTMONEY_STATUS_TITLE' , 'Разрешить мод
 define('MODULE_PAYMENT_INTELLECTMONEY_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_INTELLECTMONEY_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_INTELLECTMONEY_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_PAYMENT_INTELLECTMONEY_ID_TITLE' , 'WM ID:');
-define('MODULE_PAYMENT_INTELLECTMONEY_ID_DESC' , 'Укажите Ваш WM ID');
-define('MODULE_PAYMENT_INTELLECTMONEY_WMR_TITLE' , 'Ваш WMR кошелёк:');
-define('MODULE_PAYMENT_INTELLECTMONEY_WMR_DESC' , 'Укажите номер Вашего WMR кошелька');
+define('MODULE_PAYMENT_INTELLECTMONEY_ID_TITLE' , 'eshopId:');
+define('MODULE_PAYMENT_INTELLECTMONEY_ID_DESC' , 'Укажите ID номер Вашего магазина');
 define('MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_INTELLECTMONEY_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_INTELLECTMONEY_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
 define('MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY_TITLE' , 'Секретный ключ');
-define('MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ, указанный в опции Secret Key на сайте IntellectMoney.');
+define('MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ.');
 define('MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
+define('MODULE_PAYMENT_INTELLECTMONEY_TEST_TITLE','Режим работы');
+define('MODULE_PAYMENT_INTELLECTMONEY_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
   
 ?>

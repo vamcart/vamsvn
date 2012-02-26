@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_INTELLECTMONEY_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://merchant.webmoney.ru/lmi/payment.asp';
+        $this->form_action_url = 'https://merchant.intellectmoney.ru/ru/';
     }
 
 // class methods
@@ -334,15 +334,19 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
       $process_button_string = '';
-
-                               $purse = MODULE_PAYMENT_INTELLECTMONEY_WMR;
-                               $order_sum = $order->info['total'];
-
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_intellectmoney_id'], strpos($_SESSION['cart_intellectmoney_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_intellectmoney_id'], strpos($_SESSION['cart_intellectmoney_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
+      
+      ((MODULE_PAYMENT_INTELLECTMONEY_TEST == 'test') ? $currency = 'TST' : $currency = $order->info['currency']);
+      $order_sum = number_format($order->info['total'],2);
+      
+      $process_button_string = vam_draw_hidden_field('eshopId', MODULE_PAYMENT_INTELLECTMONEY_ID) .
+                               vam_draw_hidden_field('orderId', substr($_SESSION['cart_intellectmoney_id'], strpos($_SESSION['cart_intellectmoney_id'], '-')+1)) .
+                               vam_draw_hidden_field('serviceName', substr($_SESSION['cart_intellectmoney_id'], strpos($_SESSION['cart_intellectmoney_id'], '-')+1)) .
+                               vam_draw_hidden_field('recipientAmount', $order_sum) .
+                               vam_draw_hidden_field('recipientCurrency', $currency) .
+                               vam_draw_hidden_field('userName', $order->customer['firstname'] . ' ' . $order->customer['lastname']) .
+                               vam_draw_hidden_field('user_email', $order->customer['email_address']) .
+                               vam_draw_hidden_field('successUrl', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('failUrl', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
       return $process_button_string;
     }
@@ -539,11 +543,11 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_STATUS', 'True', '6', '3', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_ALLOWED', '', '6', '4', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_ID', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_WMR', '', '6', '6', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER', '0', '6', '7', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY', '', '6', '9', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID', '0', '6', '10', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_INTELLECTMONEY_TEST', 'test', '6', '11', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
     }
 
     function remove() {
@@ -551,7 +555,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_INTELLECTMONEY_STATUS', 'MODULE_PAYMENT_INTELLECTMONEY_ALLOWED', 'MODULE_PAYMENT_INTELLECTMONEY_ID', 'MODULE_PAYMENT_INTELLECTMONEY_WMR', 'MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER', 'MODULE_PAYMENT_INTELLECTMONEY_ZONE', 'MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY', 'MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID');
+      return array('MODULE_PAYMENT_INTELLECTMONEY_STATUS', 'MODULE_PAYMENT_INTELLECTMONEY_ALLOWED', 'MODULE_PAYMENT_INTELLECTMONEY_ID', 'MODULE_PAYMENT_INTELLECTMONEY_SORT_ORDER', 'MODULE_PAYMENT_INTELLECTMONEY_ZONE', 'MODULE_PAYMENT_INTELLECTMONEY_SECRET_KEY', 'MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID', 'MODULE_PAYMENT_INTELLECTMONEY_TEST');
     }
 
   }
