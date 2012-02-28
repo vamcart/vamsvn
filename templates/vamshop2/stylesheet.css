@@ -635,6 +635,32 @@ input[type=text]
 		-webkit-border-bottom-right-radius: 4px;
 	}
 
+.loginform input {
+	width: 70%;
+	font-size: 1em;
+	border: 1px solid;
+	border-color: #666 #ccc #ccc #666;
+	padding: 2px;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
+}
+
+.loginform input:focus, .sffocus, .sffocus {
+	background-color: #ffc;
+}
+
 .form textarea 
 	{
 		width: 80%;
