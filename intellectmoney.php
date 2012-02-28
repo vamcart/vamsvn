@@ -47,11 +47,11 @@ $control_hash_utf8 = md5(iconv('windows-1251', 'utf-8', $control_hash_str));
 // checking and handling
 if (($hash == $control_hash || $hash == $control_hash_utf8) && $hash) {
 	if ($_REQUEST['paymentStatus'] == 3) {
-		//ско успешно создан
+		//СЃРєРѕ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ
 		echo 'OK';
 	}
 	if (number_format($_REQUEST['recipientAmount'],0) == number_format($order->info['total'],0) && $_REQUEST['paymentStatus'] == 5) {
-		//ско успешно оплачен
+		//СЃРєРѕ СѓСЃРїРµС€РЅРѕ РѕРїР»Р°С‡РµРЅ
 		$sql_data_array = array('orders_status' => MODULE_PAYMENT_INTELLECTMONEY_ORDER_STATUS_ID);
 		vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
