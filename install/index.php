@@ -301,7 +301,7 @@ if ($ok_message!='') {
 
 <form name="language" method="post" action="index.php">
 <p>
-<?php echo TEXT_RUSSIAN; ?>  <?php echo vam_draw_radio_field_installer('LANGUAGE', 'russian'); ?>
+<?php echo TEXT_RUSSIAN; ?>  <?php echo vam_draw_radio_field_installer('LANGUAGE', 'russian', true); ?>
 </p>
 
 <input type="hidden" name="action" value="process" />
