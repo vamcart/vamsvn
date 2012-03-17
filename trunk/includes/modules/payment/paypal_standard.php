@@ -352,7 +352,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = '';
       $parameters = array('cmd' => '_xclick',
                           'item_name' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
-                          'shipping' => number_format($order->info['shipping_cost']),
+                          'shipping' => round($vamPrice->CalculateCurrEx($order->info['shipping_cost'], $my_currency), $vamPrice->get_decimal_places($my_currency)),
                           'tax' => number_format($order->info['tax']),
                           'business' => MODULE_PAYMENT_PAYPAL_STANDARD_ID,
                           'amount' => round($vamPrice->CalculateCurrEx($total, $my_currency), $vamPrice->get_decimal_places($my_currency)),
