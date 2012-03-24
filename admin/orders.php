@@ -635,10 +635,6 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 
       <tr>
         <td><table border="0" cellspacing="0" cellpadding="2">
-        <tr>
-            <td class="main"><b><?php echo ENTRY_LANGUAGE; ?></b></td>
-            <td class="main"><?php echo $order->info['language']; ?></td>
-          </tr>
           <tr>
             <td class="main"><b><?php echo ENTRY_PAYMENT_METHOD; ?></b></td>
             <td class="main"><?php echo $order_payment_text; ?></td>
