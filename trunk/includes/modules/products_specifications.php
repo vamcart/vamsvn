@@ -25,7 +25,7 @@
                                   " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " sg2c
                              where sg.show_products = 'True'
                                and sg.specification_group_id = sg2c.specification_group_id
-                               and sg2c.categories_id = '" . (int) $current_category_id . "'
+                               and sg2c.categories_id = '" . (int) $current_category_id . "' ORDER BY sg.specification_group_name
                             ";
   $categories_query = vamDBquery ($categories_query_raw);
   $count_categories = vam_db_num_rows ($categories_query, true);
