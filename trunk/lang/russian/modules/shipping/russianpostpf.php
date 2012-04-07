@@ -19,8 +19,8 @@ define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PF', 'Почта Росси
 define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_TITLE', 'Почта России - наложенный платёж');
 define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_DESCRIPTION_PF', 'При этом способе доставки, заказ можно будет оплатить при получении на почте.');
 define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_INVALID_ZONE_PF', 'В этот регион доставка наложенным платежом «Почты России» невозможна.');
-define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_PARCEL_PF', 'Цена доставки посылкой, заказ оплачивается <i>при получени  на почте</i>.');
-define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_WRAPPER_PF', 'Цена доставки бандеролью, заказ оплачивается <i>при получени  на почте</i>.');
+define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_PARCEL_PF', 'Цена доставки посылкой, заказ оплачивается <i>при получении  на почте</i>.');
+define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_WAY_WRAPPER_PF', 'Цена доставки бандеролью, заказ оплачивается <i>при получении  на почте</i>.');
 define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_UNITS_PF', 'кг.');
 define('MODULE_SHIPPING_RUSSIANPOSTPREPAY_UNDEFINED_RATE', 'В данный момент доставка наложенным платежом &laquo;Почты России&raquo; невозможна.');
 
@@ -259,8 +259,8 @@ define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_TITLE_PF', 'Почта России -
 define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_TITLE', 'Почта России - наложенный платёж');
 define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_DESCRIPTION_PF', 'При этом способе доставки, заказ можно будет оплатить при получении на почте.');
 define('MODULE_SHIPPING_RUSSIANPOSTPF_INVALID_ZONE_PF', 'В этот регион доставка наложенным платежом «Почты России» невозможна.');
-define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_WAY_PARCEL_PF', 'Цена доставки посылкой, заказ оплачивается <i>при получени  на почте</i>.');
-define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_WAY_WRAPPER_PF', 'Цена доставки бандеролью, заказ оплачивается <i>при получени  на почте</i>.');
+define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_WAY_PARCEL_PF', 'Цена доставки посылкой, заказ оплачивается <i>при получении  на почте</i>.');
+define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_WAY_WRAPPER_PF', 'Цена доставки бандеролью, заказ оплачивается <i>при получении  на почте</i>.');
 define('MODULE_SHIPPING_RUSSIANPOSTPF_TEXT_UNITS_PF', 'кг.');
 define('MODULE_SHIPPING_RUSSIANPOSTPF_UNDEFINED_RATE', 'В данный момент доставка наложенным платежом &laquo;Почты России&raquo; невозможна.');
 
