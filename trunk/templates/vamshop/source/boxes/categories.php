@@ -57,6 +57,7 @@ if (GROUP_CHECK == 'true') {
 
 $categories_query = "select c.categories_id,
                                            cd.categories_name,
+                                           c.categories_image,
                                            c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
                                            where c.categories_status = '1'
                                            and c.parent_id = '0'
@@ -67,7 +68,7 @@ $categories_query = "select c.categories_id,
 $categories_query = vamDBquery($categories_query);
 
 while ($categories = vam_db_fetch_array($categories_query, true)) {
-	$foo[$categories['categories_id']] = array ('id' => $categories['categories_id'], 'name' => $categories['categories_name'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
+	$foo[$categories['categories_id']] = array ('id' => $categories['categories_id'], 'name' => $categories['categories_name'], 'image' => $categories['categories_image'], 'parent' => $categories['parent_id'], 'level' => 0, 'path' => $categories['categories_id'], 'next_id' => false);
 
 	if (isset ($prev_id)) {
 		$foo[$prev_id]['next_id'] = $categories['categories_id'];
@@ -88,13 +89,13 @@ if ($cPath) {
 	while (list ($key, $value) = each($id)) {
 		unset ($prev_id);
 		unset ($first_id);
-		$categories_query = "select c.categories_id, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
+		$categories_query = "select c.categories_id, c.categories_image, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
 		$categories_query = vamDBquery($categories_query);
 		$category_check = vam_db_num_rows($categories_query, true);
 		if ($category_check > 0) {
 			$new_path .= $value;
 			while ($row = vam_db_fetch_array($categories_query, true)) {
-				$foo[$row['categories_id']] = array ('id' => $row['categories_id'], 'name' => $row['categories_name'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
+				$foo[$row['categories_id']] = array ('id' => $row['categories_id'], 'name' => $row['categories_name'], 'image' => $row['categories_image'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
 
 				if (isset ($prev_id)) {
 					$foo[$prev_id]['next_id'] = $row['categories_id'];
