@@ -86,7 +86,7 @@ $vamTemplate->assign('BUTTON_PACKINGSLIP_PRINT', '<a class="button" target="_bla
 }
 
 if ($order->info['payment_method'] == 'kvitancia') {
-$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_KVITACIA).'</a>');
+$vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.(int)$_GET['order_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_KVITANCIA).'</a>');
 }
 
 $vamTemplate->assign('ORDER_NUMBER', (int)$_GET['order_id']);
