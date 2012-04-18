@@ -1419,5 +1419,10 @@ p.CartContentCenter
 	{
 		text-align: center;
 	}
+
+div.filter
+	{
+		float: left;
+	}
 				
 /*]]>*/

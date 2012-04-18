@@ -3568,5 +3568,10 @@ del.button:hover span
 		position:absolute;
 		z-index:1000;
 	}
+
+div.filter
+	{
+		float: left;
+	}
 	         
 /*]]>*/
