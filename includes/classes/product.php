@@ -96,7 +96,7 @@ class product {
 	function getReviews() {
 
 		$data_reviews = array ();
-		$reviews_query = vam_db_query("select
+		$reviews_query = vamDBquery("select
 									                                 r.reviews_rating,
 									                                 r.reviews_id,
 									                                 r.customers_name,
