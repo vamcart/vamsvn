@@ -592,4 +592,6 @@ define('BOX_CATALOG_PRODUCTS_SPECIFICATIONS', 'Спецификации това
 define('BOX_HEADING_ORDERS','Заказы');
 define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
 
+define('BOX_ATTRIBUTES_MANAGER_CATEGORIES','Установка атрибутов категории');
+
 ?>

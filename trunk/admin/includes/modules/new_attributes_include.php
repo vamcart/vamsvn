@@ -18,6 +18,7 @@
    --------------------------------------------------------------
    Third Party contributions:
    New Attribute Manager v4b				Autor: Mike G | mp3man@internetwork.net | http://downloads.ephing.com
+   Multiple attributes change (all items of category)   Author: DaneSoul | http://danesoul.info
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -32,8 +33,16 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
     <h1 class="contentBoxHeading"><?php echo $pageTitle; ?></h1>
    
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
+
+    
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="SUBMIT_ATTRIBUTES" enctype="multipart/form-data"><input type="hidden" name="current_product_id" value="<?php echo $_POST['current_product_id']; ?>"><input type="hidden" name="cpath" value="<?php echo $_GET['cpath']; ?>"><input type="hidden" name="action" value="change">
 <?php
+if(isset($_POST['category'])){
+	echo "<input type='hidden' name='category' value='true'>";
+	// to define item as category in new_attributes_change.php
+}
+
+
 echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
   if ($cPath) echo '<input type="hidden" name="cPathID" value="' . $cPath . '">';
 
