@@ -60,9 +60,9 @@ $(document).ready(function() {
 <?php
 if (!strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE) or !strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
 ?>	
-$(function () {
-    $('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
-})
+//$(function () {
+    //$('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
+//})
 <?php } ?>
 
   $("#country").change(function(){
