@@ -105,6 +105,7 @@
         }
 
         // Add the contents of each cell
+        $module_contents .= '<td></td>';
         $module_contents .= '        <td' . (vam_not_null($specifications_heading['column_justify']) ? ' align="' . $specifications_heading['column_justify'] . '"' : '') . ' class="productListing-heading">' . $box_text . '</td>' . PHP_EOL;
 
         // Build an array to use as an index on the table rows
@@ -134,13 +135,18 @@
       // Table rows
       $products_query_raw = "
         select distinct
-          p.products_id
+          p.products_id,
+          pd.products_name,
+          pd.products_description,
+          pd.products_short_description
         from
           " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c
           join " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " s2c
             on (p2c.categories_id = s2c.categories_id)
           join " . TABLE_PRODUCTS . " p
             on (p.products_id = p2c.products_id)
+          join " . TABLE_PRODUCTS_DESCRIPTION . " pd
+            on (pd.products_id = p2c.products_id)
         where
           p.products_status = 1
           and p2c.categories_id = '" . (int) $current_category_id . "'
@@ -182,6 +188,7 @@
             $module_contents .= '      <tr>' . PHP_EOL;
             $module_contents .= vam_draw_hidden_field( 'products_id', $products_id ) . PHP_EOL;
             $module_contents .= vam_draw_hidden_field( 'cart_quantity', '1' ) . PHP_EOL;
+            $module_contents .= '<td>'.$products_array['products_name'].'</td>';
 
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
