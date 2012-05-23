@@ -92,11 +92,19 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	$order_subject = str_replace('{$lastname}', $order->customer['lastname'], $order_subject);
 	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
 
-	// send mail to admin
-	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, EMAIL_BILLING_ADDRESS, STORE_NAME, EMAIL_BILLING_FORWARDING_STRING, $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
-
 	// send mail to customer
 	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order_subject, $html_mail, $txt_mail);
+
+	// send mail to admin
+
+	$recipients = '';
+	
+	if (EMAIL_BILLING_FORWARDING_STRING) $recipients = explode(',',EMAIL_BILLING_FORWARDING_STRING);
+	
+	foreach($recipients as $key => $value)
+	{
+		vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, EMAIL_BILLING_ADDRESS, STORE_NAME, $value, $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
+	}
 
 	if (AFTERBUY_ACTIVATED == 'true') {
 		require_once (DIR_WS_CLASSES.'afterbuy.php');
