@@ -30,7 +30,7 @@ class attributeManagerConfig {
 		/**
 		 * Default admin interface language id
 		 */
-		$this->add('AM_DEFAULT_LANGUAGE_ID',$GLOBALS['languages_id']);
+		$this->add('AM_DEFAULT_LANGUAGE_ID',$_SESSION['languages_id']);
 		
 		/**
 		 * Default admin interface template order

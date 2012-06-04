@@ -639,7 +639,7 @@ interface attributeManagerInterface {
 	//---------------------------------------------------------------------------------------------- Drop downs
 	
 	/**
-	 * takes an array of key => value and formats them for the tep_draw_pull_down function
+	 * takes an array of key => value and formats them for the vam_draw_pull_down function
 	 * @access private
 	 * @author Sam West aka Nimmit - osc@kangaroopartners.com
 	 * @param $array Array key value pair to be formated

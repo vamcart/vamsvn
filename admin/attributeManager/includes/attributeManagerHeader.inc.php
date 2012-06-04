@@ -13,7 +13,7 @@
 */
 
 if('new_product' == $action || 'update_product' == $action) {
-$amSessionVar = tep_session_name().'='.tep_session_id();
+$amSessionVar = vam_session_name().'='.vam_session_id();
 echo <<<HEADER
 <script language="JavaScript" type="text/JavaScript">
 	var productsId='{$_GET['pID']}';

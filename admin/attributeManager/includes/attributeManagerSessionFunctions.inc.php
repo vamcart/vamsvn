@@ -14,20 +14,20 @@
 
 function amSessionUnregister($strSessionVar) {
 	if(amSessionIsRegistered($strSessionVar)){
-		tep_session_unregister($strSessionVar);
+		vam_session_unregister($strSessionVar);
 	}
 	unset($GLOBALS[$strSessionVar]);
 }
 
 function amSessionRegister($strSessionVar,$value = '') {
 	if(!amSessionIsRegistered($strSessionVar)) {
-		tep_session_register($strSessionVar);
+		vam_session_register($strSessionVar);
 		$GLOBALS[$strSessionVar] = $value;
 	}
 }
 
 function amSessionIsRegistered($strSessionVar) {
-	return tep_session_is_registered($strSessionVar);
+	return vam_session_is_registered($strSessionVar);
 }
 
 function &amGetSesssionVariable($strSessionVar) {

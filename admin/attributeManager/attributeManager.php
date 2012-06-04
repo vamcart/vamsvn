@@ -87,7 +87,7 @@ if(!isset($_GET['target']) || 'topBar' == $_GET['target'] ) {
 	<tr>
 		<td>
 		<?php
-		$languages = tep_get_languages();
+		$languages = vam_get_languages();
 		if(count($languages) > 1) {
 			foreach ($languages as $amLanguage) {
 			?>
@@ -106,7 +106,7 @@ if(!isset($_GET['target']) || 'topBar' == $_GET['target'] ) {
 				<input type="image" <?php if($attributeManager->getTemplateOrder()=='123'){echo 'style="border:1px solid #DDDDDD;"';} ?> src="attributeManager/images/icon_123.png" onclick="return amTemplateOrder('123');" border="0" title="" />
 				<input type="image" <?php if($attributeManager->getTemplateOrder()=='abc'){echo 'style="border:1px solid #DDDDDD;"';} ?> src="attributeManager/images/icon_abc.png" onclick="return amTemplateOrder('abc');" border="0" title="" />
 				&nbsp;
-				<?php echo tep_draw_pull_down_menu('template_drop',$attributeManager->buildAllTemplatesDropDown($attributeManager->getTemplateOrder()),(0 == $selectedTemplate) ? '0' : $selectedTemplate,'id="template_drop" style="margin-bottom:3px"');	?>
+				<?php echo vam_draw_pull_down_menu('template_drop',$attributeManager->buildAllTemplatesDropDown($attributeManager->getTemplateOrder()),(0 == $selectedTemplate) ? '0' : $selectedTemplate,'id="template_drop" style="margin-bottom:3px"');	?>
 				&nbsp;
 				<input type="image" src="attributeManager/images/icon_load.png" onclick="return customTemplatePrompt('loadTemplate');" border="0" title="<?=AM_AJAX_LOADS_SELECTED_TEMPLATE?>" />
 				&nbsp;
@@ -167,7 +167,7 @@ if(!isset($_GET['target']) || 'currentAttributes' == $_GET['target']) {
 				</td>
 		
 				<td align="right">
-					<?php echo tep_draw_pull_down_menu("new_option_value_$optionId",$attributeManager->buildOptionValueDropDown($optionId),$selectedOptionValue,'style="margin:3px 0px 3px 0px;" id="new_option_value_'.$optionId.'"')?>
+					<?php echo vam_draw_pull_down_menu("new_option_value_$optionId",$attributeManager->buildOptionValueDropDown($optionId),$selectedOptionValue,'style="margin:3px 0px 3px 0px;" id="new_option_value_'.$optionId.'"')?>
 					<input type="image" src="attributeManager/images/icon_add.png" value="Add" border="0" onclick="return amAddOptionValueToProduct('<?php echo $optionId?>');" title="<?php echo htmlspecialchars(sprintf(AM_AJAX_ADDS_ATTRIBUTE_TO_OPTION, $optionInfo['name'])); ?>" />
 				
 					<input type="image" title="<? echo htmlspecialchars(sprintf(AM_AJAX_ADDS_NEW_VALUE_TO_OPTION,$optionInfo['name'])) ?>" border="0" src="attributeManager/images/icon_add_new.png" onclick="return customPrompt('amAddNewOptionValueToProduct','<?php echo addslashes("option_id:$optionId|option_name:".str_replace('"','&quot;',$optionInfo['name']))?>');" />
@@ -238,11 +238,11 @@ if(false){
 ?>	
 
 					<span style="margin-right:41px;">
-					<?php echo drawDropDownPrefix('id="prefix_'.$optionValueId.'" style="margin:3px 0px 3px 0px;" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'prefix\');"',$optionValueInfo['prefix']);?><?php echo tep_draw_input_field("price_$optionValueId",$optionValueInfo['price'],' style="margin:3px 0px 3px 0px;" id="price_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'price\');"'); ?>
+					<?php echo drawDropDownPrefix('id="prefix_'.$optionValueId.'" style="margin:3px 0px 3px 0px;" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'prefix\');"',$optionValueInfo['prefix']);?><?php echo vam_draw_input_field("price_$optionValueId",$optionValueInfo['price'],' style="margin:3px 0px 3px 0px;" id="price_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'price\');"'); ?>
 					<?php
 					if(AM_USE_SORT_ORDER) {
 /*					?>
-					<?php echo tep_draw_input_field("sortOrder_$optionValueId",$optionValueInfo['sortOrder'],' style="margin:3px 0px 3px 0px;" id="sortOrder_'.$optionValueId.'" size="4" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\');"'); ?>
+					<?php echo vam_draw_input_field("sortOrder_$optionValueId",$optionValueInfo['sortOrder'],' style="margin:3px 0px 3px 0px;" id="sortOrder_'.$optionValueId.'" size="4" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\');"'); ?>
 					<?php
 */					}
 					?>
@@ -289,7 +289,7 @@ if(!isset($_GET['target']) || 'newAttribute' == $_GET['target'] ) {
 	
 	if(!is_numeric($selectedOption)) {
 		foreach($optionDrop as $key => $value) {
-			if(tep_not_null($value['id'])){
+			if(vam_not_null($value['id'])){
 				$selectedOption = $value['id'];
 				break;
 			}
@@ -307,13 +307,13 @@ if(!isset($_GET['target']) || 'newAttribute' == $_GET['target'] ) {
 	<table border="0"  cellpadding="0" cellspacing="0">
 		<tr>
 			<td align="right" valign="middle" class="newOptionPanel-label">
-				<?=AM_AJAX_OPTION?> <?php echo tep_draw_pull_down_menu('optionDropDown',$optionDrop,$selectedOption,'id="optionDropDown" onChange="return amUpdateNewOptionValue(this.value);" class="optionDropDown"')?>
+				<?=AM_AJAX_OPTION?> <?php echo vam_draw_pull_down_menu('optionDropDown',$optionDrop,$selectedOption,'id="optionDropDown" onChange="return amUpdateNewOptionValue(this.value);" class="optionDropDown"')?>
 			</td>
 			<td align="right" valign="middle" class="newOptionPanel-button">
 				<input border="0"  type="image" src="attributeManager/images/icon_add_new.png" onclick="return customPrompt('amAddOption');" title="<?=AM_AJAX_ADDS_NEW_OPTION?>" />
 			</td>
 			<td align="right" valign="middle" class="newOptionPanel-label">
-				<?=AM_AJAX_VALUE?> <?php echo tep_draw_pull_down_menu('optionValueDropDown',$optionValueDrop,(is_numeric($selectedOptionValue) ? $selectedOptionValue : ''),'id="optionValueDropDown" class="optionValueDropDown"')?>
+				<?=AM_AJAX_VALUE?> <?php echo vam_draw_pull_down_menu('optionValueDropDown',$optionValueDrop,(is_numeric($selectedOptionValue) ? $selectedOptionValue : ''),'id="optionValueDropDown" class="optionValueDropDown"')?>
 			</td>
 			<td align="right" valign="middle" class="newOptionPanel-button">
 					<input border="0" type="image" src="attributeManager/images/icon_add_new.png" onclick="return customPrompt('amAddOptionValue');" title="<?=AM_AJAX_ADDS_NEW_OPTION_VALUE?>" />
@@ -322,21 +322,21 @@ if(!isset($_GET['target']) || 'newAttribute' == $_GET['target'] ) {
 				<?=AM_AJAX_PREFIX?> <?php echo drawDropDownPrefix('id="prefix_0"')?>
 			</td>
 			<td valign="top" class="newOptionPanel-label">
-				<?=AM_AJAX_PRICE?> <?php echo tep_draw_input_field('newPrice','','size="4" id="newPrice"'); ?>
+				<?=AM_AJAX_PRICE?> <?php echo vam_draw_input_field('newPrice','','size="4" id="newPrice"'); ?>
 			</td>
 			<?php
 			if(AM_USE_SORT_ORDER) {
 			?>
 			<!--
 			<td valign="top" class="newOptionPanel-label">
-				<?=AM_AJAX_SORT?> <?php echo tep_draw_input_field('newSort','','size="4" id="newSort"'); ?>
+				<?=AM_AJAX_SORT?> <?php echo vam_draw_input_field('newSort','','size="4" id="newSort"'); ?>
 			</td>
 			-->
 			<?php
 			} else {
 			?>
 			<td valign="top">
-				<?php echo tep_draw_hidden_field('newSort','','size="4" id="newSort"'); ?>
+				<?php echo vam_draw_hidden_field('newSort','','size="4" id="newSort"'); ?>
 			</td>
 			<?php
 			}
@@ -360,18 +360,18 @@ if (AM_USE_QT_PRO) {
 	if(!isset($_GET['target'])) 
 		echo '<div id="currentProductStockValues">';
 
-$q=tep_db_query($sql="select products_name, products_options_name as _option, products_attributes.options_id as _option_id, products_options_values_name as _value, products_attributes.options_values_id as _value_id from ".
+$q=vam_db_query($sql="select products_name, products_options_name as _option, products_attributes.options_id as _option_id, products_options_values_name as _value, products_attributes.options_values_id as _value_id from ".
                   "products_description, products_attributes, products_options, products_options_values where ".
                   "products_attributes.products_id = products_description.products_id and ".
                   "products_attributes.products_id = '" . $products_id . "' and ".
                   "products_attributes.options_id = products_options.products_options_id and ".
                   "products_attributes.options_values_id = products_options_values.products_options_values_id and ".
-                  "products_description.language_id = " . (int)$languages_id . " and ".
-                  "products_options_values.language_id = " . (int)$languages_id . " and products_options.products_options_track_stock = 1 and ".
-                  "products_options.language_id = " . (int)$languages_id . " order by products_attributes.options_id, products_attributes.options_values_id");
-  if (tep_db_num_rows($q)>0) {
+                  "products_description.language_id = " . (int)$_SESSION['languages_id'] . " and ".
+                  "products_options_values.language_id = " . (int)$_SESSION['languages_id'] . " and products_options.products_options_track_stock = 1 and ".
+                  "products_options.language_id = " . (int)$_SESSION['languages_id'] . " order by products_attributes.options_id, products_attributes.options_values_id");
+  if (vam_db_num_rows($q)>0) {
     $flag=1;
-    while($list=tep_db_fetch_array($q)) {
+    while($list=vam_db_fetch_array($q)) {
       $options[$list[_option_id]][]=array($list[_value],$list[_value_id]);
       $option_names[$list[_option_id]]=$list[_option];
       $product_name=$list[products_name];
@@ -396,7 +396,7 @@ $q=tep_db_query($sql="select products_name, products_options_name as _option, pr
 			<input type="image" border="0" id="show_hide_9999" src="attributeManager/images/icon_plus.gif" onclick="return amShowHideOptionsValues(9999);" />
 			</td>
 <?php
-  if (tep_db_num_rows($q)>0) {
+  if (vam_db_num_rows($q)>0) {
     while(list($k,$v)=each($options)) {
 ?>   	
 			<td>
@@ -413,8 +413,8 @@ $q=tep_db_query($sql="select products_name, products_options_name as _option, pr
 			</td>
 		</tr>
 <?php
-    $q=tep_db_query("select * from " . TABLE_PRODUCTS_STOCK . " where products_id='" . $products_id . "' order by products_stock_attributes");
-    while($rec=tep_db_fetch_array($q)) {
+    $q=vam_db_query("select * from " . TABLE_PRODUCTS_STOCK . " where products_id='" . $products_id . "' order by products_stock_attributes");
+    while($rec=vam_db_fetch_array($q)) {
       $val_array=explode(",",$rec[products_stock_attributes]);
 ?>      
 		<tr class="optionValue" id="trOptionsValues_9999" style="display:none" >
@@ -427,7 +427,7 @@ $q=tep_db_query($sql="select products_name, products_options_name as _option, pr
         if (preg_match("/^(\d+)-(\d+)$/",$val,$m1)) {
 ?>
 			<td>
-				&nbsp;&nbsp;&nbsp;<?php echo tep_values_name($m1[2]); ?>
+				&nbsp;&nbsp;&nbsp;<?php echo vam_values_name($m1[2]); ?>
 			</td>
 <?php				
         } else {
@@ -448,7 +448,7 @@ $q=tep_db_query($sql="select products_name, products_options_name as _option, pr
 ?>      
 			<td align="right">
 				<span style="margin-right:41px;">
-				<?php echo tep_draw_input_field("productStockQuantity_$rec[products_stock_id]", $rec[products_stock_quantity], ' style="margin:3px 0px 3px 0px;" id="productStockQuantity_'.$rec[products_stock_id].'" size="4" onChange="return amUpdateProductStockQuantity(\''.$rec[products_stock_id].'\');"'); ?>
+				<?php echo vam_draw_input_field("productStockQuantity_$rec[products_stock_id]", $rec[products_stock_quantity], ' style="margin:3px 0px 3px 0px;" id="productStockQuantity_'.$rec[products_stock_id].'" size="4" onChange="return amUpdateProductStockQuantity(\''.$rec[products_stock_id].'\');"'); ?>
 				</span>
 				<input type="image" border="0" onClick="return customPrompt('amRemoveStockOptionValueFromProduct','<?php echo addslashes("option_id:$rec[products_stock_id]")?>');" src="attributeManager/images/icon_delete.png" title="<?=AM_AJAX_ADDS_ATTRIBUTE_TO_PRODUCT?>" />
 			</td>
@@ -474,17 +474,17 @@ if(!isset($_GET['target']) || 'newProductStockValue' == $_GET['target'] ) {
 			<td align="right" valign="top">
 	<?php	
   
-  if (tep_db_num_rows($q)>0) {
+  if (vam_db_num_rows($q)>0) {
     $flag=1;
-    while($list=tep_db_fetch_array($q)) {
+    while($list=vam_db_fetch_array($q)) {
       $options[$list[_option_id]][]=array($list[_value],$list[_value_id]);
       $option_names[$list[_option_id]]=$list[_option];
       $product_name=$list[products_name];
     }
   } else {
     $flag=0;
-    $q=tep_db_query("select products_quantity, products_name from " . TABLE_PRODUCTS . " p,products_description pd where pd.products_id= p.products_id and p.products_id='" . $products_id ."'");
-    $list=tep_db_fetch_array($q);
+    $q=vam_db_query("select products_quantity, products_name from " . TABLE_PRODUCTS . " p,products_description pd where pd.products_id= p.products_id and p.products_id='" . $products_id ."'");
+    $list=vam_db_fetch_array($q);
     $db_quantity=$list[products_quantity];
     $product_name=stripslashes($list[products_name]);
   }
@@ -507,7 +507,7 @@ if(!isset($_GET['target']) || 'newProductStockValue' == $_GET['target'] ) {
   }
 ?>
 			<td>
-				<?php echo tep_draw_input_field("stockQuantity", $db_quantity, ' style="margin:3px 0px 3px 0px;" id="stockQuantity" size="4"'); ?>
+				<?php echo vam_draw_input_field("stockQuantity", $db_quantity, ' style="margin:3px 0px 3px 0px;" id="stockQuantity" size="4"'); ?>
  			</td>
 			<td valign="top">
 				<input type="image" src="attributeManager/images/icon_add.png" value="Add" onclick="return root('<?php echo implode(",", $dropDownOptions); ?>');" title="<?=AM_AJAX_UPDATE_OR_INSERT_ATTRIBUTE_COMBINATIONBY_QUANTITY?>" border="0"  /><br/>t: 

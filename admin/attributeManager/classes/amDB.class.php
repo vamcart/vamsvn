@@ -23,7 +23,7 @@ class amDB {
 	 * @return query reference
 	 */
 	function query($strQuery) {
-		return tep_db_query($strQuery);
+		return vam_db_query($strQuery);
 	}
 	
 	/**
@@ -33,7 +33,7 @@ class amDB {
 	 * @return array
 	 */
 	function fetchArray($ref) {
-		return tep_db_fetch_array($ref);
+		return vam_db_fetch_array($ref);
 	}
 	
 	/**
@@ -64,7 +64,7 @@ class amDB {
 	 * @return int - number of rows in result
 	 */
 	function numRows($ref) {
-		return tep_db_num_rows($ref);
+		return vam_db_num_rows($ref);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ class amDB {
 	 * @return void
 	 */
 	function perform($strTable,$arrData,$strAction='insert',$strParams='') {
-		return tep_db_perform($strTable,$arrData,$strAction,$strParams);
+		return vam_db_perform($strTable,$arrData,$strAction,$strParams);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ class amDB {
 	 * @return void
 	 */
 	function input($str) {
-		return tep_db_prepare_input($str);
+		return vam_db_prepare_input($str);
 	}
 	
 	/**

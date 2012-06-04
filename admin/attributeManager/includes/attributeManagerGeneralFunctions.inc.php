@@ -13,7 +13,7 @@
 */
 
 function drawDropDownPrefix($params,$selected = '') {
-	return tep_draw_pull_down_menu(
+	return vam_draw_pull_down_menu(
 		"prefix",
 		array(
 			array('id'=>'','text'=>''),
@@ -30,7 +30,7 @@ function &amGetAttributeManagerInstance($get) {
 	if (!is_numeric($get['products_id']) || AM_ATOMIC_PRODUCT_UPDATES) {
 
 		// first time visiting the page - delete the session var and start again
-		if('new_product' == $get[AM_PAGE_ACTION_NAME] && !tep_not_null($get[AM_ACTION_GET_VARIABLE])) 
+		if('new_product' == $get[AM_PAGE_ACTION_NAME] && !vam_not_null($get[AM_ACTION_GET_VARIABLE])) 
 			amSessionUnregister(AM_SESSION_VAR_NAME);	
 			
 			amSessionRegister(AM_SESSION_VAR_NAME, array());
