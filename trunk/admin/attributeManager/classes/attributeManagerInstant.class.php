@@ -301,9 +301,9 @@ class attributeManagerInstant extends attributeManager {
 //    		if (($inputok)) {
 //    			sort($val_array, SORT_NUMERIC);
 //    			$val=join(",",$val_array);
-//    			$q=tep_db_query("select products_stock_id as stock_id from " . TABLE_PRODUCTS_STOCK . " where products_id ='$this->intPID' and products_stock_attributes='" . $val . "' order by products_stock_attributes");
-//    			if (tep_db_num_rows($q)>0) {
-//    				$stock_item=tep_db_fetch_array($q);
+//    			$q=vam_db_query("select products_stock_id as stock_id from " . TABLE_PRODUCTS_STOCK . " where products_id ='$this->intPID' and products_stock_attributes='" . $val . "' order by products_stock_attributes");
+//    			if (vam_db_num_rows($q)>0) {
+//    				$stock_item=vam_db_fetch_array($q);
 //    				$stock_id=$stock_item[stock_id];
 //    				if ($stockQuantity=intval($stockQuantity)) {
 //    					amDB::query("update " . TABLE_PRODUCTS_STOCK . " set products_stock_quantity=" . (int)$stockQuantity . " where products_stock_id=$stock_id");
@@ -314,8 +314,8 @@ class attributeManagerInstant extends attributeManager {
 //      			} else {
 //        			amDB::query("insert into " . TABLE_PRODUCTS_STOCK . " values (0," . $this->intPID . ",'$val'," . (int)$stockQuantity . ")");
 //        		}
-//      			$q=tep_db_query("select sum(products_stock_quantity) as summa from " . TABLE_PRODUCTS_STOCK . " where products_id=" . (int)$VARS['product_id'] . " and products_stock_quantity>0");
-//      			$list=tep_db_fetch_array($q);
+//      			$q=vam_db_query("select sum(products_stock_quantity) as summa from " . TABLE_PRODUCTS_STOCK . " where products_id=" . (int)$VARS['product_id'] . " and products_stock_quantity>0");
+//      			$list=vam_db_fetch_array($q);
 //      			$summa= (empty($list[summa])) ? 0 : $list[summa];
 //      			amDB::query("update " . TABLE_PRODUCTS . " set products_quantity=$summa where products_id=" . $this->intPID);
 //      			if (($summa<1) && (STOCK_ALLOW_CHECKOUT == 'false')) {
