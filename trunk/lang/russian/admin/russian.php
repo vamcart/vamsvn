@@ -594,4 +594,6 @@ define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
 
 define('BOX_ATTRIBUTES_MANAGER_CATEGORIES','Установка атрибутов категории');
 
+define('TEXT_PRODUCTS_ATTRIBUTES','Атрибуты товара');
+
 ?>

@@ -682,6 +682,10 @@ class categories {
 			vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.vam_db_input($products_id).'\'');
 		}
 
+		/** AJAX Attribute Manager  **/ 
+		  require_once('attributeManager/includes/attributeManagerUpdateAtomic.inc.php'); 
+		/** AJAX Attribute Manager  end **/
+
 		$languages = vam_get_languages();
 		// Here we go, lets write Group prices into db
 		// start
