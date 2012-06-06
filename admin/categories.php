@@ -307,6 +307,9 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 		<title><?php echo TITLE; ?></title>
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
+		<!-- AJAX Attribute Manager -->
+		<?php require_once( 'attributeManager/includes/attributeManagerHeader.inc.php' )?>
+		<!-- AJAX Attribute Manager end -->
 		<script type="text/javascript" src="includes/general.js"></script>
 <?php 
 	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
@@ -329,7 +332,9 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 	} 
 ?>
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<!-- AJAX Attribute Manager -->
+<body onload="goOnLoad();" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
+<!-- AJAX Attribute Manager end -->
 
 		<!-- header //-->
 		<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
