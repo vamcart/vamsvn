@@ -592,7 +592,7 @@ class attributeManagerInstant extends attributeManager {
 	
 		$sortedArray = array();
 	
-		$queryString = "select products_attributes_id, options_id, products_options_sort_order" .
+		$queryString = "select products_attributes_id, options_id, sortorder" .
 						" from ".TABLE_PRODUCTS_ATTRIBUTES.
 						" where products_id=".$this->intPID;
 						
