@@ -68,8 +68,7 @@ $allProductOptionsAndValues = $attributeManager->getAllProductOptionsAndValues(t
 // count the options
 $numOptions = count($allProductOptionsAndValues);
 // output a response header
-//header('Content-type: text/html; charset=ISO-8859-1');
-header('Content-type: text/html; charset='.CHARSET);
+header('Content-type: text/html; charset=utf-8');
 
 //$attributeManager->debugOutput($allProductOptionsAndValues);
 //$attributeManager->debugOutput($SortedProductAttributes);
