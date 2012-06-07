@@ -63,8 +63,8 @@ class attributeManagerConfig {
 		/**
 		 * Sort order tables
 		 */
-		$this->add('AM_FIELD_OPTION_SORT_ORDER','products_options_sort_order'); // Sort column on Products_options table
-		$this->add('AM_FIELD_OPTION_VALUE_SORT_ORDER','products_options_sort_order'); // Sort column on product_attributes table
+		$this->add('AM_FIELD_OPTION_SORT_ORDER','sortorder'); // Sort column on Products_options table
+		$this->add('AM_FIELD_OPTION_VALUE_SORT_ORDER','sortorder'); // Sort column on product_attributes table
 	
 		
 		/**
@@ -134,7 +134,7 @@ class attributeManagerConfig {
 					`option_values_id` INT( 5 ) UNSIGNED NOT NULL ,
 					`price_prefix` char(1) default '+',
 					`options_values_price` decimal(15,4) default 0,
-					`products_options_sort_order` int default 0,
+					`sortorder` int default 0,
 					INDEX ( `template_id` )
 				)"
 			);
@@ -154,8 +154,8 @@ class attributeManagerConfig {
 			if( !in_array('options_values_price',$fields) ){
 				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`options_values_price` decimal(15,4) default 0)");
 			}
-			if( !in_array('products_options_sort_order',$fields) ){
-				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`products_options_sort_order` int default 0)");
+			if( !in_array('sortorder',$fields) ){
+				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`sortorder` int default 0)");
 			}
 
 			// register the checked session so that this check is only done once per session

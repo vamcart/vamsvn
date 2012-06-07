@@ -12,7 +12,7 @@
   osc@kangaroopartners.com
 */
 
-if('new_product' == $action || 'update_product' == $action) {
+if('new_product' == $_GET['action'] || 'update_product' == $_GET['action']) {
 $amSessionVar = vam_session_name().'='.vam_session_id();
 echo <<<HEADER
 <script language="JavaScript" type="text/JavaScript">
@@ -32,7 +32,7 @@ HEADER;
 <script language="JavaScript" type="text/javascript">
 
 function goOnLoad() {
-	<?php	if('new_product' == $action || 'update_product' == $action) echo 'attributeManagerInit();';	?>
+	<?php	if('new_product' == $_GET['action'] || 'update_product' == $_GET['action']) echo 'attributeManagerInit();';	?>
 	SetFocus();
 }
 

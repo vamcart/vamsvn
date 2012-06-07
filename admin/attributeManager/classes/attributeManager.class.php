@@ -493,7 +493,7 @@ interface attributeManagerInterface {
   								'option_values_id' => $optionValuesId,
   								'price_prefix' => $values['values'][$optionValuesId]['prefix'],
   								'options_values_price' => $values['values'][$optionValuesId]['price'],
-  								'products_options_sort_order' => $values['values'][$optionValuesId]['sortOrder']
+  								'sortorder' => $values['values'][$optionValuesId]['sortOrder']
   							);
   						}
   						//echo '<br><br>Array DATA:: <br><br>';
