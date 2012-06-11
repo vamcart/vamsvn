@@ -36,7 +36,7 @@ $box_content='';
     $box_text =  ''; //HTML string goes into the text part of the box
     $get_category = '';
     
-    if (FILTERS_MAIN_PAGE == 'False') $get_category = "and s2c.categories_id = '" . $current_category_id . "'";
+    if ((isset($_GET['cat']) && isset($current_category_id)) or FILTERS_MAIN_PAGE == 'False') $get_category = "and s2c.categories_id = '" . $current_category_id . "'";
      
     $specs_query_raw = "select s.specifications_id,
                                s.products_column_name,
