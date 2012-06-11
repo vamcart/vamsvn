@@ -104,7 +104,7 @@ if (is_array($temp) && sizeof($temp) > 0)
       $module_contents = '<div class="ui-widget infoBoxContainer">' . PHP_EOL;
     	// Start the heading output
       $module_contents .= '  <div class="ui-widget-header ui-corner-top infoBoxHeading">' . PHP_EOL;
-      $module_contents .= '    <table border="0" width="100%" cellspacing="0" cellpadding="2" class="productListingHeader">' . PHP_EOL;
+      $module_contents .= '    <table border="0" width="100%" cellspacing="5" cellpadding="2" class="productListingHeader">' . PHP_EOL;
       $module_contents .= '      <tr>' . PHP_EOL;
       $specification_id_array = array ();
       while ($specifications_heading = vam_db_fetch_array($specifications_query)) {
@@ -175,7 +175,7 @@ if (is_array($temp) && sizeof($temp) > 0)
       if (vam_db_num_rows($products_query) >= SPECIFICATIONS_MINIMUM_COMPARISON) {
       	// Start the rows
         $module_contents .= '  <div class="ui-widget-content ui-corner-bottom productListTable">' . PHP_EOL;
-        $module_contents .= '    <table border="0" width="100%" cellspacing="0" cellpadding="2" class="productListingData">' . PHP_EOL;
+        $module_contents .= '    <table border="0" width="100%" cellspacing="5" cellpadding="2" class="productListingData">' . PHP_EOL;
 
         // Add the product rows
         while ($products_array = vam_db_fetch_array($products_query)) { // Each product is a row
@@ -199,11 +199,15 @@ if (is_array($temp) && sizeof($temp) > 0)
             // Get the existing fields data
             $field_array = vam_fill_existing_fields( $products_id, $_SESSION['languages_id'] );
             //Start the row
-            $module_contents .= vam_draw_form('cart_quantity', vam_href_link(FILENAME_DEFAULT, vam_get_all_get_params(array('action')) . 'action=add_product')) . PHP_EOL;
+
+				if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
+				$buy_button = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$products_id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', '').'</a>';
+				} else {
+				$buy_button = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$products_id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image_button('buy.png', '').'</a>';
+				}
+		
             $module_contents .= '      <tr>' . PHP_EOL;
-            $module_contents .= vam_draw_hidden_field( 'products_id', $products_id ) . PHP_EOL;
-            $module_contents .= vam_draw_hidden_field( 'cart_quantity', '1' ) . PHP_EOL;
-            $module_contents .= '<td>'.$products_array['products_name'].'</td>';
+            $module_contents .= '<td><a href="'.vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products_id).'">'.$products_array['products_name'].'</a>&nbsp;'.$buy_button.'</td>';
 
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
