@@ -34,6 +34,9 @@ $box_content='';
     
   if (SPECIFICATIONS_FILTERS_BOX == 'True') {
     $box_text =  ''; //HTML string goes into the text part of the box
+    $get_category = '';
+    
+    if (FILTERS_MAIN_PAGE == 'False') $get_category = "and s2c.categories_id = '" . $current_category_id . "'";
      
     $specs_query_raw = "select s.specifications_id,
                                s.products_column_name,
@@ -50,7 +53,7 @@ $box_content='';
                         where s.specification_group_id = sg.specification_group_id
                           and sg.specification_group_id = s2c.specification_group_id
                           and sd.specifications_id = s.specifications_id
-                          and s2c.categories_id = '" . $current_category_id . "'
+                          ".$get_category."
                           and s.show_filter = 'True'
                           and sg.show_filter = 'True'
                           and sd.language_id = '" . $_SESSION['languages_id'] . "'
