@@ -44,6 +44,17 @@
     $title_query = vam_db_query($title_query_raw);
     $title_array = vam_db_fetch_array($title_query);
 
+if (is_array($_REQUEST["products"]))
+{
+    foreach($_REQUEST["products"] as $v)
+    {
+        if (is_numeric(intval(trim($v)))) $temp[] = $v;
+    }
+}
+
+if (is_array($temp) && sizeof($temp) > 0)
+{
+    
 ?>
 <div class="contentContainer">
   <div class="contentText">
@@ -130,32 +141,7 @@
       $module_contents .= '      </tr>' . PHP_EOL;
       $module_contents .= '    </table>' . PHP_EOL;
       $module_contents .= '  </div>' . PHP_EOL;
-
-if (is_array($_REQUEST["products"]))
-{
-    foreach($_REQUEST["products"] as $v)
-    {
-        if (is_numeric(intval(trim($v)))) $temp[] = $v;
-    }
-}
-
-    $products_query = vamDBquery("SELECT
-                                     *
-                                     FROM ".TABLE_PRODUCTS." p,
-                                     ".TABLE_PRODUCTS_DESCRIPTION." pd
-                                     WHERE p.products_id IN (".implode(", ", $temp).") and 
-                                     p.products_id = pd.products_id
-                                     and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                     and p.products_status=1 order by products_name limit 5");
-    $c_id = array();
-    $temp_parameters = array();
-    while ($products_data = vam_db_fetch_array($products_query, true))
-    {
-        $module_content[] =  $product->buildDataArray($products_data);
-        $temp_parameters[$products_data['products_id']] = array();
-        $c_id[] = $products_data['products_id'];
-    }
-    
+   
       ////
       // Table rows
       $products_query_raw = "
@@ -174,7 +160,7 @@ if (is_array($_REQUEST["products"]))
             on (pd.products_id = p2c.products_id)
         where
           p.products_status = 1
-          and p.products_id IN (".implode(", ", $c_id).")
+          and p.products_id IN (".implode(", ", $temp).")
           and p2c.categories_id = '" . (int) $current_category_id . "'
           and s2c.specification_group_id = '" . (int) $group_id . "'
         order by
@@ -251,6 +237,6 @@ if (is_array($_REQUEST["products"]))
     echo TEXT_NO_COMPARISON_AVAILABLE . PHP_EOL;
 
   } // if ($current_category_id ... else ...
-
+}
 ?>
 <!-- Comparison EOF //-->

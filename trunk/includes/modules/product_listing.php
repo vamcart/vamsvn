@@ -76,6 +76,9 @@ if ($listing_split->number_of_rows > 0) {
 		$rows ++;
 		$module_content[] =  $product->buildDataArray($listing);		
 	}
+	
+	$module->assign('BUTTON_COMPARE', vam_image_submit('view.png', TEXT_PRODUCT_COMPARE));
+		
 } else {
 
 	// no product found

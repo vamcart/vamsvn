@@ -84,7 +84,8 @@
 
 <div class="page">
 <div class="pageItem">
-{foreach name=aussen item=module_data from=$module_content} <dl class="itemNewProductsDefault">
+
+<form action="{$smarty.const.FILENAME_COMPARISON}">{foreach name=aussen item=module_data from=$module_content} <dl class="itemNewProductsDefault">
 <dt class="itemImage">
 {if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
 {$module_data.PRODUCTS_BUTTON_BUY_NOW}
@@ -129,9 +130,16 @@
 </dd>
 {/if}
 
+<dd class="itemDescription">
+<input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" />{#text_compare#}
+</dd>
+
 </dl>
 {/foreach} 
 <div class="clear"></div>
+
+<input type="hidden" name="cat" value="{$smarty.get.cat}" />
+{$BUTTON_COMPARE}</form>
 
 </div>
 
