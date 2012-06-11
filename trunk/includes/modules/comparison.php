@@ -106,7 +106,7 @@ if (is_array($temp) && sizeof($temp) > 0)
       $module_contents .= '  <div class="ui-widget-header ui-corner-top infoBoxHeading">' . PHP_EOL;
       $module_contents .= '    <table border="0" width="100%" cellspacing="5" cellpadding="2" class="productListingHeader">' . PHP_EOL;
       $module_contents .= '      <tr>' . PHP_EOL;
-        $module_contents .= '<td width="200"></td>' . PHP_EOL;
+        $module_contents .= '<td width="35%"></td>' . PHP_EOL;
       $specification_id_array = array ();
       while ($specifications_heading = vam_db_fetch_array($specifications_query)) {
         // Set up the heading for the table
@@ -150,6 +150,8 @@ if (is_array($temp) && sizeof($temp) > 0)
       $products_query_raw = "
         select distinct
           p.products_id,
+          p.products_tax_class_id,
+          p.products_price,
           pd.products_name,
           pd.products_description,
           pd.products_short_description
@@ -205,9 +207,12 @@ if (is_array($temp) && sizeof($temp) > 0)
 				} else {
 				$buy_button = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$products_id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL').'">'.vam_image_button('buy.png', '').'</a>';
 				}
+				
+				$price = $products_price = $vamPrice->GetPrice($products_id, $format = true, 1, $products_array['products_tax_class_id'], $products_array['products_price'], 1);
+				$price = $products_price['formated'];
 		
             $module_contents .= '      <tr>' . PHP_EOL;
-            $module_contents .= '<td width="200"><a href="'.vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products_id).'">'.$products_array['products_name'].'</a>&nbsp;'.$buy_button.'</td>';
+            $module_contents .= '<td><a href="'.vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products_id).'">'.$products_array['products_name'].'</a>&nbsp;- '.$price.$buy_button.'</td>';
 
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
