@@ -27,7 +27,7 @@
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="200" align="left" class="header">
-              <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.png', 'VaM Shop'); ?></a>
+              <a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo.png', 'VamShop'); ?></a>
               </td>
               <td width="370" align="center" class="header">
               &nbsp;
@@ -479,9 +479,9 @@
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru" target="_blank">' . BOX_SUPPORT_SITE . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/manual" target="_blank">' . HEADER_TITLE_DOCS . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/faq.php" target="_blank">' . BOX_SUPPORT_FAQ . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum" target="_blank">' . BOX_SUPPORT_FORUM . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/manual/" target="_blank">' . HEADER_TITLE_DOCS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum/forum/26-faq/" target="_blank">' . BOX_SUPPORT_FAQ . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum/" target="_blank">' . BOX_SUPPORT_FORUM . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['languages'] == '0')
