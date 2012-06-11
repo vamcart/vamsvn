@@ -236,15 +236,19 @@ if (is_array($temp) && sizeof($temp) > 0)
         $module_contents .= '</div>' . PHP_EOL;
 
       } else {
-        $module_contents = TEXT_NO_COMPARISON_AVAILABLE;
+        $module_contents = TEXT_NO_PRODUCTS_AVAILABLE;
 
       } // if (vam_db_num_rows ($products_query
 
 
     } // if (vam_db_num_rows ($category_specs_query
-
+		else {
+				
+				$module_contents = TEXT_NO_COMPARISON_AVAILABLE;
+	
+				}
   } else {
-    $module_contents = TEXT_NO_COMPARISON_AVAILABLE;
+    $module_contents = TEXT_NO_PRODUCTS_AVAILABLE;
 
   } // if ($current_category_id ... else ...
   
