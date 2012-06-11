@@ -106,6 +106,7 @@ if (is_array($temp) && sizeof($temp) > 0)
       $module_contents .= '  <div class="ui-widget-header ui-corner-top infoBoxHeading">' . PHP_EOL;
       $module_contents .= '    <table border="0" width="100%" cellspacing="5" cellpadding="2" class="productListingHeader">' . PHP_EOL;
       $module_contents .= '      <tr>' . PHP_EOL;
+        $module_contents .= '<td width="200"></td>' . PHP_EOL;
       $specification_id_array = array ();
       while ($specifications_heading = vam_db_fetch_array($specifications_query)) {
         // Set up the heading for the table
@@ -119,7 +120,6 @@ if (is_array($temp) && sizeof($temp) > 0)
         }
 
         // Add the contents of each cell
-        $module_contents .= '<td></td>';
         $module_contents .= '        <td' . (vam_not_null($specifications_heading['column_justify']) ? ' align="' . $specifications_heading['column_justify'] . '"' : '') . ' class="productListing-heading">' . $box_text . '</td>' . PHP_EOL;
 
         // Build an array to use as an index on the table rows
@@ -207,7 +207,7 @@ if (is_array($temp) && sizeof($temp) > 0)
 				}
 		
             $module_contents .= '      <tr>' . PHP_EOL;
-            $module_contents .= '<td><a href="'.vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products_id).'">'.$products_array['products_name'].'</a>&nbsp;'.$buy_button.'</td>';
+            $module_contents .= '<td width="200"><a href="'.vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$products_id).'">'.$products_array['products_name'].'</a>&nbsp;'.$buy_button.'</td>';
 
             // Get the data for each specification in the row
             foreach ($specification_id_array as $specs_id => $specs_data) {
