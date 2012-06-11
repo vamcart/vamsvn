@@ -1011,5 +1011,7 @@ define('SPECIFICATIONS_FILTER_IMAGE_WIDTH_TITLE', 'Ширина картинки
 define('SPECIFICATIONS_FILTER_IMAGE_WIDTH_DESC', 'Установите ширину картинки, отображаемой в боксе фильтры.');
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_TITLE', 'Высота картинки фильтров');
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_DESC', 'Установите высоту картинки, отображаемой в боксе фильтры.');
+define('FILTERS_MAIN_PAGE_TITLE', 'Показывать фильтры на главной странице');
+define('FILTERS_MAIN_PAGE_DESC', 'Показывать настроенные фильтры на главной странице магазина.');
 
 ?>
