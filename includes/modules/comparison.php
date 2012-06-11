@@ -241,7 +241,7 @@ if (is_array($temp) && sizeof($temp) > 0)
   
 	$vamTemplate->assign('COMPARISON', $module_contents);
 
-	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	  
 }
 ?>
