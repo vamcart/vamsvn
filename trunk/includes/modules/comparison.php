@@ -26,6 +26,9 @@
 <!-- Comparison //-->
 <?php
 
+$module = new vamTemplate;
+$module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+
   if ($current_category_id != 0) {
     $title_array = array ();
     //Get the top right image and name for this category
@@ -223,10 +226,8 @@ if (is_array($temp) && sizeof($temp) > 0)
         $module_contents .= '  </div>' . PHP_EOL;
         $module_contents .= '</div>' . PHP_EOL;
 
-        echo $module_contents;
-
       } else {
-        echo TEXT_NO_COMPARISON_AVAILABLE . PHP_EOL;
+        $module_contents = TEXT_NO_COMPARISON_AVAILABLE;
 
       } // if (vam_db_num_rows ($products_query
 
@@ -234,9 +235,14 @@ if (is_array($temp) && sizeof($temp) > 0)
     } // if (vam_db_num_rows ($category_specs_query
 
   } else {
-    echo TEXT_NO_COMPARISON_AVAILABLE . PHP_EOL;
+    $module_contents = TEXT_NO_COMPARISON_AVAILABLE;
 
   } // if ($current_category_id ... else ...
+  
+	$vamTemplate->assign('COMPARISON', $module_contents);
+
+	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
+	  
 }
 ?>
 <!-- Comparison EOF //-->
