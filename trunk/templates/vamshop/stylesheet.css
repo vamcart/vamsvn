@@ -3572,6 +3572,7 @@ del.button:hover span
 div.filter
 	{
 		float: left;
+		padding: 0 .5em;
 	}
 	         
 /*]]>*/
