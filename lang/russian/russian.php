@@ -656,5 +656,6 @@ define('BUTTON_PRINT_PACKINGSLIP', 'Распечатать накладную');
 define('BUTTON_PRINT_KVITANCIA', 'Распечатать квитанцию');
 
 define('TEXT_NO_COMPARISON_AVAILABLE', 'Товары для сравнения не найдены.');
-  
+define('TEXT_COMPARE','Сравнение товара');
+
 ?>
