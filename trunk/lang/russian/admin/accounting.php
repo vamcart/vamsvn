@@ -116,5 +116,6 @@ define('ACCESS_EDIT_ORDERS','Админка - Заказы - Редактор з
 define('ACCESS_EDIT_ORDERS_ADD_PRODUCT','Админка - Заказы - Редактор заказа - Добавление товара');
 define('ACCESS_EDIT_ORDERS_AJAX','Админка - Заказы - Редактор заказа - Ajax редактор');
 define('ACCESS_PRODUCTS_SPECIFICATIONS','Админка - Каталог - Спецификации товаров');
+define('ACCESS_ATTRIBUTEMANAGER','Админка - Каталог - Установка атрибутов при создании/редактировании товара');
 
 ?>
