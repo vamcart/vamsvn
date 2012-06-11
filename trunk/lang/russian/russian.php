@@ -655,7 +655,8 @@ define('BUTTON_PRINT_SCHET', 'Распечатать счёт');
 define('BUTTON_PRINT_PACKINGSLIP', 'Распечатать накладную');
 define('BUTTON_PRINT_KVITANCIA', 'Распечатать квитанцию');
 
-define('TEXT_NO_COMPARISON_AVAILABLE', 'Товары для сравнения не найдены.');
+define('TEXT_NO_PRODUCTS_AVAILABLE', 'Товары для сравнения не найдены.');
+define('TEXT_NO_COMPARISON_AVAILABLE', 'Администратором не были заданы спецификации товара для сравнения. <a href="http://vamshop.ru/manual/ch06.html" target="_blank">Настройка спецификаций</a>.');
 define('TEXT_COMPARE','Сравнение товара');
 
 ?>
