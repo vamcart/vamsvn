@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: russian.php 1260 2012/05/09 13:25:47 VaM $
+   $Id: russian.php 1260 2012/06/09 13:25:47 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -50,7 +50,7 @@ define('FEMALE', 'уважаемая');
  */
 
 // text for gift voucher redeeming
-define('IMAGE_REDEEM_GIFT','Использовать сертификат!');
+define('IMAGE_REDEEM_GIFT','Использовать');
 
 define('BOX_TITLE_STATISTICS','Статистика:');
 define('BOX_ENTRY_CUSTOMERS','Клиенты');
