@@ -99,7 +99,7 @@ if (!$product->isProduct()) {
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
-	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
 	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6"', 'text', false));
 	$vamTemplate->assign('FORM_END', '</form>');
 }
