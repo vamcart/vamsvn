@@ -62,7 +62,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	$difference = $time - $logintime; 											// The difference time in seconds between the last login and now
   if ($check_customer['login_tries'] >= LOGIN_NUM and $difference < $blocktime) {
 		// Action for bцse ?
-    $vamTemplate->assign('CAPTCHA_IMG', '<img src="'.FILENAME_DISPLAY_CAPTCHA.'" alt="captcha" />');    
+    $vamTemplate->assign('CAPTCHA_IMG', '<img src="'.FILENAME_DISPLAY_CAPTCHA.'" alt="captcha" name="captcha" />');    
     $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
     if ($_POST['captcha'] == $_SESSION['vvcode']){
     // code ok
