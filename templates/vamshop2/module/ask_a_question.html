@@ -11,13 +11,22 @@
 {/if}
 <div class="page">
 <div class="pagecontent">
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
 {#heading_title#}
 <br />
 <br />
 <!-- форма -->
 <fieldset class="form">
 <legend>{#title_question#} {$PRODUCTS_NAME}</legend>
-<p>{#text_sec_code#} {$CAPTCHA_IMG}</p>
+<p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
 <p>{#text_inp_code#} {$CAPTCHA_INPUT}</p>
 <p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
 <p>{#text_lastname#} {$INPUT_LASTNAME}</p>
