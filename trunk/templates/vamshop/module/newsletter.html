@@ -5,10 +5,18 @@
 {$FORM_ACTION} 
 <div class="page">
 <div class="pagecontent">
-
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
 <fieldset class="form">
 <legend>{#heading_title#}</legend>
-<p><span class="bold">{#text_sec_code#}</span> {$CAPTCHA_IMG}</p>
+<p><span class="bold">{#text_sec_code#}</span> {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
 <p><span class="bold">{#text_sec_code#}</span> {$CAPTCHA_INPUT}</p>
 <p><span class="bold">{#text_email#}</span> {$INPUT_EMAIL}</p>
 <p><span class="bold">{$CHECK_INP}</span> {#text_in#}</p>
