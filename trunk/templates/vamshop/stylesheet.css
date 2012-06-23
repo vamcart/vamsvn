@@ -3375,13 +3375,22 @@ li.ajaxAddQuickie
 
 #slide-featured 
 	{
-		width:90%;
+		width:80%;
 		margin:0 auto;
 	}
 
 #slide-featured li
 	{
 		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+#slide-featured ul
+	{
+		list-style: none;
+		padding: 0;
+		margin: 0;
 	}
 
 #slide-new 
