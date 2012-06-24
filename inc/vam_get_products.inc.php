@@ -33,6 +33,10 @@ function vam_get_products($session) {
 
       $products_array = array();
       reset($session);
+
+		if (!is_array($session['cart']->contents))
+			return false;
+			      
       while (list($products_id, ) = each($session['cart']->contents)) {
         $products_query = vam_db_query("select p.products_id, pd.products_name,p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . vam_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'");
         if ($products = vam_db_fetch_array($products_query)) {
