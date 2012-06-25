@@ -36,7 +36,7 @@ $return = '
 	foreach ($languages as $amLanguage) {
 $return .='
 	<tr>
-		<td align="right">'. vam_image(DIR_WS_CATALOG_LANGUAGES . $amLanguage['directory'] . '/images/' . $amLanguage['image'], $amLanguage['name']).'</td>
+		<td align="right">'. $amLanguage['name'].': </td>
 		<td>'.vam_draw_input_field('text_field_'.$amLanguage['id'],'','id="'.$amLanguage['id'].'"').'</td>
 	</tr>';
 	}

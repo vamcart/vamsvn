@@ -90,7 +90,7 @@ if(!isset($_GET['target']) || 'topBar' == $_GET['target'] ) {
 		if(count($languages) > 1) {
 			foreach ($languages as $amLanguage) {
 			?>
-			&nbsp;<input type="image" <?php echo ($attributeManager->getSelectedLanaguage() == $amLanguage['id']) ? 'style="padding:1px;border:1px solid black" onClick="return false" ' :'onclick="return amSetInterfaceLanguage(\''.$amLanguage['id'].'\');" '?> src="<?php echo DIR_WS_CATALOG_LANGUAGES . $amLanguage['directory'] . '/images/' . $amLanguage['image']?>"  border="0" title="<?=AM_AJAX_CHANGES?>" />
+			&nbsp;<input type="submit" <?php echo ($attributeManager->getSelectedLanaguage() == $amLanguage['id']) ? 'style="padding:1px;border:1px solid black" onClick="return false" ' :'onclick="return amSetInterfaceLanguage(\''.$amLanguage['id'].'\');" '?> value="<?php echo $amLanguage['name']?>"  title="<?=AM_AJAX_CHANGES?>" />
 			<?php
 			}
 		}
