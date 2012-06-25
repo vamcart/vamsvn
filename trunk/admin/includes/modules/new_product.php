@@ -174,7 +174,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 				<li><a href="#data"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/edit.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_PRODUCTS_DATA; ?></a></li>
 				<li><a href="#images"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/images.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(HEADING_PRODUCT_IMAGES); ?></a></li>
 				<li><a href="#options"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(HEADING_PRICES_OPTIONS); ?></a></li>
-				<li><a href="#attributes"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/options.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(TEXT_PRODUCTS_ATTRIBUTES); ?></a></li>
+				<li><a href="#attributes"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/attributes.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(TEXT_PRODUCTS_ATTRIBUTES); ?></a></li>
 <?php
     if (GROUP_CHECK == 'true') {
 ?>
