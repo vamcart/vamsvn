@@ -336,7 +336,7 @@ function getAllPromptTextValues() {
 	var returnArray = new Array;
 	for (var i = 0; i < allValues.length; i++) 
 		if('text' == allValues[i].type) 
-			returnArray.push(allValues[i].id+':'+escape((getElement(allValues[i].id).value)));
+			returnArray.push(allValues[i].id+':'+encodeURIComponent((getElement(allValues[i].id).value)));
 	return returnArray.join('|');
 }
 
