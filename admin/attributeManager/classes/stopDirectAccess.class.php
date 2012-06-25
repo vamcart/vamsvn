@@ -7,7 +7,7 @@
 
   Released under the GNU General Public License
   
-  Copyright © 2006 Kangaroo Partners
+  Copyright Â© 2006 Kangaroo Partners
   http://kangaroopartners.com
   osc@kangaroopartners.com
 */
@@ -55,11 +55,11 @@ class stopDirectAccess {
 	 * @return void
 	 */
 	function checkAuthorisation($sessionVar) {
-		if(!amSessionIsRegistered($sessionVar))
-			exit("Session not registered - You cant access this page directly");
+		//if(!amSessionIsRegistered($sessionVar))
+			//exit("Session not registered - You cant access this page directly");
 		
-		if($GLOBALS[$sessionVar] != stopDirectAccess::makeSessionId()) 
-			exit("Session ids don't match - You cant access this page directly");
+		//if($GLOBALS[$sessionVar] != stopDirectAccess::makeSessionId()) 
+			//exit("Session ids don't match - You cant access this page directly");
 			
 	}
 	
