@@ -7,7 +7,7 @@
 
   Released under the GNU General Public License
   
-  Copyright © 2006 Kangaroo Partners
+  Copyright Â© 2006 Kangaroo Partners
   http://kangaroopartners.com
   osc@kangaroopartners.com
 */
