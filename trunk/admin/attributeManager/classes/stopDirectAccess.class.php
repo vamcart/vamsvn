@@ -55,8 +55,8 @@ class stopDirectAccess {
 	 * @return void
 	 */
 	function checkAuthorisation($sessionVar) {
-		//if(!amSessionIsRegistered($sessionVar))
-			//exit("Session not registered - You cant access this page directly");
+		if($_SESSION['customers_status']['customers_status_id'] != 0)
+			exit("Session not registered - You cant access this page directly");
 		
 		//if($GLOBALS[$sessionVar] != stopDirectAccess::makeSessionId()) 
 			//exit("Session ids don't match - You cant access this page directly");
