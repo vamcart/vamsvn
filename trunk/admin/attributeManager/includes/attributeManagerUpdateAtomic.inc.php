@@ -28,14 +28,14 @@ if(is_array(${AM_SESSION_VAR_NAME}) && is_numeric($products_id)){
         		'options_values_price' => amDB::input($newAttribute['price']),
         		'price_prefix' => amDB::input($newAttribute['prefix'])
         	);
+
+              $newAttributeData['attributes_stock'] = amDB::input($newAttribute['stock']);
         	
             if (AM_USE_MPW) {
               $newAttributeData['options_values_weight'] = amDB::input($newAttribute['weight']);
               $newAttributeData['weight_prefix'] = amDB::input($newAttribute['weight_prefix']);
             }
-
-              $newAttributeData['attributes_stock'] = amDB::input($newAttribute['stock']);
-                    	
+                   	
         	if (AM_USE_SORT_ORDER) {
         		$newAttributeData[AM_FIELD_OPTION_VALUE_SORT_ORDER] = amDB::input($newAttribute['sortOrder']);
         	}
