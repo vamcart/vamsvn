@@ -93,4 +93,15 @@ define('AM_AJAX_FIRST_SAVE', 'Save Product before adding options');
 //-----------------------------
 
 define('AM_AJAX_OPTION_NEW_PANEL','New option:');
+
+define('TEXT_TYPE_SELECT','-- Select --');
+define('TEXT_TYPE_DROPDOWN','Dropdown');
+define('TEXT_TYPE_TEXT','Text');
+define('TEXT_TYPE_TEXTAREA','Textarea');
+define('TEXT_TYPE_RADIO','Radio');
+define('TEXT_TYPE_CHECKBOX','Checkbox');
+define('TEXT_TYPE_READ_ONLY','Read Only');
+
+define('AM_AJAX_TYPE', 'Type:');
+
 ?>
