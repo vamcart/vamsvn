@@ -140,7 +140,7 @@ class attributeManagerConfig {
 			amDB::query("CREATE TABLE IF NOT EXISTS ".$this->getValue('AM_TABLE_TEMPLATES')." (
 					`template_id` INT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 					`template_name` VARCHAR( 255 ) NOT NULL
-				)"
+				) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;"
 			);
 			amDB::query("CREATE TABLE IF NOT EXISTS ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." (
 					`template_id` INT( 5 ) UNSIGNED NOT NULL ,
@@ -153,7 +153,7 @@ class attributeManagerConfig {
                     `weight_prefix` char(1) default '+',
                     `options_values_weight` decimal(6,3) default '0.000',
 					INDEX ( `template_id` )
-				)"
+				) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;"
 			);
 			// Check if the user is updating from the older version
 			$install_price_prefix=true;
