@@ -244,6 +244,9 @@ if(false){
     echo drawDropDownWeightPrefix('id="weight_prefix_'.$optionValueId.'" style="margin:3px 0px 3px 0px;" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'weight_prefix\');"',$optionValueInfo['weight_prefix']);
     echo vam_draw_input_field("weight_$optionValueId",$optionValueInfo['weight'],' style="margin:3px 0px 3px 0px;" id="weight_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'weight\');"');
   }
+
+    echo vam_draw_input_field("stock_$optionValueId",$optionValueInfo['stock'],' style="margin:3px 0px 3px 0px;" id="stock_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'stock\');"');
+
 ?>					
 					<?php
 					if(AM_USE_SORT_ORDER) {
@@ -343,6 +346,9 @@ if(!isset($_GET['target']) || 'newAttribute' == $_GET['target'] ) {
 <?php
   }
 ?>
+      <td valign="top" class="newOptionPanel-label">
+        <?=AM_AJAX_STOCK?> <?php echo vam_draw_input_field('newStock','','size="4" id="newStock"'); ?>
+      </td>
 			<?php
 			if(AM_USE_SORT_ORDER) {
 			?>
