@@ -60,9 +60,9 @@ define('AM_AJAX_MOVES_VALUE_DOWN', 'Переместить опцию вниз')
 define('AM_AJAX_ADDS_NEW_OPTION', 'Добавить новую опцию в список');
 define('AM_AJAX_OPTION', 'Опция:');
 define('AM_AJAX_VALUE', 'Значение:');
-define('AM_AJAX_PREFIX', 'Преф.цены:');
+define('AM_AJAX_PREFIX', 'Префикс цены:');
 define('AM_AJAX_PRICE', 'Цена:');
-define('AM_AJAX_WEIGHT_PREFIX', 'Преф.вес:');
+define('AM_AJAX_WEIGHT_PREFIX', 'Префикс веса:');
 define('AM_AJAX_WEIGHT', 'Вес:');
 define('AM_AJAX_SORT', 'Позиция:');
 define('AM_AJAX_ADDS_NEW_OPTION_VALUE', 'Добавить новое значение опции в список');
