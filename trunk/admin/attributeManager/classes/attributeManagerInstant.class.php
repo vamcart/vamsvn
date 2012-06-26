@@ -100,6 +100,25 @@ class attributeManagerInstant extends attributeManager {
 			'options_values_price' => $price,
 			'price_prefix' => $prefix
 		);
+
+        if (AM_USE_MPW) {
+          $this->getAndPrepare('weight', $get, $weight);
+          $this->getAndPrepare('weight_prefix', $get, $weight_prefix);
+        
+          if((empty($weight))||($weight=='0')){
+            $weight='0.0000';
+          }else{
+            if((empty($weight_prefix))||($weight_prefix==' ')){
+              $weight_prefix='+';
+            }
+          }
+          if(empty($weight_prefix)){
+            $weight_prefix=' ';
+          }
+          
+          $data['options_values_weight'] = $weight;
+          $data['weight_prefix'] = $weight_prefix;
+        }
 		
 		if (AM_USE_SORT_ORDER) {
 		
@@ -367,6 +386,24 @@ class attributeManagerInstant extends attributeManager {
 			'options_values_price' => $price,
 			'price_prefix' => $prefix
 		);
+		
+		
+        if (AM_USE_MPW) {
+          $this->getAndPrepare('weight', $get, $weight);
+          $this->getAndPrepare('weight_prefix', $get, $weight_prefix);
+
+          if((empty($weight))||($weight=='0')){
+            $weight='0.0000';
+          }else{
+            if((empty($weight_prefix))||($weight_prefix==' ')){
+              $weight_prefix='+';
+            }
+          }
+          
+          $data['options_values_weight'] = $weight;
+          $data['weight_prefix'] = $weight_prefix;
+        }
+	
 		/*if (AM_USE_SORT_ORDER) {
 			$data[AM_FIELD_OPTION_VALUE_SORT_ORDER] = $sortOrder;
 		}
@@ -414,6 +451,12 @@ class attributeManagerInstant extends attributeManager {
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['name'] = $allOptionsAndValues[$optionsId]['values'][$res['options_values_id']];
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['price'] = $res['options_values_price'];
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['prefix'] = $res['price_prefix'];
+				
+                if (AM_USE_MPW) {
+                  $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['weight'] = $res['options_values_weight'];
+                  $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['weight_prefix'] = $res['weight_prefix'];
+                }
+				
 //----------------------------
 // Change: Add download attributes function for AM
 // @author Urs Nyffenegger ak mytool

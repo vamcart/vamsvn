@@ -59,6 +59,13 @@ class attributeManagerConfig {
 		
 		$this->add('AM_USE_SORT_ORDER' , true);
 		$this->add('AM_USE_QT_PRO' , false); // DO NOT USE STILL IN DEV
+
+        $this->add('AM_DELETE_ZERO_STOCK', true); // if true, deletes options combinations with zero quantity from stock
+		
+        /**
+         * Use More Product Weight plugin? (http://addons.oscommerce.com/info/2706) (added by RusNN)
+         */
+        $this->add('AM_USE_MPW', true);
 		
 		/**
 		 * Sort order tables
@@ -88,6 +95,7 @@ class attributeManagerConfig {
 		$this->add('AM_SESSION_CURRENT_TEMPLATE_ORDER','am_current_template_order'); // current template order
 		$this->add('AM_SESSION_VALID_INCLUDE','am_valid_include'); // variable set on categories.php to make sure attributeManager.php has been included
 		$this->add('AM_SESSION_SORT_ORDER_INSTALL_CHECKED','am_sort_order_checked');
+      $this->add('AM_SESSION_MORE_PRODUCT_WEIGHT_INSTALL_CHECKED','am_more_product_weight_checked');
 		$this->add('AM_SESSION_TEMPLATES_INSTALL_CHECKED','am_templates_checked');
 		$this->add('AM_ACTION_GET_VARIABLE', 'amAction'); // attribute manager get variable name
 		$this->add('AM_PAGE_ACTION_NAME','pageAction'); // attribute manager parent page action e.g. new_product
@@ -102,6 +110,12 @@ class attributeManagerConfig {
 		 */
 		 
 		$this->installSortOrder();
+
+		/**
+		 * Install the More Product Weight fields if they dont already exist
+		 */
+		 
+		$this->installMoreProductWeight();
 	}
 	
 	function load() {
@@ -121,7 +135,7 @@ class attributeManagerConfig {
 	}
 	
 	function installTemplates() {
-		if($this->getValue('AM_USE_TEMPLATES') && !amSessionIsRegistered($this->getValue('AM_SESSION_SORT_ORDER_INSTALL_CHECKED')) ) {
+		if($this->getValue('AM_USE_TEMPLATES') && !amSessionIsRegistered($this->getValue('AM_SESSION_SORT_ORDER_INSTALL_CHECKED')) && !amSessionIsRegistered($this->getValue('AM_SESSION_MORE_PRODUCT_WEIGHT_INSTALL_CHECKED')) ) {
 									 
 			amDB::query("CREATE TABLE IF NOT EXISTS ".$this->getValue('AM_TABLE_TEMPLATES')." (
 					`template_id` INT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -135,6 +149,8 @@ class attributeManagerConfig {
 					`price_prefix` char(1) default '+',
 					`options_values_price` decimal(15,4) default 0,
 					`sortorder` int default 0,
+                    `weight_prefix` char(1) default '+',
+                    `options_values_weight` decimal(6,3) default '0.000',
 					INDEX ( `template_id` )
 				)"
 			);
@@ -142,6 +158,7 @@ class attributeManagerConfig {
 			$install_price_prefix=true;
 			$install_options_values_price=true;
 			$install_products_options_sort_order=true;
+            $install_more_product_weight=true;
 
 			// Fetch database Fields
 			$attributeFields = amDB::query("SHOW COLUMNS FROM ". $this->getValue(AM_TABLE_ATTRIBUTES_TO_TEMPLATES));
@@ -154,13 +171,18 @@ class attributeManagerConfig {
 			if( !in_array('options_values_price',$fields) ){
 				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`options_values_price` decimal(15,4) default 0)");
 			}
-			if( !in_array('sortorder',$fields) ){
-				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`sortorder` int default 0)");
+			if( !in_array('products_options_sort_order',$fields) ){
+				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`products_options_sort_order` int default 0)");
 			}
+            if( !in_array('weight_prefix',$fields) ){
+              amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`weight_prefix` char(1) default '+')");
+            }
+            if( !in_array('options_values_weight',$fields) ){
+              amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`options_values_weight` decimal(6,3) default '0.000')");
+            }
 
 			// register the checked session so that this check is only done once per session
 			amSessionRegister('AM_SESSION_TEMPLATES_INSTALL_CHECKED',true);
-
 
 		}
 	}
@@ -245,6 +267,57 @@ class attributeManagerConfig {
 		}
 		
 	}
+
+    function installMoreProductWeight() {
+        if($this->getValue('AM_USE_MPW') && !amSessionIsRegistered($this->getValue('AM_SESSION_MORE_PRODUCT_WEIGHT_INSTALL_CHECKED'))) {
+            // check that the fields are in the weights table
+            $weightFields = amDB::query("SHOW COLUMNS FROM ". TABLE_PRODUCTS_ATTRIBUTES);
+            while($field = amDB::fetchArray($weightFields)) 
+                $pa_fields[] = $field['Field'];
+            
+            $weightFields = amDB::query("SHOW COLUMNS FROM ". TABLE_ORDERS_PRODUCTS_ATTRIBUTES);
+            while($field = amDB::fetchArray($weightFields)) 
+                $opa_Fields[] = $field['Field'];
+            
+            $weightFields = amDB::query("SHOW COLUMNS FROM ". $this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES'));
+            while($field = amDB::fetchArray($weightFields)) 
+                $tmpl_Fields[] = $field['Field'];
+
+            $p_Type = '';
+            $weightFields = amDB::query("SHOW COLUMNS FROM ". TABLE_PRODUCTS);
+            while($field = amDB::fetchArray($weightFields)) {
+                if ($field['Field'] == 'products_weight') {
+                  $p_Type = $field['Type'];
+                  break;
+                }
+            }
+
+            // if not add them
+            if(!in_array('weight_prefix', $pa_fields)) 
+                amDB::query("ALTER TABLE ".TABLE_PRODUCTS_ATTRIBUTES." ADD COLUMN `weight_prefix` CHAR (1) NOT NULL");
+            if(!in_array('options_values_weight', $pa_fields)) 
+                amDB::query("ALTER TABLE ".TABLE_PRODUCTS_ATTRIBUTES." ADD COLUMN `options_values_weight` DECIMAL (6,3) DEFAULT '0.000' NOT NULL");
+                
+            if(!in_array('weight_prefix', $opa_Fields)) 
+                amDB::query("ALTER TABLE ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." ADD COLUMN `weight_prefix` CHAR (1) NOT NULL");
+            if(!in_array('options_values_weight', $opa_Fields)) 
+                amDB::query("ALTER TABLE ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." ADD COLUMN `options_values_weight` DECIMAL (6,3) DEFAULT '0.000' NOT NULL");
+            
+            if(!in_array('weight_prefix', $tmpl_Fields) && $this->getValue('AM_USE_SORT_ORDER')) 
+                amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD COLUMN `weight_prefix` CHAR (1) NOT NULL default '+'");
+            if(!in_array('options_values_weight', $tmpl_Fields) && $this->getValue('AM_USE_SORT_ORDER')) 
+                amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD COLUMN `options_values_weight` DECIMAL (6,3) DEFAULT '0.000' NOT NULL");
+            
+            // change field size of product weight
+            if (($p_Type != '') && ($p_Type != strtoupper('DECIMAL(6,3)'))) {
+                amDB::query("ALTER TABLE ".TABLE_PRODUCTS." CHANGE `products_weight` `products_weight` DECIMAL(6,3) DEFAULT '0.000' NOT NULL");
+            }
+
+            // register the checked session so that this check is only done once per session
+            amSessionRegister($this->getValue('AM_SESSION_MORE_PRODUCT_WEIGHT_INSTALL_CHECKED'), true);
+        }
+    }
+
 }
 
 $config = new attributeManagerConfig();
