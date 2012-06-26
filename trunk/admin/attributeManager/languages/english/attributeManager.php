@@ -103,5 +103,6 @@ define('TEXT_TYPE_CHECKBOX','Checkbox');
 define('TEXT_TYPE_READ_ONLY','Read Only');
 
 define('AM_AJAX_TYPE', 'Type:');
+define('AM_AJAX_STOCK', 'Stock:');
 
 ?>
