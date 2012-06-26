@@ -397,7 +397,7 @@ interface attributeManagerInterface {
   				$this->arrAllTemplatesAndAttributes[$templateID]['price_prefix'][$res['option_values_id']] = $res['price_prefix'];
   				$this->arrAllTemplatesAndAttributes[$templateID]['options_values_price'][$res['option_values_id']] = $res['options_values_price'];
 
-                  $this->arrAllTemplatesAndAttributes[$templateID]['stock'][$res['option_values_id']] = $res['stock'];
+                  $this->arrAllTemplatesAndAttributes[$templateID]['attributes_stock'][$res['option_values_id']] = $res['attributes_stock'];
           
                 if (AM_USE_MPW) {
                   $this->arrAllTemplatesAndAttributes[$templateID]['weight_prefix'][$res['option_values_id']] = $res['price_weight'];
@@ -511,7 +511,7 @@ interface attributeManagerInterface {
   							);
   						}
 
-                          $data['stock'] = $values['values'][$optionValuesId]['stock'];
+                          $data['attributes_stock'] = $values['values'][$optionValuesId]['stock'];
   						
                         if (AM_USE_MPW) {
                           $data['weight_prefix'] = $values['values'][$optionValuesId]['weight_prefix'];
