@@ -246,6 +246,9 @@ interface attributeManagerInterface {
 	function addOption($get) {
 		
 		$this->getAndPrepare('options', $get, $options);
+
+		$this->getAndPrepare('optionType', $get, $optionType);
+			
 		if (AM_USE_SORT_ORDER) {
 			$this->getAndPrepare('optionSort', $get, $optionSort);
 		}
@@ -273,13 +276,16 @@ interface attributeManagerInterface {
 				'language_id' => amDB::input($langId), 
 				'products_options_name' => amDB::input($name)
 			);
+
+			$arrData['products_options_type'] = amDB::input($optionType);
+
 			if (AM_USE_SORT_ORDER) {
 				$arrData[AM_FIELD_OPTION_SORT_ORDER] = amDB::input($optionSort);
 			}
 			if (AM_USE_QT_PRO) {
 				$arrData['products_options_track_stock'] = amDB::input($optionTrack);
 			}
-	
+
 			amDB::perform(TABLE_PRODUCTS_OPTIONS,$arrData);
 		}
 		
