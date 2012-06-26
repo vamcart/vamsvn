@@ -97,4 +97,15 @@ define('AM_AJAX_FIRST_SAVE', 'Сохраните товар перед доба�
 //-----------------------------
 
 define('AM_AJAX_OPTION_NEW_PANEL','Новая опция:');
+
+define('TEXT_TYPE_SELECT','-- Выберите --');
+define('TEXT_TYPE_DROPDOWN','Dropdown');
+define('TEXT_TYPE_TEXT','Text');
+define('TEXT_TYPE_TEXTAREA','Textarea');
+define('TEXT_TYPE_RADIO','Radio');
+define('TEXT_TYPE_CHECKBOX','Checkbox');
+define('TEXT_TYPE_READ_ONLY','Только для чтения');
+
+define('AM_AJAX_TYPE', 'Тип атрибута:');
+
 ?>
