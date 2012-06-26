@@ -238,6 +238,13 @@ if(false){
 
 					<span style="margin-right:41px;">
 					<?php echo drawDropDownPrefix('id="prefix_'.$optionValueId.'" style="margin:3px 0px 3px 0px;" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'prefix\');"',$optionValueInfo['prefix']);?><?php echo vam_draw_input_field("price_$optionValueId",$optionValueInfo['price'],' style="margin:3px 0px 3px 0px;" id="price_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'price\');"'); ?>
+<?php
+// More Product Weight added by RusNN 
+  if (AM_USE_MPW) { 
+    echo drawDropDownWeightPrefix('id="weight_prefix_'.$optionValueId.'" style="margin:3px 0px 3px 0px;" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'weight_prefix\');"',$optionValueInfo['weight_prefix']);
+    echo vam_draw_input_field("weight_$optionValueId",$optionValueInfo['weight'],' style="margin:3px 0px 3px 0px;" id="weight_'.$optionValueId.'" size="7" onfocus="amF(this)" onblur="amB(this)" onChange="return amUpdate(\''.$optionId.'\',\''.$optionValueId.'\',\'weight\');"');
+  }
+?>					
 					<?php
 					if(AM_USE_SORT_ORDER) {
 /*					?>
@@ -323,6 +330,19 @@ if(!isset($_GET['target']) || 'newAttribute' == $_GET['target'] ) {
 			<td valign="top" class="newOptionPanel-label">
 				<?=AM_AJAX_PRICE?> <?php echo vam_draw_input_field('newPrice','','size="4" id="newPrice"'); ?>
 			</td>
+<?php 
+// More Product Weight added by RusNN
+  if (AM_USE_MPW) {
+?>
+      <td valign="top" class="newOptionPanel-label">
+        <?=AM_AJAX_WEIGHT_PREFIX?> <?php echo drawDropDownWeightPrefix('id="weight_prefix_0"')?>
+      </td>
+      <td valign="top" class="newOptionPanel-label">
+        <?=AM_AJAX_WEIGHT?> <?php echo vam_draw_input_field('newWeight','','size="4" id="newWeight"'); ?>
+      </td>
+<?php
+  }
+?>
 			<?php
 			if(AM_USE_SORT_ORDER) {
 			?>
