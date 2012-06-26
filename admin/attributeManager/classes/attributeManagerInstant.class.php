@@ -101,6 +101,10 @@ class attributeManagerInstant extends attributeManager {
 			'price_prefix' => $prefix
 		);
 
+          $this->getAndPrepare('stock', $get, $stock);
+
+          $data['attributes_stock'] = $stock;
+
         if (AM_USE_MPW) {
           $this->getAndPrepare('weight', $get, $weight);
           $this->getAndPrepare('weight_prefix', $get, $weight_prefix);
@@ -387,6 +391,9 @@ class attributeManagerInstant extends attributeManager {
 			'price_prefix' => $prefix
 		);
 		
+          $this->getAndPrepare('stock', $get, $stock);
+
+          $data['attributes_stock'] = $stock;
 		
         if (AM_USE_MPW) {
           $this->getAndPrepare('weight', $get, $weight);
@@ -451,6 +458,8 @@ class attributeManagerInstant extends attributeManager {
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['name'] = $allOptionsAndValues[$optionsId]['values'][$res['options_values_id']];
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['price'] = $res['options_values_price'];
 				$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['prefix'] = $res['price_prefix'];
+
+                  $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['stock'] = $res['attributes_stock'];
 				
                 if (AM_USE_MPW) {
                   $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['options_values_id']]['weight'] = $res['options_values_weight'];

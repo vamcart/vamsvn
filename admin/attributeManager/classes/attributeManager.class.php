@@ -396,6 +396,8 @@ interface attributeManagerInterface {
   				// Added by Red Earth Design, Inc. to populate price and prefix
   				$this->arrAllTemplatesAndAttributes[$templateID]['price_prefix'][$res['option_values_id']] = $res['price_prefix'];
   				$this->arrAllTemplatesAndAttributes[$templateID]['options_values_price'][$res['option_values_id']] = $res['options_values_price'];
+
+                  $this->arrAllTemplatesAndAttributes[$templateID]['stock'][$res['option_values_id']] = $res['stock'];
           
                 if (AM_USE_MPW) {
                   $this->arrAllTemplatesAndAttributes[$templateID]['weight_prefix'][$res['option_values_id']] = $res['price_weight'];
@@ -508,6 +510,8 @@ interface attributeManagerInterface {
   								'sortorder' => $values['values'][$optionValuesId]['sortOrder']
   							);
   						}
+
+                          $data['stock'] = $values['values'][$optionValuesId]['stock'];
   						
                         if (AM_USE_MPW) {
                           $data['weight_prefix'] = $values['values'][$optionValuesId]['weight_prefix'];
@@ -591,6 +595,7 @@ interface attributeManagerInterface {
   										'option_value_id' => $optionValuesId,
   										'price' => $allTemplatesAttributes[$templateId]['options_values_price'][$optionValuesId],
   										'prefix' => $allTemplatesAttributes[$templateId]['price_prefix'][$optionValuesId],
+                      'stock' => $allTemplatesAttributes[$templateId]['attributes_stock'][$optionValuesId],
                       'weight' => $allTemplatesAttributes[$templateId]['options_values_weight'][$optionValuesId],
                       'weight_prefix' => $allTemplatesAttributes[$templateId]['weight_prefix'][$optionValuesId]
   									)
@@ -605,6 +610,7 @@ interface attributeManagerInterface {
   										'price' => $allTemplatesAttributes[$templateId]['options_values_price'][$optionValuesId],
   										'prefix' => $allTemplatesAttributes[$templateId]['price_prefix'][$optionValuesId],
 									    'sortOrder' => $allTemplatesAttributes[$templateId]['sortOrder'][$optionValuesId],
+                      'stock' => $allTemplatesAttributes[$templateId]['attributes_stock'][$optionValuesId],
                       'weight' => $allTemplatesAttributes[$templateId]['options_values_weight'][$optionValuesId],
                       'weight_prefix' => $allTemplatesAttributes[$templateId]['weight_prefix'][$optionValuesId],
 									  )
@@ -618,6 +624,7 @@ interface attributeManagerInterface {
   										'price' => $allTemplatesAttributes[$templateId]['options_values_price'][$optionValuesId],
   										'prefix' => $allTemplatesAttributes[$templateId]['price_prefix'][$optionValuesId],
 									    'stockTracking' => '0',
+                      'stock' => $allTemplatesAttributes[$templateId]['attributes_stock'][$optionValuesId],
                       'weight' => $allTemplatesAttributes[$templateId]['options_values_weight'][$optionValuesId],
                       'weight_prefix' => $allTemplatesAttributes[$templateId]['weight_prefix'][$optionValuesId]
 									  )
@@ -632,6 +639,7 @@ interface attributeManagerInterface {
   										'prefix' => $allTemplatesAttributes[$templateId]['price_prefix'][$optionValuesId],
 									    'sortOrder' => $allTemplatesAttributes[$templateId]['sortOrder'][$optionValuesId],
 									    'stockTracking' => '0',
+                      'stock' => $allTemplatesAttributes[$templateId]['attributes_stock'][$optionValuesId],
                       'weight' => $allTemplatesAttributes[$templateId]['options_values_weight'][$optionValuesId],
                       'weight_prefix' => $allTemplatesAttributes[$templateId]['weight_prefix'][$optionValuesId]
 									  )

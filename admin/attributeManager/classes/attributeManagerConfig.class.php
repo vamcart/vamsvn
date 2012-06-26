@@ -149,6 +149,7 @@ class attributeManagerConfig {
 					`price_prefix` char(1) default '+',
 					`options_values_price` decimal(15,4) default 0,
 					`sortorder` int default 0,
+					`attributes_stock` int default 0,
                     `weight_prefix` char(1) default '+',
                     `options_values_weight` decimal(6,3) default '0.000',
 					INDEX ( `template_id` )
@@ -173,6 +174,9 @@ class attributeManagerConfig {
 			}
 			if( !in_array('products_options_sort_order',$fields) ){
 				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`products_options_sort_order` int default 0)");
+			}
+			if( !in_array('attributes_stock',$fields) ){
+				amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`attributes_stock` int default 0)");
 			}
             if( !in_array('weight_prefix',$fields) ){
               amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD(`weight_prefix` char(1) default '+')");
@@ -295,6 +299,8 @@ class attributeManagerConfig {
             // if not add them
             if(!in_array('weight_prefix', $pa_fields)) 
                 amDB::query("ALTER TABLE ".TABLE_PRODUCTS_ATTRIBUTES." ADD COLUMN `weight_prefix` CHAR (1) NOT NULL");
+            if(!in_array('attributes_stock', $pa_fields)) 
+                amDB::query("ALTER TABLE ".TABLE_PRODUCTS_ATTRIBUTES." ADD COLUMN `attributes_stock` int DEFAULT 0");
             if(!in_array('options_values_weight', $pa_fields)) 
                 amDB::query("ALTER TABLE ".TABLE_PRODUCTS_ATTRIBUTES." ADD COLUMN `options_values_weight` DECIMAL (6,3) DEFAULT '0.000' NOT NULL");
                 
@@ -303,6 +309,8 @@ class attributeManagerConfig {
             if(!in_array('options_values_weight', $opa_Fields)) 
                 amDB::query("ALTER TABLE ".TABLE_ORDERS_PRODUCTS_ATTRIBUTES." ADD COLUMN `options_values_weight` DECIMAL (6,3) DEFAULT '0.000' NOT NULL");
             
+            if(!in_array('attributes_stock', $tmpl_Fields) && $this->getValue('AM_USE_SORT_ORDER')) 
+                amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD COLUMN `attributes_stock` int DEFAULT 0");
             if(!in_array('weight_prefix', $tmpl_Fields) && $this->getValue('AM_USE_SORT_ORDER')) 
                 amDB::query("ALTER TABLE ".$this->getValue('AM_TABLE_ATTRIBUTES_TO_TEMPLATES')." ADD COLUMN `weight_prefix` CHAR (1) NOT NULL default '+'");
             if(!in_array('options_values_weight', $tmpl_Fields) && $this->getValue('AM_USE_SORT_ORDER')) 

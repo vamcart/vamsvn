@@ -93,7 +93,10 @@ function addAttributeToProduct($get) {
     if(isset($get['weight_prefix']) === true) {
       $this->getAndPrepare('weight_prefix', $get, $getArray['weight_prefix']);
     }
+    
   }
+
+      $this->getAndPrepare('stock', $get, $getArray['stock']);
 
   //
   
@@ -128,6 +131,11 @@ function addAttributeToProduct($get) {
     
     $getArray['weight']=sprintf("%01.3f", $getArray['weight']);
   }
+  
+      if(empty($getArray['stock'])){
+      $getArray['stock']='0';
+    }
+
   
 //	echo '<br><br>Array arrSessionVar:: <br><br>';
 //	print_r($getArray);
@@ -310,6 +318,10 @@ function addAttributeToProduct($get) {
 
             $getArray['weight']=sprintf("%01.3f", $getArray['weight']);
           }
+          
+            if(isset($get['stock']) === true) {
+              $this->getAndPrepare('stock', $get, $getArray['stock']);
+            }
             
 		foreach($this->arrSessionVar as $id => $res) {
 			if(($res['option_id'] == $getArray['option_id']) && ($res['option_value_id'] == $getArray['option_value_id'])) {
@@ -321,6 +333,8 @@ function addAttributeToProduct($get) {
                   $this->arrSessionVar[$id]['weight'] = $getArray['weight'];
                   $this->arrSessionVar[$id]['weight_prefix'] = $getArray['weight_prefix'];
                 }
+
+                  $this->arrSessionVar[$id]['stock'] = $getArray['stock'];
                 
 				if (AM_USE_SORT_ORDER) {
 					$this->arrSessionVar[$id][AM_FIELD_OPTION_VALUE_SORT_ORDER] = $getArray['sortOrder'];
@@ -378,6 +392,8 @@ function addAttributeToProduct($get) {
                   $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['option_value_id']]['weight'] = $res['weight'];
                   $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['option_value_id']]['weight_prefix'] = $res['weight_prefix'];
                 }
+
+                  $this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['option_value_id']]['stock'] = $res['stock'];
 
 				if (AM_USE_SORT_ORDER) {
 						$this->arrAllProductOptionsAndValues[$optionsId]['values'][$res['option_value_id']]['sortOrder'] = $res['sortOrder'];
@@ -440,6 +456,7 @@ function addAttributeToProduct($get) {
 														'optionValue-price' => $currentOptionValues['price'],
 														'optionValue-prefix' => $currentOptionValues['prefix'],
 														'optionValue-sortorder' => $sortorder,
+                                          'optionValue-stock' => $currentOptionValues['stock'],
                                           'optionValue-weight' => $currentOptionValues['weight'],
                                           'optionValue-weight_prefix' => $currentOptionValues['weight_prefix'],
 														'option-key' => $key,
@@ -469,6 +486,7 @@ function addAttributeToProduct($get) {
 																	'price' => $currentOption['optionValue-price'],
 																	'prefix' => $currentOption['optionValue-prefix'],
 																	'sortOrder' => $currentOption['optionValue-sortorder'],
+                                                   'stock' => $currentOption['optionValue-stock'],
                                                    'weight' => $currentOption['optionValue-weight'],
                                                    'weight_prefix' => $currentOption['optionValue-weight_prefix'],
 																);

@@ -135,6 +135,8 @@ function amUpdate(optionId, optionValueId, optionSender) {
 		setDropDownValue('prefix_'+optionValueId,'%2B','s');//+
 	}
 
+    stock=getDropDownValue('stock_'+optionValueId);
+
     weight_prefix=getDropDownValue('weight_prefix_'+optionValueId);
     weight=getDropDownValue('weight_'+optionValueId);
     if ((weight != null) && (weight_prefix != null)) {
@@ -162,13 +164,14 @@ function amUpdate(optionId, optionValueId, optionSender) {
         weight+='0';
       }
       setDropDownValue('weight_'+optionValueId,weight,'i');
+      setDropDownValue('stock_'+optionValueId,stock,'i');
 
       if((weight!='0.000')&&((weight_prefix=='')||(weight_prefix==' '))){
         setDropDownValue('weight_prefix_'+optionValueId,'%2B','s');//+
       }
     }
 
-	amSendRequest('amAction=update&option_id='+optionId+'&option_value_id='+optionValueId+'&price='+getDropDownValue('price_'+optionValueId)+'&prefix='+getDropDownValue('prefix_'+optionValueId)+'&sortOrder='+getDropDownValue('sortOrder_'+optionValueId)+'&weight='+getDropDownValue('weight_'+optionValueId)+'&weight_prefix='+getDropDownValue('weight_prefix_'+optionValueId),'',false);
+	amSendRequest('amAction=update&option_id='+optionId+'&option_value_id='+optionValueId+'&price='+getDropDownValue('price_'+optionValueId)+'&prefix='+getDropDownValue('prefix_'+optionValueId)+'&sortOrder='+getDropDownValue('sortOrder_'+optionValueId)+'&stock='+getDropDownValue('stock_'+optionValueId)+'&weight='+getDropDownValue('weight_'+optionValueId)+'&weight_prefix='+getDropDownValue('weight_prefix_'+optionValueId),'',false);
 	getElement('price_'+optionValueId).blur();
     if ((weight != null) && (weight_prefix != null)) getElement('weight_'+optionValueId).blur();
     var el = getElement('sortOrder_'+optionValueId);
@@ -219,6 +222,7 @@ function amAddAttributeToProduct() {
 	var optionValue = getDropDownValue('optionValueDropDown');
 	var pricePrefix = getDropDownValue('prefix_0');
 	var price = getDropDownValue('newPrice');
+	var stock = getDropDownValue('newStock');
   var weightPrefix = getDropDownValue('weight_prefix_0');
   var weight = getDropDownValue('newWeight');
 //	var sortOrder = getDropDownValue('newSort');
@@ -226,7 +230,7 @@ function amAddAttributeToProduct() {
 	
 	if(0 == option || 0 == optionValue)
 		return false;
-	amSendRequest('amAction=addAttributeToProduct&option_id='+option+'&option_value_id='+optionValue+'&prefix='+pricePrefix+'&price='+price+'&sortOrder='+sortOrder+'&weight_prefix='+weightPrefix+'&weight='+weight);
+	amSendRequest('amAction=addAttributeToProduct&option_id='+option+'&option_value_id='+optionValue+'&prefix='+pricePrefix+'&price='+price+'&stock='+stock+'&sortOrder='+sortOrder+'&weight_prefix='+weightPrefix+'&weight='+weight);
 	return false;
 }
 
