@@ -202,7 +202,7 @@ function checkBox(id) {
 // QT Pro Plugin
 
 function amAddOption() {
-	amSendRequest('amAction=addOption&options='+getAllPromptTextValues()+'&optionSort='+getDropDownValue('optionSortDropDown')+'&optionTrack='+getPromptHiddenValue('stockTracking_1'),'',true,'newAttribute');
+	amSendRequest('amAction=addOption&options='+getAllPromptTextValues()+'&optionSort='+getDropDownValue('optionSortDropDown')+'&optionType='+getDropDownValue('optionType')+'&optionTrack='+getPromptHiddenValue('stockTracking_1'),'',true,'newAttribute');
 	removeCustomPrompt();
 	return false;
 }

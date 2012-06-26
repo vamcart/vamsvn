@@ -31,24 +31,32 @@ return '
 function languageTextFields() {
 
 $return = '
-<table>';
+<table border="0">';
 	$languages = vam_get_languages();
 	foreach ($languages as $amLanguage) {
 $return .='
 	<tr>
 		<td align="right">'. $amLanguage['name'].': </td>
-		<td>'.vam_draw_input_field('text_field_'.$amLanguage['id'],'','id="'.$amLanguage['id'].'"').'</td>
+		<td align="left">'.vam_draw_input_field('text_field_'.$amLanguage['id'],'','id="'.$amLanguage['id'].'"').'</td>
 	</tr>';
 	}
 if ($_GET['section']== 'amAddOption') {
 $style = 'style="margin:3px 0px 3px 0px;" id="stockTracking_1" size="4"';
 $optionSortDrop = array('1', '2', '3', '4', '5', '6', '7', '8', '9');
+  $type_array = array();
+  $type_array[]=array('id'=>'1','text'=>TEXT_TYPE_DROPDOWN);
+  $type_array[]=array('id'=>'2','text'=>TEXT_TYPE_TEXT);
+  $type_array[]=array('id'=>'3','text'=>TEXT_TYPE_TEXTAREA);
+  $type_array[]=array('id'=>'4','text'=>TEXT_TYPE_RADIO);
+  $type_array[]=array('id'=>'5','text'=>TEXT_TYPE_CHECKBOX);
+  $type_array[]=array('id'=>'6','text'=>TEXT_TYPE_READ_ONLY);
 $return .= '	<tr>';
 if(AM_USE_SORT_ORDER) {
-	$return .= '<td>'.AM_AJAX_SORT.vam_draw_pull_down_menu('optionSortDropDown', $optionSortDrop, '', 'id="optionSortDropDown"').'</td>';
+	$return .= '<td>'.AM_AJAX_SORT.'</td><td align="left">'.vam_draw_pull_down_menu('optionSortDropDown', $optionSortDrop, '', 'id="optionSortDropDown"').'</td></tr>';
 } else {
 	$return .= vam_draw_hidden_field('optionSortDropDown', '0', 'id="optionSortDropDown"');
 }
+	$return .= '<tr><td>'.AM_AJAX_TYPE.'</td><td align="left">'.vam_draw_pull_down_menu('optionType', $type_array, '', 'id="optionType"').'</td></tr>';
 
 if(AM_USE_QT_PRO) {
 	$return .='	<td>'.AM_AJAX_TRACK_STOCK.' <img src="attributeManager/images/icon_up.png" id="imgCheck_1" onclick="checkBox(1)" title="'.AM_AJAX_TRACK_STOCK_IMGALT.'" />
