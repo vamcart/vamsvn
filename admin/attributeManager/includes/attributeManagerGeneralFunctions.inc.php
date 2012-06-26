@@ -25,6 +25,23 @@ function drawDropDownPrefix($params,$selected = '') {
 	);
 }
 
+// SATRT: More Product Weight added by RusNN
+if (AM_USE_MPW) {
+  function drawDropDownWeightPrefix($params,$selected = '') {
+    return vam_draw_pull_down_menu(
+      "weight_prefix",
+      array(
+        array('id'=>'','text'=>''),
+        array('id'=>urlencode('+'),'text'=>'+'),
+        array('id'=>'-','text'=>'-')
+      ),
+      ($selected == '+') ? urlencode('+') : $selected,
+      $params
+    );
+  }
+}
+// END More Product Weight added by RusNN
+
 function &amGetAttributeManagerInstance($get) {
 	
 	if (!is_numeric($get['products_id']) || AM_ATOMIC_PRODUCT_UPDATES) {
