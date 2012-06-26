@@ -35,9 +35,9 @@ define('AM_AJAX_PROMPT_REMOVE_OPTION', 'Вы уверены, что хотите
 define('AM_AJAX_PROMPT_STOCK_COMBINATION', 'Вы уверены, что хотите удалить эту комбинацию опций для товара?');
 
 define('AM_AJAX_PROMPT_LOAD_TEMPLATE', 'Вы уверены, что хотите загрузить шаблон %s? <br />Все текущий опции товара будут изменены. Изменения невозможно будет отменить.');
-define('AM_AJAX_NEW_TEMPLATE_NAME_HEADER', 'Введите название для нового шаблона. Или...');
+define('AM_AJAX_NEW_TEMPLATE_NAME_HEADER', 'Введите название для нового шаблона, либо');
 define('AM_AJAX_NEW_NAME', 'Новое наименование:');
-define('AM_AJAX_CHOOSE_EXISTING_TEMPLATE_TO_OVERWRITE', ' ...<br /> ... выберите существующий для его замены');
+define('AM_AJAX_CHOOSE_EXISTING_TEMPLATE_TO_OVERWRITE', '<br />выберите существующий для его замены');
 define('AM_AJAX_CHOOSE_EXISTING_TEMPLATE_TITLE', 'Существующий:'); 
 define('AM_AJAX_RENAME_TEMPLATE_ENTER_NEW_NAME', 'Введите новое название для шаблона %s');
 define('AM_AJAX_PROMPT_DELETE_TEMPLATE', 'Вы уверены, что хотите удалить шаблон %s?<br>Изменения нельзя будет отменить!');
