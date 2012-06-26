@@ -247,14 +247,18 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form hidden field
-  function vam_draw_hidden_field($name, $value = '') {
-    $field = '<input type="hidden" name="' . $name . '" value="';
-    if ($value != '') {
-      $field .= trim($value);
+  function vam_draw_hidden_field($name, $value = '', $parameters = '') {
+    $field = '<input type="hidden" name="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" value="';
+
+    if (vam_not_null($value)) {
+      $field .= vam_parse_input_field_data($value, array('"' => '&quot;')) . '"';
     } else {
-      $field .= trim($GLOBALS[$name]);
+      $field .= vam_parse_input_field_data($GLOBALS[$name], array('"' => '&quot;')) . '"';
     }
-    $field .= '">';
+
+    if (vam_not_null($parameters)) $field .= ' ' . $parameters;
+
+    $field .= ' />';
 
     return $field;
   }
