@@ -107,5 +107,6 @@ define('TEXT_TYPE_CHECKBOX','Checkbox');
 define('TEXT_TYPE_READ_ONLY','Только для чтения');
 
 define('AM_AJAX_TYPE', 'Тип атрибута:');
+define('AM_AJAX_STOCK', 'Количество:');
 
 ?>
