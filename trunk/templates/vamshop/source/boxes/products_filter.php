@@ -38,7 +38,7 @@ $box_content='';
     
     if ((isset($_GET['cat']) && isset($current_category_id)) or FILTERS_MAIN_PAGE == 'False') $get_category = "and s2c.categories_id = '" . $current_category_id . "'";
      
-    $specs_query_raw = "select s.specifications_id,
+    $specs_query_raw = "select distinct s.specifications_id,
                                s.products_column_name,
                                s.filter_class,
                                s.filter_show_all,
