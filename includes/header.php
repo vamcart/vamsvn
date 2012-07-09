@@ -258,6 +258,13 @@ function checkForm() {
     error = 1;
   }
 
+  var captcha = document.getElementById("product_reviews_write").captcha.value;
+
+  if (captcha.length < 4) {
+    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_CAPTCHA); ?>");
+    error = 1;
+  }
+
   if (!((document.getElementById("product_reviews_write").rating[0].checked) || (document.getElementById("product_reviews_write").rating[1].checked) || (document.getElementById("product_reviews_write").rating[2].checked) || (document.getElementById("product_reviews_write").rating[3].checked) || (document.getElementById("product_reviews_write").rating[4].checked))) {
     error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_RATING); ?>");
     error = 1;
