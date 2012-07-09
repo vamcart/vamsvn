@@ -63,7 +63,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
   if ($check_customer['login_tries'] >= LOGIN_NUM and $difference < $blocktime) {
 		// Action for bцse ?
     $vamTemplate->assign('CAPTCHA_IMG', '<img src="'.FILENAME_DISPLAY_CAPTCHA.'" alt="captcha" name="captcha" />');    
-    $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6"', 'text', false));
+    $vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha" maxlength="6"', 'text', false));
     if ($_POST['captcha'] == $_SESSION['vvcode']){
     // code ok
 		// Check that password is good
