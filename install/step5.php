@@ -332,11 +332,9 @@
 'php_value mbstring.internal_encoding UTF-8'. "\n" .
 '</IfModule>    '. "\n" . '';
 
-    $fp = fopen(DIR_FS_CATALOG . 'htaccess.txt', 'w');
+    $fp = fopen(DIR_FS_CATALOG . '.htaccess', 'w');
     fputs($fp, $file_contents);
     fclose($fp);
-
-    rename(DIR_FS_CATALOG . 'htaccess.txt', DIR_FS_CATALOG . '.htaccess');
 
 ?>
 
