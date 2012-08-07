@@ -10,12 +10,12 @@
   Released under the GNU General Public License
 */
 
-  $www_location = 'http://' . $HTTP_SERVER_VARS['HTTP_HOST'];
+  $www_location = 'http://' . $_SERVER['HTTP_HOST'];
 
-  if (isset($HTTP_SERVER_VARS['REQUEST_URI']) && !empty($HTTP_SERVER_VARS['REQUEST_URI'])) {
-    $www_location .= $HTTP_SERVER_VARS['REQUEST_URI'];
+  if (isset($_SERVER['REQUEST_URI']) && !empty($_SERVER['REQUEST_URI'])) {
+    $www_location .= $_SERVER['REQUEST_URI'];
   } else {
-    $www_location .= $HTTP_SERVER_VARS['SCRIPT_FILENAME'];
+    $www_location .= $_SERVER['SCRIPT_FILENAME'];
   }
 
   $www_location = substr($www_location, 0, strpos($www_location, 'install'));
@@ -35,7 +35,7 @@
 
   <h1>New Installation</h1>
 
-  <p>This web-based installation routine will correctly setup and configure osCommerce Online Merchant to run on this server.</p>
+  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
   <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 

@@ -112,7 +112,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 
   <h1>New Installation</h1>
 
-  <p>This web-based installation routine will correctly setup and configure osCommerce Online Merchant to run on this server.</p>
+  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
   <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 
@@ -121,9 +121,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
     <h3>Step 4: Finished!</h3>
 
     <div class="infoPaneContents">
-      <p>Congratulations on installing and configuring osCommerce Online Merchant as your online store solution!</p>
-      <p>We wish you all the best with the success of your online store and welcome you to join and participate in our community.</p>
-      <p align="right">- The osCommerce Team</p>
+      <p>Congratulations on installing and configuring VamShop as your online store solution!</p>
     </div>
   </div>
 
@@ -387,7 +385,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 
     <h3>Post-Installation Notes</h3>
 
-    <p>It is recommended to follow the following post-installation steps to secure your osCommerce Online Merchant online store:</p>
+    <p>It is recommended to follow the following post-installation steps to secure your VamShop online store:</p>
 
     <ol>
       <li>Delete the <?php echo $dir_fs_document_root . 'install'; ?> directory.</li>
@@ -418,8 +416,6 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
   }
 ?>
 
-      <li>Review the directory permissions on the Administration Tool -> Tools -> Security Directory Permissions page.</li>
-      <li>The Administration Tool should be further protected using htaccess/htpasswd and can be set-up within the Configuration -> Administrators page.</li>
     </ol>
   </div>
 </div>

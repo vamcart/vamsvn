@@ -17,7 +17,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>osCommerce, Open Source E-Commerce Solutions</title>
+<title>VamShop</title>
 
 <meta name="robots" content="noindex,nofollow">
 
@@ -34,14 +34,6 @@
     <a href="index.php"><img src="images/vamshop.png" border="0" title="VamShop" style="margin: 5px;" /></a>
   </div>
 </div>
-
-<script type="text/javascript">
-<!--
-  if (NiftyCheck()) {
-    Rounded("div#pageHeader", "all", "#FFFFFF", "#f7f7f5", "smooth border #b3b6b0");
-  }
-//-->
-</script>
 
 <div id="pageContent">
 <?php require('templates/pages/' . $page_contents); ?>

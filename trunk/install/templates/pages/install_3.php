@@ -32,7 +32,7 @@
 
   <h1>New Installation</h1>
 
-  <p>This web-based installation routine will correctly setup and configure osCommerce Online Merchant to run on this server.</p>
+  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
   <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 
@@ -58,7 +58,7 @@
       </tr>
       <tr>
         <td class="inputField"><?php echo 'Store Owner E-Mail Address<br />' . osc_draw_input_field('CFG_STORE_OWNER_EMAIL_ADDRESS', null, 'class="text"'); ?></td>
-        <td class="inputDescription">The e-mail address of the store owner that is presented to the public.</td>
+        <td class="inputDescription">The e-mail address of the store owner.</td>
       </tr>
       <tr>
         <td class="inputField"><?php echo 'Administrator Password<br />' . osc_draw_input_field('CFG_ADMINISTRATOR_PASSWORD', null, 'class="text"'); ?></td>
