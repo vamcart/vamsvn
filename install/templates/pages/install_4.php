@@ -14,26 +14,11 @@
 
   require('../includes/configure.php');
   
-  require('includes/application.php');
-  require_once(DIR_FS_INC.'vam_draw_separator.inc.php');
-  
-  require_once(DIR_FS_INC . 'vam_rand.inc.php');
   require_once(DIR_FS_INC . 'vam_encrypt_password.inc.php');
-  require_once(DIR_FS_INC . 'vam_db_connect.inc.php');
   require_once(DIR_FS_INC . 'vam_db_query.inc.php');
-  require_once(DIR_FS_INC . 'vam_db_fetch_array.inc.php');
-  require_once(DIR_FS_INC .'vam_validate_email.inc.php');
-  require_once(DIR_FS_INC .'vam_db_input.inc.php');
   require_once(DIR_FS_INC .'vam_db_perform.inc.php');
+  require_once(DIR_FS_INC .'vam_db_input.inc.php');
   require_once(DIR_FS_INC .'vam_db_num_rows.inc.php');
-  require_once(DIR_FS_INC .'vam_redirect.inc.php');
-  require_once(DIR_FS_INC .'vam_href_link.inc.php');
-  require_once(DIR_FS_INC . 'vam_draw_pull_down_menu.inc.php');
-  require_once(DIR_FS_INC . 'vam_draw_input_field.inc.php');
-  require_once(DIR_FS_INC . 'vam_get_country_list.inc.php');
-
-  include_once(DIR_FS_INC . 'vam_draw_pull_down_menu.inc.php');
-  include_once(DIR_FS_INC . 'vam_get_countries.inc.php');
 
   osc_db_connect(trim($_POST['DB_SERVER']), trim($_POST['DB_SERVER_USERNAME']), trim($_POST['DB_SERVER_PASSWORD']));
   osc_db_select_db(trim($_POST['DB_DATABASE']));
