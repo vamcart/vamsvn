@@ -215,7 +215,7 @@
     }
 ?>
 
-    <p align="right"><a href="index.php"><img src="images/button_retry.gif" border="0" alt="Retry" /></a></p>
+    <p align="right"><a class="button" href="index.php"><span><img src="images/icons/buttons/retry.png" alt="Retry" title="Retry" width="12" height="12"  />&nbsp;Retry</span></a></p>
 
 <?php
   } else {
@@ -223,7 +223,7 @@
 
     <p>The webserver environment has been verified to proceed with a successful installation and configuration of your online store.</p>
     <p>Please continue to start the installation procedure.</p>
-    <p align="right"><a href="install.php"><img src="images/button_continue.gif" border="0" alt="Continue" /></a></p>
+    <p align="right"><a class="button" href="install.php"><span><img src="images/icons/buttons/submit.png" alt="Continue" title="Continue" width="12" height="12"  />&nbsp;Continue</span></a></p>
 
 <?php
   }
