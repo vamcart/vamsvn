@@ -394,8 +394,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 
     <table border="0" width="99%" cellspacing="0" cellpadding="0">
       <tr>
-        <td align="center" width="50%"><a href="<?php echo $http_server . $http_catalog . 'index.php'; ?>" target="_blank"><img src="images/button_catalog.gif" border="0" alt="Catalog" /></a></td>
-        <td align="center" width="50%"><a href="<?php echo $http_server . $http_catalog . $admin_folder . '/index.php'; ?>" target="_blank"><img src="images/button_administration_tool.gif" border="0" alt="Administration Tool" /></a></td>
+        <td align="center"><a class="button" href="<?php echo $http_server . $http_catalog . 'index.php'; ?>" target="_blank"><span><img src="images/icons/buttons/catalog.png" alt="Catalog" title="Catalog" width="12" height="12"  />&nbsp;Catalog</span></a></td>
       </tr>
     </table>
 
