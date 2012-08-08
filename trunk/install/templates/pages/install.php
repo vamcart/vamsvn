@@ -29,11 +29,11 @@
         result.shift();
 
         if (result[0] == '1') {
-          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/success.gif" align="right" hspace="5" vspace="5" border="0" />Database imported successfully.</p>';
+          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/success.gif" align="right" hspace="5" vspace="5" border="0" />База данных успешно загружена.</p>';
 
           setTimeout("document.getElementById('installForm').submit();", 2000);
         } else {
-          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/failed.gif" align="right" hspace="5" vspace="5" border="0" />There was a problem importing the database. The following error had occured:</p><p><strong>%s</strong></p><p>Please verify the connection parameters and try again.</p>'.replace('%s', result[1]);
+          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/failed.gif" align="right" hspace="5" vspace="5" border="0" />Возникла проблема при загрузке базы данных. Ошибка:</p><p><strong>%s</strong></p><p>Пожалуйста, проверьте указанные данные для подключения к базе данных и попробуйте снова.</p>'.replace('%s', result[1]);
         }
       }
 
@@ -48,11 +48,11 @@
         result.shift();
 
         if (result[0] == '1') {
-          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />The database structure is now being imported. Please be patient during this procedure.</p>';
+          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />База данных в данный момент загружается. Пожалуйста, подождите.</p>';
 
           loadXMLDoc("rpc.php?action=dbImport&server=" + urlEncode(dbServer) + "&username=" + urlEncode(dbUsername) + "&password=" + urlEncode(dbPassword) + "&name=" + urlEncode(dbName), handleHttpResponse_DoImport);
         } else {
-          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/failed.gif" align="right" hspace="5" vspace="5" border="0" />There was a problem connecting to the database server. The following error had occured:</p><p><strong>%s</strong></p><p>Please verify the connection parameters and try again.</p>'.replace('%s', result[1]);
+          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/failed.gif" align="right" hspace="5" vspace="5" border="0" />Возникла проблема при подключении к базе данных. Ошибка:</p><p><strong>%s</strong></p><p>Пожалуйста, проверьте указанные данные для подключения к базе данных и попробуйте снова.</p>'.replace('%s', result[1]);
           formSubmited = false;
         }
       } else {
@@ -70,7 +70,7 @@
 
     showDiv(document.getElementById('mBox'));
 
-    document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />Testing database connection..</p>';
+    document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />Проверка подключения к базе данных..</p>';
 
     dbServer = document.getElementById("DB_SERVER").value;
     dbUsername = document.getElementById("DB_SERVER_USERNAME").value;
@@ -86,26 +86,24 @@
 <div class="mainBlock">
   <div class="stepsBox">
     <ol>
-      <li style="font-weight: bold;">Database Server</li>
-      <li>Web Server</li>
-      <li>Online Store Settings</li>
-      <li>Finished!</li>
+      <li style="font-weight: bold;">База данных</li>
+      <li>Веб Сервер</li>
+      <li>Настройки магазина</li>
+      <li>Установка завершена!</li>
     </ol>
   </div>
 
-  <h1>New Installation</h1>
+  <h1>Установка VamShop</h1><br /><br /><br />
 
-  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
-  <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 
 <div class="contentBlock">
   <div class="infoPane">
-    <h3>Step 1: Database Server</h3>
+    <h3>Шаг 1: База данных</h3>
 
     <div class="infoPaneContents">
-      <p>The database server stores the content of the online store such as product information, customer information, and the orders that have been made.</p>
-      <p>Please consult your server administrator if your database server parameters are not yet known.</p>
+      <p>В базе данных хранится вся информация интернет-магазина, например информация о товарах, покупателях, заказах.</p>
+      <p>Если Вы не знаете данные для доступа к базе данных, спросите у Вашего хостера.</p>
     </div>
   </div>
 
@@ -114,30 +112,30 @@
   </div>
 
   <div class="contentPane">
-    <h2>Database Server</h2>
+    <h2>База данных</h2>
 
     <form name="install" id="installForm" action="install.php?step=2" method="post" onsubmit="prepareDB(); return false;">
 
     <table border="0" width="99%" cellspacing="0" cellpadding="5" class="inputForm">
       <tr>
-        <td class="inputField"><?php echo 'Database Server<br />' . osc_draw_input_field('DB_SERVER', 'localhost', 'class="text"'); ?></td>
-        <td class="inputDescription">The address of the database server in the form of a hostname or IP address.</td>
+        <td class="inputField"><?php echo 'Сервер<br />' . osc_draw_input_field('DB_SERVER', 'localhost', 'class="text"'); ?></td>
+        <td class="inputDescription">Адрес сервера базы данных.</td>
       </tr>
       <tr>
-        <td class="inputField"><?php echo 'Username<br />' . osc_draw_input_field('DB_SERVER_USERNAME', null, 'class="text"'); ?></td>
-        <td class="inputDescription">The username used to connect to the database server.</td>
+        <td class="inputField"><?php echo 'Имя пользователя<br />' . osc_draw_input_field('DB_SERVER_USERNAME', null, 'class="text"'); ?></td>
+        <td class="inputDescription">Имя пользователя для подключения к базе данных.</td>
       </tr>
       <tr>
-        <td class="inputField"><?php echo 'Password<br />' . osc_draw_password_field('DB_SERVER_PASSWORD', 'class="text"'); ?></td>
-        <td class="inputDescription">The password that is used together with the username to connect to the database server.</td>
+        <td class="inputField"><?php echo 'Пароль<br />' . osc_draw_password_field('DB_SERVER_PASSWORD', 'class="text"'); ?></td>
+        <td class="inputDescription">Пароль для подключения к базе данных.</td>
       </tr>
       <tr>
-        <td class="inputField"><?php echo 'Database Name<br />' . osc_draw_input_field('DB_DATABASE', null, 'class="text"'); ?></td>
-        <td class="inputDescription">The name of the database to hold the data in.</td>
+        <td class="inputField"><?php echo 'Название базы<br />' . osc_draw_input_field('DB_DATABASE', null, 'class="text"'); ?></td>
+        <td class="inputDescription">Название базы данных.</td>
       </tr>
     </table>
 
-    <p align="right"><span class="button"><button type="submit"><img src="images/icons/buttons/submit.png" alt="Continue" title=" Continue " width="12" height="12" />&nbsp;Continue</button></span>&nbsp;&nbsp;<a class="button" href="index.php"><span><img src="images/icons/buttons/cancel.png" alt="Cancel" title="Cancel" width="12" height="12"  />&nbsp;Cancel</span></a></p>
+    <p align="right"><span class="button"><button type="submit"><img src="images/icons/buttons/submit.png" alt="Продолжить" title=" Продолжить " width="12" height="12" />&nbsp;Продолжить</button></span>&nbsp;&nbsp;<a class="button" href="index.php"><span><img src="images/icons/buttons/cancel.png" alt="Отменить" title="Отменить" width="12" height="12"  />&nbsp;Отменить</span></a></p>
 
     </form>
   </div>
