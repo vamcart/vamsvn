@@ -18,19 +18,19 @@
 ?>
 
 <div class="mainBlock">
-  <h1>Welcome to VamShop v<?php echo osc_get_version(); ?>!</h1>
+  <h1>Установка VamShop версии <?php echo osc_get_version(); ?>!</h1>
 
-  <p>VamShop helps you sell products worldwide with your own online store. Its Administration Tool manages products, customers, orders, newsletters, specials, and more to successfully build the success of your online business.</p>
+  <p>С помощью VamShop Вы сможете создать свой интернет-магазин и продавать товары, услуги по всему миру. Всё, что для этого необходимо, уже включено в VamShop и готово к работе. Достаточно лишь установить VamShop и начать работу.</p>
 </div>
 
 <div class="contentBlock">
   <div class="infoPane">
-    <h3>Server Capabilities</h3>
+    <h3>Параметры сервера</h3>
 
     <div class="infoPaneContents">
       <table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
-          <td><strong>PHP Version</strong></td>
+          <td><strong>Версия PHP</strong></td>
           <td align="right"><?php echo PHP_VERSION; ?></td>
           <td align="right" width="25"><img src="images/<?php echo ((PHP_VERSION >= 4) ? 'tick.gif' : 'cross.gif'); ?>" border="0" width="16" height="16"></td>
         </tr>
@@ -44,7 +44,7 @@
 
       <table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
-          <td><strong>PHP Settings</strong></td>
+          <td><strong>Настройки PHP</strong></td>
           <td align="right"></td>
           <td align="right" width="25"></td>
         </tr>
@@ -79,7 +79,7 @@
 
       <table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
-          <td><strong>Required PHP Extensions</strong></td>
+          <td><strong>Необходимые PHP модули</strong></td>
           <td align="right" width="25"></td>
         </tr>
         <tr>
@@ -92,7 +92,7 @@
 
       <table border="0" width="100%" cellspacing="0" cellpadding="2">
         <tr>
-          <td><strong>Optional PHP Extensions</strong></td>
+          <td><strong>Необязательные PHP модули</strong></td>
           <td align="right" width="25"></td>
         </tr>
         <tr>
@@ -117,7 +117,7 @@
   </div>
 
   <div class="contentPane">
-    <h2>New Installation</h2>
+    <h2>Новая установка</h2>
 
 <?php
   $configfile_array = array();
@@ -147,7 +147,7 @@
   }
 
   if (!extension_loaded('mysql')) {
-    $warning_array['mysql'] = 'The MySQL extension is required but is not installed. Please enable it to continue installation.';
+    $warning_array['mysql'] = 'Модуль MySQL присутствует в системе, но не активирован. Пожалуйста, активируйте данный PHP модуль для продолжения установки.';
   }
 
   if ((sizeof($configfile_array) > 0) || (sizeof($warning_array) > 0)) {
@@ -178,8 +178,8 @@
     if (sizeof($configfile_array) > 0) {
 ?>
 
-      <p>The webserver is not able to save the installation parameters to its configuration files.</p>
-      <p>The following files need to have their file permissions set to world-writeable (chmod 777):</p>
+      <p>Вебсервер не может записать установочные параметры в конфигурациооные файлы.</p>
+      <p>Установите права доступа на запись (chmod 777) для следующих файлов:</p>
       <p>
 
 <?php
@@ -206,23 +206,23 @@
   if ((sizeof($configfile_array) > 0) || (sizeof($warning_array) > 0)) {
 ?>
 
-    <p>Please correct the above errors and retry the installation procedure with the changes in place.</p>
+    <p>Пожалуйста, исправьте указанные выше ошибки и повторите сначала процедуру установки.</p>
 
 <?php
     if (sizeof($warning_array) > 0) {
-      echo '    <p><i>Changing webserver configuration parameters may require the webserver service to be restarted before the changes take affect.</i></p>' . "\n";
+      echo '    <p><i>Изменения настроек вебсервера может потребовать его перезагрузки для вступления изменений в силу.</i></p>' . "\n";
     }
 ?>
 
-    <p align="right"><a class="button" href="index.php"><span><img src="images/icons/buttons/retry.png" alt="Retry" title="Retry" width="12" height="12"  />&nbsp;Retry</span></a></p>
+    <p align="right"><a class="button" href="index.php"><span><img src="images/icons/buttons/retry.png" alt="Попробовать снова" title="Попробовать снова" width="12" height="12"  />&nbsp;Попробовать снова</span></a></p>
 
 <?php
   } else {
 ?>
 
-    <p>The webserver environment has been verified to proceed with a successful installation and configuration of your online store.</p>
-    <p>Please continue to start the installation procedure.</p>
-    <p align="right"><a class="button" href="install.php"><span><img src="images/icons/buttons/submit.png" alt="Continue" title="Continue" width="12" height="12"  />&nbsp;Continue</span></a></p>
+    <p>Настройки вебсервера были успешно проверены, Вы можете переходить к процедуре установки VamShop.</p>
+    <p>Нажмите кнопку Продолжить для начала установки.</p>
+    <p align="right"><a class="button" href="install.php"><span><img src="images/icons/buttons/submit.png" alt="Продолжить" title="Продолжить" width="12" height="12"  />&nbsp;Продолжить</span></a></p>
 
 <?php
   }

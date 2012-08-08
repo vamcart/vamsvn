@@ -103,30 +103,28 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 <div class="mainBlock">
   <div class="stepsBox">
     <ol>
-      <li>Database Server</li>
-      <li>Web Server</li>
-      <li>Online Store Settings</li>
-      <li style="font-weight: bold;">Finished!</li>
+      <li>База данных</li>
+      <li>Веб Сервер</li>
+      <li>Настройки магазина</li>
+      <li style="font-weight: bold;">Установка завершена!</li>
     </ol>
   </div>
 
-  <h1>New Installation</h1>
+  <h1>Установка VamShop</h1><br /><br /><br />
 
-  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
-  <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 
 <div class="contentBlock">
   <div class="infoPane">
-    <h3>Step 4: Finished!</h3>
+    <h3>Шаг 4: Установка завершена!</h3>
 
     <div class="infoPaneContents">
-      <p>Congratulations on installing and configuring VamShop as your online store solution!</p>
+      <p>Поздравляем, установка интернет-магазина VamShop успешно завершена!</p>
     </div>
   </div>
 
   <div class="contentPane">
-    <h2>Finished!</h2>
+    <h2>Установка завершена!</h2>
 
 <?php
   $dir_fs_document_root = $_POST['DIR_FS_DOCUMENT_ROOT'];
@@ -371,30 +369,30 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 
 ?>
 
-    <p>The installation and configuration was successful!</p>
+    <p>Установка и настройка успешно завершены!</p>
 
     <br />
 
     <table border="0" width="99%" cellspacing="0" cellpadding="0">
       <tr>
-        <td align="center"><a class="button" href="<?php echo $http_server . $http_catalog . 'index.php'; ?>" target="_blank"><span><img src="images/icons/buttons/catalog.png" alt="Catalog" title="Catalog" width="12" height="12"  />&nbsp;Catalog</span></a></td>
+        <td align="center"><a class="button" href="<?php echo $http_server . $http_catalog . 'index.php'; ?>" target="_blank"><span><img src="images/icons/buttons/catalog.png" alt="Catalog" title="Перейти в магазин" width="12" height="12"  />&nbsp;Перейти в магазин</span></a></td>
       </tr>
     </table>
 
     <br />
 
-    <h3>Post-Installation Notes</h3>
+    <h3>Первые шаги после установки</h3>
 
-    <p>It is recommended to follow the following post-installation steps to secure your VamShop online store:</p>
+    <p>Рекомендуем сразу после установки сделать следующее:</p>
 
     <ol>
-      <li>Delete the <?php echo $dir_fs_document_root . 'install'; ?> directory.</li>
+      <li>Удалить директорию <?php echo $dir_fs_document_root . 'install'; ?></li>
 
 <?php
   if ($admin_folder == 'admin') {
 ?>
 
-      <li>Rename the Administration Tool directory located at <?php echo $dir_fs_document_root . 'admin'; ?>.</li>
+      <li>Переименовать админскую директорию, расположенную в <?php echo $dir_fs_document_root . 'admin'; ?>.</li>
 
 <?php
   }
@@ -402,7 +400,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
   if (file_exists($dir_fs_document_root . 'includes/configure.php') && osc_is_writable($dir_fs_document_root . 'includes/configure.php')) {
 ?>
 
-      <li>Set the permissions on <?php echo $dir_fs_document_root . 'includes/configure.php'; ?> to 644 (or 444 if this file is still writable).</li>
+      <li>Установить на файл <?php echo $dir_fs_document_root . 'includes/configure.php'; ?> права доступа 644 (или 444).</li>
 
 <?php
   }
@@ -410,11 +408,18 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
   if (file_exists($dir_fs_document_root .  $admin_folder . '/includes/configure.php') && osc_is_writable($dir_fs_document_root . $admin_folder . '/includes/configure.php')) {
 ?>
 
-      <li>Set the permissions on <?php echo $dir_fs_document_root . $admin_folder . '/includes/configure.php'; ?> to 644 (or 444 if this file is still writable).</li>
+      <li>Установить на файл <?php echo $dir_fs_document_root . $admin_folder . '/includes/configure.php'; ?> права доступа 644 (или 444).</li>
 
 <?php
   }
 ?>
+
+      <li>Установить на директорию /images/product_images/ права доступа 777 и на поддиректории внутри.</li>
+      <li>Установить на директорию /images/categories/ права доступа 777.</li>
+      <li>Установить на директорию /cache/ права доступа 777.</li>
+      <li>Установить на директорию /import/ права доступа 777.</li>
+      <li>Установить на директорию /export/ права доступа 777.</li>
+      <li>Установить на директорию /tmp/ права доступа 777.</li>
 
     </ol>
   </div>

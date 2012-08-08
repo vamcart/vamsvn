@@ -26,45 +26,43 @@
 <div class="mainBlock">
   <div class="stepsBox">
     <ol>
-      <li>Database Server</li>
-      <li style="font-weight: bold;">Web Server</li>
-      <li>Online Store Settings</li>
-      <li>Finished!</li>
+      <li>База данных</li>
+      <li style="font-weight: bold;">Веб Сервер</li>
+      <li>Настройки магазина</li>
+      <li>Установка завершена!</li>
     </ol>
   </div>
 
-  <h1>New Installation</h1>
+  <h1>Установка VamShop</h1><br /><br /><br />
 
-  <p>This web-based installation routine will correctly setup and configure VamShop to run on this server.</p>
-  <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
 </div>
 
 <div class="contentBlock">
   <div class="infoPane">
-    <h3>Step 2: Web Server</h3>
+    <h3>Шаг 2: Веб Сервер</h3>
 
     <div class="infoPaneContents">
-      <p>The web server takes care of serving the pages of your online store to your guests and customers. The web server parameters make sure the links to the pages point to the correct location.</p>
+      <p>На данном шаге определяется адрес интернет-магазина и путь до корневой директории магазина.</p>
     </div>
   </div>
 
   <div class="contentPane">
-    <h2>Web Server</h2>
+    <h2>Веб Сервер</h2>
 
     <form name="install" id="installForm" action="install.php?step=3" method="post">
 
     <table border="0" width="99%" cellspacing="0" cellpadding="5" class="inputForm">
       <tr>
-        <td class="inputField"><?php echo 'WWW Address<br />' . osc_draw_input_field('HTTP_WWW_ADDRESS', $www_location, 'class="text"'); ?></td>
-        <td class="inputDescription">The web address to the online store.</td>
+        <td class="inputField"><?php echo 'WWW Адрес<br />' . osc_draw_input_field('HTTP_WWW_ADDRESS', $www_location, 'class="text"'); ?></td>
+        <td class="inputDescription">Веб адрес интернет-магазина.</td>
       </tr>
       <tr>
-        <td class="inputField"><?php echo 'Webserver Root Directory<br />' . osc_draw_input_field('DIR_FS_DOCUMENT_ROOT', $dir_fs_www_root, 'class="text"'); ?></td>
-        <td class="inputDescription">The directory where the online store is installed on the server.</td>
+        <td class="inputField"><?php echo 'Корневая директория магазина<br />' . osc_draw_input_field('DIR_FS_DOCUMENT_ROOT', $dir_fs_www_root, 'class="text"'); ?></td>
+        <td class="inputDescription">Директория, где расположены файлы интернет-магазина.</td>
       </tr>
     </table>
 
-    <p align="right"><span class="button"><button type="submit"><img src="images/icons/buttons/submit.png" alt="Continue" title=" Continue " width="12" height="12" />&nbsp;Continue</button></span>&nbsp;&nbsp;<a class="button" href="index.php"><span><img src="images/icons/buttons/cancel.png" alt="Cancel" title="Cancel" width="12" height="12"  />&nbsp;Cancel</span></a></p>
+    <p align="right"><span class="button"><button type="submit"><img src="images/icons/buttons/submit.png" alt="Продолжить" title=" Продолжить " width="12" height="12" />&nbsp;Продолжить</button></span>&nbsp;&nbsp;<a class="button" href="index.php"><span><img src="images/icons/buttons/cancel.png" alt="Отменить" title="Отменить" width="12" height="12"  />&nbsp;Отменить</span></a></p>
 
 <?php
   reset($_POST);
