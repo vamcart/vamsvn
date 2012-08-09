@@ -12,7 +12,8 @@
 
   require('../includes/database_tables.php');
 
-  require('../includes/configure.php');
+  define('DIR_FS_CATALOG', trim($_POST['DIR_FS_DOCUMENT_ROOT']));
+  define('DIR_FS_INC', trim($_POST['DIR_FS_DOCUMENT_ROOT']).'inc/');
   
   require_once(DIR_FS_INC . 'vam_encrypt_password.inc.php');
   require_once(DIR_FS_INC . 'vam_db_query.inc.php');

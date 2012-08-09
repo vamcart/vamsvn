@@ -48,7 +48,7 @@
         result.shift();
 
         if (result[0] == '1') {
-          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />База данных в данный момент загружается. Пожалуйста, подождите.</p>';
+          document.getElementById('mBoxContents').innerHTML = '<p><img src="images/progress.gif" align="right" hspace="5" vspace="5" border="0" />База данных в данный момент загружается. Пожалуйста, подождите.</p><p>&nbsp;</p>';
 
           loadXMLDoc("rpc.php?action=dbImport&server=" + urlEncode(dbServer) + "&username=" + urlEncode(dbUsername) + "&password=" + urlEncode(dbPassword) + "&name=" + urlEncode(dbName), handleHttpResponse_DoImport);
         } else {
