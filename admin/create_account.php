@@ -813,7 +813,7 @@ if ($error == true) {
 if ($processed == true) {
 	echo vam_draw_hidden_field('status');
 } else {
-	echo vam_draw_pull_down_menu('status', $customers_statuses_array);
+	echo vam_draw_pull_down_menu('status', $customers_statuses_array, 2);
 }
 ?></td>
           </tr>
