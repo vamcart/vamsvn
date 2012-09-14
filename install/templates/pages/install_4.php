@@ -390,13 +390,6 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
       <li>Удалить директорию <?php echo $dir_fs_document_root . 'install'; ?></li>
 
 <?php
-  if ($admin_folder == 'admin') {
-?>
-
-      <li>Переименовать админскую директорию, расположенную в <?php echo $dir_fs_document_root . 'admin'; ?>.</li>
-
-<?php
-  }
 
   if (file_exists($dir_fs_document_root . 'includes/configure.php') && osc_is_writable($dir_fs_document_root . 'includes/configure.php')) {
 ?>
