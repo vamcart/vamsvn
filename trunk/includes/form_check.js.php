@@ -132,14 +132,6 @@ if (!strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE) or !strstr($PHP_SELF, FILE
 				minlength: <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>,
 				equalTo: "#pass"
 			},
-			qiwi_telephone: {
-				required: "#qiwi:checked",
-				minlength: 10
-			},
-			aviso_telephone: {
-				required: "#aviso:checked",
-				minlength: 10
-			},
 		},
 		messages: {
 			gender: "<?php echo ENTRY_GENDER_ERROR; ?>",
@@ -188,14 +180,6 @@ if (!strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE) or !strstr($PHP_SELF, FILE
 				required: "<?php echo ENTRY_PASSWORD_ERROR_NOT_MATCHING; ?>",
 				minlength: "<?php echo ENTRY_PASSWORD_CURRENT_ERROR; ?>",
 				equalTo: "<?php echo ENTRY_PASSWORD_ERROR_NOT_MATCHING; ?>"
-			},
-			qiwi_telephone: {
-				required: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>",
-				minlength: "<?php echo MODULE_PAYMENT_QIWI_NAME_DESC; ?>"
-			},
-			aviso_telephone: {
-				required: "<?php echo MODULE_PAYMENT_AVISO_NAME_DESC; ?>",
-				minlength: "<?php echo MODULE_PAYMENT_AVISO_NAME_DESC; ?>"
 			}
 		}
 	});
