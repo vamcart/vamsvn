@@ -19,7 +19,7 @@
 
   define('MODULE_PAYMENT_PAYMASTER_TEXT_TITLE', 'PayMaster');
   define('MODULE_PAYMENT_PAYMASTER_TEXT_PUBLIC_TITLE', 'PayMaster');
-  define('MODULE_PAYMENT_PAYMASTER_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты PayMaster<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/faq.php/faq_id/70/question/Nastroika-modulya-oplaty-WebMoney-Merchant" target="_blank"><u>здесь</u></a>.');
+  define('MODULE_PAYMENT_PAYMASTER_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты PayMaster<br />Как правильно настроить модуль читайте <a href="http://vamshop.ru/blog/2012/09/16/vamshop-%d0%bf%d0%be%d0%b4%d0%ba%d0%bb%d1%8e%d1%87%d1%91%d0%bd-%d0%ba-paymaster-ru/" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_PAYMASTER_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   
 	define('MODULE_PAYMENT_PAYMASTER_STATUS_TITLE' , 'Разрешить модуль PayMaster');
