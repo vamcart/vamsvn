@@ -26,8 +26,8 @@
 	define('MODULE_PAYMENT_PAYMASTER_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 	define('MODULE_PAYMENT_PAYMASTER_ALLOWED_TITLE' , 'Разрешённые страны');
 	define('MODULE_PAYMENT_PAYMASTER_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-	define('MODULE_PAYMENT_PAYMASTER_ID_TITLE' , 'WM ID:');
-	define('MODULE_PAYMENT_PAYMASTER_ID_DESC' , 'Укажите Ваш WM ID');
+	define('MODULE_PAYMENT_PAYMASTER_ID_TITLE' , 'PayMaster ID:');
+	define('MODULE_PAYMENT_PAYMASTER_ID_DESC' , 'Укажите ID Вашего магазина в PayMaster.');
 	define('MODULE_PAYMENT_PAYMASTER_SORT_ORDER_TITLE' , 'Порядок сортировки');
 	define('MODULE_PAYMENT_PAYMASTER_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 	define('MODULE_PAYMENT_PAYMASTER_ZONE_TITLE' , 'Зона');
