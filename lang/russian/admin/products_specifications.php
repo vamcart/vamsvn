@@ -56,6 +56,7 @@
   define ('TEXT_SHOW_COMPARISON', 'Показывать на странице сравнения:');
   define ('TEXT_SHOW_ON_PRODUCTS', 'Показывать на странице карточки товара');
   define ('TEXT_SHOW_FILTER', 'Показывать фильтр:');
+  define ('TEXT_SHOW_FILTER_MAINPAGE', 'Показывать фильтр на главной странице:');
   define ('TEXT_SHOW', 'Да');
   define ('TEXT_DONT_SHOW', 'Нет');
   define ('TEXT_FILTER_CLASS', 'Класс фильтра');
