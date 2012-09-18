@@ -97,11 +97,17 @@
         if ($_POST['show_filter'] == 'False' || $_POST['show_filter'] == 'True') {
           $show_filter = ($_POST['show_filter'] == 'True') ? 'True' : 'False';
         }
+
+        $show_filter_mainpage = 'False';
+        if ($_POST['show_filter_mainpage'] == 'False' || $_POST['show_filter_mainpage'] == 'True') {
+          $show_filter_mainpage = ($_POST['show_filter_mainpage'] == 'True') ? 'True' : 'False';
+        }
         
         $sql_data_array = array ('specification_group_name' => vam_db_prepare_input ($_POST['specification_group_name']),
                                  'show_comparison' => $show_comparison,
                                  'show_products' => $show_products,
-                                 'show_filter' => $show_filter
+                                 'show_filter' => $show_filter,
+                                 'show_filter_mainpage' => $show_filter_mainpage
         );
 
         if ($action == 'new_group_confirm') { //Add a new row
@@ -145,6 +151,7 @@
                                        show_comparison,
                                        show_products,
                                        show_filter,
+                                       show_filter_mainpage,
                                        products_column_name,
                                        column_justify,
                                        filter_class,
@@ -164,6 +171,7 @@
                                        'show_comparison' => $specs_array['show_comparison'],
                                        'show_products' => $specs_array['show_products'],
                                        'show_filter' => $specs_array['show_filter'],
+                                       'show_filter_mainpage' => $specs_array['show_filter_mainpage'],
                                        'products_column_name' => $specs_array['products_column_name'],
                                        'column_justify' => $specs_array['column_justify'],
                                        'filter_class' => $specs_array['filter_class'],
@@ -530,6 +538,11 @@
         if ($_POST['show_filter'] == 'False' || $_POST['show_filter'] == 'True') {
           $show_filter = ($_POST['show_filter'] == 'True') ? 'True' : 'False';
         }
+
+        $show_filter_mainpage = 'False';
+        if ($_POST['show_filter_mainpage'] == 'False' || $_POST['show_filter_mainpage'] == 'True') {
+          $show_filter_mainpage = ($_POST['show_filter_mainpage'] == 'True') ? 'True' : 'False';
+        }
         
         // Set specification sort order to 0 when left blank
         $sort_order = ($_POST['specification_sort_order'] == '') ? 0 : (int) $_POST['specification_sort_order'];
@@ -539,6 +552,7 @@
                                  'show_comparison' => $show_comparison,
                                  'show_products' => $show_products,
                                  'show_filter' => $show_filter,
+                                 'show_filter_mainpage' => $show_filter_mainpage,
                                  'products_column_name' => vam_db_prepare_input ($_POST['products_column_name']),
                                  'column_justify' => vam_db_prepare_input ($_POST['column_justify']),
                                  'filter_class' => vam_db_prepare_input ($_POST['filter_class']),
@@ -618,6 +632,7 @@
                                              show_comparison,
                                              show_products,
                                              show_filter,
+                                             show_filter_mainpage,
                                              products_column_name,
                                              column_justify,
                                              filter_class,
@@ -635,6 +650,7 @@
                                    'show_comparison' => $specification_array['show_comparison'],
                                    'show_products' => $specification_array['show_products'],
                                    'show_filter' => $specification_array['show_filter'],
+                                   'show_filter_mainpage' => $specification_array['show_filter_mainpage'],
                                    'products_column_name' => $specification_array['products_column_name'],
                                    'column_justify' => $specification_array['column_justify'],
                                    'filter_class' => $specification_array['filter_class'],
@@ -1730,6 +1746,7 @@
                                         sp.show_comparison,
                                         sp.show_products,
                                         sp.show_filter,
+                                        sp.show_filter_mainpage,
                                         sp.products_column_name,
                                         sp.column_justify,
                                         sp.filter_class,
@@ -2266,6 +2283,7 @@
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_COMPARISON . '<br />' . vam_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_ON_PRODUCTS . '<br />' . vam_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER . '<br />' . vam_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER_MAINPAGE . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter_mainapge', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_CLASS . '<br />' . vam_draw_pull_down_menu ('filter_class', $filter_classes) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SHOW_ALL . '<br />' . vam_draw_radio_field ('filter_show_all', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('filter_show_all', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_DISPLAY . '<br />' . vam_draw_pull_down_menu ('filter_display', $filter_display_array) );
@@ -2288,6 +2306,7 @@
         $specification_query_raw = "select products_column_name,
                                            specification_sort_order,
                                            show_filter,
+                                           show_filter_mainpage,
                                            filter_class,
                                            filter_show_all,
                                            filter_display,
@@ -2354,6 +2373,15 @@
           $dont_show_filter = 'True';
         }
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER . '<br />' . vam_draw_radio_field ('show_filter', 'True', true, $dont_show_filter) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter', 'False', false, $show_filter) . '&nbsp;' . TEXT_DONT_SHOW );
+
+        $show_filter_mainpage = 'True';
+        $dont_show_filter_mainpage = 'False';
+        if ($sInfo->show_filter_mainpage == 'False') {
+          $show_filter_mainpage = 'False';
+          $dont_show_filter_mainpage = 'True';
+        }
+        $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER_MAINPAGE . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'True', true, $dont_show_filter_mainpage) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'False', false, $show_filter_mainpage) . '&nbsp;' . TEXT_DONT_SHOW );
+
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_CLASS . '<br />' . vam_draw_pull_down_menu ('filter_class', $filter_classes, $specification_data['filter_class']) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_DISPLAY . '<br />' . vam_draw_pull_down_menu ('filter_display', $filter_display_array, $specification_data['filter_display']) );
 
