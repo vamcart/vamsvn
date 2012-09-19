@@ -36,33 +36,8 @@ $box_content='';
     $box_text =  ''; //HTML string goes into the text part of the box
     $get_category = '';
     
-    if ((isset($_GET['cat']) && isset($current_category_id))) {
+    if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
      
-    $specs_query_raw = "select s.specifications_id,
-                               s.products_column_name,
-                               s.filter_class,
-                               s.filter_show_all,
-                               s.filter_display,
-                               sd.specification_name,
-                               sd.specification_prefix,
-                               sd.specification_suffix
-                        from " . TABLE_SPECIFICATION . " s,
-                             " . TABLE_SPECIFICATION_DESCRIPTION . " sd,
-                             " . TABLE_SPECIFICATION_GROUPS . " sg,
-                             " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " s2c
-                        where s.specification_group_id = sg.specification_group_id
-                          and sg.specification_group_id = s2c.specification_group_id
-                          and sd.specifications_id = s.specifications_id
-                          and s2c.categories_id = '" . $current_category_id . "'
-                          and s.show_filter = 'True'
-                          and sg.show_filter = 'True'
-                          and sd.language_id = '" . $_SESSION['languages_id'] . "'
-                        order by s.specification_sort_order,
-                                 sd.specification_name
-                      ";
-                      
-	} else {
-
     $specs_query_raw = "select distinct s.specifications_id,
                                s.products_column_name,
                                s.filter_class,
@@ -80,6 +55,31 @@ $box_content='';
                           and sd.specifications_id = s.specifications_id
                           and s.show_filter = 'True'
                           and s.show_filter_mainpage = 'True'
+                          and sg.show_filter = 'True'
+                          and sd.language_id = '" . $_SESSION['languages_id'] . "'
+                        order by s.specification_sort_order,
+                                 sd.specification_name
+                      "; 
+                                           
+	} else {
+
+    $specs_query_raw = "select s.specifications_id,
+                               s.products_column_name,
+                               s.filter_class,
+                               s.filter_show_all,
+                               s.filter_display,
+                               sd.specification_name,
+                               sd.specification_prefix,
+                               sd.specification_suffix
+                        from " . TABLE_SPECIFICATION . " s,
+                             " . TABLE_SPECIFICATION_DESCRIPTION . " sd,
+                             " . TABLE_SPECIFICATION_GROUPS . " sg,
+                             " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " s2c
+                        where s.specification_group_id = sg.specification_group_id
+                          and sg.specification_group_id = s2c.specification_group_id
+                          and sd.specifications_id = s.specifications_id
+                          and s2c.categories_id = '" . $current_category_id . "'
+                          and s.show_filter = 'True'
                           and sg.show_filter = 'True'
                           and sd.language_id = '" . $_SESSION['languages_id'] . "'
                         order by s.specification_sort_order,
