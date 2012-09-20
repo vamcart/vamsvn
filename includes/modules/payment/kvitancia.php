@@ -80,7 +80,7 @@ class kvitancia {
       	                                   array('title' => MODULE_PAYMENT_KVITANCIA_NAME,
       	                                         'field' => vam_draw_input_field('kvit_name', $order->customer['firstname'] . ' ' . $order->customer['lastname'])),
       	                                   array('title' => MODULE_PAYMENT_KVITANCIA_ADDRESS,
-      	                                         'field' => vam_draw_input_field('kvit_address',$order->customer['city'] . ' ' . $order->customer['street_address']) . MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP.'</div>'),
+      	                                         'field' => vam_draw_input_field('kvit_address',$order->customer['city'] . ', ' . $order->customer['street_address']) . MODULE_PAYMENT_KVITANCIA_ADDRESS_HELP.'</div>'),
       	                                   ));
 
 		return $selection;
