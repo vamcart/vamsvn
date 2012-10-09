@@ -119,7 +119,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $billing_subject, $html_mail, $txt_mail);
 
-				if (AVISOSMS_EMAIL != '') {
+				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
 
 				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_sms.html');
 				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_sms.txt');
@@ -334,7 +334,7 @@ switch ($_GET['action']) {
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '',  $billing_subject, $html_mail, $txt_mail);
 
-				if (AVISOSMS_EMAIL != '') {
+				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
 
 				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail_sms.html');
 				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail_sms.txt');
