@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2010-08-13 17:36:58 VaM $
+   $Id: configuration.php 1286 2012-08-13 17:36:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -1011,5 +1011,8 @@ define('SPECIFICATIONS_FILTER_IMAGE_WIDTH_TITLE', 'Ширина картинки
 define('SPECIFICATIONS_FILTER_IMAGE_WIDTH_DESC', 'Установите ширину картинки, отображаемой в боксе фильтры.');
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_TITLE', 'Высота картинки фильтров');
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_DESC', 'Установите высоту картинки, отображаемой в боксе фильтры.');
+
+define('AVISOSMS_EMAIL_TITLE','AvisoSMS Email');
+define('AVISOSMS_EMAIL_DESC','Укажите свой email ящик для sms уведомление покупателей. Подробнее о настройке SMS уведомлений читайте в блоге http://vamshop.ru/blog/2012/10/09/настройка-sms-уведомлений-в-vamshop');
 
 ?>
