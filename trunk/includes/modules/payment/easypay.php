@@ -346,7 +346,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			$ep["oderno"]		= $order_no;
 			$ep["sum"]			= $sum;
 			$ep["expiries"]		= 5;
-			$ep["comment"]		= MODULE_PAYMENT_EASYPAY_COMMENT;
+			$ep["comment"]		= $order_no;
 			$ep["orderinfo"]	= $order_no;
 			$ep["hash"]			= md5(MODULE_PAYMENT_EASYPAY_MERCHNO.MODULE_PAYMENT_EASYPAY_WEBKEY.$order_no.$sum);
 			$ep["success"]		= vam_href_link(FILENAME_CHECKOUT_PROCESS);
