@@ -336,31 +336,25 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = '';
 
 			#номер заказа
-			$order_no = substr(md5($cartID.$customer_id), 0, 20);
-			$order->info["order_id"] = $order_no;
+			$order_no = substr($_SESSION['cart_easypay_id'], strpos($_SESSION['cart_easypay_id'], '-')+1);
 
 			#получаем стоимость заказа в белорусских рублях
 			$sum = ceil($order->info["total"]);
-
-			#составление информации о заказе
-			foreach($order->products as $product){
-				$info .= sprintf("%s x %s; ", $product["qty"], $product["name"]);
-			}
 
 			#сбор параметров
 			$ep["merno"]		= MODULE_PAYMENT_EASYPAY_MERCHNO;
 			$ep["oderno"]		= $order_no;
 			$ep["sum"]			= $sum;
-			$ep["expiries"]		= MODULE_PAYMENT_EASYPAY_EXPIRIES;
+			$ep["expiries"]		= 5;
 			$ep["comment"]		= MODULE_PAYMENT_EASYPAY_COMMENT;
-			$ep["orderinfo"]	= $info;
+			$ep["orderinfo"]	= $order_no;
 			$ep["hash"]			= md5(MODULE_PAYMENT_EASYPAY_MERCHNO.MODULE_PAYMENT_EASYPAY_WEBKEY.$order_no.$sum);
 			$ep["success"]		= vam_href_link(FILENAME_CHECKOUT_PROCESS);
 			$ep["cancel"]		= vam_href_link(FILENAME_CHECKOUT_CONFIRMATION);
 			$ep["debug"]		= MODULE_PAYMENT_EASYPAY_DEBUG;
 
 			#подготовка формы для оплаты
-			$button =
+			$process_button_string =
 			vam_draw_hidden_field("EP_MerNo",			$ep["merno"]).
 			vam_draw_hidden_field("EP_OrderNo",			$ep["oderno"]).
 			vam_draw_hidden_field("EP_Sum",				$ep["sum"]).
@@ -372,13 +366,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			vam_draw_hidden_field("EP_Cancel_URL",		$ep["cancel"]).
 			vam_draw_hidden_field("EP_Debug",			$ep["debug"]);
 			
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_easypay_id'], strpos($_SESSION['cart_easypay_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_MERCHANT_ID', MODULE_PAYMENT_EASYPAY_ID) .
-                               vam_draw_hidden_field('LMI_CURRENCY', 'RUB') .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_easypay_id'], strpos($_SESSION['cart_easypay_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
-
       return $process_button_string;
     }
 

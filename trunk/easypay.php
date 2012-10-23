@@ -21,29 +21,37 @@ function get_var($name, $default = 'none') {
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
-// logging
-//$fp = fopen('easypay.log', 'a+');
-//$str=date('Y-m-d H:i:s').' - ';
-//foreach ($_REQUEST as $vn=>$vv) {
-  //$str.=$vn.'='.$vv.';';
-//}
+	#Сбор параметров
+	$status		= 2;
+	$web_key	= MODULE_PAYMENT_EASYPAY_WEBKEY;
 
-//fwrite($fp, $str."\n");
-//fclose($fp);
+	$params		= array(
+		"date"				=> date("d-m-Y H:i:s"),
+		"ip"				=> $_SERVER["REMOTE_ADDR"],
+		"order_mer_code"	=> $_POST["order_mer_code"],
+		"sum"				=> $_POST["sum"],
+		"mer_no"			=> $_POST["mer_no"],
+		"card"				=> $_POST["card"],
+		"purch_date"		=> $_POST["purch_date"],
+		"notify_signature"	=> $_POST["notify_signature"]
+	);
 
-// variables prepearing
-$crc = get_var('LMI_HASH');
+	#сравнение электронных подписей
+	$check = md5(
+		$params["order_mer_code"].
+		$params["sum"].
+		$params["mer_no"].
+		$params["card"].
+		$params["purch_date"].
+		$web_key
+	) == $params["notify_signature"];
 
-$inv_id = get_var('LMI_PAYMENT_NO');
-$order = new order($inv_id);
-$order_sum = $order->info['total_value'];
+	$check = true;
 
-$hash = base64_encode(md5($_POST['LMI_MERCHANT_ID'].';'.$_POST['LMI_PAYMENT_NO'].';'.$_POST['LMI_SYS_PAYMENT_ID'].';'.$_POST['LMI_SYS_PAYMENT_DATE'].';'.$_POST['LMI_PAYMENT_AMOUNT'].';'.$_POST['LMI_CURRENCY'].';'.$_POST['LMI_PAID_AMOUNT'].';'. 
-$_POST['LMI_PAID_CURRENCY'].';'.$_POST['LMI_PAYMENT_SYSTEM'].';'.$_POST['LMI_SIM_MODE'].';'.MODULE_PAYMENT_EASYPAY_SECRET_KEY, true));
-
+	if($check){
+		
 // checking and handling
-if ($hash == $crc) {
-if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total_value'],0)) {
+if (number_format($params["sum"],0) == number_format($order->info['total_value'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_EASYPAY_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
@@ -51,11 +59,13 @@ if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info[
                           'orders_status_id' => MODULE_PAYMENT_EASYPAY_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'PayMaster accepted this order payment');
+                          'comments' => 'EasyPay accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+
 }
+
 }
 
 ?>
