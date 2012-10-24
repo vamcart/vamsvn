@@ -64,10 +64,10 @@ if ($_SESSION['cart']->count_contents() > 0) {
 				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
 				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model
 				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
-				                                      where pa.products_id = '".$products[$i]['id']."'
-				                                       and pa.options_id = '".$option."'
+				                                      where pa.products_id = '".(int)$products[$i]['id']."'
+				                                       and pa.options_id = '".(int)$option."'
 				                                       and pa.options_id = popt.products_options_id
-				                                       and pa.options_values_id = '".$value."'
+				                                       and pa.options_values_id = '".(int)$value."'
 				                                       and pa.options_values_id = poval.products_options_values_id
 				                                       and popt.language_id = '".(int) $_SESSION['languages_id']."'
 				                                       and poval.language_id = '".(int) $_SESSION['languages_id']."'");
