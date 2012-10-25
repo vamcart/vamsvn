@@ -14,8 +14,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'Оплата "электронными деньгами" (WebMoney, Яндекс.Деньги, E-gold, MoneyMail, RuPay, INOCard)');
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (WebMoney, Яндекс.Деньги, E-gold, MoneyMail, RuPay, INOCard)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'Roboxchange (карточки Visa, MasterCard, WebMoney, Яндекс.Деньги)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (карточки Visa, MasterCard, WebMoney, Яндекс.Деньги)');
   
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Разрешить модуль roboxchange');
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Установка<br />
