@@ -120,7 +120,7 @@ $col = 0;
 
 				$specifications_data[$row]['DATA'][$col] = array (
 				
-					'NAME' => $specifications['specification_name'], 
+					'NAME' => (!empty($specifications['specification_prefix']) ? $specifications['specification_prefix'].' ' : '').$specifications['specification_name'].(!empty($specifications['specification_suffix']) ? ' '.$specifications['specification_suffix'] : ''), 
 					'VALUE' => $specifications['specification']
 			
 				);
