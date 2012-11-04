@@ -15,7 +15,7 @@
 
 <div class="ProductInfoLeft">
 {if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
-{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
 {/if}
 
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
