@@ -70,7 +70,7 @@ if (!isset ($_SESSION['customer_id'])) {
 	if (ACCOUNT_OPTIONS == 'guest') {
 		vam_redirect(vam_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL'));
 	} else {
-	if (QUICK_CHECKOUT == 'false') {
+	if (SMART_CHECKOUT == 'false') {
 		vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
    } else {
 		vam_redirect(vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'));
