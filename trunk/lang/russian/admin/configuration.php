@@ -1015,4 +1015,31 @@ define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_DESC', 'Установите высо
 define('AVISOSMS_EMAIL_TITLE','AvisoSMS Email');
 define('AVISOSMS_EMAIL_DESC','Укажите свой email ящик для sms уведомление покупателей. Подробнее о настройке SMS уведомлений читайте в блоге http://vamshop.ru/blog/2012/10/09/настройка-sms-уведомлений-в-vamshop');
 
+define('CG_SMART_CHECKOUT', 'Оформление заказа');
+define('CG_SMART_CHECKOUT_TITLE', 'Оформление заказа');
+define('CG_SMART_CHECKOUT_DESC', '');
+
+define('SMART_CHECKOUT_TITLE', 'Разрешить быстрое оформление заказов');
+define('SMART_CHECKOUT_DESC', 'Вы хотите активировать модуль быстрого оформления заказов?');
+define('SC_CREATE_ACCOUNT_REQUIRED_TITLE', 'Создание аккаунта обязательно');
+define('SC_CREATE_ACCOUNT_REQUIRED_DESC', 'Обязательное создание аккаунта для покупателя при быстром оформлении заказа');
+define('SC_CREATE_ACCOUNT_CHECKOUT_PAGE_TITLE', 'Создание аккаунта на усмотрение пользователя');
+define('SC_CREATE_ACCOUNT_CHECKOUT_PAGE_DESC', 'Создание аккаунта для покупателя при быстром оформлении заказа не является обязательным, появляется опция при быстром оформлении заказа');
+define('SC_CREATE_ACCOUNT_SUCCESS_PAGE_TITLE', 'Создание аккаунта только на после оформления заказа, на странице checkout_success.php');
+define('SC_CREATE_ACCOUNT_SUCCESS_PAGE_DESC', 'Если включена данная опция, посетителю будет предложено зарегистрировать аккаунт сразу после оформления заказа, на странице checkout_success.php');
+define('SC_LIVE_VALIDATION_TITLE', 'Проверка вводимых данных при быстром оформлении заказа');
+define('SC_LIVE_VALIDATION_DESC', 'Вы хотите разрешить проверку вводимых данных при быстром оформлении заказа?');
+define('SC_CONDITIONS_TITLE', 'Условия использования');
+define('SC_CONDITIONS_DESC', 'Если включена данная опция, покупатель должен согласиться с условиями, чтобы оформить заказ');
+define('SC_HIDE_SHIPPING_TITLE', 'Скрыть выбор способа доставки');
+define('SC_HIDE_SHIPPING_DESC', 'Если у Вас активирован только один модуль доставки, нет необходимости покупателю показывать выбор доставки на странице быстрого оформления заказа. Выбор доставка не показывается только если включена данная опция и у Вас активен только один модуль доставки.');
+define('SC_HIDE_COMMENT_TITLE', 'Скрыть комментарии');
+define('SC_HIDE_COMMENT_DESC', 'Показывать покупателю блок с возможностью оставить комменатрии к заказу?');
+define('SC_COUNTER_ENABLED_TITLE', 'Шаги оформления');
+define('SC_COUNTER_ENABLED_DESC', 'Показывать шаги быстрого оформления заказа');
+define('SC_EMAIL_LOGIN_DATA_TITLE', 'Отправлять данные для входа');
+define('SC_EMAIL_LOGIN_DATA_DESC', 'Если включена данная опция, то данные для входа в магазин отправляются покупателю на указанный при быстром оформлении заказа email.');
+define('SC_CONFIRMATION_PAGE_TITLE', 'Страница подтверждения заказа');
+define('SC_CONFIRMATION_PAGE_DESC', 'Включить переход на страницу подтверждения заказа?');
+
 ?>
