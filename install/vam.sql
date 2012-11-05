@@ -3495,14 +3495,14 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
 
 INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-('SMART_CHECKOUT', 'false', 80, 1, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SMART_CHECKOUT', 'true', 80, 1, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CREATE_ACCOUNT_REQUIRED', 'false', 80, 2, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CREATE_ACCOUNT_CHECKOUT_PAGE', 'false', 80, 3, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CREATE_ACCOUNT_SUCCESS_PAGE', 'true', 80, 4, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CREATE_ACCOUNT_SUCCESS_PAGE', 'false', 80, 4, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_LIVE_VALIDATION', 'false', 80, 5, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONDITIONS', 'false', 80, 6, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_HIDE_SHIPPING', 'false', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_HIDE_SHIPPING', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_HIDE_COMMENT', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_COUNTER_ENABLED', 'false', 80, 9, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_COUNTER_ENABLED', 'true', 80, 9, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_EMAIL_LOGIN_DATA', 'true', 80, 10, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONFIRMATION_PAGE', 'false', 80, 11, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');

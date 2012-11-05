@@ -98,6 +98,7 @@ define('BOX_CONFIGURATION_25', 'Установка модулей');
 define('BOX_CONFIGURATION_27', 'Тех. обслуживание');
 define('BOX_CONFIGURATION_29', 'Боксы');
 define('BOX_CONFIGURATION_72', 'Редактор заказов');
+define('BOX_CONFIGURATION_80', 'Оформление заказов');
 define('BOX_CONFIGURATION_1610', 'Спецификации товаров');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
