@@ -57,16 +57,15 @@
 </p>
 <!-- desc eof -->
 
-{if $parameters}
-<!-- Parameters -->
-<table cellspacing="0" cellpadding="0" class="fulldesc" border="0" width="70%">
-	{foreach name=aussen item=parameters_data from=$parameters}
-	<tr class="stroka">
-	<td {if $parameters_data.is_group} colspan="2" class="zagolovok"{else}class="texparam"{/if}>{$parameters_data.parameters_name} </td>
-    	{if $parameters_data.is_group}{else}<td  class="texznachen" align="left">{if $parameters_data.parameters_value}{$parameters_data.parameters_value} {$parameters_data.parameters_suff}{else}&nbsp;{/if}</td>{/if}
-	</tr>{/foreach}
-</table>
-<!-- /Parameters -->
+{if $specifications}
+<!-- Specifications -->
+{foreach name=outer item=spec_group from=$specifications_data}
+<strong>{$spec_group.GROUP_NAME}:</strong><br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+{$spec.NAME}: {$spec.VALUE}<br /> 
+{/foreach}
+{/foreach}
+<!-- /Specifications -->
 {/if}
 
 <p>
