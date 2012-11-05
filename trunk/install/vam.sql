@@ -2325,6 +2325,8 @@ INSERT INTO configuration_group VALUES ('29', 'CG_BOXES', 'Боксы', 'Бок�
 
 INSERT INTO configuration_group VALUES ('72', 'CG_EDIT_ORDERS', 'Order Editor', 'Order Editor Settings', '1', '1');
 
+INSERT INTO configuration_group VALUES ('80', 'CG_SMART_CHECKOUT', 'Smart Checkout', 'Smart Checkout Options', '1', '1');
+
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
 INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','0');
@@ -3491,3 +3493,16 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SPECIFICATIONS_FILTER_BREADCRUMB', 'True', 1610, 120, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
 ('SPECIFICATIONS_FILTER_IMAGE_WIDTH', '20', 1610, 125, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
 ('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
+
+INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+('SMART_CHECKOUT', 'false', 80, 1, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CREATE_ACCOUNT_REQUIRED', 'false', 80, 2, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CREATE_ACCOUNT_CHECKOUT_PAGE', 'false', 80, 3, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CREATE_ACCOUNT_SUCCESS_PAGE', 'true', 80, 4, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_LIVE_VALIDATION', 'false', 80, 5, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CONDITIONS', 'false', 80, 6, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_HIDE_SHIPPING', 'false', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_HIDE_COMMENT', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_COUNTER_ENABLED', 'false', 80, 9, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_EMAIL_LOGIN_DATA', 'true', 80, 10, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_CONFIRMATION_PAGE', 'false', 80, 11, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
