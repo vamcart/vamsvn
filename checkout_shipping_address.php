@@ -183,7 +183,12 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 
 			$_SESSION['sendto'] = vam_db_insert_id();
 
-			vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		}
+		
 		}
 		// process the selected shipping destination
 	}
@@ -205,14 +210,22 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 		if ($check_address['total'] == '1') {
 			if ($reset_shipping == true)
 				unset ($_SESSION['shipping']);
-			vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		}
 		} else {
 			unset ($_SESSION['sendto']);
 		}
 	} else {
 		$_SESSION['sendto'] = $_SESSION['customer_default_address_id'];
 
-		vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+		}
 	}
 }
 

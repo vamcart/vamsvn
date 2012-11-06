@@ -171,7 +171,15 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 			if (isset ($_SESSION['payment']))
 				unset ($_SESSION['payment']);
 
-			vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+		if (SMART_CHECKOUT == 'true') {
+			$_SESSION['changed_adress'] = true; //bug added
+		}
+		
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+		}
 		}
 		// process the selected billing destination
 	}
@@ -193,7 +201,11 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 		if ($check_address['total'] == '1') {
 			if ($reset_payment == true)
 				unset ($_SESSION['payment']);
-			vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+		}
 		} else {
 			unset ($_SESSION['billto']);
 		}
@@ -201,7 +213,11 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 	} else {
 		$_SESSION['billto'] = $_SESSION['customer_default_address_id'];
 
-		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+	  if (SMART_CHECKOUT == 'true') {
+      	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	  } else {
+	  	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+		}
 	}
 }
 
