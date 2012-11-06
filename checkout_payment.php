@@ -34,7 +34,7 @@
 include ('includes/application_top.php');
 
 if (SMART_CHECKOUT == 'true') {
-	tep_redirect(tep_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+	vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 }
 
 // create template elements
