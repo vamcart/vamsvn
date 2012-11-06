@@ -53,7 +53,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.68');
+define('PROJECT_VERSION', 'VamShop 1.67');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -315,6 +315,12 @@ if (CHECK_CLIENT_AGENT) {
 	}
 }
 
+// initialize a session token
+  if (!vam_session_is_registered('sessiontoken')) {
+    $sessiontoken = md5(vam_rand() . vam_rand() . vam_rand() . vam_rand());
+    vam_session_register('sessiontoken');
+  }
+  
 // verify the ssl_session_id if the feature is enabled
 if (($request_type == 'SSL') && (SESSION_CHECK_SSL_SESSION_ID == 'True') && (ENABLE_SSL == true) && ($session_started == true)) {
 	$ssl_session_id = getenv('SSL_SESSION_ID');

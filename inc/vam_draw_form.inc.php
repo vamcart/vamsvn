@@ -18,13 +18,19 @@
    ---------------------------------------------------------------------------------------*/
    
 // Output a form
-  function vam_draw_form($name, $action, $method = 'post', $parameters = '') {
+  function vam_draw_form($name, $action, $method = 'post', $parameters = '', $tokenize = false) {
+    global $sessiontoken;
+
     $form = '<form id="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" action="' . vam_parse_input_field_data($action, array('"' => '&quot;')) . '" method="' . vam_parse_input_field_data($method, array('"' => '&quot;')) . '"';
 
     if (vam_not_null($parameters)) $form .= ' ' . $parameters;
 
     $form .= '>';
 
+    if ( ($tokenize == true) && isset($sessiontoken) ) {
+      $form .= '<input type="hidden" name="formid" value="' . vam_output_string($sessiontoken) . '" />';
+    }
+    
     return $form;
   }
  ?>
