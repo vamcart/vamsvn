@@ -19,9 +19,24 @@ require('includes/application_top.php');
 //used for shipping
 require('includes/classes/http_client.php');
 
+require_once (DIR_FS_INC.'vam_address_label.inc.php');
+require_once (DIR_FS_INC.'vam_get_address_format_id.inc.php');
+require_once (DIR_FS_INC.'vam_count_shipping_modules.inc.php');
+require_once (DIR_FS_INC.'vam_draw_radio_field.inc.php');
+require_once (DIR_FS_INC.'vam_get_country_list.inc.php');
+require_once (DIR_FS_INC.'vam_draw_checkbox_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_password_field.inc.php');
+require_once (DIR_FS_INC.'vam_validate_email.inc.php');
+require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
+require_once (DIR_FS_INC.'vam_create_password.inc.php');
+require_once (DIR_FS_INC.'vam_draw_hidden_field.inc.php');
+require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
+require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
+require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 
 //START functions specific
-function tep_get_sc_titles_number() {
+function vam_get_sc_titles_number() {
 	if (SC_COUNTER_ENABLED == 'true') {
 		static $sc_count = 0;
 		$sc_count++;
@@ -88,30 +103,22 @@ $sc_guest_suburb = $_SESSION['sc_customers_suburb'];
 $sc_guest_city = $_SESSION['sc_customers_city'];
 $sc_guest_postcode = $_SESSION['sc_customers_postcode'];
 
-
-
-
 //load languages files
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT);
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_SHIPPING);
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_PAYMENT);
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_CONFIRMATION);
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CREATE_ACCOUNT);
+require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_CHECKOUT);
 
-  
 ////////////  Check Things  ////////////////////
 // if there is nothing in the customers cart, redirect them to the shopping cart page
-if ($cart->count_contents() < 1) {
-   tep_redirect(tep_href_link(FILENAME_SHOPPING_CART));
+if ($_SESSION['cart']->count_contents() < 1) {
+   vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 }
  
  
  // Stock Check
   if ( (STOCK_CHECK == 'true') && (STOCK_ALLOW_CHECKOUT != 'true') ) {
-    $products = $cart->get_products();
+    $products = $_SESSION['cart']->get_products();
     for ($i=0, $n=sizeof($products); $i<$n; $i++) {
-      if (tep_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
-        tep_redirect(tep_href_link(FILENAME_SHOPPING_CART));
+      if (vam_check_stock($products[$i]['id'], $products[$i]['quantity'])) {
+        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
         break;
       }
     }
@@ -124,7 +131,7 @@ if ($cart->count_contents() < 1) {
 $payment_address_selected = $_POST['payment_adress']; //init if checkbox for payment address is checked or not
 $shipping_count_modules = $_POST['shipping_count']; //needed for validation
 
-if (!tep_session_is_registered('customer_id')) { //only for not logged in user
+if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	if (!isset($_POST['action'])) {
 		$password_selected = true; 
 	} else {
@@ -153,38 +160,38 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
 	if ($sc_shipping_address_show == true) { //show shipping otpions 
     if (ACCOUNT_GENDER == 'true') {
       if (isset($_POST['gender'])) {
-        $gender = tep_db_prepare_input($_POST['gender']);
+        $gender = vam_db_prepare_input($_POST['gender']);
       } else {
         $gender = false;
       }
     }
-    $firstname = tep_db_prepare_input($_POST['firstname']);
-    $lastname = tep_db_prepare_input($_POST['lastname']);
-    if (ACCOUNT_DOB == 'true') $dob = tep_db_prepare_input($_POST['dob']);
-    $email_address = tep_db_prepare_input($_POST['email_address']);
-    if (ACCOUNT_COMPANY == 'true') $company = tep_db_prepare_input($_POST['company']);
-    $street_address = tep_db_prepare_input($_POST['street_address']);
-    if (ACCOUNT_SUBURB == 'true') $suburb = tep_db_prepare_input($_POST['suburb']);
-    $postcode = tep_db_prepare_input($_POST['postcode']);
-    $city = tep_db_prepare_input($_POST['city']);
+    $firstname = vam_db_prepare_input($_POST['firstname']);
+    $lastname = vam_db_prepare_input($_POST['lastname']);
+    if (ACCOUNT_DOB == 'true') $dob = vam_db_prepare_input($_POST['dob']);
+    $email_address = vam_db_prepare_input($_POST['email_address']);
+    if (ACCOUNT_COMPANY == 'true') $company = vam_db_prepare_input($_POST['company']);
+    $street_address = vam_db_prepare_input($_POST['street_address']);
+    if (ACCOUNT_SUBURB == 'true') $suburb = vam_db_prepare_input($_POST['suburb']);
+    $postcode = vam_db_prepare_input($_POST['postcode']);
+    $city = vam_db_prepare_input($_POST['city']);
     if (ACCOUNT_STATE == 'true') {
-      $state = tep_db_prepare_input($_POST['state']);
+      $state = vam_db_prepare_input($_POST['state']);
       if (isset($_POST['zone_id'])) {
-        $zone_id = tep_db_prepare_input($_POST['zone_id']);
+        $zone_id = vam_db_prepare_input($_POST['zone_id']);
       } else {
         $zone_id = false;
       }
     }
-    $country = tep_db_prepare_input($_POST['country']);
-    $telephone = tep_db_prepare_input($_POST['telephone']);
-    $fax = tep_db_prepare_input($_POST['fax']);
+    $country = vam_db_prepare_input($_POST['country']);
+    $telephone = vam_db_prepare_input($_POST['telephone']);
+    $fax = vam_db_prepare_input($_POST['fax']);
     if (isset($_POST['newsletter'])) {
-      $newsletter = tep_db_prepare_input($_POST['newsletter']);
+      $newsletter = vam_db_prepare_input($_POST['newsletter']);
     } else {
       $newsletter = false;
     }
-    $password = tep_db_prepare_input($_POST['password']);
-    $confirmation = tep_db_prepare_input($_POST['confirmation']);
+    $password = vam_db_prepare_input($_POST['password']);
+    $confirmation = vam_db_prepare_input($_POST['confirmation']);
 	
 	//start with input validation for shipping address /////////
     $error = false;
@@ -211,7 +218,7 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
     }
 
     if (ACCOUNT_DOB == 'true') {
-      if ((is_numeric(tep_date_raw($dob)) == false) || (@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4)) == false)) {
+      if ((is_numeric(vam_date_raw($dob)) == false) || (@checkdate(substr(vam_date_raw($dob), 4, 2), substr(vam_date_raw($dob), 6, 2), substr(vam_date_raw($dob), 0, 4)) == false)) {
         $error = true;
 
         $messageStack->add('smart_checkout', ENTRY_DATE_OF_BIRTH_ERROR);
@@ -223,22 +230,22 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
       $error = true;
 
       $messageStack->add('smart_checkout', ENTRY_EMAIL_ADDRESS_ERROR);
-    } elseif (tep_validate_email($email_address) == false) {
+    } elseif (vam_validate_email($email_address) == false) {
       $error = true;
 
       $messageStack->add('smart_checkout', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
     } else {
       //org
-	  $check_email_query = tep_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . tep_db_input($email_address) . "'");
+	  $check_email_query = vam_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($email_address) . "'");
 	  
 	  //new
-      //$check_email_query = tep_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . tep_db_input($email_address) . "' and guest_account != '1'");
+      //$check_email_query = vam_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($email_address) . "' and guest_account != '1'");
      
 	  
 	 
 
   
-      $check_email = tep_db_fetch_array($check_email_query);
+      $check_email = vam_db_fetch_array($check_email_query);
       if ($check_email['total'] > 0) {
         $error = true;
 		
@@ -273,13 +280,13 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
 
     if (ACCOUNT_STATE == 'true') {
       $zone_id = 0;
-      $check_query = tep_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-      $check = tep_db_fetch_array($check_query);
+      $check_query = vam_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
+      $check = vam_db_fetch_array($check_query);
       $entry_state_has_zones = ($check['total'] > 0);
       if ($entry_state_has_zones == true) {
-        $zone_query = tep_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name = '" . tep_db_input($state) . "' or zone_code = '" . tep_db_input($state) . "')");
-        if (tep_db_num_rows($zone_query) == 1) {
-          $zone = tep_db_fetch_array($zone_query);
+        $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name = '" . vam_db_input($state) . "' or zone_code = '" . vam_db_input($state) . "')");
+        if (vam_db_num_rows($zone_query) == 1) {
+          $zone = vam_db_fetch_array($zone_query);
           $zone_id = $zone['zone_id'];
         } else {
           $error = true;
@@ -302,10 +309,10 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
     }
 	
 	//password validation
-	$password = tep_db_prepare_input($_POST['password']);
-    $confirmation = tep_db_prepare_input($_POST['confirmation']);
+	$password = vam_db_prepare_input($_POST['password']);
+    $confirmation = vam_db_prepare_input($_POST['confirmation']);
 	if ($create_account == true) {
-		if (!tep_session_is_registered('customer_id')) { //validate only for unregistered user
+		if (!vam_session_is_registered('customer_id')) { //validate only for unregistered user
 		 if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
 			  $error = true;
 	
@@ -362,22 +369,22 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
 	  
 	 if ($sc_payment_address_show == true) { //validate only if not free payment 
 		
-      if (ACCOUNT_GENDER == 'true') $gender_payment = tep_db_prepare_input($_POST['gender_payment']);
-      if (ACCOUNT_COMPANY == 'true') $company_payment = tep_db_prepare_input($_POST['company_payment']);
-      $firstname_payment = tep_db_prepare_input($_POST['firstname_payment']);
-      $lastname_payment = tep_db_prepare_input($_POST['lastname_payment']);
-      $street_address_payment = tep_db_prepare_input($_POST['street_address_payment']);
-      if (ACCOUNT_SUBURB == 'true') $suburb_payment = tep_db_prepare_input($_POST['suburb_payment']);
-      $postcode_payment = tep_db_prepare_input($_POST['postcode_payment']);
-      $city_payment = tep_db_prepare_input($_POST['city_payment']);
-      $country_payment = tep_db_prepare_input($_POST['country_payment']);
+      if (ACCOUNT_GENDER == 'true') $gender_payment = vam_db_prepare_input($_POST['gender_payment']);
+      if (ACCOUNT_COMPANY == 'true') $company_payment = vam_db_prepare_input($_POST['company_payment']);
+      $firstname_payment = vam_db_prepare_input($_POST['firstname_payment']);
+      $lastname_payment = vam_db_prepare_input($_POST['lastname_payment']);
+      $street_address_payment = vam_db_prepare_input($_POST['street_address_payment']);
+      if (ACCOUNT_SUBURB == 'true') $suburb_payment = vam_db_prepare_input($_POST['suburb_payment']);
+      $postcode_payment = vam_db_prepare_input($_POST['postcode_payment']);
+      $city_payment = vam_db_prepare_input($_POST['city_payment']);
+      $country_payment = vam_db_prepare_input($_POST['country_payment']);
       if (ACCOUNT_STATE == 'true') {
         if (isset($_POST['zone_id'])) {
-          $zone_id_payment = tep_db_prepare_input($_POST['zone_id_payment']);
+          $zone_id_payment = vam_db_prepare_input($_POST['zone_id_payment']);
         } else {
           $zone_id_payment = false;
         }
-        $state_payment = tep_db_prepare_input($_POST['state_payment']);
+        $state_payment = vam_db_prepare_input($_POST['state_payment']);
       }
 
       if (ACCOUNT_GENDER == 'true') {
@@ -423,13 +430,13 @@ if (!tep_session_is_registered('customer_id')) { //only for not logged in user
 
       if (ACCOUNT_STATE == 'true') {
         $zone_id_payment = 0;
-        $check_query = tep_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country_payment . "'");
-        $check = tep_db_fetch_array($check_query);
+        $check_query = vam_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country_payment . "'");
+        $check = vam_db_fetch_array($check_query);
         $entry_state_has_zones = ($check['total'] > 0);
         if ($entry_state_has_zones == true) {
-          $zone_query = tep_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country_payment . "' and (zone_name = '" . tep_db_input($state_payment) . "' or zone_code = '" . tep_db_input($state_payment) . "')");
-          if (tep_db_num_rows($zone_query) == 1) {
-            $zone_payment = tep_db_fetch_array($zone_query);
+          $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country_payment . "' and (zone_name = '" . vam_db_input($state_payment) . "' or zone_code = '" . vam_db_input($state_payment) . "')");
+          if (vam_db_num_rows($zone_query) == 1) {
+            $zone_payment = vam_db_fetch_array($zone_query);
             $zone_id_payment = $zone_payment['zone_id'];
           } else {
             $error = true;
@@ -506,16 +513,16 @@ require(DIR_WS_CLASSES.'order_total.php');
 
 
 
-if (!tep_session_is_registered('payment')) {tep_session_register('payment');}
-if (!tep_session_is_registered('sendto')) {tep_session_register('sendto');} //need to set it otherwise in checkout_process.php we get redirected to checkout_shipping.php
-if (!tep_session_is_registered('billto')) {tep_session_register('billto');} //need to set it otherwise in checkout_process.php we get redirected to payment_shipping.php
-if (tep_session_is_registered('free_payment')) {tep_session_unregister('free_payment');} //hack for free payment unregister it if changing products
+if (!vam_session_is_registered('payment')) {vam_session_register('payment');}
+if (!vam_session_is_registered('sendto')) {vam_session_register('sendto');} //need to set it otherwise in checkout_process.php we get redirected to checkout_shipping.php
+if (!vam_session_is_registered('billto')) {vam_session_register('billto');} //need to set it otherwise in checkout_process.php we get redirected to payment_shipping.php
+if (vam_session_is_registered('free_payment')) {vam_session_unregister('free_payment');} //hack for free payment unregister it if changing products
 
-if (tep_session_is_registered('noaccount')) {tep_session_unregister('noaccount');} //used for order class - order.php
-if (tep_session_is_registered('show_account_data')) {tep_session_unregister('show_account_data');} //used for confirmation page to show account data
-if (tep_session_is_registered('create_account')) {tep_session_unregister('create_account');} //used for confirmation page to send email if account is created
-if (tep_session_is_registered('hide_shipping_data')) {tep_session_unregister('hide_shipping_data');} //used for confirmation page to hide shipping data
-if (tep_session_is_registered('hide_payment_data')) {tep_session_unregister('hide_payment_data');} //used for confirmation page to hide payment data
+if (vam_session_is_registered('noaccount')) {vam_session_unregister('noaccount');} //used for order class - order.php
+if (vam_session_is_registered('show_account_data')) {vam_session_unregister('show_account_data');} //used for confirmation page to show account data
+if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //used for confirmation page to send email if account is created
+if (vam_session_is_registered('hide_shipping_data')) {vam_session_unregister('hide_shipping_data');} //used for confirmation page to hide shipping data
+if (vam_session_is_registered('hide_payment_data')) {vam_session_unregister('hide_payment_data');} //used for confirmation page to hide payment data
 
 
 
@@ -528,7 +535,7 @@ $order = new order;
 
 //set $selected_country_id
 //if logged in set $selected_country_id from order class else from selected Post
-if (tep_session_is_registered('customer_id')) {
+if (vam_session_is_registered('customer_id')) {
 $selected_country_id = $order->delivery['country']['id'];
 } else {
 //$selected_country_id = $_POST['country'];
@@ -543,8 +550,8 @@ if (isset($_POST['country'])) {
 
 
 // country is selected
-        $country_info = tep_get_countries($selected_country_id,true);
-        $cache_state_prov_values = tep_db_fetch_array(tep_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+        $country_info = vam_get_countriesList($selected_country_id,true);
+        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
         $order->delivery = array('postcode' => $_POST['zip_code'],
                                  'state' => $cache_state_prov_code,
@@ -552,7 +559,7 @@ if (isset($_POST['country'])) {
                                  'country_id' => $selected_country_id,
 //add state zone_id
                                  'zone_id' => $_POST['state'],
-                                 'format_id' => tep_get_address_format_id($selected_country_id));
+                                 'format_id' => vam_get_address_format_id($selected_country_id));
 // country is selected End								 	  
 
 
@@ -561,10 +568,10 @@ if (isset($_POST['country'])) {
 
 $shipping_modules = new shipping; //set it after getting country_info otherwise it won't update shipping methods with jquery
 
-$total_weight = $cart->show_weight(); //set before $shipping is defined
+$total_weight = $_SESSION['cart']->show_weight(); //set before $shipping is defined
 
 //used for post data for validation
-$shipping_count = tep_count_shipping_modules();
+$shipping_count = vam_count_shipping_modules();
 
 
 
@@ -593,7 +600,7 @@ $shipping_count = tep_count_shipping_modules();
     if ( ($pass == true) && ($order->info['total'] >= MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER) ) {
       $free_shipping = true;
 
-      include(DIR_WS_LANGUAGES . $language . '/modules/order_total/ot_shipping.php');
+      include(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/order_total/ot_shipping.php');
     }
   } else {
     $free_shipping = false;
@@ -607,7 +614,7 @@ $shipping_count = tep_count_shipping_modules();
 
 
 // START calculation if 0 shipping method is active ////
-if (tep_count_shipping_modules() == 0) {
+if (vam_count_shipping_modules() == 0) {
 // get all available shipping quotes
 		$shipping = array	('id' => '', 'title' => '<span class="errorText">' . TEXT_NO_SHIPPING_AVAILABLE . '</span>', 'cost' => '');
 		$checkout_possible = false;
@@ -616,7 +623,7 @@ if (tep_count_shipping_modules() == 0) {
 // END calculation if 0 shipping method is active ////
 
 // calculation if only 1 shipping method is set ////
-  if (tep_count_shipping_modules() == 1) {
+  if (vam_count_shipping_modules() == 1) {
   		
 		// get all available shipping quotes
 		$quotes = $shipping_modules->quote();
@@ -650,7 +657,7 @@ if (tep_count_shipping_modules() == 0) {
 		}	  
   		
 		//calculation for Jquery Post
-		if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){  //$shipping start test
+		if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){  //$shipping start test
 			//no calculation yet
 			
 		} else {
@@ -664,8 +671,8 @@ if (tep_count_shipping_modules() == 0) {
 			
 			
 			// country info for country change
-					$country_info = tep_get_countries($selected_country_id,true);
-					$cache_state_prov_values = tep_db_fetch_array(tep_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+					$country_info = vam_get_countries($selected_country_id,true);
+					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
 					$order->delivery = array('postcode' => $_POST['zip_code'],
 											 'state' => $cache_state_prov_code,
@@ -673,7 +680,7 @@ if (tep_count_shipping_modules() == 0) {
 											 'country_id' => $selected_country_id,
 			//add state zone_id
 											 'zone_id' => $_POST['state'],
-											 'format_id' => tep_get_address_format_id($selected_country_id));
+											 'format_id' => vam_get_address_format_id($selected_country_id));
 			// end country info for country change								 	  
 			  
 		} //$shipping end test
@@ -682,7 +689,7 @@ if (tep_count_shipping_modules() == 0) {
   
  
 //Classes init ##########################################
-$total_count = $cart->count_contents();  
+$total_count = $_SESSION['cart']->count_contents();  
 
 if (isset($_POST['payment'])){ $payment = $_POST['payment'];} //payment post data assignment
 
@@ -704,18 +711,18 @@ $order_total_modules->process();
 ############# Shipping specific  ####################
 /*
  // if no shipping destination address was selected, use the customers own address as default
-  if (!tep_session_is_registered('sendto')) {
-    tep_session_register('sendto');
+  if (!vam_session_is_registered('sendto')) {
+    vam_session_register('sendto');
     $sendto = $customer_default_address_id;
   } else {
 // verify the selected shipping address
     if ( (is_array($sendto) && empty($sendto)) || is_numeric($sendto) ) {
-      $check_address_query = tep_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$sendto . "'");
-      $check_address = tep_db_fetch_array($check_address_query);
+      $check_address_query = vam_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$sendto . "'");
+      $check_address = vam_db_fetch_array($check_address_query);
 
       if ($check_address['total'] != '1') {
         $sendto = $customer_default_address_id;
-        if (tep_session_is_registered('shipping')) tep_session_unregister('shipping');
+        if (vam_session_is_registered('shipping')) vam_session_unregister('shipping');
       }
     }
   }
@@ -724,13 +731,13 @@ $order_total_modules->process();
   
 // register a random ID in the session to check throughout the checkout procedure
 // against alterations in the shopping cart contents
-  if (!tep_session_is_registered('cartID')) tep_session_register('cartID');
-  $cartID = $cart->cartID;
+  if (!vam_session_is_registered('cartID')) vam_session_register('cartID');
+  $cartID = $_SESSION['cart']->cartID;
 
 // avoid hack attempts during the checkout procedure by checking the internal cartID
-  if (isset($cart->cartID) && tep_session_is_registered('cartID')) {
-    if ($cart->cartID != $cartID) {
-      tep_redirect(tep_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+  if (isset($_SESSION['cart']->cartID) && vam_session_is_registered('cartID')) {
+    if ($_SESSION['cart']->cartID != $cartID) {
+      vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
     }
   }
 
@@ -742,40 +749,40 @@ $order_total_modules->process();
   
   // in this case we need to hide shipping address and only payment address is shown as there is no shipping 
   if ($order->content_type == 'virtual') {
-    if (!tep_session_is_registered('shipping')) tep_session_register('shipping');
+    if (!vam_session_is_registered('shipping')) vam_session_register('shipping');
     $shipping = false;
     $sendto = false;
 	$checkout_possible = true; //avoid shipping validation
 	
 	$payment_address_selected = '1'; //hide payemt address validation
 	$sc_is_virtual_product = true; // change Title
-	if (!tep_session_is_registered('hide_shipping_data')) tep_session_register('hide_shipping_data'); //hide shipping data
+	if (!vam_session_is_registered('hide_shipping_data')) vam_session_register('hide_shipping_data'); //hide shipping data
 	$sc_payment_address_show = false; // hide payemt address as shipping address is used for payment address
 	$sc_shipping_modules_show = false; //hide shipping modules
 	$create_account = true; //you need to create an account
 	
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON - change shipping address to payment address
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON - change shipping address to payment address
 		$sc_payment_address_show = true;
 		$sc_shipping_address_show = false;
 		$create_account = false;
-		//if (tep_session_is_registered('create_account')) {tep_session_unregister('create_account');} //is not possible
-		if (!tep_session_is_registered('hide_shipping_data')) tep_session_register('hide_shipping_data'); //hide shipping data
+		//if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
+		if (!vam_session_is_registered('hide_shipping_data')) vam_session_register('hide_shipping_data'); //hide shipping data
 	}
   }
 
 //Mixed virtual products
   if ($order->content_type == 'mixed') {
 	$create_account = true; //you need to create an account
-	if (!tep_session_is_registered('create_account')) {tep_session_register('create_account');}
+	if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
 	$sc_is_mixed_product = true;
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$create_account = false;
 	}
   }
 
 //Free products - could have shipping costs so payment is needed
   if ($order->info['subtotal'] == '0') {
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id; 
 	}
   }
@@ -786,9 +793,9 @@ $order_total_modules->process();
 	$payment_address_selected = '1'; //hide payemt address validation
 	$sc_payment_address_show = false; // hide payemt address as shipping address is used for payment address
 	$sc_payment_modules_show = false; //hide payment modules
-	if (!tep_session_is_registered('free_payment')) {tep_session_register('free_payment');} //hack for free payment
+	if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id; 
 	}
   }*/
@@ -800,11 +807,11 @@ $order_total_modules->process();
 	  $sc_is_free_virtual_product = true; // is free virtual product
 	  $sc_payment_address_show = false;
 	  $sc_payment_modules_show = false; //hide payment modules
-	  if (!tep_session_is_registered('hide_payment_data')) tep_session_register('hide_payment_data');
-	  if (!tep_session_is_registered('show_account_data')) tep_session_register('show_account_data');
-	  if (!tep_session_is_registered('free_payment')) {tep_session_register('free_payment');} //hack for free payment
+	  if (!vam_session_is_registered('hide_payment_data')) vam_session_register('hide_payment_data');
+	  if (!vam_session_is_registered('show_account_data')) vam_session_register('show_account_data');
+	  if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	  
-	  if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
+	  if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id;
 	  }
   }
@@ -817,16 +824,16 @@ $order_total_modules->process();
 	
   if (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') {
   	//$create_account = true; //you need to create an account
-	//if (!tep_session_is_registered('create_account')) {tep_session_register('create_account');}
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
-	//	if (tep_session_is_registered('create_account')) {tep_session_unregister('create_account');} //is not possible
+	//if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
+	//	if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
 	}
   }
   
   if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
   	$create_account = true; //you need to create an account
-	if (!tep_session_is_registered('create_account')) {tep_session_register('create_account');}
-	if (tep_session_is_registered('customer_id')) { //IS LOGGED ON
+	if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$create_account = false;
 	}
   }
@@ -834,13 +841,13 @@ $order_total_modules->process();
   
   //register session to create account
   if (SC_CONFIRMATION_PAGE == 'true') {
-  	if (tep_session_is_registered('customer_id')) {
-		if (tep_session_is_registered('create_account')) {tep_session_unregister('create_account');} //is not possible
+  	if (vam_session_is_registered('customer_id')) {
+		if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
 	} else { //is not looged on
 		if ($create_account == true) {
-			if (!tep_session_is_registered('create_account')) {tep_session_register('create_account');}
+			if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
 		} else {
-			if (tep_session_is_registered('create_account')) {tep_session_unregister('create_account');}
+			if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');}
 		}
 	}
 	//after session set, if confirmation page always set to false as it will be created in confirmation_page.php 
@@ -852,19 +859,19 @@ $order_total_modules->process();
 
 //bugfix
 if ($sendto == '') {
-	$new_address_query = tep_db_query("select customers_default_address_id from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
-	$new_address = tep_db_fetch_array($new_address_query);   // Hole Language aus orders DB
+	$new_address_query = vam_db_query("select customers_default_address_id from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
+	$new_address = vam_db_fetch_array($new_address_query);   // Hole Language aus orders DB
 	$sendto = $new_address['customers_default_address_id'];
 }
 //bugfix end
 
 
-if (!tep_session_is_registered('shipping')){ tep_session_register('shipping');}
+if (!vam_session_is_registered('shipping')){ vam_session_register('shipping');}
 
 
-if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
+if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
   if ($_POST['shipping'] != 'undefined') { //to avoid setting Jquery send data which is undefined
-    if ( (tep_count_shipping_modules() > 1) || ($free_shipping == true) ) { //set (tep_count_shipping_modules() > 1) to 1 instead of 0 because only one shipping method is calculated below
+    if ( (vam_count_shipping_modules() > 1) || ($free_shipping == true) ) { //set (vam_count_shipping_modules() > 1) to 1 instead of 0 because only one shipping method is calculated below
       
 		$shipping = $_POST['shipping']; //shipping post data assignement
 		//here is the selected shipping module defined
@@ -878,7 +885,7 @@ if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT 
             $quote = $shipping_modules->quote($method, $module);
           }
           if (isset($quote['error'])) {
-            tep_session_unregister('shipping');
+            vam_session_unregister('shipping');
           } else {
             if ( (isset($quote[0]['methods'][0]['title'])) && (isset($quote[0]['methods'][0]['cost'])) ) {
 				
@@ -886,11 +893,11 @@ if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT 
                                 'title' => (($free_shipping == true) ?  $quote[0]['methods'][0]['title'] : $quote[0]['module'] . ' (' . $quote[0]['methods'][0]['title'] . ')'),
                                 'cost' => $quote[0]['methods'][0]['cost']);
 
-              //tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+              //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
             }
           }
         } else {
-          tep_session_unregister('shipping');
+          vam_session_unregister('shipping');
         }
      
     }
@@ -901,29 +908,29 @@ if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT 
 
 ################## Payment specific   #####################
 // if no billing destination address was selected, use the customers own address as default
-  if (!tep_session_is_registered('billto')) {
-    tep_session_register('billto');
+  if (!vam_session_is_registered('billto')) {
+    vam_session_register('billto');
     $billto = $customer_default_address_id;
   } else {
  
 // verify the selected billing address
     if ( (is_array($billto) && empty($billto)) || is_numeric($billto) ) {
-      $check_billto_query = tep_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$billto . "'");
-      $check_billto = tep_db_fetch_array($check_billto_query);
+      $check_billto_query = vam_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$billto . "'");
+      $check_billto = vam_db_fetch_array($check_billto_query);
       if ($check_billto['total'] != '1') {
         $billto = $customer_default_address_id;
-        if (tep_session_is_registered('payment')) tep_session_unregister('payment');
+        if (vam_session_is_registered('payment')) vam_session_unregister('payment');
       } 
     }
   }
 
 //solves bug for no payment address
-if (($billto == '') && (!tep_session_is_registered('changed_adress'))) {
-	$new_address_query = tep_db_query("select customers_default_address_id from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
-	$new_address = tep_db_fetch_array($new_address_query);   // Hole Language aus orders DB
+if (($billto == '') && (!vam_session_is_registered('changed_adress'))) {
+	$new_address_query = vam_db_query("select customers_default_address_id from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
+	$new_address = vam_db_fetch_array($new_address_query);   // Hole Language aus orders DB
 	$billto = $new_address['customers_default_address_id'];
 }
-if (tep_session_is_registered('changed_adress')) tep_session_unregister('changed_adress');
+if (vam_session_is_registered('changed_adress')) vam_session_unregister('changed_adress');
 // end bug
 
 ################## Payment specific END  #####################
@@ -949,9 +956,9 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 	
     if ($error == false) {
 		
-		$dbPass = tep_encrypt_password($password);
+		$dbPass = vam_encrypt_password($password);
 		
-      	if (!tep_session_is_registered('noaccount')) {tep_session_register('noaccount');} //used for order class - order.php
+      	if (!vam_session_is_registered('noaccount')) {vam_session_register('noaccount');} //used for order class - order.php
         //create sessions
 		$_SESSION['sc_payment_address_selected'] = $payment_address_selected; //payment address selected
 		
@@ -1014,22 +1021,22 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 				  
 
 		if (SESSION_RECREATE == 'True') {
-	    	tep_session_recreate();
+	    	vam_session_recreate();
 		}	
 		
 		  
 		############################# process the selected shipping method ######################################
-		if (!tep_session_is_registered('comments')) tep_session_register('comments');
-		if (tep_not_null($_POST['comments'])) {
-		  //$comments = tep_db_prepare_input($_POST['comments']);
+		if (!vam_session_is_registered('comments')) vam_session_register('comments');
+		if (vam_not_null($_POST['comments'])) {
+		  //$comments = vam_db_prepare_input($_POST['comments']);
 		}
 
 
 		/// This we ne to process also for updating jquery shipping value
-		if (!tep_session_is_registered('shipping')) tep_session_register('shipping');
-		if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
+		if (!vam_session_is_registered('shipping')) vam_session_register('shipping');
+		if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
 	
-		if ( (tep_count_shipping_modules() > 1) || ($free_shipping == true) ) {
+		if ( (vam_count_shipping_modules() > 1) || ($free_shipping == true) ) {
 			//here is the selected shipping module defined
 			$shipping = $_POST['shipping']; 
 		
@@ -1044,18 +1051,18 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 				$quote = $shipping_modules->quote($method, $module);
 			  }
 			  if (isset($quote['error'])) {
-				tep_session_unregister('shipping');
+				vam_session_unregister('shipping');
 			  } else {
 				if ( (isset($quote[0]['methods'][0]['title'])) && (isset($quote[0]['methods'][0]['cost'])) ) {
 				  $shipping = array('id' => $shipping,
 									'title' => (($free_shipping == true) ?  $quote[0]['methods'][0]['title'] : $quote[0]['module'] . ' (' . $quote[0]['methods'][0]['title'] . ')'),
 									'cost' => $quote[0]['methods'][0]['cost']);
 	
-				  //tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+				  //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 				}
 			  }
 			} else {
-			  tep_session_unregister('shipping');
+			  vam_session_unregister('shipping');
 			}
 		  }
 		}	  
@@ -1073,8 +1080,8 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		if (isset($$payment->form_action_url)) {
 			if (SC_CONFIRMATION_PAGE == 'true') {
 				$sc_payment_url = false;
-				$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
-				tep_redirect($form_action_url); //redirect to checkout_pocess.php
+				$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+				vam_redirect($form_action_url); //redirect to checkout_pocess.php
 				//$order = new order;  //set new order for post data
 			} else {
 				//$form_action_url = $$payment->form_action_url;
@@ -1085,11 +1092,11 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		} else { //process for non-url payment modules
 			if (SC_CONFIRMATION_PAGE == 'true') {
 				//if confimation is true
-				$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+				$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
 			} else {
-				$form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+				$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 			}
-			tep_redirect($form_action_url); //redirect to checkout_pocess.php
+			vam_redirect($form_action_url); //redirect to checkout_pocess.php
 		}
 	
 	}
@@ -1103,7 +1110,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 //if no errors
     if ($error == false) {
 		
-	  $dbPass = tep_encrypt_password($password);
+	  $dbPass = vam_encrypt_password($password);
 
       $sql_data_array = array('customers_firstname' => $firstname,
                               'customers_lastname' => $lastname,
@@ -1115,11 +1122,11 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
                               
 
       if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $gender;
-      if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = tep_date_raw($dob);
+      if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = vam_date_raw($dob);
 
-      tep_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+      vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
-      $customer_id = tep_db_insert_id();
+      $customer_id = vam_db_insert_id();
 
       $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $firstname,
@@ -1143,27 +1150,27 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
       }
 	  
 
-      tep_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+      vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-      $address_id = tep_db_insert_id();
+      $address_id = vam_db_insert_id();
 
-      tep_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
+      vam_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
 
-      tep_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
+      vam_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
 
       if (SESSION_RECREATE == 'True') {
-        tep_session_recreate();
+        vam_session_recreate();
       }
 
       $customer_first_name = $firstname;
       $customer_default_address_id = $address_id;
       $customer_country_id = $country;
       $customer_zone_id = $zone_id;
-      tep_session_register('customer_id');  
-      tep_session_register('customer_first_name');
-      tep_session_register('customer_default_address_id');
-      tep_session_register('customer_country_id');
-      tep_session_register('customer_zone_id');
+      vam_session_register('customer_id');  
+      vam_session_register('customer_first_name');
+      vam_session_register('customer_default_address_id');
+      vam_session_register('customer_country_id');
+      vam_session_register('customer_zone_id');
 	  // Customers Data are stored into to DB table "customers" and "Adress_book"
 ############################# create_account End process #######################################
 
@@ -1189,11 +1196,11 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
           }
         }
 
-        if (!tep_session_is_registered('billto')) tep_session_register('billto');
+        if (!vam_session_is_registered('billto')) vam_session_register('billto');
 
-        tep_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+        vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-        $billto_payment = tep_db_insert_id();
+        $billto_payment = vam_db_insert_id();
       }
 	
 ############################# end new payment address #######################################
@@ -1201,17 +1208,17 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 
 
 ############################# process the selected shipping method ######################################
-    if (!tep_session_is_registered('comments')) tep_session_register('comments');
-    if (tep_not_null($_POST['comments'])) {
-      $comments = tep_db_prepare_input($_POST['comments']);
+    if (!vam_session_is_registered('comments')) vam_session_register('comments');
+    if (vam_not_null($_POST['comments'])) {
+      $comments = vam_db_prepare_input($_POST['comments']);
     }
 
 
 /// This we ne to process also for updating jquery shipping value
-if (!tep_session_is_registered('shipping')) tep_session_register('shipping');
-if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
+if (!vam_session_is_registered('shipping')) vam_session_register('shipping');
+if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
 
-    if ( (tep_count_shipping_modules() > 1) || ($free_shipping == true) ) {
+    if ( (vam_count_shipping_modules() > 1) || ($free_shipping == true) ) {
 		//here is the selected shipping module defined
 		$shipping = $_POST['shipping']; 
 		
@@ -1226,18 +1233,18 @@ if (isset($_POST['shipping']) && tep_not_null($_POST['shipping'])){ //used THAT 
             $quote = $shipping_modules->quote($method, $module);
           }
           if (isset($quote['error'])) {
-            tep_session_unregister('shipping');
+            vam_session_unregister('shipping');
           } else {
             if ( (isset($quote[0]['methods'][0]['title'])) && (isset($quote[0]['methods'][0]['cost'])) ) {
               $shipping = array('id' => $shipping,
                                 'title' => (($free_shipping == true) ?  $quote[0]['methods'][0]['title'] : $quote[0]['module'] . ' (' . $quote[0]['methods'][0]['title'] . ')'),
                                 'cost' => $quote[0]['methods'][0]['cost']);
 
-              //tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+              //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
             }
           }
         } else {
-          tep_session_unregister('shipping');
+          vam_session_unregister('shipping');
         }
     }
   }	  
@@ -1270,8 +1277,8 @@ $sc_payment_url = false;
 if (isset($$payment->form_action_url)) {
 	if (SC_CONFIRMATION_PAGE == 'true') {
 		$sc_payment_url = false;
-		$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
-		tep_redirect($form_action_url); //redirect to checkout_pocess.php
+		$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+		vam_redirect($form_action_url); //redirect to checkout_pocess.php
 		//$order = new order;  //set new order for post data
 	} else {
 		//START send create account mail
@@ -1294,7 +1301,7 @@ if (isset($$payment->form_action_url)) {
 			  	  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
 			  }
 			  
-			  tep_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+			  vam_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 			  
 		
 		//} //END send create account mail
@@ -1308,7 +1315,7 @@ if (isset($$payment->form_action_url)) {
 	
 	if (SC_CONFIRMATION_PAGE == 'true') {
 		//if confimation is true
-		$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+		$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
 	} else {
 		//START send create account mail
 		//if ($create_account == true) {
@@ -1330,14 +1337,14 @@ if (isset($$payment->form_action_url)) {
 			  	  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
 			  }
 			  
-			  tep_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+			  vam_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 		
 		//} //END send create account mail
 		
-		$form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+		$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 		
 	}
-	tep_redirect($form_action_url); //redirect to checkout_pocess.php
+	vam_redirect($form_action_url); //redirect to checkout_pocess.php
 }
   
   
@@ -1345,10 +1352,10 @@ if (isset($$payment->form_action_url)) {
 
 
 //reset session token
-//$sessiontoken = md5(tep_rand() . tep_rand() . tep_rand() . tep_rand());
+//$sessiontoken = md5(vam_rand() . vam_rand() . vam_rand() . vam_rand());
 
 // restore cart contents
-//$cart->restore_contents();
+//$_SESSION['cart']->restore_contents();
     }
   }
 /////////////////// END PROCESS Button pressed for ACCOUNT CREATION - only onepage ////////////////////////////////////////////
@@ -1367,7 +1374,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	
 	
 	//just to be sure - we are a logged in user so don't delete customer account
-	if (tep_session_is_registered('noaccount')){ tep_session_unregister('noaccount');}
+	if (vam_session_is_registered('noaccount')){ vam_session_unregister('noaccount');}
 	
 	
 	
@@ -1376,8 +1383,8 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	$sc_payment_url = false;
 	if (isset($$payment->form_action_url)) {
 		if (SC_CONFIRMATION_PAGE == 'true') {
-			$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
-			tep_redirect($form_action_url); //redirect to checkout_pocess.php
+			$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+			vam_redirect($form_action_url); //redirect to checkout_pocess.php
 		} else {
 			//$form_action_url = $$payment->form_action_url;
 			$sc_payment_url = true;
@@ -1386,11 +1393,11 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 		}
 	  } else { //non-url payment modules
 	  	if (SC_CONFIRMATION_PAGE == 'true') {
-			$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+			$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
 		} else {
-			$form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+			$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 		}
-		tep_redirect($form_action_url); //redirect to checkout_pocess.php
+		vam_redirect($form_action_url); //redirect to checkout_pocess.php
 	  }
 
 	} //error end
@@ -1408,7 +1415,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 // method if more than one module is now enabled
 
 // don't use this as it will not get the toal correct the first time
- // if ( !tep_session_is_registered('shipping') || ( tep_session_is_registered('shipping') && ($shipping == false) && (tep_count_shipping_modules() > 1) ) ) $shipping = $shipping_modules->cheapest();
+ // if ( !vam_session_is_registered('shipping') || ( vam_session_is_registered('shipping') && ($shipping == false) && (vam_count_shipping_modules() > 1) ) ) $shipping = $shipping_modules->cheapest();
  
 
 
@@ -1418,7 +1425,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) {
 		
     $form_action_url = $$payment->form_action_url;
-	echo tep_draw_form('checkoutUrl', $form_action_url, 'post');
+	echo vam_draw_form('checkoutUrl', $form_action_url, 'post');
   } 
   
   
@@ -1436,8 +1443,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 <?php
 //////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
 if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
-
-require(DIR_WS_INCLUDES . 'template_top.php');
 
 if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
@@ -1461,9 +1466,9 @@ if (is_array($payment_modules->modules)) {
 ?>
 
       <tr>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
         <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
         <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
       </tr>
 
@@ -1486,7 +1491,6 @@ if (is_array($payment_modules->modules)) {
 
 </form>
 <?php 
-require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
 <script type="text/javascript">
     document.checkoutUrl.submit();
@@ -1499,18 +1503,17 @@ require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
 //////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
 
-  $breadcrumb->add(NAVBAR_TITLE_1, tep_href_link(FILENAME_CHECKOUT, '', 'SSL'));
-  $breadcrumb->add(NAVBAR_TITLE_2, tep_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+  $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+  $breadcrumb->add(NAVBAR_TITLE_2, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 
 
-  require(DIR_WS_INCLUDES . 'template_top.php');
   require('includes/form_check.js.php');  
   
 ?>
 
 <?php
 // if the customer is logged on - show this javascript
-if (tep_session_is_registered('customer_id')) { ?>
+if (vam_session_is_registered('customer_id')) { ?>
 <script type="text/javascript">
 
 $(init);
@@ -1739,31 +1742,31 @@ if (SC_CONFIRMATION_PAGE == 'true') { ?>
 ?>
 
 
-<p><?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?></p>
+<p><?php echo sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')); ?></p>
 
 
 <?php 
 //Draw form for pressing button "confirm order"
 //first check input fields and check for payment choosen
-$form_action_url = tep_href_link(FILENAME_CHECKOUT, '', 'SSL');
-echo tep_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
+$form_action_url = vam_href_link(FILENAME_CHECKOUT, '', 'SSL');
+echo vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
  
  
 // draw process hidden field
-if (tep_session_is_registered('customer_id')) {  //logged on - process another action = 'logged_on'
-	echo tep_draw_hidden_field('action', 'logged_on');
+if (vam_session_is_registered('customer_id')) {  //logged on - process another action = 'logged_on'
+	echo vam_draw_hidden_field('action', 'logged_on');
 } else { //is not logged on - process another action = 'process'
 	//not logged on
-	echo tep_draw_hidden_field('action', 'not_logged_on');
+	echo vam_draw_hidden_field('action', 'not_logged_on');
 }
 
-echo tep_draw_hidden_field('shipping_count', $shipping_count); //need to post it for validation
-echo tep_draw_hidden_field('sc_payment_address_show', $sc_payment_address_show); //need to post it for validation
-echo tep_draw_hidden_field('sc_payment_modules_show', $sc_payment_modules_show); //need to post it for validation
-echo tep_draw_hidden_field('create_account', $create_account); //need to post it for validation
-echo tep_draw_hidden_field('sc_shipping_modules_show', $sc_shipping_modules_show); //need to post it for validation
-echo tep_draw_hidden_field('sc_shipping_address_show', $sc_shipping_address_show); //need to post it for validation
-echo tep_draw_hidden_field('checkout_possible', $checkout_possible); //need to post it for validation
+echo vam_draw_hidden_field('shipping_count', $shipping_count); //need to post it for validation
+echo vam_draw_hidden_field('sc_payment_address_show', $sc_payment_address_show); //need to post it for validation
+echo vam_draw_hidden_field('sc_payment_modules_show', $sc_payment_modules_show); //need to post it for validation
+echo vam_draw_hidden_field('create_account', $create_account); //need to post it for validation
+echo vam_draw_hidden_field('sc_shipping_modules_show', $sc_shipping_modules_show); //need to post it for validation
+echo vam_draw_hidden_field('sc_shipping_address_show', $sc_shipping_address_show); //need to post it for validation
+echo vam_draw_hidden_field('checkout_possible', $checkout_possible); //need to post it for validation
 ?>
 
    
@@ -1778,19 +1781,19 @@ echo tep_draw_hidden_field('checkout_possible', $checkout_possible); //need to p
 
 
 <h2><?php if (($sc_is_virtual_product == true) && ($sc_is_free_virtual_product == false)) { 
-echo tep_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; 
+echo vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; 
 } elseif (($sc_is_virtual_product == true) && ($sc_is_free_virtual_product == true)) {
-echo tep_get_sc_titles_number(). SC_HEADING_CREATE_ACCOUNT_INFORMATION; 
+echo vam_get_sc_titles_number(). SC_HEADING_CREATE_ACCOUNT_INFORMATION; 
 } else {
-echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS; 
+echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS; 
 } ?></h2> 
 
 
 <?php ################ START Shipping Information - LOGGED ON ######################################## ?>
-<?php if (tep_session_is_registered('customer_id')) { ?>
+<?php if (vam_session_is_registered('customer_id')) { ?>
     	<div>
-          <p><?php echo tep_address_label($customer_id, $sendto, true, ' ', '<br />'); ?></p>
-          <p><?php echo tep_draw_button(IMAGE_BUTTON_CHANGE_ADDRESS, 'home', tep_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL')); ?></p>
+          <p><?php echo vam_address_label($customer_id, $sendto, true, ' ', '<br />'); ?></p>
+          <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
         </div>
 <?php } else { //no account ?>
 <?php ################ END Shipping Information - LOGGED ON ######################################## ?> 
@@ -1809,9 +1812,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldValue">
 		<?php 
 		//not yet finished
-		 //echo tep_draw_radio_field('gender', 'm', '', 'id="checkme"') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . tep_draw_radio_field('gender', 'f', '', 'id="checkme2"') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;&nbsp;'. tep_draw_radio_field('gender', 'a', '', 'id="checkme1"') . '&nbsp;&nbsp;' . FIRMA . '&nbsp;' . (tep_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); 
+		 //echo vam_draw_radio_field('gender', 'm', '', 'id="checkme"') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender', 'f', '', 'id="checkme2"') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;&nbsp;'. vam_draw_radio_field('gender', 'a', '', 'id="checkme1"') . '&nbsp;&nbsp;' . FIRMA . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); 
         
-		echo tep_draw_radio_field('gender', 'm') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . tep_draw_radio_field('gender', 'f') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (tep_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?></td>
+		echo vam_draw_radio_field('gender', 'm') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender', 'f') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?></td>
       </tr>
 </table>
 <?php
@@ -1827,7 +1830,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
      <table border="0" cellspacing="2" cellpadding="2" width="100%">
       <tr>
         <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-        <td class="fieldValue"><?php echo tep_draw_input_field('company', $sc_guest_company, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('company', $sc_guest_company, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
       </tr>
     </table>
 </div>  
@@ -1840,9 +1843,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('firstname', $sc_guest_firstname, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('firstname', $sc_guest_firstname, 'class="text" id="ent_first_name"') . '&nbsp;' . (tep_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'class="text" id="ent_first_name"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		  var ent_first_name = new LiveValidation('ent_first_name');
 		  ent_first_name.add(Validate.Length, { minimum: 4 } );
@@ -1855,9 +1858,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('lastname', $sc_guest_lastname, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('lastname', $sc_guest_lastname, 'class="text" id="ent_last_name"') . '&nbsp;' . (tep_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'class="text" id="ent_last_name"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		  var ent_last_name = new LiveValidation('ent_last_name');
 		  ent_last_name.add(Validate.Length, { minimum: 4 } );
@@ -1872,7 +1875,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
       <tr>
         <td class="fieldKey"><?php echo ENTRY_DATE_OF_BIRTH; ?></td>
-        <td class="fieldValue"><?php echo tep_draw_input_field('dob', $sc_guest_dob, 'class="text" id="dob"') . '&nbsp;' . (tep_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="inputRequirement">' . ENTRY_DATE_OF_BIRTH_TEXT . '</span>': ''); ?><script type="text/javascript">$('#dob').datepicker({dateFormat: '<?php echo JQUERY_DATEPICKER_FORMAT; ?>', changeMonth: true, changeYear: true, yearRange: '-100:+0'});</script></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('dob', $sc_guest_dob, 'class="text" id="dob"') . '&nbsp;' . (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="inputRequirement">' . ENTRY_DATE_OF_BIRTH_TEXT . '</span>': ''); ?><script type="text/javascript">$('#dob').datepicker({dateFormat: '<?php echo JQUERY_DATEPICKER_FORMAT; ?>', changeMonth: true, changeYear: true, yearRange: '-100:+0'});</script></td>
       </tr>
 
 <?php
@@ -1893,9 +1896,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('street_address', $sc_guest_street_address, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('street_address', $sc_guest_street_address, 'class="text" id="ent_street_address"') . '&nbsp;' . (tep_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'class="text" id="ent_street_address"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_street_address = new LiveValidation('ent_street_address');
 		    ent_street_address.add(Validate.Length, { minimum: 4 } );
@@ -1910,7 +1913,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
       <tr>
         <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-        <td class="fieldValue"><?php echo tep_draw_input_field('suburb', $sc_guest_suburb, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('suburb', $sc_guest_suburb, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
       </tr>
 
 <?php
@@ -1921,9 +1924,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('postcode', $sc_guest_postcode, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('postcode', $sc_guest_postcode, 'class="text" id="ent_postcode"') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'class="text" id="ent_postcode"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_postcode = new LiveValidation('ent_postcode');
 		    ent_postcode.add(Validate.Length, { minimum: 4 } );
@@ -1936,9 +1939,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('city', $sc_guest_city, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('city', $sc_guest_city, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('city', $sc_guest_city, 'class="text" id="ent_city"') . '&nbsp;' . (tep_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('city', $sc_guest_city, 'class="text" id="ent_city"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_city = new LiveValidation('ent_city');
 		    ent_city.add(Validate.Length, { minimum: 4 } );
@@ -1958,19 +1961,19 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     if ($process == true) {
       if ($entry_state_has_zones == true) {
         $zones_array = array();
-        $zones_query = tep_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = tep_db_fetch_array($zones_query)) {
+        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
+        while ($zones_values = vam_db_fetch_array($zones_query)) {
           $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
         }
-        echo tep_draw_pull_down_menu('state', $zones_array, '', 'class="text"');
+        echo vam_draw_pull_down_menu('state', $zones_array, '', 'class="text"');
       } else {
-        echo tep_draw_input_field('state', '', 'class="text"');
+        echo vam_draw_input_field('state', '', 'class="text"');
       }
     } else {
-      echo tep_draw_input_field('state', '', 'class="text"');
+      echo vam_draw_input_field('state', '', 'class="text"');
     }
 
-    if (tep_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
+    if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
 ?>
         </td>
       </tr>
@@ -1986,10 +1989,10 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
+		<?php echo vam_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
-        <?php //echo tep_get_country_list('country', '', 'class="text" id="ent_country"') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
+        <?php echo vam_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
+        <?php //echo vam_get_country_list('country', '', 'class="text" id="ent_country"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
         <!--<script type="text/javascript">
 		    var ent_country = new LiveValidation('ent_country');
 		    ent_country.add( Validate.Acceptance );
@@ -2017,12 +2020,12 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
  
 <?php if ($sc_payment_address_show == true) { // hide payment if there is a virtual product because we use shipping address for payment address ?>
 <div id="payment_address_box"  class="sm_layout_box">
- <h2><?php echo tep_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; ?></h2>
+ <h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; ?></h2>
 <?php ################ START Payment Information - LOGGED ON ######################################## ?>
-<?php if (tep_session_is_registered('customer_id')) { ?>
+<?php if (vam_session_is_registered('customer_id')) { ?>
     	<div>
-           <p><?php echo tep_address_label($customer_id, $billto, true, ' ', '<br />'); ?></p>
-           <p><?php echo tep_draw_button(IMAGE_BUTTON_CHANGE_ADDRESS, 'home', tep_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL')); ?></p>
+           <p><?php echo vam_address_label($customer_id, $billto, true, ' ', '<br />'); ?></p>
+           <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
         </div>
 <?php } else { //no account ?>
 <?php ################ END Payment Information - LOGGED ON ######################################## ?> 
@@ -2036,11 +2039,11 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         
    <?php if (($error == '1') && ($payment_address_selected != '1')) { //is not selected - otherwise payment address is same as shipping address ?>
         
-        <td><?php echo tep_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (tep_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
+        <td><?php echo vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
         
         <?php } else { //is selected ?>
         
-        <td><?php echo tep_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (tep_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
+        <td><?php echo vam_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
         
         <?php } ?>
         
@@ -2071,7 +2074,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <td class="fieldKey"><?php echo ENTRY_GENDER; ?></td>
       <td class="fieldValue">
 	  
-	  <?php echo tep_draw_radio_field('gender_payment', 'm', $male) . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . tep_draw_radio_field('gender_payment', 'f', $female) . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (tep_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?>
+	  <?php echo vam_draw_radio_field('gender_payment', 'm', $male) . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender_payment', 'f', $female) . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?>
       
       </td>
     </tr>
@@ -2086,7 +2089,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-      <td class="fieldValue"><?php echo tep_draw_input_field('company_payment', '',  'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_draw_input_field('company_payment', '',  'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
     </tr>
 
 <?php
@@ -2098,9 +2101,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
       <td class="fieldValue">
 	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('firstname_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('firstname_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('firstname_payment', '', 'class="text" id="pay_first_name"') . '&nbsp;' . (tep_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('firstname_payment', '', 'class="text" id="pay_first_name"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		  var ent_first_name = new LiveValidation('pay_first_name');
 		  ent_first_name.add(Validate.Length, { minimum: 4 } );
@@ -2112,9 +2115,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
       <td class="fieldValue">
 	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('lastname_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('lastname_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('lastname_payment', '', 'class="text" id="pay_last_name"') . '&nbsp;' . (tep_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('lastname_payment', '', 'class="text" id="pay_last_name"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		  var ent_last_name = new LiveValidation('pay_last_name');
 		  ent_last_name.add(Validate.Length, { minimum: 4 } );
@@ -2127,9 +2130,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     <tr>
       <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
       <td class="fieldValue"><?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('street_address_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('street_address_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('street_address_payment', '', 'class="text" id="pay_street_address"') . '&nbsp;' . (tep_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('street_address_payment', '', 'class="text" id="pay_street_address"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_street_address = new LiveValidation('pay_street_address');
 		    ent_street_address.add(Validate.Length, { minimum: 4 } );
@@ -2144,7 +2147,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-      <td class="fieldValue"><?php echo tep_draw_input_field('suburb_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_draw_input_field('suburb_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
     </tr>
 
 <?php
@@ -2155,9 +2158,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
       <td class="fieldValue">
 	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('postcode_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('postcode_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('postcode_payment', '', 'class="text" id="pay_postcode"') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('postcode_payment', '', 'class="text" id="pay_postcode"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_postcode = new LiveValidation('pay_postcode');
 		    ent_postcode.add(Validate.Length, { minimum: 4 } );
@@ -2169,9 +2172,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
       <td class="fieldValue">
 	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('city_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('city_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('city_payment', '', 'class="text" id="pay_city"') . '&nbsp;' . (tep_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('city_payment', '', 'class="text" id="pay_city"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_city = new LiveValidation('pay_city');
 		    ent_city.add(Validate.Length, { minimum: 4 } );
@@ -2192,19 +2195,19 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     if ($process == true) {
       if ($entry_state_has_zones == true) {
         $zones_array = array();
-        $zones_query = tep_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = tep_db_fetch_array($zones_query)) {
+        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
+        while ($zones_values = vam_db_fetch_array($zones_query)) {
           $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
         }
-        echo tep_draw_pull_down_menu('state_payment', $zones_array, '', 'class="text"');
+        echo vam_draw_pull_down_menu('state_payment', $zones_array, '', 'class="text"');
       } else {
-        echo tep_draw_input_field('state_payment', '', 'class="text"');
+        echo vam_draw_input_field('state_payment', '', 'class="text"');
       }
     } else {
-      echo tep_draw_input_field('state_payment', '', 'class="text"');
+      echo vam_draw_input_field('state_payment', '', 'class="text"');
     }
 
-    if (tep_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
+    if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
 ?>
 
       </td>
@@ -2216,7 +2219,7 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
-      <td class="fieldValue"><?php echo tep_get_country_list('country_payment', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_get_country_list('country_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
     </tr>
   </table>
 
@@ -2229,11 +2232,11 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
 
 
-<?php if (!tep_session_is_registered('customer_id')) { //IS NOT LOGGED ON ?>
+<?php if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON ?>
 <?php ################ START Contact Information - NO ACCOUNT ######################################## ?> 
 <div id="contact_box" class="sm_layout_box">
 
-  <h2><?php echo tep_get_sc_titles_number() . CATEGORY_CONTACT; ?></h2>
+  <h2><?php echo vam_get_sc_titles_number() . CATEGORY_CONTACT; ?></h2>
 
   
     <table border="0" cellspacing="2" cellpadding="2" width="100%">
@@ -2241,9 +2244,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('email_address', $sc_guest_email_address, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('email_address', $sc_guest_email_address, 'class="text" id="ent_email_address"') . '&nbsp;' . (tep_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'class="text" id="ent_email_address"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		  var ent_email_address = new LiveValidation('ent_email_address');
 		  ent_email_address.add(Validate.Email );
@@ -2256,9 +2259,9 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         <td class="fieldKey"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
         <td class="fieldValue">
 		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_input_field('telephone', $sc_guest_telephone, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_input_field('telephone', $sc_guest_telephone, 'class="text" id="ent_telephone"') . '&nbsp;' . (tep_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'class="text" id="ent_telephone"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_telephone = new LiveValidation('ent_telephone');
 		    ent_telephone.add(Validate.Length, { minimum: 4 } );
@@ -2268,14 +2271,14 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       </tr>
       <tr>
         <td class="fieldKey"><?php echo ENTRY_FAX_NUMBER; ?></td>
-        <td class="fieldValue"><?php echo tep_draw_input_field('fax', $sc_guest_fax, 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_FAX_NUMBER_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('fax', $sc_guest_fax, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_FAX_NUMBER_TEXT . '</span>': ''); ?></td>
       </tr>
       
 
       
  
      <tr>
-       <td><?php echo tep_draw_hidden_field('guest', 'guest'); //do we need this??? ?></td>
+       <td><?php echo vam_draw_hidden_field('guest', 'guest'); //do we need this??? ?></td>
      </tr>
   </table>
 </div> <!--div end contact_box -->    
@@ -2293,11 +2296,11 @@ echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 <?php ################ START Password - NO ACCOUNT ######################################## ?>
 <?php
 //if ($create_account == true) { 
- if (!tep_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
+ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
   if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true) || (SC_CREATE_ACCOUNT_REQUIRED == 'true') || (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true')) { ?>
 <div id="password_box" class="sm_layout_box">
 
-<h2><?php echo tep_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT; ?></h2>
+<h2><?php echo vam_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT; ?></h2>
 
 <?php 
 if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
@@ -2320,11 +2323,11 @@ if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
         
    <?php if (($error == '1') && ($password_selected != '1')) { //is not selected ?>
         
-        <td><?php echo tep_draw_checkbox_field('password_checkbox', '1', false, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
+        <td><?php echo vam_draw_checkbox_field('password_checkbox', '1', false, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
         
         <?php } else { //is selected ?>
         
-        <td><?php echo tep_draw_checkbox_field('password_checkbox', '1', true, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
+        <td><?php echo vam_draw_checkbox_field('password_checkbox', '1', true, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
         
         <?php } ?>
         
@@ -2341,9 +2344,9 @@ if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
         <td class="fieldKey"><?php echo ENTRY_PASSWORD; ?></td>
         <td class="fieldValue">
 		<?php if (LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_password_field('password', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_password_field('password', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_password_field('password', '', 'class="text" id="ent_password"') . '&nbsp;' . (tep_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_password_field('password', '', 'class="text" id="ent_password"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
         <?php } ?>        
         </td>
       </tr>
@@ -2351,9 +2354,9 @@ if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
         <td class="fieldKey"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></td>
         <td class="fieldValue">
 		<?php if (LIVE_VALIDATION == 'false') { ?>
-		<?php echo tep_draw_password_field('confirmation', '', 'class="text"') . '&nbsp;' . (tep_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
+		<?php echo vam_draw_password_field('confirmation', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
         <?php } else { ?>
-        <?php echo tep_draw_password_field('confirmation', '', 'class="text" id="ent_confirmation"') . '&nbsp;' . (tep_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
+        <?php echo vam_draw_password_field('confirmation', '', 'class="text" id="ent_confirmation"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
         <script type="text/javascript">
 		    var ent_confirmation = new LiveValidation('ent_confirmation');
 		    ent_confirmation.add( Validate.Confirmation, { match: 'ent_password' } );
@@ -2375,7 +2378,7 @@ if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
 <?php ################ START Shipping Modules ######################################## ?>     
 <?php if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products ?>
 
-<?php if ((SC_HIDE_SHIPPING == 'true') && (tep_count_shipping_modules() <= 1)) { 
+<?php if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
 //if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
 //but we still need the divs in order to work with jquery update ?>
 <div id="shipping_modules_box">
@@ -2391,12 +2394,12 @@ else { // show shipping modules ?>
 <div id="shipping_modules_box" class="sm_layout_box">
 <div id="shipping_options"> 
 <?php
-  if (tep_count_shipping_modules() > 0) {
+  if (vam_count_shipping_modules() > 0) {
 ?>
 
 
 
-  <h2><?php echo tep_get_sc_titles_number() . TABLE_HEADING_SHIPPING_METHOD; ?></h2>
+  <h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_METHOD; ?></h2>
 
 
 <?php
@@ -2433,7 +2436,7 @@ if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
         <td><h5><?php echo FREE_SHIPPING_TITLE; ?></h5>&nbsp;<?php echo $quotes[$i]['icon']; ?></td>
       </tr>
       <tr id="defaultSelected" class="moduleRowSelected" onMouseOver="rowOverEffect(this)" onMouseOut="rowOutEffect(this)" onClick="selectRowEffect(this, 0)">
-        <td style="padding-left: 15px;"><?php echo sprintf(FREE_SHIPPING_DESCRIPTION, $currencies->format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER)) . tep_draw_hidden_field('shipping', 'free_free'); ?></td>
+        <td style="padding-left: 15px;"><?php echo sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true)) . vam_draw_hidden_field('shipping', 'free_free'); ?></td>
       </tr>
 
 <?php
@@ -2443,7 +2446,7 @@ if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
 ?>
 
       <tr>
-        <td colspan="3"><h5><?php echo $quotes[$i]['module']; ?></h5>&nbsp;<?php if (isset($quotes[$i]['icon']) && tep_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?></td>
+        <td colspan="3"><h5><?php echo $quotes[$i]['module']; ?></h5>&nbsp;<?php if (isset($quotes[$i]['icon']) && vam_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?></td>
       </tr>
 
 <?php
@@ -2478,14 +2481,14 @@ if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
 
 ?>
 
-        <td class="product_price"><?php echo $currencies->format(tep_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0))); ?></td>
-        <td align="right"><?php echo tep_draw_radio_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'], $checked); ?></td>
+        <td class="product_price"><?php echo $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)),true); ?></td>
+        <td align="right"><?php echo vam_draw_radio_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'], $checked); ?></td>
 
 <?php
             } else {
 ?>
 
-        <td class="product_price" align="right" colspan="2"><?php echo $currencies->format(tep_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0))) . tep_draw_hidden_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id']); ?></td>
+        <td class="product_price" align="right" colspan="2"><?php echo $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)),true) . vam_draw_hidden_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id']); ?></td>
 
 <?php
             }
@@ -2507,7 +2510,7 @@ if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
 
 
 <?php
-  } //end (tep_count_shipping_modules()
+  } //end (vam_count_shipping_modules()
 ?>
 </div> <!--div end shipping_options-->
 </div> <!--div end shipping_modules_box --> 
@@ -2522,7 +2525,7 @@ if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
 <?php ################ START Payment Modules ######################################## ?> 
 <?php if ($sc_payment_modules_show == true) { // hide payment modules ?>
 <div id="payment_options" class="sm_layout_box"> 
-<h2><?php echo tep_get_sc_titles_number() . TABLE_HEADING_PAYMENT_METHOD; ?></h2>
+<h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_PAYMENT_METHOD; ?></h2>
 
 <?php
 if ($sc_payment_modules_process == true) {
@@ -2574,9 +2577,9 @@ if ($sc_payment_modules_process == true) {
 
 <?php
     if (sizeof($selection) > 1) {
-      echo tep_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $payment));
+      echo vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $payment));
     } else {
-      echo tep_draw_hidden_field('payment', $selection[$i]['id']);
+      echo vam_draw_hidden_field('payment', $selection[$i]['id']);
     }
 ?>
 
@@ -2636,10 +2639,10 @@ if ($sc_payment_modules_process == true) {
   if (MODULE_ORDER_TOTAL_DISCOUNT_STATUS == 'true') {
 ?>
 
-  <h2><?php echo tep_get_sc_titles_number() . TEXT_DISCOUNT_CODE; ?></h2>
+  <h2><?php echo vam_get_sc_titles_number() . TEXT_DISCOUNT_CODE; ?></h2>
 
   
-  <?php echo tep_draw_input_field('discount_code', $sess_discount_code, 'class="text" size="10"'); ?>
+  <?php echo vam_draw_input_field('discount_code', $sess_discount_code, 'class="text" size="10"'); ?>
   
   
 <?php
@@ -2657,10 +2660,10 @@ if ($sc_payment_modules_process == true) {
 <?php ################ START Comment box ######################################## ?> 
 <?php if (SC_HIDE_COMMENT != 'true') { ?>
 <div id="comment_box" class="sm_layout_box">
-	<h2><?php echo tep_get_sc_titles_number() . TABLE_HEADING_COMMENTS; ?></h2>
+	<h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_COMMENTS; ?></h2>
 
      <div class="contentText">
-        <?php echo tep_draw_textarea_field('comments', 'soft', '60', '5', $comments); ?>
+        <?php echo vam_draw_textarea_field('comments', 'soft', '60', '5', $comments); ?>
      </div>    
 </div><!--div end comment_box--> 
 <?php } ?>
@@ -2671,7 +2674,7 @@ if ($sc_payment_modules_process == true) {
 
 <?php ################ START Order Total Modules ######################################## ?> 
 <div id="order_total_modules" class="sm_layout_box">
-    <h2><?php echo tep_get_sc_titles_number() . HEADING_TOTAL; ?></h2>
+    <h2><?php echo vam_get_sc_titles_number() . HEADING_TOTAL; ?></h2>
     <div class="contentText">
     <div style="float: right;">
     <table border="0" cellspacing="0" cellpadding="2">
@@ -2708,13 +2711,13 @@ if ($sc_payment_modules_process == true) {
 
 
 	<?php echo SC_CONDITION; ?>
-	<a id="agreement" href="<?php echo DIR_WS_HTTP_CATALOG . DIR_WS_LANGUAGES . $language . '/conditions.html'; ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
+	<a id="agreement" href="<?php echo DIR_WS_HTTP_CATALOG . DIR_WS_LANGUAGES . $_SESSION['language'] . '/conditions.html'; ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
 	<?php echo SC_CONDITION_END; ?>
 	
     <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-    	<?php echo tep_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
+    	<?php echo vam_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
     <?php } else { ?>
-		<?php echo tep_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
+		<?php echo vam_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
         <script type="text/javascript">
             var t18 = new LiveValidation('t18');
             t18.add(Validate.Acceptance );
@@ -2736,7 +2739,7 @@ if ($sc_payment_modules_process == true) {
 
 
 
- // echo tep_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary');
+ // echo vam_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary');
 ?>
 <div id="confirm_order">
 <p>&nbsp;</p>
@@ -2744,9 +2747,9 @@ if ($sc_payment_modules_process == true) {
     <div class="buttonAction">
 		<?php 
 		if (SC_CONFIRMATION_PAGE == 'true') { //got to confimration page
-			echo tep_draw_button(IMAGE_BUTTON_CONFIRMATION_PAGE, 'triangle-1-e', null, 'primary');
+			echo vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRMATION_PAGE);
 		} else { //order now
-			echo tep_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary');
+			echo vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRM_ORDER);
 		}  ?>
     </div>
   </div>
@@ -2757,6 +2760,5 @@ if ($sc_payment_modules_process == true) {
 </div><!-- Div end checkout_container -->
 
 <?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
