@@ -674,7 +674,7 @@ if (vam_count_shipping_modules() == 0) {
 			
 			
 			// country info for country change
-					$country_info = vam_get_countries($selected_country_id,true);
+					$country_info = vam_get_countriesList($selected_country_id,true);
 					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
 					$order->delivery = array('postcode' => $_POST['zip_code'],
