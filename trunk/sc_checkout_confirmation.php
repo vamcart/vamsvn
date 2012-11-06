@@ -12,12 +12,12 @@
 */
 
 /*session description
-tep_session_is_registered('create_account') = is used for data processing only
-tep_session_is_registered('only_account') = is used to hide shipping and payment data and show only account data
-tep_session_is_registered('is_virtual_product') = 
+vam_session_is_registered('create_account') = is used for data processing only
+vam_session_is_registered('only_account') = is used to hide shipping and payment data and show only account data
+vam_session_is_registered('is_virtual_product') = 
 
  
-tep_session_is_registered('no_pay_no_ship') = is used to hide all data (shipping, payment, account)
+vam_session_is_registered('no_pay_no_ship') = is used to hide all data (shipping, payment, account)
 */
 
 
@@ -29,15 +29,15 @@ $hide_payment_data = false;
 $show_account_data = false; //account data will only be shown if in checkout.php the account heading is shown. This happens by free virtual products
 $sc_payment_url = false; //used for redirection for url payment modules
 
-if (tep_session_is_registered('hide_shipping_data')) {
+if (vam_session_is_registered('hide_shipping_data')) {
 	$hide_shipping_data = true; //used to hide shipping data
 }
 
-if (tep_session_is_registered('hide_payment_data')) {
+if (vam_session_is_registered('hide_payment_data')) {
 	$hide_payment_data = true; //used to hide payment data
 }
 
-if (tep_session_is_registered('show_account_data')) {
+if (vam_session_is_registered('show_account_data')) {
 	$show_account_data = true; //used to show account data
 	$hide_shipping_data = true;
 	$hide_payment_data = true;
@@ -45,20 +45,20 @@ if (tep_session_is_registered('show_account_data')) {
 
 
 // if the customer is not logged on, redirect them to the login page
-  if ((!tep_session_is_registered('customer_id')) && (!tep_session_is_registered('noaccount'))) {
+  if ((!vam_session_is_registered('customer_id')) && (!vam_session_is_registered('noaccount'))) {
     $navigation->set_snapshot(array('mode' => 'SSL', 'page' => FILENAME_CHECKOUT_PAYMENT));
-    tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
+    vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
   }
 
 // if there is nothing in the customers cart, redirect them to the shopping cart page
   if ($cart->count_contents() < 1) {
-    tep_redirect(tep_href_link(FILENAME_SHOPPING_CART));
+    vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
   }
 
 // avoid hack attempts during the checkout procedure by checking the internal cartID
-  if (isset($cart->cartID) && tep_session_is_registered('cartID')) {
+  if (isset($cart->cartID) && vam_session_is_registered('cartID')) {
     if ($cart->cartID != $cartID) {
-      tep_redirect(tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+      vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
     }
   }
 
@@ -68,7 +68,7 @@ if (tep_session_is_registered('show_account_data')) {
 ############################# Validate start - NOT LOGGED ON #######################################
 
 $process = false;
-if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {
+if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {
     $process = true;
 		
 	$error = false;
@@ -86,16 +86,16 @@ if ($error == true) {
 
 
 // if no shipping method has been selected, redirect the customer to the shipping method selection page
-  if (!tep_session_is_registered('shipping')) {
-    tep_redirect(tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+  if (!vam_session_is_registered('shipping')) {
+    vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
   }
 
-  if (!tep_session_is_registered('payment')) tep_session_register('payment');
+  if (!vam_session_is_registered('payment')) vam_session_register('payment');
   if (isset($_POST['payment'])) $payment = $_POST['payment'];
 
-  if (!tep_session_is_registered('comments')) tep_session_register('comments');
-  if (tep_not_null($_POST['comments'])) {
-    $comments = tep_db_prepare_input($_POST['comments']);
+  if (!vam_session_is_registered('comments')) vam_session_register('comments');
+  if (vam_not_null($_POST['comments'])) {
+    $comments = vam_db_prepare_input($_POST['comments']);
   }
 
 // load the selected payment module
@@ -109,9 +109,9 @@ if ($error == true) {
 
   $payment_modules->update_status();
 
-if (!tep_session_is_registered('free_payment')) { //hack for free payment
+if (!vam_session_is_registered('free_payment')) { //hack for free payment
   if ( ($payment_modules->selected_module != $payment) || ( is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && !is_object($$payment) ) || (is_object($$payment) && ($$payment->enabled == false)) ) {
-    tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
+    vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
   }
 }
 
@@ -131,22 +131,20 @@ if (!tep_session_is_registered('free_payment')) { //hack for free payment
   $any_out_of_stock = false;
   if (STOCK_CHECK == 'true') {
     for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
-      if (tep_check_stock($order->products[$i]['id'], $order->products[$i]['qty'])) {
+      if (vam_check_stock($order->products[$i]['id'], $order->products[$i]['qty'])) {
         $any_out_of_stock = true;
       }
     }
     // Out of Stock
     if ( (STOCK_ALLOW_CHECKOUT != 'true') && ($any_out_of_stock == true) ) {
-      tep_redirect(tep_href_link(FILENAME_SHOPPING_CART));
+      vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
     }
   }
 
 
-require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_SC_CHECKOUT_CONFIRMATION);
-
 ///////////// START create account //////////////////////////////////////////////////
 //if no errors
-if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {
+if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {
     if ($error == false) {
 
       $sql_data_array = array('customers_firstname' => $_SESSION['sc_customers_firstname'],
@@ -158,11 +156,11 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
                               'customers_password' => $_SESSION['sc_customers_password']);
 
       if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $_SESSION['sc_customers_gender'];
-      if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = tep_date_raw($_SESSION['sc_customers_dob']);
+      if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = vam_date_raw($_SESSION['sc_customers_dob']);
 
-      tep_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+      vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
-      $customer_id = tep_db_insert_id();
+      $customer_id = vam_db_insert_id();
 
       $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $_SESSION['sc_customers_firstname'], 
@@ -186,13 +184,13 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
       }
 	  
 
-      tep_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+      vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-      $address_id = tep_db_insert_id();
+      $address_id = vam_db_insert_id();
 
-      tep_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
+      vam_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
 
-      tep_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
+      vam_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
 	  
 	  
 	  //billto START
@@ -218,17 +216,17 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
           }
         }
 
-        if (!tep_session_is_registered('billto')) tep_session_register('billto');
+        if (!vam_session_is_registered('billto')) vam_session_register('billto');
 
-        tep_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+        vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
 
-        $billto_payment = tep_db_insert_id();
+        $billto_payment = vam_db_insert_id();
       }
 	  //billto END
 	  
 	  //register sessions
-	  tep_session_register('customer_id');  
-	  if (tep_session_is_registered('noaccount')) {tep_session_unregister('noaccount');} 
+	  vam_session_register('customer_id');  
+	  if (vam_session_is_registered('noaccount')) {vam_session_unregister('noaccount');} 
 	  
 	  //assign new default address and billing address
 	  $customer_default_address_id = $address_id;
@@ -240,19 +238,18 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
 
 	  
 	  //do we need this???
-	  //tep_session_register('sc_processed');
-      tep_session_register('customer_first_name');
-      tep_session_register('customer_default_address_id');
-      tep_session_register('customer_country_id');
-      tep_session_register('customer_zone_id');
+	  //vam_session_register('sc_processed');
+      vam_session_register('customer_first_name');
+      vam_session_register('customer_default_address_id');
+      vam_session_register('customer_country_id');
+      vam_session_register('customer_zone_id');
 
 
 	//START send create account mail
 	//data needed: gender, firstname, lastname, email
 		
-	if (tep_session_is_registered('create_account')) {
+	if (vam_session_is_registered('create_account')) {
 		//load language file for email
-		require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CREATE_ACCOUNT);
 	
 		$name = $_SESSION['sc_customers_firstname'] . ' ' . $_SESSION['sc_customers_lastname'];
 			
@@ -272,10 +269,10 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
 			  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
 		}
 			  	
-		tep_mail($name, $_SESSION['sc_customers_email_address'], EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+		vam_mail($name, $_SESSION['sc_customers_email_address'], EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 			
 	} 
-	tep_session_unregister('create_account');
+	vam_session_unregister('create_account');
 	//END send create account mail
 
 	} //error end
@@ -284,31 +281,31 @@ if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) &&
 	  
 
 ///////////// START Redirection for create account //////////////////////////////////////////////////	
-if ((tep_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {  
+if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {  
 // confirm order
 	if ($error == false) {
 		if (isset($$payment->form_action_url)) {
 			$sc_payment_url = true;
-			tep_session_unregister('sc_confirmation'); //to make sure if not returning back to checkout_success.php
+			vam_session_unregister('sc_confirmation'); //to make sure if not returning back to checkout_success.php
 			$form_action_url = $$payment->form_action_url;
 		} else {
-			$form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
-			tep_redirect($form_action_url); //redirect
+			$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+			vam_redirect($form_action_url); //redirect
 		}
 	} //error end
 }
 ///////////// END Redirection for create account //////////////////////////////////////////////////	
 
 ///////////// START Redirection for noaccount //////////////////////////////////////////////////	
-if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {  
+if ((!vam_session_is_registered('create_account')) && (isset($_POST['action']) && ($_POST['action'] == 'process'))) {  
 // confirm order
 	if (isset($$payment->form_action_url)) {
 		$sc_payment_url = true;
-		tep_session_unregister('sc_confirmation'); //to make sure if not returning back to checkout_success.php
+		vam_session_unregister('sc_confirmation'); //to make sure if not returning back to checkout_success.php
 		$form_action_url = $$payment->form_action_url;
 	} else {
-		$form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
-		tep_redirect($form_action_url); //redirect
+		$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+		vam_redirect($form_action_url); //redirect
 	}
 }
 ///////////// END Redirection for noaccount //////////////////////////////////////////////////	
@@ -322,7 +319,7 @@ if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) &
   if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) {
 		
 	$form_action_url = $$payment->form_action_url;
-	echo tep_draw_form('checkoutUrl', $form_action_url, 'post');
+	echo vam_draw_form('checkoutUrl', $form_action_url, 'post');
 	   
   
   
@@ -336,8 +333,6 @@ if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) &
 		echo $payment_modules->process_button();
 	}
 
-
-	require(DIR_WS_INCLUDES . 'template_top.php');
 
 	if (is_array($payment_modules->modules)) {
 		if ($confirmation = $payment_modules->confirmation()) {
@@ -361,9 +356,9 @@ if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) &
     ?>
     
           <tr>
-            <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+            <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
             <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-            <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+            <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
             <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
           </tr>
     
@@ -386,7 +381,6 @@ if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) &
 
     </form>
     <?php 
-    require(DIR_WS_INCLUDES . 'template_bottom.php');
     require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
     <script type="text/javascript">
         document.checkoutUrl.submit();
@@ -400,11 +394,10 @@ if ((!tep_session_is_registered('create_account')) && (isset($_POST['action']) &
 
 
 
-  $breadcrumb->add(NAVBAR_TITLE_1, tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+  $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
   $breadcrumb->add(NAVBAR_TITLE_2);
 
-  require(DIR_WS_INCLUDES . 'template_top.php');
-  
+ 
 ?>
 
 <script type="text/javascript">
@@ -435,13 +428,13 @@ if (SC_CONFIRMATION_PAGE == 'true') { ?>
 
 
 //draw form 
-  //echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
-$form_action_url = tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
-echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
+  //echo vam_draw_form('checkout_confirmation', $form_action_url, 'post');
+$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
+echo vam_draw_form('checkout_confirmation', $form_action_url, 'post');
 
-  //echo tep_draw_form('checkout_confirmation', tep_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, 'action=process', 'SSL')); 
+  //echo vam_draw_form('checkout_confirmation', vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, 'action=process', 'SSL')); 
 
-  echo tep_draw_hidden_field('action', 'process');
+  echo vam_draw_hidden_field('action', 'process');
 
 ?> 
  
@@ -458,7 +451,7 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
   <?php
 	  if ($show_account_data == true) {
 	  	echo '<h2>' . SC_HEADING_CREATE_ACCOUNT_INFORMATION . '</h2>'; 
-		echo '<p>' . tep_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br /></p>'); 
+		echo '<p>' . vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br /></p>'); 
 	  } else {
 	  	echo '<h2>' . HEADING_SHIPPING_INFORMATION . '</h2>';
 	  }
@@ -474,7 +467,7 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
 		}
 	} else {
 		echo '<h4>' . HEADING_DELIVERY_ADDRESS . '</h4>'; ?>
-		<p><?php echo '' . tep_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); 
+		<p><?php echo '' . vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); 
 	 ?></p>
     
 		<?php
@@ -511,7 +504,7 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
  	
     
          <?php echo '<h4>' . HEADING_BILLING_ADDRESS . '</h4>'; ?>
-          <p><?php echo tep_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'); ?></p>
+          <p><?php echo vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'); ?></p>
           
           <p>&nbsp;</p>
           <?php echo '<h4>' . HEADING_PAYMENT_METHOD . '</h4>'; ?>
@@ -535,13 +528,13 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
 <?php /////////////  START comments //////////////////////////// ?>
 <div class="sc_box">
 <?php
-  if (tep_not_null($order->info['comments'])) {
+  if (vam_not_null($order->info['comments'])) {
 ?>
 
   <h2><?php echo HEADING_ORDER_COMMENTS; ?></h2>
 
   <div class="contentText">
-    <?php echo nl2br(tep_output_string_protected($order->info['comments'])) . tep_draw_hidden_field('comments', $order->info['comments']); ?>
+    <?php echo nl2br(vam_output_string_protected($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']); ?>
   </div>
 
 <?php
@@ -584,7 +577,7 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
          '            <td valign="top">' . $order->products[$i]['name'];
 
     if (STOCK_CHECK == 'true') {
-      echo tep_check_stock($order->products[$i]['id'], $order->products[$i]['qty']);
+      echo vam_check_stock($order->products[$i]['id'], $order->products[$i]['qty']);
     }
 
     if ( (isset($order->products[$i]['attributes'])) && (sizeof($order->products[$i]['attributes']) > 0) ) {
@@ -595,9 +588,9 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
 
     echo '</td>' . "\n";
 
-    if (sizeof($order->info['tax_groups']) > 1) echo '            <td valign="top" align="right">' . tep_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
+    if (sizeof($order->info['tax_groups']) > 1) echo '            <td valign="top" align="right">' . vam_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
 
-    echo '            <td align="right" valign="top">' . $currencies->display_price($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty']) . '</td>' . "\n" .
+    echo '            <td align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty']) . '</td>' . "\n" .
          '          </tr>' . "\n";
   }
 ?>
@@ -631,7 +624,7 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
   }
 
 ?>
-<?php echo tep_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary'); ?>
+<?php echo vam_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary'); ?>
     </div>
   </div>
 
@@ -660,9 +653,9 @@ echo tep_draw_form('checkout_confirmation', $form_action_url, 'post');
 ?>
 
       <tr>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
         <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
         <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
       </tr>
 
@@ -689,7 +682,6 @@ $('#coProgressBar').progressbar({
 </form>
 
 <?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
 
