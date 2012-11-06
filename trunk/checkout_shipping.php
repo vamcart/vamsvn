@@ -66,14 +66,12 @@ if ($_SESSION['allow_checkout'] == 'false')
 	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 
 // if the customer is not logged on, redirect them to the login page
-if (!isset ($_SESSION['customer_id'])) {
-	if (SMART_CHECKOUT == 'false') {
+if (!isset ($_SESSION['customer_id']) && SMART_CHECKOUT == 'false') {
 		vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
-   } else {
+} elseif (SMART_CHECKOUT == 'true') {
 		vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
-   }
 }
- 
+
 // if there is nothing in the customers cart, redirect them to the shopping cart page
 if ($_SESSION['cart']->count_contents() < 1) {
 	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
