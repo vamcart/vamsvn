@@ -315,11 +315,18 @@ if (CHECK_CLIENT_AGENT) {
 	}
 }
 
+  if ( ($session_started == true) && (PHP_VERSION >= 4.3) && function_exists('ini_get') && (ini_get('register_globals') == false) ) {
+    extract($_SESSION, EXTR_OVERWRITE+EXTR_REFS);
+  }
+  
 // initialize a session token
   if (!vam_session_is_registered('sessiontoken')) {
     $sessiontoken = md5(vam_rand() . vam_rand() . vam_rand() . vam_rand());
     vam_session_register('sessiontoken');
   }
+  
+// set SID once, even if empty
+  $SID = (defined('SID') ? SID : '');  
   
 // verify the ssl_session_id if the feature is enabled
 if (($request_type == 'SSL') && (SESSION_CHECK_SSL_SESSION_ID == 'True') && (ENABLE_SSL == true) && ($session_started == true)) {

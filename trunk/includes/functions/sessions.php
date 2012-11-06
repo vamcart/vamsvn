@@ -70,16 +70,55 @@
   }
 
   function vam_session_start() {
+    global $_GET, $_POST, $_COOKIE;
+
+    $sane_session_id = true;
+
+    if (isset($_GET[vam_session_name()])) {
+      if (preg_match('/^[a-zA-Z0-9]+$/', $_GET[vam_session_name()]) == false) {
+        unset($_GET[vam_session_name()]);
+
+        $sane_session_id = false;
+      }
+    } elseif (isset($_POST[vam_session_name()])) {
+      if (preg_match('/^[a-zA-Z0-9]+$/', $_POST[vam_session_name()]) == false) {
+        unset($_POST[vam_session_name()]);
+
+        $sane_session_id = false;
+      }
+    } elseif (isset($_COOKIE[vam_session_name()])) {
+      if (preg_match('/^[a-zA-Z0-9]+$/', $_COOKIE[vam_session_name()]) == false) {
+        $session_data = session_get_cookie_params();
+
+        setcookie(vam_session_name(), '', time()-42000, $session_data['path'], $session_data['domain']);
+
+        $sane_session_id = false;
+      }
+    }
+
+    if ($sane_session_id == false) {
+      vam_redirect(vam_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+    }
 	@ini_set('session.gc_maxlifetime', SESSION_TIMEOUT_CATALOG);
     return session_start();
   }
-
+  
   function vam_session_register($variable) {
     global $session_started;
 
     if ($session_started == true) {
-      return $_SESSION[$variable];
+      if (PHP_VERSION < 4.3) {
+        return session_register($variable);
+      } else {
+        if (!isset($GLOBALS[$variable])) {
+          $GLOBALS[$variable] = null;
+        }
+
+        $_SESSION[$variable] =& $GLOBALS[$variable];
+      }
     }
+
+    return false;
   }
 
   function vam_session_is_registered($variable) {
