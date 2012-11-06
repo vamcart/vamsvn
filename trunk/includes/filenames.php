@@ -122,8 +122,6 @@ define('DOWN_FOR_MAINTENANCE_FILENAME', 'down_for_maintenance.php');
 
 define('FILENAME_FAQ', 'faq.php');
 
-define('FILENAME_CHECKOUT_ALTERNATIVE', 'checkout_alternative.php');
-
 define('FILENAME_PRODUCT_COMPARE', 'product_compare.php');
 
 // Start Product Specifications
@@ -133,5 +131,8 @@ define('FILENAME_PRODUCT_COMPARE', 'product_compare.php');
   define('FILENAME_PRODUCTS_TABS', 'products_tabs.php');
   define('FILENAME_ASK_A_QUESTION', 'ask_a_question.php');
 // End Product Specifications
+
+define('FILENAME_CHECKOUT', 'checkout.php');
+define('FILENAME_SC_CHECKOUT_CONFIRMATION', 'sc_checkout_confirmation.php');
 
 ?>
