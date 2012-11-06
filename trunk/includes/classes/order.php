@@ -52,13 +52,15 @@
       $this->delivery = array();
 
 
-      if (vam_not_null($order_id)) {
+	  if (isset ($_SESSION['noaccount'])) {
+	  	$this->cart_noaccount();
+      } elseif (vam_not_null($order_id)) {
         $this->query($order_id);
       } else {
         $this->cart();
       }
     }
-
+    
     function query($order_id) {
 
       $order_id = vam_db_prepare_input($order_id);
@@ -453,4 +455,211 @@
     }
 
   }
+  
+  
+    function cart_noaccount() {
+      global $customer_id, $sendto, $billto, $cart, $languages_id, $currency, $currencies, $shipping, $payment, $comments, $customer_default_address_id;
+
+      $this->content_type = $cart->get_content_type();
+
+      if ( ($this->content_type != 'virtual') && ($sendto == false) ) {
+        $sendto = $customer_default_address_id;
+      }
+
+
+	//get always zone and country data from customers input fields for shipping and customers order data
+	$sc_customers_zone_id = $_SESSION['sc_customers_zone_id'];	  
+	$sc_customers_countries_id = $_SESSION['sc_customers_country']; 
+	
+	$sc_customers_zone_data_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_id = '" . $sc_customers_zone_id . "'");
+	$sc_customers_zone_data = vam_db_fetch_array($sc_customers_zone_data_query);
+	
+	$sc_customers_country_data_query = vam_db_query("select countries_id, countries_name, countries_iso_code_2, countries_iso_code_3, address_format_id from " . TABLE_COUNTRIES . " where countries_id = '" . $sc_customers_countries_id . "'");
+	$sc_customers_country_data = vam_db_fetch_array($sc_customers_country_data_query);
+
+
+
+ 	  
+      $this->info = array('order_status' => DEFAULT_ORDERS_STATUS_ID,
+                          'currency' => $currency,
+                          'currency_value' => $currencies->currencies[$currency]['value'],
+                          'payment_method' => $payment,
+                          'cc_type' => '',
+                          'cc_owner' => '',
+                          'cc_number' => '',
+                          'cc_expires' => '',
+                          'shipping_method' => $shipping['title'],
+                          'shipping_cost' => $shipping['cost'],
+                          'subtotal' => 0,
+                          'tax' => 0,
+                          'tax_groups' => array(),
+                          'comments' => (vam_session_is_registered('comments') && !empty($comments) ? $comments : ''));
+
+      if (isset($GLOBALS[$payment]) && is_object($GLOBALS[$payment])) {
+        if (isset($GLOBALS[$payment]->public_title)) {
+          $this->info['payment_method'] = $GLOBALS[$payment]->public_title;
+        } else {
+          $this->info['payment_method'] = $GLOBALS[$payment]->title;
+        }
+
+        if ( isset($GLOBALS[$payment]->order_status) && is_numeric($GLOBALS[$payment]->order_status) && ($GLOBALS[$payment]->order_status > 0) ) {
+          $this->info['order_status'] = $GLOBALS[$payment]->order_status;
+
+        }
+      }
+	  
+	  
+	  //customer data
+	  //format_id = from country table, get data from table country
+      $this->customer = array('firstname' => $_SESSION['sc_customers_firstname'], 
+                              'lastname' => $_SESSION['sc_customers_lastname'], 
+                              'company' => $_SESSION['sc_customers_company'],
+                              'street_address' => $_SESSION['sc_customers_street_address'],
+                              'suburb' => $_SESSION['sc_customers_suburb'],
+                              'city' => $_SESSION['sc_customers_city'],
+                              'postcode' => $_SESSION['sc_customers_postcode'],
+                              'state' => ((vam_not_null($_SESSION['sc_customers_state'])) ? $_SESSION['sc_customers_state'] : $sc_customers_zone_data['zone_name']),
+                              'zone_id' => $_SESSION['sc_customers_zone_id'],
+                              'country' => array('id' => $sc_customers_country_data['countries_id'], 'title' => $sc_customers_country_data['countries_name'], 'iso_code_2' => $sc_customers_country_data['countries_iso_code_2'], 'iso_code_3' => $sc_customers_country_data['countries_iso_code_3']),
+                              'format_id' => $sc_customers_country_data['address_format_id'], 
+                              'telephone' => $_SESSION['sc_customers_telephone'],
+                              'email_address' => $_SESSION['sc_customers_email_address']);
+
+
+
+      $this->delivery = array('firstname' => $_SESSION['sc_customers_firstname'], 
+                              'lastname' => $_SESSION['sc_customers_lastname'],
+                              'company' => $_SESSION['sc_customers_company'],
+                              'street_address' => $_SESSION['sc_customers_street_address'],
+                              'suburb' => $_SESSION['sc_customers_suburb'],
+                              'city' => $_SESSION['sc_customers_city'],
+                              'postcode' => $_SESSION['sc_customers_postcode'],
+                              'state' => ((vam_not_null($_SESSION['sc_customers_state'])) ? $_SESSION['sc_customers_state'] : $sc_customers_zone_data['zone_name']),
+                              'zone_id' => $_SESSION['sc_customers_zone_id'],
+                              'country' => array('id' => $sc_customers_country_data['countries_id'], 'title' => $sc_customers_country_data['countries_name'], 'iso_code_2' => $sc_customers_country_data['countries_iso_code_2'], 'iso_code_3' => $sc_customers_country_data['countries_iso_code_3']),
+                              'country_id' => $_SESSION['sc_customers_country'],
+                              'format_id' => $sc_customers_country_data['address_format_id']);
+
+
+
+
+
+
+
+if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payment address is different
+
+	//get different zone and country data from customers input fields for billing order data
+	$sc_customers_zone_id = $_SESSION['sc_payment_zone_id'];	  
+	$sc_customers_countries_id = $_SESSION['sc_payment_country']; 
+	
+	$sc_customers_zone_data_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_id = '" . $sc_customers_zone_id . "'");
+	$sc_customers_zone_data = vam_db_fetch_array($sc_customers_zone_data_query);
+	
+	$sc_customers_country_data_query = vam_db_query("select countries_id, countries_name, countries_iso_code_2, countries_iso_code_3, address_format_id from " . TABLE_COUNTRIES . " where countries_id = '" . $sc_customers_countries_id . "'");
+	$sc_customers_country_data = vam_db_fetch_array($sc_customers_country_data_query);
+
+	$sc_sess_firstname = $_SESSION['sc_payment_firstname'];
+	$sc_sess_lastname = $_SESSION['sc_payment_lastname'];
+	$sc_sess_company = $_SESSION['sc_payment_company'];
+	$sc_sess_street_address = $_SESSION['sc_payment_street_address'];
+	$sc_sess_suburb = $_SESSION['sc_payment_suburb'];
+	$sc_sess_city = $_SESSION['sc_payment_city'];
+	$sc_sess_postcode = $_SESSION['sc_payment_postcode'];
+	$sc_sess_state = $_SESSION['sc_payment_state'];
+	$sc_sess_zone_id = $_SESSION['sc_payment_zone_id'];
+	$sc_sess_country = $_SESSION['sc_payment_country'];
+} else { //payment address is same as shipping address
+	$sc_sess_firstname = $_SESSION['sc_customers_firstname'];
+	$sc_sess_lastname = $_SESSION['sc_customers_lastname'];
+	$sc_sess_company = $_SESSION['sc_customers_company'];
+	$sc_sess_street_address = $_SESSION['sc_customers_street_address'];
+	$sc_sess_suburb = $_SESSION['sc_customers_suburb'];
+	$sc_sess_city = $_SESSION['sc_customers_city'];
+	$sc_sess_postcode = $_SESSION['sc_customers_postcode'];
+	$sc_sess_state = $_SESSION['sc_customers_state'];
+	$sc_sess_zone_id = $_SESSION['sc_customers_zone_id'];
+	$sc_sess_country = $_SESSION['sc_customers_country'];
+}
+
+
+
+
+      $this->billing = array('firstname' => $sc_sess_firstname, //$billing_address['entry_firstname'],
+                             'lastname' => $sc_sess_lastname,
+                             'company' => $sc_sess_company,
+                             'street_address' => $sc_sess_street_address,
+                             'suburb' => $sc_sess_suburb,
+                             'city' => $sc_sess_city,
+                             'postcode' => $sc_sess_postcode,
+                             'state' => ((vam_not_null($sc_sess_state)) ? $sc_sess_state : $sc_customers_zone_data['zone_name']), 
+                             'zone_id' => $sc_sess_zone_id,
+                             'country' => array('id' => $sc_customers_country_data['countries_id'], 'title' => $sc_customers_country_data['countries_name'], 'iso_code_2' => $sc_customers_country_data['countries_iso_code_2'], 'iso_code_3' => $sc_customers_country_data['countries_iso_code_3']), 
+                             'country_id' => $sc_sess_country,
+                             'format_id' => $sc_customers_country_data['address_format_id']); 
+
+
+
+	  //get products
+      $index = 0;
+      $products = $cart->get_products();
+      for ($i=0, $n=sizeof($products); $i<$n; $i++) {
+        $this->products[$index] = array('qty' => $products[$i]['quantity'],
+                                        'name' => $products[$i]['name'],
+                                        'model' => $products[$i]['model'],
+                                        'tax' => vam_get_tax_rate($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
+                                        'tax_description' => vam_get_tax_description($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
+                                        'price' => $products[$i]['price'],
+                                        'final_price' => $products[$i]['price'] + $cart->attributes_price($products[$i]['id']),
+                                        'weight' => $products[$i]['weight'],
+                                        'id' => $products[$i]['id']);
+
+        if ($products[$i]['attributes']) {
+          $subindex = 0;
+          reset($products[$i]['attributes']);
+          while (list($option, $value) = each($products[$i]['attributes'])) {
+            $attributes_query = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . (int)$products[$i]['id'] . "' and pa.options_id = '" . (int)$option . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . (int)$value . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . (int)$languages_id . "' and poval.language_id = '" . (int)$languages_id . "'");
+            $attributes = vam_db_fetch_array($attributes_query);
+
+            $this->products[$index]['attributes'][$subindex] = array('option' => $attributes['products_options_name'],
+                                                                     'value' => $attributes['products_options_values_name'],
+                                                                     'option_id' => $option,
+                                                                     'value_id' => $value,
+                                                                     'prefix' => $attributes['price_prefix'],
+                                                                     'price' => $attributes['options_values_price']);
+
+            $subindex++;
+          }
+        }
+
+        $shown_price = $currencies->calculate_price($this->products[$index]['final_price'], $this->products[$index]['tax'], $this->products[$index]['qty']);
+        $this->info['subtotal'] += $shown_price;
+
+        $products_tax = $this->products[$index]['tax'];
+        $products_tax_description = $this->products[$index]['tax_description'];
+        if (DISPLAY_PRICE_WITH_TAX == 'true') {
+          $this->info['tax'] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+          if (isset($this->info['tax_groups']["$products_tax_description"])) {
+            $this->info['tax_groups']["$products_tax_description"] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+          } else {
+            $this->info['tax_groups']["$products_tax_description"] = $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+          }
+        } else {
+          $this->info['tax'] += ($products_tax / 100) * $shown_price;
+          if (isset($this->info['tax_groups']["$products_tax_description"])) {
+            $this->info['tax_groups']["$products_tax_description"] += ($products_tax / 100) * $shown_price;
+          } else {
+            $this->info['tax_groups']["$products_tax_description"] = ($products_tax / 100) * $shown_price;
+          }
+        }
+
+        $index++;
+      }
+
+      if (DISPLAY_PRICE_WITH_TAX == 'true') {
+        $this->info['total'] = $this->info['subtotal'] + $this->info['shipping_cost'];
+      } else {
+        $this->info['total'] = $this->info['subtotal'] + $this->info['tax'] + $this->info['shipping_cost'];
+      }
+  } //end class
+  
 ?>
