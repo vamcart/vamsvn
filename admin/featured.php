@@ -98,7 +98,7 @@
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
             <td class="pageHeading" align="right"><?php if ($_GET['action'] != 'edit') { ?>
-<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?><?php } ?>
+<?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/search.png', '', '12', '12') . '&nbsp;' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?><?php } ?>
 </td>
           </tr>
         </table>
@@ -233,7 +233,7 @@
   if (!$_GET['action']) {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
+                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_SELECT_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/search.png', '', '12', '12') . '&nbsp;' . BUTTON_SEARCH . '</span></a>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_FEATURED, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a>'; ?></td>
                   </tr>
 <?php
   }
