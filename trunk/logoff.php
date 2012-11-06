@@ -37,14 +37,6 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 $breadcrumb->add(NAVBAR_TITLE_LOGOFF);
 
-//delete Guests from Database   
-
-if (($_SESSION['account_type'] == 1) && (DELETE_GUEST_ACCOUNT == 'true')) {
-	vam_db_query("delete from ".TABLE_CUSTOMERS." where customers_id = '".$_SESSION['customer_id']."'");
-	vam_db_query("delete from ".TABLE_ADDRESS_BOOK." where customers_id = '".$_SESSION['customer_id']."'");
-	vam_db_query("delete from ".TABLE_CUSTOMERS_INFO." where customers_info_id = '".$_SESSION['customer_id']."'");
-}
-
 vam_session_destroy();
 
 unset ($_SESSION['customer_id']);
