@@ -1434,5 +1434,94 @@ div.filter
 		float: left;
 		padding: 0 .5em;
 	}
+
+/* ############ checkout ################## */
+
+.line_space 
+	{
+		height: 60px; 
+		width: 100%; 
+		float: left;
+	}
+
+div.top_space
+	{
+		margin-top: 20px;
+	}
+
+#myProgressBar
+	{
+		margin: 0;
+		padding: 0;
+		height: 40px;
+	}
+
+#myProgressBar li 
+	{
+		position: relative;
+		display: block;
+		float: left;
+		text-align: left;
+		margin: 0 20px 0 0;
+		padding: 5px;
+		background: #E8E8E8;
+		font-size: 11px;
+		border: solid #CCCCCC 1px;
+		border-radius: 5px;
+	}
+
+#myProgressBar li.current 
+	{
+		font-weight: bold;
+		color: #70d250;
+	}
+
+#myProgressBar li.done 
+	{
+		background: #70d250;
+	}
+
+
+.sm_layout_box
+	{ 
+		border: 1px solid #A6C9E2;
+		padding: 20px;
+		margin-top: 30px;
+	}
+
+
+/* ############ sc_checkout_confirmation.php ################## */
+.sc_box 
+	{
+		width: 100%; 
+		float: left;
+	}
+
+#conf_shipping_box
+	{
+		width: 300px; 
+		float: left;
+	}
+
+#conf_payment_box
+	{
+		float: right; 
+		width: 300px;
+	}
+
+#conf_payment_box h4, #conf_shipping_box h4 
+	{
+		font-size: 16px;
+		width: 300px;
+		margin: 40px 0 10px 0;
+		padding: 0 0 0 0;
+	}
+
+#conf_price_box 
+	{ 
+		width: 100%; 
+		float: left; 
+		margin-left: 240px;
+	}
 				
 /*]]>*/
