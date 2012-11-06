@@ -147,7 +147,11 @@ if ($total > 0 ) {
 	if ($_GET['info_message'])
 		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
 	$vamTemplate->assign('BUTTON_RELOAD', vam_image_submit('update.png', IMAGE_BUTTON_UPDATE_CART));
-	$vamTemplate->assign('BUTTON_CHECKOUT', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('checkout.png', IMAGE_BUTTON_CHECKOUT).'</a>');		
+	if (SMART_CHECKOUT == 'true') {
+	$vamTemplate->assign('BUTTON_CHECKOUT', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT, '', 'SSL').'">'.vam_image_button('checkout.png', IMAGE_BUTTON_CHECKOUT).'</a>');		
+	} else {
+	$vamTemplate->assign('BUTTON_CHECKOUT', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL').'">'.vam_image_button('checkout.png', IMAGE_BUTTON_CHECKOUT).'</a>');
+	}
 } else {
 
 	// empty cart
