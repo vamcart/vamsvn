@@ -21,7 +21,7 @@
   function vam_draw_form($name, $action, $method = 'post', $parameters = '', $tokenize = false) {
     global $sessiontoken;
 
-    $form = '<form id="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" action="' . vam_parse_input_field_data($action, array('"' => '&quot;')) . '" method="' . vam_parse_input_field_data($method, array('"' => '&quot;')) . '"';
+    $form = '<form name="' . vam_output_string($name) . '" id="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" action="' . vam_parse_input_field_data($action, array('"' => '&quot;')) . '" method="' . vam_parse_input_field_data($method, array('"' => '&quot;')) . '"';
 
     if (vam_not_null($parameters)) $form .= ' ' . $parameters;
 
