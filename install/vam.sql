@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------------------
-#  $Id: vamshop.sql,v 1.62 2012/04/26 20:24:16 VaM Exp $
+#  $Id: vamshop.sql,v 1.62 2012/11/26 20:24:16 VaM Exp $
 #
 #  VamShop - open source ecommerce solution
 #  http://vamshop.com 
@@ -471,7 +471,6 @@ CREATE TABLE `admin_access` (
   `edit_orders_add_product` int(1) NOT NULL default '0',
   `edit_orders_ajax` int(1) NOT NULL default '0',
   `products_specifications` int(1) NOT NULL default '0',
-  `attributeManager` int(1) NOT NULL default '0',
   PRIMARY KEY  (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1672,7 +1671,7 @@ create table cip_depend (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.68');
+INSERT INTO database_version(version) VALUES ('1.67');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
@@ -1821,8 +1820,8 @@ INSERT INTO address_format VALUES (3, '$firstname $secondname $lastname$cr$stree
 INSERT INTO address_format VALUES (4, '$firstname $secondname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
 INSERT INTO address_format VALUES (5, '$firstname $secondname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
 
-INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 # configuration_group_id 1
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_NAME', 'VamShop',  1, 1, NULL, '', NULL, NULL);
@@ -1982,8 +1981,6 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_FAX', 'true', 5, 10, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_SUBURB', 'false', 5, 11, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_STATE', 'true',  5, 12, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_OPTIONS', 'both',  5, 13, NULL, '', NULL, 'vam_cfg_select_option(array(\'account\', \'guest\', \'both\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DELETE_GUEST_ACCOUNT', 'false',  5, 14, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 6
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_PAYMENT_INSTALLED', '', 6, 0, NULL, '', NULL, NULL);
@@ -2133,7 +2130,6 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_MAP_TAB', 'true',  17, 20, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAP_API_KEY', '', '17', '21', NULL , '0000-00-00 00:00:00', NULL , NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('AUTOMATIC_SEO_URL', 'false',  17, 22, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('AVISOSMS_EMAIL', '',  17, 23, NULL, '', NULL, NULL);
 
 #configuration_group_id 18
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_COMPANY_VAT_CHECK', 'false', 18, 4, '', '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
@@ -2323,8 +2319,6 @@ INSERT INTO configuration_group VALUES ('28', 'CG_AFFILIATE_PROGRAM', 'Парт�
 INSERT INTO configuration_group VALUES ('29', 'CG_BOXES', 'Боксы', 'Боксы', '29', '1');
 
 INSERT INTO configuration_group VALUES ('72', 'CG_EDIT_ORDERS', 'Order Editor', 'Order Editor Settings', '1', '1');
-
-INSERT INTO configuration_group VALUES ('80', 'CG_SMART_CHECKOUT', 'Smart Checkout', 'Smart Checkout Options', '1', '1');
 
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
@@ -3330,7 +3324,6 @@ CREATE TABLE IF NOT EXISTS `specification_groups` (
   `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
   `show_products` set('True','False') NOT NULL DEFAULT 'True',
   `show_filter` set('True','False') NOT NULL DEFAULT 'True',
-  `show_filter_mainpage` set('True','False') NOT NULL DEFAULT 'True',
   PRIMARY KEY (`specification_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -3346,7 +3339,6 @@ CREATE TABLE IF NOT EXISTS `specifications` (
   `show_comparison` set('True','False') NOT NULL DEFAULT 'True',
   `show_products` set('True','False') NOT NULL DEFAULT 'True',
   `show_filter` set('True','False') NOT NULL DEFAULT 'True',
-  `show_filter_mainpage` set('True','False') NOT NULL DEFAULT 'True',
   `products_column_name` varchar(255) NOT NULL,
   `column_justify` set('Left','Center','Right') NOT NULL DEFAULT 'Left',
   `filter_class` set('none','exact','multiple','range','reverse','start','partial','like') NOT NULL DEFAULT 'none',
@@ -3492,16 +3484,3 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SPECIFICATIONS_FILTER_BREADCRUMB', 'True', 1610, 120, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
 ('SPECIFICATIONS_FILTER_IMAGE_WIDTH', '20', 1610, 125, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
 ('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
-
-INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-('SMART_CHECKOUT', 'true', 80, 1, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CREATE_ACCOUNT_REQUIRED', 'false', 80, 2, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CREATE_ACCOUNT_CHECKOUT_PAGE', 'false', 80, 3, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CREATE_ACCOUNT_SUCCESS_PAGE', 'false', 80, 4, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_LIVE_VALIDATION', 'false', 80, 5, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CONDITIONS', 'false', 80, 6, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_HIDE_SHIPPING', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_HIDE_COMMENT', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_COUNTER_ENABLED', 'true', 80, 9, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_EMAIL_LOGIN_DATA', 'true', 80, 10, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_CONFIRMATION_PAGE', 'false', 80, 11, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
