@@ -1447,6 +1447,8 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 //////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
 if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
 
+require(DIR_WS_INCLUDES . 'header.php');
+
 if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
 	
@@ -1509,8 +1511,8 @@ require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
   $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
   $breadcrumb->add(NAVBAR_TITLE_2, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 
-
-  require('includes/form_check.js.php');  
+	require(DIR_WS_INCLUDES . 'header.php');
+	require('includes/form_check.js.php');  
   
 ?>
 
