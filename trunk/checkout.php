@@ -19,6 +19,9 @@ require('includes/application_top.php');
 //used for shipping
 require('includes/classes/http_client.php');
 
+// create smarty elements
+$vamTemplate = new vamTemplate;
+
 require_once (DIR_FS_INC.'vam_address_label.inc.php');
 require_once (DIR_FS_INC.'vam_get_address_format_id.inc.php');
 require_once (DIR_FS_INC.'vam_count_shipping_modules.inc.php');
@@ -34,9 +37,6 @@ require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
 require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
 require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
-
-// create smarty elements
-$vamTemplate = new vamTemplate;
 
 //START functions specific
 function vam_get_sc_titles_number() {
@@ -134,7 +134,7 @@ if ($_SESSION['cart']->count_contents() < 1) {
 $payment_address_selected = $_POST['payment_adress']; //init if checkbox for payment address is checked or not
 $shipping_count_modules = $_POST['shipping_count']; //needed for validation
 
-if (!isset ($_SESSION['customer_id'])) { //only for not logged in user
+if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	if (!isset($_POST['action'])) {
 		$password_selected = true; 
 	} else {
@@ -315,7 +315,7 @@ if (!isset ($_SESSION['customer_id'])) { //only for not logged in user
 	$password = vam_db_prepare_input($_POST['password']);
     $confirmation = vam_db_prepare_input($_POST['confirmation']);
 	if ($create_account == true) {
-		if (!isset ($_SESSION['customer_id'])) { //validate only for unregistered user
+		if (!vam_session_is_registered('customer_id')) { //validate only for unregistered user
 		 if (strlen($password) < ENTRY_PASSWORD_MIN_LENGTH) {
 			  $error = true;
 	
@@ -516,16 +516,16 @@ require(DIR_WS_CLASSES.'order_total.php');
 
 
 
-if (!isset($_SESSION['payment'])) {vam_session_register('payment');}
-if (!isset($_SESSION['sendto'])) {vam_session_register('sendto');} //need to set it otherwise in checkout_process.php we get redirected to checkout_shipping.php
-if (!isset($_SESSION['billto'])) {vam_session_register('billto');} //need to set it otherwise in checkout_process.php we get redirected to payment_shipping.php
-if (isset($_SESSION['free_payment'])) {vam_session_unregister('free_payment');} //hack for free payment unregister it if changing products
+if (!vam_session_is_registered('payment')) {vam_session_register('payment');}
+if (!vam_session_is_registered('sendto')) {vam_session_register('sendto');} //need to set it otherwise in checkout_process.php we get redirected to checkout_shipping.php
+if (!vam_session_is_registered('billto')) {vam_session_register('billto');} //need to set it otherwise in checkout_process.php we get redirected to payment_shipping.php
+if (vam_session_is_registered('free_payment')) {vam_session_unregister('free_payment');} //hack for free payment unregister it if changing products
 
-if (isset($_SESSION['noaccount'])) {vam_session_unregister('noaccount');} //used for order class - order.php
-if (isset($_SESSION['show_account_data'])) {vam_session_unregister('show_account_data');} //used for confirmation page to show account data
-if (isset($_SESSION['create_account'])) {vam_session_unregister('create_account');} //used for confirmation page to send email if account is created
-if (isset($_SESSION['hide_shipping_data'])) {vam_session_unregister('hide_shipping_data');} //used for confirmation page to hide shipping data
-if (isset($_SESSION['hide_payment_data'])) {vam_session_unregister('hide_payment_data');} //used for confirmation page to hide payment data
+if (vam_session_is_registered('noaccount')) {vam_session_unregister('noaccount');} //used for order class - order.php
+if (vam_session_is_registered('show_account_data')) {vam_session_unregister('show_account_data');} //used for confirmation page to show account data
+if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //used for confirmation page to send email if account is created
+if (vam_session_is_registered('hide_shipping_data')) {vam_session_unregister('hide_shipping_data');} //used for confirmation page to hide shipping data
+if (vam_session_is_registered('hide_payment_data')) {vam_session_unregister('hide_payment_data');} //used for confirmation page to hide payment data
 
 
 
@@ -538,7 +538,7 @@ $order = new order;
 
 //set $selected_country_id
 //if logged in set $selected_country_id from order class else from selected Post
-if (isset ($_SESSION['customer_id'])) {
+if (vam_session_is_registered('customer_id')) {
 $selected_country_id = $order->delivery['country']['id'];
 } else {
 //$selected_country_id = $_POST['country'];
@@ -714,7 +714,7 @@ $order_total_modules->process();
 ############# Shipping specific  ####################
 /*
  // if no shipping destination address was selected, use the customers own address as default
-  if (!isset($_SESSION['sendto'])) {
+  if (!vam_session_is_registered('sendto')) {
     vam_session_register('sendto');
     $sendto = $customer_default_address_id;
   } else {
@@ -725,7 +725,7 @@ $order_total_modules->process();
 
       if ($check_address['total'] != '1') {
         $sendto = $customer_default_address_id;
-        if (isset($_SESSION['shipping'])) vam_session_unregister('shipping');
+        if (vam_session_is_registered('shipping')) vam_session_unregister('shipping');
       }
     }
   }
@@ -734,11 +734,11 @@ $order_total_modules->process();
   
 // register a random ID in the session to check throughout the checkout procedure
 // against alterations in the shopping cart contents
-  if (!isset($_SESSION['cartID'])) vam_session_register('cartID');
+  if (!vam_session_is_registered('cartID')) vam_session_register('cartID');
   $cartID = $_SESSION['cart']->cartID;
 
 // avoid hack attempts during the checkout procedure by checking the internal cartID
-  if (isset($_SESSION['cart']->cartID) && isset($_SESSION['cartID'])) {
+  if (isset($_SESSION['cart']->cartID) && vam_session_is_registered('cartID')) {
     if ($_SESSION['cart']->cartID != $cartID) {
       vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
     }
@@ -752,40 +752,40 @@ $order_total_modules->process();
   
   // in this case we need to hide shipping address and only payment address is shown as there is no shipping 
   if ($order->content_type == 'virtual') {
-    if (!isset($_SESSION['shipping'])) vam_session_register('shipping');
+    if (!vam_session_is_registered('shipping')) vam_session_register('shipping');
     $shipping = false;
     $sendto = false;
 	$checkout_possible = true; //avoid shipping validation
 	
 	$payment_address_selected = '1'; //hide payemt address validation
 	$sc_is_virtual_product = true; // change Title
-	if (!isset($_SESSION['hide_shipping_data'])) vam_session_register('hide_shipping_data'); //hide shipping data
+	if (!vam_session_is_registered('hide_shipping_data')) vam_session_register('hide_shipping_data'); //hide shipping data
 	$sc_payment_address_show = false; // hide payemt address as shipping address is used for payment address
 	$sc_shipping_modules_show = false; //hide shipping modules
 	$create_account = true; //you need to create an account
 	
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON - change shipping address to payment address
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON - change shipping address to payment address
 		$sc_payment_address_show = true;
 		$sc_shipping_address_show = false;
 		$create_account = false;
-		//if (isset($_SESSION['create_account'])) {vam_session_unregister('create_account');} //is not possible
-		if (!isset($_SESSION['hide_shipping_data'])) vam_session_register('hide_shipping_data'); //hide shipping data
+		//if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
+		if (!vam_session_is_registered('hide_shipping_data')) vam_session_register('hide_shipping_data'); //hide shipping data
 	}
   }
 
 //Mixed virtual products
   if ($order->content_type == 'mixed') {
 	$create_account = true; //you need to create an account
-	if (!isset($_SESSION['create_account'])) {vam_session_register('create_account');}
+	if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
 	$sc_is_mixed_product = true;
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$create_account = false;
 	}
   }
 
 //Free products - could have shipping costs so payment is needed
   if ($order->info['subtotal'] == '0') {
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id; 
 	}
   }
@@ -798,7 +798,7 @@ $order_total_modules->process();
 	$sc_payment_modules_show = false; //hide payment modules
 	if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id; 
 	}
   }*/
@@ -814,7 +814,7 @@ $order_total_modules->process();
 	  if (!vam_session_is_registered('show_account_data')) vam_session_register('show_account_data');
 	  if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	  
-	  if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	  if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$sendto = $customer_default_address_id;
 	  }
   }
@@ -828,7 +828,7 @@ $order_total_modules->process();
   if (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') {
   	//$create_account = true; //you need to create an account
 	//if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 	//	if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
 	}
   }
@@ -836,7 +836,7 @@ $order_total_modules->process();
   if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
   	$create_account = true; //you need to create an account
 	if (!vam_session_is_registered('create_account')) {vam_session_register('create_account');}
-	if (isset ($_SESSION['customer_id'])) { //IS LOGGED ON
+	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
 		$create_account = false;
 	}
   }
@@ -844,7 +844,7 @@ $order_total_modules->process();
   
   //register session to create account
   if (SC_CONFIRMATION_PAGE == 'true') {
-  	if (isset ($_SESSION['customer_id'])) {
+  	if (vam_session_is_registered('customer_id')) {
 		if (vam_session_is_registered('create_account')) {vam_session_unregister('create_account');} //is not possible
 	} else { //is not looged on
 		if ($create_account == true) {
@@ -1447,8 +1447,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 //////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
 if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
 
-require(DIR_WS_INCLUDES . 'header.php');
-
 if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
 	
@@ -1511,7 +1509,6 @@ require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
   $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
   $breadcrumb->add(NAVBAR_TITLE_2, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 
-require(DIR_WS_INCLUDES . 'header.php');
 
   require('includes/form_check.js.php');  
   
@@ -1519,7 +1516,7 @@ require(DIR_WS_INCLUDES . 'header.php');
 
 <?php
 // if the customer is logged on - show this javascript
-if (isset ($_SESSION['customer_id'])) { ?>
+if (vam_session_is_registered('customer_id')) { ?>
 <script type="text/javascript">
 
 $(init);
@@ -1759,7 +1756,7 @@ echo vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return
  
  
 // draw process hidden field
-if (isset ($_SESSION['customer_id'])) {  //logged on - process another action = 'logged_on'
+if (vam_session_is_registered('customer_id')) {  //logged on - process another action = 'logged_on'
 	echo vam_draw_hidden_field('action', 'logged_on');
 } else { //is not logged on - process another action = 'process'
 	//not logged on
@@ -1796,7 +1793,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
 
 <?php ################ START Shipping Information - LOGGED ON ######################################## ?>
-<?php if (isset ($_SESSION['customer_id'])) { ?>
+<?php if (vam_session_is_registered('customer_id')) { ?>
     	<div>
           <p><?php echo vam_address_label($customer_id, $sendto, true, ' ', '<br />'); ?></p>
           <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
@@ -2028,7 +2025,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 <div id="payment_address_box"  class="sm_layout_box">
  <h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; ?></h2>
 <?php ################ START Payment Information - LOGGED ON ######################################## ?>
-<?php if (isset ($_SESSION['customer_id'])) { ?>
+<?php if (vam_session_is_registered('customer_id')) { ?>
     	<div>
            <p><?php echo vam_address_label($customer_id, $billto, true, ' ', '<br />'); ?></p>
            <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
@@ -2238,7 +2235,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
 
 
-<?php if (!isset ($_SESSION['customer_id'])) { //IS NOT LOGGED ON ?>
+<?php if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON ?>
 <?php ################ START Contact Information - NO ACCOUNT ######################################## ?> 
 <div id="contact_box" class="sm_layout_box">
 
@@ -2302,7 +2299,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 <?php ################ START Password - NO ACCOUNT ######################################## ?>
 <?php
 //if ($create_account == true) { 
- if (!isset ($_SESSION['customer_id'])) { //IS NOT LOGGED ON 
+ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
   if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true) || (SC_CREATE_ACCOUNT_REQUIRED == 'true') || (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true')) { ?>
 <div id="password_box" class="sm_layout_box">
 
