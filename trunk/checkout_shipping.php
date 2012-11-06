@@ -67,15 +67,11 @@ if ($_SESSION['allow_checkout'] == 'false')
 
 // if the customer is not logged on, redirect them to the login page
 if (!isset ($_SESSION['customer_id'])) {
-	if (ACCOUNT_OPTIONS == 'guest') {
-		vam_redirect(vam_href_link(FILENAME_CREATE_GUEST_ACCOUNT, '', 'SSL'));
-	} else {
 	if (SMART_CHECKOUT == 'false') {
 		vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
    } else {
-		vam_redirect(vam_href_link(FILENAME_CHECKOUT_ALTERNATIVE, '', 'SSL'));
+		vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
    }
-	}
 }
  
 // if there is nothing in the customers cart, redirect them to the shopping cart page
