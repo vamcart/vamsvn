@@ -15,7 +15,7 @@ $(function () {
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}<div class="page">
 <div class="pagecontent">
-{if $account_option=='account' or $account_option=='both'} <dl class="Login">
+<dl class="Login">
 <dt class="Login">
 </dt>
 
@@ -40,21 +40,11 @@ $(function () {
 {#text_returning#}
 </dd>
 
-<script type="text/javascript">
-{literal}
-src="captcha.php";
-function reload(){
-        document.captcha.src='loading.gif';
-        document.captcha.src=src+'?rand='+Math.random();
-}
-{/literal}
-</script>
-
 <dd>
 <!-- форма -->
 <fieldset class="form">
 <legend>{#title_returning#}</legend>
-{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>{/if}
+{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} {$CAPTCHA_INPUT}</p>{/if}
 <p>{#text_email#} {$INPUT_MAIL}</p>
 <p>{#text_password#} {$INPUT_PASSWORD}</p>
 </fieldset>
@@ -71,27 +61,6 @@ function reload(){
 
 </dl>
 <div class="clear"></div>
-{/if}
-{if $account_option=='both' or $account_option=='guest'}<br /><dl class="Login">
-<dt class="Login">
-</dt>
-
-<dd class="Login">
-<span class="bold">{#title_guest#}</span>
-</dd>
-
-<dd>
-{#text_guest#}
-</dd>
-
-<dd>
-{$BUTTON_GUEST}
-</dd>
-
-</dl>
-
-<div class="clear"></div>
-{/if}
 </div>
 </div>
 {$FORM_END}
