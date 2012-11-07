@@ -10,7 +10,7 @@ Disallow: /address_book.php
 Disallow: /advanced_search_result.php?
 Disallow: /affiliate_affiliate.php
 Disallow: /ask_a_question.php
-Disallow: /checkout_alternative.php
+Disallow: /checkout.php
 Disallow: /checkout_process.php
 Disallow: /advanced_search.php
 Disallow: /advanced_search_result.php
