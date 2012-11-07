@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------------------
    $Id: checkout.php 867 2012-11-11 19:20:03 oleg_vamsoft $
 
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
@@ -561,7 +561,7 @@ if (isset($_POST['country'])) {
 
 // country is selected
         $country_info = vam_get_countriesList($selected_country_id,true);
-        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
         $order->delivery = array('postcode' => $_POST['zip_code'],
                                  'state' => $cache_state_prov_code,
@@ -682,7 +682,7 @@ if (vam_count_shipping_modules() == 0) {
 			
 			// country info for country change
 					$country_info = vam_get_countriesList($selected_country_id,true);
-					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . $selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
 					$order->delivery = array('postcode' => $_POST['zip_code'],
 											 'state' => $cache_state_prov_code,
@@ -1754,7 +1754,7 @@ if (SC_CONFIRMATION_PAGE == 'true') { ?>
 ?>
 
 
-<p><?php echo sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')); ?></p>
+<?php if (!vam_session_is_registered('customer_id')) echo '<p>'.sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')).'</p>'; ?>
 
 
 <?php 
@@ -2723,7 +2723,7 @@ if ($sc_payment_modules_process == true) {
 
 
 	<?php echo SC_CONDITION; ?>
-	<a id="agreement" href="<?php echo DIR_WS_HTTP_CATALOG . DIR_WS_LANGUAGES . $_SESSION['language'] . '/conditions.html'; ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
+	<a id="agreement" href="<?php echo vam_href_link(FILENAME_CONTENT, 'coID=3'); ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
 	<?php echo SC_CONDITION_END; ?>
 	
     <?php if (SC_LIVE_VALIDATION == 'false') { ?>

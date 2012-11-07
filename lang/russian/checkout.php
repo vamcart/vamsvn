@@ -127,9 +127,10 @@ define('IMAGE_BUTTON_CONFIRMATION_PAGE', 'Продолжить');
 define('SC_CONDITION', 'Я прочитал ');
 define('SC_CONDITION_END', ' и согласен с ними: ');
 
-define('SC_HEADING_CONDITIONS', '<strong>правила и условия оформления заказа</strong>');
+define('SC_HEADING_CONDITIONS', '<strong>правила и условия</strong>');
 //End Conditions of use
 
+define('TEXT_DISCOUNT_CODE', 'Код купона или подарочного сертификата');
 
 //Account optional
 define('TEXT_CREATE_ACCOUNT_OPTIONAL', 'Я не хочу регистрировать аккаунт.');
