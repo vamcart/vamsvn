@@ -1,15 +1,22 @@
 <?php
-/*
-  $Id$
+/* -----------------------------------------------------------------------------------------
+   $Id: checkout.php 867 2012-11-11 19:20:03 oleg_vamsoft $
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
 
-  Copyright (c) 2010 osCommerce
-  Copyright (c) 2012 STRUB
+   Copyright (c) 2012 VamShop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(address_book.php,v 1.57 2003/05/29); www.oscommerce.com 
+   (c) 2003	 nextcommerce (address_book.php,v 1.14 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (address_book.php,v 1.14 2003/08/17); xt-commerce.com
+   (c) 2012	 STRUB
 
-  Released under the GNU General Public License
-*/
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
 
 //description
 //$sendto = is from db table ADRESS_BOOK the adress_book_id

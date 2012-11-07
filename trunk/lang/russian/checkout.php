@@ -1,20 +1,21 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: checkout.php 1260 2012/08/09 13:25:47 VaM $
+   $Id: checkout.php 867 2012-11-11 19:20:03 oleg_vamsoft $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
-   Copyright (c) 2007 VaM Shop
+   Copyright (c) 2012 VamShop
    -----------------------------------------------------------------------------------------
-   based on:
+   based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(german.php,v 1.119 2003/05/19); www.oscommerce.com
-   (c) 2003  nextcommerce (german.php,v 1.25 2003/08/25); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (russian.php,v 1.25 2003/08/25); xt-commerce.com
+   (c) 2002-2003 osCommerce(address_book.php,v 1.57 2003/05/29); www.oscommerce.com 
+   (c) 2003	 nextcommerce (address_book.php,v 1.14 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (address_book.php,v 1.14 2003/08/17); xt-commerce.com
+   (c) 2012	 STRUB
 
-   Released under the GNU General Public License
+   Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
 define('NAVBAR_TITLE_1', 'Checkout');
