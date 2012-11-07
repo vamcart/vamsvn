@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------------------
    $Id: checkout.php 867 2012-11-11 19:20:03 oleg_vamsoft $
 
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
@@ -18,66 +18,133 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('NAVBAR_TITLE_1', 'Checkout');
-define('NAVBAR_TITLE_2', 'Checkout');
+define('NAVBAR_TITLE_1', 'Оформление заказа');
+define('NAVBAR_TITLE_2', 'Оформление заказа');
 
-define('HEADING_TITLE', 'Checkout');
+define('HEADING_TITLE', 'Оформление заказа');
 
 //error
-define('SHIPPING_ERROR', 'Please select a shipping method.');
-define('PAYMENT_ERROR', 'Please select a payment method.');
-define('CONDITIONS_ERROR', 'Please agree to our Terms and Conditions Agreement.');
+define('SHIPPING_ERROR', 'Пожалуйста, выберите способ доставки.');
+define('PAYMENT_ERROR', 'Пожалуйста, выберите способ оплаты.');
+define('CONDITIONS_ERROR', 'Вы должны согласиться с условиями.');
 //error end
 
 
 //progess bar
-define('SC_PROGRESS_CHECKOUT_PAGE', 'Checkout');
-define('SC_PROGRESS_CONFIRMATION_PAGE', 'Order Confirmation');
+define('SC_PROGRESS_CHECKOUT_PAGE', 'Оформление заказа');
+define('SC_PROGRESS_CONFIRMATION_PAGE', 'Подтверждение заказа');
 //progress bar end
 
+define('TEXT_ORIGIN_LOGIN', 'Если Вы наш постоянный клиент, <b><a href='.FILENAME_LOGIN.'><u> введите Ваши персональные данные</u></a></b> для входа. Либо Вы можете оформить  заказ прямо сейчас, заполнив форму ниже.');
+
+define('CATEGORY_COMPANY', 'Организация');
+define('CATEGORY_PERSONAL', 'Ваши персональные данные');
+define('CATEGORY_ADDRESS', 'Ваш адрес');
+define('CATEGORY_CONTACT', 'Контактная информация');
+define('CATEGORY_OPTIONS', 'Рассылка');
+define('CATEGORY_PASSWORD', 'Ваш пароль');
+
+define('ENTRY_COMPANY', 'Название компании:');
+define('ENTRY_COMPANY_ERROR', '');
+define('ENTRY_COMPANY_TEXT', '');
+define('ENTRY_GENDER', 'Пол:');
+define('ENTRY_GENDER_ERROR', 'Вы должны указать свой пол.');
+define('ENTRY_GENDER_TEXT', '*');
+define('ENTRY_FIRST_NAME', 'Имя:');
+define('ENTRY_FIRST_NAME_ERROR', 'Поле Имя должно содержать как минимум ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' символа.');
+define('ENTRY_FIRST_NAME_TEXT', '*');
+define('ENTRY_LAST_NAME', 'Фамилия:');
+define('ENTRY_LAST_NAME_ERROR', 'Поле Фамилия должно содержать как минимум ' . ENTRY_LAST_NAME_MIN_LENGTH . ' символа.');
+define('ENTRY_LAST_NAME_TEXT', '*');
+define('ENTRY_DATE_OF_BIRTH', 'Дата рождения:');
+define('ENTRY_DATE_OF_BIRTH_ERROR', 'Дату рождения необходимо вводить в следующем формате: DD/MM/YYYY (пример 21/05/1970)');
+define('ENTRY_DATE_OF_BIRTH_TEXT', '* (пример 21/05/1970)');
+define('ENTRY_EMAIL_ADDRESS', 'E-Mail:');
+define('ENTRY_EMAIL_ADDRESS_ERROR', 'Поле E-Mail должно содержать как минимум ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' символов.');
+define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Ваш E-Mail адрес указан неправильно, попробуйте ещё раз.');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Введённый Вами E-Mail уже зарегистрирован в нашем магазине, попробуйте указать другой E-Mail адрес.');
+define('ENTRY_EMAIL_ADDRESS_TEXT', '*');
+define('ENTRY_STREET_ADDRESS', 'Адрес:');
+define('ENTRY_STREET_ADDRESS_ERROR', 'Поле Улица и номер дома должно содержать как минимум ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов.');
+define('ENTRY_STREET_ADDRESS_TEXT', '* Пример: ул. Мира 346, кв. 78');
+define('ENTRY_SUBURB', 'Район:');
+define('ENTRY_SUBURB_ERROR', '');
+define('ENTRY_SUBURB_TEXT', '');
+define('ENTRY_POST_CODE', 'Почтовый индекс:');
+define('ENTRY_POST_CODE_ERROR', 'Поле Почтовый индекс должно содержать как минимум ' . ENTRY_POSTCODE_MIN_LENGTH . ' символа.');
+define('ENTRY_POST_CODE_TEXT', '*');
+define('ENTRY_CITY', 'Город:');
+define('ENTRY_CITY_ERROR', 'Поле Город должно содержать как минимум ' . ENTRY_CITY_MIN_LENGTH . ' символа.');
+define('ENTRY_CITY_TEXT', '*');
+define('ENTRY_STATE', 'Регион:');
+define('ENTRY_STATE_ERROR', 'Поле Область должно содержать как минимум ' . ENTRY_STATE_MIN_LENGTH . ' символа.');
+define('ENTRY_STATE_ERROR_SELECT', 'Выберите область.');
+define('ENTRY_STATE_TEXT', '*');
+define('ENTRY_COUNTRY', 'Страна:');
+define('ENTRY_COUNTRY_ERROR', 'Выберите страну.');
+define('ENTRY_COUNTRY_TEXT', '*');
+define('ENTRY_TELEPHONE_NUMBER', 'Телефон:');
+define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Поле Телефон должно содержать как минимум ' . ENTRY_TELEPHONE_MIN_LENGTH . ' символа.');
+define('ENTRY_TELEPHONE_NUMBER_TEXT', '*');
+define('ENTRY_FAX_NUMBER', 'Факс:');
+define('ENTRY_FAX_NUMBER_ERROR', '');
+define('ENTRY_FAX_NUMBER_TEXT', '');
+define('ENTRY_NEWSLETTER', 'Получать информацию о скидках, призах, подарках:');
+define('ENTRY_NEWSLETTER_TEXT', '');
+define('ENTRY_NEWSLETTER_YES', 'Подписаться');
+define('ENTRY_NEWSLETTER_NO', 'Отказаться от подписки');
+define('ENTRY_NEWSLETTER_ERROR', '');
+define('ENTRY_PASSWORD', 'Пароль:');
+define('ENTRY_PASSWORD_ERROR', 'Ваш пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_ERROR_NOT_MATCHING', 'Поле Подтвердите пароль должно совпадать с полем Пароль.');
+define('ENTRY_PASSWORD_TEXT', '*');
+define('ENTRY_PASSWORD_CONFIRMATION', 'Подтвердите пароль:');
+define('ENTRY_PASSWORD_CONFIRMATION_TEXT', '*');
+define('ENTRY_PASSWORD_CURRENT', 'Текущий пароль:');
+define('ENTRY_PASSWORD_CURRENT_TEXT', '*');
+define('ENTRY_PASSWORD_CURRENT_ERROR', 'Поле Пароль должно содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_NEW', 'Новый пароль:');
+define('ENTRY_PASSWORD_NEW_TEXT', '*');
+define('ENTRY_PASSWORD_NEW_ERROR', 'Ваш Новый пароль должен содержать как минимум ' . ENTRY_PASSWORD_MIN_LENGTH . ' символов.');
+define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'Поля Подтвердите пароль и Новый пароль должны совпадать.');
+define('PASSWORD_HIDDEN', '--СКРЫТ--');
+
+define('FORM_REQUIRED_INFORMATION', '* Обязательно для заполнения');
 
 //site content
-define('TEXT_SHIPPING_SAME_AS_PAYMENT', 'Billing address is the same as shipping address.');
-define('TEXT_NO_SHIPPING_AVAILABLE', 'No shipping available to the selected country.');
-define('SC_TEXT_REDIRECT', 'You will be redirected to payment page.');
-define('SC_ERROR_NO_SHIPPING_POSSIBLE', 'No shipping available to the selected country.');
+define('TEXT_SHIPPING_SAME_AS_PAYMENT', 'Адрес покупателя совпадает с адресом доставки.');
+define('TEXT_NO_SHIPPING_AVAILABLE', 'Нет доступных способов доставки для выбранной страны.');
+define('SC_TEXT_REDIRECT', 'Вы будете перенаправлены на страницу выбора оплаты.');
+define('SC_ERROR_NO_SHIPPING_POSSIBLE', 'Доставка недоступна в выбранную страну.');
 
 //site content end
 
 //buttons
-define('IMAGE_BUTTON_CONFIRMATION_PAGE', 'Go to confirmation page');
+define('IMAGE_BUTTON_CONFIRMATION_PAGE', 'Продолжить');
 //buttons end
 
-
-
 //Start Conditions of use
-define('SC_CONDITION', 'I have read the ');
-define('SC_CONDITION_END', ' and I agree to them: ');
+define('SC_CONDITION', 'Я прочитал ');
+define('SC_CONDITION_END', ' и согласен с ними: ');
 
-define('SC_HEADING_CONDITIONS', '<strong>Terms and Conditions Agreement</strong>');
+define('SC_HEADING_CONDITIONS', '<strong>правила и условия оформления заказа</strong>');
 //End Conditions of use
 
 
 //Account optional
-define('TEXT_CREATE_ACCOUNT_OPTIONAL', 'I do not want to create an account.');
+define('TEXT_CREATE_ACCOUNT_OPTIONAL', 'Я не хочу регистрировать аккаунт.');
 
 //Account creation
-define('SC_HEADING_CREATE_ACCOUNT', 'Create account');
-define('SC_HEADING_CREATE_ACCOUNT_INFORMATION', 'Account Information');
-define('SC_TEXT_VIRTUAL_PRODUCT', 'You need to create an account in order to download virtual products!');
-define('SC_TEXT_PASSWORD_REQUIRED', 'You need to create an account in order to purchase products!');
-
+define('SC_HEADING_CREATE_ACCOUNT', 'Регистрация аккаунта');
+define('SC_HEADING_CREATE_ACCOUNT_INFORMATION', 'Информация');
+define('SC_TEXT_VIRTUAL_PRODUCT', 'Для загрузки скачиваемых товаров Вы должны зарегистрировать аккаунт!');
+define('SC_TEXT_PASSWORD_REQUIRED', 'Вы должны зарегистрировать аккаунт для оформления заказа!');
 
 //email specific
-define('EMAIL_USERNAME', 'Your username is: ' . stripslashes($_POST['email_address']) . "\n\n");
-define('EMAIL_PASSWORD', 'Your password is: ' . stripslashes($_POST['password']) . "\n\n");
+define('EMAIL_USERNAME', 'Email: ' . stripslashes($_POST['email_address']) . "\n\n");
+define('EMAIL_PASSWORD', 'Пароль: ' . stripslashes($_POST['password']) . "\n\n");
 
 // CHECKOUT_SHIPPING
-
-define('NAVBAR_TITLE_1', 'Оформление заказа');
-define('NAVBAR_TITLE_2', 'Способ доставки');
-
-define('HEADING_TITLE', 'Информация о доставке заказа');
 
 define('TABLE_HEADING_SHIPPING_ADDRESS', 'Адрес доставки');
 define('TEXT_CHOOSE_SHIPPING_DESTINATION', 'Если Вы хотите изменить текущий адрес доставки, нажмите кнопку Изменить адрес, если текущий адрес доставки правильный, выбирайте наиболее подходящий Вам способ доставки и продолжайте оформлять заказ.');
@@ -97,11 +164,6 @@ define('TEXT_ENTER_SHIPPING_NO_METHOD','Нет доступных способо
 
 // CHECKOUT_PAYMENT
 
-define('NAVBAR_TITLE_1', 'Оформление заказа');
-define('NAVBAR_TITLE_2', 'Способ оплаты заказа');
-
-define('HEADING_TITLE', 'Способ оплаты заказа');
-
 define('TABLE_HEADING_BILLING_ADDRESS', 'Адрес покупателя');
 define('TEXT_SELECTED_BILLING_DESTINATION', 'Пожалуйста, выберите адрес из Вашей адресной книги. Адрес покупателя необходим в случае потери заказа при доставке на адрес, который Вы указали ранее.');
 define('TITLE_BILLING_ADDRESS', 'Текущий адрес:');
@@ -117,11 +179,6 @@ define('TITLE_CONTINUE_CHECKOUT_PROCEDURE', 'Продолжить оформле
 define('TEXT_CONTINUE_CHECKOUT_PROCEDURE', 'Далее Вам нужно будет подтвердить свой заказ.');
 
 // CHECKOUT_CONFIRMATION
-
-define('NAVBAR_TITLE_1', 'Оформление заказа');
-define('NAVBAR_TITLE_2', 'Подтвердить');
-
-define('HEADING_TITLE', 'Подтверждение заказа!');
 
 define('HEADING_DELIVERY_ADDRESS', 'Адрес доставки');
 define('HEADING_SHIPPING_METHOD', 'Способ доставки');
