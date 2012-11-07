@@ -27,8 +27,8 @@ if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
 $form_id = 'create_account';
 }
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE)) {
-$form_id = 'checkout_alternative';
+if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
+$form_id = 'checkout';
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
@@ -58,7 +58,7 @@ $form_id = 'checkout_address';
 
 $(document).ready(function() {
 <?php
-if (!strstr($PHP_SELF, FILENAME_CHECKOUT_ALTERNATIVE) or !strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
+if (!strstr($PHP_SELF, FILENAME_CHECKOUT) or !strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
 ?>	
 //$(function () {
     //$('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
