@@ -1018,8 +1018,6 @@ define('SC_CREATE_ACCOUNT_CHECKOUT_PAGE_TITLE', 'Создание аккаунт
 define('SC_CREATE_ACCOUNT_CHECKOUT_PAGE_DESC', 'Создание аккаунта для покупателя при быстром оформлении заказа не является обязательным, появляется опция при быстром оформлении заказа');
 define('SC_CREATE_ACCOUNT_SUCCESS_PAGE_TITLE', 'Создание аккаунта только после оформления заказа, на странице checkout_success.php');
 define('SC_CREATE_ACCOUNT_SUCCESS_PAGE_DESC', 'Если включена данная опция, покупателю будет предложено зарегистрировать аккаунт сразу после оформления заказа, на странице checkout_success.php');
-define('SC_LIVE_VALIDATION_TITLE', 'Проверка вводимых данных при быстром оформлении заказа');
-define('SC_LIVE_VALIDATION_DESC', 'Вы хотите разрешить проверку вводимых данных при быстром оформлении заказа?');
 define('SC_CONDITIONS_TITLE', 'Условия использования');
 define('SC_CONDITIONS_DESC', 'Если включена данная опция, покупатель должен согласиться с условиями, чтобы оформить заказ');
 define('SC_HIDE_SHIPPING_TITLE', 'Скрыть выбор способа доставки');
