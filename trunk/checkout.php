@@ -1657,6 +1657,7 @@ $('#box')
 //.on$('input[name=checkout_possible]').val()
 
 .on('change', 'input[name=shipping], select[name=country]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'country': $('select[name=country]').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
+.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 ;}
 </script>
 
@@ -1923,6 +1924,9 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 <?php
   if (ACCOUNT_STATE == 'true') {
 ?>
+<div id="shipping_state_box">
+<div id="shipping_state">
+
 <table border="0" cellspacing="2" cellpadding="2" width="100%">
       <tr>
         <td class="fieldKey"><?php echo ENTRY_STATE; ?></td>
@@ -1948,6 +1952,8 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         </td>
       </tr>
 </table>
+  </div><!--div end shipping_state -->
+  </div><!--div end shipping_state_box -->
 <?php
   }
 ?>
