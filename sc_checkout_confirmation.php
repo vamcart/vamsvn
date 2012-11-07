@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------------------
    $Id: sc_checkout_confirmation.php 867 2012-11-11 19:20:03 oleg_vamsoft $
 
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
@@ -27,9 +27,10 @@ vam_session_is_registered('is_virtual_product') =
 vam_session_is_registered('no_pay_no_ship') = is used to hide all data (shipping, payment, account)
 */
 
-
-
   require('includes/application_top.php');
+
+	//load languages files
+	require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_CHECKOUT);
 
 $hide_shipping_data = false;
 $hide_payment_data = false;
