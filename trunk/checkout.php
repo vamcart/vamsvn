@@ -1842,7 +1842,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
      <table border="0" cellspacing="2" cellpadding="2" width="100%">
       <tr>
         <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('company', $sc_guest_company, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('company', $sc_guest_company, 'id="company" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
       </tr>
     </table>
 </div>  
@@ -1854,30 +1854,13 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <tr>
         <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'class="text" id="ent_first_name"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		  var ent_first_name = new LiveValidation('ent_first_name');
-		  ent_first_name.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
-        
+		<?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'id="firstname" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       <tr> 
         <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'class="text" id="ent_last_name"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		  var ent_last_name = new LiveValidation('ent_last_name');
-		  ent_last_name.add(Validate.Length, { minimum: 4 } );
-		</script>
-        <?php } ?>
+		<?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'id="lastname" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
         </td>
       </tr>
 
@@ -1907,15 +1890,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <tr>
         <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'class="text" id="ent_street_address"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_street_address = new LiveValidation('ent_street_address');
-		    ent_street_address.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'id="street_address" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
         </td>
       </tr>
 
@@ -1925,7 +1900,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
       <tr>
         <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('suburb', $sc_guest_suburb, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('suburb', $sc_guest_suburb, 'id="suburb" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
       </tr>
 
 <?php
@@ -1935,30 +1910,13 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
       <tr>
         <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'class="text" id="ent_postcode"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_postcode = new LiveValidation('ent_postcode');
-		    ent_postcode.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
-            
+		<?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'id="postcode" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       <tr>
         <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('city', $sc_guest_city, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('city', $sc_guest_city, 'class="text" id="ent_city"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_city = new LiveValidation('ent_city');
-		    ent_city.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('city', $sc_guest_city, 'id="city" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
         </td>
       </tr>
 </table>
@@ -1977,12 +1935,12 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         while ($zones_values = vam_db_fetch_array($zones_query)) {
           $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
         }
-        echo vam_draw_pull_down_menu('state', $zones_array, '', 'class="text"');
+        echo vam_draw_pull_down_menu('state', $zones_array, '', 'id="state" class="text"');
       } else {
-        echo vam_draw_input_field('state', '', 'class="text"');
+        echo vam_draw_input_field('state', '', 'id="state" class="text"');
       }
     } else {
-      echo vam_draw_input_field('state', '', 'class="text"');
+      echo vam_draw_input_field('state', '', 'id="state" class="text"');
     }
 
     if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
@@ -2000,16 +1958,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 	<tr>
         <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_get_country_list('country', $selected_country_id, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
-        <?php //echo vam_get_country_list('country', '', 'class="text" id="ent_country"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
-        <!--<script type="text/javascript">
-		    var ent_country = new LiveValidation('ent_country');
-		    ent_country.add( Validate.Acceptance );
-		</script>-->
-		<?php } ?>
+		<?php echo vam_get_country_list('country', $selected_country_id, 'id="country" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       
@@ -2101,7 +2050,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-      <td class="fieldValue"><?php echo vam_draw_input_field('company_payment', '',  'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_draw_input_field('company_payment', '',  'id="company_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
     </tr>
 
 <?php
@@ -2112,44 +2061,21 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     <tr>
       <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
       <td class="fieldValue">
-	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('firstname_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('firstname_payment', '', 'class="text" id="pay_first_name"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		  var ent_first_name = new LiveValidation('pay_first_name');
-		  ent_first_name.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('firstname_payment', '', 'id="firstname_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
 	  </td>
     </tr>
     <tr>
       <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
       <td class="fieldValue">
-	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('lastname_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('lastname_payment', '', 'class="text" id="pay_last_name"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		  var ent_last_name = new LiveValidation('pay_last_name');
-		  ent_last_name.add(Validate.Length, { minimum: 4 } );
-		</script>
-        <?php } ?>
+		<?php echo vam_draw_input_field('lastname_payment', '', 'id="lastname_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
 		</td>
     </tr>
 
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
-      <td class="fieldValue"><?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('street_address_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('street_address_payment', '', 'class="text" id="pay_street_address"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_street_address = new LiveValidation('pay_street_address');
-		    ent_street_address.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+      <td class="fieldValue">
+		<?php echo vam_draw_input_field('street_address_payment', '', 'id="street_address_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
 		</td>
     </tr>
 
@@ -2159,7 +2085,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-      <td class="fieldValue"><?php echo vam_draw_input_field('suburb_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_draw_input_field('suburb_payment', '', 'id="suburb_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
     </tr>
 
 <?php
@@ -2169,29 +2095,13 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     <tr>
       <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
       <td class="fieldValue">
-	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('postcode_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('postcode_payment', '', 'class="text" id="pay_postcode"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_postcode = new LiveValidation('pay_postcode');
-		    ent_postcode.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('postcode_payment', '', 'id="postcode_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
 		</td>
     </tr>
     <tr>
       <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
       <td class="fieldValue">
-	  <?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('city_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('city_payment', '', 'class="text" id="pay_city"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_city = new LiveValidation('pay_city');
-		    ent_city.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('city_payment', '', 'id="city_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
 	</td>
     </tr>
 
@@ -2211,12 +2121,12 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
         while ($zones_values = vam_db_fetch_array($zones_query)) {
           $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
         }
-        echo vam_draw_pull_down_menu('state_payment', $zones_array, '', 'class="text"');
+        echo vam_draw_pull_down_menu('state_payment', $zones_array, '', 'id="state_payment" class="text"');
       } else {
-        echo vam_draw_input_field('state_payment', '', 'class="text"');
+        echo vam_draw_input_field('state_payment', '', 'id="state_payment" class="text"');
       }
     } else {
-      echo vam_draw_input_field('state_payment', '', 'class="text"');
+      echo vam_draw_input_field('state_payment', '', 'id="state_payment" class="text"');
     }
 
     if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
@@ -2231,7 +2141,7 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
 
     <tr>
       <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
-      <td class="fieldValue"><?php echo vam_get_country_list('country_payment', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
+      <td class="fieldValue"><?php echo vam_get_country_list('country_payment', '', 'id="country_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
     </tr>
   </table>
 
@@ -2255,35 +2165,19 @@ echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS;
     <tr>
         <td class="fieldKey"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'class="text" id="ent_email_address"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		  var ent_email_address = new LiveValidation('ent_email_address');
-		  ent_email_address.add(Validate.Email );
-		</script>
-        <?php } ?>
+		<?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'id="email_address" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       
       <tr>
         <td class="fieldKey"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
         <td class="fieldValue">
-		<?php if (SC_LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'class="text" id="ent_telephone"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_telephone = new LiveValidation('ent_telephone');
-		    ent_telephone.add(Validate.Length, { minimum: 4 } );
-		</script>
-		<?php } ?>
+		<?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'id="telephone" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       <tr>
         <td class="fieldKey"><?php echo ENTRY_FAX_NUMBER; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('fax', $sc_guest_fax, 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_FAX_NUMBER_TEXT . '</span>': ''); ?></td>
+        <td class="fieldValue"><?php echo vam_draw_input_field('fax', $sc_guest_fax, 'id="fax" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_FAX_NUMBER_TEXT . '</span>': ''); ?></td>
       </tr>
       
 
@@ -2355,25 +2249,13 @@ if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
       <tr>
         <td class="fieldKey"><?php echo ENTRY_PASSWORD; ?></td>
         <td class="fieldValue">
-		<?php if (LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_password_field('password', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_password_field('password', '', 'class="text" id="ent_password"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
-        <?php } ?>        
+		<?php echo vam_draw_password_field('password', '', 'id="password" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
         </td>
       </tr>
       <tr>
         <td class="fieldKey"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></td>
         <td class="fieldValue">
-		<?php if (LIVE_VALIDATION == 'false') { ?>
-		<?php echo vam_draw_password_field('confirmation', '', 'class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
-        <?php } else { ?>
-        <?php echo vam_draw_password_field('confirmation', '', 'class="text" id="ent_confirmation"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
-        <script type="text/javascript">
-		    var ent_confirmation = new LiveValidation('ent_confirmation');
-		    ent_confirmation.add( Validate.Confirmation, { match: 'ent_password' } );
-		</script>
-        <?php } ?>
+		<?php echo vam_draw_password_field('confirmation', '', 'id="confirmation" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
         </td>
       </tr>
    </table>
@@ -2584,7 +2466,7 @@ if ($sc_payment_modules_process == true) {
     }
 ?>
 
-        <td><h5><?php echo $selection[$i]['module']; ?></h5></td>
+        <td><h5><?php echo $selection[$i]['icon']; ?>&nbsp;<?php echo $selection[$i]['module']; ?></h5></td>
         <td align="right">
 
 <?php
@@ -2654,7 +2536,7 @@ if ($sc_payment_modules_process == true) {
   <h2><?php echo vam_get_sc_titles_number() . TEXT_DISCOUNT_CODE; ?></h2>
 
   
-  <?php echo vam_draw_input_field('discount_code', $sess_discount_code, 'class="text" size="10"'); ?>
+  <?php echo vam_draw_input_field('discount_code', $sess_discount_code, 'id="discount_code" class="text" size="10"'); ?>
   
   
 <?php
@@ -2726,15 +2608,7 @@ if ($sc_payment_modules_process == true) {
 	<a id="agreement" href="<?php echo vam_href_link(FILENAME_CONTENT, 'coID=3'); ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
 	<?php echo SC_CONDITION_END; ?>
 	
-    <?php if (SC_LIVE_VALIDATION == 'false') { ?>
     	<?php echo vam_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
-    <?php } else { ?>
-		<?php echo vam_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
-        <script type="text/javascript">
-            var t18 = new LiveValidation('t18');
-            t18.add(Validate.Acceptance );
-        </script>
-    <?php } ?>
 	
  
 </div><!--div end conditions --> 

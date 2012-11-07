@@ -28,7 +28,7 @@ $form_id = 'create_account';
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
-$form_id = 'checkout';
+$form_id = 'smart_checkout';
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
