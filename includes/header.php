@@ -139,6 +139,7 @@ require(DIR_WS_INCLUDES.'form_check.js.php');
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
+require(DIR_WS_INCLUDES.'checkout.js.php');
 }
 
 if (strstr($PHP_SELF, FILENAME_CREATE_GUEST_ACCOUNT )) {
