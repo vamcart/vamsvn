@@ -1,0 +1,128 @@
+{config_load file="$language/lang_$language.conf" section="create_account"}
+{$FORM_ACTION}{if $error!=''}
+{$error}
+{/if}
+
+{if $virtual=='false'} 
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+<h1>{#heading_shipping#}</h1>
+<div class="page">
+<div class="pagecontent">
+
+<span class="bold">{#title_shipping#}</span>
+<br />
+<br />
+<fieldset class="form">
+<legend>{#text_shipping#}</legend>
+{$SHIPPING_BLOCK}
+</fieldset>
+
+</div>
+</div>
+{/if}
+
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
+<div class="page">
+<div class="pagecontent">
+
+<span class="bold">{#title_payment#}</span>
+<br />
+<br />
+{if $GV_COVER!='true'}
+<fieldset class="form">
+<legend>{#text_payment#}</legend>
+{$PAYMENT_BLOCK}
+</fieldset>
+{$module_gift}
+{else}
+{#text_gccover#}
+{/if}
+
+<fieldset class="form">
+<legend>{#title_comments#}</legend>
+<p>
+{$COMMENTS}
+</p>
+</fieldset>
+
+{if $conditions=='true'}
+<fieldset class="form">
+<legend>{#title_agb#}&nbsp;{$AGB_LINK}</legend>
+<p>
+{$AGB}
+</p><p>
+{$AGB_checkbox} <span class="bold">{#text_accept_agb#}</span>
+</p>
+</fieldset>
+{/if}
+
+</div>
+</div>
+
+<h1>{#heading_checkout#}</h1>
+<div class="page">
+<div class="pagecontent">
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_personal#}</legend>
+{if $gender=='1'} 
+<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+{/if}
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $birthdate=='1'} 
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+{/if}
+<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
+<p><label for="newsletter">{#text_newsletter#}</label>{$INPUT_NEWSLETTER}</p>
+</fieldset>
+{if $company=='1'}<fieldset class="form">
+<legend>{#title_company#}</legend>
+<p>{#text_company#} {$INPUT_COMPANY}</p>
+{if $vat=='1'}<p>{#text_ustid#} {$INPUT_VAT}</p>
+{/if}
+</fieldset>
+{/if}<fieldset class="form">
+{if $street_address=='1'}<legend>{#title_address#}</legend>
+{/if}
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
+{/if}
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
+{/if}
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
+{/if}
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
+{/if}
+{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+{/if}
+{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+{if $telephone=='1'}<legend>{#title_contact#}</legend>
+{/if}
+{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{/if}
+</fieldset>
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+<fieldset class="form">
+<legend>{#title_options#}</legend>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+</fieldset>
+{/if}
+<!-- /форма -->
+</div>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_CONTINUE}
+</div>
+{$FORM_END}
