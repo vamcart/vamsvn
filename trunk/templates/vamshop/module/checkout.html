@@ -1,7 +1,147 @@
 {config_load file="$language/lang_$language.conf" section="create_account"}
-{$FORM_ACTION}{if $error!=''}
+<div id="box">
+<div id="checkout">
+{$FORM_ACTION}
+{if $error!=''}
 {$error}
 {/if}
+
+{if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
+
+<div id="shipping_box" class="sm_layout_box">
+
+<h2>{$TITLE_SHIPPING_ADDRESS}</h2>
+{$ADDRESS_LABEL_SHIPPING_ADDRESS}{$BUTTON_SHIPPING_ADDRESS}
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_personal#}</legend>
+{if $gender=='1'} 
+<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+{/if}
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $birthdate=='1'} 
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+{/if}
+</fieldset>
+{if $company=='1'}<fieldset class="form">
+<legend>{#title_company#}</legend>
+<p>{#text_company#} {$INPUT_COMPANY}</p>
+</fieldset>
+{/if}<div id="shipping_address">
+<fieldset class="form">
+{if $street_address=='1'}<legend>{#title_address#}</legend>
+{/if}
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
+{/if}
+{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
+{/if}
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
+{/if}
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
+{/if}
+{if $state=='1'}
+<div id="shipping_state_box">
+<div id="shipping_state"><p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+</div><!--div end shipping_state -->
+</div><!--div end shipping_state_box -->
+{/if}
+{if $country=='1'}
+<div id="shipping_country_box">
+<div id="shipping_country"><p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
+{/if}
+</div><!--div end shipping_country -->
+</div><!--div end shipping_country_box -->
+</fieldset>
+</div> <!--div end shipping_address -->
+</div> <!--div end shipping_box --> 
+
+
+
+<div id="payment_address_box"  class="sm_layout_box">
+<h2>{$TITLE_PAYMENT_ADDRESS}</h2>
+{$ADDRESS_LABEL_PAYMENT_ADDRESS}{$BUTTON_PAYMENT_ADDRESS}
+<div id="payment_address_checkbox">
+{$PAYMENT_ADDRESS_CHECKBOX}{$TEXT_SHIPPING_SAME_AS_PAYMENT}
+</div>
+<div id="payment_address">
+<!-- форма -->
+<fieldset class="form">
+<legend>&nbsp;</legend>
+{if $gender_payment=='1'} 
+<p><label for="gender_payment">{#text_gender#}</label> {$INPUT_MALE_PAYMENT}&nbsp;{$INPUT_FEMALE_PAYMENT}</p>
+{/if}
+<p><label for="firstname_payment">{#text_firstname#}</label> {$INPUT_FIRSTNAME_PAYMENT}</p>
+{if $secondname_payment=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME_PAYMENT}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME_PAYMENT}</p>
+{if $birthdate_payment=='1'} 
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB_PAYMENT}</p>
+{/if}
+</fieldset>
+{if $company_payment=='1'}<fieldset class="form">
+<legend>&nbsp;</legend>
+<p>{#text_company#} {$INPUT_COMPANY_PAYMENT}</p>
+</fieldset>
+{/if}<fieldset class="form">
+{if $street_address_payment=='1'}<legend>&nbsp;</legend>
+{/if}
+{if $street_address_payment=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET_PAYMENT}</p>
+{/if}
+{if $suburb_payment=='1'}<p>{#text_suburb#} {$INPUT_SUBURB_PAYMENT}</p>
+{/if}
+{if $postcode_payment=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE_PAYMENT}</p>
+{/if}
+{if $city_payment=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY_PAYMENT}</p>
+{/if}
+{if $state_payment=='1'}
+<div id="shipping_state_box">
+<div id="shipping_state"><p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE_PAYMENT}</span></p>
+</div><!--div end shipping_state -->
+</div><!--div end shipping_state_box -->
+{/if}
+{if $country_payment=='1'}
+<div id="shipping_country_box">
+<div id="shipping_country"><p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY_PAYMENT}</p>
+{/if}
+</div><!--div end shipping_country -->
+</div><!--div end shipping_country_box -->
+</fieldset>
+</div><!--div end payment_address -->
+</div><!--div end payment_address_box -->
+
+
+<div id="contact_box" class="sm_layout_box">
+<fieldset class="form">
+<h2>{$TITLE_CONTACT_ADDRESS}</h2>
+<legend>&nbsp;</legend>
+<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
+{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{/if}
+</fieldset>
+</div> <!--div end contact_box -->   
+
+
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+<fieldset class="form">
+<legend>&nbsp;</legend>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+</fieldset>
+{/if}
+<!-- /форма -->
+</div>
+</div>
+
+</div> <!--div end shipping_box --> 
+
 
 {if $virtual=='false'} 
 {config_load file="$language/lang_$language.conf" section="checkout_shipping"}
@@ -9,9 +149,6 @@
 <div class="page">
 <div class="pagecontent">
 
-<span class="bold">{#title_shipping#}</span>
-<br />
-<br />
 <fieldset class="form">
 <legend>{#text_shipping#}</legend>
 {$SHIPPING_BLOCK}
@@ -25,9 +162,6 @@
 <div class="page">
 <div class="pagecontent">
 
-<span class="bold">{#title_payment#}</span>
-<br />
-<br />
 {if $GV_COVER!='true'}
 <fieldset class="form">
 <legend>{#text_payment#}</legend>
@@ -59,70 +193,9 @@
 </div>
 </div>
 
-<h1>{#heading_checkout#}</h1>
-<div class="page">
-<div class="pagecontent">
-<span class="Requirement">{#text_must#}</span>
-<br />
-<br />
-<!-- форма -->
-<fieldset class="form">
-<legend>{#title_personal#}</legend>
-{if $gender=='1'} 
-<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
-{/if}
-<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
-{/if}
-<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
-{if $birthdate=='1'} 
-<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
-{/if}
-<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
-<p><label for="newsletter">{#text_newsletter#}</label>{$INPUT_NEWSLETTER}</p>
-</fieldset>
-{if $company=='1'}<fieldset class="form">
-<legend>{#title_company#}</legend>
-<p>{#text_company#} {$INPUT_COMPANY}</p>
-{if $vat=='1'}<p>{#text_ustid#} {$INPUT_VAT}</p>
-{/if}
-</fieldset>
-{/if}<fieldset class="form">
-{if $street_address=='1'}<legend>{#title_address#}</legend>
-{/if}
-{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
-{/if}
-{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
-{/if}
-{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
-{/if}
-{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
-{/if}
-{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
-{/if}
-{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
-{/if}
-</fieldset>
-<fieldset class="form">
-{if $telephone=='1'}<legend>{#title_contact#}</legend>
-{/if}
-{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
-{/if}
-{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
-{/if}
-</fieldset>
-{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
-<fieldset class="form">
-<legend>{#title_options#}</legend>
-{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
-{/foreach}
-</fieldset>
-{/if}
-<!-- /форма -->
-</div>
-</div>
-
 <div class="pagecontentfooter">
 {$BUTTON_CONTINUE}
 </div>
 {$FORM_END}
+</div><!-- Div end checkout -->
+</div><!-- Div end checkout_container -->
