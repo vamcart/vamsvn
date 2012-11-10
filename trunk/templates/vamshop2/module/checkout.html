@@ -159,6 +159,38 @@
 {$PAYMENT_BLOCK}
 </div> <!--div end payment_options-->
 
+{if $comments=='true'}
+<div id="comment_box" class="sm_layout_box">
+<h2>{$TITLE_COMMENTS}</h2>
+{$COMMENTS}
+</div><!--div end comment_box--> 
+{/if}
+
+<div id="order_total_modules" class="sm_layout_box">
+<h2>{$TITLE_TOTALS}</h2>
+<div class="contentText">
+<div style="float: right;">
+<table border="0" cellspacing="0" cellpadding="2">
+{$ORDER_TOTALS}
+</table>
+</div>
+</div>
+<p>&nbsp;</p>
+</div><!--div end order_total_modules -->
+
+{if $conditions=='true'}
+<div id="conditions" class="sm_layout_box">
+
+<fieldset class="form">
+<legend>{#title_agb#}&nbsp;{$AGB_LINK}</legend>
+<p>
+{$AGB}
+</p><p>
+{$AGB_checkbox} <span class="bold">{#text_accept_agb#}</span>
+</p>
+</fieldset>
+</div><!--div end conditions --> 
+{/if}
 
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 <fieldset class="form">
@@ -170,29 +202,6 @@
 <!-- /форма -->
 </div>
 </div>
-
-</div> <!--div end shipping_box --> 
-
-
-
-<fieldset class="form">
-<legend>{#title_comments#}</legend>
-<p>
-{$COMMENTS}
-</p>
-</fieldset>
-
-{if $conditions=='true'}
-<fieldset class="form">
-<legend>{#title_agb#}&nbsp;{$AGB_LINK}</legend>
-<p>
-{$AGB}
-</p><p>
-{$AGB_checkbox} <span class="bold">{#text_accept_agb#}</span>
-</p>
-</fieldset>
-{/if}
-
 
 <div class="pagecontentfooter">
 {$BUTTON_CONTINUE}
