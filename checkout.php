@@ -1641,6 +1641,8 @@ if (ACCOUNT_COUNTRY == 'true') {
 
 if ($sc_payment_address_show == true) { // hide payment if there is a virtual product because we use shipping address for payment address
 
+$vamTemplate->assign('sc_payment_address_show', $sc_payment_address_show);
+
 $vamTemplate->assign('TITLE_PAYMENT_ADDRESS', vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS);
 
 ################ START Payment Information - LOGGED ON ########################################

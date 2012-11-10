@@ -62,7 +62,7 @@
 </div> <!--div end shipping_box --> 
 
 
-
+{if $sc_payment_address_show}
 <div id="payment_address_box"  class="sm_layout_box">
 <h2>{$TITLE_PAYMENT_ADDRESS}</h2>
 {$ADDRESS_LABEL_PAYMENT_ADDRESS}
@@ -82,7 +82,7 @@
 <p><label for="firstname_payment">{#text_firstname#}</label> {$INPUT_FIRSTNAME_PAYMENT}</p>
 {if $secondname_payment=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME_PAYMENT}</p>
 {/if}
-<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME_PAYMENT}</p>
+<p><label for="lastname_payment">{#text_lastname#}</label> {$INPUT_LASTNAME_PAYMENT}</p>
 {if $birthdate_payment=='1'} 
 <p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB_PAYMENT}</p>
 {/if}
@@ -118,6 +118,7 @@
 </div><!--div end payment_address -->
 {/if}
 </div><!--div end payment_address_box -->
+{/if}
 
 {if !$smarty.session.customer_id}
 <div id="contact_box" class="sm_layout_box">
