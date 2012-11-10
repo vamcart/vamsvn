@@ -1811,6 +1811,197 @@ if (ACCOUNT_FAX == 'true') {
 ################ END Contact Information - NO ACCOUNT ######################################## 
 } //End IS NOT LOGGED ON
 
+
+################ START Password - NO ACCOUNT ########################################
+$vamTemplate->assign('without_account', true);
+//if ($create_account == true) { 
+ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
+  if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true) || (SC_CREATE_ACCOUNT_REQUIRED == 'true') || (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true')) {
+$vamTemplate->assign('without_account', false);
+$vamTemplate->assign('TITLE_CONTACT_PASSWORD', vam_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT);
+
+if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
+$vamTemplate->assign('TEXT_CONTACT_PASSWORD', SC_TEXT_PASSWORD_REQUIRED); //show message that you need to create an account
+} elseif (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true)) {
+$vamTemplate->assign('TEXT_CONTACT_PASSWORD', SC_TEXT_VIRTUAL_PRODUCT);  //show message that you need to create an account if virtual product
+}
+
+
+################ START Password - optional ######################################## 
+if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
+	//show nothing
+//} elseif ((SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') && (($sc_is_virtual_product != true) || ($sc_is_mixed_product != true))) {
+} elseif (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') {
+	if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true)) {
+	} else {  
+
+if (($error == '1') && ($password_selected != '1')) { //is not selected
+        
+$vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_checkbox', '1', false, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL);
+        
+} else { //is selected
+        
+$vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_checkbox', '1', true, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL);
+        
+        }
+
+}
+} ################ End Password - optional ########################################
+
+	$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
+	$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
+
+ } //end (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true))
+} //End IS NOT LOGGED ON 
+################ END Password - NO ACCOUNT ########################################
+
+################ START Shipping Modules ########################################
+$vamTemplate->assign('shipping', true);     
+if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products
+
+if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
+//if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
+//but we still need the divs in order to work with jquery update
+
+$vamTemplate->assign('shipping', false);     
+
+} //end hide shipping modules
+else { // show shipping modules
+
+$vamTemplate->assign('TITLE_SHIPPING_MODULES', vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_METHOD);
+
+$module = new vamTemplate;
+
+if (vam_count_shipping_modules() > 0) {
+
+	$showtax = $_SESSION['customers_status']['customers_status_show_price_tax'];
+
+	$module->assign('FREE_SHIPPING', $free_shipping);
+
+	# free shipping or not...
+
+	if ($free_shipping == true) {
+
+		$module->assign('FREE_SHIPPING_TITLE', FREE_SHIPPING_TITLE);
+
+		$module->assign('FREE_SHIPPING_DESCRIPTION', sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true, 0, true)).vam_draw_hidden_field('shipping', 'free_free'));
+
+		$module->assign('FREE_SHIPPING_ICON', '');
+
+	} else {
+
+		$radio_buttons = 0;
+		for ($i = 0, $n = sizeof($quotes); $i < $n; $i ++) {
+
+			if (!isset ($quotes[$i]['error'])) {
+
+				for ($j = 0, $n2 = sizeof($quotes[$i]['methods']); $j < $n2; $j ++) {
+
+					# set the radio button to be checked if it is the method chosen
+
+					$quotes[$i]['methods'][$j]['radio_buttons'] = $radio_buttons;
+
+					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $_SESSION['shipping']['id']) ? true : false);
+
+					if (($checked == true) || ($n == 1 && $n2 == 1)) {
+
+						$quotes[$i]['methods'][$j]['checked'] = 1;
+
+					}
+
+					if (($n > 1) || ($n2 > 1)) {
+						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
+							$quotes[$i]['tax'] = '';
+						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
+							$quotes[$i]['tax'] = 0;
+
+						$quotes[$i]['methods'][$j]['price'] = $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true);
+
+						$quotes[$i]['methods'][$j]['radio_field'] = vam_draw_radio_field('shipping', $quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'], $checked,'id="'.$quotes[$i]['methods'][$j]['id'].'"');
+						$quotes[$i]['methods'][$j]['id'] = $quotes[$i]['methods'][$j]['id'];
+
+					} else {
+						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
+							$quotes[$i]['tax'] = 0;
+
+						$quotes[$i]['methods'][$j]['price'] = $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax']), true, 0, true).vam_draw_hidden_field('shipping', $quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id']);
+
+					}
+
+					$radio_buttons ++;
+
+				}
+
+			}
+
+		}
+
+		$module->assign('module_content', $quotes);
+
+	}
+	$module->caching = 0;
+	$shipping_block = $module->fetch(CURRENT_TEMPLATE.'/module/checkout_shipping_block.html');
+
+  } //end (vam_count_shipping_modules()
+$vamTemplate->assign('SHIPPING_BLOCK', $shipping_block);
+
+   } // end hide shipping 
+  
+} //END hide shipping modules - used for virtual products
+################ END Shipping Modules ########################################
+
+################ START Payment Modules ######################################## 
+if ($sc_payment_modules_show == true) { // hide payment modules
+
+$vamTemplate->assign('TITLE_PAYMENT_MODULES', vam_get_sc_titles_number() . TABLE_HEADING_PAYMENT_METHOD);
+
+if ($sc_payment_modules_process == true) {
+
+$module = new vamTemplate;
+	if (isset ($_GET['payment_error']) && is_object(${ $_GET['payment_error'] }) && ($error = ${$_GET['payment_error']}->get_error())) {
+
+		$vamTemplate->assign('error', htmlspecialchars($error['error']));
+
+	}
+
+	$selection = $payment_modules->selection();
+
+	$radio_buttons = 0;
+	for ($i = 0, $n = sizeof($selection); $i < $n; $i++) {
+
+		$selection[$i]['radio_buttons'] = $radio_buttons;
+		if (($selection[$i]['id'] == $payment) || ($n == 1)) {
+			$selection[$i]['checked'] = 1;
+		}
+
+		if (sizeof($selection) > 1) {
+			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $selection[0]['id']), 'id="'.$selection[$i]['id'].'"');
+		} else {
+			$selection[$i]['selection'] = vam_draw_hidden_field('payment', $selection[$i]['id']);
+		}
+
+			$selection[$i]['id'] = $selection[$i]['id'];
+
+		if (isset ($selection[$i]['error'])) {
+
+		} else {
+
+			$radio_buttons++;
+		}
+	}
+
+	$module->assign('module_content', $selection);
+
+$module->caching = 0;
+$payment_block = $module->fetch(CURRENT_TEMPLATE . '/module/checkout_payment_block.html');
+
+$vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
+
+} // End sc_payment_modules_process
+
+} //End hide payment modules
+################ END Payment Modules ######################################## 
+
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout.html');
