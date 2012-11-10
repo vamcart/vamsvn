@@ -1510,16 +1510,16 @@ $vamTemplate->assign('TITLE_SHIPPING_ADDRESS', $smart_checkout_title_shipping);
 ################ START Shipping Information - LOGGED ON ########################################
 
 if (vam_session_is_registered('customer_id')) {
-	
+
 $vamTemplate->assign('ADDRESS_LABEL_SHIPPING_ADDRESS', vam_address_label($customer_id, $sendto, true, ' ', '<br />'));
-$vamTemplate->assign('BUTTON_SHIPPING_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
+$vamTemplate->assign('BUTTON_SHIPPING_ADDRESS', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
 
 } else { //no account
 ################ END Shipping Information - LOGGED ON ########################################
 
 
 ################ START Shipping Information - NO ACCOUNT ########################################
-	
+
 if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '1');
 
@@ -1648,7 +1648,7 @@ $vamTemplate->assign('TITLE_PAYMENT_ADDRESS', vam_get_sc_titles_number() . TABLE
 if (vam_session_is_registered('customer_id')) {
 	
 $vamTemplate->assign('ADDRESS_LABEL_PAYMENT_ADDRESS', vam_address_label($customer_id, $billto, true, ' ', '<br />'));
-$vamTemplate->assign('BUTTON_PAYMENT_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
+$vamTemplate->assign('BUTTON_PAYMENT_ADDRESS', '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>');	
 
 } else { //no account
 
@@ -1657,7 +1657,6 @@ $vamTemplate->assign('BUTTON_PAYMENT_ADDRESS', '<a href="'.vam_href_link(FILENAM
 
 ################ START Payment Information - NO ACCOUNT ######################################## 
 
-        
    if (($error == '1') && ($payment_address_selected != '1')) { //is not selected - otherwise payment address is same as shipping address
         
         $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
@@ -1813,11 +1812,11 @@ if (ACCOUNT_FAX == 'true') {
 
 
 ################ START Password - NO ACCOUNT ########################################
-$vamTemplate->assign('without_account', true);
 //if ($create_account == true) { 
  if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
+
   if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true) || (SC_CREATE_ACCOUNT_REQUIRED == 'true') || (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true')) {
-$vamTemplate->assign('without_account', false);
+
 $vamTemplate->assign('TITLE_CONTACT_PASSWORD', vam_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT);
 
 if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {

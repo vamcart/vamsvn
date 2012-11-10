@@ -9,12 +9,11 @@
 {if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
 
 <div id="shipping_box" class="sm_layout_box">
-
 <h2>{$TITLE_SHIPPING_ADDRESS}</h2>
-{$ADDRESS_LABEL_SHIPPING_ADDRESS}{$BUTTON_SHIPPING_ADDRESS}
-<span class="Requirement">{#text_must#}</span>
+{$ADDRESS_LABEL_SHIPPING_ADDRESS}
 <br />
-<br />
+{$BUTTON_SHIPPING_ADDRESS}
+{if !$smarty.session.customer_id}
 <!-- форма -->
 <fieldset class="form">
 <legend>{#title_personal#}</legend>
@@ -59,13 +58,17 @@
 {/if}
 </fieldset>
 </div> <!--div end shipping_address -->
+{/if}
 </div> <!--div end shipping_box --> 
 
 
 
 <div id="payment_address_box"  class="sm_layout_box">
 <h2>{$TITLE_PAYMENT_ADDRESS}</h2>
-{$ADDRESS_LABEL_PAYMENT_ADDRESS}{$BUTTON_PAYMENT_ADDRESS}
+{$ADDRESS_LABEL_PAYMENT_ADDRESS}
+<br />
+{$BUTTON_PAYMENT_ADDRESS}
+{if !$smarty.session.customer_id}
 <div id="payment_address_checkbox">
 {$PAYMENT_ADDRESS_CHECKBOX}{$TEXT_SHIPPING_SAME_AS_PAYMENT}
 </div>
@@ -113,9 +116,10 @@
 {/if}
 </fieldset>
 </div><!--div end payment_address -->
+{/if}
 </div><!--div end payment_address_box -->
 
-
+{if !$smarty.session.customer_id}
 <div id="contact_box" class="sm_layout_box">
 <fieldset class="form">
 <h2>{$TITLE_CONTACT_ADDRESS}</h2>
@@ -127,17 +131,18 @@
 {/if}
 </fieldset>
 </div> <!--div end contact_box -->   
+{/if}
 
-{if $without_account=='false'}
+{if !$smarty.session.customer_id}
 <div id="password_box" class="sm_layout_box">
 {if $TITLE_CONTACT_PASSWORD}<h2>{$TITLE_CONTACT_PASSWORD}</h2>{/if}
 <p>{$TEXT_CONTACT_PASSWORD}</p>
-<div id="password_fields">
-<fieldset class="form">
-<legend>&nbsp;</legend>
 <div id="password_checkbox">
 {$PASSWORD_CHECKBOX}
 </div>
+<div id="password_fields">
+<fieldset class="form">
+<legend>&nbsp;</legend>
 <p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
 <p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
 </fieldset>
