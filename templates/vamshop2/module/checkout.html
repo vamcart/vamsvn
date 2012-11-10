@@ -141,6 +141,7 @@
 <div id="password_checkbox">
 {$PASSWORD_CHECKBOX}
 </div>
+{if $create_password=='1'}
 <div id="password_fields">
 <fieldset class="form">
 <legend>&nbsp;</legend>
@@ -148,6 +149,7 @@
 <p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
 </fieldset>
 </div> <!--div end password_fields --> 
+{/if}
 </div> <!--div end password_box -->  
 {/if}
 
