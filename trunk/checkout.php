@@ -1466,7 +1466,7 @@ if ($messageStack->size('smart_checkout') > 0) {
 
 }
 
-$vamTemplate->assign('TEXT_ORIGIN_LOGIN', (vam_session_is_registered('customer_id')) ? '&nbsp;' : sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')));
+$vamTemplate->assign('TEXT_ORIGIN_LOGIN', (vam_session_is_registered('customer_id')) ? null : sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')));
 
 //Draw form for pressing button "confirm order"
 //first check input fields and check for payment choosen
