@@ -29,6 +29,13 @@ require('includes/classes/http_client.php');
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
+require (DIR_WS_INCLUDES.'header.php');
+
+// assign data to template
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		
 require_once (DIR_FS_INC.'vam_address_label.inc.php');
 require_once (DIR_FS_INC.'vam_get_address_format_id.inc.php');
 require_once (DIR_FS_INC.'vam_count_shipping_modules.inc.php');
@@ -1448,990 +1455,368 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   if (is_array($payment_modules->modules)) {
   echo $payment_modules->process_button();
   }
-?>
-
-<?php
-//////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
-if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
-
-require(DIR_WS_INCLUDES . 'header.php');
-
-if (is_array($payment_modules->modules)) {
-    if ($confirmation = $payment_modules->confirmation()) {
-	
-?>
-
-  <h2><?php echo HEADING_PAYMENT_INFORMATION; ?></h2>
-
-  <div class="contentText">
-    <table border="0" cellspacing="0" cellpadding="2">
-      <tr>
-        <td colspan="4"><?php 
-		
-		
-		echo $confirmation['title']; ?></td>
-      </tr>
-
-<?php
-      for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
-	  
-?>
-
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-        <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-        <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
-      </tr>
-
-<?php
-      }
-?>
-
-    </table>
-  </div>
-
-<?php
-    }
-  }
- 
-?>
-
-<p><?php echo SC_TEXT_REDIRECT; ?></p>
 
 
+// vamTemplate Placeholders
 
-</form>
-<?php 
-require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
-<script type="text/javascript">
-    document.checkoutUrl.submit();
-</script>
-<noscript><input type="submit" value="verify submit"></noscript>
+$breadcrumb->add(HEADING_TITLE);
 
-   
-<?php 
+if ($messageStack->size('smart_checkout') > 0) {
+	$vamTemplate->assign('error', $messageStack->output('smart_checkout'));
+
 }
-//////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
+$vamTemplate->assign('TEXT_ORIGIN_LOGIN', (vam_session_is_registered('customer_id')) ? '&nbsp;' : sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')));
 
-  $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
-  $breadcrumb->add(NAVBAR_TITLE_2, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
-
-	require(DIR_WS_INCLUDES . 'header.php');
-?>
-
-<?php echo $payment_modules->javascript_validation(); ?>
-
-
-<h1><?php echo HEADING_TITLE; ?></h1>
-
-<?php
-//show progress bar only if confirmation page is true
-if (SC_CONFIRMATION_PAGE == 'true') { ?>
-<div class="top_space">
-    <ul id="myProgressBar">
-        <li class="current">1. <?php echo SC_PROGRESS_CHECKOUT_PAGE; ?></li>
-        <li>2. <?php echo SC_PROGRESS_CONFIRMATION_PAGE; ?></li>
-    </ul>
-</div><!-- dive end myProgressBar -->
-<?php } ?>
-
-
-<div id="box">
-<div id="checkout">
-            
-
-<?php
-  if ($messageStack->size('smart_checkout') > 0) {
-    echo $messageStack->output('smart_checkout');
-  }
-?>
-
-
-<?php if (!vam_session_is_registered('customer_id')) echo '<p>'.sprintf(TEXT_ORIGIN_LOGIN, vam_href_link(FILENAME_LOGIN, vam_get_all_get_params(), 'SSL')).'</p>'; ?>
-
-
-<?php 
 //Draw form for pressing button "confirm order"
 //first check input fields and check for payment choosen
 $form_action_url = vam_href_link(FILENAME_CHECKOUT, '', 'SSL');
-echo vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
+$smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
  
  
 // draw process hidden field
 if (vam_session_is_registered('customer_id')) {  //logged on - process another action = 'logged_on'
-	echo vam_draw_hidden_field('action', 'logged_on');
+	$smart_checkout_form .= vam_draw_hidden_field('action', 'logged_on');
 } else { //is not logged on - process another action = 'process'
 	//not logged on
-	echo vam_draw_hidden_field('action', 'not_logged_on');
+	$smart_checkout_form .= vam_draw_hidden_field('action', 'not_logged_on');
 }
 
-echo vam_draw_hidden_field('shipping_count', $shipping_count); //need to post it for validation
-echo vam_draw_hidden_field('sc_payment_address_show', $sc_payment_address_show); //need to post it for validation
-echo vam_draw_hidden_field('sc_payment_modules_show', $sc_payment_modules_show); //need to post it for validation
-echo vam_draw_hidden_field('create_account', $create_account); //need to post it for validation
-echo vam_draw_hidden_field('sc_shipping_modules_show', $sc_shipping_modules_show); //need to post it for validation
-echo vam_draw_hidden_field('sc_shipping_address_show', $sc_shipping_address_show); //need to post it for validation
-echo vam_draw_hidden_field('checkout_possible', $checkout_possible); //need to post it for validation
-?>
+$smart_checkout_form .= vam_draw_hidden_field('shipping_count', $shipping_count); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('sc_payment_address_show', $sc_payment_address_show); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('sc_payment_modules_show', $sc_payment_modules_show); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('create_account', $create_account); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('sc_shipping_modules_show', $sc_shipping_modules_show); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('sc_shipping_address_show', $sc_shipping_address_show); //need to post it for validation
+$smart_checkout_form .= vam_draw_hidden_field('checkout_possible', $checkout_possible); //need to post it for validation
 
-   
+$vamTemplate->assign('FORM_ACTION', $smart_checkout_form);
+$vamTemplate->assign('FORM_END', '</form>');
 
-  <div class="contentText">
-    <span class="inputRequirement" style="float: right;"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
-  </div>
+if ($sc_shipping_address_show == true) { //show shipping options
 
 
-<?php if ($sc_shipping_address_show == true) { //show shipping otpions ?>
-<div id="shipping_box" class="sm_layout_box">
 
-
-<h2><?php if (($sc_is_virtual_product == true) && ($sc_is_free_virtual_product == false)) { 
-echo vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; 
+if (($sc_is_virtual_product == true) && ($sc_is_free_virtual_product == false)) { 
+$smart_checkout_title_shipping .= vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; 
 } elseif (($sc_is_virtual_product == true) && ($sc_is_free_virtual_product == true)) {
-echo vam_get_sc_titles_number(). SC_HEADING_CREATE_ACCOUNT_INFORMATION; 
+$smart_checkout_title_shipping .=  vam_get_sc_titles_number(). SC_HEADING_CREATE_ACCOUNT_INFORMATION; 
 } else {
-echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS; 
-} ?></h2> 
+$smart_checkout_title_shipping .=  vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_ADDRESS; 
+} 
 
+$vamTemplate->assign('TITLE_SHIPPING_ADDRESS', $smart_checkout_title_shipping);
 
-<?php ################ START Shipping Information - LOGGED ON ######################################## ?>
-<?php if (vam_session_is_registered('customer_id')) { ?>
-    	<div>
-          <p><?php echo vam_address_label($customer_id, $sendto, true, ' ', '<br />'); ?></p>
-          <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
-        </div>
-<?php } else { //no account ?>
-<?php ################ END Shipping Information - LOGGED ON ######################################## ?> 
+################ START Shipping Information - LOGGED ON ########################################
 
-
-<?php ################ START Shipping Information - NO ACCOUNT ######################################## ?>  
+if (vam_session_is_registered('customer_id')) {
 	
-    <table border="0" cellspacing="2" cellpadding="2" width="100%">
+$vamTemplate->assign('ADDRESS_LABEL_SHIPPING_ADDRESS', vam_address_label($customer_id, $sendto, true, ' ', '<br />'));
+$vamTemplate->assign('BUTTON_SHIPPING_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
 
-<?php
-  if (ACCOUNT_GENDER == 'true') {
-?>
+} else { //no account
+################ END Shipping Information - LOGGED ON ########################################
 
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_GENDER; ?></td>
-        <td class="fieldValue">
-		<?php 
-		//not yet finished
-		 //echo vam_draw_radio_field('gender', 'm', '', 'id="checkme"') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender', 'f', '', 'id="checkme2"') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;&nbsp;'. vam_draw_radio_field('gender', 'a', '', 'id="checkme1"') . '&nbsp;&nbsp;' . FIRMA . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); 
-        
-		echo vam_draw_radio_field('gender', 'm') . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender', 'f') . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?></td>
-      </tr>
-</table>
-<?php
-  }
-?>
 
+################ START Shipping Information - NO ACCOUNT ########################################
+	
+if (ACCOUNT_GENDER == 'true') {
+	$vamTemplate->assign('gender', '1');
 
+	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
+	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
 
-<?php
-  if (ACCOUNT_COMPANY == 'true') {
-?>
-<div id="extra">
-     <table border="0" cellspacing="2" cellpadding="2" width="100%">
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('company', $sc_guest_company, 'id="company" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
-      </tr>
-    </table>
-</div>  
-
-<?php
-  }
-?>
- <table border="0" cellspacing="2" cellpadding="2" width="100%">
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('firstname', $sc_guest_firstname, 'id="firstname" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      <tr> 
-        <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('lastname', $sc_guest_lastname, 'id="lastname" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-
-<?php
-  if (ACCOUNT_DOB == 'true') {
-?>
-
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_DATE_OF_BIRTH; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('dob', $sc_guest_dob, 'class="text" id="dob"') . '&nbsp;' . (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="inputRequirement">' . ENTRY_DATE_OF_BIRTH_TEXT . '</span>': ''); ?><script type="text/javascript">$('#dob').datepicker({dateFormat: '<?php echo JQUERY_DATEPICKER_FORMAT; ?>', changeMonth: true, changeYear: true, yearRange: '-100:+0'});</script></td>
-      </tr>
-
-<?php
-  }
-?>
-
-      
-    </table>
- 
-
-
-
-
-
- <div id="shipping_address">
-    <table border="0" cellspacing="2" cellpadding="2" width="100%">
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('street_address', $sc_guest_street_address, 'id="street_address" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-
-<?php
-  if (ACCOUNT_SUBURB == 'true') {
-?>
-
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('suburb', $sc_guest_suburb, 'id="suburb" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
-      </tr>
-
-<?php
-  }
-?>
-
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('postcode', $sc_guest_postcode, 'id="postcode" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('city', $sc_guest_city, 'id="city" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-</table>
-<?php
-  if (ACCOUNT_STATE == 'true') {
-?>
-<div id="shipping_state_box">
-<div id="shipping_state">
-
-<table border="0" cellspacing="2" cellpadding="2" width="100%">
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_STATE; ?></td>
-        <td class="fieldValue">
-<?php
-    if ($process == true) {
-      if ($entry_state_has_zones == true) {
-        $zones_array = array();
-        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = vam_db_fetch_array($zones_query)) {
-          $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-        }
-        echo vam_draw_pull_down_menu('state', $zones_array, '', 'id="state" class="text"');
-      } else {
-        echo vam_draw_input_field('state', '', 'id="state" class="text"');
-      }
-    } else {
-      echo vam_draw_input_field('state', '', 'id="state" class="text"');
-    }
-
-    if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
-?>
-        </td>
-      </tr>
-</table>
-  </div><!--div end shipping_state -->
-  </div><!--div end shipping_state_box -->
-<?php
-  }
-?>
-<div id="shipping_country_box">
-<div id="shipping_country">
-
-<table border="0" cellspacing="2" cellpadding="2" width="100%">
-	<tr>
-        <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_get_country_list('country', $selected_country_id, 'id="country" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      
-      
-      
-    </table>
-  </div><!--div end shipping_country -->
-  </div><!--div end shipping_country_box -->
-</div> <!--div end shipping_address -->
-<?php } //end no account ?>
-<?php ################ END Shipping Information - NO ACCOUNT ######################################## ?> 
-
-</div> <!--div end shipping_box --> 
-<?php } //END show shipping otpions ?> 
- 
-  
- 
- 
- 
- 
-<?php if ($sc_payment_address_show == true) { // hide payment if there is a virtual product because we use shipping address for payment address ?>
-<div id="payment_address_box"  class="sm_layout_box">
- <h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS; ?></h2>
-<?php ################ START Payment Information - LOGGED ON ######################################## ?>
-<?php if (vam_session_is_registered('customer_id')) { ?>
-    	<div>
-           <p><?php echo vam_address_label($customer_id, $billto, true, ' ', '<br />'); ?></p>
-           <p><?php echo '<a class="button" href="' . vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS) . '</a>'; ?></p>
-        </div>
-<?php } else { //no account ?>
-<?php ################ END Payment Information - LOGGED ON ######################################## ?> 
-
-
-<?php ################ START Payment Information - NO ACCOUNT ######################################## ?> 
-
- <div id="payment_address_checkbox">
- <table border="0" cellspacing="2" cellpadding="2" width="100%">
- <tr>
-        
-   <?php if (($error == '1') && ($payment_address_selected != '1')) { //is not selected - otherwise payment address is same as shipping address ?>
-        
-        <td><?php echo vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
-        
-        <?php } else { //is selected ?>
-        
-        <td><?php echo vam_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT; ?></td>
-        
-        <?php } ?>
-        
-      </tr>
-      </table>
-</div>
-
-
-
-<div id="payment_address">
-
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
-
-<?php
-  if (ACCOUNT_GENDER == 'true') {
-    if (isset($gender)) {
-      $male = ($gender == 'm') ? true : false;
-      $female = ($gender == 'f') ? true : false;
-    } else {
-      $male = false;
-      $female = false;
-    }
-?>
-
-
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_GENDER; ?></td>
-      <td class="fieldValue">
-	  
-	  <?php echo vam_draw_radio_field('gender_payment', 'm', $male) . '&nbsp;&nbsp;' . MALE . '&nbsp;&nbsp;' . vam_draw_radio_field('gender_payment', 'f', $female) . '&nbsp;&nbsp;' . FEMALE . '&nbsp;' . (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="inputRequirement">' . ENTRY_GENDER_TEXT . '</span>': ''); ?>
-      
-      </td>
-    </tr>
-
-<?php
-  }
-?>
-
-<?php
-  if (ACCOUNT_COMPANY == 'true') {
-?>
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_COMPANY; ?></td>
-      <td class="fieldValue"><?php echo vam_draw_input_field('company_payment', '',  'id="company_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COMPANY_TEXT . '</span>': ''); ?></td>
-    </tr>
-
-<?php
-  }
-?>
-
-      
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_FIRST_NAME; ?></td>
-      <td class="fieldValue">
-		<?php echo vam_draw_input_field('firstname_payment', '', 'id="firstname_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': ''); ?>
-	  </td>
-    </tr>
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_LAST_NAME; ?></td>
-      <td class="fieldValue">
-		<?php echo vam_draw_input_field('lastname_payment', '', 'id="lastname_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">' . ENTRY_LAST_NAME_TEXT . '</span>': ''); ?>
-		</td>
-    </tr>
-
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_STREET_ADDRESS; ?></td>
-      <td class="fieldValue">
-		<?php echo vam_draw_input_field('street_address_payment', '', 'id="street_address_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': ''); ?>
-		</td>
-    </tr>
-
-<?php
-  if (ACCOUNT_SUBURB == 'true') {
-?>
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_SUBURB; ?></td>
-      <td class="fieldValue"><?php echo vam_draw_input_field('suburb_payment', '', 'id="suburb_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="inputRequirement">' . ENTRY_SUBURB_TEXT . '</span>': ''); ?></td>
-    </tr>
-
-<?php
-  }
-?>
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_POST_CODE; ?></td>
-      <td class="fieldValue">
-		<?php echo vam_draw_input_field('postcode_payment', '', 'id="postcode_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?>
-		</td>
-    </tr>
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_CITY; ?></td>
-      <td class="fieldValue">
-		<?php echo vam_draw_input_field('city_payment', '', 'id="city_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?>
-	</td>
-    </tr>
-
-<?php
-  if (ACCOUNT_STATE == 'true') {
-?>
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_STATE; ?></td>
-      <td class="fieldValue">
-
-<?php
-    if ($process == true) {
-      if ($entry_state_has_zones == true) {
-        $zones_array = array();
-        $zones_query = vam_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-        while ($zones_values = vam_db_fetch_array($zones_query)) {
-          $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-        }
-        echo vam_draw_pull_down_menu('state_payment', $zones_array, '', 'id="state_payment" class="text"');
-      } else {
-        echo vam_draw_input_field('state_payment', '', 'id="state_payment" class="text"');
-      }
-    } else {
-      echo vam_draw_input_field('state_payment', '', 'id="state_payment" class="text"');
-    }
-
-    if (vam_not_null(ENTRY_STATE_TEXT)) echo '&nbsp;<span class="inputRequirement">' . ENTRY_STATE_TEXT . '</span>';
-?>
-
-      </td>
-    </tr>
-
-<?php
-  }
-?>
-
-    <tr>
-      <td class="fieldKey"><?php echo ENTRY_COUNTRY; ?></td>
-      <td class="fieldValue"><?php echo vam_get_country_list('country_payment', '', 'id="country_payment" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
-    </tr>
-  </table>
-
- </div><!--div end payment_address-->
-<?php } //end no account ?> 
-</div><!--div end payment_address_box-->
-<?php } //END hide payment if there is a virtual product because we use shipping address for payment address ?>
-<?php ################ END Payment Information - NO ACCOUNT ######################################## ?> 
-
-
-
-
-<?php if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON ?>
-<?php ################ START Contact Information - NO ACCOUNT ######################################## ?> 
-<div id="contact_box" class="sm_layout_box">
-
-  <h2><?php echo vam_get_sc_titles_number() . CATEGORY_CONTACT; ?></h2>
-
-  
-    <table border="0" cellspacing="2" cellpadding="2" width="100%">
-    <tr>
-        <td class="fieldKey"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('email_address', $sc_guest_email_address, 'id="email_address" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">' . ENTRY_EMAIL_ADDRESS_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_input_field('telephone', $sc_guest_telephone, 'id="telephone" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_FAX_NUMBER; ?></td>
-        <td class="fieldValue"><?php echo vam_draw_input_field('fax', $sc_guest_fax, 'id="fax" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="inputRequirement">' . ENTRY_FAX_NUMBER_TEXT . '</span>': ''); ?></td>
-      </tr>
-      
-
-      
- 
-     <tr>
-       <td><?php echo vam_draw_hidden_field('guest', 'guest'); //do we need this??? ?></td>
-     </tr>
-  </table>
-</div> <!--div end contact_box -->    
-<?php ################ END Contact Information - NO ACCOUNT ######################################## ?>   
-<?php } //End IS NOT LOGGED ON ?>
-
-
-<div class="line_space"></div>  
-
-
- 
-
-
-
-<?php ################ START Password - NO ACCOUNT ######################################## ?>
-<?php
-//if ($create_account == true) { 
- if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON 
-  if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true) || (SC_CREATE_ACCOUNT_REQUIRED == 'true') || (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true')) { ?>
-<div id="password_box" class="sm_layout_box">
-
-<h2><?php echo vam_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT; ?></h2>
-
-<?php 
-if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
-	echo '<p>' . SC_TEXT_PASSWORD_REQUIRED . '</p>'; //show message that you need to create an account
-} elseif (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true)) {
-	echo '<p>' . SC_TEXT_VIRTUAL_PRODUCT . '</p>';  //show message that you need to create an account if virtual product
+} else {
+	$vamTemplate->assign('gender', '0');
 }
-?>
 
-<?php ################ START Password - optional ######################################## 
-if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
-	//show nothing
-//} elseif ((SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') && (($sc_is_virtual_product != true) || ($sc_is_mixed_product != true))) {
-} elseif (SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') {
-	if (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true)) {
-	} else { ?>   
-<div id="password_checkbox">
- <table border="0" cellspacing="2" cellpadding="2" width="100%">
- <tr>
-        
-   <?php if (($error == '1') && ($password_selected != '1')) { //is not selected ?>
-        
-        <td><?php echo vam_draw_checkbox_field('password_checkbox', '1', false, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
-        
-        <?php } else { //is selected ?>
-        
-        <td><?php echo vam_draw_checkbox_field('password_checkbox', '1', true, 'id="pw_show"') . '&nbsp;&nbsp;' . TEXT_CREATE_ACCOUNT_OPTIONAL; ?></td>
-        
-        <?php } ?>
-        
-     </tr>
-  </table>
-</div>    
-<?php }
-} ################ End Password - optional ######################################## ?>
-
-
-<div id="password_fields">
-    <table border="0" cellspacing="2" cellpadding="2" width="100%">
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_PASSWORD; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_password_field('password', '', 'id="password" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-      <tr>
-        <td class="fieldKey"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></td>
-        <td class="fieldValue">
-		<?php echo vam_draw_password_field('confirmation', '', 'id="confirmation" class="text"') . '&nbsp;' . (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="inputRequirement">' . ENTRY_PASSWORD_CONFIRMATION_TEXT . '</span>': ''); ?>
-        </td>
-      </tr>
-   </table>
-   </div> <!--div end password_fields --> 
-</div> <!--div end password_box -->  
-<?php
- } //end (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true))
-} //End IS NOT LOGGED ON ?> 
-<?php ################ END Password - NO ACCOUNT ######################################## ?>
-  
-
-
-
-<?php ################ START Shipping Modules ######################################## ?>     
-<?php if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products ?>
-
-<?php if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
-//if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
-//but we still need the divs in order to work with jquery update ?>
-<div id="shipping_modules_box">
-    <div id="shipping_options">
-        <!--<p>shipping hidden as only 1 method</p>--> 
-    </div>
-</div>
-
-<?php } //end hide shipping modules
-else { // show shipping modules ?>
-
-
-<div id="shipping_modules_box" class="sm_layout_box">
-<div id="shipping_options"> 
-<?php
-  if (vam_count_shipping_modules() > 0) {
-?>
-
-
-
-  <h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_SHIPPING_METHOD; ?></h2>
-
-
-<?php
-if (sizeof($quotes) > 1 && sizeof($quotes[0]) > 1) {
-?>
-
-  <div class="contentText">
-    <div style="float: right;">
-      <?php echo '<h5>' . TITLE_PLEASE_SELECT . '</h5>'; ?>
-    </div>
-
-   <p><?php echo TEXT_CHOOSE_SHIPPING_METHOD; ?></p>
-  </div>
-
-<?php
-    } elseif ($free_shipping == false) {
-?>
-
-  
-    <p><?php echo TEXT_ENTER_SHIPPING_INFORMATION; ?></p>
-  
-
-<?php
-    }
-?>
-
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
-
-<?php
-    if ($free_shipping == true) {
-?>
-
-      <tr>
-        <td><h5><?php echo FREE_SHIPPING_TITLE; ?></h5>&nbsp;<?php echo $quotes[$i]['icon']; ?></td>
-      </tr>
-      <tr id="defaultSelected" class="moduleRowSelected" onMouseOver="rowOverEffect(this)" onMouseOut="rowOutEffect(this)" onClick="selectRowEffect(this, 0)">
-        <td style="padding-left: 15px;"><?php echo sprintf(FREE_SHIPPING_DESCRIPTION, $vamPrice->Format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER, true)) . vam_draw_hidden_field('shipping', 'free_free'); ?></td>
-      </tr>
-
-<?php
-    } else {
-      $radio_buttons = 0;
-      for ($i=0, $n=sizeof($quotes); $i<$n; $i++) {
-?>
-
-      <tr>
-        <td colspan="3"><h5><?php echo $quotes[$i]['module']; ?></h5>&nbsp;<?php if (isset($quotes[$i]['icon']) && vam_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?></td>
-      </tr>
-
-<?php
-
-
-        if (isset($quotes[$i]['error'])) {
-?>
-
-      <tr>
-        <td colspan="3"><span class="errorText"><?php echo $quotes[$i]['error']; ?></span></td>
-      </tr>
-
-<?php
-	
-        } else {
-          for ($j=0, $n2=sizeof($quotes[$i]['methods']); $j<$n2; $j++) {
-// set the radio button to be checked if it is the method chosen
-            $checked = (($quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'] == $shipping['id']) ? true : false);
-			
-            if ( ($checked == true) || ($n == 1 && $n2 == 1) ) {
-              echo '      <tr id="defaultSelected" class="moduleRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, ' . $radio_buttons . ')">' . "\n";
-            } else {
-              echo '      <tr class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, ' . $radio_buttons . ')">' . "\n";
-            }
-?>
-
-        <td width="75%" style="padding-left: 15px;"><?php echo $quotes[$i]['methods'][$j]['title']; ?></td>
-
-<?php
-            if ( ($n > 1) || ($n2 > 1) ) {
-
-
-?>
-
-        <td class="product_price"><?php echo $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)),true); ?></td>
-        <td align="right"><?php echo vam_draw_radio_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'], $checked); ?></td>
-
-<?php
-            } else {
-?>
-
-        <td class="product_price" align="right" colspan="2"><?php echo $vamPrice->Format(vam_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)),true) . vam_draw_hidden_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id']); ?></td>
-
-<?php
-            }
-?>
-
-      </tr>
-
-<?php
-            $radio_buttons++;
-          }
-        }
-      }
-    }
-?>
-
-    </table>
-
-
-
-
-<?php
-  } //end (vam_count_shipping_modules()
-?>
-</div> <!--div end shipping_options-->
-</div> <!--div end shipping_modules_box --> 
-<?php
-   } // end hide shipping 
-?>  
-<?php } //END hide shipping modules - used for virtual products ?>
-<?php ################ END Shipping Modules ######################################## ?> 
-
-
-
-<?php ################ START Payment Modules ######################################## ?> 
-<?php if ($sc_payment_modules_show == true) { // hide payment modules ?>
-<div id="payment_options" class="sm_layout_box"> 
-<h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_PAYMENT_METHOD; ?></h2>
-
-<?php
-if ($sc_payment_modules_process == true) {
-  $selection = $payment_modules->selection();
-
-
-  if (sizeof($selection) > 1) {
-?>
-
-  
-    
-    <?php //echo '<strong>' . TITLE_PLEASE_SELECT . '</strong>'; ?>
-  
-
-    <p><?php echo TEXT_SELECT_PAYMENT_METHOD; ?></p>
-  	
-
-<?php
-    } elseif ($free_shipping == false) {
-?>
-
-  
-    <p><?php echo TEXT_ENTER_PAYMENT_INFORMATION; ?></p>
- 
-
-<?php
-    }
-?>
-
-  
-
-<?php
-  $radio_buttons = 0;
-  for ($i=0, $n=sizeof($selection); $i<$n; $i++) {
-?>
-
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
-
-<?php
-    if ( ($selection[$i]['id'] == $payment) || ($n == 1) ) {
-      echo '      <tr id="defaultSelected" class="moduleRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, ' . $radio_buttons . ')">' . "\n";
-    } else {
-      echo '      <tr class="moduleRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="selectRowEffect(this, ' . $radio_buttons . ')">' . "\n";
-    }
-?>
-
-        <td><h5><?php echo $selection[$i]['icon']; ?>&nbsp;<?php echo $selection[$i]['module']; ?></h5></td>
-        <td align="right">
-
-<?php
-    if (sizeof($selection) > 1) {
-      echo vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $payment));
-    } else {
-      echo vam_draw_hidden_field('payment', $selection[$i]['id']);
-    }
-?>
-
-        </td>
-      </tr>
-
-<?php
-    if (isset($selection[$i]['error'])) {
-?>
-
-      <tr>
-        <td colspan="2"><?php echo $selection[$i]['error']; ?></td>
-      </tr>
-
-<?php
-
-    } elseif (isset($selection[$i]['fields']) && is_array($selection[$i]['fields'])) {
-	
-	
-?>
-
-      <tr>
-        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2">
-
-<?php
-      for ($j=0, $n2=sizeof($selection[$i]['fields']); $j<$n2; $j++) {
-	  
-?>
-
-          <tr>
-            <td><?php echo $selection[$i]['fields'][$j]['title']; ?></td>
-            <td><?php echo $selection[$i]['fields'][$j]['field']; ?></td>
-          </tr>
-
-<?php
-      }
-?>
-
-        </table></td>
-      </tr>
-
-<?php
-    }
-?>
-
-    </table>
-
-<?php
-    $radio_buttons++;
-  }
+if (ACCOUNT_COMPANY == 'true') {
+	$vamTemplate->assign('company', '1');
+	$vamTemplate->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
+} else {
+	$vamTemplate->assign('company', '0');
 }
-?>
 
+$vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname"'));
+if (ACCOUNT_SECOND_NAME == 'true') {
+	$vamTemplate->assign('secondname', '1');
+$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname"'));
+}
+$vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname"'));
 
-<?php
-  // Discount Code 2.6 - start
-  if (MODULE_ORDER_TOTAL_DISCOUNT_STATUS == 'true') {
-?>
+if (ACCOUNT_DOB == 'true') {
+	$vamTemplate->assign('birthdate', '1');
 
-  <h2><?php echo vam_get_sc_titles_number() . TEXT_DISCOUNT_CODE; ?></h2>
+	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob"'));
 
-  
-  <?php echo vam_draw_input_field('discount_code', $sess_discount_code, 'id="discount_code" class="text" size="10"'); ?>
-  
-  
-<?php
-  }
-  // Discount Code 2.6 - end
-?>
-</div> <!--div end payment_options-->
-<?php } //End hide payment modules ?>
-<?php ################ END Payment Modules ######################################## ?> 
+} else {
+	$vamTemplate->assign('birthdate', '0');
+}
 
+if (ACCOUNT_STREET_ADDRESS == 'true') {
+   $vamTemplate->assign('street_address', '1');
+   $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), $sc_guest_street_address, 'id="street_address"'));
+} else {
+	$vamTemplate->assign('street_address', '0');
+}
 
+if (ACCOUNT_SUBURB == 'true') {
+	$vamTemplate->assign('suburb', '1');
+	$vamTemplate->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
+} else {
+	$vamTemplate->assign('suburb', '0');
+}
 
+if (ACCOUNT_POSTCODE == 'true') {
+   $vamTemplate->assign('postcode', '1');
+   $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode"'));
+} else {
+	$vamTemplate->assign('postcode', '0');
+}
 
+if (ACCOUNT_CITY == 'true') {
+   $vamTemplate->assign('city', '1');
+   $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city"'));
+} else {
+	$vamTemplate->assign('city', '0');
+}
 
-<?php ################ START Comment box ######################################## ?> 
-<?php if (SC_HIDE_COMMENT != 'true') { ?>
-<div id="comment_box" class="sm_layout_box">
-	<h2><?php echo vam_get_sc_titles_number() . TABLE_HEADING_COMMENTS; ?></h2>
+if (ACCOUNT_STATE == 'true') {
+	$vamTemplate->assign('state', '1');
 
-     <div class="contentText">
-        <?php echo vam_draw_textarea_field('comments', 'soft', '60', '5', $comments); ?>
-     </div>    
-</div><!--div end comment_box--> 
-<?php } ?>
-<?php ################ END Comment box ######################################## ?> 
+	    $country = (isset($_POST['country']) ? vam_db_prepare_input($_POST['country']) : STORE_COUNTRY);
+	    $zone_id = 0;
+		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+		 $check = vam_db_fetch_array($check_query);
+		 $entry_state_has_zones = ($check['total'] > 0);
+		 if ($entry_state_has_zones == true) {
+			$zones_array = array ();
+			$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' order by zone_name");
+			while ($zones_values = vam_db_fetch_array($zones_query)) {
+				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
+			}
 
+			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_code = '".vam_db_input($state)."'");
 
+	      if (vam_db_num_rows($zone) > 0) {
+	        $zone_id = $zone['zone_id'];
+	        $zone_name = $zone['zone_name'];
 
+	      } else {
 
-<?php ################ START Order Total Modules ######################################## ?> 
-<div id="order_total_modules" class="sm_layout_box">
-    <h2><?php echo vam_get_sc_titles_number() . HEADING_TOTAL; ?></h2>
-    <div class="contentText">
-    <div style="float: right;">
-    <table border="0" cellspacing="0" cellpadding="2">
-    
-    <?php
-      if (MODULE_ORDER_TOTAL_INSTALLED) {
-        echo $order_total_modules->output();
+		   $zone = vam_db_query("select distinct zone_id, zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
+
+	      if (vam_db_num_rows($zone) > 0) {
+	          $zone_id = $zone['zone_id'];
+	          $zone_name = $zone['zone_name'];
+	        }
+	      }
+		}
+
+      if ($entry_state_has_zones == true) {
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, ($process == true) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
+      } else {
+		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state"');
       }
-    ?>
-    </table>
-    </div>
-    </div>
-	<p>&nbsp;</p>
-</div><!--div end order_total_modules -->
-<?php ################ END Order Total Modules ######################################## ?> 
 
-<div class="line_space"></div>
+	$vamTemplate->assign('INPUT_STATE', $state_input);
+} else {
+	$vamTemplate->assign('state', '0');
+}
 
-<?php ################ START Conditions of Use ######################################## ?> 
-<?php if (SC_CONDITIONS == 'true') { // customers must check checkbox to proceed ?>
-<div id="conditions" class="sm_layout_box">
+if (ACCOUNT_COUNTRY == 'true') {
+	$vamTemplate->assign('country', '1');
 
-	<?php echo SC_CONDITION; ?>
-	<a id="agreement" href="<?php echo vam_href_link(FILENAME_CONTENT, 'coID=3'); ?>"><?php echo SC_HEADING_CONDITIONS; ?></a>
-	<?php echo SC_CONDITION_END; ?>
+   $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country"'));
+
+} else {
+	$vamTemplate->assign('country', '0');
+}
+
+} //end no account
+################ END Shipping Information - NO ACCOUNT ########################################
+
+
+} //END show shipping otpions 
+
+if ($sc_payment_address_show == true) { // hide payment if there is a virtual product because we use shipping address for payment address
+
+$vamTemplate->assign('TITLE_PAYMENT_ADDRESS', vam_get_sc_titles_number() . TABLE_HEADING_BILLING_ADDRESS);
+
+################ START Payment Information - LOGGED ON ########################################
+
+if (vam_session_is_registered('customer_id')) {
 	
-    	<?php echo vam_draw_checkbox_field('TermsAgree','1', false, 'id="t18"'); ?>
-	
- 
-</div><!--div end conditions --> 
-<?php } ?>
-<?php ################ END Conditions of Use ######################################## ?> 
+$vamTemplate->assign('ADDRESS_LABEL_PAYMENT_ADDRESS', vam_address_label($customer_id, $billto, true, ' ', '<br />'));
+$vamTemplate->assign('BUTTON_PAYMENT_ADDRESS', '<a href="'.vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL').'">'.vam_image_button('button_change_address.gif', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
+
+} else { //no account
+
+################ END Payment Information - LOGGED ON ########################################
 
 
+################ START Payment Information - NO ACCOUNT ######################################## 
+
+        
+   if (($error == '1') && ($payment_address_selected != '1')) { //is not selected - otherwise payment address is same as shipping address
+        
+        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
+        
+        } else { //is selected
+        
+        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
+        
+        }
 
 
-<?php
-  if (is_array($payment_modules->modules)) {
-  //  echo $payment_modules->process_button();
-  }
+if (ACCOUNT_GENDER == 'true') {
+	$vamTemplate->assign('gender_payment', '1');
+
+	$vamTemplate->assign('INPUT_MALE_PAYMENT', vam_draw_radio_field(array ('name' => 'gender_payment', 'suffix' => MALE), 'm', '', 'id="gender_payment" checked="checked"'));
+	$vamTemplate->assign('INPUT_FEMALE_PAYMENT', vam_draw_radio_field(array ('name' => 'gender_payment', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender_payment"'));
+
+} else {
+	$vamTemplate->assign('gender_payment', '0');
+}
+
+if (ACCOUNT_COMPANY == 'true') {
+	$vamTemplate->assign('company_payment', '1');
+	$vamTemplate->assign('INPUT_COMPANY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'company_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
+} else {
+	$vamTemplate->assign('company_payment', '0');
+}
+
+$vamTemplate->assign('INPUT_FIRSTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'firstname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname_payment"'));
+if (ACCOUNT_SECOND_NAME == 'true') {
+	$vamTemplate->assign('secondname_payment', '1');
+$vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname_payment"'));
+}
+$vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname_payment"'));
+
+if (ACCOUNT_DOB == 'true') {
+	$vamTemplate->assign('birthdate_payment', '1');
+
+	$vamTemplate->assign('INPUT_DOB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'dob_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob_payment"'));
+
+} else {
+	$vamTemplate->assign('birthdate_payment', '0');
+}
+
+if (ACCOUNT_STREET_ADDRESS == 'true') {
+   $vamTemplate->assign('street_address_payment', '1');
+   $vamTemplate->assign('INPUT_STREET_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'street_address_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_STREET_ADDRESS_TEXT.'</span>' : '')), $sc_guest_street_address, 'id="street_address_payment"'));
+} else {
+	$vamTemplate->assign('street_address_payment', '0');
+}
+
+if (ACCOUNT_SUBURB == 'true') {
+	$vamTemplate->assign('suburb_payment', '1');
+	$vamTemplate->assign('INPUT_SUBURB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'suburb_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
+} else {
+	$vamTemplate->assign('suburb_payment', '0');
+}
+
+if (ACCOUNT_POSTCODE == 'true') {
+   $vamTemplate->assign('postcode_payment', '1');
+   $vamTemplate->assign('INPUT_CODE_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'postcode_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode_payment"'));
+} else {
+	$vamTemplate->assign('postcode_payment', '0');
+}
+
+if (ACCOUNT_CITY == 'true') {
+   $vamTemplate->assign('city_payment', '1');
+   $vamTemplate->assign('INPUT_CITY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'city_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city_payment"'));
+} else {
+	$vamTemplate->assign('city_payment', '0');
+}
+
+if (ACCOUNT_STATE == 'true') {
+	$vamTemplate->assign('state_payment', '1');
+
+	    $country = (isset($_POST['country']) ? vam_db_prepare_input($_POST['country']) : STORE_COUNTRY);
+	    $zone_id = 0;
+		 $check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
+		 $check = vam_db_fetch_array($check_query);
+		 $entry_state_has_zones = ($check['total'] > 0);
+		 if ($entry_state_has_zones == true) {
+			$zones_array = array ();
+			$zones_query = vam_db_query("select zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' order by zone_name");
+			while ($zones_values = vam_db_fetch_array($zones_query)) {
+				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
+			}
+
+			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_code = '".vam_db_input($state)."'");
+
+	      if (vam_db_num_rows($zone) > 0) {
+	        $zone_id = $zone['zone_id'];
+	        $zone_name = $zone['zone_name'];
+
+	      } else {
+
+		   $zone = vam_db_query("select distinct zone_id, zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
+
+	      if (vam_db_num_rows($zone) > 0) {
+	          $zone_id = $zone['zone_id'];
+	          $zone_name = $zone['zone_name'];
+	        }
+	      }
+		}
+
+      if ($entry_state_has_zones == true) {
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, ($process == true) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state_payment"');
+      } else {
+		$state_input = vam_draw_input_fieldNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state_payment"');
+      }
+
+	$vamTemplate->assign('INPUT_STATE_PAYMENT', $state_input);
+} else {
+	$vamTemplate->assign('state_payment', '0');
+}
+
+if (ACCOUNT_COUNTRY == 'true') {
+	$vamTemplate->assign('country_payment', '1');
+
+   $vamTemplate->assign('SELECT_COUNTRY_PAYMENT', vam_get_country_list(array ('name' => 'country_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country_payment"'));
+
+} else {
+	$vamTemplate->assign('country_payment', '0');
+}
 
 
+} //end no account
+} //END hide payment if there is a virtual product because we use shipping address for payment address
+################ END Payment Information - NO ACCOUNT ########################################
 
- // echo vam_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary');
-?>
-<div id="confirm_order">
-<p>&nbsp;</p>
-  <div class="buttonSet">
-    <div class="buttonAction">
-		<?php 
-		if (SC_CONFIRMATION_PAGE == 'true') { //got to confimration page
-			echo vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRMATION_PAGE);
-		} else { //order now
-			echo vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRM_ORDER);
-		}  ?>
-    </div>
-  </div>
-</div>
+if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON
+################ START Contact Information - NO ACCOUNT ########################################
 
-</form>
-</div><!-- Div end checkout -->
-</div><!-- Div end checkout_container -->
+$vamTemplate->assign('TITLE_CONTACT_ADDRESS', vam_get_sc_titles_number() . CATEGORY_CONTACT.vam_draw_hidden_field('guest', 'guest'));
 
-<?php
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
+$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $sc_guest_email_address, 'id="email_address"'));
+
+if (ACCOUNT_TELE == 'true') {
+   $vamTemplate->assign('telephone', '1');
+   $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $sc_guest_telephone, 'id="telephone"'));
+} else {
+	$vamTemplate->assign('telephone', '0');
+}
+
+if (ACCOUNT_FAX == 'true') {
+   $vamTemplate->assign('fax', '1');
+   $vamTemplate->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')),$sc_guest_fax));
+} else {
+	$vamTemplate->assign('fax', '0');
+}
+
+################ END Contact Information - NO ACCOUNT ######################################## 
+} //End IS NOT LOGGED ON
+
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout.html');
+$vamTemplate->assign('main_content', $main_content);
+if (!defined(RM))$vamTemplate->load_filter('output', 'note');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
+include ('includes/application_bottom.php');
 ?>
