@@ -2003,9 +2003,9 @@ $vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
 ################ END Payment Modules ######################################## 
 
 ################ START Comment box ########################################
-$vamTemplate->assign('hide_comments', true);     
+$vamTemplate->assign('comments', 0);     
 if (SC_HIDE_COMMENT != 'true') {
-$vamTemplate->assign('hide_comments', false);     
+$vamTemplate->assign('comments', 1);     
 $vamTemplate->assign('TITLE_COMMENTS', vam_get_sc_titles_number() . TABLE_HEADING_COMMENTS);
 $vamTemplate->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $comments));
 }

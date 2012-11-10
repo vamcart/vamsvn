@@ -153,7 +153,7 @@ $('#box')
 //.on$('input[name=checkout_possible]').val()
 
 .on('change', 'input[name=shipping], select[name=country]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'country': $('select[name=country]').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
-.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
+//.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 ;}
 </script>
 
