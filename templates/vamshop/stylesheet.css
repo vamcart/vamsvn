@@ -3598,42 +3598,8 @@ div.top_space
 		margin-top: 20px;
 	}
 
-#myProgressBar
-	{
-		margin: 0;
-		padding: 0;
-		height: 40px;
-	}
-
-#myProgressBar li 
-	{
-		position: relative;
-		display: block;
-		float: left;
-		text-align: left;
-		margin: 0 20px 0 0;
-		padding: 5px;
-		background: #E8E8E8;
-		font-size: 11px;
-		border: solid #CCCCCC 1px;
-		border-radius: 5px;
-	}
-
-#myProgressBar li.current 
-	{
-		font-weight: bold;
-		color: #70d250;
-	}
-
-#myProgressBar li.done 
-	{
-		background: #70d250;
-	}
-
-
 .sm_layout_box
 	{ 
-		border: 1px solid #A6C9E2;
 		padding: 20px;
 		margin-top: 30px;
 	}
