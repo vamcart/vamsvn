@@ -370,8 +370,8 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	}
 
 	//conditions validation
-	$conditions_validation = $_POST['TermsAgree'];
-	if (($conditions_validation == '') && (SC_CONDITIONS == 'true')) {
+	$conditions_validation = $_POST['conditions'];
+	if (($conditions_validation == '') && (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true')) {
 		$error = true;
 		$messageStack->add('smart_checkout', CONDITIONS_ERROR);
     }
@@ -509,8 +509,8 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	}
 	
 	//conditions validation
-	$conditions_validation = $_POST['TermsAgree'];
-	if (($conditions_validation == '') && (SC_CONDITIONS == 'true')) {
+	$conditions_validation = $_POST['conditions'];
+	if (($conditions_validation == '') && (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true')) {
 		$error = true;
 		$messageStack->add('smart_checkout', CONDITIONS_ERROR);
     }
@@ -2003,9 +2003,9 @@ $vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
 ################ END Payment Modules ######################################## 
 
 ################ START Comment box ########################################
-$vamTemplate->assign('comments', true);     
+$vamTemplate->assign('hide_comments', true);     
 if (SC_HIDE_COMMENT != 'true') {
-$vamTemplate->assign('comments', false);     
+$vamTemplate->assign('hide_comments', false);     
 $vamTemplate->assign('TITLE_COMMENTS', vam_get_sc_titles_number() . TABLE_HEADING_COMMENTS);
 $vamTemplate->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $comments));
 }
@@ -2031,33 +2031,8 @@ if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') { // customers must check checkbox
 
 $vamTemplate->assign('conditions', 'true');
 
-	if (GROUP_CHECK == 'true') {
-		$group_check = "and group_ids LIKE '%c_" . $_SESSION['customers_status']['customers_status_id'] . "_group%'";
-	}
-
-	$shop_content_query = vam_db_query("SELECT
-	                                                content_title,
-	                                                content_heading,
-	                                                content_text,
-	                                                content_file
-	                                                FROM " . TABLE_CONTENT_MANAGER . "
-	                                                WHERE content_group='3' " . $group_check . "
-	                                                AND languages_id='" . $_SESSION['languages_id'] . "'");
-	$shop_content_data = vam_db_fetch_array($shop_content_query);
-
-	if ($shop_content_data['content_file'] != '') {
-
-		$conditions = '<iframe SRC="' . DIR_WS_CATALOG . 'media/content/' . $shop_content_data['content_file'] . '" width="100%" height="300">';
-		$conditions .= '</iframe>';
-	} else {
-
-		$conditions = '<textarea name="blabla" cols="60" rows="10" readonly="readonly">' . strip_tags(str_replace('<br />', "\n", $shop_content_data['content_text'])) . '</textarea>';
-	}
-
-	$vamTemplate->assign('AGB', $conditions);
-	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
-
-   $vamTemplate->assign('AGB_checkbox', vam_draw_checkbox_field('conditions','1', true));
+$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, SC_HEADING_CONDITIONS));
+$vamTemplate->assign('AGB_checkbox', vam_draw_checkbox_field('conditions','1', true));
 
 }
 ################ END Conditions of Use ########################################
