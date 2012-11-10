@@ -2002,6 +2002,69 @@ $vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
 } //End hide payment modules
 ################ END Payment Modules ######################################## 
 
+################ START Comment box ########################################
+$vamTemplate->assign('comments', true);     
+if (SC_HIDE_COMMENT != 'true') {
+$vamTemplate->assign('comments', false);     
+$vamTemplate->assign('TITLE_COMMENTS', vam_get_sc_titles_number() . TABLE_HEADING_COMMENTS);
+$vamTemplate->assign('COMMENTS', vam_draw_textarea_field('comments', 'soft', '60', '5', $comments));
+}
+################ END Comment box ########################################
+
+
+
+
+################ START Order Total Modules ########################################
+
+$vamTemplate->assign('TITLE_TOTALS', vam_get_sc_titles_number() . HEADING_TOTAL);
+    
+if (MODULE_ORDER_TOTAL_INSTALLED) {
+$vamTemplate->assign('ORDER_TOTALS', $order_total_modules->output());
+}
+
+################ END Order Total Modules ########################################
+
+################ START Conditions of Use ######################################## 
+$vamTemplate->assign('conditions', 'false');
+
+if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') { // customers must check checkbox to proceed
+
+$vamTemplate->assign('conditions', 'true');
+
+	if (GROUP_CHECK == 'true') {
+		$group_check = "and group_ids LIKE '%c_" . $_SESSION['customers_status']['customers_status_id'] . "_group%'";
+	}
+
+	$shop_content_query = vam_db_query("SELECT
+	                                                content_title,
+	                                                content_heading,
+	                                                content_text,
+	                                                content_file
+	                                                FROM " . TABLE_CONTENT_MANAGER . "
+	                                                WHERE content_group='3' " . $group_check . "
+	                                                AND languages_id='" . $_SESSION['languages_id'] . "'");
+	$shop_content_data = vam_db_fetch_array($shop_content_query);
+
+	if ($shop_content_data['content_file'] != '') {
+
+		$conditions = '<iframe SRC="' . DIR_WS_CATALOG . 'media/content/' . $shop_content_data['content_file'] . '" width="100%" height="300">';
+		$conditions .= '</iframe>';
+	} else {
+
+		$conditions = '<textarea name="blabla" cols="60" rows="10" readonly="readonly">' . strip_tags(str_replace('<br />', "\n", $shop_content_data['content_text'])) . '</textarea>';
+	}
+
+	$vamTemplate->assign('AGB', $conditions);
+	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
+
+   $vamTemplate->assign('AGB_checkbox', vam_draw_checkbox_field('conditions','1', true));
+
+}
+################ END Conditions of Use ########################################
+
+
+$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
+
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/checkout.html');
