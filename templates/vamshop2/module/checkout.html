@@ -128,6 +128,37 @@
 </fieldset>
 </div> <!--div end contact_box -->   
 
+{if $without_account=='false'}
+<div id="password_box" class="sm_layout_box">
+{if $TITLE_CONTACT_PASSWORD}<h2>{$TITLE_CONTACT_PASSWORD}</h2>{/if}
+<p>{$TEXT_CONTACT_PASSWORD}</p>
+<div id="password_fields">
+<fieldset class="form">
+<legend>&nbsp;</legend>
+<div id="password_checkbox">
+{$PASSWORD_CHECKBOX}
+</div>
+<p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
+<p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
+</fieldset>
+</div> <!--div end password_fields --> 
+</div> <!--div end password_box -->  
+{/if}
+
+{if $shipping=='true'}
+<div id="shipping_modules_box" class="sm_layout_box">
+<h2>{$TITLE_SHIPPING_MODULES}</h2>
+<div id="shipping_options"> 
+{$SHIPPING_BLOCK}
+</div> <!--div end shipping_options-->
+</div> <!--div end shipping_modules_box --> 
+{/if}
+
+<div id="payment_options" class="sm_layout_box"> 
+<h2>{$TITLE_PAYMENT_MODULES}</h2>
+{$PAYMENT_BLOCK}
+</div> <!--div end payment_options-->
+
 
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 <fieldset class="form">
@@ -143,34 +174,6 @@
 </div> <!--div end shipping_box --> 
 
 
-{if $virtual=='false'} 
-{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
-<h1>{#heading_shipping#}</h1>
-<div class="page">
-<div class="pagecontent">
-
-<fieldset class="form">
-<legend>{#text_shipping#}</legend>
-{$SHIPPING_BLOCK}
-</fieldset>
-
-</div>
-</div>
-{/if}
-
-{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
-<div class="page">
-<div class="pagecontent">
-
-{if $GV_COVER!='true'}
-<fieldset class="form">
-<legend>{#text_payment#}</legend>
-{$PAYMENT_BLOCK}
-</fieldset>
-{$module_gift}
-{else}
-{#text_gccover#}
-{/if}
 
 <fieldset class="form">
 <legend>{#title_comments#}</legend>
@@ -190,8 +193,6 @@
 </fieldset>
 {/if}
 
-</div>
-</div>
 
 <div class="pagecontentfooter">
 {$BUTTON_CONTINUE}
