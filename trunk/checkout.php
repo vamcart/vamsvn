@@ -1508,7 +1508,8 @@ $vamTemplate->assign('TEXT_ORIGIN_LOGIN', (vam_session_is_registered('customer_i
 //Draw form for pressing button "confirm order"
 //first check input fields and check for payment choosen
 $form_action_url = vam_href_link(FILENAME_CHECKOUT, '', 'SSL');
-$smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
+//$smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
+$smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', '', true);
  
  
 // draw process hidden field
