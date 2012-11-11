@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: sc_checkout_confirmation.php 867 2012-11-11 19:20:03 oleg_vamsoft $
+   $Id: sc_checkout_confirmation.php 1277 2012-11-11 19:20:03 oleg_vamsoft $
 
    VamShop - open source ecommerce solution
    http://vamshop.ru
@@ -18,19 +18,19 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-/*session description
-vam_session_is_registered('create_account') = is used for data processing only
-vam_session_is_registered('only_account') = is used to hide shipping and payment data and show only account data
-vam_session_is_registered('is_virtual_product') = 
+include ('includes/application_top.php');
 
- 
-vam_session_is_registered('no_pay_no_ship') = is used to hide all data (shipping, payment, account)
-*/
+//load languages files
+require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_CHECKOUT);
 
-  require('includes/application_top.php');
-
-	//load languages files
-	require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/' . FILENAME_CHECKOUT);
+// create template elements
+$vamTemplate = new vamTemplate;
+// include boxes
+require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
+// include needed functions
+require_once (DIR_FS_INC . 'vam_calculate_tax.inc.php');
+require_once (DIR_FS_INC . 'vam_check_stock.inc.php');
+require_once (DIR_FS_INC . 'vam_display_tax_value.inc.php');
 
 $hide_shipping_data = false;
 $hide_payment_data = false;
@@ -317,17 +317,13 @@ if ((!vam_session_is_registered('create_account')) && (isset($_POST['action']) &
 	}
 }
 ///////////// END Redirection for noaccount //////////////////////////////////////////////////	
-	  
-  
-
-
 
 ###################### payment url redirection START ###################################
 //if payment method such as paypal is choosen,  repost process_button data
   if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) {
 		
 	$form_action_url = $$payment->form_action_url;
-	echo vam_draw_form('checkoutUrl', $form_action_url, 'post');
+	$payment_fields .= vam_draw_form('checkoutUrl', $form_action_url, 'post');
 	   
   
   
@@ -338,364 +334,242 @@ if ((!vam_session_is_registered('create_account')) && (isset($_POST['action']) &
   
   
 	if (is_array($payment_modules->modules)) {
-		echo $payment_modules->process_button();
+		$payment_fields .= $payment_modules->process_button();
 	}
 
 
 	if (is_array($payment_modules->modules)) {
 		if ($confirmation = $payment_modules->confirmation()) {
-	
-	?>
 
-    <h2><?php echo HEADING_PAYMENT_INFORMATION; ?></h2>
+  $payment_fields .= HEADING_PAYMENT_INFORMATION;
 
-      <div class="contentText">
-        <table border="0" cellspacing="0" cellpadding="2">
-          <tr>
-            <td colspan="4"><?php 
-            
-            
-            echo $confirmation['title']; ?></td>
-          </tr>
-    
-    <?php
-          for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
-          
-    ?>
-    
-          <tr>
-            <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-            <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-            <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-            <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
-          </tr>
-    
-    <?php
-          }
-    ?>
-    
-        </table>
-      </div>
-    
-    <?php
-        }
+		$payment_fields .= $confirmation['title'];
+
+      for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
+
+      $payment_fields .= $confirmation['fields'][$i]['title'];
+      $payment_fields .= $confirmation['fields'][$i]['field'];
+
       }
-     
-    ?>
 
-	<p><?php echo SC_TEXT_REDIRECT; ?></p>
+    }
+  }
 
+$payment_fields .= SC_TEXT_REDIRECT;
+$payment_fields .= '</form>';
 
+$payment_fields .= '
 
-    </form>
-    <?php 
-    require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
-    <script type="text/javascript">
-        document.checkoutUrl.submit();
-    </script>
-    <noscript><input type="submit" value="verify submit"></noscript>
+<script type="text/javascript">
+    document.checkoutUrl.submit();
+</script>
+<noscript><input type="submit" value="verify submit"></noscript>
 
+';
+
+$vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
    
-<?php 
 }
 //////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
+$breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION);
 
+require (DIR_WS_INCLUDES . 'header.php');
 
-  $breadcrumb->add(NAVBAR_TITLE_1, vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
-  $breadcrumb->add(NAVBAR_TITLE_2);
+if ($hide_shipping_data == 'true') {
+$vamTemplate->assign('SHIPPING_ADDRESS', 'false');
+}
 
- 
-?>
-
-<script type="text/javascript">
-/*$(hidePage);		
-	function hidePage()	{
-	$("#sc_content").css("display","none");
-	;}*/
-</script>  
-
-
-<h1><?php echo HEADING_TITLE; ?></h1>
-
-<?php
-//show progress bar only if confirmation page is true
-if (SC_CONFIRMATION_PAGE == 'true') { ?>
-<div class="top_space">
-    <ul id="myProgressBar">
-        <li class="done">1. <?php echo SC_PROGRESS_CHECKOUT_PAGE; ?></li>
-        <li class="current">2. <?php echo SC_PROGRESS_CONFIRMATION_PAGE; ?></li>
-    </ul>
-</div><!-- dive end myProgressBar -->
-<?php } ?>
-
-
-<?php
-
-
-
-
-//draw form 
-  //echo vam_draw_form('checkout_confirmation', $form_action_url, 'post');
-$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
-echo vam_draw_form('checkout_confirmation', $form_action_url, 'post');
-
-  //echo vam_draw_form('checkout_confirmation', vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, 'action=process', 'SSL')); 
-
-  echo vam_draw_hidden_field('action', 'process');
-
-?> 
- 
-
-
-<div id="sc_content">
-
-
-<div class="sc_box">
-
-<?php
- /////////////  START Shipping address //////////////////////////// ?>
-<div id="conf_shipping_box">
-  <?php
-	  if ($show_account_data == true) {
-	  	echo '<h2>' . SC_HEADING_CREATE_ACCOUNT_INFORMATION . '</h2>'; 
-		echo '<p>' . vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br /></p>'); 
-	  } else {
-	  	echo '<h2>' . HEADING_SHIPPING_INFORMATION . '</h2>';
-	  }
-  ?>
-
-  
-
-
-	<?php 
-	if ($hide_shipping_data == true) {
-		if  ($show_account_data != true) {
-			echo '<p>' . SC_NO_SHIPMENT_INFORMATION . '</p>'; 
-		}
+if (SHOW_IP_LOG == 'true') {
+	$vamTemplate->assign('IP_LOG', 'true');
+	if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
+		$customers_ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
 	} else {
-		echo '<h4>' . HEADING_DELIVERY_ADDRESS . '</h4>'; ?>
-		<p><?php echo '' . vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); 
-	 ?></p>
-    
-		<?php
-        if ($order->info['shipping_method']) {
-        ?>
-        
-                <p>&nbsp;</p>
-                <?php echo '<h4>' . HEADING_SHIPPING_METHOD . ' </h4>'; ?>
-                
-                <p><?php echo $order->info['shipping_method']; ?></p>
-                
-                
-              
-    <?php
-        }
-	} //end $hide_shipping_data
-    ?>
+		$customers_ip = $_SERVER["REMOTE_ADDR"];
+	}
+	$vamTemplate->assign('CUSTOMERS_IP', $customers_ip);
+}
+if ($show_account_data == true) {
+$vamTemplate->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
+}
+if ($_SESSION['credit_covers'] != '1') {
+	$vamTemplate->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
+}
+$vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+$vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
+$vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
 
-      
+if ($_SESSION['sendto'] != false) {
 
+	if ($order->info['shipping_method']) {
+		$vamTemplate->assign('SHIPPING_METHOD', $order->info['shipping_method']);
+		$vamTemplate->assign('SHIPPING_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 
-</div><!-- Div end conf_shipping_box -->
-<?php /////////////  END Shipping address //////////////////////////// ?>
+	}
 
+}
 
+if (sizeof($order->info['tax_groups']) > 1) {
 
-<?php /////////////  START Payment address //////////////////////////// ?>
-<?php if ($hide_payment_data == true) {
-	//show nothing
-} else { ?>
-<div id="conf_payment_box">
-  <h2><?php echo HEADING_BILLING_INFORMATION; ?></h2>
+	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
 
- 	
-    
-         <?php echo '<h4>' . HEADING_BILLING_ADDRESS . '</h4>'; ?>
-          <p><?php echo vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'); ?></p>
-          
-          <p>&nbsp;</p>
-          <?php echo '<h4>' . HEADING_PAYMENT_METHOD . '</h4>'; ?>
-         <p><?php echo $order->info['payment_method']; ?></p>
+	}
 
+} else {
 
+}
+$data_products = '<table border="0" cellspacing="0" cellpadding="0">';
+for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 
-  
+	$data_products .= '<tr>' . "\n" . '            <td class="main" align="left" valign="top">' . $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . '</td>' . "\n" . '                <td class="main" align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], true) . '</td></tr>' . "\n";
+	if (ACTIVATE_SHIPPING_STATUS == 'true') {
 
-</div><!-- Div end Payment box -->        
-<?php
-  }
-  /////////////  END Payment address //////////////////////////// ?>
+		$data_products .= '<tr>
+							<td class="main" align="left" valign="top">
+							<small>' . SHIPPING_TIME . $order->products[$i]['shipping_time'] . '
+							</small></td>
+							<td class="main" align="right" valign="top">&nbsp;</td></tr>';
 
+	}
+	if ((isset ($order->products[$i]['attributes'])) && (sizeof($order->products[$i]['attributes']) > 0)) {
+		for ($j = 0, $n2 = sizeof($order->products[$i]['attributes']); $j < $n2; $j++) {
+			$data_products .= '<tr>
+								<td class="main" align="left" valign="top">
+								<small>&nbsp;<i> - ' . $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'] . '
+								</i></small></td>
+								<td class="main" align="right" valign="top">&nbsp;</td></tr>';
+		}
+	}
 
+	$data_products .= '' . "\n";
 
-</div><!-- Div end main box -->
+	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
+		if (sizeof($order->info['tax_groups']) > 1)
+			$data_products .= '            <td class="main" valign="top" align="right">' . vam_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
+	}
+	$data_products .= '</tr>' . "\n";
+}
+$data_products .= '</table>';
+$vamTemplate->assign('PRODUCTS_BLOCK', $data_products);
 
-<div class="line_space"></div>
+if ($order->info['payment_method'] != 'no_payment' && $order->info['payment_method'] != '') {
+	include (DIR_WS_LANGUAGES . '/' . $_SESSION['language'] . '/modules/payment/' . $order->info['payment_method'] . '.php');
+	$vamTemplate->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_ . strtoupper($order->info['payment_method']) . _TEXT_TITLE));
+}
+$vamTemplate->assign('PAYMENT_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 
-<?php /////////////  START comments //////////////////////////// ?>
-<div class="sc_box">
-<?php
-  if (vam_not_null($order->info['comments'])) {
+$total_block = '<table>';
+if (MODULE_ORDER_TOTAL_INSTALLED) {
+	$order_total_modules->process();
+	$total_block .= $order_total_modules->output();
+}
+$total_block .= '</table>';
+$vamTemplate->assign('TOTAL_BLOCK', $total_block);
+
+if (is_array($payment_modules->modules)) {
+	if ($confirmation = $payment_modules->confirmation()) {
+
+		$payment_info = $confirmation['title'];
+		for ($i = 0, $n = sizeof($confirmation['fields']); $i < $n; $i++) {
+
+			$payment_info .= '<table>
+								<tr>
+						                <td>' . vam_draw_separator('pixel_trans.gif', '10', '1') . '</td>
+						                <td class="main">' . $confirmation['fields'][$i]['title'] . '</td>
+						                <td>' . vam_draw_separator('pixel_trans.gif', '10', '1') . '</td>
+						                <td class="main">' . stripslashes($confirmation['fields'][$i]['field']) . '</td>
+						              </tr></table>';
+
+		}
+		$vamTemplate->assign('PAYMENT_INFORMATION', $payment_info);
+
+	}
+}
+
+if (vam_not_null($order->info['comments'])) {
+	$vamTemplate->assign('ORDER_COMMENTS', nl2br(htmlspecialchars($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']));
+
+}
+
+if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tmpOrders) {
+
+	$form_action_url = $$_SESSION['payment']->form_action_url;
+
+} else {
+	$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+}
+$vamTemplate->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post'));
+$payment_button = '';
+if (is_array($payment_modules->modules)) {
+	$payment_button .= $payment_modules->process_button();
+}
+$vamTemplate->assign('MODULE_BUTTONS', $payment_button);
+$vamTemplate->assign('CHECKOUT_BUTTON', vam_image_submit('submit.png', IMAGE_BUTTON_CONFIRM_ORDER) . '</form>' . "\n");
+
+//check if display conditions on checkout page is true
+if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
+
+	if (GROUP_CHECK == 'true') {
+		$group_check = "and group_ids LIKE '%c_" . $_SESSION['customers_status']['customers_status_id'] . "_group%'";
+	}
+
+	$shop_content_query = "SELECT
+		                                                content_title,
+		                                                content_heading,
+		                                                content_text,
+		                                                content_file
+		                                                FROM " . TABLE_CONTENT_MANAGER . "
+		                                                WHERE content_group='" . REVOCATION_ID . "' " . $group_check . "
+		                                                AND languages_id='" . $_SESSION['languages_id'] . "'";
+
+	$shop_content_query = vam_db_query($shop_content_query);
+	$shop_content_data = vam_db_fetch_array($shop_content_query);
+
+	if ($shop_content_data['content_file'] != '') {
+		ob_start();
+		if (strpos($shop_content_data['content_file'], '.txt'))
+			echo '<pre>';
+		include (DIR_FS_CATALOG . 'media/content/' . $shop_content_data['content_file']);
+		if (strpos($shop_content_data['content_file'], '.txt'))
+			echo '</pre>';
+		$revocation = ob_get_contents();
+		ob_end_clean();
+	} else {
+		$revocation = $shop_content_data['content_text'];
+	}
+
+	$vamTemplate->assign('REVOCATION', $revocation);
+	$vamTemplate->assign('REVOCATION_TITLE', $shop_content_data['content_heading']);
+	$vamTemplate->assign('REVOCATION_LINK', $main->getContentLink(REVOCATION_ID, MORE_INFO));
+	
+	$shop_content_query = "SELECT
+		                                                content_title,
+		                                                content_heading,
+		                                                content_text,
+		                                                content_file
+		                                                FROM " . TABLE_CONTENT_MANAGER . "
+		                                                WHERE content_group='3' " . $group_check . "
+		                                                AND languages_id='" . $_SESSION['languages_id'] . "'";
+
+	$shop_content_query = vam_db_query($shop_content_query);
+	$shop_content_data = vam_db_fetch_array($shop_content_query);
+	
+	$vamTemplate->assign('AGB_TITLE', $shop_content_data['content_heading']);
+	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
+
+}
+
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('PAYMENT_BLOCK', $payment_block);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/sc_checkout_confirmation.html');
+
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('main_content', $main_content);
+$vamTemplate->caching = 0;
+if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_SC_CONFIRMATION.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_SC_CHECKOUT_CONFIRMATION.'.html' : CURRENT_TEMPLATE.'/index.html');
+$vamTemplate->display($template);
+include ('includes/application_bottom.php');
 ?>
-
-  <h2><?php echo HEADING_ORDER_COMMENTS; ?></h2>
-
-  <div class="contentText">
-    <?php echo nl2br(vam_output_string_protected($order->info['comments'])) . vam_draw_hidden_field('comments', $order->info['comments']); ?>
-  </div>
-
-<?php
-  }
-?>
-</div><!-- Div end comments box -->
-<?php ///////////// END comments //////////////////////////// ?>
-
-<div class="line_space"></div>
-
-
-<?php /////////////  START products //////////////////////////// ?>
-<div class="sc_box"> 
-<?php
-  if (sizeof($order->info['tax_groups']) > 1) {
-?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
-          <tr>
-            <td colspan="2"><?php echo '<h2>' . HEADING_PRODUCTS . '</h2>'; ?></td>
-            <td align="right"><strong><?php echo HEADING_TAX; ?></strong></td>
-            <td align="right"><strong><?php echo HEADING_TOTAL; ?></strong></td>
-          </tr>
-</table>
-<?php
-  } else {
-?>
-
-          
-          <?php echo '<h2>' . HEADING_PRODUCTS . '</h2>'; ?>
-
-<?php
-  }
-?>
-<table border="0" width="100%" cellspacing="0" cellpadding="2">
-<?php
-
-  for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
-    echo '          <tr>' . "\n" .
-         '            <td align="right" valign="top" width="30">' . $order->products[$i]['qty'] . '&nbsp;x</td>' . "\n" .
-         '            <td valign="top">' . $order->products[$i]['name'];
-
-    if (STOCK_CHECK == 'true') {
-      echo vam_check_stock($order->products[$i]['id'], $order->products[$i]['qty']);
-    }
-
-    if ( (isset($order->products[$i]['attributes'])) && (sizeof($order->products[$i]['attributes']) > 0) ) {
-      for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
-        echo '<br /><nobr><small>&nbsp;<i> - ' . $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'] . '</i></small></nobr>';
-      }
-    }
-
-    echo '</td>' . "\n";
-
-    if (sizeof($order->info['tax_groups']) > 1) echo '            <td valign="top" align="right">' . vam_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
-
-    echo '            <td align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty']) . '</td>' . "\n" .
-         '          </tr>' . "\n";
-  }
-?>
-
-        </table>
-
-</div><!-- Div end Products box --> 
-<?php ///////////// END products //////////////////////////// ?>
-
-<div class="line_space"></div>
-
-<?php ///////////// START Total //////////////////////////// ?>
-<div style="float: right;">
-    <table border="0" cellspacing="0" cellpadding="2">
-    <?php
-	  if (MODULE_ORDER_TOTAL_INSTALLED) {
-		echo $order_total_modules->output();
-	  }
-	?>
-	</table>
-</div>
- <?php ///////////// END Total //////////////////////////// ?> 
- 
- <div class="line_space"></div>
- 
- <div class="contentText">
-    <div style="float: right;">
-<?php
-  if (is_array($payment_modules->modules)) {
-    echo $payment_modules->process_button();
-  }
-
-?>
-<?php echo vam_draw_button(IMAGE_BUTTON_CONFIRM_ORDER, 'check', null, 'primary'); ?>
-    </div>
-  </div>
-
- 
- 
- 
- 
-  
-<div class="line_space"></div>  
-  
-<?php
-  if (is_array($payment_modules->modules)) {
-    if ($confirmation = $payment_modules->confirmation()) {
-?>
-
-  <h2><?php echo HEADING_PAYMENT_INFORMATION; ?></h2>
-
-  <div class="contentText">
-    <table border="0" cellspacing="0" cellpadding="2">
-      <tr>
-        <td colspan="4"><?php echo $confirmation['title']; ?></td>
-      </tr>
-
-<?php
-      for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
-?>
-
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-        <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
-        <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
-      </tr>
-
-<?php
-      }
-?>
-
-    </table>
-  </div>
-
-<?php
-    }
-  }  
- ?> 
-  
-
-</div>
-<script type="text/javascript">
-$('#coProgressBar').progressbar({
-  value: 100
-});
-</script>
-
-</form>
-
-<?php
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
-?>
-
-<?php  if (SC_CONFIRMATION_PAGE == 'fffff') { ?>
-  	<script type="text/javascript">
-    document.checkout_confirmation.submit();
-    </script>
-	<noscript><input type="submit" value="verify submit"></noscript>
-<?php  } ?>
