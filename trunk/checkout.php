@@ -1313,13 +1313,17 @@ if (isset($$payment->form_action_url)) {
 			  }
 			  
 			  if (SC_EMAIL_LOGIN_DATA == 'true') {
-				  $email_text .= EMAIL_WELCOME . EMAIL_USERNAME . EMAIL_PASSWORD . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
-			  } else {
-			  	  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
+
+		      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+		      $vamTemplate->assign('PASSWORD', $password);
+      
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+				$vamTemplate->caching = 0;
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+		
+				vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $firstname.$lastname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+
 			  }
-			  
-			  vam_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
-			  
 		
 		//} //END send create account mail
 		
@@ -1349,12 +1353,17 @@ if (isset($$payment->form_action_url)) {
 			  }
 		
 			  if (SC_EMAIL_LOGIN_DATA == 'true') {
-				  $email_text .= EMAIL_WELCOME . EMAIL_USERNAME . EMAIL_PASSWORD . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
-			  } else {
-			  	  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
+
+		      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+		      $vamTemplate->assign('PASSWORD', $password);
+      
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+				$vamTemplate->caching = 0;
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+		
+				vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $firstname.$lastname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+
 			  }
-			  
-			  vam_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 		
 		//} //END send create account mail
 		
