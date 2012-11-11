@@ -1437,57 +1437,14 @@ div.filter
 
 /* ############ checkout ################## */
 
-.line_space 
+.sm_layout_box h2 
 	{
-		height: 60px; 
-		width: 100%; 
-		float: left;
+		padding: .5em .5em .5em 0;
 	}
 
-div.top_space
+.sm_layout_box 
 	{
-		margin-top: 20px;
-	}
-
-.sm_layout_box
-	{ 
-		padding: 20px;
-		margin-top: 30px;
-	}
-
-
-/* ############ sc_checkout_confirmation.php ################## */
-.sc_box 
-	{
-		width: 100%; 
-		float: left;
-	}
-
-#conf_shipping_box
-	{
-		width: 300px; 
-		float: left;
-	}
-
-#conf_payment_box
-	{
-		float: right; 
-		width: 300px;
-	}
-
-#conf_payment_box h4, #conf_shipping_box h4 
-	{
-		font-size: 16px;
-		width: 300px;
-		margin: 40px 0 10px 0;
-		padding: 0 0 0 0;
-	}
-
-#conf_price_box 
-	{ 
-		width: 100%; 
-		float: left; 
-		margin-left: 240px;
+		padding-left: 1em;
 	}
 			
 /*]]>*/
