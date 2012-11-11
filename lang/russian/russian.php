@@ -472,7 +472,7 @@ define('TEXT_RSS2_INFO', '
 <br />
 <h3>Дополнительные запросы</h3>
 Новинки - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10</a><br />
-Лучшие товары - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10</a><br />
+Лидеры продаж - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10</a><br />
 Рекомендуемые - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10</a><br />
 Скидки - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=specials&amp;limit=10</a><br />
 Ожидаемые товары - <a href="' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10' .'">' . HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=upcoming&amp;limit=10</a><br />
@@ -565,7 +565,7 @@ define('TEXT_RSS_ARTICLES','Статьи');
 define('TEXT_RSS_CATEGORIES','Категории');
 define('TEXT_RSS_NEW_PRODUCTS','Новинки');
 define('TEXT_RSS_FEATURED_PRODUCTS','Рекомендуемые товары');
-define('TEXT_RSS_BEST_SELLERS','Лучшие товары');
+define('TEXT_RSS_BEST_SELLERS','Лидеры продаж');
 
 define('TEXT_CHECKOUT_ALTERNATIVE', 'Оформление заказа');
 
