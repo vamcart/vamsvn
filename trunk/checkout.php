@@ -1456,6 +1456,43 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   echo $payment_modules->process_button();
   }
 
+//////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
+if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
+
+if (is_array($payment_modules->modules)) {
+    if ($confirmation = $payment_modules->confirmation()) {
+
+  $payment_fields .= HEADING_PAYMENT_INFORMATION;
+
+		$payment_fields .= $confirmation['title'];
+
+      for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
+
+      $payment_fields .= $confirmation['fields'][$i]['title'];
+      $payment_fields .= $confirmation['fields'][$i]['field'];
+
+      }
+
+    }
+  }
+
+$payment_fields .= SC_TEXT_REDIRECT;
+$payment_fields .= '</form>';
+
+$payment_fields .= '
+
+<script type="text/javascript">
+    document.checkoutUrl.submit();
+</script>
+<noscript><input type="submit" value="verify submit"></noscript>
+
+';
+
+$vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
+   
+}
+//////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
+
 
 // vamTemplate Placeholders
 
