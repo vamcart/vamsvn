@@ -41,9 +41,19 @@ require_once (DIR_FS_INC.'changedatain.inc.php');
 $vamTemplate = new vamTemplate;
 
 // if the customer is not logged on, redirect them to the login page
-if (!isset ($_SESSION['customer_id'])) {
-	vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+// SMART CHECKOUT BOF
+if (SMART_CHECKOUT == 'true') {
+  // if the customer is not logged on, redirect them to the login page 
+  if ((!vam_session_is_registered('customer_id')) && (!vam_session_is_registered('noaccount'))) {
+    vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+  }
+} else {
+// if the customer is not logged on, redirect them to the login page
+  if (!vam_session_is_registered('customer_id')) {
+    vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+  }
 }
+//SMART CHECKOUT EOF
 
 if ($_SESSION['customers_status']['customers_status_show_price'] != '1') {
 	vam_redirect(vam_href_link(FILENAME_DEFAULT, '', ''));
