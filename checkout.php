@@ -2038,8 +2038,11 @@ $vamTemplate->assign('AGB_checkbox', vam_draw_checkbox_field('conditions','1', t
 }
 ################ END Conditions of Use ########################################
 
-
+if (SC_CONFIRMATION_PAGE == 'true') { //got to confimration page
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));
+} else {
+$vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CHECKOUT));
+}
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
