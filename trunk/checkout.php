@@ -29,8 +29,6 @@ require('includes/classes/http_client.php');
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
-require (DIR_WS_INCLUDES.'header.php');
-
 // assign data to template
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
@@ -2090,6 +2088,8 @@ $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUT
 } else {
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CHECKOUT));
 }
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;

@@ -54,7 +54,6 @@ if (vam_session_is_registered('show_account_data')) {
 
 // if the customer is not logged on, redirect them to the login page
   if ((!vam_session_is_registered('customer_id')) && (!vam_session_is_registered('noaccount'))) {
-    $navigation->set_snapshot(array('mode' => 'SSL', 'page' => FILENAME_CHECKOUT_PAYMENT));
     vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
   }
 
@@ -375,8 +374,6 @@ $vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
 $breadcrumb->add(NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION, vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 $breadcrumb->add(NAVBAR_TITLE_2_CHECKOUT_CONFIRMATION);
 
-require (DIR_WS_INCLUDES . 'header.php');
-
 if ($hide_shipping_data == 'true') {
 $vamTemplate->assign('SHIPPING_ADDRESS', 'false');
 }
@@ -559,6 +556,8 @@ if (DISPLAY_REVOCATION_ON_CHECKOUT == 'true') {
 	$vamTemplate->assign('AGB_LINK', $main->getContentLink(3, MORE_INFO));
 
 }
+
+require (DIR_WS_INCLUDES . 'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('PAYMENT_BLOCK', $payment_block);

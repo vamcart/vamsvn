@@ -122,11 +122,19 @@
   }
 
   function vam_session_is_registered($variable) {
-    return isset($_SESSION[$variable]);
+    if (PHP_VERSION < 4.3) {
+      return session_is_registered($variable);
+    } else {
+      return isset($_SESSION) && array_key_exists($variable, $_SESSION);
+    }
   }
 
   function vam_session_unregister($variable) {
-    unset($_SESSION[$variable]);
+    if (PHP_VERSION < 4.3) {
+      return session_unregister($variable);
+    } else {
+      unset($_SESSION[$variable]);
+    }
   }
 
   function vam_session_id($sessid = '') {
