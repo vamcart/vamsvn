@@ -1451,7 +1451,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) {
 		
     $form_action_url = $$payment->form_action_url;
-	echo vam_draw_form('checkoutUrl', $form_action_url, 'post');
+	$payment_fields .= vam_draw_form('checkoutUrl', $form_action_url, 'post');
   } 
   
   
@@ -1462,7 +1462,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   
   
   if (is_array($payment_modules->modules)) {
-  echo $payment_modules->process_button();
+  $payment_fields .= $payment_modules->process_button();
   }
 
 //////////  START  redirection page for payment modules such as paypal if no confirmation page ////////////
