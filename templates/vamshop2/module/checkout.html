@@ -11,13 +11,14 @@
 
 <div id="shipping_box" class="sm_layout_box">
 <h2>{$TITLE_SHIPPING_ADDRESS}</h2>
+{if $ADDRESS_LABEL_SHIPPING_ADDRESS}
 {$ADDRESS_LABEL_SHIPPING_ADDRESS}
 <br />
 {$BUTTON_SHIPPING_ADDRESS}
+{/if}
 {if !$smarty.session.customer_id}
 <!-- форма -->
 <fieldset class="form">
-<legend>{#title_personal#}</legend>
 {if $gender=='1'} 
 <p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
@@ -30,13 +31,11 @@
 {/if}
 </fieldset>
 {if $company=='1'}<fieldset class="form">
-<legend>{#title_company#}</legend>
 <p>{#text_company#} {$INPUT_COMPANY}</p>
 </fieldset>
 {/if}<div id="shipping_address">
 <fieldset class="form">
-{if $street_address=='1'}<legend>{#title_address#}</legend>
-{/if}
+{if $street_address=='1'}{/if}
 {if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
 {/if}
 {if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
@@ -66,9 +65,11 @@
 {if $sc_payment_address_show}
 <div id="payment_address_box"  class="sm_layout_box">
 <h2>{$TITLE_PAYMENT_ADDRESS}</h2>
+{if $ADDRESS_LABEL_PAYMENT_ADDRESS}
 {$ADDRESS_LABEL_PAYMENT_ADDRESS}
 <br />
 {$BUTTON_PAYMENT_ADDRESS}
+{/if}
 {if !$smarty.session.customer_id}
 <div id="payment_address_checkbox">
 {$PAYMENT_ADDRESS_CHECKBOX}{$TEXT_SHIPPING_SAME_AS_PAYMENT}
@@ -76,7 +77,6 @@
 <div id="payment_address">
 <!-- форма -->
 <fieldset class="form">
-<legend>&nbsp;</legend>
 {if $gender_payment=='1'} 
 <p><label for="gender_payment">{#text_gender#}</label> {$INPUT_MALE_PAYMENT}&nbsp;{$INPUT_FEMALE_PAYMENT}</p>
 {/if}
@@ -89,12 +89,10 @@
 {/if}
 </fieldset>
 {if $company_payment=='1'}<fieldset class="form">
-<legend>&nbsp;</legend>
 <p>{#text_company#} {$INPUT_COMPANY_PAYMENT}</p>
 </fieldset>
 {/if}<fieldset class="form">
-{if $street_address_payment=='1'}<legend>&nbsp;</legend>
-{/if}
+{if $street_address_payment=='1'}{/if}
 {if $street_address_payment=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET_PAYMENT}</p>
 {/if}
 {if $suburb_payment=='1'}<p>{#text_suburb#} {$INPUT_SUBURB_PAYMENT}</p>
@@ -125,7 +123,6 @@
 <div id="contact_box" class="sm_layout_box">
 <fieldset class="form">
 <h2>{$TITLE_CONTACT_ADDRESS}</h2>
-<legend>&nbsp;</legend>
 <p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
 {if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
@@ -145,7 +142,6 @@
 {if $create_password=='1'}
 <div id="password_fields">
 <fieldset class="form">
-<legend>&nbsp;</legend>
 <p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
 <p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
 </fieldset>
@@ -195,7 +191,6 @@
 
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 <fieldset class="form">
-<legend>&nbsp;</legend>
 {foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
 {/foreach}
 </fieldset>
