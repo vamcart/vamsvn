@@ -35,22 +35,22 @@ $vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
-// if the customer is not logged on, redirect them to the shopping cart page
+// if the customer is not logged on, redirect them to the default page
 if (!isset ($_SESSION['customer_id'])) {
 	vam_redirect(vam_href_link(FILENAME_DEFAULT));
 }
 
 // SMART CHECKOUT BOF
 if (SMART_CHECKOUT == 'true') {
-  // if the customer is not logged on, redirect them to the shopping cart page
+  // if the customer is not logged on, redirect them to the default page
   if ((!vam_session_is_registered('customer_id')) && (!vam_session_is_registered('noaccount')) && (!isset($_POST['action']))) {
-  	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
+  	vam_redirect(vam_href_link(FILENAME_DEFAULT));
   }	
 
 } else {
-  // if the customer is not logged on, redirect them to the shopping cart page
+  // if the customer is not logged on, redirect them to the default page
   if ((!vam_session_is_registered('customer_id')) && (!isset($_POST['action']))) {
-     vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
+     vam_redirect(vam_href_link(FILENAME_DEFAULT));
   }
 }
 //SMART CHECKOUT EOF
