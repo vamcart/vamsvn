@@ -59,7 +59,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] != '1') {
 	vam_redirect(vam_href_link(FILENAME_DEFAULT, '', ''));
 }
 
-if (!isset ($_SESSION['sendto'])) {
+if (!vam_session_is_registered('sendto')) {
 	vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 }
 
