@@ -260,24 +260,15 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
 	
 		$name = $_SESSION['sc_customers_firstname'] . ' ' . $_SESSION['sc_customers_lastname'];
 			
-		if (ACCOUNT_GENDER == 'true') {
-			 if ($gender == 'm') {
-				 $email_text = sprintf(EMAIL_GREET_MR, $_SESSION['sc_customers_lastname']);
-			} else {
-				$email_text = sprintf(EMAIL_GREET_MS, $_SESSION['sc_customers_lastname']);
-			}
-		} else {
-			$email_text = sprintf(EMAIL_GREET_NONE, $_SESSION['sc_customers_firstname']);
-		}
+		      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+		      $vamTemplate->assign('PASSWORD', $password);
+      
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+				$vamTemplate->caching = 0;
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
 		
-		if (SC_EMAIL_LOGIN_DATA == 'true') {
-				  $email_text .= EMAIL_WELCOME . EMAIL_USERNAME . EMAIL_PASSWORD . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
-		} else {
-			  $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
-		}
-			  	
-		vam_mail($name, $_SESSION['sc_customers_email_address'], EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
-			
+				vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+							
 	} 
 	vam_session_unregister('create_account');
 	//END send create account mail
@@ -494,9 +485,9 @@ if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tm
 	$form_action_url = $$_SESSION['payment']->form_action_url;
 
 } else {
-	$form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+	$form_action_url = vam_href_link(FILENAME_SC_CHECKOUT_CONFIRMATION, '', 'SSL');
 }
-$vamTemplate->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post'));
+$vamTemplate->assign('CHECKOUT_FORM', vam_draw_form('checkout_confirmation', $form_action_url, 'post').vam_draw_hidden_field('action', 'process'));
 $payment_button = '';
 if (is_array($payment_modules->modules)) {
 	$payment_button .= $payment_modules->process_button();
@@ -571,4 +562,5 @@ if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_CHECKOUT_SC_CONFIRMATION.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_SC_CHECKOUT_CONFIRMATION.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
+
 ?>
