@@ -73,7 +73,7 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($or
 if (!isset($lang)) $lang=$_SESSION['languages_id'];
 $orders_statuses = array ();
 $orders_status_array = array ();
-$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".$lang."'");
+$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".(int)$lang."'");
 while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
 	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
@@ -138,7 +138,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 
         $changed = false;
        
-        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . $status);
+        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . (int)$status);
         if (vam_db_num_rows($check_group_query)) {
            while ($groups = vam_db_fetch_array($check_group_query)) {
               // calculating total customers purchase
@@ -151,7 +151,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
               } else {
               $customer_id1 = $customer['customers_id'];
               }
-              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
+              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . (int)$groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id1 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
               $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
@@ -172,7 +172,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 			  from " . TABLE_CUSTOMERS_STATUS . " as cg,
 			  " . TABLE_CUSTOMERS . " as c
 			  where cg.customers_status_id = c.customers_status
-			  and c.customers_id = " .$customer_id1);
+			  and c.customers_id = " .(int)$customer_id1);
               $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, 0, "customers_status_name");
@@ -181,7 +181,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 
 			     if ($customer['customers_status'] > '0') {
 
-              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . (int)$groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
             
                }
                
@@ -194,13 +194,13 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
     
                  // updating customers group
 
-                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " .$customer_id1);
+                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . (int)$customers_groups_id . " where customers_id = " .(int)$customer_id1);
 
                  $changed = true;
              }
            }
 
-           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " .$customer_id1);
+           $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " .(int)$customer_id1);
            $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
            $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
            $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
@@ -361,7 +361,7 @@ switch ($_GET['action']) {
 
         $changed = false;
         
-        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . $status);
+        $check_group_query = vam_db_query("select customers_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where orders_status_id = " . (int)$status);
         if (vam_db_num_rows($check_group_query)) {
            while ($groups = vam_db_fetch_array($check_group_query)) {
               // calculating total customers purchase
@@ -373,12 +373,12 @@ switch ($_GET['action']) {
               } else {
               $customer_id2 = $customer['customers_id'];
               }
-              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . $groups['customers_status_id']);
-              $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . $customer_id2 . " and ot.class = 'ot_total' and (";
+              $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . (int)$groups['customers_status_id']);
+              $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . (int)$customer_id2 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
-              $purchase_query .= " o.orders_status = " . $statuses['orders_status_id'];
+              $purchase_query .= " o.orders_status = " . (int)$statuses['orders_status_id'];
               while ($statuses = vam_db_fetch_array($statuses_groups_query)) {
-                  $purchase_query .= " or o.orders_status = " . $statuses['orders_status_id'];
+                  $purchase_query .= " or o.orders_status = " . (int)$statuses['orders_status_id'];
               }
               $purchase_query .=");";
                    
@@ -387,7 +387,7 @@ switch ($_GET['action']) {
               $customers_total = $total_purchase['total'];
 
               // looking for current accumulated limit & discount
-              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . $customer_id2);
+              $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . (int)$customer_id2);
               $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
               $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
               $current_group = @mysql_result($acc_query, "customers_status_name");
@@ -395,7 +395,7 @@ switch ($_GET['action']) {
 			     if ($customer['customers_status'] > '0') {
                                                                                                                                                                                                  
               // ok, looking for available group
-              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . $groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
+              $groups_query = vam_db_query("select customers_status_discount, customers_status_id, customers_status_name, customers_status_accumulated_limit from " . TABLE_CUSTOMERS_STATUS . " where customers_status_accumulated_limit < " . $customers_total . " and customers_status_discount >= " . $current_discount . " and customers_status_accumulated_limit >= " . $current_limit . " and customers_status_id = " . (int)$groups['customers_status_id'] . " order by customers_status_accumulated_limit DESC");
 
               }
 
@@ -407,7 +407,7 @@ switch ($_GET['action']) {
                  $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
     
                  // updating customers group
-                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . $customers_groups_id . " where customers_id = " . $customer_id2);
+                 vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . (int)$customers_groups_id . " where customers_id = " . (int)$customer_id2);
                  $changed = true;
              }
            }
@@ -1158,16 +1158,16 @@ echo vam_draw_form('multi_action_form', FILENAME_ORDERS,vam_get_all_get_params()
 
 	if ($_GET['cID']) {
 		$cID = vam_db_prepare_input($_GET['cID']);
-		$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".vam_db_input($cID)."' and (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by orders_id DESC";
+		$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".vam_db_input($cID)."' and (o.orders_status = s.orders_status_id and s.language_id = '".(int)$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".(int)$_SESSION['languages_id']."') order by orders_id DESC";
 	}
 	elseif ($_GET['status']=='0') {
 			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id) where o.orders_status = '0' and ot.class = 'ot_total' order by o.orders_id DESC";
 	}
 	elseif ($_GET['status']) {
 			$status = vam_db_prepare_input($_GET['status']);
-			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and s.orders_status_id = '".vam_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
+			$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".(int)$_SESSION['languages_id']."' and s.orders_status_id = '".vam_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
 	} else {
-		$orders_query_raw = "select o.orders_id, o.orders_status, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by o.orders_id DESC";
+		$orders_query_raw = "select o.orders_id, o.orders_status, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where (o.orders_status = s.orders_status_id and s.language_id = '".(int)$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".(int)$_SESSION['languages_id']."') order by o.orders_id DESC";
 	}
 	$orders_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $orders_query_raw, $orders_query_numrows);
 	$orders_query = vam_db_query($orders_query_raw);
