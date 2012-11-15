@@ -453,14 +453,11 @@
           $this->info['total'] -= ($this->info['subtotal'] /100 * $_SESSION['customers_status']['customers_status_ot_discount']);
         }
       }
+     }
 
-    }
-
-  }
-  
-  
+// SMART CHECKOUT BOF
     function cart_noaccount() {
-      global $customer_id, $sendto, $billto, $cart, $currency, $currencies, $shipping, $payment, $comments, $customer_default_address_id;
+      global $customer_id, $sendto, $billto, $cart, $currency, $vamPrice, $shipping, $payment, $comments, $customer_default_address_id;
 
       $this->content_type = $cart->get_content_type();
 
@@ -483,30 +480,28 @@
 
  	  
       $this->info = array('order_status' => DEFAULT_ORDERS_STATUS_ID,
-                          'currency' => $currency,
-                          'currency_value' => $currencies->currencies[$currency]['value'],
-                          'payment_method' => $payment,
-                          'cc_type' => '',
-                          'cc_owner' => '',
-                          'cc_number' => '',
-                          'cc_expires' => '',
-                          'shipping_method' => $shipping['title'],
-                          'shipping_cost' => $shipping['cost'],
-                          'subtotal' => 0,
-                          'tax' => 0,
-                          'tax_groups' => array(),
-                          'comments' => (vam_session_is_registered('comments') && !empty($comments) ? $comments : ''));
+                          'currency' => $_SESSION['currency'],
+                          'currency_value' => $vamPrice->currencies[$_SESSION['currency']]['value'],
+                          'payment_method' => $_SESSION['payment'],
+                          'cc_type' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_type']) ? $_SESSION['ccard']['cc_type'] : ''),
+                          'cc_owner'=>(isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_owner']) ? $_SESSION['ccard']['cc_owner'] : ''),
+                          'cc_number' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_number']) ? $_SESSION['ccard']['cc_number'] : ''),
+                          'cc_expires' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_expires']) ? $_SESSION['ccard']['cc_expires'] : ''),
+                          'cc_start' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_start']) ? $_SESSION['ccard']['cc_start'] : ''),
+                          'cc_issue' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_issue']) ? $_SESSION['ccard']['cc_issue'] : ''),
+                          'cc_cvv' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_cvv']) ? $_SESSION['ccard']['cc_cvv'] : ''),
+                          'shipping_method' => $_SESSION['shipping']['title'],
+                          'shipping_cost' => $_SESSION['shipping']['cost'],
+                          'comments' => $_SESSION['comments'],
+                          'shipping_class'=>$_SESSION['shipping']['id'],
+                          'payment_class' => $_SESSION['payment'],
+                          );
 
-      if (isset($GLOBALS[$payment]) && is_object($GLOBALS[$payment])) {
-        if (isset($GLOBALS[$payment]->public_title)) {
-          $this->info['payment_method'] = $GLOBALS[$payment]->public_title;
-        } else {
-          $this->info['payment_method'] = $GLOBALS[$payment]->title;
-        }
-
-        if ( isset($GLOBALS[$payment]->order_status) && is_numeric($GLOBALS[$payment]->order_status) && ($GLOBALS[$payment]->order_status > 0) ) {
-          $this->info['order_status'] = $GLOBALS[$payment]->order_status;
-
+      if (isset($_SESSION['payment']) && is_object($_SESSION['payment'])) {
+        $this->info['payment_method'] = $_SESSION['payment']->title;
+        $this->info['payment_class'] = $_SESSION['payment']->title;
+        if ( isset($_SESSION['payment']->order_status) && is_numeric($_SESSION['payment']->order_status) && ($_SESSION['payment']->order_status > 0) ) {
+          $this->info['order_status'] = $_SESSION['payment']->order_status;
         }
       }
 	  
@@ -603,27 +598,42 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
 
 	  //get products
       $index = 0;
-      $products = $cart->get_products();
+      $products = $_SESSION['cart']->get_products();
       for ($i=0, $n=sizeof($products); $i<$n; $i++) {
+
+        $products_price=$vamPrice->GetPrice($products[$i]['id'],
+                                        $format=false,
+                                        $products[$i]['quantity'],
+                                        $products[$i]['tax_class_id'],
+                                        '')+$vamPrice->Format($_SESSION['cart']->attributes_price($products[$i]['id']),false);
+
         $this->products[$index] = array('qty' => $products[$i]['quantity'],
                                         'name' => $products[$i]['name'],
                                         'model' => $products[$i]['model'],
+                                        'tax_class_id'=> $products[$i]['tax_class_id'],
                                         'tax' => vam_get_tax_rate($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
                                         'tax_description' => vam_get_tax_description($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
-                                        'price' => $products[$i]['price'],
-                                        'final_price' => $products[$i]['price'] + $cart->attributes_price($products[$i]['id']),
-                                        'weight' => $products[$i]['weight'],
+                                        'price' =>  $products_price ,
+                            		    'final_price' => $products_price*$products[$i]['quantity'],
+                            		    'shipping_time'=>$products[$i]['shipping_time'],
+					                    'weight' => $products[$i]['weight'],
                                         'id' => $products[$i]['id']);
 
         if ($products[$i]['attributes']) {
           $subindex = 0;
           reset($products[$i]['attributes']);
           while (list($option, $value) = each($products[$i]['attributes'])) {
-            $attributes_query = vam_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . (int)$products[$i]['id'] . "' and pa.options_id = '" . (int)$option . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . (int)$value . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . (int)$_SESSION['languages_id'] . "' and poval.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+            $attributes_query = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $products[$i]['id'] . "' and pa.options_id = '" . $option . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $value . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $_SESSION['languages_id'] . "' and poval.language_id = '" . $_SESSION['languages_id'] . "'");
             $attributes = vam_db_fetch_array($attributes_query);
 
+            if($attributes['products_options_type']=='2' || $attributes['products_options_type']=='3'){
+              $attr_value = $products[$i]['attributes_values'][$option];
+            } else {
+              $attr_value = $attributes['products_options_values_name'];
+            }
+
             $this->products[$index]['attributes'][$subindex] = array('option' => $attributes['products_options_name'],
-                                                                     'value' => $attributes['products_options_values_name'],
+                                                                     'value' => $attr_value,
                                                                      'option_id' => $option,
                                                                      'value_id' => $value,
                                                                      'prefix' => $attributes['price_prefix'],
@@ -633,35 +643,49 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
           }
         }
 
-        $shown_price = $currencies->calculate_price($this->products[$index]['final_price'], $this->products[$index]['tax'], $this->products[$index]['qty']);
+        $shown_price = $this->products[$index]['final_price'];
         $this->info['subtotal'] += $shown_price;
+        if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1){
+          $shown_price_tax = $shown_price-($shown_price/100 * $_SESSION['customers_status']['customers_status_ot_discount']);
+        }
 
         $products_tax = $this->products[$index]['tax'];
         $products_tax_description = $this->products[$index]['tax_description'];
-        if (DISPLAY_PRICE_WITH_TAX == 'true') {
-          $this->info['tax'] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
-          if (isset($this->info['tax_groups']["$products_tax_description"])) {
-            $this->info['tax_groups']["$products_tax_description"] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+        if ($_SESSION['customers_status']['customers_status_show_price_tax'] == '1') {
+          if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1) {
+            $this->info['tax'] += $shown_price_tax - ($shown_price_tax / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+            $this->info['tax_groups'][TAX_ADD_TAX."$products_tax_description"] += (($shown_price_tax /(100+$products_tax)) * $products_tax);
           } else {
-            $this->info['tax_groups']["$products_tax_description"] = $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+            $this->info['tax'] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
+            $this->info['tax_groups'][TAX_ADD_TAX . "$products_tax_description"] += (($shown_price /(100+$products_tax)) * $products_tax);
           }
         } else {
-          $this->info['tax'] += ($products_tax / 100) * $shown_price;
-          if (isset($this->info['tax_groups']["$products_tax_description"])) {
-            $this->info['tax_groups']["$products_tax_description"] += ($products_tax / 100) * $shown_price;
+          if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == 1) {
+            $this->info['tax'] += ($shown_price_tax/100) * ($products_tax);
+            $this->info['tax_groups'][TAX_NO_TAX . "$products_tax_description"] += ($shown_price_tax/100) * ($products_tax);
           } else {
-            $this->info['tax_groups']["$products_tax_description"] = ($products_tax / 100) * $shown_price;
+            $this->info['tax'] += ($shown_price/100) * ($products_tax);
+            $this->info['tax_groups'][TAX_NO_TAX . "$products_tax_description"] += ($shown_price/100) * ($products_tax);
           }
         }
-
         $index++;
       }
 
-      if (DISPLAY_PRICE_WITH_TAX == 'true') {
-        $this->info['total'] = $this->info['subtotal'] + $this->info['shipping_cost'];
+ //$this->info['shipping_cost']=0;
+      if ($_SESSION['customers_status']['customers_status_show_price_tax'] == '0') {
+        $this->info['total'] = $this->info['subtotal']  + $vamPrice->Format($this->info['shipping_cost'], false,0,true);
+        if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1') {
+          $this->info['total'] -= ($this->info['subtotal'] /100 * $_SESSION['customers_status']['customers_status_ot_discount']);
+        }
       } else {
-        $this->info['total'] = $this->info['subtotal'] + $this->info['tax'] + $this->info['shipping_cost'];
+		
+        $this->info['total'] = $this->info['subtotal']  + $vamPrice->Format($this->info['shipping_cost'],false,0,true);
+        if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1') {
+          $this->info['total'] -= ($this->info['subtotal'] /100 * $_SESSION['customers_status']['customers_status_ot_discount']);
+        }
       }
+     }
+	
   } //end class
-  
+// SMART CHECKOUT BOF  
 ?>
