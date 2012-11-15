@@ -132,7 +132,6 @@ if (!vam_session_is_registered('free_payment')) { //hack for free payment
 
   require(DIR_WS_CLASSES . 'order_total.php');
   $order_total_modules = new order_total;
-  $order_total_modules->process();
 
 // Stock Check
   $any_out_of_stock = false;
