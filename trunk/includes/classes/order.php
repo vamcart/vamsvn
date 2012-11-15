@@ -492,7 +492,7 @@
                           'cc_cvv' => (isset($_SESSION['payment'])=='cc' && isset($_SESSION['ccard']['cc_cvv']) ? $_SESSION['ccard']['cc_cvv'] : ''),
                           'shipping_method' => $_SESSION['shipping']['title'],
                           'shipping_cost' => $_SESSION['shipping']['cost'],
-                          'comments' => $_SESSION['comments'],
+                          'comments' => (vam_session_is_registered('comments') && !empty($comments) ? $comments : ''),
                           'shipping_class'=>$_SESSION['shipping']['id'],
                           'payment_class' => $_SESSION['payment'],
                           );
