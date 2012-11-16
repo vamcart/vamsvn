@@ -67,6 +67,7 @@ define('ENTRY_EMAIL_ADDRESS_TEXT', '*');
 define('ENTRY_STREET_ADDRESS', 'Адрес:');
 define('ENTRY_STREET_ADDRESS_ERROR', 'Поле Улица и номер дома должно содержать как минимум ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' символов.');
 define('ENTRY_STREET_ADDRESS_TEXT', '* Пример: ул. Мира 346, кв. 78');
+define('ENTRY_SC_STREET_ADDRESS_TEXT', 'Пример: ул. Мира 346, кв. 78');
 define('ENTRY_SUBURB', 'Район:');
 define('ENTRY_SUBURB_ERROR', '');
 define('ENTRY_SUBURB_TEXT', '');
