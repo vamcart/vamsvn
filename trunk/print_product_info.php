@@ -32,8 +32,6 @@ require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
 $vamTemplate = new vamTemplate;
 
-include ('includes/header.php');
-
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int) $_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'");
 $product_info = vam_db_fetch_array($product_info_query);
 
@@ -297,6 +295,8 @@ $col = 0;
 	$vamTemplate->cache_modified_check = CACHE_CHECK;
 }
 $cache_id = $_SESSION['language'].'_'.$product_info['products_id'];
+
+include ('includes/header.php');
 
 $vamTemplate->display(CURRENT_TEMPLATE.'/module/print_product_info.html', $cache_id);
 ?>
