@@ -106,6 +106,7 @@ $sc_payment_modules_process = true; //used to avoid runing payment selection()
 //session are used if a visitor cancel during checkout process and returns again he does not need to type his data again
 $sc_guest_gender = $_SESSION['sc_customers_gender'];
 $sc_guest_firstname = $_SESSION['sc_customers_firstname'];
+$sc_guest_secondname = $_SESSION['sc_customers_secondname'];
 $sc_guest_lastname = $_SESSION['sc_customers_lastname'];
 $sc_guest_dob = $_SESSION['sc_customers_dob'];
 $sc_guest_email_address = $_SESSION['sc_customers_email_address'];
@@ -181,6 +182,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
       }
     }
     $firstname = vam_db_prepare_input($_POST['firstname']);
+    $secondname = vam_db_prepare_input($_POST['secondname']);
     $lastname = vam_db_prepare_input($_POST['lastname']);
     if (ACCOUNT_DOB == 'true') $dob = vam_db_prepare_input($_POST['dob']);
     $email_address = vam_db_prepare_input($_POST['email_address']);
@@ -387,6 +389,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
       if (ACCOUNT_GENDER == 'true') $gender_payment = vam_db_prepare_input($_POST['gender_payment']);
       if (ACCOUNT_COMPANY == 'true') $company_payment = vam_db_prepare_input($_POST['company_payment']);
       $firstname_payment = vam_db_prepare_input($_POST['firstname_payment']);
+      $secondname_payment = vam_db_prepare_input($_POST['secondname_payment']);
       $lastname_payment = vam_db_prepare_input($_POST['lastname_payment']);
       $street_address_payment = vam_db_prepare_input($_POST['street_address_payment']);
       if (ACCOUNT_SUBURB == 'true') $suburb_payment = vam_db_prepare_input($_POST['suburb_payment']);
@@ -980,6 +983,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		//customer data is also shipping data
     	$_SESSION['sc_customers_gender'] = $gender;
 		$_SESSION['sc_customers_firstname'] = $firstname;
+		$_SESSION['sc_customers_secondname'] = $secondname;
 		$_SESSION['sc_customers_lastname'] = $lastname;
 		$_SESSION['sc_customers_email_address'] = $email_address;
 		$_SESSION['sc_customers_telephone'] = $telephone;
@@ -1014,6 +1018,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		
 			$_SESSION['sc_payment_gender'] = $gender_payment;
 			$_SESSION['sc_payment_firstname'] = $firstname_payment;
+			$_SESSION['sc_payment_secondname'] = $secondname_payment;
 			$_SESSION['sc_payment_lastname'] = $lastname_payment;
 			$_SESSION['sc_payment_company'] = $company_payment;
 			$_SESSION['sc_payment_street_address'] = $street_address_payment;
@@ -1128,6 +1133,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 	  $dbPass = vam_encrypt_password($password);
 
       $sql_data_array = array('customers_firstname' => $firstname,
+                              'customers_secondname' => $secondname,
                               'customers_lastname' => $lastname,
                               'customers_email_address' => $email_address,
                               'customers_telephone' => $telephone,
@@ -1145,6 +1151,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 
       $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $firstname,
+                              'entry_secondname' => $secondname,
                               'entry_lastname' => $lastname,
                               'entry_street_address' => $street_address,
                               'entry_postcode' => $postcode,
@@ -1192,6 +1199,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
       if ($payment_address_selected != '1') { //is unchecked - so payment address is different or if virtual product
         $sql_data_array = array('customers_id' => $customer_id,
                                 'entry_firstname' => $firstname_payment,
+                                'entry_secondname' => $secondname_payment,
                                 'entry_lastname' => $lastname_payment,
                                 'entry_street_address' => $street_address_payment,
                                 'entry_postcode' => $postcode_payment,
@@ -1585,7 +1593,7 @@ if (ACCOUNT_COMPANY == 'true') {
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname"'));
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
-$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname"'));
+$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname"'));
 }
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname"'));
 
@@ -1735,7 +1743,7 @@ if (ACCOUNT_COMPANY == 'true') {
 $vamTemplate->assign('INPUT_FIRSTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'firstname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname_payment"'));
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname_payment', '1');
-$vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'id="secondname_payment"'));
+$vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname_payment"'));
 }
 $vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname_payment"'));
 

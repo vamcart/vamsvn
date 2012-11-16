@@ -509,6 +509,7 @@
 	  //customer data
 	  //format_id = from country table, get data from table country
       $this->customer = array('firstname' => $_SESSION['sc_customers_firstname'], 
+                              'secondname' => $_SESSION['sc_customers_secondname'], 
                               'lastname' => $_SESSION['sc_customers_lastname'], 
                               'company' => $_SESSION['sc_customers_company'],
                               'street_address' => $_SESSION['sc_customers_street_address'],
@@ -525,6 +526,7 @@
 
 
       $this->delivery = array('firstname' => $_SESSION['sc_customers_firstname'], 
+                              'secondname' => $_SESSION['sc_customers_secondname'],
                               'lastname' => $_SESSION['sc_customers_lastname'],
                               'company' => $_SESSION['sc_customers_company'],
                               'street_address' => $_SESSION['sc_customers_street_address'],
@@ -556,6 +558,7 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
 	$sc_customers_country_data = vam_db_fetch_array($sc_customers_country_data_query);
 
 	$sc_sess_firstname = $_SESSION['sc_payment_firstname'];
+	$sc_sess_secondname = $_SESSION['sc_payment_secondname'];
 	$sc_sess_lastname = $_SESSION['sc_payment_lastname'];
 	$sc_sess_company = $_SESSION['sc_payment_company'];
 	$sc_sess_street_address = $_SESSION['sc_payment_street_address'];
@@ -567,6 +570,7 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
 	$sc_sess_country = $_SESSION['sc_payment_country'];
 } else { //payment address is same as shipping address
 	$sc_sess_firstname = $_SESSION['sc_customers_firstname'];
+	$sc_sess_secondname = $_SESSION['sc_customers_secondname'];
 	$sc_sess_lastname = $_SESSION['sc_customers_lastname'];
 	$sc_sess_company = $_SESSION['sc_customers_company'];
 	$sc_sess_street_address = $_SESSION['sc_customers_street_address'];
@@ -582,6 +586,7 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
 
 
       $this->billing = array('firstname' => $sc_sess_firstname, //$billing_address['entry_firstname'],
+                             'secondname' => $sc_sess_secondname,
                              'lastname' => $sc_sess_lastname,
                              'company' => $sc_sess_company,
                              'street_address' => $sc_sess_street_address,
