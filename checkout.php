@@ -1862,6 +1862,9 @@ if (ACCOUNT_FAX == 'true') {
 	$vamTemplate->assign('fax', '0');
 }
 
+	$vamTemplate->assign('customers_extra_fileds', '1');
+   $vamTemplate->assign('INPUT_CUSTOMERS_EXTRA_FIELDS', vam_get_extra_fields($_SESSION['customer_id'],$_SESSION['languages_id']));
+   
 ################ END Contact Information - NO ACCOUNT ######################################## 
 } //End IS NOT LOGGED ON
 
