@@ -154,6 +154,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
     if ($error == false) {
 
       $sql_data_array = array('customers_firstname' => $_SESSION['sc_customers_firstname'],
+                              'customers_secondname' => $_SESSION['sc_customers_secondname'],
                               'customers_lastname' => $_SESSION['sc_customers_lastname'],
                               'customers_email_address' => $_SESSION['sc_customers_email_address'],
                               'customers_telephone' => $_SESSION['sc_customers_telephone'], 
@@ -170,6 +171,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
 
       $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $_SESSION['sc_customers_firstname'], 
+                              'entry_secondname' => $_SESSION['sc_customers_secondname'], 
                               'entry_lastname' => $_SESSION['sc_customers_lastname'], 
                               'entry_street_address' => $_SESSION['sc_customers_street_address'], 
                               'entry_postcode' => $_SESSION['sc_customers_postcode'], 
@@ -203,6 +205,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
 	  if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payment address is different or if virtual product
         $sql_data_array = array('customers_id' => $customer_id,
                                 'entry_firstname' => $_SESSION['sc_payment_firstname'],
+                                'entry_secondname' => $_SESSION['sc_payment_secondname'],
                                 'entry_lastname' => $_SESSION['sc_payment_lastname'],
                                 'entry_street_address' => $_SESSION['sc_payment_street_address'],
                                 'entry_postcode' => $_SESSION['sc_payment_postcode'],
