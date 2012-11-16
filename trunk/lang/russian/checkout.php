@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: checkout.php 867 2012-11-11 19:20:03 oleg_vamsoft $
+   $Id: checkout.php 867 2012-11-16 19:20:03 oleg_vamsoft $
 
    VamShop - open source ecommerce solution
    http://vamshop.ru
