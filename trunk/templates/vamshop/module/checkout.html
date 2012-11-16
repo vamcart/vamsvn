@@ -56,6 +56,7 @@
 </div><!--div end shipping_state -->
 </div><!--div end shipping_state_box -->
 {/if}
+
 </fieldset>
 </div> <!--div end shipping_address -->
 {/if}
@@ -128,6 +129,10 @@
 {/if}
 {if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
 {/if}
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+{/if}
 </fieldset>
 </div> <!--div end contact_box -->   
 {/if}
@@ -189,15 +194,6 @@
 </div><!--div end conditions --> 
 {/if}
 
-{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
-<fieldset class="form">
-{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
-{/foreach}
-</fieldset>
-{/if}
-<!-- /форма -->
-</div>
-</div>
 <br />
 <div class="pagecontentfooter">
 {$BUTTON_CONTINUE}
