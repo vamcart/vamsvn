@@ -567,6 +567,7 @@ if (isset($_POST['country'])) {
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
         $order->delivery = array('postcode' => $_POST['postcode'],
                                  'state' => $_POST['state'],
+                                 'city' => $_POST['city'],
                                  'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
                                  'country_id' => $selected_country_id,
 //add state zone_id
@@ -688,6 +689,7 @@ if (vam_count_shipping_modules() == 0) {
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
 					$order->delivery = array('postcode' => $_POST['postcode'],
 											 'state' => $_POST['state'],
+                                  'city' => $_POST['city'],
 											 'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
 											 'country_id' => $selected_country_id,
 			//add state zone_id
