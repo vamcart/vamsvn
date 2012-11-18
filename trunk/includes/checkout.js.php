@@ -144,15 +144,15 @@ var url='checkout.php';
 
 	
 $('#box')
-.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val()});})	
-.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val()});})	
+.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()});})	
+.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()});})	
 .on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val()});})	
 
 
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], select[name=country]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'country': $('select[name=country]').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
+.on('change', 'input[name=shipping], select[name=country]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 //.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 ;}
 </script>
