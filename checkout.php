@@ -1044,7 +1044,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		############################# process the selected shipping method ######################################
 		if (!vam_session_is_registered('comments')) vam_session_register('comments');
 		if (vam_not_null($_POST['comments'])) {
-		  //$comments = vam_db_prepare_input($_POST['comments']);
+		  $comments = vam_db_prepare_input($_POST['comments']);
 		}
 
 
