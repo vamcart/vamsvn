@@ -37,7 +37,7 @@ define('PAGE_PARSE_START_TIME', microtime());
 define('DEBUG', false);
 
 // set the level of error reporting
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 //  error_reporting(E_ALL);
 
 // Set the local configuration parameters - mainly for developers - if exists else the mainconfigure
