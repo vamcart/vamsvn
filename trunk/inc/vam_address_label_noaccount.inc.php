@@ -26,6 +26,7 @@
   	if ($sc_ship_case == 0) {
 		$address = array('company' => $_SESSION['sc_customers_company'],
 						 'firstname' => $_SESSION['sc_customers_firstname'],
+						 'secondname' => $_SESSION['sc_customers_secondname'],
 						 'lastname' => $_SESSION['sc_customers_lastname'],
 						 'street_address' => $_SESSION['sc_customers_street_address'],
 						 'suburb' => $_SESSION['sc_customers_suburb'],
@@ -38,6 +39,7 @@
 	} elseif ($sc_ship_case == 1) { //payment address id different form shipping
 		$address = array('company' => $_SESSION['sc_payment_company'],
 						 'firstname' => $_SESSION['sc_payment_firstname'],
+						 'secondname' => $_SESSION['sc_payment_secondname'],
 						 'lastname' => $_SESSION['sc_payment_lastname'],
 						 'street_address' => $_SESSION['sc_payment_street_address'],
 						 'suburb' => $_SESSION['sc_payment_suburb'],
