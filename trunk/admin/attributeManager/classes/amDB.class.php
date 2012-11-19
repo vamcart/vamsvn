@@ -22,7 +22,7 @@ class amDB {
 	 * @package $strQuery sting - sql query string
 	 * @return query reference
 	 */
-	function query($strQuery) {
+	public static function query($strQuery) {
 		return vam_db_query($strQuery);
 	}
 	
@@ -32,7 +32,7 @@ class amDB {
 	 * @param $ref - referece from a mysql query
 	 * @return array
 	 */
-	function fetchArray($ref) {
+	public static function  fetchArray($ref) {
 		return vam_db_fetch_array($ref);
 	}
 	
