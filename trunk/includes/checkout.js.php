@@ -29,13 +29,10 @@ function init()
 	{
 
 var url='checkout.php';          
-
 	
 $('#box')
 
 .on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val()});})	
-
-
 
 .on('change', 'input[name=shipping]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 
@@ -44,63 +41,7 @@ $('#box')
    
 <?php } else { //not logged in javascript ?>
 
-
-
 <script type="text/javascript">
-
-//not yet finished
-/*$(hideFirm);		
-	function hideFirm()	{
-		
-		//Hide div w/id extra
-	$("#extra").css("display","none");
-	$("#checkme1").click(function(){
-
-// If checked
-        
-        if ($("#checkme1").is(":checked"))
-		{
-            //show the hidden div
-            $("#extra").show("fast");
-        }
-	});
-	
-
-		// Add onclick handler to checkbox w/id checkme
-	   $("#checkme").click(function(){
-
-// If checked
-        if ($("#checkme").is(":checked"))
-        {
-            //show the hidden div
-            $("#extra").hide("fast");
-        }
-		        
-	});
-	
-	$("#checkme2").click(function(){
-
-// If checked
-        if ($("#checkme2").is(":checked"))
-        {
-            //show the hidden div
-            $("#extra").hide("fast");
-        }
-		        
-	});
-;}*/
-
-
-
-
-
-
-/*$(document).ready(function(){
-window.alert($('input[name=checkout_possible]').val());
-
-//$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val() });
-
-});*/
 
 $(hidePay);		
 	function hidePay()	{
