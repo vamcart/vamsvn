@@ -124,3 +124,20 @@ $(hidePw);
 <?php 
 	} // END password optional
 } //END not logged in javascript ?>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  $("#country").change(function(){
+      var searchString = $('select[name=country]').val();
+      $.ajax({
+                     url: "index_ajax.php",             
+                     dataType : "html",                       
+                     data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
+                     type: "POST",   
+                     success: function(msg){$("#stateXML").html(msg);}            
+                   });                     
+                           
+                           
+   });
+});
+
+//--></script>
