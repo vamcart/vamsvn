@@ -62,13 +62,13 @@ function vam_get_sc_titles_number() {
 
 
 if (isset($_POST['sc_shipping_address_show'])) { 
-$sc_shipping_address_show = $_POST['sc_shipping_address_show'];
+$sc_shipping_address_show = vam_db_prepare_input($_POST['sc_shipping_address_show']);
 } else {
 $sc_shipping_address_show = true;
 }
 
 if (isset($_POST['sc_shipping_modules_show'])) { 
-$sc_shipping_modules_show = $_POST['sc_shipping_modules_show'];
+$sc_shipping_modules_show = vam_db_prepare_input($_POST['sc_shipping_modules_show']);
 } else {
 $sc_shipping_modules_show = true; 
 }
@@ -76,19 +76,19 @@ $sc_shipping_modules_show = true;
 
 //used for the validation
 if (isset($_POST['create_account'])) { 
-	$create_account = $_POST['create_account'];
+	$create_account = vam_db_prepare_input($_POST['create_account']);
 } else {
 	$create_account = false; 
 }
 
 if (isset($_POST['sc_payment_address_show'])) { 
-$sc_payment_address_show = $_POST['sc_payment_address_show'];
+$sc_payment_address_show = vam_db_prepare_input($_POST['sc_payment_address_show']);
 } else {
 $sc_payment_address_show = true;
 }
 
 if (isset($_POST['sc_payment_modules_show'])) { 
-$sc_payment_modules_show = $_POST['sc_payment_modules_show'];
+$sc_payment_modules_show = vam_db_prepare_input($_POST['sc_payment_modules_show']);
 } else {
 $sc_payment_modules_show = true;
 }
@@ -144,8 +144,8 @@ if ($_SESSION['cart']->count_contents() < 1) {
 
 //////////////////  End Check //////////////////////////////
 
-$payment_address_selected = $_POST['payment_adress']; //init if checkbox for payment address is checked or not
-$shipping_count_modules = $_POST['shipping_count']; //needed for validation
+$payment_address_selected = vam_db_prepare_input($_POST['payment_adress']); //init if checkbox for payment address is checked or not
+$shipping_count_modules = vam_db_prepare_input($_POST['shipping_count']); //needed for validation
 
 if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	if (!isset($_POST['action'])) {
@@ -154,7 +154,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 		if (SC_CREATE_ACCOUNT_CHECKOUT_PAGE != 'true') {
 			$password_selected = true;
 		} else {
-			$password_selected = $_POST['password_checkbox']; 
+			$password_selected = vam_db_prepare_input($_POST['password_checkbox']); 
 		}
 	}
 	
@@ -339,7 +339,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	//}	
 	
 	//shipping validation
-	$shipping_validation = $_POST['shipping'];
+	$shipping_validation = vam_db_prepare_input($_POST['shipping']);
 	if ($sc_shipping_modules_show == true) {
 		if (($shipping_validation == '') && ($shipping_count_modules > 1)) {
 			$error = true;
@@ -357,7 +357,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	}*/
 	
 	//payment validation
-	$payment_validation = $_POST['payment'];
+	$payment_validation = vam_db_prepare_input($_POST['payment']);
 	if ($sc_payment_modules_show == true) { 
 		if ($payment_validation == '') {
 			$error = true;
@@ -366,7 +366,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	}
 
 	//conditions validation
-	$conditions_validation = $_POST['conditions'];
+	$conditions_validation = vam_db_prepare_input($_POST['conditions']);
 	if (($conditions_validation == '') && (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true')) {
 		$error = true;
 		$messageStack->add('smart_checkout', CONDITIONS_ERROR);
@@ -486,7 +486,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
     $error = false;
 	
 	//shipping validation
-	$shipping_validation = $_POST['shipping'];
+	$shipping_validation = vam_db_prepare_input($_POST['shipping']);
 	if ($sc_shipping_modules_show == true) {
 		if (($shipping_validation == '') && ($shipping_count_modules > 1)) {
 			$error = true;
@@ -495,7 +495,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	}
 	
 	//payment validation
-	$payment_validation = $_POST['payment'];
+	$payment_validation = vam_db_prepare_input($_POST['payment']);
 	if ($sc_payment_modules_show == true) { 
 		if ($payment_validation == '') {
 			$error = true;
@@ -504,7 +504,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	}
 	
 	//conditions validation
-	$conditions_validation = $_POST['conditions'];
+	$conditions_validation = vam_db_prepare_input($_POST['conditions']);
 	if (($conditions_validation == '') && (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true')) {
 		$error = true;
 		$messageStack->add('smart_checkout', CONDITIONS_ERROR);
@@ -550,9 +550,9 @@ $order = new order;
 if (vam_session_is_registered('customer_id')) {
 $selected_country_id = $order->delivery['country']['id'];
 } else {
-//$selected_country_id = $_POST['country'];
+//$selected_country_id = vam_db_prepare_input($_POST['country']);
 if (isset($_POST['country'])) {
-  $selected_country_id = $_POST['country'];
+  $selected_country_id = vam_db_prepare_input($_POST['country']);
 } else {
   $selected_country_id = STORE_COUNTRY; //here you can set your default country ID
 }
@@ -563,15 +563,15 @@ if (isset($_POST['country'])) {
 
 // country is selected
         $country_info = vam_get_countriesList($selected_country_id,true);
-        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
-        $order->delivery = array('postcode' => $_POST['postcode'],
-                                 'state' => $_POST['state'],
-                                 'city' => $_POST['city'],
+        $order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
+                                 'state' => vam_db_prepare_input($_POST['state']),
+                                 'city' => vam_db_prepare_input($_POST['city']),
                                  'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
                                  'country_id' => $selected_country_id,
 //add state zone_id
-                                 'zone_id' => $_POST['state'],
+                                 'zone_id' => vam_db_prepare_input($_POST['state']),
                                  'format_id' => vam_get_address_format_id($selected_country_id));
 // country is selected End								 	  
 
@@ -685,15 +685,15 @@ if (vam_count_shipping_modules() == 0) {
 			
 			// country info for country change
 					$country_info = vam_get_countriesList($selected_country_id,true);
-					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . $_POST['state'] . "'"));
+					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
-					$order->delivery = array('postcode' => $_POST['postcode'],
-											 'state' => $_POST['state'],
-                                  'city' => $_POST['city'],
+					$order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
+											 'state' => vam_db_prepare_input($_POST['state']),
+                                  'city' => vam_db_prepare_input($_POST['city']),
 											 'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
 											 'country_id' => $selected_country_id,
 			//add state zone_id
-											 'zone_id' => $_POST['state'],
+											 'zone_id' => vam_db_prepare_input($_POST['state']),
 											 'format_id' => vam_get_address_format_id($selected_country_id));
 			// end country info for country change								 	  
 			  
