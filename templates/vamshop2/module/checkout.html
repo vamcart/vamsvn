@@ -4,7 +4,9 @@
 {$PAYMENT_FIELDS}
 {$FORM_ACTION}
 {if $error!=''}
+<div class="CheckoutError">
 {$error}
+</div>
 {/if}
 
 {if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
