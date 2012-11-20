@@ -256,7 +256,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	  //$check_email_query = vam_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($email_address) . "'");
 	  
 	  //new
-      //$check_email_query = vam_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($email_address) . "' and guest_account != '1'");
+      //$check_email_query = vam_db_query("select count(*) as total from " . TABLE_CUSTOMERS . " where customers_email_address = '" . vam_db_input($email_address) . "'");
 
       //$check_email = vam_db_fetch_array($check_email_query);
       //if ($check_email['total'] > 0) {
