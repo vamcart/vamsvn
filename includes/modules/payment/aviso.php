@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_AVISO_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_AVISO_STATUS == 'True') ? true : false);
       
-      //$this->form_action_url = 'https://api.avisosms.ru/mc/create_order/';
+		$this->form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
 		
     }
 
