@@ -1477,7 +1477,7 @@ if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) {
 if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
 
-  $payment_fields .= HEADING_PAYMENT_INFORMATION;
+  //$payment_fields .= HEADING_PAYMENT_INFORMATION;
 
 		$payment_fields .= $confirmation['title'];
 
