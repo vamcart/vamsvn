@@ -24,7 +24,7 @@ $order_query_check = vam_db_query("SELECT
   					WHERE orders_id='".$insert_id."'");
 
 $order_check = vam_db_fetch_array($order_query_check);
-if ($_SESSION['customer_id'] == $order_check['customers_id']) {
+//if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 
 // Modified by IGonza
 //    global $order;
@@ -123,8 +123,8 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 			$aBUY->process_order();
 	}
 
-} else {
-	$vamTemplate->assign('ERROR', 'You are not allowed to view this order!');
-	$vamTemplate->display(CURRENT_TEMPLATE.'/module/error_message.html');
-}
+//} else {
+	//$vamTemplate->assign('ERROR', 'You are not allowed to view this order!');
+	//$vamTemplate->display(CURRENT_TEMPLATE.'/module/error_message.html');
+//}
 ?>
