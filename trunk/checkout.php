@@ -565,6 +565,7 @@ if (isset($_POST['country'])) {
         $country_info = vam_get_countriesList($selected_country_id,true);
         $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
+        if (!vam_session_is_registered('customer_id')) {
         $order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
                                  'state' => vam_db_prepare_input($_POST['state']),
                                  'city' => vam_db_prepare_input($_POST['city']),
@@ -573,7 +574,8 @@ if (isset($_POST['country'])) {
 //add state zone_id
                                  'zone_id' => vam_db_prepare_input($_POST['state']),
                                  'format_id' => vam_get_address_format_id($selected_country_id));
-// country is selected End								 	  
+// country is selected End					
+        }			 	  
 
 
   
@@ -687,6 +689,7 @@ if (vam_count_shipping_modules() == 0) {
 					$country_info = vam_get_countriesList($selected_country_id,true);
 					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
+					if (!vam_session_is_registered('customer_id')) {
 					$order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
 											 'state' => vam_db_prepare_input($_POST['state']),
                                   'city' => vam_db_prepare_input($_POST['city']),
@@ -695,7 +698,8 @@ if (vam_count_shipping_modules() == 0) {
 			//add state zone_id
 											 'zone_id' => vam_db_prepare_input($_POST['state']),
 											 'format_id' => vam_get_address_format_id($selected_country_id));
-			// end country info for country change								 	  
+			// end country info for country change			
+					}					 	  
 			  
 		} //$shipping end test
   } 
