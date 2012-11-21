@@ -1465,7 +1465,10 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
   if (is_array($payment_modules->modules)) {
 	$payment_modules->pre_confirmation_check();
   }
-  
+
+  if (is_array($payment_modules->modules)) {
+	$payment_modules->confirmation();
+  }  
   
   if (is_array($payment_modules->modules)) {
   $payment_fields .= $payment_modules->process_button();
