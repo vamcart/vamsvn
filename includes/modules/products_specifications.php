@@ -1,6 +1,6 @@
 <?php
 /*
-  $Id: products_specifications.php, v1.0.1 20090917 kymation Exp $
+  $Id: products_specifications.php, v1.0.1 20120917 kymation Exp $
   $Loc: catalog/includes/modules/ $
 
   osCommerce, Open Source E-Commerce Solutions
@@ -120,8 +120,8 @@ $col = 0;
 
 				$specifications_data[$row]['DATA'][$col] = array (
 				
-					'NAME' => (!empty($specifications['specification_prefix']) ? $specifications['specification_prefix'].' ' : '').$specifications['specification_name'].(!empty($specifications['specification_suffix']) ? ' '.$specifications['specification_suffix'] : ''), 
-					'VALUE' => $specifications['specification']
+					'NAME' => $specifications['specification_name'], 
+					'VALUE' => (!empty($specifications['specification_prefix']) ? $specifications['specification_prefix'].' ' : '').$specifications['specification'].(!empty($specifications['specification_suffix']) ? ' '.$specifications['specification_suffix'] : '')
 			
 				);
 				
