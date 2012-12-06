@@ -2297,7 +2297,7 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SC_CREATE_ACCOUNT_CHECKOUT_PAGE', 'false', 80, 3, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_HIDE_SHIPPING', 'true', 80, 4, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_HIDE_COMMENT', 'false', 80, 5, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
-('SC_COUNTER_ENABLED', 'true', 80, 6, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
+('SC_COUNTER_ENABLED', 'false', 80, 6, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_EMAIL_LOGIN_DATA', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONFIRMATION_PAGE', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
 
