@@ -481,7 +481,8 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 /////////////////// Validation for LOGGED ON ////////////////////////////////////////////
 if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
 
-
+	$_SESSION['comments'] = vam_db_prepare_input($_POST['comments']);
+	
 	// start with input validation /////////
     $error = false;
 	
