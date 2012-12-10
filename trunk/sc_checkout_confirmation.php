@@ -105,6 +105,7 @@ if ($error == true) {
     $comments = vam_db_prepare_input($_POST['comments']);
   }
 
+
 // load the selected payment module
   require(DIR_WS_CLASSES . 'payment.php');
   $payment_modules = new payment($payment);
