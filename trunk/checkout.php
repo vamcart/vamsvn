@@ -563,7 +563,7 @@ if (isset($_POST['country'])) {
 
 // country is selected
         $country_info = vam_get_countriesList($selected_country_id,true);
-        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
+        $cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_name = '" . vam_db_input($_POST['state']) . "'"));
         $cache_state_prov_code = $cache_state_prov_values['zone_code'];
         if (!vam_session_is_registered('customer_id')) {
         $order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
@@ -572,9 +572,14 @@ if (isset($_POST['country'])) {
                                  'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
                                  'country_id' => $selected_country_id,
 //add state zone_id
-                                 'zone_id' => vam_db_prepare_input($_POST['state']),
+                                 'zone_id' => $cache_state_prov_values['zone_id'],
                                  'format_id' => vam_get_address_format_id($selected_country_id));
 // country is selected End					
+
+if ($order->delivery['country']['iso_code_2'] != '') {
+	$_SESSION['delivery_zone'] = $order->delivery['country']['iso_code_2'];
+}
+
         }			 	  
 
 
@@ -687,7 +692,7 @@ if (vam_count_shipping_modules() == 0) {
 			
 			// country info for country change
 					$country_info = vam_get_countriesList($selected_country_id,true);
-					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_code from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_id = '" . vam_db_input($_POST['state']) . "'"));
+					$cache_state_prov_values = vam_db_fetch_array(vam_db_query("select zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$selected_country_id . "' and zone_name = '" . vam_db_input($_POST['state']) . "'"));
 					$cache_state_prov_code = $cache_state_prov_values['zone_code'];
 					if (!vam_session_is_registered('customer_id')) {
 					$order->delivery = array('postcode' => vam_db_prepare_input($_POST['postcode']),
@@ -696,9 +701,14 @@ if (vam_count_shipping_modules() == 0) {
 											 'country' => array('id' => $selected_country_id, 'title' => $country_info['countries_name'], 'iso_code_2' => $country_info['countries_iso_code_2'], 'iso_code_3' =>  $country_info['countries_iso_code_3']),
 											 'country_id' => $selected_country_id,
 			//add state zone_id
-											 'zone_id' => vam_db_prepare_input($_POST['state']),
+											 'zone_id' => $cache_state_prov_values['zone_id'],
 											 'format_id' => vam_get_address_format_id($selected_country_id));
 			// end country info for country change			
+
+if ($order->delivery['country']['iso_code_2'] != '') {
+	$_SESSION['delivery_zone'] = $order->delivery['country']['iso_code_2'];
+}
+
 					}					 	  
 			  
 		} //$shipping end test
