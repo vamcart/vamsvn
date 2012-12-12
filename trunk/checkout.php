@@ -1159,6 +1159,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
       vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
       $customer_id = vam_db_insert_id();
+      $customers_id = $customer_id;
 
    	  	$extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
     	  while($extra_fields = vam_db_fetch_array($extra_fields_query))
