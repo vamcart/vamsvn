@@ -93,7 +93,9 @@ $order_check = vam_db_fetch_array($order_query_check);
 	$order_subject = str_replace('{$firstname}', $order->customer['firstname'], $order_subject);
 
 	// send mail to customer
+if (isset($order->customer['email_address'])) {
 	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order_subject, $html_mail, $txt_mail);
+}
 
 	// send mail to admin
 
