@@ -29,6 +29,9 @@ require('includes/classes/http_client.php');
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
+// include boxes
+require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
+
 // assign data to template
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
