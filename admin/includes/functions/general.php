@@ -489,6 +489,7 @@ function vam_get_geo_zone_name($geo_zone_id) {
 }
 
 function vam_address_format($address_format_id, $address, $html, $boln, $eoln) {
+	$address_format_id = ($address_format_id ? $address_format_id : 1); 
 	$address_format_query = vam_db_query("select address_format as format from ".TABLE_ADDRESS_FORMAT." where address_format_id = '".$address_format_id."'");
 	$address_format = vam_db_fetch_array($address_format_query);
 
