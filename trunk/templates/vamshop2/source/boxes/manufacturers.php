@@ -32,7 +32,7 @@ if (!CacheCheck()) {
 	$cache_id = $_SESSION['language'].(int) $_GET['manufacturers_id'];
 }
 
-	$manufacturers_query = "select distinct m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." as m, ".TABLE_PRODUCTS." as p where m.manufacturers_id=p.manufacturers_id order by m.manufacturers_name";
+	$manufacturers_query = "select distinct m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." as m, ".TABLE_PRODUCTS." as p where p.products_status='1' AND m.manufacturers_id=p.manufacturers_id order by m.manufacturers_name";
 
 	$manufacturers_query = vamDBquery($manufacturers_query);
 
