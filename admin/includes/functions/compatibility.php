@@ -46,6 +46,11 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     do_magic_quotes_gpc($_COOKIE);
   }
 
+// set default timezone if none exists (PHP 5.3 throws an E_WARNING)
+  if (PHP_VERSION >= '5.2') {
+    date_default_timezone_set(defined('CFG_TIME_ZONE') ? CFG_TIME_ZONE : date_default_timezone_get());
+  }
+
   if (!function_exists('is_numeric')) {
     function is_numeric($param) {
       return preg_match("/^[0-9]{1,50}.?[0-9]{0,50}$/", $param);

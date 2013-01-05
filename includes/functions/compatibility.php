@@ -48,6 +48,11 @@
     do_magic_quotes_gpc($_COOKIE);
   }
 
+// set default timezone if none exists (PHP 5.3 throws an E_WARNING)
+  if (PHP_VERSION >= '5.2') {
+    date_default_timezone_set(defined('CFG_TIME_ZONE') ? CFG_TIME_ZONE : date_default_timezone_get());
+  }
+
   if (!function_exists('array_splice')) {
     function array_splice(&$array, $maximum) {
       if (sizeof($array) >= $maximum) {

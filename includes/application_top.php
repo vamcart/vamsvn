@@ -36,6 +36,8 @@ header('Content-Type: text/html; charset=utf-8');
 define('PAGE_PARSE_START_TIME', microtime());
 define('DEBUG', false);
 
+  define('CFG_TIME_ZONE', 'Europe/Moscow');
+  
 // set the level of error reporting
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 //  error_reporting(E_ALL);
