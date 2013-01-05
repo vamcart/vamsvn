@@ -34,7 +34,9 @@
 
   // Start the clock for the page parse time log
   define('PAGE_PARSE_START_TIME', microtime());
-  
+
+  define('CFG_TIME_ZONE', 'Europe/Moscow');
+    
   // security
   define('_VALID_VAM',true);
 
