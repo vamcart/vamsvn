@@ -52,6 +52,7 @@ require_once (DIR_FS_INC.'vam_draw_pull_down_menu.inc.php');
 require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
 require_once (DIR_FS_INC.'vam_get_zone_name.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_check_stock.inc.php');
 
 //START functions specific
 function vam_get_sc_titles_number() {
