@@ -18,6 +18,8 @@
  * specifications to show.
  */
   
+  (!isset($_GET['products_id'])) ? $_GET['products_id'] = $product->data['products_id'] : $_GET['products_id'];
+  
   $categories_query_raw = "select  sg.specification_group_id, 
                                    sg.specification_group_name, 
                                    sg.show_products
