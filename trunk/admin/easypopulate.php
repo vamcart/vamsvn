@@ -3240,6 +3240,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 			  } else {
 				  if ($specials = vam_db_fetch_array($result)) {
 					  $sql_data_array = array('products_id' => $v_products_id,
+											  'specials_quantity' => 10000,
 											  'specials_new_products_price' => $v_products_specials_price,
 											  'specials_last_modified' => 'now()'
 					  );
@@ -3253,6 +3254,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 				      }
 				  } else {
 					  $sql_data_array = array('products_id' => $v_products_id,
+											  'specials_quantity' => 10000,
 											  'specials_new_products_price' => $v_products_specials_price,
 											  'specials_date_added' => 'now()',
 											  'status' => '1'
