@@ -3,9 +3,6 @@
 <h1>{#heading_confirmation#}</h1>
 <div class="page">
 <div class="pagecontent">
-<p>
-{#text_information#}
-</p>
 <br />
 {if $IP_LOG=='true'} 
 <span class="bold">{#text_ip#}</span> {$CUSTOMERS_IP}
@@ -19,7 +16,7 @@
 </dt>
 
 <dd class="ordersAddress">
-<span class="bold">{#text_shipping_address#} <a href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></span>
+<span class="bold">{#text_shipping_address#}</span>
 </dd>
 
 <dd class="ordersAddress">
@@ -37,7 +34,7 @@
 </dt>
 
 <dd class="ordersAddress">
-<span class="bold">{#text_payment_address#}:</span> <a href="{$BILLING_ADDRESS_EDIT}">{#text_edit#}</a>
+<span class="bold">{#text_payment_address#}:</span>
 </dd>
 
 <dd class="ordersAddress">
