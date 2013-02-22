@@ -2301,43 +2301,6 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SC_EMAIL_LOGIN_DATA', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONFIRMATION_PAGE', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
 
-INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-('SPECIFICATIONS_PRODUCTS_HEAD', 'Subhead', 1610, 1, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
-('SPECIFICATIONS_MINIMUM_PRODUCTS', '1', 1610, 5, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_SHOW_NAME_PRODUCTS', 'False', 1610, 10, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_SHOW_TITLE_PRODUCTS', 'True', 1610, 15, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_BOX_FRAME_STYLE', 'Plain', 1610, 20, '2009-08-13 21:28:59', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain'',''Tabs''), '),
-('SPECIFICATIONS_REVIEWS_TAB', 'True', 1610, 21, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_MAX_REVIEWS', '3', 1610, 22, '2009-09-09 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_QUESTION_TAB', 'True', 1610, 23, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-
-('SPECIFICATIONS_COMPARISON_HEAD', 'Subhead', 1610, 24, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
-('SPECIFICATIONS_MINIMUM_COMPARISON', '2', 1610, 25, '2009-07-19 19:52:33', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMP_LINK', 'True', 1610, 30, '0000-00-00 00:00:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_COMP_TABLE_ROW', 'both', 1610, 35, '2009-06-26 18:24:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''top'', ''bottom'', ''both'', ''none''), '),
-('SPECIFICATIONS_BOX_COMPARISON', 'True', 1610, 40, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_BOX_COMP_INDEX', 'False', 1610, 45, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_COMP_SUFFIX', 'True', 1610, 50, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_COMPARISON_STYLE', 'Simple', 1610, 52, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain''), '),
-('SPECIFICATIONS_COMBO_MFR', '0', 1610, 55, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_WEIGHT', '0', 1610, 60, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_PRICE', '0', 1610, 65, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_MODEL', '2', 1610, 70, '2009-06-18 15:31:23', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_IMAGE', '1', 1610, 75, '2009-06-18 15:31:10', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_NAME', '0', 1610, 80, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_COMBO_BUY_NOW', '0', 1610, 85, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-
-('SPECIFICATIONS_FILTERS_HEAD', 'Subhead', 1610, 89, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
-('SPECIFICATIONS_FILTERS_MODULE', 'True', 1610, 90, NULL, '2009-09-09 09:09:09', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_FILTERS_BOX', 'True', 1610, 95, NULL, '2009-07-06 00:19:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_FILTER_MINIMUM', '1', 1610, 100, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
-('SPECIFICATIONS_FILTER_SUBCATEGORIES', 'True', 1610, 105, '2009-08-12 15:16:55', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_FILTER_SHOW_COUNT', 'True', 1610, 110, '2009-09-21 00:00:00', '2009-09-21 00:00:00', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_FILTER_NO_RESULT', 'grey', 1610, 115, '2009-08-23 22:00:43', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''none'', ''grey'', ''normal''), '),
-('SPECIFICATIONS_FILTER_BREADCRUMB', 'True', 1610, 120, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
-('SPECIFICATIONS_FILTER_IMAGE_WIDTH', '20', 1610, 125, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
-('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
-
 INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
 INSERT INTO configuration_group VALUES ('3', 'CG_MAXIMAL_VALUES', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
@@ -3348,6 +3311,43 @@ insert into spsr_zones values ('81', '109', '97');
 insert into spsr_zones values ('82', '110', '99');
 
 INSERT INTO configuration_group VALUES ('1610', 'CG_PRODUCTS_SPECIFICATIONS', 'Products Specifications', 'Products Specifications configuration options', '1610', '1');
+
+INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+('SPECIFICATIONS_PRODUCTS_HEAD', 'Subhead', 1610, 1, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_MINIMUM_PRODUCTS', '1', 1610, 5, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_SHOW_NAME_PRODUCTS', 'False', 1610, 10, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_SHOW_TITLE_PRODUCTS', 'True', 1610, 15, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_BOX_FRAME_STYLE', 'Plain', 1610, 20, '2009-08-13 21:28:59', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain'',''Tabs''), '),
+('SPECIFICATIONS_REVIEWS_TAB', 'True', 1610, 21, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_MAX_REVIEWS', '3', 1610, 22, '2009-09-09 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_QUESTION_TAB', 'True', 1610, 23, '2009-06-18 12:07:30', '2009-09-09 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+
+('SPECIFICATIONS_COMPARISON_HEAD', 'Subhead', 1610, 24, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_MINIMUM_COMPARISON', '2', 1610, 25, '2009-07-19 19:52:33', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMP_LINK', 'True', 1610, 30, '0000-00-00 00:00:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMP_TABLE_ROW', 'both', 1610, 35, '2009-06-26 18:24:00', '2009-06-26 12:07:30', NULL, 'vam_cfg_select_option(array(''top'', ''bottom'', ''both'', ''none''), '),
+('SPECIFICATIONS_BOX_COMPARISON', 'True', 1610, 40, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_BOX_COMP_INDEX', 'False', 1610, 45, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMP_SUFFIX', 'True', 1610, 50, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_COMPARISON_STYLE', 'Simple', 1610, 52, '2009-07-18 22:11:04', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Stock'', ''Simple'', ''Plain''), '),
+('SPECIFICATIONS_COMBO_MFR', '0', 1610, 55, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_WEIGHT', '0', 1610, 60, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_PRICE', '0', 1610, 65, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_MODEL', '2', 1610, 70, '2009-06-18 15:31:23', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_IMAGE', '1', 1610, 75, '2009-06-18 15:31:10', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_NAME', '0', 1610, 80, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_COMBO_BUY_NOW', '0', 1610, 85, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+
+('SPECIFICATIONS_FILTERS_HEAD', 'Subhead', 1610, 89, '2009-08-25 10:03:37', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''Subhead''), '),
+('SPECIFICATIONS_FILTERS_MODULE', 'True', 1610, 90, NULL, '2009-09-09 09:09:09', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTERS_BOX', 'True', 1610, 95, NULL, '2009-07-06 00:19:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_MINIMUM', '1', 1610, 100, '2009-06-18 12:07:30', '2009-06-18 12:07:30', NULL, NULL),
+('SPECIFICATIONS_FILTER_SUBCATEGORIES', 'True', 1610, 105, '2009-08-12 15:16:55', '2009-06-18 12:07:30', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_SHOW_COUNT', 'True', 1610, 110, '2009-09-21 00:00:00', '2009-09-21 00:00:00', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_NO_RESULT', 'grey', 1610, 115, '2009-08-23 22:00:43', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''none'', ''grey'', ''normal''), '),
+('SPECIFICATIONS_FILTER_BREADCRUMB', 'True', 1610, 120, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), '),
+('SPECIFICATIONS_FILTER_IMAGE_WIDTH', '20', 1610, 125, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
+('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL);
 
 ##
 ## Table structure for table `specification_groups_to_categories`
