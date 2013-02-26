@@ -18,6 +18,6 @@
    ---------------------------------------------------------------------------------------*/
    
   function vam_db_insert_id() {
-    return mysql_insert_id();
+    return mysqli_insert_id();
   }
  ?>

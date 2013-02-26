@@ -18,6 +18,6 @@
    ---------------------------------------------------------------------------------------*/
    
   function vam_db_select_db($database) {
-    return mysql_select_db($database);
+    return mysqli_select_db($database);
   }
  ?>

@@ -44,10 +44,10 @@
          if (file_exists($file)) @unlink($file);
 
         // get result from DB and create new file
-        $result = mysql_query($query, $$link) or vam_db_error($query, mysql_errno(), mysql_error());
+        $result = mysqli_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
 
         if (STORE_DB_TRANSACTIONS == 'true') {
-                $result_error = mysql_error();
+                $result_error = mysqli_error($$link);
                 error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
         }
 

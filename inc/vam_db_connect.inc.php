@@ -20,23 +20,22 @@
   function vam_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link', $use_pconnect = USE_PCONNECT, $new_link = false) {
     global $$link;
 
-    if ($use_pconnect == 'true') {
-     $$link = mysql_pconnect($server, $username, $password);
-    } else {
-$$link = @mysql_connect($server, $username, $password, $new_link);
+    if (USE_PCONNECT == 'true') {
+      $server = 'p:' . $server;
+    }
+
+    $$link = mysqli_connect($server, $username, $password, $database);
     
-   }
 
 if ($$link){
-   @mysql_select_db($database);
-   @mysql_query("SET SQL_MODE= ''");
-   @mysql_query("SET SQL_BIG_SELECTS=1");
-   @mysql_query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
+   @mysqli_query($$link, "SET SQL_MODE= ''");
+   @mysqli_query($$link, "SET SQL_BIG_SELECTS=1");
+   @mysqli_query($$link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 }
 
 //Start VaM db-error processing
     if (!$$link) {
-      vam_db_error("connect", mysql_errno(), mysql_error());
+      vam_db_error("connect", mysqli_errno($$link), mysqli_error($$link));
     }
 //End VaM db-error processing
 
