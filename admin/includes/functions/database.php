@@ -20,30 +20,12 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   function vam_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
     global $$link;
 
-    if (USE_PCONNECT == 'true') {
-      $$link = mysql_pconnect($server, $username, $password);
-    } else {
-      $$link = mysql_connect($server, $username, $password);
-    }
+    $$link = mysqli_connect($server, $username, $password, $database);
 
-    if ($$link) mysql_select_db($database);
+      //@mysqli_query($$link, "SET SQL_MODE= ''");
+      //@mysqli_query($$link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 
     return $$link;
-  }
-
-  // db connection for Servicedatabase  
-  function service_vam_db_connect($server_service = SERVICE_DB_SERVER, $username_service = SERVICE_DB_SERVER_USERNAME, $password_service = SERVICE_DB_SERVER_PASSWORD, $database_service = SERVICE_DB_DATABASE, $link_service = 'db_link_service') {
-    global $$link_service;
-
-    if (SERVICE_USE_PCONNECT == 'true') {
-      $$link_service = mysql_pconnect($server_service, $username_service, $password_service);
-    } else {
-      $$link_service = mysql_connect($server_service, $username_service, $password_service);
-    }
-
-    if ($$link_service) mysql_select_db($database_service);
-
-    return $$link_service;
   }
 
   function vam_db_close($link = 'db_link') {
@@ -72,33 +54,15 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       $logger->write($query, 'QUERY');
     }
 
-    $result = mysql_query($query, $$link) or vam_db_error($query, mysql_errno(), mysql_error());
+    $result = mysql_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
 
     if (STORE_DB_TRANSACTIONS == 'true') {
-      if (mysql_error()) $logger->write(mysql_error(), 'ERROR');
+      if (mysqli_error($$link)) $logger->write(mysqli_error($$link), 'ERROR');
     }
 
     return $result;
   }
 
-  // db connection for Servicedatabase 
-  function service_vam_db_query($query, $link_service = 'db_link_service') {
-    global $$link_service, $logger_service;
-
-    if (STORE_DB_TRANSACTIONS == 'true') {
-      if (!is_object($logger_service)) $logger_service = new logger_service;
-      $logger_service->write($query, 'QUERY');
-    }
-
-    $result = mysql_query($query, $$link_service) or vam_db_error($query, mysql_errno(), mysql_error());
-
-    if (STORE_DB_TRANSACTIONS == 'true') {
-      if (mysql_error()) $logger_service->write(mysql_error(), 'ERROR');
-    }
-
-    return $result;
-  }
-  
   function vam_db_perform($table, $data, $action = 'insert', $parameters = '', $link = 'db_link') {
     reset($data);
     if ($action == 'insert') {
@@ -144,31 +108,38 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   }
 
   function vam_db_fetch_array($db_query) {
-    return mysql_fetch_array($db_query, MYSQL_ASSOC);
+    return mysqli_fetch_array($db_query, MYSQLI_ASSOC);
   }
 
   function vam_db_result($result, $row, $field = '') {
-    return mysql_result($result, $row, $field);
+    if ( $field === '' ) {
+      $field = 0;
+    }
+
+    tep_db_data_seek($result, $row);
+    $data = tep_db_fetch_array($result);
+
+    return $data[$field];
   }
 
   function vam_db_num_rows($db_query) {
-    return mysql_num_rows($db_query);
+    return mysqli_num_rows($db_query);
   }
 
   function vam_db_data_seek($db_query, $row_number) {
-    return mysql_data_seek($db_query, $row_number);
+    return mysqli_data_seek($db_query, $row_number);
   }
 
   function vam_db_insert_id() {
-    return mysql_insert_id();
+    return mysqli_insert_id();
   }
 
   function vam_db_free_result($db_query) {
-    return mysql_free_result($db_query);
+    return mysqli_free_result($db_query);
   }
 
   function vam_db_fetch_fields($db_query) {
-    return mysql_fetch_field($db_query);
+    return mysqli_fetch_field($db_query);
   }
 
   function vam_db_output($string) {
@@ -192,4 +163,72 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       return $string;
     }
   }
+  
+ if ( !function_exists('mysqli_connect') ) {
+    define('MYSQLI_ASSOC', MYSQL_ASSOC);
+
+    function mysqli_connect($server, $username, $password, $database) {
+      if ( substr($server, 0, 2) == 'p:' ) {
+        $link = mysql_pconnect(substr($server, 2), $username, $password);
+      } else {
+        $link = mysql_connect($server, $username, $password);
+      }
+
+      if ( $link ) {
+        mysql_select_db($database, $link);
+      }
+
+      return $link;
+    }
+
+    function mysqli_close($link) {
+      return mysql_close($link);
+    }
+
+    function mysqli_query($link, $query) {
+      return mysql_query($query, $link);
+    }
+
+    function mysqli_errno($link) {
+      return mysql_errno($link);
+    }
+
+    function mysqli_error($link) {
+      return mysql_error($link);
+    }
+
+    function mysqli_fetch_array($query, $type) {
+      return mysql_fetch_array($query, $type);
+    }
+
+    function mysqli_num_rows($query) {
+      return mysql_num_rows($query);
+    }
+
+    function mysqli_data_seek($query, $offset) {
+      return mysql_data_seek($query, $offsetr);
+    }
+
+    function mysqli_insert_id($link) {
+      return mysql_insert_id($link);
+    }
+
+    function mysqli_free_result($query) {
+      return mysql_free_result($query);
+    }
+
+    function mysqli_fetch_field($query) {
+      return mysql_fetch_field($query);
+    }
+
+    function mysqli_real_escape_string($link, $string) {
+      if ( function_exists('mysql_real_escape_string') ) {
+        return mysql_real_escape_string($string, $link);
+      } elseif ( function_exists('mysql_escape_string') ) {
+        return mysql_escape_string($string);
+      }
+
+      return addslashes($string);
+    }
+  }  
 ?>
