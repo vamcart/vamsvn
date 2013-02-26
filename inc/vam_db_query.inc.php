@@ -32,7 +32,7 @@
       error_log('QUERY ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 //    $queryStartTime = array_sum(explode(" ",microtime()));
-    $result = mysql_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+    $result = mysqli_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
 //	$queryEndTime = array_sum(explode(" ",microtime())); 
 //	$processTime = $queryEndTime - $queryStartTime;
 //	echo 'time: '.$processTime.' Query: '.$query.'<br>';

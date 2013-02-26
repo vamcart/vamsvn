@@ -19,14 +19,8 @@
    
 
   function vam_db_input($string, $link = 'db_link') {
-  global $$link;
+    global $$link;
 
-  if (function_exists('mysqli_real_escape_string')) {
-    return mysqli_real_escape_string($string, $$link);
-  } elseif (function_exists('mysqli_escape_string')) {
-    return mysqli_escape_string($string);
+    return mysqli_real_escape_string($$link, $string);
   }
-
-  return addslashes($string);
-}
  ?>
