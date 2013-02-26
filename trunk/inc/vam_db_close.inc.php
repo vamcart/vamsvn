@@ -20,7 +20,7 @@
   function vam_db_close($link = 'db_link') {
     global $$link;
 
-    return mysql_close($$link);
+    return mysqli_close($$link);
   }
 
  ?>

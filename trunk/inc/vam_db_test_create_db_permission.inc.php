@@ -32,10 +32,10 @@ function vam_db_test_create_db_permission($database) {
       if (!@vam_db_select_db($database)) {
         $db_created = true;
         if (!@vam_db_query_installer_installer('create database ' . $database)) {
-          $db_error = mysql_error();
+          $db_error = mysqli_error();
         }
       } else {
-        $db_error = mysql_error();
+        $db_error = mysqli_error();
       }
       if (!$db_error) {
         if (@vam_db_select_db($database)) {
@@ -44,17 +44,17 @@ function vam_db_test_create_db_permission($database) {
               if ($db_created) {
                 if (@vam_db_query_installer('drop database ' . $database)) {
                 } else {
-                  $db_error = mysql_error();
+                  $db_error = mysqli_error();
                 }
               }
             } else {
-              $db_error = mysql_error();
+              $db_error = mysqli_error();
             }
           } else {
-            $db_error = mysql_error();
+            $db_error = mysqli_error();
           }
         } else {
-          $db_error = mysql_error();
+          $db_error = mysqli_error();
         }
       }
     }

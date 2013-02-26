@@ -21,10 +21,10 @@
   function vam_db_input($string, $link = 'db_link') {
   global $$link;
 
-  if (function_exists('mysql_real_escape_string')) {
-    return mysql_real_escape_string($string, $$link);
-  } elseif (function_exists('mysql_escape_string')) {
-    return mysql_escape_string($string);
+  if (function_exists('mysqli_real_escape_string')) {
+    return mysqli_real_escape_string($string, $$link);
+  } elseif (function_exists('mysqli_escape_string')) {
+    return mysqli_escape_string($string);
   }
 
   return addslashes($string);
