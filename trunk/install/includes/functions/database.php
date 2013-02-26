@@ -20,28 +20,28 @@
       return false;
     }
 
-    $$link = @mysql_connect($server, $username, $password) or $db_error = mysql_error();
+    $$link = @mysqli_connect($server, $username, $password) or $db_error = mysqli_error($$link);
 
-   @mysql_query("SET SQL_MODE= ''");
-   @mysql_query("SET SQL_BIG_SELECTS=1");
-   @mysql_query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
+   @mysqli_query($$link, "SET SQL_MODE= ''");
+   @mysqli_query($$link, "SET SQL_BIG_SELECTS=1");
+   @mysqli_query($$link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
    
     return $$link;
   }
 
   function osc_db_select_db($database) {
-    return mysql_select_db($database);
+    return mysqli_select_db($database);
     
   }
 
   function osc_db_query($query, $link = 'db_link') {
     global $$link;
 
-    return mysql_query($query, $$link);
+    return mysqli_query($query, $$link);
   }
 
   function osc_db_num_rows($db_query) {
-    return mysql_num_rows($db_query);
+    return mysqli_num_rows($db_query);
   }
 
   function osc_db_install($database, $sql_file) {
@@ -53,7 +53,7 @@
       if (@osc_db_query('create database ' . $database)) {
         osc_db_select_db($database);
       } else {
-        $db_error = mysql_error();
+        $db_error = mysqli_error($$link);
       }
     }
 
