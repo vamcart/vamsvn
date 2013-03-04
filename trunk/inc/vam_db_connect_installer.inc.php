@@ -27,12 +27,12 @@
       return false;
     }
 
-    $$link = @mysqli_connect($server, $username, $password) or $db_error = mysqli_error($$link);
+    $$link = @mysql_connect($server, $username, $password) or $db_error = mysql_error();
     
-   @mysqli_query($$link, "SET SQL_MODE= ''");
-   @mysqli_query($$link, "SET CHARACTER SET utf8");
-   @mysqli_query($$link, "SET NAMES utf8");
-   @mysqli_query($$link, "SET COLLATION utf8_general_ci");
+   @mysql_query("SET SQL_MODE= ''");
+   @mysql_query("SET CHARACTER SET utf8");
+   @mysql_query("SET NAMES utf8");
+   @mysql_query("SET COLLATION utf8_general_ci");
 
     return $$link;
   }

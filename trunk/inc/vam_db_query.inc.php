@@ -21,11 +21,10 @@
   include_once(DIR_FS_INC . 'vam_db_error.inc.php');
   
   function vam_db_query($query, $link = 'db_link') {
-
     global $$link;
     global $query_counts;
     $query_counts++; 
-
+    //$$link = mysqli_connect('localhost', 'root', '', 'vamshop');
     //echo $query.'<br>';
 
     if (STORE_DB_TRANSACTIONS == 'true') {
