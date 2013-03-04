@@ -26,7 +26,7 @@ function vam_db_install($database, $sql_file) {
       if (@vam_db_query_installer('create database ' . $database)) {
         vam_db_select_db($database);
       } else {
-        $db_error = mysqli_error();
+        $db_error = mysql_error();
       }
     }
 

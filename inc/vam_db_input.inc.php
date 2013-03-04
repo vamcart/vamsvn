@@ -19,8 +19,8 @@
    
 
   function vam_db_input($string, $link = 'db_link') {
-    global $$link;
+  global $$link;
 
-    return mysqli_real_escape_string($$link, $string);
-  }
+  return mysqli_real_escape_string($$link, $string);
+}
  ?>
