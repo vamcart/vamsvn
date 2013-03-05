@@ -971,12 +971,12 @@ if (vam_session_is_registered('changed_adress')) vam_session_unregister('changed
 
 
 //CHECK if checkout is possible here after all calculations for noaccount and logged on user/////
-if (isset($_POST['action'])) {
-if ($checkout_possible != true) {
-		$error = true;
-		$messageStack->add('smart_checkout', SC_ERROR_NO_SHIPPING_POSSIBLE);
-	}
-}
+//if (isset($_POST['action'])) {
+//if ($checkout_possible != true) {
+		//$error = true;
+		//$messageStack->add('smart_checkout', SC_ERROR_NO_SHIPPING_POSSIBLE);
+	//}
+//}
 //END CHECK if checkout is possible here after all calculations /////	
 	
 
