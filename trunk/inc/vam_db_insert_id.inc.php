@@ -17,7 +17,10 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-  function vam_db_insert_id() {
-    return mysqli_insert_id();
+  function vam_db_insert_id($link = 'db_link') {
+     global $$link;
+
+    return mysqli_insert_id($$link);
   }
+
  ?>
