@@ -183,7 +183,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
       if (ACCOUNT_COMPANY == 'true') $sql_data_array['entry_company'] = $_SESSION['sc_customers_company']; 
       if (ACCOUNT_SUBURB == 'true') $sql_data_array['entry_suburb'] = $_SESSION['sc_customers_suburb']; 
       if (ACCOUNT_STATE == 'true') {
-        if ($zone_id > 0) {
+        if ($_SESSION['sc_customers_zone_id'] > 0) {
           $sql_data_array['entry_zone_id'] = $_SESSION['sc_customers_zone_id']; 
           $sql_data_array['entry_state'] = '';
         } else {
@@ -217,7 +217,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
         if (ACCOUNT_COMPANY == 'true') $sql_data_array['entry_company'] = $_SESSION['sc_payment_company'];
         if (ACCOUNT_SUBURB == 'true') $sql_data_array['entry_suburb'] = $_SESSION['sc_payment_suburb'];
         if (ACCOUNT_STATE == 'true') {
-          if ($zone_id > 0) {
+          if ($_SESSION['sc_customers_zone_id'] > 0) {
             $sql_data_array['entry_zone_id'] = $_SESSION['sc_payment_zone_id'];
             $sql_data_array['entry_state'] = '';
           } else {
