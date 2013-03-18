@@ -296,15 +296,15 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
     //}
 
     //if (ACCOUNT_STATE == 'true') {
-      //$zone_id = 0;
-      //$check_query = vam_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-      //$check = vam_db_fetch_array($check_query);
-      //$entry_state_has_zones = ($check['total'] > 0);
-      //if ($entry_state_has_zones == true) {
-        //$zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name = '" . vam_db_input($state) . "' or zone_code = '" . vam_db_input($state) . "')");
+      $zone_id = 0;
+      $check_query = vam_db_query("select count(*) as total from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
+      $check = vam_db_fetch_array($check_query);
+      $entry_state_has_zones = ($check['total'] > 0);
+      if ($entry_state_has_zones == true) {
+        $zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and (zone_name = '" . vam_db_input($state) . "' or zone_code = '" . vam_db_input($state) . "')");
         //if (vam_db_num_rows($zone_query) == 1) {
-          //$zone = vam_db_fetch_array($zone_query);
-          //$zone_id = $zone['zone_id'];
+          $zone = vam_db_fetch_array($zone_query);
+          $zone_id = $zone['zone_id'];
         //} else {
           //$error = true;
 
@@ -317,7 +317,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
           //$messageStack->add('smart_checkout', ENTRY_STATE_ERROR);
         //}
       //}
-    //}
+    }
 
     //if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
       //$error = true;
@@ -1199,7 +1199,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 					vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
       	}
 
-      $sql_data_array = array('customers_id' => $customers_id,
+      $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $firstname,
                               'entry_secondname' => $secondname,
                               'entry_lastname' => $lastname,
