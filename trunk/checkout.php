@@ -1199,7 +1199,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 					vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
       	}
 
-      $sql_data_array = array('customers_id' => $customer_id,
+      $sql_data_array = array('customers_id' => $customers_id,
                               'entry_firstname' => $firstname,
                               'entry_secondname' => $secondname,
                               'entry_lastname' => $lastname,
