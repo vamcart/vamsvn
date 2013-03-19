@@ -273,9 +273,13 @@
     }
 
     function cart() {
-      global $currencies,$vamPrice;
+      global $currencies,$vamPrice, $sendto, $customer_default_address_id;
 
       $this->content_type = $_SESSION['cart']->get_content_type();
+
+      if ( ($this->content_type != 'virtual') && ($_SESSION['sendto'] == false) ) {
+        $_SESSION['sendto'] = $customer_default_address_id;
+      }
 
       $customer_address_query = vam_db_query("select c.payment_unallowed,c.customers_id,c.shipping_unallowed,c.customers_firstname,c.customers_secondname,c.customers_cid, c.customers_gender,c.customers_lastname, c.customers_telephone, c.customers_email_address, c.orig_reference, c.login_reference, c.customers_personal_discount, ab.entry_company, ab.entry_street_address, ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id, z.zone_name, co.countries_id, co.countries_name, co.countries_iso_code_2, co.countries_iso_code_3, co.address_format_id, ab.entry_state from " . TABLE_CUSTOMERS . " c, " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) left join " . TABLE_COUNTRIES . " co on (ab.entry_country_id = co.countries_id) where c.customers_id = '" . $_SESSION['customer_id'] . "' and ab.customers_id = '" . $_SESSION['customer_id'] . "' and c.customers_default_address_id = ab.address_book_id");
       $customer_address = vam_db_fetch_array($customer_address_query);
