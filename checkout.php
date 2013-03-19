@@ -19,7 +19,7 @@
    ---------------------------------------------------------------------------------------*/
 
 //description
-//$sendto = is from db table ADRESS_BOOK the adress_book_id
+//$_SESSION['sendto'] = is from db table ADRESS_BOOK the adress_book_id
 
 
 require('includes/application_top.php');
@@ -746,15 +746,15 @@ $order_total_modules->process();
  // if no shipping destination address was selected, use the customers own address as default
   if (!vam_session_is_registered('sendto')) {
     vam_session_register('sendto');
-    $sendto = $customer_default_address_id;
+    $_SESSION['sendto'] = $customer_default_address_id;
   } else {
 // verify the selected shipping address
-    if ( (is_array($sendto) && empty($sendto)) || is_numeric($sendto) ) {
-      $check_address_query = vam_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$sendto . "'");
+    if ( (is_array($_SESSION['sendto']) && empty($_SESSION['sendto'])) || is_numeric($_SESSION['sendto']) ) {
+      $check_address_query = vam_db_query("select count(*) as total from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "' and address_book_id = '" . (int)$_SESSION['sendto'] . "'");
       $check_address = vam_db_fetch_array($check_address_query);
 
       if ($check_address['total'] != '1') {
-        $sendto = $customer_default_address_id;
+        $_SESSION['sendto'] = $customer_default_address_id;
         if (vam_session_is_registered('shipping')) vam_session_unregister('shipping');
       }
     }
@@ -784,7 +784,7 @@ $order_total_modules->process();
   if ($order->content_type == 'virtual') {
     if (!vam_session_is_registered('shipping')) vam_session_register('shipping');
     $shipping = false;
-    $sendto = false;
+    $_SESSION['sendto'] = false;
 	$checkout_possible = true; //avoid shipping validation
 	
 	$payment_address_selected = '1'; //hide payemt address validation
@@ -816,7 +816,7 @@ $order_total_modules->process();
 //Free products - could have shipping costs so payment is needed
   if ($order->info['subtotal'] == '0') {
 	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
-		$sendto = $customer_default_address_id; 
+		$_SESSION['sendto'] = $customer_default_address_id; 
 	}
   }
 
@@ -829,7 +829,7 @@ $order_total_modules->process();
 	if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	
 	if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
-		$sendto = $customer_default_address_id; 
+		$_SESSION['sendto'] = $customer_default_address_id; 
 	}
   }*/
 
@@ -845,7 +845,7 @@ $order_total_modules->process();
 	  if (!vam_session_is_registered('free_payment')) {vam_session_register('free_payment');} //hack for free payment
 	  
 	  if (vam_session_is_registered('customer_id')) { //IS LOGGED ON
-		$sendto = $customer_default_address_id;
+		$_SESSION['sendto'] = $customer_default_address_id;
 	  }
   }
   
@@ -891,10 +891,10 @@ $order_total_modules->process();
 
 
 //bugfix
-if ($sendto == '') {
+if ($_SESSION['sendto'] == '') {
 	$new_address_query = vam_db_query("select customers_default_address_id from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
 	$new_address = vam_db_fetch_array($new_address_query);   // Hole Language aus orders DB
-	$sendto = $new_address['customers_default_address_id'];
+	$_SESSION['sendto'] = $new_address['customers_default_address_id'];
 }
 //bugfix end
 
@@ -1329,7 +1329,7 @@ if (isset($_POST['payment'])) $payment = $_POST['payment'];
 ############################# process the selected payment method END ######################################
 
 // set them here after $customer_default_address_id is created (ca. line 491)
-$sendto = $customer_default_address_id;
+$_SESSION['sendto'] = $customer_default_address_id;
 
 
 
@@ -1619,7 +1619,7 @@ $vamTemplate->assign('TITLE_SHIPPING_ADDRESS', $smart_checkout_title_shipping);
 
 if (vam_session_is_registered('customer_id')) {
 
-$vamTemplate->assign('ADDRESS_LABEL_SHIPPING_ADDRESS', vam_address_label($customer_id, $sendto, true, ' ', '<br />'));
+$vamTemplate->assign('ADDRESS_LABEL_SHIPPING_ADDRESS', vam_address_label($customer_id, $_SESSION['sendto'], true, ' ', '<br />'));
 $vamTemplate->assign('BUTTON_SHIPPING_ADDRESS', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('edit.png', IMAGE_BUTTON_CHANGE_ADDRESS).'</a>');	
 
 } else { //no account
