@@ -32,9 +32,9 @@ var url='checkout.php';
 	
 $('#box')
 
-.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val()});})	
+.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()});})	
 
-.on('change', 'input[name=shipping]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
+.on('change', 'input[name=shipping],input[name=payment]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 
 ;}
 </script>  
