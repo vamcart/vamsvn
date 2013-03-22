@@ -42,9 +42,9 @@ class cash {
 	function update_status() {
 		global $order;
 
-		if ($_SESSION['shipping']['id'] != 'selfpickup_selfpickup') {
-			$this->enabled = false;
-		}
+		//if ($_SESSION['shipping']['id'] != 'selfpickup_selfpickup') {
+			//$this->enabled = false;
+		//}
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_CASH_ZONE > 0)) {
 			$check_flag = false;
