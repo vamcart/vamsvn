@@ -11,8 +11,8 @@
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(header.php,v 1.19 2002/04/13); www.oscommerce.com 
-   (c) 2003	 nextcommerce (header.php,v 1.17 2003/08/24); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (header.php,v 1.17 2003/08/24); xt-commerce.com
+   (c) 2003     nextcommerce (header.php,v 1.17 2003/08/24); www.nextcommerce.org
+   (c) 2004     xt:Commerce (header.php,v 1.17 2003/08/24); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -44,24 +44,24 @@
             <tr>
               <td>
               
-	<div id="nav" class="nav">
-		<div id="menu">
-			<ul>
-				<li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
+    <div id="nav" class="nav">
+        <div id="menu">
+            <ul>
+                <li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_ORDERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
 
-							<td>
-								<dl>
-								
+                            <td>
+                                <dl>
+                                
 <?php
   $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
   $admin_access = vam_db_fetch_array($admin_access_query); 
 ?>
-								
+                                
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ORDERS, '', 'NONSSL') . '">' . BOX_ORDERS . '</a></dd>' . "\n";
@@ -81,25 +81,25 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                            </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
-				</li>				
-				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
+                </li>                
+                <li><a class="sub" href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
 
-							<td>
-								<dl>
+                            <td>
+                                <dl>
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['categories'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL') . '">' . BOX_CATEGORIES . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_options'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL') . '">' . BOX_PRODUCTS_OPTIONS . '</a></dd>' . "\n";
@@ -125,25 +125,25 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                            </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
-				</li>
-				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
+                </li>
+                <li><a class="sub" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_CUSTOMERS; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
 
-							<td>
-								<dl>
+                            <td>
+                                <dl>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL') . '">' . BOX_CUSTOMERS . '</a></dd>' . "\n";
@@ -155,25 +155,25 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                            </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
-				</li>
-				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_MODULES; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
+                </li>
+                <li><a class="sub" href="<?php echo vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_MODULES; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
 
-							<td>
-								<dl>
+                            <td>
+                                <dl>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL') . '">' . BOX_PAYMENT . '</a></dd>' . "\n";
@@ -191,26 +191,26 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                            </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
-				</li>
-				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_BACKUP, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_OTHER; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
+                </li>
+                <li><a class="sub" href="<?php echo vam_href_link(FILENAME_BACKUP, 'gID=1', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_OTHER; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
 
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
-							<td>
-								<dl>
-									<dt><?php echo BOX_HEADING_TOOLS; ?></dt>
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
+                            <td>
+                                <dl>
+                                    <dt><?php echo BOX_HEADING_TOOLS; ?></dt>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['backup'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_BACKUP) . '">' . BOX_BACKUP . '</a></dd>' . "\n";
@@ -244,11 +244,11 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
-							</td>
-							<td>
-								<dl>
-									<dt><?php echo BOX_HEADING_LOCATION_AND_TAXES; ?></dt>
+                                </dl>
+                            </td>
+                            <td>
+                                <dl>
+                                    <dt><?php echo BOX_HEADING_LOCATION_AND_TAXES; ?></dt>
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['countries'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_COUNTRIES, '', 'NONSSL') . '">' . BOX_COUNTRIES . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['zones'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ZONES, '', 'NONSSL') . '">' . BOX_ZONES . '</a></dd>' . "\n";
@@ -265,7 +265,7 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
  
 ?>
-									<dt><?php echo BOX_HEADING_LOCALIZATION; ?></dt>
+                                    <dt><?php echo BOX_HEADING_LOCALIZATION; ?></dt>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['currencies'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CURRENCIES, '', 'NONSSL') . '">' . BOX_CURRENCIES . '</a></dd>' . "\n";
@@ -277,7 +277,7 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
  
 ?>
-									<dt><?php echo BOX_HEADING_GV_ADMIN; ?></dt>
+                                    <dt><?php echo BOX_HEADING_GV_ADMIN; ?></dt>
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['coupon_admin'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_COUPON_ADMIN, '', 'NONSSL') . '">' . BOX_COUPON_ADMIN . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['gv_queue'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_GV_QUEUE, '', 'NONSSL') . '">' . BOX_GV_ADMIN_QUEUE . '</a></dd>' . "\n";
@@ -292,7 +292,7 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-									<dt><?php echo BOX_HEADING_STATISTICS; ?></dt>
+                                    <dt><?php echo BOX_HEADING_STATISTICS; ?></dt>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_products_viewed'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_STATS_PRODUCTS_VIEWED, '', 'NONSSL') . '">' . BOX_PRODUCTS_VIEWED . '</a></dd>' . "\n";
@@ -308,11 +308,11 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-							<td>
-								<dl>
+                            </td>
+                            <td>
+                                <dl>
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_sales_report'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SALES_REPORT, '', 'NONSSL') . '">' . BOX_SALES_REPORT . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['stats_sales_report2'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, '', 'NONSSL') . '">' . BOX_SALES_REPORT2 . '</a></dd>' . "\n";
@@ -328,7 +328,7 @@
 
 ?>
 
-									<dt><?php echo BOX_HEADING_ARTICLES; ?></dt>
+                                    <dt><?php echo BOX_HEADING_ARTICLES; ?></dt>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '">' . BOX_TOPICS_ARTICLES . '</a></dd>' . "\n";
@@ -345,7 +345,7 @@
 
 ?>
 
-									<dt><?php echo BOX_HEADING_AFFILIATE; ?></dt>
+                                    <dt><?php echo BOX_HEADING_AFFILIATE; ?></dt>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=28', 'NONSSL') . '">' . BOX_AFFILIATE_CONFIGURATION . '</a></dd>';
@@ -370,26 +370,26 @@
 
 ?>
 
-								</dl>
-							</td>
-						</tr></table>
-						</div>
+                                </dl>
+                            </td>
+                        </tr></table>
+                        </div>
 
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-				</li>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
 
-				<li><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_CONFIGURATION; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <li><a class="sub" href="<?php echo vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_CONFIGURATION; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
 
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
-						<td>
-							<dl>
-								<dt><?php echo BOX_HEADING_CONFIGURATION_MAIN; ?></dt>
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
+                        <td>
+                            <dl>
+                                <dt><?php echo BOX_HEADING_CONFIGURATION_MAIN; ?></dt>
 
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '">' . BOX_CONFIGURATION_1 . '</a></dd>' . "\n";
@@ -405,11 +405,11 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=11', 'NONSSL') . '">' . BOX_CONFIGURATION_11 . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cache'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CACHE, '', 'NONSSL') . '">' . BOX_CACHE_FILES . '</a></dd>' . "\n";
 ?>  
-							</dl>
-						</td>
+                            </dl>
+                        </td>
 
-						<td>
-							<dl>
+                        <td>
+                            <dl>
 
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=12', 'NONSSL') . '">' . BOX_CONFIGURATION_12 . '</a></dd>' . "\n";
@@ -422,7 +422,7 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '">' . BOX_CONFIGURATION_22 . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '">' . BOX_CONFIGURATION_24 . '</a></dd>' . "\n";
 ?>
-								<dt><?php echo BOX_HEADING_OTHER; ?></dt>
+                                <dt><?php echo BOX_HEADING_OTHER; ?></dt>
 
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_vpe'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL') . '">' . BOX_PRODUCTS_VPE . '</a></dd>' . "\n";
@@ -430,11 +430,11 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></dd>' . "\n";
 ?>
 
-							</dl>
-						</td>
+                            </dl>
+                        </td>
 
-						<td>
-							<dl>
+                        <td>
+                            <dl>
 
 <?php
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=19', 'NONSSL') . '">' . BOX_CONFIGURATION_19 . '</a></dd>' . "\n";
@@ -457,25 +457,25 @@
 
 ?>
 
-							</dl>
-						</td>
-						</tr></table>
-						</div>
-					</div>
-				</div>
+                            </dl>
+                        </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
 
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-				</li>
-								
-				<li><a class="sub" href="http://vamshop.ru" target="_blank"><b><?php echo BOX_HEADING_HELP; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
-				<div class="holder">
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                                
+                <li><a class="sub" href="http://vamshop.ru" target="_blank" onclick="return false"><b><?php echo BOX_HEADING_HELP; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
 
-					<div class="leftSide">
-						<div class="rightSide">
-						<table><tr>
-							<td>
-								<dl>
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
+                            <td>
+                                <dl>
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru" target="_blank">' . BOX_SUPPORT_SITE . '</a></dd>' . "\n";
@@ -488,22 +488,22 @@
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
 ?>
-								</dl>
+                                </dl>
 
-							</td>
-						</tr></table>
-						</div>
+                            </td>
+                        </tr></table>
+                        </div>
 
-					</div>
-				</div>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-				</li>
-				<li class="level1"><a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>"  target="_blank"><b><?php echo HEADER_TITLE_ONLINE_CATALOG; ?></b></a></li>
-				<li class="level1"><a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_LOGOFF; ?></b></a></li>
-			</ul>
-		</div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                <li class="level1"><a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>"  target="_blank"><b><?php echo HEADER_TITLE_ONLINE_CATALOG; ?></b></a></li>
+                <li class="level1"><a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>"><b><?php echo BOX_HEADING_LOGOFF; ?></b></a></li>
+            </ul>
+        </div>
 
-	</div>
+    </div>
 
 <div class="clear">
 
@@ -512,5 +512,5 @@
 </table>
 
 <?php } ?>
-	
+    
 <!-- /шапка -->
