@@ -298,13 +298,47 @@ if (is_dir(DIR_FS_CATALOG_IMAGES)) {
 }
 
 // end of pre-checks and actions, HTML output follows
+
+
+// Generate category reverse path in title - START
+
+$title_category_path_string = '';
+
+if ( isset( $_GET[ 'pID' ] ) )
+{
+    $title_category_path_string = vam_get_products_name( (int)$_GET[ 'pID' ] ).' - ';
+};
+
+
+$title_category_path_current_id = $current_category_id;
+
+while ( $title_category_path_current_id )
+{
+    $title_category_path_query = vam_db_query( "select categories_name from  " . TABLE_CATEGORIES_DESCRIPTION . " where language_id = '" . $_SESSION['languages_id'] . "' and categories_id = '" . $title_category_path_current_id . "'" );
+    $title_category_path_result = vam_db_fetch_array( $title_category_path_query );
+    $title_category_path_string .= $title_category_path_result[ 'categories_name' ];
+
+    $title_category_path_query = vam_db_query( "select parent_id from  " . TABLE_CATEGORIES . " where categories_id = '" . $title_category_path_current_id . "'" );
+    $title_category_path_result = vam_db_fetch_array( $title_category_path_query );
+    $title_category_path_current_id = $title_category_path_result[ 'parent_id' ];
+    if ( $title_category_path_current_id != 0 ) $title_category_path_string .= '-';
+
+};  // while ( $title_category_path_current_id )
+
+if ( !$title_category_path_string ) $title_category_path_string = TITLE;
+
+// Generate category reverse path in title - END
+
+
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
-		<title><?php echo TITLE; ?></title>
+		<title><?php echo $title_category_path_string; ?></title>
 		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
 		<!-- AJAX Attribute Manager -->
