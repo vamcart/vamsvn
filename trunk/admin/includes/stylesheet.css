@@ -775,7 +775,7 @@ way to fit your requirements.
 #menu table.ie6 {border-collapse:collapse; margin:0; padding:0;}
 
 #menu ul {padding:0; margin:0; list-style: none;}
-#menu ul li {float:left;}
+#menu ul li {float:left; position:relative;}
 #menu ul li a {display:block; float:left;padding:0 15px 0 0;text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:13px; background:url(../images/menu/tabCenter.gif) no-repeat right top;}
 #menu ul li a b {display:block; float:left;padding:0 0 0 15px; text-decoration:none; color:#fff; font-weight:bold; height:41px;line-height:40px;font-size:13px;background:url(../images/menu/tabCenter.gif) no-repeat left top; cursor:pointer;}
 
@@ -784,11 +784,13 @@ way to fit your requirements.
 #menu ul li div .leftSide {float:left;background: #ddd url(../images/menu/dropLeft.gif) no-repeat left bottom;}
 #menu ul li div .rightSide {float:left; margin-left:10px; display:inline; padding:0 10px 0 0; background: #aaa url(../images/menu/dropRight.gif) no-repeat right bottom;}
 
+
 #menu ul li:hover {position:relative;}
 #menu ul li a:hover {color:#910; background-position:right center; white-space:nowrap; position:relative;}
 #menu ul li a:hover b {color:#910; background-position:left center;}
 #menu ul li a.sub:hover {color:#910; background-position:right bottom; white-space:nowrap; position:relative;}
 #menu ul li a.sub:hover b {color:#910; background-position:left bottom;}
+
 
 #menu ul li:hover > a {color:#910; position:relative;}
 #menu ul li:hover a.sub {color:#910; background-position:right bottom; white-space:nowrap; position:relative;}
@@ -798,6 +800,21 @@ way to fit your requirements.
 
 #menu ul li.right a:hover div.holder {left:auto; right:3px; top:41px;}
 #menu ul li.right:hover div.holder {left:auto; right:4px; top:41px;}
+
+
+/* Active menu link fix for tablets  - START */
+
+#menu ul li a:focus+div.holder {position:absolute; top:41px; left:4px; margin: 0; padding: 0;}
+#menu ul li {position:relative;}
+#menu ul li a:focus, #menu ul li a:active {color:#910; background-position:right center; white-space:nowrap; position:relative;}
+#menu ul li a:focus b, #menu ul li a:active b {color:#910; background-position:left center;}
+#menu ul li a:focus b, #menu ul li a:active b {color:#910; background-position:left center;}
+#menu ul li a.sub:focus, #menu ul li a.sub:active {color:#910; background-position:right bottom; white-space:nowrap; position:relative;}
+#menu ul li a.sub:focus b, #menu ul li a.sub:active b {color:#910; background-position:left bottom;}
+
+/* Active menu link fix for tablets  - END */
+
+
 
 #menu ul dl {width:auto; margin:5px 0 10px 0; padding:0 5px;list-style:none;}
 #menu ul dl dt {padding:0 10px; margin:0; line-height:20px; background:#488; color:#fff; white-space:nowrap;}
