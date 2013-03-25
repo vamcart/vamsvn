@@ -24,6 +24,33 @@
 if (vam_session_is_registered('customer_id')) { ?>
 <script type="text/javascript">
 
+$(hidePay);		
+	function hidePay()	{
+	if ($("#pay_show").is(":checked") == '1')
+		{
+	$("#pay_show").attr('checked', true);
+	$("#payment_address").css("display","none");
+	}
+	else
+	{
+	$("#pay_show").attr('checked', false);
+	}
+	
+
+	$("#pay_show").click(function(){
+// If checked
+        if ($("#pay_show").is(":checked"))
+		{
+            //show the hidden div
+            $("#payment_address").hide("fast");
+        }
+		else
+		{
+		$("#payment_address").show("fast");
+		}
+	});
+	;}
+	
 $(init);
 function init()
 	{
@@ -33,6 +60,8 @@ var url='checkout.php';
 $('#box')
 
 .on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()});})	
+
+.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()});})		
 
 .on('change', 'input[name=shipping],input[name=payment]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 
