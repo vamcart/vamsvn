@@ -53,6 +53,7 @@ foreach ($datarev as $val) {
 }
 if (count($data) > 0) {
 //выводит Обратите внимание на следующие товары:
+    $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
     $module->assign('language', $_SESSION['language']);
     $module->assign('module_content', $data);
     // set cache ID
