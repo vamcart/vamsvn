@@ -211,7 +211,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
     } else {
       $newsletter = false;
     }
-    $password = vam_db_prepare_input($_POST['password']);
+    $password = vam_RandomString(8);
     $confirmation = vam_db_prepare_input($_POST['confirmation']);
 	
 	//start with input validation for shipping address /////////
@@ -1982,11 +1982,7 @@ if (ACCOUNT_FAX == 'true') {
 
 $vamTemplate->assign('TITLE_CONTACT_PASSWORD', vam_get_sc_titles_number() . SC_HEADING_CREATE_ACCOUNT);
 
-if (SC_CREATE_ACCOUNT_REQUIRED == 'true') {
 $vamTemplate->assign('TEXT_CONTACT_PASSWORD', SC_TEXT_PASSWORD_REQUIRED); //show message that you need to create an account
-} elseif (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true)) {
-$vamTemplate->assign('TEXT_CONTACT_PASSWORD', SC_TEXT_VIRTUAL_PRODUCT);  //show message that you need to create an account if virtual product
-}
 
 
 ################ START Password - optional ######################################## 

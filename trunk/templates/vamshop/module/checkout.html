@@ -141,16 +141,12 @@
 {if !$smarty.session.customer_id}
 <div id="password_box" class="sm_layout_box">
 {if $TITLE_CONTACT_PASSWORD}<h2>{$TITLE_CONTACT_PASSWORD}</h2>{/if}
-<p>{$TEXT_CONTACT_PASSWORD}</p>
 <div id="password_checkbox">
 {$PASSWORD_CHECKBOX}
 </div>
 {if $create_password=='1'}
 <div id="password_fields">
-<fieldset class="form">
-<p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
-<p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
-</fieldset>
+<p>{$TEXT_CONTACT_PASSWORD}</p>
 </div> <!--div end password_fields --> 
 {/if}
 </div> <!--div end password_box -->  
