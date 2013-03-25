@@ -140,7 +140,7 @@ define('TEXT_CREATE_ACCOUNT_OPTIONAL', 'Я не хочу регистриров�
 define('SC_HEADING_CREATE_ACCOUNT', 'Регистрация аккаунта');
 define('SC_HEADING_CREATE_ACCOUNT_INFORMATION', 'Информация');
 define('SC_TEXT_VIRTUAL_PRODUCT', 'Для загрузки скачиваемых товаров Вы должны зарегистрировать аккаунт!');
-define('SC_TEXT_PASSWORD_REQUIRED', 'Вы должны зарегистрировать аккаунт для оформления заказа!');
+define('SC_TEXT_PASSWORD_REQUIRED', 'Ваш пароль для входа будет сгенерирован автоматически и отправлен на указанный email.');
 
 //email specific
 define('EMAIL_USERNAME', 'Email: ' . stripslashes($_POST['email_address']) . "\n\n");
