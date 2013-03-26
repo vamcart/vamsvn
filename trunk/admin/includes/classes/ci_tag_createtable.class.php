@@ -34,7 +34,8 @@ class Tc_createtable extends ContribInstallerBaseTag {
 	function do_install() {
 		$sqlq = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . $this->data['tablename'] . "` " . $this->data['data'] . ";";
 		if (cip_db_query($sqlq) === false) {
-			$this->error('SQL error :<b>' . mysql_errno() . ' - ' . mysql_error() . '<br>' . $this->data['tablename']);
+			global $$link;
+			$this->error('SQL error :<b>' . mysqli_errno($$link) . ' - ' . mysqli_error($$link) . '<br>' . $this->data['tablename']);
 			return;
 		}
 
@@ -54,7 +55,8 @@ class Tc_createtable extends ContribInstallerBaseTag {
 			//$output .= "<div class=\"section\"><font class=\"section-title\">" . RUN_SQL_REMOVE_QUERY_TEXT . "</font><p class=\"sql_code\">" .
 			//nl2br(htmlentities($sqlq)) . "</p></div>";
 			if (cip_db_query($sqlq) === false) {
-				$this->error('SQL error :<b>' . mysql_errno() . ' - ' . mysql_error() . '<br>' . $this->data['tablename']);
+				global $$link;
+				$this->error('SQL error :<b>' . mysqli_errno($$link) . ' - ' . mysqli_error($$link) . '<br>' . $this->data['tablename']);
 			}
 		}
 		$tblrows .= "  define('TABLE_" . strtoupper($this->data['tablename']) . "', (defined('DB_PREFIX') ? DB_PREFIX : '').'" . strtolower($this->data['tablename']) . "');\n";

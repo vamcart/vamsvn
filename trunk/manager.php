@@ -31,13 +31,12 @@
     $path_elements = explode("/", $URI_elements[0]);
     $URI_elements[0] = $path_elements[sizeof($path_elements) - 1];
     
-    $db_l = mysql_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
-    mysql_select_db(DB_DATABASE);
+    $db_l = mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
 
     $query = 'select categories_id from ' . TABLE_CATEGORIES . ' where BINARY categories_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-    $result = mysql_query($query);
-    if (mysql_num_rows($result) > 0) {
-      $row = mysql_fetch_array($result, MYSQL_ASSOC);
+    $result = mysqli_query($db_l, $query);
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
       $cId = $row['categories_id'];
       $matched = true;
     } else {
@@ -48,16 +47,16 @@
       $HTTP_GET_VARS['cat'] = $cId;
       $_GET['cat'] = $cId;
 
-      mysql_free_result($result);
-      mysql_close();
+      mysqli_free_result($result);
+      mysqli_close($db_l);
       $PHP_SELF = '/index.php';
       include('index.php');
     } else {
-      mysql_free_result($result);
+      mysqli_free_result($result);
       $query = 'select products_id from ' . TABLE_PRODUCTS . ' where BINARY products_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-      $result = mysql_query($query);
-      if (mysql_num_rows($result) > 0) {
-        $row = mysql_fetch_array($result, MYSQL_ASSOC);
+      $result = mysqli_query($db_l, $query);
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $pId = $row['products_id'];
         $matched = true;
       } else {
@@ -67,16 +66,16 @@
         $HTTP_GET_VARS['products_id']  = $pId;
         $_GET['products_id']  = $pId;
         
-        mysql_free_result($result);
-        mysql_close();
+        mysqli_free_result($result);
+        mysqli_close($db_l);
         $PHP_SELF = '/product_info.php';
         include('product_info.php');
       } else {
-        mysql_free_result($result);
+        mysqli_free_result($result);
         $query = 'select content_id from ' . TABLE_CONTENT_MANAGER . ' where BINARY content_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $result = mysqli_query($db_l, $query);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $coID = $row['content_id'];
           $matched = true;
         } else {
@@ -85,17 +84,17 @@
         if ($matched) {
           $HTTP_GET_VARS['coID']  = $coID;
           $_GET['coID']  = $coID;
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           $PHP_SELF = '/shop_content.php';
           include('shop_content.php');
         } else {
         
-        mysql_free_result($result);
+        mysqli_free_result($result);
         $query = 'select articles_id from ' . TABLE_ARTICLES . ' where BINARY articles_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $result = mysqli_query($db_l, $query);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $aID = $row['articles_id'];
           $matched = true;
         } else {
@@ -104,18 +103,18 @@
         if ($matched) {
           $HTTP_GET_VARS['articles_id']  = $aID;
           $_GET['articles_id']  = $aID;
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           $PHP_SELF = '/article_info.php';
           include('article_info.php');
         } else {
         
 
-        mysql_free_result($result);
+        mysqli_free_result($result);
         $query = 'select topics_id from ' . TABLE_TOPICS . ' where BINARY topics_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $result = mysqli_query($db_l, $query);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $tID = $row['topics_id'];
           $matched = true;
         } else {
@@ -124,17 +123,17 @@
         if ($matched) {
           $HTTP_GET_VARS['tPath']  = $tID;
           $_GET['tPath']  = $tID;
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           $PHP_SELF = '/articles.php';
           include('articles.php');
         } else {
 
-        mysql_free_result($result);
+        mysqli_free_result($result);
         $query = 'select news_id from ' . TABLE_LATEST_NEWS . ' where BINARY news_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $result = mysqli_query($db_l, $query);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $nID = $row['news_id'];
           $matched = true;
         } else {
@@ -143,16 +142,16 @@
         if ($matched) {
           $HTTP_GET_VARS['news_id']  = $nID;
           $_GET['news_id']  = $nID;
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           $PHP_SELF = '/news.php';
           include('news.php');
         } else {
 
         $query = 'select faq_id from ' . TABLE_FAQ . ' where BINARY faq_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) > 0) {
-          $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $result = mysqli_query($db_l, $query);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $fID = $row['faq_id'];
           $matched = true;
         } else {
@@ -161,14 +160,14 @@
         if ($matched) {
           $HTTP_GET_VARS['faq_id']  = $fID;
           $_GET['faq_id']  = $fID;
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           $PHP_SELF = '/faq.php';
           include('faq.php');
         } else {
        
-          mysql_free_result($result);
-          mysql_close();
+          mysqli_free_result($result);
+          mysqli_close($db_l);
           header('HTTP/1.1 404 Not Found');
           $PHP_SELF = '/index.php';
           include('index.php');
@@ -193,9 +192,9 @@
                                 from " . TABLE_CATEGORIES . "
                                 where categories_id = '" . (int)$categories_id . "'";
 
-    $result = mysql_query($parent_categories_query);
+    $result = mysqli_query($db_l, $parent_categories_query);
 
-    while ($parent_categories = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    while ($parent_categories = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
       if ($parent_categories['parent_id'] == 0) return true;
       $categories[sizeof($categories)] = $parent_categories['parent_id'];
       if ($parent_categories['parent_id'] != $categories_id) {
@@ -215,11 +214,11 @@
                        and p.products_status = '1'
                        and p.products_id = p2c.products_id limit 1";
 
-    $category = mysql_query($category_query);
+    $category = mysqli_query($db_l, $category_query);
 
-    if (mysql_num_rows($category) > 0) {
+    if (mysqli_num_rows($category) > 0) {
 
-      $category = mysql_fetch_array($category, MYSQL_ASSOC);
+      $category = mysqli_fetch_array($category, MYSQLI_ASSOC);
 
       $categories = array();
       get_parent_categories($categories, $category['categories_id']);

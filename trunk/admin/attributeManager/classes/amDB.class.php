@@ -43,7 +43,7 @@ class amDB {
 	 * @return int - number of fields in result
 	 */
 	function numFields($ref) {
-		return mysql_num_fields($ref);
+		return mysqli_num_fields($ref);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ class amDB {
 	 * @return string - name of the field
 	 */
 	function fieldName($ref,$offset) {
-		return mysql_field_name($ref,$offset);
+		return mysqli_field_name($ref,$offset);
 	}
 	
 	/**
@@ -88,7 +88,7 @@ class amDB {
 	function getOne($strQuery) {
 		$res = amDB::query($strQuery);
 		if ($res && amDB::numRows($res)) 
-			return mysql_result($res,0,0);
+			return mysqli_result($res,0,0);
 		return false;
 	}
 	
@@ -138,7 +138,7 @@ class amDB {
 	 */
 	function insertId($link = 'db_link' ) {
 		global $$link;
-		return mysql_insert_id($$link);
+		return mysqli_insert_id($$link);
 	}
 }
 

@@ -85,10 +85,10 @@
 	function general_db_conct($query_1)
 	{
 	  $result_1 = vam_db_query($query_1);
-  	  $num_of_rows = mysql_num_rows($result_1);
+  	  $num_of_rows = vam_db_num_rows($result_1);
 	  for ($i=0;$i<$num_of_rows;$i++)
 	  {
-	    $fields = mysql_fetch_row($result_1);
+	    $fields = mysqli_fetch_row($result_1);
 	    $a_to_pass[$i]= $fields[$y=0];
 	    $b_to_pass[$i]= $fields[++$y];
     	    $c_to_pass[$i]= $fields[++$y];

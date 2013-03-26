@@ -223,7 +223,7 @@ FROM orders WHERE orders_id >= $start AND orders_id <= $end ORDER BY orders_id")
 //patch
 
 //$csv_output ="\n";
-while ($row_orders = mysql_fetch_array($orders)) { //start one loop
+while ($row_orders = vam_db_fetch_array($orders)) { //start one loop
  
 $csv_output_ordersbefore = $csv_output;
 
@@ -268,7 +268,7 @@ $Order_Special_Notes = "";
  $orders_status_history = vam_db_query("select comments from orders_status_history
  where orders_id = " . $Orders_id);
  //$row_orders_status_history = vam_db_fetch_array($comments);
- while($row_orders_status_history = mysql_fetch_array($orders_status_history)) {
+ while($row_orders_status_history = vam_db_fetch_array($orders_status_history)) {
  // end //
 
 $Comments = filter_text($row_orders_status_history["comments"]);
@@ -279,7 +279,7 @@ $Comments = filter_text($row_orders_status_history["comments"]);
 $orders_subtotal = vam_db_query("select value from orders_total
 where class = 'ot_subtotal' and orders_id = " . $Orders_id);
 //$row_orders_subtotal = vam_db_fetch_array($orders_subtotal);
-while($row_orders_subtotal = mysql_fetch_array($orders_subtotal)) {
+while($row_orders_subtotal = vam_db_fetch_array($orders_subtotal)) {
  // end //
 $Order_Subtotal = filter_text($row_orders_subtotal["value"]);
 }
@@ -288,7 +288,7 @@ $Order_Subtotal = filter_text($row_orders_subtotal["value"]);
 $orders_tax = vam_db_query("select value from orders_total
 where class = 'ot_tax' and orders_id = " . $Orders_id);
 //$row_orders_tax = vam_db_fetch_array($orders_tax);
-while($row_orders_tax = mysql_fetch_array($orders_tax)) {
+while($row_orders_tax = vam_db_fetch_array($orders_tax)) {
  // end //
 $Order_Tax = filter_text($row_orders_tax["value"]);
 }
@@ -297,7 +297,7 @@ $Order_Tax = filter_text($row_orders_tax["value"]);
 $orders_insurance = vam_db_query("select value from orders_total
 where class = 'ot_insurance' and orders_id = " . $Orders_id);
 //$row_orders_insurance = vam_db_fetch_array($orders_insurance);
-while($row_orders_insurance = mysql_fetch_array($orders_insurance)) {
+while($row_orders_insurance = vam_db_fetch_array($orders_insurance)) {
  // end //
 $Order_Insurance = filter_text($row_orders_insurance["value"]);
 }
@@ -307,7 +307,7 @@ $Tax_Exempt_Message = "";
 $orders_shipping = vam_db_query("select title, value from orders_total
 where class = 'ot_shipping' and orders_id = " . $Orders_id);
 //$row_orders_shipping = vam_db_fetch_array($orders_shipping);
-while($row_orders_shipping = mysql_fetch_array($orders_shipping)) {
+while($row_orders_shipping = vam_db_fetch_array($orders_shipping)) {
  // end //
 $Order_Shipping_Total = $row_orders_shipping["value"];
 $Shipping_Method = filter_text($row_orders_shipping["title"]); // Shipping method from query 5
@@ -317,7 +317,7 @@ $Shipping_Method = filter_text($row_orders_shipping["title"]); // Shipping metho
 $orders_residential_fee = vam_db_query("select value from orders_total
 where class = 'ot_giftwrap' and orders_id = " . $Orders_id);
 //$row_orders_residential_fee = vam_db_fetch_array($orders_residential_fee);
-while($row_orders_residential_fee = mysql_fetch_array($orders_residential_fee)) {
+while($row_orders_residential_fee = vam_db_fetch_array($orders_residential_fee)) {
  // end //
 $Small_Order_Fee = $row_orders_residential_fee["value"];
 }
@@ -330,7 +330,7 @@ $CODAmount  = "";
 $orders_total = vam_db_query("select value from orders_total
 where class = 'ot_total' and orders_id = " . $Orders_id);
 //$row_orders_total = vam_db_fetch_array($orders_total);
-while($row_orders_total = mysql_fetch_array($orders_total)) {
+while($row_orders_total = vam_db_fetch_array($orders_total)) {
  // end //
 $Order_Grand_Total = $row_orders_total["value"];
 }
@@ -339,7 +339,7 @@ $Order_Grand_Total = $row_orders_total["value"];
 $orders_count = vam_db_query("select count(products_quantity) as o_count from orders_products
 where orders_id = " . $Orders_id);
 //$row_orders_total = vam_db_fetch_array($orders_total);
-while($row_orders_count = mysql_fetch_array($orders_count)) {
+while($row_orders_count = vam_db_fetch_array($orders_count)) {
  // end //
 $Number_of_Items = $row_orders_count[0]; // used array to show the number of items ordered
 }
@@ -443,7 +443,7 @@ $csv_output_item = "";
 
 $csv_output_order = str_replace($csv_output_ordersbefore, "", $csv_output);
 
-while($row_orders_products = mysql_fetch_array($orders_products)) {
+while($row_orders_products = vam_db_fetch_array($orders_products)) {
 	// loop through orders
 	// More than one product per order, new line
 	
@@ -466,7 +466,7 @@ while($row_orders_products = mysql_fetch_array($orders_products)) {
 	$orders_products_attributes = vam_db_query("select products_options, products_options_values from orders_products_attributes 
 	where orders_id = " . $Orders_id . " and orders_products_id  = " . $Products_id);
 	
-	while($row_orders_products_attributes = mysql_fetch_array($orders_products_attributes)) {
+	while($row_orders_products_attributes = vam_db_fetch_array($orders_products_attributes)) {
 		$csv_output_item .= filter_text($row_orders_products_attributes[0]) . "," ;
 		$csv_output_item .= filter_text($row_orders_products_attributes[1]) . "," ;
 	} 

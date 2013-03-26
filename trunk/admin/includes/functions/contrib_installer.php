@@ -21,15 +21,15 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         //     $report manage a way of error reporting and can be:
         //     no, direct, return, add_session, add
         global $$link, $logger, $message;
-        $result = mysql_query($query, $$link);
+        $result = mysqli_query($$link, $query);
 
         if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
             if (!is_object($logger))     $logger = new logger;
             $logger->write($query, 'QUERY');
-            if ($result===false)     $logger->write(mysql_error(), 'ERROR');
+            if ($result===false)     $logger->write(mysqli_error($$link), 'ERROR');
         }
         if ($result===false) {
-            $error='SQL error :<b>'.mysql_errno().' - '.mysql_error().'<br>'.$query;
+            $error='SQL error :<b>'.mysqli_errno($$link).' - '.mysqli_error($$link).'<br>'.$query;
 
             if ($report=='direct')    echo $error;
             elseif ($report=='return')     $result=$error;
@@ -43,7 +43,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         }
     }
 
-    function sql_error($query) {return 'SQL error : '.mysql_errno().' - '.mysql_error().'<br>'.$query;}
+    function sql_error($query) {return 'SQL error : '.mysqli_errno($$link;).' - '.mysqli_error($$link).'<br>'.$query;}
 
 
     /*

@@ -173,9 +173,9 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 			  " . TABLE_CUSTOMERS . " as c
 			  where cg.customers_status_id = c.customers_status
 			  and c.customers_id = " .(int)$customer_id1);
-              $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
-              $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
-              $current_group = @mysql_result($acc_query, 0, "customers_status_name");
+              $current_limit = @mysqli_result($acc_query, 0, "customers_status_accumulated_limit");
+              $current_discount = @mysqli_result($acc_query, 0, "customers_status_discount");
+              $current_group = @mysqli_result($acc_query, 0, "customers_status_name");
                                                                                                                                                                                                  
               // ok, looking for available group
 
@@ -187,10 +187,10 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
                
               if (vam_db_num_rows($groups_query)) {
                  // new group found
-                 $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
-                 $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
-                 $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
-                 $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+                 $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
+                 $customers_groups_name = @mysqli_result($groups_query, 0, "customers_status_name");
+                 $limit = @mysqli_result($groups_query, 0, "customers_status_accumulated_limit");
+                 $current_discount = @mysqli_result($groups_query, 0, "customers_status_discount");
     
                  // updating customers group
 
@@ -201,10 +201,10 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
            }
 
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " .(int)$customer_id1);
-           $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
-           $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
-           $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
-           $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+           $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
+           $customers_groups_name = @mysqli_result($groups_query, 0, "customers_status_name");
+           $limit = @mysqli_result($groups_query, 0, "customers_status_accumulated_limit");
+           $current_discount = @mysqli_result($groups_query, 0, "customers_status_discount");
 
 			if ($customer['customers_status'] != $customers_groups_id) {           
 
@@ -388,9 +388,9 @@ switch ($_GET['action']) {
 
               // looking for current accumulated limit & discount
               $acc_query = vam_db_query("select cg.customers_status_accumulated_limit, cg.customers_status_name, cg.customers_status_discount from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where cg.customers_status_id = c.customers_status and c.customers_id = " . (int)$customer_id2);
-              $current_limit = @mysql_result($acc_query, 0, "customers_status_accumulated_limit");
-              $current_discount = @mysql_result($acc_query, 0, "customers_status_discount");
-              $current_group = @mysql_result($acc_query, "customers_status_name");
+              $current_limit = @mysqli_result($acc_query, 0, "customers_status_accumulated_limit");
+              $current_discount = @mysqli_result($acc_query, 0, "customers_status_discount");
+              $current_group = @mysqli_result($acc_query, "customers_status_name");
 
 			     if ($customer['customers_status'] > '0') {
                                                                                                                                                                                                  
@@ -401,10 +401,10 @@ switch ($_GET['action']) {
 
               if (vam_db_num_rows($groups_query)) {
                  // new group found
-                 $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
-                 $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
-                 $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
-                 $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+                 $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
+                 $customers_groups_name = @mysqli_result($groups_query, 0, "customers_status_name");
+                 $limit = @mysqli_result($groups_query, 0, "customers_status_accumulated_limit");
+                 $current_discount = @mysqli_result($groups_query, 0, "customers_status_discount");
     
                  // updating customers group
                  vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . (int)$customers_groups_id . " where customers_id = " . (int)$customer_id2);
@@ -412,10 +412,10 @@ switch ($_GET['action']) {
              }
            }
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id2);
-           $customers_groups_id = @mysql_result($groups_query, 0, "customers_status_id");
-           $customers_groups_name = @mysql_result($groups_query, 0, "customers_status_name");
-           $limit = @mysql_result($groups_query, 0, "customers_status_accumulated_limit");
-           $current_discount = @mysql_result($groups_query, 0, "customers_status_discount");
+           $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
+           $customers_groups_name = @mysqli_result($groups_query, 0, "customers_status_name");
+           $limit = @mysqli_result($groups_query, 0, "customers_status_accumulated_limit");
+           $current_discount = @mysqli_result($groups_query, 0, "customers_status_discount");
 
 			if ($customer['customers_status'] != $customers_groups_id) {           
 			
