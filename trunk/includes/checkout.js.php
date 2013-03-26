@@ -24,33 +24,6 @@
 if (vam_session_is_registered('customer_id')) { ?>
 <script type="text/javascript">
 
-$(hidePay);		
-	function hidePay()	{
-	if ($("#pay_show").is(":checked") == '1')
-		{
-	$("#pay_show").attr('checked', true);
-	$("#payment_address").css("display","none");
-	}
-	else
-	{
-	$("#pay_show").attr('checked', false);
-	}
-	
-
-	$("#pay_show").click(function(){
-// If checked
-        if ($("#pay_show").is(":checked"))
-		{
-            //show the hidden div
-            $("#payment_address").hide("fast");
-        }
-		else
-		{
-		$("#payment_address").show("fast");
-		}
-	});
-	;}
-	
 $(init);
 function init()
 	{
