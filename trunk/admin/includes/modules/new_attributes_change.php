@@ -66,7 +66,7 @@ function ItemAttributsSetUp($current_product_id){
 	    $value_weight =  $_POST[$cv_id . '_weight'];
 	
 	
-	      vam_db_query("INSERT INTO ".TABLE_PRODUCTS_ATTRIBUTES." (products_id, options_id, options_values_id, options_values_price, price_prefix ,attributes_model, attributes_stock, options_values_weight, weight_prefix,sortorder) VALUES ('" . $current_product_id . "', '" . $optionsID . "', '" . $_POST['optionValues'][$i] . "', '" . $value_price . "', '" . $value_prefix . "', '" . $value_model . "', '" . $value_stock . "', '" . $value_weight . "', '" . $value_weight_prefix . "','".$value_sortorder."')") or die(mysql_error());
+	      vam_db_query("INSERT INTO ".TABLE_PRODUCTS_ATTRIBUTES." (products_id, options_id, options_values_id, options_values_price, price_prefix ,attributes_model, attributes_stock, options_values_weight, weight_prefix,sortorder) VALUES ('" . $current_product_id . "', '" . $optionsID . "', '" . $_POST['optionValues'][$i] . "', '" . $value_price . "', '" . $value_prefix . "', '" . $value_model . "', '" . $value_stock . "', '" . $value_weight . "', '" . $value_weight_prefix . "','".$value_sortorder."')") or die(mysqli_error());
 	
 	    $products_attributes_id = vam_db_insert_id();
 	
@@ -79,7 +79,7 @@ function ItemAttributsSetUp($current_product_id){
 	      $value_is_pin = $_POST[$cv_id . '_ispin'];
 	      $products_attributes_is_pin = isset($value_is_pin)?1:0;
 	
-	        vam_db_query("INSERT INTO ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." (products_attributes_id, products_attributes_filename, products_attributes_maxdays, products_attributes_maxcount, products_attributes_is_pin) VALUES ('" . $products_attributes_id . "', '" . $value_download_file . "', '" . $value_download_expire . "', '" . $value_download_count . "', '" . $products_attributes_is_pin . "')") or die(mysql_error());
+	        vam_db_query("INSERT INTO ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." (products_attributes_id, products_attributes_filename, products_attributes_maxdays, products_attributes_maxcount, products_attributes_is_pin) VALUES ('" . $products_attributes_id . "', '" . $value_download_file . "', '" . $value_download_expire . "', '" . $value_download_count . "', '" . $products_attributes_is_pin . "')") or die(mysqli_error());
 	    }
 	   }
 	  }	
