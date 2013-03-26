@@ -99,7 +99,7 @@ class Tc_sql extends ContribInstallerBaseTag {
             foreach ($sql_array as $query) {
                 if(cip_db_query($query)===false) {
                 	 global $$link;
-                   $this->error('SQL error :<b>'.mysql_errno($$link).' - '.mysql_error($$link).'<br>'.$query);
+                   $this->error('SQL error :<b>'.mysqli_errno($$link).' - '.mysqli_error($$link).'<br>'.$query);
                    return $this->error;
                 }
             }

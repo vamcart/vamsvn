@@ -242,7 +242,7 @@ class vamImport {
 		if (!vam_db_num_rows($man_query)) {
 			$manufacturers_array = array ('manufacturers_name' => $manufacturer);
 			vam_db_perform(TABLE_MANUFACTURERS, $manufacturers_array);
-			$this->mfn[$manufacturer]['id'] = mysql_insert_id();
+			$this->mfn[$manufacturer]['id'] = vam_db_insert_id();
 		} else {
 			$man_data = vam_db_fetch_array($man_query);
 			$this->mfn[$manufacturer]['id'] = $man_data['manufacturers_id'];

@@ -96,7 +96,7 @@ $_SESSION['customers_status_id'] = 1;
 */
       }
       if (isset($zen_mysql_link) && is_resource($zen_mysql_link)) {
-        mysql_close($zen_mysql_link);
+        mysqli_close($zen_mysql_link);
         unset($zen_mysql_link);
       }
     }
