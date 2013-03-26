@@ -20,6 +20,6 @@
   function vam_db_query_installer($query, $link = 'db_link') {
     global $$link;
 
-    return mysql_query($query, $$link);
+    return mysqli_query($$link, $query);
   }
  ?>

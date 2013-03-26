@@ -17,6 +17,6 @@
 
   function vam_sqlSafeString($param) {
     // Hier wird wg. der grossen Verbreitung auf MySQL eingegangen
-    return (NULL === $param ? "NULL" : '"' . mysql_real_escape_string($param) . '"');
+    return (NULL === $param ? "NULL" : '"' . mysqli_real_escape_string($param) . '"');
   }
 ?>
