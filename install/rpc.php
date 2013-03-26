@@ -31,7 +31,7 @@
 
         if ($db_error == false) {
           if (!@osc_db_select_db($db['DB_DATABASE'])) {
-            $db_error = mysql_error();
+            $db_error = mysqli_error();
           }
         }
 

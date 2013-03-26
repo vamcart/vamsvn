@@ -33,7 +33,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
     if ($isFound) {
       while($line = vam_db_fetch_array($result)) {
           // download function start
-        $dl_sql = vam_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount, products_attributes_is_pin  FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysql_error());
+        $dl_sql = vam_db_query("SELECT products_attributes_maxdays, products_attributes_filename, products_attributes_maxcount, products_attributes_is_pin  FROM ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." WHERE products_attributes_id = '" . $line['products_attributes_id'] . "'") or die(mysqli_error());
         $dl_res = vam_db_fetch_array($dl_sql);
         $attribute_value_download_filename= $dl_res['products_attributes_filename'];
         $attribute_value_download_count = $dl_res['products_attributes_maxcount'];
