@@ -37,7 +37,7 @@ function affiliate_delete ($affiliate_id) {
                     HAVING level = 2
 	                  ORDER BY aa1.affiliate_id
                    ");
-      @mysql_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
+      @vam_db_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
       while ($affiliate_child = vam_db_fetch_array($affiliate_child_query)) {
         vam_db_query ("UPDATE  " . TABLE_AFFILIATE . " SET affiliate_root = " . $affiliate_child['affiliate_id'] . " WHERE affiliate_root =  " . $affiliate['affiliate_root'] . "  AND affiliate_lft >= " . $affiliate_child['affiliate_lft']  . " AND affiliate_rgt <= " . $affiliate_child['affiliate_rgt']  . " ");
         $substract =  $affiliate_child['affiliate_lft'] -1;
@@ -45,9 +45,9 @@ function affiliate_delete ($affiliate_id) {
         vam_db_query ("UPDATE  " . TABLE_AFFILIATE . " SET affiliate_rgt = affiliate_rgt - " . $substract . " WHERE  affiliate_root = " . $affiliate_child['affiliate_id']) ;
       }
       vam_db_query("DELETE FROM " . TABLE_AFFILIATE . "  WHERE affiliate_id = " . $affiliate_id);
-      @mysql_query("UNLOCK TABLES");
+      @vam_db_query("UNLOCK TABLES");
     } else {
-      @mysql_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
+      @vam_db_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
       vam_db_query("DELETE FROM " . TABLE_AFFILIATE . "  WHERE affiliate_id = " . $affiliate_id . " AND affiliate_root = " . $affiliate['affiliate_root'] . " ");
     
       vam_db_query("UPDATE " . TABLE_AFFILIATE . "
@@ -65,7 +65,7 @@ function affiliate_delete ($affiliate_id) {
                   WHERE affiliate_rgt > " . $affiliate['affiliate_rgt'] . "
                   AND affiliate_root =  " . $affiliate['affiliate_root'] . " 
                  ");
-      @mysql_query("UNLOCK TABLES");
+      @vam_db_query("UNLOCK TABLES");
     }
   }
 }

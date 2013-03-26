@@ -31,14 +31,14 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   function vam_db_close($link = 'db_link') {
     global $$link;
 
-    return mysql_close($$link);
+    return mysqli_close($$link);
   }
 
   // db connection for Servicedatabase  
   function service_vam_db_close($link_service = 'db_link_service') {
     global $$link_service;
 
-    return mysql_close($$link_service);
+    return mysqli_close($$link_service);
   }
 
 
@@ -54,7 +54,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       $logger->write($query, 'QUERY');
     }
 
-    $result = mysql_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+    $result = mysqli_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
 
     if (STORE_DB_TRANSACTIONS == 'true') {
       if (mysqli_error($$link)) $logger->write(mysqli_error($$link), 'ERROR');
@@ -230,5 +230,11 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
       return addslashes($string);
     }
-  }  
+  }
+  
+function mysqli_result($res, $row, $field=0) { 
+    $res->data_seek($row); 
+    $datarow = $res->fetch_array(); 
+    return $datarow[$field]; 
+}     
 ?>

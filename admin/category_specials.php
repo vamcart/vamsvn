@@ -85,7 +85,7 @@ if (vam_not_null($action))
 	
 			$query = "select special_id from ". TABLE_SPECIAL_CATEGORY. " where categ_id = $categ_id";
 			$result = vam_db_query($query);
-			if(mysql_num_rows($result) < 1)
+			if(vam_db_num_rows($result) < 1)
 			{
 				$discount_type = substr($specials_price, -1) == '%' ? "p" : "f";
 				$specials_price = sprintf("%0.2f", $specials_price);
@@ -103,7 +103,7 @@ if (vam_not_null($action))
 							values ($categ_id, $specials_price, '$discount_type', now(), now(), '$expires_date', now(), 1)";
 				vam_db_query($query);
 	
-				$specials_id = mysql_insert_id();
+				$specials_id = vam_db_insert_id();
 	
 				if($override == "y")
 				{
@@ -121,7 +121,7 @@ if (vam_not_null($action))
 	
 						$query = "select products_id from ". TABLE_SPECIALS. " where products_id = $product_id";
 						$product_query = vam_db_query($query);
-						if(mysql_num_rows($product_query) < 1)
+						if(vam_db_num_rows($product_query) < 1)
 						{
 							$query = "insert into ". TABLE_SPECIALS. " (products_id, specials_quantity, specials_new_products_price, expires_date) values ($product_id, '100000', $new_price, '$expires_date')";
 							vam_db_query($query);
@@ -205,7 +205,7 @@ if (vam_not_null($action))
 	
 					$query = "select product_id from ". TABLE_SPECIAL_PRODUCT. " where product_id = $product_id and special_id = $specials_id";
 					$product_query = vam_db_query($query);
-					if(mysql_num_rows($product_query) < 1)
+					if(vam_db_num_rows($product_query) < 1)
 					{
 						$query = "insert into ". TABLE_SPECIAL_PRODUCT. " values (null, $specials_id, $product_id)";
 						vam_db_query($query);

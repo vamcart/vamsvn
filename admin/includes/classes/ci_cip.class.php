@@ -71,7 +71,8 @@ class CIP {
         if (!$this->cip_id) {
             //Register CIP in database:
                 $this->register();
-                $this->cip_id=mysql_insert_id();
+                global $$link;
+                $this->cip_id=mysqli_insert_id($$link);
                 $this->cip_installed=0;
         }
 
@@ -525,9 +526,10 @@ class CIP {
         if ($restore_query !='') {
             //Delete all tables from database:
             $tables_query=cip_db_query('show tables');
-            while ($tables=mysql_fetch_array($tables_query, MYSQL_ASSOC)) {
+            while ($tables=mysqli_fetch_array($tables_query, MYSQLI_ASSOC)) {
                 list(,$table)=each($tables);
-                mysql_query('DROP TABLE IF EXISTS '.$table);
+                global $$link;
+                mysqli_query($$link, 'DROP TABLE IF EXISTS '.$table);
             }
             if ($restore_query) {
                 $sql_array = parse_sql($restore_query);

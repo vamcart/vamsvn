@@ -71,7 +71,7 @@ function manufacturers_list(){
 			 if (trim($_POST['product_new_model'][$id]) != trim($_POST['product_old_model'][$id])) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_model='" . $new_model . "' WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_model='" . $new_model . "' WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -80,7 +80,7 @@ function manufacturers_list(){
 			 if (trim($_POST['product_new_name'][$id]) != trim($_POST['product_old_name'][$id])) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_name='" . $new_name . "' WHERE products_id=$id and language_id=" . $_SESSION['languages_id']);
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_name='" . $new_name . "' WHERE products_id=$id and language_id=" . $_SESSION['languages_id']);
 			 }
 		   }
 		}
@@ -90,7 +90,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_price'][$id] != $_POST['product_old_price'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_price=$new_price WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_price=$new_price WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -100,7 +100,7 @@ function manufacturers_list(){
 //			 if ($_POST['product_new_price1'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price1' WHERE `products_id` = '$id'");
+			   vam_db_query("UPDATE `personal_offers_by_customers_status_1` SET `personal_offer` = '$new_price1' WHERE `products_id` = '$id'");
 //			 }
 		   }
 		}
@@ -110,7 +110,7 @@ function manufacturers_list(){
 //			 if ($_POST['product_new_price2'][$id] != $_POST['product_old_price1'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price2' WHERE `products_id` = '$id'");
+			   vam_db_query("UPDATE `personal_offers_by_customers_status_2` SET `personal_offer` = '$new_price2' WHERE `products_id` = '$id'");
 //			 }
 		   }
 		}
@@ -120,7 +120,7 @@ function manufacturers_list(){
 //			 if ($_POST['product_new_price3'][$id] != $_POST['product_old_price2'][$id] && $_POST['update_price'][$id] == 'yes') {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price3' WHERE `products_id` = '$id'");
+			   vam_db_query("UPDATE `personal_offers_by_customers_status_3` SET `personal_offer` = '$new_price3' WHERE `products_id` = '$id'");
 //			 }
 		   }
 		}
@@ -132,7 +132,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_weight'][$id] != $_POST['product_old_weight'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_weight=$new_weight WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_weight=$new_weight WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -141,7 +141,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_quantity'][$id] != $_POST['product_old_quantity'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_quantity=$new_quantity WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_quantity=$new_quantity WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -150,7 +150,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_to_xml'][$id] != $_POST['product_old_to_xml'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_to_xml=$new_to_xml WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_to_xml=$new_to_xml WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -159,7 +159,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_startpage'][$id] != $_POST['product_old_startpage'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_startpage=$new_startpage WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_startpage=$new_startpage WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -168,7 +168,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_sort'][$id] != $_POST['product_old_sort'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_sort=$new_sort WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_sort=$new_sort WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -177,7 +177,7 @@ function manufacturers_list(){
 			 if (trim($_POST['product_new_image'][$id]) != trim($_POST['product_old_image'][$id])) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_image='" . $new_image . "' WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_image='" . $new_image . "' WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -186,7 +186,7 @@ function manufacturers_list(){
 			 if ($_POST['product_new_manufacturer'][$id] != $_POST['product_old_manufacturer'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   mysql_query("UPDATE " . TABLE_PRODUCTS . " SET manufacturers_id=$new_manufacturer WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET manufacturers_id=$new_manufacturer WHERE products_id=$id");
 			 }
 		   }
 		}
@@ -205,7 +205,7 @@ function manufacturers_list(){
 			 	if ($_POST['product_new_tax'][$id] != $_POST['product_old_tax'][$id]) {
 			   	$count_update++;
 			   	$item_updated[$id] = 'updated';
-			   	mysql_query("UPDATE " . TABLE_PRODUCTS . " SET products_tax_class_id=$new_tax_id WHERE products_id=$id");
+			   	vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_tax_class_id=$new_tax_id WHERE products_id=$id");
 			 	}
 		   	}
 		}
@@ -564,8 +564,8 @@ function display_ttc(action, prix, taxe, up){
        
 		//
 		$xquery = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_1` WHERE `products_id` = '" . $products['products_id'] . "'";
-		$xres = mysql_query($xquery);
-		$xobj = mysql_fetch_object($xres);
+		$xres = vam_db_query($xquery);
+		$xobj = mysqli_fetch_object($xres);
 		$xprice1 = $xobj->personal_offer;
 
     if ($_POST['spec_price']){
@@ -596,8 +596,8 @@ function display_ttc(action, prix, taxe, up){
 
 		//
 		$xquery2 = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_2` WHERE `products_id` = '" . $products['products_id'] . "'";
-		$xres2 = mysql_query($xquery2);
-		$xobj2 = mysql_fetch_object($xres2);
+		$xres2 = vam_db_query($xquery2);
+		$xobj2 = mysqli_fetch_object($xres2);
 		$xprice2 = $xobj->personal_offer;
 		
     if ($_POST['spec_price']){
@@ -627,8 +627,8 @@ function display_ttc(action, prix, taxe, up){
 
 		//
 		$xquery3 = "SELECT `personal_offer` FROM `personal_offers_by_customers_status_3` WHERE `products_id` = '" . $products['products_id'] . "'";
-		$xres3 = mysql_query($xquery3);
-		$xobj3 = mysql_fetch_object($xres3);
+		$xres3 = vam_db_query($xquery3);
+		$xobj3 = mysqli_fetch_object($xres3);
 		$xprice3 = $xobj3->personal_offer;
 		
     if ($_POST['spec_price']){

@@ -174,7 +174,7 @@ if ($_GET['delete']) {
 
 
 
-  $knt = mysql_num_rows($query1);
+  $knt = vam_db_num_rows($query1);
   for ($i = 0; $i < $knt; $i++) {
     $inrec = vam_db_fetch_array($query1);
 
@@ -237,7 +237,7 @@ if ($_GET['delete']) {
 //    $email = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" . vam_catalog_href_link(FILENAME_CATALOG_LOGIN, '', 'SSL') . "\n";
 //  }
 
-//  if (mysql_num_rows($cquery) < 1) {
+//  if (vam_db_num_rows($cquery) < 1) {
 //    $email .= sprintf(EMAIL_TEXT_NEWCUST_INTRO, $mline);
 //  } else {
 //    $email .= sprintf(EMAIL_TEXT_CURCUST_INTRO, $mline);
@@ -335,7 +335,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
  $curcus = "";
  $tprice = 0;
  $totalAll = 0;
- $knt = mysql_num_rows($query1);
+ $knt = vam_db_num_rows($query1);
  $first_line = true;
 
  for ($i = 0; $i <= $knt; $i++)
@@ -375,7 +375,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
   $customer = "";
   $donequery = vam_db_query("select * from ". TABLE_SCART ." where customers_id = '".$curcus."' ORDER BY dateadded DESC");
   $emailttl = seadate($EMAIL_TTL);
-  if (mysql_num_rows($donequery) > 0) {
+  if (vam_db_num_rows($donequery) > 0) {
     $ttl = vam_db_fetch_array($donequery);
     if ($emailttl <= $ttl['dateadded']) {
       $sentdate = $ttl['dateadded'];
@@ -383,7 +383,7 @@ $custname = $inrec['fname']." ".$inrec['lname'];
     }
   }
   $ccquery = vam_db_query("select * from " . TABLE_ORDERS . " where customers_id = '".$curcus."'" );
-  if (mysql_num_rows($ccquery) > 0) $customer = '&nbsp;[<font color="' . $CURCUST_COLOR . '">' . TEXT_CURRENT_CUSTOMER . '</font>]';
+  if (vam_db_num_rows($ccquery) > 0) $customer = '&nbsp;[<font color="' . $CURCUST_COLOR . '">' . TEXT_CURRENT_CUSTOMER . '</font>]';
 
     $sentInfo = TEXT_NOT_CONTACTED;
 

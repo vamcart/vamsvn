@@ -304,7 +304,7 @@ class vamImport {
 		if ($mode == 'insert') {
 			$this->counter['prod_new']++;
 			vam_db_perform(TABLE_PRODUCTS, $products_array);
-			$products_id = mysql_insert_id();
+			$products_id = vam_db_insert_id();
 		} else {
 			$this->counter['prod_upd']++;
 			vam_db_perform(TABLE_PRODUCTS, $products_array, 'update', 'products_model = \''.addslashes($dataArray['p_model']).'\'');
@@ -438,7 +438,7 @@ class vamImport {
 						$categorie_data = array ('parent_id' => $parent, 'categories_status' => 1, 'date_added' => 'now()', 'last_modified' => 'now()');
 
 						vam_db_perform(TABLE_CATEGORIES, $categorie_data);
-						$cat_id = mysql_insert_id();
+						$cat_id = vam_db_insert_id();
 						$this->counter['cat_new']++;
 						$code = '$this->CatTree'.$parTree.'[\''.addslashes($cat[$i]).'\'][\'ID\']='.$cat_id.';';
 						eval ($code);

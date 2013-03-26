@@ -28,15 +28,15 @@
        $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_GET['cID'] . "'");
        $admin_access = vam_db_fetch_array($admin_access_query);
 
-       $fields = mysql_list_fields(DB_DATABASE, TABLE_ADMIN_ACCESS);
-       $columns = mysql_num_fields($fields);
+       $fields = vam_db_query("select * from ". TABLE_ADMIN_ACCESS); 
+       $columns = mysqli_num_fields($fields);
 
 		for ($i = 0; $i < $columns; $i++) {
-             $field=mysql_field_name($fields, $i);
-                    if ($field!='customers_id') {
+             $field=mysqli_fetch_field_direct($fields, $i);
+                    if ($field->name!='customers_id') {
 
                     vam_db_query("UPDATE ".TABLE_ADMIN_ACCESS." SET
-                                  `".$field."`=0 where customers_id='".(int)$_GET['cID']."'");
+                                  `".$field->name."`=0 where customers_id='".(int)$_GET['cID']."'");
     		}
         }
 
@@ -172,17 +172,16 @@
       $admin_access = vam_db_fetch_array($admin_access_query);
     }
 
-$fields = mysql_list_fields(DB_DATABASE, TABLE_ADMIN_ACCESS);
-$columns = mysql_num_fields($fields);
-
+$fields = vam_db_query("select * from ". TABLE_ADMIN_ACCESS); 
+$columns = mysqli_num_fields($fields);
 for ($i = 0; $i < $columns; $i++) {
-    $field=mysql_field_name($fields, $i);
-    if ($field!='customers_id') {
+    $field=mysqli_fetch_field_direct($fields, $i);
+    if ($field->name!='customers_id') {
     $checked='';
-    if ($admin_access[$field] == '1') $checked='checked';
+    if ($admin_access[$field->name] == '1') $checked='checked';
 
     // colors
-    switch ($group_access[$field]) {
+    switch ($group_access[$field->name]) {
             case '1':
             $color='#FF6969';
             break;
@@ -202,8 +201,8 @@ for ($i = 0; $i < $columns; $i++) {
     echo '<tr class="dataTable">
     <td style="border: 1px solid; border-color: #000000;" width="10" bgcolor="'.$color.'" >'.vam_draw_separator('pixel_trans.gif',15, 15).'</td>
         <td width="100%" class="dataTableContentRow">
-        <input type="checkbox" name="access[]" value="'.$field.'"'.$checked.'>
-        <b>'.$field.'</b>: ' . constant(strtoupper('ACCESS_'.$field)).'</td>
+        <input type="checkbox" name="access[]" value="'.$field->name.'"'.$checked.'>
+        <b>'.$field->name.'</b>: ' . constant(strtoupper('ACCESS_'.$field->name)).'</td>
         <td></td></tr>';
     }
 }
