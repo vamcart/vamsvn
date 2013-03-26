@@ -24,10 +24,10 @@ function vam_db_test_connection($database) {
 
     if (!$db_error) {
       if (!@vam_db_select_db($database)) {
-        $db_error = mysql_error();
+        $db_error = mysqli_error();
       } else {
         if (!@vam_db_query_installer("select count(*) from " . TABLE_CONFIGURATION . "")) {
-          $db_error = mysql_error();
+          $db_error = mysqli_error();
         }
       }
     }

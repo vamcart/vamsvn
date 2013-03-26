@@ -37,7 +37,7 @@
             	if ($result['auto']) {
 		    		if ($result['status'] > 0) {
 						$myRes = vam_db_query("update " . TABLE_ORDERS . " set orders_status = '" . $result['status'] . "', last_modified = now() where orders_id = '" . (int)$orderId . "' and orders_status <> '" . $result['status'] . "'");
-						if (mysql_affected_rows() > 0) {
+						if (mysqli_affected_rows() > 0) {
 							//confirmation stuff
 							$orders_statuses = array();
 							$orders_status_array = array();

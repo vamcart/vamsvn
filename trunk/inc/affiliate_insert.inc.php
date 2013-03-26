@@ -23,7 +23,7 @@
 
 function affiliate_insert ($sql_data_array, $affiliate_parent = 0) {
     // LOCK TABLES
-    @mysql_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
+    @vam_db_query("LOCK TABLES " . TABLE_AFFILIATE . " WRITE");
     if ($affiliate_parent > 0) {
     	$affiliate_root_query = vam_db_query("select affiliate_root, affiliate_rgt, affiliate_lft from  " . TABLE_AFFILIATE . " where affiliate_id = '" . $affiliate_parent . "' ");
     	// Check if we have a parent affiliate
@@ -46,7 +46,7 @@ function affiliate_insert ($sql_data_array, $affiliate_parent = 0) {
 		vam_db_query ("update " . TABLE_AFFILIATE . " set affiliate_root = '" . $affiliate_id . "' where affiliate_id = '" . $affiliate_id . "' ");
     }
     // UNLOCK TABLES
-    @mysql_query("UNLOCK TABLES");
+    @vam_db_query("UNLOCK TABLES");
     return $affiliate_id;
 }
 ?>
