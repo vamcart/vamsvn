@@ -38,7 +38,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
             return false;
         } else {
             //         Только для запросов SELECT, SHOW, EXPLAIN, DESCRIBE
-            //         mysql_query() возвращает указатель на результат запроса
+            //         mysqli_query() возвращает указатель на результат запроса
             return $result;
         }
     }

@@ -129,7 +129,7 @@ class amDB {
 	/**
 	 * Some contributions such as the Ultimate SEO URLs have there own 
 	 * database functions. This can cause the internal, last insert id to be 
-	 * wrong if the link id isn't included in the mysql_insert_id statement.
+	 * wrong if the link id isn't included in the mysqli_insert_id statement.
 	 * For this reason i have not used the default osc function for this one as for some
 	 * reason they haven't put the link in their wrapper function.
 	 * @author Sam West aka Nimmit - osc@kangaroopartners.com

@@ -24,14 +24,14 @@ $_SESSION['customers_status_id'] = 1;
     }
     if (!defined('SESSION_WRITE_DIRECTORY')) define('SESSION_WRITE_DIRECTORY', session_save_path());
     if (defined('DB_DATABASE')) {
-      if (($zen_mysql_link = @mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE))) {
+      if (($zen_mysqli_link = @mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE))) {
         if (!defined('DB_PREFIX')) define('DB_PREFIX', '');
     // Modified piece of code from whos_online.php
         $info = $_GET['sid'];
 
         $session_data = '';
         if (STORE_SESSIONS == 'mysql') {
-          $session_data_query = mysqli_query($zen_mysql_link,"select value from " . DB_PREFIX . "sessions
+          $session_data_query = mysqli_query($zen_mysqli_link,"select value from " . DB_PREFIX . "sessions
                                         WHERE sesskey = '" . $info . "'");
 
           if ($session_data = mysqli_fetch_array($session_data_query, MYSQLI_ASSOC)) {
@@ -39,7 +39,7 @@ $_SESSION['customers_status_id'] = 1;
           }
         } else {
           if (!defined('SESSION_WRITE_DIRECTORY')) {
-            $session_write_directory_query = mysqli_query($zen_mysql_link,"SELECT * FROM " . DB_PREFIX . "configuration WHERE configuration_key='SESSION_WRITE_DIRECTORY'");
+            $session_write_directory_query = mysqli_query($zen_mysqli_link,"SELECT * FROM " . DB_PREFIX . "configuration WHERE configuration_key='SESSION_WRITE_DIRECTORY'");
             if (mysqli_num_rows($session_write_directory_query) > 0) {
               $session_write_directory = mysqli_fetch_array($session_write_directory_query, MYSQLI_ASSOC);
               $session_write_directory = $session_write_directory['configuration_value'];
@@ -82,9 +82,9 @@ $_SESSION['customers_status_id'] = 1;
         }
 /*
         if (isset($_SESSION['admin_id'])) {
-          $admin_name_query = mysqli_query($zen_mysql_link, "SELECT * FROM " . DB_PREFIX . "admin WHERE admin_id=" . (int)$_SESSION['admin_id']);
-          if (mysql_num_rows($admin_name_query) > 0) {
-            $admin_name = mysql_fetch_array($admin_name_query, MYSQL_ASSOC);
+          $admin_name_query = mysqli_query($zen_mysqli_link, "SELECT * FROM " . DB_PREFIX . "admin WHERE admin_id=" . (int)$_SESSION['admin_id']);
+          if (mysqli_num_rows($admin_name_query) > 0) {
+            $admin_name = mysqli_fetch_array($admin_name_query, MYSQLI_ASSOC);
             $user = $admin_name['admin_name'];
             if (ENABLE_SSL_ADMIN == 'true') {
               $zen_link = HTTPS_SERVER . DIR_WS_HTTPS_ADMIN;
@@ -95,9 +95,9 @@ $_SESSION['customers_status_id'] = 1;
         }
 */
       }
-      if (isset($zen_mysql_link) && is_resource($zen_mysql_link)) {
-        mysqli_close($zen_mysql_link);
-        unset($zen_mysql_link);
+      if (isset($zen_mysqli_link) && is_resource($zen_mysqli_link)) {
+        mysqli_close($zen_mysqli_link);
+        unset($zen_mysqli_link);
       }
     }
     chdir($cwd);
