@@ -225,7 +225,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
                      '  define(\'DB_SERVER_PASSWORD\', \'' . trim($_POST['DB_SERVER_PASSWORD']). '\');' . "\n" .
                      '  define(\'DB_DATABASE\', \'' . trim($_POST['DB_DATABASE']). '\');' . "\n" .
                      '  define(\'USE_PCONNECT\', \'false\'); // use persistent connections?' . "\n" .
-                     '  define(\'STORE_SESSIONS\', \'mysql\'); // leave empty \'\' for default handler or set to \'mysql\'' . "\n" .                     '?>';
+                     '  define(\'STORE_SESSIONS\', \'\'); // leave empty \'\' for default handler or set to \'mysql\'' . "\n" .                     '?>';
 
 
   $fp = fopen($dir_fs_document_root . 'includes/configure.php', 'w');
@@ -308,7 +308,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
                      '  define(\'DB_SERVER_PASSWORD\', \'' . trim($_POST['DB_SERVER_PASSWORD']). '\');' . "\n" .
                      '  define(\'DB_DATABASE\', \'' . trim($_POST['DB_DATABASE']). '\');' . "\n" .
                      '  define(\'USE_PCONNECT\', \'false\'); // use persisstent connections?' . "\n" .
-                     '  define(\'STORE_SESSIONS\', \'mysql\'); // leave empty \'\' for default handler or set to \'mysql\'' . "\n" .
+                     '  define(\'STORE_SESSIONS\', \'\'); // leave empty \'\' for default handler or set to \'mysql\'' . "\n" .
                      '' . "\n" .
  '?>';
 

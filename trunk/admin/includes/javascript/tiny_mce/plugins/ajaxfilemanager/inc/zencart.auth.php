@@ -30,7 +30,7 @@ $_SESSION['customers_status_id'] = 1;
         $info = $_GET['sid'];
 
         $session_data = '';
-        if (STORE_SESSIONS == 'mysql') {
+        if (STORE_SESSIONS == 'mysqli') {
           $session_data_query = mysqli_query($zen_mysqli_link,"select value from " . DB_PREFIX . "sessions
                                         WHERE sesskey = '" . $info . "'");
 

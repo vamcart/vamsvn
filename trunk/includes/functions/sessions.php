@@ -19,7 +19,7 @@
 
    @ini_set("session.gc_probability", 100);
 
-  if (STORE_SESSIONS == 'mysql') {
+  if (STORE_SESSIONS == 'mysqli') {
 
     function _sess_open($save_path, $session_name) {
       return true;
@@ -179,7 +179,7 @@
 
       vam_session_destroy();
 
-      if (STORE_SESSIONS == 'mysql') {
+      if (STORE_SESSIONS == 'mysqli') {
         session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write', '_sess_destroy', '_sess_gc');
       }
 
