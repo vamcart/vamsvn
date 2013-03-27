@@ -101,7 +101,7 @@
   if ($info) {
     $heading[] = array('text' => '<b>' . TABLE_HEADING_SHOPPING_CART . '</b>');
 
-    if (STORE_SESSIONS == 'mysql') {
+    if (STORE_SESSIONS == 'mysqli') {
       $session_data = vam_db_query("select value from " . TABLE_SESSIONS . " WHERE sesskey = '" . $info . "'");
       $session_data = vam_db_fetch_array($session_data);
       $session_data = trim($session_data['value']);
