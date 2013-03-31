@@ -101,7 +101,7 @@ if (!isset($entry['entry_zone_id'])) $entry['entry_zone_id']  = STORE_ZONE;
 			
 			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int)$entry['entry_country_id']."' and zone_code = '".vam_db_input($state)."'");
 
-		   $zone = $zone->fetch_array(MYSQLI_ASSOC);
+		   //$zone = $zone->fetch_array(MYSQLI_ASSOC);
 		   
 	      if (vam_db_num_rows($zone) > 0) {
 	        $zone_id = $zone['zone_id'];
