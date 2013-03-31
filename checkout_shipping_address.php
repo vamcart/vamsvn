@@ -134,7 +134,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'submit')) {
 			$entry_state_has_zones = ($check['total'] > 0);
 			if ($entry_state_has_zones == true) {
 				$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and (zone_name like '".vam_db_input($state)."%' or zone_code like '%".vam_db_input($state)."%')");
-				$zone_query = $zone_query->fetch_array(MYSQLI_ASSOC);
+				//$zone_query = $zone_query->fetch_array(MYSQLI_ASSOC);
 				if (vam_db_num_rows($zone_query) > 1) {
 					$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".vam_db_input($state)."'");
 				}
