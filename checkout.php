@@ -1744,25 +1744,6 @@ if (ACCOUNT_STATE == 'true') {
 				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 			}
 
-			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_code = '".vam_db_input($state)."'");
-
-		   //$zone = $zone->fetch_array(MYSQLI_ASSOC);
-
-	      if (vam_db_num_rows($zone) > 0) {
-	        $zone_id = $zone['zone_id'];
-	        $zone_name = $zone['zone_name'];
-
-	      } else {
-
-		   $zone = vam_db_query("select distinct zone_id, zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-
-		   $zone = $zone->fetch_array(MYSQLI_ASSOC);
-
-	      if (vam_db_num_rows($zone) > 0) {
-	          $zone_id = $zone['zone_id'];
-	          $zone_name = $zone['zone_name'];
-	        }
-	      }
 		}
 
       if ($entry_state_has_zones == true) {
@@ -1898,25 +1879,6 @@ if (ACCOUNT_STATE == 'true') {
 				$zones_array[] = array ('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
 			}
 
-			$zone = vam_db_query("select distinct zone_id, zone_name from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_code = '".vam_db_input($state)."'");
-
-		   //$zone = $zone->fetch_array(MYSQLI_ASSOC);
-
-	      if (vam_db_num_rows($zone) > 0) {
-	        $zone_id = $zone['zone_id'];
-	        $zone_name = $zone['zone_name'];
-
-	      } else {
-
-		   $zone = vam_db_query("select distinct zone_id, zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "'");
-
-		   $zone = $zone->fetch_array(MYSQLI_ASSOC);
-
-	      if (vam_db_num_rows($zone) > 0) {
-	          $zone_id = $zone['zone_id'];
-	          $zone_name = $zone['zone_name'];
-	        }
-	      }
 		}
 
       if ($entry_state_has_zones == true) {
