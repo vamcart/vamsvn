@@ -27,11 +27,11 @@
                    );
 
         $db_error = false;
-        osc_db_connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
+        osc_db_connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE']);
 
         if ($db_error == false) {
-          if (!@osc_db_select_db($db['DB_DATABASE'])) {
-            $db_error = mysqli_error();
+          if (!$$link) {
+            $db_error = mysqli_error($$link);
           }
         }
 
@@ -51,7 +51,7 @@
                     'DB_DATABASE' => trim(rawurldecode($_GET['name'])),
                    );
 
-        osc_db_connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD']);
+        osc_db_connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE']);
 
         $db_error = false;
         $sql_file = $dir_fs_www_root . '/vam.sql';

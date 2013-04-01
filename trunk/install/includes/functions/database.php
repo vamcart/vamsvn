@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-  function osc_db_connect($server, $username, $password, $link = 'db_link') {
+  function osc_db_connect($server, $username, $password, $database, $link = 'db_link') {
     global $$link, $db_error;
 
     $db_error = false;
@@ -20,7 +20,7 @@
       return false;
     }
 
-    $$link = @mysqli_connect($server, $username, $password) or $db_error = mysqli_error($$link);
+    $$link = @mysqli_connect($server, $username, $password, $database) or $db_error = mysqli_error($$link);
 
    @mysqli_query($$link, "SET SQL_MODE= ''");
    @mysqli_query($$link, "SET SQL_BIG_SELECTS=1");
@@ -29,15 +29,10 @@
     return $$link;
   }
 
-  function osc_db_select_db($database) {
-    return mysqli_select_db($database);
-    
-  }
-
   function osc_db_query($query, $link = 'db_link') {
     global $$link;
 
-    return mysqli_query($query, $$link);
+    return mysqli_query($$link, $query);
   }
 
   function osc_db_num_rows($db_query) {
@@ -49,12 +44,8 @@
 
     $db_error = false;
 
-    if (!@osc_db_select_db($database)) {
-      if (@osc_db_query('create database ' . $database)) {
-        osc_db_select_db($database);
-      } else {
+    if (!$$link) {
         $db_error = mysqli_error($$link);
-      }
     }
 
     if (!$db_error) {
