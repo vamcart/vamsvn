@@ -5,12 +5,12 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2007 osCommerce
+  Copyright (c) 2013 osCommerce
 
   Released under the GNU General Public License
 */
 
-  function osc_db_connect($server, $username, $password, $database, $link = 'db_link') {
+  function osc_db_connect($server, $username, $password, $link = 'db_link') {
     global $$link, $db_error;
 
     $db_error = false;
@@ -20,13 +20,15 @@
       return false;
     }
 
-    $$link = @mysqli_connect($server, $username, $password, $database) or $db_error = mysqli_error($$link);
+    $$link = @mysqli_connect($server, $username, $password) or $db_error = mysqli_error();
 
-   @mysqli_query($$link, "SET SQL_MODE= ''");
-   @mysqli_query($$link, "SET SQL_BIG_SELECTS=1");
-   @mysqli_query($$link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
-   
     return $$link;
+  }
+
+  function osc_db_select_db($database, $link = 'db_link') {
+    global $$link;
+
+    return mysqli_select_db($$link, $database);
   }
 
   function osc_db_query($query, $link = 'db_link') {
@@ -44,8 +46,12 @@
 
     $db_error = false;
 
-    if (!$$link) {
-        $db_error = mysqli_error($$link);
+    if (!@osc_db_select_db($database)) {
+      if (@osc_db_query('create database ' . $database)) {
+        osc_db_select_db($database);
+      } else {
+        $db_error = mysqli_error();
+      }
     }
 
     if (!$db_error) {
@@ -91,7 +97,7 @@
           if ($next == '') { // get the last insert query
             $next = 'insert';
           }
-          if ( (eregi('create', $next)) || (eregi('insert', $next)) || (eregi('drop t', $next)) ) {
+          if ( (preg_match('/create/i', $next)) || (preg_match('/insert/i', $next)) || (preg_match('/drop t/i', $next)) ) {
             $next = '';
             $sql_array[] = substr($restore_query, 0, $i);
             $restore_query = ltrim(substr($restore_query, $i+1));
@@ -108,6 +114,34 @@
       }
     } else {
       return false;
+    }
+  }
+
+  if ( !function_exists('mysqli_connect') ) {
+    function mysqli_connect($server, $username, $password) {
+      if ( substr($server, 0, 2) == 'p:' ) {
+        $link = mysql_pconnect(substr($server, 2), $username, $password);
+      } else {
+        $link = mysql_connect($server, $username, $password);
+      }
+
+      return $link;
+    }
+
+    function mysqli_select_db($link, $database) {
+      return mysql_select_db($database, $link);
+    }
+
+    function mysqli_query($link, $query) {
+      return mysql_query($query, $link);
+    }
+
+    function mysqli_error($link = null) {
+      return mysql_error($link);
+    }
+
+    function mysqli_num_rows($query) {
+      return mysql_num_rows($query);
     }
   }
 ?>
