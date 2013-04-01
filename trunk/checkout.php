@@ -777,7 +777,6 @@ if ((!isset($_POST['payment'])) || ($error == true)) {
 
 
 $order_total_modules = new order_total;
-$order_total_modules->process();
 
 //Classes init end ##########################################
 
@@ -1541,8 +1540,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 // don't use this as it will not get the toal correct the first time
  // if ( !vam_session_is_registered('shipping') || ( vam_session_is_registered('shipping') && ($shipping == false) && (vam_count_shipping_modules() > 1) ) ) $shipping = $shipping_modules->cheapest();
  
-
-
+$order_total_modules->process();
 
 ###################### payment url redirection START ###################################
 //if payment method such as paypal is choosen,  repost process_button data
