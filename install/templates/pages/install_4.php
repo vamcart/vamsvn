@@ -21,8 +21,7 @@
   require_once(DIR_FS_INC .'vam_db_input.inc.php');
   require_once(DIR_FS_INC .'vam_db_num_rows.inc.php');
 
-  osc_db_connect(trim($_POST['DB_SERVER']), trim($_POST['DB_SERVER_USERNAME']), trim($_POST['DB_SERVER_PASSWORD']));
-  osc_db_select_db(trim($_POST['DB_DATABASE']));
+  osc_db_connect(trim($_POST['DB_SERVER']), trim($_POST['DB_SERVER_USERNAME']), trim($_POST['DB_SERVER_PASSWORD']), trim($_POST['DB_DATABASE']));
 
   osc_db_query('update ' . TABLE_CONFIGURATION . ' set configuration_value = "' . trim($_POST['CFG_STORE_NAME']) . '" where configuration_key = "STORE_NAME"');
   osc_db_query('update ' . TABLE_CONFIGURATION . ' set configuration_value = "' . trim($_POST['CFG_STORE_NAME']) . '" where configuration_key = "STORE_OWNER"');
