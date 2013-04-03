@@ -368,12 +368,26 @@ if (isset ($_GET['info']))
 {
     $site = explode('_', $_GET['info']);
     $pID = $site[0];
-    $product_name_tpl = vam_get_products_name( (int) str_replace('p', '', $pID) );
+
+    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
+      . TABLE_PRODUCTS_DESCRIPTION
+      . " where products_id = '" . (int) str_replace('p', '', $pID)
+      . "' and language_id = '" . $_SESSION['languages_id'] . "'" );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+
+    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
 
 } // also check for old 3.0.3 URLS
 elseif (isset($_GET['products_id']))
 {
-    $product_name_tpl = vam_get_products_name( (int) $_GET['products_id'] );
+    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
+      . TABLE_PRODUCTS_DESCRIPTION
+      . " where products_id = '" . (int)$_GET['products_id']
+      . "' and language_id = '" . $_SESSION['languages_id'] . "'" 
+    );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+
+    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
 };
 
 $vamTemplate->assign( 'product_name_tpl', $product_name_tpl );
