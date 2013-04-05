@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: customers.php 1296 2007-02-08 11:13:01Z VaM $   
+   $Id: customers.php 1296 2013-02-08 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
