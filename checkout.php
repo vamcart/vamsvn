@@ -1054,7 +1054,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		
 		//for account
 		$_SESSION['sc_customers_newsletter'] = $newsletter;
-		$_SESSION['sc_customers_password'] = $dbPass;
+		$_SESSION['sc_customers_password'] = $password;
 		$_SESSION['sc_customers_dob'] = $dob;
 		
 		if (ACCOUNT_STATE == 'true') {

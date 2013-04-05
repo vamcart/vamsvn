@@ -31,6 +31,8 @@ require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php')
 require_once (DIR_FS_INC . 'vam_calculate_tax.inc.php');
 require_once (DIR_FS_INC . 'vam_check_stock.inc.php');
 require_once (DIR_FS_INC . 'vam_display_tax_value.inc.php');
+require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
+require_once (DIR_FS_INC.'vam_create_password.inc.php');
 
 $hide_shipping_data = false;
 $hide_payment_data = false;
@@ -161,7 +163,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
                               'customers_telephone' => $_SESSION['sc_customers_telephone'], 
                               'customers_fax' => $_SESSION['sc_customers_fax'],
                               'customers_newsletter' => $_SESSION['sc_customers_newsletter'], 
-                              'customers_password' => $_SESSION['sc_customers_password']);
+                              'customers_password' => vam_encrypt_password($_SESSION['sc_customers_password']));
 
       if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $_SESSION['sc_customers_gender'];
       if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = vam_date_raw($_SESSION['sc_customers_dob']);
@@ -263,14 +265,14 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
 	
 		$name = $_SESSION['sc_customers_firstname'] . ' ' . $_SESSION['sc_customers_lastname'];
 			
-		      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
-		      $vamTemplate->assign('PASSWORD', $password);
+		      $vamTemplate->assign('EMAIL_ADDRESS', $_SESSION['sc_customers_email_address']);
+		      $vamTemplate->assign('PASSWORD', $_SESSION['sc_customers_password']);
       
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
 				$vamTemplate->caching = 0;
 				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
 		
-				vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+				vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $_SESSION['sc_customers_email_address'], $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
 							
 	} 
 	vam_session_unregister('create_account');
