@@ -61,7 +61,7 @@ if ($_GET['action'] == 'edit') {
 	$entry_country_id = vam_db_prepare_input($_POST['entry_country_id']);
 
 	$entry_company = vam_db_prepare_input($_POST['entry_company']);
-	$entry_state = vam_db_prepare_input($_POST['entry_state']);
+	$entry_state = vam_db_prepare_input($_POST['state']);
 	$entry_zone_id = vam_db_prepare_input($_POST['entry_zone_id']);
 
 	$customers_send_mail = vam_db_prepare_input($_POST['customers_mail']);
