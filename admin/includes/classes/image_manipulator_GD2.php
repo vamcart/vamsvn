@@ -228,34 +228,46 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       }
       @imagedestroy($this->dot);
     }
-    function merge($merge_img="", $x_left=0, $y_top=0, $merge_opacity=70, $trans_colour="FF0000") {
-      if ($this->effects_disabled)
-        return; //DokuMan - 2011-01-06
-      $this->mi = $merge_img;
-      $this->xx = ($x_left < 0) ? $this->q+$x_left : $x_left;
-      $this->yy = ($y_top < 0) ? $this->r+$y_top : $y_top;
-      $this->mo = $merge_opacity;
-      $this->tc = $trans_colour;
-      $this->tr = $this->hex2rgb(substr($this->tc,0,2));
-      $this->tg = $this->hex2rgb(substr($this->tc,2,2));
-      $this->tb = $this->hex2rgb(substr($this->tc,4,2));
-      $this->md = @getimagesize($this->mi);
-      $this->mw = $this->md[0];
-      $this->mh = $this->md[1];
-      $this->mm = ($this->md[2] < 4) ? ($this->md[2] < 3) ? ($this->md[2] < 2) ? imagecreatefromgif($this->mi) : imagecreatefromjpeg($this->mi) : imagecreatefrompng($this->mi) : Null;
-      for($this->ypo = 0; $this->ypo < $this->mh; $this->ypo++) {
-        for($this->xpo = 0; $this->xpo < $this->mw; $this->xpo++) {
-          $this->indx_ref = @imagecolorat($this->mm, $this->xpo, $this->ypo);
-          $this->indx_rgb = @imagecolorsforindex($this->mm, $this->indx_ref);
-          if(($this->indx_rgb['red'] == $this->tr) && ($this->indx_rgb['green'] == $this->tg) && ($this->indx_rgb['blue'] == $this->tb)) {
-            // transparent colour, so ignore merging this pixel
-          } else {
-            @imagecopymerge($this->t, $this->mm, $this->xx+$this->xpo, $this->yy+$this->ypo, $this->xpo, $this->ypo, 1, 1, $this->mo);
-          }
-        }
-      }
-      @imagedestroy($this->mm);
-    }
+        function merge($merge_img="", $x_left=0, $y_top=0, $merge_opacity=70, $trans_colour="FF0000")
+                {
+                $this->mi = $merge_img;
+                $this->xx = ($x_left < 0) ? $this->q+$x_left : $x_left;
+                $this->yy = ($y_top < 0) ? $this->r+$y_top : $y_top;
+                $this->mo = $merge_opacity;
+                $this->tc = $trans_colour;
+                $this->tr = $this->hex2rgb(substr($this->tc,0,2));
+                $this->tg = $this->hex2rgb(substr($this->tc,2,2));
+                $this->tb = $this->hex2rgb(substr($this->tc,4,2));
+                $this->md = @getimagesize($this->mi);
+                $this->mw = $this->md[0];
+                $this->mh = $this->md[1];
+                $this->mm = ($this->md[2] < 4) ? ($this->md[2] < 3) ? ($this->md[2] < 2) ? imagecreatefromgif($this->mi) : imagecreatefromjpeg($this->mi) : imagecreatefrompng($this->mi) : Null;
+                if ($this->md[2] == 3) // Если PNG, то сливаем картинки с альфаканалом от пнг.
+                {
+                        ImageAlphaBlending($this->t, true); 
+                        ImageCopy($this->t, $this->mm, $this->xx, $this->yy, 0, 0, $this->mw, $this->mh); 
+                }
+                else // Для GIF и JPEG
+                {
+                        for($this->ypo = 0; $this->ypo < $this->mh; $this->ypo++)
+                        {
+                                for($this->xpo = 0; $this->xpo < $this->mw; $this->xpo++)
+                                        {
+                                        $this->indx_ref = @imagecolorat($this->mm, $this->xpo, $this->ypo);
+                                        $this->indx_rgb = @imagecolorsforindex($this->mm, $this->indx_ref);
+                                        if(($this->indx_rgb['red'] == $this->tr) && ($this->indx_rgb['green'] == $this->tg) && ($this->indx_rgb['blue'] == $this->tb))
+                                                {
+                                                // transparent colour, so ignore merging this pixel
+                                                }
+                                        else
+                                                {
+                                        @imagecopymerge($this->t, $this->mm, $this->xx+$this->xpo, $this->yy+$this->ypo, $this->xpo, $this->ypo, 1, 1, $this->mo);
+                                                }
+                                        }
+                                }
+                        }
+                @imagedestroy($this->mm);
+                }
     function frame($light_colour="FFFFFF", $dark_colour="000000", $mid_width=4, $frame_colour = "" ) {
       if ($this->effects_disabled)
         return; //DokuMan - 2011-01-06
