@@ -38,6 +38,7 @@ $hash = MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY;
 
 // checking and handling
 if ($hash == $crc) {
+if (number_format($_POST['PRO_SUMMA'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_PROCHANGE_MERCHANT_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
@@ -49,6 +50,7 @@ if ($hash == $crc) {
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+}
 }
 
 ?>
