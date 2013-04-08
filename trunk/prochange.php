@@ -19,6 +19,7 @@ function get_var($name, $default = 'none') {
 }
 
 require('includes/application_top.php');
+require (DIR_WS_CLASSES.'order.php');
 
 // logging
 //$fp = fopen('prochange.log', 'a+');
@@ -33,6 +34,9 @@ require('includes/application_top.php');
 $crc = get_var('PRO_SECRET_KEY');
 
 $inv_id = get_var('PRO_FIELD_1');
+
+$order = new order($inv_id);
+$order_sum = $order->info['total'];
 
 $hash = MODULE_PAYMENT_PROCHANGE_MERCHANT_SECRET_KEY; 
 
