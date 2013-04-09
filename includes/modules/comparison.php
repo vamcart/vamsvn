@@ -203,12 +203,12 @@ if ( $current_category_id != 0 )
               
               
               
-                if ( AJAX_CART == 'true' && !vam_has_product_attributes( $specifications_id ) )
+                if ( AJAX_CART == 'true' && !vam_has_product_attributes( $tmp_products_id ) )
                 {
                     $buy_button = '<a class="button" href="'
                       . vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='
                       . $tmp_products_id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL')
-                      . '" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">' . vam_image_button('buy.png', '').'</a>';
+                      . '" onclick="doBuyNow(\''.$tmp_products_id.'\',\'1\'); return false;">' . vam_image_button('buy.png', '').'</a>';
                 }
                 else
                 {
