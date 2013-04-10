@@ -87,8 +87,15 @@ class amDB {
 	 */
 	function getOne($strQuery) {
 		$res = amDB::query($strQuery);
+		$row = 0;
 		if ($res && amDB::numRows($res)) 
-			return mysqli_result($res,0,0);
+		
+		$res->data_seek($row); 
+		$datarow = $res->fetch_array(); 
+		return $datarow[0]; 		
+		
+		//return mysqli_result($res,0,0);
+		
 		return false;
 	}
 	
