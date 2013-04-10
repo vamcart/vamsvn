@@ -23,7 +23,7 @@
 // if the customer is logged on - show this javascript
 if (vam_session_is_registered('customer_id')) { ?>
 <script type="text/javascript">
-
+$(document).ready(function() {
 $(init);
 function init()
 	{
@@ -39,12 +39,15 @@ $('#box')
 .on('change', 'input[name=shipping],input[name=payment]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 
 ;}
+
+});
+
 </script>  
    
 <?php } else { //not logged in javascript ?>
 
 <script type="text/javascript">
-
+$(document).ready(function() {
 $(hidePay);		
 	function hidePay()	{
 	if ($("#pay_show").is(":checked") == '1')
@@ -91,11 +94,13 @@ $('#box')
 .on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'payment': $('input[name=payment]:checked').val(),'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh');});})
 //.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 ;}
+});
 
 </script>
 
 <?php if ((SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') && (($sc_is_virtual_product != true) || ($sc_is_mixed_product != true))) { ?>  
 <script type="text/javascript">
+$(document).ready(function() {
 $(hidePw);		
 	function hidePw()	{
 	if ($("#pw_show").is(":checked") == '1')
@@ -122,6 +127,8 @@ $(hidePw);
 		}
 	});
 	;}
+});
+	
 </script>    
 <?php 
 	} // END password optional
