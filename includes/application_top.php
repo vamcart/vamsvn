@@ -36,8 +36,6 @@ header('Content-Type: text/html; charset=utf-8');
 define('PAGE_PARSE_START_TIME', microtime());
 define('DEBUG', false);
 
-  define('CFG_TIME_ZONE', 'Europe/Moscow');
-  
 // set the level of error reporting
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 //  error_reporting(E_ALL);
@@ -559,6 +557,62 @@ elseif (vam_not_null($_GET['manufacturers_id'])) {
 if ($product->isProduct()) {
                 $breadcrumb->add($product->getBreadcrumbName());
 }
+
+
+// Start product/catalog variables set fot template
+
+$product_name_tpl = '';
+
+if (isset ($_GET['info']))
+{
+    $site = explode('_', $_GET['info']);
+    $pID = $site[0];
+
+    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
+      . TABLE_PRODUCTS_DESCRIPTION
+      . " where products_id = '" . (int) str_replace('p', '', $pID)
+      . "' and language_id = '" . $_SESSION['languages_id'] . "'" );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+
+    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
+
+} // also check for old 3.0.3 URLS
+elseif (isset($_GET['products_id']))
+{
+    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
+      . TABLE_PRODUCTS_DESCRIPTION
+      . " where products_id = '" . (int)$_GET['products_id']
+      . "' and language_id = '" . $_SESSION['languages_id'] . "'" 
+    );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+
+    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
+};
+
+
+$products_category_tpl_arr = array();
+
+$products_category_tpl_path_current_id = $current_category_id;
+
+while ( $products_category_tpl_path_current_id )
+{
+    $products_category_tpl_path_query = vam_db_query( "select categories_name from  " . TABLE_CATEGORIES_DESCRIPTION . " where language_id = '" . $_SESSION['languages_id'] . "' and categories_id = '" . $products_category_tpl_path_current_id . "'" );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+    
+    $products_category_tpl_arr[ $products_category_tpl_path_current_id ] = $products_category_tpl_path_result[ 'categories_name' ];
+
+    $products_category_tpl_path_query = vam_db_query( "select parent_id from  " . TABLE_CATEGORIES . " where categories_id = '" . $products_category_tpl_path_current_id . "'" );
+    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
+    $products_category_tpl_path_current_id = $products_category_tpl_path_result[ 'parent_id' ];
+
+};  // while ( $products_category_tpl_path_current_id )
+
+$products_category_tpl_arr = array_reverse( $products_category_tpl_arr, true );
+$category_path_tpl_arr = array_values( $products_category_tpl_arr );
+
+
+// End product/catalog variables set fot template
+
 
 
 // initialize the message stack for output messages
