@@ -20,6 +20,15 @@
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $result = true;
+
+
+// Start product/catalog variables set fot template
+$module->assign( 'product_name_tpl', $product_name_tpl );
+$module->assign( 'products_category_tpl', $products_category_tpl_arr );
+$module->assign( 'category_path_tpl', $category_path_tpl_arr );
+// End product/catalog variables set fot template
+
+
 // include needed functions
 require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');

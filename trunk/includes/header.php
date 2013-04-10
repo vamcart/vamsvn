@@ -362,56 +362,9 @@ $vamTemplate->assign('mainpage',HTTP_SERVER . DIR_WS_CATALOG);
 
 // Start product/catalog variables set fot template
 
-$product_name_tpl = '';
-
-if (isset ($_GET['info']))
-{
-    $site = explode('_', $_GET['info']);
-    $pID = $site[0];
-
-    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
-      . TABLE_PRODUCTS_DESCRIPTION
-      . " where products_id = '" . (int) str_replace('p', '', $pID)
-      . "' and language_id = '" . $_SESSION['languages_id'] . "'" );
-    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
-
-    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
-
-} // also check for old 3.0.3 URLS
-elseif (isset($_GET['products_id']))
-{
-    $products_category_tpl_path_query  = vam_db_query( "select products_name from "
-      . TABLE_PRODUCTS_DESCRIPTION
-      . " where products_id = '" . (int)$_GET['products_id']
-      . "' and language_id = '" . $_SESSION['languages_id'] . "'" 
-    );
-    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
-
-    $product_name_tpl = $products_category_tpl_path_result[ 'products_name' ];
-};
-
 $vamTemplate->assign( 'product_name_tpl', $product_name_tpl );
-
-
-$products_category_tpl_arr = array();
-
-$products_category_tpl_path_current_id = $current_category_id;
-
-while ( $products_category_tpl_path_current_id )
-{
-    $products_category_tpl_path_query = vam_db_query( "select categories_name from  " . TABLE_CATEGORIES_DESCRIPTION . " where language_id = '" . $_SESSION['languages_id'] . "' and categories_id = '" . $products_category_tpl_path_current_id . "'" );
-    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
-    
-    $products_category_tpl_arr[ $products_category_tpl_path_current_id ] = $products_category_tpl_path_result[ 'categories_name' ];
-
-    $products_category_tpl_path_query = vam_db_query( "select parent_id from  " . TABLE_CATEGORIES . " where categories_id = '" . $products_category_tpl_path_current_id . "'" );
-    $products_category_tpl_path_result = vam_db_fetch_array( $products_category_tpl_path_query );
-    $products_category_tpl_path_current_id = $products_category_tpl_path_result[ 'parent_id' ];
-
-};  // while ( $products_category_tpl_path_current_id )
-
-$products_category_tpl_arr = array_reverse( $products_category_tpl_arr, true );
 $vamTemplate->assign( 'products_category_tpl', $products_category_tpl_arr );
+$vamTemplate->assign( 'category_path_tpl', $category_path_tpl_arr );
 
 // End product/catalog variables set fot template
 

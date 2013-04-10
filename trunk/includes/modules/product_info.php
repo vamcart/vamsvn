@@ -35,6 +35,14 @@ $info = new vamTemplate;
 $info->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $group_check = '';
 
+
+// Start product/catalog variables set fot template
+$info->assign( 'product_name_tpl', $product_name_tpl );
+$info->assign( 'products_category_tpl', $products_category_tpl_arr );
+$info->assign( 'category_path_tpl', $category_path_tpl_arr );
+// End product/catalog variables set fot template
+
+
 if (!is_object($product) || !$product->isProduct() OR !$product->data['products_id'] ) { // product not found in database
 
 	$error = TEXT_PRODUCT_NOT_FOUND;

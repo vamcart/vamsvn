@@ -29,6 +29,14 @@ $default->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $default->assign('session', session_id());
 $main_content = '';
 
+
+// Start product/catalog variables set fot template
+$default->assign( 'product_name_tpl', $product_name_tpl );
+$default->assign( 'products_category_tpl', $products_category_tpl_arr );
+$default->assign( 'category_path_tpl', $category_path_tpl_arr );
+// End product/catalog variables set fot template
+
+
 // include needed functions
 require_once (DIR_FS_INC.'vam_customer_greeting.inc.php');
 require_once (DIR_FS_INC.'vam_get_path.inc.php');
