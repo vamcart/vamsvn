@@ -25,7 +25,7 @@
 <p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
 <p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
 {/if}
 <p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
 {if $birthdate=='1'} 
@@ -33,14 +33,14 @@
 {/if}
 </fieldset>
 {if $company=='1'}<fieldset class="form">
-<p>{#text_company#} {$INPUT_COMPANY}</p>
+<p><label for="company">{#text_company#}</label> {$INPUT_COMPANY}</p>
 </fieldset>
 {/if}<div id="shipping_address">
 <fieldset class="form">
 {if $street_address=='1'}{/if}
 {if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
 {/if}
-{if $suburb=='1'}<p>{#text_suburb#} {$INPUT_SUBURB}</p>
+{if $suburb=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB}</p>
 {/if}
 {if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
 {/if}
@@ -97,7 +97,7 @@
 {if $street_address_payment=='1'}{/if}
 {if $street_address_payment=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET_PAYMENT}</p>
 {/if}
-{if $suburb_payment=='1'}<p>{#text_suburb#} {$INPUT_SUBURB_PAYMENT}</p>
+{if $suburb_payment=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB_PAYMENT}</p>
 {/if}
 {if $postcode_payment=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE_PAYMENT}</p>
 {/if}
@@ -128,7 +128,7 @@
 <p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
 {if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
-{if $fax=='1'}<p>{#text_fax#} {$INPUT_FAX}</p>
+{if $fax=='1'}<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
 {/if}
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 {foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>

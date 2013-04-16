@@ -17,13 +17,13 @@
 <fieldset class="form">
 <legend>{#title_personal#}</legend>
 {if $csID}
-<p>{#csID#} {$csID}</p>
+<p><label for="csid">{#csID#}</label> {$csID}</p>
 {/if}
 {if $gender=='1'} 
 <p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
 {/if}
 <p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-{if $secondname=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME}</p>
+{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
 {/if}
 <p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
 {if $birthdate=='1'} 
@@ -34,10 +34,10 @@
 <p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
 {if $fax=='1'} 
-<p>{#text_fax#} {$INPUT_FAX}</p>
+<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
 {/if}
 {if $vat=='1'}
-<p>{#text_ustid#} {$INPUT_VAT}</p>
+<p><label for="vat">{#text_ustid#}</label> {$INPUT_VAT}</p>
 {/if}
 </fieldset>
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}

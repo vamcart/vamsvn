@@ -2826,46 +2826,64 @@ input[type=text]
 	  width: 80%;
    }
 
-.pagecontent fieldset.form
-   {
-     border: 0px;
-   }
+fieldset.form
+	{
+		border: 0px;
+	}
 
-.pagecontent fieldset.form legend
-   {
-     font-weight: bold;
-	  font: 12pt arial,sans-serif;
-	  font-weight: bold;
-   }
+fieldset.form legend
+	{
+		font-weight: bold;
+		
+		font: 12pt arial,sans-serif;
+		font-weight: bold;
+	}
 
-.pagecontent .form p
-   {
-	  font: 12pt arial,sans-serif;
-	  font-weight: normal;
-   }
-   
+.form p label
+	{
+		display: inline-block; 
+		float: left; 
+		width: 10%; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px; 
+		border: 0px solid black; 
+		color: #545452; 
+		font-weight: normal; 
+		text-align: right;
+	}
+
+.form p
+	{
+		font: 12pt arial,sans-serif;
+		font-weight: normal;
+		margin-bottom: .5em;
+		clear: both;
+	}
+		
 /*- Подсветка ошибок формы */
 #errormsg
-   {
-     border: 2px solid #c00;
-     padding: 5px;
-     width: 96%;
-   }    
+	{
+		border: 2px solid #c00;
+		padding: 5px;
+		width: 96%;
+	}	   
 
 label.error 
 	{
-		margin-left: 10px;
-		width: auto;
-		display: inline;
-		color: red;
-		font-weight: normal;
-		background: transparent;
+		clear: both;
+		width: 10%; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px; 
+		border: 0px solid black; 
+		color: #545452; 
+		font-weight: normal; 
+		text-align: right;
 }
 
 .error
-   {
-	  background: #fcc;
-   }
+	{
+		background: #fcc;
+	}
 /*- /Подсветка ошибок формы */
    
 .form textarea:focus, input:focus, .sffocus, .sffocus 
