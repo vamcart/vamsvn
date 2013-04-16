@@ -17,34 +17,34 @@
    --------------------------------------------------------------*/
 
 /* links */
-a:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: underline; }
+a:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: underline; }
 
-a.headerLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: underline; }
+a.headerLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: bold; text-decoration: underline; }
 
 a.menuBoxHeadingLink:link { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:visited { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:active { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:hover { font-size: 11pt; color: #000000; font-weight: bold; text-decoration: none; }
 
-a.menuBoxContentLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #cccccc; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #cccccc; font-weight: normal; text-decoration: none; }
 
-a.splitPageLink:link { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:visited { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:active { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:hover { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
+a.splitPageLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
 
 /* menu box */
-.menuBoxHeading { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #000000; background-color: #f1f1f1; }
-.menuBoxContent { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #616060; }
+.menuBoxHeading { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #000000; background-color: #f1f1f1; }
+.menuBoxContent { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #616060; }
 .longDescription { visibility: hidden; display: none; }
 
 /* page */
@@ -65,7 +65,7 @@ html,body
     border-bottom: 1px solid;  
  }
 .headerBarContent { 
-font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 font-size: 11pt; 
 color: #000000; 
 font-weight: bold; 
@@ -87,7 +87,7 @@ font-color: #000000;
 
 .pageHeading { 
 
-		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -131,7 +131,7 @@ table.pageHead
 
 .dataTableHeadingContent {
 
-    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
     font-size: 11pt;
     font-weight: bold;
     text-align: center;
@@ -170,40 +170,44 @@ table.pageHead
  }
  
 .dataTableContent {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
+ text-align: right;
  }
 
 .dataTableContent-odd {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
  background: #fff;
+ text-align: right;
  }
 
 .dataTableContent-even {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
  background: #f7f7f7;
+ text-align: right;
  }
 
 .dataTableContentRss {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
+ text-align: right;
  }
  
 td.categories_view_data {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -212,7 +216,7 @@ td.categories_view_data {
 }
 
 td.categories_view_data_even {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -221,7 +225,7 @@ td.categories_view_data_even {
 }
 
 td.categories_view_data_odd {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -230,7 +234,7 @@ td.categories_view_data_odd {
 }
 
 td.view_data_even {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -240,7 +244,7 @@ td.view_data_even {
 }
 
 td.view_data_odd {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -250,7 +254,7 @@ td.view_data_odd {
 }
 
 .dataTableContent_products {
- font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
  font-size: 11pt; 
  color: #000000; 
  vertical-align: middle;
@@ -260,7 +264,7 @@ td.view_data_odd {
 
  
 .dataTableContentRow {
-font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 font-size: 11pt; 
 color: #000000; 
 vertical-align: middle;
@@ -270,12 +274,12 @@ border-color: #cccccc;
 
 /* info box */
 .infoBoxHeading {
-    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
     font-size: 11pt;
     font-weight: bold;
 }
 .infoBoxContent { 
-    font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
     font-size: 11pt;
 }
 
@@ -303,7 +307,7 @@ border-color: #cccccc;
 }
 
 .contentTable {
- 	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+ 	font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
  	font-size: 11pt;
 		margin: 0 auto;
 		padding: .5em;
@@ -499,13 +503,13 @@ div.stock_warn {
 
 /* message box */
 
-.messageBox { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; }
-.messageStackError, .messageStackWarning { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; background-color: #ffb3b5; }
-.messageStackSuccess { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; background-color: #99ff00; }
+.messageBox { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; }
+.messageStackError, .messageStackWarning { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; background-color: #ffb3b5; }
+.messageStackSuccess { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; background-color: #99ff00; }
 
 /* forms */
 CHECKBOX, input[type=text], RADIO, SELECT, TEXTAREA, FILE { 
-font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 	font-size: 1em;
 	border: 1px solid;
 	border-color: #666 #ccc #ccc #666;
@@ -533,7 +537,7 @@ input:focus, .sffocus, .sffocus {
 
 /* account */
 .formArea { background-color: #f1f1f1; border-color: #cccccc; border-style: solid; border-width: 1px; }
-.formAreaTitle { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; font-weight: bold; }
+.formAreaTitle { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; font-weight: bold; }
 
 /* attributes */
 .attributes-odd { background-color: #f4f7fd; }
@@ -542,15 +546,15 @@ input:focus, .sffocus, .sffocus {
 /* miscellaneous */
 .specialPrice { color: #ff0000; }
 .oldPrice { text-decoration: line-through; }
-.fieldRequired { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #ff0000; }
-.smallText { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; }
-.main { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; text-align: left; }
-.errorText { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; font-size: 11pt; color: #ff0000; }
+.fieldRequired { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #ff0000; }
+.smallText { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; }
+.main { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; text-align: left; }
+.errorText { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 11pt; color: #ff0000; }
 
 /* Сборка VaM */
 
 div.buttonadmin {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -559,7 +563,7 @@ div.buttonadmin {
 }
 
 TD.buttonadmin {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -573,7 +577,7 @@ TR.buttonadmin {
 }
 
 A.shippingInfo { 
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -583,7 +587,7 @@ A.shippingInfo {
 }
 
 A.shippingInfo:hover {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -593,7 +597,7 @@ A.shippingInfo:hover {
 }
 
 A.shippingInfo:visited {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -608,7 +612,7 @@ TD.button1 {
 }
 
 TD.navigation {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #990000;
@@ -617,7 +621,7 @@ TD.navigation {
 }
 
 TD.navigationTop {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #000000;
@@ -626,7 +630,7 @@ TD.navigationTop {
 }
 
 TD.contentBoxHeading1, p.contentBoxHeading1 {
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -634,7 +638,7 @@ TD.contentBoxHeading1, p.contentBoxHeading1 {
 
 A.contentBoxHeading1 {
   color: #0000FF;
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -643,7 +647,7 @@ A.contentBoxHeading1 {
 
 a:hover.contentBoxHeading1 {
   color: #0000FF;
-  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -660,7 +664,7 @@ TR.headerNavigation {
 }
 
 TD.headerNavigation {
-	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 	font-size: 11pt;
 	color: #000000;
 	font-weight : bold;
@@ -678,7 +682,7 @@ A.headerNavigation:hover {
 }
 
 h1.contentBoxHeading {
-		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -687,7 +691,7 @@ h1.contentBoxHeading {
 		}
 		
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
-		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -838,7 +842,7 @@ div#tabs
    
 div#map
 	{
-		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 		font-size: 11pt; 
 		color: #000000; 
 		font-weight: normal; 
@@ -869,7 +873,7 @@ div#map #error
 width: 200px;
 position: absolute;
 z-index: 1001;
-		font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
 		font-size: 10pt; 
 border: 1px solid #1593db;
 background-color: #e5f5fe;
