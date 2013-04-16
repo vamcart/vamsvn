@@ -21,7 +21,7 @@ body
 	{
 		background: #fff;
 		color: #000;
-		font: 14px/16px Tahoma, Arial, Helvetica, sans-serif;
+		font: 14px/16px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 	}
 a 
 	{
@@ -108,7 +108,7 @@ address
 	}
 #header ul li 
 	{
-		font: 14px/32px Tahoma, Arial;
+		font: 14px/32px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		height: 33px;
 		float: left;
 		margin: 0 5px 0 0;
@@ -131,8 +131,8 @@ address
 	{
 		float: left;
 		background: url(images/right-t.png) no-repeat 100% 0;
-		margin-left: 13px;
-		padding: 0 13px 0 0;
+		margin-left: 12px;
+		padding: 0 12px 0 0;
 		text-decoration: underline;
 		height: 33px;
 	}
@@ -186,7 +186,7 @@ address
 #content h2 
 	{
 		color: #000;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 	}
 .post 
 	{
@@ -199,14 +199,14 @@ address
 		overflow: hidden;
 		margin-bottom: 19px;
 		color: #000;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		background: url(images/arrow2.png) no-repeat 5px 7px;
 		padding-left: 28px;
 	}
 .recomend h2 a, .new h2 a 
 	{
 		color: #000;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		text-decoration: underline;
 	}
 .recomend 
@@ -233,7 +233,7 @@ address
 	}
 .recomend ul li h3 
 	{
-		font: 18px/20px Tahoma, Arial;
+		font: 18px/20px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		margin-bottom: 12px;
 	}
 .recomend ul li span 
@@ -245,7 +245,7 @@ address
 .recomend ul li span.price 
 	{
 		display: block;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		color: #414141;
 		padding-bottom: 10px;
 	}
@@ -269,7 +269,7 @@ address
 	}
 .new ul li h3  
 	{
-		font: 14px/16px Tahoma, Arial;
+		font: 14px/16px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		padding-bottom: 4px;
 	}
 .new ul li span  
@@ -279,7 +279,7 @@ address
 	}
 .new ul li span.price  
 	{
-		font: 18px/20px Tahoma, Arial;
+		font: 18px/20px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		display: block;
 		padding-bottom: 4px;
 	}
@@ -328,7 +328,7 @@ address
 		float: left;
 		margin-left: 20px;
 		padding-right: 20px;
-		font: 24px/47px Tahoma, Arial;
+		font: 24px/47px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		color: #fff;
 	}
 #sidebar .title h2 a 
@@ -379,7 +379,7 @@ address
 		float: left;
 		margin-left: 20px;
 		padding-right: 20px;
-		font: 24px/47px Tahoma, Arial;
+		font: 24px/47px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		color: #fff;
 	}
 #rightcol .title h2 a 
@@ -431,7 +431,7 @@ address
 		overflow: hidden;
 		margin-bottom: 19px;
 		color: #000;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		background: url(images/arrow2.png) no-repeat 5px 7px;
 		padding-left: 28px;
 	}
@@ -439,7 +439,7 @@ address
 #content h1 a 
 	{
 		color: #000;
-		font: 24px/26px Tahoma, Arial;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 		text-decoration: underline;
 	}
 /* /Заголовок страницы */
@@ -493,7 +493,7 @@ address
 
 #CatNavi li
 	{ 
-	font: 18px/43px Tahoma, Arial;
+	font: 18px/43px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
 	margin-bottom: 3px;
 	}
 		
