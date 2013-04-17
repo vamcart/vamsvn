@@ -43,7 +43,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         }
     }
 
-    function sql_error($query) {return 'SQL error : '.mysqli_errno($$link;).' - '.mysqli_error($$link).'<br>'.$query;}
+    function sql_error($query) {return 'SQL error : '.mysqli_errno($$link).' - '.mysqli_error($$link).'<br>'.$query;}
 
 
     /*
