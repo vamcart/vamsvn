@@ -2619,12 +2619,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 
         // determine processing status based on dropdown choice on EP menu
 		// Delete product included in normal & update options
-        if ((sizeof($row) > 1) && ($_POST['imput_mode'] == "normal" || $_POST['imput_mode'] == "update")) {
+        if ((sizeof($row) > 0) && ($_POST['imput_mode'] == "normal" || $_POST['imput_mode'] == "update")) {
             $process_product = true;
 		// For Delete Only option (product exists) & (v_status = EP_DELETE_IT) & (Delete Only)
-		} elseif ((sizeof($row) > 1) && ($items[$filelayout['v_status']] == EP_DELETE_IT) && ($_POST['imput_mode'] == "delete")) {
+		} elseif ((sizeof($row) > 0) && ($items[$filelayout['v_status']] == EP_DELETE_IT) && ($_POST['imput_mode'] == "delete")) {
             $process_product = true;			
-        } elseif ((sizeof($row) == 1) && ($_POST['imput_mode'] == "normal" || $_POST['imput_mode'] == "addnew")) {
+        } elseif ((sizeof($row) == 0) && ($_POST['imput_mode'] == "normal" || $_POST['imput_mode'] == "addnew")) {
             $process_product = true;
         } else {
             $process_product = false;
