@@ -130,8 +130,10 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     return mysqli_data_seek($db_query, $row_number);
   }
 
-  function vam_db_insert_id() {
-    return mysqli_insert_id();
+  function vam_db_insert_id($link = 'db_link') { 
+    global $$link;
+
+    return mysqli_insert_id($$link); 
   }
 
   function vam_db_free_result($db_query) {
@@ -146,8 +148,10 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     return htmlspecialchars($string);
   }
 
-  function vam_db_input($string) {
-    return addslashes($string);
+  function vam_db_input($string, $link = 'db_link') {
+    global $$link;
+
+    return mysqli_real_escape_string($$link, $string);
   }
 
   function vam_db_prepare_input($string) {
