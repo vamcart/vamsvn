@@ -92,4 +92,11 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       return false;
     }
   }
+  
+function mysqli_result($res, $row, $field=0) { 
+    $res->data_seek($row); 
+    $datarow = $res->fetch_array(); 
+    return $datarow[$field]; 
+}  
+  
 ?>
