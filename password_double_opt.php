@@ -178,7 +178,7 @@ switch ($case) {
 		break;
 	case double_opt :
 
-		$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" />');
+		$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
 		$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha"', 'text', false));
 		$vamTemplate->assign('text_heading', HEADING_PASSWORD_FORGOTTEN);
 		//    $vamTemplate->assign('info_message', $info_message);
