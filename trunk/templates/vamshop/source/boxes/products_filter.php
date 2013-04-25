@@ -130,7 +130,11 @@ $box_content='';
         }
         $first = false;
         
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br>';
+        if (isset ($_GET[$var]) && $_GET[$var] != '') {
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br />';
+        } else {
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b>';
+        }
 
         $filter_index = 0;
         if ($specs_array['filter_show_all'] == 'True') {
