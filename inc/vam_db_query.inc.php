@@ -27,7 +27,7 @@
     //$$link = mysqli_connect('localhost', 'root', '', 'vamshop');
     //echo $query.'<br>';
 
-    if (STORE_DB_TRANSACTIONS == 'true') {
+    if (STORE_DB_TRANSACTIONS == 'true' && file_exists(STORE_PAGE_PARSE_TIME_LOG)) {
       error_log('QUERY ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 //    $queryStartTime = array_sum(explode(" ",microtime()));
@@ -37,7 +37,7 @@
 //	echo 'time: '.$processTime.' Query: '.$query.'<br>';
 
 
-    if (STORE_DB_TRANSACTIONS == 'true') {
+    if (STORE_DB_TRANSACTIONS == 'true' && file_exists(STORE_PAGE_PARSE_TIME_LOG)) {
        $result_error = mysqli_error($$link);
        error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
