@@ -52,9 +52,7 @@ html,body
    {
 		margin: 0;
 		padding: 0;
-		background-color: transparent;
-		background-image: url(../images/bg.png);
-		background-position: 0 -221px;
+		background-color: #fff;
 		background-repeat: repeat-x; 
    }
 
@@ -970,3 +968,20 @@ mg.image_filter {
   float: left;  /* Don't change this */
 }
 /* End Products Specifications */
+
+#tabs { border: none; background: none; }
+#tabs .ui-widget-content { border: none; background: none; }
+#tabs .ui-widget-header { border: none; background: none; }
+
+#tabs .ui-tabs .ui-tabs-panel {
+ background: #FFF5AA; /* <------------------------ background of tab content area */
+ border: 1px solid #38402D; /* <------------------------ border of tab content area */
+ position: relative;
+ min-height: 200px;
+ height: auto !important;
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ -khtml-border-radius: 10px;
+ border-radius: 10px;
+ padding-top: 20px; 
+}
