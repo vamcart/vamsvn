@@ -168,16 +168,15 @@ table.pageHead
  }
  
 .dataTableContent {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
  border-bottom: 0px dashed #cccccc;
- text-align: right;
  }
 
 .dataTableContent-odd {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -187,7 +186,7 @@ table.pageHead
  }
 
 .dataTableContent-even {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
@@ -197,11 +196,10 @@ table.pageHead
  }
 
 .dataTableContentRss {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif; 
  font-size: 11pt; 
  color: #000000;
  vertical-align: middle;
- text-align: right;
  }
  
 td.categories_view_data {
