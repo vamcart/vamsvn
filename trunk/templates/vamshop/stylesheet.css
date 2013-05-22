@@ -3624,5 +3624,8 @@ div.CheckoutError
 		margin-top: 0.5em;
 		padding: 0.5em;
 	}
+
+#load_status_bg {background: url(img/wind_bg.png) repeat; position: fixed;z-index: 2300;width: 100%;height: 100%;top: 0px;left: 0px;}
+#load_status_bg .load_status_image {background:url(img/ajax-loader.gif);width:100%; margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}		
 		         
 /*]]>*/
