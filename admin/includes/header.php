@@ -428,6 +428,7 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_vpe'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_VPE, '', 'NONSSL') . '">' . BOX_PRODUCTS_VPE . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '">' . BOX_CAMPAIGNS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '">' . BOX_ORDERS_XSELL_GROUP . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['answer_templates'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES, '', 'NONSSL') . '">' . BOX_ANSWER_TEMPLATES . '</a></dd>' . "\n";
 ?>
 
                             </dl>

@@ -597,4 +597,6 @@ define('BOX_ATTRIBUTES_MANAGER_CATEGORIES','Установка атрибуто�
 
 define('TEXT_PRODUCTS_ATTRIBUTES','Атрибуты товара');
 
+define('BOX_ANSWER_TEMPLATES','Шаблоны ответов');
+
 ?>
