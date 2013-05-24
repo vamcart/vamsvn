@@ -1137,6 +1137,7 @@ CREATE TABLE products (
   group_permission_3 tinyint(1) NOT NULL,
   products_sort int(4) NOT NULL DEFAULT '0',
   products_image varchar(255),
+  products_image_description varchar(255),
   products_price decimal(15,4) NOT NULL,
   products_discount_allowed decimal(15,4) DEFAULT '0' NOT NULL,
   products_date_added datetime NOT NULL,
@@ -1224,6 +1225,7 @@ CREATE TABLE products_images (
   products_id INT NOT NULL ,
   image_nr SMALLINT NOT NULL ,
   image_name VARCHAR( 254 ) NOT NULL ,
+  image_description VARCHAR( 254 ) NOT NULL ,
   PRIMARY KEY ( image_id )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
