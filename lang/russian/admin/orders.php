@@ -154,4 +154,6 @@ define('MAP_API_KEY_ERROR','Зарегистрируйте ключ на <a href
 
 define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
 
+define('ENTRY_ANSWER_TEMPLATE', 'Шаблон ответа:');
+
 ?>
