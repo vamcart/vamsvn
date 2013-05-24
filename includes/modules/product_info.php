@@ -146,6 +146,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 	   if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.gif';
 
 		$info->assign('PRODUCTS_IMAGE', $image);
+		$info->assign('PRODUCTS_IMAGE_DESCRIPTION', $product->data['products_image_description']);
 
 		$image_pop = DIR_WS_POPUP_IMAGES.$product->data['products_image'];
 		$info->assign('PRODUCTS_POPUP_IMAGE', $image_pop);
@@ -169,6 +170,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
                 $mo_img[] = array(
                 'PRODUCTS_MO_IMAGE' => DIR_WS_INFO_IMAGES . $img['image_name'],
                 'PRODUCTS_MO_POPUP_IMAGE' => $products_mo_popup_link,
+                'PRODUCTS_MO_IMAGE_DESCRIPTION' => $img['image_description'],
                 'PRODUCTS_MO_POPUP_LINK' => $products_mo_popup_link);
         $info->assign('mo_img', $mo_img);
             }

@@ -249,4 +249,6 @@ define('TEXT_PRODUCTS_QUANTITY_MAX', 'Макс. количество для за
   define ('SPECIFICATIONS_TEXT_ALL', 'Все');
 // End Products Specifications
 
+  define ('TEXT_IMAGE_DESCRIPTION', 'Описание картинки: ');
+
 ?>

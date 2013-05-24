@@ -15,7 +15,7 @@
    ---------------------------------------------------------------------------------------*/
    
    function vam_get_products_mo_images($products_id = ''){
-   $mo_query = "select image_id, image_nr, image_name from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . $products_id ."' ORDER BY image_nr";
+   $mo_query = "select image_id, image_nr, image_name, image_description from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . $products_id ."' ORDER BY image_nr";
 
 
    $products_mo_images_query = vamDBquery($mo_query);
