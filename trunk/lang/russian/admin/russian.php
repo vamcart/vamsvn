@@ -307,6 +307,7 @@ define('TEXT_DISPLAY_NUMBER_OF_ZONES', 'Показано <b>%d</b> - <b>%d</b> (
 define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> рекомендуемых товаров)');
 define('TEXT_DISPLAY_NUMBER_OF_FAQS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> вопросов и ответов)');
 define('TEXT_DISPLAY_NUMBER_OF_NEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новостей)');
+define('TEXT_DISPLAY_NUMBER_OF_ITEMS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> записей)');
 
 define('PREVNEXT_BUTTON_PREV', 'Предыдущая');
 define('PREVNEXT_BUTTON_NEXT', 'Следующая');
