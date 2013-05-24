@@ -14,34 +14,32 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Новости');
+define('HEADING_TITLE', 'Шаблоны ответов');
 
-define('TABLE_HEADING_LATEST_NEWS_HEADLINE', 'Заголовок новости');
+define('TABLE_HEADING_LATEST_NEWS_NAME', 'Название');
 define('TABLE_HEADING_LATEST_NEWS_ACTION', 'Действие');
 define('TABLE_HEADING_LATEST_NEWS_STATUS', 'Статус');
 
-define('TEXT_NEWS_ITEMS', 'Количество новостей:');
-define('TEXT_INFO_HEADING_DELETE_ITEM', 'Удалить новость');
-define('TEXT_DELETE_ITEM_INTRO', 'Вы уверены, что хотите удалить эту новость?');
+define('TEXT_ITEMS', 'Количество ответов:');
+define('TEXT_INFO_HEADING_DELETE_ITEM', 'Удалить ответ');
+define('TEXT_DELETE_ITEM_INTRO', 'Вы уверены, что хотите удалить этот ответ?');
 
-define('TEXT_LATEST_NEWS_HEADLINE', 'Заголовок');
-define('TEXT_LATEST_NEWS_CONTENT', 'Новость');
+define('TEXT_ANSWER_TEMPLATES_NAME', 'Название');
+define('TEXT_ANSWER_TEMPLATES_CONTENT', 'Ответ');
 
-define('IMAGE_NEW_NEWS_ITEM', 'Добавить новость');
-define('IMAGE_EDIT_NEWS_ITEM', 'Изменить новость');
-define('TEXT_LATEST_NEWS_LANGUAGE', 'Язык');
-define('TEXT_LATEST_NEWS_DATE', 'Дата');
+define('IMAGE_NEW_NEWS_ITEM', 'Добавить ответ');
+define('IMAGE_EDIT_NEWS_ITEM', 'Изменить ответ');
+define('TEXT_ANSWER_TEMPLATES_LANGUAGE', 'Язык');
+define('TEXT_ANSWER_TEMPLATES_DATE', 'Дата');
 
 // Сборка VaM
 
 define('IMAGE_ICON_STATUS_GREEN', 'Активна');
 define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
-define('IMAGE_ICON_STATUS_RED', 'Неактивна');
-define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
+define('IMAGE_ICON_STATUS_RED', 'Неактивен');
+define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивным');
 
-define('EMPTY_CATEGORY', 'Нет новостей');
-define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте новость');
-
-define('TEXT_NEWS_PAGE_URL', 'SEO URL новости');
+define('EMPTY_CATEGORY', 'Нет ответов');
+define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте ответ');
 
 ?>
