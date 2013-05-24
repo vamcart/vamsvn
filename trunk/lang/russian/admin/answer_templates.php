@@ -16,9 +16,9 @@
 
 define('HEADING_TITLE', 'Шаблоны ответов');
 
-define('TABLE_HEADING_LATEST_NEWS_NAME', 'Название');
-define('TABLE_HEADING_LATEST_NEWS_ACTION', 'Действие');
-define('TABLE_HEADING_LATEST_NEWS_STATUS', 'Статус');
+define('TABLE_HEADING_ANSWER_TEMPLATES_NAME', 'Название');
+define('TABLE_HEADING_ANSWER_TEMPLATES_ACTION', 'Действие');
+define('TABLE_HEADING_ANSWER_TEMPLATES_STATUS', 'Статус');
 
 define('TEXT_ITEMS', 'Количество ответов:');
 define('TEXT_INFO_HEADING_DELETE_ITEM', 'Удалить ответ');
