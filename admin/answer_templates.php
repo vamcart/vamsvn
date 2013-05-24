@@ -212,11 +212,11 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
       $answer_templates_count++;
       $rows++;
       
-		if (((!$_GET['id']) || (@ $_GET['id'] == $answer_templates['id'])) && (!$nInfo)) {
-			$nInfo = new objectInfo($answer_templates);
+		if (((!$_GET['id']) || (@ $_GET['id'] == $answer_templates['id'])) && (!$aInfo)) {
+			$aInfo = new objectInfo($answer_templates);
 		}
 
-		if ((is_object($nInfo)) && ($answer_templates['id'] == $nInfo->id)) {
+		if ((is_object($aInfo)) && ($answer_templates['id'] == $aInfo->id)) {
 		
         echo '              <tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_ANSWER_TEMPLATES, vam_get_all_get_params(array('id','action')) . 'id=' . $answer_templates['id']) . '\'">' . "\n";
       } else {
@@ -272,13 +272,12 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
 
       default:
         if ($rows > 0) {
-          if (is_object($nInfo)) { //an item is selected, so make the side box
-            $heading[] = array('text' => '<b>' . $nInfo->name . '</b>');
+          if (is_object($aInfo)) { //an item is selected, so make the side box
+            $heading[] = array('text' => '<b>' . $aInfo->name . '</b>');
 
             $contents[] = array('align' => 'center', 
-                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES,  vam_get_all_get_params(array ('id', 'action')).'id=' . $nInfo->id . '&action=new_answer_templates') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES,  vam_get_all_get_params(array ('id', 'action')).'id=' . $nInfo->id . '&action=delete_answer_templates') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
+                                'text' => '<a class="button" href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES,  vam_get_all_get_params(array ('id', 'action')).'id=' . $aInfo->id . '&action=new_answer_templates') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES,  vam_get_all_get_params(array ('id', 'action')).'id=' . $aInfo->id . '&action=delete_answer_templates') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 
-            $contents[] = array('text' => '<br>' . $nInfo->content);
           }
         } else { // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
