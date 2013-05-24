@@ -1052,7 +1052,7 @@ while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
         <td class="main"><b><?php echo ENTRY_ANSWER_TEMPLATE; ?></b> <?php echo vam_draw_pull_down_menu('menu', $answer_templates_array, '', 'onclick="var textarea = document.getElementById(\'comments\'); textarea.value=document.status.menu.options[document.status.menu.selectedIndex].value;"'). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a>'; ?></td>
       </tr>
       <tr>
-        <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '60', '5'); ?></td>
+        <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '120', '15'); ?></td>
       </tr>
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
