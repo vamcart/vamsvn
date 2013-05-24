@@ -1043,7 +1043,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       </tr>
 <?php      
 $answer_templates_array = array (array ('id' => '', 'text' => TEXT_SELECT));
-$answer_templates_query = vam_db_query("select id, name, content from ".TABLE_ANSWER_TEMPLATES." WHERE language='".$_SESSION['languages_id']."' order by id");
+$answer_templates_query = vam_db_query("select id, name, content from ".TABLE_ANSWER_TEMPLATES." WHERE status = '1' and language='".$_SESSION['languages_id']."' order by id");
 while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
         $answer_templates_array[] = array ('id' => $answer_templates['content'], 'text' => $answer_templates['name']);
 }
