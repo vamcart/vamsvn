@@ -18,7 +18,7 @@
   //    SecurityPro installed *****
   function vam_clean_get__recursive ($get_var) {
     if (!is_array($get_var)) {
-      return preg_replace("/[^ (){}a-zA-Zа-яА-Я0-9_.-]/ui", "", urldecode($get_var));
+      return preg_replace("/[^ (){}a-zA-Zа-яА-Я0-9\+_.,-]/ui", "", rawurldecode($get_var));
     }
 
     // Add the preg_replace to every element.
