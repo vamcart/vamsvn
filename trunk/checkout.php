@@ -690,14 +690,10 @@ if (vam_count_shipping_modules() == 0) {
 // END calculation if 0 shipping method is active ////
 
 // calculation if only 1 shipping method is set ////
-if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
-  if ($_POST['shipping'] != 'undefined') { //to avoid setting Jquery send data which is undefined
-
   if (vam_count_shipping_modules() == 1) {
   		
-  		list($module, $method) = explode('_', $_POST['shipping']);
 		// get all available shipping quotes
-		$quotes = $shipping_modules->quote($method, $module);
+		$quotes = $shipping_modules->quote();
 
 		$ship_id = $quotes[0]['id'] . '_' . $quotes[0]['methods'][0]['id'];
 		  
@@ -763,9 +759,6 @@ if ($order->delivery['country']['iso_code_2'] != '') {
 					}					 	  
 			  
 		} //$shipping end test
-  }
-  
-  }
   } 
 // END - if only 1 shipping method is set ////  
   
@@ -1555,10 +1548,7 @@ $order_total_modules->process();
 		
     $form_action_url = $$payment->form_action_url;
 	$payment_fields .= vam_draw_form('checkoutUrl', $form_action_url, 'post');
-  } 
-  
-  
-    
+   
   if (is_array($payment_modules->modules)) {
 	$payment_modules->pre_confirmation_check();
   }
@@ -1605,6 +1595,7 @@ $payment_fields .= '
 
 $vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
    
+}
 }
 //////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
@@ -1984,7 +1975,7 @@ $vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_chec
 $vamTemplate->assign('shipping', true);     
 if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products
 
-if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() < 1)) { 
+if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
 //if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
 //but we still need the divs in order to work with jquery update
 
