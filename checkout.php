@@ -2081,10 +2081,10 @@ $module = new vamTemplate;
 
 		$selection[$i]['radio_buttons'] = $radio_buttons;
 		
-		$checked_pay = (($selection[$i]['id'] == $payment) ? true : false);
-
+		$check_pay = (($selection[$i]['id'] == $payment) ? true : false);
+		
 		if (sizeof($selection) > 1) {
-			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $payment), 'id="'.$selection[$i]['id'].'"');
+			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], $check_pay, 'id="'.$selection[$i]['id'].'"');
 		} else {
 			$selection[$i]['selection'] = vam_draw_hidden_field('payment', $selection[$i]['id']);
 		}
