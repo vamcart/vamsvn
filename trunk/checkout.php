@@ -772,7 +772,7 @@ if (isset($_POST['payment'])){ $payment = $_POST['payment'];} //payment post dat
 if ((!isset($_POST['payment'])) || ($error == true)) {
 	$payment_modules = new payment();
 } elseif (isset($_POST['payment'])) {
-	$payment_modules = new payment($payment);
+	$payment_modules = new payment($_POST['payment']);
 }
 
 
@@ -2017,7 +2017,7 @@ if (vam_count_shipping_modules() > 0) {
 
 					$quotes[$i]['methods'][$j]['radio_buttons'] = $radio_buttons;
 
-					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $_SESSION['shipping']['id']) ? true : false);
+					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $shipping['id']) ? true : false);
 
 					if (($checked == true) || ($n == 1 && $n2 == 1)) {
 
