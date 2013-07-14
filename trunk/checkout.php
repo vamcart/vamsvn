@@ -2019,12 +2019,6 @@ if (vam_count_shipping_modules() > 0) {
 
 					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $shipping['id']) ? true : false);
 
-					if (($checked == true) || ($n == 1 && $n2 == 1)) {
-
-						$quotes[$i]['methods'][$j]['checked'] = 1;
-
-					}
-
 					if (($n > 1) || ($n2 > 1)) {
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
 							$quotes[$i]['tax'] = '';
@@ -2086,12 +2080,11 @@ $module = new vamTemplate;
 	for ($i = 0, $n = sizeof($selection); $i < $n; $i++) {
 
 		$selection[$i]['radio_buttons'] = $radio_buttons;
-		if (($selection[$i]['id'] == $payment) || ($n == 1)) {
-			$selection[$i]['checked'] = 1;
-		}
+		
+		$checked_pay = (($selection[$i]['id'] == $payment) ? true : false);
 
 		if (sizeof($selection) > 1) {
-			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $selection[0]['id']), 'id="'.$selection[$i]['id'].'"');
+			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $payment), 'id="'.$selection[$i]['id'].'"');
 		} else {
 			$selection[$i]['selection'] = vam_draw_hidden_field('payment', $selection[$i]['id']);
 		}
