@@ -1555,10 +1555,7 @@ $order_total_modules->process();
 		
     $form_action_url = $$payment->form_action_url;
 	$payment_fields .= vam_draw_form('checkoutUrl', $form_action_url, 'post');
-  } 
-  
-  
-    
+   
   if (is_array($payment_modules->modules)) {
 	$payment_modules->pre_confirmation_check();
   }
@@ -1605,6 +1602,7 @@ $payment_fields .= '
 
 $vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
    
+}
 }
 //////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
