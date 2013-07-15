@@ -690,10 +690,14 @@ if (vam_count_shipping_modules() == 0) {
 // END calculation if 0 shipping method is active ////
 
 // calculation if only 1 shipping method is set ////
+if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
+  if ($_POST['shipping'] != 'undefined') { //to avoid setting Jquery send data which is undefined
+
   if (vam_count_shipping_modules() == 1) {
   		
+  		list($module, $method) = explode('_', $_POST['shipping']);
 		// get all available shipping quotes
-		$quotes = $shipping_modules->quote();
+		$quotes = $shipping_modules->quote($method, $module);
 
 		$ship_id = $quotes[0]['id'] . '_' . $quotes[0]['methods'][0]['id'];
 		  
@@ -759,6 +763,9 @@ if ($order->delivery['country']['iso_code_2'] != '') {
 					}					 	  
 			  
 		} //$shipping end test
+  }
+  
+  }
   } 
 // END - if only 1 shipping method is set ////  
   
@@ -772,7 +779,7 @@ if (isset($_POST['payment'])){ $payment = $_POST['payment'];} //payment post dat
 if ((!isset($_POST['payment'])) || ($error == true)) {
 	$payment_modules = new payment();
 } elseif (isset($_POST['payment'])) {
-	$payment_modules = new payment($_POST['payment']);
+	$payment_modules = new payment($payment);
 }
 
 
@@ -1548,7 +1555,10 @@ $order_total_modules->process();
 		
     $form_action_url = $$payment->form_action_url;
 	$payment_fields .= vam_draw_form('checkoutUrl', $form_action_url, 'post');
-   
+  } 
+  
+  
+    
   if (is_array($payment_modules->modules)) {
 	$payment_modules->pre_confirmation_check();
   }
@@ -1595,7 +1605,6 @@ $payment_fields .= '
 
 $vamTemplate->assign('PAYMENT_FIELDS', $payment_fields);
    
-}
 }
 //////////  END  redirection page for payment modules such as paypal if no confirmation page ////////////
 
@@ -1975,7 +1984,7 @@ $vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_chec
 $vamTemplate->assign('shipping', true);     
 if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products
 
-if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
+if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() < 1)) { 
 //if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
 //but we still need the divs in order to work with jquery update
 
@@ -2017,7 +2026,13 @@ if (vam_count_shipping_modules() > 0) {
 
 					$quotes[$i]['methods'][$j]['radio_buttons'] = $radio_buttons;
 
-					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $shipping['id']) ? true : false);
+					$checked = (($quotes[$i]['id'].'_'.$quotes[$i]['methods'][$j]['id'] == $_SESSION['shipping']['id']) ? true : false);
+
+					if (($checked == true) || ($n == 1 && $n2 == 1)) {
+
+						$quotes[$i]['methods'][$j]['checked'] = 1;
+
+					}
 
 					if (($n > 1) || ($n2 > 1)) {
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
@@ -2080,11 +2095,12 @@ $module = new vamTemplate;
 	for ($i = 0, $n = sizeof($selection); $i < $n; $i++) {
 
 		$selection[$i]['radio_buttons'] = $radio_buttons;
-		
-		$check_pay = (($selection[$i]['id'] == $payment) ? true : false);
-		
+		if (($selection[$i]['id'] == $payment) || ($n == 1)) {
+			$selection[$i]['checked'] = 1;
+		}
+
 		if (sizeof($selection) > 1) {
-			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], $check_pay, 'id="'.$selection[$i]['id'].'"');
+			$selection[$i]['selection'] = vam_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $selection[0]['id']), 'id="'.$selection[$i]['id'].'"');
 		} else {
 			$selection[$i]['selection'] = vam_draw_hidden_field('payment', $selection[$i]['id']);
 		}
