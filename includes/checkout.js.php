@@ -89,8 +89,8 @@ function cldiv(){document.getElementById('load_status').innerHTML='';}
 }
 	
 $('#box')
-.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val(),'city': $('input[name=city]').val()}),img_loader();})
-.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val(),'city': $('input[name=city]').val()}),img_loader();})
+.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();})
+.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();})
 .on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}),img_loader();})
 
 
