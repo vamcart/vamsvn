@@ -94,7 +94,7 @@
 
 	  // Now create the coupon main and email entry
       $insert_query = vam_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
-      $insert_id = vam_db_insert_id($insert_query);
+      $insert_id = vam_db_insert_id();
       $insert_query = vam_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $mail['customers_email_address'] . "', now() )");
     }
     if ($_POST['email_to']) {
@@ -129,8 +129,8 @@
 
       // Now create the coupon email entry
       $insert_query = vam_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $id1 . "', 'G', '" . $_POST['amount'] . "', now())");
-      $insert_id = vam_db_insert_id($insert_query);
-      $insert_query = vam_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $_POST['email_to'] . "', now() )");
+      $insert_id1 = vam_db_insert_id();
+      $insert_query = vam_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id1 ."', '0', 'Admin', '" . $_POST['email_to'] . "', now() )");
     }
     vam_redirect(vam_href_link(FILENAME_GV_MAIL, 'mail_sent_to=' . urlencode($mail_sent_to)));
   }
