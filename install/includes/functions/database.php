@@ -20,8 +20,21 @@
       return false;
     }
 
-    $$link = @mysqli_connect($server, $username, $password, $database) or $db_error = mysqli_error($$link);
+    $$link = @mysqli_connect($server, $username, $password);
 
+    if (mysqli_connect_errno($$link)) {
+      $db_error = mysqli_connect_error($$link);
+      return false;
+    }
+
+	$db_selected = mysqli_select_db($$link, $database);
+	
+	if (!$db_selected)
+	  {
+	  $db_error = mysqli_error($$link);
+	      return false;
+	  }
+  
    @mysqli_query($$link, "SET SQL_MODE= ''");
    @mysqli_query($$link, "SET SQL_BIG_SELECTS=1");
    @mysqli_query($$link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
