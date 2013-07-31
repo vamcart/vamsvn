@@ -1318,13 +1318,6 @@
             case 'products_description':
             case 'products_url':
             case 'products_viewed':
-            case 'products_tab_1':
-            case 'products_tab_2':
-            case 'products_tab_3':
-            case 'products_tab_4':
-            case 'products_tab_5':
-            case 'products_tab_6':
-              break;
         
             case 'products_name':
               $products_array[] = array ('id' => $row['Field'],
