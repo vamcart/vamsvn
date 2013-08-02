@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2012-11-07 17:37:58 VaM $
+   $Id: russian.php 1231 2013-11-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -39,7 +39,7 @@ define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 
 // page title
-define('TITLE',  'Админка  - '.PROJECT_VERSION .'   -   '.STORE_NAME  );
+define('TITLE', 'Админка - '. PROJECT_VERSION .' - '.STORE_NAME);
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Администрирование');
