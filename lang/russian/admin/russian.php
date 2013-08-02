@@ -39,7 +39,7 @@ define('HTML_PARAMS','dir="ltr" lang="ru"');
 
 
 // page title
-define('TITLE', PROJECT_VERSION);
+define('TITLE',  'Админка  - '.PROJECT_VERSION .'   -   '.STORE_NAME  );
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Администрирование');
