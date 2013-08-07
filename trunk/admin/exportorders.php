@@ -463,14 +463,6 @@ while($row_orders_products = vam_db_fetch_array($orders_products)) {
 	$csv_output_item .= filter_text($row_orders_products[3]) . "," ;
 	$Products_id = $row_orders_products[4];
 
-	$orders_products_attributes = vam_db_query("select products_options, products_options_values from orders_products_attributes 
-	where orders_id = " . $Orders_id . " and orders_products_id  = " . $Products_id);
-	
-	while($row_orders_products_attributes = vam_db_fetch_array($orders_products_attributes)) {
-		$csv_output_item .= filter_text($row_orders_products_attributes[0]) . "," ;
-		$csv_output_item .= filter_text($row_orders_products_attributes[1]) . "," ;
-	} 
-
 //	$csv_output_item .= "END_ITEM";
 	
 	$csv_output .= $csv_output_item;
