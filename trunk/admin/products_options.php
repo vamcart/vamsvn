@@ -21,7 +21,7 @@
   $languages = vam_get_languages();
 
   $type_array = array();
-  $type_array[]=array('id'=>'0','text'=>TEXT_TYPE_SELECT);
+  //$type_array[]=array('id'=>'0','text'=>TEXT_TYPE_SELECT);
   $type_array[]=array('id'=>'1','text'=>TEXT_TYPE_DROPDOWN);
   $type_array[]=array('id'=>'2','text'=>TEXT_TYPE_TEXT);
   $type_array[]=array('id'=>'3','text'=>TEXT_TYPE_TEXTAREA);
@@ -424,7 +424,7 @@ $manual_link = 'add-attribute';
 ?>
                 <td align="center" class="smallText">&nbsp;<?php echo $options_values['products_options_id']; ?><input type="hidden" name="option_id" value="<?php echo $options_values['products_options_id']; ?>">&nbsp;</td>
                 <td class="smallText"><?php echo $inputs; ?></td>
-                 <td class="smallText"><?php echo vam_draw_pull_down_menu('options_type',$type_array,$type_array[$type]['id']); ?>
+                 <td class="smallText"><?php echo vam_draw_pull_down_menu('options_type',$type_array,$type_array[$type-1]['id']); ?>
                  </td>
                  <td class="smallText">
                  <input type="text" name="option_rows" size="4" value="<?php echo $options_values['products_options_rows'];?>">
@@ -442,7 +442,7 @@ $manual_link = 'add-attribute';
 ?>
                 <td align="center" class="smallText">&nbsp;<?php echo $options_values["products_options_id"]; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values["products_options_name"]; ?>&nbsp;</td>
-                <td class="smallText">&nbsp;<?php echo $type_array[$options_values['products_options_type']]['text']; ?>&nbsp;</td>
+                <td class="smallText">&nbsp;<?php echo $type_array[$options_values['products_options_type']-1]['text']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_rows']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_size']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_length']; ?>&nbsp;</td>
