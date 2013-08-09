@@ -710,6 +710,7 @@ fieldset.form legend
 label.error 
 	{
 		clear: both;
+		width: 10%; 
 		margin: 5px 0 0; 
 		padding: 0 10px 0 10px; 
 		border: 0px solid black; 
