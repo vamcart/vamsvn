@@ -683,7 +683,6 @@ fieldset.form legend
 	{
 		display: inline-block; 
 		float: left; 
-		width: 10%; 
 		margin: 5px 0 0; 
 		padding: 0 10px 0 10px; 
 		border: 0px solid black; 
@@ -711,7 +710,6 @@ fieldset.form legend
 label.error 
 	{
 		clear: both;
-		width: 10%; 
 		margin: 5px 0 0; 
 		padding: 0 10px 0 10px; 
 		border: 0px solid black; 
@@ -754,7 +752,7 @@ span.productSpecialPrice
 span.productOldPrice 
 	{
 		color: #ff0000;
-		text-decoration: line-through;
+		text-decoration: none;
 	}
 
 span.errorText 
