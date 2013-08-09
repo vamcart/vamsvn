@@ -660,4 +660,6 @@ define('TEXT_NO_PRODUCTS_AVAILABLE', 'Товары для сравнения н�
 define('TEXT_NO_COMPARISON_AVAILABLE', 'Администратором не были заданы спецификации товара для сравнения. <a href="http://vamshop.ru/manual/ch06.html" target="_blank">Настройка спецификаций</a>.');
 define('TEXT_COMPARE','Сравнение товара');
 
+define('TEXT_BUY_BUTTON', 'Купить');
+
 ?>
