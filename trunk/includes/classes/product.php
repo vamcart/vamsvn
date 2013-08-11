@@ -174,6 +174,7 @@ class product {
 														                                  p.products_fsk18,
 														                                  p.products_id,
 														                                  p.products_price,
+														                                  p.products_quantity,
 														                                  p.products_tax_class_id,
 														                                  p.products_image,
 														                                  pd.products_name,
