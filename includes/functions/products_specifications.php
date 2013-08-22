@@ -675,7 +675,7 @@
               break;
 
             default:
-              $box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
+              $box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
 
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
@@ -686,7 +686,7 @@
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('submit.png', TEXT_FIND_PRODUCTS);
+        $box_text .= '<noscript>' . vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
         break;
 
