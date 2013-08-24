@@ -39,7 +39,7 @@
 
     if (STORE_DB_TRANSACTIONS == 'true' && file_exists(STORE_PAGE_PARSE_TIME_LOG)) {
        $result_error = mysqli_error($$link);
-       error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+       error_log('RESULT ' . $result->current_field . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 
 //Start VaM db-error processing
