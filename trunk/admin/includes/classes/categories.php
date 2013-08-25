@@ -462,9 +462,7 @@ class categories {
       //vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
 
 // Start Products Specifications
-        vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
-                       where products_id = '" . vam_db_input($product_id) . "'
-                    ");
+        //vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " where products_id = '" . vam_db_input($product_id) . "' ");
 // End Products Specifications
 
 			vam_db_query("DELETE FROM ".TABLE_PRODUCTS_TO_CATEGORIES."
