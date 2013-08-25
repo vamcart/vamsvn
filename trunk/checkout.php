@@ -202,8 +202,14 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
       } else {
         $zone_id = false;
       }
+    } else {
+      $state = STORE_ZONE;
     }
+    if (ACCOUNT_COUNTRY == 'true') {
     $country = vam_db_prepare_input($_POST['country']);
+    } else {
+    $country = STORE_COUNTRY;
+    }
     $telephone = vam_db_prepare_input($_POST['telephone']);
     $fax = vam_db_prepare_input($_POST['fax']);
     if (isset($_POST['newsletter'])) {
