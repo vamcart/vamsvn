@@ -20,6 +20,11 @@
 
   require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/' . 'shopping_cart.php');
 
+	if (($i = strpos($box_shopping_cart, '<div id="divShoppingCart">')) !== false) {
+	    $box_shopping_cart = substr($box_shopping_cart, $i+26);
+	    $i = strrpos($box_shopping_cart, '</div>');
+	    $box_shopping_cart = substr($box_shopping_cart, 0, $i);
+	}
   echo $box_shopping_cart;
 
 ?>
