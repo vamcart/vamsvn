@@ -89,7 +89,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
   }
   foreach ($_POST['multi_orders'] as $this_orderID){
     $order_updated = false;
-    $check_status_query = vam_db_query("select customers_name, customers_telephone, customers_email_address, orders_status, date_purchased from " . TABLE_ORDERS . " where orders_id = '" . (int)$this_orderID . "'");
+    $check_status_query = vam_db_query("select * from " . TABLE_ORDERS . " where orders_id = '" . (int)$this_orderID . "'");
     $check_status = vam_db_fetch_array($check_status_query);
 
     if ($check_status['orders_status'] != $status) {
@@ -107,9 +107,29 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 
 				$vamTemplate->assign('NAME', $check_status['customers_name']);
 				$vamTemplate->assign('ORDER_NR', $this_orderID);
-				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$_POST['multi_orders'], 'SSL'));
+				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$this_orderID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
 				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
+
+				$vamTemplate->assign('DELIVERY_NAME', $check_status['delivery_name']);
+				$vamTemplate->assign('DELIVERY_STREET_ADDRESS', $check_status['delivery_street_address']);
+				$vamTemplate->assign('DELIVERY_CITY', $check_status['delivery_city']);
+				$vamTemplate->assign('DELIVERY_POSTCODE', $check_status['delivery_postcode']);
+				$vamTemplate->assign('DELIVERY_STATE', $check_status['delivery_state']);
+				$vamTemplate->assign('DELIVERY_COUNTRY', $check_status['delivery_country']);
+				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $check_status['customers_telephone']);
+				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $check_status['customers_email_address']);
+
+				  require_once(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
+				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
+				
+				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($this_orderID) . "' and class = 'ot_shipping'");
+				      $shipping_method = vam_db_fetch_array($shipping_method_query);
+				
+				  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
+
+				$vamTemplate->assign('PAYMENT_METHOD', $order_payment_text);
+				$vamTemplate->assign('SHIPPING_METHOD', $order_shipping_text);
 
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.html');
 				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail.txt');
@@ -297,7 +317,7 @@ switch ($_GET['action']) {
 		$comments = vam_db_prepare_input($_POST['comments']);
 	//	$order = new order($oID);
 		$order_updated = false;
-		$check_status_query = vam_db_query("select customers_name, customers_email_address, orders_status, date_purchased from ".TABLE_ORDERS." where orders_id = '".vam_db_input($oID)."'");
+		$check_status_query = vam_db_query("select * from ".TABLE_ORDERS." where orders_id = '".vam_db_input($oID)."'");
 		$check_status = vam_db_fetch_array($check_status_query);
 		if ($check_status['orders_status'] != $status || $comments != '') {
 			vam_db_query("update ".TABLE_ORDERS." set orders_status = '".vam_db_input($status)."', last_modified = now() where orders_id = '".vam_db_input($oID)."'");
@@ -325,6 +345,26 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
 				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
 				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
+
+				$vamTemplate->assign('DELIVERY_NAME', $check_status['delivery_name']);
+				$vamTemplate->assign('DELIVERY_STREET_ADDRESS', $check_status['delivery_street_address']);
+				$vamTemplate->assign('DELIVERY_CITY', $check_status['delivery_city']);
+				$vamTemplate->assign('DELIVERY_POSTCODE', $check_status['delivery_postcode']);
+				$vamTemplate->assign('DELIVERY_STATE', $check_status['delivery_state']);
+				$vamTemplate->assign('DELIVERY_COUNTRY', $check_status['delivery_country']);
+				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $check_status['customers_telephone']);
+				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $check_status['customers_email_address']);
+
+				  require_once(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
+				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
+				
+				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");
+				      $shipping_method = vam_db_fetch_array($shipping_method_query);
+				
+				  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
+
+				$vamTemplate->assign('PAYMENT_METHOD', $order_payment_text);
+				$vamTemplate->assign('SHIPPING_METHOD', $order_shipping_text);
 
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.html');
 				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.txt');
