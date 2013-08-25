@@ -686,7 +686,81 @@
             vam_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
           } // for ($i=0
         } // if ($specification_id
-        
+
+        // Also copy filters if selected
+        if (isset ($_POST['copy_filter']) && $_POST['copy_filter'] == 'True') {
+          $filters_query_raw = "select specification_filters_id,
+                                       filter_sort_order
+                                from " . TABLE_SPECIFICATIONS_FILTERS . "
+                                where specifications_id = '" . $specification_id . "'
+                              ";
+          // print $filters_query_raw . "<br>\n";
+          $filters_query = vam_db_query ($filters_query_raw);
+
+          while ($filters_data = vam_db_fetch_array ($filters_query) ) {
+            $sql_data_array = array ('specifications_id' => $specification_id_copy,
+                                     'filter_sort_order' => $filters_data['filter_sort_order']
+                                    );
+            vam_db_perform (TABLE_SPECIFICATIONS_FILTERS, $sql_data_array);
+            $new_specification_filters_id = vam_db_insert_id();
+
+            $languages = vam_get_languages();
+            for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+              $filters_description_query_raw = "select filter
+                                                from " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . "
+                                                where specification_filters_id = '" . $filters_data['specification_filters_id'] . "'
+                                                  and language_id = '" . (int) $languages[$i]['id'] . "'
+                                              ";
+              // print $filters_description_query_raw . "<br>\n";
+              $filters_description_query = vam_db_query ($filters_description_query_raw);
+
+              $filters_description_data = vam_db_fetch_array ($filters_description_query);
+              $sql_data_array = array ('specification_filters_id' => $new_specification_filters_id,
+                                       'language_id' => (int) $languages[$i]['id'],
+                                       'filter' => $filters_description_data['filter']
+                                      );
+              vam_db_perform (TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION, $sql_data_array);
+            } // for ($i=0
+          } // while ($filters_data
+        } // if (isset ($_POST['copy_filter']
+
+        // Also copy specification values if selected
+        if (isset ($_POST['copy_values']) && $_POST['copy_values'] == 'True') {
+          $values_query_raw = "select specification_values_id,
+                                      value_sort_order
+                               from " . TABLE_SPECIFICATIONS_VALUES . "
+                               where specifications_id = '" . $specification_id . "'
+                             ";
+          // print $values_query_raw . "<br>\n";
+          $values_query = vam_db_query ($values_query_raw);
+
+          while ($values_data = vam_db_fetch_array ($values_query) ) {
+            $sql_data_array = array ('specifications_id' => $specification_id_copy,
+                                     'value_sort_order' => $values_data['value_sort_order']
+                                    );
+            vam_db_perform (TABLE_SPECIFICATIONS_VALUES, $sql_data_array);
+            $new_specification_values_id = vam_db_insert_id();
+
+            $languages = vam_get_languages();
+            for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+              $values_description_query_raw = "select specification_value
+                                               from " . TABLE_SPECIFICATIONS_VALUES_DESCRIPTION . "
+                                               where specification_values_id = '" . $values_data['specification_values_id'] . "'
+                                                 and language_id = '" . (int) $languages[$i]['id'] . "'
+                                              ";
+              // print $values_description_query_raw . "<br>\n";
+              $values_description_query = vam_db_query ($values_description_query_raw);
+
+              $values_description_data = vam_db_fetch_array ($values_description_query);
+              $sql_data_array = array ('specification_values_id' => $new_specification_values_id,
+                                       'language_id' => (int) $languages[$i]['id'],
+                                       'specification_value' => $values_description_data['specification_value']
+                                      );
+              vam_db_perform (TABLE_SPECIFICATIONS_VALUES_DESCRIPTION, $sql_data_array);
+            } // for ($i=0
+          } // while ($products_data
+        } // if (isset ($_POST['copy_values']
+                
         vam_redirect (vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spid=' . $specification_id_copy) );
         break;
         
@@ -1415,7 +1489,38 @@
 
       case 'move_specification':
       case 'copy_specification':
+        $count_products = 0;
+        $count_filters = 0;
+        $count_values = 0;
         $groups_array = array();
+
+        // Check if we have any filters attached to each specification and count
+        $filters_query_raw = "select specification_filters_id
+                              from " . TABLE_SPECIFICATIONS_FILTERS . "
+                              where specifications_id = '" . $specification_id . "'
+                            ";
+        // print $filters_query_raw . "<br>\n";
+        $filters_query = vam_db_query ($filters_query_raw);
+        $count_filters += vam_db_num_rows ($filters_query);
+
+        // Check if we have any values attached to each specification and count them
+        $values_query_raw = "select specification_values_id
+                             from " . TABLE_SPECIFICATIONS_VALUES . "
+                             where specifications_id = '" . $specification_id . "'
+                            ";
+        // print $filters_query_raw . "<br>\n";
+        $values_query = vam_db_query ($values_query_raw);
+        $count_values += vam_db_num_rows ($values_query);
+
+        // Check if we have any products with specification data and count
+        $products_query_raw = "select products_id
+                               from " . TABLE_PRODUCTS_SPECIFICATIONS . "
+                               where specifications_id = '" . $specification_id . "'
+                             ";
+        // print $products_query_raw . "<br>\n";
+        $products_query = vam_db_query ($products_query_raw);
+        $count_products += vam_db_num_rows ($products_query);
+
         $specification_group_query_raw = "select specification_group_id,
                                                  specification_group_name                                      
                                           from " . TABLE_SPECIFICATION_GROUPS . "
@@ -2419,6 +2524,8 @@
 
         $contents = array ('form' => vam_draw_form ('copy_specification', FILENAME_PRODUCTS_SPECIFICATIONS, 'action=copy_specification_confirm&spid=' . $sInfo->specifications_id . '&sgpath=' . $specs_group_path, 'post') );
         $contents[] = array ('text' => sprintf (TEXT_INFO_COPY_SPECIFICATION_INTRO, $sInfo->specification_name) . $sInfo->specifications_id . vam_draw_hidden_field ('specifications_id', $sInfo->specifications_id) . vam_draw_hidden_field ('specification_group_id', $sInfo->specification_group_id) );
+        if ($count_filters > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_filter', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_FILTERS, $count_filters) );
+        if ($count_values > 0) $contents[] = array ('text' => vam_draw_checkbox_field ('copy_values', 'True') . ' ' . sprintf (TEXT_COPY_QUERY_VALUES, $count_values) );
         $contents[] = array ('text' => '<br />' . TEXT_COPY_SPECIFICATION_TO . '<br />' . vam_draw_pull_down_menu ('group_id', $groups_array, $specs_group_path) );
         $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_COPY . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_COPY . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'spid=' . $specification_id . '&sgpath=' . $specs_group_path) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . IMAGE_CANCEL . '</span></a>');
         break;
