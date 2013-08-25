@@ -459,7 +459,7 @@ class categories {
 
 		for ($i = 0, $n = sizeof($product_categories); $i < $n; $i ++) {
 
-      vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
+      //vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
 
 // Start Products Specifications
         vam_db_query ("delete from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
