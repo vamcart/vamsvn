@@ -120,7 +120,7 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $check_status['customers_telephone']);
 				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $check_status['customers_email_address']);
 
-				  require_once(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
+				  require_once(DIR_FS_LANGUAGES . $check_status['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
 				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
 				
 				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($this_orderID) . "' and class = 'ot_shipping'");
@@ -355,7 +355,7 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $check_status['customers_telephone']);
 				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $check_status['customers_email_address']);
 
-				  require_once(DIR_FS_LANGUAGES . $order->info['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
+				  require_once(DIR_FS_LANGUAGES . $check_status['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
 				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
 				
 				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");

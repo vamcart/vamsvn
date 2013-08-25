@@ -42,4 +42,22 @@ define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивным');
 define('EMPTY_CATEGORY', 'Нет ответов');
 define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте ответ');
 
+define('TEXT_AVAILABLE_PLACEHOLDERS', 'Доступные метки:');
+define('TEXT_NAME', '{$NAME} - Имя покупателя.');
+define('TEXT_ORDER_NR', '{$ORDER_NR} - Номер заказа.');
+define('TEXT_ORDER_LINK', '{$ORDER_LINK} - Ссылка на страницу заказа.');
+define('TEXT_ORDER_DATE', '{$ORDER_DATE} - Дата заказа.');
+define('TEXT_NOTIFY_COMMENTS', '{$NOTIFY_COMMENTS} - Отправлять уведомления покупателю.');
+define('TEXT_ORDER_STATUS', '{$ORDER_STATUS} - Статус заказа.');
+define('TEXT_DELIVERY_NAME', '{$DELIVERY_NAME} - Имя получателя заказа.');
+define('TEXT_DELIVERY_STREET_ADDRESS', '{$DELIVERY_STREET_ADDRESS} - Адрес.');
+define('TEXT_DELIVERY_CITY', '{$DELIVERY_CITY} - Город.');
+define('TEXT_DELIVERY_POSTCODE', '{$DELIVERY_POSTCODE} - Почтовый индекс.');
+define('TEXT_DELIVERY_STATE', '{$DELIVERY_STATE} - Регион.');
+define('TEXT_DELIVERY_COUNTRY', '{$DELIVERY_COUNTRY} - Страна.');
+define('TEXT_CUSTOMERS_TELEPHONE', '{$CUSTOMERS_TELEPHONE} - Телефон.');
+define('TEXT_CUSTOMERS_EMAIL_ADDRESS', '{$CUSTOMERS_EMAIL_ADDRESS} - Email.');
+define('TEXT_PAYMENT_METHOD', '{$PAYMENT_METHOD} - Способ оплаты.');
+define('TEXT_SHIPPING_METHOD', '{$SHIPPING_METHOD} - Способ доставки.');
+
 ?>
