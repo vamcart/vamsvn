@@ -70,6 +70,8 @@ function doAddProduct() {
 		
 		var forma = $('#cart_quantity input,select');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		var tmp = false;
+		
 		forma.each(function(n,element){
 			if (element.type == "radio" || element.type == "checkbox") {
 				if (element.checked)
