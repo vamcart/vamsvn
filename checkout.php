@@ -1683,7 +1683,7 @@ if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '1');
 
 	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE), 'm', '', 'id="gender" checked="checked"'));
-	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (!vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
+	$vamTemplate->assign('INPUT_FEMALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender"'));
 
 } else {
 	$vamTemplate->assign('gender', '0');
@@ -1691,22 +1691,22 @@ if (ACCOUNT_GENDER == 'true') {
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company', '1');
-	$vamTemplate->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
+	$vamTemplate->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
 } else {
 	$vamTemplate->assign('company', '0');
 }
 
-$vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname"'));
+$vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname"'));
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
-$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname"'));
+$vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname"'));
 }
-$vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname"'));
+$vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname"'));
 
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 
-	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob"'));
+	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob"'));
 
 } else {
 	$vamTemplate->assign('birthdate', '0');
@@ -1721,21 +1721,21 @@ if (ACCOUNT_STREET_ADDRESS == 'true') {
 
 if (ACCOUNT_SUBURB == 'true') {
 	$vamTemplate->assign('suburb', '1');
-	$vamTemplate->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
+	$vamTemplate->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
 } else {
 	$vamTemplate->assign('suburb', '0');
 }
 
 if (ACCOUNT_POSTCODE == 'true') {
    $vamTemplate->assign('postcode', '1');
-   $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode"'));
+   $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode"'));
 } else {
 	$vamTemplate->assign('postcode', '0');
 }
 
 if (ACCOUNT_CITY == 'true') {
    $vamTemplate->assign('city', '1');
-   $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city"'));
+   $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city"'));
 } else {
 	$vamTemplate->assign('city', '0');
 }
@@ -1758,9 +1758,9 @@ if (ACCOUNT_STATE == 'true') {
 		}
 
       if ($entry_state_has_zones == true) {
-        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, (isset($state)) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, (isset($state)) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state"');
       } else {
-		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state"');
+		$state_input = vam_draw_input_fieldNote(array ('name' => 'state', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state"');
       }
 
 	$vamTemplate->assign('INPUT_STATE', $state_input);
@@ -1771,7 +1771,7 @@ if (ACCOUNT_STATE == 'true') {
 if (ACCOUNT_COUNTRY == 'true') {
 	$vamTemplate->assign('country', '1');
 
-   $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country"'));
+   $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country"'));
 
 } else {
 	$vamTemplate->assign('country', '0');
@@ -1805,11 +1805,11 @@ $vamTemplate->assign('BUTTON_PAYMENT_ADDRESS', '<a class="button" href="' . vam_
 
    if (($error == '1') && ($payment_address_selected != '1')) { //is not selected - otherwise payment address is same as shipping address
         
-        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (!vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
+        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', false, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
         
         } else { //is selected
         
-        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (!vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
+        $vamTemplate->assign('PAYMENT_ADDRESS_CHECKBOX', vam_draw_checkbox_field('payment_adress', '1', true, 'id="pay_show"') . '&nbsp;' . (vam_not_null(ENTRY_NEWSLETTER_TEXT) ? '<span class="inputRequirement">' . ENTRY_NEWSLETTER_TEXT . '</span>': ''). '&nbsp;&nbsp;' . TEXT_SHIPPING_SAME_AS_PAYMENT);
         
         }
 
@@ -1818,7 +1818,7 @@ if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender_payment', '1');
 
 	$vamTemplate->assign('INPUT_MALE_PAYMENT', vam_draw_radio_field(array ('name' => 'gender_payment', 'suffix' => MALE), 'm', '', 'id="gender_payment" checked="checked"'));
-	$vamTemplate->assign('INPUT_FEMALE_PAYMENT', vam_draw_radio_field(array ('name' => 'gender_payment', 'suffix' => FEMALE, 'text' => (!vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender_payment"'));
+	$vamTemplate->assign('INPUT_FEMALE_PAYMENT', vam_draw_radio_field(array ('name' => 'gender_payment', 'suffix' => FEMALE, 'text' => (vam_not_null(ENTRY_GENDER_TEXT) ? '<span class="Requirement">'.ENTRY_GENDER_TEXT.'</span>' : '')), 'f', '', 'id="gender_payment"'));
 
 } else {
 	$vamTemplate->assign('gender_payment', '0');
@@ -1826,22 +1826,22 @@ if (ACCOUNT_GENDER == 'true') {
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company_payment', '1');
-	$vamTemplate->assign('INPUT_COMPANY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'company_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
+	$vamTemplate->assign('INPUT_COMPANY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'company_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
 } else {
 	$vamTemplate->assign('company_payment', '0');
 }
 
-$vamTemplate->assign('INPUT_FIRSTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'firstname_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname_payment"'));
+$vamTemplate->assign('INPUT_FIRSTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'firstname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'id="firstname_payment"'));
 if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname_payment', '1');
-$vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname_payment"'));
+$vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'id="secondname_payment"'));
 }
-$vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname_payment"'));
+$vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'id="lastname_payment"'));
 
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate_payment', '1');
 
-	$vamTemplate->assign('INPUT_DOB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'dob_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob_payment"'));
+	$vamTemplate->assign('INPUT_DOB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'dob_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'id="dob_payment"'));
 
 } else {
 	$vamTemplate->assign('birthdate_payment', '0');
@@ -1856,21 +1856,21 @@ if (ACCOUNT_STREET_ADDRESS == 'true') {
 
 if (ACCOUNT_SUBURB == 'true') {
 	$vamTemplate->assign('suburb_payment', '1');
-	$vamTemplate->assign('INPUT_SUBURB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'suburb_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
+	$vamTemplate->assign('INPUT_SUBURB_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'suburb_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
 } else {
 	$vamTemplate->assign('suburb_payment', '0');
 }
 
 if (ACCOUNT_POSTCODE == 'true') {
    $vamTemplate->assign('postcode_payment', '1');
-   $vamTemplate->assign('INPUT_CODE_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'postcode_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode_payment"'));
+   $vamTemplate->assign('INPUT_CODE_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'postcode_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'id="postcode_payment"'));
 } else {
 	$vamTemplate->assign('postcode_payment', '0');
 }
 
 if (ACCOUNT_CITY == 'true') {
    $vamTemplate->assign('city_payment', '1');
-   $vamTemplate->assign('INPUT_CITY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'city_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city_payment"'));
+   $vamTemplate->assign('INPUT_CITY_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'city_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'id="city_payment"'));
 } else {
 	$vamTemplate->assign('city_payment', '0');
 }
@@ -1893,9 +1893,9 @@ if (ACCOUNT_STATE == 'true') {
 		}
 
       if ($entry_state_has_zones == true) {
-        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, (isset($state)) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state_payment"');
+        $state_input = vam_draw_pull_down_menuNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), $zones_array, (isset($state)) ? $state : vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,''), ' id="state_payment"');
       } else {
-		$state_input = vam_draw_input_fieldNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state_payment"');
+		$state_input = vam_draw_input_fieldNote(array ('name' => 'state_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_STATE_TEXT) ? '<span class="Requirement">'.ENTRY_STATE_TEXT.'</span>' : '')), '', 'id="state_payment"');
       }
 
 	$vamTemplate->assign('INPUT_STATE_PAYMENT', $state_input);
@@ -1906,7 +1906,7 @@ if (ACCOUNT_STATE == 'true') {
 if (ACCOUNT_COUNTRY == 'true') {
 	$vamTemplate->assign('country_payment', '1');
 
-   $vamTemplate->assign('SELECT_COUNTRY_PAYMENT', vam_get_country_list(array ('name' => 'country_payment', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country_payment"'));
+   $vamTemplate->assign('SELECT_COUNTRY_PAYMENT', vam_get_country_list(array ('name' => 'country_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'id="country_payment"'));
 
 } else {
 	$vamTemplate->assign('country_payment', '0');
@@ -1922,18 +1922,18 @@ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON
 
 $vamTemplate->assign('TITLE_CONTACT_ADDRESS', vam_get_sc_titles_number() . CATEGORY_CONTACT.vam_draw_hidden_field('guest', 'guest'));
 
-$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $sc_guest_email_address, 'id="email_address"'));
+$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $sc_guest_email_address, 'id="email_address"'));
 
 if (ACCOUNT_TELE == 'true') {
    $vamTemplate->assign('telephone', '1');
-   $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $sc_guest_telephone, 'id="telephone"'));
+   $vamTemplate->assign('INPUT_TEL', vam_draw_input_fieldNote(array ('name' => 'telephone', 'text' => '&nbsp;'. (vam_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_TELEPHONE_NUMBER_TEXT.'</span>' : '')), $sc_guest_telephone, 'id="telephone"'));
 } else {
 	$vamTemplate->assign('telephone', '0');
 }
 
 if (ACCOUNT_FAX == 'true') {
    $vamTemplate->assign('fax', '1');
-   $vamTemplate->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')),$sc_guest_fax));
+   $vamTemplate->assign('INPUT_FAX', vam_draw_input_fieldNote(array ('name' => 'fax', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FAX_NUMBER_TEXT) ? '<span class="Requirement">'.ENTRY_FAX_NUMBER_TEXT.'</span>' : '')),$sc_guest_fax));
 } else {
 	$vamTemplate->assign('fax', '0');
 }
@@ -1977,8 +1977,8 @@ $vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_chec
 }
 } ################ End Password - optional ########################################
 	$vamTemplate->assign('create_password', 1);
-	$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
-	$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (!vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
+	$vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_fieldNote(array ('name' => 'password', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_TEXT.'</span>' : '')), '', 'id="pass"'));
+	$vamTemplate->assign('INPUT_CONFIRMATION', vam_draw_password_fieldNote(array ('name' => 'confirmation', 'text' => '&nbsp;'. (vam_not_null(ENTRY_PASSWORD_CONFIRMATION_TEXT) ? '<span class="Requirement">'.ENTRY_PASSWORD_CONFIRMATION_TEXT.'</span>' : '')), '', 'id="confirmation"'));
 
  } //end (($sc_is_virtual_product == true) || ($sc_is_mixed_product == true))
 } //End IS NOT LOGGED ON 
