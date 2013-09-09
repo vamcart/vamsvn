@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: roboxchange.php 998 2011/02/07 13:24:46 VaM $
+   $Id: webpay.php 998 2011/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,22 +17,22 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  class roboxchange {
+  class webpay {
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function roboxchange() {
+    function webpay() {
       global $order;
 
-      $this->code = 'roboxchange';
-      $this->title = MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE;
-      $this->public_title = MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE;
-      $this->description = MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE;
-      $this->icon = DIR_WS_ICONS . 'robokassa.png';
-      $this->sort_order = MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER;
-      $this->enabled = ((MODULE_PAYMENT_ROBOXCHANGE_STATUS == 'True') ? true : false);
+      $this->code = 'webpay';
+      $this->title = MODULE_PAYMENT_WEBPAY_TEXT_TITLE;
+      $this->public_title = MODULE_PAYMENT_WEBPAY_TEXT_TITLE;
+      $this->description = MODULE_PAYMENT_WEBPAY_TEXT_TITLE;
+      $this->icon = DIR_WS_ICONS . 'webpay.png';
+      $this->sort_order = MODULE_PAYMENT_WEBPAY_SORT_ORDER;
+      $this->enabled = ((MODULE_PAYMENT_WEBPAY_STATUS == 'True') ? true : false);
 
-      ((MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') ? $this->form_action_url = 'http://test.robokassa.ru/Index.aspx' : $this->form_action_url = 'https://merchant.roboxchange.com/Index.aspx');
+      ((MODULE_PAYMENT_WEBPAY_TEST == 'test') ? $this->form_action_url = 'https://secure.sandbox.webpay.by:8843' : $this->form_action_url = 'https://secure.webpay.by');
       
     }
 
@@ -40,9 +40,9 @@
     function update_status() {
       global $order;
 
-      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_ROBOXCHANGE_ZONE > 0) ) {
+      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_WEBPAY_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_ROBOXCHANGE_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_WEBPAY_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
         while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
@@ -65,8 +65,8 @@
 
     function selection() {
 
-      if (isset($_SESSION['cart_roboxchange_id'])) {
-        $order_id = substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1);
+      if (isset($_SESSION['cart_webpay_id'])) {
+        $order_id = substr($_SESSION['cart_webpay_id'], strpos($_SESSION['cart_webpay_id'], '-')+1);
 
         $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
@@ -78,7 +78,7 @@
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . ' where orders_id = "' . (int)$order_id . '"');
           vam_db_query('delete from ' . TABLE_ORDERS_PRODUCTS_DOWNLOAD . ' where orders_id = "' . (int)$order_id . '"');
 
-          unset($_SESSION['cart_roboxchange_id']);
+          unset($_SESSION['cart_webpay_id']);
         }
       }
 
@@ -108,12 +108,12 @@
       if (isset($_SESSION['cartID'])) {
         $insert_order = false;
 
-        if (isset($_SESSION['cart_roboxchange_id'])) {
-          $order_id = substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1);
+        if (isset($_SESSION['cart_webpay_id'])) {
+          $order_id = substr($_SESSION['cart_webpay_id'], strpos($_SESSION['cart_webpay_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_roboxchange_id'], 0, strlen($_SESSION['cartID']))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_webpay_id'], 0, strlen($_SESSION['cartID']))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -324,11 +324,11 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $_SESSION['cart_roboxchange_id'] = $_SESSION['cartID'] . '-' . $insert_id;
+          $_SESSION['cart_webpay_id'] = $_SESSION['cartID'] . '-' . $insert_id;
         }
       }
 
-      return array('title' => MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION);
+      return array('title' => MODULE_PAYMENT_WEBPAY_TEXT_DESCRIPTION);
     }
 
     function process_button() {
@@ -336,14 +336,38 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = $order->info['total'];
-                               $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
+                               $order_sum = number_format($order->info['total'],2,'.','');
+                               $order_num = substr($_SESSION['cart_webpay_id'], strpos($_SESSION['cart_webpay_id'], '-')+1);
+                               $seed = rand();
+                               $test = (MODULE_PAYMENT_WEBPAY_TEST == 'test') ? 1 : 0;
+                               $wsb_currency_id = 'BYR';
+                               $signature = sha1($seed.MODULE_PAYMENT_WEBPAY_LOGIN.$order_num.$test.$wsb_currency_id.$order_sum.MODULE_PAYMENT_WEBPAY_SECRET_KEY);
 
-      $process_button_string = vam_draw_hidden_field('InvId', substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1)) .
-                               vam_draw_hidden_field('MrchLogin', MODULE_PAYMENT_ROBOXCHANGE_LOGIN) .
-                               vam_draw_hidden_field('Desc', substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1)) .
-                               vam_draw_hidden_field('OutSum', $order_sum) .
-                               vam_draw_hidden_field('SignatureValue', $crc);
+      $process_button_string .= vam_draw_hidden_field('*scart') .
+                               vam_draw_hidden_field('wsb_storeid', MODULE_PAYMENT_WEBPAY_LOGIN) .
+                               vam_draw_hidden_field('wsb_store', STORE_NAME) .
+                               vam_draw_hidden_field('wsb_order_num', $order_num) .
+                               vam_draw_hidden_field('wsb_currency_id', $wsb_currency_id) .
+                               vam_draw_hidden_field('wsb_version', 2) .
+                               vam_draw_hidden_field('wsb_language_id', $_SESSION['language']) .
+                               vam_draw_hidden_field('wsb_seed', $seed) .
+                               vam_draw_hidden_field('wsb_signature', $signature) .
+                               vam_draw_hidden_field('wsb_return_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('wsb_cancel_return_url', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
+                               vam_draw_hidden_field('wsb_notify_url', vam_href_link('webpay.php', '', 'SSL')) .
+                               vam_draw_hidden_field('wsb_test', $test);
+
+      for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
+        $process_button_string .= vam_draw_hidden_field('wsb_invoice_item_name[' . ($i).']', $order->products[$i]['name']) .
+                                  vam_draw_hidden_field('wsb_invoice_item_quantity[' . ($i).']', $order->products[$i]['qty']) .
+                                  vam_draw_hidden_field('wsb_invoice_item_price[' . ($i).']', number_format($order->products[$i]['price'],2,'.','')); 
+      }
+
+      $process_button_string .= vam_draw_hidden_field('wsb_total', $order_sum) . 
+                               vam_draw_hidden_field('wsb_shipping_name', $order->info['shipping_method']) .
+                               vam_draw_hidden_field('wsb_shipping_price', number_format($order->info['shipping_cost'],2,'.','')) .
+                               vam_draw_hidden_field('wsb_email', $order->customer['email_address']) .
+                               vam_draw_hidden_field('wsb_phone', $order->customer['telephone']);
 
       return $process_button_string;
     }
@@ -352,7 +376,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
 
-      $order_id = substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1);
+      $order_id = substr($_SESSION['cart_webpay_id'], strpos($_SESSION['cart_webpay_id'], '-')+1);
 
 // initialized for the email confirmation
       $products_ordered = '';
@@ -514,7 +538,7 @@ $vamTemplate = new vamTemplate;
       unset($_SESSION['payment']);
       unset($_SESSION['comments']);
 
-      unset($_SESSION['cart_roboxchange_id']);
+      unset($_SESSION['cart_webpay_id']);
 
       vam_redirect(vam_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
     }
@@ -529,7 +553,7 @@ $vamTemplate = new vamTemplate;
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_ROBOXCHANGE_STATUS'");
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_WEBPAY_STATUS'");
         $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
@@ -537,15 +561,14 @@ $vamTemplate = new vamTemplate;
 
     function install() {
 
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_ALLOWED', '', '6', '2', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_LOGIN', '', '6', '3', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER', '0', '6', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_WEBPAY_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBPAY_ALLOWED', '', '6', '2', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBPAY_LOGIN', '', '6', '3', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBPAY_SECRET_KEY', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_WEBPAY_SORT_ORDER', '0', '6', '6', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_WEBPAY_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_WEBPAY_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_WEBPAY_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
     }
 
     function remove() {
@@ -553,7 +576,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_ROBOXCHANGE_STATUS', 'MODULE_PAYMENT_ROBOXCHANGE_ALLOWED', 'MODULE_PAYMENT_ROBOXCHANGE_LOGIN', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2',  'MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER', 'MODULE_PAYMENT_ROBOXCHANGE_ZONE', 'MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID', 'MODULE_PAYMENT_ROBOXCHANGE_TEST');
+      return array('MODULE_PAYMENT_WEBPAY_STATUS', 'MODULE_PAYMENT_WEBPAY_ALLOWED', 'MODULE_PAYMENT_WEBPAY_LOGIN', 'MODULE_PAYMENT_WEBPAY_SECRET_KEY', 'MODULE_PAYMENT_WEBPAY_SORT_ORDER', 'MODULE_PAYMENT_WEBPAY_ZONE', 'MODULE_PAYMENT_WEBPAY_ORDER_STATUS_ID', 'MODULE_PAYMENT_WEBPAY_TEST');
     }
 
   }
