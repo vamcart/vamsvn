@@ -347,7 +347,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
       $total = $order->info['total'] - $order->info['shipping_cost'] - $order->info['tax'];
-      $my_currency = 'USD';
+      $my_currency = 'RUB';
 
       $process_button_string = '';
       $parameters = array('cmd' => '_xclick',
@@ -356,7 +356,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                           'tax' => number_format($order->info['tax']),
                           'business' => MODULE_PAYMENT_PAYPAL_STANDARD_ID,
                           'amount' => round($vamPrice->CalculateCurrEx($total, $my_currency), $vamPrice->get_decimal_places($my_currency)),
-                          'currency_code' => 'USD',
+                          'currency_code' => 'RUB',
                           'invoice' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
                           'custom' => $_SESSION['customer_id'],
                           'no_note' => '1',
