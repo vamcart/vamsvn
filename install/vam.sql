@@ -1556,7 +1556,7 @@ CREATE TABLE coupon_email_track (
 DROP TABLE if EXISTS coupon_gv_customer;
 CREATE TABLE coupon_gv_customer (
   customer_id int(5) NOT NULL default '0',
-  amount decimal(8,4) NOT NULL default '0.0000',
+  amount decimal(15,4) NOT NULL default '0.0000',
   PRIMARY KEY  (customer_id),
   KEY customer_id (customer_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -1566,7 +1566,7 @@ CREATE TABLE coupon_gv_queue (
   unique_id int(5) NOT NULL auto_increment,
   customer_id int(5) NOT NULL default '0',
   order_id int(5) NOT NULL default '0',
-  amount decimal(8,4) NOT NULL default '0.0000',
+  amount decimal(15,4) NOT NULL default '0.0000',
   date_created datetime NOT NULL default '0000-00-00 00:00:00',
   ipaddr varchar(255) NOT NULL default '',
   release_flag char(1) NOT NULL default 'N',
@@ -1590,8 +1590,8 @@ CREATE TABLE coupons (
   coupon_id int(11) NOT NULL auto_increment,
   coupon_type char(1) NOT NULL default 'F',
   coupon_code varchar(255) NOT NULL default '',
-  coupon_amount decimal(8,4) NOT NULL default '0.0000',
-  coupon_minimum_order decimal(8,4) NOT NULL default '0.0000',
+  coupon_amount decimal(15,4) NOT NULL default '0.0000',
+  coupon_minimum_order decimal(15,4) NOT NULL default '0.0000',
   coupon_start_date datetime NOT NULL default '0000-00-00 00:00:00',
   coupon_expire_date datetime NOT NULL default '0000-00-00 00:00:00',
   uses_per_coupon int(5) NOT NULL default '1',
