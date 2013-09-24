@@ -27,6 +27,8 @@
       $random_product = vam_db_fetch_array($random_query);
     }
 
+	if (is_array($random_product)) { 
     return $random_product;
+   }
   }
  ?>
