@@ -466,6 +466,8 @@ class product {
 	function buildDataArray(&$array,$image='thumbnail') {
 		global $vamPrice,$main;
 
+if (is_array($array)) {
+
 			$tax_rate = $vamPrice->TAX[$array['products_tax_class_id']];
 
 			$products_price = $vamPrice->GetPrice($array['products_id'], $format = true, 1, $array['products_tax_class_id'], $array['products_price'], 1);
@@ -532,6 +534,7 @@ class product {
 
 	}
 	
+	}
 
 	function productImage($name, $type) {
 
@@ -559,6 +562,5 @@ class product {
 			return $path.$name;
 		}
 	}
-	
 }
 ?>
