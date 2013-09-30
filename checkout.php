@@ -144,7 +144,8 @@ if ($_SESSION['cart']->count_contents() < 1) {
     }
   }
 
-
+      if (!$state) $state = vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,'');
+      if (!$_POST['state']) $_POST['state'] = vam_get_zone_name(STORE_COUNTRY, STORE_ZONE,'');
 
 //////////////////  End Check //////////////////////////////
 
