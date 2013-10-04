@@ -25,8 +25,6 @@ $box = new vamTemplate;
 $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 $box_content='';
 
-	require_once (DIR_FS_INC.'vam_get_subcategories.inc.php');
-
 	require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
     
   require_once (DIR_WS_CLASSES  . 'specifications.php');

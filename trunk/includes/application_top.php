@@ -37,7 +37,7 @@ define('PAGE_PARSE_START_TIME', microtime());
 define('DEBUG', false);
 
 define('CFG_TIME_ZONE', 'Europe/Moscow');
-  
+
 // set the level of error reporting
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 //  error_reporting(E_ALL);
@@ -172,13 +172,11 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
 require_once (DIR_FS_INC.'vam_break_string.inc.php');
 require_once (DIR_FS_INC.'vam_my_sorting_products.inc.php');
 require_once (DIR_FS_INC.'vam_output_string.inc.php');
-
 require_once (DIR_FS_INC.'vam_get_products_quantity_order_min.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_quantity_order_max.inc.php');
-
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
-
 require_once (DIR_FS_INC.'vam_get_spsr_zone_id.inc.php');
+require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
 
 // make a connection to the database... now
 vam_db_connect() or die('Unable to connect to database server!');
