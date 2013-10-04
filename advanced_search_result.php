@@ -24,7 +24,6 @@ $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
 require_once (DIR_FS_INC.'vam_parse_search_string.inc.php');
-require_once (DIR_FS_INC.'vam_get_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_get_currencies_values.inc.php');
 
 /*

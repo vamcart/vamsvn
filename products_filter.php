@@ -22,8 +22,6 @@
 
   require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
-  require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
-  
 $vamTemplate = new vamTemplate;
 
 // include boxes
