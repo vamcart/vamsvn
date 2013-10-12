@@ -88,10 +88,12 @@ var currentTallest = 0,
 
 $(window).load(function() {
   equalheight('.pageItem .itemNewProductsDefault');
+  equalheight('.pageItem .itemCategoriesListing');
 });
 
 $(window).resize(function(){
   equalheight('.pageItem .itemNewProductsDefault');
+  equalheight('.pageItem .itemCategoriesListing');
 });
 
 </script>
