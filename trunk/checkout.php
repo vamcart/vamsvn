@@ -21,7 +21,6 @@
 //description
 //$_SESSION['sendto'] = is from db table ADRESS_BOOK the adress_book_id
 
-
 require('includes/application_top.php');
 //used for shipping
 require('includes/classes/http_client.php');
@@ -64,6 +63,22 @@ function vam_get_sc_titles_number() {
 }
 //END functions specific
 
+
+// check if checkout is allowed
+
+if ($_SESSION['cart']->show_total() > 0 ) {
+ if ($_SESSION['cart']->show_total() < $_SESSION['customers_status']['customers_status_min_order'] ) {
+  $_SESSION['allow_checkout'] = 'false';
+ }
+ if  ($_SESSION['customers_status']['customers_status_max_order'] != 0) {
+  if ($_SESSION['cart']->show_total() > $_SESSION['customers_status']['customers_status_max_order'] ) {
+  $_SESSION['allow_checkout'] = 'false';
+  }
+ }
+}
+
+if ($_SESSION['allow_checkout'] == 'false')
+	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 
 if (isset($_POST['sc_shipping_address_show'])) { 
 $sc_shipping_address_show = vam_db_prepare_input($_POST['sc_shipping_address_show']);
