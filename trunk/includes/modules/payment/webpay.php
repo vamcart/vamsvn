@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_WEBPAY_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_WEBPAY_STATUS == 'True') ? true : false);
 
-      ((MODULE_PAYMENT_WEBPAY_TEST == 'test') ? $this->form_action_url = 'https://secure.sandbox.webpay.by:8843' : $this->form_action_url = 'https://secure.webpay.by');
+      ((MODULE_PAYMENT_WEBPAY_TEST == 'test') ? $this->form_action_url = 'https://secure.sandbox.webpay.by:8843' : $this->form_action_url = 'https://payment.webpay.by');
       
     }
 
@@ -336,38 +336,40 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = number_format($order->info['total'],2,'.','');
+                               $order_sum = number_format($order->info['total'],0,'.','');
+                               $order_ship = number_format($order->info['shipping_cost'],0,'.','');
                                $order_num = substr($_SESSION['cart_webpay_id'], strpos($_SESSION['cart_webpay_id'], '-')+1);
                                $seed = rand();
-                               $test = (MODULE_PAYMENT_WEBPAY_TEST == 'test') ? 1 : 0;
+                               $test = (MODULE_PAYMENT_WEBPAY_TEST == 'test') ? '1' : '0';
                                $wsb_currency_id = 'BYR';
                                $signature = sha1($seed.MODULE_PAYMENT_WEBPAY_LOGIN.$order_num.$test.$wsb_currency_id.$order_sum.MODULE_PAYMENT_WEBPAY_SECRET_KEY);
 
       $process_button_string .= vam_draw_hidden_field('*scart') .
-                               vam_draw_hidden_field('wsb_storeid', MODULE_PAYMENT_WEBPAY_LOGIN) .
-                               vam_draw_hidden_field('wsb_store', STORE_NAME) .
-                               vam_draw_hidden_field('wsb_order_num', $order_num) .
-                               vam_draw_hidden_field('wsb_currency_id', $wsb_currency_id) .
-                               vam_draw_hidden_field('wsb_version', 2) .
-                               vam_draw_hidden_field('wsb_language_id', $_SESSION['language']) .
-                               vam_draw_hidden_field('wsb_seed', $seed) .
-                               vam_draw_hidden_field('wsb_signature', $signature) .
-                               vam_draw_hidden_field('wsb_return_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('wsb_cancel_return_url', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
-                               vam_draw_hidden_field('wsb_notify_url', vam_href_link('webpay.php', '', 'SSL')) .
-                               vam_draw_hidden_field('wsb_test', $test);
+                               vam_draw_hidden_field('wsb_storeid', MODULE_PAYMENT_WEBPAY_LOGIN)."\n".
+                               vam_draw_hidden_field('wsb_store', STORE_NAME)."\n".
+                               vam_draw_hidden_field('wsb_order_num', $order_num)."\n".
+                               vam_draw_hidden_field('wsb_currency_id', $wsb_currency_id)."\n".
+                               vam_draw_hidden_field('wsb_version', 2)."\n".
+                               vam_draw_hidden_field('wsb_language_id', $_SESSION['language'])."\n".
+                               vam_draw_hidden_field('wsb_seed', $seed)."\n".
+                               vam_draw_hidden_field('wsb_signature', $signature)."\n".
+                               vam_draw_hidden_field('wsb_return_url', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL'))."\n".
+                               vam_draw_hidden_field('wsb_cancel_return_url', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'))."\n".
+                               vam_draw_hidden_field('wsb_notify_url', vam_href_link('webpay.php', '', 'SSL'))."\n".
+                               vam_draw_hidden_field('wsb_test', $test)."\n";
 
       for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
-        $process_button_string .= vam_draw_hidden_field('wsb_invoice_item_name[' . ($i).']', $order->products[$i]['name']) .
-                                  vam_draw_hidden_field('wsb_invoice_item_quantity[' . ($i).']', $order->products[$i]['qty']) .
-                                  vam_draw_hidden_field('wsb_invoice_item_price[' . ($i).']', number_format($order->products[$i]['price'],2,'.','')); 
+        $process_button_string .= vam_draw_hidden_field('wsb_invoice_item_name[' . ($i).']', $order->products[$i]['name'])."\n".
+                                  vam_draw_hidden_field('wsb_invoice_item_quantity[' . ($i).']', $order->products[$i]['qty'])."\n".
+                                  vam_draw_hidden_field('wsb_invoice_item_price[' . ($i).']', number_format($order->products[$i]['price'],0,'.',''))."\n"; 
       }
 
-      $process_button_string .= vam_draw_hidden_field('wsb_total', $order_sum) . 
-                               vam_draw_hidden_field('wsb_shipping_name', $order->info['shipping_method']) .
-                               vam_draw_hidden_field('wsb_shipping_price', number_format($order->info['shipping_cost'],2,'.','')) .
-                               vam_draw_hidden_field('wsb_email', $order->customer['email_address']) .
-                               vam_draw_hidden_field('wsb_phone', $order->customer['telephone']);
+      $process_button_string .= 
+                               vam_draw_hidden_field('wsb_shipping_name', $order->info['shipping_method'])."\n".
+                               vam_draw_hidden_field('wsb_shipping_price', $order_ship)."\n".
+                               vam_draw_hidden_field('wsb_total', $order_sum)."\n".
+                               vam_draw_hidden_field('wsb_email', $order->customer['email_address'])."\n".
+                               vam_draw_hidden_field('wsb_phone', $order->customer['telephone'])."\n";
 
       return $process_button_string;
     }
