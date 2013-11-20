@@ -42,7 +42,7 @@ $vamTemplate->assign('language', $_SESSION['language']);
 	$vamTemplate->caching = 0;
 	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/comparison.html');
 } else {
-	$vamTemplate->caching = 1;
+	$vamTemplate->caching = 0;
 	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
 	$vamTemplate->cache_modified_check = CACHE_CHECK;
 	$cache_id = $_SESSION['language'];
