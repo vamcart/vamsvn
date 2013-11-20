@@ -82,8 +82,8 @@ class product {
 	 */
 
 	function getReviewsCount() {
-		$reviews_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
-		$reviews = vam_db_fetch_array($reviews_query, true);
+		$reviews_query = vam_db_query("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+		$reviews = vam_db_fetch_array($reviews_query);
 		return $reviews['total'];
 	}
 
@@ -96,7 +96,7 @@ class product {
 	function getReviews() {
 
 		$data_reviews = array ();
-		$reviews_query = vamDBquery("select
+		$reviews_query = vam_db_query("select
 									                                 r.reviews_rating,
 									                                 r.reviews_id,
 									                                 r.customers_name,
@@ -110,10 +110,10 @@ class product {
 									                                 and  r.reviews_id=rd.reviews_id
 									                                 and rd.languages_id = '".$_SESSION['languages_id']."'
 									                                 order by reviews_id DESC");
-		if (vam_db_num_rows($reviews_query, true)) {
+		if (vam_db_num_rows($reviews_query)) {
 			$row = 0;
 			$data_reviews = array ();
-			while ($reviews = vam_db_fetch_array($reviews_query, true)) {
+			while ($reviews = vam_db_fetch_array($reviews_query)) {
 				$row ++;
 				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => vam_date_short($reviews['date_added']), 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'TEXT' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />'));
 				if ($row == PRODUCT_REVIEWS_VIEW)
