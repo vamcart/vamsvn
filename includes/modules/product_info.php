@@ -266,7 +266,7 @@ $i = count($_SESSION['tracking']['products_history']);
 		$info->caching = 1;
 		$info->cache_lifetime = CACHE_LIFETIME;
 		$info->cache_modified_check = CACHE_CHECK;
-		$cache_id = $product->data['products_id'].$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
+		$cache_id = $product->data['products_id'].$product->getReviewsCount().$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
 		$product_info = $info->fetch(CURRENT_TEMPLATE.'/module/product_info/'.$product->data['product_template'], $cache_id);
 	}
 
