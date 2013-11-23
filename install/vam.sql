@@ -301,8 +301,7 @@ CREATE TABLE customers_memo (
   PRIMARY KEY  (memo_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS products_xsell;
-
+DROP TABLE IF EXISTS products_extra_fields;
 create table products_extra_fields (
   products_extra_fields_id int(11) not null auto_increment,
   products_extra_fields_name varchar(255) not null ,
@@ -312,6 +311,7 @@ create table products_extra_fields (
   PRIMARY KEY (products_extra_fields_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_to_products_extra_fields;
 create table products_to_products_extra_fields (
   products_id int(11) default '0' not null ,
   products_extra_fields_id int(11) default '0' not null ,
@@ -319,6 +319,7 @@ create table products_to_products_extra_fields (
   PRIMARY KEY (products_id, products_extra_fields_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS products_xsell;
 CREATE TABLE products_xsell (
   ID int(10) NOT NULL auto_increment,
   products_id int(10) unsigned NOT NULL default '1',
@@ -694,6 +695,7 @@ CREATE TABLE customers (
   PRIMARY KEY (customers_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS customers_to_manufacturers_discount;
 CREATE TABLE customers_to_manufacturers_discount (
   discount_id int(11) NOT NULL auto_increment,
   customers_id int(11) default NULL,
@@ -793,7 +795,7 @@ CREATE TABLE customers_status_history (
   PRIMARY KEY  (customers_status_history_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS customers_to_extra_field;
+DROP TABLE IF EXISTS customers_to_extra_fields;
 CREATE TABLE customers_to_extra_fields (
   customers_id int(11) NOT NULL default '0',
   fields_id int(11) NOT NULL default '0',
@@ -1053,6 +1055,7 @@ CREATE TABLE shipping_status (
   KEY idx_shipping_status_name (shipping_status_name)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS ship2pay;
 CREATE TABLE ship2pay (
 s2p_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 shipment VARCHAR( 100 ) NOT NULL ,
