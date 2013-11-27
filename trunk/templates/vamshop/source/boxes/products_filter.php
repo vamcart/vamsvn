@@ -129,9 +129,9 @@ $box_content='';
         $first = false;
         
         if (isset ($_GET[$var]) && $_GET[$var] != '') {
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br />';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br /><br />';
         } else {
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br />';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br /><br />';
         }
 
         $filter_index = 0;
@@ -214,7 +214,7 @@ if (vam_db_num_rows ($specs_query, true) > 0) {
   $box->caching = 0;
   $box_infobox= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_products_filter.html');
   } else {
-  $box->caching = 1;
+  $box->caching = 0;
   $box->cache_lifetime=CACHE_LIFETIME;
   $box->cache_modified_check=CACHE_CHECK;
   $cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'];
