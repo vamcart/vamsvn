@@ -1007,7 +1007,7 @@ global $db_link;
 
 	list ($system, $host, $kernel) = preg_split('/[\s,]+/', @ exec('uname -a'), 5);
 
-	return array ('date' => vam_datetime_short(date('Y-m-d H:i:s')), 'system' => $system, 'kernel' => $kernel, 'host' => $host, 'ip' => gethostbyname($host), 'uptime' => @ exec('uptime'), 'http_server' => $_SERVER['SERVER_SOFTWARE'], 'php' => PHP_VERSION, 'zend' => (function_exists('zend_version') ? zend_version() : ''), 'db_server' => DB_SERVER, 'db_ip' => gethostbyname(DB_SERVER), 'db_version' => 'MySQL '. (function_exists('mysqli_get_server_info') ? mysqli_get_server_info($db_link) : ''), 'db_date' => vam_datetime_short($db['datetime']));
+	return array ('date' => vam_datetime_short(date('Y-m-d H:i:s')), 'system' => $system, 'kernel' => $kernel, 'host' => $host, 'ip' => gethostbyname($host), 'uptime' => @ exec('uptime'), 'http_server' => $_SERVER['SERVER_SOFTWARE'], 'php' => PHP_VERSION, 'zend' => (function_exists('zend_version') ? zend_version() : ''), 'db_server' => DB_SERVER, 'db_ip' => gethostbyname(DB_SERVER), 'db_date' => vam_datetime_short($db['datetime']));
 }
 
 function vam_array_shift(& $array) {
