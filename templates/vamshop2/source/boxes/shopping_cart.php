@@ -59,7 +59,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 				    $attr_value = $attributes_values['products_options_values_name'];
 				}
 				$product_attributes[$option]['NAME']  = $attributes_values['products_options_name'];
-				$product_attributes[$option]['VALUE'] = $attributes_values['products_options_values_name'];
+				$product_attributes[$option]['VALUE'] = $attr_value;
 				$product_attributes_in_cart .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $attributes_values['options_values_id']);
 			}
 		}
