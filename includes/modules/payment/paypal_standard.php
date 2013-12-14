@@ -352,10 +352,10 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = '';
       $parameters = array('cmd' => '_xclick',
                           'item_name' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
-                          'shipping' => round($vamPrice->CalculateCurrEx($order->info['shipping_cost'], $my_currency), $vamPrice->get_decimal_places($my_currency)),
+                          'shipping' => '0',
                           'tax' => number_format($order->info['tax']),
                           'business' => MODULE_PAYMENT_PAYPAL_STANDARD_ID,
-                          'amount' => round($vamPrice->CalculateCurrEx($total, $my_currency), $vamPrice->get_decimal_places($my_currency)),
+                          'amount' => round($total),
                           'currency_code' => 'RUB',
                           'invoice' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
                           'custom' => $_SESSION['customer_id'],
@@ -366,16 +366,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                           'bn' => 'osCommerce22_Default_ST',
                           'paymentaction' => ((MODULE_PAYMENT_PAYPAL_STANDARD_TRANSACTION_METHOD == 'Sale') ? 'sale' : 'authorization'));
 
-      if (is_numeric($sendto) && ($sendto > 0)) {
-        $parameters['address_override'] = '1';
-        $parameters['first_name'] = $order->delivery['firstname'];
-        $parameters['last_name'] = $order->delivery['lastname'];
-        $parameters['address1'] = $order->delivery['street_address'];
-        $parameters['city'] = $order->delivery['city'];
-        $parameters['state'] = vam_get_zone_code($order->delivery['country']['id'], $order->delivery['zone_id'], $order->delivery['state']);
-        $parameters['zip'] = $order->delivery['postcode'];
-        $parameters['country'] = $order->delivery['country']['iso_code_2'];
-      } else {
+
         $parameters['no_shipping'] = '1';
         $parameters['first_name'] = $order->billing['firstname'];
         $parameters['last_name'] = $order->billing['lastname'];
@@ -384,7 +375,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
         $parameters['state'] = vam_get_zone_code($order->billing['country']['id'], $order->billing['zone_id'], $order->billing['state']);
         $parameters['zip'] = $order->billing['postcode'];
         $parameters['country'] = $order->billing['country']['iso_code_2'];
-      }
+
 
       if (vam_not_null(MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE)) {
         $parameters['page_style'] = MODULE_PAYMENT_PAYPAL_STANDARD_PAGE_STYLE;
