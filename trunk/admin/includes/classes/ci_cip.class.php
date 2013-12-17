@@ -72,7 +72,7 @@ class CIP {
             //Register CIP in database:
                 $this->register();
                 global $$link;
-                $this->cip_id=mysqli_insert_id($$link);
+                $this->cip_id=vam_db_insert_id();
                 $this->cip_installed=0;
         }
 
