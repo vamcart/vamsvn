@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: paypal_standard.php 998 2007/02/07 13:23:46 VaM $
+   $Id: paypal_standard.php 998 2007/02/07 13:25:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
