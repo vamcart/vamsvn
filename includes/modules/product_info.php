@@ -68,6 +68,9 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', '1', 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 				$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 			}
+
+				if (MODULE_PAYMENT_KUPIVKREDIT_STATUS == 'True') $info->assign('KUPI_V_KREDIT_BUTTON', '<input type="image" src="'.DIR_WS_CATALOG.DIR_WS_IMAGES.'icons/kupivkredit.png'.'" alt="'.IMAGE_BUTTON_IN_CART.'" id="add_to_cart_kupivcredit" />');
+
 		}
 
 		if ($product->data['products_fsk18'] == '1') {
