@@ -87,13 +87,13 @@ var currentTallest = 0,
 }
 
 $(window).load(function() {
-  equalheight('.pageItem .itemNewProductsDefault');
-  equalheight('.pageItem .itemCategoriesListing');
+  equalheight('.pageItem dl.itemNewProductsDefault');
+  equalheight('.pageItem dl.itemCategoriesListing');
 });
 
 $(window).resize(function(){
-  equalheight('.pageItem .itemNewProductsDefault');
-  equalheight('.pageItem .itemCategoriesListing');
+  equalheight('.pageItem dl.itemNewProductsDefault');
+  equalheight('.pageItem dl.itemCategoriesListing');
 });
 
 </script>
