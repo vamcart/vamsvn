@@ -341,7 +341,7 @@ vam_redirect(vam_href_link(FILENAME_MODULE_NEWSLETTER,'send='.$limit_low.','.$li
 <?php
 $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
 $data=vam_db_fetch_array($query);
-echo vam_wysiwyg_tiny('newsletter',$data['code']);
+if ($_GET['action']!='') echo vam_wysiwyg_tiny('mail',$data['code']);
 ?>
 <?php if ($_GET['action'] == 'new') {
 $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
