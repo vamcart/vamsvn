@@ -101,6 +101,66 @@ if ($order->info['payment_method'] == 'kvitancia') {
 $vamTemplate->assign('BUTTON_KVITANCIA_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_KVITANCIA, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_KVITANCIA).'</a>');
 }
 
+if ($order->info['payment_method'] == 'kupivkredit') {
+
+require_once (DIR_FS_INC.'vam_kupi_v_kredit.inc.php');	
+	
+      $kupi_v_kredit = '';
+
+                               $server = ((MODULE_PAYMENT_KUPIVKREDIT_TEST == 'test') ? $server = 'https://kupivkredit-test-fe.tcsbank.ru/widget/vkredit.js' : $server = 'https://www.kupivkredit.ru/widget/vkredit.js');
+                               $order_sum = (int)$order->info['total'];
+
+		$items = array();
+
+			foreach ($order->products as $product) {
+	 
+				$items[] = array(
+					'title' => $product['name'],
+					'category' => get_category_name(get_category_id($product['id'])),
+					'qty' => $product['qty'],
+					'price' => round($product['price'])
+				); 
+			}
+
+			$details =   array (
+				'firstname' => $order->customer['firstname'],
+				'lastname' => $order->customer['lastname'],
+				'middlename' => $order->customer['secondname'],
+				'email' => $order->customer['email_address'],
+				'cellphone' => $order->customer['telephone'],
+			);
+			
+		$order = array (
+		  'items' => $items,
+		  'details' => $details,
+		  'partnerId' => MODULE_PAYMENT_KUPIVKREDIT_ID,
+		  'partnerName' => STORE_NAME,
+		  'partnerOrderId' => $orders['orders_id'],
+		  'deliveryType' => ''
+		);
+
+    $base64 = base64_encode(json_encode($order));
+    $sig = signMessage($base64, MODULE_PAYMENT_KUPIVKREDIT_SECRET_KEY);
+
+		
+      $kupi_v_kredit = '
+<script type="text/javascript">
+$.getScript("' . $server . '", function() {
+  vkredit = new VkreditWidget(1, ' . $order_sum . ',  {
+			order: "' . $base64 . '",
+			sig: "' . $sig . '"
+	});
+	vkredit.openWidget();
+});
+	
+
+</script>
+';	
+	
+$vamTemplate->assign('KUPIVKREDIT_CODE', $kupi_v_kredit);
+}
+
+
 // Google Conversion tracking
 if (GOOGLE_CONVERSION == 'true') {
 
