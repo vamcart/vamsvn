@@ -1,0 +1,20 @@
+{config_load file="$language/lang_$language.conf" section="featured"} 
+{config_load file="$language/lang_$language.conf" section="index"} 
+			<div class="recomend">
+				<div class="title"><h2>{#heading_text#}</h2></div>
+				<ul>
+					{foreach name=aussen item=module_data from=$module_content}					<li>
+						{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>{/if}
+						<h3><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
+						{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<span>{$module_data.PRODUCTS_SHORT_DESCRIPTION}</span>{/if}
+						<span class="price"><strong>{$module_data.PRODUCTS_PRICE}</strong></span>
+						{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+					</li>
+					{/foreach} 
+				</ul>
+			</div>
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
+</div>
+<div class="clear"></div>

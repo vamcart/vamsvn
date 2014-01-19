@@ -1,0 +1,1484 @@
+/* -----------------------------------------------------------------------------------------
+	VaM Shop - open source ecommerce solution
+	http://vamshop.ru
+
+	Copyright (c) 2012 VaM Shop 
+	-----------------------------------------------------------------------------------------
+	Released under the GNU General Public License 
+	---------------------------------------------------------------------------------------*/
+
+/*<![CDATA[*/
+
+@import url("local.css");
+
+/* general styles *************************************************************/
+* 
+	{
+		margin: 0;
+		padding: 0;
+	}
+body 
+	{
+		background: #fff;
+		color: #000;
+		font: 14px/16px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+	}
+a 
+	{
+		color: #007eff;
+		text-decoration: underline;
+		outline: 0;
+	}
+a:hover 
+	{
+		text-decoration: none;
+	}
+img 
+	{
+		border: none;
+	}
+p 
+	{
+		margin: 1em 0;
+	}
+ul,
+ol 
+	{
+		list-style: none;
+	}
+address 
+	{
+		font-style: normal;
+	}
+
+.wrap 
+	{
+		width: 100%;
+		overflow: hidden;
+	}
+.left 
+	{
+		float: left !important;
+		display: inline;
+	}
+.right 
+	{
+		float: right !important;
+		display: inline;
+	}
+.leftalign 
+	{
+		text-align: left;
+	}
+.rightalign 
+	{
+		text-align: right;
+	}
+.centeralign 
+	{
+		text-align: center;
+	}
+
+/* header *********************************************************************/
+#header 
+	{
+		background: url(images/bg.png) repeat-x;
+		width: 100%;
+		height: 180px;
+		overflow: hidden;
+		position: relative;
+		margin-bottom: 5px;
+	}
+#header img 
+	{
+		text-indent: -9999px;
+		position: absolute;
+		left: 20px;
+		top: 40px;
+	}
+#header h1 a 
+	{
+		display: block;
+	}
+#header ul 
+	{
+		position: absolute;
+		top: 80px;
+		left: 400px;
+	}
+#header ul li 
+	{
+		font: 14px/32px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		height: 33px;
+		float: left;
+		margin: 0 5px 0 0;
+		background: url(images/sep.png) no-repeat 0 50%;
+		padding: 0 0 0 10px;
+	}
+#header ul li:first-child 
+	{
+		background: none;
+		padding-left: 0;
+	}
+#header ul li a 
+	{
+		float: left;
+		background: url(images/left-t.png) no-repeat;
+		color: #536974;
+		height: 33px;
+	}
+#header ul li a span 
+	{
+		float: left;
+		background: url(images/right-t.png) no-repeat 100% 0;
+		margin-left: 12px;
+		padding: 0 12px 0 0;
+		text-decoration: underline;
+		height: 33px;
+	}
+#header ul li a:hover, #header ul li.current a 
+	{
+		background-position: 0 -33px;
+		color: #fff;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+#header ul li.current a 
+	{
+		text-decoration: none;
+	}
+#header ul li a:hover span, #header ul li.current a span 
+	{
+		background-position: 100% -33px;
+		text-decoration: none !important;
+	}
+
+/* main content area **********************************************************/
+#content 
+	{
+		overflow: hidden;
+		padding-left: .5em;
+		padding-right: .5em;
+	}
+.bread 
+	{
+		width: 100%;
+		overflow: hidden;
+		margin: 0 0 30px 0;
+	}
+.bread li 
+	{
+		float: left;
+		background: url(images/arrow.png) no-repeat 0 6px;
+		padding: 0 5px 0 12px;
+	}
+.bread li:first-child 
+	{
+		background: none;
+		padding-left: 0;
+	}
+#content .title 
+	{
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: 19px;
+	}
+#content h2 
+	{
+		color: #000;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+	}
+.post 
+	{
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+	}
+.recomend h2, .new h2 
+	{
+		width: auto;
+		overflow: hidden;
+		margin-bottom: 19px;
+		color: #000;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		background: url(images/arrow2.png) no-repeat 5px 7px;
+		padding-left: 28px;
+	}
+.recomend h2 a, .new h2 a 
+	{
+		color: #000;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		text-decoration: underline;
+	}
+.recomend 
+	{
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+	}
+.recomend ul 
+	{
+		width: 100%;
+		overflow: hidden;
+	}
+.recomend ul li 
+	{
+		width: 100%;
+		float: left;
+		overflow: hidden;
+		margin-bottom: 20px;
+	}
+.recomend ul li img 
+	{
+		float: left;
+		margin-right: 10px;
+	}
+.recomend ul li h3 
+	{
+		font: 18px/20px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		margin-bottom: 12px;
+	}
+.recomend ul li span 
+	{
+		display: block;
+		color: #414141;
+		padding-bottom: 10px;
+	}
+.recomend ul li span.price 
+	{
+		display: block;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		color: #414141;
+		padding-bottom: 10px;
+	}
+.recomend ul li span strong 
+	{
+		color: #83a916;
+	}
+.new ul li 
+	{
+		width: 220px;
+		padding-right: 20px;
+		margin-bottom: 10px;
+		float: left;
+		overflow: hidden;
+	}
+.new ul li img  
+	{
+		float: left;
+		margin-right: 10px;
+	}
+.new ul li h3  
+	{
+		font: 14px/16px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		padding-bottom: 4px;
+	}
+.new ul li span  
+	{
+		display: block;
+		padding-bottom: 4px;
+	}
+.new ul li span.price  
+	{
+		font: 18px/20px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		display: block;
+		padding-bottom: 4px;
+	}
+.new ul li span strong 
+	{
+		color: #83a916;
+	}
+
+/* sidebar ********************************************************************/
+#sidebar 
+	{
+		float: left;
+		overflow: hidden;
+		width: 348px;
+		margin: 0;
+	}
+.box 
+	{
+		overflow: hidden;
+		border: 0px solid #e3e3e3;
+		margin-bottom: 5px;
+	}
+#sidebar .box 
+	{
+		width: 346px;
+		padding: 5px 0 0 25px;
+	}
+.box.center 
+	{
+		width: 346px;
+		text-align: center;
+		margin: 0 auto;
+		padding: 0;
+	}
+#sidebar .title 
+	{
+		background: url(images/title-left.png) no-repeat;
+		height: 57px;
+		margin-left: 24px;
+		overflow: hidden;
+	}
+#sidebar .title h2 
+	{
+		background: url(images/title-right.png) no-repeat 100% 0;
+		height: 57px;
+		float: left;
+		margin-left: 20px;
+		padding-right: 20px;
+		font: 24px/47px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		color: #fff;
+	}
+#sidebar .title h2 a 
+	{
+		color: #fff;
+		text-decoration: underline;
+	}
+#sidebar .general ul 
+	{
+		padding: 0 40px 10px 0;
+		width: 266px;
+		overflow: hidden;
+	}
+#sidebar .general ul li 
+	{
+		border-top: 1px solid #e0e0e0;
+		padding: 16px 0;
+	}
+#sidebar .general ul li:first-child 
+	{
+		border-top: none;
+	}
+
+/* main column ****************************************************************/
+#rightcol 
+	{
+		float: right;
+		width: 292px;
+		overflow: hidden;
+		margin: 0;
+	}
+#rightcol .box 
+	{
+		width: 250px;
+		padding: 20px 20px 20px 25px;
+	}
+#rightcol .title 
+	{
+		background: url(images/title-left.png) no-repeat;
+		height: 57px;
+		margin-left: 24px;
+		overflow: hidden;
+	}
+#rightcol .title h2 
+	{
+		background: url(images/title-right.png) no-repeat 100% 0;
+		height: 57px;
+		float: left;
+		margin-left: 20px;
+		padding-right: 20px;
+		font: 24px/47px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		color: #fff;
+	}
+#rightcol .title h2 a 
+	{
+		color: #fff;
+		text-decoration: underline;
+	}
+#rightcol .general ul 
+	{
+		padding: 10px 0;
+		width: 210px;
+		overflow: hidden;
+	}
+#rightcol .general ul li 
+	{
+		border-top: 1px solid #e0e0e0;
+		padding: 15px 0;
+	}
+#rightcol .general ul li:first-child 
+	{
+		border-top: none;
+	}
+
+/* footer *********************************************************************/
+#footer 
+	{
+		background: url(images/bg-footer.png) no-repeat 100% 0;
+		overflow: hidden;
+		padding: 35px 0;
+		margin: 40px 30px 0 30px;
+		text-align: center;
+	}
+#footer span 
+	{
+		float: left;
+		padding-left: 40px;
+	}
+#footer em 
+	{
+		float: right;
+		padding-right: 40px;
+		font-style: normal;
+	}
+
+/* Заголовок страницы */
+#content h1 
+	{
+		width: auto;
+		overflow: hidden;
+		margin-bottom: 19px;
+		color: #000;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		background: url(images/arrow2.png) no-repeat 5px 7px;
+		padding-left: 28px;
+	}
+
+#content h1 a 
+	{
+		color: #000;
+		font: 24px/26px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+		text-decoration: underline;
+	}
+/* /Заголовок страницы */
+
+/* Скругленные углы */
+.page 
+	{
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+	}
+
+.pageItem 
+	{
+		background: transparent;
+		width: 100%;
+	}
+
+.page h1, .page p 
+	{
+		margin: 0 10px;
+	}
+
+.page h1 
+	{
+		font-size: 2em;
+		color: #fff;
+	}
+
+.page p 
+	{
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+	}
+
+.pagecontent 
+	{
+	}
+
+.pagecontentfooter 
+	{
+	}
+/* /Скругленные углы */
+
+/*- Список разделов */
+
+#CatNavi 
+	{ 
+	padding: 8px 0px;
+	width: 306px;
+	}
+
+#CatNavi li
+	{ 
+	font: 18px/43px 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+	margin-bottom: 3px;
+	}
+		
+#CatNavi li a
+	{ 
+	display: block;
+	width: 286px;
+	height: 44px;
+	padding-left: 20px;
+	}
+
+#CatNavi li a:hover, li.Current a
+	{ 
+	background: url(images/hov.png) no-repeat;
+	color: #fff;
+	text-decoration: none;
+
+	}
+
+#CatNavi .CatLevel0 
+	{
+		padding-left: 0;
+	}
+
+#CatNavi .CatLevel1 
+	{
+		padding-left: 10px;
+	}
+
+#CatNavi .CatLevel2 
+	{
+		padding-left: 20px;
+	}
+
+#CatNavi .CatLevel3
+	{
+		padding-left: 30px;
+	}
+
+#CatNavi .CatLevel4
+	{
+		padding-left: 40px;
+	}
+
+#CatNavi .CatLevel5
+	{
+		padding-left: 50px;
+	}
+
+#CatNavi .CatLevel6
+	{
+		padding-left: 60px;
+	}
+
+#CatNavi .CurrentParent a 
+	{ 
+		font-weight: normal; 
+	}
+
+#CatNavi li a,
+#CatNavi .Current li a,
+#CatNavi .CurrentParent li a,
+#CatNavi .CurrentParent .Current li a 
+	{ 
+		font-weight: normal; 
+	}
+
+#CatNavi .Current a,
+#CatNavi .CurrentParent .Current a 
+	{ 
+		font-weight: normal; 
+	}
+
+/*- /Список разделов */
+
+/*- Время парсинга */
+div#parseTime
+	{
+		clear: left;
+		background: transparent;
+		width: 100%;
+		text-align: center;
+		color: #000;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+/*- /Время парсинга */
+
+/*- Информация о магазине */
+div#copyright
+	{
+		clear: left;
+		background: transparent;
+		width: 100%;
+		text-align: center;
+		color: #000;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+
+div.copyright
+	{
+		clear: left;
+		background: transparent;
+		width: 100%;
+		text-align: center;
+		color: #000;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+/*- /Информация о магазине */
+
+/*- Формы */
+
+form 
+	{
+		width: 100%;
+		margin: 0;
+	}
+
+.form input, textarea,
+input[type=text]
+	{
+		font-size: 1em;
+		border: 1px solid;
+		border-color: #666 #ccc #ccc #666;
+		padding: 2px;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-webkit-border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+	}
+
+.loginform input {
+	width: 70%;
+	font-size: 1em;
+	border: 1px solid;
+	border-color: #666 #ccc #ccc #666;
+	padding: 2px;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-radius-topright: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-bottomleft: 4px;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-radius-bottomright: 4px;
+   -webkit-border-bottom-right-radius: 4px;
+}
+
+.loginform input:focus, .sffocus, .sffocus {
+	background-color: #ffc;
+}
+
+.form textarea 
+	{
+		width: 80%;
+	}
+
+fieldset.form
+	{
+		border: 0px;
+	}
+
+fieldset.form legend
+	{
+		font-weight: bold;
+		
+		font: 12pt arial,sans-serif;
+		font-weight: bold;
+	}
+
+.form p label
+	{
+		display: inline-block; 
+		float: left; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px; 
+		border: 0px solid black; 
+		color: #545452; 
+		font-weight: normal; 
+		text-align: right;
+	}
+
+.form p
+	{
+		font: 12pt arial,sans-serif;
+		font-weight: normal;
+		margin-bottom: .5em;
+		clear: both;
+	}
+		
+/*- Подсветка ошибок формы */
+#errormsg
+	{
+		border: 2px solid #c00;
+		padding: 5px;
+		width: 96%;
+	}	 
+
+label.error 
+	{
+		clear: both;
+		width: 10%; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px; 
+		border: 0px solid black; 
+		color: #545452; 
+		font-weight: normal; 
+		text-align: right;
+}
+
+.error
+	{
+		background: #fcc;
+	}
+/*- /Подсветка ошибок формы */
+	
+.form textarea:focus, input:focus, .sffocus, .sffocus 
+	{
+		background-color: #ffc;
+	}
+
+span.Requirement 
+	{
+		color: red;
+	}
+
+/*- /Формы */
+
+/*- Цены */
+
+span.markProductOutOfStock 
+	{
+		color: #c76170;
+		font-weight: bold;
+	}
+
+span.productSpecialPrice 
+	{
+		color: #ff0000;
+	}
+
+span.productOldPrice 
+	{
+		color: #ff0000;
+		text-decoration: line-through;
+	}
+
+span.errorText 
+	{
+		color: #ff0000;
+	}
+
+/*- /Цены */
+
+/* Ошибка на странице свяжитесь с нами */
+
+div.contacterror 
+	{
+		border: 1px solid; 
+		border-color: #ff0000; 
+		background-color: #FFCCCC; 
+		text-align: center; 
+		margin-bottom: 0.5em; 
+		margin-top: 0.5em;
+	}
+
+/* /Ошибка на странице свяжитесь с нами */
+
+/* Вывод товаров */
+
+/* Количество колонок с товаром на странице новинки */
+dl.itemNewProducts 
+	{
+		display: block;
+		width: 100%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		background: transparent;
+	}
+/* /Количество колонок с товаром на странице новинки */
+
+/* Количество колонок с товаром на странице рекомендуемые товары */
+dl.itemFeaturedProducts 
+	{
+		display: block;
+		width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		border-bottom: 1px #e5e5e5 solid;
+	}
+/* /Количество колонок с товаром на странице рекомендуемые товары */
+
+/* Количество колонок с товаром в блоке новинки на главной странице */
+dl.itemNewProductsDefault 
+	{
+		display: block;
+		width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		background: transparent;
+	}
+/* /Количество колонок с товаром в блоке новинки на главной странице */
+
+/* Количество колонок с новостями на главной странице */
+dl.itemLatestNewsDefault 
+	{
+		display: block;
+		width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		margin: 0.5em 0 0.5em 0;
+		padding: 0 0 0 0;
+	}
+/* /Количество колонок с новостями на главной странице */
+
+/* Количество колонок с новостями на странице новостей */
+dl.itemLatestNews 
+	{
+		display: block;
+		width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		margin: 0.5em 0 0.5em 0;
+		padding: 0 0 0 0;
+	}
+/* /Количество колонок с новостями на странице новостей */
+
+/* Количество колонок с товаром на странице скидки */
+dl.itemSpecials 
+	{
+		display: block;
+		width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		border-bottom: 1px #e5e5e5 solid;
+	}
+/* /Количество колонок с товаром на странице скидки */
+
+/* Количество колонок с товаром на странице мои данные */
+dl.itemLastViewed 
+	{
+		display: block;
+		width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		border-bottom: 1px #e5e5e5 solid;
+	}
+
+/* /Количество колонок с товаром на странице мои данные */
+
+/* Информация о заказе, адрес клиента и адрес доставки */
+dl.ordersAddress 
+	{
+		display: block;
+		width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		border-bottom: 1px #e5e5e5 solid;
+	}
+
+dt.ordersAddress 
+	{
+		display: block;
+		float: left;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		text-align: center;
+	}
+
+dd.ordersAddress
+	{
+		display: block;
+		margin: 0 0 0 1em;
+		padding: 0 0 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+/* /Информация о заказе, адрес клиента и адрес доставки */
+
+/* Адресная книга */
+dl.AddressBook 
+	{
+		display: block;
+		width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+	}
+
+dt.AddressBook 
+	{
+		display: block;
+		float: left;
+		width: 90px;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		text-align: center;
+	}
+
+dd.AddressBook
+	{
+		display: block;
+		margin: 0 0 0 90px;
+		padding: 0 0 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+dl.AddressBookList 
+	{
+		display: block;
+		width: 49%;
+		float: left;
+		height: auto;
+		margin: 0 0 0 0;
+		padding: 0 0 1em 0;
+	}
+
+dt.AddressBookList 
+	{
+		display: block;
+		float: left;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		text-align: center;
+	}
+
+dd.AddressBookList
+	{
+		display: block;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+/* /Адресная книга */
+
+/* Вход */
+dl.Login 
+	{
+		display: block;
+		width: 49%;
+		float: left;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+	}
+
+dt.Login
+	{
+		float: left;
+		display: block;
+		background: transparent;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		text-align: center;
+	}
+
+dd.Login
+	{
+		display: block;
+		margin: 0 0 0 1em;
+		padding: 0 0 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+/* /Вход */
+
+dt.itemImage 
+	{
+		float: left;
+		display: block;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 5px 5px 0 5px;
+		text-align: center;
+	}
+
+dt.itemNews 
+	{
+		display: none;
+		float: left;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 5px 5px 0 5px;
+		text-align: left;
+	}
+
+dd.itemDescription
+	{
+		display: block;
+		margin: 0 0 0 0;
+		padding: 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+dd.itemDescriptionPrice
+	{
+		display: block;
+		margin: 1em 0 0 0;
+		padding: 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+dd.itemNews
+	{
+		display: block;
+		margin-left: 1em;
+		padding: 0 0;
+		line-height: normal;
+		background: transparent;
+	}
+
+div.clear
+	{
+		clear: both;
+	}
+
+span.right
+	{
+		float: right;
+	}
+
+/* /Вывод товаров */
+
+/* Вывод категорий */
+
+dl.itemCategoriesListing 
+	{
+		width: 33%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+		float: left;
+		height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		background: transparent;
+	}
+
+dt.itemCategoriesListing 
+	{
+		float: left;
+		height: auto;
+		background: transparent;
+		border-right: 0px #f1f1f6 solid;
+		margin: 0 0 0 0;
+		padding: 5px 5px 0 5px;
+		text-align: center;
+	}
+
+dd.itemCategoriesListing 
+	{
+		margin: 0 1em 0 1em;
+		padding: 0 0;
+		line-height: normal;
+		background: transparent;
+		text-align: center;
+	}
+
+/* /Вывод категорий */
+
+/* Страница карточки товара */
+
+p.center
+	{
+		text-align: center;
+	}
+
+div.ProductInfoLeft
+	{
+		float: left;
+		margin-right: 1em;
+	}
+
+div.ProductInfoRight
+	{
+		float: left;
+		margin-left: 1em;
+		text-align: right;
+	}
+
+/* /Страница карточки товара */
+
+/* Ссылки на странице мои данные */
+
+ul.accountLinks 
+	{
+		list-style-type: none;
+		text-align: left;
+		padding-left: 1em;
+		margin: 0 0 0 0;
+	}
+
+li.accountLinks 
+	{
+		display: block;
+		padding: 0; 
+	}
+
+/* /Ссылки на странице мои данные */
+
+span.bold 
+	{
+		font-weight: bold;
+	}
+
+/* Ajax quick find */
+
+div.ajaxQuickFind 
+	{
+		text-align: left;
+	}
+
+ul.ajaxQuickFind 
+	{
+		list-style-type: none;
+		list-style-image: none;
+		padding-left: 0px;
+	}
+
+li.ajaxQuickFind 
+	{
+		font-size: 80%;
+		padding-left: 0px;
+	} 
+
+/* /Ajax quick find */
+
+/* Ajax add quickie suggest */
+
+div.ajaxAddQuickie 
+	{
+		text-align: left;
+	}
+
+div.addQuick 
+	{
+		text-align: left;
+		color: #67748B;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+ul.ajaxAddQuickie 
+	{
+		list-style-type: none;
+		list-style-image: none;
+		padding-left: 0px;
+	}
+
+li.ajaxAddQuickie 
+	{
+		font-size: 80%;
+		padding-left: 0px;
+	} 
+
+/* /Ajax add quickie suggest */
+
+.errorBox 
+	{
+		background-color: #ffb3b5;
+	}
+
+.messageStackError, .messageStackWarning 
+	{ 
+		background-color: #ffb3b5; 
+	}
+
+.messageStackSuccess 
+	{ 
+		background-color: #99ff00; 
+	}
+
+.headerError 
+	{
+		background-color: #ffb3b5;
+		border: 1px solid red;
+	}
+
+.messageStack
+	{
+		background-color: #ffb3b5; 
+		padding: 0.5em 0.5em 0.5em 0.5em; 
+	}
+
+.itemOdd 
+	{
+		background: transparent;
+	}
+	
+.itemEven 
+	{
+		background: #f4f4f4;
+	}
+
+#slide-featured 
+	{
+		width:80%;
+		margin:0 auto;
+	}
+
+#slide-featured li
+	{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+#slide-featured li a.button span
+	{
+		color: #fff;
+	}
+
+#slide-featured ul
+	{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+#slide-new 
+	{
+		width:90%;
+		margin:0 auto;
+	}   
+	
+/* Buttons */
+
+a.button, 
+span.button, 
+del.button
+	{
+		display: -moz-inline-box;
+		display: inline-block;
+		cursor: pointer;
+		border: none;
+		font-size: 0;
+		line-height: 0;
+			
+	/*
+	for Safari, read this first
+	http://creativebits.org/webdev/safari_background_repeat_bug_fix
+	*/
+	
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		height: 30px;
+		text-decoration: none;
+		color: #2e523b;
+		font-style: normal;
+		margin: 0 6px 0px 0;
+		padding-top: -2px;
+		padding-right: 10px;
+		padding-botton: 0;
+		padding-left: 0;	
+		vertical-align: middle;	
+		_position: relative;
+		_width: 10px;	
+		_overflow-y: hidden;
+	}
+
+a.button, 
+span.button, 
+del.button, 
+a.button span, 
+span.button button, 
+span.button input, 
+del.button span
+	{
+		background-image: url(img/vamcart/buttons/form_buttons.png);
+		_background-image: url(img/vamcart/buttons/form_buttons.gif);
+	}
+
+a.button span, 
+span.button button, 
+span.button input, 
+del.button span
+	{
+		white-space: nowrap;
+		cursor: pointer;
+		color: #fff;
+		display: -moz-inline-box;
+		display: inline-block;
+		line-height: 1;
+		letter-spacing: 0 !important;
+		font-family: "Arial" !important;
+		font-size: 13px !important;
+		font-style: normal;			
+		background-color: transparent;
+		background-position: 100% 0;
+		background-repeat: no-repeat;
+		height: 30px;
+		padding: 8px 20px 0 10px;
+		margin: 0 -16px 0 10px;
+		border: none;
+		vertical-align: text-top;
+		zoom: 1;
+		_position: relative;
+		_padding-left: 0px;
+		_padding-right: 12px;
+		_margin-right: -10px;	
+		_display: block;
+		_top: 0;
+		_right: -5px;
+	}
+
+span.button button
+	{
+		line-height: 2.5; /*Opera need this*/
+	}
+
+html.safari a.button span, 
+html.safari del.button span
+	{
+		line-height: 1.3;
+	}
+
+html.safari span.button button
+	{
+		line-height: 2.6;
+	}
+
+html.safari a.button:focus,
+html.safari span.button button:focus
+	{
+		outline: none;
+	}
+
+del.button
+	{
+		/* cursor:not-allowed;	*/
+		background-position: 0 -120px;
+	}
+
+del.button span
+	{
+		cursor: default;
+		color: #aaa !important;
+		background-position: 100% -120px;
+	}
+
+span.button button, 
+span.button input
+	{
+		padding-top: 0px;
+		line-height: 2.5; /*Opera need this*/
+	}
+
+/** optional **/
+/*
+a.button:visited
+	{
+		color: #aaa;
+	}
+*/
+
+/*Hover Style*/
+
+a.button:hover, 
+a.button:focus, 
+a.dom-button-focus, 
+span.button-behavior-hover
+	{
+		background-position: 0 -60px;
+		color: #222;
+		text-decoration: none;
+	}
+
+a.button:hover span, 
+a.button:focus span, 
+span.button-behavior-hover button, 
+span.button-behavior-hover input
+	{
+		background-position: 100% -60px;
+	}
+
+a.button:active, 
+a.button:focus span
+	{
+		color: #444;
+	}
+
+del.button-behavior-hover, 
+del.button:hover
+	{
+		background-position: 0 -180px;
+		/* cursor:not-allowed; */
+	}
+
+del.button-behavior-hover span, 
+del.button:hover span
+	{
+		background-position: 100% -180px;
+		/* cursor:not-allowed; */
+	}
+
+/* /Buttons */
+		 
+		 
+#flyimgcart 
+	{
+		position:absolute;
+		z-index:1000;
+	}
+
+.close
+	{
+		color: red;
+		font-size: bold;
+	}
+
+p.CartContentRight
+	{
+		text-align: right;
+		padding-right: 0.2em;
+	}
+
+p.CartContentCenter
+	{
+		text-align: center;
+	}
+
+div.filter
+	{
+		float: left;
+		padding: 0 .5em;
+	}
+
+/* ############ checkout ################## */
+
+.sm_layout_box h2 
+	{
+		padding: .5em .5em .5em 0;
+	}
+
+.sm_layout_box 
+	{
+		padding-left: 1em;
+	}
+
+div.CheckoutError 
+	{
+		border: 1px solid; 
+		border-color: #ff0000; 
+		background-color: #FFCCCC; 
+		text-align: left; 
+		margin-bottom: 0.5em; 
+		margin-top: 0.5em;
+		padding: 0.5em;
+	}
+		
+#load_status_bg {background: url(img/wind_bg.png) repeat; position: fixed;z-index: 2300;width: 100%;height: 100%;top: 0px;left: 0px;}
+#load_status_bg .load_status_image {background:url(img/ajax-loader.gif);width:100%; margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}		
+				
+/*]]>*/
