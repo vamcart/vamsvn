@@ -1,0 +1,45 @@
+{config_load file="$language/lang_$language.conf" section="ask_a_question"}
+
+{$FORM_ACTION}
+
+<div id="content">
+
+{if $error!=''}
+<div class="contacterror">
+{$error}
+</div>
+{/if}
+<div class="page">
+<div class="pagecontent">
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
+{#heading_title#}
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_question#} {$PRODUCTS_NAME}</legend>
+<p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
+<p>{#text_inp_code#} {$CAPTCHA_INPUT}</p>
+<p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
+<p>{#text_lastname#} {$INPUT_LASTNAME}</p>
+<p>{#text_email#} {$INPUT_EMAIL}</p>
+<p>{#text_message#} {$INPUT_TEXT}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+</div>
+
+<div class="pagecontentfooter">
+{$BUTTON_SUBMIT}
+</div>
+{$FORM_END}
+
+</div>

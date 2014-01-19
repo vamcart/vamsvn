@@ -1,0 +1,65 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+	<div id="header">
+		<h1><a href="{$mainpage}"><img src="{$tpl_path}images/logo.png" alt="" border="0" /></a></h1>
+		<ul>
+			<li{$1}><a href="{$mainpage}"><span>{#text_mainpage#}</span></a></li>
+			{if $account}{if $smarty.session.customer_id}
+			<li{$2}><a href="{$account}"><span>{#link_account#}</span></a></li>
+			{/if}{/if}
+			<li{$3}><a href="{$cart}"><span>{#link_cart#}</span></a></li>
+			<li{$4}><a href="{$checkout}"><span>{#link_checkout#}</span></a></li>
+			{if $smarty.session.customer_id}
+			<li{$5}><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
+			{else}
+			<li{$6}><a href="{$login}"><span>{#link_login#}</span></a></li>
+			{/if}  
+		</ul>
+	</div>
+	<div class="wrap">
+		<div id="sidebar">
+			{$box_CATEGORIES}
+			{$box_FILTERS}
+			{$box_CONTENT}
+			{$box_INFORMATION}
+			{$box_SEARCH}
+			{$box_ADD_QUICKIE}
+			{$box_LAST_VIEWED}
+			{$box_REVIEWS}
+			{$box_SPECIALS}
+			{$box_FEATURED}
+			{$box_LATESTNEWS}
+			{$box_ARTICLES}
+			{$box_ARTICLESNEW}
+			{$box_AUTHORS}
+		</div>
+		<div id="rightcol">
+			{$box_CART}
+			{$box_LOGIN}
+			{$box_ADMIN}
+			{$box_DOWNLOADS}
+			{$box_AFFILIATE}
+			{$box_WHATSNEW}
+			{$box_NEWSLETTER}
+			{$box_BESTSELLERS}
+			{$box_INFOBOX}
+			{$box_CURRENCIES}
+			{$box_LANGUAGES}
+			{$box_MANUFACTURERS}
+			{$box_MANUFACTURERS_INFO}
+			{$box_FAQ}
+		</div>
+		<div id="content">
+			<div class="bread">{$navtrail}</div>
+			
+			{$main_content}			
+			
+		</div>
+	</div>
+	<div id="footer">
+	{if $BANNER}	
+	{$BANNER}
+	<br />
+	{/if}
+	<a href="vam_rss2_info.php"><img src="images/rss.png" alt="RSS" border="0" /></a>
+	</div>

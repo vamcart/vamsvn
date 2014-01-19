@@ -1,0 +1,34 @@
+		<script type="text/javascript">
+		{literal}
+			$(document).ready(function() {
+				$("div#qiwi").hide();
+				$("div#schet").hide();
+				$("div#kvitancia").hide();
+				$("div#aviso").hide();
+					$("input#qiwi").click(function (){
+						$("div#qiwi").show();
+					});
+					$("input#schet").click(function (){
+						$("div#schet").show();
+					});
+					$("input#kvitancia").click(function (){
+						$("div#kvitancia").show();
+					});
+					$("input#aviso").click(function (){
+						$("div#aviso").show();
+					});
+			});
+		{/literal}
+		</script>
+{foreach name=aussen item=module_data from=$module_content} <div class="{cycle values="itemOdd,itemEven"}">
+<p>
+<label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
+</p>{if $module_data.description}<p>
+{$module_data.description}
+</p>{/if}
+{if $module_data.error} <p>
+{$module_data.error}
+</p>{else} {foreach name=aussen item=method_data from=$module_data.fields} <p>
+{$method_data.title}&nbsp;{$method_data.field}
+</p> {/foreach}{/if}
+</div>{/foreach}

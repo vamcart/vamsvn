@@ -1,0 +1,50 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="index"}
+{if $deny_cart neq 'true'}
+<div id="divShoppingCart">
+<div class="title"><h2><a href="{$LINK_CART}">{#heading_cart#}</a></h2></div>
+<div class="box">
+<div class="boxcontent">
+{if $empty=='false'}
+{foreach name=aussen item=products_data from=$products}
+
+{if $smarty.const.AJAX_CART == 'true'}
+<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
+{/if}
+
+{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>&nbsp;
+{if $smarty.const.AJAX_CART == 'true'}
+<input type="image" src="images/delete.gif" title="{#text_delete#}" /></form>
+{/if}
+<br />
+{if $products_data.ATTRIBUTES!=''} 
+{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+{$item_data.NAME}: {$item_data.VALUE}<br />
+{/foreach} 
+{/if}
+
+{/foreach}
+
+{if $DISCOUNT}
+<p class="CartContentRight">
+{#text_discount#}&nbsp;{$DISCOUNT}
+</p>
+{/if}
+<p class="CartContentRight">
+{$UST}{#text_total#}&nbsp;<span>{$TOTAL}</span>
+</p>
+<p class="CartContentRight">
+{if $SHIPPING_INFO}{$SHIPPING_INFO}{/if}
+</p>
+<p class="CartContentCenter">
+<a href="{$LINK_CHECKOUT}">{#text_checkout#}</a>
+</p>
+{else} <!-- Пустая корзина --> 
+<p>
+{#text_empty_cart#}
+</p>
+{/if}
+</div>
+</div>
+</div>
+{/if}
