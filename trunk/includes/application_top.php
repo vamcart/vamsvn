@@ -513,7 +513,7 @@ if (vam_not_null($cPath)) {
 require (DIR_WS_CLASSES.'breadcrumb.php');
 $breadcrumb = new breadcrumb;
 
-//$breadcrumb->add(HEADER_TITLE_TOP, HTTP_SERVER);
+$breadcrumb->add(HEADER_TITLE_TOP, HTTP_SERVER);
 $breadcrumb->add(HEADER_TITLE_CATALOG, HTTP_SERVER . DIR_WS_CATALOG);
 
 // add category names or the manufacturer name to the breadcrumb trail

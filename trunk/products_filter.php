@@ -197,7 +197,7 @@ $listing_sql = '';
   // Add Filter to Breadcrumbs if selected
   if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
     foreach ($specs_array_breadcrumb as $crumb) {
-      $breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $crumb['specifications_id']) ) ) );
+      $breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' [X]', vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $crumb['specifications_id']) ) ) );
     }
   }
  
