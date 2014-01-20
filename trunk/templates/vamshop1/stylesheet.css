@@ -1157,6 +1157,62 @@ hr.transparent {
 .categories-widget ul.icons a:hover {
   color: #ff6633;
 }
+
+#CatNavi .CatLevel0 
+   {
+     padding-left: 20px;
+   }
+
+#CatNavi .CatLevel1 
+   {
+     padding-left: 30px;
+   }
+
+#CatNavi .CatLevel2 
+   {
+     padding-left: 40px;
+   }
+
+#CatNavi .CatLevel3
+   {
+     padding-left: 50px;
+   }
+
+#CatNavi .CatLevel4
+   {
+     padding-left: 60px;
+   }
+
+#CatNavi .CatLevel5
+   {
+     padding-left: 70px;
+   }
+
+#CatNavi .CatLevel6
+   {
+     padding-left: 80px;
+   }
+
+#CatNavi .CurrentParent a 
+   { 
+     font-weight: bold; 
+   }
+
+#CatNavi li a,
+#CatNavi .Current li a,
+#CatNavi .CurrentParent li a,
+#CatNavi .CurrentParent .Current li a 
+   { 
+     font-weight: normal; 
+   }
+
+#CatNavi .Current a,
+#CatNavi .CurrentParent .Current a 
+   { 
+     font-weight: bold; 
+   }
+
+
 /* Animation KEYFRAMES
 /* ========================================================================== */
 @-webkit-keyframes moveFromLeft {

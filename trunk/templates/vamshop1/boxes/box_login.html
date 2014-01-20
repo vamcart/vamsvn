@@ -1,24 +1,25 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<div class="title"><h2>{#heading_login#}</h2></div>
-<div class="box">
-{$FORM_ACTION}
-<p>
-{#text_email#}:
-</p>
-<p class="loginform">
-{$FIELD_EMAIL}
-</p>
-<p>
-{#text_pwd#}:
-</p>
-<p class="loginform">
-{$FIELD_PWD}
-</p>
-<p class="LoginContentCenter">
-{$BUTTON}
-</p>
-{$FORM_END}
-<p class="LoginContentCenter">
-<a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a> | <a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a>
-</p>
-</div>
+<section class="widget inner">
+	<h3 class="widget-title">{#heading_login#}</h3>
+		{$FORM_ACTION}
+			<div class="control-group">
+			<label class="control-label" for="inputEmail">{#text_email#}</label>
+				<div class="controls">
+					<input type="text" name="email_address" id="inputEmail" placeholder="{#text_email#}">
+				</div>
+			</div>
+			<div class="control-group">
+			<label class="control-label" for="inputPassword">{#text_pwd#}</label>
+				<div class="controls">
+					<input type="password" name="password" id="inputPassword" placeholder="{#text_pwd#}" autocomplete="off">
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-inverse"><i class="icon-signin"></i> {#heading_login#}</button>
+				</div>
+			</div>
+		{$FORM_END}
+		<p><a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a></p>
+		<p><a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a></p>
+</section>

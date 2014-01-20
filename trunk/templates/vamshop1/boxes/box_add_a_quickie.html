@@ -1,12 +1,22 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<div class="title"><h2>{#heading_add_a_quickie#}</h2></div>
-<div class="box">
-{#text_quickie#}
-{$FORM_ACTION}
-<p class="addquickieform">{$INPUT_FIELD}</p>
-<div class="ajaxAddQuickie" id="ajaxAddQuickie" style="text-align: left;"></div>
-{$SUBMIT_BUTTON}
-{$FORM_END}
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<section class="widget inner">
+	<h3 class="widget-title">{#heading_add_a_quickie#}</h3>
+		{$FORM_ACTION}
+			<div class="control-group">
+			<label class="control-label" for="quickie">{#text_quickie#}</label>
+				<div class="controls">
+					{$INPUT_FIELD}
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-inverse"><i class="icon-signin"></i> {$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}</button>
+				</div>
+			</div>			
+			<div class="ajaxAddQuickie" id="ajaxAddQuickie" style="text-align: left;"></div>
+		{$FORM_END}
+</section>
 <script type="text/javascript">
 // <![CDATA[
 {literal}
@@ -31,4 +41,3 @@ $(document).ready(function(){
 {/literal}
 // ]]>
 </script>
-</div>

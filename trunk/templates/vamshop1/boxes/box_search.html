@@ -1,11 +1,13 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<div class="title"><h2><a href="{$LINK_ADVANCED}">{#heading_search#}</a></h2></div>
-<div class="box">
-{$FORM_ACTION}
-<p class="searchboxform">{$INPUT_SEARCH}</p>
-<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
-{$BUTTON_SUBMIT}
-{$FORM_END}
+<section class="widget inner darken search">
+	{$FORM_ACTION}
+		<input class="span4" id="quick_find_keyword" name="keywords" type="text" placeholder="{#heading_search#}" />
+		<input class="btn search-bt" type="submit" value="" />
+	{$FORM_END}
+	<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
+	<div><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></div>
+</section>
+			
 <script type="text/javascript">
 // <![CDATA[
 {literal}
@@ -30,5 +32,3 @@ $(document).ready(function(){
 {/literal}
 // ]]>
 </script>
-<p><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></p>
-</div>

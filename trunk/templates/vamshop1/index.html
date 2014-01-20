@@ -1,4 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="boxes"}
 
 <!-- start: TOP BAR -->
 <div class="topbar clearfix">
@@ -9,13 +10,11 @@
 		<ul class="nav nav-pills top-menu pull-right">
 			<li><a href="{$mainpage}">{#text_mainpage#}</a></li>
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="">News <b class="caret"></b></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="">{#heading_news#} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						{foreach from=$content_list item=node}
-							<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-						{/foreach}
+						{$box_LATESTNEWS_DROPDOWN}
 					</ul>
-			</li>			<li><a href="{$tpl_path}page/contact-us.html">Contact Us</a></li>
+			</li>			<li><a href="contact_us.html">{#text_contact_us#}</a></li>
 		</ul>
 	</div>
 </div>
@@ -29,9 +28,9 @@
 				<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" /></a>
 			</div>
 			<div class="span6 search">
-					<form class="form-search" action="{$tpl_path}page/search-result.html" method="get">
-						<input type="text" name="keyword" class="input-medium" placeholder="Search">
-						<button type="submit" class="btn hidden">Search</button>
+					<form class="form-search" action="advanced_search_result.php" method="get">
+						<input type="text" name="keywords" class="input-medium" placeholder="{#heading_search#}">
+						<button type="submit" class="btn hidden">{#heading_search#}</button>
 					</form>
 			</div>
 		</div>
@@ -50,52 +49,16 @@
 			<div class="navbar-inner">
 
 				<ul class="nav pull-left">
-					<li{if $content_alias == 'home-page'} class="active"{/if}><a href="{$mainpage}">Home</a></li>
+					<li{if $content_alias == 'home-page'} class="active"{/if}><a href="{$mainpage}">{#text_mainpage#}</a></li>
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="">Information <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								{foreach from=$content_list item=node}
-									<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-								{/foreach}
-							</ul>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{$box_CONTENT_PULL}
+						</ul>
 					</li>
-					<li><a href="{$mainpage}">Админка</a></li>
 				</ul>
 
-				{if $order_items}
-				<div class="shopping-cart pull-right">
-					<a href="{$cart_link}" class="cart">
-						<span class="quantity">{$total_quantity}</span>
-						<span class="amount"><i class="icon-shopping-cart"></i>{$order_total}</span>
-					</a>
-					<div class="cart-dropdown">
-						<h2 class="title">Cart</h2>
-							<div class="content">
-								<div class="products">
-									{foreach from=$order_items item=product}
-										<div class="media">
-											<a class="pull-right" href="{$product.url}">
-												<img class="media-object" src="{$product.image.image_thumb}" alt="" title="" />
-											</a>
-											<div class="media-body">
-												<h4 class="media-heading"><a href="{$product.url}">{$product.name}</a> <a href="{$tpl_path}cart/remove_product/{$product.id}/1" class="remove" title="Remove"><i class="icon-trash"></i></a></h4>
-												{$product.qty} x {$product.price}
-											</div>
-										</div>
-									{/foreach}
-								</div>
-								<p class="subtotal">
-									<strong>Total:</strong>
-									<span class="amount">{$order_total}</span>
-								</p>
-								<p class="buttons">
-									<a class="btn btn-inverse viewcart" href="{$cart_link}"><i class="icon-shopping-cart"></i> View Cart</a>
-									<a class="btn btn-inverse viewcart" href="{$checkout_link}"><i class="icon-ok"></i> Checkout &rarr;</a>
-								</p>
-							</div>
-					</div>
-				</div>
-				{/if}
+				{$box_CART_PULL}
 
 			</div>
 		</div>
@@ -109,58 +72,45 @@
 
 		<div class="row-fluid">
 
+			<!-- start: Page section -->
+			<section class="span9 page-sidebar pull-right">
+	
 			{$main_content}
+
+			</section>
+			<!-- end: Page section -->
 
 		<!-- start: Sidebar -->
 		<aside class="span3 sidebar pull-left">
 
-			<div id="shopping-cart-box">
-			{if $order_items}
-			<section class="widget inner shopping-cart-widget">
-				<h3 class="widget-title">Shopping Cart</h3>
-					<div class="products">
-						{foreach from=$order_items item=product}
-							<div class="media">
-								<a class="pull-right" href="{$product.url}">
-									<img class="media-object" src="{$product.image.image_thumb}" alt="" title="" />
-								</a>
-							<div class="media-body">
-			                  <h4 class="media-heading"><a href="{$product.url}">{$product.name}</a> <a href="{$tpl_path}cart/remove_product/{$product.id}/1" class="remove" title="Remove"><i class="icon-trash"></i></a></h4>
-								{$product.qty} x {$product.price}
-							</div>
-							</div>
-						{/foreach}
-					</div>
-					<p class="subtotal">
-						<strong>Total:</strong>
-						<span class="amount">{$order_total}</span>
-					</p>
-					<p class="buttons">
-						<a class="btn btn-inverse viewcart" href="{$cart_link}"><i class="icon-shopping-cart"></i> View Cart</a>
-						<a class="btn btn-inverse checkout" href="{$checkout_link}"><i class="icon-ok"></i> Checkout &rarr;</a>
-					</p>
-			</section>
-			{/if}
-			</div>
-			
-			<section class="widget inner darken search">
-				<form id="search" class="input-append" action="{$tpl_path}page/search-result.html" method="get">
-					<input class="span4" id="appendedInputButton" name="keyword" type="text" placeholder="Search" />
-					<input class="btn search-bt" type="submit" value="" />
-				</form>
-			</section>
-			
-			
-			{if $content_list}
-			<section class="widget inner categories-widget">
-				<h3 class="widget-title">Categories</h3>
-					<ul class="icons clearfix">
-						{foreach from=$content_list item=node}
-							<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-						{/foreach}
-					</ul>
-			</section>
-			{/if}
+			{$box_CART}
+			{$box_SEARCH}
+			{$box_CATEGORIES}
+			{$box_FILTERS}
+			{$box_CONTENT}
+			{$box_INFORMATION}
+			{$box_ADD_QUICKIE}
+			{$box_LAST_VIEWED}
+			{$box_REVIEWS}
+			{$box_SPECIALS}
+			{$box_FEATURED}
+			{$box_LATESTNEWS}
+			{$box_ARTICLES}
+			{$box_ARTICLESNEW}
+			{$box_AUTHORS}
+			{$box_LOGIN}
+			{$box_ADMIN}
+			{$box_DOWNLOADS}
+			{$box_AFFILIATE}
+			{$box_WHATSNEW}
+			{$box_NEWSLETTER}
+			{$box_BESTSELLERS}
+			{$box_INFOBOX}
+			{$box_CURRENCIES}
+			{$box_LANGUAGES}
+			{$box_MANUFACTURERS}
+			{$box_MANUFACTURERS_INFO}
+			{$box_FAQ}
 
 		</aside>
 		<!-- end: Sidebar -->
@@ -176,38 +126,32 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span3 clearfix">
-				<h3 class="widget-title">Information</h3>
+				<h3 class="widget-title">{#heading_infobox#}</h3>
 				<div class="widget-inner">
 
 					<ul class="unstyled">
-						{foreach from=$content_list item=node}
-							<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-						{/foreach}
+						{$box_CONTENT_PULL}
 					</ul>
 
 				</div>
 			</div>
 			<div class="span3 clearfix">
-				<h3 class="widget-title">News</h3>
+				<h3 class="widget-title">{#heading_news#}</h3>
 				<div class="widget-inner">
 
 					<ul class="unstyled">
-						{foreach from=$content_list item=node}
-							<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-						{/foreach}
+						{$box_LATESTNEWS_DROPDOWN}
 					</ul>
 
 				</div>
 			</div>
 
 			<div class="span6 clearfix">
-				<h3 class="widget-title">Articles</h3>
+				<h3 class="widget-title">{#heading_articles_new#}</h3>
 				<div class="widget-inner">
 
 					<ul class="unstyled">
-						{foreach from=$content_list item=node}
-							<li{if $node.alias == $content_alias} class="active"{/if}><a href="{$node.url}">{$node.name}</a></li>
-						{/foreach}
+						{$box_ARTICLESNEW_DROPDOWN}
 					</ul>
 
 				</div>
@@ -223,14 +167,14 @@
 		<div class="row-fluid">
 			<div class="span6">
 				<ul class="privacy inline">
-					<li><a href="{$tpl_path}page/conditions-of-use.html">About Us</a></li>
-					<li><a href="{$tpl_path}page/contact-us.html">Contact Us</a></li>
+					<li><a href="about_us.html">{#text_about_us#}</a></li>
+					<li><a href="contact_us.html">{#text_contact_us#}</a></li>
 				</ul>
-
-				<a href="vam_rss2_info.php"><img src="images/rss.png" alt="RSS" border="0" /></a>
 
 			</div>
 		</div>
 	</div>
+
+	<div class="text-center"><a href="vam_rss2_info.php"><img src="images/rss.png" alt="RSS" border="0" /></a></div>
 </section>
 <!-- end: Footer menu -->

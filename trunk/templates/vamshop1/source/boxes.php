@@ -23,6 +23,7 @@
   if (SET_BOX_AUTHORS == 'true') include(DIR_WS_BOXES . 'authors.php');
   if (SET_BOX_ARTICLES == 'true') include(DIR_WS_BOXES . 'articles.php');
   if (SET_BOX_ARTICLESNEW == 'true') include(DIR_WS_BOXES . 'articles_new.php');
+  include(DIR_WS_BOXES . 'articles_new_dropdown.php');
   if (SET_BOX_MANUFACTURERS == 'true') include(DIR_WS_BOXES . 'manufacturers.php');
   if ($_SESSION['customers_status']['customers_status_show_price']!='0') {
   if (SET_BOX_ADD_QUICKIE == 'true') require(DIR_WS_BOXES . 'add_a_quickie.php');
@@ -31,8 +32,10 @@
    if (substr(basename($PHP_SELF), 0,8) != 'advanced') { if (SET_BOX_WHATSNEW == 'true') require(DIR_WS_BOXES . 'whats_new.php'); }
   if (SET_BOX_SEARCH == 'true') require(DIR_WS_BOXES . 'search.php');
   if (SET_BOX_CONTENT == 'true') require(DIR_WS_BOXES . 'content.php');
+  require(DIR_WS_BOXES . 'content_pull.php');
   if (SET_BOX_INFORMATION == 'true') require(DIR_WS_BOXES . 'information.php');
   if (SET_BOX_LATESTNEWS == 'true') include(DIR_WS_BOXES . 'news.php');
+  include(DIR_WS_BOXES . 'news_dropdown.php');
   if (SET_BOX_FAQ == 'true') include(DIR_WS_BOXES . 'faq.php');
   if (SET_BOX_LANGUAGES == 'true') include(DIR_WS_BOXES . 'languages.php');
   if ($_SESSION['customers_status']['customers_status_id'] == 0) { if (SET_BOX_ADMIN == 'true') include(DIR_WS_BOXES . 'admin.php'); }
@@ -40,6 +43,7 @@
   if (SET_BOX_LOGIN == 'true') require(DIR_WS_BOXES . 'loginbox.php');
   if (SET_BOX_NEWSLETTER == 'true')  include(DIR_WS_BOXES . 'newsletter.php');
   if (substr(basename($PHP_SELF), 0,13) != 'shopping_cart') { if ($_SESSION['customers_status']['customers_status_show_price'] == 1) { if (SET_BOX_CART == 'true') include(DIR_WS_BOXES . 'shopping_cart.php'); } }
+  if ($_SESSION['customers_status']['customers_status_show_price'] == 1) { if (SET_BOX_CART == 'true') include(DIR_WS_BOXES . 'shopping_cart_pull.php'); }
   if ($product->isProduct()) { if (SET_BOX_MANUFACTURERS_INFO == 'true') include(DIR_WS_BOXES . 'manufacturer_info.php'); }
 
   if (isset($_SESSION['customer_id'])) { include(DIR_WS_BOXES . 'order_history.php'); }
