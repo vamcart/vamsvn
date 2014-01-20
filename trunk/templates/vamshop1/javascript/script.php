@@ -1,7 +1,6 @@
-<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
-
 <script type="text/javascript" src="jscript/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="jscript/jquery/plugins/easing/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
 <script type="text/javascript" src="jscript/jquery/plugins/lightbox/jquery.lightbox.js"></script>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
