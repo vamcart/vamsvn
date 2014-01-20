@@ -26,9 +26,9 @@ require ('includes/application_top.php');
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <?php if (ENABLE_TABS == 'true') { ?>
-		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />	
+		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	
 		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
-		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
