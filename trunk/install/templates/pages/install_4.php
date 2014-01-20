@@ -363,9 +363,11 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 'php_value mbstring.internal_encoding UTF-8'. "\n" .
 '</IfModule>    '. "\n" . '';
 
-    $fp = fopen(DIR_FS_CATALOG . '.htaccess', 'w');
+    $fp = fopen(DIR_FS_CATALOG . 'install/htaccess.txt', 'w');
     fputs($fp, $file_contents);
     fclose($fp);
+    copy(DIR_FS_CATALOG . 'install/htaccess.txt', DIR_FS_CATALOG . '.htaccess');
+    @ unlink(DIR_FS_CATALOG . 'install/htaccess.txt');
 
 ?>
 
