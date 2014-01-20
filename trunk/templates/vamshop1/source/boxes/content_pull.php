@@ -49,7 +49,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_id) || !
 	 					content_group
 	 					FROM ".TABLE_CONTENT_MANAGER."
 	 					WHERE languages_id='".(int) $_SESSION['languages_id']."'
-	 					and file_flag=1 ".$group_check." and content_status=1 order by sort_order";
+	 					and file_flag=1 ".$group_check." and content_status=1 order by sort_order limit 5";
 
 	$content_query = vamDBquery($content_query);
 
