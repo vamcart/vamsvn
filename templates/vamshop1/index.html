@@ -49,13 +49,19 @@
 			<div class="navbar-inner">
 
 				<ul class="nav pull-left">
-					<li{if $content_alias == 'home-page'} class="active"{/if}><a href="{$mainpage}">{#text_mainpage#}</a></li>
+					<li{$1}><a href="{$mainpage}">{#text_mainpage#}</a></li>
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							{$box_CONTENT_PULL}
 						</ul>
 					</li>
+					{if $smarty.session.customers_status.customers_status_id == 0}
+					<li><a href="{$admin_area_link}">{#text_admin#}</a></li>
+					{/if}  
+					{if $smarty.session.customer_id}
+					<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
+					{/if}  
 				</ul>
 
 				{$box_CART_PULL}
@@ -89,6 +95,8 @@
 			{$box_FILTERS}
 			{$box_CONTENT}
 			{$box_INFORMATION}
+			{$box_LOGIN}
+			{$box_ADMIN}
 			{$box_ADD_QUICKIE}
 			{$box_LAST_VIEWED}
 			{$box_REVIEWS}
@@ -98,8 +106,6 @@
 			{$box_ARTICLES}
 			{$box_ARTICLESNEW}
 			{$box_AUTHORS}
-			{$box_LOGIN}
-			{$box_ADMIN}
 			{$box_DOWNLOADS}
 			{$box_AFFILIATE}
 			{$box_WHATSNEW}

@@ -407,7 +407,7 @@ $vamTemplate->assign('error','
 
 // Метки для закладок
 
-if (strstr($PHP_SELF, FILENAME_DEFAULT)) {
+if (strstr($PHP_SELF, FILENAME_DEFAULT) && !$_GET['cat']) {
 $vamTemplate->assign('1',' class="current"');
 }
 
@@ -429,6 +429,10 @@ $vamTemplate->assign('5',' class="current"');
 
 if (strstr($PHP_SELF, FILENAME_LOGIN)) {
 $vamTemplate->assign('6',' class="current"');
+}
+
+if ($_SESSION['customers_status']['customers_status_id'] == 0) {
+$vamTemplate->assign('admin_area_link', vam_href_link_admin(FILENAME_START,'', 'SSL'));
 }
 
 // /Метки для закладок
