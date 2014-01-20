@@ -3514,17 +3514,16 @@ INSERT INTO `specifications` VALUES
 (3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
 (4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
 (5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(6, 2, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(7, 2, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(8, 2, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(9, 2, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(10, 2, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(11, 3, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(12, 3, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(13, 3, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(14, 3, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(15, 3, 0, 'True', 'True', 'True', 'True', '', 'Left', 'exact', 'radio', 'True', 'radio');
-
+(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio');
 
 ##
 ## Table structure for table `specification_description`
