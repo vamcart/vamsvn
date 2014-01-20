@@ -577,7 +577,12 @@ CREATE TABLE categories (
   yml_enable tinyint(1) NOT NULL default '1',
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `categories` VALUES
+(1, '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1),
+(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1),
+(3, '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1);
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
@@ -592,6 +597,11 @@ CREATE TABLE categories_description (
   PRIMARY KEY (categories_id, language_id),
   KEY idx_categories_name (categories_name)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `categories_description` VALUES
+(1, 1, 'Ноутбуки', '', 'Описание категории ноутбуки.', '', '', ''),
+(2, 1, 'Планшеты', '', 'Описание категории планшеты.', '', '', ''),
+(3, 1, 'Смартфоны', '', 'Описание категории смартфоны.', '', '', '');
 
 DROP TABLE IF EXISTS configuration;
 CREATE TABLE `configuration` (
@@ -1174,8 +1184,18 @@ CREATE TABLE products (
   products_page_url varchar(255),
   PRIMARY KEY (products_id),
   KEY idx_products_date_added (products_date_added)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+INSERT INTO `products` VALUES
+(1, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html'),
+(2, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html'),
+(3, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html'),
+(4, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html'),
+(5, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html'),
+(6, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html'),
+(7, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html'),
+(8, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html'),
+(9, '', 0, 1, 1000, 1, '', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html');
 
 
 DROP TABLE IF EXISTS products_attributes;
@@ -1220,7 +1240,18 @@ CREATE TABLE products_description (
   products_viewed int(5) default '0',
   PRIMARY KEY  (products_id,language_id),
   KEY products_name (products_name)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `products_description` VALUES
+(1, 1, 'Samsung ATIV Book 9', 'Уникальный тонкий 15,0\" ноутбук.', '', '', '', '', '', '', 0),
+(2, 1, 'Samsung ATIV Smart PC', 'Инновационная конструкция сочетает в себе функциональность ноутбука с удобством планшета: с ней вы получаете исключительную мобильность и удобство для работы на ходу, включая серфинг по Интернету, широкие возможности коммуникации, просмотра видео и игровых приложений. Если же вам требуется поработать - подключите к ATIV Smart PC полноразмерную клавиатуру, и ваш планшет приобретет функциональность полноценного ноутбука.', '', '', '', '', '', '', 0),
+(3, 1, 'Samsung ATIV Book 4', 'При весе 1,99 кг и толщине 22,9 мм ноутбук отличается стильным дизайном. Он настолько компактен, что его можно всегда иметь при себе. ATIV Book 4 настолько легкий, что вы не сможете себя представить без него. Тем не менее, этот ноутбук отличается высокой функциональностью и производительностью.', '', '', '', '', '', '', 9),
+(4, 1, 'Samsung GALAXY Tab 3', 'Исключительная плавность работы и почти безграничный технический потенциал Samsung GALAXY Tab 3 воплотились в элегантном и современном дизайне. Легкий и тонкий корпус делает этот планшет эргономичным и удобным в управлении. Вы непременно оцените его преимущества!', '', '', '', '', '', '', 0),
+(5, 1, 'Samsung GALAXY Note 10.1', 'Новый планшет Samsung GALAXY Note 10.1 2014 Edition отличается исключительно высоким разрешением WQXGA, кристально четким изображением и большим экраном. Высочайшее разрешение обеспечивает комфортные условия для просмотра любого контента, причем фильмы в формате Full HD будут воспроизводиться без малейшей потери качества, а фотоснимки приобретут удивительную детальность.', '', '', '', '', '', '', 0),
+(6, 1, 'Samsung GALAXY Note 8', 'Поприветствуйте новый Samsung GALAXY Note 8.0, вашего друга и помощника во всех делах. Быстрый, функциональный и компактный, с поддержкой рукописного ввода с помощью S Pen, он всегда будет под рукой, когда вам необходимо.', '', '', '', '', '', '', 0),
+(7, 1, 'Samsung GALAXY Note 3', 'Смартфон премиум-класса с большим и ярким дисплеем 5,7 дюйма.', '', '', '', '', '', '', 1),
+(8, 1, 'Samsung GALAXY S4', 'Новый смартфон Samsung GALAXY S4 станет твоим истинным компаньоном, который поможет упростить общение с людьми и сохранить самые радостные моменты жизни. Каждая его функция призвана сделать твою жизнь насыщенней и интересней. Кроме того, он может следить за твоим здоровьем и самочувствием. Samsung GALAXY S4 - твой незаменимый помощник.', '', '', '', '', '', '', 0),
+(9, 1, 'Samsung GALAXY Ace 3', 'Samsung GALAXY Ace 3 - ваш проводник в мир высоких технологий и производительности. Смартфон оснащен мощным процессором, поддерживает быстрые подключения и работает на новейшей версии платформы Android с первоклассным пользовательским интерфейсом. Игровой портал, облачное хранилище, навигация с поддержкой GPS и ГЛОНАСС - у этой модели есть все, чтобы претендовать на звание совершенного смартфона.', '', '', '', '', '', '', 0);
 
 DROP TABLE IF EXISTS products_pins;
 CREATE TABLE products_pins (
@@ -1296,6 +1327,17 @@ CREATE TABLE products_to_categories (
   PRIMARY KEY (products_id,categories_id),
   KEY idx_categories_id (categories_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `products_to_categories` VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 3),
+(8, 3),
+(9, 3);
 
 DROP TABLE IF EXISTS products_vpe;
 CREATE TABLE products_vpe (
@@ -1872,7 +1914,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_CUSTOMERS_STATUS_ID_GUEST', '1',  1, 21, NULL, '', 'vam_get_customers_status_name', 'vam_cfg_pull_down_customers_status_list(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_CUSTOMERS_STATUS_ID', '2',  1, 23, NULL, '', 'vam_get_customers_status_name', 'vam_cfg_pull_down_customers_status_list(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ALLOW_ADD_TO_CART', 'false',  1, 24, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('CURRENT_TEMPLATE', 'vamshop2', 1, 26, NULL, '', NULL, 'vam_cfg_pull_down_template_sets(');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('CURRENT_TEMPLATE', 'vamshop1', 1, 26, NULL, '', NULL, 'vam_cfg_pull_down_template_sets(');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PRICE_IS_BRUTTO', 'false', 1, 27, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PRICE_PRECISION', '4', 1, 28, NULL, '', NULL, '');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('CC_KEYCHAIN', 'changeme', 1, 29, NULL, '', NULL, '');
