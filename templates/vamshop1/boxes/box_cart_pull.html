@@ -15,7 +15,7 @@
 					{foreach name=aussen item=products_data from=$products}
 						<div class="media">
 							<a class="pull-right" href="{$products_data.LINK}">
-								<img class="media-object" src="{$products_data.IMAGE}" alt="" title="" />
+								<img class="media-object" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" />
 							</a>
 						<div class="media-body">
 						{if $smarty.const.AJAX_CART == 'true'}
