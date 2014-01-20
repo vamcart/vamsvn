@@ -58,7 +58,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !
 
         $authors_name = ((utf8_strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? utf8_substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($_GET['authors_id']) && ($_GET['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
-        $authors_list .= '<a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
+        $authors_list .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a></li>';
       }
 
       $authors_list = utf8_substr($authors_list, 0, -4);

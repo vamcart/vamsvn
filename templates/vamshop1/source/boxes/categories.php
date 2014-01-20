@@ -120,7 +120,7 @@ if ($cPath) {
 
 vam_show_category($first_element);
 
-$box->assign('BOX_CONTENT', '<ul id="CatNavi">' . $categories_string . '</ul>');
+$box->assign('BOX_CONTENT', '<ul class="icons clearfix" id="CatNavi">' . $categories_string . '</ul>');
 
 }
 

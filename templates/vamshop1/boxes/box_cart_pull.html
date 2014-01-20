@@ -1,0 +1,54 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="index"}
+
+{if $deny_cart neq 'true'}
+{if $empty=='false'}
+<div class="shopping-cart pull-right">
+	<a href="{$cart_link}" class="cart">
+		<span class="quantity">{$TOTAL_QUANTITY}</span>
+		<span class="amount"><i class="icon-shopping-cart"></i>{$TOTAL}</span>
+	</a>
+	<div class="cart-dropdown">
+		<h2 class="title"><a href="{$LINK_CART}">{#heading_cart#}</a></h2>
+			<div class="content">
+				<div class="products">
+					{foreach name=aussen item=products_data from=$products}
+						<div class="media">
+							<a class="pull-right" href="{$products_data.LINK}">
+								<img class="media-object" src="{$products_data.IMAGE}" alt="" title="" />
+							</a>
+						<div class="media-body">
+						{if $smarty.const.AJAX_CART == 'true'}
+		<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
+		{/if}
+		                  <h4 class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a> {if $smarty.const.AJAX_CART == 'true'}<input type="image" src="images/delete.gif" title="{#text_delete#}" /></form>{/if}</h4>
+								{if $products_data.ATTRIBUTES!=''} 
+								{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+								{$item_data.NAME}: {$item_data.VALUE}<br />
+								{/foreach} 
+								{/if}
+							{$products_data.QTY} x {$products_data.PRICE}
+						</div>
+						</div>
+					{/foreach}
+				</div>
+				{if $DISCOUNT}
+				<p class="subtotal">
+					<strong>{#text_discount#}</strong>
+					<span class="amount">{$DISCOUNT}</span>
+				</p>
+				{/if}
+				<p class="subtotal">
+					<strong>{$UST}{#text_total#}</strong>
+					<span class="amount">{$TOTAL}</span>
+				</p>
+				<p class="buttons">
+					<a class="btn btn-inverse viewcart" href="{$LINK_CART}"><i class="icon-shopping-cart"></i> {#link_cart#}</a>
+					<a class="btn btn-inverse checkout" href="{$LINK_CHECKOUT}"><i class="icon-ok"></i> {#text_checkout#} &rarr;</a>
+				</p>
+			</div>
+	</div>
+</div>
+{/if}
+{/if}
+
