@@ -48,7 +48,10 @@ CREATE TABLE address_book (
   address_last_modified datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (address_book_id),
   KEY idx_address_book_customers_id (customers_id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `address_book` VALUES
+(1, 1, '', 'VamShop', 'admin', '', 'admin', 'Street Address', NULL, '123456', 'Москва', 'Москва', 176, 98, '2014-01-20 10:14:50', '2014-01-20 10:14:50');
 
 DROP TABLE IF EXISTS affiliate_affiliate;
 CREATE TABLE affiliate_affiliate (
@@ -693,7 +696,10 @@ CREATE TABLE customers (
   customers_sid INT(5) DEFAULT NULL,
   customers_personal_discount decimal(4,2) DEFAULT '0',
   PRIMARY KEY (customers_id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `customers` VALUES
+(1, NULL, NULL, 0, NULL, 0, '', 'admin', '', 'admin', '0000-00-00 00:00:00', 'vam@test.com', 1, 'telephone', NULL, '827ccb0eea8a706c4c34a16891f84e7b', NULL, '0', '0', '0', 0, '', '', '', 0, '2014-01-20 10:14:50', '2014-01-20 10:14:50', NULL, NULL, '0', '0000-00-00 00:00:00', NULL, NULL, NULL, '0.00');
 
 DROP TABLE IF EXISTS customers_to_manufacturers_discount;
 CREATE TABLE customers_to_manufacturers_discount (
@@ -736,6 +742,9 @@ CREATE TABLE customers_info (
   global_product_notifications int(1) DEFAULT '0',
   PRIMARY KEY (customers_info_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `customers_info` VALUES
+(1, '2014-01-20 10:14:50', 0, '2014-01-20 10:14:50', '2014-01-20 10:14:50', 0);
 
 DROP TABLE IF EXISTS customers_ip;
 CREATE TABLE customers_ip (
