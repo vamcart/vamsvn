@@ -107,33 +107,18 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
-<script type="text/javascript" src="jscript/jquery/plugins/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/lightbox/jquery.lightbox.css" media="screen" />
+<script type="text/javascript" src="jscript/jquery/plugins/lightbox/jquery.lightbox.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("a.zoom").fancybox({
-			"zoomOpacity"			: true,
-			"zoomSpeedIn"			: 500,
-			"zoomSpeedOut"			: 500
-		});
-
-		$("a.iframe").fancybox({
-			"padding" : 20, // отступ контента от краев окна
-			"imageScale" : false, // Принимает значение true - контент(изображения) масштабируется по размеру окна, или false - окно вытягивается по размеру контента. По умолчанию - TRUE
-			"zoomOpacity" : true, // изменение прозрачности контента во время анимации (по умолчанию false)
-			"zoomSpeedIn" : 500, // скорость анимации в мс при увеличении фото (по умолчанию 0)
-			"zoomSpeedOut" : 500, // скорость анимации в мс при уменьшении фото (по умолчанию 0)
-			"zoomSpeedChange" : 500, // скорость анимации в мс при смене фото (по умолчанию 0)
-			"frameWidth" : 1000,  // ширина окна, px (425px - по умолчанию)
-			"frameHeight" : 700, // высота окна, px(355px - по умолчанию)
-			"frameScale" : false, // Принимает значение true - контент(изображения) масштабируется по размеру окна, или false - окно вытягивается по размеру контента. По умолчанию - TRUE
-			"overlayShow" : true, // если true затеняят страницу под всплывающим окном. (по умолчанию true). Цвет задается в jquery.fancybox.css - div#fancy_overlay
-			"overlayOpacity" : 0.8,  // Прозрачность затенения  (0.3 по умолчанию)
-			"hideOnContentClick" :true, // Если TRUE  закрывает окно по клику по любой его точке (кроме элементов навигации). Поумолчанию TRUE 
-			"centerOnScroll" : false // Если TRUE окно центрируется на экране, когда пользователь прокручивает страницу 
-		});
-	
-	});
+$(document).ready(function(){
+  $("a.lightbox").lightBox({
+    fixedNavigation:true,
+      imageLoading: "jscript/jquery/plugins/lightbox/img/lightbox-ico-loading.gif",
+      imageBtnClose: "jscript/jquery/plugins/lightbox/img/lightbox-btn-close.gif",
+      imageBtnPrev: "jscript/jquery/plugins/lightbox/img/lightbox-btn-prev.gif",
+      imageBtnNext: "jscript/jquery/plugins/lightbox/img/lightbox-btn-next.gif",      
+    });
+});
 </script>
 <?php
  }
