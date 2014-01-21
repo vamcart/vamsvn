@@ -3174,4 +3174,7 @@ dd.itemCategoriesListing
    {
 	  width: 80%;
    }
-   
+
+#myModal .modal-body {
+	max-height: 800px;
+}   
