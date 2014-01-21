@@ -409,6 +409,9 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
   }
 ?>
 
+      <li>Установить на файл /admin/sxd/cfg.php права доступа 777.</li>
+      <li>Установить на файл /admin/sxd/ses.php права доступа 777.</li>
+      <li>Установить на директорию /admin/backups/ права доступа 777.</li>
       <li>Установить на директорию /images/product_images/ права доступа 777 и на поддиректории внутри.</li>
       <li>Установить на директорию /images/categories/ права доступа 777.</li>
       <li>Установить на директорию /cache/ права доступа 777.</li>
