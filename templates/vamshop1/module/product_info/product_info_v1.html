@@ -12,7 +12,7 @@
 			<!-- start: Product image -->
 			<div class="span6 product-images">
 				<div class="thumbnail big">
-					{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
+					{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
 					<span class="frame-overlay"></span>
 					<span class="zoom"><i class="icon-zoom-in"></i></span>
 					{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}

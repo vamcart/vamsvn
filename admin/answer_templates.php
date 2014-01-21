@@ -129,6 +129,7 @@
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
+          <!--
           <tr>
             <td colspan="2"><?php echo TEXT_AVAILABLE_PLACEHOLDERS; ?>
           <ul>
@@ -151,6 +152,7 @@
           </ul>  
           </td>
           </tr>
+          -->
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
