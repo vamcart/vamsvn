@@ -194,10 +194,6 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
             <td valign="top" class="main"><?php echo vam_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (($products_name[$languages[$i]['id']]) ? stripslashes($products_name[$languages[$i]['id']]) : vam_get_products_name($pInfo->products_id, $languages[$i]['id'])),'size=60'); ?></td>
           </tr>
           <tr>
-            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_URL; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (($products_url[$languages[$i]['id']]) ? stripslashes($products_url[$languages[$i]['id']]) : vam_get_products_url($pInfo->products_id, $languages[$i]['id'])),'size=60') . '&nbsp;<small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?></td>
-          </tr>
-          <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_DESCRIPTION; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_textarea_field('products_description_' . $languages[$i]['id'], 'soft', '95', '25', (($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : vam_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?><br /><a href="javascript:toggleHTMLEditor('<?php echo 'products_description_' . $languages[$i]['id'];?>');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
           </tr>
@@ -208,6 +204,10 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_KEYWORDS; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_input_field('products_keywords[' . $languages[$i]['id'] . ']',(($products_keywords[$languages[$i]['id']]) ? stripslashes($products_keywords[$languages[$i]['id']]) : vam_get_products_keywords($pInfo->products_id, $languages[$i]['id'])), 'size=80 maxlenght=255'); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_URL; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (($products_url[$languages[$i]['id']]) ? stripslashes($products_url[$languages[$i]['id']]) : vam_get_products_url($pInfo->products_id, $languages[$i]['id'])),'size=60') . '&nbsp;<small>' . TEXT_PRODUCTS_URL_WITHOUT_HTTP . '</small>'; ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_META_TITLE; ?></td>
