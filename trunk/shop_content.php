@@ -82,7 +82,23 @@ $vamTemplate->assign('CONTENT_HEADING', $shop_content_data['content_heading']);
 if ($_GET['coID'] == 7) {
 
 	$error = false;
-	if (isset ($_GET['action']) && ($_GET['action'] == 'send')) {
+	
+		$spam_flag = false;
+
+		if ( trim( $_POST['anti-bot-q'] ) != date('Y') ) { // answer is wrong - maybe spam
+			$spam_flag = true;
+			if ( empty( $_POST['anti-bot-q'] ) ) { // empty answer - maybe spam
+				$antispam_error_message .= 'Error: empty answer. ['.$_POST['anti-bot-q'].']<br> ';
+			} else {
+				$antispam_error_message .= 'Error: answer is wrong. ['.$_POST['anti-bot-q'].']<br> ';
+			}
+		}
+		if ( ! empty( $_POST['anti-bot-e-email-url'] ) ) { // field is not empty - maybe spam
+			$spam_flag = true;
+			$antispam_error_message .= 'Error: field should be empty. ['.$_POST['anti-bot-e-email-url'].']<br> ';
+		}
+			
+	if (isset ($_GET['action']) && ($_GET['action'] == 'send') && $spam_flag == false) {
 		if (vam_validate_email(trim($_POST['email']))) {
 
 			vam_php_mail($_POST['email'], $_POST['name'], CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
