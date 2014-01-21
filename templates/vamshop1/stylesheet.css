@@ -3169,3 +3169,9 @@ dd.itemCategoriesListing
    }
 
 /* /Вывод категорий */
+
+.form textarea 
+   {
+	  width: 80%;
+   }
+   

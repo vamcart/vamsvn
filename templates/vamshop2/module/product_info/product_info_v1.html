@@ -15,7 +15,7 @@
 
 <div class="ProductInfoLeft">
 {if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
-{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
 {/if}
 
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
@@ -132,7 +132,7 @@
 <!-- more images -->
 {if $PRODUCTS_MO_IMAGES}
 {foreach name=mo_pic item=img_values from=$mo_img}
-{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="zoom" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
 {/foreach}
 {/if}
 <!-- more images eof -->
