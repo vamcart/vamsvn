@@ -32,24 +32,29 @@
 <div class="page">
 <div class="pageItem">
 
-{foreach name=aussen item=module_data from=$module_content} 
+<div class="row-fluid featured-categories">
+	<ul class="thumbnails">
+	{foreach name=aussen item=module_data from=$module_content} 
+		<li class="span4 item">
+			<div class="thumbnail">
+				<a href="{$module_data.CATEGORIES_LINK}" class="image">
+				<img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />
+				<span class="frame-overlay"></span>
+				<h4 class="title"><i class="icon-folder-open"></i> {$module_data.CATEGORIES_NAME}</h4>
+				<span class="link">{$smarty.const.TEXT_VIEW_PRODUCTS} <i class="icon-chevron-right"></i></span>
+				</a>
 
-<dl class="itemCategoriesListing">
-<dt class="itemCategoriesListing">
-</dt>
-{if $module_data.CATEGORIES_IMAGE}
-<dd class="itemCategoriesListing">
-<a href="{$module_data.CATEGORIES_LINK}"><img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" /></a>
-</dd>
-{/if}
+				<div class="inner notop">
+					<div class="description">
+						{$module_data.CATEGORIES_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}
+					</div>
+				</div>
+			</div>
+		</li>
+	{/foreach}
+	</ul>
+</div>
 
-<dd class="itemCategoriesListing">
-<a href="{$module_data.CATEGORIES_LINK}">{$module_data.CATEGORIES_NAME}</a>
-</dd>
-
-</dl>
-
-		 {/foreach}
 		  {/if}
 <div class="clear"></div>
 </div>
