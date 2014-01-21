@@ -664,5 +664,6 @@ define('TEXT_BUY_BUTTON', 'Купить');
 
 define('TEXT_BEST_BUY', 'успей купить!');
 define('TEXT_READ_MORE', 'подробнее');
+define('TEXT_VIEW_PRODUCTS', 'смотреть товары');
 
 ?>
