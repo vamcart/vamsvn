@@ -1,17 +1,55 @@
 {config_load file="$language/lang_$language.conf" section="new_products"} 
 {config_load file="$language/lang_$language.conf" section="index"} 
-			<div class="new">
-				<div class="title"><h2>{#heading_text#}</h2></div>
-				<ul>
-					{foreach name=aussen item=module_data from=$module_content}					<li>
-						{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>{/if}
-						<h3><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
-						<span><strong>{$module_data.PRODUCTS_PRICE}</strong></span>
-						{$module_data.PRODUCTS_BUTTON_BUY_NOW}
-					</li>
-					{/foreach} 
-				</ul>
-			</div>
+<h1>{#heading_text#}</h1>
+          {foreach name=aussen item=module_data from=$module_content} 
+<div class="page">
+<div class="pageItem">
+
+<dl class="itemNewProducts">
+<dt class="itemImage">
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+</dd>
+
+<dd class="itemDescriptionPrice">
+{$module_data.PRODUCTS_PRICE}
+</dd>
+
+{if $module_data.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+{if $module_data.PRODUCTS_SHIPPING_NAME}
+<dd class="itemDescription">
+{#text_shippingtime#}&nbsp;
+{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+{/if}
+{$module_data.PRODUCTS_SHIPPING_NAME}
+</dd>
+{/if}
+
+</dl>
+
+<div class="clear"></div>
+</div>
+
+</div>
+          {/foreach} 
+
 <div class="clear"></div>
 <div class="navigation">
 <span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
