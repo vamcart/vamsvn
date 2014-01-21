@@ -284,9 +284,6 @@ if ( $current_category_id != 0 )
             $module_contents .= '    </table>' . PHP_EOL;
             $module_contents .= '  </div>' . PHP_EOL;
             $module_contents .= '</div>' . PHP_EOL;
-            $module_contents .= '  </div>' . PHP_EOL;
-            $module_contents .= '</div>' . PHP_EOL;
-
             
             $module_contents .= '  </div>' . PHP_EOL;
             $module_contents .= '</div>' . PHP_EOL;

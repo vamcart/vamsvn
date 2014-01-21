@@ -443,11 +443,11 @@ define('TAX_INFO_EXCL','исключая %s налог');
 define('TAX_INFO_ADD','плюс %s налог');
 define('SHIPPING_EXCL','+');
 define('SHIPPING_COSTS','доставка');
-define('MSRP','Розничная цена ');
-define('YOUR_PRICE','Ваша цена ');
-define('YOUR_SPECIAL_PRICE','Специальная цена товара ');
-define('YOUR_GRADUATED_PRICE','Специальная цена от количества ');
-define('RETAIL_PRICE','Розничная цена ');
+define('MSRP','');
+define('YOUR_PRICE','');
+define('YOUR_SPECIAL_PRICE','');
+define('YOUR_GRADUATED_PRICE','');
+define('RETAIL_PRICE','');
 define('GROUP_PRICE','Базовая цена группы');
 define('MANUFACTURER_DISCOUNT','Личная скидка на производителя ');
 define('PRODUCT_DISCOUNT','Скидка на товар ');
@@ -661,5 +661,8 @@ define('TEXT_NO_COMPARISON_AVAILABLE', 'Администратором не бы
 define('TEXT_COMPARE','Сравнение товара');
 
 define('TEXT_BUY_BUTTON', 'Купить');
+
+define('TEXT_BEST_BUY', 'успей купить!');
+define('TEXT_READ_MORE', 'подробнее');
 
 ?>

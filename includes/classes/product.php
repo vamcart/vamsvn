@@ -438,9 +438,9 @@ class product {
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', TEXT_BUY_BUTTON).'</a>';
+		$link = '<a class="btn btn-add-to-cart" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="icon-shopping-cart"></i> '.TEXT_BUY_BUTTON.'</a>';
 		} else {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'">'.vam_image_button('buy.png', TEXT_BUY_BUTTON).'</a>';
+		$link = '<a class="btn btn-add-to-cart" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'"><i class="icon-shopping-cart"></i> '.TEXT_BUY_BUTTON.'</a>';
 		}
 		
 		return $link;
