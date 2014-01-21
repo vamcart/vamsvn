@@ -8,7 +8,7 @@
 body {
   font-family: "Open Sans", sans-serif !important;
   background-color: #ffffff;
-  color: #909090;
+  color: #000;
   padding: 0;
 }
 .inner {
@@ -36,7 +36,7 @@ a {
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  color: #222222;
+  color: #555;
   text-decoration: none;
 }
 a:hover {
@@ -126,7 +126,7 @@ hr.transparent {
   }
 }
 .topbar a {
-  color: #909090;
+  color: #000;
 }
 .topbar a:hover {
   color: #000;
@@ -172,8 +172,8 @@ hr.transparent {
   background-clip: padding-box;
 }
 .topbar .dropdown-toggle .caret {
-  border-bottom-color: #909090;
-  border-top-color: #909090;
+  border-bottom-color: #000;
+  border-top-color: #000;
 }
 .topbar .dropdown-toggle:hover .caret {
   border-bottom-color: #ffffff;
@@ -193,7 +193,7 @@ hr.transparent {
 .topbar .dropdown-submenu:focus > a {
   filter: none;
   background-image: none;
-  background-color: #222222;
+  background-color: #555;
 }
 .topbar .nav-pills.top-contacts {
   margin-bottom: 0;
@@ -249,7 +249,7 @@ hr.transparent {
   line-height: 15px;
   height: 15px;
   margin: 0;
-  color: #909090;
+  color: #000;
 }
 #header .form-search {
   margin: 0;
@@ -432,7 +432,7 @@ hr.transparent {
   border-top-color: #ffffff;
 }
 #navigation .navbar .nav > li > a:hover {
-  background-color: #555555;
+  background-color: #000;
   color: #ffffff;
 }
 #navigation .navbar .nav > li > a:hover .caret {
@@ -442,17 +442,17 @@ hr.transparent {
 #navigation .navbar .nav > .active > a,
 #navigation .navbar .nav > .active > a:hover,
 #navigation .navbar .nav > .active > a:focus {
-  background-color: #222222;
+  background-color: #000;
   color: #ffffff;
 }
 #navigation .navbar .nav > .current > a,
 #navigation .navbar .nav > .current > a:hover,
 #navigation .navbar .nav > .current > a:focus {
-  background-color: #222222;
+  background-color: #000;
   color: #ffffff;
 }
 #navigation .navbar .nav li.dropdown.open > .dropdown-toggle {
-  background-color: #222222;
+  background-color: #000;
   color: #ffffff;
 }
 #navigation .navbar .nav li.dropdown.active > .dropdown-toggle {
@@ -468,7 +468,7 @@ hr.transparent {
   border-top-color: #ffffff;
 }
 #navigation .navbar .nav > li > .dropdown-menu {
-  background-color: #555555;
+  background-color: #000;
   border: none;
   margin-top: 0;
   padding: 10px 0;
@@ -494,7 +494,7 @@ hr.transparent {
   background-image: none;
 }
 #navigation .dropdown-menu > li > a:hover {
-  background-color: #222222;
+  background-color: #555;
   color: #ffffff;
 }
 #navigation .shopping-cart {
@@ -534,7 +534,7 @@ hr.transparent {
   margin-right: 7px;
 }
 #navigation .shopping-cart .cart .quantity {
-  background-color: #555555;
+  background-color: #000;
 }
 #navigation .shopping-cart .cart:hover {
   -webkit-transition: all 0.3s ease-out;
@@ -554,7 +554,7 @@ hr.transparent {
   color: #ffffff;
 }
 #navigation .shopping-cart .cart:hover .amount {
-  background-color: #555555;
+  background-color: #000;
 }
 #navigation .shopping-cart .cart:hover .quantity {
   background-color: #333333;
@@ -566,7 +566,7 @@ hr.transparent {
   background-color: #ffffff;
   border: solid 1px #eeeeee;
   border-top: 0;
-  color: #909090;
+  color: #000;
   right: 0;
   top: 100%;
   display: none;
@@ -670,7 +670,7 @@ hr.transparent {
 }
 #breadcrumbs > .container {
   padding: 0 0 10px 0;
-  border-bottom: solid 1px #eeeeee;
+  border-bottom: solid 0px #eeeeee;
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #breadcrumbs > .container {
@@ -697,7 +697,7 @@ hr.transparent {
   padding-top: 15px;
   font-size: 11px;
   line-height: 11px;
-  color: #909090;
+  color: #000;
 }
 #breadcrumbs .breadcrumbs i {
   margin: 0 5px;
@@ -854,7 +854,7 @@ hr.transparent {
 #footer {
   padding-top: 40px;
   background-color: #333333;
-  color: #909090;
+  color: #000;
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #footer > .container {
@@ -918,7 +918,7 @@ hr.transparent {
 #footer-menu {
   font-size: 11px;
   background-color: #333333;
-  color: #909090;
+  color: #000;
 }
 @media (max-width: 480px) {
   #footer-menu {
@@ -946,7 +946,7 @@ hr.transparent {
 #footer-menu .privacy li {
   padding: 0 5px 0 0;
   margin: 0 5px 5px 0;
-  border-right: solid 1px #909090;
+  border-right: solid 1px #000;
   line-height: 11px;
 }
 #footer-menu .privacy li:last-child {
@@ -2562,3 +2562,123 @@ li.ajaxAddQuickie
 	{
 		background: #f4f4f4;
 	}
+
+div.clear
+   {
+     clear: both;
+   }
+
+div.navigation
+   {
+     display: block;
+     width: 100%;
+     padding-top: 1em;
+   }
+
+span.right
+   {
+     float: right;
+   }
+   
+/*- Подсветка ошибок формы */
+#errormsg
+	{
+		border: 2px solid #c00;
+		padding: 5px;
+		width: 96%;
+	}	   
+
+label.error 
+	{
+		clear: both;
+		width: 10%; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px; 
+		border: 0px solid black; 
+		color: #545452; 
+		font-weight: normal; 
+		text-align: right;
+}
+
+.error
+	{
+		background: #fcc;
+	}
+	
+span.Requirement 
+   {
+     color: red;
+   }
+   	
+/*- /Подсветка ошибок формы */   
+
+/*- Цены */
+
+span.markProductOutOfStock 
+   {
+     color: #c76170;
+     font-weight: bold;
+   }
+
+span.productSpecialPrice 
+   {
+     color: #ff0000;
+   }
+
+span.productOldPrice 
+   {
+	  color: #ff0000;
+	  text-decoration: line-through;
+   }
+
+span.errorText 
+   {
+     color: #ff0000;
+   }
+
+/*- /Цены */
+
+/*- Время парсинга */
+div#parseTime
+   {
+     clear: left;
+     background: #333333;
+     width: 100%;
+     text-align: center;
+     color: #fff;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Время парсинга */
+
+/*- Информация о магазине */
+div#copyright
+   {
+     clear: left;
+     background: #333333;
+     width: 100%;
+     text-align: center;
+     color: #fff;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+
+div#copyright a,
+div#copyright a:hover,
+div#copyright a:visited
+   {
+     color: #fff;
+     text-decoration: underline;
+   }
+
+div.copyright
+   {
+     clear: left;
+     background: #333333;
+     width: 100%;
+     text-align: center;
+     color: #fff;
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+   }
+/*- /Информация о магазине */
