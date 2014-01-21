@@ -666,4 +666,8 @@ define('TEXT_BEST_BUY', 'успей купить!');
 define('TEXT_READ_MORE', 'подробнее');
 define('TEXT_VIEW_PRODUCTS', 'смотреть товары');
 
+define('TEXT_PRODUCT_DESCRIPTION', 'Описание');
+define('TEXT_PRODUCT_REVIEWS', 'Отзывы');
+define('TEXT_PRODUCT_QTY', 'Количество:');
+
 ?>
