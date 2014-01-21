@@ -1,0 +1,101 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+<!-- start: TOP BAR -->
+<div class="topbar clearfix">
+	<div class="container">
+		<ul class="nav nav-pills top-contacts pull-left">
+			<li><a href=""><i class="icon-phone"></i> {$smarty.const.STORE_TELEPHONE}</a></li>
+		</ul>
+		<ul class="nav nav-pills top-menu pull-right">
+			<li><a href="{$mainpage}">{#text_mainpage#}</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="">{#heading_news#} <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						{$box_LATESTNEWS_DROPDOWN}
+					</ul>
+			</li>			<li><a href="contact_us.html">{#text_contact_us#}</a></li>
+		</ul>
+	</div>
+</div>
+<!-- end: TOP BAR -->
+
+<!-- start: Header -->
+<div id="header">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span3 logo">
+				<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" /></a>
+			</div>
+			<div class="span6 search">
+					<form class="form-search" action="advanced_search_result.php" method="get">
+						<input type="text" name="keywords" class="input-medium" placeholder="{#heading_search#}">
+						<button type="submit" class="btn hidden">{#heading_search#}</button>
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: Header -->
+
+<!-- start: Main Menu -->
+<div id="navigation" class="default">
+	<div class="container">
+		<div class="login">
+			<a href="{$smarty.const.FILENAME_LOGIN}" class="account-avatar" data-toggle="tooltip" data-placement="top" title="{#link_account#}"><img src="{$tpl_path}img/account.png" alt=""/></a>
+			<a href="{$smarty.const.FILENAME_ACCOUNT}" class="account" data-toggle="tooltip" data-placement="top" title="{#link_login#}"><i class="icon-lightbulb"></i></a>
+		</div>
+		<div class="navbar navbar-static-top">
+			<div class="navbar-inner">
+
+				<ul class="nav pull-left">
+					<li{$1}><a href="{$mainpage}">{#text_mainpage#}</a></li>
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{$box_CONTENT_PULL}
+						</ul>
+					</li>
+					{if $smarty.session.customers_status.customers_status_id == 0}
+					<li><a href="{$admin_area_link}">{#text_admin#}</a></li>
+					{/if}  
+					{if $smarty.session.customer_id}
+					<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
+					{/if}  
+				</ul>
+
+				{$box_CART_PULL}
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: Main Menu -->
+
+<!-- start: Container -->
+<div id="container">
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<!-- start: Page section -->
+			<section class="span9 page-sidebar pull-right">
+	
+			{$main_content}
+
+			</section>
+			<!-- end: Page section -->
+
+		<!-- start: Sidebar -->
+		<aside class="span3 sidebar pull-left">
+
+			{$box_CONTENT}
+
+		</aside>
+		<!-- end: Sidebar -->
+
+		</div>
+
+	</div>
+</div>
+<!-- end: Container -->

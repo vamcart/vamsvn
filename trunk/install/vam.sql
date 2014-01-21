@@ -330,7 +330,36 @@ CREATE TABLE products_xsell (
   xsell_id int(10) unsigned NOT NULL default '1',
   sort_order int(10) unsigned NOT NULL default '1',
   PRIMARY KEY  (ID)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `products_xsell` VALUES
+(10, 8, 0, 6, 1),
+(9, 8, 0, 4, 1),
+(8, 9, 0, 4, 1),
+(7, 9, 0, 5, 1),
+(6, 9, 0, 6, 1),
+(11, 8, 0, 5, 1),
+(12, 7, 0, 6, 1),
+(13, 7, 0, 5, 1),
+(14, 7, 0, 4, 1),
+(15, 4, 0, 7, 1),
+(16, 4, 0, 8, 1),
+(17, 4, 0, 9, 1),
+(18, 5, 0, 7, 1),
+(19, 5, 0, 8, 1),
+(20, 5, 0, 9, 1),
+(21, 6, 0, 7, 1),
+(22, 6, 0, 8, 1),
+(23, 6, 0, 9, 1),
+(24, 1, 0, 7, 1),
+(25, 1, 0, 8, 1),
+(26, 1, 0, 9, 1),
+(27, 2, 0, 7, 1),
+(28, 2, 0, 8, 1),
+(29, 2, 0, 9, 1),
+(30, 3, 0, 7, 1),
+(31, 3, 0, 8, 1),
+(32, 3, 0, 9, 1);
 
 DROP TABLE IF EXISTS products_xsell_grp_name;
 CREATE TABLE products_xsell_grp_name (
