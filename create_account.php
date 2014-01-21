@@ -50,7 +50,23 @@ require_once (DIR_FS_INC.'vam_write_user_info.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 
 $process = false;
-if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
+
+		$spam_flag = false;
+
+		if ( trim( $_POST['anti-bot-q'] ) != date('Y') ) { // answer is wrong - maybe spam
+			$spam_flag = true;
+			if ( empty( $_POST['anti-bot-q'] ) ) { // empty answer - maybe spam
+				$antispam_error_message .= 'Error: empty answer. ['.$_POST['anti-bot-q'].']<br> ';
+			} else {
+				$antispam_error_message .= 'Error: answer is wrong. ['.$_POST['anti-bot-q'].']<br> ';
+			}
+		}
+		if ( ! empty( $_POST['anti-bot-e-email-url'] ) ) { // field is not empty - maybe spam
+			$spam_flag = true;
+			$antispam_error_message .= 'Error: field should be empty. ['.$_POST['anti-bot-e-email-url'].']<br> ';
+		}
+		
+if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag == false) {
 	$process = true;
 
 	if (ACCOUNT_GENDER == 'true')
