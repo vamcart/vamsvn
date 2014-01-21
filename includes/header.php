@@ -44,7 +44,6 @@
 <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 
-<meta http-equiv="Content-Style-Type" content="text/css" />
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <script type="text/javascript" src="jscript/jquery/jquery.js"></script>
