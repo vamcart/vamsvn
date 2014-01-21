@@ -367,7 +367,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
     fputs($fp, $file_contents);
     fclose($fp);
     copy(DIR_FS_CATALOG . 'install/htaccess.txt', DIR_FS_CATALOG . '.htaccess');
-    @ unlink(DIR_FS_CATALOG . 'install/htaccess.txt');
+    //@ unlink(DIR_FS_CATALOG . 'install/htaccess.txt');
 
 ?>
 
