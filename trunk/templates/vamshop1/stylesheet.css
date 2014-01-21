@@ -2374,6 +2374,11 @@ label.error
 
 
 
+
+
+
+
+
 #flyimgcart 
 	{
 		position:absolute;
@@ -2682,3 +2687,322 @@ div.copyright
      padding-bottom: 0.5em;
    }
 /*- /Информация о магазине */
+
+/* Вывод товаров */
+
+/* Количество колонок с товаром на странице новинки */
+dl.itemNewProducts 
+   {
+     display: block;
+     width: 100%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+/* /Количество колонок с товаром на странице новинки */
+
+/* Количество колонок с товаром на странице рекомендуемые товары */
+dl.itemFeaturedProducts 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+/* /Количество колонок с товаром на странице рекомендуемые товары */
+
+/* Количество колонок с товаром в блоке новинки на главной странице */
+dl.itemNewProductsDefault 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+/* /Количество колонок с товаром в блоке новинки на главной странице */
+
+/* Количество колонок с новостями на главной странице */
+dl.itemLatestNewsDefault 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% (не 50, иначе в IE всё равно в одну колонку будут) - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+/* /Количество колонок с новостями на главной странице */
+
+/* Количество колонок с новостями на странице новостей */
+dl.itemLatestNews 
+   {
+     display: block;
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0.5em 0 0.5em 0;
+     padding: 0 0 0 0;
+   }
+/* /Количество колонок с новостями на странице новостей */
+
+/* Количество колонок с товаром на странице скидки */
+dl.itemSpecials 
+   {
+     display: block;
+     width: 48%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+/* /Количество колонок с товаром на странице скидки */
+
+/* Количество колонок с товаром на странице мои данные */
+dl.itemLastViewed 
+   {
+     display: block;
+     width: 98%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: .5em 0 0 0;
+     padding: .5em 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+/* /Количество колонок с товаром на странице мои данные */
+
+/* Информация о заказе, адрес клиента и адрес доставки */
+dl.ordersAddress 
+   {
+     display: block;
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     border-bottom: 1px #e5e5e5 solid;
+   }
+
+dt.ordersAddress 
+   {
+     display: block;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.ordersAddress
+   {
+     display: block;
+     margin: 0 0 0 1em;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Информация о заказе, адрес клиента и адрес доставки */
+
+/* Адресная книга */
+dl.AddressBook 
+   {
+     display: block;
+     width: 49%; /* количество колонок, 48% - товар выводится двумя колонками, т.е. два товара в одной строке, 99% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+
+dt.AddressBook 
+   {
+     display: block;
+     float: left;
+     width: 90px;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBook
+   {
+     display: block;
+     margin: 0 0 0 90px;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dl.AddressBookList 
+   {
+     display: block;
+     width: 49%;
+     float: left;
+     height: auto;
+     margin: 0 0 0 0;
+     padding: 0 0 1em 0;
+   }
+
+dt.AddressBookList 
+   {
+     display: block;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.AddressBookList
+   {
+     display: block;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Адресная книга */
+
+/* Вход */
+dl.Login 
+   {
+     display: block;
+     width: 49%;
+     float: left;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+   }
+
+dt.Login
+   {
+     float: left;
+     display: block;
+     background: transparent;
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     text-align: center;
+   }
+
+dd.Login
+   {
+     display: block;
+     margin: 0 0 0 1em;
+     padding: 0 0 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+/* /Вход */
+
+dt.itemImage 
+   {
+     float: left;
+     display: block;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: center;
+   }
+
+dt.itemNews 
+   {
+     display: none;
+     float: left;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: left;
+   }
+
+dd.itemDescription
+   {
+     display: block;
+     margin: 0 0 0 0;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dd.itemDescriptionPrice
+   {
+     display: block;
+     margin: 1em 0 0 0;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+dd.itemNews
+   {
+     display: block;
+     margin-left: 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+   }
+
+div.clear
+   {
+     clear: both;
+   }
+
+div.navigation
+   {
+     display: block;
+     width: 100%;
+     padding-top: 1em;
+   }
+
+span.right
+   {
+     float: right;
+   }
+
+/* /Вывод товаров */
+
+/* Вывод категорий */
+
+dl.itemCategoriesListing 
+   {
+     width: 33%; /* количество колонок, 50% - товар выводится двумя колонками, т.е. два товара в одной строке, 100% - товар выводится одной колонкой, т.е. один товар в одной строке */ 
+     float: left;
+     height: auto; /* высота блока с товаром, нужно устанавливать обязательно, иначе блоки товаров с картинками и без будут "слипаться" */ 
+     margin: 0 0 0 0;
+     padding: 0 0 0 0;
+     background: transparent;
+   }
+
+dt.itemCategoriesListing 
+   {
+     float: left;
+     height: auto;
+     background: transparent;
+     border-right: 0px #f1f1f6 solid;
+     margin: 0 0 0 0;
+     padding: 5px 5px 0 5px;
+     text-align: center;
+   }
+
+dd.itemCategoriesListing 
+   {
+     margin: 0 1em 0 1em;
+     padding: 0 0;
+     line-height: normal;
+     background: transparent;
+     text-align: center;
+   }
+
+/* /Вывод категорий */
