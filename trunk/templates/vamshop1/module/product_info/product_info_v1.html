@@ -38,6 +38,15 @@
 						</div>
 					</div>
 
+					<div class="inner nobottom product-cart">
+								<label>{$smarty.const.TEXT_PRODUCT_QTY}</label>
+								{$ADD_QTY}
+								<button id="add_to_cart" type="submit" class="btn btn-inverse"><i class="icon-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_IN_CART}</button>
+								{if $KUPI_V_KREDIT_BUTTON}
+								{$KUPI_V_KREDIT_BUTTON}
+								{/if}
+					</div>
+
 					{if $MODULE_product_options !=''}
 					<div class="inner">
 						{$MODULE_product_options}
@@ -49,16 +58,6 @@
 						{$MODULE_graduated_price}
 					</div>
 					{/if}
-
-					<div class="inner nobottom product-cart">
-								<label>{$smarty.const.TEXT_PRODUCT_QTY}</label>
-								{$ADD_QTY}
-								<button id="add_to_cart" type="submit" class="btn btn-inverse"><i class="icon-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_IN_CART}</button>
-								{if $KUPI_V_KREDIT_BUTTON}
-								{$KUPI_V_KREDIT_BUTTON}
-								{/if}
-					</div>
-
 
 					<div class="inner">
 						<a class="iframe" href="{$PRODUCTS_PRINT_LINK}">{#print#}</a>&nbsp;{$PRODUCTS_PRINT}
