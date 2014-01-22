@@ -129,7 +129,6 @@
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-          <!--
           <tr>
             <td colspan="2"><?php echo TEXT_AVAILABLE_PLACEHOLDERS; ?>
           <ul>
@@ -137,7 +136,6 @@
 				<li><?php echo TEXT_ORDER_NR; ?></li>
 				<li><?php echo TEXT_ORDER_LINK; ?></li>
 				<li><?php echo TEXT_ORDER_DATE; ?></li>
-				<li><?php echo TEXT_NOTIFY_COMMENTS; ?></li>
 				<li><?php echo TEXT_ORDER_STATUS; ?></li>
 				<li><?php echo TEXT_DELIVERY_NAME; ?></li>
 				<li><?php echo TEXT_DELIVERY_STREET_ADDRESS; ?></li>
@@ -152,7 +150,6 @@
           </ul>  
           </td>
           </tr>
-          -->
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
