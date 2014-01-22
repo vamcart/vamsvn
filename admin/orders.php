@@ -315,10 +315,39 @@ switch ($_GET['action']) {
 		$oID = vam_db_prepare_input($_GET['oID']);
 		$status = vam_db_prepare_input($_POST['status']);
 		$comments = vam_db_prepare_input($_POST['comments']);
+		
 	//	$order = new order($oID);
 		$order_updated = false;
 		$check_status_query = vam_db_query("select * from ".TABLE_ORDERS." where orders_id = '".vam_db_input($oID)."'");
 		$check_status = vam_db_fetch_array($check_status_query);
+
+				  require_once(DIR_FS_LANGUAGES . $check_status['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
+				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
+				
+				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");
+				      $shipping_method = vam_db_fetch_array($shipping_method_query);
+				
+				  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
+
+				$vamTemplate->assign('PAYMENT_METHOD', $order_payment_text);
+				$vamTemplate->assign('SHIPPING_METHOD', $order_shipping_text);
+
+		$comments = str_replace('{$NAME}', $check_status['customers_name'], $comments);
+		$comments = str_replace('{$ORDER_NR}', $oID, $comments);
+		$comments = str_replace('{$ORDER_LINK}', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'), $comments);
+		$comments = str_replace('{$ORDER_DATE}', vam_date_long($check_status['date_purchased']), $comments);
+		$comments = str_replace('{$ORDER_STATUS}', $orders_status_array[$status], $comments);
+		$comments = str_replace('{$DELIVERY_NAME}', $check_status['delivery_name'], $comments);
+		$comments = str_replace('{$DELIVERY_STREET_ADDRESS}', $check_status['delivery_street_address'], $comments);
+		$comments = str_replace('{$DELIVERY_CITY}', $check_status['delivery_city'], $comments);
+		$comments = str_replace('{$DELIVERY_POSTCODE}', $check_status['delivery_postcode'], $comments);
+		$comments = str_replace('{$DELIVERY_STATE}', $check_status['delivery_state'], $comments);
+		$comments = str_replace('{$DELIVERY_COUNTRY}', $check_status['delivery_country'], $comments);
+		$comments = str_replace('{$CUSTOMERS_TELEPHONE}', $check_status['customers_telephone'], $comments);
+		$comments = str_replace('{$CUSTOMERS_EMAIL_ADDRESS}', $check_status['customers_email_address'], $comments);
+		$comments = str_replace('{$PAYMENT_METHOD}', $order_payment_text, $comments);
+		$comments = str_replace('{$SHIPPING_METHOD}', $order_shipping_text, $comments);
+			
 		if ($check_status['orders_status'] != $status || $comments != '') {
 			vam_db_query("update ".TABLE_ORDERS." set orders_status = '".vam_db_input($status)."', last_modified = now() where orders_id = '".vam_db_input($oID)."'");
 
@@ -354,17 +383,6 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('DELIVERY_COUNTRY', $check_status['delivery_country']);
 				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $check_status['customers_telephone']);
 				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $check_status['customers_email_address']);
-
-				  require_once(DIR_FS_LANGUAGES . $check_status['language'] . '/modules/payment/' . $check_status['payment_class'] .'.php');
-				  $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($check_status['payment_class'])._TEXT_TITLE);
-				
-				      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");
-				      $shipping_method = vam_db_fetch_array($shipping_method_query);
-				
-				  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
-
-				$vamTemplate->assign('PAYMENT_METHOD', $order_payment_text);
-				$vamTemplate->assign('SHIPPING_METHOD', $order_shipping_text);
 
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.html');
 				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$order->info['language'].'/change_order_mail.txt');
