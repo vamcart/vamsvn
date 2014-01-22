@@ -983,6 +983,7 @@ hr.transparent {
 .page-sidebar,
 .sidebar {
   margin-top: 30px;
+  margin-bottom: 5px;
 }
 .page-sidebar .widget,
 .sidebar .widget {
