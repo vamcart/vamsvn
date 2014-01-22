@@ -572,7 +572,7 @@ define('TEXT_CHECKOUT_ALTERNATIVE', 'Оформление заказа');
 define('TEXT_PRODUCT_COMPARE','Сравнить');
 define('TEXT_PRODUCT_FILTER','Фильтровать');
 
-define('TXT_FREE','<span class="Requirement"><strong>бесплатно</strong></span>');
+define('TXT_FREE','бесплатно');
 
 define('PRODUCTS_ORDER_QTY_MIN_TEXT_INFO','Минимум единиц для заказа: ');define('PRODUCTS_ORDER_QTY_MAX_TEXT_INFO','Максимум единиц для заказа: ');
 
