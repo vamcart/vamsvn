@@ -10,7 +10,7 @@
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(shopping_cart.php,v 1.71 2003/02/14); www.oscommerce.com 
+   (c) 2002-2003 osCommerce(shopping_cart.php,v 1.72 2003/02/14); www.oscommerce.com 
    (c) 2003	 nextcommerce (shopping_cart.php,v 1.24 2003/08/17); www.nextcommerce.org
    (c) 2004	 xt:Commerce (shopping_cart.php,v 1.24 2003/08/17); xt-commerce.com
 
