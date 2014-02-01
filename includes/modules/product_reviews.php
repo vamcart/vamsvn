@@ -35,6 +35,9 @@ require_once (DIR_FS_INC.'vam_row_number_format.inc.php');
 require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
 $info->assign('options', $products_options_data);
+
+$module->assign('PRODUCTS_NAME', $product->data['products_name']);
+
 if ($product->getReviewsCount() > 0) {
 
 if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {

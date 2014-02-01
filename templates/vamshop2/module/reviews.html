@@ -2,7 +2,7 @@
 <h1>{#heading_reviews#}</h1>
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
-<div class="pageItem">
+<div class="pageItem" itemprop="review" itemscope itemtype="http://schema.org/Review">
 
 <dl class="itemNewProducts">
 <dt class="itemImage">
@@ -14,19 +14,19 @@
 </dd>
 
 <dd class="itemDescription">
-<span class="bold">{#text_author#}</span> {$module_data.AUTHOR}
+<span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> - <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span>
 </dd>
 
 <dd class="itemDescription">
 <span class="bold">{#text_text#}</span>
 </dd>
 
-<dd class="itemDescription">
+<dd class="itemDescription" itemprop="reviewBody">
 {$module_data.TEXT}
 </dd>
 
 <dd class="itemDescription">
-<span class="bold">{#text_rating#}</span> {$module_data.RATING}
+<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>
 </dd>
 
 </dl>

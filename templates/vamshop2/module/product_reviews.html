@@ -8,8 +8,8 @@
 </p>
 
 {foreach name=aussen item=module_data from=$module_content} 
-<p>
-{$module_data.ID}&nbsp;&nbsp;&nbsp;{$module_data.AUTHOR}&nbsp;&nbsp;&nbsp;{$module_data.RATING}&nbsp;&nbsp;&nbsp;{$module_data.DATE}
+<p itemprop="review" itemscope itemtype="http://schema.org/Review">
+{$module_data.ID}&nbsp;&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>&nbsp;&nbsp;&nbsp;<span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewBody">{$module_data.TEXT}</span>
 </p>
 {/foreach} 
 

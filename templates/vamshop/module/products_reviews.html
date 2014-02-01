@@ -1,18 +1,18 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
-<h1>{#heading_reviews#}</h1>
+<h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
-<div class="pagecontent">
+<div class="pagecontent" itemprop="review" itemscope itemtype="http://schema.org/Review">
 
 <p>
-<span class="bold">{#text_author#}</span> {$module_data.AUTHOR} {$module_data.DATE}
+<span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span>
 </p>
 
 <p>
-<span class="bold">{#text_rating#}</span> {$module_data.RATING}
+<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>
 </p>
 
-<p>
+<p itemprop="reviewBody">
 {$module_data.TEXT}
 </p>
       
