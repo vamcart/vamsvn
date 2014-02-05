@@ -333,7 +333,7 @@ hr.transparent {
 #navigation .login {
   background-color: #ff6633;
   position: absolute;
-  width: 85px;
+  width: 45px;
   top: -70px;
   right: 0;
 }
@@ -503,7 +503,7 @@ hr.transparent {
 @media (max-width: 767px) {
   #navigation .shopping-cart {
     position: absolute;
-    right: 95px;
+    right: 55px;
     top: 0;
   }
 }
@@ -574,7 +574,7 @@ hr.transparent {
 }
 @media (max-width: 767px) {
   #navigation .shopping-cart .cart-dropdown {
-    right: -90px;
+    right: -50px;
   }
 }
 #navigation .shopping-cart .cart-dropdown .title {
