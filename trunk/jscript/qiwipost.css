@@ -1,0 +1,29 @@
+#qiwipost_container { border: 0px solid #cccccc; padding: 15px; margin: 5px 0px 0px 0px; float: none; overflow: hidden; vertical-align: top; }
+img.qiwipost_logo { float: left; margin: 0px 15px 8px 0px !important; width: 50px; }
+a.qiwipost_link { margin-top: 10px; display: block; }
+/* --------------------- */
+.ui-combobox {
+	position: relative;
+	display: inline-block;
+}
+.ui-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* adjust styles for IE 6/7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+.ui-combobox-input {
+	margin: 0;
+	padding: 0.3em;
+}
+.qiwipost_autocomplite { width: 80%; }
+.ui-widget-content-qiwipost {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #DDDDDD;
+    color: #333333;
+}
+div.costmess { font-weight: bold; margin-top: 10px; color: #ff0000; }
