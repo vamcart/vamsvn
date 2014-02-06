@@ -33,6 +33,13 @@ require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 $vamTemplate = new vamTemplate;
 
 $product_info_query = vam_db_query("select * FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = '".(int) $_GET['products_id']."' and pd.products_id = p.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'");
+
+	if (vam_db_num_rows($product_info_query) <= 0) {
+
+	header('HTTP/1.1 404 Not Found');	
+	
+	}		
+
 $product_info = vam_db_fetch_array($product_info_query);
 
 $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
