@@ -32,7 +32,8 @@
       $this->sort_order = MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_YANDEX_MERCHANT_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://money.yandex.ru/eshop.xml';
+      ((MODULE_PAYMENT_YANDEX_MERCHANT_TEST == 'test') ? $this->form_action_url = 'https://demomoney.yandex.ru/eshop.xml' : $this->form_action_url = 'https://money.yandex.ru/eshop.xml');
+      
     }
 
 // class methods
@@ -344,14 +345,15 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
     			$ship_address = $postcode . $city . $street_address;
     			
-      $process_button_string = vam_draw_hidden_field('ShopId', MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID) .
+      $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID) .
                                vam_draw_hidden_field('scid', MODULE_PAYMENT_YANDEX_MERCHANT_SCID) .
-                               vam_draw_hidden_field('Sum', $order_sum) . 
+                               vam_draw_hidden_field('sum', $order_sum) . 
                                vam_draw_hidden_field('customerNumber', $order->customer['id']) .
-                               vam_draw_hidden_field('CustName', $order->customer['firstname'] . ' ' . $order->customer['lastname']) .
-                               vam_draw_hidden_field('CustAddr', $ship_address) .
-                               vam_draw_hidden_field('CustEMail', $order->customer['email_address']) .
-                               vam_draw_hidden_field('OrderDetails', substr($_SESSION['cart_yandex_id'], strpos($_SESSION['cart_yandex_id'], '-')+1));
+                               vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_yandex_id'], strpos($_SESSION['cart_yandex_id'], '-')+1)) .
+                               vam_draw_hidden_field('shopSuccessURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('shopFailURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
+                               vam_draw_hidden_field('cps_phone', $order->customer['telephone']);
 
       return $process_button_string;
     }
@@ -549,8 +551,10 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', '', '6', '4', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', '', '6', '5', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SCID', '', '6', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', '0', '6', '7', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', '', '6', '7', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', '0', '8', '7', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', '0', '6', '9', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'test', '6', '10', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
     }
 
     function remove() {
@@ -558,7 +562,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE');
+      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST');
     }
 
   }
