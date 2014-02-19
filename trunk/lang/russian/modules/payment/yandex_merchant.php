@@ -30,9 +30,13 @@ define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_TITLE' , 'ShopID:');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_DESC' , 'Номер магазина в ЦПП. Выдается ЦПП.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SCID_TITLE' , 'scid:');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SCID_DESC' , 'Номер витрины магазина в ЦПП. Выдается ЦПП.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_TITLE' , 'Секретный ключ');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_TEST_TITLE','Режим работы');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
   
 ?>
