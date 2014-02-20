@@ -17,10 +17,10 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс-деньги');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс-деньги');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс.Деньги');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс-деньги.');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс.Деньги.');
   
 define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс-деньги');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
