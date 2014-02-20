@@ -22,26 +22,46 @@ require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
 // logging
-$fp = fopen('1.log', 'a+');
-$str=date('Y-m-d H:i:s').' - ';
-foreach ($_POST as $vn=>$vv) {
-  $str.=$vn.'='.$vv.';';
-}
+//$fp = fopen('yandex.log', 'a+');
+//$str=date('Y-m-d H:i:s').' - ';
+//foreach ($_POST as $vn=>$vv) {
+  //$str.=$vn.'='.$vv.';';
+//}
 
-fwrite($fp, $str."\n");
-fclose($fp);
-// variables prepearing
-$crc = $_POST['sha1_hash'];
+//fwrite($fp, $str."\n");
+//fclose($fp);
+
+$crc = $_POST['md5'];
 
 $inv_id = $_POST['orderNumber'];
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['amount'].'&'.$_POST['currency'].'&'.$_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY.'&'.$_POST['label']);
+$hash = strtoupper(md5($_POST['action'].';'.$_POST['orderSumAmount'].';'.$_POST['orderSumCurrencyPaycash'].';'.$_POST['orderSumBankPaycash'].';'.$_POST['shopId'].';'.$_POST['invoiceId'].';'.$_POST['customerNumber'].';'.MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY));
+
+if ($_POST['action'] == 'process' or $_POST['action'] == 'checkOrder') {
+if ($hash == $crc) {
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<checkOrderResponse performedDatetime="'.$_POST['requestDatetime'].'"
+                    code="0" invoiceId="'.$_POST['invoiceId'].'"
+                    shopId="'.MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID.'"/>';
+}
+}
+
+if ($_POST['action'] == 'paymentAviso') {
+if ($hash == $crc) {
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<paymentAvisoResponse
+    performedDatetime="'.$_POST['requestDatetime'].'"
+    code="0" invoiceId="'.$_POST['invoiceId'].'"
+    shopId="'.MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID.'"/>';
+}
+}
 
 // checking and handling
+if ($_POST['action'] == 'paymentAviso') {
 if ($hash == $crc) {
-if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
+if (number_format($_POST['orderSumAmount'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
@@ -52,7 +72,7 @@ if (number_format($_POST['amount'],0) == number_format($order->info['total'],0))
                           'comments' => 'Yandex Money accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
-  echo 'OK'.$inv_id;
+}
 }
 }
 
