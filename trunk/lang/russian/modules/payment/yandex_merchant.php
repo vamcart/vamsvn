@@ -38,5 +38,7 @@ define('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_TEST_TITLE','Режим работы');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
   
 ?>

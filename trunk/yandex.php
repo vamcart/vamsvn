@@ -41,15 +41,15 @@ $hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total'],0)) {
-  $sql_data_array = array('orders_status' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID);
+if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
+  $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
   $sql_data_arrax = array('orders_id' => $inv_id,
-                          'orders_status_id' => MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID,
+                          'orders_status_id' => MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'WebMoney accepted this order payment');
+                          'comments' => 'Yandex Money accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
