@@ -350,8 +350,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('sum', $order_sum) . 
                                vam_draw_hidden_field('customerNumber', $order->customer['id']) .
                                vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_yandex_id'], strpos($_SESSION['cart_yandex_id'], '-')+1)) .
-                               vam_draw_hidden_field('shopSuccessURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('shopFailURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
                                vam_draw_hidden_field('cps_phone', $order->customer['telephone']);
 
