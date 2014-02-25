@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс.Деньги');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги (Оплата с кошелька, карточками Visa, MasterCard, Maestro, наличными в терминалах)');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс.Деньги.');
   
