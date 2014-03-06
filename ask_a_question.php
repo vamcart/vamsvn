@@ -146,7 +146,7 @@ $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' =
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : ''))));
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : ''))));
         }
-$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, stripslashes($_POST['message_body'])));
+$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 10, stripslashes($_POST['message_body'])));
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:window.close()">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
@@ -189,7 +189,7 @@ $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' =
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="inputRequirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : ''))));
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="inputRequirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : ''))));
         }
-$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, stripslashes($_POST['message_body'])));
+$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 10, stripslashes($_POST['message_body'])));
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:window.close()">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
