@@ -3628,7 +3628,7 @@ div.CheckoutError
 #load_status_bg .load_status_image {background:url(img/ajax-loader.gif);width:100%; margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}		
 
 #myModal .modal-body {
-	max-height: 800px;
+	max-height: 400px;
 }   
 		         
 /*]]>*/
