@@ -16,7 +16,7 @@
 				<div class="thumbnail big text-center">
 					{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
 					<span class="frame-overlay"></span>
-					<span class="zoom"><i class="fa fa-zoom-in"></i></span>
+					<span class="zoom"><i class="fa fa-search-plus"></i></span>
 					{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
 				</div>
 				<div class="row-fluid small">
@@ -24,7 +24,7 @@
 					<div class="span4 thumbnail">
 						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
 						<span class="frame-overlay"></span>
-						<span class="zoom"><i class="fa fa-zoom-in"></i></span>
+						<span class="zoom"><i class="fa fa-search-plus"></i></span>
 						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
 					</div>
 				{/foreach}
