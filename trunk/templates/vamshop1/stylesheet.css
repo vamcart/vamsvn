@@ -527,7 +527,7 @@ hr.transparent {
   margin: 0;
   float: right;
 }
-#navigation .shopping-cart .cart .amount [class^="icon-"],
+#navigation .shopping-cart .cart .amount [class^="fa fa-"],
 #navigation .shopping-cart .cart .amount [class*=" icon-"] {
   margin-right: 7px;
 }
@@ -864,7 +864,7 @@ hr.transparent {
     padding: 0 20px;
   }
 }
-#footer [class^="icon-"],
+#footer [class^="fa fa-"],
 #footer [class*=" icon-"] {
   color: #ff6633;
 }
