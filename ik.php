@@ -21,6 +21,27 @@ function get_var($name, $default = 'none') {
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
+function ikGetSign($post)
+{
+	$aParams = array();
+	foreach ($post as $key => $value)
+	{
+		if (!preg_match('/ik_/', $key))
+			continue;
+		$aParams[$key] = $value;
+	}
+
+	unset($aParams['ik_sign']);
+
+		$key = MODULE_PAYMENT_IK_SECRET_KEY;
+
+	ksort ($aParams, SORT_STRING);
+	array_push($aParams, $key);
+	$signString = implode(':', $aParams);
+	$sign = base64_encode(md5($signString, true));
+	return $sign;
+}
+
 // logging
 
 //$fp = fopen('ik.log', 'a+');
@@ -32,33 +53,42 @@ require (DIR_WS_CLASSES.'order.php');
 //fwrite($fp, $str."\n");
 //fclose($fp);
 
-// variables prepearing
-$crc = get_var('ik_sign_hash');
+// Проверка id магазина
+if(MODULE_PAYMENT_IK_SHOP_ID !== $ik_co_id)
+	die('error: ik_co_id');
 
-$inv_id = get_var('ik_payment_id');
-$order = new order($inv_id);
-$order_sum = $order->info['total'];
+$sign = ikGetSign($_POST);
 
-$hash_source = $_POST['ik_shop_id'].":".$_POST['ik_payment_amount'].":".$_POST['ik_payment_id'].":".$_POST['ik_paysystem_alias'].":".$_POST['ik_baggage_fields'].":".MODULE_PAYMENT_IK_SECRET_KEY;
-$hash = md5($hash_source);
+if ($ik_sign === $sign && $ik_inv_st == 'success')
+{
+	// данные заказа
+	$order = new order((int)$ik_pm_no);
+	$ikCurrency = (MODULE_PAYMENT_IK_CURRENCY == 'RUB') ? 'RUR' : MODULE_PAYMENT_IK_CURRENCY;
 
-// checking and handling
-if ($_POST['ik_payment_state'] == 'success') {
-if (strtoupper($hash) == strtoupper($crc)) {
-if (number_format($_POST['ik_payment_amount'],0) == number_format($order->info['total'],0)) {
-  $sql_data_array = array('orders_status' => MODULE_PAYMENT_IK_ORDER_STATUS_ID);
-  vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
+	global $vamPrice;
+	$orderTotal = number_format($vamPrice->CalculateCurrEx($order->info['total'], $ikCurrency), 2, '.', '');
 
-  $sql_data_arrax = array('orders_id' => $inv_id,
-                          'orders_status_id' => MODULE_PAYMENT_IK_ORDER_STATUS_ID,
-                          'date_added' => 'now()',
-                          'customer_notified' => '0',
-                          'comments' => 'InterKassa accepted this order payment');
-  vam_db_perform('orders_status_history', $sql_data_arrax);
+	// Проверяем стоимость
+	if($ik_am != $orderTotal OR $ik_am <= 0)
+		die("error: ik_am");
 
-  echo 'OK'.$inv_id;
+	$sql_data_array = array
+	(
+		'orders_status' => MODULE_PAYMENT_IK_ORDER_STATUS_ID
+	);
+	vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".(int)$ik_pm_no."'");
+
+	$sql_data_arrax = array
+	(
+		'orders_id' => (int)$ik_pm_no,
+		'orders_status_id' => MODULE_PAYMENT_IK_ORDER_STATUS_ID,
+		'date_added' => 'now()',
+		'customer_notified' => '0',
+		'comments' => 'InterKassa accepted this order payment '.vam_db_prepare_input($ik_pw_via)
+	);
+	vam_db_perform('orders_status_history', $sql_data_arrax);
+
+	echo 'OK'.$ik_pm_no;
 }
-}
-}
-
-?>
+else
+	die('error: ik_sign or ik_inv_st');
