@@ -27,7 +27,7 @@
 
       if (is_object($order)) $this->update_status();
 
-        $this->form_action_url = 'https://interkassa.com/lib/payment.php';
+        $this->form_action_url = 'https://sci.interkassa.com/';
     }
 
 // class methods
@@ -334,21 +334,35 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       
       $TotalAmount = number_format($vamPrice->CalculateCurrEx($order->info['total'], MODULE_PAYMENT_IK_CURRENCY), 2, '.', '');
 
-      $ik_sign_hash_str = MODULE_PAYMENT_IK_SHOP_ID . ':' . $TotalAmount . ':' . $OrderID . ':' . '' . ':' . vam_session_id() . ':' . MODULE_PAYMENT_IK_SECRET_KEY;
+		$result = array(
+			'ik_am' => $TotalAmount, // Сумма платежа
+			'ik_pm_no' => $OrderID, // Номер заказа
+			'ik_desc' => 'Order-'.$OrderID, // Описание платежа
+			'ik_cur' => MODULE_PAYMENT_IK_CURRENCY, // Валюта платежа
+			'ik_co_id' => MODULE_PAYMENT_IK_SHOP_ID, // Идентификатор кассы
+		);
 
-      $ik_sign_hash = md5($ik_sign_hash_str);
+		// Формируем подпись
+		$result['ik_sign'] = $this->getSign($result);
 
-      $process_button_string = vam_draw_hidden_field('ik_shop_id', MODULE_PAYMENT_IK_SHOP_ID) .
-                               vam_draw_hidden_field('ik_payment_amount', $TotalAmount) .
-                               vam_draw_hidden_field('ik_payment_id', $OrderID) .
-                               vam_draw_hidden_field('ik_payment_desc', 'Order-' . $OrderID) .
-                               vam_draw_hidden_field('ik_paysystem_alias', '') . 
-                               vam_draw_hidden_field('ik_baggage_fields', vam_session_id()) . 
-                               vam_draw_hidden_field('ik_sign_hash', $ik_sign_hash);
-                               
+		$process_button_string = '';
+		foreach ($result as $k => $val)
+		{
+			$process_button_string .= vam_draw_hidden_field($k, $val);
+		}
+		                               
       return $process_button_string;
     }
 
+	private function getSign($aParams)
+	{
+		ksort ($aParams, SORT_STRING);
+		array_push($aParams, MODULE_PAYMENT_IK_SECRET_KEY);
+		$signString = implode(':', $aParams);
+		$sign = base64_encode(md5($signString, true));
+		return $sign;
+	}
+	
     function before_process() {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
       global $$payment;
