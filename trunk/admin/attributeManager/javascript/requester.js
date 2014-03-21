@@ -59,9 +59,8 @@ Requester.prototype.loadURL = function(URL, CGI) {
 	this.resetXMLHR();
 	
 	this.commInterface.open("GET", URL + "?" + CGI);
-	var e=(document.charset||document.characterSet||'ISO-8859-8-i');
+	var e=(document.charset||document.characterSet||'utf-8');
 	this.commInterface.setRequestHeader("Content-Type", "text/html; charset="+e);
-	this.commInterface.setRequestHeader('Accept-Charset',e)
 	this.commInterface.send(null);
 
 	return true;
