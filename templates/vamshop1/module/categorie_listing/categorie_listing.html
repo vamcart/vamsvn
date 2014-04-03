@@ -35,7 +35,7 @@
 <div class="row-fluid featured-categories">
 	<ul class="thumbnails">
 	{foreach name=aussen item=module_data from=$module_content} 
-		<li class="span4 item">
+		<li class="span4 item{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
 			<div class="thumbnail text-center">
 				<a href="{$module_data.CATEGORIES_LINK}" class="image">
 				<img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />
