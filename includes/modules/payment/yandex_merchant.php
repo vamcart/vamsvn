@@ -353,7 +353,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('shopSuccessURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
                                vam_draw_hidden_field('shopFailURL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
-                               vam_draw_hidden_field('cps_phone', $order->customer['telephone']);
+                               vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
+                               vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE);
 
       return $process_button_string;
     }
@@ -556,6 +557,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE', 'PC', '6', '10', 'vam_cfg_select_option(array(\'PC\', \'AC\', \'MC\', \'GP\', \'WM\', \'SB\'), ', now())");
     }
 
     function remove() {
@@ -563,7 +565,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST');
+      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE');
     }
 
   }
