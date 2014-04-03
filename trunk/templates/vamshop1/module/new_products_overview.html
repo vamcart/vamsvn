@@ -5,7 +5,7 @@
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
 		{foreach name=aussen item=module_data from=$module_content}
-		<li class="item span4 {if $smarty.foreach.aussen.index % 3 == 0}first{/if}">
+		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
 			<div class="thumbnail text-center">
 				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /><span class="frame-overlay"></span><span class="price">{$module_data.PRODUCTS_PRICE}</span></a>
 			<div class="inner notop nobottom text-left">
