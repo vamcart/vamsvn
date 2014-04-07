@@ -354,6 +354,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('shopFailURL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
                                vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
+                               vam_draw_hidden_field('cms_name', 'vamshop') . 
                                vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE);
 
       return $process_button_string;
