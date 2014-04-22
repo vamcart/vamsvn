@@ -604,30 +604,6 @@ $vamTemplate = new vamTemplate;
     public function keys() {
       return array('MODULE_PAYMENT_QIWI_REST_STATUS', 'MODULE_PAYMENT_QIWI_REST_ALLOWED', 'MODULE_PAYMENT_QIWI_REST_ID', 'MODULE_PAYMENT_QIWI_REST_API_ID', 'MODULE_PAYMENT_QIWI_REST_NOTIFY_PASS', 'MODULE_PAYMENT_QIWI_REST_SORT_ORDER', 'MODULE_PAYMENT_QIWI_REST_ZONE', 'MODULE_PAYMENT_QIWI_REST_ORDER_STATUS_ID');
     }
-
-	private function sendAnswer($error) {
-		    	$x = '<?xml version="1.0"?>';
-		    	$x .= '<result>';
-		    	$x .= '<result_code>'.$error.'</result_code>';
-		    	$x .= '</result>';
-
-			header ("HTTP/1.1 200 OK");
-			header ("Content-Type: text/xml" , false); 
-			echo($x);
-
-	}
-
-	private function cidr_match($ip, $cidr)
-	{
-	    list($subnet, $mask) = explode('/', $cidr);
-	
-	    if ((ip2long($ip) & ~((1 << (32 - $mask)) - 1) ) == ip2long($subnet))
-	    { 
-	        return true;
-	    }
-	
-	    return false;
-	}
 		
   }
 ?>
