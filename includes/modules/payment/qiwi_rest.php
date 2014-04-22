@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
   class qiwi_rest {
-    var $code, $title, $description, $enabled;
+    var $code, $title, $insert_id, $description, $enabled;
 
 // class constructor
     public function qiwi_rest() {
@@ -32,7 +32,9 @@
       $this->sort_order = MODULE_PAYMENT_QIWI_REST_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_QIWI_REST_STATUS == 'True') ? true : false);
 		
+		//$this->form_action_url = 'https://w.qiwi.com/order/external/main.action?shop='.MODULE_PAYMENT_QIWI_REST_ID.'&transaction='.$insert_id.'&successUrl='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'&failUrl='.vam_href_link(FILENAME_CHECKOUT, '', 'SSL');
 		$this->form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+		
 		
     }
 
