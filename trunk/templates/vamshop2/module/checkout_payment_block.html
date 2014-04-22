@@ -2,11 +2,15 @@
 		{literal}
 			$(document).ready(function() {
 				$("div#qiwi").hide();
+				$("div#qiwi_rest").hide();
 				$("div#schet").hide();
 				$("div#kvitancia").hide();
 				$("div#aviso").hide();
 					$("input#qiwi").click(function (){
 						$("div#qiwi").show();
+					});
+					$("input#qiwi_rest").click(function (){
+						$("div#qiwi_rest").show();
 					});
 					$("input#schet").click(function (){
 						$("div#schet").show();
