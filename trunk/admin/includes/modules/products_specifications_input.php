@@ -28,7 +28,7 @@
                                      and sg2c.categories_id = '" . (int) $current_category_id . "'
                                      and language_id = '" . (int) $_SESSION['languages_id'] . "' 
                                      and s.products_column_name = ''
-                                   order by sd.specification_name
+                                   order by specification_sort_order
                                  ";
       // print $specifications_query_raw . "<br>\n";
       $specifications_query = vam_db_query ($specifications_query_raw);
