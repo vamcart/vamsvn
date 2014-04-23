@@ -94,7 +94,7 @@ if (vam_not_null($get_params_back)) {
 	$get_params_back = $get_params;
 }
 
-$breadcrumb->add(NAVBAR_TITLE_REVIEWS_WRITE, vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params));
+$breadcrumb->add(NAVBAR_TITLE_REVIEWS_WRITE);
 
 $customer_info_query = vam_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
 $customer_info = vam_db_fetch_array($customer_info_query);
