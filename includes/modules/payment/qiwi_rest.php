@@ -393,7 +393,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = vam_draw_hidden_field('kvit_name', $this->name) .
                                vam_draw_hidden_field('qiwi_telephone', $this->phone);
 
-		//vam_redirect('https://w.qiwi.com/order/external/main.action?shop='.MODULE_PAYMENT_QIWI_REST_ID.'&transaction='.substr($_SESSION['cart_qiwi_rest_id'], strpos($_SESSION['cart_qiwi_rest_id'], '-')+1).'&successUrl='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'&failUrl='.vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+		vam_redirect('https://w.qiwi.com/order/external/main.action?shop='.MODULE_PAYMENT_QIWI_REST_ID.'&transaction='.substr($_SESSION['cart_qiwi_rest_id'], strpos($_SESSION['cart_qiwi_rest_id'], '-')+1).'&successUrl='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'&failUrl='.vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 
 
       return $process_button_string;
