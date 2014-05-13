@@ -34,19 +34,19 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT distinct * FROM
+	$featured_products_query = "SELECT * FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f where
 	                                         p.products_id=f.products_id ".$group_check."
 	                                         ".$fsk_lock."
 	                                         and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                         order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
+	                                         group by p.products_id order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')
 		$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT distinct * FROM
+	$featured_products_query = "SELECT * FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
@@ -58,7 +58,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	                                        ".$fsk_lock."
 	                                        and c.parent_id = '".$featured_products_category_id."'
 	                                        and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                        order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
+	                                        group by p.products_id order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
 }
 $row = 0;
 $module_content = array ();
