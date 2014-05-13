@@ -53,6 +53,7 @@ $form_id = 'checkout_address';
 
 ?>
 <script type="text/javascript" src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
+<script type="text/javascript" src="jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="jscript/modified.js"></script>
 <script type="text/javascript"><!--
 
@@ -77,6 +78,8 @@ if (!strstr($PHP_SELF, FILENAME_CHECKOUT) or !strstr($PHP_SELF, FILENAME_CHECKOU
                            
                            
    });
+
+$("#telephone").mask("(999) 999-9999");
    	
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
