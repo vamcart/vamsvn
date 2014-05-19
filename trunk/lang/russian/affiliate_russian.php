@@ -22,7 +22,7 @@
    ---------------------------------------------------------------------------*/
 
 define('BOX_INFORMATION_AFFILIATE', 'Партнёрка');
-define('BOX_AFFILIATE_INFO', 'Информация о партнёрской программе');
+define('BOX_AFFILIATE_INFO', 'Информация');
 define('BOX_AFFILIATE_SUMMARY', 'Общая статистика');
 define('BOX_AFFILIATE_ACCOUNT', 'Изменить данные');
 define('BOX_AFFILIATE_CLICKRATE', 'Клики');
