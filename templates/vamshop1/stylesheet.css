@@ -942,7 +942,6 @@ hr.transparent {
 #footer-menu .privacy li {
   padding: 0 5px 0 0;
   margin: 0 5px 5px 0;
-  border-right: solid 1px #000;
   line-height: 11px;
 }
 #footer-menu .privacy li:last-child {
@@ -951,6 +950,10 @@ hr.transparent {
 #footer-menu .copyright {
   margin-bottom: 0;
   line-height: 16px;
+}
+#footer-menu a {
+  display: block;
+  height: 36px;
 }
 #footer-menu .payment {
   text-align: right;
@@ -1135,16 +1138,25 @@ hr.transparent {
   margin-left: 0;
   color: #999999;
 }
+.widget ul.icons li {
+  float: left;
+  width: 130px;
+  height: 36px;
+  position: relative;
+  text-indent: 0;
+  padding-left: 20px;
+}
 .categories-widget ul.icons li {
   float: left;
   width: 130px;
+  height: 36px;
   position: relative;
   text-indent: 0;
   padding-left: 20px;
 }
 .categories-widget ul.icons li:after {
   content: "\f105";
-  font-family: fontawesome;
+  font-family: "FontAwesome";
   display: block;
   position: absolute;
   left: 3px;
