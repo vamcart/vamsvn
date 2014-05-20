@@ -666,7 +666,7 @@ hr.transparent {
 }
 #breadcrumbs > .container {
   padding: 0 0 10px 0;
-  border-bottom: solid 0px #eeeeee;
+  border-bottom: solid 1px #eeeeee;
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #breadcrumbs > .container {
@@ -691,6 +691,7 @@ hr.transparent {
 #breadcrumbs .breadcrumbs {
   float: left;
   padding-top: 15px;
+  margin: 15px 0 0 0;
   font-size: 11px;
   line-height: 11px;
   color: #000;
@@ -699,6 +700,10 @@ hr.transparent {
   margin: 0 5px;
 }
 #breadcrumbs .breadcrumbs a {
+  display: block;	
+  float: left;
+  height: 36px;
+  padding: 0 5px 0 0;
   font-weight: bold;
   text-decoration: none;
   color: #888888;
