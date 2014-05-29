@@ -118,7 +118,7 @@
       global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
-        $insert_order = false;
+        $insert_order = true;
 
         if (isset($_SESSION['cart_qiwi_rest_id'])) {
           $order_id = substr($_SESSION['cart_qiwi_rest_id'], strpos($_SESSION['cart_qiwi_rest_id'], '-')+1);
