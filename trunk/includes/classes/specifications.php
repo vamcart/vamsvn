@@ -84,7 +84,6 @@
 
       $raw_query_from = " FROM (" . TABLE_PRODUCTS . " p)
 INNER JOIN (" . TABLE_PRODUCTS_TO_CATEGORIES . " p2c)
-INNER JOIN (" . TABLE_PRODUCTS_DESCRIPTION . " pd)
 ON (p.products_id = p2c.products_id)
 INNER JOIN " . TABLE_CATEGORIES . " cat
 ON (cat.categories_id = p2c.categories_id)";
