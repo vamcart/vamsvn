@@ -1315,15 +1315,20 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 				//$contents[] = array('align' => 'center', 'text' => '');
 
   $order_payment = $oInfo->payment_method;
-  
+
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');
   $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
+
+      $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oInfo->orders_id) . "' and class = 'ot_shipping'");
+      $shipping_method = vam_db_fetch_array($shipping_method_query);
+
+  $order_shipping_text = ((substr($shipping_method['title'], -1) == ':') ? substr(strip_tags($shipping_method['title']), 0, -1) : strip_tags($shipping_method['title']));
 
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ORDER_CREATED.' '.vam_date_short($oInfo->date_purchased));
 				if (vam_not_null($oInfo->last_modified))
 					$contents[] = array ('text' => TEXT_DATE_ORDER_LAST_MODIFIED.' '.vam_date_short($oInfo->last_modified));
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_PAYMENT_METHOD.' '.$order_payment_text);
-				$contents[] = array ('text' => '<br />'.ENTRY_SHIPPING_METHOD.' '.$oInfo->shipping_method);
+				$contents[] = array ('text' => '<br />'.ENTRY_SHIPPING_METHOD.' '.$order_shipping_text);
 				// elari added to display product list for selected order
 				$order = new order($oInfo->orders_id);
 				$contents[] = array ('text' => $order->customer['email_address']);
