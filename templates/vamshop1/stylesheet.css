@@ -2170,32 +2170,33 @@ hr.transparent {
 /* Back to Top
 /* ========================================================================== */
 #toTop {
-  background: rgba(0, 0, 0, 0.7) url('img/up.png') no-repeat scroll 50% 50%;
-  color: #ffffff;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: 1000;
-  display: none;
-  overflow: hidden;
-  height: 50px;
-  width: 50px;
-  text-decoration: none;
-  text-indent: -999px;
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	overflow:hidden;
+	width:51px;
+	height:51px;
+	border:none;
+	text-indent:100%;
+	background:url(img/up.png) no-repeat left top;
 }
-#toTop:active,
-#toTop:focus {
-  outline: none;
-  background-color: #ff6633;
-}
+
 #toTopHover {
-  background: #ff6633;
-  display: block;
-  overflow: hidden;
-  float: left;
-  height: 50px;
-  width: 50px;
-  opacity: 0;
+	background:url(img/up.png) no-repeat left -51px;
+	width:51px;
+	height:51px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+	outline:none;
 }
 /* ========================================================================== */
 /* Helpful Classes
