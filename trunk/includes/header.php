@@ -106,17 +106,16 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/lightbox/jquery.lightbox.css" media="screen" />
-<script type="text/javascript" src="jscript/jquery/plugins/lightbox/jquery.lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/colorbox/colorbox.css" media="screen" />
+<script type="text/javascript" src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
+<?php
+if (file_exists('jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-'.$_SESSION['language_code'].'.js')) {
+?>
+<script type="text/javascript" src="jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-ru.js"></script>
+<?php } ?>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("a.lightbox").lightBox({
-    fixedNavigation:true,
-      imageLoading: "jscript/jquery/plugins/lightbox/img/lightbox-ico-loading.gif",
-      imageBtnClose: "jscript/jquery/plugins/lightbox/img/lightbox-btn-close.gif",
-      imageBtnPrev: "jscript/jquery/plugins/lightbox/img/lightbox-btn-prev.gif",
-      imageBtnNext: "jscript/jquery/plugins/lightbox/img/lightbox-btn-next.gif",      
-    });
+  $(".lightbox").colorbox({rel:'lightbox'});
 });
 </script>
 <?php
