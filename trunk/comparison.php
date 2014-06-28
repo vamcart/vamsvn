@@ -22,9 +22,6 @@ $vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
-
-$breadcrumb->add(TEXT_COMPARE, vam_href_link(FILENAME_COMPARISON));
-
 require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
