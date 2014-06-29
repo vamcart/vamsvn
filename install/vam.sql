@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------------------
-#  $Id: vamshop.sql,v 1.62 2014/11/07 20:24:16 VaM Exp $
+#  $Id: vamshop.sql,v 1.62 2014/06/07 20:24:16 VaM Exp $
 #
 #  VamShop - open source ecommerce solution
 #  http://vamshop.com 
@@ -2836,7 +2836,7 @@ INSERT INTO zones VALUES ('115', '216', 'Балкан', 'Балкан');
 INSERT INTO zones VALUES ('116', '216', 'Дашховуз', 'Дашховуз');
 INSERT INTO zones VALUES ('117', '216', 'Лебап', 'Лебап');
 INSERT INTO zones VALUES ('118', '216', 'Мары', 'Мары');
-INSERT INTO zones VALUES ('119', '220', 'Республика Крым', 'Республика Крым');
+INSERT INTO zones VALUES ('119', '176', 'Республика Крым', 'Республика Крым');
 INSERT INTO zones VALUES ('120', '220', 'Винницкая область', 'Винницкая область');
 INSERT INTO zones VALUES ('121', '220', 'Волынская область', 'Волынская область');
 INSERT INTO zones VALUES ('122', '220', 'Днепропетровская область', 'Днепропетровская область');
@@ -3107,6 +3107,7 @@ INSERT INTO zones VALUES ('384','223','WI','Wisconsin');
 INSERT INTO zones VALUES ('385','223','WY','Wyoming');
 
 INSERT INTO zones VALUES ('386', '115', 'Бишкек', 'Бишкек');
+INSERT INTO zones VALUES ('387', '176', 'Севастополь', 'Севастополь');
 
 #
 # Dumping data for table `payment_moneybookers_countries`
