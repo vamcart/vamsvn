@@ -70,10 +70,10 @@
 {/if}
 
 <p>
-<a data-toggle="modal" data-target="#myModal" target="_blank" href="{$PRODUCTS_PRINT_LINK}">{#print#}</a>&nbsp;{$PRODUCTS_PRINT}
+<a class="iframe" target="_blank" href="{$PRODUCTS_PRINT_LINK}">{#print#}</a>&nbsp;{$PRODUCTS_PRINT}
 </p>
 <p>
-<a data-toggle="modal" data-target="#myModal" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
+<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
 </p>
 
 {if $SHIPPING_NAME}
@@ -209,16 +209,3 @@
 {if $MODULE_also_purchased != ''}
 {$MODULE_also_purchased}
 {/if}
-
-<div id="myModal" class="modal hide fade">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> × </button>
-        <h3 id="myModalLabel">{$smarty.const.STORE_NAME}</h3>
-    </div>
-    <div class="modal-body">        
-        <p></p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">{$smarty.const.TEXT_CLOSE_WINDOW}</button>
-    </div>
-</div>
