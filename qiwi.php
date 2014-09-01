@@ -18,6 +18,16 @@ include('includes/application_top.php');
 
 require_once(DIR_WS_CLASSES . 'nusoap/nusoap.php');
         
+// logging
+//$fp = fopen('11.log', 'a+');
+//$str=date('Y-m-d H:i:s').' - ';
+//foreach ($_POST as $vn=>$vv) {
+  //$str.=$vn.'='.$vv.';';
+//}
+
+//fwrite($fp, $str."\n");
+//fclose($fp);        
+        
 $server = new nusoap_server;
 $server->register('updateBill');
 $server->service($HTTP_RAW_POST_DATA);
