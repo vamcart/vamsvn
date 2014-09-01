@@ -21,8 +21,10 @@ function get_var($name, $default = 'none') {
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
+header("Content-type: text/xml");
+
 // logging
-//$fp = fopen('qiwi.log', 'a+');
+//$fp = fopen('1.log', 'a+');
 //$str=date('Y-m-d H:i:s').' - ';
 //foreach ($_POST as $vn=>$vv) {
   //$str.=$vn.'='.$vv.';';
