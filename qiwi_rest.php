@@ -40,7 +40,7 @@ echo '<?xml version="1.0"?><result><result_code>0</result_code></result>';
 
 // checking and handling
 if ($_POST['status'] == 'paid') {
-if (number_format((float)$_POST['amount'],0) == number_format((float)$order->info['total'],0)) {
+if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_QIWI_REST_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
