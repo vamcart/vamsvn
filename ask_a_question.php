@@ -85,11 +85,6 @@ $product_info = vam_db_fetch_array($product_info_query);
 		$messageStack->add('ask_a_question', ENTRY_EMAIL_ADDRESS_ERROR);
 	} 
 
-	if (($_POST['captcha'] != $_SESSION['vvcode'])) {
-		$error = true;
-        $messageStack->add('ask_a_question', TEXT_WRONG_CODE);
-	}
-
 	if ($message == '') {
 		$error = true;
 		$messageStack->add('ask_a_question', TEXT_MESSAGE_ERROR);
@@ -132,8 +127,6 @@ $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
-$vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha', 'name="captcha" '));    
-$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6" id="captcha"', 'text', false));
 
         if (isset($_SESSION['customer_id'])) { 
 		//-> registered user********************************************************
@@ -174,8 +167,6 @@ $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
-$vamTemplate->assign('CAPTCHA_IMG', vam_image(HTTP_SERVER . DIR_WS_CATALOG . FILENAME_DISPLAY_CAPTCHA, 'captcha', '', '', 'name="captcha" '));    
-$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" maxlength="6" id="captcha"', 'text', false));
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
         if (isset($_SESSION['customer_id'])) { 
