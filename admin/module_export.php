@@ -17,6 +17,8 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
+ini_set("max_execution_time", "1200");
+
   require('includes/application_top.php');
 
   // include needed functions (for modules)
@@ -43,7 +45,7 @@
     if (count($_POST['configuration'])) {
       while (list($key, $value) = each($_POST['configuration'])) {
         vam_db_query("update " . TABLE_CONFIGURATION . " set configuration_value = '" . $value . "' where configuration_key = '" . $key . "'");
-        if (substr($key,'FILE')) $file=$value;
+        //if (substr($key,'FILE')) $file=$value;
       }
     }
     }
