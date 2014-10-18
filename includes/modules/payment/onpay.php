@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_ONPAY_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_ONPAY_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'http://secure.onpay.ru/pay/'.MODULE_PAYMENT_ONPAY_ID;
+        $this->form_action_url = 'https://secure.onpay.ru/pay/'.MODULE_PAYMENT_ONPAY_ID;
     }
 
 // class methods
