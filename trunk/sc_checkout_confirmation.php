@@ -171,7 +171,42 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
       vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
       $customer_id = vam_db_insert_id();
+      $customers_id = $customer_id;
 
+   	  	$extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
+    	  while($extra_fields = vam_db_fetch_array($extra_fields_query))
+				{
+				  if(isset($_POST['fields_' . $extra_fields['fields_id']])){
+            $sql_data_array = array('customers_id' => (int)$customers_id,
+                              'fields_id' => $extra_fields['fields_id'],
+                              'value' => $_POST['fields_' . $extra_fields['fields_id']]);
+       		}
+       		else
+					{
+					  $sql_data_array = array('customers_id' => (int)$customers_id,
+                              'fields_id' => $extra_fields['fields_id'],
+                              'value' => '');
+						$is_add = false;
+						for($i = 1; $i <= $_POST['fields_' . $extra_fields['fields_id'] . '_total']; $i++)
+						{
+							if(isset($_POST['fields_' . $extra_fields['fields_id'] . '_' . $i]))
+							{
+							  if($is_add)
+							  {
+                  $sql_data_array['value'] .= "\n";
+								}
+								else
+								{
+                  $is_add = true;
+								}
+              	$sql_data_array['value'] .= $_POST['fields_' . $extra_fields['fields_id'] . '_' . $i];
+							}
+						}
+					}
+
+					vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
+      	}
+      	
       $sql_data_array = array('customers_id' => $customer_id,
                               'entry_firstname' => $_SESSION['sc_customers_firstname'], 
                               'entry_secondname' => $_SESSION['sc_customers_secondname'], 
