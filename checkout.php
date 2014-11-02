@@ -1096,7 +1096,13 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 			}
      	}
 		
-		
+   	  	$extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
+    	  while($extra_fields = vam_db_fetch_array($extra_fields_query))
+				{
+				  if(isset($_POST['fields_' . $extra_fields['fields_id']])){
+            $_SESSION['fields_' . $extra_fields['fields_id']] = $_POST['fields_' . $extra_fields['fields_id']];
+       		}
+       		}		
 		
 		//payment data only if different
 		if ($payment_address_selected != '1') { //is unchecked - so payment address is different

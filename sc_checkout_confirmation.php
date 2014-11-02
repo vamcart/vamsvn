@@ -176,10 +176,10 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
    	  	$extra_fields_query = vam_db_query("select ce.fields_id from " . TABLE_EXTRA_FIELDS . " ce where ce.fields_status=1 ");
     	  while($extra_fields = vam_db_fetch_array($extra_fields_query))
 				{
-				  if(isset($_POST['fields_' . $extra_fields['fields_id']])){
+				  if(isset($_SESSION['fields_' . $extra_fields['fields_id']])){
             $sql_data_array = array('customers_id' => (int)$customers_id,
                               'fields_id' => $extra_fields['fields_id'],
-                              'value' => $_POST['fields_' . $extra_fields['fields_id']]);
+                              'value' => $_SESSION['fields_' . $extra_fields['fields_id']]);
        		}
        		else
 					{
@@ -187,9 +187,9 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
                               'fields_id' => $extra_fields['fields_id'],
                               'value' => '');
 						$is_add = false;
-						for($i = 1; $i <= $_POST['fields_' . $extra_fields['fields_id'] . '_total']; $i++)
+						for($i = 1; $i <= $_SESSION['fields_' . $extra_fields['fields_id'] . '_total']; $i++)
 						{
-							if(isset($_POST['fields_' . $extra_fields['fields_id'] . '_' . $i]))
+							if(isset($_SESSION['fields_' . $extra_fields['fields_id'] . '_' . $i]))
 							{
 							  if($is_add)
 							  {
@@ -199,7 +199,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
 								{
                   $is_add = true;
 								}
-              	$sql_data_array['value'] .= $_POST['fields_' . $extra_fields['fields_id'] . '_' . $i];
+              	$sql_data_array['value'] .= $_SESSION['fields_' . $extra_fields['fields_id'] . '_' . $i];
 							}
 						}
 					}
