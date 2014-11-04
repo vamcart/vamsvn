@@ -710,9 +710,9 @@ vam_count_cart();
 			$SEF_parameter = '&article='.vam_cleanName($article['articles_name']);
 
       if (isset($_GET['authors_id'])) {
-        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'authors_id=' . $_GET['authors_id'] . '&articles_id=' . $_GET['articles_id'] . $SEF_parameter));
+        $breadcrumb->add($article['articles_name']);
       } else {
-        $breadcrumb->add($article['articles_name'], vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $_GET['articles_id'] . $SEF_parameter));
+        $breadcrumb->add($article['articles_name']);
       }
     }
   }
@@ -731,9 +731,9 @@ vam_count_cart();
 			$SEF_parameter = '&headline='.vam_cleanName($news['headline']);
 			
       if (isset($_GET['news_id'])) {
-        $breadcrumb->add($news['headline'], vam_href_link(FILENAME_NEWS, 'news_id='.$news['news_id'] . $SEF_parameter, 'NONSSL'));
+        $breadcrumb->add($news['headline']);
       } else {
-        $breadcrumb->add($news['headline'], vam_href_link(FILENAME_NEWS, 'news_id='.$news['news_id'] . $SEF_parameter, 'NONSSL'));
+        $breadcrumb->add($news['headline']);
       }
     }
   }
