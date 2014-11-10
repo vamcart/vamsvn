@@ -155,7 +155,7 @@ function manufacturers_list(){
 		   }
 		}
 		if($_POST['product_new_startpage']){
-		   foreach($_POST['product_new_startpage'] as $id => $new_to_xml) {
+		   foreach($_POST['product_new_startpage'] as $id => $new_startpage) {
 			 if ($_POST['product_new_startpage'][$id] != $_POST['product_old_startpage'][$id]) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
@@ -177,7 +177,7 @@ function manufacturers_list(){
 			 if (trim($_POST['product_new_image'][$id]) != trim($_POST['product_old_image'][$id])) {
 			   $count_update++;
 			   $item_updated[$id] = 'updated';
-			   vam_db_query("UPDATE " . TABLE_PRODUCTS_DESCRIPTION . " SET products_image='" . $new_image . "' WHERE products_id=$id");
+			   vam_db_query("UPDATE " . TABLE_PRODUCTS . " SET products_image='" . $new_image . "' WHERE products_id=$id");
 			 }
 		   }
 		}
