@@ -519,6 +519,7 @@ if (is_array($array)) {
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
 				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 
 				'PRODUCTS_IMAGE_POPUP' => $this->productImage($array['products_image'], 'popup'), 
+				'PRODUCTS_IMAGE_ORIGINAL' => $this->productImage($array['products_image'], 'original'), 
 				'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($array['products_id'], $array['products_name'])), 
 				'PRODUCTS_PRICE' => $products_price['formated'], 
 				'PRODUCTS_PRICE_PLAIN' => $products_price['plain'], 
@@ -550,6 +551,9 @@ if (is_array($array)) {
 				break;
 			case 'popup' :
 				$path = DIR_WS_POPUP_IMAGES;
+				break;
+			case 'original' :
+				$path = DIR_WS_ORIGINAL_IMAGES;
 				break;
 		}
 
