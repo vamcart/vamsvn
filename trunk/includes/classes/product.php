@@ -517,6 +517,8 @@ if (is_array($array)) {
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
+				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 
+				'PRODUCTS_IMAGE_POPUP' => $this->productImage($array['products_image'], 'popup'), 
 				'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($array['products_id'], $array['products_name'])), 
 				'PRODUCTS_PRICE' => $products_price['formated'], 
 				'PRODUCTS_PRICE_PLAIN' => $products_price['plain'], 
