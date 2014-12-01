@@ -24,7 +24,7 @@ $sql = "
     WHERE
          status = '1'
          and language = '" . (int)$_SESSION['languages_id'] . "'
-    ORDER BY date_added DESC
+    ORDER BY news_id DESC
     LIMIT 5
     ";
 
