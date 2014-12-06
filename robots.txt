@@ -60,6 +60,7 @@ Disallow: /*q=*
 Disallow: /*on_page=*
 Disallow: /*cPath
 Disallow: /*manufacturers_id
+Disallow: /*filter_id
 Disallow: /manu/
 Disallow: /index.php/manu
 Disallow: /index.html?products_id

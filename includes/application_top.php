@@ -38,6 +38,10 @@ define('DEBUG', false);
 
 define('CFG_TIME_ZONE', 'Europe/Moscow');
 
+define('RTN_404', '1');
+define('RTN_410', '2');
+define('RTN_GOOD', '100');
+
 // set the level of error reporting
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 //  error_reporting(E_ALL);
@@ -785,5 +789,9 @@ if($_SERVER['REQUEST_URI'] !='/' && $PHP_SELF == '/index.php' && !$_GET ){
 			header("Location: /");
 			exit();
 }
-	  
+ 
+if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILENAME_PRODUCT_REVIEWS) !== FALSE) {
+    require('includes/modules/headerstatushandler.php');
+}
+
 ?>

@@ -14,8 +14,6 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-//  header('HTTP/1.0 404 Not Found');
-
    $module= new vamTemplate;
    $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 

@@ -247,5 +247,48 @@
 
       return addslashes($string);
     }
-  }  
-?>
+  }
+  
+  function IsvalidCatOrMan($cID, $mID, $languages_id) {
+    
+      if (isset($mID)) {
+          $db_query = vam_db_query("select 1 from " . TABLE_MANUFACTURERS_INFO . "  where manufacturers_id = '" . (int)$mID . "' and languages_id = " . (int)$languages_id);
+          return vam_db_num_rows($db_query);
+      }
+
+      if (isset($cID)) {
+          $db_query = vam_db_query("select 1 from " . TABLE_CATEGORIES . "  where categories_id = '" . (int)$cID . "' and categories_status = 1");
+          return vam_db_num_rows($db_query);
+      }
+
+      return 1;  //neither category or manufacturer so return good
+  }
+
+  function IsProduct($pID, $pageType = FILENAME_PRODUCT_INFO, $languages_id) {
+      if (strpos($pageType, FILENAME_PRODUCT_INFO) !== FALSE) {
+          $db_query = vam_db_query("select p.products_status as status from " . TABLE_PRODUCTS . " p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on p.products_id = pd.products_id where p.products_id = '" . (int)$pID . "' and pd.language_id = " . (int)$languages_id);
+      } else { //it's a review page
+          $db_query = vam_db_query("select 1 from " . TABLE_PRODUCTS . " p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on p.products_id = pd.products_id where p.products_status = 1 and p.products_id = '" . (int)$pID . "' and pd.language_id = " . (int)$languages_id);
+          if (vam_db_num_rows($db_query)) {
+              $db_query = vam_db_query("select * from " . TABLE_REVIEWS . " r left join " . TABLE_REVIEWS_DESCRIPTION . " rd on r.reviews_id = rd.reviews_id where r.products_id = '" . (int)$pID . "' and rd.languages_id = " . (int)$languages_id);
+              
+              if (vam_db_num_rows($db_query) == 0 && $pageType == FILENAME_PRODUCT_REVIEWS) {
+                  return RTN_GOOD;  //a review doesn't exist but allow page to load so one can be written
+              }
+          } else {
+              return RTN_410;  //doesn't exist so marks as not found for good
+          }
+      }
+
+      if (vam_db_num_rows($db_query) == 0) {
+          return RTN_410;  //doesn't exist so marks as not found for good
+      }
+
+      $db = vam_db_fetch_array($db_query);
+
+      if ($db['status'] == 0) {
+          return RTN_404;  //in database and may be shown again
+      }
+      
+      return RTN_GOOD;  //product was found and can be shown
+  }    
