@@ -77,8 +77,14 @@
       if (vam_not_null($parameters) && (substr($parameters, -1) != '&')) $parameters .= '&';
 
       // previous button - not displayed on first page
-      if ($this->current_page_number > 1) $display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
-
+		if ($this->current_page_number > 1) { 
+			if(($this->current_page_number - 1) == '1'){
+				$display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+			} else {
+				$display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+			}
+		} 
+		
       // check if number_of_pages > $max_page_links
       $cur_window_num = intval($this->current_page_number / $max_page_links);
       if ($this->current_page_number % $max_page_links) $cur_window_num++;
@@ -91,10 +97,15 @@
 
       // page nn button
       for ($jump_to_page = 1 + (($cur_window_num - 1) * $max_page_links); ($jump_to_page <= ($cur_window_num * $max_page_links)) && ($jump_to_page <= $this->number_of_pages); $jump_to_page++) {
+       $count = ++$i;
         if ($jump_to_page == $this->current_page_number) {
           $display_links_string .= '&nbsp;<b>' . $jump_to_page . '</b>&nbsp;';
         } else {
-          $display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
+			if($count == '1'){
+				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
+			} else {
+				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
+			}
         }
       }
 
