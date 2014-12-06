@@ -52,6 +52,11 @@ if (isset ($cPath) && vam_not_null($cPath)) {
 	}
 }
 
+if (($category_depth != 'top' || ($category_depth == 'top' && isset($_GET['manufacturers_id'])) )&& ! IsvalidCatOrMan($current_category_id, $_GET['manufacturers_id'], $_SESSION['languages_id'])) {
+    header("HTTP/1.1 410 Gone");
+    header("Status: 410 Gone");
+}
+
 require (DIR_WS_INCLUDES.'header.php');
 
 include (DIR_WS_MODULES.'default.php');
