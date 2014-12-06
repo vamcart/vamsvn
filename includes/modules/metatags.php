@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: metatags.php 1140 2007-02-06 20:41:56 VaM $   
+   $Id: metatags.php 1140 2007-02-06 20:41:57 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -97,8 +97,12 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 
 
 		}		
+
+if ($_GET['page']!=''){ $page= ' - ' . TEXT_PAGE_IN_CAT;$page.= ' '.$_GET['page']; }
+else {$page= '';}
+
 ?>
-<title><?php echo $categories_meta['categories_meta_title'] . $mName . ' - ' . TITLE; ?></title>
+<title><?php echo $categories_meta['categories_meta_title'] . $mName . $page . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo $categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <?php
