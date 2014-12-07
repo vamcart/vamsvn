@@ -66,7 +66,9 @@ Disallow: /index.php/manu
 Disallow: /index.html?products_id
 Disallow: /cookie_usage.php
 Disallow: /index.php/products_id
-Disallow: /*sort/
+Disallow: /*sort/*
+Disallow: /*sort=*
+Disallow: /*direction=*
 Disallow: /*action*
 Disallow: /*on_page/
 Disallow: /index.php?action=buy_now
