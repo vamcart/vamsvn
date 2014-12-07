@@ -689,6 +689,7 @@ vam_count_cart();
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&category='.vam_cleanName($topics['topics_name']);
 
+        if ($current_topic_id == $tPath_array[$i] && (isset($_GET['articles_id']) or isset($_GET['authors_id'])))
         $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath_array[$i].$SEF_parameter));
       } else {
         break;
