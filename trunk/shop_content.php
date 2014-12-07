@@ -68,7 +68,7 @@ $shop_content_sub_pages_query = vam_db_query("SELECT
 
   $vamTemplate->assign('sub_pages_content',$sub_pages_content);
 
-$breadcrumb->add($shop_content_data['content_title']);
+//$breadcrumb->add($shop_content_data['content_title']);
 
 if ($_GET['coID'] != 7) {
 	require (DIR_WS_INCLUDES.'header.php');
