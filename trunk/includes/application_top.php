@@ -540,8 +540,11 @@ if (isset ($cPath_array)) {
 			$categories = vam_db_fetch_array($categories_query,true);
 
             if ($i < $n-1){
-                        $breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));}else {
-                if ($product->isProduct()) {$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));} else {$breadcrumb->add($categories['categories_name']);}
+                        $breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));
+                        }else {
+                if ($product->isProduct()) {$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));} else {
+                	//$breadcrumb->add($categories['categories_name']);
+                	}
                 }
 
 		} else {
