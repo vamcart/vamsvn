@@ -59,8 +59,8 @@ Disallow: /*action=*
 Disallow: /*q=*
 Disallow: /*on_page=*
 Disallow: /*cPath
-Disallow: /*manufacturers_id
-Disallow: /*filter_id
+Disallow: /*manufacturers_id*
+Disallow: /*filter_id*
 Disallow: /manu/
 Disallow: /index.php/manu
 Disallow: /index.html?products_id
@@ -72,9 +72,11 @@ Disallow: /*direction=*
 Disallow: /*action*
 Disallow: /*on_page/
 Disallow: /index.php?action=buy_now
+Disallow: /*authors_id*
 Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
 Disallow: /products_filter.php  
 Disallow: /faq.php
 Disallow: /vam_rss2_info.php
+Disallow: /popup_content.php
 
