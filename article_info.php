@@ -30,8 +30,6 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
 require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
-require (DIR_WS_INCLUDES.'header.php');
-
   $article_check_query = "select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
   $article_check_query = vamDBquery($article_check_query);
   $article_check = vam_db_fetch_array($article_check_query, true);
@@ -68,6 +66,8 @@ include (DIR_WS_MODULES.FILENAME_ARTICLES_XSELL);
    header("HTTP/1.1 404 Not Found");
 
 }
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;

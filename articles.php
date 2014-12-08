@@ -74,8 +74,6 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
 	$vamTemplate->assign('TOPICS_DESCRIPTION', $topic['topics_description']);
    }    
              
-require (DIR_WS_INCLUDES.'header.php');
-
   if ($topic_depth == 'articles' || isset($_GET['authors_id'])) {
 
 // show the articles of a specified author
@@ -158,6 +156,8 @@ if ($articles_split->number_of_rows > 0) {
    header("HTTP/1.1 404 Not Found");
 
 }
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
