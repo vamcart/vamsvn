@@ -65,6 +65,8 @@ include (DIR_WS_MODULES.FILENAME_ARTICLES_XSELL);
 
 	$vamTemplate->assign('no_article', 'true');
 
+   header("HTTP/1.1 404 Not Found");
+
 }
 
 $vamTemplate->assign('language', $_SESSION['language']);

@@ -155,6 +155,8 @@ if ($articles_split->number_of_rows > 0) {
 
 	$vamTemplate->assign('no_articles', 'true');
 
+   header("HTTP/1.1 404 Not Found");
+
 }
 
 $vamTemplate->assign('language', $_SESSION['language']);
