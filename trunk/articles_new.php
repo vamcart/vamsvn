@@ -32,8 +32,6 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
 $breadcrumb->add(BOX_NEW_ARTICLES, vam_href_link(FILENAME_ARTICLES_NEW));
 
-require (DIR_WS_INCLUDES.'header.php');
-
   $articles_new_array = array();
   $articles_new_query_raw = "select a.articles_id, a.sort_order, a.articles_date_added, ad.articles_name, ad.articles_head_desc_tag, au.authors_id, au.authors_name, td.topics_id, td.topics_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t left join " . TABLE_TOPICS_DESCRIPTION . " td on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int) $_SESSION['languages_id'] . "' and td.language_id = '" . (int) $_SESSION['languages_id'] . "' and a.articles_date_added > SUBDATE(now( ), INTERVAL '" . NEW_ARTICLES_DAYS_DISPLAY . "' DAY) order by a.articles_date_added";
 
@@ -86,6 +84,8 @@ if ($articles_new_split->number_of_rows > 0) {
    header("HTTP/1.1 404 Not Found");
 
 }
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
