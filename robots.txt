@@ -75,3 +75,6 @@ Disallow: /index.php?action=buy_now
 Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
 Disallow: /products_filter.php  
+Disallow: /faq.php
+Disallow: /vam_rss2_info.php
+

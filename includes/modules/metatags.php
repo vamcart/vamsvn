@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: metatags.php 1140 2007-02-06 20:41:57 VaM $   
+   $Id: metatags.php 1140 2007-02-06 20:41:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -229,6 +229,16 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <title><?php echo $authors_meta['authors_name'] . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_REVIEWS)):
+
+?>
+<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' - ' . TITLE; ?></title>
+<meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
 <?php
 
     break;
