@@ -770,6 +770,8 @@ echo $domain . preg_replace( $search, $replace, $string ); // merges the variabl
 
 $url = vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array ('page', 'info', 'x', 'y')));
 
+if ($_GET['cat']) {
+
 $listing_sql = "select p.products_fsk18, p.products_shippingtime, p.products_model, p.products_ean, pd.products_name, m.manufacturers_name, p.products_quantity, p.products_image, p.products_weight, pd.products_short_description, pd.products_description, p.products_id, p.manufacturers_id, p.products_price, p.products_vpe, p.products_vpe_status, p.products_vpe_value, p.products_discount_allowed, p.products_tax_class_id from products_description pd, products_to_categories p2c, products p left join manufacturers m on p.manufacturers_id = m.manufacturers_id left join specials s on p.products_id = s.products_id where p.products_status = '1' and p.products_id = p2c.products_id and pd.products_id = p2c.products_id and pd.language_id = '1' and p2c.categories_id = '".$_GET['cat']."' ORDER BY p.products_price DESC";
 $max_result = MAX_DISPLAY_SEARCH_RESULTS;
 $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], $max_result, 'p.products_id');
@@ -781,6 +783,7 @@ $end_page_url = $url.'?page='.$number_of_pages;
 			header("Location: $end_page_url");
 			exit();
 	  }
+}
 	  
 if(trim($_GET['page']) == '1' && $url != ''){
 			header("HTTP/1.1 301 Moved Permanently");
