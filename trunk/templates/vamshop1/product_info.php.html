@@ -65,6 +65,18 @@
 </div>
 <!-- end: Main Menu -->
 
+{if $navtrail}
+<!-- start: Page header / Breadcrumbs -->
+<div id="breadcrumbs">
+	<div class="container">
+		<div class="breadcrumbs">
+			{$navtrail}
+		</div>
+	</div>
+</div>
+<!-- end: Page header / Breadcrumbs -->
+{/if}
+
 <!-- start: Container -->
 <div id="container">
 	<div class="container">
@@ -72,23 +84,75 @@
 		<div class="row-fluid">
 
 			<!-- start: Page section -->
-			<section class="span9 page-sidebar pull-right">
+			<section class="span12 page-sidebar pull-right">
 	
 			{$main_content}
 
 			</section>
 			<!-- end: Page section -->
 
-		<!-- start: Sidebar -->
-		<aside class="span3 sidebar pull-left">
-
-			{$box_CONTENT}
-
-		</aside>
-		<!-- end: Sidebar -->
-
 		</div>
 
 	</div>
 </div>
 <!-- end: Container -->
+
+<!-- start: Footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span3 clearfix">
+				<h3 class="widget-title">{#heading_infobox#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_CONTENT_PULL}
+					</ul>
+
+				</div>
+			</div>
+			<div class="span3 clearfix">
+				<h3 class="widget-title">{#heading_news#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_LATESTNEWS_DROPDOWN}
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="span6 clearfix">
+				<h3 class="widget-title">{#heading_articles_new#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_ARTICLESNEW_DROPDOWN}
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- end: Footer -->
+
+<!-- start: Footer menu -->
+<section id="footer-menu">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span6">
+				<ul class="privacy inline">
+					<li><a href="about_us.html">{#text_about_us#}</a></li>
+					<li><a href="contact_us.html">{#text_contact_us#}</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+
+	{if $BANNER}<div class="text-center">{$BANNER}<br /><br /></div>{/if}
+
+	<div class="text-center"><a href="vam_rss2_info.php"><img src="images/rss.png" alt="RSS" /></a></div>
+</section>
+<!-- end: Footer menu -->
