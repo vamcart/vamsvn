@@ -10,6 +10,8 @@
 
 {$FORM_ACTION}
 
+		<h2 itemprop="name">{$PRODUCTS_NAME}</h2>              
+
 		<div class="row-fluid">
 			<!-- start: Product image -->
 			<div class="span6 product-images">
@@ -33,12 +35,9 @@
 			<!-- end: Product image -->			<!-- start: Product title -->
 				<div class="span6 product-info">
 
-					<div class="inner product-title">
-						<div class="row-fluid">
-							<div class="span8 title"><h1 itemprop="name">{$PRODUCTS_NAME}</h1></div>
-							<div class="span4 price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span itemprop="price">{$PRODUCTS_PRICE}</span></div>
-						</div>
-					</div>
+					<br />
+					<div class="description" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price" itemprop="price">{$PRODUCTS_PRICE}</span></div>
+					<br />
 
 					<div class="inner nobottom product-cart">
 								<label>{$smarty.const.TEXT_PRODUCT_QTY}</label>
