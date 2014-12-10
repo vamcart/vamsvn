@@ -79,4 +79,3 @@ Disallow: /products_filter.php
 Disallow: /faq.php
 Disallow: /vam_rss2_info.php
 Disallow: /print_product_info.php
-
