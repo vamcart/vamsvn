@@ -3186,3 +3186,88 @@ dd.itemCategoriesListing
 #myModal .modal-body {
 	max-height: 400px;
 }   
+
+.thumbnail .label {
+  position: absolute;
+  background-color: #ff6633;
+  color: #fff;
+  right: 0;
+  padding: 0 15px 0 15px;
+  margin: 0 right;
+  top: 8%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: -20px;
+  margin-top: -20px;
+  border-radius: 0px;
+}
+
+.thumbnail .label.new {
+  background-color: #0081c2;
+}
+
+.thumbnail .label.hit {
+  background-color: #d91414;
+}
+
+.thumbnail .label.sale {
+  background-color: #00b600;
+}
+
+.thumbnail .label.html {
+  background-color: transparent;
+}
+.thumbnail .price {
+  color: #ff6633;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.thumbnail .old-price {
+  color: gray;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.thumbnail .save {
+  color: #ff6633;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.description .price {
+  color: #ff6633;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.description .old-price {
+  color: gray;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.description .save {
+  color: #ff6633;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 5;
+  clear: both;
+}
+.rating {
+  background-color: transparent;
+  color: #ff6633;
+  right: 0;
+  padding: 0 5px 0 0;
+  font-size: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
