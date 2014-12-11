@@ -480,9 +480,9 @@
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru" target="_blank">' . BOX_SUPPORT_SITE . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/manual/" target="_blank">' . HEADER_TITLE_DOCS . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum/forum/26-faq/" target="_blank">' . BOX_SUPPORT_FAQ . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://vamshop.ru/forum/" target="_blank">' . BOX_SUPPORT_FORUM . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/" target="_blank">' . HEADER_TITLE_DOCS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://forum.vamshop.ru/forum/26-faq/" target="_blank">' . BOX_SUPPORT_FAQ . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<dd><a href="http://forum.vamshop.ru/" target="_blank">' . BOX_SUPPORT_FORUM . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['languages'] == '0')
