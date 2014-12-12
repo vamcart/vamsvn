@@ -45,6 +45,7 @@ define('TITLE', 'Админка - '. PROJECT_VERSION .' - '.STORE_NAME);
 define('HEADER_TITLE_TOP', 'Администрирование');
 define('HEADER_TITLE_SUPPORT_SITE', 'Сайт поддержки');
 define('HEADER_TITLE_DOCS', 'Документация');
+define('HEADER_TITLE_ASK_A_QUESTION', 'Задать вопрос');
 define('HEADER_TITLE_ONLINE_CATALOG', 'Магазин');
 define('HEADER_TITLE_ADMINISTRATION', 'Администрация');
 
