@@ -176,6 +176,7 @@ $tracking_code .= '
 
   ga(\'create\', \'' . GOOGLE_CONVERSION_ID . '\', \'auto\');
   ga(\'send\', \'pageview\');
+  ga(\'require\', \'displayfeatures\');  
   ga(\'require\', \'ecommerce\', \'ecommerce.js\');
 
   ga(\'ecommerce:addTransaction\', {
