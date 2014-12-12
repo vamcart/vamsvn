@@ -23,6 +23,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', '<?php echo GOOGLE_CONVERSION_ID; ?>', 'auto');
+  ga('require', 'displayfeatures');  
   ga('send', 'pageview');
 
 </script>
