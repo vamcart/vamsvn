@@ -506,6 +506,7 @@ CREATE TABLE `admin_access` (
   `products_specifications` int(1) NOT NULL default '0',
   `attributeManager` int(1) NOT NULL default '0',
   `answer_templates` int(1) NOT NULL default '0',
+  `product_labels` int(1) NOT NULL default '0',
   PRIMARY KEY  (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -1200,6 +1201,7 @@ CREATE TABLE products (
   product_template varchar (64),
   options_template varchar (64),
   manufacturers_id int NULL,
+  label_id int NULL,
   products_ordered int NOT NULL default '0',
   products_fsk18 int(1) NOT NULL DEFAULT '0',
   products_vpe int(11) NOT NULL,
@@ -1216,15 +1218,15 @@ CREATE TABLE products (
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products` VALUES
-(1, '', 0, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html'),
-(2, '', 0, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html'),
-(3, '', 0, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html'),
-(4, '', 0, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html'),
-(5, '', 0, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html'),
-(6, '', 0, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html'),
-(7, '', 0, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html'),
-(8, '', 0, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html'),
-(9, '', 0, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html');
+(1, '', 0, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html'),
+(2, '', 0, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html'),
+(3, '', 0, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html'),
+(4, '', 0, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 1, 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html'),
+(5, '', 0, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html'),
+(6, '', 0, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html'),
+(7, '', 0, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 1, 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html'),
+(8, '', 0, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 2, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html'),
+(9, '', 0, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html');
 
 
 DROP TABLE IF EXISTS products_attributes;
@@ -1952,8 +1954,8 @@ INSERT INTO address_format VALUES (3, '$firstname $secondname $lastname$cr$stree
 INSERT INTO address_format VALUES (4, '$firstname $secondname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
 INSERT INTO address_format VALUES (5, '$firstname $secondname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
 
-INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT  INTO admin_access VALUES ( 'groups', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 4, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 # configuration_group_id 1
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('STORE_NAME', 'VamShop',  1, 1, NULL, '', NULL, NULL);
@@ -3807,3 +3809,20 @@ INSERT INTO `products_specifications` VALUES
 (99, 9, 14, 1, '4 ГБ'),
 (100, 9, 15, 1, '121,20 x 62,70 x 9,79 мм'),
 (96, 9, 11, 1, '4in 800 x 480');
+
+DROP TABLE IF EXISTS product_labels;
+CREATE TABLE `product_labels` (
+  `id` int(10) auto_increment,
+  `default` tinyint(4),
+  `name` varchar(255) collate utf8_unicode_ci,
+  `alias` varchar(255) collate utf8_unicode_ci,
+  `html` varchar(255) collate utf8_unicode_ci,
+  `active` tinyint(4) default '1',
+  `sort_order` int(3),
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `product_labels` (`id`, `default`, `name`, `alias`, `html`, `active`, `sort_order`) VALUES 
+(1, 1, 'Новинка', 'new', '', 1, 1),
+(2, 0, 'Хит', 'hit', '', 1, 2),
+(3, 0, 'Распродажа', 'sale', '', 1, 3);
