@@ -235,6 +235,8 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $listing_sql = "select DISTINCT p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
+                                  p.label_id,
+                                  p.label_id,
                                   pd.products_name,
                                   p.products_ean,
                                   p.products_price,
@@ -271,6 +273,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $listing_sql = "select p.products_fsk18,
                             p.products_shippingtime,
                             p.products_model,
+                            p.label_id,
                             p.products_ean,
                             pd.products_name,
                             p.products_id,
@@ -323,6 +326,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $listing_sql = "select p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
+                                  p.label_id,
                                   p.products_ean,
                                   pd.products_name,
                                   p.products_id,
@@ -375,6 +379,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $listing_sql = "select p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
+                                  p.label_id,
                                   p.products_ean,
                                   pd.products_name,
                                   m.manufacturers_name,
@@ -406,12 +411,12 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
   // optional Product List Filter
   if (PRODUCT_LIST_FILTER > 0) {
   if (isset ($_GET['manufacturers_id'])) {
-    $filterlist_sql = "select distinct p.manufacturers_id, c.categories_id as id, cd.categories_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where p.products_status = '1' and c.categories_status = '1' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id and p2c.categories_id = cd.categories_id and cd.language_id = '".(int) $_SESSION['languages_id']."' and p.manufacturers_id = '".(int) $_GET['manufacturers_id']."' order by cd.categories_name";
+    $filterlist_sql = "select distinct p.manufacturers_id, p.label_id, c.categories_id as id, cd.categories_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where p.products_status = '1' and c.categories_status = '1' and p.products_id = p2c.products_id and p2c.categories_id = c.categories_id and p2c.categories_id = cd.categories_id and cd.language_id = '".(int) $_SESSION['languages_id']."' and p.manufacturers_id = '".(int) $_GET['manufacturers_id']."' order by cd.categories_name";
   } else {
     if (PRODUCT_LIST_RECURSIVE == 'true') {
-    $filterlist_sql = "select distinct p.manufacturers_id, m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c,".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."') order by m.manufacturers_name";
+    $filterlist_sql = "select distinct p.manufacturers_id, p.label_id, m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c,".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and (p2c.categories_id = '".$current_category_id."' AND p2c.categories_id = c.categories_id OR p2c.categories_id = c.categories_id AND c.parent_id = '".$current_category_id."') order by m.manufacturers_name";
     } else {
-    $filterlist_sql = "select distinct m.manufacturers_id as id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
+    $filterlist_sql = "select distinct m.manufacturers_id as id, p.label_id, m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id and p2c.categories_id = '".$current_category_id."' order by m.manufacturers_name";
     }
   }
   $filterlist_query = vamDBquery($filterlist_sql);
