@@ -112,6 +112,7 @@ define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Дата доступности:');
 define('TEXT_PRODUCT_AVAILABLE', 'Активен');
 define('TEXT_PRODUCT_NOT_AVAILABLE', 'Неактивен');
 define('TEXT_PRODUCTS_MANUFACTURER', 'Производитель:');
+define('TEXT_PRODUCTS_LABEL', 'Ярлык товара:');
 define('TEXT_PRODUCTS_NAME', 'Название товара:');
 define('TEXT_PRODUCTS_DESCRIPTION', 'Описание товара:');
 define('TEXT_PRODUCTS_QUANTITY', 'Количество товара:');
