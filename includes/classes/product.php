@@ -173,6 +173,7 @@ class product {
 		$orders_query = "select
 														                                  p.products_fsk18,
 														                                  p.products_id,
+														                                  p.label_id,
 														                                  p.products_price,
 														                                  p.products_quantity,
 														                                  p.products_tax_class_id,
