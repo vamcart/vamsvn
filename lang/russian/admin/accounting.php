@@ -118,5 +118,6 @@ define('ACCESS_EDIT_ORDERS_AJAX','Админка - Заказы - Редакто
 define('ACCESS_PRODUCTS_SPECIFICATIONS','Админка - Каталог - Спецификации товаров');
 define('ACCESS_ATTRIBUTEMANAGER','Админка - Каталог - Установка атрибутов при создании/редактировании товара');
 define('ACCESS_ANSWER_TEMPLATES', 'Админка - Настройки - Шаблоны ответов');
+define('ACCESS_PRODUCT_LABELS', 'Админка - Настройки - Ярлыки товара');
 
 ?>
