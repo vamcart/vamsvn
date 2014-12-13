@@ -138,4 +138,6 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_SPECIFICATIONS_VALUES_DESCRIPTION', 'specification_values_description');
 // End Products Specifications
   
+  define('TABLE_PRODUCT_LABELS', 'product_labels');
+  
 ?>
