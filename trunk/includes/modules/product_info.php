@@ -27,6 +27,7 @@
 require_once (DIR_FS_INC.'vam_check_categories_status.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
+require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
 require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
@@ -91,6 +92,11 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
 			$info->assign('PRODUCTS_VPE', $vamPrice->Format($products_price['plain'] * (1 / $product->data['products_vpe_value']), true).TXT_PER.vam_get_vpe_name($product->data['products_vpe']));
 		$info->assign('PRODUCTS_ID', $product->data['products_id']);
+		if ($vamPrice->CheckSpecial($product->data['products_id']) > 0) {
+		$info->assign('PRODUCTS_SPECIAL', 100-($vamPrice->CheckSpecial($product->data['products_id'])*100/$vamPrice->GetPprice($product->data['products_id'])));
+		}
+		$info->assign('LABEL_ID', $product->data['label_id']);
+		$info->assign('PRODUCT_LABEL', vam_get_label_name($product->data['label_id']));
 		$info->assign('PRODUCTS_NAME', vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')));
 		if ($_SESSION['customers_status']['customers_status_show_price'] != 0) {
 			// price incl tax

@@ -232,6 +232,7 @@ class product {
 				$cross_query = "select p.products_fsk18,
 																														 p.products_tax_class_id,
 																								                                                 p.products_id,
+																								                                                 p.label_id,
 																								                                                 p.products_image,
 																								                                                 p.products_quantity,
 																								                                                 pd.products_name,
@@ -283,6 +284,7 @@ class product {
 			$cross_query = vamDBquery("select p.products_fsk18,
 																						 p.products_tax_class_id,
 																                                                 p.products_id,
+																                                                 p.label_id,
 																                                                 p.products_image,
 																                                                 p.products_quantity,
 																                                                 pd.products_name,
@@ -343,6 +345,7 @@ class product {
 				$cross_query = "select p.products_fsk18,
 																														 p.products_tax_class_id,
 																								                                                 p.products_id,
+																								                                                 p.label_id,
 																								                                                 p.products_image,
 																								                                                 pd.products_name,
 																														 						pd.products_short_description,
@@ -462,6 +465,21 @@ class product {
 		return;
 
 	}
+
+	function getLabelText($product, $label_id) {
+
+		require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
+
+		if (!is_array($product))
+			$product = $this->data;
+
+		if ($product['label_id'] > 0) {
+			return vam_get_label_name($label_id);
+		}
+
+		return;
+
+	}
 	
 	function buildDataArray(&$array,$image='thumbnail') {
 		global $vamPrice,$main;
@@ -506,7 +524,14 @@ if (is_array($array)) {
   );
   
   }
-		
+
+$products_special = null;
+
+if ($vamPrice->CheckSpecial($array['products_id']) > 0) {
+$products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vamPrice->GetPprice($array['products_id']));
+}
+
+
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		      'PRODUCTS_MODEL'=>$array['products_model'],
 		      'PRODUCTS_WEIGHT'=>$array['products_weight'],
@@ -516,12 +541,14 @@ if (is_array($array)) {
 				'EXTRA_FIELDS'=>$extra_fields_data,
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
+				'PRODUCTS_LABEL' => $this->getLabelText($array, $array['label_id']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
 				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 
 				'PRODUCTS_IMAGE_POPUP' => $this->productImage($array['products_image'], 'popup'), 
 				'PRODUCTS_IMAGE_ORIGINAL' => $this->productImage($array['products_image'], 'original'), 
 				'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($array['products_id'], $array['products_name'])), 
 				'PRODUCTS_PRICE' => $products_price['formated'], 
+				'PRODUCTS_SPECIAL' => $products_special, 
 				'PRODUCTS_PRICE_PLAIN' => $products_price['plain'], 
 				'PRODUCTS_TAX_INFO' => $main->getTaxInfo($tax_rate), 
 				'PRODUCTS_SHIPPING_LINK' => $main->getShippingLink(), 

@@ -37,6 +37,7 @@ if (GROUP_CHECK == 'true') {
 	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 }
 $featured_query_raw = "select p.products_id,
+                                p.label_id,
                                 pd.products_name,
                                 pd.products_short_description,
                                 p.products_price,
