@@ -133,6 +133,7 @@ if (ACTIVATE_GIFT_SYSTEM=='true') {
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['campaigns'] == '1')) echo '<a href="' . vam_href_link(FILENAME_CAMPAIGNS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CAMPAIGNS . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['cross_sell_groups'] == '1')) echo '<a href="' . vam_href_link(FILENAME_XSELL_GROUPS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ORDERS_XSELL_GROUP . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['answer_templates'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ANSWER_TEMPLATES . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_labels'] == '1')) echo '<a href="' . vam_href_link(FILENAME_PRODUCT_LABELS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_PRODUCT_LABELS . '</a><br>';
 
   require(DIR_WS_INCLUDES . 'affiliate_column_left.php');
  

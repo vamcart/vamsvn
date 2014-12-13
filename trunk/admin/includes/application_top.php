@@ -635,4 +635,7 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('FILENAME_ANSWER_TEMPLATES', 'answer_templates.php');
   define('TABLE_ANSWER_TEMPLATES', 'answer_templates');
 
+  define('FILENAME_PRODUCT_LABELS', 'product_labels.php');
+  define('TABLE_PRODUCT_LABELS', 'product_labels');
+
 ?>
