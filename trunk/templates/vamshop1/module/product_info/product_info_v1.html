@@ -16,8 +16,10 @@
 			<!-- start: Product image -->
 			<div class="span6 product-images">
 				<div class="thumbnail big text-center">
+					{if $PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$PRODUCTS_SPECIAL|round}%</span></div>{/if}
 					{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
 					<span class="frame-overlay"></span>
+					{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
 					<span class="zoom"><i class="fa fa-search-plus"></i></span>
 					{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
 				</div>
