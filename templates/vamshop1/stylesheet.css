@@ -1427,40 +1427,33 @@ hr.transparent {
   background-color: #ff6633;
 }
 .shop-products .thumbnail {
-  border: none;
+  border: solid 1px #eeeeee;
   padding: 0;
   margin-bottom: 15px;
   overflow: hidden;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+	}
+
+.shop-products .thumbnail .discount {
+  position: absolute;
+  left: -30px;
+  padding: 10px 15px 10px 50px;
+  background-color: #ff6633;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 15;
 }
 
 .shop-products .thumbnail .image {
   overflow: hidden;
   position: relative;
   display: block;
-  -webkit-border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-top-left-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-topleft: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 6px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 .shop-products .thumbnail .image img {
   -webkit-transition: all 0.3s ease-out;
@@ -1841,39 +1834,33 @@ hr.transparent {
   background-color: #ff6633;
 }
 .featured-products .thumbnail {
-  border: none;
+  border: solid 1px #eeeeee;
   padding: 0;
   margin-bottom: 15px;
   overflow: hidden;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+	}
+
+.featured-products .thumbnail .discount {
+  position: absolute;
+  left: -30px;
+  padding: 10px 15px 10px 50px;
+  background-color: #ff6633;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 15;
 }
+
 .featured-products .thumbnail .image {
   overflow: hidden;
   position: relative;
   display: block;
-  -webkit-border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-top-left-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-topleft: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 6px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 .featured-products .thumbnail .image img {
   -webkit-transition: all 0.3s ease-out;
@@ -3270,4 +3257,16 @@ dd.itemCategoriesListing
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
+}
+
+.product-images .thumbnail .discount {
+  position: absolute;
+  left: -30px;
+  padding: 10px 15px 10px 15px;
+  margin-left: 25px;
+  background-color: #ff6633;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 15;
 }
