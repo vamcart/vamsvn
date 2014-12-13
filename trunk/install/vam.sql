@@ -1218,7 +1218,7 @@ CREATE TABLE products (
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products` VALUES
-(1, '', 0, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html'),
+(1, '', 0, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 3, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html'),
 (2, '', 0, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html'),
 (3, '', 0, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html'),
 (4, '', 0, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.000', 1, 0, 'default', 'default', 0, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html'),
@@ -1458,6 +1458,12 @@ CREATE TABLE specials (
   KEY idx_products_id (products_id),
   KEY PRODUCTS_ID_INDEX (products_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT INTO `specials` (`specials_id`, `products_id`, `specials_quantity`, `specials_new_products_price`, `specials_date_added`, `specials_last_modified`, `expires_date`, `date_status_change`, `status`) VALUES
+(1, 7, 100000, 14399.1000, '2014-12-13 19:52:41', '2014-12-13 20:54:33', '0000-00-00 00:00:00', NULL, 1),
+(2, 6, 100000, 5599.2000, '2014-12-13 20:50:50', '2014-12-13 20:54:37', '0000-00-00 00:00:00', NULL, 1),
+(3, 3, 100000, 21249.1500, '2014-12-13 20:54:29', NULL, '0000-00-00 00:00:00', NULL, 1),
+(4, 1, 100000, 25499.1500, '2014-12-13 20:55:18', NULL, '0000-00-00 00:00:00', NULL, 1);
 
 drop table if exists special_category;
 create table special_category (

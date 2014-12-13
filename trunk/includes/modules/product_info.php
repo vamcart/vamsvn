@@ -27,7 +27,6 @@
 require_once (DIR_FS_INC.'vam_check_categories_status.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
-require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 
 require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
