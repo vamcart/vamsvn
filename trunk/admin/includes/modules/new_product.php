@@ -76,6 +76,12 @@ while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
         $manufacturers_array[] = array ('id' => $manufacturers['manufacturers_id'], 'text' => $manufacturers['manufacturers_name']);
 }
 
+$labels_array = array (array ('id' => '', 'text' => TEXT_NONE));
+$labels_query = vam_db_query("select id, name from ".TABLE_PRODUCT_LABELS." order by sort_order asc");
+while ($labels = vam_db_fetch_array($labels_query)) {
+        $labels_array[] = array ('id' => $labels['id'], 'text' => $labels['name']);
+}
+
 $vpe_array = array (array ('id' => '', 'text' => TEXT_NONE));
 $vpe_query = vam_db_query("select products_vpe_id, products_vpe_name from ".TABLE_PRODUCTS_VPE." WHERE language_id='".$_SESSION['languages_id']."' order by products_vpe_name");
 while ($vpe = vam_db_fetch_array($vpe_query)) {
@@ -282,6 +288,10 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?>&nbsp;<a href="<?php echo vam_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_LABEL; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('label_id', $labels_array, $pInfo->label_id); ?>&nbsp;<a href="<?php echo vam_href_link(FILENAME_PRODUCT_LABELS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_FSK18; ?></td>
