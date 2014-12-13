@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: products_new.php 1292 2007-02-06 19:20:03 VaM $
+   $Id: specials.php 1292 2007-02-06 19:20:03 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -10,65 +10,35 @@
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(products_new.php,v 1.25 2003/05/27); www.oscommerce.com 
-   (c) 2003	 nextcommerce (products_new.php,v 1.16 2003/08/18); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (products_new.php,v 1.16 2003/08/18); xt-commerce.com
-
-   Released under the GNU General Public License 
-   -----------------------------------------------------------------------------------------
-   Third Party contributions:
-   Enable_Disable_Categories 1.3        	Autor: Mikel Williams | mikel@ladykatcostumes.com
+   (c) 2002-2003 osCommerce(specials.php,v 1.47 2003/05/27); www.oscommerce.com 
+   (c) 2003	 nextcommerce (specials.php,v 1.12 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (specials.php,v 1.12 2003/08/17); xt-commerce.com
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
-// create smarty elements
 $vamTemplate = new vamTemplate;
-$vamTemplate->assign('language', $_SESSION['language']);
 // include boxes
-require (DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes.php');
-// include needed function
+require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
-require_once (DIR_FS_INC . 'vam_date_long.inc.php');
-require_once (DIR_FS_INC . 'vam_get_vpe_name.inc.php');
+require_once (DIR_FS_INC.'vam_get_short_description.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_PRODUCTS_NEW, vam_href_link(FILENAME_PRODUCTS_NEW));
+$breadcrumb->add(NAVBAR_TITLE_PRODUCTS_NEW);
 
-require (DIR_WS_INCLUDES . 'header.php');
+require (DIR_WS_INCLUDES.'header.php');
 
-$rebuild = false;
-
-// set cache ID
-if (!CacheCheck()) {
-	$cache = false;
-	$vamTemplate->caching = 0;
-} else {
-	$cache = true;
-	$vamTemplate->caching = 1;
-	$vamTemplate->cache_lifetime = CACHE_LIFETIME;
-	$vamTemplate->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'] . $_SESSION['customers_status']['customers_status_id'] . $_SESSION['currency'] . $_GET['page'];
+//fsk18 lock
+$fsk_lock = '';
+if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+	$fsk_lock = ' and p.products_fsk18!=1';
 }
-
-if (!$vamTemplate->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id) || !$cache) {
-	$vamTemplate->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
-	$rebuild = true;
-
-	$products_new_array = array ();
-	$fsk_lock = '';
-	if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
-		$fsk_lock = ' and p.products_fsk18!=1';
-	}
-	if (GROUP_CHECK == 'true') {
-		$group_check = " and p.group_permission_" . $_SESSION['customers_status']['customers_status_id'] . "=1 ";
-	}
-	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
-		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
-		$days = " and p.products_date_added > '" . $date_new_products . "' ";
-	}
+if (GROUP_CHECK == 'true') {
+	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+}
 	$products_new_query_raw = "select distinct
 	                                    p.products_id,
+	                                    p.label_id,
 	                                    p.products_fsk18,
 	                                    pd.products_name,
 	                                    pd.products_short_description,
@@ -100,41 +70,28 @@ if (!$vamTemplate->is_cached(CURRENT_TEMPLATE . '/module/new_products_overview.h
 	                                    order
 	                                    by
 	                                    p.products_date_added DESC ";
+$products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW);
 
-	$products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW, 'p.products_id');
+$module_content = '';
+$row = 0;
+$products_new_query = vam_db_query($products_new_split->sql_query);
+while ($products_new = vam_db_fetch_array($products_new_query)) {
+	$module_content[] = $product->buildDataArray($products_new);
+}
 
-	if (($products_new_split->number_of_rows > 0)) { 
-	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
-	$vamTemplate->assign('NAVIGATION_BAR_PAGES', $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
+if (($products_new_split->number_of_rows > 0)) {
+	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVBAR_PAGES', $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
 
 }
 
-	$module_content = '';
-	if ($products_new_split->number_of_rows > 0) {
-		$products_new = vam_db_query($products_new_split->sql_query);
-		while ($products_data = vam_db_fetch_array($products_new)) {
-			$module_content[] = $product->buildDataArray($products_data);
+$vamTemplate->assign('language', $_SESSION['language']);
+$vamTemplate->assign('module_content', $module_content);
+$vamTemplate->caching = 0;
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/new_products_overview.html');
 
-		}
-	} else {
-		$vamTemplate->assign('ERROR', TEXT_NO_NEW_PRODUCTS);
-	}
-
-}
-
-if (!$cache || $rebuild) {
-	if (count($module_content) > 0) {
-		$vamTemplate->assign('module_content', $module_content);
-		if ($rebuild)
-			$vamTemplate->clear_cache(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
-		$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
-	}
-} else {
-	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE . '/module/new_products_overview.html', $cache_id);
-}
-
+$vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
-
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCTS_NEW.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCTS_NEW.'.html' : CURRENT_TEMPLATE.'/index.html');
