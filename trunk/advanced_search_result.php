@@ -165,6 +165,7 @@ if ($error == 1 && $keyerror != 1) {
 	//build query
 	$select_str = "SELECT distinct
 	                  p.products_id,
+	                  p.label_id,
 	                  p.products_price,
 	                  p.products_model,
 	                  p.products_ean,
