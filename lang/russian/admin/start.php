@@ -43,17 +43,25 @@
   define('REFFERING_HOST','Referring Host:');
   define('ENTRY_PAGE','Entry Page:');
   define('HOURLY_TRAFFIC_SUMMARY','Hourly Traffic Summary');
-    define('WEB_BROWSER_SUMMARY','Web Browser Summary');
-    define('OPERATING_SYSTEM_SUMMARY','Operatin System Summary');
-    define('TOP_REFERRERS','Top 10 Referrers');
-    define('TOP_HOSTS','Top Ten Hosts');
-    define('LIST_ALL','List all');    
-    define('SEARCH_ENGINE_SUMMARY','Search Engine Summary');
-    define('SEARCH_ENGINE_SUMMARY_TEXT',' ( Percentage is based on total visits referred from search engines. )');
-    define('SEARCH_QUERY_SUMMARY','Search Query Summary');
-    define('SEARCH_QUERY_SUMMARY_TEXT',' ) ( Percentage is based on total search query strings logged. )');
-    define('REFERRING_URL','Reffering Url');
-    define('HITS','Hits');
-    define('PERCENTAGE','Percentage');
-    define('HOST','Host');
+  define('WEB_BROWSER_SUMMARY','Web Browser Summary');
+  define('OPERATING_SYSTEM_SUMMARY','Operatin System Summary');
+  define('TOP_REFERRERS','Top 10 Referrers');
+  define('TOP_HOSTS','Top Ten Hosts');
+  define('LIST_ALL','List all');    
+  define('SEARCH_ENGINE_SUMMARY','Search Engine Summary');
+  define('SEARCH_ENGINE_SUMMARY_TEXT',' ( Percentage is based on total visits referred from search engines. )');
+  define('SEARCH_QUERY_SUMMARY','Search Query Summary');
+  define('SEARCH_QUERY_SUMMARY_TEXT',' ) ( Percentage is based on total search query strings logged. )');
+  define('REFERRING_URL','Reffering Url');
+  define('HITS','Hits');
+  define('PERCENTAGE','Percentage');
+  define('HOST','Host');
+
+  define('TEXT_SUMMARY_VAMSHOP_NEWS','Новости VamShop');
+  define('TEXT_SUMMARY_TOTAL_ORDERS','Всего заказов');
+  define('TEXT_SUMMARY_TOTAL_SALES','Сумма продаж');
+  define('TEXT_SUMMARY_TOTAL_CUSTOMERS','Всего покупателей');
+  define('TEXT_SUMMARY_PENDING_ORDERS','Новых заказов');
+
+
 ?>
