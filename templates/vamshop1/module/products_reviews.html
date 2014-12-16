@@ -1,5 +1,10 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
 <h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
+<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+	<div class="span8 title">
+	{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING}</span>
+	</div>	
+</div>
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
 <div class="pagecontent" itemprop="review" itemscope itemtype="http://schema.org/Review">
@@ -8,10 +13,10 @@
 <span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE|date_format:"%Y-%m-%d"}</span>
 </p>
 
-<meta itemprop="itemReviewed" content="{$content_name}">
+<meta itemprop="itemReviewed" content="{$PRODUCTS_NAME}">
 
 <p>
-<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>
+<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING_TXT}</span></span> {$module_data.RATING}
 </p>
 
 <p itemprop="reviewBody">

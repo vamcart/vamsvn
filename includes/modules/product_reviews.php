@@ -38,6 +38,9 @@ $info->assign('options', $products_options_data);
 
 $module->assign('PRODUCTS_NAME', $product->data['products_name']);
 
+$module->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
+$module->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
+
 if ($product->getReviewsCount() > 0) {
 
 if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {

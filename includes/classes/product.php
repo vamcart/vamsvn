@@ -77,6 +77,20 @@ class product {
 
 	/**
 	 * 
+	 * Query for reviews rating
+	 * 
+	 */
+
+	function getReviewsRating() {
+		$reviews_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+		$reviews = vam_db_fetch_array($reviews_query);
+		if ($reviews['total'] > 0 && $reviews['rating'] > 0) {
+		return $reviews['rating']/$reviews['total'];
+		}
+	}
+
+	/**
+	 * 
 	 * Query for reviews count
 	 * 
 	 */

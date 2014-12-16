@@ -26,7 +26,7 @@
 				<div class="row-fluid small">
 				{foreach name=mo_pic item=img_values from=$mo_img}
 					<div class="span4 thumbnail text-center">
-						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
+						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" itemprop="image" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
 						<span class="frame-overlay"></span>
 						<span class="zoom"><i class="fa fa-search-plus"></i></span>
 						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
@@ -38,7 +38,7 @@
 				<div class="span6 product-info">
 
 					<br />
-					<div class="description" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price" itemprop="price">{$PRODUCTS_PRICE}</span><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
+					<div class="description" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price">{$PRODUCTS_PRICE}</span><meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
 					<br />
 
 					<div class="inner nobottom product-cart">
