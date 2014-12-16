@@ -18,6 +18,15 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 ?>
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
+
+				  <tr> 
+				    <td colspan="2" class="pageHeading" width="100%">
+
+    <h1 class="contentBoxHeading"><?php echo '<a href="' . vam_href_link(FILENAME_STATS_SALES_REPORT2, '', 'NONSSL') . '">' . BOX_SALES_REPORT . '</a>'; ?></h1>
+				    
+				    </td>
+				  </tr>
+				  
               <tr>
                 <td class="dataTableContentRss" valign="top" width="50%">
 <?php
