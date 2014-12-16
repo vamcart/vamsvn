@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: yandex_merchant.php 998 2007/02/07 13:24:46 VaM $
+   $Id: yandex_merchant_mc.php 998 2007/02/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,22 +17,22 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  class yandex_merchant {
+  class yandex_merchant_mc {
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function yandex_merchant() {
+    function yandex_merchant_mc() {
       global $order;
 
-      $this->code = 'yandex_merchant';
-      $this->title = MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE;
-      $this->public_title = MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE;
+      $this->code = 'yandex_merchant_mc';
+      $this->title = MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEXT_TITLE;
+      $this->public_title = MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEXT_PUBLIC_TITLE;
       $this->icon = DIR_WS_ICONS . 'yandex.png';
-      $this->description = MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION;
-      $this->sort_order = MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER;
-      $this->enabled = ((MODULE_PAYMENT_YANDEX_MERCHANT_STATUS == 'True') ? true : false);
+      $this->description = MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEXT_ADMIN_DESCRIPTION;
+      $this->sort_order = MODULE_PAYMENT_YANDEX_MERCHANT_MC_SORT_ORDER;
+      $this->enabled = ((MODULE_PAYMENT_YANDEX_MERCHANT_MC_STATUS == 'True') ? true : false);
 
-      ((MODULE_PAYMENT_YANDEX_MERCHANT_TEST == 'test') ? $this->form_action_url = 'https://demomoney.yandex.ru/eshop.xml' : $this->form_action_url = 'https://money.yandex.ru/eshop.xml');
+      ((MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEST == 'test') ? $this->form_action_url = 'https://demomoney.yandex.ru/eshop.xml' : $this->form_action_url = 'https://money.yandex.ru/eshop.xml');
       
     }
 
@@ -40,9 +40,9 @@
     function update_status() {
       global $order;
 
-      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_YANDEX_MERCHANT_ZONE > 0) ) {
+      if ( ($this->enabled == true) && ((int)MODULE_PAYMENT_YANDEX_MERCHANT_MC_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_YANDEX_MERCHANT_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_YANDEX_MERCHANT_MC_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
         while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
@@ -328,7 +328,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
         }
       }
 
-      return array('title' => MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_DESCRIPTION);
+      return array('title' => MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEXT_DESCRIPTION);
     }
 
     function process_button() {
@@ -345,8 +345,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
     			$ship_address = $postcode . $city . $street_address;
     			
-      $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID) .
-                               vam_draw_hidden_field('scid', MODULE_PAYMENT_YANDEX_MERCHANT_SCID) .
+      $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_YANDEX_MERCHANT_MC_SHOP_ID) .
+                               vam_draw_hidden_field('scid', MODULE_PAYMENT_YANDEX_MERCHANT_MC_SCID) .
                                vam_draw_hidden_field('sum', $order_sum) . 
                                vam_draw_hidden_field('customerNumber', $order->customer['id']) .
                                vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_yandex_id'], strpos($_SESSION['cart_yandex_id'], '-')+1)) .
@@ -355,7 +355,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
                                vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
                                vam_draw_hidden_field('cms_name', 'vamshop') . 
-                               vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE);
+                               vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_MC_PAYMENT_TYPE);
 
       return $process_button_string;
     }
@@ -541,7 +541,7 @@ $vamTemplate = new vamTemplate;
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_YANDEX_MERCHANT_STATUS'");
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_STATUS'");
         $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
@@ -549,16 +549,16 @@ $vamTemplate = new vamTemplate;
 
     function install() {
 
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', '', '6', '2', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', '', '6', '3', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SCID', '', '6', '4', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', '', '6', '5', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', '0', '8', '6', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE', 'PC', '6', '10', 'vam_cfg_select_option(array(\'PC\', \'AC\', \'MC\', \'GP\', \'WM\', \'SB\', \'MP\', \'AB\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_STATUS', 'True', '6', '1', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_ALLOWED', '', '6', '2', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_SHOP_ID', '', '6', '3', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_SCID', '', '6', '4', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_SECRET_KEY', '', '6', '5', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_SORT_ORDER', '0', '8', '6', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_MC_PAYMENT_TYPE', 'MC', '6', '10', 'vam_cfg_select_option(array(\'PC\', \'AC\', \'MC\', \'GP\', \'WM\', \'SB\'), ', now())");
     }
 
     function remove() {
@@ -566,7 +566,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE');
+      return array('MODULE_PAYMENT_YANDEX_MERCHANT_MC_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_TEST', 'MODULE_PAYMENT_YANDEX_MERCHANT_MC_PAYMENT_TYPE');
     }
 
   }
