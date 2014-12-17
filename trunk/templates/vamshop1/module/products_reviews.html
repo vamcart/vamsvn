@@ -2,7 +2,7 @@
 <h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
 <div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 	<div class="span8 title">
-	{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING}</span>
+	{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:2}</span>
 	</div>	
 </div>
 {foreach name=aussen item=module_data from=$module_content} 
