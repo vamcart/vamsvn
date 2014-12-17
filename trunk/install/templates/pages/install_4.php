@@ -334,6 +334,12 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
     $file_contents = 
 'AddDefaultCharset utf-8'. "\n" .
 '' . "\n" .
+'ErrorDocument 400 '.$http_catalog.'404.html' . "\n" .
+'ErrorDocument 401 '.$http_catalog.'404.html' . "\n" .
+'ErrorDocument 403 '.$http_catalog.'404.html' . "\n" .
+'ErrorDocument 404 '.$http_catalog.'404.html' . "\n" .
+'ErrorDocument 500 '.$http_catalog.'404.html' . "\n" .
+'' . "\n" .
 'RewriteEngine On' . "\n" .
 'RewriteBase '.$http_catalog. "\n" .
 '' . "\n" .
