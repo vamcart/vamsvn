@@ -92,7 +92,8 @@ function doAddProduct() {
 					type : "GET",
 					success : function(msg) {
 						$("#divShoppingCart").html(msg);
-						$('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');			
+						$('html, body').animate({ scrollTop: 0 }, 'slow');	
+						$(".shopping-cart-widget").addClass( "error" );
 					}
 		});
 	}
