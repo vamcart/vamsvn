@@ -235,7 +235,7 @@ td.view_data_even {
  color: #000000;
  vertical-align: middle;
  background: #f7f7f7;
- padding: .1em;
+ padding: .3em;
  text-align: left;
 }
 
@@ -245,7 +245,7 @@ td.view_data_odd {
  color: #000000;
  vertical-align: middle;
  background: transparent;
- padding: .1em;
+ padding: .3em;
  text-align: left;
 }
 
