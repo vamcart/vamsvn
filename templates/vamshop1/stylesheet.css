@@ -3270,3 +3270,10 @@ dd.itemCategoriesListing
   font-weight: bold;
   z-index: 15;
 }
+
+.ajax-cart-hightlight
+   {
+    background: #fcc;
+    opacity: 1;
+    transition: all 2s ease-in;
+   }	
