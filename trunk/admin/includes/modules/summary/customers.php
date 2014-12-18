@@ -27,13 +27,17 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				  </tr>
 
 </table>
-<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">				  
+<table class="table table-hover">			  
               
-              <tr class="dataTableHeadingRow">
-                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_LASTNAME; ?></td>
-                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_FIRSTNAME; ?></td>
-                <td width="30%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
+				<thead>
+              <tr>
+                <th><?php echo TABLE_HEADING_LASTNAME; ?></th>
+                <th><?php echo TABLE_HEADING_FIRSTNAME; ?></th>
+                <th><?php echo TABLE_HEADING_DATE; ?></th>
               </tr>
+				</thead>
+
+				<tbody>
 
 <?php
 	$customers_query_raw = "select
@@ -64,5 +68,6 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 	}
 ?>
+				</tbody>
 
                 </table>

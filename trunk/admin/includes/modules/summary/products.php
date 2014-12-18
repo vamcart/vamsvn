@@ -31,13 +31,17 @@ $currencies = new currencies();
 				  </tr>
 				  
 </table>
-<table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">				  
+<table class="table table-hover">				  
 				  
+				<thead>
               <tr class="dataTableHeadingRow">
-                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCT_NAME; ?></td>
-                <td width="35%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_PRODUCT_PRICE; ?></td>
-                <td width="30%" class="dataTableHeadingContent"><?php echo TABLE_HEADING_DATE; ?></td>
+                <th><?php echo TABLE_HEADING_PRODUCT_NAME; ?></th>
+                <th><?php echo TABLE_HEADING_PRODUCT_PRICE; ?></th>
+                <th><?php echo TABLE_HEADING_DATE; ?></th>
               </tr>
+				</thead>
+
+				<tbody>
 
 <?php
 
@@ -74,5 +78,6 @@ $currencies = new currencies();
 
 	}
 ?>
+				</tbody>
 
                 </table>
