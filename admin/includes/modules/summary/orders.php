@@ -27,7 +27,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				  </tr>
 
 </table>
-<table border="0" width="100%" cellspacing="2" cellpadding="0" class="table table-hover">				  
+<table class="table table-hover">				  
 
 				<thead>
               <tr>
