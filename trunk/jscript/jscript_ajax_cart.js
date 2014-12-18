@@ -62,7 +62,7 @@ $(document).ajaxStop(function(){
     	               success: function(msg){ 
     	               $("#divShoppingCart").html(msg);
     	               $('html, body').animate({ scrollTop: 0 }, 'slow');	
-    	               $(".shopping-cart-widget").addClass( "error" );
+    	               $(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
     	               }       
                    });                     
 
@@ -93,7 +93,7 @@ function doAddProduct() {
 					success : function(msg) {
 						$("#divShoppingCart").html(msg);
 						$('html, body').animate({ scrollTop: 0 }, 'slow');	
-						$(".shopping-cart-widget").addClass( "error" );
+						$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
 					}
 		});
 	}
