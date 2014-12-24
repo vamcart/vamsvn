@@ -5,12 +5,10 @@ $(document).ready(function(){
         animateStartingFrameIn: true,
         autoPlay: false, // for testing
         autoPlayDelay: 3000,
-        preloader: true,
+        preloader: false,
         navigationSkip: false,
         reverseAnimationsWhenNavigatingBackwards: false,
         pauseOnHover: false,
-        preloadTheseFrames: [1],
-        preloadTheseImages: []
     };
     
     var sequence = $("#sequence").sequence(options).data("sequence");
