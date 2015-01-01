@@ -792,11 +792,11 @@ if(trim($_GET['page']) == '1' && $url != ''){
 			exit();
 }
 
-if($_SERVER['REQUEST_URI'] !='/' && $PHP_SELF == '/index.php' && !$_GET ){
-			header("HTTP/1.1 301 Moved Permanently");
-			header("Location: /");
-			exit();
-}
+//if($_SERVER['REQUEST_URI'] !='/' && $PHP_SELF == '/index.php' && !$_GET ){
+			//header("HTTP/1.1 301 Moved Permanently");
+			//header("Location: /");
+			//exit();
+//}
  
 if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILENAME_PRODUCT_REVIEWS) !== FALSE) {
     require('includes/modules/headerstatushandler.php');
