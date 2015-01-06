@@ -189,6 +189,8 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 
 ############################# Validate start - NOT LOGGED ON #######################################
 
+  if (!isset($_SESSION['qiwi_telephone'])) $_SESSION['qiwi_telephone'] = $_POST['qiwi_telephone'];
+
   $process = false;
   if (isset($_POST['action']) && ($_POST['action'] == 'not_logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
     $process = true;
