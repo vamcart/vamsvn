@@ -101,7 +101,7 @@
         if ($jump_to_page == $this->current_page_number) {
           $display_links_string .= '&nbsp;<b>' . $jump_to_page . '</b>&nbsp;';
         } else {
-			if($count == '1'){
+			if( ($count == '1') and ($cur_window_num == '1') ){
 				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
 			} else {
 				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
