@@ -80,7 +80,7 @@ $(function () {
    });
 
 $("#telephone").mask("(999) 999-9999");
-$("#qiwi_telephone").mask("99999999999");
+$("#qiwi_telephone").mask("79999999999");
    	
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
