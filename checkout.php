@@ -619,7 +619,11 @@ $order = new order;
 //set $selected_country_id
 //if logged in set $selected_country_id from order class else from selected Post
 if (vam_session_is_registered('customer_id')) {
-$selected_country_id = $order->delivery['country']['id'];
+	$selected_country_id = $order->delivery['country']['id'];
+
+	if ($order->delivery['country']['iso_code_2'] != '') {
+		$_SESSION['delivery_zone'] = $order->delivery['country']['iso_code_2'];
+	} 
 } else {
 //$selected_country_id = vam_db_prepare_input($_POST['country']);
 if (isset($_POST['country'])) {
