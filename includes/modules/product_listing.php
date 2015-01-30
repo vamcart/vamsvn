@@ -38,7 +38,7 @@ if (isset($_GET['on_page']) && is_numeric($_GET['on_page'])) {
  $num_page =  MAX_DISPLAY_SEARCH_RESULTS;
  }
 
-$module->assign('LINK_PAGE',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','on_page','sort', 'direction', 'info','x','y')) . 'on_page='));
+$module->assign('LINK_PAGE',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','cPath','on_page','sort', 'direction', 'info','x','y')) . 'on_page='));
 
 $listing_split = new splitPageResults($listing_sql, (int)$_GET['page'], $num_page, 'p.products_id');
 $module_content = array ();
@@ -46,7 +46,7 @@ if ($listing_split->number_of_rows > 0) {
 
 
 
-	$navigation = TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y')));
+	$navigation = TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'cPath', 'info', 'x', 'y')));
 	$navigation_pages = $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
