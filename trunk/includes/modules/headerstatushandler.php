@@ -12,10 +12,10 @@
 */
 
       $invalidProduct = RTN_GOOD;
-      if (! isset($_GET['products_id']) || $_GET['products_id'] == 0) {
+      if (! isset($product->data['products_id']) || $product->data['products_id'] == 0) {
           $invalidProduct = RTN_410;
       } else  {
-          $invalidProduct = IsProduct($_GET['products_id'], $PHP_SELF, $_SESSION['languages_id']);
+          $invalidProduct = IsProduct($product->data['products_id'], $PHP_SELF, $_SESSION['languages_id']);
       }
       switch ($invalidProduct) {
           case RTN_404:
