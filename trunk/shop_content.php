@@ -16,7 +16,9 @@
 
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-
+if ($_GET['coID'] == 12) {
+header("HTTP/1.1 404 Not Found");
+}
 require ('includes/application_top.php');
 // create template elements
 $vamTemplate = new vamTemplate;

@@ -168,9 +168,9 @@
        
           mysqli_free_result($result);
           mysqli_close($db_l);
-          header('HTTP/1.1 404 Not Found');
+
           $PHP_SELF = '/index.php';
-          include('index.php');
+          header("Location: ".DIR_WS_CATALOG."404.html");
           
           }
         }        
