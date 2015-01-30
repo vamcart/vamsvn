@@ -798,7 +798,7 @@ if(trim($_GET['page']) == '1' && $url != ''){
 
 if($_SERVER['REQUEST_URI'] != DIR_WS_CATALOG && $PHP_SELF == DIR_WS_CATALOG.'index.php' && !$_GET ){
 			header("HTTP/1.1 301 Moved Permanently");
-			header("Location: /");
+			header("Location: ".DIR_WS_CATALOG."");
 			exit();
 }
  
