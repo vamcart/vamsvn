@@ -44,7 +44,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
       $topics_string .= "&nbsp;&nbsp;";
     }
 
-    $topics_string .= '<li><a href="';
+    $topics_string .= '<li class="topic-'.$tree[$counter]['level'].'"><a href="';
 
     if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
