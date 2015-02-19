@@ -178,6 +178,8 @@
         case 'articles':
           $topicid = array();
           if (preg_match('/\/tPath\/(.*)\//', $_SERVER['REQUEST_URI'], $topicid)) {
+            $topicid = explode("_",$topicid[1]);
+            $topicid = $topicid[1];
             $query = 'select topics_page_url from ' . TABLE_TOPICS . ' where topics_id="' . (int)$topicid[1] . '"';
             $result = mysqli_query($db_l, $query);   
             if (mysqli_num_rows($result) > 0) {
@@ -188,9 +190,9 @@
             mysqli_close($db_l);
             if (isset($tURL) && $tURL != '') {
               $url = HTTP_SERVER . DIR_WS_CATALOG . $tURL;
-              header("HTTP/1.1 301 Moved Permanently");
-              header('Location: ' . $url);
-              exit();
+              //header("HTTP/1.1 301 Moved Permanently");
+              //header('Location: ' . $url);
+              //exit();
             }
           }
           $PHP_SELF = '/articles.php';
