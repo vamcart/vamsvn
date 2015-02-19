@@ -51,7 +51,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
     } else {
       $tPath_new = 'tPath=' . $tree[$counter]['path'];
     }
-    
+
 		$SEF_parameter_cat = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
@@ -82,7 +82,7 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
       }
     }
 
-    $topics_string .= '</li>' . "\n";
+    $topics_string .= '</li>';
 
     if ($tree[$counter]['next_id'] != false) {
       vam_show_topic($tree[$counter]['next_id']);
@@ -91,20 +91,15 @@ if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || 
 ?>
 <?php
 
-
   $topics_string = '';
   $tree = array();
 
-  $topics_query = "select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name";
-  $topics_query = vamDBquery($topics_query);
-
-if (vam_db_num_rows($topics_query, true) > 0) {
-
-  while ($topics = vam_db_fetch_array($topics_query,true))  {
+  $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$languages_id . "' order by sort_order, td.topics_name");
+  while ($topics = vam_db_fetch_array($topics_query))  {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
                                         'level' => 0,
-                                        'path' => $tPath,
+                                        'path' => $topics['topics_id'],
                                         'next_id' => false);
 
     if (isset($parent_id)) {
@@ -125,16 +120,14 @@ if (vam_db_num_rows($topics_query, true) > 0) {
     while (list($key, $value) = each($tPath_array)) {
       unset($parent_id);
       unset($first_id);
-      $topics_query = "select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name";
-      $topics_query = vamDBquery($topics_query);
-      if (vam_db_num_rows($topics_query,true)) {
+      $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+      if (vam_db_num_rows($topics_query)) {
         $new_path .= $value;
-        while ($row = vam_db_fetch_array($topics_query,true)) {
+        while ($row = vam_db_fetch_array($topics_query)) {
           $tree[$row['topics_id']] = array('name' => $row['topics_name'],
                                            'parent' => $row['parent_id'],
                                            'level' => $key+1,
-                                           //'path' => $new_path . '_' . $row['topics_id'],
-                                           'path' => $row['topics_id'],
+                                           'path' => $new_path . '_' . $row['topics_id'],
                                            'next_id' => false);
 
           if (isset($parent_id)) {
@@ -151,7 +144,7 @@ if (vam_db_num_rows($topics_query, true) > 0) {
         }
         $tree[$last_id]['next_id'] = $tree[$value]['next_id'];
         $tree[$value]['next_id'] = $first_id;
-        //$new_path .= '_';
+        $new_path .= '_';
       } else {
         break;
       }
@@ -208,7 +201,6 @@ if (vam_db_num_rows($topics_query, true) > 0) {
 
   }
 
-}
 
   $box_content = $new_articles_string . $all_articles_string . $topics_string;
 
