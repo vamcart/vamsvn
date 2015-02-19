@@ -133,7 +133,8 @@ if (vam_db_num_rows($topics_query, true) > 0) {
           $tree[$row['topics_id']] = array('name' => $row['topics_name'],
                                            'parent' => $row['parent_id'],
                                            'level' => $key+1,
-                                           'path' => $new_path . '_' . $row['topics_id'],
+                                           //'path' => $new_path . '_' . $row['topics_id'],
+                                           'path' => $row['topics_id'],
                                            'next_id' => false);
 
           if (isset($parent_id)) {
@@ -150,7 +151,7 @@ if (vam_db_num_rows($topics_query, true) > 0) {
         }
         $tree[$last_id]['next_id'] = $tree[$value]['next_id'];
         $tree[$value]['next_id'] = $first_id;
-        $new_path .= '_';
+        //$new_path .= '_';
       } else {
         break;
       }
