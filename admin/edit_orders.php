@@ -493,8 +493,8 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 		for ($i=0, $n=sizeof($new_order_totals); $i<$n; $i++) {
           $sql_data_array = array('orders_id' => $oID,
                                   'title' => strip_tags($new_order_totals[$i]['title']),
-                                  'text' => $new_order_totals[$i]['text'],
-                                  'value' => $new_order_totals[$i]['value'], 
+                                  'text' => ($order_totals[$i]['code'] == 'ot_shipping') ? $currencies->format($new_order_totals[$i]['value']/$currencies->get_value($order->info['currency']), false, $order->info['currency'], $order->info['currency_value']) : $currencies->format($new_order_totals[$i]['value'], false, $order->info['currency'], $order->info['currency_value']), 
+                                  'value' => ($order_totals[$i]['code'] == 'ot_shipping') ? $new_order_totals[$i]['value']/$currencies->get_value($order->info['currency']) : $new_order_totals[$i]['value'], 
                                   'class' => $new_order_totals[$i]['code'], 
                                   'sort_order' => $new_order_totals[$i]['sort_order']);
           vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
