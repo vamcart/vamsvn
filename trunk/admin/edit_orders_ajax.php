@@ -303,7 +303,7 @@ if ($action == 'update_downloads') {
 
 				if ($ot_title != '') { //7
                   $new_order_totals[] = array('title' => strip_tags($ot_title),
-                                              'text' => (($ot_class != 'ot_total') ? $order_totals[$i]['text'] : '<b>' . $currencies->format($order->info['total'], true, $order->info['currency'], $order->info['currency_value']) . '</b>'),
+                                              'text' => (($ot_class != 'ot_total') ? $order_totals[$i]['text'] : '<b>' . $order->info['total'] . '</b>'),
                                               'value' => (($order_totals[$i]['code'] != 'ot_total') ? $order_totals[$i]['value'] : $order->info['total']),
                                               'code' => $order_totals[$i]['code'],
                                               'sort_order' => $j);
@@ -341,7 +341,7 @@ if ($action == 'update_downloads') {
            }//end 4
          } elseif ( (vam_not_null($ot_value)) && (vam_not_null($ot_title)) ) { // this modifies if (!strstr($ot_class, 'ot_custom')) { //3
             $new_order_totals[] = array('title' => strip_tags($ot_title),
-                     'text' => $currencies->format($ot_value, true, $order->info['currency'], $order->info['currency_value']),
+                     'text' => $ot_value,
                                         'value' => $ot_value,
                                         'code' => 'ot_custom_' . $j,
                                         'sort_order' => $j);
@@ -357,7 +357,7 @@ if ($action == 'update_downloads') {
 				 
 				    $new_order_totals[] = array(
 					        'title' => strip_tags($ot_title),
-                            'text' => $currencies->format($ot_value, true, $order->info['currency'], $order->info['currency_value']),
+                            'text' => $ot_value,
                             'value' => $ot_value,
                             'code' => $ot_class,
                             'sort_order' => $j);
@@ -442,7 +442,7 @@ if ($action == 'update_downloads') {
 			 
 	'      <input type="hidden" id="update_shipping['.$r.'][title]" name="update_shipping['.$r.'][title]" value="'.$shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'].'):">' . "\n" .
 			
-    '      <input type="hidden" id="update_shipping['.$r.'][value]" name="update_shipping['.$r.'][value]" value="'.vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']).'">' . "\n" .
+    '      <input type="hidden" id="update_shipping['.$r.'][value]" name="update_shipping['.$r.'][value]" value="'.$currencies->format(vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']).'">' . "\n" .
 	
 	'      <input type="hidden" id="update_shipping[' . $r . '][id]" name="update_shipping[' . $r . '][id]" value="' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'] . '">' . "\n" .
     
@@ -514,7 +514,13 @@ if ($action == 'update_downloads') {
       }
 
       echo '                    <td align="right" class="dataTableContent"><input name="update_totals['.$i.'][title]" id="'.$id.'[title]" value="' . strip_tags(trim($order->totals[$i]['title'])) . '"  onChange="obtainTotals()"></td>' . "\n" .
-           '                    <td align="right" class="dataTableContent"><input name="update_totals['.$i.'][value]" id="'.$id.'[value]" value="' . number_format((double)$order->totals[$i]['value'], 2, '.', '') . '" size="6"  onChange="obtainTotals()"><input name="update_totals['.$i.'][class]" type="hidden" value="' . $order->totals[$i]['class'] . '"><input name="update_totals['.$i.'][id]" type="hidden" value="' . $shipping_module_id . '" id="' . $id . '[id]"></td>' . "\n";
+           '                    <td align="right" class="dataTableContent">';
+if ($order->info['currency'] != DEFAULT_CURRENCY) {           
+                 echo '<input name="update_totals['.$i.'][value]" id="'.$id.'[value]" value="' . number_format((double)$order->totals[$i]['value']/$currencies->get_value($order->info['currency']), 2, '.', '') . '" size="6"  onChange="obtainTotals()">';
+} else {
+                 echo '<input name="update_totals['.$i.'][value]" id="'.$id.'[value]" value="' . number_format((double)$order->totals[$i]['value'], 2, '.', '') . '" size="6"  onChange="obtainTotals()">';
+}           
+                 echo '<input name="update_totals['.$i.'][class]" type="hidden" value="' . $order->totals[$i]['class'] . '"><input name="update_totals['.$i.'][id]" type="hidden" value="' . $shipping_module_id . '" id="' . $id . '[id]"></td>' . "\n";
       if ($order->info['currency'] != DEFAULT_CURRENCY) echo '                    <td align="right" class="dataTableContent" nowrap>' . $order->totals[$i]['text'] . '</td>' . "\n";
       echo '                  </tr>' . "\n";
     }
@@ -770,7 +776,7 @@ if (vam_db_num_rows($orders_history_query)) {
 	  $Query = "INSERT INTO " . TABLE_ORDERS_TOTAL . " SET
 	                orders_id = '" . $_GET['oID'] . "', 
 					title = '" . $_GET['title'] . "', 
-					text = '" . $currencies->format($_GET['value'], true, $order->info['currency'], $order->info['currency_value']) ."',
+					text = '" . $_GET['value'] ."',
 					value = '" . $_GET['value'] . "',
 					class = 'ot_shipping',
 					sort_order = '" . $_GET['sort_order'] . "'";
@@ -888,13 +894,13 @@ if (vam_db_num_rows($orders_history_query)) {
 			 
 	'   <input type="hidden" id="update_shipping['.$r.'][title]" name="update_shipping['.$r.'][title]" value="'.$shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'].'):">' . "\n" .
 			
-    '   <input type="hidden" id="update_shipping['.$r.'][value]" name="update_shipping['.$r.'][value]" value="'.vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']).'">' . "\n" .
+    '   <input type="hidden" id="update_shipping['.$r.'][value]" name="update_shipping['.$r.'][value]" value="'.$currencies->format(vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']).'">' . "\n" .
 	
 	'      <input type="hidden" id="update_shipping[' . $r . '][id]" name="update_shipping[' . $r . '][id]" value="' . $shipping_quotes[$i]['id'] . '_' . $shipping_quotes[$i]['methods'][$j]['id'] . '">' . "\n" .
 
 			 '<td class="dataTableContent" valign="top">' . $shipping_quotes[$i]['module'] . ' (' . $shipping_quotes[$i]['methods'][$j]['title'] . '):</td>' . "\n" . 
 
-			 '<td class="dataTableContent" align="right">' . $currencies->format(vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']), true, $order->info['currency'], $order->info['currency_value']) . '</td>' . "\n" . 
+			 '<td class="dataTableContent" align="right">' . vam_add_tax($shipping_quotes[$i]['methods'][$j]['cost'], $shipping_quotes[$i]['tax']) . '</td>' . "\n" . 
              '                  </tr>';
       }
     }
