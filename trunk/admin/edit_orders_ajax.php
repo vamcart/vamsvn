@@ -387,8 +387,8 @@ if ($action == 'update_downloads') {
         for ($i=0, $n=sizeof($new_order_totals); $i<$n; $i++) {
           $sql_data_array = array('orders_id' => $oID,
                                   'title' => strip_tags($new_order_totals[$i]['title']),
-                                  'text' => $new_order_totals[$i]['text'],
-                                  'value' => $new_order_totals[$i]['value'], 
+                                  'text' => ($order_totals[$i]['code'] == 'ot_shipping') ? $currencies->format($new_order_totals[$i]['value']/$currencies->get_value($order->info['currency']), false, $order->info['currency'], $order->info['currency_value']) : $currencies->format($new_order_totals[$i]['value'], false, $order->info['currency'], $order->info['currency_value']), 
+                                  'value' => ($order_totals[$i]['code'] == 'ot_shipping') ? $new_order_totals[$i]['value']/$currencies->get_value($order->info['currency']) : $new_order_totals[$i]['value'], 
                                   'class' => $new_order_totals[$i]['code'], 
                                   'sort_order' => $new_order_totals[$i]['sort_order']);
           vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
@@ -515,11 +515,7 @@ if ($action == 'update_downloads') {
 
       echo '                    <td align="right" class="dataTableContent"><input name="update_totals['.$i.'][title]" id="'.$id.'[title]" value="' . strip_tags(trim($order->totals[$i]['title'])) . '"  onChange="obtainTotals()"></td>' . "\n" .
            '                    <td align="right" class="dataTableContent">';
-if ($order->info['currency'] != DEFAULT_CURRENCY) {           
-                 echo '<input name="update_totals['.$i.'][value]" id="'.$id.'[value]" value="' . number_format((double)$order->totals[$i]['value']/$currencies->get_value($order->info['currency']), 2, '.', '') . '" size="6"  onChange="obtainTotals()">';
-} else {
                  echo '<input name="update_totals['.$i.'][value]" id="'.$id.'[value]" value="' . number_format((double)$order->totals[$i]['value'], 2, '.', '') . '" size="6"  onChange="obtainTotals()">';
-}           
                  echo '<input name="update_totals['.$i.'][class]" type="hidden" value="' . $order->totals[$i]['class'] . '"><input name="update_totals['.$i.'][id]" type="hidden" value="' . $shipping_module_id . '" id="' . $id . '[id]"></td>' . "\n";
       if ($order->info['currency'] != DEFAULT_CURRENCY) echo '                    <td align="right" class="dataTableContent" nowrap>' . $order->totals[$i]['text'] . '</td>' . "\n";
       echo '                  </tr>' . "\n";
