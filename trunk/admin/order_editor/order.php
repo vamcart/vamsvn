@@ -128,7 +128,7 @@
         'tax' => $orders_products['products_tax'],
         'tax_description' => vam_get_tax_description($orders_products_tax['products_tax_class_id'], $this->delivery["country_id"], $this->delivery["zone_id"]),
         'price' => $orders_products['products_price'],
-        'final_price' => $orders_products['products_price']*$orders_products['products_quantity'],
+        'final_price' => $orders_products['final_price'],
         'products_id' => $orders_products['products_id'],
         'orders_products_id' => $orders_products['orders_products_id']);
 
@@ -146,7 +146,7 @@
           }
         }
 
-        $shown_price = vam_add_tax($this->products[$index]['price'], $this->products[$index]['tax']) * $this->products[$index]['qty'];
+        $shown_price = vam_add_tax($this->products[$index]['final_price'], $this->products[$index]['tax']);
         $this->info['subtotal'] += $shown_price;
 
         $products_tax = $this->products[$index]['tax'];
