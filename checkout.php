@@ -1230,6 +1230,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 	  $dbPass = vam_encrypt_password($password);
 
       $sql_data_array = array('customers_firstname' => $firstname,
+                              'customers_status' => 2,
                               'customers_secondname' => $secondname,
                               'customers_lastname' => $lastname,
                               'customers_email_address' => $email_address,
