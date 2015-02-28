@@ -53,7 +53,7 @@ $currencies = new currencies();
         p.products_price, 
         p.products_date_added, 
         p.products_last_modified 
-        FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by p.products_date_added desc limit 20");
+        FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE p.products_id = pd.products_id AND pd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by p.products_id desc limit 20");
 
 	while ($products = vam_db_fetch_array($products_query_raw)) {
 
