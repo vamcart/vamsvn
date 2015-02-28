@@ -56,7 +56,7 @@ if ($random_product = vam_random_select("select distinct
                                            ".$group_check."
                                            ".$fsk_lock."
                                            and c.categories_status=1 order by
-                                           p.products_date_added desc limit ".MAX_RANDOM_SELECT_NEW)) {
+                                           p.products_id desc limit ".MAX_RANDOM_SELECT_NEW)) {
 
 	$whats_new_price = $vamPrice->GetPrice($random_product['products_id'], $format = true, 1, $random_product['products_tax_class_id'], $random_product['products_price']);
 }
