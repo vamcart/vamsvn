@@ -40,7 +40,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	                                         p.products_id=f.products_id ".$group_check."
 	                                         ".$fsk_lock."
 	                                         and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                         group by p.products_id order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
+	                                         group by p.products_id order by p.products_id DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')
@@ -58,7 +58,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	                                        ".$fsk_lock."
 	                                        and c.parent_id = '".$featured_products_category_id."'
 	                                        and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                        group by p.products_id order by p.products_date_added DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
+	                                        group by p.products_id order by p.products_id DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
 }
 $row = 0;
 $module_content = array ();
