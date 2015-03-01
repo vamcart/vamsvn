@@ -34,11 +34,7 @@
 
     function process() {
       global $order, $vamPrice;
-  if (LANGUAGE_CURRENCY != DEFAULT_CURRENCY) {
 	//echo $order->info['total'];
-	$order->info['total'] = $order->info['total'] - 30;
-	$order->info['tax_groups'] = array();
-	}
       reset($order->info['tax_groups']);
       while (list($key, $value) = each($order->info['tax_groups'])) {
         if ($value > 0) {
