@@ -55,23 +55,23 @@
 <a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> | 
 <a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
 </p>
-{if count($module_content) >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
+{if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
 <p>
 {#text_products_per_page#}
 
-{if count($module_content) > 10}
+{if $PRODUCTS_COUNT > 10}
 <a href="{$LINK_PAGE}10">10</a> 
 {/if}
 
-{if count($module_content) > 20}
+{if $PRODUCTS_COUNT > 20}
 <a href="{$LINK_PAGE}20">20</a> 
 {/if}
 
-{if count($module_content) > 50}
+{if $PRODUCTS_COUNT > 50}
 <a href="{$LINK_PAGE}50">50</a> 
 {/if}
 
-{if count($module_content) > 100}
+{if $PRODUCTS_COUNT > 100}
 <a href="{$LINK_PAGE}100">100</a>
 {/if} 
 </p>

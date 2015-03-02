@@ -87,6 +87,7 @@ if ($listing_split->number_of_rows > 0) {
 	}
 	
 	$module->assign('BUTTON_COMPARE', vam_image_submit('view.png', TEXT_PRODUCT_COMPARE));
+	$module->assign('PRODUCTS_COUNT', $listing_split->number_of_rows);
 		
 } else {
 
