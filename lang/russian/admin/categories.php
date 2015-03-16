@@ -116,7 +116,7 @@ define('TEXT_PRODUCTS_LABEL', 'Ярлык товара:');
 define('TEXT_PRODUCTS_NAME', 'Название товара:');
 define('TEXT_PRODUCTS_DESCRIPTION', 'Описание товара:');
 define('TEXT_PRODUCTS_QUANTITY', 'Количество товара:');
-define('TEXT_PRODUCTS_MODEL', 'Код товара:');
+define('TEXT_PRODUCTS_MODEL', 'Артикул товара:');
 define('TEXT_PRODUCTS_IMAGE', 'Картинка товара');
 define('TEXT_PRODUCTS_URL', 'URL товара:');
 define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(без http://)');
