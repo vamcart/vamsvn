@@ -43,7 +43,7 @@ require('includes/application_top.php');
 <?php echo TEXT_VALID_PRODUCTS_LIST; ?>
 </td>
 </tr>
-<?
+<?php
     echo "<tr><th class=\"dataTableHeadingContent\">". TEXT_VALID_PRODUCTS_ID . "</th><th class=\"dataTableHeadingContent\">" . TEXT_VALID_PRODUCTS_NAME . "</th><th class=\"dataTableHeadingContent\">" . TEXT_VALID_PRODUCTS_MODEL . "</th></tr><tr>";
     $result = vam_db_query("SELECT p.products_id, p.products_model, pd.products_name  FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE p.products_id = pd.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "' ORDER BY pd.products_name");
     if ($row = vam_db_fetch_array($result)) {
