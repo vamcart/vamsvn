@@ -159,6 +159,7 @@ if ((vam_session_is_registered('create_account')) && (isset($_POST['action']) &&
       $sql_data_array = array('customers_firstname' => $_SESSION['sc_customers_firstname'],
                               'customers_secondname' => $_SESSION['sc_customers_secondname'],
                               'customers_lastname' => $_SESSION['sc_customers_lastname'],
+                              'customers_status' => 2,
                               'customers_email_address' => $_SESSION['sc_customers_email_address'],
                               'customers_telephone' => $_SESSION['sc_customers_telephone'], 
                               'customers_fax' => $_SESSION['sc_customers_fax'],
