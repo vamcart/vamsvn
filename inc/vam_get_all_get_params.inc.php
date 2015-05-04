@@ -31,7 +31,7 @@
         if (is_array($value)) {
           foreach ($value as $new_key => $new_value) {
             if (!in_array($key, $exclude_array)) {
-              $get_url .= $key . '[' . $new_key . ']' . '=' . rawurlencode(stripslashes($new_value)) . '&';
+              $get_url .= $key . '[' . $new_key . ']' . '=' . rawurlencode(stripslashes((string)$new_value)) . '&';
             }
           }
         }
