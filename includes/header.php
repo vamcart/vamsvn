@@ -114,6 +114,25 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 <script type="text/javascript" src="jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-ru.js"></script>
 <?php } ?>
 <script type="text/javascript">
+// Make ColorBox responsive
+	jQuery.colorbox.settings.maxWidth  = '95%';
+	jQuery.colorbox.settings.maxHeight = '95%';
+
+	// ColorBox resize function
+	var resizeTimer;
+	function resizeColorBox()
+	{
+		if (resizeTimer) clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function() {
+				if (jQuery('#cboxOverlay').is(':visible')) {
+						jQuery.colorbox.load(true);
+				}
+		}, 300);
+	}
+
+	// Resize ColorBox when resizing window or changing mobile device orientation
+	jQuery(window).resize(resizeColorBox);
+	
 $(document).ready(function(){
   $(".lightbox").colorbox({rel:"lightbox"});
   $(".iframe").colorbox({iframe:true, width:"30%", height:"80%"});
