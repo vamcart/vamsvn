@@ -1648,7 +1648,7 @@
                 <td class="smallText" align="right">
 <?php
     echo vam_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgid', vam_get_group_names(), $specs_group_id, 'onClick="this.form.submit();"');
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgid', vam_get_group_names(), $specs_group_id, 'onsubmit="this.form.submit();"');
     echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
                 </td>
