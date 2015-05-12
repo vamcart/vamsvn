@@ -758,6 +758,16 @@ if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT 
 		//calculation for Jquery Post
 		if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){  //$shipping start test
 			//no calculation yet
+
+						//pickpoint start
+								if ($_POST['shipping'] == 'pickpoint_pickpoint') {
+						       //if ($_POST['pickpoint_address'] != '') {
+								    $shipping['title'] = MODULE_SHIPPING_PICKPOINT_TEXT_TITLE . ': ' . MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS . $_POST['pickpoint_address'];
+						       //} else {
+								    //$shipping['title'] = 'test';
+						       //}
+						      }
+						//pickpoint end
 			
 		} else {
 		  //calculation first time ////////////
@@ -1001,6 +1011,16 @@ if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT 
               $shipping = array('id' => $shipping,
                                 'title' => (($free_shipping == true) ?  $quote[0]['methods'][0]['title'] : $quote[0]['module'] . ' (' . $quote[0]['methods'][0]['title'] . ')'),
                                 'cost' => $quote[0]['methods'][0]['cost']);
+
+						//pickpoint start
+								if ($_POST['shipping'] == 'pickpoint_pickpoint') {
+						       //if ($_POST['pickpoint_address'] != '') {
+								    $shipping['title'] = MODULE_SHIPPING_PICKPOINT_TEXT_TITLE . ': ' . MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS . $_POST['pickpoint_address'];
+						       //} else {
+								    //$shipping['title'] = 'test';
+						       //}
+						      }
+						//pickpoint end
 
               //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
             }
