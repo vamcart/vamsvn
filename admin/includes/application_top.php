@@ -41,7 +41,7 @@
   define('_VALID_VAM',true);
 
   // Set the level of error reporting
-  error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
+  error_reporting(0);
 
   // Disable use_trans_sid as vam_href_link() does this manually
   if (function_exists('ini_set')) {
