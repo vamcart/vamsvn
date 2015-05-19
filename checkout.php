@@ -811,7 +811,9 @@ if ($order->delivery['country']['iso_code_2'] != '') {
 //Classes init ##########################################
 $total_count = $_SESSION['cart']->count_contents();  
 
-if (isset($_POST['payment'])){ $payment = $_POST['payment'];} //payment post data assignment
+if (isset($_POST['payment'])){ $payment = $_POST['payment'];
+$_SESSION['payment'] = $_POST['payment'];
+} //payment post data assignment
 
 //payment class
 if ((!isset($_POST['payment'])) || ($error == true)) {
@@ -1208,6 +1210,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 	
 		############################# process the selected payment method ######################################
 		if (isset($_POST['payment'])) $payment = $_POST['payment'];
+		if (isset($_POST['payment'])) $_SESSION['payment'] = $_POST['payment'];
 		############################# process the selected payment method END ######################################
 	
 	
@@ -1429,6 +1432,7 @@ if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT 
 
 ############################# process the selected payment method ######################################
 if (isset($_POST['payment'])) $payment = $_POST['payment'];
+if (isset($_POST['payment'])) $_SESSION['payment'] = $_POST['payment'];
 ############################# process the selected payment method END ######################################
 
 // set them here after $customer_default_address_id is created (ca. line 491)
@@ -1554,6 +1558,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST
 	
 	############################# process the selected payment method ######################################
 	if (isset($_POST['payment'])) $payment = $_POST['payment'];
+	if (isset($_POST['payment'])) $_SESSION['payment'] = $_POST['payment'];
 	############################# process the selected payment method END ######################################
 	
 	
