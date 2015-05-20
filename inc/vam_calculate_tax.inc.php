@@ -17,9 +17,11 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
+if(!function_exists(vam_calculate_tax)){
   function vam_calculate_tax($price, $tax) {
-    //global $currencies;
-	return $price * $tax / 100;
-    //return vam_round($price * $tax / 100, $currencies->currencies[DEFAULT_CURRENCY]['decimal_places']);
+	//global $currencies;
+    return $price * $tax / 100;
+	//return vam_round($price * $tax / 100, $currencies->currencies[DEFAULT_CURRENCY]['decimal_places']);
   }
+}
  ?>
