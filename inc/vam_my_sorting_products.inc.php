@@ -13,7 +13,7 @@
    
 	function my_sorting_products($sorting_data) {
 		global $sorting_data;
-		static $sortingTypes = array('name', 'price');
+		static $sortingTypes = array('name', 'price', 'ordered', 'id', 'quantity');
 		static $directionTypes = array('asc', 'desc');
 		$sort = initGetVariable('sort', '');
 		$direction = initGetVariable('direction', '');
