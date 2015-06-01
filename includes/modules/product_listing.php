@@ -129,6 +129,12 @@ if ($result != false) {
 	$module->assign('LINK_sort_name_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=name&direction=desc'));
 	$module->assign('LINK_sort_price_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=price&direction=asc'));
 	$module->assign('LINK_sort_price_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=price&direction=desc'));
+	$module->assign('LINK_sort_quantity_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=quantity&direction=asc'));
+	$module->assign('LINK_sort_quantity_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=quantity&direction=desc'));
+	$module->assign('LINK_sort_viewed_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=viewed&direction=asc'));
+	$module->assign('LINK_sort_viewed_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=viewed&direction=desc'));
+	$module->assign('LINK_sort_id_asc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=id&direction=asc'));
+	$module->assign('LINK_sort_id_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=id&direction=desc'));
 
 	$module->assign('NAVIGATION', $navigation);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
