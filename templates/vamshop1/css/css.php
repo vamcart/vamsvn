@@ -1,3 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/bootstrap/bootstrap.css'; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/font-awesome.min.css'; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/sequencejs.css'; ?>" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/bxslider/jquery.bxslider.css" />
+
