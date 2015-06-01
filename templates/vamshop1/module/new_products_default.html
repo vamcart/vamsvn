@@ -1,4 +1,20 @@
-{config_load file="$language/lang_$language.conf" section="new_products"} <h1><a href="{$NEW_PRODUCTS_LINK}">{#heading_text#}</a></h1>
+{config_load file="$language/lang_$language.conf" section="new_products"} {literal}
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".thumbnails").bxSlider({
+    slideWidth: 300,
+    minSlides: 3,
+    maxSlides: 3,
+    slideMargin: 2,
+    controls: true,
+    pager: false,
+    auto: true
+  });
+});
+</script>
+{/literal}
+
+<h1><a href="{$NEW_PRODUCTS_LINK}">{#heading_text#}</a></h1>
 <div class="page">
 <div class="pageItem">
 
@@ -6,7 +22,7 @@
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
 		{foreach name=aussen item=module_data from=$module_content}
-		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		<li class="item">
 			<div class="thumbnail text-center">
 				{if $module_data.PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
 				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /><span class="frame-overlay"></span><span class="price">{$module_data.PRODUCTS_PRICE}</span>{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}</a>
