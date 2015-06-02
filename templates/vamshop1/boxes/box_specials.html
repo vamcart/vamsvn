@@ -12,6 +12,8 @@
 				<p>
 				<a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a>
 				</p>
+
+				{if $box_content.REVIEWS_TOTAL > 0}<p><span class="rating">{$box_content.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$box_content.REVIEWS_TOTAL}</span></p>{/if}
 				
 				<p>
 				{$box_content.PRODUCTS_PRICE}
