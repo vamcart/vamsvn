@@ -78,6 +78,8 @@
 <a href="{$products_history.PRODUCTS_LINK}">{$products_history.PRODUCTS_NAME}</a>
 </dd>
 
+{if $products_history.REVIEWS_TOTAL > 0}<dd class="itemDescription"><span class="rating">{$products_history.REVIEWS_STAR_RATING}</span>, <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$products_history.REVIEWS_TOTAL}</span></dd>{/if}
+
 <dd class="itemDescriptionPrice">
 {$products_history.PRODUCTS_PRICE}
 </dd>
