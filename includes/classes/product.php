@@ -81,8 +81,11 @@ class product {
 	 * 
 	 */
 
-	function getReviewsRating() {
-		$reviews_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+	function getReviewsRating($products_id = 0) {
+
+	  if ($products_id == 0) $products_id = $this->pID;
+
+		$reviews_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$products_id."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
 		$reviews = vam_db_fetch_array($reviews_query);
 		if ($reviews['total'] > 0 && $reviews['rating'] > 0) {
 		return $reviews['rating']/$reviews['total'];
@@ -95,8 +98,11 @@ class product {
 	 * 
 	 */
 
-	function getReviewsCount() {
-		$reviews_query = vam_db_query("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".$this->pID."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+	function getReviewsCount($products_id = 0) {
+	  
+	  if ($products_id == 0) $products_id = $this->pID;
+	  
+		$reviews_query = vam_db_query("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$products_id."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
 		$reviews = vam_db_fetch_array($reviews_query);
 		return $reviews['total'];
 	}
@@ -546,12 +552,19 @@ if ($vamPrice->CheckSpecial($array['products_id']) > 0) {
 $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vamPrice->GetPprice($array['products_id']));
 }
 
+		$star_rating = '';
+		for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
 
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
-		      'PRODUCTS_MODEL'=>$array['products_model'],
-		      'PRODUCTS_WEIGHT'=>$array['products_weight'],
-		      'PRODUCTS_EAN'=>$array['products_ean'],
-		      'PRODUCTS_QUANTITY'=>$array['products_quantity'],
+		    'PRODUCTS_MODEL'=>$array['products_model'],
+		    'PRODUCTS_WEIGHT'=>$array['products_weight'],
+		    'PRODUCTS_EAN'=>$array['products_ean'],
+		    'PRODUCTS_QUANTITY'=>$array['products_quantity'],
+		    'REVIEWS_TOTAL'=> $this->getReviewsCount($array['products_id']), 
+		    'REVIEWS_TOTAL_RATING'=> $this->getReviewsRating($array['products_id']), 
+		    'REVIEWS_STAR_RATING'=> $star_rating, 
 				'COUNT'=>$array['ID'],
 				'EXTRA_FIELDS'=>$extra_fields_data,
 				'PRODUCTS_ID'=>$array['products_id'],
