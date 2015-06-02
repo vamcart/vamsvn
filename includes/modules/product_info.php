@@ -115,6 +115,15 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$image = '';
 
+		$star_rating = '';
+		for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+
+		$info->assign('STAR_RATING', $star_rating);
+		$info->assign('REVIEWS_RATING', $product->getReviewsRating());
+		$info->assign('REVIEWS_TOTAL', $product->getReviewsCount());
+
 		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" alt="" />');
 		$info->assign('ASK_PRODUCT_QUESTION_LINK', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']));
 

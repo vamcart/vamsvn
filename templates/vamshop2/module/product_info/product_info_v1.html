@@ -35,6 +35,13 @@
 
 <div class="ProductInfoRight">
 
+{if $REVIEWS_TOTAL}
+<p>
+{if $REVIEWS_TOTAL}{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}, {/if}
+{if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$REVIEWS_RATING|number_format:2}{/if}
+</p>
+{/if}
+
 <p>
 <span class="bold">{$PRODUCTS_PRICE}</span>
 </p>
