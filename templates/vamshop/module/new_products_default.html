@@ -10,6 +10,8 @@
 <a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
 </dd>
 
+{if $module_data.REVIEWS_TOTAL > 0}<dd class="itemDescription"><span class="rating">{$smarty.const.TEXT_REVIEWS_RATING}: {$module_data.REVIEWS_TOTAL_RATING|number_format:2}</span>, <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></dd>{/if}
+
 <dd class="itemDescription">
 {$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
 </dd>

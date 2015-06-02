@@ -6,6 +6,7 @@
 					{foreach name=aussen item=module_data from=$module_content}					<li>
 						{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>{/if}
 						<h3><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
+            {if $module_data.REVIEWS_TOTAL > 0}<dd class="itemDescription"><span class="rating">{$smarty.const.TEXT_REVIEWS_RATING}: {$module_data.REVIEWS_TOTAL_RATING|number_format:2}</span>, <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></dd>{/if}
 						{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<span>{$module_data.PRODUCTS_SHORT_DESCRIPTION}</span>{/if}
 						<span class="price"><strong>{$module_data.PRODUCTS_PRICE}</strong></span>
 						{$module_data.PRODUCTS_BUTTON_BUY_NOW}
