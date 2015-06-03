@@ -3834,3 +3834,53 @@ INSERT INTO `product_labels` (`id`, `default`, `name`, `alias`, `html`, `active`
 (1, 1, 'Новинка', 'new', '', 1, 1),
 (2, 0, 'Хит', 'hit', '', 1, 2),
 (3, 0, 'Распродажа', 'sale', '', 1, 3);
+
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(1, 1, 0, 'Alex', 5, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(2, 1, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(3, 2, 0, 'Alex', 3, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(4, 2, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(5, 5, 0, 'Alex', 3, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(6, 5, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(7, 6, 0, 'Alex', 5, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(8, 6, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(9, 7, 0, 'Alex', 5, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(10, 7, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(11, 8, 0, 'Alex', 3, '2015-06-03 13:59:34', NULL, 0);
+INSERT INTO `reviews` (`reviews_id`, `products_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`) VALUES
+(12, 8, 0, 'Alex', 4, '2015-06-03 13:59:34', NULL, 0);
+
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(1, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(2, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(3, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(4, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(5, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(6, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(7, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(8, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(9, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(10, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(11, 1, ':) :) :) :)');
+INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(12, 1, ':) :) :) :)');
