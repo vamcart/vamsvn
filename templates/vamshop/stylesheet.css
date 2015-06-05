@@ -3630,5 +3630,36 @@ div.CheckoutError
 #myModal .modal-body {
 	max-height: 400px;
 }   
+
+.label {
+  background-color: #ff6633;
+  color: #fff;
+  right: 0;
+  padding: 0 15px 0 15px;
+  margin: 0;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0px;
+}
+
+.label.new {
+  background-color: #0081c2;
+}
+
+.label.hit {
+  background-color: #d91414;
+}
+
+.label.sale {
+  background-color: #00b600;
+}
+
+.label.html {
+  background-color: transparent;
+}
+
 		         
 /*]]>*/
