@@ -238,9 +238,6 @@ address
 	}
 .recomend ul li span 
 	{
-		display: block;
-		color: #414141;
-		padding-bottom: 10px;
 	}
 .recomend ul li span.price 
 	{
@@ -273,7 +270,6 @@ address
 	}
 .new ul li span  
 	{
-		display: block;
 		padding-bottom: 4px;
 	}
 .new ul li span.price  

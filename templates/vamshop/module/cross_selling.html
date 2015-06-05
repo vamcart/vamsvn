@@ -10,6 +10,12 @@
 <a href="{$products_data.PRODUCTS_LINK}">{$products_data.PRODUCTS_NAME}</a>
 </dd>
 
+{if $products_data.PRODUCTS_LABEL}
+<dd class="itemDescription">
+{$products_data.PRODUCTS_LABEL}
+</dd>
+{/if}
+
 {if $products_data.REVIEWS_TOTAL > 0}<dd class="itemDescription"><p>{$smarty.const.TEXT_REVIEWS_RATING}: {$products_data.REVIEWS_TOTAL_RATING|number_format:2}, {$smarty.const.TEXT_TOTAL_REVIEWS}: {$products_data.REVIEWS_TOTAL}</p></dd>{/if}
 
 <dd class="itemDescription">
