@@ -100,7 +100,6 @@ $('#box')
 .on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'payment': $('input[name=payment]:checked').val(),'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh'),img_loader();});})
 //.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 
-
 .on('change', '#country', function(){
 
       var searchString = $("select[name=country]").val();
@@ -112,7 +111,22 @@ $('#box')
                      success: function(msg){$("#stateXML").html(msg);}            
                    });  
 
-});
+})
+
+
+
+.on('change', '#country_payment', function(){
+
+      var searchString = $("select[name=country_payment]").val();
+      $.ajax({
+                     url: "index_ajax.php",             
+                     dataType : "html",                       
+                     data: "q=includes/modules/ajax/loadStateXMLPayment.php&country_id="+searchString,
+                     type: "POST",   
+                     success: function(msg){$("#stateXMLPayment").html(msg);}            
+                   });  
+
+})
 
 ;}
 });
