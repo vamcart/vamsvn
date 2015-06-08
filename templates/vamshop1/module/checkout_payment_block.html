@@ -1,29 +1,46 @@
-		<script type="text/javascript">
-		{literal}
-			$(document).ready(function() {
-				$("div#qiwi").hide();
-				$("div#qiwi_rest").hide();
-				$("div#schet").hide();
-				$("div#kvitancia").hide();
-				$("div#aviso").hide();
-					$("input#qiwi").click(function (){
-						$("div#qiwi").show();
-					});
-					$("input#qiwi_rest").click(function (){
-						$("div#qiwi_rest").show();
-					});
-					$("input#schet").click(function (){
-						$("div#schet").show();
-					});
-					$("input#kvitancia").click(function (){
-						$("div#kvitancia").show();
-					});
-					$("input#aviso").click(function (){
-						$("div#aviso").show();
-					});
-			});
-		{/literal}
-		</script>
+<script type="text/javascript">
+{literal}
+$(document).ready(function() {
+
+	$("div#qiwi_rest").hide();
+	$("div#schet").hide();
+	$("div#kvitancia").hide();
+
+	$("input#qiwi_rest").click(function (){
+		$("div#qiwi_rest").toggle();
+	});
+	$("input#schet").click(function (){
+		$("div#schet").toggle();
+	});
+	$("input#kvitancia").click(function (){
+		$("div#kvitancia").toggle();
+	});
+
+});
+
+$(document).ajaxStop(function() {
+
+if ($("input#qiwi_rest").is(":checked")) {
+  $("div#qiwi_rest").show();
+} else {
+  $("div#qiwi_rest").hide();
+}
+
+if ($("input#schet").is(":checked")) {
+  $("div#schet").show();
+} else {
+  $("div#schet").hide();
+}
+
+if ($("input#kvitancia").is(":checked")) {
+  $("div#kvitancia").show();
+} else {
+  $("div#kvitancia").hide();
+}
+
+});
+{/literal}
+</script>
 {foreach name=aussen item=module_data from=$module_content} <div class="{cycle values="itemOdd,itemEven"}">
 <p>
 <label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
