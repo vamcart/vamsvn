@@ -107,7 +107,7 @@ if (!get_cfg_var('safe_mode') && function_exists('set_time_limit')) {
 }
 
 if (YML_AUTH_USER != "" && YML_AUTH_PW != "") {
-  if (!isset($PHP_AUTH_USER) || $PHP_AUTH_USER != YML_AUTH_USER || $PHP_AUTH_PW != YML_AUTH_PW) {
+  if (!isset($_SERVER["PHP_AUTH_USER"]) || $_SERVER["PHP_AUTH_USER"] != YML_AUTH_USER || $_SERVER["PHP_AUTH_PW"] != YML_AUTH_PW) {
     header('WWW-Authenticate: Basic realm="Realm-Name"');
     header("HTTP/1.0 401 Unauthorized");
     die;
