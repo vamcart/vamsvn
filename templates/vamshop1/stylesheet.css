@@ -12,7 +12,7 @@ body {
 .inner {
   background-color: #fbfbfb;
   position: relative;
-  padding: 15px;
+  padding: 15px 15px 15px 0;
 }
 .inner.darken {
   background-color: #eeeeee;
