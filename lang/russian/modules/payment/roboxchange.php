@@ -14,8 +14,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'Roboxchange (карточки Visa, MasterCard, WebMoney, Яндекс.Деньги)');
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'Roboxchange (карточки Visa, MasterCard, WebMoney, Яндекс.Деньги)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'RoboKassa (Яндекс.Деньги, WebMoney, карточки Visa, MasterCard)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'RoboKassa (Яндекс.Деньги, WebMoney, карточки Visa, MasterCard)');
   
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Разрешить модуль roboxchange');
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Установка<br />
