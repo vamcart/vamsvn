@@ -2733,6 +2733,14 @@ label.error
 		background: #fcc;
 		border: 1px solid #d91414;
 	}	
+
+input[type="text"].error, 
+input[type="password"].error, 
+input[type="email"].error, 
+input[type="url"].error, 
+input[type="search"].error, 
+input[type="tel"].error {
+  background-color: #fcc;
 	
 span.Requirement 
    {
