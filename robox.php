@@ -19,6 +19,7 @@ function get_var($name, $default = 'none') {
 }
 
 require('includes/application_top.php');
+require (DIR_WS_CLASSES.'order.php');
 
 // logging
 //$fp = fopen(DIR_WS_IMAGES.'.ht-robox.log', 'a+');
@@ -31,10 +32,12 @@ require('includes/application_top.php');
 
 // variables prepearing
 $inv_id = get_var('InvId');
+$order = new order($inv_id);
 $out_summ = get_var('OutSum');
 $crc = get_var('SignatureValue');
 
 // checking and handling
+if (number_format($out_summ,0) == number_format($order->info['total'],0)) {
 if (strtoupper(md5("$out_summ:$inv_id:".MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2)) == strtoupper($crc)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
@@ -47,6 +50,7 @@ if (strtoupper(md5("$out_summ:$inv_id:".MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2)) =
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+}
 }
 
 ?>
