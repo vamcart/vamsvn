@@ -134,7 +134,7 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 	jQuery(window).resize(resizeColorBox);
 	
 $(document).ready(function(){
-  $(".lightbox").colorbox({rel:"lightbox"});
+  $(".lightbox").colorbox({rel:"lightbox", title: false});
   $(".iframe").colorbox({iframe:true, width:"30%", height:"80%"});
 });
 </script>
