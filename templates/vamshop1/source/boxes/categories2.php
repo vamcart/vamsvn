@@ -13,6 +13,8 @@
 
    ---------------------------------------------------------------------------------------*/
 
+require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
+require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
 
 $box = new vamTemplate;
 
