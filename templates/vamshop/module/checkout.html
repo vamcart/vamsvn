@@ -58,8 +58,9 @@ function showSelected(suggestion) {
   $("#state").val(address.region);
   } else {
   $("#state").val(join([
-    join([address.region, address.region_type], " "),
-    join([address.area_type, address.area], " ")
+    join([address.region, address.region_type_full], " ")
+    //join([address.region, address.region_type_full], " "),
+    //join([address.area_type, address.area], " ")
   ]));
   }
   $("#city").val(join([
