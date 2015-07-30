@@ -275,7 +275,7 @@ $max_runtime=$limit_up-$limit_low;
                                 WHERE  newsletter_id='".(int)$_GET['ID']."'");
 $newsletters_data=vam_db_fetch_array($newsletters_query);
 if ($newsletters_data['cc']!='') {
-if (filter_var($newsletters_data['cc'])) {
+if (filter_var($newsletters_data['cc'], FILTER_VALIDATE_EMAIL)) {
 vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                 EMAIL_SUPPORT_NAME,
                 $newsletters_data['cc'],
@@ -296,7 +296,7 @@ for ($i=1;$i<=$max_runtime;$i++)
 $link1 = chr(13).chr(10).chr(13).chr(10).TEXT_NEWSLETTER_REMOVE.chr(13).chr(10).chr(13).chr(10).HTTP_CATALOG_SERVER.DIR_WS_CATALOG.FILENAME_CATALOG_NEWSLETTER.'?action=remove&email='.$email_data[$i-1]['email'].'&key='.$email_data[$i-1]['key'];
 $link2 = $link2 = '<br /><br /><hr>'.TEXT_NEWSLETTER_REMOVE.'<br /><a href="'.HTTP_CATALOG_SERVER.DIR_WS_CATALOG.FILENAME_CATALOG_NEWSLETTER.'?action=remove&email='.$email_data[$i-1]['email'].'&key='.$email_data[$i-1]['key'].'">' . TEXT_REMOVE_LINK . '</a>';
 
-if (filter_var($email_data[$i-1]['email'])) {
+if (filter_var($email_data[$i-1]['email'], FILTER_VALIDATE_EMAIL)) {
   vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                 EMAIL_SUPPORT_NAME,
                 $email_data[$i-1]['email'],
