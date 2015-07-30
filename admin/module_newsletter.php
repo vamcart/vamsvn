@@ -275,6 +275,7 @@ $max_runtime=$limit_up-$limit_low;
                                 WHERE  newsletter_id='".(int)$_GET['ID']."'");
 $newsletters_data=vam_db_fetch_array($newsletters_query);
 if ($newsletters_data['cc']!='') {
+if (filter_var($newsletters_data['cc'])) {
 vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                 EMAIL_SUPPORT_NAME,
                 $newsletters_data['cc'],
@@ -287,16 +288,18 @@ vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                 $newsletters_data['title'],
                 $newsletters_data['body'],
                 $newsletters_data['body']);
-                }
+}                
+}
 for ($i=1;$i<=$max_runtime;$i++)
 {
   // mail
 $link1 = chr(13).chr(10).chr(13).chr(10).TEXT_NEWSLETTER_REMOVE.chr(13).chr(10).chr(13).chr(10).HTTP_CATALOG_SERVER.DIR_WS_CATALOG.FILENAME_CATALOG_NEWSLETTER.'?action=remove&email='.$email_data[$i-1]['email'].'&key='.$email_data[$i-1]['key'];
 $link2 = $link2 = '<br /><br /><hr>'.TEXT_NEWSLETTER_REMOVE.'<br /><a href="'.HTTP_CATALOG_SERVER.DIR_WS_CATALOG.FILENAME_CATALOG_NEWSLETTER.'?action=remove&email='.$email_data[$i-1]['email'].'&key='.$email_data[$i-1]['key'].'">' . TEXT_REMOVE_LINK . '</a>';
 
+if (filter_var($email_data[$i-1]['email'])) {
   vam_php_mail(EMAIL_SUPPORT_ADDRESS,
                 EMAIL_SUPPORT_NAME,
-                make_translit($email_data[$i-1]['email']),
+                $email_data[$i-1]['email'],
                 $email_data[$i-1]['lastname'] . ' ' . $email_data[$i-1]['firstname'] ,
                 '',
                 EMAIL_SUPPORT_REPLY_ADDRESS,
@@ -306,6 +309,8 @@ $link2 = $link2 = '<br /><br /><hr>'.TEXT_NEWSLETTER_REMOVE.'<br /><a href="'.HT
                 $newsletters_data['title'],
                 $newsletters_data['body'].$link2,
                 $newsletters_data['body'].$link1);
+}                
+                
   vam_db_query("UPDATE ".TABLE_NEWSLETTER_TEMP.(int)$_GET['ID']." SET comment='send' WHERE id='".$email_data[$i-1]['id']."'");
 }
 if ($break=='1') {
