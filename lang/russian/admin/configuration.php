@@ -1030,4 +1030,7 @@ define('SC_CONFIRMATION_PAGE_DESC', 'Включить переход на стр
 define('DADATA_API_KEY_TITLE', 'DaData.Ru API ключ подсказок');
 define('DADATA_API_KEY_DESC', 'Укажите свой ключ для подсказок DaData.Ru. API ключ можно получить в своём кабинете на dadata.ru/suggestions');
 
+define('PHONE_MASK_TITLE', 'Маска телефона');
+define('PHONE_MASK_DESC', 'Укажите шаблон для ввода телефонного номера');
+
 ?>
