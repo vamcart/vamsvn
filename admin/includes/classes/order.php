@@ -45,6 +45,9 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
     function query($order_id) {
       $order_query = vam_db_query("select customers_name,
+                                   customers_firstname,
+                                   customers_secondname,
+                                   customers_lastname,      
                                    customers_cid,
                                    customers_id,
                                    customers_vat_id,
@@ -131,11 +134,10 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
                           'orders_status' => $order['orders_status'],
                           'last_modified' => $order['last_modified']);
                           
-		$fio = explode(" ", $order['customers_name']);				                          
-
       $this->customer = array('name' => $order['customers_name'],
-                              'firstname' => isset($fio[0]) ? $fio[0] : false,      
-                              'lastname' => isset($fio[1]) ? $fio[1] : false,     
+                              'firstname' => $order['customers_firstname'],
+                              'secondname' => $order['customers_secondname'],
+                              'lastname' => $order['customers_lastname'],
                               'company' => $order['customers_company'],
                               'csID' => $order['customers_cid'],
                               'vat_id' => $order['customers_vat_id'],                               
