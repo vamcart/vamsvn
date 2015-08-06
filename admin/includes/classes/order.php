@@ -130,8 +130,12 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
                           'date_purchased' => $order['date_purchased'],
                           'orders_status' => $order['orders_status'],
                           'last_modified' => $order['last_modified']);
+                          
+		$fio = explode(" ", $order['customers_name']);				                          
 
       $this->customer = array('name' => $order['customers_name'],
+                              'firstname' => isset($fio[0]) ? $fio[0] : false,      
+                              'lastname' => isset($fio[1]) ? $fio[1] : false,     
                               'company' => $order['customers_company'],
                               'csID' => $order['customers_cid'],
                               'vat_id' => $order['customers_vat_id'],                               
