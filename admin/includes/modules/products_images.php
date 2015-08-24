@@ -37,7 +37,7 @@ $dir_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT
 	echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.'<br />'.vam_draw_file_field('products_image').'<br />'.vam_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$pInfo->products_image.vam_draw_hidden_field('products_previous_image_0', $pInfo->products_image);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . vam_draw_pull_down_menu('upload_dir_image_0',$dir_list, dirname($pInfo->products_image).'/'). '</td>';
-	echo '<td class="main">'.TEXT_IMAGE_DESCRIPTION.'<br />' . vam_draw_textarea_field('main_pics_descr', 'hard', 76, 7, $pInfo->products_image_description);
+	echo '<td class="main">'.TEXT_IMAGE_DESCRIPTION.'<br />' . vam_draw_textarea_field('main_pics_descr', 'hard', 76, 7, $pInfo->products_image_description,'class="notinymce"');
 //	echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('get_file_image_0',$file_list,$pInfo->products_image);
 // EOF Add existing image
 	if ($pInfo->products_image != '') {
@@ -60,7 +60,7 @@ $dir_list = vam_array_merge(array('0' => array('id' => '', 'text' => TEXT_SELECT
 			echo '<td class="main">'.TEXT_PRODUCTS_IMAGE.' '. ($i +1).'<br />'.vam_draw_file_field('mo_pics_'.$i).'<br />'.vam_draw_separator('pixel_trans.gif', '24', '15').'&nbsp;'.$mo_images[$i]["image_name"].vam_draw_hidden_field('products_previous_image_'. ($i +1), $mo_images[$i]["image_name"]);
 // BOF Add existing image
 	echo '<br />' . TEXT_PRODUCTS_IMAGE_UPLOAD_DIRECTORY . '<br />' . vam_draw_pull_down_menu('mo_pics_upload_dir_image_'.$i,$dir_list, dirname($mo_images[$i]["image_name"]).'/'). '</td>';
-echo '<td class="main">'.TEXT_IMAGE_DESCRIPTION.' '. ($i +1).'<br />' . vam_draw_textarea_field('mo_pics_descr_'.$i, 'hard', 76, 7, $mo_images[$i]["image_description"]);
+echo '<td class="main">'.TEXT_IMAGE_DESCRIPTION.' '. ($i +1).'<br />' . vam_draw_textarea_field('mo_pics_descr_'.$i, 'hard', 76, 7, $mo_images[$i]["image_description"],'class="notinymce"');
 	//echo '<br /><br />' . TEXT_PRODUCTS_IMAGE_GET_FILE . '<br />' . vam_draw_pull_down_menu('mo_pics_get_file_image_'.$i,$file_list,$mo_images[$i]["image_name"]);
 // EOF Add existing image
 			if (isset ($mo_images[$i]["image_name"])) {
