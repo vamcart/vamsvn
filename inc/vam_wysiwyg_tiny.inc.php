@@ -17,75 +17,39 @@
 
 function vam_wysiwyg_tiny($type, $lang, $langID = '') {
 
-$js_src = DIR_WS_INCLUDES .'javascript/tiny_mce/tiny_mce.js';
-$tiny_mce_file_browser_callback = 'ajaxfilemanager';
+$js_src = DIR_WS_INCLUDES .'javascript/tinymce/tinymce.min.js';
 
 	switch($type) {
                 // WYSIWYG editor latest news textarea named latest_news
                 case 'latest_news':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -95,67 +59,32 @@ function toggleHTMLEditor(id) {
                 case 'faq':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -165,67 +94,32 @@ function toggleHTMLEditor(id) {
                 case 'articles_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -235,67 +129,32 @@ function toggleHTMLEditor(id) {
                 case 'topics_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -305,67 +164,32 @@ function toggleHTMLEditor(id) {
                 case 'products_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -375,67 +199,32 @@ function toggleHTMLEditor(id) {
                 case 'products_short_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -445,67 +234,32 @@ function toggleHTMLEditor(id) {
                 case 'content_manager':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -515,136 +269,32 @@ function toggleHTMLEditor(id) {
                 case 'products_content':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
-}
-                        	   	</script>
-                        	   	';
-                        break;
-
-                // WYSIWYG editor products content manager
-                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
-<script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
-});
-
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
-function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
-	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -654,67 +304,32 @@ function toggleHTMLEditor(id) {
                 case 'categories_description':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -724,67 +339,32 @@ function toggleHTMLEditor(id) {
                 case 'mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
@@ -794,67 +374,32 @@ function toggleHTMLEditor(id) {
                 case 'gv_mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
-tinyMCE.init({
-	mode : "none",
-	editor_deselector : "notinymce",
-	theme : "advanced",
-	language : "'.$lang.'",
-	paste_create_paragraphs : false,
-	paste_create_linebreaks : false,
-	paste_use_dialog : true,
-	convert_urls : false,
-
-	plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,fullscreen,noneditable,visualchars,nonbreaking,typograf",
-
-	file_browser_callback : "'.$tiny_mce_file_browser_callback.'",
-	elements : "'.$tiny_mce_file_browser_callback.'",
-
-	spellchecker_languages : "+Russian=ru,English=en",
-	spellchecker_rpc_url : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/spellchecker/rpc_proxy.php",
-
-	// Theme options
-	theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,typograf,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
-	theme_advanced_resizing : true
-
+tinymce.init({
+    selector : "textarea:not(.notinymce)",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste responsivefilemanager"
+    ],
+    image_advtab: true ,
+    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+    filemanager_title:"VamShop" ,
+    filemanager_access_key:"'. vam_session_name() .'" ,
+    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+    autosave_ask_before_unload: false,
+    max_height: 200,
+    forced_root_block : false,
+    min_height: 160,
+    height : 180,
+    convert_urls : false,
+    language : "'.$lang.'"
 });
 
-  function ajaxfilemanager(field_name, url, type, win) {
-    var ajaxfilemanagerurl = "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/includes/javascript/tiny_mce/plugins/ajaxfilemanager/ajaxfilemanager.php?language=' . strtolower($lang) . '&vam=' . trim(DIR_WS_ADMIN, '/') . '&sid=' . session_id() .'";
-    switch (type) {
-      case "image":
-        break;
-      case "media":
-        break;
-      case "flash":
-        break;
-      case "file":
-        break;
-      default:
-        return false;
-    }
-    tinyMCE.activeEditor.windowManager.open({
-      url: ajaxfilemanagerurl,
-      width: 782,
-      height: 440,
-      inline : "yes",
-      close_previous : "no"
-    },{
-      window : win,
-      input : field_name
-    });
-  }
-  
 function toggleHTMLEditor(id) {
-	if (!tinyMCE.get(id))
-		tinyMCE.execCommand("mceAddControl", false, id);
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
 	else
-		tinyMCE.execCommand("mceRemoveControl", false, id);
+		tinymce.execCommand("mceRemoveEditor", false, id);
 }
                         	   	</script>
                         	   	';
