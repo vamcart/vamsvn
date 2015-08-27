@@ -63,6 +63,23 @@ function vam_get_sc_titles_number() {
 }
 //END functions specific
 
+// Anti spam
+
+		$spam_flag = false;
+
+		if ( trim( $_POST['anti-bot-q'] ) != date('Y') ) { // answer is wrong - maybe spam
+			$spam_flag = true;
+			if ( empty( $_POST['anti-bot-q'] ) ) { // empty answer - maybe spam
+				$antispam_error_message .= 'Error: empty answer. ['.$_POST['anti-bot-q'].']<br> ';
+			} else {
+				$antispam_error_message .= 'Error: answer is wrong. ['.$_POST['anti-bot-q'].']<br> ';
+			}
+		}
+		if ( ! empty( $_POST['anti-bot-e-email-url'] ) ) { // field is not empty - maybe spam
+			$spam_flag = true;
+			$antispam_error_message .= 'Error: field should be empty. ['.$_POST['anti-bot-e-email-url'].']<br> ';
+		}
+		
 
 // check if checkout is allowed
 
@@ -192,7 +209,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
   if (!isset($_SESSION['qiwi_telephone'])) $_SESSION['qiwi_telephone'] = $_POST['qiwi_telephone'];
 
   $process = false;
-  if (isset($_POST['action']) && ($_POST['action'] == 'not_logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
+  if (isset($_POST['action']) && ($_POST['action'] == 'not_logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken) && $spam_flag == false) {
     $process = true;
 	
 	if ($sc_shipping_address_show == true) { //show shipping otpions 
@@ -528,7 +545,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 
 
 /////////////////// Validation for LOGGED ON ////////////////////////////////////////////
-if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
+if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken) && $spam_flag == false) {
 
 	$_SESSION['comments'] = vam_db_prepare_input($_POST['comments']);
 
@@ -1079,7 +1096,7 @@ if (vam_session_is_registered('changed_adress')) vam_session_unregister('changed
 	
 
 ///////////////////  START PROCESS Button pressed for NO ACCOUNT onepage and confirmation page  ////////////////////////////////////////////
-if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($create_account != true)) && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
+if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($create_account != true)) && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken) && $spam_flag == false) {
 //if no errors
 //checkout not possible used for shipping method or whatever
 	
@@ -1246,7 +1263,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 
 
 ///////////////////  START PROCESS Button pressed for ACCOUNT CREATION - only onepage ////////////////////////////////////////////
-if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($create_account == true)) && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
+if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($create_account == true)) && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken) && $spam_flag == false) {
 //if no errors
     if ($error == false) {
 		
@@ -1551,7 +1568,7 @@ if (isset($$payment->form_action_url)) {
 
 
 /////////////////// START PROCESS Button pressed for LOGGED ON ////////////////////////////////////////////
-if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken)) {
+if (isset($_POST['action']) && ($_POST['action'] == 'logged_on') && isset($_POST['formid']) && ($_POST['formid'] == $sessiontoken) && $spam_flag == false) {
 
 	if ($error == false) {
 	
