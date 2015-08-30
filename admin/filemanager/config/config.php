@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 $_SESSION['customers_status_id'] = 1;
 
   //if (isset($_GET['akey'])) {
@@ -192,7 +194,7 @@ $config = array(
 	| DO NOT put inside upload folder
 	|
 	*/
-	'thumbs_base_path' => '../../images/',
+	'thumbs_base_path' => '../../images/thumbs/',
 
 	/*
 	|--------------------------------------------------------------------------
