@@ -84,11 +84,13 @@
 	    }
       
       
+		if (MODULE_SHIPPING_RUSSIANPOSTCALC_COST > 0) $shipping_cost = $shipping_cost + MODULE_SHIPPING_RUSSIANPOSTCALC_COST;      
+      
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_RUSSIANPOSTCALC_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
                                                      'title' => MODULE_SHIPPING_RUSSIANPOSTCALC_TEXT_TITLE,
-                                                     'cost' => $shipping_cost+MODULE_SHIPPING_RUSSIANPOSTCALC_COST)));
+                                                     'cost' => $shipping_cost)));
 
       if ($this->tax_class > 0) {
         $this->quotes['tax'] = vam_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
@@ -110,7 +112,7 @@
     function install() {
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_ALLOWED', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_COST', '5.00', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_COST', '150', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_API_KEY', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_API_PASSWORD', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_RUSSIANPOSTCALC_ZIP', '', '6', '0', now())");
