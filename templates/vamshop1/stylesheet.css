@@ -2308,17 +2308,6 @@ table.contentTable td
 		width: 96%;
 	}	   
 
-label.error 
-    {
-		margin-left: 10px;
-		width: auto;
-		display: inline;
-		color: red;
-		font-weight: normal;
-		background: transparent;
-		border: 0px;
-	}
-
 .error
 	{
 		background: #fcc;
@@ -2332,6 +2321,7 @@ input[type="url"].error,
 input[type="search"].error, 
 input[type="tel"].error {
   background-color: #fcc;
+}
 	
 span.Requirement 
    {
