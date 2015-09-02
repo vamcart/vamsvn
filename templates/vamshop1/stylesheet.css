@@ -2301,18 +2301,20 @@ table.contentTable td
 
 /* Error */
 
-#errormsg
-	{
-		border: 2px solid #c00;
-		padding: 5px;
-		width: 96%;
-	}	   
+label.error 
+  {
+    margin-left: 10px;
+    width: auto;
+    display: inline;
+    color: red;
+    font-weight: normal;
+    background: transparent;
+}
 
 .error
-	{
-		background: #fcc;
-		border: 1px solid #d91414;
-	}	
+   {
+    background: #fcc;
+   }	
 
 input[type="text"].error, 
 input[type="password"].error, 
@@ -2322,12 +2324,11 @@ input[type="search"].error,
 input[type="tel"].error {
   background-color: #fcc;
 }
-	
+
 span.Requirement 
    {
      color: red;
    }
-   	
    
 /* /Error */
 
