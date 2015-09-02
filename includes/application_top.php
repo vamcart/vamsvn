@@ -59,7 +59,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.78');
+define('PROJECT_VERSION', 'VamShop 1.79');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -544,7 +544,7 @@ if (isset ($cPath_array)) {
                         $breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));
                         }else {
                 if ($product->isProduct()) {$breadcrumb->add($categories['categories_name'], vam_href_link(FILENAME_DEFAULT, vam_category_link($cPath_array[$i], $categories['categories_name'])));} else {
-                	//$breadcrumb->add($categories['categories_name']);
+                	$breadcrumb->add($categories['categories_name']);
                 	}
                 }
 
