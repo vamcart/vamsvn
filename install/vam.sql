@@ -10,8 +10,8 @@
 #  based on:
 #  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
 #  (c) 2002-2003 osCommerce (oscommerce.sql,v 1.83); www.oscommerce.com
-#  (c) 2003  nextcommerce (nextcommerce.sql,v 1.79 2003/08/25); www.nextcommerce.org
-#  (c) 2005  xt:Commerce (nextcommerce.sql,v 1.79 2005/08/25); www.xt-commerce.com
+#  (c) 2003  nextcommerce (nextcommerce.sql,v 1.80 2003/08/25); www.nextcommerce.org
+#  (c) 2005  xt:Commerce (nextcommerce.sql,v 1.80 2005/08/25); www.xt-commerce.com
 #
 #  Released under the GNU General Public License
 #
@@ -1811,7 +1811,7 @@ create table cip_depend (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.79');
+INSERT INTO database_version(version) VALUES ('1.80');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
@@ -1995,7 +1995,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('AJAX_CART', 'false', 1, 31, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_TABS', 'true', 1, 32, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MASTER_PASS', '', 1, 33, NULL, '', NULL, '');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DADATA_API_KEY', '',  1, 34, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DADATA_API_KEY', 'd54b2e521766960e89c4c5f871483b33eae9a364',  1, 34, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PHONE_MASK', '(999) 999-9999',  1, 35, NULL, '', NULL, NULL);
 
 # configuration_group_id 2
