@@ -1103,7 +1103,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 $answer_templates_array = array (array ('id' => '', 'text' => TEXT_SELECT));
 $answer_templates_query = vam_db_query("select id, name, content from ".TABLE_ANSWER_TEMPLATES." WHERE status = '1' and language='".$_SESSION['languages_id']."' order by id");
 while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
-        $answer_templates_array[] = array ('id' => $answer_templates['content'], 'text' => $answer_templates['name']);
+        $answer_templates_array[] = array ('id' => vam_db_output($answer_templates['content']), 'text' => $answer_templates['name']);
 }
 ?>      
       <tr><?php echo vam_draw_form('status', FILENAME_ORDERS, vam_get_all_get_params(array('action')) . 'action=update_order'); ?>
