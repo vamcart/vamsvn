@@ -1,19 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {config_load file="$language/lang_$language.conf" section="boxes"}
 
-<!-- start: TOP BAR -->
-<div class="topbar clearfix">
-	<div class="container">
-		<ul class="nav nav-pills top-contacts pull-left">
-			<li><a href=""><i class="fa fa-phone"></i> {$smarty.const.STORE_TELEPHONE}</a></li>
-		</ul>
-		<ul class="nav nav-pills top-menu pull-right">
-			<li><a href="contact_us.html">{#text_contact_us#}</a></li>
-		</ul>
-	</div>
-</div>
-<!-- end: TOP BAR -->
-
 <!-- start: Header -->
 <div id="header">
 	<div class="container">
@@ -21,11 +8,10 @@
 			<div class="span3 logo">
 				<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" /></a>
 			</div>
-			<div class="span6 search">
-					<form class="form-search" action="advanced_search_result.php" method="get">
-						<input type="text" name="keywords" class="input-medium" placeholder="{#heading_search#}">
-						<button type="submit" class="btn hidden">{#heading_search#}</button>
-					</form>
+			<div class="span6 text-center">
+           <br />
+           <h4>{$smarty.const.STORE_TELEPHONE}</h4>
+           <h4><a href="contact_us.html">{#text_contact_us#}</a></h4>			
 			</div>
 		</div>
 	</div>
