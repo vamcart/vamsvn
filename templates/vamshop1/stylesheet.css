@@ -2771,7 +2771,7 @@ span.productSpecialPrice
 
 span.productOldPrice 
    {
-	  color: #ff0000;
+	  color: #000;
 	  text-decoration: line-through;
    }
 
