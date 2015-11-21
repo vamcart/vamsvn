@@ -133,6 +133,7 @@ $listing_sql = '';
     }
       
   $listing_sql .= "select distinct p.products_id,
+                                  p.label_id,
                                   p.products_fsk18,
                                   p.products_shippingtime,
                                   p.products_model,
