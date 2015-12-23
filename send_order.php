@@ -105,7 +105,7 @@ if (isset($order->customer['email_address'])) {
 	
 	foreach($recipients as $key => $value)
 	{
-		vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, EMAIL_BILLING_ADDRESS, STORE_NAME, $value, $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
+		vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $value, STORE_NAME, '', $order->customer['email_address'], $order->customer['firstname'], '', '', $order_subject, $html_mail, $txt_mail);
 	}
 
 	if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
