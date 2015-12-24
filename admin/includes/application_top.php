@@ -416,12 +416,12 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   }
 
   // set the language
-  if (!isset($_SESSION['language']) || isset($_GET['language'])) {
+  if (!isset($_SESSION['language']) || isset($_GET['language']) || empty($language)) {
 
     include(DIR_WS_CLASSES . 'language.php');
     $lng = new language($_GET['language']);
 
-    if (!isset($_GET['language'])) $lng->get_browser_language();
+    if (!isset($_GET['language'])) $lng->language(DEFAULT_LANGUAGE);
 
     $_SESSION['language'] = $lng->language['directory'];
     $_SESSION['languages_id'] = $lng->language['id'];

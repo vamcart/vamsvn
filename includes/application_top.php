@@ -375,13 +375,13 @@ if (SESSION_CHECK_IP_ADDRESS == 'True') {
 }
 
 // set the language
-if (!isset ($_SESSION['language']) || isset ($_GET['language'])) {
+if (!isset ($_SESSION['language']) || isset ($_GET['language']) || empty($language)) {
 
 	include (DIR_WS_CLASSES.'language.php');
 	$lng = new language(vam_input_validation($_GET['language'], 'char', ''));
 
 	if (!isset ($_GET['language']))
-		$lng->get_browser_language();
+		$lng->language(DEFAULT_LANGUAGE);
 
 	$_SESSION['language'] = $lng->language['directory'];
 	$_SESSION['languages_id'] = $lng->language['id'];
