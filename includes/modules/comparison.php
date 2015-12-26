@@ -233,7 +233,7 @@ if ( $current_category_id != 0 )
                 };
 
                 $remove_button = '<a class="button" href="'
-                  . vam_href_link( basename($PHP_SELF), implode( '&', $url_new_compare_params_arr ), 'NONSSL').'">'
+                  . vam_href_link( basename($PHP_SELF), implode( '&', $url_new_compare_params_arr ), 'NONSSL','','').'">'
                   . vam_image_button( 'delete.png', '' ) . '</a><br />';
 
 
