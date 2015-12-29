@@ -1673,7 +1673,8 @@ $payment_fields .= '
 <script type="text/javascript">
     document.checkoutUrl.submit();
 </script>
-<noscript><input type="submit" value="verify submit"></noscript>
+<br />
+<noscript><input class="btn button"type="submit" value="{$smarty.const.TEXT_CHECKOUT_PROCESS_PAYMENT}" /></noscript>
 
 ';
 
@@ -2236,6 +2237,42 @@ $vamTemplate->assign('AGB_checkbox', vam_draw_checkbox_field('conditions','1', t
 
 }
 ################ END Conditions of Use ########################################
+
+
+$data_products = '<table border="0" cellspacing="0" cellpadding="0">';
+for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
+
+	$data_products .= '<tr>' . "\n" . '            <td class="main" align="left" valign="top">' . $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . '</td>' . "\n" . '                <td class="main" align="right" valign="top">' . $vamPrice->Format($order->products[$i]['final_price'], true) . '</td></tr>' . "\n";
+	if (ACTIVATE_SHIPPING_STATUS == 'true') {
+
+		$data_products .= '<tr>
+							<td class="main" align="left" valign="top">
+							<small>' . SHIPPING_TIME . $order->products[$i]['shipping_time'] . '
+							</small></td>
+							<td class="main" align="right" valign="top">&nbsp;</td></tr>';
+
+	}
+	if ((isset ($order->products[$i]['attributes'])) && (sizeof($order->products[$i]['attributes']) > 0)) {
+		for ($j = 0, $n2 = sizeof($order->products[$i]['attributes']); $j < $n2; $j++) {
+			$data_products .= '<tr>
+								<td class="main" align="left" valign="top">
+								<small>&nbsp;<i> - ' . $order->products[$i]['attributes'][$j]['option'] . ': ' . $order->products[$i]['attributes'][$j]['value'] . '
+								</i></small></td>
+								<td class="main" align="right" valign="top">&nbsp;</td></tr>';
+		}
+	}
+
+	$data_products .= '' . "\n";
+
+	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
+		if (sizeof($order->info['tax_groups']) > 1)
+			$data_products .= '            <td class="main" valign="top" align="right">' . vam_display_tax_value($order->products[$i]['tax']) . '%</td>' . "\n";
+	}
+	$data_products .= '</tr>' . "\n";
+}
+$data_products .= '</table>';
+$vamTemplate->assign('PRODUCTS_BLOCK', $data_products);
+
 
 if (SC_CONFIRMATION_PAGE == 'true') { //got to confimration page
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));

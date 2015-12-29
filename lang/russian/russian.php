@@ -676,5 +676,6 @@ define('TEXT_PAGE_IN_CAT', 'Страница');
 define('TEXT_TOTAL_REVIEWS', 'Отзывы');
 define('TEXT_REVIEWS_RATING', 'Рейтинг');
 
+define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатить заказ');
 
 ?>
