@@ -183,7 +183,7 @@ vam_yml_out('  </categories>');
 vam_yml_out('  <offers>');
 $products_short_description = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
 $yml_select = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
-$products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_model, p.products_quantity, p.products_image, IF(s.status, s.specials_new_products_price, p.products_price) AS products_price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
+$products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_model, p.products_quantity, p.products_image, p.products_price, s.specials_new_products_price as price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
                 (($products_short_description > 0) ? ", pd.products_short_description " : " ") . "as proddesc " .
                 (($yml_select > 0) ? ", p.yml_bid, p.yml_cbid " : "") .
                 "FROM " . TABLE_PRODUCTS . " p
@@ -218,11 +218,16 @@ while ($products = vam_db_fetch_array($products_query)) {
   if($products["yml_cbid"] > 0) $cbid = ' cbid="' . $products["yml_cbid"] . '"';
   $price = $products['products_price'];
   $price = $vamPrice->GetPrice($products['products_id'], $format = false, 1, $products['products_tax_class_id'], $price);
+
+  $old_price = $products['price'];
+  $old_price = $vamPrice->GetPrice($products['products_id'], $format = false, 1, $products['products_tax_class_id'], $old_price);
+
   $url = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&amp;ref=' . $_GET['ref'] : null) . $yml_referer, 'NONSSL', false);
   $available = ' available="' . $available . '"';
   vam_yml_out('<offer id="' . $products['products_id'] . '"' . $available . $bid . $cbid . '>');
   vam_yml_out('  <url>' . $url . '</url>');
-  vam_yml_out('  <price>' . $price . '</price>');
+  vam_yml_out('  <price>' . ($old_price > 0 ? $old_price : $price) . '</price>');
+  if ($products['price'] > 0) vam_yml_out('  <oldprice>' . $vamPrice->Format($products['products_price'], false) . '</oldprice>');
   vam_yml_out('  <currencyId>' . $current_currency . '</currencyId>');
 
   vam_yml_out('  <categoryId>' . $products['categories_id'] . '</categoryId>');
