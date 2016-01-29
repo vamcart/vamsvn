@@ -32,7 +32,9 @@
       $this->sort_order = MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_ROBOXCHANGE_STATUS == 'True') ? true : false);
 
-      ((MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') ? $this->form_action_url = 'http://test.robokassa.ru/Index.aspx' : $this->form_action_url = 'https://merchant.roboxchange.com/Index.aspx');
+//      ((MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') ? $this->form_action_url = 'http://test.robokassa.ru/Index.aspx' : $this->form_action_url = 'https://merchant.roboxchange.com/Index.aspx');
+	  $this->form_action_url = 'https://auth.robokassa.ru/Merchant/Index.aspx';
+	  ((MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') ? $this->is_test = 1 : $this->is_test = 0);
       
     }
 
@@ -343,9 +345,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('MrchLogin', MODULE_PAYMENT_ROBOXCHANGE_LOGIN) .
                                vam_draw_hidden_field('Desc', substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1)) .
                                vam_draw_hidden_field('OutSum', $order_sum) .
-                               vam_draw_hidden_field('SignatureValue', $crc);
-
-      if (MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') $process_button_string .= vam_draw_hidden_field('IsTest', 1);
+                               vam_draw_hidden_field('SignatureValue', $crc) . 
+                               vam_draw_hidden_field('IsTest', $this->is_test);	
 
       return $process_button_string;
     }
