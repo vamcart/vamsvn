@@ -345,6 +345,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('OutSum', $order_sum) .
                                vam_draw_hidden_field('SignatureValue', $crc);
 
+      if (MODULE_PAYMENT_ROBOXCHANGE_TEST == 'test') $process_button_string .= vam_draw_hidden_field('IsTest', 1);
+
       return $process_button_string;
     }
 
