@@ -32,12 +32,15 @@ $module->assign( 'category_path_tpl', $category_path_tpl_arr );
 // include needed functions
 require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
 require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
-if (isset($_GET['on_page']) && is_numeric($_GET['on_page']) && $_GET['on_page'] < MAX_DISPLAY_SEARCH_RESULTS) {
- $num_page =  $_GET['on_page'];
- } else {
- $_GET['on_page'] = MAX_DISPLAY_SEARCH_RESULTS;
- $num_page =  MAX_DISPLAY_SEARCH_RESULTS;
- }
+if (isset($_GET['on_page']) && is_numeric($_GET['on_page'])) {
+if ($_GET['on_page'] <=100 ) { 
+$num_page =  $_GET['on_page'];
+} else { 
+$num_page = 100;
+}
+} else {
+$num_page =  MAX_DISPLAY_SEARCH_RESULTS;
+}
 
 $module->assign('LINK_PAGE',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','cPath','on_page','sort', 'direction', 'info','x','y')) . 'on_page='));
 
