@@ -36,6 +36,10 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
 if (GROUP_CHECK == 'true') {
 	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 }
+//if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
+	//$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
+	//$days = " and p.products_date_added > '".$date_new_products."' ";
+//}
 	$products_new_query_raw = "select distinct
 	                                    p.products_id,
 	                                    p.label_id,
