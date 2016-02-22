@@ -42,7 +42,7 @@ $_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['amount'],0) == number_format($order->info['total'],0)) {
+if (number_format($_POST['amount'],0) == number_format($order->info['total'],0) && $_POST['codepro'] == 'false') {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_FIZLICO_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
