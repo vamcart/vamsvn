@@ -28,6 +28,8 @@ define('MODULE_PAYMENT_YANDEX_FIZLICO_ALLOWED_TITLE' , 'Разрешённые �
 define('MODULE_PAYMENT_YANDEX_FIZLICO_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_TITLE' , 'Номер кошелька Яндекс.Деньги');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_DESC' , 'Укажите Ваш кошелёк в яндекс.деньгах.');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY_TITLE' , 'Секретное слово');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY_DESC' , 'В данной опции укажите Секретное слово из настроек на сайте яндекс.деньги, необходимо для уведомлений и автоматический смены статуса заказа.');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_ZONE_TITLE' , 'Зона');
