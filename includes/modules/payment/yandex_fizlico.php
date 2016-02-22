@@ -342,7 +342,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       }
 
-		vam_redirect('https://money.yandex.ru/embed/shop.xml?account='.MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID.'&quickpay=shop&payment-type-choice=on&mobile-payment-type-choice=on&writer=seller&targets='.substr($_SESSION['cart_yandex_fizlico_id'], strpos($_SESSION['cart_yandex_fizlico_id'], '-')+1).'&targets-hint=&default-sum='.$order->info['total'].'&button-text=01&hint=&fio=on&mail=on&phone=on&address=on&successURL='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'');
+		vam_redirect('https://money.yandex.ru/embed/shop.xml?account='.MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID.'&quickpay=shop&payment-type-choice=on&mobile-payment-type-choice=on&writer=seller&label='.substr($_SESSION['cart_yandex_fizlico_id'], strpos($_SESSION['cart_yandex_fizlico_id'], '-')+1).'&targets='.substr($_SESSION['cart_yandex_fizlico_id'], strpos($_SESSION['cart_yandex_fizlico_id'], '-')+1).'&targets-hint=&default-sum='.$order->info['total'].'&button-text=01&hint=&fio=on&mail=on&phone=on&address=on&successURL='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'');
 
       return array('title' => MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_DESCRIPTION);
     }

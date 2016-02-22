@@ -33,12 +33,12 @@ require (DIR_WS_CLASSES.'order.php');
 
 $crc = $_POST['sha1_hash'];
 
-$inv_id = $_POST['operation_id'];
+$inv_id = $_POST['label'];
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
 $hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['amount'].'&'.$_POST['currency'].'&'. 
-$_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY.'&'); 
+$_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY.'&'.$_POST['label']); 
 
 // checking and handling
 if ($hash == $crc) {
