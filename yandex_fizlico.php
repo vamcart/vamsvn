@@ -37,12 +37,11 @@ $inv_id = $_POST['label'];
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['amount'].'&'.$_POST['currency'].'&'. 
-$_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY.'&'.$_POST['label']); 
+$hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['amount'].'&'.$_POST['currency'].'&'.$_POST['datetime'].'&'.$_POST['sender'].'&'.$_POST['codepro'].'&'.MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY.'&'.$_POST['label']); 
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['amount'],0) == number_format($order->info['total'],0) && $_POST['codepro'] == 'false' && $_POST['unaccepted'] == 'false') {
+if (number_format($_POST['amount'],0) == number_format($order->info['total'],0) && $_POST['codepro'] == false && $_POST['unaccepted'] == false) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_FIZLICO_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
