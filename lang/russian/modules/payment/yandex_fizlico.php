@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'Яндекс.Касса (Яндекс.Деньги, карточки Visa, MasterCard)');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги (Яндекс.Деньги, карточки Visa, MasterCard)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'Яндекс.Касса (Яндекс.Деньги, карточки Visa, MasterCard)');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_DESCRIPTION', '');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты Яндекс.Деньги для физ. лиц.');
   
