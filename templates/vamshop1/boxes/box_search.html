@@ -1,12 +1,12 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<section class="widget inner darken search">
+<div class="widget inner darken search">
 	{$FORM_ACTION}
 		<input class="span4" id="quick_find_keyword" name="keywords" type="text" placeholder="{#heading_search#}" />
 		<input class="btn search-bt" type="submit" value="" />
 	{$FORM_END}
 	<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
 	<div><a href="{$LINK_ADVANCED}">{#text_advanced_search#}</a></div>
-</section>
+</div>
 			
 <script type="text/javascript">
 // <![CDATA[
