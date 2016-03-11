@@ -41,7 +41,7 @@ $hash = sha1($_POST['notification_type'].'&'.$_POST['operation_id'].'&'.$_POST['
 
 // checking and handling
 if ($hash == $crc) {
-if (number_format($_POST['amount'],2) == number_format($order->info['total'],2) && $_POST['codepro'] == 'false' && $_POST['unaccepted'] == 'false') {
+if (number_format($_POST['withdraw_amount'],2) == number_format($order->info['total'],2) && $_POST['codepro'] == 'false' && $_POST['unaccepted'] == 'false') {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_FIZLICO_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
