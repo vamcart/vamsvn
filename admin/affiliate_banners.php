@@ -59,7 +59,7 @@
           $affiliate_banner_error = true;
         }
 */
-        if (($_FILES['affiliate_banners_image']['name'] != '')) {
+        //if (($_FILES['affiliate_banners_image']['name'] != '')) {
           if (!is_writeable(DIR_FS_CATALOG_IMAGES)) {
           	$messageStack->add(ERROR_IMAGE_DIRECTORY_NOT_WRITEABLE, 'error');
             $affiliate_banner_error = true;
@@ -70,7 +70,11 @@
           	move_uploaded_file($_FILES['affiliate_banners_image']['tmp_name'], $image_location);
           	@chmod($image_location, 0644);
 
+				if (($_FILES['affiliate_banners_image']['name'] != '')) {
             $db_image_location = $_FILES['affiliate_banners_image']['name'];
+	         } else {
+            $db_image_location = $affiliate_banners_image_local;
+   	      }
             
             if (!$affiliate_products_id) $affiliate_products_id="0";
             $sql_data_array = array('affiliate_banners_title' => $affiliate_banners_title,
@@ -96,7 +100,7 @@
             }
             vam_redirect(vam_href_link(FILENAME_AFFILIATE_BANNER_MANAGER, 'page=' . $_GET['page'] . '&abID=' . $affiliate_banners_id));
 		  }
-		}
+		//}
         break;
       case 'deleteconfirm':
         $affiliate_banners_id = vam_db_prepare_input($_GET['abID']);
