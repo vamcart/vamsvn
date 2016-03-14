@@ -25,7 +25,7 @@ $js_src = DIR_WS_INCLUDES .'javascript/tinymce/tinymce.min.js';
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -66,7 +66,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -107,7 +107,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -148,7 +148,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -189,7 +189,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -230,7 +230,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -271,7 +271,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -312,7 +312,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -353,7 +353,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -394,7 +394,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
@@ -435,7 +435,7 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    //selector : "textarea:not(.notinymce)",
+    selector : "textarea:not(.notinymce)",
     plugins: [
 	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
