@@ -3165,6 +3165,11 @@ dd.itemCategoriesListing
 	  width: 80%;
    }
 
+.controls
+	{
+		padding: 6px 0 0 0;
+	}
+
 #myModal .modal-body {
 	max-height: 400px;
 }   
