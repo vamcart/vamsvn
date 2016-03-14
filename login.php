@@ -164,7 +164,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 $breadcrumb->add(NAVBAR_TITLE_LOGIN, vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 require (DIR_WS_INCLUDES.'header.php');
 
-//if ($_GET['info_message']) $info_message = $_GET['info_message'];
+if ($_GET['info_message']) $info_message = $_GET['info_message'];
 $vamTemplate->assign('info_message', $info_message);
 $vamTemplate->assign('BUTTON_NEW_ACCOUNT', '<a class="button" href="'.vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL').'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 $vamTemplate->assign('BUTTON_LOGIN', vam_image_submit('login.png', IMAGE_BUTTON_LOGIN));
