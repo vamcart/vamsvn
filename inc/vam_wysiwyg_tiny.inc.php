@@ -25,12 +25,18 @@ $js_src = DIR_WS_INCLUDES .'javascript/tinymce/tinymce.min.js';
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -60,12 +66,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -95,12 +107,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -130,12 +148,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -165,12 +189,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -200,12 +230,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -235,12 +271,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -270,12 +312,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -305,12 +353,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -340,12 +394,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
@@ -375,12 +435,18 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
+    //selector : "textarea:not(.notinymce)",
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste responsivefilemanager"
-    ],
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
+	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+	  ],
+	
+    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    menubar: false,
+    toolbar_items_size: "small",    
     image_advtab: true ,
     external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
     filemanager_title:"VamShop" ,
