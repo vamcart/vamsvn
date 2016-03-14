@@ -969,7 +969,7 @@ class categories {
                                                           language_id, 
                                                           specification 
                                                    from " . TABLE_PRODUCTS_SPECIFICATIONS . " 
-                                                   where products_id = '" . (int)$products_id . "'
+                                                   where products_id = '" . (int)$src_products_id . "'
                                                  ");
             while ($specifications = vam_db_fetch_array ($specifications_query) ) {
               vam_db_query ("insert into " . TABLE_PRODUCTS_SPECIFICATIONS . " (
