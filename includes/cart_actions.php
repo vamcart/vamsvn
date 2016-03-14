@@ -105,6 +105,9 @@ if (isset ($_GET['action'])) {
 			break;
 			// customer adds a product from the products page
 		case 'add_product' :
+
+          unset($_SESSION['error_cart_msg']);
+
        foreach( $_REQUEST as $key => $value) $_POST[$key]=$value;
 			if (isset ($_POST['products_id']) && is_numeric($_POST['products_id'])) {
 				if ($_POST['products_qty'] > MAX_PRODUCTS_QTY)
