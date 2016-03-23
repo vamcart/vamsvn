@@ -102,15 +102,53 @@
 		$own_cpcr_id = vam_get_spsr_zone_id($own_zone_id);
 
 	//oscommerce дважды запрашивает цену доставки c cpcr.ru - до подтверждения цены доставки (для показа пользователю) и после подтверждения цены доставки (нажатие кнопки "Продолжить"). Х.з. почему, видимо так работает oscommerce. Чтобы не запрашивать дважды кешируем $cost в hidden поле cost.
+
+
+    $xml_from_city = '
+<root xmlns="http://spsr.ru/webapi/Info/GetCities/1.0">
+<p:Params Name="WAGetCities" Ver="1.0" xmlns:p="http://spsr.ru/webapi/WA/1.0" />
+<GetCities CityName="'.MODULE_SHIPPING_SPSR_FROM_CITY.'" />
+</root>
+    ';
+
+    $result_from_city = send_xml( $xml_from_city );
+ 
+    $xml_string_from_city = simplexml_load_string($result_from_city);
+
+
+    $xml_to_city = '
+<root xmlns="http://spsr.ru/webapi/Info/GetCities/1.0">
+<p:Params Name="WAGetCities" Ver="1.0" xmlns:p="http://spsr.ru/webapi/WA/1.0" />
+<GetCities CityName="'.$order->delivery['city'].'" />
+</root>
+    ';
+
+    $result_to_city = send_xml( $xml_to_city );
+ 
+    $xml_string_to_city = simplexml_load_string($result_to_city);
+
+    $xml_error_to_city = '
+<root xmlns="http://spsr.ru/webapi/Info/GetCities/1.0">
+<p:Params Name="WAGetCities" Ver="1.0" xmlns:p="http://spsr.ru/webapi/WA/1.0" />
+<GetCities CityName="'.$_POST['error_tocity'].'" />
+</root>
+    ';
+
+    $result_error_to_city = send_xml( $xml_error_to_city );
+ 
+    $xml_string_error_to_city = simplexml_load_string($result_error_to_city);
+
 	if (!isset($_POST['cost'])) {		 		
 		//составление запроса стоимости доставки
 		if(isset($_POST['error_tocity']))
 			{
-			$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToCity='.iconv("UTF-8","windows-1251", $_POST['error_tocity']);
+			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_error_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor=0';
+			//$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToCity='.iconv("UTF-8","windows-1251", $_POST['error_tocity']);
 			}
 		else
 			{
-			$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToRegion='.$region_id.'|0&ToCityName='.iconv("UTF-8","windows-1251", $order->delivery['city']);
+			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor=0';
+			//$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToRegion='.$region_id.'|0&ToCityName='.iconv("UTF-8","windows-1251", $order->delivery['city']);
 			}
 		
 		//проверки связи с сервером
@@ -130,10 +168,10 @@
 		}
 
 		//получение цены доставки
-		if ($xmlstring->PayTariff)
+		if ($xmlstring->Tariff)
 			{
 			$find_symbols = array(chr(160),'р.',' '); //вместо пробела в стоимости доставки cpcr.ru использует симовл с ascii кодом 160.
-			$cost = ceil(str_replace(',','.',str_replace($find_symbols,'',$xmlstring->Total)));
+			$cost = ceil(str_replace(',','.',str_replace($find_symbols,'',$xmlstring->Tariff->Total_Dost)));
 			$title .= 'Доставка в '.$order->delivery['city'].', '.$order->delivery['state'];
 			if ($cost>0) {$title .= '<input type="hidden" name="cost" value="'.$cost.'">';}			
 			}
@@ -261,4 +299,28 @@
       return array('MODULE_SHIPPING_SPSR_STATUS', 'MODULE_SHIPPING_SPSR_FROM_CITY', 'MODULE_SHIPPING_SPSR_DISABLE_CITIES', 'MODULE_SHIPPING_SPSR_OWN_CITY_DELIVERY', 'MODULE_SHIPPING_SPSR_OWN_REGION_DELIVERY', 'MODULE_SHIPPING_SPSR_DEFAULT_SHIPPING_WEIGHT', 'MODULE_SHIPPING_SPSR_NATURE', 'MODULE_SHIPPING_SPSR_DEBUG', 'MODULE_SHIPPING_SPSR_ALLOWED', 'MODULE_SHIPPING_SPSR_TAX_CLASS', 'MODULE_SHIPPING_SPSR_ZONE', 'MODULE_SHIPPING_SPSR_SORT_ORDER');
     }
   }
+  
+  
+    function send_xml( $xml )
+    {
+		$addr = 'http://api.spsr.ru:8020/waExec/WAExec';
+		$curl = curl_init();
+	
+		curl_setopt( $curl, CURLOPT_URL,  $addr);
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); 
+		curl_setopt( $curl, CURLOPT_POST, 1);
+		curl_setopt( $curl, CURLOPT_POSTFIELDS,   $xml );
+	
+		$header = array('Content-Type: application/xml');
+	 
+		curl_setopt( $curl, CURLOPT_HTTPHEADER, $header);
+						      
+	
+		$result = curl_exec( $curl );
+		//$result = htmlspecialchars($result); 
+		curl_close( $curl );
+		return $result;
+}
+  
 ?>
