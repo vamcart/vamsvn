@@ -31,7 +31,7 @@ define('MODULE_SHIPPING_SPSR_FROM_CITY_DESC' , 'Название города, �
 define('MODULE_SHIPPING_SPSR_FROM_LOGIN_TITLE' , 'Логин');
 define('MODULE_SHIPPING_SPSR_FROM_LOGIN_DESC' , 'Ваш логин на сайте спср, если есть.');
 define('MODULE_SHIPPING_SPSR_FROM_PASS_TITLE' , 'Пароль');
-define('MODULE_SHIPPING_SPSR_FROM_PASS}_DESC' , 'Ваш пароль на сайте спср, если есть.');
+define('MODULE_SHIPPING_SPSR_FROM_PASS_DESC' , 'Ваш пароль на сайте спср, если есть.');
 define('MODULE_SHIPPING_SPSR_DISABLE_CITIES_TITLE' , 'Отключить для городов');
 define('MODULE_SHIPPING_SPSR_DISABLE_CITIES_DESC' , 'Города, для которых этот способ доставки не показывать, через запятую.');
 define('MODULE_SHIPPING_SPSR_OWN_CITY_DELIVERY_TITLE' , 'Включить доставку по своему городу?');
