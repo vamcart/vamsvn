@@ -138,16 +138,28 @@
  
     $xml_string_error_to_city = simplexml_load_string($result_error_to_city);
 
+
+    $xml_sid = '
+<root xmlns="http://spsr.ru/webapi/usermanagment/login/1.0">
+<p:Params Name="WALogin" Ver="1.0" xmlns:p="http://spsr.ru/webapi/WA/1.0" />
+<Login Login="'.MODULE_SHIPPING_SPSR_FROM_LOGIN.'" Pass="'.MODULE_SHIPPING_SPSR_FROM_PASS.'" UserAgent="'.STORE_NAME.'" />
+</root>
+    ';
+
+    $result_xml_sid = send_xml( $xml_sid );
+ 
+    $xml_sid = simplexml_load_string($result_xml_sid);
+    
 	if (!isset($_POST['cost'])) {		 		
 		//составление запроса стоимости доставки
 		if(isset($_POST['error_tocity']))
 			{
-			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_error_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor=0';
+			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_error_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor=0&SID='.$xml_sid->Login['SID'].'';
 			//$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToCity='.iconv("UTF-8","windows-1251", $_POST['error_tocity']);
 			}
 		else
 			{
-			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor=0';
+			$request='http://www.cpcr.ru/cgi-bin/postxml.pl?TARIFFCOMPUTE_2&ToCity='.$xml_string_to_city->City->Cities['City_ID'].'|0&FromCity='.$xml_string_from_city->City->Cities['City_ID'].'|0&Weight='. $shipping_weight .'&ToBeCalledFor==0&SID='.$xml_sid->Login['SID'].'';
 			//$request='http://cpcr.ru/cgi-bin/postxml.pl?TariffCompute&FromRegion='.$own_cpcr_id.'|0&FromCityName='.iconv("UTF-8","windows-1251", MODULE_SHIPPING_SPSR_FROM_CITY).'&Weight='. $shipping_weight .'&Nature='.MODULE_SHIPPING_SPSR_NATURE.'&Amount=0&Country=209|0&ToRegion='.$region_id.'|0&ToCityName='.iconv("UTF-8","windows-1251", $order->delivery['city']);
 			}
 		
@@ -166,6 +178,21 @@
 			$title = "<font color=red>Нет связи с сервером cpcr.ru, стоимость доставки не определена.</font>";
 			$cost = 0;
 		}
+
+//echo var_dump($xmlstring);
+
+    $xml_sid_logout = '
+<root xmlns="http://spsr.ru/webapi/usermanagment/logout/1.0" >
+<p:Params Name="WALogout" Ver="1.0" xmlns:p="http://spsr.ru/webapi/WA/1.0" />
+<Logout Login="'.MODULE_SHIPPING_SPSR_FROM_LOGIN.'" SID="'.$xml_sid->Login['SID'].'" />
+</root>
+    ';
+
+    $result_xml_sid_logout = send_xml( $xml_sid_logout );
+ 
+    $xml_sid_logout = simplexml_load_string($result_xml_sid_logout);
+
+//echo var_dump($xml_sid_logout);
 
 		//получение цены доставки
 		if ($xmlstring->Tariff)
@@ -280,6 +307,8 @@
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_SPSR_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SPSR_ALLOWED', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SPSR_FROM_CITY', 'Москва', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SPSR_FROM_LOGIN', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SPSR_FROM_PASS', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SPSR_DISABLE_CITIES', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_SPSR_OWN_CITY_DELIVERY', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_SPSR_OWN_REGION_DELIVERY', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
@@ -296,14 +325,14 @@
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_SPSR_STATUS', 'MODULE_SHIPPING_SPSR_FROM_CITY', 'MODULE_SHIPPING_SPSR_DISABLE_CITIES', 'MODULE_SHIPPING_SPSR_OWN_CITY_DELIVERY', 'MODULE_SHIPPING_SPSR_OWN_REGION_DELIVERY', 'MODULE_SHIPPING_SPSR_DEFAULT_SHIPPING_WEIGHT', 'MODULE_SHIPPING_SPSR_NATURE', 'MODULE_SHIPPING_SPSR_DEBUG', 'MODULE_SHIPPING_SPSR_ALLOWED', 'MODULE_SHIPPING_SPSR_TAX_CLASS', 'MODULE_SHIPPING_SPSR_ZONE', 'MODULE_SHIPPING_SPSR_SORT_ORDER');
+      return array('MODULE_SHIPPING_SPSR_STATUS', 'MODULE_SHIPPING_SPSR_FROM_CITY', 'MODULE_SHIPPING_SPSR_FROM_LOGIN', 'MODULE_SHIPPING_SPSR_FROM_PASS', 'MODULE_SHIPPING_SPSR_DISABLE_CITIES', 'MODULE_SHIPPING_SPSR_OWN_CITY_DELIVERY', 'MODULE_SHIPPING_SPSR_OWN_REGION_DELIVERY', 'MODULE_SHIPPING_SPSR_DEFAULT_SHIPPING_WEIGHT', 'MODULE_SHIPPING_SPSR_NATURE', 'MODULE_SHIPPING_SPSR_DEBUG', 'MODULE_SHIPPING_SPSR_ALLOWED', 'MODULE_SHIPPING_SPSR_TAX_CLASS', 'MODULE_SHIPPING_SPSR_ZONE', 'MODULE_SHIPPING_SPSR_SORT_ORDER');
     }
   }
   
   
     function send_xml( $xml )
     {
-		$addr = 'http://api.spsr.ru:8020/waExec/WAExec';
+		$addr = 'http://api.spsr.ru/waExec/WAExec';
 		$curl = curl_init();
 	
 		curl_setopt( $curl, CURLOPT_URL,  $addr);
