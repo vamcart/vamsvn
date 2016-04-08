@@ -11,28 +11,23 @@
 {$CATEGORIES_HEADING_TITLE}
 </p>
 {/if}
-{if !$smarty.get.page}
-{if $CATEGORIES_DESCRIPTION}
+{if $CATEGORIES_DESCRIPTION and !$smarty.get.page}
 <p>
 {$CATEGORIES_DESCRIPTION}
 </p>
 {/if}
-{/if}
 
-{if !$smarty.get.page}
-{if $CATEGORIES_IMAGE}
+{if $CATEGORIES_IMAGE and !$smarty.get.page}
 <p>
-<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /></p>
+<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME}" /></p>
 {/if}
 <div class="clear"></div>
 </div>
 
 </div>
 {/if}
-{/if}
 
-{if !$smarty.get.page}
-{if $MANUFACTURERS_DESCRIPTION}
+{if $MANUFACTURERS_DESCRIPTION and !$smarty.get.page}
 <div class="page">
 <div class="pageItem">
 <p>
@@ -42,7 +37,6 @@
 </div>
 
 </div>
-{/if}
 {/if}
 
 {if $CATEGORIES_NAME}
@@ -95,7 +89,7 @@
 {/if}
 
 {if $CATEGORIES_NAME}
-<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
+<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
 
 <!-- start: products listing -->
@@ -128,11 +122,11 @@
 	</ul>
 </div>  
 <!-- end: products listing -->  
-<div class="clear"></div>
+<div class="clear"></div>
 
 {if $CATEGORIES_NAME}
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
-{$BUTTON_COMPARE}</form>
+{$BUTTON_COMPARE}</form>
 {/if}
 
 <div class="navigation">
