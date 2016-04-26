@@ -84,7 +84,7 @@
         </tr>
         <tr>
           <td>MySQL</td>
-          <td align="right"><img src="images/<?php echo (extension_loaded('mysql') ? 'tick.gif' : 'cross.gif'); ?>" border="0" width="16" height="16"></td>
+          <td align="right"><img src="images/<?php echo (extension_loaded('mysqli') ? 'tick.gif' : 'cross.gif'); ?>" border="0" width="16" height="16"></td>
         </tr>
       </table>
 
@@ -146,8 +146,8 @@
     }
   }
 
-  if (!extension_loaded('mysql')) {
-    $warning_array['mysql'] = 'Модуль MySQL присутствует в системе, но не активирован. Пожалуйста, активируйте данный PHP модуль для продолжения установки.';
+  if (!extension_loaded('mysqli')) {
+    $warning_array['mysqli'] = 'Модуль MySQL присутствует в системе, но не активирован. Пожалуйста, активируйте данный PHP модуль для продолжения установки.';
   }
 
   if ((sizeof($configfile_array) > 0) || (sizeof($warning_array) > 0)) {
