@@ -193,6 +193,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
                      '  define(\'HTTPS_SERVER\', \'' . $http_server . '\'); // eg, https://localhost - should not be empty for productive servers' . "\n" .
                      '  define(\'ENABLE_SSL\', ' .  'false' . '); // secure webserver for checkout procedure?' . "\n" .
                      '  define(\'DIR_WS_CATALOG\', \'' . $http_catalog . '\'); // absolute path required' . "\n" .
+                     '  define(\'DIR_WS_HTTPS_CATALOG\', \'' . $http_catalog . '\'); // absolute path required' . "\n" .
                      '  define(\'DIR_FS_DOCUMENT_ROOT\', \'' . $dir_fs_document_root  . '\');' . "\n" .
                      '  define(\'DIR_FS_CATALOG\', \'' . $dir_fs_document_root  . '\');' . "\n" .
                      '  define(\'DIR_WS_IMAGES\', \'images/\');' . "\n" .
@@ -270,6 +271,7 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
                      '  define(\'DIR_WS_ADMIN\', \'' . $http_catalog .'admin/' . '\'); // absolute path required' . "\n" .
                      '  define(\'DIR_FS_ADMIN\', \'' . $dir_fs_document_root .'admin/' . '\'); // absolute pate required' . "\n" .
                      '  define(\'DIR_WS_CATALOG\', \'' . $http_catalog . '\'); // absolute path required' . "\n" .
+                     '  define(\'DIR_WS_HTTPS_CATALOG\', \'' . $http_catalog . '\'); // absolute path required' . "\n" .
                      '  define(\'DIR_FS_CATALOG\', \'' . $dir_fs_document_root  . '\'); // absolute path required' . "\n" .
                      '  define(\'DIR_WS_IMAGES\', \'images/\');' . "\n" .
                      '  define(\'DIR_FS_CATALOG_IMAGES\', DIR_FS_CATALOG . \'images/\');' . "\n" .
