@@ -368,6 +368,7 @@ class product {
 																								                                                 p.products_id,
 																								                                                 p.label_id,
 																								                                                 p.products_image,
+																								                                                 p.products_quantity,
 																								                                                 pd.products_name,
 																														 						pd.products_short_description,
 																								                                                 p.products_fsk18,p.products_price,p.products_vpe,
