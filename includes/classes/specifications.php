@@ -126,8 +126,8 @@ ON (cat.categories_id = p2c.categories_id)";
       $raw_query = $raw_query_start . $raw_query_from . $raw_query_where;
       //print 'Raw Query: ' . $raw_query . '<br>';
       
-      $filter_count_query = vam_db_query ($raw_query);
-      $filter_count_results = vam_db_fetch_array ($filter_count_query);
+      $filter_count_query = vamDBquery($raw_query);//kovalsky_DBQ
+      $filter_count_results = vam_db_fetch_array ($filter_count_query,true);//kovalsky_DBQ
 
       $count = (string) $filter_count_results['count'];
 

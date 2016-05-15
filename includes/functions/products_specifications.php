@@ -115,9 +115,9 @@
                                 and sg2c.categories_id = '" . (int) $category_id . "'
                             ";
     // print $check_query_raw . "<br>\n";
-    $check_query = vam_db_query($check_query_raw);
+    $check_query = vamDBquery($check_query_raw);//kovalsky_DBQ
 
-    if (vam_db_num_rows($check_query) > 0) {
+    if (vam_db_num_rows($check_query, true) > 0) {//kovalsky_DBQ
       return true;
     }
 
@@ -640,9 +640,12 @@
       case 'text':
         $value = ($filter_value != 0) ? $filter_value : '';
         $box_text .= vam_draw_form ('filter', $target, 'get');
-        $box_text .= vam_draw_input_field($filter_name, $value);
+		$box_text .= '<div class="for_sliter_box">';
+        $box_text .= vam_draw_input_field($filter_name, $value,'id="amount" style="border:0; text-align:center; color:#81807E; font-weight:bold;"');
+		$box_text .= '<div id="slider-range"></div>';
+		$box_text .= '</div>';
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= '<noscript>' . vam_image_submit('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
+        $box_text .= '' . vam_image_submit('button_view.gif', TEXT_FIND_PRODUCTS) . '';
         $box_text .= '</form>';
         break;
 
