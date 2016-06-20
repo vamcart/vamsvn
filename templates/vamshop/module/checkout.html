@@ -1,9 +1,9 @@
 {config_load file="$language/lang_$language.conf" section="create_account"}
 {if $smarty.const.DADATA_API_KEY != "" and $smarty.session.language == "russian"}
 <!--[if lt IE 10]>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="https://dadata.ru/static/js/lib/jquery.suggestions-15.7.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.suggestions/16.5.2/js/jquery.suggestions.min.js"></script>
 <script type="text/javascript">
 {literal}
 $(function () {
@@ -11,7 +11,8 @@ $(function () {
 var token = {/literal}"{$smarty.const.DADATA_API_KEY}"{literal};
 
 $("#firstname").suggestions({
-  serviceUrl: "https://dadata.ru/api/v2",
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
   token: token,
   type: "NAME",
   params: {
@@ -20,7 +21,8 @@ $("#firstname").suggestions({
 });
 
 $("#lastname").suggestions({
-  serviceUrl: "https://dadata.ru/api/v2",
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
   token: token,
   type: "NAME",
   params: {
@@ -29,7 +31,8 @@ $("#lastname").suggestions({
 });
 
 $("#email_address").suggestions({
-  serviceUrl: "https://dadata.ru/api/v2",
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
   token: token,
   type: "EMAIL",
   params: {
@@ -38,7 +41,8 @@ $("#email_address").suggestions({
 });
       
 $("#street_address").suggestions({
-  serviceUrl: "https://dadata.ru/api/v2",
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
   token: token,
   type: "ADDRESS",
   geoLocation: true,
