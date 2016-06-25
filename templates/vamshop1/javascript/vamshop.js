@@ -159,29 +159,6 @@ $(document).ready(function(){
     // -----------------------------------------------------------------------------
     $("a[data-toggle=tooltip]").tooltip();
 
-    // Main menu
-    // -----------------------------------------------------------------------------
-    (function() {
-		var $menu = $('.navbar-inner ul.nav'),
-			optionsList = '<option value="" selected>...</option>';
-		$menu.find('li').each(function() {
-			var $this   = $(this),
-				$anchor = $this.children('a'),
-				depth   = $this.parents('ul').length - 1,
-				indent  = '';
-			if( depth ) {
-				while( depth > 0 ) {
-					indent += ' - ';
-					depth--;
-				}
-			}
-			optionsList += '<option value="' + $anchor.attr('href') + '">' + indent + ' ' + $anchor.text() + '</option>';
-		}).end().after('<div class="res-menu-wrap"><select class="res-menu">' + optionsList + '</select><div class="res-menu-title"></div></div>');
-
-		$('.res-menu').on('change', function() {
-			window.location = $(this).val();
-		});
-	})();
     
     // To Top Button
     // -----------------------------------------------------------------------------
