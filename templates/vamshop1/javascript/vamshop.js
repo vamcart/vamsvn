@@ -80,24 +80,7 @@ $(window).load(function() {
 
 $(function(){
 
-    if ( ! /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-
-        // #navigation fixed
-        if ($(window).width() > 767) {
-            //
-            var menu = $('#navigation'),
-                pos = menu.offset();
-
-            $(window).scroll(function(){
-                if($(this).scrollTop() > pos.top+menu.height() && menu.hasClass('default')){
-                  $("#navigation").removeClass('default').addClass('fixed');
-         
-                } else if($(this).scrollTop() <= pos.top && menu.hasClass('fixed')){
-                  $("#navigation").removeClass('fixed').addClass('default');
-                }
-            });
-        }
-    }
+    //$('#nav').affix()
 
 });
 
