@@ -124,36 +124,36 @@ $(document).ready(function(){
 
     // Shoping cart SHOW/HIDE
     // -----------------------------------------------------------------------------
-    $('.shopping-cart .cart').hover(
-        function(){
-            $('.shopping-cart .cart-dropdown').show();
-        },
-        function (){
-            $('.shopping-cart .cart-dropdown').hide();
-        }
-    );
-    $('.shopping-cart .cart-dropdown').bind({
-        mouseenter: function(){
-            $(this).show();
-        },
-        mouseleave: function(){
-            $(this).hide();
-        }
-    });
+    //$('.shopping-cart .cart').hover(
+        //function(){
+            //$('.shopping-cart .cart-dropdown').show();
+        //},
+        //function (){
+            //$('.shopping-cart .cart-dropdown').hide();
+        //}
+    //);
+    //$('.shopping-cart .cart-dropdown').bind({
+        //mouseenter: function(){
+            //$(this).show();
+        //},
+        //mouseleave: function(){
+            //$(this).hide();
+        //}
+    //});
 
-    $('ul.icons.check a').click(function(){
+    //$('ul.icons.check a').click(function(){
 
-        if ($(this).closest('li').hasClass('on')) {
-            $(this).closest('li').removeClass('on');
-            return false;
-        }
+        //if ($(this).closest('li').hasClass('on')) {
+            //$(this).closest('li').removeClass('on');
+            //return false;
+        //}
 
-        else {
-            $(this).closest('li').addClass('on');
-            return false;
-        }
+        //else {
+            //$(this).closest('li').addClass('on');
+            //return false;
+        //}
 
-    });
+    //});
 
     // tooltip
     // -----------------------------------------------------------------------------

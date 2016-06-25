@@ -21,7 +21,6 @@
 <!-- start: Main Menu -->
 <div id="navigation" class="default">
 	<div class="container">
-
             <div class="navbar">
               <div class="navbar-inner">
                 <div class="container">
@@ -35,36 +34,30 @@
 					     </a>                  
 					     <div class="nav-collapse collapse navbar-responsive-collapse">
                     <ul class="nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
-                          <li><a href="#">One more separated link</a></li>
-                        </ul>
-                      </li>
+							<li{$1}><a href="{$mainpage}">{#text_mainpage#}</a></li>
+							{$box_CATEGORIES2}
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									{$box_CONTENT_PULL}
+								</ul>
+							</li>
+							{if $smarty.session.customers_status.customers_status_id == 0}
+							<li><a href="{$admin_area_link}">{#text_admin#}</a></li>
+							{/if}  
+							{if $smarty.session.customer_id}
+							<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
+							{/if}  
                     </ul>
                     <form class="navbar-search pull-left" action="">
                       <input type="text" class="search-query span2" placeholder="Search">
                     </form>
                     <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
-                      <li class="divider-vertical"></li>
+                      <li><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fa fa-user"></i></a></li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Корзина <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
+									{$box_CART_PULL}
                         </ul>
                       </li>
                     </ul>
@@ -72,35 +65,6 @@
                 </div>
               </div><!-- /navbar-inner -->
             </div><!-- /navbar -->
-
-		
-		<div class="login">
-			<a href="{$smarty.const.FILENAME_ACCOUNT}" class="account" title="{#link_login#}"><i class="fa fa-user"></i></a>
-		</div>
-		<div class="navbar navbar-static-top">
-			<div class="navbar-inner">
-
-				<ul class="nav pull-left">
-					<li{$1}><a href="{$mainpage}">{#text_mainpage#}</a></li>
-					{$box_CATEGORIES2}
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							{$box_CONTENT_PULL}
-						</ul>
-					</li>
-					{if $smarty.session.customers_status.customers_status_id == 0}
-					<li><a href="{$admin_area_link}">{#text_admin#}</a></li>
-					{/if}  
-					{if $smarty.session.customer_id}
-					<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
-					{/if}  
-				</ul>
-
-				{$box_CART_PULL}
-
-			</div>
-		</div>
 	</div>
 </div>
 <!-- end: Main Menu -->

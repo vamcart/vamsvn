@@ -678,4 +678,6 @@ define('TEXT_REVIEWS_RATING', 'Рейтинг');
 
 define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатить заказ');
 
+define('TEXT_MY_ORDERS', 'Мои заказы');
+
 ?>
