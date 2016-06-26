@@ -429,7 +429,7 @@ hr.transparent {
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #breadcrumbs > .container {
-    width: 460px;
+    width: 95%;
   }
 }
 #breadcrumbs .breadcrumbs {
@@ -447,7 +447,7 @@ hr.transparent {
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #container > .container {
-    width: 460px;
+    width: 95%;
   }
 }
 @media (max-width: 480px) {
@@ -593,7 +593,7 @@ hr.transparent {
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #footer > .container {
-    width: 460px;
+    width: 95%;
   }
 }
 @media (max-width: 480px) {
@@ -666,7 +666,7 @@ hr.transparent {
 }
 @media (min-width: 481px) and (max-width: 767px) {
   #footer-menu > .container {
-    width: 460px;
+    width: 95%;
   }
 }
 #footer-menu a {
