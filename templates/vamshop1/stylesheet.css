@@ -415,6 +415,10 @@ hr.transparent {
   background: transparent;
 }
 
+#navigation .navbar-search .search-query {
+  border-radius: 0;
+}
+
 /* Breadcrumbs / Page Header
 /* ========================================================================== */
 #breadcrumbs {
