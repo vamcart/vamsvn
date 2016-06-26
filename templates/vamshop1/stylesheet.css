@@ -402,6 +402,12 @@ hr.transparent {
   color: #ffffff;
 }
 
+.navbar .btn-navbar,
+.navbar .btn-navbar:hover
+{
+  background: transparent;
+}
+
 /* Breadcrumbs / Page Header
 /* ========================================================================== */
 #breadcrumbs {
