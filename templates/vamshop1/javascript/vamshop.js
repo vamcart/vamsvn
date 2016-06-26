@@ -80,7 +80,11 @@ $(window).load(function() {
 
 $(function(){
 
-    //$('#nav').affix()
+	$('#navigation').affix({
+	      offset: {
+	        top: $('#header').height()
+	      }
+	});	
 
 });
 
