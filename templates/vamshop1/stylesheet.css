@@ -296,6 +296,111 @@ hr.transparent {
 /* Nav
 /* ========================================================================== */
 
+#navigation .navbar-inner {
+  background: #ff6633;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+}
+
+#navigation,
+#navigation a,
+#navigation a:hover,
+#navigation a:visited
+{
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.navbar .nav > li > a,
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:visited
+{
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+  text-shadow:	0 0 0 transparent;
+}
+
+.navbar .brand
+{
+  font-size: 16px;
+}
+
+#navigation .dropdown-menu {
+  border-radius: 0;
+}
+#navigation .navbar .nav > li > a .caret {
+  border-bottom-color: #ffffff;
+  border-top-color: #ffffff;
+}
+#navigation .navbar .nav > li > a:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+#navigation .navbar .nav > li > a:hover .caret {
+  border-bottom-color: #ffffff;
+  border-top-color: #ffffff;
+}
+#navigation .navbar .nav > .active > a,
+#navigation .navbar .nav > .active > a:hover,
+#navigation .navbar .nav > .active > a:focus {
+  background-color: #555;
+  color: #ffffff;
+}
+#navigation .navbar .nav > .current > a,
+#navigation .navbar .nav > .current > a:hover,
+#navigation .navbar .nav > .current > a:focus {
+  background-color: #555;
+  color: #ffffff;
+}
+#navigation .navbar .nav li.dropdown.open > .dropdown-toggle {
+  background-color: #555;
+  color: #ffffff;
+}
+#navigation .navbar .nav li.dropdown.active > .dropdown-toggle {
+  color: #ffffff;
+}
+#navigation .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  color: #ffffff;
+}
+#navigation .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+#navigation .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+#navigation .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-bottom-color: #ffffff;
+  border-top-color: #ffffff;
+}
+#navigation .navbar .nav > li > .dropdown-menu {
+  background-color: #555;
+  border: none;
+  margin-top: 0;
+  padding: 10px 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#navigation .navbar .nav > li > .dropdown-menu:after,
+#navigation .navbar .nav > li > .dropdown-menu:before {
+  border: none;
+}
+#navigation .dropdown-menu {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#navigation .dropdown-menu > li > a {
+  filter: none;
+  color: #ffffff;
+  background-image: none;
+}
+#navigation .dropdown-menu > li > a:hover {
+  background-color: #000;
+  color: #ffffff;
+}
 
 /* Breadcrumbs / Page Header
 /* ========================================================================== */
