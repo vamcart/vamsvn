@@ -2,9 +2,8 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $deny_cart neq 'true'}
 {if $empty=='false'}
-<section class="widget inner shopping-cart-widget">
+<section class="widget inner shopping-cart-widget dropdown">
 	<div class="cart-dropdown">
-		<h2 class="title"><a href="{$LINK_CART}">{#heading_cart#}</a></h2>
 			<div class="content">
 				<div class="products">
 					{foreach name=aussen item=products_data from=$products}
@@ -47,7 +46,6 @@
 {else}
 <section class="widget inner shopping-cart-widget">
 	<div class="cart-dropdown">
-		<h2 class="title"><a href="{$LINK_CART}">{#heading_cart#}</a></h2>
 			<div class="content">
            {#text_empty_cart#} 
 			</div>

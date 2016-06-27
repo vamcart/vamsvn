@@ -310,15 +310,6 @@ hr.transparent {
   border-radius: 0;
 }
 
-#navigation,
-#navigation a,
-#navigation a:hover,
-#navigation a:visited
-{
-  color: #fff;
-  font-size: 14px;
-  font-weight: normal;
-}
 
 .navbar .nav > li > a,
 .navbar .nav > li > a:hover,
@@ -326,13 +317,14 @@ hr.transparent {
 {
   font-size: 14px;
   font-weight: normal;
-  color: #000;
+  color: #fff;
   text-shadow:	0 0 0 transparent;
 }
 
 .navbar .brand
 {
   font-size: 16px;
+  color: #fff;
 }
 
 #navigation .dropdown-menu {
@@ -421,36 +413,50 @@ hr.transparent {
 
 /* Shopping Cart Widget
 /* ========================================================================== */
-.shopping-cart-widget {
+.shopping-cart-widget.dropdown {
   width: 280px;
   color: #000;
   background-color: transparent;
 }
 
-.shopping-cart-widget {
+.shopping-cart-widget.dropdown {
 background: #fff;
 }
-.shopping-cart-widget .products {
+.shopping-cart-widget.dropdown .products {
   margin: 0 0 20px 0;
   overflow-y: auto;
   max-height: 450px;
 }
-.shopping-cart-widget .products .media-heading {
+.shopping-cart-widget.dropdown .products .media-heading {
   font-weight: bold;
   font-size: 14px;
   color: #ff6633;
 }
-.shopping-cart-widget .products .media-heading a {
+.shopping-cart-widget.dropdown .products .media-heading a {
   text-decoration: none;
   color: #ff6633;
 }
-.shopping-cart-widget .products .media-heading a:hover {
+.shopping-cart-widget.dropdown .products .media-heading a:hover {
   color: #ff6633;
 }
-.shopping-cart-widget p.buttons {
+.shopping-cart-widget.dropdown p.buttons {
   padding-bottom: 5px;
 }
 
+.cart-dropdown
+ {
+
+  border: 0;
+  background-color: #fff;
+}
+
+#navigation .navbar .nav > li > .dropdown-menu.cart {
+  color: #000;
+  box-shadow: 0 1px 8px rgba(0,0,0,.23),0 1px 8px rgba(0,0,0,.16);
+  border-radius: 0px;
+  background-color: #fff;
+  border: 1px solid #eee;	
+}	
 
 /* Breadcrumbs / Page Header
 /* ========================================================================== */
