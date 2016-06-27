@@ -2,8 +2,7 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $deny_cart neq 'true'}
 {if $empty=='false'}
-<section class="widget inner shopping-cart-widget">
-	<h3 class="widget-title"><a href="{$LINK_CART}">{#heading_cart#}</a></h3>
+<div class="widget inner shopping-cart-widget">
 		<div class="products">
 
 			{foreach name=aussen item=products_data from=$products}
@@ -42,6 +41,6 @@
 			<a class="btn btn-inverse checkout" href="{$LINK_CHECKOUT}"><i class="fa fa-check"></i> {#text_checkout#} &rarr;</a>
 		</p>
 
-</section>
+</div>
 {/if}
 {/if}
