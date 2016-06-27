@@ -1,13 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="index"}
-
 {if $deny_cart neq 'true'}
 {if $empty=='false'}
-<div class="shopping-cart pull-right">
-	<a href="{$LINK_CART}" class="cart">
-		<span class="quantity">{$TOTAL_QUANTITY}</span>
-		<span class="amount"><i class="fa fa-shopping-cart"></i>{$TOTAL}</span>
-	</a>
+<section class="widget inner shopping-cart-widget">
 	<div class="cart-dropdown">
 		<h2 class="title"><a href="{$LINK_CART}">{#heading_cart#}</a></h2>
 			<div class="content">
@@ -48,7 +43,16 @@
 				</p>
 			</div>
 	</div>
-</div>
+</section>
+{else}
+<section class="widget inner shopping-cart-widget">
+	<div class="cart-dropdown">
+		<h2 class="title"><a href="{$LINK_CART}">{#heading_cart#}</a></h2>
+			<div class="content">
+           {#text_empty_cart#} 
+			</div>
+	</div>
+</section>
 {/if}
 {/if}
 
