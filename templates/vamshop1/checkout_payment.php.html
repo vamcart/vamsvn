@@ -43,18 +43,15 @@
 									{$box_CONTENT_PULL}
 								</ul>
 							</li>
-							<!--<li><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TEXT_RSS_NEW_PRODUCTS}</a></li>-->
-							<!--<li><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.NAVBAR_TITLE_SPECIALS}</a></li>-->
                     </ul>
                     <form class="navbar-search pull-left" action="advanced_search_result.php" method="get">
                       <input type="text" name="keywords" class="search-query span2" placeholder="{$smarty.const.BOX_HEADING_SEARCH}">
                     </form>
                     <ul class="nav pull-right">
                       <li><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
-                      <li class="dropdown">
                       <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cart" data-target="#" href="{$smarty.const.FILENAME_SHOPPING_CART}" title="{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}"> <i class="fa fa-shopping-cart"></i> {$smarty.const.NAVBAR_TITLE_SHOPPING_CART} {if $cart_count > 0}<sup><span title="{$cart_count}" class="badge badge-important">{$cart_count}</span></sup>{/if} <b class="caret"></b></a>
                         <ul class="dropdown-menu cart">
-                           <li><div id="shopping-cart-box">{$box_CART_PULL}</div></li>
+                           <li><div id="divShoppingCart">{$box_CART_PULL}</div></li>
                         </ul>                        
                       </li>
                       {if $smarty.session.customers_status.customers_status_id == 0}
