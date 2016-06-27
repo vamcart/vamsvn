@@ -11,7 +11,9 @@
 			<div class="span6 text-center">
            <br />
            <h4>{$smarty.const.STORE_TELEPHONE}</h4>
-           <h4><a href="contact_us.html">{#text_contact_us#}</a></h4>			
+           <h4><a href="contact_us.html">{#text_contact_us#}</a></h4>
+			</div>
+			<div class="span3 text-center">
 			</div>
 		</div>
 	</div>
@@ -21,33 +23,51 @@
 <!-- start: Main Menu -->
 <div id="navigation" class="default">
 	<div class="container">
-		<div class="login">
-			<a href="{$smarty.const.FILENAME_ACCOUNT}" class="account" title="{#link_login#}"><i class="fa fa-user"></i></a>
-		</div>
-		<div class="navbar navbar-static-top">
-			<div class="navbar-inner">
-
-				<ul class="nav pull-left">
-					<li{$1}><a href="{$mainpage}">{#text_mainpage#}</a></li>
-					{$box_CATEGORIES2}
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							{$box_CONTENT_PULL}
-						</ul>
-					</li>
-					{if $smarty.session.customers_status.customers_status_id == 0}
-					<li><a href="{$admin_area_link}">{#text_admin#}</a></li>
-					{/if}  
-					{if $smarty.session.customer_id}
-					<li><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
-					{/if}  
-				</ul>
-
-				{$box_CART_PULL}
-
-			</div>
-		</div>
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+					     <a class="brand" href="{$smarty.const.FILENAME_DEFAULT}">
+					         <i class="fa fa-home"></i>
+					     </a>                  
+					     <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+							{$box_CATEGORIES2}
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="">{#heading_infobox#} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									{$box_CONTENT_PULL}
+								</ul>
+							</li>
+							<!--<li><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TEXT_RSS_NEW_PRODUCTS}</a></li>-->
+							<!--<li><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.NAVBAR_TITLE_SPECIALS}</a></li>-->
+                    </ul>
+                    <form class="navbar-search pull-left" action="advanced_search_result.php" method="get">
+                      <input type="text" name="keywords" class="search-query span2" placeholder="{$smarty.const.BOX_HEADING_SEARCH}">
+                    </form>
+                    <ul class="nav pull-right">
+                      <li><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> {$smarty.const.NAVBAR_TITLE_SHOPPING_CART} {if $cart_count > 0}<sup><span title="{$cart_count}" class="badge badge-important">{$cart_count}</span></sup>{/if} <b class="caret"></b></a>
+                        <ul class="dropdown-menu cart">
+                           <li><div id="shopping-cart-box">{$box_CART_PULL}</div></li>
+                        </ul>                        
+                      </li>
+                      {if $smarty.session.customers_status.customers_status_id == 0}
+                      <li><a href="{$admin_area_link}"><i class="fa fa-gear"></i> {#text_admin#}</a></li>
+                      {/if}  
+                      {if $smarty.session.customer_id}
+                      <li><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>
+                      {/if}  
+                    </ul>
+                  </div><!-- /.nav-collapse -->
+                </div>
+              </div><!-- /navbar-inner -->
+            </div><!-- /navbar -->
 	</div>
 </div>
 <!-- end: Main Menu -->

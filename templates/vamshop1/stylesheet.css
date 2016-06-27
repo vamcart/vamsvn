@@ -411,6 +411,17 @@ hr.transparent {
   border-radius: 0;
 }
 
+#navigation .nav-collapse .navbar-search {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+#navigation .nav-collapse .btn {
+  border-radius: 0;
+  color: #fff;
+}
+
+
 /* Shopping Cart Widget
 /* ========================================================================== */
 .shopping-cart-widget.dropdown {
