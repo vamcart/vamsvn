@@ -424,11 +424,17 @@ hr.transparent {
 
 /* Shopping Cart Widget
 /* ========================================================================== */
-.shopping-cart-widget.dropdown,
 #divShoppingCart {
-  width: 280px;
+  width: 300px;
   color: #000;
   background-color: transparent;
+}
+
+.nav-collapse .nav > li > a:hover,
+.nav-collapse .nav > li > a:focus,
+.nav-collapse .dropdown-menu a:hover,
+.nav-collapse .dropdown-menu a:focus {
+  background-color: #555;
 }
 
 .shopping-cart-widget.dropdown {
