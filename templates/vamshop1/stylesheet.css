@@ -424,7 +424,8 @@ hr.transparent {
 
 /* Shopping Cart Widget
 /* ========================================================================== */
-.shopping-cart-widget.dropdown {
+.shopping-cart-widget.dropdown,
+#divShoppingCart {
   width: 280px;
   color: #000;
   background-color: transparent;

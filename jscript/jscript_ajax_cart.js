@@ -61,8 +61,11 @@ $(document).ajaxStop(function(){
                      type: "GET",   
     	               success: function(msg){ 
     	               $("#divShoppingCart").html(msg);
-    	               $('html, body').animate({ scrollTop: 0 }, 'slow');	
-    	               $(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
+    	               //$('html, body').animate({ scrollTop: 0 }, 'slow');	
+    	               //$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
+      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+      //$("#navigation .btn.btn-navbar").click();
+      //$("#navigation .btn.btn-navbar").focus();    	               
     	               }       
                    });                     
 
@@ -92,8 +95,11 @@ function doAddProduct() {
 					type : "GET",
 					success : function(msg) {
 						$("#divShoppingCart").html(msg);
-						$('html, body').animate({ scrollTop: 0 }, 'slow');	
-						$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
+						//$('html, body').animate({ scrollTop: 0 }, 'slow');	
+						//$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
+      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+      //$("#navigation .btn.btn-navbar").click();
+      //$("#navigation .btn.btn-navbar").focus();						
 					}
 		});
 	}
