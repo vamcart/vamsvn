@@ -438,6 +438,9 @@ if ($_SESSION['customers_status']['customers_status_id'] == 0) {
 $vamTemplate->assign('admin_area_link', vam_href_link_admin(FILENAME_START,'', 'SSL'));
 }
 
+$vamTemplate->assign('cart_count', $_SESSION['cart']->count_contents());
+$vamTemplate->assign('cart_total', $_SESSION['cart']->show_total());
+	
 // /Метки для закладок
 
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
