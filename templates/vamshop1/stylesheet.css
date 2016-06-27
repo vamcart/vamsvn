@@ -437,13 +437,17 @@ hr.transparent {
   background-color: #555;
 }
 
+.navbar-toggle:hover, .navbar-toggle:focus {
+background-color: #f44336;
+}
+
 .shopping-cart-widget.dropdown {
 background: #fff;
 }
 .shopping-cart-widget.dropdown .products {
   margin: 0 0 20px 0;
   overflow-y: auto;
-  max-height: 450px;
+  max-height: 300px;
 }
 .shopping-cart-widget.dropdown .products .media-heading {
   font-weight: bold;
