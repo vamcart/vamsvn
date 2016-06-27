@@ -428,7 +428,6 @@ hr.transparent {
   min-width: 300px;
 }
 
-
 #divShoppingCart {
   color: #000;
   background-color: transparent;
@@ -464,7 +463,7 @@ background: #fff;
 }
 .shopping-cart-widget.dropdown .products .media-heading a:hover {
   color: #ff6633;
-  background-color: #fff;
+  background: #fff;
 }
 .shopping-cart-widget.dropdown p.buttons {
   padding-bottom: 5px;
@@ -928,6 +927,7 @@ background: #fff;
 }
 .shopping-cart-widget .products .media-heading a:hover {
   color: #ff6633;
+  background: #fff;
 }
 .shopping-cart-widget .buttons {
   margin-bottom: 0;
