@@ -18,7 +18,11 @@
   
    foreach( $_REQUEST as $key => $value) $_POST[$key]=$value;
 
+  if (CURRENT_TEMPLATE == 'vamshop1') {
+  require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/' . 'shopping_cart_pull.php');
+  } else {
   require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/' . 'shopping_cart.php');
+  }
 
 	if (($i = strpos($box_shopping_cart, '<div id="divShoppingCart">')) !== false) {
 	    $box_shopping_cart = substr($box_shopping_cart, $i+26);
