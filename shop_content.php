@@ -174,6 +174,7 @@ if ($_GET['coID'] == 7) {
 		$content_body = $shop_content_data['content_text'];
 	}
 	$vamTemplate->assign('CONTENT_BODY', $content_body);
+	$vamTemplate->assign('CONTENT_TITLE', $shop_content_data['content_title']);
 
 	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('language', $_SESSION['language']);
