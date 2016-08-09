@@ -33,6 +33,8 @@ class vamTemplate extends Smarty {
         DIR_FS_CATALOG.'includes/external/smarty/plugins_vam',
         ));
         
+        //$this->caching = Smarty::CACHING_LIFETIME_CURRENT;
+        
         $this->assign('app_name', 'vamTemplate');
    }
 
