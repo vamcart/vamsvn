@@ -34,7 +34,7 @@ class InputFilter {
 	  * @param int $attrMethod - 0= allow just user-defined, 1= allow all but user-defined
 	  * @param int $xssAuto - 0= only auto clean essentials, 1= allow clean blacklisted tags/attr
 	  */
-	function inputFilter($tagsArray = array (), $attrArray = array (), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1) {
+	function __construct($tagsArray = array (), $attrArray = array (), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1) {
 			// make sure user defined arrays are in lowercase
 	for ($i = 0; $i < count($tagsArray); $i ++)
 			$tagsArray[$i] = strtolower($tagsArray[$i]);
@@ -281,9 +281,9 @@ class InputFilter {
 		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
 		}
 		// convert decimal
-		$source = preg_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
+		$source = preg_replace('/&#(\d+);/', "chr(\\1)", $source); // decimal notation
 		// convert hex
-		$source = preg_replace('/&#x([a-f0-9]+);/mei', "chr(0x\\1)", $source); // hex notation
+		$source = preg_replace('/&#x([a-f0-9]+);/', "chr(0x\\1)", $source); // hex notation
 		}
 		return $source;
 	}
