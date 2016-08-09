@@ -36,7 +36,7 @@ if (!CacheCheck()) {
 
 	$manufacturers_query = vamDBquery($manufacturers_query);
 
-if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
+if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_manufacturers.html', $cache_id) || !$cache) {
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
 	// include needed funtions

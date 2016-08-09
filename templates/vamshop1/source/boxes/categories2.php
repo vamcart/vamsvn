@@ -160,7 +160,7 @@ if ( !CacheCheck() )
 	$cache_id = $_SESSION[ 'language' ] . $_SESSION[ 'customers_status' ][ 'customers_status_id' ] . $current_category_id;
 };
 
-if( !$box->is_cached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
+if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
 {
 
   $box->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
@@ -174,7 +174,7 @@ if( !$box->is_cached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_i
 
 $box->assign( 'BOX_CONTENT', '<ul class="dropdown-menu">' . $categories_string2 . '</ul>' );
 
-};  // if( !$box->is_cached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
+};  // if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
 
 // set cache ID
 if ( !$cache )

@@ -40,7 +40,7 @@ if (!CacheCheck()) {
   $authors_query = vamDBquery($authors_query);
   $number_of_author_rows = vam_db_num_rows($authors_query,true);
 
-if (!$box->is_cached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$cache) {
+if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$cache) {
 
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
