@@ -269,7 +269,7 @@ class vamPrice {
 		return array ('weight' => $attribute_price_data['options_values_weight'], 'price' => $price);
 	}
 
-	function ShowNote($vpeStatus, $vpeStatus = 0) {
+	function ShowNote($vpe, $vpeStatus = 0) {
 		if ($vpeStatus == 1)
 			return array ('formated' => NOT_ALLOWED_TO_SEE_PRICES, 'plain' => 0);
 		return NOT_ALLOWED_TO_SEE_PRICES;
