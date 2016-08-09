@@ -239,7 +239,7 @@ if ($error == 1 && $keyerror != 1) {
 }
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
-if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_ADVANCED_SEARCH_RESULT.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_ADVANCED_SEARCH_RESULT.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');

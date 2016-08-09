@@ -223,7 +223,7 @@ include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
 $vamTemplate->assign('language', $_SESSION['language']);
 
 $vamTemplate->caching = 0;
-if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCTS_FILTERS.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCTS_FILTERS.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 

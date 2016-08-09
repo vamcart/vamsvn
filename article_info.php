@@ -77,7 +77,7 @@ $vamTemplate->assign('main_content', $main_content);
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
-if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_ARTICLE_INFO.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_ARTICLE_INFO.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');

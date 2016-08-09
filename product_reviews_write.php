@@ -126,7 +126,7 @@ $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/product_reviews_wr
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
 $vamTemplate->caching = 0;
-if (!defined(RM)) $vamTemplate->load_filter('output', 'note');
+if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
