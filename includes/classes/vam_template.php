@@ -15,24 +15,26 @@ require_once (DIR_FS_CATALOG.'includes/external/smarty/Smarty.class.php');
 
 class vamTemplate extends Smarty {
 
-   function vamTemplate()
+   function __construct()
    {
 
-        $this->Smarty();
+        // Class Constructor.
+        // These automatically get set with each new instance.
 
-        $this->template_dir = DIR_FS_CATALOG . 'templates';
-        $this->compile_dir = DIR_FS_CATALOG . 'cache';
-        $this->config_dir   = DIR_FS_CATALOG . 'lang';
-        $this->cache_dir    = DIR_FS_CATALOG . 'cache';
-        $this->plugins_dir = array(
+        parent::__construct();
+
+        $this->setTemplateDir(DIR_FS_CATALOG . 'templates');
+        $this->setCompileDir(DIR_FS_CATALOG . 'cache');
+        $this->setConfigDir(DIR_FS_CATALOG . 'lang');
+        $this->setCacheDir(DIR_FS_CATALOG . 'cache');
+
+        $this->setPluginsDir(array(
         DIR_FS_CATALOG.'includes/external/smarty/plugins',
         DIR_FS_CATALOG.'includes/external/smarty/plugins_vam',
-        );
-
+        ));
+        
         $this->assign('app_name', 'vamTemplate');
-
    }
 
 }
-
 ?>
