@@ -13,7 +13,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-function smarty_outputfilter_note($tpl_output, &$smarty) {
+function smarty_outputfilter_note($output, Smarty_Internal_Template $template) {
 
     /*
     The following copyright announcement is in compliance

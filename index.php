@@ -65,6 +65,7 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_DEFAULT.'_'.$cID.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_DEFAULT.'_'.$cID.'.html' : CURRENT_TEMPLATE.'/index.html');
+//$vamTemplate->debugging = true;
 $vamTemplate->display($template);
 
 include ('includes/application_bottom.php');  
