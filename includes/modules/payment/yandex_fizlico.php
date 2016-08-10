@@ -21,7 +21,7 @@
     var $code, $title, $insert_id, $description, $enabled;
 
 // class constructor
-    public function yandex_fizlico() {
+    public function __construct() {
       global $order;
 
       $this->code = 'yandex_fizlico';

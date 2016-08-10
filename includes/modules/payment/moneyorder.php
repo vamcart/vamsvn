@@ -20,7 +20,7 @@
 class moneyorder {
 	var $code, $title, $description, $enabled;
 
-	function moneyorder() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'moneyorder';

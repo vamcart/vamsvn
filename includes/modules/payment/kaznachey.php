@@ -4,7 +4,7 @@ class kaznachey
 {
 	var $code, $title, $description, $enabled;
 
-	function kaznachey()
+	function __construct()
 	{
 		global $order;
 

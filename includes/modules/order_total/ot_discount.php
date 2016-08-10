@@ -20,7 +20,7 @@
   class ot_discount {
     var $title, $output;
 
-    function ot_discount() {
+    function __construct() {
     	global $vamPrice;
       $this->code = 'ot_discount';
       $this->title = MODULE_ORDER_TOTAL_DISCOUNT_TITLE;

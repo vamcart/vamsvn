@@ -48,7 +48,7 @@ class worldpay {
 	var $code, $title, $description, $enabled;
 
 	// class constructor
-	function worldpay() {
+	function __construct() {
 		global $order;
 		$this->code = 'worldpay';
 		$this->title = MODULE_PAYMENT_WORLDPAY_TEXT_TITLE;

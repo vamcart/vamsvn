@@ -20,7 +20,7 @@ class eustandardtransfer {
 	var $code, $title, $description, $enabled;
 
 	// class constructor
-	function eustandardtransfer() {
+	function __construct() {
 		$this->code = 'eustandardtransfer';
 		$this->title = MODULE_PAYMENT_EUTRANSFER_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_EUTRANSFER_TEXT_DESCRIPTION;

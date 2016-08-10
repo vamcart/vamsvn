@@ -20,7 +20,7 @@
 class ipaymentelv {
 	var $code, $title, $description, $enabled;
 
-	function ipaymentelv() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'ipaymentelv';

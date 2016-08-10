@@ -20,7 +20,7 @@ class kvitancia {
 	var $code, $title, $description, $enabled;
 
 	// class constructor
-	function kvitancia() {
+	function __construct() {
 		$this->code = 'kvitancia';
 		$this->title = MODULE_PAYMENT_KVITANCIA_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION;

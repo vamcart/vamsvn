@@ -22,7 +22,7 @@
   
     var $code, $title, $description, $enabled;
 
-    function assist() {
+    function __construct() {
     	
      $this->code = 'assist';     
       $this->title = MODULE_PAYMENT_ASSIST_TEXT_TITLE;      

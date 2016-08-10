@@ -26,7 +26,7 @@ class russianpostems {
 
 var $code, $title, $description, $icon, $enabled;
 
-    function russianpostems() {
+    function __construct() {
       global $order;
 
       $this->code = 'russianpostems';

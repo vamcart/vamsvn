@@ -32,7 +32,7 @@
 /**
  * class constructor
  */
-    function dhl() {
+    function __construct() {
       global $order;
 
       $this->code = 'dhl';

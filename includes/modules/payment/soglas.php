@@ -21,7 +21,7 @@ class soglas {
 
 	var $code, $title, $description, $enabled;
 
-	function soglas() {
+	function __construct() {
 		global $order,$vamPrice;
 
 		$this->code = 'soglas';

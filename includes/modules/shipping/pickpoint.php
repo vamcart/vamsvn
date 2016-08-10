@@ -22,7 +22,7 @@
     var $code, $title, $description, $icon, $enabled;
 
 
-    function pickpoint() {
+    function __construct() {
       global $order;
 
       $this->code = 'pickpoint';

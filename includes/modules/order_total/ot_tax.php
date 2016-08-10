@@ -21,7 +21,7 @@
   class ot_tax {
     var $title, $output;
 
-    function ot_tax() {
+    function __construct() {
     	global $vamPrice;
       $this->code = 'ot_tax';
       $this->title = MODULE_ORDER_TOTAL_TAX_TITLE;

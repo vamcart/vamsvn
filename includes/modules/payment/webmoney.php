@@ -20,7 +20,7 @@
 class webmoney {
 	var $code, $title, $description, $enabled;
 
-	function webmoney() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'webmoney';

@@ -20,7 +20,7 @@ class schet {
 	var $code, $title, $description, $enabled;
 
 	// class constructor
-	function schet() {
+	function __construct() {
 		$this->code = 'schet';
 		$this->title = MODULE_PAYMENT_SCHET_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION;

@@ -22,7 +22,7 @@
     var $code, $title, $description, $icon, $enabled;
 
 
-    function autolux() {
+    function __construct() {
       global $order;
 
       $this->code = 'autolux';

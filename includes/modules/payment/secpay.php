@@ -20,7 +20,7 @@
 class secpay {
 	var $code, $title, $description, $enabled;
 
-	function secpay() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'secpay';

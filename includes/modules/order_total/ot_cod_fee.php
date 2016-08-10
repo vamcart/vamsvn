@@ -34,7 +34,7 @@
   class ot_cod_fee {
     var $title, $output;
 
-    function ot_cod_fee() {
+    function __construct() {
     		global $vamPrice;
       $this->code = 'ot_cod_fee';
       $this->title = MODULE_ORDER_TOTAL_COD_FEE_TITLE;

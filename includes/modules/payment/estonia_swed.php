@@ -20,7 +20,7 @@ class estonia_swed {
 	var $configRead = false;
 
 // class constructor
-    function estonia_swed() {
+    function __construct() {
       global $order;
       $this->readConfig();
 

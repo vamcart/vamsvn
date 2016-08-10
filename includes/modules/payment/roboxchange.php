@@ -21,7 +21,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function roboxchange() {
+    function __construct() {
       global $order;
 
       $this->code = 'roboxchange';

@@ -20,7 +20,7 @@
 class kupivkredit {
 	var $code, $title, $description, $enabled;
 
-	function kupivkredit() {
+	function __construct() {
 		global $order;
 
       $this->code = 'kupivkredit';

@@ -30,7 +30,7 @@
 class ot_gv {
 	var $title, $output;
 
-	function ot_gv() {
+	function __construct() {
 		global $vamPrice;
 		$this->code = 'ot_gv';
 		$this->title = MODULE_ORDER_TOTAL_GV_TITLE;

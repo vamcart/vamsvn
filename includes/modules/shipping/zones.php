@@ -111,7 +111,7 @@
 /**
  * class constructor
  */
-    function zones() {
+    function __construct() {
       $this->code = 'zones';
       $this->title = MODULE_SHIPPING_ZONES_TEXT_TITLE;
       $this->description = MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION;

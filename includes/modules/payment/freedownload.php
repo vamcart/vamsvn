@@ -21,7 +21,7 @@ class freedownload {
 
 	var $code, $title, $description, $enabled;
 
-	function freedownload() {
+	function __construct() {
 		global $order,$vamPrice;
 
 		$this->code = 'freedownload';

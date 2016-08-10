@@ -30,7 +30,7 @@
 /**
  * class constructor
  */
-    function ap() {
+    function __construct() {
       global $order;
 
       $this->code = 'ap';

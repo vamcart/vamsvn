@@ -26,7 +26,7 @@ class sogl
 {
     var $code, $title, $description, $icon, $enabled;
 
-    function sogl()
+    function __construct()
     {
 
       global $order;

@@ -20,7 +20,7 @@
   class ot_shipping {
     var $title, $output;
 
-    function ot_shipping() {
+    function __construct() {
     	global $vamPrice;
       $this->code = 'ot_shipping';
       $this->title = MODULE_ORDER_TOTAL_SHIPPING_TITLE;

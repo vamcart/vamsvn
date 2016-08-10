@@ -21,7 +21,7 @@ class nalojka {
 
 	var $code, $title, $description, $enabled;
 
-	function nalojka() {
+	function __construct() {
 		global $order,$vamPrice;
 
 		$this->code = 'nalojka';

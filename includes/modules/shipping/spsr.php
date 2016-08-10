@@ -22,7 +22,7 @@
     var $code, $title, $description, $icon, $enabled;
 
 
-    function spsr() {
+    function __construct() {
       global $order;
 
       $this->code = 'spsr';

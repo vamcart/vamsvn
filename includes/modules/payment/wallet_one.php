@@ -21,7 +21,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function wallet_one() {
+    function __construct() {
       global $order;
 
       $this->code = 'wallet_one';

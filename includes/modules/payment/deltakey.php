@@ -9,7 +9,7 @@ class deltakey {
 		$k_opad = $key ^ str_pad(null, $b, chr(0x5c));
 		return md5($k_opad . pack("H*",md5($k_ipad . $data)));
 	}
-	function deltakey() {
+	function __construct() {
 		global $order;
 		$this->code = 'deltakey';
 		$this->title = MODULE_PAYMENT_DELTAKEY_MERCHANT_TEXT_TITLE;

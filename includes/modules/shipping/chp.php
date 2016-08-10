@@ -31,7 +31,7 @@
 /**
  * class constructor
  */
-    function chp() {
+    function __construct() {
       global $order;
 
       $this->code = 'chp';

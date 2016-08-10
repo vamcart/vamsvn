@@ -21,7 +21,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function paypal_standard() {
+    function __construct() {
       global $order;
 
       $this->signature = 'paypal|paypal_standard|1.0|2.2';

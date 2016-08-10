@@ -13,7 +13,7 @@ class platron {
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function platron() {
+    function __construct() {
 		global $order;
 
 		$this->code = 'platron';

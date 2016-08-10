@@ -26,7 +26,7 @@ class selfpickup
 {
     var $code, $title, $description, $icon, $enabled;
 
-    function selfpickup()
+    function __construct()
     {
 
       global $order;

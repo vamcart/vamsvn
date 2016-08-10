@@ -21,7 +21,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function yandex_merchant_gp() {
+    function __construct() {
       global $order;
 
       $this->code = 'yandex_merchant_gp';

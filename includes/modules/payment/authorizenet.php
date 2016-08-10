@@ -23,7 +23,7 @@
     var $code, $title, $description, $enabled;
 
 
-    function authorizenet() {
+    function __construct() {
       global $order;
 
       $this->code = 'authorizenet';

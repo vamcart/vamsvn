@@ -31,7 +31,7 @@
 /**
  * class constructor
  */
-    function chronopost() {
+    function __construct() {
       $this->code        = 'chronopost';
       $this->title       = MODULE_SHIPPING_CHRONOPOST_TEXT_TITLE;
       $this->description = MODULE_SHIPPING_CHRONOPOST_TEXT_DESCRIPTION;

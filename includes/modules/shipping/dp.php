@@ -29,7 +29,7 @@
     var $code, $title, $description, $icon, $enabled, $num_dp;
 
 
-    function dp() {
+    function __construct() {
       global $order;
 
       $this->code = 'dp';

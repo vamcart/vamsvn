@@ -12,7 +12,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function pay2pay() {
+    function __construct() {
       global $order;
 
       $this->code = 'pay2pay';

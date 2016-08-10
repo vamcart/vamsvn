@@ -10,7 +10,7 @@
     var $code, $title, $description, $enabled;
 
     // class constructor
-    function ik() {
+    function __construct() {
       global $order;
 
       $this->code = 'ik';

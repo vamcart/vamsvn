@@ -20,7 +20,7 @@
 class psigate {
 	var $code, $title, $description, $enabled;
 
-	function psigate() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'psigate';

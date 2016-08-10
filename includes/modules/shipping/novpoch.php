@@ -22,7 +22,7 @@
     var $code, $title, $description, $icon, $enabled;
 
 
-    function novpoch() {
+    function __construct() {
       global $order;
 
       $this->code = 'novpoch';

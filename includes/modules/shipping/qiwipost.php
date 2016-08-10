@@ -8,7 +8,7 @@ class qiwipost
 {
 	var $code, $title, $description, $icon, $enabled;
 
-	function qiwipost()
+	function __construct()
 	{
 		global $order;
 

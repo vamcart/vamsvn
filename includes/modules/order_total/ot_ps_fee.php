@@ -34,7 +34,7 @@
   class ot_ps_fee {
     var $title, $output;
 
-    function ot_ps_fee() {
+    function () {
     	global $vamPrice;
       $this->code = 'ot_ps_fee';
       $this->title = MODULE_ORDER_TOTAL_PS_FEE_TITLE;

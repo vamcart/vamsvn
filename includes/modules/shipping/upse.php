@@ -30,7 +30,7 @@
     var $code, $title, $description, $icon, $enabled, $num_upse;
 
 
-    function upse() {
+    function __construct() {
       global $order;
 
       $this->code = 'upse';

@@ -21,7 +21,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function webmoney_merchant() {
+    function __construct() {
       global $order;
 
       $this->code = 'webmoney_merchant';

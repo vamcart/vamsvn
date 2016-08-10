@@ -30,7 +30,7 @@
 class ot_coupon {
 	var $title, $output;
 
-	function ot_coupon() {
+	function __construct() {
 		global $vamPrice;
 
 		$this->code = 'ot_coupon';

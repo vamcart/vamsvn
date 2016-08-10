@@ -20,7 +20,7 @@
 class yandex {
 	var $code, $title, $description, $enabled;
 
-	function yandex() {
+	function __construct() {
 		global $order;
 
 		$this->code = 'yandex';
