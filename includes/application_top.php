@@ -43,8 +43,8 @@ define('RTN_410', '2');
 define('RTN_GOOD', '100');
 
 // set the level of error reporting
-error_reporting(0);
-//error_reporting(E_ALL & ~E_NOTICE);
+//error_reporting(0);
+error_reporting(E_ALL & ~E_NOTICE);
 
 // Set the local configuration parameters - mainly for developers - if exists else the mainconfigure
 if (file_exists('includes/local/configure.php')) {
@@ -381,7 +381,7 @@ if (!isset ($_SESSION['language']) || isset ($_GET['language']) || empty($langua
 	$lng = new language(vam_input_validation($_GET['language'], 'char', ''));
 
 	if (!isset ($_GET['language']))
-		$lng->language(DEFAULT_LANGUAGE);
+		$lng = new language(DEFAULT_LANGUAGE);
 
 	$_SESSION['language'] = $lng->language['directory'];
 	$_SESSION['languages_id'] = $lng->language['id'];
