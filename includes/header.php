@@ -411,27 +411,27 @@ $vamTemplate->assign('error','
 // Метки для закладок
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT) && !$_GET['cat']) {
-$vamTemplate->assign('1',' class="current"');
+$vamTemplate->assign('main_current',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_ACCOUNT) or strstr($PHP_SELF, FILENAME_ACCOUNT_EDIT) or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY) or strstr($PHP_SELF, FILENAME_ACCOUNT_HISTORY_INFO) or strstr($PHP_SELF, FILENAME_ACCOUNT_PASSWORD) or strstr($PHP_SELF, FILENAME_NEWSLETTER)) {
-$vamTemplate->assign('2',' class="current"');
+$vamTemplate->assign('account_current',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
-$vamTemplate->assign('3',' class="current"');
+$vamTemplate->assign('cart_current',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
-$vamTemplate->assign('4',' class="current"');
+$vamTemplate->assign('checkout_current',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGOFF)) {
-$vamTemplate->assign('5',' class="current"');
+$vamTemplate->assign('logoff_current',' class="current"');
 }
 
 if (strstr($PHP_SELF, FILENAME_LOGIN)) {
-$vamTemplate->assign('6',' class="current"');
+$vamTemplate->assign('login_current',' class="current"');
 }
 
 if ($_SESSION['customers_status']['customers_status_id'] == 0) {
