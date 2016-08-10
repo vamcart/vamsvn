@@ -18,7 +18,7 @@
  
  class main {
  	
- 	function main () {
+ 	function __construct() {
  		$this->SHIPPING = array();
  		
  		

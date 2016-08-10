@@ -43,7 +43,7 @@
   class order {
     var $info, $totals, $products, $customer, $delivery, $content_type;
 
-    function order($order_id = '') {
+    function __construct($order_id = '') {
     	global $vamPrice;
       $this->info = array();
       $this->totals = array();

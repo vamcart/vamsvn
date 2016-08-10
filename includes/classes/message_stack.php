@@ -24,7 +24,7 @@
 
   class messageStack {
 
-    function messageStack() {
+    function __construct() {
       $this->messages = array();
 
       if (isset($_SESSION['messageToStack'])) {

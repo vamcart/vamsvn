@@ -20,7 +20,7 @@ class vamPrice {
 	var $currencies;
 
 	// class constructor
-	function vamPrice($currency, $cGroup, $customer_id = null) {
+	function __construct($currency, $cGroup, $customer_id = null) {
 //		if (!$customer_id && $_SESSION['customer_id']) {
 //			$customer_id=$_SESSION['customer_id'];
 //		}

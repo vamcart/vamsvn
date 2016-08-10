@@ -22,7 +22,7 @@
     var $modules;
 
     // class constructor
-    function shipping($module = '') {
+    function __construct($module = '') {
       global $PHP_SELF,$order;
 
       if (defined('MODULE_SHIPPING_INSTALLED') && vam_not_null(MODULE_SHIPPING_INSTALLED)) {

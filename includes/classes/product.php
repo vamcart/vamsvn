@@ -23,7 +23,7 @@ class product {
 	 * Constructor
 	 * 
 	 */
-	function product($pID = 0) {
+	function __construct($pID = 0) {
 		$this->pID = $pID;
 		$this->useStandardImage=true;
 		$this->standardImage='../noimage.gif';

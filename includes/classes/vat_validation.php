@@ -19,7 +19,7 @@ class vat_validation {
 	var $vat_info;
 	var $vat_mod;
 
-	function vat_validation($vat_id = '', $customers_id = '', $customers_status = '', $country_id = '', $guest = false) {
+	function __construct($vat_id = '', $customers_id = '', $customers_status = '', $country_id = '', $guest = false) {
 		$this->vat_info = array ();
 		$this->live_check = ACCOUNT_COMPANY_VAT_LIVE_CHECK;
 		if (vam_not_null($vat_id)) {

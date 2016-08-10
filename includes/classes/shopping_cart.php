@@ -42,7 +42,7 @@ require_once (DIR_FS_INC.'vam_get_tax_description.inc.php');
 class shoppingCart {
 	var $contents, $total, $weight, $cartID, $content_type;
 
-	function shoppingCart() {
+	function __construct() {
 		$this->reset();
 
 	}

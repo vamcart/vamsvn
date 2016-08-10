@@ -51,7 +51,7 @@
     var $delimiter = "\n";
     var $delimiter_value = '[==]';
 
-    function php3session() {
+    function __construct() {
       $this->mod_name = $this->save_handler;
     }
   }

@@ -21,7 +21,7 @@
     var $sql_query, $number_of_rows, $current_page_number, $number_of_pages, $number_of_rows_per_page;
 
     // class constructor
-    function splitPageResults($query, $page, $max_rows, $count_key = '*') {
+    function __construct($query, $page, $max_rows, $count_key = '*') {
       $this->sql_query = $query;
 
       if (empty($page) || (is_numeric($page) == false)) $page = 1;

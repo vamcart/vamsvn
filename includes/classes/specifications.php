@@ -19,7 +19,7 @@
     var $current_category_id;
     var $languages_id;
 
-    function Specifications() {
+    function __construct() {
       global $current_category_id, $languages_id;
 
       $this->current_category_id = $current_category_id;
