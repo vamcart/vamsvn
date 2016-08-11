@@ -127,6 +127,7 @@ function doDelProduct(id) {
 					type : "GET",
 					success : function(msg) {
 						$("#divShoppingCart").html(msg);
+						$(".shopping-cart-widget").html(msg);
 					}
 		});
 	}
