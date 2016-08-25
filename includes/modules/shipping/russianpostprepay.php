@@ -468,7 +468,7 @@
 	class russianpostprepay extends  russianpost{
 		var $code, $title, $description, $enabled;
 
-		function russianpostprepay()
+		function __construct()
 		{
 		      $this->code = 'russianpostprepay';
 		      $this->title = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PREPAY;

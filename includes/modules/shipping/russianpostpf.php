@@ -468,7 +468,7 @@
 	class russianpostpf extends  russianpostt{
 		var $code, $title, $description, $enabled;
 
-		function russianpostpf()
+		function __construct()
 		{
 		      $this->code = 'russianpostpf';
 		      $this->title = MODULE_SHIPPING_RUSSIANPOSTPREPAY_TEXT_TITLE_PF;
