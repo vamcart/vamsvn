@@ -236,22 +236,22 @@ function get_string($summ,$nominal){
     if ($oder_total_values['class']='ot_total') $total=$oder_total_values['value'];
   	}
 
-	$vamTemplate->assign('1', MODULE_PAYMENT_SCHET_1);
-	$vamTemplate->assign('2', MODULE_PAYMENT_SCHET_2);
-	$vamTemplate->assign('3', MODULE_PAYMENT_SCHET_3);
-	$vamTemplate->assign('4', MODULE_PAYMENT_SCHET_4);
-	$vamTemplate->assign('5', MODULE_PAYMENT_SCHET_5);
-	$vamTemplate->assign('6', MODULE_PAYMENT_SCHET_6);
-	$vamTemplate->assign('7', MODULE_PAYMENT_SCHET_7);
-	$vamTemplate->assign('8', MODULE_PAYMENT_SCHET_8);
-	$vamTemplate->assign('9', MODULE_PAYMENT_SCHET_9);
-	$vamTemplate->assign('10', MODULE_PAYMENT_SCHET_10);
-	$vamTemplate->assign('11', MODULE_PAYMENT_SCHET_11);
-	$vamTemplate->assign('12', MODULE_PAYMENT_SCHET_12);
-	$vamTemplate->assign('13', $order->customer['firstname']);
-	$vamTemplate->assign('14', $order->customer['lastname']);
-	$vamTemplate->assign('15', $order->customer['telephone']);
-	$vamTemplate->assign('16', $order->customer['email_address']);
+	$vamTemplate->assign('schet1', MODULE_PAYMENT_SCHET_1);
+	$vamTemplate->assign('schet2', MODULE_PAYMENT_SCHET_2);
+	$vamTemplate->assign('schet3', MODULE_PAYMENT_SCHET_3);
+	$vamTemplate->assign('schet4', MODULE_PAYMENT_SCHET_4);
+	$vamTemplate->assign('schet5', MODULE_PAYMENT_SCHET_5);
+	$vamTemplate->assign('schet6', MODULE_PAYMENT_SCHET_6);
+	$vamTemplate->assign('schet7', MODULE_PAYMENT_SCHET_7);
+	$vamTemplate->assign('schet8', MODULE_PAYMENT_SCHET_8);
+	$vamTemplate->assign('schet9', MODULE_PAYMENT_SCHET_9);
+	$vamTemplate->assign('schet10', MODULE_PAYMENT_SCHET_10);
+	$vamTemplate->assign('schet11', MODULE_PAYMENT_SCHET_11);
+	$vamTemplate->assign('schet12', MODULE_PAYMENT_SCHET_12);
+	$vamTemplate->assign('schet13', $order->customer['firstname']);
+	$vamTemplate->assign('schet14', $order->customer['lastname']);
+	$vamTemplate->assign('schet15', $order->customer['telephone']);
+	$vamTemplate->assign('schet16', $order->customer['email_address']);
 
 	$total_summ_query = vam_db_query("select value
 	                                  from ".TABLE_ORDERS_TOTAL."

@@ -54,14 +54,14 @@ if ($_SESSION['customer_id'] == $order_check['customers_id']) {
 	$vamTemplate->assign('order_total', $order_total['data']);
 	$vamTemplate->assign('final_price', $order->info['total']);
 
-	$vamTemplate->assign('1', MODULE_PAYMENT_KVITANCIA_1);
-	$vamTemplate->assign('2', MODULE_PAYMENT_KVITANCIA_2);
-	$vamTemplate->assign('3', MODULE_PAYMENT_KVITANCIA_3);
-	$vamTemplate->assign('4', MODULE_PAYMENT_KVITANCIA_4);
-	$vamTemplate->assign('5', MODULE_PAYMENT_KVITANCIA_5);
-	$vamTemplate->assign('6', MODULE_PAYMENT_KVITANCIA_6);
-	$vamTemplate->assign('7', MODULE_PAYMENT_KVITANCIA_7);
-	$vamTemplate->assign('8', MODULE_PAYMENT_KVITANCIA_8);
+	$vamTemplate->assign('kvitancia1', MODULE_PAYMENT_KVITANCIA_1);
+	$vamTemplate->assign('kvitancia2', MODULE_PAYMENT_KVITANCIA_2);
+	$vamTemplate->assign('kvitancia3', MODULE_PAYMENT_KVITANCIA_3);
+	$vamTemplate->assign('kvitancia4', MODULE_PAYMENT_KVITANCIA_4);
+	$vamTemplate->assign('kvitancia5', MODULE_PAYMENT_KVITANCIA_5);
+	$vamTemplate->assign('kvitancia6', MODULE_PAYMENT_KVITANCIA_6);
+	$vamTemplate->assign('kvitancia7', MODULE_PAYMENT_KVITANCIA_7);
+	$vamTemplate->assign('kvitancia8', MODULE_PAYMENT_KVITANCIA_8);
 
 	// assign language to template for caching
 	$vamTemplate->assign('language', $_SESSION['language']);

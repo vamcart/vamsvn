@@ -5,15 +5,15 @@
 
 
 {if $smarty.const.MODULE_PAYMENT_SCHET_STATUS == 'True'}
-<p><b>Поставщик</b> {$1}<br />
-<b>Адрес</b> {$2}<br />
-<b>Телефон</b>&nbsp;{$3} <b>Факс</b> {$4}<br />
+<p><b>Поставщик</b> {$schet1}<br />
+<b>Адрес</b> {$schet2}<br />
+<b>Телефон</b>&nbsp;{$schet3} <b>Факс</b> {$schet4}<br />
 <b>Р/с</b> 
-{$5} <b>в банке</b> {$6}<br />
+{$schet5} <b>в банке</b> {$schet6}<br />
 <b>К/с</b> 
-{$7} <b>БИК</b> {$8}<br />
-<b>ИНН</b> {$9}&nbsp; <b>КПП</b> {$10}&nbsp; <b>ОГРН</b> {$11} <b>Код по 
-ОКПО</b> {$12}<br /></p>
+{$schet7} <b>БИК</b> {$schet8}<br />
+<b>ИНН</b> {$schet9}&nbsp; <b>КПП</b> {$schet10}&nbsp; <b>ОГРН</b> {$schet11} <b>Код по 
+ОКПО</b> {$schet12}<br /></p>
 {/if}
 {if $company_name}
 <p><b>Покупатель</b> {$company_name}</p>
