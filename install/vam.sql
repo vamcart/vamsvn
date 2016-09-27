@@ -2127,9 +2127,9 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ACCOUNT_STATE', 'true',  5, 12, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 6
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_PAYMENT_INSTALLED', '', 6, 0, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_PAYMENT_INSTALLED', 'cod.php', 6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_ORDER_TOTAL_INSTALLED', 'ot_subtotal.php;ot_shipping.php;ot_tax.php;ot_total.php', 6, 0, '2003-07-18 03:31:55', '', NULL, NULL);
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_SHIPPING_INSTALLED', '',  6, 0, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_SHIPPING_INSTALLED', 'flat.ph',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_CURRENCY', 'RUR',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_LANGUAGE', 'ru',  6, 0, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_ORDERS_STATUS_ID', '1',  6, 0, NULL, '', NULL, NULL);
@@ -2150,7 +2150,6 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_ORDER_TOTAL_DISCOUNT_SORT_ORDER', '20', 6, 2, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_STATUS', 'true',  6, 1, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MODULE_ORDER_TOTAL_SUBTOTAL_NO_TAX_SORT_ORDER','40',  6, 2, NULL, '', NULL, NULL);
-
 
 # configuration_group_id 7
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SHIPPING_ORIGIN_COUNTRY', '81',  7, 1, NULL, '', 'vam_get_country_name', 'vam_cfg_pull_down_country_list(');
@@ -3886,3 +3885,16 @@ INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`)
 (11, 1, ':) :) :) :)');
 INSERT INTO `reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
 (12, 1, ':) :) :) :)');
+
+INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+('MODULE_PAYMENT_COD_STATUS', 'True', 6, 1, NULL, '2016-09-27 19:57:34', NULL, 'vam_cfg_select_option(array(\'True\', \'False\'), '),
+('MODULE_PAYMENT_COD_ALLOWED', '', 6, 0, NULL, '2016-09-27 19:57:34', NULL, NULL),
+('MODULE_PAYMENT_COD_ZONE', '0', 6, 2, NULL, '2016-09-27 19:57:34', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes('),
+('MODULE_PAYMENT_COD_SORT_ORDER', '0', 6, 0, NULL, '2016-09-27 19:57:34', NULL, NULL),
+('MODULE_PAYMENT_COD_ORDER_STATUS_ID', '0', 6, 0, NULL, '2016-09-27 19:57:34', 'vam_get_order_status_name', 'vam_cfg_pull_down_order_statuses('),
+('MODULE_SHIPPING_FLAT_STATUS', 'True', 6, 0, NULL, '2016-09-27 19:57:38', NULL, 'vam_cfg_select_option(array(\'True\', \'False\'), '),
+('MODULE_SHIPPING_FLAT_ALLOWED', '', 6, 0, NULL, '2016-09-27 19:57:38', NULL, NULL),
+('MODULE_SHIPPING_FLAT_COST', '5.00', 6, 0, NULL, '2016-09-27 19:57:38', NULL, NULL),
+('MODULE_SHIPPING_FLAT_TAX_CLASS', '0', 6, 0, NULL, '2016-09-27 19:57:38', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes('),
+('MODULE_SHIPPING_FLAT_ZONE', '0', 6, 0, NULL, '2016-09-27 19:57:38', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes('),
+('MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 6, 0, NULL, '2016-09-27 19:57:38', NULL, NULL);
