@@ -72,7 +72,7 @@
 {foreach name=history_products item=products from=$products_history} 
 <dl class="itemLastViewed">
 <dt class="itemImage">
-{if $products_history.PRODUCTS_IMAGE!=''}<a href="{$products.PRODUCTS_LINK}"><img src="{$products.PRODUCTS_IMAGE}" alt="{$products.PRODUCTS_NAME}" border="0" /></a>{/if}
+<a href="{$products.PRODUCTS_LINK}"><img src="{$products.PRODUCTS_IMAGE}" alt="{$products.PRODUCTS_NAME}" border="0" /></a>
 </dt>
 <dd class="itemDescription">
 <a href="{$products.PRODUCTS_LINK}">{$products.PRODUCTS_NAME}</a>
