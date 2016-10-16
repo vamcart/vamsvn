@@ -330,6 +330,16 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
 
+  case (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)):
+
+?>
+<title><?php echo TEXT_BUY_BUTTON . ' ' . mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8") . ' ' . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - TEXT_PAGE_IN_CAT ' . $_GET['page'] : null); ?></title>	
+<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<?php
+
+    break;
+    
 default:
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
