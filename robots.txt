@@ -7,13 +7,11 @@ Disallow: /account_edit_process.php
 Disallow: /account_history.php
 Disallow: /account_history_info.php
 Disallow: /address_book.php
-Disallow: /advanced_search_result.php?
 Disallow: /affiliate_affiliate.php
 Disallow: /ask_a_question.php
 Disallow: /checkout.php
 Disallow: /checkout_process.php
 Disallow: /advanced_search.php
-Disallow: /advanced_search_result.php
 Disallow: /cache/
 Disallow: /admin/
 Disallow: /checkout_address.php
@@ -75,7 +73,6 @@ Disallow: /index.php?action=buy_now
 Disallow: /*authors_id*
 Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
-Disallow: /products_filter.php  
 Disallow: /faq.php
 Disallow: /vam_rss2_info.php
 Disallow: /print_product_info.php
