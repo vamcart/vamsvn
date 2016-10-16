@@ -167,7 +167,7 @@ else {$page= '';}
 
 ?>
 <title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page . ' - ' . TITLE; ?></title>
-<meta name="description" content="<?php echo $categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <?php
 
@@ -333,8 +333,8 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
   case (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)):
 
 ?>
-<title><?php echo TEXT_BUY_BUTTON . ' ' . mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8") . ' ' . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - TEXT_PAGE_IN_CAT ' . $_GET['page'] : null); ?></title>	
-<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
+<title><?php echo TEXT_BUY_BUTTON . ' ' . mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8") . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - TEXT_PAGE_IN_CAT ' . $_GET['page'] : null); ?></title>	
+<meta name="description" content="<?php echo TEXT_BUY_BUTTON . ' ' . mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8") . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - TEXT_PAGE_IN_CAT ' . $_GET['page'] : null); ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <?php
 
