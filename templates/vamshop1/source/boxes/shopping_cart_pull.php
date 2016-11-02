@@ -135,6 +135,7 @@ if (isset ($_SESSION['cc_id'])) {
 	$box->assign('COUPON_HELP_LINK', '<a href="javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\')">');
 }
 // GV Code End
+$box->assign('LINK_HOME', vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
 $box->assign('LINK_CART', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $box->assign('LINK_CHECKOUT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $box->assign('products', $products_in_cart);
