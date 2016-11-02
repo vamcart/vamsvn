@@ -101,6 +101,7 @@
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-}
 
 .cbp-spmenu-open .nav { max-height: 400px !important; overflow-x: hidden; overflow-y: auto; }
+
+}
