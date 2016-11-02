@@ -1,7 +1,9 @@
 // Slide menu
 $(document).ready(function(){
+  $(".navbar .navbar-toggle").click();
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
+
 });
 
 /**
