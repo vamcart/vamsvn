@@ -31,7 +31,7 @@
     width: 260px;
     height: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 9000;
   }
   .cbp-spmenu-horizontal {
     width: 100%;
