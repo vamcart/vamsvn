@@ -1,3 +1,9 @@
+// Slide menu
+$(document).ready(function(){
+  $('.toggle-menu').jPushMenu({closeOnClickLink: false});
+  $('.dropdown-toggle').dropdown();
+});
+
 /**
 * jquery.matchHeight-min.js master
 * https://github.com/liabru/jquery-match-height
