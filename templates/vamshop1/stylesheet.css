@@ -303,7 +303,8 @@ hr.transparent {
     z-index:999999;
 }
 
-#navigation .navbar-inner {
+#navigation .navbar-inner,
+#navigation .nav-collapse {
   background: #ff6633;
   color: #fff;
   border: 0;
