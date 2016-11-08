@@ -255,7 +255,7 @@
   bottom: -38%;
   opacity: 0;
   z-index: 1;
-  margin-left: -10%;
+  margin-left: 0;
   border: 0px solid black;
   position: absolute;
   height: auto !important;
