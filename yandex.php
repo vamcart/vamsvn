@@ -21,6 +21,8 @@ function get_var($name, $default = 'none') {
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 
+header('Content-type: text/xml; charset=utf-8');
+
 // logging
 //$fp = fopen('yandex.log', 'a+');
 //$str=date('Y-m-d H:i:s').' - ';
