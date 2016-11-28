@@ -260,7 +260,7 @@ while ($products = vam_db_fetch_array($products_query)) {
 
 
 		$fsk_lock = "";
-		//$also_purchased = array();
+		$also_purchased = array();
 		if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
 			$fsk_lock = ' and p.products_fsk18!=1';
 		}
@@ -269,28 +269,20 @@ while ($products = vam_db_fetch_array($products_query)) {
 			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 		}
 
-		$orders_query = "select p.products_fsk18,
-																														 p.products_tax_class_id,
-																								                                                 p.products_id,
-																								                                                 p.label_id,
-																								                                                 p.products_image,
-																								                                                 p.products_quantity,
-																								                                                 pd.products_name,
-																														 						pd.products_short_description,
-																								                                                 p.products_fsk18,p.products_price,p.products_vpe,
-						                           																									p.products_vpe_status,
-						                           																									p.products_vpe_value,
-																								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-																								                                            where xp.products_id = '".$products['products_id']."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
-																								                                            and p.products_id = pd.products_id 
-																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
-																								                                            and p.products_status = '1'
-																								                                            order by xp.sort_order asc";
+		$orders_query = "SELECT
+                    px.products_id,
+                    px.xsell_id,
+					p.products_model
+                FROM products_xsell px, 
+					products p
+                WHERE
+                px.xsell_id = p.products_id and 
+                px.products_id = ".$products['products_id']."";
 																								                                            
 		$orders_query = vamDBquery($orders_query);
 		while ($orders = vam_db_fetch_array($orders_query, true)) {
 
-			$also_purchased[] = $orders['products_id'];
+			$also_purchased[] = $orders['xsell_id'];
 
 		}
 
