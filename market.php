@@ -257,6 +257,51 @@ while ($products = vam_db_fetch_array($products_query)) {
   if(YML_SALES_NOTES != "") {
     vam_yml_out('  <sales_notes>' . YML_SALES_NOTES . '</sales_notes>');
   }
+
+
+		$fsk_lock = "";
+		//$also_purchased = array();
+		if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+			$fsk_lock = ' and p.products_fsk18!=1';
+		}
+		$group_check = "";
+		if (GROUP_CHECK == 'true') {
+			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+		}
+
+		$orders_query = "select
+														                                  p.products_fsk18,
+														                                  p.products_id,
+														                                  p.label_id,
+														                                  p.products_price,
+														                                  p.products_quantity,
+														                                  p.products_tax_class_id,
+														                                  p.products_image,
+														                                  pd.products_name,
+														                                  p.products_vpe,
+						                           										  p.products_vpe_status,
+						                           										  p.products_vpe_value,
+														                                  pd.products_short_description FROM ".TABLE_ORDERS_PRODUCTS." opa, ".TABLE_ORDERS_PRODUCTS." opb, ".TABLE_ORDERS." o, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+														                                  where opa.products_id = '".$products['products_id']."'
+														                                  and opa.orders_id = opb.orders_id
+														                                  and opb.products_id != '".$products['products_id']."'
+														                                  and opb.products_id = p.products_id
+														                                  and opb.orders_id = o.orders_id
+														                                  and p.products_status = '1'
+														                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
+														                                  and opb.products_id = pd.products_id
+														                                  ".$group_check."
+														                                  ".$fsk_lock."
+														                                  group by p.products_id order by o.date_purchased desc limit ".MAX_DISPLAY_ALSO_PURCHASED;
+		$orders_query = vamDBquery($orders_query);
+		while ($orders = vam_db_fetch_array($orders_query, true)) {
+
+			$also_purchased[] = $orders['products_id'];
+
+		}
+
+  vam_yml_out('<rec>'.implode(",",array_unique($also_purchased)).'</rec>' . "\n");
+
   vam_yml_out('</offer>' . "\n");
 
 }
