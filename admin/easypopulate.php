@@ -158,7 +158,7 @@ define ('EP_INACTIVATE_ZERO_QUANTITIES', false);  // default is false
 // If you increase the Model Number size, you must increase the size of the field
 // in the database. Use a SQL tool like phpMyAdmin (see your host) and change the
 // "products_model" field of the "products" table in your osCommerce Database.
-define ('EP_MODEL_NUMBER_SIZE', 12); // default is 12
+define ('EP_MODEL_NUMBER_SIZE', 100); // default is 12
 
 
 //**** Price includes tax? ****
