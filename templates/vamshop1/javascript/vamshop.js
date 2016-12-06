@@ -4,6 +4,14 @@ $(document).ready(function(){
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
 
+
+  $('.dropdown-sub a.drop').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+
 });
 
 /**
