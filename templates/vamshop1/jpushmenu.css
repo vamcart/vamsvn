@@ -1,12 +1,12 @@
-@media screen and (max-width: 767px) {
-  .navbar-fixed-top {
+@media screen and (max-width: 980px) {
+  .nav-fixed-top {
     width:100%;
   }
-  .navbar-fixed-top .navbar-collapse, 
-  .navbar-fixed-bottom .navbar-collapse {
+  .nav-fixed-top .navbar-collapse, 
+  .nav-fixed-bottom .navbar-collapse {
     max-height:none;
   }
-  .navbar-nav {
+  .navbar .nav {
     margin:0;
   }
   .navbar-form {
