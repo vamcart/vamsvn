@@ -84,6 +84,7 @@ ALTER TABLE products ADD yml_cbid INT(4) DEFAULT '0' NOT NULL;
 */
 @define('GZIP_LEVEL','0');
 require('includes/application_top.php');
+require_once (DIR_FS_INC.'vam_get_products_mo_images.inc.php');
 
 @define('YML_NAME', '');
 @define('YML_COMPANY', '');
@@ -242,6 +243,14 @@ while ($products = vam_db_fetch_array($products_query)) {
   }
 
   if(vam_not_null($products['products_image'])) vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urldecode($products['products_image']) . '</picture>');
+
+		$mo_images = vam_get_products_mo_images($products['products_id']);
+        if ($mo_images != false) {
+            foreach ($mo_images as $img) {
+                vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_ORIGINAL_IMAGES . urldecode($img['image_name']) . '</picture>');
+            }
+        }
+
   if(YML_DELIVERYINCLUDED == "true") vam_yml_out('  <deliveryIncluded/>');
   vam_yml_out('  <name>' . vam_yml_clear_string($products['products_name']) . '</name>');
 
