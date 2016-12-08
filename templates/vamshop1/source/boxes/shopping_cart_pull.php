@@ -23,8 +23,8 @@ $box_price_string = '';
 // include needed files
 require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING))
-	$box->assign('deny_cart', 'true');
+//if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING))
+	//$box->assign('deny_cart', 'true');
 
 if ($_SESSION['cart']->count_contents() > 0) {
 	$products = $_SESSION['cart']->get_products();
