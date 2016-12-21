@@ -268,15 +268,7 @@ while ($products = vam_db_fetch_array($products_query)) {
   }
 
 
-		$fsk_lock = "";
 		$also_purchased = array();
-		if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
-			$fsk_lock = ' and p.products_fsk18!=1';
-		}
-		$group_check = "";
-		if (GROUP_CHECK == 'true') {
-			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
-		}
 
 		$orders_query = "SELECT
                     px.products_id,
