@@ -66,7 +66,7 @@ if (!$_GET['submitted'])
                         <td><?php echo INPUT_START; ?></td>
                         <td><!-- input name="start" size="5" value="<?php echo $start; ?>"> -->
                           <?php
-    	                    $orders_list_query = vam_db_query("SELECT orders_id, date_purchased FROM orders ORDER BY orders_id");
+    	                    $orders_list_query = vam_db_query("SELECT orders_id, date_purchased FROM orders ORDER BY orders_id DESC");
    							$orders_list_array = array();
 							$orders_list_array[] = array('id' => '', 'text' => '---');
    						    while ($orders_list = vam_db_fetch_array($orders_list_query)) {
@@ -78,6 +78,7 @@ if (!$_GET['submitted'])
 
 						?></td>
                       </tr>
+                     
                       <tr>
                         <td><?php echo INPUT_END; ?></td>
                         <td><!-- <input name="end" size="5" value="<?php echo $end; ?>"> -->
@@ -85,6 +86,32 @@ if (!$_GET['submitted'])
 						echo '&nbsp;&nbsp;' . vam_draw_pull_down_menu('end', $orders_list_array, (isset($_GET['orders_id']) ? $_GET['orders_id'] : ''), 'size="1"') . '&nbsp;&nbsp;&nbsp;';
 						?></td>
                       </tr>
+
+                      <tr>
+                        <td><?php echo 'Статус заказа:'; ?></td>
+                        <td>
+                        
+                        
+                <?php 
+                
+                
+$orders_statuses = array ();
+$orders_status_array = array ();
+$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".(int)$_SESSION['languages_id']."'");
+while ($orders_status = vam_db_fetch_array($orders_status_query)) {
+	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
+	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
+}                
+                
+                define('TEXT_ALL_ORDERS', 'Все заказы');
+                echo vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status']).vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>                        
+                        
+                        
+                        </td></td>
+                      </tr>
+
+
+
                       <tr>
                         <td>&nbsp;</td>
                         <td><span class="button"><button type="submit" value="<?php echo INPUT_VALID; ?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo INPUT_VALID; ?></button></span></td>
@@ -172,6 +199,7 @@ $csv_output .= "Стоимость_доставки".$delim;
 //$csv_output .= "CODAmount".$delim;
 $csv_output .= "Заказ_итого".$delim;
 $csv_output .= "Товаров_в_заказе".$delim;
+$csv_output .= "Товары".$delim;
 $csv_output .= "Способ_доставки".$delim;
 // $csv_output .= "Shipping_Weight".$delim;
 //$csv_output .= "Coupon_Code".$delim;
@@ -200,25 +228,30 @@ $csv_output .= "Aтрибуты".$delim;
 $csv_output .= "Значения_атрибутов".$delim;
 $csv_output .= "\n";
 
+if ($_GET['status'] > 0) {
+$orders_status = "orders_status = '".vam_db_input($_GET['status'])."' ";
+} else {
+$orders_status = '';
+}
 
 //End Placing columns in first row
 // Patch dlan
 // if both fields are empty we select all orders
 if ($start=="" && $end=="") {
- $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
-FROM orders ORDER BY orders_id"); 
+ $orders = vam_db_query("SELECT distinct orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+FROM orders ".(($orders_status != "") ? "where " . $orders_status : '')." GROUP BY orders_id ORDER BY orders_id"); 
 // if $start is empty we select all orders up to $end
 } else if($start=="" && $end!="") {
- $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
-FROM orders WHERE orders_id <= $end ORDER BY orders_id"); 
+ $orders = vam_db_query("SELECT distinct orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+FROM orders where orders_id <= $end ".$orders_status." GROUP BY orders_id ORDER BY orders_id"); 
 // if $end is empty we select all orders from $start
 } else if($start!="" && $end=="") {
- $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
-FROM orders WHERE orders_id >= $start ORDER BY orders_id");
+ $orders = vam_db_query("SELECT distinct orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+FROM orders where orders_id >= $start ".$orders_status." GROUP BY orders_id ORDER BY orders_id");
 // if both fields are filed in we select orders betwenn $start and $end
 } else {
- $orders = vam_db_query("SELECT orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
-FROM orders WHERE orders_id >= $start AND orders_id <= $end ORDER BY orders_id");
+ $orders = vam_db_query("SELECT distinct orders_id, date_purchased, customers_name, cc_owner, customers_company, customers_email_address, billing_street_address, billing_city, billing_state, billing_postcode, billing_country, customers_telephone, delivery_name, delivery_company, delivery_street_address, delivery_city, delivery_state, delivery_postcode, delivery_country, cc_type, cc_number, cc_expires 
+FROM orders where orders_id >= $start AND orders_id <= $end ".$orders_status." GROUP BY orders_id ORDER BY orders_id");
 }
 //patch
 
@@ -343,6 +376,14 @@ while($row_orders_count = vam_db_fetch_array($orders_count)) {
  // end //
 $Number_of_Items = $row_orders_count[0]; // used array to show the number of items ordered
 }
+//Products COunt
+$orders_products = vam_db_query("select products_name, products_model, products_quantity, products_price from orders_products
+where orders_id = " . $Orders_id);
+$Items = '';
+while($row_orders_products = vam_db_fetch_array($orders_products)) {
+ // end //
+$Items .= $row_orders_products['products_quantity'] . ' x ' . $row_orders_products['products_name'] . '('.$row_orders_products['products_model'].') ' . ' = ' . ceil($row_orders_products['products_price']) . ' '; // used array to show the number of items ordered
+}
 //
 $Shipping_Weight = "";
 $Coupon_Code = "";
@@ -411,6 +452,7 @@ $csv_output .= $Order_Shipping_Total . "," ;
 //$csv_output .= $CODAmount . "," ;
 $csv_output .= $Order_Grand_Total . "," ;
 $csv_output .= $Number_of_Items . "," ;
+$csv_output .= $Items . "," ;
 $csv_output .= $Shipping_Method . "," ;
 // $csv_output .= $Shipping_Weight . "," ;
 //$csv_output .= $Coupon_Code . "," ;
