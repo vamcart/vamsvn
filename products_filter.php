@@ -49,7 +49,8 @@ $module = new vamTemplate;
                         s.specifications_id,
                         s.filter_class,
                         s.products_column_name,
-                        sd.specification_name
+                        sd.specification_name,
+                        sd.specification_description
                       FROM
                         " . TABLE_SPECIFICATION . " AS s
                       Inner Join " . TABLE_SPECIFICATION_GROUPS . " AS sg

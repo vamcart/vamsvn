@@ -87,6 +87,7 @@
         foreach ($filter_value as $value) { 
           if ($value != '0') {
             $specs_array_breadcrumb[] = array ('specification_name' => $specs_array['specification_name'],
+                                               'specification_description' => $specs_array['specification_description'],
                                                'specifications_id' => $specs_array['specifications_id'],
                                                'value' => $value
                                               ); 
@@ -95,6 +96,7 @@
         
       } else { // Only one value
         $specs_array_breadcrumb[] = array ('specification_name' => $specs_array['specification_name'],
+                                           'specification_description' => $specs_array['specification_description'],
                                            'specifications_id' => $specs_array['specifications_id'],
                                            'value' => $filter_value
                                           ); 

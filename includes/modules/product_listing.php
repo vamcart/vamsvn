@@ -79,6 +79,7 @@ if ($listing_split->number_of_rows > 0) {
   if (strstr($PHP_SELF, FILENAME_PRODUCTS_FILTERS)) {
 	global $filter;
 	$module->assign('FILTER', $filter);
+	$module->assign('FILTER_DESCRIPTION', $filter_description);
 	
 	}
 	

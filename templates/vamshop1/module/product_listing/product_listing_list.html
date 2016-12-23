@@ -14,9 +14,10 @@
 {$CATEGORIES_HEADING_TITLE}
 </p>
 {/if}
-{if $CATEGORIES_DESCRIPTION and !$smarty.get.page}
+{if ($CATEGORIES_DESCRIPTION or $FILTER_DESCRIPTION) and !$smarty.get.page}
 <p>
 {$CATEGORIES_DESCRIPTION}
+{$FILTER_DESCRIPTION}
 </p>
 {/if}
 
