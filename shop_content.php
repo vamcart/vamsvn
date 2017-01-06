@@ -103,7 +103,7 @@ if ($_GET['coID'] == 7) {
 	if (isset ($_GET['action']) && ($_GET['action'] == 'send') && $spam_flag == false) {
 		if (vam_validate_email(trim($_POST['email']))) {
 
-			vam_php_mail($_POST['email'], $_POST['name'], CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
+			vam_php_mail(CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
 
 			if (!isset ($mail_error)) {
 				vam_redirect(vam_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
