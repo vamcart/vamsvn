@@ -98,6 +98,7 @@
 						<div class="tab-pane inner fade in notop active" id="description">
 							<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
 
+						{if $specifications}
 						<div class="inner">
 						<!-- Specifications -->
 						{foreach name=outer item=spec_group from=$specifications_data}
@@ -110,6 +111,7 @@
 						{/foreach}
 						<!-- /Specifications -->
 						</div>
+						{/if}
 	
 						{if $extra_fields_data}
 						<div class="inner">
