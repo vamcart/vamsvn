@@ -98,18 +98,18 @@
 						<div class="tab-pane inner fade in notop active" id="description">
 							<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
 
-						{if $specifications}
 						<div class="inner">
-							<!-- Specifications -->
-							{foreach name=outer item=spec_group from=$specifications_data}
-							<strong>{$spec_group.GROUP_NAME}:</strong><br />
-							{foreach key=key_data item=spec from=$spec_group.DATA}
-							{$spec.NAME}: {$spec.VALUE}<br /> 
-							{/foreach}
-							{/foreach}
-							<!-- /Specifications -->
+						<!-- Specifications -->
+						{foreach name=outer item=spec_group from=$specifications_data}
+						<br />
+						{foreach key=key_data item=spec from=$spec_group.DATA}
+						<div class="{cycle values="spec-odd,spec-even"}">
+						<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br /> 
 						</div>
-						{/if}
+						{/foreach}
+						{/foreach}
+						<!-- /Specifications -->
+						</div>
 	
 						{if $extra_fields_data}
 						<div class="inner">
