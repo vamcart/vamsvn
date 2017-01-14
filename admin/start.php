@@ -37,19 +37,15 @@ require ('includes/application_top.php');
 			});
 		</script>
 <?php } ?>
-		<script type="text/javascript" src="../jscript/jquery/plugins/zrss/jquery.zrssfeed.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/rss/jquery.rss.js"></script>
 		<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
 
 		<script type="text/javascript">
-$(document).ready(function () {
-	$("#vamshop-rss").rssfeed("http://blog.vamshop.ru/feed/", {
-		header: false,
-		date: true,
-		content: true,
-		linktarget: "_blank",
-		limit: 5,
-	});
-});
+			$(document).ready(function () {
+				$("#vamshop-rss").rss("http://blog.vamshop.ru/feed/", {
+			          limit: 10
+			        })
+			});
 		</script>
 
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap.css">
