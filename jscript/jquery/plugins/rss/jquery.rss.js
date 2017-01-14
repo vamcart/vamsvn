@@ -14,7 +14,7 @@
       limit: null,
       key: null,
       layoutTemplate: '<div class="rssFeed"><ul>{entries}</ul></div>',
-      entryTemplate: '<li><h4><a target="_blank" href="{url}">{title}</a></h4>{shortBodyPlain}</li>',
+      entryTemplate: '<li><h4><a target="_blank" href="{url}">{title}</a></h4>{shortBodyPlain}<br /></li>',
       tokens: {},
       outputMode: 'json',
       dateFormat: 'dddd MMM Do',
