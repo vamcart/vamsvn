@@ -13,7 +13,7 @@
       host: 'www.feedrapp.info',
       limit: null,
       key: null,
-      layoutTemplate: '<ul>{entries}</ul>',
+      layoutTemplate: '<div class="rssFeed"><ul>{entries}</ul></div>',
       entryTemplate: '<li><h4><a target="_blank" href="{url}">{title}</a></h4>{shortBodyPlain}</li>',
       tokens: {},
       outputMode: 'json',
