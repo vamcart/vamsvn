@@ -485,6 +485,7 @@ $order->info['tax'] -= $tod_amount;
 		$products_id = vam_get_prid($product_id);
 		// products price
 		$qty = $_SESSION['cart']->contents[$products_id]['qty'];
+		if (!isset($qty)){ $qty = 1; }
 		$product_query = vam_db_query("select products_id, products_price, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".$product_id."'");
 		if ($product = vam_db_fetch_array($product_query)) {
 			$prid = $product['products_id'];
