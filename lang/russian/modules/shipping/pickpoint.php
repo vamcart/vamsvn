@@ -36,12 +36,16 @@ function pickpoint_call(id_this){
 function pickpoint_callback_function(result){
   var pickpoint_id = document.getElementById("pickpoint_id");
   var pickpoint_address = document.getElementById("pickpoint_address");
+  var to_pickpoint_id = document.getElementById("to_pickpoint_id");
+  var to_pickpoint_address = document.getElementById("to_pickpoint_address");
   var pickpoint_address_text = document.getElementById("pickpoint_address_text");
   var pickpoint_link = document.getElementById("pickpoint_link");
   var pickpoint_error = document.getElementById("pickpoint_error");
   var pickpoint_link_help = document.getElementById("pickpoint_link_help");
   pickpoint_id.value = result["id"];
   pickpoint_address.value = result["address"];
+  to_pickpoint_id.value = result["id"];
+  to_pickpoint_address.value = result["address"];
   // textContent innerHTML
   pickpoint_address_text.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS.'" + result["address"] + " ";
   pickpoint_link.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS.'";
