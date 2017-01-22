@@ -37,16 +37,7 @@ require ('includes/application_top.php');
 			});
 		</script>
 <?php } ?>
-		<script type="text/javascript" src="../jscript/jquery/plugins/rss/jquery.rss.js"></script>
 		<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
-
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$("#vamshop-rss").rss("http://blog.vamshop.ru/feed/", {
-			          limit: 10
-			        })
-			});
-		</script>
 
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap-responsive.css">
@@ -157,7 +148,49 @@ require ('includes/application_top.php');
 				<li><a href="#stat"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/comment.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_VAMSHOP_NEWS; ?></a></li>
 			</ul>
 			<div id="rss-news">
-			  <div id="vamshop-rss"></div>
+
+			  
+<?php
+ 
+require_once(DIR_FS_CATALOG.'includes/external/simplepie/autoloader.php');
+
+// We'll process this feed with all of the default options.
+$url = 'http://blog.vamshop.ru/feed/';
+$feed = new SimplePie();
+
+// Set which feed to process.
+ $feed->set_cache_location('../cache');
+ 
+// Set which feed to process.
+ $feed->set_feed_url($url);
+
+// Run SimplePie.
+$feed->init();
+
+$feed->handle_content_type();
+ 
+?>
+ 
+   <ul>
+ 
+	<?php
+	/*
+	Here, we'll loop through all of the items in the feed, and $item represents the current item in the loop.
+	*/
+	foreach ($feed->get_items(0,5) as $item):
+	?>
+ 
+		<li class="item">
+			<h3><strong><a href="<?php echo $item->get_permalink(); ?>" target="_blank"><?php echo $item->get_title(); ?></a></strong></h3>
+			<p><?php echo $item->get_description(); ?></p>
+		</li>
+ 
+	<?php endforeach; ?>
+	
+	</ul>
+
+			  
+			  
 			</div>
 		</div>
       </div>
