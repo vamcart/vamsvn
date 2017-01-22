@@ -129,7 +129,8 @@
           $group_query_raw = "select specification_group_name,
                                      show_comparison,
                                      show_products,
-                                     show_filter
+                                     show_filter,
+                                     show_filter_mainpage
                               from " . TABLE_SPECIFICATION_GROUPS . " 
                               where specification_group_id = '" . $group_id . "'
                              ";
@@ -139,7 +140,8 @@
           $sql_data_array = array ('specification_group_name' => $group_array['specification_group_name'],
                                    'show_comparison' => $group_array['show_comparison'],
                                    'show_products' => $group_array['show_products'],
-                                   'show_filter' => $group_array['show_filter']
+                                   'show_filter' => $group_array['show_filter'],
+                                   'show_filter_mainpage' => $group_array['show_filter_mainpage']
                                   );
           vam_db_perform (TABLE_SPECIFICATION_GROUPS, $sql_data_array);
           $new_group_id = vam_db_insert_id();
@@ -1694,7 +1696,8 @@
                                     specification_group_name,
                                     show_comparison, 
                                     show_products, 
-                                    show_filter
+                                    show_filter,
+                                    show_filter_mainpage
                              from " . TABLE_SPECIFICATION_GROUPS . "
                              " . $search . "
                              order by specification_group_name
@@ -2390,7 +2393,7 @@
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_COMPARISON . '<br />' . vam_draw_radio_field ('show_comparison', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_comparison', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_ON_PRODUCTS . '<br />' . vam_draw_radio_field ('show_products', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_products', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER . '<br />' . vam_draw_radio_field ('show_filter', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
-        $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER_MAINPAGE . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter_mainapge', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
+        $contents[] = array ('text' => '<br />' . TEXT_SHOW_FILTER_MAINPAGE . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('show_filter_mainpage', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW);
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_CLASS . '<br />' . vam_draw_pull_down_menu ('filter_class', $filter_classes) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SHOW_ALL . '<br />' . vam_draw_radio_field ('filter_show_all', 'True', true) . '&nbsp;' . TEXT_SHOW . '<br />' . vam_draw_radio_field ('filter_show_all', 'False', false) . '&nbsp;' . TEXT_DONT_SHOW );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_DISPLAY . '<br />' . vam_draw_pull_down_menu ('filter_display', $filter_display_array) );
