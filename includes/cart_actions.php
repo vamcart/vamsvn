@@ -242,10 +242,10 @@ if (isset ($_GET['action'])) {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
 					}
 				} else {
-			vam_redirect(vam_href_link($goto, vam_get_all_get_params(array (
-				'action',
-				'BUYproducts_id'
-			))));
+			//vam_redirect(vam_href_link($goto, vam_get_all_get_params(array (
+			//	'action',
+			//	'BUYproducts_id'
+			//))));
          }
 			break;
 		case 'cust_order' :
