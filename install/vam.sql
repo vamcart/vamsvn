@@ -1214,7 +1214,8 @@ CREATE TABLE products (
   yml_cbid varchar(4) NOT NULL DEFAULT '0',
   products_page_url varchar(255),
   PRIMARY KEY (products_id),
-  KEY idx_products_date_added (products_date_added)
+  KEY idx_products_date_added (products_date_added),
+  KEY idx_manufacturers_id (manufacturers_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products` VALUES
