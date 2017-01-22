@@ -858,6 +858,15 @@
             }
             
           } else {
+          	
+			  if (vam_db_prepare_input ($_POST['filter'][$language_id]) != vam_db_prepare_input ($_POST['old_val'])){
+				  
+				 $sql_update = array ( 'specification' => vam_db_prepare_input ($_POST['filter'][$language_id]) );
+				 vam_db_perform (TABLE_PRODUCTS_SPECIFICATIONS, $sql_update, 'update', 
+				 "specifications_id = '" . vam_db_prepare_input ($_POST['spath_val']) . "' and 
+				 specification = '" . vam_db_prepare_input ($_POST['old_val']) . "'");
+				}
+          	
             $sql_data_array = array ('filter' => vam_db_prepare_input ($_POST['filter'][$language_id]) );
           } // if ($_POST['entry_type'] ... else ...
 
@@ -2611,7 +2620,7 @@
           } // if ($entry_type
         } // for ($i = 0
 
-        $contents[] = array ('text' => '<br />' . TEXT_EDIT_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) );
+        $contents[] = array ('text' => '<br />' . TEXT_EDIT_FILTER . $filter_inputs_string . vam_draw_hidden_field ('entry_type', $entry_type) .vam_draw_hidden_field ('old_val', $filter_data['filter']) . vam_draw_hidden_field ('spath_val', $_GET['spath']) );
         $contents[] = array ('text' => '<br />' . TEXT_FILTER_SORT_ORDER . '<br />' . vam_draw_input_field ('filter_sort_order', $fInfo->filter_sort_order, 'size="5"'));
         $contents[] = array ('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . IMAGE_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . IMAGE_SAVE . '</button></span>' . ' <a class="button" href="' . vam_href_link (FILENAME_PRODUCTS_SPECIFICATIONS, 'sgpath=' . $specs_group_path . '&spath=' . $specs_path . '&fid=' . $fInfo->specification_filters_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . IMAGE_CANCEL . '</span></a>');
 
