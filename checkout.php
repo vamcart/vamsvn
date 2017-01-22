@@ -1358,11 +1358,15 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
       }
 
       $customer_first_name = $firstname;
+      $customer_last_name = $lastname;
+      $customer_email_address = $email_address;
       $customer_default_address_id = $address_id;
       $customer_country_id = $country;
       $customer_zone_id = $zone_id;
       vam_session_register('customer_id');  
       vam_session_register('customer_first_name');
+      vam_session_register('customer_last_name');
+      vam_session_register('customer_email_address');
       vam_session_register('customer_default_address_id');
       vam_session_register('customer_country_id');
       vam_session_register('customer_zone_id');
