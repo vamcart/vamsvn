@@ -3770,7 +3770,8 @@ CREATE TABLE IF NOT EXISTS `products_specifications` (
   `language_id` int(11) NOT NULL DEFAULT '1',
   `specification` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`products_specification_id`),
-  KEY `products_id` (`products_id`,`specifications_id`,`language_id`)
+  KEY `products_id` (`products_id`,`specifications_id`,`language_id`),
+  KEY `specification` (`specification`,`products_specification_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products_specifications` VALUES
