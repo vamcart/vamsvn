@@ -41,9 +41,9 @@
     $stored_customer = vam_db_fetch_array($stored_customer_query);
 
     if ($stored_customer['count'] > 0) {
-      vam_db_query("update " . TABLE_WHOS_ONLINE . " set customer_id = '" . $wo_customer_id . "', full_name = '" . $wo_full_name . "', ip_address = '" . $wo_ip_address . "', time_last_click = '" . $current_time . "', last_page_url = '" . $wo_last_page_url . "' where session_id = '" . $wo_session_id . "'");
+      vam_db_query("update " . TABLE_WHOS_ONLINE . " set customer_id = '" . (int)$wo_customer_id . "', full_name = '" . vam_db_input($wo_full_name) . "', ip_address = '" . vam_db_input($wo_ip_address) . "', time_last_click = '" . vam_db_input($current_time) . "', last_page_url = '" . vam_db_input($wo_last_page_url) . "' where session_id = '" . vam_db_input($wo_session_id) . "'");
     } else {
-      vam_db_query("insert into " . TABLE_WHOS_ONLINE . " (customer_id, full_name, session_id, ip_address, time_entry, time_last_click, last_page_url) values ('" . $wo_customer_id . "', '" . $wo_full_name . "', '" . $wo_session_id . "', '" . $wo_ip_address . "', '" . $current_time . "', '" . $current_time . "', '" . $wo_last_page_url . "')");
+      vam_db_query("insert into " . TABLE_WHOS_ONLINE . " (customer_id, full_name, session_id, ip_address, time_entry, time_last_click, last_page_url) values ('" . (int)$wo_customer_id . "', '" . vam_db_input($wo_full_name) . "', '" . vam_db_input($wo_session_id) . "', '" . vam_db_input($wo_ip_address) . "', '" . vam_db_input($current_time) . "', '" . vam_db_input($current_time) . "', '" . vam_db_input($wo_last_page_url) . "')");
     }
   }
 ?>
