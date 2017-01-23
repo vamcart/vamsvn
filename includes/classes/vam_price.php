@@ -57,7 +57,7 @@ class vamPrice {
 				                                        FROM
 				                                             ".TABLE_CUSTOMERS_STATUS."
 				                                        WHERE
-				                                             customers_status_id = '".$this->actualGroup."' AND language_id = '".$_SESSION['languages_id']."'";
+				                                             customers_status_id = '".(int)$this->actualGroup."' AND language_id = '".(int)$_SESSION['languages_id']."'";
 		$customers_status_query = vamDBquery($customers_status_query);
 		$customers_status_value = vam_db_fetch_array($customers_status_query, true);
 
@@ -87,7 +87,7 @@ class vamPrice {
 			
 			// calculate tax based on shipping or deliverey country (for downloads)
 			if (isset($_SESSION['billto']) && isset($_SESSION['sendto'])) {
-			$tax_address_query = vam_db_query("select ab.entry_country_id, ab.entry_zone_id from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) where ab.customers_id = '" . $_SESSION['customer_id'] . "' and ab.address_book_id = '" . ($this->content_type == 'virtual' ? $_SESSION['billto'] : $_SESSION['sendto']) . "'");
+			$tax_address_query = vam_db_query("select ab.entry_country_id, ab.entry_zone_id from " . TABLE_ADDRESS_BOOK . " ab left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id) where ab.customers_id = '" . (int)$_SESSION['customer_id'] . "' and ab.address_book_id = '" . ($this->content_type == 'virtual' ? $_SESSION['billto'] : $_SESSION['sendto']) . "'");
       		$tax_address = vam_db_fetch_array($tax_address_query);
 			$this->TAX[$zones_data['class']]=vam_get_tax_rate($zones_data['class'],$tax_address['entry_country_id'], $tax_address['entry_zone_id']);				
 			} else {
@@ -157,7 +157,7 @@ class vamPrice {
 	}
 
 	function getPprice($pID) {
-		$pQuery = "SELECT products_price FROM ".TABLE_PRODUCTS." WHERE products_id='".$pID."'";
+		$pQuery = "SELECT products_price FROM ".TABLE_PRODUCTS." WHERE products_id='".(int)$pID."'";
 		$pQuery = vamDBquery($pQuery);
 		$pData = vam_db_fetch_array($pQuery, true);
 		return $pData['products_price'];
@@ -176,7 +176,7 @@ class vamPrice {
 		// check if group got discount
 		if ($this->cStatus['customers_status_discount'] != '0.00') {
 
-			$discount_query = "SELECT products_discount_allowed FROM ".TABLE_PRODUCTS." WHERE products_id = '".$pID."'";
+			$discount_query = "SELECT products_discount_allowed FROM ".TABLE_PRODUCTS." WHERE products_id = '".(int)$pID."'";
 			$discount_query = vamDBquery($discount_query);
 			$dData = vam_db_fetch_array($discount_query, true);
 
@@ -201,15 +201,15 @@ class vamPrice {
 		//if (!is_int($this->cStatus['customers_status_id']) && $this->cStatus['customers_status_id']!=0) $this->cStatus['customers_status_id'] = DEFAULT_CUSTOMERS_STATUS_ID_GUEST;
 		$graduated_price_query = "SELECT max(quantity) as qty
 				                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
-				                                WHERE products_id='".$pID."'
-				                                AND quantity<='".$qty."'";
+				                                WHERE products_id='".(int)$pID."'
+				                                AND quantity<='".(int)$qty."'";
 		$graduated_price_query = vamDBquery($graduated_price_query);
 		$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 		if ($graduated_price_data['qty']) {
 			$graduated_price_query = "SELECT personal_offer
 						                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
-						                                WHERE products_id='".$pID."'
-						                                AND quantity='".$graduated_price_data['qty']."'";
+						                                WHERE products_id='".(int)$pID."'
+						                                AND quantity='".(int)$graduated_price_data['qty']."'";
 			$graduated_price_query = vamDBquery($graduated_price_query);
 			$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 
@@ -226,15 +226,15 @@ class vamPrice {
 
 		$graduated_price_query = "SELECT max(quantity) as qty
 				                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
-				                                WHERE products_id='".$pID."'
-				                                AND quantity<='".$qty."'";
+				                                WHERE products_id='".(int)$pID."'
+				                                AND quantity<='".(int)$qty."'";
 		$graduated_price_query = vamDBquery($graduated_price_query);
 		$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 		if ($graduated_price_data['qty']) {
 			$graduated_price_query = "SELECT personal_offer
 						                                FROM ".TABLE_PERSONAL_OFFERS_BY.$this->actualGroup."
-						                                WHERE products_id='".$pID."'
-						                                AND quantity='".$graduated_price_data['qty']."'";
+						                                WHERE products_id='".(int)$pID."'
+						                                AND quantity='".(int)$graduated_price_data['qty']."'";
 			$graduated_price_query = vamDBquery($graduated_price_query);
 			$graduated_price_data = vam_db_fetch_array($graduated_price_query, true);
 
@@ -248,7 +248,7 @@ class vamPrice {
 	}
 
 	function GetOptionPrice($pID, $option, $value) {
-		$attribute_price_query = "select pd.products_discount_allowed,pd.products_tax_class_id, p.options_values_price, p.price_prefix, p.options_values_weight, p.weight_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." p, ".TABLE_PRODUCTS." pd where p.products_id = '".$pID."' and p.options_id = '".$option."' and pd.products_id = p.products_id and p.options_values_id = '".$value."'";
+		$attribute_price_query = "select pd.products_discount_allowed,pd.products_tax_class_id, p.options_values_price, p.price_prefix, p.options_values_weight, p.weight_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." p, ".TABLE_PRODUCTS." pd where p.products_id = '".(int)$pID."' and p.options_id = '".(int)$option."' and pd.products_id = p.products_id and p.options_values_id = '".(int)$value."'";
 		$attribute_price_query = vamDBquery($attribute_price_query);
 		$attribute_price_data = vam_db_fetch_array($attribute_price_query, true);
 		$dicount = 0;
@@ -276,7 +276,7 @@ class vamPrice {
 	}
 
 	function CheckSpecial($pID) {
-		$product_query = "select specials_new_products_price from ".TABLE_SPECIALS." where products_id = '".$pID."' and status=1";
+		$product_query = "select specials_new_products_price from ".TABLE_SPECIALS." where products_id = '".(int)$pID."' and status=1";
 		$product_query = vamDBquery($product_query);
 		$product = vam_db_fetch_array($product_query, true);
 
@@ -285,11 +285,11 @@ class vamPrice {
 	}
 
 	function CheckManufacturerDiscount($cID, $pID) {
-		$product_query = "select manufacturers_id from ".TABLE_PRODUCTS." where products_id = '".$pID."'";
+		$product_query = "select manufacturers_id from ".TABLE_PRODUCTS." where products_id = '".(int)$pID."'";
 		$product_query = vamDBquery($product_query);
 		$product = vam_db_fetch_array($product_query, true);
 		if ($product['manufacturers_id'] > 0) {
-		$manufacturer_query = "SELECT discount FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE customers_id = '".$cID."' AND manufacturers_id = '".$product['manufacturers_id']."'";
+		$manufacturer_query = "SELECT discount FROM ".TABLE_CUSTOMERS_TO_MANUFACTURERS_DISCOUNT." WHERE customers_id = '".(int)$cID."' AND manufacturers_id = '".(int)$product['manufacturers_id']."'";
 		$manufacturer_query = vamDBquery($manufacturer_query);
 		$manufacturer = vam_db_fetch_array($manufacturer_query, true);
 		} else {
