@@ -37,7 +37,7 @@ $inv_id = get_var('LMI_PAYMENT_NO');
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = strtoupper(md5($_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
+$hash = strtoupper(hash('sha256',$_POST['LMI_PAYEE_PURSE'].$_POST['LMI_PAYMENT_AMOUNT'].$_POST['LMI_PAYMENT_NO'].$_POST['LMI_MODE']. 
 $_POST['LMI_SYS_INVS_NO'].$_POST['LMI_SYS_TRANS_NO'].$_POST['LMI_SYS_TRANS_DATE'].MODULE_PAYMENT_WEBMONEY_MERCHANT_SECRET_KEY. 
 $_POST['LMI_PAYER_PURSE'].$_POST['LMI_PAYER_WM'])); 
 
