@@ -5,7 +5,7 @@
 | (c) 2003-2011 zapimir      zapimir@zapimir.net       http://sypex.net/    |
 | (c) 2005-2011 BINOVATOR    info@sypex.net                                 |
 |---------------------------------------------------------------------------|
-|     created: 2003.09.02 19:07              modified: 2013.08.27 06:27     |
+|     created: 2003.09.02 19:07              modified: 2016.08.27 06:27     |
 |---------------------------------------------------------------------------|
 | Sypex Dumper is released under the terms of the BSD license               |
 |   http://sypex.net/bsd_license.txt                                        |
@@ -37,7 +37,7 @@ class SypexDumper
         define('C_RESULT', 2);
         define('C_ERROR', 3);
         define('C_WARNING', 4);
-        define('SXD_DEBUG', false);
+        define('SXD_DEBUG', true);
         define('TIMER', array_sum(explode(' ', microtime())));
         define('V_SXD', 20011);
         define('V_PHP', sxd_ver2int(phpversion()));
@@ -46,7 +46,7 @@ class SypexDumper
     public function loadLang($lng_name = 'auto')
     {
         if ($lng_name == 'auto') {
-            include 'lang/list.php';
+            include('lang/list.php');
             $this->langs = &$langs;
             $lng = 'en';
             if (preg_match_all('/[a-z]{2}(-[a-z]{2})?/', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $m)) {
@@ -59,9 +59,9 @@ class SypexDumper
             }
         }
         if (file_exists("lang/lng_{$lng_name}.php")) {
-            include "lang/lng_{$lng_name}.php";
+            include("lang/lng_{$lng_name}.php");
         } else {
-            include 'lang/lng_en.php';
+            include('lang/lng_en.php');
         }
         $this->LNG = &$LNG;
         $this->LNG['name'] = $lng_name;
@@ -73,7 +73,7 @@ class SypexDumper
         if (get_magic_quotes_gpc()) {
             $_POST = sxd_antimagic($_POST);
         }
-        include 'cfg.php';
+        include('cfg.php');
         $this->loadLang($CFG['lang']);
         if (!ini_get('safe_mode') && function_exists('set_time_limit') && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
             @set_time_limit($CFG['time_web']);
@@ -127,7 +127,7 @@ class SypexDumper
             $sfile = 'ses.php';
 
             if (!empty($_COOKIE['sxd']) && preg_match('/^[\da-f]{32}$/', $_COOKIE['sxd'])) {
-                include $sfile;
+                include($sfile);
                 if (isset($SES[$_COOKIE['sxd']])) {
                     $auth = true;
                     $this->CFG = $SES[$_COOKIE['sxd']]['cfg'];
@@ -166,7 +166,7 @@ class SypexDumper
                             if (!file_exists($file)) {
                                 continue;
                             }
-                            include $file;
+                            include($file);
                     }
                     if ($auth) {
                         break;
@@ -185,7 +185,7 @@ class SypexDumper
                     header('Location: ./');
                     exit;
                 }
-                foreach (['user', 'pass', 'host', 'port'] as $key) {
+                foreach (array('user', 'pass', 'host', 'port') as $key) {
                     $_POST[$key] = !empty($_POST[$key]) ? htmlspecialchars($_POST[$key], ENT_NOQUOTES) : '';
                 }
                 $_POST['save'] = !empty($_POST['save']) ? ' CHECKED' : '';
@@ -197,13 +197,13 @@ class SypexDumper
                 }
                 $this->lng_list = '<option value="auto">- auto -</opinion>';
                 if (!isset($this->langs)) {
-                    include 'lang/list.php';
+                    include('lang/list.php');
                     $this->langs = &$langs;
                 }
                 foreach ($this->langs as $k => $v) {
                     $this->lng_list .= "<option value=\"{$k}\"".($k == (!empty($_REQUEST['lang']) ? $this->LNG['name'] : $this->CFG['lang']) ? ' SELECTED' : '').">{$v}</opinion>";
                 }
-                include 'tmpl.php';
+                include('tmpl.php');
                 echo sxd_tpl_auth();
                 exit;
             }
@@ -224,7 +224,7 @@ class SypexDumper
         fwrite($fp, $content);
         fclose($fp);
     }
-    public function connect($host = null, $port = null, $user = null, $pass = null)
+    public function connect($host = null, $port = null, $user = null, $pass = null, $db = null)
     {
         $this->error = '';
         $this->try = true;
@@ -233,8 +233,11 @@ class SypexDumper
             $this->CFG['my_port'] = $port;
             $this->CFG['my_user'] = $user;
             $this->CFG['my_pass'] = $pass;
+            $this->CFG['my_db'] = $db;
         }
-        if ($GLOBALS['mysqlilink'] = mysqli_connect($this->CFG['my_host'].($this->CFG['my_host']{0} != ':' ? ":{$this->CFG['my_port']}" : ''),  $this->CFG['my_user'], $this->CFG['my_pass'])) {
+        $GLOBALS['mysqlilink'] = mysqli_connect($this->CFG['my_host'],  $this->CFG['my_user'], $this->CFG['my_pass'], $this->CFG['my_db']);
+        
+        if ($GLOBALS['mysqlilink'] == true) {
             if (V_PHP > 50202) {
                 mysqli_set_charset($GLOBALS['mysqlilink'], 'utf8') or sxd_my_error();
             } else {
@@ -248,28 +251,30 @@ class SypexDumper
         $this->try = false;
 
         return V_MYSQL ? true : false;
+
+
     }
     public function main()
     {
         // Тулбар
         $this->VAR['toolbar'] = sxd_php2json(
-            [
-                ['backup', $this->LNG['tbar_backup'], 1, 3],
-                ['restore', $this->LNG['tbar_restore'], 2, 3],
-                ['|'],
-                ['files', $this->LNG['tbar_files'], 3, 1],
-                ['services', $this->LNG['tbar_services'], 5, 1],
-                ['|'],
-                ['createdb', $this->LNG['tbar_createdb'], 7, 0],
-                ['connects', $this->LNG['tbar_connects'], 6, 0],
-                ['|'],
-                ['options', $this->LNG['tbar_options'], 4, 1],
-                ['|'],
-                ['exit', $this->LNG['tbar_exit'], 8, 1],
-            ]
+            array(
+                array('backup', $this->LNG['tbar_backup'], 1, 3),
+                array('restore', $this->LNG['tbar_restore'], 2, 3),
+                array('|'),
+                array('files', $this->LNG['tbar_files'], 3, 1),
+                array('services', $this->LNG['tbar_services'], 5, 1),
+                array('|'),
+                array('createdb', $this->LNG['tbar_createdb'], 7, 0),
+                array('connects', $this->LNG['tbar_connects'], 6, 0),
+                array('|'),
+                array('options', $this->LNG['tbar_options'], 4, 1),
+                array('|'),
+                array('exit', $this->LNG['tbar_exit'], 8, 1),
+            )
         );
         $this->db = 'temp';
-        $zip = [$this->LNG['zip_none']];
+        $zip = array($this->LNG['zip_none']);
         if (function_exists('gzopen')) {
             for ($i = 1; $i < 10; ++$i) {
                 $zip[] = "GZip: {$i}";
@@ -283,16 +288,16 @@ class SypexDumper
         end($zip);
         $zip[key($zip)] .=  " ({$this->LNG['zip_max']})";
         $this->VAR['combos'] =
-            $this->addCombo('backup_db', $this->db, 11, 'db', []/*$this->getDBList()*/).
+            $this->addCombo('backup_db', $this->db, 11, 'db', array()/*$this->getDBList()*/).
             $this->addCombo('backup_charset', 0, 9, 'charset', $this->getCharsetList()).
             $this->addCombo('backup_zip', 7, 10, 'zip', $zip).
             $this->addCombo('restore_db', $this->db, 11, 'db').
             $this->addCombo('restore_charset', 0, 9, 'charset').
             $this->addCombo('restore_file', 0, 12, 'files', $this->getFileList()).
-            $this->addCombo('restore_type', 0, 13, 'types', ["CREATE + INSERT ({$this->LNG['default']})", 'TRUNCATE + INSERT', 'REPLACE', 'INSERT IGNORE']).
+            $this->addCombo('restore_type', 0, 13, 'types', array("CREATE + INSERT ({$this->LNG['default']})", 'TRUNCATE + INSERT', 'REPLACE', 'INSERT IGNORE')).
             $this->addCombo('services_db', $this->db, 11, 'db').
-            $this->addCombo('services_check', 0, 5, 'check', ["- {$this->LNG['default']} -", 'QUICK', 'FAST', 'CHANGED', 'MEDIUM', 'EXTENDED']).
-            $this->addCombo('services_repair', 0, 5, 'repair', ["- {$this->LNG['default']} -", 'QUICK', 'EXTENDED']).
+            $this->addCombo('services_check', 0, 5, 'check', array("- {$this->LNG['default']} -", 'QUICK', 'FAST', 'CHANGED', 'MEDIUM', 'EXTENDED')).
+            $this->addCombo('services_repair', 0, 5, 'repair', array("- {$this->LNG['default']} -", 'QUICK', 'EXTENDED')).
             $this->addCombo('db_charset', 0, 9, 'collation', $this->getCollationList()).
             $this->addCombo('db_charset_col', 0, 15, 'collation:db_charset');
         if (!V_MYSQL) {
@@ -302,7 +307,7 @@ class SypexDumper
         $this->LNG['del_date'] = sprintf($this->LNG['del_date'], '<input type="text" id="del_time" class=txt style="width:24px;" maxlength="3">');
         $this->LNG['del_count'] = sprintf($this->LNG['del_count'], '<input id="del_count" type="text" class=txt style="width:18px;" maxlength="2">');
 
-        include 'tmpl.php';
+        include('tmpl.php');
         echo sxd_tpl_page();
     }
     public function addCombo($name, $sel, $ico, $opt_name, $opts = '')
@@ -326,10 +331,10 @@ class SypexDumper
                 $res = $this->getFileObjects('restore', $req['value']);
                 break;
             case 'filelist':
-                $res = "sxd.clearOpt('files');sxd.addOpt(".sxd_php2json(['files' => $this->getFileList()]).');';
+                $res = "sxd.clearOpt('files');sxd.addOpt(".sxd_php2json(array('files' => $this->getFileList())).');';
                 break;
             case 'dblist':
-                $res = "sxd.clearOpt('db');sxd.addOpt(".sxd_php2json(['db' => $this->getDBList()]).");sxd.combos.restore_db.select(0,'-');sxd.combos.services_db.select(0,'-');sxd.combos.backup_db.select(0,'-');";
+                $res = "sxd.clearOpt('db');sxd.addOpt(".sxd_php2json(array('db' => $this->getDBList())).");sxd.combos.restore_db.select(0,'-');sxd.combos.services_db.select(0,'-');sxd.combos.backup_db.select(0,'-');";
                 break;
             case 'load_connect':
                 $CFG = $this->cfg2js($this->CFG);
@@ -395,7 +400,7 @@ class SypexDumper
         if (!file_exists($file)) {
             return;
         }
-        include $file;
+        include($file);
         $JOB['act'] = $JOB['type'];
         $JOB['type'] = 'run';
 
@@ -405,7 +410,7 @@ class SypexDumper
     {
         $r = mysqli_query($GLOBALS['mysqlilink'], 'DROP DATABASE `'.sxd_esc($name, false).'`') or sxd_my_error();
         if ($r) {
-            echo "sxd.clearOpt('db');sxd.addOpt(".sxd_php2json(['db' => $this->getDBList()]).");sxd.combos.services_db.select(0,'-');";
+            echo "sxd.clearOpt('db');sxd.addOpt(".sxd_php2json(array('db' => $this->getDBList())).");sxd.combos.services_db.select(0,'-');";
         } else {
             echo 'alert('.sxd_esc(mysqli_error()).');';
         }
@@ -422,7 +427,7 @@ class SypexDumper
     {
         $r = mysqli_query($GLOBALS['mysqlilink'], 'CREATE DATABASE `'.sxd_esc($req['name'], false).'`'.(V_MYSQL > 40100 ? "CHARACTER SET {$req['charset']} COLLATE {$req['collate']}" : ''));
         if ($r) {
-            echo 'sxd.addOpt('.sxd_php2json(['db' => [$req['name'] => "{$req['name']} (0)"]]).');';
+            echo 'sxd.addOpt('.sxd_php2json(array('db' => array($req['name'] => "{$req['name']} (0)"))).');';
         } else {
             sxd_my_error();
         }
@@ -440,11 +445,11 @@ class SypexDumper
         $this->saveCFG();
         $this->connect();
         if (V_MYSQL) {
-            $tmp = [
+            $tmp = array(
                 'db' => $this->getDBList(),
                 'charset' => $this->getCharsetList(),
                 'collation' => $this->getCollationList(),
-            ];
+            );
             echo "sxd.clearOpt('db');sxd.clearOpt('charset');sxd.clearOpt('collation');sxd.addOpt(".sxd_php2json($tmp).");sxd.combos.backup_db.select(0,'-');sxd.combos.restore_db.select(0,'-');sxd.combos.services_db.select(0,'-');sxd.combos.backup_charset.select(0,'-');sxd.combos.services_db.select(0,'-');sxd.combos.db_charset.select(0,'-');";
         } else {
             echo $this->error;
@@ -466,7 +471,7 @@ class SypexDumper
     public function saveCFG()
     {
         if (isset($_COOKIE['sxd'])) {
-            $this->SES[$_COOKIE['sxd']] = ['cfg' => $this->CFG, 'time' => time(), 'lng' => $this->LNG['name']];
+            $this->SES[$_COOKIE['sxd']] = array('cfg' => $this->CFG, 'time' => time(), 'lng' => $this->LNG['name']);
             $this->saveToFile('ses.php', "<?php\n\$SES = ".var_export($this->SES, true).";\n".'?>');
         }
         /*if (!$this->virtualize){
@@ -475,17 +480,17 @@ class SypexDumper
     }
     public function runServices($job)
     {
-        $serv = ['optimize' => 'OPTIMIZE', 'analyze' => 'ANALYZE', 'check' => 'CHECK', 'repair' => 'REPAIR'];
-        $add = ['check' => ['', 'QUICK', 'FAST', 'CHANGED', 'MEDIUM', 'EXTENDED'], 'repair' => ['', 'QUICK', 'EXTENDED']];
+        $serv = array('optimize' => 'OPTIMIZE', 'analyze' => 'ANALYZE', 'check' => 'CHECK', 'repair' => 'REPAIR');
+        $add = array('check' => array('', 'QUICK', 'FAST', 'CHANGED', 'MEDIUM', 'EXTENDED'), 'repair' => array('', 'QUICK', 'EXTENDED'));
         if (isset($serv[$job['type']])) {
             mysqli_select_db($GLOBALS['mysqlilink'], $job['db']);
-            $filter = $object = [];
+            $filter = $object = array();
             $this->createFilters($job['obj'], $filter, $object);
             $r = mysqli_query($GLOBALS['mysqlilink'], 'SHOW TABLE STATUS') or sxd_my_error();
             if (!$r) {
                 return;
             }
-            $tables = [];
+            $tables = array();
             while ($item = mysqli_fetch_assoc($r)) {
                 if (V_MYSQL > 40101 && is_null($item['Engine']) && preg_match('/^VIEW/i', $item['Comment'])) {
                     continue;
@@ -504,7 +509,7 @@ class SypexDumper
             if (!$r) {
                 return;
             }
-            $res = [];
+            $res = array();
             while ($item = mysqli_fetch_row($r)) {
                 $res[] = $item;
             }
@@ -513,10 +518,10 @@ class SypexDumper
     }
     public function createFilters(&$obj, &$filter, &$object)
     {
-        $types = ['TA', 'TC', 'VI', 'PR', 'FU', 'TR', 'EV'];
+        $types = array('TA', 'TC', 'VI', 'PR', 'FU', 'TR', 'EV');
         foreach ($types as $type) {
-            $filter[$type] = [];
-            $object[$type] = [];
+            $filter[$type] = array();
+            $object[$type] = array();
             if (!empty($obj[$type])) {
                 foreach ($obj[$type] as $v) {
                     if (strpos($v, '*') !== false) {
@@ -544,7 +549,7 @@ class SypexDumper
     public function resumeJob($job)
     {
         $this->closeConnect();
-        include $this->CFG['backup_path'].$job['job'].'.job.php';
+        include($this->CFG['backup_path'].$job['job'].'.job.php');
         $this->JOB = &$JOB;
         if (file_exists($this->JOB['file_stp'])) {
             unlink($this->JOB['file_stp']);
@@ -575,14 +580,14 @@ class SypexDumper
         $this->closeConnect();
         $this->JOB = $job;
         // Создаем список объектов и фильтр
-        $filter = $object = [];
+        $filter = $object = array();
         $this->createFilters($this->JOB['obj'], $filter, $object);
 
         $objects = $this->getFileObjects('restore', $this->JOB['file'], false);
-        $todo = [];
+        $todo = array();
         $rows = 0;
-        $this->tab_rows = [];
-        $todo = [];
+        $this->tab_rows = array();
+        $todo = array();
         foreach ($objects as $t => $list) {
             if ($t == 'TA' && (!empty($object['TC']) || !empty($filter['TC']))) {
             } elseif (empty($object[$t]) && empty($filter[$t])) {
@@ -603,12 +608,12 @@ class SypexDumper
                         } else {
                             continue;
                         }
-                        $todo['TA'][] = [$type, $item[0], $item[1], $item[2]];
+                        $todo['TA'][] = array($type, $item[0], $item[1], $item[2]);
                         $rows += $type == 'TA' ? $item[1] : 0;
                     break;
                     default:
                         if (sxd_check($item, $object[$t], $filter[$t])) {
-                            $todo[$t][] = [$t, $item];
+                            $todo[$t][] = array($t, $item);
                         }
                 }
             }
@@ -639,7 +644,7 @@ class SypexDumper
         $this->saveJob($this->JOB['job'], $this->JOB);
         $this->fh_rtl = fopen($this->JOB['file_rtl'], 'wb');
         $this->fh_log = fopen($this->JOB['file_log'], 'wb');
-        $this->rtl = [time(), time(), $rows, 0, '', '', '', 0, 0, 0, 0, TIMER, "\n"];
+        $this->rtl = array(time(), time(), $rows, 0, '', '', '', 0, 0, 0, 0, TIMER, "\n");
         $this->addLog(sprintf($this->LNG['restore_begin'], $this->JOB['db']));
         $this->addLog("{$this->LNG['combo_file']} {$this->JOB['file']}");
         $this->runRestoreJob();
@@ -662,7 +667,7 @@ class SypexDumper
             $this->runRestoreJobForeign($continue);
         }
         //mysqli_query($GLOBALS['mysqlilink'], "SET NAMES 'UTF8'");
-        $types = ['VI' => 'View', 'PR' => 'Procedure', 'FU' => 'Function', 'TR' => 'Trigger', 'EV' => 'Event'];
+        $types = array('VI' => 'View', 'PR' => 'Procedure', 'FU' => 'Function', 'TR' => 'Trigger', 'EV' => 'Event');
         $fcache = '';
         $writes = 0;
         $old_charset = '';
@@ -679,7 +684,7 @@ class SypexDumper
             case 3: $tc = ''; $td = 'INSERT IGNORE'; break;
             default: $tc = 'DROP TABLE IF EXISTS'; $td = 'INSERT';
         }
-        $tab_exists = [];
+        $tab_exists = array();
         if ($this->JOB['strategy'] > 0) {
             $r = mysqli_query($GLOBALS['mysqlilink'], 'SHOW TABLES') or sxd_my_error();
             while ($item = mysqli_fetch_row($r)) {
@@ -687,7 +692,7 @@ class SypexDumper
             }
         }
         $insert = $continue && $this->rtl[7] < $this->rtl[10] ? "{$td} INTO `{$this->rtl[5]}` VALUES " : '';
-        //$enable_index = [];
+        //$enable_index = array();
         if (V_MYSQL > 40014) {
             mysqli_query($GLOBALS['mysqlilink'], 'SET UNIQUE_CHECKS=0');
             mysqli_query($GLOBALS['mysqlilink'], 'SET FOREIGN_KEY_CHECKS=0');
@@ -1016,20 +1021,20 @@ class SypexDumper
         $this->JOB = $job;
         mysqli_select_db($GLOBALS['mysqlilink'], $this->JOB['db']);
         // Создаем список объектов и фильтр
-        $filter = $object = [];
+        $filter = $object = array();
         $this->createFilters($this->JOB['obj'], $filter, $object);
-        $queries = [
-            ['TABLE STATUS', 'Name', 'TA'],
-        ];
+        $queries = array(
+            array('TABLE STATUS', 'Name', 'TA'),
+        );
         if (V_MYSQL > 50014) {
-            $queries[] = ["PROCEDURE STATUS WHERE db='{$this->JOB['db']}'", 'Name', 'PR'];
-            $queries[] = ["FUNCTION STATUS WHERE db='{$this->JOB['db']}'", 'Name', 'FU'];
-            $queries[] = ['TRIGGERS', 'Trigger', 'TR'];
+            $queries[] = array("PROCEDURE STATUS WHERE db='{$this->JOB['db']}'", 'Name', 'PR');
+            $queries[] = array("FUNCTION STATUS WHERE db='{$this->JOB['db']}'", 'Name', 'FU');
+            $queries[] = array('TRIGGERS', 'Trigger', 'TR');
             if (V_MYSQL > 50100) {
-                $queries[] = ['EVENTS', 'Name', 'EV'];
+                $queries[] = array('EVENTS', 'Name', 'EV');
             }
         }
-        $todo = $header = [];
+        $todo = $header = array();
         $tabs = $rows = 0;
         $only_create = explode(' ', $this->CFG['only_create']);
         foreach ($queries as $query) {
@@ -1042,8 +1047,8 @@ class SypexDumper
             if (!$r) {
                 continue;
             }
-            $todo[$t] = [];
-            $header[$t] = [];
+            $todo[$t] = array();
+            $header[$t] = array();
 
             while ($item = mysqli_fetch_assoc($r)) {
                 $n = $item[$query[1]];
@@ -1052,8 +1057,8 @@ class SypexDumper
                     case 'TC':
                         if (V_MYSQL > 40101 && is_null($item['Engine']) && preg_match('/^VIEW/i', $item['Comment'])) {
                             if (sxd_check($n, $object['VI'], $filter['VI'])) {
-                                $todo['VI'] = [];
-                                $header['VI'] = [];
+                                $todo['VI'] = array();
+                                $header['VI'] = array();
                             }
                             continue;
                         } elseif (sxd_check($n, $object['TA'], $filter['TA'])) {
@@ -1065,14 +1070,14 @@ class SypexDumper
                         } else {
                             continue;
                         }
-                        $todo['TA'][] = [$t, $n, !empty($item['Collation']) ? $item['Collation'] : '', $item['Auto_increment'], $item['Rows'], $item['Data_length']];
+                        $todo['TA'][] = array($t, $n, !empty($item['Collation']) ? $item['Collation'] : '', $item['Auto_increment'], $item['Rows'], $item['Data_length']);
                         $header['TA'][] = "{$n}`{$item['Rows']}`{$item['Data_length']}";
                         ++$tabs;
                         $rows += $item['Rows'];
                     break;
                     default:
                         if (sxd_check($n, $object[$t], $filter[$t])) {
-                            $todo[$t][] = [$t, $n, !empty($item['collation_connection']) ? $item['collation_connection'] : ''];
+                            $todo[$t][] = array($t, $n, !empty($item['collation_connection']) ? $item['collation_connection'] : '');
                             $header[$t][] = $n;
                         }
                 }
@@ -1081,7 +1086,7 @@ class SypexDumper
         if (V_MYSQL > 50014 && (!empty($object['VI']) || !empty($filter['VI']))) {
             // Бэкап обзоров, нужно отсортировать зависимые
             $r = mysqli_query($GLOBALS['mysqlilink'], "SELECT table_name, view_definition /*!50121 , collation_connection */ FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = '{$this->JOB['db']}'") or sxd_my_error();
-            $views = $dumped = $views_collation = [];
+            $views = $dumped = $views_collation = array();
             $re = "/`{$this->JOB['db']}`.`(.+?)`/";
             while ($item = mysqli_fetch_assoc($r)) {
                 preg_match_all($re, preg_replace('/^select.+? from/i', '', $item['view_definition']), $m);
@@ -1100,7 +1105,7 @@ class SypexDumper
                     }
                     if ($can_dumped) {
                         if (sxd_check($n, $object['VI'], $filter['VI'])) {
-                            $todo['VI'][] = ['VI', $n, $views_collation[$n]];
+                            $todo['VI'][] = array('VI', $n, $views_collation[$n]);
                             $header['VI'][] = $n;
                         }
                         $dumped[$n] = 1;
@@ -1124,7 +1129,7 @@ class SypexDumper
         $this->JOB['file_name'] = $this->CFG['backup_path'].$this->JOB['file'];
         $this->JOB['todo'] = $todo;
         $this->saveJob($this->JOB['job'], $this->JOB);
-        $fcache = implode('|', ['#SXD20', V_SXD, V_MYSQL, V_PHP, date('Y.m.d H:i:s'), $this->JOB['db'], $this->JOB['charset'], $tabs, $rows, sxd_esc($this->JOB['comment'], false)])."\n";
+        $fcache = implode('|', array('#SXD20', V_SXD, V_MYSQL, V_PHP, date('Y.m.d H:i:s'), $this->JOB['db'], $this->JOB['charset'], $tabs, $rows, sxd_esc($this->JOB['comment'], false)))."\n";
         foreach ($header as $t => $o) {
             if (!empty($o)) {
                 $fcache .= "#{$t} ".implode('|', $o)."\n";
@@ -1132,7 +1137,7 @@ class SypexDumper
         }
         $this->fh_rtl = fopen($this->JOB['file_rtl'], 'wb');
         $this->fh_log = fopen($this->JOB['file_log'], 'wb');
-        $this->rtl = [time(), time(), $rows, 0, '', '', '', 0, 0, 0, 0, TIMER, "\n"];
+        $this->rtl = array(time(), time(), $rows, 0, '', '', '', 0, 0, 0, 0, TIMER, "\n");
         $fcache .= "#EOH\n\n";
         $this->write($fcache);
         $this->addLog(sprintf($this->LNG['backup_begin'], $this->JOB['db']));
@@ -1145,7 +1150,7 @@ class SypexDumper
             mysqli_select_db($GLOBALS['mysqlilink'], $this->JOB['db']);
         }
         mysqli_query($GLOBALS['mysqlilink'], 'SET SQL_QUOTE_SHOW_CREATE = 1');
-        $types = ['VI' => 'View', 'PR' => 'Procedure', 'FU' => 'Function', 'TR' => 'Trigger', 'EV' => 'Event'];
+        $types = array('VI' => 'View', 'PR' => 'Procedure', 'FU' => 'Function', 'TR' => 'Trigger', 'EV' => 'Event');
         $fcache = '';
         $writes = 0;
 
@@ -1192,7 +1197,7 @@ class SypexDumper
                             $this->addLog(sprintf("{$this->LNG['backup_TC']} {$this->LNG['continue_from']}", $n[1], $this->rtl[7]));
                         }
                         // Определяем типы полей
-                        $notNum = [];
+                        $notNum = array();
                         $r = mysqli_query($GLOBALS['mysqlilink'], "SHOW COLUMNS FROM `{$n[1]}`") or sxd_my_error();
                         $fields = 0;
                         while ($col = mysqli_fetch_array($r)) {
@@ -1272,7 +1277,7 @@ class SypexDumper
         rename($this->JOB['file_tmp'], $this->JOB['file_name']);
         $this->addLog(sprintf($this->LNG['backup_end'], $this->JOB['db']));
         if (file_exists('sxd2ftp.php')) {
-            include 'sxd2ftp.php';
+            include('sxd2ftp.php');
         }
         if ($this->JOB['del_time'] || $this->JOB['del_count']) {
             $this->addLog($this->LNG['autodelete']);
@@ -1282,7 +1287,7 @@ class SypexDumper
             }
             $deleted = false;
             if ($dh = opendir($this->CFG['backup_path'])) {
-                $files = [];
+                $files = array();
                 $name = isset($this->JOB['title']) ? $this->JOB['job'] : $this->JOB['db'];
                 while (false !== ($file = readdir($dh))) {
                     if (preg_match("/^{$name}_(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\.sql/", $file, $m)) {
@@ -1347,7 +1352,7 @@ class SypexDumper
     }
     public function getDBList()
     {
-        $dbs = $items = [];
+        $dbs = $items = array();
         if (!V_MYSQL) {
             return $dbs;
         }
@@ -1392,14 +1397,14 @@ class SypexDumper
     }
     public function getCharsetList()
     {
-        $tmp = [0 => '- auto -'];
+        $tmp = array(0 => '- auto -');
         if (!V_MYSQL) {
             return $tmp;
         }
         if (V_MYSQL > 40101) {
             $def_charsets = '';
             if (!empty($this->CFG['charsets'])) {
-                $def_charsets = preg_match_all("/([\w*?]+)\s*/", $this->CFG['charsets'], $m, PREG_PATTERN_ORDER) ? '/^('.str_replace(['?', '*'], ['.', '\w+?'], implode('|', $m[1])).')$/i' : '';
+                $def_charsets = preg_match_all("/([\w*?]+)\s*/", $this->CFG['charsets'], $m, PREG_PATTERN_ORDER) ? '/^('.str_replace(array('?', '*'), array('.', '\w+?'), implode('|', $m[1])).')$/i' : '';
             }
             $r = mysqli_query($GLOBALS['mysqlilink'], 'SHOW CHARACTER SET') or sxd_my_error();
             if ($r) {
@@ -1415,14 +1420,14 @@ class SypexDumper
     }
     public function getCollationList()
     {
-        $tmp = [];
+        $tmp = array();
         if (!V_MYSQL) {
             return $tmp;
         }
         if (V_MYSQL > 40101) {
             $def_charsets = '';
             if (!empty($this->CFG['charsets'])) {
-                $def_charsets = preg_match_all("/([\w*?]+)\s*/", $this->CFG['charsets'], $m, PREG_PATTERN_ORDER) ? '/^('.str_replace(['?', '*'], ['.', '\w+?'], implode('|', $m[1])).')$/i' : '';
+                $def_charsets = preg_match_all("/([\w*?]+)\s*/", $this->CFG['charsets'], $m, PREG_PATTERN_ORDER) ? '/^('.str_replace(array('?', '*'), array('.', '\w+?'), implode('|', $m[1])).')$/i' : '';
             }
             $r = mysqli_query($GLOBALS['mysqlilink'], 'SHOW COLLATION') or sxd_my_error();
             if ($r) {
@@ -1442,22 +1447,22 @@ class SypexDumper
         // Достаем таблицы
         $r = mysqli_query($GLOBALS['mysqlilink'], 'SHOW TABLE STATUS');
         $tab_prefix_last = $tab_prefix = '*';
-        $objects = ['TA' => [], 'VI' => [], 'PR' => [], 'FU' => [], 'TR' => [], 'EV' => []];
+        $objects = array('TA' => array(), 'VI' => array(), 'PR' => array(), 'FU' => array(), 'TR' => array(), 'EV' => array());
         if ($r) {
             while ($item = mysqli_fetch_assoc($r)) {
                 if (V_MYSQL > 40101 && is_null($item['Engine']) && preg_match('/^VIEW/i', $item['Comment'])) {
                     $objects['VI'][] = $item['Name'];
                 } else {
-                    $objects['TA'][] = [$item['Name'], $item['Rows'], $item['Data_length']];
+                    $objects['TA'][] = array($item['Name'], $item['Rows'], $item['Data_length']);
                 }
             }
 
             if (V_MYSQL > 50014 && $tree != 'services') {
-                $shows = [
+                $shows = array(
                     "PROCEDURE STATUS WHERE db='{$db_name}'",
                     "FUNCTION STATUS WHERE db='{$db_name}'",
                     'TRIGGERS',
-                ];
+                );
                 if (V_MYSQL > 50100) {
                     $shows[] = "EVENTS WHERE db='{$db_name}'";
                 }
@@ -1473,7 +1478,7 @@ class SypexDumper
                     }
                 }
             } else {
-                $objects['VI'] = [];
+                $objects['VI'] = array();
             }
         }
 
@@ -1482,7 +1487,7 @@ class SypexDumper
     public function getFileObjects($tree, $name, $formatTree = true)
     {
         // Достаем таблицы
-        $objects = ['TA' => [], 'VI' => [], 'PR' => [], 'FU' => [], 'TR' => [], 'EV' => []];
+        $objects = array('TA' => array(), 'VI' => array(), 'PR' => array(), 'FU' => array(), 'TR' => array(), 'EV' => array());
         if (!preg_match('/\.sql(\.(gz|bz2))?$/i', $name, $m)) {
             return '';
         }
@@ -1513,14 +1518,14 @@ class SypexDumper
     {
         $obj = '';
         $pid = $row = 1;
-        $info = [
-            'TA' => [$this->LNG['obj_tables'], 1],
-            'VI' => [$this->LNG['obj_views'], 3],
-            'PR' => [$this->LNG['obj_procs'], 5],
-            'FU' => [$this->LNG['obj_funcs'], 7],
-            'TR' => [$this->LNG['obj_trigs'], 9],
-            'EV' => [$this->LNG['obj_events'], 11],
-        ];
+        $info = array(
+            'TA' => array($this->LNG['obj_tables'], 1),
+            'VI' => array($this->LNG['obj_views'], 3),
+            'PR' => array($this->LNG['obj_procs'], 5),
+            'FU' => array($this->LNG['obj_funcs'], 7),
+            'TR' => array($this->LNG['obj_trigs'], 9),
+            'EV' => array($this->LNG['obj_events'], 11),
+        );
         // Находим таблицы с префиксами
         $tab_prefix_last = $tab_prefix = '*';
         for ($i = 0, $l = count($objects['TA']); $i < $l; ++$i) {
@@ -1584,7 +1589,7 @@ class SypexDumper
     }
     public function getFileList()
     {
-        $files = [];
+        $files = array();
         if (is_dir($this->CFG['backup_path']) && false !== ($handle = opendir($this->CFG['backup_path']))) {
             while (false !== ($file = readdir($handle))) {
                 if (preg_match("/^.+?\.sql(\.(gz|bz2))?$/", $file)) {
@@ -1599,11 +1604,11 @@ class SypexDumper
     }
     public function getSavedJobs()
     {
-        $sj = ['sj_backup' => [], 'sj_restore' => []];
+        $sj = array('sj_backup' => array(), 'sj_restore' => array());
         if (is_dir($this->CFG['backup_path']) && false !== ($handle = opendir($this->CFG['backup_path']))) {
             while (false !== ($file = readdir($handle))) {
                 if (preg_match("/^sj_(.+?)\.job.php$/", $file)) {
-                    include $this->CFG['backup_path'].$file;
+                    include($this->CFG['backup_path'].$file);
                     $sj['sj_'.$JOB['type']][$JOB['job']] = "<b>{$JOB['job']}</b><br><i>{$JOB['title']}&nbsp;</i>";
                 }
             }
@@ -1612,19 +1617,19 @@ class SypexDumper
         if (count($sj['sj_backup']) > 0) {
             ksort($sj['sj_backup']);
         } else {
-            $sj['sj_backup'] = [0 => '<b>No Saved Jobs</b><br>'.$this->LNG['no_saved']];
+            $sj['sj_backup'] = array(0 => '<b>No Saved Jobs</b><br>'.$this->LNG['no_saved']);
         }
         if (count($sj['sj_restore']) > 0) {
             ksort($sj['sj_restore']);
         } else {
-            $sj['sj_restore'] = [0 => '<b>No Saved Jobs</b><br>'.$this->LNG['no_saved']];
+            $sj['sj_restore'] = array(0 => '<b>No Saved Jobs</b><br>'.$this->LNG['no_saved']);
         }
 
         return "sxd.clearOpt('sj_backup');sxd.clearOpt('sj_restore');sxd.addOpt(".sxd_php2json($sj).');';
     }
     public function getFileListExtended()
     {
-        $files = [];
+        $files = array();
         if (is_dir($this->CFG['backup_path']) && false !== ($handle = opendir($this->CFG['backup_path']))) {
             while (false !== ($file = readdir($handle))) {
                 if (preg_match("/^.+?\.sql(\.(gz|bz2))?$/", $file, $m)) {
@@ -1633,12 +1638,12 @@ class SypexDumper
                     $temp = fgets($fp);
                     if (preg_match('/^(#SXD20\|.+?)\n/s', $temp, $m)) {
                         $h = explode('|', $m[1]);
-                        $files[] = [$h[5], substr($h[4], 0, -3), $ext, $h[7], number_format($h[8], 0, '', ' '), filesize($this->CFG['backup_path'].$file), $h[9], $file];
+                        $files[] = array($h[5], substr($h[4], 0, -3), $ext, $h[7], number_format($h[8], 0, '', ' '), filesize($this->CFG['backup_path'].$file), $h[9], $file);
                     } elseif (preg_match('/^(#SKD101\|.+?)\n/s', $temp, $m)) {
                         $h = explode('|', $m[1]);
-                        $files[] = [$h[1], substr($h[3], 0, -3), $ext, $h[2], number_format($h[4], 0, '', ' '), filesize($this->CFG['backup_path'].$file), 'SXD 1.0.x', $file];
+                        $files[] = array($h[1], substr($h[3], 0, -3), $ext, $h[2], number_format($h[4], 0, '', ' '), filesize($this->CFG['backup_path'].$file), 'SXD 1.0.x', $file);
                     } else {
-                        $files[] = [$file, '-', $ext, '-', '-', filesize($this->CFG['backup_path'].$file), '', $file];
+                        $files[] = array($file, '-', $ext, '-', '-', filesize($this->CFG['backup_path'].$file), '', $file);
                     }
                 }
             }
@@ -1768,7 +1773,7 @@ function sxd_error_handler($errno, $errmsg, $filename, $linenum, $vars)
     if (strpos($errmsg, 'timezone settings')) {
         return;
     }
-    $errortype = [
+    $errortype = array(
         1 => 'Error',
         2 => 'Warning',
         4 => 'Parsing Error',
@@ -1783,7 +1788,7 @@ function sxd_error_handler($errno, $errmsg, $filename, $linenum, $vars)
         2048 => 'Strict',
         8192 => 'Deprecated',
         16384 => 'Deprecated',
-    ];
+    );
     $str = sxd_esc("{$errortype[$errno]}: {$errmsg} ({$filename}:{$linenum})", false);
     if (SXD_DEBUG) {
         error_log("[index.php]\n{$str}\n", 3, 'backup/error.log');
