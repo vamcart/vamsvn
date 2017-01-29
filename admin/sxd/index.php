@@ -37,7 +37,7 @@ class SypexDumper
         define('C_RESULT', 2);
         define('C_ERROR', 3);
         define('C_WARNING', 4);
-        define('SXD_DEBUG', true);
+        define('SXD_DEBUG', false);
         define('TIMER', array_sum(explode(' ', microtime())));
         define('V_SXD', 20011);
         define('V_PHP', sxd_ver2int(phpversion()));
