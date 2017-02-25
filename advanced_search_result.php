@@ -162,6 +162,16 @@ if ($error == 1 && $keyerror != 1) {
 		$pto_check='';
 	}
 
+    // sorting query
+    $sorting_query = vamDBquery("SELECT products_sorting,
+                                                products_sorting2 FROM ".TABLE_CATEGORIES."
+                                                where categories_id='".(int) $_GET['filter_id']."'");
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
+    if (!$sorting_data['products_sorting'])
+    $sorting_data['products_sorting'] = 'pd.products_name';
+    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+
 	//build query
 	$select_str = "SELECT distinct
 	                  p.products_id,
@@ -170,6 +180,7 @@ if ($error == 1 && $keyerror != 1) {
 	                  p.products_model,
 	                  p.products_ean,
 	                  p.products_quantity,
+	                  p.products_ordered,
 	                  p.products_shippingtime,
 	                  p.products_fsk18,
 	                  p.products_image,
@@ -230,7 +241,7 @@ if ($error == 1 && $keyerror != 1) {
 						break;
 				}
 			}
-			$where_str .= " ) GROUP BY p.products_id ORDER BY p.products_id ";
+			$where_str .= " ) and p.manufacturers_id = '".(int) $_GET['filter_id']."' GROUP BY p.products_id ".$sorting." ";
 		}
 	}
 
