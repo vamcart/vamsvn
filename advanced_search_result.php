@@ -252,13 +252,13 @@ if ($error == 1 && $keyerror != 1) {
     $filterlist_sql = $select_str.$from_str.$where_str;
 
   $filterlist_query = vamDBquery($filterlist_sql);
-  //if (vam_db_num_rows($filterlist_query, true) > 1) {
     while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
     $options[] = array ('id' => $filterlist['manufacturers_id'], 'text' => $filterlist['manufacturers_name']);
     $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['manufacturers_id']).'">' . $filterlist['manufacturers_name'] . '</a> ';
     }
+  if ($_GET['manufacturers_id'] > 1) {
     $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'manufacturers_id', 'info','x','y'))).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
-  //}
+  }
 
 	//glue together
 	$listing_sql = $select_str.$from_str.$where_str;
