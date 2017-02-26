@@ -275,7 +275,6 @@ if ($error == 1 && $keyerror != 1) {
     $manufacturer_dropdown .= '</form>'."\n"; 
   }
 
-
 	//glue together
 	$listing_sql = $select_str.$from_str.$where_str;
 	require (DIR_WS_MODULES.FILENAME_PRODUCT_LISTING);
