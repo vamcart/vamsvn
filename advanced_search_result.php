@@ -186,11 +186,13 @@ if ($error == 1 && $keyerror != 1) {
 	                  p.products_image,
 	                  p.products_weight,
 	                  p.products_tax_class_id,
+	                  m.manufacturers_name,
+	                  m.manufacturers_id,
 	                  pd.products_name,
 	                  pd.products_short_description,
 	                  pd.products_description ";
 
-	$from_str  = "FROM ".TABLE_PRODUCTS."  AS p LEFT JOIN ".TABLE_PRODUCTS_DESCRIPTION." AS pd ON (p.products_id = pd.products_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id)";
+	$from_str  = "FROM ".TABLE_PRODUCTS."  AS p LEFT JOIN ".TABLE_PRODUCTS_DESCRIPTION." AS pd ON (p.products_id = pd.products_id) LEFT JOIN ".TABLE_MANUFACTURERS." AS m ON (p.manufacturers_id = m.manufacturers_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id)";
 	$from_str .= $subcat_join;
 	if (SEARCH_IN_ATTR == 'true') { $from_str .= " LEFT OUTER JOIN ".TABLE_PRODUCTS_ATTRIBUTES." AS pa ON (p.products_id = pa.products_id) LEFT OUTER JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." AS pov ON (pa.options_values_id = pov.products_options_values_id) "; }
 	$from_str .= "LEFT OUTER join " . TABLE_PRODUCTS_SPECIFICATIONS . " psv ON (p.products_id = psv.products_id) left join ".TABLE_SPECIALS." AS s ON (p.products_id = s.products_id) AND s.status = '1'";
@@ -247,33 +249,18 @@ if ($error == 1 && $keyerror != 1) {
 
   // optional Product List Filter
 
-    $filterlist_sql = "select distinct m.manufacturers_id as id,  m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id group by p.manufacturers_id";
+    //$filterlist_sql = "select distinct m.manufacturers_id as id,  m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id group by p.manufacturers_id";
+
+    $filterlist_sql = $select_str.$from_str.$where_str;
 
   $filterlist_query = vamDBquery($filterlist_sql);
-  if (vam_db_num_rows($filterlist_query, true) > 1) {
-    $manufacturer_dropdown = vam_draw_form('filter', vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id), 'get');
-    if (isset ($_GET['manufacturers_id'])) {
-    $manufacturer_dropdown .= vam_draw_hidden_field('manufacturers_id', (int)$_GET['manufacturers_id']);
-    $options = array (array ('text' => TEXT_ALL_CATEGORIES));
-    } else {
-    $manufacturer_dropdown .= vam_draw_hidden_field('cat', $_GET['cat']);
-    $options = array (array ('text' => TEXT_ALL_MANUFACTURERS));
-    }
-    $manufacturer_dropdown .= vam_draw_hidden_field('sort', $_GET['sort']);
-    $manufacturer_dropdown .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
-    global $current_category_id;
+  //if (vam_db_num_rows($filterlist_query, true) > 1) {
     while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
-    $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
-	if (isset($current_category_id)) {
-    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
-    } else {
-    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
-    }
+    $options[] = array ('id' => $filterlist['manufacturers_id'], 'text' => $filterlist['manufacturers_name']);
+    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['manufacturers_id']).'">' . $filterlist['manufacturers_name'] . '</a> ';
     }
     $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'manufacturers_id', 'info','x','y'))).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
-    $manufacturer_dropdown .= vam_draw_pull_down_menu('manufacturers_id', $options, $_GET['manufacturers_id'], 'onchange="this.form.submit()"');
-    $manufacturer_dropdown .= '</form>'."\n"; 
-  }
+  //}
 
 	//glue together
 	$listing_sql = $select_str.$from_str.$where_str;
