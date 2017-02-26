@@ -249,8 +249,6 @@ if ($error == 1 && $keyerror != 1) {
 
   // optional Product List Filter
 
-    //$filterlist_sql = "select distinct m.manufacturers_id as id,  m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id group by p.manufacturers_id";
-
     $filterlist_sql = $select_str.$from_str.$where_str;
 
   $filterlist_query = vamDBquery($filterlist_sql);
