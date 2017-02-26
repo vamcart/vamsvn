@@ -241,9 +241,40 @@ if ($error == 1 && $keyerror != 1) {
 						break;
 				}
 			}
-			$where_str .= " ) and p.manufacturers_id = '".(int) $_GET['filter_id']."' GROUP BY p.products_id ".$sorting." ";
+			$where_str .= " ) GROUP BY p.products_id ".$sorting." ";
 		}
 	}
+
+  // optional Product List Filter
+
+    $filterlist_sql = "select distinct m.manufacturers_id as id,  m.manufacturers_name as name from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_MANUFACTURERS." m where p.products_status = '1' and p.manufacturers_id = m.manufacturers_id and p.products_id = p2c.products_id group by p.manufacturers_id";
+
+  $filterlist_query = vamDBquery($filterlist_sql);
+  if (vam_db_num_rows($filterlist_query, true) > 1) {
+    $manufacturer_dropdown = vam_draw_form('filter', vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id), 'get');
+    if (isset ($_GET['manufacturers_id'])) {
+    $manufacturer_dropdown .= vam_draw_hidden_field('manufacturers_id', (int)$_GET['manufacturers_id']);
+    $options = array (array ('text' => TEXT_ALL_CATEGORIES));
+    } else {
+    $manufacturer_dropdown .= vam_draw_hidden_field('cat', $_GET['cat']);
+    $options = array (array ('text' => TEXT_ALL_MANUFACTURERS));
+    }
+    $manufacturer_dropdown .= vam_draw_hidden_field('sort', $_GET['sort']);
+    $manufacturer_dropdown .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
+    global $current_category_id;
+    while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
+    $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
+	if (isset($current_category_id)) {
+    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+    } else {
+    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+    }
+    }
+    $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'manufacturers_id', 'info','x','y'))).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
+    $manufacturer_dropdown .= vam_draw_pull_down_menu('manufacturers_id', $options, $_GET['manufacturers_id'], 'onchange="this.form.submit()"');
+    $manufacturer_dropdown .= '</form>'."\n"; 
+  }
+
 
 	//glue together
 	$listing_sql = $select_str.$from_str.$where_str;
