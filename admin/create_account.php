@@ -24,7 +24,9 @@
 
 require ('includes/application_top.php');
 require_once (DIR_FS_INC.'vam_encrypt_password.inc.php');
-require_once(DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
+require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.phpmailer.php');
+if (EMAIL_TRANSPORT == 'smtp')
+require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.smtp.php');
 require_once (DIR_FS_INC.'vam_php_mail.inc.php');
 require_once (DIR_FS_INC.'vam_create_password.inc.php');
 require_once (DIR_FS_INC.'vam_get_geo_zone_code.inc.php');
