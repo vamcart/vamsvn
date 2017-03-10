@@ -48,6 +48,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -90,6 +93,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -132,6 +138,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -174,6 +183,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -216,6 +228,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -258,6 +273,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -300,6 +318,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -342,6 +363,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -384,6 +408,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -426,6 +453,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
@@ -468,6 +498,9 @@ tinymce.init({
     forced_root_block : false,
     min_height: 160,
     height : 180,
+    image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+    ],					
     convert_urls : false,
     language : "'.$lang.'"
 });
