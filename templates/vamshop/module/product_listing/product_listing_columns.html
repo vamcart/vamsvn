@@ -125,6 +125,21 @@
 </dd>
 {/if}
 
+{if $module_data.SPECS}
+<dd class="itemDescription">
+<!-- Specifications -->
+{foreach name=outer item=spec_group from=$module_data.SPECS}
+<br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+<div class="{cycle values="spec-odd,spec-even"}">
+<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br /> 
+</div>
+{/foreach}
+{/foreach}
+<br />
+</dd>
+{/if}
+
 <dd class="itemDescriptionPrice">
 {$module_data.PRODUCTS_PRICE}
 </dd>
