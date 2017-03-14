@@ -65,6 +65,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		}
 		// Push all attributes information in an array
 		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'], 
+									 'ID' => $products[$i]['id'], 
 									 //'PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
 									 'PRICE' => $products[$i]['price'], 
 									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
