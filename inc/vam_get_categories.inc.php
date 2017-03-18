@@ -47,4 +47,21 @@
 
     return $categories_array;
   }
+  
+function vam_get_categories_ids($parent_id = '0') {
+    global $languages_id;
+
+    if (!isset($categories_ids)) $categories_ids = "";
+
+    $categories_query = vamDBquery("select c.categories_id, cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where parent_id = '" . (int)$parent_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, cd.categories_name");
+    while ($categories = vam_db_fetch_array($categories_query,true)) {
+      	$categories_ids .= $categories['categories_id'].",";
+		
+      if ($categories['categories_id'] != $parent_id) {
+        $categories_ids .= vam_get_categories_ids($categories['categories_id']);
+      }
+    }
+
+    return $categories_ids;
+  }  
  ?>
