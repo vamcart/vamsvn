@@ -294,13 +294,13 @@ function checkForm() {
 <?php
 }
 ?>
-</head>
-<body>
 <?php
 if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 ?>
+</head>
+<body>
 <?php
 
   // include needed functions
