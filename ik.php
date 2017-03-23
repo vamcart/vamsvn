@@ -70,7 +70,7 @@ global $vamPrice;
 $orderTotal = number_format($order->info['total_value'], 2, '.', '');
 $ik_am = number_format($ik_am, 2, '.', '');
 
-$str.= 'ot='.$orderTotal.' $order->info[total_value]='.$order->info['total_value'] .'; $ikCurrency'. $ikCurrency.' $ik_pm_no='.$ik_pm_no.' $orderTotal2='.$orderTotal2;
+//$str.= 'ot='.$orderTotal.' $order->info[total_value]='.$order->info['total_value'] .'; $ikCurrency'. $ikCurrency.' $ik_pm_no='.$ik_pm_no.' $orderTotal2='.$orderTotal2;
 
 
 //fwrite($fp, $str."\n");
