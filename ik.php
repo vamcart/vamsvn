@@ -13,7 +13,7 @@
 
   Released under the GNU General Public License
 ------------------------------------------------------------------------------*/
-
+$txt_mail = '';
 function get_var($name, $default = 'none') {
   return (isset($_GET[$name])) ? $_GET[$name] : ((isset($_POST[$name])) ? $_POST[$name] : $default);
 }
@@ -44,31 +44,45 @@ function ikGetSign($post)
 
 // logging
 
-//$fp = fopen('ik.log', 'a+');
-//$str=date('Y-m-d H:i:s').' - ';
-//foreach ($_POST as $vn=>$vv) {
-//  $str.=$vn.'='.$vv.';';
-//}
+$sign = ikGetSign($_POST);
 
-//fwrite($fp, $str."\n");
-//fclose($fp);
+extract($_POST);
 
 // Проверка id магазина
 if(MODULE_PAYMENT_IK_SHOP_ID !== $ik_co_id)
 	die('error: ik_co_id');
 
-$sign = ikGetSign($_POST);
+
+$txt_mail .= '$sig = '.$ik_sign .'    $sign = '. $sign .'    $ik_inv_st = '. $ik_inv_st;
+
+
+//$fp = fopen('ik.log', 'a+');
+//$str=date('Y-m-d H:i:s').' - ';
+//foreach ($_POST as $vn=>$vv) {
+  //$str.=$vn.'='.$vv.';';
+//}
+
+// данные заказа
+$order = new order((int)$ik_pm_no);
+$ikCurrency = (MODULE_PAYMENT_IK_CURRENCY == 'RUB') ? 'RUR' : MODULE_PAYMENT_IK_CURRENCY;
+
+global $vamPrice;
+$orderTotal = number_format($order->info['total_value'], 2, '.', '');
+$ik_am = number_format($ik_am, 2, '.', '');
+
+$str.= 'ot='.$orderTotal.' $order->info[total_value]='.$order->info['total_value'] .'; $ikCurrency'. $ikCurrency.' $ik_pm_no='.$ik_pm_no.' $orderTotal2='.$orderTotal2;
+
+
+//fwrite($fp, $str."\n");
+//fclose($fp);
 
 if ($ik_sign === $sign && $ik_inv_st == 'success')
 {
-	// данные заказа
-	$order = new order((int)$ik_pm_no);
-	$ikCurrency = (MODULE_PAYMENT_IK_CURRENCY == 'RUB') ? 'RUR' : MODULE_PAYMENT_IK_CURRENCY;
-
-	global $vamPrice;
-	$orderTotal = number_format($vamPrice->CalculateCurrEx($order->info['total'], $ikCurrency), 2, '.', '');
-
+	
 	// Проверяем стоимость
+	//$txt_mail .= '$ik_am = '.$ik_am.' $orderTotal = '.$orderTotal;
+
+	
 	if($ik_am != $orderTotal OR $ik_am <= 0)
 		die("error: ik_am");
 
@@ -90,5 +104,7 @@ if ($ik_sign === $sign && $ik_inv_st == 'success')
 
 	echo 'OK'.$ik_pm_no;
 }
-else
+else{
+
 	die('error: ik_sign or ik_inv_st');
+	}
