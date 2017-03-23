@@ -1070,10 +1070,14 @@ class SypexDumper
                         } else {
                             continue;
                         }
-                        $todo['TA'][] = array($t, $n, !empty($item['Collation']) ? $item['Collation'] : '', $item['Auto_increment'], $item['Rows'], $item['Data_length']);
+                        $rowcnt = mysqli_query($GLOBALS['mysqlilink'], 'SELECT COUNT(*) from ' . $n);
+                        $item['OldRows'] = $item['Rows'];
+                        $item['Rows'] = mysqli_result($rowcnt,0);
+                        $todo['TA'][]   = array($t, $n, !empty($item['Collation']) ? $item['Collation'] : '', $item['Auto_increment'], $item['Rows'], $item['Data_length'], $item['OldRows']);
                         $header['TA'][] = "{$n}`{$item['Rows']}`{$item['Data_length']}";
-                        ++$tabs;
+                        $tabs++;
                         $rows += $item['Rows'];
+
                     break;
                     default:
                         if (sxd_check($n, $object[$t], $filter[$t])) {
@@ -1185,8 +1189,10 @@ class SypexDumper
                             $r = mysqli_query($GLOBALS['mysqlilink'], "SHOW CREATE TABLE `{$n[1]}`") or sxd_my_error();
                             $item = mysqli_fetch_assoc($r);
                             $fcache .= "#\tTC`{$n[1]}`{$n[2]}\t;\n{$item['Create Table']}\t;\n";
+                            $warn = $n[4] != $n[6] ? " Wrong num?" : " *";
+                            //$this->addLog(sprintf($this->LNG['backup_TC'], $n[1]) . "records: " . $n[4] . "/" . $n[6] . $warn );
                             $this->addLog(sprintf($this->LNG['backup_TC'], $n[1]));
-                            $this->rtl[7] = 0;
+                            $this->rtl[7] = 0; 
                             if ($n[0] == 'TC' || !$n[4]) {
                                 break;
                             }
@@ -1842,4 +1848,16 @@ function sxd_shutdown()
 function sxd_antimagic($arr)
 {
     return is_array($arr) ? array_map('sxd_antimagic', $arr) : stripslashes($arr);
+}
+
+function mysqli_result($res,$row=0,$col=0){ 
+    $numrows = mysqli_num_rows($res); 
+    if ($numrows && $row <= ($numrows-1) && $row >=0){
+        mysqli_data_seek($res,$row);
+        $resrow = (is_numeric($col)) ? mysqli_fetch_row($res) : mysqli_fetch_assoc($res);
+        if (isset($resrow[$col])){
+            return $resrow[$col];
+        }
+    }
+    return false;
 }
