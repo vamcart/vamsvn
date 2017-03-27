@@ -42,8 +42,8 @@ class SypexDumper
         define('V_SXD', 20011);
         define('V_PHP', sxd_ver2int(phpversion()));
         $this->name = 'Sypex Dumper 2.0.11';
-        $SXD->fh_rtl = '';
-        $SXD->fh_log = '';
+        $this->fh_rtl = '';
+        $this->fh_log = '';
     }
     public function loadLang($lng_name = 'auto')
     {
