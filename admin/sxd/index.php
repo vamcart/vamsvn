@@ -15,9 +15,9 @@
  * PSR-2 & PHP7 support fixed by Beaten_Sect0r
  */
 
-header('Expires: Wed, 19 Nov 2008 19:19:19 GMT');
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Content-Type: text/html; charset=utf-8');
+//header('Expires: Wed, 19 Nov 2008 19:19:19 GMT');
+//header('Cache-Control: no-store, no-cache, must-revalidate');
+//header('Content-Type: text/html; charset=utf-8');
 //error_reporting(E_ALL);
 error_reporting(0);
 if (!ini_get('zlib.output_compression') && function_exists('ob_gzhandler')) {
@@ -29,9 +29,13 @@ $SXD = new SypexDumper();
 chdir(dirname(__FILE__));
 $SXD->init(!empty($argc) && $argc > 1 ? $argv : false);
 
+$SXD->fh_rtl = fopen($this->JOB['file_rtl'], 'r+b');
+$SXD->fh_log = fopen($this->JOB['file_log'], 'ab');
+
+
 class SypexDumper
 {
-    public function SypexDumper()
+    public function __construct()
     {
         define('C_DEFAULT', 1);
         define('C_RESULT', 2);
