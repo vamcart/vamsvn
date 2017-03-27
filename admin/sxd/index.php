@@ -29,10 +29,6 @@ $SXD = new SypexDumper();
 chdir(dirname(__FILE__));
 $SXD->init(!empty($argc) && $argc > 1 ? $argv : false);
 
-$SXD->fh_rtl = fopen($this->JOB['file_rtl'], 'r+b');
-$SXD->fh_log = fopen($this->JOB['file_log'], 'ab');
-
-
 class SypexDumper
 {
     public function __construct()
@@ -46,6 +42,8 @@ class SypexDumper
         define('V_SXD', 20011);
         define('V_PHP', sxd_ver2int(phpversion()));
         $this->name = 'Sypex Dumper 2.0.11';
+        $SXD->fh_rtl = '';
+        $SXD->fh_log = '';
     }
     public function loadLang($lng_name = 'auto')
     {
