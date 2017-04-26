@@ -1,4 +1,4 @@
-<?
+<?php
 
 define('MODULE_PAYMENT_KAZNACHEY_TEXT_TITLE' , 'Платформа Казначей');
 define('MODULE_PAYMENT_KAZNACHEY_TEXT_PUBLIC_TITLE' , 'Оплатить Visa/MasterCard, Приват24, Ликпей с помощью платформы "Казначей" www.kaznachey.ua');
