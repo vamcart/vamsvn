@@ -1782,9 +1782,10 @@ function vam_upload_attribute_image($file,$lang,$max_byte_size,$upload_dir,$thum
 	// TEST auf unterstьtzte Bildformate
 	$valid_suffix = array();
 	$gd_typ = gd_info();
-	if(($gd_typ["GIF Read Support"]) and ($gd_typ["GIF Create Support"])) { array_push($valid_suffix, 'gif', 'GIF'); }
-	if($gd_typ["JPG Support"]) { array_push($valid_suffix, 'jpg', 'JPG'); }
-	if($gd_typ["PNG Support"]) { array_push($valid_suffix, 'png', 'PNG'); }
+	//if(($gd_typ["GIF Read Support"]) and ($gd_typ["GIF Create Support"])) { array_push($valid_suffix, 'gif', 'GIF'); }
+	//if($gd_typ["JPG Support"]) { array_push($valid_suffix, 'jpg', 'JPG'); }
+	//if($gd_typ["PNG Support"]) { array_push($valid_suffix, 'png', 'PNG'); }
+	array_push($valid_suffix, 'gif', 'GIF', 'jpg', 'JPG', 'png', 'PNG');
 	// TEST auf unterstьtzte Bildformate -eof
 	
 	$filetyp = explode('.',$file['name'][$lang]);
