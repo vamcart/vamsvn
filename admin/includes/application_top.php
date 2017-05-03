@@ -300,6 +300,10 @@
     define($configuration['cfgKey'], $configuration['cfgValue']);
   }
 
+require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.phpmailer.php');
+if (EMAIL_TRANSPORT == 'smtp')
+	require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.smtp.php');
+
   define('FILENAME_IMAGEMANIPULATOR',IMAGE_MANIPULATOR);
     function vamDBquery($query) {
        if (DB_CACHE=='true') {
