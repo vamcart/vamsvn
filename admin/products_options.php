@@ -38,9 +38,10 @@
           $option_rows = (int)$_POST['option_rows'];
           $option_size = (int)$_POST['option_size'];
           $option_length = (int)$_POST['option_length'];
+          $option_sort_order = (int)$_POST['option_sort_order'];
           $option_type = (int)$_POST['options_type'];      
           
-          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id,products_options_name, language_id,products_options_type,products_options_length,products_options_rows,products_options_size) values ('" . $_POST['products_options_id'] . "', '" . $option_name[$languages[$i]['id']] . "', '" . $languages[$i]['id'] . "','".$option_type."','".$option_length."','".$option_rows."','".$option_size."')");
+          vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS . " (products_options_id,products_options_name, language_id,products_options_type,products_options_length,products_options_rows,products_options_size,sortorder) values ('" . $_POST['products_options_id'] . "', '" . $option_name[$languages[$i]['id']] . "', '" . $languages[$i]['id'] . "','".$option_type."','".$option_length."','".$option_rows."','".$option_size."','".$option_sort_order."')");
         }
         vam_redirect(vam_href_link(FILENAME_PRODUCTS_OPTIONS, $page_info)); 
         break;
@@ -60,11 +61,13 @@
           $option_rows = (int)$_POST['option_rows'];
           $option_size = (int)$_POST['option_size'];
           $option_length = (int)$_POST['option_length'];
+          $option_sort_order = (int)$_POST['option_sort_order'];
           $option_type = (int)$_POST['options_type']; 
           vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_name = '" . $option_name[$languages[$i]['id']] . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");
           // update fields
           vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_type = '" . $option_type . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");	
           vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_length = '" . $option_length . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");	
+          vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set sortorder = '" . $option_sort_order . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");	
           vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_rows = '" . $option_rows . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");	
           vam_db_query("update " . TABLE_PRODUCTS_OPTIONS . " set products_options_size = '" . $option_size . "' where products_options_id = '" . $id . "' and language_id = '" . $languages[$i]['id'] . "'");	
         	 
@@ -390,7 +393,7 @@ $manual_link = 'add-attribute';
                 </td>
               </tr>
               <tr>
-                <td colspan="7"><?php echo vam_black_line(); ?></td>
+                <td colspan="8"><?php echo vam_black_line(); ?></td>
               </tr>
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent">&nbsp;<?php echo TABLE_HEADING_ID; ?>&nbsp;</td>
@@ -399,10 +402,11 @@ $manual_link = 'add-attribute';
                 <td class="dataTableHeadingContent" width="20">&nbsp;<?php echo TEXT_ROWS; ?>&nbsp;</td>
                 <td class="dataTableHeadingContent" width="20">&nbsp;<?php echo TEXT_SIZE; ?>&nbsp;</td>
                 <td class="dataTableHeadingContent" width="20">&nbsp;<?php echo TEXT_MAX_LENGTH; ?>&nbsp;</td>
+                <td class="dataTableHeadingContent" width="20">&nbsp;<?php echo TABLE_TEXT_SORT_ORDER; ?>&nbsp;</td>
                 <td class="dataTableHeadingContent" align="center">&nbsp;<?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
               <tr>
-                <td colspan="7"><?php echo vam_black_line(); ?></td>
+                <td colspan="8"><?php echo vam_black_line(); ?></td>
               </tr>
 <?php
     $next_id = 1;
@@ -435,6 +439,9 @@ $manual_link = 'add-attribute';
                  <td class="smallText">
                  <input type="text" name="option_length" size="4" value="<?php echo $options_values['products_options_length']; ?>">
                  </td>
+                 <td class="smallText">
+                 <input type="text" name="option_sort_order" size="4" value="<?php echo $options_values['sortorder']; ?>">
+                 </td>
                 <td align="center" class="smallText">&nbsp;<?php echo '<span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/update.png', '', '12', '12') . '&nbsp;' . BUTTON_UPDATE . '</button></span>'; ?>&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, '', 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?>&nbsp;</td>
 <?php
         echo '</form>' . "\n";
@@ -446,6 +453,7 @@ $manual_link = 'add-attribute';
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_rows']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_size']; ?>&nbsp;</td>
                 <td class="smallText">&nbsp;<?php echo $options_values['products_options_length']; ?>&nbsp;</td>
+                <td class="smallText">&nbsp;<?php echo $options_values['sortorder']; ?>&nbsp;</td>
                 <td align="center" class="smallText">&nbsp;
                 <?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=update_option&option_id=' . $options_values['products_options_id'] . '&option_order_by=' . $option_order_by . '&option_page=' . $option_page, 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>'; ?>&nbsp;&nbsp;<?php echo '<a class="button" href="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 'action=delete_product_option&option_id=' . $options_values['products_options_id'], 'NONSSL') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>'; ?>&nbsp;</td>
 <?php
@@ -459,7 +467,7 @@ $manual_link = 'add-attribute';
     }
 ?>
               <tr>
-                <td colspan="7"><hr size="4" noshade></td>
+                <td colspan="8"><hr size="4" noshade></td>
               </tr>
 <?php
     if ($_GET['action'] != 'update_option') {
@@ -484,6 +492,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
                 <?php echo TEXT_ROWS; ?>: <input type="text" name="option_rows" size="4" value="1">
                 <?php echo TEXT_SIZE; ?>: <input type="text" name="option_size" size="4" value="32">
                 <?php echo TEXT_MAX_LENGTH; ?>: <input type="text" name="option_length" size="4" value="64">
+                <?php echo TABLE_TEXT_SORT_ORDER; ?>: <input type="text" name="option_sort_order" size="4" value="1">
                 <br /><br /><?php echo TEXT_NOTE; ?><br />
                 </td>
               </tr>  
@@ -494,7 +503,7 @@ echo '<form name="options" action="' . vam_href_link(FILENAME_PRODUCTS_OPTIONS, 
 ?>
               
               <tr>
-                <td colspan="7"><hr size="4" noshade></td>
+                <td colspan="8"><hr size="4" noshade></td>
               </tr>
 <?php
     }

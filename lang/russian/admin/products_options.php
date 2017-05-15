@@ -32,6 +32,7 @@ define('TABLE_HEADING_DOWNLOAD', 'Скачиваемые товары:');
 define('TABLE_TEXT_FILENAME', 'Имя файла:');
 define('TABLE_TEXT_MAX_DAYS', 'Дата окончания:');
 define('TABLE_TEXT_MAX_COUNT', 'Максимум загрузок:');
+define('TABLE_TEXT_SORT_ORDER', 'Порядок сортировки');
 
 define('MAX_ROW_LISTS_OPTIONS', 10);
 
