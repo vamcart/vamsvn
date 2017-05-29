@@ -681,4 +681,6 @@ define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатить заказ');
 define('TEXT_MY_ORDERS', 'Мои заказы');
 define('TEXT_BACK', 'Вернуться');
 
+define('PRIVACY_TEXT','Нажимая кнопку Оформить заказ, я даю согласие на обработку своих персональных данных. <a href="shop_content.php?coID=3">Подробнее о защите персональной информации.</a>');
+
 ?>
