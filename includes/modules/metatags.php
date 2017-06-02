@@ -39,7 +39,7 @@ $cat_query = vamDBquery("SELECT
                                  );
 $cat_data = vam_db_fetch_array($cat_query, true);         
 ?>	
-<title><?php echo $title.' '.$product->data['products_model'] . ' - ' . $cat_data['categories_name'] . ' - ' . TITLE; ?></title>
+<title><?php echo $title.' '.$product->data['products_model'] . ' - ' . $cat_data['categories_name']; ?></title>
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
 	<?php
@@ -168,7 +168,7 @@ else {$page= '';}
 	}
 
 ?>
-<title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page . ' - ' . TITLE; ?></title>
+<title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>
 <meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <?php
@@ -205,7 +205,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 }
 
 ?>
-<title><?php echo $content_title . ' - ' . TITLE; ?></title>
+<title><?php echo $content_title; ?></title>
 <meta name="description" content="<?php echo $content_desc; ?>" />
 <meta name="keywords" content="<?php echo $content_key; ?>" />
 <?php
@@ -220,7 +220,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
 			$news_meta = vam_db_fetch_array($news_meta_query, true);
 ?>
-<title><?php echo $news_meta['headline'] . ' - ' . TITLE; ?></title>
+<title><?php echo $news_meta['headline']; ?></title>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <?php
@@ -244,7 +244,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 		}
 
 ?>
-<title><?php echo $articles_cat_title . ' - ' . TITLE; ?></title>
+<title><?php echo $articles_cat_title; ?></title>
 <meta name="description" content="<?php echo $articles_cat_desc; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <?php
@@ -278,7 +278,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 		}
 
 ?>
-<title><?php echo $articles_title . ' - ' . TITLE; ?></title>
+<title><?php echo $articles_title; ?></title>
 <meta name="description" content="<?php echo $articles_desc; ?>" />
 <meta name="keywords" content="<?php echo $articles_key; ?>" />
 <?php
@@ -315,7 +315,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
 			$authors_meta = vam_db_fetch_array($authors_meta_query, true);
 ?>
-<title><?php echo $authors_meta['authors_name'] . ' - ' . TITLE; ?></title>
+<title><?php echo $authors_meta['authors_name']; ?></title>
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <?php
@@ -325,7 +325,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
   case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 
 ?>
-<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' - ' . TITLE; ?></title>
+<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS; ?></title>
 <meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
 <?php
