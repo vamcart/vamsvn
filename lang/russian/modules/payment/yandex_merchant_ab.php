@@ -40,6 +40,8 @@ define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_TEST_TITLE','Режим работы')
 define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_SEND_CHECK_TITLE' , 'Отправлять в Яндекс.Кассу данные для чеков (54-ФЗ)');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_SEND_CHECK_DESC' , 'Необходимо для работы онлайн-кассы через Яндекс.Кассу.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_PAYMENT_TYPE_TITLE','Способ оплаты.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_AB_PAYMENT_TYPE_DESC','Выберите способ оплаты:<br />
 PC - Оплата со счета Яндекс.Денег.<br />

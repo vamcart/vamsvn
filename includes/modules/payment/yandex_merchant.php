@@ -344,7 +344,43 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     			$state = (!isset($order->delivery["state"])) ? null : $order->delivery["state"] . ', ';
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
     			$ship_address = $postcode . $city . $street_address;
-    			
+
+		if (defined('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') == 'True') {
+
+            $receipt = array(
+                'customerContact' => $order->customer['email_address'],
+                'items' => array(),
+            );
+
+            foreach ($order->products as $product) {
+
+                    $id_tax = 1;
+
+                $receipt['items'][] = array(
+                    'quantity' => $product['qty'],
+                    'text' => substr($product['name'], 0, 128),
+                    'tax' => $id_tax,
+                    'price' => array(
+                        'amount' => number_format($product['final_price'], 2, '.', ''),
+                        'currency' => 'RUB'
+                    ),
+                );
+            }
+
+            if ($order->info && $order->info['shipping_cost'] > 0) {
+                $id_tax = 1;
+                $receipt['items'][] = array(
+                    'quantity' => 1,
+                    'text' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
+                    'tax' => $id_tax,
+                    'price' => array(
+                        'amount' => number_format($order->info['shipping_cost'], 2, '.', ''),
+                        'currency' => 'RUB'
+                    ),
+                );
+            }
+        }
+
       $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID) .
                                vam_draw_hidden_field('scid', MODULE_PAYMENT_YANDEX_MERCHANT_SCID) .
                                vam_draw_hidden_field('sum', $order_sum) . 
@@ -355,6 +391,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
                                vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
                                vam_draw_hidden_field('cms_name', 'vamshop') . 
+                               (defined('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') == 'True' ? vam_draw_hidden_field('receipt', json_encode($receipt)) : '');
                                vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE);
 
       return $process_button_string;
@@ -559,6 +596,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE', 'PC', '6', '10', 'vam_cfg_select_option(array(\'PC\', \'AC\', \'MC\', \'GP\', \'WM\', \'SB\', \'MP\', \'AB\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK', 'False', '6', '11', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
     }
 
     function remove() {
@@ -566,7 +604,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE');
+      return array('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS', 'MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED', 'MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SCID', 'MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY', 'MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER', 'MODULE_PAYMENT_YANDEX_MERCHANT_ZONE', 'MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID', 'MODULE_PAYMENT_YANDEX_MERCHANT_TEST', 'MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE', 'MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK');
     }
 
   }
