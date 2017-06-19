@@ -327,6 +327,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 		$_SESSION['customer_first_name'] = $firstname;
 		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
+		$_SESSION['customer_email_address'] = $email_address;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
