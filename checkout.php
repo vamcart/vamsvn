@@ -735,8 +735,8 @@ if (vam_count_shipping_modules() == 0) {
 // END calculation if 0 shipping method is active ////
 
 // calculation if only 1 shipping method is set ////
-if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
-  if ($_POST['shipping'] != 'undefined') { //to avoid setting Jquery send data which is undefined
+//if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT IT IS not 0 again
+  //if ($_POST['shipping'] != 'undefined') { //to avoid setting Jquery send data which is undefined
 
   if (vam_count_shipping_modules() == 1) {
   		
@@ -820,8 +820,8 @@ if ($order->delivery['country']['iso_code_2'] != '') {
 		} //$shipping end test
   }
   
-  }
-  } 
+  //}
+  //} 
 // END - if only 1 shipping method is set ////  
   
  
