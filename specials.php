@@ -56,6 +56,7 @@ $specials_query_raw = "select p.products_id,
  and p.products_id = p2c.products_id and 
  s.products_id = p.products_id
                                 and p.products_id = pd.products_id
+                                and p.products_status = '1' 
                                 ".$group_check."
                                 ".$fsk_lock."
                                 and pd.language_id = '".(int) $_SESSION['languages_id']."'
