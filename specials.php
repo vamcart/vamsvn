@@ -43,7 +43,7 @@ $categories_id=0;
 if(isset($_GET["categories_id"]) && ctype_digit(trim($_GET["categories_id"])))
   $categories_id=$_GET["categories_id"];
 
-$specials_query_raw = "select p.products_id,
+$specials_query_raw = "select distinct p.products_id,
                                 p.label_id,
                                 pd.products_name,
                                 pd.products_short_description,
