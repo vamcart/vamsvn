@@ -586,7 +586,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
     $filestring = substr($filestring, 0, strlen($filestring)-1);
 
     // set the type
-    if ( $dltype == 'froogle' ){
+    if ( $_GET['dltype'] == 'froogle' ){
         $endofrow = "\n";
     } else {
         // default to normal end of row
@@ -930,7 +930,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
         }
 
-        if ($dltype == 'froogle'){
+        if ($_GET['dltype'] == 'froogle'){
             // For froogle, we check the specials prices for any applicable specials, and use that price
             // by grabbing the specials id descending, we always get the most recently added special price
             // I'm checking status because I think you can turn off specials
@@ -1005,12 +1005,12 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
             $thetext = $row[$key];
             // kill the carriage returns and tabs in the descriptions, they're killing me!
-            if (EP_PRESERVE_TABS_CR_LF == false || $dltype == 'froogle') {
+            if (EP_PRESERVE_TABS_CR_LF == false || $_GET['dltype'] == 'froogle') {
               $thetext = str_replace("\r",' ',$thetext);
               $thetext = str_replace("\n",' ',$thetext);
               $thetext = str_replace("\t",' ',$thetext);
             }
-            if (EP_EXCEL_SAFE_OUTPUT == true && $dltype != 'froogle') {
+            if (EP_EXCEL_SAFE_OUTPUT == true && $_GET['dltype'] != 'froogle') {
               // use quoted values and escape the embedded quotes for excel safe output.
               $therow .= '"'.str_replace('"','""',$thetext).'"' . $ep_separator;
             } else {
