@@ -1350,6 +1350,7 @@ CREATE TABLE products_options (
   products_options_size INT( 11 ) DEFAULT '32' NOT NULL ,
   products_options_rows INT( 11 ) DEFAULT '4' NOT NULL,
   products_options_type INT( 11 ) NOT NULL,
+  sortorder INT( 11 ) NOT NULL,
   PRIMARY KEY  (products_options_id,language_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
