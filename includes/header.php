@@ -36,7 +36,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 
-<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
 <link rel="shortcut icon" href="favicon.ico"/>
 
