@@ -35,13 +35,9 @@
 {if $COMMENTS}<p>{$COMMENTS}</p>{/if}
 <hr>
 <p><b><font size="5">Накладная № {$oID} от {$DATE}</font></b></p>
-<p>&nbsp;</p>
-<table border="0" width="92%" id="table1" cellspacing="0">
+<table border="0" width="99%" id="table1" cellspacing="0">
 	<tr>
 		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
-<!-- // BOF barcode -->
-		<td style="border-style: solid; border-width: 1px" align="center">{$smarty.const.TEXT_PRINT_EAN}</td>
-<!-- // EOF barcode -->
 		<td width="17%" style="border-style: solid; border-width: 1px" align="center">Артикул</td>
 		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
 		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
@@ -52,9 +48,6 @@
         {foreach name=aussen item=order_values from=$order_data}
         <tr>
 		<td width="5%" style="border-style: solid; border-width: 1px">{counter}.</td>
-<!-- // BOF barcode -->
-		<td style="border-style: solid; border-width: 1px"><img src="{$smarty.const.DIR_WS_CATALOG}products_barcode.php?products_id={$order_values.PRODUCTS_ID}" title="" alt="" /></td>
-<!-- // EOF barcode -->
 		<td width="17%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_MODEL} {$order_values.PRODUCTS_ATTRIBUTES_MODEL}</td>
 		<td width="48%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_ATTRIBUTES}</td>
 		<td width="12%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_QTY}</td>
@@ -65,7 +58,7 @@
 
   {foreach name=aussen item=order_total_values from=$order_total}
 	<tr>
-		<td colspan="6" style="border-style: solid; border-width: 1px">
+		<td colspan="5" style="border-style: solid; border-width: 1px">
 		<p align="right"><b>{$order_total_values.TITLE}</b></td>
 		<td width="9%" style="border-style: solid; border-width: 1px">{$order_total_values.VALUE|number_format:2:'.':''}</td>
 	</tr>
