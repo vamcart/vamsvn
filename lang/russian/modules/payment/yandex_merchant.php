@@ -17,21 +17,21 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс.Деньги');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс.Деньги.');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс.Касса.');
   
-define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс-деньги');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс.Касса');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_TITLE' , 'ShopID:');
-define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_DESC' , 'Номер магазина в ЦПП. Выдается ЦПП.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_TITLE' , 'shopId:');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID_DESC' , 'Идентификатор магазина.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SCID_TITLE' , 'scid:');
-define('MODULE_PAYMENT_YANDEX_MERCHANT_SCID_DESC' , 'Номер витрины магазина в ЦПП. Выдается ЦПП.');
-define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_TITLE' , 'Секретный ключ');
-define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_DESC' , 'В данной опции укажите Ваш ключ.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SCID_DESC' , 'Идентификатор витрины магазина.');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_TITLE' , 'shopPassword');
+define('MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY_DESC' , 'Пароль магазина.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_ZONE_TITLE' , 'Зона');
@@ -44,6 +44,7 @@ define('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK_TITLE' , 'Отправлять
 define('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK_DESC' , 'Необходимо для работы онлайн-кассы через Яндекс.Кассу.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE_TITLE','Способ оплаты.');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE_DESC','Выберите способ оплаты:<br />
+Пустое значение - Выбор способа оплаты на стороне Яндекс.Кассы.<br />
 PC - Оплата со счета Яндекс.Денег.<br />
 АС - Оплата с произвольной банковской карты.<br />
 MC - Платеж со счета мобильного телефона.<br />
