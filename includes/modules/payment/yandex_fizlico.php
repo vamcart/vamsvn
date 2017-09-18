@@ -493,6 +493,15 @@ $vamTemplate = new vamTemplate;
 	// send mail to customer
 	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order_subject, $html_mail, $txt_mail);
 
+	if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
+		
+	$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail_sms.html');
+	$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/order_mail_sms.txt');
+		
+	// sms to customer
+	vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order->customer['telephone'], $html_mail_sms, $txt_mail_sms);
+	}
+
 // load the after_process function from the payment modules
       $this->after_process();
 
