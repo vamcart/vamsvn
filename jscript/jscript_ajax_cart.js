@@ -73,7 +73,7 @@ $(document).ajaxStop(function(){
 
 function doAddProduct() {
 		
-		var forma = $('#cart_quantity input,select');
+		var forma = $('#cart_quantity input,select,textarea');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		var tmp = false;
 		
