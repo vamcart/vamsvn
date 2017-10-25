@@ -630,6 +630,10 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
                             		    'final_price' => $products_price*$products[$i]['quantity'],
                             		    'shipping_time'=>$products[$i]['shipping_time'],
 					                    'weight' => $products[$i]['weight'],
+					                    'length' => $products[$i]['length'],
+					                    'width' => $products[$i]['width'],
+					                    'height' => $products[$i]['height'],
+					                    'volume' => $products[$i]['volume'],
                                         'id' => $products[$i]['id']);
 
         if ($products[$i]['attributes']) {
