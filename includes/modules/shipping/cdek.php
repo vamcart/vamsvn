@@ -54,38 +54,110 @@
 
 
     function quote($method = '') {
-      global $order, $shipping_weight, $length, $width, $height, $volume;
+      global $order, $shipping_weight, $total_count, $length, $width, $height, $volume;
 
 		$api_key = MODULE_SHIPPING_CDEK_API_KEY;
 		$api_password = MODULE_SHIPPING_CDEK_API_PASSWORD;
-		$store_zip_code = MODULE_SHIPPING_CDEK_SENDER_CITY;
-
+		$sender_city = MODULE_SHIPPING_CDEK_SENDER_CITY;
 		$total_weight = $shipping_weight;
-		
-	    //запрос расчета стоимости отправления из 101000 МОСКВА во ВЛАДИМИР 600000.
-	    $ret = $this->cdek_api_calc($api_key, $api_password, $store_zip_code, $order->delivery['postcode'], $total_weight, $order->info['total_value']);
+		$shipping_cost = 0;
+
+	    $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$sender_city);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    $data = curl_exec($curl);
 	    
-	    //if (isset($ret['msg']['type']) && $ret['msg']['type'] == "done")
-	    //{
-	        //echo "success! codepage: UTF-8 <br/>";
-	        //print_r($ret);
-	        //echo "<br/>";
-	    //}else
-	    //{
-	        //echo "error! codepage: UTF-8 <br/>";
-	        //print_r($ret);
-	        //echo "<br/>";
-	    //}
-	
-	    $shipping_cost = 0;
-	    
-	    if (isset($ret['calc']) && $ret['calc'][1]['cost'] > 0) {
-	      $shipping_cost = $ret['calc'][1]['cost'];    
+	    curl_close($curl);
+	    if($data === false) {
+		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo "ID номер для города отправителя посылки не найден.";
 	    }
-      
-      
+	    
+	    $senderCity = json_decode($data, $assoc=true);
+	    $senderCityId = $senderCity["geonames"][0]["id"];
+	
+	    $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$order->delivery['city']);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    $data = curl_exec($curl);
+	    
+	    curl_close($curl);
+	    if($data === false) {
+		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo "ID номер для города получателя посылки не найден.";
+	    }
+	    
+	    $receiverCity = json_decode($data, $assoc=true);
+	    $receiverCityId = $receiverCity["geonames"][0]["id"];
+
+
+		//подключаем файл с классом CalculatePriceDeliveryCdek
+		include(DIR_WS_INCLUDES.'external/cdek/'.'CalculatePriceDeliveryCdek.php');
+		
+		try {
+		
+			//создаём экземпляр объекта CalculatePriceDeliveryCdek
+			$calc = new CalculatePriceDeliveryCdek();
+			
+		    //Авторизация.
+		    if ($api_key != '' && $api_password != '') $calc->setAuth($api_key, $api_password);
+			
+			//устанавливаем город-отправитель
+			$calc->setSenderCityId($senderCityId);
+			//устанавливаем город-получатель
+			$calc->setReceiverCityId($receiverCityId);
+			//устанавливаем дату планируемой отправки
+			//$calc->setDateExecute();
+			
+			//задаём список тарифов с приоритетами
+		    //$calc->addTariffPriority($_REQUEST['tariffList1']);
+		    //$calc->addTariffPriority($_REQUEST['tariffList2']);
+			
+			//устанавливаем тариф по-умолчанию
+			$calc->setTariffId('11');
+				
+			//устанавливаем режим доставки
+			$calc->setModeDeliveryId(3);
+			//добавляем места в отправление
+			
+				foreach($order->products AS $products)
+				{
+					$calc->addGoodsItemBySize($products['weight']*$products['qty'], $products['length'], $products['width'], $products['height']*$products['qty']);
+		
+				}	
+			
+			if ($calc->calculate() === true) {
+				$res = $calc->getResult();
+				
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Цена доставки: ' . $res['result']['price'] . 'руб.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Срок доставки: ' . $res['result']['deliveryPeriodMin'] . '-' . 
+										 $res['result']['deliveryPeriodMax'] . ' дн.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Планируемая дата доставки: c ' . $res['result']['deliveryDateMin'] . ' по ' . $res['result']['deliveryDateMax'] . '.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'id тарифа, по которому произведён расчёт: ' . $res['result']['tariffId'] . '.<br />';
+		        if(array_key_exists('cashOnDelivery', $res['result'])) {
+		            if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Ограничение оплаты наличными, от (руб): ' . $res['result']['cashOnDelivery'] . '.<br />';
+		        }
+			} else {
+				$err = $calc->getError();
+				if( isset($err['error']) && !empty($err) ) {
+					if (MODULE_SHIPPING_CDEK_DEBUG == 'test') var_dump($err);
+					foreach($err['error'] as $e) {
+						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Код ошибки: ' . $e['code'] . '.<br />';
+						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Текст ошибки: ' . $e['text'] . '.<br />';
+					}
+				}
+			}
+		    
+		    //раскомментируйте, чтобы просмотреть исходный ответ сервера
+		     //var_dump($calc->getResult());
+		     //var_dump($calc->getError());
+		
+		} catch (Exception $e) {
+		    if (MODULE_SHIPPING_CDEK_DEBUG == 'test') echo 'Ошибка: ' . $e->getMessage() . "<br />";
+		}
+			
+		$shipping_cost=  $res['result']['price'];
+		
 		if (MODULE_SHIPPING_CDEK_COST > 0) $shipping_cost = $shipping_cost + MODULE_SHIPPING_CDEK_COST;      
-      
+		      
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_CDEK_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
@@ -115,7 +187,7 @@
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_CDEK_COST', '0', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_CDEK_API_KEY', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_CDEK_API_PASSWORD', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_CDEK_SENDER_CITY', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_CDEK_SENDER_CITY', 'Москва', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_CDEK_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_CDEK_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_CDEK_DEBUG', 'test', '6', '6', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
