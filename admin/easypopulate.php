@@ -586,7 +586,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
     $filestring = substr($filestring, 0, strlen($filestring)-1);
 
     // set the type
-    if ( $_GET['dltype'] == 'froogle' ){
+    if ( $dltype == 'froogle' ){
         $endofrow = "\n";
     } else {
         // default to normal end of row
@@ -594,11 +594,6 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
     }
     $filestring .= $endofrow;
 
-    if ( $_GET['dltype'] == 'froogle' ){
-    $filestring .= '70;"Доставка";"0,00";300;;;;;;100000;Доставка;'.$endofrow;
-    $filestring .= '3;"Самовывоз";"0,00";100;;;;;;100000;Доставка;'.$endofrow;
-    }
-    
     if ($_GET['download'] == 'activestream'){
 //		header('Content-Transfer-Encoding: none');
         if (EP_EXCEL_SAFE_OUTPUT == true) {
@@ -626,16 +621,14 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
         // if the filelayout says we need a products_name, get it
         // build the long full froogle image path
-        $row['v_products_fullpath_image'] = '';
+        $row['v_products_fullpath_image'] = EP_FROOGLE_IMAGE_PATH . $row['v_products_image'];
         // Other froogle defaults go here for now
-        $row['v_froogle_quantitylevel']     = '';
+        $row['v_froogle_quantitylevel']     = $row['v_products_quantity'];
         $row['v_froogle_manufacturer_id']   = '';
-        $row['v_froogle_exp_date']          = '';
+        $row['v_froogle_exp_date']          = date('Y-m-d', strtotime('+30 days'));
         $row['v_froogle_product_type']      = $row['v_categories_id'];
-        $row['v_froogle_product_id']        = '';
-        $row['v_froogle_product_model']        = str_replace("*","",$row['v_products_model']);
-        $row['v_froogle_currency']          = '';
-        $row['v_froogle_naz_gr']            = 100000+$row['v_categories_id'];
+        $row['v_froogle_product_id']        = $row['v_products_model'];
+        $row['v_froogle_currency']          = EP_FROOGLE_CURRENCY;
         
         // names and descriptions require that we loop thru all languages that are turned on in the store
         foreach ($languages as $key => $lang){
@@ -676,8 +669,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
             }
             // froogle advanced format needs the quotes around the name and desc
             $row['v_froogle_products_name_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_name'])) . '"';
-            $row['v_froogle_products_model_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_model'])) . '"';
-            $row['v_froogle_products_description_' . $lid] = '"0,00"';
+            $row['v_froogle_products_description_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_description'])) . '"';
 
             // support for Linda's Header Controller 2.0 here
             if(isset($filelayout['v_products_meta_title_' . $lid])){
@@ -718,19 +710,32 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 		for( $categorylevel=1; $categorylevel<=EP_MAX_CATEGORIES; $categorylevel++){
 			if ($thecategory_id){
 
-				$sql3 = "SELECT categories_name
-						 FROM ".TABLE_CATEGORIES_DESCRIPTION."
+				$sql3 = "SELECT parent_id, 
+								categories_image
+						 FROM ".TABLE_CATEGORIES."
 						 WHERE    
 								categories_id = " . $thecategory_id . '';
 				$result3 = vam_db_query($sql3);
 				if ($row3 = vam_db_fetch_array($result3)) {
 					$temprow['v_categories_image_' . $categorylevel] = $row3['categories_image'];
-
-$fullcategory = $row3['categories_name'];
-
 				}
 
+				foreach ($languages as $key => $lang){
+					$sql2 = "SELECT categories_name
+							 FROM ".TABLE_CATEGORIES_DESCRIPTION."
+							 WHERE    
+									categories_id = " . $thecategory_id . " AND
+									language_id = " . $lang['id'];
+					$result2 = vam_db_query($sql2);
+					if ($row2 =  vam_db_fetch_array($result2)) {
+						$temprow['v_categories_name_' . $categorylevel . '_' . $lang['id']] = $row2['categories_name'];
+					}
+					if ($lang['id'] == '1') {
+						//$fullcategory .= " > " . $row2['categories_name'];
+						$fullcategory = $row2['categories_name'] . " > " . $fullcategory;
+					}
 
+				}
 
 				// now get the parent ID if there was one
 				$theparent_id = $row3['parent_id'];
@@ -751,7 +756,7 @@ $fullcategory = $row3['categories_name'];
 		}
 
 		// now trim off the last ">" from the category stack
-		$row['v_category_fullpath'] = $fullcategory;
+		$row['v_category_fullpath'] = substr($fullcategory,0,strlen($fullcategory)-3);
 
 		// temprow has the old style low to high level categories.
 		$newlevel = 1;
@@ -925,7 +930,7 @@ $fullcategory = $row3['categories_name'];
 
         }
 
-        if ($_GET['dltype'] == 'froogle'){
+        if ($dltype == 'froogle'){
             // For froogle, we check the specials prices for any applicable specials, and use that price
             // by grabbing the specials id descending, we always get the most recently added special price
             // I'm checking status because I think you can turn off specials
@@ -1000,12 +1005,12 @@ $fullcategory = $row3['categories_name'];
 
             $thetext = $row[$key];
             // kill the carriage returns and tabs in the descriptions, they're killing me!
-            if (EP_PRESERVE_TABS_CR_LF == false || $_GET['dltype'] == 'froogle') {
+            if (EP_PRESERVE_TABS_CR_LF == false || $dltype == 'froogle') {
               $thetext = str_replace("\r",' ',$thetext);
               $thetext = str_replace("\n",' ',$thetext);
               $thetext = str_replace("\t",' ',$thetext);
             }
-            if (EP_EXCEL_SAFE_OUTPUT == true && $_GET['dltype'] != 'froogle') {
+            if (EP_EXCEL_SAFE_OUTPUT == true && $dltype != 'froogle') {
               // use quoted values and escape the embedded quotes for excel safe output.
               $therow .= '"'.str_replace('"','""',$thetext).'"' . $ep_separator;
             } else {
@@ -2280,21 +2285,15 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
         $iii = 0;
         $filelayout = array();
 
-
-//Код	Название	Налог(%)	Цена	Штрихкод	Артикул	Текст для чека	Акцизный	Секция	Код группы	Название группы
-
-
-        $filelayout['v_froogle_product_model'] = $iii++;
+        $filelayout['v_froogle_products_url_1'] = $iii++;
         $filelayout['v_froogle_products_name_'.EP_DEFAULT_LANGUAGE_ID] = $iii++;
         $filelayout['v_froogle_products_description_'.EP_DEFAULT_LANGUAGE_ID] = $iii++;
         $filelayout['v_products_price'] = $iii++;
         $filelayout['v_products_fullpath_image'] = $iii++;
         $filelayout['v_froogle_product_id'] = $iii++;
         $filelayout['v_froogle_quantitylevel'] = $iii++;
-        $filelayout['v_froogle_exp_date'] = $iii++;
-        $filelayout['v_froogle_kod_gr'] = $iii++;
-        $filelayout['v_froogle_naz_gr'] = $iii++;
         $filelayout['v_category_fullpath'] = $iii++;
+        $filelayout['v_froogle_exp_date'] = $iii++;
         $filelayout['v_froogle_currency'] = $iii++;
 
         $iii=0;
@@ -2302,19 +2301,18 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
 
         // EP Support mapping new names to the export headers.
         // use the $fileheaders[''] vars to do that.
-        $fileheaders['Код'] = $iii++;
-        $fileheaders['Название'] = $iii++;
-        $fileheaders['Налог(%)'] = $iii++;
-        $fileheaders['Цена'] = $iii++;
-        $fileheaders['Штрихкод'] = $iii++;
-        $fileheaders['Артикул'] = $iii++;
-        $fileheaders['Текст для чека'] = $iii++;
-        $fileheaders['Акцизный'] = $iii++;
-        $fileheaders['Секция'] = $iii++;
-        $fileheaders['Код группы'] = $iii++;
-        $fileheaders['Название группы'] = $iii++;
+        $fileheaders['link'] = $iii++;
+        $fileheaders['title'] = $iii++;
+        $fileheaders['description'] = $iii++;
+        $fileheaders['price'] = $iii++;
+        $fileheaders['image_link'] = $iii++;
+        $fileheaders['id'] = $iii++;
+        $fileheaders['quantity'] = $iii++;
+        $fileheaders['product_type'] = $iii++;
+        $fileheaders['expiration_date'] = $iii++;
+        $fileheaders['currency'] = $iii++;
 
-        $filelayout_sql = "SELECT distinct 
+        $filelayout_sql = "SELECT
             p.products_id as v_products_id,
             p.products_model as v_products_model,
             p.products_image as v_products_image,
@@ -2332,7 +2330,7 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             ".TABLE_PRODUCTS_TO_CATEGORIES." as ptoc
             WHERE
             p.products_id = ptoc.products_id AND
-            ptoc.categories_id = subc.categories_id group by p.products_id
+            ptoc.categories_id = subc.categories_id
             " . $sql_filter;
         break;
 
