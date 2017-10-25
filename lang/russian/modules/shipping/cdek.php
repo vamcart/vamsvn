@@ -37,6 +37,8 @@ define('MODULE_SHIPPING_CDEK_TAX_CLASS_TITLE' , 'Налог');
 define('MODULE_SHIPPING_CDEK_TAX_CLASS_DESC' , 'Использовать налог.');
 define('MODULE_SHIPPING_CDEK_ZONE_TITLE' , 'Зона');
 define('MODULE_SHIPPING_CDEK_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
+define('MODULE_SHIPPING_CDEK_DEBUG_TITLE','Режим работы');
+define('MODULE_SHIPPING_CDEK_DEBUG_DESC','test - для отладки, тестирования работы модуля, production - рабочий режим без отладочной информации.');
 define('MODULE_SHIPPING_CDEK_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_SHIPPING_CDEK_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 ?>
