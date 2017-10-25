@@ -54,7 +54,7 @@
 
 
     function quote($method = '') {
-      global $order, $shipping_weight;
+      global $order, $shipping_weight, $length, $width, $height, $volume;
 
 		$api_key = MODULE_SHIPPING_CDEK_API_KEY;
 		$api_password = MODULE_SHIPPING_CDEK_API_PASSWORD;

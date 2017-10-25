@@ -61,7 +61,7 @@
     }
 
     function quote($method = '', $module = '') {
-      global $total_weight, $shipping_weight, $shipping_quoted, $shipping_num_boxes;
+      global $total_weight, $shipping_weight, $shipping_quoted, $shipping_num_boxes, $length, $width, $height, $volume;
 
       $quotes_array = array();
 

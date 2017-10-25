@@ -682,6 +682,11 @@ $shipping_modules = new shipping; //set it after getting country_info otherwise 
 
 $total_weight = $_SESSION['cart']->show_weight(); //set before $shipping is defined
 
+$length = $_SESSION['cart']->show_length();
+$width = $_SESSION['cart']->show_width();
+$height = $_SESSION['cart']->show_height();
+$volume = $_SESSION['cart']->show_volume();
+
 //used for post data for validation
 $shipping_count = vam_count_shipping_modules();
 

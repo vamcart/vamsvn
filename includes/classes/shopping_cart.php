@@ -282,6 +282,10 @@ class shoppingCart {
 		$this->total = 0;
 		$this->qty = 0;
 		$this->weight = 0;
+		$this->length = 0;
+		$this->width = 0;
+		$this->height = 0;
+		$this->volume = 0;
 		$this->tax = array ();
 		if (!is_array($this->contents))
 			return 0;
@@ -291,13 +295,17 @@ class shoppingCart {
 			$qty = $this->contents[$products_id]['qty'];
 
 			// products price
-			$product_query = vam_db_query("select products_id, products_price, products_discount_allowed, products_tax_class_id, products_weight from ".TABLE_PRODUCTS." where products_id='".vam_get_prid($products_id)."'");
+			$product_query = vam_db_query("select products_id, products_price, products_discount_allowed, products_tax_class_id, products_weight, products_length, products_width, products_height, products_volume from ".TABLE_PRODUCTS." where products_id='".vam_get_prid($products_id)."'");
 			if ($product = vam_db_fetch_array($product_query)) {
 
 				$products_price = $vamPrice->GetPrice($product['products_id'], $format = false, $qty, $product['products_tax_class_id'], $product['products_price']);
 				$this->total += $products_price * $qty;
 				$this->qty += $qty;
 				$this->weight += ($qty * $product['products_weight']);
+				$this->length += ($product['products_length']);
+				$this->width += ($product['products_width']);
+				$this->height += ($qty * $product['products_height']);
+				$this->volume += ($product['products_volume']);
 
 
 							// attributes price
@@ -386,7 +394,7 @@ class shoppingCart {
 		reset($this->contents);
 		while (list ($products_id,) = each($this->contents)) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){
-			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
@@ -401,6 +409,10 @@ class shoppingCart {
 				'price' => $products_price + $this->attributes_price($products_id), 
 				'quantity' => $this->contents[$products_id]['qty'], 
 				'weight' => $products['products_weight'],
+				'length' => $products['products_length'],
+				'width' => $products['products_width'],
+				'height' => $products['products_height'],
+				'volume' => $products['products_volume'],
 				'shipping_time' => $main->getShippingStatusName($products['products_shippingtime']), 
 				'final_price' => ($products_price + $this->attributes_price($products_id)), 
 				'tax_class_id' => $products['products_tax_class_id'], 
@@ -425,6 +437,30 @@ class shoppingCart {
 		$this->calculate();
 
 		return $this->weight;
+	}
+
+	function show_length() {
+		$this->calculate();
+
+		return $this->length;
+	}
+
+	function show_width() {
+		$this->calculate();
+
+		return $this->width;
+	}
+
+	function show_height() {
+		$this->calculate();
+
+		return $this->height;
+	}
+
+	function show_volume() {
+		$this->calculate();
+
+		return $this->volume;
 	}
 
 	function show_quantity() {
