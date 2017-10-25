@@ -278,6 +278,22 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
             <td valign="top" class="main"><?php echo vam_draw_input_field('products_weight', $pInfo->products_weight,'size=4') . '&nbsp;' . TEXT_PRODUCTS_WEIGHT_INFO; ?></td>
           </tr>
           <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_LENGTH; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_length', ($pInfo->products_length=='' ? 0 : $pInfo->products_length)); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_WIDTH; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_width', ($pInfo->products_width=='' ? 0 : $pInfo->products_width)); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_HEIGHT; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_height', ($pInfo->products_height=='' ? 0 : $pInfo->products_height)); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_PRODUCTS_VOLUME; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_volume', ($pInfo->products_volume=='' ? 0 : $pInfo->products_volume)); ?></td>
+          </tr>
+          <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_MODEL; ?></td>
             <td valign="top" class="main"><?php echo  vam_draw_input_field('products_model', $pInfo->products_model); ?></td>
           </tr>

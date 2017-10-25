@@ -122,6 +122,10 @@ define('TEXT_PRODUCTS_URL', 'URL товара:');
 define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '(без http://)');
 define('TEXT_PRODUCTS_PRICE', 'Цена товара:');
 define('TEXT_PRODUCTS_WEIGHT', 'Вес товара:');
+define('TEXT_PRODUCTS_LENGTH', 'Длина:');
+define('TEXT_PRODUCTS_WIDTH', 'Ширина:');
+define('TEXT_PRODUCTS_HEIGHT', 'Высота:');
+define('TEXT_PRODUCTS_VOLUME', 'Объём:');
 define('TEXT_PRODUCTS_EAN','Штрих-код:');
 define('TEXT_PRODUCT_LINKED_TO','Ссылается на:');
 
