@@ -89,7 +89,7 @@
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_CDEK_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_CDEK_TEXT_TITLE,
+                                                     'title' => MODULE_SHIPPING_CDEK_TEXT_PUBLIC_TITLE,
                                                      'cost' => $shipping_cost)));
 
       if ($this->tax_class > 0) {

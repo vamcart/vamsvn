@@ -19,6 +19,7 @@
 
 define('MODULE_SHIPPING_CDEK_TEXT_TITLE', 'СДЭК');
 define('MODULE_SHIPPING_CDEK_TEXT_DESCRIPTION', 'СДЭК. Расчёт доставки СДЭК с помощью API СДЭК.');
+define('MODULE_SHIPPING_CDEK_TEXT_PUBLIC_TITLE', 'Курьерская компания');
 
 define('MODULE_SHIPPING_CDEK_STATUS_TITLE' , 'Разрешить модуль СДЭК');
 define('MODULE_SHIPPING_CDEK_STATUS_DESC' , 'Вы хотите разрешить модуль СДЭК?');
