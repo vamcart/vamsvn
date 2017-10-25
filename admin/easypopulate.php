@@ -290,7 +290,7 @@ $custom_fields = array();
 // may need to incorporate custom code to correctly import your data.
 //
 
-$custom_fields[TABLE_PRODUCTS] = array('products_quantity_min' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN,'products_quantity_max' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX,'products_sort' => TEXT_EASYPOPULATE_LABEL_SORT,'products_page_url' => TEXT_EASYPOPULATE_LABEL_PAGE_URL,'products_discount_allowed' => TEXT_EASYPOPULATE_LABEL_DISCOUNT_ALLOWED,'products_startpage' => TEXT_EASYPOPULATE_LABEL_STARTPAGE,'products_startpage_sort' => TEXT_EASYPOPULATE_LABEL_STARTPAGE_SORT,'products_to_xml' => TEXT_EASYPOPULATE_LABEL_XML); // this line is used if you have no custom fields to import/export
+$custom_fields[TABLE_PRODUCTS] = array('products_quantity_min' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MIN,'products_quantity_max' => TEXT_EASYPOPULATE_LABEL_QUANTITY_MAX,'products_length' => TEXT_EASYPOPULATE_LABEL_LENGTH,'products_width' => TEXT_EASYPOPULATE_LABEL_WIDTH,'products_height' => TEXT_EASYPOPULATE_LABEL_HEIGHT,'products_volume' => TEXT_EASYPOPULATE_LABEL_VOLUME,'products_sort' => TEXT_EASYPOPULATE_LABEL_SORT,'products_page_url' => TEXT_EASYPOPULATE_LABEL_PAGE_URL,'products_discount_allowed' => TEXT_EASYPOPULATE_LABEL_DISCOUNT_ALLOWED,'products_startpage' => TEXT_EASYPOPULATE_LABEL_STARTPAGE,'products_startpage_sort' => TEXT_EASYPOPULATE_LABEL_STARTPAGE_SORT,'products_to_xml' => TEXT_EASYPOPULATE_LABEL_XML); // this line is used if you have no custom fields to import/export
 $custom_fields[TABLE_PRODUCTS_DESCRIPTION] = array('products_short_description' => TEXT_EASYPOPULATE_LABEL_SHORT_DESCRIPTION,'products_keywords' => TEXT_EASYPOPULATE_LABEL_KEYWORDS); // this line is used if you have no custom fields to import/export
 
 //
@@ -594,6 +594,11 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
     }
     $filestring .= $endofrow;
 
+    if ( $_GET['dltype'] == 'froogle' ){
+    $filestring .= '70;"Доставка";"0,00";300;;;;;;100000;Доставка;'.$endofrow;
+    $filestring .= '3;"Самовывоз";"0,00";100;;;;;;100000;Доставка;'.$endofrow;
+    }
+    
     if ($_GET['download'] == 'activestream'){
 //		header('Content-Transfer-Encoding: none');
         if (EP_EXCEL_SAFE_OUTPUT == true) {
@@ -621,14 +626,16 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 
         // if the filelayout says we need a products_name, get it
         // build the long full froogle image path
-        $row['v_products_fullpath_image'] = EP_FROOGLE_IMAGE_PATH . $row['v_products_image'];
+        $row['v_products_fullpath_image'] = '';
         // Other froogle defaults go here for now
-        $row['v_froogle_quantitylevel']     = $row['v_products_quantity'];
+        $row['v_froogle_quantitylevel']     = '';
         $row['v_froogle_manufacturer_id']   = '';
-        $row['v_froogle_exp_date']          = date('Y-m-d', strtotime('+30 days'));
+        $row['v_froogle_exp_date']          = '';
         $row['v_froogle_product_type']      = $row['v_categories_id'];
-        $row['v_froogle_product_id']        = $row['v_products_model'];
-        $row['v_froogle_currency']          = EP_FROOGLE_CURRENCY;
+        $row['v_froogle_product_id']        = '';
+        $row['v_froogle_product_model']        = str_replace("*","",$row['v_products_model']);
+        $row['v_froogle_currency']          = '';
+        $row['v_froogle_naz_gr']            = 100000+$row['v_categories_id'];
         
         // names and descriptions require that we loop thru all languages that are turned on in the store
         foreach ($languages as $key => $lang){
@@ -669,7 +676,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
             }
             // froogle advanced format needs the quotes around the name and desc
             $row['v_froogle_products_name_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_name'])) . '"';
-            $row['v_froogle_products_description_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_description'])) . '"';
+            $row['v_froogle_products_model_' . $lid] = '"' . strip_tags(str_replace('"','""',$row2['products_model'])) . '"';
+            $row['v_froogle_products_description_' . $lid] = '"0,00"';
 
             // support for Linda's Header Controller 2.0 here
             if(isset($filelayout['v_products_meta_title_' . $lid])){
@@ -710,32 +718,19 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 		for( $categorylevel=1; $categorylevel<=EP_MAX_CATEGORIES; $categorylevel++){
 			if ($thecategory_id){
 
-				$sql3 = "SELECT parent_id, 
-								categories_image
-						 FROM ".TABLE_CATEGORIES."
+				$sql3 = "SELECT categories_name
+						 FROM ".TABLE_CATEGORIES_DESCRIPTION."
 						 WHERE    
 								categories_id = " . $thecategory_id . '';
 				$result3 = vam_db_query($sql3);
 				if ($row3 = vam_db_fetch_array($result3)) {
 					$temprow['v_categories_image_' . $categorylevel] = $row3['categories_image'];
-				}
 
-				foreach ($languages as $key => $lang){
-					$sql2 = "SELECT categories_name
-							 FROM ".TABLE_CATEGORIES_DESCRIPTION."
-							 WHERE    
-									categories_id = " . $thecategory_id . " AND
-									language_id = " . $lang['id'];
-					$result2 = vam_db_query($sql2);
-					if ($row2 =  vam_db_fetch_array($result2)) {
-						$temprow['v_categories_name_' . $categorylevel . '_' . $lang['id']] = $row2['categories_name'];
-					}
-					if ($lang['id'] == '1') {
-						//$fullcategory .= " > " . $row2['categories_name'];
-						$fullcategory = $row2['categories_name'] . " > " . $fullcategory;
-					}
+$fullcategory = $row3['categories_name'];
 
 				}
+
+
 
 				// now get the parent ID if there was one
 				$theparent_id = $row3['parent_id'];
@@ -756,7 +751,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
 		}
 
 		// now trim off the last ">" from the category stack
-		$row['v_category_fullpath'] = substr($fullcategory,0,strlen($fullcategory)-3);
+		$row['v_category_fullpath'] = $fullcategory;
 
 		// temprow has the old style low to high level categories.
 		$newlevel = 1;
@@ -2285,15 +2280,21 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
         $iii = 0;
         $filelayout = array();
 
-        $filelayout['v_froogle_products_url_1'] = $iii++;
+
+//Код	Название	Налог(%)	Цена	Штрихкод	Артикул	Текст для чека	Акцизный	Секция	Код группы	Название группы
+
+
+        $filelayout['v_froogle_product_model'] = $iii++;
         $filelayout['v_froogle_products_name_'.EP_DEFAULT_LANGUAGE_ID] = $iii++;
         $filelayout['v_froogle_products_description_'.EP_DEFAULT_LANGUAGE_ID] = $iii++;
         $filelayout['v_products_price'] = $iii++;
         $filelayout['v_products_fullpath_image'] = $iii++;
         $filelayout['v_froogle_product_id'] = $iii++;
         $filelayout['v_froogle_quantitylevel'] = $iii++;
-        $filelayout['v_category_fullpath'] = $iii++;
         $filelayout['v_froogle_exp_date'] = $iii++;
+        $filelayout['v_froogle_kod_gr'] = $iii++;
+        $filelayout['v_froogle_naz_gr'] = $iii++;
+        $filelayout['v_category_fullpath'] = $iii++;
         $filelayout['v_froogle_currency'] = $iii++;
 
         $iii=0;
@@ -2301,18 +2302,19 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
 
         // EP Support mapping new names to the export headers.
         // use the $fileheaders[''] vars to do that.
-        $fileheaders['link'] = $iii++;
-        $fileheaders['title'] = $iii++;
-        $fileheaders['description'] = $iii++;
-        $fileheaders['price'] = $iii++;
-        $fileheaders['image_link'] = $iii++;
-        $fileheaders['id'] = $iii++;
-        $fileheaders['quantity'] = $iii++;
-        $fileheaders['product_type'] = $iii++;
-        $fileheaders['expiration_date'] = $iii++;
-        $fileheaders['currency'] = $iii++;
+        $fileheaders['Код'] = $iii++;
+        $fileheaders['Название'] = $iii++;
+        $fileheaders['Налог(%)'] = $iii++;
+        $fileheaders['Цена'] = $iii++;
+        $fileheaders['Штрихкод'] = $iii++;
+        $fileheaders['Артикул'] = $iii++;
+        $fileheaders['Текст для чека'] = $iii++;
+        $fileheaders['Акцизный'] = $iii++;
+        $fileheaders['Секция'] = $iii++;
+        $fileheaders['Код группы'] = $iii++;
+        $fileheaders['Название группы'] = $iii++;
 
-        $filelayout_sql = "SELECT
+        $filelayout_sql = "SELECT distinct 
             p.products_id as v_products_id,
             p.products_model as v_products_model,
             p.products_image as v_products_image,
@@ -2330,7 +2332,7 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             ".TABLE_PRODUCTS_TO_CATEGORIES." as ptoc
             WHERE
             p.products_id = ptoc.products_id AND
-            ptoc.categories_id = subc.categories_id
+            ptoc.categories_id = subc.categories_id group by p.products_id
             " . $sql_filter;
         break;
 
