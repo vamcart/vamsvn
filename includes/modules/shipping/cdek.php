@@ -90,7 +90,7 @@
 
 
 		//подключаем файл с классом CalculatePriceDeliveryCdek
-		include(DIR_WS_INCLUDES.'external/cdek/'.'CalculatePriceDeliveryCdek.php');
+		include_once(DIR_WS_INCLUDES.'external/cdek/'.'CalculatePriceDeliveryCdek.php');
 		
 		try {
 		
