@@ -9,9 +9,9 @@
 #  -----------------------------------------------------------------------------------------
 #  based on:
 #  (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-#  (c) 2002-2003 osCommerce (oscommerce.sql,v 1.87); www.oscommerce.com
-#  (c) 2003  nextcommerce (nextcommerce.sql,v 1.87 2003/08/25); www.nextcommerce.org
-#  (c) 2005  xt:Commerce (nextcommerce.sql,v 1.87 2005/08/25); www.xt-commerce.com
+#  (c) 2002-2003 osCommerce (oscommerce.sql,v 1.88); www.oscommerce.com
+#  (c) 2003  nextcommerce (nextcommerce.sql,v 1.88 2003/08/25); www.nextcommerce.org
+#  (c) 2005  xt:Commerce (nextcommerce.sql,v 1.88 2005/08/25); www.xt-commerce.com
 #
 #  Released under the GNU General Public License
 #
@@ -1817,7 +1817,7 @@ create table cip_depend (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 #database Version
-INSERT INTO database_version(version) VALUES ('1.87');
+INSERT INTO database_version(version) VALUES ('1.88');
 
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('0', 'information');
 INSERT INTO cm_file_flags (file_flag, file_flag_name) VALUES ('1', 'content');
