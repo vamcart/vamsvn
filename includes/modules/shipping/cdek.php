@@ -120,7 +120,7 @@
 			
 				foreach($order->products AS $products)
 				{
-					$calc->addGoodsItemBySize($products['weight']*$products['qty'], $products['length'], $products['width'], $products['height']*$products['qty']);
+					$calc->addGoodsItemBySize($products['weight'], $products['length'], $products['width'], $products['height']*$products['qty']);
 		
 				}	
 			
