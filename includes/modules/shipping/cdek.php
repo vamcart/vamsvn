@@ -202,48 +202,5 @@
       return array('MODULE_SHIPPING_CDEK_STATUS', 'MODULE_SHIPPING_CDEK_COST','MODULE_SHIPPING_CDEK_API_KEY','MODULE_SHIPPING_CDEK_API_PASSWORD','MODULE_SHIPPING_CDEK_SENDER_CITY','MODULE_SHIPPING_CDEK_ALLOWED', 'MODULE_SHIPPING_CDEK_TAX_CLASS', 'MODULE_SHIPPING_CDEK_ZONE', 'MODULE_SHIPPING_CDEK_DEBUG', 'MODULE_SHIPPING_CDEK_SORT_ORDER');
     }
     
-private function _cdek_api_communicate($request)
-{
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, "http://cdek.ru/api_v1.php");
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $data = curl_exec($curl);
-    
-    curl_close($curl);
-    if($data === false)
-    {
-	return "10000 server error";
-    }
-    
-    $js = json_decode($data, $assoc=true);
-    return $js;
-}
-
-private function cdek_api_calc($apikey, $password, $from_index, $to_index, $weight, $ob_cennost_rub)
-{
-    $request = array("apikey"=>$apikey, 
-                        "method"=>"calc", 
-                        "from_index"=>$from_index,
-                        "to_index"=>$to_index,
-                        "weight"=>$weight,
-                        "ob_cennost_rub"=>$ob_cennost_rub
-                    );
-
-    if ($password != "")
-    {
-        //если пароль указан, аутентификация по методу API ключ + API пароль.
-        $all_to_md5 = $request;
-        $all_to_md5[] = $password;
-        $hash = md5(implode("|", $all_to_md5));
-        $request["hash"] = $hash;
-    }
-
-    $ret = $this->_cdek_api_communicate($request);
-
-    return $ret;
-}    
-    
   }
 ?>
