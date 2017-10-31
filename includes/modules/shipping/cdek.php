@@ -152,13 +152,15 @@
 		     //var_dump($calc->getError());
 		
 		} catch (Exception $e) {
-		    if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Ошибка: ' . $e->getMessage() . "<br />";
+		    if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Ошибка: ' . $e->getMessage() . " | ";
 		}
 			
 		$shipping_cost=  $res['result']['price'];
 		
-		if (MODULE_SHIPPING_CDEK_COST > 0) $shipping_cost = $shipping_cost + MODULE_SHIPPING_CDEK_COST;      
-		      
+		if (MODULE_SHIPPING_CDEK_COST > 0) $shipping_cost = $shipping_cost + MODULE_SHIPPING_CDEK_COST;
+
+        $error_block = !empty($error_block) ? ' <span style=\'color: red;\'>| ' . $error_block . '</span>' : '';
+
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_CDEK_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
