@@ -139,5 +139,11 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
 // End Products Specifications
   
   define('TABLE_PRODUCT_LABELS', 'product_labels');
+
+  define('TABLE_ARTICLE_REVIEWS', 'article_reviews');
+  define('TABLE_ARTICLE_REVIEWS_DESCRIPTION', 'article_reviews_description');
+
+  define('TABLE_AUTHOR_REVIEWS', 'author_reviews');
+  define('TABLE_AUTHOR_REVIEWS_DESCRIPTION', 'author_reviews_description');
   
 ?>

@@ -134,4 +134,12 @@ define('FILENAME_PRODUCT_COMPARE', 'product_compare.php');
 define('FILENAME_CHECKOUT', 'checkout.php');
 define('FILENAME_SC_CHECKOUT_CONFIRMATION', 'sc_checkout_confirmation.php');
 
+define('FILENAME_ARTICLE_REVIEWS', 'article_reviews.php');
+define('FILENAME_ARTICLE_REVIEWS_INFO', 'article_reviews_info.php');
+define('FILENAME_ARTICLE_REVIEWS_WRITE', 'article_reviews_write.php');
+
+define('FILENAME_AUTHOR_REVIEWS', 'author_reviews.php');
+define('FILENAME_AUTHOR_REVIEWS_INFO', 'author_reviews_info.php');
+define('FILENAME_AUTHOR_REVIEWS_WRITE', 'author_reviews_write.php');
+
 ?>

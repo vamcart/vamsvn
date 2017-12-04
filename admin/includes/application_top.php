@@ -644,4 +644,14 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('FILENAME_PRODUCT_LABELS', 'product_labels.php');
   define('TABLE_PRODUCT_LABELS', 'product_labels');
 
+  define('FILENAME_ARTICLE_REVIEWS', 'article_reviews.php');
+
+  define('TABLE_ARTICLE_REVIEWS', 'article_reviews');
+  define('TABLE_ARTICLE_REVIEWS_DESCRIPTION', 'article_reviews_description');
+
+  define('FILENAME_AUTHOR_REVIEWS', 'author_reviews.php');
+
+  define('TABLE_AUTHOR_REVIEWS', 'author_reviews');
+  define('TABLE_AUTHOR_REVIEWS_DESCRIPTION', 'author_reviews_description');
+
 ?>
