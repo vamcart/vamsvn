@@ -206,6 +206,16 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     return $article['articles_name'];
   }
 
+  function vam_get_authors_name($authors_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $_SESSION['languages_id'];
+    $author_query = vam_db_query("select authors_name from " . TABLE_AUTHORS . " where authors_id = '" . (int)$authors_id . "'");
+    $author = vam_db_fetch_array($author_query);
+
+    return $author['authors_name'];
+  }
+
   function vam_get_articles_head_title_tag($article_id, $language_id = 0) {
     global $languages_id;
 
