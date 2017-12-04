@@ -28,6 +28,7 @@ define('TEXT_ARTICLE_BY', 'Автор статьи: ');
 define('TEXT_MORE_INFORMATION', 'Чтобы узнать больше, зайдите <a href="http://%s" target="_blank">сюда</a>.');
 
 define('TEXT_AUTHORS', 'Авторы:');
+define('TEXT_AUTHORS_IMAGE', 'Картинка:');
 define('TEXT_DATE_ADDED', 'Дата добавления:');
 define('TEXT_LAST_MODIFIED', 'Последнее изменение:');
 define('TEXT_ARTICLES', 'Статьи:');

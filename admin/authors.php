@@ -26,7 +26,17 @@
         if (isset($_GET['auID'])) $authors_id = vam_db_prepare_input($_GET['auID']);
         $authors_name = vam_db_prepare_input($_POST['authors_name']);
 
-        $sql_data_array = array('authors_name' => $authors_name);
+        $authorsImg = '';
+        $authors_image = new upload('authors_image');
+        $authors_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
+
+        if ($authors_image->parse() && $authors_image->save()) {
+            $authorsImg = vam_db_input($authors_image->filename);
+        }
+
+        $sql_data_array = array('authors_name' => $authors_name,
+                                 'authors_image' => $authorsImg,
+                                 );
 
         if ($action == 'insert') {
           $insert_sql_data = array('date_added' => 'now()');
@@ -151,6 +161,14 @@ function popupImageWindow(url) {
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
+          <tr>
+            <td class="smallText"><?php echo TEXT_AUTHORS_IMAGE; ?></td>
+            <td><?php echo vam_draw_file_field('authors_image'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
 <!--
 <?php
   $languages = vam_get_languages();
@@ -192,7 +210,7 @@ function popupImageWindow(url) {
 <?php
   } elseif ($action == 'edit') {
 
-    $authors_query = vam_db_query("select authors_id, authors_name from " . TABLE_AUTHORS . " where authors_id = '" . $_GET['auID'] . "'");
+    $authors_query = vam_db_query("select authors_id, authors_name, authors_image from " . TABLE_AUTHORS . " where authors_id = '" . $_GET['auID'] . "'");
     $authors = vam_db_fetch_array($authors_query)
 ?>
       <tr>
@@ -216,6 +234,13 @@ function popupImageWindow(url) {
           <tr>
             <td class="main"><?php echo TEXT_AUTHORS_NAME; ?></td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('authors_name', $authors['authors_name'], 'size="20"'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          <tr>
+            <td class="smallText"><?php echo TEXT_AUTHORS_IMAGE; ?></td>
+            <td><?php echo vam_draw_input_field('authors_image_name', $authors['authors_image'], 'disabled size="20"') . '&nbsp;&nbsp;' .  vam_draw_file_field('authors_image'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -276,7 +301,7 @@ function popupImageWindow(url) {
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $authors_query_raw = "select authors_id, authors_name, date_added, last_modified from " . TABLE_AUTHORS . " order by authors_name";
+  $authors_query_raw = "select authors_id, authors_name, authors_image, date_added, last_modified from " . TABLE_AUTHORS . " order by authors_name";
   $authors_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $authors_query_raw, $authors_query_numrows);
   $authors_query = vam_db_query($authors_query_raw);
   while ($authors = vam_db_fetch_array($authors_query)) {
@@ -342,6 +367,7 @@ function popupImageWindow(url) {
         $heading[] = array('text' => '<b>' . $auInfo->authors_name . '</b>');
 
         $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AUTHORS, 'page=' . $_GET['page'] . '&auID=' . $auInfo->authors_id . '&action=delete') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
+        if ($auInfo->authors_image != '') $contents[] = array('text' => '<br>' . vam_image(DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/'.$auInfo->authors_image));
         $contents[] = array('text' => '<br>' . TEXT_DATE_ADDED . ' ' . vam_date_short($auInfo->date_added));
         if (vam_not_null($auInfo->last_modified)) $contents[] = array('text' => TEXT_LAST_MODIFIED . ' ' . vam_date_short($auInfo->last_modified));
         $contents[] = array('text' => '<br>' . TEXT_ARTICLES . ' ' . $auInfo->articles_count);
