@@ -60,6 +60,8 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_config'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ARTICLES_CONFIG, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_CONFIG . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['authors'] == '1')) echo '<a href="' . vam_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_AUTHORS . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_XSELL . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['article_reviews'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ARTICLE_REVIEWS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLE_REVIEWS . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['author_reviews'] == '1')) echo '<a href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_AUTHOR_REVIEWS . '</a><br>';
   
   echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_TOOLS.'</b></div>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<a href="' . vam_href_link(FILENAME_MODULE_NEWSLETTER) . '" class="menuBoxContentLink"> -' . BOX_MODULE_NEWSLETTER . '</a><br>';

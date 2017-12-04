@@ -445,6 +445,8 @@ define('BOX_TOPICS_ARTICLES', 'Статьи/Разделы');
 define('BOX_ARTICLES_CONFIG', 'Настройка');
 define('BOX_ARTICLES_AUTHORS', 'Авторы');
 define('BOX_ARTICLES_REVIEWS', 'Отзывы'); 
+define('BOX_ARTICLE_REVIEWS', 'Отзывы о статьях'); 
+define('BOX_AUTHOR_REVIEWS', 'Отзывы об авторах'); 
 define('BOX_ARTICLES_XSELL', 'Товары-Статьи');
 define('IMAGE_NEW_TOPIC', 'Новый раздел');
 define('IMAGE_NEW_ARTICLE', 'Новая статья');
