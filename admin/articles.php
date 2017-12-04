@@ -240,6 +240,8 @@
         } else {
           if (isset($_GET['aID'])) $articles_id = vam_db_prepare_input($_GET['aID']);
           $articles_date_available = vam_db_prepare_input($_POST['articles_date_available']);
+          $articles_date_added = vam_db_prepare_input($_POST['articles_date_added']);
+          $articles_date_modified = $articles_date_added;
 
           $articles_date_available = (date('Y-m-d') < $articles_date_available) ? $articles_date_available : 'null';
 
@@ -279,6 +281,8 @@
             if (isset($_POST['articles_date_available']) && vam_not_null($_POST['articles_date_available'])) {
               $update_sql_data = array('articles_date_added' => vam_db_prepare_input($_POST['articles_date_available']));
             }
+
+              $update_sql_data = array('articles_date_added' => vam_db_prepare_input($_POST['articles_date_added']));
 
             $sql_data_array = array_merge($sql_data_array, $update_sql_data);
 
@@ -840,6 +844,13 @@ $manual_link = 'edit-article';
           <tr>
             <td class="main"><?php echo TEXT_ARTICLES_DATE_AVAILABLE; ?><br><small>(YYYY-MM-DD)</small></td>
             <td class="main"><?php echo vam_draw_input_field('articles_date_available', $aInfo->articles_date_available, 'size="10" class="format-y-m-d dividor-slash"'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo TEXT_DATE_ADDED; ?><br><small>(YYYY-MM-DD)</small></td>
+            <td class="main"><?php echo vam_draw_input_field('articles_date_added', $aInfo->articles_date_added, 'size="10" class="format-y-m-d dividor-slash"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
