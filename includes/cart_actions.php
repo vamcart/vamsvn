@@ -250,6 +250,15 @@ if (isset ($_GET['action'])) {
 			break;
 		case 'cust_order' :
 			if (isset ($_GET['pid'])) {
+				
+            unset($_SESSION['error_cart_msg']);
+            
+          if ( (vam_get_products_quantity_order_min($_GET['pid']) > 1)) {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_GET['pid']);
+					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
+          }
+				
+				
 				if (vam_has_product_attributes((int) $_GET['pid'])) {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
 				} else {
