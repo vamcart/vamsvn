@@ -10,6 +10,12 @@
 <div class="page">
 <div class="pageItem">
 
+{if $ARTICLE_IMAGE}
+<p>
+<a href="{$ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" alt="{$ARTICLE_NAME}" /></a>
+</p>
+{/if}
+
 {if $ARTICLE_DESCRIPTION}
 <p>
 {$ARTICLE_DESCRIPTION}

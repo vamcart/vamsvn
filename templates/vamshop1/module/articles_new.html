@@ -11,6 +11,12 @@
 <div class="page">
 <div class="pageItem">
 
+{if $module_data.ARTICLE_IMAGE}
+<p>
+<a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" alt="{$module_data.ARTICLE_NAME}" /></a>
+</p>
+{/if}
+
 <p>
 <a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a>
 </p>
