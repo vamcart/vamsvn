@@ -255,7 +255,11 @@ if (isset ($_GET['action'])) {
             
           if ( (vam_get_products_quantity_order_min($_GET['pid']) > 1)) {
             $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_GET['pid']);
+         if (AJAX_CART == 'false') {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
+          } else {
+             return;          
+          }
           }
 				
 				
@@ -265,8 +269,10 @@ if (isset ($_GET['action'])) {
 					$_SESSION['cart']->add_cart((int) $_GET['pid'], $_SESSION['cart']->get_quantity((int) $_GET['pid']) + 1);
 				}
 			}
-			if (AJAX_CART == 'false') {
+         if ( strlen($_SESSION['error_cart_msg'])==0 ) {
+         if (AJAX_CART == 'false') {
 			vam_redirect(vam_href_link($goto, vam_get_all_get_params($parameters)));
+			}
 			}
 			break;
 	}
