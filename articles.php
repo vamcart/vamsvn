@@ -156,12 +156,28 @@ if ($articles_split->number_of_rows > 0) {
 
 //echo var_dump($tags_data);
 
+
+   $article_rating = null;
+	$reviews_rating_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_ARTICLE_REVIEWS." r, ".TABLE_ARTICLE_REVIEWS_DESCRIPTION." rd where r.articles_id = '".(int)$articles['articles_id']."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+	$reviews_rating = vam_db_fetch_array($reviews_rating_query);
+	if ($reviews_rating['total'] > 0 && $reviews_rating['rating'] > 0) {
+	$article_rating = $reviews_rating['rating']/$reviews_rating['total'];
+	}	
+
+   $author_rating = null;
+	$author_rating_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_AUTHOR_REVIEWS." r, ".TABLE_AUTHOR_REVIEWS_DESCRIPTION." rd where r.authors_id = '".(int)$articles['authors_id']."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
+	$author_rating = vam_db_fetch_array($author_rating_query);
+	if ($author_rating['total'] > 0 && $author_rating['rating'] > 0) {
+	$author_rating = $author_rating['rating']/$author_rating['total'];
+	}	
+
 		$module_content[] = array (
 		
 		'ARTICLE_NAME' => $articles['articles_name'],
 		'ARTICLE_ID' => $articles['articles_id'],
 		'ARTICLE_REVIEWS' => $article_reviews['total'],
-		'ARTICLE_RATING' => $article_reviews['total'],
+		'ARTICLE_RATING' => intval($article_rating),
+		'ARTICLE_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
 		'ARTICLE_NAME' => $articles['articles_name'],
 		'ARTICLE_IMAGE' => $articles['articles_image'],
 		'ARTICLE_KEYWORDS' => $articles['articles_keywords'],
@@ -174,7 +190,8 @@ if ($articles_split->number_of_rows > 0) {
 		'AUTHOR_NAME' => $articles['authors_name'], 
 		'AUTHOR_ID' => $articles['authors_id'], 
 		'AUTHOR_REVIEWS' => $author_reviews['total'],
-		'AUTHOR_RATING' => $author_reviews['total'],
+		'AUTHOR_RATING' => intval($article_rating),
+		'AUTHOR_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
 		'AUTHOR_LINK' =>  vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles['topics_name'],
 		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $articles['topics_id'] . $SEF_parameter_category)
