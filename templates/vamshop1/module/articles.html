@@ -21,6 +21,16 @@
 </fieldset>
 </form>
 
+{if $ARTICLE_KEYWORDS_ARRAY_TAGS}
+<h4>Теги:</h4> 
+<p>
+{foreach item=tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
+<a href="{$tags.LINK}">{$tags.NAME}</a> 
+{/foreach}
+</p>
+{/if}
+<hr />
+
 {if $no_articles=='true'}
 <p>
 {#text_no_articles#}
