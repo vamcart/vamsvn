@@ -46,13 +46,13 @@
 
 {if $ARTICLE_REVIEWS > 0}
 <p>
-Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_INFO}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">добавить отзыв о статье</a>)
+Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">добавить отзыв о статье</a>)
 </p>
 {/if}
 
 {if $AUTHOR_REVIEWS > 0}
 <p>
-Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_INFO}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">читать все отзывы автора</a>, <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">добавить отзыв об авторе</a>)
+Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">читать все отзывы автора</a>, <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">добавить отзыв об авторе</a>)
 </p>
 {/if}
 
