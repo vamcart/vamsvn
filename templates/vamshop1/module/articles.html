@@ -21,6 +21,12 @@
 </fieldset>
 </form>
 
+{if $AUTHOR_IMAGE}
+<p>
+<img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" alt="{$AUTHOR_NAME}" />
+</p>
+{/if}
+
 {if $ARTICLE_KEYWORDS_ARRAY_TAGS}
 <h4>Тэги:</h4> 
 <p>

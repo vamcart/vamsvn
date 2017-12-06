@@ -73,6 +73,16 @@ if (($articles_new_split->number_of_rows > 0)) {
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $articles['articles_keywords']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $all_tags_data);
 
+if ($_GET['authors_id'] && $_GET['authors_id'] > 0) {
+
+  $authors_image_sql = "select authors_name, authors_image from ".TABLE_AUTHORS." where authors_id = '".(int)$_GET['authors_id']."'";
+
+  $authors_image_query = vamDBquery($authors_image_sql);
+  $author_images = vam_db_fetch_array($authors_image_query,true);
+	$vamTemplate->assign('AUTHOR_IMAGE', $author_images['authors_image']);
+	$vamTemplate->assign('AUTHOR_NAME', $author_images['authors_name']);
+}
+
 $module_content = '';
 if ($articles_new_split->number_of_rows > 0) {
 
