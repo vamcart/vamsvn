@@ -127,7 +127,7 @@ if (($articles_split->number_of_rows > 0)) {
 
     }
 
-    $manufacturer_sort = str_replace(" ", "", $manufacturer_sort);
+    //$manufacturer_sort = str_replace(" ", "", $manufacturer_sort);
     
     $manufacturer_sort = explode(",",$manufacturer_sort);
     $manufacturer_sort = array_unique($manufacturer_sort);
