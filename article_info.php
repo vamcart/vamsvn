@@ -34,7 +34,7 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
   $article_check_query = vamDBquery($article_check_query);
   $article_check = vam_db_fetch_array($article_check_query, true);
 
-    $article_info_query = "select a.articles_id, a.articles_image, a.articles_image, a.articles_date_added, a.articles_date_available, a.authors_id, ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_viewed, au.authors_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+    $article_info_query = "select a.articles_id, a.articles_image, a.articles_keywords, a.articles_image, a.articles_date_added, a.articles_date_available, a.authors_id, ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_viewed, au.authors_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
     $article_info_query = vamDBquery($article_info_query);
     $article_info = vam_db_fetch_array($article_info_query, true);
 
@@ -48,14 +48,42 @@ if ($article_check['total'] > 0) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_author = '&author='.vam_cleanName($article_info['authors_name']);
 
+		$products_tags = explode (",", $article_info['articles_keywords']);
+		$tags_data = array();
+
+          	foreach ($products_tags as $tags) {
+                $tags_data[] = array(
+                'NAME' => trim($tags),
+                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags)));
+        //$info->assign('tags_data', $tags_data);
+            }
+
+//echo var_dump($tags_data);
+
+		$article_reviews_query = vamDBquery("select count(*) as total from ".TABLE_ARTICLE_REVIEWS." ar where ar.articles_id='".$article_info['articles_id']."'");
+		$article_reviews = vam_db_fetch_array($article_reviews_query, true);
+
+		$author_reviews_query = vamDBquery("select count(*) as total from ".TABLE_AUTHOR_REVIEWS." au where au.authors_id='".$article_info['authors_id']."'");
+		$author_reviews = vam_db_fetch_array($author_reviews_query, true);
+
+
 	$vamTemplate->assign('ARTICLE_NAME', $article_info['articles_name']);
+	$vamTemplate->assign('ARTICLE_ID', $article_info['articles_id']);
+	$vamTemplate->assign('ARTICLE_REVIEWS', $article_reviews['total']);
+	$vamTemplate->assign('ARTICLE_RATING', $article_reviews['total']);
 	$vamTemplate->assign('ARTICLE_LINK', vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $article_info['articles_id'] . $SEF_parameter));
 	$vamTemplate->assign('ARTICLE_IMAGE', $article_info['articles_image']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS', $article_info['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $tags_data);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', explode(",", $article_info['articles_keywords']));
 	$vamTemplate->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
 	$vamTemplate->assign('ARTICLE_VIEWED', $article_info['articles_viewed']);
 	$vamTemplate->assign('ARTICLE_DATE', vam_date_long($article_info['articles_date_added']));
 	$vamTemplate->assign('ARTICLE_URL', $article_info['articles_url']);
 	$vamTemplate->assign('AUTHOR_NAME', $article_info['authors_name']);
+	$vamTemplate->assign('AUTHOR_ID', $article_info['authors_id']);
+	$vamTemplate->assign('AUTHOR_REVIEWS', $author_reviews['total']);
+	$vamTemplate->assign('AUTHOR_RATING', $author_reviews['total']);
 	$vamTemplate->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));
 
 include (DIR_WS_MODULES.FILENAME_ARTICLES_XSELL);
