@@ -63,7 +63,7 @@ if (vam_db_num_rows($reviews_query)) {
 }
 $vamTemplate->assign('module_content', $data_reviews);
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ARTICLES, $get_params_back).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-$vamTemplate->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_AUTHORS_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+$vamTemplate->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 
