@@ -767,7 +767,34 @@ $manual_link = 'edit-article';
 
           <tr>
             <td class="main"><?php echo TEXT_ARTICLES_HEAD_TITLE_TAG; ?></td>
-            <td class="main"><?php echo vam_draw_input_field('articles_head_title_tag[' . $languages[$i]['id'] . ']', (isset($articles_head_title_tag[$languages[$i]['id']]) ? $articles_head_title_tag[$languages[$i]['id']] : vam_get_articles_head_title_tag($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
+            <td class="main"><?php echo vam_draw_textarea_field('articles_head_title_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_title_tag[$languages[$i]['id']]) ? $articles_head_title_tag[$languages[$i]['id']] : vam_get_articles_head_title_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?>
+				<div id="title-result"></div>            
+<script>
+				function wordCount( val ){
+    var wom = val.match(/\S+/g);
+    return {
+        charactersNoSpaces : val.replace(/\s+/g, '').length,
+        characters         : val.length,
+        words              : wom ? wom.length : 0,
+        lines              : val.split(/\r*\n/).length
+    };
+}
+
+
+var textarea = document.getElementById("articles_head_title_tag[1]");
+var result_title   = document.getElementById("title-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_title.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>
           </tr>
 
           <tr>
@@ -780,7 +807,23 @@ $manual_link = 'edit-article';
               <tr>
                 <td class="main"><?php echo vam_draw_textarea_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_desc_tag[$languages[$i]['id']]) ? $articles_head_desc_tag[$languages[$i]['id']] : vam_get_articles_head_desc_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
               </tr>
-            </table></td>
+            </table>
+				<div id="desc-result"></div>            
+<script>
+var textarea = document.getElementById("articles_head_desc_tag[1]");
+var result_desc   = document.getElementById("desc-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_desc.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>            
           </tr>
 
           <tr>
@@ -793,7 +836,23 @@ $manual_link = 'edit-article';
               <tr>
                 <td class="main"><?php echo vam_draw_textarea_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($articles_head_keywords_tag[$languages[$i]['id']]) ? $articles_head_keywords_tag[$languages[$i]['id']] : vam_get_articles_head_keywords_tag($aInfo->articles_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
               </tr>
-            </table></td>
+            </table>
+				<div id="key-result"></div>            
+<script>
+var textarea = document.getElementById("articles_head_keywords_tag[1]");
+var result_key   = document.getElementById("key-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_key.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>             
           </tr>
 
           <tr>
