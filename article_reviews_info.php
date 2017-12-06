@@ -59,7 +59,7 @@ $vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_ARTICLE_INFO, 'arti
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ARTICLE_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->assign('BUTTON_BUY_NOW', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYarticles_id='.$reviews['articles_id']).'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART) . '</a>');
 
-$vamTemplate->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+$vamTemplate->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_ARTICLE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 $products_image = DIR_FS_CATALGO.DIR_WS_IMAGES.'articles/'.$reviews['articles_image'];
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
