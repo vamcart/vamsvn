@@ -115,6 +115,37 @@ if (($articles_split->number_of_rows > 0)) {
 
 }
 
+  $tags_list_sql = "select articles_keywords, articles_id from ".TABLE_ARTICLES."";
+
+  $tags_list_query = vamDBquery($tags_list_sql);
+  if (vam_db_num_rows($tags_list_query, true) > 1) {
+
+
+    while ($tags_list = vam_db_fetch_array($tags_list_query, true)) {
+
+    $manufacturer_sort .= ($tags_list['articles_keywords'] != '' ? $tags_list['articles_keywords'].',' : null);
+
+    }
+
+    $manufacturer_sort = str_replace(" ", "", $manufacturer_sort);
+    
+    $manufacturer_sort = explode(",",$manufacturer_sort);
+    $manufacturer_sort = array_unique($manufacturer_sort);
+  }
+
+		$all_tags = $manufacturer_sort;
+		$all_tags_data = array();
+
+          	foreach ($all_tags as $tags_all) {
+                $all_tags_data[] = array(
+                'NAME' => trim($tags_all),
+                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags_all)));
+            }
+
+	$vamTemplate->assign('ARTICLE_KEYWORDS', $articles['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $all_tags_data);
+
+
 $module_content = '';
 if ($articles_split->number_of_rows > 0) {
 

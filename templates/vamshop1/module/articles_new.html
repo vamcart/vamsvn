@@ -7,6 +7,16 @@
 </p>
 {else}
 
+{if $ARTICLE_KEYWORDS_ARRAY_TAGS}
+<h4>Теги:</h4> 
+<p>
+{foreach item=tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
+<a href="{$tags.LINK}">{$tags.NAME}</a> 
+{/foreach}
+</p>
+{/if}
+<hr />
+
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
 <div class="pageItem">
@@ -27,9 +37,30 @@
 </p>
 {/if}
 
+{if $module_data.ARTICLE_REVIEWS > 0}
+<p>
+Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_INFO}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_INFO}?articles_id={$module_data.ARTICLE_ID}">читать все отзывы о статье</a>)
+</p>
+{/if}
+
+{if $module_data.AUTHOR_REVIEWS > 0}
+<p>
+Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_INFO}?authors_id={$module_data.AUTHOR_ID}">{$module_data.AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_INFO}?authors_id={$module_data.AUTHOR_ID}">читать все отзывы автора</a>)
+</p>
+{/if}
+
 {if $module_data.ARTICLE_SHORT_DESCRIPTION}
 <p>
 {$module_data.ARTICLE_SHORT_DESCRIPTION}
+</p>
+{/if}
+
+{if $module_data.ARTICLE_KEYWORDS}
+<p>
+Тэги:
+{foreach item=article_tags from=$module_data.ARTICLE_KEYWORDS_ARRAY_TAGS}
+<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> 
+{/foreach}
 </p>
 {/if}
 
