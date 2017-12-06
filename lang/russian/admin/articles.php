@@ -113,4 +113,8 @@ define('TEXT_TOPIC_PAGE_URL', 'SEO URL категории:');
 
 define('TEXT_ARTICLE_SORT_ORDER', 'Порядок сортировки:');
 
+define('TEXT_ARTICLE_IMAGE', 'Картинка:');
+
+define('TEXT_ARTICLE_KEYWORDS', 'Ключевые слова (через запятую):');
+
 ?>
