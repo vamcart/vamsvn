@@ -256,10 +256,8 @@
 					} else {
 						
                 $articles_page_url = $_POST['articles_page_url'];
-					}      
-
-if ($_POST['articles_image_name'] = '') $_POST['articles_image'] = $_POST['articles_image_name'];
-
+					}    
+					
           $sql_data_array = array('articles_date_available' => $articles_date_available,
                                   'articles_status' => vam_db_prepare_input($_POST['articles_status']),
                                   'articles_page_url' => vam_db_prepare_input($articles_page_url),
@@ -893,7 +891,8 @@ textarea.addEventListener("input", function(){
 $image_field = '';
 if ($aInfo->articles_image != '') {
 //$image_field = vam_draw_input_field('articles_image', $aInfo->articles_image, 'disabled size="20"');	
-$image_field = vam_draw_input_field('articles_image', $aInfo->articles_image, 'size="20"');	
+$image_field .= vam_draw_input_field('articles_image_name', $aInfo->articles_image, 'size="20"');	
+$image_field .= vam_draw_file_field('articles_image',$aInfo->articles_image);	
 } else {
 $image_field = vam_draw_file_field('articles_image');	
 }
@@ -1090,6 +1089,7 @@ $image_field = vam_draw_file_field('articles_image');
 
 
 if ($form_action == "insert_article") {
+	
         $articles_img = '';
         $articles_image = new upload('articles_image');
         $articles_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
@@ -1100,14 +1100,24 @@ if ($form_action == "insert_article") {
 
         if ($articles_img != '') echo vam_draw_hidden_field('articles_image', htmlspecialchars(stripslashes($articles_img)));
 
-
 }
 
 if ($form_action == "update_article") {
+        
+        $articles_img = '';
+        $articles_image = new upload('articles_image');
+        $articles_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
 
-        //echo vam_draw_hidden_field('articles_image', $articles_image);
+        if ($articles_image->parse() && $articles_image->save()) {
+            $articles_img = vam_db_input($articles_image->filename);
+        }
 
-
+			if ($articles_img != '') {
+        echo vam_draw_hidden_field('articles_image', $articles_img);
+        } else {
+        echo vam_draw_hidden_field('articles_image', $_POST['articles_image_name']);
+        }
+        
 }
 
 

@@ -34,6 +34,10 @@
             $authorsImg = vam_db_input($authors_image->filename);
         }
 
+			if ($authorsImg == '' && $_POST['authors_image_name'] != '' && $authorsImg != $_POST['authors_image_name']) {
+        $authorsImg = $_POST['authors_image_name'];
+        }
+
         $sql_data_array = array('authors_name' => $authors_name,
                                  'authors_image' => $authorsImg,
                                  );
@@ -240,7 +244,7 @@ function popupImageWindow(url) {
           </tr>
           <tr>
             <td class="smallText"><?php echo TEXT_AUTHORS_IMAGE; ?></td>
-            <td><?php echo vam_draw_input_field('authors_image_name', $authors['authors_image'], 'disabled size="20"') . '&nbsp;&nbsp;' .  vam_draw_file_field('authors_image'); ?></td>
+            <td><?php echo vam_draw_input_field('authors_image_name', $authors['authors_image']) . '&nbsp;&nbsp;' .  vam_draw_file_field('authors_image'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
