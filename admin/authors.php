@@ -305,7 +305,7 @@ function popupImageWindow(url) {
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $authors_query_raw = "select authors_id, authors_name, authors_image, date_added, last_modified from " . TABLE_AUTHORS . " order by authors_name";
+  $authors_query_raw = "select authors_id, authors_name, authors_image, date_added, last_modified from " . TABLE_AUTHORS . " order by authors_id DESC";
   $authors_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $authors_query_raw, $authors_query_numrows);
   $authors_query = vam_db_query($authors_query_raw);
   while ($authors = vam_db_fetch_array($authors_query)) {

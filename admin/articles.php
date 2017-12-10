@@ -1260,9 +1260,8 @@ $manual_link = 'copy-article';
 
     $articles_count = 0;
     if (isset($_GET['search'])) {
-      $articles_query = vam_db_query("select a.articles_id, a.articles_image, ad.articles_name, a.articles_date_added, a.articles_last_modified, a.articles_date_available, a.articles_status, a2t.topics_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.articles_id = a2t.articles_id and ad.articles_name like '%" . vam_db_input($search) . "%' order by ad.articles_name");
-    } else {
-      $articles_query = vam_db_query("select a.articles_id, a.articles_image, ad.articles_name, a.articles_date_added, a.articles_last_modified, a.articles_date_available, a.articles_status from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.articles_id = a2t.articles_id and a2t.topics_id = '" . (int)$current_topic_id . "' order by ad.articles_name");
+      $articles_query = vam_db_query("select a.articles_id, a.articles_image, ad.articles_name, a.articles_date_added, a.articles_last_modified, a.articles_date_available, a.articles_status, a2t.topics_id from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.articles_id = a2t.articles_id and ad.articles_name like '%" . vam_db_input($search) . "%' order by a.articles_id DESC");    } else {
+      $articles_query = vam_db_query("select a.articles_id, a.articles_image, ad.articles_name, a.articles_date_added, a.articles_last_modified, a.articles_date_available, a.articles_status from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad, " . TABLE_ARTICLES_TO_TOPICS . " a2t where a.articles_id = ad.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and a.articles_id = a2t.articles_id and a2t.topics_id = '" . (int)$current_topic_id . "' order by a.articles_id DESC");
     }
     while ($articles = vam_db_fetch_array($articles_query)) {
       $articles_count++;
