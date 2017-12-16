@@ -142,10 +142,34 @@ if (($articles_split->number_of_rows > 0)) {
 
     }
 
-    //$manufacturer_sort = str_replace(" ", "", $manufacturer_sort);
+    $blacklist = array();
+    $blacklist = explode(",",TAGS_BLACKLIST);
+    
+    $manufacturer_sort = str_replace(", ", ",", $manufacturer_sort);
     
     $manufacturer_sort = explode(",",$manufacturer_sort);
+    
+//echo var_dump($blacklist);    
+  
+//echo var_dump($manufacturer_sort);  
+
+    foreach ($blacklist as $key => $value) {  
+$keys = array_keys($manufacturer_sort,$value);
+foreach($keys as $k) {
+    unset($manufacturer_sort[$k]);
+}
+} 
+    
+    //foreach ($blacklist as $key => $value) {
+//if (($key = array_search($value, $manufacturer_sort)) !== false) {
+    //unset($manufacturer_sort[$key]);
+//}
+//} 
+
     $manufacturer_sort = array_unique($manufacturer_sort);
+
+    //echo var_dump($manufacturer_sort);
+    
   }
 
 		$all_tags = $manufacturer_sort;
