@@ -92,4 +92,7 @@ define('ARTICLE_MANAGER_WYSIWYG_DEBUG_DESC', 'Следить за генерир
 define('MAX_DISPLAY_ARTICLES_CONTENT_TITLE' , 'Статьи кратко');
 define('MAX_DISPLAY_ARTICLES_CONTENT_DESC' , 'Количество символов, отображаемых при предварительном просмотре статьи в боксе Новые статьи.');
 
+define('TAGS_BLACKLIST_TITLE', 'Чёрный список тэгов (через запятую):');
+define('TAGS_BLACKLIST_DESC', 'Список тэгов, которые не должны выводиться в каталоге при просмотре статей.');
+
 ?>
