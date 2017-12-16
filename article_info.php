@@ -48,7 +48,15 @@ if ($article_check['total'] > 0) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_author = '&author='.vam_cleanName($article_info['authors_name']);
 
-		$products_tags = explode (",", $article_info['articles_keywords']);
+    $blacklist = array();
+    $blacklist = explode(",",TAGS_BLACKLIST);
+
+    foreach ($blacklist as $key => $value) {  
+$article_info['articles_keywords'] = str_replace($value.",","",$article_info['articles_keywords']);
+} 
+
+$products_tags = explode (",", $article_info['articles_keywords']);
+
 		$tags_data = array();
 
           	foreach ($products_tags as $tags) {

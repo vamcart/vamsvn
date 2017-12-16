@@ -43,7 +43,7 @@ if (($articles_new_split->number_of_rows > 0)) {
 
 }
 
-  $tags_list_sql = "select articles_keywords, articles_id from ".TABLE_ARTICLES." where articles_date_added > SUBDATE(now( ), INTERVAL '" . NEW_ARTICLES_DAYS_DISPLAY . "' DAY)";
+  $tags_list_sql = "select articles_keywords, articles_id from ".TABLE_ARTICLES."";
 
   $tags_list_query = vamDBquery($tags_list_sql);
   if (vam_db_num_rows($tags_list_query, true) > 1) {
@@ -55,10 +55,34 @@ if (($articles_new_split->number_of_rows > 0)) {
 
     }
 
-    //$manufacturer_sort = str_replace(" ", "", $manufacturer_sort);
+    $blacklist = array();
+    $blacklist = explode(",",TAGS_BLACKLIST);
+    
+    $manufacturer_sort = str_replace(", ", ",", $manufacturer_sort);
     
     $manufacturer_sort = explode(",",$manufacturer_sort);
+    
+//echo var_dump($blacklist);    
+  
+//echo var_dump($manufacturer_sort);  
+
+    foreach ($blacklist as $key => $value) {  
+$keys = array_keys($manufacturer_sort,$value);
+foreach($keys as $k) {
+    unset($manufacturer_sort[$k]);
+}
+} 
+    
+    //foreach ($blacklist as $key => $value) {
+//if (($key = array_search($value, $manufacturer_sort)) !== false) {
+    //unset($manufacturer_sort[$key]);
+//}
+//} 
+
     $manufacturer_sort = array_unique($manufacturer_sort);
+
+    //echo var_dump($manufacturer_sort);
+    
   }
 
 		$all_tags = $manufacturer_sort;
@@ -112,9 +136,18 @@ if ($articles_new_split->number_of_rows > 0) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_category = '&category='.vam_cleanName($articles_new['topics_name']);
 
+$products_tags = explode (",", $articles_new['articles_keywords']);
+
+    $blacklist = array();
+    $blacklist = explode(",",TAGS_BLACKLIST);
+
+    foreach ($blacklist as $key => $value) {  
+$articles_new['articles_keywords'] = str_replace($value.",","",$articles_new['articles_keywords']);
+} 
+
 		$products_tags = explode (",", $articles_new['articles_keywords']);
 		$tags_data = array();
-
+		
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),

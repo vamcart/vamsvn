@@ -223,6 +223,16 @@ if ($articles_split->number_of_rows > 0) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_category = '&category='.vam_cleanName($articles['topics_name']);
 
+
+$products_tags = explode (",", $articles['articles_keywords']);
+
+    $blacklist = array();
+    $blacklist = explode(",",TAGS_BLACKLIST);
+
+    foreach ($blacklist as $key => $value) {  
+$articles['articles_keywords'] = str_replace($value.",","",$articles['articles_keywords']);
+} 
+
 		$products_tags = explode (",", $articles['articles_keywords']);
 		$tags_data = array();
 
