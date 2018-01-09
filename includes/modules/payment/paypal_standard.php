@@ -346,16 +346,16 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     function process_button() {
       global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
 
-      $total = $order->info['total'] - $order->info['shipping_cost'] - $order->info['tax'];
+      $total = $order->info['total'];
       $my_currency = 'RUB';
 
       $process_button_string = '';
       $parameters = array('cmd' => '_xclick',
                           'item_name' => STORE_NAME . ' ' . substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
-                          'shipping' => number_format($order->info['shipping_cost'],2),
-                          'tax' => number_format($order->info['tax'],2),
+                          'shipping' => '0',
+                          'tax' => '0',
                           'business' => MODULE_PAYMENT_PAYPAL_STANDARD_ID,
-                          'amount' => number_format($total,2),
+                          'amount' => number_format($total,0,'.',''),
                           'currency_code' => 'RUB',
                           'invoice' => substr($_SESSION['cart_paypal_standard'], strpos($_SESSION['cart_paypal_standard'], '-')+1),
                           'custom' => $_SESSION['customer_id'],
