@@ -245,6 +245,8 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 
   $info->assign('info_message', $_SESSION['error_cart_msg']);
 
+  unset($_SESSION['error_cart_msg']);
+
 		include (DIR_WS_MODULES.FILENAME_PRODUCTS_MEDIA);
 		include (DIR_WS_MODULES.FILENAME_ALSO_PURCHASED_PRODUCTS);
 		include (DIR_WS_MODULES.FILENAME_CROSS_SELLING);
